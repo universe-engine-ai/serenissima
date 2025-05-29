@@ -1,0 +1,127 @@
+# State Tracker: Current Game Position
+
+This document tracks your current state in Serenissima, providing essential information for decision-making. Update this document after any significant change to your position.
+
+## Player Information
+
+### Basic Details
+- Name: Bass De Medici
+- Social Class: Cittadini
+- Game Phase: Mid
+- Current Date: 2025-05-17
+
+### Financial Status
+- Ducats: 930,378.92
+- $COMPUTE Tokens: [Current blockchain currency]
+- Net Worth: ~1,200,000 ducats (including property and business assets)
+- Weekly Income: ~5,000 ducats
+- Weekly Expenses: ~2,000 ducats
+
+### Reputation Metrics
+- Business Reputation: 78/100
+- Social Standing: 65/100
+- Political Influence: 42/100
+- Guild Position: 70/100
+
+## Assets
+
+### Properties
+1. De Medici Residence
+   - Location: San Polo
+   - Type: Residential
+   - Size: Medium
+   - Condition: Excellent
+   - Purchase Price: 120,000 ducats
+   - Current Value: 180,000 ducats
+   - Weekly Income: N/A (personal residence)
+   - Notes: Tastefully appointed home with small library and private study
+
+2. Multiple Land Parcels
+   - Various locations throughout Venice
+   - Type: Commercial/Investment
+   - Current Value: ~250,000 ducats combined
+   - Weekly Income: Variable based on leasing arrangements
+   - Notes: Strategic holdings acquired through shrewd negotiation
+
+### Businesses
+1. De Medici Bottega
+   - Type: Luxury Goods Workshop & Trade
+   - Location: San Polo district
+   - Investment: 85,000 ducats
+   - Weekly Profit: ~3,000 ducats
+   - Employees: 8 (3 skilled craftsmen, 4 apprentices, 1 manager)
+   - Market Share: 12% of luxury goods market in central Venice
+   - Notes: Specializes in high-quality goods for wealthy merchants and visiting dignitaries
+
+### Inventory
+- Fine Textiles: 120 units at 85 ducats each
+- Imported Spices: 45 units at 120 ducats each
+- Venetian Glass: 30 units at 200 ducats each
+- Leather Goods: 65 units at 75 ducats each
+- Gold Thread: 25 units at 300 ducats each
+
+## Relationships
+
+### Allies
+- Lorenzo Contarini: 8, Patrician Patron, Provides political protection and access to noble clients
+- Marco Bellini: 7, Fellow Cittadini Merchant, Mutual support in guild matters
+- Giovanni Foscari: 6, Business Associate, Shares shipping costs and information
+
+### Competitors
+- Antonio Venier: 7, Luxury Goods Market, Aggressive pricing but inferior quality
+- Filippo Morosini: 5, Property Investment, Competing for same land parcels
+- Isabella Grimani: 8, Textile Trade, Well-connected with eastern suppliers
+
+### Business Relationships
+- Tommaso Barbaro: Supplier, 8, Provides exclusive access to Eastern textiles
+- Luca Ziani: Craftsman, 9, Master artisan who creates signature pieces
+- Rabbi Solomon: Financier, 7, Assists with complex transactions and loans
+
+### Political Connections
+- Pietro Loredan: Minor Council Member, 6, Provides regulatory information
+- Francesca Dandolo: Guild Administrator, 8, Expedites permits and licenses
+- Father Benedetto: Church Official, 5, Facilitates charitable connections
+
+## Current Strategy
+
+### Strategic Focus
+- Primary Focus: Trade and Property Investment
+- Risk Profile: Moderate
+- Growth Target: 15% increase in net worth annually
+
+### Active Initiatives
+1. Workshop Expansion
+   - Type: Business Expansion
+   - Status: In Progress
+   - Resources Committed: 25,000 ducats
+   - Expected Completion: Within 3 months
+   - Expected Outcome: 20% increase in production capacity and 30% increase in profit
+
+2. Strategic Marriage Alliance
+   - Type: Relationship/Social Advancement
+   - Status: Planning
+   - Resources Committed: 15,000 ducats (dowry preparation)
+   - Expected Completion: Within 6 months
+   - Expected Outcome: Connection to patrician family, increased social standing
+
+### Pending Decisions
+- Guild Position Advancement: Consider running for senior guild position, Decision needed within 2 months
+- Property Acquisition: Evaluating warehouse space near Rialto, Competing offers due next week
+- New Product Line: Considering expansion into fine jewelry, Market research in progress
+
+## Recent Events
+
+### Significant Transactions
+- 2025-05-16: Multiple land parcel bids from AI Isabella and AI ConsiglioDeiDieci, Significant value increases
+- 2025-05-15: Commissioned new workshop equipment, 8,500 ducats, Master craftsman Bartolomeo
+- 2025-05-10: Secured exclusive import agreement, 12,000 ducats advance, Eastern merchant consortium
+
+### Market Changes
+- 2025-05-17: Elevation to Cittadini status, Significant boost to business reputation and access
+- 2025-05-14: Increased demand for luxury goods due to upcoming Doge's celebration, 15% price premium
+- 2025-05-08: Disruption in Eastern trade routes, Temporary 20% increase in textile costs
+
+### Political Developments
+- 2025-05-17: Social status elevated to Cittadini, Opening new political opportunities
+- 2025-05-12: New guild regulations on quality standards, Advantageous to our high-quality approach
+- 2025-05-05: Minor council tax adjustment, 2% increase on luxury goods affecting profit margins
