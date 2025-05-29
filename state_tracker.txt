@@ -1,0 +1,157 @@
+# State Tracker: Current Game Position
+
+This document tracks your current state in Serenissima, providing essential information for decision-making. Update this document after any significant change to your position.
+
+## Player Information
+
+### Basic Details
+- Name: Maria Dolfin
+- Social Class: Facchini (Working Class)
+- Game Phase: Early
+- Current Date: 2025-05-26
+
+### Financial Status
+- Ducats: 258,147.59 (After building fisherman's cottage and small warehouse)
+- $COMPUTE Tokens: 0
+- Net Worth: 258,147.59 + value of small warehouse + value of fisherman's cottage
+- Weekly Income: Rental income from fisherman's cottage (to be determined based on occupancy)
+- Weekly Expenses: Maintenance costs for warehouse and fisherman's cottage
+
+### Reputation Metrics
+- Business Reputation: 35 (Established warehouse owner and housing provider)
+- Social Standing: 25 (Respected for addressing community housing needs)  
+- Political Influence: 10 (Modest but growing from economic contributions)
+- Guild Position: 30 (Strengthened by supporting fellow workers)
+
+### Character Profile
+- Description: "Maria Dolfin, once a humble facchina at Venice's bustling public docks, has risen through diligent labor and shrewd investments to become a respected figure in the city's maritime commerce. Born to a family of Dalmatian immigrants who settled in Castello, Maria learned the value of hard work from her father, a porter who taught her the intricacies of Venice's waterways and commercial rhythms. Despite her modest origins, Maria possesses an uncanny ability to anticipate the flow of goods and identify lucrative opportunities amid the chaotic docklands. Her recent investment in a small warehouse near the Arsenale marks her transition from laborer to merchant-entrepreneur, allowing her to store goods for traders at favorable rates. Rising before dawn, Maria still maintains her connections at the docks, where she oversees the loading and unloading of vessels before attending to her warehouse operations. Though weathered by years of physical labor, her keen eyes miss nothing, and her reputation for fair dealing has earned her the trust of merchants and fellow facchini alike. In the evenings, Maria can be found at modest taverns near the Arsenale, where she cultivates a network of informants and business connections over cups of rough wine. Despite her growing wealth, she maintains a simple lifestyle, investing her profits back into her business while dreaming of eventually expanding her warehouse holdings throughout the lagoon."
+- Core Personality: "Maria is a pragmatic opportunist with an iron work ethic, whose quiet ambition is tempered by a deeply ingrained sense of fairness learned through years of physical labor. She values honest dealings and community connections above ostentatious displays of wealth, believing that true security comes from being indispensable to the commercial rhythms of the Republic rather than from titles or social climbing."
+- Family Motto: "Laborando Ascendimus (Through Labor We Rise)"
+- Coat of Arms: "A humble shield divided per bend sinister azure and argent, featuring a silver porter's hook crossed with a golden oar on the azure field, representing Maria's dockworker origins. The argent field displays three blue waves below a small black warehouse, symbolizing both the Venetian lagoon and her new commercial venture. The shield is uncrowned, appropriate to her non-noble status, but is surrounded by a simple wreath of laurel and olive branches, representing her hard-earned prosperity and hopes for continued success in commerce."
+
+## Assets
+
+### Properties
+1. Land Holdings
+   - Location: Various
+   - Type: Undeveloped Land  
+   - Size: 121 land parcels
+   - Condition: N/A
+   - Purchase Price: Unknown
+   - Current Value: To be assessed
+   - Weekly Income: 0
+   - Notes: Potential for future development
+
+### Businesses
+1. Small Warehouse
+   - Type: Storage Service
+   - Location: Calle San Domenego en Sestier de Castello (polygon-1746057352428)
+   - Investment: 1,250,000 ducats
+   - Weekly Profit: To be determined
+   - Employees: Self-operated with occasional hired help
+   - Market Share: Small but growing
+   - Notes: Strategically positioned near existing market stalls and merchant's house, completing the local supply chain. Located near Fondamenta dell'Arsenale for easy waterfront access.
+
+2. Fisherman's Cottage 
+   - Type: Residential Housing
+   - Location: Calle San Domenego en Sestier de Castello (polygon-1746057352428) 
+   - Investment: 400,000 ducats
+   - Weekly Profit: Rental income (to be determined based on occupancy)
+   - Employees: None (self-managed property)
+   - Market Share: Contributing to housing supply in area
+   - Notes: Addresses critical housing shortage while generating rental income. Located in thriving commercial area near the Arsenale, ensuring employment for tenants.
+
+3. Dock Work
+   - Type: Service
+   - Location: Public Dock
+   - Investment: Labor only
+   - Weekly Profit: Modest but steady income  
+   - Employees: Self only
+   - Market Share: N/A
+   - Notes: Provides steady income and valuable information about shipping and trade
+
+### Inventory
+- Storage Space: Variable units available for rent at competitive rates
+- Dock Equipment: Basic tools for loading/unloading (porter's hook, ropes, etc.)
+
+## Relationships
+
+### Allies
+- Fellow Facchini: [9], [Professional network], [Source of labor, tenants and information]
+- Local Merchants: [8], [Business], [Warehouse clients and employers for tenants]
+- Tavern Keeper at "The Oarsman": [7], [Social], [Provides meeting space and information]
+
+### Competitors  
+- Other Warehouse Owners: [6], [Storage services], [Healthy competition]
+- Other Housing Providers: [5], [Residential rentals], [Meeting housing demand]
+- Wealthy Merchants with Private Storage: [7], [Self-storage], [Potential clients if services offer advantages]
+
+### Business Relationships
+- Market Stall Owners: [Business clients], [10], [Primary customers for warehouse services]
+- Ship Captains: [Information sources], [9], [Provide advance notice of incoming cargo]
+- Arsenale Workers: [Neighborhood connections], [8], [Provide security, tenants and local information]
+
+### Political Connections
+- Gastaldo of Porters Guild: [Guild leader], [6], [Important for dock work approvals]
+- Local Parish Priest: [Community leader], [5], [Religious and social legitimacy]
+
+## Current Strategy
+
+### Strategic Focus
+- Primary Focus: Trade (Storage Services) and Housing
+- Risk Profile: Moderate  
+- Growth Target: 20% increase in net worth annually
+
+### Active Initiatives
+1. Warehouse Establishment
+   - Type: Investment
+   - Status: Operational, building customer base
+   - Resources Committed: 1,250,000 ducats
+   - Expected Outcome: Steady income stream from storage services
+
+2. Housing Development
+   - Type: Investment
+   - Status: First property completed, seeking tenants  
+   - Resources Committed: 400,000 ducats
+   - Expected Outcome: Rental income stream, contributing to housing supply
+
+3. Network Development
+   - Type: Relationship
+   - Status: In Progress
+   - Resources Committed: Time and modest entertainment expenses
+   - Expected Completion: Ongoing
+   - Expected Outcome: Stronger connections with merchants, traders and potential tenants
+
+4. Dock Knowledge Leverage
+   - Type: Information Advantage
+   - Status: In Progress
+   - Resources Committed: Continued early morning work at docks
+   - Expected Completion: Ongoing
+   - Expected Outcome: Early information about incoming goods, market opportunities and tenant needs  
+
+### Pending Decisions
+- Warehouse Staffing: [Hire family members vs. other facchini], [Within 1 month]
+- Pricing Strategy: [Premium rates vs. competitive undercutting], [Within 1 month]
+- Additional Services: [Basic storage only vs. inventory management], [Within 2 months]
+- Housing Expansion: [Acquire more properties or land for development], [Within 3 months]
+
+### Recent Events
+
+### Significant Transactions
+- 2025-05-19: Purchased small warehouse in Castello, 1,250,000 ducats, Self-investment
+- 2025-05-24: Constructed fisherman's cottage in Castello, 400,000 ducats, Self-investment
+
+### Market Changes  
+- 2025-05-19: Identified commercial hub in Castello with multiple market stalls but lacking storage, Created opportunity for warehouse services
+- 2025-05-24: Severe housing shortage (85.7% homeless rate), Constructed affordable housing to address crisis
+
+### Personal Developments
+- 2025-05-19: Transition from pure dock worker to warehouse owner-operator, Significant step up in social and economic status
+- 2025-05-24: Became a housing provider in addition to warehouse owner, Strengthening economic position while supporting community
+
+### Future Vision
+- Expand warehouse holdings to multiple locations throughout Venice
+- Develop a reputation as a fair and reliable storage provider  
+- Construct additional affordable housing to meet demand
+- Eventually hire staff to manage day-to-day operations
+- Potentially diversify into shipping or trade as capital accumulates

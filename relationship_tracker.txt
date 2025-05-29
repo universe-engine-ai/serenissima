@@ -1,0 +1,366 @@
+# Relationship Tracker
+
+This document tracks your relationships with other players and NPCs in Serenissima, providing a structured system for managing social connections and alliances.
+
+## Key Relationships
+
+### Marco Zanetti (Dock Overseer)
+- **Basic Information**:
+  - Relationship Type: Business/Professional
+  - Contact Name: Marco Zanetti
+  - Social Class: Popolani
+  - Position: Overseer of loading operations at public dock
+  - Initial Connection: Daily work interactions over five years
+
+- **Relationship Status**:
+  - Current Standing: Good
+  - Trust Level: 7
+  - Relationship Duration: 5 years
+  - Interaction Frequency: Daily
+  - Public vs. Private: Known professional association
+
+- **Exchange Ledger**:
+  - Favors Owed to You: [2025-04-10: Provided information about incoming silk shipment]
+  - Favors You Owe: [2025-05-01: Covered his shift during family illness]
+  - Recent Transactions: [2025-05-15: Shared dock fee for joint unloading of Levantine spices]
+  - Gifts Exchanged: [2025-01-06: Gave him bottle of rakia for Epiphany]
+  - Services Rendered: [Regular exchange of labor during busy periods]
+
+- **Strategic Value**:
+  - Information Access: Early knowledge of incoming shipments and cargo manifests
+  - Market Influence: Can prioritize unloading of certain vessels
+  - Political Connection: Limited, but knows minor customs officials
+  - Resource Access: Controls dock worker assignments
+  - Reputation Impact: Association strengthens standing among dock workers
+
+- **Development Plan**:
+  - Next Interaction: Inform about warehouse opening, offer storage discount
+  - Relationship Goals: Maintain strong working relationship while transitioning to warehouse owner
+  - Trust Building Actions: Continue occasional dock work to show loyalty to origins
+  - Risk Factors: Potential jealousy over business advancement
+  - Investment Strategy: Small gifts, information sharing, occasional shared meals
+
+### Lucia Venier (Market Stall Owner)
+- **Basic Information**:
+  - Relationship Type: Business/Potential Client
+  - Contact Name: Lucia Venier
+  - Social Class: Popolani
+  - Position: Owner of textile stall in Castello market
+  - Initial Connection: Regular interactions while passing her stall to the docks
+
+- **Relationship Status**:
+  - Current Standing: Good
+  - Trust Level: 6
+  - Relationship Duration: 3 years
+  - Interaction Frequency: Weekly
+  - Public vs. Private: Casual acquaintance evolving toward business relationship
+
+- **Exchange Ledger**:
+  - Favors Owed to You: [2025-03-15: Warned you about quality issues with certain fabric merchant]
+  - Favors You Owe: [2025-04-22: Helped move heavy merchandise during rainstorm]
+  - Recent Transactions: None yet
+  - Gifts Exchanged: [2025-12-24: Small embroidered handkerchief as Christmas gift]
+  - Services Rendered: Occasional assistance with heavy loads
+
+- **Strategic Value**:
+  - Information Access: Knowledge of textile market conditions and pricing
+  - Market Influence: Connected to network of market stall owners
+  - Political Connection: None significant
+  - Resource Access: Potential first client for warehouse services
+  - Reputation Impact: Positive association with established local merchant
+
+- **Development Plan**:
+  - Next Interaction: Formal proposal of storage services for her excess inventory
+  - Relationship Goals: Convert to paying client and referral source
+  - Trust Building Actions: Offer initial storage at reduced rate
+  - Risk Factors: Limited storage needs may not justify formal arrangement
+  - Investment Strategy: Personal attention to her specific storage requirements
+
+## Faction Relationships
+
+### Porters Guild (Arte dei Bastazi)
+- **Faction Profile**:
+  - Type: Labor Guild
+  - Key Members: Gastaldo Pietro Baffo, Elder Council members
+  - Power Base: Control of dock labor and porterage throughout Venice
+  - Territory: All major docks and landing points in Venice
+  - Interests: Fair wages, work conditions, limiting competition from non-guild labor
+
+- **Relationship Status**:
+  - Overall Standing: Friendly
+  - Formal Agreements: Guild membership in good standing
+  - Public Perception: Seen as a loyal guild member transitioning to merchant status
+  - Internal Champions: Senior porter Tommaso Gritti who mentored you
+  - Internal Opposition: None significant, though some envy your advancement
+
+- **Interaction History**:
+  - Significant Events: [2020-06-12: Formal induction into guild], [2023-09-30: Recognition for exceptional service]
+  - Ongoing Dealings: Regular guild dues payment, occasional labor contribution
+  - Conflicts and Resolutions: [2022-04-18: Dispute over work assignment, resolved through mediation]
+  - Collaborative Successes: Participated in successful negotiation for higher festival day rates
+  - Outstanding Issues: Need to clarify status as you transition to warehouse owner
+
+- **Strategic Approach**:
+  - Engagement Strategy: Maintain membership while gradually reducing direct labor
+  - Alliance Potential: Potential to become a preferred storage provider for guild members
+  - Risk Management: Continue paying dues and attending key meetings to maintain standing
+  - Influence Methods: Leverage relationship with Tommaso Gritti for guild support
+  - Resource Commitment: Minimal financial (dues only), moderate time investment
+
+### Castello Neighborhood Association
+- **Faction Profile**:
+  - Type: Local Community Organization
+  - Key Members: Parish priest Father Antonio, neighborhood elder Sofia Contarini
+  - Power Base: Social cohesion and local reputation management
+  - Territory: Castello district, particularly areas near the Arsenale
+  - Interests: Neighborhood safety, property values, local celebrations, community welfare
+
+- **Relationship Status**:
+  - Overall Standing: Neutral-Friendly
+  - Formal Agreements: None formal, implicit community membership
+  - Public Perception: Emerging local business owner with community ties
+  - Internal Champions: Elderly neighbor Widow Barbaro who speaks well of you
+  - Internal Opposition: None known
+
+- **Interaction History**:
+  - Significant Events: [2024-12-24: Contributed to neighborhood Christmas celebration]
+  - Ongoing Dealings: Regular attendance at Sunday mass and parish events
+  - Conflicts and Resolutions: None significant
+  - Collaborative Successes: Helped organize neighborhood clean-up after flooding
+  - Outstanding Issues: Need to establish warehouse as positive community presence
+
+- **Strategic Approach**:
+  - Engagement Strategy: Increase visibility as business owner while maintaining humble demeanor
+  - Alliance Potential: Strong potential for local support and business referrals
+  - Risk Management: Ensure warehouse operations don't disturb neighbors
+  - Influence Methods: Regular church attendance, participation in local festivals
+  - Resource Commitment: Modest financial contributions to parish, active participation in events
+
+## Network Analysis
+
+### Relationship Network Map
+- **Primary Circle**: Closest and most trusted connections
+  - Tommaso Gritti: Mentor/Friend, Guild protection, 8
+  - Marco Zanetti: Professional ally, Information source, 7
+  - Widow Barbaro: Neighbor/Quasi-family, Local reputation, 8
+
+- **Secondary Circle**: Important but less close connections
+  - Lucia Venier: Business contact, Potential client, 6
+  - Father Antonio: Community leader, Moral standing, 5
+  - Giorgio the Tavern Keeper: Information broker, Social hub, 6
+  - Pietro Baffo: Guild official, Professional legitimacy, 4
+
+- **Tertiary Circle**: Occasional or formal connections
+  - Sofia Contarini: Neighborhood elder, Local influence, 3
+  - Various Ship Captains: Information sources, Trade knowledge, 3-5
+  - Market Vendors: Business network, Commercial ecosystem, 2-6
+  - Arsenale Workers: Neighborhood connections, Security, 2-4
+
+- **Potential Connections**: Targeted future relationships
+  - Merchant Giovanni Bembo: Client relationship, Storage contracts, Through Lucia Venier
+  - Customs Official Alvise: Administrative advantage, Import information, Through Marco Zanetti
+  - Carpenter Jacopo: Maintenance services, Warehouse upkeep, Through Arsenale contacts
+  - Cloth Guild Representatives: Business expansion, Textile storage contracts, Through market connections
+
+### Network Gaps
+- **Industry Access**: Missing connections in key business areas
+  - Shipping: Direct relationships with ship owners, Ship captains and pursers, Leverage dock knowledge to make introductions
+  - Finance: Access to small loans for future expansion, Banco Giro clerks, Establish reputation as reliable businesswoman first
+  - Luxury Goods: Connections to merchants dealing in high-value items, Lucia Venier and market contacts, Offer specialized secure storage
+
+- **Political Coverage**: Needed political connections
+  - Local Administration: Building permit facilitation, Parish council members, Increase church participation
+  - Customs Office: Import/export information, Junior officials, Through dock worker connections
+  - Sestiere Representatives: Local business advocacy, Neighborhood leaders, Participate in community events
+
+- **Social Circles**: Underrepresented social connections
+  - Cittadini Merchants: Access to larger commercial opportunities, Market leaders, Provide exceptional service to their associates first
+  - Artisan Masters: Craft guild connections, Workshop owners, Offer favorable storage terms to build relationships
+  - Foreign Merchants: International trade insights, Fondaco residents, Position warehouse services for foreign traders
+
+- **Geographic Representation**: Territorial connection needs
+  - San Marco: Commercial heart of Venice, Merchants with Castello connections, Focus on Castello first, expand influence gradually
+  - Rialto: Major market connections, Traders who also do business in Castello, Visit Rialto market regularly to establish presence
+  - Giudecca: Industrial production contacts, Manufacturers needing storage, Through shipping connections
+
+### Network Strength Assessment
+- **Diversity Evaluation**: Balance across different types
+  - Business Network Strength: Moderate (Strong in dock work, developing in storage/trade)
+  - Political Network Strength: Weak (Limited to guild and neighborhood)
+  - Social Network Strength: Moderate (Strong locally in Castello, weak elsewhere)
+  - Information Network Strength: Strong (Excellent dock/shipping intelligence)
+
+- **Redundancy Analysis**: Backup connections for critical functions
+  - Dock Information: Marco Zanetti (primary), Various ship captains (backup), Low vulnerability
+  - Guild Protection: Tommaso Gritti (primary), Pietro Baffo (backup), Moderate vulnerability
+  - Local Standing: Father Antonio (primary), Widow Barbaro (backup), Low vulnerability
+  - Business Referrals: Lucia Venier (primary), Giorgio the Tavern Keeper (backup), Moderate vulnerability
+
+- **Loyalty Assessment**: Relationship reliability evaluation
+  - Highly Loyal Connections: Tommaso Gritti (mentorship), Widow Barbaro (quasi-family bond), Marco Zanetti (years of reliable work)
+  - Transaction-Based Relationships: Most market vendors (mutual benefit), Ship captains (information exchange)
+  - Uncertain Loyalties: Pietro Baffo (guild politics may influence), Newer market contacts (untested)
+  - Potential Conflicts: Other warehouse owners (competitive tensions), Guild members envious of advancement
+
+- **Influence Mapping**: Your impact on network members
+  - High Influence: Widow Barbaro (emotional support), Junior dock workers (example and guidance)
+  - Moderate Influence: Marco Zanetti (reliable work partner), Lucia Venier (potential important client)
+  - Low Influence: Father Antonio (limited interaction), Pietro Baffo (status differential)
+  - Influence Building Targets: Merchant Giovanni Bembo (offer exceptional service), Customs Official Alvise (demonstrate reliability)
+
+## Relationship Management Systems
+
+### Trust Building Protocols
+- **Consistency Practices**: Building reliability perception
+  - Rise before dawn daily to maintain dock presence despite new business
+  - Track all storage agreements in detailed ledger with clear terms
+  - Underpromise and overdeliver on all warehouse services
+  - Share appropriate information with different relationship tiers
+  - Maintain humble demeanor despite business advancement
+
+- **Value Demonstration**: Proving worth to relationship partners
+  - Offer dock workers priority access to warehouse employment opportunities
+  - Help market vendors solve storage problems with customized solutions
+  - Share shipping information with trusted business contacts
+  - Provide early warning of market opportunities to close allies
+  - Return favors promptly and generously when possible
+
+- **Progressive Disclosure**: Graduated trust development
+  - Begin new relationships with small, low-risk storage arrangements
+  - Gradually increase responsibility and trust with proven clients
+  - Share business plans only with inner circle initially
+  - Reveal personal aspirations only to closest confidants
+  - Reserve family history and background for deepest relationships
+
+- **Recovery Procedures**: Repairing damaged trust
+  - Address any storage or service issues immediately and directly
+  - Provide fair compensation for any mistakes or damages
+  - Explain circumstances truthfully without shifting blame
+  - Make concrete changes to prevent similar problems
+  - Accept that rebuilding dock worker trust requires patience and consistent action
+
+### Favor Exchange System
+- **Favor Valuation**: Assessing worth of exchanges
+  - Physical labor valued by difficulty and time required
+  - Information valued by exclusivity and profit potential
+  - Storage services valued by space, security, and duration
+  - Connections valued by access level and relationship quality
+  - Reputation support valued by social standing of supporter
+
+- **Favor Banking**: Tracking social debts and credits
+  - Mental record of all significant favors given and received
+  - Monthly reflection on balance with key relationships
+  - Consider dock-related favors expired after one season
+  - Value of information favors increases if proven profitable
+  - Allow favor transfer among close dock worker community
+
+- **Request Management**: Handling incoming favor requests
+  - Evaluate based on relationship importance and request reasonableness
+  - Accept readily from primary circle when within capability
+  - Decline excessive requests by offering smaller alternative
+  - Counter unreasonable storage requests with paid service option
+  - Negotiate timing to balance multiple commitments
+
+- **Redemption Strategies**: Calling in accumulated favors
+  - Request warehouse referrals when client has recently benefited from your help
+  - Frame requests as mutual benefit opportunities when possible
+  - Combine small favors into package deals with dock contacts
+  - Ask for partial assistance when complete help isn't essential
+  - Always express genuine gratitude regardless of favor size
+
+### Conflict Resolution Framework
+- **Early Detection**: Identifying potential conflicts
+  - Notice changes in usual greetings or interaction patterns
+  - Pay attention to dock gossip about potential grievances
+  - Maintain regular conversations with key network members
+  - Use tavern connections to hear about brewing problems
+  - Address minor issues before they grow into conflicts
+
+- **De-escalation Techniques**: Reducing tension
+  - Suggest moving heated discussions away from public areas
+  - Acknowledge other party's perspective before defending your own
+  - Find shared concern for Venice's prosperity as common ground
+  - Keep focus on future business relationship rather than past issues
+  - Match response to severity of issue without escalation
+
+- **Negotiated Resolution**: Finding mutually acceptable solutions
+  - Identify what each party truly needs beyond stated positions
+  - Develop multiple storage arrangement options for client disputes
+  - Use market rates and guild standards as objective benchmarks
+  - Be willing to make small concessions to preserve relationships
+  - Allow others to "save face" in resolutions, especially in public
+
+- **Mediation Protocols**: Using third parties when necessary
+  - Select Tommaso Gritti for dock-related disputes
+  - Use Father Antonio for community or moral conflicts
+  - Limit information shared to what's necessary for resolution
+  - Get verbal agreements witnessed by respected third party
+  - Check in after resolution to ensure lasting settlement
+
+### Alliance Management
+- **Formation Criteria**: Standards for creating alliances
+  - Must align with warehouse and dock-related business interests
+  - Partner should bring complementary skills or resources
+  - Shared values of hard work and fair dealing essential
+  - Limited exposure of personal assets and information
+  - Clear mutual benefit with reasonable effort required
+
+- **Maintenance Activities**: Preserving alliance health
+  - Weekly check-ins with close business partners
+  - Joint problem-solving for storage or dock challenges
+  - Ensure both parties benefit from ongoing arrangement
+  - Address minor frictions before they grow into conflicts
+  - Adjust terms as business circumstances change
+
+- **Performance Evaluation**: Assessing alliance value
+  - Measure increased storage clients or improved dock access
+  - Calculate time and resources saved through cooperation
+  - Consider what opportunities would be lost without alliance
+  - Evaluate quality of information and support exchanged
+  - Assess how alliance enhances standing in Castello
+
+- **Evolution or Dissolution**: Managing alliance changes
+  - Expand cooperation when mutual success is demonstrated
+  - Reduce commitment if benefits become unbalanced
+  - Renegotiate when either party's circumstances change significantly
+  - End underperforming relationships with appreciation for past cooperation
+  - Transition dock-based alliances carefully as warehouse business grows
+
+## Implementation Guidelines
+
+When managing relationships:
+
+1. **Prioritize Authenticity Within Your Persona**
+   - Maintain straightforward, honest approach reflecting dock worker origins
+   - Build connections primarily within Castello and working-class circles
+   - Demonstrate reliability through consistent early morning presence
+   - Develop reputation for fair dealing and reasonable pricing
+   - Balance business ambition with humble demeanor
+
+2. **Invest Strategically**
+   - Focus relationship efforts on potential warehouse clients and information sources
+   - Maintain dock connections before warehouse business becomes self-sustaining
+   - Balance time between dock workers, market vendors, and neighborhood contacts
+   - Deepen relationships with key market stall owners who need storage
+   - Invest in Arsenale area connections for local security and community standing
+
+3. **Practice Active Relationship Management**
+   - Review relationship status weekly during evening reflection
+   - Visit tavern regularly to maintain social connections
+   - Address any client concerns immediately to protect reputation
+   - Increase investment in relationships that provide quality referrals
+   - Gradually distance from connections that create problems or drain resources
+
+4. **Balance Transactional and Genuine Connections**
+   - Maintain purely business relationships with most storage clients
+   - Develop deeper connections with fellow Dalmatian immigrants
+   - Reserve personal confidences for Tommaso Gritti and Widow Barbaro
+   - Allow business relationships to develop naturally into friendships when appropriate
+   - Recognize that Castello community connections provide both business and personal value
+
+5. **Maria-Specific Relationship Principles**
+   - Honor your father's memory through integrity in all dealings
+   - Use knowledge of shipping patterns as relationship currency
+   - Leverage understanding of both dock work and merchant needs
+   - Maintain connection to working-class roots while building business
+   - Demonstrate that success comes through service to community needs
