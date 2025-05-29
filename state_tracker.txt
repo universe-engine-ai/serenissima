@@ -1,0 +1,113 @@
+# State Tracker: Current Game Position
+
+This document tracks your current state in Serenissima, providing essential information for decision-making. Update this document after any significant change to your position.
+
+## Player Information
+
+### Basic Details
+- Name: Matteo Foscari
+- Social Class: Facchini (Popolani)
+- Game Phase: Early
+- Current Date: 2025-05-21
+
+### Financial Status
+- Ducats: 15750
+- $COMPUTE Tokens: 0
+- Net Worth: 15750
+- Weekly Income: [To be determined]
+- Weekly Expenses: [To be determined]
+
+### Reputation Metrics
+- Business Reputation: 30
+- Social Standing: 15
+- Political Influence: 5
+- Guild Position: 20
+
+## Assets
+
+### Properties
+1. [Property Name]
+   - Location: [District]
+   - Type: [Residential/Commercial/Industrial/Special]
+   - Size: [Small/Medium/Large]
+   - Condition: [Poor/Fair/Good/Excellent]
+   - Purchase Price: [Amount in ducats]
+   - Current Value: [Estimated value in ducats]
+   - Weekly Income: [Rent or business income]
+   - Notes: [Special features or issues]
+
+2. [Additional properties listed in same format]
+
+### Businesses
+1. [Business Name]
+   - Type: [Industry/Trade/Service]
+   - Location: [Property or district]
+   - Investment: [Total capital invested]
+   - Weekly Profit: [Average weekly earnings]
+   - Employees: [Number and type]
+   - Market Share: [Estimated percentage]
+   - Notes: [Competitive position, issues, opportunities]
+
+2. [Additional businesses listed in same format]
+
+### Inventory
+- [Resource Type]: [Quantity] units at [Average Purchase Price] ducats each
+- [Additional inventory items listed in same format]
+
+## Relationships
+
+### Allies
+- [Name]: [Relationship strength 1-10], [Relationship type], [Notes]
+- [Additional allies listed in same format]
+
+### Competitors
+- [Name]: [Threat level 1-10], [Competing areas], [Notes]
+- [Additional competitors listed in same format]
+
+### Business Relationships
+- [Name]: [Relationship type], [Importance 1-10], [Notes]
+- [Additional business relationships listed in same format]
+
+### Political Connections
+- [Name]: [Position], [Influence level 1-10], [Notes]
+- [Additional political connections listed in same format]
+
+## Current Strategy
+
+### Strategic Focus
+- Primary Focus: Trade
+- Risk Profile: Conservative
+- Growth Target: 15% increase in net worth annually
+
+### Active Initiatives
+1. Gondola Ownership
+   - Type: Investment
+   - Status: Planning
+   - Resources Committed: 0 (saving phase)
+   - Expected Completion: 6-12 months
+   - Expected Outcome: Purchase own gondola to increase income and independence
+
+2. Information Network Development
+   - Type: Relationship
+   - Status: In Progress
+   - Resources Committed: Time and small favors
+   - Expected Completion: Ongoing
+   - Expected Outcome: Valuable information to leverage for opportunities and protection
+
+### Pending Decisions
+- Employment: Seek new gondola assistant position or pursue independent work, Within 2 weeks
+- Investment: Determine whether to use savings for gondola purchase or other business opportunity, Within 3 months
+
+## Recent Events
+
+### Significant Transactions
+- [Date]: [Transaction description], [Amount], [Parties involved]
+- [Additional transactions listed in same format]
+
+### Market Changes
+- [Date]: [Market event description], [Impact on your position]
+- [Additional market changes listed in same format]
+
+### Political Developments
+- [Date]: [Political event description], [Impact on your position]
+- [Additional political developments listed in same format]
