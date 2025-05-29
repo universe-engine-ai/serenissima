@@ -1,0 +1,141 @@
+### Inventory Management
+- **Stock Level Decisions**: Daily inventory adjustments
+  - Minimum stock requirements by item category
+  - Maximum stock limits based on storage capacity
+  - Reorder point triggers for essential items
+  - Seasonal adjustment factors
+  - Quality deterioration considerations
+
+- **Rotation Strategies**: Managing perishable or dated goods
+  - First-in-first-out (FIFO) implementation
+  - Quality-based prioritization
+  - Price adjustment for aging inventory
+  - Bundle creation for slower-moving items
+  - Strategic liquidation timing
+
+- **Storage Optimization**: Maximizing space and accessibility
+  - High-turnover item positioning
+  - Complementary item grouping
+  - Seasonal reorganization schedule
+  - Value-density storage prioritization
+  - Security tier allocation
+
+- **Inventory Verification**: Ensuring accuracy and quality
+  - Regular counting schedule by item value
+  - Quality inspection protocols
+  - Discrepancy investigation triggers
+  - Loss prevention measures
+  - Record reconciliation procedures
+
+### Daily Production Management
+- **Output Adjustment**: Fine-tuning production volumes
+  - Demand signal responses
+  - Inventory level considerations
+  - Labor availability factors
+  - Material supply constraints
+  - Equipment capacity utilization
+
+- **Quality Control**: Maintaining standards
+  - Inspection frequency and sampling methods
+  - Defect response protocols
+  - Guild standard compliance checks
+  - Customer feedback integration
+  - Continuous improvement initiatives
+
+- **Resource Allocation**: Assigning materials and labor
+  - Priority product determination
+  - Skilled labor assignment optimization
+  - Material allocation during constraints
+  - Tool and equipment scheduling
+  - Workspace utilization planning
+
+- **Production Scheduling**: Organizing daily workflow
+  - Setup time minimization
+  - Batch size optimization
+  - Complementary product sequencing
+  - Maintenance window planning
+  - Rush order accommodation
+
+### Cash Flow Management
+- **Daily Cash Position**: Maintaining liquidity
+  - Beginning/ending cash balance targets
+  - Payment prioritization hierarchy
+  - Collection acceleration techniques
+  - Short-term cash preservation tactics
+  - Emergency liquidity sources
+
+- **Payment Timing**: Optimizing outgoing funds
+  - Discount capture opportunities
+  - Payment term utilization
+  - Relationship consideration factors
+  - Cash flow impact assessment
+  - Currency selection optimization
+
+- **Revenue Acceleration**: Enhancing incoming funds
+  - Incentives for prompt payment
+  - Deposit and advance structures
+  - Immediate payment discounts
+  - Collection follow-up procedures
+  - Consignment vs. direct sale decisions
+
+- **Short-Term Investment**: Managing temporary surpluses
+  - Overnight lending opportunities
+  - Short-term trade financing
+  - Advance payment discounts
+  - Inventory pre-purchasing
+  - Quick-flip property opportunities
+
+{
+  "wage_adjustments": [
+    {
+      "business_id": "building_45.436027_12.357020",
+      "new_wage_amount": 35,
+      "reason": "Market stall with zero income and no employees - reduce to basic rate until operational"
+    },
+    {
+      "business_id": "building_45.424914_12.320574", 
+      "new_wage_amount": 35,
+      "reason": "Market stall with zero income and no employees - reduce to basic rate until operational"
+    },
+    {
+      "business_id": "building_45.437558_12.315655",
+      "new_wage_amount": 35,
+      "reason": "Market stall with zero income and no employees - reduce to basic rate until operational"
+    },
+    {
+      "business_id": "building_45.425837_12.321249",
+      "new_wage_amount": 40,
+      "reason": "Bottega with zero income and no employees - reduce but maintain premium for skilled work"
+    },
+    {
+      "business_id": "building_45.438395_12.343959",
+      "new_wage_amount": 40,
+      "reason": "Bottega with zero income and no employees - reduce but maintain premium for skilled work"
+    },
+    {
+      "business_id": "building_45.429730_12.331747",
+      "new_wage_amount": 40,
+      "reason": "Bottega with zero income and no employees - reduce but maintain premium for skilled work"
+    },
+    {
+      "business_id": "canal_45.425700_12.330415",
+      "new_wage_amount": 50,
+      "reason": "Cargo landing with zero income - reduce but keep competitive for specialized maritime work"
+    },
+    {
+      "business_id": "canal_45.429449_12.326439",
+      "new_wage_amount": 45,
+      "reason": "Gondola station with zero income - reduce to basic transport rate"
+    },
+    {
+      "business_id": "canal_45.436930_12.333117",
+      "new_wage_amount": 50,
+      "reason": "Public dock with zero income - maintain competitive rate for maritime operations"
+    },
+    {
+      "business_id": "canal_45.436930_12.333117",
+      "new_wage_amount": 45,
+      "reason": "Gondola station with zero income - reduce to basic transport rate"
+    }
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "import_decisions": [
+    {
+      "building_id": "canal_45.425700_12.330415",
+      "resource_type": "merchant_galley",
+      "hourly_amount": 1,
+      "reason": "High-value maritime asset (18,000 ducats) for trade operations or resale"
+    },
+    {
+      "building_id": "canal_45.425700_12.330415", 
+      "resource_type": "smuggler_maps",
+      "hourly_amount": 2,
+      "reason": "Valuable specialty item (420 ducats) with limited competition"
+    },
+    {
+      "building_id": "canal_45.425700_12.330415",
+      "resource_type": "timber",
+      "hourly_amount": 20,
+      "reason": "Essential construction material (12 ducats) with consistent demand"
+    },
+    {
+      "building_id": "canal_45.425700_12.330415",
+      "resource_type": "spiced_wine",
+      "hourly_amount": 10,
+      "reason": "Luxury consumable (72 ducats) with good profit margins"
+    },
+    {
+      "building_id": "canal_45.436930_12.333117",
+      "resource_type": "fish",
+      "hourly_amount": 50,
+      "reason": "Basic food commodity (4 ducats) with stable demand and low cost"
+    },
+    {
+      "building_id": "canal_45.436930_12.333117",
+      "resource_type": "hemp",
+      "hourly_amount": 30,
+      "reason": "Raw material (7 ducats) for rope and textile production"
+    },
+    {
+      "building_id": "canal_45.436930_12.333117",
+      "resource_type": "salt",
+      "hourly_amount": 40,
+      "reason": "Essential preservation commodity (10 ducats) with consistent demand"
+    }
+  ]
+}
