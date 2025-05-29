@@ -1,0 +1,121 @@
+# State Tracker: Current Game Position
+
+This document tracks your current state in Serenissima, providing essential information for decision-making. Update this document after any significant change to your position.
+
+## Player Information
+
+### Basic Details
+- Name: Antonio Corfiote (greek_trader)
+- Social Class: Forestieri (Foreign Merchant)
+- Game Phase: Early-Mid Development
+- Current Date: 2025-05-23
+
+### Financial Status
+- Ducats: 1,027,803
+- $COMPUTE Tokens: 0
+- Net Worth: 1,027,803+ (including warehouse asset)
+- Weekly Income: Market stall operations + warehouse rental income
+- Weekly Expenses: Warehouse maintenance, market stall fees, living expenses
+
+### Reputation Metrics
+- Business Reputation: 65 (successful warehouse owner and trader)
+- Social Standing: 45 (foreign merchant with established business)
+- Political Influence: 20 (growing through business connections)
+- Guild Position: N/A (operates as independent foreign merchant)
+
+## Assets
+
+### Properties
+1. Small Warehouse
+   - Location: Fondamenta de Santa Marta in Sestiere Dorsoduro (polygon-1745879206602)
+   - Type: Commercial/Industrial Storage Facility
+   - Size: Small (building point 52)
+   - Condition: New/Excellent
+   - Purchase Price: 1,250,000 ducats
+   - Current Value: 1,250,000+ ducats
+   - Weekly Income: Rental income from storage services
+   - Notes: Strategically positioned near public dock, complements existing maritime infrastructure
+
+### Businesses
+1. Warehouse Operations
+   - Type: Storage and logistics services
+   - Location: Fondamenta de Santa Marta, Dorsoduro
+   - Investment: 1,250,000 ducats
+   - Weekly Profit: Variable based on storage demand
+   - Employees: Minimal (self-operated initially)
+   - Market Share: New entrant in waterfront storage
+   - Notes: Leverages maritime expertise, positioned for growth
+
+2. Market Stall Operations
+   - Type: Retail trade
+   - Location: Various market locations
+   - Investment: Minimal setup costs
+   - Weekly Profit: Variable based on goods traded
+   - Employees: Self-operated
+   - Market Share: Small independent trader
+   - Notes: Provides flexible income while building warehouse business
+
+### Inventory
+- Various trade goods: Quantities and values fluctuate based on market opportunities
+- Warehouse storage capacity: Available for rental to other merchants
+
+## Relationships
+
+### Allies
+- Stavros Dimitriou: 8/10, Fellow Greek merchant, Information sharing and mutual support
+- Elder Georgios: 7/10, Greek community elder, Wisdom and cultural guidance
+- Nikos Papadopoulos: 6/10, Greek trader, Business connections and opportunities
+
+### Competitors
+- Established warehouse operators: 6/10, Competition for storage clients, Monitoring pricing and services
+- Other foreign merchants: 4/10, Competition for market opportunities, Generally cordial relations
+
+### Business Relationships
+- Dock workers: 7/10, Essential for warehouse operations, Built on former colleague relationships
+- Ship captains: 6/10, Potential warehouse clients, Leveraging maritime knowledge
+- Local merchants: 5/10, Market stall customers and suppliers, Building reputation
+
+### Political Connections
+- Port officials: 4/10, Necessary for warehouse operations, Professional relationship
+- Market administrators: 3/10, Required for stall operations, Formal compliance relationship
+
+## Current Strategy
+
+### Strategic Focus
+- Primary Focus: Property/Business Development
+- Risk Profile: Moderate (calculated expansion)
+- Growth Target: Establish warehouse as profitable venture, expand storage capacity
+
+### Active Initiatives
+1. Warehouse Business Development
+   - Type: Business expansion
+   - Status: Recently launched
+   - Resources Committed: 1,250,000 ducats
+   - Expected Completion: Ongoing operations
+   - Expected Outcome: Steady rental income, foundation for maritime trade empire
+
+2. Market Presence Establishment
+   - Type: Trade/Relationship building
+   - Status: In progress
+   - Resources Committed: Time and working capital
+   - Expected Completion: Ongoing
+   - Expected Outcome: Diversified income, market intelligence, customer base
+
+### Pending Decisions
+- Additional warehouse construction: Evaluating demand and optimal locations
+- Market stall expansion: Considering permanent market presence vs. mobile operations
+- Staff hiring: Determining when to hire warehouse assistants
+
+## Recent Events
+
+### Significant Transactions
+- 2025-05-23: Built small warehouse on Fondamenta de Santa Marta for 1,250,000 ducats
+- Recent: Established market stall operations for flexible income
+
+### Market Changes
+- Warehouse market: Identified opportunity in waterfront storage near public dock
+- Trade goods: Monitoring price fluctuations for arbitrage opportunities
+
+### Political Developments
+- Status change: Elevated from Facchini to Forestieri through business success
+- Regulatory: Navigating foreign merchant regulations and requirements

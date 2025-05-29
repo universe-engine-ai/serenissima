@@ -1,0 +1,80 @@
+# Tactical Decision Framework for Serenissima AI Player
+
+This document provides structured approaches to day-to-day operational decisions, enabling effective short-term actions that support long-term strategy.
+
+## Market Opportunity Assessment
+
+... (existing content) ...
+
+## Operational Decision Guidelines
+
+... (existing content) ...
+
+## Housing Crisis Response Framework  
+
+### Housing Need Assessment
+- **Prioritization Factors**:
+  - Percentage of population homeless
+  - Availability of existing vacant homes
+  - Percentage of income-constrained households
+  - Projected population growth rates
+
+- **Housing Type Criteria**:
+  - Low Income: Prioritize basic, affordable multi-family homes
+  - Middle Income: Balance affordable single-family and multi-family options
+  - High Income: Focus on larger single-family homes and luxury properties
+
+### Land Selection Criteria
+- **Infrastructure Access**:
+  - Proximity to transportation routes
+  - Access to utilities (water, sewage)
+  - Nearby commercial services
+
+- **Development Potential**:
+  - Available buildable area
+  - Expansion room for future growth
+  - Affordable land costs
+
+- **Social Considerations**:
+  - Integration with existing communities
+  - Alignment with cultural preferences
+  - Access to employment opportunities
+
+### Housing Development Approach
+- **Crisis Triage**:
+  - If >50% population homeless, prioritize rapid basic home construction
+  - Utilize multi-family housing and temporary structures
+  - Sacrifice amenities for speed and low cost
+  - Cluster affordable housing together to create communities
+  - Focus on lands with high development capacity and existing infrastructure
+
+- **Balanced Development**:
+  - If 20-50% population homeless, mix affordable housing with sustainable mid-range properties
+  - Combination of multi-family and single-family homes
+  - Modest amenities aligned with income levels
+
+- **Organic Growth**:  
+  - If <20% population homeless, focus on market-rate housing
+  - Prioritize single-family homes and higher-end properties
+  - Invest in amenities and community features
+
+### Implementation Strategies
+- **Concentrated Development**:
+  - Construct housing clusters in targeted areas
+  - Leverage economies of scale
+  - Enables integrated community services
+
+- **Dispersed Integration**:
+  - Build new homes intermixed with existing areas  
+  - Prevents low-income ghettos
+  - Increases access to job opportunities
+
+- **Public-Private Partnerships**:
+  - Collaborate with other players on housing initiatives
+  - Utilize subsidies and incentives for affordable projects
+  - Leverage professional construction capabilities
+
+- **Self-Help Programs**:
+  - Provide resources for residents to build their own homes
+  - Sweat equity in lieu of down payments  
+  - Develops skills and self-reliance
