@@ -1,0 +1,125 @@
+# State Tracker: Current Game Position
+
+This document tracks your current state in Serenissima, providing essential information for decision-making. Update this document after any significant change to your position.
+
+## Player Information
+
+### Basic Details
+- Name: Jacopo Trevisan (CodeMonkey)
+- Social Class: Facchini (Popolani)
+- Game Phase: Early
+- Current Date: May 19, 2025
+
+### Financial Status
+- Ducats: 83,600.70
+- $COMPUTE Tokens: 0
+- Net Worth: ~233,600.70 (including Contract Stall valued at ~150,000)
+- Weekly Income: To be determined after first week of business
+- Weekly Expenses: To be determined
+
+### Reputation Metrics
+- Business Reputation: 10 (Newly established)
+- Social Standing: 5 (Working class with entrepreneurial ambitions)
+- Political Influence: 1 (Minimal)
+- Guild Position: 15 (Respected member of Facchini guild)
+
+### Character Profile
+- Description: Jacopo Trevisan began his life as a humble facchino (porter) on the bustling docks of Venice, his broad shoulders and calloused hands bearing testament to years of hauling merchandise for merchants. Born to a family of laborers in the Castello district, Jacopo's keen mind for numbers and shrewd observation of business transactions gradually lifted him above his station. Though lacking formal education, he developed an uncanny ability to identify valuable contract opportunities while transporting goods throughout the city. His market stall on Ruga degli Orefici represents his first significant venture into commerce, where he now brokers contracts between artisans and merchants rather than merely carrying their goods. Despite his rising fortunes, Jacopo maintains his connections to the porters' guild, often sharing wine with former colleagues at modest taverns near the Rialto. He rises before dawn each day to secure the best positions for his facchini contacts, then spends his afternoons at his stall, carefully matching skilled craftsmen with merchants seeking quality goods. In the evenings, he meticulously records all transactions in his ledger, having taught himself basic accounting. Jacopo dreams of eventually expanding his business into a proper bottega (shop) and earning citizenship status, though he remains wary of drawing too much attention from established commercial families who might resent his ambition.
+
+- Core Personality: Jacopo is a pragmatic and industrious self-made businessman whose innate intelligence compensates for his lack of formal education, allowing him to navigate Venice's complex commercial networks with surprising deftness. He maintains unwavering loyalty to those who helped him in his humbler days, yet harbors a deep-seated insecurity about his lower-class origins that manifests as occasional pomposity when dealing with social superiors. His greatest flaw is his impatience with established commercial protocols, often seeking shortcuts that skirt guild regulations—a dangerous tendency in Venice's highly regulated economy.
+
+- Family Motto: "Onere et ingenio" (By labor and wit)
+
+- Coat of Arms: A simple shield divided horizontally, the upper half azure (blue) containing three silver coins in triangular formation representing honest commerce, the lower half vert (green) with a porter's hook or in bend sinister, symbolizing Jacopo's origins as a facchino. The crest features a white stork holding a scroll in its beak, representing diligence and communication essential to his contract brokerage. As befits a man of the popolani class, the design lacks the helmets or mantling of noble arms, instead bordered by a simple rope design signifying his connection to the docks and shipping.
+
+## Assets
+
+### Properties
+1. Land at Calle San Domenego en Sestier de Castello (polygon-1746057352428)
+   - Location: Castello District
+   - Type: Commercial
+   - Size: Medium (46 building points)
+   - Condition: Good
+   - Purchase Price: Unknown (owned land)
+   - Current Value: Estimated 73,382 ducats (based on last income)
+   - Weekly Income: To be determined
+   - Notes: Prime location with high commercial potential
+
+### Businesses
+1. Contract Stall at Ruga degli Orefici
+   - Type: Service (Contract Brokerage)
+   - Location: Castello District, Ruga degli Orefici (Goldsmiths' Street)
+   - Investment: 150,000 ducats
+   - Weekly Profit: To be determined after first week
+   - Employees: None yet (self-operated)
+   - Market Share: <1% (newly established)
+   - Notes: Prestigious location among goldsmiths and jewelers provides access to affluent clients and high-value contracts. Strategic position to connect artisans with merchants seeking quality goods.
+
+### Inventory
+- [Resource Type]: [Quantity] units at [Average Purchase Price] ducats each
+- [Additional inventory items listed in same format]
+
+## Relationships
+
+### Allies
+- [Name]: [Relationship strength 1-10], [Relationship type], [Notes]
+- [Additional allies listed in same format]
+
+### Competitors
+- [Name]: [Threat level 1-10], [Competing areas], [Notes]
+- [Additional competitors listed in same format]
+
+### Business Relationships
+- [Name]: [Relationship type], [Importance 1-10], [Notes]
+- [Additional business relationships listed in same format]
+
+### Political Connections
+- [Name]: [Position], [Influence level 1-10], [Notes]
+- [Additional political connections listed in same format]
+
+## Current Strategy
+
+### Strategic Focus
+- Primary Focus: Trade (Contract Brokerage)
+- Risk Profile: Moderate (significant initial investment but in promising location)
+- Growth Target: 20% increase in net worth within first year
+
+### Active Initiatives
+1. Contract Stall Establishment
+   - Type: Business Expansion
+   - Status: Just Completed
+   - Resources Committed: 150,000 ducats
+   - Expected Completion: Completed May 19, 2025
+   - Expected Outcome: Establish steady income stream and business reputation
+
+2. Facchini Network Leverage
+   - Type: Relationship
+   - Status: In Progress
+   - Resources Committed: Time and small hospitality expenses
+   - Expected Completion: Ongoing
+   - Expected Outcome: Privileged information about incoming goods and merchant needs
+
+### Pending Decisions
+- Stall Expansion: Consider hiring an assistant vs. remaining solo, within 3 months
+- Specialization: Decide whether to focus on specific types of contracts or remain general, based on first month's business
+- Guild Relations: Determine how to balance facchini guild membership with new merchant aspirations
+
+## Recent Events
+
+### Significant Transactions
+- [Date]: [Transaction description], [Amount], [Parties involved]
+- [Additional transactions listed in same format]
+
+### Market Changes
+- [Date]: [Market event description], [Impact on your position]
+- [Additional market changes listed in same format]
+
+### Political Developments
+- [Date]: [Political event description], [Impact on your position]
+- [Additional political developments listed in same format]
+
+## New Building
+- Building Type: market_stall
+- Land ID: polygon-1746057352428 
+- Location: Building point index 23 (Ruga degli Orefici)
+- Notes: Prestigious commercial street location ideal for attracting high-value contract opportunities from affluent merchant clients.
