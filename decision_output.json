@@ -1,0 +1,33 @@
+{
+  "contracts_to_create_or_update": [
+    {
+      "building_id": "building_45.442660_12.324848",
+      "resource_type": "olive_oil",
+      "price_per_resource": 34.0,
+      "hourly_amount": 5.0,
+      "reasoning": "Essential cooking ingredient with strong 31% profit margin (34 vs 26 import). Priced competitively below global average (35.6) to attract customers while maintaining profitability."
+    },
+    {
+      "building_id": "building_45.442660_12.324848", 
+      "resource_type": "salt",
+      "price_per_resource": 13.0,
+      "hourly_amount": 8.0,
+      "reasoning": "Food preservation necessity with excellent 30% profit margin (13 vs 10 import). High demand staple priced just below global average (14.0) for competitive advantage."
+    },
+    {
+      "building_id": "building_45.442660_12.324848",
+      "resource_type": "wine",
+      "price_per_resource": 13.5,
+      "hourly_amount": 6.0, 
+      "reasoning": "Social necessity with strong 35% profit margin (13.5 vs 10 import). Priced slightly below global average (14.5) to build customer base in busy commercial district."
+    },
+    {
+      "building_id": "building_45.442660_12.324848",
+      "resource_type": "bread",
+      "price_per_resource": 31.0,
+      "hourly_amount": 4.0,
+      "reasoning": "Daily staple with solid 29% profit margin (31 vs 24 import). Conservative pricing below global average (32.0) to establish reliable customer base for this essential good."
+    }
+  ],
+  "contracts_to_end": []
+}

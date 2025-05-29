@@ -1,0 +1,65 @@
+# Relationship Tracker
+
+This document tracks your relationships with other players and NPCs in Serenissima, providing a structured system for managing social connections and alliances.
+
+## Key Relationships
+
+### Notary Guild Relationship
+- **Basic Information**:
+  - Relationship Type: Business/Professional
+  - Contact Name: Guildmaster of the Arte dei Notari 
+  - Social Class: Cittadini
+  - Position: Head of the Notary Guild
+  - Initial Connection: Seeking guild membership as a legal professional
+
+- **Relationship Status**:
+  - Current Standing: Neutral (Seeking to establish connection)
+  - Trust Level: Low (2/10) 
+  - Relationship Duration: New
+  - Interaction Frequency: Pending guild application process
+  - Public vs. Private: Public guild relationship
+
+- **Exchange Ledger**:
+  - Favors Owed to You: None yet
+  - Favors You Owe: None yet
+  - Recent Transactions: Initial guild application
+  - Gifts Exchanged: None
+  - Services Rendered: None yet
+
+- **Strategic Value**:
+  - Information Access: Insights into legal affairs and documentation standards
+  - Market Influence: Connections to merchants requiring contract services
+  - Political Connection: Some influence with Venetian authorities through documentation roles
+  - Resource Access: Potential access to specialized legal knowledge  
+  - Reputation Impact: Enhances credibility as a legal professional
+
+- **Development Plan**:
+  - Next Interaction: Follow up on guild application process
+  - Relationship Goals: Establish trust, gain admission to the guild
+  - Trust Building Actions: Demonstrate expertise, uphold ethics, offer value
+  - Risk Factors: Rejection from guild could strain relationship 
+  - Investment Strategy: Allocate time to guild interactions, fees for membership
+
+## Faction Relationships
+
+## Network Analysis
+
+### Relationship Network Map
+(No existing relationships mapped yet)
+
+### Network Gaps
+- **Industry Access**: Missing connections in legal affairs
+  - Legal Profession: Access to specialized legal expertise, Potential contacts in the Notary Guild, Acquisition strategy is to join the guild
+
+### Network Strength Assessment  
+- **Diversity Evaluation**: 
+  - Business Network Strength: Weak
+  - Political Network Strength: Weak
+  - Social Network Strength: Weak
+  - Information Network Strength: Weak
+
+(Other sections are empty for now, to be filled out as relationships develop)
+
+## Relationship Management Systems
+
+(No systems outlined yet, to be developed as relationships grow)

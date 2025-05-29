@@ -1,0 +1,45 @@
+[
+  {
+    "id": "building_45.442660_12.324848",
+    "type": "market_stall",
+    "name": "Contract Stall",
+    "sellable_resources": [
+      {
+        "id": "olive_oil",
+        "name": "Olive Oil",
+        "category": "processed_materials",
+        "importPrice": 26,
+        "currentPriceInThisBuilding": 0,
+        "globalAverageSellPrice": 35.6,
+        "landAverageSellPrice": 36.0
+      },
+      {
+        "id": "salt",
+        "name": "Salt",
+        "category": "raw_materials",
+        "importPrice": 10,
+        "currentPriceInThisBuilding": 0,
+        "globalAverageSellPrice": 14.0,
+        "landAverageSellPrice": 13.0
+      },
+      {
+        "id": "wine",
+        "name": "Wine",
+        "category": "finished_goods",
+        "importPrice": 10,
+        "currentPriceInThisBuilding": 0,
+        "globalAverageSellPrice": 14.5,
+        "landAverageSellPrice": 0
+      },
+      {
+        "id": "bread",
+        "name": "Bread",
+        "category": "finished_goods",
+        "importPrice": 24,
+        "currentPriceInThisBuilding": 0,
+        "globalAverageSellPrice": 32.03333333333333,
+        "landAverageSellPrice": 32.0
+      }
+    ]
+  }
+]

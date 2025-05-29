@@ -1,0 +1,230 @@
+# Market Memory System
+
+This document tracks market information in Serenissima, providing historical data and analysis to inform trading and investment decisions.
+
+## Price History
+
+### Olive Oil
+- **Current Price**: 35 ducats per barrel  
+- **Price Trend**: Rising
+- **Historical Prices**:
+  - 2025-04-15: 30 ducats
+  - 2025-03-20: 28 ducats
+  - 2025-02-01: 26 ducats
+  - 2024-12-10: 24 ducats
+
+- **Seasonal Patterns**:  
+  - Spring: Prices rise due to increased demand for cooking oils
+  - Summer: Prices peak during tourism season 
+  - Fall: Prices stabilize after olive harvest
+  - Winter: Prices dip slightly due to lower demand
+
+- **Supply Factors**:
+  - Primary Sources: Mainland olive groves, imports from Greece and Dalmatia
+  - Production Constraints: Weather conditions, pest impacts on crops  
+  - Transportation Factors: Reliant on maritime shipping routes
+  - Inventory Levels: Currently low due to poor harvest last year
+
+- **Demand Factors**:
+  - Primary Buyers: Households, restaurants, soap makers
+  - Usage Patterns: Steady demand for cooking, rises in summer  
+  - Substitutes: Other cooking oils like sesame or nut oils
+  - Demand Drivers: Population growth, tourism levels, export demand
+
+### Salt
+- **Current Price**: 14 ducats per ton
+- **Price Trend**: Stable
+- **Historical Prices**:
+  - 2025-03-01: 14 ducats  
+  - 2024-11-15: 13 ducats
+  - 2024-08-20: 14 ducats
+  - 2024-05-05: 15 ducats
+   
+- **Seasonal Patterns**:
+  - Spring: Prices rise slightly for food preservation demand
+  - Summer: Prices stable  
+  - Fall: Prices dip after peak preservation period
+  - Winter: Prices stable at lower levels
+   
+- **Supply Factors**:
+  - Primary Sources: Salt marshes near Chioggia, imports from Ibiza
+  - Production Constraints: Weather impacts on evaporation rates
+  - Transportation Factors: Inland transportation from production sites
+  - Inventory Levels: Adequate stockpiles from last season
+   
+- **Demand Factors**:
+  - Primary Buyers: Food preservers, tanners, households  
+  - Usage Patterns: Steady demand, peaks in late summer/early fall
+  - Substitutes: Limited options for preserving foods
+  - Demand Drivers: Population levels, industrial usage
+
+### Wine  
+- **Current Price**: 15 ducats per barrel
+- **Price Trend**: Falling
+- **Historical Prices**:
+  - 2025-03-01: 18 ducats
+  - 2024-10-15: 16 ducats
+  - 2024-07-20: 14 ducats
+  - 2024-04-05: 12 ducats
+
+- **Seasonal Patterns**:
+  - Spring: Prices rise in anticipation of summer demand  
+  - Summer: Prices peak due to tourism and celebrations
+  - Fall: Prices drop after Autumn harvest and vintage
+  - Winter: Prices bottom out until next year's vintage
+
+- **Supply Factors**:
+  - Primary Sources: Vineyards on mainland and islands  
+  - Production Constraints: Vintage quality, weather impacts 
+  - Transportation Factors: Shipping from production regions
+  - Inventory Levels: Currently high from last year's strong vintage
+
+- **Demand Factors**:
+  - Primary Buyers: Taverns, households, churches, export  
+  - Usage Patterns: Steady demand, peaks in summer tourism
+  - Substitutes: Other alcoholic beverages like beer or spirits  
+  - Demand Drivers: Tourism, celebrations, export markets
+
+## Market Opportunities  
+
+### Current Opportunities
+1. **Olive Oil Shortage**
+   - Type: Shortage
+   - Description: Poor harvest last year has depleted olive oil inventories
+   - Potential Profit: 25-30% trading margins  
+   - Time Window: 3-4 months until next harvest  
+   - Capital Required: Moderate for purchasing and storage
+   - Risk Level: Moderate (prices could spike or crash)
+   - Action Taken: Securing supply contracts from Greek merchants
+
+2. **Wine Surplus**  
+   - Type: Surplus
+   - Description: Exceptional vintage flooded market with excess supply
+   - Potential Profit: 15-20% trading margins
+   - Time Window: 6-8 months before supply is consumed  
+   - Capital Required: High for purchasing and storage  
+   - Risk Level: Low (prices expected to rebound next year)
+   - Action Taken: Negotiating bulk purchase from desperate sellers
+   
+3. **Salt Arbitrage**
+   - Type: Arbitrage 
+   - Description: Price discrepancy between Chioggia and Rialto markets
+   - Potential Profit: 10-15% trading margins
+   - Time Window: Ongoing until price difference is eliminated
+   - Capital Required: Low for transport and transaction costs  
+   - Risk Level: Low (prices relatively stable)
+   - Action Taken: Buying in Chioggia, selling in Rialto  
+
+### Monitored Potential Opportunities  
+1. **New Spice Route**
+   - Trigger Conditions: Establishment of direct trade with Moluccas  
+   - Early Indicators: Merchant activity in Aden, political changes
+   - Preparation Steps: Cultivate relationships with spice traders
+   - Potential Value: Extremely high profits as market maker
+
+2. **Silk Road Disruption**
+   - Trigger Conditions: Conflict or instability along trade routes  
+   - Early Indicators: Caravans delays, rumors of unrest
+   - Preparation Steps: Stockpile current silk inventories  
+   - Potential Value: Massive profits from supply shortages
+
+## Trade Routes
+
+### The Adriatic Run
+- **Path**: Venice to Ragusa (Dubrovnik) 
+- **Goods**: Wine, glass, textiles outbound / Wool, timber inbound
+- **Economics**:
+  - Transport Cost: 2 ducats per ton
+  - Time Required: 2 weeks round trip  
+  - Risk Factors: Piracy, winter storms
+  - Profit Margins: 15-25% typical  
+
+- **Key Players**:
+  - Venetian Trade Guilds: Control most shipping
+  - Ragusan Merchants: Powerful trading houses
+  - Uskoks: Pirate threat in northern Adriatic
+
+- **Strategic Value**:
+  - Competitive Position: Well-established Venetian dominance
+  - Integration Potential: Secure timber supply for shipbuilding 
+  - Development Opportunities: Increasing Ragusan trade volumes
+
+### The Silk Road 
+- **Path**: Venice to Aleppo to Samarkand and return
+- **Goods**: Silk, spices, dyes outbound / Textiles inbound  
+- **Economics**:
+  - Transport Cost: 50 ducats per ton 
+  - Time Required: 12-18 months round trip
+  - Risk Factors: Bandits, political instability, weather
+  - Profit Margins: 100%+ for successful ventures
+
+- **Key Players**:
+  - Venetian Merchants: Organizing and financing most caravans  
+  - Ottoman Authorities: Controlling tolls and security  
+  - Persian Traders: Competitors along eastern segments
+
+- **Strategic Value**:
+  - Competitive Position: Major player but face competition
+  - Integration Potential: Secure silk supply for textile industry
+  - Development Opportunities: Increasing security and efficiency  
+
+## Market Trends Analysis
+
+### Short-Term Trends (1-4 weeks)
+- **Spike in Grain Prices**:
+  - Description: Poor wheat harvest driving up prices  
+  - Causes: Drought conditions on mainland last summer
+  - Expected Duration: 2-3 months until imports stabilize  
+  - Impact on Your Position: Increased costs for bakery goods
+  - Response Strategy: Forward contracts to lock in future supply
+
+### Medium-Term Trends (1-6 months)  
+- **Silk Shortage**:
+  - Description: Dwindling silk inventories, rising prices
+  - Causes: Delays in caravans from the Levant  
+  - Expected Duration: 4-6 months until next arrivals
+  - Impact on Your Position: Pressure on textile business  
+  - Response Strategy: Diversify into wool and linen production
+
+### Long-Term Trends (6+ months)
+- **Growth of Spice Trade**:  
+  - Description: Increasing demand for exotic spices
+  - Causes: Changing tastes, growth of wealthy class
+  - Expected Duration: Ongoing, multi-year trend
+  - Impact on Your Position: Opportunities in spice trading  
+  - Response Strategy: Develop supplier relationships  
+
+## Market Intelligence Network
+
+### Information Sources
+- **Rialto Brokers**:
+  - Type: Merchant
+  - Reliability: Moderate  
+  - Specialization: Current prices and trade volumes
+  - Access Method: Casual conversations in the markets
+  - Maintenance Cost: Buying them drinks occasionally
+
+- **Nicolo Franchi** (Venetian merchant):  
+  - Type: Agent
+  - Reliability: High
+  - Specialization: Levant trade intelligence  
+  - Access Method: Paying retainer for his services
+  - Maintenance Cost: 500 ducats per year
+
+- **Chioggia Salt Guild**:
+  - Type: Guild 
+  - Reliability: High
+  - Specialization: Salt market conditions
+  - Access Method: Attending meetings as member
+  - Maintenance Cost: Annual dues of 200 ducats  
+
+### Intelligence Gaps
+- **Spice Production and Trade**:
+  - Importance: High  
+  - Acquisition Strategy: Cultivate sources in Alexandria  
+  - Potential Sources: Mamluk merchants, Venetian expats
+
+- **Silk Road Security Conditions**:  
+  - Importance: Moderate
+  - Acquisition Strategy: Debrief returning caravans
+  - Potential Sources: Caravan guards, traders from Persia

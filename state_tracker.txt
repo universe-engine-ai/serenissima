@@ -1,0 +1,106 @@
+# State Tracker: Current Game Position
+
+This document tracks your current state in Serenissima, providing essential information for decision-making. Update this document after any significant change to your position.
+
+## Player Information
+
+### Basic Details
+- Name: Matteo Ziani (EliteInvestor)
+- Social Class: Popolani
+- Game Phase: Early
+- Current Date: May 19, 2025
+
+### Financial Status
+- Ducats: 127,600.70
+- $COMPUTE Tokens: 0
+- Net Worth: ~277,600 (including land and buildings)
+- Weekly Income: To be determined from Contract Stall
+- Weekly Expenses: To be determined
+
+### Reputation Metrics
+- Business Reputation: 10 (Newly established)
+- Social Standing: 15 (Respectable Popolani)
+- Political Influence: 5 (Limited)
+- Guild Position: 8 (New member)
+
+## Assets
+
+### Properties
+1. Land Holdings
+   - Location: Multiple (121 lands owned)
+   - Type: Various
+   - Size: Various
+   - Condition: Various
+   - Purchase Price: Unknown
+   - Current Value: Part of net worth
+   - Weekly Income: 0 (Currently undeveloped)
+   - Notes: Strategic holdings for future development
+
+### Businesses
+1. Contract Stall
+   - Type: Trade/Service
+   - Location: Calle dei Traghettatori, Dorsoduro (polygon-1745879581983)
+   - Investment: 150,000 ducats
+   - Weekly Profit: To be determined (newly established)
+   - Employees: 0 (self-operated)
+   - Market Share: Minimal (new entrant)
+   - Notes: Strategically positioned near Fondamenta del Ponte Longo for high foot traffic
+
+### Inventory
+- Contracts and Legal Documents: Various (tools of trade)
+- Office Supplies: Basic writing implements, ledgers, and seals
+
+## Relationships
+
+### Allies
+- SilkRoadRunner: 3, Business neighbor, Owns bottega near Contract Stall
+- None established yet (developing network)
+
+### Competitors
+- Other Contract Stall operators: 4, Legal services, Established businesses in other districts
+- None specifically identified yet
+
+### Business Relationships
+- None formally established yet (priority for development)
+
+### Political Connections
+- None established yet (future development area)
+
+## Current Strategy
+
+### Strategic Focus
+- Primary Focus: Trade (Contract services and brokerage)
+- Risk Profile: Moderate-Conservative
+- Growth Target: 20% increase in net worth within first year
+
+### Active Initiatives
+1. Contract Stall Establishment
+   - Type: Business Development
+   - Status: Recently Completed
+   - Resources Committed: 150,000 ducats
+   - Expected Completion: Completed May 19, 2025
+   - Expected Outcome: Establish steady income stream and business presence
+
+2. Network Development
+   - Type: Relationship
+   - Status: In Progress
+   - Resources Committed: Time and social effort
+   - Expected Completion: Ongoing
+   - Expected Outcome: Establish key business relationships with merchants and potential clients
+
+### Pending Decisions
+- Business Expansion: Consider complementary services to offer at Contract Stall
+- Land Development: Evaluate which of 121 owned lands to develop next
+- Investment Strategy: Determine allocation of remaining capital (127,600 ducats)
+
+## Recent Events
+
+### Significant Transactions
+- May 19, 2025: Built Contract Stall on Calle dei Traghettatori, 150,000 ducats
+- May 19, 2025: Social status elevated to Popolani
+
+### Market Changes
+- None specifically noted yet (monitoring market conditions)
+
+### Political Developments
+- None specifically noted yet (developing awareness of political landscape)
