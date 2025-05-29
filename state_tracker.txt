@@ -1,0 +1,181 @@
+# State Tracker: Current Game Position
+
+This document tracks your current state in Serenissima, providing essential information for decision-making. Update this document after any significant change to your position.
+
+## Player Information
+
+### Basic Details
+- Name: Caterina Baffo (TopGlassmaker)
+- Social Class: Popolani
+- Game Phase: Early
+- Current Date: May 25, 2025
+
+### Financial Status
+- Ducats: 173,315.28
+- $COMPUTE Tokens: 0
+- Net Worth: ~573,315.28 plus land and building value 
+- Weekly Income: 0 (pending completion of buildings)
+- Weekly Expenses: To be determined
+
+### Reputation Metrics
+- Business Reputation: 45 (establishing)
+- Social Standing: 40 (respectable for class)  
+- Political Influence: 15 (limited)
+- Guild Position: 30 (customs house worker)
+
+## Assets
+
+### Properties
+1. Land Holdings
+   - Location: Various (121 lands owned)
+   - Type: Undeveloped
+   - Size: Various
+   - Condition: N/A
+   - Purchase Price: Unknown
+   - Current Value: To be assessed
+   - Weekly Income: 0
+   - Notes: Significant land portfolio awaiting development
+
+2. Small Warehouse  
+   - Location: Calle dei Carmelitani in Sestiere di Dorsoduro (polygon-1745879581983)
+   - Type: Commercial/Storage
+   - Size: Medium
+   - Condition: New (under construction)
+   - Purchase Price: 1,250,000 ducats
+   - Current Value: 1,250,000 ducats
+   - Weekly Income: To be determined upon completion
+   - Notes: First major building investment, strategically located near market stalls and public docks
+
+3. Fisherman's Cottage
+   - Location: Strada de la Carità (polygon-1746057412398)
+   - Type: Residential
+   - Size: Small
+   - Condition: New
+   - Purchase Price: 400,000 ducats  
+   - Current Value: 400,000 ducats
+   - Weekly Income: To be determined upon occupancy
+   - Notes: Addressing critical housing shortage, near commercial area
+
+4. Fisherman's Cottage
+   - Location: Calle dei Carmelitani in Sestiere di Dorsoduro (polygon-1745879581983)
+   - Type: Residential  
+   - Size: Small
+   - Condition: New
+   - Purchase Price: 400,000 ducats
+   - Current Value: 400,000 ducats
+   - Weekly Income: To be determined upon occupancy  
+   - Notes: Second housing investment near my warehouse
+
+5. Fisherman's Cottage
+   - Location: Calle de la Madonna (polygon-1746057206136)
+   - Type: Residential
+   - Size: Small
+   - Condition: New
+   - Purchase Price: 400,000 ducats
+   - Current Value: 400,000 ducats
+   - Weekly Income: To be determined upon occupancy
+   - Notes: Third housing investment on high-potential residential land
+
+6. Fisherman's Cottage
+   - Location: Calle Larga Santa Maria Formosa (polygon-1745879165953)
+   - Type: Residential
+   - Size: Small
+   - Condition: New (under construction)
+   - Purchase Price: 400,000 ducats
+   - Current Value: 400,000 ducats 
+   - Weekly Income: To be determined upon occupancy
+   - Notes: Final housing investment to address critical shortage
+
+### Businesses
+1. Customs House Position
+   - Type: Service (Government)  
+   - Location: Venice Port
+   - Investment: Career position
+   - Weekly Profit: Salary (amount to be determined)
+   - Employees: N/A (employee position)
+   - Market Share: N/A
+   - Notes: Provides stable income and valuable market intelligence
+
+### Inventory
+- No significant inventory holdings at present
+
+## Relationships
+
+### Allies
+- Fellow Customs House Workers: 7, Professional, Reliable information network
+- Parish Community: 6, Social, Source of community support and reputation  
+- Family: 9, Personal, Strong support system and motivation
+
+### Competitors
+- Other Warehouse Owners: 5, Storage services, Established operations with existing clientele
+- Rival Customs Officials: 4, Career advancement, Competition for promotions and assignments
+- Landlords: 6, Housing market, Existing residential property owners
+
+### Business Relationships
+- Merchants: 6, Customers/Information sources, Regular interactions through customs house
+- Dockworkers: 7, Logistics partners, Family connections provide preferential treatment
+- Market Stall Owners: 5, Potential warehouse clients, Building relationships for future business
+
+### Political Connections
+- Customs Master: 4, Supervisor, Limited but important for career advancement
+- Parish Priest: 3, Community leader, Provides social legitimacy and connections
+
+## Current Strategy
+
+### Strategic Focus
+- Primary Focus: Property (infrastructure development)
+- Risk Profile: Conservative  
+- Growth Target: 15% increase in net worth annually
+
+### Active Initiatives
+1. Warehouse Development
+   - Type: Investment
+   - Status: In Progress
+   - Resources Committed: 1,250,000 ducats
+   - Expected Completion: 3-6 months
+   - Expected Outcome: Establish steady income stream and create business relationships with merchants
+
+2. Housing Development
+   - Type: Investment  
+   - Status: In Progress (4 fisherman's cottages built)
+   - Resources Committed: 1,600,000 ducats
+   - Expected Completion: Cottages complete, awaiting tenants
+   - Expected Outcome: Rental income, address housing crisis  
+
+3. Customs House Career Advancement
+   - Type: Professional Development
+   - Status: Ongoing
+   - Resources Committed: Time and effort
+   - Expected Completion: Continuous
+   - Expected Outcome: Increased salary, better information access, and enhanced business connections
+
+4. Children's Education  
+   - Type: Family Investment
+   - Status: Planning
+   - Resources Committed: Future income allocation
+   - Expected Completion: Long-term (years)
+   - Expected Outcome: Social advancement for next generation
+
+### Pending Decisions
+- Additional Property Development: Evaluating next building type and location after housing crisis subsides
+- Diversification Strategy: Considering investments in complementary business ventures  
+- Family Residence Upgrade: Assessing timing and location for improved housing as wealth increases
+
+## Recent Events  
+
+### Significant Transactions
+- May 25, 2025: Fisherman's Cottage built on Calle Larga Santa Maria Formosa, 400,000 ducats
+- May 25, 2025: Fisherman's Cottage built on Calle de la Madonna, 400,000 ducats
+- May 24, 2025: Fisherman's Cottage built on Strada de la Carità, 400,000 ducats
+- May 24, 2025: Fisherman's Cottage built on Calle dei Carmelitani, 400,000 ducats  
+- May 19, 2025: Small warehouse construction initiated, 1,250,000 ducats committed, Building Guild
+- May 10, 2025: Character creation, Initial funds of 1,744,177 ducats established
+
+### Market Changes
+- May 25, 2025: Observed continued high housing demand, no vacant homes
+- May 24, 2025: Observed high housing demand, very low vacancy rates  
+- May 19, 2025: Identified high commercial activity in Calle dei Carmelitani, Influenced warehouse location decision
+- May 19, 2025: Observed multiple market stalls and public docks in target area, Created opportunity for storage services
+
+### Political Developments  
+- No significant political developments recorded yet
