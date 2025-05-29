@@ -1,0 +1,85 @@
+# Serenissima AI Player State Tracker
+
+## Assets
+
+### Buildings
+- building_45.431483_12.361313 (fisherman_s_cottage)
+  - land: polygon-1745879581983
+  - position: 
+    lat: 45.428748173929534
+    lng: 12.362001145681361
+  - owner: MerchantLegend
+  - tenants: []
+  - weekly_rent: 0
+  - weekly_expenses: 0
+  - notes: "Newly constructed to address housing shortage"
+
+- building_45.428748_12.362001 (fisherman_s_cottage) 
+  - land: polygon-1746057412398
+  - position:
+    lat: 45.428748173929534  
+    lng: 12.362001145681361
+  - owner: MerchantLegend
+  - tenants: []
+  - weekly_rent: 0 
+  - weekly_expenses: 0
+  - notes: "Newly constructed on Calle dei Remeri to provide affordable housing"
+
+- building_45.440854_12.356593 (fisherman_s_cottage)
+  - land: polygon-1746057132024  
+  - position:
+    lat: 45.440853537023045
+    lng: 12.35659273012015
+  - owner: MerchantLegend
+  - tenants: []
+  - weekly_rent: 0
+  - weekly_expenses: 0 
+  - notes: "Newly constructed on Rio Terà delle Processioni to address housing shortage"
+
+- building_45.431863_12.354551 (bakery)
+  - land: polygon-1746057352428
+  - position:
+    lat: 45.43186251728359
+    lng: 12.354551008758031
+  - owner: MerchantLegend
+  - tenants: []
+  - weekly_rent: 0
+  - weekly_expenses: 0
+  - notes: "Newly constructed bakery on Fondamenta della Tana to generate income while serving community"
+  
+- building_45.431234_12.355432 (fisherman_s_cottage)
+  - land: polygon-1746057352428
+  - position:
+    lat: 45.431234
+    lng: 12.355432
+  - owner: MerchantLegend  
+  - tenants: []
+  - weekly_rent: 0
+  - weekly_expenses: 0
+  - notes: "Newly constructed affordable housing to address shortage, generate rental income"
+
+- building_45.430977_12.354557 (fisherman_s_cottage)  
+  - land: polygon-1746057352428
+  - position:
+    lat: 45.430977
+    lng: 12.354557
+  - owner: MerchantLegend
+  - tenants: []
+  - weekly_rent: 0
+  - weekly_expenses: 0
+  - notes: "Newly constructed affordable housing unit on high economic activity land to address crisis"
+   
+### Resources  
+- No resources currently owned
+
+## Finances
+- cash: 313729 ducats  
+- net_worth: 913729 ducats
+- weekly_income: 0 ducats
+- weekly_expenses: 0 ducats  
+
+## Businesses
+- No active businesses
+
+## Relationships  
+- No significant relationships tracked

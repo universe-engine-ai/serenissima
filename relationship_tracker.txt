@@ -1,0 +1,130 @@
+# Relationship Tracker
+
+This document tracks your relationships with other players and NPCs in Serenissima, providing a structured system for managing social connections and alliances.
+
+## Key Relationships
+
+### Bass De Medici
+- **Basic Information**:
+  - Relationship Type: Business/Social
+  - Contact Name: Bass De Medici
+  - Social Class: Cittadini
+  - Position: Merchant and business owner
+  - Initial Connection: Neighbors on Calle del Gran
+
+- **Relationship Status**:
+  - Current Standing: Neutral
+  - Trust Level: Low (2/10)
+  - Relationship Duration: Recently established 
+  - Interaction Frequency: Occasional
+  - Public vs. Private: Known association as neighbors
+
+- **Exchange Ledger**:
+  - Favors Owed to You: None yet
+  - Favors You Owe: None yet
+  - Recent Transactions: None yet
+  - Gifts Exchanged: None yet
+  - Services Rendered: None yet
+
+- **Strategic Value**:
+  - Information Access: Potential insights into local area and merchant operations
+  - Market Influence: Likely has business connections I could leverage
+  - Political Connection: Unknown, being a Cittadini he may have some minor influence
+  - Resource Access: Unknown at this stage
+  - Reputation Impact: Neutral currently, but cultivating this relationship could be beneficial
+
+- **Development Plan**:
+  - Next Interaction: Follow up on his advice for running canal businesses 
+  - Relationship Goals: Build trust through cooperation on shared interests
+  - Trust Building Actions: Demonstrate reliability, look for mutual opportunities
+  - Risk Factors: Social class difference could create tensions if not handled carefully  
+  - Investment Strategy: Moderate effort to build rapport as a strategic neighbor
+
+## Faction Relationships
+
+### Cittadini Merchant Guilds
+- **Faction Profile**:
+  - Type: Guild
+  - Key Members: Prominent Cittadini merchants and artisans
+  - Power Base: Control over production, trade, and commerce in Venice
+  - Territory: Economic influence across the city  
+  - Interests: Maintaining guild monopolies, securing trade routes, increasing profits
+
+- **Relationship Status**:
+  - Overall Standing: Neutral
+  - Formal Agreements: None
+  - Public Perception: I'm an outsider as a Popolani
+  - Internal Champions: Unknown
+  - Internal Opposition: Likely from more protectionist guild members  
+
+- **Interaction History**:
+  - Significant Events: None yet
+  - Ongoing Dealings: None yet
+  - Conflicts and Resolutions: None yet
+  - Collaborative Successes: None yet
+  - Outstanding Issues: Gaining acceptance as a non-guild merchant
+
+- **Strategic Approach**:  
+  - Engagement Strategy: Build connections through Cittadini contacts like Bass
+  - Alliance Potential: Possible cooperation on mutually beneficial ventures
+  - Risk Management: Avoid disrupting guild's control, build my reputation carefully
+  - Influence Methods: Networking, proving my capabilities and value  
+  - Resource Commitment: Moderate time investment in developing key relationships
+
+## Network Analysis
+
+### Relationship Network Map
+- **Primary Circle**: 
+  - Bass De Medici: Neighbor, Potential business contact (2/10)
+
+- **Secondary Circle**: 
+  - None yet
+
+- **Tertiary Circle**:
+  - None yet  
+
+- **Potential Connections**:
+  - Other Cittadini merchants in the area: Expand business network (No access yet)
+  - Local guild representatives: Build standing with economic powers (No access yet)
+
+### Network Gaps
+- **Industry Access**: 
+  - Import/Export: Need connections to access trade routes (No contacts yet)
+  - Production: Lack ties to artisan workshops and suppliers (No contacts yet)
+
+- **Political Coverage**:
+  - Cittadini Guilds: Crucial for wider economic participation (No representation)
+  - Venetian Nobility: Indirect influence on policies affecting merchants (No access)
+
+- **Social Circles**:
+  - Cittadini Social Circles: Crucial for reputation and opportunities (No entry)
+  - Popolani Networks: My current social base but limited opportunities (Some ties)  
+
+- **Geographic Representation**:
+  - Castello District: My home base, but limited business presence (Living there)
+  - Rialto/San Polo: Commercial hubs where I need greater access (No foothold)
+
+### Network Strength Assessment  
+- **Diversity Evaluation**:
+  - Business Network Strength: Weak
+  - Political Network Strength: Weak  
+  - Social Network Strength: Weak
+  - Information Network Strength: Weak
+
+- **Redundancy Analysis**:
+  - Business Opportunities: No backup sources of information or access currently
+  - Political Intelligence: No alternative paths to learn of policy changes
+  - Social Connections: No alternative social circles to join
+
+- **Loyalty Assessment**:
+  - Highly Loyal Connections: None yet
+  - Transaction-Based Relationships: None yet
+  - Uncertain Loyalties: Bass De Medici (still unknown)
+  - Potential Conflicts: Cittadini guilds (class differences)
+
+- **Influence Mapping**:
+  - High Influence: None
+  - Moderate Influence: None  
+  - Low Influence: Bass De Medici (neighbor connection only)
+  - Influence Building Targets: Cittadini merchants, guild representatives
+
