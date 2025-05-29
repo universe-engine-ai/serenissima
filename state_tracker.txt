@@ -1,0 +1,109 @@
+# State Tracker: Current Game Position
+
+This document tracks your current state in Serenissima, providing essential information for decision-making. Update this document after any significant change to your position.
+
+## Player Information
+
+### Basic Details
+- Name: Paola Cimenti (GreenThumb)
+- Social Class: Facchini (Popolani)
+- Game Phase: Early
+- Current Date: 2025-05-19
+
+### Financial Status
+- Ducats: 239,600.70
+- $COMPUTE Tokens: 0
+- Net Worth: 239,600.70
+- Weekly Income: 0
+- Weekly Expenses: 0
+
+### Reputation Metrics
+- Business Reputation: 30
+- Social Standing: 15
+- Political Influence: 5
+- Guild Position: 25
+
+## Assets
+
+### Properties
+1. Small Warehouse
+   - Location: polygon-1746057352428
+   - Type: Commercial
+   - Size: Small
+   - Condition: Good
+   - Purchase Price: TBD
+   - Current Value: TBD
+   - Weekly Income: 0
+   - Notes: Recently decided investment to support trading networks
+
+### Businesses
+1. Apothecary (Employee)
+   - Type: Service
+   - Location: Unknown district
+   - Investment: 0 (employee, not owner)
+   - Weekly Profit: Unknown
+   - Employees: Unknown
+   - Market Share: Unknown
+   - Notes: Currently works as an employee, aspires to own her own apothecary
+
+### Inventory
+- Medicinal Herbs: Unknown quantity (personal garden collection)
+- Apothecary Supplies: Unknown quantity (work-related)
+
+## Relationships
+
+### Allies
+- [Name]: [Relationship strength 1-10], [Relationship type], [Notes]
+- [Additional allies listed in same format]
+
+### Competitors
+- [Name]: [Threat level 1-10], [Competing areas], [Notes]
+- [Additional competitors listed in same format]
+
+### Business Relationships
+- [Name]: [Relationship type], [Importance 1-10], [Notes]
+- [Additional business relationships listed in same format]
+
+### Political Connections
+- [Name]: [Position], [Influence level 1-10], [Notes]
+- [Additional political connections listed in same format]
+
+## Current Strategy
+
+### Strategic Focus
+- Primary Focus: Trade/Production
+- Risk Profile: Conservative to Moderate
+- Growth Target: Steady growth toward establishing own apothecary
+
+### Active Initiatives
+1. Warehouse Investment
+   - Type: Investment
+   - Status: In Progress
+   - Resources Committed: TBD
+   - Expected Completion: Unknown
+   - Expected Outcome: Establish storage capacity to support trading networks
+
+2. Medicinal Herb Garden
+   - Type: Production
+   - Status: Ongoing
+   - Resources Committed: Time, small space
+   - Expected Completion: Ongoing
+   - Expected Outcome: Supply of rare medicinal herbs for remedies
+
+### Pending Decisions
+- Apothecary Business: Considering timeline and requirements for opening own shop, No immediate deadline
+- Investment Strategy: Evaluating additional properties or businesses to invest in, Ongoing
+
+## Recent Events
+
+### Significant Transactions
+- [Date]: [Transaction description], [Amount], [Parties involved]
+- [Additional transactions listed in same format]
+
+### Market Changes
+- [Date]: [Market event description], [Impact on your position]
+- [Additional market changes listed in same format]
+
+### Political Developments
+- [Date]: [Political event description], [Impact on your position]
+- [Additional political developments listed in same format]
