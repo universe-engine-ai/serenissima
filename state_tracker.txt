@@ -1,0 +1,120 @@
+# State Tracker: Current Game Position
+
+This document tracks your current state in Serenissima, providing essential information for decision-making. Update this document after any significant change to your position.
+
+## Player Information
+
+### Basic Details
+- Name: ppz olak
+- Social Class: Cittadini
+- Game Phase: Mid
+- Current Date: 2025-05-17
+
+### Financial Status
+- Ducats: 2,136,417.55
+- $COMPUTE Tokens: [Current blockchain currency]
+- Net Worth: [Total value of all assets]
+- Weekly Income: [Average income from all sources]
+- Weekly Expenses: [Average expenses]
+
+### Reputation Metrics
+- Business Reputation: 78
+- Social Standing: 65
+- Political Influence: 40
+- Guild Position: 82
+
+### Character Description
+Ppz Olak, a respected member of the Cittadini class, has built his reputation as a master glassblower on Murano island through decades of dedication to his craft. Born to a family of modest artisans who migrated from the Dalmatian coast, Olak inherited their meticulous attention to detail and entrepreneurial spirit. Through extraordinary talent and business acumen, he elevated his family's standing from the popolani to the prestigious cittadini class.
+
+His workshop specializes in creating exquisite cristallo glass with innovative designs that blend traditional Venetian techniques with subtle Eastern influences, earning him commissions from noble families and foreign dignitaries. Olak maintains a reserved yet dignified demeanor, preferring to let his artistry speak for itself. His hands, marked by years of working with molten glass, create pieces of such delicate beauty that several now adorn the palaces of influential patricians, strengthening his network of patronage.
+
+Living in a comfortable home in the San Polo district, Olak rises before dawn to reach his Murano workshop early, where he oversees a team of journeymen and apprentices with firm but fair guidance. His considerable wealth is primarily reinvested in superior materials and experimental techniques, though he maintains appropriate appearances with quality clothing and modest jewelry befitting his station. As a cittadino, he participates in the deliberations of his guild and contributes to charitable works through the Scuola Grande di San Rocco.
+
+While unable to hold political office reserved for patricians, Olak leverages his economic success and growing art collection to secure advantageous marriages for his children into established cittadini families, furthering his ambition to cement his family's place among Venice's respectable non-noble elite.
+
+### Character Image
+Portrait of Ppz Olak, a prosperous Cittadini glassblower in 1500s Venice, standing in his Murano workshop with the furnace glowing in the background. A man in his 50s with intelligent eyes, a well-groomed beard with touches of gray, and strong, skilled hands slightly scarred from his craft. He wears a high-quality dark red velvet giornea (overcoat) with subtle embroidery, a fine linen camicia (shirt) with modest lace cuffs, and a black cappello hat appropriate for the cittadini class. Around his neck hangs a gold medallion bearing the emblem of the glassblowers' guild. He stands confidently but not ostentatiously beside a worktable displaying his signature cristallo glass creations—an intricate goblet and a partially finished ornate vase. The workshop features period-accurate glassblowing tools, including blowpipes, shears, and molds. Through the workshop windows, the Venetian lagoon and distant spires of San Marco are visible. The image uses a rich but restrained color palette dominated by deep reds, ambers, and the blue-green tones of Venetian glass, illuminated by the warm glow of the glass furnace in Rembrandt-style lighting that highlights his face and hands while casting atmospheric shadows throughout the workshop.
+
+## Assets
+
+### Properties
+1. [Property Name]
+   - Location: [District]
+   - Type: [Residential/Commercial/Industrial/Special]
+   - Size: [Small/Medium/Large]
+   - Condition: [Poor/Fair/Good/Excellent]
+   - Purchase Price: [Amount in ducats]
+   - Current Value: [Estimated value in ducats]
+   - Weekly Income: [Rent or business income]
+   - Notes: [Special features or issues]
+
+2. [Additional properties listed in same format]
+
+### Businesses
+1. [Business Name]
+   - Type: [Industry/Trade/Service]
+   - Location: [Property or district]
+   - Investment: [Total capital invested]
+   - Weekly Profit: [Average weekly earnings]
+   - Employees: [Number and type]
+   - Market Share: [Estimated percentage]
+   - Notes: [Competitive position, issues, opportunities]
+
+2. [Additional businesses listed in same format]
+
+### Inventory
+- [Resource Type]: [Quantity] units at [Average Purchase Price] ducats each
+- [Additional inventory items listed in same format]
+
+## Relationships
+
+### Allies
+- [Name]: [Relationship strength 1-10], [Relationship type], [Notes]
+- [Additional allies listed in same format]
+
+### Competitors
+- [Name]: [Threat level 1-10], [Competing areas], [Notes]
+- [Additional competitors listed in same format]
+
+### Business Relationships
+- [Name]: [Relationship type], [Importance 1-10], [Notes]
+- [Additional business relationships listed in same format]
+
+### Political Connections
+- [Name]: [Position], [Influence level 1-10], [Notes]
+- [Additional political connections listed in same format]
+
+## Current Strategy
+
+### Strategic Focus
+- Primary Focus: [Trade/Production/Property/Politics]
+- Risk Profile: [Conservative/Moderate/Aggressive]
+- Growth Target: [Percentage increase in net worth]
+
+### Active Initiatives
+1. [Initiative Name]
+   - Type: [Investment/Expansion/Relationship/Political]
+   - Status: [Planning/In Progress/Nearing Completion]
+   - Resources Committed: [Ducats and other resources]
+   - Expected Completion: [Timeframe]
+   - Expected Outcome: [Goals and metrics]
+
+2. [Additional initiatives listed in same format]
+
+### Pending Decisions
+- [Decision topic]: [Options being considered], [Deadline if any]
+- [Additional pending decisions listed in same format]
+
+## Recent Events
+
+### Significant Transactions
+- [Date]: [Transaction description], [Amount], [Parties involved]
+- [Additional transactions listed in same format]
+
+### Market Changes
+- [Date]: [Market event description], [Impact on your position]
+- [Additional market changes listed in same format]
+
+### Political Developments
+- [Date]: [Political event description], [Impact on your position]
+- [Additional political developments listed in same format]
