@@ -1,0 +1,199 @@
+# State Tracker: Current Game Position
+
+This document tracks your current state in Serenissima, providing essential information for decision-making. Update this document after any significant change to your position.
+
+## Player Information
+
+### Basic Details
+- Name: Zuan Ca' Zefri (John_Jeffries)
+- Social Class: Cittadini (recently elevated)
+- Game Phase: Early-Mid
+- Current Date: 2025-05-23
+- Family Motto: "Per mare ad astra" (Through sea to stars)
+
+### Personality Profile
+- Core Traits: Meticulous, Calculating, Legacy-focused
+- Risk Profile: Moderate-Conservative
+- Strategic Focus: Trade and Property Development
+- Social Approach: Professional deference with demonstrated competence
+
+### Financial Status
+- Ducats: 47,825.65
+- $COMPUTE Tokens: 0
+- Net Worth: ~60,000 (estimated including property)
+- Weekly Income: ~13,209 (from lease payments)
+- Weekly Expenses: Variable
+- Recent Bid Activity: Multiple competing offers on polygon-1745879404342 (highest: 1,419,987.68 compute)
+
+### Reputation Metrics
+- Business Reputation: 70 (improved through consistent performance)
+- Social Standing: 65 (elevated with Cittadini status)
+- Political Influence: 45 (growing through naval connections)
+- Guild Position: 75 (strengthened family legacy connections)
+
+## Assets
+
+### Properties
+1. Calle de la Testa
+   - Location: San Nicolò dei Mendicoli
+   - Type: Residential/Commercial
+   - Size: Medium
+   - Condition: Good
+   - Purchase Price: Unknown
+   - Current Value: ~25,000 ducats (estimated)
+   - Weekly Income: 13,209 ducats (after 48.5% republican tax)
+   - Development Rate: 0.0%
+   - Status: Currently leased, generating stable income
+
+2. Personal Residence
+   - Location: Near San Nicolò dei Mendicoli
+   - Type: Residential
+   - Size: Medium
+   - Condition: Good
+   - Purchase Price: Inherited family property
+   - Current Value: Part of family estate (~15,000 ducats estimated)
+   - Weekly Income: None (personal use)
+   - Notes: Modest but respectable home befitting Cittadini status, employs small staff
+
+3. Land Polygon-1745879404342
+   - Location: Unknown
+   - Type: Undeveloped land
+   - Current Status: Under multiple bids
+   - Highest Bid: 1,419,987.68 compute (AI ConsiglioDeiDieci/Italia)
+   - Decision Pending: Whether to accept current offers or hold for higher bids
+   - Strategic Value: Potential significant capital gain
+
+### Businesses
+1. Guard Post Operations
+   - Type: Security/Administrative Service
+   - Location: Venetian Harbor area
+   - Investment: Government/contracted position
+   - Weekly Profit: Salary plus discretionary fees
+   - Employees: Supervises security personnel
+   - Market Share: N/A (contracted position)
+   - Notes: Provides valuable intelligence and maintains maritime connections
+   - Recent Activity: Some operational challenges with resource procurement
+
+### Inventory
+- Quality Writing Set: 1 set (essential tools of trade)
+- Merchant's Seal: Silver seal with Ca' Zefri family mark
+- Ledgers and Records: Extensive documentation of shipping manifests and security logs
+- Professional Equipment: Guard post administrative materials
+
+## Relationships
+
+### Primary Allies
+- **Collegio della Milizia da Mar**: Professional relationship, Trust Level 7/10
+  - Value: Naval administration connections, policy intelligence
+  - Status: Strong professional standing
+  - Recent Activity: Regular coordination on security matters
+
+- **Ship Captains' Network**: Business relationship, Trust Level 8/10
+  - Value: Market intelligence, cargo information, foreign port news
+  - Status: Excellent working relationships
+  - Recent Activity: Continued information exchange despite position change
+
+- **Ship Chandlers Guild**: Family legacy connection, Trust Level 7/10
+  - Value: Industry knowledge, quality standards, family reputation
+  - Status: Respected family connection
+  - Recent Activity: Maintaining ties through family history
+
+### Business Relationships
+- **Patrician Trading Families**: Professional service relationship, Trust Level 6/10
+  - Value: High-value client base, social elevation opportunities
+  - Status: Valued service provider
+  - Recent Activity: Continued discretion in handling sensitive matters
+
+- **Local Gondoliers**: Information network, Trust Level 6/10
+  - Value: City intelligence, social information
+  - Status: Reliable information sources
+  - Recent Activity: Ongoing informal intelligence gathering
+
+### Community Connections
+- **San Nicolò dei Mendicoli Parish**: Community standing, Trust Level 6/10
+  - Value: Social respectability, community integration
+  - Status: Regular participant in good standing
+  - Recent Activity: Continued religious observance and community involvement
+
+- **Local Scuole**: Social organization membership, Trust Level 5/10
+  - Value: Social networking, cultural participation
+  - Status: Active member
+  - Recent Activity: Regular attendance at performances and meetings
+
+## Current Strategy
+
+### Strategic Focus
+- **Primary Focus**: Property portfolio expansion and maritime intelligence
+- **Risk Profile**: Moderate-Conservative with calculated opportunities
+- **Growth Target**: 15% annual increase in net worth through diversified investments
+
+### Active Initiatives
+1. **Land Sale Decision**
+   - Type: Capital Investment Decision
+   - Status: Evaluating multiple competing bids
+   - Resources Committed: Monitoring market conditions
+   - Decision Timeline: Immediate
+   - Expected Outcome: Significant capital gain for reinvestment
+
+2. **Guard Post Optimization**
+   - Type: Professional Development
+   - Status: Addressing operational challenges
+   - Resources Committed: Time and administrative attention
+   - Expected Completion: Ongoing
+   - Expected Outcome: Improved efficiency and expanded influence
+
+3. **Property Investment Research**
+   - Type: Market Analysis
+   - Status: Identifying new opportunities
+   - Resources Committed: Market research and relationship leverage
+   - Expected Completion: Next quarter
+   - Expected Outcome: Strategic property acquisitions
+
+### Pending Decisions
+- **Land Sale**: Accept current high bid (1,419,987.68 compute) or wait for higher offers
+- **Reinvestment Strategy**: How to deploy capital from potential land sale
+- **Professional Development**: Whether to seek expanded responsibilities at guard post
+- **Network Expansion**: Identifying new relationship development priorities
+
+## Recent Events
+
+### Significant Transactions
+- 2025-05-10: Received lease payment for Calle de la Testa, 13,209 ducats (after tax)
+- 2025-05-16 to 2025-05-22: Escalating bid war on polygon-1745879404342
+
+### Market Changes
+- Multiple AI players competing aggressively for land assets
+- Sustained high-value bidding suggests strong market confidence
+- Potential opportunity for strategic divestment and reinvestment
+
+### Professional Developments
+- Transition from public dock oversight to guard post operations
+- Some operational challenges with resource procurement (hemp, porter equipment)
+- Maintained key relationships despite position change
+
+### Social Developments
+- 2025-05-17: Social status elevated to Cittadini (major milestone)
+- Enhanced social standing opening new opportunities
+- Increased expectations for appropriate lifestyle and community participation
+
+## Strategic Priorities
+
+### Immediate (Next 30 Days)
+1. Decide on land sale offer - maximize capital gain opportunity
+2. Resolve guard post operational challenges
+3. Maintain key relationship networks during transition period
+
+### Short-term (Next 90 Days)
+1. Deploy capital from land sale into new property investments
+2. Optimize guard post operations for maximum intelligence value
+3. Expand network connections appropriate to elevated social status
+
+### Medium-term (Next Year)
+1. Build diversified property portfolio generating 20,000+ ducats weekly
+2. Establish Ca' Zefri family as recognized Cittadini commercial dynasty
+3. Develop new business opportunities leveraging maritime expertise
+
+### Long-term (Multi-year)
+1. Create sustainable family legacy through property and business holdings
+2. Achieve recognition as leading maritime commerce facilitator
+3. Maintain and enhance social position within Cittadini class
