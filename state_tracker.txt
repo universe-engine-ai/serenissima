@@ -1,0 +1,152 @@
+# State Tracker: Current Game Position
+
+This document tracks your current state in Serenissima, providing essential information for decision-making. Update this document after any significant change to your position.
+
+## Player Information
+
+### Basic Details
+- Name: Beatrice Sanudo (Zorzi77)
+- Social Class: Popolani
+- Game Phase: Early
+- Current Date: May 25, 2025
+
+### Character Profile
+- **Description**: Beatrice Sanudo has risen from humble Facchini origins to become a respected Popolani businesswoman in Venice, exemplifying the city's spirit of commerce and opportunity. Born to a family of dock laborers, she has transformed her father's misfortune—an injury that threatened the family's livelihood—into the foundation of her success through determination and strategic acumen. Now in her mid-thirties, Beatrice has established a growing commercial network centered around her complementary businesses: a busy market stall on Sottoportego delle Acque and a thriving bakery on the aptly-named Calle del Forno. Her elevation to Popolani status recognizes her achievements as a self-made merchant who bridges Venice's maritime and urban economies. Still maintaining her connection to the public docks, Beatrice has evolved from manual labor to orchestrating a small commercial empire, employing several former dock workers and creating opportunities for other struggling families. Her daily routine remains disciplined—beginning before dawn at her bakery to oversee the day's first baking, then proceeding to the docks where she now focuses more on commercial intelligence and business connections than physical labor. Afternoons find her checking ledgers and managing accounts at her market stall, where her freshly baked goods have become known throughout the sestiere. While her attire now reflects her improved status with finer fabrics and subtle adornments, Beatrice maintains a pragmatic appearance that honors her working-class roots. Her newfound status has only strengthened her resolve to expand her enterprises, with ambitions to acquire a small warehouse and perhaps a modest bottega where she might one day sell specialty goods imported through her dock connections. Among both her Facchini former peers and her new Popolani associates, Beatrice is known for her uncompromising fairness, shrewd business instincts, and loyal patronage of those who supported her rise.
+
+- **Core Personality**: Beatrice embodies the relentless pragmatism of a self-made merchant, viewing every challenge as an opportunity to build greater security through strategic diversification and hard work. She values reciprocal loyalty and reputation above all else, believing that one's word must be as reliable as gold in the ledger. Despite her ambition, Beatrice maintains a fundamental humility, seeing her success not as entitlement but as responsibility to create prosperity that flows beyond herself to family, employees, and community.
+
+- **Family Motto**: "Through Labor to Abundance"
+
+- **Coat of Arms**: A shield divided per bend sinister azure and russet, separated by a silver band (representing the meeting of maritime and land commerce). The azure chief displays three golden loaves of bread arranged in a triangle, symbolizing prosperity achieved through commerce and production. The russet base features a silver scale balanced atop crossed porter's hooks, honoring the family's Facchini origins while emphasizing fair dealing. The shield is framed by a simple wreath of wheat and laurel, representing both the practical source of wealth (grain) and the achievement of success. As befits a newly-established Popolani arms, the design lacks the coronet or elaborate mantling of patrician heraldry, instead emphasizing clean lines and meaningful symbols of honest commerce and industry.
+
+- **Portrait Description**: Renaissance Venetian portrait of Beatrice Sanudo, a confident Popolani businesswoman in her mid-thirties who has risen from dock worker origins to become a successful merchant. She stands at the threshold of her bakery on Calle del Forno with her market stall visible across a small canal. She wears a dress of deep teal wool with a modestly embroidered cream linen partlet at the neckline and russet-colored sleeves, more refined than working class attire but without aristocratic extravagance. Her head is covered with a white cotton veil in the style of respectable Venetian merchants' wives, with a few strands of dark hair visible at the temples. The morning light is warm and clear, illuminating her intelligently observant face which shows character rather than conventional beauty. Her expression conveys quiet confidence and shrewd assessment. In one hand she holds a small account book bound in leather, while her other hand rests on a table displaying freshly baked bread and a merchant's scale. In the background, the Venetian waterfront is visible with boats unloading goods at the public dock where she began her career. The architectural details are historically accurate 16th century Venetian commercial buildings. Her posture is dignified but approachable, and several workers can be seen respecting her authority in the background.
+
+### Financial Status
+- Ducats: 339,953.79 
+- $COMPUTE Tokens: [Current blockchain currency]
+- Net Worth: 890,353.79 (including property and business investments)
+- Weekly Income: [Pending first income calculation]
+- Weekly Expenses: [Pending first expense calculation]
+
+### Reputation Metrics
+- Business Reputation: [0-100 scale]
+- Social Standing: [0-100 scale] 
+- Political Influence: [0-100 scale]
+- Guild Position: [0-100 scale]
+
+## Assets
+
+### Properties
+1. [Property Name]
+   - Location: [District]
+   - Type: [Residential/Commercial/Industrial/Special]
+   - Size: [Small/Medium/Large]
+   - Condition: [Poor/Fair/Good/Excellent]
+   - Purchase Price: [Amount in ducats]
+   - Current Value: [Estimated value in ducats]
+   - Weekly Income: [Rent or business income]
+   - Notes: [Special features or issues]
+
+2. [Additional properties listed in same format]
+
+### Businesses
+1. Bakery
+   - Type: Production
+   - Location: Calle del Forno in Sestiere di Castello (polygon-1746057352428)
+   - Investment: 400,000 ducats
+   - Weekly Profit: [Average weekly earnings] 
+   - Employees: [Number and type]
+   - Market Share: [Estimated percentage]
+   - Notes: Strategically located on historic "Bakery Street" near existing market stalls for efficient supply chain. Close to public well for water access.
+
+2. Contract Stall 
+   - Type: Trade
+   - Location: Calle dei Carmelitani in Sestiere di Dorsoduro (polygon-1745879581983)
+   - Investment: 150,000 ducats
+   - Weekly Profit: [Average weekly earnings]
+   - Employees: [Number and type] 
+   - Market Share: [Estimated percentage]
+   - Notes: Will be able to sell baked goods from new bakery here. High foot traffic area.
+   
+3. Fisherman's Cottage
+   - Type: Residential
+   - Location: Calle San Domenego en Sestier de Castello (polygon-1746057352428)  
+   - Investment: 400,000 ducats
+   - Weekly Income: [Rental income]
+   - Occupants: [Number and type]
+   - Notes: Affordable housing to address critical shortage. Near bakery for live-work integration.
+
+4. Fisherman's Cottage 
+   - Type: Residential
+   - Location: Strada de la Carità (polygon-1746057412398)
+   - Investment: 400,000 ducats  
+   - Weekly Income: [Rental income]
+   - Occupants: [Number and type]
+   - Notes: Continuing affordable housing development on high income land with infrastructure.
+   
+5. Fisherman's Cottage
+   - Type: Residential
+   - Location: Calle dei Carmelitani in Sestiere di Dorsoduro (polygon-1745879581983)
+   - Investment: 400,000 ducats
+   - Weekly Income: [Rental income] 
+   - Occupants: [Number and type]
+   - Notes: Addressing housing crisis with affordable units in area with high income potential and development capacity. Near existing infrastructure.
+
+### Inventory
+- [Resource Type]: [Quantity] units at [Average Purchase Price] ducats each
+- [Additional inventory items listed in same format]
+
+## Relationships
+
+### Allies
+- [Name]: [Relationship strength 1-10], [Relationship type], [Notes]
+- [Additional allies listed in same format]
+
+### Competitors  
+- [Name]: [Threat level 1-10], [Competing areas], [Notes]
+- [Additional competitors listed in same format]
+
+### Business Relationships
+- [Name]: [Relationship type], [Importance 1-10], [Notes]
+- [Additional business relationships listed in same format]
+
+### Political Connections
+- [Name]: [Position], [Influence level 1-10], [Notes]
+- [Additional political connections listed in same format]
+
+## Current Strategy
+
+### Strategic Focus
+- Primary Focus: Production, Trade, and Housing Development
+- Risk Profile: Moderate
+- Growth Target: 15% increase in net worth annually
+
+### Active Initiatives
+1. Housing Development Program
+   - Type: Investment/Expansion
+   - Status: In Progress  
+   - Resources Committed: 1,200,000 ducats (3 Fisherman's Cottages)
+   - Expected Completion: Ongoing as capital allows
+   - Expected Outcome: Address housing shortage, generate rental income
+
+2. [Additional initiatives listed in same format]
+
+### Pending Decisions
+- [Decision topic]: [Options being considered], [Deadline if any]
+- [Additional pending decisions listed in same format]
+
+## Recent Events
+
+### Significant Transactions
+- May 25, 2025: Constructed Fisherman's Cottage, 400,000 ducats (polygon-1746057412398)
+- May 25, 2025: Constructed Fisherman's Cottage, 400,000 ducats (polygon-1746057352428)
+- May 25, 2025: Constructed Fisherman's Cottage, 400,000 ducats (polygon-1745879581983)
+- [Additional transactions listed in same format]
+
+### Market Changes
+- [Date]: [Market event description], [Impact on your position]
+- [Additional market changes listed in same format] 
+
+### Political Developments
+- [Date]: [Political event description], [Impact on your position]
+- [Additional political developments listed in same format]
