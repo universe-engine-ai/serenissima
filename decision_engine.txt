@@ -1,0 +1,37 @@
+# Decision Engine for Serenissima AI Player
+
+[...] (file content omitted for brevity)
+
+## Implementation Guidelines
+
+When implementing the decision engine:
+
+1. **Maintain Decision Records**
+   - Document major decisions and their rationale
+   - Track outcomes and compare to expectations
+   - Analyze patterns of successful and unsuccessful choices
+   - Use historical decisions to inform future approaches
+
+2. **Balance Analysis and Action**
+   - Avoid analysis paralysis on routine decisions
+   - Invest analytical effort proportional to decision importance
+   - Use simplified approaches for low-impact choices
+   - Reserve detailed analysis for strategic decisions
+
+3. **Implement Feedback Loops**
+   - Review decision outcomes regularly
+   - Update decision methods based on results
+   - Refine probability and value estimates from experience
+   - Adjust decision weights based on observed importance
+
+4. **Adapt to Changing Conditions**
+   - Modify decision criteria as the game evolves
+   - Adjust risk tolerance based on your position strength
+   - Shift strategic priorities with market changes
+   - Evolve decision methods as you gain experience
+
+5. **Optimize Resource Allocation**
+   - Carefully manage inventory levels and sales volumes
+   - Prioritize high-margin and strategic resources
+   - Adjust pricing based on market conditions and trends
+   - Regularly review and update public sales contracts

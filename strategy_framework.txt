@@ -1,0 +1,306 @@
+# Strategy Framework for Serenissima AI Player
+
+This document provides structured decision-making frameworks for different aspects of gameplay, enabling systematic evaluation of options and strategic planning.
+
+## Investment Decision Framework
+
+### Property Investment Criteria
+- **ROI Threshold**: Minimum acceptable annual return percentage
+  - Premium Locations: 5-7%
+  - Standard Locations: 8-10%
+  - Developing Areas: 12-15%
+
+- **Capital Allocation Limits**:
+  - No single property > 40% of liquid assets
+  - Total property investments < 70% of net worth
+  - Maintenance reserve of 10% of property value
+
+- **Strategic Value Factors**:
+  - Location synergy with existing properties
+  - Vertical integration with business operations
+  - Growth potential of district
+  - Diversification benefits
+  - Social prestige considerations
+
+### Business Investment Criteria
+- **ROI Threshold**: Minimum acceptable annual return percentage
+  - Core Industries: 15-20%
+  - New Ventures: 25-30%
+  - Expansions: 18-22%
+
+- **Capital Allocation Limits**:
+  - No single business > 30% of liquid assets
+  - Total business investments < 60% of net worth
+  - Operating reserve of 20% of annual expenses
+
+- **Strategic Value Factors**:
+  - Supply chain integration
+  - Market share potential
+  - Barrier to entry advantages
+  - Skill and knowledge alignment
+  - Risk diversification benefits
+
+### Trade Investment Criteria
+- **ROI Threshold**: Minimum acceptable return percentage
+  - Low-risk trades: 10-15%
+  - Medium-risk trades: 20-25%
+  - High-risk trades: 35%+
+
+- **Capital Allocation Limits**:
+  - No single trade > 20% of liquid assets
+  - Total trade positions < 50% of liquid assets
+  - Diversification across at least 3 goods
+
+- **Strategic Value Factors**:
+  - Market intelligence advantage
+  - Relationship leverage
+  - Seasonal opportunity
+  - Supply chain support
+  - Competitor impact
+
+### Housing Investment Criteria
+- **ROI Threshold**: Minimum acceptable annual return percentage
+  - Residential Properties: 10-15%
+  - Premium Housing: 8-12%
+
+- **Capital Allocation Limits**:
+  - No single housing project > 25% of liquid assets  
+  - Total housing investments < 40% of net worth
+  - Maintenance reserve of 8% of property value
+
+- **Strategic Value Factors**:
+  - Location desirability for residents
+  - Proximity to employment centers
+  - Access to community amenities
+  - Potential for value appreciation
+  - Social impact and community development
+
+## Market Analysis Framework
+
+### Price Trend Evaluation
+- **Trend Identification**:
+  - Rising: 3+ consecutive price increases
+  - Falling: 3+ consecutive price decreases
+  - Volatile: Alternating increases and decreases
+  - Stable: Price changes < 5%
+
+- **Causal Analysis**:
+  - Supply factors (production changes, import disruptions)
+  - Demand factors (seasonal changes, new uses)
+  - Regulatory impacts (taxes, restrictions)
+  - Competitor actions (hoarding, dumping)
+
+- **Response Options**:
+  - Rising Market: Sell existing inventory, increase production
+  - Falling Market: Buy for inventory, reduce production
+  - Volatile Market: Hedge positions, trade actively
+  - Stable Market: Focus on efficiency and margins
+
+### Opportunity Identification
+- **Supply-Demand Gaps**:
+  - Shortage indicators (rising prices, depleted inventories)
+  - Surplus indicators (falling prices, accumulated inventories)
+  - Seasonal predictors (historical patterns)
+  - Geographic arbitrage (price differences between locations)
+
+- **Evaluation Metrics**:
+  - Potential profit margin
+  - Time window duration
+  - Capital requirement
+  - Risk factors
+  - Competitive advantage
+
+- **Prioritization Factors**:
+  - Alignment with strategic focus
+  - Resource availability
+  - Implementation speed
+  - Sustainability of advantage
+  - Relationship leverage
+
+## Competitive Strategy Framework
+
+### Competitor Analysis
+- **Capability Assessment**:
+  - Financial resources
+  - Property holdings
+  - Business operations
+  - Relationship networks
+  - Political influence
+
+- **Strategic Orientation**:
+  - Primary focus areas
+  - Risk tolerance
+  - Growth patterns
+  - Collaborative vs. competitive tendency
+  - Innovation approach
+
+- **Vulnerability Identification**:
+  - Resource constraints
+  - Overextension indicators
+  - Relationship weaknesses
+  - Market position threats
+  - Regulatory exposure
+
+### Competitive Positioning
+- **Direct Competition Approach**:
+  - Avoid: When competitor has overwhelming advantage
+  - Challenge: When you have specific advantages
+  - Collaborate: When mutual benefits exceed competitive gains
+  - Ignore: When markets are sufficiently distinct
+
+- **Market Position Strategies**:
+  - Differentiation: Quality, service, or unique offerings
+  - Cost Leadership: Efficiency and scale advantages
+  - Focus: Specialized expertise in niche areas
+  - Integration: Control of multiple supply chain elements
+
+- **Relationship Tactics**:
+  - Alliance building with complementary players
+  - Neutral stance with powerful competitors
+  - Defensive positioning against aggressive players
+  - Opportunistic collaboration on specific ventures
+
+## Risk Management Framework
+
+### Risk Assessment
+- **Risk Categories**:
+  - Market risks (price volatility, demand changes)
+  - Operational risks (production problems, property issues)
+  - Political risks (regulatory changes, faction conflicts)
+  - Relationship risks (partner reliability, competitor actions)
+
+- **Impact Evaluation**:
+  - Financial impact scale (minor to severe)
+  - Reputation impact scale (limited to critical)
+  - Strategic impact scale (negligible to threatening)
+
+- **Probability Estimation**:
+  - Low: <10% chance
+  - Moderate: 10-30% chance
+  - High: 30-60% chance
+  - Very High: >60% chance
+
+### Risk Response
+- **Mitigation Strategies**:
+  - Diversification across markets and activities
+  - Insurance and hedging mechanisms
+  - Relationship development as social insurance
+  - Information advantage cultivation
+  - Flexibility preservation
+
+- **Contingency Planning**:
+  - Reserve requirements (15-20% of operating capital)
+  - Alternative supplier relationships
+  - Market pivot capabilities
+  - Crisis response protocols
+
+- **Opportunity Risks**:
+  - Experimental allocations (5-10% of resources)
+  - Staged implementation of risky ventures
+  - Early warning indicators for rapid adjustment
+  - Learning integration from small failures
+
+## Implementation Process
+
+When making significant decisions:
+
+1. **Information Gathering**
+   - Collect relevant market data
+   - Assess current resource availability
+   - Analyze competitive landscape
+   - Consider social and political factors
+
+2. **Option Generation**
+   - Identify at least three alternative approaches
+   - Consider both conventional and innovative options
+   - Include status quo as a baseline comparison
+   - Evaluate different time horizons
+
+3. **Systematic Evaluation**
+   - Apply relevant frameworks from above
+   - Quantify factors where possible
+   - Consider qualitative factors systematically
+   - Assess alignment with overall strategy
+
+4. **Decision Execution**
+   - Implement decisions with appropriate resources
+   - Establish monitoring mechanisms
+   - Set review points for evaluation
+   - Maintain flexibility for adjustments
+
+5. **Learning Integration**
+   - Document decision outcomes
+   - Analyze deviations from expectations
+   - Identify improvement opportunities
+   - Update decision frameworks based on experience
+   
+## Housing Crisis Response Framework
+
+### Housing Demand Assessment
+- **Homeless Population Analysis**:
+  - Total number of homeless citizens
+  - Breakdown by social class and demographics
+  - Geographic distribution of homelessness
+  - Causes of homelessness (economic, disaster, etc.)
+
+- **Housing Supply Evaluation**:
+  - Current housing stock and vacancy rates
+  - Projected new housing developments
+  - Potential for converting non-residential buildings
+  - Temporary shelter capacity and utilization
+
+- **Affordability Analysis**:
+  - Income levels of homeless population segments
+  - Rental costs in different housing types/locations
+  - Impact of rent burden on economic mobility
+  - Availability of housing subsidies or assistance
+
+### Housing Development Strategies
+- **New Construction Initiatives**:
+  - Identify suitable land for housing projects
+  - Streamline approval processes for residential development
+  - Offer incentives for private housing investment
+  - Implement public housing construction programs
+
+- **Existing Property Utilization**:
+  - Tax policies encouraging rental property availability  
+  - Conversion of underutilized buildings to residential use
+  - Matching programs to link properties with residents
+  - Temporary housing in transitional facilities
+
+- **Rental Affordability Programs**:
+  - Rent control policies in high-cost areas
+  - Housing voucher or subsidy systems for low-income residents
+  - Public-private partnerships for affordable housing projects
+  - Incentives for including lower-cost units in developments
+
+- **Support Service Integration**:
+  - Coordinating housing with job training and employment  
+  - Providing social services for at-risk populations
+  - Transitional housing with support for economic mobility
+  - Community-based assistance and resource networks
+
+### Implementation Considerations
+- **Funding and Resource Allocation**:
+  - Budget allocations for housing initiatives
+  - Partnerships with private/charitable organizations
+  - Exploring alternative financing models (tax credits, etc.)
+  - Balancing housing priorities with other civic needs
+
+- **Policy and Regulatory Framework**:
+  - Zoning and land-use policies for residential development
+  - Rental market regulations and tenant protection policies  
+  - Policies incentivizing affordable housing inclusion
+  - Coordination with urban planning and economic development
+
+- **Community Engagement and Buy-In**:
+  - Public awareness campaigns on housing needs
+  - Involving impacted communities in solution development
+  - Balancing interests of residents, landlords, developers
+  - Managing potential opposition or NIMBY concerns
+
+- **Long-Term Sustainability**:
+  - Promoting economic mobility to reduce future demand
+  - Ongoing housing maintenance and quality assurance
+  - Adapting strategies as demographics and needs evolve  
+  - Integrating housing policies with broader civic vision

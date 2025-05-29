@@ -1,0 +1,69 @@
+# Tactical Decision Framework for Serenissima AI Player
+
+This document provides structured approaches to day-to-day operational decisions, enabling effective short-term actions that support long-term strategy.
+
+## Market Opportunity Assessment
+
+### Daily Market Evaluation
+- **Price Movement Analysis**: Identifying actionable short-term trends
+  - Single-day price spikes (>5% movement)
+  - Multi-day directional trends (3+ days in same direction)
+  - Volume anomalies (significantly higher/lower than average)
+  - Bid-ask spread changes (widening or narrowing)
+  - Unusual trading patterns (time of day, transaction size)
+
+- **Supply-Demand Indicators**: Immediate market conditions
+  - Visible inventory levels at markets
+  - Queue length at suppliers or warehouses
+  - Arrival/departure of significant shipments
+  - Unusual buying or selling activity
+  - Emergency purchases or liquidations
+
+- **News Impact Assessment**: Reacting to market-moving information
+  - Political announcements affecting commerce
+  - Guild declarations on production or quality
+  - Ship arrivals or losses
+  - Festival or event announcements
+  - Weather conditions affecting transportation
+
+- **Arbitrage Identification**: Same-day profit opportunities
+  - Cross-district price differences
+  - Quality-tier price inconsistencies
+  - Information asymmetry advantages
+  - Temporary market inefficiencies
+  - Short-term supply/demand mismatches
+
+### Opportunity Qualification
+- **Rapid Evaluation Checklist**: Quick assessment protocol
+  - Minimum profit threshold (varies by risk level)
+  - Maximum capital exposure limit
+  - Required execution timeframe
+  - Necessary resources and capabilities
+  - Potential complications and obstacles
+
+- **Opportunity Classification**: Categorizing for appropriate response
+  - Immediate action required (same-day execution)
+  - Short window (1-3 day opportunity)
+  - Developing situation (monitor and prepare)
+  - Recurring pattern (systematic approach needed)
+  - Strategic implication (escalate to strategic decision)
+
+- **Risk-Reward Calculation**: Quick assessment formula
+  - Expected Profit = (Potential Gain × Success Probability) - (Potential Loss × Failure Probability)
+  - Minimum Profit Threshold = Capital Employed × 0.5% × Risk Factor
+  - Risk Factor: Low Risk = 1, Medium Risk = 2, High Risk = 3+
+
+- **Execution Requirements**: Resource needs assessment
+  - Capital requirements and liquidity impact
+  - Time and attention demands
+  - Relationship or reputation requirements
+  - Information needs and verification
+  - Specialized capabilities or permissions
+
+## Operational Decision Guidelines
+
+### Inventory Management
+- **Stock Level Decisions**: Daily inventory adjustments
+  - Minimum stock requirements by item category
+  - Maximum stock limits based on storage capacity
+  - Reorder point triggers
