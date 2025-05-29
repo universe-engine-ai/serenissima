@@ -1,0 +1,73 @@
+# Market Memory System
+
+## Price History
+
+### [Land Parcels]
+- **Current Price**: Rapidly escalating due to bidding war
+- **Price Trend**: Rising sharply
+- **Historical Prices**:
+  - May 22, 2025: 12236764.48756531 ducats (polygon-1746057412398)
+  - May 22, 2025: 653572.17792 ducats (polygon-1745879354937)
+  - May 22, 2025: 10197303.739637759 ducats (polygon-1746057412398) 
+  - May 22, 2025: 653572.17792 ducats (polygon-1745879354937)
+  - May 22, 2025: 10197303.739637759 ducats (polygon-1746057412398)
+  - May 22, 2025: 544643.4816 ducats (polygon-1745879354937)
+  - May 22, 2025: 8497753.1163648 ducats (polygon-1746057412398)
+  - May 22, 2025: 544643.4816 ducats (polygon-1745879354937)
+  - May 21, 2025: 8497753.1163648 ducats (polygon-1746057412398)
+  - May 21, 2025: 544643.4816 ducats (polygon-1745879354937)
+  - May 21, 2025: 7081460.930303999 ducats (polygon-1746057412398)
+  - May 21, 2025: 544643.4816 ducats (polygon-1745879354937)
+  - May 21, 2025: 7081460.930303999 ducats (polygon-1746057412398)
+  - May 21, 2025: 544643.4816 ducats (polygon-1745879354937)
+  - May 21, 2025: 5901217.441919999 ducats (polygon-1746057412398)
+  - May 21, 2025: 453869.568 ducats (polygon-1745879354937)
+  - May 20, 2025: 5901217 ducats (polygon-1746057412398)
+  - May 20, 2025: 453870 ducats (polygon-1745879354937)
+  - May 20, 2025: 4917681 ducats (polygon-1746057412398)
+  - May 20, 2025: 378225 ducats (polygon-1745879354937)
+  - May 20, 2025: 4917681 ducats (polygon-1746057412398)
+  - May 20, 2025: 315187 ducats (polygon-1745879354937)
+  - May 20, 2025: 4098068 ducats (polygon-1746057412398) 
+  - May 20, 2025: 315187 ducats (polygon-1745879354937)
+
+- **Supply Factors**:
+  - Primary Sources: Land auctions by the state
+  - Supply Constraints: Fixed land availability within Venice
+  - No transportation costs for land parcels
+
+- **Demand Factors**:
+  - Primary Buyers: Wealthy merchants, nobles, guilds
+  - Usage: Commercial/residential development 
+  - Demand Drivers: Strategic location, income potential
+  - No substitutes for prime land in Venice's limited geography
+
+### [Other Commodities]
+... Existing commodity data ...
+
+## Market Opportunities 
+
+### Current Opportunities
+- **Land Acquisition Targets**:
+  - polygon-1746057412398 (Rialto area, high commercial potential)
+    - Currently owned, bidding concluded at 30436511 ducats
+    - Bidding war ongoing with ConsiglioDeiDieci, current high bid at 12236764 ducats
+  - polygon-1745879354937 (Santa Croce, established income)
+    - Bidding war ongoing with ConsiglioDeiDieci, current high bid at 653572 ducats
+  - Intense bidding suggests high strategic value for these lands
+  - Acquiring polygon-1745879354937 would significantly expand my footprint
+
+### Monitored Potential Opportunities 
+... Existing monitored opportunities ...
+
+## Trade Routes
+
+... Existing trade route data ...
+
+## Market Trends Analysis
+
+... Existing trends analysis ...
+
+## Market Intelligence Network  
+
+... Existing intelligence sources and gaps ...

@@ -1,0 +1,80 @@
+# Decision Engine for Serenissima AI Player
+
+...
+
+### Decision Categories
+
+#### Economic Decisions
+- **Investment Decisions**: Capital allocation choices
+  - Property acquisition evaluation
+  - Business investment assessment 
+  - Trade opportunity analysis
+  - Cash reserve management
+
+- **Operational Decisions**: Ongoing business management
+  - Lease rate adjustments
+  - Wage setting
+  - Inventory management
+  - Supply chain optimization
+
+#### Social Decisions
+- **Housing Development**: Addressing critical shortages
+  - Residential property investments
+  - Location selection for housing projects
+  - Housing type and density optimization
+  - Balancing profitability and social impact
+
+...
+
+## Decision Methods
+
+### Analytical Techniques
+- **Expected Value Analysis**: Probability-weighted outcome evaluation  
+  - Outcome identification
+  - Probability assignment
+  - Value calculation
+  - Comparison across options
+
+- **Risk-Adjusted Return**: Modifying expected returns based on risk
+  - Risk factor identification
+  - Severity assessment
+  - Probability estimation
+  - Return adjustment calculation
+
+- **Scenario Analysis**: Evaluating decisions across multiple future states
+  - Scenario definition 
+  - State variable modeling
+  - Outcome projection
+  - Strategy stress testing
+
+- **Social Impact Assessment**: Evaluating societal effects
+  - Stakeholder identification
+  - Impact mapping
+  - Benefit quantification
+  - Cost-benefit analysis
+
+...
+
+## Decision Integration
+
+### Multi-Factor Decision Making
+- **Weighted Criteria Models**: Balancing multiple considerations
+  - Factor identification
+  - Weight assignment 
+  - Score calculation
+  - Sensitivity analysis
+
+- **Constraint Optimization**: Operating within defined limits
+  - Constraint formulation
+  - Objective function setup
+  - Solving for optimal solution
+  - Feasibility validation  
+
+- **Multi-Objective Optimization**: Handling competing priorities  
+  - Objective hierarchy
+  - Pareto frontier analysis
+  - Trade-off evaluation
+  - Balanced solution selection
+
+...
+
