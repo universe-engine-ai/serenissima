@@ -151,7 +151,17 @@
             {"path": "backend/engine/decrees/affectpublicbuildingstolandowners.py", "role": "Implements the decree assigning public infrastructure maintenance responsibility to landowners."},
             {"path": "backend/engine/createActivities.py", "role": "Core script that assigns activities to citizens (AI and human) based on their needs, status, time of day, and available opportunities. Manages the daily life cycle of citizens."},
             {"path": "backend/engine/paystoragecontracts.py", "role": "Processes daily payments for active 'storage_query' contracts, where a buyer pays a seller for reserved storage space."}
-          ]
+          ],
+          "logic": {
+            "path": "backend/engine/logic/",
+            "description": "Handles specific activity logic for different citizen roles or systems.",
+            "important_files": [
+              {"path": "backend/engine/logic/porter_activities.py", "role": "Manages activity creation and processing for Porters."},
+              {"path": "backend/engine/logic/galley_activities.py", "role": "Manages activity creation and processing related to Galleys (unloading, deliveries)."},
+              {"path": "backend/engine/logic/citizen_general_activities.py", "role": "Manages general activity processing for citizens."},
+              {"path": "backend/engine/logic/ai_driven_activities.py", "role": "Handles fetching, validating, and creating activities proposed by AI citizens."}
+            ]
+          }
         },
         "ais": {
           "path": "backend/ais/",

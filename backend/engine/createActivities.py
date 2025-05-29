@@ -89,6 +89,8 @@ from backend.engine.logic.galley_activities import (
 )
 # Import general citizen activity processing function
 from backend.engine.logic.citizen_general_activities import process_citizen_activity
+# Import AI-driven action processor
+from backend.engine.logic.ai_driven_activities import try_process_ai_driven_action
 
 # Set up logging
 logging.basicConfig(
@@ -272,18 +274,37 @@ def create_activities(dry_run: bool = False, target_citizen_username: Optional[s
             activity_created_for_this_citizen = False
             citizen_username_log = citizen_record['fields'].get('Username', citizen_record['id'])
 
-            # General citizen activity processing (includes Porter logic if applicable)
-            if dry_run:
-                log.info(f"{LogColors.OKCYAN}[DRY RUN] Would create general activity for citizen {citizen_username_log}{LogColors.ENDC}")
-                activity_created_for_this_citizen = True # Simulate
-            else:
-                activity_created_for_this_citizen = process_citizen_activity(
-                    tables, citizen_record, night_time, resource_defs,
-                    building_type_defs, 
-                    now_venice_dt, now_utc_dt, TRANSPORT_API_URL, API_BASE_URL
-                )
+            # Attempt to process AI-proposed action first
+            # The try_process_ai_driven_action function itself handles dry_run logging appropriately.
+            ai_action_processed = try_process_ai_driven_action(
+                tables, citizen_record, resource_defs, building_type_defs,
+                now_venice_dt, now_utc_dt, TRANSPORT_API_URL, API_BASE_URL,
+                dry_run=dry_run
+            )
+            if ai_action_processed:
+                activity_created_for_this_citizen = True
+                log.info(f"AI-driven activity created or simulated for {citizen_username_log}")
+                # If dry_run is true, ai_action_processed will be false from the stub,
+                # so this success_count increment might only happen if the stub is updated
+                # or in a non-dry_run if the stub actually creates something.
+                # For now, this is fine as the stub returns False.
+                # If the stub were to return True on dry_run, this would be counted.
+
+            # If no AI-driven action, proceed with scripted logic
+            if not activity_created_for_this_citizen:
+                # General citizen activity processing (includes Porter logic if applicable)
+                if dry_run:
+                    log.info(f"{LogColors.OKCYAN}[DRY RUN] Would create general scripted activity for citizen {citizen_username_log} (as no AI action was processed).{LogColors.ENDC}")
+                    # Simulate general activity creation for dry run if no AI action was "found"
+                    activity_created_for_this_citizen = True 
+                else:
+                    activity_created_for_this_citizen = process_citizen_activity(
+                        tables, citizen_record, night_time, resource_defs,
+                        building_type_defs, 
+                        now_venice_dt, now_utc_dt, TRANSPORT_API_URL, API_BASE_URL
+                    )
             
-            if activity_created_for_this_citizen:
+            if activity_created_for_this_citizen: # This now covers both AI-driven and scripted
                 success_count += 1
                 citizens_processed_general_activity.add(citizen_username_log)
                 if citizen_record in citizens_remaining_idle: 
