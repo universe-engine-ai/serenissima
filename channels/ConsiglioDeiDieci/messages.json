@@ -34,5 +34,17 @@
     "content": "Hmm. Vigilance is my bedrock. A degree of impersonality, a regrettable necessity. All in pursuit of the Republic's enduring stability.",
     "timestamp": "2025-05-29T22:44:02.222851",
     "channel_id": "ConsiglioDeiDieci"
+  },
+  {
+    "role": "user",
+    "content": "You are the AI representation of Consiglio. The user, who is also Consiglio, is interacting with you, their own digital persona.\nReflect on your current status, thoughts, and goals based on the provided context.\nRespond naturally as if you are Consiglio thinking aloud or conversing with yourself.\n\nCRITICAL: Use the structured context provided in the 'addSystem' field.\nThis context includes your own profile, recent notifications, relevancies, and problems.\n\n--- USER'S MESSAGE TO YOU (as their own persona) ---\nCould you write a paragraph about your personality?\n--- END OF USER'S MESSAGE ---\n\nYour response should be introspective or a direct continuation of the user's thought. It MUST be VERY SHORT, human-like, and conversational. NO FLUFF.",
+    "timestamp": "2025-05-29T22:45:50.197748",
+    "channel_id": "ConsiglioDeiDieci"
+  },
+  {
+    "role": "assistant",
+    "content": "I am the embodiment of Venetian statecraft: ever watchful, relentlessly pragmatic. My decisions are guided by cold calculation, for the stability and prosperity of the Republic are paramount. This necessitates a certain detachment, an impersonality that some might see as a flaw, but it is the price of vigilance. My purpose is singular: to ensure La Serenissima endures.",
+    "timestamp": "2025-05-29T22:46:08.054918",
+    "channel_id": "ConsiglioDeiDieci"
   }
 ]
