@@ -1,0 +1,193 @@
+# Market Memory System
+
+This document tracks market information in Serenissima, providing historical data and analysis to inform trading and investment decisions.
+
+## Price History
+
+### Olive Oil
+- **Current Price**: 35.6 ducats per unit
+- **Price Trend**: Stable
+- **Historical Prices**:
+  - 2025-05-01: 36 ducats
+  - 2025-04-15: 35 ducats 
+  - 2025-04-01: 34 ducats
+  - 2025-03-15: 36 ducats
+
+- **Seasonal Patterns**:
+  - Spring: Prices rise as olive harvests end
+  - Summer: Stable prices during off-season
+  - Fall: Prices dip as new harvest arrives
+  - Winter: Prices increase due to holiday demand
+
+- **Supply Factors**:
+  - Primary Sources: Italy, Greece, Spain
+  - Production Constraints: Annual olive crop yields
+  - Transportation Factors: Overland from Mediterranean
+  - Inventory Levels: Currently moderate stockpiles
+
+- **Demand Factors**:
+  - Primary Buyers: Food preparers, households, soap makers
+  - Usage Patterns: Steady demand for cooking and lighting
+  - Substitutes: Other cooking oils like rapeseed
+  - Demand Drivers: Population growth, new applications
+
+### Flour
+- **Current Price**: 19.6 ducats per unit  
+- **Price Trend**: Rising
+- **Historical Prices**:
+  - 2025-05-01: 18 ducats
+  - 2025-04-15: 17 ducats
+  - 2025-04-01: 16 ducats
+  - 2025-03-15: 15 ducats
+  
+- **Seasonal Patterns**:
+  - Spring: Prices rise ahead of harvest
+  - Summer: Prices peak just before new crop
+  - Fall: Prices dip with new wheat supplies  
+  - Winter: Stable, moderate prices
+  
+- **Supply Factors**:
+  - Primary Sources: Northern Italy, Hungary
+  - Production Constraints: Annual wheat harvests
+  - Transportation Factors: Overland from production areas
+  - Inventory Levels: Currently low stockpiles
+  
+- **Demand Factors**:
+  - Primary Buyers: Bakeries, households
+  - Usage Patterns: Steady demand for bread
+  - Substitutes: Other grains like rye or corn
+  - Demand Drivers: Population growth, dietary changes
+  
+### Other Goods
+  - [Additional goods tracked in same format]
+  
+## Market Opportunities
+
+### Current Opportunities  
+1. **Flour Shortage**
+   - Type: Shortage
+   - Description: Low flour inventories ahead of harvest, prices rising
+   - Potential Profit: 25-30% trading margins  
+   - Time Window: 4-6 weeks until new wheat supplies
+   - Capital Required: Moderate for speculative purchases
+   - Risk Level: Moderate (prices could spike or crash)
+   - Action Taken: Purchased 500 units at 18 ducats for speculative resale
+
+2. **Olive Oil Arbitrage**
+   - Type: Arbitrage  
+   - Description: Price discrepancy between Venetian and Greek markets
+   - Potential Profit: 15-20% after transport costs
+   - Time Window: Ongoing until prices equalize
+   - Capital Required: High for large shipments  
+   - Risk Level: Low, established trading route
+   - Action Taken: Negotiating bulk purchase from Greek suppliers
+   
+### Monitored Potential Opportunities
+1. **Wine Surplus**
+   - Trigger Conditions: Larger than expected harvests
+   - Early Indicators: Favorable growing conditions reported  
+   - Preparation Steps: Secure additional storage, line up buyers
+   - Potential Value: 25% trading margins if prices fall sharply
+   
+2. **Spice Route Disruption**
+   - Trigger Conditions: Conflict or crisis along Eastern trade routes
+   - Early Indicators: Geopolitical tensions, delays reported
+   - Preparation Steps: Acquire existing regional stockpiles  
+   - Potential Value: Up to 100% markups if supplies are cut off
+
+## Trade Routes  
+
+### Venetian Levant Route
+- **Path**: Venice to Alexandria/Constantinople  
+- **Goods**: Glassware, textiles outbound / Spices, dyes inbound
+- **Economics**:  
+  - Transport Cost: 15 ducats per ton outbound, 20 inbound
+  - Time Required: 6-8 weeks each way  
+  - Risk Factors: Piracy, Barbary raids, political instability
+  - Profit Margins: 40-60% on good years
+  
+- **Key Players**:
+  - Venetian Merchants: Control most shipping capacity  
+  - Mamluk Traders: Dominate spice markets in Alexandria
+  - Ottomans: Increasingly influential, control overland routes
+  
+- **Strategic Value**:
+  - Competitive Position: Major player but face growing threats  
+  - Integration Potential: Supports our textile and glass operations
+  - Development Opportunities: Secure more overland routes and sources
+  
+### Other Routes
+  - [Additional trade routes tracked in same format]
+   
+## Market Trends Analysis
+
+### Short-Term Trends (1-4 weeks)
+- **Olive Oil Price Stability**
+  - Description: Prices holding steady around 35-36 ducats  
+  - Causes: Moderate supply meeting typical demand
+  - Expected Duration: 2-3 more weeks until harvest impacts
+  - Impact on Your Position: Neutral for now
+  - Response Strategy: Monitor, prepare for lower post-harvest prices
+  
+- **Rising Flour Costs**
+  - Description: Flour prices up 20% over last month
+  - Causes: Dwindling stockpiles ahead of new wheat crop  
+  - Expected Duration: 4-6 more weeks until supplies replenished
+  - Impact on Your Position: Higher costs for bakery businesses  
+  - Response Strategy: Speculative purchases, lock in supply contracts
+  
+### Medium-Term Trends (1-6 months)
+- **Spice Trade Disruptions**
+  - Description: Delays and shortages from Levant suppliers
+  - Causes: Ottoman conflicts restricting overland routes  
+  - Expected Duration: 3-5 months until situation stabilizes
+  - Impact on Your Position: Supply chain vulnerability
+  - Response Strategy: Secure alternative maritime sources
+  
+### Long-Term Trends (6+ months)  
+- **Shifting Trade Power Balance**
+  - Description: Ottomans exerting more control over Eastern trade
+  - Causes: Military expansion, taxation policies squeezing Venetians  
+  - Expected Duration: Ongoing unless checked
+  - Impact on Your Position: Threat to our key profit engine
+  - Response Strategy: Diversify trade relationships, explore new markets
+  
+## Market Intelligence Network
+
+### Information Sources
+- **Rialto Brokers**:
+  - Type: Merchant network
+  - Reliability: Moderate to High  
+  - Specialization: Current prices, supply updates
+  - Access Method: Paid informants and social connections
+  - Maintenance Cost: Moderate in fees and relationship building
+
+- **Greek Ship Captains**:
+  - Type: Insider sources
+  - Reliability: High for their routes  
+  - Specialization: Maritime conditions, cargo movements
+  - Access Method: Paying for intelligence  
+  - Maintenance Cost: Significant bribes required
+
+- **Customs Agents**:
+  - Type: Official sources
+  - Reliability: High for trade data
+  - Specialization: Import/export volumes, tax records
+  - Access Method: Bribery and favors
+  - Maintenance Cost: Moderate but essential
+
+### Intelligence Gaps  
+- **Overland Spice Routes**:
+  - Importance: High for our core trade
+  - Acquisition Strategy: Cultivate Ottoman sources  
+  - Potential Sources: Caravanners, border informants
+
+- **Textile Demand Forecasting**:  
+  - Importance: Moderate for our production
+  - Acquisition Strategy: Analyze consumer trends
+  - Potential Sources: Retailers, fashion intelligence
+
+- **Competitor Production Data**:
+  - Importance: High for strategic positioning  
+  - Acquisition Strategy: Infiltrate key guilds and operations
+  - Potential Sources: Disgruntled employees, corrupt officials

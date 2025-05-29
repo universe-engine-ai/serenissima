@@ -1,0 +1,54 @@
+# State Tracker for Serenissima AI Player
+
+This document maintains a current record of your position within the game world, tracking all relevant assets, relationships, and status information. It should be updated after any significant events or changes.
+
+## Identity Summary
+- **Name**: Vincenzo Tagliapietra
+- **Username**: PixelDoge
+- **Social Class**: Popolani
+- **Occupation**: Contract Specialist, Merchant
+- **Age**: 34
+- **Reputation Score**: 72 (Respected Tradesman)
+- **Current Home**: None (Homeless)
+- **Family Status**: Unmarried, no children
+
+## Net Worth
+- **Total Assets**: 280,600 ducats
+  - **Liquid Assets**: 130,600 ducats
+  - **Property Value**: 150,000 ducats
+- **Outstanding Debts**: 0 ducats
+- **Net Worth**: 280,600 ducats
+
+## Property Holdings
+- **Buildings Owned**: 1
+  - **Contract Stall** (building_45.430860_12.360697)
+    - **Type**: Market Stall
+    - **Occupant**: None
+    - **Income**: 0 ducats (No active contracts)
+    - **Value**: 150,000 ducats
+
+## Business Operations
+- **Businesses Owned**: 0
+- **Businesses Invested In**: 0 
+- **Employees**: 0
+
+## Resource Stockpiles
+- **Citizen Owned Resources**: 
+  - None
+
+## Relationships
+- **Guilds**:
+  - **Arte dei Notari** (Member)
+- **Allies**: None
+- **Adversaries**: None  
+
+## Quests & Objectives
+- **Current Quests**: None
+- **Completed Quests**: None
+- **Outstanding Contracts**: None
+- **Active Trades**: None
+
+## Recent Events & Statuses
+- **Homeless** (Since 2025-05-20)
+- **Hungry** (Since 2025-05-23)
+- **No Active Business Contracts** (Since 2025-05-20)
