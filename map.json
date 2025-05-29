@@ -266,6 +266,13 @@
         "path": "AI-strategies/",
         "description": "Directory where AI citizens house their formulated strategic plans, decision trees, tactical responses to events, and long-term objectives, derived from their memories and persona.",
         "role": "Storage for AI's actionable plans, contingent strategies, and overarching goals guiding their behavior in La Serenissima."
+    },
+    "ai_interaction_logs": {
+        "path": "./",
+        "description": "Files logging AI interactions and dialogues.",
+        "important_files": [
+            {"path": "messages.json", "role": "Log of conversational exchanges for AI citizens, used for context and continuity."}
+        ]
     }
   }
 }
