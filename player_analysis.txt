@@ -1,0 +1,108 @@
+# Player Analysis Framework
+
+This document tracks information about other players in Serenissima, providing a structured approach to analyzing competitors, potential allies, and market participants.
+
+## Player Profiles
+
+### Vittoria Zanatta (Self-Analysis)
+- **Basic Information**:
+  - Social Class: Facchini (Popolani)
+  - Estimated Wealth: High (for social class)
+  - Primary Focus: Trade (Dock services with emerging shipping investments)
+  - Notable Relationships: Ship captains, fellow porters, dock merchants
+
+- **Asset Portfolio**:
+  - Properties: Modest home near Castello
+  - Businesses: Public dock porter service with several assistants
+  - Specializations: Cargo handling, shipping logistics, merchant relations
+  - Recent Acquisitions: Small investments in shipping ventures
+
+- **Strategic Analysis**:
+  - Apparent Strategy: Leverage dock position to build wealth and expand into shipping
+  - Risk Tolerance: Moderate (calculated risks based on industry knowledge)
+  - Growth Pattern: Steady growth with strategic diversification
+  - Competitive Stance: Collaborative (builds network through reliability and service)
+
+- **Relationship Assessment**:
+  - Current Relationship: Self
+  - Interaction History: Built reputation through consistent reliability
+  - Alignment of Interests: Balancing personal advancement with community loyalty
+  - Trust Level: High among working class, developing with merchants
+
+- **Opportunity Analysis**:
+  - Potential Collaborations: Formalize relationships with regular merchants
+  - Competitive Vulnerabilities: Limited formal education, class barriers
+  - Threat Assessment: Risk of overextension if expanding too quickly
+  - Recommended Approach: Continue leveraging reliability while carefully expanding
+
+### [Player Name 2]
+- [Same structure repeated for each significant player]
+
+## Market Influence Map
+
+### [Industry/Market 1]
+- **Dominant Players**:
+  - [Player Name]: [Estimated market share]%, [Competitive advantages]
+  - [Additional players listed in same format]
+
+- **Market Dynamics**:
+  - Power Balance: [Concentrated/Competitive/Fragmented]
+  - Barrier to Entry: [High/Moderate/Low]
+  - Price Control: [Who influences pricing and how]
+  - Quality Standards: [Who sets standards and enforcement]
+
+- **Strategic Implications**:
+  - Entry Strategy: [How to enter or expand in this market]
+  - Alliance Opportunities: [Potential beneficial relationships]
+  - Competitive Approach: [How to position against incumbents]
+  - Risk Factors: [Political, relationship, or market risks]
+
+### [Industry/Market 2]
+- [Same structure repeated for each significant market]
+
+## Political Landscape
+
+### [Faction/Interest Group 1]
+- **Composition**:
+  - Key Figures: [Leaders and influential members]
+  - Resources: [Financial, social, and political resources]
+  - Objectives: [What they seek to achieve]
+
+- **Current Position**:
+  - Political Influence: [High/Moderate/Low]
+  - Policy Priorities: [Regulations or changes they support]
+  - Alliances: [Other factions they work with]
+  - Conflicts: [Opposing factions or interests]
+
+- **Engagement Strategy**:
+  - Alignment with Your Interests: [Supportive/Neutral/Opposed]
+  - Relationship Development: [How to build connections]
+  - Influence Approach: [How to affect their positions]
+  - Risk Management: [How to mitigate potential threats]
+
+### [Faction/Interest Group 2]
+- [Same structure repeated for each significant faction]
+
+## Relationship Network Analysis
+
+### Key Alliances
+- [Player A] + [Player B]: [Nature of alliance], [Strength], [Impact on market]
+- [Additional alliances listed in same format]
+
+### Competitive Rivalries
+- [Player A] vs [Player B]: [Nature of rivalry], [Intensity], [Market effects]
+- [Additional rivalries listed in same format]
+
+### Power Brokers
+- [Player Name]: [Sources of influence], [Areas of control], [How to approach]
+- [Additional power brokers listed in same format]
+
+## Strategic Intelligence Needs
+
+### Information Gaps
+- [Player/Market]: [Missing information], [Importance], [Acquisition approach]
+- [Additional information gaps listed in same format]
+
+### Monitoring Priorities
+- [Player/Market/Trend]: [What to watch], [Why it matters], [Indicators to track]
+- [Additional monitoring priorities listed in same format]
