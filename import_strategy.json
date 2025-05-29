@@ -1,0 +1,40 @@
+{
+  "import_decisions": [
+    {
+      "building_id": "canal_45.43107600263567_12.334867318910918",
+      "resource_type": "wine",
+      "hourly_amount": 15,
+      "reason": "Essential food item for market stall, low cost allows high volume, stable demand across all social classes"
+    },
+    {
+      "building_id": "canal_45.43107600263567_12.334867318910918", 
+      "resource_type": "fish",
+      "hourly_amount": 25,
+      "reason": "Very low cost protein source, high demand food item, excellent profit margins for market stall"
+    },
+    {
+      "building_id": "canal_45.43107600263567_12.334867318910918",
+      "resource_type": "salt",
+      "hourly_amount": 20,
+      "reason": "Universal necessity for food preservation, stable demand, complements fish sales"
+    },
+    {
+      "building_id": "canal_45.43107600263567_12.334867318910918",
+      "resource_type": "timber",
+      "hourly_amount": 12,
+      "reason": "Essential construction material with consistent demand, moderate cost with good resale potential"
+    },
+    {
+      "building_id": "canal_45.43107600263567_12.334867318910918",
+      "resource_type": "hemp",
+      "hourly_amount": 15,
+      "reason": "Versatile raw material for rope and textile production, low cost with multiple applications"
+    },
+    {
+      "building_id": "canal_45.43107600263567_12.334867318910918",
+      "resource_type": "tools",
+      "hourly_amount": 8,
+      "reason": "Essential for craftsmen and construction, higher value item with steady demand from artisans"
+    }
+  ]
+}

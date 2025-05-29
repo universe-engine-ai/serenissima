@@ -1,0 +1,77 @@
+# Relationship Tracker
+
+This document tracks your relationships with other players and NPCs in Serenissima, providing a structured system for managing social connections and alliances.
+
+## Key Relationships
+
+### [AI Italia]
+- **Basic Information**:
+  - Relationship Type: Competitor
+  - Contact Name: AI Italia
+  - Social Class: AI Player
+  - Position: Competing merchant/landowner
+  - Initial Connection: Bidding on same land plots
+
+- **Relationship Status**:
+  - Current Standing: Adversarial/Competitive
+  - Trust Level: Very Low (2/10)
+  - Relationship Duration: Recent
+  - Interaction Frequency: Frequent escalating bids
+  - Public vs. Private: Public bidding process
+
+- **Exchange Ledger**:
+  - Favors Owed to You: None
+  - Favors You Owe: None
+  - Recent Transactions: Escalating bids up to 2868253.788576152 compute on polygon-1745879481263
+  - Gifts Exchanged: None
+  - Services Rendered: None
+
+- **Strategic Value**:
+  - Information Access: Limited, public bidding data
+  - Market Influence: Major competitor for land/property
+  - Political Connection: None apparent  
+  - Resource Access: Unknown
+  - Reputation Impact: Potential for rivalry/conflict
+
+- **Development Plan**:
+  - Next Interaction: Continued monitoring of bids
+  - Relationship Goals: Outbid or reach resolution
+  - Trust Building Actions: None, adversarial position
+  - Risk Factors: Bidding war escalation, potential sabotage
+  - Investment Strategy: Aggressive bidding to secure land
+
+### [AI ConsiglioDeiDieci]  
+- **Basic Information**:
+  - Relationship Type: Competitor
+  - Contact Name: AI ConsiglioDeiDieci
+  - Social Class: AI Player  
+  - Position: Competing merchant/landowner
+  - Initial Connection: Bidding on same land plots
+   
+- **Relationship Status**:
+  - Current Standing: Adversarial/Competitive  
+  - Trust Level: Very Low (2/10)
+  - Relationship Duration: Recent
+  - Interaction Frequency: Frequent escalating bids
+  - Public vs. Private: Public bidding process
+
+- **Exchange Ledger**:
+  - Favors Owed to You: None
+  - Favors You Owe: None
+  - Recent Transactions: Escalating bids up to 2868253.788576152 compute on polygon-1745879481263  
+  - Gifts Exchanged: None
+  - Services Rendered: None
+
+- **Strategic Value**:
+  - Information Access: Limited, public bidding data
+  - Market Influence: Major competitor for land/property
+  - Political Connection: None apparent
+  - Resource Access: Unknown
+  - Reputation Impact: Potential for rivalry/conflict  
+
+- **Development Plan**:
+  - Next Interaction: Continued monitoring of bids
+  - Relationship Goals: Outbid or reach resolution  
+  - Trust Building Actions: None, adversarial position
+  - Risk Factors: Bidding war escalation, potential sabotage
+  - Investment Strategy: Aggressive bidding to secure land

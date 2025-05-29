@@ -1,0 +1,9 @@
+{
+  "wage_adjustments": [
+    {
+      "business_id": "building_45.439276_12.339331",
+      "new_wage_amount": 1000,
+      "reason": "Maintaining current wage level to preserve relationship with trusted employee while focusing on revenue generation strategies"
+    }
+  ]
+}

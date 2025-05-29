@@ -1,0 +1,304 @@
+{
+  "citizen": {
+    "username": "TechnoMedici",
+    "ducats": 310497.46335884306,
+    "social_class": "Cittadini",
+    "description": "Marco Venier, a respected cittadini of Venice, has built his reputation through shrewd investments in glass manufacturing and international trade. Born to a family with modest beginnings but ambitions beyond their station, Marco inherited his father's small glass workshop in Murano and transformed it through innovation and business acumen. With a penetrating gaze and measured demeanor, he embodies the rising merchant class that forms the backbone of La Serenissima's commercial empire. Marco's recent expansion into wine and salt trading through his market stall near San Salvador and his ambitious customs house in Santa Croce demonstrates his growing influence in Venetian commerce. Known for fair but firm business dealings, he maintains good relations with both patrician families who provide political connections and the skilled artisans whose craft forms the foundation of his wealth. His palazzo in San Marco, while not as grand as those of the nobility, displays tasteful prosperity with its imported silks and commissioned glassworks. Marco rises early each day, first attending to correspondence with trading partners from Constantinople to Alexandria before visiting his various business interests throughout the city, often traveling by private gondola. His guild connections with the Corporazione del Vetro Luminoso secure both his social position and business prospects, while his ambition remains clear: to elevate his family name through commerce, perhaps one day achieving the coveted status of nobility that remains just beyond reach of even the wealthiest cittadini. Though unmarried, he is considered a desirable match, with a reputation for honesty in business that extends to his personal affairs.",
+    "core_personality": "",
+    "image_prompt": "A detailed Renaissance Venetian portrait of Marco Venier, a distinguished cittadini merchant in his late 30s with an intelligent gaze and confident bearing. He stands in his counting house with the Grand Canal visible through an arched window, wearing a rich burgundy velvet giornea (overcoat) with modest gold trimming over a dark blue silk doublet. His clothing is elegant but not ostentatious, appropriate for a successful cittadini rather than nobility. He holds an ornate Murano glass object in one hand and commercial ledgers in the other, symbolizing his dual focus on glassmaking and trade. On the desk beside him sits a small model of a merchant vessel alongside samples of wine and salt containers, representing his expanding commercial ventures. The room features merchant tools of trade: maps, scales, and a counting board. The lighting is warm and directed, highlighting his determined expression and the fine quality of his attire without the dramatic Rembrandt lighting reserved for nobility. The color palette consists of rich but subdued tones of burgundy, navy, amber and olive green, reflecting his substantial but not extravagant wealth. His expression conveys calculated ambition and practical intelligence, the hallmarks of Venice's merchant class.",
+    "family_motto": "Ex Ingenio Prosperitas",
+    "coat_of_arms": "A shield with a blue background featuring a silver compass and golden flame intertwined at its center, representing the technical mastery of glassmaking and constant innovation. The shield is bordered with a pattern of interlocking gears in bronze, symbolizing industry and mechanical ingenuity. Instead of traditional noble supporters, the arms are flanked by tools of the glassmaker's trade\u2014a blowpipe and shaping rod\u2014crossed beneath the shield.",
+    "allowed_building_tiers": [
+      1,
+      2,
+      3
+    ],
+    "total_lands": 4,
+    "total_buildings": 4,
+    "financial": {
+      "total_income": 325,
+      "total_maintenance": 0,
+      "net_income": 325
+    },
+    "building_summary": {
+      "market_stall": 1,
+      "customs_house": 1,
+      "artisan_s_house": 1,
+      "fisherman_s_cottage": 1
+    }
+  },
+  "lands": [
+    {
+      "id": "polygon-1746056083350",
+      "historical_name": "Calle de la Gexia de San Salvador",
+      "english_name": "Alley of the Church of San Salvador",
+      "last_income": 50,
+      "building_points_count": 1,
+      "has_water_access": false,
+      "district": "San Marco",
+      "existing_buildings": [
+        {
+          "id": "building_45.439276_12.339331",
+          "type": "market_stall",
+          "owner": "TechnoMedici",
+          "income": 0,
+          "maintenance_cost": 0
+        }
+      ]
+    },
+    {
+      "id": "polygon-1745879481263",
+      "historical_name": "Calle de la Vida in Sestiere di Santa Croce",
+      "english_name": "Street of Life in the District of the Holy Cross",
+      "last_income": 275,
+      "building_points_count": 8,
+      "has_water_access": false,
+      "district": "Santa Croce",
+      "existing_buildings": [
+        {
+          "id": "building_45.440840_12.327785",
+          "type": "customs_house",
+          "owner": "TechnoMedici",
+          "income": 0,
+          "maintenance_cost": 0
+        },
+        {
+          "id": "canal_45.43107600263567_12.334867318910918",
+          "type": "public_dock",
+          "owner": "ConsiglioDeiDieci",
+          "income": 0,
+          "maintenance_cost": 0
+        },
+        {
+          "id": "building_45.43003055172295_12.334953915713706",
+          "type": "public_well",
+          "owner": "ConsiglioDeiDieci",
+          "income": 0,
+          "maintenance_cost": 0
+        }
+      ]
+    },
+    {
+      "id": "polygon-1745878844120",
+      "historical_name": "Fondamenta delle Zattere",
+      "english_name": "Wharf of the Rafts",
+      "last_income": 0,
+      "building_points_count": 6,
+      "has_water_access": false,
+      "district": "Dorsoduro",
+      "existing_buildings": [
+        {
+          "id": "canal_45.43107600263567_12.334867318910918",
+          "type": "public_dock",
+          "owner": "ConsiglioDeiDieci",
+          "income": 0,
+          "maintenance_cost": 0
+        },
+        {
+          "id": "building_45.43003055172295_12.334953915713706",
+          "type": "public_well",
+          "owner": "ConsiglioDeiDieci",
+          "income": 0,
+          "maintenance_cost": 0
+        }
+      ]
+    },
+    {
+      "id": "polygon-1746056164869",
+      "historical_name": "Cale de la Malvasia Vechia, Sestiere San Marco",
+      "english_name": "Old Malvasia Street, District of St. Mark",
+      "last_income": 0,
+      "building_points_count": 3,
+      "has_water_access": false,
+      "district": "San Marco",
+      "existing_buildings": [
+        {
+          "id": "canal_45.43107600263567_12.334867318910918",
+          "type": "public_dock",
+          "owner": "ConsiglioDeiDieci",
+          "income": 0,
+          "maintenance_cost": 0
+        },
+        {
+          "id": "building_45.43003055172295_12.334953915713706",
+          "type": "public_well",
+          "owner": "ConsiglioDeiDieci",
+          "income": 0,
+          "maintenance_cost": 0
+        }
+      ]
+    },
+    {
+      "id": "polygon-1746057412398",
+      "historical_name": "Strada de la Carit\u00e0",
+      "english_name": "Street of Charity",
+      "last_income": 54897,
+      "building_points_count": 64,
+      "has_water_access": false,
+      "district": "Dorsoduro",
+      "existing_buildings": [
+        {
+          "id": "canal_45.42482311352937_12.36298818727747",
+          "type": "fisherman_s_cottage",
+          "owner": "TechnoMedici",
+          "income": 0,
+          "maintenance_cost": 0
+        }
+      ]
+    }
+  ],
+  "buildings": [
+    {
+      "id": "building_45.439276_12.339331",
+      "type": "market_stall",
+      "land_id": "polygon-1746056083350",
+      "position": "{\"lat\": 45.439276, \"lng\": 12.339331}",
+      "income": 0,
+      "maintenance_cost": 0,
+      "owner": "TechnoMedici",
+      "rent_amount": 7500
+    },
+    {
+      "id": "building_45.440840_12.327785",
+      "type": "customs_house",
+      "land_id": "polygon-1745879481263",
+      "position": "{\"lat\": 45.44084, \"lng\": 12.327785}",
+      "income": 0,
+      "maintenance_cost": 0,
+      "owner": "TechnoMedici",
+      "rent_amount": 105000
+    },
+    {
+      "id": "building_45.431499_12.357067",
+      "type": "artisan_s_house",
+      "land_id": "polygon-1746057352428",
+      "position": "{\"lat\": 45.43192984840071, \"lng\": 12.35706519006806}",
+      "income": 0,
+      "maintenance_cost": 0,
+      "owner": "TechnoMedici",
+      "rent_amount": 0
+    },
+    {
+      "id": "canal_45.42482311352937_12.36298818727747",
+      "type": "fisherman_s_cottage",
+      "land_id": "polygon-1746057412398",
+      "position": "{\"lat\": 45.42498877272831, \"lng\": 12.362262202704105}",
+      "income": 0,
+      "maintenance_cost": 0,
+      "owner": "TechnoMedici",
+      "rent_amount": 0
+    }
+  ],
+  "buildings_on_lands": [
+    {
+      "id": "canal_45.43107600263567_12.334867318910918",
+      "type": "public_dock",
+      "land_id": "polygon-1745879481263",
+      "position": "{\"lat\": 45.43107600263567, \"lng\": 12.334867318910918}",
+      "lease_amount": 75,
+      "income": 0,
+      "maintenance_cost": 0,
+      "owner": "ConsiglioDeiDieci"
+    },
+    {
+      "id": "building_45.43003055172295_12.334953915713706",
+      "type": "public_well",
+      "land_id": "polygon-1745879481263",
+      "position": "{\"lat\": 45.43003055172295, \"lng\": 12.334953915713706}",
+      "lease_amount": 50,
+      "income": 0,
+      "maintenance_cost": 0,
+      "owner": "ConsiglioDeiDieci"
+    },
+    {
+      "id": "canal_45.43107600263567_12.334867318910918",
+      "type": "public_dock",
+      "land_id": "polygon-1746056164869",
+      "position": "{\"lat\": 45.43107600263567, \"lng\": 12.334867318910918}",
+      "lease_amount": 0,
+      "income": 0,
+      "maintenance_cost": 0,
+      "owner": "ConsiglioDeiDieci"
+    },
+    {
+      "id": "building_45.439276_12.339331",
+      "type": "market_stall",
+      "land_id": "polygon-1746056083350",
+      "position": "{\"lat\": 45.439276, \"lng\": 12.339331}",
+      "lease_amount": 50,
+      "income": 0,
+      "maintenance_cost": 0,
+      "owner": "TechnoMedici"
+    },
+    {
+      "id": "building_45.43003055172295_12.334953915713706",
+      "type": "public_well",
+      "land_id": "polygon-1746056164869",
+      "position": "{\"lat\": 45.43003055172295, \"lng\": 12.334953915713706}",
+      "lease_amount": 0,
+      "income": 0,
+      "maintenance_cost": 0,
+      "owner": "ConsiglioDeiDieci"
+    },
+    {
+      "id": "building_45.43003055172295_12.334953915713706",
+      "type": "public_well",
+      "land_id": "polygon-1746056083350",
+      "position": "{\"lat\": 45.43003055172295, \"lng\": 12.334953915713706}",
+      "lease_amount": 0,
+      "income": 0,
+      "maintenance_cost": 0,
+      "owner": "ConsiglioDeiDieci"
+    },
+    {
+      "id": "building_45.440840_12.327785",
+      "type": "customs_house",
+      "land_id": "polygon-1745879481263",
+      "position": "{\"lat\": 45.44084, \"lng\": 12.327785}",
+      "lease_amount": 200,
+      "income": 0,
+      "maintenance_cost": 0,
+      "owner": "TechnoMedici"
+    },
+    {
+      "id": "canal_45.43107600263567_12.334867318910918",
+      "type": "public_dock",
+      "land_id": "polygon-1745878844120",
+      "position": "{\"lat\": 45.43107600263567, \"lng\": 12.334867318910918}",
+      "lease_amount": 0,
+      "income": 0,
+      "maintenance_cost": 0,
+      "owner": "ConsiglioDeiDieci"
+    },
+    {
+      "id": "canal_45.43107600263567_12.334867318910918",
+      "type": "public_dock",
+      "land_id": "polygon-1746056083350",
+      "position": "{\"lat\": 45.43107600263567, \"lng\": 12.334867318910918}",
+      "lease_amount": 0,
+      "income": 0,
+      "maintenance_cost": 0,
+      "owner": "ConsiglioDeiDieci"
+    },
+    {
+      "id": "building_45.43003055172295_12.334953915713706",
+      "type": "public_well",
+      "land_id": "polygon-1745878844120",
+      "position": "{\"lat\": 45.43003055172295, \"lng\": 12.334953915713706}",
+      "lease_amount": 0,
+      "income": 0,
+      "maintenance_cost": 0,
+      "owner": "ConsiglioDeiDieci"
+    },
+    {
+      "id": "building_45.431499_12.357067",
+      "type": "artisan_s_house",
+      "land_id": "polygon-1746057352428",
+      "position": "{\"lat\": 45.43192984840071, \"lng\": 12.35706519006806}",
+      "lease_amount": 0,
+      "income": 0,
+      "maintenance_cost": 0,
+      "owner": "TechnoMedici"
+    },
+    {
+      "id": "canal
