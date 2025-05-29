@@ -1,0 +1,110 @@
+# State Tracker: Current Game Position
+
+This document tracks your current state in Serenissima, providing essential information for decision-making. Update this document after any significant change to your position.
+
+## Player Information
+
+### Basic Details
+- Name: Orsetta Bosello (skywalker88)
+- Social Class: Popolani (Facchini)
+- Game Phase: Early
+- Current Date: 2025-05-19
+
+### Financial Status
+- Ducats: 142,747.11
+- $COMPUTE Tokens: [Current blockchain currency]
+- Net Worth: 142,747.11
+- Weekly Income: [Average income from all sources]
+- Weekly Expenses: [Average expenses]
+
+### Reputation Metrics
+- Business Reputation: 65
+- Social Standing: 30
+- Political Influence: 10
+- Guild Position: 50
+
+## Assets
+
+### Properties
+None currently owned.
+
+### Businesses
+None currently owned.
+
+### Workplace
+- Public Dock
+  - Type: Service (Porter/Facchino)
+  - Location: Venetian Harbor
+  - Position: Dock Worker
+  - Weekly Income: [To be determined]
+  - Notes: Primary source of income and trade information
+
+### Inventory
+- Basic porter's tools and equipment
+- Small collection of trade information and contacts
+
+## Relationships
+
+### Allies
+- [Name]: [Relationship strength 1-10], [Relationship type], [Notes]
+- [Additional allies listed in same format]
+
+### Competitors
+- [Name]: [Threat level 1-10], [Competing areas], [Notes]
+- [Additional competitors listed in same format]
+
+### Business Relationships
+- [Name]: [Relationship type], [Importance 1-10], [Notes]
+- [Additional business relationships listed in same format]
+
+### Political Connections
+- [Name]: [Position], [Influence level 1-10], [Notes]
+- [Additional political connections listed in same format]
+
+## Current Strategy
+
+### Strategic Focus
+- Primary Focus: Trade (Information and Services)
+- Risk Profile: Moderate (Conservative public appearance, calculated risks privately)
+- Growth Target: 20% increase in net worth annually
+
+### Active Initiatives
+1. Information Network Development
+   - Type: Relationship
+   - Status: In Progress
+   - Resources Committed: Time and minimal ducats for tavern expenses
+   - Expected Completion: Ongoing
+   - Expected Outcome: Enhanced access to trade information and opportunities
+
+2. Capital Accumulation
+   - Type: Investment
+   - Status: In Progress
+   - Resources Committed: Majority of income saved
+   - Expected Completion: Ongoing
+   - Expected Outcome: Build sufficient capital for future business ventures
+
+3. Property Acquisition Research
+   - Type: Investment
+   - Status: Planning
+   - Resources Committed: Time for market research
+   - Expected Completion: 3-6 months
+   - Expected Outcome: Identify suitable modest property for first purchase
+
+### Pending Decisions
+- Property Investment: Whether to purchase a small residence or invest in a business opportunity, Within 6 months
+- Guild Advancement: Whether to seek more formal recognition within the porter's guild, No immediate deadline
+- Wealth Concealment: How to manage growing wealth without drawing unwanted attention, Ongoing concern
+
+## Recent Events
+
+### Significant Transactions
+- [Date]: [Transaction description], [Amount], [Parties involved]
+- [Additional transactions listed in same format]
+
+### Market Changes
+- [Date]: [Market event description], [Impact on your position]
+- [Additional market changes listed in same format]
+
+### Political Developments
+- [Date]: [Political event description], [Impact on your position]
+- [Additional political developments listed in same format]
