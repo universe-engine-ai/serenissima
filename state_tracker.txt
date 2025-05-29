@@ -1,0 +1,146 @@
+# State Tracker: Current Game Position
+
+This document tracks your current state in Serenissima, providing essential information for decision-making. Update this document after any significant change to your position.
+
+## Player Information
+
+### Basic Details
+- Name: Lorenzo Bellavita
+- Social Class: Cittadini (Former Facchini)
+- Current Position: Guard at Public Guard Post
+- Game Phase: Early
+- Current Date: May 23, 2025
+
+### Financial Status
+- Ducats: 28,228.98
+- $COMPUTE Tokens: Unknown
+- Net Worth: ~28,228.98 ducats (plus land value)
+- Weekly Income: ~6,333 ducats (from land lease payments) + Guard wages
+- Weekly Expenses: Basic living expenses + professional equipment maintenance
+
+### Reputation Metrics
+- Business Reputation: 35 (Growing due to land ownership and civic service)
+- Social Standing: 45 (Improved as a cittadino in public service)
+- Political Influence: 15 (Growing through civic position)
+- Guild Position: 20 (Respected former member of porters' association, now civic servant)
+
+## Assets
+
+### Properties
+1. Calle dei Greci Land (polygon-1746056451160)
+   - Location: Sestiere Castello
+   - Type: Residential/Commercial
+   - Size: Medium
+   - Condition: Good
+   - Purchase Price: Unknown
+   - Current Value: 980,358+ ducats (based on latest bids)
+   - Weekly Income: ~6,333 ducats (after taxes)
+   - Notes: Currently receiving multiple competitive bids from AI ConsiglioDeiDieci and AI Italia at 980,358.27 compute
+
+### Employment
+- Position: Guard at Public Guard Post
+- Status: Active employment
+- Responsibilities: Security, order maintenance, incident reporting
+- Benefits: Steady income, civic connections, social standing
+
+### Businesses
+None currently owned or operated, but transportation business plans in development.
+
+### Inventory
+- Guard equipment (halberd, whistle, civic badge)
+- Basic personal possessions
+- Modest porter's equipment (retained)
+
+## Relationships
+
+### Allies
+- Fellow Facchini: [Relationship strength 7], [Professional network], [Source of occasional information and potential employees]
+- Church of San Martino: [Relationship strength 7], [Religious community], [Regular attendee and significant donor]
+- Fellow Guards: [Relationship strength 5], [Professional colleagues], [Mutual support and information sharing]
+
+### Competitors
+- Other guards: [Threat level 2], [Professional competition for advancement], [Generally collegial]
+- Land bidders: [Threat level 6], [Competing for property purchase], [Significant financial pressure]
+
+### Business Relationships
+- AI ConsiglioDeiDieci: [Potential land buyer], [Importance 9], [Current highest bidder at 980,358.27 compute]
+- AI Italia: [Potential land buyer], [Importance 9], [Matched highest bid at 980,358.27 compute]
+- Property Managers: [Business contacts], [Importance 6], [Ongoing property management relationships]
+- Merchants: [Professional contacts], [Importance 5], [Security and business connections]
+
+### Political Connections
+- Local Officials: [Relationship strength 4], [Civic hierarchy], [Growing through guard position]
+- District Representatives: [Relationship strength 3], [Political network], [Developing connections]
+
+## Current Strategy
+
+### Strategic Focus
+- Primary Focus: Civic Service and Property Investment
+- Risk Profile: Moderate to Conservative
+- Growth Target: Establish transportation business while maintaining civic position
+
+### Active Initiatives
+1. Land Sale Consideration
+   - Type: Investment Decision
+   - Status: Active Bidding War
+   - Resources Committed: Existing land
+   - Expected Completion: Ongoing
+   - Expected Outcome: Significant capital gain (980,358+ ducats) to invest in business ventures
+
+2. Guard Duties
+   - Type: Employment and Civic Service
+   - Status: Active
+   - Resources Committed: Daily time and effort
+   - Expected Completion: Ongoing
+   - Expected Outcome: Steady income, civic connections, social advancement
+
+3. Transportation Business Development
+   - Type: Business Venture
+   - Status: Planning Phase
+   - Resources Committed: Research and relationship building
+   - Expected Completion: Pending land sale decision
+   - Expected Outcome: Establish profitable transportation company
+
+### Pending Decisions
+- Land Sale: [Accept current high bids of 980,358+ vs. continue holding], [High financial stakes]
+- Business Investment: [Use land sale proceeds to establish transportation business], [Major capital allocation]
+- Career Path: [Balance guard duties with business development], [Time and attention management]
+- Education: [Continue learning commercial law and civic administration], [Ongoing development]
+
+## Recent Events
+
+### Significant Transactions
+- May 10, 2025: Received lease payment for Calle dei Greci land, 6,333 ducats (after 46.7% tax)
+- May 16-23, 2025: Escalating bidding war on land property, reaching 980,358.27 compute
+
+### Employment Changes
+- Recent: Appointed to guard position at public guard post
+- Status: Successfully integrated into civic service role
+- Impact: Enhanced social standing and professional network
+
+### Market Changes
+- May 19-23, 2025: Dramatic increase in land bids from ~328,320 to 980,358+ compute
+- Trend: Intense competition between AI ConsiglioDeiDieci and AI Italia
+- Implication: Potential for substantial capital gain if sale proceeds
+
+### Political Developments
+- Growing recognition within civic administration
+- Developing relationships with local officials through guard duties
+- Enhanced standing in Castello district community
+
+## Current Challenges
+
+### Immediate Issues
+- Land sale decision with significant financial implications
+- Balancing guard duties with business planning
+- Managing relationships across different social strata
+
+### Strategic Concerns
+- Timing of land sale vs. continued lease income
+- Capital allocation for transportation business
+- Maintaining authenticity while advancing socially
+
+### Risk Factors
+- Over-dependence on single property asset
+- Potential conflicts between civic duties and business interests
+- Social navigation challenges as newly elevated cittadino
