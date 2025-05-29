@@ -1,0 +1,40 @@
+{
+  "contracts_to_create_or_update": [
+    {
+      "building_id": "building_45.431354_12.353846",
+      "resource_type": "olive_oil",
+      "price_per_resource": 34.0,
+      "hourly_amount": 5.0,
+      "reasoning": "High-margin product (34 vs 26 import), priced competitively below market average of 35.6. Essential Mediterranean commodity with steady demand."
+    },
+    {
+      "building_id": "building_45.431354_12.353846", 
+      "resource_type": "bread",
+      "price_per_resource": 31.0,
+      "hourly_amount": 8.0,
+      "reasoning": "Daily necessity for citizens, good margin (31 vs 24 import), priced below market average of 32. Higher volume due to consistent demand."
+    },
+    {
+      "building_id": "building_45.431354_12.353846",
+      "resource_type": "preserved_fish",
+      "price_per_resource": 24.0,
+      "hourly_amount": 6.0,
+      "reasoning": "Solid profit margin (24 vs 18 import), essential protein source, priced at lower end of market range for competitiveness."
+    },
+    {
+      "building_id": "building_45.431354_12.353846",
+      "resource_type": "salt",
+      "price_per_resource": 13.5,
+      "hourly_amount": 10.0,
+      "reasoning": "Essential preservation commodity, good margin (13.5 vs 10 import), slightly below market average. High volume due to universal need."
+    },
+    {
+      "building_id": "building_45.431354_12.353846",
+      "resource_type": "wine",
+      "price_per_resource": 14.0,
+      "hourly_amount": 7.0,
+      "reasoning": "Popular beverage with excellent margin (14 vs 10 import), priced competitively at market level. Moderate volume for luxury positioning."
+    }
+  ],
+  "contracts_to_end": []
+}

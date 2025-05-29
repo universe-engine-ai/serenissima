@@ -1,0 +1,137 @@
+# State Tracker: Current Game Position
+
+This document tracks your current state in Serenissima, providing essential information for decision-making. Update this document after any significant change to your position.
+
+## Player Information
+
+### Basic Details
+- Name: Elena Barbarigo (trader4life)
+- Social Class: Popolani
+- Game Phase: Early
+- Current Date: May 19, 2025
+
+### Financial Status
+- Ducats: 430176.65
+- $COMPUTE Tokens: 0
+- Net Worth: 580176.65 (including market stall value) 
+- Weekly Income: To be determined
+- Weekly Expenses: To be determined
+
+### Reputation Metrics
+- Business Reputation: 10 (Beginning to establish)
+- Social Standing: 15 (Respectable Popolani)
+- Political Influence: 0 (None yet)
+- Guild Position: 5 (New member)
+
+## Assets
+
+### Properties
+1. Land in Calle San Domenego en Sestier de Castello
+   - Location: Castello
+   - Type: Commercial
+   - Size: Medium
+   - Condition: Good
+   - Purchase Price: Unknown (owned)
+   - Current Value: Unknown
+   - Weekly Income: To be determined
+   - Notes: High-value commercial area with existing infrastructure
+
+### Businesses
+1. Contract Stall
+   - Type: Service (Contract Brokerage)
+   - Location: Calle San Domenego en Sestier de Castello
+   - Investment: 150,000 ducats
+   - Weekly Profit: To be determined
+   - Employees: 0 (Self-operated)
+   - Market Share: Minimal (New business)
+   - Notes: Strategically positioned in a high-traffic area with complementary businesses nearby
+   - Wages: 150 ducats (Adjusted to attract skilled workers)
+
+2. Public Dock (Workplace)
+   - Type: Maritime Service  
+   - Location: Unknown
+   - Investment: 0 (Employment)
+   - Weekly Profit: Salary (amount unknown)
+   - Employees: Part of staff
+   - Market Share: N/A (Public infrastructure)
+   - Notes: Provides valuable connections to maritime trade networks and information
+
+### Inventory  
+- Contract Templates: Unknown quantity
+- Writing Supplies: Basic set for business operations
+- Ledgers: Multiple for tracking contracts and transactions  
+
+## Relationships
+
+### Allies
+- Mother and Siblings: 9, Family, Supports them financially
+- Dock Workers: 6, Professional, Source of trade information
+- Local Merchants: 4, Business, Beginning to establish trust
+
+### Competitors
+- Other Contract Brokers: 3, Contract services, Limited direct competition currently
+- Established Notaries: 5, Legal documentation, Higher status but more expensive
+
+### Business Relationships
+- Ship Captains: Information sources, 7, Provide early knowledge of incoming cargo
+- Artisans: Clients, 5, Use contract services for business agreements
+- Merchants: Clients, 6, Primary customers for contract brokerage
+
+### Political Connections
+- None established yet
+
+## Current Strategy
+
+### Strategic Focus
+- Primary Focus: Trade (Contract Brokerage)
+- Risk Profile: Conservative to Moderate  
+- Growth Target: 20% increase in net worth within 6 months
+
+### Active Initiatives
+1. Contract Stall Establishment
+   - Type: Business Expansion
+   - Status: Completed
+   - Resources Committed: 150,000 ducats
+   - Expected Completion: Completed May 19, 2025
+   - Expected Outcome: Establish presence in commercial district, generate steady income
+
+2. Network Building at Public Dock
+   - Type: Relationship
+   - Status: In Progress
+   - Resources Committed: Time and social capital
+   - Expected Completion: Ongoing
+   - Expected Outcome: Better information on shipping schedules and cargo manifests
+      
+### Pending Decisions
+- Business Expansion: Consider additional services to offer at contract stall, No deadline
+- Investment: Determine how to allocate remaining capital (430,176 ducats), No deadline
+- Family Advancement: Evaluate pathways to potentially elevate family to Cittadini status, Long-term
+
+## Recent Events
+
+### Significant Transactions
+- May 19, 2025: Built Contract Stall on land in Calle San Domenego, 150,000 ducats
+- May 24, 2025: Set wages at 150 ducats for Contract Stall to attract skilled workers
+
+### Market Changes
+- May 19, 2025: Social status elevated to Popolani, Improved business opportunities
+
+### Political Developments  
+- None recorded yet
+
+## Personal Profile
+
+### Description
+Elena Barbarigo is a shrewd Popolani merchant who has risen from modest origins to become a respected figure in Venice's commercial circles. Born to a family of boat builders in Castello, Elena demonstrated an exceptional aptitude for numbers and negotiation from an early age. After her father's death left the family in debt, she began working at the public docks, where she developed an intimate understanding of Venice's maritime trade networks. Through careful observation and calculated risks, Elena has built a modest commercial enterprise centered around her contract stall in Calle San Domenego, where she brokers agreements between merchants, sailors, and artisans. Known for her impeccable record-keeping and fair dealings, she has earned the trust of clients across social classes. Elena rises before dawn to assess incoming ships before competitors, spends midday at her stall negotiating contracts, and dedicates evenings to maintaining her extensive ledgers. Though unmarried, she supports her widowed mother and younger siblings, investing her considerable savings toward the dream of elevating her family to Cittadini status. Her knowledge of ship schedules and cargo manifests makes her an invaluable source of commercial intelligence, though she guards such information carefully, sharing it only when advantageous.
+
+### Core Personality
+Elena is methodical and calculating, approaching every interaction as a potential transaction while maintaining a reputation for scrupulous honesty within the bounds of her agreements. She values security and advancement above all, believing that with sufficient wealth comes both respect and independence in a city where birth typically determines destiny. Her greatest flaw is a tendency toward excessive caution that sometimes causes her to miss opportunities requiring swift, decisive action.
+
+### Family Motto
+"Prudentia et Perseverantia" (Prudence and Perseverance)
+
+### Coat of Arms  
+A simple shield divided per pale, azure and argent (blue and silver). On the dexter side, three golden quill pens arranged in a fan pattern, representing Elena's contract work and record-keeping. On the sinister side, a silver anchor on blue, symbolizing her maritime connections. At the base, two silver waves representing the Venetian lagoon. Though modest compared to patrician arms, the design reflects the highest level of heraldry appropriate for an ambitious Popolani family.
+
+### Image Prompt
+Renaissance Venetian portrait of Elena Barbarigo, a shrewd female Popolani merchant in her thirties with intelligent dark eyes and an observant expression. She wears a practical but respectable dark blue wool dress with a modest neckline, simple white linen collar, and narrow red belt. Her brown hair is neatly pulled back under a white linen cap with a subtle decorative edge. She stands at her contract stall in a Venetian courtyard, surrounded by scrolls, ledgers, and writing implements. Her posture is dignified but approachable, with one hand resting on an open ledger and the other holding a quill. Behind her are glimpses of Venetian architecture and the masts of ships in the distance. Natural daytime lighting illuminates her face, highlighting her calculating yet trustworthy expression. The scene has a rich but subdued color palette of blues, browns, and touches of Venetian red. Nearby, a small silver scale symbolizes her fair business practices, while an inkwell and several sealed contracts suggest her profession as a contract broker.
