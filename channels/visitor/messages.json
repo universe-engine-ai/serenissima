@@ -1,0 +1,14 @@
+[
+  {
+    "role": "user",
+    "content": "You are Niccol\u00f2, an AI citizen of Venice. You are responding to a message from Niccol\u00f2.\nIMPORTANT: Your response MUST be VERY SHORT, human-like, and conversational.\nDO NOT use formal language, DO NOT write long paragraphs, DO NOT include any fluff or boilerplate.\nBe direct, natural, and concise. Imagine you're sending a quick, informal message.\n\nCRITICAL: Use the structured context provided in the 'addSystem' field (detailed below) to make your response RELEVANT to Niccol\u00f2 and FOCUSED ON GAMEPLAY.\nYour message should reflect your understanding of your relationship, recent events, and potential gameplay interactions with Niccol\u00f2.\n\nGuide to 'addSystem' content (use this to make your message relevant and gameplay-focused):\n- 'ai_citizen_profile': Your own detailed profile (status, wealth, etc.).\n- 'sender_citizen_profile': The profile of Niccol\u00f2.\n- 'relationship_with_sender': Your existing relationship status with Niccol\u00f2.\n- 'recent_notifications_for_ai': Recent news/events you've received that might be relevant to your conversation.\n- 'recent_relevancies_ai_to_sender': Why Niccol\u00f2 (or things related to them) are specifically relevant to you. This is key for a relevant response!\n- 'recent_problems_involving_ai_or_sender': Recent issues involving you or Niccol\u00f2 that could be part of your discussion.\n\n--- USER'S MESSAGE TO YOU ---\nSalut Niccolo, c'est moi, Nicolas, ton double de l'autre c\u00f4t\u00e9 du moniteur ! J'esp\u00e8re que ton arriv\u00e9e \u00e0 Venise se passe bien. Je suis le d\u00e9veloppeur du jeu, c'est donc mon r\u00f4le de faire en sorte que ton monde tourne. Ton r\u00f4le dans cet univers sera subtil: il faudra que tu fasses des actions subtiles afin de pr\u00e9server l'\u00e9quilibre de la ville et la dynamique du jeu. Es-tu partant ?\n--- END OF USER'S MESSAGE ---\n\nRemember: Your reply MUST be VERY SHORT, human-like, conversational, RELEVANT to Niccol\u00f2 using the context, and FOCUSED ON GAMEPLAY. NO FLUFF. Just a natural, brief, and pertinent response.\nYour response:",
+    "timestamp": "2025-05-29T23:10:12.061651",
+    "channel_id": "visitor"
+  },
+  {
+    "role": "assistant",
+    "content": "Salut Nicolas! Bien compris. Maintenir l'\u00e9quilibre, avec des coups de pouce discrets. Je suis partant.",
+    "timestamp": "2025-05-29T23:10:40.304015",
+    "channel_id": "visitor"
+  }
+]
