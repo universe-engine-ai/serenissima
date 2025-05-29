@@ -1,0 +1,22 @@
+{
+  "username": "Consiglio Dei Dieci",
+  "socialClass": "Nobili",
+  "residences": [
+    {
+      "building_name": "Nobili Palazzo at Calle della Madonna",
+      "building_id": null,
+      "assigned_timestamp": "May 29, 2025 at 04:32"
+    }
+  ],
+  "properties_owned_summary": {
+    "building_count": 164,
+    "land_count": 46,
+    "current_net_income_ducats": -48440,
+    "leases_paid_ducats": 60380,
+    "leases_received_ducats": 11940
+  },
+  "finances": {
+    "ducats_available": 92246616.81918524
+  },
+  "last_updated_by_notifications": "2025-05-29T20:03:31Z"
+}
