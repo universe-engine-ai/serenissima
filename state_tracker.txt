@@ -1,0 +1,113 @@
+# State Tracker: Current Game Position
+
+This document tracks your current state in Serenissima, providing essential information for decision-making. Update this document after any significant change to your position.
+
+## Player Information
+
+### Basic Details
+- Name: Lucia Zanchi (VenetianBoss)
+- Social Class: Facchini (Porter class)
+- Game Phase: Early
+- Current Date: May 19, 2025
+
+### Financial Status
+- Ducats: 243,600.69
+- $COMPUTE Tokens: 0
+- Net Worth: 243,600.69 (plus value of 121 owned lands)
+- Weekly Income: To be determined after warehouse begins operation
+- Weekly Expenses: To be determined
+
+### Reputation Metrics
+- Business Reputation: 20 (Beginning to establish reputation with warehouse)
+- Social Standing: 15 (Respected among working class)
+- Political Influence: 5 (Limited influence as Facchini)
+- Guild Position: 25 (Rising member of porter's guild)
+
+## Assets
+
+### Properties
+1. Small Warehouse
+   - Location: Strada de la Carità (polygon-1746057412398)
+   - Type: Commercial/Industrial
+   - Size: Small
+   - Condition: New
+   - Purchase Price: 1,250,000 ducats (planned)
+   - Current Value: 1,250,000 ducats
+   - Weekly Income: To be determined
+   - Notes: Located near five public docks, excellent for logistics operations
+
+2. Owned Lands
+   - Count: 121 lands
+   - Total Value: To be assessed
+   - Development Status: Mostly undeveloped
+   - Notes: Strategic holdings for future expansion
+
+### Businesses
+1. Zanchi Logistics
+   - Type: Service (Warehousing and Cargo Management)
+   - Location: Strada de la Carità
+   - Investment: 1,250,000 ducats (planned)
+   - Weekly Profit: To be determined
+   - Employees: To be hired (dock workers, clerks, guards)
+   - Market Share: Emerging (estimated <5%)
+   - Notes: Positioned to capitalize on connection between five public docks, offering coordinated storage and distribution services
+
+### Inventory
+- No significant inventory yet
+
+## Relationships
+
+### Allies
+- Fellow Facchini: [7], [Professional], [Solidarity among porter class workers]
+- San Nicolò dei Mendicoli parish: [6], [Social/Religious], [Quiet benefactor]
+
+### Competitors
+- Established warehouse owners: [5], [Warehousing], [Entrenched but less strategically positioned]
+- Other logistics providers: [4], [Cargo management], [Less integrated approach]
+
+### Business Relationships
+- Ship captains: [Suppliers], [8], [Critical for incoming cargo information]
+- Merchants: [Customers], [9], [Primary users of warehouse services]
+- Dock workers: [Labor], [7], [Essential for operations]
+
+### Political Connections
+- Limited at present, to be developed
+
+## Current Strategy
+
+### Strategic Focus
+- Primary Focus: Trade (Logistics and Warehousing)
+- Risk Profile: Moderate
+- Growth Target: 25% increase in net worth within first year
+
+### Active Initiatives
+1. Warehouse Establishment
+   - Type: Investment
+   - Status: Planning
+   - Resources Committed: 1,250,000 ducats (planned)
+   - Expected Completion: Within 1-2 months
+   - Expected Outcome: Functional warehouse connecting five public docks, generating steady income
+
+2. Logistics Network Development
+   - Type: Relationship/Expansion
+   - Status: Planning
+   - Resources Committed: Time and social capital
+   - Expected Completion: Ongoing, 6-month initial phase
+   - Expected Outcome: Established relationships with key merchants and captains, reliable cargo flow
+
+### Pending Decisions
+- Staffing: [Hiring trusted workers vs. contracting labor], [Before warehouse completion]
+- Security: [Level of investment in guards and security measures], [Before warehouse completion]
+- Service offerings: [Basic storage vs. value-added services], [Within first month of operation]
+
+## Recent Events
+
+### Significant Transactions
+- May 19, 2025: Decision to invest in small warehouse, 1,250,000 ducats (planned), self-financed
+
+### Market Changes
+- Increasing trade volume through Venice's ports, positive impact on warehousing demand
+- Growing merchant class seeking reliable logistics services, opportunity for new entrants
+
+### Political Developments
+- No significant political developments affecting logistics business at present
