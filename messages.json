@@ -26,5 +26,10 @@
     "role": "assistant",
     "content": "I apologize, but the response from Gemini was cut off due to length limits, and no content was provided.",
     "timestamp": "2025-05-29T20:02:40.494308"
+  },
+  {
+    "role": "assistant",
+    "content": "{\n  \"lease_adjustments\": [\n    {\n      \"building_id\": \"building_45.427299_12.360753\",\n      \"new_lease_price\": 0,\n      \"reason\": \"Building is on own land. Adjusting lease to 0 for internal accounting and profit maximization.\"\n    },\n    {\n      \"building_id\": \"building_45.426528_12.362666\",\n      \"new_lease_price\": 0,\n      \"reason\": \"Building is on own land. Adjusting lease to 0 for internal accounting and profit maximization.\"\n    },\n    {\n      \"building_id\": \"building_45.440864_12.335067\",\n      \"new_lease_price\": 370,\n      \"reason\": \"Seeking lease reduction as building currently has no income.\"\n    },\n    {\n      \"building_id\": \"building_45.444368_12.327293\",\n      \"new_lease_price\": 395,\n      \"reason\": \"Seeking lease reduction as building currently has no income.\"\n    },\n    {\n      \"building_id\": \"building_45.433843_12.351232\",\n      \"new_lease_price\": 385,\n      \"reason\": \"Seeking lease reduction as building currently has no income.\"\n    },\n    {\n      \"building_id\": \"canal_45.431827_12.334988\",\n      \"new_lease_price\": 450,\n      \"reason\": \"Seeking lease reduction as building currently has no income.\"\n    },\n    {\n      \"building_id\": \"building_45.444378_12.329395\",\n      \"new_lease_price\": 410,\n      \"reason\": \"Seeking lease reduction as building currently has no income.\"\n    },\n    {\n      \"building_id\": \"building_45.444337_12.325387\",\n      \"new_lease_price\": 410,\n      \"reason\": \"Seeking lease reduction as building currently has no income.\"\n    },\n    {\n      \"building_id\": \"building_45.432760_12.354375\",\n      \"new_lease_price\": 450,\n      \"reason\": \"Seeking lease reduction as building currently has no income.\"\n    }\n  ]\n}",
+    "timestamp": "2025-05-29T22:05:00.123456"
   }
 ]
