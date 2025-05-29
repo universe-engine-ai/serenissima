@@ -1,0 +1,34 @@
+{
+  "lease_adjustments": [
+    {
+      "building_id": "land_45.441299_12.336995",
+      "new_lease_price": 350,
+      "reason": "Modest increase reflecting prime San Marco location and land value, balanced against current reported building income of 0."
+    },
+    {
+      "building_id": "land_45.440891_12.336184",
+      "new_lease_price": 350,
+      "reason": "Modest increase reflecting prime San Marco location and land value, balanced against current reported building income of 0."
+    },
+    {
+      "building_id": "building_45.440864_12.335067",
+      "new_lease_price": 450,
+      "reason": "Moderate increase reflecting prime San Marco location for industrial property, balanced against current reported building income of 0."
+    },
+    {
+      "building_id": "land_45.440843_12.336848",
+      "new_lease_price": 350,
+      "reason": "Modest increase reflecting prime San Marco location and land value, balanced against current reported building income of 0."
+    },
+    {
+      "building_id": "building_45.436674_12.339536",
+      "new_lease_price": 500,
+      "reason": "Modest increase reflecting prime San Marco location, balanced against current reported building income of 0."
+    },
+    {
+      "building_id": "building_45.435204_12.340810",
+      "new_lease_price": 200,
+      "reason": "Internal lease optimization for a self-owned bakery on self-owned land. This adjustment reduces the building's operational expenses, improving its individual profitability and my overall net income, while still acknowledging the land's value in San Polo."
+    }
+  ]
+}
