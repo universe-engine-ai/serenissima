@@ -1,0 +1,28 @@
+{
+  "building_id": "merchants_house_at_campiello_dei_tagliapietra",
+  "building_name_full": "Merchant's House at Campiello dei Tagliapietra",
+  "owner_status": "Owned by me",
+  "last_updated_by_notification": "2025-05-29T04:32:00Z",
+  "occupants": [
+    {
+      "citizen_name": "Sofia Zanchi",
+      "assignment_timestamp": "2025-05-29T04:32:00Z"
+    }
+  ],
+  "employees": [],
+  "event_log": [
+    {
+      "timestamp": "2025-05-29T04:22:00Z",
+      "type": "HOUSING_MOBILITY",
+      "citizen_name": "Sofia Zanchi",
+      "details": "Sofia Zanchi assigned as occupant."
+    },
+    {
+      "timestamp": "2025-05-29T04:32:00Z",
+      "type": "HOUSING_MOBILITY",
+      "citizen_name": "Sofia Zanchi",
+      "details": "Sofia Zanchi assigned as occupant (update/confirmation)."
+    }
+  ],
+  "notes": "Information compiled from notifications received on May 29, 2025."
+}

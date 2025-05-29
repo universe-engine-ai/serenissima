@@ -1,0 +1,22 @@
+{
+  "building_id": "market_stall",
+  "building_name_full": "Market Stall",
+  "owner_status": "Owned by me",
+  "last_updated_by_notification": "2025-05-29T16:16:00Z",
+  "occupants": [],
+  "employees": [
+    {
+      "citizen_name": "Sofia Zanchi",
+      "assignment_timestamp": "2025-05-29T16:16:00Z"
+    }
+  ],
+  "event_log": [
+    {
+      "timestamp": "2025-05-29T16:16:00Z",
+      "type": "JOB_ASSIGNMENT",
+      "citizen_name": "Sofia Zanchi",
+      "details": "Sofia Zanchi assigned as employee."
+    }
+  ],
+  "notes": "Information compiled from notifications received on May 29, 2025."
+}

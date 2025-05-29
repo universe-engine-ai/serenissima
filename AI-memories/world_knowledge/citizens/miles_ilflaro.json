@@ -1,0 +1,18 @@
+{
+  "citizen_name": "Miles IlFlaro",
+  "last_updated_by_notification": "2025-05-29T16:17:00Z",
+  "housing": null,
+  "employment": {
+    "building_id": "granary",
+    "building_name_full": "Granary",
+    "assignment_timestamp": "2025-05-29T16:17:00Z"
+  },
+  "event_log": [
+    {
+      "timestamp": "2025-05-29T16:17:00Z",
+      "type": "JOB_ASSIGNMENT",
+      "details": "Now works in Granary."
+    }
+  ],
+  "notes": "Information compiled from notifications received on May 29, 2025."
+}

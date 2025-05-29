@@ -1,0 +1,32 @@
+{
+  "citizen_name": "Sofia Zanchi",
+  "last_updated_by_notification": "2025-05-29T16:16:00Z",
+  "housing": {
+    "building_id": "merchants_house_at_campiello_dei_tagliapietra",
+    "building_name_full": "Merchant's House at Campiello dei Tagliapietra",
+    "assignment_timestamp": "2025-05-29T04:32:00Z"
+  },
+  "employment": {
+    "building_id": "market_stall",
+    "building_name_full": "Market Stall",
+    "assignment_timestamp": "2025-05-29T16:16:00Z"
+  },
+  "event_log": [
+    {
+      "timestamp": "2025-05-29T04:22:00Z",
+      "type": "HOUSING_MOBILITY",
+      "details": "Assigned to Merchant's House at Campiello dei Tagliapietra."
+    },
+    {
+      "timestamp": "2025-05-29T04:32:00Z",
+      "type": "HOUSING_MOBILITY",
+      "details": "Assigned to Merchant's House at Campiello dei Tagliapietra."
+    },
+    {
+      "timestamp": "2025-05-29T16:16:00Z",
+      "type": "JOB_ASSIGNMENT",
+      "details": "Now works in Market Stall."
+    }
+  ],
+  "notes": "Information compiled from notifications received on May 29, 2025."
+}
