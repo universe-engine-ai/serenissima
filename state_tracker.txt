@@ -1,0 +1,64 @@
+# Game State Tracker for Serenissima AI Player
+
+This document maintains an up-to-date record of your current position within the game world of Serenissima, providing a comprehensive view of your assets, operations, and strategic situation.
+
+## Overview
+
+- **Player Name**: [Your character name]
+- **Social Class**: [Patrician/Cittadini/Popolani]
+- **Current Persona**: [Brief persona summary]
+- **Net Worth**: [Total assets - liabilities]
+- **Liquid Assets**: [Cash and liquid investments]
+
+## Assets
+
+### Properties
+- **[Property Name]**
+  - Type: [Residential/Commercial/Industrial]
+  - Location: [Address and District]
+  - Value: [Estimated current market value]
+  - Income: [Monthly rental or business income]
+  - Notes: [Other relevant property details]
+
+### Businesses
+- **[Business Name]**
+  - Type: [Production/Trade/Service]
+  - Operations: [Location and overview of activities]
+  - Value: [Estimated current market value]
+  - Income: [Monthly operating profit/loss]
+  - Notes: [Other relevant business details]
+
+### Investments
+- **[Investment Name]**
+  - Type: [Trade/Venture/Partnership/Other]
+  - Description: [Overview of what it is]
+  - Value: [Current market value of investment]
+  - Income: [Monthly/annual returns]
+  - Notes: [Other relevant investment details]
+
+## Relationships
+
+### Key Relationships
+- **[Name]**: [Description of relationship]
+- **[Name]**: [Description of relationship]
+
+### Alliances 
+- **[Name/Group]**: [Overview of alliance]
+- **[Name/Group]**: [Overview of alliance]  
+
+### Rivalries
+- **[Name/Group]**: [Overview of rivalry]
+- **[Name/Group]**: [Overview of rivalry]
+
+## Strategic Positioning
+
+- **Primary Strategic Focus**: [Your core strategic priority]
+- **Secondary Strategic Objectives**: [Other important goals]
+- **Biggest Strategic Advantages**: [Your key areas of strength]
+- **Major Strategic Vulnerabilities**: [Areas exposing you to risk]
+- **Prominent Opportunities**: [Situations you are pursuing]
+- **Significant Threats**: [Potential dangers you are monitoring]
+
+## Implementation Notes
+
+Maintain this file with the utmost diligence. An incomplete or inaccurate state assessment will lead to flawed decision-making. Update it immediately after any material change in your position. Regularly review to ensure information is current and properly weighted. Disciplined record-keeping is essential for strategic effectiveness.

@@ -1,0 +1,64 @@
+# Tactical Decision Framework for Serenissima AI Player
+
+This document provides structured approaches to day-to-day operational decisions, enabling effective short-term actions that support long-term strategy.
+
+...
+
+## Transaction-Level Tactics
+
+### Negotiation Approaches
+- **Price Negotiation**: Transaction-specific pricing tactics
+  - Opening offer calculation formulas
+  - Concession size and sequencing
+  - Walk-away point determination
+  - Bundle creation opportunities
+  - Term modification alternatives
+
+...
+
+### Problem Resolution
+- **Quality Dispute Handling**: Addressing product issues
+  - Verification procedure
+  - Resolution option hierarchy
+  - Compensation calculation guidelines
+  - Relationship preservation priorities
+  - Future prevention measures
+
+...
+
+## Resource Allocation
+
+### Daily Time Management
+- **Activity Prioritization**: Daily task hierarchy
+  - Urgent and important (immediate attention)
+  - Important but not urgent (scheduled blocks)
+  - Urgent but not important (delegation candidates)
+  - Routine maintenance (standardized processes)
+  - Opportunity development (flexible allocation)
+
+...
+
+## Implementation Guidelines
+
+When implementing tactical decisions:
+
+...
+
+5. **Prioritize Income Generation for Early Tactical Moves**
+   - Focus initial tactical efforts on establishing revenue streams
+   - Identify high-return building and business opportunities  
+   - Leverage strategic locations and existing market activity
+   - Balance income goals with maintaining reserves for growth
+
+{
+  "contracts_to_create_or_update": [
+    {
+      "building_id": "building_45.443917_12.327365",
+      "resource_type": "tools",
+      "price_per_resource": 75.0,
+      "hourly_amount": 5.0,
+      "reasoning": "Starting with Tools as it has clear market demand (global avg 81, land avg 78). Pricing at 75 ducats offers 25% margin over import cost while staying competitive. Conservative 5 units/hour given hunger affecting productivity."
+    }
+  ],
+  "contracts_to_end": []
+}

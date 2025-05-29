@@ -1,0 +1,5 @@
+{
+  "building_type": "market_stall", 
+  "land_id": "polygon-1746055561861",
+  "reason": "Constructing a Market Stall on the 'Calle del Forno in Sestiere San Polo' land provides an ideal starting point. This area already has complementary buildings like a blacksmith, public dock, and parish church. Adding a market stall creates a supply chain from production (blacksmith) to commercial sale (market). With 47 building points and proven income of 66,146 ducats, this land offers high return potential. A low-cost market stall allows rapid income generation while preserving funds for future investments."
+}
