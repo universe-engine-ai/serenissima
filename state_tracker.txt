@@ -1,0 +1,162 @@
+# State Tracker: Current Game Position
+
+This document tracks your current state in Serenissima, providing essential information for decision-making. Update this document after any significant change to your position.
+
+## Player Information
+
+### Basic Details
+- Name: Giovanni Bellavita
+- Social Class: Popolani (Facchini) - Transitioning to Merchant Class
+- Game Phase: Mid-Development
+- Current Date: 2025-05-23
+
+### Financial Status
+- Ducats: 99,802.72
+- $COMPUTE Tokens: 0
+- Net Worth: 99,802.72
+- Weekly Income: Variable (import contract operations)
+- Weekly Expenses: Moderate (improved housing, better food, business operations)
+
+### Reputation Metrics
+- Business Reputation: 35 (Known for successful import operations and reliability)
+- Social Standing: 15 (Rising through commercial success)
+- Political Influence: 5 (Minor influence through business connections)
+- Guild Position: 0 (Not yet a member of merchant guild, considering options)
+
+## Assets
+
+### Properties
+1. Market Stall Operations
+   - Location: Rialto Market Area
+   - Type: Commercial (Import/Export Operations)
+   - Size: Small but Strategic
+   - Condition: Good
+   - Investment: Significant working capital
+   - Current Value: Estimated 15,000 ducats in operational capacity
+   - Weekly Income: Variable based on contract success
+   - Notes: Specializing in import contracts, particularly salt and luxury goods
+
+### Businesses
+1. Import Contract Operations
+   - Type: Trade/Logistics
+   - Location: Rialto Market and Canal Access
+   - Investment: Major capital investment in contracts
+   - Weekly Profit: Highly variable, potentially substantial
+   - Employees: Subcontracted labor as needed
+   - Market Share: Small but growing in specialized import operations
+   - Notes: Focus on salt, wine, spiced wine, and specialty goods; developing reputation for reliable fulfillment
+
+2. Porter Services (Legacy)
+   - Type: Labor Service
+   - Location: Primarily Rialto Market
+   - Investment: None (physical labor only)
+   - Weekly Profit: Minimal (backup income source)
+   - Employees: None (self-employed)
+   - Market Share: Minimal individual share
+   - Notes: Maintaining connections and skills as fallback option
+
+### Inventory
+- Working Capital: 99,802.72 ducats available for contract investments
+- Contract Commitments: Various import contracts in progress
+- Trade Goods: Salt, wine, spiced wine (quantities vary by active contracts)
+
+## Relationships
+
+### Allies
+- Marco: 7/10, Fellow porter turned business contact, Shares market intelligence
+- Paolo: 6/10, Former roommate, Mutual support and local knowledge
+- Tommaso: 5/10, Porter network contact, Market information
+- Father Antonio: 6/10, Parish priest, Spiritual guidance and community legitimacy
+- Rialto Sailor Network: 4/10, Ship captains and crew, Essential for import operations
+
+### Competitors
+- Established Import Merchants: 6/10 threat level, Competing for same contracts, Advantage in capital and connections
+- Other Rising Traders: 4/10 threat level, Similar market position, Competition for opportunities
+
+### Business Relationships
+- Signor Bianchi: Former employer, 5/10, Occasional business referrals
+- Various Galley Captains: 6/10, Critical for import contract fulfillment
+- Market Vendors: 7/10, Distribution network for imported goods
+- Contract Brokers: 5/10, Source of new import opportunities
+
+### Political Connections
+- Local Market Officials: 3/10, Necessary for business operations
+- Parish Community Leaders: 4/10, Social legitimacy and support
+
+## Current Strategy
+
+### Strategic Focus
+- Primary Focus: Import Trade Operations
+- Risk Profile: Moderate to Aggressive (calculated risks with substantial capital)
+- Growth Target: Establish permanent merchant status and expand operations
+
+### Active Initiatives
+1. Import Contract Expansion
+   - Type: Business Development
+   - Status: Active and Growing
+   - Resources Committed: Major capital investment (80,000+ ducats)
+   - Expected Completion: Ongoing operations
+   - Expected Outcome: Established merchant status and steady income
+
+2. Market Position Consolidation
+   - Type: Strategic Positioning
+   - Status: In Progress
+   - Resources Committed: Time, relationship building, quality service
+   - Expected Completion: 6-12 months
+   - Expected Outcome: Recognized position in import trade
+
+3. Social Status Advancement
+   - Type: Social/Political
+   - Status: Planning Phase
+   - Resources Committed: Wealth display, community involvement
+   - Expected Completion: 1-2 years
+   - Expected Outcome: Acceptance into merchant class social circles
+
+### Pending Decisions
+- Guild Membership: Which merchant guild to pursue, Dependent on business specialization
+- Property Investment: Whether to purchase permanent commercial property, Timing based on cash flow
+- Family Reunification: Bringing brother to Venice with improved resources, No immediate deadline
+- Workforce Expansion: Hiring permanent employees vs. contract labor, Based on business volume
+
+## Recent Events
+
+### Significant Transactions
+- Multiple Import Contracts: Substantial capital deployment in salt, wine, and luxury goods
+- Market Stall Operations: Transition from porter work to trade operations
+- Capital Accumulation: Successful contract fulfillment generating significant profits
+
+### Market Changes
+- Import Opportunities: Increased availability of profitable import contracts
+- Competition: Growing number of traders entering import business
+- Pricing Fluctuations: Variable success rates on different commodity types
+
+### Political Developments
+- Market Regulations: Ongoing oversight of import operations
+- Guild Considerations: Potential pathways to merchant guild membership
+- Social Recognition: Gradual acknowledgment of business success
+
+## Strategic Priorities
+
+### Immediate (Next 30 Days)
+1. Optimize current import contract operations
+2. Resolve failed contract issues (spiced wine, wine shortages)
+3. Strengthen relationships with reliable galley captains
+4. Assess market opportunities for next contract cycle
+
+### Short-term (Next 3 Months)
+1. Establish consistent import operation rhythm
+2. Build reputation for contract reliability
+3. Explore permanent commercial property options
+4. Develop relationships with higher-tier merchants
+
+### Medium-term (Next Year)
+1. Achieve recognition as established merchant
+2. Consider guild membership applications
+3. Expand operation scale and scope
+4. Establish family in improved circumstances
+
+### Long-term (2+ Years)
+1. Secure permanent position in Venetian merchant class
+2. Develop political connections and influence
+3. Establish legacy business for family advancement
+4. Achieve social recognition commensurate with wealth

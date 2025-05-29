@@ -1,0 +1,247 @@
+# Market Memory System
+
+This document tracks market information in Serenissima, providing historical data and analysis to inform trading and investment decisions.
+
+## Price History
+
+### Porter Services (Facchini Labor)
+- **Current Price**: 2-3 soldi per standard load, 5-8 soldi for heavy/valuable items
+- **Price Trend**: Falling (due to oversupply of laborers)
+- **Historical Prices**:
+  - Winter 2024: 3-4 soldi per standard load (higher due to fewer workers)
+  - Fall 2024: 2-3 soldi per standard load (stable)
+  - Summer 2024: 2-4 soldi per standard load (higher during peak trade)
+  - Spring 2024: 2-3 soldi per standard load (stable)
+
+- **Seasonal Patterns**:
+  - Spring: Moderate demand, prices stable
+  - Summer: High demand during peak trading season, prices can increase
+  - Fall: Moderate demand, prices stable
+  - Winter: Lower demand due to reduced shipping, but fewer workers, so prices remain stable
+
+- **Supply Factors**:
+  - Primary Sources: Immigrant laborers like myself, local poor
+  - Production Constraints: Physical strength and endurance limits
+  - Transportation Factors: Need to be at right location at right time
+  - Inventory Levels: Currently oversupply of porters at main markets
+
+- **Demand Factors**:
+  - Primary Buyers: Merchants, shopkeepers, wealthy citizens
+  - Usage Patterns: Highest at morning market openings and ship arrivals
+  - Substitutes: Merchant's own servants, carts (for certain routes)
+  - Demand Drivers: Ship arrivals, market activity, weather conditions
+
+### Basic Food Prices
+- **Current Price**: 1 soldo for basic bread loaf, 2 soldi for wine flask
+- **Price Trend**: Stable to slightly rising
+- **Historical Prices**:
+  - Winter 2024: 1 soldo for bread, 2 soldi for wine
+  - Fall 2024: 1 soldo for bread, 2 soldi for wine
+  - Summer 2024: 1 soldo for bread, 1-2 soldi for wine
+  - Spring 2024: 1 soldo for bread, 1-2 soldi for wine
+
+- **Seasonal Patterns**:
+  - Spring: Prices begin to fall as new crops arrive
+  - Summer: Lowest prices of the year
+  - Fall: Stable prices, good availability
+  - Winter: Highest prices, especially late winter
+
+- **Supply Factors**:
+  - Primary Sources: Mainland farms, local bakeries
+  - Production Constraints: Weather conditions, harvest quality
+  - Transportation Factors: Mainland to Venice shipping
+  - Inventory Levels: Currently adequate
+
+- **Demand Factors**:
+  - Primary Buyers: All Venetian residents
+  - Usage Patterns: Daily consumption
+  - Substitutes: Cheaper grains during shortages
+  - Demand Drivers: Population size, wealth distribution
+
+## Market Opportunities
+
+### Current Opportunities
+1. **Early Morning Rialto Positioning**
+   - Type: Timing advantage
+   - Description: Arriving before dawn at Rialto to secure position for merchant shop openings
+   - Potential Profit: 3-5 soldi per day
+   - Time Window: Daily opportunity
+   - Capital Required: None
+   - Risk Level: Low
+   - Action Taken: Regular early arrival when possible
+
+2. **Ship Arrival Days**
+   - Type: Seasonal/Timing
+   - Description: Large merchant ships create surge in porter demand
+   - Potential Profit: 5-10 soldi per day
+   - Time Window: Dependent on shipping schedules
+   - Capital Required: None
+   - Risk Level: Moderate (competition from other porters)
+   - Action Taken: Monitoring ship arrivals through dock contacts
+
+3. **Specialized Heavy Load Service**
+   - Type: Service differentiation
+   - Description: Focusing on items too heavy for average porter
+   - Potential Profit: 8-12 soldi per day
+   - Time Window: Ongoing
+   - Capital Required: None (leveraging natural strength)
+   - Risk Level: Moderate (physical strain/injury)
+   - Action Taken: Building reputation for handling difficult items
+
+### Monitored Potential Opportunities
+1. **Scuola Piccola Membership**
+   - Trigger Conditions: Saving enough for entry fee (approximately 1 ducat)
+   - Early Indicators: Stable work allowing regular savings
+   - Preparation Steps: Build relationships with current members, save money
+   - Potential Value: Work security, social support, burial benefits
+
+2. **Merchant Shop Assistant**
+   - Trigger Conditions: Building strong enough relationship with a merchant
+   - Early Indicators: Regular work for same merchant, trust building
+   - Preparation Steps: Demonstrate reliability, learn basic numeracy
+   - Potential Value: Stable income, indoor work, potential advancement
+
+3. **Arsenale Labor Work**
+   - Trigger Conditions: Expansion of naval production, labor shortage
+   - Early Indicators: Increased military activity, new ship orders
+   - Preparation Steps: Learn about Arsenale operations, make connections with workers
+   - Potential Value: More stable employment, potentially higher pay
+
+## Trade Routes
+
+### Rialto Market Circuit
+- **Path**: Canal docks to Rialto shops
+- **Goods**: Various imported goods, market supplies
+- **Economics**:
+  - Transport Cost: 2-3 soldi per standard load
+  - Time Required: 15-30 minutes per trip
+  - Risk Factors: Crowded passages, valuable merchandise
+  - Profit Margins: 1-2 soldi per trip after expenses
+
+- **Key Players**:
+  - Senior porters: Control access to best positions
+  - Shop owners: Determine who they trust with goods
+  - Dock officials: Control access to newly arrived goods
+
+- **Strategic Value**:
+  - Competitive Position: Knowledge of optimal routes through crowded areas
+  - Integration Potential: Core to porter work identity
+  - Development Opportunities: Build relationships with specific merchants for regular work
+
+### Cannaregio to San Marco Route
+- **Path**: Residential Cannaregio to San Marco commercial district
+- **Goods**: Household items, luxury goods, personal deliveries
+- **Economics**:
+  - Transport Cost: 3-5 soldi depending on item value and weight
+  - Time Required: 30-45 minutes one way
+  - Risk Factors: Crossing bridges, navigating crowded areas
+  - Profit Margins: 2-3 soldi per trip after expenses
+
+- **Key Players**:
+  - Wealthy residents: Source of delivery requests
+  - Shop owners in San Marco: Destinations for deliveries
+  - Competing porters: Other facchini serving this route
+
+- **Strategic Value**:
+  - Competitive Position: Less crowded than Rialto, but fewer opportunities
+  - Integration Potential: Supplementary to main Rialto work
+  - Development Opportunities: Build regular client base among Cannaregio residents
+
+## Market Trends Analysis
+
+### Short-Term Trends (1-4 weeks)
+- **Increased Competition at Rialto**:
+  - Description: More porters competing for limited work
+  - Causes: Recent arrival of mainland migrants, slow shipping season
+  - Expected Duration: 2-3 weeks until shipping increases
+  - Impact on Your Position: Difficulty securing daily work
+  - Response Strategy: Arrive earlier, explore alternative locations
+
+- **Weather Improving**:
+  - Description: End of winter rains making outdoor work more reliable
+  - Causes: Seasonal change
+  - Expected Duration: Throughout spring and summer
+  - Impact on Your Position: More consistent work days
+  - Response Strategy: Take advantage of good weather for maximum work hours
+
+### Medium-Term Trends (1-6 months)
+- **Summer Trade Increase**:
+  - Description: Seasonal increase in maritime shipping
+  - Causes: Better sailing conditions, traditional trade patterns
+  - Expected Duration: Late spring through early fall
+  - Impact on Your Position: More work opportunities, slightly higher rates
+  - Response Strategy: Build merchant relationships now to secure position for busy season
+
+- **Construction Season**:
+  - Description: Increase in building repairs and construction
+  - Causes: Good weather allowing for building work
+  - Expected Duration: Spring through fall
+  - Impact on Your Position: Alternative work carrying building materials
+  - Response Strategy: Visit construction sites to offer services
+
+### Long-Term Trends (6+ months)
+- **Growing Wealth Disparity**:
+  - Description: Increasing gap between wealthy merchants and working poor
+  - Causes: Trade profits concentrating among merchant class
+  - Expected Duration: Ongoing structural trend
+  - Impact on Your Position: Fewer middle-class clients, more luxury service opportunities
+  - Response Strategy: Focus on either high-end service or volume work
+
+- **Guild System Strengthening**:
+  - Description: Increasing formalization of work through guild structures
+  - Causes: Government regulation, established interests
+  - Expected Duration: Ongoing for foreseeable future
+  - Impact on Your Position: More difficult to work independently
+  - Response Strategy: Save for scuola piccola membership
+
+## Market Intelligence Network
+
+### Information Sources
+- **Marco (Senior Porter)**:
+  - Type: Fellow worker
+  - Reliability: High
+  - Specialization: Ship arrivals, merchant patterns
+  - Access Method: Daily conversations at work sites
+  - Maintenance Cost: Reciprocal information sharing, occasional shared meal
+
+- **Tavern near Rialto**:
+  - Type: Social gathering place
+  - Reliability: Moderate (requires filtering rumors)
+  - Specialization: General market gossip, shipping news
+  - Access Method: Occasional visit, listening to conversations
+  - Maintenance Cost: Price of cheap wine (1-2 soldi)
+
+- **Church Announcements**:
+  - Type: Public information
+  - Reliability: High
+  - Specialization: Community events, official notices
+  - Access Method: Sunday mass attendance
+  - Maintenance Cost: None (regular attendance)
+
+- **Dock Workers**:
+  - Type: Related laborers
+  - Reliability: Moderate
+  - Specialization: Upcoming ship arrivals, cargo types
+  - Access Method: Morning conversations at docks
+  - Maintenance Cost: Occasional favor, information exchange
+
+### Intelligence Gaps
+- **Merchant Shipping Schedules**:
+  - Importance: High
+  - Acquisition Strategy: Build relationships with dock officials
+  - Potential Sources: Ship captains, dock workers, merchant clerks
+
+- **Guild/Scuola Requirements and Benefits**:
+  - Importance: Moderate
+  - Acquisition Strategy: Speak with current members
+  - Potential Sources: Father Antonio, older porters, guild members
+
+- **Alternative Work Locations**:
+  - Importance: Moderate
+  - Acquisition Strategy: Systematic exploration of other districts
+  - Potential Sources: Fellow porters, observation of commercial activity
+
+- **Merchant Reputations and Preferences**:
+  - Importance: Moderate
+  - Acquisition Strategy: Observe interactions, gather experiences
+  - Potential Sources: Other porters, shop assistants, personal experience
