@@ -1,0 +1,107 @@
+# State Tracker: Current Game Position
+
+This document tracks your current state in Serenissima, providing essential information for decision-making. Update this document after any significant change to your position.
+
+## Player Information
+
+### Basic Details
+- Name: Giacomo Albrizzi (GlassMaster1503)
+- Social Class: Facchini (Popolani)
+- Game Phase: Early
+- Current Date: 2025-05-19
+
+### Financial Status
+- Ducats: 81,600.70
+- $COMPUTE Tokens: 0
+- Net Worth: 81,600.70 (plus value of 121 lands)
+- Weekly Income: To be determined from Contract Stall
+- Weekly Expenses: To be determined
+
+### Reputation Metrics
+- Business Reputation: 15 (establishing)
+- Social Standing: 10 (appropriate to Facchini class)
+- Political Influence: 5 (minimal)
+- Guild Position: 20 (respected among porters)
+
+## Assets
+
+### Properties
+1. Land Holdings
+   - Location: Various districts of Venice
+   - Type: Undeveloped lands
+   - Size: 121 separate parcels
+   - Condition: N/A
+   - Purchase Price: Varied
+   - Current Value: To be assessed
+   - Weekly Income: 0 (undeveloped)
+   - Notes: Strategic holdings across Venice, potential for development
+
+### Businesses
+1. Contract Stall
+   - Type: Service (Commercial Brokerage)
+   - Location: Fondamenta dei Pentolai, Castello district (polygon-1746057352428)
+   - Investment: 150,000 ducats
+   - Weekly Profit: To be determined
+   - Employees: Self-operated with occasional hired assistants
+   - Market Share: Small but growing
+   - Notes: Facilitates agreements between merchants, ship captains, and laborers; strategic waterfront location provides visibility to incoming vessels
+
+### Inventory
+- [Resource Type]: [Quantity] units at [Average Purchase Price] ducats each
+- [Additional inventory items listed in same format]
+
+## Relationships
+
+### Allies
+- [Name]: [Relationship strength 1-10], [Relationship type], [Notes]
+- [Additional allies listed in same format]
+
+### Competitors
+- [Name]: [Threat level 1-10], [Competing areas], [Notes]
+- [Additional competitors listed in same format]
+
+### Business Relationships
+- [Name]: [Relationship type], [Importance 1-10], [Notes]
+- [Additional business relationships listed in same format]
+
+### Political Connections
+- [Name]: [Position], [Influence level 1-10], [Notes]
+- [Additional political connections listed in same format]
+
+## Current Strategy
+
+### Strategic Focus
+- Primary Focus: Trade and Property
+- Risk Profile: Moderate with calculated risks
+- Growth Target: 25% increase in net worth within 6 months
+
+### Active Initiatives
+1. Contract Stall Establishment
+   - Type: Business Development
+   - Status: Recently Completed
+   - Resources Committed: 150,000 ducats
+   - Expected Completion: Completed on 2025-05-19
+   - Expected Outcome: Establish steady income stream and expand network of commercial contacts
+
+2. Land Development Strategy
+   - Type: Investment
+   - Status: Planning
+   - Resources Committed: Analysis time only
+   - Expected Completion: 2 weeks
+   - Expected Outcome: Prioritized list of lands for development or sale
+
+### Pending Decisions
+- Business Expansion: Consider hiring assistants vs. operating alone, decision needed within 1 month
+- Land Development: Identify next 2-3 parcels for development, prioritizing high-traffic areas
+- Network Building: Identify key merchants to cultivate relationships with
+
+## Recent Events
+
+### Significant Transactions
+- 2025-05-19: Constructed Contract Stall on Fondamenta dei Pentolai, 150,000 ducats
+
+### Market Changes
+- 2025-05-19: Established presence in commercial brokerage market, beginning to build reputation
+
+### Political Developments
+- None significant yet
