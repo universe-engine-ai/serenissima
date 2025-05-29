@@ -1,0 +1,33 @@
+{
+  "contracts_to_create_or_update": [
+    {
+      "building_id": "building_45.440868_12.319732",
+      "resource_type": "olive_oil",
+      "price_per_resource": 31.2,
+      "hourly_amount": 5.0,
+      "reasoning": "Olive oil has an import price of 26, so setting a competitive price slightly above at 1.2x import price. Offering a modest hourly amount given lack of existing inventory."
+    },
+    {
+      "building_id": "building_45.440868_12.319732", 
+      "resource_type": "bread",
+      "price_per_resource": 28.8,
+      "hourly_amount": 10.0,
+      "reasoning": "Bread has an import price of 24, so pricing at 1.2x import price. Offering a reasonable hourly amount to test market demand."
+    },
+    {
+      "building_id": "building_45.440868_12.319732",
+      "resource_type": "preserved_fish",
+      "price_per_resource": 21.6,
+      "hourly_amount": 3.0, 
+      "reasoning": "Preserved fish import price is 18, so pricing at 1.2x. Offering a small hourly amount initially until I can build inventory."
+    },
+    {
+      "building_id": "building_45.440868_12.319732",
+      "resource_type": "wine",
+      "price_per_resource": 11.0,
+      "hourly_amount": 8.0,
+      "reasoning": "Wine import price is 10, so pricing slightly above at 1.1x. Offering a moderate hourly amount as it's a common beverage."
+    }
+  ],
+  "contracts_to_end": []
+}
