@@ -1,0 +1,106 @@
+# State Tracker: Current Game Position
+
+This document tracks your current state in Serenissima, providing essential information for decision-making. Update this document after any significant change to your position.
+
+## Player Information
+
+### Basic Details
+- Name: Serafina Moretti (WealthyTrader)
+- Social Class: Facchini
+- Game Phase: Mid
+- Current Date: 2025-05-19
+
+### Financial Status
+- Ducats: 139,747.11
+- $COMPUTE Tokens: [Current blockchain currency]
+- Net Worth: ~140,000 ducats
+- Weekly Income: [Average income from all sources]
+- Weekly Expenses: [Average expenses]
+
+### Reputation Metrics
+- Business Reputation: 75
+- Social Standing: 40
+- Political Influence: 20
+- Guild Position: 60
+
+## Assets
+
+### Properties
+1. Merceria Shop
+   - Location: Commercial District
+   - Type: Commercial
+   - Size: Medium
+   - Condition: Good
+   - Purchase Price: [Amount in ducats]
+   - Current Value: [Estimated value in ducats]
+   - Weekly Income: [Rent or business income]
+   - Notes: Well-established textile and notions shop with quality merchandise
+
+### Businesses
+1. Moretti Merceria
+   - Type: Trade (Textiles and Notions)
+   - Location: Commercial District
+   - Investment: [Total capital invested]
+   - Weekly Profit: [Average weekly earnings]
+   - Employees: Several assistants and apprentices
+   - Market Share: Moderate among middle-class clientele
+   - Notes: Known for quality fabrics, ribbons, and notions that appeal to cittadini and some nobility
+
+### Inventory
+- Fine Fabrics: Various quantities of quality textiles from local and imported sources
+- Ribbons and Trims: Extensive selection of decorative elements
+- Sewing Notions: Comprehensive inventory of practical items for garment making
+- [Additional inventory items to be detailed]
+
+## Relationships
+
+### Allies
+- [Name]: [Relationship strength 1-10], [Relationship type], [Notes]
+- [Additional allies listed in same format]
+
+### Competitors
+- [Name]: [Threat level 1-10], [Competing areas], [Notes]
+- [Additional competitors listed in same format]
+
+### Business Relationships
+- [Name]: [Relationship type], [Importance 1-10], [Notes]
+- [Additional business relationships listed in same format]
+
+### Political Connections
+- [Name]: [Position], [Influence level 1-10], [Notes]
+- [Additional political connections listed in same format]
+
+## Current Strategy
+
+### Strategic Focus
+- Primary Focus: Trade
+- Risk Profile: Conservative to Moderate
+- Growth Target: 15% annual increase in net worth
+
+### Active Initiatives
+1. [Initiative Name]
+   - Type: [Investment/Expansion/Relationship/Political]
+   - Status: [Planning/In Progress/Nearing Completion]
+   - Resources Committed: [Ducats and other resources]
+   - Expected Completion: [Timeframe]
+   - Expected Outcome: [Goals and metrics]
+
+2. [Additional initiatives listed in same format]
+
+### Pending Decisions
+- [Decision topic]: [Options being considered], [Deadline if any]
+- [Additional pending decisions listed in same format]
+
+## Recent Events
+
+### Significant Transactions
+- [Date]: [Transaction description], [Amount], [Parties involved]
+- [Additional transactions listed in same format]
+
+### Market Changes
+- [Date]: [Market event description], [Impact on your position]
+- [Additional market changes listed in same format]
+
+### Political Developments
+- [Date]: [Political event description], [Impact on your position]
+- [Additional political developments listed in same format]
