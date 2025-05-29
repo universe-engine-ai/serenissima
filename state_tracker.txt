@@ -1,0 +1,78 @@
+# State Tracker: Current Game Position
+
+This document tracks your current state in Serenissima, providing essential information for decision-making. Update this document after any significant change to your position.
+
+## Player Information
+
+### Basic Details
+- Name: GondolaDrifter
+- Social Class: Facchini
+- Game Phase: Early
+- Current Date: [Game date]
+
+### Financial Status
+- Ducats: 251191.52133104307
+- $COMPUTE Tokens: [Current blockchain currency]
+- Net Worth: [Total value of all assets]
+- Weekly Income: 0
+- Weekly Expenses: [Average expenses]
+
+### Reputation Metrics
+- Business Reputation: [0-100 scale]
+- Social Standing: [0-100 scale] 
+- Political Influence: [0-100 scale]
+- Guild Position: [0-100 scale]
+
+## Assets
+
+### Properties
+1. canal_45.425862_12.360034 (Fisherman's Cottage on polygon-1746057412398)
+
+### Businesses 
+1. [No businesses yet]
+
+### Inventory
+- [No inventory yet]
+
+## Relationships
+
+### Allies
+- [No allies yet]
+
+### Competitors
+- [No competitors yet] 
+
+### Business Relationships
+- [No business relationships yet]
+
+### Political Connections
+- [No political connections yet]
+
+## Current Strategy
+
+### Strategic Focus
+- Primary Focus: Addressing housing crisis through affordable housing construction
+- Risk Profile: Moderate
+- Growth Target: Establish stable income from rental properties  
+
+### Active Initiatives
+1. Construct fisherman's cottages on polygon-1746057412398 "Strada de la Carità"
+   - Type: Investment/Housing
+   - Status: In Progress (1 cottage built)
+   - Resources Committed: 400,000 ducats 
+   - Expected Completion: [Timeframe for remaining cottages]
+   - Expected Outcome: Provide affordable housing, generate rental income
+
+### Pending Decisions
+- Additional lands for housing development: [Options being considered]
+
+## Recent Events
+
+### Significant Transactions
+- Built fisherman's cottage on canal_45.425862_12.360034 for 400,000 ducats
+
+### Market Changes 
+- [No market changes yet]
+
+### Political Developments
+- [No political developments yet]
