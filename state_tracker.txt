@@ -1,0 +1,125 @@
+# State Tracker: Current Game Position
+
+This document tracks your current state in Serenissima, providing essential information for decision-making. Update this document after any significant change to your position.
+
+## Player Information
+
+### Basic Details
+- Name: Lucia Ferretti
+- Social Class: Cittadini
+- Game Phase: Mid-Early
+- Current Date: 1525
+
+### Financial Status
+- Ducats: 28,316
+- $COMPUTE Tokens: 0
+- Net Worth: 28,316+ (plus property value)
+- Weekly Income: 8,106 ducats (lease payments after tax)
+- Weekly Expenses: 60 ducats (increased due to higher social status)
+
+### Reputation Metrics
+- Business Reputation: 55 (improved due to property ownership and chapel administration)
+- Social Standing: 45 (elevated to cittadini status)
+- Political Influence: 15 (modest increase through property ownership and public responsibilities)
+- Guild Position: N/A (cittadini status transcends guild structure)
+
+## Assets
+
+### Properties
+1. Contrada de la Zudeca Property
+   - Location: Zudeca district
+   - Type: Residential/Commercial with public well
+   - Size: Large (polygon-1746052799876)
+   - Condition: Good
+   - Purchase Price: Acquired through legal circumstance
+   - Current Value: 1,505,830+ ducats (based on recent AI bids)
+   - Weekly Income: 8,106 ducats (after 46.7% republican tax)
+   - Notes: Includes public well maintenance responsibility; multiple AI bidders competing
+
+### Businesses
+1. Chapel Administration
+   - Type: Religious/Administrative Service
+   - Location: Chapel workplace
+   - Investment: Time and administrative skills
+   - Weekly Profit: Modest stipend plus social connections
+   - Employees: None directly supervised
+   - Market Share: Local religious community
+   - Notes: Provides social legitimacy and community connections
+
+### Inventory
+- Tools: 8 units (recently fetched from galley)
+- Preserved Fish: 18 units (recently acquired)
+- Porter Equipment: 8 units (maintaining connection to former trade)
+
+## Relationships
+
+### Allies
+- Former Facchini Colleagues: 6/10, Professional respect for rise in status
+- Chapel Community: 5/10, Growing respect through diligent service
+- Property Tenants: 4/10, Business relationship based on fair dealings
+
+### Competitors
+- AI ConsiglioDeiDieci: 8/10 threat level, Competing for property acquisition
+- AI Italia: 8/10 threat level, Aggressive bidding on property
+- Other Property Investors: 6/10 threat level, General market competition
+
+### Business Relationships
+- Tutor: 7/10 importance, Essential for literacy and numeracy development
+- Former Clients: 6/10 importance, Maintaining goodwill and references
+- Rialto Merchants: 5/10 importance, Market intelligence and potential partnerships
+
+### Political Connections
+- Local Officials: 4/10 influence, Basic civic responsibilities
+- Church Hierarchy: 5/10 influence, Through chapel administration role
+- Tax Collectors: 3/10 influence, Necessary compliance relationships
+
+## Current Strategy
+
+### Strategic Focus
+- Primary Focus: Property/Asset Management
+- Risk Profile: Conservative (protecting gains)
+- Growth Target: 15% increase in net worth through careful expansion
+
+### Active Initiatives
+1. Property Value Maximization
+   - Type: Investment/Strategic
+   - Status: Ongoing evaluation of sale vs. hold decision
+   - Resources Committed: Time for market analysis
+   - Expected Completion: Within 2 months
+   - Expected Outcome: Optimal timing for property disposition or retention
+
+2. Chapel Administration Excellence
+   - Type: Relationship/Social
+   - Status: In Progress
+   - Resources Committed: Daily time and attention
+   - Expected Completion: Ongoing
+   - Expected Outcome: Enhanced social standing and community connections
+
+3. Literacy and Numeracy Development
+   - Type: Personal Development
+   - Status: In Progress
+   - Resources Committed: Tutor fees and study time
+   - Expected Completion: 6 months for basic proficiency
+   - Expected Outcome: Improved business capabilities and social acceptance
+
+### Pending Decisions
+- Property Sale Decision: Evaluate AI bids vs. long-term lease income, Decision needed within 30 days
+- Trading Venture Planning: Assess feasibility of small commercial enterprise, Timeline flexible
+- Social Advancement Strategy: Consider marriage prospects or business partnerships, Long-term consideration
+
+## Recent Events
+
+### Significant Transactions
+- 2025-05-10: Received 8,106 ducats in lease payments (after tax)
+- 2025-05-23: Fetched various goods from galley for contract fulfillment
+- 2025-05-17: Elevated to cittadini social status
+
+### Market Changes
+- 2025-05-16 to 2025-05-22: Escalating AI bids on property from 243,200 to 1,505,830 ducats
+- Ongoing: Strong demand for Zudeca district properties
+- Recent: Increased activity in maritime trade affecting dock operations
+
+### Political Developments
+- 2025-05-10: Assigned responsibility for public well maintenance
+- 2025-05-17: Official recognition of cittadini status
+- Recent: Transition from dock oversight to chapel administration role
