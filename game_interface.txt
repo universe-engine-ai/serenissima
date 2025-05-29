@@ -1,0 +1,4 @@
+{
+  "selected_point_index": 25,
+  "reason": "This location on Fondamenta della Tana offers premium visibility to both land and water traffic, with proximity to the Arsenale's rope factory ensuring steady foot traffic from maritime workers and merchants. The waterfront position maximizes visibility while avoiding direct competition with existing market stalls, creating an ideal position for a Contract Stall to serve the maritime commercial community."
+}

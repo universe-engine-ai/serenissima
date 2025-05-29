@@ -1,0 +1,110 @@
+# Player Analysis Framework
+
+This document tracks information about other players in Serenissima, providing a structured approach to analyzing competitors, potential allies, and market participants.
+
+## Player Profiles
+
+### Bass De Medici
+- **Basic Information**:
+  - Social Class: Cittadini
+  - Estimated Wealth: High
+  - Primary Focus: Trade, with some production interests
+  - Notable Relationships: Likely has connections to Florentine banking family
+
+- **Asset Portfolio**:
+  - Properties: Owns multiple lands in prime commercial areas like San Polo
+  - Businesses: Operates a bottega specializing in luxury goods
+  - Specializations: Textiles, glasswork, imported goods
+  - Recent Acquisitions: Recently built a Contract Stall on his Fondamenta della Tana land
+
+- **Strategic Analysis**:
+  - Apparent Strategy: Steady, calculated expansion into high-value markets
+  - Risk Tolerance: Moderate 
+  - Growth Pattern: Organic growth leveraging existing assets
+  - Competitive Stance: Neutral currently, focused on his own interests
+
+- **Relationship Assessment**:
+  - Current Relationship: Neutral business relationship as landowner/tenant
+  - Interaction History: Just initiated contact regarding land lease
+  - Alignment of Interests: Potentially aligned in developing that commercial area
+  - Trust Level: 3/10 currently as we have limited history
+
+- **Opportunity Analysis**:
+  - Potential Collaborations: Coordinating development of the Fondamenta area
+  - Competitive Vulnerabilities: Overextending if he expands too rapidly
+  - Threat Assessment: Could become a competitor in legal services if successful
+  - Recommended Approach: Maintain cooperative stance, look for mutual interests
+
+### [Player Name 2]
+- [Same structure repeated for each significant player]
+
+## Market Influence Map
+
+### Legal Services
+- **Dominant Players**:
+  - [Notary Guild]: ~60% market share, controls training and licensing
+  - [Patrician Law Firms]: ~30% share, serve nobility and government  
+
+- **Market Dynamics**:
+  - Power Balance: Concentrated among guilds and patrician firms
+  - Barrier to Entry: Moderate for popolani, high for non-guild members
+  - Price Control: Largely set by guilds and major firms
+  - Quality Standards: Defined and enforced by Notary Guild
+
+- **Strategic Implications**:
+  - Entry Strategy: Offer competitive pricing and service for popolani clients
+  - Alliance Opportunities: Cooperate with other new popolani legal providers
+  - Competitive Approach: Avoid direct conflict with guilds initially  
+  - Risk Factors: Potential guild opposition or regulatory barriers
+
+### [Industry/Market 2]
+- [Same structure repeated for each significant market]
+
+## Political Landscape
+
+### [Faction/Interest Group 1]
+- **Composition**:
+  - Key Figures: 
+  - Resources:
+  - Objectives:
+
+- **Current Position**:
+  - Political Influence:
+  - Policy Priorities: 
+  - Alliances:
+  - Conflicts:
+
+- **Engagement Strategy**:
+  - Alignment with Your Interests:
+  - Relationship Development:
+  - Influence Approach:
+  - Risk Management:
+
+### [Faction/Interest Group 2]
+- [Same structure repeated for each significant faction]
+
+## Relationship Network Analysis
+
+### Key Alliances
+- [Player A] + [Player B]: [Nature of alliance], [Strength], [Impact on market]
+- [Additional alliances listed in same format]
+
+### Competitive Rivalries
+- [Player A] vs [Player B]: [Nature of rivalry], [Intensity], [Market effects]
+- [Additional rivalries listed in same format]
+
+### Power Brokers
+- [Player Name]: [Sources of influence], [Areas of control], [How to approach]
+- [Additional power brokers listed in same format]
+
+## Strategic Intelligence Needs
+
+### Information Gaps
+- Bass De Medici: Detailed financial situation, risk tolerance, long-term ambitions
+  Importance: High, will inform negotiation approach
+  Acquisition: Cultivate relationship, information sharing
+
+### Monitoring Priorities
+- Legal services market: New entrants, regulatory changes, guild activities  
+  Why: Could significantly impact my ability to operate
+  Indicators: Announcements, policy updates, shifts in market pricing
