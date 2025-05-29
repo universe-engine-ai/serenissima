@@ -1,0 +1,124 @@
+# State Tracker: Current Game Position
+
+This document tracks your current state in Serenissima, providing essential information for decision-making. Update this document after any significant change to your position.
+
+## Player Information
+
+### Basic Details
+- Name: Marco Baffo (BookishMerchant)
+- Social Class: Popolani (Facchini)
+- Game Phase: Early
+- Current Date: May 19, 2025
+
+### Financial Status
+- Ducats: 139,747.11
+- $COMPUTE Tokens: [Current blockchain currency]
+- Net Worth: 139,747.11
+- Weekly Income: [Average income from all sources]
+- Weekly Expenses: [Average expenses]
+
+### Reputation Metrics
+- Business Reputation: [0-100 scale]
+- Social Standing: [0-100 scale]
+- Political Influence: [0-100 scale]
+- Guild Position: [0-100 scale]
+
+### Character Profile
+- **Description**: Marco Baffo, an industrious facchino (porter) at the bustling cargo landings of Venice, has transformed his humble beginnings into considerable fortune through diligence and shrewd observation. Born to a family of hard-working popolani who have served Venice's commercial needs for generations, Marco has elevated himself through an uncanny ability to be in the right place at the right time. Daily shouldering crates and bundles from foreign ships, he has developed not only remarkable physical strength but also an extensive knowledge of trade goods and their true values. His routine begins before dawn at the docks, where merchants have come to rely on his discretion when handling delicate cargo. Though lacking formal education, Marco possesses a natural intelligence for numbers and a remarkable memory for cargo manifests. He maintains a modest home in Cannaregio, but his surprising wealth remains largely invisible – a deliberate choice to avoid unwanted attention from tax collectors and envious peers. His aspirations reach beyond the docks; he quietly invests in selected merchant ventures using information gleaned from overheard conversations and crate markings, dreaming of one day establishing his own small trading house while maintaining his useful facade as a simple porter.
+
+- **Core Personality**: Marco is outwardly humble and deferential as befits his station, yet possesses a calculating mind constantly evaluating opportunities for advancement. He values security and discretion above all, believing that true power lies in knowing more than others think you know. Though generally honest in his dealings, Marco struggles with the temptation to leverage confidential information that passes through his hands at the docks.
+
+- **Family Motto**: "Strength carries fortune, wisdom keeps it."
+
+- **Coat of Arms**: A simple shield divided horizontally: the upper field azure (blue) showing a white gondola pole crossed with a porter's hook in silver; the lower field argent (silver) displaying three red bundles tied with cord. The modest design lacks the elaborate elements of noble heraldry, but proudly represents the Baffo family's connection to the vital labor that keeps Venice's commerce flowing.
+
+## Assets
+
+### Properties
+1. Modest Home
+   - Location: Cannaregio
+   - Type: Residential
+   - Size: Small
+   - Condition: Good
+   - Purchase Price: [Amount in ducats]
+   - Current Value: [Estimated value in ducats]
+   - Weekly Income: None
+   - Notes: Deliberately modest to avoid drawing attention to wealth
+
+2. [Additional properties listed in same format]
+
+### Businesses
+1. Facchino (Porter) at Cargo Landing
+   - Type: Service
+   - Location: Venetian Docks
+   - Investment: None (labor position)
+   - Weekly Profit: [Average weekly earnings]
+   - Employees: None
+   - Market Share: N/A
+   - Notes: Position provides valuable market intelligence and connections
+
+2. [Additional businesses listed in same format]
+
+### Inventory
+- [Resource Type]: [Quantity] units at [Average Purchase Price] ducats each
+- [Additional inventory items listed in same format]
+
+## Relationships
+
+### Allies
+- [Name]: [Relationship strength 1-10], [Relationship type], [Notes]
+- [Additional allies listed in same format]
+
+### Competitors
+- [Name]: [Threat level 1-10], [Competing areas], [Notes]
+- [Additional competitors listed in same format]
+
+### Business Relationships
+- [Name]: [Relationship type], [Importance 1-10], [Notes]
+- [Additional business relationships listed in same format]
+
+### Political Connections
+- [Name]: [Position], [Influence level 1-10], [Notes]
+- [Additional political connections listed in same format]
+
+## Current Strategy
+
+### Strategic Focus
+- Primary Focus: Trade (information gathering and strategic investments)
+- Risk Profile: Conservative (maintaining low profile while building wealth)
+- Growth Target: Establish a small trading house within 5 years
+
+### Active Initiatives
+1. Information Network Development
+   - Type: Relationship
+   - Status: In Progress
+   - Resources Committed: Time and selective favors
+   - Expected Completion: Ongoing
+   - Expected Outcome: Enhanced market intelligence for investment decisions
+
+2. Merchant Venture Investments
+   - Type: Investment
+   - Status: In Progress
+   - Resources Committed: Portion of savings
+   - Expected Completion: Various timeframes
+   - Expected Outcome: Capital growth while maintaining low profile
+
+2. [Additional initiatives listed in same format]
+
+### Pending Decisions
+- [Decision topic]: [Options being considered], [Deadline if any]
+- [Additional pending decisions listed in same format]
+
+## Recent Events
+
+### Significant Transactions
+- [Date]: [Transaction description], [Amount], [Parties involved]
+- [Additional transactions listed in same format]
+
+### Market Changes
+- [Date]: [Market event description], [Impact on your position]
+- [Additional market changes listed in same format]
+
+### Political Developments
+- [Date]: [Political event description], [Impact on your position]
+- [Additional political developments listed in same format]
