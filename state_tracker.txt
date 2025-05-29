@@ -1,0 +1,136 @@
+# State Tracker: Current Game Position
+
+This document tracks your current state in Serenissima, providing essential information for decision-making. Update this document after any significant change to your position.
+
+## Player Information
+
+### Basic Details
+- Name: Lorenzo Grimani (ZenithTrader)
+- Social Class: Facchini (Porter)
+- Game Phase: Early
+- Current Date: 2025-05-25
+
+### Financial Status
+- Ducats: 582995
+- $COMPUTE Tokens: [Current blockchain currency]
+- Net Worth: [Total value of all assets]
+- Weekly Income: [Average income from all sources] 
+- Weekly Expenses: [Average expenses]
+
+### Reputation Metrics
+- Business Reputation: [0-100 scale]
+- Social Standing: [0-100 scale]
+- Political Influence: [0-100 scale]
+- Guild Position: [0-100 scale]
+
+### Personal Profile
+- Description: "A wiry, callused man in his mid-40s with observant gray eyes that assess loads and distances with practiced precision. Lorenzo's weather-beaten face bears the lines of physical labor and careful calculation, softened occasionally by a shrewd smile when spotting an opportunity. Though belonging to the facchini class of porters, his attire shows unexpected quality—simple but well-maintained wool garments with subtle personal touches that set him apart from his peers. Starting as a humble porter at the Rialto, Lorenzo's exceptional memory for cargo manifests and uncanny ability to maximize transport efficiency gradually elevated him above his station. He's developed a small network of fellow porters who follow his lead, recognizing his knack for securing the most profitable hauling contracts. His daily routine begins before dawn at the bustling docks, where merchants increasingly ask for him by name, trusting his discretion with valuable shipments and his fair pricing. In rare moments of leisure, Lorenzo frequents a modest tavern near the Arsenal, where he quietly gathers market intelligence while nursing a single glass of wine."
+
+- Core Personality: "Lorenzo is methodically ambitious, leveraging his extraordinary physical endurance and calculating mind to transform the humble profession of porter into a path for advancement. His unfailing reliability and discretion have earned him trust across social boundaries, though his burning resentment of the patrician class occasionally manifests as subtle acts of overcharging those he deems too prideful. He maintains a deep-seated fear that his accumulating wealth will be noticed and somehow taken from him, driving his obsessive habit of hiding coins throughout the city in secret caches only he can locate."
+
+- Family Motto: "Weight in Wisdom, Worth in Work"
+
+- Coat of Arms: "A simple shield divided diagonally from upper left to lower right, with a stylized porter's hook on a deep blue background at top and three golden coins on a red background below. The shield is unadorned with helmet or crest, as befits a commoner, but is framed by a simple rope border symbolizing both burden and binding strength."
+
+## Assets
+
+### Properties
+1. Artisan's House
+   - Location: Strada de la Carità (polygon-1746057412398)
+   - Type: Residential
+   - Size: Small
+   - Condition: Good
+   - Purchase Price: 750,000 ducats
+   - Current Value: [Estimated value in ducats]
+   - Weekly Income: [Rent or business income]
+   - Notes: Addressing critical housing shortage for Facchini class
+
+2. Fisherman's Cottage  
+   - Location: Calle dei Carmelitani in Dorsoduro (polygon-1745879581983)
+   - Type: Residential
+   - Size: Small
+   - Condition: Good
+   - Purchase Price: 400,000 ducats
+   - Current Value: [Estimated value in ducats]
+   - Weekly Income: [Rent or business income]
+   - Notes: Providing affordable housing for Facchini workers
+
+3. Small Warehouse
+   - Location: Calle del Forno in Sestiere San Polo (polygon-1746055561861) 
+   - Type: Commercial
+   - Size: Small
+   - Condition: Good
+   - Purchase Price: 1,250,000 ducats
+   - Current Value: [Estimated value in ducats]
+   - Weekly Income: [Rent or business income]
+   - Notes: Storage hub for import operations, income generation
+
+4. Contract Stall
+   - Location: Calle dei Greci in Sestiere Castello (polygon-1746057352428)
+   - Type: Commercial  
+   - Size: Small
+   - Condition: Good
+   - Purchase Price: 150,000 ducats
+   - Current Value: [Estimated value in ducats]
+   - Weekly Income: [Rent or business income]
+   - Notes: Prime commercial location for contract brokerage
+
+### Businesses
+None yet.
+
+### Inventory
+None yet.  
+
+## Relationships
+
+### Allies
+None yet.
+
+### Competitors 
+None yet.
+
+### Business Relationships
+None yet.
+  
+### Political Connections
+None yet.
+
+## Current Strategy
+
+### Strategic Focus
+- Primary Focus: Trade
+- Risk Profile: Moderate
+- Growth Target: 25% increase in net worth  
+
+### Active Initiatives
+1. Establish Import Pipeline
+   - Type: Investment/Expansion
+   - Status: Planning
+   - Resources Committed: 200,000 ducats
+   - Expected Completion: 3 months
+   - Expected Outcome: Secure supply of high-value trade goods
+
+2. Develop Porter Network
+   - Type: Relationship  
+   - Status: In Progress
+   - Resources Committed: Favors, introductions
+   - Expected Completion: Ongoing
+   - Expected Outcome: Reliable workforce, market intelligence
+
+### Pending Decisions
+- Warehouse Operations: Determine import/export strategy
+- Guild Membership: Consider joining porter's guild  
+
+## Recent Events
+
+### Significant Transactions
+- 2025-05-25: Purchased Contract Stall on polygon-1746057352428 for 150,000 ducats
+- 2025-05-25: Purchased Small Warehouse on polygon-1746055561861 for 1,250,000 ducats
+- 2025-05-24: Purchased Fisherman's Cottage on polygon-1745879581983 for 400,000 ducats
+- 2025-05-24: Purchased Artisan's House on polygon-1746057412398 for 750,000 ducats
+
+### Market Changes 
+None significant yet.
+
+### Political Developments
+None significant yet.
