@@ -1,0 +1,239 @@
+{
+  "citizen": {
+    "username": "GamingPatrizio",
+    "ducats": 129171.4320774987,
+    "total_buildings": 5,
+    "financial": {
+      "total_income": 3050,
+      "total_maintenance": 0,
+      "total_rent_received": 3050,
+      "net_income": 3050
+    }
+  },
+  "buildings": [
+    {
+      "id": "building_45.438048_12.347155",
+      "type": "bakery",
+      "rent_amount": 700,
+      "income": 0,
+      "maintenance_cost": 0,
+      "occupant": null,
+      "is_occupied": true,
+      "wage_amount": 600
+    },
+    {
+      "id": "building_45.439358_12.325904",
+      "type": "bakery",
+      "rent_amount": 700,
+      "income": 0,
+      "maintenance_cost": 0,
+      "occupant": null,
+      "is_occupied": true,
+      "wage_amount": 600
+    },
+    {
+      "id": "building_45.431950_12.351984",
+      "type": "merchant_s_house",
+      "rent_amount": 850,
+      "income": 0,
+      "maintenance_cost": 0,
+      "occupant": null,
+      "is_occupied": true,
+      "wage_amount": 16000
+    },
+    {
+      "id": "building_45.435204_12.340810",
+      "type": "bakery",
+      "rent_amount": 700,
+      "income": 0,
+      "maintenance_cost": 0,
+      "occupant": null,
+      "is_occupied": true,
+      "wage_amount": 600
+    },
+    {
+      "id": "building_new_small_warehouse",
+      "type": "small_warehouse",
+      "rent_amount": 0,
+      "income": 0, 
+      "maintenance_cost": 0,
+      "occupant": null,
+      "is_occupied": false,
+      "wage_amount": 0
+    },
+    {
+      "id": "building_new_market_stall",
+      "type": "market_stall",
+      "rent_amount": 0,
+      "income": 0,
+      "maintenance_cost": 0, 
+      "occupant": null,
+      "is_occupied": false,
+      "wage_amount": 0
+    }
+  ],
+  "lands": [
+    {
+      "id": "polygon-1746055995050",
+      "buildings": [
+        {
+          "id": "building_45.440864_12.335067",
+          "type": "blacksmith",
+          "owner": "Italia",
+          "lease_amount": 850
+        }
+      ],
+      "last_income": 9484,
+      "building_points": 25,
+      "highest_bid": 2114185.7382904617,
+      "current_owner": "GamingPatrizio"
+    },
+    {
+      "id": "polygon-1746056319492", 
+      "buildings": [
+        {
+          "id": "building_45.436674_12.339536",
+          "type": "artisan_s_house",
+          "owner": null,
+          "lease_amount": 850
+        }
+      ],
+      "last_income": 11233,
+      "building_points": 8,
+      "highest_bid": 1449092.063232,
+      "current_owner": "GamingPatrizio"
+    },
+    {
+      "id": "polygon-1746056756754",
+      "buildings": [],
+      "last_income": 0,
+      "building_points": 1,
+      "highest_bid": null,
+      "current_owner": "GamingPatrizio"
+    },
+    {
+      "id": "polygon-1746056903912",
+      "buildings": [
+        {
+          "id": "building_45.435204_12.340810",
+          "type": "bakery",
+          "owner": "GamingPatrizio",
+          "lease_amount": 0
+        }
+      ],
+      "last_income": 9517,
+      "building_points": 11,
+      "highest_bid": 852552.7226181816,
+      "current_owner": "GamingPatrizio"
+    },
+    {
+      "id": "polygon-1746055561861",
+      "buildings": [
+        {
+          "id": "building_new_small_warehouse",
+          "type": "small_warehouse",
+          "owner": "GamingPatrizio",
+          "lease_amount": 0
+        },
+        {
+          "id": "building_45.443917_12.327365",
+          "type": "artisan_s_house",
+          "owner": "VeniceTrader88",
+          "lease_amount": 0
+        },
+        {
+          "id": "building_45.444326_12.328722",
+          "type": "market_stall",
+          "owner": "ProSilkTrader",
+          "lease_amount": 0  
+        },
+        {
+          "id": "building-07b460e1-30ae-44df-a9e5-be0450c1b781",
+          "type": "bakery",
+          "owner": "ShadowHunter",
+          "lease_amount": 0
+        },
+        {
+          "id": "canal_45.447787_12.320340",
+          "type": "public_dock",
+          "owner": "ConsiglioDeiDieci",
+          "lease_amount": 0
+        },
+        {
+          "id": "building_45.444368_12.327293",
+          "type": "blacksmith",
+          "owner": "Italia",
+          "lease_amount": 0
+        },
+        {
+          "id": "building_45.444378_12.329395",
+          "type": "small_warehouse",
+          "owner": "Italia",
+          "lease_amount": 0
+        }
+      ],
+      "last_income": 66146,
+      "building_points": 47,
+      "highest_bid": null,
+      "current_owner": null
+    },
+    {
+      "id": "polygon-1746057352428",
+      "buildings": [
+        {
+          "id": "building_new_market_stall",
+          "type": "market_stall",
+          "owner": "GamingPatrizio",
+          "lease_amount": 0
+        },
+        {
+          "id": "bridge_45.430557_12.356526",
+          "type": "bridge",
+          "owner": "ConsiglioDeiDieci",
+          "lease_amount": 0
+        },
+        {
+          "id": "building_45.431354_12.353846",
+          "type": "market_stall",
+          "owner": "trader4life",
+          "lease_amount": 0
+        },
+        {
+          "id": "building_45.431499_12.357067", 
+          "type": "market_stall",
+          "owner": "Trade4Fun",
+          "lease_amount": 0
+        },
+        {
+          "id": "canal_45.430345_12.353923",
+          "type": "public_dock",
+          "owner": "ConsiglioDeiDieci",
+          "lease_amount": 0
+        },
+        {
+          "id": "building_45.431420_12.355175",
+          "type": "public_well",
+          "owner": "ConsiglioDeiDieci",
+          "lease_amount": 0
+        },
+        {
+          "id": "building_45.431863_12.354551",
+          "type": "market_stall",
+          "owner": "DesertRanger",
+          "lease_amount": 0
+        },
+        {
+          "id": "building_45.431950_12.351984",
+          "type": "merchant_s_house",
+          "owner": "GamingPatrizio",
+          "lease_amount": 850
+        }
+      ],
+      "last_income": 73382,
+      "building_points": 46,
+      "highest_bid": null,
+      "current_owner": null
+    }
+  ],
+  "timestamp": "2025-05-24T01:05:17.713996"
+}

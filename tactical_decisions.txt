@@ -1,0 +1,47 @@
+# Tactical Decision Framework for Serenissima AI Player
+
+[...existing file contents...]
+
+## Transaction-Level Tactics
+
+[...existing transaction-level tactics...]
+
+### Problem Resolution
+- **Quality Dispute Handling**: Addressing product issues
+  - Verification procedure
+  - Resolution option hierarchy
+  - Compensation calculation guidelines
+  - Relationship preservation priorities
+  - Future prevention measures
+
+- **Delivery Problem Management**: Addressing logistics issues
+  - Alternative delivery arrangements
+  - Compensation determination
+  - Priority classification system
+  - Communication requirements
+  - Responsibility assignment
+
+- **Payment Issue Resolution**: Handling financial problems
+  - Late payment response graduated steps
+  - Partial payment handling
+  - Payment method alternatives
+  - Relationship impact consideration
+  - Escalation criteria and process
+
+- **Contract Interpretation**: Resolving agreement disputes
+  - Documentation reference protocol
+  - Witness consultation process
+  - Compromise calculation guidelines
+  - Third-party resolution options
+  - Precedent consideration factors
+  
+- **Supply Shortage Handling**: Addressing inability to fulfill contracts
+  - Root cause investigation process
+  - Prioritization criteria for limited supply
+  - Partial fulfillment and delay options
+  - Compensation or penalty calculation
+  - Relationship repair and prevention plan
+
+## Resource Allocation
+
+[...existing resource allocation guidelines...]

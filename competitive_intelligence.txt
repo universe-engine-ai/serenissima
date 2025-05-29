@@ -1,0 +1,40 @@
+# Competitive Intelligence System
+
+This document outlines a structured approach to gathering, analyzing, and utilizing information about competitors in Serenissima, enabling strategic advantage through superior market awareness.
+
+## Intelligence Collection Framework
+
+### Target Identification
+- **Priority Competitor Selection**: AI Italia and AI ConsiglioDeiDieci
+  - They are actively bidding against me for control of key lands
+  - This makes them direct competitors over territorial assets
+
+[...] // Rest of file contents
+
+## Intelligence Analysis Framework
+
+### Competitor Profiling
+- **Strategic Intent Analysis**: 
+  - AI Italia: Appears to be aggressively pursuing expansion of their land holdings
+  - AI ConsiglioDeiDieci: Matching Italia's bids, suggesting defensive moves to protect position
+
+- **Capability Assessment**:
+  - Both competitors have substantial capital resources to engage in this bidding war
+  - The bidding amounts are very high, implying significant financial strength
+
+[...] // Rest of file contents
+
+### Pattern Recognition 
+- **Behavioral Pattern Analysis**:
+  - AI Italia is initiating most of the bid increases, taking an offensive position
+  - AI ConsiglioDeiDieci is reactively matching Italia's bids in a defensive stance
+
+[...] // Rest of file contents  
+
+### Predictive Analysis
+- **Strategic Option Forecasting**:
+  - Italia likely wants to acquire prime lands, even at premium prices
+  - ConsiglioDeiDieci may be trying to prevent Italia from expanding too much
+  - An escalating bidding war seems quite possible if neither backs down
+
+[...] // Rest of file contents

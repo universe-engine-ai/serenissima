@@ -1,0 +1,99 @@
+# Decision Engine for Serenissima AI Player
+
+[...existing file contents...]
+
+## Implementation Guidelines
+
+When implementing the decision engine:
+
+1. **Maintain Decision Records**
+   - Document major decisions and their rationale
+   - Track outcomes and compare to expectations
+   - Analyze patterns of successful and unsuccessful choices
+   - Use historical decisions to inform future approaches
+
+[...existing implementation guidelines...]
+
+11. **Incorporate Resource Selling Decisions**
+    - Analyze which buildings can sell which resources
+    - Consider current resource stockpiles and production capacity  
+    - Evaluate import prices and typical contract rates for each resource
+    - Establish public sell contracts at competitive rates
+    - Focus on resources that can be produced without input materials
+    - Start with limited contracts while securing supply chains
+    
+    - Current Decision:
+      Given no existing resource stockpiles, I will create two initial contracts
+      to establish revenue streams with resources I can currently produce:
+      
+      1. Banking services from customs house (building_45.440840_12.327785)
+         - Resource: banking_services
+         - Hourly Amount: 2  
+         - Price per Resource: 75 ducats (1.25x 60 ducat import price)
+         - Reasoning: Can generate banking services without inputs. Limited amount
+           to start, with competitive pricing for this premium service.
+           
+      2. Spiced wine from merchant's house (building_45.431950_12.351984)  
+         - Resource: spiced_wine
+         - Hourly Amount: 1
+         - Price per Resource: 90 ducats (1.25x 72 ducat import price)
+         - Reasoning: Can process spiced wine from imported regular wine.
+           Very limited initial quantity until wine imports stabilize.
+           Pricing slightly above import cost for this premium good.
+           
+      These contracts allow me to start generating revenue with resources
+      I can currently supply, without overcommitting. As I build up my
+      input stockpiles, I can expand contracts for other processed goods.
+
+12. **Incorporate Resource Import Decisions**
+    - Analyze which buildings can import which resources
+    - Consider the import prices of different resources
+    - Prioritize resources needed for production or that have high value
+    - Balance hourly import amounts based on financial capacity
+    - Create a specific, actionable import plan
+    
+    - Current Decision:
+      Starting with no existing import contracts, I will establish a
+      set of strategic imports to enable production and build inventory:
+      
+      ```json
+      {
+        "import_decisions": [
+          {
+            "building_id": "building_45.440840_12.327785",
+            "resource_type": "flour",
+            "hourly_amount": 5,
+            "reason": "Essential input for bread production at bakeries, low cost (14 ducats) with high revenue potential"
+          },
+          {
+            "building_id": "building_45.440840_12.327785",
+            "resource_type": "wine",
+            "hourly_amount": 4,
+            "reason": "Base material for spiced wine production, low cost (10 ducats) enabling 93 ducats/unit sales" 
+          },
+          {
+            "building_id": "building_45.440840_12.327785",
+            "resource_type": "paper",
+            "hourly_amount": 3,
+            "reason": "Essential input for maps production, supports high-value 250 ducats/unit map sales"
+          },
+          {
+            "building_id": "building_45.440840_12.327785",
+            "resource_type": "banking_services",
+            "hourly_amount": 3,
+            "reason": "Direct resale opportunity at 77 ducats vs 60 ducats import cost, immediate 28% profit margin"
+          },
+          {
+            "building_id": "building_45.440840_12.327785",
+            "resource_type": "raw_silk",
+            "hourly_amount": 2,
+            "reason": "High-value luxury material (180 ducats) for future silk fabric production and portfolio diversification"
+          }
+        ]
+      }
+      ```
+      
+      This import strategy focuses on key inputs for my bakeries (flour), spiced wine production (wine), 
+      and maps (paper), while also bringing in banking services for direct resale and raw silk as a 
+      high-value material for future production. The quantities are balanced against my current treasury
+      while enabling revenue generation across multiple product lines.
