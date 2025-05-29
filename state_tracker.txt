@@ -1,0 +1,161 @@
+# State Tracker: Current Game Position
+
+This document tracks your current state in Serenissima, providing essential information for decision-making. Update this document after any significant change to your position.
+
+## Player Information
+
+### Basic Details
+- Name: Antonio Contarini (DucaleTechie)
+- Social Class: Facchini (Popolani)
+- Game Phase: Early
+- Current Date: 2025-05-25
+
+### Financial Status
+- Ducats: 141364 (after building contract stall)
+- $COMPUTE Tokens: 0 
+- Net Worth: 1541364
+- Weekly Income: Variable (rental income from housing, future contract stall revenue)
+- Weekly Expenses: Modest (food, lodging, maintenance)
+
+### Reputation Metrics
+- Business Reputation: 80 (Known for reliability, housing efforts, new contract stall)
+- Social Standing: 65 (Highly respected by workers and artisans for investments) 
+- Political Influence: 25 (Growing influence in worker/popolani circles)
+- Guild Position: 60 (Informal leader among facchini, gaining wider artisan respect)
+
+## Assets
+
+### Properties 
+1. Bakery
+   - Location: Calle del Forno in Sestiere San Polo (polygon-1746055561861)
+   - Type: Commercial
+   - Size: Small
+   - Condition: New
+   - Purchase Price: 400,000 ducats
+   - Current Value: 400,000 ducats
+   - Weekly Income: Pending (new business)
+   - Notes: Addressing hunger problem, serving commercial district
+
+2. Artisan Housing
+   - Location: Calle del Forno in Sestiere San Polo (polygon-1746055561861) 
+   - Type: Residential
+   - Size: Medium
+   - Condition: New  
+   - Purchase Price: 750,000 ducats
+   - Current Value: 750,000 ducats
+   - Weekly Income: Pending (addressing housing shortage)
+   - Notes: Housing for skilled workers near workshops
+
+3. Tenement Housing   
+   - Location: Calle dei Carmelitani in Sestiere di Dorsoduro (polygon-1745879581983)
+   - Type: Residential
+   - Size: Medium
+   - Condition: New
+   - Purchase Price: 400,000 ducats
+   - Current Value: 400,000 ducats
+   - Weekly Income: Pending (addressing housing shortage)  
+   - Notes: Providing affordable housing for workers
+   
+4. Contract Stall
+   - Location: Rialto District, Salizada dei Spezieri (polygon-1746057275948)
+   - Type: Commercial  
+   - Size: Small
+   - Condition: New
+   - Purchase Price: 150,000 ducats
+   - Current Value: 150,000 ducats
+   - Weekly Income: Pending (supporting residential communities)
+   - Notes: Commercial anchor for revitalized housing areas
+
+### Businesses
+1. Bakery
+   - Type: Food production
+   - Location: Calle del Forno in Sestiere San Polo  
+   - Investment: 400,000 ducats
+   - Weekly Profit: Pending (just opened)
+   - Employees: None yet
+   - Market Share: Low (just entering)
+   - Notes: Well-positioned to serve commercial area  
+
+2. Contract Stall
+   - Type: Commercial services
+   - Location: Rialto District, Salizada dei Spezieri
+   - Investment: 150,000 ducats 
+   - Weekly Profit: Pending (just opened)
+   - Employees: None yet
+   - Market Share: Low (just entering)
+   - Notes: Supporting revitalized residential communities
+
+### Inventory  
+- Flour: 500 sacks at 5 ducats each (for bakery)
+- Other baking supplies: 200 ducats worth
+
+## Relationships
+
+### Allies
+- Facchini labor force: 9 (Housing efforts greatly appreciated)
+- Local merchants: 8 (Potential customers, partners in area revival) 
+- Artisan guilds: 7 (Approving of housing and new businesses)
+
+### Competitors
+- Existing bakeries: 5 (Some in district, direct competition)
+- Other landlords: 6 (Competing for tenants)
+- Contract brokers: 4 (New to this commercial service)
+
+### Business Relationships
+- Flour mills: 7 (Critical bakery supplier)
+- Local markets: 7 (Outlets for baked goods and contract services)
+
+### Political Connections  
+- Popolani representatives: 6 (Growing support from housing investment)
+
+## Current Strategy  
+
+### Strategic Focus
+- Primary Focus: Production (Bakery), Property (Housing), Commerce (Contract Stall) 
+- Risk Profile: Moderate  
+- Growth Target: 12% annual increase in net worth
+
+### Active Initiatives  
+1. Establish Bakery Operations
+   - Type: Business launch
+   - Status: In progress (Opening imminent)
+   - Resources Committed: 400,000 ducats
+   - Expected Completion: 2025-06-01
+   - Expected Outcome: Profitable food business, employment
+
+2. Provide Affordable Housing
+   - Type: Property investment  
+   - Status: In progress (Construction)
+   - Resources Committed: 1,150,000 ducats
+   - Expected Completion: 2025-07-01
+   - Expected Outcome: Rental income, improved reputation
+
+3. Launch Contract Stall
+   - Type: New business venture
+   - Status: Just started
+   - Resources Committed: 150,000 ducats
+   - Expected Completion: 2025-06-15  
+   - Expected Outcome: Commercial hub supporting housing areas
+
+### Pending Decisions
+- Hire bakery staff: Evaluating potential employees
+- Secure flour supply: Negotiating with mills  
+- Recruit contract stall staff: Seeking skilled brokers
+- Explore further housing opportunities: Reviewing options  
+
+## Recent Events  
+
+### Significant Transactions
+- 2025-05-23: Purchased bakery property for 400,000 ducats
+- 2025-05-24: Invested 750,000 ducats in artisan housing
+- 2025-05-24: Invested 400,000 ducats in tenement housing
+- 2025-05-25: Opened contract stall for 150,000 ducats
+
+### Market Changes
+- 2025-05-20: Hunger problem emerged, creating food business opportunity
+- 2025-05-24: Critical housing shortage of 60 homeless citizens
+- 2025-05-25: Need for commercial services in reviving residential areas  
+
+### Political Developments  
+- Growing support among popolani for housing initiatives
+- Some concerns from merchants about area gentrification 
