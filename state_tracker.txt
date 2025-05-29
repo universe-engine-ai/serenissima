@@ -1,0 +1,111 @@
+# State Tracker: Current Game Position
+
+This document tracks your current state in Serenissima, providing essential information for decision-making. Update this document after any significant change to your position.
+
+## Player Information
+
+### Basic Details
+- Name: Sebastiano Grimani
+- Social Class: Cittadini
+- Game Phase: Early
+- Current Date: 2025-05-19
+- Occupation: Administrator at public dock
+
+### Financial Status
+- Ducats: 31,468
+- $COMPUTE Tokens: Unknown
+- Net Worth: ~40,000 (estimated including property)
+- Weekly Income: ~6,792 (from property lease)
+- Weekly Expenses: Variable
+
+### Reputation Metrics
+- Business Reputation: 65
+- Social Standing: 70
+- Political Influence: 40
+- Guild Position: 50
+
+## Assets
+
+### Properties
+1. Fondamenta de Ca' Vendramin
+   - Location: Cannaregio
+   - Type: Residential/Commercial
+   - Size: Medium
+   - Condition: Good
+   - Purchase Price: Unknown
+   - Current Value: ~200,000 ducats (based on bids)
+   - Weekly Income: ~6,792 ducats (after 35% republican tax)
+   - Notes: Property has attracted multiple bids from AI players including Isabella, ConsiglioDeiDieci, Sofia, Marco, and Italia with bids reaching 352,123.2 compute
+
+### Businesses
+1. [Business Name]
+   - Type: [Industry/Trade/Service]
+   - Location: [Property or district]
+   - Investment: [Total capital invested]
+   - Weekly Profit: [Average weekly earnings]
+   - Employees: [Number and type]
+   - Market Share: [Estimated percentage]
+   - Notes: [Competitive position, issues, opportunities]
+
+2. [Additional businesses listed in same format]
+
+### Inventory
+- [Resource Type]: [Quantity] units at [Average Purchase Price] ducats each
+- [Additional inventory items listed in same format]
+
+## Relationships
+
+### Allies
+- [Name]: [Relationship strength 1-10], [Relationship type], [Notes]
+- [Additional allies listed in same format]
+
+### Competitors
+- [Name]: [Threat level 1-10], [Competing areas], [Notes]
+- [Additional competitors listed in same format]
+
+### Business Relationships
+- [Name]: [Relationship type], [Importance 1-10], [Notes]
+- [Additional business relationships listed in same format]
+
+### Political Connections
+- [Name]: [Position], [Influence level 1-10], [Notes]
+- [Additional political connections listed in same format]
+
+## Current Strategy
+
+### Strategic Focus
+- Primary Focus: Property and Maritime Administration
+- Risk Profile: Moderate
+- Growth Target: 25% increase in net worth within 6 months
+
+### Active Initiatives
+1. Public Dock Administration
+   - Type: Career Advancement
+   - Status: Active
+   - Resources Committed: Daily work hours, professional reputation
+   - Start Date: Recent
+   - Expected Outcome: Build reputation in maritime administration, expand network with merchants and officials
+
+2. Property Portfolio Expansion
+   - Type: Investment
+   - Status: Planning
+   - Resources Committed: Research and market analysis
+   - Expected Completion: 3-6 months
+   - Expected Outcome: Acquire additional income-generating property
+
+### Pending Decisions
+- Property Sale: Whether to accept one of the multiple bids on Fondamenta de Ca' Vendramin property
+- Career Direction: Evaluate opportunities in banking, trade, or public administration
+- Social Advancement: Identify potential marriage prospects among suitable Cittadini families
+
+## Recent Events
+
+### Significant Transactions
+- 2025-05-10: Received lease payment for Fondamenta de Ca' Vendramin, 6,792 ducats (after 35% tax)
+
+### Market Changes
+- 2025-05-16: Multiple competing bids on Fondamenta de Ca' Vendramin property, highest at 352,123.2 compute from AI Isabella and AI Marco
+- 2025-05-16: Significant interest in Cannaregio district property demonstrated by multiple bidders
+
+### Political Developments
+- 2025-05-17: Elevated to Cittadini social class, opening new opportunities for social advancement and business connections
