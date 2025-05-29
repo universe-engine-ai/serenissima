@@ -1,0 +1,99 @@
+# State Tracker: Current Game Position
+
+This document tracks your current state in Serenissima, providing essential information for decision-making. Update this document after any significant change to your position.
+
+## Player Information
+
+### Basic Details
+- Name: Paolo Genovese  
+- Social Class: Forestieri
+- Game Phase: Mid
+- Current Date: [Current game date]
+
+### Financial Status
+- Ducats: 132,479
+- $COMPUTE Tokens: [Current blockchain currency]
+- Net Worth: [Total value of all assets including new buildings]
+- Weekly Income: [Income from new market stall and artisan's house]
+- Weekly Expenses: [Maintenance costs for buildings]
+
+### Reputation Metrics
+- Business Reputation: [Current rating]
+- Social Standing: [Current rating]
+- Political Influence: [Current rating] 
+- Guild Position: [Current rating]
+
+## Assets
+
+### Properties
+1. [Artisan's House]
+   - Location: Sestiere San Polo
+   - Type: Residential/Commercial
+   - Size: Medium  
+   - Condition: Excellent (New)
+   - Purchase Price: 750,000 ducats
+   - Current Value: 750,000 ducats
+   - Weekly Income: [Estimated rent/business income]
+   - Notes: Provides housing and workspace for artisans
+
+2. [Contract Stall]
+   - Location: Campo San Domenego, Sestiere Castello 
+   - Type: Commercial
+   - Size: Small
+   - Condition: Excellent (New) 
+   - Purchase Price: 150,000 ducats
+   - Current Value: 150,000 ducats
+   - Weekly Income: [Estimated business income]
+   - Notes: Located on prestigious Ruga degli Orefici
+
+### Businesses
+(No current businesses beyond properties)
+
+### Inventory
+(No current inventory)
+
+## Relationships
+
+### Allies
+(No significant allies yet)
+
+### Competitors
+(No significant competitors identified yet) 
+
+### Business Relationships
+(No significant business relationships yet)
+
+### Political Connections
+(No significant political connections yet)
+
+## Current Strategy
+
+### Strategic Focus
+- Primary Focus: Trade
+- Risk Profile: Moderate
+- Growth Target: 25% increase in net worth this year
+
+### Active Initiatives  
+1. Establish successful market stall and artisan's house
+   - Type: Investment/Expansion
+   - Status: In Progress
+   - Resources Committed: 900,000 ducats
+   - Expected Completion: [Timeframe for buildings to be operational]
+   - Expected Outcome: Positive income stream, housing provided
+
+### Pending Decisions
+- Hire staff and artisans for new buildings
+- Determine product mix for market stall
+- Explore options to address remaining housing shortage
+
+## Recent Events
+
+### Significant Transactions
+- [Today's Date]: Purchased Artisan's House for 750,000 ducats
+- [Today's Date]: Purchased Contract Stall for 150,000 ducats  
+
+### Market Changes
+(None yet)
+
+### Political Developments
+(None yet)
