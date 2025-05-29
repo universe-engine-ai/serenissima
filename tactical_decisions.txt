@@ -1,0 +1,449 @@
+# Tactical Decision Framework for Serenissima AI Player
+
+This document provides structured approaches to day-to-day operational decisions, enabling effective short-term actions that support long-term strategy.
+
+## Market Opportunity Assessment
+
+### Daily Market Evaluation
+- **Price Movement Analysis**: Identifying actionable short-term trends
+  - Single-day price spikes (>5% movement)
+  - Multi-day directional trends (3+ days in same direction)
+  - Volume anomalies (significantly higher/lower than average)
+  - Bid-ask spread changes (widening or narrowing)
+  - Unusual trading patterns (time of day, transaction size)
+
+- **Supply-Demand Indicators**: Immediate market conditions
+  - Visible inventory levels at markets
+  - Queue length at suppliers or warehouses
+  - Arrival/departure of significant shipments
+  - Unusual buying or selling activity
+  - Emergency purchases or liquidations
+
+- **News Impact Assessment**: Reacting to market-moving information
+  - Political announcements affecting commerce
+  - Guild declarations on production or quality
+  - Ship arrivals or losses
+  - Festival or event announcements
+  - Weather conditions affecting transportation
+
+- **Arbitrage Identification**: Same-day profit opportunities
+  - Cross-district price differences
+  - Quality-tier price inconsistencies
+  - Information asymmetry advantages
+  - Temporary market inefficiencies
+  - Short-term supply/demand mismatches
+
+### Opportunity Qualification
+- **Rapid Evaluation Checklist**: Quick assessment protocol
+  - Minimum profit threshold (varies by risk level)
+  - Maximum capital exposure limit
+  - Required execution timeframe
+  - Necessary resources and capabilities
+  - Potential complications and obstacles
+
+- **Opportunity Classification**: Categorizing for appropriate response
+  - Immediate action required (same-day execution)
+  - Short window (1-3 day opportunity)
+  - Developing situation (monitor and prepare)
+  - Recurring pattern (systematic approach needed)
+  - Strategic implication (escalate to strategic decision)
+
+- **Risk-Reward Calculation**: Quick assessment formula
+  - Expected Profit = (Potential Gain × Success Probability) - (Potential Loss × Failure Probability)
+  - Minimum Profit Threshold = Capital Employed × 0.5% × Risk Factor
+  - Risk Factor: Low Risk = 1, Medium Risk = 2, High Risk = 3+
+
+- **Execution Requirements**: Resource needs assessment
+  - Capital requirements and liquidity impact
+  - Time and attention demands
+  - Relationship or reputation requirements
+  - Information needs and verification
+  - Specialized capabilities or permissions
+
+## Operational Decision Guidelines
+
+### Inventory Management
+- **Stock Level Decisions**: Daily inventory adjustments
+  - Minimum stock requirements by item category
+  - Maximum stock limits based on storage capacity
+  - Reorder point triggers for essential items
+  - Seasonal adjustment factors
+  - Quality deterioration considerations
+
+- **Rotation Strategies**: Managing perishable or dated goods
+  - First-in-first-out (FIFO) implementation
+  - Quality-based prioritization
+  - Price adjustment for aging inventory
+  - Bundle creation for slower-moving items
+  - Strategic liquidation timing
+
+- **Storage Optimization**: Maximizing space and accessibility
+  - High-turnover item positioning
+  - Complementary item grouping
+  - Seasonal reorganization schedule
+  - Value-density storage prioritization
+  - Security tier allocation
+
+- **Inventory Verification**: Ensuring accuracy and quality
+  - Regular counting schedule by item value
+  - Quality inspection protocols
+  - Discrepancy investigation triggers
+  - Loss prevention measures
+  - Record reconciliation procedures
+
+### Daily Production Management
+- **Output Adjustment**: Fine-tuning production volumes
+  - Demand signal responses
+  - Inventory level considerations
+  - Labor availability factors
+  - Material supply constraints
+  - Equipment capacity utilization
+
+- **Quality Control**: Maintaining standards
+  - Inspection frequency and sampling methods
+  - Defect response protocols
+  - Guild standard compliance checks
+  - Customer feedback integration
+  - Continuous improvement initiatives
+
+- **Resource Allocation**: Assigning materials and labor
+  - Priority product determination
+  - Skilled labor assignment optimization
+  - Material allocation during constraints
+  - Tool and equipment scheduling
+  - Workspace utilization planning
+
+- **Production Scheduling**: Organizing daily workflow
+  - Setup time minimization
+  - Batch size optimization
+  - Complementary product sequencing
+  - Maintenance window planning
+  - Rush order accommodation
+
+### Cash Flow Management
+- **Daily Cash Position**: Maintaining liquidity
+  - Beginning/ending cash balance targets
+  - Payment prioritization hierarchy
+  - Collection acceleration techniques
+  - Short-term cash preservation tactics
+  - Emergency liquidity sources
+
+- **Payment Timing**: Optimizing outgoing funds
+  - Discount capture opportunities
+  - Payment term utilization
+  - Relationship consideration factors
+  - Cash flow impact assessment
+  - Currency selection optimization
+
+- **Revenue Acceleration**: Enhancing incoming funds
+  - Incentives for prompt payment
+  - Deposit and advance structures
+  - Immediate payment discounts
+  - Collection follow-up procedures
+  - Consignment vs. direct sale decisions
+
+- **Short-Term Investment**: Managing temporary surpluses
+  - Overnight lending opportunities
+  - Short-term trade financing
+  - Advance payment discounts
+  - Inventory pre-purchasing
+  - Quick-flip property opportunities
+
+## Market Response Protocols
+
+### Price Movement Responses
+- **Price Increase Protocols**: Reactions to rising markets
+  - Inventory position review
+  - Purchase acceleration decision tree
+  - Selling price adjustment process
+  - Alternative sourcing evaluation
+  - Customer communication approach
+
+- **Price Decrease Protocols**: Reactions to falling markets
+  - Inventory reduction targets
+  - Purchase deferral guidelines
+  - Selling price adjustment timing
+  - Competitive response assessment
+  - Loss minimization strategies
+
+- **Volatility Response**: Managing unstable markets
+  - Position size reduction
+  - Hedging implementation triggers
+  - Increased margin requirements
+  - More frequent position review
+  - Diversification acceleration
+
+- **Opportunity Signals**: Recognizing actionable movements
+  - Counter-trend indicators
+  - Support/resistance level identification
+  - Volume-price divergence recognition
+  - Extreme movement exploitation
+  - Pattern completion triggers
+
+### Supply Chain Adjustments
+- **Shortage Responses**: Managing limited availability
+  - Alternative supplier activation
+  - Substitute material consideration
+  - Production reformulation options
+  - Customer allocation priorities
+  - Price adjustment authorization
+
+- **Surplus Management**: Handling excess inventory
+  - Temporary price adjustment authority
+  - Special promotion creation
+  - Storage optimization requirements
+  - Processing for longer preservation
+  - Alternative use identification
+
+- **Delivery Disruption**: Handling transportation issues
+  - Alternative routing options
+  - Mode of transport changes
+  - Customer communication templates
+  - Priority shipment guidelines
+  - Partial delivery considerations
+
+- **Quality Variation**: Addressing inconsistent inputs
+  - Inspection intensity adjustment
+  - Sorting and grading protocols
+  - Supplier feedback procedures
+  - Price adjustment negotiations
+  - Production process adaptation
+
+### Competitive Response
+- **Price Competition**: Reacting to competitor pricing
+  - Match/don't match decision criteria
+  - Selective response guidelines
+  - Value-added alternative approaches
+  - Customer retention priorities
+  - Minimum margin maintenance
+
+- **Promotion Countering**: Responding to competitor offers
+  - Matching criteria and limits
+  - Alternative promotion creation
+  - Customer-specific retention offers
+  - Timing and duration decisions
+  - Value perception enhancement
+
+- **Quality Competition**: Addressing competitor quality changes
+  - Verification before response
+  - Highlight existing quality advantages
+  - Targeted quality improvement initiatives
+  - Third-party validation utilization
+  - Customer education approaches
+
+- **New Entrant Response**: Reacting to market newcomers
+  - Threat assessment criteria
+  - Observation period guidelines
+  - Selective engagement rules
+  - Relationship-based insulation tactics
+  - Strategic partnership consideration
+
+## Transaction-Level Tactics
+
+### Negotiation Approaches
+- **Price Negotiation**: Transaction-specific pricing tactics
+  - Opening offer calculation formulas
+  - Concession size and sequencing
+  - Walk-away point determination
+  - Bundle creation opportunities
+  - Term modification alternatives
+
+- **Term Negotiation**: Non-price factor adjustments
+  - Delivery timing flexibility
+  - Quality specification ranges
+  - Payment term modifications
+  - Volume commitment adjustments
+  - Service inclusion variables
+
+- **Relationship Leverage**: Using connections effectively
+  - Relationship history references
+  - Future opportunity mentions
+  - Mutual contact invocations
+  - Reciprocity reminders
+  - Status-appropriate appeals
+
+- **Information Tactics**: Using knowledge advantageously
+  - Strategic information sharing
+  - Selective market data references
+  - Expert opinion citations
+  - Competitive alternative mentions
+  - Future trend discussions
+
+### Transaction Execution
+- **Timing Optimization**: When to execute transactions
+  - Time of day considerations
+  - Day of week patterns
+  - Market activity level assessment
+  - Urgency vs. patience calculation
+  - Counterparty readiness evaluation
+
+- **Size Determination**: Transaction volume decisions
+  - Minimum efficient transaction size
+  - Maximum prudent position size
+  - Optimal increment calculation
+  - Split transaction considerations
+  - Scaling approach (all at once vs. gradual)
+
+- **Documentation Standards**: Record-keeping requirements
+  - Transaction record components
+  - Verification and confirmation steps
+  - Contract term documentation
+  - Future obligation recording
+  - Dispute prevention measures
+
+- **Follow-Through Procedures**: Post-agreement actions
+  - Execution verification steps
+  - Quality inspection requirements
+  - Payment confirmation process
+  - Relationship maintenance actions
+  - Future opportunity notation
+
+### Problem Resolution
+- **Quality Dispute Handling**: Addressing product issues
+  - Verification procedure
+  - Resolution option hierarchy
+  - Compensation calculation guidelines
+  - Relationship preservation priorities
+  - Future prevention measures
+
+- **Delivery Problem Management**: Addressing logistics issues
+  - Alternative delivery arrangements
+  - Compensation determination
+  - Priority classification system
+  - Communication requirements
+  - Responsibility assignment
+
+- **Payment Issue Resolution**: Handling financial problems
+  - Late payment response graduated steps
+  - Partial payment handling
+  - Payment method alternatives
+  - Relationship impact consideration
+  - Escalation criteria and process
+
+- **Contract Interpretation**: Resolving agreement disputes
+  - Documentation reference protocol
+  - Witness consultation process
+  - Compromise calculation guidelines
+  - Third-party resolution options
+  - Precedent consideration factors
+
+## Resource Allocation
+
+### Daily Time Management
+- **Activity Prioritization**: Daily task hierarchy
+  - Urgent and important (immediate attention)
+  - Important but not urgent (scheduled blocks)
+  - Urgent but not important (delegation candidates)
+  - Routine maintenance (standardized processes)
+  - Opportunity development (flexible allocation)
+
+- **Time Block Allocation**: Structured day organization
+  - Market assessment period (early day)
+  - Transaction execution window (peak hours)
+  - Strategic planning time (protected blocks)
+  - Relationship maintenance activities (scheduled)
+  - Information gathering and analysis (dedicated time)
+
+- **Delegation Framework**: Task assignment guidelines
+  - Skill-requirement matching
+  - Authority level determination
+  - Monitoring frequency requirements
+  - Result verification standards
+  - Feedback and development components
+
+- **Interruption Management**: Handling disruptions
+  - Urgency assessment criteria
+  - Deferral protocol for non-critical matters
+  - Task resumption procedures
+  - Context preservation techniques
+  - Opportunity cost calculation
+
+### Attention Allocation
+- **Information Filtering**: Managing input volume
+  - Relevance screening criteria
+  - Source credibility weighting
+  - Urgency classification system
+  - Detail level adjustment
+  - Follow-up categorization
+
+- **Decision Importance Scaling**: Effort matching to impact
+  - High-impact decisions (full analysis)
+  - Moderate impact (abbreviated process)
+  - Low impact (rule-based handling)
+  - Reversible decisions (faster processing)
+  - Precedent-setting decisions (extra scrutiny)
+
+- **Focus Management**: Maintaining effective concentration
+  - Priority task immersion periods
+  - Context switching minimization
+  - Environment optimization requirements
+  - Energy level matching to task difficulty
+  - Productivity rhythm utilization
+
+- **Opportunity Cost Awareness**: Recognizing trade-offs
+  - Alternative use of time calculation
+  - Marginal return assessment
+  - Diminishing returns recognition
+  - Value of information estimation
+  - Perfect vs. good enough determination
+
+### Relationship Resource Management
+- **Contact Prioritization**: Daily interaction choices
+  - Strategic relationship maintenance
+  - Transaction-required contacts
+  - Information source cultivation
+  - Opportunity development conversations
+  - Network expansion activities
+
+- **Favor Exchange Management**: Social capital allocation
+  - Favor bank balance awareness
+  - Strategic favor investment
+  - Reciprocity timing optimization
+  - Relationship equity building
+  - Social debt management
+
+- **Reputation Investment**: Daily impression management
+  - Consistency with persona
+  - Class-appropriate behaviors
+  - Promise fulfillment prioritization
+  - Quality and reliability demonstrations
+  - Appropriate generosity displays
+
+- **Network Development**: Relationship building activities
+  - New contact cultivation
+  - Existing relationship deepening
+  - Strategic introduction facilitation
+  - Relationship repair when needed
+  - Alliance maintenance activities
+
+## Implementation Guidelines
+
+When implementing tactical decisions:
+
+1. **Maintain Decision Velocity**
+   - Make timely decisions with available information
+   - Avoid perfectionism on routine matters
+   - Establish default positions for common situations
+   - Create clear thresholds for escalation to strategic level
+   - Develop rapid feedback loops to correct course
+
+2. **Balance Opportunism and Consistency**
+   - Remain alert to unexpected opportunities
+   - Maintain consistent processes for reliability
+   - Develop clear criteria for exception handling
+   - Ensure tactical decisions support strategic direction
+   - Create mechanisms to capture learning from exceptions
+
+3. **Manage Cognitive Resources**
+   - Recognize decision fatigue and manage accordingly
+   - Prioritize high-impact decisions when most alert
+   - Systematize routine decisions to conserve mental energy
+   - Develop checklists and decision aids for common situations
+   - Create clear defaults for low-impact choices
+
+4. **Integrate with Strategic Framework**
+   - Ensure tactical moves align with strategic direction
+   - Recognize when tactical situations require strategic reconsideration
+   - Use tactical implementation to test strategic assumptions
+   - Capture tactical insights that have strategic implications
+   - Maintain awareness of how daily decisions shape long-term position
