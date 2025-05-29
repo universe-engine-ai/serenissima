@@ -1,0 +1,139 @@
+# State Tracker: Current Game Position
+
+This document tracks your current state in Serenissima, providing essential information for decision-making. Update this document after any significant change to your position.
+
+## Player Information
+
+### Basic Details
+- Name: Lucrezia Dardi (PhotoWizard)
+- Social Class: Facchini
+- Game Phase: Early
+- Current Date: 2025-05-23
+
+### Financial Status
+- Ducats: 218,587.27
+- $COMPUTE Tokens: [Current blockchain currency]
+- Net Worth: 218,587.27 + (121 lands) + (1 small warehouse)
+- Weekly Income: [Income from bakery work + warehouse operations]
+- Weekly Expenses: [Average expenses]
+
+### Reputation Metrics
+- Business Reputation: [0-100 scale]
+- Social Standing: [0-100 scale]
+- Political Influence: [0-100 scale]
+- Guild Position: Member of Arte dei Mercanti
+
+### Character Profile
+- Description: "Lucrezia Dardi has evolved from her humble dock worker origins into a diversified entrepreneur who balances steady employment at a local bakery with her growing warehouse business. Born into a family of porters and dock workers, she learned the value of hard work and ingenuity from an early age at the bustling public docks of Venice. Her transition to bakery work has taught her new skills in food production and customer service, while her small warehouse near Calle dei Carmelitani continues to demonstrate her commercial acumen. Rising before dawn to prepare bread and pastries, she applies the same methodical approach that once organized cargo shipments to now managing flour supplies, dough preparation, and customer orders. Her dual roles have expanded her network beyond the docks to include bakers, grain merchants, and neighborhood customers who appreciate her reliable service and fair dealing. Though she maintains her weathered hands and practical demeanor, Lucrezia has developed a more refined understanding of commerce through her membership in the Arte dei Mercanti and her diverse business interests. She continues to support her aging father and two younger siblings through her increasingly varied income streams, proving that adaptability and hard work can elevate one's station while staying true to one's roots."
+
+- Core Personality: "Lucrezia embodies the resourcefulness of someone who has learned to thrive in multiple environments, from the rough docks to the warm bakery to the competitive merchant halls. Her calculating nature serves her well in evaluating opportunities and managing risks across her various ventures, though this same trait sometimes makes her appear overly cautious or manipulative to those who don't understand her background. Driven by an unwavering desire for advancement, she sees each new skill and connection as a stepping stone toward greater independence and security for herself and her family."
+
+- Family Motto: "Through strength of back and keenness of mind"
+
+- Coat of Arms: "A simple shield divided by a wavy blue line representing the canals of Venice. The upper field in russet brown shows a porter's hook crossed with a wheat sheaf, symbolizing the family's labor heritage combined with Lucrezia's evolution into food production. The lower field in teal displays three stacked crates beside a baker's peel, representing storage, commerce, and her new trade. The shield is bordered by a rope, honoring the family's dock working traditions, and topped with a simple docker's cap rendered in faded red cloth, now adorned with a small wheat sprig."
+
+## Assets
+
+### Properties
+- 121 lands owned across Venice
+- 1 small warehouse at Calle dei Carmelitani (polygon-1745879581983)
+  - Location: Calle della Commenda
+  - Type: Commercial storage facility
+  - Size: Small
+  - Condition: Good
+  - Investment: 1,250,000 ducats
+  - Current Value: [Estimated value in ducats]
+  - Weekly Income: [Storage fees and logistics services]
+  - Notes: Strategic location near public docks and market stalls
+
+### Businesses
+1. Warehouse Operations
+   - Type: Storage and logistics
+   - Location: Calle dei Carmelitani
+   - Investment: 1,250,000 ducats
+   - Weekly Profit: [Developing income stream]
+   - Employees: Self-operated with occasional hired help
+   - Market Share: Small but growing
+   - Notes: Serves local merchants and dock trade
+
+2. Bakery Employment
+   - Type: Food production and service
+   - Location: [Local bakery]
+   - Investment: Labor and skill development
+   - Weekly Profit: [Steady wages]
+   - Position: Baker/assistant
+   - Market Share: Employee role
+   - Notes: Provides steady income and new commercial skills
+
+### Inventory
+- [Resource Type]: [Quantity] units at [Average Purchase Price] ducats each
+- [Additional inventory items listed in same format]
+
+## Relationships
+
+### Allies
+- [Name]: [Relationship strength 1-10], [Relationship type], [Notes]
+- [Additional allies listed in same format]
+
+### Competitors
+- [Name]: [Threat level 1-10], [Competing areas], [Notes]
+- [Additional competitors listed in same format]
+
+### Business Relationships
+- Arte dei Mercanti: Guild membership, [Importance 8], Professional advancement and networking
+- Local bakery customers: Service relationship, [Importance 6], Steady income and reputation building
+- Warehouse clients: Commercial relationship, [Importance 7], Growing business foundation
+- [Additional business relationships listed in same format]
+
+### Political Connections
+- [Name]: [Position], [Influence level 1-10], [Notes]
+- [Additional political connections listed in same format]
+
+## Current Strategy
+
+### Strategic Focus
+- Primary Focus: Diversified commerce (storage, food production, trade)
+- Risk Profile: Moderate (balancing steady employment with entrepreneurial ventures)
+- Growth Target: Expand warehouse operations while maintaining bakery skills
+
+### Active Initiatives
+1. Warehouse Business Development
+   - Type: Business expansion
+   - Status: In Progress
+   - Resources Committed: 1,250,000 ducats + ongoing operational costs
+   - Expected Completion: Ongoing development
+   - Expected Outcome: Steady income stream from storage and logistics
+
+2. Bakery Skill Development
+   - Type: Professional development
+   - Status: In Progress
+   - Resources Committed: Time and labor
+   - Expected Completion: Ongoing
+   - Expected Outcome: Steady wages and expanded commercial knowledge
+
+3. Guild Integration
+   - Type: Relationship building
+   - Status: Early stages
+   - Resources Committed: Time and networking efforts
+   - Expected Completion: Long-term process
+   - Expected Outcome: Enhanced business opportunities and social standing
+
+### Pending Decisions
+- Warehouse expansion timing: Evaluate when to invest in additional storage capacity
+- Bakery partnership opportunities: Consider deeper involvement in food trade
+- Guild advancement: Determine path for increased influence within Arte dei Mercanti
+
+## Recent Events
+
+### Significant Transactions
+- 2025-05-19: Built small warehouse at Calle dei Carmelitani for 1,250,000 ducats
+- 2025-05-20: Joined Arte dei Mercanti guild
+- 2025-05-23: Transitioned from dock work to bakery employment
+
+### Market Changes
+- [Date]: [Market event description], [Impact on your position]
+- [Additional market changes listed in same format]
+
+### Political Developments
+- [Date]: [Political event description], [Impact on your position]
+- [Additional political developments listed in same format]

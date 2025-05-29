@@ -1,0 +1,207 @@
+# Relationship Tracker
+
+This document tracks your relationships with other players and NPCs in Serenissima, providing a structured system for managing social connections and alliances.
+
+## Key Relationships
+
+### Lucio Bragadin (Merchant)
+- **Basic Information**:
+  - Relationship Type: Business
+  - Contact Name: Lucio Bragadin
+  - Social Class: Cittadini
+  - Position: Prosperous silk merchant
+  - Initial Connection: I assisted with unloading his shipments at the docks
+
+- **Relationship Status**:
+  - Current Standing: Good
+  - Trust Level: Moderate (6)
+  - Relationship Duration: 2 years  
+  - Interaction Frequency: Weekly
+  - Public vs. Private: Public business relationship
+
+- **Exchange Ledger**:
+  - Favors Owed to You: Helped resolve a dispute with porters (3/15/XX)
+  - Favors You Owe: None
+  - Recent Transactions: Frequent silk shipment handling
+  - Gifts Exchanged: Small gratuities during festival seasons
+  - Services Rendered: Reliable labor pool for loading/unloading
+
+- **Strategic Value**:
+  - Information Access: Insights into silk trade dynamics
+  - Market Influence: Major player in luxury textile market
+  - Political Connection: Some connections to textile guild leadership
+  - Resource Access: Potential employment opportunities 
+  - Reputation Impact: Association enhances work reputation
+
+- **Development Plan**:
+  - Next Interaction: Discuss opportunities at his warehouse
+  - Relationship Goals: Solidify as potential employer
+  - Trust Building Actions: Prove diligence, suggest process improvements
+  - Risk Factors: Competition from other workers, lifestyle differences  
+  - Investment Strategy: Consistent reliable service, small gifts
+
+### [Additional relationships listed in same format]
+
+## Faction Relationships
+
+### Arte dei Mercanti (Merchants Guild)
+- **Faction Profile**:
+  - Type: Guild
+  - Key Members: Hieronimo Priuli (Guildmaster), Luca Giustinian, Marco Trevisan
+  - Power Base: Control over major trading activities in Venice
+  - Territory: Influence across all markets and trade routes
+  - Interests: Facilitating commerce, protecting merchant interests  
+
+- **Relationship Status**:
+  - Overall Standing: Neutral
+  - Formal Agreements: None
+  - Public Perception: Seen as an outsider due to class
+  - Internal Champions: Some sympathetic members
+  - Internal Opposition: Traditionalists wary of lower class
+
+- **Interaction History**:
+  - Significant Events: None of note
+  - Ongoing Dealings: Occasional loading/unloading work  
+  - Conflicts and Resolutions: Some disputes over labor rules
+  - Collaborative Successes: N/A
+  - Outstanding Issues: Lack of representation for workers
+
+- **Strategic Approach**:  
+  - Engagement Strategy: Prove value through hard work
+  - Alliance Potential: Possible path to membership
+  - Risk Management: Avoid conflicts over status
+  - Influence Methods: Seek out sympathetic members
+  - Resource Commitment: Time investment through reliable service
+
+### [Additional factions listed in same format]
+
+## Network Analysis
+
+### Relationship Network Map
+- **Primary Circle**: 
+  - Lucio Bragadin: Business, Potential employer, 6
+  - [Other primary connections]
+
+- **Secondary Circle**:
+  - [Secondary connections listed]
+   
+- **Tertiary Circle**: 
+  - [Tertiary connections listed]
+
+- **Potential Connections**:
+  - Hieronimo Priuli: Guildmaster of Mercanti, Access through Bragadin, 2  
+  - [Other potential connections listed]
+
+### Network Gaps
+- **Industry Access**: 
+  - Shipping/Maritime: Better connections for work opportunities, Potential via sailors, Network at docks
+  - [Other industry gaps listed]
+
+- **Political Coverage**:
+  - Merchants Guild: Representation for workers, Bragadin/Sympathetic members, Prove reliability
+  - [Other political gaps listed] 
+
+- **Social Circles**:
+  - Cittadini Merchants: Advancement opportunities, Bragadin's circle, Consistent service
+  - [Other social gaps listed]
+
+- **Geographic Representation**:
+  - Rialto Markets: Commercial hub, Bragadin and other merchants, Seek employment 
+  - [Other geographic gaps listed]
+
+### Network Strength Assessment
+- **Diversity Evaluation**:
+  - Business Network Strength: Moderate
+  - Political Network Strength: Weak
+  - Social Network Strength: Weak  
+  - Information Network Strength: Weak
+
+- **Redundancy Analysis**:
+  - Work Opportunities: Bragadin, [Backup contacts], Need alternatives
+  - [Other critical functions listed]
+
+- **Loyalty Assessment**:
+  - Highly Loyal Connections: [None at high level yet]
+  - Transaction-Based Relationships: Bragadin (business)
+  - Uncertain Loyalties: Most connections (class differences)
+  - Potential Conflicts: Merchants Guild (labor disputes)
+
+- **Influence Mapping**:  
+  - High Influence: [None yet]
+  - Moderate Influence: Bragadin (reliable service)
+  - Low Influence: Most others (lower class status)
+  - Influence Building Targets: Bragadin's circle, Sympathetic guild members
+
+## Relationship Management Systems
+
+### Trust Building Protocols
+- **Consistency Practices**: 
+  - [No changes]
+
+- **Value Demonstration**:
+  - Efficient labor, Suggesting improvements, Handling shipments reliably
+  - [Other value demonstrations]
+
+- **Progressive Disclosure**:
+  - [No changes] 
+
+- **Recovery Procedures**:
+  - [No changes]
+
+### Favor Exchange System
+- **Favor Valuation**:
+  - [No changes]
+
+- **Favor Banking**: 
+  - [No changes]
+
+- **Request Management**:
+  - [No changes]
+
+- **Redemption Strategies**:
+  - [No changes]  
+
+### Conflict Resolution Framework
+- **Early Detection**:
+  - [No changes]
+
+- **De-escalation Techniques**: 
+  - Maintain humility, Acknowledge differences, Find common ground
+  - [Other de-escalation approaches]
+
+- **Negotiated Resolution**:
+  - [No changes]
+
+- **Mediation Protocols**:
+  - [No changes]
+
+### Alliance Management
+- **Formation Criteria**:
+  - [No changes] 
+
+- **Maintenance Activities**:
+  - [No changes]
+
+- **Performance Evaluation**: 
+  - [No changes]
+
+- **Evolution or Dissolution**:
+  - [No changes]
+
+## Implementation Guidelines
+
+1. **Prioritize Authenticity Within Your Persona**
+   - [No changes]
+
+2. **Invest Strategically**
+   - Focus on relationships with potential for steady employment
+   - Cultivate connections that could lead to guild representation  
+   - [Other strategic considerations]
+
+3. **Practice Active Relationship Management**
+   - [No changes]
+
+4. **Balance Transactional and Genuine Connections**
+   - Recognize relationships likely staying transactional due to class
+   - But allow some to develop into more genuine connections over time
+   - [Other considerations]
