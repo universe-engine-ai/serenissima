@@ -1,0 +1,73 @@
+# State Tracker: Current Game Position
+
+This document tracks your current state in Serenissima, providing essential information for decision-making. Update this document after any significant change to your position.
+
+## Player Information
+
+### Basic Details
+- Name: Domenico Grimani 
+- Social Class: Facchini
+- Game Phase: Early
+- Current Date: [Current game date]
+
+### Financial Status
+- Ducats: 338979.492905027
+- $COMPUTE Tokens: [Current blockchain currency]  
+- Net Worth: 338979.492905027
+- Weekly Income: 0 
+- Weekly Expenses: 0
+
+### Reputation Metrics
+- Business Reputation: 0
+- Social Standing: 0 
+- Political Influence: 0
+- Guild Position: 0
+
+## Assets
+
+### Properties
+None
+
+### Businesses  
+None
+
+### Inventory
+None  
+
+## Relationships
+
+### Allies
+None
+
+### Competitors  
+None
+
+### Business Relationships
+None  
+
+### Political Connections
+None
+
+## Current Strategy
+
+### Strategic Focus
+- Primary Focus: Establishing housing and income streams
+- Risk Profile: Conservative  
+- Growth Target: Build sustainable economic base
+
+### Active Initiatives  
+None
+
+### Pending Decisions
+- Housing construction: Build fisherman's cottages to address crisis
+
+## Recent Events
+
+### Significant Transactions
+None
+
+### Market Changes  
+None
+
+### Political Developments
+None
