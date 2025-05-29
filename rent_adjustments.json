@@ -1,0 +1,9 @@
+{
+  "rent_adjustments": [
+    {
+      "building_id": "building-f70c7403-bf88-4386-8e93-2a608cfca06b",
+      "new_rent_amount": 350,
+      "reason": "Setting initial rent for new Contract Stall on premium Strada de la Carit\u00e0 location at competitive rate to attract quality merchant tenant while capitalizing on high-value commercial area"
+    }
+  ]
+}

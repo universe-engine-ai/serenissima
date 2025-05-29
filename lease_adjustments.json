@@ -1,0 +1,34 @@
+{
+  "lease_adjustments": [
+    {
+      "building_id": "building_45.440864_12.335067",
+      "new_lease_amount": 700,
+      "reason": "Reducing blacksmith lease as the workshop is not yet generating income; provides financial relief while remaining at a fair market rate"
+    },
+    {
+      "building_id": "building_45.444368_12.327293", 
+      "new_lease_amount": 800,
+      "reason": "Modest reduction in blacksmith lease to improve negative income situation while maintaining a reasonable market rate"
+    },
+    {
+      "building_id": "canal_45.431827_12.334988",
+      "new_lease_amount": 650,
+      "reason": "Reducing canal house lease slightly to enhance profitability while keeping the rate aligned with similar premium properties"
+    },
+    {
+      "building_id": "building_45.430860_12.360697",
+      "new_lease_amount": 275,
+      "reason": "Increasing PixelDoge's market stall lease on my valuable Strada de la Carit\u00e0 land to a fair commercial rate for this prime location"
+    },
+    {
+      "building_id": "canal_45.425862_12.360034",
+      "new_lease_amount": 100,
+      "reason": "Reasonable increase for public dock lease on high-value commercial land while maintaining respectful rates for public infrastructure"
+    },
+    {
+      "building_id": "building_45.428279_12.360715",
+      "new_lease_amount": 100,
+      "reason": "Increasing public well lease to a modest rate appropriate for this premium commercial area"
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "rent_adjustments": [
+    {
+      "building_id": "building_45.440864_12.335067",
+      "new_rent_amount": 1050,
+      "reason": "Increase to align with upper market rates for prime industrial location, while maintaining competitive rates for quality tenants"
+    },
+    {
+      "building_id": "building_45.444368_12.327293",
+      "new_rent_amount": 1050,
+      "reason": "Increase to align with upper market rates for prime industrial location, while maintaining competitive rates for quality tenants"
+    },
+    {
+      "building_id": "building_45.433843_12.351232",
+      "new_rent_amount": 1400,
+      "reason": "Premium rent for prestigious Rialto broker's office to attract elite tenants and enhance reputation, while remaining in reasonable market range"
+    },
+    {
+      "building_id": "building_45.431827_12.334988", 
+      "new_rent_amount": 2300,
+      "reason": "Increase to top of market for premium canal house property, accounting for affluent occupants' ability to pay premium rates"
+    },
+    {
+      "building_id": "building_45.444378_12.329395",
+      "new_rent_amount": 1100,
+      "reason": "Set slightly above average for new warehouse to quickly attract quality tenants while generating strong income from prime location"
+    }
+  ]
+}

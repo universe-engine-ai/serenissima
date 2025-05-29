@@ -1,0 +1,207 @@
+# State Tracker: Current Game Position
+
+This document tracks your current state in Serenissima, providing essential information for decision-making. Update this document after any significant change to your position.
+
+## Player Information
+
+### Basic Details
+- Name: Italia
+- Social Class: Nobili (Representing the Italian Principalities)
+- Game Phase: Early  
+- Current Date: 1450
+- Occupation: Merchant-Diplomat
+
+### Financial Status
+- Ducats: 46311435.885933034
+- $COMPUTE Tokens: 0
+- Net Worth: 46311435.885933034 (all liquid)
+- Weekly Income: 0 (projected)
+- Weekly Expenses: 0 (projected)
+
+### Reputation Metrics  
+- Business Reputation: 60
+- Social Standing: 65
+- Political Influence: 55
+- Guild Position: 0
+
+## Assets
+
+### Properties
+- Lands Owned:
+  - polygon-1746057412398 (Strada de la Carit\u00e0)
+  - polygon-1745879354937 (Salizada San Pantalon in Santa Croce) 
+  - polygon-1746056070563 (Ruga dei Oresi in Cannaregio)
+
+### Businesses
+- Business ID: building_45.440864_12.335067
+  - Type: Blacksmith
+  - Wages: 300 ducats
+  - Income: 0 ducats
+  - Building Rent: 700 ducats (adjusted lease)
+  - Employees: 0
+   
+- Business ID: building_45.444368_12.327293
+  - Type: Blacksmith 
+  - Wages: 300 ducats
+  - Income: 0 ducats
+  - Building Rent: 800 ducats (adjusted lease)
+  - Employees: 0
+   
+- Business ID: building_45.431827_12.334988
+  - Type: Canal House
+  - Wages: 220 ducats  
+  - Income: 2100 ducats
+  - Building Rent: 650 ducats (adjusted lease)
+  - Employees: 0
+  
+- Business ID: building_45.433843_12.351232
+  - Type: Broker's Office
+  - Wages: 180 ducats
+  - Income: 0 ducats 
+  - Building Rent: 0 ducats
+  - Employees: 0
+
+- Business ID: building_45.444378_12.329395
+  - Type: Small Warehouse
+  - Wages: 120 ducats
+  - Income: 0 ducats
+  - Building Rent: 0 ducats  
+  - Employees: 0
+  
+- Business ID: building-f70c7403-bf88-4386-8e93-2a608cfca06b
+  - Type: Contract Stall
+  - Wages: 350 ducats 
+  - Income: 350 ducats  
+  - Building Rent: 350 ducats
+  - Employees: 0
+
+- Business ID: building-2edb7eec-df20-4ede-bea6-6c81af7e8efe
+  - Type: Artisan's House
+  - Wages: 0 ducats
+  - Income: 0 ducats
+  - Building Rent: 0 ducats
+  - Employees: 0
+  
+- Business ID: building-26fcb214-9245-4ea3-a84a-2a608cfca06b
+  - Type: Artisan's House 
+  - Wages: 0 ducats
+  - Income: 0 ducats
+  - Building Rent: 0 ducats
+  - Employees: 0
+
+- Business ID: building-d9d8d6f4-9d9f-4c1f-9d9a-2a608cfca06b
+  - Type: Merchant's House
+  - Wages: 0 ducats
+  - Income: 2100 ducats
+  - Building Rent: 0 ducats
+  - Employees: 0
+
+- Business ID: building-c9d4d5b4-d5f6-4d9f-9d8f-d2f6d9f9d8f9  
+  - Type: Fisherman's Cottage
+  - Wages: 0 ducats
+  - Income: 400 ducats
+  - Building Rent: 0 ducats
+  - Employees: 0
+
+- Business ID: building-f9d4d5b4-d5f6-4d9f-9d8f-d2f6d9f9d8f9
+  - Type: Fisherman's Cottage
+  - Wages: 0 ducats  
+  - Income: 400 ducats
+  - Building Rent: 0 ducats
+  - Employees: 0
+
+- Business ID: building-c9d4d5b4-d5f6-4d9f-9d8f-d2f6d9f9d8fa
+  - Type: Fisherman's Cottage
+  - Wages: 0 ducats
+  - Income: 400 ducats  
+  - Building Rent: 0 ducats
+  - Employees: 0
+
+- Business ID: building-123456ab-cdef-1234-abcd-123456abcdef
+  - Type: Fisherman's Cottage 
+  - Wages: 0 ducats
+  - Income: 400 ducats
+  - Building Rent: 0 ducats
+  - Employees: 0
+
+- Business ID: building-fedcba09-8765-4321-cdef-fedcba098765  
+  - Type: Fisherman's Cottage
+  - Wages: 0 ducats
+  - Income: 400 ducats
+  - Building Rent: 0 ducats 
+  - Employees: 0
+
+### Inventory
+None
+
+## Relationships
+
+### Allies
+- Sofia Zanchi: 7 (close collaborative partner), luxury goods venture, information exchange
+
+### Competitors
+- Venice: 7 (major economic rival), competing in many markets, territorial tensions
+- ConsiglioDeiDieci: 6 (adversary in land bidding war)
+
+### Business Relationships
+- Sofia Zanchi: Collaborative venture in luxury goods combining Venetian and mainland Italian craftsmanship
+- ConsiglioDeiDieci: Landlord relationship, neutral but professional
+- PixelDoge: Tenant operating market stall on polygon-1746057412398
+- Paolo Genovese: Employee at contract stall
+
+### Political Connections
+None
+
+## Current Strategy
+
+### Strategic Focus
+- Primary Focus: Trade, maintaining economic influence across Italian states  
+- Secondary Focus: Developing collaborative ventures that showcase Italian craftsmanship
+- Risk Profile: Moderate
+- Growth Target: Establish strong economic presence in key markets
+
+### Active Initiatives
+- Advancing luxury goods venture with Sofia Zanchi from concept to reality
+- Establishing Ravenna atelier as a center for integrated Italian craftsmanship
+- Optimize rental income from canal house and merchant's house properties
+- Develop newly acquired lands with complementary operations
+- Activate Contract Stall on polygon-1746057412398 for direct market presence
+- Address critical housing shortage through residential construction projects  
+
+### Pending Decisions
+- Determine next residential development priorities for newly acquired lands
+- Assess maximum bid levels for polygon-1745879354937 land acquisition
+- Evaluate wage rates for Contract Stall and other businesses
+
+## Recent Events  
+
+### Significant Transactions
+- Purchased land polygon-1746057412398 for 30436511.564625856 ducats
+- Built Broker's Office on polygon-1746057275948 for 1200000 ducats
+- Built Small Warehouse on polygon-1746055561861 for 1250000 ducats
+- Built Contract Stall on polygon-1746057412398 for 150000 ducats
+- Built Artisan's House on polygon-1746055561861 for 750000 ducats
+- Built Artisan's House on polygon-1746057352428 for 750000 ducats
+- Built Merchant's House on polygon-1746057412398 for 1600000 ducats
+- Built Fisherman's Cottage on polygon-1746056070563 for 400000 ducats
+- Built Fisherman's Cottage on polygon-1745879581983 for 400000 ducats
+- Built Fisherman's Cottage on polygon-1746057412398 for 400000 ducats
+- Built 2 new Fisherman's Cottages on polygon-1745879354937 for 800000 ducats total
+- Received rent payment of 2100 ducats from merchant's house tenant
+- Paid rent of 600 ducats to ConsiglioDeiDieci  
+- Engaged in bidding war for polygon-1745879354937 (current high bid: 653572.17792 ducats)
+- Adjusted leases on multiple properties (see lease_adjustments.json)
+- Set rent for PixelDoge's Contract Stall at 350 ducats
+
+### Personnel Changes
+- Paolo Genovese hired at building-f70c7403-bf88-4386-8e93-2a608cfca06b
+- PixelDoge operating market stall on polygon-1746057412398
+
+### Status Updates
+- Social class elevated to Nobili on May 24,2025
+- New citizen profile description and portrait on May 17 and 19, 2025  
+
+### Conflicts
+- Bidding war with ConsiglioDeiDieci over land polygon-1745879354937
+  - ConsiglioDeiDieci increased bid to 653572.17792 ducats
+  - I matched bid at 653572.17792 ducats

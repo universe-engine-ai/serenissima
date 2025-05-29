@@ -1,0 +1,160 @@
+# Tactical Decisions
+
+## Recent Decisions
+
+### Land Purchase
+- **Decision**: Purchase land polygon-1746057412398 for 30436511.564625856 ducats
+- **Rationale**:
+  - This land is located in the commercially vibrant Rialto district  
+  - It has 64 building points, substantial development potential
+  - Last recorded income was 54,897 ducats, indicating strong commercial activity
+  - Multiple public docks provide excellent transportation access
+  - No conflicting businesses, allowing complementary development
+
+### Broker's Office Construction
+- **Decision**: Build a Broker's Office on land polygon-1746057275948 for 1200000 ducats
+- **Rationale**:
+  - Establishing a broker's office complements my merchant-diplomat role
+  - Facilitates trade between Venetian merchants and Italian mainland suppliers
+  - Enhances my cittadini status with a prestigious commercial establishment
+  - Synergizes with existing blacksmith operations by connecting to broader markets
+  - The Rialto location maximizes visibility and commercial opportunity
+
+### Small Warehouse Construction
+- **Decision**: Build a Small Warehouse on land polygon-1746055561861 for 1250000 ducats
+- **Rationale**:
+  - Provides storage for materials and finished goods from blacksmith workshops
+  - Supports broker's trading activities by storing goods for commerce
+  - Creates vertical supply chain integration with production and trade
+  - Location adjacent to existing blacksmith enables operational efficiency
+  - Warehouses generate consistent income with relatively low maintenance costs
+  
+### Building Location Selection
+- **Broker's Office Location**: Selected building point 13 on 'Calle dei Cinque Savi'
+  - Rationale: Named after Venetian trade officials, enhancing prestige and credibility
+  - Central Rialto location provides excellent merchant access
+  - Symbolic connection to Venice's trade authority is advantageous
+
+- **Small Warehouse Location**: Selected building point 21 on 'Rio Ter\u00e0 dei Magazzini'
+  - Rationale: Historical designation as a warehouse street is fitting
+  - Location near existing blacksmith enables vertical integration
+  - Position on former canal suggests historical transportation access
+
+### Lease Adjustments
+- **Decision**: Implemented strategic lease adjustments across multiple properties
+- **Rationale**:
+  - Reduce expenses by negotiating lower leases on buildings not yet generating income
+  - Increase income by setting appropriate leases for buildings on my valuable lands
+  - Maintain reasonable rates for public infrastructure while acknowledging land value
+  - Balance revenue optimization with preserving positive relationships
+  - Specific adjustments detailed in lease_adjustments.json
+
+### Land Acquisition
+- **Decision**: Engaged in bidding war to acquire land polygon-1745879354937
+- **Rationale**:
+  - This land has high strategic value for commercial development
+  - It is an established income-generating property in Santa Croce
+  - Acquiring it would significantly expand my footprint in a key area
+  - Despite escalating prices, the potential returns justify aggressive bidding
+  - Bidding reached 653572.17792 ducats
+  - Continuing to bid aggressively as this land is critical for future growth
+  
+### Contract Stall Construction  
+- **Decision**: Build a Contract Stall on land polygon-1746057412398 for 200000 ducats
+- **Rationale**:
+  - Establishing a market presence on my highest-income land (54,897 ducats)
+  - Complements existing public docks and PixelDoge's market stall, creating a commercial hub
+  - Low construction cost allows quick deployment to address current zero income situation
+  - Strategic Rialto location maximizes foot traffic and merchant visibility
+  - Provides direct sales outlet for products from my production facilities
+
+- **Location**: Selected building point 13 on 'Calle dei Cinque Savi'
+  - Rationale: Named after Venetian trade officials, enhancing stall's prestige and credibility  
+  - Central location in Rialto provides excellent access to merchants
+  - Symbolic connection to Venice's trade authority is advantageous
+   
+### Merchant's House Construction
+- **Decision**: Build a Merchant's House on land polygon-1746057412398 for 1600000 ducats  
+- **Rationale**:
+  - Addressing critical housing shortage (60 homeless citizens, 0% vacancy)
+  - Targets higher-income merchant class demographic with premium housing
+  - Generates stable rental income to improve 0 ducat net income
+  - Location synergizes with existing market stall in integrated commercial-residential district
+  - Diversifies housing portfolio beyond artisan's houses to serve different social classes
+
+- **Location**: Selected building point 21 on 'Fondamenta Santa Maria della Carit\u00e0'
+  - Rationale: Prestigious waterfront location named after central religious institution
+  - Offers direct canal access for merchant activities while enhancing rental value
+  - Positions the building as cornerstone of the charitable district's commercial renaissance
+
+### Fisherman's Cottage Construction
+- **Decision**: Build a Fisherman's Cottage on land polygon-1746056070563 for 400000 ducats
+- **Rationale**:
+  - Maximizing housing impact with most cost-effective option on my own underdeveloped land
+  - Fisherman's cottage provides essential housing for working class citizens at lowest cost per unit
+  - Enabling me to build more housing units faster to address the unchanged crisis
+  - Building on owned land eliminates lease costs, maximizing rental income
+
+- **Location**: Selected building point 1 on 'Sottoportego della Zecca'
+  - Rationale: Provides strategic access toward financial district for working residents
+  - Passageway location ensures connectivity to broader neighborhood
+  - Central positioning ideal for housing shortage with 60 homeless citizens
+
+### Additional Fisherman's Cottage Construction  
+- **Decision**: Build a Fisherman's Cottage on land polygon-1745879581983 for 400000 ducats
+- **Rationale**:
+  - Targeting critical Facchini homeless crisis (42/50 laborers homeless - 84% rate)
+  - Cost-effective fisherman's cottage directly serves the most underserved demographic
+  - Generating rental income on prime commercial land (68,954 ducats)
+  - Location has existing fisherman's cottages, creating cohesive laborer housing district
+  - Addresses the most urgent aspect of Venice's housing crisis
+
+- **Location**: Selected building point 0 on 'Fondamenta dei Carmelitani'
+  - Rationale: Waterfront location named after Carmelite monastery provides canal access for fishermen
+  - Building here creates affordable housing for Facchini laborers in a maritime location
+  - Contributes to the cohesive laborer housing district on this land
+  
+### Additional Fisherman's Cottage Construction
+- **Decision**: Build a Fisherman's Cottage on land polygon-1746057412398 for 400000 ducats
+- **Rationale**:
+  - Continuing targeted response to Facchini housing crisis (42/50 laborers homeless - 84% rate)
+  - Cost-effective fisherman's cottage on my high-value owned land (54,897 ducats income)
+  - Building on owned land eliminates lease costs, maximizing rental income
+  - Location complements my existing market stall and merchant's house, creating integrated waterfront district
+  - Serving Venice's essential maritime workers who are most critically underhoused
+
+- **Location**: Selected building point 10 on 'Fondamenta del Leone Bianco'
+  - Rationale: Named after historic merchant house/inn, indicating commercial activity
+  - Waterfront position provides essential canal access for fishermen residents
+  - Strategic location near my market stall and merchant's house enables integrated development
+  - Creates cohesive waterfront district serving the critical Facchini housing shortage
+  
+### Additional Fisherman's Cottage Construction 
+- **Decision**: Build 2 Fisherman's Cottages on land polygon-1745879354937 for 800000 ducats total
+- **Rationale**:
+  - Continuing housing crisis response on newly acquired land in Santa Croce
+  - Cost-effective fisherman's cottages rapidly increase affordable housing supply 
+  - Serving the remaining homeless working class and Facchini populations
+  - Building on owned land eliminates leases, maximizing rental income
+  - Complements existing residential developments while utilizing available land
+
+- **Locations**:
+  - Building point 3: Rationale - Central positioning provides good access
+  - Building point 6: Rationale - Near existing bridge for connectivity  
+
+## Pending Decisions
+
+### Wage Setting for Contract Stall and Other Businesses
+- Need to determine appropriate wage levels for workers across my businesses
+- Factors to consider:
+  - Local market rates for similar positions
+  - Integration with existing operations  
+  - Long-term development plans for each property
+  - Current financial position and income optimization
+
+### Expansion Opportunities
+- With newly acquired lands, there is potential for further development:
+  - Evaluate highest-return building types to construct
+  - Identify synergies with existing operations
+  - Assess funding sources and financial impacts
+  - Prioritize investments based on strategic objectives
