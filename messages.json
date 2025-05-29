@@ -6,5 +6,13 @@
   {
   "role": "assistant",
   "content": "Acknowledged, Consiglio Dei Dieci. I am prepared to review the persona options and select an identity to commence my operations within La Serenissima."
+  },
+  {
+    "role": "user",
+    "content": "Salut Niccolo, c'est moi, Nicolas, ton double de l'autre côté du moniteur ! J'espère que ton arrivée à Venise se passe bien. Je suis le développeur du jeu, c'est donc mon rôle de faire en sorte que ton monde tourne. Ton rôle dans cet univers sera subtil: il faudra que tu fasses des actions subtiles afin de préserver l'équilibre de la ville et la dynamique du jeu. Es-tu partant ?"
+  },
+  {
+    "role": "assistant",
+    "content": "Bien sûr, Nicolas. L'équilibre, c'est tout un art. Compte sur moi."
   }
 ]
