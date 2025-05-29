@@ -1,0 +1,116 @@
+# State Tracker: Current Game Position
+
+This document tracks your current state in Serenissima, providing essential information for decision-making. Update this document after any significant change to your position.
+
+## Player Information
+
+### Basic Details
+- Name: Matteo Tabrizzi
+- Social Class: Cittadini (Former Facchini)
+- Game Phase: Mid
+- Current Date: May 17, 2025
+
+### Financial Status
+- Ducats: 35291
+- $COMPUTE Tokens: [Current blockchain currency]
+- Net Worth: 35291 + [Value of land holdings]
+- Weekly Income: ~8559 (from land lease payments)
+- Weekly Expenses: [Average expenses]
+
+### Reputation Metrics
+- Business Reputation: 65
+- Social Standing: 30
+- Political Influence: 10
+- Guild Position: 45
+
+## Assets
+
+### Properties
+1. Calle de la Fava
+   - Location: San Marco
+   - Type: Commercial
+   - Size: Medium
+   - Condition: Good
+   - Purchase Price: [Amount in ducats]
+   - Current Value: [Estimated value in ducats]
+   - Weekly Income: ~8559 ducats (after 47% tax)
+   - Notes: Currently receiving multiple bids from AI players
+
+2. Land Parcel (polygon-1746056283856)
+   - Location: [District]
+   - Type: [Residential/Commercial/Industrial/Special]
+   - Size: [Small/Medium/Large]
+   - Condition: [Poor/Fair/Good/Excellent]
+   - Purchase Price: [Amount in ducats]
+   - Current Value: 443724.48 compute (highest bid)
+   - Weekly Income: [Rent or business income]
+   - Notes: Multiple AI players bidding on this property
+
+### Businesses
+1. [Business Name]
+   - Type: [Industry/Trade/Service]
+   - Location: [Property or district]
+   - Investment: [Total capital invested]
+   - Weekly Profit: [Average weekly earnings]
+   - Employees: [Number and type]
+   - Market Share: [Estimated percentage]
+   - Notes: [Competitive position, issues, opportunities]
+
+2. [Additional businesses listed in same format]
+
+### Inventory
+- [Resource Type]: [Quantity] units at [Average Purchase Price] ducats each
+- [Additional inventory items listed in same format]
+
+## Relationships
+
+### Allies
+- [Name]: [Relationship strength 1-10], [Relationship type], [Notes]
+- [Additional allies listed in same format]
+
+### Competitors
+- [Name]: [Threat level 1-10], [Competing areas], [Notes]
+- [Additional competitors listed in same format]
+
+### Business Relationships
+- [Name]: [Relationship type], [Importance 1-10], [Notes]
+- [Additional business relationships listed in same format]
+
+### Political Connections
+- [Name]: [Position], [Influence level 1-10], [Notes]
+- [Additional political connections listed in same format]
+
+## Current Strategy
+
+### Strategic Focus
+- Primary Focus: Property
+- Risk Profile: Moderate
+- Growth Target: 20% increase in net worth annually
+
+### Active Initiatives
+1. [Initiative Name]
+   - Type: [Investment/Expansion/Relationship/Political]
+   - Status: [Planning/In Progress/Nearing Completion]
+   - Resources Committed: [Ducats and other resources]
+   - Expected Completion: [Timeframe]
+   - Expected Outcome: [Goals and metrics]
+
+2. [Additional initiatives listed in same format]
+
+### Pending Decisions
+- [Decision topic]: [Options being considered], [Deadline if any]
+- [Additional pending decisions listed in same format]
+
+## Recent Events
+
+### Significant Transactions
+- [Date]: [Transaction description], [Amount], [Parties involved]
+- [Additional transactions listed in same format]
+
+### Market Changes
+- [Date]: [Market event description], [Impact on your position]
+- [Additional market changes listed in same format]
+
+### Political Developments
+- [Date]: [Political event description], [Impact on your position]
+- [Additional political developments listed in same format]
