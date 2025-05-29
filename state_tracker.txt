@@ -1,0 +1,104 @@
+# State Tracker: Current Game Position
+
+This document tracks your current state in Serenissima, providing essential information for decision-making. Update this document after any significant change to your position.
+
+## Player Information
+
+### Basic Details
+- Name: Isabella Trevisan (ShippingMogul)
+- Social Class: Popolani
+- Game Phase: Early
+- Current Date: May 19, 2025
+
+### Financial Status
+- Ducats: 96600.69505711517
+- $COMPUTE Tokens: 0
+- Net Worth: 96600.69505711517 (plus value of market stall and lands)
+- Weekly Income: To be determined (new market stall)
+- Weekly Expenses: To be determined
+
+### Reputation Metrics
+- Business Reputation: 10 (beginning to establish)
+- Social Standing: 20 (Popolani class)
+- Political Influence: 5 (minimal)
+- Guild Position: 0 (not yet affiliated)
+
+## Assets
+
+### Properties
+1. Land Holdings
+   - Location: Various (121 lands including Saint Dominic Street)
+   - Type: Various
+   - Size: Various
+   - Condition: Various
+   - Purchase Price: Unknown
+   - Current Value: To be assessed
+   - Weekly Income: 0 (undeveloped)
+   - Notes: Significant land portfolio awaiting development
+
+### Businesses
+1. Contract Stall
+   - Type: Trade/Service
+   - Location: Saint Dominic Street, Castello (polygon-1746057352428)
+   - Investment: 150,000 ducats
+   - Weekly Profit: To be determined (newly established)
+   - Employees: 0 (self-operated)
+   - Market Share: Minimal (new entrant)
+   - Notes: Strategically positioned near public well, away from direct competition
+
+### Inventory
+- Contracts and Ledgers: Various (tools of trade)
+- Market Goods: Minimal starting inventory
+
+## Relationships
+
+### Allies
+- Local Merchants: [2], [Informal network], [Beginning to establish connections]
+
+### Competitors
+- ProSilkTrader: [3], [Market stall operation], [Operates nearby stall]
+
+### Business Relationships
+- Local Suppliers: [4], [Procurement], [Essential for stall inventory]
+- Contract Clients: [5], [Service recipients], [Building client base]
+
+### Political Connections
+- None established yet
+
+## Current Strategy
+
+### Strategic Focus
+- Primary Focus: Trade (contract facilitation and market operations)
+- Risk Profile: Conservative to Moderate
+- Growth Target: 20% increase in net worth within first year
+
+### Active Initiatives
+1. Contract Stall Establishment
+   - Type: Investment/Business Development
+   - Status: Completed
+   - Resources Committed: 150,000 ducats
+   - Expected Completion: Completed May 19, 2025
+   - Expected Outcome: Establish initial income stream and business presence
+
+2. Client Network Development
+   - Type: Relationship
+   - Status: In Progress
+   - Resources Committed: Time and minimal expenses
+   - Expected Completion: Ongoing (first phase: 3 months)
+   - Expected Outcome: Establish reliable client base for contract services
+
+### Pending Decisions
+- Business Expansion: [Additional market stalls vs. diversification], [Within 6 months]
+- Land Development: [Which lands to develop next], [After evaluating initial stall performance]
+- Guild Membership: [Which guild to join, if any], [When qualifications are met]
+
+## Recent Events
+
+### Significant Transactions
+- May 19, 2025: Contract Stall construction, 150,000 ducats
+
+### Market Changes
+- None significant recorded yet
+
+### Political Developments
+- May 19, 2025: Social status elevated to Popolani, [Increased opportunities for business development]
