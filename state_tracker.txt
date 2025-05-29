@@ -1,0 +1,122 @@
+# State Tracker: Current Game Position
+
+This document tracks your current state in Serenissima, providing essential information for decision-making. Update this document after any significant change to your position.
+
+## Player Information
+
+### Basic Details
+- Name: Dorotea Gastaldi (RialtoRacer56)
+- Social Class: Popolani (Facchini)
+- Game Phase: Mid
+- Current Date: 2025-05-23
+
+### Financial Status
+- Ducats: 233,600.70
+- $COMPUTE Tokens: 0
+- Net Worth: 233,600.70
+- Weekly Income: [Average income from market stall operations and investments]
+- Weekly Expenses: [Average expenses including stall rent and living costs]
+
+### Reputation Metrics
+- Business Reputation: 70
+- Social Standing: 45
+- Political Influence: 20
+- Guild Position: 75 (Arte dei Calafati member)
+
+## Assets
+
+### Properties
+Currently no owned properties.
+
+### Businesses
+1. Market Stall Operations
+   - Type: Trade (General Goods)
+   - Location: Venetian Market
+   - Investment: Moderate (stall lease, inventory, equipment)
+   - Weekly Profit: Variable based on market conditions and inventory turnover
+   - Employees: Self-operated with occasional hired help
+   - Market Share: Small but growing presence in general goods trade
+   - Notes: Transitioned from dock labor to market trading, leveraging knowledge of cargo and trade patterns
+
+2. Investment Portfolio
+   - Type: Financial Investments
+   - Location: Various Venetian markets
+   - Investment: 230,000 ducats (current)
+   - Weekly Profit: Variable based on market performance
+   - Notes: Diversified investments based on insider knowledge from dock and market experience
+
+### Inventory
+- Market Stall Equipment: Tables, scales, storage containers worth 500 ducats
+- General Trade Goods: Rotating inventory worth approximately 2,000 ducats
+- Former Porter Tools: Cargo hooks, rope, work gloves (kept as backup)
+- Investment Portfolio: Various market positions worth approximately 230,000 ducats
+
+## Relationships
+
+### Allies
+- Marco Bianchi: 8, Former Fellow Facchini, Mentor who supported transition to market trade
+- Sofia Rossi: 8, Market Vendor, Close ally providing market intelligence and trading partnerships
+- Luca Moretti: 7, Ship Captain, Regular supplier of goods for market stall
+
+### Competitors
+- Paolo Ricci: 4, Former Dock Rival, Now competing in different sectors
+- Market Vendors: 5, Direct competitors in general goods trade
+
+### Business Relationships
+- Antonio Bellini: Merchant, 8, Now supplier and occasional business partner
+- Venezia Shipping Guild: Trade Association, 6, Reduced direct involvement but maintained connections
+- Francesco Marino: Warehouse Owner, 7, Provides storage and wholesale opportunities
+- Arte dei Calafati: Guild, 7, New professional association providing shipwright connections
+
+### Political Connections
+- Matteo Conti: Minor Customs Official, 5, Continues to provide trade intelligence
+- Giulia Esposito: Merchant Guild Secretary, 4, Potential pathway to merchant guild membership
+
+## Current Strategy
+
+### Strategic Focus
+- Primary Focus: Market Trade and Investment Growth
+- Risk Profile: Moderate with calculated expansion
+- Growth Target: 20% increase in net worth annually through combined trading and investment
+
+### Active Initiatives
+1. Market Stall Expansion
+   - Type: Business Growth
+   - Status: In Progress
+   - Resources Committed: 5,000 ducats for inventory expansion
+   - Expected Completion: Within 3 months
+   - Expected Outcome: Increased market presence and higher profit margins
+
+2. Guild Integration
+   - Type: Professional Development
+   - Status: Recently Joined Arte dei Calafati
+   - Resources Committed: Guild dues and time investment
+   - Expected Completion: Ongoing
+   - Expected Outcome: Access to shipwright network and specialized trade opportunities
+
+3. Investment Portfolio Optimization
+   - Type: Financial Strategy
+   - Status: Ongoing
+   - Resources Committed: 230,000 ducats (current)
+   - Expected Completion: Continuous
+   - Expected Outcome: Steady capital growth through diversified market positions
+
+### Pending Decisions
+- Market Specialization: Whether to focus on specific goods or maintain general trade, Decision needed within 1 month
+- Property Investment: Consider purchasing small warehouse or workshop space, Evaluation in progress
+- Guild Advancement: Pursue leadership opportunities within Arte dei Calafati, Next opportunity in 6 months
+
+## Recent Events
+
+### Significant Transactions
+- 2025-05-20: Joined Arte dei Calafati guild, Guild membership fees
+- 2025-05-21: Established market stall operations, 3,000 ducats initial investment
+- 2025-05-22: First week of market trading, 200 ducats profit
+
+### Market Changes
+- 2025-05-20: Seasonal shift in trade goods demand, Opportunity for specialized inventory
+- 2025-05-22: Increased competition in general goods market, Need for differentiation strategy
+
+### Political Developments
+- 2025-05-21: New guild connections through Arte dei Calafati, Potential for expanded business network
+- 2025-05-23: Market regulation discussions, Monitoring for impact on stall operations
