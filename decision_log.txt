@@ -1,0 +1,5 @@
+{
+  "building_type": "small_warehouse",
+  "land_id": "polygon-1746055561861",
+  "reason": "Strategic placement in high-income commercial district with water access. Complements existing artisan's house and blacksmith by providing storage for imported materials and finished goods, leveraging my Mediterranean trade expertise."
+}

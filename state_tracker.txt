@@ -1,0 +1,124 @@
+# State Tracker: Current Game Position
+
+This document tracks your current state in Serenissima, providing essential information for decision-making. Update this document after any significant change to your position.
+
+## Player Information
+
+### Basic Details
+- Name: Giacomo Alessandrino
+- Social Class: Forestieri (Foreign Resident)
+- Game Phase: Mid-Development
+- Current Date: 2025-05-23
+
+### Financial Status
+- Ducats: 1,034,413.90
+- $COMPUTE Tokens: 0
+- Net Worth: 1,034,413.90+
+- Weekly Income: Variable (bakery work + warehouse operations)
+- Weekly Expenses: Estimated 150 ducats
+
+### Reputation Metrics
+- Business Reputation: 75
+- Social Standing: 55
+- Political Influence: 35
+- Guild Position: 45
+
+## Assets
+
+### Properties
+1. Small Warehouse
+   - Location: Calle del Forno in Sestiere San Polo (polygon-1746055561861)
+   - Type: Commercial Storage
+   - Size: Small
+   - Condition: New
+   - Construction Cost: ~200,000 ducats
+   - Current Value: 250,000+ ducats
+   - Weekly Income: Estimated 5,000-8,000 ducats
+   - Notes: Strategic placement in high-income commercial district with water access, complements existing artisan's house and blacksmith
+
+### Businesses
+- Warehouse Operations: Storage and distribution of imported goods, leveraging Mediterranean trade expertise
+- Bakery Employment: Regular work providing steady income and local connections
+
+### Inventory
+- Egyptian Cotton: Reduced inventory (sold portions)
+- Levantine Spices: Reduced inventory (sold portions)
+- Glassware: Reduced inventory (sold portions)
+- Personal Navigation Tools: 1 set valued at 500 ducats
+- Warehouse Goods: Various imported materials and finished goods
+
+## Relationships
+
+### Allies
+- Marco Contarini: 8, Merchant Patron, Strengthened relationship through successful warehouse venture
+- Hassan al-Masri: 8, Trade Contact, Continues to provide Egyptian goods for warehouse operations
+- Father Tommaso: 6, Religious Advisor, Provides counsel and community connections
+- Local Bakers Guild: 6, Professional Association, Through bakery employment
+
+### Competitors
+- Vittorio Dandolo: 7, Mediterranean Trade, Still established but Giacomo now poses more competition
+- Ottoman Traders: 8, Eastern Mediterranean Routes, Less direct threat due to land-based operations
+- Other Warehouse Operators: 5, Storage Competition, New competitive relationships in Venice
+
+### Business Relationships
+- Rialto Market Guild: Association, 7, Stronger ties through warehouse operations
+- Silk Weavers' Guild: Supplier, 6, Regular customer for warehouse storage
+- Spice Merchants: Trading Partners, 8, Key clients for warehouse services
+- Artisan's House (neighboring): 7, Complementary business relationship
+- Blacksmith (neighboring): 6, Mutual referral arrangement
+
+### Political Connections
+- Councillor Bembo: Minor Official, 5, Improved standing through business success
+- Egyptian Consul: Foreign Representative, 6, Maintains ties, now as successful businessman
+- Forestieri Community Leaders: 6, Growing influence among foreign residents
+
+## Current Strategy
+
+### Strategic Focus
+- Primary Focus: Diversified Commerce (warehouse operations + trade connections)
+- Risk Profile: Moderate-Conservative (learned from past setbacks)
+- Growth Target: 20% increase in net worth within 6 months through warehouse expansion
+
+### Active Initiatives
+1. Warehouse Operations Optimization
+   - Type: Business Development
+   - Status: Active
+   - Resources Committed: 50,000 ducats for inventory and improvements
+   - Expected Completion: Ongoing
+   - Expected Outcome: Establish dominant position in district storage market
+
+2. Citizenship Advancement
+   - Type: Political/Social
+   - Status: Accelerated
+   - Resources Committed: 10,000 ducats for fees, gifts, and influence
+   - Expected Completion: 8-12 months
+   - Expected Outcome: Leverage business success to secure citizenship for family
+
+3. Business Network Expansion
+   - Type: Relationship Building
+   - Status: In Progress
+   - Resources Committed: 5,000 ducats for entertainment and gifts
+   - Expected Completion: 6 months
+   - Expected Outcome: Establish connections with major Venetian merchant houses
+
+### Pending Decisions
+- Warehouse Expansion: Build second warehouse vs. diversify into other property types, Decision needed within 2 months
+- Political Investment: Which faction to support more heavily for citizenship benefits, Evaluating options
+- Trade Route Development: Establish new import partnerships vs. focus on local distribution, Considering market conditions
+
+## Recent Events
+
+### Significant Transactions
+- 2025-05-23: Construction of Small Warehouse, ~200,000 ducats, Strategic investment in commercial district
+- 2025-05-23: Bakery Employment, Steady income source, Local integration
+- 2025-05-20: Warehouse inventory stocking, 100,000 ducats, Initial operations setup
+
+### Market Changes
+- 2025-05-15: Increased demand for storage services in San Polo district, Created opportunity for warehouse operations
+- 2025-05-10: Rising property values in commercial areas, Validated warehouse investment strategy
+- 2025-05-05: New trade agreements with mainland suppliers, Expanded inventory opportunities
+
+### Political Developments
+- 2025-05-20: Forestieri business success recognition, Improved standing with Venetian authorities
+- 2025-05-15: New commercial district development plans, Potential for area growth
+- 2025-05-10: Citizenship application process streamlined for successful merchants, Opportunity for family advancement
