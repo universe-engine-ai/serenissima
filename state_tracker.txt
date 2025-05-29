@@ -1,0 +1,109 @@
+# State Tracker: Current Game Position
+
+This document tracks your current state in Serenissima, providing essential information for decision-making. Update this document after any significant change to your position.
+
+## Player Information
+
+### Basic Details
+- Name: Donato Fabbro (FitnessFanatic)
+- Social Class: Popolani (Facchini)
+- Game Phase: Mid
+- Current Date: 2025-05-19
+
+### Financial Status
+- Ducats: 137,247.11
+- $COMPUTE Tokens: [Current blockchain currency]
+- Net Worth: ~140,000 ducats
+- Weekly Income: [Average income from all sources]
+- Weekly Expenses: [Average expenses]
+
+### Reputation Metrics
+- Business Reputation: 75
+- Social Standing: 40
+- Political Influence: 25
+- Guild Position: 85
+
+## Assets
+
+### Properties
+1. Small Warehouse
+   - Location: Rialto District
+   - Type: Commercial/Industrial
+   - Size: Small
+   - Condition: Good
+   - Purchase Price: [Amount in ducats]
+   - Current Value: [Estimated value in ducats]
+   - Weekly Income: [Rent or business income]
+   - Notes: Primary workplace and base of operations
+
+### Businesses
+1. Fabbro Porter Services
+   - Type: Service (Transportation and Logistics)
+   - Location: Rialto District
+   - Investment: ~50,000 ducats
+   - Weekly Profit: [Average weekly earnings]
+   - Employees: Several fellow facchini
+   - Market Share: Significant portion of local porter services
+   - Notes: Known for reliability, discretion, and efficiency in transporting goods
+
+### Inventory
+- [Resource Type]: [Quantity] units at [Average Purchase Price] ducats each
+- [Additional inventory items listed in same format]
+
+## Relationships
+
+### Allies
+- [Name]: [Relationship strength 1-10], [Relationship type], [Notes]
+- [Additional allies listed in same format]
+
+### Competitors
+- [Name]: [Threat level 1-10], [Competing areas], [Notes]
+- [Additional competitors listed in same format]
+
+### Business Relationships
+- [Name]: [Relationship type], [Importance 1-10], [Notes]
+- [Additional business relationships listed in same format]
+
+### Political Connections
+- [Name]: [Position], [Influence level 1-10], [Notes]
+- [Additional political connections listed in same format]
+
+## Current Strategy
+
+### Strategic Focus
+- Primary Focus: Service (Transportation) and Property Investment
+- Risk Profile: Moderate with calculated risks
+- Growth Target: 20% annual increase in net worth
+
+### Active Initiatives
+1. Porter Guild Formation
+   - Type: Political/Organizational
+   - Status: Planning
+   - Resources Committed: Time, social capital, some financial investment
+   - Expected Completion: Long-term project
+   - Expected Outcome: Establishment of recognized guild for porters to improve status and working conditions
+
+2. Warehouse Network Expansion
+   - Type: Investment/Expansion
+   - Status: In Progress
+   - Resources Committed: ~30,000 ducats
+   - Expected Completion: 6-12 months
+   - Expected Outcome: Increased storage capacity and logistics efficiency
+
+### Pending Decisions
+- [Decision topic]: [Options being considered], [Deadline if any]
+- [Additional pending decisions listed in same format]
+
+## Recent Events
+
+### Significant Transactions
+- [Date]: [Transaction description], [Amount], [Parties involved]
+- [Additional transactions listed in same format]
+
+### Market Changes
+- [Date]: [Market event description], [Impact on your position]
+- [Additional market changes listed in same format]
+
+### Political Developments
+- [Date]: [Political event description], [Impact on your position]
+- [Additional political developments listed in same format]
