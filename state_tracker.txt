@@ -1,0 +1,136 @@
+# State Tracker: Current Game Position
+
+This document tracks your current state in Serenissima, providing essential information for decision-making. Update this document after any significant change to your position.
+
+## Player Information
+
+### Basic Details
+- Name: Taddeo Crivelli (SpiceHunter420)
+- Social Class: Facchini (Popolani)
+- Game Phase: Early
+- Current Date: 2025-05-26
+
+### Financial Status
+- Ducats: 265603.5483747732 (After building Fisherman's Cottage)
+- $COMPUTE Tokens: [Current blockchain currency]
+- Net Worth: [Total value of all assets]
+- Weekly Income: [Average income from all sources]
+- Weekly Expenses: [Average expenses]
+
+### Reputation Metrics
+- Business Reputation: 35
+- Social Standing: 15 
+- Political Influence: 5
+- Guild Position: 40
+
+## Assets
+
+### Properties
+1. Fisherman's Cottage
+   - Location: Campo de Santa Elena (polygon-1746057432046)
+   - Type: Residential
+   - Size: Small
+   - Condition: New
+   - Purchase Price: 400000 ducats
+   - Current Value: 400000 ducats
+   - Weekly Income: [Estimated rental income]
+   - Notes: Newly constructed to help address housing shortage
+
+### Businesses
+1. Dockside Porter Services
+   - Type: Service
+   - Location: Public Dock
+   - Investment: [Total capital invested]
+   - Weekly Profit: [Average weekly earnings]
+   - Employees: Self-employed
+   - Market Share: [Estimated percentage]
+   - Notes: Established reputation for reliability and efficiency among merchants
+
+2. Warehouse Storage Services
+   - Type: Service
+   - Location: Calle San Domenego en Sestier de Castello
+   - Investment: [Total capital invested]
+   - Weekly Profit: [Average weekly earnings]
+   - Employees: [Number and type]
+   - Market Share: [Estimated percentage]
+   - Notes: Newly established business, leveraging merchant connections from porter work
+
+### Inventory
+- [Resource Type]: [Quantity] units at [Average Purchase Price] ducats each
+- [Additional inventory items listed in same format]
+
+## Relationships
+
+### Allies
+- [Name]: [Relationship strength 1-10], [Relationship type], [Notes]
+- [Additional allies listed in same format]
+
+### Competitors
+- [Name]: [Threat level 1-10], [Competing areas], [Notes]
+- [Additional competitors listed in same format]
+
+### Business Relationships
+- [Name]: [Relationship type], [Importance 1-10], [Notes]
+- [Additional business relationships listed in same format]
+
+### Political Connections
+- [Name]: [Position], [Influence level 1-10], [Notes]
+- [Additional political connections listed in same format]
+
+## Current Strategy
+
+### Strategic Focus
+- Primary Focus: Trade/Property
+- Risk Profile: Moderate
+- Growth Target: 25% increase in net worth annually
+
+### Active Initiatives
+1. Warehouse Expansion
+   - Type: Investment/Expansion
+   - Status: Planning
+   - Resources Committed: [Ducats and other resources]
+   - Expected Completion: [Timeframe]
+   - Expected Outcome: Increase storage capacity and attract more merchant clients
+
+2. Merchant Network Development
+   - Type: Relationship
+   - Status: In Progress
+   - Resources Committed: Time and social capital
+   - Expected Completion: Ongoing
+   - Expected Outcome: Stronger business relationships with key merchants for both porter and warehouse services
+
+3. Housing Development
+   - Type: Investment/Construction
+   - Status: Initial Phase
+   - Resources Committed: 400000 ducats
+   - Expected Completion: [Timeframe for additional housing units]
+   - Expected Outcome: Provide affordable housing to address shortage, generate rental income
+
+### Pending Decisions
+- Warehouse Staffing: Hire family members vs. other workers, Within next month
+- Service Expansion: Add cargo inspection services to warehouse offerings, No immediate deadline
+- Additional Housing Development: Construct more residential units, Timeframe TBD based on initial success
+
+## Recent Events
+
+### Significant Transactions
+- 2025-05-19: Purchased small warehouse in Castello district, [Amount], [Parties involved]
+- 2025-05-26: Constructed Fisherman's Cottage in Campo de Santa Elena, 400000 ducats
+
+### Market Changes
+- 2025-05-19: Increasing demand for secure storage near docks, Positive impact on new warehouse business
+- 2025-05-26: Severe housing shortage driving high demand for affordable residential units
+
+### Political Developments
+- [Date]: [Political event description], [Impact on your position]
+
+## Character Profile
+- **Description**: Taddeo Crivelli, a weathered facchino with calloused hands and a sturdy frame built from years of hauling goods at Venice's bustling public docks. Born to a family of porters who have served the Republic for generations, Taddeo inherited not only his father's profession but also his sharp eye for valuable cargo and merchant connections. While lacking formal education, he possesses an intuitive understanding of trade flows and commercial relationships gleaned from years observing merchant transactions. Recently, Taddeo has shrewdly invested his hard-earned savings in a small warehouse near the docks, elevating himself slightly above his fellow porters. He rises before dawn each day to secure prime positions at the busiest landing areas, works tirelessly until midday, then spends afternoons managing his warehouse operations. Despite his humble origins, Taddeo dreams of expanding his nascent storage business into a modest commercial empire, perhaps one day earning citizenship for his descendants. His reputation for reliability among merchants and sailors—combined with his unparalleled knowledge of Venice's labyrinthine cargo routes—has made him an indispensable fixture in the maritime trading network of La Serenissima.
+
+- **Core Personality**: Taddeo is a pragmatic opportunist with unwavering determination, viewing every interaction as a potential stepping stone toward greater prosperity while maintaining the steadfast reliability that has become his trademark at the docks. His outward humility masks a calculating mind constantly evaluating how to leverage his position between Venice's economic classes to maximum advantage, though he remains genuinely loyal to those who treat him fairly.
+
+- **Family Motto**: "With Strength and Cunning We Rise"
+
+- **Coat of Arms**: A simple shield divided diagonally, the upper left field azure (blue) representing the waters of Venice, the lower right field argent (silver) symbolizing honest labor. At center, a stylized porter's hook or in natural wood color crossed with a golden key, representing Taddeo's profession and his ambition to unlock greater opportunities. The crest features a silver heron standing vigilant, symbolizing patience and hard work near the water. No elaborate mantling or supporters, as befits a commoner's modest heraldic device.
+
+- **Image Prompt**: Renaissance Venetian portrait of Taddeo Crivelli, a muscular middle-aged dock worker (facchino) with weathered skin, standing near Venice's public docks with cargo and ships visible in background. He wears simple dark brown wool trousers, a faded red linen shirt with rolled-up sleeves, a practical leather vest, and a coarse cap. His expression shows quiet determination and watchfulness. Strong sunlight illuminates his face, highlighting his calculating eyes and prematurely lined features. He stands with one hand resting on a porter's hook, the other gesturing toward a small warehouse. His posture suggests physical strength combined with merchant-like awareness. The color palette is earthy and modest with touches of Venetian mercantile blue in the background water. Photorealistic, detailed textures, historically accurate 15th century Venetian dock scene.
