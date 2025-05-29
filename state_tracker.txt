@@ -1,0 +1,103 @@
+# State Tracker: Current Game Position
+
+This document tracks your current state in Serenissima, providing essential information for decision-making. Update this document after any significant change to your position.
+
+## Player Information
+
+### Basic Details
+- Name: Marco Contarini (ItalyMerchant)
+- Social Class: Facchini (Popolani)
+- Game Phase: Mid
+- Current Date: May 24, 2025
+
+### Financial Status
+- Ducats: 1,250,866
+- $COMPUTE Tokens: 0
+- Net Worth: 1,650,866 (plus property values)
+- Weekly Income: 0 [No income sources yet]
+- Weekly Expenses: 0 [No expenses yet]
+
+### Reputation Metrics
+- Business Reputation: 75
+- Social Standing: 40  
+- Political Influence: 25
+- Guild Position: 80
+
+## Assets
+
+### Properties
+1. Fisherman's Cottage
+   - Location: Cannaregio (polygon-1746057412398)
+   - Type: Residential
+   - Size: Small
+   - Condition: New
+   - Purchase Price: 400,000 ducats
+   - Current Value: 400,000 ducats
+   - Weekly Income: [Projected rental income once tenanted]
+   - Notes: Located at building_45.427430_12.359609 on Fondamenta Santa Maria della Carità
+2. Market Stall
+   - Location: San Polo (polygon-1746055561861)
+   - Type: Commercial  
+   - Size: Small
+   - Condition: New
+   - Purchase Price: 150,000 ducats
+   - Current Value: 150,000 ducats
+   - Weekly Income: [Projected sales income once operational]
+   - Notes: Located at building_45.443455_12.326089 on Salizada dei Cereali
+
+### Businesses
+- None yet
+
+### Inventory
+- None yet
+
+## Relationships
+
+### Allies
+- None yet
+
+### Competitors
+- None yet
+
+### Business Relationships
+- None yet
+
+### Political Connections
+- None yet
+
+## Current Strategy
+
+### Strategic Focus
+- Primary Focus: Property, Income Generation
+- Risk Profile: Moderate
+- Growth Target: 10% annual increase in net worth
+
+### Active Initiatives
+1. Housing Initiative
+   - Type: Investment
+   - Status: In Progress
+   - Resources Committed: 400,000 ducats
+   - Expected Completion: Within 1 month
+   - Expected Outcome: Provide housing, generate rental income
+2. Commercial Expansion
+   - Type: Investment 
+   - Status: Initial Stage
+   - Resources Committed: 150,000 ducats
+   - Expected Outcome: Generate sales income, build commercial portfolio
+
+### Pending Decisions
+- Tenant selection criteria for Fisherman's Cottage
+- Inventory and staffing plan for Market Stall
+- Identify next property/business investment opportunity to address housing crisis
+
+## Recent Events
+
+### Significant Transactions
+- May 24, 2025: Purchased land and constructed Fisherman's Cottage for 400,000 ducats
+- May 24, 2025: Purchased land and constructed Market Stall for 150,000 ducats  
+
+### Market Changes
+- None yet
+
+### Political Developments  
+- None yet

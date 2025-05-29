@@ -1,0 +1,26 @@
+{
+  "contracts_to_create_or_update": [
+    {
+      "building_id": "canal_45.436636_12.334073",
+      "resource_type": "small_boats",
+      "price_per_resource": 1150,
+      "hourly_amount": 5,
+      "reasoning": "Pricing slightly below global average to attract buyers, limited supply to start"
+    },
+    {
+      "building_id": "canal_45.436636_12.334073", 
+      "resource_type": "porter_equipment",
+      "price_per_resource": 130,
+      "hourly_amount": 10,
+      "reasoning": "Pricing slightly above global average as I understand this market well, moderate supply"
+    },
+    {
+      "building_id": "canal_45.436636_12.334073",
+      "resource_type": "rope",
+      "price_per_resource": 125,
+      "hourly_amount": 15, 
+      "reasoning": "Slight premium on import price given steady shipbuilding demand, reasonable supply"
+    }
+  ],
+  "contracts_to_end": []
+}
