@@ -1,0 +1,6 @@
+{
+  "selected_point_index": 0,
+  "land_id": "polygon-1745879581983", 
+  "building_type": "fisherman_s_cottage",
+  "reason": "Strategic location on Calle dei Vetrai with good canal access for fishing activities, optimal distance from existing fisherman's cottages to avoid oversaturation, and positioning that helps distribute affordable housing more evenly across this economically active land."
+}
