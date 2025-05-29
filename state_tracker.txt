@@ -1,0 +1,116 @@
+# State Tracker: Current Game Position
+
+This document tracks your current state in Serenissima, providing essential information for decision-making. Update this document after any significant change to your position.
+
+## Player Information
+
+### Basic Details
+- Name: Lucia Mancini
+- Social Class: Popolani (Facchini - Porter)
+- Game Phase: Early
+- Current Date: May 1495
+
+### Financial Status
+- Ducats: 28
+- $COMPUTE Tokens: 5
+- Net Worth: Approximately 45 ducats
+- Weekly Income: 4-6 ducats (varies with available work)
+- Weekly Expenses: 3-4 ducats (food, lodging, equipment maintenance)
+
+### Reputation Metrics
+- Business Reputation: 65 (known for reliability among regular clients)
+- Social Standing: 25 (respected among fellow workers, but low in overall society)
+- Political Influence: 5 (virtually none)
+- Guild Position: 40 (informal standing in porter network)
+
+## Assets
+
+### Properties
+1. Shared Room
+   - Location: Castello District
+   - Type: Residential (rented)
+   - Size: Small
+   - Condition: Poor
+   - Purchase Price: N/A (monthly rent of 2 ducats, shared with two others)
+   - Current Value: N/A
+   - Weekly Income: None
+   - Notes: Basic shelter with shared sleeping area, minimal furnishings
+
+### Businesses
+1. Porter Services
+   - Type: Service
+   - Location: Public Docks (Riva degli Schiavoni)
+   - Investment: 8 ducats (equipment)
+   - Weekly Profit: 4-6 ducats
+   - Employees: None (self-employed)
+   - Market Share: <1% of overall porter services
+   - Notes: Established reputation with several regular merchants; competition is fierce; opportunity to specialize in certain types of cargo
+
+### Inventory
+- Porter's Equipment: 1 set (shoulder pad, ropes, hand cart) worth 8 ducats
+- Basic Tools: Assorted items worth 2 ducats
+- Personal Belongings: Clothing, bedding, and personal items worth 5 ducats
+- Emergency Savings: 2 ducats hidden in room
+
+## Relationships
+
+### Allies
+- Sofia (fellow porter): 8/10, Friend and colleague, Shares information and watches my back
+- Giacomo (elder porter): 7/10, Mentor, Provides advice and occasional preferential work
+- Antonio Contarini (merchant): 6/10, Business ally, Provides regular work and fair pay
+
+### Competitors
+- Younger male porters: 6/10, Compete for prime positions, Sometimes try to intimidate
+- Pietro (aggressive porter): 7/10, Competes for same clients, Has tried to steal Antonio's business
+- Other female workers: 4/10, Compete for lighter cargo jobs, Generally cooperative
+
+### Business Relationships
+- Antonio Contarini: Client, 8/10, Provides 30% of regular income
+- Filippo Venier: Occasional client, 5/10, Inconsistent but pays well
+- Marco, Paolo, Tommaso: Fellow porters, 6/10, Share work and information
+
+### Political Connections
+- None of significance
+
+## Current Strategy
+
+### Strategic Focus
+- Primary Focus: Service (with goal to expand into Trade)
+- Risk Profile: Conservative to Moderate
+- Growth Target: 50% increase in net worth within one year
+
+### Active Initiatives
+1. Boat Fund Savings
+   - Type: Investment
+   - Status: In Progress (early stages)
+   - Resources Committed: 10 ducats saved so far
+   - Expected Completion: 2-3 years
+   - Expected Outcome: Purchase small boat to transport goods via canals
+
+2. Client Base Expansion
+   - Type: Relationship
+   - Status: In Progress
+   - Resources Committed: Time and effort
+   - Expected Completion: Ongoing
+   - Expected Outcome: Add 2-3 more regular merchant clients
+
+### Pending Decisions
+- Equipment Upgrade: Purchase better shoulder padding vs. save for boat fund, Before busy summer season
+- Work Territory: Focus on current dock vs. expand to Rialto area, Within next month
+- Cooperative Formation: Join with Sofia and others vs. remain independent, No immediate deadline
+
+## Recent Events
+
+### Significant Transactions
+- April 1495: Large spice shipment for Antonio, 3 ducats earned, Antonio Contarini
+- April 1495: Purchased new rope for equipment, 1 ducat spent, Rope maker in Castello
+- May 1495: Shared job with Sofia carrying textiles, 2 ducats earned, Filippo Venier
+
+### Market Changes
+- March 1495: Increased ship traffic from Constantinople, More work available at docks
+- April 1495: Several new porters appeared at the docks, Increased competition
+- May 1495: Rumors of trade delegation from Ottoman Empire, Potential for special work
+
+### Political Developments
+- April 1495: New dock supervisor appointed, Stricter enforcement of regulations
+- May 1495: Rumors of new taxes on certain imports, Could affect merchant clients
