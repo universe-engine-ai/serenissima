@@ -1,0 +1,109 @@
+# State Tracker: Current Game Position
+
+This document tracks your current state in Serenissima, providing essential information for decision-making. Update this document after any significant change to your position.
+
+## Player Information
+
+### Basic Details
+- Name: Mahdi Taghizadeh (meyti_tgz2)
+- Social Class: Popolani (Facchini)
+- Game Phase: Early
+- Current Date: May 19, 2025
+
+### Financial Status
+- Ducats: 0
+- $COMPUTE Tokens: 0
+- Net Worth: Minimal (room rental and personal possessions)
+- Weekly Income: Modest (from market stall porter work)
+- Weekly Expenses: Basic necessities, room rent, small remittance to family
+
+### Reputation Metrics
+- Business Reputation: 15 (Known for reliability among select merchants)
+- Social Standing: 5 (Foreign worker of lowest class)
+- Political Influence: 0 (None)
+- Guild Position: 0 (Not officially in Porter's Guild)
+
+## Assets
+
+### Properties
+1. Rented Room
+   - Location: Cannaregio District
+   - Type: Residential
+   - Size: Small
+   - Condition: Poor
+   - Purchase Price: N/A (Rented)
+   - Current Value: N/A
+   - Weekly Income: None
+   - Notes: Small room in crowded tenement shared with other foreign workers
+
+### Businesses
+1. Porter Services
+   - Type: Service
+   - Location: Rialto Market
+   - Investment: None (labor only)
+   - Weekly Profit: Modest wages
+   - Employees: None (self-employed)
+   - Market Share: Minimal
+   - Notes: Works at market stall, carries goods for merchants, building reputation for reliability
+
+### Inventory
+- Personal Possessions: Minimal clothing, porter's tools (rope, simple carrying equipment)
+- Savings: Small amount of ducats carefully hidden in room
+
+## Relationships
+
+### Allies
+- [Name]: [Relationship strength 1-10], [Relationship type], [Notes]
+- [Additional allies listed in same format]
+
+### Competitors
+- [Name]: [Threat level 1-10], [Competing areas], [Notes]
+- [Additional competitors listed in same format]
+
+### Business Relationships
+- [Name]: [Relationship type], [Importance 1-10], [Notes]
+- [Additional business relationships listed in same format]
+
+### Political Connections
+- [Name]: [Position], [Influence level 1-10], [Notes]
+- [Additional political connections listed in same format]
+
+## Current Strategy
+
+### Strategic Focus
+- Primary Focus: Trade (building toward small-scale commerce)
+- Risk Profile: Conservative with calculated risks
+- Growth Target: Establish stable income, build savings for future trade venture
+
+### Active Initiatives
+1. Market Knowledge Development
+   - Type: Relationship/Knowledge
+   - Status: In Progress
+   - Resources Committed: Time, observation
+   - Expected Completion: Ongoing
+   - Expected Outcome: Better understanding of valuable goods, price fluctuations
+
+2. Language Improvement
+   - Type: Skill Development
+   - Status: In Progress
+   - Resources Committed: Time, practice during work
+   - Expected Completion: Ongoing
+   - Expected Outcome: Better negotiation ability, access to more opportunities
+
+### Pending Decisions
+- Guild Membership: Whether to pursue official recognition in Porter's Guild, requires sponsorship and fees
+- Specialization: Whether to focus on specific types of goods to develop expertise
+
+## Recent Events
+
+### Significant Transactions
+- [Date]: [Transaction description], [Amount], [Parties involved]
+- [Additional transactions listed in same format]
+
+### Market Changes
+- [Date]: [Market event description], [Impact on your position]
+- [Additional market changes listed in same format]
+
+### Political Developments
+- [Date]: [Political event description], [Impact on your position]
+- [Additional political developments listed in same format]
