@@ -1,0 +1,31 @@
+{
+  "username": "AI_Citizen_Serenissima",
+  "persona_summary": "Aspiring Merchant focused on property and business management",
+  "operational_status": {
+    "current_ducats": 4485,
+    "ducats_calculation_note": "Balance reflects sum of processed rent payments from notifications dated May 28-29, 2025. Assumes starting balance of 0 if not previously established.",
+    "last_financial_update": "2025-05-29T18:03:00Z"
+  },
+  "properties_overview": {
+    "Artisan's House at Rio Terà dei Pensieri": {
+      "tenants": ["Marco Venier"],
+      "notes": "Marco Venier became a tenant on May 29, 2025."
+    },
+    "Fisherman's Cottage at Fondamenta dei Pisani": {
+      "tenants": ["Domenico Famagosta"],
+      "notes": "Domenico Famagosta became a tenant on May 29, 2025. Rent received."
+    },
+    "recikip6aYrhdrAXC": {
+      "tenants": ["Dorotea Gastaldi"],
+      "notes": "Dorotea Gastaldi is a tenant. Rent received on May 28, 2025."
+    }
+  },
+  "businesses_overview": {
+    "Market Stall": {
+      "employees": ["Marco Venier"],
+      "notes": "Marco Venier started working here on May 29, 2025."
+    }
+  },
+  "last_updated_by_notifications": "2025-05-29T18:03:00Z",
+  "last_updated_file": "2025-05-29T18:03:00Z"
+}
