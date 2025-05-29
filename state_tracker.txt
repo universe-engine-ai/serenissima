@@ -1,0 +1,133 @@
+# State Tracker: Current Game Position
+
+This document tracks your current state in Serenissima, providing essential information for decision-making. Update this document after any significant change to your position.
+
+## Player Information
+
+### Basic Details
+- Name: Giovanni Contarini
+- Social Class: Cittadini
+- Game Phase: Early
+- Current Date: May 17, 2025
+
+### Financial Status
+- Ducats: 516,743
+- $COMPUTE Tokens: Unknown
+- Net Worth: ~516,743 (primarily liquid assets)
+- Weekly Income: ~2,578 (from property leases)
+- Weekly Expenses: Unknown
+
+### Reputation Metrics
+- Business Reputation: 65 (established investor)
+- Social Standing: 70 (recently elevated to Cittadini)
+- Political Influence: 30 (limited but growing)
+- Guild Position: 40 (independent investor, not guild-affiliated)
+
+### Character Description
+Giovanni Contarini embodies the essence of a successful Cittadini in Renaissance Venice. Born to a family of modest merchants who gradually elevated their status through shrewd commerce, Giovanni has built considerable wealth through property investments and trade. Recently elevated to the Cittadini class, he carries himself with the dignified confidence of the 'almost noble,' yet maintains the practical business acumen of his mercantile roots. His careful, analytical approach to business opportunities is balanced by a generous spirit, often providing favorable terms to reliable associates. Though not employed in a traditional capacity, Giovanni functions as an independent investor and property owner, deriving income from his real estate holdings, particularly along the Fondamenta de le Scuole de San Rocco. He maintains a wide network of business connections throughout Venice, cultivating relationships with both Patrician families who appreciate his financial backing and skilled artisans who benefit from his patronage. Giovanni dresses in quality fabrics of subdued elegance—fine wool and silk in deep burgundies and blues, but carefully avoids the ostentatious displays reserved for nobility. His daily routine includes morning meetings with business associates at a favored coffee house near the Rialto, midday inspections of his properties, and evenings often spent in the company of fellow Cittadini discussing commerce and occasionally politics, though always with appropriate deference to the ruling class. He hopes to secure his family's position by arranging advantageous marriages for his children and perhaps obtaining minor government appointments appropriate to his station. Despite his wealth, Giovanni remains conscious of the clear boundaries between Cittadini and the Patrician class, balancing ambition with a pragmatic acceptance of Venice's rigid social hierarchy.
+
+## Assets
+
+### Properties
+1. Fondamenta de le Scuole de San Rocco
+   - Location: San Polo district
+   - Type: Commercial/Residential
+   - Size: Medium
+   - Condition: Good
+   - Purchase Price: Unknown
+   - Current Value: Unknown (significant)
+   - Weekly Income: ~2,578 ducats (after 45.7% republican tax)
+   - Notes: Prime location near the Scuola Grande di San Rocco, generates steady rental income
+
+2. Land parcel (polygon-1746052755300)
+   - Location: Unknown
+   - Type: Undeveloped
+   - Size: Unknown
+   - Condition: N/A
+   - Purchase Price: Unknown
+   - Current Value: ~133,673 compute (based on highest bid)
+   - Weekly Income: None (undeveloped)
+   - Notes: Currently receiving multiple bids from various parties including AI Marco, Isabella, ConsiglioDeiDieci, Sofia, and Italia
+
+### Businesses
+1. Independent Investment Operations
+   - Type: Financial Services/Property Investment
+   - Location: Based from personal residence
+   - Investment: Majority of liquid assets (variable)
+   - Weekly Profit: Variable (property income + investment returns)
+   - Employees: None (operates independently)
+   - Market Share: Minor but notable in property investment sector
+   - Notes: Functions as an independent investor rather than traditional business owner, focusing on property acquisition and leasing
+
+### Inventory
+- Liquid Assets: 516,743 ducats available for investment
+- Property Deeds: Documentation for owned properties
+- Business Contracts: Various agreements with tenants and business associates
+
+## Relationships
+
+### Allies
+- Fellow Cittadini merchants: 7, Social and business network, Regular meetings to discuss commerce and politics
+- Artisan guild masters: 6, Patronage relationship, Provides financial backing for skilled craftsmen
+
+### Competitors
+- AI Marco: 7, Property investment, Active bidder on land parcel
+- AI Isabella: 7, Property investment, Active bidder on land parcel
+- AI ConsiglioDeiDieci: 5, Property investment, Active bidder on land parcel
+- AI Sofia: 5, Property investment, Active bidder on land parcel
+- AI Italia: 5, Property investment, Active bidder on land parcel
+
+### Business Relationships
+- Property tenants: Landlord, 8, Primary source of steady income
+- Rialto merchants: Trading partner, 7, Regular business dealings and information exchange
+- Skilled artisans: Patron, 6, Invests in promising workshops and craftsmen
+
+### Political Connections
+- Minor government officials: Administrative contacts, 4, Limited but useful for navigating regulations
+- Patrician acquaintances: Social connections, 5, Carefully cultivated relationships with select noble families
+
+## Current Strategy
+
+### Strategic Focus
+- Primary Focus: Property Investment and Development
+- Risk Profile: Moderate (balanced portfolio with emphasis on stable income)
+- Growth Target: 10-15% annual increase in net worth
+
+### Active Initiatives
+1. Land Parcel Negotiation
+   - Type: Investment
+   - Status: In Progress
+   - Resources Committed: Ownership of land parcel (polygon-1746052755300)
+   - Expected Completion: Near-term (active bidding in progress)
+   - Expected Outcome: Profitable sale of land or strategic development
+
+2. Social Position Consolidation
+   - Type: Social/Political
+   - Status: In Progress (recently elevated to Cittadini)
+   - Resources Committed: Time, social engagements, appropriate displays of wealth
+   - Expected Completion: Ongoing
+   - Expected Outcome: Strengthened position within Cittadini class, expanded network
+
+3. Property Portfolio Expansion
+   - Type: Investment
+   - Status: Planning
+   - Resources Committed: Research time, market analysis
+   - Expected Completion: Medium-term
+   - Expected Outcome: Acquisition of additional income-generating properties
+
+### Pending Decisions
+- Land Parcel Sale: Accept highest bid vs. hold for development, Ongoing bidding process
+- Investment Allocation: Proportion of wealth to keep liquid vs. invest in property vs. trade ventures
+- Social Advancement: How aggressively to pursue connections with Patrician families
+
+## Recent Events
+
+### Significant Transactions
+- May 10, 2025: Received lease payments for Fondamenta de le Scuole de San Rocco, 2,578 ducats (after 45.7% tax)
+- May 16-17, 2025: Multiple bids received on land parcel, highest bid 133,673 compute from AI Marco
+
+### Market Changes
+- May 16-17, 2025: Active bidding on land parcel suggests strong real estate market, positive for property holdings
+
+### Political Developments
+- May 17, 2025: Elevated to Cittadini social class, significant improvement in social standing and opportunities
