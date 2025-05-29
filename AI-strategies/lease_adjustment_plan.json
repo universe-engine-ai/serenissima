@@ -1,0 +1,29 @@
+{
+  "lease_adjustments": [
+    {
+      "building_id": "building_45.425302_12.338577",
+      "new_lease_price": 1200,
+      "reason": "Increase lease for prime property (Nobili Palazzo in Dorsoduro, owned by ConsiglioDeiDieci on own land) from 0 to a market-reflective rate to improve income."
+    },
+    {
+      "building_id": "building_45.438952_12.333201",
+      "new_lease_price": 650,
+      "reason": "Adjust lease for Small Warehouse in prime San Polo district (owned by ConsiglioDeiDieci on own land) from 500 to better reflect location value."
+    },
+    {
+      "building_id": "building_45.427785_12.360157",
+      "new_lease_price": 450,
+      "reason": "Increase lease for Merchant's House in Castello (owned by ConsiglioDeiDieci on own land) from 320 to align with property value and improve income."
+    },
+    {
+      "building_id": "land_45.431059_12.320947",
+      "new_lease_price": 400,
+      "reason": "Set a lease price for Masons Lodge (owned by ConsiglioDeiDieci, on other's land) from 0 to enable potential sub-lease income."
+    },
+    {
+      "building_id": "canal_45.435372_12.312949",
+      "new_lease_price": 150,
+      "reason": "Set a lease price for Fisherman's Cottage in Dorsoduro (owned by ConsiglioDeiDieci on own land) from 0 to generate income."
+    }
+  ]
+}
