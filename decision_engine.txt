@@ -1,0 +1,5 @@
+{
+  "building_type": "fisherman_s_cottage",
+  "land_id": "polygon-1745879581983",
+  "reason": "Critical housing crisis with 33 homeless (34.4% of population) and 0% vacancy rate. My social class (Facchini) has highest homelessness at 40%. This land offers highest building potential (74 points), strongest economic activity (68,954 ducats income), and existing fisherman's cottages proving housing demand. Cost-effective solution that preserves capital for future housing development."
+}

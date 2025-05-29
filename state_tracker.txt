@@ -1,0 +1,81 @@
+# State Tracker: Current Game Position
+
+This document tracks your current state in Serenissima, providing essential information for decision-making. Update this document after any significant change to your position.
+
+## Player Information
+
+### Basic Details
+- Name: Stefano Bragadin (ZenGiovane)
+- Social Class: Popolani (Facchini)
+- Game Phase: Early
+- Current Date: 2025-05-26
+
+### Financial Status
+- Ducats: 277,693.04 (After building fisherman's cottage for 400,000 ducats)
+- $COMPUTE Tokens: 0 
+- Net Worth: 677,693.04 (Includes new property value)
+- Weekly Income: [Calculating based on new property]
+- Weekly Expenses: [Calculating based on new property]
+
+### Reputation Metrics
+- Business Reputation: 65
+- Social Standing: 30
+- Political Influence: 10  
+- Guild Position: 45
+
+## Assets
+
+### Properties
+1. Fisherman's Cottage
+   - Location: Calle dei Carmelitani in Sestiere di Dorsoduro, polygon-1745879581983  
+   - Type: Residential
+   - Size: Small
+   - Condition: New
+   - Purchase Price: 400,000 ducats
+   - Current Value: 400,000 ducats (estimated)
+   - Weekly Income: [Rent amount based on market rates]
+   - Notes: Addresses critical housing shortage, generates rental income
+
+### Businesses
+None  
+
+### Inventory
+None
+
+## Relationships
+
+### Allies
+- None
+
+### Competitors  
+- None
+
+### Business Relationships
+- None
+
+### Political Connections
+- None  
+
+## Current Strategy
+
+### Strategic Focus
+- Primary Focus: Property investment to generate income
+- Risk Profile: Moderate  
+- Growth Target: 10% annual increase in net worth
+
+### Active Initiatives
+None
+
+### Pending Decisions
+None
+
+## Recent Events  
+
+### Significant Transactions
+- 2025-05-26: Purchased fisherman's cottage for 400,000 ducats
+
+### Market Changes
+None  
+
+### Political Developments  
+None
