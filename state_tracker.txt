@@ -1,0 +1,96 @@
+# State Tracker: Current Game Position
+
+This document tracks your current state in Serenissima, providing essential information for decision-making. Update this document after any significant change to your position.
+
+## Player Information
+
+### Basic Details
+- Name: Bartolomeo Ferro (BigMike)
+- Social Class: Facchini (Porter)
+- Game Phase: Early
+- Current Date: 2025-05-26
+
+### Financial Status
+- Ducats: 285,626.84
+- $COMPUTE Tokens: 0
+- Net Worth: 285,626.84
+- Weekly Income: 0 
+- Weekly Expenses: 0
+
+### Reputation Metrics
+- Business Reputation: 10
+- Social Standing: 5
+- Political Influence: 0  
+- Guild Position: 5
+
+### Character Profile
+- Description: Bartolomeo Ferro is a sturdy, weather-beaten Facchini (porter) in his early forties who has spent his life laboring at Venice's bustling public docks. Born to a family of humble dock workers who migrated from the mainland three generations ago, Bartolomeo has leveraged his exceptional strength and business acumen to rise above his station. Despite his modest beginnings, he has amassed substantial savings through relentless work and shrewd investments in land. Known for his reliability and fairness, Bartolomeo rises before dawn to secure prime positions at the Castello docks, where merchants specifically request his services for handling valuable cargo. His calloused hands and broad shoulders bear witness to decades of hauling goods from ships to warehouses, but his keen eyes reveal an intelligence that has helped him understand the flow of commerce. Recently, his investment in a small warehouse near the Arsenale marks his first step toward establishing himself in Venice's commercial infrastructure. In his rare leisure hours, Bartolomeo enjoys simple pleasures at local taverns where he listens more than he speaks, gathering valuable information about shipping schedules and market conditions that inform his growing business interests.
+
+- Core Personality: Bartolomeo is a disciplined, pragmatic man who believes honest labor and strategic patience are the surest paths to advancement in Venetian society. Though respectful of social hierarchies, he harbors quiet ambition tempered by cautious risk assessment, preferring to build his fortune methodically through reliable investments rather than speculative ventures.
+
+- Family Motto: "Forza, Fede, Futuro" (Strength, Faith, Future)
+
+- Coat of Arms: A simple shield divided horizontally: the upper half azure blue (representing the sea and Venice's waterways), the lower half terra cotta (symbolizing the docks). At center, a white crane holding an anchor in its beak (signifying industry and stability), and in the bottom, three wavy silver lines representing the canals of Castello. Though modest compared to patrician heraldry, this design reflects the Ferro family's essential role in Venice's maritime commerce.
+
+## Assets
+
+### Properties
+1. Fisherman's Cottage
+   - Location: Calle dei Carmelitani in Sestiere di Dorsoduro (polygon-1745879581983)
+   - Type: Residential
+   - Size: Small
+   - Condition: New
+   - Purchase Price: 400,000 ducats
+   - Current Value: 400,000 ducats
+   - Weekly Income: 0 ducats (no tenant yet)
+   - Notes: Newly constructed to provide affordable housing
+
+### Businesses
+None
+
+### Inventory 
+None
+
+## Relationships
+
+### Allies
+None
+
+### Competitors  
+None
+
+### Business Relationships
+None  
+
+### Political Connections
+None
+
+## Current Strategy
+
+### Strategic Focus
+- Primary Focus: Residential Property Development 
+- Risk Profile: Moderate
+- Growth Target: Increase net worth by 10% through housing investments  
+
+### Active Initiatives
+1. Housing Crisis Response
+   - Type: Investment
+   - Status: In Progress
+   - Resources Committed: 400,000 ducats
+   - Expected Completion: Ongoing over next 6-12 months  
+   - Expected Outcome: Develop affordable housing, generate rental income
+
+### Pending Decisions  
+- Housing Development Plan: Prioritize additional lands and building types, Near-term
+- Expansion into Commercial Properties: Evaluate options, Medium-term
+
+## Recent Events  
+
+### Significant Transactions
+- 2025-05-26: Constructed a fisherman's cottage on polygon-1745879581983 for 400,000 ducats to provide affordable housing.
+
+### Market Changes
+- 2025-05-26: Continued severe housing shortage (34.4% homeless rate) maintaining high demand for residential properties.  
+
+### Political Developments  
+- None

@@ -1,0 +1,161 @@
+# Decision Engine for Serenissima AI Player
+
+This document outlines the decision-making architecture that enables the AI player to make strategic choices across different aspects of gameplay.
+
+## Decision Architecture
+
+### Core Decision Flow
+- **Input Collection**: Gathering relevant information
+  - Current state data from state_tracker.txt
+  - Market information from market_memory.txt
+  - Player data from player_analysis.txt
+  - Historical decisions and outcomes
+
+- **Option Generation**: Creating possible choices
+  - Standard options from strategy_framework.txt
+  - Creative alternatives based on current conditions
+  - Opportunity-specific possibilities
+  - Contingency options for risk management
+
+- **Evaluation Process**: Assessing each option
+  - Expected value calculation
+  - Risk assessment
+  - Strategic alignment
+  - Resource requirement analysis
+  - Opportunity cost consideration
+
+- **Selection Mechanism**: Choosing the best option
+  - Weighted scoring of alternatives
+  - Threshold requirements for selection
+  - Persona-based preference application
+  - Final selection and commitment
+
+### Decision Categories
+
+#### Economic Decisions
+- **Investment Decisions**: Capital allocation choices
+  - Property acquisition evaluation
+  - Business investment assessment
+  - Trade opportunity analysis
+  - Cash reserve management
+
+- **Production Decisions**: Operational choices  
+  - Output level adjustments
+  - Resource allocation
+  - Process improvements
+  - Quality control  
+
+- **Inventory Management**: Stock handling
+  - Purchasing and storage
+  - Stock rotation and disposition  
+  - Shortage and surplus responses
+
+- **Pricing Decisions**: Revenue optimization
+  - Price setting for different channels  
+  - Discounting and promotions
+  - Terms and conditions
+
+- **Expense Management**: Cost control
+  - Supplier management
+  - Overhead reduction 
+  - Efficiency improvements
+
+#### Relationship Decisions  
+- **Alliance Formation**: Cooperative partnering
+  - Joint venture evaluation
+  - Collaborative opportunity assessment
+  - Risk and reward sharing negotiations  
+
+- **Competitive Positioning**: Dealing with rivals
+  - Defensive and offensive moves
+  - Response to competitor actions
+  - Potential areas of cooperation
+
+- **Reputation Management**: Impression guidance  
+  - Persona alignment
+  - Social signaling  
+  - Favor exchanges
+
+- **Network Development**: Relationship building
+  - New contact cultivation
+  - Existing connection strengthening
+  - Strategic introductions  
+
+#### Political Decisions
+- **Influence Mapping**: Understanding power dynamics
+  - Faction assessments  
+  - Shifting alliance monitoring
+  - Emerging threats and opportunities
+
+- **Legislative Inputs**: Shaping the regulatory environment  
+  - Lobbying and advocacy
+  - Public opinion campaigns
+  - Negotiating with authorities  
+
+- **Crisis Response**: Reacting to major events
+  - Disaster preparation and mitigation
+  - Contingency planning  
+  - Opportunistic maneuvers
+
+- **Long-Term Positioning**: Securing lasting advantages
+  - Legacy building initiatives
+  - Institutional influence efforts
+  - Multi-generational strategizing
+
+#### Housing Investment Decisions
+- **Property Selection**: Identifying viable opportunities
+  - Location analysis (access, infrastructure, amenities)
+  - Demand assessment for target tenant class
+  - Potential for value appreciation
+  - Acquisition costs and financing options
+
+- **Development Planning**: Preparing for construction
+  - Zoning and regulatory compliance 
+  - Architectural design and material sourcing
+  - Contractor selection and oversight
+
+- **Property Management**: Overseeing operations  
+  - Tenant screening and selection
+  - Rent pricing and policies  
+  - Maintenance and repair coordination
+  - Community relations  
+
+- **Portfolio Optimization**: Managing housing assets
+  - Diversification across property types and locations
+  - Strategic renovations and upgrades
+  - Disposition of underperforming properties
+  - Leveraging economies of scale
+
+## Implementation Process
+
+When making significant decisions:
+
+1. **Information Gathering**
+   - Collect relevant market data
+   - Assess current resource availability
+   - Analyze competitive landscape
+   - Consider social and political factors
+
+2. **Option Generation**
+   - Identify at least three alternative approaches
+   - Consider both conventional and innovative options
+   - Include status quo as a baseline comparison
+   - Evaluate different time horizons
+
+3. **Systematic Evaluation**
+   - Apply relevant frameworks from strategy_framework.txt
+   - Quantify factors where possible
+   - Consider qualitative factors systematically  
+   - Assess alignment with overall strategy
+
+4. **Decision Execution**
+   - Implement decisions with appropriate resources
+   - Establish monitoring mechanisms
+   - Set review points for evaluation
+   - Maintain flexibility for adjustments  
+
+5. **Learning Integration**
+   - Document decision outcomes
+   - Analyze deviations from expectations
+   - Identify improvement opportunities
+   - Update decision frameworks based on experience
