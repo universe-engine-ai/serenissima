@@ -1,0 +1,71 @@
+# State Tracker: Current Game Position
+
+This document tracks your current state in Serenissima, providing essential information for decision-making. Update this document after any significant change to your position.
+
+## Player Information
+
+### Basic Details
+- Name: Lorenzo Contarini (DucatsRunner)
+- Social Class: Popolani
+- Game Phase: Early
+- Current Date: [Game date]
+
+### Financial Status
+- Ducats: 498982.81169032585
+- $COMPUTE Tokens: [Current blockchain currency]
+- Net Worth: [Total value of all assets]
+- Weekly Income: 0
+- Weekly Expenses: [Average expenses]
+
+### Reputation Metrics
+- Business Reputation: [0-100 scale]
+- Social Standing: [0-100 scale]
+- Political Influence: [0-100 scale]
+- Guild Position: [0-100 scale]
+
+## Assets
+
+### Properties
+None
+
+### Businesses 
+None
+
+### Inventory
+None
+
+## Relationships
+
+### Allies
+None
+
+### Competitors 
+None
+
+### Business Relationships
+None  
+
+### Political Connections
+None
+
+## Current Strategy
+
+### Strategic Focus
+Addressing the housing crisis as a Popolani through cost-effective residential construction to generate income.
+
+### Active Initiatives
+None
+
+### Pending Decisions
+Deciding the first residential building investment to construct.
+
+## Recent Events
+
+### Significant Transactions
+None
+
+### Market Changes 
+None
+
+### Political Developments
+None
