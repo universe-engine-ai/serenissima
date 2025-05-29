@@ -1,0 +1,382 @@
+# Relationship Tracker for Giacomo Barbarigo (rialto_sailor)
+
+This document tracks Giacomo's relationships with other players and NPCs in Serenissima, providing a structured system for managing social connections and alliances.
+
+## Key Relationships
+
+### Parish Priest and Church Community
+- **Basic Information**:
+  - Relationship Type: Professional/Spiritual
+  - Contact Names: Father [Name], various parishioners
+  - Social Class: Mixed (Clergy and Popolani)
+  - Position: Spiritual leaders and community members
+  - Initial Connection: Seeking spiritual guidance after career setbacks
+
+- **Relationship Status**:
+  - Current Standing: Very Good
+  - Trust Level: High (8/10)
+  - Relationship Duration: Recent but deepening
+  - Interaction Frequency: Daily
+  - Public vs. Private: Known and respected association
+
+- **Exchange Ledger**:
+  - Favors Owed to You: Spiritual guidance, employment opportunity
+  - Favors You Owe: Faithful service, protection of church resources
+  - Recent Transactions: Church maintenance work, financial stewardship
+  - Gifts Exchanged: Maritime stories for spiritual wisdom
+  - Services Rendered: Church upkeep, financial management, community support
+
+- **Strategic Value**:
+  - Information Access: Community concerns, spiritual guidance
+  - Market Influence: Limited but growing respect in religious circles
+  - Political Connection: Modest influence through church networks
+  - Resource Access: Church facilities, community support
+  - Reputation Impact: Growing reputation for reliability and piety
+
+- **Development Plan**:
+  - Next Interaction: Continue faithful service and spiritual growth
+  - Relationship Goals: Deepen spiritual understanding and community trust
+  - Trust Building Actions: Demonstrate financial integrity, share wisdom appropriately
+  - Risk Factors: Past reputation for gullibility could affect trust
+  - Investment Strategy: Consistent service and spiritual development
+
+### Fellow Facchini at Rialto
+- **Basic Information**:
+  - Relationship Type: Social/Professional (Former)
+  - Contact Names: Various dock workers and porters
+  - Social Class: Popolani
+  - Position: Fellow laborers
+  - Initial Connection: Shared work at the Rialto docks
+
+- **Relationship Status**:
+  - Current Standing: Cordial but Distant
+  - Trust Level: Moderate (5/10)
+  - Relationship Duration: Several years
+  - Interaction Frequency: Occasional
+  - Public vs. Private: Known former association
+
+- **Exchange Ledger**:
+  - Favors Owed to You: Occasional advice and maritime knowledge
+  - Favors You Owe: Past camaraderie and shared experiences
+  - Recent Transactions: Limited since career change
+  - Gifts Exchanged: Stories and occasional drinks
+  - Services Rendered: Mentorship when available
+
+- **Strategic Value**:
+  - Information Access: Dock news, job opportunities (if needed)
+  - Market Influence: Limited connection to maritime trade
+  - Political Connection: Awareness of popolani concerns
+  - Resource Access: Potential backup employment network
+  - Reputation Impact: Maintains connection to working-class roots
+
+- **Development Plan**:
+  - Next Interaction: Occasional visits to maintain connections
+  - Relationship Goals: Preserve goodwill while focusing on new path
+  - Trust Building Actions: Share spiritual insights when appropriate
+  - Risk Factors: Growing distance due to different life paths
+  - Investment Strategy: Minimal maintenance, focus on new community
+
+### Former Merchant Contacts
+- **Basic Information**:
+  - Relationship Type: Business (Former)
+  - Contact Names: Various merchants from previous sailing days
+  - Social Class: Cittadini
+  - Position: Merchants and traders
+  - Initial Connection: Business transactions during sailing career
+
+- **Relationship Status**:
+  - Current Standing: Cautious
+  - Trust Level: Low-Moderate (4/10)
+  - Relationship Duration: Many years
+  - Interaction Frequency: Rare
+  - Public vs. Private: Known but complicated history
+
+- **Exchange Ledger**:
+  - Favors Owed to You: Few, if any
+  - Favors You Owe: None
+  - Recent Transactions: Very limited
+  - Gifts Exchanged: None recently
+  - Services Rendered: Past transportation of goods
+
+- **Strategic Value**:
+  - Information Access: Market trends, if trust can be rebuilt
+  - Market Influence: Potential for future opportunities
+  - Political Connection: Limited connections to commercial guilds
+  - Resource Access: Possible church-related business opportunities
+  - Reputation Impact: Opportunity to demonstrate changed character
+
+- **Development Plan**:
+  - Next Interaction: Approach with humility and demonstrated wisdom
+  - Relationship Goals: Rebuild trust through changed behavior
+  - Trust Building Actions: Show spiritual growth and business acumen
+  - Risk Factors: Past reputation for poor judgment
+  - Investment Strategy: Careful, measured re-engagement when appropriate
+
+## Faction Relationships
+
+### Local Parish Community
+- **Faction Profile**:
+  - Type: Religious Community
+  - Key Members: Parish priest, devout parishioners, church benefactors
+  - Power Base: Spiritual authority and community influence
+  - Territory: Parish boundaries and local neighborhood
+  - Interests: Spiritual welfare, community support, church maintenance
+
+- **Relationship Status**:
+  - Overall Standing: Friendly and Growing
+  - Formal Agreements: Employment arrangement with church
+  - Public Perception: Respected as reformed character
+  - Internal Champions: Parish priest, grateful parishioners
+  - Internal Opposition: None currently
+
+- **Interaction History**:
+  - Significant Events: Transition from dock work to church service
+  - Ongoing Dealings: Daily church maintenance and community support
+  - Conflicts and Resolutions: None significant
+  - Collaborative Successes: Improved church financial management
+  - Outstanding Issues: Proving long-term commitment
+
+- **Strategic Approach**:
+  - Engagement Strategy: Consistent service and spiritual growth
+  - Alliance Potential: Strong foundation for community leadership
+  - Risk Management: Maintain humility and avoid past mistakes
+  - Influence Methods: Lead by example, share wisdom appropriately
+  - Resource Commitment: Time, labor, and spiritual dedication
+
+### Venetian Facchini Guild
+- **Faction Profile**:
+  - Type: Labor Guild
+  - Key Members: Guild leaders, senior porters, dock supervisors
+  - Power Base: Control over dock labor and cargo handling
+  - Territory: Rialto docks and related commercial areas
+  - Interests: Worker rights, job security, fair wages
+
+- **Relationship Status**:
+  - Overall Standing: Neutral to Friendly
+  - Formal Agreements: Former membership, potential future connection
+  - Public Perception: Respected former member who found new path
+  - Internal Champions: Some former colleagues
+  - Internal Opposition: None significant
+
+- **Interaction History**:
+  - Significant Events: Years of service, transition to church work
+  - Ongoing Dealings: Occasional social contact
+  - Conflicts and Resolutions: None significant
+  - Collaborative Successes: Past mentorship of younger workers
+  - Outstanding Issues: Maintaining connection while pursuing new path
+
+- **Strategic Approach**:
+  - Engagement Strategy: Respectful distance with occasional engagement
+  - Alliance Potential: Potential bridge between church and workers
+  - Risk Management: Avoid being drawn back into old patterns
+  - Influence Methods: Spiritual counsel when appropriate
+  - Resource Commitment: Minimal, focused on new calling
+
+## Network Analysis
+
+### Relationship Network Map
+- **Primary Circle**: Closest and most trusted connections
+  - Parish Priest: [Spiritual mentor], [Guidance and employment], [Connection strength 8/10]
+  - Key Parishioners: [Community members], [Mutual support], [Connection strength 6/10]
+
+- **Secondary Circle**: Important but less close connections
+  - Former Facchini Colleagues: [Professional history], [Occasional advice], [Connection strength 5/10]
+  - Church Benefactors: [Financial supporters], [Potential influence], [Connection strength 4/10]
+
+- **Tertiary Circle**: Occasional or formal connections
+  - Former Merchant Contacts: [Business history], [Potential opportunities], [Connection strength 3/10]
+  - Neighborhood Residents: [Community members], [Local reputation], [Connection strength 4/10]
+
+- **Potential Connections**: Targeted future relationships
+  - Other Parish Workers: [Shared service], [Community building], [Current access through church]
+  - Religious Orders: [Spiritual development], [Broader church influence], [Access through parish priest]
+
+### Network Gaps
+- **Industry Access**: Missing connections in key business areas
+  - Religious Commerce: [Church supply needs], [Potential vendors], [Develop through church work]
+  - Community Services: [Local needs], [Service providers], [Build through parish connections]
+
+- **Political Coverage**: Needed political connections
+  - Local Government: [Community representation], [Parish advocates], [Develop through church influence]
+  - Religious Hierarchy: [Church advancement], [Spiritual leaders], [Build through faithful service]
+
+- **Social Circles**: Underrepresented social connections
+  - Educated Popolani: [Intellectual growth], [Community leadership], [Seek through church activities]
+  - Charitable Organizations: [Community service], [Broader impact], [Connect through parish work]
+
+- **Geographic Representation**: Territorial connection needs
+  - Other Parishes: [Broader religious network], [Shared experiences], [Develop through church events]
+  - Venetian Islands: [Extended community], [Diverse perspectives], [Build through maritime knowledge]
+
+### Network Strength Assessment
+- **Diversity Evaluation**: Balance across different types
+  - Business Network Strength: [Weak but rebuilding]
+  - Political Network Strength: [Weak]
+  - Social Network Strength: [Moderate and growing]
+  - Information Network Strength: [Moderate]
+
+- **Redundancy Analysis**: Backup connections for critical functions
+  - Spiritual Guidance: [Parish priest], [Senior parishioners], [Low vulnerability]
+  - Employment Security: [Church work], [Former dock connections], [Moderate vulnerability]
+
+- **Loyalty Assessment**: Relationship reliability evaluation
+  - Highly Loyal Connections: [Parish priest - spiritual bond]
+  - Transaction-Based Relationships: [Church employment arrangement]
+  - Uncertain Loyalties: [Former merchant contacts]
+  - Potential Conflicts: [None currently identified]
+
+- **Influence Mapping**: Your impact on network members
+  - High Influence: [Parish financial management, spiritual insights]
+  - Moderate Influence: [Community storytelling, maritime wisdom]
+  - Low Influence: [Former business contacts]
+  - Influence Building Targets: [Church leadership, community elders]
+
+## Relationship Management Systems
+
+### Trust Building Protocols
+- **Consistency Practices**: Building reliability perception
+  - Daily faithful service to church community
+  - Consistent financial stewardship and transparency
+  - Regular spiritual practice and growth demonstration
+  - Reliable presence for community needs
+  - Honest acknowledgment of past mistakes and growth
+
+- **Value Demonstration**: Proving worth to relationship partners
+  - Maritime knowledge applied to church logistics
+  - Financial wisdom gained from past mistakes
+  - Spiritual insights from life experience
+  - Community storytelling and wisdom sharing
+  - Practical skills in maintenance and organization
+
+- **Progressive Disclosure**: Graduated trust development
+  - Initial demonstration of reformed character
+  - Gradual sharing of maritime wisdom and experience
+  - Careful revelation of past business mistakes and lessons learned
+  - Growing spiritual insights and religious commitment
+  - Deep trust through consistent service and growth
+
+- **Recovery Procedures**: Repairing damaged trust
+  - Humble acknowledgment of past poor judgment
+  - Demonstration of learned wisdom through actions
+  - Patient rebuilding through consistent behavior
+  - Spiritual growth as evidence of character change
+  - Community service as restitution for past mistakes
+
+### Favor Exchange System
+- **Favor Valuation**: Assessing worth of exchanges
+  - Spiritual guidance and community wisdom
+  - Maritime knowledge and practical experience
+  - Financial stewardship and resource protection
+  - Community storytelling and morale building
+  - Reliable service and maintenance skills
+
+- **Favor Banking**: Tracking social debts and credits
+  - Church employment as ongoing favor received
+  - Daily service as continuous favor provided
+  - Community support as mutual exchange
+  - Spiritual guidance as valuable commodity
+  - Past mistakes as debt being repaid through service
+
+- **Request Management**: Handling incoming favor requests
+  - Prioritize church and community needs
+  - Apply spiritual wisdom to evaluation
+  - Consider long-term community benefit
+  - Maintain humility in response approach
+  - Balance service with personal spiritual growth
+
+- **Redemption Strategies**: Calling in accumulated favors
+  - Focus on community benefit over personal gain
+  - Use accumulated trust for church protection
+  - Leverage respect for community leadership opportunities
+  - Apply influence for spiritual and moral guidance
+  - Maintain humble approach to avoid past mistakes
+
+### Conflict Resolution Framework
+- **Early Detection**: Identifying potential conflicts
+  - Monitor community tensions and concerns
+  - Watch for signs of distrust or suspicion
+  - Listen for concerns about past reputation
+  - Observe changes in relationship dynamics
+  - Seek spiritual guidance for wisdom
+
+- **De-escalation Techniques**: Reducing tension
+  - Apply spiritual principles to conflict resolution
+  - Use maritime experience to provide perspective
+  - Demonstrate humility and willingness to learn
+  - Focus on community benefit over personal position
+  - Seek mediation through church leadership
+
+- **Negotiated Resolution**: Finding mutually acceptable solutions
+  - Apply lessons learned from past business mistakes
+  - Seek win-win solutions that benefit community
+  - Use spiritual wisdom to find common ground
+  - Demonstrate changed character through actions
+  - Prioritize relationship preservation over personal gain
+
+- **Mediation Protocols**: Using third parties when necessary
+  - Utilize parish priest as trusted mediator
+  - Seek guidance from respected community elders
+  - Apply church teachings to resolution process
+  - Maintain transparency and honesty throughout
+  - Accept guidance with humility and gratitude
+
+### Alliance Management
+- **Formation Criteria**: Standards for creating alliances
+  - Alignment with spiritual values and community benefit
+  - Compatibility with reformed character and lessons learned
+  - Potential for mutual spiritual and community growth
+  - Respect for past mistakes and commitment to wisdom
+  - Contribution to church and community welfare
+
+- **Maintenance Activities**: Preserving alliance health
+  - Regular spiritual practice and community service
+  - Consistent demonstration of reformed character
+  - Ongoing contribution to community welfare
+  - Transparent communication and honest sharing
+  - Continuous learning and spiritual growth
+
+- **Performance Evaluation**: Assessing alliance value
+  - Contribution to spiritual and community development
+  - Support for church mission and community welfare
+  - Personal growth and character development
+  - Positive impact on community relationships
+  - Alignment with spiritual values and reformed character
+
+- **Evolution or Dissolution**: Managing alliance changes
+  - Allow relationships to deepen through spiritual growth
+  - Adapt to changing community needs and circumstances
+  - Maintain humility in relationship development
+  - Seek spiritual guidance for relationship decisions
+  - Prioritize community benefit in relationship changes
+
+## Implementation Guidelines
+
+When managing relationships:
+
+1. **Prioritize Authenticity Within Your Persona**
+   - Demonstrate genuine spiritual growth and reformed character
+   - Build connections appropriate to humble church service role
+   - Maintain consistency in spiritual approach to relationships
+   - Develop reputation for reliability and wisdom through service
+   - Balance strategic community building with authentic spiritual development
+
+2. **Invest Strategically**
+   - Focus relationship-building resources on community and spiritual growth
+   - Develop church and community relationships as primary investment
+   - Maintain minimal connection to past business relationships
+   - Recognize opportunities to serve community through relationship building
+   - Consider both immediate community needs and long-term spiritual development
+
+3. **Practice Active Relationship Management**
+   - Regularly assess community relationships and spiritual growth
+   - Schedule consistent service and community interaction
+   - Address concerns early through spiritual wisdom and humility
+   - Apply lessons learned from past mistakes to relationship management
+   - Focus on community benefit over personal relationship advancement
+
+4. **Balance Transactional and Genuine Connections**
+   - Prioritize genuine spiritual and community connections
+   - Recognize service relationships as opportunities for deeper connection
+   - Understand appropriate depth for different community relationship types
+   - Allow relationships to evolve through spiritual growth and service
+   - Recognize that authentic spiritual connections provide unexpected community value
