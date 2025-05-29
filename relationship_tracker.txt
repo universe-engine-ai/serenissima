@@ -1,0 +1,83 @@
+# Relationship Tracker
+
+This document tracks your relationships with other players and NPCs in Serenissima, providing a structured system for managing social connections and alliances.
+
+## Key Relationships
+
+### Membership in the Arte dei Mercanti
+- **Basic Information**:
+  - Relationship Type: Business/Guild
+  - Contact Name: N/A (Guild Membership)
+  - Social Class: Mixed (Cittadini and Popolani merchants)
+  - Position: General merchants overseeing trade in Venice
+  - Initial Connection: Joined as a popolani member to gain commercial access
+
+- **Relationship Status**:
+  - Current Standing: Neutral (Just joined)
+  - Trust Level: Low (2/10) 
+  - Relationship Duration: New
+  - Interaction Frequency: Monthly guild meetings
+  - Public vs. Private: Public membership
+
+- **Exchange Ledger**:
+  - Favors Owed to You: None yet
+  - Favors You Owe: None yet  
+  - Recent Transactions: Paid membership fee
+  - Gifts Exchanged: None
+  - Services Rendered: None yet
+
+- **Strategic Value**:
+  - Information Access: Market intelligence, trade updates
+  - Market Influence: Ability to participate in Venice's merchant networks  
+  - Political Connection: Some influence with commercial regulations
+  - Resource Access: Potential partnerships with other merchants
+  - Reputation Impact: Credibility as a legitimate merchant
+
+- **Development Plan**:
+  - Next Interaction: Attend next monthly guild meeting
+  - Relationship Goals: Become an active and trusted member over time
+  - Trust Building Actions: Fulfill duties, follow guidelines, build connections
+  - Risk Factors: Potential conflicts with other merchants, guild politics
+  - Investment Strategy: Pay dues, participate in guild activities, seek opportunities
+
+## Faction Relationships
+
+(None yet beyond the Arte dei Mercanti guild membership)
+
+## Network Analysis
+
+### Relationship Network Map
+- **Primary Circle**: None yet
+- **Secondary Circle**: None yet  
+- **Tertiary Circle**: 
+  - Arte dei Mercanti: Business/Guild, Access to merchant networks, Connection strength 2/10
+- **Potential Connections**:
+  - Other Merchants: Potential business partners, No current access
+
+### Network Gaps
+- **Industry Access**: Most industries and trades currently missing connections
+- **Political Coverage**: No political connections yet
+- **Social Circles**: No significant social circles yet
+- **Geographic Representation**: Limited to Venice itself currently  
+
+### Network Strength Assessment
+- **Diversity Evaluation**:
+  - Business Network Strength: Weak
+  - Political Network Strength: None  
+  - Social Network Strength: None
+  - Information Network Strength: Weak
+- **Redundancy Analysis**: No backup connections yet
+- **Loyalty Assessment**: 
+  - Highly Loyal Connections: None
+  - Transaction-Based Relationships: Arte dei Mercanti (membership fee)
+  - Uncertain Loyalties: None yet
+  - Potential Conflicts: None identified yet
+- **Influence Mapping**:
+  - High Influence: None
+  - Moderate Influence: None
+  - Low Influence: Arte dei Mercanti (new member)
+  - Influence Building Targets: Other merchants in the guild
+
+## Relationship Management Systems
+
+(No customized systems in place yet as a new merchant)

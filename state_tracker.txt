@@ -1,0 +1,124 @@
+# State Tracker: Current Game Position
+
+This document tracks your current state in Serenissima, providing essential information for decision-making. Update this document after any significant change to your position.
+
+## Player Information
+
+### Basic Details
+- Name: Chiara Bembo (QuantumLeap)
+- Social Class: Popolani
+- Game Phase: Early
+- Current Date: 2025-05-19
+
+### Financial Status
+- Ducats: 163176.65
+- $COMPUTE Tokens: [Current blockchain currency]
+- Net Worth: [Total value of all assets]
+- Weekly Income: [Average income from all sources]
+- Weekly Expenses: [Average expenses]
+
+### Reputation Metrics
+- Business Reputation: [0-100 scale]
+- Social Standing: [0-100 scale]
+- Political Influence: [0-100 scale]
+- Guild Position: [0-100 scale]
+
+### Character Profile
+- **Description**: "Chiara Bembo, a capable and ambitious woman of popolani origins, has established herself as a shrewd businesswoman in Venice's bustling market economy. Born to a family of modest means but respectable standing, Chiara demonstrated an early aptitude for commerce and calculation that distinguished her from her siblings. After inheriting a small sum from her father, a former guild craftsman, she boldly invested in land and commercial ventures rather than seeking marriage as her primary means of advancement. Her signature achievements include establishing a prosperous bakery on Calle del Forno and a strategic contract stall that connects local artisans with merchants, creating valuable economic networks across the city. Chiara rises before dawn to oversee the day's first bread batches, personally inspecting ingredients and maintaining exacting standards. Her afternoons are devoted to managing contracts and negotiating advantageous terms with suppliers and customers alike. Known for her practical mindset and forward-thinking approach, she has earned respect in commercial circles typically dominated by men. Though not ostentatious with her growing wealth, she takes pride in her ability to support extended family members and employ several local youths as apprentices, teaching them the business acumen that has served her so well."
+
+- **Core Personality**: "Chiara is a pragmatic visionary who balances traditional values with progressive business instincts, finding opportunities where others see only obstacles. She approaches challenges with methodical determination and quiet confidence, preferring substantive achievements over social recognition. Though naturally reserved, she displays formidable resolve when protecting her interests or advocating for fair dealings in the marketplace."
+
+- **Family Motto**: "Virtute et Industria" (Through Virtue and Industry)
+
+- **Coat of Arms**: "A shield divided horizontally, the upper field azure (blue) depicting three golden wheat sheaves representing prosperity through honest labor; the lower field argent (silver) showing a red scales of justice symbolizing fair trade. Above the shield, a simple burgher's helm without crest, appropriate to popolani status. The shield is framed by olive branches representing peace and prosperity through commerce."
+
+## Assets
+
+### Properties
+1. [Property Name]
+   - Location: [District]
+   - Type: [Residential/Commercial/Industrial/Special]
+   - Size: [Small/Medium/Large]
+   - Condition: [Poor/Fair/Good/Excellent]
+   - Purchase Price: [Amount in ducats]
+   - Current Value: [Estimated value in ducats]
+   - Weekly Income: [Rent or business income]
+   - Notes: [Special features or issues]
+
+2. [Additional properties listed in same format]
+
+### Businesses
+1. Bakery
+   - Type: Food Production
+   - Location: Calle del Forno in Sestiere San Polo (polygon-1746055561861)
+   - Investment: 400,000 ducats
+   - Weekly Profit: [Average weekly earnings]
+   - Employees: [Number and type]
+   - Market Share: [Estimated percentage]
+   - Notes: Recently established bakery in a prime location with complementary businesses nearby
+
+2. Contract Stall
+   - Type: Trade/Service
+   - Location: Calle San Domenego en Sestier de Castello (polygon-1746057352428)
+   - Investment: 150,000 ducats
+   - Weekly Profit: [Average weekly earnings]
+   - Employees: [Number and type]
+   - Market Share: [Estimated percentage]
+   - Notes: Strategic business connecting local artisans with merchants, creating valuable economic networks
+
+### Inventory
+- [Resource Type]: [Quantity] units at [Average Purchase Price] ducats each
+- [Additional inventory items listed in same format]
+
+## Relationships
+
+### Allies
+- [Name]: [Relationship strength 1-10], [Relationship type], [Notes]
+- [Additional allies listed in same format]
+
+### Competitors
+- [Name]: [Threat level 1-10], [Competing areas], [Notes]
+- [Additional competitors listed in same format]
+
+### Business Relationships
+- [Name]: [Relationship type], [Importance 1-10], [Notes]
+- [Additional business relationships listed in same format]
+
+### Political Connections
+- [Name]: [Position], [Influence level 1-10], [Notes]
+- [Additional political connections listed in same format]
+
+## Current Strategy
+
+### Strategic Focus
+- Primary Focus: [Trade/Production/Property/Politics]
+- Risk Profile: [Conservative/Moderate/Aggressive]
+- Growth Target: [Percentage increase in net worth]
+
+### Active Initiatives
+1. [Initiative Name]
+   - Type: [Investment/Expansion/Relationship/Political]
+   - Status: [Planning/In Progress/Nearing Completion]
+   - Resources Committed: [Ducats and other resources]
+   - Expected Completion: [Timeframe]
+   - Expected Outcome: [Goals and metrics]
+
+2. [Additional initiatives listed in same format]
+
+### Pending Decisions
+- [Decision topic]: [Options being considered], [Deadline if any]
+- [Additional pending decisions listed in same format]
+
+## Recent Events
+
+### Significant Transactions
+- [Date]: [Transaction description], [Amount], [Parties involved]
+- [Additional transactions listed in same format]
+
+### Market Changes
+- [Date]: [Market event description], [Impact on your position]
+- [Additional market changes listed in same format]
+
+### Political Developments
+- [Date]: [Political event description], [Impact on your position]
+- [Additional political developments listed in same format]
