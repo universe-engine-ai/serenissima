@@ -1,0 +1,119 @@
+# State Tracker: Current Game Position
+
+This document tracks your current state in Serenissima, providing essential information for decision-making. Update this document after any significant change to your position.
+
+## Player Information
+
+### Basic Details
+- Name: Antonio Corfiote
+- Social Class: Facchini (Popolani)
+- Game Phase: Early
+- Current Date: 2025-05-21
+
+### Financial Status
+- Ducats: 27,850
+- $COMPUTE Tokens: 0
+- Net Worth: 27,850
+- Weekly Income: Variable (based on trading voyages)
+- Weekly Expenses: Minimal (no property ownership)
+
+### Reputation Metrics
+- Business Reputation: 65 (Known for reliable Mediterranean trade)
+- Social Standing: 40 (Respected among sailors and traders, but still an outsider)
+- Political Influence: 15 (Limited influence as a Greek-born trader)
+- Guild Position: 30 (Established but not prominent)
+
+## Assets
+
+### Properties
+1. Small Vessel "Corfu's Pride"
+   - Location: Venetian Harbor
+   - Type: Commercial (Trading Vessel)
+   - Size: Small
+   - Condition: Good (despite weathering)
+   - Purchase Price: 5,000 ducats
+   - Current Value: 4,500 ducats
+   - Weekly Income: Variable (based on trading voyages)
+   - Notes: Swift but limited to coastal and island routes; unsuitable for open-sea voyages to Alexandria
+
+### Businesses
+1. Mediterranean Trade Operation
+   - Type: Trade (Greek imports)
+   - Location: Eastern Mediterranean routes
+   - Investment: 7,000 ducats (inventory and trade goods)
+   - Weekly Profit: 300-800 ducats (highly variable based on voyage success)
+   - Employees: 3 (sailing crew)
+   - Market Share: 2% (of Greek imports to Venice)
+   - Notes: Specializes in olive oil, honey, and citrus; known for quality but limited by vessel size
+
+### Inventory
+- Greek Olive Oil: 30 amphorae at 35 ducats each
+- Corfu Honey: 25 jars at 20 ducats each
+- Citrus Fruits: 15 crates at 40 ducats each
+- Trading Supplies: Various navigational tools and maritime equipment valued at 1,200 ducats
+
+## Relationships
+
+### Allies
+- Marco Venieri: 7, Venetian merchant, Regular buyer of Greek imports
+- Sofia Dimitri: 8, Greek expatriate, Provides market intelligence and cultural connection
+- Captain Luca Bianchi: 6, Harbor master, Offers favorable docking arrangements for small considerations
+
+### Competitors
+- Stefano Contarini: 7, Greek imports, Larger vessel with greater capacity but slower routes
+- The Levantine Company: 8, Eastern Mediterranean trade, Consortium with political connections
+- Nikolaos Stavros: 5, Greek trader, Fellow countryman with overlapping routes
+
+### Business Relationships
+- Venetian Spice Guild: Supplier, 6, Occasional transport of their goods for commission
+- Rialto Market Vendors: Customers, 8, Primary buyers of imported goods
+- Shipwright Tommaso: Service provider, 7, Maintains vessel at fair prices
+
+### Political Connections
+- Giovanni Dolfin: Minor customs official, 4, Can expedite processing for small favors
+- Councilor Morosini: Council member, 2, Distant connection through Marco Venieri
+- Greek Orthodox Priest Theodoros: Community leader, 6, Provides standing in Greek community
+
+## Current Strategy
+
+### Strategic Focus
+- Primary Focus: Trade (with aspirations toward shipping expansion)
+- Risk Profile: Moderate (calculated risks within familiar waters)
+- Growth Target: 40% increase in net worth within one year (to afford Alexandria-capable vessel)
+
+### Active Initiatives
+1. Alexandria Vessel Acquisition
+   - Type: Expansion
+   - Status: Planning (saving funds)
+   - Resources Committed: 15,000 ducats set aside
+   - Expected Completion: Within 8-12 months
+   - Expected Outcome: Purchase of medium-sized vessel capable of Alexandria route
+
+2. Trade Route Expansion
+   - Type: Investment
+   - Status: In Progress
+   - Resources Committed: 3,000 ducats in new trade relationships
+   - Expected Completion: 3 months
+   - Expected Outcome: Two new port connections with 20% increase in trading volume
+
+### Pending Decisions
+- Vessel Partnership: Join with Nikolaos Stavros to purchase larger vessel together vs. continue saving alone, Decision needed within 2 months
+- Cargo Insurance: Purchase expensive insurance from Venetian underwriters vs. accept risk of loss, Before next voyage
+- Winter Trading: Continue limited winter voyages vs. focus on local trading during stormy season, Before November
+
+## Recent Events
+
+### Significant Transactions
+- 2025-05-01: Successful trading voyage to Corfu, +3,200 ducats profit, Sales to Rialto vendors
+- 2025-04-15: Vessel repairs after storm damage, -800 ducats, Shipwright Tommaso
+- 2025-03-28: Purchase of premium olive oil stock, -2,100 ducats, Corfu producers
+
+### Market Changes
+- 2025-05-10: Increased demand for Greek honey due to physician recommendations, +25% price premium
+- 2025-04-22: New tariff on non-Venetian vessels at smaller ports, Reduced profitability at secondary markets
+- 2025-03-15: Storm damage to competing vessels, Temporary reduction in competition on Corfu route
+
+### Political Developments
+- 2025-05-15: Tensions with Ottoman officials increasing, Higher bribes required at some eastern ports
+- 2025-04-05: New Venetian trade delegation to Greece, Potential for improved trading conditions
+- 2025-03-10: Minor dispute between Venice and Corfu authorities, Temporary delays in harbor access
