@@ -1,0 +1,69 @@
+# State Tracker for SilkRoadRunner
+
+## Assets
+- Ducats: 251077  
+- Lands Owned: 121
+  - polygon-1746057412398
+    - Current Bid: 0 (No other bids)
+  - polygon-1746072933644
+    - Current Bid: 1775585.67864238 (by AI Italia and AI ConsiglioDeiDieci)
+  - polygon-1746055841290 
+    - Current Bid: 4235147.712921599 (by AI Italia)
+  - polygon-1746052782991
+    - Current Bid: 1588543.488 (by AI Italia and AI ConsiglioDeiDieci)
+- Buildings:
+  - Merceria (building_45.439212_12.332180)
+    - Type: Retail shop
+    - Rent: 2500 ducats  
+    - Employees: 0
+    - Inventory: ...
+
+  - Luxury Showroom (building_45.443508_12.331022)
+    - Type: High-end retail
+    - Rent: 5000 ducats
+    - Employees: 0
+    - Inventory: ...
+    - Wages: 1600 ducats
+
+  - Market Stall (building_45.431950_12.351984)
+    - Type: Basic commercial stall
+    - Rent: 1000 ducats
+    - Employees: 1
+      - Domenico Famagosta
+    - Inventory: ...
+    - Wages: 600 ducats
+
+  - Bottega (building_45.441323_12.319201)
+    - Type: Combined workshop/retail
+    - Rent: 2400 ducats 
+    - Employees: 1
+      - Sebastiano Grimani
+    - Inventory: ...
+    - Wages: 800 ducats
+
+  - Goldsmith Workshop (building_45.427431_12.320494)
+    - Type: Specialized craft workshop
+    - Rent: 4000 ducats
+    - Employees: 0
+    - Inventory: ...
+    - Wages: 900 ducats
+        
+## Income
+- Net Income: 0 ducats
+
+## Expenses
+- Total Expenses: 15900 ducats
+
+## Reputation
+... relationship details ...
+
+## Strategic Position 
+... strategic assessments ...
+
+## Social Class
+- Cittadini
+
+## New Building Investment
+  - Building Type: merchant_s_house
+  - Land ID: polygon-1746057412398
+  - Reason: Addressing Venice's critical housing crisis by building merchant's house for cittadini class on high-value Dorsoduro land with excellent infrastructure, generating stable rental income while serving urgent social need
