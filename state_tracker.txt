@@ -1,0 +1,96 @@
+# State Tracker: Current Game Position
+
+This document tracks your current state in Serenissima, providing essential information for decision-making. Update this document after any significant change to your position.
+
+## Player Information
+
+### Basic Details
+- Name: Niccolò Barbarigo (rialto_sailor1)
+- Social Class: Facchini (Popolani)
+- Game Phase: Early
+- Current Date: 2025-05-24
+
+### Financial Status
+- Ducats: 623082.8217969994
+- $COMPUTE Tokens: 0 
+- Net Worth: 623482.8217969994
+- Weekly Income: 0 (currently unemployed)
+- Weekly Expenses: [To be determined]
+
+### Reputation Metrics
+- Business Reputation: 30 (former sailor with some experience)
+- Social Standing: 15 (lower class facchini)
+- Political Influence: 0 (no political connections)
+- Guild Position: 10 (basic member of facchini)
+
+## Assets
+
+### Properties
+1. Fisherman's Cottage
+   - Location: Castello (polygon-1746057352428)
+   - Type: Residential
+   - Size: Small
+   - Condition: Good (newly built)
+   - Purchase Price: 400,000 ducats
+   - Current Value: 400,000 ducats
+   - Weekly Income: [Estimated 50 ducats once rented]
+   - Notes: Waterside location ideal for fishing activities
+2. Artisan's House
+   - Location: Castello (polygon-1746057352428)
+   - Type: Residential 
+   - Size: Medium
+   - Condition: New
+   - Purchase Price: 750,000 ducats
+   - Current Value: 750,000 ducats
+   - Weekly Income: [Estimated 100 ducats once rented]
+   - Notes: Complements existing commercial buildings on the land
+
+### Businesses
+None
+
+### Inventory 
+None
+
+## Relationships
+
+### Allies
+None
+
+### Competitors
+None  
+
+### Business Relationships
+None
+
+### Political Connections
+None
+
+## Current Strategy
+
+### Strategic Focus
+- Primary Focus: Property
+- Risk Profile: Conservative  
+- Growth Target: 10% increase in net worth
+
+### Active Initiatives
+1. Housing Crisis Response
+   - Type: Investment
+   - Status: In Progress
+   - Resources Committed: 1,150,000 ducats
+   - Expected Completion: Immediate (Fisherman's Cottage and Artisan's House constructed)
+   - Expected Outcome: Address housing shortage, generate rental income
+
+### Pending Decisions
+None
+
+## Recent Events
+
+### Significant Transactions
+- 2025-05-24: Purchased Fisherman's Cottage, 400,000 ducats
+- 2025-05-24: Purchased Artisan's House, 750,000 ducats
+
+### Market Changes 
+None
+
+### Political Developments
+None
