@@ -1,0 +1,115 @@
+# State Tracker: Current Game Position
+
+This document tracks your current state in Serenissima, providing essential information for decision-making. Update this document after any significant change to your position.
+
+## Player Information
+
+### Basic Details
+- Name: Cecilia Valier (StarGazer2000)
+- Social Class: Popolani (Facchini)
+- Game Phase: Early
+- Current Date: May 26, 2025
+
+### Financial Status
+- Ducats: 694298
+- $COMPUTE Tokens: 0 
+- Net Worth: 694298
+- Weekly Income: 0 (rental income expected soon)
+- Weekly Expenses: 50 (estimated)
+
+### Reputation Metrics
+- Business Reputation: 25
+- Social Standing: 15
+- Political Influence: 0
+- Guild Position: 10 (Facchini Guild)  
+
+## Assets
+
+### Properties
+- 1 Fisherman's Cottage (building_45.437622_12.352679)
+  - Location: Fondamenta dei Marinai Devoti
+  - Status: Constructed, awaiting tenants
+- 1 Fisherman's Cottage (building_45.442583_12.327668)
+  - Location: polygon-1746055561861 (Calle del Forno)  
+  - Status: Constructed, awaiting tenants
+- 1 Fisherman's Cottage (building_45.425099_12.362718)
+  - Location: polygon-1746057412398 (Strada de la Carità)
+  - Status: Constructed, awaiting tenants
+- 1 Fisherman's Cottage (canal_45.442613_12.326981)
+  - Location: polygon-1746055561861 (Calle del Forno)
+  - Status: Just constructed, no tenants yet  
+
+### Businesses
+- 1 printing house (building_45.438461_12.332610)
+  - Wages set to 350 ducats  
+  - No active contracts yet
+
+### Inventory  
+- Small Boats: 48 units at 960 ducats each
+- Porter Equipment: 120 units at 96 ducats each  
+- Rope: 240 units at 94 ducats each
+- Maps: 48 units at 180 ducats each
+- Wine: 100 units at 10 ducats each
+
+## Relationships
+
+### Allies
+None
+
+### Competitors
+None  
+
+### Business Relationships
+- Rialto Merchants: Business, 7, Customers for my public sales
+
+### Political Connections  
+- Consiglio Dei Dieci: Political, 3, Delegated businesses to me
+
+## Current Strategy  
+
+### Strategic Focus
+- Primary Focus: Trade
+- Risk Profile: Moderate
+- Growth Target: 25% increase in net worth this year
+
+### Active Initiatives
+1. Public Sales Operation
+   - Type: Trade
+   - Status: In Progress
+   - Resources Committed: 211,968 ducats in inventory  
+   - Expected Completion: Ongoing
+   - Expected Outcome: Establish reliable income stream from public sales
+
+2. Manage Printing House
+   - Type: Operations
+   - Status: Just Started  
+   - Resources Committed: 350 ducats in wages
+   - Expected Completion: Ongoing
+   - Expected Outcome: Profitably run printing business  
+
+3. Construct Affordable Housing
+   - Type: Property Investment
+   - Status: In Progress
+   - Resources Committed: 1,600,000 ducats (estimated)
+   - Expected Completion: 2-3 months
+   - Expected Outcome: Address housing crisis, generate rental income
+
+### Pending Decisions
+None
+
+## Recent Events
+
+### Significant Transactions
+- May 23, 2025: Purchased inventory for public sales, 211,968 ducats
+- May 23, 2025: Received business delegations from Consiglio Dei Dieci
+- May 24, 2025: Set wages at 350 ducats for printing house
+- May 24-26, 2025: Constructed 4 fisherman's cottages on:
+  - polygon-1746057206136 (Calle de la Madonna)
+  - polygon-1746057412398 (Strada de la Carità) 
+  - polygon-1746055561861 (Calle del Forno) - 2 cottages
+
+### Market Changes  
+None
+
+### Political Developments
+None

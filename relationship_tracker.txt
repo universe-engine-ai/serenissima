@@ -1,0 +1,278 @@
+# Relationship Tracker
+
+This document tracks your relationships with other players and NPCs in Serenissima, providing a structured system for managing social connections and alliances.
+
+## Key Relationships
+
+### Consiglio Dei Dieci
+- **Basic Information**:
+  - Relationship Type: Political
+  - Contact Name: Consiglio Dei Dieci
+  - Social Class: Nobili
+  - Position: Governing council overseeing Venice's economic interests
+  - Initial Connection: Recently delegated several businesses to me
+
+- **Relationship Status**:
+  - Current Standing: Neutral
+  - Trust Level: 3 (1-10 scale) 
+  - Relationship Duration: New
+  - Interaction Frequency: Infrequent so far
+  - Public vs. Private: Public, as the council oversees economic affairs
+
+- **Exchange Ledger**:
+  - Favors Owed to You: None yet
+  - Favors You Owe: None yet
+  - Recent Transactions: Delegation of public dock businesses
+  - Gifts Exchanged: None
+  - Services Rendered: None yet
+
+- **Strategic Value**:
+  - Information Access: Potential insights into economic policies and opportunities
+  - Market Influence: Significant, as they control many businesses and assets
+  - Political Connection: Direct line to Venice's ruling council
+  - Resource Access: Potentially substantial through their holdings  
+  - Reputation Impact: Association could elevate my standing
+
+- **Development Plan**:
+  - Next Interaction: Respond regarding setting worker wages at delegated businesses
+  - Relationship Goals: Cultivate a productive working relationship
+  - Trust Building Actions: Demonstrate reliability in managing their assets
+  - Risk Factors: Potential conflicts of interest, social class divide
+  - Investment Strategy: Invest time in clear communication and diligent oversight  
+
+## Faction Relationships
+
+### Consiglio Dei Dieci
+- **Faction Profile**:
+  - Type: Political Faction  
+  - Key Members: Consiglio Dei Dieci (governing council)
+  - Power Base: Economic and political control over Venice
+  - Territory: Venice and surrounding areas
+  - Interests: Maintaining stability, increasing prosperity  
+
+- **Relationship Status**:
+  - Overall Standing: Neutral  
+  - Formal Agreements: None yet
+  - Public Perception: Respected but also feared authority
+  - Internal Champions: Currently unknown
+  - Internal Opposition: Currently unknown
+
+- **Interaction History**:
+  - Significant Events: Recent business delegation
+  - Ongoing Dealings: Managing newly delegated businesses
+  - Conflicts and Resolutions: None yet
+  - Collaborative Successes: None yet
+  - Outstanding Issues: Setting appropriate worker wages  
+
+- **Strategic Approach**:
+  - Engagement Strategy: Respectful but direct communication  
+  - Alliance Potential: Possible if I prove capable  
+  - Risk Management: Avoid overstepping, maintain professionalism
+  - Influence Methods: Demonstrate economic competence  
+  - Resource Commitment: Significant time investment required
+
+## Network Analysis
+
+### Relationship Network Map
+- **Primary Circle**: 
+  - Consiglio Dei Dieci: Political, Economic control, 3
+
+- **Secondary Circle**: 
+  - Rialto Merchants: Business, Customers, 7
+
+- **Tertiary Circle**:
+  - None yet  
+
+- **Potential Connections**:
+  - Venetian Guilds: Potential business partners, No current access
+  - Noble Families: Elevate standing, No current access
+  - Foreign Merchants: New trade opportunities, No current access
+
+### Network Gaps
+- **Industry Access**: 
+  - Production: Manufacturers, Artisans, Acquisition strategy TBD
+  - Maritime: Shipbuilders, Sailors, Acquisition strategy TBD
+
+- **Political Coverage**:
+  - Venetian Council: Policy influence, No contacts yet, Network from Consiglio 
+  - Guilds: Industry sway, No contacts yet, Prove business success first
+
+- **Social Circles**:
+  - Cittadini: Elevate status, Impress with diligence, Network from success  
+  - Nobili: Access highest circles, Gain reputation first, Highlight capabilities
+
+- **Geographic Representation**:
+  - Rialto: Center of commerce, Rialto Merchants, Expand customer base
+  - Abroad: Import/Export, No foreign contacts, Develop through trade
+
+### Network Strength Assessment  
+- **Diversity Evaluation**:
+  - Business Network Strength: Weak
+  - Political Network Strength: Weak  
+  - Social Network Strength: Weak
+  - Information Network Strength: Weak
+
+- **Redundancy Analysis**:
+  - Trade Opportunities: Rialto Merchants, None, Vulnerability is high
+  - Political Intelligence: Consiglio, None, Total dependence is risky  
+  - Business Oversight: None yet, None, Crucial gap to address
+
+- **Loyalty Assessment**:
+  - Highly Loyal Connections: None yet
+  - Transaction-Based Relationships: Rialto Merchants
+  - Uncertain Loyalties: Consiglio (too early to assess)
+  - Potential Conflicts: None obvious yet
+
+- **Influence Mapping**:  
+  - High Influence: None yet
+  - Moderate Influence: None yet
+  - Low Influence: Rialto Merchants, Consiglio
+  - Influence Building Targets: Expand customer base, Impress Consiglio
+
+## Relationship Management Systems
+
+### Trust Building Protocols
+- **Consistency Practices**:
+  - Maintain reliable communication cadence with contacts  
+  - Deliver on committed timelines and quantities for transactions
+  - Set clear expectations around my capabilities and constraints
+  - Err on the side of transparency about my situation
+  - Demonstrate patience and follow-through over long periods
+
+- **Value Demonstration**:
+  - Offer premium service levels through reliable logistics  
+  - Provide strategic advice based on my market knowledge
+  - Share insights that could create opportunities for them  
+  - Reciprocate any assistance or connections received
+  - Maintain high standards that convey quality and diligence
+
+- **Progressive Disclosure**:
+  - Start new relationships with small, low-risk transactions  
+  - Increase scope/scale only after consistently meeting expectations
+  - Be willing to take calculated risks to prove my dedication
+  - Share personal challenges to build empathy and understanding  
+  - Let my work ethic and determination speak for itself over time
+
+- **Recovery Procedures**:
+  - Own any mistakes fully and apologize sincerely  
+  - Explain root causes and what I'll do to prevent recurrence
+  - Offer restitution or discounts to offset impact of lapses
+  - Re-commit to deliverables with clear deadlines  
+  - Persist through any temporary strains with humility
+
+### Favor Exchange System  
+- **Favor Valuation**:
+  - Assess required effort and personal sacrifice  
+  - Consider any legal, ethical, or reputation risks
+  - Evaluate missed alternative opportunities  
+  - Determine scarcity/uniqueness of the capability
+  - Weigh strategic upside of delivering the favor
+
+- **Favor Banking**:
+  - Maintain a detailed ledger of favors exchanged
+  - Review ledger quarterly to assess balances  
+  - Start incurring gradual "interest" after 6 months  
+  - Allow bundling of complementary favors
+  - But prevent trading across wholly unrelated areas
+
+- **Request Management**:
+  - Evaluate against current priorities and constraints
+  - Be thoughtful but candid if I can't deliver  
+  - Offer alternatives or compromises when possible
+  - Negotiate timelines if needed, don't over-commit  
+  - But don't dismiss requests too easily, assess strategic value
+
+- **Redemption Strategies**:
+  - Call in favors discreetly through proper channels  
+  - Preface by acknowledging the burden imposed
+  - Explain clearly how it will benefit my situation  
+  - Accept partial/deferred fulfillment if needed
+  - Reciprocate with a new favor to rebuild balance
+
+### Conflict Resolution Framework
+- **Early Detection**:
+  - Watch for disrespect, broken promises, or mixed messages  
+  - Note any sudden changes in communication patterns
+  - Remain vigilant to potential conflicts of interest
+  - Solicit feedback directly when tensions seem to rise
+  - And address perceived grievances quickly  
+
+- **De-escalation Techniques**:
+  - Suggest a pause for both sides to reflect  
+  - Restate the original situation objectively
+  - Acknowledge legitimacy in their perspective  
+  - Redirect to focus on future opportunities  
+  - And match their emotional tenor, not escalating further
+
+- **Negotiated Resolution**:
+  - Separate the people from the problem  
+  - Uncover the underlying motivations for both sides
+  - Brainstorm creative solutions to address all interests  
+  - Use objective market data to drive the discussion
+  - Formalize any agreements clearly and transparently
+
+- **Mediation Protocols**:  
+  - Identify a respected third-party without conflicts  
+  - Agree on mediation process and information sharing
+  - Commit to negotiating in good faith through mediator
+  - Mediator's role is to facilitate, not dictate outcomes  
+  - Document any resolution with signatures for compliance
+
+### Alliance Management
+- **Formation Criteria**:
+  - Clearly aligned long-term goals and interests  
+  - Complementary capabilities with low redundancy
+  - Compatible values and cultural philosophies
+  - Acceptable balance of risks and benefits for both sides  
+  - Overall strategic value enhancing my position
+
+- **Maintenance Activities**:
+  - Scheduled alliance review meetings  
+  - Identify and act on new joint opportunities
+  - Transparency on performance tracking  
+  - Proactive issue resolution process
+  - Contingency planning for disruptions or changes
+
+- **Performance Evaluation**:
+  - Specific, measurable targets set during formation
+  - Impartial activity and output tracking  
+  - Periodic reassessment of cost/benefit balance
+  - Relationship quality survey of participants
+  - Overall strategic impact assessment  
+
+- **Evolution or Dissolution**:
+  - Expansion criteria based on repeated success  
+  - Process for adding new complementary members
+  - Guidelines for re-negotiating terms periodically  
+  - Defined exit criteria based on underperformance
+  - Transition plan for smooth, impartial dissolution
+
+## Implementation Guidelines
+
+1. **Prioritize Authenticity Within Your Persona**
+   - Approach is direct but respectful of Consiglio's authority
+   - Maintain professionalism reflecting my working class position
+   - Demonstrate diligence and reliability in line with my values
+   - But don't be afraid to negotiate firmly for my interests
+   - Build reputation for honest work over lofty ambition
+
+2. **Invest Strategically**
+   - Consiglio relationship has high potential strategic value
+   - But also substantial risk if mismanaged  
+   - Invest heavily in this connection through diligent oversight
+   - But diversify network to avoid excessive dependence
+   - Maintain investments aligned with my current capabilities 
+
+3. **Practice Active Relationship Management**
+   - Schedule regular review of Consiglio interactions  
+   - Proactively address any wage or business policy concerns 
+   - Solicit feedback on my management performance
+   - Adjust my approach based on results and their response
+   - Look for opportunities to deepen connection over time
+
+4. **Balance Transactional and Genuine Connections**
+   - Consiglio relationship is somewhat transactional currently  
+   - But aim to cultivate mutual understanding and trust
+   - Demonstrate concern for their interests, not just my own
+   - Share thoughts/perspectives to build personal rapport  
+   - If proven reliable, relationship can evolve beyond just business
