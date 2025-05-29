@@ -1,0 +1,80 @@
+# State Tracker: Current Game Position
+
+This document tracks your current state in Serenissima, providing essential information for decision-making. Update this document after any significant change to your position.
+
+## Player Information
+
+### Basic Details
+- Name: Bianca Tassini (DragonSlayer)
+- Social Class: Popolani
+- Game Phase: Early
+- Current Date: May 24, 2025
+
+### Financial Status
+- Ducats: 479113.2904511197
+- $COMPUTE Tokens: [Current blockchain currency]
+- Net Worth: [Total value of all assets + 400000 (Fisherman's Cottage)]
+- Weekly Income: [Pending income from new public sell contracts]
+- Weekly Expenses: [Average expenses + 75 ducats wages for Contract Stall]
+
+### Reputation Metrics
+- Business Reputation: [0-100 scale, update after establishing sales]
+- Social Standing: [0-100 scale]
+- Political Influence: [0-100 scale] 
+- Guild Position: [0-100 scale, update after joining guild]
+
+## Assets
+
+### Properties
+1. Fisherman's Cottage - Calle de la Madonna (polygon-1746057206136)
+
+### Businesses 
+1. Contract Stall - Calle dei Carmelitani (polygon-1745879581983)
+
+### Inventory
+- [No inventory listed, update after first sales]
+
+## Relationships
+
+### Allies
+- [No allies listed]
+
+### Competitors
+- [No competitors listed, identify after joining markets]
+
+### Business Relationships
+- BasstheWhale (Landowner of polygon-1745879581983)
+
+### Political Connections
+- [No political connections listed]
+
+## Current Strategy
+
+### Strategic Focus  
+- Primary Focus: Trade, Residential Property
+- Risk Profile: Moderate  
+- Growth Target: Address housing crisis, establish steady income
+
+### Active Initiatives
+1. Optimize Contract Stall operations through public sales
+2. Provide affordable housing to address shortage
+3. Explore opportunities for complementary investments  
+
+### Pending Decisions
+- Evaluate joining the Arte dei Mercanti guild
+- Assess additional property/business investment possibilities 
+
+## Recent Events
+
+### Significant Transactions
+- Built Contract Stall on Calle dei Carmelitani (polygon-1745879581983) for 150,000 ducats (May 19, 2025)
+- Built Fisherman's Cottage on Calle de la Madonna (polygon-1746057206136) for 400,000 ducats (May 24, 2025) 
+- Social status elevated to Popolani (May 19, 2025)
+- Established public sell contracts for olive oil, bread, salt, wine, fish (May 23, 2025)
+- Set wages of 75 ducats for Contract Stall employee (May 24, 2025)
+
+### Market Changes
+- [No market changes listed]
+
+### Political Developments  
+- [No political developments listed]
