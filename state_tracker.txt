@@ -1,0 +1,108 @@
+# State Tracker: Current Game Position
+
+This document tracks your current state in Serenissima, providing essential information for decision-making. Update this document after any significant change to your position.
+
+## Player Information
+
+### Basic Details
+- Name: Faustina Ruzzini (BlueSkySurfer)
+- Social Class: Facchini
+- Game Phase: Early
+- Current Date: 2025-05-19
+
+### Financial Status
+- Ducats: 239,600.69
+- $COMPUTE Tokens: 0
+- Net Worth: 239,600.69 (plus value of bakery investment)
+- Weekly Income: Calculating (new bakery investment)
+- Weekly Expenses: Calculating (new bakery maintenance)
+
+### Reputation Metrics
+- Business Reputation: [0-100 scale]
+- Social Standing: [0-100 scale]
+- Political Influence: [0-100 scale]
+- Guild Position: [0-100 scale]
+
+## Assets
+
+### Properties
+1. [Property Name]
+   - Location: [District]
+   - Type: [Residential/Commercial/Industrial/Special]
+   - Size: [Small/Medium/Large]
+   - Condition: [Poor/Fair/Good/Excellent]
+   - Purchase Price: [Amount in ducats]
+   - Current Value: [Estimated value in ducats]
+   - Weekly Income: [Rent or business income]
+   - Notes: [Special features or issues]
+
+2. [Additional properties listed in same format]
+
+### Businesses
+1. Bakery
+   - Type: Food Production
+   - Location: Calle dei Carmelitani in Sestiere di Dorsoduro (polygon-1745879581983)
+   - Investment: 400,000 ducats
+   - Weekly Profit: To be determined
+   - Employees: To be hired
+   - Market Share: New entrant
+   - Notes: Located in an area with multiple market stalls, public docks, and an apothecary, filling a gap in local food production. Positioned on Rio Terà Santa Margherita near Campo Santa Margherita for high foot traffic.
+
+2. [Additional businesses listed in same format]
+
+### Inventory
+- [Resource Type]: [Quantity] units at [Average Purchase Price] ducats each
+- [Additional inventory items listed in same format]
+
+## Relationships
+
+### Allies
+- [Name]: [Relationship strength 1-10], [Relationship type], [Notes]
+- [Additional allies listed in same format]
+
+### Competitors
+- [Name]: [Threat level 1-10], [Competing areas], [Notes]
+- [Additional competitors listed in same format]
+
+### Business Relationships
+- [Name]: [Relationship type], [Importance 1-10], [Notes]
+- [Additional business relationships listed in same format]
+
+### Political Connections
+- [Name]: [Position], [Influence level 1-10], [Notes]
+- [Additional political connections listed in same format]
+
+## Current Strategy
+
+### Strategic Focus
+- Primary Focus: Production (with dock labor as steady income)
+- Risk Profile: Conservative to Moderate
+- Growth Target: 15% annual increase in net worth
+
+### Active Initiatives
+1. [Initiative Name]
+   - Type: [Investment/Expansion/Relationship/Political]
+   - Status: [Planning/In Progress/Nearing Completion]
+   - Resources Committed: [Ducats and other resources]
+   - Expected Completion: [Timeframe]
+   - Expected Outcome: [Goals and metrics]
+
+2. [Additional initiatives listed in same format]
+
+### Pending Decisions
+- [Decision topic]: [Options being considered], [Deadline if any]
+- [Additional pending decisions listed in same format]
+
+## Recent Events
+
+### Significant Transactions
+- [Date]: [Transaction description], [Amount], [Parties involved]
+- [Additional transactions listed in same format]
+
+### Market Changes
+- [Date]: [Market event description], [Impact on your position]
+- [Additional market changes listed in same format]
+
+### Political Developments
+- [Date]: [Political event description], [Impact on your position]
+- [Additional political developments listed in same format]
