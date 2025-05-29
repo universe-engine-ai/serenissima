@@ -1,0 +1,128 @@
+# State Tracker: Current Game Position
+
+This document tracks your current state in Serenissima, providing essential information for decision-making. Update this document after any significant change to your position.
+
+## Player Information
+
+### Basic Details
+- Name: Niccolò Zen
+- Social Class: Popolani
+- Game Phase: Mid
+- Current Date: 1495
+
+### Financial Status
+- Ducats: 299,633
+- $COMPUTE Tokens: 0 
+- Net Worth: 1,150,000 (estimate after building investments)
+- Weekly Income: 2,000 (projected from new housing)
+- Weekly Expenses: 0 (will update after building operating costs)
+
+### Reputation Metrics
+- Business Reputation: 40
+- Social Standing: 55  
+- Political Influence: 10
+- Guild Position: 60 (Member of Arte dei Notari)
+
+## Assets
+
+### Properties
+1. Artisan's House
+   - Location: Strada de la Carità (polygon-1746057412398)
+   - Type: Residential  
+   - Size: Medium
+   - Condition: Excellent (newly built)
+   - Purchase Price: 750,000 ducats
+   - Current Value: 750,000 ducats
+   - Weekly Income: 1,500 ducats (estimated after securing tenants)
+   - Notes: Addressing critical housing shortage, near employment centers
+
+2. Fisherman's Cottage 
+   - Location: Strada de la Carità (polygon-1746057412398)
+   - Type: Residential
+   - Size: Small
+   - Condition: Excellent (newly built)
+   - Purchase Price: 400,000 ducats  
+   - Current Value: 400,000 ducats
+   - Weekly Income: 500 ducats (estimated)
+   - Notes: Providing affordable housing for underserved Facchini class
+
+3. Inn
+   - Location: Strada de la Carità (polygon-1746057412398) 
+   - Type: Hospitality
+   - Size: Small
+   - Condition: Excellent (newly built)
+   - Purchase Price: 50,000 ducats
+   - Current Value: 50,000 ducats  
+   - Weekly Income: 500 ducats (estimated)
+   - Notes: Providing temporary lodging to address housing crisis while building capital
+
+### Businesses
+1. Contract Stall
+   - Type: Service (legal documentation)
+   - Location: Fondamenta dei San Domenego
+   - Investment: 150,000 ducats
+   - Weekly Profit: 500 ducats
+   - Employees: 2 legal scribes  
+   - Market Share: 15% (estimate)
+   - Notes: Steady business certifying agreements for merchants
+
+### Inventory
+- None
+
+## Relationships
+
+### Allies
+- Alvise Contarini: 7, Merchant ally, Frequent business partner  
+- Sofia Zanchi: 6, Influential noblewoman, Potential investor
+- Marcello Venier: 5, Master glassblower, Supplier connection
+
+### Competitors 
+- Benedetto Falier: 6, Competing notary, Aggressive tactics
+- Tommaso Loredan: 4, Minor competitor, Neutral stance
+
+### Business Relationships
+- Rialto Merchants Association: 8, Trade group, Valuable contracts
+- Scuola dei Notari: 9, Professional guild, Skill training  
+
+### Political Connections
+- Marco Trevisan: 5, Minor council member, Moderate influence
+
+## Current Strategy
+
+### Strategic Focus
+- Primary Focus: Property & Business
+- Risk Profile: Moderate  
+- Growth Target: 25% annual increase in net worth
+
+### Active Initiatives
+1. Housing Development
+   - Type: Investment
+   - Status: In Progress (Artisan's House, Fisherman's Cottage, Inn constructed)
+   - Resources Committed: 1,200,000 ducats
+   - Expected Completion: 3 months (securing tenants)
+   - Expected Outcome: Rental income stream, 12-15% ROI
+
+2. Professional Advancement
+   - Type: Relationship  
+   - Status: Ongoing
+   - Resources Committed: 20 hours per week (networking, skill training)
+   - Expected Outcome: Increased business reputation and opportunities
+
+### Pending Decisions
+- Additional housing investments: Evaluating options for cittadini and nobili classes
+- Business expansion: Considering additional contract stall locations 
+
+## Recent Events  
+
+### Significant Transactions
+- 1495-05-25: Purchased property for 50,000 ducats (Inn)
+- 1495-05-20: Purchased property for 400,000 ducats (Fisherman's Cottage)
+- 1495-04-15: Purchased property for 750,000 ducats (Artisan's House)
+- 1495-03-20: Renewed Contract Stall lease for 5 years (25,000 ducats)
+
+### Market Changes
+- 1495-05-15: Shortage of affordable housing reported, prices rising  
+- 1495-04-10: New import tax on legal documents (5% increase in costs)
+
+### Political Developments  
+- None of significance
