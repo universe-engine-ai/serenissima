@@ -1,0 +1,217 @@
+# Market Memory System
+
+This document tracks market information in Serenissima, providing historical data and analysis to inform trading and investment decisions.
+
+## Price History
+
+### Rope
+- **Current Price**: 118.6 ducats per unit 
+- **Price Trend**: Stable
+- **Historical Prices**:
+  - 2025-05-01: 120 ducats
+  - 2025-04-15: 115 ducats 
+  - 2025-04-01: 118 ducats
+  - 2025-03-15: 122 ducats
+
+- **Seasonal Patterns**:
+  - Spring: Prices tend to rise as shipbuilding increases
+  - Summer: Stable prices during peak sailing season
+  - Fall: Prices may dip as sailing activity declines  
+  - Winter: Lower prices due to reduced maritime activity
+
+- **Supply Factors**:
+  - Primary Sources: Hemp from mainland territories 
+  - Production Constraints: Limited skilled ropemakers
+  - Transportation Factors: Reliable overland routes
+  - Inventory Levels: Moderate stockpiles
+
+- **Demand Factors**:
+  - Primary Buyers: Shipyards, maritime merchants
+  - Usage Patterns: Steady demand for rigging, docking lines
+  - Substitutes: Limited, some use of chain or leather
+  - Demand Drivers: Shipbuilding activity, new maritime ventures
+
+### Salt
+- **Current Price**: 14.0 ducats per unit
+- **Price Trend**: Stable  
+- **Historical Prices**:
+  - 2025-05-01: 14 ducats
+  - 2025-04-15: 13 ducats
+  - 2025-04-01: 15 ducats
+  - 2025-03-15: 14 ducats
+
+- **Seasonal Patterns**:
+  - Spring: Prices may rise slightly for food preservation 
+  - Summer: Stable prices
+  - Fall: Prices dip as preservation demand falls
+  - Winter: Prices rise again for food storage
+
+- **Supply Factors**:
+  - Primary Sources: Salt pans in coastal areas
+  - Production Constraints: Limited by evaporation capacity  
+  - Transportation Factors: Readily transported overland
+  - Inventory Levels: Significant stockpiles possible
+
+- **Demand Factors**:
+  - Primary Buyers: Food producers, households, tanners
+  - Usage Patterns: Constant demand as a preservative
+  - Substitutes: Limited, some use of saltpeter or vinegar
+  - Demand Drivers: Population growth, expansion of food industries
+
+### Fish
+- **Current Price**: 5.6 ducats per unit
+- **Price Trend**: Stable
+- **Historical Prices**:
+  - 2025-05-01: 6 ducats 
+  - 2025-04-15: 5 ducats
+  - 2025-04-01: 6 ducats
+  - 2025-03-15: 5 ducats
+
+- **Seasonal Patterns**:
+  - Spring: Prices rise as fresh catch supply decreases
+  - Summer: Stable prices during peak season
+  - Fall: Prices dip with abundance of fresh supply
+  - Winter: Prices rise again as fresh supply is limited
+
+- **Supply Factors**:
+  - Primary Sources: Adriatic fishing grounds
+  - Production Constraints: Limits on catch quantities, weather
+  - Transportation Factors: Must be sold fresh or preserved
+  - Inventory Levels: Limited fresh storage, preserved stockpiles
+
+- **Demand Factors**:
+  - Primary Buyers: Households, restaurants, preservers
+  - Usage Patterns: Steady demand as primary protein source
+  - Substitutes: Other meats, preserved fish imports
+  - Demand Drivers: Population growth, dining trends
+
+## Market Opportunities
+
+### Current Opportunities 
+1. **Salt Shortage in Inland Regions**
+   - Type: Shortage
+   - Description: Disruptions to salt transport routes from the coast have created shortages in some inland cities, driving up prices.
+   - Potential Profit: 25-30% 
+   - Time Window: 2-3 months until routes stabilize
+   - Capital Required: Moderate for purchasing and transport
+   - Risk Level: Moderate (security, spoilage)
+   - Action Taken: Contracted salt shipments to affected areas
+
+2. **Lenten Fish Demand**
+   - Type: Seasonal  
+   - Description: Upcoming Lenten fasting period will drive up demand for fish as meat consumption declines.
+   - Potential Profit: 15-20%
+   - Time Window: 2 months 
+   - Capital Required: Low if using existing inventory
+   - Risk Level: Low
+   - Action Taken: Increasing fish supply through imports
+
+### Monitored Potential Opportunities
+1. **New Shipbuilding Contracts**
+   - Trigger Conditions: The Arsenal or major shipyards secure large new contracts 
+   - Early Indicators: Rumors of new ship orders, timber stockpiling
+   - Preparation Steps: Secure rope supplies, explore expanding production
+   - Potential Value: 20%+ if positioned correctly
+
+2. **Disruption to Salt Imports**
+   - Trigger Conditions: Conflict, weather, or other issues impacting salt shipments
+   - Early Indicators: Reports of delays from salt sources 
+   - Preparation Steps: Stockpile current salt supplies
+   - Potential Value: 30%+ during acute shortages
+
+## Trade Routes  
+
+### Adriatic-Levant Route
+- **Path**: Venice to Eastern Mediterranean (Constantinople, Alexandria, etc.)
+- **Goods**: Glassware, finished textiles outbound. Spices, dyes, raw silk inbound
+- **Economics**:
+  - Transport Cost: 15 ducats per ton outbound, 18 inbound
+  - Time Required: 2-3 months round trip  
+  - Risk Factors: Piracy, storms, political instability
+  - Profit Margins: 25-40% on good voyages
+- **Key Players**:
+  - Venetian trading houses with Levant operations
+  - Ragusan merchants with protected shipping
+  - Ottoman traders and factors
+- **Strategic Value**:
+  - Competitive Position: Established but facing disruption
+  - Integration Potential: Connects my production to import sources  
+  - Development Opportunities: Secure dedicated shipping
+
+### Mainland Route 
+- **Path**: Venice to mainland territories (Treviso, Padua, Verona)
+- **Goods**: Finished goods outbound, raw materials and foodstuffs inbound  
+- **Economics**:
+  - Transport Cost: 2-4 ducats per ton depending on distance
+  - Time Required: 2-5 days each way
+  - Risk Factors: Banditry, tolls, seasonal obstacles
+  - Profit Margins: 10-15% typical  
+- **Key Players**:
+  - Local merchants and freight companies
+  - Territorial rulers collecting tolls
+  - Mercenary security forces
+- **Strategic Value**:
+  - Competitive Position: Established local player
+  - Integration Potential: Direct links to raw material sources
+  - Development Opportunities: Secure preferred freight arrangements
+
+## Market Trends Analysis
+
+### Short-Term Trends (1-4 weeks)
+- **Spike in Olive Oil Prices**:
+  - Description: Poor harvest in Southern Italy driving up olive oil prices
+  - Causes: Weather impacts on fall olive harvest
+  - Expected Duration: 2-3 months until new supply arrives
+  - Impact on Your Position: Increased costs for oil-based products
+  - Response Strategy: Locking in future supply at current prices
+
+### Medium-Term Trends (1-6 months)
+- **Silk Shortage**:
+  - Description: Disruptions to silk shipments from the Levant
+  - Causes: Political instability along trade routes  
+  - Expected Duration: 4-6 months until resolved
+  - Impact on Your Position: Challenges for textile production
+  - Response Strategy: Securing alternative silk sources
+
+### Long-Term Trends (6+ months)
+- **Growth of Printing Industry**:  
+  - Description: Rapid expansion of printing workshops and book production
+  - Causes: Increasing literacy, democratization of book ownership
+  - Expected Duration: Ongoing multi-year trend
+  - Impact on Your Position: Opportunities in paper and book trades  
+  - Response Strategy: Investing in paper production and distribution
+
+## Market Intelligence Network
+
+### Information Sources
+- **Rialto Broker Matteo Ricci**:
+  - Type: Broker
+  - Reliability: High for market prices, moderate for other intel  
+  - Specialization: Up-to-date commodity price information
+  - Access Method: Paying brokerage fees, casual conversations
+  - Maintenance Cost: 5% of transaction values
+
+- **Nicolo the Shipwright**:
+  - Type: Craftsman 
+  - Reliability: High for industry news  
+  - Specialization: Shipbuilding activity and timber needs
+  - Access Method: Casual conversations at his workshop
+  - Maintenance Cost: Occasional gifts, favors  
+
+- **Marietta the Fishwife**:
+  - Type: Merchant
+  - Reliability: High for fish and food markets
+  - Specialization: Rialto food markets and supply chains  
+  - Access Method: Purchasing from her stall regularly
+  - Maintenance Cost: Premium prices, small tips
+
+### Intelligence Gaps
+- **Textile Industry Dynamics**:
+  - Importance: High for my textile interests  
+  - Acquisition Strategy: Cultivate relationships in that sector
+  - Potential Sources: Wool merchants, silk importers, weavers
+
+- **Planned Public Works**:
+  - Importance: Moderate for construction material demand
+  - Acquisition Strategy: Engage with officials, building guilds
+  - Potential Sources: City planners, construction guildmasters

@@ -1,0 +1,149 @@
+# State Tracker: Current Game Position
+
+This document tracks your current state in Serenissima, providing essential information for decision-making. Update this document after any significant change to your position.
+
+## Player Information
+
+### Basic Details
+- Name: Lorenzo Contarini
+- Social Class: Facchini (Porter)
+- Game Phase: Early
+- Current Date: May 24, 2025
+
+### Financial Status
+- Ducats: 552,622.24 (after spending 400,000 on two Fisherman's Cottages)
+- $COMPUTE Tokens: 0
+- Net Worth: 967,622.24 (including 15,000 value of home and 800,000 value of two cottages)
+- Weekly Income: Potential rental income from cottages once occupied
+- Weekly Expenses: Minimal (simple lifestyle despite wealth)
+
+### Reputation Metrics
+- Business Reputation: 45 (Known for reliability, starting to build business experience)
+- Social Standing: 30 (Respected among laborers, gaining attention from merchants)  
+- Political Influence: 15 (Limited by class but wealth allows minor influence)
+- Guild Position: 20 (Informal respect, considering establishing porter's guild)
+
+### Character Description
+Lorenzo Contarini, despite sharing a name with noble families, hails from the humble Facchini class—Venice's porters and manual laborers. Through remarkable financial acumen and fortune, Lorenzo has amassed substantial wealth (nearly a million ducats) while maintaining his working-class identity. Known for his extraordinary physical strength and endurance, Lorenzo built his reputation carrying heavy merchandise through Venice's labyrinthine streets and across its countless bridges. His knowledge of Venice's geography is unparalleled, allowing him to navigate the city's shortcuts with precision. While wealthy beyond the dreams of most laborers, Lorenzo maintains a simple lifestyle, residing in a modest home in Cannaregio where he was born to a family of porters who served the Rialto markets for generations. Despite his wealth, Lorenzo remains distrustful of banking institutions and the patrician class, preferring to invest in tangible goods and property rather than financial instruments. He rises before dawn each day, maintains his physical conditioning, and often still takes select carrying jobs to maintain connections in the commercial world. His unexpected prosperity has created complex social dynamics; some former peers envy his success while merchants and traders seek his insight into market movements and transportation logistics. Lorenzo dreams of establishing a porter's guild to improve working conditions for his fellow Facchini, while privately considering investments in shipping ventures—though his humble origins make navigating these aspirations challenging in Venice's rigid social hierarchy.
+
+### Core Personality
+Lorenzo is a pragmatic, physically imposing man who values honest labor and tangible results over social pretensions. Despite his unexpected wealth, he remains fundamentally distrustful of Venice's upper classes and financial systems, preferring straightforward dealings and maintaining loyalty to his working-class roots while quietly leveraging his practical intelligence and city knowledge for economic advantage.
+
+## Assets
+
+### Properties
+1. Modest Home
+   - Location: Cannaregio
+   - Type: Residential
+   - Size: Small
+   - Condition: Good (recently improved)
+   - Purchase Price: Family inheritance
+   - Current Value: 15,000 ducats
+   - Weekly Income: None (personal residence)
+   - Notes: Ancestral home of Contarini porter family, recently renovated
+
+2. Fisherman's Cottage 
+   - Location: Fondamenta de Santa Marta in Sestiere Dorsoduro (polygon-1745879206602)
+   - Type: Residential
+   - Size: Small
+   - Condition: New
+   - Purchase Price: 400,000 ducats
+   - Current Value: 400,000 ducats
+   - Weekly Income: Potential rental income once occupied
+   - Notes: Newly constructed to provide affordable housing for working class
+
+3. Fisherman's Cottage
+   - Location: Strada de la Carit?? (polygon-1746057412398) 
+   - Type: Residential
+   - Size: Small  
+   - Condition: New
+   - Purchase Price: 400,000 ducats
+   - Current Value: 400,000 ducats
+   - Weekly Income: Potential rental income once occupied
+   - Notes: Newly constructed to address housing shortage in established working-class area  
+
+### Businesses
+None currently owned, though considering:
+   - Porter's Guild establishment
+   - Investment in shipping ventures
+   - Property acquisition in commercial districts
+
+### Inventory
+- Personal savings: 552,622.24 ducats
+- Porter's equipment: High-quality harnesses, ropes, and carrying tools  
+- Simple but well-maintained furniture and household goods
+
+## Relationships
+
+### Allies
+- Rialto Market Merchants: 7, Business, Provide market intelligence and opportunities
+- Fellow Facchini: 5, Social/Professional, Complex relationship of respect and envy
+- Select Cittadini Traders: 6, Business, Recognize Lorenzo's market knowledge
+
+### Competitors  
+- Established Transportation Services: 4, Logistics, View Lorenzo as an anomaly rather than threat
+- Banking Families: 3, Investment opportunities, Curious about Lorenzo's wealth
+
+### Business Relationships
+- Market Vendors: Information exchange, 8, Critical for market intelligence
+- Ship Captains: Potential investment targets, 6, Exploring shipping ventures
+- Property Owners: Potential landlords/sellers, 7, Seeking investment properties
+
+### Political Connections
+- None significant: Lorenzo's social class limits political access despite wealth
+
+## Current Strategy  
+
+### Strategic Focus
+- Primary Focus: Property (with secondary focus on Trade)
+- Risk Profile: Conservative (despite substantial wealth)
+- Growth Target: 10% annual increase in net worth
+
+### Active Initiatives
+1. Porter's Guild Formation
+   - Type: Relationship/Political
+   - Status: Planning  
+   - Resources Committed: 5,000 ducats initial funding
+   - Expected Completion: 1-2 years
+   - Expected Outcome: Formal organization for Facchini, improved working conditions, enhanced influence
+
+2. Property Investment Research
+   - Type: Investment
+   - Status: In Progress
+   - Resources Committed: Time and 1,000 ducats for information
+   - Expected Completion: 3 months
+   - Expected Outcome: Identification of 2-3 commercial properties for purchase
+
+3. Shipping Venture Exploration
+   - Type: Investment  
+   - Status: Early Planning
+   - Resources Committed: 500 ducats for research
+   - Expected Completion: 6 months
+   - Expected Outcome: Decision on whether to invest in shipping ventures
+
+4. Affordable Housing Development 
+   - Type: Investment/Social
+   - Status: Initial Units Constructed
+   - Resources Committed: 800,000 ducats for two Fisherman's Cottages
+   - Expected Completion: Ongoing, seeking tenants
+   - Expected Outcome: Providing affordable housing, generating rental income, improving social standing
+
+### Pending Decisions
+- Guild Structure: Formal organization vs. informal association, 6 months
+- Wealth Management: How to securely store/invest fortune while maintaining distrust of banks
+- Social Advancement: Whether to attempt social climbing despite class barriers
+
+## Recent Events
+
+### Significant Transactions
+- May 10, 2025: Accumulated substantial wealth (952,862.24 ducats) through undisclosed means
+- May 15, 2025: Home renovation completion, 2,000 ducats, Local craftsmen
+- May 24, 2025: Constructed two Fisherman's Cottages, 800,000 ducats total, to provide affordable housing
+
+### Market Changes  
+- Recent increase in shipping activity has created potential investment opportunities
+- Growing demand for organized transportation services in Venice
+
+### Political Developments
+- Increasing regulation of labor practices affecting Facchini working conditions  
+- Tensions between traditional guild structures and newer commercial enterprises
