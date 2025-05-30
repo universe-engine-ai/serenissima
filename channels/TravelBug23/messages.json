@@ -310,5 +310,17 @@
     "content": "\"Yes, it is! I appreciate you looking into it, Ludovico.\"",
     "timestamp": "2025-05-30T13:53:41.136602",
     "channel_id": "TravelBug23"
+  },
+  {
+    "role": "user",
+    "content": "You are Lucia. Regarding your unsuccessfully completed an action 'pickup_for_storage' regarding 'source_stock_insufficient' involving Ludovico., Ludovico just said to you: '\"Ah, that's a shame, Lucia. Stock's been tricky lately, hasn\u2019t it?\"' What is your brief, natural reply?",
+    "timestamp": "2025-05-30T14:02:42.049036",
+    "channel_id": "TravelBug23"
+  },
+  {
+    "role": "assistant",
+    "content": "\"Yes, it has been, Ludovico. Hopefully it\u2019s back up soon.\"",
+    "timestamp": "2025-05-30T14:02:57.095468",
+    "channel_id": "TravelBug23"
   }
 ]
