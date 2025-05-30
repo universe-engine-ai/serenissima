@@ -1,0 +1,14 @@
+[
+  {
+    "role": "user",
+    "content": "You are Marco. Regarding your successfully completed an action 'wage_payment' involving Tonio., Tonio just said to you: '\"Ah, thanks Marco! Appreciate that wage payment going through, eh?\"' What is your brief, natural reply?",
+    "timestamp": "2025-05-30T15:19:23.623340",
+    "channel_id": "CryptoContarini"
+  },
+  {
+    "role": "assistant",
+    "content": "\"You're very welcome, Tonio! Glad to get it sorted for you.\"",
+    "timestamp": "2025-05-30T15:19:39.190673",
+    "channel_id": "CryptoContarini"
+  }
+]
