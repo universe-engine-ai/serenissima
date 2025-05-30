@@ -250,5 +250,17 @@
     "content": "\"You're most welcome, Tommaso. Glad to be of assistance!\"",
     "timestamp": "2025-05-30T15:06:14.358914",
     "channel_id": "CannaregioPaolo"
+  },
+  {
+    "role": "user",
+    "content": "You are Ludovico. Tommaso just unsuccessfully completed an action 'pickup_for_storage' regarding 'source_stock_insufficient' that involved you. What is your immediate, brief, and natural reaction or comment TO Tommaso? Keep it short and conversational.",
+    "timestamp": "2025-05-30T16:42:58.660012",
+    "channel_id": "CannaregioPaolo"
+  },
+  {
+    "role": "assistant",
+    "content": "\"Ah, Tommaso! Source stock, eh? Blast. Back to the drawing board then?\"",
+    "timestamp": "2025-05-30T16:43:16.189254",
+    "channel_id": "CannaregioPaolo"
   }
 ]
