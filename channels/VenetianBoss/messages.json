@@ -358,5 +358,17 @@
     "content": "\"You're most welcome, Lucia. Glad to be of service.\"",
     "timestamp": "2025-05-30T15:25:05.194334",
     "channel_id": "VenetianBoss"
+  },
+  {
+    "role": "user",
+    "content": "You are Ludovico. Lucia just unsuccessfully completed an action 'pickup_for_storage' regarding 'source_stock_insufficient' that involved you. What is your immediate, brief, and natural reaction or comment TO Lucia? Keep it short and conversational.",
+    "timestamp": "2025-05-30T16:53:38.064656",
+    "channel_id": "VenetianBoss"
+  },
+  {
+    "role": "assistant",
+    "content": "\"Ah, that's a shame, Lucia. Stock's a bit tight at the moment, isn's it? We\u2019ll have more soon, though.\"",
+    "timestamp": "2025-05-30T16:53:52.640450",
+    "channel_id": "VenetianBoss"
   }
 ]
