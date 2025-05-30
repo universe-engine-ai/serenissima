@@ -1,0 +1,14 @@
+[
+  {
+    "role": "user",
+    "content": "You are Lucrezia. Lorenzo just successfully completed an action 'wage_payment' that involved you. What is your immediate, brief, and natural reaction or comment TO Lorenzo? Keep it short and conversational.",
+    "timestamp": "2025-05-30T15:19:48.798719",
+    "channel_id": "DucatsRunner"
+  },
+  {
+    "role": "assistant",
+    "content": "\"Grazie, Lorenzo. That was... timely, as always.\"",
+    "timestamp": "2025-05-30T15:20:03.648819",
+    "channel_id": "DucatsRunner"
+  }
+]
