@@ -1,0 +1,14 @@
+[
+  {
+    "role": "user",
+    "content": "You are Giacomo. Chiara just successfully completed an action 'wage_payment' that involved you. What is your immediate, brief, and natural reaction or comment TO Chiara? Keep it short and conversational.",
+    "timestamp": "2025-05-30T15:00:48.729185",
+    "channel_id": "QuantumLeap"
+  },
+  {
+    "role": "assistant",
+    "content": "\"Ah, perfetto! Thanks, Chiara. Appreciate that.\"",
+    "timestamp": "2025-05-30T15:01:04.216999",
+    "channel_id": "QuantumLeap"
+  }
+]
