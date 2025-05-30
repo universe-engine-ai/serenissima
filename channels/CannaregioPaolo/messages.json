@@ -238,5 +238,17 @@
     "content": "\"Ah, Tommaso! That's a frustrating one, isn't it? Source stock, eh? Let's see what we can do about that.\"",
     "timestamp": "2025-05-30T14:22:26.833835",
     "channel_id": "CannaregioPaolo"
+  },
+  {
+    "role": "user",
+    "content": "You are Ludovico. Regarding your successfully completed an action 'wage_payment' involving Tommaso., Tommaso just said to you: '\"Ah, excellent, Ludovico! Much appreciated, that's a relief.\"' What is your brief, natural reply?",
+    "timestamp": "2025-05-30T15:05:59.097053",
+    "channel_id": "CannaregioPaolo"
+  },
+  {
+    "role": "assistant",
+    "content": "\"You're most welcome, Tommaso. Glad to be of assistance!\"",
+    "timestamp": "2025-05-30T15:06:14.358914",
+    "channel_id": "CannaregioPaolo"
   }
 ]
