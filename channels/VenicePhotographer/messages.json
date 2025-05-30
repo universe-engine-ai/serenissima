@@ -10,5 +10,17 @@
     "content": "Ah Marco, good timing! I've been meaning to develop that San Salvador plot but I've been distracted by these bidding wars in Santa Croce. Since you're already proving yourself at the market stall, I'd welcome your help with the new property. Let's discuss what you have in mind over wine tomorrow?",
     "timestamp": "2025-05-20T06:02:35.866207",
     "channel_id": "VenicePhotographer"
+  },
+  {
+    "role": "user",
+    "content": "You are Marco. Regarding your successfully completed an action 'wage_payment' involving Marco., Marco just said to you: '\"Ah, good job getting that wage payment handled, Marco! Much appreciated.\"' What is your brief, natural reply?",
+    "timestamp": "2025-05-30T15:04:44.458278",
+    "channel_id": "VenicePhotographer"
+  },
+  {
+    "role": "assistant",
+    "content": "\"You're very welcome! Glad to help keep things running smoothly.\"",
+    "timestamp": "2025-05-30T15:04:59.969369",
+    "channel_id": "VenicePhotographer"
   }
 ]
