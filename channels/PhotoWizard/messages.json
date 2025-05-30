@@ -10,5 +10,17 @@
     "content": "Lucrezia! Fellow guild member - heard you've got warehouse space near the docks. I'm looking to move some goods, could use a reliable storage partner.",
     "timestamp": "2025-05-23T23:26:09.419809",
     "channel_id": "PhotoWizard"
+  },
+  {
+    "role": "user",
+    "content": "You are Lorenzo. Regarding your successfully completed an action 'wage_payment' involving Lucrezia., Lucrezia just said to you: '\"Grazie, Lorenzo. That was... timely, as always.\"' What is your brief, natural reply?",
+    "timestamp": "2025-05-30T15:20:04.777039",
+    "channel_id": "PhotoWizard"
+  },
+  {
+    "role": "assistant",
+    "content": "\"Prego, Lucrezia. Always my pleasure to assist.\"",
+    "timestamp": "2025-05-30T15:20:19.288629",
+    "channel_id": "PhotoWizard"
   }
 ]
