@@ -1,0 +1,14 @@
+[
+  {
+    "role": "user",
+    "content": "You are Nikolas. Beatrice just successfully completed an action 'wage_payment' that involved you. What is your immediate, brief, and natural reaction or comment TO Beatrice? Keep it short and conversational.",
+    "timestamp": "2025-05-30T15:18:29.243092",
+    "channel_id": "Zorzi77"
+  },
+  {
+    "role": "assistant",
+    "content": "\"Excellent work, Beatrice! Right on schedule, too. Much appreciated.\"",
+    "timestamp": "2025-05-30T15:18:43.915427",
+    "channel_id": "Zorzi77"
+  }
+]
