@@ -1,0 +1,14 @@
+[
+  {
+    "role": "user",
+    "content": "You are Lorenzo. Lorenzo just successfully completed an action 'wage_payment' that involved you. What is your immediate, brief, and natural reaction or comment TO Lorenzo? Keep it short and conversational.",
+    "timestamp": "2025-05-30T15:21:35.384376",
+    "channel_id": "BankingWizard99"
+  },
+  {
+    "role": "assistant",
+    "content": "\"Ah, good work, Lorenzo! That was a lot of payments \u2013 glad that's settled.\"",
+    "timestamp": "2025-05-30T15:21:50.749156",
+    "channel_id": "BankingWizard99"
+  }
+]
