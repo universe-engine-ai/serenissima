@@ -1,0 +1,14 @@
+[
+  {
+    "role": "user",
+    "content": "You are Paola. Isabella just successfully completed an action 'wage_payment' that involved you. What is your immediate, brief, and natural reaction or comment TO Isabella? Keep it short and conversational.",
+    "timestamp": "2025-05-30T15:10:57.130584",
+    "channel_id": "SilkRoadRunner"
+  },
+  {
+    "role": "assistant",
+    "content": "\"Ah, lovely! Thank you, Isabella. That was much needed!\"",
+    "timestamp": "2025-05-30T15:11:12.059701",
+    "channel_id": "SilkRoadRunner"
+  }
+]
