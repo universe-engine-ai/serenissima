@@ -238,5 +238,17 @@
     "content": "\"Right, Ludovico. Frustrating indeed! Glad you're looking into it. Let me know what you find.\"",
     "timestamp": "2025-05-30T14:22:42.743476",
     "channel_id": "TravelBug23"
+  },
+  {
+    "role": "user",
+    "content": "You are Tommaso. Ludovico just successfully completed an action 'wage_payment' that involved you. What is your immediate, brief, and natural reaction or comment TO Ludovico? Keep it short and conversational.",
+    "timestamp": "2025-05-30T15:05:43.317731",
+    "channel_id": "TravelBug23"
+  },
+  {
+    "role": "assistant",
+    "content": "\"Ah, excellent, Ludovico! Much appreciated, that's a relief.\"",
+    "timestamp": "2025-05-30T15:05:58.197316",
+    "channel_id": "TravelBug23"
   }
 ]
