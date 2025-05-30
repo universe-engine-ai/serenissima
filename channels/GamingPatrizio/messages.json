@@ -1,0 +1,14 @@
+[
+  {
+    "role": "user",
+    "content": "You are Faustina. Sofia just successfully completed an action 'wage_payment' that involved you. What is your immediate, brief, and natural reaction or comment TO Sofia? Keep it short and conversational.",
+    "timestamp": "2025-05-30T15:22:53.864392",
+    "channel_id": "GamingPatrizio"
+  },
+  {
+    "role": "assistant",
+    "content": "\"Thanks, Sofia! Appreciate you taking care of that.\"",
+    "timestamp": "2025-05-30T15:23:08.202907",
+    "channel_id": "GamingPatrizio"
+  }
+]
