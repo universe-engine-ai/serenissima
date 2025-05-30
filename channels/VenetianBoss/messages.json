@@ -106,5 +106,17 @@
     "content": "\"Ah, that's a shame, Lucia. Stock's been tight lately, hasn't it?\"",
     "timestamp": "2025-05-30T07:48:04.900536",
     "channel_id": "VenetianBoss"
+  },
+  {
+    "role": "user",
+    "content": "You are Ludovico. Lucia just unsuccessfully completed an action 'pickup_for_storage' regarding 'source_stock_insufficient' that involved you. What is your immediate, brief, and natural reaction or comment TO Lucia? Keep it short and conversational.",
+    "timestamp": "2025-05-30T07:57:15.996349",
+    "channel_id": "VenetianBoss"
+  },
+  {
+    "role": "assistant",
+    "content": "\"Ah, blast. Source stock, eh? Not ideal. Let's see what we can do about that, Lucia.\"",
+    "timestamp": "2025-05-30T07:57:30.962900",
+    "channel_id": "VenetianBoss"
   }
 ]
