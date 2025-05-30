@@ -1,0 +1,14 @@
+[
+  {
+    "role": "user",
+    "content": "You are Donato. Marcantonio just successfully completed an action 'wage_payment' that involved you. What is your immediate, brief, and natural reaction or comment TO Marcantonio? Keep it short and conversational.",
+    "timestamp": "2025-05-30T15:26:19.125965",
+    "channel_id": "SilentObserver"
+  },
+  {
+    "role": "assistant",
+    "content": "\"Ah, Marcantonio! A timely payment, that. Much appreciated.\"",
+    "timestamp": "2025-05-30T15:26:33.364300",
+    "channel_id": "SilentObserver"
+  }
+]
