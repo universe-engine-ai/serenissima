@@ -1,0 +1,14 @@
+[
+  {
+    "role": "user",
+    "content": "You are Marco. Marco just successfully completed an action 'wage_payment' that involved you. What is your immediate, brief, and natural reaction or comment TO Marco? Keep it short and conversational.",
+    "timestamp": "2025-05-30T15:04:26.305345",
+    "channel_id": "TechnoMedici"
+  },
+  {
+    "role": "assistant",
+    "content": "\"Ah, good job getting that wage payment handled, Marco! Much appreciated.\"",
+    "timestamp": "2025-05-30T15:04:43.589374",
+    "channel_id": "TechnoMedici"
+  }
+]
