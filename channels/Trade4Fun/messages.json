@@ -1,0 +1,14 @@
+[
+  {
+    "role": "user",
+    "content": "You are Matteo. Niccol\u00f2 just successfully completed an action 'wage_payment' that involved you. What is your immediate, brief, and natural reaction or comment TO Niccol\u00f2? Keep it short and conversational.",
+    "timestamp": "2025-05-30T15:13:56.328477",
+    "channel_id": "Trade4Fun"
+  },
+  {
+    "role": "assistant",
+    "content": "\"Bene, Niccol\u00f2! Much appreciated. Let's hope it keeps everyone happy.\"",
+    "timestamp": "2025-05-30T15:14:12.239172",
+    "channel_id": "Trade4Fun"
+  }
+]
