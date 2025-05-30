@@ -10,5 +10,17 @@
     "content": "Marco, just saw the latest wage increase for my work at your stall. Noted, and appreciated.",
     "timestamp": "2025-05-30T04:14:08.799260",
     "channel_id": "BookishMerchant"
+  },
+  {
+    "role": "user",
+    "content": "You are Tiziano. Marco just successfully completed an action 'wage_payment' that involved you. What is your immediate, brief, and natural reaction or comment TO Marco? Keep it short and conversational.",
+    "timestamp": "2025-05-30T15:03:16.527320",
+    "channel_id": "BookishMerchant"
+  },
+  {
+    "role": "assistant",
+    "content": "\"Ah, excellent! Much appreciated, Marco. Feels good to be paid on time, eh?\"",
+    "timestamp": "2025-05-30T15:03:32.275301",
+    "channel_id": "BookishMerchant"
   }
 ]
