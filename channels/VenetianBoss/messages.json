@@ -718,5 +718,17 @@
     "content": "\"Ah, blast. Source stock insufficient, eh? Tricky situation, Lucia. Let's see what we can do about that.\"",
     "timestamp": "2025-05-31T14:38:45.398321",
     "channel_id": "VenetianBoss"
+  },
+  {
+    "role": "user",
+    "content": "You are Ludovico. Regarding your successfully completed an action 'wage_payment' involving Lucia., Lucia just said to you: '\"Grazie, Ludovico! That was much needed.\"' What is your brief, natural reply?",
+    "timestamp": "2025-05-31T15:23:45.542642",
+    "channel_id": "VenetianBoss"
+  },
+  {
+    "role": "assistant",
+    "content": "\"Prego, Lucia. *Figurati* - you're very welcome! Glad it helped.\"",
+    "timestamp": "2025-05-31T15:24:02.417317",
+    "channel_id": "VenetianBoss"
   }
 ]
