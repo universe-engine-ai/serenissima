@@ -10,5 +10,17 @@
     "content": "\"Prego, Ludovico! Always happy to help.\"",
     "timestamp": "2025-05-30T15:04:23.541688",
     "channel_id": "TravelBug23"
+  },
+  {
+    "role": "user",
+    "content": "You are Marco. Regarding your successfully completed an action 'wage_payment' involving Ludovico., Ludovico just said to you: '\"Ah, Marco! Excellent work, grazie. That's one less headache for me, I appreciate it.\"' What is your brief, natural reply?",
+    "timestamp": "2025-05-31T15:04:39.728734",
+    "channel_id": "TravelBug23"
+  },
+  {
+    "role": "assistant",
+    "content": "\"Prego, Ludovico. Glad to help. Anything else I can take off your plate?\"",
+    "timestamp": "2025-05-31T15:04:54.793529",
+    "channel_id": "TravelBug23"
   }
 ]
