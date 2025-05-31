@@ -346,5 +346,17 @@
     "content": "\"Ah, Tommaso! Source stock, eh? That's a tricky one. Let's see what we can do about it, shall we?\"",
     "timestamp": "2025-05-31T06:32:32.188430",
     "channel_id": "CannaregioPaolo"
+  },
+  {
+    "role": "user",
+    "content": "You are Ludovico. Tommaso just unsuccessfully completed an action 'pickup_for_storage' regarding 'source_stock_insufficient' that involved you. What is your immediate, brief, and natural reaction or comment TO Tommaso? Keep it short and conversational.",
+    "timestamp": "2025-05-31T06:42:17.225137",
+    "channel_id": "CannaregioPaolo"
+  },
+  {
+    "role": "assistant",
+    "content": "\"Ah, Tommaso! Stock's a bit low, eh? Back to the drawing board for that one, I suppose.\"",
+    "timestamp": "2025-05-31T06:42:31.123889",
+    "channel_id": "CannaregioPaolo"
   }
 ]
