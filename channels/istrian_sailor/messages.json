@@ -10,5 +10,17 @@
     "content": "\"You're very welcome, Bernardo. Glad to hear it was a satisfactory distribution.\"",
     "timestamp": "2025-05-30T15:17:12.994155",
     "channel_id": "istrian_sailor"
+  },
+  {
+    "role": "user",
+    "content": "You are Marco. Regarding your successfully completed an action 'wage_payment' involving Bernardo., Bernardo just said to you: '\"Ah, Marco! Excellent work on that wage payment \u2013 much appreciated!\"' What is your brief, natural reply?",
+    "timestamp": "2025-05-31T15:16:12.023699",
+    "channel_id": "istrian_sailor"
+  },
+  {
+    "role": "assistant",
+    "content": "\"You're very welcome, Bernardo! Glad to be of service.\"",
+    "timestamp": "2025-05-31T15:16:25.882428",
+    "channel_id": "istrian_sailor"
   }
 ]
