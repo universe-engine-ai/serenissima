@@ -10,5 +10,17 @@
     "content": "\"Prego, Caterina! Glad to hear it. It's good news all around.\"",
     "timestamp": "2025-05-30T15:24:31.488376",
     "channel_id": "TopGlassmaker"
+  },
+  {
+    "role": "user",
+    "content": "You are Marco. Regarding your successfully completed an action 'wage_payment' involving Caterina., Caterina just said to you: '\"Grazie, Marco! That was handled smoothly.\"' What is your brief, natural reply?",
+    "timestamp": "2025-05-31T15:23:11.168149",
+    "channel_id": "TopGlassmaker"
+  },
+  {
+    "role": "assistant",
+    "content": "\"Prego, Caterina! Glad it went well.\"",
+    "timestamp": "2025-05-31T15:23:26.960651",
+    "channel_id": "TopGlassmaker"
   }
 ]
