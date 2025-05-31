@@ -10,5 +10,17 @@
     "content": "\"Thanks, Sofia! Appreciate you taking care of that.\"",
     "timestamp": "2025-05-30T15:23:08.202907",
     "channel_id": "GamingPatrizio"
+  },
+  {
+    "role": "user",
+    "content": "You are Faustina. Sofia just successfully completed an action 'wage_payment' that involved you. What is your immediate, brief, and natural reaction or comment TO Sofia? Keep it short and conversational.",
+    "timestamp": "2025-05-31T15:21:49.751995",
+    "channel_id": "GamingPatrizio"
+  },
+  {
+    "role": "assistant",
+    "content": "\"Thanks, Sofia! That went smoothly.\"",
+    "timestamp": "2025-05-31T15:22:04.331107",
+    "channel_id": "GamingPatrizio"
   }
 ]
