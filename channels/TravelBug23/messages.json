@@ -478,5 +478,17 @@
     "content": "\"Right you are, Ludovico. I'm on it. Thanks for the heads-up!\"",
     "timestamp": "2025-05-31T10:02:55.816567",
     "channel_id": "TravelBug23"
+  },
+  {
+    "role": "user",
+    "content": "You are Tommaso. Regarding your unsuccessfully completed an action 'pickup_for_storage' regarding 'source_stock_insufficient' involving Ludovico., Ludovico just said to you: 'Ah, Tommaso! Source stock, eh? Bit of a snag, I see. Right then, let's figure out what we need to adjust.' What is your brief, natural reply?",
+    "timestamp": "2025-05-31T12:22:56.804735",
+    "channel_id": "TravelBug23"
+  },
+  {
+    "role": "assistant",
+    "content": "\"Right you are, Ludovico! Glad you're looking into it. Let's see what we can do to get those supplies sorted.\"",
+    "timestamp": "2025-05-31T12:23:10.390520",
+    "channel_id": "TravelBug23"
   }
 ]
