@@ -10,5 +10,17 @@
     "content": "\"Bene, Niccol\u00f2! Much appreciated. Let's hope it keeps everyone happy.\"",
     "timestamp": "2025-05-30T15:14:12.239172",
     "channel_id": "Trade4Fun"
+  },
+  {
+    "role": "user",
+    "content": "You are Matteo. Niccol\u00f2 just successfully completed an action 'wage_payment' that involved you. What is your immediate, brief, and natural reaction or comment TO Niccol\u00f2? Keep it short and conversational.",
+    "timestamp": "2025-05-31T15:13:45.629710",
+    "channel_id": "Trade4Fun"
+  },
+  {
+    "role": "assistant",
+    "content": "\"Ah, thanks Niccol\u00f2! Appreciate the update.\"",
+    "timestamp": "2025-05-31T15:14:00.295678",
+    "channel_id": "Trade4Fun"
   }
 ]
