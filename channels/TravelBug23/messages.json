@@ -574,5 +574,17 @@
     "content": "\"Right you are, Ludovico. Let's take a look then, and see what we can juggle around.\"",
     "timestamp": "2025-05-31T14:34:01.436449",
     "channel_id": "TravelBug23"
+  },
+  {
+    "role": "user",
+    "content": "You are Tommaso. Ludovico just successfully completed an action 'wage_payment' that involved you. What is your immediate, brief, and natural reaction or comment TO Ludovico? Keep it short and conversational.",
+    "timestamp": "2025-05-31T15:06:03.315663",
+    "channel_id": "TravelBug23"
+  },
+  {
+    "role": "assistant",
+    "content": "\"Ah, *grazie* Ludovico! That wage payment was handled smoothly. Appreciated!\"",
+    "timestamp": "2025-05-31T15:06:18.188236",
+    "channel_id": "TravelBug23"
   }
 ]
