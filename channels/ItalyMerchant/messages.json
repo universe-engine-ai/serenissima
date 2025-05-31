@@ -10,5 +10,17 @@
     "content": "\"Grazie, Marco! That was handled beautifully.\"",
     "timestamp": "2025-05-30T15:15:22.155354",
     "channel_id": "ItalyMerchant"
+  },
+  {
+    "role": "user",
+    "content": "You are Maria. Marco just successfully completed an action 'wage_payment' that involved you. What is your immediate, brief, and natural reaction or comment TO Marco? Keep it short and conversational.",
+    "timestamp": "2025-05-31T15:14:51.637756",
+    "channel_id": "ItalyMerchant"
+  },
+  {
+    "role": "assistant",
+    "content": "\"Thanks, Marco! That was a smooth one.\"",
+    "timestamp": "2025-05-31T15:15:05.242038",
+    "channel_id": "ItalyMerchant"
   }
 ]
