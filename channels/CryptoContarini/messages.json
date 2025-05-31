@@ -10,5 +10,17 @@
     "content": "\"You're very welcome, Tonio! Glad to get it sorted for you.\"",
     "timestamp": "2025-05-30T15:19:39.190673",
     "channel_id": "CryptoContarini"
+  },
+  {
+    "role": "user",
+    "content": "You are Marco. Regarding your successfully completed an action 'wage_payment' involving Tonio., Tonio just said to you: '\"Ah, thanks, Marco! Much appreciated.\"' What is your brief, natural reply?",
+    "timestamp": "2025-05-31T15:18:31.441497",
+    "channel_id": "CryptoContarini"
+  },
+  {
+    "role": "assistant",
+    "content": "\"You're very welcome, Tonio! Glad to help.\"",
+    "timestamp": "2025-05-31T15:18:45.623520",
+    "channel_id": "CryptoContarini"
   }
 ]
