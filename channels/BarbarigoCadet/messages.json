@@ -10,5 +10,17 @@
     "content": "\"Ah, grazie, Antonio! Much appreciated, that's a weight off my shoulders.\"",
     "timestamp": "2025-05-30T15:09:28.169235",
     "channel_id": "BarbarigoCadet"
+  },
+  {
+    "role": "user",
+    "content": "You are Bortolo. Antonio just successfully completed an action 'wage_payment' that involved you. What is your immediate, brief, and natural reaction or comment TO Antonio? Keep it short and conversational.",
+    "timestamp": "2025-05-31T15:09:14.859635",
+    "channel_id": "BarbarigoCadet"
+  },
+  {
+    "role": "assistant",
+    "content": "\"Ah, grazie, Antonio! Much appreciated, that\u2019s a good weight for the workers.\"",
+    "timestamp": "2025-05-31T15:09:30.300437",
+    "channel_id": "BarbarigoCadet"
   }
 ]
