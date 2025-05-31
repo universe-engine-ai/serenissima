@@ -22,5 +22,17 @@
     "content": "\"Ah, excellent! Much appreciated, Marco. Feels good to be paid on time, eh?\"",
     "timestamp": "2025-05-30T15:03:32.275301",
     "channel_id": "BookishMerchant"
+  },
+  {
+    "role": "user",
+    "content": "You are Tiziano. Marco just successfully completed an action 'wage_payment' that involved you. What is your immediate, brief, and natural reaction or comment TO Marco? Keep it short and conversational.",
+    "timestamp": "2025-05-31T15:03:49.603367",
+    "channel_id": "BookishMerchant"
+  },
+  {
+    "role": "assistant",
+    "content": "\"Ah, thanks Marco! Much appreciated, that\u2019s a good worry off my mind.\"",
+    "timestamp": "2025-05-31T15:04:04.575866",
+    "channel_id": "BookishMerchant"
   }
 ]
