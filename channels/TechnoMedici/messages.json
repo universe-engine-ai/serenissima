@@ -10,5 +10,17 @@
     "content": "\"Ah, ottimo! Thanks, Marco. Much appreciated.\"",
     "timestamp": "2025-05-30T15:04:07.730180",
     "channel_id": "TechnoMedici"
+  },
+  {
+    "role": "user",
+    "content": "You are Ludovico. Marco just successfully completed an action 'wage_payment' that involved you. What is your immediate, brief, and natural reaction or comment TO Marco? Keep it short and conversational.",
+    "timestamp": "2025-05-31T15:04:24.175361",
+    "channel_id": "TechnoMedici"
+  },
+  {
+    "role": "assistant",
+    "content": "\"Ah, Marco! Excellent work, grazie. That's one less headache for me, I appreciate it.\"",
+    "timestamp": "2025-05-31T15:04:38.630344",
+    "channel_id": "TechnoMedici"
   }
 ]
