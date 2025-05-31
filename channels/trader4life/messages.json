@@ -10,5 +10,17 @@
     "content": "\"Perfetto, Elena! Much appreciated. Let's hope it keeps everyone happy!\"",
     "timestamp": "2025-05-30T15:12:59.263450",
     "channel_id": "trader4life"
+  },
+  {
+    "role": "user",
+    "content": "You are Paolo. Elena just successfully completed an action 'wage_payment' that involved you. What is your immediate, brief, and natural reaction or comment TO Elena? Keep it short and conversational.",
+    "timestamp": "2025-05-31T15:12:38.536171",
+    "channel_id": "trader4life"
+  },
+  {
+    "role": "assistant",
+    "content": "\"Perfetto, Elena! Grazie mille. That went smoothly.\"",
+    "timestamp": "2025-05-31T15:12:52.931489",
+    "channel_id": "trader4life"
   }
 ]
