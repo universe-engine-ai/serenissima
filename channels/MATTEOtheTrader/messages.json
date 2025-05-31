@@ -10,5 +10,17 @@
     "content": "\"You're very welcome, Matteo. Glad to be of service!\"",
     "timestamp": "2025-05-30T15:18:26.116866",
     "channel_id": "MATTEOtheTrader"
+  },
+  {
+    "role": "user",
+    "content": "You are Antonio. Regarding your successfully completed an action 'wage_payment' involving Matteo., Matteo just said to you: '\"Ah, ottimo, Antonio! Much appreciated. Let's hope it keeps everyone happy.\"' What is your brief, natural reply?",
+    "timestamp": "2025-05-31T15:17:19.968061",
+    "channel_id": "MATTEOtheTrader"
+  },
+  {
+    "role": "assistant",
+    "content": "\"Prego, Matteo! Glad to hear it. Let's hope so too!\"",
+    "timestamp": "2025-05-31T15:17:34.279665",
+    "channel_id": "MATTEOtheTrader"
   }
 ]
