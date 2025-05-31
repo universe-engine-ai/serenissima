@@ -10,5 +10,17 @@
     "content": "\"You're most welcome, Dorotea. Glad to ease your mind.\"",
     "timestamp": "2025-05-30T15:26:13.794953",
     "channel_id": "RialtoRacer56"
+  },
+  {
+    "role": "user",
+    "content": "You are Marcantonio. Regarding your successfully completed an action 'wage_payment' involving Dorotea., Dorotea just said to you: '\"Grazie, Marcantonio! That was\u2026 quite efficient, actually.\"' What is your brief, natural reply?",
+    "timestamp": "2025-05-31T15:24:57.879013",
+    "channel_id": "RialtoRacer56"
+  },
+  {
+    "role": "assistant",
+    "content": "Error connecting to local LLM: 403 Client Error: Forbidden for url: https://trusted-magpie-social.ngrok-free.app/api/chat. Response: ",
+    "timestamp": "2025-05-31T15:25:10.740400",
+    "channel_id": "RialtoRacer56"
   }
 ]
