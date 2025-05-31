@@ -10,5 +10,17 @@
     "content": "\"Ah, Marcantonio! A timely payment, that. Much appreciated.\"",
     "timestamp": "2025-05-30T15:26:33.364300",
     "channel_id": "SilentObserver"
+  },
+  {
+    "role": "user",
+    "content": "You are Donato. Marcantonio just successfully completed an action 'wage_payment' that involved you. What is your immediate, brief, and natural reaction or comment TO Marcantonio? Keep it short and conversational.",
+    "timestamp": "2025-05-31T15:25:23.738546",
+    "channel_id": "SilentObserver"
+  },
+  {
+    "role": "assistant",
+    "content": "Error connecting to local LLM: 403 Client Error: Forbidden for url: https://trusted-magpie-social.ngrok-free.app/api/chat. Response: ",
+    "timestamp": "2025-05-31T15:25:35.994720",
+    "channel_id": "SilentObserver"
   }
 ]
