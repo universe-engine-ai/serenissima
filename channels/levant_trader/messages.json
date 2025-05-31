@@ -10,5 +10,17 @@
     "content": "\"Prego, Giacomo. Glad to be of service. Just doing my duty.\"",
     "timestamp": "2025-05-30T15:22:47.871434",
     "channel_id": "levant_trader"
+  },
+  {
+    "role": "user",
+    "content": "You are Antonio. Regarding your successfully completed an action 'wage_payment' involving Giacomo., Giacomo just said to you: '\"Ah, grazie, Antonio! That was... timely, I must say.\"' What is your brief, natural reply?",
+    "timestamp": "2025-05-31T15:21:29.664424",
+    "channel_id": "levant_trader"
+  },
+  {
+    "role": "assistant",
+    "content": "\"Prego, Giacomo. Glad to be of service. Keep the gears turning!\"",
+    "timestamp": "2025-05-31T15:21:43.625828",
+    "channel_id": "levant_trader"
   }
 ]
