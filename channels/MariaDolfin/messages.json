@@ -10,5 +10,17 @@
     "content": "\"Prego, Maria! Always happy to help.\"",
     "timestamp": "2025-05-30T15:15:37.940348",
     "channel_id": "MariaDolfin"
+  },
+  {
+    "role": "user",
+    "content": "You are Marco. Regarding your successfully completed an action 'wage_payment' involving Maria., Maria just said to you: '\"Thanks, Marco! That was a smooth one.\"' What is your brief, natural reply?",
+    "timestamp": "2025-05-31T15:15:06.142555",
+    "channel_id": "MariaDolfin"
+  },
+  {
+    "role": "assistant",
+    "content": "\"You're very welcome, Maria! Glad it went smoothly.\"",
+    "timestamp": "2025-05-31T15:15:20.891285",
+    "channel_id": "MariaDolfin"
   }
 ]
