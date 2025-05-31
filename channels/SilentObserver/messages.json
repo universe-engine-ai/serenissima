@@ -10,5 +10,17 @@
     "content": "\"Oh, thank you, Marcantonio! That's a relief, honestly.\"",
     "timestamp": "2025-05-30T15:25:57.427677",
     "channel_id": "SilentObserver"
+  },
+  {
+    "role": "user",
+    "content": "You are Dorotea. Marcantonio just successfully completed an action 'wage_payment' that involved you. What is your immediate, brief, and natural reaction or comment TO Marcantonio? Keep it short and conversational.",
+    "timestamp": "2025-05-31T15:24:43.153908",
+    "channel_id": "SilentObserver"
+  },
+  {
+    "role": "assistant",
+    "content": "\"Grazie, Marcantonio! That was\u2026 quite efficient, actually.\"",
+    "timestamp": "2025-05-31T15:24:57.018457",
+    "channel_id": "SilentObserver"
   }
 ]
