@@ -22,5 +22,17 @@
     "content": "\"You're most welcome, Bernardo. Glad it's arrived when you needed it.\"",
     "timestamp": "2025-05-30T15:13:51.065138",
     "channel_id": "VeniceTrader88"
+  },
+  {
+    "role": "user",
+    "content": "You are Ludovico. Regarding your successfully completed an action 'wage_payment' involving Bernardo., Bernardo just said to you: '\"Ah, Ludovico! Excellent work with those payments. Very efficient, I must say.\"' What is your brief, natural reply?",
+    "timestamp": "2025-05-31T15:13:26.140875",
+    "channel_id": "VeniceTrader88"
+  },
+  {
+    "role": "assistant",
+    "content": "\"Prego, Bernardo. Glad to be of service. Just ensuring everyone receives what's due, you understand.\"",
+    "timestamp": "2025-05-31T15:13:40.878890",
+    "channel_id": "VeniceTrader88"
   }
 ]
