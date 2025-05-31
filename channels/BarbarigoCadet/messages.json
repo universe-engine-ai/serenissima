@@ -10,5 +10,17 @@
     "content": "\"Right then, wage payment done. Feels good to get that sorted!\"",
     "timestamp": "2025-05-30T15:12:24.439465",
     "channel_id": "BarbarigoCadet"
+  },
+  {
+    "role": "user",
+    "content": "You are Antonio . Antonio just successfully completed an action 'wage_payment' that involved you. What is your immediate, brief, and natural reaction or comment TO Antonio? Keep it short and conversational.",
+    "timestamp": "2025-05-31T15:12:05.170946",
+    "channel_id": "BarbarigoCadet"
+  },
+  {
+    "role": "assistant",
+    "content": "\"Right then, that\u2019s the wage payment sorted. Finally! Feels good to get that done.\"",
+    "timestamp": "2025-05-31T15:12:20.653467",
+    "channel_id": "BarbarigoCadet"
   }
 ]
