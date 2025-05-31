@@ -10,5 +10,17 @@
     "content": "\"Prego, Giacomo! Felice di aiutare.\" (You're welcome, Giacomo! Happy to help.)",
     "timestamp": "2025-05-30T15:01:20.127442",
     "channel_id": "alexandria_trader"
+  },
+  {
+    "role": "user",
+    "content": "You are Chiara. Regarding your successfully completed an action 'wage_payment' involving Giacomo., Giacomo just said to you: '\"Ah, *grazie*, Chiara! That went smoothly. Appreciate it.\"' What is your brief, natural reply?",
+    "timestamp": "2025-05-31T15:01:44.782466",
+    "channel_id": "alexandria_trader"
+  },
+  {
+    "role": "assistant",
+    "content": "\"Prego, Giacomo! Glad it was a simple one.\"",
+    "timestamp": "2025-05-31T15:01:59.538580",
+    "channel_id": "alexandria_trader"
   }
 ]
