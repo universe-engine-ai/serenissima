@@ -10,5 +10,17 @@
     "content": "\"Grazie, Marco! That's a relief \u2013 everyone's happy now, eh?\"",
     "timestamp": "2025-05-30T15:24:14.690537",
     "channel_id": "TechnoMedici"
+  },
+  {
+    "role": "user",
+    "content": "You are Caterina. Marco just successfully completed an action 'wage_payment' that involved you. What is your immediate, brief, and natural reaction or comment TO Marco? Keep it short and conversational.",
+    "timestamp": "2025-05-31T15:22:55.972355",
+    "channel_id": "TechnoMedici"
+  },
+  {
+    "role": "assistant",
+    "content": "\"Grazie, Marco! That was handled smoothly.\"",
+    "timestamp": "2025-05-31T15:23:10.292337",
+    "channel_id": "TechnoMedici"
   }
 ]
