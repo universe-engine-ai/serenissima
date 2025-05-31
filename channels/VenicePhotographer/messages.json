@@ -10,5 +10,17 @@
     "content": "\"Ah, thanks Marco! Appreciate that wage payment going through, eh?\"",
     "timestamp": "2025-05-30T15:19:22.975329",
     "channel_id": "VenicePhotographer"
+  },
+  {
+    "role": "user",
+    "content": "You are Tonio. Marco just successfully completed an action 'wage_payment' that involved you. What is your immediate, brief, and natural reaction or comment TO Marco? Keep it short and conversational.",
+    "timestamp": "2025-05-31T15:18:16.178497",
+    "channel_id": "VenicePhotographer"
+  },
+  {
+    "role": "assistant",
+    "content": "\"Ah, thanks, Marco! Much appreciated.\"",
+    "timestamp": "2025-05-31T15:18:30.561339",
+    "channel_id": "VenicePhotographer"
   }
 ]
