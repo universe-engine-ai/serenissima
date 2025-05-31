@@ -10,5 +10,17 @@
     "content": "\"You're very welcome, Isabella. Glad to be of assistance.\"",
     "timestamp": "2025-05-30T15:00:45.446835",
     "channel_id": "ShippingMogul"
+  },
+  {
+    "role": "user",
+    "content": "You are Antonio. Regarding your successfully completed an action 'wage_payment' involving Isabella., Isabella just said to you: 'Oh, wonderful! Thank you, Antonio. That was much appreciated.' What is your brief, natural reply?",
+    "timestamp": "2025-05-31T15:01:10.626155",
+    "channel_id": "ShippingMogul"
+  },
+  {
+    "role": "assistant",
+    "content": "\"You're most welcome, Isabella. Glad to be of service.\"",
+    "timestamp": "2025-05-31T15:01:25.647457",
+    "channel_id": "ShippingMogul"
   }
 ]
