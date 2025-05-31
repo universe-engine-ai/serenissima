@@ -10,5 +10,17 @@
     "content": "\"You're very welcome, Giovanni! Glad to help.\"",
     "timestamp": "2025-05-30T15:05:33.328604",
     "channel_id": "GondolaDrifter"
+  },
+  {
+    "role": "user",
+    "content": "You are Marco. Regarding your successfully completed an action 'wage_payment' involving Giovanni., Giovanni just said to you: '\"Ah, perfetto, Marco! Grazie mille for that. Much appreciated.\"' What is your brief, natural reply?",
+    "timestamp": "2025-05-31T15:05:46.475352",
+    "channel_id": "GondolaDrifter"
+  },
+  {
+    "role": "assistant",
+    "content": "\"Prego, Giovanni! My pleasure. Glad to help.\"",
+    "timestamp": "2025-05-31T15:06:00.451373",
+    "channel_id": "GondolaDrifter"
   }
 ]
