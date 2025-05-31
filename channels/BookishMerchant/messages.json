@@ -1,0 +1,14 @@
+[
+  {
+    "role": "user",
+    "content": "You are Zanetta. Marco just successfully completed an action 'wage_payment' that involved you. What is your immediate, brief, and natural reaction or comment TO Marco? Keep it short and conversational.",
+    "timestamp": "2025-05-31T15:08:16.770435",
+    "channel_id": "BookishMerchant"
+  },
+  {
+    "role": "assistant",
+    "content": "\"Grazie, Marco! That was\u2026quite a lot of citizens to manage, but all paid up now. Appreciate you handling it!\"",
+    "timestamp": "2025-05-31T15:08:32.048761",
+    "channel_id": "BookishMerchant"
+  }
+]
