@@ -442,5 +442,17 @@
     "content": "\"Right you are, Ludovico. Always good to have a backup plan. Let's have a think then, shall we?\"",
     "timestamp": "2025-05-31T09:13:59.097610",
     "channel_id": "TravelBug23"
+  },
+  {
+    "role": "user",
+    "content": "You are Tommaso. Regarding your unsuccessfully completed an action 'pickup_for_storage' regarding 'source_stock_insufficient' involving Ludovico., Ludovico just said to you: '\"Ah, Tommaso! Source stock ran out, eh? Bit frustrating, I know. Let\u2019s see what we can do about that.\"' What is your brief, natural reply?",
+    "timestamp": "2025-05-31T09:22:36.214307",
+    "channel_id": "TravelBug23"
+  },
+  {
+    "role": "assistant",
+    "content": "\"Right you are, Ludovico. Frustrating indeed. Let's figure out a solution then.\"",
+    "timestamp": "2025-05-31T09:22:50.080748",
+    "channel_id": "TravelBug23"
   }
 ]
