@@ -10,5 +10,17 @@
     "content": "\"My pleasure, Tiziano! Glad to hear it. Keeps things running smoothly for everyone, doesn's it?\"",
     "timestamp": "2025-05-30T15:03:48.944042",
     "channel_id": "DesertRanger"
+  },
+  {
+    "role": "user",
+    "content": "You are Marco. Regarding your successfully completed an action 'wage_payment' involving Tiziano., Tiziano just said to you: '\"Ah, thanks Marco! Much appreciated, that\u2019s a good worry off my mind.\"' What is your brief, natural reply?",
+    "timestamp": "2025-05-31T15:04:05.497275",
+    "channel_id": "DesertRanger"
+  },
+  {
+    "role": "assistant",
+    "content": "\"You're very welcome, Tiziano. Glad to help ease your mind!\"",
+    "timestamp": "2025-05-31T15:04:20.714634",
+    "channel_id": "DesertRanger"
   }
 ]
