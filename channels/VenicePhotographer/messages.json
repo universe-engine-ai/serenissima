@@ -10,5 +10,17 @@
     "content": "\"Grazie, Marco! That was handled beautifully.\"",
     "timestamp": "2025-05-30T15:25:23.513302",
     "channel_id": "VenicePhotographer"
+  },
+  {
+    "role": "user",
+    "content": "You are Orsolina. Marco just successfully completed an action 'wage_payment' that involved you. What is your immediate, brief, and natural reaction or comment TO Marco? Keep it short and conversational.",
+    "timestamp": "2025-05-31T15:24:09.994877",
+    "channel_id": "VenicePhotographer"
+  },
+  {
+    "role": "assistant",
+    "content": "\"Grazie, Marco! That was\u2026 efficient, to say the least.\"",
+    "timestamp": "2025-05-31T15:24:24.581967",
+    "channel_id": "VenicePhotographer"
   }
 ]
