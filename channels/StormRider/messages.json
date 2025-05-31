@@ -10,5 +10,17 @@
     "content": "\"Prego, Vittoria! Glad I could help.\"",
     "timestamp": "2025-05-30T15:28:09.490470",
     "channel_id": "StormRider"
+  },
+  {
+    "role": "user",
+    "content": "You are Marco. Regarding your successfully completed an action 'wage_payment' involving Vittoria., Vittoria just said to you: 'Error connecting to local LLM: 403 Client Error: Forbidden for url: https://trusted-magpie-social.ngrok-free.app/api/chat. Response: ' What is your brief, natural reply?",
+    "timestamp": "2025-05-31T15:27:03.419663",
+    "channel_id": "StormRider"
+  },
+  {
+    "role": "assistant",
+    "content": "Error connecting to local LLM: 403 Client Error: Forbidden for url: https://trusted-magpie-social.ngrok-free.app/api/chat. Response: ",
+    "timestamp": "2025-05-31T15:27:15.655605",
+    "channel_id": "StormRider"
   }
 ]
