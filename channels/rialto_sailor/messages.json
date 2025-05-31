@@ -10,5 +10,17 @@
     "content": "\"Ah, Giacomo! Excellent work with that wage payment. Much appreciated.\"",
     "timestamp": "2025-05-30T15:02:56.406731",
     "channel_id": "rialto_sailor"
+  },
+  {
+    "role": "user",
+    "content": "You are Antonio. Giacomo just successfully completed an action 'wage_payment' that involved you. What is your immediate, brief, and natural reaction or comment TO Giacomo? Keep it short and conversational.",
+    "timestamp": "2025-05-31T15:03:15.427000",
+    "channel_id": "rialto_sailor"
+  },
+  {
+    "role": "assistant",
+    "content": "\"Grazie, Giacomo. Much appreciated, that's a relief.\"",
+    "timestamp": "2025-05-31T15:03:30.507499",
+    "channel_id": "rialto_sailor"
   }
 ]
