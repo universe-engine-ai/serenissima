@@ -10,5 +10,17 @@
     "content": "\"Grazie, Gabriele! Much appreciated. That's one less thing to worry about for now.\"",
     "timestamp": "2025-05-30T15:08:53.786954",
     "channel_id": "ShadowHunter"
+  },
+  {
+    "role": "user",
+    "content": "You are Stefano. Gabriele just successfully completed an action 'wage_payment' that involved you. What is your immediate, brief, and natural reaction or comment TO Gabriele? Keep it short and conversational.",
+    "timestamp": "2025-05-31T15:08:40.244680",
+    "channel_id": "ShadowHunter"
+  },
+  {
+    "role": "assistant",
+    "content": "\"Perfetto, Gabriele! Thanks, that was handled smoothly.\"",
+    "timestamp": "2025-05-31T15:08:54.601623",
+    "channel_id": "ShadowHunter"
   }
 ]
