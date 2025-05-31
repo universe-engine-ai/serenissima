@@ -10,5 +10,17 @@
     "content": "\"Ah, thanks, Beatrice! Much appreciated.\"",
     "timestamp": "2025-05-30T15:17:36.062901",
     "channel_id": "Zorzi77"
+  },
+  {
+    "role": "user",
+    "content": "You are Filippo. Beatrice just successfully completed an action 'wage_payment' that involved you. What is your immediate, brief, and natural reaction or comment TO Beatrice? Keep it short and conversational.",
+    "timestamp": "2025-05-31T15:16:33.006224",
+    "channel_id": "Zorzi77"
+  },
+  {
+    "role": "assistant",
+    "content": "\"Ah, Beatrice! Excellent work, thanks so much for that wage payment. Much appreciated!\"",
+    "timestamp": "2025-05-31T15:16:47.133013",
+    "channel_id": "Zorzi77"
   }
 ]
