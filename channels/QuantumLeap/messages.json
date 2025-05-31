@@ -10,5 +10,17 @@
     "content": "\"You're very welcome, Chiara! Glad it could help.\"",
     "timestamp": "2025-05-30T15:12:05.221589",
     "channel_id": "QuantumLeap"
+  },
+  {
+    "role": "user",
+    "content": "You are Marco. Regarding your successfully completed an action 'wage_payment' involving Chiara., Chiara just said to you: '\"Ah, thanks, Marco! Much appreciated.\"' What is your brief, natural reply?",
+    "timestamp": "2025-05-31T15:11:47.282101",
+    "channel_id": "QuantumLeap"
+  },
+  {
+    "role": "assistant",
+    "content": "\"Prego, Chiara! It's my pleasure.\"",
+    "timestamp": "2025-05-31T15:12:01.530101",
+    "channel_id": "QuantumLeap"
   }
 ]
