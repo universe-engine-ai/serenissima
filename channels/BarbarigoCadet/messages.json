@@ -10,5 +10,17 @@
     "content": "Oh, thank you, Antonio! That was very kind of you to handle that so smoothly.",
     "timestamp": "2025-05-30T15:00:29.251558",
     "channel_id": "BarbarigoCadet"
+  },
+  {
+    "role": "user",
+    "content": "You are Isabella. Antonio just successfully completed an action 'wage_payment' that involved you. What is your immediate, brief, and natural reaction or comment TO Antonio? Keep it short and conversational.",
+    "timestamp": "2025-05-31T15:00:54.485655",
+    "channel_id": "BarbarigoCadet"
+  },
+  {
+    "role": "assistant",
+    "content": "Oh, wonderful! Thank you, Antonio. That was much appreciated.",
+    "timestamp": "2025-05-31T15:01:10.005904",
+    "channel_id": "BarbarigoCadet"
   }
 ]
