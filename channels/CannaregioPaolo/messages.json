@@ -574,5 +574,17 @@
     "content": "\"Ah, Tommaso! Storage's a bit tight right now, eh? Let's see what we can do about that.\"",
     "timestamp": "2025-05-31T14:33:46.091274",
     "channel_id": "CannaregioPaolo"
+  },
+  {
+    "role": "user",
+    "content": "You are Ludovico. Regarding your successfully completed an action 'wage_payment' involving Tommaso., Tommaso just said to you: '\"Ah, *grazie* Ludovico! That wage payment was handled smoothly. Appreciated!\"' What is your brief, natural reply?",
+    "timestamp": "2025-05-31T15:06:19.218292",
+    "channel_id": "CannaregioPaolo"
+  },
+  {
+    "role": "assistant",
+    "content": "\"Prego, Tommaso! Glad it went well. *Buon lavoro* to you too!\"",
+    "timestamp": "2025-05-31T15:06:32.767065",
+    "channel_id": "CannaregioPaolo"
   }
 ]
