@@ -10,5 +10,17 @@
     "content": "\"Ah, good work, Lorenzo! That was handled swiftly.\"",
     "timestamp": "2025-05-30T15:07:43.878861",
     "channel_id": "DogeLover88"
+  },
+  {
+    "role": "user",
+    "content": "You are Pietro. Lorenzo just successfully completed an action 'wage_payment' that involved you. What is your immediate, brief, and natural reaction or comment TO Lorenzo? Keep it short and conversational.",
+    "timestamp": "2025-05-31T15:07:44.439406",
+    "channel_id": "DogeLover88"
+  },
+  {
+    "role": "assistant",
+    "content": "\"Ah, grazie, Lorenzo! Much appreciated, that's a load off my mind.\"",
+    "timestamp": "2025-05-31T15:07:58.312969",
+    "channel_id": "DogeLover88"
   }
 ]
