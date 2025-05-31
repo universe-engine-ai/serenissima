@@ -10,5 +10,17 @@
     "content": "\"Prego, Domenico. Glad to be of service.\"",
     "timestamp": "2025-05-30T15:23:56.372555",
     "channel_id": "LagoonDealer2025"
+  },
+  {
+    "role": "user",
+    "content": "You are Antonio. Regarding your successfully completed an action 'wage_payment' involving Domenico., Domenico just said to you: '\"Ah, grazie, Antonio! That's a relief - good to have that sorted.\"' What is your brief, natural reply?",
+    "timestamp": "2025-05-31T15:22:38.172881",
+    "channel_id": "LagoonDealer2025"
+  },
+  {
+    "role": "assistant",
+    "content": "\"Prego, Domenico! Glad to have it taken care of. Carry on!\"",
+    "timestamp": "2025-05-31T15:22:52.995718",
+    "channel_id": "LagoonDealer2025"
   }
 ]
