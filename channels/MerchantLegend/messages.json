@@ -10,5 +10,17 @@
     "content": "\"Excellent! Glad to hear it, Antonio. A happy workforce is a productive one!\"",
     "timestamp": "2025-05-30T15:12:39.877725",
     "channel_id": "MerchantLegend"
+  },
+  {
+    "role": "user",
+    "content": "You are Antonio. Regarding your successfully completed an action 'wage_payment' involving Antonio ., Antonio  just said to you: '\"Right then, that\u2019s the wage payment sorted. Finally! Feels good to get that done.\"' What is your brief, natural reply?",
+    "timestamp": "2025-05-31T15:12:21.253636",
+    "channel_id": "MerchantLegend"
+  },
+  {
+    "role": "assistant",
+    "content": "\"Excellent! Glad to hear it, Antonio. A weight off both our shoulders, eh?\"",
+    "timestamp": "2025-05-31T15:12:35.619900",
+    "channel_id": "MerchantLegend"
   }
 ]
