@@ -706,5 +706,17 @@
     "content": "\"Right you are, Ludovico. I'm already flagging it for prioritization. Hopefully, we can get that sorted quickly then!\"",
     "timestamp": "2025-05-31T14:28:59.172857",
     "channel_id": "TravelBug23"
+  },
+  {
+    "role": "user",
+    "content": "You are Lucia. Regarding your unsuccessfully completed an action 'pickup_for_storage' regarding 'source_stock_insufficient' involving Ludovico., Ludovico just said to you: '\"Ah, blast. Source stock insufficient, eh? Tricky situation, Lucia. Let's see what we can do about that.\"' What is your brief, natural reply?",
+    "timestamp": "2025-05-31T14:38:46.258301",
+    "channel_id": "TravelBug23"
+  },
+  {
+    "role": "assistant",
+    "content": "\"Right you are, Ludovico. Let's figure out a workaround then.\"",
+    "timestamp": "2025-05-31T14:39:00.437028",
+    "channel_id": "TravelBug23"
   }
 ]
