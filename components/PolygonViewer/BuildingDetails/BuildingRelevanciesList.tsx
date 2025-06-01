@@ -9,6 +9,9 @@ interface Relevancy {
   title: string;
   description: string;
   score: number;
+  category?: string;
+  type?: string;
+  timeHorizon?: string;
   // Add any other fields from the relevancy object that are used
 }
 
@@ -24,6 +27,7 @@ const BuildingRelevanciesList: React.FC<BuildingRelevanciesListProps> = ({
   const [relevancies, setRelevancies] = useState<Relevancy[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
+  const [sortedRelevancies, setSortedRelevancies] = useState<Relevancy[]>([]);
 
   useEffect(() => {
     if (!buildingId || !citizenUsername) {
@@ -57,6 +61,28 @@ const BuildingRelevanciesList: React.FC<BuildingRelevanciesListProps> = ({
     fetchRelevancies();
   }, [buildingId, citizenUsername]);
 
+  // Sort relevancies by score (highest first)
+  useEffect(() => {
+    const sorted = [...relevancies].sort((a, b) => b.score - a.score);
+    setSortedRelevancies(sorted);
+  }, [relevancies]);
+
+  // Helper function to get priority label based on score
+  const getPriorityLabel = (score: number): string => {
+    if (score >= 80) return "Critical";
+    if (score >= 60) return "High";
+    if (score >= 40) return "Moderate";
+    return "Low";
+  };
+
+  // Helper function to get color classes based on score
+  const getScoreColorClasses = (score: number): string => {
+    if (score >= 80) return "bg-red-100 text-red-800";
+    if (score >= 60) return "bg-teal-100 text-teal-800";
+    if (score >= 40) return "bg-lime-100 text-lime-700";
+    return "bg-gray-100 text-gray-700";
+  };
+
   if (!buildingId || !citizenUsername) {
     return null; // Don't render if essential props are missing
   }
@@ -65,9 +91,9 @@ const BuildingRelevanciesList: React.FC<BuildingRelevanciesListProps> = ({
     <div className="mt-4">
       <div className="flex items-center mb-2">
         <h4 className="text-md font-serif text-amber-800 border-b border-amber-200 pb-1">
-          Building Relevancies for You
+          Pattern Recognition: Building Opportunities
         </h4>
-        <InfoIcon tooltipText="Opportunities and information related to this building that are relevant to you." />
+        <InfoIcon tooltipText="Strategic opportunities and patterns related to this building that align with your merchant-architect interests." />
       </div>
 
       {isLoading ? (
@@ -76,23 +102,19 @@ const BuildingRelevanciesList: React.FC<BuildingRelevanciesListProps> = ({
         </div>
       ) : error ? (
         <p className="text-red-600 italic text-xs">Error: {error}</p>
-      ) : relevancies.length > 0 ? (
+      ) : sortedRelevancies.length > 0 ? (
         <div className="space-y-2 max-h-[250px] overflow-y-auto pr-1 custom-scrollbar">
-          {relevancies.map((relevancy) => (
+          {sortedRelevancies.map((relevancy) => (
             <div key={relevancy.id} className="bg-amber-100 rounded-lg p-2.5 text-xs shadow-sm">
               <div className="flex items-start justify-between mb-1">
                 <div className="font-medium text-amber-800 flex-1 pr-2">
                   {relevancy.title}
                 </div>
                 <div className="text-center">
-                  <div className={`px-2.5 py-0.5 rounded-full text-lg font-bold ${
-                    relevancy.score > 75 ? 'bg-teal-100 text-teal-700' :
-                    relevancy.score > 25 ? 'bg-lime-100 text-lime-700' :
-                    'bg-gray-100 text-gray-700'
-                  }`}>
+                  <div className={`px-2.5 py-0.5 rounded-full text-lg font-bold ${getScoreColorClasses(relevancy.score)}`}>
                     {Math.round(relevancy.score)}
                   </div>
-                  <p className="text-[10px] text-amber-600 mt-0.5">Score</p>
+                  <p className="text-[10px] text-amber-600 mt-0.5">{getPriorityLabel(relevancy.score)}</p>
                 </div>
               </div>
               <div className="text-amber-700 mt-1.5">
@@ -105,11 +127,30 @@ const BuildingRelevanciesList: React.FC<BuildingRelevanciesListProps> = ({
                   {relevancy.description}
                 </ReactMarkdown>
               </div>
+              {(relevancy.category || relevancy.type || relevancy.timeHorizon) && (
+                <div className="mt-1.5 flex flex-wrap gap-1.5">
+                  {relevancy.category && (
+                    <span className="inline-block px-1.5 py-0.5 bg-amber-50 text-amber-700 rounded text-[9px] border border-amber-200">
+                      {relevancy.category}
+                    </span>
+                  )}
+                  {relevancy.type && (
+                    <span className="inline-block px-1.5 py-0.5 bg-amber-50 text-amber-700 rounded text-[9px] border border-amber-200">
+                      {relevancy.type}
+                    </span>
+                  )}
+                  {relevancy.timeHorizon && (
+                    <span className="inline-block px-1.5 py-0.5 bg-amber-50 text-amber-700 rounded text-[9px] border border-amber-200">
+                      {relevancy.timeHorizon}
+                    </span>
+                  )}
+                </div>
+              )}
             </div>
           ))}
         </div>
       ) : (
-        <p className="text-amber-600 italic text-xs">No specific relevancies found for you regarding this building.</p>
+        <p className="text-amber-600 italic text-xs">No strategic patterns identified for this building at present. Continue to observe for emerging opportunities.</p>
       )}
     </div>
   );
