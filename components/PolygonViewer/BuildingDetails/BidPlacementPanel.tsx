@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { FaTimes, FaPaperPlane, FaSpinner } from 'react-icons/fa';
+import { toast } from 'react-hot-toast';
 
 interface BidPlacementPanelProps {
   buildingId: string;
@@ -33,53 +34,38 @@ const BidPlacementPanel: React.FC<BidPlacementPanelProps> = ({
     setIsSubmitting(true);
 
     try {
-      // Placeholder for API call
-      console.log('Submitting bid:', {
-        buildingId,
-        bidder: currentUser,
-        amount: bidAmount,
-        notes,
+      // Make the actual API call to place a bid using the activities/try-create endpoint
+      const response = await fetch('/api/activities/try-create', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          citizenUsername: currentUser,
+          activityType: 'bid_on_building',
+          activityParameters: {
+            buildingIdToBidOn: buildingId,
+            bidAmount: bidAmount,
+            notes: notes || `Bid on ${buildingName}`,
+            fromBuildingId: null, // Will be determined by the server based on citizen's current location
+            targetOfficeBuildingId: null // Let the server find the appropriate office building
+          }
+        }),
       });
-      // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 1500));
-      
-      // TODO: Replace with actual API call to /api/contracts (POST)
-      // const response = await fetch('/api/contracts', {
-      //   method: 'POST',
-      //   headers: { 'Content-Type': 'application/json' },
-      //   body: JSON.stringify({
-      //     ContractId: `building_bid_${buildingId}_${currentUser}_${Date.now()}`,
-      //     Type: 'building_bid',
-      //     Asset: buildingId,
-      //     AssetType: 'building',
-      //     Buyer: currentUser, // Bidder
-      //     PricePerResource: bidAmount, // Bid amount
-      //     TargetAmount: 1, // For the building itself
-      //     Status: 'active',
-      //     Notes: notes,
-      //     // Seller might be set by backend or left null until acceptance
-      //   }),
-      // });
 
-      // if (!response.ok) {
-      //   const errorData = await response.json();
-      //   throw new Error(errorData.error || 'Failed to place bid.');
-      // }
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.error || 'Failed to place bid.');
+      }
       
-      // const result = await response.json();
-      // if (result.success) {
-      //   onBidPlaced();
-      // } else {
-      //   throw new Error(result.error || 'API returned success false.');
-      // }
-
-      alert(`Bid of ${bidAmount} Ducats placed for ${buildingName}! (This is a placeholder)`);
+      const result = await response.json();
+      
+      toast.success(`Bid of ${bidAmount} Ducats placed for ${buildingName}!`);
       onBidPlaced(); // Call this after successful API call
 
     } catch (err) {
       const errorMessage = err instanceof Error ? err.message : 'An unknown error occurred.';
       console.error('Error placing bid:', errorMessage);
       setError(errorMessage);
+      toast.error('Failed to place bid: ' + errorMessage);
     } finally {
       setIsSubmitting(false);
     }
