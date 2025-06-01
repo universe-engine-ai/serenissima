@@ -403,44 +403,64 @@ const CitizenRegistry: React.FC<CitizenRegistryProps> = ({ onClose }) => {
                           <div className="mt-2 bg-amber-50 border border-amber-200 rounded-lg overflow-hidden">
                             <details className="group">
                               <summary className="flex justify-between items-center p-3 bg-amber-100 cursor-pointer">
-                                <span className="font-medium text-amber-800">Opportunities ({citizenRelevancies.length})</span>
+                                <span className="font-medium text-amber-800">Strategic Patterns ({citizenRelevancies.length})</span>
                                 <svg className="w-5 h-5 text-amber-700 group-open:rotate-180 transition-transform" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
                                   <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
                                 </svg>
                               </summary>
                               <div className="p-3 text-sm">
-                                {citizenRelevancies.map((relevancy) => (
-                                  <div key={relevancy.relevancyId} className="mb-3 pb-3 border-b border-amber-100 last:border-0">
-                                    <div className="flex justify-between">
-                                      <span className="font-medium text-amber-900">{relevancy.title}</span>
-                                      <span className="text-amber-700">Score: {relevancy.score}</span>
-                                    </div>
-                                    <p className="text-gray-700 mt-1">
-                                      <ReactMarkdown 
-                                        remarkPlugins={[remarkGfm]}
-                                        components={{
-                                          p: ({node, ...props}) => <p {...props} className="my-1" />
-                                        }}
-                                      >
-                                        {relevancy.description}
-                                      </ReactMarkdown>
-                                    </p>
-                                    <div className="mt-2 grid grid-cols-2 gap-2 text-xs">
-                                      <div><span className="text-amber-800">Type:</span> {relevancy.type}</div>
-                                      <div><span className="text-amber-800">Category:</span> {relevancy.category}</div>
-                                      <div><span className="text-amber-800">Time Horizon:</span> {relevancy.timeHorizon}</div>
-                                      <div><span className="text-amber-800">Status:</span> {relevancy.status}</div>
-                                    </div>
-                                    {relevancy.notes && (
-                                      <div className="mt-2 text-xs italic text-gray-600">
-                                        <span className="text-amber-800">Notes:</span> {relevancy.notes}
+                                {citizenRelevancies.map((relevancy) => {
+                                  // Helper function to get priority label based on score
+                                  const getPriorityLabel = (score: number): string => {
+                                    if (score >= 80) return "Critical";
+                                    if (score >= 60) return "High";
+                                    if (score >= 40) return "Moderate";
+                                    return "Low";
+                                  };
+                                  
+                                  // Helper function to get color classes based on score
+                                  const getScoreColorClass = (score: number): string => {
+                                    if (score >= 80) return "text-red-700";
+                                    if (score >= 60) return "text-teal-700";
+                                    if (score >= 40) return "text-lime-700";
+                                    return "text-gray-700";
+                                  };
+                                  
+                                  return (
+                                    <div key={relevancy.relevancyId} className="mb-3 pb-3 border-b border-amber-100 last:border-0">
+                                      <div className="flex justify-between">
+                                        <span className="font-medium text-amber-900">{relevancy.title}</span>
+                                        <span className={`font-semibold ${getScoreColorClass(relevancy.score)}`}>
+                                          {getPriorityLabel(relevancy.score)} ({relevancy.score})
+                                        </span>
                                       </div>
-                                    )}
-                                    <div className="mt-1 text-xs text-gray-500">
-                                      Created: {new Date(relevancy.createdAt).toLocaleDateString()}
+                                      <p className="text-gray-700 mt-1">
+                                        <ReactMarkdown 
+                                          remarkPlugins={[remarkGfm]}
+                                          components={{
+                                            p: ({node, ...props}) => <p {...props} className="my-1" />
+                                          }}
+                                        >
+                                          {relevancy.description}
+                                        </ReactMarkdown>
+                                      </p>
+                                      <div className="mt-2 grid grid-cols-2 gap-2 text-xs">
+                                        <div><span className="text-amber-800">Type:</span> {relevancy.type}</div>
+                                        <div><span className="text-amber-800">Category:</span> {relevancy.category}</div>
+                                        <div><span className="text-amber-800">Time Horizon:</span> {relevancy.timeHorizon}</div>
+                                        <div><span className="text-amber-800">Status:</span> {relevancy.status}</div>
+                                      </div>
+                                      {relevancy.notes && (
+                                        <div className="mt-2 text-xs italic text-gray-600">
+                                          <span className="text-amber-800">Notes:</span> {relevancy.notes}
+                                        </div>
+                                      )}
+                                      <div className="mt-1 text-xs text-gray-500">
+                                        Created: {new Date(relevancy.createdAt).toLocaleDateString()}
+                                      </div>
                                     </div>
-                                  </div>
-                                ))}
+                                  );
+                                })}
                               </div>
                             </details>
                           </div>

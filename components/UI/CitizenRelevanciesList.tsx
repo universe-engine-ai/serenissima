@@ -15,6 +15,7 @@ interface Relevancy {
   notes?: string;
   createdAt?: string;
   updatedAt?: string;
+  timeHorizon?: string;
 }
 
 interface CitizenForFormatting {
@@ -58,6 +59,13 @@ const CitizenRelevanciesList: React.FC<CitizenRelevanciesListProps> = ({
 }) => {
   const [citizenThoughts, setCitizenThoughts] = useState<Thought[]>([]);
   const [isLoadingThoughts, setIsLoadingThoughts] = useState<boolean>(false);
+  const [sortedRelevancies, setSortedRelevancies] = useState<Relevancy[]>([]);
+
+  // Sort relevancies by score (highest first)
+  useEffect(() => {
+    const sorted = [...relevancies].sort((a, b) => b.score - a.score);
+    setSortedRelevancies(sorted);
+  }, [relevancies]);
 
   useEffect(() => {
     if (citizen && citizen.username) {
@@ -106,34 +114,46 @@ const CitizenRelevanciesList: React.FC<CitizenRelevanciesListProps> = ({
     }
   };
 
+  // Helper function to get priority label based on score
+  const getPriorityLabel = (score: number): string => {
+    if (score >= 80) return "Critical";
+    if (score >= 60) return "High";
+    if (score >= 40) return "Moderate";
+    return "Low";
+  };
+
+  // Helper function to get color classes based on score
+  const getScoreColorClasses = (score: number): string => {
+    if (score >= 80) return "bg-red-200 text-red-800";
+    if (score >= 60) return "bg-teal-200 text-teal-800";
+    if (score >= 40) return "bg-lime-200 text-lime-800";
+    return "bg-gray-200 text-gray-800";
+  };
+
   return (
     <>
       <div className="flex items-center">
-        <h3 className="text-lg font-serif text-amber-800 mb-2 border-b border-amber-200 pb-1">Connections</h3>
-        <InfoIcon tooltipText="Opportunities and relevant links for this citizen, based on their activities, needs, and relationships with you or the community." />
+        <h3 className="text-lg font-serif text-amber-800 mb-2 border-b border-amber-200 pb-1">Strategic Connections</h3>
+        <InfoIcon tooltipText="Opportunities and potential collaborations with this citizen, prioritized by strategic value to your merchant-architect interests." />
       </div>
 
       {isLoadingRelevancies ? (
         <div className="flex justify-center py-4">
           <div className="w-6 h-6 border-2 border-amber-600 border-t-transparent rounded-full animate-spin"></div>
         </div>
-      ) : relevancies.length > 0 ? (
+      ) : sortedRelevancies.length > 0 ? (
         <div className="space-y-3 max-h-[400px] overflow-y-auto pr-1 custom-scrollbar">
-          {relevancies.map((relevancy, index) => (
+          {sortedRelevancies.map((relevancy, index) => (
             <div key={relevancy.relevancyId || index} className="bg-amber-100 rounded-lg p-3 text-sm">
               <div className="flex items-start justify-between mb-1">
                 <div className="font-medium text-amber-800 flex-1 pr-2">
                   {formatRelevancyText(relevancy.title, citizen)}
                 </div>
                 <div className="text-center">
-                  <div className={`px-3 py-1 rounded-full text-xl font-bold ${
-                    relevancy.score > 75 ? 'bg-teal-200 text-teal-800' :
-                    relevancy.score > 25 ? 'bg-lime-200 text-lime-800' :
-                    'bg-gray-200 text-gray-800'
-                  }`}>
+                  <div className={`px-3 py-1 rounded-full text-xl font-bold ${getScoreColorClasses(relevancy.score)}`}>
                     {Math.round(relevancy.score)}
                   </div>
-                  <p className="text-xs text-amber-600 mt-1">Opportunity</p>
+                  <p className="text-xs text-amber-600 mt-1">{getPriorityLabel(relevancy.score)}</p>
                 </div>
               </div>
               <div className="text-xs text-amber-700 mt-2">
@@ -146,18 +166,37 @@ const CitizenRelevanciesList: React.FC<CitizenRelevanciesListProps> = ({
                   {formatRelevancyText(relevancy.description, citizen)}
                 </ReactMarkdown>
               </div>
+              {(relevancy.category || relevancy.type || relevancy.timeHorizon) && (
+                <div className="mt-2 flex flex-wrap gap-1.5">
+                  {relevancy.category && (
+                    <span className="inline-block px-1.5 py-0.5 bg-amber-50 text-amber-700 rounded text-[10px] border border-amber-200">
+                      {relevancy.category}
+                    </span>
+                  )}
+                  {relevancy.type && (
+                    <span className="inline-block px-1.5 py-0.5 bg-amber-50 text-amber-700 rounded text-[10px] border border-amber-200">
+                      {relevancy.type}
+                    </span>
+                  )}
+                  {relevancy.timeHorizon && (
+                    <span className="inline-block px-1.5 py-0.5 bg-amber-50 text-amber-700 rounded text-[10px] border border-amber-200">
+                      {relevancy.timeHorizon}
+                    </span>
+                  )}
+                </div>
+              )}
             </div>
           ))}
         </div>
       ) : (
-        <p className="text-amber-700 italic text-xs">No notable relevancies with this citizen at present. Future ventures may arise as your paths cross in Venetian society.</p>
+        <p className="text-amber-700 italic text-xs">No strategic connections identified with this citizen at present. Continue to observe for emerging patterns of mutual benefit.</p>
       )}
 
-      {/* New Thoughts Section */}
+      {/* Thoughts Section */}
       <div className="mt-4">
         <div className="flex items-center">
-          <h4 className="text-md font-serif text-amber-700 mb-2 border-b border-amber-200 pb-1">Recent Musings</h4>
-          <InfoIcon tooltipText="Latest thoughts recorded by this citizen." />
+          <h4 className="text-md font-serif text-amber-700 mb-2 border-b border-amber-200 pb-1">Strategic Insights</h4>
+          <InfoIcon tooltipText="Recent thoughts that may reveal this citizen's priorities, concerns, and potential business opportunities." />
         </div>
 
         {isLoadingThoughts ? (
@@ -174,7 +213,7 @@ const CitizenRelevanciesList: React.FC<CitizenRelevanciesListProps> = ({
             ))}
           </div>
         ) : (
-          <p className="text-amber-700 italic text-xs">No recent thoughts recorded for this citizen.</p>
+          <p className="text-amber-700 italic text-xs">No recent strategic insights available from this citizen.</p>
         )}
       </div>
     </>
