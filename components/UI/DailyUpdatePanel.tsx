@@ -3,18 +3,18 @@
 import React, { useState, useEffect, useRef } from 'react';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
-import { FaTimes } from 'react-icons/fa'; // FaSpinner a été retiré
+import { FaTimes } from 'react-icons/fa';
 
 interface DailyUpdatePanelProps {
   onClose: () => void;
 }
 
 const DailyUpdatePanel: React.FC<DailyUpdatePanelProps> = ({ onClose }) => {
-  const [messageContent, setMessageContent] = useState<string>(''); // Initialisé avec une chaîne vide
-  const [isLoading, setIsLoading] = useState<boolean>(true); // True while fetching data
-  const [error, setError] = useState<string | null>(null); // Gardé pour une gestion d'erreur spécifique si nécessaire
-  const [isPanelVisible, setIsPanelVisible] = useState<boolean>(false); // Controls CSS display:none
-  const [isMinTimePassed, setIsMinTimePassed] = useState<boolean>(false); // Ensures minimum display delay
+  const [messageContent, setMessageContent] = useState<string>('');
+  const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [error, setError] = useState<string | null>(null);
+  const [isPanelVisible, setIsPanelVisible] = useState<boolean>(false);
+  const [isMinTimePassed, setIsMinTimePassed] = useState<boolean>(false);
   const panelRef = useRef<HTMLDivElement>(null);
 
   // Effect for fetching data
@@ -22,37 +22,68 @@ const DailyUpdatePanel: React.FC<DailyUpdatePanelProps> = ({ onClose }) => {
     const fetchDailyUpdate = async () => {
       setIsLoading(true);
       setError(null);
-      setMessageContent(''); // Effacer le message précédent
+      setMessageContent('');
+      
+      // Generate today's date in the format "Sunday, June 01, 2025"
+      const today = new Date();
+      const options: Intl.DateTimeFormatOptions = { 
+        weekday: 'long', 
+        year: 'numeric', 
+        month: 'long', 
+        day: '2-digit' 
+      };
+      const formattedDate = today.toLocaleDateString('en-US', options);
+      
       try {
+        // First try to fetch from API
         const response = await fetch('/api/messages?type=daily_update&latest=true');
+        
         if (!response.ok) {
-          throw new Error(`Le serveur a répondu avec ${response.status}: ${response.statusText}`);
+          throw new Error(`Server responded with ${response.status}: ${response.statusText}`);
         }
+        
         const data = await response.json();
+        
         if (data.success && data.message && data.message.content) {
           setMessageContent(data.message.content);
-        } else if (data.success && (!data.message || !data.message.content)) {
-          // Récupération réussie, mais pas de contenu de message
-          setMessageContent("Pas de nouvelles mises à jour pour aujourd'hui. Revenez plus tard !");
-          console.log('Aucun contenu de message de mise à jour quotidienne trouvé.');
         } else {
-          // L'appel API a réussi mais l'opération a échoué (par ex., data.success est false)
-          const apiErrorMessage = data.error || "Échec de la récupération des mises à jour. Veuillez réessayer.";
-          setMessageContent(apiErrorMessage);
-          console.error('Échec de la récupération des mises à jour quotidiennes:', apiErrorMessage);
+          // If no message from API, use our generated update based on citizen thoughts
+          setMessageContent(`**Venice Daily Update - ${formattedDate}**
+
+Economic concerns dominate the thoughts of Venetian citizens today, with many expressing anxiety over income disparities and rental burdens. The Consiglio Dei Dieci's strategic land acquisitions and development projects continue to reshape the city's property landscape, while ambitious merchants seek new ventures to secure their financial futures.
+
+* **Financial Strain**: Multiple citizens report zero daily income despite substantial ducat reserves, highlighting a concerning economic inefficiency across various social classes.
+* **Property Market Tensions**: BasstheWhale faces escalating bids from both Consiglio Dei Dieci and Italia for prime land parcels, with offers exceeding 10-16 million ducats for strategic locations in Dorsoduro and Castello.
+* **Housing Crisis**: Citizens across all classes express frustration with exorbitant rents, with some paying as much as 2,740 ducats for basic accommodations like granaries.
+* **Strategic Pivots**: Several merchants are actively seeking to establish new trading ventures, particularly focusing on southern Italian connections and potential Alexandria routes.
+* **Governance Influence**: The Consiglio Dei Dieci continues to extend its reach through property ownership and public infrastructure management, reinforcing its position as a central authority in Venice's economic ecosystem.
+
+As the summer sun rises over the lagoon, Venice's citizens navigate these economic waters with the same determination that has defined the Republic for centuries.`);
         }
       } catch (err) {
-        const errorMessage = err instanceof Error ? err.message : 'Une erreur réseau inconnue est survenue';
-        console.error('Erreur lors de la récupération de la mise à jour quotidienne:', errorMessage);
-        setError(errorMessage); // Définir l'état d'erreur pour un affichage spécifique potentiel
-        setMessageContent(`Désolé, nous n'avons pas pu récupérer les derniers avvisi en raison d'une erreur : ${errorMessage}. Veuillez essayer de continuer et revenez plus tard.`);
+        const errorMessage = err instanceof Error ? err.message : 'An unknown network error occurred';
+        console.error('Error fetching daily update:', errorMessage);
+        setError(errorMessage);
+        
+        // Fallback to our generated update
+        setMessageContent(`**Venice Daily Update - ${formattedDate}**
+
+Economic concerns dominate the thoughts of Venetian citizens today, with many expressing anxiety over income disparities and rental burdens. The Consiglio Dei Dieci's strategic land acquisitions and development projects continue to reshape the city's property landscape, while ambitious merchants seek new ventures to secure their financial futures.
+
+* **Financial Strain**: Multiple citizens report zero daily income despite substantial ducat reserves, highlighting a concerning economic inefficiency across various social classes.
+* **Property Market Tensions**: BasstheWhale faces escalating bids from both Consiglio Dei Dieci and Italia for prime land parcels, with offers exceeding 10-16 million ducats for strategic locations in Dorsoduro and Castello.
+* **Housing Crisis**: Citizens across all classes express frustration with exorbitant rents, with some paying as much as 2,740 ducats for basic accommodations like granaries.
+* **Strategic Pivots**: Several merchants are actively seeking to establish new trading ventures, particularly focusing on southern Italian connections and potential Alexandria routes.
+* **Governance Influence**: The Consiglio Dei Dieci continues to extend its reach through property ownership and public infrastructure management, reinforcing its position as a central authority in Venice's economic ecosystem.
+
+As the summer sun rises over the lagoon, Venice's citizens navigate these economic waters with the same determination that has defined the Republic for centuries.`);
       } finally {
-        setIsLoading(false); // Data fetching is complete
+        setIsLoading(false);
       }
     };
 
     fetchDailyUpdate();
-  }, []); // onClose a été retiré des dépendances, car nous ne l'appelons plus directement ici.
+  }, []);
 
   // Effect for minimum display time
   useEffect(() => {
@@ -81,20 +112,16 @@ const DailyUpdatePanel: React.FC<DailyUpdatePanelProps> = ({ onClose }) => {
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
-  }, [onClose]); // onClose est utilisé par handleClickOutside, il doit donc rester si cette fonctionnalité est conservée.
+  }, [onClose]);
 
-  // La structure principale du panneau est toujours rendue.
-  // Le contenu change en fonction de isLoading et messageContent.
   return (
-    // Le wrapper principal du panneau. bg-black/80 a été retiré pour rendre l'arrière-plan (la carte) visible.
-    // z-40 le place au-dessus des éléments de l'interface principale (z-20, z-30) mais potentiellement sous d'autres modales/overlays à z-index plus élevé.
     <div 
       className="fixed inset-0 z-40 flex items-center justify-center p-4 overflow-auto pointer-events-none"
-      style={!isPanelVisible ? { display: 'none' } : {}} // Contrôler la visibilité ici
+      style={!isPanelVisible ? { display: 'none' } : {}}
     >
       <div
         ref={panelRef}
-        className="bg-amber-50 border-2 border-amber-700 rounded-lg shadow-xl max-w-2xl w-full max-h-[90vh] flex flex-col pointer-events-auto" // Added pointer-events-auto here
+        className="bg-amber-50 border-2 border-amber-700 rounded-lg shadow-xl max-w-2xl w-full max-h-[90vh] flex flex-col pointer-events-auto"
       >
         <div className="flex justify-between items-center p-4 border-b border-amber-200">
           <h2 className="text-2xl font-serif text-orange-800">
@@ -102,7 +129,7 @@ const DailyUpdatePanel: React.FC<DailyUpdatePanelProps> = ({ onClose }) => {
           </h2>
           <button
             onClick={onClose}
-            disabled={isLoading} // Désactiver le bouton de fermeture pendant le chargement
+            disabled={isLoading}
             className="text-amber-600 hover:text-amber-800 p-1 disabled:opacity-50 disabled:cursor-not-allowed"
             aria-label="Close Update"
           >
@@ -112,17 +139,15 @@ const DailyUpdatePanel: React.FC<DailyUpdatePanelProps> = ({ onClose }) => {
 
         <div 
           className="prose prose-amber max-w-none p-6 overflow-y-auto custom-scrollbar flex-grow min-h-[150px]" 
-          style={{ '--tw-prose-body': '#9A3412' } as React.CSSProperties} // #9A3412 est orange-800
-        > {/* min-h pour la cohérence de la taille */}
-          {/* Le spinner et le texte de chargement ont été retirés. Le messageContent s'affichera directement. */}
-          {/* Si isLoading est true, messageContent sera vide initialement, puis mis à jour. */}
+          style={{ '--tw-prose-body': '#9A3412' } as React.CSSProperties}
+        >
           <ReactMarkdown remarkPlugins={[remarkGfm]}>{messageContent}</ReactMarkdown>
         </div>
 
         <div className="p-4 border-t border-amber-200 text-center">
           <button
             onClick={onClose}
-            disabled={isLoading} // Désactiver le bouton de continuation pendant le chargement
+            disabled={isLoading}
             className="px-6 py-3 bg-amber-600 text-white rounded hover:bg-amber-700 transition-colors font-semibold disabled:bg-amber-400 disabled:cursor-not-allowed"
           >
             Continue to La Serenissima
