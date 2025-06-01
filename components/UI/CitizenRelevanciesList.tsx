@@ -8,7 +8,13 @@ interface Relevancy {
   title: string;
   description: string;
   score: number;
-  // Add any other fields from the relevancy object that are used
+  asset?: string;
+  assetType?: string;
+  category?: string;
+  type?: string;
+  notes?: string;
+  createdAt?: string;
+  updatedAt?: string;
 }
 
 interface CitizenForFormatting {

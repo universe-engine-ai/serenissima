@@ -31,6 +31,14 @@ log = logging.getLogger("calculate_relevancies")
 # Load environment variables
 load_dotenv()
 
+# Try to import the vacant building relevancies module
+try:
+    from relevancies.calculateVacantBuildingRelevancies import main as calculate_vacant_building_relevancies
+    log.info("Successfully imported vacant building relevancies module")
+except ImportError:
+    log.warning("Could not import calculateVacantBuildingRelevancies module")
+    calculate_vacant_building_relevancies = None
+
 def initialize_airtable():
     """Initialize Airtable connection."""
     api_key = os.environ.get('AIRTABLE_API_KEY')
@@ -654,6 +662,25 @@ def calculate_relevancies(type_filter: Optional[str] = None) -> bool:
         
         details_text = "\n".join(details)
         
+        # Run vacant building relevancy calculations
+        vacant_building_relevancies_count = 0
+        if calculate_vacant_building_relevancies:
+            log.info("=== Calculating Vacant Building Relevancies ===")
+            try:
+                calculate_vacant_building_relevancies()
+                log.info("Successfully completed vacant building relevancy calculations")
+                vacant_building_relevancies_count = 1  # We don't have the exact count, but it ran
+                details.append("\nVacant Building Relevancies:")
+                details.append("- Successfully calculated vacant building relevancies for all eligible citizens")
+            except Exception as e:
+                log.error(f"Error calculating vacant building relevancies: {e}")
+                details.append("\nVacant Building Relevancies:")
+                details.append(f"- Error: {str(e)}")
+        else:
+            log.warning("Skipping vacant building relevancy calculations (module not available)")
+            details.append("\nVacant Building Relevancies:")
+            details.append("- Skipped (module not available)")
+
         # Create an admin notification with the results
         notification_created = create_admin_notification(
             tables,

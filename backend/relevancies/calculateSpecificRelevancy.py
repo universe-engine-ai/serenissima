@@ -30,6 +30,21 @@ log = logging.getLogger("calculate_specific_relevancy")
 # Load environment variables
 load_dotenv()
 
+# Try to import the vacant building relevancies module functions
+try:
+    from relevancies.calculateVacantBuildingRelevancies import (
+        get_vacant_buildings,
+        get_citizens,
+        calculate_vacant_building_relevancy,
+        create_or_update_relevancy,
+        VACANT_BUILDING_RELEVANCY_THRESHOLD
+    )
+    log.info("Successfully imported vacant building relevancies functions")
+    vacant_building_module_available = True
+except ImportError:
+    log.warning("Could not import calculateVacantBuildingRelevancies functions")
+    vacant_building_module_available = False
+
 # --- Airtable Initialization and Notification ---
 def initialize_airtable_table(table_name: str):
     """Initialize Airtable connection for a specific table."""
@@ -101,6 +116,43 @@ def create_admin_notification(notifications_table, title: str, message: str) -> 
         return False
 
 # --- Main Calculation Logic ---
+def calculate_vacant_building_relevancies_for_citizen(username: str) -> bool:
+    """Calculate vacant building relevancies for a specific citizen."""
+    if not vacant_building_module_available:
+        log.error("Vacant building module functions not available")
+        return False
+    
+    log.info(f"Calculating vacant building relevancies for citizen: {username}")
+    
+    # Get vacant buildings
+    vacant_buildings = get_vacant_buildings()
+    log.info(f"Found {len(vacant_buildings)} vacant business buildings")
+    
+    # Get the specific citizen
+    citizens = get_citizens()
+    target_citizen = None
+    for citizen in citizens:
+        if citizen.get("fields", {}).get("Username") == username:
+            target_citizen = citizen
+            break
+    
+    if not target_citizen:
+        log.error(f"Error: Citizen with username '{username}' not found")
+        return False
+    
+    # Calculate relevancies for each vacant building for this citizen
+    relevancy_count = 0
+    for building in vacant_buildings:
+        score = calculate_vacant_building_relevancy(building["fields"], target_citizen["fields"])
+        
+        # Only create relevancy if score is above threshold
+        if score >= VACANT_BUILDING_RELEVANCY_THRESHOLD:
+            create_or_update_relevancy(building, target_citizen["fields"], score)
+            relevancy_count += 1
+    
+    log.info(f"Created or updated {relevancy_count} vacant building relevancies for {username}")
+    return True
+
 def calculate_specific_relevancy(
     relevancy_type: str, 
     username: Optional[str] = None, 
@@ -111,6 +163,44 @@ def calculate_specific_relevancy(
     
     base_url = os.environ.get('NEXT_PUBLIC_BASE_URL', 'http://localhost:3000')
     log.info(f"Using base URL: {base_url}")
+
+    # Handle vacant building relevancies directly if that type is requested
+    if relevancy_type == "vacant_building":
+        if username:
+            success = calculate_vacant_building_relevancies_for_citizen(username)
+            if success:
+                create_admin_notification(
+                    notifications_table,
+                    "Vacant Building Relevancy Calculation Complete",
+                    f"Successfully calculated vacant building relevancies for citizen: {username}"
+                )
+                return True
+            else:
+                create_admin_notification(
+                    notifications_table,
+                    "Vacant Building Relevancy Calculation Failed",
+                    f"Failed to calculate vacant building relevancies for citizen: {username}"
+                )
+                return False
+        else:
+            # Run for all citizens
+            try:
+                from relevancies.calculateVacantBuildingRelevancies import main as calculate_all_vacant_building_relevancies
+                calculate_all_vacant_building_relevancies()
+                create_admin_notification(
+                    notifications_table,
+                    "Vacant Building Relevancy Calculation Complete",
+                    "Successfully calculated vacant building relevancies for all eligible citizens"
+                )
+                return True
+            except Exception as e:
+                log.error(f"Error calculating vacant building relevancies for all citizens: {e}")
+                create_admin_notification(
+                    notifications_table,
+                    "Vacant Building Relevancy Calculation Failed",
+                    f"Error: {str(e)}"
+                )
+                return False
 
     api_url = ""
     payload: Dict[str, any] = {}
@@ -534,12 +624,12 @@ if __name__ == "__main__":
     parser.add_argument(
         "--type", 
         required=True, 
-        choices=["proximity", "domination", "housing", "jobs", "building_ownership", "building_operator", "building_occupant", "same_land_neighbor", "guild_member"],
+        choices=["proximity", "domination", "housing", "jobs", "building_ownership", "building_operator", "building_occupant", "same_land_neighbor", "guild_member", "vacant_building"],
         help="The type of relevancy to calculate."
     )
     parser.add_argument(
         "--username", 
-        help="Username of the citizen (optional for proximity, domination, building_ownership, building_operator, and building_occupant). If not provided for these types, runs for all relevant citizens/owners."
+        help="Username of the citizen (optional for proximity, domination, building_ownership, building_operator, building_occupant, and vacant_building). If not provided for these types, runs for all relevant citizens/owners."
     )
     parser.add_argument(
         "--type_filter", 
