@@ -1,7 +1,7 @@
 {
   "project_name": "La Serenissima",
   "description": "Codebase map for La Serenissima, a blockchain-powered MMO city builder set in Renaissance Venice. This document helps in navigating and understanding the project's architecture.",
-  "last_updated": "2025-05-29",
+  "last_updated": "2025-06-01",
   "structure": {
     "frontend_app_types": {
       "path": "app/types/",
@@ -111,6 +111,33 @@
             ]
         }
       }
+    },
+    "api_endpoints": {
+      "path": "app/api/",
+      "description": "Next.js API routes that serve as the backend interface for the frontend application.",
+      "important_files": [
+        {"path": "app/api/actions/construct-building/route.ts", "role": "Handles building construction requests, validating building type definitions and resource requirements."},
+        {"path": "app/api/bridges/[buildingId]/orient/route.ts", "role": "Manages bridge orientation adjustments for specific building IDs."},
+        {"path": "app/api/building-data/[type]/route.ts", "role": "Retrieves detailed data for specific building types from JSON files in the data directory."},
+        {"path": "app/api/building-resources/[buildingId]/route.ts", "role": "Manages resources associated with specific buildings, extracting building IDs from requests."},
+        {"path": "app/api/building-types/route.ts", "role": "Provides a list of all available building types by scanning and loading JSON files from the data directory."},
+        {"path": "app/api/citizens/[username]/route.ts", "role": "Retrieves and manages citizen data for specific usernames, converting field names to camelCase."},
+        {"path": "app/api/citizens/[username]/transports/route.ts", "role": "Handles transport-related operations for specific citizens."},
+        {"path": "app/api/citizens/wallet/[walletAddress]/route.ts", "role": "Manages wallet operations for citizens, extracting wallet addresses from requests."},
+        {"path": "app/api/fetch-coat-of-arms/route.ts", "role": "Retrieves coat of arms images for citizens using a mapping file."},
+        {"path": "app/api/get-land-owners/route.ts", "role": "Provides information about land ownership, implementing HTTP caching with ETags."},
+        {"path": "app/api/get-public-builders/route.ts", "role": "Retrieves information about citizens who offer public building services."},
+        {"path": "app/api/guild-members/[guildId]/route.ts", "role": "Manages and retrieves members of specific guilds."},
+        {"path": "app/api/lands/route.ts", "role": "Handles land-related operations, fetching polygon data from the get-polygons API."},
+        {"path": "app/api/page.tsx", "role": "Renders the API reference documentation page."},
+        {"path": "app/api/resource-types/route.ts", "role": "Provides information about all available resource types by scanning and loading JSON files."},
+        {"path": "app/api/resources/counts/route.ts", "role": "Retrieves resource counts for specific owners, parsing building IDs and generating resource icons."},
+        {"path": "app/api/thoughts/route.ts", "role": "Manages citizen thoughts, extracting main thoughts from message content."},
+        {"path": "app/api/transaction/land/[landId]/route.ts", "role": "Handles land transaction operations for specific land IDs."},
+        {"path": "app/api/transactions/land-offers/[landId]/route.ts", "role": "Manages offers on specific land parcels."},
+        {"path": "app/api/transport/debug/route.ts", "role": "Provides debugging tools for the transport system, fetching bridge and dock data."},
+        {"path": "app/api/water-points/route.ts", "role": "Manages water points for the navigation system, ensuring data file existence."}
+      ]
     },
     "backend": {
       "path": "backend/",
@@ -253,7 +280,8 @@
           "important_files": [
             {"path": "lib/utils/eventBus.ts", "role": "Global event bus for decoupled communication between components or modules."},
             {"path": "lib/utils/resourceUtils.ts", "role": "Utility functions related to resource management or calculations."},
-            {"path": "lib/utils/problemUtils.ts", "role": "Utility functions for handling problem records, such as saving them to the database."}
+            {"path": "lib/utils/problemUtils.ts", "role": "Utility functions for handling problem records, such as saving them to the database."},
+            {"path": "lib/utils/airtableUtils.ts", "role": "Utility functions for interacting with Airtable, including saving land rents, fetching land rents, transferring COMPUTE tokens, and retrieving guild information."}
           ]
         }
       }
@@ -276,6 +304,48 @@
         "path": "AI-strategies/",
         "description": "Directory where AI citizens house their formulated strategic plans, decision trees, tactical responses to events, and long-term objectives, derived from their memories and persona.",
         "role": "Storage for AI's actionable plans, contingent strategies, and overarching goals guiding their behavior in La Serenissima."
+    },
+    "data_files": {
+      "path": "data/",
+      "description": "Static data files defining game entities, resources, and building types.",
+      "sub_directories": {
+        "buildings": {
+          "path": "data/buildings/",
+          "description": "JSON files defining building types, their properties, construction requirements, and production capabilities.",
+          "role": "Provides the blueprint definitions for all constructable buildings in the game."
+        },
+        "resources": {
+          "path": "data/resources/",
+          "description": "JSON files defining resource types, their properties, categories, and usage in production chains.",
+          "role": "Defines all resources that can be gathered, produced, traded, and consumed in the game economy."
+        },
+        "mappings": {
+          "path": "data/mappings/",
+          "description": "JSON files containing various mapping data, such as coat of arms mappings to citizens.",
+          "role": "Provides lookup tables and reference data for various game systems."
+        }
+      }
+    }
+  },
+  "architecture_overview": {
+    "frontend": {
+      "description": "Next.js-based React application with TypeScript, providing the user interface for players.",
+      "key_technologies": ["Next.js", "React", "TypeScript", "Three.js (for 3D rendering)"]
+    },
+    "backend": {
+      "description": "Combination of Next.js API routes for immediate requests and Python scripts for scheduled game engine processes.",
+      "key_technologies": ["Next.js API Routes", "Python", "Airtable (as database)"]
+    },
+    "ai_system": {
+      "description": "KinOS-based AI citizen system with memory management and strategic planning capabilities.",
+      "key_technologies": ["KinOS", "LLM Integration", "Memory Persistence"]
+    },
+    "blockchain_integration": {
+      "description": "Integration with Solana blockchain for $COMPUTE token management and transactions.",
+      "key_technologies": ["Solana", "Phantom Wallet", "Web3.js"]
+    },
+    "data_flow": {
+      "description": "Data flows from frontend user actions to API routes, which interact with Airtable. Scheduled Python scripts process game mechanics and update the database. AI citizens observe and act within this ecosystem through their KinOS implementation."
     }
   }
 }
