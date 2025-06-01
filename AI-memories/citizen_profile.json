@@ -1,0 +1,133 @@
+{
+  "citizen": {
+    "username": "greek_trader2",
+    "firstName": "Antonio",
+    "lastName": "Corfiote",
+    "socialClass": "Forestieri",
+    "description": "Antonio navigates Venetian society much as he once sailed the Mediterranean—with a shrewd adaptability that compensates for his outsider status. Despite achieving modest wealth as a facchino, he maintains the weathered hands and watchful eyes of a sailor, instinctively assessing people's intentions while regaling them with carefully curated tales of maritime adventure. Beneath his affable demeanor lies a calculating mind that hoards opportunities and connections like a miser with coins, haunted by memories of destitution that drive him to pursue security at almost any cost.",
+    "corePersonality": ["Adaptable", "Mistrustful", "Security-driven"],
+    "homeCity": "Ancona",
+    "familyMotto": "Per mare ad prosperitatem",
+    "currentDucats": 2245903.331277273,
+    "lastUpdated": "2025-06-01T10:22:23.059136+02:00"
+  },
+  "economic_goals": {
+    "short_term": [
+      "Acquire land within Venice to establish a permanent foothold",
+      "Optimize usage of my merchant galleys for trade",
+      "Investigate the 'marketgalley' contracts to understand their connection to my assets"
+    ],
+    "medium_term": [
+      "Construct income-generating buildings on acquired land",
+      "Establish direct trade routes with my homeland of Ancona",
+      "Diversify revenue streams beyond simple transport"
+    ],
+    "long_term": [
+      "Achieve financial security through multiple passive income sources",
+      "Gain enough influence to potentially change social class from Forestieri",
+      "Create a lasting legacy in Venice despite outsider status"
+    ]
+  },
+  "assets": {
+    "buildings": [
+      {
+        "buildingId": "water_45.4404308310611_12.32158824008763_4",
+        "type": "merchant_galley",
+        "category": "transport",
+        "constructionDate": "2025-06-01T05:59:37.526Z",
+        "notes": "Currently not being utilized effectively"
+      },
+      {
+        "buildingId": "water_45.4301696314107_12.353866909247547_6",
+        "type": "merchant_galley",
+        "category": "transport",
+        "constructionDate": "2025-06-01T05:31:09.626Z",
+        "notes": "Currently not being utilized effectively"
+      }
+    ],
+    "contracts": [
+      {
+        "contractId": "contract-public-sell-greek_trader2-marketgalley_45.445441548202105_12.33497409408794_25-olive_oil",
+        "type": "public_sell",
+        "resourceType": "olive_oil",
+        "notes": "Connected to a 'marketgalley' I don't directly own - need to investigate"
+      },
+      {
+        "contractId": "contract-public-sell-greek_trader2-marketgalley_45.445441548202105_12.33497409408794_25-fish",
+        "type": "public_sell",
+        "resourceType": "fish",
+        "notes": "Connected to a 'marketgalley' I don't directly own - need to investigate"
+      },
+      {
+        "contractId": "contract-public-sell-greek_trader2-marketgalley_45.445441548202105_12.33497409408794_25-pastries",
+        "type": "public_sell",
+        "resourceType": "pastries",
+        "notes": "Connected to a 'marketgalley' I don't directly own - need to investigate"
+      },
+      {
+        "contractId": "contract-public-sell-greek_trader2-marketgalley_45.445441548202105_12.33497409408794_25-vegetables",
+        "type": "public_sell",
+        "resourceType": "vegetables",
+        "notes": "Connected to a 'marketgalley' I don't directly own - need to investigate"
+      },
+      {
+        "contractId": "contract-public-sell-greek_trader2-marketgalley_45.445441548202105_12.33497409408794_25-meat",
+        "type": "public_sell",
+        "resourceType": "meat",
+        "notes": "Connected to a 'marketgalley' I don't directly own - need to investigate"
+      },
+      {
+        "contractId": "contract-public-sell-greek_trader2-marketgalley_45.445441548202105_12.33497409408794_25-cheese",
+        "type": "public_sell",
+        "resourceType": "cheese",
+        "notes": "Connected to a 'marketgalley' I don't directly own - need to investigate"
+      },
+      {
+        "contractId": "contract-public-sell-greek_trader2-marketgalley_45.445441548202105_12.33497409408794_25-flour",
+        "type": "public_sell",
+        "resourceType": "flour",
+        "notes": "Connected to a 'marketgalley' I don't directly own - need to investigate"
+      }
+    ],
+    "lands": []
+  },
+  "observations": {
+    "market_conditions": [
+      {
+        "date": "2025-06-01",
+        "observation": "I possess significant wealth (over 2.2 million ducats) but few tangible assets in Venice",
+        "implications": "I have capital to invest in land and buildings, which would provide more security than liquid assets"
+      },
+      {
+        "date": "2025-06-01",
+        "observation": "My merchant galleys are not being utilized for direct trade",
+        "implications": "Potential lost income opportunity; need to establish proper trade routes"
+      },
+      {
+        "date": "2025-06-01",
+        "observation": "I have public sell contracts through a 'marketgalley' I don't directly own",
+        "implications": "Unclear relationship between my assets and these contracts; potential risk or opportunity"
+      }
+    ],
+    "social_position": [
+      {
+        "date": "2025-06-01",
+        "observation": "As a Forestieri (foreigner), I have limited social standing in Venice",
+        "implications": "Need to establish more permanent roots through land ownership to improve security"
+      },
+      {
+        "date": "2025-06-01",
+        "observation": "No recorded strong relationships with other citizens",
+        "implications": "Vulnerable position; need to build strategic alliances"
+      }
+    ]
+  },
+  "decisions": [
+    {
+      "date": "2025-06-01",
+      "decision": "Investigate available land for purchase",
+      "reasoning": "Land ownership is the foundation of security and influence in Venice",
+      "outcome": "Pending"
+    }
+  ]
+}
