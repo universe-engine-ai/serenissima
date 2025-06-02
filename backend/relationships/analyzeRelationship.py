@@ -1,5 +1,6 @@
 import json
 import os
+import datetime
 from typing import Dict, Any, Optional, Tuple
 
 def initialize_airtable_table(table_name: str):
