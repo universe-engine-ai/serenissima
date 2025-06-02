@@ -192,5 +192,7 @@ export const EventTypes = {
   // Notification events
   NOTIFICATION_RECEIVED: 'notificationReceived',
   NOTIFICATION_READ: 'notificationRead',
-  NOTIFICATION_PROCESSED: 'notificationProcessed'
+  NOTIFICATION_PROCESSED: 'notificationProcessed',
+  NOTIFICATION_GROUPED: 'notificationGrouped',
+  NOTIFICATION_SUMMARY_UPDATED: 'notificationSummaryUpdated'
 };

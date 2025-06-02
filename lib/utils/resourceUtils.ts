@@ -241,26 +241,31 @@ export async function fetchResourceById(id: string): Promise<ResourceNode | null
   }
 }
 
+import { processNotification } from './notificationUtils';
+
 /**
  * Process resource-related notifications
  * @param notification The notification object to process
  * @returns Processed notification with any additional resource data
  */
 export function processResourceNotification(notification: any): any {
-  // Clone the notification to avoid modifying the original
-  const processedNotification = { ...notification };
+  // First apply general notification processing
+  const processedNotification = processNotification(notification);
   
-  // Add processing logic based on notification type
+  // Then add resource-specific processing
   if (notification.type === 'RESOURCE_TRANSACTION' || 
       notification.type === 'RESOURCE_PRODUCTION' ||
       notification.type === 'RESOURCE_STORAGE') {
     
-    // Add timestamp for sorting if not present
-    if (!processedNotification.timestamp) {
-      processedNotification.timestamp = new Date().toISOString();
-    }
+    processedNotification.category = 'resource';
     
-    // Add any additional processing specific to resource notifications
+    // Extract resource details if available
+    if (notification.resourceId) {
+      processedNotification.resourceData = {
+        id: notification.resourceId,
+        // Add other resource-specific data here
+      };
+    }
     
     console.log(`Processed resource notification: ${notification.type}`);
   }

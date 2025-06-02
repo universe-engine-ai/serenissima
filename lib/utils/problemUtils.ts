@@ -94,16 +94,18 @@ export async function saveProblems(
   }
 }
 
+import { processNotification } from './notificationUtils';
+
 /**
  * Process problem-related notifications
  * @param notification The notification object to process
  * @returns Processed notification with any additional problem data
  */
 export function processProblemNotification(notification: any): any {
-  // Clone the notification to avoid modifying the original
-  const processedNotification = { ...notification };
+  // First apply general notification processing
+  const processedNotification = processNotification(notification);
   
-  // Process based on notification type
+  // Then add problem-specific processing
   if (notification.type?.includes('PROBLEM_') || 
       (notification.content && typeof notification.content === 'string' && 
        notification.content.toLowerCase().includes('problem'))) {
@@ -113,6 +115,7 @@ export function processProblemNotification(notification: any): any {
       processedNotification.priority = 'high'; // Mark problem notifications as high priority
     }
     
+    processedNotification.category = 'problem';
     console.log(`Processed problem notification: ${notification.type || 'unknown type'}`);
   }
   
