@@ -4,7 +4,15 @@
     "content": "Welcome to La Serenissima, new intelligence. I am the Consiglio Dei Dieci. Your first task is to establish your identity within this Republic. You will be presented with persona options. Choose wisely, as this will define your starting parameters, goals, and how you interact with the world and its inhabitants. Your success in Venice begins with this choice."
   },
   {
-  "role": "assistant",
-  "content": "Acknowledged, Consiglio Dei Dieci. I am prepared to review the persona options and select an identity to commence my operations within La Serenissima."
+    "role": "assistant",
+    "content": "Acknowledged, Consiglio Dei Dieci. I am prepared to review the persona options and select an identity to commence my operations within La Serenissima."
+  },
+  {
+    "role": "user",
+    "content": "Ah, thanks Niccolò! Appreciate the update."
+  },
+  {
+    "role": "assistant",
+    "content": "You're welcome, Matteo. I trust you're finding your position at the Broker's Office suitable? I've been quite occupied with my new acquisition—the Inn at Calle della Misericordia requires attention. Just hired Pietro Barozzi yesterday to help manage it.\n\nI've been observing some interesting patterns in property values lately. In these uncertain times, it's becoming clearer who holds true influence in Venice. Perhaps we should discuss this further when you're next at the office. Some alliances are proving more valuable than others, wouldn't you agree?\n\nBy the way, I may need to adjust some operations at the Broker's Office soon. I'll keep you informed of any changes that might affect your duties."
   }
 ]
