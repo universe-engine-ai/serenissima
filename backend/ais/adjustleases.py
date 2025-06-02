@@ -116,7 +116,7 @@ def get_kinos_api_key() -> str:
         sys.exit(1)
     return api_key
 
-def prepare_lease_analysis_data(ai_citizen: Dict, citizen_lands: List[Dict], citizen_buildings: List[Dict], buildings_on_lands: List[Dict]) -> Dict:
+def prepare_lease_analysis_data(tables, ai_citizen: Dict, citizen_lands: List[Dict], citizen_buildings: List[Dict], buildings_on_lands: List[Dict]) -> Dict:
     """Prepare a comprehensive data package for the AI to analyze lease situations."""
     
     # Extract citizen information
@@ -622,7 +622,7 @@ def process_ai_lease_adjustments(dry_run: bool = False):
         buildings_on_lands = get_all_buildings_on_lands(tables, land_ids)
         
         # Prepare the data package for the AI
-        data_package = prepare_lease_analysis_data(ai_citizen, citizen_lands, citizen_buildings, buildings_on_lands)
+        data_package = prepare_lease_analysis_data(tables, ai_citizen, citizen_lands, citizen_buildings, buildings_on_lands)
         
         # Send the lease adjustment request to the AI
         if not dry_run:
