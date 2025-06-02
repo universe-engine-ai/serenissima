@@ -29,10 +29,30 @@ def initialize_airtable():
         "citizens": Table(airtable_api_key, airtable_base_id, "CITIZENS"),
         "lands": Table(airtable_api_key, airtable_base_id, "LANDS"),
         "buildings": Table(airtable_api_key, airtable_base_id, "BUILDINGS"),
-        "notifications": Table(airtable_api_key, airtable_base_id, "NOTIFICATIONS")
+        "notifications": Table(airtable_api_key, airtable_base_id, "NOTIFICATIONS"),
+        "relationships": Table(airtable_api_key, airtable_base_id, "RELATIONSHIPS")
     }
     
     return tables
+
+def get_relationship(tables, citizen1: str, citizen2: str) -> Optional[Dict]:
+    """Get relationship data between two citizens."""
+    try:
+        # Try both directions of the relationship
+        formula1 = f"AND({{Citizen1}}='{citizen1}', {{Citizen2}}='{citizen2}')"
+        formula2 = f"AND({{Citizen1}}='{citizen2}', {{Citizen2}}='{citizen1}')"
+        
+        # Combine the formulas with OR
+        formula = f"OR({formula1}, {formula2})"
+        
+        relationships = tables["relationships"].all(formula=formula)
+        
+        if relationships:
+            return relationships[0]
+        return None
+    except Exception as e:
+        print(f"Error getting relationship between {citizen1} and {citizen2}: {str(e)}")
+        return None
 
 def get_ai_citizens(tables) -> List[Dict]:
     """Get all citizens that are marked as AI, are in Venice, and have appropriate social class."""
@@ -102,6 +122,8 @@ def prepare_lease_analysis_data(ai_citizen: Dict, citizen_lands: List[Dict], cit
     # Extract citizen information
     username = ai_citizen["fields"].get("Username", "")
     ducats = ai_citizen["fields"].get("Ducats", 0)
+    social_class = ai_citizen["fields"].get("SocialClass", "")
+    influence = ai_citizen["fields"].get("Influence", 0)
     
     # Process lands data
     lands_data = []
@@ -127,13 +149,16 @@ def prepare_lease_analysis_data(ai_citizen: Dict, citizen_lands: List[Dict], cit
             "lease_price": building["fields"].get("LeasePrice", 0),
             "income": building["fields"].get("Income", 0),
             "maintenance_cost": building["fields"].get("MaintenanceCost", 0),
-            "owner": building["fields"].get("Owner", "")
+            "owner": building["fields"].get("Owner", ""),
+            "variant": building["fields"].get("Variant", "standard")
         }
         buildings_data.append(building_info)
     
     # Process buildings on AI's lands (potentially owned by others)
     buildings_on_ai_lands = []
+    building_owners = set()
     for building in buildings_on_lands:
+        building_owner = building["fields"].get("Owner", "")
         building_info = {
             "id": building["fields"].get("BuildingId", ""),
             "type": building["fields"].get("Type", ""),
@@ -141,9 +166,12 @@ def prepare_lease_analysis_data(ai_citizen: Dict, citizen_lands: List[Dict], cit
             "lease_price": building["fields"].get("LeasePrice", 0),
             "income": building["fields"].get("Income", 0),
             "maintenance_cost": building["fields"].get("MaintenanceCost", 0),
-            "owner": building["fields"].get("Owner", "")
+            "owner": building_owner,
+            "variant": building["fields"].get("Variant", "standard")
         }
         buildings_on_ai_lands.append(building_info)
+        if building_owner and building_owner != username:
+            building_owners.add(building_owner)
     
     # Calculate financial metrics
     total_income = sum(building["fields"].get("Income", 0) for building in citizen_buildings)
@@ -153,11 +181,31 @@ def prepare_lease_analysis_data(ai_citizen: Dict, citizen_lands: List[Dict], cit
                               if building["fields"].get("Owner", "") != username)
     net_income = total_income - total_maintenance - total_lease_paid + total_lease_received
     
+    # Get relationship data for building owners
+    relationships_data = []
+    try:
+        for owner in building_owners:
+            # Try to find relationship records between the AI and this building owner
+            relationship = find_relationship(tables, username, owner)
+            if relationship:
+                relationships_data.append({
+                    "citizen1": relationship["fields"].get("Citizen1", ""),
+                    "citizen2": relationship["fields"].get("Citizen2", ""),
+                    "trust_score": relationship["fields"].get("TrustScore", 0),
+                    "strength_score": relationship["fields"].get("StrengthScore", 0),
+                    "title": relationship["fields"].get("Title", ""),
+                    "description": relationship["fields"].get("Description", "")
+                })
+    except Exception as e:
+        print(f"Error getting relationship data: {str(e)}")
+    
     # Prepare the complete data package
     data_package = {
         "citizen": {
             "username": username,
             "ducats": ducats,
+            "social_class": social_class,
+            "influence": influence,
             "total_lands": len(lands_data),
             "total_buildings": len(buildings_data),
             "financial": {
@@ -171,10 +219,19 @@ def prepare_lease_analysis_data(ai_citizen: Dict, citizen_lands: List[Dict], cit
         "lands": lands_data,
         "buildings": buildings_data,
         "buildings_on_lands": buildings_on_ai_lands,
+        "relationships": relationships_data,
         "timestamp": datetime.now().isoformat()
     }
     
     return data_package
+
+def find_relationship(tables, citizen1: str, citizen2: str) -> Optional[Dict]:
+    """Find relationship data between two citizens."""
+    try:
+        return get_relationship(tables, citizen1, citizen2)
+    except Exception as e:
+        print(f"Error finding relationship between {citizen1} and {citizen2}: {str(e)}")
+        return None
 
 def send_lease_adjustment_request(ai_username: str, data_package: Dict) -> Optional[Dict]:
     """Send the lease adjustment request to the AI via Kinos API."""
@@ -254,6 +311,13 @@ When developing your lease adjustment strategy:
 4. For buildings on your own lands, you may want to set lower lease amounts to maximize your overall profit
 5. Create a specific, actionable plan with building IDs and new lease amounts
 6. Provide brief reasons for each adjustment
+
+Additional strategic considerations:
+- Buildings in premium districts (San Marco, San Polo) can command higher lease prices
+- Buildings with water access are more valuable and can justify higher leases
+- Consider your relationships with other citizens - adjust leases more favorably for allies
+- For buildings owned by citizens with whom you have a low trust score, consider more aggressive pricing
+- Balance short-term income with long-term relationship building
 
 Your decision should be specific, data-driven, and focused on maximizing your income while maintaining fair relationships with other landowners.
 
@@ -526,6 +590,14 @@ def process_ai_lease_adjustments(dry_run: bool = False):
     if not ai_citizens:
         print("No AI citizens with lands that have buildings owned by others, exiting")
         return
+    
+    # Sort AI citizens by net income (descending) to prioritize wealthier citizens
+    # This ensures that citizens with more financial resources make their adjustments first
+    ai_citizens.sort(
+        key=lambda c: c["fields"].get("Ducats", 0), 
+        reverse=True
+    )
+    print(f"Sorted {len(ai_citizens)} AI citizens by ducats (descending)")
     
     # Track lease adjustments for each AI
     ai_lease_adjustments = {}
