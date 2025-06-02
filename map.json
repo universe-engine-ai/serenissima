@@ -241,7 +241,9 @@
           "path": "lib/utils/",
           "description": "General utility functions.",
           "important_files": [
+            {"path": "lib/utils/caseUtils.ts", "role": "Utility functions for case conversion, such as PascalCase to camelCase."},
             {"path": "lib/utils/eventBus.ts", "role": "Global event bus for decoupled communication between components or modules."},
+            {"path": "lib/utils/notificationUtils.ts", "role": "Utility functions for processing and organizing notifications."},
             {"path": "lib/utils/resourceUtils.ts", "role": "Utility functions related to resource management or calculations."},
             {"path": "lib/utils/problemUtils.ts", "role": "Utility functions for handling problem records, such as saving them to the database."}
           ]
