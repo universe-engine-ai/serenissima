@@ -9,6 +9,7 @@ interface CitizenNode extends NodeObject {
   lastName?: string;
   img?: HTMLImageElement;
   imageUrl?: string | null; // Changed from coatOfArmsImageUrl to imageUrl
+  socialClass?: string;
 }
 
 interface RelationshipLink extends LinkObject {
@@ -16,6 +17,13 @@ interface RelationshipLink extends LinkObject {
   target: string; // username of target citizen
   strengthScore: number;
   trustScore: number;
+}
+
+interface RelationshipEvaluation {
+  title: string;
+  description: string;
+  strength?: number;
+  trust?: number;
 }
 
 interface RelationshipGraphProps {
@@ -31,6 +39,10 @@ const RelationshipGraph: React.FC<RelationshipGraphProps> = ({ nodes, links, wid
   const [processedNodes, setProcessedNodes] = useState<CitizenNode[]>([]);
   const [minTrust, setMinTrust] = useState<number>(0);
   const [maxTrust, setMaxTrust] = useState<number>(100);
+  const [selectedNode1, setSelectedNode1] = useState<CitizenNode | null>(null);
+  const [selectedNode2, setSelectedNode2] = useState<CitizenNode | null>(null);
+  const [relationshipEvaluation, setRelationshipEvaluation] = useState<RelationshipEvaluation | null>(null);
+  const [isEvaluating, setIsEvaluating] = useState<boolean>(false);
 
   useEffect(() => {
     if (links && links.length > 0) {
@@ -160,7 +172,65 @@ const RelationshipGraph: React.FC<RelationshipGraphProps> = ({ nodes, links, wid
   };
 
   const getNodeLabel = (node: CitizenNode) => {
-    return `${node.firstName || ''} ${node.lastName || ''} (${node.username})`;
+    return `${node.firstName || ''} ${node.lastName || ''} (${node.username})${node.socialClass ? ` - ${node.socialClass}` : ''}`;
+  };
+  
+  const evaluateRelationship = async () => {
+    if (!selectedNode1 || !selectedNode2) return;
+    
+    setIsEvaluating(true);
+    try {
+      const response = await fetch('/api/relationships/evaluate', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          citizen1: selectedNode1.username,
+          citizen2: selectedNode2.username
+        }),
+      });
+      
+      if (!response.ok) {
+        throw new Error('Failed to evaluate relationship');
+      }
+      
+      const data = await response.json();
+      setRelationshipEvaluation(data.relationship);
+    } catch (error) {
+      console.error('Error evaluating relationship:', error);
+      setRelationshipEvaluation({
+        title: "Evaluation Failed",
+        description: "Unable to evaluate this relationship. Please try again later."
+      });
+    } finally {
+      setIsEvaluating(false);
+    }
+  };
+  
+  // Handle node selection for relationship evaluation
+  const handleNodeSelect = (node: CitizenNode) => {
+    if (!selectedNode1) {
+      setSelectedNode1(node);
+    } else if (!selectedNode2 || selectedNode1.id === node.id) {
+      setSelectedNode2(node);
+      // If both nodes are now selected, automatically evaluate
+      if (selectedNode1 && node.id !== selectedNode1.id) {
+        setTimeout(() => evaluateRelationship(), 100);
+      }
+    } else {
+      // Reset and start new selection
+      setSelectedNode1(node);
+      setSelectedNode2(null);
+      setRelationshipEvaluation(null);
+    }
+  };
+  
+  // Clear selections
+  const clearSelections = () => {
+    setSelectedNode1(null);
+    setSelectedNode2(null);
+    setRelationshipEvaluation(null);
   };
   
   useEffect(() => {
@@ -187,13 +257,15 @@ const RelationshipGraph: React.FC<RelationshipGraphProps> = ({ nodes, links, wid
 
 
   return (
-    <ForceGraph2D
-      ref={fgRef}
-      graphData={{ nodes: processedNodes, links }}
-      width={width}
-      height={height}
-      nodeLabel={getNodeLabel}
-      nodeVal={24} // Consistent with visual size for physics calculations
+    <div className="flex flex-col w-full h-full">
+      <div className="relative" style={{ height: height - (relationshipEvaluation ? 150 : 0) }}>
+        <ForceGraph2D
+          ref={fgRef}
+          graphData={{ nodes: processedNodes, links }}
+          width={width}
+          height={height - (relationshipEvaluation ? 150 : 0)}
+          nodeLabel={getNodeLabel}
+          nodeVal={24} // Consistent with visual size for physics calculations
       nodeCanvasObject={(node, ctx, globalScale) => {
         const size = 24; // Visual size of the node
         const fontSize = 10 / globalScale; // Adjust font size based on zoom
@@ -252,22 +324,94 @@ const RelationshipGraph: React.FC<RelationshipGraphProps> = ({ nodes, links, wid
       enablePointerInteraction={true}
       minZoom={0.5}
       maxZoom={5}
-      onNodeClick={(node, event) => {
-        if (onNodeClick && node) {
-          // The node object from react-force-graph might have extra properties (x, y, vx, vy, index).
-          // We only care about the CitizenNode properties.
-          const citizenNode: CitizenNode = {
-            id: node.id as string, // id is typically string or number, ensure it's string
-            username: (node as CitizenNode).username,
-            firstName: (node as CitizenNode).firstName,
-            lastName: (node as CitizenNode).lastName,
-            imageUrl: (node as CitizenNode).imageUrl,
-            // img is an HTMLImageElement, not needed for the click handler logic itself
-          };
-          onNodeClick(citizenNode);
-        }
-      }}
-    />
+          onNodeClick={(node, event) => {
+            const citizenNode: CitizenNode = {
+              id: node.id as string,
+              username: (node as CitizenNode).username,
+              firstName: (node as CitizenNode).firstName,
+              lastName: (node as CitizenNode).lastName,
+              imageUrl: (node as CitizenNode).imageUrl,
+              socialClass: (node as CitizenNode).socialClass,
+            };
+            
+            // Handle internal node selection for relationship evaluation
+            handleNodeSelect(citizenNode);
+            
+            // Also call the external onNodeClick if provided
+            if (onNodeClick) {
+              onNodeClick(citizenNode);
+            }
+          }}
+        />
+        
+        {/* Selection indicators */}
+        <div className="absolute top-2 left-2 flex flex-col gap-2 bg-white/80 p-2 rounded-md shadow-sm">
+          <div className="text-sm font-medium">Select two citizens to evaluate their relationship</div>
+          <div className="flex gap-2 items-center">
+            <div className="w-3 h-3 rounded-full bg-blue-500"></div>
+            <span className="text-sm">
+              {selectedNode1 ? `${selectedNode1.firstName} ${selectedNode1.lastName}` : 'Select first citizen'}
+            </span>
+          </div>
+          <div className="flex gap-2 items-center">
+            <div className="w-3 h-3 rounded-full bg-green-500"></div>
+            <span className="text-sm">
+              {selectedNode2 ? `${selectedNode2.firstName} ${selectedNode2.lastName}` : 'Select second citizen'}
+            </span>
+          </div>
+          {selectedNode1 && (
+            <button 
+              onClick={clearSelections}
+              className="text-xs text-blue-600 hover:text-blue-800"
+            >
+              Clear selection
+            </button>
+          )}
+        </div>
+      </div>
+      
+      {/* Relationship evaluation display */}
+      {relationshipEvaluation && (
+        <div className="mt-4 p-4 bg-amber-50 border border-amber-200 rounded-md animate-fadeIn relationship-card">
+          <div className="flex justify-between items-start">
+            <h3 className="text-lg font-semibold text-amber-900">{relationshipEvaluation.title}</h3>
+            <button 
+              onClick={() => setRelationshipEvaluation(null)}
+              className="text-amber-700 hover:text-amber-900"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+              </svg>
+            </button>
+          </div>
+          <p className="text-amber-800 mt-2">{relationshipEvaluation.description}</p>
+          <div className="mt-3 text-xs text-amber-700">
+            Between {selectedNode1?.firstName} {selectedNode1?.lastName} and {selectedNode2?.firstName} {selectedNode2?.lastName}
+          </div>
+          {relationshipEvaluation.strength !== undefined && relationshipEvaluation.trust !== undefined && (
+            <div className="mt-2 flex gap-4">
+              <div className="text-xs">
+                <span className="font-medium">Strength:</span> {relationshipEvaluation.strength}
+              </div>
+              <div className="text-xs">
+                <span className="font-medium">Trust:</span> {relationshipEvaluation.trust}
+              </div>
+            </div>
+          )}
+        </div>
+      )}
+      
+      {isEvaluating && (
+        <div className="mt-4 p-4 bg-gray-50 border border-gray-200 rounded-md flex items-center justify-center">
+          <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-amber-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+            <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+            <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+          </svg>
+          <span>Evaluating relationship...</span>
+        </div>
+      )}
+    </div>
   );
 };
 
