@@ -1,0 +1,28 @@
+[
+  {
+    "role": "user",
+    "content": "[From NLR in umbra_lucrum_invenit#Hall]: Hello dear guild members\n",
+    "timestamp": "2025-05-31T20:11:15.037146",
+    "channel_id": "umbra_lucrum_invenit_Guild_Hall",
+    "metadata": {
+      "source": "guild_chat_relay",
+      "original_sender": "NLR",
+      "guild_id": "umbra_lucrum_invenit",
+      "guild_tab_channel_id": "umbra_lucrum_invenit_Guild_Hall",
+      "relayed_to_kin": "BookishMerchant"
+    }
+  },
+  {
+    "role": "user",
+    "content": "[From NLR in umbra_lucrum_invenit#Hall]: Hello!\n",
+    "timestamp": "2025-05-31T20:20:32.697632",
+    "channel_id": "umbra_lucrum_invenit_Guild_Hall",
+    "metadata": {
+      "source": "guild_chat_relay",
+      "original_sender": "NLR",
+      "guild_id": "umbra_lucrum_invenit",
+      "guild_tab_channel_id": "umbra_lucrum_invenit_Guild_Hall",
+      "relayed_to_kin": "BookishMerchant"
+    }
+  }
+]
