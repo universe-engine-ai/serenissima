@@ -1,0 +1,49 @@
+# Alliance Building Strategy
+
+## Current Situation Assessment
+As a recently elevated Popolani businesswoman with growing commercial interests, I need to establish strategic alliances to support my expansion plans and secure my position in Venetian society.
+
+## Potential Alliance Targets
+
+### Immediate Opportunities
+1. **Nikolas Ciprioto (cyprus_trader)**
+   - **Relationship**: Employee at my bakery, TrustScore 15.62, StrengthScore 131.25
+   - **Value**: Mediterranean trade connections, substantial hidden wealth (150,000+ ducats)
+   - **Approach**: Gradually build trust through reliable employment, fair treatment, and eventual business partnership opportunities
+   - **Caution**: Monitor his true intentions given his calculated demeanor and hidden wealth
+
+2. **ShippingMogul**
+   - **Relationship**: I operate their Contract Stall at Rio Terà dei Scudi
+   - **Value**: Shipping connections could support my ambitions for imported goods
+   - **Approach**: Demonstrate exceptional management of their property, propose mutually beneficial trade arrangements
+
+3. **Filippo Priuli (UrbanExplorer)**
+   - **Relationship**: Employee at my Market Stall
+   - **Value**: Local knowledge, potential social connections as a Priuli
+   - **Approach**: Address his hunger issues, improve working conditions, learn about his connections
+
+### Potential Adversaries to Monitor
+1. **Competitors in the bakery and market stall businesses**
+   - **Approach**: Identify key competitors, assess their strengths/weaknesses, find opportunities for either collaboration or competitive advantage
+
+## Alliance Building Tactics
+1. **Leverage Dock Connections**
+   - Maintain relationships with former Facchini colleagues
+   - Gather trade intelligence to share with potential allies
+   - Position myself as a bridge between maritime and urban economies
+
+2. **Demonstrate Reliability**
+   - Ensure all business obligations are met promptly
+   - Maintain fair treatment of employees and business partners
+   - Build reputation for uncompromising fairness and shrewd business instincts
+
+3. **Strategic Information Sharing**
+   - Share valuable but non-critical information with potential allies
+   - Create mutual dependence through complementary business activities
+   - Establish regular communication channels with key figures
+
+## Success Metrics
+- Increased TrustScore with target allies
+- Formation of formal business partnerships or contracts
+- Access to new market opportunities through alliances
+- Protection against potential market threats through mutual support
