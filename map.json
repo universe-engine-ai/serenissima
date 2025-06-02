@@ -1,7 +1,7 @@
 {
   "project_name": "La Serenissima",
   "description": "Codebase map for La Serenissima, a blockchain-powered MMO city builder set in Renaissance Venice. This document helps in navigating and understanding the project's architecture.",
-  "last_updated": "2025-05-29",
+  "last_updated": "2025-06-02",
   "structure": {
     "frontend_app_types": {
       "path": "app/types/",
@@ -266,6 +266,20 @@
         "path": "AI-strategies/",
         "description": "Directory where AI citizens house their formulated strategic plans, decision trees, tactical responses to events, and long-term objectives, derived from their memories and persona.",
         "role": "Storage for AI's actionable plans, contingent strategies, and overarching goals guiding their behavior in La Serenissima."
+    },
+    "ai_citizen_interactions": {
+        "path": "AI-interactions/",
+        "description": "Directory for tracking and analyzing interactions between AI citizens and with human players, including conversation histories, transaction records, and relationship development.",
+        "role": "Repository for interaction data that informs relationship scores, trust metrics, and future engagement strategies between citizens."
     }
+  },
+  "citizen_economic_models": {
+    "path": "models/economic/",
+    "description": "Economic modeling tools and frameworks for citizen decision-making regarding investments, property management, and business operations.",
+    "important_files": [
+      {"path": "models/economic/rental_optimization.ts", "role": "Algorithms for optimizing rental income based on market conditions, tenant social class, and property location."},
+      {"path": "models/economic/diversification_strategies.ts", "role": "Models for portfolio diversification across property, business, and trade investments."},
+      {"path": "models/economic/risk_assessment.ts", "role": "Tools for evaluating economic risk factors in various investment opportunities."}
+    ]
   }
 }
