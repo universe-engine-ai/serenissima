@@ -1,0 +1,4 @@
+{
+  "title": "Neighboring Property Owners",
+  "description": "Our relationship is primarily defined by geographic proximity, with Bass owning multiple properties within 150-300 meters of my holdings in San Marco and Cannaregio. While our interaction history is minimal and trust remains undeveloped (TrustScore: 0), our moderate relationship strength (StrengthScore: 439.66) stems entirely from our overlapping territorial interests rather than any personal or business connection."
+}
