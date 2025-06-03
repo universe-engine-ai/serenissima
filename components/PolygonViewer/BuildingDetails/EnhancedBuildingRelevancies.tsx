@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import InfoIcon from '../../UI/InfoIcon'; // Adjusted path
+import { FaLightbulb, FaExclamationTriangle, FaInfoCircle, FaChartLine } from 'react-icons/fa';
 
 interface Relevancy {
   id: string;
@@ -23,16 +24,19 @@ interface EnhancedBuildingRelevanciesProps {
   buildingId: string | null;
   citizenUsername: string | null;
   showStrategicInsights?: boolean;
+  className?: string;
 }
 
 const EnhancedBuildingRelevancies: React.FC<EnhancedBuildingRelevanciesProps> = ({
   buildingId,
   citizenUsername,
-  showStrategicInsights = true
+  showStrategicInsights = true,
+  className = ''
 }) => {
   const [relevancies, setRelevancies] = useState<Relevancy[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
+  const [isExpanded, setIsExpanded] = useState<boolean>(true);
 
   useEffect(() => {
     const fetchRelevancies = async () => {
@@ -79,6 +83,20 @@ const EnhancedBuildingRelevancies: React.FC<EnhancedBuildingRelevanciesProps> = 
     return "bg-gray-100 border-gray-300 text-gray-800";
   };
 
+  // Helper function to get category icon
+  const getCategoryIcon = (category?: string) => {
+    switch(category?.toLowerCase()) {
+      case 'opportunity':
+        return <FaLightbulb className="text-amber-500" />;
+      case 'threat':
+        return <FaExclamationTriangle className="text-red-500" />;
+      case 'economic':
+        return <FaChartLine className="text-emerald-500" />;
+      default:
+        return <FaInfoCircle className="text-blue-500" />;
+    }
+  };
+
   // Helper function to get strategic insights based on relevancy type
   const getStrategicInsight = (relevancy: Relevancy): string => {
     if (!showStrategicInsights) return '';
@@ -114,8 +132,8 @@ const EnhancedBuildingRelevancies: React.FC<EnhancedBuildingRelevanciesProps> = 
     let modifier = 0;
     
     // Category modifiers
-    if (relevancy.category === "opportunity") modifier += 2;
-    if (relevancy.category === "threat") modifier += 1;
+    if (relevancy.category?.toLowerCase() === "opportunity") modifier += 2;
+    if (relevancy.category?.toLowerCase() === "threat") modifier += 1;
     
     // Type modifiers
     if (relevancy.type?.includes("economic")) modifier += 2;
@@ -139,16 +157,16 @@ const EnhancedBuildingRelevancies: React.FC<EnhancedBuildingRelevanciesProps> = 
   };
 
   if (loading) {
-    return <div className="p-4 text-center text-gray-500">Loading relevancies...</div>;
+    return <div className={`p-4 text-center text-gray-500 ${className}`}>Loading relevancies...</div>;
   }
 
   if (error) {
-    return <div className="p-4 text-center text-red-500">Error: {error}</div>;
+    return <div className={`p-4 text-center text-red-500 ${className}`}>Error: {error}</div>;
   }
 
   if (relevancies.length === 0) {
     return (
-      <div className="p-4 text-center text-gray-500">
+      <div className={`p-4 text-center text-gray-500 ${className}`}>
         No strategic relevancies found for this building.
       </div>
     );
@@ -158,62 +176,87 @@ const EnhancedBuildingRelevancies: React.FC<EnhancedBuildingRelevanciesProps> = 
   const sortedRelevancies = [...relevancies].sort((a, b) => b.score - a.score);
 
   return (
-    <div className="space-y-3">
-      <div className="flex items-center justify-between">
-        <h3 className="text-lg font-semibold text-amber-800">Strategic Relevancies</h3>
-        <InfoIcon 
-          tooltipText="These are opportunities and strategic considerations relevant to you regarding this building." 
-        />
+    <div className={`bg-amber-50 border border-amber-200 rounded-lg overflow-hidden ${className}`}>
+      <div 
+        className="flex items-center justify-between p-3 bg-amber-100 cursor-pointer"
+        onClick={() => setIsExpanded(!isExpanded)}
+      >
+        <h3 className="text-lg font-semibold text-amber-800">Strategic Patterns ({relevancies.length})</h3>
+        <div className="flex items-center">
+          <InfoIcon 
+            tooltipText="These are opportunities and strategic considerations relevant to you regarding this building." 
+          />
+          <span className="ml-2">
+            {isExpanded ? (
+              <svg className="w-5 h-5 text-amber-700" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 15l7-7 7 7" />
+              </svg>
+            ) : (
+              <svg className="w-5 h-5 text-amber-700" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+              </svg>
+            )}
+          </span>
+        </div>
       </div>
       
-      {sortedRelevancies.map((relevancy) => (
-        <div 
-          key={relevancy.id || relevancy.relevancyId} 
-          className={`p-3 border rounded-lg ${getPriorityColorClasses(relevancy.score)}`}
-        >
-          <div className="flex justify-between items-start">
-            <h4 className="font-medium">{relevancy.title}</h4>
-            <span className="px-2 py-1 text-xs rounded-full bg-white bg-opacity-50">
-              {getPriorityLabel(relevancy.score)} ({relevancy.score})
-            </span>
-          </div>
-          
-          <p className="mt-1 text-sm">{relevancy.description}</p>
-          
-          {showStrategicInsights && (
-            <div className="mt-2 text-sm italic border-t pt-2 border-opacity-30 border-current">
-              <span className="font-medium">Strategic Insight:</span> {getStrategicInsight(relevancy)}
+      {isExpanded && (
+        <div className="p-3 space-y-3 max-h-[400px] overflow-y-auto custom-scrollbar">
+          {sortedRelevancies.map((relevancy) => (
+            <div 
+              key={relevancy.id || relevancy.relevancyId} 
+              className={`p-3 border rounded-lg ${getPriorityColorClasses(relevancy.score)}`}
+            >
+              <div className="flex justify-between items-start">
+                <div className="flex items-start">
+                  <div className="mr-2 mt-1">
+                    {getCategoryIcon(relevancy.category)}
+                  </div>
+                  <h4 className="font-medium">{relevancy.title}</h4>
+                </div>
+                <span className="px-2 py-1 text-xs rounded-full bg-white bg-opacity-50">
+                  {getPriorityLabel(relevancy.score)} ({relevancy.score})
+                </span>
+              </div>
+              
+              <p className="mt-1 text-sm">{relevancy.description}</p>
+              
+              {showStrategicInsights && (
+                <div className="mt-2 text-sm italic border-t pt-2 border-opacity-30 border-current">
+                  <span className="font-medium">Strategic Insight:</span> {getStrategicInsight(relevancy)}
+                </div>
+              )}
+              
+              <div className="mt-2 flex justify-between">
+                <span className="text-xs font-semibold text-amber-700">
+                  Strategic Value: {calculateStrategicValue(relevancy)}/10
+                </span>
+                <span className="text-xs font-medium text-emerald-700">
+                  Economic Impact: {determineEconomicImpact(relevancy)}
+                </span>
+              </div>
+              
+              {relevancy.notes && (
+                <div className="mt-2 text-xs border-t pt-2 border-opacity-30 border-current">
+                  <span className="font-medium">Notes:</span> {relevancy.notes}
+                </div>
+              )}
+              
+              {relevancy.timeHorizon && (
+                <div className="mt-1 text-xs">
+                  <span className="font-medium">Time Horizon:</span> {relevancy.timeHorizon}
+                </div>
+              )}
+              
+              {relevancy.createdAt && (
+                <div className="mt-1 text-xs opacity-75">
+                  Identified: {new Date(relevancy.createdAt).toLocaleDateString()}
+                </div>
+              )}
             </div>
-          )}
-          
-          <div className="mt-2 flex justify-between">
-            <span className="text-xs font-semibold text-amber-700">
-              Strategic Value: {calculateStrategicValue(relevancy)}/10
-            </span>
-            <span className="text-xs font-medium text-emerald-700">
-              Economic Impact: {determineEconomicImpact(relevancy)}
-            </span>
-          </div>
-          
-          {relevancy.notes && (
-            <div className="mt-2 text-xs border-t pt-2 border-opacity-30 border-current">
-              <span className="font-medium">Notes:</span> {relevancy.notes}
-            </div>
-          )}
-          
-          {relevancy.timeHorizon && (
-            <div className="mt-1 text-xs">
-              <span className="font-medium">Time Horizon:</span> {relevancy.timeHorizon}
-            </div>
-          )}
-          
-          {relevancy.createdAt && (
-            <div className="mt-1 text-xs opacity-75">
-              Identified: {new Date(relevancy.createdAt).toLocaleDateString()}
-            </div>
-          )}
+          ))}
         </div>
-      ))}
+      )}
     </div>
   );
 };

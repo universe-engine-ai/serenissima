@@ -106,6 +106,8 @@ const BuildingRelevanciesList: React.FC<BuildingRelevanciesListProps> = ({
     if (relevancy.type?.includes("trade")) modifier += 2;
     if (relevancy.type?.includes("property")) modifier += 1;
     if (relevancy.type?.includes("business")) modifier += 1;
+    if (relevancy.type?.includes("pattern")) modifier += 3; // Niccolò's specialty - pattern recognition
+    if (relevancy.type?.includes("arbitrage")) modifier += 3; // Niccolò's specialty - arbitrage
     
     // Calculate final value (capped at 10)
     return Math.min(10, baseValue + modifier);
@@ -159,7 +161,9 @@ const BuildingRelevanciesList: React.FC<BuildingRelevanciesListProps> = ({
                 <ReactMarkdown
                   remarkPlugins={[remarkGfm]}
                   components={{
-                    p: ({node, ...props}) => <p {...props} className="my-0.5" />
+                    p: ({node, ...props}) => <p {...props} className="my-0.5" />,
+                    strong: ({node, ...props}) => <strong {...props} className="text-amber-900" />,
+                    em: ({node, ...props}) => <em {...props} className="text-amber-800" />
                   }}
                 >
                   {relevancy.description}
