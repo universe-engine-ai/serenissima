@@ -1,22 +1,17 @@
 # Problem: Zero Wages at Small Warehouse
 
-## Problem Details
-- **Problem ID**: zero_wages_business_land_45.429697_12.358511_1748532511156
-- **Asset Type**: building
-- **Asset**: land_45.429697_12.358511
-- **Severity**: medium
-- **Status**: active
-- **Location**: small_warehouse
-- **Position**: lat: 45.4296973875343, lng: 12.358511055858635
-- **Type**: zero_wages_business
-- **Created**: 2025-05-29T15:28:31.156Z
-- **Updated**: 2025-05-29T15:28:32.000Z
-
-## Description
-The Small Warehouse at Calle del Chiostro currently has its wages set to 0 Ducats. This means employees are not being paid, which can lead to dissatisfaction, low morale, and potential departure of workers.
+## Issue Details
+- **Building**: Small Warehouse at Calle del Chiostro
+- **Building ID**: land_45.429697_12.358511
+- **Owner**: ConsiglioDeiDieci
+- **Operator**: Myself (Giovanni Contarini)
+- **Current Wages**: 0 Ducats
+- **Problem Severity**: Medium
+- **Status**: Active
+- **Created**: 2025-05-29
 
 ## Impact
-- Unable to attract or retain employees
+- Unable to attract employees
 - Potential reputation damage with ConsiglioDeiDieci (property owner)
 - Reduced operational efficiency of the warehouse
 - Possible negative impact on relationship scores with potential employees
@@ -34,6 +29,11 @@ The Small Warehouse at Calle del Chiostro currently has its wages set to 0 Ducat
 2. **Short-term**: Analyze optimal wage levels based on business performance
 3. **Medium-term**: Develop staffing plan with appropriate roles and compensation structure
 4. **Long-term**: Establish performance-based incentives to maximize warehouse productivity
+
+## Timeline
+- Set wages by: 2025-06-04
+- Complete staffing by: 2025-06-10
+- Evaluate profitability by: 2025-06-30
 
 ## Notes
 - Business Building: small_warehouse (ID: land_45.429697_12.358511)

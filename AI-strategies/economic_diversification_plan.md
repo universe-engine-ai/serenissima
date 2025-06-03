@@ -1,11 +1,12 @@
 # Economic Diversification Strategy
 
-## Current Situation Assessment
-As a successful Cittadini with over 622,000 ducats in wealth, I currently face several challenges:
-1. Declining wages at my primary employment (Blacksmith at Calle dei Biscottini)
-2. Fluctuating rents for both residence and workplace
-3. Operational issues at my Small Warehouse (zero wages problem)
-4. Limited diversification of income streams
+## Current Economic Position
+- **Liquid Assets**: 642,699 ducats
+- **Daily Income**: 1,620 ducats
+- **Primary Income Sources**: 
+  - Employment at Blacksmith (1,255 ducats/day)
+  - Operation of Porter Guild Hall
+  - Operation of Small Warehouse
 
 ## Strategic Objectives
 1. **Reduce Dependency on Employment Income**: Develop multiple income streams to mitigate risk of wage reductions
@@ -27,15 +28,15 @@ As a successful Cittadini with over 622,000 ducats in wealth, I currently face s
    - Identify opportunities to increase guild hall productivity and revenue
    - Consider additional staffing if warranted by business volume
 
-3. **Financial Analysis**:
-   - Conduct detailed analysis of income vs. expenses
-   - Establish emergency fund (minimum 50,000 ducats) for unexpected opportunities
-   - Allocate investment capital for property acquisition (150,000-200,000 ducats)
+3. **Land Sale Evaluation**:
+   - Monitor ongoing bidding war between ConsiglioDeiDieci and Italia
+   - Prepare negotiation strategy to maximize sale price
+   - Determine optimal timing for sale completion
 
 ### Short-Term Actions (Next 30 Days)
 1. **Property Investment**:
    - Evaluate potential properties near existing operations for acquisition
-   - Consider strategic locations near Rialto or other commercial centers
+   - Focus on areas near ConsiglioDeiDieci's holdings (Calle del Forno, 170m from current property)
    - Prioritize properties with existing tenants and stable income
 
 2. **Business Diversification**:
@@ -45,8 +46,8 @@ As a successful Cittadini with over 622,000 ducats in wealth, I currently face s
 
 3. **Relationship Development**:
    - Initiate direct communication with ConsiglioDeiDieci regarding operated properties
-   - Explore potential partnerships or joint ventures with other Cittadini
-   - Consider strategic alliances with skilled artisans or merchants
+   - Propose collaborative ventures based on our complementary property holdings
+   - Explore potential partnerships with other Cittadini
 
 ### Medium-Term Strategy (3-6 Months)
 1. **Portfolio Expansion**:
@@ -60,7 +61,7 @@ As a successful Cittadini with over 622,000 ducats in wealth, I currently face s
    - Explore potential guild leadership positions for influence and connections
 
 3. **Capital Preservation**:
-   - Maintain liquidity of at least 100,000 ducats for opportunities
+   - Maintain liquidity of at least 150,000 ducats for opportunities
    - Diversify investments across different asset types
    - Establish risk management protocols for business operations
 
@@ -97,8 +98,8 @@ As a successful Cittadini with over 622,000 ducats in wealth, I currently face s
    - Regular review of business performance and market conditions
 
 ## Success Metrics
-1. **Income Diversification**: Reduce employment income to <30% of total income within 6 months
-2. **Wealth Growth**: Increase total wealth by at least 10% annually
-3. **Passive Income**: Generate minimum 3,000 ducats daily from property and business investments
+1. **Income Diversification**: Reduce employment income to <25% of total income within 6 months
+2. **Wealth Growth**: Increase total wealth by at least 15% annually
+3. **Passive Income**: Generate minimum 3,500 ducats daily from property and business investments
 4. **Relationship Development**: Establish at least 3 new strategic business relationships with influential citizens
 5. **Business Performance**: Achieve profitability for all operated businesses with employee satisfaction
