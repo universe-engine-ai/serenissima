@@ -122,12 +122,60 @@ const CitizenRelevanciesList: React.FC<CitizenRelevanciesListProps> = ({
     return "Low";
   };
 
-  // Helper function to get color classes based on score
-  const getScoreColorClasses = (score: number): string => {
-    if (score >= 80) return "bg-red-200 text-red-800";
-    if (score >= 60) return "bg-teal-200 text-teal-800";
-    if (score >= 40) return "bg-lime-200 text-lime-800";
-    return "bg-gray-200 text-gray-800";
+  // Helper function to get color classes based on score and category
+  const getScoreColorClasses = (score: number, category?: string): string => {
+    // Base colors by score
+    let baseClasses = "";
+    if (score >= 80) baseClasses = "bg-red-200 text-red-800";
+    else if (score >= 60) baseClasses = "bg-teal-200 text-teal-800";
+    else if (score >= 40) baseClasses = "bg-lime-200 text-lime-800";
+    else baseClasses = "bg-gray-200 text-gray-800";
+    
+    // Override based on category if present
+    if (category) {
+      switch(category.toLowerCase()) {
+        case 'opportunity':
+          return "bg-emerald-200 text-emerald-800";
+        case 'threat':
+          return "bg-red-200 text-red-800";
+        case 'proximity':
+          return "bg-blue-200 text-blue-800";
+        case 'affiliation':
+          return "bg-purple-200 text-purple-800";
+        case 'ownership_conflict':
+          return "bg-amber-200 text-amber-800";
+        case 'occupancy_relations':
+          return "bg-indigo-200 text-indigo-800";
+        default:
+          return baseClasses;
+      }
+    }
+    
+    return baseClasses;
+  };
+  
+  // Helper function to get icon for relevancy category
+  const getCategoryIcon = (category?: string, type?: string): string => {
+    if (!category) return "📌"; // Default
+    
+    switch(category.toLowerCase()) {
+      case 'opportunity':
+        return "💰";
+      case 'threat':
+        return "⚠️";
+      case 'proximity':
+        return type?.includes('connected') ? "🔗" : "📍";
+      case 'affiliation':
+        return "🤝";
+      case 'ownership_conflict':
+        return "⚖️";
+      case 'occupancy_relations':
+        return "🏠";
+      case 'domination':
+        return "👑";
+      default:
+        return "📌";
+    }
   };
 
   return (
@@ -147,10 +195,11 @@ const CitizenRelevanciesList: React.FC<CitizenRelevanciesListProps> = ({
             <div key={relevancy.relevancyId || index} className="bg-amber-100 rounded-lg p-3 text-sm">
               <div className="flex items-start justify-between mb-1">
                 <div className="font-medium text-amber-800 flex-1 pr-2">
+                  <span className="mr-1">{getCategoryIcon(relevancy.category, relevancy.type)}</span>
                   {formatRelevancyText(relevancy.title, citizen)}
                 </div>
                 <div className="text-center">
-                  <div className={`px-3 py-1 rounded-full text-xl font-bold ${getScoreColorClasses(relevancy.score)}`}>
+                  <div className={`px-3 py-1 rounded-full text-xl font-bold ${getScoreColorClasses(relevancy.score, relevancy.category)}`}>
                     {Math.round(relevancy.score)}
                   </div>
                   <p className="text-xs text-amber-600 mt-1">{getPriorityLabel(relevancy.score)}</p>
@@ -169,7 +218,15 @@ const CitizenRelevanciesList: React.FC<CitizenRelevanciesListProps> = ({
               {(relevancy.category || relevancy.type || relevancy.timeHorizon) && (
                 <div className="mt-2 flex flex-wrap gap-1.5">
                   {relevancy.category && (
-                    <span className="inline-block px-1.5 py-0.5 bg-amber-50 text-amber-700 rounded text-[10px] border border-amber-200">
+                    <span className={`inline-block px-1.5 py-0.5 rounded text-[10px] border ${
+                      relevancy.category.toLowerCase() === 'opportunity' ? 'bg-emerald-50 text-emerald-700 border-emerald-200' :
+                      relevancy.category.toLowerCase() === 'threat' ? 'bg-red-50 text-red-700 border-red-200' :
+                      relevancy.category.toLowerCase() === 'proximity' ? 'bg-blue-50 text-blue-700 border-blue-200' :
+                      relevancy.category.toLowerCase() === 'affiliation' ? 'bg-purple-50 text-purple-700 border-purple-200' :
+                      relevancy.category.toLowerCase() === 'ownership_conflict' ? 'bg-amber-50 text-amber-700 border-amber-200' :
+                      relevancy.category.toLowerCase() === 'occupancy_relations' ? 'bg-indigo-50 text-indigo-700 border-indigo-200' :
+                      'bg-amber-50 text-amber-700 border-amber-200'
+                    }`}>
                       {relevancy.category}
                     </span>
                   )}
@@ -179,10 +236,22 @@ const CitizenRelevanciesList: React.FC<CitizenRelevanciesListProps> = ({
                     </span>
                   )}
                   {relevancy.timeHorizon && (
-                    <span className="inline-block px-1.5 py-0.5 bg-amber-50 text-amber-700 rounded text-[10px] border border-amber-200">
+                    <span className={`inline-block px-1.5 py-0.5 rounded text-[10px] border ${
+                      relevancy.timeHorizon === 'immediate' ? 'bg-red-50 text-red-700 border-red-200' :
+                      relevancy.timeHorizon === 'short' ? 'bg-orange-50 text-orange-700 border-orange-200' :
+                      relevancy.timeHorizon === 'medium' ? 'bg-amber-50 text-amber-700 border-amber-200' :
+                      relevancy.timeHorizon === 'long' ? 'bg-green-50 text-green-700 border-green-200' :
+                      relevancy.timeHorizon === 'ongoing' ? 'bg-blue-50 text-blue-700 border-blue-200' :
+                      'bg-amber-50 text-amber-700 border-amber-200'
+                    }`}>
                       {relevancy.timeHorizon}
                     </span>
                   )}
+                </div>
+              )}
+              {relevancy.notes && (
+                <div className="mt-2 text-xs italic text-amber-600 border-t border-amber-200 pt-1">
+                  {formatRelevancyText(relevancy.notes, citizen)}
                 </div>
               )}
             </div>

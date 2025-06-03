@@ -984,7 +984,27 @@ export class RelevancyService {
           continue; // Relationship not fully defined or no conflict
         }
 
-        const score = 75; // Base score for these relationships
+        // Calculate score based on building type and relationship context
+        let score = 75; // Base score for these relationships
+        
+        // Adjust score based on building category and type
+        if (buildingCategory === 'business') {
+          // Business relationships are more strategically important
+          score += 5;
+          
+          // Certain business types are more valuable for networking
+          if (['market_stall', 'merceria', 'weighing_station', 'customs_house'].includes(building.type)) {
+            score += 10; // Commercial hubs provide better opportunities
+          }
+        } else if (buildingCategory === 'home') {
+          // Housing relationships can be more personal
+          if (['palazzo', 'canal_house'].includes(building.type)) {
+            score += 10; // High-end housing indicates influential connections
+          }
+        }
+        
+        // Cap score at 100
+        score = Math.min(100, score);
         const status = this.determineStatus(score);
 
         // Case 1: citizenUsername is the RunBy (Employer/Landlord)
@@ -994,7 +1014,7 @@ export class RelevancyService {
               score, asset: building.id, assetType: 'building', category: 'occupancy_relations', type: 'employer_to_employee',
               distance: 0, closestLandId: building.landId || '', isConnected: false, connectivityBonus: 0,
               title: `"${buildingOccupant}" works at your ${buildingDisplayName}.`,
-              description: `**${buildingOccupant}** works at your **${buildingDisplayName}**.`,
+              description: `**${buildingOccupant}** works at your **${buildingDisplayName}**. This employment relationship provides opportunities for mentorship and potential business expansion through a trusted worker.`,
               timeHorizon: 'ongoing', status, targetCitizen: buildingOccupant, relevantToCitizen: citizenUsername
             });
           } else if (buildingCategory === 'home') {
@@ -1002,7 +1022,7 @@ export class RelevancyService {
               score, asset: building.id, assetType: 'building', category: 'occupancy_relations', type: 'landlord_to_renter',
               distance: 0, closestLandId: building.landId || '', isConnected: false, connectivityBonus: 0,
               title: `"${buildingOccupant}" rents your ${buildingDisplayName}.`,
-              description: `**${buildingOccupant}** is renting your **${buildingDisplayName}**.`,
+              description: `**${buildingOccupant}** is renting your **${buildingDisplayName}**. This rental relationship provides steady income and potential social connections within your property network.`,
               timeHorizon: 'ongoing', status, targetCitizen: buildingOccupant, relevantToCitizen: citizenUsername
             });
           }
@@ -1014,7 +1034,7 @@ export class RelevancyService {
               score, asset: building.id, assetType: 'building', category: 'occupancy_relations', type: 'employee_to_employer',
               distance: 0, closestLandId: building.landId || '', isConnected: false, connectivityBonus: 0,
               title: `You work for "${buildingRunBy}" at their ${buildingDisplayName}.`,
-              description: `You are employed at the **${buildingDisplayName}** run by **${buildingRunBy}**.`,
+              description: `You are employed at the **${buildingDisplayName}** run by **${buildingRunBy}**. This employment provides income stability and opportunities to learn business operations from an established operator.`,
               timeHorizon: 'ongoing', status, targetCitizen: buildingRunBy, relevantToCitizen: citizenUsername
             });
           } else if (buildingCategory === 'home') {
@@ -1022,7 +1042,7 @@ export class RelevancyService {
               score, asset: building.id, assetType: 'building', category: 'occupancy_relations', type: 'renter_to_landlord',
               distance: 0, closestLandId: building.landId || '', isConnected: false, connectivityBonus: 0,
               title: `You rent the ${buildingDisplayName} from "${buildingRunBy}".`,
-              description: `You are renting a **${buildingDisplayName}** from **${buildingRunBy}**.`,
+              description: `You are renting a **${buildingDisplayName}** from **${buildingRunBy}**. This housing arrangement provides stability and potential networking opportunities with your landlord and neighbors.`,
               timeHorizon: 'ongoing', status, targetCitizen: buildingRunBy, relevantToCitizen: citizenUsername
             });
           }
@@ -1260,6 +1280,131 @@ export class RelevancyService {
       console.error(`[RelevancyService] Error calculating 'guild_member' relevancy:`, error);
       return [];
     }
+  }
+
+  /**
+   * Calculate market opportunity relevancies based on resource price trends
+   * Identifies potential arbitrage opportunities in the market
+   */
+  public async calculateMarketOpportunityRelevancy(
+    citizenUsername: string
+  ): Promise<RelevancyScore[]> {
+    const createdRelevancies: RelevancyScore[] = [];
+    try {
+      const baseUrl = typeof window !== 'undefined' 
+        ? window.location.origin 
+        : process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000';
+      
+      console.log(`[RelevancyService] Calculating market opportunity relevancies for ${citizenUsername}`);
+      
+      // Fetch active public sell contracts to analyze market prices
+      const contractsResponse = await fetch(`${baseUrl}/api/contracts?Type=public_sell&Status=active`);
+      if (!contractsResponse.ok) {
+        console.error(`[RelevancyService] Failed to fetch contracts: ${contractsResponse.status}`);
+        return [];
+      }
+      
+      const contractsData = await contractsResponse.json();
+      const contracts = contractsData.contracts || [];
+      
+      // Group contracts by resource type to analyze price variations
+      const resourcePriceMap: Record<string, {min: number, max: number, avg: number, contracts: any[]}> = {};
+      
+      contracts.forEach((contract: any) => {
+        const resourceType = contract.resourceType;
+        if (!resourceType) return;
+        
+        if (!resourcePriceMap[resourceType]) {
+          resourcePriceMap[resourceType] = {
+            min: Infinity,
+            max: 0,
+            avg: 0,
+            contracts: []
+          };
+        }
+        
+        const price = contract.pricePerResource;
+        if (typeof price === 'number' && price > 0) {
+          resourcePriceMap[resourceType].min = Math.min(resourcePriceMap[resourceType].min, price);
+          resourcePriceMap[resourceType].max = Math.max(resourcePriceMap[resourceType].max, price);
+          resourcePriceMap[resourceType].contracts.push(contract);
+        }
+      });
+      
+      // Calculate averages and identify arbitrage opportunities
+      Object.entries(resourcePriceMap).forEach(([resourceType, data]) => {
+        if (data.contracts.length < 2) return; // Need at least 2 contracts to compare
+        
+        const sum = data.contracts.reduce((acc, contract) => acc + contract.pricePerResource, 0);
+        data.avg = sum / data.contracts.length;
+        
+        // Calculate price spread as percentage
+        const priceSpread = ((data.max - data.min) / data.min) * 100;
+        
+        // Only create relevancy if there's a significant price difference (>15%)
+        if (priceSpread > 15) {
+          // Calculate score based on price spread
+          let score = 50 + Math.min(priceSpread, 50); // Base 50 + up to 50 more based on spread
+          score = Math.min(100, score); // Cap at 100
+          
+          const lowestPriceContract = data.contracts.reduce((lowest, current) => 
+            current.pricePerResource < lowest.pricePerResource ? current : lowest, data.contracts[0]);
+          
+          const highestPriceContract = data.contracts.reduce((highest, current) => 
+            current.pricePerResource > highest.pricePerResource ? current : highest, data.contracts[0]);
+          
+          const potentialProfit = (highestPriceContract.pricePerResource - lowestPriceContract.pricePerResource).toFixed(2);
+          const spreadPercentage = priceSpread.toFixed(1);
+          
+          const title = `Market Arbitrage: ${this.formatResourceName(resourceType)} (${spreadPercentage}% spread)`;
+          const description = `There's a significant price variation for **${this.formatResourceName(resourceType)}** in the market.\n\n` +
+                             `Lowest price: **${lowestPriceContract.pricePerResource.toFixed(2)} ducats** (Seller: ${lowestPriceContract.seller || 'Unknown'})\n` +
+                             `Highest price: **${highestPriceContract.pricePerResource.toFixed(2)} ducats** (Seller: ${highestPriceContract.seller || 'Unknown'})\n\n` +
+                             `Potential profit per unit: **${potentialProfit} ducats**\n\n` +
+                             `This price difference presents an arbitrage opportunity for a merchant with sufficient capital and storage capacity.`;
+          
+          createdRelevancies.push({
+            score: parseFloat(score.toFixed(2)),
+            asset: resourceType,
+            assetType: 'resource',
+            category: 'opportunity',
+            type: 'market_arbitrage',
+            distance: 0, // Not applicable
+            closestLandId: '', // Not applicable
+            isConnected: false,
+            connectivityBonus: 0,
+            title,
+            description,
+            timeHorizon: 'short', // Arbitrage opportunities are typically short-term
+            status: this.determineStatus(score),
+            relevantToCitizen: citizenUsername
+          });
+        }
+      });
+      
+      console.log(`[RelevancyService] Generated ${createdRelevancies.length} market opportunity relevancies for ${citizenUsername}`);
+      return createdRelevancies;
+    } catch (error) {
+      console.error(`[RelevancyService] Error calculating market opportunity relevancies for ${citizenUsername}:`, error);
+      return [];
+    }
+  }
+  
+  /**
+   * Format resource name for display
+   */
+  private formatResourceName(resourceType: string): string {
+    if (!resourceType) return 'Unknown Resource';
+    
+    // Replace underscores and hyphens with spaces
+    let formatted = resourceType.replace(/[_-]/g, ' ');
+    
+    // Capitalize each word
+    formatted = formatted.split(' ')
+      .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(' ');
+    
+    return formatted;
   }
 }
 

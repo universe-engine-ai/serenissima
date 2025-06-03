@@ -494,6 +494,75 @@ def calculate_specific_relevancy(
             log.info("Requesting guild member relevancy (global for all guilds).")
         request_timeout = 120 # Might take time if many guilds/members
         # API response will indicate success/failure and count of guilds processed.
+    
+    elif relevancy_type == "market_opportunity":
+        api_url = f"{base_url}/api/relevancies/market-opportunity"
+        if username:
+            payload = {"Citizen": username}
+            log.info(f"Requesting market opportunity relevancy for user: {username}")
+        else:
+            log.info("Requesting market opportunity relevancy for all citizens.")
+            # For "all citizens", we'll need to process each citizen individually
+            citizens_table = initialize_airtable_table('CITIZENS')
+            all_citizens_records = citizens_table.all(fields=['Username'])
+            all_citizen_usernames = [r['fields']['Username'] for r in all_citizens_records if 'Username' in r['fields']]
+            
+            if not all_citizen_usernames:
+                create_admin_notification(notifications_table, "Market Opportunity Relevancy Error", "Failed to fetch citizens.")
+                return False
+            
+            log.info(f"Found {len(all_citizen_usernames)} citizens to process for market opportunity relevancies.")
+            
+            for citizen_username in all_citizen_usernames:
+                import time
+                time.sleep(1)
+                log.info(f"Processing market opportunity relevancy for: {citizen_username}")
+                current_payload = {"Citizen": citizen_username}
+                
+                try:
+                    response = requests.post(api_url, json=current_payload, timeout=60)
+                    if not response.ok:
+                        log.error(f"API call failed for {citizen_username} (market_opportunity) with status {response.status_code}: {response.text}")
+                        multi_user_results.append(f"- {citizen_username}: Error - {response.status_code}")
+                        continue
+                    
+                    data = response.json()
+                    if not data.get('success'):
+                        log.error(f"API returned error for {citizen_username} (market_opportunity): {data.get('error')}")
+                        multi_user_results.append(f"- {citizen_username}: API Error - {data.get('error')}")
+                        continue
+                    
+                    relevancies_created_count = data.get('relevanciesSavedCount', 0)
+                    multi_user_results.append(f"- {citizen_username}: {relevancies_created_count} market opportunity relevancies created.")
+                except Exception as e:
+                    log.error(f"Unexpected error for {citizen_username} (market_opportunity): {e}")
+                    multi_user_results.append(f"- {citizen_username}: Unexpected Error - {e}")
+            
+            summary_title = "Market Opportunity Relevancy Complete (All Citizens)"
+            summary_message = "Market opportunity relevancy calculation process finished for all citizens.\n\nResults:\n" + "\n".join(multi_user_results)
+            create_admin_notification(notifications_table, summary_title, summary_message)
+            log.info("Finished processing market opportunity relevancies for all citizens.")
+            return True
+            
+    elif relevancy_type == "resource_scarcity":
+        api_url = f"{base_url}/api/relevancies/resource-scarcity"
+        payload = {} # Global calculation by default
+        if username:
+            payload["Citizen"] = username
+            log.info(f"Requesting resource scarcity relevancy for user: {username}")
+        else:
+            log.info("Requesting resource scarcity relevancy (global analysis).")
+        request_timeout = 120 # Might take time to analyze all resources
+        
+    elif relevancy_type == "trade_route":
+        api_url = f"{base_url}/api/relevancies/trade-route"
+        if username:
+            payload = {"Citizen": username}
+            log.info(f"Requesting trade route relevancy for user: {username}")
+        else:
+            log.info("Requesting trade route relevancy for all merchants.")
+            payload = {"MerchantOnly": True} # Only process citizens who are merchants
+        request_timeout = 120 # Might take time to analyze trade routes
         
     else:
         log.error(f"Unknown relevancy type: {relevancy_type}")
@@ -624,16 +693,26 @@ if __name__ == "__main__":
     parser.add_argument(
         "--type", 
         required=True, 
-        choices=["proximity", "domination", "housing", "jobs", "building_ownership", "building_operator", "building_occupant", "same_land_neighbor", "guild_member", "vacant_building"],
+        choices=[
+            "proximity", "domination", "housing", "jobs", 
+            "building_ownership", "building_operator", "building_occupant", 
+            "same_land_neighbor", "guild_member", "vacant_building",
+            "market_opportunity", "resource_scarcity", "trade_route"
+        ],
         help="The type of relevancy to calculate."
     )
     parser.add_argument(
         "--username", 
-        help="Username of the citizen (optional for proximity, domination, building_ownership, building_operator, building_occupant, and vacant_building). If not provided for these types, runs for all relevant citizens/owners."
+        help="Username of the citizen (optional for most types). If not provided, runs for all relevant citizens/owners."
     )
     parser.add_argument(
         "--type_filter", 
         help="Type filter for proximity relevancy (e.g., 'connected', 'geographic')."
+    )
+    parser.add_argument(
+        "--threshold",
+        type=float,
+        help="Minimum score threshold for relevancies (e.g., 50.0). Relevancies below this score won't be saved."
     )
     
     args = parser.parse_args()

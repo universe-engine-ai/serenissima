@@ -282,6 +282,185 @@ def calculate_job_market_relevancies(base_url: str) -> Dict:
             "success": False,
             "error": str(e)
         }
+}
+
+def calculate_same_land_neighbor_relevancies(base_url: str) -> Dict:
+    """Calculate same land neighbor relevancies for all citizens."""
+    try:
+        log.info("Calculating same land neighbor relevancies")
+        
+        # Use the same-land-neighbor endpoint
+        api_url = f"{base_url}/api/relevancies/same-land-neighbor"
+        log.info(f"Calling API: {api_url}")
+        
+        # Make a POST request to the endpoint
+        response = requests.post(
+            api_url,
+            json={},  # Empty payload for global calculation
+            timeout=180  # Longer timeout as this might process many lands
+        )
+        
+        log.info(f"Same Land Neighbor API response status: {response.status_code}")
+        
+        if not response.ok:
+            log.error(f"Same Land Neighbor API call failed with status {response.status_code}: {response.text}")
+            return {
+                "success": False,
+                "error": f"API error: {response.status_code} - {response.text}"
+            }
+        
+        # Parse the response
+        data = response.json()
+        
+        # Log a summary of the response
+        log.info(f"Same Land Neighbor API response: success={data.get('success')}, relevanciesSavedCount={data.get('relevanciesSavedCount', 0)}")
+        
+        if not data.get('success'):
+            log.error(f"Same Land Neighbor API returned error: {data.get('error')}")
+            return {
+                "success": False,
+                "error": data.get('error', 'Unknown error')
+            }
+        
+        # Return the results
+        return {
+            "success": True,
+            "relevanciesSavedCount": data.get('relevanciesSavedCount', 0),
+            "saved": data.get('saved', False)
+        }
+    except Exception as e:
+        log.error(f"Error calculating same land neighbor relevancies: {e}")
+        log.error(traceback.format_exc())
+        return {
+            "success": False,
+            "error": str(e)
+        }
+}
+
+def calculate_guild_member_relevancies(base_url: str) -> Dict:
+    """Calculate guild member relevancies for all citizens."""
+    try:
+        log.info("Calculating guild member relevancies")
+        
+        # Use the guild-member endpoint
+        api_url = f"{base_url}/api/relevancies/guild-member"
+        log.info(f"Calling API: {api_url}")
+        
+        # Make a POST request to the endpoint
+        response = requests.post(
+            api_url,
+            json={},  # Empty payload for global calculation
+            timeout=120
+        )
+        
+        log.info(f"Guild Member API response status: {response.status_code}")
+        
+        if not response.ok:
+            log.error(f"Guild Member API call failed with status {response.status_code}: {response.text}")
+            return {
+                "success": False,
+                "error": f"API error: {response.status_code} - {response.text}"
+            }
+        
+        # Parse the response
+        data = response.json()
+        
+        # Log a summary of the response
+        log.info(f"Guild Member API response: success={data.get('success')}, relevanciesSavedCount={data.get('relevanciesSavedCount', 0)}")
+        
+        if not data.get('success'):
+            log.error(f"Guild Member API returned error: {data.get('error')}")
+            return {
+                "success": False,
+                "error": data.get('error', 'Unknown error')
+            }
+        
+        # Return the results
+        return {
+            "success": True,
+            "relevanciesSavedCount": data.get('relevanciesSavedCount', 0),
+            "saved": data.get('saved', False)
+        }
+    except Exception as e:
+        log.error(f"Error calculating guild member relevancies: {e}")
+        log.error(traceback.format_exc())
+        return {
+            "success": False,
+            "error": str(e)
+        }
+}
+
+def calculate_market_opportunity_relevancies(base_url: str) -> Dict:
+    """Calculate market opportunity relevancies for all citizens."""
+    try:
+        log.info("Calculating market opportunity relevancies")
+        
+        # Use the market-opportunity endpoint
+        api_url = f"{base_url}/api/relevancies/market-opportunity"
+        log.info(f"Calling API: {api_url}")
+        
+        # Get all citizens from the database
+        tables = initialize_airtable()
+        if not tables or 'citizens' not in tables:
+            log.error("Failed to initialize citizens table. Aborting market opportunity relevancy calculation.")
+            return {
+                "success": False,
+                "error": "Failed to initialize citizens table"
+            }
+        
+        all_citizens = tables['citizens'].all(fields=["Username"])
+        citizen_usernames = [citizen['fields'].get('Username') for citizen in all_citizens if 'Username' in citizen['fields']]
+        
+        if not citizen_usernames:
+            log.warning("No citizens found for market opportunity relevancy calculation.")
+            return {
+                "success": True,
+                "relevanciesSavedCount": 0,
+                "saved": True
+            }
+        
+        log.info(f"Found {len(citizen_usernames)} citizens for market opportunity relevancy calculation.")
+        
+        # Process each citizen individually
+        total_relevancies_saved = 0
+        
+        for username in citizen_usernames:
+            # Add a small delay between requests to avoid rate limiting
+            time.sleep(1)
+            
+            # Make a POST request to the endpoint for this citizen
+            citizen_response = requests.post(
+                api_url,
+                json={"Citizen": username},
+                timeout=60
+            )
+            
+            if not citizen_response.ok:
+                log.warning(f"Market Opportunity API call failed for {username} with status {citizen_response.status_code}")
+                continue
+            
+            citizen_data = citizen_response.json()
+            
+            if citizen_data.get('success'):
+                relevancies_saved = citizen_data.get('relevanciesSavedCount', 0)
+                total_relevancies_saved += relevancies_saved
+                log.info(f"Successfully processed market opportunity relevancies for {username}, saved {relevancies_saved} records.")
+            else:
+                log.warning(f"Market Opportunity API returned error for {username}: {citizen_data.get('error')}")
+        
+        # Return the aggregated results
+        return {
+            "success": True,
+            "relevanciesSavedCount": total_relevancies_saved,
+            "saved": True
+        }
+    except Exception as e:
+        log.error(f"Error calculating market opportunity relevancies: {e}")
+        log.error(traceback.format_exc())
+        return {
+            "success": False,
+            "error": str(e)
+        }
 
 def calculate_building_ownership_relevancies(username: str, base_url: str) -> Dict:
     """Calculate building ownership relevancies for a specific citizen."""
@@ -499,6 +678,18 @@ def calculate_relevancies(type_filter: Optional[str] = None) -> bool:
         log.info("Calculating job market situation relevancies")
         job_market_result = calculate_job_market_relevancies(base_url)
         
+        # Calculate same land neighbor relevancies (new)
+        log.info("Calculating same land neighbor relevancies")
+        same_land_neighbor_result = calculate_same_land_neighbor_relevancies(base_url)
+        
+        # Calculate guild member relevancies (new)
+        log.info("Calculating guild member relevancies")
+        guild_member_result = calculate_guild_member_relevancies(base_url)
+        
+        # Calculate market opportunity relevancies (new)
+        log.info("Calculating market opportunity relevancies")
+        market_opportunity_result = calculate_market_opportunity_relevancies(base_url)
+        
         total_relevancies_saved = 0 # More accurate naming
         
         if domination_result.get('success'):
@@ -522,6 +713,28 @@ def calculate_relevancies(type_filter: Optional[str] = None) -> bool:
             log.info(f"Successfully processed job market situation relevancies, records saved: {num_job_market_saved}")
         else:
             log.error(f"Failed to calculate job market situation relevancies: {job_market_result.get('error')}")
+            
+        # Process new relevancy types results
+        if same_land_neighbor_result.get('success'):
+            num_neighbor_saved = same_land_neighbor_result.get('relevanciesSavedCount', 0)
+            total_relevancies_saved += num_neighbor_saved
+            log.info(f"Successfully processed same land neighbor relevancies, records saved: {num_neighbor_saved}")
+        else:
+            log.error(f"Failed to calculate same land neighbor relevancies: {same_land_neighbor_result.get('error')}")
+            
+        if guild_member_result.get('success'):
+            num_guild_saved = guild_member_result.get('relevanciesSavedCount', 0)
+            total_relevancies_saved += num_guild_saved
+            log.info(f"Successfully processed guild member relevancies, records saved: {num_guild_saved}")
+        else:
+            log.error(f"Failed to calculate guild member relevancies: {guild_member_result.get('error')}")
+            
+        if market_opportunity_result.get('success'):
+            num_market_saved = market_opportunity_result.get('relevanciesSavedCount', 0)
+            total_relevancies_saved += num_market_saved
+            log.info(f"Successfully processed market opportunity relevancies, records saved: {num_market_saved}")
+        else:
+            log.error(f"Failed to calculate market opportunity relevancies: {market_opportunity_result.get('error')}")
         
         # Process each citizen individually to avoid timeouts
         results = {}
