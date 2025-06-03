@@ -61,6 +61,7 @@ from backend.engine.activity_creators import (
     try_create_fishing_activity, # Import new creator
     # try_create_fetch_from_galley_activity is not used by process_citizen_activity
 )
+# We'll import bid_on_land_activity_creator directly in the _handle_bid_on_land function
 # Import the specific processor function
 from backend.engine.activity_processors import process_goto_work as process_goto_work_fn
 from backend.engine.logic.porter_activities import process_porter_activity # Added import
@@ -869,6 +870,83 @@ def _handle_fishing(
         
     return False
 
+def _handle_bid_on_land(
+    tables: Dict[str, Table], citizen_record: Dict, is_night: bool, resource_defs: Dict, building_type_defs: Dict,
+    now_venice_dt: datetime.datetime, now_utc_dt: datetime.datetime, transport_api_url: str, api_base_url: str,
+    citizen_position: Optional[Dict], citizen_custom_id: str, citizen_username: str, citizen_airtable_id: str, citizen_name: str, citizen_position_str: Optional[str]
+) -> bool:
+    """Prio 45: Handles bidding on land when initiated via try-create."""
+    # This is a special handler that doesn't run automatically in the priority chain
+    # It's only triggered when explicitly requested via /api/activities/try-create
+    
+    # Since this is triggered by an API call, we don't need to check conditions like time of day
+    # The activity parameters should contain all necessary information
+    
+    log.info(f"{LogColors.OKCYAN}[Enchère Terrain] Citoyen {citizen_name}: Traitement d'une demande d'enchère sur un terrain.{LogColors.ENDC}")
+    
+    # We need to find a town hall or courthouse to submit the bid
+    try:
+        town_halls = tables['buildings'].all(formula="OR({Type}='town_hall', {Type}='courthouse')")
+    except Exception as e_fetch_halls:
+        log.error(f"{LogColors.FAIL}[Enchère Terrain] Erreur récupération des bâtiments officiels: {e_fetch_halls}{LogColors.ENDC}")
+        return False
+    
+    if not town_halls:
+        log.warning(f"{LogColors.WARNING}[Enchère Terrain] Aucun hôtel de ville ou palais de justice trouvé pour soumettre l'enchère.{LogColors.ENDC}")
+        return False
+    
+    # Find the closest town hall
+    closest_hall_record = None
+    min_dist_to_hall = float('inf')
+    
+    if citizen_position:
+        for hall in town_halls:
+            hall_pos = _get_building_position_coords(hall)
+            if hall_pos:
+                dist = _calculate_distance_meters(citizen_position, hall_pos)
+                if dist < min_dist_to_hall:
+                    min_dist_to_hall = dist
+                    closest_hall_record = hall
+    
+    if not closest_hall_record:
+        # If we couldn't find the closest (e.g., no position), just use the first one
+        if town_halls:
+            closest_hall_record = town_halls[0]
+        else:
+            log.warning(f"{LogColors.WARNING}[Enchère Terrain] Aucun bâtiment officiel valide trouvé.{LogColors.ENDC}")
+            return False
+    
+    hall_custom_id = closest_hall_record['fields'].get('BuildingId')
+    hall_pos = _get_building_position_coords(closest_hall_record)
+    hall_name_display = _get_bldg_display_name_module(tables, closest_hall_record)
+    
+    if not hall_custom_id or not hall_pos:
+        log.warning(f"{LogColors.WARNING}[Enchère Terrain] Bâtiment officiel {hall_name_display} n'a pas d'ID ou de position.{LogColors.ENDC}")
+        return False
+    
+    # Create a path to the town hall
+    if not citizen_position:
+        log.warning(f"{LogColors.WARNING}[Enchère Terrain] {citizen_name} n'a pas de position. Impossible de créer un chemin.{LogColors.ENDC}")
+        return False
+    
+    path_to_hall = get_path_between_points(citizen_position, hall_pos, transport_api_url)
+    if not (path_to_hall and path_to_hall.get('success')):
+        log.warning(f"{LogColors.WARNING}[Enchère Terrain] Impossible de trouver un chemin vers {hall_name_display}.{LogColors.ENDC}")
+        return False
+    
+    # Import the bid_on_land activity creator
+    from backend.engine.activity_creators.bid_on_land_activity_creator import try_create as try_create_bid_on_land_activity
+    
+    # Create the bid_on_land activity
+    if try_create_bid_on_land_activity(
+        tables, citizen_custom_id, citizen_username, citizen_airtable_id,
+        hall_custom_id, path_to_hall, now_utc_dt
+    ):
+        log.info(f"{LogColors.OKGREEN}[Enchère Terrain] Citoyen {citizen_name}: Activité 'bid_on_land' créée vers {hall_name_display}.{LogColors.ENDC}")
+        return True
+    
+    return False
+
 
 # --- Placeholder for new handler functions ---
 
@@ -1328,7 +1406,9 @@ def process_citizen_activity(
     now_venice_dt: datetime.datetime, 
     now_utc_dt: datetime.datetime,    
     transport_api_url: str,
-    api_base_url: str
+    api_base_url: str,
+    activity_type: Optional[str] = None,  # Added parameter for specific activity type
+    activity_parameters: Optional[Dict[str, Any]] = None  # Added parameter for activity parameters
 ) -> bool:
     """Process activity creation for a single citizen based on prioritized handlers."""
     
@@ -1374,6 +1454,24 @@ def process_citizen_activity(
     else: is_hungry = True
     citizen_record['is_hungry'] = is_hungry # Add to record for handlers
 
+    # If a specific activity type was requested, handle it directly
+    if activity_type:
+        log.info(f"{LogColors.HEADER}Processing specific activity type: {activity_type} for {citizen_name}{LogColors.ENDC}")
+        
+        # Handle specific activity types
+        if activity_type == "bid_on_land":
+            handler_args = (
+                tables, citizen_record, is_night, resource_defs, building_type_defs,
+                now_venice_dt, now_utc_dt, transport_api_url, api_base_url,
+                citizen_position, citizen_custom_id, citizen_username, citizen_airtable_id, citizen_name, citizen_position_str
+            )
+            return _handle_bid_on_land(*handler_args)
+        
+        # Add more specific activity type handlers here as needed
+        
+        # If we don't have a specific handler for this activity type, log a warning
+        log.warning(f"{LogColors.WARNING}No specific handler for activity type: {activity_type}. Falling back to general activity processing.{LogColors.ENDC}")
+    
     # Define activity handlers in order of priority
     # Each handler function must accept all these parameters.
     handler_args = (
@@ -1395,6 +1493,7 @@ def process_citizen_activity(
         (20, _handle_construction_tasks, "Tâches de construction"), # Prio 20-23
         (30, _handle_production_and_general_work_tasks, "Production et tâches générales de travail"), # Prio 30-35
         (40, _handle_forestieri_daytime_tasks, "Tâches de jour (Forestieri)"), # Prio 40
+        (45, _handle_bid_on_land, "Enchère sur un terrain"), # Prio 45 (Nouveau)
         (50, _handle_shopping_tasks, "Shopping personnel"), # Prio 50
         (60, _handle_porter_tasks, "Tâches de porteur (au Guild Hall)"), # Prio 60
         (70, _handle_general_goto_work, "Aller au travail (général)"), # Prio 70
