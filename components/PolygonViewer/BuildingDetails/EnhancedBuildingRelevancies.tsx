@@ -15,6 +15,8 @@ interface Relevancy {
   updatedAt?: string;
   asset?: string;
   assetType?: string;
+  strategicValue?: number;
+  economicImpact?: string;
 }
 
 interface EnhancedBuildingRelevanciesProps {
@@ -100,6 +102,41 @@ const EnhancedBuildingRelevancies: React.FC<EnhancedBuildingRelevanciesProps> = 
         return `${baseInsight}advancing your strategic position in Venice.`;
     }
   };
+  
+  // Helper function to calculate strategic value based on relevancy type and score
+  const calculateStrategicValue = (relevancy: Relevancy): number => {
+    if (relevancy.strategicValue) return relevancy.strategicValue;
+    
+    // Base value from score
+    const baseValue = Math.floor(relevancy.score / 10);
+    
+    // Adjust based on category and type
+    let modifier = 0;
+    
+    // Category modifiers
+    if (relevancy.category === "opportunity") modifier += 2;
+    if (relevancy.category === "threat") modifier += 1;
+    
+    // Type modifiers
+    if (relevancy.type?.includes("economic")) modifier += 2;
+    if (relevancy.type?.includes("property")) modifier += 1;
+    if (relevancy.type?.includes("business")) modifier += 1;
+    if (relevancy.type?.includes("resource")) modifier += 1;
+    if (relevancy.type?.includes("political")) modifier += 1;
+    
+    // Calculate final value (capped at 10)
+    return Math.min(10, baseValue + modifier);
+  };
+  
+  // Helper function to determine economic impact based on score and type
+  const determineEconomicImpact = (relevancy: Relevancy): string => {
+    if (relevancy.economicImpact) return relevancy.economicImpact;
+    
+    if (relevancy.score >= 80) return "Transformative";
+    if (relevancy.score >= 60) return "Significant";
+    if (relevancy.score >= 40) return "Moderate";
+    return "Minimal";
+  };
 
   if (loading) {
     return <div className="p-4 text-center text-gray-500">Loading relevancies...</div>;
@@ -148,6 +185,15 @@ const EnhancedBuildingRelevancies: React.FC<EnhancedBuildingRelevanciesProps> = 
               <span className="font-medium">Strategic Insight:</span> {getStrategicInsight(relevancy)}
             </div>
           )}
+          
+          <div className="mt-2 flex justify-between">
+            <span className="text-xs font-semibold text-amber-700">
+              Strategic Value: {calculateStrategicValue(relevancy)}/10
+            </span>
+            <span className="text-xs font-medium text-emerald-700">
+              Economic Impact: {determineEconomicImpact(relevancy)}
+            </span>
+          </div>
           
           {relevancy.notes && (
             <div className="mt-2 text-xs border-t pt-2 border-opacity-30 border-current">

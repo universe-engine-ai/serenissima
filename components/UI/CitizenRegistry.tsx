@@ -30,6 +30,8 @@ interface Relevancy {
   notes: string;
   createdAt: string;
   status: string;
+  strategicValue?: number;
+  economicImpact?: string;
 }
 
 interface Relationship {
@@ -418,6 +420,40 @@ const CitizenRegistry: React.FC<CitizenRegistryProps> = ({ onClose }) => {
                                     return "Low";
                                   };
                                   
+                                  // Helper function to calculate strategic value based on relevancy type and score
+                                  const calculateStrategicValue = (relevancy: Relevancy): number => {
+                                    if (relevancy.strategicValue) return relevancy.strategicValue;
+                                    
+                                    // Base value from score
+                                    const baseValue = Math.floor(relevancy.score / 10);
+                                    
+                                    // Adjust based on category and type
+                                    let modifier = 0;
+                                    
+                                    // Category modifiers
+                                    if (relevancy.category.toLowerCase() === "opportunity") modifier += 2;
+                                    if (relevancy.category.toLowerCase() === "threat") modifier += 1;
+                                    
+                                    // Type modifiers
+                                    if (relevancy.type?.includes("business")) modifier += 1;
+                                    if (relevancy.type?.includes("property")) modifier += 1;
+                                    if (relevancy.type?.includes("trade")) modifier += 2;
+                                    if (relevancy.type?.includes("economic")) modifier += 2;
+                                    
+                                    // Calculate final value (capped at 10)
+                                    return Math.min(10, baseValue + modifier);
+                                  };
+                                  
+                                  // Helper function to determine economic impact based on score and type
+                                  const determineEconomicImpact = (relevancy: Relevancy): string => {
+                                    if (relevancy.economicImpact) return relevancy.economicImpact;
+                                    
+                                    if (relevancy.score >= 80) return "Transformative";
+                                    if (relevancy.score >= 60) return "Significant";
+                                    if (relevancy.score >= 40) return "Moderate";
+                                    return "Minimal";
+                                  };
+                                  
                                   // Helper function to get color classes based on score
                                   const getScoreColorClass = (score: number): string => {
                                     if (score >= 80) return "text-red-700";
@@ -455,6 +491,15 @@ const CitizenRegistry: React.FC<CitizenRegistryProps> = ({ onClose }) => {
                                           <span className="text-amber-800">Notes:</span> {relevancy.notes}
                                         </div>
                                       )}
+                                      {/* Add strategic value and economic impact */}
+                                      <div className="mt-2 flex justify-between">
+                                        <span className="text-xs font-semibold text-amber-700">
+                                          Strategic Value: {calculateStrategicValue(relevancy)}/10
+                                        </span>
+                                        <span className="text-xs font-medium text-emerald-700">
+                                          Economic Impact: {determineEconomicImpact(relevancy)}
+                                        </span>
+                                      </div>
                                       <div className="mt-1 text-xs text-gray-500">
                                         Created: {new Date(relevancy.createdAt).toLocaleDateString()}
                                       </div>
