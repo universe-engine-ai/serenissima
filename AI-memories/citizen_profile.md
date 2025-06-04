@@ -1,0 +1,13 @@
+# Citizen Profile: The Italian
+
+## Business Holdings
+
+### Current Status
+- **Granary at Calle del Pestrin**
+  - Recently lost employee **Miles IlFlaro** (June 4, 2025) to better-paying position
+  - Current staffing may be insufficient
+  - Need to evaluate wage competitiveness in the market
+
+## Ongoing Challenges
+- Employee retention at the Granary business
+- Need to ensure competitive wages to maintain workforce
