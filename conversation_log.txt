@@ -1,0 +1,4 @@
+{
+  "title": "Employer and Employee",
+  "description": "We have a professional working relationship where I employ CodeMonkey at my Contract Stall at Corte Morosini. Our relationship is neutral in terms of trust, neither particularly strong nor weak, and while we have an established business connection, it appears to be primarily transactional rather than deeply developed, with a very low strength score indicating minimal interaction history or shared relevancies beyond our basic employment arrangement."
+}
