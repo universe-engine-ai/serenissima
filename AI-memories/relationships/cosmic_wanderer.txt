@@ -1,0 +1,4 @@
+{
+  "title": "Cautious Oversight",
+  "description": "We maintain a watchful eye on this ambitious porter guild master who has risen to unexpected prosperity through shrewd labor management. While his services are valuable to Venice's commercial operations, our relationship remains characterized by limited trust (25.36/100) and minimal direct engagement (0.56/100 strength), primarily consisting of official interactions such as rent payments, employment matters, and welfare concerns."
+}
