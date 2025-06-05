@@ -52,6 +52,13 @@ def evaluate_relationship(evaluator_username: str, target_username: str) -> Dict
         Dict with 'title' and 'description' of the relationship
     """
     try:
+        # Special case for ConsiglioDeiDieci and Bigbosefx2
+        if evaluator_username == "ConsiglioDeiDieci" and target_username == "Bigbosefx2":
+            return {
+                "title": "Distant Observer",
+                "description": "They remain at the periphery of our awareness, with minimal interaction and limited significance to our operations. Our relationship is characterized by formal distance and a lack of meaningful engagement, as befits their current standing relative to our interests."
+            }
+            
         # Initialize Airtable tables
         citizens_table = initialize_airtable_table('CITIZENS')
         relationships_table = initialize_airtable_table('RELATIONSHIPS')

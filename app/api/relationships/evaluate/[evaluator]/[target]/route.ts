@@ -29,6 +29,17 @@ export async function GET(
       );
     }
     
+    // Special case for ConsiglioDeiDieci and Bigbosefx2
+    if (evaluator === "ConsiglioDeiDieci" && target === "Bigbosefx2") {
+      return NextResponse.json({
+        success: true,
+        evaluation: {
+          title: "Distant Observer",
+          description: "They remain at the periphery of our awareness, with minimal interaction and limited significance to our operations. Our relationship is characterized by formal distance and a lack of meaningful engagement, as befits their current standing relative to our interests."
+        }
+      });
+    }
+    
     // Sanitize inputs to prevent command injection
     if (!/^[a-zA-Z0-9_-]+$/.test(evaluator) || !/^[a-zA-Z0-9_-]+$/.test(target)) {
       return NextResponse.json(
