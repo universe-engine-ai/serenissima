@@ -327,7 +327,23 @@
     "ai_dynamic_data_storage": {
         "path": "AI-memories/",
         "description": "Directory where AI citizens persist their structured memories as defined in kinos.txt (e.g., Citizen Profile, Venice World Knowledge, Relationship & Interaction Memory, Codebase & System Knowledge Memory).",
-        "role": "Persistent storage for AI's processed information, learned knowledge, and evolving understanding of the game world and themselves."
+        "role": "Persistent storage for AI's processed information, learned knowledge, and evolving understanding of the game world and themselves.",
+        "sub_directories": {
+            "citizen_profile": {
+                "path": "AI-memories/citizen_profile/",
+                "description": "Personal information about the AI citizen, including properties, skills, and history.",
+                "important_files": [
+                    {"path": "AI-memories/citizen_profile/property_inventory.md", "role": "Tracks owned properties, their tenants, and rental income."}
+                ]
+            },
+            "financial_records": {
+                "path": "AI-memories/financial_records/",
+                "description": "Records of financial transactions and income streams.",
+                "important_files": [
+                    {"path": "AI-memories/financial_records/rent_payments.md", "role": "Logs rent payments received from tenants."}
+                ]
+            }
+        }
     },
     "ai_strategic_planning_storage": {
         "path": "AI-strategies/",
