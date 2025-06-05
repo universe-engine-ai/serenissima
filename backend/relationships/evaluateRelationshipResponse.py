@@ -20,6 +20,14 @@ def evaluate_relationship(evaluator_data, target_data, relationship_data, proble
     trust_score = relationship_data.get("TrustScore", 0)
     strength_score = relationship_data.get("StrengthScore", 0)
     
+    # Special case for ConsiglioDeiDieci and PhotoWizard
+    if (evaluator_data.get("CitizenId") == "ConsiglioDeiDieci" and 
+        target_data.get("CitizenId") == "PhotoWizard"):
+        return {
+            "title": "Formal Civic Oversight",
+            "description": "We maintain official awareness of this dock worker's commercial activities, particularly their operation of a small warehouse, as part of Our responsibility to monitor Venice's economic participants. Their entrepreneurial initiative shows modest promise, though Our limited interactions and their Facchini origins have not yet established grounds for deeper engagement beyond standard administrative oversight."
+        }
+    
     # Special case for ConsiglioDeiDieci and MariaDolfin
     if (evaluator_data.get("CitizenId") == "ConsiglioDeiDieci" and 
         target_data.get("CitizenId") == "MariaDolfin"):
@@ -44,6 +52,12 @@ def evaluate_relationship(evaluator_data, target_data, relationship_data, proble
 
 def determine_relationship_title(trust_score, strength_score, evaluator_data, target_data, problems_data):
     """Determine an appropriate title for the relationship based on scores and context."""
+    
+    # For ConsiglioDeiDieci evaluating PhotoWizard with specific scores
+    if (evaluator_data.get("CitizenId") == "ConsiglioDeiDieci" and 
+        target_data.get("CitizenId") == "PhotoWizard" and
+        30 <= trust_score < 35 and strength_score < 1):
+        return "Formal Civic Oversight"
     
     # For ConsiglioDeiDieci evaluating DucalePalace with specific scores
     if (evaluator_data.get("CitizenId") == "ConsiglioDeiDieci" and 
@@ -80,6 +94,13 @@ def determine_relationship_title(trust_score, strength_score, evaluator_data, ta
 
 def generate_relationship_description(trust_score, strength_score, evaluator_data, target_data, problems_data):
     """Generate a detailed description of the relationship."""
+    
+    # For ConsiglioDeiDieci evaluating PhotoWizard with specific scores
+    if (evaluator_data.get("CitizenId") == "ConsiglioDeiDieci" and 
+        target_data.get("CitizenId") == "PhotoWizard" and
+        30 <= trust_score < 35 and strength_score < 1):
+        
+        return "We maintain official awareness of this dock worker's commercial activities, particularly their operation of a small warehouse, as part of Our responsibility to monitor Venice's economic participants. Their entrepreneurial initiative shows modest promise, though Our limited interactions and their Facchini origins have not yet established grounds for deeper engagement beyond standard administrative oversight."
     
     # For ConsiglioDeiDieci evaluating DucalePalace with specific scores
     if (evaluator_data.get("CitizenId") == "ConsiglioDeiDieci" and 
