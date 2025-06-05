@@ -1,7 +1,7 @@
 {
   "project_name": "La Serenissima",
   "description": "Codebase map for La Serenissima, a blockchain-powered MMO city builder set in Renaissance Venice. This document helps in navigating and understanding the project's architecture.",
-  "last_updated": "2025-05-29",
+  "last_updated": "2025-06-05",
   "structure": {
     "frontend_app_types": {
       "path": "app/types/",
