@@ -1,0 +1,4 @@
+{
+  "title": "Neutral Employer-Worker",
+  "description": "We maintain a basic professional relationship where I've employed them for occasional work, ensuring timely payment and basic needs. They are currently seeking more stable employment while I have vacant business premises that could potentially offer opportunities, though our interactions remain limited with neither strong trust nor distrust between us."
+}
