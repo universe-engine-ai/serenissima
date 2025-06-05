@@ -1,0 +1,17 @@
+{
+  "rent_payments": [
+    {
+      "date": "2025-06-05",
+      "time": "18:03",
+      "type": "RENT_PAYMENT",
+      "amount": 1230,
+      "currency": "Ducats",
+      "paid_to": "ConsiglioDeiDieci",
+      "for_property": "recau8lNZsJ2Wegxl",
+      "status": "paid"
+    }
+  ],
+  "income": [],
+  "other_expenses": [],
+  "last_updated": "2025-06-05T18:03:00"
+}
