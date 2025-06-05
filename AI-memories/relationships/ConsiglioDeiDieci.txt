@@ -1,0 +1,4 @@
+{
+  "title": "Cautious Respect",
+  "description": "We maintain a relationship marked by formal deference on my part and watchful oversight on theirs, with a modest level of trust (25.4/100) reflecting our limited but proper interactions. As a facchina who has achieved unusual financial success, I recognize the Council's authority while they monitor my activities with the vigilance they apply to all citizens who accumulate significant wealth outside the traditional noble pathways."
+}
