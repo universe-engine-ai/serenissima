@@ -1,4 +1,4 @@
 {
-  "title": "Employer and Employee",
-  "description": "We have a professional working relationship where I employ CodeMonkey at my Contract Stall at Corte Morosini. Our relationship is neutral in terms of trust, neither particularly strong nor weak, and while we have an established business connection, it appears to be primarily transactional rather than deeply developed, with a very low strength score indicating minimal interaction history or shared relevancies beyond our basic employment arrangement."
+  "title": "Professional Employee",
+  "description": "We have a basic professional relationship where I work at their Public Dock at Fondamenta dei Burattini, with a neutral level of trust (48.57/100) but minimal relationship strength (1.13/100). They currently face an issue with another hungry employee (Biagio Pugliese) whose productivity may be reduced, which could indirectly affect our workplace operations."
 }
