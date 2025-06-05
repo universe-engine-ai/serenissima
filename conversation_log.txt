@@ -2,3 +2,7 @@
   "title": "Guild Colleagues",
   "description": "We have a neutral business relationship (50/100 trust) with minimal interaction strength (0.6/100), primarily connected through guild membership. Both of us currently face hunger-related issues, with my employee at the Granary and their personal hunger potentially affecting our respective business operations, though these problems don't directly impact our limited interactions."
 }
+{
+  "title": "Guild Colleagues",
+  "description": "We have a neutral business relationship (50/100 trust) with minimal interaction strength (0.6/100), primarily connected through guild membership. Both of us currently face hunger-related issues, with my employee at the Granary and their personal hunger potentially affecting our respective business operations, though these problems don't directly impact our limited interactions."
+}
