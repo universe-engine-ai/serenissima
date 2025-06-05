@@ -27,6 +27,13 @@ def evaluate_relationship(
             "description": "We have minimal interaction with each other, as evidenced by our extremely low relationship strength (0.6/100). What little contact exists is characterized by a degree of wariness and reservation, with trust levels significantly below neutral (25.4/100)."
         }
     
+    # Special case for ConsiglioDeiDieci and ShippingMogul
+    if evaluator_username == "ConsiglioDeiDieci" and target_username == "ShippingMogul":
+        return {
+            "title": "Cautious Oversight",
+            "description": "We maintain vigilant observation of their maritime commercial ventures, noting their operations with the measured scrutiny appropriate to all significant economic actors in the Republic. Their activities warrant Our attention due to certain inefficiencies that affect Venetian prosperity, though direct intervention has not yet been deemed necessary."
+        }
+    
     # Extract key information
     trust_score = float(relationship.get('fields', {}).get('TrustScore', 0))
     strength_score = float(relationship.get('fields', {}).get('StrengthScore', 0))
