@@ -30,11 +30,11 @@ export async function GET(
     }
     
     // Sanitize inputs to prevent command injection
-    if (!/^[a-zA-Z0-9_]+$/.test(evaluator) || !/^[a-zA-Z0-9_]+$/.test(target)) {
+    if (!/^[a-zA-Z0-9_-]+$/.test(evaluator) || !/^[a-zA-Z0-9_-]+$/.test(target)) {
       return NextResponse.json(
         { 
           success: false, 
-          error: 'Invalid username format. Usernames must contain only alphanumeric characters and underscores.' 
+          error: 'Invalid username format. Usernames must contain only alphanumeric characters, underscores, and hyphens.' 
         },
         { status: 400 }
       );
@@ -46,7 +46,7 @@ export async function GET(
     // Execute the Python script
     const { stdout, stderr } = await execPromise(`python ${scriptPath} ${evaluator} ${target}`);
     
-    if (stderr) {
+    if (stderr && !stderr.includes('ImportWarning') && !stderr.includes('DeprecationWarning')) {
       console.error(`Error executing relationship evaluation script: ${stderr}`);
       return NextResponse.json(
         { 
@@ -59,12 +59,26 @@ export async function GET(
     }
     
     // Parse the JSON output from the Python script
-    const result = JSON.parse(stdout);
-    
-    return NextResponse.json({
-      success: true,
-      evaluation: result
-    });
+    try {
+      const result = JSON.parse(stdout);
+      
+      return NextResponse.json({
+        success: true,
+        evaluation: result
+      });
+    } catch (parseError) {
+      console.error(`Error parsing script output: ${parseError}`);
+      console.error(`Raw output: ${stdout}`);
+      
+      return NextResponse.json(
+        { 
+          success: false, 
+          error: 'Error parsing relationship evaluation result',
+          details: String(parseError)
+        },
+        { status: 500 }
+      );
+    }
     
   } catch (error) {
     console.error('Error in relationship evaluation API:', error);
