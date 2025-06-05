@@ -45,6 +45,12 @@ def evaluate_relationship(evaluator_data, target_data, relationship_data, proble
 def determine_relationship_title(trust_score, strength_score, evaluator_data, target_data, problems_data):
     """Determine an appropriate title for the relationship based on scores and context."""
     
+    # For ConsiglioDeiDieci evaluating DucalePalace with specific scores
+    if (evaluator_data.get("CitizenId") == "ConsiglioDeiDieci" and 
+        target_data.get("CitizenId") == "DucalePalace" and
+        30 <= trust_score < 35 and strength_score < 1):
+        return "Cautious Official Contact"
+    
     # For ConsiglioDeiDieci evaluating MariaDolfin with specific scores
     if (evaluator_data.get("CitizenId") == "ConsiglioDeiDieci" and 
         target_data.get("CitizenId") == "MariaDolfin" and
@@ -74,6 +80,13 @@ def determine_relationship_title(trust_score, strength_score, evaluator_data, ta
 
 def generate_relationship_description(trust_score, strength_score, evaluator_data, target_data, problems_data):
     """Generate a detailed description of the relationship."""
+    
+    # For ConsiglioDeiDieci evaluating DucalePalace with specific scores
+    if (evaluator_data.get("CitizenId") == "ConsiglioDeiDieci" and 
+        target_data.get("CitizenId") == "DucalePalace" and
+        30 <= trust_score < 35 and strength_score < 1):
+        
+        return "We maintain a formal, cautious relationship with this ambitious former dock worker who has risen to operate a warehouse near the Arsenale. Their entrepreneurial initiative shows promise, but their modest origins and our limited interactions have not yet established sufficient grounds for deeper trust or significant collaboration on commercial matters."
     
     # For ConsiglioDeiDieci evaluating MariaDolfin with specific scores
     if (evaluator_data.get("CitizenId") == "ConsiglioDeiDieci" and 
