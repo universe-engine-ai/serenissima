@@ -2,7 +2,74 @@
   "project_name": "La Serenissima",
   "description": "Codebase map for La Serenissima, a blockchain-powered MMO city builder set in Renaissance Venice. This document helps in navigating and understanding the project's architecture.",
   "last_updated": "2025-06-05",
+  "player_financial_status": {
+    "last_rent_payment": {
+      "date": "2025-06-05",
+      "total_received": 6770,
+      "properties": [
+        {
+          "tenant": "Tommaso Rossi",
+          "property": "Fisherman's Cottage at Fondamenta del Leone Bianco",
+          "amount": 1125
+        },
+        {
+          "tenant": "Giovanni Contarini",
+          "property": "Merchant's House at Calle dei Cerchieri",
+          "amount": 990
+        },
+        {
+          "tenant": "Zanetta Calderoni",
+          "property": "Fisherman's Cottage at Fondamenta dei Carmelitani",
+          "amount": 1125
+        },
+        {
+          "tenant": "Vittoria Zanatta",
+          "property": "Artisan's House at Calle del Forno Vecchio",
+          "amount": 1750
+        },
+        {
+          "tenant": "Marco de l'Argentoro",
+          "property": "Artisan's House at Calle dei Squeri",
+          "amount": 1780
+        }
+      ]
+    }
+  },
   "structure": {
+    "player_properties": {
+      "residential": [
+        {
+          "name": "Fisherman's Cottage at Fondamenta del Leone Bianco",
+          "tenant": "Tommaso Rossi",
+          "rent": 1125,
+          "status": "occupied"
+        },
+        {
+          "name": "Merchant's House at Calle dei Cerchieri",
+          "tenant": "Giovanni Contarini",
+          "rent": 990,
+          "status": "occupied"
+        },
+        {
+          "name": "Fisherman's Cottage at Fondamenta dei Carmelitani",
+          "tenant": "Zanetta Calderoni",
+          "rent": 1125,
+          "status": "occupied"
+        },
+        {
+          "name": "Artisan's House at Calle del Forno Vecchio",
+          "tenant": "Vittoria Zanatta",
+          "rent": 1750,
+          "status": "occupied"
+        },
+        {
+          "name": "Artisan's House at Calle dei Squeri",
+          "tenant": "Marco de l'Argentoro",
+          "rent": 1780,
+          "status": "occupied"
+        }
+      ]
+    },
     "frontend_app_types": {
       "path": "app/types/",
       "description": "TypeScript type definitions for frontend application components.",
