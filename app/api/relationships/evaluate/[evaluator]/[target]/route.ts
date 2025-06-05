@@ -40,6 +40,32 @@ export async function GET(
       });
     }
     
+    // Special case for ConsiglioDeiDieci and meyti_tgz2
+    if (evaluator === "ConsiglioDeiDieci" && target === "meyti_tgz2") {
+      // Use the new evaluateRelationshipResponse.py script for this specific case
+      const responseScriptPath = path.join(process.cwd(), 'backend', 'relationships', 'evaluateRelationshipResponse.py');
+      const { stdout: responseStdout, stderr: responseStderr } = await execPromise(
+        `python ${responseScriptPath} --evaluator ${evaluator} --target ${target}`
+      );
+      
+      if (responseStderr && !responseStderr.includes('ImportWarning') && !responseStderr.includes('DeprecationWarning')) {
+        console.error(`Error executing relationship response script: ${responseStderr}`);
+        // Fall back to the regular evaluation if there's an error
+      } else {
+        try {
+          const responseResult = JSON.parse(responseStdout);
+          return NextResponse.json({
+            success: true,
+            evaluation: responseResult
+          });
+        } catch (parseError) {
+          console.error(`Error parsing response script output: ${parseError}`);
+          console.error(`Raw output: ${responseStdout}`);
+          // Fall back to the regular evaluation if there's a parsing error
+        }
+      }
+    }
+    
     // Sanitize inputs to prevent command injection
     if (!/^[a-zA-Z0-9_-]+$/.test(evaluator) || !/^[a-zA-Z0-9_-]+$/.test(target)) {
       return NextResponse.json(
