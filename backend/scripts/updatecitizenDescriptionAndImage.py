@@ -189,8 +189,24 @@ def get_citizen_info(tables, username: str) -> Optional[Dict]:
         return None
 
 def generate_description_and_image_prompt(username: str, citizen_info: Dict) -> Optional[Dict]:
-    """Generate a new description and image prompt using Kinos Engine API."""
+    """Generate a new description and image prompt using Kinos Engine API or local JSON file."""
     log.info(f"Generating new description and image prompt for citizen: {username}")
+    
+    # Check if we have a local JSON file for this specific citizen
+    json_file_path = os.path.join(os.path.dirname(__file__), 'citizen_profile_update.json')
+    
+    # If the username is "Bullitpro0f" or matches Francesco Morosini, use the local JSON file
+    if username.lower() in ["bullitpro0f", "francesco_morosini", "francesco"]:
+        try:
+            if os.path.exists(json_file_path):
+                log.info(f"Using local JSON file for citizen {username}")
+                with open(json_file_path, 'r') as f:
+                    result_data = json.load(f)
+                log.info(f"Successfully loaded profile data from local JSON for {username}")
+                return result_data
+        except Exception as e:
+            log.error(f"Error loading from local JSON file: {e}")
+            # Fall back to Kinos API if local file fails
     
     # Get Kinos API key from environment
     kinos_api_key = os.environ.get('KINOS_API_KEY')
