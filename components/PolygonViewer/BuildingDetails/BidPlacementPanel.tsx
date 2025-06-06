@@ -33,48 +33,35 @@ const BidPlacementPanel: React.FC<BidPlacementPanelProps> = ({
     setIsSubmitting(true);
 
     try {
-      // Placeholder for API call
-      console.log('Submitting bid:', {
-        buildingId,
-        bidder: currentUser,
-        amount: bidAmount,
-        notes,
+      // Make actual API call to /api/contracts
+      const response = await fetch('/api/contracts', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          ContractId: `building_bid_${buildingId}_${currentUser}_${Date.now()}`,
+          Type: 'building_bid',
+          Asset: buildingId,
+          AssetType: 'building',
+          Buyer: currentUser, // Bidder
+          PricePerResource: bidAmount, // Bid amount
+          TargetAmount: 1, // For the building itself
+          Status: 'active',
+          Notes: notes,
+          // Seller will be set by backend based on building owner
+        }),
       });
-      // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 1500));
-      
-      // TODO: Replace with actual API call to /api/contracts (POST)
-      // const response = await fetch('/api/contracts', {
-      //   method: 'POST',
-      //   headers: { 'Content-Type': 'application/json' },
-      //   body: JSON.stringify({
-      //     ContractId: `building_bid_${buildingId}_${currentUser}_${Date.now()}`,
-      //     Type: 'building_bid',
-      //     Asset: buildingId,
-      //     AssetType: 'building',
-      //     Buyer: currentUser, // Bidder
-      //     PricePerResource: bidAmount, // Bid amount
-      //     TargetAmount: 1, // For the building itself
-      //     Status: 'active',
-      //     Notes: notes,
-      //     // Seller might be set by backend or left null until acceptance
-      //   }),
-      // });
 
-      // if (!response.ok) {
-      //   const errorData = await response.json();
-      //   throw new Error(errorData.error || 'Failed to place bid.');
-      // }
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.error || 'Failed to place bid.');
+      }
       
-      // const result = await response.json();
-      // if (result.success) {
-      //   onBidPlaced();
-      // } else {
-      //   throw new Error(result.error || 'API returned success false.');
-      // }
-
-      alert(`Bid of ${bidAmount} Ducats placed for ${buildingName}! (This is a placeholder)`);
-      onBidPlaced(); // Call this after successful API call
+      const result = await response.json();
+      if (result.success) {
+        onBidPlaced();
+      } else {
+        throw new Error(result.error || 'API returned success false.');
+      }
 
     } catch (err) {
       const errorMessage = err instanceof Error ? err.message : 'An unknown error occurred.';
