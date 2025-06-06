@@ -1,0 +1,26 @@
+{
+  "conversations": [
+    {
+      "conversation_id": "niccolo_ntk_1749193542",
+      "participants": ["rialto_sailor1", "NTK"],
+      "started_at": "2025-06-06T07:15:42.888Z",
+      "last_message_at": "2025-06-06T07:15:42.888Z",
+      "status": "active",
+      "context": "Initial meeting upon NTK's arrival to Venice",
+      "message_files": ["niccolo_ntk_initial_message.json"],
+      "relationship_status": {
+        "initial_trust_score": 50,
+        "initial_strength_score": 0,
+        "current_trust_score": 50,
+        "current_strength_score": 0.1
+      },
+      "business_opportunities": [
+        {
+          "type": "transport_services",
+          "status": "proposed",
+          "details": "Niccolò offering transportation services around Venice lagoon"
+        }
+      ]
+    }
+  ]
+}
