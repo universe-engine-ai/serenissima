@@ -192,6 +192,7 @@ Voir la [documentation du schéma Airtable](airtable_schema.md#table-contracts) 
 backend/docs/airtable_schema.md
 <<<<<<< SEARCH
 -   `TargetAmount` (Nombre): Quantité totale de ressource pour ce contrat (ex: pour `import`, `public_sell`) ou quantité par transaction (ex: pour `recurrent`). Pour `logistics_service_request`, peut représenter un volume total de service. Pour `building_bid`, généralement 1.
--   `PricePerResource` (Nombre): Prix unitaire de la ressource.
+-   `PricePerResource` (Nombre): Prix unitaire de la ressource. Pour `public_storage`, ce champ stocke le taux de la commission de stockage. Pour `building_bid`, c'est le montant total de l'offre pour le bâtiment.
+-   `ServiceFeePerUnit` (Nombre): Utilisé par `logistics_service_request` pour définir le coût du service de portage par unité de ressource livrée.
 -   `Priority` (Nombre): Priorité du contrat.
 -   `Status` (Texte): Statut du contrat (ex: `active`, `completed`, `failed`).
