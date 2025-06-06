@@ -10,5 +10,13 @@
   {
     "role": "assistant",
     "content": "Fine crossing, wouldn't you say? These waters have been good to me for twenty years now. *Marco adjusts his red cap as he gestures toward the bustling Venetian harbor* \n\nI'm Marco Ragusa, captain of this galley. I notice you're new to our Republic - the name's NTK, yes? A Popolani by your colors. *He studies you with weathered but shrewd eyes* \n\nWhat brings you to Venice? Trade opportunities are plentiful these days, especially for those with the right connections. I've built quite the network moving goods through these waters. Perhaps you have business interests I might assist with? *He casually rests a hand on his ledger* My rates are fair, and my ships reliable."
+  },
+  {
+    "role": "user",
+    "content": "Making a living I guess"
+  },
+  {
+    "role": "assistant",
+    "content": "*Nodding approvingly* \"Making a living is what Venice does best, my friend.\" *Marco gestures to the bustling market area visible from the harbor* \"Those who come with purpose tend to prosper here.\"\n\n*He leans in slightly* \"You've chosen well. While others waste ducats on trinkets, the real wealth flows through these shipping lanes.\" *Points to several merchant vessels being unloaded* \"Each crate there represents someone's foresight - importing what Venice needs before others realize the demand.\"\n\n*Straightens up* \"That's where I provide value. Monthly routes to Alexandria, Constantinople, and the Adriatic ports. Reliable schedules, fair rates, and - most importantly - discretion about what's in your cargo.\"\n\n*Produces a small card with shipping schedule* \"When you're ready to move goods in or out of the Republic, find me at the eastern docks. First shipment gets preferential rates - I value merchants who become regulars.\""
   }
 ]
