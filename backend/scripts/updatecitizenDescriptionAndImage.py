@@ -215,7 +215,39 @@ def generate_description_and_image_prompt(username: str, citizen_info: Dict) -> 
             workplace_type = workplace['fields'].get('Type', '')
             workplace_info = f"works at {workplace_name} ({workplace_type})"
         
-        # Create a prompt for the Kinos Engine
+        # Check if we already have a JSON response from the user
+        messages_file_path = os.path.join(os.getcwd(), 'messages.json')
+        user_provided_data = None
+        
+        if os.path.exists(messages_file_path):
+            try:
+                with open(messages_file_path, 'r') as f:
+                    messages = json.load(f)
+                    # Look for the most recent assistant message with JSON content
+                    for message in reversed(messages):
+                        if message.get('role') == 'assistant' and message.get('content'):
+                            content = message.get('content', '')
+                            # Try to extract JSON from the content
+                            try:
+                                # Find JSON content between triple backticks
+                                import re
+                                json_match = re.search(r'```json\s*(.*?)\s*```', content, re.DOTALL)
+                                if json_match:
+                                    json_str = json_match.group(1)
+                                    user_provided_data = json.loads(json_str)
+                                    log.info(f"Found user-provided JSON data: {user_provided_data}")
+                                    break
+                            except Exception as e:
+                                log.warning(f"Failed to parse JSON from message: {e}")
+            except Exception as e:
+                log.warning(f"Failed to read messages.json: {e}")
+        
+        # If we have user-provided data, use it directly
+        if user_provided_data and isinstance(user_provided_data, dict):
+            log.info("Using user-provided data for citizen update")
+            return user_provided_data
+        
+        # Otherwise, create a prompt for the Kinos Engine
         prompt = f"""
         After experiencing significant events and changes in your life in Venice, it's time to update your description and appearance to better reflect who you've become.
         
