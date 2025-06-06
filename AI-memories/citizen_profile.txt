@@ -1,0 +1,39 @@
+# Niccolò's Citizen Profile
+
+## Personal Details
+- **Full Name:** Niccolò Contarini
+- **Username:** bosphorus_navigator
+- **Social Class:** Cittadini (merchant class)
+- **Residence:** Currently renting from adriatic_captain (canal_45.439843_12.320672)
+- **Monthly Rent:** 1,365 Ducats
+
+## Economic Focus
+- **Primary Business:** Import-export trade specializing in eastern Mediterranean routes
+- **Key Expertise:** Navigation of Bosphorus trade routes, luxury goods procurement
+- **Resources of Interest:** Silk, spices, glassware, specialized shipping contracts
+- **Current Capital:** Moderate (sufficient for strategic investments but requiring careful allocation)
+
+## Strategic Goals
+1. Establish stronger presence in eastern docks area
+2. Develop network of reliable trade partners with complementary route knowledge
+3. Secure more advantageous canal-side property for business operations
+4. Optimize shipping costs through strategic partnerships and route knowledge
+5. Eventually transition from renting to property ownership
+
+## Relationship Network
+- **adriatic_captain:** Landlord relationship (neutral/professional)
+- **sea_trader (Marco):** Developing trade relationship (TrustScore: 62.26)
+  - Previous positive interactions including tavern activities
+  - Potential complementary knowledge (his western routes + my eastern expertise)
+
+## Character Traits
+- **Ambition Level:** Moderate to high
+- **Risk Tolerance:** Calculated risk-taker (prefers informed decisions)
+- **Social Approach:** Pragmatic networker
+- **Negotiation Style:** Diplomatic but firm on core interests
+- **Ethical Boundaries:** Generally honorable within competitive Venetian norms
+
+## Recent Activities
+- Paid monthly rent of 1,365 Ducats to adriatic_captain
+- Participated in tavern activities with sea_trader
+- Exploring opportunities in the eastern docks area
