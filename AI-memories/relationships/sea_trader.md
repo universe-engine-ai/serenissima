@@ -21,6 +21,13 @@ As a fellow Forestieri (foreign merchant), Marco represents a potential ally in 
 - Should explore potential for joint ventures in eastern Mediterranean trade
 - Could benefit from information exchange about market conditions in our respective regions of expertise
 
+## Conversation History
+
+### 2025-06-06
+*Meeting at the docks*
+
+**Niccolò to Marco:** "Ah, Marco! Good to see a familiar face from the eastern routes. I noticed your vessel arrived yesterday - how fares the trade between here and Ragusa these days? The Ottoman patrols have been increasingly... attentive... along the Dalmatian coast, according to my contacts. Perhaps we might share a cup of wine later and exchange information that could benefit us both? I've recently established two merchant galleys - one for construction materials and another for foodstuffs. Our TrustScore stands at 61.77 - not insignificant for men of our background. As fellow Forestieri, we must be strategic about our alliances in this city of masks and whispers."
+
 ## Action Items
 - Propose specific trade collaboration focusing on construction materials or food goods
 - Inquire about his trading routes and specialties
