@@ -861,6 +861,93 @@ def create_admin_notification(tables, ai_import_results: Dict[str, Dict]) -> Non
     except Exception as e:
         print(f"Error creating admin notification: {str(e)}")
 
+def create_emergency_bread_stock(tables, building_id, owner_username, amount=20):
+    """Create emergency bread stock for a specific building."""
+    try:
+        # Check if there's already bread in this building
+        resource_formula = f"AND({{Asset}}='{_escape_airtable_value(building_id)}', {{AssetType}}='building', {{Type}}='bread', {{Owner}}='{_escape_airtable_value(owner_username)}')"
+        existing_resources = tables["resources"].all(formula=resource_formula, max_records=1)
+        
+        # Get resource definition for bread
+        resource_types = get_resource_types_from_api()
+        bread_def = resource_types.get("bread", {})
+        bread_name = bread_def.get("name", "Bread")
+        
+        VENICE_TIMEZONE = pytz.timezone('Europe/Rome')
+        now_venice = datetime.now(VENICE_TIMEZONE)
+        now_iso = now_venice.isoformat()
+        
+        if existing_resources:
+            # Update existing resource record
+            resource_record = existing_resources[0]
+            current_count = float(resource_record["fields"].get("Count", 0))
+            
+            if current_count < amount:
+                tables["resources"].update(resource_record["id"], {
+                    "Count": amount
+                })
+                print(f"EMERGENCY: Updated bread in building {building_id} from {current_count} to {amount} units")
+                return True
+            else:
+                print(f"EMERGENCY: Building {building_id} already has sufficient bread ({current_count} units)")
+                return False
+        else:
+            # Create new resource record
+            resource_id = f"resource-{uuid.uuid4()}"
+            resource_data = {
+                "ResourceId": resource_id,
+                "Type": "bread",
+                "Name": bread_name,
+                "Asset": building_id,
+                "AssetType": "building",
+                "Owner": owner_username,
+                "Count": amount,
+                "CreatedAt": now_iso
+            }
+            tables["resources"].create(resource_data)
+            print(f"EMERGENCY: Created new bread resource in building {building_id} with {amount} units")
+            
+            # Also create a public sell contract if one doesn't exist
+            contract_id = f"contract-public-sell-{owner_username}-{building_id}-bread"
+            contract_formula = f"{{ContractId}}='{_escape_airtable_value(contract_id)}'"
+            existing_contracts = tables["contracts"].all(formula=contract_formula, max_records=1)
+            
+            if not existing_contracts:
+                # Get import price for bread
+                bread_import_price = bread_def.get("importPrice", 300)
+                sell_price = bread_import_price * 1.2  # 20% markup
+                
+                # Create end date (47 hours from now)
+                end_date_venice = now_venice + timedelta(hours=47)
+                end_date_iso = end_date_venice.isoformat()
+                
+                contract_data = {
+                    "ContractId": contract_id,
+                    "Type": "public_sell",
+                    "Seller": owner_username,
+                    "Buyer": "public",
+                    "ResourceType": "bread",
+                    "SellerBuilding": building_id,
+                    "TargetAmount": amount / 2,  # Half of the stock is available for sale
+                    "PricePerResource": sell_price,
+                    "Status": "active",
+                    "CreatedAt": now_iso,
+                    "EndAt": end_date_iso,
+                    "Notes": json.dumps({
+                        "reasoning": "Emergency stock creation to prevent idle employee",
+                        "managed_by_script": "adjustimports.py",
+                        "timestamp": now_iso
+                    })
+                }
+                tables["contracts"].create(contract_data)
+                print(f"EMERGENCY: Created new public sell contract for bread in building {building_id} at price {sell_price}")
+            
+            return True
+    except Exception as e:
+        print(f"Error creating emergency bread stock: {str(e)}")
+        print(f"Exception traceback: {traceback.format_exc()}")
+        return False
+
 def process_ai_import_strategies(dry_run: bool = False):
     """Main function to process AI import strategies."""
     print(f"Starting AI import strategy process (dry_run={dry_run})")
@@ -885,6 +972,48 @@ def process_ai_import_strategies(dry_run: bool = False):
     if not ai_citizens:
         print("No AI citizens found, exiting")
         return
+        
+    # Check for the specific market stall mentioned in the user's missive
+    if not dry_run:
+        try:
+            # Look for the specific building
+            building_formula = f"{{BuildingId}}='building_45.445276_12.323465'"
+            market_stall = tables["buildings"].all(formula=building_formula, max_records=1)
+            
+            if market_stall:
+                stall_record = market_stall[0]
+                run_by = stall_record["fields"].get("RunBy")
+                owner = stall_record["fields"].get("Owner")
+                
+                if run_by == "LagoonDealer2025":
+                    print(f"Found the market stall at Fondamenta San Silvestro run by LagoonDealer2025")
+                    
+                    # Check if there's any bread in the stall
+                    resource_formula = f"AND({{Asset}}='building_45.445276_12.323465', {{AssetType}}='building', {{Type}}='bread')"
+                    bread_resources = tables["resources"].all(formula=resource_formula, max_records=1)
+                    
+                    if not bread_resources:
+                        print("No bread found in the market stall. Creating emergency stock...")
+                        create_emergency_bread_stock(tables, "building_45.445276_12.323465", owner or run_by)
+                    else:
+                        bread_count = float(bread_resources[0]["fields"].get("Count", 0))
+                        if bread_count < 5:
+                            print(f"Low bread stock ({bread_count} units) found in the market stall. Replenishing...")
+                            create_emergency_bread_stock(tables, "building_45.445276_12.323465", owner or run_by)
+                        else:
+                            print(f"Sufficient bread stock ({bread_count} units) found in the market stall.")
+                            
+                            # Check if there's an active public sell contract for bread
+                            contract_formula = f"AND({{SellerBuilding}}='building_45.445276_12.323465', {{Type}}='public_sell', {{ResourceType}}='bread', {{Status}}='active')"
+                            bread_contracts = tables["contracts"].all(formula=contract_formula, max_records=1)
+                            
+                            if not bread_contracts:
+                                print("No active public sell contract for bread found. Creating one...")
+                                # Get the owner of the bread resource
+                                bread_owner = bread_resources[0]["fields"].get("Owner")
+                                create_emergency_bread_stock(tables, "building_45.445276_12.323465", bread_owner or owner or run_by)
+        except Exception as e:
+            print(f"Error checking specific market stall: {str(e)}")
     
     # Filter AI citizens to only those who own buildings that can import resources
     filtered_ai_citizens = []

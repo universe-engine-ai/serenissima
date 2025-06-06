@@ -2,6 +2,7 @@ import os
 import sys
 import json
 import traceback
+import uuid
 from collections import defaultdict # Added from setprices.py
 from datetime import datetime, timedelta
 import pytz # Added for Venice timezone
@@ -942,6 +943,11 @@ def process_ai_sales_and_price_strategies(dry_run: bool = False):
             if "contracts_to_create_or_update" in decisions:
                 for decision_item in decisions["contracts_to_create_or_update"]:
                     if validate_create_or_update_contract_decision(decision_item, data_package["sellable_buildings_with_market_data"], resource_types_definitions):
+                        # Set a minimum target_amount of 5 to ensure there's always some stock
+                        if "target_amount" in decision_item and float(decision_item["target_amount"]) < 5.0:
+                            decision_item["target_amount"] = 5.0
+                            print(f"Adjusted target_amount to minimum of 5.0 for {decision_item['resource_type']} in {decision_item['building_id']}")
+                        
                         success = create_or_update_public_sell_contract_from_decision(
                             tables,
                             ai_username,
