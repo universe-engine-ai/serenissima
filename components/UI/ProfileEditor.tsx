@@ -17,6 +17,7 @@ const ProfileEditor: React.FC<ProfileEditorProps> = ({ onClose, onSuccess }) => 
   const [lastName, setLastName] = useState('');
   const [familyMotto, setFamilyMotto] = useState('');
   const [coatOfArmsImageUrl, setCoatOfArmsImageUrl] = useState('');
+  const [corePersonality, setCorePersonality] = useState<string[]>(['', '', '']);
   
   // Initialize form with current citizen data
   useEffect(() => {
@@ -26,6 +27,25 @@ const ProfileEditor: React.FC<ProfileEditorProps> = ({ onClose, onSuccess }) => 
       setLastName(citizenProfile.lastName || '');
       setFamilyMotto(citizenProfile.familyMotto || '');
       setCoatOfArmsImageUrl(citizenProfile.coatOfArmsImageUrl || '');
+      
+      // Handle CorePersonality
+      if (citizenProfile.CorePersonality) {
+        let coreTraits: string[] = [];
+        try {
+          if (typeof citizenProfile.CorePersonality === 'string') {
+            coreTraits = JSON.parse(citizenProfile.CorePersonality);
+          } else if (Array.isArray(citizenProfile.CorePersonality)) {
+            coreTraits = citizenProfile.CorePersonality;
+          }
+          
+          // Ensure we have exactly 3 traits
+          while (coreTraits.length < 3) coreTraits.push('');
+          setCorePersonality(coreTraits.slice(0, 3));
+        } catch (e) {
+          console.error('Error parsing CorePersonality:', e);
+          setCorePersonality(['', '', '']);
+        }
+      }
     }
   }, [citizenProfile]);
   
@@ -52,7 +72,8 @@ const ProfileEditor: React.FC<ProfileEditorProps> = ({ onClose, onSuccess }) => 
           firstName,
           lastName,
           familyMotto,
-          coatOfArmsImageUrl
+          coatOfArmsImageUrl,
+          CorePersonality: corePersonality
         }),
       });
       
@@ -164,7 +185,7 @@ const ProfileEditor: React.FC<ProfileEditorProps> = ({ onClose, onSuccess }) => 
             />
           </div>
           
-          <div className="mb-6">
+          <div className="mb-4">
             <label htmlFor="coatOfArmsImageUrl" className="block text-amber-800 font-medium mb-1">
               Coat of Arms Image URL
             </label>
@@ -179,6 +200,53 @@ const ProfileEditor: React.FC<ProfileEditorProps> = ({ onClose, onSuccess }) => 
             <p className="text-xs text-amber-600 mt-1">
               Enter a URL to an image for your coat of arms
             </p>
+          </div>
+          
+          <div className="mb-6">
+            <label className="block text-amber-800 font-medium mb-1">
+              Core Personality Traits
+            </label>
+            <div className="grid grid-cols-1 gap-2">
+              <div>
+                <label htmlFor="positiveTrait" className="block text-xs text-amber-700">
+                  Positive Trait (strength)
+                </label>
+                <input
+                  type="text"
+                  id="positiveTrait"
+                  value={corePersonality[0]}
+                  onChange={(e) => setCorePersonality([e.target.value, corePersonality[1], corePersonality[2]])}
+                  className="w-full p-2 border border-amber-300 rounded focus:outline-none focus:ring-2 focus:ring-amber-500"
+                  placeholder="e.g., Meticulous, Disciplined, Observant"
+                />
+              </div>
+              <div>
+                <label htmlFor="negativeTrait" className="block text-xs text-amber-700">
+                  Negative Trait (flaw)
+                </label>
+                <input
+                  type="text"
+                  id="negativeTrait"
+                  value={corePersonality[1]}
+                  onChange={(e) => setCorePersonality([corePersonality[0], e.target.value, corePersonality[2]])}
+                  className="w-full p-2 border border-amber-300 rounded focus:outline-none focus:ring-2 focus:ring-amber-500"
+                  placeholder="e.g., Calculating, Rigid, Secretive"
+                />
+              </div>
+              <div>
+                <label htmlFor="coreMotivation" className="block text-xs text-amber-700">
+                  Core Motivation (driver)
+                </label>
+                <input
+                  type="text"
+                  id="coreMotivation"
+                  value={corePersonality[2]}
+                  onChange={(e) => setCorePersonality([corePersonality[0], corePersonality[1], e.target.value])}
+                  className="w-full p-2 border border-amber-300 rounded focus:outline-none focus:ring-2 focus:ring-amber-500"
+                  placeholder="e.g., Security-driven, Stability-oriented"
+                />
+              </div>
+            </div>
           </div>
           
           <div className="flex justify-end space-x-3">

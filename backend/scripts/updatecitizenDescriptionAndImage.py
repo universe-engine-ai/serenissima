@@ -215,6 +215,17 @@ def generate_description_and_image_prompt(username: str, citizen_info: Dict) -> 
             workplace_type = workplace['fields'].get('Type', '')
             workplace_info = f"works at {workplace_name} ({workplace_type})"
         
+        # For Lorenzo Mocenigo (DogeLover88), use the predefined JSON response
+        if username == "DogeLover88" and first_name == "Lorenzo" and last_name == "Mocenigo":
+            log.info(f"Using predefined profile for Lorenzo Mocenigo (DogeLover88)")
+            return {
+                "Personality": "Lorenzo Mocenigo is a meticulous artisan whose hands have been shaped by years of working with molten glass, transforming raw materials into objects of beauty and utility. His methodical nature serves him well in both his craft at the glassblower's workshop and in managing his small mason's lodge, though his tendency toward excessive caution sometimes prevents him from seizing greater opportunities. Despite his modest Popolani status, he carries himself with quiet dignity, understanding that true worth lies in skillful work and steady progress rather than grand gestures.",
+                "CorePersonality": ["Meticulous", "Overcautious", "Craft-mastery"],
+                "familyMotto": "Per Arte et Labore - Through Skill and Labor",
+                "coatOfArms": "A blue shield bearing a golden glass vessel in the center, flanked by crossed mason's tools (hammer and chisel) in silver. Above the vessel sits a small flame representing the furnace's fire. The shield is bordered with a simple rope pattern in brown, symbolizing the honest labor of craftsmen. A small fish at the base honors his humble cottage by the water.",
+                "imagePrompt": "Renaissance Venetian portrait of Lorenzo Mocenigo, a skilled Popolani craftsman in his thirties. He wears a simple but well-made brown doublet with rolled sleeves showing muscular forearms marked by small burns from glasswork. His weathered hands hold a delicate glass piece, demonstrating both strength and precision. His face shows concentration and quiet pride, with intelligent dark eyes that reflect firelight. The background features a Venetian workshop with furnaces glowing warmly, glass pieces on shelves, and mason's tools visible. Natural daylight filters through workshop windows, creating realistic lighting that highlights the textures of glass, fabric, and stone. The color palette uses earth tones - browns, warm oranges from furnace fire, deep blues of Venice's waters visible through a window, with golden highlights on the glass he holds."
+            }
+        
         # Create a prompt for the Kinos Engine
         prompt = f"""
         After experiencing significant events and changes in your life in Venice, it's time to update your description and appearance to better reflect who you've become.

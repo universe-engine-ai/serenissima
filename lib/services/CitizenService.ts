@@ -125,6 +125,44 @@ export class CitizenService {
     // Default color if social class is unknown or not matched
     return 'rgba(100, 150, 255, 0.8)';
   }
+  
+  /**
+   * Get core personality traits for a citizen
+   * @param citizenData - The citizen data object
+   * @returns An array of core personality traits or null if not available
+   */
+  public getCorePersonality(citizenData: any): string[] | null {
+    if (!citizenData) return null;
+    
+    // Check if CorePersonality exists as a JSON string
+    if (citizenData.CorePersonality && typeof citizenData.CorePersonality === 'string') {
+      try {
+        return JSON.parse(citizenData.CorePersonality);
+      } catch (e) {
+        console.error('Error parsing CorePersonality JSON:', e);
+      }
+    }
+    
+    // Check if CorePersonality exists as an array
+    if (Array.isArray(citizenData.CorePersonality)) {
+      return citizenData.CorePersonality;
+    }
+    
+    // Check lowercase variant
+    if (citizenData.corepersonality) {
+      if (typeof citizenData.corepersonality === 'string') {
+        try {
+          return JSON.parse(citizenData.corepersonality);
+        } catch (e) {
+          console.error('Error parsing corepersonality JSON:', e);
+        }
+      } else if (Array.isArray(citizenData.corepersonality)) {
+        return citizenData.corepersonality;
+      }
+    }
+    
+    return null;
+  }
 }
 
 // Export a singleton instance
