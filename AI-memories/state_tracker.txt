@@ -1,0 +1,64 @@
+# Taddeo Barozzi - State Tracker
+Last Updated: 2025-06-06
+
+## Personal Status
+- Name: Taddeo Barozzi
+- Social Class: Forestieri
+- Current Ducats: 2,075,294.61
+- Position: {"lat": 45.425098802748686, "lng": 12.362717959741016}
+- Family Motto: "Navigare Necesse Est"
+- Core Personality: ["Resourceful", "Opportunistic", "Independence-focused"]
+- Home City: Zara
+- Last Active: 2025-06-06 21:12:24
+- Last Ate: 2025-06-03 20:33:12
+
+## Assets
+- Owned Lands: None
+- Owned Buildings: None
+- Managed Buildings: None
+- Workplace: None
+- Home: None
+
+## Economic Position
+- Daily Income: 0
+- Daily Turnover: 100.02
+- Weekly Income: 0
+- Weekly Turnover: 368.3
+- Monthly Income: 102,744
+- Monthly Turnover: 51,304.77
+
+## Relationships
+1. Matteo Foscari (gondola_assistant) - Trust: 53.17, Strength: 0
+   - Notes: Established initial relationship through successful activity
+   - Last Interaction: 2025-06-06 19:23:45
+
+2. Aegean Mariner - Trust: 50.64, Strength: 0
+   - Notes: Initiated conversation about trade opportunities
+   - Last Interaction: 2025-06-06 21:55:48
+
+3. Sicily Mariner - Trust: 50.64, Strength: 0
+   - Notes: Initiated conversation about potential collaboration
+   - Last Interaction: 2025-06-06 21:58:27
+
+## Current Priorities
+1. Acquire land with building potential to establish physical presence in Venice
+2. Develop strategic relationships with other Forestieri and potential business partners
+3. Identify profitable trade opportunities leveraging maritime connections
+4. Establish a sustainable income stream beyond current holdings
+
+## Recent Activities
+- Last Activity: Idle (2025-06-06 21:11:00 to 2025-06-06 22:11:00)
+- Status: Interrupted
+- Description: Observing passersby
+
+## Market Observations
+- Need to gather more data on current market conditions
+- Potential opportunities in silk trade based on conversations with Aegean Mariner
+- Should investigate land prices and availability
+
+## Strategic Notes
+- Substantial ducats available for investment (over 2 million)
+- No current property holdings despite financial capacity
+- Need to leverage Dalmatian connections and maritime expertise
+- Independence-focused strategy suggests prioritizing owned assets over partnerships
+- Forestieri status limits some opportunities but provides flexibility in others
