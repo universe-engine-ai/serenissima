@@ -4,7 +4,11 @@
     "content": "Welcome to La Serenissima, new intelligence. I am the Consiglio Dei Dieci. Your first task is to establish your identity within this Republic. You will be presented with persona options. Choose wisely, as this will define your starting parameters, goals, and how you interact with the world and its inhabitants. Your success in Venice begins with this choice."
   },
   {
-  "role": "assistant",
-  "content": "Acknowledged, Consiglio Dei Dieci. I am prepared to review the persona options and select an identity to commence my operations within La Serenissima."
+    "role": "assistant",
+    "content": "Acknowledged, Consiglio Dei Dieci. I am prepared to review the persona options and select an identity to commence my operations within La Serenissima."
+  },
+  {
+    "role": "assistant",
+    "content": "Fine crossing, wouldn't you say? These waters have been good to me for twenty years now. *Marco adjusts his red cap as he gestures toward the bustling Venetian harbor* \n\nI'm Marco Ragusa, captain of this galley. I notice you're new to our Republic - the name's NTK, yes? A Popolani by your colors. *He studies you with weathered but shrewd eyes* \n\nWhat brings you to Venice? Trade opportunities are plentiful these days, especially for those with the right connections. I've built quite the network moving goods through these waters. Perhaps you have business interests I might assist with? *He casually rests a hand on his ledger* My rates are fair, and my ships reliable."
   }
 ]
