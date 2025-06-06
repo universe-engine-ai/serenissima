@@ -131,33 +131,45 @@ def try_create_eat_at_tavern_activity(
     citizen_custom_id: str,
     citizen_username: str,
     citizen_airtable_id: str,
-    tavern_building_custom_id: str, # Changed to custom BuildingId
-    current_time_utc: datetime.datetime, # Added current_time_utc
-    resource_defs: Dict[str, Any], # Added resource_defs (though not used for generic meal description yet)
+    tavern_building_custom_id: str = None, # Made optional with default None
+    current_time_utc: datetime.datetime = None, # Made optional with default None
+    resource_defs: Dict[str, Any] = None, # Made optional with default None
     details_payload: Optional[Dict[str, Any]] = None # Added details_payload
 ) -> Optional[Dict]:
     """Creates an 'eat_at_tavern' activity."""
     # The actual cost/food type might be determined by the processor or be generic
-    log.info(f"Attempting to create 'eat_at_tavern' for {citizen_username} at tavern {tavern_building_custom_id} with details: {details_payload}")
+    # Handle defaults for optional parameters
+    if current_time_utc is None:
+        current_time_utc = datetime.datetime.now(pytz.UTC)
+    if resource_defs is None:
+        resource_defs = {}
+    
+    # If no specific tavern is provided, we'll eat at any available tavern
+    # The processor will handle finding an appropriate tavern
+    tavern_info = "any available tavern" if tavern_building_custom_id is None else f"tavern {tavern_building_custom_id}"
+    log.info(f"Attempting to create 'eat_at_tavern' for {citizen_username} at {tavern_info} with details: {details_payload}")
+    
     try:
-        # VENICE_TIMEZONE = pytz.timezone('Europe/Rome') # Not needed if using current_time_utc
-        # now_venice = datetime.datetime.now(VENICE_TIMEZONE) # Replaced by current_time_utc
         end_time_utc = current_time_utc + datetime.timedelta(minutes=EAT_ACTIVITY_DURATION_MINUTES) # Eating duration
         
         activity_payload = {
             "ActivityId": f"eat_tav_{citizen_custom_id}_{int(time.time())}",
             "Type": "eat_at_tavern",
             "Citizen": citizen_username,
-            "FromBuilding": tavern_building_custom_id, # Use custom BuildingId
-            "ToBuilding": tavern_building_custom_id,   # Use custom BuildingId
             "CreatedAt": current_time_utc.isoformat(), # Use current_time_utc
             "StartDate": current_time_utc.isoformat(), # Use current_time_utc
             "EndDate": end_time_utc.isoformat(),
-            "Notes": f"🍲 Eating a meal at the tavern.",
-            "Description": "Eating a meal at the tavern",
+            "Notes": f"🍲 Eating a meal at a tavern.",
+            "Description": "Eating a meal at a tavern",
             "Status": "created",
             # Specifics like cost or food type consumed can be handled by the processor
         }
+        
+        # Only add FromBuilding and ToBuilding if a specific tavern is provided
+        if tavern_building_custom_id:
+            activity_payload["FromBuilding"] = tavern_building_custom_id
+            activity_payload["ToBuilding"] = tavern_building_custom_id
+        
         if details_payload:
             activity_payload["Details"] = json.dumps(details_payload)
             
@@ -170,4 +182,7 @@ def try_create_eat_at_tavern_activity(
         return None
     except Exception as e:
         log.error(f"Error creating 'eat_at_tavern' for {citizen_username}: {e}")
+        # Log more detailed error information to help with debugging
+        import traceback
+        log.error(f"Detailed error: {traceback.format_exc()}")
         return None
