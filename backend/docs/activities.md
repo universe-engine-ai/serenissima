@@ -20,8 +20,12 @@ Core activities include:
 - **Production**: Citizen is at their workplace and actively transforming input resources into output resources according to a recipe.
     - *Processor*: Consumes specified input resources from the building's inventory and adds specified output resources, if conditions (input availability, storage capacity) are met.
 - **Fetch Resource**: Citizen travels to a source building (`FromBuilding` in activity) to pick up resources as per a contract. The activity's `ToBuilding` field indicates the ultimate destination for these resources.
+    - *Required Parameters*:
+        - `contractId`: The ID of the contract (public_sell, recurrent, etc.) to fetch resources from.
+        - `amount`: The quantity of resources to fetch.
+        - `toBuildingId`: The destination building where resources will be delivered.
     - *Processor (executes upon arrival at `FromBuilding`)*:
-        - Calculates the actual amount of the specified `ResourceId` to pick up, limited by contract amount, seller's stock (owned by `RunBy` of `FromBuilding`), citizen's carrying capacity (10 units total), and funds of the *effective buyer*.
+        - Calculates the actual amount of the specified resource to pick up, limited by contract amount, seller's stock (owned by `RunBy` of `FromBuilding`), citizen's carrying capacity (10 units total), and funds of the *effective buyer*.
         - L'*effective buyer* est :
             - Pour les contrats `public_sell` : l'opérateur (`RunBy`) du `ToBuilding` de l'activité.
             - Pour les autres types de contrats (ex: `recurrent`) : le `Buyer` spécifié dans le contrat.
