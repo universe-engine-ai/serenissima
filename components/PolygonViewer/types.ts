@@ -46,3 +46,16 @@ export interface Citizen {
   home?: string;
   work?: string;
 }
+
+export interface Relationship {
+  username: string;
+  trustScore: number;
+  strengthScore: number;
+  title: string;
+  description: string;
+}
+
+export interface CitizenRelationships {
+  allies: Relationship[];
+  rivals: Relationship[];
+}

@@ -1261,6 +1261,83 @@ export class RelevancyService {
       return [];
     }
   }
+
+  /**
+   * Fetch citizen relationships to identify friends and enemies
+   * @param username - The citizen username to fetch relationships for
+   * @returns A promise resolving to an object with allies and rivals arrays
+   */
+  public async fetchCitizenRelationships(username: string): Promise<{
+    allies: Array<{username: string, trustScore: number, strengthScore: number, title: string, description: string}>,
+    rivals: Array<{username: string, trustScore: number, strengthScore: number, title: string, description: string}>
+  }> {
+    try {
+      const baseUrl = typeof window !== 'undefined' 
+        ? window.location.origin 
+        : process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000';
+      
+      console.log(`[RelevancyService] Fetching relationships for citizen: ${username}`);
+      
+      // Fetch relationships where the citizen is either citizen1 or citizen2
+      const response = await fetch(`${baseUrl}/api/relationships?citizen=${encodeURIComponent(username)}`);
+      
+      if (!response.ok) {
+        throw new Error(`Failed to fetch relationships: ${response.status} ${response.statusText}`);
+      }
+      
+      const data = await response.json();
+      
+      if (!data.success || !Array.isArray(data.relationships)) {
+        console.error('[RelevancyService] Invalid relationships API response format:', data);
+        return { allies: [], rivals: [] };
+      }
+      
+      const relationships = data.relationships;
+      console.log(`[RelevancyService] Fetched ${relationships.length} relationships for ${username}`);
+      
+      // Process relationships into allies and rivals
+      const allies: Array<{username: string, trustScore: number, strengthScore: number, title: string, description: string}> = [];
+      const rivals: Array<{username: string, trustScore: number, strengthScore: number, title: string, description: string}> = [];
+      
+      relationships.forEach(relationship => {
+        // Determine the other citizen in the relationship
+        const otherCitizen = relationship.citizen1 === username ? relationship.citizen2 : relationship.citizen1;
+        
+        // Skip if no other citizen (shouldn't happen)
+        if (!otherCitizen) return;
+        
+        const relationshipData = {
+          username: otherCitizen,
+          trustScore: relationship.trustScore || 0,
+          strengthScore: relationship.strengthScore || 0,
+          title: relationship.title || 'Unknown Relationship',
+          description: relationship.description || ''
+        };
+        
+        // Classify as ally or rival based on trust score
+        // Trust score above 50 indicates a positive relationship
+        if (relationshipData.trustScore >= 50) {
+          allies.push(relationshipData);
+        } 
+        // Trust score below 30 indicates a negative relationship
+        else if (relationshipData.trustScore < 30) {
+          rivals.push(relationshipData);
+        }
+        // Trust scores between 30-50 are neutral and not included
+      });
+      
+      // Sort allies and rivals by trust score (descending for allies, ascending for rivals)
+      allies.sort((a, b) => b.trustScore - a.trustScore);
+      rivals.sort((a, b) => a.trustScore - b.trustScore);
+      
+      console.log(`[RelevancyService] Processed relationships for ${username}: ${allies.length} allies, ${rivals.length} rivals`);
+      
+      return { allies, rivals };
+    } catch (error) {
+      console.error(`[RelevancyService] Error fetching relationships for ${username}:`, error);
+      return { allies: [], rivals: [] };
+    }
+  }
 }
 
 // Export a singleton instance
