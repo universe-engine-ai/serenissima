@@ -203,11 +203,11 @@ def create_admin_notification(tables, ai_bid_counts: Dict[str, int]) -> None:
         
         # Create the notification
         notification = {
-            "Citizen": "admin",
+            "Citizen": "ConsiglioDeiDieci",
             "Type": "ai_bidding",
             "Content": message,
             "CreatedAt": now,
-            "ReadAt": None,  # Changed from "IsRead": False to "ReadAt": None
+            "ReadAt": None,
             "Details": json.dumps({
                 "ai_bid_counts": ai_bid_counts,
                 "timestamp": now
