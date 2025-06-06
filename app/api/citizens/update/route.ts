@@ -28,7 +28,13 @@ export async function POST(request: Request) {
     if (data.lastName !== undefined) updateFields.LastName = data.lastName;
     if (data.familyMotto !== undefined) updateFields.FamilyMotto = data.familyMotto;
     if (data.coatOfArmsImageUrl !== undefined) updateFields.CoatOfArmsImageUrl = data.coatOfArmsImageUrl;
-    if (data.telegramUserId !== undefined) updateFields.TelegramUserId = data.telegramUserId; // Ajout de TelegramUserId
+    if (data.telegramUserId !== undefined) updateFields.TelegramUserId = data.telegramUserId;
+    
+    // Character profile fields
+    if (data.description !== undefined) updateFields.Description = data.description;
+    if (data.corePersonality !== undefined) updateFields.CorePersonality = data.corePersonality;
+    if (data.coatOfArms !== undefined) updateFields.CoatOfArms = data.coatOfArms;
+    if (data.imagePrompt !== undefined) updateFields.ImagePrompt = data.imagePrompt;
         
     // Only proceed if there are fields to update
     if (Object.keys(updateFields).length === 0) {

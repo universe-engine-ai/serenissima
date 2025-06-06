@@ -125,6 +125,49 @@ export class CitizenService {
     // Default color if social class is unknown or not matched
     return 'rgba(100, 150, 255, 0.8)';
   }
+
+  /**
+   * Update citizen character profile
+   * @param citizenId - The ID of the citizen to update
+   * @param profileData - The profile data to update
+   */
+  public async updateCharacterProfile(citizenId: string, profileData: {
+    personality?: string;
+    corePersonality?: string[];
+    familyMotto?: string;
+    coatOfArms?: string;
+    imagePrompt?: string;
+  }): Promise<boolean> {
+    try {
+      const response = await fetch('/api/citizens/update', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          id: citizenId,
+          personality: profileData.personality,
+          corePersonality: profileData.corePersonality ? JSON.stringify(profileData.corePersonality) : undefined,
+          familyMotto: profileData.familyMotto,
+          coatOfArms: profileData.coatOfArms,
+          imagePrompt: profileData.imagePrompt
+        }),
+      });
+      
+      const data = await response.json();
+      
+      if (data.success) {
+        console.log('Character profile updated successfully');
+        return true;
+      } else {
+        console.error('Failed to update character profile:', data.error);
+        return false;
+      }
+    } catch (error) {
+      console.error('Error updating character profile:', error);
+      return false;
+    }
+  }
 }
 
 // Export a singleton instance
