@@ -261,7 +261,7 @@ def create_or_update_public_sell_contract(
     end_date_iso = (now_venice + timedelta(hours=CONTRACT_DURATION_HOURS)).isoformat()
 
     contract_fields = {
-        "TargetAmount": 0.0, # Changed to 0.0 as per request
+        "TargetAmount": target_amount, # Use the calculated target amount
         "PricePerResource": price_per_resource,
         "EndAt": end_date_iso,
         "Notes": json.dumps({
@@ -292,7 +292,7 @@ def create_or_update_public_sell_contract(
                 "Priority": 5, # Default priority
                 "Status": "active", # Set status to active for new contracts
                 "CreatedAt": now_iso,
-                "TargetAmount": 0.0, # Ensure TargetAmount is 0.0 for new contracts
+                "TargetAmount": target_amount, # Use the calculated target amount
                 "PricePerResource": price_per_resource, # Keep other fields from contract_fields
                 "EndAt": end_date_iso,
                 "Notes": contract_fields["Notes"] # Keep notes from contract_fields
