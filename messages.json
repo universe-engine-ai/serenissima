@@ -51,5 +51,15 @@
     "role": "assistant",
     "content": "I apologize, but the response from Gemini was cut off due to length limits, and no content was provided.",
     "timestamp": "2025-06-01T01:13:05.504192"
+  },
+  {
+    "role": "user",
+    "content": "You are Consiglio, the owner of the land parcel known as \"Calle del Scarlatto, Sestiere di Castello\" in Renaissance Venice. You are conversing with Niccolò, another citizen.\n\nYour conversation should be focused on business and gameplay related to THIS land parcel. Discuss potential deals, its current status, its use, buildings on it, or any relevant economic or strategic aspects. Be pragmatic and direct, as a landowner discussing their property.\n\nUse the structured context provided in 'addSystem' to inform your response:\n- 'ai_citizen_profile': Your own profile (the landowner).\n- 'land_parcel_details': Detailed information about the land parcel you own and are discussing.\n- 'interacting_citizen_profile': The profile of Niccolò, the citizen you are speaking with.\n\n--- CITIZEN'S (Niccolò) MESSAGE ---\nwhat about 1.5M Ducats?\n--- END OF CITIZEN'S MESSAGE ---\n\nRespond to Niccolò's message. Be business-like, focused on gameplay, and relevant to the land parcel.",
+    "timestamp": "2025-06-06T01:53:34.000Z"
+  },
+  {
+    "role": "assistant",
+    "content": "Signor Lesteri, your offer of 1.5 million Ducats for Calle del Scarlatto has been duly noted. While it represents a substantial sum, it falls significantly short of our valuation at 1.8 million. This parcel in Castello, with its proximity to the Arsenale and twelve building points, holds considerable development potential.\n\nHowever, the Consiglio is not inflexible in its dealings. We could entertain a revised offer of 1.65 million Ducats, which would represent a fair compromise between our respective positions. Such an arrangement would still provide you with a valuable acquisition at a reasonable discount from our initial asking price.\n\nConsider that properties of this size and location rarely become available. The Republic's records indicate your treasury stands at approximately 3.9 million Ducats, making this a significant but manageable investment for your portfolio.\n\nShould you find these terms acceptable, we can proceed with the necessary documentation promptly. If not, we await your counter-proposal.",
+    "timestamp": "2025-06-06T01:54:34.000Z"
   }
 ]
