@@ -29,6 +29,18 @@ export async function POST(request: Request) {
     if (data.familyMotto !== undefined) updateFields.FamilyMotto = data.familyMotto;
     if (data.coatOfArmsImageUrl !== undefined) updateFields.CoatOfArmsImageUrl = data.coatOfArmsImageUrl;
     if (data.telegramUserId !== undefined) updateFields.TelegramUserId = data.telegramUserId; // Ajout de TelegramUserId
+    
+    // Add new fields for personality and character details
+    if (data.description !== undefined) updateFields.Description = data.description;
+    if (data.corePersonality !== undefined) {
+      if (Array.isArray(data.corePersonality)) {
+        updateFields.CorePersonality = JSON.stringify(data.corePersonality);
+      } else {
+        updateFields.CorePersonality = data.corePersonality;
+      }
+    }
+    if (data.coatOfArms !== undefined) updateFields.CoatOfArms = data.coatOfArms;
+    if (data.imagePrompt !== undefined) updateFields.ImagePrompt = data.imagePrompt;
         
     // Only proceed if there are fields to update
     if (Object.keys(updateFields).length === 0) {

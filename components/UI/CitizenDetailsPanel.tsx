@@ -1654,7 +1654,12 @@ Your response:`;
                 </div>
               </div>
             )}
-            <p className="text-amber-700 italic text-sm">{citizen.personality || 'No personality description available.'}</p>
+            <ReactMarkdown 
+              className="text-amber-700 italic text-sm"
+              remarkPlugins={[remarkGfm]}
+            >
+              {citizen.personality || citizen.description || 'No personality description available.'}
+            </ReactMarkdown>
           </div>
 
           <div className="mb-6">
