@@ -17,6 +17,7 @@ const ProfileEditor: React.FC<ProfileEditorProps> = ({ onClose, onSuccess }) => 
   const [lastName, setLastName] = useState('');
   const [familyMotto, setFamilyMotto] = useState('');
   const [coatOfArmsImageUrl, setCoatOfArmsImageUrl] = useState('');
+  const [telegramUserId, setTelegramUserId] = useState('');
   const [personality, setPersonality] = useState('');
   const [positiveTraitValue, setPositiveTraitValue] = useState('');
   const [negativeTraitValue, setNegativeTraitValue] = useState('');
@@ -266,7 +267,7 @@ const ProfileEditor: React.FC<ProfileEditorProps> = ({ onClose, onSuccess }) => 
             />
           </div>
           
-          <div className="mb-6">
+          <div className="mb-4">
             <label htmlFor="coatOfArmsImageUrl" className="block text-amber-800 font-medium mb-1">
               Coat of Arms Image URL
             </label>
@@ -280,6 +281,23 @@ const ProfileEditor: React.FC<ProfileEditorProps> = ({ onClose, onSuccess }) => 
             />
             <p className="text-xs text-amber-600 mt-1">
               Enter a URL to an image for your coat of arms
+            </p>
+          </div>
+          
+          <div className="mb-6">
+            <label htmlFor="telegramUserId" className="block text-amber-800 font-medium mb-1">
+              Telegram User ID
+            </label>
+            <input
+              type="text"
+              id="telegramUserId"
+              value={telegramUserId}
+              onChange={(e) => setTelegramUserId(e.target.value)}
+              className="w-full p-2 border border-amber-300 rounded focus:outline-none focus:ring-2 focus:ring-amber-500"
+              placeholder="Your Telegram User ID (optional)"
+            />
+            <p className="text-xs text-amber-600 mt-1">
+              Enter your Telegram User ID to receive notifications (optional)
             </p>
           </div>
           

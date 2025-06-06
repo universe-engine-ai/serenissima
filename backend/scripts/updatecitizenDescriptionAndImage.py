@@ -663,7 +663,7 @@ def create_notification(tables, username: str, old_personality_text: str, new_pe
         summary = "🔄 Your **portrait** and **personality description** have been updated to better reflect your current **status** and **history** in Venice."
         
         # Create the notification record
-        tables['notifications'].create({
+        notification = tables['notifications'].create({
             "Type": "profile_update",
             "Content": content,
             "Details": json.dumps({
@@ -680,6 +680,44 @@ def create_notification(tables, username: str, old_personality_text: str, new_pe
         })
         
         log.info(f"Created notification for citizen {username}")
+        
+        # Send Telegram notification if the citizen has a Telegram User ID
+        try:
+            # Get citizen record to check for Telegram User ID
+            formula = f"{{Username}}='{username}'"
+            citizens = tables['citizens'].all(formula=formula)
+            
+            if citizens and len(citizens) > 0:
+                citizen = citizens[0]
+                telegram_user_id = citizen['fields'].get('TelegramUserId')
+                
+                if telegram_user_id:
+                    # Send Telegram notification
+                    bot_token = os.environ.get('TELEGRAM_BOT_TOKEN')
+                    if bot_token:
+                        telegram_message = f"🖼️ Your citizen profile in La Serenissima has been updated with a new personality description and portrait reflecting your recent activities and achievements in Venice."
+                        
+                        telegram_api_url = f"https://api.telegram.org/bot{bot_token}/sendMessage"
+                        telegram_payload = {
+                            "chat_id": telegram_user_id,
+                            "text": telegram_message,
+                            "parse_mode": "HTML"
+                        }
+                        
+                        try:
+                            telegram_response = requests.post(telegram_api_url, json=telegram_payload)
+                            if telegram_response.ok:
+                                log.info(f"Sent Telegram notification to {username} (ID: {telegram_user_id})")
+                            else:
+                                log.warning(f"Failed to send Telegram notification to {username}: {telegram_response.status_code} {telegram_response.text}")
+                        except Exception as telegram_error:
+                            log.warning(f"Error sending Telegram notification to {username}: {telegram_error}")
+                    else:
+                        log.warning("TELEGRAM_BOT_TOKEN not set. Skipping Telegram notification.")
+        except Exception as telegram_error:
+            log.warning(f"Error processing Telegram notification for {username}: {telegram_error}")
+            # Continue with the function even if Telegram notification fails
+        
         return True
     except Exception as e:
         log.error(f"Error creating notification: {e}")
