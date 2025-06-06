@@ -650,8 +650,14 @@ def create_notification(tables, username: str, old_personality_text: str, new_pe
         log.error(f"Error creating notification: {e}")
         return False
 
-def update_citizen_description_and_image(username: str, dry_run: bool = False):
-    """Main function to update a citizen's description and image."""
+def update_citizen_description_and_image(username: str, dry_run: bool = False, profile_json_path: str = None):
+    """Main function to update a citizen's description and image.
+    
+    Args:
+        username: The username of the citizen to update
+        dry_run: If True, don't make any changes to the database
+        profile_json_path: Optional path to a JSON file containing the profile data
+    """
     log.info(f"Starting update process for citizen {username} (dry_run: {dry_run})")
     
     tables = initialize_airtable()
@@ -662,11 +668,22 @@ def update_citizen_description_and_image(username: str, dry_run: bool = False):
         log.error(f"Failed to get information for citizen {username}")
         return False
     
-    # Generate new description and image prompt
-    result = generate_description_and_image_prompt(username, citizen_info)
-    if not result:
-        log.error(f"Failed to generate description and image prompt for citizen {username}")
-        return False
+    # If a profile JSON path is provided, load the data from there
+    if profile_json_path:
+        log.info(f"Loading profile data from JSON file: {profile_json_path}")
+        try:
+            with open(profile_json_path, 'r') as f:
+                result = json.load(f)
+            log.info(f"Successfully loaded profile data from {profile_json_path}")
+        except Exception as e:
+            log.error(f"Failed to load profile data from {profile_json_path}: {e}")
+            return False
+    else:
+        # Generate new description and image prompt
+        result = generate_description_and_image_prompt(username, citizen_info)
+        if not result:
+            log.error(f"Failed to generate description and image prompt for citizen {username}")
+            return False
     
     new_personality_text = result.get("Personality", "")
     new_core_personality_array = result.get("CorePersonality", []) # This is now an array
@@ -725,10 +742,11 @@ if __name__ == "__main__":
     parser.add_argument("username", help="Username of the citizen to update")
     parser.add_argument("--dry-run", action="store_true", help="Run without making changes")
     parser.add_argument("--verbose", action="store_true", help="Enable verbose logging")
+    parser.add_argument("--profile-json", help="Path to a JSON file containing the profile data")
     
     args = parser.parse_args()
     
     if args.verbose:
         logging.getLogger().setLevel(logging.DEBUG)
     
-    update_citizen_description_and_image(args.username, args.dry_run)
+    update_citizen_description_and_image(args.username, args.dry_run, args.profile_json)

@@ -181,24 +181,63 @@ const ProfileEditor: React.FC<ProfileEditorProps> = ({ onClose, onSuccess }) => 
             </p>
           </div>
           
-          <div className="flex justify-end space-x-3">
+          <div className="flex justify-between space-x-3">
             <button
               type="button"
-              onClick={onClose}
-              className="px-4 py-2 bg-gray-200 text-gray-800 rounded hover:bg-gray-300 transition-colors"
+              onClick={async () => {
+                if (!citizenProfile || !citizenProfile.username) return;
+                
+                setIsSubmitting(true);
+                try {
+                  const response = await fetch('/api/citizens/update-description-image', {
+                    method: 'POST',
+                    headers: {
+                      'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                      username: citizenProfile.username
+                    }),
+                  });
+                  
+                  const data = await response.json();
+                  
+                  if (data.success) {
+                    alert('Profile update initiated! Your description and image will be updated soon.');
+                  } else {
+                    setError(data.error || 'Failed to initiate profile update');
+                  }
+                } catch (error) {
+                  console.error('Error initiating profile update:', error);
+                  setError('An error occurred while initiating your profile update');
+                } finally {
+                  setIsSubmitting(false);
+                }
+              }}
+              className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition-colors"
               disabled={isSubmitting}
             >
-              Cancel
+              Update Description & Image
             </button>
-            <button
-              type="submit"
-              className={`px-4 py-2 bg-amber-600 text-white rounded hover:bg-amber-700 transition-colors ${
-                isSubmitting ? 'opacity-75 cursor-not-allowed' : ''
-              }`}
-              disabled={isSubmitting}
-            >
-              {isSubmitting ? 'Saving...' : 'Save Changes'}
-            </button>
+            
+            <div className="flex space-x-3">
+              <button
+                type="button"
+                onClick={onClose}
+                className="px-4 py-2 bg-gray-200 text-gray-800 rounded hover:bg-gray-300 transition-colors"
+                disabled={isSubmitting}
+              >
+                Cancel
+              </button>
+              <button
+                type="submit"
+                className={`px-4 py-2 bg-amber-600 text-white rounded hover:bg-amber-700 transition-colors ${
+                  isSubmitting ? 'opacity-75 cursor-not-allowed' : ''
+                }`}
+                disabled={isSubmitting}
+              >
+                {isSubmitting ? 'Saving...' : 'Save Changes'}
+              </button>
+            </div>
           </div>
         </form>
       </div>
