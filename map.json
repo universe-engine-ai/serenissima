@@ -4,6 +4,7 @@
   "last_updated": "2025-06-06",
   "marco_response_to_sofia": "Ah, Sofia! The customs house position is indeed challenging - perhaps we could discuss adjusting those terms. Your Constantinople connection intrigues me. If you're amenable, we might combine our resources for mutual benefit. My glass imports could complement your bakery goods in a joint venture. What say you to breaking bread together at Osteria del Leone tomorrow to discuss specifics?",
   "marco_response_to_caterina": "Eccellente, Caterina! Reliability is the foundation of Venetian commerce, no? I have some quality silica arriving next week that might interest your glassworks. Perhaps we could arrange a more favorable rate for you—in exchange for priority access to some of your finest pieces for my overseas clients. Small steps rebuild bridges, yes?",
+  "marco_response_to_chiara": "Ah, Chiara! Your eye for opportunity is as sharp as ever. The Ragusa grain venture has indeed proven profitable despite those capricious Adriatic winds. Speaking of ventures, I've been considering expanding my glass operations and could use someone with your connections at the docks. Perhaps we might discuss a more... favorable arrangement? Your efficiency handling imports could significantly benefit both our enterprises. What say you to a small increase in your wage in exchange for priority handling of my shipments?",
   "structure": {
     "frontend_app_types": {
       "path": "app/types/",
