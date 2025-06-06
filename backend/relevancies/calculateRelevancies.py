@@ -451,6 +451,110 @@ def calculate_relevancies_for_ai(username: str, base_url: str, type_filter: Opti
             "error": str(e)
         }
 
+def calculate_same_land_neighbor_relevancies(base_url: str) -> Dict:
+    """Calculate same land neighbor relevancies for all citizens."""
+    try:
+        log.info("Calculating same land neighbor relevancies")
+        
+        # Use the same-land-neighbor endpoint
+        api_url = f"{base_url}/api/relevancies/same-land-neighbor"
+        log.info(f"Calling API: {api_url}")
+        
+        # Make a POST request to the same-land-neighbor endpoint
+        response = requests.post(
+            api_url,
+            json={},  # Empty payload to calculate for all citizens
+            timeout=60
+        )
+        
+        log.info(f"Same Land Neighbor API response status: {response.status_code}")
+        
+        if not response.ok:
+            log.error(f"Same Land Neighbor API call failed with status {response.status_code}: {response.text}")
+            return {
+                "success": False,
+                "error": f"API error: {response.status_code} - {response.text}"
+            }
+        
+        # Parse the response
+        data = response.json()
+        
+        # Log a summary of the response
+        log.info(f"Same Land Neighbor API response: success={data.get('success')}, relevanciesSavedCount={data.get('relevanciesSavedCount', 0)}")
+        
+        if not data.get('success'):
+            log.error(f"Same Land Neighbor API returned error: {data.get('error')}")
+            return {
+                "success": False,
+                "error": data.get('error', 'Unknown error')
+            }
+        
+        # Return the results
+        return {
+            "success": True,
+            "relevanciesSavedCount": data.get('relevanciesSavedCount', 0),
+            "saved": data.get('saved', False)
+        }
+    except Exception as e:
+        log.error(f"Error calculating same land neighbor relevancies: {e}")
+        log.error(traceback.format_exc())
+        return {
+            "success": False,
+            "error": str(e)
+        }
+
+def calculate_guild_member_relevancies(base_url: str) -> Dict:
+    """Calculate guild member relevancies for all citizens."""
+    try:
+        log.info("Calculating guild member relevancies")
+        
+        # Use the guild-member endpoint
+        api_url = f"{base_url}/api/relevancies/guild-member"
+        log.info(f"Calling API: {api_url}")
+        
+        # Make a POST request to the guild-member endpoint
+        response = requests.post(
+            api_url,
+            json={},  # Empty payload to calculate for all citizens
+            timeout=60
+        )
+        
+        log.info(f"Guild Member API response status: {response.status_code}")
+        
+        if not response.ok:
+            log.error(f"Guild Member API call failed with status {response.status_code}: {response.text}")
+            return {
+                "success": False,
+                "error": f"API error: {response.status_code} - {response.text}"
+            }
+        
+        # Parse the response
+        data = response.json()
+        
+        # Log a summary of the response
+        log.info(f"Guild Member API response: success={data.get('success')}, relevanciesSavedCount={data.get('relevanciesSavedCount', 0)}")
+        
+        if not data.get('success'):
+            log.error(f"Guild Member API returned error: {data.get('error')}")
+            return {
+                "success": False,
+                "error": data.get('error', 'Unknown error')
+            }
+        
+        # Return the results
+        return {
+            "success": True,
+            "relevanciesSavedCount": data.get('relevanciesSavedCount', 0),
+            "saved": data.get('saved', False)
+        }
+    except Exception as e:
+        log.error(f"Error calculating guild member relevancies: {e}")
+        log.error(traceback.format_exc())
+        return {
+            "success": False,
+            "error": str(e)
+        }
+
 def calculate_relevancies(type_filter: Optional[str] = None) -> bool:
     """Calculate relevancy scores for all citizens who own lands."""
     try:
@@ -491,6 +595,14 @@ def calculate_relevancies(type_filter: Optional[str] = None) -> bool:
         log.info("Calculating job market situation relevancies")
         job_market_result = calculate_job_market_relevancies(base_url)
         
+        # Calculate same land neighbor relevancies
+        log.info("Calculating same land neighbor relevancies")
+        same_land_neighbor_result = calculate_same_land_neighbor_relevancies(base_url)
+        
+        # Calculate guild member relevancies
+        log.info("Calculating guild member relevancies")
+        guild_member_result = calculate_guild_member_relevancies(base_url)
+        
         total_relevancies_saved = 0 # More accurate naming
         
         if domination_result.get('success'):
@@ -514,6 +626,20 @@ def calculate_relevancies(type_filter: Optional[str] = None) -> bool:
             log.info(f"Successfully processed job market situation relevancies, records saved: {num_job_market_saved}")
         else:
             log.error(f"Failed to calculate job market situation relevancies: {job_market_result.get('error')}")
+            
+        if same_land_neighbor_result.get('success'):
+            num_same_land_neighbor_saved = same_land_neighbor_result.get('relevanciesSavedCount', 0)
+            total_relevancies_saved += num_same_land_neighbor_saved
+            log.info(f"Successfully processed same land neighbor relevancies, records saved: {num_same_land_neighbor_saved}")
+        else:
+            log.error(f"Failed to calculate same land neighbor relevancies: {same_land_neighbor_result.get('error')}")
+            
+        if guild_member_result.get('success'):
+            num_guild_member_saved = guild_member_result.get('relevanciesSavedCount', 0)
+            total_relevancies_saved += num_guild_member_saved
+            log.info(f"Successfully processed guild member relevancies, records saved: {num_guild_member_saved}")
+        else:
+            log.error(f"Failed to calculate guild member relevancies: {guild_member_result.get('error')}")
         
         # Process each citizen individually to avoid timeouts
         results = {}
@@ -614,6 +740,20 @@ def calculate_relevancies(type_filter: Optional[str] = None) -> bool:
             details.append(f"  - Average wages: {stats.get('averageWages', 'N/A')} Ducats")
         else:
             details.append(f"- Job market situation relevancies: Error - {job_market_result.get('error', 'Unknown error')}")
+            
+        # Add same land neighbor relevancies to the details
+        if same_land_neighbor_result.get('success'):
+            num_same_land_neighbor_saved = same_land_neighbor_result.get('relevanciesSavedCount', 0)
+            details.append(f"- Same Land Neighbor relevancies: {num_same_land_neighbor_saved} records saved")
+        else:
+            details.append(f"- Same Land Neighbor relevancies: Error - {same_land_neighbor_result.get('error', 'Unknown error')}")
+            
+        # Add guild member relevancies to the details
+        if guild_member_result.get('success'):
+            num_guild_member_saved = guild_member_result.get('relevanciesSavedCount', 0)
+            details.append(f"- Guild Member relevancies: {num_guild_member_saved} records saved")
+        else:
+            details.append(f"- Guild Member relevancies: Error - {guild_member_result.get('error', 'Unknown error')}")
         
         # Then add individual citizen results
         for citizen, result in results.items():
