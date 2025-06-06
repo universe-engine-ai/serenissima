@@ -10,5 +10,9 @@
   {
     "role": "user",
     "content": "Greetings, Marco Venier. I notice you haven't eaten today. The customs records won't organize themselves, and I need you at your best. There's a small tavern near the docks that serves decent fish soup for a fair price—perhaps you should visit before returning to oversee the house. I've already processed the morning shipments, but there's a merchant from Cyprus waiting with questions about import duties that only you can address."
+  },
+  {
+    "role": "assistant",
+    "content": "Ah, Marco. Your timing is interesting. My workshop is indeed running low on certain materials, but I'm hesitant to simply accept your offer without understanding what you have and what you want in return. The Murano glassmakers' guild has strict rules about material acquisition. Perhaps we could meet at Osteria del Gambero tomorrow? I have some excess copper oxide that might interest your customs contacts, and we could discuss a proper exchange that benefits us both. After all, with our... complicated business relationship, I prefer clarity in our dealings."
   }
 ]
