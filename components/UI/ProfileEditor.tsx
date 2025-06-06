@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useWalletContext } from './WalletProvider';
+import CitizenProfileUpdater from './CitizenProfileUpdater';
 
 interface ProfileEditorProps {
   onClose: () => void;
@@ -10,6 +11,7 @@ const ProfileEditor: React.FC<ProfileEditorProps> = ({ onClose, onSuccess }) => 
   const { citizenProfile } = useWalletContext();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [showProfileUpdater, setShowProfileUpdater] = useState(false);
   
   // Form state
   const [username, setUsername] = useState('');
@@ -85,9 +87,23 @@ const ProfileEditor: React.FC<ProfileEditorProps> = ({ onClose, onSuccess }) => 
     }
   };
   
+  const handleOpenProfileUpdater = () => {
+    setShowProfileUpdater(true);
+  };
+  
+  const handleCloseProfileUpdater = () => {
+    setShowProfileUpdater(false);
+  };
+  
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-      <div className="bg-amber-50 rounded-lg p-6 max-w-md w-full border-2 border-amber-600 shadow-xl">
+      {showProfileUpdater ? (
+        <CitizenProfileUpdater 
+          onClose={handleCloseProfileUpdater}
+          onSuccess={onSuccess}
+        />
+      ) : (
+        <div className="bg-amber-50 rounded-lg p-6 max-w-md w-full border-2 border-amber-600 shadow-xl">
         <div className="flex justify-between items-center mb-4">
           <h2 className="text-2xl font-serif text-amber-800">Edit Profile</h2>
           <button 
@@ -181,27 +197,39 @@ const ProfileEditor: React.FC<ProfileEditorProps> = ({ onClose, onSuccess }) => 
             </p>
           </div>
           
-          <div className="flex justify-end space-x-3">
+          <div className="flex justify-between space-x-3">
             <button
               type="button"
-              onClick={onClose}
-              className="px-4 py-2 bg-gray-200 text-gray-800 rounded hover:bg-gray-300 transition-colors"
+              onClick={handleOpenProfileUpdater}
+              className="px-4 py-2 bg-amber-500 text-white rounded hover:bg-amber-600 transition-colors"
               disabled={isSubmitting}
             >
-              Cancel
+              Update Personality & Appearance
             </button>
-            <button
-              type="submit"
-              className={`px-4 py-2 bg-amber-600 text-white rounded hover:bg-amber-700 transition-colors ${
-                isSubmitting ? 'opacity-75 cursor-not-allowed' : ''
-              }`}
-              disabled={isSubmitting}
-            >
-              {isSubmitting ? 'Saving...' : 'Save Changes'}
-            </button>
+            
+            <div className="flex space-x-3">
+              <button
+                type="button"
+                onClick={onClose}
+                className="px-4 py-2 bg-gray-200 text-gray-800 rounded hover:bg-gray-300 transition-colors"
+                disabled={isSubmitting}
+              >
+                Cancel
+              </button>
+              <button
+                type="submit"
+                className={`px-4 py-2 bg-amber-600 text-white rounded hover:bg-amber-700 transition-colors ${
+                  isSubmitting ? 'opacity-75 cursor-not-allowed' : ''
+                }`}
+                disabled={isSubmitting}
+              >
+                {isSubmitting ? 'Saving...' : 'Save Changes'}
+              </button>
+            </div>
           </div>
         </form>
-      </div>
+        </div>
+      )}
     </div>
   );
 };
