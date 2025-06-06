@@ -31,6 +31,7 @@ const ProfileEditor: React.FC<ProfileEditorProps> = ({ onClose, onSuccess }) => 
       setLastName(citizenProfile.lastName || '');
       setFamilyMotto(citizenProfile.familyMotto || '');
       setCoatOfArmsImageUrl(citizenProfile.coatOfArmsImageUrl || '');
+      setTelegramUserId(citizenProfile.telegramUserId || '');
       setPersonality(citizenProfile.description || '');
       
       // Handle CorePersonality array if it exists
@@ -80,7 +81,8 @@ const ProfileEditor: React.FC<ProfileEditorProps> = ({ onClose, onSuccess }) => 
           familyMotto,
           coatOfArmsImageUrl,
           description: personality,
-          corePersonality: corePersonality.length > 0 ? corePersonality : undefined
+          corePersonality: corePersonality.length > 0 ? corePersonality : undefined,
+          telegramUserId: telegramUserId ? telegramUserId : null
         }),
       });
       
