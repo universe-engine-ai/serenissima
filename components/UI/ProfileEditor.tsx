@@ -17,6 +17,10 @@ const ProfileEditor: React.FC<ProfileEditorProps> = ({ onClose, onSuccess }) => 
   const [lastName, setLastName] = useState('');
   const [familyMotto, setFamilyMotto] = useState('');
   const [coatOfArmsImageUrl, setCoatOfArmsImageUrl] = useState('');
+  const [personality, setPersonality] = useState('');
+  const [positiveTraitValue, setPositiveTraitValue] = useState('');
+  const [negativeTraitValue, setNegativeTraitValue] = useState('');
+  const [coreMotivationValue, setCoreMotivationValue] = useState('');
   
   // Initialize form with current citizen data
   useEffect(() => {
@@ -26,6 +30,20 @@ const ProfileEditor: React.FC<ProfileEditorProps> = ({ onClose, onSuccess }) => 
       setLastName(citizenProfile.lastName || '');
       setFamilyMotto(citizenProfile.familyMotto || '');
       setCoatOfArmsImageUrl(citizenProfile.coatOfArmsImageUrl || '');
+      setPersonality(citizenProfile.description || '');
+      
+      // Handle CorePersonality array if it exists
+      if (citizenProfile.corePersonality && Array.isArray(citizenProfile.corePersonality)) {
+        if (citizenProfile.corePersonality.length >= 1) {
+          setPositiveTraitValue(citizenProfile.corePersonality[0]);
+        }
+        if (citizenProfile.corePersonality.length >= 2) {
+          setNegativeTraitValue(citizenProfile.corePersonality[1]);
+        }
+        if (citizenProfile.corePersonality.length >= 3) {
+          setCoreMotivationValue(citizenProfile.corePersonality[2]);
+        }
+      }
     }
   }, [citizenProfile]);
   
@@ -41,6 +59,13 @@ const ProfileEditor: React.FC<ProfileEditorProps> = ({ onClose, onSuccess }) => 
     setError(null);
     
     try {
+      // Construct the CorePersonality array
+      const corePersonality = [
+        positiveTraitValue,
+        negativeTraitValue,
+        coreMotivationValue
+      ].filter(trait => trait.trim() !== ''); // Filter out empty traits
+      
       const response = await fetch('/api/citizens/update', {
         method: 'POST',
         headers: {
@@ -52,7 +77,9 @@ const ProfileEditor: React.FC<ProfileEditorProps> = ({ onClose, onSuccess }) => 
           firstName,
           lastName,
           familyMotto,
-          coatOfArmsImageUrl
+          coatOfArmsImageUrl,
+          description: personality,
+          corePersonality: corePersonality.length > 0 ? corePersonality : undefined
         }),
       });
       
@@ -147,6 +174,81 @@ const ProfileEditor: React.FC<ProfileEditorProps> = ({ onClose, onSuccess }) => 
                 className="w-full p-2 border border-amber-300 rounded focus:outline-none focus:ring-2 focus:ring-amber-500"
                 placeholder="Last name"
               />
+            </div>
+          </div>
+          
+          <div className="mb-4">
+            <label htmlFor="familyMotto" className="block text-amber-800 font-medium mb-1">
+              Family Motto
+            </label>
+            <input
+              type="text"
+              id="familyMotto"
+              value={familyMotto}
+              onChange={(e) => setFamilyMotto(e.target.value)}
+              className="w-full p-2 border border-amber-300 rounded focus:outline-none focus:ring-2 focus:ring-amber-500"
+              placeholder="Your family motto"
+            />
+          </div>
+          
+          <div className="mb-4">
+            <label htmlFor="personality" className="block text-amber-800 font-medium mb-1">
+              Personality Description
+            </label>
+            <textarea
+              id="personality"
+              value={personality}
+              onChange={(e) => setPersonality(e.target.value)}
+              className="w-full p-2 border border-amber-300 rounded focus:outline-none focus:ring-2 focus:ring-amber-500"
+              placeholder="Describe your character's personality in 2-3 sentences"
+              rows={3}
+            />
+          </div>
+          
+          <div className="mb-4">
+            <label className="block text-amber-800 font-medium mb-1">
+              Core Personality Traits
+            </label>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div>
+                <label htmlFor="positiveTrait" className="block text-xs text-amber-700 mb-1">
+                  Positive Trait
+                </label>
+                <input
+                  type="text"
+                  id="positiveTrait"
+                  value={positiveTraitValue}
+                  onChange={(e) => setPositiveTraitValue(e.target.value)}
+                  className="w-full p-2 border border-amber-300 rounded focus:outline-none focus:ring-2 focus:ring-amber-500"
+                  placeholder="e.g., Strategic, Resourceful"
+                />
+              </div>
+              <div>
+                <label htmlFor="negativeTrait" className="block text-xs text-amber-700 mb-1">
+                  Negative Trait
+                </label>
+                <input
+                  type="text"
+                  id="negativeTrait"
+                  value={negativeTraitValue}
+                  onChange={(e) => setNegativeTraitValue(e.target.value)}
+                  className="w-full p-2 border border-amber-300 rounded focus:outline-none focus:ring-2 focus:ring-amber-500"
+                  placeholder="e.g., Calculating, Impatient"
+                />
+              </div>
+              <div>
+                <label htmlFor="coreMotivation" className="block text-xs text-amber-700 mb-1">
+                  Core Motivation
+                </label>
+                <input
+                  type="text"
+                  id="coreMotivation"
+                  value={coreMotivationValue}
+                  onChange={(e) => setCoreMotivationValue(e.target.value)}
+                  className="w-full p-2 border border-amber-300 rounded focus:outline-none focus:ring-2 focus:ring-amber-500"
+                  placeholder="e.g., Wealth-accumulation"
+                />
+              </div>
             </div>
           </div>
           

@@ -394,6 +394,18 @@ def generate_description_and_image_prompt(username: str, citizen_info: Dict) -> 
                                 core_array = json.loads(core_personality_str_match.group(1))
                             except json.JSONDecodeError:
                                 log.warning("Could not parse CorePersonality array from regex match.")
+                                # Try to extract the array elements manually
+                                core_str = core_personality_str_match.group(1)
+                                # Remove the brackets
+                                core_str = core_str.strip()[1:-1]
+                                # Split by commas, but respect quoted strings
+                                import csv
+                                try:
+                                    reader = csv.reader([core_str], delimiter=',', quotechar='"')
+                                    for row in reader:
+                                        core_array = [item.strip() for item in row]
+                                except Exception as csv_ex:
+                                    log.warning(f"Failed to parse CorePersonality using CSV reader: {csv_ex}")
                         
                         # Special handling for family motto which might contain quotes
                         motto_start = json_str.find('"familyMotto"')
@@ -583,6 +595,29 @@ def update_citizen_record(tables, username: str, personality_text: str, core_per
         # Check which fields are empty for conditional updates
         current_family_motto = citizen['fields'].get('FamilyMotto', '')
         current_coat_of_arms = citizen['fields'].get('CoatOfArms', '')
+        
+        # Validate core_personality_array
+        if core_personality_array and not isinstance(core_personality_array, list):
+            log.warning(f"CorePersonality is not a list: {core_personality_array}. Converting to list.")
+            if isinstance(core_personality_array, str):
+                try:
+                    core_personality_array = json.loads(core_personality_array)
+                except json.JSONDecodeError:
+                    core_personality_array = [core_personality_array]
+            else:
+                core_personality_array = [str(core_personality_array)]
+        
+        # Ensure we have exactly 3 elements in the array
+        if core_personality_array:
+            if len(core_personality_array) < 3:
+                log.warning(f"CorePersonality array has fewer than 3 elements: {core_personality_array}")
+                # Pad with empty strings if needed
+                while len(core_personality_array) < 3:
+                    core_personality_array.append("")
+            elif len(core_personality_array) > 3:
+                log.warning(f"CorePersonality array has more than 3 elements: {core_personality_array}")
+                # Truncate to 3 elements
+                core_personality_array = core_personality_array[:3]
         
         # Prepare update data
         update_data = {
