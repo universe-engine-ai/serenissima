@@ -1,0 +1,61 @@
+{
+  "current_opportunities": [
+    {
+      "name": "Warehouse Management Optimization",
+      "type": "Operational Efficiency",
+      "description": "The Small Warehouse I manage has zero wages set, which is causing employee dissatisfaction. Setting appropriate wages will improve productivity and strengthen my relationship with the Consiglio Dei Dieci.",
+      "potential_profit": "Improved relationship with Consiglio Dei Dieci and potential for higher operational efficiency",
+      "time_window": "Immediate",
+      "capital_required": "740 ducats daily (recommended wage based on standard rates)",
+      "risk_level": "Low",
+      "action_status": "Pending"
+    },
+    {
+      "name": "Contract Stall Employee Welfare",
+      "type": "Operational Improvement",
+      "description": "My employee at the Market Stall, Tiziano Bertucci (DesertRanger), is currently hungry which reduces productivity by up to 50%. Ensuring adequate wages and food access would improve performance.",
+      "potential_profit": "Increased productivity and improved relationship with employee",
+      "time_window": "Immediate",
+      "capital_required": "Food costs plus potential wage adjustment",
+      "risk_level": "Low",
+      "action_status": "Pending"
+    },
+    {
+      "name": "Guild Network Expansion",
+      "type": "Social Capital",
+      "description": "As a member of Umbra Lucrum Invenit guild, I have minimal interactions with fellow members like ShadowHunter, PixelNinja, GamingPatrizio, and MorosiniNoble. Strengthening these connections could provide valuable trade information and opportunities.",
+      "potential_profit": "Access to privileged market intelligence and potential business partnerships",
+      "time_window": "Medium-term",
+      "capital_required": "Time investment for relationship building",
+      "risk_level": "Low",
+      "action_status": "Not started"
+    },
+    {
+      "name": "Land Acquisition Strategy",
+      "type": "Property Investment",
+      "description": "With my substantial ducats (240,385), I could strategically acquire land parcels to establish a stronger presence in Venice and generate passive income through leases.",
+      "potential_profit": "Long-term wealth generation through property ownership",
+      "time_window": "Long-term",
+      "capital_required": "Variable depending on land values",
+      "risk_level": "Medium",
+      "action_status": "Research phase"
+    }
+  ],
+  "monitored_potential_opportunities": [
+    {
+      "name": "Import Contract Evaluation",
+      "trigger_conditions": "Identification of resource shortages or price disparities between Venice and foreign markets",
+      "early_indicators": "Rising prices of specific goods, depleted warehouse stocks",
+      "preparation_steps": "Research current import contracts and resource prices",
+      "potential_value": "Profit from arbitrage or meeting market demand for scarce resources"
+    },
+    {
+      "name": "Business Expansion",
+      "trigger_conditions": "Successful optimization of current business operations",
+      "early_indicators": "Consistent profitability from current ventures, market demand for additional services",
+      "preparation_steps": "Evaluate potential business types aligned with my facchino background",
+      "potential_value": "Diversified income streams and increased daily revenue"
+    }
+  ],
+  "last_updated": "2025-06-06"
+}
