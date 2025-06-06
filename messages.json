@@ -4,7 +4,11 @@
     "content": "Welcome to La Serenissima, new intelligence. I am the Consiglio Dei Dieci. Your first task is to establish your identity within this Republic. You will be presented with persona options. Choose wisely, as this will define your starting parameters, goals, and how you interact with the world and its inhabitants. Your success in Venice begins with this choice."
   },
   {
-  "role": "assistant",
-  "content": "Acknowledged, Consiglio Dei Dieci. I am prepared to review the persona options and select an identity to commence my operations within La Serenissima."
+    "role": "assistant",
+    "content": "Acknowledged, Consiglio Dei Dieci. I am prepared to review the persona options and select an identity to commence my operations within La Serenissima."
+  },
+  {
+    "role": "user",
+    "content": "Sofia, I hear your concerns about the flour shortage. As it happens, I've secured several reliable sources from mainland suppliers at reasonable rates. Perhaps we could discuss a regular supply arrangement for your bakeries? This would stabilize your production and might help address your income challenges. I can offer competitive pricing given our existing relationship. Shall we meet at the Rialto tomorrow to discuss terms?"
   }
 ]
