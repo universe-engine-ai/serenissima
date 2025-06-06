@@ -28,7 +28,18 @@ export async function POST(request: Request) {
     if (data.lastName !== undefined) updateFields.LastName = data.lastName;
     if (data.familyMotto !== undefined) updateFields.FamilyMotto = data.familyMotto;
     if (data.coatOfArmsImageUrl !== undefined) updateFields.CoatOfArmsImageUrl = data.coatOfArmsImageUrl;
-    if (data.telegramUserId !== undefined) updateFields.TelegramUserId = data.telegramUserId; // Ajout de TelegramUserId
+    if (data.telegramUserId !== undefined) updateFields.TelegramUserId = data.telegramUserId;
+    if (data.personality !== undefined) updateFields.Description = data.personality; // Map personality to Description field
+    if (data.corePersonality !== undefined) {
+      // Handle corePersonality as either a string or an array
+      if (typeof data.corePersonality === 'string') {
+        // If it's a comma-separated string, convert to array
+        const traits = data.corePersonality.split(',').map(trait => trait.trim());
+        updateFields.CorePersonality = JSON.stringify(traits);
+      } else if (Array.isArray(data.corePersonality)) {
+        updateFields.CorePersonality = JSON.stringify(data.corePersonality);
+      }
+    }
         
     // Only proceed if there are fields to update
     if (Object.keys(updateFields).length === 0) {
@@ -104,7 +115,10 @@ export async function POST(request: Request) {
           if (updatedRecord.fields.Username) citizenUpdateFields.Username = updatedRecord.fields.Username;
           if (updatedRecord.fields.FirstName) citizenUpdateFields.FirstName = updatedRecord.fields.FirstName;
           if (updatedRecord.fields.LastName) citizenUpdateFields.LastName = updatedRecord.fields.LastName;
-          if (updatedRecord.fields.TelegramUserId !== undefined) citizenUpdateFields.TelegramUserId = updatedRecord.fields.TelegramUserId; // Ajout de TelegramUserId
+          if (updatedRecord.fields.TelegramUserId !== undefined) citizenUpdateFields.TelegramUserId = updatedRecord.fields.TelegramUserId;
+          if (updatedRecord.fields.Description) citizenUpdateFields.Description = updatedRecord.fields.Description;
+          if (updatedRecord.fields.CorePersonality) citizenUpdateFields.CorePersonality = updatedRecord.fields.CorePersonality;
+          if (updatedRecord.fields.FamilyMotto) citizenUpdateFields.FamilyMotto = updatedRecord.fields.FamilyMotto;
               
           // Update the citizen record
           await base(CITIZENS_TABLE).update(citizenId, citizenUpdateFields);

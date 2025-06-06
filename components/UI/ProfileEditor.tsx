@@ -17,6 +17,8 @@ const ProfileEditor: React.FC<ProfileEditorProps> = ({ onClose, onSuccess }) => 
   const [lastName, setLastName] = useState('');
   const [familyMotto, setFamilyMotto] = useState('');
   const [coatOfArmsImageUrl, setCoatOfArmsImageUrl] = useState('');
+  const [personality, setPersonality] = useState('');
+  const [corePersonality, setCorePersonality] = useState('');
   
   // Initialize form with current citizen data
   useEffect(() => {
@@ -26,6 +28,12 @@ const ProfileEditor: React.FC<ProfileEditorProps> = ({ onClose, onSuccess }) => 
       setLastName(citizenProfile.lastName || '');
       setFamilyMotto(citizenProfile.familyMotto || '');
       setCoatOfArmsImageUrl(citizenProfile.coatOfArmsImageUrl || '');
+      setPersonality(citizenProfile.description || '');
+      setCorePersonality(Array.isArray(citizenProfile.corePersonality) 
+        ? citizenProfile.corePersonality.join(', ') 
+        : typeof citizenProfile.corePersonality === 'string' 
+          ? citizenProfile.corePersonality 
+          : '');
     }
   }, [citizenProfile]);
   
@@ -52,7 +60,9 @@ const ProfileEditor: React.FC<ProfileEditorProps> = ({ onClose, onSuccess }) => 
           firstName,
           lastName,
           familyMotto,
-          coatOfArmsImageUrl
+          coatOfArmsImageUrl,
+          personality,
+          corePersonality
         }),
       });
       
@@ -164,7 +174,7 @@ const ProfileEditor: React.FC<ProfileEditorProps> = ({ onClose, onSuccess }) => 
             />
           </div>
           
-          <div className="mb-6">
+          <div className="mb-4">
             <label htmlFor="coatOfArmsImageUrl" className="block text-amber-800 font-medium mb-1">
               Coat of Arms Image URL
             </label>
@@ -178,6 +188,37 @@ const ProfileEditor: React.FC<ProfileEditorProps> = ({ onClose, onSuccess }) => 
             />
             <p className="text-xs text-amber-600 mt-1">
               Enter a URL to an image for your coat of arms
+            </p>
+          </div>
+          
+          <div className="mb-4">
+            <label htmlFor="personality" className="block text-amber-800 font-medium mb-1">
+              Personality Description
+            </label>
+            <textarea
+              id="personality"
+              value={personality}
+              onChange={(e) => setPersonality(e.target.value)}
+              className="w-full p-2 border border-amber-300 rounded focus:outline-none focus:ring-2 focus:ring-amber-500"
+              placeholder="Describe your personality in 2-3 sentences"
+              rows={3}
+            />
+          </div>
+          
+          <div className="mb-6">
+            <label htmlFor="corePersonality" className="block text-amber-800 font-medium mb-1">
+              Core Personality Traits
+            </label>
+            <input
+              type="text"
+              id="corePersonality"
+              value={corePersonality}
+              onChange={(e) => setCorePersonality(e.target.value)}
+              className="w-full p-2 border border-amber-300 rounded focus:outline-none focus:ring-2 focus:ring-amber-500"
+              placeholder="Positive trait, Negative trait, Core motivation"
+            />
+            <p className="text-xs text-amber-600 mt-1">
+              Enter three traits separated by commas: a strength, a flaw, and what motivates you
             </p>
           </div>
           

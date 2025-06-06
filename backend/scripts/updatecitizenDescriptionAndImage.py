@@ -353,31 +353,77 @@ def generate_description_and_image_prompt(username: str, citizen_info: Dict) -> 
         except json.JSONDecodeError:
             # Log the full response for debugging
             log.error(f"Could not parse entire response as JSON. Full response: {response_text}")
-            
+                    
             # Find the first { and last } in the content
             first_brace = response_text.find('{')
             last_brace = response_text.rfind('}')
-            
+                    
             if first_brace != -1 and last_brace != -1 and first_brace < last_brace:
                 # Extract the JSON string
                 json_str = response_text[first_brace:last_brace+1]
-                
+                        
                 # Remove comments (both // and /* */ style)
                 import re
                 # Remove // comments
                 json_str = re.sub(r'//.*?$', '', json_str, flags=re.MULTILINE)
                 # Remove /* */ comments
                 json_str = re.sub(r'/\*.*?\*/', '', json_str, flags=re.DOTALL)
-                
+                        
                 # Remove any trailing commas before closing braces or brackets (common JSON error)
                 json_str = re.sub(r',\s*}', '}', json_str)
                 json_str = re.sub(r',\s*]', ']', json_str)
-                
+                        
                 try:
                     result_data = json.loads(json_str)
                     log.info("Successfully parsed JSON after cleaning")
                 except json.JSONDecodeError as e:
                     log.error(f"Failed to parse JSON after cleaning: {e}")
+                            
+                    # Try a more aggressive approach - manually extract each field
+                    try:
+                        # Extract each field using regex
+                        # For CorePersonality, we expect an array, so regex needs to be more careful or use json.loads on substring
+                        personality_match = re.search(r'"Personality"\s*:\s*"(.*?)"(?=,\s*"CorePersonality")', json_str, re.DOTALL)
+                        if not personality_match: # Fallback if CorePersonality is not next
+                            personality_match = re.search(r'"Personality"\s*:\s*"(.*?)"(?=,|})', json_str, re.DOTALL)
+
+                        core_personality_str_match = re.search(r'"CorePersonality"\s*:\s*(\[.*?\])', json_str, re.DOTALL)
+                        core_array = []
+                        if core_personality_str_match:
+                            try:
+                                core_array = json.loads(core_personality_str_match.group(1))
+                            except json.JSONDecodeError:
+                                log.warning("Could not parse CorePersonality array from regex match.")
+                                
+                        # Special handling for family motto which might contain quotes
+                        motto_start = json_str.find('"familyMotto"')
+                        if motto_start != -1:
+                            motto_colon = json_str.find(':', motto_start)
+                            motto_value_start = json_str.find('"', motto_colon) + 1
+                            # Find the next field or closing brace
+                            next_field = json_str.find('",', motto_value_start)
+                            if next_field == -1:
+                                next_field = json_str.find('"}', motto_value_start)
+                            motto_value = json_str[motto_value_start:next_field]
+                        else:
+                            motto_value = ""
+                                
+                        coat_match = re.search(r'"coatOfArms"\s*:\s*"(.*?)"(?=,|})', json_str, re.DOTALL)
+                        img_match = re.search(r'"imagePrompt"\s*:\s*"(.*?)"(?=,|})', json_str, re.DOTALL)
+                                
+                        # Create a new JSON object with the extracted values
+                        result_data = {
+                            "Personality": personality_match.group(1).strip() if personality_match else "",
+                            "CorePersonality": core_array,
+                            "familyMotto": motto_value,
+                            "coatOfArms": coat_match.group(1).strip() if coat_match else "",
+                            "imagePrompt": img_match.group(1).strip() if img_match else ""
+                        }
+                                
+                        log.info("Successfully extracted JSON fields manually")
+                    except Exception as ex:
+                        log.error(f"Failed to extract JSON fields manually: {ex}")
+                        return None
                     
                     # Try a more aggressive approach - manually extract each field
                     try:
