@@ -7,6 +7,11 @@
       "formal": "Buongiorno, {listener_firstName}. I trust your day finds you well. I noticed {observation_about_listener}. Perhaps we might discuss {relevant_topic}?",
       "casual": "Ah, {listener_firstName}! Good to see you. {observation_about_listener}. Have you given any thought to {relevant_topic}?",
       "business": "Greetings, {listener_firstName}. I've been meaning to speak with you about {relevant_topic}. {observation_about_listener}."
+    },
+    "popolani_to_cittadini": {
+      "formal": "Good day to you, {listener_firstName}. I hope I'm not intruding. I noticed {observation_about_listener}. If you have a moment, might we discuss {relevant_topic}?",
+      "casual": "Hello there, {listener_firstName}! I couldn't help but notice {observation_about_listener}. Perhaps you'd be interested in {relevant_topic}?",
+      "business": "Pardon me, {listener_firstName}. I work at the customs house and {observation_about_listener}. I believe we might have matters to discuss regarding {relevant_topic}."
     }
   },
   "structure": {
