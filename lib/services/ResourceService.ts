@@ -315,4 +315,32 @@ export class ResourceService {
   public getPlayerResources(): Resource[] {
     return this.playerResources || [];
   }
+  
+  /**
+   * Get relationships for a specific citizen
+   * @param username The username of the citizen to get relationships for
+   * @returns An array of relationship objects sorted by strength score
+   */
+  public async getRelationships(username: string): Promise<any[]> {
+    try {
+      const url = `/api/relationships?Citizen=${encodeURIComponent(username)}`;
+      
+      const response = await fetch(url);
+      if (!response.ok) {
+        throw new Error(`Failed to fetch relationships from ${url}: ${response.status} ${response.statusText}`);
+      }
+      
+      const data = await response.json();
+      
+      if (!Array.isArray(data)) {
+        throw new Error(`Unexpected response format from ${url}. Expected an array.`);
+      }
+      
+      // Sort relationships by StrengthScore in descending order
+      return data.sort((a, b) => (b.strengthScore || 0) - (a.strengthScore || 0));
+    } catch (error) {
+      console.error('Error fetching relationships:', error);
+      return [];
+    }
+  }
 }

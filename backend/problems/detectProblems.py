@@ -136,6 +136,33 @@ def detect_workless_problems(base_url: str) -> Dict:
         log.error(f"Error detecting workless problems: {e}")
         return {"success": False, "error": str(e), "problemCount": 0, "savedCount": 0, "problems": {}}
 
+def detect_citizen_relationships(base_url: str, citizen_username: str) -> Dict:
+    """Detect relationships (friends and enemies) for a specific citizen."""
+    try:
+        log.info(f"Detecting relationships for citizen: {citizen_username}")
+        api_url = f"{base_url}/api/relationships?Citizen={citizen_username}"
+        log.info(f"Calling API: {api_url}")
+        
+        response = requests.get(api_url, timeout=60)
+        log.info(f"API response status for relationship detection: {response.status_code}")
+        
+        if not response.ok:
+            log.error(f"Relationship API call failed with status {response.status_code}: {response.text}")
+            return {"success": False, "error": f"API error: {response.status_code} - {response.text}", "relationships": []}
+        
+        data = response.json()
+        
+        # Sort relationships by StrengthScore in descending order
+        if isinstance(data, list):
+            sorted_relationships = sorted(data, key=lambda x: x.get('StrengthScore', 0), reverse=True)
+            return {"success": True, "relationships": sorted_relationships}
+        else:
+            log.error(f"Unexpected response format from relationship API: {data}")
+            return {"success": False, "error": "Unexpected response format", "relationships": []}
+    except Exception as e:
+        log.error(f"Error detecting relationships: {e}")
+        return {"success": False, "error": str(e), "relationships": []}
+
 def detect_problems():
     """Detect various problems for citizens and lands."""
     try:
@@ -378,6 +405,32 @@ def detect_problems():
             log.error(f"Could not create critical error notification: {notif_e}")
         return False
 
+def get_citizen_relationships(citizen_username: str) -> Dict:
+    """Get relationships for a specific citizen."""
+    try:
+        tables = initialize_airtable()
+        if not tables:
+            return {"success": False, "error": "Failed to initialize Airtable", "relationships": []}
+            
+        base_url = os.environ.get('NEXT_PUBLIC_BASE_URL', 'http://localhost:3000')
+        
+        # Get relationships for the citizen
+        relationships_data = detect_citizen_relationships(base_url, citizen_username)
+        
+        if relationships_data.get('success'):
+            return relationships_data
+        else:
+            return {"success": False, "error": relationships_data.get('error', 'Unknown error'), "relationships": []}
+    except Exception as e:
+        return {"success": False, "error": str(e), "relationships": []}
+
 if __name__ == "__main__":
-    success = detect_problems()
-    sys.exit(0 if success else 1)
+    # Check if a specific citizen username was provided as an argument
+    if len(sys.argv) > 1:
+        citizen_username = sys.argv[1]
+        relationships = get_citizen_relationships(citizen_username)
+        print(json.dumps(relationships, indent=2))
+        sys.exit(0 if relationships.get('success') else 1)
+    else:
+        success = detect_problems()
+        sys.exit(0 if success else 1)
