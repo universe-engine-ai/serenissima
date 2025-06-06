@@ -253,16 +253,16 @@ def detect_problems():
             log.error(f"Vacant Buildings API call failed: {vacant_buildings_response.status_code} - {vacant_buildings_response.text}")
             all_problem_details_summary.append(f"- Vacant Buildings: API Call Failed ({vacant_buildings_response.status_code})")
 
-        # 4. Detect hungry citizens
+        # 4. Detect hungry citizens using local module instead of API
         log.info("--- Detecting Hungry Citizens ---")
-        hungry_api_url = f"{base_url}/api/problems/hungry"
-        log.info(f"Calling API: {hungry_api_url} for all citizens")
-        hungry_response = requests.post(hungry_api_url, json={}, timeout=180)
-        log.info(f"Hungry API response status: {hungry_response.status_code}")
-
-        if hungry_response.ok:
-            hungry_data = hungry_response.json()
-            log.info(f"Hungry API response: success={hungry_data.get('success')}, problemCount={hungry_data.get('problemCount')}")
+        try:
+            # Import the hunger detection module
+            from detectHungerProblems import detect_hunger_problems
+            
+            # Run hunger problem detection
+            hungry_data = detect_hunger_problems()
+            log.info(f"Hunger detection module response: success={hungry_data.get('success')}, problemCount={hungry_data.get('problemCount')}")
+            
             if hungry_data.get('success'):
                 count = hungry_data.get('problemCount', 0)
                 saved_count = hungry_data.get('savedCount', 0)
@@ -272,16 +272,16 @@ def detect_problems():
                 
                 problems_by_citizen_hungry = {}
                 for problem_id, problem in hungry_data.get('problems', {}).items():
-                    citizen = problem.get('citizen', 'Unknown')
+                    citizen = problem.get('Citizen', 'Unknown')
                     problems_by_citizen_hungry[citizen] = problems_by_citizen_hungry.get(citizen, 0) + 1
                 if problems_by_citizen_hungry:
                     all_problem_details_summary.append("  Affected citizens (Hungry/Impact): " + ", ".join([f"{c}({num})" for c, num in problems_by_citizen_hungry.items()]))
             else:
-                log.error(f"Hungry API returned error: {hungry_data.get('error')}")
-                all_problem_details_summary.append(f"- Hungry Citizens & Impacts: API Error - {hungry_data.get('error', 'Unknown')}")
-        else:
-            log.error(f"Hungry API call failed: {hungry_response.status_code} - {hungry_response.text}")
-            all_problem_details_summary.append(f"- Hungry Citizens & Impacts: API Call Failed ({hungry_response.status_code})")
+                log.error(f"Hunger detection module returned error: {hungry_data.get('error')}")
+                all_problem_details_summary.append(f"- Hungry Citizens & Impacts: Module Error - {hungry_data.get('error', 'Unknown')}")
+        except Exception as e:
+            log.error(f"Error running hunger detection module: {str(e)}")
+            all_problem_details_summary.append(f"- Hungry Citizens & Impacts: Module Error - {str(e)}")
         
         # 5. Detect business buildings with no active contracts
         log.info("--- Detecting Business Buildings with No Active Contracts ---")
