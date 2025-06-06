@@ -28,7 +28,13 @@ export async function POST(request: Request) {
     if (data.lastName !== undefined) updateFields.LastName = data.lastName;
     if (data.familyMotto !== undefined) updateFields.FamilyMotto = data.familyMotto;
     if (data.coatOfArmsImageUrl !== undefined) updateFields.CoatOfArmsImageUrl = data.coatOfArmsImageUrl;
-    if (data.telegramUserId !== undefined) updateFields.TelegramUserId = data.telegramUserId; // Ajout de TelegramUserId
+    if (data.telegramUserId !== undefined) updateFields.TelegramUserId = data.telegramUserId;
+    
+    // Add new fields for personality and character details
+    if (data.description !== undefined) updateFields.Description = data.description;
+    if (data.corePersonality !== undefined) updateFields.CorePersonality = data.corePersonality;
+    if (data.coatOfArms !== undefined) updateFields.CoatOfArms = data.coatOfArms;
+    if (data.imagePrompt !== undefined) updateFields.ImagePrompt = data.imagePrompt;
         
     // Only proceed if there are fields to update
     if (Object.keys(updateFields).length === 0) {
@@ -40,6 +46,31 @@ export async function POST(request: Request) {
     
     // Update the citizen record
     const updatedRecord = await base(CITIZENS_TABLE).update(data.id, updateFields);
+
+    // If image prompt or coat of arms was updated, trigger image generation
+    if (data.imagePrompt !== undefined || data.coatOfArms !== undefined) {
+      try {
+        const username = updatedRecord.fields.Username;
+        if (username) {
+          // Execute the Python script to generate new images
+          const { exec } = require('child_process');
+          exec(`python3 backend/scripts/generateCitizenImageFromProfile.py ${username}`, (error, stdout, stderr) => {
+            if (error) {
+              console.error(`Error executing image generation script: ${error.message}`);
+              return;
+            }
+            if (stderr) {
+              console.error(`Image generation script stderr: ${stderr}`);
+              return;
+            }
+            console.log(`Image generation script stdout: ${stdout}`);
+          });
+        }
+      } catch (imageGenError) {
+        console.error('Error triggering image generation:', imageGenError);
+        // Don't fail the request if image generation fails
+      }
+    }
 
     // Send Telegram notification if TelegramUserId is present
     if (updatedRecord.fields.TelegramUserId) {
