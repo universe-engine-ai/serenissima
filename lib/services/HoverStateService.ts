@@ -1,9 +1,6 @@
 import { eventBus } from '../utils/eventBus';
 import { throttle } from '../utils/performanceUtils';
 import { CitizenRenderService } from './CitizenRenderService'; // Import CitizenRenderService
-// CitizenRenderService is not directly used in this file after setHoveredCitizen was updated.
-// If it's used by other parts of hoverStateService that are not shown, keep it.
-// For now, assuming it's only for the setHoveredCitizen method which now calls CitizenRenderService internally.
 
 // Define the hover state changed event type
 export const HOVER_STATE_CHANGED = 'HOVER_STATE_CHANGED';
@@ -20,7 +17,8 @@ export type HoverTargetType =
   | 'resource'
   | 'waterPoint'
   | 'contract'
-  | 'problem';
+  | 'problem'
+  | 'relationship';
 
 // Define a comprehensive hover state interface
 export interface HoverState {
@@ -29,6 +27,14 @@ export interface HoverState {
   data: any | null;
   position?: { x: number, y: number } | null;
   timestamp: number;
+  relatedId?: string | null; // For relationship hovers, stores the related citizen ID
+  relationshipData?: {
+    trustScore?: number;
+    strengthScore?: number;
+    lastInteraction?: string;
+    status?: string;
+    notes?: string;
+  } | null;
 }
 
 export class HoverStateService {
@@ -37,7 +43,9 @@ export class HoverStateService {
     id: null,
     data: null,
     position: null,
-    timestamp: 0
+    timestamp: 0,
+    relatedId: null,
+    relationshipData: null
   };
   
   private isHovering: boolean = false;
@@ -296,6 +304,49 @@ export class HoverStateService {
    */
   public getHoveredProblemId(): string | null {
     return this.currentState.type === 'problem' ? this.currentState.id : null;
+  }
+  
+  /**
+   * Update hover state for a relationship between citizens
+   */
+  public setHoveredRelationship(
+    relationshipId: string | null, 
+    citizen1Id: string, 
+    citizen2Id: string, 
+    relationshipData: {
+      trustScore: number;
+      strengthScore: number;
+      lastInteraction: string;
+      status?: string;
+      notes?: string;
+    } | null = null
+  ): void {
+    this.currentState = {
+      type: 'relationship',
+      id: relationshipId,
+      data: { citizen1Id, citizen2Id },
+      position: null,
+      timestamp: Date.now(),
+      relatedId: citizen2Id, // Store the related citizen ID
+      relationshipData
+    };
+    
+    this.isHovering = true;
+    this.throttledEmit(this.currentState);
+  }
+  
+  /**
+   * Get the current hovered relationship ID
+   */
+  public getHoveredRelationshipId(): string | null {
+    return this.currentState.type === 'relationship' ? this.currentState.id : null;
+  }
+  
+  /**
+   * Get relationship data from current hover state
+   */
+  public getRelationshipData(): any | null {
+    return this.currentState.type === 'relationship' ? this.currentState.relationshipData : null;
   }
   
   /**
