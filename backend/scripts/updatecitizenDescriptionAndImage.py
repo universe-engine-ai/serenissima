@@ -592,14 +592,14 @@ def update_citizen_record(tables, username: str, personality_text: str, core_per
             "ImageUrl": image_url
         }
         
-        # Only update FamilyMotto if it's empty and a new one is provided
-        if not current_family_motto and family_motto:
-            log.info(f"FamilyMotto is empty, updating with new value: {family_motto}")
+        # Always update FamilyMotto if a new one is provided
+        if family_motto:
+            log.info(f"Updating FamilyMotto with new value: {family_motto}")
             update_data["FamilyMotto"] = family_motto
         
-        # Only update CoatOfArms if it's empty and a new one is provided
-        if not current_coat_of_arms and coat_of_arms:
-            log.info(f"CoatOfArms is empty, updating with new value: {coat_of_arms[:50]}...")
+        # Always update CoatOfArms if a new one is provided
+        if coat_of_arms:
+            log.info(f"Updating CoatOfArms with new value: {coat_of_arms[:50]}...")
             update_data["CoatOfArms"] = coat_of_arms
             
             # If we have a coat of arms URL and a new coat of arms description, update the image URL

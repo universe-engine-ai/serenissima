@@ -22,9 +22,9 @@ const ProfileEditor: React.FC<ProfileEditorProps> = ({ onClose, onSuccess }) => 
   useEffect(() => {
     if (citizenProfile) {
       setUsername(citizenProfile.username || '');
-      setFirstName(citizenProfile.firstName || '');
-      setLastName(citizenProfile.lastName || '');
-      setFamilyMotto(citizenProfile.familyMotto || '');
+      setFirstName(citizenProfile.firstName || citizenProfile.FirstName || '');
+      setLastName(citizenProfile.lastName || citizenProfile.LastName || '');
+      setFamilyMotto(citizenProfile.familyMotto || citizenProfile.FamilyMotto || '');
       setCoatOfArmsImageUrl(citizenProfile.coatOfArmsImageUrl || '');
     }
   }, [citizenProfile]);

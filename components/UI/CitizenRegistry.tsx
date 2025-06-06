@@ -390,7 +390,7 @@ const CitizenRegistry: React.FC<CitizenRegistryProps> = ({ onClose }) => {
                           firstName={citizen.firstName || citizen.firstname || citizen.FirstName}
                           lastName={citizen.lastName || citizen.lastname || citizen.LastName}
                           coatOfArmsImageUrl={citizen.coatOfArmsImageUrl || `/coat-of-arms/${citizen.username}.png`}
-                          familyMotto={citizen.familyMotto}
+                          familyMotto={citizen.familyMotto || citizen.FamilyMotto}
                           Ducats={citizen.Ducats || citizen.ducats}
                           socialClass={citizen.socialClass || citizen.socialclass || citizen.SocialClass}
                           isCurrentUser={citizen.username === currentUsername}
