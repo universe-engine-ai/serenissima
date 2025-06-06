@@ -509,7 +509,7 @@ def generate_coat_of_arms_image(prompt: str, username: str) -> Optional[str]:
         return None
     
     # Enhance the prompt for better coat of arms generation
-    enhanced_prompt = f"A heraldic coat of arms shield with the following description: {prompt}. Renaissance Venetian style, detailed, ornate, historically accurate, centered composition, on a transparent background."
+    enhanced_prompt = f"A heraldic coat of arms shield with the following description: {prompt}. Renaissance Venetian style, detailed, ornate, historically accurate, centered composition, on a transparent background. No text or lettering."
     
     try:
         # Call the Ideogram API

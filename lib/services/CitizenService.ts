@@ -115,8 +115,8 @@ export class CitizenService {
       // Brown/amber for common people
       return 'rgba(205, 133, 63, 0.8)';
     } else if (baseClass.includes('laborer') || baseClass.includes('facchini')) {
-      // Gray for laborers
-      return 'rgba(128, 128, 128, 0.8)';
+      // Earthy brown for laborers and facchini
+      return 'rgba(139, 69, 19, 0.8)';
     } else if (baseClass.includes('forestieri')) {
       // Burgundy for Forestieri
       return 'rgba(128, 0, 32, 0.8)';
