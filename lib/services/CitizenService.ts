@@ -2,6 +2,19 @@ import { CoordinateService } from './CoordinateService';
 import { buildingService } from './BuildingService';
 import { eventBus, EventTypes } from '../utils/eventBus';
 
+export interface CitizenProfile {
+  username: string;
+  firstName: string;
+  lastName: string;
+  coatOfArmsImageUrl: string | null;
+  familyMotto?: string;
+  coatOfArms?: string;
+  color?: string;
+  Ducats?: number;
+  walletAddress?: string;
+  telegramUserId?: string;
+}
+
 export class CitizenService {
   private citizens: any[] = [];
   private citizensByBuilding: Record<string, any[]> = {};
