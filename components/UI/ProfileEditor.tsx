@@ -17,6 +17,13 @@ const ProfileEditor: React.FC<ProfileEditorProps> = ({ onClose, onSuccess }) => 
   const [lastName, setLastName] = useState('');
   const [familyMotto, setFamilyMotto] = useState('');
   const [coatOfArmsImageUrl, setCoatOfArmsImageUrl] = useState('');
+  const [description, setDescription] = useState('');
+  const [coatOfArms, setCoatOfArms] = useState('');
+  
+  // Core Personality traits
+  const [positiveTrait, setPositiveTrait] = useState('');
+  const [negativeTrait, setNegativeTrait] = useState('');
+  const [coreMotivation, setCoreMotivation] = useState('');
   
   // Initialize form with current citizen data
   useEffect(() => {
@@ -26,6 +33,25 @@ const ProfileEditor: React.FC<ProfileEditorProps> = ({ onClose, onSuccess }) => 
       setLastName(citizenProfile.lastName || '');
       setFamilyMotto(citizenProfile.familyMotto || '');
       setCoatOfArmsImageUrl(citizenProfile.coatOfArmsImageUrl || '');
+      setDescription(citizenProfile.description || '');
+      setCoatOfArms(citizenProfile.coatOfArms || '');
+      
+      // Parse CorePersonality if it exists
+      if (citizenProfile.corePersonality) {
+        try {
+          const corePersonalityArray = typeof citizenProfile.corePersonality === 'string' 
+            ? JSON.parse(citizenProfile.corePersonality) 
+            : citizenProfile.corePersonality;
+            
+          if (Array.isArray(corePersonalityArray) && corePersonalityArray.length >= 3) {
+            setPositiveTrait(corePersonalityArray[0] || '');
+            setNegativeTrait(corePersonalityArray[1] || '');
+            setCoreMotivation(corePersonalityArray[2] || '');
+          }
+        } catch (e) {
+          console.error('Error parsing CorePersonality:', e);
+        }
+      }
     }
   }, [citizenProfile]);
   
@@ -41,6 +67,9 @@ const ProfileEditor: React.FC<ProfileEditorProps> = ({ onClose, onSuccess }) => 
     setError(null);
     
     try {
+      // Create CorePersonality array
+      const corePersonality = [positiveTrait, negativeTrait, coreMotivation];
+      
       const response = await fetch('/api/citizens/update', {
         method: 'POST',
         headers: {
@@ -52,7 +81,10 @@ const ProfileEditor: React.FC<ProfileEditorProps> = ({ onClose, onSuccess }) => 
           firstName,
           lastName,
           familyMotto,
-          coatOfArmsImageUrl
+          coatOfArmsImageUrl,
+          description,
+          coatOfArms,
+          corePersonality
         }),
       });
       
@@ -161,6 +193,81 @@ const ProfileEditor: React.FC<ProfileEditorProps> = ({ onClose, onSuccess }) => 
               onChange={(e) => setFamilyMotto(e.target.value)}
               className="w-full p-2 border border-amber-300 rounded focus:outline-none focus:ring-2 focus:ring-amber-500"
               placeholder="Your family motto"
+            />
+          </div>
+          
+          <div className="mb-4">
+            <label htmlFor="description" className="block text-amber-800 font-medium mb-1">
+              Personality Description
+            </label>
+            <textarea
+              id="description"
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+              className="w-full p-2 border border-amber-300 rounded focus:outline-none focus:ring-2 focus:ring-amber-500"
+              placeholder="Describe your personality in 2-3 sentences"
+              rows={3}
+            />
+          </div>
+          
+          <div className="mb-4">
+            <label className="block text-amber-800 font-medium mb-1">
+              Core Personality Traits
+            </label>
+            <div className="grid grid-cols-3 gap-3">
+              <div>
+                <label htmlFor="positiveTrait" className="block text-xs text-amber-700 mb-1">
+                  Positive Trait
+                </label>
+                <input
+                  type="text"
+                  id="positiveTrait"
+                  value={positiveTrait}
+                  onChange={(e) => setPositiveTrait(e.target.value)}
+                  className="w-full p-2 border border-amber-300 rounded focus:outline-none focus:ring-2 focus:ring-amber-500"
+                  placeholder="e.g., Meticulous"
+                />
+              </div>
+              <div>
+                <label htmlFor="negativeTrait" className="block text-xs text-amber-700 mb-1">
+                  Negative Trait
+                </label>
+                <input
+                  type="text"
+                  id="negativeTrait"
+                  value={negativeTrait}
+                  onChange={(e) => setNegativeTrait(e.target.value)}
+                  className="w-full p-2 border border-amber-300 rounded focus:outline-none focus:ring-2 focus:ring-amber-500"
+                  placeholder="e.g., Stubborn"
+                />
+              </div>
+              <div>
+                <label htmlFor="coreMotivation" className="block text-xs text-amber-700 mb-1">
+                  Core Motivation
+                </label>
+                <input
+                  type="text"
+                  id="coreMotivation"
+                  value={coreMotivation}
+                  onChange={(e) => setCoreMotivation(e.target.value)}
+                  className="w-full p-2 border border-amber-300 rounded focus:outline-none focus:ring-2 focus:ring-amber-500"
+                  placeholder="e.g., Security-driven"
+                />
+              </div>
+            </div>
+          </div>
+          
+          <div className="mb-4">
+            <label htmlFor="coatOfArms" className="block text-amber-800 font-medium mb-1">
+              Coat of Arms Description
+            </label>
+            <textarea
+              id="coatOfArms"
+              value={coatOfArms}
+              onChange={(e) => setCoatOfArms(e.target.value)}
+              className="w-full p-2 border border-amber-300 rounded focus:outline-none focus:ring-2 focus:ring-amber-500"
+              placeholder="Describe your coat of arms following heraldic conventions"
+              rows={3}
             />
           </div>
           

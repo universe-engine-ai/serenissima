@@ -427,6 +427,20 @@ def generate_description_and_image_prompt(username: str, citizen_info: Dict) -> 
             else:
                 log.error(f"Could not find JSON object markers in response: {response_text}")
                 return None
+                
+        # Ensure CorePersonality is properly formatted as an array
+        if "CorePersonality" in result_data and not isinstance(result_data["CorePersonality"], list):
+            try:
+                # If it's a string, try to parse it as JSON
+                if isinstance(result_data["CorePersonality"], str):
+                    result_data["CorePersonality"] = json.loads(result_data["CorePersonality"])
+                # If it's still not a list, create a default array
+                if not isinstance(result_data["CorePersonality"], list):
+                    log.warning("CorePersonality is not a list, creating default array")
+                    result_data["CorePersonality"] = ["Unknown", "Unknown", "Unknown"]
+            except Exception as e:
+                log.warning(f"Error formatting CorePersonality: {e}")
+                result_data["CorePersonality"] = ["Unknown", "Unknown", "Unknown"]
         
         log.info(f"Successfully generated new description and image prompt for {username}")
         return result_data
@@ -584,10 +598,22 @@ def update_citizen_record(tables, username: str, personality_text: str, core_per
         current_family_motto = citizen['fields'].get('FamilyMotto', '')
         current_coat_of_arms = citizen['fields'].get('CoatOfArms', '')
         
+        # Ensure core_personality_array is a valid array with exactly 3 elements
+        if not core_personality_array or not isinstance(core_personality_array, list):
+            core_personality_array = ["Unknown", "Unknown", "Unknown"]
+        elif len(core_personality_array) < 3:
+            # Pad the array if it's too short
+            core_personality_array = core_personality_array + ["Unknown"] * (3 - len(core_personality_array))
+        elif len(core_personality_array) > 3:
+            # Truncate if it's too long
+            core_personality_array = core_personality_array[:3]
+            
+        log.info(f"Using CorePersonality array: {core_personality_array}")
+        
         # Prepare update data
         update_data = {
             "Description": personality_text,  # Airtable's "Description" field gets the new "Personality" text
-            "CorePersonality": json.dumps(core_personality_array) if core_personality_array else None, # Store array as JSON string
+            "CorePersonality": json.dumps(core_personality_array), # Store array as JSON string
             "ImagePrompt": image_prompt,
             "ImageUrl": image_url
         }
