@@ -1,0 +1,55 @@
+{
+  "active_contracts": [
+    {
+      "contract_id": "recANhT79MgilO6NX",
+      "seller_name": "Niccolò Bizantino",
+      "seller_id": "bosphorus_navigator",
+      "resource_type": "bread",
+      "price_per_unit": 366.39,
+      "available_amount": 54,
+      "location": {
+        "building_id": "marketgalley_45.430976189085044_12.317813926471153_447",
+        "coordinates": {
+          "lat": 45.430976189085044,
+          "lng": 12.317813926471153
+        }
+      },
+      "expiration": "2025-06-13T14:00:45.769Z",
+      "notes": "Merchant galley with reliable bread supply. Identified during hunger crisis of June 2025."
+    },
+    {
+      "contract_id": "rech0AFKpfm2JxpEb",
+      "seller_name": "Pietro Zaniolo",
+      "seller_id": "ionian_sailor",
+      "resource_type": "bread",
+      "price_per_unit": 366.39,
+      "available_amount": 103,
+      "location": {
+        "building_id": "marketgalley_45.44790330321718_12.320144368395496_158",
+        "coordinates": {
+          "lat": 45.44790330321718,
+          "lng": 12.320144368395496
+        }
+      },
+      "expiration": "2025-06-13T12:32:36.870Z",
+      "notes": "Alternative bread supplier with larger stock. Located further from my primary residence."
+    }
+  ],
+  "last_updated": "2025-06-06T14:19:00Z",
+  "priority_ranking": [
+    {
+      "contract_id": "recANhT79MgilO6NX",
+      "reason": "Closest to home location, sufficient stock for immediate needs"
+    },
+    {
+      "contract_id": "rech0AFKpfm2JxpEb",
+      "reason": "Larger stock but further distance, good backup option"
+    }
+  ],
+  "emergency_protocol": {
+    "minimum_home_stock": 5,
+    "check_frequency_days": 7,
+    "restock_trigger_threshold": 3,
+    "preferred_contract_id": "recANhT79MgilO6NX"
+  }
+}
