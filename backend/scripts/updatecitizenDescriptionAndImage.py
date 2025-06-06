@@ -608,7 +608,34 @@ def update_citizen_record(tables, username: str, personality_text: str, core_per
                 update_data["CoatOfArmsImageUrl"] = coat_of_arms_url
         
         # Update the citizen record
-        tables['citizens'].update(citizen['id'], update_data)
+        updated_record = tables['citizens'].update(citizen['id'], update_data)
+        
+        # Send Telegram notification if TelegramUserId is present
+        telegram_user_id = updated_record.get('fields', {}).get('TelegramUserId')
+        if telegram_user_id:
+            bot_token = os.environ.get('TELEGRAM_BOT_TOKEN')
+            if bot_token:
+                try:
+                    message_text = f"🖼️ Your citizen profile for {username} has been updated with a new personality description and portrait reflecting your recent activities and status in Venice."
+                    telegram_api_url = f"https://api.telegram.org/bot{bot_token}/sendMessage"
+                    
+                    telegram_response = requests.post(
+                        telegram_api_url,
+                        headers={"Content-Type": "application/json"},
+                        json={
+                            "chat_id": telegram_user_id,
+                            "text": message_text
+                        }
+                    )
+                    
+                    if telegram_response.ok:
+                        log.info(f"Successfully sent Telegram notification to {telegram_user_id}")
+                    else:
+                        log.error(f"Failed to send Telegram notification: {telegram_response.status_code} {telegram_response.text}")
+                except Exception as e:
+                    log.error(f"Error sending Telegram notification: {e}")
+            else:
+                log.warning("TELEGRAM_BOT_TOKEN not set. Skipping Telegram notification.")
         
         log.info(f"Successfully updated citizen record for {username}")
         return True
