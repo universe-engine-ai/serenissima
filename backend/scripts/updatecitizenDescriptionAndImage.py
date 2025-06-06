@@ -588,6 +588,7 @@ def update_citizen_record(tables, username: str, personality_text: str, core_per
         update_data = {
             "Description": personality_text,  # Airtable's "Description" field gets the new "Personality" text
             "CorePersonality": json.dumps(core_personality_array) if core_personality_array else None, # Store array as JSON string
+            "Personality": personality_text,  # Also store in Personality field for compatibility
             "ImagePrompt": image_prompt,
             "ImageUrl": image_url
         }

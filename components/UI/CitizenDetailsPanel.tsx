@@ -1641,20 +1641,40 @@ Your response:`;
               <h3 className="text-lg font-serif text-amber-800 mb-2 border-b border-amber-200 pb-1">Personality</h3>
               <InfoIcon tooltipText="Key personality traits and a general description of this citizen's character and demeanor." />
             </div>
-            {citizen.corePersonality && Array.isArray(citizen.corePersonality) && citizen.corePersonality.length === 3 && (
-              <div className="flex space-x-2 mb-3">
-                <div className="px-3 py-1 text-xs font-medium text-green-800 bg-green-100 border border-green-300 rounded-full shadow-sm">
-                  {citizen.corePersonality[0]}
-                </div>
-                <div className="px-3 py-1 text-xs font-medium text-red-800 bg-red-100 border border-red-300 rounded-full shadow-sm">
-                  {citizen.corePersonality[1]}
-                </div>
-                <div className="px-3 py-1 text-xs font-medium text-blue-800 bg-blue-100 border border-blue-300 rounded-full shadow-sm">
-                  {citizen.corePersonality[2]}
-                </div>
-              </div>
-            )}
-            <p className="text-amber-700 italic text-sm">{citizen.personality || 'No personality description available.'}</p>
+            {(() => {
+              // Handle CorePersonality which could be an array or a JSON string
+              let corePersonality = citizen.corePersonality;
+              
+              // If it's a string, try to parse it as JSON
+              if (typeof corePersonality === 'string') {
+                try {
+                  corePersonality = JSON.parse(corePersonality);
+                } catch (e) {
+                  console.error('Error parsing CorePersonality:', e);
+                  corePersonality = null;
+                }
+              }
+              
+              // If we have a valid array with 3 elements, display it
+              if (Array.isArray(corePersonality) && corePersonality.length === 3) {
+                return (
+                  <div className="flex space-x-2 mb-3">
+                    <div className="px-3 py-1 text-xs font-medium text-green-800 bg-green-100 border border-green-300 rounded-full shadow-sm">
+                      {corePersonality[0]}
+                    </div>
+                    <div className="px-3 py-1 text-xs font-medium text-red-800 bg-red-100 border border-red-300 rounded-full shadow-sm">
+                      {corePersonality[1]}
+                    </div>
+                    <div className="px-3 py-1 text-xs font-medium text-blue-800 bg-blue-100 border border-blue-300 rounded-full shadow-sm">
+                      {corePersonality[2]}
+                    </div>
+                  </div>
+                );
+              }
+              
+              return null;
+            })()}
+            <p className="text-amber-700 italic text-sm">{citizen.personality || citizen.description || 'No personality description available.'}</p>
           </div>
 
           <div className="mb-6">

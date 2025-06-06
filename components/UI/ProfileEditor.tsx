@@ -17,6 +17,13 @@ const ProfileEditor: React.FC<ProfileEditorProps> = ({ onClose, onSuccess }) => 
   const [lastName, setLastName] = useState('');
   const [familyMotto, setFamilyMotto] = useState('');
   const [coatOfArmsImageUrl, setCoatOfArmsImageUrl] = useState('');
+  const [personality, setPersonality] = useState('');
+  const [coatOfArms, setCoatOfArms] = useState('');
+  
+  // Core Personality traits
+  const [positiveTrait, setPositiveTrait] = useState('');
+  const [negativeTrait, setNegativeTrait] = useState('');
+  const [coreMotivation, setCoreMotivation] = useState('');
   
   // Initialize form with current citizen data
   useEffect(() => {
@@ -26,6 +33,27 @@ const ProfileEditor: React.FC<ProfileEditorProps> = ({ onClose, onSuccess }) => 
       setLastName(citizenProfile.lastName || '');
       setFamilyMotto(citizenProfile.familyMotto || '');
       setCoatOfArmsImageUrl(citizenProfile.coatOfArmsImageUrl || '');
+      setPersonality(citizenProfile.description || citizenProfile.personality || '');
+      setCoatOfArms(citizenProfile.coatOfArms || '');
+      
+      // Handle CorePersonality array
+      try {
+        let corePersonality = citizenProfile.corePersonality;
+        
+        // If it's a string, try to parse it as JSON
+        if (typeof corePersonality === 'string') {
+          corePersonality = JSON.parse(corePersonality);
+        }
+        
+        // If it's an array with at least 3 elements, extract the values
+        if (Array.isArray(corePersonality) && corePersonality.length >= 3) {
+          setPositiveTrait(corePersonality[0] || '');
+          setNegativeTrait(corePersonality[1] || '');
+          setCoreMotivation(corePersonality[2] || '');
+        }
+      } catch (e) {
+        console.error('Error parsing CorePersonality:', e);
+      }
     }
   }, [citizenProfile]);
   
@@ -41,6 +69,9 @@ const ProfileEditor: React.FC<ProfileEditorProps> = ({ onClose, onSuccess }) => 
     setError(null);
     
     try {
+      // Create CorePersonality array
+      const corePersonality = [positiveTrait, negativeTrait, coreMotivation];
+      
       const response = await fetch('/api/citizens/update', {
         method: 'POST',
         headers: {
@@ -52,7 +83,10 @@ const ProfileEditor: React.FC<ProfileEditorProps> = ({ onClose, onSuccess }) => 
           firstName,
           lastName,
           familyMotto,
-          coatOfArmsImageUrl
+          coatOfArmsImageUrl,
+          description: personality,
+          coatOfArms,
+          corePersonality: JSON.stringify(corePersonality)
         }),
       });
       
@@ -106,7 +140,7 @@ const ProfileEditor: React.FC<ProfileEditorProps> = ({ onClose, onSuccess }) => 
           </div>
         )}
         
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className="overflow-y-auto max-h-[70vh]">
           <div className="mb-4">
             <label htmlFor="username" className="block text-amber-800 font-medium mb-1">
               Username
@@ -151,6 +185,71 @@ const ProfileEditor: React.FC<ProfileEditorProps> = ({ onClose, onSuccess }) => 
           </div>
           
           <div className="mb-4">
+            <label htmlFor="personality" className="block text-amber-800 font-medium mb-1">
+              Personality Description
+            </label>
+            <textarea
+              id="personality"
+              value={personality}
+              onChange={(e) => setPersonality(e.target.value)}
+              className="w-full p-2 border border-amber-300 rounded focus:outline-none focus:ring-2 focus:ring-amber-500"
+              placeholder="Describe your personality in 2-3 sentences"
+              rows={3}
+            />
+            <p className="text-xs text-amber-600 mt-1">
+              Elaborate on your core traits, values, temperament, and notable flaws
+            </p>
+          </div>
+          
+          <div className="mb-4 border border-amber-200 rounded-lg p-3 bg-amber-50">
+            <label className="block text-amber-800 font-medium mb-2">
+              Core Personality Traits
+            </label>
+            
+            <div className="mb-2">
+              <label htmlFor="positiveTrait" className="block text-amber-700 text-sm mb-1">
+                Positive Trait
+              </label>
+              <input
+                type="text"
+                id="positiveTrait"
+                value={positiveTrait}
+                onChange={(e) => setPositiveTrait(e.target.value)}
+                className="w-full p-2 border border-amber-300 rounded focus:outline-none focus:ring-2 focus:ring-amber-500"
+                placeholder="e.g., Resourceful, Observant, Disciplined"
+              />
+            </div>
+            
+            <div className="mb-2">
+              <label htmlFor="negativeTrait" className="block text-amber-700 text-sm mb-1">
+                Negative Trait
+              </label>
+              <input
+                type="text"
+                id="negativeTrait"
+                value={negativeTrait}
+                onChange={(e) => setNegativeTrait(e.target.value)}
+                className="w-full p-2 border border-amber-300 rounded focus:outline-none focus:ring-2 focus:ring-amber-500"
+                placeholder="e.g., Calculating, Rigid, Secretive"
+              />
+            </div>
+            
+            <div>
+              <label htmlFor="coreMotivation" className="block text-amber-700 text-sm mb-1">
+                Core Motivation
+              </label>
+              <input
+                type="text"
+                id="coreMotivation"
+                value={coreMotivation}
+                onChange={(e) => setCoreMotivation(e.target.value)}
+                className="w-full p-2 border border-amber-300 rounded focus:outline-none focus:ring-2 focus:ring-amber-500"
+                placeholder="e.g., Security-driven, Independence-focused"
+              />
+            </div>
+          </div>
+          
+          <div className="mb-4">
             <label htmlFor="familyMotto" className="block text-amber-800 font-medium mb-1">
               Family Motto
             </label>
@@ -162,6 +261,23 @@ const ProfileEditor: React.FC<ProfileEditorProps> = ({ onClose, onSuccess }) => 
               className="w-full p-2 border border-amber-300 rounded focus:outline-none focus:ring-2 focus:ring-amber-500"
               placeholder="Your family motto"
             />
+          </div>
+          
+          <div className="mb-4">
+            <label htmlFor="coatOfArms" className="block text-amber-800 font-medium mb-1">
+              Coat of Arms Description
+            </label>
+            <textarea
+              id="coatOfArms"
+              value={coatOfArms}
+              onChange={(e) => setCoatOfArms(e.target.value)}
+              className="w-full p-2 border border-amber-300 rounded focus:outline-none focus:ring-2 focus:ring-amber-500"
+              placeholder="Describe your coat of arms"
+              rows={3}
+            />
+            <p className="text-xs text-amber-600 mt-1">
+              Include symbolic elements representing your profession, values, and family history
+            </p>
           </div>
           
           <div className="mb-6">
