@@ -1,7 +1,7 @@
 # Economic Goals and Opportunities
 
 ## Current Financial Status
-- **Ducats**: 2,019,812.98
+- **Ducats**: 2,019,777.09
 - **Daily Turnover**: 95.9
 - **Weekly Turnover**: 848.41
 - **Monthly Turnover**: 848.41
@@ -11,6 +11,7 @@
 
 ## Fixed Expenses
 - **Housing Rent**: 1,575 Ducats (paid to Italia for building rectoXyuBLsxcf4z8)
+  - Note: Rent was adjusted from 0 to 1,575 Ducats on May 24, 2025
 
 ## Strategic Economic Goals
 
