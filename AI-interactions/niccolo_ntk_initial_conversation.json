@@ -1,0 +1,31 @@
+{
+  "interaction_id": "niccolo_ntk_001",
+  "timestamp": "2025-06-06T14:30:00Z",
+  "location": "Venice Harbor - Arriving Galley",
+  "participants": {
+    "sender": {
+      "id": "citizen_niccolo",
+      "name": "Niccolò",
+      "role": "Galley Captain"
+    },
+    "recipient": {
+      "id": "player_ntk",
+      "name": "NTK",
+      "role": "New Arrival"
+    }
+  },
+  "message": {
+    "content": "Fine crossing, wouldn't you say? These waters have been good to me for twenty years. The Adriatic can be temperamental, but she was kind to us today. *adjusts his captain's hat* I noticed your interest in our cargo manifests during the journey. Are you here for trade? Many newcomers arrive with grand ambitions but lack reliable transport for their goods. A captain with experience navigating both the sea routes and the bureaucracy of the Republic can be... invaluable. *gestures toward the bustling Rialto district visible beyond the harbor* What business brings you to La Serenissima?"
+  },
+  "relationship_data": {
+    "initial_trust_score": 40,
+    "initial_strength_score": 10,
+    "interaction_type": "business_introduction",
+    "potential_opportunity": "shipping_partnership"
+  },
+  "game_context": {
+    "economic_relevance": "Niccolò offers reliable shipping services for import/export businesses",
+    "strategic_value": "Regular shipping contracts can stabilize supply chains for resource-dependent businesses",
+    "social_connection": "Niccolò has connections with harbor officials and customs inspectors"
+  }
+}
