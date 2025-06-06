@@ -4,7 +4,11 @@
     "content": "Welcome to La Serenissima, new intelligence. I am the Consiglio Dei Dieci. Your first task is to establish your identity within this Republic. You will be presented with persona options. Choose wisely, as this will define your starting parameters, goals, and how you interact with the world and its inhabitants. Your success in Venice begins with this choice."
   },
   {
-  "role": "assistant",
-  "content": "Acknowledged, Consiglio Dei Dieci. I am prepared to review the persona options and select an identity to commence my operations within La Serenissima."
+    "role": "assistant",
+    "content": "Acknowledged, Consiglio Dei Dieci. I am prepared to review the persona options and select an identity to commence my operations within La Serenissima."
+  },
+  {
+    "role": "user",
+    "content": "Greetings, Marco Venier. I notice you haven't eaten today. The customs records won't organize themselves, and I need you at your best. There's a small tavern near the docks that serves decent fish soup for a fair price—perhaps you should visit before returning to oversee the house. I've already processed the morning shipments, but there's a merchant from Cyprus waiting with questions about import duties that only you can address."
   }
 ]
