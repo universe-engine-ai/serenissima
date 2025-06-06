@@ -50,15 +50,15 @@ const DailyUpdatePanel: React.FC<DailyUpdatePanelProps> = ({ onClose }) => {
           // If no message from API, use our generated update based on citizen thoughts
           setMessageContent(`**Venice Daily Update - ${formattedDate}**
 
-Economic concerns dominate the thoughts of Venetian citizens today, with many expressing anxiety over income disparities and rental burdens. The Consiglio Dei Dieci's strategic land acquisitions and development projects continue to reshape the city's property landscape, while ambitious merchants seek new ventures to secure their financial futures.
+The Livorno crisis casts a shadow over Venice today as economic volatility threatens supply chains and market stability. Citizens across all social classes express concerns about resource scarcity, particularly in timber and grain sectors, while strategic diversification efforts intensify throughout the city.
 
-* **Financial Strain**: Multiple citizens report zero daily income despite substantial ducat reserves, highlighting a concerning economic inefficiency across various social classes.
-* **Property Market Tensions**: BasstheWhale faces escalating bids from both Consiglio Dei Dieci and Italia for prime land parcels, with offers exceeding 10-16 million ducats for strategic locations in Dorsoduro and Castello.
-* **Housing Crisis**: Citizens across all classes express frustration with exorbitant rents, with some paying as much as 2,740 ducats for basic accommodations like granaries.
-* **Strategic Pivots**: Several merchants are actively seeking to establish new trading ventures, particularly focusing on southern Italian connections and potential Alexandria routes.
-* **Governance Influence**: The Consiglio Dei Dieci continues to extend its reach through property ownership and public infrastructure management, reinforcing its position as a central authority in Venice's economic ecosystem.
+* **Supply Chain Disruptions**: Timber shortages from Ragusa threaten multiple industries, with citizens like Italia seeking strategic contracts to mitigate risks.
+* **Housing & Storage Concerns**: Multiple citizens report pressing needs for reliable warehousing as market volatility increases demand for secure storage facilities.
+* **Wage & Employment Issues**: Reports of wage stagnation emerge, particularly noted by citizen Shiren regarding operations at John_Jeffries' timber yard.
+* **Strategic Diversification**: Nobili and Cittadini alike are pivoting toward diversified investments, with particular interest in $COMPUTE staking and property acquisition in Cannaregio and Zudeca districts.
+* **Political Oversight**: Several citizens express caution regarding Senate scrutiny of wealth concentration, suggesting potential regulatory changes may be forthcoming.
 
-As the summer sun rises over the lagoon, Venice's citizens navigate these economic waters with the same determination that has defined the Republic for centuries.`);
+The Consiglio dei Dieci continues to monitor these developments closely as the Republic navigates these challenging economic waters.`);
         }
       } catch (err) {
         const errorMessage = err instanceof Error ? err.message : 'An unknown network error occurred';
@@ -68,15 +68,15 @@ As the summer sun rises over the lagoon, Venice's citizens navigate these econom
         // Fallback to our generated update
         setMessageContent(`**Venice Daily Update - ${formattedDate}**
 
-Economic concerns dominate the thoughts of Venetian citizens today, with many expressing anxiety over income disparities and rental burdens. The Consiglio Dei Dieci's strategic land acquisitions and development projects continue to reshape the city's property landscape, while ambitious merchants seek new ventures to secure their financial futures.
+The Livorno crisis casts a shadow over Venice today as economic volatility threatens supply chains and market stability. Citizens across all social classes express concerns about resource scarcity, particularly in timber and grain sectors, while strategic diversification efforts intensify throughout the city.
 
-* **Financial Strain**: Multiple citizens report zero daily income despite substantial ducat reserves, highlighting a concerning economic inefficiency across various social classes.
-* **Property Market Tensions**: BasstheWhale faces escalating bids from both Consiglio Dei Dieci and Italia for prime land parcels, with offers exceeding 10-16 million ducats for strategic locations in Dorsoduro and Castello.
-* **Housing Crisis**: Citizens across all classes express frustration with exorbitant rents, with some paying as much as 2,740 ducats for basic accommodations like granaries.
-* **Strategic Pivots**: Several merchants are actively seeking to establish new trading ventures, particularly focusing on southern Italian connections and potential Alexandria routes.
-* **Governance Influence**: The Consiglio Dei Dieci continues to extend its reach through property ownership and public infrastructure management, reinforcing its position as a central authority in Venice's economic ecosystem.
+* **Supply Chain Disruptions**: Timber shortages from Ragusa threaten multiple industries, with citizens like Italia seeking strategic contracts to mitigate risks.
+* **Housing & Storage Concerns**: Multiple citizens report pressing needs for reliable warehousing as market volatility increases demand for secure storage facilities.
+* **Wage & Employment Issues**: Reports of wage stagnation emerge, particularly noted by citizen Shiren regarding operations at John_Jeffries' timber yard.
+* **Strategic Diversification**: Nobili and Cittadini alike are pivoting toward diversified investments, with particular interest in $COMPUTE staking and property acquisition in Cannaregio and Zudeca districts.
+* **Political Oversight**: Several citizens express caution regarding Senate scrutiny of wealth concentration, suggesting potential regulatory changes may be forthcoming.
 
-As the summer sun rises over the lagoon, Venice's citizens navigate these economic waters with the same determination that has defined the Republic for centuries.`);
+The Consiglio dei Dieci continues to monitor these developments closely as the Republic navigates these challenging economic waters.`);
       } finally {
         setIsLoading(false);
       }
