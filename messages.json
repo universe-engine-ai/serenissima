@@ -61,5 +61,15 @@
     "role": "assistant",
     "content": "Signor Lesteri, your offer of 1.5 million Ducats for Calle del Scarlatto has been duly noted. While it represents a substantial sum, it falls significantly short of our valuation at 1.8 million. This parcel in Castello, with its proximity to the Arsenale and twelve building points, holds considerable development potential.\n\nHowever, the Consiglio is not inflexible in its dealings. We could entertain a revised offer of 1.65 million Ducats, which would represent a fair compromise between our respective positions. Such an arrangement would still provide you with a valuable acquisition at a reasonable discount from our initial asking price.\n\nConsider that properties of this size and location rarely become available. The Republic's records indicate your treasury stands at approximately 3.9 million Ducats, making this a significant but manageable investment for your portfolio.\n\nShould you find these terms acceptable, we can proceed with the necessary documentation promptly. If not, we await your counter-proposal.",
     "timestamp": "2025-06-06T01:54:34.000Z"
+  },
+  {
+    "role": "user",
+    "content": "I will ponder this offer",
+    "timestamp": "2025-06-06T01:55:34.000Z"
+  },
+  {
+    "role": "assistant",
+    "content": "Very well, Signor Lesteri. The Consiglio respects the prudence of careful deliberation in matters of significant investment. The parcel at Calle del Scarlatto represents a strategic acquisition in Castello, particularly given its proximity to the Arsenale and the twelve building points it offers for development.\n\nWhile you consider our proposed price of 1.65 million Ducats, allow me to highlight that the current development in this district shows promising growth. Three neighboring parcels have recently seen new construction commence, which will likely increase the value of all surrounding properties within the quarter.\n\nThe Republic's records indicate several merchants have expressed interest in establishing workshops in this area, given the natural flow of skilled labor between the Arsenale and the eastern quarters. This presents an opportunity for profitable lease arrangements should you choose to develop the land.\n\nThe offer shall remain open for three days, after which the Consiglio must reassess the disposition of this asset in light of other Republic priorities. Should you require any specific information about the parcel to aid your decision—be it historical records, current encumbrances, or development restrictions—you need only ask.\n\nWe await your considered response.",
+    "timestamp": "2025-06-06T01:56:34.000Z"
   }
 ]
