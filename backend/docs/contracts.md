@@ -191,7 +191,7 @@ Voir la [documentation du schéma Airtable](airtable_schema.md#table-contracts) 
 ```markdown
 backend/docs/airtable_schema.md
 <<<<<<< SEARCH
--   `TargetAmount` (Nombre): Quantité horaire de ressource pour ce contrat.
+-   `TargetAmount` (Nombre): Quantité totale de ressource pour ce contrat (ex: pour `import`, `public_sell`) ou quantité par transaction (ex: pour `recurrent`). Pour `logistics_service_request`, peut représenter un volume total de service. Pour `building_bid`, généralement 1.
 -   `PricePerResource` (Nombre): Prix unitaire de la ressource.
 -   `Priority` (Nombre): Priorité du contrat.
 -   `Status` (Texte): Statut du contrat (ex: `active`, `completed`, `failed`).
