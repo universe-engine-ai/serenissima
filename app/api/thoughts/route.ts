@@ -35,20 +35,18 @@ function extractMainThought(content: string): string {
   if (!content) {
     return "";
   }
+  // The AI is now instructed to put the main thought in bold. Prioritize this.
+  const boldRegex = /\*\*(.*?)\*\*/; // Non-greedy match for content within **...**
+  const boldMatch = content.match(boldRegex);
+
+  if (boldMatch && boldMatch[1]) {
+    return boldMatch[1].trim(); // Return the bolded content directly
+  }
+
+  // Fallback logic if no bolded text is found (or if the AI didn't follow instructions)
   const MIN_LENGTH = 20;
   const MAX_LENGTH = 400;
   let potentialThoughts: string[] = [];
-  const boldRegex = /\*\*(.*?)\*\*/; // Non-greedy match for content within **...**
-  const boldMatch = content.match(boldRegex);
-  let boldSentence: string | null = null;
-
-  if (boldMatch && boldMatch[1]) {
-    boldSentence = boldMatch[1].trim();
-    if (boldSentence.length >= MIN_LENGTH && boldSentence.length <= MAX_LENGTH) {
-      return boldSentence; // Ideal case: bold and good length
-    }
-    potentialThoughts.push(boldSentence);
-  }
 
   const allSentences = content
     .split(/(?<=[.!?])(?=\s|$)/) // Split after punctuation if followed by space or end of string
@@ -60,10 +58,7 @@ function extractMainThought(content: string): string {
   );
 
   if (goodLengthSentences.length > 0) {
-    const nonBoldGoodLength = goodLengthSentences.filter(s => s !== boldSentence);
-    if (nonBoldGoodLength.length > 0) {
-      return nonBoldGoodLength[Math.floor(Math.random() * nonBoldGoodLength.length)];
-    }
+    // Return a random good-length sentence if no bolded one was found
     return goodLengthSentences[Math.floor(Math.random() * goodLengthSentences.length)];
   }
 
