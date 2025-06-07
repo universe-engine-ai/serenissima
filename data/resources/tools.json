@@ -1,0 +1,11 @@
+{
+  "id": "tools",
+  "name": "Tools",
+  "category": "processed_materials",
+  "subCategory": "equipment",
+  "description": "Crafted implements for construction, shipbuilding, and artisanal work.",
+  "importPrice": 1098.0,
+  "lifetimeHours": null,
+  "consumptionHours": 350,
+  "tier": 2
+}
