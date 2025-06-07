@@ -1,0 +1,11 @@
+{
+  "id": "rags",
+  "name": "Rags",
+  "category": "raw_materials",
+  "subCategory": "textile",
+  "description": "Discarded cloth collected for paper production and other recycled uses.",
+  "importPrice": 60.0,
+  "lifetimeHours": 8775,
+  "consumptionHours": null,
+  "tier": 0
+}
