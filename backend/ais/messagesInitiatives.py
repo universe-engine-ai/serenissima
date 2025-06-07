@@ -88,6 +88,7 @@ def get_kinos_api_key() -> Optional[str]:
 
 def _get_citizen_data_api(username: str) -> Optional[Dict]:
     """Fetches citizen data via the Next.js API."""
+    response = None # Initialize response
     try:
         url = f"{BASE_URL}/api/citizens/{username}"
         response = requests.get(url, timeout=10)
@@ -101,11 +102,13 @@ def _get_citizen_data_api(username: str) -> Optional[Dict]:
         log.error(f"{LogColors.FAIL}API request error fetching citizen data for {username}: {e}{LogColors.ENDC}")
         return None
     except json.JSONDecodeError:
-        log.error(f"{LogColors.FAIL}JSON decode error fetching citizen data for {username}. Response: {response.text[:200]}{LogColors.ENDC}")
+        response_text_preview = response.text[:200] if response else "No response object available"
+        log.error(f"{LogColors.FAIL}JSON decode error fetching citizen data for {username}. Response: {response_text_preview}{LogColors.ENDC}")
         return None
 
 def _get_relationship_data_api(username1: str, username2: str) -> Optional[Dict]:
     """Fetches relationship data via the Next.js API."""
+    response = None # Initialize response
     try:
         url = f"{BASE_URL}/api/relationships?citizen1={username1}&citizen2={username2}"
         response = requests.get(url, timeout=10)
@@ -119,11 +122,13 @@ def _get_relationship_data_api(username1: str, username2: str) -> Optional[Dict]
         log.error(f"{LogColors.FAIL}API request error fetching relationship data between {username1} and {username2}: {e}{LogColors.ENDC}")
         return None
     except json.JSONDecodeError:
-        log.error(f"{LogColors.FAIL}JSON decode error fetching relationship data between {username1} and {username2}. Response: {response.text[:200]}{LogColors.ENDC}")
+        response_text_preview = response.text[:200] if response else "No response object available"
+        log.error(f"{LogColors.FAIL}JSON decode error fetching relationship data between {username1} and {username2}. Response: {response_text_preview}{LogColors.ENDC}")
         return None
 
 def _get_notifications_data_api(username: str, limit: int = 20) -> List[Dict]:
     """Fetches recent notifications for a citizen via the Next.js API."""
+    response = None # Initialize response
     try:
         url = f"{BASE_URL}/api/notifications"
         payload = {"citizen": username, "limit": limit}
@@ -139,11 +144,13 @@ def _get_notifications_data_api(username: str, limit: int = 20) -> List[Dict]:
         log.error(f"{LogColors.FAIL}API request error fetching notifications for {username}: {e}{LogColors.ENDC}")
         return []
     except json.JSONDecodeError:
-        log.error(f"{LogColors.FAIL}JSON decode error fetching notifications for {username}. Response: {response.text[:200]}{LogColors.ENDC}")
+        response_text_preview = response.text[:200] if response else "No response object available"
+        log.error(f"{LogColors.FAIL}JSON decode error fetching notifications for {username}. Response: {response_text_preview}{LogColors.ENDC}")
         return []
 
 def _get_relevancies_data_api(relevant_to_username: str, target_username: str, limit: int = 20) -> List[Dict]:
     """Fetches recent relevancies between two citizens via the Next.js API."""
+    response = None # Initialize response
     try:
         url = f"{BASE_URL}/api/relevancies?relevantToCitizen={relevant_to_username}&targetCitizen={target_username}&limit={limit}"
         response = requests.get(url, timeout=15)
@@ -157,17 +164,20 @@ def _get_relevancies_data_api(relevant_to_username: str, target_username: str, l
         log.error(f"{LogColors.FAIL}API request error fetching relevancies for {relevant_to_username} to {target_username}: {e}{LogColors.ENDC}")
         return []
     except json.JSONDecodeError:
-        log.error(f"{LogColors.FAIL}JSON decode error fetching relevancies for {relevant_to_username} to {target_username}. Response: {response.text[:200]}{LogColors.ENDC}")
+        response_text_preview = response.text[:200] if response else "No response object available"
+        log.error(f"{LogColors.FAIL}JSON decode error fetching relevancies for {relevant_to_username} to {target_username}. Response: {response_text_preview}{LogColors.ENDC}")
         return []
 
 def _get_problems_data_api(username1: str, username2: str, limit: int = 20) -> List[Dict]:
     """Fetches active problems for one or two citizens via the Next.js API."""
     problems_list = []
+    response = None # Initialize response to None
     try:
         # Get problems for username1
         url1 = f"{BASE_URL}/api/problems?citizen={username1}&status=active&limit={limit}"
         response1 = requests.get(url1, timeout=15)
         response1.raise_for_status()
+        response = response1 # Assign to general 'response'
         data1 = response1.json()
         if data1.get("success") and "problems" in data1:
             problems_list.extend(data1["problems"])
@@ -177,6 +187,7 @@ def _get_problems_data_api(username1: str, username2: str, limit: int = 20) -> L
             url2 = f"{BASE_URL}/api/problems?citizen={username2}&status=active&limit={limit}"
             response2 = requests.get(url2, timeout=15)
             response2.raise_for_status()
+            response = response2 # Assign to general 'response'
             data2 = response2.json()
             if data2.get("success") and "problems" in data2:
                 existing_problem_ids = {p.get('problemId') or p.get('id') for p in problems_list}
@@ -192,7 +203,8 @@ def _get_problems_data_api(username1: str, username2: str, limit: int = 20) -> L
         log.error(f"{LogColors.FAIL}API request error fetching problems for {username1} or {username2}: {e}{LogColors.ENDC}")
         return problems_list
     except json.JSONDecodeError:
-        log.error(f"{LogColors.FAIL}JSON decode error fetching problems for {username1} or {username2}. Response: {response.text[:200]}{LogColors.ENDC}")
+        response_text_preview = response.text[:200] if response else "No response object available"
+        log.error(f"{LogColors.FAIL}JSON decode error fetching problems for {username1} or {username2}. Response: {response_text_preview}{LogColors.ENDC}")
         return problems_list
 
 def _check_existing_messages(tables: Dict[str, Table], username1: str, username2: str) -> bool:
