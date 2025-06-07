@@ -131,7 +131,7 @@ export async function GET(
         const buildingRecords = await base(AIRTABLE_BUILDINGS_TABLE)
           .select({
             filterByFormula: `AND({Occupant} = "${camelCaseFields.username}", {Category} = "business")`,
-            fields: ['RunBy', 'Name', 'Type']
+            fields: ['RunBy', 'Name', 'Type', 'BuildingId'] // Added BuildingId
           })
           .firstPage();
 
@@ -145,7 +145,8 @@ export async function GET(
             // Add workplace details
             camelCaseFields.workplace = {
               name: building.get('Name') as string || '',
-              type: building.get('Type') as string || ''
+              type: building.get('Type') as string || '',
+              buildingId: building.get('BuildingId') as string || '' // Added buildingId
             };
           }
         }

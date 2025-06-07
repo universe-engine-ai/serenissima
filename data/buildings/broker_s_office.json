@@ -16,7 +16,7 @@
     "stone": 570,
     "glass": 150
   },
-  "maintenanceCost": 800,
+  "maintenanceCost": 8000,
   "productionInformation": {
     "Arti": [
     {
@@ -90,4 +90,4 @@
   "workTier": 3,
   "consumeTier": 3,
   "constructionMinutes": 2880
-}
+}````

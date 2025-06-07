@@ -5,7 +5,7 @@ export async function GET(request: Request) {
     // Get URL parameters
     const { searchParams } = new URL(request.url);
     const citizenIds = searchParams.getAll('citizenId');
-    const limit = parseInt(searchParams.get('limit') || '100', 100);
+    const limit = parseInt(searchParams.get('limit') || '100', 10); // Changed radix from 100 to 10
     const hasPath = searchParams.get('hasPath') === 'true';
     const ongoing = searchParams.get('ongoing') === 'true';
     const timeRange = searchParams.get('timeRange'); // New 'timeRange' parameter

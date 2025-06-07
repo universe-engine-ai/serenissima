@@ -72,11 +72,11 @@ Contient les informations sur tous les bâtiments.
 -   `IsConstructed` (Case à cocher/Nombre): Indique si la construction est terminée (1 pour vrai, 0 pour faux). Par défaut, si non défini, considéré comme construit. Un bâtiment nouvellement placé via l'interface utilisateur commencera avec cette valeur à 0.
 -   `ConstructionDate` (Date/Heure): Date de fin de construction ou d'arrivée (pour les galères).
 -   `ConstructionMinutesRemaining` (Nombre): Nombre de minutes de construction restantes avant que le bâtiment ne soit terminé. Initialisé à partir de `constructionMinutes` de la définition JSON du type de bâtiment. Décrémenté par les activités `construct_building`.
--   `Variant` (Texte): Variante du modèle 3D (ex: `model`).
+-   `Variant` (Texte): Variante du mod\u00e8le 3D (ex: `model`).
 -   `Notes` (Texte multiligne): Notes diverses.
--   `CheckedAt` (Date/Heure): Horodatage de la dernière activité opérationnelle significative enregistrée pour ce bâtiment par son opérateur (`RunBy`). Ce champ est automatiquement mis à jour lorsque le citoyen `RunBy` effectue certaines activités liées à la gestion du bâtiment (par exemple, en arrivant au travail via `goto_work`, en lançant une `production`, ou via une activité dédiée comme `check_business_status` si implémentée). Si ce champ n'est pas mis à jour pendant plus de 24 heures, cela indique un manque de supervision active simulée, entraînant une pénalité de productivité de 50% pour le bâtiment.
--   `CreatedAt` (Date/Heure): Date de création de l'enregistrement.
--   `UpdatedAt` (Date/Heure): Date de dernière modification (automatique par Airtable).
+-   `CheckedAt` (Date/Heure): Horodatage de la derni\u00e8re activit\u00e9 op\u00e9rationnelle significative enregistr\u00e9e pour ce b\u00e2timent par son op\u00e9rateur (`RunBy`). Ce champ est automatiquement mis \u00e0 jour lorsque le citoyen `RunBy` effectue certaines activit\u00e9s li\u00e9es \u00e0 la gestion du b\u00e2timent (par exemple, en arrivant au travail via `goto_work`, en lan\u00e7ant une `production`, ou via une activit\u00e9 d\u00e9di\u00e9e comme `check_business_status` si impl\u00e9ment\u00e9e). Si ce champ n'est pas mis \u00e0 jour pendant plus de 24 heures, cela indique un manque de supervision active simul\u00e9e, entra\u00eenant une p\u00e9nalit\u00e9 de productivit\u00e9 de 50% pour le b\u00e2timent.
+-   `CreatedAt` (Date/Heure): Date de cr\u00e9ation de l'enregistrement.
+-   `UpdatedAt` (Date/Heure): Date de derni\u00e8re modification (automatique par Airtable).
 
 ## Table: RESOURCES
 
@@ -113,10 +113,10 @@ Gère les accords commerciaux entre citoyens ou avec le public.
 -   `TargetAmount` (Nombre): Quantité totale de ressource pour ce contrat (ex: pour `import`, `public_sell`) ou quantité par transaction (ex: pour `recurrent`). Pour `logistics_service_request`, peut représenter un volume total de service. Pour `building_bid`, généralement 1.
 -   `PricePerResource` (Nombre): Prix unitaire de la ressource. Pour `public_storage`, ce champ stocke le taux de la commission de stockage. Pour `building_bid`, c'est le montant total de l'offre pour le bâtiment.
 -   `Priority` (Nombre): Priorité du contrat.
--   `Status` (Texte): Statut du contrat (ex: `active`, `completed`, `failed`, `ended_by_ai`). Pour `building_bid`, peut être `active` (offre ouverte), `accepted` (offre acceptée par le propriétaire), `refused` (offre refusée), `withdrawn` (offre retirée par l'enchérisseur).
+-   `Status` (Texte): Statut du contrat (ex: `active`, `completed`, `failed`, `ended_by_ai`). For `building_bid`, can be `active` (offer open), `accepted` (offer accepted by owner), `refused` (offer refused), `withdrawn` (offer withdrawn by bidder).
 -   `Notes` (Texte multiligne): Chaîne JSON ou texte pour des détails supplémentaires. Pour `building_bid`, peut contenir des conditions ou messages de l'enchérisseur.
--   `Asset` (Texte): (Nouveau/Utilisation étendue) Pour `building_bid`, stocke le `BuildingId` du bâtiment concerné par l'offre.
--   `AssetType` (Texte): (Nouveau/Utilisation étendue) Pour `building_bid`, stocke la valeur `'building'`.
+-   `Asset` (Texte): Pour `building_bid`, stocke le `BuildingId` du bâtiment concerné par l'offre.
+-   `AssetType` (Texte): Pour `building_bid`, stocke la valeur `'building'`.
 -   `LastExecutedAt` (Date/Heure): Horodatage de la dernière exécution partielle (ex: pour `fetch_from_galley`).
 -   `CreatedAt` (Date/Heure): Date de création du contrat.
 -   `EndAt` (Date/Heure): Date de fin de validité du contrat. Pour `building_bid`, peut être la date d'expiration de l'offre.
@@ -138,8 +138,11 @@ Suit les actions en cours et terminées des citoyens.
 -   `TransportMode` (Texte): Mode de transport (ex: `walk`, `gondola`, `merchant_galley`).
 -   `Path` (Texte multiligne): Chaîne JSON d'un tableau de coordonnées pour le trajet.
 -   `Transporter` (Lien vers `CITIZENS` via `Username`): Citoyen responsable du transport (ex: opérateur de la gondole).
--   `Status` (Texte): Statut de l'activité (ex: `created`, `processed`, `failed`).
--   `Notes` (Texte multiligne): Notes diverses.
+-   `Status` (Texte): Statut de l'activit\u00e9 (ex: `created`, `processed`, `failed`).
+-   `Title` (Texte): Titre concis de l'activit\u00e9.
+-   `Description` (Texte multiligne): Description de ce que l'activit\u00e9 implique.
+-   `Thought` (Texte multiligne): R\u00e9flexion \u00e0 la premi\u00e8re personne du citoyen concernant cette activit\u00e9 (raisonnement, objectifs, commentaires).
+-   `Notes` (Texte multiligne): Notes diverses ou cha\u00eenes JSON pour des donn\u00e9es structur\u00e9es additionnelles. Utilis\u00e9 par certains types d'activit\u00e9s pour passer des informations \u00e0 des processeurs ult\u00e9rieurs (ex: `goto_location` peut stocker ici les param\u00e8tres pour l'activit\u00e9 suivante dans une cha\u00eene, comme `send_message` qui y met les d\u00e9tails du message).
 -   `Details` (Texte multiligne): Chaîne JSON pour des données structurées additionnelles, utilisées par certains types d'activités pour passer des informations à des processeurs ultérieurs (ex: `goto_building_for_storage_fetch` stocke ici les infos pour l'activité `fetch_from_storage` qui suivra).
 -   `Priority` (Nombre): Priorité de l'activité.
 -   `CreatedAt` (Date/Heure): Date de création de l'activité.
@@ -194,6 +197,7 @@ Enregistrement exaustif des échanges financiers.
 
 Suivi des problèmes rencontrés par les citoyens ou les systèmes.
 
+-   `ProblemId` (Texte): Identifiant unique et déterministe du probl\u00e8me (ex: `problem_pinpoint_BUILDINGID_RESOURCEID_ISSUECODE`). Cl\u00e9 primaire pour la logique de cr\u00e9ation/mise \u00e0 jour.
 -   `Citizen` (Lien vers `CITIZENS` via `Username`): Citoyen concerné ou rapporteur.
 -   `AssetType` (Texte): Type de l'actif lié (ex: `building`, `resource`, `citizen`).
 -   `Asset` (Texte): `BuildingId` personnalisé, `ResourceId`, ou `CitizenId` de l'actif lié.
@@ -271,10 +275,10 @@ Enregistrements des prêts entre citoyens ou institutions.
 -   `ApplicationText` (Texte multiligne): Texte de la demande de prêt.
 -   `LoanPurpose` (Texte multiligne): Raison de l'emprunt.
 -   `Notes` (Texte multiligne): Notes diverses sur le prêt.
--   `TemplateId` (Texte): Identifiant d'un modèle de prêt (si applicable).
--   `CreatedAt` (Date/Heure): Date de création de la demande de prêt.
--   `ApprovedAt` (Date/Heure): Date d'approbation du prêt.
--   `UpdatedAt` (Date/Heure): Date de dernière modification.
+-   `TemplateId` (Texte): Identifiant d'un mod\u00e8le de pr\u00eat (si applicable).
+-   `CreatedAt` (Date/Heure): Date de cr\u00e9ation de la demande de pr\u00eat.
+-   `ApprovedAt` (Date/Heure): Date d'approbation du pr\u00eat.
+-   `UpdatedAt` (Date/Heure): Date de derni\u00e8re modification.
 
 ## Table: MESSAGES
 
@@ -286,6 +290,7 @@ Communications entre citoyens.
 -   `Content` (Texte multiligne): Contenu du message.
 -   `Type` (Texte): Type de message (ex: `personal`, `business_inquiry`, `guild_communication`).
 -   `ReadAt` (Date/Heure): Horodatage de lecture par le destinataire.
+-   `Notes` (Texte multiligne): Peut contenir des informations contextuelles. Par exemple, pour les messages de type "reply", ce champ peut stocker l'ID du message original sous la forme `In reply to: <MessageId>`.
 -   `CreatedAt` (Date/Heure): Date d'envoi du message.
 -   `UpdatedAt` (Date/Heure): Date de dernière modification.
 
@@ -324,6 +329,7 @@ Liens et relations entre citoyens (bi-directionnel).
 -   `StrengthScore` (Nombre): Score de force de la relation.
 -   `TrustScore` (Nombre): Score de confiance mutuelle.
 -   `Notes` (Texte multiligne): Notes sur la relation.
+-   `QualifiedAt` (Date/Heure): Horodatage de la derni\u00e8re qualification r\u00e9ussie par le script `qualifyRelationships.py`. (UTC)
 -   `CreatedAt` (Date/Heure): Date de début de la relation ou de création de l'enregistrement.
 -   `UpdatedAt` (Date/Heure): Date de dernière modification.
 

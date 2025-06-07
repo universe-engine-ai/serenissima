@@ -24,9 +24,9 @@ export async function GET(request: NextRequest) {
 
     // Ensure building points service is loaded for point resolution
     if (!buildingPointsService.isPointsLoaded()) {
-      // console.log(`[API Building ${buildingId}] Loading building points service for point resolution...`);
+      console.log(`[API Building ${buildingId}] Loading building points service for point resolution...`);
       await buildingPointsService.loadBuildingPoints();
-      // console.log(`[API Building ${buildingId}] Building points service loaded.`);
+      console.log(`[API Building ${buildingId}] Building points service loaded.`);
     }
 
     // Try Airtable first
@@ -64,7 +64,7 @@ export async function GET(request: NextRequest) {
               return { lat: latNum, lng: lngNum };
             }
             
-            // console.warn(`[API Building ${buildingId}] Could not resolve point ID '${pointId}' to coordinates.`);
+            console.warn(`[API Building ${buildingId}] Could not resolve point ID '${pointId}' to coordinates.`);
             return null;
           }
 
@@ -79,7 +79,7 @@ export async function GET(request: NextRequest) {
                   parsedPosition = pos;
                 }
               } catch (e) {
-                // console.warn(`[API Building ${buildingId}] Could not parse Position JSON string: ${fields.Position}`);
+                console.warn(`[API Building ${buildingId}] Could not parse Position JSON string: ${fields.Position}`);
               }
             } else if (typeof (fields.Position as any).lat === 'number' && typeof (fields.Position as any).lng === 'number') {
               parsedPosition = fields.Position as unknown as { lat: number; lng: number };
@@ -102,10 +102,10 @@ export async function GET(request: NextRequest) {
                   outputPointValueForBuildingData = parsedJson;
                   // console.log(`[API Building ${buildingId}] Successfully parsed Point string as JSON array. Value: ${JSON.stringify(outputPointValueForBuildingData)}`);
                 } else {
-                  // console.warn(`[API Building ${buildingId}] Point string '${pointFieldFromAirtable}' parsed to non-array. Keeping original string.`);
+                  console.warn(`[API Building ${buildingId}] Point string '${pointFieldFromAirtable}' parsed to non-array. Keeping original string.`);
                 }
               } catch (e) {
-                // console.error(`[API Building ${buildingId}] JSON.parse failed for Point string '${pointFieldFromAirtable}'. Keeping original string. Error: ${(e as Error).message}`);
+                console.error(`[API Building ${buildingId}] JSON.parse failed for Point string '${pointFieldFromAirtable}'. Keeping original string. Error: ${(e as Error).message}`);
                 // If parsing fails, outputPointValueForBuildingData remains the original string.
               }
             }
@@ -139,9 +139,9 @@ export async function GET(request: NextRequest) {
                 lat: sumLat / resolvedCoords.length,
                 lng: sumLng / resolvedCoords.length
               };
-              // console.log(`[API Building ${buildingId}] Position updated to centroid of ${resolvedCoords.length} points from 'Point' field.`);
+              console.log(`[API Building ${buildingId}] Position updated to centroid of ${resolvedCoords.length} points from 'Point' field.`);
             } else {
-              // console.warn(`[API Building ${buildingId}] Not all point IDs in 'Point' field could be resolved. Position not updated from 'Point' field.`);
+              console.warn(`[API Building ${buildingId}] Not all point IDs in 'Point' field could be resolved. Position not updated from 'Point' field.`);
             }
           }
           
@@ -171,9 +171,9 @@ export async function GET(request: NextRequest) {
             rentPrice: fields.RentPrice as number || 0,
             occupant: fields.Occupant as string || '',
             isConstructed: fields.IsConstructed === 1 || fields.IsConstructed === true, // Defaults to false if undefined, 0, or false
-            historicalName: undefined,
-            englishName: undefined,
-            historicalDescription: undefined,
+            historicalName: null, // Changed from undefined to null for consistency
+            englishName: null,    // Changed from undefined to null for consistency
+            historicalDescription: null, // Changed from undefined to null for consistency
           };
 
           // Helper function to compare coordinates with tolerance
@@ -204,9 +204,9 @@ export async function GET(request: NextRequest) {
                       const matchById = typeof pointFieldFromAirtable === 'string' && bp.id === pointFieldFromAirtable;
                       if (matchById || (buildingData.position && coordsMatch(buildingData.position, bp))) { // Removed bp.position
                         // Prioritize streetName, streetNameEnglish, streetDescription for buildingPoints
-                        buildingData.historicalName = bp.streetName || bp.historicalName;
-                        buildingData.englishName = bp.streetNameEnglish || bp.englishName;
-                        buildingData.historicalDescription = bp.streetDescription || bp.historicalDescription;
+                        buildingData.historicalName = bp.streetName || bp.historicalName || null; // Added null fallback
+                        buildingData.englishName = bp.streetNameEnglish || bp.englishName || null; // Added null fallback
+                        buildingData.historicalDescription = bp.streetDescription || bp.historicalDescription || null; // Added null fallback
                         if (!buildingData.position) buildingData.position = { lat: bp.lat, lng: bp.lng }; // Ensure position is set if matched by ID
                         foundMatch = true; break;
                       }
@@ -219,9 +219,9 @@ export async function GET(request: NextRequest) {
                     for (const brp of polygon.bridgePoints) {
                       const matchById = typeof pointFieldFromAirtable === 'string' && brp.id === pointFieldFromAirtable;
                       if (brp.edge && (matchById || (buildingData.position && coordsMatch(buildingData.position, brp.edge)))) {
-                        buildingData.historicalName = brp.connection?.historicalName;
-                        buildingData.englishName = brp.connection?.englishName;
-                        buildingData.historicalDescription = brp.connection?.historicalDescription;
+                        buildingData.historicalName = brp.connection?.historicalName || null; // Added null fallback
+                        buildingData.englishName = brp.connection?.englishName || null; // Added null fallback
+                        buildingData.historicalDescription = brp.connection?.historicalDescription || null; // Added null fallback
                         if (!buildingData.position) buildingData.position = { lat: brp.edge.lat, lng: brp.edge.lng };
                         foundMatch = true; break;
                       }
@@ -234,9 +234,9 @@ export async function GET(request: NextRequest) {
                     for (const cp of polygon.canalPoints) {
                       const matchById = typeof pointFieldFromAirtable === 'string' && cp.id === pointFieldFromAirtable;
                       if (cp.edge && (matchById || (buildingData.position && coordsMatch(buildingData.position, cp.edge)))) {
-                        buildingData.historicalName = cp.historicalName;
-                        buildingData.englishName = cp.englishName;
-                        buildingData.historicalDescription = cp.historicalDescription;
+                        buildingData.historicalName = cp.historicalName || null; // Added null fallback
+                        buildingData.englishName = cp.englishName || null; // Added null fallback
+                        buildingData.historicalDescription = cp.historicalDescription || null; // Added null fallback
                         if (!buildingData.position) buildingData.position = { lat: cp.edge.lat, lng: cp.edge.lng };
                         foundMatch = true; break;
                       }
@@ -244,19 +244,19 @@ export async function GET(request: NextRequest) {
                   }
                 }
                 if (foundMatch) {
-                  // console.log(`[API Building ${buildingId}] Enriched with historical data. Name: ${buildingData.historicalName}`);
+                  console.log(`[API Building ${buildingId}] Enriched with historical data. Name: ${buildingData.historicalName}`);
                 } else {
                   // Log pointFieldFromAirtable instead of pointIdFromAirtable for clarity on what was used in matching
-                  // console.log(`[API Building ${buildingId}] No matching point found in polygons for enrichment. Point field from Airtable: ${JSON.stringify(pointFieldFromAirtable)}, Position: ${JSON.stringify(buildingData.position)}`);
+                  console.log(`[API Building ${buildingId}] No matching point found in polygons for enrichment. Point field from Airtable: ${JSON.stringify(pointFieldFromAirtable)}, Position: ${JSON.stringify(buildingData.position)}`);
                 }
               } else {
-                 // console.warn(`[API Building ${buildingId}] Polygon data fetched but structure is not as expected or no polygons array. Success: ${polygonsData.success}`);
+                 console.warn(`[API Building ${buildingId}] Polygon data fetched but structure is not as expected or no polygons array. Success: ${polygonsData.success}`);
               }
             } else {
-              // console.warn(`[API Building ${buildingId}] Failed to fetch polygons for enrichment: ${polygonsResponse.status} ${polygonsResponse.statusText}`);
+              console.warn(`[API Building ${buildingId}] Failed to fetch polygons for enrichment: ${polygonsResponse.status} ${polygonsResponse.statusText}`);
             }
           } catch (polyErr) {
-            // console.error(`[API Building ${buildingId}] Error fetching or processing polygons for enrichment:`, polyErr);
+            console.error(`[API Building ${buildingId}] Error fetching or processing polygons for enrichment:`, polyErr);
           }
           
           return NextResponse.json({ building: buildingData });

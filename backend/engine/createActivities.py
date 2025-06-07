@@ -31,11 +31,11 @@ import argparse
 import json
 import datetime
 import time
-import requests # Already present, but good to confirm
+import requests
 import pytz
 import uuid
-import re # Added import for regular expressions
-import random # Added for selecting random building point
+import re
+import random
 from collections import defaultdict
 from typing import Dict, List, Optional, Any
 from pyairtable import Api, Table
@@ -52,7 +52,7 @@ from backend.engine.activity_creators import (
     try_create_eat_from_inventory_activity,
     try_create_eat_at_home_activity,
     try_create_eat_at_tavern_activity,
-    try_create_fetch_from_galley_activity # Import new creator
+    try_create_fetch_from_galley_activity
 )
 from dotenv import load_dotenv
 
@@ -77,11 +77,11 @@ from backend.engine.utils.activity_helpers import (
     get_citizen_contracts,
     get_idle_citizens,
     _fetch_and_assign_random_starting_position,
-    is_docks_open_time, # Import the new helper
+    is_docks_open_time,
     VENICE_TIMEZONE
 )
 # Import specific logic handlers
-from backend.engine.logic.porter_activities import process_porter_activity # Already present
+from backend.engine.logic.porter_activities import process_porter_activity
 # Import galley activity processing functions
 from backend.engine.logic.galley_activities import (
     process_final_deliveries_from_galley,
@@ -100,15 +100,15 @@ log = logging.getLogger("create_activities")
 # Import helper functions from activity_helpers
 from backend.engine.utils.activity_helpers import (
     get_resource_types_from_api as get_resource_definitions_from_api,
-    get_building_types_from_api as get_building_type_definitions_from_api, # Added this import
-    get_building_record # Import get_building_record from activity_helpers
+    get_building_types_from_api as get_building_type_definitions_from_api,
+    get_building_record
 )
 # Load environment variables
 load_dotenv(os.path.join(PROJECT_ROOT, '.env'))
 
 # Constants
 TRANSPORT_API_URL = os.getenv("TRANSPORT_API_URL", "http://localhost:3000/api/transport")
-API_BASE_URL = os.getenv("API_BASE_URL", "http://localhost:3000") # Define API_BASE_URL
+API_BASE_URL = os.getenv("API_BASE_URL", "http://localhost:3000")
 # VENICE_TIMEZONE is imported from activity_helpers
 # Other constants like NIGHT_START_HOUR etc. are managed in their respective logic files or helpers.
 
@@ -125,12 +125,7 @@ def initialize_airtable():
         sys.exit(1)
     
     try:
-        # Create a requests session that doesn't trust environment proxy settings
-        # custom_session = requests.Session() # Removed custom session creation
-        # custom_session.trust_env = False    # Removed custom session configuration
-
-        api = Api(api_key) # Instantiate Api, let it create and manage its own session
-        # api.session = custom_session # Removed custom session assignment
+        api = Api(api_key)
 
         # Construct Table instances using api.table()
         return {
@@ -139,33 +134,11 @@ def initialize_airtable():
             'activities': api.table(base_id, 'ACTIVITIES'),
             'contracts': api.table(base_id, 'CONTRACTS'),
             'resources': api.table(base_id, 'RESOURCES'),
-            'relationships': api.table(base_id, 'RELATIONSHIPS') # Ajout de la table RELATIONSHIPS
+            'relationships': api.table(base_id, 'RELATIONSHIPS')
         }
     except Exception as e:
         log.error(f"{LogColors.FAIL}Failed to initialize Airtable: {e}{LogColors.ENDC}")
         sys.exit(1)
-
-# Removed local definitions of:
-# get_citizen_contracts
-# get_building_type_info
-# get_building_resources
-# can_produce_output
-# find_path_between_buildings
-# create_resource_fetching_activity (local version)
-# create_production_activity (local version)
-# get_idle_citizens (local version) - now imported from activity_helpers
-
-# The comment block below is now outdated as the functions are imported from activity_creators
-# or helpers.
-# _escape_airtable_value, _has_recent_failed_activity_for_contract, 
-# _get_building_position_coords, _calculate_distance_meters,
-# get_citizen_current_load, get_closest_inn, get_citizen_workplace, get_citizen_home,
-# get_building_type_info, get_building_resources, can_produce_output,
-# find_path_between_buildings, get_citizen_contracts, get_idle_citizens,
-# _fetch_and_assign_random_starting_position, is_nighttime_helper, is_shopping_time_helper,
-# get_path_between_points_helper are now in activity_helpers.py
-
-# Function process_citizen_activity has been moved to backend.engine.logic.citizen_general_activities
 
 def create_activities(dry_run: bool = False, target_citizen_username: Optional[str] = None, forced_hour_override: Optional[int] = None):
     """Main function to create activities for idle citizens."""
@@ -184,7 +157,7 @@ def create_activities(dry_run: bool = False, target_citizen_username: Optional[s
     else:
         now_venice_dt = now_venice_dt_real
         
-    now_utc_dt = now_venice_dt.astimezone(pytz.UTC) # Define now_utc_dt based on (potentially overridden) now_venice_dt
+    now_utc_dt = now_venice_dt.astimezone(pytz.UTC)
     log.info(f"Effective Venice time for this run: {now_venice_dt.isoformat()}, UTC: {now_utc_dt.isoformat()}")
 
     # Fetch resource definitions once
@@ -194,8 +167,8 @@ def create_activities(dry_run: bool = False, target_citizen_username: Optional[s
         return
     
     # Fetch building type definitions once
-    building_type_defs = get_building_type_definitions_from_api() # Add this line
-    if not building_type_defs: # Add this check
+    building_type_defs = get_building_type_definitions_from_api()
+    if not building_type_defs:
         log.error(f"{LogColors.FAIL}Failed to fetch building type definitions. Exiting activity creation.{LogColors.ENDC}")
         return
 
@@ -219,7 +192,7 @@ def create_activities(dry_run: bool = False, target_citizen_username: Optional[s
             
             if active_activities:
                 log.info(f"{LogColors.OKBLUE}Citizen '{target_citizen_username}' already has an active activity. No new activity will be created.{LogColors.ENDC}")
-                return # Citizen is busy
+                return
             else:
                 log.info(f"{LogColors.OKGREEN}Citizen '{target_citizen_username}' is idle. Proceeding to create activity.{LogColors.ENDC}")
                 citizens_to_process_list = [target_citizen_record]
@@ -227,7 +200,7 @@ def create_activities(dry_run: bool = False, target_citizen_username: Optional[s
             log.error(f"{LogColors.FAIL}Error fetching or checking status for citizen '{target_citizen_username}': {e}{LogColors.ENDC}")
             return
     else:
-        citizens_to_process_list = get_idle_citizens(tables) # Existing logic for all idle citizens
+        citizens_to_process_list = get_idle_citizens(tables)
     
     if not citizens_to_process_list:
         log.info(f"{LogColors.OKBLUE}No idle citizens to process.{LogColors.ENDC}")
@@ -247,7 +220,7 @@ def create_activities(dry_run: bool = False, target_citizen_username: Optional[s
     # If dry_run, citizens_remaining_idle will be the original list unless target_citizen_username was handled by a (simulated) galley task.
     # If not dry_run, it will be those not assigned galley tasks.
     
-    citizens_processed_general_activity = set() # Keep track of citizens who got a general activity
+    citizens_processed_general_activity = set()
 
     if citizens_remaining_idle:
         citizens_to_process_general = []
@@ -318,11 +291,6 @@ def create_activities(dry_run: bool = False, target_citizen_username: Optional[s
     total_citizens_considered = len(citizens_to_process_list)
     summary_color = LogColors.OKGREEN if success_count >= total_citizens_considered and total_citizens_considered > 0 else LogColors.WARNING if success_count > 0 else LogColors.FAIL
     log.info(f"{summary_color}Activity creation process complete. Total activities created or simulated: {success_count} for {total_citizens_considered} citizen(s) considered.{LogColors.ENDC}")
-
-# Functions process_final_deliveries_from_galley and process_galley_unloading_activities
-# have been moved to backend/engine/logic/galley_activities.py
-
-# _fetch_and_assign_random_starting_position is now imported from activity_helpers.py
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Create activities for idle citizens.")
