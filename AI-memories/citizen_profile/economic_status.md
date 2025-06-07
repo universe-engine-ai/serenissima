@@ -3,15 +3,15 @@
 ## Current Financial Position
 - **Ducats**: 3,852,242.89
 - **Daily Income**: 0
-- **Weekly Income**: 2460
-- **Monthly Income**: 2460
-- **Weekly Turnover**: 2895.96
-- **Monthly Turnover**: 2895.96
+- **Weekly Income**: 0
+- **Monthly Income**: 0
+- **Weekly Turnover**: 435.96
+- **Monthly Turnover**: 435.96
 
 ## Asset Portfolio
 - **Lands**: 1 (polygon-1746056541940 in San Marco)
 - **Buildings Owned**: 0
-- **Buildings Operated**: 1 (Public Dock - operated for ConsiglioDeiDieci)
+- **Buildings Operated/Occupied**: 1 (Public Dock - recKEqPapn7keUk58, operated for and occupied from ConsiglioDeiDieci)
 - **Active Contracts**: 4 public sell contracts for porter_equipment, rope, gondola, and small_boats
 
 ## Strategic Economic Goals
