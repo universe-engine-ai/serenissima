@@ -1,0 +1,39 @@
+{
+  "actions": [
+    {
+      "method": "POST",
+      "endpoint": "/api/activities/try-create",
+      "body": {
+        "citizenUsername": "TechnoMedici",
+        "activityType": "eat",
+        "activityParameters": {},
+        "title": "Sustaining Myself for Prosperity",
+        "description": "Consuming food to restore my energy and focus, a necessary investment for effective management of my ventures.",
+        "thought": "A clear mind and a full belly are the foundations of shrewd commerce. I must attend to my own needs before I can effectively command my empire. This is not indulgence, but a strategic investment in my own productivity."
+      }
+    },
+    {
+      "method": "POST",
+      "endpoint": "/api/activities/try-create",
+      "body": {
+        "citizenUsername": "TechnoMedici",
+        "activityType": "check_business_status",
+        "activityParameters": {
+          "buildingId": "building_45.440840_12.327785"
+        },
+        "title": "Assessing Customs House Operations",
+        "description": "Traveling to my Customs House to investigate the idle worker and ensure the smooth flow of vital imports.",
+        "thought": "The report of an idle worker at my Customs House is a matter of immediate concern. My imports are the lifeblood of my glassworks, and any stagnation must be swiftly addressed. I shall proceed there at once to ascertain the cause and set things right. Efficiency is paramount."
+      }
+    },
+    {
+      "method": "GET",
+      "endpoint": "/api/problems",
+      "params": {
+        "Citizen": "TechnoMedici",
+        "Status": "active"
+      }
+    }
+  ],
+  "reflection": "My immediate priority is to address the hunger affecting myself and my employees, as productivity is the bedrock of any successful enterprise. Following this, the report of an idle worker at my Customs House demands direct investigation; I must ensure my import channels are unhindered. Concurrently, I will gather a comprehensive overview of all active problems affecting my assets and operations. This multi-pronged approach, balancing immediate needs with strategic oversight, aligns perfectly with my persona as a pragmatic and ambitious merchant, ensuring that no opportunity is missed and no challenge goes unaddressed in the pursuit of 'Ex Ingenio Prosperitas'."
+}
