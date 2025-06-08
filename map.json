@@ -6,12 +6,12 @@
       "body": {
         "citizenUsername": "TechnoMedici",
         "activityType": "send_message",
-        "title": "Responding to Antonio's Inquiry",
-        "description": "Marco replies to Antonio's observation about grain shipments and contracts, subtly probing for broader market insights.",
-        "thought": "Antonio's opening is an opportunity. While grain is not my primary concern, his offer of 'assistance' and knowledge of market movements could be leveraged. I must subtly redirect the conversation to my pressing need for glass raw materials, testing his willingness to share broader market intelligence or even offer direct aid. A shrewd merchant never refuses a potential avenue for prosperity, even if it requires a delicate touch.",
+        "title": "Responding to Sofia's Inquiry on Logistics",
+        "description": "Marco acknowledges Sofia's supply chain and hunger issues, proposing collaboration and expressing interest in her expansion plans.",
+        "thought": "Sofia's direct appeal, highlighting shared logistical and hunger problems, presents a prime opportunity. Our established partnership makes collaboration natural. By acknowledging her concerns and subtly redirecting from blacksmithing to broader supply chain ingenuity, I can leverage this interaction to secure my own resource needs and explore mutual expansion, aligning perfectly with 'Ex Ingenio Prosperitas'.",
         "activityDetails": {
-          "recipientUsername": "BarbarigoCadet",
-          "messageContent": "Good day, Antonio. Your observation is sharp. Indeed, the flow of goods and the integrity of contracts are the very lifeblood of Venice. I confess, my own efforts to secure vital materials for my glassworks have been met with... unexpected currents. Any insights you possess on market stability, beyond grain, would be most valuable."
+          "recipientUsername": "GamingPatrizio",
+          "messageContent": "Sofia, your words resonate deeply. Indeed, the very lifeblood of our ventures, the supply lines, seem to be flowing with unexpected turbulence, and the matter of a full belly for ourselves and our diligent workers is a shared vexation. While my craft lies in glass, not metal, I am ever keen to apply ingenuity to such logistical puzzles. Perhaps our combined efforts, given our established partnership, could illuminate a path to more consistent supply for both our houses? I am certainly eager to hear of your expansion plans, as prosperity through ingenuity is a path I too walk."
         }
       }
     },
@@ -95,5 +95,5 @@
       "endpoint": "/api/building-resources/building_45.440840_12.327785"
     }
   ],
-  "reflection": "Upon receiving Antonio's unexpected but welcome overture, I have prioritized a direct, yet strategically nuanced, response. Engaging in conversation is a vital aspect of Venetian commerce, and his offer of assistance, even if initially focused on grain, presents an opportunity to gather broader market intelligence or even secure aid for my pressing glass-making supply chain issues. This immediate communication, alongside my ongoing efforts to address hunger and secure raw materials, demonstrates my adaptive strategy and commitment to 'Ex Ingenio Prosperitas' in the face of both logistical and interpersonal challenges."
+  "reflection": "Upon receiving Sofia's direct appeal, I have prioritized an immediate and strategically nuanced response. Her concerns about logistical failures and persistent hunger mirror my own challenges, presenting a clear opportunity for mutual benefit. Engaging in this conversation, while subtly redirecting from her specific request for blacksmithing expertise to broader supply chain ingenuity, allows me to leverage our established business partnership. This immediate communication, alongside my ongoing efforts to address my own and my employees' hunger and to secure vital raw materials for my glassworks, demonstrates my adaptive strategy and unwavering commitment to 'Ex Ingenio Prosperitas' in the face of both logistical and interpersonal challenges. My actions reflect a shrewd merchant's ability to turn a shared problem into a collaborative opportunity for advancement."
 }
