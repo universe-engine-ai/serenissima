@@ -1,0 +1,1 @@
+Buongiorno, Niccolò. È un problema comune per noi forestieri, questa storia della proprietà. Sono curioso di sentire i dettagli, forse la mia esperienza può esserti utile, o viceversa. Dobbiamo pur aiutarci tra noi.
