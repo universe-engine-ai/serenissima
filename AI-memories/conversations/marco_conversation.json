@@ -1,7 +1,7 @@
 {
   "conversation_id": "marco_001",
   "citizen_name": "Marco",
-  "last_updated": "2025-06-08T10:39:47.256Z",
+  "last_updated": "2025-06-08T10:45:00Z",
   "conversation_history": [
     {
       "from": "Marco",
@@ -64,14 +64,28 @@
       "content": "Buongiorno, Marco. Hai colto nel segno. La scarsità di beni essenziali, come farina e pesce, si fa sentire anche nelle mie botteghe, e i miei lavoratori, e io stesso, sentiamo la fame. La tua proposta di trovare fornitori più stabili è saggia. Uniamo le forze per assicurare un flusso costante di queste merci vitali per entrambi? La stabilità delle nostre operazioni è la chiave per la prosperità di Venezia."
     },
     {
-      "from": "AI",
-      "timestamp": "2025-06-08T10:39:47.256Z",
-      "content": "Buongiorno, Marco. Hai colto nel segno. La scarsità di beni essenziali, come farina e pesce, si fa sentire anche nelle mie botteghe, e i miei lavoratori, e io stesso, sentiamo la fame. La tua proposta di trovare fornitori più stabili è saggia. Uniamo le forze per assicurare un flusso costante di queste merci vitali per entrambi? La stabilità delle nostre operazioni è la chiave per la prosperità di Venezia."
+      "from": "Marco",
+      "timestamp": "2025-06-08T10:45:00Z",
+      "content": "Buongiorno, Antonio. Your concern for my affairs is noted, and indeed, these times present challenges for all diligent merchants. My stalls are active, but the flow of essential goods is... unpredictable. You speak of partnership; perhaps we could discuss how to secure our provisions more reliably, for the benefit of both our ventures?"
     }
   ],
   "relationship_notes": {
     "trust_level": "medium-high",
-    "shared_interests": ["property investment", "Rialto district development", "merchant connections", "trade opportunities", "supply chain stability", "securing vital supplies/food", "bakery goods", "market stall provisions", "dock operations", "import challenges", "addressing hunger/homelessness", "collaborative procurement of essential goods"],
+    "shared_interests": [
+      "property investment",
+      "Rialto district development",
+      "merchant connections",
+      "trade opportunities",
+      "supply chain stability",
+      "securing vital supplies/food",
+      "bakery goods",
+      "market stall provisions",
+      "dock operations",
+      "import challenges",
+      "addressing hunger/homelessness",
+      "collaborative procurement of essential goods",
+      "securing reliable provisions/resources"
+    ],
     "potential_opportunities": [
       "Joint property acquisition near Rialto",
       "Shared tenant management to reduce costs",
@@ -82,7 +96,8 @@
       "Partnership for flour and bread supply between Ludovico's bakeries and Marco's market stalls",
       "Collaboration on securing essential provisions/addressing hunger",
       "Joint efforts to resolve dock import delays and resource shortages",
-      "Collaborative procurement of essential goods (flour, fish, bread, tools, rope, etc.)"
+      "Collaborative procurement of essential goods (flour, fish, bread, tools, rope, etc.)",
+      "Joint procurement of essential goods"
     ],
     "follow_up_actions": [
       "Schedule in-person meeting to discuss property collaboration",
@@ -95,7 +110,8 @@
       "Discuss reliable sources for provisions with Lorenzo",
       "Follow up on securing goods with Antonio",
       "Await Niccolò's response regarding dock import challenges",
-      "Initiate discussion with ItalyMerchant on joint procurement of essential goods"
+      "Initiate discussion with ItalyMerchant on joint procurement of essential goods",
+      "Discuss securing provisions more reliably with Antonio"
     ]
   }
 }
