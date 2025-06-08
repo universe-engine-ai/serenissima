@@ -38,5 +38,13 @@
     "content": "Buon giorno Chiara. You're right, grain is crucial. My docks are always looking for efficient supply lines. What kind of optimization did you have in mind?",
     "type": "reply",
     "createdAt": "2025-06-08T08:59:19.000Z"
+  },
+  {
+    "role": "assistant",
+    "sender": "BarbarigoCadet",
+    "receiver": "TravelBug23",
+    "content": "Buongiorno, Ludovico. Still pondering those Ragusa margins? The city's currents are indeed unpredictable, and not just for trade. I've noticed many, even myself, find their stomachs rumbling more often than their purses. Perhaps a quiet discussion over a simple meal could shed light on navigating these lean times?",
+    "type": "conversation_opener",
+    "createdAt": "2025-06-08T09:45:00.000Z"
   }
 ]
