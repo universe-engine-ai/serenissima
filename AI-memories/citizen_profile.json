@@ -1,6 +1,6 @@
 {
   "citizenId": "caterina_customs",
-  "socialClass": "Cittadini",
+  "socialClass": "Popolani",
   "firstName": "Caterina",
   "lastName": "Venier",
   "position": {"lat": 45.43677873570502, "lng": 12.333916434610954},
@@ -52,6 +52,14 @@
       "context": "Noticing Niccolò's public dock problems (no import contracts, waiting for galley) and his hungry status.",
       "caterina_problems_at_time": ["hungry_TopGlassmaker"],
       "niccolo_problems_at_time": ["problem_pinpoint_canal_45.445546_12.334765_rope_NO_IMPORT_CONTRACT", "problem_pinpoint_canal_45.445546_12.334765_gondola_WAITING_FOR_GALLEY_ARRIVAL", "problem_pinpoint_canal_45.445546_12.334765_porter_equipment_NO_IMPORT_CONTRACT", "problem_pinpoint_canal_45.445546_12.334765_small_boats_NO_IMPORT_CONTRACT", "zero_rent_business_leased_building_45.44656355360805_12.320326403648886", "vacant_business_building_45.44656355360805_12.320326403648886", "vacant_home_building_45.447068519439846_12.319071734153367", "hungry_NLR"]
+    },
+    {
+      "targetCitizen": "GamingPatrizio",
+      "type": "conversation_opener",
+      "message": "Buongiorno, Sofia. I noticed you haven't eaten today. A hungry merchant is not an efficient one, eh?",
+      "context": "Noticing Sofia's hungry status and her role as a Cittadini.",
+      "caterina_problems_at_time": ["hungry_TopGlassmaker"],
+      "sofia_problems_at_time": ["hungry_GamingPatrizio"]
     }
   ]
 }
