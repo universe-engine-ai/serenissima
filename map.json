@@ -2,26 +2,20 @@
   "actions": [
     {
       "method": "POST",
-      "endpoint": "/api/actions/create-activity",
+      "endpoint": "/api/activities/try-create",
       "body": {
         "citizenUsername": "TechnoMedici",
         "activityType": "eat",
-        "title": "Replenishing My Vigor",
-        "description": "Addressing my personal hunger to restore full energy and focus, essential for effective leadership.",
-        "thought": "A merchant's mind is only as sharp as his body is nourished. I must attend to this hunger, for a clear head is paramount in the intricate dance of Venetian commerce. No grand strategy can unfold on an empty stomach.",
-        "activityDetails": {}
+        "activityParameters": {}
       }
     },
     {
       "method": "POST",
-      "endpoint": "/api/actions/create-activity",
+      "endpoint": "/api/activities/try-create",
       "body": {
         "citizenUsername": "TechnoMedici",
         "activityType": "adjust_business_wages",
-        "title": "Adjusting Wages for Loyal Employees",
-        "description": "Increasing wages for my employees, particularly those at the Customs House, to ensure their well-being and boost productivity.",
-        "thought": "My employees, especially those at the Customs House, are the sinews of my enterprise. Their hunger affects my bottom line. A slight increase in their ducats will ensure their loyalty and vigor, translating directly into greater efficiency for my ventures. A well-fed worker is a productive worker.",
-        "activityDetails": {
+        "activityParameters": {
           "businessBuildingId": "building_45.440840_12.327785",
           "newWageAmount": 28000,
           "strategy": "improve_employee_morale_and_productivity"
@@ -29,23 +23,12 @@
       }
     },
     {
-      "method": "GET",
-      "endpoint": "/api/building-resources/building_45.440840_12.327785"
-    },
-    {
-      "method": "GET",
-      "endpoint": "/api/citizens/TopGlassmaker"
-    },
-    {
       "method": "POST",
-      "endpoint": "/api/actions/create-activity",
+      "endpoint": "/api/activities/try-create",
       "body": {
         "citizenUsername": "TechnoMedici",
         "activityType": "manage_import_contract",
-        "title": "Importing Soda Ash for Glassworks",
-        "description": "Establishing a contract to import essential soda ash for glass production.",
-        "thought": "The Murano furnaces demand soda ash. This import is a direct investment in the heart of my glass empire, ensuring the clarity and brilliance of our renowned cristallo.",
-        "activityDetails": {
+        "activityParameters": {
           "resourceType": "soda_ash",
           "targetAmount": 5,
           "pricePerResource": 660,
@@ -56,14 +39,11 @@
     },
     {
       "method": "POST",
-      "endpoint": "/api/actions/create-activity",
+      "endpoint": "/api/activities/try-create",
       "body": {
         "citizenUsername": "TechnoMedici",
         "activityType": "manage_import_contract",
-        "title": "Importing Murano Sand",
-        "description": "Securing a steady supply of high-quality sand, a fundamental component for glass production.",
-        "thought": "Even the finest glass begins with humble sand. Securing a consistent supply is paramount to maintaining the quality and volume of my Murano output.",
-        "activityDetails": {
+        "activityParameters": {
           "resourceType": "sand",
           "targetAmount": 10,
           "pricePerResource": 30,
@@ -74,14 +54,11 @@
     },
     {
       "method": "POST",
-      "endpoint": "/api/actions/create-activity",
+      "endpoint": "/api/activities/try-create",
       "body": {
         "citizenUsername": "TechnoMedici",
         "activityType": "manage_import_contract",
-        "title": "Importing Fuel for Furnaces",
-        "description": "Arranging for the import of fuel to power the glass furnaces and other operations.",
-        "thought": "The fires of Murano must never dim. A reliable supply of fuel is as vital as the sand and soda ash, ensuring continuous production and the warmth of prosperity.",
-        "activityDetails": {
+        "activityParameters": {
           "resourceType": "fuel",
           "targetAmount": 20,
           "pricePerResource": 540,
@@ -97,7 +74,11 @@
         "Citizen": "TechnoMedici",
         "Status": "active"
       }
+    },
+    {
+      "method": "GET",
+      "endpoint": "/api/building-resources/building_45.440840_12.327785"
     }
   ],
-  "reflection": "My recent intelligence confirms the critical need to address the well-being of myself and my diligent employees, as hunger directly impacts the efficiency of my burgeoning empire. Therefore, my immediate focus is on securing sustenance and adjusting wages to ensure optimal productivity, particularly at my Customs House where operations are currently hindered. Concurrently, I must re-evaluate the resources available at this vital hub and proactively establish import contracts for the raw materials essential to my glassworks. This multi-pronged approach, balancing immediate needs with long-term strategic supply chain management, is crucial for the continued prosperity of the Venier name, embodying 'Ex Ingenio Prosperitas' even amidst daily challenges."
+  "reflection": "My prior attempts to issue directives were met with unforeseen technical impediments, a clear sign that my approach required refinement. As a shrewd merchant, I learn from every setback. My immediate focus now shifts to utilizing the 'try-create' missive channel, which the Doge's cartographers have indicated is the proper conduit for commanding my undertakings. This period's actions are thus a direct response to the pervasive hunger affecting both myself and my diligent employees, and the critical shortage of raw materials for my glassworks. By addressing these foundational issues through the correct channels, I aim to restore full productivity and ensure the uninterrupted flow of my commercial ventures, embodying 'Ex Ingenio Prosperitas' through adaptive strategy."
 }
