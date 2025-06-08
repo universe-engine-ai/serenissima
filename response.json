@@ -1,0 +1,101 @@
+{
+  "actions": [
+    {
+      "method": "POST",
+      "endpoint": "/api/activities/try-create",
+      "reflection": "To combat the pervasive hunger, I must ensure my market stall is well-supplied with essential provisions like bread, a foundational step for both my household and the city's well-being.",
+      "body": {
+        "citizenUsername": "TechnoMedici",
+        "activityType": "manage_markup_buy_contract",
+        "activityParameters": {
+          "resourceType": "bread",
+          "targetAmount": 50,
+          "maxPricePerResource": 350,
+          "buyerBuildingId": "building_45.439276_12.339331",
+          "targetMarketBuildingId": "building_45.439276_12.339331"
+        }
+      }
+    },
+    {
+      "method": "POST",
+      "endpoint": "/api/activities/try-create",
+      "reflection": "With provisions now being procured, I must attend to my own sustenance. A clear mind and full vigor are paramount for navigating the intricate commercial landscape of Venice.",
+      "body": {
+        "citizenUsername": "TechnoMedici",
+        "activityType": "eat",
+        "activityParameters": {}
+      }
+    },
+    {
+      "method": "POST",
+      "endpoint": "/api/activities/try-create",
+      "reflection": "Caterina Baffo's dedication at the Customs House is vital. Addressing her hunger through a fair wage is a direct investment in the efficiency of my import operations, ensuring loyalty and productivity.",
+      "body": {
+        "citizenUsername": "TechnoMedici",
+        "activityType": "adjust_business_wages",
+        "activityParameters": {
+          "businessBuildingId": "building_45.440840_12.327785",
+          "newWageAmount": 28000,
+          "strategy": "improve_employee_morale_and_productivity"
+        }
+      }
+    },
+    {
+      "method": "POST",
+      "endpoint": "/api/activities/try-create",
+      "reflection": "The Murano furnaces demand soda ash. This import is a direct investment in the heart of my glass empire, ensuring the clarity and brilliance of our renowned cristallo.",
+      "body": {
+        "citizenUsername": "TechnoMedici",
+        "activityType": "manage_import_contract",
+        "activityParameters": {
+          "resourceType": "soda_ash",
+          "targetAmount": 5,
+          "pricePerResource": 660,
+          "buyerBuildingId": "building_45.440840_12.327785",
+          "targetOfficeBuildingId": "building_45.440840_12.327785"
+        }
+      }
+    },
+    {
+      "method": "POST",
+      "endpoint": "/api/activities/try-create",
+      "reflection": "Even the finest glass originates from humble sand. Securing a consistent supply is paramount to maintaining the quality and volume of my Murano output.",
+      "body": {
+        "citizenUsername": "TechnoMedici",
+        "activityType": "manage_import_contract",
+        "activityParameters": {
+          "resourceType": "sand",
+          "targetAmount": 10,
+          "pricePerResource": 30,
+          "buyerBuildingId": "building_45.440840_12.327785",
+          "targetOfficeBuildingId": "building_45.440840_12.327785"
+        }
+      }
+    },
+    {
+      "method": "POST",
+      "endpoint": "/api/activities/try-create",
+      "reflection": "The fires of Murano must never dim. A reliable supply of fuel is as indispensable as the sand and soda ash, ensuring continuous production and the warmth of prosperity.",
+      "body": {
+        "citizenUsername": "TechnoMedici",
+        "activityType": "manage_import_contract",
+        "activityParameters": {
+          "resourceType": "fuel",
+          "targetAmount": 20,
+          "pricePerResource": 540,
+          "buyerBuildingId": "building_45.440840_12.327785",
+          "targetOfficeBuildingId": "building_45.440840_12.327785"
+        }
+      }
+    },
+    {
+      "method": "GET",
+      "endpoint": "/api/problems",
+      "params": {
+        "Citizen": "TechnoMedici",
+        "Status": "active"
+      }
+    }
+  ],
+  "reflection": "My prior attempts to address critical issues were met with unforeseen technical impediments, a clear sign that my approach required refinement. As a shrewd merchant, I learn from every setback. My immediate focus now shifts to utilizing the 'try-create' missive channel, which the Doge's cartographers have indicated is the proper conduit for commanding my undertakings. This period's actions are thus a direct response to the pervasive hunger affecting both myself and my diligent employees, and the critical shortage of raw materials for my glassworks. By addressing these foundational issues through the correct channels, I aim to restore full productivity and ensure the uninterrupted flow of my commercial ventures, embodying 'Ex Ingenio Prosperitas' through adaptive strategy."
+}
