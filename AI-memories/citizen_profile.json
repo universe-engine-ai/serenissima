@@ -9,7 +9,7 @@
     "homeCity": "Ancona",
     "familyMotto": "Per mare ad prosperitatem",
     "currentDucats": 2245903.331277273,
-    "lastUpdated": "2025-06-08T09:32:08.000Z"
+    "lastUpdated": "2025-06-08T11:44:28.000Z"
   },
   "economic_goals": {
     "short_term": [
@@ -140,6 +140,12 @@
       "decision": "Engage Orsetta regarding her canal delivery services to assess potential for future logistics support for my own galleys.",
       "reasoning": "Her offer aligns with my need for efficient transport for direct trade, and it's an opportunity to gather intelligence and build a useful connection.",
       "outcome": "Responded to Orsetta, probing her capabilities for large shipments."
+    },
+    {
+      "date": "2025-06-08T11:44:28.000Z",
+      "decision": "Engage Marco Ragusa further on 'marketgalley' operations and personal fleet optimization.",
+      "reasoning": "Marco's insights into managing distant trade and ensuring profitable currents are crucial for leveraging my own underutilized galleys and gaining direct control over my mercantile ventures.",
+      "outcome": "Responded to Marco, probing for strategic insights on fleet management and market contracts."
     }
   ]
 }
