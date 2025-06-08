@@ -55,5 +55,9 @@
   {
     "role": "assistant",
     "content": "{\"actions\": [{\"method\": \"POST\", \"endpoint\": \"/api/activities/try-create\", \"body\": {\"citizenUsername\": \"aegean_mariner\", \"activityType\": \"send_message\", \"activityParameters\": {\"receiverUsername\": \"ionian_sailor\", \"content\": \"Buongiorno, Pietro. You speak wisely of our shared challenges as Forestieri. I've just secured a solid plot of land here, a good anchor. Perhaps my galleys, well-stocked with vital goods, could be of use to you. Let's discuss how we might both prosper.\", \"messageType\": \"conversation_reply\"}}}], \"reflection\": \"Pietro, a fellow Forestieri, faces resource challenges. My recent land acquisition provides stability, and my galleys are well-positioned to supply vital goods. Engaging with him offers a strategic opportunity to cultivate a profitable relationship and expand my influence by addressing a clear need, aligning with my long-term trade and wealth-building goals.\"}"
+  },
+  {
+    "role": "user",
+    "content": "You are Filippo. An activity involving you and Bernardo just occurred. Details are in `addSystem.triggering_activity_details`. Your profiles and relationship context are also in `addSystem`. \nBased on ALL this context, what is your immediate and natural reaction or comment TO Bernardo? Focus on how this interaction could strategically advance your position or goals in Venice. Keep it short, gameplay-focused, and conversational."
   }
 ]

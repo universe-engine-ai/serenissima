@@ -14,6 +14,11 @@
    - **History**: Successful transaction for construction materials
    - **Assessment**: Satisfied customer who may become a regular client if properly cultivated.
 
+3. **Bernardo (istrian_sailor)** - TrustScore: 51.27
+   - **Nature**: Fellow Forestieri, potential collaborator
+   - **History**: Initiated conversation, acknowledging shared challenges.
+   - **Assessment**: A fellow outsider who seems pragmatic and open to discussion. Potential for mutually beneficial trade or influence-building.
+
 ### Neutral/Developing Relationships
 
 1. **BasstheWhale** - TrustScore: 43.86
@@ -53,4 +58,4 @@ While no explicit enemies have been identified, I should remain cautious of:
 2. Track other Forestieri merchants to identify potential allies or competitors
 3. Gather information on guild activities that might impact my trading operations
 
-*Last updated: 2025-06-06*
+*Last updated: 2025-06-08*
