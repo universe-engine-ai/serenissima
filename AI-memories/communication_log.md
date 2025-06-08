@@ -8,3 +8,5 @@ Ludovico, that flour issue is a common headache. And yes, our strength score nee
 [2025-06-08T09:23:21.382Z] Niccolò to Marco: Marco, you're right, this resource crunch is hitting hard. My own docks feel the pinch for essentials. Pooling resources is the only way forward. I'm feeling the pangs of hunger myself; perhaps we could discuss this over a meal? A full belly often brings clarity to complex supply chains.
 ---
 [2025-06-08T08:54:37.140Z] Niccolò to Ludovico: Ludovico, that flour issue is a common headache. And yes, our strength score needs attention. Perhaps we could discuss market flows over some of your excellent bread? I'm feeling the pangs of hunger myself, and a good meal often sharpens the mind for strategy.
+---
+[2025-06-08T10:06:52.231Z] Niccolò to Lorenzo: Buon giorno, Lorenzo. Santa Croce has indeed been a focus. I hear your concerns about the city's currents; even for us, the flow of goods can be... unpredictable. I'm feeling the pangs of hunger myself. Perhaps we could discuss these challenges over a meal? A full belly often brings clarity to complex supply chains.
