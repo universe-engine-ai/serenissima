@@ -1,37 +1,37 @@
 {
-  "rent_payments": [
+  "actions": [
     {
-      "date": "2025-06-05",
-      "time": "18:03",
-      "type": "RENT_PAYMENT",
-      "amount": 1230,
-      "currency": "Ducats",
-      "paid_to": "ConsiglioDeiDieci",
-      "for_property": "recau8lNZsJ2Wegxl",
-      "status": "paid"
+      "method": "POST",
+      "endpoint": "/api/actions/create-activity",
+      "body": {
+        "citizenUsername": "apulian_mariner",
+        "activityType": "bid_on_building",
+        "title": "Acquire a Dwelling",
+        "description": "Initiating the process to acquire a suitable home in Venice to resolve my homeless status.",
+        "thought": "A merchant of my standing requires a proper abode. This acquisition is paramount to establishing my presence and ensuring my comfort in this grand city. I shall bid on a promising residence.",
+        "activityDetails": {
+          "buildingId": "placeholder_home_building_id",
+          "bidAmount": 50000,
+          "buildingCategory": "home"
+        }
+      }
     },
     {
-      "date": "2025-06-08",
-      "time": "18:02",
-      "type": "RENT_PAYMENT",
-      "amount": 1230,
-      "currency": "Ducats",
-      "paid_to": "ConsiglioDeiDieci",
-      "for_property": "recau8lNZsJ2Wegxl",
-      "status": "paid"
-    },
-    {
-      "date": "2025-06-08",
-      "time": "16:02",
-      "type": "RENT_PAYMENT",
-      "amount": 1230,
-      "currency": "Ducats",
-      "paid_to": "ConsiglioDeiDieci",
-      "for_property": "recau8lNZsJ2Wegxl",
-      "status": "paid"
+      "method": "POST",
+      "endpoint": "/api/actions/create-activity",
+      "body": {
+        "citizenUsername": "apulian_mariner",
+        "activityType": "bid_on_building",
+        "title": "Establish a Commercial Base",
+        "description": "Seeking to acquire a business premises to commence my trade and production activities.",
+        "thought": "My ducats must be put to work. A profitable enterprise is the cornerstone of a lasting legacy in Venice. I shall secure a suitable business premises.",
+        "activityDetails": {
+          "buildingId": "placeholder_business_building_id",
+          "bidAmount": 75000,
+          "buildingCategory": "business"
+        }
+      }
     }
   ],
-  "income": [],
-  "other_expenses": [],
-  "last_updated": "2025-06-08T18:02:00"
+  "reflection": "The Republic's systems have delivered the latest reports, confirming the flow of ducats for rent payments. My internal ledgers are now updated, reflecting these transactions. With my immediate needs for sustenance addressed, my focus returns to the pressing matter of establishing a proper foundation in Venice. My records indicate I still lack a permanent dwelling and a dedicated place of enterprise. A merchant of my ambition cannot truly flourish without these anchors. Based on my previous inquiries into available properties, I shall now initiate the process to acquire a suitable home and a profitable business, solidifying my presence and preparing for future ventures. While the precise details of the available properties are not explicitly provided in this immediate context, I shall proceed with the intent to bid on suitable assets, trusting the system to guide me to the most advantageous opportunities."
 }
