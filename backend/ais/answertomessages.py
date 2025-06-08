@@ -141,7 +141,7 @@ def _get_notifications_data(tables: Dict[str, Table], username: str, limit: int 
             # L'API retourne déjà les champs nécessaires, pas besoin de 'fields' imbriqué
             # Ajuster si le format de l'API est différent (par exemple, si elle retourne des enregistrements Airtable bruts)
             print(f"Récupéré {len(data['notifications'])} notifications pour {username} via API.")
-            # L'API /api/notifications limite déjà à 50 par défaut et trie par CreatedAt desc.
+            # L'API /api/notifications limite déjà à 50 par default et trie par CreatedAt desc.
             # Si un 'limit' différent est nécessaire, l'API devrait le supporter.
             # Pour l'instant, on retourne ce que l'API donne, en respectant le 'limit' de la signature pour la cohérence.
             return data["notifications"][:limit]
