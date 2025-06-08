@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useMemo, useRef } from 'react';
-import dynamic from 'next/dynamic'; // Import dynamic
+import dynamic from 'next/dynamic';
 import { citizenService } from '@/lib/services/CitizenService';
 import CitizenRegistryCard from '@/components/UI/CitizenRegistryCard';
 // Dynamically import RelationshipGraph with SSR turned off

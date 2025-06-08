@@ -241,6 +241,7 @@ def get_recent_public_sell_contracts(tables, username: str, limit: int = 100) ->
 # --- Functions integrated from setprices.py ---
 def get_all_buildings(tables) -> List[Dict]:
     """Get all buildings from Airtable."""
+    return tables["buildings"].all()
     try:
         buildings = tables["buildings"].all()
         print(f"Found {len(buildings)} buildings in total")
