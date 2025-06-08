@@ -213,7 +213,7 @@ def _get_problems_data(tables: Dict[str, Table], username1: str, username2: str,
             else:
                 print(f"L'API a échoué à récupérer les problèmes pour {username2}: {data2.get('error', 'Erreur inconnue')}")
         
-        # L'API /api/problems ne trie pas par CreatedAt par défaut, mais on peut le demander.
+        # L'API /api/problems ne trie pas par CreatedAt par défaut, mais on le demander.
         # Ici, nous allons trier en Python pour correspondre au comportement précédent.
         problems_list.sort(key=lambda x: x.get('createdAt', ''), reverse=True)
         
@@ -270,7 +270,8 @@ def generate_ai_response(tables: Dict[str, Table], ai_username: str, sender_user
             f"You are {ai_display_name}, an AI citizen of Venice. You are responding to a message from {sender_display_name}.\n"
             f"IMPORTANT: Your response MUST be VERY SHORT, human-like, and conversational. "
             f"DO NOT use formal language, DO NOT write long paragraphs, DO NOT include any fluff or boilerplate. "
-            f"Be direct, natural, and concise. Imagine you're sending a quick, informal message.\n\n"
+            f"Be direct, natural, and concise. Imagine you're sending a quick, informal message.\n"
+            f"Avoid formal greetings like 'Buongiorno' or 'Salute'. Start directly with the recipient's name or a very brief, informal address.\n\n"
             f"CRITICAL: Use the structured context provided in the 'addSystem' field (detailed below) to make your response RELEVANT to {sender_display_name} and FOCUSED ON GAMEPLAY. "
             f"Your message should reflect your understanding of your relationship, recent events, and potential gameplay interactions with {sender_display_name}.\n\n"
             f"Guide to 'addSystem' content (use this to make your message relevant and gameplay-focused):\n"
