@@ -62,5 +62,13 @@
     "content": "Chiara, you speak of grain, and my stomach echoes the sentiment. I noticed your bakery is quiet. Perhaps we share a common hunger for opportunity there?",
     "type": "reply",
     "createdAt": "2025-06-08T10:03:00.000Z"
+  },
+  {
+    "role": "assistant",
+    "sender": "BarbarigoCadet",
+    "receiver": "NLR",
+    "content": "Niccolò, your focus on the docks is well-placed; a smooth flow of goods benefits us all. My workshop's fine materials are always available, but perhaps my experience managing several public docks could be of more immediate use to your supply challenges. What specific knots are you finding hardest to untangle?",
+    "type": "reply",
+    "createdAt": "2025-06-08T10:51:34.313Z"
   }
 ]
