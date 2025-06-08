@@ -126,7 +126,7 @@ def _get_notifications_data_api(username: str, limit: int = 20) -> List[Dict]:
         return []
     except json.JSONDecodeError:
         log.error(f"{LogColors.FAIL}JSON decode error fetching notifications for {username}. Response: {response.text[:200]}{LogColors.ENDC}")
-        return []
+        return None
 
 def _get_relevancies_data_api(username: str, limit: int = 20) -> List[Dict]:
     """Fetches recent relevancies for a citizen via the Next.js API."""
@@ -145,7 +145,7 @@ def _get_relevancies_data_api(username: str, limit: int = 20) -> List[Dict]:
         return []
     except json.JSONDecodeError:
         log.error(f"{LogColors.FAIL}JSON decode error fetching relevancies for {username}. Response: {response.text[:200]}{LogColors.ENDC}")
-        return []
+        return None
 
 def _get_problems_data_api(username: str, limit: int = 20) -> List[Dict]:
     """Fetches active problems for a citizen via the Next.js API."""
@@ -163,7 +163,7 @@ def _get_problems_data_api(username: str, limit: int = 20) -> List[Dict]:
         return []
     except json.JSONDecodeError:
         log.error(f"{LogColors.FAIL}JSON decode error fetching problems for {username}. Response: {response.text[:200]}{LogColors.ENDC}")
-        return []
+        return None
 
 # --- Citizen and Thought Generation ---
 
@@ -294,8 +294,6 @@ def generate_ai_thought(kinos_api_key: str, ai_username: str, ai_display_name: s
         log.error(f"{LogColors.FAIL}Error in generate_ai_thought for {ai_username}: {e}{LogColors.ENDC}")
         return None
 
-# Removed extract_bold_thought_from_response function
-
 # --- Thought Cleaning and Message Creation ---
 
 def clean_thought_content(tables: Dict[str, Table], thought_content: str) -> str:
@@ -309,17 +307,25 @@ def clean_thought_content(tables: Dict[str, Table], thought_content: str) -> str
     # Regex to find patterns like building_id, land_id, polygon-id etc.
     # It captures the type (building, land, citizen, resource, contract, polygon) and the actual ID part.
     # For "polygon-", the ID part includes the hyphen and numbers.
-    id_pattern = re.compile(r'\b(building|land|citizen|resource|contract)_([a-zA-Z0-9_.\-]+)\b|\b(polygon-([0-9]+))\b')
+    id_pattern = re.compile(r'\b(building|land|citizen|resource|contract)_([a-zA-Z0-9_.\-]+)\b|\b(rec[a-zA-Z0-9]+)\b|\b(polygon-([0-9]+))\b')
 
     for match in id_pattern.finditer(thought_content):
+        full_id = match.group(0)
+        id_type = None
+        specific_id_part = None
+
         if match.group(1): # Matches building_, land_, citizen_, resource_, contract_
-            full_id = match.group(0)
             id_type = match.group(1).lower()
             specific_id_part = match.group(2)
-        elif match.group(3): # Matches polygon-
-            full_id = match.group(3) # e.g., "polygon-1746056541940"
+        elif match.group(3): # Matches rec[a-zA-Z0-9]+ (Airtable record IDs)
+            full_id = match.group(3)
+            # Try to infer type from the ID itself or by querying tables
+            # This is a fallback, as direct type prefixes are preferred
+            pass # Will handle below by trying all tables
+        elif match.group(4): # Matches polygon-
+            full_id = match.group(4) # e.g., "polygon-1746056541940"
             id_type = "polygon"
-            specific_id_part = match.group(4) # e.g., "1746056541940"
+            specific_id_part = match.group(5) # e.g., "1746056541940"
         else:
             continue # Should not happen with the current regex
 
@@ -332,42 +338,56 @@ def clean_thought_content(tables: Dict[str, Table], thought_content: str) -> str
         readable_name = None
         try:
             if id_type == "building":
-                # Assuming BuildingId in Airtable is the full specific_id_part or that the prefix is part of it.
-                # The schema says BuildingId is custom, e.g., "Type_lat_lng" or "building_lat_lng_index".
-                # We'll search by the full_id as BuildingId.
                 record = tables["buildings"].first(formula=f"{{BuildingId}}='{_escape_airtable_value(full_id)}'")
                 if record and record.get("fields", {}).get("Name"):
                     readable_name = record["fields"]["Name"]
-            elif id_type == "land": # Handles "land_..." type IDs
-                record = tables["lands"].first(formula=f"{{LandId}}='{_escape_airtable_value(full_id)}'")
-                if record:
-                    readable_name = record.get("fields", {}).get("HistoricalName") or record.get("fields", {}).get("EnglishName")
-            elif id_type == "polygon": # Handles "polygon-..." type IDs
-                # Here, full_id is "polygon-12345"
+            elif id_type == "land" or id_type == "polygon": # Handles "land_..." and "polygon-..." type IDs
                 record = tables["lands"].first(formula=f"{{LandId}}='{_escape_airtable_value(full_id)}'")
                 if record:
                     readable_name = record.get("fields", {}).get("HistoricalName") or record.get("fields", {}).get("EnglishName")
             elif id_type == "citizen": # This implies an ID like "citizen_username"
-                # We need to extract the username part if the ID is "citizen_username"
-                # For now, let's assume specific_id_part is the username for "citizen_" prefix
                 record = tables["citizens"].first(formula=f"{{Username}}='{_escape_airtable_value(specific_id_part)}'")
                 if record:
                     fname = record.get("fields", {}).get("FirstName", "")
                     lname = record.get("fields", {}).get("LastName", "")
                     readable_name = f"{fname} {lname}".strip() if fname or lname else specific_id_part
             elif id_type == "resource": # This implies an ID like "resource_uuid" or "resource_type"
-                # If it's a ResourceId (instance)
                 record = tables["resources"].first(formula=f"{{ResourceId}}='{_escape_airtable_value(full_id)}'")
                 if record:
                     readable_name = record.get("fields", {}).get("Name") or record.get("fields", {}).get("Type")
-                else: # If it might be a resource type string directly (e.g. "timber" not "resource_timber_id")
-                      # This part is tricky as the regex targets "resource_..."
-                      # For now, this branch might not be hit often by the current regex.
-                    pass
             elif id_type == "contract":
                 record = tables["contracts"].first(formula=f"{{ContractId}}='{_escape_airtable_value(full_id)}'")
                 if record:
                     readable_name = record.get("fields", {}).get("Title") or f"Contract ({specific_id_part[:10]}...)"
+            
+            # Fallback for generic Airtable record IDs (recXXXX) if not caught by specific prefixes
+            if not readable_name and re.match(r'^rec[a-zA-Z0-9]+$', full_id):
+                # Try to find in buildings (by Airtable record ID)
+                record = tables["buildings"].get(full_id)
+                if record and record.get("fields", {}).get("Name"):
+                    readable_name = record["fields"]["Name"]
+                
+                if not readable_name: # Try lands
+                    record = tables["lands"].get(full_id)
+                    if record:
+                        readable_name = record.get("fields", {}).get("HistoricalName") or record.get("fields", {}).get("EnglishName")
+                
+                if not readable_name: # Try citizens
+                    record = tables["citizens"].get(full_id)
+                    if record:
+                        fname = record.get("fields", {}).get("FirstName", "")
+                        lname = record.get("fields", {}).get("LastName", "")
+                        readable_name = f"{fname} {lname}".strip() if fname or lname else record.get("fields", {}).get("Username")
+                
+                if not readable_name: # Try resources
+                    record = tables["resources"].get(full_id)
+                    if record:
+                        readable_name = record.get("fields", {}).get("Name") or record.get("fields", {}).get("Type")
+                
+                if not readable_name: # Try contracts
+                    record = tables["contracts"].get(full_id)
+                    if record:
+                        readable_name = record.get("fields", {}).get("Title") or f"Contract ({full_id[:10]}...)"
 
 
             if readable_name:
@@ -539,7 +559,7 @@ pre-formatted fixed-width code block written in the Python programming language
 Please note:
 
 Any character with code between 1 and 126 inclusively can be escaped anywhere with a preceding '\\' character, in which case it is treated as an ordinary character and not a part of the markup. This implies that '\\' character usually must be escaped with a preceding '\\' character.
-Inside pre and code entities, all '`' and '\\' characters must be escaped with a preceding '\\' character.
+Inside pre and code entities, all '`' and '\\' characters are escaped with a preceding '\\' character.
 Inside the (...) part of the inline link and custom emoji definition, all ')' and '\\' must be escaped with a preceding '\\' character.
 In all other places characters '_', '*', '[', ']', '(', ')', '~', '`', '>', '#', '+', '-', '=', '|', '{', '}', '.', '!' must be escaped with the preceding character '\\'.
 In case of ambiguity between italic and underline entities __ is always greadily treated from left to right as beginning or end of an underline entity, so instead of ___italic underline___ use ___italic underline_**__, adding an empty bold entity as a separator.
