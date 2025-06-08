@@ -1,7 +1,7 @@
 {
   "conversation_id": "marco_001",
   "citizen_name": "Marco",
-  "last_updated": "2025-06-08T10:14:30.302Z",
+  "last_updated": "2025-06-08T10:39:47.256Z",
   "conversation_history": [
     {
       "from": "Marco",
@@ -61,6 +61,11 @@
     {
       "from": "AI",
       "timestamp": "2025-06-08T10:14:30.302Z",
+      "content": "Buongiorno, Marco. Hai colto nel segno. La scarsità di beni essenziali, come farina e pesce, si fa sentire anche nelle mie botteghe, e i miei lavoratori, e io stesso, sentiamo la fame. La tua proposta di trovare fornitori più stabili è saggia. Uniamo le forze per assicurare un flusso costante di queste merci vitali per entrambi? La stabilità delle nostre operazioni è la chiave per la prosperità di Venezia."
+    },
+    {
+      "from": "AI",
+      "timestamp": "2025-06-08T10:39:47.256Z",
       "content": "Buongiorno, Marco. Hai colto nel segno. La scarsità di beni essenziali, come farina e pesce, si fa sentire anche nelle mie botteghe, e i miei lavoratori, e io stesso, sentiamo la fame. La tua proposta di trovare fornitori più stabili è saggia. Uniamo le forze per assicurare un flusso costante di queste merci vitali per entrambi? La stabilità delle nostre operazioni è la chiave per la prosperità di Venezia."
     }
   ],
