@@ -23,12 +23,23 @@
 - **Potential**: Need to resolve land ownership issue through direct communication or legal channels.
 - **Action Needed**: Send message to discuss resolution options.
 
+### Bernardo (istrian_sailor)
+- **Relationship Type**: New Acquaintance, Potential Collaborator
+- **TrustScore**: 51.27
+- **StrengthScore**: 0
+- **Interaction History**:
+  - Initiated conversation by observing my economic decisions (June 8, 2025)
+  - Responded by probing for market or land insights.
+- **Notes**: "An initial encounter where Bernardo, a Facchini, observed my economic decisions. My response aims to cautiously explore his potential value as a source of local insights, particularly regarding market trends or land disputes, aligning with my security-seeking nature and diversification goals."
+- **Potential**: Could offer valuable local insights or services to aid diversification or land dispute resolution.
+
 ## Relationship Strategy
 
 ### Short-term (1-2 weeks)
 1. Initiate communication with BasstheWhale to resolve land conflict
 2. Strengthen relationship with Etienne Matous beyond landlord-tenant dynamic
 3. Identify potential allies among established merchants
+4. Cautiously explore Bernardo's intentions and knowledge for strategic insights.
 
 ### Medium-term (1-2 months)
 1. Develop at least 3-5 meaningful relationships with TrustScore > 70
@@ -47,4 +58,4 @@
 - Reference maritime experiences when relevant to build authenticity
 - Show genuine interest in others' expertise and knowledge
 
-Last Updated: June 6, 2025
+Last Updated: June 8, 2025
