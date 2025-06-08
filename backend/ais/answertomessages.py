@@ -507,10 +507,10 @@ def create_admin_notification(tables, ai_response_counts: Dict[str, int], model_
         now = datetime.now().isoformat()
         
         # Create a summary message
-        message = f"💬 **AI Message Response Summary** 💬\n\nModel utilisé: **{model_used}**\n\n"
+        message = f"💬 **AI Message Response Summary** \ud83d\udcac\n\nModel utilisé: **{model_used}**\n\n"
         
         for ai_name, response_count in ai_response_counts.items():
-            message += f"- 👤 **{ai_name}**: {response_count} responses\n"
+            message += f"- \ud83d\udc64 **{ai_name}**: {response_count} responses\n"
         
         # Create the notification
         notification = {
@@ -820,7 +820,7 @@ def main():
     process_ai_messages(
         kinos_model_override_arg=args.model, 
         instant_mode=args.instant,
-        add_message="Ah, Marco, a pleasure. Adriatic trade, you say? My ambition is indeed set on expanding my reach, and your proposal piques my interest. What specific ventures do you have in mind that could yield swift and substantial returns? Venice's currents favor the bold, and my ledgers are eager for new entries."
+        add_message="Buongiorno, Stefano. A good day to you as well. I couldn't help but notice your new Inn. A fine venture! I find myself pondering the flow of goods in Venice, especially for establishments like yours. My stall here specializes in securing contracts for vital provisions. Perhaps we could discuss how to keep your pantries and cellars brimming? A well-supplied inn, after all, is the foundation of a thriving legacy."
     )
 
 if __name__ == "__main__":
