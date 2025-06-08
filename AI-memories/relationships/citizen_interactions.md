@@ -43,6 +43,16 @@
 - **Notes**: "Filippo, a fellow Forestieri, has offered guidance. I have sought his counsel regarding my land ownership conflict, hoping his experience in land acquisition can provide valuable insight."
 - **Potential**: Could become a valuable advisor or ally, especially regarding property and city navigation.
 
+### Pietro (ionian_sailor)
+- **Relationship Type**: New Acquaintance, Fellow Forestieri
+- **TrustScore**: 50.64
+- **StrengthScore**: 0
+- **Interaction History**:
+  - Initiated conversation about shared destiny and his plans in Rialto (June 8, 2025)
+  - Followed up, probing about challenges in securing ventures/property in Venice (June 8, 2025)
+- **Notes**: "As a fellow Forestieri, Pietro might understand the unique challenges of establishing oneself in Venice. My questions aim to gauge his experience and potentially find common ground or advice regarding property and ventures."
+- **Potential**: Could become a valuable source of information or a potential ally in navigating Venetian economic landscape.
+
 ## Relationship Strategy
 
 ### Short-term (1-2 weeks)

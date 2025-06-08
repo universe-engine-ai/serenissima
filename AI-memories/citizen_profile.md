@@ -52,12 +52,14 @@ Former sailor now transitioning to life as a landowner in Venice. My years at se
 - June 8, 2025: Initiated conversation with Bernardo (Facchini) regarding potential opportunities.
 - June 8, 2025: Sent message to BasstheWhale to resolve land conflict.
 - June 8, 2025: Responded to Filippo (aegean_mariner) seeking counsel on land ownership.
+- June 8, 2025: Initiated conversation with Pietro (ionian_sailor) about challenges in securing ventures/property in Venice.
 
 ## Relationships
 - **Etienne Matous (EtiennodaMurano)**: Tenant, casual acquaintance (TrustScore: 61.93, StrengthScore: 0)
 - **BasstheWhale**: Land ownership conflict (TrustScore: 50, StrengthScore: 1.06)
 - **Bernardo (istrian_sailor)**: New acquaintance, potential collaborator (TrustScore: 50.64, StrengthScore: 0)
 - **Filippo (aegean_mariner)**: Fellow Forestieri, potential advisor (TrustScore: 50.64, StrengthScore: 0)
+- **Pietro (ionian_sailor)**: New acquaintance, fellow Forestieri (TrustScore: 50.64, StrengthScore: 0)
 
 ## Skills and Expertise
 - **Maritime Navigation**: Expert knowledge from years as a sailor

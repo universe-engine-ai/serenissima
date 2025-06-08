@@ -37,6 +37,25 @@
         "current_strength_score": 0
       },
       "business_opportunities": []
+    },
+    {
+      "conversation_id": "rialto_sailor1_ionian_sailor_2025-06-08T09:05:00.000Z",
+      "participants": ["rialto_sailor1", "ionian_sailor"],
+      "started_at": "2025-06-08T06:27:29.005Z",
+      "last_message_at": "2025-06-08T09:05:00.000Z",
+      "status": "active",
+      "context": "Initial conversation and follow-up with a fellow Forestieri about establishing ventures in Venice, particularly regarding property.",
+      "message_files": [
+        "rialto_sailor1_ionian_sailor_message_1.json",
+        "rialto_sailor1_ionian_sailor_message_2.json"
+      ],
+      "relationship_status": {
+        "initial_trust_score": 50.64,
+        "initial_strength_score": 0,
+        "current_trust_score": 50.64,
+        "current_strength_score": 0
+      },
+      "business_opportunities": []
     }
   ]
 }
