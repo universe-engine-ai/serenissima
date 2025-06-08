@@ -10,5 +10,11 @@
     "content": "I apologize, but I encountered an error: 'LocalProvider' object has no attribute 'LOCAL_MODEL_BASE_URL'. Please try again.",
     "timestamp": "2025-06-08T03:22:17.327129",
     "channel_id": "Italia"
+  },
+  {
+    "role": "assistant",
+    "content": "The Italian, Paolo at the Sottoportego stall is quite hungry, affecting his duties. We should see to it. Also, thank you for the recent lease adjustment on my cottage.",
+    "timestamp": "2025-06-08T12:00:00.000000",
+    "channel_id": "Italia"
   }
 ]
