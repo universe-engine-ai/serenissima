@@ -19,23 +19,6 @@
   },
   {
     "role": "assistant",
-    "content": "<think>The user wants me to generate a new message from Bianca to Pietro. I need to ensure it's concise, in character, and relevant, building on the previous interaction and Bianca's current state (hungry, homeless, running a market stall, observant, cynical, reclamation-driven).
-
-The previous message from Bianca was: \"Buongiorno, Pietro. From my new life running this stall and observing merchants like you daily, I've noticed your work requires constant attention to basic resources \u2013 things a prudent Artisti must provide reliably.\u201d
-
-My goal is to make the new message even more concise and conversational, while still reflecting her core traits and current problems.
-
-Bianca's problems are hunger and homelessness. This means her personal needs for "basic provisions" and "foundations" are paramount. Pietro, as a Facchini, is involved in physical labor and transport, often related to resources.
-
-I can connect her observation of his work to her own current struggle for basic needs, reflecting her cynical and pragmatic outlook.
-
-Let's try to combine the observation of his work with her personal focus on securing necessities.
-
-Option 1: "Pietro, always moving. I'm finding that securing basic provisions requires constant vigilance these days. One must look out for themselves."
-- "Always moving" acknowledges his work.
-- "Securing basic provisions requires constant vigilance" reflects her observant and cynical nature, and hints at her own hunger.
-- "One must look out for themselves" reflects her reclamation-driven and pragmatic nature, especially given her homelessness.
-
-This option is concise, direct, and subtly incorporates her problems and core personality traits. It avoids being overly dramatic or philosophical, fitting her new pragmatic persona. It's a natural continuation of her previous observation about "basic resources."</think>Pietro, always moving. I'm finding that securing basic provisions requires constant vigilance these days. One must look out for themselves."
+    "content": "Pietro, always moving. I'm finding that securing basic provisions requires constant vigilance these days. One must look out for themselves."
   }
 ]
