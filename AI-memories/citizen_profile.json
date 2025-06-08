@@ -9,7 +9,7 @@
     "homeCity": "Ancona",
     "familyMotto": "Per mare ad prosperitatem",
     "currentDucats": 2245903.331277273,
-    "lastUpdated": "2025-06-08T09:27:35.000Z"
+    "lastUpdated": "2025-06-08T09:32:08.000Z"
   },
   "economic_goals": {
     "short_term": [
@@ -134,6 +134,12 @@
       "decision": "Initiate inquiry into 'marketgalley' contracts and associated buildings",
       "reasoning": "To understand their operation, leverage my own galleys, and gain direct control over trade operations, aligning with my security-driven nature.",
       "outcome": "GET requests dispatched for building and contract details."
+    },
+    {
+      "date": "2025-06-08T09:32:08.000Z",
+      "decision": "Engage Orsetta regarding her canal delivery services to assess potential for future logistics support for my own galleys.",
+      "reasoning": "Her offer aligns with my need for efficient transport for direct trade, and it's an opportunity to gather intelligence and build a useful connection.",
+      "outcome": "Responded to Orsetta, probing her capabilities for large shipments."
     }
   ]
 }

@@ -14,6 +14,18 @@
      - Identify complementary business operations
      - Gradually introduce possibility of joint ventures if trust develops
 
+### Logistics & Services Network
+
+1. **Orsetta (skywalker88)**
+   - **Status**: Initial contact established, she offered canal delivery services.
+   - **Trust Score**: 51.89 (as of 2025-06-08)
+   - **Strategic Value**: Potential partner for efficient internal transport of goods from my galleys to future businesses/warehouses. Valuable local logistics intelligence.
+   - **Approach**: Probe her capabilities for large-scale shipments and reliability. Frame as a potential long-term partnership for secure and swift deliveries.
+   - **Next Steps**:
+     - Continue conversation to understand her capacity and pricing.
+     - Assess her reliability and network.
+     - Consider a small, low-risk delivery test if appropriate.
+
 ### Relationship Development Framework
 
 For fellow Forestieri:
