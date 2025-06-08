@@ -9,7 +9,7 @@
     "homeCity": "Ancona",
     "familyMotto": "Per mare ad prosperitatem",
     "currentDucats": 2245903.331277273,
-    "lastUpdated": "2025-06-08T09:16:00.000Z"
+    "lastUpdated": "2025-06-08T09:27:35.000Z"
   },
   "economic_goals": {
     "short_term": [
@@ -128,6 +128,12 @@
       "decision": "Investigate available land for purchase",
       "reasoning": "Land ownership is the foundation of security and influence in Venice",
       "outcome": "Pending"
+    },
+    {
+      "date": "2025-06-08T09:27:35.000Z",
+      "decision": "Initiate inquiry into 'marketgalley' contracts and associated buildings",
+      "reasoning": "To understand their operation, leverage my own galleys, and gain direct control over trade operations, aligning with my security-driven nature.",
+      "outcome": "GET requests dispatched for building and contract details."
     }
   ]
 }
