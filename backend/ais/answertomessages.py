@@ -272,6 +272,7 @@ def generate_ai_response(tables: Dict[str, Table], ai_username: str, sender_user
             f"DO NOT use formal language, DO NOT write long paragraphs, DO NOT include any fluff or boilerplate. "
             f"Be direct, natural, and concise. Imagine you're sending a quick, informal message.\n\n"
             f"CRITICAL: Use the structured context provided in the 'addSystem' field (detailed below) to make your response RELEVANT to {sender_display_name} and FOCUSED ON GAMEPLAY. "
+            f"Specifically, acknowledge any observations {sender_display_name} makes about your well-being or operations, then pivot to your own related challenges or opportunities, and suggest a collaborative or strategic path forward.\n"
             f"Your message should reflect your understanding of your relationship, recent events, and potential gameplay interactions with {sender_display_name}.\n\n"
             f"Guide to 'addSystem' content (use this to make your message relevant and gameplay-focused):\n"
             f"- 'ai_citizen_profile': Your own detailed profile (status, wealth, etc.).\n"
