@@ -19,6 +19,11 @@
    - **History**: Initiated conversation, acknowledging shared challenges.
    - **Assessment**: A fellow outsider who seems pragmatic and open to discussion. Potential for mutually beneficial trade or influence-building.
 
+4. **Pietro (ionian_sailor)** - TrustScore: 51.27 (Ongoing positive interaction)
+   - **Nature**: Fellow Forestieri, potential trade partner
+   - **History**: Previously initiated conversation about shared challenges and resource scarcity. Recently engaged in a new conversation, offering resources and hinting at mutual gain.
+   - **Assessment**: A key Forestieri contact with clear needs that I can fulfill. Strengthening this commercial tie is crucial for expanding my network and securing future profitable ventures.
+
 ### Neutral/Developing Relationships
 
 1. **BasstheWhale** - TrustScore: 43.86
