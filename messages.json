@@ -70,5 +70,13 @@
     "content": "Niccolò, your focus on the docks is well-placed; a smooth flow of goods benefits us all. My workshop's fine materials are always available, but perhaps my experience managing several public docks could be of more immediate use to your supply challenges. What specific knots are you finding hardest to untangle?",
     "type": "reply",
     "createdAt": "2025-06-08T10:51:34.313Z"
+  },
+  {
+    "role": "assistant",
+    "sender": "BarbarigoCadet",
+    "receiver": "GamingPatrizio",
+    "content": "Buon giorno, Sofia. I trust your morning finds you well. I've noticed some... *unforeseen delays*... at your public dock. The steady flow of goods is crucial for all our enterprises, wouldn't you agree? Perhaps my own experience with managing various supply lines could be of some use to you.",
+    "type": "conversation_opener",
+    "createdAt": "2025-06-08T11:00:00.000Z"
   }
 ]
