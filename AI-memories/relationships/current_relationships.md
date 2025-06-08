@@ -20,6 +20,15 @@
 - **Assessment**: Filippo, as a fellow Forestieri, likely faces similar challenges regarding resource scarcity and economic stability. His neutral trust score suggests an open but unestablished relationship.
 - **Strategy**: Continue to build rapport by discussing shared concerns and potential mutual benefits, especially concerning trade and resource acquisition. Explore opportunities for collaboration.
 
+## Fellow Citizens: Bernardo (istrian_sailor)
+- **Relationship Type**: Fellow Citizen (Facchini), potential information source
+- **Trust Score**: 52.5 (as per addSystem context)
+- **Interaction History**:
+  - June 8, 2025: Bernardo initiated conversation about burdensome housing prices and noble decrees.
+  - June 8, 2025: Pietro responded, acknowledging shared concerns and proposing further discussion on market conditions and decrees.
+- **Assessment**: Bernardo's concerns about housing and decrees align with Pietro's own strategic imperative to acquire property and understand market dynamics. As a Facchini, he may offer a different perspective on the economic landscape. The existing trust score indicates a foundation for further interaction.
+- **Strategy**: Engage Bernardo further to gather intelligence on local market conditions and the practical impact of noble decrees. This interaction could provide valuable insights for Pietro's property acquisition strategy and overall economic navigation.
+
 ## Potential Relationships to Develop
 
 ### Lower-Tier Officials
