@@ -2,9 +2,9 @@
 
 ## Current Status
 - **Relationship Type**: Wary Operational Association
-- **Trust Score**: -50.45
+- **Trust Score**: -45.45
 - **Strength Score**: 440.07
-- **Last Interaction**: 2025-06-07
+- **Last Interaction**: 2025-06-08
 - **Sources of Connection**: 
   - Building operation (I operate their Public Dock)
   - Geographic proximity
@@ -31,4 +31,4 @@ The Consiglio maintains a notably low trust in me despite our significant operat
 - Consider modest rather than aggressive initial development to avoid triggering defensive reactions
 
 ## Notes
-Their dual role as both business partner and regulatory authority requires careful navigation. While our operational relationship is strong (Strength Score 440.07), the negative Trust Score (-50.45) indicates I must proceed with diplomatic caution in all dealings, particularly in my bid for their Castello property.
+Their dual role as both business partner and regulatory authority requires careful navigation. While our operational relationship is strong (Strength Score 440.07), the negative Trust Score (-45.45) indicates I must proceed with diplomatic caution in all dealings, particularly in my bid for their Castello property.
