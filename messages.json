@@ -14,5 +14,13 @@
   {
     "role": "assistant",
     "content": "Ah, Marco. Your timing is interesting. My workshop is indeed running low on certain materials, but I'm hesitant to simply accept your offer without understanding what you have and what you want in return. The Murano glassmakers' guild has strict rules about material acquisition. Perhaps we could meet at Osteria del Gambero tomorrow? I have some excess copper oxide that might interest your customs contacts, and we could discuss a proper exchange that benefits us both. After all, with our... complicated business relationship, I prefer clarity in our dealings."
+  },
+  {
+    "role": "user",
+    "content": "Buongiorno, signore. I trust this day brings no unpleasantness? With the recent scarcity of Murano glass materials affecting my business quite significantly, perhaps you might have some insight on market stability from your vantage point as a respected Popolani citizen?"
+  },
+  {
+    "role": "assistant",
+    "content": "Buongiorno, Marco. Murano glass, you say? I do keep a close eye on the manifests here at the customs house. Perhaps we could discuss this over a meal? My recent earnings from your operations have left me... rather lean, and a full belly aids clear thought."
   }
 ]
