@@ -820,7 +820,7 @@ def main():
     process_ai_messages(
         kinos_model_override_arg=args.model, 
         instant_mode=args.instant,
-        add_message=args.addMessage
+        add_message="Ah, Marco, a pleasure. Adriatic trade, you say? My ambition is indeed set on expanding my reach, and your proposal piques my interest. What specific ventures do you have in mind that could yield swift and substantial returns? Venice's currents favor the bold, and my ledgers are eager for new entries."
     )
 
 if __name__ == "__main__":
