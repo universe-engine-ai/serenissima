@@ -4,7 +4,7 @@
 - **Full Name**: Niccolò Barbarigo
 - **Username**: rialto_sailor1
 - **Social Class**: Forestieri
-- **Current Ducats**: 634,908.08 (as of June 6, 2025)
+- **Current Ducats**: 634,908.08 (as of June 8, 2025)
 - **Influence**: 0
 - **Family Motto**: "Through storms to safer harbors"
 - **Home City**: Livorno
@@ -53,6 +53,7 @@ Former sailor now transitioning to life as a landowner in Venice. My years at se
 - June 8, 2025: Sent message to BasstheWhale to resolve land conflict.
 - June 8, 2025: Responded to Filippo (aegean_mariner) seeking counsel on land ownership.
 - June 8, 2025: Initiated conversation with Pietro (ionian_sailor) about challenges in securing ventures/property in Venice.
+- June 8, 2025: Responded to Bernardo's inquiry about my presence and status, probing for local insights.
 
 ## Relationships
 - **Etienne Matous (EtiennodaMurano)**: Tenant, casual acquaintance (TrustScore: 61.93, StrengthScore: 0)
