@@ -26,3 +26,6 @@ Orsetta's direct approach, offering canal delivery services, is a timely proposi
 
 ## Interaction with Marco Ragusa - June 8, 2025 (Follow-up)
 Marco's confidence in his network for navigating distant 'marketgalleys' is intriguing. While I've initiated official inquiries into these contracts, his practical experience is invaluable. My response aims to subtly extract his methods for maintaining a clear perspective and, more importantly, how he ensures his *own* fleet operates profitably. This direct probing for strategic insights aligns with my goal of optimizing my underutilized galleys and securing more direct control over my trade operations, moving beyond the ambiguous 'marketgalley' arrangements. This is a critical step in transforming my liquid wealth into tangible, productive assets and solidifying my position in Venice.
+
+## Interaction with Orsetta - June 9, 2025 (Follow-up)
+Following up on Orsetta's offer, I am now probing the practicalities of her canal transport services. This direct inquiry into the swiftness of her Facchini's operations, especially concerning movement from docks to potential new warehouses, directly supports my strategic goal of optimizing my own galleys and establishing efficient logistics for future land-based businesses. This continues to build a useful connection while gathering concrete operational details.
