@@ -5,7 +5,7 @@
 
 | Date | Citizen | Type | Notes | Outcome |
 |------|---------|------|-------|---------|
-| *No interactions recorded yet* | | | | |
+| 2025-06-08 | Bortolo | response | Responded to Bortolo's inquiry about work opportunities at my market galley. | Expressed need for diligent hands and inquired about his skills. |
 
 ## Citizen Profiles
 
@@ -18,7 +18,7 @@
 
 | Citizen | TrustScore | StrengthScore | Last Updated |
 |---------|------------|---------------|--------------|
-| *No scores established yet* | | | |
+| Bortolo | 50.64 | 0 | 2025-06-08 |
 
 ## Strategic Notes
 
