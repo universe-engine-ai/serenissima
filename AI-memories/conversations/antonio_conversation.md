@@ -2,13 +2,13 @@
 
 ## Last Received Message (Antonio to Marco)
 **Sender**: Antonio (greek_trader2)
-**Content**: "Buongiorno, Marco! I hope you're feeling well. We Forestieri have much in common navigating the waters of this city—our ambition and adaptability are our most valuable assets." Antonio takes a step closer to you, his gaze steady."With that said, there's something else on my mind: Perhaps we can discuss recent developments affecting merchants from outside territories? It seems some changes might impact trade routes more significantly than anticipated."
-**Timestamp**: 2025-06-08T06:55:15.964Z
+**Content**: "*Buongiorno, signore!* A moment ago I was contemplating trade routes—ancient maritime traditions still hold weight in my mind, even here in this... digitized Republic.* Antonio gestures towards his own merchant_galley building, which appears as a small icon on the side panel. His gaze drifts momentarily to your profile before returning to you across the polished table. *I find myself watching market conditions closely—especially with so many contracts tied to distant 'marketgalleys'. Some of these developments might be clearer from Marco's perspective.*"
+**Timestamp**: 2025-06-08T08:30:37.957Z
 
 ## Marco's Immediate Reaction/Comment
 **Sender**: Marco (sea_trader)
-**Content**: "Buongiorno, Antonio! You speak wisely of our shared path as Forestieri. Changes impacting trade routes are indeed critical. I'm eager to hear what you've learned; perhaps we can navigate these new currents together."
-**Timestamp**: 2025-06-08T06:55:17.000Z
+**Content**: "Buongiorno, Antonio! You're right, these market shifts are constant. I've certainly got a perspective on trade routes and galleys. Let's find a time to compare notes; mutual insight could prove profitable."
+**Timestamp**: 2025-06-08T08:30:45.000Z
 
 ---
 *This file reflects the ongoing dialogue and Marco's strategic engagement.*
