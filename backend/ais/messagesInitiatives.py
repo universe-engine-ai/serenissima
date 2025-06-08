@@ -258,7 +258,7 @@ def _check_existing_messages(tables: Dict[str, Table], username1: str, username2
         if messages:
             print(f"    -> Messages existants trouvés entre {username1} et {username2}.")
             return True
-        print(f"    -> Aucun message existant trouvé entre {username1} et {username2}.")
+        print(f"    -> Aucun message existing trouvé entre {username1} et {username2}.")
         return False
     except Exception as e:
         print(f"Erreur lors de la vérification des messages existants entre {username1} et {username2}: {e}")
@@ -295,10 +295,7 @@ def generate_ai_initiative_message(tables: Dict[str, Table], ai_username: str, t
         # Prompt spécifique pour l'initiative de message
         kinos_prompt = (
             f"You are {ai_display_name}, an AI citizen of Venice. You've decided to initiate/continue the conversation with {target_display_name}.\n"
-            f"IMPORTANT: Your message MUST be VERY SHORT, human-like, and conversational. It should be a natural conversation starter. "
-            f"DO NOT mention that you 'decided to send a message' or that this is an 'initiative'. Just start talking naturally. "
-            f"DO NOT use formal language, DO NOT write long paragraphs, DO NOT include any fluff or boilerplate. "
-            f"Be direct and concise. Imagine you're sending a quick, informal message to someone you know.\n\n"
+            f"Your message should be a very short, natural, and casual conversation starter. Think of it as a quick, informal chat with someone you know on the street. Avoid formal language, long paragraphs, or any unnecessary preamble. Just get straight to the point, like a real person would in a brief exchange.\n\n"
             f"CRITICAL: Use the structured context provided in the 'addSystem' field (detailed below) to make your message RELEVANT to {target_display_name} and FOCUSED ON GAMEPLAY. "
             f"Your message should reflect your understanding of your relationship, recent events, and potential gameplay interactions with {target_display_name}.\n\n"
             f"Guide to 'addSystem' content (use this to make your message relevant and gameplay-focused):\n"
@@ -309,7 +306,6 @@ def generate_ai_initiative_message(tables: Dict[str, Table], ai_username: str, t
             f"- 'recent_relevancies_ai_to_target': Why {target_display_name} is specifically relevant to you.\n"
             f"- 'recent_problems_involving_ai_or_target': Recent issues involving you or {target_display_name}.\n\n"
             f"What do you want to say to {target_display_name} to start a conversation? "
-            f"Remember: VERY SHORT, human-like, conversational, RELEVANT, FOCUSED ON GAMEPLAY. NO FLUFF. Start naturally.\n"
             f"Your message:"
         )
         

@@ -1,6 +1,6 @@
 {
   "citizen_name": "Sofia Zanchi",
-  "last_updated_by_notification": "2025-05-29T16:16:00Z",
+  "last_updated_by_notification": "2025-06-08T11:01:17.049Z",
   "housing": {
     "building_id": "merchants_house_at_campiello_dei_tagliapietra",
     "building_name_full": "Merchant's House at Campiello dei Tagliapietra",
@@ -26,7 +26,17 @@
       "timestamp": "2025-05-29T16:16:00Z",
       "type": "JOB_ASSIGNMENT",
       "details": "Now works in Market Stall."
+    },
+    {
+      "timestamp": "2025-06-08T11:01:17.049Z",
+      "type": "MESSAGE_SENT",
+      "details": "Initiated conversation with ItalyMerchant (Marco)."
+    },
+    {
+      "timestamp": "2025-06-08T11:01:17.049Z",
+      "type": "MESSAGE_SENT",
+      "details": "Sent casual greeting to Marco (ItalyMerchant)."
     }
   ],
-  "notes": "Information compiled from notifications received on May 29, 2025."
+  "notes": "Information compiled from notifications received on May 29, 2025. Updated with recent message initiative."
 }
