@@ -1,0 +1,1 @@
+Ludovico, that flour issue is a common headache. And yes, our strength score needs attention. Perhaps we could discuss market flows over some of your excellent bread? I'm feeling the pangs of hunger myself, and a good meal often sharpens the mind for strategy.
