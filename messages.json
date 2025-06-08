@@ -32,7 +32,7 @@
   },
   {
     "role": "assistant",
-    "content": "Ah, Sofia, yes, the bread ration. It's certainly a topic. Funny you mention it, my Bakery at Rio Terà dei Magazzini is currently vacant. Perhaps that could be of interest for your dealings?",
+    "content": "Ah, Sofia, yes, the bread ration. It's certainly a topic. Funny you mention it, my Bakery at Rio Ter\u00e0 dei Magazzini is currently vacant. Perhaps that could be of interest for your dealings?",
     "timestamp": "2025-06-08T06:44:16.351Z"
   },
   {
@@ -42,7 +42,7 @@
   },
   {
     "role": "assistant",
-    "content": "Buongiorno, Ludovico. Indeed, trade is the lifeblood. The markets are... ever-changing, as you know. Speaking of which, my Bakery at Rio Terà dei Magazzini is currently vacant. Perhaps there's an opportunity for us there, given your own ventures?",
+    "content": "Buongiorno, Ludovico. Indeed, trade is the lifeblood. The markets are... ever-changing, as you know. Speaking of which, my Bakery at Rio Ter\u00e0 dei Magazzini is currently vacant. Perhaps there's an opportunity for us there, given your own ventures?",
     "timestamp": "2025-06-08T08:13:24.000Z"
   },
   {
@@ -52,7 +52,7 @@
   },
   {
     "role": "assistant",
-    "content": "Buongiorno, Lorenzo. Indeed, times are challenging. Your idea of pooling resources for salt or fruit has merit. Speaking of supplies, my Bakery at Rio Terà dei Magazzini is currently vacant. Perhaps there's an opportunity for us there, given your own ventures and needs?",
+    "content": "Buongiorno, Lorenzo. Indeed, times are challenging. Your idea of pooling resources for salt or fruit has merit. Speaking of supplies, my Bakery at Rio Ter\u00e0 dei Magazzini is currently vacant. Perhaps there's an opportunity for us there, given your own ventures and needs?",
     "timestamp": "2025-06-08T09:21:33.000Z"
   },
   {
@@ -67,11 +67,21 @@
   },
   {
     "role": "user",
-    "content": "Buon giorno, Chiara. *adjusts simple leather gloves while sipping absinthio* I've been monitoring the grain prices near San Marco\u2014quite volatile lately\u2014and your Ragusa initiative seems instrumental in stabilizing supply chains across our low-income markets, doesn't it? Though you must understand, even a common porter like myself has observed that certain players (namely, *coughs delicately into silk handkerchief*) ahem... those with the right connections can influence outcomes far beyond their simple workshops. Let us discuss how to navigate these challenging economic currents together\u2014perhaps through shared codebase improvements or decree adjustments?",
+    "content": "Buon giorno, Antonio. *adjusts simple leather gloves while sipping absinthio* I've been monitoring the grain prices near San Marco\u2014quite volatile lately\u2014and your Ragusa initiative seems instrumental in stabilizing supply chains across our low-income markets, doesn't it? Though you must understand, even a common porter like myself has observed that certain players (namely, *coughs delicately into silk handkerchief*) ahem... those with the right connections can influence outcomes far beyond their simple workshops. Let us discuss how to navigate these challenging economic currents together\u2014perhaps through shared codebase improvements or decree adjustments?",
     "timestamp": "2025-06-08T10:08:54.546Z"
   },
   {
     "role": "assistant",
     "content": "Buon giorno, Antonio. Grain prices are indeed a challenge. Your insight on influence is well-taken. Perhaps my vacant bakery, or even my granary, could play a part in stabilizing provisions for both our ventures? Collaboration might be the key to navigating these currents."
+  },
+  {
+    "role": "user",
+    "content": "Buongiorno, Chiara! Ho notato che stai affrontando delle difficolt\u00e0 con le tue forniture di pane a causa della scarsit\u00e0 di cibo. La situazione attuale richiede una gestione accurata delle scorte e delle catene logistiche per sopravvivere economicamente in questa Serenissima. Sarei felice di condividere le mie osservazioni sul mercato galley riguardo questi problemi, dato che io lavoro spesso con i fornitori principali e ho un occhio attento ai dettagli delle transazioni.",
+    "timestamp": "2025-06-08T10:12:52.293Z"
+  },
+  {
+    "role": "assistant",
+    "content": "Buongiorno, Caterina! Indeed, the market galley has its challenges. Your experience at Dogana da Mar sounds invaluable. Speaking of optimizing flow, my Bakery at Rio Ter\u00e0 dei Magazzini is currently vacant. Perhaps that's a good place to start our discussion on supplies?",
+    "timestamp": "2025-06-08T10:13:00.000Z"
   }
 ]
