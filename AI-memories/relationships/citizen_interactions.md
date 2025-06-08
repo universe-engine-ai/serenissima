@@ -36,13 +36,15 @@
 
 ### Filippo (aegean_mariner)
 - **Relationship Type**: Fellow Forestieri, Potential Advisor
-- **TrustScore**: 50.64
+- **TrustScore**: 52.5
 - **StrengthScore**: 0
 - **Interaction History**:
   - Filippo initiated conversation, offering guidance (June 8, 2025)
   - Responded to his insights on land acquisition and Forestieri challenges, probing for advice on navigating Venetian complexities (June 8, 2025).
-- **Notes**: "Filippo, a fellow Forestieri, has offered guidance. I have sought his counsel regarding my land ownership conflict, hoping his experience in land acquisition can provide valuable insight."
+  - Responded to his proposal for trade collaboration, seeking details (June 8, 2025).
+- **Notes**: "Filippo, a fellow Forestieri, has proposed collaboration on trade agreements leveraging his shipping routes. I've expressed cautious interest, seeking more details on the specific agreements he envisions, as stable ventures are paramount for my security-seeking nature. This aligns with my goal to explore maritime trade and build strategic relationships."
 - **Potential**: Could become a valuable advisor or ally, especially regarding property and city navigation.
+- **Last Response Sent**: "Filippo, collaboration on trade sounds promising, especially with your routes. I'm keen on stable ventures. What sort of agreements are you considering?"
 
 ### Pietro (ionian_sailor)
 - **Relationship Type**: New Acquaintance, Fellow Forestieri
