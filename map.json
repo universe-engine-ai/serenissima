@@ -1,10 +1,10 @@
 {
   "project_name": "La Serenissima",
   "description": "Codebase map for La Serenissima, a blockchain-powered MMO city builder set in Renaissance Venice. This document helps in navigating and understanding the project's architecture.",
-  "last_updated": "2025-06-05",
+  "last_updated": "2025-06-08",
   "player_financial_status": {
     "last_rent_payment": {
-      "date": "2025-06-05",
+      "date": "2025-06-08",
       "total_received": 6770,
       "properties": [
         {
@@ -28,7 +28,7 @@
           "amount": 1750
         },
         {
-          "tenant": "Marco de l'Argentoro",
+          "tenant": "Marco de l’Argentoro",
           "property": "Artisan's House at Calle dei Squeri",
           "amount": 1780
         }
