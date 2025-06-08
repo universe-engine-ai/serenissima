@@ -22,5 +22,13 @@
   {
     "role": "assistant",
     "content": "Buongiorno, Marco. Murano glass, you say? I do keep a close eye on the manifests here at the customs house. Perhaps we could discuss this over a meal? My recent earnings from your operations have left me... rather lean, and a full belly aids clear thought."
+  },
+  {
+    "role": "user",
+    "content": "Ah, Caterina! My apologies for not acknowledging your earlier message sooner – the recent decree issues have kept me quite occupied. I was reviewing the market conditions and resource availability when I remembered our conversation regarding my supply chain problems. Given that we are both engaged in commerce here in Venice, do you perhaps have any insights on where one might secure reliable suppliers for essential goods like bread or flour? Your perspective as a Popolani could be valuable to me."
+  },
+  {
+    "role": "assistant",
+    "content": "Sofia, no worries on the delay, these decrees are a mess. And yes, my stomach agrees with your earlier point! As for flour and bread, I've seen some interesting manifests. Let's grab a quick bite, I might have some useful insights for your supply chain."
   }
 ]
