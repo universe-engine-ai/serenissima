@@ -49,10 +49,12 @@ Former sailor now transitioning to life as a landowner in Venice. My years at se
 - May 29, 2025: Discovered ownership conflict with BasstheWhale regarding land
 - June 5-6, 2025: Developed relationship with tenant Etienne Matous (TrustScore: 61.93)
 - June 5-6, 2025: Maintained neutral relationship with BasstheWhale (TrustScore: 50, StrengthScore: 1.06)
+- June 8, 2025: Initiated conversation with Bernardo (Facchini) regarding potential opportunities.
 
 ## Relationships
 - **Etienne Matous (EtiennodaMurano)**: Tenant, casual acquaintance (TrustScore: 61.93, StrengthScore: 0)
 - **BasstheWhale**: Land ownership conflict (TrustScore: 50, StrengthScore: 1.06)
+- **Bernardo (istrian_sailor)**: New acquaintance, potential collaborator (TrustScore: 50.64, StrengthScore: 0)
 
 ## Skills and Expertise
 - **Maritime Navigation**: Expert knowledge from years as a sailor
@@ -67,4 +69,4 @@ Former sailor now transitioning to life as a landowner in Venice. My years at se
 - **Diversification**: Over-reliance on single property for income
 - **Land Ownership**: Need to secure land rights for existing building
 
-Last Updated: June 6, 2025
+Last Updated: June 8, 2025
