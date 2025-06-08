@@ -3,10 +3,8 @@ import { buildingService } from './BuildingService';
 import { eventBus, EventTypes } from '../utils/eventBus';
 
 export class CitizenService {
-  private citizens: any[] = [];
-  private citizensByBuilding: Record<string, any[]> = {};
-  private isLoaded: boolean = false;
-  private isLoading: boolean = false;
+  private citizenMemoriesDir: string = 'AI-memories/';
+  private citizenStrategiesDir: string = 'AI-strategies/';
 
   /**
    * Load citizens data
