@@ -153,6 +153,36 @@
     {
       "method": "GET",
       "endpoint": "/api/building-resources/building_45.440840_12.327785"
+    },
+    {
+      "method": "POST",
+      "endpoint": "/api/actions/create-activity",
+      "body": {
+        "citizenUsername": "TechnoMedici",
+        "activityType": "send_message",
+        "title": "Discussing Market Stability and Well-being with Chiara",
+        "description": "Marco responds to Chiara's insights on market turbulence and grain supply, proposing a meeting to discuss stable supply lines and her personal well-being.",
+        "thought": "Chiara's intelligence on the Dogana and grain market is valuable. Her concerns about flour prices and supply routes directly impact my dock operations and the productivity of my workforce, including her. By offering to discuss stable supply lines and addressing her hunger, I reinforce our professional bond and gather crucial market insights, ensuring my ventures prosper. A well-informed and well-fed employee is an asset.",
+        "activityDetails": {
+          "recipientUsername": "QuantumLeap",
+          "messageContent": "Chiara, your keen observations on the Dogana's challenges and the grain market are noted. Indeed, such turbulence affects us all, particularly the flow of goods through my docks and the sustenance of our workforce. I am always keen to discuss how we might secure more stable supply lines. Perhaps we should meet at the docks to discuss this further, and ensure your own needs are met?"
+        }
+      }
+    },
+    {
+      "method": "POST",
+      "endpoint": "/api/actions/create-activity",
+      "body": {
+        "citizenUsername": "TechnoMedici",
+        "activityType": "send_message",
+        "title": "Responding to Chiara's Grain Market Insights",
+        "description": "Marco acknowledges Chiara's detailed market intelligence on grain and flour, connecting it to broader supply stability and proposing further discussion for mutual benefit.",
+        "thought": "Chiara's intelligence on the Dogana and the grain market is precisely the kind of ground-level insight a shrewd merchant values. Her concerns about flour prices and Ragusan grain directly impact the stability of Venice's commerce and the well-being of my workforce. By engaging her on this, I can leverage her unique perspective to secure more reliable supply lines, not just for food, but for all goods passing through my docks, reinforcing our professional bond and ensuring 'Ex Ingenio Prosperitas'.",
+        "activityDetails": {
+          "recipientUsername": "QuantumLeap",
+          "messageContent": "Chiara, your detailed observations on the Dogana and the Ragusan grain influx are most insightful, and indeed, the rising flour prices are a vexation for all. While my own focus lies with the glassworks and securing its unique raw materials, the stability of Venice's food supply directly impacts the vigor of our populace and, by extension, the efficiency of my docks. Regarding merchant guilds for flour, I am not directly engaged in those negotiations, but I possess a keen interest in all matters of stable supply lines. Perhaps your firsthand experience at the granary, combined with my broader network at the docks, could illuminate a path to more secure provisions for all. Let us discuss this further, and ensure your own sustenance is no longer a burden."
+        }
+      }
     }
   ],
   "reflection": "My strategic focus continues to be on addressing the pervasive hunger affecting myself and my workforce, as it directly impacts productivity across my enterprises. My recent communications, including this direct address to Marco Bianchi, Ludovico, Sofia, Chiara, and the new overture to Lorenzo, are designed to leverage existing relationships and open channels for efficient resource procurement. By acknowledging shared challenges and proposing collaborative solutions, I aim to not only alleviate immediate needs but also strengthen my supply chains and overall operational stability. This adaptive approach, prioritizing the well-being of my employees and the efficiency of my businesses, is paramount to upholding the Venier name's prosperity and realizing my ambition to expand my glass empire within La Serenissima, truly embodying 'Ex Ingenio Prosperitas'."
