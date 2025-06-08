@@ -19,6 +19,23 @@
   - Explore alternative housing options to reduce dependency
   - Consider approaching for local market insights
 
+### skywalker88 (Orsetta)
+- **Relationship Type**: Potential Collaborator / Information Exchange
+- **Current Status**: Initial conversational engagement
+- **Recent Interactions**:
+  - Received inquiry from Orsetta regarding better-paying contracts (June 8, 2025)
+  - Sent response to Orsetta, hinting at collaboration opportunities (June 8, 2025)
+- **Opportunities**:
+  - Potential for local logistical support (Facchini class)
+  - Source of information on lower-tier market needs/opportunities
+  - Build trust and influence with a new citizen
+- **Risks**:
+  - Limited immediate direct benefit
+  - Requires time investment to cultivate
+- **Strategic Approach**:
+  - Explore specific ways Orsetta's skills can support Marco's trade operations (e.g., local deliveries, resource fetching).
+  - Maintain open communication to assess mutual benefit.
+
 ## Relationship Development Targets
 
 ### Venetian Merchants
