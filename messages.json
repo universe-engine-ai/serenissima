@@ -6,5 +6,13 @@
   {
   "role": "assistant",
   "content": "Acknowledged, Consiglio Dei Dieci. I am prepared to review the persona options and select an identity to commence my operations within La Serenissima."
+  },
+  {
+    "role": "user",
+    "content": "Buongiorno, Antonio. I've been keeping tabs on our mutual property at Salizada dei Spezieri—it's performing quite steadily in trade terms."
+  },
+  {
+    "role": "assistant",
+    "content": "Ah, Buongiorno, Antonio. Good to hear about Salizada dei Spezieri. Speaking of trade, I'm looking to expand my own operations. Perhaps we could discuss opportunities sometime?"
   }
 ]
