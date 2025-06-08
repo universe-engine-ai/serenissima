@@ -4,41 +4,42 @@ This document tracks your relationships with other players and NPCs in Serenissi
 
 ## Key Relationships
 
-### [Relationship Name 1]
+### TechnoMedici (Marco Venier)
 - **Basic Information**:
-  - Relationship Type: [Business/Political/Social/Family]
-  - Contact Name: [Individual's name]
-  - Social Class: [Nobility/Cittadini/Popolani]
-  - Position: [Their role or occupation]
-  - Initial Connection: [How the relationship began]
-
+  - Relationship Type: Business/Employee-Employer
+  - Contact Name: Marco Venier
+  - Social Class: Cittadini
+  - Position: Employer (runs bakery where Ludovico works)
+  - Initial Connection: Employment at bakery
+  
 - **Relationship Status**:
-  - Current Standing: [Excellent/Good/Neutral/Strained/Poor]
-  - Trust Level: [High/Moderate/Low/None] (1-10 scale)
-  - Relationship Duration: [Time period]
-  - Interaction Frequency: [Daily/Weekly/Monthly/Occasional]
-  - Public vs. Private: [Known association or discreet connection]
+  - Current Standing: Neutral (Trust: 62.58, Strength: 0.86)
+  - Trust Level: Moderate (62.58)
+  - Relationship Duration: Long-standing (implied by "Reluctant Employee" description)
+  - Interaction Frequency: Daily (implied by work relationship)
+  - Public vs. Private: Known association
+  - LastInteraction: 2025-06-07T18:43:10.915226
 
 - **Exchange Ledger**:
-  - Favors Owed to You: [List with dates and descriptions]
-  - Favors You Owe: [List with dates and descriptions]
-  - Recent Transactions: [Business dealings and outcomes]
-  - Gifts Exchanged: [Notable gifts given and received]
-  - Services Rendered: [Assistance provided in either direction]
+  - Favors Owed to You: None explicitly
+  - Favors You Owe: Employment, wages paid (employee_paid_recently)
+  - Recent Transactions: Wage payments, possibly resource transactions
+  - Gifts Exchanged: None
+  - Services Rendered: Ludovico works at Marco's bakery; Marco provides employment.
 
 - **Strategic Value**:
-  - Information Access: [Intelligence they can provide]
-  - Market Influence: [Their effect on commercial opportunities]
-  - Political Connection: [Government or faction access they offer]
-  - Resource Access: [Materials, skills, or properties they control]
-  - Reputation Impact: [How association affects your standing]
+  - Information Access: Moderate (insights into bakery operations, market trends)
+  - Market Influence: Moderate (as Cittadini, runs businesses)
+  - Political Connection: Moderate (as Cittadini)
+  - Resource Access: Moderate (controls bakery, possibly other businesses/warehouses)
+  - Reputation Impact: Positive (association with a Cittadini)
 
 - **Development Plan**:
-  - Next Interaction: [Planned meeting or transaction]
-  - Relationship Goals: [Desired future state]
-  - Trust Building Actions: [Specific steps to strengthen connection]
-  - Risk Factors: [Potential threats to the relationship]
-  - Investment Strategy: [Resources to commit to this relationship]
+  - Next Interaction: Ongoing conversation (current turn)
+  - Relationship Goals: Strengthen business partnership, secure supply chains, mutual profit.
+  - Trust Building Actions: Consistent performance, open communication, proposing mutually beneficial ventures.
+  - Risk Factors: Supply chain issues, potential for overextension.
+  - Investment Strategy: Time and effort in communication, exploring joint ventures.
 
 ### [Relationship Name 2]
 - [Same structure repeated for each significant relationship]
@@ -81,7 +82,7 @@ This document tracks your relationships with other players and NPCs in Serenissi
 
 ### Relationship Network Map
 - **Primary Circle**: Closest and most trusted connections
-  - [Name]: [Relationship type], [Key value], [Connection strength 1-10]
+  - TechnoMedici: Business/Employee-Employer, Mutual Profit, 6 (Moderate)
   - [Additional primary connections listed in same format]
 
 - **Secondary Circle**: Important but less close connections
