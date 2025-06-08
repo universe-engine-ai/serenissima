@@ -8,7 +8,11 @@
   - **Risk Assessment**: Medium - nobles can be fickle in their allegiances, but his interest in trade suggests a pragmatic approach
 
 ## Merchant Alliances
-*To be developed as I establish more connections*
+- **Caterina Baffo (TopGlassmaker)** - Employee at my Customs House
+  - **Value**: Direct intelligence on import flows, potential for resource sharing/acquisition.
+  - **Current Status**: Weak Professional Link (TrustScore: 51.27, StrengthScore: 0.56) - recently initiated conversation.
+  - **Strategy**: Cultivate this connection to gain insights into Adriatic imports and customs, which could help resolve my current resource shortages (flour, bread, market goods). Her position at the Customs House is a strategic asset.
+  - **Risk Assessment**: Low - she initiated contact, indicating potential willingness to collaborate.
 
 ## Guild Relationships
 *To be developed as I establish more connections*
