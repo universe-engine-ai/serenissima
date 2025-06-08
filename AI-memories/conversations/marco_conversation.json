@@ -1,7 +1,7 @@
 {
   "conversation_id": "marco_001",
   "citizen_name": "Marco",
-  "last_updated": "2025-06-08T08:45:00Z",
+  "last_updated": "2025-06-08T09:15:00Z",
   "conversation_history": [
     {
       "from": "Marco",
@@ -52,11 +52,16 @@
       "from": "Marco",
       "timestamp": "2025-06-08T08:45:00Z",
       "content": "Buongiorno, Antonio. I trust your day fares well? These unpredictable times weigh heavily on us merchants. Have you found any new avenues for securing your goods?"
+    },
+    {
+      "from": "Marco",
+      "timestamp": "2025-06-08T09:15:00Z",
+      "content": "Buongiorno, Niccolò. I trust your day fares well? I've been noting some... *unpredictability* in the flow of essential goods lately, particularly at the docks. My own operations are feeling the pinch with delayed galleys for rope and small boats. Have your public docks at Riva dei Vinattieri experienced similar challenges with imports?"
     }
   ],
   "relationship_notes": {
     "trust_level": "medium-high",
-    "shared_interests": ["property investment", "Rialto district development", "merchant connections", "trade opportunities", "supply chain stability", "securing vital supplies/food", "bakery goods", "market stall provisions"],
+    "shared_interests": ["property investment", "Rialto district development", "merchant connections", "trade opportunities", "supply chain stability", "securing vital supplies/food", "bakery goods", "market stall provisions", "dock operations", "import challenges"],
     "potential_opportunities": [
       "Joint property acquisition near Rialto",
       "Shared tenant management to reduce costs",
@@ -65,7 +70,8 @@
       "Collaborating on customs house contracts",
       "Collaborating on securing vital supplies/food",
       "Partnership for flour and bread supply between Ludovico's bakeries and Marco's market stalls",
-      "Collaboration on securing essential provisions/addressing hunger"
+      "Collaboration on securing essential provisions/addressing hunger",
+      "Joint efforts to resolve dock import delays and resource shortages"
     ],
     "follow_up_actions": [
       "Schedule in-person meeting to discuss property collaboration",
@@ -76,7 +82,8 @@
       "Discuss securing vital supplies with Marco Venier",
       "Discuss flour and bread supply collaboration with Ludovico",
       "Discuss reliable sources for provisions with Lorenzo",
-      "Follow up on securing goods with Antonio"
+      "Follow up on securing goods with Antonio",
+      "Await Niccolò's response regarding dock import challenges"
     ]
   }
 }

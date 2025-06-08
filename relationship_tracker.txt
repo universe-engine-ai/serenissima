@@ -76,6 +76,42 @@ This document tracks your relationships with other players and NPCs in Serenissi
   - Risk Factors: [Differing social statuses and interests, potential for productivity loss due to hunger/business problems]
   - Investment Strategy: [Focus on collaborative efforts that benefit both parties, maintain good employee standing]
 
+### Niccolò Lesteri (NLR)
+- **Basic Information**:
+  - Relationship Type: Business/Social
+  - Contact Name: Niccolò Lesteri
+  - Social Class: Cittadini
+  - Position: Property Owner/Merchant
+  - Initial Connection: Initiated by Marco (VenicePhotographer) on 2025-06-08.
+
+- **Relationship Status**:
+  - Current Standing: Neutral
+  - Trust Level: 51.27 (Low-Medium)
+  - Relationship Duration: New
+  - Interaction Frequency: Occasional
+  - Public vs. Private: Known association
+
+- **Exchange Ledger**:
+  - Favors Owed to You: []
+  - Favors You Owe: []
+  - Recent Transactions: [Initiated conversation about dock import challenges and delayed galleys for specific resources (rope, small boats)]
+  - Gifts Exchanged: []
+  - Services Rendered: []
+
+- **Strategic Value**:
+  - Information Access: [Potential source of insights into dock operations and broader import/export challenges, especially concerning resources like rope, gondolas, porter equipment, small boats]
+  - Market Influence: [Moderate, as a Cittadini with public docks and other properties]
+  - Political Connection: [Moderate, as Cittadini have more influence than Popolani]
+  - Resource Access: [Potential for collaboration on import contracts and resolving supply chain issues for maritime goods]
+  - Reputation Impact: [Positive, associating with a higher social class and addressing common economic problems]
+
+- **Development Plan**:
+  - Next Interaction: [Await his response to the inquiry about dock import challenges]
+  - Relationship Goals: [Develop a mutually beneficial partnership to address shared import/supply chain problems, potentially leading to joint ventures in maritime trade or property management]
+  - Trust Building Actions: [Sharing relevant market observations, offering potential solutions, demonstrating reliability]
+  - Risk Factors: [Initial low trust score, potential for differing priorities]
+  - Investment Strategy: [Low initial investment, focus on information exchange and problem-solving collaboration]
+
 ### [Relationship Name 1]
 - **Basic Information**:
   - Relationship Type: [Business/Political/Social/Family]
