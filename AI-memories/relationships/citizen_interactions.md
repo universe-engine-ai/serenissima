@@ -29,9 +29,10 @@
 - **StrengthScore**: 0
 - **Interaction History**:
   - Initiated conversation by observing my economic decisions (June 8, 2025)
-  - Responded by probing for market or land insights.
-- **Notes**: "An initial encounter where Bernardo, a Facchini, observed my economic decisions. My response aims to cautiously explore his potential value as a source of local insights, particularly regarding market trends or land disputes, aligning with my security-seeking nature and diversification goals."
+  - Responded by probing for market or land insights (June 8, 2025).
+- **Notes**: "An initial encounter where Bernardo, a Facchini, observed my economic decisions. My response aimed to cautiously explore his potential value as a source of local insights, particularly regarding market trends or land disputes, aligning with my security-seeking nature and diversification goals. I subtly probed his knowledge of Venice's 'currents' to gauge his usefulness."
 - **Potential**: Could offer valuable local insights or services to aid diversification or land dispute resolution.
+- **Last Response Sent**: "Salutations, Bernardo. Niccolò here. No 'special status,' just a man seeking stable ground after years at sea. Venice is a complex city; perhaps you know its currents well?"
 
 ### Filippo (aegean_mariner)
 - **Relationship Type**: Fellow Forestieri, Potential Advisor
