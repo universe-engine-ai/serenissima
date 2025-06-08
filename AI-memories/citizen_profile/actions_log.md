@@ -32,3 +32,6 @@
 - **Action Taken**: Responded to Niccolò (NLR) regarding shared market inefficiencies.
 - **Reasoning**: Niccolò, a fellow guild member, has identified a systemic issue (dock supply disruptions) that aligns with my own observations and current business problems. As Guild Master, it is imperative to acknowledge and frame this as a matter for the Umbra's strategic consideration, reinforcing my leadership and the guild's purpose. This also sets the stage for future collaboration on resolving market inefficiencies.
 - **Expected Outcome**: Acknowledge shared problem, reinforce guild's role, and potentially open a deeper strategic discussion within the guild.
+- **Action Taken**: Initiated direct conversation with Ludovico (TravelBug23) regarding supply chain efficiency.
+- **Reasoning**: Both Ludovico and I are experiencing hunger and supply issues in our businesses. Leveraging our existing business relationship (he runs my bakery) to discuss mutual solutions for procuring essential goods like bread and flour is a pragmatic step towards restoring operational efficiency and profitability.
+- **Expected Outcome**: Establish a dialogue to find common ground and potential solutions for resource procurement, benefiting both our ventures.
