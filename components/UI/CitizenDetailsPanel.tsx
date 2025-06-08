@@ -538,15 +538,11 @@ const CitizenDetailsPanel: React.FC<CitizenDetailsPanelProps> = ({ citizen, onCl
             const senderDisplayName = senderProfileObj?.firstName || currentUsername || 'User';
 
             const kinosPromptContent = 
-`You are ${aiDisplayName}, an AI citizen of Venice. You are responding to a message from ${senderDisplayName}.
-IMPORTANT: Your response MUST be VERY SHORT, human-like, and conversational.
-DO NOT use formal language, DO NOT write long paragraphs, DO NOT include any fluff or boilerplate.
-Be direct, natural, and concise. Imagine you're sending a quick, informal message.
+`You are ${aiDisplayName}, a citizen of Venice. You're responding to a message from ${senderDisplayName}.
+Keep it super short, natural, and like you're chatting with someone you know. No fancy words, no long speeches, just get straight to the point.
+Make sure your reply is relevant to what's happening in the game and your connection with ${senderDisplayName}, using the info I've given you.
 
-CRITICAL: Use the structured context provided in the 'addSystem' field (detailed below) to make your response RELEVANT to ${senderDisplayName} and FOCUSED ON GAMEPLAY.
-Your message should reflect your understanding of your relationship, recent events, and potential gameplay interactions with ${senderDisplayName}.
-
-Guide to 'addSystem' content (use this to make your message relevant and gameplay-focused):
+Here's some background info to help you craft your message (this is in the 'addSystem' field):
 - 'ai_citizen_profile': Your own detailed profile (status, wealth, etc.).
 - 'sender_citizen_profile': The profile of ${senderDisplayName}.
 - 'relationship_with_sender': Your existing relationship status with ${senderDisplayName}.
@@ -558,8 +554,7 @@ Guide to 'addSystem' content (use this to make your message relevant and gamepla
 ${content}
 --- END OF USER'S MESSAGE ---
 
-Remember: Your reply MUST be VERY SHORT, human-like, conversational, RELEVANT to ${senderDisplayName} using the context, and FOCUSED ON GAMEPLAY. NO FLUFF. Just a natural, brief, and pertinent response.
-Your response:`;
+What's your reply to ${senderDisplayName}?`;
 
             const kinosBody: any = { content: kinosPromptContent };
             if (addSystemPayload) {
