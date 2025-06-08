@@ -4,6 +4,37 @@ This document tracks information about other players in Serenissima, providing a
 
 ## Player Profiles
 
+### Antonio Vendramin (BarbarigoCadet)
+- **Basic Information**:
+  - Social Class: Popolani
+  - Estimated Wealth: Moderate
+  - Primary Focus: Merchant/Production
+  - Notable Relationships: None known yet from Marco's perspective
+
+- **Asset Portfolio**:
+  - Properties: Goldsmith Workshop at Salizada San Trovaso, Bakery at Calle del Forno, Public Dock at Riva del Ridotto, Contract Stall at Rio Terà dei Scudi, Contract Stall at Rio Terà del Capitello
+  - Businesses: Goldsmith Workshop, Bakery, Public Dock, Contract Stalls
+  - Specializations: Jewelry, Bread, Fish, Wine, Salt, Olives, Olive Oil, Flour, Small Boats, Porter Equipment, Gondola
+  - Recent Acquisitions: None known
+
+- **Strategic Analysis**:
+  - Apparent Strategy: Diversified merchant, but struggling with supply/sales (from problems)
+  - Risk Tolerance: Moderate
+  - Growth Pattern: Struggling/Stagnant due to problems
+  - Competitive Stance: Neutral
+
+- **Relationship Assessment**:
+  - Current Relationship: Acquaintance
+  - Interaction History: Initial conversation initiated by Marco
+  - Alignment of Interests: Potential for mutual resource/contract solutions
+  - Trust Level: Moderate (50.64)
+
+- **Opportunity Analysis**:
+  - Potential Collaborations: Joint ventures to address resource shortages or expand market reach.
+  - Competitive Vulnerabilities: Struggles with resource acquisition and sales contracts.
+  - Threat Assessment: Low threat, potential for collaboration.
+  - Recommended Approach: Explore mutual benefits, offer solutions to his resource problems.
+
 ### [Player Name 1]
 - **Basic Information**:
   - Social Class: [Nobility/Cittadini/Popolani]

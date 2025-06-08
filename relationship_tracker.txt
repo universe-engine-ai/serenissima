@@ -4,6 +4,42 @@ This document tracks your relationships with other players and NPCs in Serenissi
 
 ## Key Relationships
 
+### Antonio Vendramin (BarbarigoCadet)
+- **Basic Information**:
+  - Relationship Type: Business/Social
+  - Contact Name: Antonio Vendramin
+  - Social Class: Popolani
+  - Position: Merchant/Business Owner
+  - Initial Connection: Initiated by Marco (VenicePhotographer) on 2025-06-06.
+
+- **Relationship Status**:
+  - Current Standing: Good
+  - Trust Level: 51.0
+  - Relationship Duration: New
+  - Interaction Frequency: Occasional
+  - Public vs. Private: Known association
+
+- **Exchange Ledger**:
+  - Favors Owed to You: []
+  - Favors You Owe: []
+  - Recent Transactions: [Initiated conversation about market conditions]
+  - Gifts Exchanged: []
+  - Services Rendered: []
+
+- **Strategic Value**:
+  - Information Access: [Potential source of market insights, especially regarding resource flow and contracts]
+  - Market Influence: [Moderate, as a fellow Popolani merchant with multiple businesses]
+  - Political Connection: [Low]
+  - Resource Access: [Potential for trade of goods he produces/sells (jewelry, bread, fish, etc.) or needs (weapons, silk, etc.)]
+  - Reputation Impact: [Positive, associating with a fellow Popolani merchant]
+
+- **Development Plan**:
+  - Next Interaction: [Await his response to the observation about goods flow]
+  - Relationship Goals: [Develop a mutually beneficial trade or resource partnership]
+  - Trust Building Actions: [Consistent, fair dealings; sharing relevant market information]
+  - Risk Factors: [None apparent yet]
+  - Investment Strategy: [Low initial investment, focus on information exchange]
+
 ### [Relationship Name 1]
 - **Basic Information**:
   - Relationship Type: [Business/Political/Social/Family]

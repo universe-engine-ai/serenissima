@@ -1,7 +1,7 @@
 {
   "conversation_id": "marco_001",
   "citizen_name": "Marco",
-  "last_updated": "2025-06-08T06:23:25.000Z",
+  "last_updated": "2025-06-08T06:25:00Z",
   "conversation_history": [
     {
       "from": "Marco",
@@ -22,6 +22,11 @@
       "from": "Marco",
       "timestamp": "2025-06-08T06:23:25.000Z",
       "content": "Ah, Caterina, *grazie* for the keen observation! Florentine goods at the customs house, you say? That's indeed valuable intelligence. My stalls are always in need of reliable supply, especially with the current... *unpredictability*. I'd be keen to hear more details when you have a moment. Perhaps there's a mutual benefit to be found."
+    },
+    {
+      "from": "Marco",
+      "timestamp": "2025-06-08T06:25:00Z",
+      "content": "Buongiorno, Antonio. I trust your affairs are in order? The flow of goods through our city has been... *unpredictable* of late. Perhaps you've found a reliable source for certain necessities?"
     }
   ],
   "relationship_notes": {
