@@ -21,6 +21,22 @@
           "details": "Niccolò offering transportation services around Venice lagoon"
         }
       ]
+    },
+    {
+      "conversation_id": "rialto_sailor1_aegean_mariner_2025-06-08T06:32:15.416Z",
+      "participants": ["aegean_mariner", "rialto_sailor1"],
+      "started_at": "2025-06-08T06:32:15.416Z",
+      "last_message_at": "2025-06-08T09:00:00.000Z",
+      "status": "active",
+      "context": "Discussion about land ownership and seeking counsel as fellow Forestieri.",
+      "message_files": [],
+      "relationship_status": {
+        "initial_trust_score": 50.64,
+        "initial_strength_score": 0,
+        "current_trust_score": 50.64,
+        "current_strength_score": 0
+      },
+      "business_opportunities": []
     }
   ]
 }

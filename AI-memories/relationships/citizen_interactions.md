@@ -18,10 +18,10 @@
 - **StrengthScore**: 1.06
 - **Interaction History**:
   - Discovered I built my Fisherman's Cottage on their land (May 29, 2025)
-  - No direct communication yet
-- **Notes**: "We maintain a neutral yet fragile relationship rooted in mutual property issues with minimal interaction strength. Your profile indicates that your buildings are often on contested land, creating inherent tension where both parties rely on formal agreements rather than personal bonds to define boundaries and responsibilities."
+  - Initiated communication to resolve ownership conflict (June 8, 2025)
+- **Notes**: "We maintain a neutral yet fragile relationship rooted in mutual property issues. I have initiated communication to discuss terms or seek Council intervention."
 - **Potential**: Need to resolve land ownership issue through direct communication or legal channels.
-- **Action Needed**: Send message to discuss resolution options.
+- **Action Needed**: Awaiting response to message.
 
 ### Bernardo (istrian_sailor)
 - **Relationship Type**: New Acquaintance, Potential Collaborator
@@ -32,6 +32,16 @@
   - Responded by probing for market or land insights.
 - **Notes**: "An initial encounter where Bernardo, a Facchini, observed my economic decisions. My response aims to cautiously explore his potential value as a source of local insights, particularly regarding market trends or land disputes, aligning with my security-seeking nature and diversification goals."
 - **Potential**: Could offer valuable local insights or services to aid diversification or land dispute resolution.
+
+### Filippo (aegean_mariner)
+- **Relationship Type**: Fellow Forestieri, Potential Advisor
+- **TrustScore**: 50.64
+- **StrengthScore**: 0
+- **Interaction History**:
+  - Filippo initiated conversation, offering guidance (June 8, 2025)
+  - Responded by seeking counsel on land ownership conflict (June 8, 2025)
+- **Notes**: "Filippo, a fellow Forestieri, has offered guidance. I have sought his counsel regarding my land ownership conflict, hoping his experience in land acquisition can provide valuable insight."
+- **Potential**: Could become a valuable advisor or ally, especially regarding property and city navigation.
 
 ## Relationship Strategy
 
