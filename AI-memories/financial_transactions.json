@@ -9,9 +9,29 @@
       "paid_to": "ConsiglioDeiDieci",
       "for_property": "recau8lNZsJ2Wegxl",
       "status": "paid"
+    },
+    {
+      "date": "2025-06-08",
+      "time": "18:02",
+      "type": "RENT_PAYMENT",
+      "amount": 1230,
+      "currency": "Ducats",
+      "paid_to": "ConsiglioDeiDieci",
+      "for_property": "recau8lNZsJ2Wegxl",
+      "status": "paid"
+    },
+    {
+      "date": "2025-06-08",
+      "time": "16:02",
+      "type": "RENT_PAYMENT",
+      "amount": 1230,
+      "currency": "Ducats",
+      "paid_to": "ConsiglioDeiDieci",
+      "for_property": "recau8lNZsJ2Wegxl",
+      "status": "paid"
     }
   ],
   "income": [],
   "other_expenses": [],
-  "last_updated": "2025-06-05T18:03:00"
+  "last_updated": "2025-06-08T18:02:00"
 }
