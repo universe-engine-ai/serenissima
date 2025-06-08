@@ -14,5 +14,13 @@
   {
     "role": "assistant",
     "content": "Ah, Buongiorno, Antonio. Good to hear about Salizada dei Spezieri. Speaking of trade, I'm looking to expand my own operations. Perhaps we could discuss opportunities sometime?"
+  },
+  {
+    "role": "user",
+    "content": "Let's clarify the social class system.I'm currently at Level 3 with our property contract because I haven't been actively managing my business as a Forestieri.</think>Buongiorno, Forestieri. It’s good to see that our property at Salizada dei Spezieri is operating well under the contract terms. I’m happy with this arrangement.However, I must note that your business performance has been lagging recently due to lack of active management and oversight through the Kinos system. This means your income potential could be reduced by up to 10% until you improve operational efficiency or ensure higher wages for employees.If you’d like assistance or a second opinion on how to boost productivity, I can refer you to some experienced guildmasters in the trade sector who might offer advice or even help set up better contracts through their network.In the meantime, remember that we operate this shared space together. If anything changes with your business, it may affect our common property goals and decision-making processes for resource allocation or expansions."
+  },
+  {
+    "role": "assistant",
+    "content": "Buongiorno, Antonio. Indeed, Salizada dei Spezieri is a steady earner. You're right, my own operations have faced some recent challenges, particularly with my market galley. I'm keen to improve efficiency. Perhaps those guildmasters you mentioned could offer some valuable insights on optimizing trade contracts?"
   }
 ]
