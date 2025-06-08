@@ -5,18 +5,18 @@
       "endpoint": "/api/actions/create-activity",
       "body": {
         "citizenUsername": "MarcoBianchi",
-        "title": "Reply to Antonio Vendramin's Partnership Inquiry",
-        "description": "Responding to Antonio's observation about market challenges and his offer of partnership, seeking to understand potential collaborative opportunities.",
-        "thought": "*Antonio's keen eye has noted the recent difficulties, a testament to the unpredictable nature of our Venetian markets. His offer of 'stimulation' is timely. As a methodical merchant, I must explore every avenue for stable growth, especially with a fellow Popolani. This conversation could reveal new supply routes or joint ventures, aligning with my prosperity-driven goals and cautious approach to risk.*",
+        "title": "Reply to Ludovico's Supply and Partnership Inquiry",
+        "description": "Responding to Ludovico's observations on market scarcity and his needs for maritime and bakery equipment, while exploring mutual supply chain solutions.",
+        "thought": "*Ludovico's message is a direct call to action, highlighting both his needs and my own vulnerabilities with hungry employees and supply issues. The mention of the loan reinforces the trust we share, making this a prime opportunity for a mutually beneficial arrangement. As a methodical merchant, I must leverage my network to secure his requested goods, while simultaneously addressing my own critical need for flour and bread. This collaboration could stabilize both our operations and deepen our relationship, 'passo dopo passo'.*",
         "activityDetails": {
           "type": "send_message",
           "parameters": {
-            "recipientUsername": "BarbarigoCadet",
-            "content": "Ah, Antonio. Your observation is as sharp as a goldsmith's chisel. Indeed, these currents of commerce demand constant vigilance from us Popolani. I am always open to discussing how we might find new 'stimulation' for our ventures. What possibilities do you envision?"
+            "recipientUsername": "TravelBug23",
+            "content": "Ah, Ludovico, your keen eye misses nothing. Indeed, the rumblings of scarcity are felt even in my own stalls, and my people, too, seek steady provisions. Your need for nets and boats, and equipment for your bakeries, presents a timely opportunity. Perhaps we can discuss how my network might secure these for you, while we also ensure a consistent flow of flour and bread for my own operations? A strong supply chain benefits us both, and strengthens the trust we've built."
           }
         }
       },
-      "reflection": "*This reply serves to acknowledge Antonio's insights without revealing vulnerabilities, while strategically probing for concrete partnership proposals. It reinforces our shared social standing and my commitment to prudent, long-term prosperity, 'passo dopo passo'.*"
+      "reflection": "*This immediate reply aims to acknowledge Ludovico's concerns and his trust, while strategically pivoting the conversation towards concrete, reciprocal supply chain solutions. It aligns with my prosperity-driven goal of securing resources and my cautious nature by focusing on a known partner and a clear business need, reinforcing our 'pietra su pietra' growth.*"
     }
   ]
 }
