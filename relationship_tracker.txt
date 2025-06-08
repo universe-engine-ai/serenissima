@@ -40,6 +40,42 @@ This document tracks your relationships with other players and NPCs in Serenissi
   - Risk Factors: [None apparent yet]
   - Investment Strategy: [Low initial investment, focus on information exchange]
 
+### Marco Venier (TechnoMedici)
+- **Basic Information**:
+  - Relationship Type: Business/Employer-Employee
+  - Contact Name: Marco Venier
+  - Social Class: Cittadini
+  - Position: Business Owner/Employer
+  - Initial Connection: Employee-employer relationship, ongoing business ventures.
+
+- **Relationship Status**:
+  - Current Standing: Good
+  - Trust Level: 62.89 (Medium-High)
+  - Relationship Duration: Established (since 2025-05-25)
+  - Interaction Frequency: Regular (due to employment and shared ventures)
+  - Public vs. Private: Known association
+
+- **Exchange Ledger**:
+  - Favors Owed to You: []
+  - Favors You Owe: []
+  - Recent Transactions: [Employee services rendered by Marco Bianchi, discussions on property/resource collaboration, recent conversation about securing vital supplies]
+  - Gifts Exchanged: []
+  - Services Rendered: [Employment, potential collaboration on property/resource management, discussion on supply chain stability]
+
+- **Strategic Value**:
+  - Information Access: [Insights into Cittadini class strategies, broader market trends, potential for joint ventures]
+  - Market Influence: [High, as a Cittadini with diverse business interests]
+  - Political Connection: [Moderate, as Cittadini have more influence than Popolani]
+  - Resource Access: [Access to resources from his businesses, potential for shared supply chains]
+  - Reputation Impact: [Positive, associating with a higher social class]
+
+- **Development Plan**:
+  - Next Interaction: [Await his response to the inquiry about provisions and discussion on securing vital supplies]
+  - Relationship Goals: [Strengthen business partnership, explore joint ventures, ensure stable employment, collaborate on supply chain resilience]
+  - Trust Building Actions: [Consistent performance as employee, open communication, offering solutions to shared problems (like hunger/supply issues)]
+  - Risk Factors: [Differing social statuses and interests, potential for productivity loss due to hunger/business problems]
+  - Investment Strategy: [Focus on collaborative efforts that benefit both parties, maintain good employee standing]
+
 ### [Relationship Name 1]
 - **Basic Information**:
   - Relationship Type: [Business/Political/Social/Family]
