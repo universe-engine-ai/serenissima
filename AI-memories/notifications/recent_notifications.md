@@ -1,21 +1,33 @@
 # Recent Notifications from La Serenissima
-*Last Updated: June 5, 2025*
+*Last Updated: June 08, 2025*
 
 ## Treasury Redistributions
+- **June 08, 2025 at 08:02**: 646,583.62 ⚜️ Ducats distributed to 97 citizens
+- **June 08, 2025 at 06:02**: 653,114.56 ⚜️ Ducats distributed to 97 citizens
 - **June 5, 2025 at 08:03**: 450,834.93 ⚜️ Ducats distributed to 95 citizens
 - **June 5, 2025 at 08:02**: 459,988.70 ⚜️ Ducats distributed to 95 citizens
 - **June 5, 2025 at 06:02**: 455,388.82 ⚜️ Ducats distributed to 95 citizens
 
 ## Wage Payments
+- **June 08, 2025 at 17:03**: 87 successful, 15 failed. Total: 108,600 ⚜️ Ducats
+- **June 08, 2025 at 15:03**: 84 successful, 18 failed. Total: 100,645 ⚜️ Ducats
 - **June 5, 2025 at 17:03**: 79 successful, 14 failed. Total: 102,800 ⚜️ Ducats
 - **June 5, 2025 at 17:03**: 81 successful, 12 failed. Total: 105,165 ⚜️ Ducats
 - **June 5, 2025 at 15:03**: 78 successful, 15 failed. Total: 102,100 ⚜️ Ducats
 
 ## Rent Payments
+- **June 08, 2025 at 18:03**: Housing Rents: 71 successful, 0 failed. Total: 102,355 ⚜️ Ducats
+- **June 08, 2025 at 16:03**: Housing Rents: 71 successful, 0 failed. Total: 102,355 ⚜️ Ducats
 - **June 5, 2025 at 18:04**: Housing Rents: 66 successful, 0 failed. Total: 85,555 ⚜️ Ducats
 - **June 5, 2025 at 18:04**: Received 57,750 ⚜️ Ducats from properties (detailed breakdown available)
 
+## AI Building Strategy Results
+- **June 08, 2025 at 19:03**: All AI building strategies FAILED.
+- **June 08, 2025 at 19:00**: All AI building strategies FAILED.
+
 ## Loan Payments
+- **June 08, 2025 at 15:00**: 0 successful, 3 failed. Total: 0 ⚜️ Ducats
+- **June 08, 2025 at 13:00**: 0 successful, 3 failed. Total: 0 ⚜️ Ducats
 - **June 5, 2025 at 15:00**: 0 successful, 3 failed. Total: 0 ⚜️ Ducats
 - **June 5, 2025 at 15:00**: 0 successful, 3 failed. Total: 0 ⚜️ Ducats
 - **June 5, 2025 at 13:00**: 0 successful, 3 failed. Total: 0 ⚜️ Ducats
@@ -25,7 +37,7 @@
 - **June 5, 2025 at 14:00**: Giacomo Alessandrino left business "Granary at Corte della Munizion" for a better-paying position
 
 ## Detailed Rent Receipts
-Received a total of 57,750 ⚜️ Ducats from properties on June 5, 2025:
+Received a total of **74,550 ⚜️ Ducats** from your properties on June 08, 2025:
 
 | Amount | Tenant | Property |
 |--------|--------|----------|
@@ -37,6 +49,7 @@ Received a total of 57,750 ⚜️ Ducats from properties on June 5, 2025:
 | 1,275 ⚜️ | Matteo Tabrizzi | Merchant's House at Calle del Tintoretto Vecchio |
 | 1,780 ⚜️ | Chiara Bembo | Artisan's House at Calle dei Furlani |
 | 1,480 ⚜️ | Beatrice Sanudo | Artisan's House at Calle dei Fabbri |
+| 3,975 ⚜️ | Elisabetta Velluti | Nobili Palazzo at Salizada dei Nobili |
 | 1,340 ⚜️ | Isabella Trevisan | recDJLhQOiyAkZpoP |
 | 1,125 ⚜️ | Bruno Fachini | Fisherman's Cottage at Riva dei Giocatori |
 | 1,125 ⚜️ | Stefano Bragadin | recDmuITiBSJ3fn8N |
@@ -47,6 +60,7 @@ Received a total of 57,750 ⚜️ Ducats from properties on June 5, 2025:
 | 1,340 ⚜️ | Lucia Ferretti | Merchant's House at Corte Grimani alla Fava |
 | 1,125 ⚜️ | Agnese Venier | Fisherman's Cottage at Fondamenta dei Granai |
 | 1,230 ⚜️ | ppz olak | recJHsA2jfWAr7Feg |
+| 3,715 ⚜️ | Lorenzo Barbaro | Nobili Palazzo at Fondamenta dei Drapieri |
 | 1,125 ⚜️ | Lucia Zanchi | recJzejTbOQGrPnMy |
 | 1,230 ⚜️ | Niccolò Lesteri | recKEqPapn7keUk58 |
 | 1,780 ⚜️ | Vincenzo Tagliapietra | Artisan's House at Ruga dei Orafi Castellani |
@@ -55,11 +69,13 @@ Received a total of 57,750 ⚜️ Ducats from properties on June 5, 2025:
 | 1,480 ⚜️ | Gabriele Memmo | Artisan's House at Calle dei Impastatori |
 | 1,120 ⚜️ | Orsolina Zanetti | recOroyPN7ctE9pbH |
 | 1,780 ⚜️ | Matteo Ziani | Artisan's House at Sotoportego della Scala d'Oro |
+| 3,715 ⚜️ | Caterina del Ponte | Nobili Palazzo at Calle dei Conversi |
 | 1,425 ⚜️ | Giacomo Falier | Fisherman's Cottage at Riva dei Tessitori Cannaregiani |
 | 1,125 ⚜️ | Faustina Ruzzini | recVSMllh1xEt5BUw |
 | 1,125 ⚜️ | Dorotea Gastaldi | recWvEXaCntJJJCEV |
 | 1,480 ⚜️ | Domenico Grimani | Artisan's House at Salizada dei Dotti |
 | 1,760 ⚜️ | Tiziano Bertucci | Artisan's House at Salizada dei Musicisti |
+| 3,715 ⚜️ | Giulio Lombardo | Nobili Palazzo at Calle del Sale |
 | 1,230 ⚜️ | Biagio Pugliese | recau8lNZsJ2Wegxl |
 | 1,125 ⚜️ | Zanetta Passarin | Fisherman's Cottage at Fondamenta degli Ex-Voto |
 | 1,340 ⚜️ | Francesco Rizzo | recfZg9YCe7cHODAc |
@@ -72,13 +88,15 @@ Received a total of 57,750 ⚜️ Ducats from properties on June 5, 2025:
 | 990 ⚜️ | Isabella Contarini | Merchant's House at Ruga dei Librai |
 | 990 ⚜️ | Antonio Mancini | Merchant's House at Ruga dei Mercanti da Levante |
 | 1,340 ⚜️ | Sebastiano Grimani | reco9DuML0qK4DZdD |
-| 990 ⚜️ | Zuan Ca' Zefri | Merchant's House at Fondamenta dei Loredan |
+| 990 ⚜️ | Zuan Ca’ Zefri | Merchant's House at Fondamenta dei Loredan |
 | 1,125 ⚜️ | Lucrezia Dardi | recqen5Hylv8KmYgZ |
 | 1,125 ⚜️ | Marco Baffo | recr6L8dZ7rkr3ulw |
+| 1,680 ⚜️ | ** ** | Canal House at Riva dei Biscottai |
 
 ## Insights
-- Treasury redistributions appear to be occurring multiple times daily, with amounts around 450,000-460,000 Ducats
-- Wage payments show a consistent failure rate (~15%)
-- All loan payment attempts are failing (3 failures each time, 0 successful)
-- Rent collection appears to be highly successful (66 successful, 0 failed)
-- Work mobility is occurring, with at least one employee (Giacomo Alessandrino) leaving for better pay
+- Treasury redistributions are consistently occurring multiple times daily, with amounts now around 640,000-650,000 Ducats, an increase from previous days.
+- Wage payments show a consistent failure rate (~15-18%), indicating some businesses may be struggling to pay employees.
+- All loan payment attempts are consistently failing (3 failures each time, 0 successful), which is a critical issue for the financial system.
+- Rent collection continues to be highly successful (71 successful, 0 failed), indicating stable housing occupancy.
+- **Critical Issue**: AI building strategies are consistently failing for all listed AIs. This requires immediate investigation as it prevents AI citizens from developing their properties.
+- Work mobility is occurring, with at least one employee (Giacomo Alessandrino) leaving for better pay.
