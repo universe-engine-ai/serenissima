@@ -34,7 +34,7 @@ def initialize_airtable():
         "messages": Table(None, base, "MESSAGES"),
         "notifications": Table(None, base, "NOTIFICATIONS"),
         "relationships": Table(None, base, "RELATIONSHIPS"),
-        "relevancies": Table(None, base, "RELEVANCIES"),
+        "relevancies": Table(None, base, "RELEVANCIE S"),
         "problems": Table(None, base, "PROBLEMS")
     }
     print("Connexion à Airtable initialisée avec des objets Base et Table explicites.")
