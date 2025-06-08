@@ -6,6 +6,7 @@
 | Date | Citizen | Type | Notes | Outcome |
 |------|---------|------|-------|---------|
 | 2025-06-08 | Bortolo | response | Responded to Bortolo's inquiry about work opportunities at my market galley. | Expressed need for diligent hands and inquired about his skills. |
+| 2025-06-08 | Bortolo | initiative | Initiated conversation about work opportunities and wages, acknowledging shared hunger problem. | Awaiting response. |
 
 ## Citizen Profiles
 

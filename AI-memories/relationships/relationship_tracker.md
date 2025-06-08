@@ -12,7 +12,7 @@ This document tracks my relationships with other citizens of La Serenissima, cat
 ### Neutral Parties
 *Citizens with whom I have limited interaction or unclear alignment*
 - Most citizens of Venice fall into this category until proven otherwise
-- Bortolo (cosmic_wanderer) - Initial contact made, inquired about work opportunities.
+- Bortolo (cosmic_wanderer) - Initial contact made, inquired about work opportunities. Initiated new conversation about work and wages.
 
 ### Potential Rivals
 *Citizens whose interests may conflict with mine or who have shown hostility*
