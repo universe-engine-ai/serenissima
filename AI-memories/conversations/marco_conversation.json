@@ -37,6 +37,11 @@
       "from": "Marco",
       "timestamp": "2025-06-08T07:27:00Z",
       "content": "Buongiorno, Ludovico. Your words are well-timed! I recall our discussion on your bakeries and my stalls. With the city's current needs, securing a steady flow of provisions, especially flour and bread, is paramount. Let us discuss how our combined efforts can ensure both our coffers and our citizens remain well-fed. A stable supply chain is the bedrock of prosperity."
+    },
+    {
+      "from": "Marco",
+      "timestamp": "2025-06-08T07:32:00Z",
+      "content": "Buongiorno, Lorenzo. I trust your affairs fare well? I've been noting some... *unpredictability* in the flow of essential goods lately, and indeed, my own stomach rumbles more than usual. Have you found reliable sources for provisions amidst these times?"
     }
   ],
   "relationship_notes": {
@@ -49,7 +54,8 @@
       "Exploring new trade routes/suppliers for Florentine goods",
       "Collaborating on customs house contracts",
       "Collaborating on securing vital supplies/food",
-      "Partnership for flour and bread supply between Ludovico's bakeries and Marco's market stalls"
+      "Partnership for flour and bread supply between Ludovico's bakeries and Marco's market stalls",
+      "Collaboration on securing essential provisions/addressing hunger"
     ],
     "follow_up_actions": [
       "Schedule in-person meeting to discuss property collaboration",
@@ -58,7 +64,8 @@
       "Investigate Florentine goods market at customs house",
       "Discuss potential mutual benefits with Caterina",
       "Discuss securing vital supplies with Marco Venier",
-      "Discuss flour and bread supply collaboration with Ludovico"
+      "Discuss flour and bread supply collaboration with Ludovico",
+      "Discuss reliable sources for provisions with Lorenzo"
     ]
   }
 }
