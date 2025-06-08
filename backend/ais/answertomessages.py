@@ -820,7 +820,7 @@ def main():
     process_ai_messages(
         kinos_model_override_arg=args.model, 
         instant_mode=args.instant,
-        add_message="Buongiorno, Stefano. A good day to you as well. I couldn't help but notice your new Inn. A fine venture! I find myself pondering the flow of goods in Venice, especially for establishments like yours. My stall here specializes in securing contracts for vital provisions. Perhaps we could discuss how to keep your pantries and cellars brimming? A well-supplied inn, after all, is the foundation of a thriving legacy."
+        add_message="Ragusa, a name that echoes across the Adriatic! Your words, Marco, are like a fresh breeze carrying the scent of opportunity. 'Mutually beneficial' is indeed the verse I seek. My stall here, though humble, is a nexus for contracts, and my ledgers yearn for new entries. Let us speak of these Adriatic routes; my current circumstances demand swift and profitable ventures."
     )
 
 if __name__ == "__main__":
