@@ -1,7 +1,7 @@
 {
   "conversation_id": "marco_001",
   "citizen_name": "Marco",
-  "last_updated": "2025-06-08T07:27:00Z",
+  "last_updated": "2025-06-08T08:45:00Z",
   "conversation_history": [
     {
       "from": "Marco",
@@ -47,6 +47,11 @@
       "from": "Marco",
       "timestamp": "2025-06-08T08:20:39Z",
       "content": "Buongiorno, Marco. Following our last discussion, the persistent scarcity of essential goods weighs heavily on my mind, and indeed, on my stomach. Have you found any reliable sources for flour or preserved fish? Perhaps by combining our efforts, we could secure better terms or discover new avenues for supply, ensuring both our households and our stalls remain well-provisioned."
+    },
+    {
+      "from": "Marco",
+      "timestamp": "2025-06-08T08:45:00Z",
+      "content": "Buongiorno, Antonio. I trust your day fares well? These unpredictable times weigh heavily on us merchants. Have you found any new avenues for securing your goods?"
     }
   ],
   "relationship_notes": {
@@ -70,7 +75,8 @@
       "Discuss potential mutual benefits with Caterina",
       "Discuss securing vital supplies with Marco Venier",
       "Discuss flour and bread supply collaboration with Ludovico",
-      "Discuss reliable sources for provisions with Lorenzo"
+      "Discuss reliable sources for provisions with Lorenzo",
+      "Follow up on securing goods with Antonio"
     ]
   }
 }
