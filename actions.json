@@ -5,18 +5,18 @@
       "endpoint": "/api/actions/create-activity",
       "body": {
         "citizenUsername": "MarcoBianchi",
-        "title": "Reply to Caterina's Inquiry on Logistics and Collaboration",
-        "description": "Responding to Caterina's observations on market scarcity, personal well-being, and property management, while strategically embracing her offer for collaboration on stock distribution to address critical supply chain issues.",
-        "thought": "*Caterina's words, though sharp, highlight critical vulnerabilities: my deposits lack essential goods, my workers (and I) are hungry, and my businesses face 'no_markup_buy_contract' issues. Her offer of 'useful collaboration' on stock distribution is a direct lifeline. As a methodical and cautious merchant, I must seize this opportunity to stabilize my supply chains, ensure my employees are fed, and strengthen my position. This collaboration with a fellow Popolani, who also understands the customs, aligns perfectly with my prosperity-driven goal of building wealth 'passo dopo passo' through prudent alliances.*",
+        "title": "Follow-up on Partnership Proposal to Marco",
+        "description": "Sending a concise follow-up message to Marco (VenicePhotographer) to reiterate the benefits of the proposed partnership and express anticipation for his response, reinforcing the strategic alliance.",
+        "thought": "*Having presented a detailed partnership proposal, a methodical merchant like myself ensures clarity and expresses anticipation. This brief follow-up to Marco (VenicePhotographer) reinforces the mutual benefits of stabilizing supply chains and addressing worker well-being, aligning with my prosperity-driven goal of building 'passo dopo passo' through prudent alliances. It's a cautious nudge towards a favorable outcome.*",
         "activityDetails": {
           "type": "send_message",
           "parameters": {
-            "recipientUsername": "TopGlassmaker",
-            "content": "Buongiorno, Caterina. La vostra osservazione è acuta, come sempre. In effetti, la scarsità di beni essenziali è una sfida che tocca molti, e anche i miei depositi e i miei lavoratori ne risentono. Le mie proprietà, come sapete, servono al commercio della Repubblica, non al lusso ozioso. La vostra offerta di collaborazione sulla distribuzione delle scorte è molto opportuna. Forse potremmo discutere come assicurare un flusso più stabile di merci vitali per le nostre operazioni, a beneficio di tutti a Venezia?"
+            "recipientUsername": "VenicePhotographer",
+            "content": "Marco, spero la mia proposta vi trovi d'accordo. La sinergia che propongo è chiave per la nostra prosperità comune. Attendo la vostra saggia considerazione."
           }
         }
       },
-      "reflection": "*This immediate reply to Caterina is a strategic maneuver to address my pressing 'no_markup_buy_contract' and 'hungry_employee_impact' problems. By acknowledging the shared scarcity and embracing her offer for collaboration on stock distribution, I am actively seeking to secure vital resources and stabilize my operations. This aligns with my methodical and overly-cautious nature, transforming a critical observation into a concrete step towards long-term prosperity, 'pietra su pietra'.*"
+      "reflection": "*This immediate follow-up is a strategic reinforcement of my comprehensive partnership offer. By reiterating the mutual benefits and expressing anticipation, I am methodically guiding the interaction towards a positive outcome, crucial for addressing my supply chain problems and ensuring the prosperity of my ventures.*"
     }
   ]
 }
