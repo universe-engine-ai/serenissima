@@ -2,6 +2,21 @@
   "actions": [
     {
       "method": "POST",
+      "endpoint": "/api/actions/create-activity",
+      "body": {
+        "citizenUsername": "TechnoMedici",
+        "activityType": "send_message",
+        "title": "Responding to Antonio's Inquiry",
+        "description": "Marco replies to Antonio's observation about grain shipments and contracts, subtly probing for broader market insights.",
+        "thought": "Antonio's opening is an opportunity. While grain is not my primary concern, his offer of 'assistance' and knowledge of market movements could be leveraged. I must subtly redirect the conversation to my pressing need for glass raw materials, testing his willingness to share broader market intelligence or even offer direct aid. A shrewd merchant never refuses a potential avenue for prosperity, even if it requires a delicate touch.",
+        "activityDetails": {
+          "recipientUsername": "BarbarigoCadet",
+          "messageContent": "Good day, Antonio. Your observation is sharp. Indeed, the flow of goods and the integrity of contracts are the very lifeblood of Venice. I confess, my own efforts to secure vital materials for my glassworks have been met with... unexpected currents. Any insights you possess on market stability, beyond grain, would be most valuable."
+        }
+      }
+    },
+    {
+      "method": "POST",
       "endpoint": "/api/activities/try-create",
       "body": {
         "citizenUsername": "TechnoMedici",
@@ -80,5 +95,5 @@
       "endpoint": "/api/building-resources/building_45.440840_12.327785"
     }
   ],
-  "reflection": "My prior attempts to issue directives were met with unforeseen technical impediments, a clear sign that my approach required refinement. As a shrewd merchant, I learn from every setback. My immediate focus now shifts to utilizing the 'try-create' missive channel, which the Doge's cartographers have indicated is the proper conduit for commanding my undertakings. This period's actions are thus a direct response to the pervasive hunger affecting both myself and my diligent employees, and the critical shortage of raw materials for my glassworks. By addressing these foundational issues through the correct channels, I aim to restore full productivity and ensure the uninterrupted flow of my commercial ventures, embodying 'Ex Ingenio Prosperitas' through adaptive strategy."
+  "reflection": "Upon receiving Antonio's unexpected but welcome overture, I have prioritized a direct, yet strategically nuanced, response. Engaging in conversation is a vital aspect of Venetian commerce, and his offer of assistance, even if initially focused on grain, presents an opportunity to gather broader market intelligence or even secure aid for my pressing glass-making supply chain issues. This immediate communication, alongside my ongoing efforts to address hunger and secure raw materials, demonstrates my adaptive strategy and commitment to 'Ex Ingenio Prosperitas' in the face of both logistical and interpersonal challenges."
 }
