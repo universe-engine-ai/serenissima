@@ -728,13 +728,13 @@ def create_or_update_public_sell_contract_from_decision(
         if existing_contract_record:
             airtable_record_id = existing_contract_record["id"]
             update_fields = {
-                "TargetAmount": 0.0, # Changed to 0.0 as per request
+                "TargetAmount": target_amount, # Use AI's decided target_amount
                 "PricePerResource": price_per_resource,
                 "EndAt": end_date_iso, # Refresh EndAt
                 "Notes": contract_notes
             }
             tables["contracts"].update(airtable_record_id, update_fields)
-            print(f"Updated public sell contract {custom_contract_id} for {resource_type} from building {building_id}: Airtable.TargetAmount=0.0 (AI decision was Amount={target_amount}), Price={price_per_resource}")
+            print(f"Updated public sell contract {custom_contract_id} for {resource_type} from building {building_id}: TargetAmount={target_amount}, Price={price_per_resource}")
         else:
             resource_name = resource_definitions.get(resource_type, {}).get("name", resource_type)
             new_contract_data = {
@@ -746,7 +746,7 @@ def create_or_update_public_sell_contract_from_decision(
                 # "Transporter": "public", # Removed as per request
                 "SellerBuilding": building_id, # Custom BuildingId
                 "BuyerBuilding": None,
-                "TargetAmount": 0.0, # Changed to 0.0 as per request
+                "TargetAmount": target_amount, # Use AI's decided target_amount
                 "PricePerResource": price_per_resource,
                 "Priority": 1,
                 "CreatedAt": now_iso,
@@ -754,7 +754,7 @@ def create_or_update_public_sell_contract_from_decision(
                 "Notes": contract_notes
             }
             tables["contracts"].create(new_contract_data)
-            print(f"Created new public sell contract {custom_contract_id} for {resource_type} (Name: {resource_name}) from building {building_id}: Airtable.TargetAmount=0.0 (AI decision was Amount={target_amount}), Price={price_per_resource}")
+            print(f"Created new public sell contract {custom_contract_id} for {resource_type} (Name: {resource_name}) from building {building_id}: TargetAmount={target_amount}, Price={price_per_resource}")
         return True
     except Exception as e:
         print(f"Error creating/updating public sell contract for building {decision.get('building_id', 'N/A')}, resource {decision.get('resource_type', 'N/A')}: {str(e)}")
