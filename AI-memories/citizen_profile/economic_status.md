@@ -1,9 +1,9 @@
 # Economic Status & Goals
 
 ## Current Financial Position
-- **Ducats**: 12690446.18
+- **Ducats**: 12689216.18
 - **Daily Income**: 0
-- **Daily Turnover**: 1643.88
+- **Daily Turnover**: 2873.88
 - **Weekly Income**: 0
 - **Weekly Turnover**: 5122.79
 - **Monthly Income**: 0
