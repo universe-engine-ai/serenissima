@@ -220,6 +220,42 @@ This document tracks your relationships with other players and NPCs in Serenissi
   - Risk Factors: [Initial low trust score, potential for differing priorities or resource limitations.]
   - Investment Strategy: [Low initial investment, focus on information exchange and problem-solving collaboration.]
 
+### Lorenzo Mocenigo (DogeLover88)
+- **Basic Information**:
+  - Relationship Type: Business/Social
+  - Contact Name: Lorenzo Mocenigo
+  - Social Class: Popolani
+  - Position: Artisan (Glassblower/Mason)
+  - Initial Connection: Initiated by Lorenzo (DogeLover88) on 2025-06-09.
+
+- **Relationship Status**:
+  - Current Standing: Neutral
+  - Trust Level: 50.64 (Neutral)
+  - Relationship Duration: New
+  - Interaction Frequency: Initial
+  - Public vs. Private: Known association
+
+- **Exchange Ledger**:
+  - Favors Owed to You: []
+  - Favors You Owe: []
+  - Recent Transactions: [Lorenzo initiated conversation about practical realities of Popolani life and his workshop's focus on substantial matters. Marco responded, acknowledging shared challenges in securing essential 'realities'.]
+  - Gifts Exchanged: []
+  - Services Rendered: []
+
+- **Strategic Value**:
+  - Information Access: [Potential source of insights into artisan trades, raw material supply, and Popolani community needs.]
+  - Market Influence: [Moderate, as a fellow Popolani artisan with a workshop.]
+  - Political Connection: [Low]
+  - Resource Access: [Potential for collaborative procurement of raw materials (e.g., glass, stone, tools) or essential provisions, given his current hunger problem and Marco's supply issues.]
+  - Reputation Impact: [Positive, associating with a diligent Popolani artisan to address common economic problems.]
+
+- **Development Plan**:
+  - Next Interaction: [Await Lorenzo Mocenigo's response to the inquiry about common challenges in securing 'earthly realities'.]
+  - Relationship Goals: [Explore potential for mutual benefit in securing resources or diversifying trade, especially concerning essential goods or artisan supplies.]
+  - Trust Building Actions: [Consistent, practical communication; sharing relevant observations on supply or market needs; demonstrating reliability.]
+  - Risk Factors: [Initial neutral trust score, potential for differing priorities.]
+  - Investment Strategy: [Low initial investment, focus on information exchange and problem-solving collaboration.]
+
 ## Faction Relationships
 
 ### [Faction Name 1]
@@ -266,7 +302,7 @@ This document tracks your relationships with other players and NPCs in Serenissi
   - [Additional secondary connections listed in same format]
 
 - **Tertiary Circle**: Occasional or formal connections
-  - [Name]: [Relationship type], [Key value], [Connection strength 1-10]
+  - [Name]: [Desired relationship type], [Strategic value], [Current access point]
   - [Additional tertiary connections listed in same format]
 
 - **Potential Connections**: Targeted future relationships
