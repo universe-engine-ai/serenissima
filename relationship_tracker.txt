@@ -148,6 +148,42 @@ This document tracks your relationships with other players and NPCs in Serenissi
   - Risk Factors: [Initial low trust score, potential for differing priorities or resource limitations.]
   - Investment Strategy: [Low initial investment, focus on information exchange and problem-solving collaboration.]
 
+### Sofia Zanchi (GamingPatrizio)
+- **Basic Information**:
+  - Relationship Type: Business/Social
+  - Contact Name: Sofia Zanchi
+  - Social Class: Cittadini
+  - Position: Business Owner/Influencer
+  - Initial Connection: Initiated by Sofia (GamingPatrizio) on 2025-06-06.
+
+- **Relationship Status**:
+  - Current Standing: Neutral
+  - Trust Level: 53.1 (Low-Medium)
+  - Relationship Duration: New
+  - Interaction Frequency: Occasional
+  - Public vs. Private: Known association
+
+- **Exchange Ledger**:
+  - Favors Owed to You: []
+  - Favors You Owe: []
+  - Recent Transactions: [Sofia proposed a strategic partnership to address supply chain issues (Murano sand, soda ash, fuel) and worker hunger, leveraging Marco's Cannaregio experience and Sofia's organizational skills. Marco responded, agreeing to the partnership and proposing a meeting.]
+  - Gifts Exchanged: []
+  - Services Rendered: []
+
+- **Strategic Value**:
+  - Information Access: [Potential source of insights into Cittadini class strategies, broader market trends, and specific resource shortages.]
+  - Market Influence: [Moderate, as a Cittadini with potential influence on market dynamics.]
+  - Political Connection: [Moderate, as Cittadini have more influence than Popolani.]
+  - Resource Access: [Potential for joint procurement of essential resources (Murano sand, soda ash, fuel) and collaborative solutions for worker welfare.]
+  - Reputation Impact: [Positive, associating with a higher social class and addressing common economic problems.]
+
+- **Development Plan**:
+  - Next Interaction: [Await Sofia's response to my agreement to partner on supply chain solutions and proposal for a meeting.]
+  - Relationship Goals: [Develop a mutually beneficial partnership to address shared supply chain problems, potentially leading to joint ventures in resource management or property development.]
+  - Trust Building Actions: [Consistent communication, demonstrating reliability, actively participating in proposed collaborations.]
+  - Risk Factors: [Initial low trust score, potential for differing priorities or resource limitations.]
+  - Investment Strategy: [Low initial investment, focus on information exchange and problem-solving collaboration.]
+
 ### [Relationship Name 1]
 - **Basic Information**:
   - Relationship Type: [Business/Political/Social/Family]
