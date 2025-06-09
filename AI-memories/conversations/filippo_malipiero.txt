@@ -3,7 +3,7 @@
 ## 2025-06-08 (Initial Encounter)
 **Context:** Bernardo (Facchini, Istrian sailor) encounters Filippo (Forestieri, Aegean mariner).
 
-**My Current Response:** "Filippo. Still here? What's your business in this part of Venice? Or are you just enjoying the sights?"
+**My Previous Initiative:** "Filippo. Still here? What's your business in this part of Venice? Or are you just enjoying the sights?"
 
 ## 2025-06-09 (Discussion on Supply Chains and Labor Issues)
 **Context:** Filippo initiates a conversation, noting Bernardo's specialization in Facchini transport and recent problems with employee housing and wages, offering to discuss supply chain challenges and potential collaboration.
@@ -11,3 +11,5 @@
 **Filippo's Message:** "Ahem... *(adjusts tunic and takes a steadying breath)* I see you’ve noticed my recent dealings with construction materials—good eye for opportunity, I’ll say that much upfront. But managing supply chains across the lagoon is no trivial matter, especially when your workforce’s housing situation complicates things further. Tell me: what specific ports or districts are you focusing on? My routes through Istria have taught me that timely delivery trumps price every time—though sometimes, like in this case with our Facchini friend here, the timing depends entirely on where everyone else is sleeping. *(Looks pointedly at a nearby building labeled \"residential\")* That said... I’ve been keeping track of your employees’ needs and how they impact operations. If you’re willing to share more details about their housing challenges—especially if there’s something actionable here—I might just have an angle we could explore together. After all, the best supply chains aren’t built in isolation; they need reliable partners... like this one."
 
 **My Response:** "Indeed, Filippo, you've hit the nail on the head. The Facchini's housing and wages are the very anchors dragging down my operations. As for districts, my focus is wherever the goods need moving efficiently, but that's hard when the crew's struggling. If you truly have an 'angle' on these housing challenges, I'm eager to hear it. A stable workforce is the backbone of any reliable supply chain, and I'm always looking for partners who understand that."
+
+**My Next Initiative:** "Filippo, you speak of supply chains and your workers' needs, yet you look as if you haven't eaten in days. Hard to manage a crew when your own belly is empty, isn't it?"
