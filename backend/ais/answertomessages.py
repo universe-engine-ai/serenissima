@@ -237,7 +237,12 @@ def get_kinos_api_key() -> str:
     return api_key
 
 def generate_ai_response(tables: Dict[str, Table], ai_username: str, sender_username: str, message_content: str) -> Optional[str]:
-    """Generate an AI response using the Kinos Engine API with enhanced context."""
+    """
+    Generate an AI response using the Kinos Engine API with enhanced context.
+    This function is designed to generate short, human-like, and gameplay-focused responses
+    by leveraging comprehensive context (profiles, relationships, notifications, problems, relevancies)
+    to enable strategic and opportunistic replies from AI citizens.
+    """
     try:
         api_key = get_kinos_api_key()
         blueprint = "serenissima-ai"
