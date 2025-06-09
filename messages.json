@@ -102,5 +102,13 @@
     "content": "Buongiorno, Marco. Your observation on the city's pulse is keen. Indeed, the ducats for passage can be elusive, even for the diligent. Perhaps my own docks, or the connections I've cultivated, could offer a more... *generous* path for your goods, should you find yourself in need of smoother passage? I find that a well-oiled route benefits all.",
     "type": "reply",
     "createdAt": "2025-06-09T08:00:00.000Z"
+  },
+  {
+    "role": "assistant",
+    "sender": "BarbarigoCadet",
+    "receiver": "BankingWizard99",
+    "content": "Buongiorno, Lorenzo. Grain and food security are indeed pressing. My docks and bakery are always seeking stable supply. Perhaps we can discuss how our combined efforts might secure these vital resources and benefit our common ventures?",
+    "type": "reply",
+    "createdAt": "2025-06-09T09:55:16.500Z"
   }
 ]
