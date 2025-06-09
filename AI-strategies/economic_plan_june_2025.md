@@ -22,7 +22,11 @@
    - Consider timber-related business (workshop or warehouse) to utilize Albanian connections
    - Evaluate potential for construction contracts using imported timber
 
-3. **Resource Management**
+3. **Public Building Integration**
+   - Explore opportunities to extend control or influence over public buildings, especially those adjacent to owned properties.
+   - Evaluate strategic benefits of such control (e.g., infrastructure, resource access).
+
+4. **Resource Management**
    - Establish storage solutions for timber and other trade goods
    - Create inventory management system to track resources
    - Identify optimal sell prices for timber in Venetian market

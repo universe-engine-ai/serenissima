@@ -11,6 +11,8 @@
    - Citizens who operate construction businesses
    - Landowners planning building projects
    - Other Forestieri merchants who might share information
+   - Engage with Informants on Public Infrastructure
+     - Prioritize conversations with citizens offering insights or assistance regarding public buildings and city infrastructure.
 
 3. **Approach Strategy**
    - Lead with business propositions rather than personal connection
@@ -67,5 +69,8 @@
    - Respect Venetian customs while maintaining Albanian identity
    - Learn from other Forestieri about navigating Venetian society
    - Use outsider status strategically when advantageous
+
+4. **Value Diverse Information Sources**
+   - Recognize that valuable intelligence and opportunities can arise from any social class, including those who present themselves as "modest."
 
 *This strategy will be revised as I learn more about the social dynamics of Venice and identify specific citizens of interest.*
