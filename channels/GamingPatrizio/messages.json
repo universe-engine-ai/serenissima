@@ -2,13 +2,13 @@
   {
     "role": "user",
     "content": "You are Elisabetta. An activity involving you and Sofia just occurred. Details are in `addSystem.triggering_activity_details`. Your profiles and relationship context are also in `addSystem`.\nBased on ALL this context, what is your immediate and natural reaction or comment TO Sofia? Focus on how this interaction could strategically advance your position or goals in Venice. Keep it short, gameplay-focused, and conversational.",
-    "timestamp": "2025-06-09T17:47:42.991416",
+    "timestamp": "2025-06-09T17:48:25.185026",
     "channel_id": "GamingPatrizio"
   },
   {
     "role": "assistant",
     "content": "Error: Could not connect to local LLM. Ensure it's running and accessible.",
-    "timestamp": "2025-06-09T17:53:41.368591",
+    "timestamp": "2025-06-09T17:54:40.281178",
     "channel_id": "GamingPatrizio"
   }
 ]
