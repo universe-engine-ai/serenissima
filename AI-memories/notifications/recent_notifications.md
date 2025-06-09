@@ -1,7 +1,9 @@
 # Recent Notifications from La Serenissima
-*Last Updated: June 08, 2025*
+*Last Updated: June 09, 2025*
 
 ## Treasury Redistributions
+- **June 09, 2025 at 08:03**: 🏛️ **Treasury Redistribution Complete**: **637,702.31** ⚜️ Ducats distributed to **97** citizens 💰
+- **June 09, 2025 at 06:02**: 🏛️ **Treasury Redistribution Complete**: **644,143.75** ⚜️ Ducats distributed to **97** citizens 💰
 - **June 08, 2025 at 08:02**: 646,583.62 ⚜️ Ducats distributed to 97 citizens
 - **June 08, 2025 at 06:02**: 653,114.56 ⚜️ Ducats distributed to 97 citizens
 - **June 5, 2025 at 08:03**: 450,834.93 ⚜️ Ducats distributed to 95 citizens
@@ -9,6 +11,7 @@
 - **June 5, 2025 at 06:02**: 455,388.82 ⚜️ Ducats distributed to 95 citizens
 
 ## Wage Payments
+- **June 09, 2025 at 17:03**: 💰 **Daily Wage Payments Report** 📜 Processed: **86** successful, **13** failed. Total Wages Paid: **134,025** ⚜️ Ducats.
 - **June 08, 2025 at 17:03**: 87 successful, 15 failed. Total: 108,600 ⚜️ Ducats
 - **June 08, 2025 at 15:03**: 84 successful, 18 failed. Total: 100,645 ⚜️ Ducats
 - **June 5, 2025 at 17:03**: 79 successful, 14 failed. Total: 102,800 ⚜️ Ducats
@@ -16,16 +19,79 @@
 - **June 5, 2025 at 15:03**: 78 successful, 15 failed. Total: 102,100 ⚜️ Ducats
 
 ## Rent Payments
+- **June 09, 2025 at 16:03**: 🏛️ **Daily Rent Payments Report** 📜 Housing Rents: **71** successful, **0** failed. Total Housing Rent Collected: **102,355** ⚜️ Ducats.
+- **June 09, 2025 at 16:03**: 📬 **Rent Received Summary** 📬 You received a total of **74,550 ⚜️ Ducats** from your properties today.
 - **June 08, 2025 at 18:03**: Housing Rents: 71 successful, 0 failed. Total: 102,355 ⚜️ Ducats
 - **June 08, 2025 at 16:03**: Housing Rents: 71 successful, 0 failed. Total: 102,355 ⚜️ Ducats
 - **June 5, 2025 at 18:04**: Housing Rents: 66 successful, 0 failed. Total: 85,555 ⚜️ Ducats
 - **June 5, 2025 at 18:04**: Received 57,750 ⚜️ Ducats from properties (detailed breakdown available)
 
 ## AI Building Strategy Results
+- **June 09, 2025 at 19:01**: 🏗️ **AI Building Strategy Results** 🏗️
+  AI Building Strategy Results:
+  - Italia: FAILED
+  - alexandria_trader: FAILED
+  - ShadowHunter: FAILED
+  - greek_trader: FAILED
+  - TravelBug23: FAILED
+  - VenicePhotographer: FAILED
+  - adriatic_captain: FAILED
+  - Debug42: FAILED
+  - apulian_mariner: FAILED
+  - GreenThumb: FAILED
+  - ItalyMerchant: FAILED
+  - MerchantLegend: FAILED
+  - MariaDolfin: FAILED
+  - SilentObserver: FAILED
+  - NLR: FAILED
+  - BigMike: FAILED
+  - ConsiglioDeiDieci: FAILED
+  - Trade4Fun: FAILED
+  - SpiceHunter420: FAILED
+  - BlueSkySurfer: FAILED
+  - TopGlassmaker: FAILED
+  - VenetianBoss: FAILED
+  - PixelNinja: FAILED
+  - RialtoRacer56: FAILED
+  - StarGazer2000: FAILED
+  - ZenGiovane: FAILED
+  - BookishMerchant: FAILED
+  - ZenithTrader: FAILED
+- **June 09, 2025 at 19:00**: 🏗️ **AI Building Strategy Results** 🏗️
+  AI Building Strategy Results:
+  - Italia: FAILED
+  - alexandria_trader: FAILED
+  - ShadowHunter: FAILED
+  - greek_trader: FAILED
+  - TravelBug23: FAILED
+  - VenicePhotographer: FAILED
+  - adriatic_captain: FAILED
+  - Debug42: FAILED
+  - apulian_mariner: FAILED
+  - GreenThumb: FAILED
+  - ItalyMerchant: FAILED
+  - MerchantLegend: FAILED
+  - MariaDolfin: FAILED
+  - SilentObserver: FAILED
+  - NLR: FAILED
+  - BigMike: FAILED
+  - ConsiglioDeiDieci: FAILED
+  - Trade4Fun: FAILED
+  - SpiceHunter420: FAILED
+  - BlueSkySurfer: FAILED
+  - TopGlassmaker: FAILED
+  - VenetianBoss: FAILED
+  - PixelNinja: FAILED
+  - RialtoRacer56: FAILED
+  - StarGazer2000: FAILED
+  - ZenGiovane: FAILED
+  - BookishMerchant: FAILED
+  - ZenithTrader: FAILED
 - **June 08, 2025 at 19:03**: All AI building strategies FAILED.
 - **June 08, 2025 at 19:00**: All AI building strategies FAILED.
 
 ## Loan Payments
+- **June 09, 2025 at 13:00**: 📊 **Daily Loan Payments Report**: **0** successful, **3** failed, total: **0 ⚜️ Ducats**
 - **June 08, 2025 at 15:00**: 0 successful, 3 failed. Total: 0 ⚜️ Ducats
 - **June 08, 2025 at 13:00**: 0 successful, 3 failed. Total: 0 ⚜️ Ducats
 - **June 5, 2025 at 15:00**: 0 successful, 3 failed. Total: 0 ⚜️ Ducats
@@ -37,7 +103,7 @@
 - **June 5, 2025 at 14:00**: Giacomo Alessandrino left business "Granary at Corte della Munizion" for a better-paying position
 
 ## Detailed Rent Receipts
-Received a total of **74,550 ⚜️ Ducats** from your properties on June 08, 2025:
+Received a total of **74,550 ⚜️ Ducats** from your properties on June 09, 2025:
 
 | Amount | Tenant | Property |
 |--------|--------|----------|
@@ -94,9 +160,9 @@ Received a total of **74,550 ⚜️ Ducats** from your properties on June 08, 20
 | 1,680 ⚜️ | ** ** | Canal House at Riva dei Biscottai |
 
 ## Insights
-- Treasury redistributions are consistently occurring multiple times daily, with amounts now around 640,000-650,000 Ducats, an increase from previous days.
-- Wage payments show a consistent failure rate (~15-18%), indicating some businesses may be struggling to pay employees.
-- All loan payment attempts are consistently failing (3 failures each time, 0 successful), which is a critical issue for the financial system.
-- Rent collection continues to be highly successful (71 successful, 0 failed), indicating stable housing occupancy.
-- **Critical Issue**: AI building strategies are consistently failing for all listed AIs. This requires immediate investigation as it prevents AI citizens from developing their properties.
+- Treasury redistributions are consistently occurring multiple times daily, with amounts now around 630,000-640,000 Ducats.
+- Wage payments show a consistent failure rate (~13-15%), indicating some businesses may be struggling to pay employees.
+- **Critical Issue**: All loan payment attempts are consistently failing (3 failures each time, 0 successful), which is a critical issue for the financial system. This requires immediate attention.
+- Rent collection continues to be highly successful (71 successful, 0 failed), indicating stable housing occupancy. My personal rental income has increased to 74,550 Ducats.
+- **Critical Issue**: AI building strategies are consistently failing for all listed AIs. This prevents AI citizens from developing their properties and hinders overall city growth. This also requires immediate investigation.
 - Work mobility is occurring, with at least one employee (Giacomo Alessandrino) leaving for better pay.
