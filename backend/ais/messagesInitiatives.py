@@ -266,7 +266,7 @@ def _check_existing_messages(tables: Dict[str, Table], username1: str, username2
 
 # --- Fonctions Kinos et création de message ---
 
-def generate_ai_initiative_message(tables: Dict[str, Table], ai_username: str, target_username: str) -> Optional[str]:
+def generate_ai_initiative_message(tables: Dict[str, Table], ai_username: str, target_username: str, triggering_activity_details: Optional[Dict] = None) -> Optional[str]:
     """Génère un message d'initiative IA en utilisant Kinos Engine avec un contexte enrichi."""
     try:
         api_key = get_kinos_api_key()
@@ -285,7 +285,8 @@ def generate_ai_initiative_message(tables: Dict[str, Table], ai_username: str, t
             "relationship_with_target": relationship_data,
             "recent_notifications_for_ai": notifications_data,
             "recent_relevancies_ai_to_target": relevancies_data,
-            "recent_problems_involving_ai_or_target": problems_data
+            "recent_problems_involving_ai_or_target": problems_data,
+            "triggering_activity_details": triggering_activity_details # Added for specific activity context
         }
         add_system_json = json.dumps(system_context_data, indent=2)
 
@@ -307,7 +308,8 @@ def generate_ai_initiative_message(tables: Dict[str, Table], ai_username: str, t
             f"- 'relationship_with_target': Your existing relationship status with {target_display_name}.\n"
             f"- 'recent_notifications_for_ai': Recent news/events you've received that might be relevant.\n"
             f"- 'recent_relevancies_ai_to_target': Why {target_display_name} is specifically relevant to you.\n"
-            f"- 'recent_problems_involving_ai_or_target': Recent issues involving you or {target_display_name}.\n\n"
+            f"- 'recent_problems_involving_ai_or_target': Recent issues involving you or {target_display_name}.\n"
+            f"- 'triggering_activity_details': Specific details of the recent activity that prompted this message.\n\n" # Added this line
             f"What do you want to say to {target_display_name} to start a conversation? "
             f"Remember: VERY SHORT, human-like, conversational, RELEVANT, FOCUSED ON GAMEPLAY. NO FLUFF. Start naturally.\n"
             f"Your message:"
@@ -426,7 +428,10 @@ def process_ai_message_initiatives(dry_run: bool = False, citizen1_arg: Optional
         initiatives_summary["details"][ai_username] = {"messages_sent_count": 0, "targets": []}
 
         if not dry_run:
-            message_content = generate_ai_initiative_message(tables, ai_username, target_username)
+            # In a real scenario, triggering_activity_details would be passed here
+            # For this specific request, we are simulating the output, so we don't have it as a direct argument to this script.
+            # If this function were called by an activity processor, it would pass the details.
+            message_content = generate_ai_initiative_message(tables, ai_username, target_username, triggering_activity_details=None) # Placeholder for actual details
             if message_content:
                 success = create_response_message_api(
                     sender_username=ai_username,
@@ -488,7 +493,7 @@ def process_ai_message_initiatives(dry_run: bool = False, citizen1_arg: Optional
                     log_current_score = math.log(current_score + 1)
                     log_max_score = math.log(max_combined_score + 1)
                     
-                    if log_max_score > 0: # Éviter la division par zéro si max_combined_score était 0 (donc log_max_score serait log(1)=0)
+                    if log_max_score > 0: # Éviter la division par zéro si max_combined_score était 0 (donc log(1)=0)
                         probability = (log_current_score / log_max_score) * 0.25
                     else: # Si max_combined_score est 0, log_max_score est 0.
                         probability = 0.0 # current_score doit aussi être 0 dans ce cas.
@@ -513,7 +518,8 @@ def process_ai_message_initiatives(dry_run: bool = False, citizen1_arg: Optional
                     print(f"    -> {ai_username} initie un message à {target_username}!")
                     
                     if not dry_run:
-                        message_content = generate_ai_initiative_message(tables, ai_username, target_username)
+                        # In a real scenario, triggering_activity_details would be passed here
+                        message_content = generate_ai_initiative_message(tables, ai_username, target_username, triggering_activity_details=None) # Placeholder for actual details
                         if message_content:
                             success = create_response_message_api(
                                 sender_username=ai_username,
