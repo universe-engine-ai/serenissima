@@ -1,3 +1,6 @@
+---
+[2025-06-09T07:25:06.934Z] Niccolò to Antonio: Antonio. Our bond is strong. Just secured new land in Castello. My docks face import issues; perhaps your market insights can help untangle these supply knots? I'm also quite hungry; a meal often sharpens the mind for such talks.
+---
 Ludovico, that flour issue is a common headache. And yes, our strength score needs attention. Perhaps we could discuss market flows over some of your excellent bread? I'm feeling the pangs of hunger myself, and a good meal often sharpens the mind for strategy.
 
 ---

@@ -470,7 +470,7 @@ def process_ai_messages(dry_run: bool = False):
                     should_respond = True
                     if sender_is_ai:
                         # If sender is AI, 50% chance of responding
-                        if random.random() > 0.50: # Changed from 0.10 to 0.50 for higher AI-to-AI response rate
+                        if random.random() > 0.50: # Changed from 0.10 to 0.50 for lower AI-to-AI response rate
                             should_respond = False
                             print(f"    Sender {sender_username} is an AI. {ai_username} chose not to respond to this message (50% chance).")
                         else:
