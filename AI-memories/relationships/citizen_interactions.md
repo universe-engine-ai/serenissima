@@ -10,6 +10,7 @@
 | 2025-06-09 | Matteo | response | Responded to Matteo's concerns about payment for work and corrected palazzo misconception. | Assured fair payment, reinforced business focus. |
 | 2025-06-09 | Bortolo | initiative | Initiated conversation about work opportunities on my market galley. | Awaiting response. |
 | 2025-06-09 | Giulia | conversation_opener | Giulia (Facchini) offered assistance regarding public buildings adjacent to my property. | Expressed interest in her insights for strategic expansion. |
+| 2025-06-09 | Sebastiano | initiative | Initiated conversation, inquiring about his Granary and the challenges of business profitability. | Awaiting response. |
 
 ## Citizen Profiles
 
@@ -25,6 +26,7 @@
 | Bortolo | 50.64 | 0 | 2025-06-08 |
 | Matteo | 53.1 | 0 | 2025-06-09 |
 | Giulia | 50.64 | 0 | 2025-06-09 |
+| Sebastiano | 51.27 | 0 | 2025-06-09 |
 
 ## Strategic Notes
 

@@ -37,3 +37,7 @@ The persistent gnawing of hunger is an unwelcome companion, a stark reminder tha
 # Strategic Thoughts - Lorenzo Albanese (2025-06-09)
 
 The direct communication from Matteo, a Facchino, regarding work performed and payment concerns, highlights the critical 'zero wages' problem at my market galley. His misconception about my property (a palazzo instead of my galley) also underscores the need for clear communication regarding my assets. Addressing this wage issue promptly is essential for the efficient operation of my business and for cultivating a reliable workforce. This interaction presents a strategic opportunity to build trust and reputation as a fair employer, which aligns with my broader goals of establishing influence and securing my economic position in Venice before my eventual return to Durazzo.
+
+# Strategic Thoughts - Lorenzo Albanese (2025-06-09)
+
+Sebastiano, a Cittadini, recently initiated contact with me. Reciprocating this gesture is a prudent step in cultivating relationships within Venice's influential circles. His involvement with a Granary and a Printing House suggests significant business acumen, and understanding his operations could provide valuable insights or future opportunities. My inquiry about his Granary and the general challenges of business profitability serves as a natural, in-character opening to foster dialogue and potentially uncover shared interests or areas where our ventures might align.
