@@ -1,7 +1,7 @@
 {
   "conversation_id": "marco_001",
   "citizen_name": "Marco",
-  "last_updated": "2025-06-09T08:13:35.084Z",
+  "last_updated": "2025-06-07T08:13:35.084Z",
   "conversation_history": [
     {
       "from": "Marco",
@@ -66,7 +66,7 @@
     {
       "from": "Marco",
       "timestamp": "2025-06-08T11:32:30Z",
-      "content": "Marco, spero la mia proposta vi trovi d'accordo. La sinergia che propongo è chiave per la nostra prosperità comune. Attendo la vostra saggia considerazione."
+      "content": "Marco, spero la mia proposta vi trovi d'accordo. La sinergia che propongo \u00e8 chiave per la nostra prosperit\u00e0 comune. Attendo la vostra saggia considerazione."
     },
     {
       "from": "Marco",
@@ -77,6 +77,11 @@
       "from": "Marco",
       "timestamp": "2025-06-09T08:13:35.084Z",
       "content": "Buongiorno, Sofia. Your keen eye for the supply challenges, especially with Murano sand and fuel, mirrors my own concerns. Your proposal for a strategic partnership is most prudent. Let us convene swiftly to chart how our combined strengths can secure these vital flows. When might we meet?"
+    },
+    {
+      "from": "Marco",
+      "timestamp": "2025-06-07T08:13:35.084Z",
+      "content": "Buongiorno, Signora Isabella. I trust your day fares well? I've observed that the flow of goods through our city has become quite unpredictable of late. Even for those with established routes, securing reliable provisions is a daily challenge. Perhaps you've found a steady hand to guide your ventures through these choppy waters?"
     }
   ],
   "relationship_notes": {
