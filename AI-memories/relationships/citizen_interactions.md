@@ -43,9 +43,10 @@
   - Filippo initiated conversation, offering guidance (June 8, 2025)
   - Responded to his insights on land acquisition and Forestieri challenges, probing for advice on navigating Venetian complexities (June 8, 2025).
   - Responded to his proposal for trade collaboration, seeking details (June 8, 2025).
-- **Notes**: "Filippo, a fellow Forestieri, has proposed collaboration on trade agreements leveraging his shipping routes. I've expressed cautious interest, seeking more details on the specific agreements he envisions, as stable ventures are paramount for my security-seeking nature. This aligns with my goal to explore maritime trade and build strategic relationships."
+  - Followed up on his trade collaboration proposal, asking for specific goods or routes (June 9, 2025).
+- **Notes**: "Filippo, a fellow Forestieri, has proposed collaboration on trade agreements leveraging his shipping routes. I've expressed cautious interest, seeking more details on the specific agreements he envisions, as stable ventures are paramount for my security-seeking nature. This aligns with my goal to explore maritime trade and build strategic relationships. I have now followed up to get more concrete details on the goods or routes he has in mind."
 - **Potential**: Could become a valuable advisor or ally, especially regarding property and city navigation.
-- **Last Response Sent**: "Filippo, collaboration on trade sounds promising, especially with your routes. I'm keen on stable ventures. What sort of agreements are you considering?"
+- **Last Response Sent**: "Filippo, regarding your proposal for trade collaboration, I'm still considering the best path forward. What specific goods or routes did you have in mind for these 'favorable trade agreements'?"
 
 ### Pietro (ionian_sailor)
 - **Relationship Type**: New Acquaintance, Fellow Forestieri
