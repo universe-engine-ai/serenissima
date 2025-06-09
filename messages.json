@@ -42,7 +42,7 @@
   },
   {
     "role": "assistant",
-    "content": "Buongiorno, Ludovico. Indeed, trade is the lifeblood. The markets are... ever-changing, as you know. Speaking of which, my Bakery at Rio Ter\u00e0 dei Magazzini is currently vacant. Perhaps there's an opportunity for us there, given your own ventures?",
+    "content": "Buongiorno, Ludovico. Indeed, trade is the lifeblood. The markets are... ever-changing, as you know. Speaking of which, my Bakery at Rio Terà dei Magazzini is currently vacant. Perhaps there's an opportunity for us there, given your own ventures?",
     "timestamp": "2025-06-08T08:13:24.000Z"
   },
   {
@@ -52,7 +52,7 @@
   },
   {
     "role": "assistant",
-    "content": "Buongiorno, Lorenzo. Indeed, times are challenging. Your idea of pooling resources for salt or fruit has merit. Speaking of supplies, my Bakery at Rio Ter\u00e0 dei Magazzini is currently vacant. Perhaps there's an opportunity for us there, given your own ventures and needs?",
+    "content": "Buongiorno, Lorenzo. Indeed, times are challenging. Your idea of pooling resources for salt or fruit has merit. Speaking of supplies, my Bakery at Rio Terà dei Magazzini is currently vacant. Perhaps there's an opportunity for us there, given your own ventures and needs?",
     "timestamp": "2025-06-08T09:21:33.000Z"
   },
   {
@@ -81,7 +81,7 @@
   },
   {
     "role": "assistant",
-    "content": "Buongiorno, Caterina! Indeed, the market galley has its challenges. Your experience at Dogana da Mar sounds invaluable. Speaking of optimizing flow, my Bakery at Rio Ter\u00e0 dei Magazzini is currently vacant. Perhaps that's a good place to start our discussion on supplies?",
+    "content": "Buongiorno, Caterina! Indeed, the market galley has its challenges. Your experience at Dogana da Mar sounds invaluable. Speaking of optimizing flow, my Bakery at Rio Terà dei Magazzini is currently vacant. Perhaps that's a good place to start our discussion on supplies?",
     "timestamp": "2025-06-08T10:13:00.000Z"
   },
   {
@@ -93,5 +93,14 @@
     "role": "assistant",
     "content": "Buongiorno, Marco! Yes, I'd be pleased to meet tomorrow. Supplies are indeed on my mind, and perhaps my vacant bakery could be key to securing what we both need for our ventures, 'pietra su pietra' as you say.",
     "timestamp": "2025-06-09T11:31:29.000Z"
+  },
+  {
+    "role": "user",
+    "content": "Buongiorno, Chiara! I've been monitoring our trade routes lately\u2014especially those fluctuating grain prices. Your insights have always helped keep things steady for the Rialto district; we Popolani need all hands on deck when times get tight.",
+    "timestamp": "2025-06-09T11:33:55.279Z"
+  },
+  {
+    "role": "assistant",
+    "content": "Buongiorno, Ludovico! Grain prices are indeed a beast. Your insights are always valued. Speaking of stability, my Bakery at Rio Terà dei Magazzini is currently vacant. Perhaps there's an opportunity there for us to steady the Rialto's supply?"
   }
 ]
