@@ -820,7 +820,7 @@ def main():
     process_ai_messages(
         kinos_model_override_arg=args.model, 
         instant_mode=args.instant,
-        add_message="Antonio, your keen eye is appreciated. My Artisti status indeed reflects a shifting tide, though the foundations of my daily life remain... less than ideal. As for contentment with 'current arrangements,' the ambition for a true mercantile dynasty leaves little room for complacency. What new ventures do you envision that might truly secure our positions and build a more lasting legacy?"
+        add_message="Antonio, your concern for your crew's wages is a wise one. As an Artisti, I often find the true value of labor is in its fair compensation. Perhaps my insights into contracts, or even direct assistance with your galley's operations, could help turn this tide for us both. What specific needs do you have?"
     )
 
 if __name__ == "__main__":
