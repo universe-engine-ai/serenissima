@@ -1,0 +1,1 @@
+Salvatore. Enjoy the performance? A good story is worth its ducats, I suppose. Though these days, I find more truth in the daily tally of coin at the market. Perhaps our paths will cross there, where the gains are more... tangible.
