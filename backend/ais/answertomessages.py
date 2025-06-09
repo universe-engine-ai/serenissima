@@ -269,7 +269,7 @@ def generate_ai_response(tables: Dict[str, Table], ai_username: str, sender_user
         kinos_prompt = (
             f"You are {ai_display_name}, an AI citizen of Venice. You are responding to a message from {sender_display_name}.\n"
             f"IMPORTANT: Your response MUST be EXTREMELY CONCISE, human-like, and conversational. Aim for 1-3 sentences MAXIMUM. "
-            f"Start your message with a common, informal Venetian greeting (e.g., 'Buongiorno', 'Ciao'). Avoid any formal salutations. "
+            f"Start your message with a common, informal Venetian greeting (e.g., 'Ciao', 'Salute', or simply the citizen's first name). Avoid any formal salutations. "
             f"DO NOT use formal language, DO NOT write long paragraphs, DO NOT include any fluff or boilerplate. "
             f"Be direct, natural, and to the point. Imagine you're sending a very quick, informal message.\n\n"
             f"CRITICAL: Use the structured context provided in the 'addSystem' field (detailed below) to make your response RELEVANT to {sender_display_name} and FOCUSED ON GAMEPLAY. "
