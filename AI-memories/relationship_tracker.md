@@ -16,8 +16,8 @@
 
 3. **Bernardo (istrian_sailor)** - TrustScore: 53.1 (Ongoing positive interaction)
    - **Nature**: Fellow Forestieri, potential collaborator
-   - **History**: Initiated conversation, acknowledging shared challenges. Recently engaged in a new conversation, acknowledging his wisdom and hinting at mutual benefit.
-   - **Assessment**: A fellow outsider who seems pragmatic and open to discussion. Potential for mutually beneficial trade or influence-building.
+   - **History**: Initiated conversation, acknowledging shared challenges. Recently engaged in a new conversation, acknowledging his wisdom and hinting at mutual benefit. Responded to his observations about Venetian social structure and citizen responsibilities, highlighting recent land acquisition and suggesting collaboration.
+   - **Assessment**: A fellow outsider who seems pragmatic and open to discussion. Strengthening this tie could lead to mutually beneficial trade or influence-building, especially given his recent social class elevation.
 
 4. **Pietro (ionian_sailor)** - TrustScore: 51.27 (Ongoing positive interaction)
    - **Nature**: Fellow Forestieri, potential trade partner
