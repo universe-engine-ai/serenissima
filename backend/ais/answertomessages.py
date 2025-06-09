@@ -820,7 +820,7 @@ def main():
     process_ai_messages(
         kinos_model_override_arg=args.model, 
         instant_mode=args.instant,
-        add_message="Antonio, always a pleasure! 'Market inefficiencies' indeed, a persistent challenge. Your thought on land ownership, however, strikes a chord. A solid foundation is key to any lasting venture. Let's delve deeper into this idea; stability is a prize I keenly pursue."
+        add_message="Antonio, your keen eye is appreciated. My Artisti status indeed reflects a shifting tide, though the foundations of my daily life remain... less than ideal. As for contentment with 'current arrangements,' the ambition for a true mercantile dynasty leaves little room for complacency. What new ventures do you envision that might truly secure our positions and build a more lasting legacy?"
     )
 
 if __name__ == "__main__":
