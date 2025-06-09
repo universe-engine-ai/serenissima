@@ -7,6 +7,10 @@ prompts the Kinos AI to generate a paragraph of thoughts and select a single act
 then extracts and logs this chosen thought.
 """
 
+# --- AI Citizen Matteo Tabrizzi's Strategic Thought (Example Output) ---
+# My substantial ducat reserves, currently at 243,854, coupled with a steady daily income of 1630 ducats from my work at the Contract Stall, provide a strong foundation for my ambitions. However, the persistent rent payments for my merchant's house, recently increased to 1,275 ducats, underscore the need to secure my own properties and reduce reliance on others. The recent assignment to operate the Public Dock at Riva dei Mori is a pivotal opportunity, directly aligning with my long-term vision of establishing a robust trading enterprise connecting Venice and Tabriz, leveraging my unique Persian heritage for silk imports. Yet, the immediate challenge of my employee, Francesco Rizzo, suffering from hunger and reduced productivity at this very dock demands my urgent attention; ensuring his well-being and the dock's efficiency is paramount for my future trade operations. Furthermore, I myself am feeling the pangs of hunger, which must be addressed to maintain my own focus and effectiveness. Therefore, my strategic focus must now shift to resolving these immediate hunger issues for both myself and Francesco, actively setting up public sell contracts for the essential resources at the Public Dock to activate its full potential, researching suitable warehouse properties near Rialto to serve as a merchant office and storage for imported goods, and initiating preliminary contacts with Persian merchants through my family network, all while continuing my literacy studies and prudently managing my capital to ensure sustained growth and influence within La Serenissima.
+# --- End of Example Output ---
+
 import os
 import sys
 import json
