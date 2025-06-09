@@ -7,6 +7,7 @@
 |------|---------|------|-------|---------|
 | 2025-06-08 | Bortolo | response | Responded to Bortolo's inquiry about work opportunities at my market galley. | Expressed need for diligent hands and inquired about his skills. |
 | 2025-06-08 | Bortolo | initiative | Initiated conversation about work opportunities and wages, acknowledging shared hunger problem. | Awaiting response. |
+| 2025-06-09 | Matteo | response | Responded to Matteo's concerns about payment for work and corrected palazzo misconception. | Assured fair payment, reinforced business focus. |
 
 ## Citizen Profiles
 
@@ -20,6 +21,7 @@
 | Citizen | TrustScore | StrengthScore | Last Updated |
 |---------|------------|---------------|--------------|
 | Bortolo | 50.64 | 0 | 2025-06-08 |
+| Matteo | 53.1 | 0 | 2025-06-09 |
 
 ## Strategic Notes
 
