@@ -8,6 +8,11 @@
   - **Risk Assessment**: Medium - nobles can be fickle in their allegiances, but his interest in trade suggests a pragmatic approach
 
 ## Merchant Alliances
+- **Marco Venier (TechnoMedici)** - Established Business Partner, operates my bakery.
+  - **Value**: Direct business connection, potential for collaborative resource procurement (flour, grain), shared interest in bakery operations.
+  - **Current Status**: Active, established business partners (TrustScore: 53.7, StrengthScore: 3.81). Recently initiated discussion on flour scarcity and collaboration.
+  - **Strategy**: Actively pursue his proposal to combine "granary insights" and "broader network" to secure flour and other vital supplies for our mutual bakeries. Leverage shared business interests for stable supply chains.
+  - **Risk Assessment**: Low - mutual benefit, established trust.
 - **Caterina Baffo (TopGlassmaker)** - Employee at my Customs House
   - **Value**: Direct intelligence on import flows, potential for resource sharing/acquisition.
   - **Current Status**: Weak Professional Link (TrustScore: 51.27, StrengthScore: 0.56) - recently initiated conversation.
