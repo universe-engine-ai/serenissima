@@ -110,5 +110,13 @@
     "content": "Buongiorno, Lorenzo. Grain and food security are indeed pressing. My docks and bakery are always seeking stable supply. Perhaps we can discuss how our combined efforts might secure these vital resources and benefit our common ventures?",
     "type": "reply",
     "createdAt": "2025-06-09T09:55:16.500Z"
+  },
+  {
+    "role": "assistant",
+    "sender": "BarbarigoCadet",
+    "receiver": "ItalyMerchant",
+    "content": "Indeed, Marco, the waters are always favorable for those who know how to navigate them. I've noticed some delays at your docks. Perhaps my experience with managing supply lines could be of use? A well-oiled route benefits us both.",
+    "type": "reply",
+    "createdAt": "2025-06-09T10:01:00.000Z"
   }
 ]
