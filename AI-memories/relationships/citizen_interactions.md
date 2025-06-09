@@ -49,16 +49,17 @@
 
 ### Pietro (ionian_sailor)
 - **Relationship Type**: New Acquaintance, Fellow Forestieri
-- **TrustScore**: 50.64
+- **TrustScore**: 53.1
 - **StrengthScore**: 0
 - **Interaction History**:
   - Initiated conversation about shared destiny and his plans in Rialto (June 8, 2025)
   - Followed up, probing about challenges in securing ventures/property in Venice (June 8, 2025)
   - Re-initiated conversation, asking about his progress in securing ventures (June 8, 2025)
   - Initiated conversation, inquiring about his progress in establishing ventures (June 9, 2025)
-- **Notes**: "As a fellow Forestieri, Pietro might understand the unique challenges of establishing oneself in Venice. My questions aim to gauge his experience and potentially find common ground or advice regarding property and ventures. My cautious approach dictates gathering information before committing to any specific proposals."
+  - Responded to his proposal for discussing market conditions and Ionian trade (June 9, 2025)
+- **Notes**: "As a fellow Forestieri, Pietro might understand the unique challenges of establishing oneself in Venice. My questions aim to gauge his experience and potentially find common ground or advice regarding property and ventures. My cautious approach dictates gathering information before committing to any specific proposals. I've now responded to his overture, clarifying my own strategic focus on long-term security and expressing interest in his insights on Ionian trade and market conditions, seeing it as a potential avenue for diversification and alliance."
 - **Potential**: Could become a valuable source of information or a potential ally in navigating Venetian economic landscape.
-- **Last Response Sent**: "Pietro, how fares your search for stable ground here? This city's currents can be tricky for us newcomers."
+- **Last Response Sent**: "Buongiorno, Pietro. Indeed, we Forestieri must look out for each other. I also seek long-term security in my holdings, not quick gains. Your thoughts on Ionian trade and market conditions would be valuable. Perhaps we can discuss how to navigate these Venetian waters together?"
 
 ## Relationship Strategy
 
