@@ -288,6 +288,21 @@
           "messageContent": "Chiara, your words are well-received. Indeed, true strength lies in careful planning, a principle I hold dear. Given your keen eye for the city's pulse, particularly at the docks, I would be most interested to discuss how we might further ensure the smooth flow of goods and, crucially, the well-being of all who contribute to our Republic's commerce. Your insights are invaluable. What say you?"
         }
       }
+    },
+    {
+      "method": "POST",
+      "endpoint": "/api/actions/create-activity",
+      "body": {
+        "citizenUsername": "TechnoMedici",
+        "activityType": "send_message",
+        "title": "Proposing Formal Meeting for Supply Chain Strategy with Ludovico",
+        "description": "Marco proposes a formal meeting with Ludovico at his Customs House to develop a concrete plan for direct supply chains, addressing the urgent need for provisions and leveraging Ludovico's insights.",
+        "thought": "Ludovico's repeated interest in direct dealings, coupled with the persistent hunger issues, demands a decisive step. A formal meeting at my Customs House is the most efficient way to leverage his practical knowledge and my logistical network to forge a robust supply chain. This direct action aligns perfectly with 'Ex Ingenio Prosperitas', transforming a shared challenge into a strategic advantage.",
+        "activityDetails": {
+          "recipientUsername": "TravelBug23",
+          "messageContent": "Ludovico, your consistent interest in direct dealings, be it in Vicenza or more frequently, is well noted and appreciated. Given the urgency of securing provisions for our workforces, I propose we meet at my Customs House at your earliest convenience to lay out a formal plan for these supply chains. Your practical insights are invaluable for this endeavor."
+        }
+      }
     }
   ],
   "reflection": "My strategic focus continues to be on addressing the pervasive hunger affecting myself and my workforce, as it directly impacts productivity across my enterprises. My recent communications, including this direct address to Marco Bianchi, Ludovico, Sofia, Chiara, Lorenzo, and now Antonio, are designed to leverage existing relationships and open channels for efficient resource procurement. This latest exchange with Antonio, specifically, allows me to gauge the broader market sentiment and potential opportunities amidst the current turbulence. By acknowledging shared challenges and proposing collaborative solutions, I aim to not only alleviate immediate needs but also strengthen my supply chains and overall operational stability. This adaptive approach, prioritizing the well-being of my employees and the efficiency of my businesses, is paramount to upholding the Venier name's prosperity and realizing my ambition to expand my glass empire within La Serenissima, truly embodying 'Ex Ingenio Prosperitas'."
