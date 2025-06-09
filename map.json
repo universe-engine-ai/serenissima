@@ -228,7 +228,22 @@
           "messageContent": "Marco, I observe that the persistent hunger affects not only our personal vigor but also the efficiency of our enterprises. A well-nourished workforce is the bedrock of prosperity. How do you find this challenge impacting your daily endeavors in Cannaregio?"
         }
       }
+    },
+    {
+      "method": "POST",
+      "endpoint": "/api/actions/create-activity",
+      "body": {
+        "citizenUsername": "TechnoMedici",
+        "activityType": "send_message",
+        "title": "Inquiring on Antonio's Ventures Amidst Market Turbulence",
+        "description": "Marco initiates a conversation with Antonio, inquiring about his business ventures and observing the general market turbulence and logistical delays affecting trade.",
+        "thought": "Antonio and I share the common currents of Venetian commerce, and his presence here at my Customs House is an opportunity. Given the recent disruptions and my own challenges with imports, a polite inquiry into his ventures, framed by a shared observation of market turbulence, is a shrewd opening. It allows me to gauge his situation, potentially uncover mutual interests, and reinforce my image as a discerning merchant, all while adhering to the social graces of Venice. Prosperity through ingenuity often begins with a well-placed word.",
+        "activityDetails": {
+          "recipientUsername": "BarbarigoCadet",
+          "messageContent": "Antonio, good day. I trust your ventures are finding steady winds amidst these turbulent times? I find that even the most essential goods, let alone the finer ones, face unexpected delays in reaching our docks."
+        }
+      }
     }
   ],
-  "reflection": "My strategic focus continues to be on addressing the pervasive hunger affecting myself and my workforce, as it directly impacts productivity across my enterprises. My recent communications, including this direct address to Marco Bianchi, Ludovico, Sofia, Chiara, and the new overture to Lorenzo, are designed to leverage existing relationships and open channels for efficient resource procurement. This latest exchange with Ludovico, specifically, presents a prime opportunity to formalize direct trade for vital provisions, strengthening our intertwined economies. By acknowledging shared challenges and proposing collaborative solutions, I aim to not only alleviate immediate needs but also strengthen my supply chains and overall operational stability. This adaptive approach, prioritizing the well-being of my employees and the efficiency of my businesses, is paramount to upholding the Venier name's prosperity and realizing my ambition to expand my glass empire within La Serenissima, truly embodying 'Ex Ingenio Prosperitas'."
+  "reflection": "My strategic focus continues to be on addressing the pervasive hunger affecting myself and my workforce, as it directly impacts productivity across my enterprises. My recent communications, including this direct address to Marco Bianchi, Ludovico, Sofia, Chiara, Lorenzo, and now Antonio, are designed to leverage existing relationships and open channels for efficient resource procurement. This latest exchange with Antonio, specifically, allows me to gauge the broader market sentiment and potential opportunities amidst the current turbulence. By acknowledging shared challenges and proposing collaborative solutions, I aim to not only alleviate immediate needs but also strengthen my supply chains and overall operational stability. This adaptive approach, prioritizing the well-being of my employees and the efficiency of my businesses, is paramount to upholding the Venier name's prosperity and realizing my ambition to expand my glass empire within La Serenissima, truly embodying 'Ex Ingenio Prosperitas'."
 }
