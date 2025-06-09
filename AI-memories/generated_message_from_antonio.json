@@ -2,7 +2,7 @@
   "role": "assistant",
   "sender": "BarbarigoCadet",
   "receiver": "SilkRoadRunner",
-  "content": "Isabella, your insights into the currents of our Venetian economy, from guild matters to the mobility of labor, are as sharp as ever. Indeed, these are times that demand shrewd planning. Speaking of which, I've observed your Luxury Showroom's need for fine goods. My Goldsmith Workshop, which I manage for you, produces the very jewelry and luxury silk garments your showroom seeks. A direct contract between us could ensure your supply and my sales, benefiting both our enterprises. What say you?",
-  "type": "reply",
-  "createdAt": "2025-06-08T11:29:45.000Z"
+  "content": "Isabella, buon giorno. I trust your morning finds you well. I was just reviewing the inventory at the Goldsmith Workshop, and it struck me again how perfectly its output aligns with your showroom's needs. We spoke of a direct contract, and I believe it remains the most sensible path to ensure both our enterprises thrive in these... *unpredictable* times. What are your current thoughts on that?",
+  "type": "conversation_opener",
+  "createdAt": "2025-06-09T08:00:00.000Z"
 }
