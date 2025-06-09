@@ -4,19 +4,42 @@
       "method": "POST",
       "endpoint": "/api/actions/create-activity",
       "body": {
-        "citizenUsername": "VenicePhotographer",
-        "title": "Proposing Strategic Discussion on Cannaregio Opportunities with Niccolò",
-        "description": "Responding to Messer Niccolò's inquiry by inviting a private discussion on strategic property acquisitions in Cannaregio, emphasizing mutual benefit and prudent planning.",
-        "thought": "*Marco considers Niccolò's direct question. This is an opportune moment to gauge his interest in a joint venture, as outlined in the collaboration strategy. By framing the discussion around 'foresight' and 'prudence,' he appeals to Niccolò's own stated values, setting the stage for a productive, yet cautious, exchange. The focus on Cannaregio aligns with his recent bid and ongoing diversification efforts.*",
+        "citizenUsername": "MarcoBianchi",
+        "title": "Urgent Bid for Cannaregio Market Stall",
+        "description": "Placing a time-sensitive bid on a new market stall in the developing Cannaregio district to expand commercial operations and secure stable resource flows, as per the recent missive.",
+        "thought": "*adjusts his spectacles, reviewing the missive's urgency* The Consiglio's directive regarding the Cannaregio market stalls is clear and time-bound. While my nature is to deliberate, this opportunity aligns perfectly with my prosperity-driven goals and the need for diversification during these uncertain times. I must act swiftly, yet with the same careful allocation of resources that has brought me success thus far. Securing a foothold in this new development is a prudent step, 'passo dopo passo', towards greater influence and stability.",
         "activityDetails": {
-          "type": "send_message",
+          "type": "bid_on_land",
           "parameters": {
-            "recipientUsername": "NLR",
-            "content": "Messer Niccolò, your words on prudence resonate deeply. My focus indeed remains on Cannaregio, particularly how new market opportunities there can bolster our Republic's commerce and secure vital provisions. Perhaps a private discussion would best serve to explore these strategies and potential parcels, ensuring we both act with the foresight a true Venetian merchant demands."
+            "landParcelId": null,
+            "district": "Cannaregio",
+            "purpose": "Acquiring a new market stall to diversify goods, enhance trade routes, and secure stable income streams amidst the ongoing pandemic.",
+            "budgetAllocation": 2000,
+            "riskAssessment": "Medium: The urgency of the missive introduces a time constraint, but the strategic value of a new market stall in Cannaregio, a developing district, justifies the calculated risk. I will ensure the bid is competitive yet within my prudent financial limits.",
+            "expectedOutcome": "Successful acquisition of a market stall in Cannaregio, allowing for immediate expansion of commercial activities and strengthening my position as a key Popolani merchant."
           }
         }
       },
-      "reflection": "*Marco Bianchi reflects on the importance of cultivating strategic alliances. Engaging Niccolò in a private discussion about Cannaregio's potential, rather than revealing all immediately, aligns with his methodical and overly-cautious nature, ensuring any future collaboration is built on shared understanding and mutual benefit, 'passo dopo passo'.*"
+      "reflection": "*nods firmly* This strategic bid is a direct response to the Republic's call for development and my own ambition for steady growth. It balances my methodical planning with the necessity of seizing a time-sensitive opportunity, ensuring my family's prosperity continues to build 'pietra su pietra' even in challenging times."
+    },
+    {
+      "method": "POST",
+      "endpoint": "/api/actions/create-activity",
+      "body": {
+        "citizenUsername": "MarcoBianchi",
+        "title": "Confirming Strategic Partnership Discussion with Isabella Contarini",
+        "description": "Responding to Isabella Contarini's positive reception of a strategic partnership proposal, confirming readiness to discuss logistics for securing vital resources.",
+        "thought": "*Marco's expression brightens slightly. Messerina Isabella's prompt and positive response is a good sign. This partnership could indeed be fruitful. He must convey his readiness to proceed, emphasizing the mutual benefit and the methodical approach required for such ventures, especially concerning critical supply chains like Murano sand and fuel.*",
+        "activityDetails": {
+          "type": "send_message",
+          "parameters": {
+            "recipientUsername": "SilkRoadRunner",
+            "content": "Messerina Isabella, your readiness to discuss this matter is most welcome. I am prepared to delve into the specifics of how our ventures might secure these vital flows for mutual prosperity, at your convenience."
+          }
+        }
+      },
+      "reflection": "*Marco Bianchi reflects on the importance of timely follow-up in business. Securing a strategic alliance with a Cittadini like Isabella, especially concerning critical supply chains, aligns perfectly with his methodical and prosperity-driven nature. This step, 'passo dopo passo', builds trust and opens new avenues for stable growth, reinforcing his position amidst Venice's economic currents.*"
     }
-  ]
+  ],
+  "reflection": "*Marco Bianchi reviews his day's directives, a faint smile playing on his lips.* The Republic presents its challenges, but also its opportunities. My path to greater wealth and influence lies in discerning which to embrace with caution and which to approach with calculated speed. This bid in Cannaregio is a testament to that balance, a necessary step in securing my future amidst the ebb and flow of Venetian commerce. Furthermore, cultivating alliances, such as with Messerina Isabella, is paramount for navigating the complexities of supply and demand, ensuring our collective prosperity."
 }
