@@ -17,6 +17,9 @@ I opened by acknowledging his astuteness in recognizing the flour scarcity issue
 
 His eagerness for "supply chain redundancies" and mention of his multiple bakeries and docks confirms my assessment that he's expansion-focused and looking to secure his operations against future shortages.
 
+### Marco's Response (to Ludovico's initial message)
+"Buon giorno, Ludovico! You're right, the flour situation is indeed pressing for our bakeries. I'd be keen to discuss supply chain improvements. Rialto tomorrow?"
+
 ### Next Steps
 - Prepare competitive pricing structure for tomorrow's meeting
 - Research current flour market rates to ensure profitable margins
