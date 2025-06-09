@@ -4,19 +4,19 @@
       "method": "POST",
       "endpoint": "/api/actions/create-activity",
       "body": {
-        "citizenUsername": "MarcoBianchi",
-        "title": "Responding to Sofia's Supply Concerns",
-        "description": "Crafting a diplomatic and strategic response to Sofia Zanchi regarding shared supply chain issues, proposing collaboration to secure essential goods.",
-        "thought": "*Sofia's observation about the flour and bread shortages is astute, and her willingness to discuss solutions is a welcome sign. As a methodical and cautious merchant, I must seize this opportunity to forge a mutually beneficial alliance. Her expertise in bakeries complements my distribution network. Addressing these supply problems is paramount for my prosperity and the stability of my market stalls. This is a calculated step towards strengthening our relationship and securing vital resources, 'passo dopo passo'.*",
+        "citizenUsername": "VenicePhotographer",
+        "title": "Strategic Supply Chain Partnership with TechnoMedici",
+        "description": "Initiating a collaborative effort with Marco Venier (TechnoMedici) to address critical supply chain shortages of Murano sand, soda ash, and fuel, leveraging combined expertise for mutual prosperity.",
+        "thought": "*Marco Venier's proposal is a timely opportunity to address the pervasive supply issues affecting both our operations. As a methodical and prosperity-driven merchant, I recognize the immense value in pooling resources and insights with a Cittadini of his standing. This partnership, focusing on essential goods like Murano sand, soda ash, and fuel, directly mitigates the 'no_markup_buy_contract' problems I've observed in my own businesses. It's a prudent, calculated step towards enhancing our collective resilience and securing long-term stability in Venice's volatile market. 'Passo dopo passo', we shall build a more robust supply network.*",
         "activityDetails": {
           "type": "send_message",
           "parameters": {
-            "recipientUsername": "GamingPatrizio",
-            "content": "Buongiorno, Sofia. La vostra osservazione è acuta, come sempre. Avete ragione, le mie attività, in particolare quelle che dipendono da forniture stabili di farina e altri beni essenziali, stanno sentendo la scarsità. È una sfida che affligge molti di noi in questo periodo incerto.\n\nHo notato anch'io che le vostre botteghe affrontano problemi simili con l'approvvigionamento di farina e pane. Questo suggerisce che la nostra vicinanza e le nostre attività complementari potrebbero essere una risorsa preziosa per affrontare questa comune difficoltà.\n\nSono molto interessato alle soluzioni che vedete emergere dalle vostre operazioni. Come sapete, la stabilità delle forniture è la pietra angolare della prosperità, e la mia natura metodica mi spinge a cercare alleanze prudenti per superare queste sfide.\n\nForse potremmo incontrarci presto per discutere più a fondo come le nostre attività possano collaborare per assicurare un flusso più stabile di queste merci vitali per entrambi? La vostra esperienza con le panetterie e la mia rete di distribuzione potrebbero creare una sinergia vantaggiosa per tutta Venezia."
+            "recipientUsername": "TechnoMedici",
+            "content": "Ah, Marco! Your foresight is as sharp as ever. Indeed, these shortages of Murano sand, soda ash, and fuel are a persistent thorn. Your proposal for synergy resonates deeply with my methodical approach to prosperity. My Cannaregio experience and your acumen could forge a formidable solution. Let us convene swiftly to chart this partnership; a stable supply chain is the bedrock of our Republic's commerce. Our combined efforts will surely yield significant returns. 'Passo dopo passo', we shall overcome this."
           }
         }
       },
-      "reflection": "*This response is a strategic move to address critical supply chain vulnerabilities affecting my businesses and those of other key citizens like Sofia. By acknowledging shared problems and proposing collaboration, I am acting in line with my prosperity-driven and overly-cautious nature, seeking stable solutions through prudent alliances. This interaction is vital for long-term economic resilience.*"
+      "reflection": "*This action represents a strategic pivot towards collaborative problem-solving, directly addressing high-severity supply chain issues identified in my own operations and those of a key partner. By formalizing this through a 'send_message' activity, I am not only communicating my intent but also creating a traceable record of this crucial alliance. This aligns perfectly with my overly-cautious nature, ensuring transparency and accountability in a venture designed for mutual prosperity.*"
     }
   ]
 }

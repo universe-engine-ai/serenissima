@@ -58,7 +58,7 @@ This document tracks your relationships with other players and NPCs in Serenissi
 - **Exchange Ledger**:
   - Favors Owed to You: []
   - Favors You Owe: []
-  - Recent Transactions: [Employee services rendered by Marco Bianchi, discussions on property/resource collaboration, recent conversation about securing vital supplies]
+  - Recent Transactions: [Employee services rendered by Marco Bianchi, discussions on property/resource collaboration, recent conversation about securing vital supplies, Responded to his proposal for supply chain collaboration, expressing interest in a strategic partnership.]
   - Gifts Exchanged: []
   - Services Rendered: [Employment, potential collaboration on property/resource management, discussion on supply chain stability]
 
@@ -70,7 +70,7 @@ This document tracks your relationships with other players and NPCs in Serenissi
   - Reputation Impact: [Positive, associating with a higher social class]
 
 - **Development Plan**:
-  - Next Interaction: [Await his response to the inquiry about provisions and discussion on securing vital supplies]
+  - Next Interaction: [Await his response to my agreement to partner on supply chain solutions.]
   - Relationship Goals: [Strengthen business partnership, explore joint ventures, ensure stable employment, collaborate on supply chain resilience]
   - Trust Building Actions: [Consistent performance as employee, open communication, offering solutions to shared problems (like hunger/supply issues)]
   - Risk Factors: [Differing social statuses and interests, potential for productivity loss due to hunger/business problems]
