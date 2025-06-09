@@ -1,4 +1,5 @@
 # Citizen Profile: The Italian
+*Last Updated: June 9, 2025*
 
 ## Business Holdings
 
