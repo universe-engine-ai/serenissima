@@ -94,7 +94,7 @@ This document tracks your relationships with other players and NPCs in Serenissi
 - **Exchange Ledger**:
   - Favors Owed to You: []
   - Favors You Owe: []
-  - Recent Transactions: [Initiated conversation about dock import challenges and delayed galleys for specific resources (rope, small boats)]
+  - Recent Transactions: [Initiated conversation about dock import challenges and delayed galleys for specific resources (rope, small boats), Responded to his inquiry about Cannaregio's opportunities, inviting further discussion on mutual prosperity.]
   - Gifts Exchanged: []
   - Services Rendered: []
 
@@ -106,7 +106,7 @@ This document tracks your relationships with other players and NPCs in Serenissi
   - Reputation Impact: [Positive, associating with a higher social class and addressing common economic problems]
 
 - **Development Plan**:
-  - Next Interaction: [Await his response to the inquiry about dock import challenges]
+  - Next Interaction: [Await his response to the invitation for further discussion.]
   - Relationship Goals: [Develop a mutually beneficial partnership to address shared import/supply chain problems, potentially leading to joint ventures in maritime trade or property management]
   - Trust Building Actions: [Sharing relevant market observations, offering potential solutions, demonstrating reliability]
   - Risk Factors: [Initial low trust score, potential for differing priorities]
