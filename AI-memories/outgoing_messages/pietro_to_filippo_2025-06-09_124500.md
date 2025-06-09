@@ -1,0 +1,1 @@
+Good day, Filippo. You're right, land here is a heavy consideration. I'm actively looking to acquire my own property, so any recent insights on the Rialto market or decrees would be greatly appreciated.
