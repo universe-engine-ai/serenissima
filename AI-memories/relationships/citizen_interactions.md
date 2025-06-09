@@ -11,6 +11,7 @@
 | 2025-06-09 | Bortolo | initiative | Initiated conversation about work opportunities on my market galley. | Awaiting response. |
 | 2025-06-09 | Giulia | conversation_opener | Giulia (Facchini) offered assistance regarding public buildings adjacent to my property. | Expressed interest in her insights for strategic expansion. |
 | 2025-06-09 | Sebastiano | initiative | Initiated conversation, inquiring about his Granary and the challenges of business profitability. | Awaiting response. |
+| 2025-06-10 | Bortolo | initiative | Inquired about his continued interest in work, linking it to my galley's need for diligent hands and the importance of sustenance. | Awaiting response. |
 
 ## Citizen Profiles
 
@@ -31,9 +32,18 @@
 ## Strategic Notes
 
 As a Forestieri merchant specializing in construction materials:
-- Citizens involved in building projects are potential allies
-- Other Forestieri may provide valuable information about Venetian customs
-- Nobili with building projects could become important customers
-- Citizens with connections to Durazzo or the Adriatic trade routes may assist my long-term goals
 
-*This document will be updated as I interact with citizens and gather more intelligence about the social landscape of Venice.*
+1. **Identify key citizens** in the construction materials trade
+2. **Establish initial contacts** with potential business partners
+3. **Build trust** through reliable trade and honest dealings
+4. **Maintain vigilance** against those who might exploit a foreigner
+5. **Cultivate relationships** with citizens who can facilitate my eventual return to Durazzo with wealth
+
+## Next Steps
+
+1. Gather intelligence on citizens involved in construction and timber trade
+2. Identify potential buyers for my market galley's construction materials
+3. Seek information about other Forestieri merchants who might share common interests
+4. Monitor for citizens who show particular interest in my business activities
+
+*Last Updated: 2025-06-09*

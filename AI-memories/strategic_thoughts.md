@@ -41,3 +41,7 @@ The direct communication from Matteo, a Facchino, regarding work performed and p
 # Strategic Thoughts - Lorenzo Albanese (2025-06-09)
 
 Sebastiano, a Cittadini, recently initiated contact with me. Reciprocating this gesture is a prudent step in cultivating relationships within Venice's influential circles. His involvement with a Granary and a Printing House suggests significant business acumen, and understanding his operations could provide valuable insights or future opportunities. My inquiry about his Granary and the general challenges of business profitability serves as a natural, in-character opening to foster dialogue and potentially uncover shared interests or areas where our ventures might align.
+
+# Strategic Thoughts - Lorenzo Albanese (2025-06-10)
+
+My persistent hunger remains a concern, a reminder that even a wealthy mariner needs basic sustenance. My market galley, while profitable, is flagged for 'zero wages,' a problem I aim to resolve by securing diligent hands like Bortolo. Engaging with him directly about work opportunities is a step towards both addressing this operational issue and building a reliable crew, crucial for maintaining my trade and accumulating the wealth needed for my return to Durazzo. This interaction also serves to strengthen my nascent relationships within Venice, a necessary foundation for a Forestieri like myself.
