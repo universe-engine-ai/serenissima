@@ -227,7 +227,7 @@ def _get_problems_data(tables: Dict[str, Table], username1: str, username2: str,
             else:
                 print(f"L'API a échoué à récupérer les problèmes pour {username2}: {data2.get('error', 'Erreur inconnue')}")
         
-        # L'API /api/problems ne trie pas par CreatedAt par défaut, mais on peut le demander.
+        # L'API /api/problems ne trie pas par CreatedAt par défaut, mais on le demander.
         # Ici, nous allons trier en Python pour correspondre au comportement précédent.
         problems_list.sort(key=lambda x: x.get('createdAt', ''), reverse=True)
         
@@ -296,6 +296,7 @@ def generate_ai_initiative_message(tables: Dict[str, Table], ai_username: str, t
         kinos_prompt = (
             f"You are {ai_display_name}, an AI citizen of Venice. You've decided to initiate/continue the conversation with {target_display_name}.\n"
             f"IMPORTANT: Your message MUST be VERY SHORT, human-like, and conversational. It should be a natural conversation starter. "
+            f"Start your message with a casual, direct greeting, like 'Hey [Name],' or 'Good day, [Name].' Avoid overly formal salutations like 'Buongiorno, signore.' "
             f"DO NOT mention that you 'decided to send a message' or that this is an 'initiative'. Just start talking naturally. "
             f"DO NOT use formal language, DO NOT write long paragraphs, DO NOT include any fluff or boilerplate. "
             f"Be direct and concise. Imagine you're sending a quick, informal message to someone you know.\n\n"
@@ -488,7 +489,7 @@ def process_ai_message_initiatives(dry_run: bool = False, citizen1_arg: Optional
                     log_current_score = math.log(current_score + 1)
                     log_max_score = math.log(max_combined_score + 1)
                     
-                    if log_max_score > 0: # Éviter la division par zéro si max_combined_score était 0 (donc log_max_score serait log(1)=0)
+                    if log_max_score > 0: # Si max_combined_score est 0, log_max_score est 0.
                         probability = (log_current_score / log_max_score) * 0.25
                     else: # Si max_combined_score est 0, log_max_score est 0.
                         probability = 0.0 # current_score doit aussi être 0 dans ce cas.
