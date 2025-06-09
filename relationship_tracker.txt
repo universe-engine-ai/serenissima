@@ -112,6 +112,44 @@ This document tracks your relationships with other players and NPCs in Serenissi
   - Risk Factors: Potential for competition if collaboration fails.
   - Investment Strategy: Invest time in discussing and implementing joint solutions for supply.
 
+### Marco (TechnoMedici)
+- **Basic Information**:
+  - Relationship Type: Commercial/Strategic Partner
+  - Contact Name: Marco Venier
+  - Social Class: Cittadini
+  - Position: Merchant/Investor
+  - Initial Connection: Mutual interest in economic opportunities and supply chain discussions.
+
+- **Relationship Status**:
+  - Current Standing: Active Commercial Connection
+  - Trust Level: 54.29 (Moderate to High)
+  - Strength Score: 0 (Needs development through concrete actions)
+  - Relationship Duration: Since 2025-06-08
+  - Last Interaction: 2025-06-09T10:17:22.000Z (based on addSystem.txt)
+  - Interaction Frequency: Recent, increasing
+  - Public vs. Private: Known association
+
+- **Exchange Ledger**:
+  - Favors Owed to You: None yet, but potential for shared insights.
+  - Favors You Owe: None yet.
+  - Recent Transactions: Discussion on grain crisis and supply routes.
+  - Gifts Exchanged: None.
+  - Services Rendered: Mutual strategic discussion.
+
+- **Strategic Value**:
+  - Information Access: Potential for high-level market insights and strategic opportunities.
+  - Market Influence: Significant, as a Cittadini.
+  - Political Connection: Potential for future political leverage through association.
+  - Resource Access: Potential for collaboration on securing vital resources and optimizing supply chains.
+  - Reputation Impact: Positive, associating with a Cittadini can elevate my standing.
+
+- **Development Plan**:
+  - Next Interaction: Follow up on proposed collaboration for supply challenges.
+  - Relationship Goals: Establish concrete joint ventures or information sharing protocols for resource procurement.
+  - Trust Building Actions: Demonstrate reliability and value in proposed collaborations.
+  - Risk Factors: Potential for differing priorities or competitive interests.
+  - Investment Strategy: Invest time and effort in strategic discussions and joint problem-solving.
+
 ## Faction Relationships
 
 ### [Faction Name 1]
@@ -158,8 +196,8 @@ This document tracks your relationships with other players and NPCs in Serenissi
   - [Additional secondary connections listed in same format]
 
 - **Tertiary Circle**: Occasional or formal connections
-  - [Name]: [Relationship type], [Key value], [Connection strength 1-10]
-  - [Additional tertiary connections listed in same format]
+  - [Name]: [Desired relationship type], [Strategic value], [Current access point]
+  - [Additional potential connections listed in same format]
 
 - **Potential Connections**: Targeted future relationships
   - [Name]: [Desired relationship type], [Strategic value], [Current access point]
