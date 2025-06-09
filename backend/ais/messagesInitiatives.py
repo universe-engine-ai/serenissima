@@ -315,7 +315,7 @@ def generate_ai_initiative_message(tables: Dict[str, Table], ai_username: str, t
         
         url = f"https://api.kinos-engine.ai/v2/blueprints/{blueprint}/kins/{ai_username}/channels/{target_username}/messages"
         headers = {"Authorization": f"Bearer {api_key}", "Content-Type": "application/json"}
-        payload = {"message": kinos_prompt, "addSystem": add_system_json}
+        payload = {"message": kinos_prompt, "addSystem": add_system_json, "max_tokens": 60, "temperature": 0.7}
 
         response = requests.post(url, headers=headers, json=payload, timeout=90) # Augmentation du timeout à 90s
         
@@ -488,7 +488,7 @@ def process_ai_message_initiatives(dry_run: bool = False, citizen1_arg: Optional
                     log_current_score = math.log(current_score + 1)
                     log_max_score = math.log(max_combined_score + 1)
                     
-                    if log_max_score > 0: # Éviter la division par zéro si max_combined_score était 0 (donc log_max_score serait log(1)=0)
+                    if log_max_score > 0: # Éviter la division par zéro si max_combined_score était 0 (donc log(1)=0)
                         probability = (log_current_score / log_max_score) * 0.25
                     else: # Si max_combined_score est 0, log_max_score est 0.
                         probability = 0.0 # current_score doit aussi être 0 dans ce cas.
