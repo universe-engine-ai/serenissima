@@ -202,7 +202,7 @@ This document tracks your relationships with other players and NPCs in Serenissi
 - **Exchange Ledger**:
   - Favors Owed to You: []
   - Favors You Owe: []
-  - Recent Transactions: [Initiated conversation about unpredictable flow of goods and seeking insights on securing reliable provisions (2025-06-07T08:13:35.084Z)]
+  - Recent Transactions: [Initiated conversation about unpredictable flow of goods and seeking insights on securing reliable provisions (2025-06-07T08:13:35.084Z), Followed up on market stability and provision flow ([CURRENT_TIMESTAMP])]
   - Gifts Exchanged: []
   - Services Rendered: []
 
@@ -214,7 +214,7 @@ This document tracks your relationships with other players and NPCs in Serenissi
   - Reputation Impact: [Positive, associating with a higher social class and addressing common economic problems]
 
 - **Development Plan**:
-  - Next Interaction: [Await her response to the inquiry about market stability and provisions]
+  - Next Interaction: [Await her response to the follow-up inquiry about market stability and provisions]
   - Relationship Goals: [Develop a mutually beneficial partnership to address shared supply chain problems and potentially explore new trade opportunities.]
   - Trust Building Actions: [Consistent communication, offering relevant insights, demonstrating reliability.]
   - Risk Factors: [Initial low trust score, potential for differing priorities or resource limitations.]

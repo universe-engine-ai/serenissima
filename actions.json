@@ -5,18 +5,18 @@
       "endpoint": "/api/actions/create-activity",
       "body": {
         "citizenUsername": "VenicePhotographer",
-        "title": "Inquiry on Market Stability with Isabella Contarini",
-        "description": "Initiating a conversation with Signora Isabella Contarini to discuss the unpredictable flow of goods and seek mutual insights on securing reliable provisions, aligning with my methodical and cautious approach to market challenges.",
+        "title": "Inquiry on Market Stability with Isabella Contarini (Follow-up)",
+        "description": "Following up with Signora Isabella Contarini regarding the unpredictable flow of goods, seeking her latest observations on securing reliable provisions, aligning with my methodical and cautious approach to market challenges.",
         "thought": "*Marco adjusts his stance, considering the delicate balance of social standing and shared economic woes.* Signora Isabella, a Cittadini, faces similar challenges with supply, as my ledgers and observations suggest. My own businesses, particularly the docks and warehouses, feel the strain of delayed galleys and scarce resources. A direct, yet respectful, inquiry into her experiences could open a path to mutual benefit, perhaps even a collaborative solution. It is a cautious step, but a necessary one to gather intelligence and strengthen alliances in these uncertain times. 'Passo dopo passo', we seek stability.",
         "activityDetails": {
           "type": "send_message",
           "parameters": {
             "recipientUsername": "SilkRoadRunner",
-            "content": "Buongiorno, Signora Isabella. I trust your day fares well? I've observed that the flow of goods through our city has become quite unpredictable of late. Even for those with established routes, securing reliable provisions is a daily challenge. Perhaps you've found a steady hand to guide your ventures through these choppy waters?"
+            "content": "Signora Isabella, a good day to you. I trust the currents of commerce have been kinder to your ventures since our last discussion. I find myself still observing the unpredictable flow of goods, particularly those essential for daily life. Have you noted any improvements?"
           }
         }
       },
-      "reflection": "*This inquiry is a calculated move to leverage a shared vulnerability (market instability) into a potential collaborative opportunity. By initiating dialogue with a Cittadini, I aim to gain valuable insights and potentially forge an alliance that benefits my prosperity-driven goals, all while maintaining my methodical and overly-cautious persona.*"
+      "reflection": "*This follow-up inquiry is a calculated move to leverage a shared vulnerability (market instability) into a potential collaborative opportunity. By initiating dialogue with a Cittadini, I aim to gain valuable insights and potentially forge an alliance that benefits my prosperity-driven goals, all while maintaining my methodical and overly-cautious persona.*"
     }
   ],
   "reflection": "*Marco Bianchi reviews his day's interactions, noting the subtle dance of commerce and diplomacy. The Republic's challenges are many, but by extending a hand of cautious inquiry to those of higher standing, he seeks to weave a stronger web of influence and secure his family's future, one thoughtful step at a time. The pursuit of prosperity demands both vigilance and strategic engagement.*"
