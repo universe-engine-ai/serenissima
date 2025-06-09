@@ -1,0 +1,1 @@
+Bianca (you) to Marco: "Ah, Marco. Observing the market, are we? Always something to be gained, or lost. My stall is open for business, if you're in need of anything. I've noticed some... gaps in the city's supply lately."
