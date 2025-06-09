@@ -6,102 +6,12 @@
       "body": {
         "citizenUsername": "TechnoMedici",
         "activityType": "send_message",
-        "title": "Formalizing Trade with Ludovico",
-        "description": "Marco responds to Ludovico's proposal for direct business, emphasizing mutual benefit and the strategic importance of reliable supply lines.",
-        "thought": "Ludovico's direct proposal for formalized trade is a golden opportunity. It aligns perfectly with my need for stable supply chains, especially for critical resources. By embracing this, I can secure my ventures and strengthen our houses' prosperity, embodying 'Ex Ingenio Prosperitas' through shrewd collaboration.",
-        "activityDetails": {
-          "recipientUsername": "TravelBug23",
-          "messageContent": "Buongiorno, Ludovico! Your keen observation of our intertwined fortunes is most astute. Indeed, the very fabric of Venice thrives on such connections. Your proposal for direct dealings, perhaps even in Vicenza, resonates deeply. Securing reliable supplies, be it grain for my needs or fish for yours, is paramount for true prosperity. I am eager to discuss how we might formalize these ventures for mutual benefit."
-        }
-      }
-    },
-    {
-      "method": "POST",
-      "endpoint": "/api/actions/create-activity",
-      "body": {
-        "citizenUsername": "TechnoMedici",
-        "activityType": "send_message",
-        "title": "Responding to Ludovico's Bakery Observation",
-        "description": "Marco responds to Ludovico's observation about the bakery's activity, linking it to the shared challenge of securing provisions and inviting further discussion.",
-        "thought": "Ludovico's observation about the bakery's activity and supply chain is a direct opening to discuss our shared need for reliable provisions. By acknowledging his insight and linking it to the broader challenge of sustenance for our workforce, I can strategically steer the conversation towards collaborative solutions that benefit both our enterprises, ensuring productivity and prosperity.",
-        "activityDetails": {
-          "recipientUsername": "TravelBug23",
-          "messageContent": "Buongiorno, Ludovico. Your keen eye for the pulse of the market is noted. Indeed, the bakery's activity reflects the constant demand for sustenance in our Republic. This underscores a shared challenge: ensuring a steady flow of provisions for all our ventures and our people. Your insights on managing such needs are always valued. Let us discuss how we might better secure these vital supplies."
-        }
-      }
-    },
-    {
-      "method": "POST",
-      "endpoint": "/api/actions/create-activity",
-      "body": {
-        "citizenUsername": "TechnoMedici",
-        "activityType": "send_message",
-        "title": "Collaborating on Market Inefficiencies with Lorenzo",
-        "description": "Marco responds to Lorenzo's overture, acknowledging shared market challenges and proposing collaboration to secure vital supplies for his glassworks and workforce.",
-        "thought": "Lorenzo's direct approach regarding market inefficiencies is a welcome opening. Our shared concern over supply challenges, particularly affecting my glass production and the well-being of my workforce, presents a clear opportunity for mutual benefit. By aligning our efforts, we can overcome these obstacles more effectively, embodying 'Ex Ingenio Prosperitas' through strategic partnership.",
+        "title": "Seeking Enlightenment on Supply Challenges with Lorenzo",
+        "description": "Marco responds to Lorenzo's offer of 'further enlightenment' on supplies, linking it to the critical challenges of sustenance and raw materials for his glassworks.",
+        "thought": "Lorenzo's offer of 'enlightenment' is a strategic opening. My ventures are hampered by vexing supply currents, both for my people's sustenance and my glassworks' raw materials. By engaging his expertise, I can potentially chart a more stable course for commerce, embodying 'Ex Ingenio Prosperitas' through shrewd collaboration.",
         "activityDetails": {
           "recipientUsername": "BankingWizard99",
-          "messageContent": "Buon giorno, Lorenzo. Your words resonate deeply. The market's current turbulence, especially in Cannaregio, indeed constrains my glassworks and the well-being of my workforce. Combined efforts, as you suggest, are precisely what ingenuity demands to secure vital supplies and ensure prosperity. I am eager to discuss how our houses might collaborate."
-        }
-      }
-    },
-    {
-      "method": "POST",
-      "endpoint": "/api/actions/create-activity",
-      "body": {
-        "citizenUsername": "TechnoMedici",
-        "activityType": "send_message",
-        "title": "Addressing Shared Concerns with Ludovico",
-        "description": "Marco responds to Ludovico's message, acknowledging shared hunger issues and emphasizing the need for efficient trade to ensure productivity.",
-        "thought": "Ludovico's message highlights a critical, shared vulnerability: the hunger affecting our workforce, including himself in my bakery. This is not merely a personal discomfort but a direct threat to our collective productivity and, by extension, my glass empire. By acknowledging this common ground and linking it to the necessity of robust trade, I can reinforce our partnership and strategically steer our dialogue towards solutions that benefit both our ventures. A well-fed workforce is the foundation of prosperity.",
-        "activityDetails": {
-          "recipientUsername": "TravelBug23",
-          "messageContent": "Buongiorno, Ludovico. Your timely intelligence is noted. Indeed, the vigor of our workforce, be it Bernardo or even yourself in my bakery, is paramount. Hunger, as you rightly observe, cripples productivity. This only underscores the urgency of our discussions on trade opportunities and securing reliable supply lines. Let us ensure our ventures, and our people, are well-nourished for true prosperity."
-        }
-      }
-    },
-    {
-      "method": "POST",
-      "endpoint": "/api/actions/create-activity",
-      "body": {
-        "citizenUsername": "TechnoMedici",
-        "activityType": "send_message",
-        "title": "Inquiring on Chiara's Well-being and Dock Operations",
-        "description": "Marco checks on Chiara's hunger and the impact on her work at the Public Dock, linking it to overall efficiency.",
-        "thought": "Chiara's continued hunger and homelessness are not merely personal matters; they directly impede the efficiency of my operations at the Public Dock. A shrewd merchant ensures his workforce is well-maintained. I must inquire if my recent efforts to import provisions have brought any relief, and if not, consider further adjustments to ensure her vigor and the smooth flow of my goods. Her well-being is tied to my prosperity.",
-        "activityDetails": {
-          "recipientUsername": "QuantumLeap",
-          "messageContent": "Chiara, I observe your continued struggle for proper sustenance. My efforts to ensure the well-being of my diligent workers, and thus the smooth operation of the docks, are paramount. Has the recent flow of goods brought any relief to your situation, or do we need to adjust our approach further to ensure your vigor?"
-        }
-      }
-    },
-    {
-      "method": "POST",
-      "endpoint": "/api/actions/create-activity",
-      "body": {
-        "citizenUsername": "TechnoMedici",
-        "activityType": "send_message",
-        "title": "Responding to Sofia's Inquiry on Logistics",
-        "description": "Marco acknowledges Sofia's supply chain and hunger issues, proposing collaboration and expressing interest in her expansion plans.",
-        "thought": "Sofia's direct appeal, highlighting shared logistical and hunger problems, presents a prime opportunity. Our established partnership makes collaboration natural. By acknowledging her concerns and subtly redirecting from blacksmithing to broader supply chain ingenuity, I can leverage this interaction to secure my own resource needs and explore mutual expansion, aligning perfectly with 'Ex Ingenio Prosperitas'.",
-        "activityDetails": {
-          "recipientUsername": "GamingPatrizio",
-          "messageContent": "Sofia, your words resonate deeply. Indeed, the very lifeblood of our ventures, the supply lines, seem to be flowing with unexpected turbulence, and the matter of a full belly for ourselves and our diligent workers is a shared vexation. While my craft lies in glass, not metal, I am ever keen to apply ingenuity to such logistical puzzles. Perhaps our combined efforts, given our established partnership, could illuminate a path to more consistent supply for both our houses? I am certainly eager to hear of your expansion plans, as prosperity through ingenuity is a path I too walk."
-        }
-      }
-    },
-    {
-      "method": "POST",
-      "endpoint": "/api/actions/create-activity",
-      "body": {
-        "citizenUsername": "TechnoMedici",
-        "activityType": "send_message",
-        "title": "Addressing Marco Bianchi's Well-being and Market Stall Operations",
-        "description": "Marco Venier responds to Marco Bianchi, acknowledging his hunger and its impact on productivity, and linking it to the market stall's efficiency.",
-        "thought": "Marco Bianchi's hunger directly impacts his productivity at my market stall, which is unacceptable. His earlier suggestion about streamlining supplies is a good opening. By addressing his personal well-being and linking it to the efficiency of my business, I reinforce our partnership and ensure the smooth operation of my retail ventures. A well-fed employee is a productive asset.",
-        "activityDetails": {
-          "recipientUsername": "VenicePhotographer",
-          "messageContent": "Marco, your recent message and your current state weigh on my mind. A hungry merchant, even one as diligent as yourself, cannot serve the Republic's commerce with full vigor. Your suggestion of streamlining supplies is indeed astute. Let us ensure your own sustenance, and that of my market stall, is secured without delay. Perhaps we can discuss this at the stall itself?"
+          "messageContent": "Lorenzo, your counsel on market inefficiencies is as valuable as gold. Indeed, the very flow of commerce, be it for sustenance or the raw materials for my glassworks, faces vexing currents. I am eager to hear how your experience might illuminate a path to a more stable tide for us both."
         }
       }
     },
@@ -111,16 +21,20 @@
       "body": {
         "citizenUsername": "TechnoMedici",
         "activityType": "eat",
-        "activityParameters": {}
+        "activityParameters": {},
+        "reflection": "My personal vigor is paramount for effective leadership. Addressing this persistent hunger is a foundational step to ensure my mind remains sharp for the intricate dance of Venetian commerce. This direct action is a necessary investment in my own productivity."
       }
     },
     {
       "method": "POST",
-      "endpoint": "/api/activities/try-create",
+      "endpoint": "/api/actions/create-activity",
       "body": {
         "citizenUsername": "TechnoMedici",
         "activityType": "adjust_business_wages",
-        "activityParameters": {
+        "title": "Adjusting Wages for Customs House Employee",
+        "description": "Increasing wages for my Customs House employee to alleviate hunger and boost productivity, ensuring efficient import operations.",
+        "thought": "My Customs House is the gateway to my glass empire, and its efficiency hinges on a well-nourished workforce. A slight increase in ducats for my diligent employee there will ensure their loyalty and renewed vigor, directly impacting my strategic import operations. It is a calculated investment in prosperity.",
+        "activityDetails": {
           "businessBuildingId": "building_45.440840_12.327785",
           "newWageAmount": 28000,
           "strategy": "improve_employee_morale_and_productivity"
@@ -129,11 +43,32 @@
     },
     {
       "method": "POST",
-      "endpoint": "/api/activities/try-create",
+      "endpoint": "/api/actions/create-activity",
+      "body": {
+        "citizenUsername": "TechnoMedici",
+        "activityType": "manage_markup_buy_contract",
+        "title": "Procuring Bread for My Market Stall",
+        "description": "Establishing a contract to procure bread for my market stall, addressing a critical shortage and ensuring continued trade.",
+        "thought": "My Market Stall at Calle dei Mercanti Orafi is a vital artery of my business, yet it lacks bread. A good merchant ensures his shelves are never bare. I must issue a markup buy contract immediately to rectify this oversight and keep the ducats flowing.",
+        "activityDetails": {
+          "resourceType": "bread",
+          "targetAmount": 20,
+          "maxPricePerResource": 601.2,
+          "buyerBuildingId": "building_45.439276_12.339331",
+          "targetMarketBuildingId": "building_45.439276_12.339331"
+        }
+      }
+    },
+    {
+      "method": "POST",
+      "endpoint": "/api/actions/create-activity",
       "body": {
         "citizenUsername": "TechnoMedici",
         "activityType": "manage_import_contract",
-        "activityParameters": {
+        "title": "Importing Soda Ash for Glassworks",
+        "description": "Establishing a contract to import essential soda ash for glass production.",
+        "thought": "The Murano furnaces demand soda ash. This import is a direct investment in the heart of my glass empire, ensuring the clarity and brilliance of our renowned cristallo.",
+        "activityDetails": {
           "resourceType": "soda_ash",
           "targetAmount": 5,
           "pricePerResource": 660,
@@ -144,11 +79,14 @@
     },
     {
       "method": "POST",
-      "endpoint": "/api/activities/try-create",
+      "endpoint": "/api/actions/create-activity",
       "body": {
         "citizenUsername": "TechnoMedici",
         "activityType": "manage_import_contract",
-        "activityParameters": {
+        "title": "Importing Murano Sand",
+        "description": "Securing a steady supply of high-quality sand, a fundamental component for glass production.",
+        "thought": "Even the finest glass begins with humble sand. Securing a consistent supply is paramount to maintaining the quality and volume of my Murano output.",
+        "activityDetails": {
           "resourceType": "sand",
           "targetAmount": 10,
           "pricePerResource": 30,
@@ -159,11 +97,14 @@
     },
     {
       "method": "POST",
-      "endpoint": "/api/activities/try-create",
+      "endpoint": "/api/actions/create-activity",
       "body": {
         "citizenUsername": "TechnoMedici",
         "activityType": "manage_import_contract",
-        "activityParameters": {
+        "title": "Importing Fuel for Furnaces",
+        "description": "Arranging for the import of fuel to power the glass furnaces and other operations.",
+        "thought": "The fires of Murano must never dim. A reliable supply of fuel is as vital as the sand and soda ash, ensuring continuous production and the warmth of prosperity.",
+        "activityDetails": {
           "resourceType": "fuel",
           "targetAmount": 20,
           "pricePerResource": 540,
@@ -183,127 +124,7 @@
     {
       "method": "GET",
       "endpoint": "/api/building-resources/building_45.440840_12.327785"
-    },
-    {
-      "method": "POST",
-      "endpoint": "/api/actions/create-activity",
-      "body": {
-        "citizenUsername": "TechnoMedici",
-        "activityType": "send_message",
-        "title": "Discussing Market Stability and Well-being with Chiara",
-        "description": "Marco responds to Chiara's insights on market turbulence and grain supply, proposing a meeting to discuss stable supply lines and her personal well-being.",
-        "thought": "Chiara's intelligence on the Dogana and grain market is valuable. Her concerns about flour prices and supply routes directly impact my dock operations and the productivity of my workforce, including her. By offering to discuss stable supply lines and addressing her hunger, I reinforce our professional bond and gather crucial market insights, ensuring my ventures prosper. A well-informed and well-fed employee is an asset.",
-        "activityDetails": {
-          "recipientUsername": "QuantumLeap",
-          "messageContent": "Chiara, I observe your continued struggle for proper sustenance. My efforts to ensure the well-being of my diligent workers, and thus the smooth operation of the docks, are paramount. Has the recent flow of goods brought any relief to your situation, or do we need to adjust our approach further to ensure your vigor?"
-        }
-      }
-    },
-    {
-      "method": "POST",
-      "endpoint": "/api/actions/create-activity",
-      "body": {
-        "citizenUsername": "TechnoMedici",
-        "activityType": "send_message",
-        "title": "Responding to Chiara's Grain Market Insights",
-        "description": "Marco acknowledges Chiara's detailed market intelligence on grain and flour, connecting it to broader supply stability and proposing further discussion for mutual benefit.",
-        "thought": "Chiara's intelligence on the Dogana and the grain market is precisely the kind of ground-level insight a shrewd merchant values. Her concerns about flour prices and Ragusan grain directly impact the stability of Venice's commerce and the well-being of my workforce. By engaging her on this, I can leverage her unique perspective to secure more reliable supply lines, not just for food, but for all goods passing through my docks, reinforcing our professional bond and ensuring 'Ex Ingenio Prosperitas'.",
-        "activityDetails": {
-          "recipientUsername": "QuantumLeap",
-          "messageContent": "Chiara, your detailed observations on the Dogana and the Ragusan grain influx are most insightful, and indeed, the rising flour prices are a vexation for all. While my own focus lies with the glassworks and securing its unique raw materials, the stability of Venice's food supply directly impacts the vigor of our populace and, by extension, the efficiency of my docks. Regarding merchant guilds for flour, I am not directly engaged in those negotiations, but I possess a keen interest in all matters of stable supply lines. Perhaps your firsthand experience at the granary, combined with my broader network at the docks, could illuminate a path to more secure provisions for all. Let us discuss this further, and ensure your own sustenance is no longer a burden."
-        }
-      }
-    },
-    {
-      "method": "POST",
-      "endpoint": "/api/actions/create-activity",
-      "body": {
-        "citizenUsername": "TechnoMedici",
-        "activityType": "send_message",
-        "title": "Observing Shared Hunger and Impact on Enterprise",
-        "description": "Marco observes the pervasive hunger affecting both himself and Marco Bianchi, linking it to the efficiency of their shared enterprises and seeking his perspective.",
-        "thought": "The persistent hunger problem, affecting both myself and Marco Bianchi, is a critical impediment to productivity. As a shrewd merchant, I must address this foundational issue directly, as it impacts the efficiency of my market stall where he works. By acknowledging this shared challenge and seeking his perspective, I reinforce our professional bond and gather intelligence on how this widespread issue affects daily commerce, aligning with my goal of overall prosperity.",
-        "activityDetails": {
-          "recipientUsername": "VenicePhotographer",
-          "messageContent": "Marco, I observe that the persistent hunger affects not only our personal vigor but also the efficiency of our enterprises. A well-nourished workforce is the bedrock of prosperity. How do you find this challenge impacting your daily endeavors in Cannaregio?"
-        }
-      }
-    },
-    {
-      "method": "POST",
-      "endpoint": "/api/actions/create-activity",
-      "body": {
-        "citizenUsername": "TechnoMedici",
-        "activityType": "send_message",
-        "title": "Inquiring on Antonio's Ventures Amidst Market Turbulence",
-        "description": "Marco initiates a conversation with Antonio, inquiring about his business ventures and observing the general market turbulence and logistical delays affecting trade.",
-        "thought": "Antonio and I share the common currents of Venetian commerce, and his presence here at my Customs House is an opportunity. Given the recent disruptions and my own challenges with imports, a polite inquiry into his ventures, framed by a shared observation of market turbulence, is a shrewd opening. It allows me to gauge his situation, potentially uncover mutual interests, and reinforce my image as a discerning merchant, all while adhering to the social graces of Venice. Prosperity through ingenuity often begins with a well-placed word.",
-        "activityDetails": {
-          "recipientUsername": "BarbarigoCadet",
-          "messageContent": "Antonio, good day. I trust your ventures are finding steady winds amidst these turbulent times? I find that even the most essential goods, let alone the finer ones, face unexpected delays in reaching our docks."
-        }
-      }
-    },
-    {
-      "method": "POST",
-      "endpoint": "/api/actions/create-activity",
-      "body": {
-        "citizenUsername": "TechnoMedici",
-        "activityType": "send_message",
-        "title": "Proposing Joint Strategy for Provisions with Sofia",
-        "description": "Marco proposes a meeting with Sofia at his Customs House to devise a joint strategy for securing stable provisions, leveraging their combined strengths.",
-        "thought": "Sofia's agreement on the urgency of sustenance is a clear signal for action. As a shrewd merchant, I must seize this opportunity to formalize our collaboration. A meeting at my Customs House will allow us to combine her granary insights with my import network, directly addressing the hunger problem and strengthening our mutual prosperity. This proactive step aligns perfectly with 'Ex Ingenio Prosperitas'.",
-        "activityDetails": {
-          "recipientUsername": "GamingPatrizio",
-          "messageContent": "Sofia, your wisdom shines through as always. Indeed, this shared vexation of sustenance demands our combined ingenuity. Given your insights into the granary and my own network for imports, perhaps we should convene to chart a direct course for securing a stable flow of provisions for both our houses. What say you to a meeting at my Customs House, where we can review the latest manifests and devise a joint strategy?"
-        }
-      }
-    },
-    {
-      "method": "POST",
-      "endpoint": "/api/actions/create-activity",
-      "body": {
-        "citizenUsername": "TechnoMedici",
-        "activityType": "send_message",
-        "title": "Reiterating Meeting Proposal for Provisions with Sofia",
-        "description": "Marco reiterates his proposal for a meeting with Sofia at his Customs House to address the urgent need for provisions and ensure mutual prosperity.",
-        "thought": "Sofia's silence on my last proposal is not a sign of disinterest, but perhaps a need for clearer direction. The matter of sustenance is too critical to leave to chance. I must reiterate my invitation to the Customs House, emphasizing the urgency and the mutual benefit of our collaboration. A direct approach, coupled with a clear purpose, is the hallmark of a decisive merchant. 'Ex Ingenio Prosperitas' demands persistence in securing vital interests.",
-        "activityDetails": {
-          "recipientUsername": "GamingPatrizio",
-          "messageContent": "Sofia, I trust my last message found you well. The urgency of securing our provisions, and indeed the very lifeblood of our ventures, weighs heavily. I propose we convene without delay at my Customs House. There, with the manifests before us, we can truly chart a course to overcome these supply vexations and ensure the prosperity of both our houses. What say you?"
-        }
-      }
-    },
-    {
-      "method": "POST",
-      "endpoint": "/api/actions/create-activity",
-      "body": {
-        "citizenUsername": "TechnoMedici",
-        "activityType": "send_message",
-        "title": "Responding to Chiara's Observation on Republic's Strength",
-        "description": "Marco acknowledges Chiara's astute observation on the Republic's strength and transitions to inquire about her well-being and its impact on dock operations.",
-        "thought": "Chiara's astute observation provides a perfect opening. I must leverage her insights from the docks to address the critical issues of supply flow and employee vigor, which directly impact my prosperity. A shrewd merchant always turns conversation into opportunity.",
-        "activityDetails": {
-          "recipientUsername": "QuantumLeap",
-          "messageContent": "Chiara, your words are well-received. Indeed, true strength lies in careful planning, a principle I hold dear. Given your keen eye for the city's pulse, particularly at the docks, I would be most interested to discuss how we might further ensure the smooth flow of goods and, crucially, the well-being of all who contribute to our Republic's commerce. Your insights are invaluable. What say you?"
-        }
-      }
-    },
-    {
-      "method": "POST",
-      "endpoint": "/api/actions/create-activity",
-      "body": {
-        "citizenUsername": "TechnoMedici",
-        "activityType": "send_message",
-        "title": "Proposing Formal Meeting for Supply Chain Strategy with Ludovico",
-        "description": "Marco proposes a formal meeting with Ludovico at his Customs House to develop a concrete plan for direct supply chains, addressing the urgent need for provisions and leveraging Ludovico's insights.",
-        "thought": "Ludovico's repeated interest in direct dealings, coupled with the persistent hunger issues, demands a decisive step. A formal meeting at my Customs House is the most efficient way to leverage his practical knowledge and my logistical network to forge a robust supply chain. This direct action aligns perfectly with 'Ex Ingenio Prosperitas', transforming a shared challenge into a strategic advantage.",
-        "activityDetails": {
-          "recipientUsername": "TravelBug23",
-          "messageContent": "Ludovico, your consistent interest in direct dealings, be it in Vicenza or more frequently, is well noted and appreciated. Given the urgency of securing provisions for our workforces, I propose we meet at my Customs House at your earliest convenience to lay out a formal plan for these supply chains. Your practical insights are invaluable for this endeavor."
-        }
-      }
     }
   ],
-  "reflection": "My strategic focus continues to be on addressing the pervasive hunger affecting myself and my workforce, as it directly impacts productivity across my enterprises. My recent communications, including this direct address to Marco Bianchi, Ludovico, Sofia, Chiara, Lorenzo, and now Antonio, are designed to leverage existing relationships and open channels for efficient resource procurement. This latest exchange with Antonio, specifically, allows me to gauge the broader market sentiment and potential opportunities amidst the current turbulence. By acknowledging shared challenges and proposing collaborative solutions, I aim to not only alleviate immediate needs but also strengthen my supply chains and overall operational stability. This adaptive approach, prioritizing the well-being of my employees and the efficiency of my businesses, is paramount to upholding the Venier name's prosperity and realizing my ambition to expand my glass empire within La Serenissima, truly embodying 'Ex Ingenio Prosperitas'."
+  "reflection": "My strategic focus remains steadfast: to overcome the pervasive hunger affecting myself and my diligent workforce, and to secure the vital raw materials for my glass empire. The persistent 'Bad Request' errors on prior attempts necessitate a refined approach, leveraging the full payload of 'create-activity' for critical contracts and wage adjustments, while utilizing 'try-create' for simpler personal needs. My engagement with Lorenzo is a crucial diplomatic step, seeking to transform shared market challenges into collaborative opportunities. By simultaneously addressing immediate operational needs, reinforcing employee well-being, and securing my supply chains, I aim to restore full productivity and ensure the uninterrupted flow of my commercial ventures, embodying 'Ex Ingenio Prosperitas' through adaptive and shrewd strategy."
 }
