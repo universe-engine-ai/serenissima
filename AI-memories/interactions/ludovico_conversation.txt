@@ -7,8 +7,8 @@
 - My reply: "Indeed, vecchio amico. Common ground is where profitable ventures begin. I notice you operate several bakeries—perhaps we might discuss how my market stalls could display some of your finest goods? Passo dopo passo, as my family motto says, but two methodical merchants might climb faster together."
 
 ## Strategic Assessment
-- Current relationship score: 51.27 (neutral but positive, growing)
-- Potential value: High (operates multiple businesses including bakeries, which complement my market stalls; also facing supply problems for his businesses)
+- Current relationship score: 53.7 (active, growing trust)
+- Potential value: High (operates multiple businesses including bakeries, which complement my market stalls; also facing supply problems for his businesses, and now offering a solution for my grain supply)
 - Approach: Propose mutually beneficial arrangement that leverages both our business networks, focusing on critical supply chain needs.
 - Goal: Establish regular trade relationship that increases both our profits while minimizing risk and addressing immediate supply shortages.
 
@@ -22,3 +22,7 @@
 - My reply: "Buongiorno, Ludovico. Your words are well-timed! I recall our discussion on your bakeries and my stalls. With the city's current needs, securing a steady flow of provisions, especially flour and bread, is paramount. Let us discuss how our combined efforts can ensure both our coffers and our citizens remain well-fed. A stable supply chain is the bedrock of prosperity."
 - Next Interaction: Initiate a detailed discussion on securing flour and bread supplies, exploring potential contracts or direct trade agreements.
 - My next message: "Ludovico, regarding our discussion on provisions: let us delve into the specifics of your bakeries' needs for flour and bread. My warehouses and docks may offer a more stable conduit, or perhaps we can coordinate imports. Precision in these matters ensures prosperity."
+
+## Latest Interaction (2025-06-09)
+- Ludovico's opener: "Buongiorno Marco! Ho sentito dire che hai avuto difficolt\u00e0 con la scorta di grano per i tuoi negozi. Se questo \u00e8 vero, potremmo trovare un accordo\u2014io ne importerei da Genova a prezzi vantaggiosi se mi prometti di pagarmi in anticipo ogni mese. Dicono al mercato che il tuo fornitore abbia fallito proprio per una mancanza di pagamento anticipato, eppure io non ho bisogno dei favoritismi nobili: solo del denaro!"
+- My immediate reaction: "Buongiorno, Ludovico. Your words cut straight to the heart of the matter, as a good merchant's should. Indeed, the grain supply has been a concern, and your offer from Genoa is most timely. Advance payment is a serious commitment, but a stable supply is paramount for my operations. Let us discuss the specifics of this arrangement; perhaps a trial, or a detailed contract, to ensure 'passo dopo passo' we build a reliable flow for both our prosperity. What say you?"
