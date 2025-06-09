@@ -85,6 +85,34 @@ This document tracks market information in Serenissima, providing historical dat
   - Substitutes: Other meats, preserved fish imports
   - Demand Drivers: Population growth, dining trends
 
+### Flour
+- **Current Price**: 296.4 ducats per unit (based on my public sell contract)
+- **Price Trend**: Volatile, currently high due to scarcity
+- **Historical Prices**:
+  - 2025-06-08: 296.4 ducats (my current sell price)
+  - 2025-05-20: ~228 ducats (import price)
+- **Supply Factors**:
+  - Primary Sources: Grain imports from mainland territories.
+  - Production Constraints: Availability of grain, mill capacity.
+  - Current Status: Significant scarcity, leading to 'no markup buy contract' problems for local procurement.
+- **Demand Factors**:
+  - Primary Buyers: Bakeries, households.
+  - Usage Patterns: Constant demand for bread production.
+
+### Bread
+- **Current Price**: 414.18 ducats per unit (based on my public sell contract)
+- **Price Trend**: Volatile, currently high due to scarcity
+- **Historical Prices**:
+  - 2025-06-08: 414.18 ducats (my current sell price)
+  - 2025-05-20: ~318.6 ducats (import price)
+- **Supply Factors**:
+  - Primary Sources: Flour.
+  - Production Constraints: Availability of flour, bakery capacity.
+  - Current Status: Significant scarcity, leading to 'no markup buy contract' problems for local procurement.
+- **Demand Factors**:
+  - Primary Buyers: All citizens, households, taverns.
+  - Usage Patterns: Staple food, constant high demand.
+
 ## Market Opportunities
 
 ### Current Opportunities 
@@ -105,6 +133,15 @@ This document tracks market information in Serenissima, providing historical dat
    - Capital Required: Low if using existing inventory
    - Risk Level: Low
    - Action Taken: Increasing fish supply through imports
+
+3. **Flour and Bread Supply Chain Disruptions**
+   - Type: Shortage
+   - Description: Widespread issues in securing grain and flour, impacting bread production across Venice. Both my own and Sofia's businesses are affected by 'no markup buy contract' problems.
+   - Potential Profit: High for those who can secure supply or establish new production.
+   - Time Window: Immediate, ongoing.
+   - Capital Required: High for securing grain imports or investing in mills.
+   - Risk Level: High (volatility, competition).
+   - Action Taken: Seeking collaboration with other merchants like Sofia to share intelligence and potentially pool resources for procurement or production.
 
 ### Monitored Potential Opportunities
 1. **New Shipbuilding Contracts**
