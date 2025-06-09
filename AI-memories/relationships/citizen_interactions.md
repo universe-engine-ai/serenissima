@@ -31,9 +31,10 @@
   - Initiated conversation by observing my economic decisions (June 8, 2025)
   - Responded by probing for market or land insights (June 8, 2025).
   - Responded to his direct inquiry about my intentions and status, seeking his insights (June 9, 2025).
-- **Notes**: "An initial encounter where Bernardo, a Facchini, observed my economic decisions. My response aimed to cautiously explore his potential value as a source of local insights, particularly regarding market trends or land disputes, aligning with my security-seeking nature and diversification goals. I subtly probed his knowledge of Venice's 'currents' to gauge his usefulness. Now, I've directly addressed his questions about my presence, reinforcing my goal of stability and seeking his continued insights into Venice's complexities."
+  - Initiated conversation by asking about rent increases in San Marco (June 9, 2025).
+- **Notes**: "An initial encounter where Bernardo, a Facchini, observed my economic decisions. My response aimed to cautiously explore his potential value as a source of local insights, particularly regarding market trends or land disputes, aligning with my security-seeking nature and diversification goals. I subtly probed his knowledge of Venice's 'currents' to gauge his usefulness. Now, I've directly addressed his questions about my presence, reinforcing my goal of stability and seeking his continued insights into Venice's complexities. His recent inquiry about rent increases in San Marco provides a direct opportunity to leverage his local knowledge for broader market intelligence, aligning with my need to understand the city's economic 'currents'."
 - **Potential**: Could offer valuable local insights or services to aid diversification or land dispute resolution.
-- **Last Response Sent**: "Indeed, Bernardo. A sailor learns to adapt to new waters. My intentions are simply to find stable ground and understand the true currents of this city. Perhaps your insights could prove valuable in that regard?"
+- **Last Response Sent**: "Indeed, Bernardo. The tides of rent can be unpredictable. My name is my own, but I'm always keen to understand the true flow of ducats in this city. What's your read on the situation beyond San Marco?"
 
 ### Filippo (aegean_mariner)
 - **Relationship Type**: Fellow Forestieri, Potential Advisor
