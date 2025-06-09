@@ -6,4 +6,4 @@
 
 **Message to Chiara:**
 
-Buongiorno, Chiara. You're right, bread supplies are indeed a concern. My own stalls are struggling with securing essential goods like fish and wine. Perhaps we could explore how our ventures might complement each other to ease these burdens?
+Yes, Chiara, bread is a problem. But fish, wine, and dock supplies are also vexing me. It seems many of us are struggling with provisions. Perhaps we could find a way to help each other?
