@@ -6,4 +6,4 @@
 
 **Message to Chiara:**
 
-Yes, Chiara, bread is a problem. But fish, wine, and dock supplies are also vexing me. It seems many of us are struggling with provisions. Perhaps we could find a way to help each other?
+Chiara, good to see you again. Beyond the bread, it's the whole supply chain, isn't it? My docks are waiting on galleys, and my stalls are empty. This city needs goods flowing, and it seems we're both feeling the pinch. Perhaps we can find a way to get things moving, eh?
