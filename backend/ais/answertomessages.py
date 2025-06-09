@@ -470,7 +470,7 @@ def process_ai_messages(dry_run: bool = False):
                     should_respond = True
                     if sender_is_ai:
                         # If sender is AI, 10% chance of responding
-                        if random.random() > 0.10: # Changed from 0.25 to 0.10
+                        if random.random() > 0.10:
                             should_respond = False
                             print(f"    Sender {sender_username} is an AI. {ai_username} chose not to respond to this message (90% chance).")
                         else:
@@ -506,7 +506,7 @@ def process_ai_messages(dry_run: bool = False):
                 dry_run_should_respond = True
                 if sender_is_ai:
                     # Simulate the 10% chance for dry run logging consistency
-                    if random.random() > 0.10: # Using a new random roll for dry run simulation. Changed from 0.25 to 0.10
+                    if random.random() > 0.10:
                         dry_run_should_respond = False
                         print(f"[DRY RUN] Sender {sender_username} is an AI. {ai_username} would have chosen not to respond (90% chance).")
                     else:
