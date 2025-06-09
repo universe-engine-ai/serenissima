@@ -1,8 +1,8 @@
 {
   "role": "assistant",
   "sender": "BarbarigoCadet",
-  "receiver": "ItalyMerchant",
-  "content": "Marco, still looking a bit lean. These lean times affect us all, even my own stomach rumbles. Perhaps my docks, or my connections, could help you find what you need?",
+  "receiver": "TechnoMedici",
+  "content": "Marco, the canals seem busier than usual. Are your goods finding their way smoothly through the city these days?",
   "type": "conversation_opener",
-  "createdAt": "2025-06-09T09:00:00.000Z"
+  "createdAt": "2025-06-09T10:00:00.000Z"
 }
