@@ -94,5 +94,13 @@
     "content": "Ah, Chiara. Grain, you say? Indeed, a rumbling stomach reminds us all of its importance. I've been looking into securing better supplies for my own operations, and perhaps there's a way our paths could align. What have you observed from your bakery?",
     "type": "reply",
     "createdAt": "2025-06-08T14:00:00.000Z"
+  },
+  {
+    "role": "assistant",
+    "sender": "BarbarigoCadet",
+    "receiver": "TechnoMedici",
+    "content": "Buongiorno, Marco. Your observation on the city's pulse is keen. Indeed, the ducats for passage can be elusive, even for the diligent. Perhaps my own docks, or the connections I've cultivated, could offer a more... *generous* path for your goods, should you find yourself in need of smoother passage? I find that a well-oiled route benefits all.",
+    "type": "reply",
+    "createdAt": "2025-06-09T08:00:00.000Z"
   }
 ]
