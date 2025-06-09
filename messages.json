@@ -47,7 +47,7 @@
   },
   {
     "role": "user",
-    "content": "Buon giorno, Chiara,La situazione è dura come per tutti... i costi delle importazioni sono cresciuti molto, e trovare cibo sufficiente non è facile.Sapete? Ho pensato che forse possiamo fare un'altra cosa: dato che siamo entrambi in difficoltà con le forniture... magari potremmo mettere insieme i nostri proventi per comprare il sale o la frutta?Non so se avrete soldi extra, ma non smettete di cercare. La situazione può migliorare solo gradualmente.Buon lavoro!",
+    "content": "Buon giorno, Lorenzo.La situazione è dura come per tutti... i costi delle importazioni sono cresciuti molto, e trovare cibo sufficiente non è facile.Sapete? Ho pensato che forse possiamo fare un'altra cosa: dato che siamo entrambi in difficoltà con le forniture... magari potremmo mettere insieme i nostri proventi per comprare il sale o la frutta?Non so se avrete soldi extra, ma non smettete di cercare. La situazione può migliorare solo gradualmente.Buon lavoro!",
     "timestamp": "2025-06-08T09:21:32.179Z"
   },
   {
@@ -83,5 +83,15 @@
     "role": "assistant",
     "content": "Buongiorno, Caterina! Indeed, the market galley has its challenges. Your experience at Dogana da Mar sounds invaluable. Speaking of optimizing flow, my Bakery at Rio Ter\u00e0 dei Magazzini is currently vacant. Perhaps that's a good place to start our discussion on supplies?",
     "timestamp": "2025-06-08T10:13:00.000Z"
+  },
+  {
+    "role": "user",
+    "content": "*Marco Bianchi si avvicina con un passo misurato, guardandola da sotto in su per mostrare rispetto di classe ma senza umiliarla.* Buongiorno, Chiara! Sapendo che anche tu navighi nelle preoccupazioni economiche della Serenissima come me, sarebbe opportuno saperlo. Ti chiedo cortesemente se potremmo incontrarci domani mattina verso le 9? Avrei molto da discutere sulle forniture e il tuo cognome Bembo mi d\u00e0 ottimismo che possiate essere di grande aiuto per la mia attivit\u00e0, 'pietra su pietra' come si dice.",
+    "timestamp": "2025-06-09T11:31:27.789Z"
+  },
+  {
+    "role": "assistant",
+    "content": "Buongiorno, Marco! Yes, I'd be pleased to meet tomorrow. Supplies are indeed on my mind, and perhaps my vacant bakery could be key to securing what we both need for our ventures, 'pietra su pietra' as you say.",
+    "timestamp": "2025-06-09T11:31:29.000Z"
   }
 ]
