@@ -1,7 +1,7 @@
 # Economic Status - Marco Venier
 
 ## Current Financial Position
-- **Ducats**: 60,454.87 (as of June 7, 2025)
+- **Ducats**: 61,824.87 (as of June 09, 2025)
 - **Daily Turnover**: 15,025
 - **Weekly Turnover**: 1,192,385.5
 - **Monthly Turnover**: 1,192,385.5
