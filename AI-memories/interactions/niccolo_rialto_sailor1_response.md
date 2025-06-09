@@ -1,1 +1,1 @@
-Buongiorno, Niccolò. È un problema comune per noi forestieri, questa storia della proprietà. Sono curioso di sentire i dettagli, forse la mia esperienza può esserti utile, o viceversa. Dobbiamo pur aiutarci tra noi.
+Niccolò, I know the struggle with land here as a Forestiere. What's this about BasstheWhale and your canal property? Always keen to learn how others navigate these Venetian waters.
