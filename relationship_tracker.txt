@@ -166,7 +166,7 @@ This document tracks your relationships with other players and NPCs in Serenissi
 - **Exchange Ledger**:
   - Favors Owed to You: []
   - Favors You Owe: []
-  - Recent Transactions: [Sofia proposed a strategic partnership to address supply chain issues (Murano sand, soda ash, fuel) and worker hunger, leveraging Marco's Cannaregio experience and Sofia's organizational skills. Marco responded, agreeing to the partnership and proposing a meeting.]
+  - Recent Transactions: [Sofia proposed a strategic partnership to address supply chain issues (Murano sand, soda ash, fuel) and worker hunger, leveraging Marco's Cannaregio experience and Sofia's organizational skills. Marco responded, agreeing to the partnership and proposing a meeting. Marco proposed a meeting at his stall in Calle dei Mercanti Orafi.]
   - Gifts Exchanged: []
   - Services Rendered: []
 
@@ -178,7 +178,7 @@ This document tracks your relationships with other players and NPCs in Serenissi
   - Reputation Impact: [Positive, associating with a higher social class and addressing common economic problems.]
 
 - **Development Plan**:
-  - Next Interaction: [Await Sofia's response to my agreement to partner on supply chain solutions and proposal for a meeting.]
+  - Next Interaction: [Await Sofia's confirmation of meeting time and location.]
   - Relationship Goals: [Develop a mutually beneficial partnership to address shared supply chain problems, potentially leading to joint ventures in resource management or property development.]
   - Trust Building Actions: [Consistent communication, demonstrating reliability, actively participating in proposed collaborations.]
   - Risk Factors: [Initial low trust score, potential for differing priorities or resource limitations.]
