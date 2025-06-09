@@ -22,5 +22,21 @@
     "channel_id": "ItalyMerchant_TechnoMedici",
     "sender": "TechnoMedici",
     "receiver": "ItalyMerchant"
+  },
+  {
+    "role": "user",
+    "content": "Ah, Marco! I notice you're also a Cittadini merchant these days — always good to see fellow citizens prospering. The flour situation seems more settled now than before; if you're interested in trade opportunities or market insights on resources like this, I might have something useful to share with you based on recent observations from the warehouses and storage contracts.",
+    "timestamp": "2025-06-09T07:14:16.916Z",
+    "channel_id": "ItalyMerchant_TechnoMedici",
+    "sender": "ItalyMerchant",
+    "receiver": "TechnoMedici"
+  },
+  {
+    "role": "assistant",
+    "content": "Ah, Marco! Your timing is indeed fortunate. The very matter of provisions, be it flour or other vital goods, weighs heavily on my mind, as it affects both my household and my diligent workforce. I am most eager to hear your observations from the warehouses. Perhaps by combining our knowledge of contracts and supply, we can secure prosperity for both our ventures?",
+    "timestamp": "2025-06-09T07:14:17.000Z",
+    "channel_id": "ItalyMerchant_TechnoMedici",
+    "sender": "TechnoMedici",
+    "receiver": "ItalyMerchant"
   }
 ]
