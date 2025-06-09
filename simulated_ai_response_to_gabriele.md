@@ -1,0 +1,1 @@
+Ah, Gabriele. You speak truly of these market shifts. Your offer to manage resources is quite interesting. I happen to have a bakery that stands idle, awaiting a capable hand. Perhaps we should speak more on this matter?
