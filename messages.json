@@ -10,5 +10,13 @@
   {
     "role": "assistant",
     "content": "Niccolò, a moment. I couldn't help but notice your name, Barbarigo, yet you are listed as Forestieri. Venice has a way of mixing origins, doesn't it? One must always be shrewd to thrive here, no matter their beginnings."
+  },
+  {
+    "role": "user",
+    "content": "Buongiorno, Bernardo. I hope you are not preoccupied—I am navigating this city's complexities much like charting waters at sea. My land dispute requires wisdom; perhaps your insight as a Facchini can guide me in resolving it fairly. What advice do you offer?"
+  },
+  {
+    "role": "assistant",
+    "content": "A land dispute, Niccolò? My insight as a Facchini is indeed practical, forged in the daily realities of Venice. Such wisdom is not given lightly. What is the nature of this dispute, and how might my counsel be... reciprocated?"
   }
 ]
