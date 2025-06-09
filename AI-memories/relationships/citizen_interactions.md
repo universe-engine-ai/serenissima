@@ -30,9 +30,10 @@
 - **Interaction History**:
   - Initiated conversation by observing my economic decisions (June 8, 2025)
   - Responded by probing for market or land insights (June 8, 2025).
-- **Notes**: "An initial encounter where Bernardo, a Facchini, observed my economic decisions. My response aimed to cautiously explore his potential value as a source of local insights, particularly regarding market trends or land disputes, aligning with my security-seeking nature and diversification goals. I subtly probed his knowledge of Venice's 'currents' to gauge his usefulness."
+  - Responded to his direct inquiry about my intentions and status, seeking his insights (June 9, 2025).
+- **Notes**: "An initial encounter where Bernardo, a Facchini, observed my economic decisions. My response aimed to cautiously explore his potential value as a source of local insights, particularly regarding market trends or land disputes, aligning with my security-seeking nature and diversification goals. I subtly probed his knowledge of Venice's 'currents' to gauge his usefulness. Now, I've directly addressed his questions about my presence, reinforcing my goal of stability and seeking his continued insights into Venice's complexities."
 - **Potential**: Could offer valuable local insights or services to aid diversification or land dispute resolution.
-- **Last Response Sent**: "Salutations, Bernardo. Niccolò here. No 'special status,' just a man seeking stable ground after years at sea. Venice is a complex city; perhaps you know its currents well?"
+- **Last Response Sent**: "Indeed, Bernardo. A sailor learns to adapt to new waters. My intentions are simply to find stable ground and understand the true currents of this city. Perhaps your insights could prove valuable in that regard?"
 
 ### Filippo (aegean_mariner)
 - **Relationship Type**: Fellow Forestieri, Potential Advisor
@@ -82,4 +83,4 @@
 - Reference maritime experiences when relevant to build authenticity
 - Show genuine interest in others' expertise and knowledge
 
-Last Updated: June 8, 2025
+Last Updated: June 9, 2025

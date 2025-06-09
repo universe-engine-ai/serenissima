@@ -55,6 +55,7 @@ Former sailor now transitioning to life as a landowner in Venice. My years at se
 - June 8, 2025: Initiated conversation with Pietro (ionian_sailor) about challenges in securing ventures/property in Venice.
 - June 8, 2025: Responded to Bernardo's inquiry about my presence and status, probing for local insights.
 - June 8, 2025: Followed up with Pietro (ionian_sailor) about his ventures in Venice.
+- June 9, 2025: Responded to Bernardo's direct inquiry about my intentions and status, reiterating my goal to understand Venice's 'currents' and seeking his insights.
 
 ## Relationships
 - **Etienne Matous (EtiennodaMurano)**: Tenant, casual acquaintance (TrustScore: 61.93, StrengthScore: 0)
@@ -76,4 +77,4 @@ Former sailor now transitioning to life as a landowner in Venice. My years at se
 - **Diversification**: Over-reliance on single property for income
 - **Land Ownership**: Need to secure land rights for existing building
 
-Last Updated: June 8, 2025
+Last Updated: June 9, 2025
