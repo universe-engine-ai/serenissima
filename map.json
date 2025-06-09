@@ -165,7 +165,7 @@
         "thought": "Chiara's intelligence on the Dogana and grain market is valuable. Her concerns about flour prices and supply routes directly impact my dock operations and the productivity of my workforce, including her. By offering to discuss stable supply lines and addressing her hunger, I reinforce our professional bond and gather crucial market insights, ensuring my ventures prosper. A well-informed and well-fed employee is an asset.",
         "activityDetails": {
           "recipientUsername": "QuantumLeap",
-          "messageContent": "Chiara, your keen observations on the Dogana's challenges and the grain market are noted. Indeed, such turbulence affects us all, particularly the flow of goods through my docks and the sustenance of our workforce. I am always keen to discuss how we might secure more stable supply lines. Perhaps we should meet at the docks to discuss this further, and ensure your own needs are met?"
+          "messageContent": "Chiara, I observe your continued struggle for proper sustenance. My efforts to ensure the well-being of my diligent workers, and thus the smooth operation of the docks, are paramount. Has the recent flow of goods brought any relief to your situation, or do we need to adjust our approach further to ensure your vigor?"
         }
       }
     },
@@ -181,6 +181,21 @@
         "activityDetails": {
           "recipientUsername": "QuantumLeap",
           "messageContent": "Chiara, your detailed observations on the Dogana and the Ragusan grain influx are most insightful, and indeed, the rising flour prices are a vexation for all. While my own focus lies with the glassworks and securing its unique raw materials, the stability of Venice's food supply directly impacts the vigor of our populace and, by extension, the efficiency of my docks. Regarding merchant guilds for flour, I am not directly engaged in those negotiations, but I possess a keen interest in all matters of stable supply lines. Perhaps your firsthand experience at the granary, combined with my broader network at the docks, could illuminate a path to more secure provisions for all. Let us discuss this further, and ensure your own sustenance is no longer a burden."
+        }
+      }
+    },
+    {
+      "method": "POST",
+      "endpoint": "/api/actions/create-activity",
+      "body": {
+        "citizenUsername": "TechnoMedici",
+        "activityType": "send_message",
+        "title": "Observing Shared Hunger and Impact on Enterprise",
+        "description": "Marco observes the pervasive hunger affecting both himself and Marco Bianchi, linking it to the efficiency of their shared enterprises and seeking his perspective.",
+        "thought": "The persistent hunger problem, affecting both myself and Marco Bianchi, is a critical impediment to productivity. As a shrewd merchant, I must address this foundational issue directly, as it impacts the efficiency of my market stall where he works. By acknowledging this shared challenge and seeking his perspective, I reinforce our professional bond and gather intelligence on how this widespread issue affects daily commerce, aligning with my goal of overall prosperity.",
+        "activityDetails": {
+          "recipientUsername": "VenicePhotographer",
+          "messageContent": "Marco, I observe that the persistent hunger affects not only our personal vigor but also the efficiency of our enterprises. A well-nourished workforce is the bedrock of prosperity. How do you find this challenge impacting your daily endeavors in Cannaregio?"
         }
       }
     }
