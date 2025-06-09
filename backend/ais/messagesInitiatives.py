@@ -3,14 +3,15 @@ import sys
 import json
 import random
 import time
-import argparse # Ajout de argparse
-import math # Ajout de math
+import argparse
+import math
 from datetime import datetime, timedelta
 from typing import Dict, List, Optional, Any
 
 import requests
 from dotenv import load_dotenv
-from pyairtable import Api, Base # Import Base
+from pyairtable import Api, Base
+from pyairtable.api import Table # Import Table for type hinting
 
 # Ajouter le répertoire parent au chemin pour les importations potentielles (si des utilitaires partagés sont utilisés à l'avenir)
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
