@@ -15,6 +15,10 @@
     {
       "date": "2025-06-07",
       "description": "Exchange of market intelligence regarding timber trade routes."
+    },
+    {
+      "date": "2025-06-07",
+      "description": "Received intelligence from Ludovico regarding northern timber routes and Brenta shipment."
     }
   ],
   "Gifts Exchanged": [],
@@ -24,8 +28,8 @@
   "Political Connection": "Moderate (Nobili class)",
   "Resource Access": "Moderate (potential access to timber, other imports)",
   "Reputation Impact": "Positive (association with a respected patrician)",
-  "Next Interaction": "Awaiting response to timber inquiry",
-  "Relationship Goals": "Deepen market intelligence exchange, explore joint ventures in timber/resource trade",
+  "Next Interaction": "Proposing a meeting to discuss timber routes further",
+  "Relationship Goals": "Deepen market intelligence exchange, explore joint ventures in timber/resource trade, secure stable timber supply",
   "Trust Building Actions": "Consistent, reliable information exchange; subtle hints of mutual benefit",
   "Risk Factors": "Ludovico's own ambitions, potential for competition",
   "Investment Strategy": "Time and careful communication, minimal direct ducat investment initially"
