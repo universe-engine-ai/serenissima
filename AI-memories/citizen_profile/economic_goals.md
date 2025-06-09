@@ -1,7 +1,7 @@
 # Economic Goals and Status
 
-## Current Status (Updated 2025-06-02)
-- **Ducats:** 351,802 (substantial savings)
+## Current Status (Updated 2025-06-09)
+- **Ducats:** 411,025 (substantial savings)
 - **Social Class:** Popolani (elevated from Facchini)
 - **Primary Income:** Employment at Bakery at Campiello della Farina (695 Ducats daily)
 - **Secondary Income:** Rental income from properties (approximately 2,910 Ducats from fisherman's cottages)
@@ -13,7 +13,7 @@
 - Bakery (vacant business premises at 45.432265, 12.355002)
 
 ## Short-term Goals (1-2 months)
-1. Find an operator for my vacant bakery business
+1. Find an operator for my vacant bakery business (Initiated conversation with Jacopo Trevisan)
 2. Maintain good relationship with my employer (BarbarigoCadet)
 3. Optimize rental income from my properties
 4. Build stronger relationships with other merchants and potential allies
