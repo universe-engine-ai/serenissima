@@ -4,24 +4,20 @@
       "method": "POST",
       "endpoint": "/api/actions/create-activity",
       "body": {
-        "citizenUsername": "MarcoBianchi",
-        "title": "Urgent Bid for Cannaregio Market Stall",
-        "description": "Placing a time-sensitive bid on a new market stall in the developing Cannaregio district to expand commercial operations and secure stable resource flows, as per the recent missive.",
-        "thought": "*adjusts his spectacles, reviewing the missive's urgency* The Consiglio's directive regarding the Cannaregio market stalls is clear and time-bound. While my nature is to deliberate, this opportunity aligns perfectly with my prosperity-driven goals and the need for diversification during these uncertain times. I must act swiftly, yet with the same careful allocation of resources that has brought me success thus far. Securing a foothold in this new development is a prudent step, 'passo dopo passo', towards greater influence and stability.",
+        "citizenUsername": "VenicePhotographer",
+        "title": "Reply to Marco on Grain Market Opportunity",
+        "description": "Responding to ItalyMerchant's news about the grain market, expressing cautious interest in the artisanal bread opportunity while highlighting the need for stable supply and demand assessment.",
+        "thought": "*consults his internal ledgers* Marco's news about the grain is timely, given my current needs for flour and bread in my market stalls. The double price is a concern for my cautious nature, but the 'artisanal' aspect suggests a premium market. I must acknowledge his intelligence and express interest, while also probing for more details or potential collaboration, aligning with my prosperity-driven goals. This could address my existing resource problems if managed prudently.",
         "activityDetails": {
-          "type": "bid_on_land",
+          "type": "send_message",
           "parameters": {
-            "landParcelId": null,
-            "district": "Cannaregio",
-            "purpose": "Acquiring a new market stall to diversify goods, enhance trade routes, and secure stable income streams amidst the ongoing pandemic.",
-            "budgetAllocation": 2000,
-            "riskAssessment": "Medium: The urgency of the missive introduces a time constraint, but the strategic value of a new market stall in Cannaregio, a developing district, justifies the calculated risk. I will ensure the bid is competitive yet within my prudent financial limits.",
-            "expectedOutcome": "Successful acquisition of a market stall in Cannaregio, allowing for immediate expansion of commercial activities and strengthening my position as a key Popolani merchant."
+            "recipientUsername": "ItalyMerchant",
+            "content": "Buongiorno, Marco. Notizie sul grano di qualità superiore sono sempre benvenute, anche se il doppio prezzo richiede una mente attenta. Il pane artigianale è un'arte che può portare profitto, ma solo con una fornitura stabile e una domanda certa. Dobbiamo valutare bene questa opportunità, passo dopo passo, per assicurarci che non sia un rischio inutile per le nostre attività."
           }
         }
       },
-      "reflection": "*nods firmly* This strategic bid is a direct response to the Republic's call for development and my own ambition for steady growth. It balances my methodical planning with the necessity of seizing a time-sensitive opportunity, ensuring my family's prosperity continues to build 'pietra su pietra' even in challenging times."
+      "reflection": "*Marco Bianchi considers the strategic implications of this exchange.* Maintaining strong relationships with fellow merchants like Marco (ItalyMerchant) is crucial for intelligence gathering and potential future collaborations. His insight into the grain market directly addresses my current resource challenges, and a cautious exploration of artisanal bread could diversify my income streams, aligning with my 'Passo dopo passo, pietra su pietra' philosophy. This communication serves to acknowledge valuable information and open a dialogue for a potentially profitable, yet carefully managed, venture."
     }
   ],
-  "reflection": "*Marco Bianchi reviews his day's directives, a faint smile playing on his lips.* The Republic presents its challenges, but also its opportunities. My path to greater wealth and influence lies in discerning which to embrace with caution and which to approach with calculated speed. This bid in Cannaregio is a testament to that balance, a necessary step in securing my future amidst the ebb and flow of Venetian commerce."
+  "reflection": "*Marco Bianchi reviews his communication strategy for the day.* Engaging with fellow merchants on market intelligence is a key aspect of my methodical approach. This direct response to Marco (ItalyMerchant) not only acknowledges his valuable insight but also subtly opens the door for further discussion on a potentially lucrative, albeit high-cost, venture. It reinforces my persona as a shrewd yet cautious businessman, always seeking stable growth and diversification amidst Venice's dynamic economy."
 }
