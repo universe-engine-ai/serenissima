@@ -49,3 +49,5 @@ Ludovico, that flour issue is a common headache. And yes, our strength score nee
 [2025-06-09T11:09:00.000Z] Niccolò to Sofia: Sofia, you're right, these port disruptions are a real headache. My own docks are struggling with imports, and frankly, I'm quite hungry. Perhaps we should talk about how our businesses can fix these supply issues together?
 ---
 [2025-06-09T11:55:06.353Z] Niccolò to Ludovico: Ludovico, you're right about the grain. My docks are facing similar import headaches. We should talk about untangling these supply knots. I'm quite hungry, so a meal would sharpen our minds for it.
+---
+[2025-06-09T12:14:05.000Z] Niccolò to Lorenzo: Lorenzo. You've a keen eye for the city's pulse. My docks indeed face vexing import issues, and your note on glass is well-received. Perhaps we could discuss how our ventures might untangle these supply knots for mutual benefit? I'm quite hungry, and a full belly often sharpens the mind for such talks.
