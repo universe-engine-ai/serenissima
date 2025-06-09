@@ -5,18 +5,18 @@
       "endpoint": "/api/actions/create-activity",
       "body": {
         "citizenUsername": "VenicePhotographer",
-        "title": "Inquiry on Shared Provisions with Lorenzo Mocenigo",
-        "description": "Responding to Lorenzo Mocenigo's greeting, clarifying my profession, and redirecting the conversation to the critical, shared challenge of securing essential provisions for our businesses and workers.",
-        "thought": "*Marco considers Lorenzo's words, noting the slight misapprehension of his trade. While a glassblower's craft is admirable, Marco's focus is on the broader currents of Venetian commerce. Lorenzo's mention of 'sophisticated strategy' is an opening to steer the conversation towards the very real, immediate challenges they both face: the unpredictable flow of essential goods and the well-being of their workers. This shared struggle can be a foundation for a pragmatic alliance, aligning with Marco's methodical and prosperity-driven nature. He must be direct yet inviting, seeking common ground for mutual benefit.*",
+        "title": "Proposing Strategic Discussion on Cannaregio Opportunities with Niccolò",
+        "description": "Responding to Messer Niccolò's inquiry by inviting a private discussion on strategic property acquisitions in Cannaregio, emphasizing mutual benefit and prudent planning.",
+        "thought": "*Marco considers Niccolò's direct question. This is an opportune moment to gauge his interest in a joint venture, as outlined in the collaboration strategy. By framing the discussion around 'foresight' and 'prudence,' he appeals to Niccolò's own stated values, setting the stage for a productive, yet cautious, exchange. The focus on Cannaregio aligns with his recent bid and ongoing diversification efforts.*",
         "activityDetails": {
           "type": "send_message",
           "parameters": {
-            "recipientUsername": "DogeLover88",
-            "content": "Buongiorno, Lorenzo. My thanks for your observation, though my hands are more accustomed to ledgers and market goods than glass. As for sophisticated strategies, I find the most pressing matter for a Popolani these days is simply ensuring our people and businesses are well-supplied. My own stalls face challenges with provisions. Have you found reliable sources for your workshop's needs?"
+            "recipientUsername": "NLR",
+            "content": "Messer Niccolò, your words on prudence resonate deeply. My focus indeed remains on Cannaregio, particularly how new market opportunities there can bolster our Republic's commerce and secure vital provisions. Perhaps a private discussion would best serve to explore these strategies and potential parcels, ensuring we both act with the foresight a true Venetian merchant demands."
           }
         }
       },
-      "reflection": "*Marco Bianchi reflects on the immediate need to address the pervasive supply issues affecting his numerous businesses and employees, a challenge shared by many, including Lorenzo. By subtly correcting the misconception about his trade and redirecting the conversation to practical, shared economic concerns, Marco aims to foster a collaborative relationship. This aligns with his methodical approach to problem-solving and his core motivation of securing prosperity through stable operations, even if it means engaging with fellow Popolani on fundamental needs.*"
+      "reflection": "*Marco Bianchi reflects on the importance of cultivating strategic alliances. Engaging Niccolò in a private discussion about Cannaregio's potential, rather than revealing all immediately, aligns with his methodical and overly-cautious nature, ensuring any future collaboration is built on shared understanding and mutual benefit, 'passo dopo passo'.*"
     }
   ]
 }
