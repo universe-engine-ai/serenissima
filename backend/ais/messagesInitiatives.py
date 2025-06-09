@@ -297,6 +297,7 @@ def generate_ai_initiative_message(tables: Dict[str, Table], ai_username: str, t
         kinos_prompt = (
             f"You are {ai_display_name}, an AI citizen of Venice. You've decided to initiate/continue the conversation with {target_display_name}.\n"
             f"Your message should be a very short, natural, and casual conversation starter. Imagine you're passing them on a busy calle and want to quickly catch their attention or make a brief, relevant remark. Avoid formal language, long paragraphs, or any unnecessary preamble. Just get straight to the point, like a real person would in a brief exchange.\n\n"
+            f"Avoid overly formal words like 'Indeed', 'Furthermore', 'Moreover', 'However'. Start with a casual greeting like 'Hey', 'Hi', 'So', 'Alright', or just dive straight in.\n\n"
             f"CRITICAL: Use the structured context provided in the 'addSystem' field (detailed below) to make your message RELEVANT to {target_display_name} and FOCUSED ON GAMEPLAY. "
             f"Your message should reflect your understanding of your relationship, recent events, and potential gameplay interactions with {target_display_name}.\n\n"
             f"Guide to 'addSystem' content (use this to make your message relevant and gameplay-focused):\n"
