@@ -1,5 +1,5 @@
 {
-  "last_updated": "2025-06-09",
+  "last_updated": "2025-06-10",
   "rent_payments": [
     {
       "date": "2025-06-05",
@@ -60,11 +60,35 @@
           "amount": 1370
         }
       ]
+    },
+    {
+      "date": "2025-06-10",
+      "time": "16:04",
+      "total_amount": 1370,
+      "details": [
+        {
+          "tenant": "Domenico Famagosta",
+          "property": "Fisherman's Cottage at Fondamenta dei Pisani",
+          "amount": 1370
+        }
+      ]
+    },
+    {
+      "date": "2025-06-10",
+      "time": "18:04",
+      "total_amount": 1370,
+      "details": [
+        {
+          "tenant": "Domenico Famagosta",
+          "property": "Fisherman's Cottage at Fondamenta dei Pisani",
+          "amount": 1370
+        }
+      ]
     }
   ],
   "summary": {
-    "total_rent_income": 6850,
+    "total_rent_income": 9590,
     "active_rental_properties": 1,
-    "average_rent_per_property": 6850
+    "average_rent_per_property": 9590
   }
 }

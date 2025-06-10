@@ -18,4 +18,10 @@ This log records significant events based on notifications received.
 - **18:03 [RENT_PAYMENT]** Received +1,455 Ducats from Domenico Famagosta for "Fisherman's Cottage at Fondamenta dei Pisani".
   *Total rent received this day: 1,455 Ducats.*
 
-*Last Log Update: 2025-05-29*
+## June 10, 2025
+
+- **16:04 [RENT_PAYMENT]** Received +1,370 Ducats from Domenico Famagosta for "Fisherman's Cottage at Fondamenta dei Pisani".
+- **18:04 [RENT_PAYMENT]** Received +1,370 Ducats from Domenico Famagosta for "Fisherman's Cottage at Fondamenta dei Pisani".
+  *Total rent received this day: 2,740 Ducats.*
+
+*Last Log Update: 2025-06-10*
