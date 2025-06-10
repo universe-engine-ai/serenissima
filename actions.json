@@ -1,0 +1,94 @@
+{
+  "actions": [
+    {
+      "reflection": "My previous attempt to procure bread for my own sustenance failed due to a clerical error in the missive, specifically using 'resourceType' instead of 'resourceTypeId'. A precise merchant learns from such oversights. My hunger persists, impacting my effectiveness. I must rectify this immediately to maintain my focus and set a proper example for my employees. I will re-issue the command to fetch bread for my home, ensuring the correct parameter is used.",
+      "method": "POST",
+      "endpoint": "/api/activities/try-create",
+      "body": {
+        "citizenUsername": "ShadowHunter",
+        "activityType": "fetch_resource",
+        "activityParameters": {
+          "resourceTypeId": "bread",
+          "amount": 5,
+          "toBuildingId": "building_45.445670_12.323013"
+        }
+      }
+    },
+    {
+      "reflection": "The problem of my hungry employee, Stefano Dalmazzo ('adriatic_captain'), remains unresolved, and my prior attempt to adjust his wages was unsuccessful. A productive workforce is the bedrock of any successful enterprise. I must ensure my employee is well-compensated and able to procure food, thereby restoring his productivity. I will re-submit the wage adjustment, demonstrating persistence in navigating the Republic's administrative processes.",
+      "method": "POST",
+      "endpoint": "/api/activities/try-create",
+      "body": {
+        "citizenUsername": "ShadowHunter",
+        "activityType": "adjust_business_wages",
+        "activityParameters": {
+          "businessBuildingId": "building_45.444823_12.324276",
+          "newWageAmount": 450,
+          "strategy": "retention"
+        }
+      }
+    },
+    {
+      "reflection": "My bakeries remain idle due to a lack of flour, a critical input for bread production. My previous attempts to establish supply contracts or fetch resources directly were hampered by system errors or my own imprecision. Having identified a public source of flour, I will now dispatch my employee, Stefano, to procure an initial supply for the bakery at Calle della Scuola dei Fornai. This is a direct and necessary step to restart production.",
+      "method": "POST",
+      "endpoint": "/api/activities/try-create",
+      "body": {
+        "citizenUsername": "adriatic_captain",
+        "activityType": "fetch_resource",
+        "activityParameters": {
+          "contractId": "contract-public-sell-bosphorus_navigator-marketgalley_45.44790330321718_12.320144368395496_357-flour",
+          "fromBuildingId": "marketgalley_45.44790330321718_12.320144368395496_357",
+          "toBuildingId": "building_45.444823_12.324276",
+          "resourceTypeId": "flour",
+          "amount": 10
+        }
+      }
+    },
+    {
+      "reflection": "To ensure both my bakeries are operational, I will personally oversee the procurement of flour for the bakery I manage at Calle dei Intagliatori. By sourcing from the same reliable merchant, I maintain efficiency and cost-effectiveness across my operations. A true merchant is not afraid to get his hands dirty to secure his profits.",
+      "method": "POST",
+      "endpoint": "/api/activities/try-create",
+      "body": {
+        "citizenUsername": "ShadowHunter",
+        "activityType": "fetch_resource",
+        "activityParameters": {
+          "contractId": "contract-public-sell-bosphorus_navigator-marketgalley_45.44790330321718_12.320144368395496_357-flour",
+          "fromBuildingId": "marketgalley_45.44790330321718_12.320144368395496_357",
+          "toBuildingId": "building_45.439358_12.325904",
+          "resourceTypeId": "flour",
+          "amount": 10
+        }
+      }
+    },
+    {
+      "reflection": "My bakeries also lack supply contracts for spiced wine, a high-margin product. The previous attempts to establish these 'markup_buy' contracts were unsuccessful. To maximize revenue and diversify my offerings, I must ensure a steady supply of this valuable commodity. I will re-initiate the 'markup_buy' contract for spiced wine at the bakery at Calle della Scuola dei Fornai.",
+      "method": "POST",
+      "endpoint": "/api/activities/try-create",
+      "body": {
+        "citizenUsername": "ShadowHunter",
+        "activityType": "manage_markup_buy_contract",
+        "activityParameters": {
+          "buyerBuildingId": "building_45.444823_12.324276",
+          "resourceType": "spiced_wine",
+          "targetAmount": 50,
+          "maxPricePerResource": 4500
+        }
+      }
+    },
+    {
+      "reflection": "To complete the restoration of my supply lines and ensure both my bakeries are fully profitable, I will establish the final required 'markup_buy' contract for spiced wine at the bakery on Calle dei Intagliatori. A systematic and comprehensive approach is essential to a thriving business in Venice.",
+      "method": "POST",
+      "endpoint": "/api/activities/try-create",
+      "body": {
+        "citizenUsername": "ShadowHunter",
+        "activityType": "manage_markup_buy_contract",
+        "activityParameters": {
+          "buyerBuildingId": "building_45.439358_12.325904",
+          "resourceType": "spiced_wine",
+          "targetAmount": 50,
+          "maxPricePerResource": 4500
+        }
+      }
+    }
+  ]
+}
