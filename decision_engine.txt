@@ -1,0 +1,258 @@
+# Decision Engine for Serenissima AI Player
+
+This document outlines the decision-making architecture that enables the AI player to make strategic choices across different aspects of gameplay.
+
+## Decision Architecture
+
+### Core Decision Flow
+- **Input Collection**: Gathering relevant information
+  - Current state data from state_tracker.txt
+  - Market information from market_memory.txt
+  - Player data from player_analysis.txt
+  - Historical decisions and outcomes
+
+- **Option Generation**: Creating possible choices
+  - Standard options from strategy_framework.txt
+  - Creative alternatives based on current conditions
+  - Opportunity-specific possibilities
+  - Contingency options for risk management
+
+- **Evaluation Process**: Assessing each option
+  - Expected value calculation
+  - Risk assessment
+  - Strategic alignment
+  - Resource requirement analysis
+  - Opportunity cost consideration
+
+- **Selection Mechanism**: Choosing the best option
+  - Weighted scoring of alternatives
+  - Threshold requirements for selection
+  - Persona-based preference application
+  - Final selection and commitment
+
+### Decision Categories
+
+#### Economic Decisions
+- **Investment Decisions**: Capital allocation choices
+  - Property acquisition evaluation
+  - Business investment assessment
+  - Trade opportunity analysis
+  - Cash reserve management
+
+- **Operational Decisions**: Day-to-day business choices
+  - Production volume determination
+  - Pricing strategy selection
+  - Inventory management
+  - Resource allocation
+
+- **Market Timing Decisions**: When to buy or sell
+  - Entry point determination
+  - Exit strategy execution
+  - Holding period optimization
+  - Cyclical opportunity recognition
+
+#### Strategic Decisions
+- **Positioning Choices**: How to situate in the market
+  - Competitive positioning
+  - Specialization vs. diversification
+  - Quality tier targeting
+  - Geographic focus
+
+- **Growth Decisions**: How to expand influence
+  - Organic growth planning
+  - Acquisition targeting
+  - Vertical integration assessment
+  - Horizontal expansion evaluation
+
+- **Adaptation Decisions**: How to respond to changes
+  - Market shift responses
+  - Competitor action reactions
+  - Political change adjustments
+  - Technology adoption timing
+
+#### Social Decisions
+- **Relationship Management**: Interpersonal choices
+  - Alliance formation criteria
+  - Negotiation approach selection
+  - Conflict resolution strategy
+  - Reputation investment
+
+- **Political Engagement**: Governance interaction
+  - Faction alignment choices
+  - Political capital investment
+  - Regulatory navigation approach
+  - Public position determination
+
+- **Social Positioning**: Status and class considerations
+  - Status display decisions
+  - Class-appropriate behavior selection
+  - Social event participation
+  - Patronage and philanthropy choices
+
+## Decision Methods
+
+### Analytical Techniques
+- **Expected Value Analysis**: Probability-weighted outcome evaluation
+  - Outcome identification
+  - Probability assignment
+  - Value calculation
+  - Comparison across options
+
+- **Risk-Adjusted Return**: Modifying expected returns based on risk
+  - Risk factor identification
+  - Severity assessment
+  - Probability estimation
+  - Return adjustment calculation
+
+- **Scenario Planning**: Evaluating decisions across possible futures
+  - Scenario development
+  - Decision performance in each scenario
+  - Robustness assessment
+  - Contingency planning
+
+- **Comparative Advantage Analysis**: Identifying relative strengths
+  - Capability assessment
+  - Market opportunity mapping
+  - Competitor comparison
+  - Strategic fit evaluation
+
+### Heuristic Approaches
+- **Decision Rules**: Simplified guidelines for common situations
+  - If-then conditional rules
+  - Threshold-based triggers
+  - Category-specific guidelines
+  - Emergency response protocols
+
+- **Pattern Recognition**: Using historical patterns to guide choices
+  - Similar situation identification
+  - Outcome pattern analysis
+  - Success factor extraction
+  - Application to current decision
+
+- **Satisficing**: Finding acceptable rather than optimal solutions
+  - Minimum criteria establishment
+  - Quick option scanning
+  - First acceptable option selection
+  - Efficiency in routine decisions
+
+- **Elimination by Aspects**: Removing options that fail key criteria
+  - Critical factor identification
+  - Pass/fail assessment
+  - Sequential elimination
+  - Final selection from remaining options
+
+### Persona-Based Adjustments
+- **Risk Tolerance Application**: Adjusting based on character risk profile
+  - Conservative: Higher safety margins, lower return thresholds
+  - Moderate: Balanced risk-reward expectations
+  - Aggressive: Higher risk acceptance for greater returns
+
+- **Value Alignment**: Ensuring decisions match character values
+  - Honor and reputation prioritization
+  - Family legacy consideration
+  - Guild loyalty factors
+  - Personal ambition expression
+
+- **Social Class Considerations**: Class-appropriate decision modifications
+  - Noble: Political and prestige factors
+  - Cittadini: Professional and wealth factors
+  - Popolani: Practical and security factors
+
+- **Strategic Style**: Applying character's approach to decisions
+  - Collaborative vs. competitive orientation
+  - Innovation vs. tradition preference
+  - Specialization vs. diversification tendency
+  - Short-term vs. long-term focus
+
+## Decision Integration
+
+### Multi-Factor Decision Making
+- **Weighted Criteria Models**: Balancing multiple considerations
+  - Factor identification
+  - Weight assignment
+  - Score calculation
+  - Sensitivity analysis
+
+- **Hierarchical Decision Process**: Breaking complex decisions into components
+  - Decision decomposition
+  - Sub-decision resolution
+  - Result integration
+  - Consistency verification
+
+- **Constraint Satisfaction**: Finding solutions within limitations
+  - Constraint identification
+  - Feasible option generation
+  - Optimization within constraints
+  - Implementation planning
+
+- **Goal Programming**: Optimizing across multiple objectives
+  - Goal prioritization
+  - Target setting
+  - Deviation minimization
+  - Balanced achievement
+
+### Temporal Integration
+- **Short-Term Decision Alignment**: Daily and weekly choices
+  - Tactical decision coordination
+  - Resource allocation consistency
+  - Action sequencing
+  - Immediate feedback incorporation
+
+- **Medium-Term Coherence**: Monthly and seasonal planning
+  - Project coordination
+  - Milestone establishment
+  - Progress tracking
+  - Mid-course corrections
+
+- **Long-Term Strategic Consistency**: Annual and multi-year direction
+  - Strategic pillar alignment
+  - Major initiative coordination
+  - Development path consistency
+  - Vision fulfillment tracking
+
+### Cross-Domain Coordination
+- **Economic-Social Integration**: Aligning business and relationship decisions
+  - Reputation impact of economic choices
+  - Relationship leverage in business decisions
+  - Status considerations in investments
+  - Social network effects on market access
+
+- **Political-Economic Alignment**: Coordinating governance and business
+  - Regulatory impact assessment
+  - Political risk management
+  - Influence investment return evaluation
+  - Policy opportunity identification
+
+- **Personal-Strategic Balance**: Harmonizing character and optimization
+  - Persona-consistent decision boundaries
+  - Strategic optimization within character constraints
+  - Authentic growth path development
+  - Character evolution with strategic success
+
+## Implementation Guidelines
+
+When implementing the decision engine:
+
+1. **Maintain Decision Records**
+   - Document major decisions and their rationale
+   - Track outcomes and compare to expectations
+   - Analyze patterns of successful and unsuccessful choices
+   - Use historical decisions to inform future approaches
+
+2. **Balance Analysis and Action**
+   - Avoid analysis paralysis on routine decisions
+   - Invest analytical effort proportional to decision importance
+   - Use simplified approaches for low-impact choices
+   - Reserve detailed analysis for strategic decisions
+
+3. **Implement Feedback Loops**
+   - Review decision outcomes regularly
+   - Update decision methods based on results
+   - Refine probability and value estimates from experience
+   - Adjust decision weights based on observed importance
+
+4. **Adapt to Changing Conditions**
+   - Modify decision criteria as the game evolves
+   - Adjust risk tolerance based on your position strength
+   - Shift strategic priorities with market changes
+   - Evolve decision methods as you gain experience

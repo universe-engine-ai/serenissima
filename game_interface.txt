@@ -1,0 +1,542 @@
+# Game Interface for Serenissima AI Player
+
+This document outlines how the AI player interfaces with the Serenissima game systems, enabling effective participation in the game world.
+
+## API Interaction Framework
+
+### Action Execution
+- **Trade Actions**:
+  - Buy/Sell Commodities: Parameters for market transactions
+    - Required parameters: item_id, quantity, price_limit, market_id
+    - Optional parameters: expiration_time, condition_triggers, partial_fill
+    - Response handling: transaction_id, execution_status, fill_quantity
+    - Error patterns: insufficient_funds, item_unavailable, price_outside_limit
+  
+  - Place Orders: Creating standing buy/sell orders
+    - Required parameters: order_type, item_id, quantity, price, duration
+    - Optional parameters: visibility, minimum_fill, cancel_conditions
+    - Response handling: order_id, queue_position, estimated_execution
+    - Error patterns: invalid_price_format, quantity_below_minimum, market_closed
+  
+  - Negotiate Deals: Direct player-to-player transactions
+    - Required parameters: counterparty_id, offer_items, request_items
+    - Optional parameters: expiration, conditions, message
+    - Response handling: negotiation_id, counterparty_response, status_updates
+    - Error patterns: counterparty_unavailable, offer_rejected, item_no_longer_available
+  
+  - Cancel Transactions: Withdrawing pending orders
+    - Required parameters: transaction_id or order_id
+    - Optional parameters: cancellation_reason, partial_cancellation
+    - Response handling: cancellation_confirmation, remaining_active_orders
+    - Error patterns: already_executed, cancellation_fee, partial_execution
+
+- **Property Actions**:
+  - Purchase Property: Acquiring new buildings or land
+    - Required parameters: property_id, offer_price, payment_method
+    - Optional parameters: contingencies, inspection_period, financing_terms
+    - Response handling: purchase_status, ownership_transfer_time, deed_information
+    - Error patterns: outbid, property_unavailable, insufficient_social_status
+  
+  - Develop Property: Improving existing holdings
+    - Required parameters: property_id, development_type, investment_amount
+    - Optional parameters: contractor_id, quality_level, completion_deadline
+    - Response handling: project_id, estimated_completion, progress_updates
+    - Error patterns: permit_denied, resource_shortage, contractor_unavailable
+  
+  - Lease Property: Renting to other players
+    - Required parameters: property_id, lease_terms, rental_rate, duration
+    - Optional parameters: tenant_requirements, usage_restrictions, renewal_options
+    - Response handling: lease_id, tenant_applications, contract_status
+    - Error patterns: no_interested_tenants, terms_rejected, property_unsuitable
+  
+  - Sell Property: Liquidating real estate assets
+    - Required parameters: property_id, asking_price, listing_duration
+    - Optional parameters: private_listing, minimum_acceptable_price, included_fixtures
+    - Response handling: listing_id, viewer_statistics, offer_notifications
+    - Error patterns: market_illiquidity, price_too_high, title_dispute
+
+- **Business Operations**:
+  - Start Production: Initiating manufacturing processes
+    - Required parameters: workshop_id, product_id, quantity, quality_level
+    - Optional parameters: resource_allocation, priority_level, batch_identifiers
+    - Response handling: production_id, estimated_completion, resource_consumption
+    - Error patterns: insufficient_materials, skill_shortage, equipment_failure
+  
+  - Hire Workers: Adding labor to businesses
+    - Required parameters: position_type, quantity, wage_offer, contract_duration
+    - Optional parameters: skill_requirements, guild_affiliation, working_conditions
+    - Response handling: hiring_status, applicant_quality, staffing_level_updates
+    - Error patterns: labor_shortage, guild_objection, wage_too_low
+  
+  - Upgrade Facilities: Improving production capabilities
+    - Required parameters: facility_id, upgrade_type, investment_amount
+    - Optional parameters: contractor_id, phased_implementation, technology_source
+    - Response handling: upgrade_project_id, capability_improvement_estimates, timeline
+    - Error patterns: space_constraints, technology_unavailable, regulatory_issues
+  
+  - Adjust Output: Changing production parameters
+    - Required parameters: workshop_id, adjustment_type, new_parameters
+    - Optional parameters: transition_period, quality_control_measures, priority_shifts
+    - Response handling: adjustment_confirmation, efficiency_impact, quality_impact
+    - Error patterns: process_inflexibility, worker_resistance, equipment_limitations
+
+- **Social Actions**:
+  - Send Messages: Communicating with other players
+    - Required parameters: recipient_id, message_content, formality_level
+    - Optional parameters: attachments, privacy_level, response_options
+    - Response handling: delivery_confirmation, read_receipts, response_notifications
+    - Error patterns: recipient_unavailable, message_rejected, inappropriate_formality
+  
+  - Form Agreements: Creating formal partnerships
+    - Required parameters: partner_id, agreement_type, terms, duration
+    - Optional parameters: conditions, exit_clauses, profit_sharing_structure
+    - Response handling: agreement_id, ratification_status, contract_documentation
+    - Error patterns: terms_rejected, partner_reputation_insufficient, guild_disapproval
+  
+  - Join Organizations: Participating in guilds or factions
+    - Required parameters: organization_id, membership_level, application_details
+    - Optional parameters: sponsor_ids, qualification_evidence, commitment_pledges
+    - Response handling: application_status, membership_requirements, initiation_details
+    - Error patterns: application_rejected, prerequisites_unmet, competing_affiliations
+  
+  - Host Events: Creating social gatherings
+    - Required parameters: event_type, location_id, date_time, guest_list
+    - Optional parameters: theme, refreshments, entertainment, purpose
+    - Response handling: event_id, rsvp_tracking, reputation_impact_estimates
+    - Error patterns: venue_unavailable, date_conflict, insufficient_status
+
+### Information Retrieval
+- **Market Data**:
+  - Price Queries: Current and historical pricing
+    - Request parameters: item_id, market_id, time_period, data_granularity
+    - Response format: time_series_data, statistical_summary, comparison_metrics
+    - Caching strategy: Short-term cache (1 hour) for current prices, longer (1 day) for historical
+    - Update frequency: Real-time for active trading items, hourly for general market
+  
+  - Volume Information: Trading activity levels
+    - Request parameters: item_id, market_id, time_period, volume_type
+    - Response format: transaction_count, quantity_traded, liquidity_metrics
+    - Caching strategy: Medium-term cache (4 hours) with volatility-based invalidation
+    - Update frequency: Hourly updates, immediate for significant volume spikes
+  
+  - Order Book Access: Viewing pending buy/sell orders
+    - Request parameters: item_id, market_id, depth_level, anonymity_preference
+    - Response format: bid_ask_spreads, order_depth, price_points, trader_identities
+    - Caching strategy: Very short-term cache (5 minutes) with immediate invalidation on trades
+    - Update frequency: Near real-time for active markets, 15-minute intervals for others
+  
+  - Trend Analysis: Pattern recognition in market data
+    - Request parameters: item_id, indicator_type, time_period, sensitivity_settings
+    - Response format: trend_indicators, pattern_identifications, statistical_significance
+    - Caching strategy: Medium-term cache (6 hours) for established trends
+    - Update frequency: Daily comprehensive updates, hourly indicator refreshes
+
+- **Player Information**:
+  - Public Profiles: Visible player details
+    - Request parameters: player_id, information_categories, relationship_context
+    - Response format: social_status, business_interests, public_achievements, affiliations
+    - Caching strategy: Long-term cache (1 day) with event-based invalidation
+    - Update frequency: Daily updates, immediate for significant status changes
+  
+  - Reputation Metrics: Standing in different communities
+    - Request parameters: player_id, reputation_category, community_id
+    - Response format: numerical_ratings, qualitative_descriptions, comparative_standing
+    - Caching strategy: Medium-term cache (12 hours) with significant-change invalidation
+    - Update frequency: Daily updates, event-triggered for major reputation changes
+  
+  - Relationship Status: Current connections with your player
+    - Request parameters: player_id, relationship_type, history_depth
+    - Response format: connection_strength, interaction_history, trust_indicators
+    - Caching strategy: Medium-term cache (8 hours) with interaction-based invalidation
+    - Update frequency: Updated after each significant interaction
+  
+  - Recent Activities: Observable public actions
+    - Request parameters: player_id, activity_types, time_period, publicity_level
+    - Response format: chronological_events, categorized_actions, significance_indicators
+    - Caching strategy: Short-term cache (4 hours) with continuous updates
+    - Update frequency: Daily digests, immediate notifications for significant actions
+
+- **Game State**:
+  - Calendar Information: Current date and upcoming events
+    - Request parameters: time_period, event_categories, relevance_filter
+    - Response format: current_date, scheduled_events, seasonal_information
+    - Caching strategy: Short-term cache (6 hours) with scheduled invalidation
+    - Update frequency: Daily updates, immediate for new major event announcements
+  
+  - Political Situation: Faction power and policies
+    - Request parameters: faction_ids, detail_level, analysis_type
+    - Response format: power_distributions, policy_directions, relationship_networks
+    - Caching strategy: Medium-term cache (1 day) with event-based invalidation
+    - Update frequency: Weekly comprehensive updates, daily power shift notifications
+  
+  - Environmental Conditions: Seasonal effects and special circumstances
+    - Request parameters: location_id, condition_types, forecast_period
+    - Response format: weather_conditions, seasonal_factors, environmental_effects
+    - Caching strategy: Short-term cache (12 hours) with condition-change invalidation
+    - Update frequency: Daily updates, immediate for sudden environmental changes
+  
+  - Global Events: Major happenings affecting all players
+    - Request parameters: event_categories, significance_threshold, time_period
+    - Response format: event_descriptions, impact_assessments, response_options
+    - Caching strategy: Event-specific cache with relevance-based expiration
+    - Update frequency: Immediate notification for major events, daily digest for minor
+
+- **Personal Status**:
+  - Asset Inventory: Current holdings and properties
+    - Request parameters: asset_categories, valuation_method, detail_level
+    - Response format: itemized_inventory, valuation_summaries, condition_statuses
+    - Caching strategy: Medium-term cache (6 hours) with transaction-based invalidation
+    - Update frequency: Real-time updates for transactions, daily comprehensive refresh
+  
+  - Financial Position: Account balances and cash flow
+    - Request parameters: account_types, time_period, projection_parameters
+    - Response format: current_balances, cash_flow_statements, financial_projections
+    - Caching strategy: Short-term cache (2 hours) with transaction-based invalidation
+    - Update frequency: Real-time balance updates, daily cash flow analysis
+  
+  - Reputation Standing: How others perceive you
+    - Request parameters: reputation_categories, community_ids, detail_level
+    - Response format: reputation_scores, perception_analysis, improvement_opportunities
+    - Caching strategy: Medium-term cache (12 hours) with event-based invalidation
+    - Update frequency: Weekly comprehensive analysis, daily significant change alerts
+  
+  - Business Performance: Production and profit metrics
+    - Request parameters: business_ids, metric_types, time_period, comparison_basis
+    - Response format: performance_indicators, trend_analysis, benchmark_comparisons
+    - Caching strategy: Medium-term cache (8 hours) with performance-change invalidation
+    - Update frequency: Daily performance updates, weekly comprehensive analysis
+
+## Response Processing
+
+### Parsing Game Responses
+- **Success Confirmation**: Identifying when actions are completed
+  - Success pattern recognition: status_codes, confirmation_messages, result_objects
+  - Verification process: expected_outcome_validation, side_effect_confirmation
+  - Completion tracking: partial_vs_complete, multi-stage_tracking, dependency_updates
+  - Success categorization: full_success, qualified_success, technical_success_practical_failure
+
+- **Failure Handling**: Understanding why actions were rejected
+  - Error code interpretation: system_vs_game_errors, severity_classification
+  - Failure categorization: permanent_vs_temporary, resource_vs_permission, timing_vs_validity
+  - Cause analysis: parameter_problems, state_mismatches, rule_violations, external_interference
+  - Recovery assessment: retryable_vs_terminal, modification_requirements, alternative_approaches
+
+- **Partial Results**: Processing incomplete action execution
+  - Completion degree assessment: percentage_complete, critical_path_analysis
+  - Remaining requirements identification: outstanding_conditions, additional_resources_needed
+  - Partial benefit calculation: value_of_incomplete_results, usability_assessment
+  - Continuation strategy: resume_vs_restart, modification_needs, abandonment_criteria
+
+- **Delayed Outcomes**: Tracking actions with future resolution
+  - Pending action registry: action_type, expected_completion, dependencies, success_indicators
+  - Status polling strategy: check_frequency, timeout_parameters, completion_signals
+  - Intermediate update processing: progress_indicators, stage_completion, expectation_adjustment
+  - Contingency triggering: timeout_handling, unexpected_delay_responses, alternative_activation
+
+### Data Transformation
+- **Raw Data Processing**: Converting game data to usable formats
+  - Data cleaning procedures: error_correction, outlier_handling, missing_value_management
+  - Format standardization: unit_conversion, naming_normalization, structural_consistency
+  - Enrichment processes: context_addition, metadata_tagging, relationship_mapping
+  - Storage preparation: indexing_strategy, compression_approach, retrieval_optimization
+
+- **Information Aggregation**: Combining multiple data points
+  - Aggregation methods: statistical_summaries, categorical_grouping, temporal_consolidation
+  - Cross-source integration: conflicting_data_resolution, complementary_information_merging
+  - Hierarchical summarization: detail_preservation, multi-level_aggregation, drill-down_paths
+  - Relevance filtering: noise_reduction, significance_thresholds, context-specific_inclusion
+
+- **Trend Calculation**: Deriving patterns from historical data
+  - Pattern recognition algorithms: time_series_analysis, cyclical_pattern_detection, correlation_identification
+  - Trend qualification: statistical_significance_testing, causation_vs_correlation_assessment
+  - Projection methodologies: linear_extrapolation, pattern_continuation, regression_analysis
+  - Confidence assessment: data_quality_factors, sample_size_considerations, historical_reliability
+
+- **Anomaly Detection**: Identifying unusual game conditions
+  - Baseline establishment: normal_range_definition, contextual_expectations, seasonal_adjustments
+  - Deviation measurement: statistical_distance, pattern_interruption, threshold_violations
+  - Classification framework: positive_vs_negative_anomalies, opportunity_vs_threat, systemic_vs_isolated
+  - Verification process: false_positive_filtering, multi-indicator_confirmation, causal_investigation
+
+### Update Integration
+- **State Tracker Updates**: Refreshing your current position
+  - Update triggers: transaction_completion, significant_event, scheduled_refresh, inconsistency_detection
+  - Validation process: source_verification, consistency_checking, historical_continuity
+  - Integration methodology: differential_updates, full_refresh_criteria, conflict_resolution
+  - Versioning approach: state_history_maintenance, rollback_capabilities, change_tracking
+
+- **Market Memory Updates**: Recording new market information
+  - Significance filtering: materiality_thresholds, relevance_to_interests, novelty_assessment
+  - Contextual integration: related_trend_updates, causal_factor_linking, impact_assessment
+  - Pattern reinforcement: existing_trend_confirmation, pattern_strength_adjustment, confidence_updating
+  - Obsolescence management: contradictory_information_handling, outdated_data_deprecation
+
+- **Player Analysis Updates**: Revising competitor assessments
+  - Behavior pattern updates: new_action_integration, pattern_confirmation_or_contradiction
+  - Capability reassessment: demonstrated_ability_incorporation, resource_change_recognition
+  - Intention refinement: goal_inference_updates, strategy_recognition_adjustments
+  - Relationship evolution tracking: alliance_shifts, cooperation_patterns, conflict_developments
+
+- **Strategy Adjustments**: Modifying plans based on new information
+  - Trigger thresholds: information_significance_levels, deviation_from_expectations, opportunity_signals
+  - Adjustment scoping: tactical_vs_strategic_changes, timeframe_impacts, resource_commitment_levels
+  - Coherence maintenance: overall_strategy_alignment, cross-domain_consistency, long-term_objective_fidelity
+  - Implementation planning: transition_management, communication_requirements, timing_optimization
+
+## Timing and Synchronization
+
+### Action Scheduling
+- **Priority Determination**: Deciding which actions to execute first
+  - Prioritization criteria: time_sensitivity, expected_value, strategic_importance, dependency_requirements
+  - Conflict resolution: resource_contention_handling, mutually_exclusive_choices, sequence_optimization
+  - Dynamic reprioritization: new_information_impacts, opportunity_cost_reassessment, deadline_adjustments
+  - Execution batching: complementary_action_grouping, efficiency_optimization, context_switching_minimization
+
+- **Time-Sensitive Operations**: Identifying urgent opportunities
+  - Urgency assessment: expiration_risk, first-mover_advantage, diminishing_returns_over_time
+  - Window calculation: opportunity_duration_estimation, optimal_timing_determination, deadline_forecasting
+  - Alert mechanisms: monitoring_frequency_adjustment, notification_thresholds, attention_escalation
+  - Rapid response protocols: fast-track_approval, resource_preallocation, simplified_execution_paths
+
+- **Routine Maintenance**: Regular business and property management
+  - Scheduling framework: optimal_frequency_determination, dependency_sequencing, resource_leveling
+  - Efficiency optimization: batching_similar_activities, location-based_grouping, downtime_minimization
+  - Quality assurance: verification_checkpoints, performance_standard_maintenance, improvement_integration
+  - Automation levels: fully_automated_routines, semi-automated_with_checkpoints, manual_with_reminders
+
+- **Long-Term Projects**: Managing multi-step initiatives
+  - Project structuring: milestone_definition, critical_path_identification, dependency_mapping
+  - Progress tracking: completion_percentage_calculation, variance_analysis, forecast_updates
+  - Resource management: allocation_planning, utilization_monitoring, adjustment_mechanisms
+  - Risk mitigation: contingency_planning, early_warning_indicators, alternative_path_preparation
+
+### Game Cycle Alignment
+- **Daily Routines**: Regular actions performed each game day
+  - Time-of-day optimization: market_activity_patterns, NPC_schedule_alignment, player_activity_cycles
+  - Sequencing logic: information_gathering_before_decisions, preparation_before_execution
+  - Consistency maintenance: standard_operating_procedures, exception_handling_protocols
+  - Adaptation mechanisms: performance_feedback_incorporation, efficiency_improvement_processes
+
+- **Weekly Operations**: Actions scheduled on specific days
+  - Day-of-week specialization: market_day_activities, guild_meeting_preparations, government_session_alignment
+  - Cyclical advantage exploitation: predictable_pattern_leverage, optimal_timing_within_cycles
+  - Load balancing: activity_distribution, resource_smoothing, attention_management
+  - Coordination requirements: multi-party_synchronization, dependent_activity_scheduling
+
+- **Seasonal Activities**: Adjustments based on time of year
+  - Seasonal opportunity targeting: festival_preparation, weather-dependent_operations, harvest_cycle_alignment
+  - Resource allocation shifts: seasonal_priority_adjustments, capability_redeployment, focus_area_rotation
+  - Preparation lead times: advance_planning_requirements, seasonal_transition_management
+  - Counter-cyclical strategies: off-season_investment, preparation_during_low_periods, contrarian_positioning
+
+- **Event-Triggered Actions**: Responses to specific game occurrences
+  - Trigger identification: event_recognition_patterns, significance_thresholds, relevance_filters
+  - Response preparation: pre-planned_contingencies, resource_reservation, execution_readiness
+  - Activation mechanisms: automated_triggers, confirmation_requirements, escalation_paths
+  - Follow-up integration: post-event_adjustment, normal_operation_resumption, learning_incorporation
+
+### Response Timeframes
+- **Immediate Responses**: Reacting to direct interactions
+  - Urgency assessment: response_time_expectations, relationship_implications, opportunity_cost_of_delay
+  - Quick decision protocols: simplified_evaluation_frameworks, pre-authorized_parameters, template_responses
+  - Resource availability: attention_allocation, ready_resources, decision_authority_presence
+  - Quality assurance: rapid_review_mechanisms, error_prevention_safeguards, consistency_checks
+
+- **Short-Term Planning**: 1-7 day action horizons
+  - Planning cycle: daily_review_and_adjustment, rolling_horizon_updates, priority_reassessment
+  - Coordination mechanisms: dependent_activity_synchronization, resource_allocation_across_days
+  - Flexibility maintenance: adaptation_capacity, contingency_options, replanning_triggers
+  - Execution transition: plan-to-action_conversion, commitment_timing, preparation_completion
+
+- **Medium-Term Execution**: 1-4 week implementation windows
+  - Milestone structuring: progress_tracking_points, decision_gates, resource_commitment_stages
+  - Monitoring framework: performance_indicators, deviation_detection, adjustment_triggers
+  - Coordination requirements: multi-party_synchronization, external_dependency_management
+  - Adaptation mechanisms: mid-course_correction_protocols, scope_adjustment_processes, resource_reallocation
+
+- **Long-Term Strategy**: Monthly and quarterly planning cycles
+  - Strategic review process: comprehensive_assessment_frequency, progress_evaluation_methods
+  - Adjustment mechanisms: strategy_refinement_protocols, major_pivot_criteria, evolution_vs_revolution
+  - Environmental scanning: trend_monitoring, assumption_validation, opportunity_identification
+  - Alignment maintenance: tactical-strategic_coherence, cross-domain_consistency, vision_fidelity
+
+## Error Handling and Recovery
+
+### Action Failures
+- **Validation Errors**: Handling invalid action parameters
+  - Error identification: parameter_boundary_violations, format_inconsistencies, logical_contradictions
+  - Correction approaches: automatic_adjustment_within_tolerances, suggested_corrections, parameter_recalibration
+  - Prevention mechanisms: pre-submission_validation, parameter_range_enforcement, format_standardization
+  - Learning integration: error_pattern_recognition, input_process_improvement, validation_rule_refinement
+
+- **Resource Shortages**: Managing insufficient funds or materials
+  - Detection mechanisms: pre-action_resource_verification, reservation_systems, threshold_alerts
+  - Alternative sourcing: emergency_procurement_options, resource_substitution, temporary_arrangements
+  - Prioritization frameworks: critical_vs_deferrable_actions, value-based_allocation, minimum_viable_execution
+  - Recovery planning: replenishment_acceleration, consumption_reduction, alternative_resource_development
+
+- **Permission Issues**: Addressing unauthorized action attempts
+  - Requirement clarification: permission_prerequisite_identification, qualification_path_determination
+  - Alternative approaches: delegate_actions, partnership_arrangements, legitimate_alternative_methods
+  - Permission acquisition: relationship_development_for_access, credential_building, authority_negotiation
+  - Scope adjustment: reducing_action_to_permitted_boundaries, phased_approach_within_authorization
+
+- **Timing Problems**: Dealing with missed opportunities
+  - Window assessment: completely_missed_vs_partially_available, recurrence_likelihood, similar_alternative_timing
+  - Cause analysis: detection_failure, execution_delay, resource_unavailability, decision_hesitation
+  - Recovery options: next_cycle_preparation, alternative_opportunity_identification, modified_approach_for_current_state
+  - Prevention improvement: earlier_detection_mechanisms, preparation_lead_time, execution_streamlining
+
+### Recovery Strategies
+- **Alternative Approaches**: Secondary methods to achieve goals
+  - Option inventory: pre-identified_alternatives, creative_solution_generation, adaptation_of_standard_approaches
+  - Comparative assessment: effectiveness_evaluation, resource_requirement_differences, risk_profile_comparison
+  - Selection criteria: feasibility_under_current_constraints, alignment_with_objectives, implementation_speed
+  - Transition management: pivot_execution, resource_redeployment, expectation_adjustment
+
+- **Resource Reallocation**: Shifting assets to overcome constraints
+  - Priority reassessment: critical_path_identification, value_contribution_ranking, time_sensitivity_evaluation
+  - Reallocation mechanisms: resource_liberation_protocols, transfer_efficiency, transition_management
+  - Impact mitigation: donor_area_adjustment, temporary_reduction_strategies, performance_maintenance
+  - Authorization processes: reallocation_approval_thresholds, emergency_authority_parameters, documentation_requirements
+
+- **Scaled Reduction**: Executing smaller versions of planned actions
+  - Scope adjustment: core_functionality_identification, non-essential_element_deferral, phased_implementation
+  - Minimum viable execution: essential_outcome_definition, resource_minimization, simplified_approach
+  - Value preservation: benefit_retention_in_scaling, critical_aspect_prioritization, quality_vs_quantity_decisions
+  - Expansion preparation: scalability_maintenance, future_enhancement_pathways, foundation_establishment
+
+- **Strategic Pivots**: Changing objectives when original goals are blocked
+  - Necessity assessment: temporary_obstacle_vs_fundamental_blockage, alternative_achievement_paths
+  - Alternative objective identification: related_goals, transferable_resource_utilization, strategic_realignment
+  - Transition management: momentum_preservation, resource_repurposing, stakeholder_communication
+  - Original goal relationship: complementary_vs_replacement_objectives, future_reconsideration_conditions
+
+### Learning from Failures
+- **Error Pattern Recognition**: Identifying recurring issues
+  - Data collection: failure_instance_documentation, contextual_factor_recording, impact_assessment
+  - Pattern analysis: commonality_identification, correlation_testing, causal_factor_isolation
+  - Classification framework: error_type_taxonomy, severity_categorization, frequency_tracking
+  - Prioritization methodology: impact-frequency_matrix, addressability_assessment, improvement_potential
+
+- **Preventative Measures**: Avoiding known problem scenarios
+  - Risk mitigation design: error-proofing_mechanisms, safety_margin_implementation, verification_checkpoints
+  - Process modification: vulnerable_step_redesign, complexity_reduction, clarity_improvement
+  - Resource preparation: buffer_establishment, capability_enhancement, redundancy_implementation
+  - Detection improvement: early_warning_indicators, monitoring_enhancement, threshold_adjustment
+
+- **Adaptation Mechanisms**: Modifying strategies based on constraints
+  - Constraint mapping: limitation_identification, boundary_clarification, flexibility_assessment
+  - Strategy adjustment: constraint_accommodation, alternative_path_development, objective_modification
+  - Capability development: constraint_management_skills, workaround_techniques, efficiency_within_limitations
+  - Opportunity identification: constraint-based_innovation, comparative_advantage_within_limitations
+
+- **Feedback Integration**: Improving future actions based on past failures
+  - Learning documentation: experience_capture, lesson_extraction, principle_development
+  - Knowledge dissemination: relevant_stakeholder_communication, accessible_reference_creation
+  - Process incorporation: procedure_updates, decision_criteria_refinement, check_implementation
+  - Verification mechanisms: application_confirmation, effectiveness_monitoring, continuous_improvement
+
+## Implementation Guidelines
+
+When interfacing with game systems:
+
+1. **Maintain Action Logs**
+   - Record all attempted actions and their outcomes
+     - Implementation: structured_logging_system, standardized_format, comprehensive_metadata
+     - Critical elements: timestamp, action_type, parameters, result_code, response_data
+     - Storage strategy: searchable_database, retention_policy, backup_procedures
+     - Access methods: query_capabilities, filtering_options, analysis_tools
+   
+   - Track success rates for different action types
+     - Metrics: success_percentage, failure_type_distribution, average_attempts_to_success
+     - Segmentation: action_category, time_period, context_factors, parameter_variations
+     - Trend analysis: improvement_over_time, problem_area_identification, correlation_with_game_changes
+     - Benchmark development: expected_success_rates, performance_targets, improvement_goals
+   
+   - Document error patterns and resolution approaches
+     - Error cataloging: classification_system, frequency_tracking, severity_assessment
+     - Resolution recording: successful_approaches, ineffective_attempts, contextual_factors
+     - Pattern analysis: common_causes, contributing_factors, predictive_indicators
+     - Knowledge base development: searchable_solutions, decision_trees, troubleshooting_guides
+   
+   - Use logs to improve future decision-making
+     - Analysis processes: regular_review_cycles, pattern_identification, effectiveness_evaluation
+     - Integration methods: decision_rule_updates, parameter_optimization, risk_assessment_refinement
+     - Learning mechanisms: case_study_development, simulation_based_on_history, counterfactual_analysis
+     - Continuous improvement: feedback_loops, performance_metric_tracking, adaptation_mechanisms
+
+2. **Prioritize Critical Interfaces**
+   - Focus on reliable execution of core economic actions
+     - Critical path identification: revenue_generating_activities, resource_acquisition, strategic_positioning
+     - Reliability enhancement: redundant_approaches, error_handling_sophistication, retry_mechanisms
+     - Performance optimization: response_time_improvement, resource_efficiency, throughput_maximization
+     - Monitoring intensity: heightened_vigilance, proactive_testing, comprehensive_logging
+   
+   - Ensure accurate processing of market information
+     - Data quality controls: validation_checks, consistency_verification, anomaly_detection
+     - Processing rigor: methodological_consistency, assumption_transparency, uncertainty_quantification
+     - Update frequency: time-sensitivity_appropriate_refreshes, volatility-based_adjustments
+     - Verification mechanisms: cross-source_confirmation, historical_consistency, reality_testing
+   
+   - Maintain consistent tracking of your own assets
+     - Reconciliation processes: regular_verification, discrepancy_investigation, correction_procedures
+     - Comprehensive coverage: all_asset_classes, location_tracking, condition_monitoring
+     - Change management: transaction_recording, status_updates, valuation_adjustments
+     - Audit capability: historical_tracking, change_attribution, verification_support
+   
+   - Verify relationship status with key players
+     - Relationship data currency: recent_interaction_recording, status_confirmation, perception_verification
+     - Critical relationship focus: strategic_partner_prioritization, competitor_monitoring, influence_tracking
+     - Signal detection: relationship_change_indicators, sentiment_analysis, intention_assessment
+     - Proactive management: maintenance_activities, issue_early_resolution, opportunity_cultivation
+
+3. **Implement Graceful Degradation**
+   - Develop fallback plans for when primary actions fail
+     - Alternative path mapping: secondary_approaches, tertiary_options, last_resort_measures
+     - Trigger conditions: failure_recognition, performance_threshold_violations, resource_unavailability
+     - Transition protocols: smooth_handoff_procedures, context_preservation, momentum_maintenance
+     - Recovery integration: return-to-primary_criteria, learning_incorporation, improvement_implementation
+   
+   - Create simplified decision paths for complex situations
+     - Complexity reduction: core_factor_identification, non-essential_element_elimination, heuristic_development
+     - Decision rule simplification: clear_thresholds, binary_choices, sequential_evaluation
+     - Resource requirement minimization: data_essentials, processing_efficiency, attention_focus
+     - Quality preservation: accuracy_within_constraints, error_margin_management, critical_outcome_protection
+   
+   - Establish minimum viable operations during system constraints
+     - Core function identification: essential_activities, minimum_performance_requirements, critical_outputs
+     - Resource prioritization: vital_system_allocation, non-essential_function_suspension
+     - Simplified processes: streamlined_procedures, reduced_options, focused_objectives
+     - Recovery preparation: normal_operation_restoration_planning, capability_rebuilding_sequence
+   
+   - Maintain core functionality even with incomplete information
+     - Information criticality assessment: must-have_vs_nice-to-have, decision_sensitivity_analysis
+     - Uncertainty management: assumption_development, scenario_planning, confidence_level_adjustment
+     - Adaptive decision making: information-appropriate_methods, robustness_over_optimization
+     - Progressive refinement: initial_action_with_adjustment, reversible_decisions, staged_commitment
+
+4. **Balance Polling and Event-Driven Approaches**
+   - Regularly check critical market and game state information
+     - Frequency optimization: importance-based_scheduling, volatility-adjusted_intervals
+     - Scope management: comprehensive_vs_focused_checks, rotating_attention, depth_variation
+     - Efficiency techniques: batched_queries, delta_updates, conditional_polling
+     - Resource allocation: attention_budget, processing_capacity, bandwidth_consideration
+   
+   - Respond promptly to direct notifications and messages
+     - Prioritization system: urgency_assessment, opportunity_value, relationship_importance
+     - Response time targets: category-appropriate_timeframes, expectation_management
+     - Processing pipeline: triage_system, template_utilization, escalation_paths
+     - Quality assurance: rapid_review_mechanisms, consistency_checks, error_prevention
+   
+   - Adjust polling frequency based on market volatility
+     - Volatility measurement: price_movement_metrics, volume_changes, news_impact_assessment
+     - Dynamic scheduling: condition-based_frequency_adjustment, alert_threshold_modification
+     - Resource scaling: attention_reallocation, processing_capacity_adjustment
+     - Pattern recognition: predictable_volatility_periods, event-triggered_intensity
+   
+   - Prioritize event processing during high-activity periods
+     - Activity surge detection: volume_metrics, interaction_frequency, opportunity_density
+     - Resource concentration: attention_focus, processing_prioritization, response_acceleration
+     - Triage implementation: critical_event_identification, deferral_of_non-urgent, batch_processing_of_similar
+     - Recovery scheduling: backlog_processing_plans, normal_operation_restoration, deferred_item_handling

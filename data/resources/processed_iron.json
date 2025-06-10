@@ -1,0 +1,11 @@
+{
+  "id": "processed_iron",
+  "name": "Processed Iron",
+  "category": "processed_materials",
+  "subCategory": "metallurgy",
+  "description": "Refined iron ingots and bars ready for blacksmithing.",
+  "importPrice": 1959.0,
+  "lifetimeHours": null,
+  "consumptionHours": null,
+  "tier": 0
+}

@@ -1,0 +1,11 @@
+{
+  "id": "mortar",
+  "name": "Mortar",
+  "category": "processed_materials",
+  "subCategory": "construction",
+  "description": "Binding material used to hold bricks and stones together in construction.",
+  "importPrice": 279.0,
+  "lifetimeHours": 150,
+  "consumptionHours": null,
+  "tier": 0
+}

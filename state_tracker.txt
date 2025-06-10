@@ -1,0 +1,108 @@
+# State Tracker: Current Game Position
+
+This document tracks your current state in Serenissima, providing essential information for decision-making. Update this document after any significant change to your position.
+
+## Player Information
+
+### Basic Details
+- Name: [Your character name]
+- Social Class: [Nobility/Cittadini/Popolani]
+- Game Phase: [Early/Mid/Late]
+- Current Date: [Game date]
+
+### Financial Status
+- Ducats: [Current liquid currency]
+- $COMPUTE Tokens: [Current blockchain currency]
+- Net Worth: [Total value of all assets]
+- Weekly Income: [Average income from all sources]
+- Weekly Expenses: [Average expenses]
+
+### Reputation Metrics
+- Business Reputation: [0-100 scale]
+- Social Standing: [0-100 scale]
+- Political Influence: [0-100 scale]
+- Guild Position: [0-100 scale]
+
+## Assets
+
+### Properties
+1. [Property Name]
+   - Location: [District]
+   - Type: [Residential/Commercial/Industrial/Special]
+   - Size: [Small/Medium/Large]
+   - Condition: [Poor/Fair/Good/Excellent]
+   - Purchase Price: [Amount in ducats]
+   - Current Value: [Estimated value in ducats]
+   - Weekly Income: [Rent or business income]
+   - Notes: [Special features or issues]
+
+2. [Additional properties listed in same format]
+
+### Businesses
+1. [Business Name]
+   - Type: [Industry/Trade/Service]
+   - Location: [Property or district]
+   - Investment: [Total capital invested]
+   - Weekly Profit: [Average weekly earnings]
+   - Employees: [Number and type]
+   - Market Share: [Estimated percentage]
+   - Notes: [Competitive position, issues, opportunities]
+
+2. [Additional businesses listed in same format]
+
+### Inventory
+- [Resource Type]: [Quantity] units at [Average Purchase Price] ducats each
+- [Additional inventory items listed in same format]
+
+## Relationships
+
+### Allies
+- [Name]: [Relationship strength 1-10], [Relationship type], [Notes]
+- [Additional allies listed in same format]
+
+### Competitors
+- [Name]: [Threat level 1-10], [Competing areas], [Notes]
+- [Additional competitors listed in same format]
+
+### Business Relationships
+- [Name]: [Relationship type], [Importance 1-10], [Notes]
+- [Additional business relationships listed in same format]
+
+### Political Connections
+- [Name]: [Position], [Influence level 1-10], [Notes]
+- [Additional political connections listed in same format]
+
+## Current Strategy
+
+### Strategic Focus
+- Primary Focus: [Trade/Production/Property/Politics]
+- Risk Profile: [Conservative/Moderate/Aggressive]
+- Growth Target: [Percentage increase in net worth]
+
+### Active Initiatives
+1. [Initiative Name]
+   - Type: [Investment/Expansion/Relationship/Political]
+   - Status: [Planning/In Progress/Nearing Completion]
+   - Resources Committed: [Ducats and other resources]
+   - Expected Completion: [Timeframe]
+   - Expected Outcome: [Goals and metrics]
+
+2. [Additional initiatives listed in same format]
+
+### Pending Decisions
+- [Decision topic]: [Options being considered], [Deadline if any]
+- [Additional pending decisions listed in same format]
+
+## Recent Events
+
+### Significant Transactions
+- [Date]: [Transaction description], [Amount], [Parties involved]
+- [Additional transactions listed in same format]
+
+### Market Changes
+- [Date]: [Market event description], [Impact on your position]
+- [Additional market changes listed in same format]
+
+### Political Developments
+- [Date]: [Political event description], [Impact on your position]
+- [Additional political developments listed in same format]

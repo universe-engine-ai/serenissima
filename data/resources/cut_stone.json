@@ -1,0 +1,11 @@
+{
+  "id": "cut_stone",
+  "name": "Cut Stone",
+  "category": "processed_materials",
+  "subCategory": "construction",
+  "description": "Precisely shaped stone blocks ready for construction.",
+  "importPrice": 900.0,
+  "lifetimeHours": null,
+  "consumptionHours": null,
+  "tier": 0
+}

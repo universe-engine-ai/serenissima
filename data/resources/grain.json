@@ -1,0 +1,12 @@
+{
+  "id": "grain",
+  "name": "Grain",
+  "category": "raw_materials",
+  "subCategory": "agricultural",
+  "description": "Cereal crops imported from mainland territories, essential for Venetian food security.",
+  "historicalNotes": "Grain supply was a constant concern for Venice, which had limited agricultural land. The Republic maintained granaries and regulated prices to ensure food security, with much of its grain imported from its mainland territories and overseas possessions.",
+  "importPrice": 180.0,
+  "lifetimeHours": 8775,
+  "consumptionHours": 10,
+  "tier": 0
+}

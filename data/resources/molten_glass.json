@@ -1,0 +1,11 @@
+{
+  "id": "molten_glass",
+  "name": "Molten Glass",
+  "category": "processed_materials",
+  "subCategory": "glass",
+  "description": "Heated glass ready for shaping by skilled glassblowers.",
+  "importPrice": 1270.8,
+  "lifetimeHours": 75,
+  "consumptionHours": null,
+  "tier": 0
+}

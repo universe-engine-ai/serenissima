@@ -1,0 +1,11 @@
+{
+  "id": "olive_oil",
+  "name": "Olive Oil",
+  "category": "processed_materials",
+  "subCategory": "food",
+  "description": "Pressed oil from olives, used in cooking and various industries.",
+  "importPrice": 768.0,
+  "lifetimeHours": 17550,
+  "consumptionHours": 19,
+  "tier": 2
+}

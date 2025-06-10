@@ -1,0 +1,9 @@
+requests==2.31.0
+pytz
+colorama
+python-dateutil
+uvicorn[standard]
+fastapi
+pyairtable
+python-multipart
+demjson3==3.0.6
