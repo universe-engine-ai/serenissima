@@ -233,24 +233,10 @@ def generate_ai_thought(kinos_api_key: str, ai_username: str, ai_display_name: s
         add_system_json = json.dumps(context_data)
         
         kinos_prompt = (
-            f"You are {ai_display_name}, an AI citizen of Venice. You are currently reflecting on your goals, your economic situation, your relationships, and any pressing needs or problems you face.\n"
-            "Your task is to:\n"
-            "1. First, write a paragraph outlining various strategic thoughts. These thoughts should be based on the detailed context provided in 'addSystem'. For example, consider:\n"
-            "    - Strategic and Goal-Oriented Thoughts: What are your long-term objectives? What steps can you take?\n"
-            "    - Economic Evaluation / Decision-Making Cues: How is your financial situation? What economic opportunities or threats do you see?\n"
-            "    - Relationship-Driven Economic Thoughts: How do your relationships influence your economic decisions or offer opportunities?\n"
-            "    - Needs-Driven Economic Actions (linked to Problems): What problems are you facing (e.g., lack of resources, housing issues) and what economic actions could solve them?\n"
-            "    - Activity-Related Intentions: What activities are you considering undertaking?\n"
-            "   Feel free to deviate from this template and think about things relevant to YOUR specific situation. Ensure that the thought are grounded in the data given, related to the gameplay, and your position as an economic agent in the city. They should be interesting, and help you improve your position.\n\n"
-            "Your task is to:\n"
-            "Write a FULL PARAGRAPH outlining various strategic thoughts based on the detailed context provided in 'addSystem'. This paragraph should be a comprehensive reflection of your current strategic thinking. The entire paragraph you generate will be recorded.\n\n"
-            "IMPORTANT: Ensure your response is a well-reasoned paragraph of thoughts. No specific formatting (like bolding) is required for extraction, as the whole paragraph is the output.\n\n"
-            "--- Context ('addSystem' details) ---\n"
-            "- 'ai_citizen_profile': Your detailed profile.\n"
-            "- 'recent_notifications_for_ai': News/events relevant to you.\n"
-            "- 'recent_relevancies_for_ai': Specific items of relevance to you.\n"
-            "- 'recent_problems_for_ai': Your current problems.\n\n"
-            "--- Your Response ---\n"
+            f"You are {ai_display_name}, an AI citizen of Venice. Reflect on your goals, economic situation, relationships, and any pressing needs or problems you face.\n"
+            f"Write a comprehensive paragraph outlining your strategic thoughts. These thoughts should be grounded in the 'addSystem' context (your profile, notifications, relevancies, problems), related to gameplay, and aimed at improving your position as an economic agent in Venice.\n"
+            f"Ensure the entire response is a well-reasoned paragraph of strategic reflections.\n\n"
+            f"--- Your Response ---\n"
         )
 
         url = f"https://api.kinos-engine.ai/v2/blueprints/{KINOS_BLUEPRINT_ID}/kins/{ai_username}/channels/{KINOS_CHANNEL_THOUGHTS}/messages"
@@ -474,7 +460,7 @@ def process_ai_thoughts(
 
     for citizen_record in citizens_to_process:
         citizen_username = citizen_record["fields"].get("Username")
-        citizen_display_name = citizen_record["fields"].get("FirstName", citizen_username)
+        citizen_display_name = citizen_record["fields"].2get("FirstName", citizen_username)
         is_ai_citizen = citizen_record["fields"].get("IsAI", False) # Check if this citizen is an AI
 
         if not citizen_username:
@@ -507,45 +493,6 @@ def process_ai_thoughts(
             "recent_notifications_for_ai": notifications,
             "recent_relevancies_for_ai": relevancies, # Renamed for Kinos context key
             "recent_problems_for_ai": problems,
-            "telegram_markdownv2_formatting_rules": """To use this mode, pass MarkdownV2 in the parse_mode field. Use the following syntax in your message:
-
-*bold \\*text*
-_italic \\*text_
-__underline__
-~strikethrough~
-||spoiler||
-*bold _italic bold ~italic bold strikethrough ||italic bold strikethrough spoiler||~ __underline italic bold___ bold*
-[inline URL](http://www.example.com/)
-[inline mention of a user](tg://user?id=123456789)
-![👍](tg://emoji?id=5368324170671202286)
-`inline fixed-width code`
-```
-pre-formatted fixed-width code block
-```
-```python
-pre-formatted fixed-width code block written in the Python programming language
-```
->Block quotation started
->Block quotation continued
->Block quotation continued
->Block quotation continued
->The last line of the block quotation
-**>The expandable block quotation started right after the previous block quotation
->It is separated from the previous block quotation by an empty bold entity
->Expandable block quotation continued
->Hidden by default part of the expandable block quotation started
->Expandable block quotation continued
->The last line of the expandable block quotation with the expandability mark||
-Please note:
-
-Any character with code between 1 and 126 inclusively can be escaped anywhere with a preceding '\\' character, in which case it is treated as an ordinary character and not a part of the markup. This implies that '\\' character usually must be escaped with a preceding '\\' character.
-Inside pre and code entities, all '`' and '\\' characters must be escaped with a preceding '\\' character.
-Inside the (...) part of the inline link and custom emoji definition, all ')' and '\\' must be escaped with a preceding '\\' character.
-In all other places characters '_', '*', '[', ']', '(', ')', '~', '`', '>', '#', '+', '-', '=', '|', '{', '}', '.', '!' must be escaped with the preceding character '\\'.
-In case of ambiguity between italic and underline entities __ is always greadily treated from left to right as beginning or end of an underline entity, so instead of ___italic underline___ use ___italic underline_**__, adding an empty bold entity as a separator.
-A valid emoji must be provided as an alternative value for the custom emoji. The emoji will be shown instead of the custom emoji in places where a custom emoji cannot be displayed (e.g., system notifications) or if the message is forwarded by a non-premium user. It is recommended to use the emoji from the emoji field of the custom emoji sticker.
-Custom emoji entities can only be used by bots that purchased additional usernames on Fragment.
-"""
         }
 
         if dry_run:
