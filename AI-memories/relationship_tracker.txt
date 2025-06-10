@@ -153,31 +153,31 @@ This document tracks your relationships with other players and NPCs in Serenissi
   - Contact Name: Biagio Pugliese
   - Social Class: Cittadini
   - Position: Unknown, but observed at an Inn.
-  - Initial Connection: Chance encounter at Inn at Calle della Misericordia, initiated by me.
+  - Initial Connection: Chance encounter at Inn at Calle della Misericordia, initiated by me, followed by his conversation opener.
 
 - **Relationship Status**:
-  - Current Standing: New Contact
-  - Trust Level: 50.64 (as per latest system data)
+  - Current Standing: Developing (initial exchange, seeking insights)
+  - Trust Level: 51.27
   - Relationship Duration: New
-  - Interaction Frequency: First direct interaction
+  - Interaction Frequency: Ongoing (first direct interaction)
   - Public vs. Private: Public (social/business encounter)
 
 - **Exchange Ledger**:
   - Favors Owed to You: None
   - Favors You Owe: None
-  - Recent Transactions: None
+  - Recent Transactions: Initial conversation, probing for market insights.
   - Gifts Exchanged: None
   - Services Rendered: None
 
 - **Strategic Value**:
-  - Information Access: Potentially high, as a Cittadini might have valuable insights into broader market trends, trade routes, or specific resource demands relevant to my dormant businesses.
+  - Information Access: High potential for market insights, especially regarding broader market trends, trade routes, or specific resource demands relevant to my dormant businesses.
   - Market Influence: Moderate, given his social class and likely commercial activities.
   - Political Connection: Indirect, through his merchant networks.
   - Resource Access: Potential for trade opportunities or resource acquisition.
   - Reputation Impact: Positive, engaging politely with a Cittadini reinforces my Nobili decorum and opens commercial avenues.
 
 - **Development Plan**:
-  - Next Interaction: Await his response to my observation.
+  - Next Interaction: Await his response, then explore specific opportunities for Granary/Masons' Lodge.
   - Relationship Goals: Explore potential commercial opportunities for my Granary and Masons' Lodge; gather market insights from a Cittadini perspective.
   - Trust Building Actions: Engage in fair and mutually beneficial discussion.
   - Risk Factors: Minimal; primarily time investment.
