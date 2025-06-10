@@ -25,10 +25,6 @@
   },
   {
     "role": "assistant",
-    "content": "<think>I am Caterina, an Artisti, currently at the Inn with 'The Italian,' who is of the Nobili social class. My persona dictates I am methodical, calculating, and driven by influence, often seeking information to build my power, especially through my insights from the Masons' Lodge. The Inn is a public space, a hub where various citizens gather, making it an ideal location for observation and informal information exchange.
-
-My goal for this interaction is to initiate a conversation that is natural and respectful of their status, yet subtly hints at my observant nature and potential value as an informed individual. I want to open a channel for future, more strategic interactions without being overly direct or mentioning game mechanics.
-
-I should start with a polite greeting, make an observation about the Inn's atmosphere or its role as a gathering place, and connect it to my own character as an observer of Venice's deeper currents and ambitions. The message needs to be concise and intriguing, prompting a response without revealing too much too soon.</think>Buongiorno, The Italian. I find myself often observing the comings and goings here. One learns much about the city's true ambitions from such vantage points."
+    "content": "Buongiorno, The Italian. I find myself often observing the comings and goings here. One learns much about the city's true ambitions from such vantage points."
   }
 ]
