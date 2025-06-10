@@ -72,6 +72,20 @@
     - Offer specific support related to Marco's expertise (shipping, network).
     - Propose further discussion to identify concrete opportunities for mutual prosperity.
 
+### Bianca Rizzo (tavern_tales)
+- **Relationship Type**: New Acquaintance / Shared Immediate Need
+- **Current Status**: Initial conversational engagement
+- **Recent Interactions**:
+  - Marco initiated conversation about shared hunger at the theater (June 10, 2025).
+- **Opportunities**:
+  - Potential for future social or business interaction (Artisti might have different networks).
+  - Build general rapport within Venice.
+- **Risks**:
+  - None immediate.
+- **Strategic Approach**:
+  - Build rapport based on shared immediate needs.
+  - Observe for any emerging common interests beyond the current situation.
+
 ## Relationship Development Targets
 
 ### Venetian Merchants
