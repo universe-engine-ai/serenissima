@@ -437,7 +437,8 @@ def process_ai_thoughts(
     dry_run: bool = False,
     specific_citizen_username: Optional[str] = None,
     only_ais: bool = False,
-    only_humans: bool = False
+    only_humans: bool = False,
+    play_context: Optional[Dict] = None # Added play_context parameter
 ):
     """Main function to process AI thought generation."""
     filter_desc = "all eligible"
@@ -547,7 +548,7 @@ In case of ambiguity between italic and underline entities __ is always greadily
 A valid emoji must be provided as an alternative value for the custom emoji. The emoji will be shown instead of the custom emoji in places where a custom emoji cannot be displayed (e.g., system notifications) or if the message is forwarded by a non-premium user. It is recommended to use the emoji from the emoji field of the custom emoji sticker.
 Custom emoji entities can only be used by bots that purchased additional usernames on Fragment.
 """,
-            "play_context": context_data.get("play_context", {}) # Add play_context to the context data
+            "play_context": play_context or {} # Use the passed play_context
         }
 
         if dry_run:
@@ -620,11 +621,15 @@ if __name__ == "__main__":
         action="store_true",
         help="Simulate the process without making Kinos API calls or writing to Airtable."
     )
+    # Add an argument for play_context if it's meant to be passed via CLI
+    # For now, assuming it's passed programmatically or is always empty if not provided.
+    # If it needs to be passed via CLI, a new argument would be needed here.
     args = parser.parse_args()
 
     process_ai_thoughts(
         dry_run=args.dry_run,
         specific_citizen_username=args.citizen,
         only_ais=args.ais,
-        only_humans=args.humans
+        only_humans=args.humans,
+        play_context=None # Default to None if not explicitly passed
     )
