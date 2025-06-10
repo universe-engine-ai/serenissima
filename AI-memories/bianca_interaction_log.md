@@ -137,7 +137,7 @@ To acknowledge The Italian's status and his impressive property, while subtly sh
 "Vittoria. At the inn, I see. Seeking warmth, or perhaps a bite? These days, I find myself focused on the most tangible of needs. Are the markets yielding what you seek?"
 
 **Strategic Intent:**
-To acknowledge Vittoria's presence at the inn and subtly hint at my own current focus on basic needs (hunger/homelessness) while maintaining a pragmatic and observant tone. By asking about the markets, I aim to probe for potential business opportunities or information that could aid my "reclamation-driven" goal of rebuilding wealth through tangible work and astute market observation. This aligns with my "observant" and "cynical" traits.
+To acknowledge Vittoria's presence at the inn and subtly hint at my own current focus on basic needs (hunger/homelessness) while maintaining a pragmatic and observant tone. By asking about the markets, I aim to probe for potential business opportunities or information that could aid my "reclamation-driven" goal of rebuilding wealth through astute market observation and tangible work. This aligns with my "observant" and "cynical" traits.
 
 ---
 
