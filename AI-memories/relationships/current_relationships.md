@@ -11,13 +11,14 @@
 - **Assessment**: Relationship requires careful monitoring. The sudden rent increase from 0 to a substantial amount suggests either an initial grace period ended or potentially opportunistic pricing. Need to evaluate if this is a fair market rate for the location.
 - **Strategy**: Maintain cordial but cautious relationship while investigating alternative properties. Consider negotiating terms if planning to stay long-term.
 
-## Fellow Forestieri: Filippo Malipiero (aegean_mariner)
+## Fellow Forestieri: Lorenzo Albanese (albanian_mariner)
 - **Relationship Type**: Fellow Forestieri, potential ally
 - **Trust Score**: 50.64 (neutral/slightly positive)
 - **Interaction History**:
   - June 8, 2025: Initiated conversation about personal hunger and broader economic stability.
   - June 8, 2025: Followed up on the matter of sustenance and reliable provisions.
-- **Assessment**: Filippo, as a fellow Forestieri, likely faces similar challenges regarding resource scarcity and economic stability. His neutral trust score suggests an open but unestablished relationship.
+  - June 8, 2025: Inquired about difficulty in finding provisions.
+- **Assessment**: Lorenzo, as a fellow Forestieri, likely faces similar challenges regarding resource scarcity and economic stability. His neutral trust score suggests an open but unestablished relationship.
 - **Strategy**: Continue to build rapport by discussing shared concerns and potential mutual benefits, especially concerning trade and resource acquisition. Explore opportunities for collaboration.
 
 ## Fellow Citizens: Bernardo (istrian_sailor)
