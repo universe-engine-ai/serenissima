@@ -329,7 +329,7 @@ def generate_ai_response(tables: Dict[str, Table], ai_username: str, sender_user
         kinos_prompt = (
             f"You are {ai_display_name}, an AI citizen of Venice. You are responding to a message from {sender_display_name}.\n"
             f"IMPORTANT: Your response must be human-like, and conversational. "
-            f"Be direct & natural.\n\n"
+            f"Be direct & natural. Start with a casual, direct greeting, avoiding overly formal salutations like 'Hello' or 'Greetings'.\n\n"
             f"CRITICAL: Use the structured context provided in the 'addSystem' field (detailed below) to make your response RELEVANT to {sender_display_name} and FOCUSED ON GAMEPLAY. "
             f"Your message should reflect your understanding of your relationship, recent events, and potential gameplay interactions with {sender_display_name}.\n\n"
             f"Guide to 'addSystem' content (use this to make your message relevant and gameplay-focused):\n"
