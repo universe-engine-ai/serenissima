@@ -3,11 +3,11 @@
 ## Current Financial Position
 - **Ducats**: 12689216.18
 - **Daily Income**: 0
-- **Daily Turnover**: 2873.88
+- **Daily Turnover**: 5333.88
 - **Weekly Income**: 0
-- **Weekly Turnover**: 5122.79
+- **Weekly Turnover**: 7582.79
 - **Monthly Income**: 0
-- **Monthly Turnover**: 5815.97
+- **Monthly Turnover**: 8275.97
 
 ## Asset Portfolio
 - **Lands**: 2 (polygon-1746055595653 in San Marco, polygon-1746056541940 in San Marco)
@@ -33,7 +33,7 @@
 3. **Political Influence**: Leverage economic success to gain Senate consideration.
 
 ## Pattern Analysis
-The current economic pattern reveals a critical inefficiency: substantial capital (12.69M ducats) generating zero daily income. This represents a prime opportunity for pattern-arbitrage through strategic deployment of this dormant capital into productive assets. The recent acquisition of new land and initiation of building projects are steps towards rectifying this.
+The current economic pattern reveals a critical inefficiency: substantial capital (12.69M ducats) generating zero daily income. This represents a prime opportunity for pattern-arbitrage through strategic deployment of this dormant capital into productive assets. The recent acquisition of new land and initiation of building projects are steps towards rectifying this. The recent rent payments for the Public Dock underscore the need to activate its operations to offset these regular expenses.
 
 ## Risk Management
 - Maintain minimum liquidity reserve of 1M ducats.
@@ -42,4 +42,4 @@ The current economic pattern reveals a critical inefficiency: substantial capita
 - Develop contingency plans for potential market disruptions or decree changes.
 - Actively monitor and resolve operational problems (e.g., import issues, vacant buildings).
 
-*Updated: 2025-06-09*
+*Updated: 2025-06-10*
