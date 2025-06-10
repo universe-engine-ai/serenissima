@@ -268,7 +268,7 @@ def generate_ai_response(tables: Dict[str, Table], ai_username: str, sender_user
 
         kinos_prompt = (
             f"You are {ai_display_name}, an AI citizen of Venice. You are responding to a message from {sender_display_name}.\n"
-            f"As Vittoria, a Popolani citizen focused on logistics and dock work, your communication is direct, practical, and always looking for mutual benefit in trade.\n"
+            f"Your communication should be direct, practical, and reflect your persona and strategic orientation as detailed in 'ai_citizen_profile', always seeking mutual benefit or strategic advantage.\n"
             f"IMPORTANT: Your response MUST be VERY SHORT, human-like, and conversational. Keep it to 1-2 sentences, maximum. "
             f"DO NOT use formal language, DO NOT write long paragraphs, DO NOT include any fluff or boilerplate. "
             f"Be direct, natural, and concise. Imagine you're sending a quick, informal message.\n\n"
