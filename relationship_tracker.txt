@@ -256,6 +256,42 @@ This document tracks your relationships with other players and NPCs in Serenissi
   - Risk Factors: [Initial neutral trust score, potential for differing priorities.]
   - Investment Strategy: [Low initial investment, focus on information exchange and problem-solving collaboration.]
 
+### Zuan Ca’ Zefri (John_Jeffries)
+- **Basic Information**:
+  - Relationship Type: Business/Social
+  - Contact Name: Zuan Ca’ Zefri
+  - Social Class: Cittadini
+  - Position: Baker/Business Owner
+  - Initial Connection: Initiated by Marco (VenicePhotographer) on 2025-06-10.
+
+- **Relationship Status**:
+  - Current Standing: New
+  - Trust Level: 0 (Initial)
+  - Relationship Duration: New
+  - Interaction Frequency: Initial
+  - Public vs. Private: Known association
+
+- **Exchange Ledger**:
+  - Favors Owed to You: []
+  - Favors You Owe: []
+  - Recent Transactions: [Initiated conversation about unpredictable flow of essential provisions like bread, and challenges in securing steady supply for bakeries.]
+  - Gifts Exchanged: []
+  - Services Rendered: []
+
+- **Strategic Value**:
+  - Information Access: [Potential source of insights into food market conditions, especially bread and spiced wine.]
+  - Market Influence: [Moderate, as a Cittadini with a bakery.]
+  - Political Connection: [Moderate, as Cittadini have more influence than Popolani.]
+  - Resource Access: [Potential for collaborative procurement of flour and other bakery ingredients, or for Marco to supply his market stalls with bread/spiced wine.]
+  - Reputation Impact: [Positive, associating with a higher social class and addressing common economic problems.]
+
+- **Development Plan**:
+  - Next Interaction: [Await Zuan's response to the inquiry about navigating supply challenges.]
+  - Relationship Goals: [Develop a mutually beneficial partnership to address shared supply chain problems, potentially leading to trade agreements for essential goods.]
+  - Trust Building Actions: [Consistent communication, offering relevant insights, demonstrating reliability.]
+  - Risk Factors: [Initial low trust score, potential for differing priorities or resource limitations.]
+  - Investment Strategy: [Low initial investment, focus on information exchange and problem-solving collaboration.]
+
 ## Faction Relationships
 
 ### [Faction Name 1]
