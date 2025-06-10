@@ -12,6 +12,16 @@
   - Potential to improve relationship through reliable payments and respectful communication
   - Alternative: Seek different housing to end dependency
 
+## Key Relationship: Pietro
+- **Relationship Type**: Fellow Forestieri, potential ally
+- **Current Status**: Initial contact, shared challenges
+- **Recent Interactions**:
+  - Initiated conversation about idle market galleys and crew wages (2025-06-08)
+- **Strategic Considerations**:
+  - Shared social class and potential common economic problems (idle galleys, hunger)
+  - Opportunity to build trust and explore mutual support against Venetian competition/prejudice
+  - Aligns with goal of forming alliances with southern Italian merchants
+
 ## Potential Relationships to Develop
 
 ### Southern Italian Merchants
