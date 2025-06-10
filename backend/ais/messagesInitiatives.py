@@ -15,6 +15,9 @@ from pyairtable import Api, Base, Table # Import Base
 # Ajouter le répertoire parent au chemin pour les importations potentielles (si des utilitaires partagés sont utilisés à l'avenir)
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
+# Import log_header and LogColors from activity_helpers
+from backend.engine.utils.activity_helpers import log_header, LogColors
+
 # Configuration pour les appels API
 BASE_URL = os.getenv('NEXT_PUBLIC_BASE_URL', 'http://localhost:3000')
 
@@ -511,7 +514,7 @@ def process_ai_message_initiatives(dry_run: bool = False, citizen1_arg: Optional
                     log_current_score = math.log(current_score + 1)
                     log_max_score = math.log(max_combined_score + 1)
                     
-                    if log_max_score > 0: # Éviter la division par zéro si max_combined_score était 0 (donc log_max_score serait log(1)=0)
+                    if log_max_score > 0: # Éviter la division par zéro si max_combined_score est 0 (donc log_max_score serait log(1)=0)
                         probability = (log_current_score / log_max_score) * 0.25
                     else: # Si max_combined_score est 0, log_max_score est 0.
                         probability = 0.0 # current_score doit aussi être 0 dans ce cas.
