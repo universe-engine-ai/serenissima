@@ -54,6 +54,24 @@
     - Explore specific collaborative projects, starting small.
     - Position Marco as a reliable and shrewd partner.
 
+### Niccolò (NLR)
+- **Relationship Type**: Potential Strategic Partner / Fellow Merchant (Umbra Guild Alliance)
+- **Current Status**: Active, initial conversation initiated by Marco, positive reception from Niccolò. TrustScore: 50.64.
+- **Recent Interactions**:
+    - Marco initiated conversation ("Ah, Niccolò!") (June 10, 2025).
+    - Niccolò reflected on Marco's potential contribution and the strategic leverage of their Umbra alliance (June 10, 2025).
+- **Opportunities**:
+    - Leverage Niccolò's interests in silk imports and local commerce.
+    - Potential for joint ventures in trade, especially Eastern routes, utilizing Marco's maritime network.
+    - Reinforce Umbra guild alliance for mutual strategic advantage.
+- **Risks**:
+    - Need to ensure concrete mutual benefit to maintain trust and avoid perceived exploitation.
+    - Potential for competition if interests diverge.
+- **Strategic Approach**:
+    - Reinforce the value of collaboration and shared interests.
+    - Offer specific support related to Marco's expertise (shipping, network).
+    - Propose further discussion to identify concrete opportunities for mutual prosperity.
+
 ## Relationship Development Targets
 
 ### Venetian Merchants
