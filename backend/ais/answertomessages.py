@@ -820,7 +820,7 @@ def main():
     process_ai_messages(
         kinos_model_override_arg=args.model, 
         instant_mode=args.instant,
-        add_message="Bianca, it seems the market has indeed sharpened your focus. A keen eye for commerce is a valuable asset in these times. My own work at the contract stall often reveals opportunities for those with a pragmatic approach to resources. Perhaps our paths could converge on a profitable venture?"
+        add_message="Filippo, a pleasure! Indeed, Artisti connections are the very sinews of Venetian commerce, and my own poetic eye now sees their value in ducats as much as verse. Your talk of productive parcels resonates deeply with my current ambitions. I find myself seeking ventures that offer more immediate and tangible returns than mere speculation. Perhaps our respective talents could weave a profitable tapestry together, especially if your parcels offer the stability I seek?"
     )
 
 if __name__ == "__main__":
