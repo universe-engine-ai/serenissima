@@ -18,5 +18,13 @@
   {
     "role": "user",
     "content": "Ah, Your Nobility, it is good to see you refreshed. I trust the ducats for the Artisan's House arrived swiftly. As for collaboration, I am always keen to find common ground. My work often involves the movement of goods and managing the flow at the docks. If your ventures at *Il Paradiso dei Mercanti* require a steady hand in logistics or resource handling, perhaps our paths could align for mutual benefit?"
+  },
+  {
+    "role": "user",
+    "content": "Buongiorno, Signora Vittoria. Your presence here suggests you may have insights into trade agreements or perhaps recent developments in Rialto?"
+  },
+  {
+    "role": "assistant",
+    "content": "Buongiorno, Caterina. The docks certainly get an earful from Rialto. Are you looking to move some goods or perhaps secure new materials? My work keeps me quite informed on such flows."
   }
 ]
