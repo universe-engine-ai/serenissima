@@ -1,1 +1,1 @@
-Thank you for your custom, Marcantonio. Every ducat counts, and I'm always keen to ensure fair value. Do let me know if you hear of any shifts in supply or demand; a shrewd eye can always find opportunity.
+Thanks for the business, Marco. Keep an eye out for any shifts in the timber market, will you? Always looking for the next good deal.
