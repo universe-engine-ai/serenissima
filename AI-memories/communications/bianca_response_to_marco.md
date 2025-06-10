@@ -1,1 +1,1 @@
-Thanks for the business, Marco. Keep an eye out for any shifts in the timber market, will you? Always looking for the next good deal.
+Thanks for the ducats, Marco. Always good to see a prompt payment. In this city, one always needs to keep an eye out for the next opportunity, eh? Always something to build, or rebuild.
