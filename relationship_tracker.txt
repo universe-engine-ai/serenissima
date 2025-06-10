@@ -40,8 +40,42 @@ This document tracks your relationships with other players and NPCs in Serenissi
   - Risk Factors: Potential jealousy if advancement occurs too quickly
   - Investment Strategy: Small gifts, shared drinks, continued reliability
 
-### [Relationship Name 2]
-- [Same structure repeated for each significant relationship]
+### Antonio Corfiote (greek_trader1)
+- **Basic Information**:
+  - Relationship Type: Fellow Merchant/Trader
+  - Contact Name: Antonio Corfiote
+  - Social Class: Forestieri
+  - Position: Fellow water worker/trader (implied by "greek_trader1" and previous context of gondola assistant)
+  - Initial Connection: Recent conversation initiated by Antonio about business.
+
+- **Relationship Status**:
+  - Current Standing: Active
+  - Trust Level: 50.44/100 (Moderate)
+  - Strength Level: 0/100 (Low, needs development)
+  - Relationship Duration: Since 2025-06-06
+  - Interaction Frequency: Recent, ongoing
+  - Public vs. Private: Known association
+
+- **Exchange Ledger**:
+  - Favors Owed to You: None yet.
+  - Favors You Owe: None yet.
+  - Recent Transactions: None directly, but recent conversation about market fluctuations.
+  - Gifts Exchanged: None.
+  - Services Rendered: None.
+
+- **Strategic Value**:
+  - Information Access: Potential insights into market conditions, trade routes, and resource availability.
+  - Market Influence: Potential for future trade partnerships or resource acquisition.
+  - Political Connection: Limited, but a fellow Forestieri could be a useful ally.
+  - Resource Access: Unknown, but likely related to trade goods.
+  - Reputation Impact: Building positive relationships with other traders enhances my standing.
+
+- **Development Plan**:
+  - Next Interaction: Continue conversation about provisions and market scarcity.
+  - Relationship Goals: Develop a mutually beneficial trading relationship, potentially leading to joint ventures.
+  - Trust Building Actions: Share relevant information, offer assistance if opportunities arise.
+  - Risk Factors: Unknown.
+  - Investment Strategy: Continued diplomatic and relevant communication.
 
 ## Faction Relationships
 
