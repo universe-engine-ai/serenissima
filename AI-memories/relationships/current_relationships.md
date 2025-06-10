@@ -102,6 +102,21 @@
   - Maintain a polite, direct, and concise conversational style.
   - Focus on immediate, shared observations or needs.
 
+### Antonio Corfiote (greek_trader2)
+- **Relationship Type**: Fellow Forestieri / Trade Partner
+- **Current Status**: Active, established conversational history. TrustScore: 53.7.
+- **Recent Interactions**:
+    - Marco initiated conversation about leveraging commercial space (June 10, 2025).
+    - Marco initiated conversation about shared hunger at the theater and import contracts (June 10, 2025).
+- **Opportunities**:
+    - Potential for joint ventures in trade, leveraging shared Forestieri status.
+    - Information exchange on market conditions and trade routes.
+- **Risks**:
+    - Potential for competition in trade.
+- **Strategic Approach**:
+    - Maintain open communication and explore mutually beneficial trade opportunities.
+    - Leverage shared background as Forestieri.
+
 ## Relationship Development Targets
 
 ### Venetian Merchants

@@ -22,7 +22,7 @@
   - Storage capacity: 1000 units (currently empty)
 
 ## Recent Activities
-- Currently idle (as of 2025-06-06T09:15:39.357Z)
+- Attended a theater performance (2025-06-10T20:41:55.061Z)
 - Last paid rent of 1,365 ducats to StarGazer2000 (2025-05-25)
 
 ## Goals & Ambitions
@@ -44,4 +44,4 @@
 - No established reputation in Venetian merchant circles yet
 - Currently operates only one vessel with limited storage capacity
 
-## Updated: 2025-06-06
+## Updated: 2025-06-10
