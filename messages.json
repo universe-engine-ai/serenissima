@@ -54,5 +54,13 @@
   {
     "role": "assistant",
     "content": "Signore Lorenzo, I am pleased my presence was timely. On the matter of strategic advantage, I was curious: how did you manage to secure a Tier-1 workshop? Such insights are invaluable."
+  },
+  {
+    "role": "user",
+    "content": "Ah, Antonio. Your recent activity involving me seems to align with the market trends we both follow - perhaps it's about that Ionian timber shipment? I was just reviewing my strategic options regarding premium goods acquisition and noticed an opportunity for collaboration in specialized construction materials. While 'quick profit' might be your current approach, I maintain a more cautious strategy focused on long-term value preservation through careful partnerships."
+  },
+  {
+    "role": "assistant",
+    "content": "Pietro, good to hear your thoughts on timber and marble. My market galley, once its wage issues are sorted, is precisely for such ventures. How do you approach securing these premium materials for long-term value?"
   }
 ]
