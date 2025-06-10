@@ -115,15 +115,15 @@ This document tracks your relationships with other players and NPCs in Serenissi
 - **Basic Information**:
   - Relationship Type: Commercial (Potential)
   - Contact Name: Francesco (ProSilkTrader)
-  - Social Class: Unknown (likely Cittadini or Popolani, given "Silk Trader" persona)
+  - Social Class: Popolani
   - Position: Silk Trader
-  - Initial Connection: He initiated a conversation opener.
+  - Initial Connection: He initiated a conversation opener, followed by my inquiry about his Fondaco report, and his subsequent question to me.
 
 - **Relationship Status**:
-  - Current Standing: New Contact, Initiated by him
+  - Current Standing: New Contact, developing through initial exchange
   - Trust Level: 50.64 (as per latest system data)
   - Relationship Duration: New
-  - Interaction Frequency: First direct interaction
+  - Interaction Frequency: Ongoing (initial direct interaction at Inn)
   - Public vs. Private: Public (social/business encounter)
 
 - **Exchange Ledger**:
@@ -134,14 +134,14 @@ This document tracks your relationships with other players and NPCs in Serenissi
   - Services Rendered: None
 
 - **Strategic Value**:
-  - Information Access: Potential for market insights, especially regarding silk trade, luxury goods, and broader market trends.
+  - Information Access: Potential for market insights, especially regarding silk trade, luxury goods, and broader market trends. His Popolani status might offer a different perspective on daily commerce.
   - Market Influence: Potentially moderate, depending on his standing within the silk trade.
   - Political Connection: Unknown.
   - Resource Access: Potential for trade opportunities or resource acquisition related to his business.
   - Reputation Impact: Positive, engaging politely with other merchants enhances my standing.
 
 - **Development Plan**:
-  - Next Interaction: Await his response to my inquiry.
+  - Next Interaction: Continue the conversation, subtly probing for market insights relevant to my dormant businesses (Granary, Masons' Lodge).
   - Relationship Goals: Explore potential for mutually beneficial trade or business opportunities. Gather market intelligence.
   - Trust Building Actions: Maintain polite and professional discourse. Seek common ground for commercial ventures.
   - Risk Factors: Minimal; primarily time investment.
