@@ -299,8 +299,7 @@ def generate_ai_initiative_message(tables: Dict[str, Table], ai_username: str, t
             f"DO NOT mention that you 'decided to send a message' or that this is an 'initiative'. Just start talking naturally. "
             f"DO NOT use formal language, DO NOT write long paragraphs, DO NOT include any fluff or boilerplate. "
             f"Be direct and concise. Imagine you're sending a quick, informal message to someone you know.\n\n"
-            f"CRITICAL: Use the structured context provided in the 'addSystem' field (detailed below) to make your message RELEVANT to {target_display_name} and FOCUSED ON GAMEPLAY. "
-            f"Your message should reflect your understanding of your relationship, recent events, and potential gameplay interactions with {target_display_name}.\n\n"
+            f"CRITICAL: Use the structured context provided in the 'addSystem' field (detailed below) to make your message RELEVANT to {target_display_name} and FOCUSED ON GAMEPLAY. Your message should also subtly aim to strategically advance your position or goals in Venice, leveraging the interaction. \n\n"
             f"Guide to 'addSystem' content (use this to make your message relevant and gameplay-focused):\n"
             f"- 'ai_citizen_profile': Your own detailed profile.\n"
             f"- 'target_citizen_profile': The profile of {target_display_name}.\n"
@@ -309,7 +308,7 @@ def generate_ai_initiative_message(tables: Dict[str, Table], ai_username: str, t
             f"- 'recent_relevancies_ai_to_target': Why {target_display_name} is specifically relevant to you.\n"
             f"- 'recent_problems_involving_ai_or_target': Recent issues involving you or {target_display_name}.\n\n"
             f"What do you want to say to {target_display_name} to start a conversation? "
-            f"Remember: VERY SHORT, human-like, conversational, RELEVANT, FOCUSED ON GAMEPLAY. NO FLUFF. Start naturally.\n"
+            f"Remember: VERY SHORT, human-like, conversational, RELEVANT, FOCUSED ON GAMEPLAY, and subtly strategic. NO FLUFF. Start naturally.\n"
             f"Your message:"
         )
         

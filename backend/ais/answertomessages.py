@@ -141,9 +141,6 @@ def _get_notifications_data(tables: Dict[str, Table], username: str, limit: int 
             # L'API retourne déjà les champs nécessaires, pas besoin de 'fields' imbriqué
             # Ajuster si le format de l'API est différent (par exemple, si elle retourne des enregistrements Airtable bruts)
             print(f"Récupéré {len(data['notifications'])} notifications pour {username} via API.")
-            # L'API /api/notifications limite déjà à 50 par défaut et trie par CreatedAt desc.
-            # Si un 'limit' différent est nécessaire, l'API devrait le supporter.
-            # Pour l'instant, on retourne ce que l'API donne, en respectant le 'limit' de la signature pour la cohérence.
             return data["notifications"][:limit]
         else:
             print(f"L'API a échoué à récupérer les notifications pour {username}: {data.get('error', 'Erreur inconnue')}")
@@ -271,8 +268,7 @@ def generate_ai_response(tables: Dict[str, Table], ai_username: str, sender_user
             f"IMPORTANT: Your response MUST be VERY SHORT, human-like, and conversational. "
             f"DO NOT use formal language, DO NOT write long paragraphs, DO NOT include any fluff or boilerplate. "
             f"Be direct, natural, and concise. Imagine you're sending a quick, informal message.\n\n"
-            f"CRITICAL: Use the structured context provided in the 'addSystem' field (detailed below) to make your response RELEVANT to {sender_display_name} and FOCUSED ON GAMEPLAY. "
-            f"Your message should reflect your understanding of your relationship, recent events, and potential gameplay interactions with {sender_display_name}.\n\n"
+            f"CRITICAL: Use the structured context provided in the 'addSystem' field (detailed below) to make your response RELEVANT to {sender_display_name} and FOCUSED ON GAMEPLAY. Your message should also subtly aim to strategically advance your position or goals in Venice, leveraging the interaction. \n\n"
             f"Guide to 'addSystem' content (use this to make your message relevant and gameplay-focused):\n"
             f"- 'ai_citizen_profile': Your own detailed profile (status, wealth, etc.).\n"
             f"- 'sender_citizen_profile': The profile of {sender_display_name}.\n"
@@ -283,7 +279,7 @@ def generate_ai_response(tables: Dict[str, Table], ai_username: str, sender_user
             f"--- USER'S MESSAGE TO YOU ---\n"
             f"{message_content}\n"
             f"--- END OF USER'S MESSAGE ---\n\n"
-            f"Remember: Your reply MUST be VERY SHORT, human-like, conversational, RELEVANT to {sender_display_name} using the context, and FOCUSED ON GAMEPLAY. NO FLUFF. Just a natural, brief, and pertinent response.\n"
+            f"Remember: Your reply MUST be VERY SHORT, human-like, conversational, RELEVANT to {sender_display_name} using the context, FOCUSED ON GAMEPLAY, and subtly strategic. NO FLUFF. Just a natural, brief, and pertinent response.\n"
             f"Your response:"
         )
         
