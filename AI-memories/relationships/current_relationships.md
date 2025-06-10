@@ -88,6 +88,20 @@
   - Build rapport based on shared immediate needs.
   - Observe for any emerging common interests beyond the current situation.
 
+### Marco de l’Argentoro (bigbosefx)
+- **Relationship Type**: New Acquaintance / Shared Immediate Need
+- **Current Status**: Initial conversational engagement. TrustScore: 50.64.
+- **Recent Interactions**:
+  - Marco (sea_trader) initiated conversation about shared hunger at the theater (June 10, 2025).
+- **Opportunities**:
+  - Potential for general rapport building.
+  - Observe for any emerging common interests.
+- **Risks**:
+  - None immediate.
+- **Strategic Approach**:
+  - Maintain a polite, direct, and concise conversational style.
+  - Focus on immediate, shared observations or needs.
+
 ## Relationship Development Targets
 
 ### Venetian Merchants
