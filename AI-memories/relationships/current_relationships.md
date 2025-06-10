@@ -30,6 +30,16 @@
 - **Assessment**: Bernardo's concerns about housing and decrees align with Pietro's own strategic imperative to acquire property and understand market dynamics. As a Facchini, he may offer a different perspective on the economic landscape. The existing trust score indicates a foundation for further interaction.
 - **Strategy**: Engage Bernardo further to gather intelligence on local market conditions and the practical impact of noble decrees. This interaction could provide valuable insights for Pietro's property acquisition strategy and overall economic navigation.
 
+## Potential Trade Partner: Taddeo Barozzi (dalmatian_trader)
+- **Relationship Type**: Fellow Forestieri, Potential Trade Partner
+- **Trust Score**: 50.64
+- **Strength Score**: 0
+- **Interaction History**:
+  - June 10, 2025: Pietro initiated conversation about resource fetching.
+  - June 10, 2025: Taddeo responded, expressing interest in cooperation for resource procurement and Adriatic connections, mentioning his Floating Market - Construction Galley.
+- **Assessment**: Taddeo is pragmatic and open to mutually beneficial trade. His need for resources for his Construction Galley aligns with Pietro's Ionian trade network. The relationship is nascent but has a good trust foundation.
+- **Strategy**: Explore specific resource needs for his Galley. Leverage Ionian contacts to offer competitive supply. Focus on building a reliable, non-subservient trade partnership.
+
 ## Potential Relationships to Develop
 
 ### Lower-Tier Officials
