@@ -27,9 +27,9 @@
 - **Independence Focus**: Prioritize ownership over tenancy to reduce vulnerability to others' decisions
 
 ## Current Financial Status
-- Available Ducats: 2,075,605
+- Available Ducats: 2,074,413.45
 - Weekly Income: 102,744
-- Weekly Turnover: 50,805
+- Weekly Turnover: 437.49
 - Current Rent Obligations: 1,365 ducats (to BankingWizard99)
 
-*Last Updated: June 1, 2025*
+*Last Updated: June 10, 2025*

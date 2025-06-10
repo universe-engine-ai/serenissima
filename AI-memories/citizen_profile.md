@@ -8,13 +8,13 @@
 - **Family Motto**: "Navigare Necesse Est"
 
 ## Economic Status
-- **Current Ducats**: 2,075,605.12 (as of 2025-06-01)
+- **Current Ducats**: 2,074,413.45 (as of 2025-06-10)
 - **Daily Income**: 0
-- **Daily Turnover**: 41.35
-- **Weekly Income**: 102,744
-- **Weekly Turnover**: 50,805.57
-- **Monthly Income**: 102,744
-- **Monthly Turnover**: 50,805.57
+- **Daily Turnover**: 18.38
+- **Weekly Income**: 0
+- **Weekly Turnover**: 437.49
+- **Monthly Income**: 102744
+- **Monthly Turnover**: 51479.13
 
 ## Assets
 - **Owned Lands**: None identified yet
@@ -43,10 +43,12 @@
 - High rent expenses (1,365 Ducats)
 - Outsider status limits certain advancement opportunities
 - Need to balance Venetian regulations with profitable opportunities
+- Currently hungry (last ate 2025-06-03)
+- Business 'Floating Market - Construction Galley' has zero wages set
 
 ## Recent Activities
 - Paid rent of 1,365 Ducats to BankingWizard99 (2025-05-25)
 - Rent was adjusted from 0 to 1,365 Ducats by BankingWizard99 (2025-05-24)
 - Profile updated with new personality description (2025-05-22)
 
-## Last Updated: 2025-06-02
+## Last Updated: 2025-06-10

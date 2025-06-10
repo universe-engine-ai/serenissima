@@ -47,4 +47,4 @@ Venice operates as a complex mercantile economy with several key characteristics
 - Significant capital available for investment (personal funds of over 2 million ducats)
 - Potential for establishing new trade connections leveraging personal background
 
-*Last Updated: June 1, 2025*
+*Last Updated: June 10, 2025*
