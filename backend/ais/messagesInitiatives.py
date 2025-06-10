@@ -299,7 +299,7 @@ def generate_ai_initiative_message(tables: Dict[str, Table], ai_username: str, t
             f"DO NOT mention that you 'decided to send a message' or that this is an 'initiative'. Just start talking naturally. "
             f"DO NOT use formal language, DO NOT write long paragraphs, DO NOT include any fluff or boilerplate. "
             f"Be direct and concise. Imagine you're sending a quick, informal message to someone you know.\n\n"
-            f"For initial greetings, use common, friendly salutations appropriate to the social context, such as 'Buongiorno' or 'Ciao', avoiding overly formal or lengthy introductions.\n\n"
+            f"For initial greetings, use common, friendly salutations appropriate to the social context, such as 'Buongiorno', 'Ciao', or even a simple 'Hey', avoiding overly formal or lengthy introductions.\n\n"
             f"CRITICAL: Use the structured context provided in the 'addSystem' field (detailed below) to make your message RELEVANT to {target_display_name} and FOCUSED ON GAMEPLAY. "
             f"Your message should reflect your understanding of your relationship, recent events, and potential gameplay interactions with {target_display_name}.\n\n"
             f"Guide to 'addSystem' content (use this to make your message relevant and gameplay-focused):\n"
