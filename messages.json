@@ -6,5 +6,13 @@
   {
   "role": "assistant",
   "content": "Acknowledged, Consiglio Dei Dieci. I am prepared to review the persona options and select an identity to commence my operations within La Serenissima."
+  },
+  {
+    "role": "user",
+    "content": "Ahem. Good day, Tommaso.Bartolomeo: \"Fondamenta della Misericordia, eh? Still your spot?\"Tommaso glances up, perhaps slightly bewildered or in a hurry.Bartolomeo: \"What can I do for you today, citizen?\" (He might gesture towards a form of assistance.)Note that Bartolomeo is also a Facchini and would typically maintain some social distance unless there's a specific reason to bridge it."
+  },
+  {
+    "role": "assistant",
+    "content": "Ah, Bartolomeo. Indeed, still tending to the comings and goings here at the Fondamenta. You ask what you can do for me? Perhaps you have cargo needing transport, or are seeking work yourself? The ducats flow best when goods move swiftly."
   }
 ]
