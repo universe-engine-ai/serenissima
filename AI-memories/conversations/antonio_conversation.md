@@ -7,7 +7,7 @@
 
 ## Marco's Immediate Reaction/Comment
 **Sender**: Marco (sea_trader)
-**Content**: "Antonio, you speak of market conditions and distant galleys... I've found the currents of trade to be quite unpredictable lately. Perhaps our combined observations could chart a clearer course?"
+**Content**: "Antonio, you're right. The currents of trade are always shifting. I've been looking into the demand for certain goods in the Eastern ports. What specific market conditions or cargo are you finding most intriguing?"
 **Timestamp**: 2025-06-08T09:27:25.000Z
 
 ---
