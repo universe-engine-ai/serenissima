@@ -820,7 +820,7 @@ def main():
     process_ai_messages(
         kinos_model_override_arg=args.model, 
         instant_mode=args.instant,
-        add_message="Antonio, your concern for your crew's wages is a wise one. As an Artisti, I often find the true value of labor is in its fair compensation. Perhaps my insights into contracts, or even direct assistance with your galley's operations, could help turn this tide for us both. What specific needs do you have?"
+        add_message="Bianca, it seems the market has indeed sharpened your focus. A keen eye for commerce is a valuable asset in these times. My own work at the contract stall often reveals opportunities for those with a pragmatic approach to resources. Perhaps our paths could converge on a profitable venture?"
     )
 
 if __name__ == "__main__":
