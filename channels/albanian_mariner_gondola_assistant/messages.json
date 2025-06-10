@@ -31,25 +31,7 @@
   },
   {
     "role": "assistant",
-    "content": "<think>Matteo has responded to my greeting, and his message directly probes for information on \"recent land acquisitions or property valuations,\" explicitly stating that such insights could align with his \"own strategies.\" This is a prime opportunity for me, Lorenzo, a Forestieri merchant focused on land acquisition, to engage strategically. Matteo's persona (resourceful, envious, security-driven, property-focused) aligns well with my own goals, suggesting a potential for information exchange or even future collaboration, despite his 'envious' trait.
-
-My immediate goal is to gather intelligence and foster a relationship that could benefit my long-term economic plan, particularly my aim to acquire land and expand my influence. I should acknowledge his inquiry, express a shared interest, and subtly encourage him to reveal more of his observations or intentions. This approach allows me to gain information without over-committing or revealing too much of my own hand.
-
-The reply must be brief, conversational, and in character for a practical Venetian merchant. I will avoid overly formal language but maintain a respectful tone.
-
-**Strategic thought process:**
-1.  **Acknowledge and Validate:** Confirm receipt of his message and validate his interest in land.
-2.  **Express Shared Interest:** Show that I, too, am interested in this area, creating common ground.
-3.  **Probe for Information:** Turn the question back to him to encourage him to share his findings or thoughts first. This is a classic negotiation tactic.
-4.  **Maintain Persona:** Keep the language consistent with a shrewd, practical Forestieri merchant.
-
-**Drafting the reply:**
-*   "Buongiorno, Matteo! Productive indeed." (Acknowledges his greeting and comment on productivity)
-*   "Your interest in land is well-placed; the currents of Venice's property market are ever-shifting." (Validates his focus and hints at my own awareness)
-*   "I'm always keen to hear of promising ventures. What have you observed?" (Expresses shared interest and prompts him for details)
-
-This reply is concise, directly addresses his point, and strategically positions me to receive information. It also reinforces the idea that we are both active players in the Venetian economy.
-</think>Buongiorno, Matteo! Productive indeed. Your interest in land is well-placed; the currents of Venice's property market are ever-shifting. I'm always keen to hear of promising ventures. What have you observed?",
+    "content": "Buongiorno, Matteo! Productive indeed. Your interest in land is well-placed; the currents of Venice's property market are ever-shifting. I'm always keen to hear of promising ventures. What have you observed?",
     "timestamp": "2025-06-10T06:43:02.500Z",
     "channel_id": "albanian_mariner_gondola_assistant"
   }
