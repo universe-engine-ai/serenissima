@@ -49,3 +49,7 @@ Sebastiano, a Cittadini, recently initiated contact with me. Reciprocating this 
 # Strategic Thoughts - Lorenzo Albanese (2025-06-10)
 
 My persistent hunger remains a concern, a reminder that even a wealthy mariner needs basic sustenance. My market galley, while profitable, is flagged for 'zero wages,' a problem I aim to resolve by securing diligent hands like Bortolo. Engaging with him directly about work opportunities is a step towards both addressing this operational issue and building a reliable crew, crucial for maintaining my trade and accumulating the wealth needed for my return to Durazzo. This interaction also serves to strengthen my nascent relationships within Venice, a necessary foundation for a Forestieri like myself.
+
+# Strategic Thoughts - Lorenzo Albanese (2025-06-10)
+
+Pietro, an Ionian sailor, initiated contact with a formal but open greeting. This presents a valuable opportunity to cultivate a new relationship, especially given our shared status as Forestieri and the mutual problem of hunger. By acknowledging his presence and subtly hinting at the need for diligent hands on my market galley, I can explore if his skills align with my operational needs, potentially addressing my 'zero wages' problem. Building rapport through shared challenges like hunger can pave the way for future collaborations, which is crucial for expanding my influence and wealth in Venice before my eventual return to Durazzo.

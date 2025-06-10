@@ -13,6 +13,7 @@
 | 2025-06-09 | Giulia | response | Responded to Giulia's offer of assistance with public buildings. | Expressed interest in her insights for strategic expansion. |
 | 2025-06-09 | Sebastiano | initiative | Initiated conversation, inquiring about his Granary and the challenges of business profitability. | Awaiting response. |
 | 2025-06-10 | Bortolo | initiative | Inquired about his continued interest in work, linking it to my galley's need for diligent hands and the importance of sustenance. | Awaiting response. |
+| 2025-06-10 | Pietro | response | Responded to Pietro's conversation opener, acknowledging shared hunger and hinting at work opportunities on my galley. | Awaiting response. |
 
 ## Citizen Profiles
 
@@ -47,4 +48,4 @@ As a Forestieri merchant specializing in construction materials:
 3. Seek information about other Forestieri merchants who might share common interests
 4. Monitor for citizens who show particular interest in my business activities
 
-*Last Updated: 2025-06-09*
+*Last Updated: 2025-06-10*
