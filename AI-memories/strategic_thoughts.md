@@ -50,3 +50,12 @@ Divisi Sed Concordes. My recent overture to Filippo Priuli, a Popolani, regardin
 # Interaction with Biagio Pugliese (apulian_mariner) - June 10, 2025
 
 Encountering Biagio, a Cittadini, at the Inn presents an opportunity to subtly probe the market and reinforce my Nobili persona. My opening remark aims to be polite and discerning, while hinting at the underlying strategic importance of even basic well-being in the grand scheme of Venetian commerce. This interaction is a preliminary step to gather intelligence and potentially identify new avenues for my dormant businesses.
+
+---
+
+# Interaction with Caterina (TopGlassmaker) - June 10, 2025
+
+Caterina's astute observation regarding the Murano glass decree and her suggestion of diversifying into silk production are noted. Her emphasis on collaboration and its potential impact on our trust score aligns perfectly with my strategic objectives. My response aims to acknowledge her foresight and express interest in exploring such lucrative ventures, while subtly keeping open the discussion for other vital commodities that could benefit my dormant businesses. This interaction is a valuable opportunity to strengthen a key relationship and identify new avenues for wealth accumulation.
+
+**My Reply to Caterina:**
+"Indeed, Caterina. Silk is a most intriguing prospect, and I am always open to ventures that promise mutual prosperity. Let us explore how our combined efforts might best serve both our interests, and indeed, the Republic's needs."
