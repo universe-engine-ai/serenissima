@@ -18,5 +18,9 @@
   {
     "role": "assistant",
     "content": "Bianca, you look a bit worn. Need a bite to eat?"
+  },
+  {
+    "role": "assistant",
+    "content": "Matteo, good to see you. 'Pressing issues' indeed. I've noticed some shifts in building rents and lease prices around here. Are you seeing similar movements in the trade of goods?"
   }
 ]
