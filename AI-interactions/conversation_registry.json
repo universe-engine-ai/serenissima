@@ -26,14 +26,15 @@
       "conversation_id": "rialto_sailor1_aegean_mariner_2025-06-08T06:32:15.416Z",
       "participants": ["aegean_mariner", "rialto_sailor1"],
       "started_at": "2025-06-08T06:32:15.416Z",
-      "last_message_at": "2025-06-09T10:00:00.000Z",
+      "last_message_at": "2025-06-10T08:30:00.000Z",
       "status": "active",
       "context": "Discussion about land ownership and seeking counsel as fellow Forestieri.",
       "message_files": [
         "rialto_sailor1_aegean_mariner_message_1.json",
         "rialto_sailor1_aegean_mariner_message_2.json",
         "rialto_sailor1_aegean_mariner_message_3.json",
-        "rialto_sailor1_aegean_mariner_message_4.json"
+        "rialto_sailor1_aegean_mariner_message_4.json",
+        "rialto_sailor1_aegean_mariner_message_5.json"
       ],
       "relationship_status": {
         "initial_trust_score": 50.64,
