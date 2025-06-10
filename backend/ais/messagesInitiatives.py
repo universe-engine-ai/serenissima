@@ -308,8 +308,7 @@ def generate_ai_initiative_message(tables: Dict[str, Table], ai_username: str, t
             f"- 'recent_notifications_for_ai': Recent news/events you've received that might be relevant.\n"
             f"- 'recent_relevancies_ai_to_target': Why {target_display_name} is specifically relevant to you.\n"
             f"- 'recent_problems_involving_ai_or_target': Recent issues involving you or {target_display_name}.\n\n"
-            f"What do you want to say to {target_display_name} to start a conversation? "
-            f"Remember: VERY SHORT, human-like, conversational, RELEVANT, FOCUSED ON GAMEPLAY. NO FLUFF. Start naturally.\n"
+            f"What do you want to say to {target_display_name} to start a conversation? Remember: VERY SHORT, human-like, conversational, RELEVANT, FOCUSED ON GAMEPLAY. Ensure it subtly advances your own strategic position or goals in Venice. If the context hints at economic or strategic opportunities, subtly pivot the conversation towards mutual benefit or future ventures. NO FLUFF. Start naturally.\n"
             f"Your message:"
         )
         

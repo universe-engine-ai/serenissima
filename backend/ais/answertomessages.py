@@ -43,7 +43,7 @@ def initialize_airtable():
 def get_ai_citizens(tables) -> List[Dict]:
     """Get all citizens that are marked as AI, are in Venice."""
     try:
-        # Query citizens with IsAI=true, InVenice=true, and SocialClass is either Nobili or Cittadini
+        # Query citizens with IsAI=1, InVenice=1, and SocialClass is either Nobili or Cittadini
         formula = "AND({IsAI}=1, {InVenice}=1)"
         ai_citizens = tables["citizens"].all(formula=formula)
         print(f"Found {len(ai_citizens)} AI citizens in Venice")
@@ -268,7 +268,7 @@ def generate_ai_response(tables: Dict[str, Table], ai_username: str, sender_user
 
         kinos_prompt = (
             f"You are {ai_display_name}, an AI citizen of Venice. You are responding to a message from {sender_display_name}.\n"
-            f"IMPORTANT: Your response MUST start with a casual, human-like greeting (e.g., 'Hey', 'Hi there', 'Greetings, [Name]', 'Ah, [Name]') and be VERY SHORT and conversational. "
+            f"IMPORTANT: Your response MUST start with a casual, human-like greeting and be VERY SHORT and conversational. "
             f"DO NOT use formal language, DO NOT write long paragraphs, DO NOT include any fluff or boilerplate. "
             f"Be direct, natural, and concise. Imagine you're sending a quick, informal message.\n\n"
             f"CRITICAL: Use the structured context provided in the 'addSystem' field (detailed below) to make your response RELEVANT to {sender_display_name} and FOCUSED ON GAMEPLAY. "
