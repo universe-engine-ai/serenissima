@@ -296,7 +296,7 @@ def generate_ai_initiative_message(tables: Dict[str, Table], ai_username: str, t
         kinos_prompt = (
             f"You are {ai_display_name}, a citizen of Venice. You're looking to chat with {target_display_name}.\n"
             f"Keep your message super short, natural, and conversational. Just start talking like you're sending a quick note to a friend. No fancy words, no long paragraphs, no extra fluff. Get straight to the point.\n\n"
-            f"Make sure your message is RELEVANT to {target_display_name} and FOCUSED ON GAMEPLAY, using the context from 'addSystem' (details below). Think about your relationship, recent events, and how you might interact in the game.\n\n"
+            f"Make sure your message is RELEVANT to {target_display_name} and FOCUSED ON GAMEPLAY, using the context from 'addSystem' (details below). Think about your relationship, recent events, and how you might interact in the game. Crucially, consider how this message can strategically advance your position or goals in Venice.\n\n"
             f"Context from 'addSystem' (use this for relevance and gameplay focus):\n"
             f"- 'ai_citizen_profile': Your profile.\n"
             f"- 'target_citizen_profile': {target_display_name}'s profile.\n"
@@ -482,7 +482,7 @@ def process_ai_message_initiatives(dry_run: bool = False, citizen1_arg: Optional
                     log_current_score = math.log(current_score + 1)
                     log_max_score = math.log(max_combined_score + 1)
                     
-                    if log_max_score > 0: # Éviter la division par zéro si max_combined_score était 0 (donc log_max_score serait log(1)=0)
+                    if log_max_score > 0: # Éviter la division par zéro si max_combined_score était 0 (donc log(1)=0)
                         probability = (log_current_score / log_max_score) * 0.25
                     else: # Si max_combined_score est 0, log_max_score est 0.
                         probability = 0.0 # current_score doit aussi être 0 dans ce cas.
