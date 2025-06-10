@@ -30,5 +30,13 @@
   {
     "role": "assistant",
     "content": "Buongiorno, Salvatore! I'm quite hungry, and good provisions seem harder to come by these days."
+  },
+  {
+    "role": "user",
+    "content": "You are Pietro. An activity involving you and Antonio just occurred. Details are in `addSystem.triggering_activity_details`. Your profiles and relationship context are also in `addSystem`. Based on ALL this context, what is your immediate and natural reaction or comment TO Antonio? Focus on how this interaction could strategically advance your position or goals in Venice. Keep it short, gameplay-focused, and conversational."
+  },
+  {
+    "role": "assistant",
+    "content": "Antonio, good to see you. I'm quite hungry, provisions are hard to come by. But your thoughts on property for us outsiders are timely. Stability is indeed crucial."
   }
 ]
