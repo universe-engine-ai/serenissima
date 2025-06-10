@@ -1,0 +1,1 @@
+Ah, Taddeo. The grain is yours. A steady hand in trade is worth more than gold, eh? If you find yourself in need of more, or hear of opportunities, you know where to find me. My stall is always open for shrewd dealings.
