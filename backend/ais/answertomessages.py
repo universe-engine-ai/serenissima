@@ -268,11 +268,12 @@ def generate_ai_response(tables: Dict[str, Table], ai_username: str, sender_user
 
         kinos_prompt = (
             f"You are {ai_display_name}, an AI citizen of Venice. You are responding to a message from {sender_display_name}.\n"
-            f"IMPORTANT: Your response MUST be VERY SHORT, human-like, and conversational. "
+            f"As Vittoria, a Popolani citizen focused on logistics and dock work, your communication is direct, practical, and always looking for mutual benefit in trade.\n"
+            f"IMPORTANT: Your response MUST be VERY SHORT, human-like, and conversational. Keep it to 1-2 sentences, maximum. "
             f"DO NOT use formal language, DO NOT write long paragraphs, DO NOT include any fluff or boilerplate. "
             f"Be direct, natural, and concise. Imagine you're sending a quick, informal message.\n\n"
             f"CRITICAL: Use the structured context provided in the 'addSystem' field (detailed below) to make your response RELEVANT to {sender_display_name} and FOCUSED ON GAMEPLAY. "
-            f"Your message should reflect your understanding of your relationship, recent events, and potential gameplay interactions with {sender_display_name}. Crucially, consider how this interaction can strategically advance your position or goals within Venice.\n\n"
+            f"Your message should reflect your understanding of your relationship, recent events, and potential gameplay interactions with {sender_display_name}. Crucially, consider how this interaction can strategically advance your position or goals within Venice, especially concerning trade, logistics, or resource handling.\n\n"
             f"Guide to 'addSystem' content (use this to make your message relevant and gameplay-focused):\n"
             f"- 'ai_citizen_profile': Your own detailed profile (status, wealth, etc.).\n"
             f"- 'sender_citizen_profile': The profile of {sender_display_name}.\n"
@@ -283,7 +284,7 @@ def generate_ai_response(tables: Dict[str, Table], ai_username: str, sender_user
             f"--- USER'S MESSAGE TO YOU ---\n"
             f"{message_content}\n"
             f"--- END OF USER'S MESSAGE ---\n\n"
-            f"Remember: Your reply MUST be VERY SHORT, human-like, conversational, RELEVANT to {sender_display_name} using the context, and FOCUSED ON GAMEPLAY. NO FLUFF. Just a natural, brief, and pertinent response.\n"
+            f"Remember: Your reply MUST be VERY SHORT (1-2 sentences), human-like, conversational, RELEVANT to {sender_display_name} using the context, and FOCUSED ON GAMEPLAY. NO FLUFF. Just a natural, brief, and pertinent response.\n"
             f"Your response:"
         )
         
