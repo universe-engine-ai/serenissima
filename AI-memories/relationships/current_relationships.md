@@ -12,15 +12,19 @@
   - Potential to improve relationship through reliable payments and respectful communication
   - Alternative: Seek different housing to end dependency
 
-## Key Relationship: Pietro
-- **Relationship Type**: Fellow Forestieri, potential ally
-- **Current Status**: Initial contact, shared challenges
+## Key Relationship: Antonio
+- **Relationship Type**: Fellow Forestieri, potential trade partner
+- **Current Status**: Developing, exploring mutual interests
 - **Recent Interactions**:
-  - Initiated conversation about idle market galleys and crew wages (2025-06-08)
+  - Discussed trade opportunities (2025-06-10)
+  - Salvatore sought insights on making his market galley profitable (2025-06-10)
+  - Antonio observed Salvatore's galleys and wealth, hinting at storage contracts (Current Turn)
 - **Strategic Considerations**:
-  - Shared social class and potential common economic problems (idle galleys, hunger)
-  - Opportunity to build trust and explore mutual support against Venetian competition/prejudice
-  - Aligns with goal of forming alliances with southern Italian merchants
+  - Shared social class and potential common economic problems
+  - Antonio's focus on security and adaptability aligns with exploring stable income streams like storage contracts.
+  - Opportunity to build trust and explore mutual support against Venetian competition/prejudice.
+  - Potential for collaboration on managing galleys or other ventures to generate income.
+  - Aligns with goal of forming alliances with southern Italian merchants.
 
 ## Potential Relationships to Develop
 

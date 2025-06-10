@@ -53,6 +53,7 @@
 5. **High Fixed Costs**: Significant housing expenses reducing available investment capital
 6. **Guild Restrictions**: Potential limitations on trade activities without guild membership
 7. **Supply Chain Disruptions**: Seasonal variations and political tensions affecting goods from Sicily
+8. **Market Galley Profitability**: My market galley (ID: marketgalley_45.42305690898809_12.331967958006057_376) is currently operating at zero wages, impacting profitability and crew morale.
 
 ## Action Plan for Next Month
 1. Survey available properties in modest neighborhoods to compare with current rent costs
@@ -60,3 +61,4 @@
 3. Identify and approach two potential southern Italian merchants for alliance discussions
 4. Research storage options near the harbor with favorable terms for imported goods
 5. Begin formal accounting system to track all business activities and identify optimization opportunities
+6. Address market galley profitability issue, specifically the zero wages problem, to ensure crew satisfaction and consistent income generation.
