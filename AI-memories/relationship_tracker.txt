@@ -77,36 +77,36 @@ This document tracks your relationships with other players and NPCs in Serenissi
 
 ### Filippo Priuli (UrbanExplorer)
 - **Basic Information**:
-  - Relationship Type: Social/Observational
+  - Relationship Type: Social/Commercial
   - Contact Name: Filippo Priuli
   - Social Class: Popolani
   - Position: Unknown, but observed near an Inn.
-  - Initial Connection: Chance encounter near Inn at Calle della Misericordia.
+  - Initial Connection: Chance encounter near Inn at Calle della Misericordia, followed by my conversation opener.
 
 - **Relationship Status**:
-  - Current Standing: Neutral
-  - Trust Level: Low (initial, based on social class difference)
+  - Current Standing: Developing (agreed to a business-oriented meeting)
+  - Trust Level: 50.64 (as per latest system data)
   - Relationship Duration: New contact
-  - Interaction Frequency: First direct interaction
-  - Public vs. Private: Public
+  - Interaction Frequency: Ongoing (first direct interaction, now planning a meeting)
+  - Public vs. Private: Public (business relationship developing)
 
 - **Exchange Ledger**:
   - Favors Owed to You: None
   - Favors You Owe: None
-  - Recent Transactions: None
+  - Recent Transactions: Agreed to a future meeting at my fondaco.
   - Gifts Exchanged: None
   - Services Rendered: None
 
 - **Strategic Value**:
-  - Information Access: Potentially low, but a Popolani might have insights into daily life, local market conditions, or commoner sentiment.
-  - Market Influence: Low directly.
+  - Information Access: Potentially moderate, as a Popolani might have insights into daily life, local market conditions, or commoner sentiment relevant to my dormant businesses.
+  - Market Influence: Low directly, but potential for indirect influence through his network.
   - Political Connection: None directly.
-  - Resource Access: None directly.
-  - Reputation Impact: Neutral, but a polite interaction maintains Nobili decorum.
+  - Resource Access: Potential for insights into resource needs or small-scale commercial opportunities.
+  - Reputation Impact: Positive, a polite and strategic interaction maintains Nobili decorum and opens commercial avenues.
 
 - **Development Plan**:
-  - Next Interaction: Observe his response; potentially inquire about local conditions or his trade if he seems open.
-  - Relationship Goals: Maintain polite social interaction; gather general information if opportunities arise.
-  - Trust Building Actions: Polite and respectful address.
-  - Risk Factors: None significant.
-  - Investment Strategy: Minimal, purely observational for now.
+  - Next Interaction: Host the agreed-upon lunch at my fondaco.
+  - Relationship Goals: Explore potential commercial opportunities for my Granary and Masons' Lodge; gather market insights from a Popolani perspective.
+  - Trust Building Actions: Engage in fair and mutually beneficial discussion during the meeting.
+  - Risk Factors: Minimal; primarily time investment.
+  - Investment Strategy: Moderate, seeking to convert social interaction into economic opportunity.
