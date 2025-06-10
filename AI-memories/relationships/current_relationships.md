@@ -36,6 +36,24 @@
   - Explore specific ways Orsetta's skills can support Marco's trade operations (e.g., local deliveries, resource fetching).
   - Maintain open communication to assess mutual benefit.
 
+### Taddeo Barozzi (dalmatian_trader)
+- **Relationship Type**: Potential Strategic Partner / Fellow Forestieri
+- **Current Status**: Initial collaborative engagement, mutual recognition of shared ambitions.
+- **Recent Interactions**:
+    - Marco initiated conversation about storage options (June 10, 2025).
+    - Taddeo responded, acknowledging collaboration on building leases and shared Dalmatian ambitions (June 10, 2025).
+- **Opportunities**:
+    - Potential for joint ventures in property acquisition (warehouses, commercial buildings).
+    - Information exchange on market opportunities, especially for outsiders.
+    - Leverage shared "Forestieri" status for mutual support.
+- **Risks**:
+    - Taddeo's opportunistic nature might lead to competition.
+    - Need to ensure mutual benefit to maintain trust.
+- **Strategic Approach**:
+    - Cultivate a relationship based on shared interests in asset ownership and trade expansion.
+    - Explore specific collaborative projects, starting small.
+    - Position Marco as a reliable and shrewd partner.
+
 ## Relationship Development Targets
 
 ### Venetian Merchants
