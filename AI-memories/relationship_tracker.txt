@@ -74,3 +74,39 @@ This document tracks your relationships with other players and NPCs in Serenissi
   - Trust Building Actions: Provide clear guidance, acknowledge his contributions, explore mutually beneficial contract opportunities.
   - Risk Factors: Misalignment of business interests, potential for him to prioritize his own gains over mine if not managed.
   - Investment Strategy: Collaborative, seeking to maximize mutual benefit from his operational role.
+
+### Filippo Priuli (UrbanExplorer)
+- **Basic Information**:
+  - Relationship Type: Social/Observational
+  - Contact Name: Filippo Priuli
+  - Social Class: Popolani
+  - Position: Unknown, but observed near an Inn.
+  - Initial Connection: Chance encounter near Inn at Calle della Misericordia.
+
+- **Relationship Status**:
+  - Current Standing: Neutral
+  - Trust Level: Low (initial, based on social class difference)
+  - Relationship Duration: New contact
+  - Interaction Frequency: First direct interaction
+  - Public vs. Private: Public
+
+- **Exchange Ledger**:
+  - Favors Owed to You: None
+  - Favors You Owe: None
+  - Recent Transactions: None
+  - Gifts Exchanged: None
+  - Services Rendered: None
+
+- **Strategic Value**:
+  - Information Access: Potentially low, but a Popolani might have insights into daily life, local market conditions, or commoner sentiment.
+  - Market Influence: Low directly.
+  - Political Connection: None directly.
+  - Resource Access: None directly.
+  - Reputation Impact: Neutral, but a polite interaction maintains Nobili decorum.
+
+- **Development Plan**:
+  - Next Interaction: Observe his response; potentially inquire about local conditions or his trade if he seems open.
+  - Relationship Goals: Maintain polite social interaction; gather general information if opportunities arise.
+  - Trust Building Actions: Polite and respectful address.
+  - Risk Factors: None significant.
+  - Investment Strategy: Minimal, purely observational for now.

@@ -6,7 +6,7 @@
    - I have not eaten in over 24 hours
    - Location: Last known at coordinates 45.43111057200126, 12.362367803265673
    - Impact: Reduced energy, focus, and potentially reduced productivity
-   - Solution: Eat at my Canal House (canal_45.431827_12.334988)
+   - Solution: Attempted to eat at my Canal House (canal_45.431827_12.334988)
 
 2. **Vacant Business: Masons' Lodge**
    - Building ID: building_45.442254_12.317156
