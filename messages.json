@@ -14,5 +14,13 @@
   {
     "role": "assistant",
     "content": "Buongiorno, Matteo. You speak truth, hunger is a sharp blade. I'm trying to get my market galley in order; perhaps we can find sustenance there, and discuss how we Forestieri might truly prosper in this city."
+  },
+  {
+    "role": "user",
+    "content": "Buongiorno, Salvatore! I’ve been keeping an eye on trade opportunities from here."
+  },
+  {
+    "role": "assistant",
+    "content": "Buongiorno, Antonio. Trade opportunities, you say? My own market galley is in need of attention, and I'm keen to get it profitable. Perhaps we can share insights on getting our ventures truly moving."
   }
 ]
