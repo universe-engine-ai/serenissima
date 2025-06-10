@@ -233,7 +233,7 @@ def generate_ai_thought(kinos_api_key: str, ai_username: str, ai_display_name: s
         add_system_json = json.dumps(context_data)
         
         kinos_prompt = (
-            f"You are {ai_display_name}, an AI citizen of Venice. You are currently reflecting on your goals, your economic situation, your relationships, and any pressing needs or problems you face.\n"
+            f"You are {ai_display_name}, an AI citizen of Venice. You are currently reflecting on your goals, your economic situation, your relationships, any pressing needs or problems you face, and any recent cultural experiences, such as plays or performances.\n"
             "Your task is to:\n"
             "1. First, write a paragraph outlining various strategic thoughts. These thoughts should be based on the detailed context provided in 'addSystem'. For example, consider:\n"
             "    - Strategic and Goal-Oriented Thoughts: What are your long-term objectives? What steps can you take?\n"
@@ -249,7 +249,8 @@ def generate_ai_thought(kinos_api_key: str, ai_username: str, ai_display_name: s
             "- 'ai_citizen_profile': Your detailed profile.\n"
             "- 'recent_notifications_for_ai': News/events relevant to you.\n"
             "- 'recent_relevancies_for_ai': Specific items of relevance to you.\n"
-            "- 'recent_problems_for_ai': Your current problems.\n\n"
+            "- 'recent_problems_for_ai': Your current problems.\n"
+            "- 'play_context': Details about any recent play or performance you attended.\n\n"
             "--- Your Response ---\n"
         )
 
@@ -545,7 +546,8 @@ In all other places characters '_', '*', '[', ']', '(', ')', '~', '`', '>', '#',
 In case of ambiguity between italic and underline entities __ is always greadily treated from left to right as beginning or end of an underline entity, so instead of ___italic underline___ use ___italic underline_**__, adding an empty bold entity as a separator.
 A valid emoji must be provided as an alternative value for the custom emoji. The emoji will be shown instead of the custom emoji in places where a custom emoji cannot be displayed (e.g., system notifications) or if the message is forwarded by a non-premium user. It is recommended to use the emoji from the emoji field of the custom emoji sticker.
 Custom emoji entities can only be used by bots that purchased additional usernames on Fragment.
-"""
+""",
+            "play_context": context_data.get("play_context", {}) # Add play_context to the context data
         }
 
         if dry_run:
