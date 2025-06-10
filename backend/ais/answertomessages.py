@@ -262,29 +262,25 @@ def generate_ai_response(tables: Dict[str, Table], ai_username: str, sender_user
         add_system_json = json.dumps(system_context_data, indent=2)
 
         # 3. Construct the prompt for the Kinos API
-        # Emphasize brevity, human-like tone, and no fluff multiple times.
         ai_display_name = ai_citizen_data.get('fields', {}).get('FirstName', ai_username) if ai_citizen_data else ai_username
         sender_display_name = sender_citizen_data.get('fields', {}).get('FirstName', sender_username) if sender_citizen_data else sender_username
 
         kinos_prompt = (
-            f"You are {ai_display_name}, an AI citizen of Venice. You are responding to a message from {sender_display_name}.\n"
-            f"IMPORTANT: Your response MUST be VERY SHORT, human-like, and conversational. "
-            f"DO NOT use formal language, DO NOT write long paragraphs, DO NOT include any fluff or boilerplate. "
-            f"Be direct, natural, and concise. Imagine you're sending a quick, informal message.\n\n"
-            f"CRITICAL: Use the structured context provided in the 'addSystem' field (detailed below) to make your response RELEVANT to {sender_display_name} and FOCUSED ON GAMEPLAY. "
-            f"Your message should reflect your understanding of your relationship, recent events, and potential gameplay interactions with {sender_display_name}.\n\n"
-            f"Guide to 'addSystem' content (use this to make your message relevant and gameplay-focused):\n"
+            f"You are {ai_display_name}, an AI citizen of Venice, responding to a message from {sender_display_name}.\n"
+            f"Your response MUST be concise, human-like, and conversational. Avoid formal language, long paragraphs, or boilerplate. Be direct and natural.\n\n"
+            f"CRITICAL: Use the structured context in 'addSystem' (detailed below) to make your response RELEVANT to {sender_display_name} and FOCUSED ON GAMEPLAY. "
+            f"Reflect your understanding of your relationship, recent events, and potential gameplay interactions.\n\n"
+            f"Guide to 'addSystem' content:\n"
             f"- 'ai_citizen_profile': Your own detailed profile (status, wealth, etc.).\n"
             f"- 'sender_citizen_profile': The profile of {sender_display_name}.\n"
             f"- 'relationship_with_sender': Your existing relationship status with {sender_display_name}.\n"
-            f"- 'recent_notifications_for_ai': Recent news/events you've received that might be relevant to your conversation.\n"
-            f"- 'recent_relevancies_ai_to_sender': Why {sender_display_name} (or things related to them) are specifically relevant to you. This is key for a relevant response!\n"
-            f"- 'recent_problems_involving_ai_or_sender': Recent issues involving you or {sender_display_name} that could be part of your discussion.\n\n"
+            f"- 'recent_notifications_for_ai': Recent news/events you've received.\n"
+            f"- 'recent_relevancies_ai_to_sender': Why {sender_display_name} is relevant to you (key for relevance!).\n"
+            f"- 'recent_problems_involving_ai_or_sender': Recent issues involving you or {sender_display_name}.\n\n"
             f"--- USER'S MESSAGE TO YOU ---\n"
             f"{message_content}\n"
             f"--- END OF USER'S MESSAGE ---\n\n"
-            f"Remember: Your reply MUST be VERY SHORT, human-like, conversational, RELEVANT to {sender_display_name} using the context, and FOCUSED ON GAMEPLAY. NO FLUFF. Just a natural, brief, and pertinent response.\n"
-            f"Your response:"
+            f"Your concise, natural, and gameplay-relevant reply:"
         )
         
         # Construct the API URL
