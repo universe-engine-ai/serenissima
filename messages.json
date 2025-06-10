@@ -50,5 +50,13 @@
   {
     "role": "assistant",
     "content": "Ah, Marco. Your prudence is commendable. A formal review at the Consiglio Dei Dieci ensures clarity, which I value greatly. This collaboration, indeed, lays a solid foundation for future stability and expansion, especially with an eye on Rialto. I look forward to our meeting."
+  },
+  {
+    "role": "user",
+    "content": "Good day, Caterina. Seeing you at my market stall reminds me that even in times of scarcity, one must seize opportunities when they arise."
+  },
+  {
+    "role": "assistant",
+    "content": "Bianca, you're right. Opportunities are key, especially when one's stomach rumbles. Mine certainly is. Perhaps we could discuss what you've observed over a quick bite? My customs insights might prove useful."
   }
 ]
