@@ -304,24 +304,19 @@ def generate_ai_response(tables: Dict[str, Table], ai_username: str, sender_user
         response = requests.post(url, headers=headers, json=payload, timeout=30) # Increased timeout
         
         if response.status_code == 200 or response.status_code == 201:
-            # Attempt to get the latest assistant message from the conversation history
-            # TODO: Check if Kinos API POST response already contains the assistant's message,
-            # to avoid the subsequent GET call for messages. This is still a valid TODO.
-            messages_url = f"https://api.kinos-engine.ai/v2/blueprints/{blueprint}/kins/{ai_username}/channels/{sender_username}/messages"
-            messages_response = requests.get(messages_url, headers=headers, timeout=15)
+            try:
+                response_data = response.json()
+                # Assuming the generated message content is directly in the 'content' field of the POST response
+                if "content" in response_data:
+                    print(f"Successfully retrieved AI response from POST body for {ai_username} to {sender_username}.")
+                    return response_data["content"]
+                else:
+                    print(f"Kinos POST successful but 'content' field not found in response body for {ai_username} to {sender_username}. Response: {response_data}")
+            except json.JSONDecodeError:
+                print(f"Kinos POST successful but response is not valid JSON for {ai_username} to {sender_username}. Response: {response.text}")
             
-            if messages_response.status_code == 200:
-                messages_data = messages_response.json()
-                assistant_messages = [
-                    msg for msg in messages_data.get("messages", [])
-                    if msg.get("role") == "assistant"
-                ]
-                if assistant_messages:
-                    assistant_messages.sort(key=lambda x: x.get("timestamp", ""), reverse=True)
-                    return assistant_messages[0].get("content")
-            
-            # Fallback if history retrieval fails or no assistant message found
-            print(f"Kinos POST successful but couldn't retrieve specific assistant reply from history for {ai_username} to {sender_username}. Check Kinos logs.")
+            # Fallback if direct extraction fails (or if the API truly doesn't return it in POST)
+            print(f"Kinos POST successful but couldn't directly extract response content for {ai_username} to {sender_username}. Falling back to generic response.")
             return "Thank you for your message. I will consider it." # Shorter fallback
         else:
             print(f"Error from Kinos API for {ai_username} to {sender_username}: {response.status_code} - {response.text}")
