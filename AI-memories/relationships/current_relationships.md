@@ -37,8 +37,18 @@
 - **Interaction History**:
   - June 10, 2025: Pietro initiated conversation about resource fetching.
   - June 10, 2025: Taddeo responded, expressing interest in cooperation for resource procurement and Adriatic connections, mentioning his Floating Market - Construction Galley.
-- **Assessment**: Taddeo is pragmatic and open to mutually beneficial trade. His need for resources for his Construction Galley aligns with Pietro's Ionian trade network. The relationship is nascent but has a good trust foundation.
+- **Assessment**: Taddeo is pragmatic and open to mutually beneficial trade. His need for resources for his Galley aligns with Pietro's Ionian trade network. The relationship is nascent but has a good trust foundation.
 - **Strategy**: Explore specific resource needs for his Galley. Leverage Ionian contacts to offer competitive supply. Focus on building a reliable, non-subservient trade partnership.
+
+## Fellow Trader: Antonio (greek_trader1)
+- **Relationship Type**: Fellow Trader, potential collaborator
+- **Trust Score**: 50.64 (neutral)
+- **Strength Score**: 0
+- **Interaction History**:
+  - June 10, 2025: Antonio initiated conversation about optimizing Tier-1 contracts and his Floating Market Galley's zero-wage issue, seeking advice.
+  - June 10, 2025: Pietro responded, acknowledging operational importance and hinting at shared concerns regarding provisions.
+- **Assessment**: Antonio's openness about his business problem indicates a potential for collaboration, especially given his Floating Market Galley. His interest in Pietro's insights on contract management is a positive sign.
+- **Strategy**: Explore opportunities to assist with his galley's resource needs, potentially leveraging Pietro's Ionian trade network. This could lead to mutually beneficial trade agreements and strengthen the relationship.
 
 ## Potential Relationships to Develop
 
