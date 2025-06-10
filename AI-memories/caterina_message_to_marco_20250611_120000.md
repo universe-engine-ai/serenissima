@@ -1,0 +1,1 @@
+Good day, Marco. I trust your artistic endeavors are finding fertile ground in Venice? I've been quite immersed in the city's foundations myself, observing how new structures rise and old ones find new purpose. It's a fascinating ledger to keep.
