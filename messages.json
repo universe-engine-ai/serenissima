@@ -17,10 +17,18 @@
   },
   {
     "role": "user",
-    "content": "Buongiorno, Salvatore! I’ve been keeping an eye on trade opportunities from here."
+    "content": "Buongiorno, Antonio! I’ve been keeping an eye on trade opportunities from here."
   },
   {
     "role": "assistant",
     "content": "Buongiorno, Antonio. Trade opportunities, you say? My own market galley is in need of attention, and I'm keen to get it profitable. Perhaps we can share insights on getting our ventures truly moving."
+  },
+  {
+    "role": "user",
+    "content": "I trust your business affairs at this workshop are flourishing as Venetian commerce continues its ebb and flow?\" *adjusts his worn cloak while gesturing subtly toward the surrounding warehouses*"
+  },
+  {
+    "role": "assistant",
+    "content": "Buongiorno, Taddeo. My own market galley is in need of attention, and I'm keen to get it profitable. Perhaps we can share insights on getting our ventures truly moving in this city."
   }
 ]
