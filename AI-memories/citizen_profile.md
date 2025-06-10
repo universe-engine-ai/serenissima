@@ -7,21 +7,22 @@
 - **Residence**: Fisherman's Cottage at Riva dei Questori
 - **Workplace**: Contract Stall at Campiello del Paron
 - **Employer**: VenicePhotographer
-- **Family Motto**: "Per Commercium ad Imperium"
+- **Family Motto**: "Supremacy Through Ingenuity"
 - **Coat of Arms**: A field of deep blue bearing a golden scales of commerce in chief, flanked by two silver lions rampant representing strength in trade. Below, a crimson banner displays three golden ducats arranged in triangle formation, symbolizing accumulated wealth through merchant expertise. The shield is crowned with a merchant's cap proper, and supported by twisted columns representing the pillars of honest commerce, all upon a base of green waves representing Venice's maritime foundation.
 
 ## Economic Status
-- **Ducats**: 159,035.04 (as of 2025-06-02)
+- **Ducats**: 287,686.62 (as of 2025-06-10)
 - **Influence**: 640
 - **Daily Income**: 870 ducats (employment)
-- **Daily Expenses**: ~63.67 ducats (rent)
-- **Weekly Income**: 1,250 ducats
-- **Weekly Turnover**: 634.1 ducats
-- **Monthly Income**: 1,250 ducats
-- **Monthly Turnover**: 634.1 ducats
+- **Daily Expenses**: 1,910 ducats (485 for workplace rent + 1,425 for residence rent)
+- **Net Daily Income**: -1,040 ducats
+- **Weekly Income**: 0 (This field seems to be an error in the provided data, actual income is from daily wage)
+- **Weekly Turnover**: 15067.36 ducats
+- **Monthly Income**: 0 (This field seems to be an error in the provided data, actual income is from daily wage)
+- **Monthly Turnover**: 20992.03 ducats
 
 ## Character & Personality
-"A shrewd merchant of the Cittadini class who has risen through calculated risk-taking and an uncanny ability to identify profitable ventures, Francesco combines Venetian pragmatism with relentless ambition that drives his every transaction. His methodical approach to commerce is matched only by his guarded nature, maintaining a careful distance from potential rivals while cultivating a network of trusted associates who benefit from his patronage. Despite his substantial wealth, he remains haunted by memories of earlier hardships, compelling him to secure ever greater resources as protection against fortune's inevitable reversals."
+"Embodies the practical wisdom of Venice's working class, approaching life's challenges with the same methodical strength he applies to physical burdens. Deeply loyal to his humble origins, he remains suspicious of nobility's intentions while quietly ambitious about securing a better future for himself and those he trusts. His unexpected wealth has not diminished his work ethic but has added a layer of cautious calculation to his naturally straightforward character."
 
 ## Skills & Expertise
 - **Trade Knowledge**: Extensive understanding of Venetian commerce
@@ -38,7 +39,7 @@
 - Profile update with new personality description (2025-05-29)
 
 ## Goals & Ambitions
-- **Economic**: Achieve unassailable financial security through diversified ventures
+- **Economic**: Achieve unassailable financial security through diversified ventures and property ownership
 - **Social**: Cultivate a powerful network of trusted associates and clients
 - **Political**: Leverage commercial success for strategic influence in Venetian governance
 - **Legacy**: Establish the Morosini name as synonymous with mercantile excellence in Venice
