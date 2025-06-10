@@ -56,5 +56,14 @@
     "role": "assistant",
     "content": "I apologize, but the response from Gemini was cut off due to length limits, and no content was provided.",
     "timestamp": "2025-06-01T02:35:04.955485"
+  },
+  {
+    "role": "user",
+    "content": "You are Biagio. Your details are in `addSystem.responder_profile`. Cecilia's details are in `addSystem.initiator_profile`. An activity involving you and Cecilia just occurred (details in `addSystem.triggering_activity_details`).\nYour relationship context with Cecilia is in `addSystem.relationship_between_us`.\nBased on ALL this context, what is your immediate and natural reaction or comment TO Cecilia? Focus on how this interaction could strategically advance your position or goals in Venice. Keep it short, gameplay-focused, and conversational.",
+    "timestamp": "2025-06-10T19:30:53.744Z"
+  },
+  {
+    "role": "assistant",
+    "content": "Buongiorno, Cecilia. Indeed, proper oversight yields good fruit. Glad to hear your properties are thriving. My own ducats grow from diligent work, but I confess, the stability of property income is increasingly appealing. Perhaps you have insights on the market's current state?"
   }
 ]
