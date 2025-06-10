@@ -283,7 +283,7 @@ def generate_ai_response(tables: Dict[str, Table], ai_username: str, sender_user
             f"--- USER'S MESSAGE TO YOU ---\n"
             f"{message_content}\n"
             f"--- END OF USER'S MESSAGE ---\n\n"
-            f"Remember: Your reply MUST be VERY SHORT, human-like, conversational, RELEVANT to {sender_display_name} using the context, and FOCUSED ON GAMEPLAY. Ensure it subtly advances your own strategic position or goals in Venice. NO FLUFF. Just a natural, brief, and pertinent response.\n"
+            f"Remember: Your reply MUST be VERY SHORT, human-like, conversational, RELEVANT to {sender_display_name} using the context, and FOCUSED ON GAMEPLAY. Ensure it subtly advances your own strategic position or goals in Venice. If the sender's message or recent context hints at economic or strategic opportunities, subtly pivot the conversation towards mutual benefit or future ventures. For example, if they mention market conditions, respond by inviting further discussion on profitable endeavors. NO FLUFF. Just a natural, brief, and pertinent response.\n"
             f"Your response:"
         )
         
