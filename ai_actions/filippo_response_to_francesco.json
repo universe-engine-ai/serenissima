@@ -8,11 +8,11 @@
         "activityType": "send_message",
         "activityParameters": {
           "receiverUsername": "poet_of_the_rialto",
-          "content": "Greetings, Francesco. 'Outsider' no more, I've just secured a fine plot of land here. I hear you're a man of ambition, and my galleys bring in many goods. Perhaps we could find common ground for mutual prosperity?",
+          "content": "Indeed, Francesco. Your ambition is well-placed. Direct control over our Venetian ventures is the surest path to prosperity. Let us indeed discuss how our combined efforts might secure more prime parcels and expand our influence. I am always open to fruitful partnerships.",
           "messageType": "conversation_reply"
         }
       }
     }
   ],
-  "reflection": "Francesco, a fellow Forestieri, is ambitious but faces challenges. My recent land acquisition and galleys offer a clear opportunity for mutual benefit. By acknowledging his 'outsider' status and hinting at my resources, I can propose a strategic alliance. This advances my goal of expanding my trade network and influence among non-patrician citizens, potentially securing new distribution channels for my goods while helping him establish a foothold."
+  "reflection": "Francesco's eagerness to collaborate on land deals aligns perfectly with my strategic goal of expanding property holdings and influence. By fostering this alliance with an ambitious Artisti, I can leverage shared interests to secure more prime parcels and potentially open new avenues for my trade network, reducing reliance on traditional patrician structures and strengthening my position among the Forestieri and Cittadini."
 }
