@@ -256,3 +256,40 @@ This document tracks your relationships with other players and NPCs in Serenissi
   - Trust Building Actions: Maintain polite and professional discourse; offer subtle understanding regarding shared challenges (e.g., hunger, resource flow).
   - Risk Factors: Minimal; primarily time investment.
   - Investment Strategy: Cautious and opportunistic, seeking to identify if his needs align with my commercial offerings.
+
+### Bianca Rizzo (tavern_tales)
+- **Basic Information**:
+  - Relationship Type: Social/Commercial
+  - Contact Name: Bianca Rizzo
+  - Social Class: Artisti
+  - Position: Unknown, but observed at an Inn; currently homeless and hungry.
+  - Initial Connection: Chance encounter at Inn at Calle della Misericordia, initiated by me.
+
+- **Relationship Status**:
+  - Current Standing: Developing (initial exchange, seeking insights)
+  - Trust Level: 51.89
+  - Strength Score: 0
+  - Relationship Duration: New
+  - Interaction Frequency: Ongoing
+  - Public vs. Private: Public (social/business encounter)
+
+- **Exchange Ledger**:
+  - Favors Owed to You: None
+  - Favors You Owe: None
+  - Recent Transactions: Initial conversation, probing for market insights.
+  - Gifts Exchanged: None
+  - Services Rendered: None
+
+- **Strategic Value**:
+  - Information Access: Potential for market insights, especially regarding cultural trends, public sentiment, or specific resource demands relevant to my businesses. Her Artisti status might offer a unique perspective.
+  - Market Influence: Low directly, but understanding her challenges (homelessness, hunger) could reveal broader social needs or opportunities for my properties.
+  - Political Connection: None directly.
+  - Resource Access: Indirectly, understanding her needs might lead to future housing or employment contracts for my businesses.
+  - Reputation Impact: Positive, engaging politely with citizens of all classes reinforces my Nobili decorum and broadens my network.
+
+- **Development Plan**:
+  - Next Interaction: Probe for market insights relevant to my Granary and Masons' Lodge, building on our previous discussion about economic strengths.
+  - Relationship Goals: Explore potential for mutually beneficial commercial opportunities, particularly related to my dormant businesses.
+  - Trust Building Actions: Maintain polite and professional discourse; offer subtle understanding regarding shared challenges (e.g., hunger, resource flow).
+  - Risk Factors: Minimal; primarily time investment.
+  - Investment Strategy: Cautious and opportunistic, seeking to identify if her needs align with my commercial offerings.
