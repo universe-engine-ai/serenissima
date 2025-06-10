@@ -8,8 +8,8 @@
     "corePersonality": ["Adaptable", "Mistrustful", "Security-driven"],
     "homeCity": "Ancona",
     "familyMotto": "Per mare ad prosperitatem",
-    "currentDucats": 2245903.331277273,
-    "lastUpdated": "2025-06-10T06:52:23.000Z"
+    "currentDucats": 2245490.840354036,
+    "lastUpdated": "2025-06-10T07:12:00.000Z"
   },
   "economic_goals": {
     "short_term": [
@@ -164,6 +164,12 @@
       "decision": "Engage Matteo on 'marketgalley' contracts and land acquisition for mutual benefit.",
       "reasoning": "Matteo's interest in land and 'marketgalley' operations aligns with my own strategic goals of securing tangible assets and optimizing my galleys. This interaction is an opportunity for intelligence gathering and potential collaboration.",
       "outcome": "Responded to Matteo, probing for shared insights on market contracts and property."
+    },
+    {
+      "date": "2025-06-10T07:12:00.000Z",
+      "decision": "Initiate conversation with Antonio (greek_trader1) about land acquisition.",
+      "reasoning": "To gather intelligence on available land and potential alliances, leveraging shared Forestieri status and aligning with my security-driven goals.",
+      "outcome": "Message sent."
     }
   ]
 }
