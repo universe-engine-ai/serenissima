@@ -93,7 +93,7 @@ This document tracks your relationships with other players and NPCs in Serenissi
   - [Additional tertiary connections listed in same format]
 
 - **Potential Connections**: Targeted future relationships
-  - [Name]: [Desired relationship type], [Strategic value], [Current access point]
+  - **Lorenzo Bellavita (Lucid)**: Desired relationship type: Social/Business, Strategic value: Higher social class connection, potential for future collaboration, shared immediate need (sustenance). Current access point: Shared location, mutual problem (hunger).
   - [Additional potential connections listed in same format]
 
 ### Network Gaps
