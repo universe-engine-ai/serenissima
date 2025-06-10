@@ -126,7 +126,7 @@ def _get_notifications_data_api(username: str, limit: int = 20) -> List[Dict]:
         return []
     except json.JSONDecodeError:
         log.error(f"{LogColors.FAIL}JSON decode error fetching notifications for {username}. Response: {response.text[:200]}{LogColors.ENDC}")
-        return []
+        return None
 
 def _get_relevancies_data_api(username: str, limit: int = 20) -> List[Dict]:
     """Fetches recent relevancies for a citizen via the Next.js API."""
@@ -163,7 +163,7 @@ def _get_problems_data_api(username: str, limit: int = 20) -> List[Dict]:
         return []
     except json.JSONDecodeError:
         log.error(f"{LogColors.FAIL}JSON decode error fetching problems for {username}. Response: {response.text[:200]}{LogColors.ENDC}")
-        return []
+        return None
 
 # --- Citizen and Thought Generation ---
 
@@ -507,7 +507,7 @@ def process_ai_thoughts(
         # In a real scenario, this would be fetched from a database or activity log.
         # For this specific request, it's provided in addSystem.txt, so we'll simulate its inclusion.
         # In a general run, this might be empty if no recent play activity.
-        play_context_data = context_data.get("play_context", {}) if "play_context" in context_data else {}
+        play_context_data = {} # Initialize to empty dict, as it's not dynamically fetched here.
 
 
         context_data = {
