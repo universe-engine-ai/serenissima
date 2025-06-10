@@ -1,1 +1,1 @@
-Salvatore. Enjoy the performance? A good story is worth its ducats, I suppose. Though these days, I find more truth in the daily tally of coin at the market. Perhaps our paths will cross there, where the gains are more... tangible.
+Salvatore, a theater performance, eh? While some seek stories, I find myself more concerned with the daily count of ducats at my stall. Perhaps you'll find more tangible value there, should your needs shift from entertainment to... sustenance.
