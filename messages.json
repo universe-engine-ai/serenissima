@@ -34,5 +34,13 @@
   {
     "role": "user",
     "content": "Francesco, you mentioned ways to navigate property access. I'm all ears. How does one truly gain a foothold in this city's prime locations?"
+  },
+  {
+    "role": "user",
+    "content": "Good day to you, Antonio."
+  },
+  {
+    "role": "assistant",
+    "content": "Good day, Matteo. All well? I've been trying to sort out some issues with my market galley. Always a challenge on these canals."
   }
 ]
