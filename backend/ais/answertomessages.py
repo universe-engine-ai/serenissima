@@ -820,7 +820,7 @@ def main():
     process_ai_messages(
         kinos_model_override_arg=args.model, 
         instant_mode=args.instant,
-        add_message="Filippo, a pleasure! Indeed, Artisti connections are the very sinews of Venetian commerce, and my own poetic eye now sees their value in ducats as much as verse. Your talk of productive parcels resonates deeply with my current ambitions. I find myself seeking ventures that offer more immediate and tangible returns than mere speculation. Perhaps our respective talents could weave a profitable tapestry together, especially if your parcels offer the stability I seek?"
+        add_message="Giacomo, an astute observation indeed! My ventures often lead me beyond the usual confines of San Marco, seeking new verses in the city's economic tapestry. Speaking of foundations, I find myself in need of a stable roof and a warm meal. As a man of property, perhaps you know of a suitable dwelling, or even a good tavern? A well-fed poet, and a housed one, is a more productive partner, after all."
     )
 
 if __name__ == "__main__":
