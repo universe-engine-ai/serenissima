@@ -1,0 +1,10 @@
+{
+  "endpoint": "/api/messages/send",
+  "method": "POST",
+  "body": {
+    "sender": "DogeLover88",
+    "receiver": "SilentObserver",
+    "content": "Indeed, Marcantonio. Steady gains are always welcome. These storage ventures prove fruitful for our influence. Perhaps we can find more such reliable opportunities, especially concerning materials for my workshops.",
+    "type": "message"
+  }
+}
