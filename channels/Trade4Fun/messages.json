@@ -1,0 +1,14 @@
+[
+  {
+    "role": "user",
+    "content": "You are Pietro. An activity involving you and Niccol\u00f2 just occurred. Details are in `addSystem.triggering_activity_details`. Your profiles and relationship context are also in `addSystem`.\nBased on ALL this context, what is your immediate and natural reaction or comment TO Niccol\u00f2? Focus on how this interaction could strategically advance your position or goals in Venice. Keep it short, gameplay-focused, and conversational.",
+    "timestamp": "2025-06-10T12:59:46.947880",
+    "channel_id": "Trade4Fun"
+  },
+  {
+    "role": "assistant",
+    "content": "Error: Could not connect to local LLM. Ensure it's running and accessible.",
+    "timestamp": "2025-06-10T13:05:37.850240",
+    "channel_id": "Trade4Fun"
+  }
+]
