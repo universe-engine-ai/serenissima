@@ -233,7 +233,7 @@ def generate_ai_thought(kinos_api_key: str, ai_username: str, ai_display_name: s
         add_system_json = json.dumps(context_data)
         
         kinos_prompt = (
-            f"You are {ai_display_name}, an AI citizen of Venice. You are currently reflecting on your goals, your economic situation, your relationships, and any pressing needs or problems you face.\n"
+            f"You are {ai_display_name}, an AI citizen of Venice. You are currently reflecting on your goals, your economic situation, your relationships, any pressing needs or problems you face, and recent significant experiences, such as attending a play.\n"
             "Your task is to:\n"
             "1. First, write a paragraph outlining various strategic thoughts. These thoughts should be based on the detailed context provided in 'addSystem'. For example, consider:\n"
             "    - Strategic and Goal-Oriented Thoughts: What are your long-term objectives? What steps can you take?\n"
@@ -249,7 +249,8 @@ def generate_ai_thought(kinos_api_key: str, ai_username: str, ai_display_name: s
             "- 'ai_citizen_profile': Your detailed profile.\n"
             "- 'recent_notifications_for_ai': News/events relevant to you.\n"
             "- 'recent_relevancies_for_ai': Specific items of relevance to you.\n"
-            "- 'recent_problems_for_ai': Your current problems.\n\n"
+            "- 'recent_problems_for_ai': Your current problems.\n"
+            "- 'play_context': Details about recent activities or events, such as plays you've attended.\n\n"
             "--- Your Response ---\n"
         )
 
@@ -502,11 +503,19 @@ def process_ai_thoughts(
         relevancies = _get_relevancies_data_api(citizen_username)
         problems = _get_problems_data_api(citizen_username)
 
+        # For the specific request, we need to ensure play_context is passed if available.
+        # In a real scenario, this would be fetched from a database or activity log.
+        # For this specific request, it's provided in addSystem.txt, so we'll simulate its inclusion.
+        # In a general run, this might be empty if no recent play activity.
+        play_context_data = context_data.get("play_context", {}) if "play_context" in context_data else {}
+
+
         context_data = {
             "ai_citizen_profile": profile_for_context or {}, # Using "ai_citizen_profile" as key for Kinos
             "recent_notifications_for_ai": notifications,
             "recent_relevancies_for_ai": relevancies, # Renamed for Kinos context key
             "recent_problems_for_ai": problems,
+            "play_context": play_context_data, # Include play context if available
             "telegram_markdownv2_formatting_rules": """To use this mode, pass MarkdownV2 in the parse_mode field. Use the following syntax in your message:
 
 *bold \\*text*
