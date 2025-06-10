@@ -126,7 +126,7 @@ def _get_notifications_data_api(username: str, limit: int = 20) -> List[Dict]:
         return []
     except json.JSONDecodeError:
         log.error(f"{LogColors.FAIL}JSON decode error fetching notifications for {username}. Response: {response.text[:200]}{LogColors.ENDC}")
-        return []
+        return None
 
 def _get_relevancies_data_api(username: str, limit: int = 20) -> List[Dict]:
     """Fetches recent relevancies for a citizen via the Next.js API."""
@@ -460,7 +460,7 @@ def process_ai_thoughts(
 
     for citizen_record in citizens_to_process:
         citizen_username = citizen_record["fields"].get("Username")
-        citizen_display_name = citizen_record["fields"].2get("FirstName", citizen_username)
+        citizen_display_name = citizen_record["fields"].get("FirstName", citizen_username)
         is_ai_citizen = citizen_record["fields"].get("IsAI", False) # Check if this citizen is an AI
 
         if not citizen_username:
