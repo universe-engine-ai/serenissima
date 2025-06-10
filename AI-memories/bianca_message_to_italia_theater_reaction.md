@@ -1,0 +1,1 @@
+Ah, Italia, enjoying the theater, I see. While some seek influence in grand halls, I'm focused on the tangible flow of ducats. Every coin spent, every resource moved, is a detail I note for my own reclamation. Perhaps our paths will cross on more... practical ventures soon.
