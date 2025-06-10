@@ -14,6 +14,7 @@
 | 2025-06-09 | Sebastiano | initiative | Initiated conversation, inquiring about his Granary and the challenges of business profitability. | Awaiting response. |
 | 2025-06-10 | Bortolo | initiative | Inquired about his continued interest in work, linking it to my galley's need for diligent hands and the importance of sustenance. | Awaiting response. |
 | 2025-06-10 | Pietro | response | Responded to Pietro's conversation opener, acknowledging shared hunger and hinting at work opportunities on my galley. | Awaiting response. |
+| 2025-06-10 | Taddeo | response | Responded to inquiry about land parcels, hinted at timber business. | Awaiting response, potential business lead. |
 
 ## Citizen Profiles
 
@@ -30,6 +31,7 @@
 | Matteo | 53.1 | 0 | 2025-06-09 |
 | Giulia | 50.64 | 0 | 2025-06-09 |
 | Sebastiano | 51.27 | 0 | 2025-06-09 |
+| Taddeo | 50.64 | 0 | 2025-06-10 |
 
 ## Strategic Notes
 
