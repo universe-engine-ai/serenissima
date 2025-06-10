@@ -13,6 +13,12 @@
    - Last Interaction: 2025-06-06
    - Status: Active
 
+### New or Developing Relationships
+3. **rialto_sailor1** - Trust Score: (Initial/Unknown)
+   - Interactions: Initial conversational greeting at an inn
+   - Last Interaction: 2025-06-08
+   - Status: Active (Initiated)
+
 ### Business Relationships
 - Currently operating two merchant galleys:
   - Food Galley (retail_food)

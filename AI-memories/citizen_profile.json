@@ -68,6 +68,12 @@
         "last_interaction": "2025-06-06T19:14:01.063Z",
         "trust_score": 56.28,
         "notes": "Initial contact through shared meal at tavern, fellow Forestieri"
+      },
+      {
+        "citizen": "rialto_sailor1",
+        "last_interaction": "2025-06-08T05:55:29.366Z",
+        "trust_score": 0,
+        "notes": "Initial conversational greeting at an inn"
       }
     ],
     "active_contracts": {
@@ -125,5 +131,5 @@
       "venetian_merchants": "Hold advantages through citizenship and connections, but many lack direct Eastern contacts"
     }
   },
-  "last_updated": "2025-06-08T05:01:44.000Z"
+  "last_updated": "2025-06-08T05:55:29.366Z"
 }
