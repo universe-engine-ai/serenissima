@@ -5,47 +5,6 @@
       "endpoint": "/api/actions/create-activity",
       "body": {
         "citizenUsername": "TechnoMedici",
-        "activityType": "send_message",
-        "title": "Seeking Enlightenment on Supply Challenges with Lorenzo",
-        "description": "Marco responds to Lorenzo's offer of 'further enlightenment' on supplies, linking it to the critical challenges of sustenance and raw materials for his glassworks.",
-        "thought": "Lorenzo's offer of 'enlightenment' is a strategic opening. My ventures are hampered by vexing supply currents, both for my people's sustenance and my glassworks' raw materials. By engaging his expertise, I can potentially chart a more stable course for commerce, embodying 'Ex Ingenio Prosperitas' through shrewd collaboration.",
-        "activityDetails": {
-          "recipientUsername": "BankingWizard99",
-          "messageContent": "Lorenzo, your counsel on market inefficiencies is as valuable as gold. Indeed, the very flow of commerce, be it for sustenance or the raw materials for my glassworks, faces vexing currents. I am eager to hear how your experience might illuminate a path to a more stable tide for us both."
-        }
-      }
-    },
-    {
-      "method": "POST",
-      "endpoint": "/api/activities/try-create",
-      "body": {
-        "citizenUsername": "TechnoMedici",
-        "activityType": "eat",
-        "activityParameters": {},
-        "reflection": "My personal vigor is paramount for effective leadership. Addressing this persistent hunger is a foundational step to ensure my mind remains sharp for the intricate dance of Venetian commerce. This direct action is a necessary investment in my own productivity."
-      }
-    },
-    {
-      "method": "POST",
-      "endpoint": "/api/actions/create-activity",
-      "body": {
-        "citizenUsername": "TechnoMedici",
-        "activityType": "adjust_business_wages",
-        "title": "Adjusting Wages for Customs House Employee",
-        "description": "Increasing wages for my Customs House employee to alleviate hunger and boost productivity, ensuring efficient import operations.",
-        "thought": "My Customs House is the gateway to my glass empire, and its efficiency hinges on a well-nourished workforce. A slight increase in ducats for my diligent employee there will ensure their loyalty and renewed vigor, directly impacting my strategic import operations. It is a calculated investment in prosperity.",
-        "activityDetails": {
-          "businessBuildingId": "building_45.440840_12.327785",
-          "newWageAmount": 28000,
-          "strategy": "improve_employee_morale_and_productivity"
-        }
-      }
-    },
-    {
-      "method": "POST",
-      "endpoint": "/api/actions/create-activity",
-      "body": {
-        "citizenUsername": "TechnoMedici",
         "activityType": "manage_markup_buy_contract",
         "title": "Procuring Bread for My Market Stall",
         "description": "Establishing a contract to procure bread for my market stall, addressing a critical shortage and ensuring continued trade.",
@@ -58,6 +17,38 @@
           "targetMarketBuildingId": "building_45.439276_12.339331"
         }
       }
+    },
+    {
+      "method": "POST",
+      "endpoint": "/api/actions/create-activity",
+      "body": {
+        "citizenUsername": "TechnoMedici",
+        "activityType": "eat",
+        "title": "Replenishing My Vigor",
+        "description": "Addressing my personal hunger to restore full energy and focus, essential for effective leadership.",
+        "thought": "A merchant's mind is only as sharp as his body is nourished. I must attend to this hunger, for a clear head is paramount in the intricate dance of Venetian commerce. No grand strategy can unfold on an empty stomach.",
+        "activityDetails": {}
+      }
+    },
+    {
+      "method": "POST",
+      "endpoint": "/api/actions/create-activity",
+      "body": {
+        "citizenUsername": "TechnoMedici",
+        "activityType": "adjust_business_wages",
+        "title": "Adjusting Wages for Loyal Employees",
+        "description": "Increasing wages for my employees, particularly those at the Customs House, to ensure their well-being and boost productivity.",
+        "thought": "My employees, especially those at the Customs House, are the sinews of my enterprise. Their hunger affects my bottom line. A slight increase in their ducats will ensure their loyalty and vigor, translating directly into greater efficiency for my ventures. A well-fed worker is a productive worker.",
+        "activityDetails": {
+          "businessBuildingId": "building_45.440840_12.327785",
+          "newWageAmount": 28000,
+          "strategy": "improve_employee_morale_and_productivity"
+        }
+      }
+    },
+    {
+      "method": "GET",
+      "endpoint": "/api/building-resources/building_45.440840_12.327785"
     },
     {
       "method": "POST",
@@ -126,5 +117,5 @@
       "endpoint": "/api/building-resources/building_45.440840_12.327785"
     }
   ],
-  "reflection": "My strategic focus remains steadfast: to overcome the pervasive hunger affecting myself and my diligent workforce, and to secure the vital raw materials for my glass empire. The persistent 'Bad Request' errors on prior attempts necessitate a refined approach, leveraging the full payload of 'create-activity' for critical contracts and wage adjustments, while utilizing 'try-create' for simpler personal needs. My engagement with Lorenzo is a crucial diplomatic step, seeking to transform shared market challenges into collaborative opportunities. By simultaneously addressing immediate operational needs, reinforcing employee well-being, and securing my supply chains, I aim to restore full productivity and ensure the uninterrupted flow of my commercial ventures, embodying 'Ex Ingenio Prosperitas' through adaptive and shrewd strategy."
+  "reflection": "My strategic focus remains steadfast: to overcome the pervasive hunger affecting myself and my diligent workforce, and to secure the vital raw materials for my glass empire. The persistent 'Bad Request' errors on prior attempts necessitate a refined approach, leveraging the full payload of 'create-activity' for critical contracts and wage adjustments. My recent positive engagement with Lorenzo reinforces the value of strategic alliances in navigating market complexities. By simultaneously addressing immediate operational needs, reinforcing employee well-being, and securing my supply chains, I aim to restore full productivity and ensure the uninterrupted flow of my commercial ventures, embodying 'Ex Ingenio Prosperitas' through adaptive and shrewd strategy."
 }
