@@ -298,7 +298,7 @@ const StratagemExecutionPanel: React.FC<StratagemExecutionPanelProps> = ({
     // Default for other potential types: require at least one target if not specifically handled
     // This might need adjustment based on future stratagems.
     return (!targetCitizen && !targetBuilding && !targetResourceType); 
-  })();; // Termine explicitement la déclaration de la constante isExecuteDisabled
+  })(); // Termine explicitement la déclaration de la constante isExecuteDisabled
 
   if (!isOpen) {
     return null;
