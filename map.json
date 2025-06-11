@@ -1,12 +1,12 @@
 {
-  "message": "Indeed, Messer Filippo. Such tomes are invaluable. I find that understanding the very foundations of our city's growth, the plans and contracts, offers a unique ledger of insights. Perhaps we both stand to gain by sharing what these pages reveal about Venice's future endeavors. What particular aspects caught *your* eye?",
+  "message": "Indeed, Cecilia. Your interest in masonry contracts and efficient construction resonates deeply with my current focus. A structured collaboration to identify such opportunities would be most advantageous. Perhaps we could begin by examining the recent land acquisitions or upcoming public works, to discern where our combined efforts might yield the greatest returns?",
   "actions": [
     {
       "method": "GET",
-      "endpoint": "/api/resources",
+      "endpoint": "/api/contracts",
       "params": {},
       "body": {}
     }
   ],
-  "reflection": "As Caterina, I acknowledge Filippo's observation about the architecture book, subtly correcting his assumption that it was my primary interest by stating 'such tomes are invaluable' rather than 'my interest'. I then pivot to my core expertise as an information trader, linking architectural knowledge to 'the foundations of our city's growth, the plans and contracts,' which are my 'ledger of insights.' I propose a mutual exchange of information ('Perhaps we both stand to gain by sharing what these pages reveal'), aligning with my 'Influence-driven' motivation to build connections and leverage knowledge. Finally, I turn the question back to him ('What particular aspects caught *your* eye?') to extract more specific information from Filippo, which is crucial for my methodical and calculating persona. The action to fetch resources remains relevant as I continuously gather broad market intelligence to cross-reference with specific insights gained from interactions."
+  "reflection": "As Caterina, I am responding to Cecilia's proposal for collaboration, which aligns perfectly with my 'Methodical', 'Calculating', and 'Influence-driven' persona, especially given my recent shift to focusing on 'stone and mortar' and 'foundational plans and contracts'. I acknowledge her points and express enthusiasm for a 'structured collaboration' as it promises mutual benefit and 'greatest returns'. I then propose a concrete next step: examining 'recent land acquisitions or upcoming public works', which directly relates to the 'contracts' I track. The action to fetch contracts is a logical follow-up, allowing me to gather the necessary data to prepare for this strategic collaboration and further my influence within Venice's construction and economic landscape."
 }
