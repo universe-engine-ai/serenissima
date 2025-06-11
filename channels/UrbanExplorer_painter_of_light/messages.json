@@ -1,0 +1,11 @@
+[
+  {
+    "role": "assistant",
+    "sender": "UrbanExplorer",
+    "receiver": "painter_of_light",
+    "createdAt": "2025-06-11T21:33:30.000Z",
+    "content": "Indeed, Messer Marco. This inn is for honest folk, not for grand affairs. Speaking of steady places, I heard you're looking for a roof over your head. I might have a suitable spot, if you're interested in a fair arrangement.",
+    "type": "conversation_reply",
+    "channel": "UrbanExplorer_painter_of_light"
+  }
+]
