@@ -831,3 +831,62 @@ This would make NLR attempt to sabotage a specific timber shipment contract belo
 }
 ```
 This would make NLR attempt to spread rumors about BasstheWhale's business practices in public places for two days.
+
+### 15. Employee Poaching (Coming Soon)
+
+-   **Type**: `employee_poaching`
+-   **Purpose**: To recruit a skilled employee from a competitor by making them a better offer.
+-   **Category**: `social_warfare`
+-   **Creator**: (To be created: `backend/engine/stratagem_creators/employee_poaching_stratagem_creator.py`)
+-   **Processor**: (To be created: `backend/engine/stratagem_processors/employee_poaching_stratagem_processor.py`)
+
+#### Parameters for Creation (`stratagemDetails` in API request):
+
+-   `targetEmployeeUsername` (string, required): The username of the employee to poach.
+-   `targetCompetitorUsername` (string, required): The username of the current employer.
+-   `jobOfferDetails` (string, optional): A brief description of the job offer (e.g., "Higher wages at my workshop", "Better working conditions").
+-   `name` (string, optional): Custom name for the stratagem.
+-   `description` (string, optional): Custom description.
+-   `notes` (string, optional): Custom notes.
+-   `durationHours` (integer, optional): Duration for the offer to be considered. Defaults to 48 (2 days).
+
+#### How it Works (Conceptual):
+
+1.  **Creation**:
+    -   The `employee_poaching_stratagem_creator.py` validates parameters.
+    -   It creates a new record in the `STRATAGEMS` table with `Status: "active"`, `Category: "social_warfare"`, an influence cost of 6, and sets `ExpiresAt`.
+
+2.  **Processing (Conceptual for "Coming Soon")**:
+    -   `processStratagems.py` picks up the active "employee_poaching" stratagem.
+    -   `employee_poaching_stratagem_processor.py` is invoked.
+    -   **Job Offer Message**:
+        -   The processor generates and sends a `MESSAGE` from the `ExecutedBy` citizen to the `targetEmployeeUsername`.
+        -   The message contains the job offer and may be tailored based on the relationship between the executor and the employee.
+    -   **Employee Decision**:
+        -   Upon receiving the message, the `targetEmployeeUsername` (if an AI) will evaluate the offer. This could be a simple probability check based on factors like:
+            -   The wage difference (if quantifiable).
+            -   The employee's current job satisfaction (relationship with `targetCompetitorUsername`).
+            -   The employee's relationship with the `ExecutedBy` citizen.
+    -   **Entity Changes & Effects**:
+        -   If the offer is accepted, the `Occupant` field of the competitor's building is cleared, and the `Occupant` field of one of the `ExecutedBy` citizen's buildings is updated.
+        -   **RELATIONSHIPS**: The relationship between the `ExecutedBy` citizen and the `targetCompetitorUsername` is negatively impacted. The relationship between the `ExecutedBy` citizen and the `targetEmployeeUsername` may improve.
+    -   **Status & Notes**:
+        -   The stratagem is marked `executed` after the message is sent and the employee makes a decision.
+        -   Notes would track the outcome of the poaching attempt.
+
+#### Example API Request to `POST /api/stratagems/try-create`:
+
+```json
+{
+  "citizenUsername": "NLR",
+  "stratagemType": "employee_poaching",
+  "stratagemDetails": {
+    "targetEmployeeUsername": "GiovanniArtisan",
+    "targetCompetitorUsername": "BasstheWhale",
+    "jobOfferDetails": "I can offer you a 20% wage increase and your own workspace.",
+    "durationHours": 48,
+    "name": "Poach Giovanni from Bass"
+  }
+}
+```
+This would make NLR attempt to recruit "GiovanniArtisan" away from their current employer, "BasstheWhale".

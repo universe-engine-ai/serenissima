@@ -78,6 +78,11 @@ export async function POST(request: Request) {
         `TargetCitizen: ${stratagemDetails?.targetCitizen}`,
         `GossipTheme: ${stratagemDetails?.gossipTheme}`
       );
+    } else if (stratagemType === 'employee_poaching') {
+      console.log(`[API /stratagems/try-create] Processing 'employee_poaching' stratagem with parameters:`,
+        `TargetEmployeeUsername: ${stratagemDetails?.targetEmployeeUsername}`,
+        `TargetCompetitorUsername: ${stratagemDetails?.targetCompetitorUsername}`
+      );
     }
 
     let parsedPythonEngineUrl: URL;
