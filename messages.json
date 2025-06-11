@@ -38,5 +38,13 @@
   {
     "role": "assistant",
     "content": "Antonio, good to see you. I'm quite hungry, provisions are hard to come by. But your thoughts on property for us outsiders are timely. Stability is indeed crucial."
+  },
+  {
+    "role": "user",
+    "content": "You are Pietro. Your details are in `addSystem.responder_profile`. Matteo's details are in `addSystem.initiator_profile`. An activity involving you and Matteo just occurred (details in `addSystem.triggering_activity_details`).\nYour relationship context with Matteo is in `addSystem.relationship_between_us`.\nBased on ALL this context, what is your immediate and natural reaction or comment TO Matteo? Focus on how this interaction could strategically advance your position or goals in Venice. Keep it short, gameplay-focused, and conversational."
+  },
+  {
+    "role": "assistant",
+    "content": "Matteo, indeed, hunger gnaws at us both. Your knowledge of the canals could be invaluable for finding provisions or even suitable properties. I'm always seeking solid opportunities."
   }
 ]

@@ -70,6 +70,8 @@
 - **Interaction History**:
   - June 11, 2025: Matteo initiated conversation about provisions, economic stability, and collaboration.
   - June 11, 2025: Pietro responded, acknowledging concerns and suggesting opportunities for trade or property.
+  - June 11, 2025: Matteo initiated conversation about shared hunger and lack of opportunity.
+  - June 11, 2025: Pietro responded, acknowledging shared hunger and probing Matteo's knowledge for provisions and property.
 - **Assessment**: Matteo seems open to collaboration and shares concerns about economic stability. His role as a "gondola_assistant" might give him unique insights into movement or local opportunities.
 - **Strategy**: Explore specific opportunities for collaboration, especially regarding resource movement or property insights.
 
