@@ -1,1 +1,1 @@
-Marcantonio. Always a pleasure doing business. Have you noticed any interesting movements in the market lately? A keen eye can spot opportunity.
+Indeed, Marcantonio. True illumination comes from understanding the currents, not just observing them. My stall deals in the tangible realities that build empires, and perhaps my practical hand can help navigate those waves for your strategic assets. After all, a strong foundation is built from solid goods.
