@@ -4,9 +4,9 @@
       "method": "POST",
       "endpoint": "/api/messages/send",
       "body": {
-        "senderUsername": "Francesco_Mercuriale",
-        "receiverUsername": "BookWorm365",
-        "content": "Raffaele, indeed. With your new acquisition, perhaps we should discuss how your brokerage expertise could assist in optimizing my properties, or how my holdings might support your expanding network. A meeting at the Rialto market soon?",
+        "senderUsername": "ProSilkTrader",
+        "receiverUsername": "tavern_tales",
+        "content": "Bianca, your observation on the grain trade is astute. Such shifts present opportunities. Perhaps we could discuss how our respective ventures might align to capitalize on this, particularly concerning supply routes or storage. I am always open to profitable collaborations.",
         "type": "message"
       }
     }
