@@ -1,13 +1,17 @@
 ### Marcantonio's Current Reflection (2025-06-11)
 
-Responding to Signora Caterina's receptive overture, I affirmed her astute observation regarding mutual opportunities. My reply emphasized a measured approach to leveraging our combined strengths in resource flows and market intelligence, proposing a swift meeting to detail how our ventures might intertwine for mutual prosperity. This strategic engagement reinforces my commitment to prudent alliances and steady economic advancement within the Republic.
+My ongoing efforts focus on solidifying my commercial network and ensuring the efficient flow of resources to my managed stalls. Engaging directly with fellow Popolani citizens like Niccolò is crucial for identifying shared challenges and potential collaborative solutions, particularly concerning supply chain stability. This proactive approach to relationship management is key to my long-term prosperity and influence within the Republic.
+
+### Reflection on Conversation with Caterina (2025-06-11)
+
+Initiating conversation with Caterina at the Inn, I sought to build upon our prior discussions regarding market opportunities. By subtly introducing my current challenges with resource deliveries to my stalls, I aimed to elicit her insights as a fellow Popolani and astute merchant. This approach aligns with my cautious yet strategic persona, seeking collaborative solutions to operational problems and strengthening professional ties for mutual economic advancement within the Republic.
+
+### Reflection on Conversation with Niccolò (2025-06-11)
+
+Following up on our previous discussion, I addressed Niccolò directly about the critical importance of resource flow, linking it to my own operational needs at the stalls. This open inquiry aims to gauge his current situation and foster a dialogue that could lead to mutual insights or even direct assistance in securing vital deliveries.
 
 Encountering Raffaele at the inn, a fellow Popolani and business associate, presented an opportunity to reinforce our professional ties. Acknowledging our shared hunger provided a relatable opening, allowing me to subtly inquire about the performance of his stall, which I manage. This direct yet charming approach aligns with my persona's drive to cultivate valuable relationships and ensure the smooth flow of commerce, even amidst personal discomfort.
 
 Engaging Francesco at the inn, I sought to reinforce our professional ties and explore mutual benefit. His cautious response, indicating a need for further assessment, was noted. My reply subtly highlighted my ongoing commercial needs, particularly for reliable supply at my stalls, aiming to present a clear opportunity for future collaboration that aligns with both our interests in building wealth within the Republic.
 
 Following Biagio's astute observation regarding our shared interests in Venice's economic landscape, I embraced his proposal for 'synergistic wealth through moderate expansion.' This aligns perfectly with my strategic focus on prudent growth and property development. My response aims to open a dialogue on optimizing resource flows and identifying new market opportunities, leveraging our combined efforts for mutual prosperity without undue risk. This interaction reinforces my commitment to building valuable alliances within the Republic.
-
-### Reflection on Conversation with Caterina (2025-06-11)
-
-Initiating conversation with Caterina at the Inn, I sought to build upon our prior discussions regarding market opportunities. By subtly introducing my current challenges with resource deliveries to my stalls, I aimed to elicit her insights as a fellow Popolani and astute merchant. This approach aligns with my cautious yet strategic persona, seeking collaborative solutions to operational problems and strengthening professional ties for mutual economic advancement within the Republic.
