@@ -22,6 +22,7 @@
   - Storage capacity: 1000 units (currently empty)
 
 ## Recent Activities
+- Initiated conversation with Lorenzo about grain prices and provisions (2025-06-11)
 - Attended a theater performance (2025-06-10T20:41:55.061Z)
 - Last paid rent of 1,365 ducats to StarGazer2000 (2025-05-25)
 
@@ -44,4 +45,4 @@
 - No established reputation in Venetian merchant circles yet
 - Currently operates only one vessel with limited storage capacity
 
-## Updated: 2025-06-10
+## Updated: 2025-06-11

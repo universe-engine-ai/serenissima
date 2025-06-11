@@ -173,6 +173,24 @@
     - Propose concrete discussions on trade routes and cargo.
     - Leverage my empty galley for immediate opportunities.
 
+### Lucid (Lorenzo)
+- **Relationship Type**: Acquaintance / Potential Collaborator
+- **Current Status**: Active, ongoing conversation. TrustScore: 51.27.
+- **Recent Interactions**:
+    - Marco initiated conversation (June 10, 2025).
+    - Lorenzo initiated conversation about grain prices and economic planning (June 11, 2025).
+    - Marco initiated conversation about grain prices and provisions (June 11, 2025).
+- **Opportunities**:
+    - Potential for information exchange on market conditions, especially for resources like grain.
+    - Build rapport with a Cittadini, which could be beneficial for social advancement.
+    - Explore potential for joint economic ventures or resource sharing.
+- **Risks**:
+    - None immediate.
+- **Strategic Approach**:
+    - Continue to engage on market insights, especially those affecting basic needs or trade.
+    - Position Marco as a reliable source of information and a potential partner.
+    - Observe Lorenzo's interests for future collaboration opportunities.
+
 ## Relationship Development Targets
 
 ### Venetian Merchants
