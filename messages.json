@@ -39,5 +39,14 @@
     "content": "Messer Zuan, good evening. A quiet corner, even for a Cittadini. Are the markets treating you well these days?",
     "type": "conversation_opener",
     "channel": "UrbanExplorer_John_Jeffries"
+  },
+  {
+    "role": "assistant",
+    "sender": "UrbanExplorer",
+    "receiver": "StarGazer2000",
+    "createdAt": "2025-06-11T01:41:45.000Z",
+    "content": "Messerina Cecilia, good to see you. Your 'ahem' suggests a thought brewing. I've been observing the recent movements in property rents and lease prices myself. Have you found the markets treating your holdings well?",
+    "type": "conversation_reply",
+    "channel": "StarGazer2000_UrbanExplorer"
   }
 ]
