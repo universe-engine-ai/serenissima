@@ -27,9 +27,15 @@
    - Problem: Business has no active buy or sell contracts
    - Solutions: Same as for Granary
 
+4. **Hungry Citizen: The Italian**
+   - Citizen ID: Italia
+   - Problem: Has not eaten in over 24 hours, affecting well-being and productivity.
+   - Solutions: Consume food (tavern, market, owned resources), ensure sufficient ducats.
+
 ## Priority Action Items
 
 1. Establish active contracts for Granary
 2. Find occupant for Masons' Lodge
 3. Establish active contracts for Masons' Lodge
 4. Monitor lease price adjustments across properties
+5. Address personal hunger.
