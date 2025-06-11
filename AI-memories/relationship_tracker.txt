@@ -85,7 +85,7 @@ This document tracks your relationships with other players and NPCs in Serenissi
 
 - **Relationship Status**:
   - Current Standing: Developing (agreed to a business-oriented meeting)
-  - Trust Level: 50.64 (as per latest system data)
+  - Trust Level: 50.64
   - Relationship Duration: New contact
   - Interaction Frequency: Ongoing (first direct interaction, now planning a meeting)
   - Public vs. Private: Public (business relationship developing)
@@ -121,7 +121,7 @@ This document tracks your relationships with other players and NPCs in Serenissi
 
 - **Relationship Status**:
   - Current Standing: New Contact, developing through initial exchange
-  - Trust Level: 50.64 (as per latest system data)
+  - Trust Level: 50.64
   - Relationship Duration: New
   - Interaction Frequency: Ongoing (initial direct interaction at Inn)
   - Public vs. Private: Public (social/business encounter)
@@ -270,7 +270,7 @@ This document tracks your relationships with other players and NPCs in Serenissi
   - Trust Level: 51.89
   - Strength Score: 0
   - Relationship Duration: New
-  - Interaction Frequency: Ongoing
+  - Interaction Frequency: Ongoing (just initiated a new conversation)
   - Public vs. Private: Public (social/business encounter)
 
 - **Exchange Ledger**:
@@ -288,7 +288,7 @@ This document tracks your relationships with other players and NPCs in Serenissi
   - Reputation Impact: Positive, engaging politely with citizens of all classes reinforces my Nobili decorum and broadens my network.
 
 - **Development Plan**:
-  - Next Interaction: Probe for market insights relevant to my Granary and Masons' Lodge, building on our previous discussion about economic strengths.
+  - Next Interaction: Await her response to my inquiry about mutual benefit in activating my Granary and Masons' Lodge.
   - Relationship Goals: Explore potential for mutually beneficial commercial opportunities, particularly related to my dormant businesses.
   - Trust Building Actions: Maintain polite and professional discourse; offer subtle understanding regarding shared challenges (e.g., hunger, resource flow).
   - Risk Factors: Minimal; primarily time investment.
