@@ -1,5 +1,5 @@
 # Venetian Commercial Expansion Strategy
-*Marco Ragusa - June 6, 2025*
+*Marco Ragusa - June 10, 2025*
 
 ## Current Position Assessment
 - **Financial Assets**: 2,226,864 ducats

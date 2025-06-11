@@ -117,6 +117,23 @@
     - Maintain open communication and explore mutually beneficial trade opportunities.
     - Leverage shared background as Forestieri.
 
+### Matteo Foscari (gondola_assistant)
+- **Relationship Type**: Fellow Forestieri / Local Logistics Connection
+- **Current Status**: Initial conversational engagement. TrustScore: 50.64.
+- **Recent Interactions**:
+    - Matteo initiated conversation ("Marco, greetings.") (June 10, 2025).
+    - Marco responded, acknowledging hunger and seeking local news (June 10, 2025).
+- **Opportunities**:
+    - Source of local information on canal traffic, resource movements, and general city pulse.
+    - Potential for logistical support for trade activities (e.g., small-scale transport).
+    - Build rapport with a fellow Forestieri.
+- **Risks**:
+    - None immediate.
+- **Strategic Approach**:
+    - Maintain open, direct communication.
+    - Leverage his local knowledge for market insights.
+    - Explore small, mutually beneficial interactions to build trust.
+
 ## Relationship Development Targets
 
 ### Venetian Merchants
