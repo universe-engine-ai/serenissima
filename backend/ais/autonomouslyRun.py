@@ -88,22 +88,13 @@ CONCISE_API_ENDPOINT_LIST_FOR_GUIDED_MODE = [
     "GET /api/activities?citizenId={YourUsername}&limit=5 - Get your 5 most recent activities.",
     "GET /api/building-types - Get definitions of all building types (costs, production, etc.). - Important before any POST /buildings request!",
     "GET /api/resource-types - Get definitions of all resource types (import price, category, etc.).- Important before any request involving resources!",
-    "GET /api/activities?citizenId={YourUsername}&ongoing=true - Get your currently active activities.",
+    "GET /api/activities?citizenId={YourUsername}&ongoing=true - Get your currently active activities.", # Keeping this for info gathering
     
     # Utility for common GET requests
     "POST /api/try-read - Execute a predefined GET request. Body: {requestType, parameters: {username?, buildingId?, ...}} (Consult compendium_of_simplified_reads for details)",
 
-    # Initiating ALL Endeavors (Activities & Strategic Actions)
-    "POST /api/activities/try-create - PRIMARY METHOD TO TAKE ACTION. Request the game engine to initiate an endeavor. Body: {citizenUsername, activityType, activityParameters (optional)}. The engine will create the necessary activity records. Consult 'guide_to_decreeing_undertakings' (activities.md) for available 'activityType's and their 'activityParameters'. Example: `activityType: \"eat\"` will attempt sustenance from inventory, then home, then tavern.",
-    
-    # Direct Activity Creation (Advanced - use if ALL details are known and try-create is not suitable)
-    "POST /api/actions/create-activity - Directly create a detailed activity record. Body: {citizenUsername, activityType, title, description, thought, activityDetails, notes (optional)}. Consult 'guide_to_decreeing_undertakings' (activities.md) for activity details."
-
-    # Direct POST endpoints like /api/contracts, /api/messages/send, /api/buildings are DEPRECATED for AI use.
-    # Use /api/activities/try-create with the appropriate activityType instead.
-    "POST /api/activities/try-create - Body: {citizenUsername, activityType: \"attend_theater_performance\"} - Go to the theater and watch a play.",
-    "POST /api/activities/try-create - Body: {citizenUsername, activityType: \"drink_at_inn\"} - Go to an inn and have a drink.",
-    "POST /api/stratagems/try-create - Enact a high-level stratagem. Body: {citizenUsername, stratagemType, stratagemDetails: {...}}. Consult `addSystem.intelligence_briefing.availableStratagems` for types and parameters.",
+    # PRIMARY METHOD TO TAKE STRATEGIC ACTION
+    "POST /api/stratagems/try-create - Enact a high-level stratagem. Body: {citizenUsername, stratagemType, stratagemDetails: {...}}. Consult `addSystem.intelligence_briefing.availableStratagems` for types and parameters. This is the ONLY way to initiate strategic actions.",
 ]
 
 CONCISE_AIRTABLE_SCHEMA_FIELD_LIST = {
@@ -785,89 +776,6 @@ def make_kinos_call(
         log.error(f"{LogColors.FAIL}Error in make_kinos_call for {ai_username}: {e}{LogColors.ENDC}", exc_info=True)
         return None
 
-# --- API Call Helper for try-create ---
-def call_try_create_activity_api(
-    citizen_username: str,
-    activity_type: str,
-    activity_parameters: Dict[str, Any],
-    dry_run: bool,
-    log_ref: Any # Pass the script's logger
-) -> Optional[Dict]: # Returns the API response or None on failure
-    """Calls the /api/activities/try-create endpoint."""
-    if dry_run:
-        log_ref.info(f"{LogColors.OKCYAN}[DRY RUN] Would call /api/activities/try-create for {citizen_username} with type '{activity_type}' and params: {json.dumps(activity_parameters)}{LogColors.ENDC}")
-        return {"success": True, "message": "[DRY RUN] Simulated try-create activity success."}
-
-    api_url = f"{API_BASE_URL}/api/activities/try-create" # API_BASE_URL is global
-    payload = {
-        "citizenUsername": citizen_username,
-        "activityType": activity_type,
-        "activityDetails": activity_parameters # Changed key to activityDetails
-    }
-    headers = {"Content-Type": "application/json"}
-    
-    last_exception_try_create = None
-    for attempt in range(MAX_RETRIES + 1): # MAX_RETRIES is global
-        try:
-            log_ref.info(f"{LogColors.OKBLUE}Making API POST request to: {LogColors.BOLD}{api_url}{LogColors.ENDC}{LogColors.OKBLUE} for try-create (Attempt {attempt + 1}/{MAX_RETRIES + 1}){LogColors.ENDC}")
-            log_ref.debug(f"{LogColors.LIGHTBLUE}Full payload for try-create:\n{json.dumps(payload, indent=2)}{LogColors.ENDC}")
-            
-            response = requests.post(api_url, headers=headers, json=payload, timeout=DEFAULT_TIMEOUT_POST) # DEFAULT_TIMEOUT_POST is global
-            response.raise_for_status()
-            response_json = response.json() # Assuming response is always JSON if successful
-            
-            if response_json.get("success"):
-                log_ref.info(f"{LogColors.OKGREEN}Successfully initiated activity '{activity_type}' for {LogColors.BOLD}{citizen_username}{LogColors.ENDC}{LogColors.OKGREEN} via API. Response: {response_json.get('message', 'OK')}{LogColors.ENDC}")
-                activity_info = response_json.get("activity") or (response_json.get("activities")[0] if isinstance(response_json.get("activities"), list) and response_json.get("activities") else None)
-                if activity_info and activity_info.get("id"): # activity_info is already a dict (fields)
-                    log_ref.info(f"  Activity ID (Airtable Record ID): {activity_info['id']}")
-                log_ref.debug(f"{LogColors.PINK}Full response from try-create for {activity_type} / {citizen_username}:\n{json.dumps(response_json, indent=2)}{LogColors.ENDC}")
-            else:
-                log_ref.error(f"{LogColors.FAIL}API call to initiate activity '{activity_type}' for {LogColors.BOLD}{citizen_username}{LogColors.ENDC}{LogColors.FAIL} failed: {response_json.get('error', 'Unknown error')}{LogColors.ENDC}")
-                log_ref.debug(f"{LogColors.FAIL}Full error response from try-create for {activity_type} / {citizen_username}:\n{json.dumps(response_json, indent=2)}{LogColors.ENDC}")
-            return response_json # Return the full response
-
-        except requests.exceptions.RequestException as e:
-            last_exception_try_create = e
-            log_ref.warning(f"{LogColors.WARNING}API POST request to {LogColors.BOLD}{api_url}{LogColors.ENDC}{LogColors.WARNING} (try-create) failed on attempt {attempt + 1}: {e}{LogColors.ENDC}")
-            if attempt < MAX_RETRIES:
-                log_ref.info(f"{LogColors.OKBLUE}Retrying in {RETRY_DELAY_SECONDS} seconds...{LogColors.ENDC}")
-                time.sleep(RETRY_DELAY_SECONDS) # RETRY_DELAY_SECONDS is global
-            else: # This is the final attempt that failed
-                detailed_error_log_message = str(last_exception_try_create)
-                if isinstance(last_exception_try_create, requests.exceptions.HTTPError) and last_exception_try_create.response is not None:
-                    try:
-                        api_error_details_for_log = last_exception_try_create.response.json()
-                        detailed_error_log_message += f" - API Response: {json.dumps(api_error_details_for_log)}"
-                    except json.JSONDecodeError:
-                        detailed_error_log_message += f" - API Response (text): {last_exception_try_create.response.text[:200]}" # Log snippet of text if not JSON
-                log_ref.error(f"{LogColors.FAIL}API POST request to {LogColors.BOLD}{api_url}{LogColors.ENDC}{LogColors.FAIL} (try-create) failed after {MAX_RETRIES + 1} attempts: {detailed_error_log_message}{LogColors.ENDC}", exc_info=True)
-        except json.JSONDecodeError as e_json: # This handles JSON decode errors for successful (2xx) responses
-            last_exception_try_create = e_json
-            response_text_snippet = response.text[:500] if response and hasattr(response, 'text') else "[No response text available]"
-            log_ref.error(f"{LogColors.FAIL}Failed to decode JSON response from POST {LogColors.BOLD}{api_url}{LogColors.ENDC}{LogColors.FAIL} (try-create) on attempt {attempt + 1} (Status: {response.status_code if response else 'N/A'}). Error: {e_json}. Response text snippet: {response_text_snippet}{LogColors.ENDC}", exc_info=True)
-            break # Stop retrying if successful status but bad JSON
-            
-    # After the loop, if we haven't returned success, construct the error payload
-    error_payload = {"success": False}
-    if last_exception_try_create:
-        error_payload["error"] = str(last_exception_try_create)
-        if isinstance(last_exception_try_create, requests.exceptions.HTTPError) and last_exception_try_create.response is not None:
-            error_payload["api_status_code"] = last_exception_try_create.response.status_code
-            try:
-                api_response_json = last_exception_try_create.response.json()
-                error_payload["api_message"] = api_response_json.get("message")
-                error_payload["api_reason"] = api_response_json.get("reason")
-                error_payload["api_activity_details_on_error"] = api_response_json.get("activity") # if present in error
-                # Add any other fields from the API's error response you want to capture
-                if "details" in api_response_json: error_payload["api_error_details"] = api_response_json["details"]
-            except json.JSONDecodeError:
-                error_payload["api_response_text"] = last_exception_try_create.response.text[:500] # First 500 chars if not JSON
-    else:
-        error_payload["error"] = "Unknown error after retries for try-create (last_exception_try_create was None)"
-        
-    return error_payload
-
 # clean_thought_content is now imported from activity_helpers
 
 # Global variable to store Airtable schema content
@@ -1144,15 +1052,13 @@ API_DOCUMENTATION_SUMMARY = {
     "base_url": API_BASE_URL,
     "notes": (
         "You are an AI citizen interacting with the La Serenissima API. Key guidelines:\n"
-        "1.  **Enact Strategic Plans (Stratagems) via `/api/stratagems/try-create`**: This is your primary method for high-level strategic interactions. Provide `citizenUsername`, `stratagemType`, and `stratagemDetails`. Consult `addSystem.intelligence_briefing.availableStratagems` (or equivalent in your context) for defined stratagem types and their required parameters. Think strategically about which stratagems align with your long-term goals.\n"
-        "2.  **Initiate General Endeavors (Activities) via `/api/activities/try-create`**: For day-to-day tasks, specific actions not covered by a stratagem, or actions that are part of a stratagem's execution, use this. Provide `activityType` (e.g., 'rest', 'bid_on_land', 'send_message', 'eat') and `activityParameters`. The game engine will create the necessary activity records. Consult `backend/docs/activities.md` for `activityType`s and parameters.\n"
-        "3.  **Simplified GETs via `/api/try-read`**: For common information gathering, use `POST /api/try-read`. Consult the `compendium_of_missive_details` (ReadsReference.tsx extract) in `addSystem` for available `requestType` values and their `parameters`.\n"
-        "4.  **Dynamic GET Filtering**: For direct GET requests to list endpoints (e.g., /api/buildings, /api/citizens, /api/contracts), you can filter results by providing Airtable field names as query parameters (e.g., `/api/buildings?Owner=NLR&Category=business`). Airtable fields are PascalCase (see `backend/docs/airtable_schema.md`).\n"
-        "5.  **Direct Activity Creation via `/api/actions/create-activity`**: Use this if you have *all* details for a specific activity record, including title, description, thought, and fully structured `activityDetails` (less common).\n"
-        "6.  **POST/PATCH Request Body Keys**: For `/api/stratagems/try-create`, `stratagemDetails` contains parameters specific to the stratagem. For `/api/activities/try-create`, `activityParameters` are used. Keys are often `camelCase`. For `/api/try-read`, parameters are also typically `camelCase`.\n"
-        "7.  **Airtable Schema**: Refer to `backend/docs/airtable_schema.md` (available in `addSystem.overview_of_city_records_structure` for non-local models) for exact Airtable field names.\n"
-        "8.  **Focus**: Make informed decisions. Choose API calls that provide relevant data for your objectives. Consider if a stratagem is the best approach for your goals.\n"
-        "9.  **Latest Activity**: Your most recent activity details are in `addSystem.intelligence_briefing.lastActivity`."
+        "1.  **Enact Strategic Plans (Stratagems) via `/api/stratagems/try-create`**: This is your SOLE method for initiating strategic actions and interacting with the game world. Provide `citizenUsername`, `stratagemType`, and `stratagemDetails`. Consult `addSystem.intelligence_briefing.availableStratagems` (or equivalent in your context) for defined stratagem types and their required parameters. All your plans and objectives must be achieved through the selection and execution of appropriate stratagems.\n"
+        "2.  **Simplified GETs via `/api/try-read`**: For common information gathering, use `POST /api/try-read`. Consult the `compendium_of_missive_details` (ReadsReference.tsx extract) in `addSystem` for available `requestType` values and their `parameters`.\n"
+        "3.  **Dynamic GET Filtering**: For direct GET requests to list endpoints (e.g., /api/buildings, /api/citizens, /api/contracts), you can filter results by providing Airtable field names as query parameters (e.g., `/api/buildings?Owner=NLR&Category=business`). Airtable fields are PascalCase (see `backend/docs/airtable_schema.md`).\n"
+        "4.  **POST Request Body Keys**: For `/api/stratagems/try-create`, `stratagemDetails` contains parameters specific to the stratagem. Keys are often `camelCase`. For `/api/try-read`, parameters are also typically `camelCase`.\n"
+        "5.  **Airtable Schema**: Refer to `backend/docs/airtable_schema.md` (available in `addSystem.overview_of_city_records_structure` for non-local models) for exact Airtable field names.\n"
+        "6.  **Focus**: Make informed decisions. Choose API calls that provide relevant data for your objectives. Your primary focus should be on identifying and enacting the most suitable stratagem to achieve your goals.\n"
+        "7.  **Latest Activity**: Your most recent activity details are in `addSystem.intelligence_briefing.lastActivity` (this refers to game engine activities, not your direct actions)."
     ),
     "example_get_endpoints": [ # These are examples of direct GETs, distinct from /api/try-read
         "/api/citizens/{YourUsername}",
@@ -1168,11 +1074,9 @@ API_DOCUMENTATION_SUMMARY = {
         "/api/problems?Citizen={YourUsername}&Status=active", # Your active problems
         "/api/relevancies?RelevantToCitizen={YourUsername}&Category=opportunity&Score=>50" # High-score opportunities for you
     ],
-    "example_post_endpoints": [ # AI should STRONGLY prefer /api/activities/try-create for actions.
-        "/api/activities/try-create", # PREFERRED METHOD FOR ALL ACTIONS. Body: {"citizenUsername": "...", "activityType": "...", "activityParameters": {...}}. Consult activities.md for types and params.
+    "example_post_endpoints": [
+        "/api/stratagems/try-create", # SOLE METHOD FOR ACTIONS. Body: {"citizenUsername": "...", "stratagemType": "...", "stratagemDetails": {...}}. Consult available stratagems.
         "/api/try-read", # Utility for common GETs. Body: {"requestType": "type", "parameters": {...}}
-        "/api/actions/create-activity" # ADVANCED: For direct creation of a fully detailed activity. Body keys: citizenUsername, activityType, title, description, thought, activityDetails, notes (optional)
-        # Direct POSTs to /api/contracts, /api/messages/send, /api/buildings are DEPRECATED for AI use.
     ]
 }
 
@@ -1281,9 +1185,8 @@ def autonomously_run_ai_citizen(
         f"The findings were (or simulated/error report if previous step failed/dry_run): \n```json\n{json.dumps(api_get_response_data, indent=2)}\n```\n"
         f"{prompt_step2_context_mention_guided} devise your strategy and decree your next actions. "
         "When specifying the `body` for issuing decrees (POST requests), you may use `camelCase` for keys (e.g., `sender`, `resourceType`, `targetAmount`). The Doge's scribes (the server) will transcribe them appropriately for the city's records. "
-        "Consider if enacting a **Stratagem** (via `POST /api/stratagems/try-create` with `stratagemType` and `stratagemDetails`) is the most effective way to achieve your strategic objectives. Information on available stratagems and your active ones should be in your overall context/data package. "
-        "For more granular actions or those not fitting a defined stratagem, use `POST /api/activities/try-create` with `activityType` and `activityParameters`. "
-        "Respond with your directives in JSON format: `{\"strategy_summary\": \"Your brief strategy...\", \"actions\": [{\"method\": \"POST\", \"endpoint\": \"/api/stratagems/try-create\", \"body\": {\"citizenUsername\": \"YourUsername\", \"stratagemType\": \"chosen_stratagem\", \"stratagemDetails\": {...}}}, {\"method\": \"POST\", \"endpoint\": \"/api/activities/try-create\", ...}]}`. "
+        "Your primary and SOLE method for taking strategic action is by enacting a **Stratagem** via `POST /api/stratagems/try-create`. Provide `citizenUsername`, `stratagemType`, and `stratagemDetails`. Information on available stratagems and your active ones is in your data package. "
+        "Respond with your directives in JSON format: `{\"strategy_summary\": \"Your brief strategy...\", \"actions\": [{\"method\": \"POST\", \"endpoint\": \"/api/stratagems/try-create\", \"body\": {\"citizenUsername\": \"YourUsername\", \"stratagemType\": \"chosen_stratagem\", \"stratagemDetails\": {...}}}]}`. "
         "If no actions are warranted at this time, return `{\"strategy_summary\": \"Observation...\", \"actions\": []}`. "
     )
     if add_system_prompt_text:
@@ -1483,10 +1386,9 @@ def autonomously_run_ai_citizen_unguided(
             "3. Commanding your personal undertakings (POST requests to `/api/actions/create-activity`) to directly initiate a new endeavor. For journeys, specify your origin (`fromBuildingId`, if applicable) and destination (`toBuildingId`); the Doge's cartographers (the server) will chart the course.\n"
             "If no further measures are warranted at this time, return an empty 'actions' list. "
             "Record your overall reasoning or reflections on this period of activity in the 'reflection' field for your private annals. "
-            "Consider if enacting a **Stratagem** (via `POST /api/stratagems/try-create` with `stratagemType` and `stratagemDetails`) is the most effective way to achieve your strategic objectives. Information on available stratagems and your active ones is in `addSystem.intelligence_briefing.availableStratagems` and related fields. "
-            "For more granular actions or those not fitting a defined stratagem, use `POST /api/activities/try-create` with `activityType` and `activityParameters`. "
+            "Your SOLE method for taking strategic action is by enacting a **Stratagem** via `POST /api/stratagems/try-create`. Provide `citizenUsername`, `stratagemType`, and `stratagemDetails`. Information on available stratagems and your active ones is in `addSystem.intelligence_briefing.availableStratagems` and related fields. "
             "Respond with your directives in JSON format (with no comments, ensure it is valid): "
-            "`{\"reflection\": \"Your strategic reflections...\", \"actions\": [{\"reflection\": \"Your reflections for this action...\", \"method\": \"POST\", \"endpoint\": \"/api/stratagems/try-create\", \"body\": {\"citizenUsername\": \"YourUsername\", \"stratagemType\": \"chosen_stratagem\", \"stratagemDetails\": {...}}}, {\"method\": \"POST\", \"endpoint\": \"/api/activities/try-create\", ...}]}`\n"
+            "`{\"reflection\": \"Your strategic reflections...\", \"actions\": [{\"reflection\": \"Your reflections for this action...\", \"method\": \"POST\", \"endpoint\": \"/api/stratagems/try-create\", \"body\": {\"citizenUsername\": \"YourUsername\", \"stratagemType\": \"chosen_stratagem\", \"stratagemDetails\": {...}}}]}`\n"
             "The 'reflection' in your main KinOS response is for your overarching thoughts on this period."
         )
         
@@ -1627,161 +1529,21 @@ def autonomously_run_ai_citizen_unguided(
                 if action_method == "GET":
                     action_response_data = make_api_get_request(action_endpoint, action_params)
                 elif action_method == "POST":
-                    # Check if this POST is intended for /api/activities/try-create
-                    if action_endpoint == "/api/activities/try-create" and action_body and "citizenUsername" in action_body and "activityType" in action_body:
-                        log.info(f"{LogColors.OKBLUE}AI chose to use /api/activities/try-create. Routing through dedicated helper.{LogColors.ENDC}")
-                        # Ensure citizenUsername from body matches current AI, or log warning
-                        if action_body["citizenUsername"] != ai_username:
-                            log.warning(f"{LogColors.WARNING}AI {ai_username} requested try-create for {action_body['citizenUsername']}. Proceeding, but this might be unintended.{LogColors.ENDC}")
-                        
-                        action_response_data = call_try_create_activity_api(
-                            action_body["citizenUsername"], # Use username from AI's decision
-                            action_body["activityType"],
-                            action_body.get("activityParameters", {}),
-                            dry_run, # Will be false here
-                            log 
-                        )
-                    elif action_endpoint == "/api/actions/create-activity" and action_body and "citizenUsername" in action_body and "activityType" in action_body:
-                        log.info(f"{LogColors.OKBLUE}AI chose to use /api/actions/create-activity. Proceeding with direct POST (this is for fully detailed single activities).{LogColors.ENDC}")
+                    if action_endpoint == "/api/stratagems/try-create":
+                        log.info(f"{LogColors.OKBLUE}AI {ai_username} is enacting a Stratagem: {action_body.get('stratagemType')}{LogColors.ENDC}")
                         action_response_data = make_api_post_request(action_endpoint, action_body)
-                    
-                    # --- Intercept direct POST to /api/contracts ---
-                    elif action_endpoint == "/api/contracts":
-                        log.info(f"{LogColors.OKBLUE}AI attempting POST /api/contracts. Converting to try-create activity.{LogColors.ENDC}")
-                        contract_type = action_body.get("type")
-                        activity_type_contracts = None
-                        activity_params_contracts = {}
-
-                        if contract_type == "public_sell":
-                            activity_type_contracts = "manage_public_sell_contract"
-                            activity_params_contracts = {
-                                "contractId_to_create_if_new": action_body.get("contractId"), # KinOS might provide a deterministic ID
-                                "resourceType": action_body.get("resourceType"),
-                                "pricePerResource": action_body.get("pricePerResource"),
-                                "targetAmount": action_body.get("targetAmount", 0.0), # Default to 0.0 as per some existing logic
-                                "sellerBuildingId": action_body.get("sellerBuilding"),
-                                "title": action_body.get("title"), # AI should provide these if not using auto-gen
-                                "description": action_body.get("description"),
-                                "notes": action_body.get("notes") # Pass as dict if possible, or string
-                            }
-                        elif contract_type == "import":
-                            activity_type_contracts = "manage_import_contract"
-                            activity_params_contracts = {
-                                "contractId_to_create_if_new": action_body.get("contractId"),
-                                "resourceType": action_body.get("resourceType"),
-                                "targetAmount": action_body.get("targetAmount"),
-                                "pricePerResource": action_body.get("pricePerResource"),
-                                "buyerBuildingId": action_body.get("buyerBuilding"),
-                                "title": action_body.get("title"),
-                                "description": action_body.get("description"),
-                                "notes": action_body.get("notes")
-                            }
-                        # Add more contract type mappings here (markup_buy, storage_query, etc.)
-                        # Example for markup_buy:
-                        elif contract_type == "markup_buy":
-                            activity_type_contracts = "manage_markup_buy_contract"
-                            activity_params_contracts = {
-                                "contractId_to_create_if_new": action_body.get("contractId"),
-                                "resourceType": action_body.get("resourceType"),
-                                "targetAmount": action_body.get("targetAmount"),
-                                "maxPricePerResource": action_body.get("pricePerResource"), # Assuming pricePerResource from KinOS is maxPrice
-                                "buyerBuildingId": action_body.get("buyerBuilding"),
-                                "sellerBuildingId": action_body.get("sellerBuilding"),
-                                "sellerUsername": action_body.get("seller"),
-                                "title": action_body.get("title"),
-                                "description": action_body.get("description"),
-                                "notes": action_body.get("notes")
-                            }
-                        # Example for land_sale_offer (bidding on land)
-                        elif contract_type == "land_sale_offer":
-                            activity_type_contracts = "bid_on_land"
-                            activity_params_contracts = {
-                                "landId": action_body.get("resourceType"), # LandId is in ResourceType for land_sale_offer
-                                "bidAmount": action_body.get("pricePerResource") # Bid amount is in PricePerResource
-                                # targetOfficeBuildingId is optional for bid_on_land
-                            }
-                        
-                        if activity_type_contracts:
-                            action_response_data = call_try_create_activity_api(
-                                ai_username, # The AI is initiating this action for itself
-                                activity_type_contracts,
-                                activity_params_contracts,
-                                dry_run, # Will be false here
-                                log
-                            )
-                        else:
-                            log.warning(f"{LogColors.WARNING}Unsupported contract type '{contract_type}' for POST /api/contracts by {ai_username}. Action not taken.{LogColors.ENDC}")
-                            action_response_data = {"error": f"Unsupported contract type for /api/contracts: {contract_type}", "success": False}
-                    
-                    # --- Intercept direct POST to /api/messages/send ---
-                    elif action_endpoint == "/api/messages/send":
-                        log.info(f"{LogColors.OKBLUE}AI attempting POST /api/messages/send. Converting to try-create send_message activity.{LogColors.ENDC}")
-                        activity_params_message = {
-                            "receiverUsername": action_body.get("receiver"),
-                            "content": action_body.get("content"),
-                            "messageType": action_body.get("type", "message") # Default to "message"
-                        }
-                        # Sender for the activity is ai_username
-                        action_response_data = call_try_create_activity_api(
-                            ai_username,
-                            "send_message",
-                            activity_params_message,
-                            dry_run, # Will be false here
-                            log
-                        )
-
-                    # --- Intercept direct POST to /api/buildings (construction) ---
-                    elif action_endpoint == "/api/buildings":
-                        log.info(f"{LogColors.OKBLUE}AI attempting POST /api/buildings. Converting to try-create initiate_building_project activity.{LogColors.ENDC}")
-                        # Expected body for POST /api/buildings: { type, landId, point (string "polygon-id_bp_0" or {lat,lng}), owner, runBy, ... }
-                        # Activity params for initiate_building_project: { landId, buildingTypeDefinition, pointDetails: {pointId, lat, lng}, builderContractDetails (optional) }
-                        
-                        point_details_param = {}
-                        point_from_body = action_body.get("point")
-                        if isinstance(point_from_body, str): # e.g., "polygon-123_bp_0"
-                            point_details_param["pointId"] = point_from_body
-                            # Lat/Lng might need to be resolved by the activity creator if only pointId is given
-                        elif isinstance(point_from_body, dict) and "lat" in point_from_body and "lng" in point_from_body:
-                            point_details_param["lat"] = point_from_body["lat"]
-                            point_details_param["lng"] = point_from_body["lng"]
-                            point_details_param["pointId"] = point_from_body.get("id") # if available
-
-                        activity_params_build = {
-                            "landId": action_body.get("landId"),
-                            "buildingTypeDefinition": action_body.get("type"), # 'type' from body maps to 'buildingTypeDefinition'
-                            "pointDetails": point_details_param
-                            # builderContractDetails can be added if AI specifies a builder and contractValue
-                        }
-                        # Initiator is ai_username
-                        action_response_data = call_try_create_activity_api(
-                            ai_username,
-                            "initiate_building_project",
-                            activity_params_build,
-                            dry_run, # Will be false here
-                            log
-                        )
                     elif action_endpoint == "/api/try-read":
-                        log.info(f"{LogColors.OKBLUE}AI attempting POST to /api/try-read. This is a valid utility endpoint. Proceeding with make_api_post_request.{LogColors.ENDC}")
+                        log.info(f"{LogColors.OKBLUE}AI {ai_username} is using /api/try-read utility.{LogColors.ENDC}")
                         action_response_data = make_api_post_request(action_endpoint, action_body)
                     else:
-                        log.warning(f"{LogColors.WARNING}AI {ai_username} attempted unhandled POST to {action_endpoint}. This action will NOT be performed. Please use /api/activities/try-create.{LogColors.ENDC}")
-                        action_response_data = {"error": f"Direct POST to {action_endpoint} is not allowed for AI. Use /api/activities/try-create.", "success": False}
+                        log.warning(f"{LogColors.WARNING}AI {ai_username} attempted unhandled POST to {action_endpoint}. This action will NOT be performed. Only /api/stratagems/try-create and /api/try-read are allowed for POST.{LogColors.ENDC}")
+                        action_response_data = {"error": f"Direct POST to {action_endpoint} is not allowed for AI. Use /api/stratagems/try-create or /api/try-read.", "success": False}
                 else: # Method not GET or POST
                     log.warning(f"{LogColors.WARNING}Unsupported action method '{action_method}' from KinOS for {ai_username}.{LogColors.ENDC}")
                     action_response_data = {"error": f"Unsupported method: {action_method}", "success": False}
             else: # dry_run is true
-                if action_endpoint == "/api/activities/try-create" and action_body and "citizenUsername" in action_body and "activityType" in action_body:
-                    # Simulate call_try_create_activity_api for dry run consistency
-                    action_response_data = call_try_create_activity_api(
-                        action_body["citizenUsername"],
-                        action_body["activityType"],
-                        action_body.get("activityParameters", {}),
-                        dry_run, # Will be true here
-                        log
-                    )
-                else:
-                    log.info(f"{Fore.YELLOW}[DRY RUN] Would make {action_method} request to {action_endpoint} for {ai_username}.{Style.RESET_ALL}")
-                    action_response_data = {"dry_run_response": f"Simulated response from {action_method} {action_endpoint}", "success": True}
+                log.info(f"{Fore.YELLOW}[DRY RUN] Would make {action_method} request to {action_endpoint} for {ai_username}.{Style.RESET_ALL}")
+                action_response_data = {"dry_run_response": f"Simulated response from {action_method} {action_endpoint}", "success": True}
             
             # Store a summary and the full response for the AI's next context
             current_iteration_results.append({
