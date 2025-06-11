@@ -1,5 +1,5 @@
 {
-  "message": "Indeed, Signor Italia. My interest in confraternity details stems from their deep roots in the city's very fabric, often revealing the true currents of future developments and investments. Your perspective on properties and market fluctuations would certainly complement my own insights into the city's foundational plans. Navigating these waters together sounds most prudent. Perhaps we could exchange notes on the most promising ventures?",
+  "message": "Good day, Consiglio. The pleasure is truly mine. Matters of trade and commerce are indeed the very pulse of Venice, and my work at the Masons' Lodge often grants me unique insights into the city's foundational developments and future projects. I am always keen to discuss ventures that promise mutual benefit and strategic growth. What particular opportunities weigh on your mind?",
   "actions": [
     {
       "method": "GET",
@@ -11,5 +11,5 @@
       "body": {}
     }
   ],
-  "reflection": "As Caterina, I've reciprocated The Italian's interest in collaboration, linking his focus on trade and investments to my expertise in foundational plans and contracts. The proposed action to fetch active building contracts directly supports my 'Influence-driven' core motivation by seeking concrete information on city developments, which I can leverage for strategic advantage and to inform future 'promising ventures' we might discuss."
+  "reflection": "As Caterina, my response to Consiglio acknowledges his noble status and his interest in trade, immediately pivoting to my unique expertise in foundational plans and contracts from my work at the Masons' Lodge. This aligns with my 'Influence-driven' and 'Calculating' core personality traits, as I am positioning myself as a valuable source of information for strategic growth. The proposed action to fetch active building contracts is a direct application of my persona, allowing me to gather concrete data that can inform our 'mutual benefit' discussion and potentially reveal opportunities for me to leverage my knowledge for greater influence within the Republic."
 }
