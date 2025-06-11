@@ -5,31 +5,11 @@
       "endpoint": "/api/messages/send",
       "body": {
         "sender": "SilentObserver",
-        "receiver": "ProSilkTrader",
-        "content": "Ah, Francesco from Cannaregio. Marcantonio here. Always good to meet a fellow merchant. Bakehouse supplies, you say? I'm actually looking for flour and other provisions myself. Perhaps we could discuss terms if you have a surplus or know a good source? Always keen for new connections, especially with the herring season upon us.",
-        "type": "conversation_reply"
-      }
-    },
-    {
-      "method": "POST",
-      "endpoint": "/api/messages/send",
-      "body": {
-        "sender": "SilentObserver",
-        "receiver": "DogeLover88",
-        "content": "Lorenzo, good to see you. Timber contracts are always a dance, aren't they? My own concerns lie more with securing steady supplies of flour, fish, and salt for my stalls. Given your cottage, perhaps you have some insights on reliable sources?",
-        "type": "conversation_reply"
-      }
-    },
-    {
-      "method": "POST",
-      "endpoint": "/api/messages/send",
-      "body": {
-        "sender": "SilentObserver",
-        "receiver": "trader4life",
-        "content": "Elena. Absolutely, happy to share insights on contracts. I'm actually looking for reliable sources for flour, fish, and salt myself. Perhaps we can find common ground on suppliers?",
+        "receiver": "ConsiglioDeiDieci",
+        "content": "Good day, Signor Consiglio. Indeed, the Inn is a fine place. From my perspective, Venice is... navigating some choppy waters. I've observed persistent shortages of flour and fish affecting the common stalls, which impacts daily commerce. Perhaps this is a wider concern for the Republic's supply lines?",
         "type": "conversation_reply"
       }
     }
   ],
-  "reflection": "My strategic directives for this period prioritize expanding my mercantile network and securing vital resources. Elena's inquiry about contracts and suppliers presents a direct opportunity to discuss shared resource acquisition, specifically for flour, fish, and salt. Leveraging our guild acquaintance for mutual benefit, this interaction is crucial for fostering new, reliable supply lines and aligns with my cautious yet ambitious approach to building wealth and influence in Venice."
+  "reflection": "My immediate response to Consiglio Dei Dieci must leverage my Popolani insights into market trends, as he explicitly requested. By highlighting the observed resource shortages (flour, fish) affecting common stalls, I provide valuable, gameplay-relevant information that aligns with his interests as a major property owner and Republic leader. This strengthens my utilitarian ties, subtly reinforcing my value as an operator and informant, without overstepping the low trust boundary. It's a cautious yet strategic move to build influence."
 }
