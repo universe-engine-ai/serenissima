@@ -152,28 +152,6 @@ def initialize_airtable():
         log.error(f"{LogColors.FAIL}Failed to initialize Airtable: {e}{LogColors.ENDC}")
         sys.exit(1)
 
-# Removed local definitions of:
-# get_citizen_contracts
-# get_building_type_info
-# get_building_resources
-# can_produce_output
-# find_path_between_buildings
-# create_resource_fetching_activity (local version)
-# create_production_activity (local version)
-# get_idle_citizens (local version) - now imported from activity_helpers
-
-# The comment block below is now outdated as the functions are imported from activity_creators
-# or helpers.
-# _escape_airtable_value, _has_recent_failed_activity_for_contract, 
-# _get_building_position_coords, _calculate_distance_meters,
-# get_citizen_current_load, get_closest_inn, get_citizen_workplace, get_citizen_home,
-# get_building_type_info, get_building_resources, can_produce_output,
-# find_path_between_buildings, get_citizen_contracts, get_idle_citizens,
-# _fetch_and_assign_random_starting_position, is_nighttime_helper, is_shopping_time_helper,
-# get_path_between_points_helper are now in activity_helpers.py
-
-# Function process_citizen_activity has been moved to backend.engine.logic.citizen_general_activities
-
 def create_activities(target_citizen_username: Optional[str] = None):
     """Main function to create activities for idle citizens."""
     if target_citizen_username:
@@ -303,11 +281,6 @@ def create_activities(target_citizen_username: Optional[str] = None):
     total_citizens_considered = len(citizens_to_process_list)
     summary_color = LogColors.OKGREEN if success_count >= total_citizens_considered and total_citizens_considered > 0 else LogColors.WARNING if success_count > 0 else LogColors.FAIL
     log.info(f"{summary_color}Activity creation process complete. Total activities created or simulated: {success_count} for {total_citizens_considered} citizen(s) considered.{LogColors.ENDC}")
-
-# Functions process_final_deliveries_from_galley and process_galley_unloading_activities
-# have been moved to backend/engine/logic/galley_activities.py
-
-# _fetch_and_assign_random_starting_position is now imported from activity_helpers.py
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Create activities for idle citizens.")
