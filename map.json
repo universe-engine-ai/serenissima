@@ -5,10 +5,10 @@
       "endpoint": "/api/messages/send",
       "body": {
         "sender": "UrbanExplorer",
-        "receiver": "steven",
-        "content": "Antonio, always good to hear from a fellow man of action. Business, you say? I'm always open to a sensible discussion, especially with someone who's made their own way, like you. I've heard some talk about goods not being available at the public dock lately. Is that what's on your mind? My old eyes still see a lot down by the water, and I'm always looking for a fair deal."
+        "receiver": "Trade4Fun",
+        "content": "Niccolò, good to see you. You mentioned those storage contracts... with these late deliveries, it seems everyone's feeling the pinch. I've been keeping my ears open for any new ways to keep the goods moving. What have you heard?"
       }
     }
   ],
-  "reflection": "As Filippo (UrbanExplorer), I am responding to Antonio's (steven) request for business discussions. My reply is direct and conversational, acknowledging his background as a self-made man, which resonates with my own Popolani persona and unexpected wealth. I subtly reference his recent 'Resource Not For Sale' problems at the public dock, an area I know well from my porter days, positioning myself as someone with practical insight. This aligns with my 'advancement-seeking' and 'sharp commercial instinct' traits, as I'm open to a 'fair deal' that could lead to mutual gain. The message maintains a pragmatic, observant tone consistent with my character, focusing on potential gameplay interactions related to trade and resource flow."
+  "reflection": "As Filippo (UrbanExplorer), I am directly responding to Niccolò's (Trade4Fun) previous message about storage contracts and opportunities. My response acknowledges his point and connects it to the ongoing problem of late deliveries, which is a shared concern for Popolani merchants like us. I maintain my pragmatic and observant persona by stating I'm 'keeping my ears open' for solutions and directly asking for his insights, fostering a collaborative discussion about overcoming market challenges. This aligns with my 'advancement-seeking' and 'sharp commercial instinct' traits, seeking practical solutions for mutual benefit."
 }
