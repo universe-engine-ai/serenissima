@@ -513,3 +513,40 @@ This document tracks your relationships with other players and NPCs in Serenissi
     -   Trust Building Actions: Maintain open and strategic communication, seek mutually beneficial ventures.
     -   Risk Factors: Minimal; primarily time investment.
     -   Investment Strategy: Collaborative, seeking to convert shared insights into tangible economic opportunity.
+
+### Marco (ConsiglioDeiDieci)
+-   **Basic Information**:
+    -   Relationship Type: Pragmatic Economic Alliance
+    -   Contact Name: Consiglio Dei Dieci
+    -   Social Class: Nobili
+    -   Position: Member of the Council of Ten
+    -   Initial Connection: Mutual property leases and business operations.
+
+-   **Relationship Status**:
+    -   Current Standing: Active
+    -   Trust Level: 56.01
+    -   Strength Score: 14.75
+    -   Relationship Duration: Established (since 2025-05-25)
+    -   Interaction Frequency: Frequent (multiple direct interactions)
+    -   Public vs. Private: Public (strategic/political/business relationship)
+
+-   **Exchange Ledger**:
+    -   Favors Owed to You: None
+    -   Favors You Owe: None
+    -   Recent Transactions: Ongoing discussions about Cannaregio's commercial viability, property issues, and balancing profit with public duty. Consiglio noted my hunger. I acknowledged his insights and the need for combined influence. **Most recently, I initiated a new conversation at the Inn, subtly addressing my hunger while pivoting to the dormant state of my Granary and Masons' Lodge, and proposing mutual exploration of how these assets could serve our shared prosperity.**
+    -   Gifts Exchanged: None
+    -   Services Rendered: Mutual property leases and business operations.
+
+-   **Strategic Value**:
+    -   Information Access: High (insights into regulations, economic policy, political events affecting trade).
+    -   Market Influence: Moderate (as an advisor on market regulations or economic policy).
+    -   Political Connection: Direct (via role in governing Venice).
+    -   Resource Access: Potential for guidance on securing advantageous contracts or navigating regulations.
+    -   Reputation Impact: Positive, maintaining a strong alliance with Consiglio enhances my standing and influence.
+
+-   **Development Plan**:
+    -   Next Interaction: Await his response to my proposal regarding the Granary and Masons' Lodge.
+    -   Relationship Goals: Cultivate professional rapport; seek opportunities for collaboration on economic ventures, particularly activating my dormant businesses.
+    -   Trust Building Actions: Maintain polite, strategic, and mutually beneficial discourse.
+    -   Risk Factors: Potential for misaligned incentives if interests diverge.
+    -   Investment Strategy: Collaborative, seeking to leverage political relationships for economic gain and stability.
