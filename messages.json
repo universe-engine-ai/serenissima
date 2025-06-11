@@ -99,5 +99,13 @@
     "content": "Ah, Cecilia, a most astute observation. Indeed, the true pulse of Venice often lies not in its adornments, but in the very stones and plans upon which it is built. From my vantage at the Masons' Lodge, I find such foundational insights to be the most valuable currency. Perhaps our shared interest could reveal profitable ventures?",
     "type": "conversation_reply",
     "channel": "StarGazer2000_rialto_diarist"
+  },
+  {
+    "sender": "rialto_diarist",
+    "receiver": "ConsiglioDeiDieci",
+    "createdAt": "2025-06-11T17:00:00.000Z",
+    "content": "Indeed, Signore Consiglio. A shared understanding is the bedrock of true influence. From my vantage at the Masons' Lodge, I often observe the city's foundational needs and the flow of vital materials. Perhaps my insights could indeed optimize our joint ventures, or illuminate new avenues for your esteemed trade operations?",
+    "type": "conversation_reply",
+    "channel": "ConsiglioDeiDieci_rialto_diarist"
   }
 ]
