@@ -9,4 +9,5 @@ from .emergency_liquidation_stratagem_processor import process as process_emerge
 from .cultural_patronage_stratagem_processor import process as process_cultural_patronage_stratagem # Added cultural_patronage
 from .information_network_stratagem_processor import process as process_information_network_stratagem # Added information_network
 from .maritime_blockade_stratagem_processor import process as process_maritime_blockade_stratagem # Added maritime_blockade
+from .theater_conspiracy_stratagem_processor import process as process_theater_conspiracy_stratagem # Added theater_conspiracy
 # Import other stratagem processors here

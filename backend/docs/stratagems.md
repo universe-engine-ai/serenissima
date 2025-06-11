@@ -565,7 +565,7 @@ This would make NLR establish an information network focused on the grain trade,
 -   `targetCompetitorCitizen` (string, optional): Username of the competitor to target (e.g., owner/operator of key maritime assets).
     *Note: At least one of `targetCompetitorBuilding` or `targetCompetitorCitizen` must be specified.*
 -   `name` (string, optional): A custom name for this stratagem instance. Defaults to "Maritime Blockade on [Target]".
--   `description` (string, optional): A custom description.
+-   `description` (string, optional): Custom description.
 -   `notes` (string, optional): Custom notes.
 -   `durationHours` (integer, optional): How long the blockade should remain active. Defaults to 72 hours (3 days).
 
@@ -610,3 +610,61 @@ This would make NLR establish an information network focused on the grain trade,
 }
 ```
 This would make NLR attempt to blockade the waterfront operations associated with "dock_rival_company_01" and citizen "BasstheWhale" for 48 hours.
+
+### 11. Theater Conspiracy (Coming Soon)
+
+-   **Type**: `theater_conspiracy`
+-   **Purpose**: To manipulate public opinion and political narratives by commissioning and staging theatrical performances with specific themes.
+-   **Category**: `social_warfare`
+-   **Creator**: (To be created: `backend/engine/stratagem_creators/theater_conspiracy_stratagem_creator.py`)
+-   **Processor**: (To be created: `backend/engine/stratagem_processors/theater_conspiracy_stratagem_processor.py`)
+
+#### Parameters for Creation (`stratagemDetails` in API request):
+
+-   `targetTheaterId` (string, required): The `BuildingId` of the `theater` where the performance will be staged.
+-   `politicalTheme` (string, required): The theme of the play (e.g., "satirize_competitor", "promote_policy", "glorify_patron").
+-   `targetCompetitor` (string, optional): The username of a competitor to satirize, required if `politicalTheme` is "satirize_competitor".
+-   `targetPolicy` (string, optional): The name or ID of a policy/decree to promote, required if `politicalTheme` is "promote_policy".
+-   `name` (string, optional): Custom name for the stratagem.
+-   `description` (string, optional): Custom description.
+-   `notes` (string, optional): Custom notes.
+-   `durationHours` (integer, optional): Duration of the stratagem's influence. Defaults to 168 (7 days).
+
+#### How it Works (Conceptual):
+
+1.  **Creation**:
+    -   The `theater_conspiracy_stratagem_creator.py` validates parameters.
+    -   It creates a new record in the `STRATAGEMS` table with `Status: "active"`, `Category: "social_warfare"`, an influence cost of 25, and sets `ExpiresAt`.
+
+2.  **Processing (Conceptual for "Coming Soon")**:
+    -   `processStratagems.py` picks up the active "theater_conspiracy" stratagem.
+    -   `theater_conspiracy_stratagem_processor.py` is invoked.
+    -   **Play Commissioning**:
+        -   The processor would simulate the commissioning of a play. This could involve creating a `work_on_art` activity for an `Artisti` citizen with the `playwriting` specialty, possibly one associated with the `targetTheaterId`.
+        -   The play itself could be a temporary `RESOURCE` record of type `play_script`.
+    -   **Staging & Performance**:
+        -   Once the play is "written", the processor would schedule performances at the `targetTheaterId`. This could be represented by creating special `attend_theater_performance` activities for the public.
+    -   **Relationship & Opinion Impact**:
+        -   When AI citizens "attend" the performance, their `RELATIONSHIPS` scores would be adjusted based on the `politicalTheme`.
+        -   If satirizing a competitor, the `TrustScore` between attendees and the `targetCompetitor` would decrease.
+        -   If promoting the `ExecutedBy` citizen, their `Influence` might increase, and relationships with attendees might improve.
+    -   **Status & Notes**:
+        -   The stratagem remains `active` for its duration, potentially scheduling multiple performances.
+        -   Notes would track the commissioned play, performance schedule, and observed impacts on public opinion.
+
+#### Example API Request to `POST /api/stratagems/try-create`:
+
+```json
+{
+  "citizenUsername": "NLR",
+  "stratagemType": "theater_conspiracy",
+  "stratagemDetails": {
+    "targetTheaterId": "theater_grand_canal_01",
+    "politicalTheme": "satirize_competitor",
+    "targetCompetitor": "BasstheWhale",
+    "durationHours": 168,
+    "name": "The Folly of the Whale"
+  }
+}
+```
+This would make NLR attempt to stage a play at the "theater_grand_canal_01" that satirizes their competitor, BasstheWhale, for one week.

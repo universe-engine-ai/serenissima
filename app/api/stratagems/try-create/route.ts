@@ -57,6 +57,12 @@ export async function POST(request: Request) {
         `TargetCompetitorCitizen: ${stratagemDetails?.targetCompetitorCitizen || stratagemDetails?.targetCitizen}`,
         `DurationHours: ${stratagemDetails?.durationHours}`
       );
+    } else if (stratagemType === 'theater_conspiracy') {
+      console.log(`[API /stratagems/try-create] Processing 'theater_conspiracy' stratagem with parameters:`,
+        `TargetTheaterId: ${stratagemDetails?.targetTheaterId}`,
+        `PoliticalTheme: ${stratagemDetails?.politicalTheme}`,
+        `TargetCompetitor: ${stratagemDetails?.targetCompetitor}`
+      );
     }
 
     let parsedPythonEngineUrl: URL;

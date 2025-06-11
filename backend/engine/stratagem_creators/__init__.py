@@ -9,4 +9,5 @@ from .emergency_liquidation_stratagem_creator import try_create as try_create_em
 from .cultural_patronage_stratagem_creator import try_create as try_create_cultural_patronage_stratagem # Added cultural_patronage
 from .information_network_stratagem_creator import try_create as try_create_information_network_stratagem # Added information_network
 from .maritime_blockade_stratagem_creator import try_create as try_create_maritime_blockade_stratagem # Added maritime_blockade
+from .theater_conspiracy_stratagem_creator import try_create as try_create_theater_conspiracy_stratagem # Added theater_conspiracy
 # Import other stratagem creators here as they are developed
