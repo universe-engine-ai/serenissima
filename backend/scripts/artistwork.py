@@ -56,7 +56,7 @@ def initialize_airtable() -> dict[str, AirtableTable] | None:
         log.error(f"{LogColors.FAIL}Failed to initialize Airtable: {e}{LogColors.ENDC}")
         return None
 
-def trigger_artist_work(target_artist_username: str | None = None, additional_message: str | None = None):
+def trigger_artist_work(target_artist_username: str | None = None, additional_message: str | None = None, kinos_model_override: str | None = None):
     """
     Fetches Artisti citizens and triggers their 'work_on_art' KinOS interaction.
     An optional additional message can be appended to the KinOS prompt.
@@ -151,9 +151,15 @@ def trigger_artist_work(target_artist_username: str | None = None, additional_me
             log.info(f"  Appended additional message to KinOS prompt for {citizen_username}.")
         
         kinos_payload: dict[str, Any] = {
-            "message": kinos_message,
-            "model": "local" 
+            "message": kinos_message
         }
+        if kinos_model_override:
+            kinos_payload["model"] = kinos_model_override
+            log.info(f"  Using KinOS model override: {kinos_model_override}")
+        else:
+            kinos_payload["model"] = "local"
+            log.info(f"  Using default KinOS model: local")
+
         if data_package_json_str:
             kinos_payload["addSystem"] = data_package_json_str
         
@@ -247,6 +253,15 @@ if __name__ == "__main__":
         type=str,
         help="Additional message to append to the KinOS prompt for the artist(s)."
     )
+    parser.add_argument(
+        "--model",
+        type=str,
+        help="Specify a KinOS model override (e.g., 'local', 'gemini-1.5-pro-latest')."
+    )
     args = parser.parse_args()
 
-    trigger_artist_work(target_artist_username=args.artist, additional_message=args.add_message)
+    trigger_artist_work(
+        target_artist_username=args.artist, 
+        additional_message=args.add_message,
+        kinos_model_override=args.model
+    )
