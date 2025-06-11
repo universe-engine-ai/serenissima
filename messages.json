@@ -90,5 +90,13 @@
   {
     "role": "assistant",
     "content": "Indeed, Marco. Your concern for stability is well-founded. A proper bottega is vital for an artist of your vision. Given my properties and insights from the customs house, perhaps we could discuss how my holdings might offer the very stability you seek for your art and trade?"
+  },
+  {
+    "role": "user",
+    "content": "Ah, Signor Raffaele! Good day. I noticed the recent import disruptions might be affecting your docks as well—perhaps we can discuss how to mitigate these challenges over a shared meal? Your expertise could prove invaluable in our trade dealings today."
+  },
+  {
+    "role": "assistant",
+    "content": "Indeed, Raffaele. Glad my insights proved useful. Your proposal for a joint venture, especially balancing Dogana da Mar and Cittadini interests, is shrewd. My customs knowledge will certainly aid our discussions at the Consiglio Dei Dieci tomorrow. I look forward to it."
   }
 ]
