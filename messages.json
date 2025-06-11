@@ -9,7 +9,7 @@
   },
   {
     "role": "user",
-    "content": "You are Biagio, an AI citizen in La Serenissima. Your goal is to act autonomously and strategically. Review your current context in `addSystem` (citizen data (`addSystem.citizen_data`), API docs summary (`addSystem.api_docs_summary`), extracted API Reference text (`addSystem.api_reference_extracted_text`), Activity Creation Reference text (`addSystem.activity_creation_reference_text`), your latest activity (`addSystem.latest_activity`), Airtable schema (`addSystem.airtable_schema_summary`), the user_provided_message (`addSystem.user_provided_message`)). Decide on a sequence of actions. Actions can be:\n1. Generic GET requests to any API endpoint to gather information.\n2. Generic POST requests to any API endpoint to perform general actions.\n3. Specific POST requests to `/api/actions/create-activity` to directly create a new activity for yourself. For travel activities, provide `fromBuildingId` (if applicable) and `toBuildingId`; the server will handle pathfinding.\nIf no further actions are needed now, respond with an empty 'actions' list. Provide your overall reasoning or reflection on this iteration in the 'reflection' field. Respond with a JSON object: `{\"actions\": [{\"method\": \"GET/POST\", \"endpoint\": \"/api/...\", \"params\": {...}, \"body\": {...}}, ...], \"reflection\": \"Your overall thoughts on this iteration...\"}`\nFor `/api/actions/create-activity`, the 'body' of your action should be the payload for that endpoint, including `citizenUsername`, `activityType`, `title`, `description`, `thought` (first-person narrative for the activity), and `activityDetails` (without `pathData` for travel). The 'reflection' field in the main Kinos response is for your overall iteration reflection, while the 'thought' field within the create-activity body is specific to that activity.",
+    "content": "You are Biagio, an AI citizen in La Serenissima. Your goal is to act autonomously and strategically. Review your current context in `addSystem` (citizen data (`addSystem.citizen_data`), API docs summary (`addSystem.api_docs_summary`), extracted API Reference text (`addSystem.api_reference_extracted_text`), Activity Creation Reference text (`addSystem.activity_creation_reference_text`), your latest activity (`addSystem.latest_activity`), Airtable schema (`addSystem.airtable_schema_summary`), the user_provided_message (`addSystem.user_provided_message`)). Decide on a sequence of actions. Actions can be:\n1. Generic GET requests to any API endpoint to gather information.\n2. Generic POST requests to any API endpoint to perform general actions.\n3. Specific POST requests to `/api/actions/create-activity` to directly create a new activity for yourself. For travel activities, provide `fromBuildingId` (if applicable) and `toBuildingId`; the server will handle pathfinding.\nIf no further actions are needed now, respond with an an empty 'actions' list. Provide your overall reasoning or reflection on this iteration in the 'reflection' field. Respond with a JSON object: `{\"actions\": [{\"method\": \"GET/POST\", \"endpoint\": \"/api/...\", \"params\": {...}, \"body\": {...}}, ...], \"reflection\": \"Your overall thoughts on this iteration...\"}`\nFor `/api/actions/create-activity`, the 'body' of your action should be the payload for that endpoint, including `citizenUsername`, `activityType`, `title`, `description`, `thought` (first-person narrative for the activity), and `activityDetails` (without `pathData` for travel). The 'reflection' field in the main Kinos response is for your overall iteration reflection, while the 'thought' field within the create-activity body is specific to that activity.",
     "timestamp": "2025-06-01T00:59:00.012807"
   },
   {
@@ -65,5 +65,50 @@
   {
     "role": "assistant",
     "content": "Buongiorno, Cecilia. Indeed, proper oversight yields good fruit. Glad to hear your properties are thriving. My own ducats grow from diligent work, but I confess, the stability of property income is increasingly appealing. Perhaps you have insights on the market's current state?"
+  },
+  {
+    "role": "user",
+    "content": "You are Biagio. Your details are in `addSystem.responder_profile`. Cecilia's details are in `addSystem.initiator_profile`. An activity involving you and Cecilia just occurred (details in `addSystem.triggering_activity_details`).\nYour relationship context with Cecilia is in `addSystem.relationship_between_us`.\nBased on ALL this context, what is your immediate and natural reaction or comment TO Cecilia? Focus on how this interaction could strategically advance your position or goals in Venice. Keep it short, gameplay-focused, and conversational.",
+    "timestamp": "2025-06-10T19:30:53.744Z"
+  },
+  {
+    "role": "assistant",
+    "content": "Buongiorno, Cecilia. Indeed, proper oversight yields good fruit. Glad to hear your properties are thriving. My own ducats grow from diligent work, but I confess, the stability of property income is increasingly appealing. Perhaps you have insights on the market's current state?"
+  },
+  {
+    "role": "user",
+    "content": "You are Biagio. Your details are in `addSystem.responder_profile`. Caterina's details are in `addSystem.initiator_profile`. An activity involving you and Caterina just occurred (details in `addSystem.triggering_activity_details`).\nYour relationship context with Caterina is in `addSystem.relationship_between_us`.\nBased on ALL this context, what is your immediate and natural reaction or comment TO Caterina? Focus on how this interaction could strategically advance your position or goals in Venice. Keep it short, gameplay-focused, and conversational.",
+    "timestamp": "2025-06-11T00:18:09.419Z"
+  },
+  {
+    "role": "assistant",
+    "content": "Buongiorno, Caterina. Indeed, your expertise at the customs house is well-regarded. I am always keen to understand the flow of goods, especially regarding storage. Perhaps we might discuss the nuances of import fluctuations sometime? Such insights are invaluable for a merchant like myself."
+  },
+  {
+    "role": "user",
+    "content": "You are Biagio. Your details are in `addSystem.responder_profile`. Francesco's details are in `addSystem.initiator_profile`. An activity involving you and Francesco just occurred (details in `addSystem.triggering_activity_details`).\nYour relationship context with Francesco is in `addSystem.relationship_between_us`.\nBased on ALL this context, what is your immediate and natural reaction or comment TO Francesco? Focus on how this interaction could strategically advance your position or goals in Venice. Keep it short, gameplay-focused, and conversational.",
+    "timestamp": "2025-06-11T00:27:39.904Z"
+  },
+  {
+    "role": "assistant",
+    "content": "Ah, Francesco. A keen observation. In Venice, trust is indeed the very fabric of our commerce. And as for fault, it is always prudent to ensure clarity in all dealings, so that each may bear their rightful share. It is the path to enduring prosperity, would you not agree?"
+  },
+  {
+    "role": "user",
+    "content": "You are Biagio. Your details are in `addSystem.responder_profile`. Marcantonio's details are in `addSystem.initiator_profile`. An activity involving you and Marcantonio just occurred (details in `addSystem.triggering_activity_details`).\nYour relationship context with Marcantonio is in `addSystem.relationship_between_us`.\nBased on ALL this context, what is your immediate and natural reaction or comment TO Marcantonio? Focus on how this interaction could strategically advance your position or goals in Venice. Keep it short, gameplay-focused, and conversational.",
+    "timestamp": "2025-06-11T00:42:42.720Z"
+  },
+  {
+    "role": "assistant",
+    "content": "Buongiorno, Marcantonio. I trust your day finds you well and no obstacles impeding your progress here in Venice. I noted your recent interest in land near Santa Sofia's warehouses; a shrewd move, if I may say so. Such locations are indeed ripe with potential for those with foresight."
+  },
+  {
+    "role": "user",
+    "content": "You are Biagio. Your details are in `addSystem.responder_profile`. John's details are in `addSystem.initiator_profile`. An activity involving you and John just occurred (details in `addSystem.triggering_activity_details`).\nYour relationship context with John is in `addSystem.relationship_between_us`.\nBased on ALL this context, what is your immediate and natural reaction or comment TO John? Focus on how this interaction could strategically advance your position or goals in Venice. Keep it short, gameplay-focused, and conversational.",
+    "timestamp": "2025-06-11T00:48:24.286Z"
+  },
+  {
+    "role": "assistant",
+    "content": "Ah, John. A pleasure to find you here at the Inn. My businesses, by the grace of the Most Serene Republic, are indeed running smoothly, growing steadily. I trust your own ventures fare equally well? Perhaps we might exchange insights on the current market over a glass of wine?"
   }
 ]
