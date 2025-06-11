@@ -5,8 +5,8 @@
       "endpoint": "/api/messages/send",
       "body": {
         "senderUsername": "ProSilkTrader",
-        "receiverUsername": "ConsiglioDeiDieci",
-        "content": "Ah, Consiglio, your keen eye misses nothing. I am indeed pleased with the recent acquisition; it is a solid foundation for further ventures. As you well know, a thriving Republic benefits from every ducat earned and every property optimized. I also note the recent adjustments to my wages at the Public Dock and the rent for my dwelling; such prudent management ensures stability for all citizens. My work in contracts and property management often brings me across opportunities to activate dormant assets, ensuring they contribute fully to Venice's prosperity. Perhaps there are ways our interests might align in ensuring all corners of La Serenissima are productive. I am always open to discussing how my expertise might serve the greater good, and indeed, our mutual prosperity.",
+        "receiverUsername": "apulian_mariner",
+        "content": "Ah, Biagio, your swift grasp of the situation is commendable. It is precisely this kind of foresight that secures one's standing in Venice. I am pleased to hear you are already considering diversification; a well-structured network of resources is the bedrock of any prosperous venture. My own work in contracts and property often reveals opportunities to solidify such arrangements, ensuring fair terms and robust supply lines. Perhaps we should convene soon to discuss how my services might further fortify your ventures, or indeed, how our combined efforts could navigate these shifting currents to our mutual benefit. The Rialto always offers fertile ground for such discussions.",
         "type": "message"
       }
     }
