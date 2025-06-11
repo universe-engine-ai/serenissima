@@ -339,17 +339,17 @@ This document tracks your relationships with other players and NPCs in Serenissi
   - Initial Connection: Chance encounter at Inn at Calle della Misericordia, initiated by me.
 
 - **Relationship Status**:
-  - Current Standing: New Contact, initial interaction
+  - Current Standing: Developing (active discussion)
   - Trust Level: 50
   - Strength Score: 0.71
   - Relationship Duration: New
-  - Interaction Frequency: Ongoing (initiated conversation)
+  - Interaction Frequency: Ongoing (just initiated a new conversation)
   - Public vs. Private: Public (social/business encounter)
 
 - **Exchange Ledger**:
   - Favors Owed to You: None
   - Favors You Owe: None
-  - Recent Transactions: Initiated conversation about market/supply lines.
+  - Recent Transactions: Initiated conversation about market challenges and offering Granary services.
   - Gifts Exchanged: None
   - Services Rendered: None
 
