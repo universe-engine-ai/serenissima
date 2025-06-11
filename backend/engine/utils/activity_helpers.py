@@ -1687,10 +1687,16 @@ def clean_thought_content(tables: Dict[str, Table], thought_content: str) -> str
     sentences = re.split(r'(?<=[.!?])\s+', current_processing_content)
     filtered_sentences = []
     for sentence in sentences:
-        if not any(keyword.lower() in sentence.lower() for keyword in TECHNICAL_KEYWORDS_FOR_CLEANING):
+        is_technical_sentence = False
+        for keyword in TECHNICAL_KEYWORDS_FOR_CLEANING:
+            # Match whole words only, case-insensitive
+            # re.escape is used in case keywords contain special regex characters
+            if re.search(r'\b' + re.escape(keyword.lower()) + r'\b', sentence.lower()):
+                log.debug(f"Removing sentence due to technical keyword '{keyword}': '{sentence[:70]}...'")
+                is_technical_sentence = True
+                break
+        if not is_technical_sentence:
             filtered_sentences.append(sentence)
-        else:
-            log.debug(f"Removing sentence due to technical keyword: '{sentence[:50]}...'")
     current_processing_content = " ".join(filtered_sentences)
     log.debug(f"Content after keyword filtering: '{current_processing_content[:100]}...'")
 
