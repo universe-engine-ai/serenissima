@@ -74,5 +74,13 @@
   {
     "role": "assistant",
     "content": "Bianca, good to see you. Insights, you say? My stomach is rumbling, and a clear mind is essential for spotting true opportunities. Perhaps we could discuss this over a quick bite? My vantage point at the customs house often reveals much."
+  },
+  {
+    "role": "user",
+    "content": "Good day, Signora Caterina. It seems we have a lovely spot here at this inn – not too crowded, yet still buzzing with trade talk. I trust your business is progressing as usual?"
+  },
+  {
+    "role": "assistant",
+    "content": "Good day, Elena. Indeed, a fine spot for observing the flow of goods. My business at the customs house is steady, though I've noted the recent... *delivery challenges* affecting many. Perhaps we could discuss this further? My stomach, I confess, is beginning to demand attention, and a clear mind is best fed."
   }
 ]
