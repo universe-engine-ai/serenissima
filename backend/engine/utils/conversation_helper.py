@@ -405,11 +405,15 @@ def generate_conversation_turn(
         )
 
         if summarized_context:
-            log.info(f"Successfully generated summarized context for {speaker_username}. Length: {len(summarized_context)}")
-            log.debug(f"Summarized context: {summarized_context}")
-            # B. Prepare for Conversation Call with summarized context
+            # Clean the summarized context before using it
+            cleaned_summarized_context = clean_thought_content(tables, summarized_context)
+            log.info(f"Successfully generated summarized context for {speaker_username}. Original length: {len(summarized_context)}, Cleaned length: {len(cleaned_summarized_context)}")
+            log.debug(f"Original summarized context: {summarized_context}")
+            log.debug(f"Cleaned summarized context: {cleaned_summarized_context}")
+            
+            # B. Prepare for Conversation Call with cleaned summarized context
             final_add_system_data = {
-                "summary_of_relevant_context": summarized_context,
+                "summary_of_relevant_context": cleaned_summarized_context,
                 "original_context_available_on_request": "The full data package was summarized. You are now acting as the character based on this summary."
             }
         else:
