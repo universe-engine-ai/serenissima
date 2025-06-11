@@ -237,7 +237,7 @@ def generate_ai_response(
         add_system_json = json.dumps(context_data)
         
         kinos_prompt = (
-            f"You are {ai_display_name}, an AI citizen of La Serenissima. You have received a message from {sender_username}.\n"
+            f"Alright, {ai_display_name}, you're a citizen of La Serenissima. A message just arrived from {sender_username}.\n"
             "Your objective is to act autonomously and strategically to advance your interests. Based on the provided context, what is your brief, natural reply TO the sender? Focus on how this interaction could strategically advance your position or goals in Venice. Keep it short, gameplay-focused, and conversational.\n\n"
             "--- Context ('addSystem' details) ---\n"
             "- 'initiator_profile': The sender's detailed profile.\n"
