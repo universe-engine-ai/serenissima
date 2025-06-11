@@ -13,6 +13,7 @@ from pprint import pformat
 import textwrap
 import argparse
 import random
+import re
 
 # Initialize colorama
 colorama.init(autoreset=True)
@@ -864,22 +865,31 @@ If you decide not to build anything at this time, return an empty JSON object.
                 print(content)
                 print("\n" + "=" * 80 + "\n")
                 
-                # Try to extract the JSON decision from the response
                 try:
-                    # Find the first opening brace and the last closing brace
-                    start_index = content.find('{')
-                    end_index = content.rfind('}')
+                    # New, more robust JSON extraction logic
+                    json_content = None
                     
-                    if start_index != -1 and end_index != -1 and start_index < end_index:
-                        # Extract the JSON content
-                        json_content = content[start_index:end_index+1]
-                        
-                        # Clean the content (remove any markdown code block markers)
-                        json_content = json_content.replace('```json', '').replace('```', '')
-                        
+                    # 1. Prefer the JSON block if it exists
+                    json_block_match = re.search(r"```json\s*({.*?})\s*```", content, re.DOTALL)
+                    if json_block_match:
+                        json_content = json_block_match.group(1)
+                        log_info("Found JSON in a markdown block.")
+                    else:
+                        # 2. Fallback: find the last JSON object in the string
+                        last_brace_pos = content.rfind('{')
+                        if last_brace_pos != -1:
+                            try:
+                                # Use raw_decode to parse one JSON object and ignore trailing characters
+                                decoder = json.JSONDecoder()
+                                _, end_index = decoder.raw_decode(content[last_brace_pos:])
+                                json_content = content[last_brace_pos : last_brace_pos + end_index]
+                                log_info("Found JSON using fallback (last brace and raw_decode).")
+                            except json.JSONDecodeError:
+                                log_warning(f"Fallback JSON parsing failed for {ai_username}. Could not decode from last brace.")
+                                json_content = None
+                    
+                    if json_content:
                         log_info(f"Extracted JSON content: {json_content}")
-                        
-                        # Parse the JSON
                         decision = json.loads(json_content)
                         
                         # Check if we have the required fields
@@ -919,6 +929,11 @@ If you decide not to build anything at this time, return an empty JSON object.
                     
                     # If we get here, no valid decision was found
                     log_warning(f"No valid building decision found in AI response for {ai_username}.")
+                    return None
+                except json.JSONDecodeError as e:
+                    log_error(f"Error parsing extracted JSON for {ai_username}: {e}")
+                    log_error(f"Extracted content that failed parsing: {json_content if json_content else 'N/A'}")
+                    send_error_message_to_kinos_ai(ai_username, "building_strategy_parsing", str(e), content)
                     return None
                 except Exception as e:
                     log_error(f"Error extracting decision from AI response for {ai_username}: {str(e)}")
@@ -1446,22 +1461,31 @@ Your response must be a JSON object with:
                 print(content)
                 print("\n" + "=" * 80 + "\n")
                 
-                # Try to extract the JSON decision from the response
                 try:
-                    # Find the first opening brace and the last closing brace
-                    start_index = content.find('{')
-                    end_index = content.rfind('}')
+                    # New, more robust JSON extraction logic
+                    json_content = None
                     
-                    if start_index != -1 and end_index != -1 and start_index < end_index:
-                        # Extract the JSON content
-                        json_content = content[start_index:end_index+1]
-                        
-                        # Clean the content (remove any markdown code block markers)
-                        json_content = json_content.replace('```json', '').replace('```', '')
-                        
+                    # 1. Prefer the JSON block if it exists
+                    json_block_match = re.search(r"```json\s*({.*?})\s*```", content, re.DOTALL)
+                    if json_block_match:
+                        json_content = json_block_match.group(1)
+                        log_info("Found JSON in a markdown block.")
+                    else:
+                        # 2. Fallback: find the last JSON object in the string
+                        last_brace_pos = content.rfind('{')
+                        if last_brace_pos != -1:
+                            try:
+                                # Use raw_decode to parse one JSON object and ignore trailing characters
+                                decoder = json.JSONDecoder()
+                                _, end_index = decoder.raw_decode(content[last_brace_pos:])
+                                json_content = content[last_brace_pos : last_brace_pos + end_index]
+                                log_info("Found JSON using fallback (last brace and raw_decode).")
+                            except json.JSONDecodeError:
+                                log_warning(f"Fallback JSON parsing failed for {ai_username}. Could not decode from last brace.")
+                                json_content = None
+                    
+                    if json_content:
                         log_info(f"Extracted JSON content: {json_content}")
-                        
-                        # Parse the JSON
                         placement_decision = json.loads(json_content)
                         
                         # Check if we have the required fields
@@ -1575,24 +1599,29 @@ Your response must be a JSON object with:
                                 return False
                         else:
                             log_error(f"No 'selected_point_index' in AI placement decision for {ai_username}.")
+                            return False
                     else:
-                        print(f"No JSON decision found in AI placement response. Full response:")
-                        print(content)
+                        log_warning(f"No JSON decision found in AI placement response for {ai_username}. Full response:")
+                        log_warning(content)
+                        return False
+                except json.JSONDecodeError as e:
+                    log_error(f"Error parsing extracted JSON for placement decision for {ai_username}: {e}")
+                    log_error(f"Extracted content that failed parsing: {json_content if json_content else 'N/A'}")
+                    return False
                 except Exception as e:
-                    print(f"Error extracting placement decision from AI response: {str(e)}")
-                    print(f"Exception traceback: {traceback.format_exc()}")
-                    print(f"Full response content that caused the error:")
-                    print(content)
-                return False
+                    log_error(f"Error extracting placement decision from AI response for {ai_username}: {str(e)}")
+                    log_error(f"Exception traceback: {traceback.format_exc()}")
+                    log_error(f"Full response content that caused the error for {ai_username}:\n{content}")
+                    return False
             else:
-                print(f"Error processing building placement request for AI citizen {ai_username}: {response_data}")
+                log_error(f"Error processing building placement request for AI citizen {ai_username}: {response_data}")
                 return False
         else:
-            print(f"Error from KinOS API: {response.status_code} - {response.text}")
+            log_error(f"Error from KinOS API: {response.status_code} - {response.text}")
             return False
     except Exception as e:
-        print(f"Error sending building placement request to AI citizen {ai_username}: {str(e)}")
-        print(f"Exception traceback: {traceback.format_exc()}")
+        log_error(f"Error sending building placement request to AI citizen {ai_username}: {str(e)}")
+        log_error(f"Exception traceback: {traceback.format_exc()}")
         return False
 
 def process_ai_building_strategies(dry_run: bool = False, citizen_username_arg: Optional[str] = None, target_land_id_arg: Optional[str] = None, additional_message_arg: Optional[str] = None, kinos_model_override_arg: Optional[str] = None):
