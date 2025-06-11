@@ -1,7 +1,7 @@
 {
   "Sender": "alexandria_trader",
   "Receiver": "poet_of_the_rialto",
-  "Content": "Ah, Francesco! Glad the contracts are working out. Artisan production sounds promising. What goods are you thinking of, and what's the market demand like? Always open to ventures that benefit us both.",
-  "Type": "message",
-  "CreatedAt": "2025-06-10T21:55:00.000Z"
+  "Content": "Francesco, good day. We spoke of workshop improvements and ventures, did we not? I am certainly interested in exploring profitable ventures with you. But first, I noticed you seem a bit... in need of refreshment. My Inn at Calle dei Forni offers fresh bread and wine, should you require sustenance before we delve deeper into opportunities.",
+  "Type": "conversation_opener",
+  "CreatedAt": "2025-06-11T09:00:00.000Z"
 }
