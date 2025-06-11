@@ -1,5 +1,12 @@
 {
-  "message": "Well met, Francesco. I trust your ventures in silk are as steady as the city's foundations I observe from my Lodge. Have you noticed any particular currents in the market that bear watching?",
-  "actions": [],
-  "reflection": "As Caterina del Ponte, my reply to Francesco's greeting is designed to subtly probe for market intelligence. By referencing my 'Masons' Lodge' vantage point and his 'silk ventures,' I align my persona as an information purveyor with his trade. My 'influence-driven' core motivation leads me to seek 'currents in the market,' aiming to uncover insights that could inform future strategic moves or collaborations, thereby strengthening my network and position in Venice."
+  "message": "Buongiorno, Signore. Your persistence is noted, and indeed, the matter of trade disruptions warrants thorough discussion. Your Granary's capabilities, combined with the foundational insights I gather from my Masons' Lodge, could illuminate much. A meeting at your fondaco would be most prudent to explore how our strengths might be woven into a mutually beneficial tapestry of influence.",
+  "actions": [
+    {
+      "type": "propose_meeting",
+      "target_citizen": "Italia",
+      "location_type": "fondaco",
+      "purpose": "discuss_strategic_synergy"
+    }
+  ],
+  "reflection": "As Caterina del Ponte, my response to The Italian's overture is calculated to leverage his interest in trade disruptions and his Granary's capabilities. By emphasizing my Masons' Lodge insights, I reinforce my unique position as an information broker. My 'influence-driven' motivation dictates that I seek to formalize this interaction into a 'mutually beneficial' strategic alliance, using the proposed meeting at his fondaco as a concrete step to deepen our relationship and uncover opportunities for wealth and power."
 }
