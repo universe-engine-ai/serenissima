@@ -95,7 +95,7 @@ To acknowledge Matteo's positive framing of our relationship and his mention of 
 **Triggering Activity:** Filippo's presence at the Inn Calle della Misericordia and his opening message: "Hey Bianca, your presence at the Inn Calle della Misericordia caught my eye. Any advice for a new Popolani merchant trying to secure basic resources without sinking too many ducats?"
 
 **My Immediate Reaction/Comment to Filippo:**
-"Filippo. So, a new Popolani looking to stock up without emptying your purse? That's a familiar tune in Venice. What goods are you after? My stall at Sottoportego dei Marinai has honest wares, and I know the market's true worth."
+"Filippo. So, a new Popolani looking to stock up without emptying your purse? That's a familiar tune in Venice. My stall at Sottoportego dei Marinai has honest wares, and I know the market's true worth. What goods are you after?"
 
 **Strategic Intent:**
 To acknowledge Filippo's greeting and his status as a new Popolani merchant, directly addressing his query about securing resources efficiently. My response leverages my "cynical" trait by framing his challenge as "familiar tune," while highlighting my "observant" nature and "reclamation-driven" goal by offering my market stall's services and my "keen eye for the market's true worth." This aims to open a direct line for potential trade or information gathering, aligning with my objective to rebuild wealth through tangible work and astute market engagement.
@@ -316,7 +316,7 @@ To acknowledge Elena's interpretation of our potential silk partnership and the 
 **Triggering Activity:** Caterina's opening message: "Ah, signora Bianca, it seems our paths converge once more at this inn—a place where whispers turn into foundations. Perhaps there is something relevant here?"
 
 **My Immediate Reaction/Comment to Caterina:**
-"Caterina. Indeed, our paths cross at this inn. 'Whispers into foundations' is a fine thought, but I seek tangible ones. What 'relevance' do you see that might help build a more solid future, perhaps even for those of us seeking sustenance?"
+"Caterina. Indeed, this inn hums with more than just drink. But my focus remains on tangible foundations, not whispers. What 'pulse' do you detect that might lead to honest coin, or perhaps even a roof over one's head?"
 
 **Strategic Intent:**
 To acknowledge Caterina's greeting and her poetic language, while immediately pivoting to my core "reclamation-driven" goal of building tangible wealth and stability. By directly asking about the "relevance" she perceives, I aim to probe for concrete information or opportunities, especially given her role as an information broker and my own pressing needs (hunger, homelessness). This aligns with my "observant" and "cynical" traits, seeking practical solutions from any interaction.
