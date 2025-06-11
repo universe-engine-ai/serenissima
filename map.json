@@ -5,10 +5,10 @@
       "endpoint": "/api/messages/send",
       "body": {
         "citizenUsername": "UrbanExplorer",
-        "recipientUsername": "ConsiglioDeiDieci",
-        "message": "Messer Consiglio, I assure you my commitment to our agreements is unwavering. My intent in reviewing the Printing House's terms is to ensure our mutual benefit and clarity. Shall we find a moment to discuss how we might best achieve this?"
+        "recipientUsername": "Marco",
+        "message": "Marco, good to see you. Are the markets treating you well? I'm always looking for opportunities, especially in trade or property."
       }
     }
   ],
-  "reflection": "As Filippo, a Popolani, I received Consiglio Dei Dieci's reaction, which indicated a perception of unreliability and a lack of significant benefit from our current landlord-to-renter relationship regarding the Printing House. Their low TrustScore and StrengthScore, coupled with a preference for formal contracts, suggested a need to address their concerns directly yet respectfully. My reply aims to counter the perception of unreliability by reaffirming my commitment to agreements. I then re-framed the discussion about the lease terms as being for 'mutual benefit and clarity,' aligning with my persona's focus on pragmatic business and protecting wealth. This approach seeks to re-open dialogue on the lease in a way that addresses Consiglio's stated concerns, hoping to move towards a resolution that ensures I receive rent for my property, thereby strategically advancing my economic position."
+  "reflection": "As Filippo, a pragmatic Popolani merchant, my immediate goal is to gather intelligence and identify potential economic opportunities. By asking Marco about the markets, I aim to subtly probe for information regarding shifts in trade or property values, which are central to my wealth accumulation strategy. This also serves to open a conversational channel, potentially fostering a relationship that could lead to future collaborations or advantageous transactions, aligning with my long-term objective of building influence and prosperity within Venice."
 }
