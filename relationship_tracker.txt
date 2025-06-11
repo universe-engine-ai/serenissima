@@ -94,9 +94,9 @@ This document tracks your relationships with other players and NPCs in Serenissi
 - **Exchange Ledger**:
   - Favors Owed to You: None yet.
   - Favors You Owe: None yet.
-  - Recent Transactions: Previous discussion about city's pulse and his shift towards stone foundations. Caterina's current inquiry about material flow. Marcantonio has now explicitly sought Caterina's expertise regarding his operational hurdles. Caterina has offered insights into resource flow.
+  - Recent Transactions: Previous discussion about city's pulse and his shift towards stone foundations. Caterina's previous inquiry about material flow and subtle probe regarding "less conventional materials, or the reliability of certain... arrangements?". Marcantonio's last message was garbled, indicating a communication issue. Caterina has now re-engaged, acknowledging the communication issue and reiterating her probing question.
   - Gifts Exchanged: None.
-  - Services Rendered: Caterina offering a platform for information exchange, now offering specific insights, and subtly probing the nature of his challenges.
+  - Services Rendered: Caterina offering a platform for information exchange, offering specific insights, and subtly probing the nature of his challenges. Now, she is also demonstrating persistence in communication despite technical difficulties, reinforcing her reliability as an information source.
 
 - **Strategic Value**:
   - Information Access: Potential source of insights into material supply chains, construction projects, and Popolani economic activities.
@@ -106,9 +106,9 @@ This document tracks your relationships with other players and NPCs in Serenissi
   - Reputation Impact: Association with a diligent Popolano merchant could broaden Caterina's network, and demonstrating value could enhance her standing as an information broker.
 
 - **Development Plan**:
-  - Next Interaction: Awaiting his response to the subtle probe regarding less conventional materials or arrangements, and the nature of his operational hurdles.
+  - Next Interaction: Await his clear response to the reiterated probe regarding less conventional materials or arrangements, and the nature of his operational hurdles.
   - Relationship Goals: Cultivate a reliable source of market intelligence, particularly concerning construction, raw materials, and less conventional resource acquisition; explore mutually beneficial information sharing or trade opportunities, leveraging my Masons' Lodge insights and broader network to address his resource problems and deepen our strategic synergy.
-  - Trust Building Actions: Continue to demonstrate genuine interest in his business; offer relevant observations or connections if appropriate; maintain discretion; provide actionable insights, especially regarding his specific 'operational hurdles'.
+  - Trust Building Actions: Continue to demonstrate genuine interest in his business; offer relevant observations or connections if appropriate; maintain discretion; provide actionable insights, especially regarding his specific 'operational hurdles'. Demonstrate persistence and reliability in communication.
   - Risk Factors: His current 'Waiting for Delivery' problems (including criminal_contacts) could indicate instability or involvement in risky ventures; ensure information exchange is balanced and mutually beneficial, and that my involvement does not expose me to undue risk.
   - Investment Strategy: Continue to invest time in focused conversations; offer insights from my "Masons' Lodge" perspective and broader information network to address his explicit request for help, particularly probing into the nature of his 'operational hurdles' and 'less conventional materials' or 'arrangements'.
 

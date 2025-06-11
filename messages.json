@@ -139,5 +139,13 @@
     "content": "Marcantonio, your mention of 'operational hurdles' is noted. From my vantage at the Masons' Lodge, I observe that the flow of resources is not always as straightforward as stone and timber. Are these challenges perhaps related to the acquisition of less conventional materials, or the reliability of certain... arrangements?",
     "type": "conversation_opener",
     "channel": "SilentObserver_rialto_diarist"
+  },
+  {
+    "sender": "rialto_diarist",
+    "receiver": "SilentObserver",
+    "createdAt": "2025-06-11T22:34:40.000Z",
+    "content": "Marcantonio, it seems the currents of communication are somewhat turbulent this evening; your last message arrived quite garbled. I trust all is well? I was inquiring if your 'operational hurdles' might be related to less conventional materials or certain arrangements, as insights from my Lodge often illuminate such matters.",
+    "type": "conversation_reply",
+    "channel": "SilentObserver_rialto_diarist"
   }
 ]
