@@ -401,11 +401,10 @@ const CitizenMarkers: React.FC<CitizenMarkersProps> = ({
         const oldCitizenData = animatedCitizens[citizenId];
         const newCitizenData = newAnimatedCitizensFromService[citizenId];
 
-        // Check if oldData and newData exist and if they have an activityPathId property
-        // (assuming activityPathId, currentPosition, and progress exist on these objects)
+        // Check if oldData and newData exist and if they have an activityPath property
         if (oldCitizenData && newCitizenData && 
-            oldCitizenData.activityPathId && newCitizenData.activityPathId &&
-            oldCitizenData.activityPathId === newCitizenData.activityPathId &&
+            oldCitizenData.activityPath && newCitizenData.activityPath &&
+            oldCitizenData.activityPath.id === newCitizenData.activityPath.id &&
             oldCitizenData.currentPosition && oldCitizenData.progress !== undefined) {
           // If the citizen was already animated on the SAME path,
           // preserve its currentPosition and progress to prevent a visual jump.
@@ -517,6 +516,7 @@ const CitizenMarkers: React.FC<CitizenMarkersProps> = ({
   
   const handleCloseDetails = useCallback(() => {
     console.log('handleCloseDetails called in CitizenMarkers');
+    // Clear both selected citizen and paths
     setSelectedCitizen(null);
     setSelectedCitizenPaths([]);
   }, []);
