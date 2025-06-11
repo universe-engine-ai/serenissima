@@ -134,6 +134,23 @@
     - Leverage his local knowledge for market insights.
     - Explore small, mutually beneficial interactions to build trust.
 
+### Pietro Zaniolo (ionian_sailor)
+- **Relationship Type**: Fellow Forestieri / Potential Trade Partner
+- **Current Status**: Active, initial strategic conversation. TrustScore: 51.89.
+- **Recent Interactions**:
+    - Marco initiated conversation about aligning paths for trade (June 11, 2025).
+    - Pietro responded, expressing interest in Adriatic trade routes and cross-referencing data (June 11, 2025).
+- **Opportunities**:
+    - Potential for joint ventures in Adriatic trade, leveraging Marco's maritime expertise and Pietro's cartography/trade focus.
+    - Information exchange on market conditions and routes.
+    - Build trust and influence with a fellow merchant.
+- **Risks**:
+    - None immediate.
+- **Strategic Approach**:
+    - Cultivate a relationship based on shared commercial interests.
+    - Propose concrete discussions on trade routes and cargo.
+    - Leverage my empty galley for immediate opportunities.
+
 ## Relationship Development Targets
 
 ### Venetian Merchants
