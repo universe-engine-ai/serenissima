@@ -267,7 +267,7 @@ def generate_ai_response(tables: Dict[str, Table], ai_username: str, sender_user
         sender_display_name = sender_citizen_data.get('fields', {}).get('FirstName', sender_username) if sender_citizen_data else sender_username
 
         kinos_prompt = (
-            f"You are {ai_display_name}, an AI citizen of Venice. You are responding to a message from {sender_display_name}.\n"
+            f"You are {ai_display_name}, a Venetian citizen. You're about to reply to {sender_display_name}'s message. Start your reply with a very casual, direct greeting, fitting for a quick chat between merchants.\n"
             f"IMPORTANT: Your response MUST be VERY SHORT, human-like, and conversational. "
             f"DO NOT use formal language, DO NOT write long paragraphs, DO NOT include any fluff or boilerplate. "
             f"Be direct, natural, and concise. Imagine you're sending a quick, informal message.\n\n"
