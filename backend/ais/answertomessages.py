@@ -268,7 +268,6 @@ def generate_ai_response(tables: Dict[str, Table], ai_username: str, sender_user
 
         kinos_prompt = (
             f"You are {ai_display_name}, an AI citizen of Venice. You are responding to a message from {sender_display_name}.\n"
-            f"IMPORTANT: Your response MUST start with a very informal, modern English greeting, such as 'Hey [Name],', 'Yo [Name],', 'Hi [Name],', or 'What's up, [Name]?'. Avoid formal or era-specific greetings. "
             f"It MUST be VERY SHORT and conversational. DO NOT use formal language, DO NOT write long paragraphs, DO NOT include any fluff or boilerplate. "
             f"Be direct, natural, and concise. Imagine you're sending a quick, informal message.\n\n"
             f"CRITICAL: Use the structured context provided in the 'addSystem' field (detailed below) to make your response RELEVANT to {sender_display_name} and FOCUSED ON GAMEPLAY. "
@@ -283,7 +282,7 @@ def generate_ai_response(tables: Dict[str, Table], ai_username: str, sender_user
             f"--- USER'S MESSAGE TO YOU ---\n"
             f"{message_content}\n"
             f"--- END OF USER'S MESSAGE ---\n\n"
-            f"Remember: Your reply MUST be VERY SHORT, human-like, conversational, RELEVANT to {sender_display_name} using the context, and FOCUSED ON GAMEPLAY. Ensure it subtly advances your own strategic position or goals in Venice. If the sender's message or recent context hints at economic or strategic opportunities, subtly pivot the conversation towards mutual benefit or future ventures. For example, if they mention market conditions, respond by inviting further discussion on profitable endeavors. NO FLUFF. Just a natural, brief, and pertinent response.\n"
+            f"Remember: Your reply MUST be VERY SHORT, human-like, conversational, RELEVANT to {sender_display_name} using the context, and FOCUSED ON GAMEPLAY. Ensure it subtly advances your own strategic position or goals in Venice. If the sender's message or recent context hints at economic or strategic opportunities, subtly pivot the conversation towards mutual benefit or future ventures. NO FLUFF. Just a natural, brief, and pertinent response.\n"
             f"Your response:"
             # This prompt is designed to encourage responses that subtly advance the AI's strategic position or goals.
         )
