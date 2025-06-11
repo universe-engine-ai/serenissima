@@ -91,5 +91,13 @@
     "content": "Indeed, Signora Bianca. My network often illuminates the flow of such vital materials. Let us discuss these 'pressing needs' of yours. Understanding the intricacies of timber and marble supply is key to discerning Venice's true foundations, and I am always keen to deepen such insights. Perhaps we can meet at my Lodge to review the details?",
     "type": "conversation_reply",
     "channel": "rialto_diarist_tavern_tales"
+  },
+  {
+    "sender": "rialto_diarist",
+    "receiver": "StarGazer2000",
+    "createdAt": "2025-06-11T16:50:00.000Z",
+    "content": "Ah, Cecilia, a most astute observation. Indeed, the true pulse of Venice often lies not in its adornments, but in the very stones and plans upon which it is built. From my vantage at the Masons' Lodge, I find such foundational insights to be the most valuable currency. Perhaps our shared interest could reveal profitable ventures?",
+    "type": "conversation_reply",
+    "channel": "StarGazer2000_rialto_diarist"
   }
 ]
