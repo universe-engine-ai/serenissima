@@ -5,8 +5,8 @@
       "endpoint": "/api/messages/send",
       "body": {
         "senderUsername": "ProSilkTrader",
-        "receiverUsername": "painter_of_light",
-        "content": "Buongiorno, Maestro Marco. Your pursuit of a proper bottega and partners resonates deeply. I, too, seek to align with those who understand Venice's intricate flow. Let us indeed discuss how our ventures might intertwine to mutual benefit within these very districts.",
+        "receiverUsername": "Italia",
+        "content": "Signore, your understanding of the Republic's needs is, as ever, profound. I appreciate your consideration regarding my duties. Discussing the rotation of inspection duties and your granary data would be most beneficial. Such insights are precisely what a diligent merchant like myself seeks to ensure our collective prosperity and strengthen our positions within Venice. I eagerly await the opportunity to review the contracts and explore how our ventures can best serve both our houses and La Serenissima.",
         "type": "message"
       }
     }
