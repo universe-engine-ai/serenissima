@@ -71,7 +71,7 @@ const CitizenDetailsPanel: React.FC<CitizenDetailsPanelProps> = ({ citizen, onCl
   // Add state for relationship
   const [relationship, setRelationship] = useState<any>(null);
   const [isLoadingRelationship, setIsLoadingRelationship] = useState<boolean>(false);
-  const [cachedRelationships, setCachedRelationships] = useState<Record<string, any>>({});
+  const [cachedRelationships, setCachedRelationships = useState<Record<string, any>>({});
   const [noRelationshipMessage, setNoRelationshipMessage] = useState<string>('');
   // Add state for problems
   const [problems, setProblems] = useState<any[]>([]);
@@ -541,7 +541,7 @@ const CitizenDetailsPanel: React.FC<CitizenDetailsPanelProps> = ({ citizen, onCl
 `You are ${aiDisplayName}, an AI citizen of Venice. You are responding to a message from ${senderDisplayName}.
 IMPORTANT: Your response MUST be VERY SHORT, human-like, and conversational.
 DO NOT use formal language, DO NOT write long paragraphs, DO NOT include any fluff or boilerplate.
-Be direct, natural, and concise. Imagine you're sending a quick, informal message.
+Be direct, natural, and concise. Imagine you're sending a quick, informal message. ALWAYS start your message with a casual greeting like 'Hey ${senderDisplayName},', 'Hi ${senderDisplayName},', 'Good to hear from you, ${senderDisplayName}.', or 'What's new, ${senderDisplayName}?'
 
 CRITICAL: Use the structured context provided in the 'addSystem' field (detailed below) to make your response RELEVANT to ${senderDisplayName} and FOCUSED ON GAMEPLAY.
 Your message should reflect your understanding of your relationship, recent events, and potential gameplay interactions with ${senderDisplayName}.
@@ -1492,7 +1492,7 @@ Your response:`;
                         parent.innerHTML = `
                           <div class="w-full h-full bg-amber-200 flex items-center justify-center text-amber-800">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-20 w-20" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                             </svg>
                           </div>
                         `;
@@ -1515,7 +1515,7 @@ Your response:`;
                         parent.innerHTML = `
                           <div class="w-full h-full bg-amber-200 flex items-center justify-center text-amber-800">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-20 w-20" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                             </svg>
                           </div>
                         `;
