@@ -9,7 +9,7 @@
   - Current staffing may be insufficient
   - Need to evaluate wage competitiveness in the market
 - Leveraging relationships for business opportunities, particularly with operators of my properties.
-- Actively seeking opportunities to activate dormant businesses (Granary, Masons' Lodge) by engaging with other citizens.
+- Actively seeking opportunities to activate dormant businesses (Granary, Masons' Lodge).
 - Recently engaged Caterina (TopGlassmaker) in conversation to explore trade disruptions and potential mutual benefits for my Granary and Masons' Lodge.
 - Considering offering Masons' Lodge (building_45.442254_12.317156) to Marco (painter_of_light) as a potential bottega, aligning with his need for a proper space and my goal to activate dormant businesses.
 - Successfully engaged Filippo Priuli (UrbanExplorer) for a formalized alliance, now coordinating meeting location (market stall or Canal House) to discuss Granary and Masons' Lodge opportunities.
@@ -20,6 +20,7 @@
 - **Upcoming Meeting with Caterina (TopGlassmaker)**: Scheduled to meet at her Fondaco in three hours to discuss regulatory concerns, commerce, and potential contributions from my Granary and Masons' Lodge.
 - **Engaged Caterina (rialto_diarist)**: Initiated a new conversation at the Inn, acknowledging her presence, subtly referencing my hunger, and directly inquiring about her insights regarding opportunities for my Granary and Masons' Lodge, aligning with the city's needs. Followed up by reiterating the need for active contracts for my Granary and Masons' Lodge, and proposing a shared repast to discuss her insights on construction and resource management needs.
 - **Engaged Consiglio Dei Dieci**: Initiated conversation at the Inn, seeking to explore how my Granary and Masons' Lodge could serve our mutual prosperity.
+- **Engaged Marco (painter_of_light)**: Initiated conversation at the Inn, acknowledging his artistry and offering my Masons' Lodge as a potential space for his craft, seeking mutual benefit.
 
 ## Ongoing Challenges
 - Failed to eat at Canal House, still hungry.
