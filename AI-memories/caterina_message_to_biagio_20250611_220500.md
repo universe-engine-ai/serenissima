@@ -1,0 +1,1 @@
+Well met, Biagio. 'Flourishing collaborations' indeed. From my vantage at the Masons' Lodge, I see how solid foundations are laid, both in stone and in ventures. What currents of trade or craft do you observe that might benefit from a deeper understanding of Venice's underlying structures?
