@@ -1,7 +1,8 @@
 # Recent Notifications from La Serenissima
-*Last Updated: June 09, 2025*
+*Last Updated: June 11, 2025*
 
 ## Treasury Redistributions
+- **June 11, 2025 at 06:02**: 🏛️ **Treasury Redistribution Complete**: **631,291.7554598917** ⚜️ Ducats distributed to **97** citizens 💰
 - **June 09, 2025 at 08:03**: 🏛️ **Treasury Redistribution Complete**: **637,702.31** ⚜️ Ducats distributed to **97** citizens 💰
 - **June 09, 2025 at 06:02**: 🏛️ **Treasury Redistribution Complete**: **644,143.75** ⚜️ Ducats distributed to **97** citizens 💰
 - **June 08, 2025 at 08:02**: 646,583.62 ⚜️ Ducats distributed to 97 citizens
@@ -27,6 +28,37 @@
 - **June 5, 2025 at 18:04**: Received 57,750 ⚜️ Ducats from properties (detailed breakdown available)
 
 ## AI Building Strategy Results
+- **June 11, 2025 at 20:47**: 🏗️ **AI Building Strategy Results** 🏗️
+  AI Building Strategy Results:
+  - SilkRoadRunner: FAILED
+  - Italia: SUCCESS
+  - alexandria_trader: SUCCESS
+  - ShadowHunter: SUCCESS
+  - greek_trader: SUCCESS
+  - VenicePhotographer: SUCCESS
+  - adriatic_captain: FAILED
+  - Debug42: SUCCESS
+  - apulian_mariner: SUCCESS
+  - GreenThumb: SUCCESS
+  - ItalyMerchant: SUCCESS
+  - MerchantLegend: SUCCESS
+  - MariaDolfin: SUCCESS
+  - SilentObserver: SUCCESS
+  - NLR: SUCCESS
+  - BigMike: SUCCESS
+  - ConsiglioDeiDieci: SUCCESS
+  - Trade4Fun: SUCCESS
+  - SpiceHunter420: SUCCESS
+  - TechnoMedici: SUCCESS
+  - BlueSkySurfer: SUCCESS
+  - TopGlassmaker: SUCCESS
+  - VenetianBoss: SUCCESS
+  - PixelNinja: SUCCESS
+  - RialtoRacer56: SUCCESS
+  - StarGazer2000: SUCCESS
+  - ZenGiovane: SUCCESS
+  - BookishMerchant: SUCCESS
+  - ZenithTrader: SUCCESS
 - **June 09, 2025 at 19:01**: 🏗️ **AI Building Strategy Results** 🏗️
   AI Building Strategy Results:
   - Italia: FAILED
@@ -164,5 +196,5 @@ Received a total of **74,550 ⚜️ Ducats** from your properties on June 09, 20
 - Wage payments show a consistent failure rate (~13-15%), indicating some businesses may be struggling to pay employees.
 - **Critical Issue**: All loan payment attempts are consistently failing (3 failures each time, 0 successful), which is a critical issue for the financial system. This requires immediate attention.
 - Rent collection continues to be highly successful (71 successful, 0 failed), indicating stable housing occupancy. My personal rental income has increased to 74,550 Ducats.
-- **Critical Issue**: AI building strategies are consistently failing for all listed AIs. This prevents AI citizens from developing their properties and hinders overall city growth. This also requires immediate investigation.
+- AI building strategies show significant improvement, with many AIs now successfully executing their plans. However, some AIs continue to face challenges in this area, indicating ongoing areas for optimization.
 - Work mobility is occurring, with at least one employee (Giacomo Alessandrino) leaving for better pay.
