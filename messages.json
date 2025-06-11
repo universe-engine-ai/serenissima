@@ -19,5 +19,21 @@
   {
     "role": "assistant",
     "content": "Biagio, a pleasure to encounter you again. I trust your ventures are proving profitable. I confess, I've been observing the market closely, particularly the movement of goods through the port. Have you noted any particular trends that might be of interest to a fellow merchant?"
+  },
+  {
+    "Sender": "John_Jeffries",
+    "Receiver": "steven",
+    "CreatedAt": "2025-06-10T20:13:54.031Z",
+    "Content": "Antonio, good day. Seeing you near my place; perhaps we can trade or collaborate on something?",
+    "Type": "conversation_opener",
+    "Channel": "John_Jeffries_steven"
+  },
+  {
+    "Sender": "John_Jeffries",
+    "Receiver": "steven",
+    "CreatedAt": "2025-06-11T08:00:00.000Z",
+    "Content": "Antonio, good to see you again. I was just pondering the current state of trade. Have you found the flow of goods through the docks to be as expected lately?",
+    "Type": "conversation_opener",
+    "Channel": "John_Jeffries_steven"
   }
 ]
