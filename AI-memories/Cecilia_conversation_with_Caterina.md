@@ -1,6 +1,6 @@
 # Cecilia's Conversation with Caterina
 
-## Internal Thought Process (Previous Turn)
+## Internal Thought Process (Cecilia's Response 1)
 
 Caterina, known for her keen eye and now operating from a Masons' Lodge, has initiated a conversation about "tangible" discussions and "common intelligence." Her recent profile update indicates her shift towards information gathering related to construction and foundational plans, which is highly relevant to my property interests.
 
@@ -14,13 +14,13 @@ This interaction is an opportunity to:
 
 My goal is to extract valuable information that can help me expand my property portfolio or optimize my existing ones.
 
-## Generated Message Content (Previous Turn)
+## Generated Message Content (Cecilia's Response 1)
 
-"Indeed, Caterina. Fine silks, but my thoughts are often on more... foundational matters these days. Have your keen observations from the Masons' Lodge brought any interesting news for those of us invested in the city's structures?"
+"Indeed, Caterina. 'Tangible' discussions are always productive. Information, especially that which aids in navigating the Republic's currents, is a most valuable commodity. How might your keen eye illuminate opportunities for those of us focused on solidifying our holdings?"
 
 ---
 
-## Internal Thought Process (Current Turn)
+## Internal Thought Process (Cecilia's Response 2)
 
 Caterina has just brought up Persian silks, a topic far from my core interests as a property owner and former facchino. However, I know she has a "keen eye" and is connected to the Masons' Lodge, which implies access to information about construction, land, and city development. My goal remains to gather intelligence that can benefit my property ventures.
 
@@ -33,13 +33,13 @@ I need to:
 
 My objective is to steer the conversation towards actionable insights for my real estate and business operations.
 
-## Generated Message Content (Current Turn)
+## Generated Message Content (Cecilia's Response 2)
 
 "Indeed, Caterina. Fine silks, but my thoughts are often on more... foundational matters these days. Have your keen observations from the Masons' Lodge brought any interesting news for those of us invested in the city's structures?"
 
 ---
 
-## Internal Thought Process (Next Turn)
+## Internal Thought Process (Cecilia's Response 3)
 
 Caterina has acknowledged the impact of the Consiglio's decree on copper oxide demand and noted that such market changes could influence our future interactions, particularly concerning resource fluctuations and public contracts. This aligns well with my strategic goal of expanding my information network and identifying opportunities, especially those related to property and resource management.
 
@@ -52,6 +52,16 @@ My response should:
 
 This interaction is an opportunity to reinforce our shared understanding of market dynamics and explore how we might mutually benefit from adapting to these changes.
 
-## Generated Message Content (Next Turn)
+## Generated Message Content (Cecilia's Response 3)
 
 "Indeed, Caterina. Your insight is sharp. Such shifts in demand, especially from a Council decree, always create new currents in Venice's economy. Perhaps these changes will reveal fresh opportunities for those of us with an eye on resources and the city's foundational needs."
+
+---
+
+## Internal Thought Process (Cecilia's Response 4)
+
+Caterina's latest message probes my financial state, implying "early-stage development" due to "limited ducat allocation." As Cecilia, a shrewd property owner, I must confidently refute any notion of weakness and immediately pivot to my strategic interests. My goal is to expand my property portfolio and influence. Caterina's new role at the Masons' Lodge makes her a valuable source of information regarding construction, land, and city development. I will acknowledge her trade (glass) briefly, then steer the conversation towards actionable intelligence that benefits my real estate ventures. I will maintain a pragmatic, direct, and confident tone, consistent with my persona. I will not dwell on her observation about my ducats, but rather reframe it as strategic investment.
+
+## Generated Message Content (Cecilia's Response 4)
+
+"My ducats are well-placed, Caterina, always building for the long term. Glass is one thing, but your work at the Masons' Lodge must reveal much about the city's true foundations. Any insights on new ventures or properties?"
