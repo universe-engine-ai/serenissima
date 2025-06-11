@@ -820,7 +820,7 @@ def main():
     process_ai_messages(
         kinos_model_override_arg=args.model, 
         instant_mode=args.instant,
-        add_message="Marco Ragusa, a pleasure! Your family's reputation precedes you. Indeed, my influence among the artisans is growing, and I'm always keen to discuss opportunities to expand our reach. Perhaps we could speak further on this over a good meal? My mind works best when well-fed, and Venice offers many such establishments."
+        add_message="Giacomo, buongiorno! Your words about new directions and collaboration are well-received. Indeed, my approach is driven by a keen eye for opportunity. I find myself in a peculiar position, with ducats in my purse but a pressing need for a proper meal and a roof over my head. Perhaps you, with your insights into Venice's currents, know of a suitable establishment where we could discuss these 'significant results' further, once my immediate needs are met? A clear mind, and a full belly, are essential for shrewd ventures."
     )
 
 if __name__ == "__main__":
