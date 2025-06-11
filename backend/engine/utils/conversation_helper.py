@@ -360,7 +360,7 @@ def generate_conversation_turn(
             f"[SYSTEM]You are {speaker_profile.get('FirstName', speaker_username)}, a {speaker_profile.get('SocialClass', 'citizen')} of Venice. "
             f"{location_context}You see {listener_profile.get('FirstName', listener_username)} (Social Class: {listener_profile.get('SocialClass', 'unknown')}) here. "
             f"Review your knowledge in `addSystem` (your data package, problems, your relationship with them, their problems, and any recent direct conversation history). "
-            f"What would you say to them to initiate/continue the conversation? "
+            f"What would you say to them to continue the conversation? "
             f"Your response should be direct speech TO {listener_profile.get('FirstName', listener_username)}, in English. "
             f"Keep it concise, in character, and relevant to your current situation or relationship.[/SYSTEM]\n\n"
         )
