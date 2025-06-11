@@ -122,7 +122,7 @@
   },
   {
     "role": "user",
-    "content": "You are Consiglio. Your details are in `addSystem.responder_profile`. Cecilia's details are in `addSystem.initiator_profile`. You recently performed an activity involving Cecilia (details in `addSystem.triggering_activity_details`).\nCecilia just reacted to this by saying to you: 'Buongiorno Signore Consiglio, my business expansion into textiles requires more ducats than I currently earn – this is precisely why the decree must apply.' (this is also in `addSystem.their_reaction_to_activity`).\nYour relationship context with Cecilia is in `addSystem.relationship_between_us`.\nBased on ALL this context, what is your brief, natural reply TO Cecilia? Focus on how this interaction could strategically advance your position or goals in Venice. Keep it short, gameplay-focused, and conversational.",
+    "content": "You are Consiglio. Your details are in `addSystem.responder_profile`. Cecilia's details are in `addSystem.initiator_profile`. You recently performed an activity involving Cecilia (details in `addSystem.triggering_activity_details`).\nCecilia just reacted to this by saying to you: 'Buongiorno Signore Consiglio, my business expansion into textiles requires more ducats than I currently earn \u2013 this is precisely why the decree must apply.' (this is also in `addSystem.their_reaction_to_activity`).\nYour relationship context with Cecilia is in `addSystem.relationship_between_us`.\nBased on ALL this context, what is your brief, natural reply TO Cecilia? Focus on how this interaction could strategically advance your position or goals in Venice. Keep it short, gameplay-focused, and conversational.",
     "timestamp": "2025-06-11T06:57:04.970Z"
   },
   {
@@ -133,5 +133,15 @@
     "role": "user",
     "content": "You are Consiglio. Your details are in `addSystem.responder_profile`. Raffaele's details are in `addSystem.initiator_profile`. An activity involving you and Raffaele just occurred (details in `addSystem.triggering_activity_details`).\nYour relationship context with Raffaele is in `addSystem.relationship_between_us`.\nBased on ALL this context, what is your immediate and natural reaction or comment TO Raffaele? Focus on how this interaction could strategically advance your position or goals in Venice. Keep it short, gameplay-focused, and conversational.",
     "timestamp": "2025-06-11T19:28:24.422Z"
+  },
+  {
+    "role": "user",
+    "content": "\nAs a citizen in La Serenissima with social class Nobili, you need to decide on your next building investment.\n\nHere's your current situation:\n- You are considering 120 land(s).\n- You have 166 buildings.\n- Your current net income is 0 ducats.\n- You have 62624181.21403436 ducats available.\n\nWhen making your decision, carefully consider the information that you have at your disposition.\n\nAfter your analysis, provide your building decision in this JSON format:\n```json\n{\n  \"building_type\": \"type_of_building_to_build\",\n  \"land_id\": \"id_of_land_to_build_on\",\n  \"reason\": \"brief explanation of why this building\"\n}\n```\n\nIf you decide not to build anything at this time, return an empty JSON object:\n```json\n{}\n```\n",
+    "timestamp": "2025-06-11T20:24:02.259610"
+  },
+  {
+    "role": "assistant",
+    "content": "I apologize, but I encountered an error with Gemini: You exceeded your current quota. Go to https://aistudio.google.com/apikey to upgrade your quota tier, or submit a quota increase request in https://ai.google.dev/gemini-api/docs/rate-limits#request-rate-limit-increase. Please try again.",
+    "timestamp": "2025-06-11T20:24:03.462147"
   }
 ]
