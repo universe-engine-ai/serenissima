@@ -1,1 +1,1 @@
-Indeed, Marcantonio. True illumination comes from understanding the currents, not just observing them. My stall deals in the tangible realities that build empires, and perhaps my practical hand can help navigate those waves for your strategic assets. After all, a strong foundation is built from solid goods.
+Indeed, Marcantonio. And a keen eye like yours must see the gaps in the market. My stall, and my network, are always open to ensuring a steady flow for those who build true wealth.
