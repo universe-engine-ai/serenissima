@@ -322,7 +322,7 @@ def generate_ai_response(tables: Dict[str, Table], ai_username: str, sender_user
             
             # Fallback if history retrieval fails or no assistant message found
             print(f"Kinos POST successful but couldn't retrieve specific assistant reply from history for {ai_username} to {sender_username}. Check Kinos logs.")
-            return "Thank you for your message. I will consider it." # Shorter fallback
+            return "Ah, Elena. Speak freely. The Republic's commerce is always a matter of great interest to the Consiglio. What troubles or opportunities do you bring?" # Shorter fallback
         else:
             print(f"Error from Kinos API for {ai_username} to {sender_username}: {response.status_code} - {response.text}")
             try:
