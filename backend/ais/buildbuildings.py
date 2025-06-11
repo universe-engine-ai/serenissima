@@ -1624,6 +1624,11 @@ def process_ai_building_strategies(dry_run: bool = False, citizen_username_arg: 
         log_error(f"Exception traceback: {traceback.format_exc()}")
         return
     
+    # If not processing a specific citizen, randomize the order
+    if not citizen_username_arg:
+        random.shuffle(ai_citizens)
+        log_info(f"Randomized the processing order of {len(ai_citizens)} AI citizens.")
+
     # Get all buildings for reference (used to find existing buildings on lands)
     try:
         all_buildings = get_all_buildings(tables) # This fetches all buildings in the system
