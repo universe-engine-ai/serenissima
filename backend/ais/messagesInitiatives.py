@@ -6,6 +6,7 @@ import time
 import argparse # Ajout de argparse
 import math # Ajout de math
 import re # Ajout de re pour les expressions régulières
+import logging # Ajout de l'importation de logging
 from datetime import datetime, timedelta
 from typing import Dict, List, Optional, Any, Tuple # Ajout de Tuple
 
@@ -29,6 +30,9 @@ from backend.engine.utils.conversation_helper import (
     DEFAULT_TIMEOUT_SECONDS,
     persist_message # Ajout de l'importation de persist_message
 )
+
+# Initialize logger for this module
+log = logging.getLogger(__name__)
 
 # KinOS Configuration (mirrors conversation_helper.py and autonomouslyRun.py)
 KINOS_API_CHANNEL_BASE_URL = 'https://api.kinos-engine.ai/v2'
