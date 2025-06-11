@@ -1,0 +1,1 @@
+Biagio, your focus on supply stability is indeed a cornerstone of sound commerce. For my own endeavors, a stable foundation is equally crucial: a proper bottega. Do your extensive dealings, perhaps, reveal any suitable properties that might allow my art to truly flourish and contribute to Venice's economic tapestry?
