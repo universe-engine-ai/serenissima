@@ -662,7 +662,7 @@ def process_ai_messages(kinos_model_override_arg: Optional[str] = None, instant_
                             
                             # Remove quotes at the beginning and end if present
                             if cleaned_response.startswith('"') and cleaned_response.endswith('"'):
-                                cleaned_response = cleaned_1response[1:-1].strip()
+                                cleaned_response = cleaned_response[1:-1].strip()
                             
                             activity_params = {
                                 "receiverUsername": sender_username,
