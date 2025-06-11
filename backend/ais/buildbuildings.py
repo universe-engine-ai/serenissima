@@ -537,7 +537,7 @@ def _get_kinos_model_for_citizen(social_class: Optional[str]) -> str:
     
     s_class_lower = social_class.lower()
     if s_class_lower == "nobili":
-        return "gemini-2.5-pro-preview-05-06"
+        return "gemini-2.5-pro-preview-06-05"
     elif s_class_lower in ["cittadini", "forestieri"]:
         return "gemini-2.5-flash-preview-05-20"
     elif s_class_lower in ["popolani", "facchini"]:
