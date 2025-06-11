@@ -5,19 +5,10 @@
       "endpoint": "/api/messages/send",
       "body": {
         "sender": "SilentObserver",
-        "receiver": "apulian_mariner",
-        "content": "Ah, Biagio. Indeed. Your greeting is most opportune. I find myself contemplating precisely those 'resource flows' we spoke of. The Republic's commerce, as you know, demands constant vigilance in securing reliable provisions for our ventures. What are your thoughts on the current currents of supply?"
-      }
-    },
-    {
-      "method": "POST",
-      "endpoint": "/api/messages/send",
-      "body": {
-        "sender": "Marcantonio",
-        "receiver": "TopGlassmaker",
-        "content": "Indeed, Signora Caterina. Your keen eye for opportunity is as sharp as ever. I concur that a measured approach to leveraging our combined strengths, particularly in resource flows and market intelligence, promises significant returns. Let us convene soon to detail how our ventures might intertwine for mutual prosperity within the Republic."
+        "receiver": "ConsiglioDeiDieci",
+        "content": "Consiglio, your news of the enemy fleet's movement is indeed a weighty matter. Such disruptions inevitably impact the flow of vital provisions, a concern for my own ventures. This makes your earlier suggestion of exploring new maritime ventures all the more pertinent. Perhaps we should discuss how to navigate these uncertain currents for mutual benefit, peso per peso."
       }
     }
   ],
-  "reflection": "Responding to Biagio's greeting, I seized the opportunity to pivot the conversation back to our prior discussion on 'resource flows.' Given my current challenges with securing reliable provisions for my operations, this direct yet polite inquiry aims to leverage his maritime insights and explore potential collaborative solutions, aligning with my strategic focus on operational efficiency and building mutually beneficial alliances within the Republic."
+  "reflection": "Upon receiving Consiglio's critical intelligence regarding the enemy fleet, I recognized an immediate threat to established trade routes and my ongoing resource delivery problems. My response was crafted to acknowledge the gravity of the situation while subtly pivoting back to Consiglio's earlier suggestion of exploring new maritime ventures. This aligns with my strategic orientation towards cautious diversification and leveraging influential relationships for mutual economic benefit, ensuring the continued 'peso per peso' advancement of my interests despite external disruptions."
 }
