@@ -41,7 +41,7 @@ log = logging.getLogger(__name__)
 # KinOS Configuration (should match Compagno.tsx and autonomouslyRun.py where applicable)
 KINOS_API_CHANNEL_BASE_URL = 'https://api.kinos-engine.ai/v2'
 KINOS_BLUEPRINT_ID = 'serenissima-ai' # From autonomouslyRun.py
-DEFAULT_TIMEOUT_SECONDS = 120 # Increased timeout for KinOS calls
+DEFAULT_TIMEOUT_SECONDS = 300 # Increased timeout for KinOS calls to 5 minutes
 
 # --- Helper Functions (adapted from autonomouslyRun.py and Compagno.tsx) ---
 
