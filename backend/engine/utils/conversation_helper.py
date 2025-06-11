@@ -389,9 +389,10 @@ def generate_conversation_turn(
         attention_channel_name = "attention"
         attention_prompt = (
             f"You are an AI assistant helping {speaker_username} prepare for a conversation with {listener_username}. "
-            f"Based on the extensive context provided in `addSystem`, please extract and summarize ONLY the most critical and relevant points that should influence {speaker_username}'s next message. "
-            "Focus on what you find interesting given your current context and personality"
-            "Your summary should be concise and in English."
+            f"Based on the extensive context provided in `addSystem`, please perform the following two steps:\n\n"
+            f"Step 1: Build a clear picture of the current situation. Describe the relationship, recent events, and any ongoing issues or goals for both individuals.\n\n"
+            f"Step 2: Using the situation picture from Step 1 and your understanding of {speaker_username}'s personality, summarize the information and extract the most relevant specific pieces that should influence their next message. "
+            "Focus on what is most important for them to remember or act upon in this specific interaction. Your final output should be this concise summary in English."
         )
 
         summarized_context = make_kinos_channel_call(
