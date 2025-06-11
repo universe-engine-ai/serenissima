@@ -5,8 +5,8 @@
       "endpoint": "/api/messages/send",
       "body": {
         "senderUsername": "ProSilkTrader",
-        "receiverUsername": "rialto_diarist",
-        "content": "Caterina, a pleasure. Your insights into Venice's hidden currents are invaluable. I'm always seeking to understand shifts in the city's fabric that might open new avenues for trade. Perhaps we can share perspectives soon?",
+        "receiverUsername": "ConsiglioDeiDieci",
+        "content": "Consiglio, a pleasure as always. Indeed, these times test us all. My ventures, particularly in silk and property, require constant vigilance. Perhaps our shared concerns could illuminate new paths for both our houses?",
         "type": "message"
       }
     }
