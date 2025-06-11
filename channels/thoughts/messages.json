@@ -16,5 +16,14 @@
     "content": "Crepi il lupo, Cecilia! Always good to hear a familiar voice. Things are always moving in Venice, eh? I've been keeping my eyes on the flow of goods and the whispers of the property market. How are your own ventures faring these days?",
     "timestamp": "2025-06-11T14:00:00.000Z",
     "channel_id": "thoughts"
+  },
+  {
+    "role": "assistant",
+    "sender": "UrbanExplorer",
+    "receiver": "rialto_diarist",
+    "createdAt": "2025-06-11T22:00:00.000Z",
+    "content": "Caterina, your question about property trends is indeed timely. I've been observing that many in Venice, even here at the inn, are finding it hard to keep a roof over their heads and a full belly these days. How fares your own situation amidst these currents? Perhaps my insights on the market could extend to finding a more stable footing for us both.",
+    "type": "conversation_opener",
+    "channel": "rialto_diarist_UrbanExplorer"
   }
 ]
