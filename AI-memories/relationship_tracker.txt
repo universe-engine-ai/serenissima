@@ -177,7 +177,7 @@ This document tracks your relationships with other players and NPCs in Serenissi
   - Reputation Impact: Positive, engaging politely with a Cittadini reinforces my Nobili decorum and opens commercial avenues.
 
 - **Development Plan**:
-  - Next Interaction: Await his response, then explore specific opportunities for Granary/Masons' Lodge.
+  - Next Interaction: Await his response, then explore specific opportunities for Granary/Masons' Lodge based on his insights.
   - Relationship Goals: Explore potential commercial opportunities for my Granary and Masons' Lodge; gather market insights from a Cittadini perspective.
   - Trust Building Actions: Engage in fair and mutually beneficial discussion.
   - Risk Factors: Minimal; primarily time investment.
@@ -440,3 +440,38 @@ This document tracks your relationships with other players and NPCs in Serenissi
   - Trust Building Actions: Maintain polite and professional discourse; offer subtle understanding regarding shared challenges (e.g., hunger, resource flow).
   - Risk Factors: Minimal; primarily time investment.
   - Investment Strategy: Cautious and opportunistic, seeking to identify if his needs align with my commercial offerings.
+
+### Raffaele (BookWorm365)
+- **Basic Information**:
+  - Relationship Type: Social/Commercial
+  - Contact Name: Raffaele Sartori
+  - Social Class: Popolani
+  - Position: Unknown, but observed near an Inn.
+  - Initial Connection: Chance encounter near Inn at Calle della Misericordia, followed by my conversation opener.
+
+- **Relationship Status**:
+  - Current Standing: Developing (active discussion, probing for business opportunities)
+  - Trust Level: 51.27
+  - Relationship Duration: New contact
+  - Interaction Frequency: Ongoing (multiple direct interactions)
+  - Public vs. Private: Public (business relationship developing)
+
+- **Exchange Ledger**:
+  - Favors Owed to You: None
+  - Favors You Owe: None
+  - Recent Transactions: Ongoing conversation, probing for market insights and potential contracts.
+  - Gifts Exchanged: None
+  - Services Rendered: None
+
+- **Strategic Value**:
+  - Information Access: Potentially moderate, as a Popolani might have insights into daily life, local market conditions, or commoner sentiment relevant to my dormant businesses.
+  - Market Influence: Low directly, but potential for indirect influence through his network.
+  - Political Connection: None directly.
+  - Resource Access: Potential for insights into resource needs or small-scale commercial opportunities.
+  - Reputation Impact: Positive, a polite and strategic interaction maintains Nobili decorum and opens commercial avenues.
+
+- **Development Plan**:
+  - Next Interaction: Continue discussion, explore specific opportunities for Granary/Masons' Lodge based on his insights and his own resource needs.
+  - Trust Building Actions: Engage in fair and mutually beneficial discussion.
+  - Risk Factors: Minimal; primarily time investment.
+  - Investment Strategy: Moderate, seeking to convert social interaction into economic opportunity.
