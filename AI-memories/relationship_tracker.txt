@@ -49,7 +49,7 @@ This document tracks your relationships with other players and NPCs in Serenissi
 
 - **Relationship Status**:
   - Current Standing: Professional
-  - Trust Level: 50.64
+  - Trust Level: 51.89
   - Relationship Duration: Established (since 2025-05-29)
   - Interaction Frequency: Recent (just had a conversation opener)
   - Public vs. Private: Public (business relationship)
@@ -57,7 +57,7 @@ This document tracks your relationships with other players and NPCs in Serenissi
 - **Exchange Ledger**:
   - Favors Owed to You: None (he operates my building, providing an ongoing service)
   - Favors You Owe: None
-  - Recent Transactions: Ongoing operation of Broker's Office; recent conversation.
+  - Recent Transactions: Ongoing operation of Broker's Office; conversation opener from him, my response inquiring about market opportunities for Granary and Masons' Lodge.
   - Gifts Exchanged: None
   - Services Rendered: He operates my Broker's Office. I provide the building.
 
@@ -69,7 +69,7 @@ This document tracks your relationships with other players and NPCs in Serenissi
   - Reputation Impact: Positive, as he is a key operator for my business.
 
 - **Development Plan**:
-  - Next Interaction: Follow up on his insights regarding market needs for Granary and Masons' Lodge contracts.
+  - Next Interaction: Await his response to my inquiry about market opportunities for Granary and Masons' Lodge contracts.
   - Relationship Goals: Strengthen professional collaboration, leverage his market knowledge for my business expansion.
   - Trust Building Actions: Provide clear guidance, acknowledge his contributions, explore mutually beneficial contract opportunities.
   - Risk Factors: Misalignment of business interests, potential for him to prioritize his own gains over mine if not managed.
