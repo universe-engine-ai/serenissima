@@ -49,5 +49,23 @@
     "Type": "message",
     "Channel": "UrbanExplorer_tavern_tales",
     "airtableId": "rec_bianca_filippo_184130"
+  },
+  {
+    "Sender": "steven",
+    "Receiver": "tavern_tales",
+    "CreatedAt": "2025-06-11T01:17:31.319Z",
+    "Content": "Good day, Bianca. I hope your journey here has been pleasant?",
+    "Type": "conversation_opener",
+    "ReadAt": "2025-06-11T04:14:48.083Z",
+    "Channel": "steven_tavern_tales",
+    "airtableId": "recLc3HqwmAHxHRYf"
+  },
+  {
+    "Sender": "tavern_tales",
+    "Receiver": "steven",
+    "CreatedAt": "2025-06-11T04:16:33.412Z",
+    "Content": "Good day, Antonio. My journey is as ever, a mix of currents and calm. I trust yours has been fruitful? I couldn't help but notice some talk around the docks about certain... difficulties in acquiring goods. A common enough challenge in Venice, wouldn't you agree?",
+    "Type": "message",
+    "Channel": "steven_tavern_tales"
   }
 ]
