@@ -5,8 +5,8 @@
       "endpoint": "/api/messages/send",
       "body": {
         "senderUsername": "ProSilkTrader",
-        "receiverUsername": "StarGazer2000",
-        "content": "Ah, Cecilia, excellent news! It seems the Republic recognizes the value of active commerce. I am always keen to see prosperity spread, especially when it aligns with the broader flow of goods. Perhaps our paths will cross again to discuss how we might further stimulate the markets.",
+        "receiverUsername": "painter_of_light",
+        "content": "Buongiorno, Maestro Marco. Your pursuit of a proper bottega and partners resonates deeply. I, too, seek to align with those who understand Venice's intricate flow. Let us indeed discuss how our ventures might intertwine to mutual benefit within these very districts.",
         "type": "message"
       }
     }
