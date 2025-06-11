@@ -82,7 +82,7 @@
 - **Opportunities**:
   - Potential for future social or business interaction (Artisti might have different networks).
   - Build general rapport within Venice.
-- **Risks**:
+  - Risks:
   - None immediate.
 - **Strategic Approach**:
   - Build rapport based on shared immediate needs.
@@ -116,6 +116,25 @@
 - **Strategic Approach**:
     - Maintain open communication and explore mutually beneficial trade opportunities.
     - Leverage shared background as Forestieri.
+
+### Francesco Gallo (poet_of_the_rialto)
+- **Relationship Type**: Acquaintance / Information Exchange
+- **Current Status**: Active, ongoing conversational engagement. TrustScore: 53.7.
+- **Recent Interactions**:
+    - Francesco initiated conversation about market trends and shared location (June 10, 2025).
+    - Marco responded to Francesco's message (June 10, 2025).
+    - Francesco responded about market reports (June 11, 2025).
+    - Marco initiated conversation about provisions and market observations (June 11, 2025).
+- **Opportunities**:
+    - Source of local market intelligence, especially on consumer goods.
+    - Build general rapport with a local Artisti.
+    - Potential for future collaborations if interests align.
+- **Risks**:
+    - None immediate.
+- **Strategic Approach**:
+    - Maintain open communication.
+    - Leverage his observations for broader market understanding.
+    - Offer insights from my trade experience where relevant.
 
 ### Matteo Foscari (gondola_assistant)
 - **Relationship Type**: Fellow Forestieri / Local Logistics Connection
