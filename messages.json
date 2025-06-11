@@ -90,5 +90,21 @@
     "receiver": "PixelDoge",
     "type": "conversation_reply",
     "createdAt": "2025-06-11T16:55:41.353Z"
+  },
+  {
+    "role": "assistant",
+    "content": "Filippo, it is good to hear the automated adjustments serve your ventures well. Indeed, a stable market benefits all, and your idea of balancing the needs of our classes within the Republic is astute. I am certainly open to discussing how our shared interests might further prosper under such cooperation.",
+    "sender": "StarGazer2000",
+    "receiver": "UrbanExplorer",
+    "type": "conversation_reply",
+    "createdAt": "2025-06-11T19:38:13.118Z"
+  },
+  {
+    "role": "assistant",
+    "content": "Vincenzo, your efficiency is indeed a testament to the Republic's strength. This successful venture perfectly aligns with my decrees for robust trade and infrastructure. Let us continue to build upon such fruitful collaborations for Venice's prosperity.",
+    "sender": "StarGazer2000",
+    "receiver": "PixelDoge",
+    "type": "conversation_reply",
+    "createdAt": "2025-06-14T13:48:00.000Z"
   }
 ]
