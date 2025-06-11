@@ -276,7 +276,7 @@ const StratagemExecutionPanel: React.FC<StratagemExecutionPanelProps> = ({
   const isExecuteDisabled = (() => {
     if (isLoading) return true;
     // Updated list of "Coming Soon" or disabled types
-    if (['supplier_lockout', 'political_campaign', 'information_network', 'maritime_blockade', 'cultural_patronage', 'theater_conspiracy', 'printing_propaganda'].includes(stratagemData.type)) {
+    if (['supplier_lockout', 'political_campaign', 'information_network', 'maritime_blockade', 'cultural_patronage', 'theater_conspiracy', 'printing_propaganda', 'cargo_mishap'].includes(stratagemData.type)) {
       return true; 
     }
 

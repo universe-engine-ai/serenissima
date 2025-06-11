@@ -47,7 +47,8 @@ from backend.engine.stratagem_processors import (
     process_information_network_stratagem,
     process_maritime_blockade_stratagem,
     process_theater_conspiracy_stratagem,
-    process_printing_propaganda_stratagem
+    process_printing_propaganda_stratagem,
+    process_cargo_mishap_stratagem
     # Import other stratagem processors here
 )
 
@@ -129,7 +130,8 @@ STRATAGEM_PROCESSORS = {
     "information_network": process_information_network_stratagem,
     "maritime_blockade": process_maritime_blockade_stratagem,
     "theater_conspiracy": process_theater_conspiracy_stratagem,
-    "printing_propaganda": process_printing_propaganda_stratagem
+    "printing_propaganda": process_printing_propaganda_stratagem,
+    "cargo_mishap": process_cargo_mishap_stratagem
     # Add other stratagem type to processor mappings here
 }
 

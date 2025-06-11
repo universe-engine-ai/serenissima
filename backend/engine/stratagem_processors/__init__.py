@@ -11,4 +11,5 @@ from .information_network_stratagem_processor import process as process_informat
 from .maritime_blockade_stratagem_processor import process as process_maritime_blockade_stratagem
 from .theater_conspiracy_stratagem_processor import process as process_theater_conspiracy_stratagem
 from .printing_propaganda_stratagem_processor import process as process_printing_propaganda_stratagem
+from .cargo_mishap_stratagem_processor import process as process_cargo_mishap_stratagem
 # Import other stratagem processors here

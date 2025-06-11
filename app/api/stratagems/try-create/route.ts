@@ -69,6 +69,10 @@ export async function POST(request: Request) {
         `TargetCompetitor: ${stratagemDetails?.targetCompetitor}`,
         `PropagandaTheme: ${stratagemDetails?.propagandaTheme}`
       );
+    } else if (stratagemType === 'cargo_mishap') {
+      console.log(`[API /stratagems/try-create] Processing 'cargo_mishap' stratagem with parameters:`,
+        `TargetContractId: ${stratagemDetails?.targetContractId}`
+      );
     }
 
     let parsedPythonEngineUrl: URL;

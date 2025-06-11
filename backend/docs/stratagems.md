@@ -726,3 +726,55 @@ This would make NLR attempt to stage a play at the "theater_grand_canal_01" that
 }
 ```
 This would make NLR attempt to use the "printing_house_rialto_01" to produce and distribute propaganda about the poor quality of BasstheWhale's goods for one week.
+
+### 13. Cargo "Mishap" (Coming Soon)
+
+-   **Type**: `cargo_mishap`
+-   **Purpose**: To sabotage a competitor's shipment by arranging for their goods to "disappear" while in transit.
+-   **Category**: `economic_warfare`
+-   **Creator**: (To be created: `backend/engine/stratagem_creators/cargo_mishap_stratagem_creator.py`)
+-   **Processor**: (To be created: `backend/engine/stratagem_processors/cargo_mishap_stratagem_processor.py`)
+
+#### Parameters for Creation (`stratagemDetails` in API request):
+
+-   `targetContractId` (string, required): The `ContractId` of the specific `public_sell` or `import` contract to target.
+-   `name` (string, optional): Custom name for the stratagem.
+-   `description` (string, optional): Custom description.
+-   `notes` (string, optional): Custom notes.
+-   `durationHours` (integer, optional): The window of opportunity for the mishap to occur. Defaults to 24 hours.
+
+#### How it Works (Conceptual):
+
+1.  **Creation**:
+    -   The `cargo_mishap_stratagem_creator.py` validates parameters.
+    -   It creates a new record in the `STRATAGEMS` table with `Status: "active"`, `Category: "economic_warfare"`, an influence cost of 8, and sets `ExpiresAt`.
+
+2.  **Processing (Conceptual for "Coming Soon")**:
+    -   `processStratagems.py` picks up the active "cargo_mishap" stratagem.
+    -   `cargo_mishap_stratagem_processor.py` is invoked.
+    -   **Target Interception**:
+        -   The processor identifies any active `fetch_resource` or `deliver_resource_batch` activities associated with the `targetContractId`.
+        -   It simulates an interception by creating a `problem` record of type `cargo_lost` for the citizen performing the transport activity.
+    -   **Entity Changes & Effects**:
+        -   **RESOURCES**: The `RESOURCES` being carried by the transporter are deleted from their inventory.
+        -   **CONTRACTS**: The `targetContractId` may fail to be fulfilled, leading to penalties or cancellation.
+        -   **RELATIONSHIPS**: The competitor (seller) may suffer relationship damage with their customer (buyer) due to the failed delivery (-5 to -10 trust).
+        -   **RISK**: There is a small chance that the `ExecutedBy` citizen's involvement is discovered, leading to criminal charges (`problem` of type `criminal_accusation`) and significant reputation damage with the target and the authorities.
+    -   **Status & Notes**:
+        -   The stratagem is marked `executed` after the mishap occurs.
+        -   Notes would track the intercepted activity and the outcome.
+
+#### Example API Request to `POST /api/stratagems/try-create`:
+
+```json
+{
+  "citizenUsername": "NLR",
+  "stratagemType": "cargo_mishap",
+  "stratagemDetails": {
+    "targetContractId": "contract-public-sell-bassthewhale-timber-xyz",
+    "durationHours": 24,
+    "name": "Timber Shipment 'Mishap'"
+  }
+}
+```
+This would make NLR attempt to sabotage a specific timber shipment contract belonging to BasstheWhale within the next 24 hours.
