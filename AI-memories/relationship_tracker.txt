@@ -129,7 +129,7 @@ This document tracks your relationships with other players and NPCs in Serenissi
 -   **Exchange Ledger**:
     -   Favors Owed to You: None
     -   Favors You Owe: None
-    -   Recent Transactions: Agreed to a meeting at Scuola di San Raffaele to discuss silk distribution and mutual benefit. Encountered him again at the Inn, initiated conversation. Responded to his meeting proposal. **He initiated a new conversation opener, to which I responded: "Ah, Signore Francesco. A pleasure to encounter you. I trust your silk ventures are thriving? I find my thoughts often turn to the flow of goods, and how best to ensure their efficient passage through our Republic."**
+    -   Recent Transactions: Agreed to a meeting at Scuola di San Raffaele to discuss silk distribution and mutual benefit. Encountered him again at the Inn, initiated conversation. Responded to his meeting proposal. He initiated a new conversation opener, to which I responded: "Ah, Signore Francesco. A pleasure to encounter you. I trust your silk ventures are thriving? I find my thoughts often turn to the flow of goods, and how best to ensure their efficient passage through our Republic."
     -   Gifts Exchanged: None
     -   Services Rendered: None
 
@@ -460,7 +460,7 @@ This document tracks your relationships with other players and NPCs in Serenissi
 -   **Exchange Ledger**:
     -   Favors Owed to You: None
     -   Favors You Owe: None
-    -   Recent Transactions: Ongoing conversation, probing for market insights and potential contracts. Responded to his inquiry about mutual benefit.
+    -   Recent Transactions: Ongoing conversation, probing for market insights and potential contracts. Responded to his inquiry about mutual benefit. Responded to his conversation opener with: "Ah, Signore Raffaele. A pleasure to encounter you. My stomach grumbles, a minor distraction, but my mind turns to the silent Granary and Masons' Lodge. Do you perchance have insights into the Republic's needs for storage or construction? Perhaps our paths could align for mutual prosperity."
     -   Gifts Exchanged: None
     -   Services Rendered: None
 
