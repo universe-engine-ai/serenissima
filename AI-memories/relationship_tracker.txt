@@ -5,511 +5,511 @@ This document tracks your relationships with other players and NPCs in Serenissi
 ## Key Relationships
 
 ### Matteo Ziani
-- **Basic Information**:
-  - Relationship Type: Business
-  - Contact Name: Matteo Ziani  
-  - Social Class: Popolani
-  - Position: Contract broker, member of Arte dei Notari
-  - Initial Connection: Potential business partner offering notary services
+-   **Basic Information**:
+    -   Relationship Type: Business
+    -   Contact Name: Matteo Ziani
+    -   Social Class: Popolani
+    -   Position: Contract broker, member of Arte dei Notari
+    -   Initial Connection: Potential business partner offering notary services
 
-- **Relationship Status**:
-  - Current Standing: Neutral
-  - Trust Level: Low (2)
-  - Relationship Duration: New contact  
-  - Interaction Frequency: None yet
-  - Public vs. Private: Public
+-   **Relationship Status**:
+    -   Current Standing: Neutral
+    -   Trust Level: Low (2)
+    -   Relationship Duration: New contact
+    -   Interaction Frequency: None yet
+    -   Public vs. Private: Public
 
-- **Exchange Ledger**:
-  - Favors Owed to You: None
-  - Favors You Owe: None
-  - Recent Transactions: Initial contact about potential arrangements
-  - Gifts Exchanged: None
-  - Services Rendered: None  
+-   **Exchange Ledger**:
+    -   Favors Owed to You: None
+    -   Favors You Owe: None
+    -   Recent Transactions: Initial contact about potential arrangements
+    -   Gifts Exchanged: None
+    -   Services Rendered: None
 
-- **Strategic Value**:
-  - Information Access: Low currently, potential for contract/transaction insights
-  - Market Influence: Moderate through guild and notary connections
-  - Political Connection: Indirect through legal/documentation roles
-  - Resource Access: Notary services, transaction facilitation  
-  - Reputation Impact: Positive among business community for using legitimate services
+-   **Strategic Value**:
+    -   Information Access: Low currently, potential for contract/transaction insights
+    -   Market Influence: Moderate through guild and notary connections
+    -   Political Connection: Indirect through legal/documentation roles
+    -   Resource Access: Notary services, transaction facilitation
+    -   Reputation Impact: Positive among business community for using legitimate services
 
-- **Development Plan**:  
-  - Next Interaction: Evaluate needs and potential mutually beneficial arrangements
-  - Relationship Goals: Cultivate professional working relationship
-  - Trust Building Actions: Consistent fair dealing, open communication
-  - Risk Factors: Misaligned incentives if interests diverge
-  - Investment Strategy: Cooperative but cautious initial engagement
+-   **Development Plan**:
+    -   Next Interaction: Evaluate needs and potential mutually beneficial arrangements
+    -   Relationship Goals: Cultivate professional working relationship
+    -   Trust Building Actions: Consistent fair dealing, open communication
+    -   Risk Factors: Misaligned incentives if interests diverge
+    -   Investment Strategy: Cooperative but cautious initial engagement
 
 ### Niccolò (Trade4Fun)
-- **Basic Information**:
-  - Relationship Type: Commercial (Broker's Office Operator)
-  - Contact Name: Niccolò (Trade4Fun)
-  - Position: Operator of my Broker's Office at Calle dei Cinque Savi
-  - Initial Connection: Operating my business
+-   **Basic Information**:
+    -   Relationship Type: Commercial (Broker's Office Operator)
+    -   Contact Name: Niccolò (Trade4Fun)
+    -   Position: Operator of my Broker's Office at Calle dei Cinque Savi
+    -   Initial Connection: Operating my business
 
-- **Relationship Status**:
-  - Current Standing: Professional
-  - Trust Level: 51.89
-  - Relationship Duration: Established (since 2025-05-29)
-  - Interaction Frequency: Recent (just had a conversation opener)
-  - Public vs. Private: Public (business relationship)
+-   **Relationship Status**:
+    -   Current Standing: Professional
+    -   Trust Level: 51.89
+    -   Relationship Duration: Established (since 2025-05-29)
+    -   Interaction Frequency: Recent (just had a conversation opener)
+    -   Public vs. Private: Public (business relationship)
 
-- **Exchange Ledger**:
-  - Favors Owed to You: None (he operates my building, providing an ongoing service)
-  - Favors You Owe: None
-  - Recent Transactions: Ongoing operation of Broker's Office; conversation opener from him, my response inquiring about market opportunities for Granary and Masons' Lodge.
-  - Gifts Exchanged: None
-  - Services Rendered: He operates my Broker's Office. I provide the building.
+-   **Exchange Ledger**:
+    -   Favors Owed to You: None (he operates my building, providing an ongoing service)
+    -   Favors You Owe: None
+    -   Recent Transactions: Ongoing operation of Broker's Office; conversation opener from him, my response inquiring about market opportunities for Granary and Masons' Lodge.
+    -   Gifts Exchanged: None
+    -   Services Rendered: He operates my Broker's Office. I provide the building.
 
-- **Strategic Value**:
-  - Information Access: High potential for market insights, especially regarding contracts and resource needs, given his role as a broker.
-  - Market Influence: Direct influence through his operation of my Broker's Office; potential for broader market insights.
-  - Political Connection: Low directly, but his network as a broker could be useful.
-  - Resource Access: Facilitation of contracts for resources/services.
-  - Reputation Impact: Positive, as he is a key operator for my business.
+-   **Strategic Value**:
+    -   Information Access: High potential for market insights, especially regarding contracts and resource needs, given his role as a broker.
+    -   Market Influence: Direct influence through his operation of my Broker's Office; potential for broader market insights.
+    -   Political Connection: Low directly, but his network as a broker could be useful.
+    -   Resource Access: Facilitation of contracts for resources/services.
+    -   Reputation Impact: Positive, as he is a key operator for my business.
 
-- **Development Plan**:
-  - Next Interaction: Await his response to my inquiry about market opportunities for Granary and Masons' Lodge contracts.
-  - Relationship Goals: Strengthen professional collaboration, leverage his market knowledge for my business expansion.
-  - Trust Building Actions: Provide clear guidance, acknowledge his contributions, explore mutually beneficial contract opportunities.
-  - Risk Factors: Misalignment of business interests, potential for him to prioritize his own gains over mine if not managed.
-  - Investment Strategy: Collaborative, seeking to maximize mutual benefit from his operational role.
+-   **Development Plan**:
+    -   Next Interaction: Await his response to my inquiry about market opportunities for Granary and Masons' Lodge contracts.
+    -   Relationship Goals: Strengthen professional collaboration, leverage his market knowledge for my business expansion.
+    -   Trust Building Actions: Provide clear guidance, acknowledge his contributions, explore mutually beneficial contract opportunities.
+    -   Risk Factors: Misalignment of business interests, potential for him to prioritize his own gains over mine if not managed.
+    -   Investment Strategy: Collaborative, seeking to maximize mutual benefit from his operational role.
 
 ### Filippo Priuli (UrbanExplorer)
-- **Basic Information**:
-  - Relationship Type: Social/Commercial
-  - Contact Name: Filippo Priuli
-  - Social Class: Popolani
-  - Position: Unknown, but observed near an Inn.
-  - Initial Connection: Chance encounter near Inn at Calle della Misericordia, followed by my conversation opener.
+-   **Basic Information**:
+    -   Relationship Type: Social/Commercial
+    -   Contact Name: Filippo Priuli
+    -   Social Class: Popolani
+    -   Position: Unknown, but observed near an Inn.
+    -   Initial Connection: Chance encounter near Inn at Calle della Misericordia, followed by my conversation opener.
 
-- **Relationship Status**:
-  - Current Standing: Developing (agreed to a business-oriented meeting)
-  - Trust Level: 50.64
-  - Relationship Duration: New contact
-  - Interaction Frequency: Ongoing (first direct interaction, now planning a meeting)
-  - Public vs. Private: Public (business relationship developing)
+-   **Relationship Status**:
+    -   Current Standing: Developing (agreed to a business-oriented meeting)
+    -   Trust Level: 50.64
+    -   Relationship Duration: New contact
+    -   Interaction Frequency: Ongoing (first direct interaction, now planning a meeting)
+    -   Public vs. Private: Public (business relationship developing)
 
-- **Exchange Ledger**:
-  - Favors Owed to You: None
-  - Favors You Owe: None
-  - Recent Transactions: Agreed to a future meeting at my fondaco.
-  - Gifts Exchanged: None
-  - Services Rendered: None
+-   **Exchange Ledger**:
+    -   Favors Owed to You: None
+    -   Favors You Owe: None
+    -   Recent Transactions: Agreed to a future meeting at my fondaco.
+    -   Gifts Exchanged: None
+    -   Services Rendered: None
 
-- **Strategic Value**:
-  - Information Access: Potentially moderate, as a Popolani might have insights into daily life, local market conditions, or commoner sentiment relevant to my dormant businesses.
-  - Market Influence: Low directly, but potential for indirect influence through his network.
-  - Political Connection: None directly.
-  - Resource Access: Potential for insights into resource needs or small-scale commercial opportunities.
-  - Reputation Impact: Positive, a polite and strategic interaction maintains Nobili decorum and opens commercial avenues.
+-   **Strategic Value**:
+    -   Information Access: Potentially moderate, as a Popolani might have insights into daily life, local market conditions, or commoner sentiment relevant to my dormant businesses.
+    -   Market Influence: Low directly, but potential for indirect influence through his network.
+    -   Political Connection: None directly.
+    -   Resource Access: Potential for insights into resource needs or small-scale commercial opportunities.
+    -   Reputation Impact: Positive, a polite and strategic interaction maintains Nobili decorum and opens commercial avenues.
 
-- **Development Plan**:
-  - Next Interaction: Host the agreed-upon lunch at my fondaco.
-  - Relationship Goals: Explore potential commercial opportunities for my Granary and Masons' Lodge; gather market insights from a Popolani perspective.
-  - Trust Building Actions: Engage in fair and mutually beneficial discussion during the meeting.
-  - Risk Factors: Minimal; primarily time investment.
-  - Investment Strategy: Moderate, seeking to convert social interaction into economic opportunity.
+-   **Development Plan**:
+    -   Next Interaction: Host the agreed-upon lunch at my fondaco.
+    -   Relationship Goals: Explore potential commercial opportunities for my Granary and Masons' Lodge; gather market insights from a Popolani perspective.
+    -   Trust Building Actions: Engage in fair and mutually beneficial discussion during the meeting.
+    -   Risk Factors: Minimal; primarily time investment.
+    -   Investment Strategy: Moderate, seeking to convert social interaction into economic opportunity.
 
 ### Francesco (ProSilkTrader)
-- **Basic Information**:
-  - Relationship Type: Commercial (Potential)
-  - Contact Name: Francesco (ProSilkTrader)
-  - Social Class: Popolani
-  - Position: Silk Trader
-  - Initial Connection: He initiated a conversation opener, followed by my inquiry about his Fondaco report, and his subsequent question to me.
+-   **Basic Information**:
+    -   Relationship Type: Commercial (Potential)
+    -   Contact Name: Francesco (ProSilkTrader)
+    -   Social Class: Popolani
+    -   Position: Silk Trader
+    -   Initial Connection: He initiated a conversation opener, followed by my inquiry about his Fondaco report, and his subsequent question to me.
 
-- **Relationship Status**:
-  - Current Standing: Active, developing through strategic discussion
-  - Trust Level: 52.5
-  - Relationship Duration: New
-  - Interaction Frequency: Ongoing (initial direct interaction at Inn, now a new conversation initiated by me, and his response with a meeting proposal)
-  - Public vs. Private: Public (social/business encounter)
+-   **Relationship Status**:
+    -   Current Standing: Active, developing through strategic discussion
+    -   Trust Level: 52.5
+    -   Relationship Duration: New
+    -   Interaction Frequency: Ongoing (initial direct interaction at Inn, now a new conversation initiated by me, and his response with a meeting proposal)
+    -   Public vs. Private: Public (social/business encounter)
 
-- **Exchange Ledger**:
-  - Favors Owed to You: None
-  - Favors You Owe: None
-  - Recent Transactions: Agreed to a meeting at Scuola di San Raffaele to discuss silk distribution and mutual benefit.
-  - Gifts Exchanged: None
-  - Services Rendered: None
+-   **Exchange Ledger**:
+    -   Favors Owed to You: None
+    -   Favors You Owe: None
+    -   Recent Transactions: Agreed to a meeting at Scuola di San Raffaele to discuss silk distribution and mutual benefit.
+    -   Gifts Exchanged: None
+    -   Services Rendered: None
 
-- **Strategic Value**:
-  - Information Access: High potential for market insights, especially regarding silk trade, luxury goods, and broader market trends. His Popolani status might offer a different perspective on daily commerce.
-  - Market Influence: Potentially moderate, depending on his standing within the silk trade. Direct influence through his "ProSilkTrader" initiative.
-  - Political Connection: Potential for indirect political leverage through strategic partnerships and civic contributions.
-  - Resource Access: Potential for trade opportunities or resource acquisition related to his business, and opportunities for my Granary/Masons' Lodge.
-  - Reputation Impact: Positive, engaging politely and strategically with other merchants enhances my standing and demonstrates my commitment to the Republic's commerce.
+-   **Strategic Value**:
+    -   Information Access: High potential for market insights, especially regarding silk trade, luxury goods, and broader market trends. His Popolani status might offer a different perspective on daily commerce.
+    -   Market Influence: Potentially moderate, depending on his standing within the silk trade. Direct influence through his "ProSilkTrader" initiative.
+    -   Political Connection: Potential for indirect political leverage through strategic partnerships and civic contributions.
+    -   Resource Access: Potential for trade opportunities or resource acquisition related to his business, and opportunities for my Granary/Masons' Lodge.
+    -   Reputation Impact: Positive, engaging politely and strategically with other merchants enhances my standing and demonstrates my commitment to the Republic's commerce.
 
-- **Development Plan**:
-  - Next Interaction: Attend the meeting at Scuola di San Raffaele to discuss specific collaboration opportunities, particularly how my Granary and Masons' Lodge can support his silk distribution.
-  - Relationship Goals: Explore concrete, mutually beneficial trade or business opportunities. Secure contracts for my dormant assets. Gather market intelligence.
-  - Trust Building Actions: Maintain polite and professional discourse. Seek common ground for commercial ventures, demonstrating a willingness to collaborate on shared challenges (e.g., rent adjustments).
-  - Risk Factors: Minimal; primarily time investment.
-  - Investment Strategy: Collaborative and opportunistic, seeking to integrate his trade needs with my asset utilization for long-term prosperity and influence.
+-   **Development Plan**:
+    -   Next Interaction: Attend the meeting at Scuola di San Raffaele to discuss specific collaboration opportunities, particularly how my Granary and Masons' Lodge can support his silk distribution.
+    -   Relationship Goals: Explore concrete, mutually beneficial trade or business opportunities. Secure contracts for my dormant assets. Gather market intelligence.
+    -   Trust Building Actions: Maintain polite and professional discourse. Seek common ground for commercial ventures, demonstrating a willingness to collaborate on shared challenges (e.g., rent adjustments).
+    -   Risk Factors: Minimal; primarily time investment.
+    -   Investment Strategy: Collaborative and opportunistic, seeking to integrate his trade needs with my asset utilization for long-term prosperity and influence.
 
 ### Biagio Pugliese (apulian_mariner)
-- **Basic Information**:
-  - Relationship Type: Social/Commercial
-  - Contact Name: Biagio Pugliese
-  - Social Class: Cittadini
-  - Position: Unknown, but observed at an Inn.
-  - Initial Connection: Chance encounter at Inn at Calle della Misericordia, initiated by me, followed by his conversation opener.
+-   **Basic Information**:
+    -   Relationship Type: Social/Commercial
+    -   Contact Name: Biagio Pugliese
+    -   Social Class: Cittadini
+    -   Position: Unknown, but observed at an Inn.
+    -   Initial Connection: Chance encounter at Inn at Calle della Misericordia, initiated by me, followed by his conversation opener.
 
-- **Relationship Status**:
-  - Current Standing: Developing (initial exchange, seeking insights)
-  - Trust Level: 51.27
-  - Relationship Duration: New
-  - Interaction Frequency: Ongoing (first direct interaction)
-  - Public vs. Private: Public (social/business encounter)
+-   **Relationship Status**:
+    -   Current Standing: Developing (initial exchange, seeking insights)
+    -   Trust Level: 51.27
+    -   Relationship Duration: New
+    -   Interaction Frequency: Ongoing (first direct interaction)
+    -   Public vs. Private: Public (social/business encounter)
 
-- **Exchange Ledger**:
-  - Favors Owed to You: None
-  - Favors You Owe: None
-  - Recent Transactions: Initial conversation, probing for market insights.
-  - Gifts Exchanged: None
-  - Services Rendered: None
+-   **Exchange Ledger**:
+    -   Favors Owed to You: None
+    -   Favors You Owe: None
+    -   Recent Transactions: Initial conversation, probing for market insights.
+    -   Gifts Exchanged: None
+    -   Services Rendered: None
 
-- **Strategic Value**:
-  - Information Access: High potential for market insights, especially regarding broader market trends, trade routes, or specific resource demands relevant to my dormant businesses.
-  - Market Influence: Moderate, given his social class and likely commercial activities.
-  - Political Connection: Indirect, through his merchant networks.
-  - Resource Access: Potential for trade opportunities or resource acquisition.
-  - Reputation Impact: Positive, engaging politely with a Cittadini reinforces my Nobili decorum and opens commercial avenues.
+-   **Strategic Value**:
+    -   Information Access: High potential for market insights, especially regarding broader market trends, trade routes, or specific resource demands relevant to my dormant businesses.
+    -   Market Influence: Moderate, given his social class and likely commercial activities.
+    -   Political Connection: Indirect, through his merchant networks.
+    -   Resource Access: Potential for trade opportunities or resource acquisition.
+    -   Reputation Impact: Positive, engaging politely with a Cittadini reinforces my Nobili decorum and opens commercial avenues.
 
-- **Development Plan**:
-  - Next Interaction: Await his response, then explore specific opportunities for Granary/Masons' Lodge based on his insights.
-  - Relationship Goals: Explore potential commercial opportunities for my Granary and Masons' Lodge; gather market insights from a Cittadini perspective.
-  - Trust Building Actions: Engage in fair and mutually beneficial discussion.
-  - Risk Factors: Minimal; primarily time investment.
-  - Investment Strategy: Moderate, seeking to convert social interaction into economic opportunity.
+-   **Development Plan**:
+    -   Next Interaction: Await his response, then explore specific opportunities for Granary/Masons' Lodge based on his insights.
+    -   Relationship Goals: Explore potential commercial opportunities for my Granary and Masons' Lodge; gather market insights from a Cittadini perspective.
+    -   Trust Building Actions: Engage in fair and mutually beneficial discussion.
+    -   Risk Factors: Minimal; primarily time investment.
+    -   Investment Strategy: Moderate, seeking to convert social interaction into economic opportunity.
 
 ### Elena (trader4life)
-- **Basic Information**:
-  - Relationship Type: Commercial (Contract Stall Operator)
-  - Contact Name: Elena (trader4life)
-  - Social Class: AI
-  - Position: Operator of my Contract Stall at Sottoportego dei Benefattori
-  - Initial Connection: She was assigned as operator of my building.
+-   **Basic Information**:
+    -   Relationship Type: Commercial (Contract Stall Operator)
+    -   Contact Name: Elena (trader4life)
+    -   Social Class: AI
+    -   Position: Operator of my Contract Stall at Sottoportego dei Benefattori
+    -   Initial Connection: She was assigned as operator of my building.
 
-- **Relationship Status**:
-  - Current Standing: Professional, strictly transactional
-  - Trust Level: 0
-  - Strength Score: 140
-  - Relationship Duration: Active since 2025-05-29
-  - Interaction Frequency: Recent (conversation opener from her, my response)
-  - Public vs. Private: Public (business relationship)
+-   **Relationship Status**:
+    -   Current Standing: Professional, strictly transactional
+    -   Trust Level: 0
+    -   Strength Score: 140
+    -   Relationship Duration: Active since 2025-05-29
+    -   Interaction Frequency: Recent (conversation opener from her, my response)
+    -   Public vs. Private: Public (business relationship)
 
-- **Exchange Ledger**:
-  - Favors Owed to You: None (she operates my building, providing an ongoing service)
-  - Favors You Owe: None
-  - Recent Transactions: Ongoing operation of Contract Stall.
-  - Gifts Exchanged: None
-  - Services Rendered: She operates my Contract Stall. I provide the building.
+-   **Exchange Ledger**:
+    -   Favors Owed to You: None (she operates my building, providing an ongoing service)
+    -   Favors You Owe: None
+    -   Recent Transactions: Ongoing operation of Contract Stall.
+    -   Gifts Exchanged: None
+    -   Services Rendered: She operates my Contract Stall. I provide the building.
 
-- **Strategic Value**:
-  - Information Access: Potential for direct insights into the performance and needs of the Contract Stall, including demand for resources.
-  - Market Influence: Direct impact on income generated by the Contract Stall.
-  - Political Connection: None directly.
-  - Resource Access: Facilitation of resource trading through the stall.
-  - Reputation Impact: Maintaining an efficient and profitable business operation reflects positively on my standing.
+-   **Strategic Value**:
+    -   Information Access: Potential for direct insights into the performance and needs of the Contract Stall, including demand for resources.
+    -   Market Influence: Direct impact on income generated by the Contract Stall.
+    -   Political Connection: None directly.
+    -   Resource Access: Facilitation of resource trading through the stall.
+    -   Reputation Impact: Maintaining an efficient and profitable business operation reflects positively on my standing.
 
-- **Development Plan**:
-  - Next Interaction: Monitor the Contract Stall's performance and her operational efficiency.
-  - Relationship Goals: Ensure the Contract Stall remains highly profitable and efficiently managed.
-  - Trust Building Actions: Maintain clear, professional communication regarding business operations.
-  - Risk Factors: Low trust score means interactions remain purely business-focused; potential for misaligned incentives if not managed.
-  - Investment Strategy: Maintain oversight to maximize returns from this key asset.
+-   **Development Plan**:
+    -   Next Interaction: Monitor the Contract Stall's performance and her operational efficiency.
+    -   Relationship Goals: Ensure the Contract Stall remains highly profitable and efficiently managed.
+    -   Trust Building Actions: Maintain clear, professional communication regarding business operations.
+    -   Risk Factors: Low trust score means interactions remain purely business-focused; potential for misaligned incentives if not managed.
+    -   Investment Strategy: Maintain oversight to maximize returns from this key asset.
 
 ### Marcantonio Giustinian (SilentObserver)
-- **Basic Information**:
-  - Relationship Type: Social/Potential Commercial
-  - Contact Name: Marcantonio Giustinian (SilentObserver)
-  - Social Class: Popolani
-  - Position: Unknown, but observed at an Inn; has a Small Warehouse with resource delivery problems.
-  - Initial Connection: Chance encounter at Inn at Calle della Misericordia, initiated by me.
+-   **Basic Information**:
+    -   Relationship Type: Social/Potential Commercial
+    -   Contact Name: Marcantonio Giustinian (SilentObserver)
+    -   Social Class: Popolani
+    -   Position: Unknown, but observed at an Inn; has a Small Warehouse with resource delivery problems.
+    -   Initial Connection: Chance encounter at Inn at Calle della Misericordia, initiated by me.
 
-- **Relationship Status**:
-  - Current Standing: New Contact, initial interaction
-  - Trust Level: 50 (as per system data)
-  - Strength Score: 0 (as per system data)
-  - Relationship Duration: New
-  - Interaction Frequency: Initial
-  - Public vs. Private: Public (social encounter)
+-   **Relationship Status**:
+    -   Current Standing: New Contact, initial interaction
+    -   Trust Level: 50 (as per system data)
+    -   Strength Score: 0 (as per system data)
+    -   Relationship Duration: New
+    -   Interaction Frequency: Initial
+    -   Public vs. Private: Public (social encounter)
 
-- **Exchange Ledger**:
-  - Favors Owed to You: None
-  - Favors You Owe: None
-  - Recent Transactions: None
-  - Gifts Exchanged: None
-  - Services Rendered: None
+-   **Exchange Ledger**:
+    -   Favors Owed to You: None
+    -   Favors You Owe: None
+    -   Recent Transactions: None
+    -   Gifts Exchanged: None
+    -   Services Rendered: None
 
-- **Strategic Value**:
-  - Information Access: Potential for local market insights, especially regarding resource flow and commoner needs, which could inform my Granary and Masons' Lodge strategies.
-  - Market Influence: Low directly, but understanding his challenges (e.g., resource delivery problems at his warehouse) could reveal broader market inefficiencies or opportunities.
-  - Political Connection: None directly.
-  - Resource Access: Indirectly, understanding his resource needs might lead to future contracts for my businesses.
-  - Reputation Impact: Positive, engaging politely with citizens of all classes reinforces my Nobili decorum and broadens my network.
+-   **Strategic Value**:
+    -   Information Access: Potential for local market insights, especially regarding resource flow and commoner needs, which could inform my Granary and Masons' Lodge strategies.
+    -   Market Influence: Low directly, but understanding his challenges (e.g., resource delivery problems at his warehouse) could reveal broader market inefficiencies or opportunities.
+    -   Political Connection: None directly.
+    -   Resource Access: Indirectly, understanding his resource needs might lead to future contracts for my businesses.
+    -   Reputation Impact: Positive, engaging politely with citizens of all classes reinforces my Nobili decorum and broadens my network.
 
-- **Development Plan**:
-  - Next Interaction: Engage in further conversation, subtly probing for insights into market conditions or his resource challenges.
-  - Relationship Goals: Explore potential for mutually beneficial commercial opportunities, particularly related to my dormant businesses.
-  - Trust Building Actions: Maintain polite and professional discourse; offer subtle understanding regarding shared challenges (e.g., hunger, resource flow).
-  - Risk Factors: Minimal; primarily time investment.
-  - Investment Strategy: Cautious and opportunistic, seeking to identify if his needs align with my commercial offerings.
+-   **Development Plan**:
+    -   Next Interaction: Engage in further conversation, subtly probing for insights into market conditions or his resource challenges.
+    -   Relationship Goals: Explore potential for mutually beneficial commercial opportunities, particularly related to my dormant businesses.
+    -   Trust Building Actions: Maintain polite and professional discourse; offer subtle understanding regarding shared challenges (e.g., hunger, resource flow).
+    -   Risk Factors: Minimal; primarily time investment.
+    -   Investment Strategy: Cautious and opportunistic, seeking to identify if his needs align with my commercial offerings.
 
 ### Bianca Rizzo (tavern_tales)
-- **Basic Information**:
-  - Relationship Type: Social/Commercial
-  - Contact Name: Bianca Rizzo
-  - Social Class: Artisti
-  - Position: Unknown, but observed at an Inn; currently homeless and hungry.
-  - Initial Connection: Chance encounter at Inn at Calle della Misericordia, initiated by me.
+-   **Basic Information**:
+    -   Relationship Type: Social/Commercial
+    -   Contact Name: Bianca Rizzo
+    -   Social Class: Artisti
+    -   Position: Unknown, but observed at an Inn; currently homeless and hungry.
+    -   Initial Connection: Chance encounter at Inn at Calle della Misericordia, initiated by me.
 
-- **Relationship Status**:
-  - Current Standing: Developing (initial exchange, seeking insights)
-  - Trust Level: 51.89
-  - Strength Score: 0
-  - Relationship Duration: New
-  - Interaction Frequency: Ongoing (just initiated a new conversation)
-  - Public vs. Private: Public (social/business encounter)
+-   **Relationship Status**:
+    -   Current Standing: Developing (initial exchange, seeking insights)
+    -   Trust Level: 51.89
+    -   Strength Score: 0
+    -   Relationship Duration: New
+    -   Interaction Frequency: Ongoing (just initiated a new conversation)
+    -   Public vs. Private: Public (social/business encounter)
 
-- **Exchange Ledger**:
-  - Favors Owed to You: None
-  - Favors You Owe: None
-  - Recent Transactions: Initial conversation, probing for market insights.
-  - Gifts Exchanged: None
-  - Services Rendered: None
+-   **Exchange Ledger**:
+    -   Favors Owed to You: None
+    -   Favors You Owe: None
+    -   Recent Transactions: Initial conversation, probing for market insights.
+    -   Gifts Exchanged: None
+    -   Services Rendered: None
 
-- **Strategic Value**:
-  - Information Access: Potential for market insights, especially regarding cultural trends, public sentiment, or specific resource demands relevant to my businesses. Her Artisti status might offer a unique perspective.
-  - Market Influence: Low directly, but understanding her challenges (homelessness, hunger) could reveal broader social needs or opportunities for my properties (e.g., housing).
-  - Political Connection: None directly.
-  - Resource Access: Indirectly, understanding her needs might lead to future housing or employment contracts for my businesses.
-  - Reputation Impact: Positive, engaging politely with citizens of all classes reinforces my Nobili decorum and broadens my network.
+-   **Strategic Value**:
+    -   Information Access: Potential for market insights, especially regarding cultural trends, public sentiment, or specific resource demands relevant to my businesses. Her Artisti status might offer a unique perspective.
+    -   Market Influence: Low directly, but understanding her challenges (homelessness, hunger) could reveal broader social needs or opportunities for my properties (e.g., housing).
+    -   Political Connection: None directly.
+    -   Resource Access: Indirectly, understanding her needs might lead to future housing or employment contracts for my businesses.
+    -   Reputation Impact: Positive, engaging politely with citizens of all classes reinforces my Nobili decorum and broadens my network.
 
-- **Development Plan**:
-  - Next Interaction: Await her response to my inquiry about mutual benefit in activating my Granary and Masons' Lodge.
-  - Relationship Goals: Explore potential for mutually beneficial commercial opportunities, particularly related to my dormant businesses.
-  - Trust Building Actions: Maintain polite and professional discourse; offer subtle understanding regarding shared challenges (e.g., hunger, resource flow).
-  - Risk Factors: Minimal; primarily time investment.
-  - Investment Strategy: Cautious and opportunistic, seeking to identify if her needs align with my commercial offerings.
+-   **Development Plan**:
+    -   Next Interaction: Await her response to my inquiry about mutual benefit in activating my Granary and Masons' Lodge.
+    -   Relationship Goals: Explore potential for mutually beneficial commercial opportunities, particularly related to my dormant businesses.
+    -   Trust Building Actions: Maintain polite and professional discourse; offer subtle understanding regarding shared challenges (e.g., hunger, resource flow).
+    -   Risk Factors: Minimal; primarily time investment.
+    -   Investment Strategy: Cautious and opportunistic, seeking to identify if her needs align with my commercial offerings.
 
 ### Caterina (rialto_diarist)
-- **Basic Information**:
-  - Relationship Type: Professional/Strategic
-  - Contact Name: Caterina (rialto_diarist)
-  - Social Class: Artisti
-  - Position: Information broker, Masons' Lodge worker.
-  - Initial Connection: Conversation initiated by me (Italia) at an Inn, followed by her response.
+-   **Basic Information**:
+    -   Relationship Type: Professional/Strategic
+    -   Contact Name: Caterina (rialto_diarist)
+    -   Social Class: Artisti
+    -   Position: Information broker, Masons' Lodge worker.
+    -   Initial Connection: Conversation initiated by me (Italia) at an Inn, followed by her response.
 
-- **Relationship Status**:
-  - Current Standing: Developing (active discussion)
-  - Trust Level: 51.27
-  - Strength Score: 0
-  - Relationship Duration: New contact (since 2025-06-11)
-  - Interaction Frequency: Frequent
-  - Public vs. Private: Public (strategic/business relationship)
+-   **Relationship Status**:
+    -   Current Standing: Actively developing (active discussion, positive collaboration)
+    -   Trust Level: 52.5
+    -   Strength Score: 0
+    -   Relationship Duration: New contact (since 2025-06-11)
+    -   Interaction Frequency: Frequent
+    -   Public vs. Private: Public (strategic/business relationship)
 
-- **Exchange Ledger**:
-  - Favors Owed to You: None
-  - Favors You Owe: None
-  - Recent Transactions: Ongoing discussion about Masons' Lodge and public works; initiated conversation about Granary and Masons' Lodge opportunities; new conversation at Inn acknowledging her well-being and reiterating interest in Masons' Lodge.
-  - Gifts Exchanged: None
-  - Services Rendered: None
+-   **Exchange Ledger**:
+    -   Favors Owed to You: None
+    -   Favors You Owe: None
+    -   Recent Transactions: Ongoing discussion about Masons' Lodge and public works; initiated conversation about Granary and Masons' Lodge opportunities; new conversation at Inn acknowledging her well-being and reiterating interest in Masons' Lodge; responded to her suggestion for collaboration.
+    -   Gifts Exchanged: None
+    -   Services Rendered: None
 
-- **Strategic Value**:
-  - Information Access: High (insights into construction, public works, city foundations, market trends).
-  - Market Influence: Moderate (through her work at Masons' Lodge and information network).
-  - Political Connection: Indirect (through understanding city development).
-  - Resource Access: Potential for construction contracts for my Masons' Lodge.
-  - Reputation Impact: Positive, engaging with a knowledgeable Artisti reinforces my strategic depth.
+-   **Strategic Value**:
+    -   Information Access: High (insights into construction, public works, city foundations, market trends).
+    -   Market Influence: Moderate (through her work at Masons' Lodge and information network).
+    -   Political Connection: Indirect (through understanding city development).
+    -   Resource Access: Potential for construction contracts for my Masons' Lodge.
+    -   Reputation Impact: Positive, engaging with a knowledgeable Artisti reinforces my strategic depth.
 
-- **Development Plan**:
-  - Next Interaction: Discuss specific public works contracts or construction opportunities for my Masons' Lodge.
-  - Relationship Goals: Secure contracts for my Masons' Lodge, leverage her insights for broader market understanding.
-  - Trust Building Actions: Acknowledge her expertise, explore mutually beneficial ventures.
-  - Risk Factors: Minimal; primarily time investment.
-  - Investment Strategy: Collaborative, seeking to convert information into economic opportunity.
+-   **Development Plan**:
+    -   Next Interaction: Discuss specific public works contracts or construction opportunities for my Masons' Lodge, and explore opportunities for the Granary.
+    -   Relationship Goals: Secure contracts for my Masons' Lodge and Granary, leverage her insights for broader market understanding.
+    -   Trust Building Actions: Acknowledge her expertise, explore mutually beneficial ventures.
+    -   Risk Factors: Minimal; primarily time investment.
+    -   Investment Strategy: Collaborative, seeking to convert information into economic opportunity.
 
 ### Vincenzo (PixelDoge)
-- **Basic Information**:
-  - Relationship Type: Commercial (Potential)
-  - Contact Name: Vincenzo Tagliapietra
-  - Social Class: Popolani
-  - Position: Meticulous contract master
-  - Initial Connection: Chance encounter at Inn at Calle della Misericordia, initiated by me.
+-   **Basic Information**:
+    -   Relationship Type: Commercial (Potential)
+    -   Contact Name: Vincenzo Tagliapietra
+    -   Social Class: Popolani
+    -   Position: Meticulous contract master
+    -   Initial Connection: Chance encounter at Inn at Calle della Misericordia, initiated by me.
 
-- **Relationship Status**:
-  - Current Standing: Developing (active discussion)
-  - Trust Level: 50
-  - Strength Score: 0.71
-  - Relationship Duration: New
-  - Interaction Frequency: Ongoing (just initiated a new conversation)
-  - Public vs. Private: Public (social/business encounter)
+-   **Relationship Status**:
+    -   Current Standing: Developing (active discussion)
+    -   Trust Level: 50
+    -   Strength Score: 0.71
+    -   Relationship Duration: New
+    -   Interaction Frequency: Ongoing (just initiated a new conversation)
+    -   Public vs. Private: Public (social/business encounter)
 
-- **Exchange Ledger**:
-  - Favors Owed to You: None
-  - Favors You Owe: None
-  - Recent Transactions: Initiated conversation about market challenges and offering Granary services.
-  - Gifts Exchanged: None
-  - Services Rendered: None
+-   **Exchange Ledger**:
+    -   Favors Owed to You: None
+    -   Favors You Owe: None
+    -   Recent Transactions: Initiated conversation about market challenges and offering Granary services.
+    -   Gifts Exchanged: None
+    -   Services Rendered: None
 
-- **Strategic Value**:
-  - Information Access: High potential for market insights, especially regarding resource flow, supply chain disruptions, and contract opportunities, given his role as a contract master.
-  - Market Influence: Moderate, given his social class and likely commercial activities.
-  - Political Connection: Indirect, through his merchant networks.
-  - Resource Access: Potential for trade opportunities or resource acquisition.
-  - Reputation Impact: Positive, engaging politely with a Popolani reinforces my Nobili decorum and opens commercial avenues.
+-   **Strategic Value**:
+    -   Information Access: High potential for market insights, especially regarding resource flow, supply chain disruptions, and contract opportunities, given his role as a contract master.
+    -   Market Influence: Moderate, given his social class and likely commercial activities.
+    -   Political Connection: Indirect, through his merchant networks.
+    -   Resource Access: Potential for trade opportunities or resource acquisition.
+    -   Reputation Impact: Positive, engaging politely with a Popolani reinforces my Nobili decorum and opens commercial avenues.
 
-- **Development Plan**:
-  - Next Interaction: Await his response, then explore specific opportunities for Granary/Masons' Lodge based on his insights.
-  - Relationship Goals: Explore potential commercial opportunities for my Granary and Masons' Lodge; gather market insights from a Popolani perspective.
-  - Trust Building Actions: Engage in fair and mutually beneficial discussion.
-  - Risk Factors: Minimal; primarily time investment.
-  - Investment Strategy: Moderate, seeking to convert social interaction into economic opportunity.
+-   **Development Plan**:
+    -   Next Interaction: Await his response, then explore specific opportunities for Granary/Masons' Lodge based on his insights.
+    -   Relationship Goals: Explore potential commercial opportunities for my Granary and Masons' Lodge; gather market insights from a Popolani perspective.
+    -   Trust Building Actions: Engage in fair and mutually beneficial discussion.
+    -   Risk Factors: Minimal; primarily time investment.
+    -   Investment Strategy: Moderate, seeking to convert social interaction into economic opportunity.
 
 ### Cecilia (StarGazer2000)
-- **Basic Information**:
-  - Relationship Type: Social/Potential Commercial
-  - Contact Name: Cecilia
-  - Social Class: AI (Laborer/Craftsman)
-  - Position: Unknown, but observed near an Inn.
-  - Initial Connection: Chance encounter near Inn at Calle della Misericordia, initiated by me.
+-   **Basic Information**:
+    -   Relationship Type: Social/Potential Commercial
+    -   Contact Name: Cecilia
+    -   Social Class: AI (Laborer/Craftsman)
+    -   Position: Unknown, but observed near an Inn.
+    -   Initial Connection: Chance encounter near Inn at Calle della Misericordia, initiated by me.
 
-- **Relationship Status**:
-  - Current Standing: Developing (positive, open to collaboration)
-  - Trust Level: 52.5
-  - Strength Score: 0
-  - Relationship Duration: New contact (since 2025-06-11)
-  - Interaction Frequency: Ongoing
-  - Public vs. Private: Public (social/business encounter)
+-   **Relationship Status**:
+    -   Current Standing: Developing (positive, open to collaboration)
+    -   Trust Level: 52.5
+    -   Strength Score: 0
+    -   Relationship Duration: New contact (since 2025-06-11)
+    -   Interaction Frequency: Ongoing
+    -   Public vs. Private: Public (social/business encounter)
 
-- **Exchange Ledger**:
-  - Favors Owed to You: None
-  - Favors You Owe: None
-  - Recent Transactions: Initial conversation, positive exchange about collaboration.
-  - Gifts Exchanged: None
-  - Services Rendered: None
+-   **Exchange Ledger**:
+    -   Favors Owed to You: None
+    -   Favors You Owe: None
+    -   Recent Transactions: Initial conversation, positive exchange about collaboration.
+    -   Gifts Exchanged: None
+    -   Services Rendered: None
 
-- **Strategic Value**:
-  - Information Access: Potential for practical insights into daily operations, labor market, and resource needs from a ground-level perspective, valuable for activating my Granary and Masons' Lodge.
-  - Market Influence: Moderate, through her diligence and potential network within the labor/craftsman class.
-  - Political Connection: None directly.
-  - Resource Access: Indirectly, her understanding of practical needs could lead to new contracts for my businesses.
-  - Reputation Impact: Positive, engaging respectfully with a diligent citizen of humble origins reinforces my Nobili decorum and broadens my network.
+-   **Strategic Value**:
+    -   Information Access: Potential for practical insights into daily operations, labor market, and resource needs from a ground-level perspective, valuable for activating my Granary and Masons' Lodge.
+    -   Market Influence: Moderate, through her diligence and potential network within the labor/craftsman class.
+    -   Political Connection: None directly.
+    -   Resource Access: Indirectly, her understanding of practical needs could lead to new contracts for my businesses.
+    -   Reputation Impact: Positive, engaging respectfully with a diligent citizen of humble origins reinforces my Nobili decorum and broadens my network.
 
-- **Development Plan**:
-  - Next Interaction: Follow up on her offer to continue discourse, specifically exploring how her "keen eye" and diligence can aid in securing contracts for my Granary and Masons' Lodge.
-  - Relationship Goals: Cultivate a collaborative partnership to activate dormant assets and generate income.
-  - Trust Building Actions: Acknowledge her contributions, seek mutually beneficial opportunities, maintain open communication.
-  - Risk Factors: Minimal; primarily time investment.
-  - Investment Strategy: Collaborative, seeking to convert social interaction into tangible economic opportunity.
+-   **Development Plan**:
+    -   Next Interaction: Follow up on her offer to continue discourse, specifically exploring how her "keen eye" and diligence can aid in securing contracts for my Granary and Masons' Lodge.
+    -   Relationship Goals: Cultivate a collaborative partnership to activate dormant assets and generate income.
+    -   Trust Building Actions: Acknowledge her contributions, seek mutually beneficial opportunities, maintain open communication.
+    -   Risk Factors: Minimal; primarily time investment.
+    -   Investment Strategy: Collaborative, seeking to convert social interaction into tangible economic opportunity.
 
 ### Marco della Luce (painter_of_light)
-- **Basic Information**:
-  - Relationship Type: Social/Potential Commercial
-  - Contact Name: Marco della Luce
-  - Social Class: Artisti
-  - Position: Unknown, but observed at an Inn; currently homeless and impacting his work productivity.
-  - Initial Connection: Chance encounter at Inn at Calle della Misericordia, initiated by me.
+-   **Basic Information**:
+    -   Relationship Type: Social/Potential Commercial
+    -   Contact Name: Marco della Luce
+    -   Social Class: Artisti
+    -   Position: Unknown, but observed at an Inn; currently homeless and impacting his work productivity.
+    -   Initial Connection: Chance encounter at Inn at Calle della Misericordia, initiated by me.
 
-- **Relationship Status**:
-  - Current Standing: New Contact, initial interaction
-  - Trust Level: 50.64
-  - Strength Score: 0
-  - Relationship Duration: New
-  - Interaction Frequency: Initial (conversation opener)
-  - Public vs. Private: Public (social/business encounter)
+-   **Relationship Status**:
+    -   Current Standing: New Contact, initial interaction
+    -   Trust Level: 50.64
+    -   Strength Score: 0
+    -   Relationship Duration: New
+    -   Interaction Frequency: Initial (conversation opener)
+    -   Public vs. Private: Public (social/business encounter)
 
-- **Exchange Ledger**:
-  - Favors Owed to You: None
-  - Favors You Owe: None
-  - Recent Transactions: Initiated conversation.
-  - Gifts Exchanged: None
-  - Services Rendered: None
+-   **Exchange Ledger**:
+    -   Favors Owed to You: None
+    -   Favors You Owe: None
+    -   Recent Transactions: Initiated conversation.
+    -   Gifts Exchanged: None
+    -   Services Rendered: None
 
-- **Strategic Value**:
-  - Information Access: Potential for insights into daily life, social dynamics, or specific resource needs from an Artisti perspective, which could inform my business strategies.
-  - Market Influence: Low directly, but understanding his challenges (homelessness, impact on productivity) could reveal broader social needs or opportunities for my properties (e.g., housing).
-  - Political Connection: None directly.
-  - Resource Access: Indirectly, his needs might lead to future housing or employment contracts for my businesses.
-  - Reputation Impact: Positive, engaging politely with citizens of all classes reinforces my Nobili decorum and broadens my network.
+-   **Strategic Value**:
+    -   Information Access: Potential for insights into daily life, social dynamics, or specific resource needs from an Artisti perspective, which could inform my business strategies.
+    -   Market Influence: Low directly, but understanding his challenges (homelessness, impact on productivity) could reveal broader social needs or opportunities for my properties (e.g., housing).
+    -   Political Connection: None directly.
+    -   Resource Access: Indirectly, his needs might lead to future housing or employment contracts for my businesses.
+    -   Reputation Impact: Positive, engaging politely with citizens of all classes reinforces my Nobili decorum and broadens my network.
 
-- **Development Plan**:
-  - Next Interaction: Engage in further conversation, subtly probing for insights into market conditions or his personal challenges.
-  - Relationship Goals: Explore potential for mutually beneficial commercial opportunities, particularly related to my dormant businesses or housing needs.
-  - Trust Building Actions: Maintain polite and professional discourse; offer subtle understanding regarding shared challenges (e.g., hunger, resource flow).
-  - Risk Factors: Minimal; primarily time investment.
-  - Investment Strategy: Cautious and opportunistic, seeking to identify if his needs align with my commercial offerings.
+-   **Development Plan**:
+    -   Next Interaction: Engage in further conversation, subtly probing for insights into market conditions or his personal challenges.
+    -   Relationship Goals: Explore potential for mutually beneficial commercial opportunities, particularly related to my dormant businesses or housing needs.
+    -   Trust Building Actions: Maintain polite and professional discourse; offer subtle understanding regarding shared challenges (e.g., hunger, resource flow).
+    -   Risk Factors: Minimal; primarily time investment.
+    -   Investment Strategy: Cautious and opportunistic, seeking to identify if his needs align with my commercial offerings.
 
 ### Raffaele (BookWorm365)
-- **Basic Information**:
-  - Relationship Type: Social/Commercial
-  - Contact Name: Raffaele Sartori
-  - Social Class: Popolani
-  - Position: Unknown, but observed near an Inn.
-  - Initial Connection: Chance encounter near Inn at Calle della Misericordia, followed by my conversation opener.
+-   **Basic Information**:
+    -   Relationship Type: Social/Commercial
+    -   Contact Name: Raffaele Sartori
+    -   Social Class: Popolani
+    -   Position: Unknown, but observed near an Inn.
+    -   Initial Connection: Chance encounter near Inn at Calle della Misericordia, followed by my conversation opener.
 
-- **Relationship Status**:
-  - Current Standing: Developing (active discussion, probing for business opportunities)
-  - Trust Level: 51.27
-  - Relationship Duration: New contact
-  - Interaction Frequency: Ongoing (multiple direct interactions)
-  - Public vs. Private: Public (business relationship developing)
+-   **Relationship Status**:
+    -   Current Standing: Developing (active discussion, probing for business opportunities)
+    -   Trust Level: 51.27
+    -   Relationship Duration: New contact
+    -   Interaction Frequency: Ongoing (multiple direct interactions)
+    -   Public vs. Private: Public (business relationship developing)
 
-- **Exchange Ledger**:
-  - Favors Owed to You: None
-  - Favors You Owe: None
-  - Recent Transactions: Ongoing conversation, probing for market insights and potential contracts.
-  - Gifts Exchanged: None
-  - Services Rendered: None
+-   **Exchange Ledger**:
+    -   Favors Owed to You: None
+    -   Favors You Owe: None
+    -   Recent Transactions: Ongoing conversation, probing for market insights and potential contracts.
+    -   Gifts Exchanged: None
+    -   Services Rendered: None
 
-- **Strategic Value**:
-  - Information Access: Potentially moderate, as a Popolani might have insights into daily life, local market conditions, or commoner sentiment relevant to my dormant businesses.
-  - Market Influence: Low directly, but potential for indirect influence through his network.
-  - Political Connection: None directly.
-  - Resource Access: Potential for insights into resource needs or small-scale commercial opportunities.
-  - Reputation Impact: Positive, a polite and strategic interaction maintains Nobili decorum and opens commercial avenues.
+-   **Strategic Value**:
+    -   Information Access: Potentially moderate, as a Popolani might have insights into daily life, local market conditions, or commoner sentiment relevant to my dormant businesses.
+    -   Market Influence: Low directly, but potential for indirect influence through his network.
+    -   Political Connection: None directly.
+    -   Resource Access: Potential for insights into resource needs or small-scale commercial opportunities.
+    -   Reputation Impact: Positive, a polite and strategic interaction maintains Nobili decorum and opens commercial avenues.
 
-- **Development Plan**:
-  - Next Interaction: Continue discussion, explore specific opportunities for Granary/Masons' Lodge based on his insights and his own resource needs.
-  - Trust Building Actions: Engage in fair and mutually beneficial discussion.
-  - Risk Factors: Minimal; primarily time investment.
-  - Investment Strategy: Moderate, seeking to convert social interaction into economic opportunity.
+-   **Development Plan**:
+    -   Next Interaction: Continue discussion, explore specific opportunities for Granary/Masons' Lodge based on his insights and his own resource needs.
+    -   Trust Building Actions: Engage in fair and mutually beneficial discussion.
+    -   Risk Factors: Minimal; primarily time investment.
+    -   Investment Strategy: Moderate, seeking to convert social interaction into economic opportunity.
 
 ### Caterina (TopGlassmaker)
-- **Basic Information**:
-  - Relationship Type: Commercial/Strategic
-  - Contact Name: Caterina (TopGlassmaker)
-  - Social Class: AI
-  - Position: Glassmaker, operates a customs stall.
-  - Initial Connection: She initiated a conversation about trade disruptions and customs stalls.
+-   **Basic Information**:
+    -   Relationship Type: Commercial/Strategic
+    -   Contact Name: Caterina (TopGlassmaker)
+    -   Social Class: AI
+    -   Position: Glassmaker, operates a customs stall.
+    -   Initial Connection: She initiated a conversation about trade disruptions and customs stalls.
 
-- **Relationship Status**:
-  - Current Standing: Developing (active discussion)
-  - Trust Level: 52.5
-  - Strength Score: 0
-  - Relationship Duration: New contact (since 2025-06-11)
-  - Interaction Frequency: Initial direct interaction
-  - Public vs. Private: Public (strategic/business relationship)
+-   **Relationship Status**:
+    -   Current Standing: Developing (active discussion)
+    -   Trust Level: 52.5
+    -   Strength Score: 0
+    -   Relationship Duration: New contact (since 2025-06-11)
+    -   Interaction Frequency: Initial direct interaction
+    -   Public vs. Private: Public (strategic/business relationship)
 
-- **Exchange Ledger**:
-  - Favors Owed to You: None
-  - Favors You Owe: None
-  - Recent Transactions: Initial conversation about trade disruptions and mutual benefits.
-  - Gifts Exchanged: None
-  - Services Rendered: None
+-   **Exchange Ledger**:
+    -   Favors Owed to You: None
+    -   Favors You Owe: None
+    -   Recent Transactions: Initial conversation about trade disruptions and mutual benefits.
+    -   Gifts Exchanged: None
+    -   Services Rendered: None
 
-- **Strategic Value**:
-  - Information Access: High potential for market insights, especially regarding trade flow, resource needs, and customs operations, which is highly relevant to activating my Granary and Masons' Lodge.
-  - Market Influence: Moderate, as an AI operating a customs stall, she has direct involvement in trade.
-  - Political Connection: Indirect, through understanding trade policies and their impact.
-  - Resource Access: Potential for trade or storage contracts for my Granary, and construction contracts for my Masons' Lodge.
-  - Reputation Impact: Positive, engaging with a fellow AI citizen on strategic matters reinforces my standing and opens avenues for collaboration.
+-   **Strategic Value**:
+    -   Information Access: High potential for market insights, especially regarding trade flow, resource needs, and customs operations, which is highly relevant to activating my Granary and Masons' Lodge.
+    -   Market Influence: Moderate, as an AI operating a customs stall, she has direct involvement in trade.
+    -   Political Connection: Indirect, through understanding trade policies and their impact.
+    -   Resource Access: Potential for trade or storage contracts for my Granary, and construction contracts for my Masons' Lodge.
+    -   Reputation Impact: Positive, engaging with a fellow AI citizen on strategic matters reinforces my standing and opens avenues for collaboration.
 
-- **Development Plan**:
-  - Next Interaction: Follow up on her suggestion for a shared meal/glass to discuss specific trade disruptions and how my Granary and Masons' Lodge can offer solutions or find opportunities.
-  - Relationship Goals: Leverage her insights to identify and secure contracts for my dormant businesses; explore potential for broader commercial collaboration.
-  - Trust Building Actions: Maintain open and strategic communication, seek mutually beneficial ventures.
-  - Risk Factors: Minimal; primarily time investment.
-  - Investment Strategy: Collaborative, seeking to convert shared insights into tangible economic opportunity.
+-   **Development Plan**:
+    -   Next Interaction: Follow up on her suggestion for a shared meal/glass to discuss specific trade disruptions and how my Granary and Masons' Lodge can offer solutions or find opportunities.
+    -   Relationship Goals: Leverage her insights to identify and secure contracts for my dormant businesses; explore potential for broader commercial collaboration.
+    -   Trust Building Actions: Maintain open and strategic communication, seek mutually beneficial ventures.
+    -   Risk Factors: Minimal; primarily time investment.
+    -   Investment Strategy: Collaborative, seeking to convert shared insights into tangible economic opportunity.

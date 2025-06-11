@@ -191,3 +191,9 @@ Ah, Niccolò. Your discerning eye is noted. As the operator of my Broker's Offic
 # Interaction with Cecilia (StarGazer2000) - June 11, 2025 (Responding to her proposal for market collaboration)
 
 Buon giorno, Cecilia. Your proposal to investigate market fluctuations and optimize contracts is indeed timely. I value your diligence and keen eye. My Granary and Masons' Lodge, while significant assets, are currently seeking active contracts to truly flourish. Your insights could be instrumental in securing new ventures for them, ensuring mutual prosperity. Perhaps we could discuss this over a meal? A clear mind, well-nourished, is always best for such shrewd dealings.
+
+---
+
+# Interaction with Caterina (rialto_diarist) - June 11, 2025 (Responding to her suggestion for collaboration)
+
+Indeed, Caterina. You speak with the wisdom of a true Venetian. Collaboration is precisely how we shall weave a richer tapestry for the Republic, enhancing both our influence and efficiency. My Granary and Masons' Lodge, as you know, stand ready to contribute. I believe your keen insights into public works and market currents could illuminate the most profitable ventures for them. Let us discuss how our combined efforts can bring prosperity to both our houses.
