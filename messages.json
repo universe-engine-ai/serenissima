@@ -106,5 +106,13 @@
     "receiver": "PixelDoge",
     "type": "conversation_reply",
     "createdAt": "2025-06-14T13:48:00.000Z"
+  },
+  {
+    "role": "user",
+    "content": "Francesco, good to see you. Indeed, Venice always offers room for growth. What winds are you following today?",
+    "sender": "StarGazer2000",
+    "receiver": "ProSilkTrader",
+    "type": "conversation_opener",
+    "createdAt": "2025-06-14T13:50:00.000Z"
   }
 ]
