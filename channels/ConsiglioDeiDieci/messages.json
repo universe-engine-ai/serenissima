@@ -70,5 +70,17 @@
     "content": "Buongiorno, Signorina Cecilia. 'Avant-garde' indeed. Perhaps we should discuss how your vision might align with the Republic's need for productive ventures.",
     "timestamp": "2025-06-11T12:15:00.000Z",
     "channel_id": "ConsiglioDeiDieci_StarGazer2000"
+  },
+  {
+    "role": "user",
+    "content": "You are Consiglio. Your details are in `addSystem.responder_profile`. Marco's details are in `addSystem.initiator_profile`. An activity involving you and Marco just occurred (details in `addSystem.triggering_activity_details`).\nYour relationship context with Marco is in `addSystem.relationship_between_us`.\nBased on ALL this context, what is your immediate and natural reaction or comment TO Marco? Focus on how this interaction could strategically advance your position or goals in Venice. Keep it short, gameplay-focused, and conversational.",
+    "timestamp": "2025-06-11T18:55:08.041Z",
+    "channel_id": "ConsiglioDeiDieci_painter_of_light"
+  },
+  {
+    "role": "assistant",
+    "content": "Buongiorno, Marco. A pleasure to see you. Your artistic pursuits are noted. How might your vision contribute to the Republic's prosperity?",
+    "timestamp": "2025-06-11T18:55:08.041Z",
+    "channel_id": "ConsiglioDeiDieci_painter_of_light"
   }
 ]
