@@ -20,7 +20,12 @@ if PROJECT_ROOT not in sys.path:
 # Configuration pour les appels API
 BASE_URL = os.getenv('NEXT_PUBLIC_BASE_URL', 'http://localhost:3000')
 
-from backend.engine.utils.activity_helpers import LogColors, log_header # Ajout de l'importation
+from backend.engine.utils.activity_helpers import LogColors, log_header, clean_thought_content # Ajout de l'importation
+from backend.engine.utils.conversation_helper import get_citizen_data_package, make_kinos_channel_call, get_kinos_model_for_social_class, DEFAULT_TIMEOUT_SECONDS
+
+# KinOS Configuration (mirrors conversation_helper.py and autonomouslyRun.py)
+KINOS_API_CHANNEL_BASE_URL = 'https://api.kinos-engine.ai/v2'
+KINOS_BLUEPRINT_ID = 'serenissima-ai'
 
 # --- Fonctions d'initialisation et utilitaires Airtable/API ---
 
@@ -72,47 +77,8 @@ def get_ai_citizens(tables: Dict[str, Table]) -> List[Dict]:
         print(f"Erreur lors de la récupération des citoyens IA : {e}")
         return []
 
-def get_top_relationships_for_ai(tables: Dict[str, Table], ai_username: str, limit: int = 10) -> List[Dict]:
-    """Récupère les relations les plus fortes pour un citoyen IA."""
-    try:
-        formula = f"OR({{Citizen1}} = '{ai_username}', {{Citizen2}} = '{ai_username}')"
-        relationships_records = tables["relationships"].all(
-            formula=formula,
-            fields=["Citizen1", "Citizen2", "StrengthScore", "TrustScore", "Status"] # "Type" a été retiré
-        )
-
-        scored_relationships = []
-        for record in relationships_records:
-            fields = record.get("fields", {})
-            trust_score = fields.get("TrustScore", 0) or 0  # Assurer 0 si None
-            strength_score = fields.get("StrengthScore", 0) or 0 # Assurer 0 si None
-            combined_score = float(trust_score) + float(strength_score)
-
-            other_citizen = ""
-            if fields.get("Citizen1") == ai_username:
-                other_citizen = fields.get("Citizen2")
-            elif fields.get("Citizen2") == ai_username:
-                other_citizen = fields.get("Citizen1")
-
-            if other_citizen: # S'assurer qu'il y a un autre citoyen
-                scored_relationships.append({
-                    "id": record["id"],
-                    "other_citizen_username": other_citizen,
-                    "combined_score": combined_score,
-                    "fields": fields 
-                })
-        
-        # Trier par combined_score décroissant
-        scored_relationships.sort(key=lambda x: x["combined_score"], reverse=True)
-        
-        print(f"Trouvé {len(scored_relationships)} relations pour {ai_username}, retournant le top {limit}.")
-        return scored_relationships[:limit]
-
-    except Exception as e:
-        print(f"Erreur lors de la récupération des relations pour {ai_username}: {e}")
-        return []
-
 # --- Fonctions d'assistance pour récupérer les données contextuelles (copiées/adaptées de answertomessages.py) ---
+# get_top_relationships_for_ai a été supprimé car la décision de l'interlocuteur est maintenant gérée par KinOS.
 
 def _escape_airtable_value(value: Any) -> str:
     """Échappe les apostrophes et les guillemets pour les formules Airtable et s'assure que la valeur est une chaîne."""
@@ -245,113 +211,169 @@ def _get_problems_data(tables: Dict[str, Table], username1: str, username2: str,
         print(f"Erreur lors de la récupération des problèmes pour {username1} ou {username2} via API: {e}")
         return []
 
-def _check_existing_messages(tables: Dict[str, Table], username1: str, username2: str) -> bool:
-    """Vérifie s'il existe des messages entre username1 et username2."""
-    try:
-        safe_username1 = _escape_airtable_value(username1)
-        safe_username2 = _escape_airtable_value(username2)
-        # Vérifier les messages dans les deux sens
-        formula = (
-            f"OR("
-            f"  AND({{Sender}} = '{safe_username1}', {{Receiver}} = '{safe_username2}'),"
-            f"  AND({{Sender}} = '{safe_username2}', {{Receiver}} = '{safe_username1}')"
-            f")"
-        )
-        # Nous avons juste besoin de savoir s'il y en a au moins un
-        messages = tables["messages"].all(formula=formula, max_records=1)
-        if messages:
-            print(f"    -> Messages existants trouvés entre {username1} et {username2}.")
-            return True
-        print(f"    -> Aucun message existant trouvé entre {username1} et {username2}.")
-        return False
-    except Exception as e:
-        print(f"Erreur lors de la vérification des messages existants entre {username1} et {username2}: {e}")
-        return False # Supposer qu'il y a des messages en cas d'erreur pour ne pas augmenter la probabilité inutilement
+# _check_existing_messages a été supprimé. Cette information sera incluse dans le data_package pour KinOS.
 
 # --- Fonctions KinOS et création de message ---
 
-def generate_ai_initiative_message(tables: Dict[str, Table], ai_username: str, target_username: str, kinos_model_override: Optional[str] = None) -> Optional[str]:
-    """Génère un message d'initiative IA en utilisant KinOS Engine avec un contexte enrichi."""
+def choose_interlocutor_via_kinos(
+    ai_username: str,
+    kinos_api_key: str,
+    ai_data_package: Dict[str, Any],
+    kinos_model_override: Optional[str] = None
+) -> Optional[Tuple[str, str]]:
+    """
+    Appelle KinOS pour choisir un interlocuteur et la raison de l'interaction.
+    Retourne (target_username, reason) ou (None, None).
+    """
+    print(f"Appel à KinOS pour choisir un interlocuteur pour {ai_username}...")
+
+    ai_profile = ai_data_package.get("profile", {})
+    ai_display_name = ai_profile.get("firstName", ai_username)
+    ai_social_class = ai_profile.get("socialClass")
+
+    # Le canal "strategist" est un canal conceptuel pour ce type de décision.
+    # L'ID du kin est l'IA elle-même.
+    kinos_channel_for_decision = "strategist" 
+
+    prompt = (
+        f"You are {ai_display_name}, an AI citizen of Venice. Your full data package (profile, relationships, problems, opportunities, recent activities, etc.) "
+        f"is provided in `addSystem`.\n\n"
+        f"Based on all this information, analyze your current situation and identify another citizen with whom initiating a conversation would be most beneficial or strategically relevant for you right now. "
+        f"Consider your goals, active problems, opportunities, and the nature of your relationships.\n\n"
+        f"Your response MUST be a JSON object with two keys: 'target_username' (the Username of the citizen you choose) and 'reason' (a brief, compelling reason for contacting them, focusing on gameplay or narrative progression).\n"
+        f"Example JSON response: {{\"target_username\": \"SomeCitizenUsername\", \"reason\": \"To discuss the recent trade embargo on iron.\"}}\n\n"
+        f"If no compelling interaction is identified, respond with: {{\"target_username\": null, \"reason\": \"No compelling interaction identified at this time.\"}}\n\n"
+        f"Chosen interaction (JSON):"
+    )
+
+    # Utiliser le modèle par défaut basé sur la classe sociale ou l'override
+    effective_model = kinos_model_override or get_kinos_model_for_social_class(ai_username, ai_social_class)
+    if not kinos_model_override: # Si aucun override n'est fourni, s'assurer que 'local' est utilisé par défaut pour cette décision.
+        effective_model = "local"
+        print(f"Utilisation du modèle KinOS 'local' par défaut pour la décision de l'interlocuteur pour {ai_username}.")
+    
+    # make_kinos_channel_call est importé de conversation_helper
+    raw_response_content = make_kinos_channel_call(
+        kinos_api_key=kinos_api_key,
+        speaker_username=ai_username, # L'IA elle-même est le "speaker" pour cette décision
+        channel_name=kinos_channel_for_decision,
+        prompt=prompt,
+        add_system_data=ai_data_package, # Passer le data_package complet
+        kinos_model_override=effective_model
+    )
+
+    if not raw_response_content:
+        print(f"KinOS n'a pas retourné de réponse pour la décision de l'interlocuteur pour {ai_username}.")
+        return None, None
+
     try:
-        api_key = get_kinos_api_key()
-        blueprint = "serenissima-ai" # Assurez-vous que c'est le bon blueprint
+        # Nettoyer le contenu avant de parser le JSON (KinOS peut ajouter des <think> tags)
+        # clean_thought_content est importé de activity_helpers
+        cleaned_response = clean_thought_content(None, raw_response_content) # tables=None car pas de remplacement d'ID ici
+        
+        # Extraire le JSON de la réponse nettoyée
+        # Le prompt demande un JSON, mais KinOS peut l'envelopper dans du texte.
+        json_match = re.search(r'\{.*\}', cleaned_response, re.DOTALL)
+        if not json_match:
+            print(f"Réponse KinOS pour la décision de l'interlocuteur (après nettoyage) ne contient pas de JSON valide pour {ai_username}: {cleaned_response}")
+            return None, None
+            
+        decision_data = json.loads(json_match.group(0))
+        target_username = decision_data.get("target_username")
+        reason = decision_data.get("reason")
 
-        ai_citizen_data = _get_citizen_data(tables, ai_username)
-        target_citizen_data = _get_citizen_data(tables, target_username)
+        if target_username and reason:
+            print(f"KinOS a choisi {target_username} pour {ai_username}. Raison: {reason}")
+            return target_username, reason
+        else:
+            print(f"KinOS n'a pas identifié d'interlocuteur pour {ai_username}. Raison: {reason}")
+            return None, None
+    except json.JSONDecodeError:
+        print(f"Erreur de décodage JSON de la réponse KinOS pour la décision de l'interlocuteur pour {ai_username}. Réponse brute: '{raw_response_content}', Nettoyée: '{cleaned_response}'")
+        return None, None
+    except Exception as e:
+        print(f"Erreur lors du traitement de la réponse KinOS pour la décision de l'interlocuteur pour {ai_username}: {e}")
+        return None, None
+
+def generate_ai_initiative_message(
+    tables: Dict[str, Table], 
+    ai_username: str, 
+    target_username: str, 
+    kinos_api_key: str, # Renommé depuis kinos_api_key pour éviter conflit avec variable globale
+    reason_for_contact: str,
+    kinos_model_override: Optional[str] = None
+) -> Optional[str]:
+    """Génère le contenu d'un message d'initiative IA à un `target_username` spécifique, basé sur `reason_for_contact`."""
+    try:
+        # kinos_api_key est maintenant un argument de la fonction
+        ai_citizen_profile_data = _get_citizen_data(tables, ai_username)
+        target_citizen_profile_data = _get_citizen_data(tables, target_username)
+        
+        if not ai_citizen_profile_data or not target_citizen_profile_data:
+            print(f"Impossible de récupérer les profils pour {ai_username} ou {target_username}.")
+            return None
+
         relationship_data = _get_relationship_data(tables, ai_username, target_username)
-        notifications_data = _get_notifications_data(tables, ai_username, limit=20) # Moins de notifs pour l'initiative
-        relevancies_data = _get_relevancies_data(tables, ai_username, target_username, limit=20)
-        problems_data = _get_problems_data(tables, ai_username, target_username, limit=20)
+        # Pour le contexte du message, nous pourrions vouloir des notifications/problèmes/pertinences plus ciblés.
+        # Par exemple, uniquement ceux impliquant les deux citoyens ou pertinents pour la raison.
+        # Pour l'instant, gardons une approche similaire à l'originale mais avec la raison en plus.
+        notifications_for_ai = _get_notifications_data(tables, ai_username, limit=5) # Limité pour la concision
+        relevancies_ai_to_target = _get_relevancies_data(tables, ai_username, target_username, limit=5)
+        problems_involving_pair = _get_problems_data(tables, ai_username, target_username, limit=5)
 
-        system_context_data = {
-            "ai_citizen_profile": ai_citizen_data,
-            "target_citizen_profile": target_citizen_data, # Renommé pour la clarté dans ce contexte
-            "relationship_with_target": relationship_data,
-            "recent_notifications_for_ai": notifications_data,
-            "recent_relevancies_ai_to_target": relevancies_data,
-            "recent_problems_involving_ai_or_target": problems_data
+        # Construire le addSystem pour la génération de contenu de message
+        focused_system_context = {
+            "ai_citizen_profile": ai_citizen_profile_data.get("fields", {}),
+            "target_citizen_profile": target_citizen_profile_data.get("fields", {}),
+            "relationship_with_target": relationship_data.get("fields", {}) if relationship_data else {},
+            "reason_for_this_contact": reason_for_contact,
+            "recent_notifications_for_ai": notifications_for_ai,
+            "recent_relevancies_ai_to_target": relevancies_ai_to_target,
+            "recent_problems_involving_us": problems_involving_pair
+            # On pourrait aussi ajouter un bref historique de conversation avec CET interlocuteur si disponible.
         }
-        add_system_json = json.dumps(system_context_data, indent=2)
+        
+        ai_display_name = ai_citizen_profile_data.get('fields', {}).get('FirstName', ai_username)
+        target_display_name = target_citizen_profile_data.get('fields', {}).get('FirstName', target_username)
+        ai_social_class = ai_citizen_profile_data.get('fields', {}).get('SocialClass')
 
-        ai_display_name = ai_citizen_data.get('fields', {}).get('FirstName', ai_username) if ai_citizen_data else ai_username
-        target_display_name = target_citizen_data.get('fields', {}).get('FirstName', target_username) if target_citizen_data else target_username
-
-        # Prompt spécifique pour l'initiative de message
-        kinos_prompt = (
-            f"You are {ai_display_name}, an AI citizen of Venice. You've decided to initiate/continue the conversation with {target_display_name}.\n"
-            f"IMPORTANT: Your message must be short, human-like, and conversational. It should be a natural conversation starter. "
+        prompt_for_message_content = (
+            f"You are {ai_display_name}, an AI citizen of Venice. You are initiating a conversation with {target_display_name}.\n"
+            f"The primary reason for this contact is: \"{reason_for_contact}\".\n"
+            f"IMPORTANT: Your message must be short, human-like, and conversational. It should be a natural conversation starter related to the reason and context. "
             f"DO NOT mention that you 'decided to send a message' or that this is an 'initiative'. Just start talking naturally. "
-            f"DO NOT use formal language, DO NOT include any fluff or boilerplate. "
-            f"Be direct and concise. Imagine you're sending a quick, informal message to someone you know.\n\n"
-            f"CRITICAL: Use the structured context provided in the 'addSystem' field (detailed below) to make your message RELEVANT to {target_display_name} and FOCUSED ON GAMEPLAY. "
-            f"Your message should reflect your understanding of your relationship, recent events, and potential gameplay interactions with {target_display_name}.\n\n"
-            f"Guide to 'addSystem' content (use this to make your message relevant and gameplay-focused):\n"
-            f"- 'ai_citizen_profile': Your own detailed profile.\n"
-            f"- 'target_citizen_profile': The profile of {target_display_name}.\n"
-            f"- 'relationship_with_target': Your existing relationship status with {target_display_name}.\n"
-            f"- 'recent_notifications_for_ai': Recent news/events you've received that might be relevant.\n"
-            f"- 'recent_relevancies_ai_to_target': Why {target_display_name} is specifically relevant to you.\n"
-            f"- 'recent_problems_involving_ai_or_target': Recent issues involving you or {target_display_name}.\n\n"
-            f"What do you want to say to {target_display_name} to start a conversation? "
-            f"Remember: SHORT, human-like, conversational, RELEVANT, FOCUSED ON GAMEPLAY. Start naturally.\n"
-            f"Your message:"
+            f"DO NOT use formal language. Be direct and concise.\n\n"
+            f"Use the structured context in `addSystem` to make your message RELEVANT and FOCUSED ON GAMEPLAY or narrative progression with {target_display_name}.\n"
+            f"Your message to {target_display_name}:"
         )
         
-        url = f"https://api.kinos-engine.ai/v2/blueprints/{blueprint}/kins/{ai_username}/channels/{target_username}/messages"
-        headers = {"Authorization": f"Bearer {api_key}", "Content-Type": "application/json"}
-        payload = {"message": kinos_prompt, "addSystem": add_system_json}
+        # Utiliser le modèle basé sur la classe sociale de l'IA ou l'override
+        effective_model = kinos_model_override or get_kinos_model_for_social_class(ai_username, ai_social_class)
 
-        if kinos_model_override:
-            payload["model"] = kinos_model_override
-            print(f"Using KinOS model override '{kinos_model_override}' for {ai_username} (message initiative).")
+        # make_kinos_channel_call est importé de conversation_helper
+        raw_message_content = make_kinos_channel_call(
+            kinos_api_key=kinos_api_key,
+            speaker_username=ai_username,
+            channel_name=target_username, # Le canal est avec le target_username
+            prompt=prompt_for_message_content,
+            add_system_data=focused_system_context,
+            kinos_model_override=effective_model
+        )
 
-        response = requests.post(url, headers=headers, json=payload, timeout=90) # Augmentation du timeout à 90s
-        
-        if response.status_code == 200 or response.status_code == 201:
-            # Essayer de récupérer le dernier message de l'assistant
-            messages_url = f"https://api.kinos-engine.ai/v2/blueprints/{blueprint}/kins/{ai_username}/channels/{target_username}/messages"
-            messages_response = requests.get(messages_url, headers=headers, timeout=20)
-            if messages_response.status_code == 200:
-                messages_data = messages_response.json()
-                assistant_messages = [msg for msg in messages_data.get("messages", []) if msg.get("role") == "assistant"]
-                if assistant_messages:
-                    assistant_messages.sort(key=lambda x: x.get("timestamp", ""), reverse=True)
-                    raw_content = assistant_messages[0].get("content")
-                    if raw_content:
-                        # Nettoyer le contenu avant de le retourner
-                        from backend.engine.utils.activity_helpers import clean_thought_content # Importation locale
-                        cleaned_content = clean_thought_content(tables, raw_content)
-                        return cleaned_content
-            print(f"KinOS POST réussi mais impossible de récupérer la réponse de l'assistant pour {ai_username} à {target_username}.")
-            return "I was thinking about something..." # Fallback court
+        if raw_message_content:
+            # clean_thought_content est importé de activity_helpers
+            cleaned_content = clean_thought_content(tables, raw_message_content)
+            print(f"Contenu du message généré pour {ai_username} à {target_username}: {cleaned_content[:100]}...")
+            return cleaned_content
         else:
-            print(f"Erreur de l'API KinOS pour {ai_username} à {target_username}: {response.status_code} - {response.text}")
+            print(f"KinOS n'a pas retourné de contenu de message pour {ai_username} à {target_username}.")
             return None
+
     except Exception as e:
         print(f"Erreur dans generate_ai_initiative_message pour {ai_username} à {target_username}: {e}")
+        import traceback
+        print(traceback.format_exc())
         return None
-
-# create_response_message_api is removed as its functionality is replaced by 'send_message' activity
 
 def create_admin_notification(tables: Dict[str, Table], initiatives_summary: Dict[str, Any]) -> None:
     """Crée une notification pour les administrateurs avec le résumé des initiatives."""
@@ -455,22 +477,28 @@ def process_ai_message_initiatives(dry_run: bool = False, citizen1_arg: Optional
 
         initiatives_summary["processed_ai_count"] = 1
         initiatives_summary["details"][ai_username] = {"messages_sent_count": 0, "targets": []}
+        
+        kinos_api_key_local = get_kinos_api_key() # Récupérer la clé API une fois
 
         if not dry_run:
-            message_content = generate_ai_initiative_message(tables, ai_username, target_username, kinos_model_override_arg)
+            # Pour le mode ciblé, la raison est implicite ("commande directe")
+            # ou pourrait être passée via un autre argument si nécessaire.
+            # Ici, nous allons générer directement le contenu du message.
+            reason_for_targeted_contact = f"Instruction directe de contacter {target_username}"
+            message_content = generate_ai_initiative_message(
+                tables, ai_username, target_username, kinos_api_key_local, 
+                reason_for_targeted_contact, kinos_model_override_arg
+            )
             if message_content:
-                # Construct channel name for targeted message
                 sorted_usernames_for_channel_targeted = sorted([ai_username, target_username])
                 channel_name_targeted = f"{sorted_usernames_for_channel_targeted[0]}_{sorted_usernames_for_channel_targeted[1]}"
-
                 activity_params = {
                     "receiverUsername": target_username,
                     "content": message_content,
-                    "messageType": "message", # Default type
-                    "channel": channel_name_targeted # Add channel to activity params
-                    # targetBuildingId is optional for send_message activity
+                    "messageType": "message",
+                    "channel": channel_name_targeted
                 }
-                log.info(f"    Tentative d'envoi de message ciblé via activité 'send_message' avec canal: {channel_name_targeted}")
+                print(f"    Tentative d'envoi de message ciblé via activité 'send_message' avec canal: {channel_name_targeted}")
                 if call_try_create_activity_api(ai_username, "send_message", activity_params, dry_run):
                     initiatives_summary["total_messages_sent"] += 1
                     initiatives_summary["details"][ai_username]["messages_sent_count"] += 1
@@ -479,32 +507,33 @@ def process_ai_message_initiatives(dry_run: bool = False, citizen1_arg: Optional
                 print(f"    Échec de la génération du contenu du message de {ai_username} à {target_username}.")
         else:
             print(f"    [DRY RUN] {ai_username} aurait initié un message à {target_username}.")
+            # Simuler le succès pour le résumé en dry run
             initiatives_summary["total_messages_sent"] += 1
             initiatives_summary["details"][ai_username]["messages_sent_count"] += 1
             initiatives_summary["details"][ai_username]["targets"].append(target_username)
+
     elif citizen_arg:
         # Mode pour un citoyen spécifique
-        ai_citizen_record = _get_citizen_data(tables, citizen_arg)
-        if not ai_citizen_record:
-            print(f"Citoyen IA '{citizen_arg}' non trouvé. Fin du processus.")
+        ai_citizen_record_fields = _get_citizen_data(tables, citizen_arg) # Ceci retourne {'id': ..., 'fields': ...}
+        if not ai_citizen_record_fields or not ai_citizen_record_fields.get('fields'):
+            print(f"Citoyen IA '{citizen_arg}' non trouvé ou données de champs manquantes. Fin du processus.")
             return
         
-        # Vérifier si c'est une IA (optionnel, mais bon à savoir)
-        # if not ai_citizen_record.get('fields', {}).get('IsAI'):
-        #     print(f"Attention : {citizen_arg} n'est pas marqué comme IA, mais on continue quand même.")
-
-        ai_citizens_to_process = [ai_citizen_record]
-        initiatives_summary["processed_ai_count"] = 1 # Un seul citoyen traité
+        # Construire un enregistrement similaire à ce que get_ai_citizens retournerait pour la boucle
+        ai_citizens_to_process = [{'id': ai_citizen_record_fields['id'], 'fields': ai_citizen_record_fields['fields']}]
+        initiatives_summary["processed_ai_count"] = 1
     else:
-        # Mode normal (probabiliste pour tous les IA)
+        # Mode normal (pour tous les IA)
         ai_citizens_to_process = get_ai_citizens(tables)
         if not ai_citizens_to_process:
             print("Aucun citoyen IA trouvé, fin du processus.")
             return
-        random.shuffle(ai_citizens_to_process) # Randomiser l'ordre de traitement
+        random.shuffle(ai_citizens_to_process)
 
     # Boucle principale pour le mode normal ou le mode citoyen spécifique
     if not (citizen1_arg and citizen2_arg): # Ne pas exécuter cette boucle si en mode ciblé --citizen1/--citizen2
+        kinos_api_key_local = get_kinos_api_key() # Récupérer la clé API une fois pour la boucle
+
         for ai_citizen_record_loop in ai_citizens_to_process:
             ai_username = ai_citizen_record_loop.get("fields", {}).get("Username")
             if not ai_username:
@@ -517,79 +546,62 @@ def process_ai_message_initiatives(dry_run: bool = False, citizen1_arg: Optional
             initiatives_summary["details"][ai_username] = {"messages_sent_count": 0, "targets": []}
             
             print(f"\nTraitement des initiatives pour l'IA : {ai_username}")
-            top_relationships = get_top_relationships_for_ai(tables, ai_username, limit=10)
 
-            if not top_relationships:
-                print(f"Aucune relation trouvée pour {ai_username}.")
+            # 1. Récupérer le data package complet pour l'IA
+            # get_citizen_data_package est importé de conversation_helper
+            # Il attend api_base_url, qui est BASE_URL dans ce script.
+            ai_data_package = get_citizen_data_package(ai_username, BASE_URL)
+            if not ai_data_package:
+                print(f"Impossible de récupérer le data package pour {ai_username}. Passage au suivant.")
                 continue
 
-            max_combined_score = top_relationships[0]["combined_score"]
-            if max_combined_score <= 0:
-                print(f"Le score combiné maximal pour {ai_username} est {max_combined_score}. Aucune initiative basée sur le score.")
-                continue
+            # 2. Appeler KinOS pour choisir un interlocuteur et une raison
+            target_username, reason_for_contact = choose_interlocutor_via_kinos(
+                ai_username, 
+                kinos_api_key_local, 
+                ai_data_package, 
+                kinos_model_override_arg # Peut être None, auquel cas choose_interlocutor_via_kinos utilisera 'local'
+            )
+
+            if target_username and reason_for_contact:
+                print(f"    -> {ai_username} va tenter d'initier un message à {target_username}. Raison: {reason_for_contact}")
                 
-            print(f"Score combiné maximal pour {ai_username} : {max_combined_score}")
-
-            for relationship in top_relationships:
-                target_username = relationship["other_citizen_username"]
-                current_score = relationship["combined_score"]
-
-                if current_score <= 0:
-                    probability = 0.0
-                elif max_combined_score <= 0: 
-                    probability = 0.0
-                else:
-                    log_current_score = math.log(current_score + 1)
-                    log_max_score = math.log(max_combined_score + 1)
-                    
-                    if log_max_score > 0: 
-                        probability = (log_current_score / log_max_score) * 0.25
-                    else: 
-                        probability = 0.0
-                
-                target_citizen_data = _get_citizen_data(tables, target_username)
-                if target_citizen_data and target_citizen_data.get('fields', {}).get('IsAI', False):
-                    probability /= 10
-                    print(f"    -> Cible {target_username} est une IA. Probabilité de base ajustée à: {probability:.2%}")
-                
-                if not _check_existing_messages(tables, ai_username, target_username):
-                    probability *= 2
-                    print(f"    -> Aucun message existant. Probabilité doublée à: {probability:.2%}")
-
-                probability = min(probability, 0.95)
-                print(f"  Relation avec {target_username} (Score: {current_score}). Probabilité d'initiative finale plafonnée: {probability:.2%}")
-
-                if random.random() < probability:
-                    print(f"    -> {ai_username} initie un message à {target_username}!")
-                    
-                    if not dry_run:
-                        message_content = generate_ai_initiative_message(tables, ai_username, target_username, kinos_model_override_arg)
-                        if message_content:
-                            # Construct channel name
-                            sorted_usernames_for_channel_initiative = sorted([ai_username, target_username])
-                            channel_name_initiative = f"{sorted_usernames_for_channel_initiative[0]}_{sorted_usernames_for_channel_initiative[1]}"
-                            
-                            activity_params = {
-                                "receiverUsername": target_username,
-                                "content": message_content,
-                                "messageType": "message",
-                                "channel": channel_name_initiative # Add channel to activity params
-                            }
-                            log.info(f"    Tentative d'envoi de message via activité 'send_message' avec canal: {channel_name_initiative}")
-                            if call_try_create_activity_api(ai_username, "send_message", activity_params, dry_run):
-                                initiatives_summary["total_messages_sent"] += 1
-                                initiatives_summary["details"][ai_username]["messages_sent_count"] += 1
-                                initiatives_summary["details"][ai_username]["targets"].append(target_username)
-                        else:
-                            print(f"    Échec de la génération du contenu du message de {ai_username} à {target_username}.")
+                if not dry_run:
+                    message_content = generate_ai_initiative_message(
+                        tables, 
+                        ai_username, 
+                        target_username, 
+                        kinos_api_key_local, 
+                        reason_for_contact, 
+                        kinos_model_override_arg # Peut être None, generate_ai_initiative_message choisira en fonction de la classe sociale
+                    )
+                    if message_content:
+                        sorted_usernames_for_channel_initiative = sorted([ai_username, target_username])
+                        channel_name_initiative = f"{sorted_usernames_for_channel_initiative[0]}_{sorted_usernames_for_channel_initiative[1]}"
+                        
+                        activity_params = {
+                            "receiverUsername": target_username,
+                            "content": message_content,
+                            "messageType": "message", # Ou un type plus spécifique comme "ai_initiative"
+                            "channel": channel_name_initiative
+                        }
+                        print(f"    Tentative d'envoi de message via activité 'send_message' avec canal: {channel_name_initiative}")
+                        if call_try_create_activity_api(ai_username, "send_message", activity_params, dry_run):
+                            initiatives_summary["total_messages_sent"] += 1
+                            initiatives_summary["details"][ai_username]["messages_sent_count"] += 1
+                            initiatives_summary["details"][ai_username]["targets"].append(target_username)
                     else:
-                        print(f"    [DRY RUN] {ai_username} aurait initié un message à {target_username}.")
-                        initiatives_summary["total_messages_sent"] += 1
-                        initiatives_summary["details"][ai_username]["messages_sent_count"] += 1
-                        initiatives_summary["details"][ai_username]["targets"].append(target_username)
-                
-                time.sleep(0.2) 
-            time.sleep(0.5)
+                        print(f"    Échec de la génération du contenu du message de {ai_username} à {target_username}.")
+                else: # Dry run
+                    print(f"    [DRY RUN] {ai_username} aurait initié un message à {target_username} (Raison: {reason_for_contact}).")
+                    # Simuler le succès pour le résumé en dry run
+                    initiatives_summary["total_messages_sent"] += 1
+                    initiatives_summary["details"][ai_username]["messages_sent_count"] += 1
+                    initiatives_summary["details"][ai_username]["targets"].append(target_username)
+            else:
+                print(f"    Aucun interlocuteur choisi par KinOS pour {ai_username}, ou raison manquante.")
+            
+            time.sleep(1) # Pause entre les traitements des IA pour éviter de surcharger les API
 
     print("\nRésumé final des initiatives :")
     print(json.dumps(initiatives_summary, indent=2))
