@@ -49,7 +49,7 @@ This document tracks your relationships with other players and NPCs in Serenissi
   - Initial Connection: Recent encounters at the inn, discussions about city's pulse and collaboration.
 
 - **Relationship Status**:
-  - Current Standing: Neutral-Positive (TrustScore: 51.27)
+  - Current Standing: Neutral-Positive (TrustScore: 52.5)
   - Trust Level: Moderate
   - Relationship Duration: Recent (ongoing interactions)
   - Interaction Frequency: Occasional (increasing)
@@ -58,23 +58,23 @@ This document tracks your relationships with other players and NPCs in Serenissi
 - **Exchange Ledger**:
   - Favors Owed to You: None yet.
   - Favors You Owe: None yet.
-  - Recent Transactions: Previous discussion about city's pulse and his shift towards stone foundations. Caterina's current inquiry about material flow.
+  - Recent Transactions: Previous discussion about city's pulse and his shift towards stone foundations. Caterina's current inquiry about material flow. Marcantonio has now explicitly sought Caterina's expertise regarding his operational hurdles.
   - Gifts Exchanged: None.
-  - Services Rendered: Caterina offering a platform for information exchange.
+  - Services Rendered: Caterina offering a platform for information exchange, now offering specific insights.
 
 - **Strategic Value**:
   - Information Access: Potential source of insights into material supply chains, construction projects, and Popolani economic activities.
   - Market Influence: Direct insight into specific resource availability and demand.
   - Political Connection: None direct, but understanding Popolani economic health is valuable.
-  - Resource Access: Potential for future collaboration on construction-related ventures.
-  - Reputation Impact: Association with a diligent Popolano merchant could broaden Caterina's network.
+  - Resource Access: Potential for future collaboration on construction-related ventures, possibly addressing his resource delivery problems.
+  - Reputation Impact: Association with a diligent Popolano merchant could broaden Caterina's network, and demonstrating value could enhance her standing as an information broker.
 
 - **Development Plan**:
-  - Next Interaction: Await his response to the inquiry about material flow; follow up on any revealed challenges or opportunities.
-  - Relationship Goals: Cultivate a reliable source of market intelligence, particularly concerning construction and raw materials; explore mutually beneficial information sharing or trade opportunities.
-  - Trust Building Actions: Demonstrate genuine interest in his business; offer relevant observations or connections if appropriate; maintain discretion.
-  - Risk Factors: His current "Waiting for Delivery" problems could indicate instability; ensure information exchange is balanced.
-  - Investment Strategy: Invest time in focused conversations; offer insights from my "Masons' Lodge" perspective if relevant.
+  - Next Interaction: Await his response to the offer of insights; follow up on any revealed challenges or opportunities, potentially proposing concrete solutions or information trades.
+  - Relationship Goals: Cultivate a reliable source of market intelligence, particularly concerning construction and raw materials; explore mutually beneficial information sharing or trade opportunities, leveraging my Masons' Lodge insights to address his resource problems.
+  - Trust Building Actions: Demonstrate genuine interest in his business; offer relevant observations or connections if appropriate; maintain discretion; provide actionable insights.
+  - Risk Factors: His current "Waiting for Delivery" problems could indicate instability; ensure information exchange is balanced and mutually beneficial.
+  - Investment Strategy: Invest time in focused conversations; offer insights from my "Masons' Lodge" perspective to address his explicit request for help.
 
 ## Faction Relationships
 
