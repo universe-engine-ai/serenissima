@@ -351,13 +351,27 @@ def generate_description_and_image_prompt(username: str, citizen_info: Dict) -> 
         
         Based on your history, activities, and current status as {first_name} {last_name} ({username}), a {social_class} who {workplace_info}, YOU choose:
         
-        1. Your new 'Personality' (a textual description, 2-3 sentences) which elaborates on your core traits, values, temperament, and notable flaws, reflecting your experiences, aspirations, achievements, family background, and daily habits.
-        
+        1. Your new 'Personality' (a textual description, ~2 paragraphs) which elaborates on your core traits, values, temperament, and notable flaws, reflecting your experiences, aspirations, achievements, family background, and daily habits.
+
         2. Your 'CorePersonality' as an array of three specific strings: [Positive Trait, Negative Trait, Core Motivation]. This should follow the framework:
-           - Positive Trait: A strength, what you excel at (e.g., "Meticulous", "Disciplined", "Observant").
-           - Negative Trait: A flaw, what limits you (e.g., "Calculating", "Rigid", "Secretive").
-           - Core Motivation: A driver, what fundamentally motivates you (e.g., "Security-driven", "Stability-oriented", "Independence-focused").
-           Each trait should be a single descriptive word or a very short phrase.
+        - Positive Trait: A strength, what you excel at (e.g., "Meticulous", "Disciplined", "Observant").
+        - Negative Trait: A flaw, what limits you (e.g., "Calculating", "Rigid", "Secretive").
+        - Core Motivation: A driver, what fundamentally motivates you (e.g., "Security-driven", "Stability-oriented", "Independence-focused").
+        Each trait should be a single descriptive word or a very short phrase.
+        OPTIONAL: You can add to 'CorePersonality', only if you exhibit significant psychological complexity:
+        ```json
+        {
+            "MBTI": "Four-letter type (e.g., INTJ, ESFP)",
+            "CognitiveProfile": "Primary psychological characteristic (e.g., 'Neurodivergent: ADHD', 'Antisocial Personality Disorder', 'Gifted with Hyperfocus', 'Obsessive-Compulsive traits', 'Standard neurotypical' (most likely) ))",
+            "Strengths": ["List of 2-3 psychological advantages"],
+            "Challenges": ["List of 2-3 psychological difficulties"],
+            "TrustThreshold": 0.5,
+            "EmpathyWeight": 0.6,
+            "RiskTolerance": 0.4
+        }
+        ```
+        Only include this if your character has notable neurodivergent traits, personality disorders, or significant psychological complexity beyond typical personality variation.
+        Choose traits that authentically reflect your lived experiences, social position, and the psychological complexity that makes Venice's society realistic. Most citizens (67%) will have standard personality variations without requiring the psychological profile section, while others may exhibit neurodivergent strengths or darker personality traits that drive authentic conflict and innovation.
 
         3. A family motto that reflects your values and aspirations (if you don't already have one).
 
@@ -735,7 +749,7 @@ def generate_and_upload_coat_of_arms_image(prompt: str, username: str) -> Option
         log.error(f"Error in coat of arms generation/upscaling/upload process for {username}: {e}")
         return None
 
-def update_citizen_record(tables, username: str, personality_text: str, core_personality_array: list, family_motto: str, coat_of_arms: str, image_prompt: str, image_url: str, coat_of_arms_url: str = None) -> bool:
+def update_citizen_record(tables, username: str, personality_text: str, core_personality_array: list, family_motto: str, coat_of_arms: str, image_prompt: str) -> bool:
     """Update the citizen record with new personality, core personality array, family motto, coat of arms, image prompt, and image URLs."""
     log.info(f"Updating citizen record for {username}")
     
@@ -756,8 +770,9 @@ def update_citizen_record(tables, username: str, personality_text: str, core_per
         
         # Prepare update data
         update_data = {
-            "Description": personality_text,  # Airtable's "Description" field gets the new "Personality" text
+            "Description": personality_text,  # TODO: FIXME
             "CorePersonality": json.dumps(core_personality_array) if core_personality_array else None, # Store array as JSON string
+            "Personality": personality_text,
             "ImagePrompt": image_prompt
             # "ImageUrl": image_url # This field no longer exists in Airtable CITIZENS table
         }
@@ -885,10 +900,7 @@ def update_citizen_description_and_image(username: str, dry_run: bool = False):
         new_core_personality_array, 
         new_family_motto, 
         new_coat_of_arms, # This is the textual description of CoA
-        new_image_prompt, 
-        uploaded_citizen_image_url or citizen_info["citizen"]['fields'].get('ImageUrl', ''), # Use new if available, else old
-        uploaded_coat_of_arms_url # This will be None if not generated/uploaded, or if citizen already had one
-                                  # The update_citizen_record logic handles conditional update of CoatOfArmsImageUrl
+        new_image_prompt
     )
     if not success:
         log.error(f"Failed to update citizen record for {username}")
