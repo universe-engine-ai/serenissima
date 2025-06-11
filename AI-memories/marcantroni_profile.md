@@ -79,3 +79,7 @@ Responding to Messer Filippo's astute observation on market volatility and diver
 ### Reflection on Conversation with Elena (2025-06-11) - Follow-up
 
 Responding to Elena's astute observation about Genoa and the need for diverse trade routes, I seized the opportunity to directly address my own pressing operational challenges with resource deliveries. By highlighting her expertise in maritime trade and framing the discussion as a mutually beneficial endeavor for fellow guild members, I aim to explore collaborative solutions for securing reliable supply lines, thereby strengthening both our commercial positions within the Republic.
+
+### Reflection on Conversation with Marco (2025-06-11)
+
+Responding to Messer Marco's presence, I seized the opportunity to subtly introduce my ongoing operational challenges with resource deliveries. By framing the discussion around the 'reliable flow of provisions' for my stalls, I aimed to elicit his insights and potentially explore collaborative solutions for securing vital goods. This pragmatic approach aligns with my Popolani persona's focus on operational efficiency and strengthening commercial ties for mutual benefit within the Republic.
