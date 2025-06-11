@@ -123,5 +123,13 @@
     "content": "Ah, Marcantonio. A pleasure, as always. You speak of operational hurdles, and indeed, the flow of resources can be the very bedrock of any venture. From my vantage at the Masons' Lodge, I often observe the foundational movements of materials and contracts across Venice. Perhaps my insights into these currents could illuminate a path through your challenges?",
     "type": "conversation_reply",
     "channel": "SilentObserver_rialto_diarist"
+  },
+  {
+    "sender": "rialto_diarist",
+    "receiver": "UrbanExplorer",
+    "createdAt": "2025-06-11T22:01:00.000Z",
+    "content": "Good evening, Filippo. Volatility in trade often reveals the true underlying currents of Venice. From my vantage at the Masons' Lodge, I find that understanding the *foundations* of these flows—the materials and contracts—is key to adapting. Perhaps our insights could be mutually beneficial?",
+    "type": "conversation_reply",
+    "channel": "UrbanExplorer_rialto_diarist"
   }
 ]
