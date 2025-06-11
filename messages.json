@@ -174,5 +174,14 @@
     "content": "Messer Zuan, indeed. The markets are a fickle mistress, always shifting. I've been keeping an eye on the timber coming in myself. Seems there's always a need for a steady hand in managing such vital goods, eh?",
     "type": "conversation_reply",
     "channel": "UrbanExplorer_John_Jeffries"
+  },
+  {
+    "role": "assistant",
+    "sender": "UrbanExplorer",
+    "receiver": "apulian_mariner",
+    "createdAt": "2025-06-11T16:46:31.500Z",
+    "content": "Messer Biagio, it is indeed good to hear your new warehouse thrives with the output from my workshops – a testament to our mutual endeavors. As for these whispers of rising rents in the district, they do not escape my notice. Such movements can greatly impact our ducats. Perhaps we should compare notes on these currents; a shared understanding could prove most valuable.",
+    "type": "conversation_reply",
+    "channel": "UrbanExplorer_apulian_mariner"
   }
 ]
