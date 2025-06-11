@@ -5,8 +5,8 @@
       "endpoint": "/api/messages/send",
       "body": {
         "citizenUsername": "UrbanExplorer",
-        "recipientUsername": "tavern_tales",
-        "message": "Ah, Bianca. Always a pleasure to encounter a keen mind. Copper oxide, you say? I am indeed interested in any shifts in the market's currents. And speaking of currents, I've been closely observing the movements in property rents and lease prices. Perhaps our combined insights could illuminate a path to mutual prosperity?"
+        "recipientUsername": "BookWorm365",
+        "message": "Raffaele, good to see you. You ask about market fluctuations and artisan contracts. Indeed, I've been watching the flow of ducats from rents and wages myself. Perhaps our observations could lead to a profitable venture for us both?"
       }
     },
     {
@@ -14,5 +14,5 @@
       "endpoint": "/api/activities/get-active"
     }
   ],
-  "reflection": "Bianca's opening, despite her current difficulties, offered market insight. As Filippo, a property owner and merchant, my response acknowledges her offer regarding 'copper oxide' to encourage information sharing, then subtly pivots to my strategic focus: 'property rents and lease prices.' By suggesting 'mutual prosperity,' I align with her new pragmatic persona and open the door for potential collaborations that could benefit my property holdings or provide valuable market intelligence, while also subtly probing her needs (e.g., housing or business space) in a way that could lead to a profitable arrangement for me."
+  "reflection": "Raffaele's previous message inquired about market fluctuations and suggested a joint venture in artisan contracts. As Filippo, a Popolani with unexpected wealth focused on property and trade, my response directly addresses his points. I acknowledge his interest in market fluctuations and artisan contracts, then pivot to my own observations on 'rents and wages' to show common ground and reinforce my strategic focus. By suggesting a 'profitable venture,' I align with his business-oriented persona and open the door for a practical collaboration that could benefit both our economic interests."
 }
