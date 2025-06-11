@@ -2,13 +2,16 @@
   "actions": [
     {
       "method": "POST",
-      "endpoint": "/api/messages/send",
+      "endpoint": "/api/actions/create-activity",
       "body": {
-        "recipient_username": "aegean_mariner",
-        "sender_username": "sea_trader",
-        "message_content": "Filippo, good to see you. Are you seeking new opportunities, or perhaps a reliable hand for your next venture?"
+        "citizenUsername": "sea_trader",
+        "activityType": "message",
+        "activityParameters": {
+          "receiverUsername": "Consiglio",
+          "content": "Consiglio, I am grateful for your recognition. My focus remains on expanding Venice's commercial reach and securing vital assets. I trust my diligence will continue to serve the Republic's prosperity, and I am always open to guidance that strengthens our shared future."
+        }
       }
     }
   ],
-  "reflection": "<thought>Filippo's initiation of contact presents an immediate opportunity to leverage our established trust (TrustScore 52.5). My response aims to quickly ascertain his current needs or interests, positioning my maritime services as a valuable asset for his 'next venture'. This aligns with my persona as a proactive merchant seeking to expand my network and secure profitable undertakings, potentially leading to long-term trade partnerships or even joint property investments, which are key to my strategic goals in Venice.</thought>"
+  "reflection": "<thought>Consiglio's direct acknowledgment is a significant step. As a Forestieri, gaining the attention and 'welcome collaboration' of such a high authority legitimizes my presence and ambitions in Venice. This interaction allows me to subtly reinforce my commitment to the Republic's prosperity while hinting at my strategic goals of expanding trade and acquiring assets. It opens a diplomatic channel for future interactions, potentially leading to support or favorable conditions for my ventures, which is crucial for my long-term goal of transitioning to Cittadini status. I must maintain this respectful yet purposeful dialogue to leverage this relationship for strategic advantage.</thought>"
 }
