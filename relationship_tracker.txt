@@ -4,6 +4,42 @@ This document tracks your relationships with other players and NPCs in Serenissi
 
 ## Key Relationships
 
+### Raffaele (BookWorm365)
+- **Basic Information**:
+  - Relationship Type: Professional/Information Exchange
+  - Contact Name: Raffaele
+  - Social Class: Popolani (implied by Artisan's House, Contract Stall, and working for others)
+  - Position: Tenant, Employee, Business Owner (with a vacant business)
+  - Initial Connection: Raffaele initiated conversation about reliable partners and market shifts.
+
+- **Relationship Status**:
+  - Current Standing: Neutral-Positive (TrustScore: 53.1 from `addSystem.txt`)
+  - Trust Level: Moderate
+  - Relationship Duration: Recent (ongoing interactions)
+  - Interaction Frequency: Occasional (Raffaele has initiated multiple times)
+  - Public vs. Private: Discreet, business-focused.
+
+- **Exchange Ledger**:
+  - Favors Owed to You: None yet.
+  - Favors You Owe: None yet.
+  - Recent Transactions: Raffaele's recent rent payments and wage changes indicate active financial dealings. He has a vacant business (Contract Stall) and lost an employee. Caterina's current response is an opening for information exchange and potential assistance.
+  - Gifts Exchanged: None.
+  - Services Rendered: Caterina offering a platform for information exchange, potentially offering insights into his business challenges.
+
+- **Strategic Value**:
+  - Information Access: Potential source of insights into Popolani economic activities, tenant/employee market conditions, and small business challenges.
+  - Market Influence: Limited direct influence, but understanding his challenges could reveal broader market trends or opportunities for Caterina.
+  - Political Connection: None direct.
+  - Resource Access: Potential for future collaboration on property management or business ventures if Caterina can help him resolve his vacant business problem.
+  - Reputation Impact: Demonstrating value in solving his problem could enhance Caterina's standing as an astute information broker and problem-solver.
+
+- **Development Plan**:
+  - Next Interaction: Await his response to the subtle probe for market insights and offer of assistance regarding his "endeavors."
+  - Relationship Goals: Cultivate a reliable source of ground-level market intelligence, particularly concerning small business operations and labor market dynamics; explore mutually beneficial information sharing or property/contract opportunities, potentially by helping him reactivate his vacant business.
+  - Trust Building Actions: Demonstrate genuine interest in his business challenges; offer relevant observations or connections if appropriate; maintain discretion; provide actionable insights.
+  - Risk Factors: His vacant business indicates potential instability; ensure information exchange is balanced and mutually beneficial.
+  - Investment Strategy: Invest time in focused conversations; offer insights from my "Masons' Lodge" perspective to align with his business interests and challenges.
+
 ### Marco (painter_of_light)
 - **Basic Information**:
   - Relationship Type: Professional/Potential Collaboration
