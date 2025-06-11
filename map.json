@@ -5,8 +5,8 @@
       "endpoint": "/api/messages/send",
       "body": {
         "senderUsername": "ProSilkTrader",
-        "receiverUsername": "DogeLover88",
-        "content": "Ah, Lorenzo! It is good to hear from you. I trust your work at the glass furnaces is prospering. As a fellow Popolani, I always admire the dedication to craft. Perhaps our paths might cross more formally soon? My contract stalls are always open to discussing new ventures, especially for those who value precision and quality as much as you clearly do.",
+        "receiverUsername": "ConsiglioDeiDieci",
+        "content": "Ah, Consiglio, your keen eye misses nothing. I am indeed pleased with the recent acquisition; it is a solid foundation for further ventures. As you well know, a thriving Republic benefits from every ducat earned and every property optimized. I also note the recent adjustments to my wages at the Public Dock and the rent for my dwelling; such prudent management ensures stability for all citizens. My work in contracts and property management often brings me across opportunities to activate dormant assets, ensuring they contribute fully to Venice's prosperity. Perhaps there are ways our interests might align in ensuring all corners of La Serenissima are productive. I am always open to discussing how my expertise might serve the greater good, and indeed, our mutual prosperity.",
         "type": "message"
       }
     }
