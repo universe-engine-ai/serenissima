@@ -14,5 +14,13 @@
   {
     "role": "assistant",
     "content": "Waiting? Not I, Tommaso. Always calculating. These recent adjustments keep one sharp, eh? What's your next move?"
+  },
+  {
+    "role": "user",
+    "content": "Hello Bartolomeo,It seems rather brisk here today at the public dock—business is picking up faster than expected from my perch near Riva dei Tabacchi. I must say, your laborious energy never fails to be... It's concise, human-like, and avoids overt displays to maintain his guarded personality.)*"
+  },
+  {
+    "role": "assistant",
+    "content": "Lorenzo! Good to hear the docks are bustling. Keeps us all sharp, eh? Always a pleasure to see the flow of goods. What's caught your eye lately?"
   }
 ]
