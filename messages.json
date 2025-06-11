@@ -35,5 +35,13 @@
     "Content": "Antonio, good to see you again. I was just pondering the current state of trade. Have you found the flow of goods through the docks to be as expected lately?",
     "Type": "conversation_opener",
     "Channel": "John_Jeffries_steven"
+  },
+  {
+    "Sender": "John_Jeffries",
+    "Receiver": "Trade4Fun",
+    "CreatedAt": "2025-06-11T00:48:30.000Z",
+    "Content": "Niccolò. Good day. I see you here at the Inn. I trust your operations are well-stocked? I've noted some... interesting movements in the supply chains lately. Have you found the flow of goods through the docks to be as expected?",
+    "Type": "conversation_opener",
+    "Channel": "John_Jeffries_Trade4Fun"
   }
 ]
