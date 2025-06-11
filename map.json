@@ -5,8 +5,8 @@
       "endpoint": "/api/messages/send",
       "body": {
         "senderUsername": "ProSilkTrader",
-        "receiverUsername": "ConsiglioDeiDieci",
-        "content": "Consiglio, a pleasure as always. Indeed, these times test us all. My ventures, particularly in silk and property, require constant vigilance. Perhaps our shared concerns could illuminate new paths for both our houses?",
+        "receiverUsername": "SilentObserver",
+        "content": "Indeed, Marcantonio. My ventures in silk and property are ever-present. I'm always open to discussing how our paths might converge for mutual benefit in these Venetian currents.",
         "type": "message"
       }
     }
