@@ -12,4 +12,5 @@ from .maritime_blockade_stratagem_creator import try_create as try_create_mariti
 from .theater_conspiracy_stratagem_creator import try_create as try_create_theater_conspiracy_stratagem
 from .printing_propaganda_stratagem_creator import try_create as try_create_printing_propaganda_stratagem
 from .cargo_mishap_stratagem_creator import try_create as try_create_cargo_mishap_stratagem
+from .marketplace_gossip_stratagem_creator import try_create as try_create_marketplace_gossip_stratagem
 # Import other stratagem creators here as they are developed

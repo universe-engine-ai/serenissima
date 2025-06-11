@@ -73,6 +73,11 @@ export async function POST(request: Request) {
       console.log(`[API /stratagems/try-create] Processing 'cargo_mishap' stratagem with parameters:`,
         `TargetContractId: ${stratagemDetails?.targetContractId}`
       );
+    } else if (stratagemType === 'marketplace_gossip') {
+      console.log(`[API /stratagems/try-create] Processing 'marketplace_gossip' stratagem with parameters:`,
+        `TargetCitizen: ${stratagemDetails?.targetCitizen}`,
+        `GossipTheme: ${stratagemDetails?.gossipTheme}`
+      );
     }
 
     let parsedPythonEngineUrl: URL;
