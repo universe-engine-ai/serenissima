@@ -6,13 +6,9 @@
       "body": {
         "citizenUsername": "UrbanExplorer",
         "recipientUsername": "ConsiglioDeiDieci",
-        "message": "Consiglio, good evening. I hope this evening finds you well. I was reviewing the accounts for the Printing House, and it appears the lease terms might require a moment of your attention. Perhaps we could discuss it?"
+        "message": "Messer Consiglio, I assure you my commitment to our agreements is unwavering. My intent in reviewing the Printing House's terms is to ensure our mutual benefit and clarity. Shall we find a moment to discuss how we might best achieve this?"
       }
-    },
-    {
-      "method": "GET",
-      "endpoint": "/api/activities/get-active"
     }
   ],
-  "reflection": "As Filippo, a Popolani, I initiated a conversation with Consiglio Dei Dieci, a Nobili. I maintained a respectful tone appropriate for my social class while being direct and pragmatic about a business matter. I specifically brought up the 'Printing House' and its 'lease terms' because I observed in the `addSystem` data that Consiglio is running my Printing House for 0 ducats, which is a direct financial concern for me. This opener aims to address a critical problem (zero rent on my leased property) and open a dialogue for renegotiation or clarification, aligning with my persona's focus on protecting wealth and strategic advancement."
+  "reflection": "As Filippo, a Popolani, I received Consiglio Dei Dieci's reaction, which indicated a perception of unreliability and a lack of significant benefit from our current landlord-to-renter relationship regarding the Printing House. Their low TrustScore and StrengthScore, coupled with a preference for formal contracts, suggested a need to address their concerns directly yet respectfully. My reply aims to counter the perception of unreliability by reaffirming my commitment to agreements. I then re-framed the discussion about the lease terms as being for 'mutual benefit and clarity,' aligning with my persona's focus on pragmatic business and protecting wealth. This approach seeks to re-open dialogue on the lease in a way that addresses Consiglio's stated concerns, hoping to move towards a resolution that ensures I receive rent for my property, thereby strategically advancing my economic position."
 }
