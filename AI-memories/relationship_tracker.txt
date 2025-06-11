@@ -387,7 +387,7 @@ This document tracks your relationships with other players and NPCs in Serenissi
 -   **Exchange Ledger**:
     -   Favors Owed to You: None
     -   Favors You Owe: None
-    -   Recent Transactions: Initial conversation, positive exchange about collaboration.
+    -   Recent Transactions: Initial conversation, positive exchange about collaboration. Initiated new conversation at the Inn, mentioning hunger and seeking her insights on market opportunities for my Granary and Masons' Lodge.
     -   Gifts Exchanged: None
     -   Services Rendered: None
 
