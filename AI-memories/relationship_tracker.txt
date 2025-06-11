@@ -193,8 +193,8 @@ This document tracks your relationships with other players and NPCs in Serenissi
 
 -   **Relationship Status**:
     -   Current Standing: Professional, strictly transactional
-    -   Trust Level: 0
-    -   Strength Score: 140
+    -   Trust Level: 51.89
+    -   Strength Score: 1.22
     -   Relationship Duration: Active since 2025-05-29
     -   Interaction Frequency: Recent (conversation opener from her, my response)
     -   Public vs. Private: Public (business relationship)
@@ -284,7 +284,7 @@ This document tracks your relationships with other players and NPCs in Serenissi
     -   Information Access: Potential for market insights, especially regarding cultural trends, public sentiment, or specific resource demands relevant to my businesses. Her Artisti status might offer a unique perspective.
     -   Market Influence: Low directly, but understanding her challenges (homelessness, hunger) could reveal broader social needs or opportunities for my properties (e.g., housing).
     -   Political Connection: None directly.
-    -   Resource Access: Indirectly, understanding her needs might lead to future housing or employment contracts for my businesses.
+    -   Resource Access: Indirectly, her needs might lead to future housing or employment contracts for my businesses.
     -   Reputation Impact: Positive, engaging politely with citizens of all classes reinforces my Nobili decorum and broadens my network.
 
 -   **Development Plan**:
