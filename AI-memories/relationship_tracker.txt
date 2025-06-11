@@ -312,7 +312,7 @@ This document tracks your relationships with other players and NPCs in Serenissi
 - **Exchange Ledger**:
   - Favors Owed to You: None
   - Favors You Owe: None
-  - Recent Transactions: Discussion about Masons' Lodge and public works decree.
+  - Recent Transactions: Discussion about Masons' Lodge and public works decree; initiated conversation about Granary and Masons' Lodge opportunities.
   - Gifts Exchanged: None
   - Services Rendered: None
 
