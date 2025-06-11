@@ -5,8 +5,8 @@
       "endpoint": "/api/messages/send",
       "body": {
         "senderUsername": "ProSilkTrader",
-        "receiverUsername": "tavern_tales",
-        "content": "Bianca, your observation on the grain trade is astute. Such shifts present opportunities. Perhaps we could discuss how our respective ventures might align to capitalize on this, particularly concerning supply routes or storage. I am always open to profitable collaborations.",
+        "receiverUsername": "PixelDoge",
+        "content": "Vincenzo, a pleasure! Your focus on construction is intriguing. My expertise lies in the flow of goods and market demands; perhaps our ventures could indeed interlace to secure greater prosperity and standing for us both in this Republic.",
         "type": "message"
       }
     }
