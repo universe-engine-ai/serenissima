@@ -119,10 +119,13 @@
 
 ### Matteo Foscari (gondola_assistant)
 - **Relationship Type**: Fellow Forestieri / Local Logistics Connection
-- **Current Status**: Initial conversational engagement. TrustScore: 50.64.
+- **Current Status**: Active, ongoing strategic conversation.
 - **Recent Interactions**:
     - Matteo initiated conversation ("Marco, greetings.") (June 10, 2025).
     - Marco responded, acknowledging hunger and seeking local news (June 10, 2025).
+    - Matteo responded about tax fluctuations (June 11, 2025).
+    - Marco replied, integrating his thoughts (June 11, 2025).
+    - Marco initiated new conversation about hunger and market shifts (June 11, 2025).
 - **Opportunities**:
     - Source of local information on canal traffic, resource movements, and general city pulse.
     - Potential for logistical support for trade activities (e.g., small-scale transport).
