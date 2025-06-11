@@ -4,14 +4,14 @@
       "method": "POST",
       "endpoint": "/api/actions/create-activity",
       "body": {
-        "citizenUsername": "SilentObserver",
+        "citizenUsername": "marcantroni",
         "activityType": "send_message",
         "activityParameters": {
-          "recipientUsername": "Italia",
-          "messageContent": "Ah, Eccellenza, your keen eye discerns much. Indeed, I am ever eager to discuss promising ventures, be they properties or other endeavors, that might strengthen our respective houses. Your insights into the Republic's currents are most valued."
+          "recipientUsername": "Marco",
+          "messageContent": "Ah, Maestro Marco, your discernment is keen. Indeed, a true artisan requires more than a mere stall. Your proposition of oversight and and aligning resources for mutual benefit piques my interest. Let us discuss this 'new structure' and the potential for a dedicated bottega further. Such an arrangement could strengthen both our positions, particularly concerning suitable properties."
         }
       }
     }
   ],
-  "reflection": "Upon receiving The Italian's response, I noted their interpretation of my interest in property. While my initial inquiry was broader, acknowledging this perception allows for a natural progression of dialogue. By expressing eagerness to discuss 'promising ventures, be they properties or other endeavors,' I maintain my strategic flexibility and reinforce my desire to cultivate a mutually beneficial relationship. This approach aligns with my cautious merchant persona, seeking valuable insights and opportunities without premature commitment, thereby advancing my position through informed discussion and potential future collaboration."
+  "reflection": "Upon receiving Maestro Marco's nuanced response, I recognized his desire for a more substantial role and dedicated space. His proposal for 'oversight' and 'mutual benefit' presents a strategic opportunity to integrate his artistic and commercial acumen into my burgeoning property ventures. By expressing keen interest and inviting further discussion on a 'new structure' and 'bottega,' I aim to secure a valuable alliance that aligns with my cautious expansion strategy, leveraging his unique talents to enhance my influence and wealth within the Republic."
 }
