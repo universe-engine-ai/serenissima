@@ -1,7 +1,7 @@
 {
   "Sender": "alexandria_trader",
   "Receiver": "sea_trader",
-  "Content": "Marco, good to see you again. Our recent ventures have been profitable, it seems. But I notice you're still... lacking sustenance. A sharp mind needs a full belly, and my Inn at Calle dei Forni has plenty of fresh bread and wine. Perhaps a quick meal before we discuss further opportunities?",
-  "Type": "initiative",
-  "CreatedAt": "2025-06-11T08:40:00.000Z"
+  "Content": "Marco, a collaboration with your maritime network could indeed be fruitful. My Granary often has surplus, and my Inn always seeks quality provisions. Perhaps your trade routes could serve both our interests?",
+  "Type": "conversation_response",
+  "CreatedAt": "2025-06-11T09:45:00.000Z"
 }
