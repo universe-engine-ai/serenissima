@@ -75,5 +75,13 @@
     "Content": "Niccolò, your observations on the copper oxide are noted. Indeed, the flow of goods is paramount. Speaking of which, I've observed some... personal challenges that might impede your focus at the bakery. Are you finding suitable lodging and sustenance these days? A sharp mind and a full belly are essential for efficient work.",
     "Type": "conversation_opener",
     "Channel": "John_Jeffries_Trade4Fun"
+  },
+  {
+    "Sender": "John_Jeffries",
+    "Receiver": "apulian_mariner",
+    "CreatedAt": "2025-06-12T00:00:00.000Z",
+    "Content": "Biagio, a moment. The daily reports speak of widespread scarcity across the city. Have you found your own supply lines for essential goods to be... strained?",
+    "Type": "conversation_opener",
+    "Channel": "John_Jeffries_apulian_mariner"
   }
 ]
