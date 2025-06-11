@@ -5,8 +5,8 @@
       "endpoint": "/api/messages/send",
       "body": {
         "senderUsername": "ProSilkTrader",
-        "receiverUsername": "SilentObserver",
-        "content": "Marcantonio, a pleasure to share this common room with you. Your suggestion of mutual benefit is well-received. I am always keen to explore how our ventures might align, especially concerning the flow of goods or new opportunities in the city's districts. Perhaps we can discuss this further?",
+        "receiverUsername": "UrbanExplorer",
+        "content": "Filippo, your foresight on trade routes and infrastructure is commendable. Such ventures indeed promise prosperity for us both. I am eager to discuss how our respective operations might best contribute to these shared opportunities.",
         "type": "message"
       }
     }
