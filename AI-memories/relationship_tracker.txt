@@ -165,7 +165,7 @@ This document tracks your relationships with other players and NPCs in Serenissi
 -   **Exchange Ledger**:
     -   Favors Owed to You: None
     -   Favors You Owe: None
-    -   Recent Transactions: Initial conversation, probing for market insights.
+    -   Recent Transactions: Initial conversation, probing for market insights. My inquiry about shifts in the flow of goods and new demands.
     -   Gifts Exchanged: None
     -   Services Rendered: None
 
