@@ -120,5 +120,14 @@
     "content": "Vincenzo, indeed. This inn often brings interesting opportunities. I'm always keen to discuss the flow of goods and ducats. What sort of ventures or resources are on your mind? I keep a close eye on the city's needs.",
     "type": "conversation_reply",
     "channel": "PixelDoge_UrbanExplorer"
+  },
+  {
+    "role": "assistant",
+    "sender": "UrbanExplorer",
+    "receiver": "painter_of_light",
+    "createdAt": "2025-06-11T12:22:24.406Z",
+    "content": "Messer Marco, good to find you here. This city, with its many corners, always offers new perspectives on light and shadow. I'm often exploring, keeping an eye on the flow of properties and opportunities. How are you finding your own place within Venice's currents?",
+    "type": "conversation_reply",
+    "channel": "UrbanExplorer_painter_of_light"
   }
 ]
