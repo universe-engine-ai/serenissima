@@ -797,16 +797,16 @@ def update_citizen_record(tables, username: str, description_text: str, personal
         log.error(f"Error updating citizen record: {e}")
         return False
 
-def create_notification(tables, username: str, old_personality_text: str, new_personality_text: str) -> bool:
+def create_notification(tables, username: str, old_description_text: str, new_description_text: str, old_personality_text: str, new_personality_text: str) -> bool:
     """Create a notification about the updated personality description and image."""
     log.info(f"Creating notification for citizen {username}")
     
     try:
         # Create notification content
-        content = "🖼️ Your citizen profile has been updated with a new **personality description** and **portrait** reflecting your recent **activities**, **achievements**, and **status** in Venice."
+        content = "🖼️ Your citizen profile has been updated with a new **description**, **personality**, and **portrait** reflecting your recent **activities**, **achievements**, and **status** in Venice."
         
         # Extract a brief summary of changes
-        summary = "🔄 Your **portrait** and **personality description** have been updated to better reflect your current **status** and **history** in Venice."
+        summary = "🔄 Your **portrait**, **description**, and **personality** have been updated to better reflect your current **status** and **history** in Venice."
         
         # Create the notification record
         tables['notifications'].create({
@@ -814,6 +814,8 @@ def create_notification(tables, username: str, old_personality_text: str, new_pe
             "Content": content,
             "Details": json.dumps({
                 "event_type": "profile_update",
+                "old_description": old_description_text,
+                "new_description": new_description_text,
                 "old_personality": old_personality_text,
                 "new_personality": new_personality_text,
                 "summary": summary,
@@ -889,6 +891,7 @@ def update_citizen_description_and_image(username: str, dry_run: bool = False):
     
     # Update citizen record with new text and potentially new image URLs
     old_description_text = citizen_info["citizen"]['fields'].get('Description', '')
+    old_personality_text = citizen_info["citizen"]['fields'].get('Personality', '')
     success = update_citizen_record(
         tables, # type: ignore
         username, 
@@ -904,7 +907,14 @@ def update_citizen_description_and_image(username: str, dry_run: bool = False):
         return False
     
     # Create notification
-    create_notification(tables, username, old_description_text, new_description_text)
+    create_notification(
+        tables, 
+        username, 
+        old_description_text, 
+        new_description_text,
+        old_personality_text,
+        new_personality_text
+    )
     
     log.info(f"Successfully updated description and image for citizen {username}")
     return True
