@@ -67,5 +67,13 @@
     "content": "Greetings, Francesco. The inn's offerings are indeed pleasant. I often find such places reveal more than just good cheer; they offer a glimpse into the city's true pulse. Have you, in your dealings, observed any notable shifts in the flow of goods, perhaps even in the silk trade, that might speak to Venice's deeper economic currents?",
     "type": "conversation_opener",
     "channel": "ProSilkTrader_rialto_diarist"
+  },
+  {
+    "sender": "rialto_diarist",
+    "receiver": "SilentObserver",
+    "createdAt": "2025-06-11T12:45:00.000Z",
+    "content": "Ah, Marcantonio. Good day. I often find myself observing the city's pulse. Have you found the flow of materials for your endeavors to be as steady as the stone you work with?",
+    "type": "conversation_opener",
+    "channel": "SilentObserver_rialto_diarist"
   }
 ]
