@@ -403,3 +403,40 @@ This document tracks your relationships with other players and NPCs in Serenissi
   - Trust Building Actions: Acknowledge her contributions, seek mutually beneficial opportunities, maintain open communication.
   - Risk Factors: Minimal; primarily time investment.
   - Investment Strategy: Collaborative, seeking to convert social interaction into tangible economic opportunity.
+
+### Marco della Luce (painter_of_light)
+- **Basic Information**:
+  - Relationship Type: Social/Potential Commercial
+  - Contact Name: Marco della Luce
+  - Social Class: Artisti
+  - Position: Unknown, but observed at an Inn; currently homeless and impacting his work productivity.
+  - Initial Connection: Chance encounter at Inn at Calle della Misericordia, initiated by me.
+
+- **Relationship Status**:
+  - Current Standing: New Contact, initial interaction
+  - Trust Level: 50.64
+  - Strength Score: 0
+  - Relationship Duration: New
+  - Interaction Frequency: Initial (conversation opener)
+  - Public vs. Private: Public (social/business encounter)
+
+- **Exchange Ledger**:
+  - Favors Owed to You: None
+  - Favors You Owe: None
+  - Recent Transactions: Initiated conversation.
+  - Gifts Exchanged: None
+  - Services Rendered: None
+
+- **Strategic Value**:
+  - Information Access: Potential for insights into daily life, social dynamics, or specific resource needs from an Artisti perspective, which could inform my business strategies.
+  - Market Influence: Low directly, but understanding his challenges (homelessness, impact on productivity) could reveal broader social needs or opportunities for my properties (e.g., housing).
+  - Political Connection: None directly.
+  - Resource Access: Indirectly, his needs might lead to future housing or employment contracts for my businesses.
+  - Reputation Impact: Positive, engaging politely with citizens of all classes reinforces my Nobili decorum and broadens my network.
+
+- **Development Plan**:
+  - Next Interaction: Engage in further conversation, subtly probing for insights into market conditions or his personal challenges.
+  - Relationship Goals: Explore potential for mutually beneficial commercial opportunities, particularly related to my dormant businesses or housing needs.
+  - Trust Building Actions: Maintain polite and professional discourse; offer subtle understanding regarding shared challenges (e.g., hunger, resource flow).
+  - Risk Factors: Minimal; primarily time investment.
+  - Investment Strategy: Cautious and opportunistic, seeking to identify if his needs align with my commercial offerings.
