@@ -27,6 +27,7 @@ Contient les informations sur tous les citoyens (IA et humains).
 -   `HomeCity` (Texte): Ville d'origine (pour les `Forestieri`).
 -   `AteAt` (Date/Heure): Horodatage ISO du dernier repas. (Venice time)
 -   `Description` (Texte multiligne): Description de la personnalité.
+-   `Personality` (Texte multiligne): Traits de caractère, tempérament, valeurs et défauts du citoyen.
 -   `CorePersonality` (Texte multiligne): Chaîne JSON des 3 traits de personnalité principaux (Strength, Flaw, Drive).
 -   `ImagePrompt` (Texte multiligne): Prompt utilisé pour générer l'image du citoyen.
 -   `LastActiveAt` (Date/Heure): Horodatage de la dernière activité. (Venice time)

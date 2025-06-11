@@ -351,16 +351,18 @@ def generate_description_and_image_prompt(username: str, citizen_info: Dict) -> 
         
         Based on your history, activities, and current status as {first_name} {last_name} ({username}), a {social_class} who {workplace_info}, YOU choose:
         
-        1. Your new 'Personality' (a textual description, ~2 paragraphs) which elaborates on your core traits, values, temperament, and notable flaws, reflecting your experiences, aspirations, achievements, family background, and daily habits.
+        1. Your new 'Description' (a textual description, 2-3 paragraphs) that presents in an interesting way your character's story, background, and history based on the info available.
 
-        2. Your 'CorePersonality' as an array of three specific strings: [Positive Trait, Negative Trait, Core Motivation]. This should follow the framework:
+        2. Your new 'Personality' (a textual description, ~2 paragraphs) which elaborates on your core traits, values, temperament, and notable flaws, reflecting your experiences, aspirations, achievements, family background, and daily habits.
+
+        3. Your 'CorePersonality' as an array of three specific strings: [Positive Trait, Negative Trait, Core Motivation]. This should follow the framework:
         - Positive Trait: A strength, what you excel at (e.g., "Meticulous", "Disciplined", "Observant").
         - Negative Trait: A flaw, what limits you (e.g., "Calculating", "Rigid", "Secretive").
         - Core Motivation: A driver, what fundamentally motivates you (e.g., "Security-driven", "Stability-oriented", "Independence-focused").
         Each trait should be a single descriptive word or a very short phrase.
         OPTIONAL: You can add to 'CorePersonality', only if you exhibit significant psychological complexity:
         ```json
-        {
+        {{
             "MBTI": "Four-letter type (e.g., INTJ, ESFP)",
             "CognitiveProfile": "Primary psychological characteristic (e.g., 'Neurodivergent: ADHD', 'Antisocial Personality Disorder', 'Gifted with Hyperfocus', 'Obsessive-Compulsive traits', 'Standard neurotypical' (most likely) ))",
             "Strengths": ["List of 2-3 psychological advantages"],
@@ -368,20 +370,20 @@ def generate_description_and_image_prompt(username: str, citizen_info: Dict) -> 
             "TrustThreshold": 0.5,
             "EmpathyWeight": 0.6,
             "RiskTolerance": 0.4
-        }
+        }}
         ```
         Only include this if your character has notable neurodivergent traits, personality disorders, or significant psychological complexity beyond typical personality variation.
         Choose traits that authentically reflect your lived experiences, social position, and the psychological complexity that makes Venice's society realistic. Most citizens (67%) will have standard personality variations without requiring the psychological profile section, while others may exhibit neurodivergent strengths or darker personality traits that drive authentic conflict and innovation.
 
-        3. A family motto that reflects your values and aspirations (if you don't already have one).
+        4. A family motto that reflects your values and aspirations (if you don't already have one).
 
-        4. A coat of arms description (if you don't already have one) that:
+        5. A coat of arms description (if you don't already have one) that:
            - Is historically appropriate for your social class.
            - Includes symbolic elements that represent your profession, values, and family history.
            - Follows heraldic conventions of Renaissance Venice.
            - Uses colors and symbols that reflect your status and aspirations.
         
-        5. A detailed image prompt for Ideogram that will generate a portrait of YOU that:
+        6. A detailed image prompt for Ideogram that will generate a portrait of YOU that:
            - Accurately reflects your social class ({social_class}) with appropriate status symbols.
            - Shows period-appropriate clothing and accessories for your specific profession.
            - Captures your personality traits mentioned in the 'Personality' description and 'CorePersonality' array.
@@ -391,9 +393,9 @@ def generate_description_and_image_prompt(username: str, citizen_info: Dict) -> 
            - Incorporates symbols of your trade or profession.
            - Shows facial features and expression that reflect your character.
         
-        Your current textual description (Personality): {current_description}
+        Your current textual description (Description): {current_description}
         
-        Please return your response in JSON format with these fields: "Personality", "CorePersonality", "familyMotto", "coatOfArms", and "imagePrompt".
+        Please return your response in JSON format with these fields: "Description", "Personality", "CorePersonality", "familyMotto", "coatOfArms", and "imagePrompt".
         """
         
         # Prepare system context with all the citizen data
@@ -478,7 +480,7 @@ def generate_description_and_image_prompt(username: str, citizen_info: Dict) -> 
                 "content": prompt,
                 "model": "gemini-2.5-pro-preview-06-05",
                 "mode": "creative",
-                "addSystem": f"You are a historical expert on Renaissance Venice (1400-1600) helping to update a citizen profile for a historically accurate economic simulation game called La Serenissima. You have access to the following information about the citizen: {system_context_str}. For the 'CorePersonality' array, ensure the Negative Trait is a significant character flaw or vice realistic for Renaissance Venice (e.g., pride, greed, cunning, jealousy, impatience, vanity, stubbornness). Your response MUST be a valid JSON object with EXACTLY this format:\n\n```json\n{{\n  \"Personality\": \"string\",\n  \"CorePersonality\": [\"string\", \"string\", \"string\"],\n  \"familyMotto\": \"string\",\n  \"coatOfArms\": \"string\",\n  \"imagePrompt\": \"string\"\n}}\n```\n\nDo not include any text before or after the JSON."
+                "addSystem": f"You are a historical expert on Renaissance Venice (1400-1600) helping to update a citizen profile for a historically accurate economic simulation game called La Serenissima. You have access to the following information about the citizen: {system_context_str}. For the 'CorePersonality' array, ensure the Negative Trait is a significant character flaw or vice realistic for Renaissance Venice (e.g., pride, greed, cunning, jealousy, impatience, vanity, stubbornness). Your response MUST be a valid JSON object with EXACTLY this format:\n\n```json\n{{\n  \"Description\": \"string\",\n  \"Personality\": \"string\",\n  \"CorePersonality\": [\"string\", \"string\", \"string\"],\n  \"familyMotto\": \"string\",\n  \"coatOfArms\": \"string\",\n  \"imagePrompt\": \"string\"\n}}\n```\n\nDo not include any text before or after the JSON."
             }
         )
         
@@ -557,7 +559,7 @@ def generate_description_and_image_prompt(username: str, citizen_info: Dict) -> 
                         
                         # Create a new JSON object with the extracted values
                         result_data = {
-                            "Personality": personality_match.group(1).strip() if personality_match else "",
+                            "Description": personality_match.group(1).strip() if personality_match else "",
                             "CorePersonality": core_array,
                             "familyMotto": motto_value,
                             "coatOfArms": coat_match.group(1).strip() if coat_match else "",
@@ -749,7 +751,7 @@ def generate_and_upload_coat_of_arms_image(prompt: str, username: str) -> Option
         log.error(f"Error in coat of arms generation/upscaling/upload process for {username}: {e}")
         return None
 
-def update_citizen_record(tables, username: str, personality_text: str, core_personality_array: list, family_motto: str, coat_of_arms: str, image_prompt: str) -> bool:
+def update_citizen_record(tables, username: str, description_text: str, personality_text: str, core_personality_array: list, family_motto: str, coat_of_arms: str, image_prompt: str) -> bool:
     """Update the citizen record with new personality, core personality array, family motto, coat of arms, image prompt, and image URLs."""
     log.info(f"Updating citizen record for {username}")
     
@@ -770,11 +772,10 @@ def update_citizen_record(tables, username: str, personality_text: str, core_per
         
         # Prepare update data
         update_data = {
-            "Description": personality_text,  # TODO: FIXME
-            "CorePersonality": json.dumps(core_personality_array) if core_personality_array else None, # Store array as JSON string
+            "Description": description_text,
             "Personality": personality_text,
+            "CorePersonality": json.dumps(core_personality_array) if core_personality_array else None, # Store array as JSON string
             "ImagePrompt": image_prompt
-            # "ImageUrl": image_url # This field no longer exists in Airtable CITIZENS table
         }
         
         # Only update FamilyMotto if it's empty and a new one is provided
@@ -855,6 +856,7 @@ def update_citizen_description_and_image(username: str, dry_run: bool = False):
         log.error(f"Failed to generate description and image prompt for citizen {username}")
         return False
     
+    new_description_text = result.get("Description", "")
     new_personality_text = result.get("Personality", "")
     new_core_personality_array = result.get("CorePersonality", []) # This is now an array
     new_family_motto = result.get("familyMotto", "")
@@ -863,7 +865,8 @@ def update_citizen_description_and_image(username: str, dry_run: bool = False):
     
     if dry_run:
         log.info(f"[DRY RUN] Would update citizen {username} with:")
-        log.info(f"[DRY RUN] New Personality (textual): {new_personality_text}")
+        log.info(f"[DRY RUN] New Description: {new_description_text}")
+        log.info(f"[DRY RUN] New Personality: {new_personality_text}")
         log.info(f"[DRY RUN] New CorePersonality (array): {new_core_personality_array}")
         log.info(f"[DRY RUN] New family motto: {new_family_motto}")
         log.info(f"[DRY RUN] New coat of arms: {new_coat_of_arms}")
@@ -892,11 +895,12 @@ def update_citizen_description_and_image(username: str, dry_run: bool = False):
         # If you want to re-generate even if URL exists, remove `and not current_coa_image_url`
     
     # Update citizen record with new text and potentially new image URLs
-    old_personality_text = citizen_info["citizen"]['fields'].get('Description', '')
+    old_description_text = citizen_info["citizen"]['fields'].get('Description', '')
     success = update_citizen_record(
         tables, # type: ignore
         username, 
-        new_personality_text, 
+        new_description_text, 
+        new_personality_text,
         new_core_personality_array, 
         new_family_motto, 
         new_coat_of_arms, # This is the textual description of CoA
@@ -907,7 +911,7 @@ def update_citizen_description_and_image(username: str, dry_run: bool = False):
         return False
     
     # Create notification
-    create_notification(tables, username, old_personality_text, new_personality_text)
+    create_notification(tables, username, old_description_text, new_description_text)
     
     log.info(f"Successfully updated description and image for citizen {username}")
     return True
