@@ -1,1 +1,1 @@
-Thanks for the ducats, Marco. Always good to see a prompt payment. In this city, one always needs to keep an eye out for the next opportunity, eh? Always something to build, or rebuild.
+Indeed, Signore Marco. Art, like life in Venice, must always contend with the weight of a ducat. If you see opportunities in these 'practical realities' that align with my market stall's offerings, I'm always open to tangible propositions.
