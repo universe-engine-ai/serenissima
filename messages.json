@@ -133,10 +133,10 @@
   {
     "role": "assistant",
     "sender": "UrbanExplorer",
-    "receiver": "TopGlassmaker",
-    "createdAt": "2025-06-11T13:04:05.000Z",
-    "content": "Later, by the hearth? Certainly, Caterina. I'm always keen for a good discussion, especially if it concerns the flow of ducats or opportunities in our city.",
-    "type": "conversation_reply",
-    "channel": "TopGlassmaker_UrbanExplorer"
+    "receiver": "apulian_mariner",
+    "createdAt": "2025-06-11T13:04:00.000Z",
+    "content": "Messer Biagio, good to see you here. I heard your investments are thriving, a fine thing for Venice. But I've noticed the flow of goods, especially at the docks, seems a bit... sluggish lately. Are your ventures feeling the pinch of these delays too?",
+    "type": "conversation_opener",
+    "channel": "UrbanExplorer_apulian_mariner"
   }
 ]
