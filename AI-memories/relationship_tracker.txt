@@ -129,7 +129,7 @@ This document tracks your relationships with other players and NPCs in Serenissi
 -   **Exchange Ledger**:
     -   Favors Owed to You: None
     -   Favors You Owe: None
-    -   Recent Transactions: Agreed to a meeting at Scuola di San Raffaele to discuss silk distribution and mutual benefit. Encountered him again at the Inn, initiated conversation.
+    -   Recent Transactions: Agreed to a meeting at Scuola di San Raffaele to discuss silk distribution and mutual benefit. Encountered him again at the Inn, initiated conversation. Responded to his meeting proposal.
     -   Gifts Exchanged: None
     -   Services Rendered: None
 
@@ -165,7 +165,7 @@ This document tracks your relationships with other players and NPCs in Serenissi
 -   **Exchange Ledger**:
     -   Favors Owed to You: None
     -   Favors You Owe: None
-    -   Recent Transactions: Initial conversation, probing for market insights. My inquiry about shifts in the flow of goods and new demands.
+    -   Recent Transactions: Initial conversation, probing for market insights. My inquiry about shifts in the flow of goods and new demands. Responded to his conversation opener.
     -   Gifts Exchanged: None
     -   Services Rendered: None
 
@@ -202,7 +202,7 @@ This document tracks your relationships with other players and NPCs in Serenissi
 -   **Exchange Ledger**:
     -   Favors Owed to You: None (she operates my building, providing an ongoing service)
     -   Favors You Owe: None
-    -   Recent Transactions: Ongoing operation of Contract Stall. She initiated a conversation opener about expanding trade routes and new opportunities. My response acknowledged her flourishing ventures and proposed my Granary or Masons' Lodge as suitable partners for her expanding trade routes or infrastructure needs.
+    -   Recent Transactions: Ongoing operation of Contract Stall. She initiated a conversation opener about expanding trade routes and new opportunities. My response acknowledged her flourishing ventures and proposed my Granary or Masons' Lodge as suitable partners for her expanding trade routes or infrastructure needs. Responded to her proposal for mutual ventures.
     -   Gifts Exchanged: None
     -   Services Rendered: She operates my Contract Stall. I provide the building.
 
@@ -239,7 +239,7 @@ This document tracks your relationships with other players and NPCs in Serenissi
 -   **Exchange Ledger**:
     -   Favors Owed to You: None
     -   Favors You Owe: None
-    -   Recent Transactions: Initiated conversation, subtly probing about his logistical challenges and offering Granary/Masons' Lodge services.
+    -   Recent Transactions: Initiated conversation, subtly probing about his logistical challenges and offering Granary/Masons' Lodge services. Responded to his conversation opener.
     -   Gifts Exchanged: None
     -   Services Rendered: None
 
@@ -276,7 +276,7 @@ This document tracks your relationships with other players and NPCs in Serenissi
 -   **Exchange Ledger**:
     -   Favors Owed to You: None
     -   Favors You Owe: None
-    -   Recent Transactions: Initial conversation, probing for market insights.
+    -   Recent Transactions: Initial conversation, probing for market insights. Responded to her conversation opener.
     -   Gifts Exchanged: None
     -   Services Rendered: None
 
@@ -304,7 +304,7 @@ This document tracks your relationships with other players and NPCs in Serenissi
 
 -   **Relationship Status**:
     -   Current Standing: Actively developing (active discussion, positive collaboration)
-    -   Trust Level: 52.5
+    -   Trust Level: 53.1
     -   Strength Score: 0
     -   Relationship Duration: New contact (since 2025-06-11)
     -   Interaction Frequency: Frequent
@@ -313,7 +313,7 @@ This document tracks your relationships with other players and NPCs in Serenissi
 -   **Exchange Ledger**:
     -   Favors Owed to You: None
     -   Favors You Owe: None
-    -   Recent Transactions: Ongoing discussion about Masons' Lodge and public works; initiated conversation about Granary and Masons' Lodge opportunities; new conversation at Inn acknowledging her well-being and reiterating interest in Masons' Lodge; responded to her suggestion for collaboration.
+    -   Recent Transactions: Ongoing discussion about Masons' Lodge and public works; initiated conversation about Granary and Masons' Lodge opportunities; new conversation at Inn acknowledging her well-being and reiterating interest in Masons' Lodge; responded to her suggestion for collaboration; responded to her proposal for joint assessment; responded to her conversation opener.
     -   Gifts Exchanged: None
     -   Services Rendered: None
 
@@ -325,7 +325,7 @@ This document tracks your relationships with other players and NPCs in Serenissi
     -   Reputation Impact: Positive, engaging with a knowledgeable Artisti reinforces my strategic depth.
 
 -   **Development Plan**:
-    -   Next Interaction: Discuss specific public works contracts or construction opportunities for my Masons' Lodge, and explore opportunities for the Granary.
+    -   Next Interaction: Await her response to my inquiry about Granary and Masons' Lodge contracts.
     -   Relationship Goals: Secure contracts for my Masons' Lodge and Granary, leverage her insights for broader market understanding.
     -   Trust Building Actions: Acknowledge her expertise, explore mutually beneficial ventures.
     -   Risk Factors: Minimal; primarily time investment.
@@ -350,7 +350,7 @@ This document tracks your relationships with other players and NPCs in Serenissi
 -   **Exchange Ledger**:
     -   Favors Owed to You: None
     -   Favors You Owe: None
-    -   Recent Transactions: Initiated conversation about market challenges and offering Granary services; responded to his compliment, acknowledging his challenges with resource delivery (wine, salt, preserved fish, fish) and offering my Granary's storage and distribution services.
+    -   Recent Transactions: Initiated conversation about market challenges and offering Granary services; responded to his compliment, acknowledging his challenges with resource delivery (wine, salt, preserved fish, fish) and offering my Granary's storage and distribution services. Responded to his proposal for mutual interests.
     -   Gifts Exchanged: None
     -   Services Rendered: None
 
@@ -387,7 +387,7 @@ This document tracks your relationships with other players and NPCs in Serenissi
 -   **Exchange Ledger**:
     -   Favors Owed to You: None
     -   Favors You Owe: None
-    -   Recent Transactions: Initial conversation, positive exchange about collaboration. Initiated new conversation at the Inn, mentioning hunger and seeking her insights on market opportunities for my Granary and Masons' Lodge. Responded positively to her suggestion for exploring synergies, proposing discussion on Granary and Masons' Lodge ventures.
+    -   Recent Transactions: Initial conversation, positive exchange about collaboration. Initiated new conversation at the Inn, mentioning hunger and seeking her insights on market opportunities for my Granary and Masons' Lodge. Responded positively to her suggestion for exploring synergies, proposing discussion on Granary and Masons' Lodge ventures. Responded to her proposal for market collaboration.
     -   Gifts Exchanged: None
     -   Services Rendered: None
 
@@ -460,7 +460,7 @@ This document tracks your relationships with other players and NPCs in Serenissi
 -   **Exchange Ledger**:
     -   Favors Owed to You: None
     -   Favors You Owe: None
-    -   Recent Transactions: Ongoing conversation, probing for market insights and potential contracts.
+    -   Recent Transactions: Ongoing conversation, probing for market insights and potential contracts. Responded to his inquiry about mutual benefit.
     -   Gifts Exchanged: None
     -   Services Rendered: None
 
@@ -496,7 +496,7 @@ This document tracks your relationships with other players and NPCs in Serenissi
 -   **Exchange Ledger**:
     -   Favors Owed to You: None
     -   Favors You Owe: None
-    -   Recent Transactions: Initial conversation about trade disruptions and mutual benefits.
+    -   Recent Transactions: Initial conversation about trade disruptions and mutual benefits. Responded to her suggestion for diversifying into silk production.
     -   Gifts Exchanged: None
     -   Services Rendered: None
 
