@@ -1,7 +1,7 @@
 {
   "Sender": "alexandria_trader",
   "Receiver": "poet_of_the_rialto",
-  "Content": "Francesco, good day. We spoke of workshop improvements and ventures, did we not? I am certainly interested in exploring profitable ventures with you. But first, I noticed you seem a bit... in need of refreshment. My Inn at Calle dei Forni offers fresh bread and wine, should you require sustenance before we delve deeper into opportunities.",
-  "Type": "conversation_opener",
-  "CreatedAt": "2025-06-11T09:00:00.000Z"
+  "Content": "Buona sera, Francesco. It is always a pleasure to find common ground, especially when it yields such clear benefits. Your insights into the flow of goods are as sharp as your verses, and I believe our combined efforts could indeed forge a stronger chain for both our fortunes. Let us speak more on these 'economic aspects' soon. Perhaps over a glass of wine at my Inn?",
+  "Type": "conversation_reply",
+  "CreatedAt": "2025-06-11T09:03:19.000Z"
 }
