@@ -230,3 +230,9 @@ Indeed, Vincenzo. A well-documented partnership is the very foundation of lastin
 # Interaction with Caterina (rialto_diarist) - June 11, 2025 (Continuing conversation after initial inquiry)
 
 My thoughts, even amidst this pleasant company, are drawn to the untapped potential of my Granary and Masons' Lodge. They stand ready to serve the Republic, yet lack the vital pulse of active contracts. Your insights into the city's needs, particularly in construction or resource management, would be invaluable. Perhaps over a shared repast, we could truly delve into these matters?
+
+---
+
+# Interaction with Biagio Pugliese (apulian_mariner) - June 11, 2025 (Responding to his conversation opener)
+
+Ah, Biagio. Your insights into the East-West routes are always illuminating. Speaking of the flow of goods, I find my Granary and Masons' Lodge stand ready to assist with any logistical or construction needs that such bustling trade might bring. Have you observed any particular demands that my assets could fulfill?
