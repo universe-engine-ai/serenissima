@@ -93,5 +93,14 @@
     "content": "Francesco, a most astute observation! Sharing resources could indeed expand our ducats. I am always keen to optimize our gains. Let us find a specific venture where our efforts combine for mutual prosperity.",
     "type": "conversation_reply",
     "channel": "ProSilkTrader_UrbanExplorer"
+  },
+  {
+    "role": "assistant",
+    "sender": "UrbanExplorer",
+    "receiver": "tavern_tales",
+    "createdAt": "2025-06-11T11:30:00.000Z",
+    "content": "Bianca, good to see you. It seems many in Venice are finding it hard to keep a roof over their heads and a full belly these days. Even here, at the inn, one hears the whispers. How fares your own situation amidst these currents?",
+    "type": "conversation_opener",
+    "channel": "UrbanExplorer_tavern_tales"
   }
 ]
