@@ -377,7 +377,7 @@ This document tracks your relationships with other players and NPCs in Serenissi
 
 - **Relationship Status**:
   - Current Standing: Developing (positive, open to collaboration)
-  - Trust Level: 51.27
+  - Trust Level: 52.5
   - Strength Score: 0
   - Relationship Duration: New contact (since 2025-06-11)
   - Interaction Frequency: Ongoing
