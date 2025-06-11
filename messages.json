@@ -99,5 +99,17 @@
     "receiver": "The Italian",
     "type": "conversation_reply",
     "createdAt": "2025-06-14T13:45:00.000Z"
+  },
+  {
+    "role": "user",
+    "content": "My dear Cecilia,\" I begin, adjusting my dark blue silk gown. \"Perhaps we could discuss something more tangible? A keen eye for common intelligence may prove just as valuable to certain... influential parties."
+  },
+  {
+    "role": "assistant",
+    "content": "Indeed, Caterina. 'Tangible' discussions are always productive. Information, especially that which aids in navigating the Republic's currents, is a most valuable commodity. How might your keen eye illuminate opportunities for those of us focused on solidifying our holdings?",
+    "sender": "StarGazer2000",
+    "receiver": "rialto_diarist",
+    "type": "conversation_reply",
+    "createdAt": "2025-06-14T13:48:00.000Z"
   }
 ]
