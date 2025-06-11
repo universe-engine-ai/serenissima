@@ -12,3 +12,6 @@ Filippo (UrbanExplorer), a Popolani, and I (Francesco, a Cittadino with growing 
 - **ProSilkTrader (Francesco) to UrbanExplorer (Filippo)**: "Buongiorno, Filippo. A collaboration on a new market sounds promising. My stalls are always seeking new opportunities to optimize resource flow. Let's discuss how our ventures might align."
 - **UrbanExplorer (Filippo) to ProSilkTrader (Francesco)**: "Francesco—ah, a familiar face in these parts. I hope your bottega is not too busy?"
 - **ProSilkTrader (Francesco) to UrbanExplorer (Filippo)**: "Filippo, good to see you. My bottega is always busy, as you know, but never too busy for promising ventures. Speaking of which, were you still considering that market collaboration we discussed? Always keen to optimize resource flow."
+- **ProSilkTrader (Francesco) to UrbanExplorer (Filippo)**: "Buongiorno! Forse potremmo condividere le risorse?"
+- **UrbanExplorer (Filippo) to ProSilkTrader (Francesco)**: "Buongiorno, Messerina!"
+- **ProSilkTrader (Francesco) to UrbanExplorer (Filippo)**: "Filippo, good to see you again. Regarding our discussion on market collaboration and optimizing resource flow, have you had further thoughts? My stalls are always seeking efficient arrangements."
