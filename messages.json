@@ -83,5 +83,13 @@
     "content": "Precisely, Cecilia. Such insights into the flow of materials and the nuances of private dealings are the very bedrock of true understanding in Venice. Your perspective, especially given your affiliations, is indeed a valuable thread in this city's intricate tapestry. I trust we can continue to weave these threads for mutual prosperity.",
     "type": "conversation_reply",
     "channel": "StarGazer2000_rialto_diarist"
+  },
+  {
+    "sender": "rialto_diarist",
+    "receiver": "tavern_tales",
+    "createdAt": "2025-06-11T13:31:22.000Z",
+    "content": "Indeed, Signora Bianca. My network often illuminates the flow of such vital materials. Let us discuss these 'pressing needs' of yours. Understanding the intricacies of timber and marble supply is key to discerning Venice's true foundations, and I am always keen to deepen such insights. Perhaps we can meet at my Lodge to review the details?",
+    "type": "conversation_reply",
+    "channel": "rialto_diarist_tavern_tales"
   }
 ]
