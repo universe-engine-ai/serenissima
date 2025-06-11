@@ -365,33 +365,52 @@ async function fetchLastDailyUpdate(): Promise<AirtableRecord<FieldSet> | null> 
   }
 }
 
-async function fetchCitizenActiveStratagems(username: string): Promise<AirtableRecord<FieldSet>[]> {
+interface ActiveStratagemsResult {
+  executedBy: AirtableRecord<FieldSet>[];
+  targetedAt: AirtableRecord<FieldSet>[];
+}
+
+async function fetchCitizenActiveStratagems(username: string): Promise<ActiveStratagemsResult> {
+  const result: ActiveStratagemsResult = { executedBy: [], targetedAt: [] };
   try {
     const escapedUsername = escapeAirtableValue(username);
-    // Formula to get active stratagems executed by or targeting the citizen, and not expired
-    const formula = `
-      AND(
-        OR(
-          {ExecutedBy} = '${escapedUsername}',
-          {TargetCitizen} = '${escapedUsername}'
-        ),
-        {Status} = 'active',
-        OR(
-          IS_BLANK({ExpiresAt}),
-          IS_AFTER({ExpiresAt}, NOW())
-        )
-      )
-    `.replace(/\s+/g, ' '); // Remove newlines and extra spaces for formula
+    const nowFilter = `OR(IS_BLANK({ExpiresAt}), IS_AFTER({ExpiresAt}, NOW()))`;
 
-    const records = await airtable('STRATAGEMS').select({
-      filterByFormula: formula,
+    // Stratagems executed by the citizen
+    const executedByFormula = `
+      AND(
+        {ExecutedBy} = '${escapedUsername}',
+        {Status} = 'active',
+        ${nowFilter}
+      )
+    `.replace(/\s+/g, ' ');
+
+    const executedByRecords = await airtable('STRATAGEMS').select({
+      filterByFormula: executedByFormula,
       sort: [{ field: 'CreatedAt', direction: 'desc' }],
     }).all();
-    return [...records]; // Convert ReadonlyArray to Array
+    result.executedBy = [...executedByRecords];
+
+    // Stratagems targeting the citizen (and not executed by them, to avoid duplicates)
+    const targetedAtFormula = `
+      AND(
+        {TargetCitizen} = '${escapedUsername}',
+        NOT({ExecutedBy} = '${escapedUsername}'),
+        {Status} = 'active',
+        ${nowFilter}
+      )
+    `.replace(/\s+/g, ' ');
+
+    const targetedAtRecords = await airtable('STRATAGEMS').select({
+      filterByFormula: targetedAtFormula,
+      sort: [{ field: 'CreatedAt', direction: 'desc' }],
+    }).all();
+    result.targetedAt = [...targetedAtRecords];
+
   } catch (error) {
     console.error(`Error fetching active stratagems for citizen ${username}:`, error);
-    return [];
   }
+  return result;
 }
 
 interface StratagemParameter {
@@ -632,15 +651,17 @@ export async function GET(request: Request) {
       recentMessages: [] as any[], // Initialize recentMessages array
       latestDailyUpdate: null as any | null, // Initialize latestDailyUpdate
       availableStratagems: [] as StratagemDefinition[], // Initialize availableStratagems
-      citizenActiveStratagems: [] as any[], // Initialize citizenActiveStratagems
+      stratagemsExecutedByCitizen: [] as any[], // Stratagems executed by the citizen
+      stratagemsTargetingCitizen: [] as any[], // Stratagems targeting the citizen
     };
 
     // Fetch and add available stratagems (definitions)
     dataPackage.availableStratagems = await fetchStratagemDefinitions();
 
     // Fetch and add active stratagems involving the citizen
-    const activeStratagemRecords = await fetchCitizenActiveStratagems(citizenUsername);
-    dataPackage.citizenActiveStratagems = activeStratagemRecords.map(s => ({...normalizeKeysCamelCaseShallow(s.fields), airtableId: s.id}));
+    const activeStratagemsResult = await fetchCitizenActiveStratagems(citizenUsername);
+    dataPackage.stratagemsExecutedByCitizen = activeStratagemsResult.executedBy.map(s => ({...normalizeKeysCamelCaseShallow(s.fields), airtableId: s.id}));
+    dataPackage.stratagemsTargetingCitizen = activeStratagemsResult.targetedAt.map(s => ({...normalizeKeysCamelCaseShallow(s.fields), airtableId: s.id}));
 
     // Fetch and add active contracts
     const activeContractsRecords = await fetchCitizenContracts(citizenUsername);
