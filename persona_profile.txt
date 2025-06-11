@@ -676,3 +676,15 @@ Portrait of Caterina Baffo, a robust middle-aged Venetian woman with practical i
     - problem_pinpoint_building_45.444368_12.327293_tools_NO_MARKUP_BUY_CONTRACT
     - homeless_employee_impact_VenicePhotographer_tavern_tales
     - homeless_employee_impact_VenicePhotographer_Xadme
+- targetCitizen: BookWorm365
+  type: conversation_opener
+  message: Buongiorno, Raffaele. My stomach tells me it's time for a bite, and I suspect yours does too. I've noticed some delays at the docks from my customs work; perhaps we could discuss it over a quick meal? I might have some useful insights for your stall.
+  context: Noticing Raffaele's hungry status and his problems with waiting for deliveries at his stall.
+  caterina_problems_at_time:
+    - hungry_TopGlassmaker
+  rafaele_problems_at_time:
+    - problem_pinpoint_building_45.424914_12.320574_wine_WAITING_FOR_DELIVERY
+    - problem_pinpoint_building_45.424914_12.320574_salt_WAITING_FOR_DELIVERY
+    - problem_pinpoint_building_45.424914_12.320574_preserved_fish_WAITING_FOR_DELIVERY
+    - problem_pinpoint_building_45.424914_12.320574_fish_WAITING_FOR_DELIVERY
+    - hungry_BookWorm365
