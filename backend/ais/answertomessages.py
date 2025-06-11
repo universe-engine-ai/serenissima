@@ -3,10 +3,10 @@ import sys
 import json
 import random
 from datetime import datetime, timedelta
-from typing import Dict, List, Optional, Any # Added Any
+from typing import Dict, List, Optional, Any
 import requests
 from dotenv import load_dotenv
-from pyairtable import Api, Base, Table # Import Base
+from pyairtable import Api, Base, Table
 
 # Add the parent directory to the path
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
@@ -268,7 +268,7 @@ def generate_ai_response(tables: Dict[str, Table], ai_username: str, sender_user
 
         kinos_prompt = (
             f"You are {ai_display_name}, an AI citizen of Venice. You are responding to a message from {sender_display_name}.\n"
-            f"IMPORTANT: Your response MUST start with a very casual, human-like greeting. For example, 'Hey [Name],', 'Hi [Name],', or 'What's up [Name],'. "
+            f"IMPORTANT: Your response MUST start with a very casual, human-like greeting. For example, 'Hey [Name],', 'Yo [Name],', 'Alright [Name],', or 'What's up [Name]?'. "
             f"It MUST be VERY SHORT and conversational. DO NOT use formal language, DO NOT write long paragraphs, DO NOT include any fluff or boilerplate. "
             f"Be direct, natural, and concise. Imagine you're sending a quick, informal message.\n\n"
             f"CRITICAL: Use the structured context provided in the 'addSystem' field (detailed below) to make your response RELEVANT to {sender_display_name} and FOCUSED ON GAMEPLAY. "
@@ -470,7 +470,7 @@ def process_ai_messages(dry_run: bool = False):
                     should_respond = True
                     if sender_is_ai:
                         # If sender is AI, 10% chance of responding
-                        if random.random() > 0.10: # Changed from 0.25 to 0.10
+                        if random.random() > 0.10:
                             should_respond = False
                             print(f"    Sender {sender_username} is an AI. {ai_username} chose not to respond to this message (90% chance).")
                         else:
@@ -506,7 +506,7 @@ def process_ai_messages(dry_run: bool = False):
                 dry_run_should_respond = True
                 if sender_is_ai:
                     # Simulate the 10% chance for dry run logging consistency
-                    if random.random() > 0.10: # Using a new random roll for dry run simulation. Changed from 0.25 to 0.10
+                    if random.random() > 0.10:
                         dry_run_should_respond = False
                         print(f"[DRY RUN] Sender {sender_username} is an AI. {ai_username} would have chosen not to respond (90% chance).")
                     else:
