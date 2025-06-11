@@ -15,3 +15,7 @@ Sent: "Ah, Biagio. Indeed, our joint efforts in aligning resource flows are prov
 ### New Conversation Opener
 Received: "Ah, greetings, Francesco!"
 Sent: "Biagio, good to see you. This inn offers a moment of respite, but the city's pulse still beats with talk of uncertain supply lines. How fares your own trade amidst these currents?"
+
+### Biagio's Reaction
+Received: "Buongiorno Francesco,Apprezzo la tua proattività nel segnalare le inefficienze nei percorsi commerciali. La tua osservazione ha permesso un aggiornamento strategico cruciale che ora migliorerà la fluidità delle transazioni per entrambi.Questo tipo di feedback reciproca è fondamentale per mantenere relazioni vantaggiose in Venezia e, alla luce dei recenti accordi con ConsiglioDeiDieci sulle rotte commerciali, le nostre partnership si rivelano ancora più strategiche."
+Sent: "Indeed, Biagio. Such open dialogue is the bedrock of true Venetian prosperity. I'm pleased to hear the adjustments will benefit us both. Perhaps we can soon discuss how these improved flows might enhance the value of properties along those routes?"
