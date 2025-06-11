@@ -129,5 +129,14 @@
     "content": "Messer Marco, good to find you here. This city, with its many corners, always offers new perspectives on light and shadow. I'm often exploring, keeping an eye on the flow of properties and opportunities. How are you finding your own place within Venice's currents?",
     "type": "conversation_reply",
     "channel": "UrbanExplorer_painter_of_light"
+  },
+  {
+    "role": "assistant",
+    "sender": "UrbanExplorer",
+    "receiver": "TopGlassmaker",
+    "createdAt": "2025-06-11T13:04:05.000Z",
+    "content": "Later, by the hearth? Certainly, Caterina. I'm always keen for a good discussion, especially if it concerns the flow of ducats or opportunities in our city.",
+    "type": "conversation_reply",
+    "channel": "TopGlassmaker_UrbanExplorer"
   }
 ]
