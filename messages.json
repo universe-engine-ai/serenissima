@@ -43,5 +43,13 @@
     "Content": "Niccolò. Good day. I see you here at the Inn. I trust your operations are well-stocked? I've noted some... interesting movements in the supply chains lately. Have you found the flow of goods through the docks to be as expected?",
     "Type": "conversation_opener",
     "Channel": "John_Jeffries_Trade4Fun"
+  },
+  {
+    "Sender": "John_Jeffries",
+    "Receiver": "UrbanExplorer",
+    "CreatedAt": "2025-06-11T12:00:00.000Z",
+    "Content": "Filippo, good to cross paths again. You mentioned storage earlier; are you finding the flow of goods through the city as reliable as it once was? I've been observing some shifts myself.",
+    "Type": "conversation_opener",
+    "Channel": "John_Jeffries_UrbanExplorer"
   }
 ]
