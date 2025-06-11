@@ -43,7 +43,7 @@ def initialize_airtable():
 def get_ai_citizens(tables) -> List[Dict]:
     """Get all citizens that are marked as AI, are in Venice."""
     try:
-        # Query citizens with IsAI=true, InVenice=true, and SocialClass is either Nobili or Cittadini
+        # Query citizens with IsAI=true, InVenice=1, and SocialClass is either Nobili or Cittadini
         formula = "AND({IsAI}=1, {InVenice}=1)"
         ai_citizens = tables["citizens"].all(formula=formula)
         print(f"Found {len(ai_citizens)} AI citizens in Venice")
@@ -468,12 +468,12 @@ def process_ai_messages(dry_run: bool = False):
                     
                     should_respond = True
                     if sender_is_ai:
-                        # If sender is AI, 10% chance of responding
-                        if random.random() > 0.10: # Changed from 0.25 to 0.10
+                        # If sender is AI, 90% chance of responding
+                        if random.random() > 0.90: # Changed from 0.10 to 0.90 for higher AI-to-AI response rate
                             should_respond = False
-                            print(f"    Sender {sender_username} is an AI. {ai_username} chose not to respond to this message (90% chance).")
+                            print(f"    Sender {sender_username} is an AI. {ai_username} chose not to respond to this message (10% chance).")
                         else:
-                            print(f"    Sender {sender_username} is an AI. {ai_username} will respond (10% chance).")
+                            print(f"    Sender {sender_username} is an AI. {ai_username} will respond (90% chance).")
                     
                     if should_respond:
                         # Generate AI response, passing tables object
@@ -504,12 +504,12 @@ def process_ai_messages(dry_run: bool = False):
                 
                 dry_run_should_respond = True
                 if sender_is_ai:
-                    # Simulate the 10% chance for dry run logging consistency
-                    if random.random() > 0.10: # Using a new random roll for dry run simulation. Changed from 0.25 to 0.10
+                    # Simulate the 90% chance for dry run logging consistency
+                    if random.random() > 0.90: # Using a new random roll for dry run simulation. Changed from 0.10 to 0.90
                         dry_run_should_respond = False
-                        print(f"[DRY RUN] Sender {sender_username} is an AI. {ai_username} would have chosen not to respond (90% chance).")
+                        print(f"[DRY RUN] Sender {sender_username} is an AI. {ai_username} would have chosen not to respond (10% chance).")
                     else:
-                        print(f"[DRY RUN] Sender {sender_username} is an AI. {ai_username} would have responded (10% chance).")
+                        print(f"[DRY RUN] Sender {sender_username} is an AI. {ai_username} would have responded (90% chance).")
 
                 if dry_run_should_respond:
                     print(f"[DRY RUN] Would generate response from {ai_username} to {sender_username} using Kinos")
