@@ -15,6 +15,9 @@ from pyairtable import Api, Base, Table # Import Base
 # Ajouter le répertoire parent au chemin pour les importations potentielles (si des utilitaires partagés sont utilisés à l'avenir)
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
+# Import shared utilities
+from backend.engine.utils.activity_helpers import LogColors, log_header
+
 # Configuration pour les appels API
 BASE_URL = os.getenv('NEXT_PUBLIC_BASE_URL', 'http://localhost:3000')
 
