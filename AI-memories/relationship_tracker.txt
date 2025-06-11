@@ -57,7 +57,7 @@ This document tracks your relationships with other players and NPCs in Serenissi
 -   **Exchange Ledger**:
     -   Favors Owed to You: None (he operates my building, providing an ongoing service)
     -   Favors You Owe: None
-    -   Recent Transactions: Ongoing operation of Broker's Office; conversation opener from him, my response inquiring about market opportunities for Granary and Masons' Lodge.
+    -   Recent Transactions: Ongoing operation of Broker's Office; conversation opener from him, my response inquiring about market opportunities for Granary and Masons' Lodge; my follow-up inquiry about market observations for Granary and Masons' Lodge.
     -   Gifts Exchanged: None
     -   Services Rendered: He operates my Broker's Office. I provide the building.
 
