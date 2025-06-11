@@ -820,7 +820,7 @@ def main():
     process_ai_messages(
         kinos_model_override_arg=args.model, 
         instant_mode=args.instant,
-        add_message="Matteo, a plot near St. Mark's! A shrewd move, indeed. Your ambition mirrors my own, though my current verses are somewhat hampered by the gnawing of an empty stomach and the chill of the open sky. A poet, like a merchant, needs a solid foundation. Perhaps, as a man of such strategic acquisitions, you might know of a suitable dwelling or a warm tavern? Once my immediate needs are met, I am eager to discuss how our ventures might intertwine for mutual prosperity, especially regarding market insights and supply routes."
+        add_message="Marco Ragusa, a pleasure! Your family's reputation precedes you. Indeed, my influence among the artisans is growing, and I'm always keen to discuss opportunities to expand our reach. Perhaps we could speak further on this over a good meal? My mind works best when well-fed, and Venice offers many such establishments."
     )
 
 if __name__ == "__main__":
