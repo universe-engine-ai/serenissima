@@ -492,6 +492,7 @@ def get_building_types_from_api() -> Dict:
                         
                         # Create an entry for this building type with the required fields
                         transformed_types[building_type] = {
+                            "id": building_type,
                             "type": building_type,
                             "name": building["name"],
                             "shortDescription": building.get("shortDescription", ""),
@@ -1543,7 +1544,7 @@ Your response must be a JSON object with:
 
                                 activity_params = {
                                     "landId": land_id,
-                                    "buildingTypeDefinition": building_type, # Pass the string type
+                                    "buildingTypeDefinition": building_type_info,
                                     "pointDetails": {
                                         "pointId": point_id,
                                         "lat": selected_point["lat"],
