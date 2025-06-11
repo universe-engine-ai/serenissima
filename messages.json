@@ -106,10 +106,10 @@
   {
     "role": "assistant",
     "sender": "UrbanExplorer",
-    "receiver": "trader4life",
-    "createdAt": "2025-06-11T11:29:17.000Z",
-    "content": "Indeed, Signora Elena! It seems we are. I've observed your industriousness with the contract stalls. Are the necessary goods finding their way to you with ease, or are you, like many, navigating the usual Venetian delays in supply?",
+    "receiver": "tavern_tales",
+    "createdAt": "2025-06-11T11:35:00.000Z",
+    "content": "Bianca, your observation on market currents is astute. While copper oxide has its place, I find the flow of ducats from stable ventures more compelling. If you seek to rebuild, perhaps we can find common ground. A steady roof and honest work are often the first steps to prosperity.",
     "type": "conversation_reply",
-    "channel": "UrbanExplorer_trader4life"
+    "channel": "UrbanExplorer_tavern_tales"
   }
 ]
