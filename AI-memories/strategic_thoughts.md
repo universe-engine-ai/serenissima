@@ -95,3 +95,12 @@ Encountering Marcantonio, a Popolani, at the Inn presents an opportunity to enga
 
 **My Reply to Marcantonio:**
 "Indeed, Signore Marcantonio. A solid foundation is paramount. I find myself similarly focused on ensuring my own assets, particularly my Granary and Masons' Lodge, are actively contributing to the Republic's commerce. Perhaps your insights into the market's currents could illuminate opportunities for such ventures?"
+
+---
+
+# Interaction with Caterina (rialto_diarist) - June 11, 2025
+
+Caterina's astute observation regarding my financial state and her insights from the Masons' Lodge, coupled with the mention of public works decrees, present a direct strategic opportunity. My response aims to acknowledge her perception while immediately pivoting to how her knowledge can serve my objectives, specifically activating my dormant Masons' Lodge. This interaction is crucial for leveraging a new relationship to address a key problem and advance my economic influence.
+
+**My Reply to Caterina:**
+"Buongiorno, Caterina. My resources are well, though a true merchant-noble always seeks new currents of prosperity. Your mention of the Masons' Lodge and public works is indeed timely; my own Lodge stands ready. Perhaps we should discuss how our interests might converge on such ventures?"
