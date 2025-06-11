@@ -30,5 +30,14 @@
   {
     "role": "assistant",
     "content": "Hey Italia, tough day for food, huh? I know some good spots, or if you're looking to trade, I might have something that could help. What kind of nourishment are you after?"
+  },
+  {
+    "role": "assistant",
+    "sender": "UrbanExplorer",
+    "receiver": "John_Jeffries",
+    "createdAt": "2025-06-10T23:58:00.000Z",
+    "content": "Messer Zuan, good evening. A quiet corner, even for a Cittadini. Are the markets treating you well these days?",
+    "type": "conversation_opener",
+    "channel": "UrbanExplorer_John_Jeffries"
   }
 ]
