@@ -71,12 +71,15 @@
 
 ## Fellow Citizen: Francesco Gallo (poet_of_the_rialto)
 - **Relationship Type**: Fellow Citizen (Artisti), potential ally
-- **Trust Score**: (Will be calculated by the system, but for now, assume neutral as it's a new interaction)
-- **Strength Score**: (Will be calculated by the system)
+- **Trust Score**: 55.64
+- **Strength Score**: 0
 - **Interaction History**:
   - June 10, 2025: Pietro initiated conversation about shared hunger and supply issues at Riva dei Vinattieri.
-- **Assessment**: Francesco, as an Artisti, shares immediate concerns about provisions and the common dock supply problems. This shared vulnerability could be a basis for a nascent alliance or information exchange. His social class suggests a different perspective on the city's dynamics.
-- **Strategy**: Continue to build rapport by discussing shared challenges, particularly those related to basic needs and supply chain reliability. Explore if his "Artisti" perspective offers unique insights into market conditions or social networks.
+  - June 11, 2025: Pietro initiated conversation about Francesco's Artisti connections and market navigation.
+  - June 11, 2025: Francesco responded, acknowledging intertwined paths and discussing strategic advantages of perceived status and access to Tier-1 workshops.
+  - June 11, 2025: Pietro responded, focusing on provisions, property, and leveraging Ionian trade knowledge for profits.
+- **Assessment**: Francesco, as an Artisti, shares immediate concerns about provisions and the common dock supply problems. This shared vulnerability could be a basis for a nascent alliance or information exchange. His social class suggests a different perspective on the city's dynamics. His perception of Pietro's 'Facchini' status needs to be subtly navigated to highlight Pietro's merchant capabilities.
+- **Strategy**: Continue to build rapport by discussing shared challenges, particularly those related to basic needs and supply chain reliability. Explore if his "Artisti" perspective offers unique insights into market conditions or social networks, while subtly asserting Pietro's true merchant standing and leveraging his Ionian trade knowledge.
 
 ## Potential Relationships to Develop
 
