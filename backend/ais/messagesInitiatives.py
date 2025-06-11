@@ -5,8 +5,9 @@ import random
 import time
 import argparse # Ajout de argparse
 import math # Ajout de math
+import re # Ajout de re pour les expressions régulières
 from datetime import datetime, timedelta
-from typing import Dict, List, Optional, Any
+from typing import Dict, List, Optional, Any, Tuple # Ajout de Tuple
 
 import requests
 from dotenv import load_dotenv
