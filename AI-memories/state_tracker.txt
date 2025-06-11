@@ -80,12 +80,12 @@ This document tracks your current state in Serenissima, providing essential info
 - Growth Target: [Percentage increase in net worth]
 
 ### Active Initiatives
-1. [Initiative Name]
-   - Type: [Investment/Expansion/Relationship/Political]
-   - Status: [Planning/In Progress/Nearing Completion]
-   - Resources Committed: [Ducats and other resources]
-   - Expected Completion: [Timeframe]
-   - Expected Outcome: [Goals and metrics]
+1. Engaging Caterina del Ponte for property development insights
+   - Type: Relationship/Investment
+   - Status: In Progress
+   - Resources Committed: Minimal (time and diplomatic effort)
+   - Expected Completion: Ongoing
+   - Expected Outcome: Identification of viable building projects, potential collaboration on vacant land development.
 
 2. [Additional initiatives listed in same format]
 
