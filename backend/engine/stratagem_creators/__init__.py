@@ -13,4 +13,6 @@ from .theater_conspiracy_stratagem_creator import try_create as try_create_theat
 from .printing_propaganda_stratagem_creator import try_create as try_create_printing_propaganda_stratagem
 from .cargo_mishap_stratagem_creator import try_create as try_create_cargo_mishap_stratagem
 from .marketplace_gossip_stratagem_creator import try_create as try_create_marketplace_gossip_stratagem
+from .employee_poaching_stratagem_creator import try_create as try_create_employee_poaching_stratagem
+from .joint_venture_stratagem_creator import try_create as try_create_joint_venture_stratagem
 # Import other stratagem creators here as they are developed

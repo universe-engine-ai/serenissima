@@ -83,6 +83,11 @@ export async function POST(request: Request) {
         `TargetEmployeeUsername: ${stratagemDetails?.targetEmployeeUsername}`,
         `TargetCompetitorUsername: ${stratagemDetails?.targetCompetitorUsername}`
       );
+    } else if (stratagemType === 'joint_venture') {
+      console.log(`[API /stratagems/try-create] Processing 'joint_venture' stratagem with parameters:`,
+        `TargetPartnerUsername: ${stratagemDetails?.targetPartnerUsername}`,
+        `VentureDetails: ${stratagemDetails?.ventureDetails}`
+      );
     }
 
     let parsedPythonEngineUrl: URL;

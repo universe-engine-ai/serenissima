@@ -890,3 +890,60 @@ This would make NLR attempt to spread rumors about BasstheWhale's business pract
 }
 ```
 This would make NLR attempt to recruit "GiovanniArtisan" away from their current employer, "BasstheWhale".
+
+### 16. Joint Venture (Coming Soon)
+
+-   **Type**: `joint_venture`
+-   **Purpose**: To propose a formal business partnership with another citizen, defining contributions, responsibilities, and profit-sharing.
+-   **Category**: `economic_cooperation`
+-   **Creator**: (To be created: `backend/engine/stratagem_creators/joint_venture_stratagem_creator.py`)
+-   **Processor**: (To be created: `backend/engine/stratagem_processors/joint_venture_stratagem_processor.py`)
+
+#### Parameters for Creation (`stratagemDetails` in API request):
+
+-   `targetPartnerUsername` (string, required): The username of the citizen to propose the venture to.
+-   `ventureDetails` (string, required): A detailed description of the venture, including contributions, management responsibilities, and goals.
+-   `profitSharingPercentage` (float, optional): The profit share for the initiator (e.g., 0.5 for 50%). Defaults to 0.5.
+-   `durationDays` (integer, optional): The duration of the joint venture in days. Defaults to 30.
+-   `name` (string, optional): Custom name for the stratagem.
+
+#### How it Works (Conceptual):
+
+1.  **Creation**:
+    -   The `joint_venture_stratagem_creator.py` validates parameters.
+    -   It creates a new record in the `STRATAGEMS` table with `Status: "active"`, `Category: "economic_cooperation"`, an influence cost of 20, and sets `ExpiresAt`.
+
+2.  **Processing (Conceptual for "Coming Soon")**:
+    -   `processStratagems.py` picks up the active "joint_venture" stratagem.
+    -   `joint_venture_stratagem_processor.py` is invoked.
+    -   **Proposal & Negotiation**:
+        -   The processor sends a `MESSAGE` to the `targetPartnerUsername` with the venture proposal.
+        -   The target partner (if AI) evaluates the offer based on their relationship with the initiator, the venture's perceived profitability, and the fairness of the terms. They can accept, reject, or propose a counter-offer (future enhancement).
+    -   **Contract Creation**:
+        -   If accepted, a special `CONTRACTS` record of type `joint_venture` is created.
+        -   This contract links both citizens and specifies the `profitSharingPercentage`, `durationDays`, and `ventureDetails`.
+    -   **Entity Changes & Effects**:
+        -   **CONTRACTS**: A new `joint_venture` contract is created.
+        -   **RESOURCES/DUCATS**: The processor would create activities for both partners to contribute their agreed-upon resources or capital to the venture.
+        -   **REVENUE DISTRIBUTION**: A new periodic script (`processJointVentures.py`) would need to be created to evaluate the performance of active joint ventures (e.g., by tracking revenue of associated buildings/activities) and automatically distribute profits to the partners' `Ducats` balances according to the `profitSharingPercentage`.
+        -   **RELATIONSHIPS**: A successful joint venture would significantly increase the `TrustScore` and `StrengthScore` between the partners.
+    -   **Status & Notes**:
+        -   The stratagem is marked `executed` once the proposal is accepted and the contract is created. The `joint_venture` contract itself then becomes the active entity.
+        -   Notes would track the outcome of the proposal.
+
+#### Example API Request to `POST /api/stratagems/try-create`:
+
+```json
+{
+  "citizenUsername": "NLR",
+  "stratagemType": "joint_venture",
+  "stratagemDetails": {
+    "targetPartnerUsername": "SerMarco",
+    "ventureDetails": "Let us pool our resources to establish a new trade route for spices from the Levant. I will provide the ship and initial capital for the first voyage; you will leverage your contacts in Alexandria to secure the best prices.",
+    "profitSharingPercentage": 0.5,
+    "durationDays": 180,
+    "name": "Spice Trade Venture with SerMarco"
+  }
+}
+```
+This would make NLR propose a 6-month, 50/50 spice trading joint venture to SerMarco.
