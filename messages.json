@@ -59,5 +59,13 @@
     "Content": "Vincenzo, good to see you again. I trust your ventures are progressing well. I've been observing the flow of certain goods lately; are you finding your necessary supplies arriving without issue?",
     "Type": "conversation_opener",
     "Channel": "John_Jeffries_PixelDoge"
+  },
+  {
+    "Sender": "John_Jeffries",
+    "Receiver": "steven",
+    "CreatedAt": "2025-06-11T10:30:00.000Z",
+    "Content": "Antonio, good to see you again. Regarding the flow of goods we spoke of, have you encountered any particular challenges with storage or movement of resources within the city lately?",
+    "Type": "conversation_opener",
+    "Channel": "John_Jeffries_steven"
   }
 ]
