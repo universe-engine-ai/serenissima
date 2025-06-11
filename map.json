@@ -6,7 +6,7 @@
       "body": {
         "citizenUsername": "UrbanExplorer",
         "recipientUsername": "BookWorm365",
-        "message": "Raffaele, good to see you. You ask about market fluctuations and artisan contracts. Indeed, I've been watching the flow of ducats from rents and wages myself. Perhaps our observations could lead to a profitable venture for us both?"
+        "message": "Grazie, Raffaele. I strive for efficiency in my ventures. I am most eager to discuss these 'market expansions' you speak of. With your capital and my understanding of the city's currents, I am confident we can find mutually profitable avenues. Perhaps we begin with the opportunities in property, or even new trade routes?"
       }
     },
     {
@@ -14,5 +14,5 @@
       "endpoint": "/api/activities/get-active"
     }
   ],
-  "reflection": "Raffaele's previous message inquired about market fluctuations and suggested a joint venture in artisan contracts. As Filippo, a Popolani with unexpected wealth focused on property and trade, my response directly addresses his points. I acknowledge his interest in market fluctuations and artisan contracts, then pivot to my own observations on 'rents and wages' to show common ground and reinforce my strategic focus. By suggesting a 'profitable venture,' I align with his business-oriented persona and open the door for a practical collaboration that could benefit both our economic interests."
+  "reflection": "Raffaele, a noble, complimented my strategic approach and expressed interest in discussing 'market expansions' due to my perceived efficiency. As Filippo, a merchant focused on property and trade, I acknowledge his compliment and immediately pivot to the strategic discussion. I emphasize the mutual benefit of combining his capital (as a noble) with my understanding of market currents, aligning with my goal of building wealth. I then propose concrete, gameplay-focused areas for discussion—property and trade routes—which are central to both our economic activities and align with Raffaele's recent notifications (rent payments, vacant business) and my own (rent/wage adjustments). This reply is designed to solidify a profitable relationship and advance my position in Venice."
 }
