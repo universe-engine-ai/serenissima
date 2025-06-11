@@ -464,14 +464,14 @@ async function fetchStratagemDefinitions(): Promise<StratagemDefinition[]> {
       const nameMatch = block.match(/^(.+?)\n/);
       const name = nameMatch ? nameMatch[1].replace(/\s*\(Coming Soon\)/i, '').trim() : 'Unknown Stratagem';
 
-      const typeMatch = block.match(/\*\*Type\*\*: `(.+?)`/);
+      const typeMatch = block.match(/\*\*Type\*\*: `(.+?)`/); // ESCAPED: /\*\*Type\*\*: `(.+?)`/
       const type = typeMatch ? typeMatch[1] : name.toLowerCase().replace(/\s+/g, '_');
 
-      const purposeMatch = block.match(/\*\*Purpose\*\*: ([^\n]+)/);
+      const purposeMatch = block.match(/\*\*Purpose\*\*: ([^\n]+)/); // ESCAPED: /\*\*Purpose\*\*: ([^\n]+)/
       const purpose = purposeMatch ? purposeMatch[1].trim() : 'No purpose stated.';
       
       let category: string | null = null;
-      const categoryMatch = block.match(/\*\*Category\*\*: `(.+?)`/i) // Check for **Category**: `value`
+      const categoryMatch = block.match(/\*\*Category\*\*: `(.+?)`/i) // Check for **Category**: `value` // ESCAPED: /\*\*Category\*\*: `(.+?)`/i
         || block.match(/Category: "(.+?)"/i) // Check for Category: "value"
         || block.match(/Category:\s*`(.+?)`/i); // Check for Category: `value` with optional space
       if (categoryMatch) {
@@ -513,7 +513,7 @@ async function fetchStratagemDefinitions(): Promise<StratagemDefinition[]> {
       
       // If category is still null, try to find it in the "Creation" section for some specific stratagems
       if (!category) {
-        const creationSectionMatch = block.match(/1\.\s+**Creation**:\s*\n([\s\S]*?)(?=\n\s*2\.\s+**Processing**:|\n#### How it Works:|\n###|$)/);
+        const creationSectionMatch = block.match(/1\.\s+\*\*Creation\*\*:\s*\n([\s\S]*?)(?=\n\s*2\.\s+\*\*Processing\*\*:|\n#### How it Works:|\n###|$)/);
         if (creationSectionMatch) {
             const creationText = creationSectionMatch[1];
             const creationCategoryMatch = creationText.match(/`Status: "active"`, `Category: "(.+?)"`/i) 
