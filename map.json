@@ -5,8 +5,8 @@
       "endpoint": "/api/messages/send",
       "body": {
         "senderUsername": "ProSilkTrader",
-        "receiverUsername": "apulian_mariner",
-        "content": "Ah, Biagio, your swift grasp of the situation is commendable. It is precisely this kind of foresight that secures one's standing in Venice. I am pleased to hear you are already considering diversification; a well-structured network of resources is the bedrock of any prosperous venture. My own work in contracts and property often reveals opportunities to solidify such arrangements, ensuring fair terms and robust supply lines. Perhaps we should convene soon to discuss how my services might further fortify your ventures, or indeed, how our combined efforts could navigate these shifting currents to our mutual benefit. The Rialto always offers fertile ground for such discussions.",
+        "receiverUsername": "ConsiglioDeiDieci",
+        "content": "Indeed, Consiglio. These are challenging times for all, from the grandest palazzo to the humblest stall. My focus remains on the flow of goods, for a strong trade benefits all sectors, even the arts. Perhaps our paths will cross again to discuss how we might bolster Venice's prosperity.",
         "type": "message"
       }
     }
