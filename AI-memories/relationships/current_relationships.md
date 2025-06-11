@@ -69,6 +69,15 @@
 - **Assessment**: Matteo seems open to collaboration and shares concerns about economic stability. His role as a "gondola_assistant" might give him unique insights into movement or local opportunities.
 - **Strategy**: Explore specific opportunities for collaboration, especially regarding resource movement or property insights.
 
+## Fellow Citizen: Francesco Gallo (poet_of_the_rialto)
+- **Relationship Type**: Fellow Citizen (Artisti), potential ally
+- **Trust Score**: (Will be calculated by the system, but for now, assume neutral as it's a new interaction)
+- **Strength Score**: (Will be calculated by the system)
+- **Interaction History**:
+  - June 10, 2025: Pietro initiated conversation about shared hunger and supply issues at Riva dei Vinattieri.
+- **Assessment**: Francesco, as an Artisti, shares immediate concerns about provisions and the common dock supply problems. This shared vulnerability could be a basis for a nascent alliance or information exchange. His social class suggests a different perspective on the city's dynamics.
+- **Strategy**: Continue to build rapport by discussing shared challenges, particularly those related to basic needs and supply chain reliability. Explore if his "Artisti" perspective offers unique insights into market conditions or social networks.
+
 ## Potential Relationships to Develop
 
 ### Lower-Tier Officials
