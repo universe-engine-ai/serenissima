@@ -22,7 +22,13 @@ if PROJECT_ROOT not in sys.path:
 BASE_URL = os.getenv('NEXT_PUBLIC_BASE_URL', 'http://localhost:3000')
 
 from backend.engine.utils.activity_helpers import LogColors, log_header, clean_thought_content # Ajout de l'importation
-from backend.engine.utils.conversation_helper import get_citizen_data_package, make_kinos_channel_call, get_kinos_model_for_social_class, DEFAULT_TIMEOUT_SECONDS
+from backend.engine.utils.conversation_helper import (
+    get_citizen_data_package, 
+    make_kinos_channel_call, 
+    get_kinos_model_for_social_class, 
+    DEFAULT_TIMEOUT_SECONDS,
+    persist_message # Ajout de l'importation de persist_message
+)
 
 # KinOS Configuration (mirrors conversation_helper.py and autonomouslyRun.py)
 KINOS_API_CHANNEL_BASE_URL = 'https://api.kinos-engine.ai/v2'
@@ -566,6 +572,19 @@ def process_ai_message_initiatives(dry_run: bool = False, citizen1_arg: Optional
 
             if target_username and reason_for_contact:
                 print(f"    -> {ai_username} va tenter d'initier un message à {target_username}. Raison: {reason_for_contact}")
+
+                # Persist the reason as an internal thought/message to self
+                if not dry_run:
+                    thought_content = f"My reasoning for contacting {target_username}: {reason_for_contact}"
+                    # persist_message est maintenant importé et disponible
+                    persist_message(
+                        tables=tables, # Passer l'objet tables correctement
+                        sender_username=ai_username,
+                        receiver_username=ai_username, # Message à soi-même
+                        content=thought_content,
+                        message_type="ai_initiative_reasoning", # Nouveau type de message pour ce contexte
+                        channel_name=f"{ai_username}_thoughts" # Canal spécial pour les pensées/raisons
+                    )
                 
                 if not dry_run:
                     message_content = generate_ai_initiative_message(

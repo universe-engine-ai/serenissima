@@ -143,7 +143,13 @@ def persist_message(
             log.warning(f"Message content from {sender_username} to {receiver_username} (type: {message_type}) became empty after removing <think> tags. Original: '{content[:100]}...'")
         
         # Step 2: Apply full cleaning for AI generated types
-        ai_generated_message_types = ["message_ai_augmented", "encounter_reflection", "conversation_opener", "reaction_auto"]
+        ai_generated_message_types = [
+            "message_ai_augmented", 
+            "encounter_reflection", 
+            "conversation_opener", 
+            "reaction_auto",
+            "ai_initiative_reasoning" # Ajout du nouveau type pour le nettoyage
+        ]
         if message_type in ai_generated_message_types:
             log.info(f"Nettoyage complet du contenu du message de type '{message_type}' de {sender_username} à {receiver_username}.")
             # clean_thought_content is imported at the top of the file
