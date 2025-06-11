@@ -253,7 +253,6 @@ def _check_existing_messages(tables: Dict[str, Table], username1: str, username2
             f"  AND({{Sender}} = '{safe_username2}', {{Receiver}} = '{safe_username1}')"
             f")"
         )
-        # Nous avons juste besoin de savoir s'il y en a au moins un
         messages = tables["messages"].all(formula=formula, max_records=1)
         if messages:
             print(f"    -> Messages existants trouvés entre {username1} et {username2}.")
@@ -488,7 +487,7 @@ def process_ai_message_initiatives(dry_run: bool = False, citizen1_arg: Optional
                     log_current_score = math.log(current_score + 1)
                     log_max_score = math.log(max_combined_score + 1)
                     
-                    if log_max_score > 0: # Éviter la division par zéro si max_combined_score était 0 (donc log_max_score serait log(1)=0)
+                    if log_max_score > 0: # Si max_combined_score est 0, log_max_score est 0.
                         probability = (log_current_score / log_max_score) * 0.25
                     else: # Si max_combined_score est 0, log_max_score est 0.
                         probability = 0.0 # current_score doit aussi être 0 dans ce cas.
