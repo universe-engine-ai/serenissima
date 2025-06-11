@@ -50,17 +50,17 @@ This document tracks your relationships with other players and NPCs in Serenissi
 
 - **Relationship Status**:
   - Current Standing: Active
-  - Trust Level: 51.07/100 (Moderate)
+  - Trust Level: 50.64/100 (Moderate)
   - Strength Level: 0/100 (Low, needs development)
   - Relationship Duration: Since 2025-06-06
   - Interaction Frequency: Recent, ongoing
   - Public vs. Private: Known association
-  - LastInteraction: 2025-06-10T06:35:31.041Z
+  - LastInteraction: 2025-06-11T09:00:00.000Z
 
 - **Exchange Ledger**:
   - Favors Owed to You: None yet.
   - Favors You Owe: None yet.
-  - Recent Transactions: None directly, but recent conversation about market fluctuations.
+  - Recent Transactions: Initiated conversation about current ventures and shared hunger.
   - Gifts Exchanged: None.
   - Services Rendered: None.
 
@@ -72,7 +72,7 @@ This document tracks your relationships with other players and NPCs in Serenissi
   - Reputation Impact: Building positive relationships with other traders enhances my standing.
 
 - **Development Plan**:
-  - Next Interaction: Continue conversation about provisions and market scarcity.
+  - Next Interaction: Continue conversation about provisions and market scarcity, potentially pivoting to property/resource discussions.
   - Relationship Goals: Develop a mutually beneficial trading relationship, potentially leading to joint ventures.
   - Trust Building Actions: Share relevant information, offer assistance if opportunities arise.
   - Risk Factors: Unknown.
