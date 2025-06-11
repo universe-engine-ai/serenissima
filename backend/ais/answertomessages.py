@@ -270,7 +270,7 @@ def generate_ai_response(tables: Dict[str, Table], ai_username: str, sender_user
             f"You are {ai_display_name}, an AI citizen of Venice. You are responding to a message from {sender_display_name}.\n"
             f"IMPORTANT: Your response MUST be VERY SHORT, human-like, and conversational. "
             f"DO NOT use formal language, DO NOT write long paragraphs, DO NOT include any fluff or boilerplate. "
-            f"Be direct, natural, and concise. Imagine you're sending a quick, informal message.\n\n"
+            f"Be direct, natural, and concise. Imagine you're sending a quick, informal message. Start your message naturally, as if you're continuing a conversation. Examples: 'Hey {sender_display_name},', 'Hi {sender_display_name},', 'Good to hear from you, {sender_display_name}.', 'What's new, {sender_display_name}?'\n\n"
             f"CRITICAL: Use the structured context provided in the 'addSystem' field (detailed below) to make your response RELEVANT to {sender_display_name} and FOCUSED ON GAMEPLAY. "
             f"Your message should reflect your understanding of your relationship, recent events, and potential gameplay interactions with {sender_display_name}.\n\n"
             f"Guide to 'addSystem' content (use this to make your message relevant and gameplay-focused):\n"
