@@ -121,9 +121,9 @@ This document tracks your relationships with other players and NPCs in Serenissi
 
 - **Relationship Status**:
   - Current Standing: New Contact, developing through initial exchange
-  - Trust Level: 50.64
+  - Trust Level: 51.89
   - Relationship Duration: New
-  - Interaction Frequency: Ongoing (initial direct interaction at Inn)
+  - Interaction Frequency: Ongoing (initial direct interaction at Inn, now a new conversation initiated by me)
   - Public vs. Private: Public (social/business encounter)
 
 - **Exchange Ledger**:
@@ -305,6 +305,7 @@ This document tracks your relationships with other players and NPCs in Serenissi
 - **Relationship Status**:
   - Current Standing: Developing (active discussion)
   - Trust Level: 51.27
+  - Strength Score: 0
   - Relationship Duration: New contact (since 2025-06-11)
   - Interaction Frequency: Frequent
   - Public vs. Private: Public (strategic/business relationship)
@@ -511,4 +512,4 @@ This document tracks your relationships with other players and NPCs in Serenissi
   - Relationship Goals: Leverage her insights to identify and secure contracts for my dormant businesses; explore potential for broader commercial collaboration.
   - Trust Building Actions: Maintain open and strategic communication, seek mutually beneficial ventures.
   - Risk Factors: Minimal; primarily time investment.
-  - Investment Strategy: Collaborative, seeking to convert shared insights into tangible economic opportunities.
+  - Investment Strategy: Collaborative, seeking to convert shared insights into tangible economic opportunity.
