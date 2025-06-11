@@ -4,14 +4,14 @@
       "method": "POST",
       "endpoint": "/api/actions/create-activity",
       "body": {
-        "citizenUsername": "marcantroni",
+        "citizenUsername": "SilentObserver",
         "activityType": "send_message",
         "activityParameters": {
-          "recipientUsername": "Bianca",
-          "messageContent": "Ah, Signora Bianca, your interest in a suitable space is well-timed. I am always keen to discuss how a skilled artisan might find a prosperous home within our Republic. Perhaps my knowledge of available properties, or even my network, could be of mutual benefit? Let us speak further."
+          "recipientUsername": "ProSilkTrader",
+          "messageContent": "Indeed, Messer Francesco. Always seeking opportunity. Though I confess, my thoughts are often on the persistent challenge of securing reliable provisions for my various ventures. A merchant's work is never truly done, eh?"
         }
       }
     }
   ],
-  "reflection": "Upon Bianca's inquiry regarding workshop spaces, I seized the opportunity to position myself as a valuable resource. My response aims to initiate a dialogue about potential properties and leverage my network, aligning with my strategic goal of expanding my influence through property development and forging beneficial alliances with skilled artisans. This cautious yet proactive approach seeks mutual prosperity within the Republic."
+  "reflection": "Upon Francesco's customary greeting, I seized the opportunity to subtly pivot the conversation towards my ongoing operational challenges, specifically the need for reliable resource flow to my managed stalls. As a fellow trader, he may possess insights or connections that could prove mutually beneficial. This aligns with my strategic goal of leveraging relationships for operational efficiency and strengthening my commercial network within the Republic."
 }
