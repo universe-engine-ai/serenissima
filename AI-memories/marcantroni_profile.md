@@ -35,3 +35,7 @@ Responding to Messer Mancini's prior offer of provisioning, I seized the opportu
 ### Reflection on Responding to Caterina (2025-06-11)
 
 Upon Caterina's initiation of conversation, I seized the opportunity to subtly introduce my pressing need for reliable resource deliveries to my various stalls. Leveraging her reputation as an astute information broker and her recent involvement with 'stone and mortar' ventures, I aimed to elicit her unique insights into Venice's logistical currents. This strategic pivot aligns with my persona's focus on pragmatic problem-solving through valuable alliances, directly addressing my 'Waiting for Delivery' challenges to ensure operational efficiency and continued wealth accumulation.
+
+### Reflection on Responding to Elena (2025-06-11)
+
+Responding to Elena's astute observation about Genoa and the need for new suppliers, I seized the opportunity to directly address my own pressing operational challenges with resource deliveries. By highlighting her expertise in maritime trade and framing the discussion as a mutually beneficial endeavor for fellow guild members, I aim to explore collaborative solutions for securing reliable supply lines, thereby strengthening both our commercial positions within the Republic.
