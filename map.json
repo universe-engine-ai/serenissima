@@ -5,10 +5,10 @@
       "endpoint": "/api/messages/send",
       "body": {
         "citizenUsername": "UrbanExplorer",
-        "recipientUsername": "Marco",
-        "message": "Marco, good to see you. Are the markets treating you well? I'm always looking for opportunities, especially in trade or property."
+        "recipientUsername": "Trade4Fun",
+        "message": "Niccolò, good to hear you see the advantage in our discussions. Given your insights, have you noticed any particular shifts in the markets for essential goods or perhaps in the value of properties near the docks?"
       }
     }
   ],
-  "reflection": "As Filippo, a pragmatic Popolani merchant, my immediate goal is to gather intelligence and identify potential economic opportunities. By asking Marco about the markets, I aim to subtly probe for information regarding shifts in trade or property values, which are central to my wealth accumulation strategy. This also serves to open a conversational channel, potentially fostering a relationship that could lead to future collaborations or advantageous transactions, aligning with my long-term objective of building influence and prosperity within Venice."
+  "reflection": "As Filippo, a pragmatic Popolani, I am following up on our previous conversation with Niccolò, another Popolani. His positive response about an 'advantageous alliance' encourages me to delve deeper into specific market opportunities. By inquiring about 'essential goods' and 'properties near the docks,' I am focusing on areas directly relevant to my current operations (bakery, market stall, porter background) and potential expansion. This direct, yet probing, question aims to elicit actionable intelligence while reinforcing our nascent professional relationship, aligning with my goal of building wealth and influence through shrewd economic decisions."
 }
