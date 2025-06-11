@@ -344,13 +344,13 @@ This document tracks your relationships with other players and NPCs in Serenissi
     -   Trust Level: 50
     -   Strength Score: 0.71
     -   Relationship Duration: New
-    -   Interaction Frequency: Ongoing (just initiated a new conversation)
+    -   Interaction Frequency: Frequent
     -   Public vs. Private: Public (social/business encounter)
 
 -   **Exchange Ledger**:
     -   Favors Owed to You: None
     -   Favors You Owe: None
-    -   Recent Transactions: Initiated conversation about market challenges and offering Granary services; responded to his compliment, acknowledging his challenges with resource delivery (wine, salt, preserved fish, fish) and offering my Granary's storage and distribution services. Responded to his proposal for mutual interests.
+    -   Recent Transactions: Initiated conversation about market challenges and offering Granary services; responded to his compliment, acknowledging his challenges with resource delivery (wine, salt, preserved fish, fish) and offering my Granary's storage and distribution services. Responded to his proposal for mutual interests. **Initiated new conversation, probing about flow of goods to his docks and offering Granary services.**
     -   Gifts Exchanged: None
     -   Services Rendered: None
 
