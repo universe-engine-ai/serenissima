@@ -103,7 +103,7 @@ Encountering Marcantonio, a Popolani, at the Inn presents an opportunity to enga
 Caterina's astute observation regarding my financial state and her insights from the Masons' Lodge, coupled with the mention of public works decrees, present a direct strategic opportunity. My response aims to acknowledge her perception while immediately pivoting to how her knowledge can serve my objectives, specifically activating my dormant Masons' Lodge. This interaction is crucial for leveraging a new relationship to address a key problem and advance my economic influence.
 
 **My Reply to Caterina:**
-"Buongiorno, Caterina. My resources are well, though a true merchant-noble always seeks new currents of prosperity. Your mention of the Masons' Lodge and public works is indeed timely; my own Lodge stands ready. Perhaps we should discuss how our interests might converge on such ventures?"
+"Buongiorno, Caterina. My resources are well, though a true merchant-noble always seeks new currents of prosperity. Your mention of the Masons' Lodge and public works is indeed timely; my own Lodge stands ready. Perhaps we might discuss how our interests might converge on such ventures?"
 
 ---
 
@@ -167,3 +167,9 @@ Vincenzo's methodical approach to contracts and his interest in "mutual interest
 # Interaction with Caterina (rialto_diarist) - June 11, 2025 (New Conversation Opener)
 
 Buongiorno, Caterina. I trust you find sustenance here to fortify your keen mind. Speaking of foundations, your insights into the Masons' Lodge and public works are most valuable. My own Lodge stands ready for worthy projects; perhaps we might discuss how our interests could align in such endeavors?
+
+---
+
+# Interaction with Caterina (rialto_diarist) - June 11, 2025 (Responding to her proposal for joint assessment)
+
+Ah, Caterina, your perception is as sharp as a master artisan's chisel. Indeed, the alignment of our interests, particularly concerning the Masons' Lodge and the broader currents of trade, is most promising. My own Granary and Lodge stand ready to contribute to such a joint assessment. Let us indeed delve into these synergies; the Republic, and our coffers, stand to gain.
