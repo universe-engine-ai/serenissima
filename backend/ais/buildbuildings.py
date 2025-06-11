@@ -1057,7 +1057,7 @@ def get_available_building_points(polygons: List[Dict], existing_buildings: List
         # Extract positions of existing buildings
         existing_positions = []
         for building in existing_buildings:
-            position = building.get("position", None)
+            position = building.get("fields", {}).get("Position")
             if position:
                 # Parse position if it's a string
                 if isinstance(position, str):
