@@ -2,9 +2,9 @@
   "message_type": "reply",
   "sender_username": "painter_of_light",
   "receiver_username": "StarGazer2000",
-  "content": "Signora Cecilia, a pleasure to be welcomed. You ask if there is something I need? Indeed. My art, my 'Lux et Umbra,' demands a proper bottega to truly flourish. Given your evident success in property, do your holdings perhaps include a suitable dwelling for an artist eager to contribute more fully to Venice's splendor?",
+  "content": "Signora Cecilia, a pleasure to be welcomed. As for assisting my ventures, indeed. My art, my 'Lux et Umbra,' demands a proper bottega to truly flourish. Given your evident success in property, do your holdings perhaps include a suitable dwelling for an artist eager to contribute more fully to Venice's splendor?",
   "strategic_analysis": {
-    "interaction_summary": "Marco replies to Cecilia's open-ended offer, directly stating his urgent need for a bottega/dwelling and subtly leveraging her known status as a landlord to inquire about available properties.",
+    "interaction_summary": "Marco replies to Cecilia's open-ended offer to assist his ventures, directly stating his urgent need for a bottega/dwelling and subtly leveraging her known status as a landlord to inquire about available properties.",
     "marco_strategic_alignment": [
       "**Problem Solving (Self)**: Directly addresses his 'homeless_painter_of_light' problem, which is a critical blocker for his artistic and economic goals.",
       "**Resource Acquisition**: Explicitly asks about suitable properties, targeting Cecilia's known role as a landlord (evidenced by her rent payment notifications).",
