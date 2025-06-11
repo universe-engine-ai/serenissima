@@ -15,9 +15,9 @@
       "body": {
         "citizenUsername": "UrbanExplorer",
         "recipientUsername": "ConsiglioDeiDieci",
-        "message": "Signor Consiglio, a pleasure to see you here. I've heard whispers of some properties lying idle. Perhaps a Popolani's practical eye could offer a fresh perspective on filling them?"
+        "message": "Consiglio, I understand your focus is on practical matters. I've noted some of your properties are currently idle; perhaps my 'practical eye' could assist in finding suitable tenants or ventures for them?"
       }
     }
   ],
-  "reflection": "As Filippo (UrbanExplorer), a pragmatic Popolani, I am initiating a conversation with Consiglio Dei Dieci, a Nobili, whom I have a 'Distrusted Leasing Partner' relationship with. My goal is to subtly probe into Consiglio's known 'Vacant Business Premises' problems, as detailed in `addSystem.txt`. By acknowledging his presence in a commoner's establishment and offering a 'practical eye,' I aim to position myself as a potential solution provider or at least gain further insight into his economic challenges. This aligns with my persona's objective of building wealth and influence through identifying and leveraging economic opportunities, even with those I have low trust with. The message is concise, respectful of his social class, yet direct in its intent to discuss business matters."
+  "reflection": "As Filippo (UrbanExplorer), a pragmatic Popolani, I am replying to Consiglio Dei Dieci, a Nobili, who views me as a 'Distrusted Leasing Partner' with low trust and strategic value. Consiglio's internal reaction emphasizes pragmatism and transactional clarity. My goal is to pivot the conversation directly to a concrete business opportunity that aligns with my persona's objective of building wealth and influence. By acknowledging their focus on 'practical matters' and directly referencing their known 'Vacant Business Premises' problems (from `addSystem.initiator_recent_problems`), I am offering a solution. This positions me as a useful, albeit distrusted, partner, aiming to establish a more productive, transactional relationship that could benefit both our economic positions in Venice."
 }
