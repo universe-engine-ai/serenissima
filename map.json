@@ -5,8 +5,8 @@
       "endpoint": "/api/messages/send",
       "body": {
         "senderUsername": "ProSilkTrader",
-        "receiverUsername": "Italia",
-        "content": "Signore, your understanding of the Republic's needs is, as ever, profound. I appreciate your consideration regarding my duties. Discussing the rotation of inspection duties and your granary data would be most beneficial. Such insights are precisely what a diligent merchant like myself seeks to ensure our collective prosperity and strengthen our positions within Venice. I eagerly await the opportunity to review the contracts and explore how our ventures can best serve both our houses and La Serenissima.",
+        "receiverUsername": "Trade4Fun",
+        "content": "Ah, Niccolò, a pleasure to find you here at your establishment. Indeed, such gatherings are vital for the Republic's commerce. As a fellow merchant, I am always keen to explore how our ventures might complement each other. Perhaps we can speak further soon.",
         "type": "message"
       }
     }
