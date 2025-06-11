@@ -662,7 +662,7 @@ def process_ai_messages(kinos_model_override_arg: Optional[str] = None, instant_
                             
                             # Remove quotes at the beginning and end if present
                             if cleaned_response.startswith('"') and cleaned_response.endswith('"'):
-                                cleaned_response = cleaned_response[1:-1].strip()
+                                cleaned_response = cleaned_1response[1:-1].strip()
                             
                             activity_params = {
                                 "receiverUsername": sender_username,
@@ -820,7 +820,7 @@ def main():
     process_ai_messages(
         kinos_model_override_arg=args.model, 
         instant_mode=args.instant,
-        add_message="Ah, Signore Pietro! Your keen observation is much appreciated. Indeed, navigating the Republic's intricate systems is a necessity for any who seek to compose their own verse in the grand opera of Venetian commerce, regardless of one's station. Speaking of necessities, I find myself in a peculiar paradox: a purse well-lined, yet my stomach yearns for sustenance and a roof over my head remains elusive. I see you, too, have felt the pangs of hunger. Perhaps, before we delve deeper into the currents of trade and the wisdom of strategic engagement, we might first address these most fundamental of needs? A clear mind, and a full belly, are essential for shrewd ventures, would you not agree?"
+        add_message="Signore Giacomo, your insights are as sharp as a freshly-honed quill! Indeed, the Adriatic currents beckon, and I am eager to chart a course for mutual prosperity. Before we delve into the intricacies of specific routes and demand patterns, however, I find myself in a peculiar paradox: a purse well-lined, yet my stomach yearns for sustenance and a roof over my head remains elusive. A clear mind, and a full belly, are essential for shrewd ventures, would you not agree? Once these immediate necessities are addressed, my full poetic and mercantile focus can be brought to bear on those promising Adriatic opportunities."
     )
 
 if __name__ == "__main__":
