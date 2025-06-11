@@ -379,13 +379,53 @@ def generate_conversation_turn(
     # 5. Determine KinOS model
     effective_kinos_model = kinos_model_override or get_kinos_model_for_social_class(speaker_username, speaker_social_class)
 
-    # 6. Call KinOS Engine
+    # --- NEW LOGIC for local model pre-processing ---
+    final_add_system_data = add_system_payload # By default, use the full data package
+
+    if effective_kinos_model == 'local':
+        log.info(f"Local model detected for {speaker_username}. Performing attention pre-prompt step.")
+        
+        # A. Attention Call
+        attention_channel_name = "attention"
+        attention_prompt = (
+            f"You are an AI assistant helping {speaker_username} prepare for a conversation with {listener_username}. "
+            f"Based on the extensive context provided in `addSystem`, please extract and summarize ONLY the most critical and relevant points that should influence {speaker_username}'s next message. "
+            "Focus on: \n"
+            "1. The current state of your relationship (TrustScore, recent interactions).\n"
+            "2. Any unresolved problems or active goals for both you and the other person.\n"
+            "3. The immediate context of the last few messages in the conversation history.\n"
+            "4. Any significant recent events or relevancies.\n"
+            "Your summary should be concise and in English."
+        )
+
+        summarized_context = make_kinos_channel_call(
+            kinos_api_key,
+            speaker_username,
+            attention_channel_name,
+            attention_prompt,
+            add_system_payload, # Use the full data package for the attention call
+            'local' # Explicitly use local model for this step
+        )
+
+        if summarized_context:
+            log.info(f"Successfully generated summarized context for {speaker_username}. Length: {len(summarized_context)}")
+            log.debug(f"Summarized context: {summarized_context}")
+            # B. Prepare for Conversation Call with summarized context
+            final_add_system_data = {
+                "summary_of_relevant_context": summarized_context,
+                "original_context_available_on_request": "The full data package was summarized. You are now acting as the character based on this summary."
+            }
+        else:
+            log.warning(f"Failed to generate summarized context for {speaker_username}. The conversation turn will be aborted for the local model.")
+            return None # Abort the turn if summarization fails
+
+    # 6. Call KinOS Engine (using final_add_system_data)
     ai_message_content = make_kinos_channel_call(
         kinos_api_key,
         speaker_username, # speaker_username is the kin_id
         channel_name,
-        prompt,
-        add_system_payload,
+        prompt, # The original prompt for the conversation
+        final_add_system_data, # This is either the full package or the summary
         effective_kinos_model
     )
 
