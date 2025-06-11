@@ -13,7 +13,6 @@ from .activity_helpers import (
     is_work_time,
     is_leisure_time_for_class,
     SOCIAL_CLASS_SCHEDULES,
-    BUILDING_TYPE_WORK_SCHEDULES,
     is_docks_open_time,
     get_path_between_points,
     get_citizen_current_load,
