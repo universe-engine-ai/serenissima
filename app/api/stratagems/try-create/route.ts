@@ -63,6 +63,12 @@ export async function POST(request: Request) {
         `PoliticalTheme: ${stratagemDetails?.politicalTheme}`,
         `TargetCompetitor: ${stratagemDetails?.targetCompetitor}`
       );
+    } else if (stratagemType === 'printing_propaganda') {
+      console.log(`[API /stratagems/try-create] Processing 'printing_propaganda' stratagem with parameters:`,
+        `TargetPrintingHouseId: ${stratagemDetails?.targetPrintingHouseId}`,
+        `TargetCompetitor: ${stratagemDetails?.targetCompetitor}`,
+        `PropagandaTheme: ${stratagemDetails?.propagandaTheme}`
+      );
     }
 
     let parsedPythonEngineUrl: URL;

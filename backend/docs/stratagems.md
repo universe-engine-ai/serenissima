@@ -668,3 +668,61 @@ This would make NLR attempt to blockade the waterfront operations associated wit
 }
 ```
 This would make NLR attempt to stage a play at the "theater_grand_canal_01" that satirizes their competitor, BasstheWhale, for one week.
+
+### 12. Printing Propaganda (Coming Soon)
+
+-   **Type**: `printing_propaganda`
+-   **Purpose**: To conduct information warfare against competitors by mass-producing and distributing pamphlets, broadsheets, and rumors.
+-   **Category**: `information_warfare`
+-   **Creator**: (To be created: `backend/engine/stratagem_creators/printing_propaganda_stratagem_creator.py`)
+-   **Processor**: (To be created: `backend/engine/stratagem_processors/printing_propaganda_stratagem_processor.py`)
+
+#### Parameters for Creation (`stratagemDetails` in API request):
+
+-   `targetPrintingHouseId` (string, required): The `BuildingId` of the `printing_house` to use.
+-   `targetCompetitor` (string, required): The username of the competitor to target with propaganda.
+-   `propagandaTheme` (string, optional): The theme of the propaganda (e.g., "financial_mismanagement", "scandalous_rumors", "shoddy_craftsmanship"). Defaults to "General Disinformation".
+-   `name` (string, optional): Custom name for the stratagem.
+-   `description` (string, optional): Custom description.
+-   `notes` (string, optional): Custom notes.
+-   `durationHours` (integer, optional): Duration of the stratagem's influence. Defaults to 168 (7 days).
+
+#### How it Works (Conceptual):
+
+1.  **Creation**:
+    -   The `printing_propaganda_stratagem_creator.py` validates parameters.
+    -   It creates a new record in the `STRATAGEMS` table with `Status: "active"`, `Category: "information_warfare"`, an influence cost of 30, and sets `ExpiresAt`.
+
+2.  **Processing (Conceptual for "Coming Soon")**:
+    -   `processStratagems.py` picks up the active "printing_propaganda" stratagem.
+    -   `printing_propaganda_stratagem_processor.py` is invoked.
+    -   **Material Production**:
+        -   The processor would create `production` activities at the `targetPrintingHouseId` to generate a new `RESOURCE` type: `propaganda_materials`.
+        -   The `propaganda_materials` resource would have attributes in its JSON field detailing the `targetCompetitor` and `propagandaTheme`.
+    -   **Distribution**:
+        -   The processor would create `distribute_propaganda` activities for the `ExecutedBy` citizen or their employees.
+        -   These activities would involve taking the `propaganda_materials` and "distributing" them in high-traffic areas (e.g., `market_stall`, `piazza`).
+    -   **Relationship & Opinion Impact**:
+        -   When AI citizens are in a location where propaganda is being distributed, a chance-based check would occur.
+        -   If affected, their `RELATIONSHIPS` `TrustScore` with the `targetCompetitor` would decrease.
+        -   The `ExecutedBy` citizen's relationship with the `targetCompetitor` would also be negatively impacted if their involvement is discovered.
+    -   **Status & Notes**:
+        -   The stratagem remains `active` for its duration, scheduling production and distribution runs.
+        -   Notes would track the amount of propaganda produced and distributed, and any observed impacts.
+
+#### Example API Request to `POST /api/stratagems/try-create`:
+
+```json
+{
+  "citizenUsername": "NLR",
+  "stratagemType": "printing_propaganda",
+  "stratagemDetails": {
+    "targetPrintingHouseId": "printing_house_rialto_01",
+    "targetCompetitor": "BasstheWhale",
+    "propagandaTheme": "shoddy_craftsmanship",
+    "durationHours": 168,
+    "name": "Pamphlets on the Whale's Poor Wares"
+  }
+}
+```
+This would make NLR attempt to use the "printing_house_rialto_01" to produce and distribute propaganda about the poor quality of BasstheWhale's goods for one week.

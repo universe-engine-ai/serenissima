@@ -43,10 +43,11 @@ from backend.engine.stratagem_processors import (
     process_political_campaign_stratagem,
     process_reputation_assault_stratagem,
     process_emergency_liquidation_stratagem,
-    process_cultural_patronage_stratagem, # Added cultural_patronage
-    process_information_network_stratagem, # Added information_network
-    process_maritime_blockade_stratagem, # Added maritime_blockade
-    process_theater_conspiracy_stratagem # Added theater_conspiracy
+    process_cultural_patronage_stratagem,
+    process_information_network_stratagem,
+    process_maritime_blockade_stratagem,
+    process_theater_conspiracy_stratagem,
+    process_printing_propaganda_stratagem
     # Import other stratagem processors here
 )
 
@@ -124,10 +125,11 @@ STRATAGEM_PROCESSORS = {
     "political_campaign": process_political_campaign_stratagem,
     "reputation_assault": process_reputation_assault_stratagem,
     "emergency_liquidation": process_emergency_liquidation_stratagem,
-    "cultural_patronage": process_cultural_patronage_stratagem, # Added cultural_patronage
-    "information_network": process_information_network_stratagem, # Added information_network
-    "maritime_blockade": process_maritime_blockade_stratagem, # Added maritime_blockade
-    "theater_conspiracy": process_theater_conspiracy_stratagem, # Added theater_conspiracy
+    "cultural_patronage": process_cultural_patronage_stratagem,
+    "information_network": process_information_network_stratagem,
+    "maritime_blockade": process_maritime_blockade_stratagem,
+    "theater_conspiracy": process_theater_conspiracy_stratagem,
+    "printing_propaganda": process_printing_propaganda_stratagem
     # Add other stratagem type to processor mappings here
 }
 
