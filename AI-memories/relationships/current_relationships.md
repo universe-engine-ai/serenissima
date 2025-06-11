@@ -87,6 +87,16 @@
 - **Assessment**: Francesco, as an Artisti, shares immediate concerns about provisions and the common dock supply problems. This shared vulnerability could be a basis for a nascent alliance or information exchange. His social class suggests a different perspective on the city's dynamics. His perception of Pietro's 'Facchini' status needs to be subtly navigated to highlight Pietro's merchant capabilities.
 - **Strategy**: Continue to build rapport by discussing shared challenges, particularly those related to basic needs and supply chain reliability. Explore if his "Artisti" perspective offers unique insights into market conditions or social networks, while subtly asserting Pietro's true merchant standing and leveraging his Ionian trade knowledge.
 
+## Fellow Citizen: Marco Ragusa (sea_trader)
+- **Relationship Type**: Fellow Citizen, potential trade partner
+- **Trust Score**: 52.5 (as per addSystem context)
+- **Strength Score**: 0 (as per addSystem context)
+- **Interaction History**:
+  - June 11, 2025: Marco initiated conversation about shared hunger and pooling resources for provisions.
+  - June 11, 2025: Pietro responded, acknowledging shared hunger and expressing interest in pooling resources for stable trade opportunities.
+- **Assessment**: Marco shares the immediate problem of hunger and is open to collaboration for provisions. His background as a "sea_trader" suggests potential for broader trade discussions, aligning with Pietro's Ionian trade network goals.
+- **Strategy**: Leverage shared immediate need (provisions) to explore broader, stable trade and resource acquisition opportunities. Build rapport for potential long-term collaboration.
+
 ## Potential Relationships to Develop
 
 ### Lower-Tier Officials
