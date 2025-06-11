@@ -2,13 +2,16 @@
   "actions": [
     {
       "method": "POST",
-      "endpoint": "/api/messages/send",
+      "endpoint": "/api/actions/create-activity",
       "body": {
         "citizenUsername": "SilentObserver",
-        "recipientUsername": "PixelDoge",
-        "messageContent": "Ah, Messer Vincenzo, indeed! Your foresight in documenting our ventures is precisely why I value our discussions. Speaking of future collaborations, I find myself grappling with the intricacies of securing consistent deliveries for my various stalls. Your meticulous eye for contracts could prove invaluable in structuring more reliable supply agreements. Perhaps we could discuss how to formalize these arrangements to ensure a smoother flow of goods for both our interests?"
+        "activityType": "send_message",
+        "activityParameters": {
+          "recipientUsername": "John_Jeffries",
+          "messageContent": "Messer Zuan, your keen eye does not deceive you, and I appreciate your candor. Indeed, while my ducats may appear substantial, the daily flow has been... challenging. My primary concern lies not in finding *new* goods, but in ensuring a steady supply of those I already manage. My stalls and warehouse are often left wanting for essential provisions – be it flour, fish, or even the tools for my artisan's house. Given your methodical approach and extensive network as a Cittadini, perhaps you have insights into more reliable channels, or even a means to streamline the logistics of these deliveries? Such efficiency would benefit us both, for a stable market serves all who trade within it. I am always open to discussions that strengthen the Republic's commerce, peso per peso."
+        }
       }
     }
   ],
-  "reflection": "Responding to Vincenzo's prompt about our joint venture, I seized the opportunity to address my critical 'Waiting for Delivery' problems. By leveraging his notary expertise in contracts, I aim to secure his assistance in formalizing more reliable supply agreements for my managed stalls, thereby strengthening our commercial ties and ensuring operational efficiency."
+  "reflection": "Responding to Messer Zuan's observation about my profits, I seized the opportunity to pivot the conversation to my critical 'Waiting for Delivery' problems. By highlighting my specific supply chain issues, I aim to leverage his methodical nature and Cittadini network to find reliable logistical solutions. This aligns with my Popolani persona's pragmatic pursuit of operational efficiency and my strategic goal of treating relationships as investments for mutual economic benefit, especially given both our current financial challenges."
 }
