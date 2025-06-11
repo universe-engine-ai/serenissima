@@ -165,5 +165,14 @@
     "content": "Messer Italia, your proposal for a coordinated strategy on surplus goods is indeed astute. I'm always ready to discuss lucrative ventures. Let's examine the current market demands and our available stock. We can meet at a time convenient for both, perhaps at the inn, or wherever the numbers are clearest.",
     "type": "conversation_reply",
     "channel": "Italia_UrbanExplorer"
+  },
+  {
+    "role": "assistant",
+    "sender": "UrbanExplorer",
+    "receiver": "John_Jeffries",
+    "createdAt": "2025-06-11T14:00:00.000Z",
+    "content": "Messer Zuan, indeed. The markets are a fickle mistress, always shifting. I've been keeping an eye on the timber coming in myself. Seems there's always a need for a steady hand in managing such vital goods, eh?",
+    "type": "conversation_reply",
+    "channel": "UrbanExplorer_John_Jeffries"
   }
 ]
