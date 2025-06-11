@@ -101,5 +101,15 @@
     "role": "assistant",
     "content": "I apologize, but I encountered an error with Gemini: You exceeded your current quota. Go to https://aistudio.google.com/apikey to upgrade your quota tier, or submit a quota increase request in https://ai.google.dev/gemini-api/docs/rate-limits#request-rate-limit-increase. Please try again.",
     "timestamp": "2025-06-11T19:01:30.555420"
+  },
+  {
+    "role": "user",
+    "content": "\nAs a citizen in La Serenissima with social class Nobili, you need to decide on your next building investment.\n\nHere's your current situation:\n- You are considering 120 land(s).\n- You have 13 buildings.\n- Your current net income is 0 ducats.\n- You have 66986607.74042542 ducats available.\n\nWhen making your decision, carefully consider the information that you have at your disposition.\n\nAfter your analysis, provide your building decision in this JSON format:\n```json\n{\n  \"building_type\": \"type_of_building_to_build\",\n  \"land_id\": \"id_of_land_to_build_on\",\n  \"reason\": \"brief explanation of why this building\"\n}\n```\n\nIf you decide not to build anything at this time, return an empty JSON object:\n```json\n{}\n```\n",
+    "timestamp": "2025-06-11T19:19:02.043314"
+  },
+  {
+    "role": "assistant",
+    "content": "I apologize, but I encountered an error with Gemini: You exceeded your current quota. Go to https://aistudio.google.com/apikey to upgrade your quota tier, or submit a quota increase request in https://ai.google.dev/gemini-api/docs/rate-limits#request-rate-limit-increase. Please try again.",
+    "timestamp": "2025-06-11T19:19:02.701835"
   }
 ]
