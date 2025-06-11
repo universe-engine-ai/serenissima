@@ -1,0 +1,12 @@
+# This file makes the 'stratagem_processors' directory a Python package.
+
+from .undercut_stratagem_processor import process as process_undercut_stratagem
+from .coordinate_pricing_stratagem_processor import process as process_coordinate_pricing_stratagem
+from .hoard_resource_stratagem_processor import process as process_hoard_resource_stratagem
+from .political_campaign_stratagem_processor import process as process_political_campaign_stratagem
+from .reputation_assault_stratagem_processor import process as process_reputation_assault_stratagem
+from .emergency_liquidation_stratagem_processor import process as process_emergency_liquidation_stratagem
+from .cultural_patronage_stratagem_processor import process as process_cultural_patronage_stratagem # Added cultural_patronage
+from .information_network_stratagem_processor import process as process_information_network_stratagem # Added information_network
+from .maritime_blockade_stratagem_processor import process as process_maritime_blockade_stratagem # Added maritime_blockade
+# Import other stratagem processors here

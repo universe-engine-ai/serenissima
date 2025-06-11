@@ -1,0 +1,11 @@
+{
+  "id": "gold_leaf",
+  "name": "Gold Leaf",
+  "category": "processed_materials",
+  "subCategory": "decorative",
+  "description": "Extremely thin sheets of gold used for decoration and gilding.",
+  "importPrice": 13204.8,
+  "lifetimeHours": null,
+  "consumptionHours": 117,
+  "tier": 4
+}

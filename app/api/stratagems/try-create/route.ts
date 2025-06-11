@@ -1,0 +1,149 @@
+import { NextResponse } from 'next/server';
+import { z } from 'zod';
+
+const PYTHON_ENGINE_BASE_URL = process.env.BACKEND_BASE_URL || 'http://localhost:10000';
+
+// Schéma Zod pour la validation de la requête de création de stratagème
+const TryCreateStratagemRequestSchema = z.object({
+  citizenUsername: z.string().min(1, "citizenUsername is required"),
+  stratagemType: z.string().min(1, "stratagemType is required"),
+  stratagemDetails: z.record(z.any()).optional(), // Détails spécifiques au stratagème
+});
+
+export async function POST(request: Request) {
+  let rawBody: any;
+  try {
+    rawBody = await request.json();
+    console.log(`[API /stratagems/try-create] Raw request body:`, JSON.stringify(rawBody, null, 2));
+    const validationResult = TryCreateStratagemRequestSchema.safeParse(rawBody);
+
+    if (!validationResult.success) {
+      return NextResponse.json({ success: false, error: "Invalid request payload", details: validationResult.error.format() }, { status: 400 });
+    }
+    const { citizenUsername, stratagemType, stratagemDetails } = validationResult.data;
+
+    console.log(`[API /stratagems/try-create] Received request for citizen: ${citizenUsername}, stratagem type: ${stratagemType}, details:`, stratagemDetails || {});
+
+    const pythonPayload: any = {
+      citizenUsername: citizenUsername,
+      stratagemType: stratagemType,
+      ...(stratagemDetails && { stratagemParameters: stratagemDetails }),
+    };
+
+    // Log spécifique pour le stratagème "undercut"
+    if (stratagemType === 'undercut') {
+      console.log(`[API /stratagems/try-create] Processing 'undercut' stratagem with parameters:`,
+        `Variant: ${stratagemDetails?.variant}`,
+        `TargetCitizen: ${stratagemDetails?.targetCitizen}`,
+        `TargetBuilding: ${stratagemDetails?.targetBuilding}`,
+        `TargetResourceType: ${stratagemDetails?.targetResourceType}`
+      );
+    } else if (stratagemType === 'cultural_patronage') {
+      console.log(`[API /stratagems/try-create] Processing 'cultural_patronage' stratagem with parameters:`,
+        `TargetArtist: ${stratagemDetails?.targetArtist}`,
+        `TargetPerformanceId: ${stratagemDetails?.targetPerformanceId}`,
+        `TargetInstitutionId: ${stratagemDetails?.targetInstitutionId}`,
+        `PatronageLevel: ${stratagemDetails?.patronageLevel}`
+      );
+    } else if (stratagemType === 'information_network') {
+      console.log(`[API /stratagems/try-create] Processing 'information_network' stratagem with parameters:`,
+        `TargetCitizens: ${JSON.stringify(stratagemDetails?.targetCitizens)}`,
+        `TargetSectors: ${JSON.stringify(stratagemDetails?.targetSectors)}`,
+        `DurationHours: ${stratagemDetails?.durationHours}`
+      );
+    } else if (stratagemType === 'maritime_blockade') {
+      console.log(`[API /stratagems/try-create] Processing 'maritime_blockade' stratagem with parameters:`,
+        `TargetCompetitorBuilding: ${stratagemDetails?.targetCompetitorBuilding || stratagemDetails?.targetBuilding}`,
+        `TargetCompetitorCitizen: ${stratagemDetails?.targetCompetitorCitizen || stratagemDetails?.targetCitizen}`,
+        `DurationHours: ${stratagemDetails?.durationHours}`
+      );
+    }
+
+    let parsedPythonEngineUrl: URL;
+    try {
+      let base = PYTHON_ENGINE_BASE_URL;
+      if (!base.startsWith('http://') && !base.startsWith('https://')) {
+        console.warn(`[API /stratagems/try-create] PYTHON_ENGINE_BASE_URL (${base}) is missing scheme, prepending http://`);
+        base = 'http://' + base;
+      }
+      // Nouveau endpoint pour les stratagèmes
+      parsedPythonEngineUrl = new URL('/api/v1/engine/try-create-stratagem', base);
+    } catch (e: any) {
+      console.error(`[API /stratagems/try-create] Invalid PYTHON_ENGINE_BASE_URL: ${PYTHON_ENGINE_BASE_URL}. Error: ${e.message}`);
+      return NextResponse.json({ success: false, error: 'Internal server configuration error: Python engine URL is invalid.' }, { status: 500 });
+    }
+    const pythonEngineUrlValidated = parsedPythonEngineUrl.toString();
+
+    console.log(`[API /stratagems/try-create] Calling Python engine at: ${pythonEngineUrlValidated} with payload for stratagem type ${stratagemType}:`, pythonPayload);
+
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 60000); // 60 seconds timeout
+
+    let engineResponse;
+    try {
+      engineResponse = await fetch(pythonEngineUrlValidated, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(pythonPayload),
+        signal: controller.signal,
+      });
+    } catch (fetchError: any) {
+      if (fetchError.name === 'AbortError') {
+        console.error(`[API /stratagems/try-create] Fetch to Python engine timed out after 60 seconds for ${stratagemType}.`);
+        return NextResponse.json({ success: false, error: `Python engine request timed out for ${stratagemType}.` }, { status: 504 });
+      }
+      console.error(`[API /stratagems/try-create] Fetch error calling Python engine for ${stratagemType}:`, fetchError);
+      throw fetchError;
+    } finally {
+      clearTimeout(timeoutId);
+    }
+
+    let responseData;
+    let responseTextForErrorLog = "";
+
+    try {
+      responseData = await engineResponse.json();
+    } catch (e) {
+      try {
+        responseTextForErrorLog = await engineResponse.text();
+      } catch (textError) {
+        responseTextForErrorLog = "[Could not read response text after JSON parse failure]";
+      }
+      console.error(`[API /stratagems/try-create] Python engine response was not valid JSON. Status: ${engineResponse.status}. Response text snippet: ${responseTextForErrorLog.substring(0, 500)}`);
+      return NextResponse.json(
+        { success: false, error: "Python engine returned OK status but non-JSON response.", details: `Status: ${engineResponse.status}, Body: ${responseTextForErrorLog.substring(0, 200)}` },
+        { status: engineResponse.ok ? 502 : engineResponse.status }
+      );
+    }
+
+    if (!engineResponse.ok) {
+      console.error(`[API /stratagems/try-create] Error from Python engine (${engineResponse.status}) for ${stratagemType}:`, responseData);
+      const pythonErrorString = responseData?.error || responseData?.detail || responseData?.message || engineResponse.statusText || 'Unknown Python engine error';
+      return NextResponse.json(
+        { success: false, error: `Python engine error for ${stratagemType}: ${pythonErrorString}`, details: responseData },
+        { status: engineResponse.status }
+      );
+    }
+
+    console.log(`[API /stratagems/try-create] Response from Python engine for ${citizenUsername} (stratagem: ${stratagemType}):`, responseData);
+    return NextResponse.json(responseData, { status: 200 });
+
+  } catch (error: any) {
+    const stratagemTypeForLog = typeof rawBody === 'object' && rawBody !== null && 'stratagemType' in rawBody && typeof rawBody.stratagemType === 'string' ? rawBody.stratagemType : 'unknown';
+    console.error(`[API /stratagems/try-create] Internal error for stratagemType ${stratagemTypeForLog}:`, error);
+    // ... (gestion d'erreur ECONNREFUSED comme dans l'autre route)
+    let isConnectionRefused = false;
+    if (error.code === 'ECONNREFUSED') isConnectionRefused = true;
+    else if (error.cause?.code === 'ECONNREFUSED') isConnectionRefused = true;
+    else if (Array.isArray(error.cause?.errors) && error.cause.errors[0]?.code === 'ECONNREFUSED') isConnectionRefused = true;
+
+    if (isConnectionRefused) {
+        const currentPythonBaseUrlForError = process.env.BACKEND_BASE_URL || 'http://localhost:10000';
+        console.error(`[API /stratagems/try-create] Detected ECONNREFUSED. Python engine is likely down or unreachable at ${currentPythonBaseUrlForError}.`);
+        return NextResponse.json({ success: false, error: `Python engine service is unavailable (ECONNREFUSED). Attempted to reach: ${currentPythonBaseUrlForError}` }, { status: 503 });
+    }
+    return NextResponse.json({ success: false, error: error.message || 'Failed to process try-create stratagem request' }, { status: 500 });
+  }
+}

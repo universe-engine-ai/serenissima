@@ -1,0 +1,16 @@
+{
+  "id": "game_meat",
+  "name": "Game Meat",
+  "category": "raw_materials",
+  "subCategory": "luxury_food",
+  "description": "Meat from hunted wild animals such as deer, boar, or wildfowl. Considered a delicacy and often featured in noble banquets.",
+  "historicalNotes": {
+    "introductionYear": "ancient",
+    "historicalSignificance": "Hunting rights were often restricted, making game meat a symbol of status and privilege. Sumptuary laws sometimes regulated its consumption.",
+    "culturalContext": "Game meat was a centerpiece of lavish feasts and banquets, showcasing the host's wealth and connections."
+  },
+  "importPrice": 2400.0,
+  "lifetimeHours": 3600,
+  "consumptionHours": 1,
+  "tier": 4
+}

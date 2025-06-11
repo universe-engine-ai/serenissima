@@ -1,0 +1,327 @@
+import logging
+import json
+from datetime import datetime, timezone, timedelta
+from typing import Dict, Any, Optional
+from pyairtable import Table
+from backend.engine.utils.activity_helpers import _escape_airtable_value, VENICE_TIMEZONE, log_header, LogColors
+
+log = logging.getLogger(__name__)
+
+def process_initiate_building_project_fn(
+    tables: Dict[str, Any],
+    activity_record: Dict[str, Any],
+    building_type_defs: Any,
+    resource_defs: Any,
+    api_base_url: Optional[str] = None # Added api_base_url parameter
+) -> bool:
+    """
+    Process activities in the initiate_building_project chain.
+    
+    This processor handles four types of activities:
+    1. goto_location (to land) - Travel to the land plot (no special action needed)
+    2. inspect_land_plot - Verify the land is suitable for the building
+    3. goto_location (to office) - Travel to the town hall or builder's workshop (no special action needed)
+    4. submit_building_project - Create the building project and handle payments
+    """
+    fields = activity_record.get('fields', {})
+    activity_type = fields.get('Type')
+    citizen = fields.get('Citizen')
+    details_str = fields.get('Notes') # Changed 'Details' to 'Notes'
+
+    log_header(f"Initiate Building Project ({activity_type}): {citizen}", LogColors.HEADER)
+    
+    try:
+        details = json.loads(details_str) if details_str else {}
+    except Exception as e:
+        log.error(f"Error parsing Details for {activity_type}: {e}")
+        return False
+    
+    # Handle goto_location activity (part of chain)
+    if activity_type == "goto_location" and details.get("activityType") == "initiate_building_project":
+        # Just log and return success - the next activity is already scheduled
+        next_step = details.get("nextStep", "unknown")
+        log.info(f"Citizen {citizen} has completed travel for initiate_building_project. Next step: {next_step}")
+        return True
+    
+    # Handle inspect_land_plot activity
+    elif activity_type == "inspect_land_plot":
+        return _handle_inspect_land_plot(tables, activity_record, details, building_type_defs)
+    
+    # Handle submit_building_project activity
+    elif activity_type == "submit_building_project":
+        return _create_building_project(tables, activity_record, details, building_type_defs)
+    
+    else:
+        log.error(f"Unexpected activity type in initiate_building_project processor: {activity_type}")
+        return False
+
+def _handle_inspect_land_plot(
+    tables: Dict[str, Any],
+    activity_record: Dict[str, Any],
+    details: Dict[str, Any],
+    building_type_defs: Any
+) -> bool:
+    """
+    Handle the inspect_land_plot activity.
+    Verify that the land is suitable for the building type.
+    """
+    fields = activity_record.get('fields', {})
+    citizen = fields.get('Citizen')
+    land_id = details.get('landId')
+    building_type_definition = details.get('buildingTypeDefinition')
+    point_details = details.get('pointDetails')
+    
+    if not (citizen and land_id and building_type_definition and point_details):
+        log.error(f"Missing data for inspect_land_plot: citizen={citizen}, land_id={land_id}")
+        return False
+    
+    # Check if the land exists and is owned by the citizen
+    try:
+        land_formula = f"{{LandId}}='{_escape_airtable_value(land_id)}'"
+        land_records = tables['lands'].all(formula=land_formula, max_records=1)
+        
+        if not land_records:
+            log.error(f"Land {land_id} not found")
+            return False
+        
+        land_record = land_records[0]
+        # land_owner = land_record['fields'].get('Owner') # Ownership check removed
+        
+        # if land_owner != citizen: # Ownership check removed
+        #     log.error(f"Citizen {citizen} does not own land {land_id}")
+        #     return False
+        
+        # Check if the building type is valid
+        building_type = building_type_definition.get('id')
+        if not building_type or building_type not in building_type_defs:
+            log.error(f"Invalid building type: {building_type}")
+            return False
+        
+        # Check if the point is valid for this land
+        # This would require more complex validation in a real implementation
+        # For now, we'll just log a success message
+        
+        log.info(f"Land {land_id} inspected by {citizen} for building a {building_type_definition.get('name', 'building')}. The land is suitable.")
+        return True
+    except Exception as e:
+        log.error(f"Error inspecting land: {e}")
+        return False
+
+def _create_building_project(
+    tables: Dict[str, Any],
+    activity_record: Dict[str, Any],
+    details: Dict[str, Any],
+    building_type_defs: Any
+) -> bool:
+    """Create a building project when the submit_building_project activity is processed."""
+    fields = activity_record.get('fields', {})
+    citizen = fields.get('Citizen')
+    office_building_id = fields.get('FromBuilding')  # We're at the office now
+    land_id = details.get('landId')
+    building_type_definition = details.get('buildingTypeDefinition')
+    point_details = details.get('pointDetails')
+    builder_contract_details = details.get('builderContractDetails')  # Optional
+    
+    if not (citizen and office_building_id and land_id and building_type_definition and point_details):
+        log.error(f"Missing data for submit_building_project: citizen={citizen}, office={office_building_id}, land={land_id}")
+        return False
+    
+    # Get the building type details
+    building_type = building_type_definition.get('id')
+    if not building_type or building_type not in building_type_defs:
+        log.error(f"Invalid building type: {building_type}")
+        return False
+    
+    building_type_info = building_type_defs.get(building_type, {})
+    building_category = building_type_info.get('category') # Get category
+    building_subcategory = building_type_info.get('subCategory') # Get subCategory
+
+    now = datetime.utcnow()
+    building_id = f"building_{point_details.get('lat')}_{point_details.get('lng')}"
+    building_name_default = building_type_info.get('name', building_type.replace('_', ' ').title())
+
+    permit_fee_already_paid = False
+    building_shell_exists_and_matches = False
+    existing_building_airtable_id = None
+    existing_building_record_fields = None
+
+    # Check for existing building shell
+    try:
+        existing_building_records = tables['buildings'].all(formula=f"{{BuildingId}}='{_escape_airtable_value(building_id)}'", max_records=1)
+        if existing_building_records:
+            existing_building_record_data = existing_building_records[0]
+            existing_building_record_fields = existing_building_record_data['fields']
+            if (existing_building_record_fields.get('Owner') == citizen and
+                existing_building_record_fields.get('Type') == building_type and
+                not existing_building_record_fields.get('IsConstructed')):
+                permit_fee_already_paid = True
+                building_shell_exists_and_matches = True
+                existing_building_airtable_id = existing_building_record_data['id']
+                log.info(f"Projet de construction existant et correspondant trouvé pour {building_id}. Les frais de permis seront ignorés.")
+            else:
+                log.error(f"Un bâtiment existe à {building_id} mais ne correspond pas au propriétaire/type ou est déjà construit. Impossible d'initier un nouveau projet ici.")
+                return False # Point de construction incompatible
+    except Exception as e_fetch_existing_bldg:
+        log.error(f"Erreur lors de la vérification du bâtiment existant {building_id}: {e_fetch_existing_bldg}")
+        return False
+    
+    # Calculate permit fee (typically 5% of building cost, minimum 50 Ducats)
+    # buildCost might be nested under constructionCosts in some definitions
+    construction_costs_from_def = building_type_info.get('constructionCosts', {})
+    building_cost_ducats = construction_costs_from_def.get('ducats', 1000) # Default to 1000 if not specified
+    
+    permit_fee_to_charge = 0
+    if not permit_fee_already_paid:
+        permit_fee_to_charge = max(50, building_cost_ducats * 0.05)  # 5% fee, minimum 50 Ducats
+    
+    # If there's a builder contract, add a deposit (typically 20% of the contract value)
+    builder_deposit_to_charge = 0
+    builder_username = None # Renamed from builder_username_for_payload for clarity in this scope
+    actual_contract_value_for_builder = 0 # For contract creation
+
+    if builder_contract_details:
+        builder_username = builder_contract_details.get('builderUsername')
+        contract_value_from_details = builder_contract_details.get('contractValue')
+        if contract_value_from_details is not None:
+            actual_contract_value_for_builder = float(contract_value_from_details)
+        else:
+            rate_from_details = builder_contract_details.get('rate')
+            if rate_from_details is not None:
+                actual_contract_value_for_builder = float(rate_from_details)
+            else:
+                actual_contract_value_for_builder = building_cost_ducats * 1.2
+        
+        potential_builder_deposit = actual_contract_value_for_builder * 0.2
+
+        # Check if this specific builder contract already exists and is active
+        skip_builder_deposit_and_contract = False
+        if building_shell_exists_and_matches and builder_username:
+            formula_contract_check = f"AND({{Asset}}='{_escape_airtable_value(building_id)}', {{Buyer}}='{_escape_airtable_value(citizen)}', {{Seller}}='{_escape_airtable_value(builder_username)}', NOT(OR({{Status}}='failed', {{Status}}='cancelled', {{Status}}='completed')))"
+            existing_builder_contracts = tables['contracts'].all(formula=formula_contract_check, max_records=1)
+            if existing_builder_contracts:
+                log.info(f"Un contrat de construction actif avec le constructeur {builder_username} pour le projet {building_id} existe déjà. L'acompte et la création du contrat seront ignorés.")
+                skip_builder_deposit_and_contract = True
+        
+        if not skip_builder_deposit_and_contract:
+            builder_deposit_to_charge = potential_builder_deposit
+        else: # Builder deposit is skipped, so ensure contract value for new contract is 0 if we were to create one (which we won't)
+            actual_contract_value_for_builder = 0 # This prevents creating a new contract with value if deposit is skipped
+            
+    total_cost = permit_fee_to_charge + builder_deposit_to_charge
+    
+    # Check if citizen has enough Ducats to pay the fees
+    try:
+        citizen_records = tables['citizens'].all(formula=f"{{Username}}='{_escape_airtable_value(citizen)}'", max_records=1)
+        if not citizen_records:
+            log.error(f"Citizen {citizen} not found")
+            return False
+        
+        citizen_record = citizen_records[0]
+        citizen_ducats = float(citizen_record['fields'].get('Ducats', 0))
+        
+        if total_cost > 0 and citizen_ducats < total_cost: # Check only if there's a cost
+            log.error(f"Citizen {citizen} has insufficient Ducats ({citizen_ducats}) to pay total fees ({total_cost}). Permit fee: {permit_fee_to_charge}, Builder deposit: {builder_deposit_to_charge}")
+            return False
+        
+        office_operator = "ConsiglioDeiDieci"  # Default to city government
+        if permit_fee_to_charge > 0: # Only find office operator if permit fee is being charged
+            building_formula = f"{{BuildingId}}='{_escape_airtable_value(office_building_id)}'"
+            buildings = tables["buildings"].all(formula=building_formula, max_records=1)
+            if buildings and buildings[0]['fields'].get('RunBy'):
+                office_operator = buildings[0]['fields'].get('RunBy')
+                log.info(f"Found office operator {office_operator} for building {office_building_id} for permit fee.")
+        
+        if total_cost > 0: # Deduct only if there's a cost
+            tables['citizens'].update(citizen_record['id'], {'Ducats': citizen_ducats - total_cost})
+            log.info(f"Deducted {total_cost} Ducats from {citizen}. Permit: {permit_fee_to_charge}, Deposit: {builder_deposit_to_charge}.")
+        
+        # Add permit fee to office operator if it was charged
+        if permit_fee_to_charge > 0:
+            if office_operator != "ConsiglioDeiDieci": # Assuming ConsiglioDeiDieci is a system account not in CITIZENS
+                operator_formula = f"{{Username}}='{_escape_airtable_value(office_operator)}'"
+                operator_records = tables["citizens"].all(formula=operator_formula, max_records=1)
+                if operator_records:
+                    operator_record_data = operator_records[0]
+                    operator_ducats = float(operator_record_data['fields'].get('Ducats', 0))
+                    tables["citizens"].update(operator_record_data['id'], {'Ducats': operator_ducats + permit_fee_to_charge})
+            # Record the permit fee transaction
+            permit_transaction_fields = {
+                "Type": "building_permit_fee", "AssetType": "land", "Asset": land_id,
+                "Seller": citizen, "Buyer": office_operator, "Price": permit_fee_to_charge,
+                "Notes": json.dumps({"building_type": building_type, "point_details": point_details, "office_building_id": office_building_id}),
+                "CreatedAt": now.isoformat(), "ExecutedAt": now.isoformat()
+            }
+            tables["transactions"].create(permit_transaction_fields)
+            log.info(f"Permit fee of {permit_fee_to_charge} Ducats paid by {citizen} to {office_operator}.")
+
+        # Add builder deposit to builder if it was charged
+        if builder_username and builder_deposit_to_charge > 0:
+            builder_formula = f"{{Username}}='{_escape_airtable_value(builder_username)}'"
+            builder_records = tables["citizens"].all(formula=builder_formula, max_records=1)
+            if builder_records:
+                builder_record_data = builder_records[0]
+                builder_ducats = float(builder_record_data['fields'].get('Ducats', 0))
+                tables["citizens"].update(builder_record_data['id'], {'Ducats': builder_ducats + builder_deposit_to_charge})
+                # Record the builder deposit transaction
+                deposit_transaction_fields = {
+                    "Type": "builder_deposit", "AssetType": "land", "Asset": land_id,
+                    "Seller": citizen, "Buyer": builder_username, "Price": builder_deposit_to_charge,
+                    "Notes": json.dumps({"building_type": building_type, "point_details": point_details, "contract_details": builder_contract_details}),
+                    "CreatedAt": now.isoformat(), "ExecutedAt": now.isoformat()
+                }
+                tables["transactions"].create(deposit_transaction_fields)
+                log.info(f"Builder deposit of {builder_deposit_to_charge} Ducats paid by {citizen} to {builder_username}.")
+            else:
+                log.error(f"Builder {builder_username} not found")
+                # Continue anyway, the deposit will go to the city
+        
+        # Create/Update the building record
+        construction_minutes = building_type_info.get('constructionMinutes', 60)
+        
+        if not building_shell_exists_and_matches:
+            building_payload = {
+                "BuildingId": building_id,
+                "Name": f"{building_name_default} (Under Construction)",
+                "Type": building_type, "Category": building_category, "SubCategory": building_subcategory,
+                "LandId": land_id, "Position": json.dumps(point_details), "Point": json.dumps(point_details),
+                "Owner": citizen, "RunBy": builder_username if builder_username else citizen,
+                "IsConstructed": False, "ConstructionMinutesRemaining": construction_minutes,
+                "CreatedAt": now.isoformat()
+            }
+            created_building = tables["buildings"].create(building_payload)
+            log.info(f"Created new building project {building_id} for {citizen} on land {land_id}")
+        elif builder_username and existing_building_record_fields: # Shell exists, check if RunBy needs update
+            current_run_by = existing_building_record_fields.get('RunBy')
+            if current_run_by != builder_username:
+                tables['buildings'].update(existing_building_airtable_id, {'RunBy': builder_username})
+                log.info(f"Updated RunBy for existing building project {building_id} to {builder_username}.")
+        
+        # Create the builder contract if builder_username is set and deposit was charged (or contract doesn't exist)
+        # The check for skip_builder_deposit_and_contract handles if contract already exists.
+        # actual_contract_value_for_builder will be > 0 only if a new contract is needed.
+        if builder_username and actual_contract_value_for_builder > 0 and builder_deposit_to_charge > 0: # Ensure deposit was meant to be charged for this new contract
+            contract_id = f"construction_{building_id}_{builder_username}_{int(now.timestamp())}"
+            contract_payload = {
+                "ContractId": contract_id, "Type": "construction_project",
+                "Buyer": citizen, "Seller": builder_username, "Asset": building_id, "AssetType": "building",
+                "PricePerResource": actual_contract_value_for_builder, "TargetAmount": 1,
+                "Status": "pending_materials", "Title": f"Construction of {building_name_default}",
+                "Description": f"Contract for the construction of a {building_name_default} on land {land_id}",
+                "Notes": json.dumps({"constructionCosts": construction_costs_from_def}),
+                "CreatedAt": now.isoformat(), "EndAt": (now + timedelta(days=90)).isoformat()
+            }
+            tables["contracts"].create(contract_payload)
+            log.info(f"Created construction contract {contract_id} between {citizen} and {builder_username}.")
+        
+        log.info(f"Successfully processed building project submission for {building_type} on land {land_id} by {citizen}.")
+        if permit_fee_to_charge > 0:
+            log.info(f"Permit fee of {permit_fee_to_charge} Ducats collected.")
+        if builder_deposit_to_charge > 0:
+            log.info(f"Builder deposit of {builder_deposit_to_charge} Ducats collected for {builder_username}.")
+        
+        return True
+    except Exception as e:
+        log.error(f"Failed to create building project: {e}")
+        import traceback
+        log.error(traceback.format_exc())
+        return False

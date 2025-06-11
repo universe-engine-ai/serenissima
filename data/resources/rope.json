@@ -1,0 +1,11 @@
+{
+  "id": "rope",
+  "name": "Rope",
+  "category": "processed_materials",
+  "subCategory": "naval_supplies",
+  "description": "Strong, durable cordage essential for maritime activities and construction.",
+  "importPrice": 531.0,
+  "lifetimeHours": 8775,
+  "consumptionHours": 58,
+  "tier": 1
+}

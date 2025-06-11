@@ -1,0 +1,12 @@
+# This file makes the 'stratagem_creators' directory a Python package.
+
+from .undercut_stratagem_creator import try_create as try_create_undercut_stratagem
+from .coordinate_pricing_stratagem_creator import try_create as try_create_coordinate_pricing_stratagem
+from .hoard_resource_stratagem_creator import try_create as try_create_hoard_resource_stratagem
+from .political_campaign_stratagem_creator import try_create as try_create_political_campaign_stratagem
+from .reputation_assault_stratagem_creator import try_create as try_create_reputation_assault_stratagem
+from .emergency_liquidation_stratagem_creator import try_create as try_create_emergency_liquidation_stratagem
+from .cultural_patronage_stratagem_creator import try_create as try_create_cultural_patronage_stratagem # Added cultural_patronage
+from .information_network_stratagem_creator import try_create as try_create_information_network_stratagem # Added information_network
+from .maritime_blockade_stratagem_creator import try_create as try_create_maritime_blockade_stratagem # Added maritime_blockade
+# Import other stratagem creators here as they are developed
