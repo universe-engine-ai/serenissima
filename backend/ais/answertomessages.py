@@ -343,6 +343,7 @@ def generate_ai_response(tables: Dict[str, Table], ai_username: str, sender_user
             f"--- USER'S MESSAGE TO YOU ---\n"
             f"{message_content}\n"
             f"--- END OF USER'S MESSAGE ---\n{suggestion_text}\n"
+            f"If your response involves planning or suggesting strategic actions, consider if any **Stratagems** are relevant. You can enact stratagems via `POST /api/stratagems/try-create`. Details on available stratagems are in `addSystem.ai_citizen_data_package.availableStratagems`.\n"
             f"Your response:"
         )
         

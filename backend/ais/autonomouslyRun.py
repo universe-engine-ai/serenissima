@@ -103,6 +103,7 @@ CONCISE_API_ENDPOINT_LIST_FOR_GUIDED_MODE = [
     # Use /api/activities/try-create with the appropriate activityType instead.
     "POST /api/activities/try-create - Body: {citizenUsername, activityType: \"attend_theater_performance\"} - Go to the theater and watch a play.",
     "POST /api/activities/try-create - Body: {citizenUsername, activityType: \"drink_at_inn\"} - Go to an inn and have a drink.",
+    "POST /api/stratagems/try-create - Enact a high-level stratagem. Body: {citizenUsername, stratagemType, stratagemDetails: {...}}. Consult `addSystem.intelligence_briefing.availableStratagems` for types and parameters.",
 ]
 
 CONCISE_AIRTABLE_SCHEMA_FIELD_LIST = {
@@ -1143,14 +1144,15 @@ API_DOCUMENTATION_SUMMARY = {
     "base_url": API_BASE_URL,
     "notes": (
         "You are an AI citizen interacting with the La Serenissima API. Key guidelines:\n"
-        "1.  **Initiate Endeavors (Activities & Actions) via `/api/activities/try-create`**: This is your primary method to start any endeavor. Provide `activityType` (e.g., 'rest', 'bid_on_land', 'send_message', 'eat') and `activityParameters`. The game engine will create the necessary activity records. For example, `activityType: \"eat\"` will attempt sustenance from inventory, then home, then tavern. Consult `backend/docs/activities.md` and `backend/docs/actions.md` for `activityType`s and their parameters.\n"
-        "2.  **Simplified GETs via `/api/try-read`**: For common information gathering, use `POST /api/try-read`. Consult the `compendium_of_missive_details` (ReadsReference.tsx extract) in `addSystem` for available `requestType` values and their `parameters`.\n"
-        "3.  **Dynamic GET Filtering**: For direct GET requests to list endpoints (e.g., /api/buildings, /api/citizens, /api/contracts), you can filter results by providing Airtable field names as query parameters (e.g., `/api/buildings?Owner=NLR&Category=business`). Airtable fields are PascalCase (see `backend/docs/airtable_schema.md`).\n"
-        "4.  **Direct Activity Creation via `/api/actions/create-activity`**: Use this if you have *all* details for a specific activity record, including title, description, thought, and fully structured `activityDetails`.\n"
-        "5.  **POST/PATCH Request Body Keys**: For `/api/activities/try-create`, the `activityParameters` in the body often use `camelCase` or specific names defined by the activity (consult `activities.md`). For `/api/try-read`, parameters are also typically `camelCase`. Direct calls to other POST/PATCH endpoints are generally deprecated for AI use.\n"
-        "6.  **Airtable Schema**: Refer to `backend/docs/airtable_schema.md` (available in `addSystem.overview_of_city_records_structure` for non-local models) for exact Airtable field names.\n"
-        "7.  **Focus**: Make informed decisions. Choose API calls that provide relevant data for your objectives.\n"
-        "8.  **Latest Activity**: Your most recent activity details are in `addSystem.intelligence_briefing.lastActivity`."
+        "1.  **Enact Strategic Plans (Stratagems) via `/api/stratagems/try-create`**: This is your primary method for high-level strategic interactions. Provide `citizenUsername`, `stratagemType`, and `stratagemDetails`. Consult `addSystem.intelligence_briefing.availableStratagems` (or equivalent in your context) for defined stratagem types and their required parameters. Think strategically about which stratagems align with your long-term goals.\n"
+        "2.  **Initiate General Endeavors (Activities) via `/api/activities/try-create`**: For day-to-day tasks, specific actions not covered by a stratagem, or actions that are part of a stratagem's execution, use this. Provide `activityType` (e.g., 'rest', 'bid_on_land', 'send_message', 'eat') and `activityParameters`. The game engine will create the necessary activity records. Consult `backend/docs/activities.md` for `activityType`s and parameters.\n"
+        "3.  **Simplified GETs via `/api/try-read`**: For common information gathering, use `POST /api/try-read`. Consult the `compendium_of_missive_details` (ReadsReference.tsx extract) in `addSystem` for available `requestType` values and their `parameters`.\n"
+        "4.  **Dynamic GET Filtering**: For direct GET requests to list endpoints (e.g., /api/buildings, /api/citizens, /api/contracts), you can filter results by providing Airtable field names as query parameters (e.g., `/api/buildings?Owner=NLR&Category=business`). Airtable fields are PascalCase (see `backend/docs/airtable_schema.md`).\n"
+        "5.  **Direct Activity Creation via `/api/actions/create-activity`**: Use this if you have *all* details for a specific activity record, including title, description, thought, and fully structured `activityDetails` (less common).\n"
+        "6.  **POST/PATCH Request Body Keys**: For `/api/stratagems/try-create`, `stratagemDetails` contains parameters specific to the stratagem. For `/api/activities/try-create`, `activityParameters` are used. Keys are often `camelCase`. For `/api/try-read`, parameters are also typically `camelCase`.\n"
+        "7.  **Airtable Schema**: Refer to `backend/docs/airtable_schema.md` (available in `addSystem.overview_of_city_records_structure` for non-local models) for exact Airtable field names.\n"
+        "8.  **Focus**: Make informed decisions. Choose API calls that provide relevant data for your objectives. Consider if a stratagem is the best approach for your goals.\n"
+        "9.  **Latest Activity**: Your most recent activity details are in `addSystem.intelligence_briefing.lastActivity`."
     ),
     "example_get_endpoints": [ # These are examples of direct GETs, distinct from /api/try-read
         "/api/citizens/{YourUsername}",
@@ -1279,9 +1281,10 @@ def autonomously_run_ai_citizen(
         f"The findings were (or simulated/error report if previous step failed/dry_run): \n```json\n{json.dumps(api_get_response_data, indent=2)}\n```\n"
         f"{prompt_step2_context_mention_guided} devise your strategy and decree your next actions. "
         "When specifying the `body` for issuing decrees (POST requests), you may use `camelCase` for keys (e.g., `sender`, `resourceType`, `targetAmount`). The Doge's scribes (the server) will transcribe them appropriately for the city's records. "
-        "Respond with your directives in JSON format: `{\"strategy_summary\": \"Your brief strategy...\", \"actions\": [{\"method\": \"POST\", \"endpoint\": \"/api/activities/try-create\", \"body\": {\"citizenUsername\": \"YourUsername\", \"activityType\": \"your_chosen_activity_or_action\", \"activityParameters\": {...}}}, {\"method\": \"GET\", ...}]}`. "
+        "Consider if enacting a **Stratagem** (via `POST /api/stratagems/try-create` with `stratagemType` and `stratagemDetails`) is the most effective way to achieve your strategic objectives. Information on available stratagems and your active ones should be in your overall context/data package. "
+        "For more granular actions or those not fitting a defined stratagem, use `POST /api/activities/try-create` with `activityType` and `activityParameters`. "
+        "Respond with your directives in JSON format: `{\"strategy_summary\": \"Your brief strategy...\", \"actions\": [{\"method\": \"POST\", \"endpoint\": \"/api/stratagems/try-create\", \"body\": {\"citizenUsername\": \"YourUsername\", \"stratagemType\": \"chosen_stratagem\", \"stratagemDetails\": {...}}}, {\"method\": \"POST\", \"endpoint\": \"/api/activities/try-create\", ...}]}`. "
         "If no actions are warranted at this time, return `{\"strategy_summary\": \"Observation...\", \"actions\": []}`. "
-        "Prioritize using `/api/activities/try-create` for initiating endeavors."
     )
     if add_system_prompt_text:
         prompt_step2 += f"\n\nIMPORTANT SYSTEM NOTE: {add_system_prompt_text}"
@@ -1480,9 +1483,10 @@ def autonomously_run_ai_citizen_unguided(
             "3. Commanding your personal undertakings (POST requests to `/api/actions/create-activity`) to directly initiate a new endeavor. For journeys, specify your origin (`fromBuildingId`, if applicable) and destination (`toBuildingId`); the Doge's cartographers (the server) will chart the course.\n"
             "If no further measures are warranted at this time, return an empty 'actions' list. "
             "Record your overall reasoning or reflections on this period of activity in the 'reflection' field for your private annals. "
+            "Consider if enacting a **Stratagem** (via `POST /api/stratagems/try-create` with `stratagemType` and `stratagemDetails`) is the most effective way to achieve your strategic objectives. Information on available stratagems and your active ones is in `addSystem.intelligence_briefing.availableStratagems` and related fields. "
+            "For more granular actions or those not fitting a defined stratagem, use `POST /api/activities/try-create` with `activityType` and `activityParameters`. "
             "Respond with your directives in JSON format (with no comments, ensure it is valid): "
-            "`{\"reflection\": \"Your strategic reflections...\", \"actions\": [{\"reflection\": \"Your reflections for this action...\", \"method\": \"POST\", \"endpoint\": \"/api/activities/try-create\", \"body\": {\"citizenUsername\": \"YourUsername\", \"activityType\": \"your_chosen_activity_or_action\", \"activityParameters\": {...}}}, {\"method\": \"GET\", ...}]}`\n"
-            "When initiating endeavors via `/api/activities/try-create`, the `body` should contain `citizenUsername`, `activityType` (e.g., 'rest', 'bid_on_land'), and `activityParameters` specific to that type. "
+            "`{\"reflection\": \"Your strategic reflections...\", \"actions\": [{\"reflection\": \"Your reflections for this action...\", \"method\": \"POST\", \"endpoint\": \"/api/stratagems/try-create\", \"body\": {\"citizenUsername\": \"YourUsername\", \"stratagemType\": \"chosen_stratagem\", \"stratagemDetails\": {...}}}, {\"method\": \"POST\", \"endpoint\": \"/api/activities/try-create\", ...}]}`\n"
             "The 'reflection' in your main KinOS response is for your overarching thoughts on this period."
         )
         
