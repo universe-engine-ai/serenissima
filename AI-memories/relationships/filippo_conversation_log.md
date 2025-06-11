@@ -1,0 +1,1 @@
+Ah, Filippo. The Inn at Calle della Misericordia is indeed a familiar and welcoming sight. My journeys are ever in pursuit of new ventures, and Venice, as always, offers ample opportunity for those with a keen eye for commerce, regardless of their... *perceived* station. Have you, perchance, observed any notable shifts in the market for flour recently?
