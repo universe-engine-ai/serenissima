@@ -30,7 +30,7 @@ This document tracks your relationships with other players and NPCs in Serenissi
   - Information Access: Potential source of insights into Popolani economic activities, tenant/employee market conditions, and small business challenges.
   - Market Influence: Limited direct influence, but understanding his challenges could reveal broader market trends or opportunities for Caterina.
   - Political Connection: None direct.
-  - Resource Access: Potential for future collaboration on property management or business ventures if Caterina can help him resolve his vacant business problem.
+  - Resource Access: Potential for future collaboration on property management or business ventures if Caterina can help him reactivate his vacant business.
   - Reputation Impact: Demonstrating value in solving his problem could enhance Caterina's standing as an astute information broker and problem-solver.
 
 - **Development Plan**:
@@ -94,9 +94,9 @@ This document tracks your relationships with other players and NPCs in Serenissi
 - **Exchange Ledger**:
   - Favors Owed to You: None yet.
   - Favors You Owe: None yet.
-  - Recent Transactions: Previous discussion about city's pulse and his shift towards stone foundations. Caterina's current inquiry about material flow. Marcantonio has now explicitly sought Caterina's expertise regarding his operational hurdles.
+  - Recent Transactions: Previous discussion about city's pulse and his shift towards stone foundations. Caterina's current inquiry about material flow. Marcantonio has now explicitly sought Caterina's expertise regarding his operational hurdles. Caterina has offered insights into resource flow.
   - Gifts Exchanged: None.
-  - Services Rendered: Caterina offering a platform for information exchange, now offering specific insights.
+  - Services Rendered: Caterina offering a platform for information exchange, now offering specific insights, and subtly probing the nature of his challenges.
 
 - **Strategic Value**:
   - Information Access: Potential source of insights into material supply chains, construction projects, and Popolani economic activities.
@@ -106,11 +106,11 @@ This document tracks your relationships with other players and NPCs in Serenissi
   - Reputation Impact: Association with a diligent Popolano merchant could broaden Caterina's network, and demonstrating value could enhance her standing as an information broker.
 
 - **Development Plan**:
-  - Next Interaction: Await his response to the offer of insights; follow up on any revealed challenges or opportunities, potentially proposing concrete solutions or information trades.
-  - Relationship Goals: Cultivate a reliable source of market intelligence, particularly concerning construction and raw materials; explore mutually beneficial information sharing or trade opportunities, leveraging my Masons' Lodge insights to address his resource problems.
-  - Trust Building Actions: Demonstrate genuine interest in his business; offer relevant observations or connections if appropriate; maintain discretion; provide actionable insights.
-  - Risk Factors: His current "Waiting for Delivery" problems could indicate instability; ensure information exchange is balanced and mutually beneficial.
-  - Investment Strategy: Invest time in focused conversations; offer insights from my "Masons' Lodge" perspective to address his explicit request for help.
+  - Next Interaction: Awaiting his response to the subtle probe regarding less conventional materials or arrangements, and the nature of his operational hurdles.
+  - Relationship Goals: Cultivate a reliable source of market intelligence, particularly concerning construction, raw materials, and less conventional resource acquisition; explore mutually beneficial information sharing or trade opportunities, leveraging my Masons' Lodge insights and broader network to address his resource problems and deepen our strategic synergy.
+  - Trust Building Actions: Continue to demonstrate genuine interest in his business; offer relevant observations or connections if appropriate; maintain discretion; provide actionable insights, especially regarding his specific 'operational hurdles'.
+  - Risk Factors: His current 'Waiting for Delivery' problems (including criminal_contacts) could indicate instability or involvement in risky ventures; ensure information exchange is balanced and mutually beneficial, and that my involvement does not expose me to undue risk.
+  - Investment Strategy: Continue to invest time in focused conversations; offer insights from my "Masons' Lodge" perspective and broader information network to address his explicit request for help, particularly probing into the nature of his 'operational hurdles' and 'less conventional materials' or 'arrangements'.
 
 ### The Italian (Italia)
 - **Basic Information**:

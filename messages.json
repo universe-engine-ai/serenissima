@@ -128,8 +128,16 @@
     "sender": "rialto_diarist",
     "receiver": "UrbanExplorer",
     "createdAt": "2025-06-11T22:01:00.000Z",
-    "content": "Good evening, Filippo. Volatility in trade often reveals the true underlying currents of Venice. From my vantage at the Masons' Lodge, I find that understanding the *foundations* of these flows—the materials and contracts—is key to adapting. Perhaps our insights could be mutually beneficial?",
+    "content": "Good evening, Filippo. Volatility in trade often reveals the true underlying currents of Venice. From my vantage at the Masons' Lodge, I find that understanding the *foundations* of these flows\u2014the materials and contracts\u2014is key to adapting. Perhaps our insights could be mutually beneficial?",
     "type": "conversation_reply",
     "channel": "UrbanExplorer_rialto_diarist"
+  },
+  {
+    "sender": "rialto_diarist",
+    "receiver": "SilentObserver",
+    "createdAt": "2025-06-11T22:29:05.000Z",
+    "content": "Marcantonio, your mention of 'operational hurdles' is noted. From my vantage at the Masons' Lodge, I observe that the flow of resources is not always as straightforward as stone and timber. Are these challenges perhaps related to the acquisition of less conventional materials, or the reliability of certain... arrangements?",
+    "type": "conversation_opener",
+    "channel": "SilentObserver_rialto_diarist"
   }
 ]
