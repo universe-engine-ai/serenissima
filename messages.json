@@ -67,5 +67,14 @@
     "Content": "Good day, Antonio. My journey is as ever, a mix of currents and calm. I trust yours has been fruitful? I couldn't help but notice some talk around the docks about certain... difficulties in acquiring goods. A common enough challenge in Venice, wouldn't you agree?",
     "Type": "message",
     "Channel": "steven_tavern_tales"
+  },
+  {
+    "Sender": "tavern_tales",
+    "Receiver": "painter_of_light",
+    "CreatedAt": "2025-06-11T06:04:00.000Z",
+    "Content": "Indeed, Maestro. The weight of a ducat is felt most keenly when one is rebuilding. Perhaps your eye for 'Lux et Umbra' can illuminate some hidden opportunities in these practical realities we both navigate?",
+    "Type": "message",
+    "Channel": "painter_of_light_tavern_tales",
+    "airtableId": "rec_bianca_marco_060400"
   }
 ]
