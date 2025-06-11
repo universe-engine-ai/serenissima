@@ -355,8 +355,8 @@ def generate_conversation_turn(
         system_explanation = (
             f"[SYSTEM]You are {speaker_profile.get('FirstName', speaker_username)}, a {speaker_profile.get('SocialClass', 'citizen')} of Venice. "
             f"{location_context}You have noticed {listener_profile.get('FirstName', listener_username)} (Social Class: {listener_profile.get('SocialClass', 'unknown')}) is also here. "
-            f"Review your knowledge in `addSystem` (your data package, problems, your relationship with them, their problems, and any recent direct conversation history). "
-            f"What are your internal thoughts or observations about their presence and this encounter? Consider any opportunities, risks, or social implications. "
+            f"Review your knowledge in `addSystem` (your data package including `availableStratagems` and active stratagems, problems, your relationship with them, their problems, and any recent direct conversation history). "
+            f"What are your internal thoughts or observations about their presence and this encounter? Consider any opportunities, risks, or social implications. Could a **Stratagem** be relevant here (either one you are running, one targeting you, or one you might propose)? "
             f"Your response should be your internal monologue or reflection in English, not direct speech to them. "
             f"Keep it concise and focused on potential gameplay impact or character development.[/SYSTEM]\n\n"
         )
@@ -365,8 +365,8 @@ def generate_conversation_turn(
         system_explanation = (
             f"[SYSTEM]You are {speaker_profile.get('FirstName', speaker_username)}, a {speaker_profile.get('SocialClass', 'citizen')} of Venice. "
             f"{location_context}You see {listener_profile.get('FirstName', listener_username)} (Social Class: {listener_profile.get('SocialClass', 'unknown')}) here. "
-            f"Review your knowledge in `addSystem` (your data package, problems, your relationship with them, their problems, and any recent direct conversation history). "
-            f"What would you say to them to continue the conversation? "
+            f"Review your knowledge in `addSystem` (your data package including `availableStratagems` and active stratagems, problems, your relationship with them, their problems, and any recent direct conversation history). "
+            f"What would you say to them to initiate or continue a conversation? Your opening could be related to a shared interest, a problem, an opportunity, or perhaps a **Stratagem** you wish to discuss or propose. "
             f"Your response should be direct speech TO {listener_profile.get('FirstName', listener_username)}, in English. "
             f"Keep it concise, in character, and relevant to your current situation or relationship.[/SYSTEM]\n\n"
         )
@@ -376,8 +376,8 @@ def generate_conversation_turn(
         system_explanation = (
             f"[SYSTEM]You are {speaker_profile.get('FirstName', speaker_username)}, a {speaker_profile.get('SocialClass', 'citizen')} of Venice. "
             f"You are currently in conversation with {listener_profile.get('FirstName', listener_username)}. {location_context}"
-            f"Review your knowledge in `addSystem` (your data package, problems, relationship, listener's problems, and recent conversation history). "
-            f"Answer/continue the conversation naturally in English, keeping your persona and objectives in mind. Your response should be direct speech.[/SYSTEM]\n\n"
+            f"Review your knowledge in `addSystem` (your data package including `availableStratagems` and active stratagems, problems, relationship, listener's problems, and recent conversation history). "
+            f"Answer/continue the conversation naturally in English, keeping your persona and objectives in mind. If strategic elements arise, remember that **Stratagems** are a key way to interact with the world. Your response should be direct speech.[/SYSTEM]\n\n"
         )
         
         prompt = system_explanation + f"{speaker_profile.get('FirstName', speaker_username)} (you): "
