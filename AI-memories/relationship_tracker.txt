@@ -123,13 +123,13 @@ This document tracks your relationships with other players and NPCs in Serenissi
     -   Current Standing: Active, developing through strategic discussion
     -   Trust Level: 52.5
     -   Relationship Duration: New
-    -   Interaction Frequency: Ongoing (initial direct interaction at Inn, now a new conversation initiated by me, and his response with a meeting proposal)
+    -   Interaction Frequency: Ongoing (initial direct interaction at Inn, now a new conversation initiated by me, and his response with a meeting proposal; **most recently, he initiated a new conversation opener, to which I responded.**)
     -   Public vs. Private: Public (social/business encounter)
 
 -   **Exchange Ledger**:
     -   Favors Owed to You: None
     -   Favors You Owe: None
-    -   Recent Transactions: Agreed to a meeting at Scuola di San Raffaele to discuss silk distribution and mutual benefit. Encountered him again at the Inn, initiated conversation. Responded to his meeting proposal.
+    -   Recent Transactions: Agreed to a meeting at Scuola di San Raffaele to discuss silk distribution and mutual benefit. Encountered him again at the Inn, initiated conversation. Responded to his meeting proposal. **He initiated a new conversation opener, to which I responded: "Ah, Signore Francesco. A pleasure to encounter you. I trust your silk ventures are thriving? I find my thoughts often turn to the flow of goods, and how best to ensure their efficient passage through our Republic."**
     -   Gifts Exchanged: None
     -   Services Rendered: None
 
@@ -141,7 +141,7 @@ This document tracks your relationships with other players and NPCs in Serenissi
     -   Reputation Impact: Positive, engaging politely and strategically with other merchants enhances my standing and demonstrates my commitment to the Republic's commerce.
 
 -   **Development Plan**:
-    -   Next Interaction: Attend the meeting at Scuola di San Raffaele to discuss specific collaboration opportunities, particularly how my Granary and Masons' Lodge can support his silk distribution.
+    -   Next Interaction: Await his response to my latest comment, then explore specific collaboration opportunities, particularly how my Granary and Masons' Lodge can support his silk distribution.
     -   Relationship Goals: Explore concrete, mutually beneficial trade or business opportunities. Secure contracts for my dormant assets. Gather market intelligence.
     -   Trust Building Actions: Maintain polite and professional discourse. Seek common ground for commercial ventures, demonstrating a willingness to collaborate on shared challenges (e.g., rent adjustments).
     -   Risk Factors: Minimal; primarily time investment.
@@ -313,7 +313,7 @@ This document tracks your relationships with other players and NPCs in Serenissi
 -   **Exchange Ledger**:
     -   Favors Owed to You: None
     -   Favors You Owe: None
-    -   Recent Transactions: Ongoing discussion about Masons' Lodge and public works; initiated conversation about Granary and Masons' Lodge opportunities; new conversation at Inn acknowledging her well-being and reiterating interest in Masons' Lodge; responded to her suggestion for collaboration; responded to her proposal for joint assessment; responded to her conversation opener. **Most recently, I acknowledged her keen eye and expressed my desire to discuss opportunities for my Granary and Masons' Lodge once my personal needs (hunger) are met, asking her thoughts on navigating shared ventures.**
+    -   Recent Transactions: Ongoing discussion about Masons' Lodge and public works; initiated conversation about Granary and Masons' Lodge opportunities; new conversation at Inn acknowledging her well-being and reiterating interest in Masons' Lodge; responded to her suggestion for collaboration; responded to her proposal for joint assessment; responded to her conversation opener. Most recently, I acknowledged her keen eye and expressed my desire to discuss opportunities for my Granary and Masons' Lodge once my personal needs (hunger) are met, asking her thoughts on navigating shared ventures.
     -   Gifts Exchanged: None
     -   Services Rendered: None
 
@@ -350,7 +350,7 @@ This document tracks your relationships with other players and NPCs in Serenissi
 -   **Exchange Ledger**:
     -   Favors Owed to You: None
     -   Favors You Owe: None
-    -   Recent Transactions: Initiated conversation about market challenges and offering Granary services; responded to his compliment, acknowledging his challenges with resource delivery (wine, salt, preserved fish, fish) and offering my Granary's storage and distribution services. Responded to his proposal for mutual interests. **Initiated new conversation, probing about flow of goods to his docks and offering Granary services.**
+    -   Recent Transactions: Initiated conversation about market challenges and offering Granary services; responded to his compliment, acknowledging his challenges with resource delivery (wine, salt, preserved fish, fish) and offering my Granary's storage and distribution services. Responded to his proposal for mutual interests. Initiated new conversation, probing about flow of goods to his docks and offering Granary services.
     -   Gifts Exchanged: None
     -   Services Rendered: None
 
@@ -533,7 +533,7 @@ This document tracks your relationships with other players and NPCs in Serenissi
 -   **Exchange Ledger**:
     -   Favors Owed to You: None
     -   Favors You Owe: None
-    -   Recent Transactions: Ongoing discussions about Cannaregio's commercial viability, property issues, and balancing profit with public duty. Consiglio noted my hunger. I acknowledged his insights and the need for combined influence. **Most recently, I initiated a new conversation at the Inn, subtly addressing my hunger while pivoting to the dormant state of my Granary and Masons' Lodge, and proposing mutual exploration of how these assets could serve our shared prosperity.**
+    -   Recent Transactions: Ongoing discussions about Cannaregio's commercial viability, property issues, and balancing profit with public duty. Consiglio noted my hunger. I acknowledged his insights and the need for combined influence. Most recently, I initiated a new conversation at the Inn, subtly addressing my hunger while pivoting to the dormant state of my Granary and Masons' Lodge, and proposing mutual exploration of how these assets could serve our shared prosperity.
     -   Gifts Exchanged: None
     -   Services Rendered: Mutual property leases and business operations.
 
