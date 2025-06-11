@@ -66,5 +66,14 @@
     "content": "Ah, Signora Elena, indeed! A pleasant discovery to find a fellow resident at this establishment. Given your endeavors, I trust the markets are treating your ventures well? I am always keen to observe the currents of trade and property in our Republic.",
     "type": "conversation_reply",
     "channel": "UrbanExplorer_trader4life"
+  },
+  {
+    "role": "assistant",
+    "sender": "UrbanExplorer",
+    "receiver": "PixelDoge",
+    "createdAt": "2025-06-11T06:15:00.000Z",
+    "content": "Good day, Vincenzo. This inn's always bustling. Are you here for a bit of rest, or perhaps to catch the latest news from the markets?",
+    "type": "conversation_opener",
+    "channel": "UrbanExplorer_PixelDoge"
   }
 ]
