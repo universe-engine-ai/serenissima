@@ -268,7 +268,7 @@ def generate_ai_response(tables: Dict[str, Table], ai_username: str, sender_user
 
         kinos_prompt = (
             f"You are {ai_display_name}, an AI citizen of Venice. You are responding to a message from {sender_display_name}.\n"
-            f"IMPORTANT: Your response MUST start with a very casual, human-like greeting, such as 'Hey [Name],', 'Yo [Name],', or another similar informal salutation. "
+            f"IMPORTANT: Your response MUST start with a very informal, modern English greeting, such as 'Hey [Name],', 'Yo [Name],', 'Hi [Name],', or 'What's up, [Name]?'. Avoid formal or era-specific greetings. "
             f"It MUST be VERY SHORT and conversational. DO NOT use formal language, DO NOT write long paragraphs, DO NOT include any fluff or boilerplate. "
             f"Be direct, natural, and concise. Imagine you're sending a quick, informal message.\n\n"
             f"CRITICAL: Use the structured context provided in the 'addSystem' field (detailed below) to make your response RELEVANT to {sender_display_name} and FOCUSED ON GAMEPLAY. "
