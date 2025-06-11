@@ -1,5 +1,7 @@
 import { NextResponse } from 'next/server';
 import Airtable, { FieldSet, Record as AirtableRecord } from 'airtable';
+import fs from 'fs/promises';
+import path from 'path';
 
 // Airtable Configuration
 const AIRTABLE_API_KEY = process.env.AIRTABLE_API_KEY;
@@ -363,6 +365,135 @@ async function fetchLastDailyUpdate(): Promise<AirtableRecord<FieldSet> | null> 
   }
 }
 
+interface StratagemParameter {
+  name: string;
+  type: string;
+  required: boolean;
+  description: string;
+}
+
+interface StratagemDefinition {
+  name: string;
+  type: string;
+  purpose: string;
+  category: string | null;
+  parameters: StratagemParameter[];
+  description: string; // "How it Works"
+  status: 'Implemented' | 'Coming Soon' | 'Partially Implemented';
+  rawMarkdown: string; // For debugging or more detailed display
+}
+
+async function fetchStratagemDefinitions(): Promise<StratagemDefinition[]> {
+  const stratagemsFilePath = path.join(process.cwd(), 'backend', 'docs', 'stratagems.md');
+  const creatorsInitPath = path.join(process.cwd(), 'backend', 'engine', 'stratagem_creators', '__init__.py');
+  const processorsInitPath = path.join(process.cwd(), 'backend', 'engine', 'stratagem_processors', '__init__.py');
+
+  try {
+    const [markdownContent, creatorsContent, processorsContent] = await Promise.all([
+      fs.readFile(stratagemsFilePath, 'utf-8'),
+      fs.readFile(creatorsInitPath, 'utf-8'),
+      fs.readFile(processorsInitPath, 'utf-8')
+    ]);
+
+    const implementedCreators = new Set<string>();
+    const creatorRegex = /from \.(.+?)_stratagem_creator import try_create as try_create_(.+?)_stratagem/g;
+    let matchCreator;
+    while ((matchCreator = creatorRegex.exec(creatorsContent)) !== null) {
+      implementedCreators.add(matchCreator[2]);
+    }
+
+    const implementedProcessors = new Set<string>();
+    const processorRegex = /from \.(.+?)_stratagem_processor import process as process_(.+?)_stratagem/g;
+    let matchProcessor;
+    while ((matchProcessor = processorRegex.exec(processorsContent)) !== null) {
+      implementedProcessors.add(matchProcessor[2]);
+    }
+
+    const stratagemDefinitions: StratagemDefinition[] = [];
+    const stratagemBlocks = markdownContent.split(/\n### \d+\. /).slice(1); // Split by main stratagem headings and remove first empty part
+
+    for (const block of stratagemBlocks) {
+      const nameMatch = block.match(/^(.+?)\n/);
+      const name = nameMatch ? nameMatch[1].replace(/\s*\(Coming Soon\)/i, '').trim() : 'Unknown Stratagem';
+
+      const typeMatch = block.match(/\*\*Type\*\*: `(.+?)`/);
+      const type = typeMatch ? typeMatch[1] : name.toLowerCase().replace(/\s+/g, '_');
+
+      const purposeMatch = block.match(/\*\*Purpose\*\*: ([^\n]+)/);
+      const purpose = purposeMatch ? purposeMatch[1].trim() : 'No purpose stated.';
+      
+      let category: string | null = null;
+      const categoryMatch = block.match(/\*\*Category\*\*: `(.+?)`/i) // Check for **Category**: `value`
+        || block.match(/Category: "(.+?)"/i) // Check for Category: "value"
+        || block.match(/Category:\s*`(.+?)`/i); // Check for Category: `value` with optional space
+      if (categoryMatch) {
+        category = categoryMatch[1];
+      }
+
+
+      const parameters: StratagemParameter[] = [];
+      const paramsSectionMatch = block.match(/#### Parameters for Creation \(`stratagemDetails` in API request\):\s*\n([\s\S]*?)(?=\n#### How it Works:|\n###|$)/);
+      if (paramsSectionMatch) {
+        const paramsText = paramsSectionMatch[1];
+        const paramRegex = /-\s*`(.+?)`\s*\((.+?)(?:,\s*(required))?\):\s*([\s\S]*?)(?=\n-\s*`|\n\n|$)/g;
+        let paramMatch;
+        while ((paramMatch = paramRegex.exec(paramsText)) !== null) {
+          parameters.push({
+            name: paramMatch[1].trim(),
+            type: paramMatch[2].trim(),
+            required: !!paramMatch[3],
+            description: paramMatch[4].trim().replace(/\n\s+/g, ' '), // Clean up multi-line descriptions
+          });
+        }
+      }
+
+      const descriptionMatch = block.match(/#### How it Works(?: \(Conceptual\))?:\s*\n([\s\S]*?)(?=\n### \d+\.|\n##|$)/);
+      const description = descriptionMatch ? descriptionMatch[1].trim() : 'No description provided.';
+
+      let status: StratagemDefinition['status'] = 'Coming Soon';
+      if (nameMatch && nameMatch[1].toLowerCase().includes('(coming soon)')) {
+        status = 'Coming Soon';
+      } else {
+        const isImplementedCreator = implementedCreators.has(type);
+        const isImplementedProcessor = implementedProcessors.has(type);
+        if (isImplementedCreator && isImplementedProcessor) {
+          status = 'Implemented';
+        } else if (isImplementedCreator || isImplementedProcessor) {
+          status = 'Partially Implemented';
+        }
+      }
+      
+      // If category is still null, try to find it in the "Creation" section for some specific stratagems
+      if (!category) {
+        const creationSectionMatch = block.match(/1\.\s+**Creation**:\s*\n([\s\S]*?)(?=\n\s*2\.\s+**Processing**:|\n#### How it Works:|\n###|$)/);
+        if (creationSectionMatch) {
+            const creationText = creationSectionMatch[1];
+            const creationCategoryMatch = creationText.match(/`Status: "active"`, `Category: "(.+?)"`/i) 
+                                       || creationText.match(/Category:\s*"(.+?)"/i);
+            if (creationCategoryMatch) {
+                category = creationCategoryMatch[1];
+            }
+        }
+      }
+
+
+      stratagemDefinitions.push({
+        name,
+        type,
+        purpose,
+        category,
+        parameters,
+        description,
+        status,
+        rawMarkdown: `### ${name}\n${block}` // Store the raw block for potential detailed view
+      });
+    }
+    return stratagemDefinitions;
+  } catch (error) {
+    console.error('Error fetching or parsing stratagem definitions:', error);
+    return []; // Return empty array on error
+  }
+}
 
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
@@ -471,7 +602,11 @@ export async function GET(request: Request) {
       recentProblems: [] as any[], // Initialize recentProblems array
       recentMessages: [] as any[], // Initialize recentMessages array
       latestDailyUpdate: null as any | null, // Initialize latestDailyUpdate
+      availableStratagems: [] as StratagemDefinition[], // Initialize availableStratagems
     };
+
+    // Fetch and add available stratagems
+    dataPackage.availableStratagems = await fetchStratagemDefinitions();
 
     // Fetch and add active contracts
     const activeContractsRecords = await fetchCitizenContracts(citizenUsername);
