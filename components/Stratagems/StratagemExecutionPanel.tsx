@@ -429,21 +429,20 @@ const StratagemExecutionPanel: React.FC<StratagemExecutionPanelProps> = ({
               </label>
               <select
                 id="targetResourceType"
-              value={targetResourceType || ''}
-              onChange={(e) => setTargetResourceType(e.target.value || null)}
-              className="w-full p-2 border border-amber-300 rounded-md bg-white text-amber-900 focus:ring-amber-500 focus:border-amber-500"
-              disabled={isLoading}
-            >
-              <option value="">-- Select Resource Type --</option>
-              {resourceTypes.map(rt => (
-                <option key={`resource-opt-${rt.id}`} value={rt.id}>
-                  {rt.name} (Category: {rt.category || 'N/A'})
-                </option>
-              ))}
-            </select>
-          </div>
-
-          {/* Target Storage Building - Removed for hoard_resource as it's now determined by processor */}
+                value={targetResourceType || ''}
+                onChange={(e) => setTargetResourceType(e.target.value || null)}
+                className="w-full p-2 border border-amber-300 rounded-md bg-white text-amber-900 focus:ring-amber-500 focus:border-amber-500"
+                disabled={isLoading}
+              >
+                <option value="">-- Select Resource Type --</option>
+                {resourceTypes.map(rt => (
+                  <option key={`resource-opt-${rt.id}`} value={rt.id}>
+                    {rt.name} (Category: {rt.category || 'N/A'})
+                  </option>
+                ))}
+              </select>
+            </div>
+          )}
         </div>
         
         {executionResult && <p className="text-green-600 mt-4 p-2 bg-green-100 border border-green-300 rounded">{executionResult}</p>}
