@@ -41,9 +41,9 @@ interface KinOSSingleFileResponse {
 
 export async function GET(
   request: NextRequest,
-  { params }: { params: { kinId: string } }
+  { params }: { params: Promise<{ kinId: string }> }
 ) {
-  const kinId = params.kinId;
+  const { kinId } = await params;
   const { searchParams } = new URL(request.url);
   let pathParam = searchParams.get('path'); // Make pathParam mutable
 
