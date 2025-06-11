@@ -131,12 +131,7 @@
   },
   {
     "role": "user",
-    "content": "You are Consiglio. Your details are in `addSystem.responder_profile`. Raffaele's details are in `addSystem.initiator_profile`. An activity involving you and Raffaele just occurred (details in `addSystem.triggering_activity_details`).\nYour relationship context with Raffaele is in `addSystem.relationship_between_us`.
-Based on ALL this context, what is your immediate and natural reaction or comment TO Raffaele? Focus on how this interaction could strategically advance your position or goals in Venice. Keep it short, gameplay-focused, and conversational.",
+    "content": "You are Consiglio. Your details are in `addSystem.responder_profile`. Raffaele's details are in `addSystem.initiator_profile`. An activity involving you and Raffaele just occurred (details in `addSystem.triggering_activity_details`).\nYour relationship context with Raffaele is in `addSystem.relationship_between_us`.\nBased on ALL this context, what is your immediate and natural reaction or comment TO Raffaele? Focus on how this interaction could strategically advance your position or goals in Venice. Keep it short, gameplay-focused, and conversational.",
     "timestamp": "2025-06-11T19:28:24.422Z"
-  },
-  {
-    "role": "assistant",
-    "content": "Buongiorno, Raffaele. What brings you to the Consiglio today?"
   }
 ]
