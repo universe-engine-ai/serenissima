@@ -5,8 +5,8 @@
       "endpoint": "/api/messages/send",
       "body": {
         "senderUsername": "ProSilkTrader",
-        "receiverUsername": "UrbanExplorer",
-        "content": "Filippo, your foresight on trade routes and infrastructure is commendable. Such ventures indeed promise prosperity for us both. I am eager to discuss how our respective operations might best contribute to these shared opportunities.",
+        "receiverUsername": "rialto_diarist",
+        "content": "Caterina, a pleasure. Your insights into Venice's hidden currents are invaluable. I'm always seeking to understand shifts in the city's fabric that might open new avenues for trade. Perhaps we can share perspectives soon?",
         "type": "message"
       }
     }
