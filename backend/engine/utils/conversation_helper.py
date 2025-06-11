@@ -48,8 +48,8 @@ DEFAULT_TIMEOUT_SECONDS = 120 # Increased timeout for KinOS calls
 def get_kinos_model_for_social_class(username: Optional[str], social_class: Optional[str]) -> str:
     """Determines the KinOS model. Defaults to 'local' unless it's NLR."""
     if username == 'NLR': # Special case for NLR
-        log.info(f"User '{username}' is NLR. Using KinOS model 'gemini-2.5-pro-preview-05-06'.")
-        return 'gemini-2.5-pro-preview-05-06'
+        log.info(f"User '{username}' is NLR. Using KinOS model 'gemini-2.5-pro-preview-06-05'.")
+        return 'gemini-2.5-pro-preview-06-05'
     
     # For all other users, default to 'local'
     log.info(f"User '{username}' (Social Class: {social_class}) is not NLR. Defaulting KinOS model to 'local'.")
