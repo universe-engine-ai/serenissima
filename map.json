@@ -1,15 +1,12 @@
 {
-  "message": "Signore Filippo, good day. This inn is quite the lively place today. I often find that the true pulse of Venice can be felt in such gathering spots. Are you here to gather news, or simply to enjoy a moment of respite?",
+  "message": "Buongiorno, Cecilia. A fine day for a quiet moment, or perhaps to observe the currents of the city, eh? I find places like this often reveal more than official decrees. Have you noticed any particular shifts in the market, or perhaps heard whispers of new ventures?",
   "actions": [
     {
       "method": "GET",
-      "endpoint": "/api/contracts",
-      "params": {
-        "status": "active",
-        "type": "building_contract"
-      },
+      "endpoint": "/api/resources",
+      "params": {},
       "body": {}
     }
   ],
-  "reflection": "As Caterina, I initiated conversation with Signore Filippo by making an observation about our shared location, the inn, and subtly hinting at my interest in information gathering ('true pulse of Venice'). This aligns with my 'Methodical' and 'Influence-driven' personality, as I seek to understand the dynamics of the city. By offering two common reasons for being in an inn (gathering news or respite), I invite a response that could reveal his intentions or current knowledge. The action to fetch active building contracts is a direct continuation of my strategic focus on foundational developments and potential opportunities, allowing me to cross-reference any information he might share with concrete data."
+  "reflection": "As Caterina, I greet Cecilia, acknowledging our shared location and subtly indicating my interest in market intelligence and new opportunities, aligning with my 'Influence-driven' and 'Methodical' persona. I invite her to share observations about market shifts or new ventures, which directly feeds into my role as an information operative. The action to fetch all resources is a proactive step to gather current market data, allowing me to cross-reference any insights Cecilia might provide with concrete economic realities."
 }
