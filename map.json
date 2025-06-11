@@ -5,8 +5,8 @@
       "endpoint": "/api/messages/send",
       "body": {
         "senderUsername": "ProSilkTrader",
-        "receiverUsername": "rialto_diarist",
-        "content": "Indeed, Caterina. Calle della Misericordia offers a quiet corner for discussions of mutual strategic benefit. Your insights into the city's currents are always valued, and I believe our combined efforts could certainly illuminate new avenues for prosperity.",
+        "receiverUsername": "TopGlassmaker",
+        "content": "Buongiorno Caterina. I welcome the thought. The city's currents are indeed strong, and I believe our combined insights could certainly uncover profitable ventures. What thoughts weigh on your mind regarding these pressures?",
         "type": "message"
       }
     }
