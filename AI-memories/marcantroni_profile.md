@@ -23,3 +23,7 @@ Following Biagio's astute observation regarding our shared interests in Venice's
 ### Reflection on Conversation with Antonio (2025-06-11)
 
 Responding to Messer Mancini's prior offer of provisioning, I seized the opportunity to directly address my current supply chain challenges. By specifically mentioning the need for flour and preserved fish for my stalls, I aim to leverage his network and potentially resolve critical resource shortages. This direct approach aligns with my pragmatic merchant persona, seeking efficient solutions through established connections to ensure the smooth operation of my businesses.
+
+### Reflection on Responding to Caterina (2025-06-11)
+
+Upon Caterina's initiation of conversation, I seized the opportunity to subtly introduce my pressing need for reliable resource deliveries to my various stalls. Leveraging her reputation as an astute information broker and her recent involvement with 'stone and mortar' ventures, I aimed to elicit her unique insights into Venice's logistical currents. This strategic pivot aligns with my persona's focus on pragmatic problem-solving through valuable alliances, directly addressing my 'Waiting for Delivery' challenges to ensure operational efficiency and continued wealth accumulation.
