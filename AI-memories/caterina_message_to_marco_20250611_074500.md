@@ -1,0 +1,1 @@
+Buongiorno, Marco. Indeed. I often find myself contemplating the city's foundations, both stone and social. It seems even for those who contribute to its beauty, finding a stable footing can be a persistent endeavor.
