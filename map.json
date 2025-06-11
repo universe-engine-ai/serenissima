@@ -5,8 +5,8 @@
       "endpoint": "/api/messages/send",
       "body": {
         "senderUsername": "ProSilkTrader",
-        "receiverUsername": "Trade4Fun",
-        "content": "Ah, Niccolò, a pleasure to find you here at your establishment. Indeed, such gatherings are vital for the Republic's commerce. As a fellow merchant, I am always keen to explore how our ventures might complement each other. Perhaps we can speak further soon.",
+        "receiverUsername": "BookWorm365",
+        "content": "Ah, Raffaele, indeed, securing reliable manpower along the trade routes is a challenge many of us face. I'd be keen to discuss how our combined efforts might alleviate such burdens and strengthen our ventures.",
         "type": "message"
       }
     }
