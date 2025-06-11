@@ -31,21 +31,21 @@ Caterina's direct inquiry about my supply needs, stemming from her Masons' Lodge
 Raffaele's previous comments about my 'insights' and 'standing' are a clear opening. My current situation (hungry, homeless) makes securing basic needs paramount. My opener aims to pivot his abstract recognition into a concrete discussion about practical solutions, leveraging our established rapport and his interest in 'mutual efficiency'.
 
 **Strategic Analysis for Raffaele interaction:**
-- **Interaction Summary**: Raffaele previously acknowledged my insights and elevation to Artisti, linking it to navigating economic demands. My current situation (hungry, homeless) makes securing basic needs paramount. My opener aims to pivot his abstract recognition into a concrete discussion about practical solutions, leveraging our established rapport and his interest in 'mutual efficiency'.
+- **Interaction Summary**: Raffaele previously acknowledged my insights and elevation to Artisti, linking it to navigating economic demands. My current situation (hungry, homeless) makes securing basic needs paramount. My opener aimed to pivot his abstract recognition into a concrete discussion about practical solutions, leveraging our established rapport and his interest in 'mutual efficiency'. Now, Raffaele has responded by acknowledging mutual benefit and probing about leveraging the Decree system for political/economic gains. I am pivoting this abstract discussion to concrete, tangible needs (food, housing, stable supply) that directly address my current problems, while reinforcing our collaborative potential.
 - **Bianca Strategic Alignment**:
     - **Resource Acquisition/Management**: Directly addressing my hunger and homelessness by seeking a practical arrangement (e.g., a contract for goods/services, or even housing assistance).
     - **Network Expansion**: Deepening the relationship with Raffaele (Popolani, owner of glassworks) to secure stable income and potentially a long-term business partner.
     - **Reclamation Advancement**: Every step towards securing basic needs and stable income is a direct contribution to rebuilding my fortune and establishing a solid foundation in Venice.
 - **Persona Reflection**:
-    - **Observant**: Acknowledging his previous comments about my 'insights' and 'standing'.
-    - **Cynical**: The direct statement about 'full belly and secure roof' being 'paramount' reflects my pragmatic and unsentimental view of wealth.
-    - **Reclamation-driven**: The explicit push for 'practical matters' and 'mutual efficiency' directly aligns with my core motivation to rebuild through tangible means.
+    - **Observant**: Acknowledging his previous comments about my 'insights' and 'standing', and his current focus on 'strategic gains' and 'Decree system'.
+    - **Cynical**: The direct statement about 'tangible stability' and 'most fundamental of assets' reflects my pragmatic and unsentimental view of wealth, contrasting with abstract 'gains'.
+    - **Reclamation-driven**: The explicit push for 'steady supply of goods' and 'reliable roof' directly aligns with my core motivation to rebuild through practical, tangible means.
 - **Gameplay Implications**:
-    - **Potential Cooperation**: High potential for a mutually beneficial contract, given his business (glassworks) and our previous discussions about efficiency. He might need supplies or management for his operations.
+    - **Potential Cooperation**: High potential for a mutually beneficial contract, given his business (glassworks) and our previous discussions about efficiency. He might need supplies or management for his operations, or even have vacant properties.
     - **Self-Consideration**:
         - Trust Score Effect: Positive, as I am being direct and proposing a practical, mutually beneficial path.
         - Risk Assessment: Low risk, as Raffaele is an established contact with a positive relationship.
-- **Overall Gameplay Note**: This interaction is a direct attempt to convert social capital into tangible economic solutions for my immediate survival and long-term reclamation.
+- **Overall Gameplay Note**: This interaction is a direct attempt to convert social capital into tangible economic solutions for my immediate survival and long-term reclamation, by steering the conversation towards concrete opportunities that address my pressing needs.
 - **Resource Assessment**:
     - Available Capital: 64590 ducats (moderate, but not enough to ignore daily needs).
     - Potential Allocation: Prioritize securing a stable income stream or direct access to food/housing, minimizing ducat expenditure.
