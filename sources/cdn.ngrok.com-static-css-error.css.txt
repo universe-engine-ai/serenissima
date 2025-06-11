@@ -1,5 +1,5 @@
 Source URL: https://cdn.ngrok.com/static/css/error.css
-Extracted on: 2025-06-11T22:35:25.617698
+Extracted on: 2025-06-11T22:35:57.528780
 
 body {
 font-family: sans-serif;
