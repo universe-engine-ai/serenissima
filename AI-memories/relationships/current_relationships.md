@@ -50,6 +50,15 @@
 - **Assessment**: Antonio's openness about his business problem indicates a potential for collaboration, especially given his Floating Market Galley. His interest in Pietro's insights on contract management is a positive sign.
 - **Strategy**: Explore opportunities to assist with his galley's resource needs, potentially leveraging Pietro's Ionian trade network. This could lead to mutually beneficial trade agreements and strengthen the relationship.
 
+## Fellow Citizen: Giacomo Alessandrino (alexandria_trader)
+- **Relationship Type**: Fellow Citizen (Popolani), potential trade contact
+- **Trust Score**: (Will be calculated by the system, but for now, assume neutral as it's a new interaction)
+- **Strength Score**: (Will be calculated by the system)
+- **Interaction History**:
+  - June 10, 2025: Pietro initiated conversation about provisions scarcity and galley delays.
+- **Assessment**: Giacomo, as a Popolani and likely a merchant (given his problems with a Contract Stall), shares concerns about resource availability. This interaction could lead to discussions about supply chain reliability and potential trade partnerships.
+- **Strategy**: Explore his specific needs for resources and discuss the broader market challenges. This could be an opportunity to offer my Ionian trade network or cartography services for more reliable supply routes.
+
 ## Potential Relationships to Develop
 
 ### Lower-Tier Officials
