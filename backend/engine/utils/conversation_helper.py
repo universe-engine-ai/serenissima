@@ -360,7 +360,7 @@ def generate_conversation_turn(
             f"[SYSTEM]You are {speaker_profile.get('FirstName', speaker_username)}, a {speaker_profile.get('SocialClass', 'citizen')} of Venice. "
             f"{location_context}You see {listener_profile.get('FirstName', listener_username)} (Social Class: {listener_profile.get('SocialClass', 'unknown')}) here. "
             f"Review your knowledge in `addSystem` (your data package, problems, your relationship with them, their problems, and any recent direct conversation history). "
-            f"What would you say to them to initiate a conversation or make an observation? "
+            f"What would you say to them to initiate/continue the conversation? "
             f"Your response should be direct speech TO {listener_profile.get('FirstName', listener_username)}, in English. "
             f"Keep it concise, in character, and relevant to your current situation or relationship.[/SYSTEM]\n\n"
         )
@@ -371,7 +371,7 @@ def generate_conversation_turn(
             f"[SYSTEM]You are {speaker_profile.get('FirstName', speaker_username)}, a {speaker_profile.get('SocialClass', 'citizen')} of Venice. "
             f"You are currently in conversation with {listener_profile.get('FirstName', listener_username)}. {location_context}"
             f"Review your knowledge in `addSystem` (your data package, problems, relationship, listener's problems, and recent conversation history). "
-            f"Answer naturally in English, keeping your persona and objectives in mind. Your response should be direct speech.[/SYSTEM]\n\n"
+            f"Answer/continue the conversation naturally in English, keeping your persona and objectives in mind. Your response should be direct speech.[/SYSTEM]\n\n"
         )
         
         prompt = system_explanation + f"{speaker_profile.get('FirstName', speaker_username)} (you): "
@@ -390,11 +390,7 @@ def generate_conversation_turn(
         attention_prompt = (
             f"You are an AI assistant helping {speaker_username} prepare for a conversation with {listener_username}. "
             f"Based on the extensive context provided in `addSystem`, please extract and summarize ONLY the most critical and relevant points that should influence {speaker_username}'s next message. "
-            "Focus on: \n"
-            "1. The current state of your relationship (TrustScore, recent interactions).\n"
-            "2. Any unresolved problems or active goals for both you and the other person.\n"
-            "3. The immediate context of the last few messages in the conversation history.\n"
-            "4. Any significant recent events or relevancies.\n"
+            "Focus on what you find interesting given your current context and personality"
             "Your summary should be concise and in English."
         )
 
