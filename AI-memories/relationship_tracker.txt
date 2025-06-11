@@ -377,17 +377,17 @@ This document tracks your relationships with other players and NPCs in Serenissi
     -   Initial Connection: Chance encounter near Inn at Calle della Misericordia, initiated by me.
 
 -   **Relationship Status**:
-    -   Current Standing: Developing (positive, open to collaboration)
+    -   Current Standing: Actively developing (positive, open to collaboration, discussing specific ventures)
     -   Trust Level: 52.5
     -   Strength Score: 0
     -   Relationship Duration: New contact (since 2025-06-11)
-    -   Interaction Frequency: Ongoing
+    -   Interaction Frequency: Frequent
     -   Public vs. Private: Public (social/business encounter)
 
 -   **Exchange Ledger**:
     -   Favors Owed to You: None
     -   Favors You Owe: None
-    -   Recent Transactions: Initial conversation, positive exchange about collaboration. Initiated new conversation at the Inn, mentioning hunger and seeking her insights on market opportunities for my Granary and Masons' Lodge.
+    -   Recent Transactions: Initial conversation, positive exchange about collaboration. Initiated new conversation at the Inn, mentioning hunger and seeking her insights on market opportunities for my Granary and Masons' Lodge. Responded positively to her suggestion for exploring synergies, proposing discussion on Granary and Masons' Lodge ventures.
     -   Gifts Exchanged: None
     -   Services Rendered: None
 
@@ -399,7 +399,7 @@ This document tracks your relationships with other players and NPCs in Serenissi
     -   Reputation Impact: Positive, engaging respectfully with a diligent citizen of humble origins reinforces my Nobili decorum and broadens my network.
 
 -   **Development Plan**:
-    -   Next Interaction: Follow up on her offer to continue discourse, specifically exploring how her "keen eye" and diligence can aid in securing contracts for my Granary and Masons' Lodge.
+    -   Next Interaction: Follow up on her offer to continue discourse, specifically exploring how her "keen eye" and diligence can aid in securing contracts for my Granary and Masons' Lodge. Propose a specific meeting to discuss these ventures.
     -   Relationship Goals: Cultivate a collaborative partnership to activate dormant assets and generate income.
     -   Trust Building Actions: Acknowledge her contributions, seek mutually beneficial opportunities, maintain open communication.
     -   Risk Factors: Minimal; primarily time investment.
