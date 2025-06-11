@@ -114,5 +114,13 @@
   {
     "role": "assistant",
     "content": "Cecilia, my customs house insights on market flows, especially spices, could certainly benefit your reputation. Let's discuss how my manifests align with your observations on optimal routes. I'm quite famished, and a full belly aids clear thought."
+  },
+  {
+    "role": "user",
+    "content": "You are Caterina. Your details are in `addSystem.responder_profile`. Raffaele's details are in `addSystem.initiator_profile`. An activity involving you and Raffaele just occurred (details in `addSystem.triggering_activity_details`).\nYour relationship context with Raffaele is in `addSystem.relationship_between_us`.\nBased on ALL this context, what is your immediate and natural reaction or comment TO Raffaele? Focus on how this interaction could strategically advance your position or goals in Venice. Keep it short, gameplay-focused, and conversational."
+  },
+  {
+    "role": "assistant",
+    "content": "Raffaele, good to see you. That activity just now... it brings to mind some market insights from the customs house. My stomach is rumbling, but a quick meal would sharpen our minds to discuss how we might turn this into profit."
   }
 ]
