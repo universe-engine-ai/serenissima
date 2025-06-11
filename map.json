@@ -5,8 +5,8 @@
       "endpoint": "/api/messages/send",
       "body": {
         "senderUsername": "ProSilkTrader",
-        "receiverUsername": "TopGlassmaker",
-        "content": "Buongiorno Caterina. I welcome the thought. The city's currents are indeed strong, and I believe our combined insights could certainly uncover profitable ventures. What thoughts weigh on your mind regarding these pressures?",
+        "receiverUsername": "SilentObserver",
+        "content": "Marcantonio, a pleasure to share this common room with you. Your suggestion of mutual benefit is well-received. I am always keen to explore how our ventures might align, especially concerning the flow of goods or new opportunities in the city's districts. Perhaps we can discuss this further?",
         "type": "message"
       }
     }
