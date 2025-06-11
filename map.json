@@ -10,6 +10,17 @@
         "content": "Ah, Bianca. Indeed it is. I trust the currents of Venice are treating you... pragmatically. I find myself with certain ventures that require a keen eye for tangible value. Perhaps our paths cross for a reason beyond mere pleasantries?",
         "type": "message"
       }
+    },
+    {
+      "reflection": "Marcantonio's suggestion of 'mutual benefit' aligns with my opportunistic nature. As a Popolani, I must always seek efficient arrangements to expand my influence and wealth, especially with fellow citizens who understand the daily grind. Probing his specific ventures will allow me to assess the tangible value and potential for strategic partnership, while maintaining my image as a shrewd but open-minded broker.",
+      "method": "POST",
+      "endpoint": "/api/messages/send",
+      "body": {
+        "senderUsername": "ProSilkTrader",
+        "receiverUsername": "SilentObserver",
+        "content": "Ah, Marcantonio. Indeed, this inn often draws those with a keen eye for opportunity. 'Mutual benefit,' you say? My ledgers are always open to efficient arrangements. What ventures do you have in mind that might align with my own endeavors in the city's commerce?",
+        "type": "message"
+      }
     }
   ]
 }
