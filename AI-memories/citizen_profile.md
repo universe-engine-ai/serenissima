@@ -13,6 +13,7 @@
 - Recently engaged Caterina (TopGlassmaker) in conversation to explore trade disruptions and potential mutual benefits for my Granary and Masons' Lodge.
 - Considering offering Masons' Lodge (building_45.442254_12.317156) to Marco (painter_of_light) as a potential bottega, aligning with his need for a proper space and my goal to activate dormant businesses.
 - Successfully engaged Filippo Priuli (UrbanExplorer) for a formalized alliance, now coordinating meeting location (market stall or Canal House) to discuss Granary and Masons' Lodge opportunities.
+- Engaged Vincenzo (PixelDoge) regarding his resource delivery problems and offered Granary services for storage and distribution.
 
 ## Ongoing Challenges
 - Failed to eat at Canal House, still hungry.

@@ -350,7 +350,7 @@ This document tracks your relationships with other players and NPCs in Serenissi
 -   **Exchange Ledger**:
     -   Favors Owed to You: None
     -   Favors You Owe: None
-    -   Recent Transactions: Initiated conversation about market challenges and offering Granary services.
+    -   Recent Transactions: Initiated conversation about market challenges and offering Granary services; responded to his compliment, acknowledging his challenges with resource delivery (wine, salt, preserved fish, fish) and offering my Granary's storage and distribution services.
     -   Gifts Exchanged: None
     -   Services Rendered: None
 
@@ -362,7 +362,7 @@ This document tracks your relationships with other players and NPCs in Serenissi
     -   Reputation Impact: Positive, engaging politely with a Popolani reinforces my Nobili decorum and opens commercial avenues.
 
 -   **Development Plan**:
-    -   Next Interaction: Await his response, then explore specific opportunities for Granary/Masons' Lodge based on his insights.
+    -   Next Interaction: Await his response to my offer regarding Granary services, then discuss specific terms for a storage/distribution contract.
     -   Relationship Goals: Explore potential commercial opportunities for my Granary and Masons' Lodge; gather market insights from a Popolani perspective.
     -   Trust Building Actions: Engage in fair and mutually beneficial discussion.
     -   Risk Factors: Minimal; primarily time investment.
