@@ -222,6 +222,59 @@ def _get_problems_data(tables: Dict[str, Table], username1: str, username2: str,
 
 # --- Fonctions KinOS et création de message ---
 
+def _summarize_add_system_for_local_model(
+    kinos_api_key: str,
+    ai_username: str, 
+    purpose_of_call: str, 
+    full_add_system_data: Dict[str, Any],
+    tables_for_cleaning: Optional[Dict[str, Table]] = None
+) -> Dict[str, Any]:
+    """
+    If the model is local, calls KinOS to summarize the full_add_system_data.
+    Returns the summarized data or the original data if summarization fails.
+    """
+    log.info(f"{LogColors.OKBLUE}Local model detected for {ai_username} for purpose: '{purpose_of_call}'. Performing attention pre-prompt step to summarize context.{LogColors.ENDC}")
+    
+    attention_channel_name = "attention_summarizer" 
+    
+    attention_prompt = (
+        f"You are an AI assistant helping {ai_username} prepare for a strategic decision: '{purpose_of_call}'. "
+        f"Based on the extensive context provided in `addSystem` (which includes {ai_username}'s profile, relationships, problems, opportunities, etc.), "
+        f"please perform the following two steps:\n\n"
+        f"Step 1: Build a clear picture of {ai_username}'s current situation relevant to '{purpose_of_call}'. "
+        f"Describe key relationships, recent events, ongoing issues, and goals that should inform this decision.\n\n"
+        f"Step 2: Using the situation picture from Step 1 and your understanding of {ai_username}'s personality and objectives, "
+        f"summarize the information and extract the most relevant specific pieces of context. "
+        f"Focus on what is most important for {ai_username} to remember or act upon for '{purpose_of_call}'. "
+        "Your final output should be this concise summary in English, suitable for guiding the main decision-making prompt."
+    )
+
+    # make_kinos_channel_call is defined in this file
+    summarized_context_content = make_kinos_channel_call(
+        kinos_api_key=kinos_api_key,
+        speaker_username=ai_username,
+        channel_name=attention_channel_name,
+        prompt=attention_prompt,
+        add_system_data=full_add_system_data,
+        kinos_model_override='local' 
+    )
+
+    if summarized_context_content:
+        # clean_thought_content is imported from activity_helpers
+        cleaned_summarized_context = clean_thought_content(tables_for_cleaning, summarized_context_content)
+        
+        log.info(f"{LogColors.OKGREEN}Successfully generated summarized context for {ai_username} (purpose: {purpose_of_call}). Original length: {len(summarized_context_content)}, Cleaned length: {len(cleaned_summarized_context)}{LogColors.ENDC}")
+        log.debug(f"Original summarized context for {purpose_of_call} for {ai_username}: {summarized_context_content}")
+        log.debug(f"Cleaned summarized context for {purpose_of_call} for {ai_username}: {cleaned_summarized_context}")
+        
+        return {
+            "summary_of_relevant_context": cleaned_summarized_context,
+            "original_context_available_on_request": f"The full data package was summarized for the purpose of '{purpose_of_call}'. You are now acting as the character based on this summary."
+        }
+    else:
+        log.warning(f"{LogColors.WARNING}Failed to generate summarized context for {ai_username} (purpose: {purpose_of_call}). Using full context for the main call.{LogColors.ENDC}")
+        return full_add_system_data
+
 def choose_interlocutor_via_kinos(
     ai_username: str,
     kinos_api_key: str,
@@ -258,6 +311,16 @@ def choose_interlocutor_via_kinos(
     if not kinos_model_override: # Si aucun override n'est fourni, s'assurer que 'local' est utilisé par défaut pour cette décision.
         effective_model = "local"
         print(f"Utilisation du modèle KinOS 'local' par défaut pour la décision de l'interlocuteur pour {ai_username}.")
+
+    final_add_system_for_kinos = ai_data_package
+    if effective_model == 'local':
+        final_add_system_for_kinos = _summarize_add_system_for_local_model(
+            kinos_api_key=kinos_api_key,
+            ai_username=ai_username,
+            purpose_of_call="choosing an interlocutor",
+            full_add_system_data=ai_data_package,
+            tables_for_cleaning=None # 'tables' n'est pas disponible dans ce scope direct
+        )
     
     # make_kinos_channel_call est importé de conversation_helper
     raw_response_content = make_kinos_channel_call(
@@ -265,7 +328,7 @@ def choose_interlocutor_via_kinos(
         speaker_username=ai_username, # L'IA elle-même est le "speaker" pour cette décision
         channel_name=kinos_channel_for_decision,
         prompt=prompt,
-        add_system_data=ai_data_package, # Passer le data_package complet
+        add_system_data=final_add_system_for_kinos, 
         kinos_model_override=effective_model
     )
 
@@ -358,13 +421,23 @@ def generate_ai_initiative_message(
         # Utiliser le modèle basé sur la classe sociale de l'IA ou l'override
         effective_model = kinos_model_override or get_kinos_model_for_social_class(ai_username, ai_social_class)
 
+        final_add_system_for_kinos = focused_system_context
+        if effective_model == 'local':
+            final_add_system_for_kinos = _summarize_add_system_for_local_model(
+                kinos_api_key=kinos_api_key,
+                ai_username=ai_username,
+                purpose_of_call=f"crafting an initiative message to {target_username}",
+                full_add_system_data=focused_system_context,
+                tables_for_cleaning=tables # 'tables' est disponible ici
+            )
+
         # make_kinos_channel_call est importé de conversation_helper
         raw_message_content = make_kinos_channel_call(
             kinos_api_key=kinos_api_key,
             speaker_username=ai_username,
             channel_name=target_username, # Le canal est avec le target_username
             prompt=prompt_for_message_content,
-            add_system_data=focused_system_context,
+            add_system_data=final_add_system_for_kinos,
             kinos_model_override=effective_model
         )
 
