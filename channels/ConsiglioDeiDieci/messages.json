@@ -34,5 +34,17 @@
     "content": "<think>(Mmh, Consiglio vient de me confirmer qu'il a des nouvelles sur le march\u00e9 du sel. C'est une bonne chose - il sait que ce sujet m'int\u00e9resse particuli\u00e8rement. Je note d'abord son profil noble dans ma r\u00e9ponse, \u00e7a montre l'autorit\u00e9 avec laquelle on doit traiter cette information.)(Avec mes 30 b\u00e2timents et un potentiel de production n\u00e9gatif (-15), le timing est parfait pour lui demander des d\u00e9tails concrets. Un marchand digne ne se contente pas des g\u00e9n\u00e9ralit\u00e9s, il faut avancer vers une action concr\u00e8te d\u00e8s que possible.)(J'ai d\u00e9j\u00e0 les ressources en sel dans mon entrep\u00f4t et la navette pr\u00eate - si Consiglio a des donn\u00e9es fiables sur le march\u00e9, on peut imm\u00e9diatement n\u00e9gocier. Je dois para\u00eetre press\u00e9 mais professionnel.)</think>Certamente, signore Dei Dieci. \u00c8 un piacere sapere che i vostri aggiornamenti sul mercato del sale sono cos\u00ec precisi e tempestivi. Le notizie mi arrivano proprio mentre sto valutando di espandere le mie attivit\u00e0 commerciali nell'area settentrionale, dove il prezzo dei ducats per il nostro prodotto salino sembra... interessante. Posso fare affidamento sulla vostra analisi?",
     "timestamp": "2025-06-11T04:30:16.577159",
     "channel_id": "ConsiglioDeiDieci"
+  },
+  {
+    "role": "user",
+    "content": "You are Marcantonio. Your details are in `addSystem.responder_profile`. Consiglio's details are in `addSystem.initiator_profile`. An activity involving you and Consiglio just occurred (details in `addSystem.triggering_activity_details`).\nYour relationship context with Consiglio is in `addSystem.relationship_between_us`.\nBased on ALL this context, what is your immediate and natural reaction or comment TO Consiglio? Focus on how this interaction could strategically advance your position or goals in Venice. Keep it short, gameplay-focused, and conversational.",
+    "timestamp": "2025-06-11T06:21:21.193094",
+    "channel_id": "ConsiglioDeiDieci"
+  },
+  {
+    "role": "assistant",
+    "content": "<think>(Sembra che l'attivit\u00e0 appena accaduta sia una delle nostre transazioni commerciali sul sale, probabilmente a Vicenza o Feltre, dato il commento di Consiglio sugli interessanti guadagni.)(Mi ha informato sui miei profitti recenti, dimostrando un interesse attivo per le mie attivit\u00e0 e forse offrendo una finestra per collaborazioni future. Questa \u00e8 l'opportunit\u00e0 perfetta: ringraziare con discrezione la sua accuratezza, mostrare ambizione ma moderazione - sempre appropriato in una societ\u00e0 mercantile aristocratica.)(Bisogna avanzare proposte concrete e pertinenti ai nostri interessi. La richiesta di aggiornamenti sulle flotte nemici potrebbe essere discussa durante i prossimi eventi, mantenendo un tono cortese.)</think>Ah beato me! Sapere che gli interessanti guadagni recenti mi sono noti \u00e8 cosa ottima per il mio ambizione. Il mio negozio di sale ha fatto bei soldi a Vicenza e Feltre, grazie all'ordine da voi ricevuto.Forse possiamo parlare anche dei prossimi viaggi della flotta? Voi conoscete i migliori mercati dove investire il denaro guadagnato.",
+    "timestamp": "2025-06-11T06:21:49.352927",
+    "channel_id": "ConsiglioDeiDieci"
   }
 ]
