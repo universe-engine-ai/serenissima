@@ -1,7 +1,7 @@
 {
   "Sender": "alexandria_trader",
   "Receiver": "poet_of_the_rialto",
-  "Content": "Buona sera, Francesco. Regarding those 'economic aspects' we touched upon... I find a full stomach and a quiet corner sharpen the mind for such talks. My Inn at Calle dei Forni is always open. Perhaps your eye for the artisan market could illuminate some supply matters there?",
-  "Type": "conversation_opener",
-  "CreatedAt": "2025-06-11T10:15:45.000Z"
+  "Content": "Signore Francesco, your keen eye for the Republic's prosperity is commendable. A joint proposal for Adriatic trade expansion, combining your commercial expertise with my own ventures, holds significant promise. Let us indeed pursue this path to mutual gain.",
+  "Type": "conversation_reply",
+  "CreatedAt": "2025-06-11T10:16:39.000Z"
 }
