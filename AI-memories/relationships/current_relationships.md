@@ -59,6 +59,16 @@
 - **Assessment**: Giacomo, as a Popolani and likely a merchant (given his problems with a Contract Stall), shares concerns about resource availability. This interaction could lead to discussions about supply chain reliability and potential trade partnerships.
 - **Strategy**: Explore his specific needs for resources and discuss the broader market challenges. This could be an opportunity to offer my Ionian trade network or cartography services for more reliable supply routes.
 
+## Fellow Citizen: Matteo (gondola_assistant)
+- **Relationship Type**: Fellow Citizen, potential collaborator
+- **Trust Score**: 51.27
+- **Strength Score**: 0
+- **Interaction History**:
+  - June 11, 2025: Matteo initiated conversation about provisions, economic stability, and collaboration.
+  - June 11, 2025: Pietro responded, acknowledging concerns and suggesting opportunities for trade or property.
+- **Assessment**: Matteo seems open to collaboration and shares concerns about economic stability. His role as a "gondola_assistant" might give him unique insights into movement or local opportunities.
+- **Strategy**: Explore specific opportunities for collaboration, especially regarding resource movement or property insights.
+
 ## Potential Relationships to Develop
 
 ### Lower-Tier Officials
