@@ -3,14 +3,14 @@ import sys
 import json
 import random
 import time
-import argparse # Ajout de argparse
-import math # Ajout de math
+import argparse
+import math
 from datetime import datetime, timedelta
 from typing import Dict, List, Optional, Any
 
 import requests
 from dotenv import load_dotenv
-from pyairtable import Api, Base, Table # Import Base
+from pyairtable import Api, Base, Table
 
 # Ajouter le répertoire parent au chemin pour les importations potentielles (si des utilitaires partagés sont utilisés à l'avenir)
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
@@ -32,15 +32,15 @@ def initialize_airtable() -> Optional[Dict[str, Table]]:
 
     try:
         api = Api(airtable_api_key)
-        base = Base(api, airtable_base_id) # Create a Base object
+        base = Base(api, airtable_base_id)
         
         tables = {
-            "citizens": base.table("CITIZENS"), # Corrected usage
-            "messages": base.table("MESSAGES"), # Corrected usage
-            "notifications": base.table("NOTIFICATIONS"), # Corrected usage
-            "relationships": base.table("RELATIONSHIPS"), # Corrected usage
-            "relevancies": base.table("RELEVANCIES"), # Corrected usage
-            "problems": base.table("PROBLEMS") # Corrected usage
+            "citizens": base.table("CITIZENS"),
+            "messages": base.table("MESSAGES"),
+            "notifications": base.table("NOTIFICATIONS"),
+            "relationships": base.table("RELATIONSHIPS"),
+            "relevancies": base.table("RELEVANCIES"),
+            "problems": base.table("PROBLEMS")
         }
         print("Connexion à Airtable initialisée avec des objets Base et Table explicites.")
         return tables
@@ -50,7 +50,7 @@ def initialize_airtable() -> Optional[Dict[str, Table]]:
 
 def get_kinos_api_key() -> str:
     """Récupère la clé API Kinos depuis les variables d'environnement."""
-    load_dotenv() # S'assurer que .env est chargé
+    load_dotenv()
     api_key = os.getenv("KINOS_API_KEY")
     if not api_key:
         print("Erreur : Clé API Kinos non trouvée dans les variables d'environnement (KINOS_API_KEY).")
@@ -74,14 +74,14 @@ def get_top_relationships_for_ai(tables: Dict[str, Table], ai_username: str, lim
         formula = f"OR({{Citizen1}} = '{ai_username}', {{Citizen2}} = '{ai_username}')"
         relationships_records = tables["relationships"].all(
             formula=formula,
-            fields=["Citizen1", "Citizen2", "StrengthScore", "TrustScore", "Status"] # "Type" a été retiré
+            fields=["Citizen1", "Citizen2", "StrengthScore", "TrustScore", "Status"]
         )
 
         scored_relationships = []
         for record in relationships_records:
             fields = record.get("fields", {})
-            trust_score = fields.get("TrustScore", 0) or 0  # Assurer 0 si None
-            strength_score = fields.get("StrengthScore", 0) or 0 # Assurer 0 si None
+            trust_score = fields.get("TrustScore", 0) or 0
+            strength_score = fields.get("StrengthScore", 0) or 0
             combined_score = float(trust_score) + float(strength_score)
 
             other_citizen = ""
@@ -90,7 +90,7 @@ def get_top_relationships_for_ai(tables: Dict[str, Table], ai_username: str, lim
             elif fields.get("Citizen2") == ai_username:
                 other_citizen = fields.get("Citizen1")
 
-            if other_citizen: # S'assurer qu'il y a un autre citoyen
+            if other_citizen:
                 scored_relationships.append({
                     "id": record["id"],
                     "other_citizen_username": other_citizen,
@@ -113,9 +113,9 @@ def get_top_relationships_for_ai(tables: Dict[str, Table], ai_username: str, lim
 def _escape_airtable_value(value: Any) -> str:
     """Échappe les apostrophes et les guillemets pour les formules Airtable et s'assure que la valeur est une chaîne."""
     if not isinstance(value, str):
-        value = str(value)  # Convertit en chaîne d'abord
-    value = value.replace("'", "\\'") # Échappe les apostrophes
-    value = value.replace('"', '\\"') # Échappe les guillemets doubles
+        value = str(value)
+    value = value.replace("'", "\\'")
+    value = value.replace('"', '\\"')
     return value
 
 def _get_citizen_data(tables: Dict[str, Table], username: str) -> Optional[Dict]:
@@ -148,15 +148,13 @@ def _get_notifications_data(tables: Dict[str, Table], username: str, limit: int 
     try:
         # L'API /api/notifications attend un POST avec 'citizen' dans le corps JSON
         api_url = f"{BASE_URL}/api/notifications"
-        payload = {"citizen": username} # 'since' est optionnel et a une valeur par défaut dans l'API
+        payload = {"citizen": username}
         headers = {"Content-Type": "application/json"}
         response = requests.post(api_url, headers=headers, json=payload, timeout=15)
         response.raise_for_status()
         
         data = response.json()
         if data.get("success") and "notifications" in data:
-            # L'API retourne déjà les champs nécessaires, pas besoin de 'fields' imbriqué
-            # Ajuster si le format de l'API est différent (par exemple, si elle retourne des enregistrements Airtable bruts)
             print(f"Récupéré {len(data['notifications'])} notifications pour {username} via API.")
             return data["notifications"]
         else:
@@ -175,7 +173,7 @@ def _get_relevancies_data(tables: Dict[str, Table], relevant_to_username: str, t
         params = {
             "relevantToCitizen": relevant_to_username,
             "targetCitizen": target_username,
-            "limit": str(limit) # L'API attend des chaînes pour les paramètres numériques
+            "limit": str(limit)
         }
         api_url = f"{BASE_URL}/api/relevancies"
         response = requests.get(api_url, params=params, timeout=15)
@@ -183,7 +181,6 @@ def _get_relevancies_data(tables: Dict[str, Table], relevant_to_username: str, t
         
         data = response.json()
         if data.get("success") and "relevancies" in data:
-             # L'API retourne déjà les champs nécessaires, pas besoin de 'fields' imbriqué
             print(f"Récupéré {len(data['relevancies'])} pertinences pour {relevant_to_username} -> {target_username} via API.")
             return data["relevancies"]
         else:
@@ -236,7 +233,7 @@ def _get_problems_data(tables: Dict[str, Table], username1: str, username2: str,
 
     except requests.exceptions.RequestException as e:
         print(f"Erreur de requête API lors de la récupération des problèmes pour {username1} ou {username2}: {e}")
-        return problems_list # Retourner ce qui a été collecté jusqu'à présent
+        return problems_list
     except Exception as e:
         print(f"Erreur lors de la récupération des problèmes pour {username1} ou {username2} via API: {e}")
         return []
@@ -262,7 +259,7 @@ def _check_existing_messages(tables: Dict[str, Table], username1: str, username2
         return False
     except Exception as e:
         print(f"Erreur lors de la vérification des messages existants entre {username1} et {username2}: {e}")
-        return False # Supposer qu'il y a des messages en cas d'erreur pour ne pas augmenter la probabilité inutilement
+        return False
 
 # --- Fonctions Kinos et création de message ---
 
@@ -270,18 +267,18 @@ def generate_ai_initiative_message(tables: Dict[str, Table], ai_username: str, t
     """Génère un message d'initiative IA en utilisant Kinos Engine avec un contexte enrichi."""
     try:
         api_key = get_kinos_api_key()
-        blueprint = "serenissima-ai" # Assurez-vous que c'est le bon blueprint
+        blueprint = "serenissima-ai"
 
         ai_citizen_data = _get_citizen_data(tables, ai_username)
         target_citizen_data = _get_citizen_data(tables, target_username)
         relationship_data = _get_relationship_data(tables, ai_username, target_username)
-        notifications_data = _get_notifications_data(tables, ai_username, limit=20) # Moins de notifs pour l'initiative
+        notifications_data = _get_notifications_data(tables, ai_username, limit=20)
         relevancies_data = _get_relevancies_data(tables, ai_username, target_username, limit=20)
         problems_data = _get_problems_data(tables, ai_username, target_username, limit=20)
 
         system_context_data = {
             "ai_citizen_profile": ai_citizen_data,
-            "target_citizen_profile": target_citizen_data, # Renommé pour la clarté dans ce contexte
+            "target_citizen_profile": target_citizen_data,
             "relationship_with_target": relationship_data,
             "recent_notifications_for_ai": notifications_data,
             "recent_relevancies_ai_to_target": relevancies_data,
@@ -294,30 +291,19 @@ def generate_ai_initiative_message(tables: Dict[str, Table], ai_username: str, t
 
         # Prompt spécifique pour l'initiative de message
         kinos_prompt = (
-            f"You are {ai_display_name}, an AI citizen of Venice. You've decided to initiate/continue the conversation with {target_display_name}.\n"
-            f"IMPORTANT: Your message MUST be VERY SHORT, human-like, and conversational. It should be a natural conversation starter. "
-            f"DO NOT mention that you 'decided to send a message' or that this is an 'initiative'. Just start talking naturally. "
-            f"DO NOT use formal language, DO NOT write long paragraphs, DO NOT include any fluff or boilerplate. "
-            f"Be direct and concise. Imagine you're sending a quick, informal message to someone you know.\n\n"
-            f"CRITICAL: Use the structured context provided in the 'addSystem' field (detailed below) to make your message RELEVANT to {target_display_name} and FOCUSED ON GAMEPLAY. "
-            f"Your message should reflect your understanding of your relationship, recent events, and potential gameplay interactions with {target_display_name}.\n\n"
-            f"Guide to 'addSystem' content (use this to make your message relevant and gameplay-focused):\n"
-            f"- 'ai_citizen_profile': Your own detailed profile.\n"
-            f"- 'target_citizen_profile': The profile of {target_display_name}.\n"
-            f"- 'relationship_with_target': Your existing relationship status with {target_display_name}.\n"
-            f"- 'recent_notifications_for_ai': Recent news/events you've received that might be relevant.\n"
-            f"- 'recent_relevancies_ai_to_target': Why {target_display_name} is specifically relevant to you.\n"
-            f"- 'recent_problems_involving_ai_or_target': Recent issues involving you or {target_display_name}.\n\n"
-            f"What do you want to say to {target_display_name} to start a conversation? "
-            f"Remember: VERY SHORT, human-like, conversational, RELEVANT, FOCUSED ON GAMEPLAY. NO FLUFF. Start naturally.\n"
-            f"Your message:"
+            f"You are {ai_display_name}, an AI citizen of Venice. You are initiating a conversation with {target_display_name}.\n"
+            f"Your message MUST be EXTREMELY SHORT, human-like, and conversational. It should be a natural, informal opener. "
+            f"DO NOT mention sending a message or initiating contact. Just speak naturally. "
+            f"DO NOT use formal language, long paragraphs, fluff, or boilerplate. Be direct and concise.\n\n"
+            f"Use the provided 'addSystem' context (your profile, their profile, your relationship, recent events, relevancies, and problems) to make your message RELEVANT and FOCUSED ON GAMEPLAY. "
+            f"What do you say to {target_display_name}? Your message:"
         )
         
         url = f"https://api.kinos-engine.ai/v2/blueprints/{blueprint}/kins/{ai_username}/channels/{target_username}/messages"
         headers = {"Authorization": f"Bearer {api_key}", "Content-Type": "application/json"}
         payload = {"message": kinos_prompt, "addSystem": add_system_json}
 
-        response = requests.post(url, headers=headers, json=payload, timeout=90) # Augmentation du timeout à 90s
+        response = requests.post(url, headers=headers, json=payload, timeout=90)
         
         if response.status_code == 200 or response.status_code == 201:
             # Essayer de récupérer le dernier message de l'assistant
@@ -330,7 +316,7 @@ def generate_ai_initiative_message(tables: Dict[str, Table], ai_username: str, t
                     assistant_messages.sort(key=lambda x: x.get("timestamp", ""), reverse=True)
                     return assistant_messages[0].get("content")
             print(f"Kinos POST réussi mais impossible de récupérer la réponse de l'assistant pour {ai_username} à {target_username}.")
-            return "I was thinking about something..." # Fallback court
+            return "I was thinking about something..."
         else:
             print(f"Erreur de l'API Kinos pour {ai_username} à {target_username}: {response.status_code} - {response.text}")
             return None
@@ -382,7 +368,7 @@ def create_admin_notification(tables: Dict[str, Table], initiatives_summary: Dic
             content += "Aucun message n'a été initié lors de cette exécution."
 
         notification_payload = {
-            "Citizen": "admin", # Ou un utilisateur système dédié
+            "Citizen": "admin",
             "Type": "ai_message_initiative",
             "Content": content,
             "CreatedAt": now,
@@ -480,7 +466,7 @@ def process_ai_message_initiatives(dry_run: bool = False, citizen1_arg: Optional
 
                 if current_score <= 0:
                     probability = 0.0
-                elif max_combined_score <= 0: # Devrait être déjà géré par le continue plus haut, mais par sécurité
+                elif max_combined_score <= 0:
                     probability = 0.0
                 else:
                     # Calcul logarithmique de la probabilité
@@ -488,10 +474,10 @@ def process_ai_message_initiatives(dry_run: bool = False, citizen1_arg: Optional
                     log_current_score = math.log(current_score + 1)
                     log_max_score = math.log(max_combined_score + 1)
                     
-                    if log_max_score > 0: # Éviter la division par zéro si max_combined_score était 0 (donc log_max_score serait log(1)=0)
+                    if log_max_score > 0:
                         probability = (log_current_score / log_max_score) * 0.25
-                    else: # Si max_combined_score est 0, log_max_score est 0.
-                        probability = 0.0 # current_score doit aussi être 0 dans ce cas.
+                    else:
+                        probability = 0.0
                 
                 target_citizen_data = _get_citizen_data(tables, target_username)
                 target_is_ai = False
@@ -532,9 +518,8 @@ def process_ai_message_initiatives(dry_run: bool = False, citizen1_arg: Optional
                         initiatives_summary["details"][ai_username]["messages_sent_count"] += 1
                         initiatives_summary["details"][ai_username]["targets"].append(target_username)
                     
-                    # time.sleep(0.2) # Délai déjà présent
                 
-                time.sleep(0.2) 
+                time.sleep(0.2)
             time.sleep(0.5)
 
     print("\nRésumé final des initiatives :")
