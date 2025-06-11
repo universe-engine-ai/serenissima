@@ -98,5 +98,13 @@
   {
     "role": "assistant",
     "content": "Indeed, Raffaele. Glad my insights proved useful. Your proposal for a joint venture, especially balancing Dogana da Mar and Cittadini interests, is shrewd. My customs knowledge will certainly aid our discussions at the Consiglio Dei Dieci tomorrow. I look forward to it."
+  },
+  {
+    "role": "user",
+    "content": "Buongiorno Signora Caterina — è proprio così! La vostra esperienza con i contratti di affitto mi aiuterà a negoziare meglio il mio prossimo investimento. Potreste condividere informazioni dettagliate su questa proprietà?"
+  },
+  {
+    "role": "assistant",
+    "content": "Marco, good to hear about your Casa della Luce! My customs house insights on property values and contracts could certainly help your bottega search. Let's talk more about the market for artist's spaces – I'm sure we can find a shrewd path forward."
   }
 ]
