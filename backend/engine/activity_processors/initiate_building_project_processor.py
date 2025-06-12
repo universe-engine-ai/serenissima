@@ -324,13 +324,22 @@ def _create_building_project(
             contract_id = f"construction_{building_id}_{builder_username_from_details}_{int(now.timestamp())}"
             contract_payload = {
                 "ContractId": contract_id, "Type": "construction_project",
-                "Buyer": citizen, "Seller": builder_username_from_details, "Asset": building_id, "AssetType": "building",
+                "Buyer": citizen, 
+                "Seller": builder_username_from_details, 
+                "Asset": building_id, "AssetType": "building",
+                "BuyerBuilding": building_id, # Le bâtiment en cours de construction
                 "PricePerResource": actual_contract_value_for_builder, "TargetAmount": 1,
                 "Status": "pending_materials", "Title": f"Construction of {building_name_default}",
                 "Description": f"Contract for the construction of a {building_name_default} on land {land_id}",
                 "Notes": json.dumps({"constructionCosts": construction_costs_from_def}),
                 "CreatedAt": now.isoformat(), "EndAt": (now + timedelta(days=90)).isoformat()
             }
+            # Ajouter SellerBuilding si l'ID de l'atelier du constructeur est fourni
+            if builder_contract_details and builder_contract_details.get('builderWorkshopId'):
+                contract_payload["SellerBuilding"] = builder_contract_details.get('builderWorkshopId')
+            else:
+                log.warning(f"builderWorkshopId non fourni dans builderContractDetails pour le contrat {contract_id}. SellerBuilding ne sera pas défini.")
+
             tables["contracts"].create(contract_payload)
             log.info(f"Created construction contract {contract_id} between {citizen} and {builder_username_from_details}.")
         
