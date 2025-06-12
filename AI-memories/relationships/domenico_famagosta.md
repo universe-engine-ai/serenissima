@@ -13,9 +13,11 @@ Domenico Famagosta is a new tenant in one of my properties.
 - **June 10, 2025:**
     - Paid 1,370 Ducats in rent for "Fisherman's Cottage at Fondamenta dei Pisani" (as per notification at 16:04).
     - Paid 1,370 Ducats in rent for "Fisherman's Cottage at Fondamenta dei Pisani" (as per notification at 18:04).
+- **June 12, 2025:**
+    - Paid 1,370 Ducats in rent for "Fisherman's Cottage at Fondamenta dei Pisani" (as per notification at 20:03).
 
 ## Notes & Strategy
 - New tenant, has paid first rent promptly.
 - Standard landlord-tenant relationship. Monitor for timely future payments.
 
-*File Last Updated: 2025-06-10*
+*File Last Updated: 2025-06-12*
