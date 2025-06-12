@@ -81,6 +81,8 @@ const BottomMenuBar: React.FC = () => {
 
   // Mise à jour de la liste des types "Prochainement" pour inclure tous les stratagèmes non disponibles.
   // Cette liste est utilisée pour le style des boutons.
+  // La constante comingSoonStratagemTypesUpdated est utilisée pour le style des boutons,
+  // mais la logique pour ajouter "(Soon)" au label est directement dans la définition de menuItems.
   const allStratagemTypesInMenu = [
     'undercut', 'coordinate_pricing', 'emergency_liquidation', 'hoard_resource', 'supplier_lockout', 'joint_venture', 'monopoly_pricing',
     'reputation_assault', 'financial_patronage', 'cultural_patronage', 'theater_conspiracy', 'marketplace_gossip', 'employee_poaching', 'reputation_boost', 'charity_distribution', 'festival_organisation',
@@ -342,42 +344,24 @@ const BottomMenuBar: React.FC = () => {
     }
   ];
 
-  const handleMainMenuClick = (item: MenuItem) => {
-    if (item.subItems && item.subItems.length > 0) {
-      setActiveMainMenuId(prevId => (prevId === item.id ? null : item.id));
-    } else {
-      setActiveMainMenuId(null); // Cache tout autre sous-menu ouvert
-      if (item.action) {
-        item.action();
-      }
-    }
-  };
-
-  // Gérer les clics en dehors du menu pour fermer le sous-menu
-  useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
-        setActiveMainMenuId(null);
-      }
-    };
-
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-    };
-  }, []);
+  // useEffect pour gérer les clics en dehors n'est plus nécessaire avec le survol.
+  // handleMainMenuClick est également remplacé par la logique de survol.
 
   const activeSubItems = menuItems.find(item => item.id === activeMainMenuId)?.subItems;
 
   return (
-    <div ref={menuRef} className="fixed bottom-2 left-1/2 transform -translate-x-1/2 z-30 flex flex-col items-center">
+    <div 
+      ref={menuRef} 
+      className="fixed bottom-2 left-1/2 transform -translate-x-1/2 z-30 flex flex-col items-center"
+      onMouseLeave={() => setActiveMainMenuId(null)} // Ferme le sous-menu si la souris quitte toute la zone
+    >
       {/* Sous-menu */}
       {activeSubItems && activeSubItems.length > 0 && (
         <div className="mb-2 flex space-x-1 bg-black/60 p-1.5 rounded-md shadow-md border border-amber-500/50">
           {activeSubItems.map((subItem) => (
             <button
               key={subItem.id}
-              onClick={() => {
+              onClick={() => { // Le clic sur un sous-élément exécute toujours l'action
                 console.log(`Submenu item ${subItem.label} clicked. Emitting event to open stratagem panel.`);
                 eventBus.emit(EventTypes.OPEN_STRATAGEM_PANEL, subItem.stratagemPanelData);
                 setActiveMainMenuId(null); // Ferme le sous-menu après l'action
@@ -399,7 +383,23 @@ const BottomMenuBar: React.FC = () => {
         {menuItems.map((item) => (
           <button
             key={item.id}
-            onClick={() => handleMainMenuClick(item)}
+            onMouseEnter={() => { // Afficher le sous-menu au survol
+              if (item.subItems && item.subItems.length > 0) {
+                setActiveMainMenuId(item.id);
+              } else {
+                setActiveMainMenuId(null); // S'il n'y a pas de sous-menu, s'assurer qu'aucun n'est actif
+              }
+            }}
+            onClick={() => { // Gérer le clic pour les éléments sans sous-menu (si jamais il y en a)
+              if (!item.subItems || item.subItems.length === 0) {
+                if (item.action) {
+                  item.action();
+                }
+                setActiveMainMenuId(null); // Fermer tout autre sous-menu
+              }
+              // Si l'élément a des sous-items, le survol les gère. Le clic pourrait être utilisé pour une action par défaut ou rien.
+              // Pour l'instant, si un item a des subItems, le clic sur le bouton principal ne fait rien de plus que le survol.
+            }}
             className={`flex flex-col items-center justify-center text-amber-100 hover:text-white p-1.5 rounded-sm transition-colors w-20 h-16 ${
               activeMainMenuId === item.id ? 'bg-amber-700/70' : 'hover:bg-amber-700/60'
             }`}
