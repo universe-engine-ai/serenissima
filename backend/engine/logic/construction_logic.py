@@ -67,6 +67,33 @@ def handle_construction_worker_activity(
 
     log.info(f"{LogColors.OKCYAN}Construction worker {citizen_username} at {workplace_custom_id} (Op: {workplace_operator_username}). Evaluating tasks.{LogColors.ENDC}")
 
+    # Check for full inventory and attempt deposit if at workshop
+    # This is done before evaluating construction contracts or workshop restocking
+    # to ensure the citizen has capacity if fetching is needed.
+    citizen_current_load_check = get_citizen_current_load(tables, citizen_username)
+    effective_capacity_check = get_citizen_effective_carry_capacity(citizen_record)
+    # Using 80% as a threshold to trigger deposit
+    if citizen_current_load_check >= effective_capacity_check * 0.8: 
+        log.info(f"  Citizen {citizen_username} inventory is {citizen_current_load_check:.2f}/{effective_capacity_check:.2f} (>=80% full). Attempting deposit orchestrator.")
+        # citizen_position here is the workshop's position as this handler is called when citizen is at workplace
+        deposit_orchestrator_activity = try_create_deposit_inventory_orchestrator(
+            tables=tables,
+            citizen_record=citizen_record,
+            citizen_position=citizen_position, # citizen_position is already defined and is the workshop location
+            resource_defs=resource_defs,
+            building_type_defs=building_type_defs,
+            now_utc_dt=now_utc_dt,
+            transport_api_url=transport_api_url,
+            api_base_url=api_base_url,
+            start_time_utc_iso=None # Immediate start for the deposit chain
+        )
+        if deposit_orchestrator_activity:
+            log.info(f"    Deposit inventory orchestrator activity created for {citizen_username}. First activity: {deposit_orchestrator_activity['fields'].get('Type')}. Construction logic will defer to this.")
+            return True # An activity was created, so this worker's turn is done for now.
+        else:
+            log.info(f"    Deposit inventory orchestrator could not create an activity (e.g., no suitable deposit locations for current items). Proceeding with other tasks.")
+
+
     # --- Helper function for processing active construction contracts ---
     # The inventory deposit logic has been removed from here.
     # It will be handled by the general _handle_deposit_full_inventory in citizen_general_activities.py

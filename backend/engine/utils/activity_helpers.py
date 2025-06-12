@@ -1394,8 +1394,21 @@ def create_activity_record(
     if from_building_id: payload["FromBuilding"] = from_building_id
     if to_building_id: payload["ToBuilding"] = to_building_id
     if path_json: payload["Path"] = path_json
-    if details_json: payload["Notes"] = details_json # Changed Details to Notes
-    elif notes: payload["Notes"] = notes # Use simple notes if no details_json
+
+    # Handle Details vs Notes based on activity_type
+    if activity_type == "goto_location":
+        if details_json:
+            payload["Details"] = details_json # Structured JSON for goto_location goes into Details
+        if notes: # Simple text notes for goto_location go into Notes
+            payload["Notes"] = notes
+        elif not details_json and not notes: # Ensure Notes is at least an empty string if neither provided for goto_location
+             payload["Notes"] = "{}" # Or an empty JSON string if Details is also empty, to avoid processing errors if processor expects JSON in Notes too
+    else: # For other activity types
+        if details_json:
+            payload["Notes"] = details_json # Structured JSON goes into Notes
+        elif notes:
+            payload["Notes"] = notes # Simple text notes
+
     if contract_id: payload["ContractId"] = contract_id
     if transporter_username: payload["Transporter"] = transporter_username
     if resources_json_payload: payload["Resources"] = resources_json_payload # Populate Resources field
