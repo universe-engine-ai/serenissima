@@ -295,19 +295,19 @@ def send_lease_adjustment_request(ai_username: str, data_package: Dict, kinos_mo
         # Log the API request details
         print(f"Sending lease adjustment request to AI citizen {ai_username}")
         print(f"API URL: {url}")
-        print(f"Citizen has {data_package['citizen']['ducats']} ducats")
-        print(f"Citizen owns {len(data_package['lands'])} lands and {len(data_package['buildings'])} buildings")
+        print(f"Citizen has {data_package['citizen_financial_summary']['ducats']} ducats")
+        print(f"Citizen owns {len(data_package['lands'])} lands and {len(data_package['buildings_owned_by_ai'])} buildings")
         
         # Create a detailed prompt that addresses the AI directly as the decision-maker
         prompt = f"""
 As a landowner and building owner in La Serenissima, you need to review and adjust the lease amounts for your buildings.
 
 Here's your current situation:
-- You own {len(data_package['buildings'])} buildings
+- You own {len(data_package['buildings_owned_by_ai'])} buildings
 - You own {len(data_package['lands'])} lands
-- Your current net income is {data_package['citizen']['financial']['net_income']} ducats
-- You pay {data_package['citizen']['financial']['total_lease_paid']} ducats in leases to other landowners
-- You receive {data_package['citizen']['financial']['total_lease_received']} ducats in leases from buildings on your lands
+- Your current net income is {data_package['citizen_financial_summary']['financial']['net_income']} ducats
+- You pay {data_package['citizen_financial_summary']['financial']['total_lease_paid']} ducats in leases to other landowners
+- You receive {data_package['citizen_financial_summary']['financial']['total_lease_received']} ducats in leases from buildings on your lands
 
 Please analyze your lease situation and develop a strategy for adjusting lease amounts for your buildings. Consider:
 1. The income and maintenance costs of each building
