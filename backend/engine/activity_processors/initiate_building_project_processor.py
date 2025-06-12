@@ -187,9 +187,11 @@ def _create_building_project(
         else:
             rate_from_details = builder_contract_details.get('rate')
             if rate_from_details is not None:
-                actual_contract_value_for_builder = float(rate_from_details)
+                # Correctly calculate contract value if rate is a multiplier
+                actual_contract_value_for_builder = building_cost_ducats * float(rate_from_details)
             else:
-                actual_contract_value_for_builder = building_cost_ducats * 1.2
+                # Default contract value if neither contractValue nor rate is provided
+                actual_contract_value_for_builder = building_cost_ducats * 1.2 
         
         potential_builder_deposit = actual_contract_value_for_builder * 0.2
 
