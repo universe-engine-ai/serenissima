@@ -192,7 +192,7 @@ const StratagemExecutionPanel: React.FC<StratagemExecutionPanelProps> = ({
         body: JSON.stringify({
           citizenUsername: currentUserUsername,
           stratagemType: stratagemData.type,
-          stratagemDetails: stratagemDetails,
+          stratagemDetails: details, // Assurez-vous que 'details' est utilisé ici
         }),
       });
 
