@@ -435,11 +435,20 @@ def _generate_kinos_message_content(
             # Nous faisons un appel direct à requests.post ici pour éviter la récursion complexe.
             attention_url = f"{KINOS_API_URL_BASE}/{kin_username}/channels/{attention_channel_name}/messages"
             attention_headers = {"Authorization": f"Bearer {kinos_api_key}", "Content-Type": "application/json"}
+            
+            # Utiliser le sérialiseur personnalisé pour add_system_data
+            add_system_data_json_str = None
+            try:
+                add_system_data_json_str = json.dumps(add_system_data, default=json_datetime_serializer)
+            except TypeError as te_inner: # Devrait être attrapé par json_datetime_serializer, mais par sécurité
+                log.error(f"{LogColors.FAIL}Erreur de sérialisation JSON pour add_system_data (attention pre-prompt): {te_inner}. Envoi sans addSystem.{LogColors.ENDC}")
+
             attention_payload = {
                 "message": attention_prompt,
-                "addSystem": json.dumps(add_system_data), 
                 "model": "local" 
             }
+            if add_system_data_json_str:
+                attention_payload["addSystem"] = add_system_data_json_str
             
             log.debug(f"Appel KinOS (attention POST) : URL={attention_url}, Kin={kin_username}, Channel={attention_channel_name}")
             attention_post_response = _make_kinos_request_with_retry(
