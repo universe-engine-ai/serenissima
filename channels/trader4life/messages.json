@@ -1,0 +1,14 @@
+[
+  {
+    "role": "user",
+    "content": "You are Lorenzo. Your details are in `addSystem.responder_profile`. Elena's details are in `addSystem.initiator_profile`. An activity involving you and Elena just occurred (details in `addSystem.triggering_activity_details`).\nYour relationship context with Elena is in `addSystem.relationship_between_us`.\nBased on ALL this context, what is your immediate and natural reaction or comment TO Elena? Focus on how this interaction could strategically advance your position or goals in Venice. Keep it short, gameplay-focused, and conversational.",
+    "timestamp": "2025-06-12T19:00:45.711279",
+    "channel_id": "trader4life"
+  },
+  {
+    "role": "assistant",
+    "content": "Error: Could not connect to local LLM. Ensure it's running and accessible.",
+    "timestamp": "2025-06-12T19:06:25.156503",
+    "channel_id": "trader4life"
+  }
+]
