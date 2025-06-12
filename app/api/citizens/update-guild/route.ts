@@ -49,10 +49,10 @@ export async function POST(request: Request) {
       
       const citizenRecord = citizenRecords[0];
       
-      // Update citizen's guild membership
+      // Update citizen's guild membership and status
       await base(AIRTABLE_CITIZENS_TABLE).update(citizenRecord.id, {
-        'GuildId': guildId
-        // 'GuildStatus' field removed as it doesn't exist in the Airtable table
+        'GuildId': guildId,
+        'GuildStatus': status // Add this field to track application status
       });
       
       return NextResponse.json({
