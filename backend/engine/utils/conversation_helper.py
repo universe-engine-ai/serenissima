@@ -423,7 +423,7 @@ def generate_conversation_turn(
             cleaned_summarized_context = clean_thought_content(tables, summarized_context)
             log.info(f"Successfully generated summarized context for {speaker_username}. Original length: {len(summarized_context)}, Cleaned length: {len(cleaned_summarized_context)}")
             log.debug(f"Original summarized context: {summarized_context}")
-            log.debug(f"Cleaned summarized context: {cleaned_summarized_context}")
+            log.info(f"{LogColors.LIGHTBLUE}Cleaned summarized context for {speaker_username} (addSystem summarizer response):\n{cleaned_summarized_context}{LogColors.ENDC}") # Log cleaned summary at INFO
             
             # B. Prepare for Conversation Call with cleaned summarized context
             final_add_system_data = {
