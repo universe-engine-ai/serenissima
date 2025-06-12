@@ -1,16 +1,33 @@
-import React, { useState, useImperativeHandle, forwardRef, useRef, useMemo } from 'react';
-import { StratagemSpecificPanelProps, StratagemSpecificPanelRef, LandOption } from './types'; // Removed CitizenOption, Added LandOption
-import { FaMapMarkedAlt, FaTimes, FaSkullCrossbones } from 'react-icons/fa'; // Changed FaUserShield to FaMapMarkedAlt
+import React, { useState, useImperativeHandle, forwardRef, useRef, useMemo, useEffect } from 'react';
+import { StratagemSpecificPanelProps, StratagemSpecificPanelRef, LandOption } from './types';
+import { FaMapMarkedAlt, FaTimes, FaSkullCrossbones, FaMoon } from 'react-icons/fa';
+
+type MuggingVariant = 'Mild' | 'Standard' | 'Aggressive';
+
+const VARIANT_COSTS: Record<MuggingVariant, number> = {
+  Mild: 2,
+  Standard: 3,
+  Aggressive: 4,
+};
 
 const CanalMuggingStratagemPanel = forwardRef<StratagemSpecificPanelRef, StratagemSpecificPanelProps>((props, ref) => {
-  const { stratagemData, lands, isLoading, currentUserUsername, currentUserFirstName, currentUserLastName } = props; // Changed citizens to lands
+  const { stratagemData, lands, isLoading, currentUserUsername, currentUserFirstName, currentUserLastName } = props;
 
   const [targetLandId, setTargetLandId] = useState<string | null>(null);
   const [landSearch, setLandSearch] = useState('');
   const [isLandDropdownOpen, setIsLandDropdownOpen] = useState(false);
   const landInputRef = useRef<HTMLInputElement>(null);
+  const [selectedVariant, setSelectedVariant] = useState<MuggingVariant>('Standard');
 
-  const calculatedInfluenceCost = stratagemData.influenceCostBase;
+  const calculatedInfluenceCost = useMemo(() => VARIANT_COSTS[selectedVariant], [selectedVariant]);
+  
+  // Update parent component about cost change
+  useEffect(() => {
+    // This effect is primarily to ensure the parent is aware of the initial or changed cost.
+    // StratagemExecutionPanel already has a mechanism to listen to getCalculatedInfluenceCost.
+    // This is more of a conceptual note that the cost can change.
+  }, [calculatedInfluenceCost]);
+
 
   const summaryElements = useMemo(() => {
     const executorName = (currentUserFirstName && currentUserLastName)
@@ -18,6 +35,7 @@ const CanalMuggingStratagemPanel = forwardRef<StratagemSpecificPanelRef, Stratag
       : currentUserUsername || "You";
 
     let targetDescription: JSX.Element | string;
+    let variantDescription: string;
 
     if (targetLandId) {
       const land = lands.find(l => l.landId === targetLandId);
@@ -27,16 +45,31 @@ const CanalMuggingStratagemPanel = forwardRef<StratagemSpecificPanelRef, Stratag
       targetDescription = <span className="font-bold">any opportune location</span>;
     }
 
+    switch (selectedVariant) {
+      case 'Mild':
+        variantDescription = "cautiously, targeting isolated victims when no one else is nearby";
+        break;
+      case 'Aggressive':
+        variantDescription = "aggressively, attempting muggings more frequently and with less caution";
+        break;
+      case 'Standard':
+      default:
+        variantDescription = "opportunistically, based on victim vulnerability and perceived risk";
+        break;
+    }
+
     return (
       <>
-        <span className="font-bold">{executorName}</span> will attempt to mug an opportune citizen during a gondola transit {targetDescription} (illegal).
+        <span className="font-bold">{executorName}</span> will attempt to rob citizens at night during gondola transits {targetDescription}, operating {variantDescription}. <em className="italic">(Illegal)</em>
       </>
     );
-  }, [targetLandId, currentUserUsername, currentUserFirstName, currentUserLastName, lands]);
+  }, [targetLandId, selectedVariant, currentUserUsername, currentUserFirstName, currentUserLastName, lands]);
 
   useImperativeHandle(ref, () => ({
     getStratagemDetails: () => {
-      const details: Record<string, any> = {};
+      const details: Record<string, any> = {
+        variant: selectedVariant,
+      };
       if (targetLandId) {
         details.targetLandId = targetLandId;
       }
@@ -49,11 +82,42 @@ const CanalMuggingStratagemPanel = forwardRef<StratagemSpecificPanelRef, Stratag
 
   return (
     <div>
+      {/* Variant Selector */}
+      <div className="mb-6">
+        <label className="block text-sm font-medium text-amber-800 mb-2 flex items-center">
+          <FaMoon className="mr-2" /> Mugging Approach (Variant)
+        </label>
+        <div className="flex space-x-2">
+          {(['Mild', 'Standard', 'Aggressive'] as MuggingVariant[]).map((variant) => (
+            <button
+              key={variant}
+              type="button"
+              onClick={() => setSelectedVariant(variant)}
+              className={`px-4 py-2 rounded-md text-sm font-medium transition-colors w-1/3
+                ${selectedVariant === variant 
+                  ? 'bg-rose-600 text-white shadow-md ring-2 ring-rose-400' 
+                  : 'bg-amber-200 text-amber-800 hover:bg-amber-300'
+                }
+                ${isLoading ? 'opacity-50 cursor-not-allowed' : ''}
+              `}
+              disabled={isLoading}
+            >
+              {variant} (Cost: {VARIANT_COSTS[variant]}🎭)
+            </button>
+          ))}
+        </div>
+         <p className="text-xs text-amber-600 mt-2">
+          {selectedVariant === 'Mild' && "Target isolated victims when no one else is nearby. Lower risk, potentially lower reward."}
+          {selectedVariant === 'Standard' && "Decide opportunistically based on victim vulnerability and perceived risk. Balanced risk/reward."}
+          {selectedVariant === 'Aggressive' && "Attempt muggings more frequently and with less caution. Higher risk, potentially higher reward."}
+        </p>
+      </div>
+
       <div className="mb-4">
         <label htmlFor="canal_mugging_targetLand_search" className="block text-sm font-medium text-amber-800 mb-1 flex items-center">
-          <FaMapMarkedAlt className="mr-2" /> Target Land (Recommended)
+          <FaMapMarkedAlt className="mr-2" /> Target Land Parcel (Optional)
         </label>
-        <p className="text-xs text-amber-600 mb-1">If no land is selected, the stratagem will be deployed at a random location.</p>
+        <p className="text-xs text-amber-600 mb-1">If no land parcel is selected, the stratagem will target any opportune victim found by the system.</p>
         <div className="relative">
           <input
             id="canal_mugging_targetLand_search"
