@@ -223,9 +223,16 @@ def process(
     
     cleaned_core_attack_narrative = clean_thought_content(tables, core_attack_narrative)
     log.info(f"{LogColors.PROCESS}Generated Core Attack Narrative (cleaned, first 100 chars): '{cleaned_core_attack_narrative[:100]}...'{LogColors.ENDC}")
-    # Optionally store this narrative as a self-message for the executor
-    _store_message_via_api(tables, executed_by_username, executed_by_username, f"Reputation Assault Plan against {target_citizen_username} (Angle: {assault_angle_from_notes or 'N/A'}):\n\n{cleaned_core_attack_narrative}", f"stratagem_plan_{stratagem_id}")
-
+    
+    # Store this narrative as a self-message (thought) for the executor
+    _store_message_via_api(
+        tables, 
+        executed_by_username, 
+        executed_by_username, 
+        f"Strategizing Reputation Assault against {target_citizen_username} (Angle: {assault_angle_from_notes or 'N/A'}):\n\n{cleaned_core_attack_narrative}", 
+        f"stratagem_plan_{stratagem_id}",
+        message_type="stratagem_plan_thought" # Specific message type
+    )
 
     # 3. Identify citizens related to the target
     related_citizens_usernames = _get_related_citizens(tables, target_citizen_username)
@@ -286,7 +293,14 @@ def process(
             log.info(f"{LogColors.PROCESS}Generated smear message from {executed_by_username} to {related_citizen_username} (re: {target_citizen_username}): '{cleaned_smear_message[:100]}...' (Original: '{generated_smear_message[:100]}...'){LogColors.ENDC}")
             
             dialogue_channel_name = "_".join(sorted([executed_by_username, related_citizen_username]))
-            if _store_message_via_api(tables, executed_by_username, related_citizen_username, cleaned_smear_message, dialogue_channel_name):
+            if _store_message_via_api(
+                tables, 
+                executed_by_username, 
+                related_citizen_username, 
+                cleaned_smear_message, 
+                dialogue_channel_name,
+                message_type="stratagem_smear_message" # Specific message type
+            ):
                 messages_sent_count += 1
             else:
                 log.warning(f"{LogColors.WARNING}Failed to store generated smear message to {related_citizen_username} for stratagem {stratagem_id}.{LogColors.ENDC}")

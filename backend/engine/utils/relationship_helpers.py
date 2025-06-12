@@ -391,8 +391,8 @@ def _generate_kinos_message_content(
                         sender_username=kin_username,
                         receiver_username=kin_username, # Message à soi-même
                         content=cleaned_summary,
-                        message_type="ai_context_summary",
-                        channel_name=kin_username # Canal privé pour les pensées personnelles
+                        channel_name=kin_username, # Canal privé pour les pensées personnelles
+                        message_type="ai_context_summary" # Spécifier le type de message
                     )
                     
                     final_add_system_data_for_main_call = {
@@ -457,48 +457,26 @@ def _generate_kinos_message_content(
         return None
 
 def _store_message_via_api(
-    tables: Dict[str, Table], # Ajout de tables pour clean_thought_content
+    tables: Dict[str, Table], 
     sender_username: str, 
     receiver_username: str, 
     content: str,
-    channel_name: str # Ajout du paramètre channel_name
+    channel_name: str, 
+    message_type: str = "message"  # Ajout de message_type avec une valeur par défaut
 ) -> bool:
     """Stocke un message en utilisant l'API Next.js /api/messages/send."""
     try:
         api_url = f"{NEXT_JS_BASE_URL}/api/messages/send"
         
-        # Le type de message est passé en argument à persist_message, qui le passe ici.
-        # Utilisons le type de message réel pour décider du nettoyage.
-        # Les types susceptibles d'être générés par l'IA et nécessitant un nettoyage :
-        ai_generated_message_types = ["reaction_auto", "message_ai_augmented", "encounter_reflection", "conversation_opener"]
-        
-        content_to_store = content
-        # Le type de message est maintenant passé à _store_message_via_api,
-        # mais il n'est pas utilisé dans la signature actuelle.
-        # Nous allons supposer que `persist_message` passe le bon `message_type`
-        # et que nous devons l'ajouter à la signature de `_store_message_via_api`
-        # Pour l'instant, nous allons utiliser une variable locale pour le type de message
-        # qui est défini dans persist_message.
-        # La modification ci-dessous est dans persist_message, pas _store_message_via_api.
-        # Cette section de code est dans _store_message_via_api, qui est appelée par persist_message.
-        # persist_message a le type, il doit le passer à _store_message_via_api.
-        # Pour l'instant, je vais modifier persist_message pour qu'il nettoie avant d'appeler _store_message_via_api.
-        # Donc, cette section dans _store_message_via_api n'a plus besoin de faire le nettoyage.
-        # Le nettoyage sera fait dans persist_message.
-
-        # Correction: Le nettoyage est déjà fait dans persist_message avant d'appeler _store_message_via_api.
-        # Cette fonction reçoit déjà le contenu nettoyé.
-        # La logique de nettoyage dans _store_message_via_api était redondante si persist_message le fait.
-        # Je vais retirer la logique de nettoyage d'ici et m'assurer qu'elle est correcte dans persist_message.
-
-        # Simplification : _store_message_via_api reçoit le contenu déjà nettoyé.
+        # Le nettoyage du contenu est supposé être fait par l'appelant si nécessaire.
+        # Cette fonction se concentre sur la persistance.
         
         payload = {
             "sender": sender_username,
             "receiver": receiver_username,
-            "content": content, # Utiliser le contenu tel que reçu (devrait être déjà nettoyé par l'appelant)
-            "type": "reaction_auto", 
-            "channel": channel_name # Ajout du champ channel au payload
+            "content": content, 
+            "type": message_type, # Utiliser le paramètre message_type
+            "channel": channel_name
         }
         headers = {"Content-Type": "application/json"}
         response = requests.post(api_url, headers=headers, json=payload, timeout=15)
@@ -616,11 +594,12 @@ def _initiate_reaction_dialogue_if_both_ai(
         # Déterminer le channel_name pour la persistance
         dialogue_channel_name = "_".join(sorted([actor_username, receiver_of_action_username]))
         _store_message_via_api(
-            tables=tables, # Passer l'objet tables
+            tables=tables, 
             sender_username=receiver_of_action_username,
             receiver_username=actor_username,
             content=cleaned_receiver_reaction,
-            channel_name=dialogue_channel_name # Passer le channel_name
+            channel_name=dialogue_channel_name, 
+            message_type="reaction_initial" # Spécifier le type de message
         )
 
         # Mettre à jour le contexte pour la réponse de l'acteur
