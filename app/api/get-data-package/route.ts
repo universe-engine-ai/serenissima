@@ -862,7 +862,7 @@ function convertDataPackageToMarkdown(dataPackage: any, citizenUsername: string 
       md += formatSimpleObjectForMarkdown(contract, ['type', 'buyer', 'seller', 'resourceType', 'pricePerResource', 'targetAmount', 'status', 'createdAt', 'endAt']);
     });
     if (dataPackage.activeContracts.length === 20) {
-      md += `- ... (et plus)\n`;
+      md += `- ... (and more)\n`;
     }
     md += '\n';
   } else {
@@ -916,7 +916,7 @@ function convertDataPackageToMarkdown(dataPackage: any, citizenUsername: string 
       md += formatSimpleObjectForMarkdown(message, ['sender', 'receiver', 'type', 'content', 'channel', 'createdAt']);
     });
     if (dataPackage.recentMessages.length === 20) {
-      md += `- ... (et plus)\n`;
+      md += `- ... (and more)\n`;
     }
     md += '\n';
   } else {
