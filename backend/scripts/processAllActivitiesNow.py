@@ -173,7 +173,7 @@ def main():
     )
     # --hour argument is removed from here
     parser.add_argument(
-        "--ActivityId",
+        "--activityId",
         type=str,
         help="Process a specific activity by its custom ActivityId, bypassing normal selection criteria."
     )
