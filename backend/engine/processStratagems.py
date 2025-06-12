@@ -244,8 +244,8 @@ def main(dry_run: bool = False, specific_stratagem_id: Optional[str] = None):
         log.error(f"{LogColors.FAIL}Failed to initialize Airtable. Exiting.{LogColors.ENDC}")
         return
 
-    resource_defs = get_resource_types_from_api(API_BASE_URL)
-    building_type_defs = get_building_types_from_api(API_BASE_URL)
+    resource_defs = get_resource_types_from_api(NEXTJS_API_BASE_URL)
+    building_type_defs = get_building_types_from_api(NEXTJS_API_BASE_URL)
 
     if not resource_defs or not building_type_defs:
         log.error(f"{LogColors.FAIL}Failed to fetch resource or building definitions. Exiting.{LogColors.ENDC}")
@@ -294,7 +294,8 @@ def main(dry_run: bool = False, specific_stratagem_id: Optional[str] = None):
             processor_func = STRATAGEM_PROCESSORS.get(stratagem_type)
             if processor_func:
                 try:
-                    if not processor_func(tables, stratagem_record, resource_defs, building_type_defs, API_BASE_URL):
+                    # Pass PYTHON_ENGINE_BASE_URL for self-calls, NEXTJS_API_BASE_URL might be needed by processor for other calls
+                    if not processor_func(tables, stratagem_record, resource_defs, building_type_defs, PYTHON_ENGINE_BASE_URL):
                         processing_status_flag = False
                         log.error(f"{LogColors.FAIL}Processor for stratagem {stratagem_guid} (type {stratagem_type}) returned failure.{LogColors.ENDC}")
                 except Exception as e_process:
