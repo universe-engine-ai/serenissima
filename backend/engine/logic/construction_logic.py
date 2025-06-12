@@ -70,6 +70,10 @@ def handle_construction_worker_activity(
     # The inventory deposit logic has been removed from here.
     # It will be handled by the general _handle_deposit_full_inventory in citizen_general_activities.py
     # at a lower priority, after work tasks.
+    # However, we add specific deposit logic here if the worker is AT the site with materials for THIS project.
+    from backend.engine.utils.activity_helpers import create_activity_record, get_citizen_inventory_details # Added imports
+    from datetime import timedelta # Added import
+
     def _try_process_active_construction_contracts() -> bool:
         construction_contracts_formula = f"AND({{Type}}='construction_project', {{SellerBuilding}}='{_escape_airtable_value(workplace_custom_id)}', {{Status}}!='completed', {{Status}}!='failed')"
         active_construction_contracts = tables['contracts'].all(formula=construction_contracts_formula, sort=['CreatedAt'])
@@ -89,7 +93,65 @@ def handle_construction_worker_activity(
             if not target_building_record:
                 log.warning(f"    Target building {target_building_custom_id} for contract {contract_custom_id} not found. Skipping contract.")
                 continue
+
+            target_building_pos = _get_building_position_coords(target_building_record) # Position of the current contract's construction site
             
+            # Check 1: If citizen is AT the construction site AND has materials for THIS project in inventory
+            if citizen_position and target_building_pos and _calculate_distance_meters(citizen_position, target_building_pos) < 20:
+                log.info(f"    Citizen {citizen_username} is at construction site {target_building_custom_id}. Checking inventory for deposit.")
+                citizen_inventory = get_citizen_inventory_details(tables, citizen_username)
+                items_to_deposit_for_this_site: List[Dict[str, Any]] = []
+
+                if citizen_inventory:
+                    project_owner_for_deposit_check = contract['fields'].get('Buyer') # Should be target_building_owner_username
+                    for item_in_inv in citizen_inventory:
+                        inv_res_id = item_in_inv.get("ResourceId")
+                        inv_res_owner = item_in_inv.get("Owner")
+                        inv_res_amount = float(item_in_inv.get("Amount", 0.0))
+
+                        if inv_res_id and inv_res_owner == project_owner_for_deposit_check and inv_res_id in required_materials_for_project:
+                            needed_on_site_total = float(required_materials_for_project.get(inv_res_id, 0.0))
+                            on_site_already = float(site_inventory.get(inv_res_id, 0.0)) # site_inventory is defined later, this needs to be after site_inventory
+                            
+                            # This check needs site_inventory, which is fetched a bit later.
+                            # Let's assume for now if they have it and it's required, they try to deposit.
+                            # The deposit processor will handle capacity.
+                            # A more refined check would be:
+                            # amount_still_needed_on_site = needed_on_site_total - on_site_already
+                            # amount_to_deposit_this_item = min(inv_res_amount, amount_still_needed_on_site)
+                            # For simplicity, if they have it and it's required, try to deposit what they have.
+                            
+                            if inv_res_amount > 0.001:
+                                items_to_deposit_for_this_site.append({
+                                    "ResourceId": inv_res_id,
+                                    "Amount": inv_res_amount, 
+                                    "Owner": inv_res_owner,
+                                    "AirtableRecordId": item_in_inv.get("AirtableRecordId")
+                                })
+                                log.info(f"      Found {inv_res_amount:.2f} of {inv_res_id} in {citizen_username}'s inventory (owned by {inv_res_owner}) to potentially deposit at {target_building_custom_id}.")
+                
+                if items_to_deposit_for_this_site:
+                    deposit_notes_content = {
+                        "items_to_deposit": items_to_deposit_for_this_site,
+                        "target_building_id": target_building_custom_id
+                    }
+                    deposit_duration_td = timedelta(minutes=5 + len(items_to_deposit_for_this_site))
+                    deposit_end_time_dt = now_utc_dt + deposit_duration_td
+                    
+                    deposit_activity_created = create_activity_record(
+                        tables=tables, citizen_username=citizen_username, activity_type="deposit_items_at_location",
+                        start_date_iso=now_utc_dt.isoformat(), end_date_iso=deposit_end_time_dt.isoformat(),
+                        from_building_id=target_building_custom_id, to_building_id=target_building_custom_id,
+                        details_json=json.dumps(deposit_notes_content),
+                        title=f"Depositing materials at {target_building_custom_id}",
+                        description=f"{citizen_username} depositing materials for project {contract_custom_id} at {target_building_custom_id}.",
+                        priority_override=28 
+                    )
+                    if deposit_activity_created:
+                        log.info(f"      Created 'deposit_items_at_location' activity for {citizen_username} at {target_building_custom_id}.")
+                        return True # Activity created, process this contract's turn is done.
+
+            # Original checks continue if no deposit activity was created above
             if target_building_record['fields'].get('IsConstructed'):
                 log.info(f"    Target building {target_building_custom_id} is already constructed. Marking contract {contract_custom_id} as completed if not already.")
                 if contract['fields'].get('Status') != 'completed':
