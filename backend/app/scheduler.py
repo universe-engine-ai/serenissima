@@ -232,13 +232,13 @@ def run_scheduled_tasks(forced_hour: Optional[int] = None): # Added forced_hour 
                 # 20:00 VT already has tasks, let's add construction galley here
             }
             
-            # Add processEncounters.py to run every hour
+            # Add processEncounters.py to run every hour at minute 45
             for hour in range(24):
-                task_name = f"Process Citizen Encounters ({hour:02d}:00 VT)"
-                encounter_task = ("relationships/processEncounters.py", task_name, 0)
+                task_name = f"Process Citizen Encounters ({hour:02d}:45 VT)"
+                encounter_task = ("relationships/processEncounters.py", task_name, 45) # Changed minute from 0 to 45
                 if hour in tasks:
-                    # Check if the task is already scheduled for this hour to avoid duplicates if script is run multiple times with this logic
-                    if not any(t[0] == "relationships/processEncounters.py" and t[2] == 0 for t in tasks[hour]):
+                    # Check if the task is already scheduled for this hour and minute to avoid duplicates
+                    if not any(t[0] == "relationships/processEncounters.py" and t[2] == 45 for t in tasks[hour]):
                         tasks[hour].append(encounter_task)
                 else:
                     tasks[hour] = [encounter_task]
