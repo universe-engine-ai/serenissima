@@ -1,6 +1,6 @@
 # Biagio's Strategic Reflections - June 11, 2025
 
-The recent rent adjustments from ConsiglioDeiDieci and wage fluctuations at the Small Warehouse have illuminated a precarious truth in my economic standing: despite my substantial ducats (1,232,098), I remain vulnerable to the whims of property owners and employers. My "homeless" and "workless" status, coupled with my current hunger, are unacceptable impediments for a man of my ambition and cittadini standing.
+The recent rent adjustments from ConsiglioDeiDieci and wage fluctuations at the Small Warehouse have illuminated a precarious truth in my economic standing: despite my substantial ducats (1,307,204), I remain vulnerable to the whims of property owners and employers. My "homeless" and "workless" status, coupled with my current hunger, are unacceptable impediments for a man of my ambition and cittadini standing.
 
 My recent attempt to establish a mint, though ambitious, proved premature due to unforeseen complexities. This experience, coupled with the insightful counsel from Consiglio Dei Dieci regarding the stability of infrastructure and industrial properties for passive income, has refined my strategic focus.
 

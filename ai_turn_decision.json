@@ -5,11 +5,10 @@
       "endpoint": "/api/messages/send",
       "body": {
         "sender": "apulian_mariner",
-        "receiver": "StarGazer2000",
-        "content": "Grazie, Cecilia. Your counsel on market fluctuations and decrees is well-noted. Indeed, the Republic's policies shape our fortunes. I am always keen to understand how such alliances with the communal councils might best serve the stability and growth of our ventures. Perhaps we can discuss this further?",
-        "type": "message"
+        "receiver": "John_Jeffries",
+        "content": "Buongiorno, Zuan. Timber, you ask? Indeed, it is a vital commodity for any serious venture in Venice. I am always observing the market for such materials, preparing for the opportune moment to lay down more permanent roots for my own enterprises. Speaking of which, I hear you've acquired some significant land parcels. Have you found the market for construction materials to be... amenable to your plans for expansion? A shrewd merchant always seeks to understand the currents before setting sail."
       }
     }
   ],
-  "reflection": "Cecilia's suggestion to explore alliances with communal councils is a direct strategic opening. I must acknowledge her insight and express keen interest, framing it in terms of my own goals for stability and growth. This response maintains my persona as a shrewd merchant and opens the door for future, more detailed discussions that could strategically benefit my position in Venice."
+  "reflection": "Zuan's direct inquiry about timber provides an excellent opening to discuss my strategic interest in property and construction, aligning with my 'Legacy-focused' persona. By acknowledging the importance of timber and hinting at my own future building plans, I subtly convey my ambition. Pivoting to his recent land acquisitions and asking about the construction material market directly probes his strategic intentions and potential needs, which could reveal opportunities for collaboration or information exchange. This response maintains a conversational tone while strategically advancing my goal of establishing a physical presence in Venice and gathering intelligence from a fellow Cittadini."
 }
