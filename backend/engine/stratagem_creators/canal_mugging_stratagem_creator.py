@@ -2,7 +2,7 @@ import logging
 import uuid
 import json # Added for storing details in Notes
 from datetime import datetime, timedelta, timezone
-from typing import Dict, Any, Optional
+from typing import Dict, Any, Optional, List # Added List
 
 from pyairtable import Table
 
@@ -27,8 +27,6 @@ VALID_VARIANTS = ["Mild", "Standard", "Aggressive"]
 
 def try_create(
     tables: Dict[str, Table],
-    citizen_username: str,
-    stratagem_params: Dict[str, Any],
     citizen_username: str,
     stratagem_type: str, # Added stratagem_type
     stratagem_params: Dict[str, Any],
