@@ -176,11 +176,11 @@ def _create_building_project(
     
     # If there's a builder contract, add a deposit (typically 20% of the contract value)
     builder_deposit_to_charge = 0
-    builder_username = None # Renamed from builder_username_for_payload for clarity in this scope
+    builder_username_from_details = None # Store builder from details separately
     actual_contract_value_for_builder = 0 # For contract creation
 
     if builder_contract_details:
-        builder_username = builder_contract_details.get('builderUsername')
+        builder_username_from_details = builder_contract_details.get('builderUsername')
         contract_value_from_details = builder_contract_details.get('contractValue')
         if contract_value_from_details is not None:
             actual_contract_value_for_builder = float(contract_value_from_details)
@@ -195,11 +195,11 @@ def _create_building_project(
 
         # Check if this specific builder contract already exists and is active
         skip_builder_deposit_and_contract = False
-        if building_shell_exists_and_matches and builder_username:
-            formula_contract_check = f"AND({{Asset}}='{_escape_airtable_value(building_id)}', {{Buyer}}='{_escape_airtable_value(citizen)}', {{Seller}}='{_escape_airtable_value(builder_username)}', NOT(OR({{Status}}='failed', {{Status}}='cancelled', {{Status}}='completed')))"
+        if building_shell_exists_and_matches and builder_username_from_details:
+            formula_contract_check = f"AND({{Asset}}='{_escape_airtable_value(building_id)}', {{Buyer}}='{_escape_airtable_value(citizen)}', {{Seller}}='{_escape_airtable_value(builder_username_from_details)}', NOT(OR({{Status}}='failed', {{Status}}='cancelled', {{Status}}='completed')))"
             existing_builder_contracts = tables['contracts'].all(formula=formula_contract_check, max_records=1)
             if existing_builder_contracts:
-                log.info(f"Un contrat de construction actif avec le constructeur {builder_username} pour le projet {building_id} existe déjà. L'acompte et la création du contrat seront ignorés.")
+                log.info(f"Un contrat de construction actif avec le constructeur {builder_username_from_details} pour le projet {building_id} existe déjà. L'acompte et la création du contrat seront ignorés.")
                 skip_builder_deposit_and_contract = True
         
         if not skip_builder_deposit_and_contract:
@@ -255,8 +255,8 @@ def _create_building_project(
             log.info(f"Permit fee of {permit_fee_to_charge} Ducats paid by {citizen} to {office_operator}.")
 
         # Add builder deposit to builder if it was charged
-        if builder_username and builder_deposit_to_charge > 0:
-            builder_formula = f"{{Username}}='{_escape_airtable_value(builder_username)}'"
+        if builder_username_from_details and builder_deposit_to_charge > 0:
+            builder_formula = f"{{Username}}='{_escape_airtable_value(builder_username_from_details)}'"
             builder_records = tables["citizens"].all(formula=builder_formula, max_records=1)
             if builder_records:
                 builder_record_data = builder_records[0]
@@ -265,16 +265,37 @@ def _create_building_project(
                 # Record the builder deposit transaction
                 deposit_transaction_fields = {
                     "Type": "builder_deposit", "AssetType": "land", "Asset": land_id,
-                    "Seller": citizen, "Buyer": builder_username, "Price": builder_deposit_to_charge,
+                    "Seller": citizen, "Buyer": builder_username_from_details, "Price": builder_deposit_to_charge,
                     "Notes": json.dumps({"building_type": building_type, "point_details": point_details, "contract_details": builder_contract_details}),
                     "CreatedAt": now.isoformat(), "ExecutedAt": now.isoformat()
                 }
                 tables["transactions"].create(deposit_transaction_fields)
-                log.info(f"Builder deposit of {builder_deposit_to_charge} Ducats paid by {citizen} to {builder_username}.")
+                log.info(f"Builder deposit of {builder_deposit_to_charge} Ducats paid by {citizen} to {builder_username_from_details}.")
             else:
-                log.error(f"Builder {builder_username} not found")
+                log.error(f"Builder {builder_username_from_details} not found")
                 # Continue anyway, the deposit will go to the city
         
+        # Determine RunBy for the project
+        final_run_by_for_project: Optional[str] = None
+        if builder_username_from_details:
+            final_run_by_for_project = builder_username_from_details
+            log.info(f"Builder {builder_username_from_details} is specified. Setting RunBy for project {building_id} to builder.")
+        else:
+            log.info(f"No builder specified for project {building_id}. Checking citizen {citizen}'s business building count for RunBy.")
+            citizen_business_buildings_formula = f"AND({{RunBy}}='{_escape_airtable_value(citizen)}', {{Category}}='business')"
+            try:
+                citizen_business_buildings = tables['buildings'].all(formula=citizen_business_buildings_formula)
+                num_businesses_run = len(citizen_business_buildings)
+                if num_businesses_run > 10:
+                    log.info(f"Citizen {citizen} runs {num_businesses_run} businesses (limit 10). Project {building_id} RunBy will be None.")
+                    final_run_by_for_project = None 
+                else:
+                    log.info(f"Citizen {citizen} runs {num_businesses_run} businesses. Setting RunBy for project {building_id} to citizen.")
+                    final_run_by_for_project = citizen
+            except Exception as e_count_buildings:
+                log.error(f"Error counting business buildings for {citizen}: {e_count_buildings}. Defaulting RunBy for project {building_id} to citizen.")
+                final_run_by_for_project = citizen # Fallback
+
         # Create/Update the building record
         construction_minutes = building_type_info.get('constructionMinutes', 60)
         
@@ -284,26 +305,26 @@ def _create_building_project(
                 "Name": f"{building_name_default} (Under Construction)",
                 "Type": building_type, "Category": building_category, "SubCategory": building_subcategory,
                 "LandId": land_id, "Position": json.dumps(point_details), "Point": json.dumps(point_details),
-                "Owner": citizen, "RunBy": builder_username if builder_username else citizen,
+                "Owner": citizen, "RunBy": final_run_by_for_project,
                 "IsConstructed": False, "ConstructionMinutesRemaining": construction_minutes,
                 "CreatedAt": now.isoformat()
             }
             created_building = tables["buildings"].create(building_payload)
-            log.info(f"Created new building project {building_id} for {citizen} on land {land_id}")
-        elif builder_username and existing_building_record_fields: # Shell exists, check if RunBy needs update
-            current_run_by = existing_building_record_fields.get('RunBy')
-            if current_run_by != builder_username:
-                tables['buildings'].update(existing_building_airtable_id, {'RunBy': builder_username})
-                log.info(f"Updated RunBy for existing building project {building_id} to {builder_username}.")
+            log.info(f"Created new building project {building_id} for {citizen} on land {land_id} with RunBy: {final_run_by_for_project}")
+        elif existing_building_record_fields and existing_building_airtable_id: # Shell exists, check if RunBy needs update
+            current_run_by_on_shell = existing_building_record_fields.get('RunBy')
+            if current_run_by_on_shell != final_run_by_for_project:
+                tables['buildings'].update(existing_building_airtable_id, {'RunBy': final_run_by_for_project})
+                log.info(f"Updated RunBy for existing building project {building_id} from '{current_run_by_on_shell}' to '{final_run_by_for_project}'.")
         
-        # Create the builder contract if builder_username is set and deposit was charged (or contract doesn't exist)
+        # Create the builder contract if builder_username_from_details is set and deposit was charged (or contract doesn't exist)
         # The check for skip_builder_deposit_and_contract handles if contract already exists.
         # actual_contract_value_for_builder will be > 0 only if a new contract is needed.
-        if builder_username and actual_contract_value_for_builder > 0 and builder_deposit_to_charge > 0: # Ensure deposit was meant to be charged for this new contract
-            contract_id = f"construction_{building_id}_{builder_username}_{int(now.timestamp())}"
+        if builder_username_from_details and actual_contract_value_for_builder > 0 and builder_deposit_to_charge > 0: # Ensure deposit was meant to be charged for this new contract
+            contract_id = f"construction_{building_id}_{builder_username_from_details}_{int(now.timestamp())}"
             contract_payload = {
                 "ContractId": contract_id, "Type": "construction_project",
-                "Buyer": citizen, "Seller": builder_username, "Asset": building_id, "AssetType": "building",
+                "Buyer": citizen, "Seller": builder_username_from_details, "Asset": building_id, "AssetType": "building",
                 "PricePerResource": actual_contract_value_for_builder, "TargetAmount": 1,
                 "Status": "pending_materials", "Title": f"Construction of {building_name_default}",
                 "Description": f"Contract for the construction of a {building_name_default} on land {land_id}",
@@ -311,13 +332,13 @@ def _create_building_project(
                 "CreatedAt": now.isoformat(), "EndAt": (now + timedelta(days=90)).isoformat()
             }
             tables["contracts"].create(contract_payload)
-            log.info(f"Created construction contract {contract_id} between {citizen} and {builder_username}.")
+            log.info(f"Created construction contract {contract_id} between {citizen} and {builder_username_from_details}.")
         
         log.info(f"Successfully processed building project submission for {building_type} on land {land_id} by {citizen}.")
         if permit_fee_to_charge > 0:
             log.info(f"Permit fee of {permit_fee_to_charge} Ducats collected.")
         if builder_deposit_to_charge > 0:
-            log.info(f"Builder deposit of {builder_deposit_to_charge} Ducats collected for {builder_username}.")
+            log.info(f"Builder deposit of {builder_deposit_to_charge} Ducats collected for {builder_username_from_details}.")
         
         return True
     except Exception as e:
