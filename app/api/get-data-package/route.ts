@@ -681,9 +681,275 @@ async function fetchStratagemDefinitions(): Promise<Record<string, Record<string
   return Promise.resolve(categorizedStratagems);
 }
 
+// --- Markdown Conversion Utilities ---
+
+function formatDate(dateString?: string | Date): string {
+  if (!dateString) return 'N/A';
+  try {
+    return new Date(dateString).toLocaleString('fr-FR', { dateStyle: 'medium', timeStyle: 'short' });
+  } catch (e) {
+    return String(dateString); // Fallback if date is invalid
+  }
+}
+
+function formatSimpleObjectForMarkdown(obj: Record<string, any> | null, fieldsToDisplay?: string[]): string {
+  if (!obj) return '- Not available\n';
+  let md = '';
+  const keys = fieldsToDisplay || Object.keys(obj);
+  for (const key of keys) {
+    if (Object.prototype.hasOwnProperty.call(obj, key)) {
+      const value = obj[key];
+      let displayValue: string;
+      if (value === null || typeof value === 'undefined') {
+        displayValue = 'N/A';
+      } else if (typeof value === 'string' && (key.toLowerCase().includes('date') || key.toLowerCase().includes('at'))) {
+        // Attempt to format date strings
+        const parsedDate = new Date(value);
+        if (!isNaN(parsedDate.getTime())) {
+          displayValue = formatDate(parsedDate);
+        } else {
+          displayValue = String(value);
+        }
+      } else if (typeof value === 'object' && !Array.isArray(value)) {
+        displayValue = `\n    - ${Object.entries(value).map(([k, v]) => `**${k}**: ${v}`).join('\n    - ')}`;
+      } else if (Array.isArray(value)) {
+        if (value.every(item => typeof item !== 'object')) {
+          displayValue = value.join(', ');
+        } else {
+          displayValue = `[${value.length} objects]`; // Summary for array of objects
+        }
+      } else {
+        displayValue = String(value);
+      }
+      md += `- **${key}**: ${displayValue}\n`;
+    }
+  }
+  return md;
+}
+
+function convertDataPackageToMarkdown(dataPackage: any, citizenUsername: string | null): string {
+  let md = `# Data Package for ${citizenUsername || 'Unknown Citizen'}\n\n`;
+
+  // Citizen Details
+  md += `## Citizen Details\n`;
+  md += formatSimpleObjectForMarkdown(dataPackage.citizen, ['username', 'firstName', 'lastName', 'socialClass', 'ducats', 'isAI', 'inVenice', 'homeCity', 'influence', 'specialty', 'lastActiveAt', 'createdAt']);
+  if (dataPackage.citizen?.position) {
+    md += `- **position**: Lat: ${dataPackage.citizen.position.lat}, Lng: ${dataPackage.citizen.position.lng}\n`;
+  }
+   if (dataPackage.citizen?.corePersonality) {
+    md += `- **corePersonality**: ${Object.entries(dataPackage.citizen.corePersonality).map(([k,v]) => `${k}: ${v}`).join(', ')}\n`;
+  }
+  md += '\n';
+
+  // Last Activity
+  md += `## Last Activity\n`;
+  md += formatSimpleObjectForMarkdown(dataPackage.lastActivity, ['type', 'title', 'status', 'startDate', 'endDate']);
+  md += '\n';
+
+  // Workplace
+  md += `## Workplace\n`;
+  md += formatSimpleObjectForMarkdown(dataPackage.workplaceBuilding, ['name', 'type', 'category', 'buildingId']);
+  md += '\n';
+  
+  // Home
+  md += `## Home\n`;
+  md += formatSimpleObjectForMarkdown(dataPackage.homeBuilding, ['name', 'type', 'category', 'buildingId']);
+  md += '\n';
+
+  // Owned Lands
+  md += `## Owned Lands (${dataPackage.ownedLands?.length || 0})\n`;
+  if (dataPackage.ownedLands && dataPackage.ownedLands.length > 0) {
+    dataPackage.ownedLands.forEach((land: any, index: number) => {
+      md += `### Land ${index + 1}: ${land.historicalName || land.englishName || land.landId}\n`;
+      md += formatSimpleObjectForMarkdown(land, ['landId', 'owner', 'district', 'lastIncome']);
+      md += `- **Building Points**: ${land.unoccupiedBuildingPoints?.length || 0} unoccupied / ${land.totalBuildingPoints || 0} total\n`;
+      // Optionally list unoccupied points if needed
+      md += `- **Canal Points**: ${land.unoccupiedCanalPoints?.length || 0} unoccupied / ${land.totalCanalPoints || 0} total\n`;
+      md += `- **Bridge Points**: ${land.unoccupiedBridgePoints?.length || 0} unoccupied / ${land.totalBridgePoints || 0} total\n`;
+      
+      if (land.buildings && land.buildings.length > 0) {
+        md += `#### Buildings on this land (${land.buildings.length}):\n`;
+        land.buildings.forEach((building: any, bIndex: number) => {
+          md += `##### Building ${bIndex + 1}: ${building.name || building.buildingId}\n`;
+          md += formatSimpleObjectForMarkdown(building, ['type', 'category', 'owner', 'runBy', 'occupant', 'isConstructed']);
+        });
+      }
+      md += '\n';
+    });
+  } else {
+    md += `- No lands owned.\n\n`;
+  }
+
+  // Owned Buildings (not on owned lands - this logic might need adjustment based on how dataPackage is structured)
+  // Assuming ownedBuildings are those not already listed under ownedLands
+  md += `## Other Owned Buildings (${dataPackage.ownedBuildings?.length || 0})\n`;
+  if (dataPackage.ownedBuildings && dataPackage.ownedBuildings.length > 0) {
+    dataPackage.ownedBuildings.forEach((building: any, index: number) => {
+      md += `### Building ${index + 1}: ${building.name || building.buildingId}\n`;
+      md += formatSimpleObjectForMarkdown(building, ['type', 'category', 'owner', 'runBy', 'occupant', 'isConstructed', 'landId']);
+      
+      if (building.resourceDetails) {
+        md += `#### Resource Details for ${building.name || building.buildingId}:\n`;
+        const rd = building.resourceDetails;
+        if (rd.storage) {
+          md += `- **Storage**: Used ${rd.storage.used || 0} / Capacity ${rd.storage.capacity || 0}\n`;
+        }
+        if (rd.resources?.stored && rd.resources.stored.length > 0) {
+          md += `- **Stored Resources (${rd.resources.stored.length})**:\n`;
+          rd.resources.stored.forEach((res: any) => {
+            md += `  - ${res.name || res.type} (Count: ${res.count}, Owner: ${res.owner})\n`;
+          });
+        }
+        if (rd.resources?.publiclySold && rd.resources.publiclySold.length > 0) {
+          md += `- **Publicly Sold (${rd.resources.publiclySold.length})**:\n`;
+          rd.resources.publiclySold.forEach((contract: any) => {
+            md += `  - ${contract.resourceName || contract.resourceType} (Price: ${contract.pricePerResource}, Amount: ${contract.targetAmount || contract.amount})\n`;
+          });
+        }
+         if (rd.resources?.transformationRecipes && rd.resources.transformationRecipes.length > 0) {
+            md += `- **Production Recipes (${rd.resources.transformationRecipes.length})**:\n`;
+            rd.resources.transformationRecipes.forEach((recipe: any) => {
+                const inputs = recipe.inputs.map((i: any) => `${i.count} ${i.type}`).join(', ');
+                const outputs = recipe.outputs.map((o: any) => `${o.count} ${o.type}`).join(', ');
+                md += `  - Recipe: ${recipe.recipeName || outputs}\n`;
+                md += `    - Inputs: ${inputs}\n`;
+                md += `    - Outputs: ${outputs}\n`;
+                md += `    - Duration: ${recipe.durationMinutes} minutes\n`;
+            });
+        }
+        md += '\n';
+      }
+    });
+  } else {
+    md += `- No other buildings owned.\n\n`;
+  }
+
+  // Managed Buildings
+  md += `## Managed Buildings (${dataPackage.managedBuildings?.length || 0})\n`;
+  if (dataPackage.managedBuildings && dataPackage.managedBuildings.length > 0) {
+    dataPackage.managedBuildings.forEach((building: any, index: number) => {
+      md += `### Building ${index + 1}: ${building.name || building.buildingId}\n`;
+      md += formatSimpleObjectForMarkdown(building, ['type', 'category', 'owner', 'occupant', 'isConstructed']);
+    });
+  } else {
+    md += `- No buildings managed.\n\n`;
+  }
+  
+  // Active Contracts
+  md += `## Active Contracts (${dataPackage.activeContracts?.length || 0})\n`;
+  if (dataPackage.activeContracts && dataPackage.activeContracts.length > 0) {
+    dataPackage.activeContracts.forEach((contract: any, index: number) => {
+      md += `### Contract ${index + 1}: ${contract.title || contract.contractId}\n`;
+      md += formatSimpleObjectForMarkdown(contract, ['type', 'buyer', 'seller', 'resourceType', 'pricePerResource', 'targetAmount', 'status', 'createdAt', 'endAt']);
+    });
+  } else {
+    md += `- No active contracts.\n\n`;
+  }
+
+  // Guild Details
+  md += `## Guild Details\n`;
+  md += formatSimpleObjectForMarkdown(dataPackage.guildDetails, ['guildName', 'guildId', 'guildTier', 'shortDescription']);
+  md += '\n';
+
+  // Citizen Loans
+  md += `## Loans (${dataPackage.citizenLoans?.length || 0})\n`;
+  if (dataPackage.citizenLoans && dataPackage.citizenLoans.length > 0) {
+    dataPackage.citizenLoans.forEach((loan: any, index: number) => {
+      md += `### Loan ${index + 1}: ${loan.name || loan.loanId}\n`;
+      md += formatSimpleObjectForMarkdown(loan, ['lender', 'borrower', 'type', 'status', 'principalAmount', 'interestRate', 'termDays', 'remainingBalance', 'createdAt']);
+    });
+  } else {
+    md += `- No loans.\n\n`;
+  }
+
+  // Strongest Relationships
+  md += `## Strongest Relationships (Top 20) (${dataPackage.strongestRelationships?.length || 0})\n`;
+  if (dataPackage.strongestRelationships && dataPackage.strongestRelationships.length > 0) {
+    dataPackage.strongestRelationships.forEach((rel: any, index: number) => {
+      const otherCitizen = rel.citizen1 === citizenUsername ? rel.citizen2 : rel.citizen1;
+      md += `### Relationship ${index + 1} with ${otherCitizen}\n`;
+      md += formatSimpleObjectForMarkdown(rel, ['title', 'status', 'strengthScore', 'trustScore', 'lastInteraction']);
+    });
+  } else {
+    md += `- No significant relationships.\n\n`;
+  }
+
+  // Recent Problems
+  md += `## Recent Problems (${dataPackage.recentProblems?.length || 0})\n`;
+  if (dataPackage.recentProblems && dataPackage.recentProblems.length > 0) {
+    dataPackage.recentProblems.forEach((problem: any, index: number) => {
+      md += `### Problem ${index + 1}: ${problem.title || problem.problemId}\n`;
+      md += formatSimpleObjectForMarkdown(problem, ['type', 'assetType', 'asset', 'status', 'severity', 'description', 'createdAt']);
+    });
+  } else {
+    md += `- No recent problems.\n\n`;
+  }
+
+  // Recent Messages
+  md += `## Recent Messages (Last 10) (${dataPackage.recentMessages?.length || 0})\n`;
+  if (dataPackage.recentMessages && dataPackage.recentMessages.length > 0) {
+    dataPackage.recentMessages.forEach((message: any, index: number) => {
+      md += `### Message ${index + 1} (ID: ${message.messageId})\n`;
+      md += formatSimpleObjectForMarkdown(message, ['sender', 'receiver', 'type', 'content', 'channel', 'createdAt']);
+    });
+  } else {
+    md += `- No recent messages.\n\n`;
+  }
+  
+  // Latest Daily Update
+  md += `## Latest Daily Update\n`;
+  md += formatSimpleObjectForMarkdown(dataPackage.latestDailyUpdate, ['title', 'content', 'createdAt']);
+  md += '\n';
+
+  // Available Stratagems
+  md += `## Available Stratagems\n`;
+  if (dataPackage.availableStratagems && Object.keys(dataPackage.availableStratagems).length > 0) {
+    for (const [category, natures] of Object.entries(dataPackage.availableStratagems as Record<string, Record<string, ShortStratagemDefinition[]>>)) {
+      md += `### Category: ${category}\n`;
+      for (const [nature, stratagems] of Object.entries(natures)) {
+        md += `#### Nature: ${nature} (${stratagems.length} stratagems)\n`;
+        stratagems.forEach(strat => {
+          md += `##### ${strat.name}\n`;
+          md += `- **Type**: ${strat.type}\n`;
+          md += `- **Purpose**: ${strat.purpose}\n`;
+          md += `- **Status**: ${strat.status}\n\n`;
+        });
+      }
+    }
+  } else {
+    md += `- No stratagem definitions available.\n\n`;
+  }
+
+  // Active Stratagems Executed By Citizen
+  md += `## Active Stratagems Executed By Citizen (${dataPackage.stratagemsExecutedByCitizen?.length || 0})\n`;
+  if (dataPackage.stratagemsExecutedByCitizen && dataPackage.stratagemsExecutedByCitizen.length > 0) {
+    dataPackage.stratagemsExecutedByCitizen.forEach((strat: any, index: number) => {
+      md += `### Stratagem ${index + 1}: ${strat.name || strat.stratagemId}\n`;
+      md += formatSimpleObjectForMarkdown(strat, ['type', 'variant', 'targetCitizen', 'targetBuilding', 'targetResourceType', 'status', 'executedAt', 'expiresAt']);
+    });
+  } else {
+    md += `- No active stratagems executed by this citizen.\n\n`;
+  }
+
+  // Active Stratagems Targeting Citizen
+  md += `## Active Stratagems Targeting Citizen (${dataPackage.stratagemsTargetingCitizen?.length || 0})\n`;
+  if (dataPackage.stratagemsTargetingCitizen && dataPackage.stratagemsTargetingCitizen.length > 0) {
+    dataPackage.stratagemsTargetingCitizen.forEach((strat: any, index: number) => {
+      md += `### Stratagem ${index + 1}: ${strat.name || strat.stratagemId} (Executed by: ${strat.executedBy})\n`;
+      md += formatSimpleObjectForMarkdown(strat, ['type', 'variant', 'targetBuilding', 'targetResourceType', 'status', 'executedAt', 'expiresAt']);
+    });
+  } else {
+    md += `- No active stratagems targeting this citizen.\n\n`;
+  }
+
+  return md;
+}
+// --- End Markdown Conversion Utilities ---
+
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
   const citizenUsername = searchParams.get('citizenUsername');
+  const format = searchParams.get('format') || 'markdown'; // Default to markdown
 
   if (!citizenUsername) {
     return NextResponse.json({ success: false, error: 'citizenUsername parameter is required' }, { status: 400 });
@@ -870,10 +1136,19 @@ export async function GET(request: Request) {
       });
     }
 
-    return NextResponse.json({ success: true, data: dataPackage });
+    if (format.toLowerCase() === 'markdown') {
+      const markdownContent = convertDataPackageToMarkdown(dataPackage, citizenUsername);
+      return new NextResponse(markdownContent, {
+        status: 200,
+        headers: { 'Content-Type': 'text/markdown; charset=utf-8' },
+      });
+    } else {
+      // Default to JSON if format is not markdown (e.g., format=json)
+      return NextResponse.json({ success: true, data: dataPackage });
+    }
 
   } catch (error: any) {
-    console.error(`[API get-data-package] Error for ${citizenUsername}:`, error);
+    console.error(`[API get-data-package] Error for ${citizenUsername} (Format: ${format}):`, error);
     return NextResponse.json({ success: false, error: error.message || 'Failed to fetch data package' }, { status: 500 });
   }
 }
