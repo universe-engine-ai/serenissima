@@ -129,7 +129,7 @@ const CitizenDetailsPanel: React.FC<CitizenDetailsPanelProps> = ({ citizen, onCl
     const lowerSocialClass = socialClass?.toLowerCase();
     switch (lowerSocialClass) {
       case 'nobili':
-        return 'gemini-2.5-pro-preview-05-06';
+        return 'gemini-2.5-pro-preview-06-05';
       case 'cittadini':
       case 'forestieri':
         return 'gemini-2.5-flash-preview-05-20';

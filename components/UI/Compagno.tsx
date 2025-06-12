@@ -92,18 +92,18 @@ const Compagno: React.FC<CompagnoProps> = ({ className, onNotificationsRead }) =
     targetProfile: any | null; // Profil de base de l'IA avec qui on chatte (peut être l'utilisateur lui-même)
     aiDataPackage: any | null; // Paquet de données complet pour l'IA cible (ou l'utilisateur lui-même)
   } | null>(null);
-  // const [kinosModel, setKinOSModel] = useState<'gemini-2.5-pro-preview-05-06' | 'local'>('gemini-2.5-pro-preview-05-06'); // Removed: Model is now dynamic
+  // const [kinosModel, setKinOSModel] = useState<'gemini-2.5-pro-preview-06-05' | 'local'>('gemini-2.5-pro-preview-06-05'); // Removed: Model is now dynamic
 
   const getKinOSModelForSocialClass = (username?: string, socialClass?: string): string => {
     // Special case for NLR
     if (username === 'NLR') {
-      return 'gemini-2.5-pro-preview-05-06';
+      return 'gemini-2.5-pro-preview-06-05';
     }
 
     const lowerSocialClass = socialClass?.toLowerCase();
     switch (lowerSocialClass) {
       case 'nobili':
-        return 'gemini-2.5-pro-preview-05-06';
+        return 'gemini-2.5-pro-preview-06-05';
       case 'cittadini':
       case 'forestieri':
       case 'artisti': // Ajout de la classe Artisti ici

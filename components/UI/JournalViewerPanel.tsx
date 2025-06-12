@@ -90,9 +90,9 @@ const JournalViewerPanel: React.FC<JournalViewerPanelProps> = ({ file, onClose }
               ol: ({node, ...props}) => <ol className="list-decimal list-inside mb-3 pl-4 text-sm" {...props} />,
               li: ({node, ...props}) => <li className="mb-1" {...props} />,
               blockquote: ({node, ...props}) => <blockquote className="border-l-4 border-amber-300 pl-4 italic text-amber-700 my-3" {...props} />,
-              code: ({node, inline, className, children, ...props}) => {
+              code: ({node, className, children, ...props}) => {
                 const match = /language-(\w+)/.exec(className || '');
-                return !inline && match ? (
+                return match ? (
                   <pre className="bg-amber-100 p-3 rounded-md overflow-x-auto text-xs my-3 custom-scrollbar">
                     <code className={`language-${match[1]}`} {...props}>
                       {String(children).replace(/\n$/, '')}

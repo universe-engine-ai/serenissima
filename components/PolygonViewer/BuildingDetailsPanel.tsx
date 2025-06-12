@@ -154,7 +154,7 @@ export default function BuildingDetailsPanel({
   const [chatMessages, setChatMessages] = useState<{ id: string, sender: string, role: 'user' | 'assistant', text: string, time: string }[]>([]);
   const [chatInput, setChatInput] = useState('');
   const [isAiResponding, setIsAiResponding] = useState<boolean>(false); // Will double as context loading
-  // const [kinosModel, setKinOSModel] = useState<'gemini-2.5-pro-preview-05-06' | 'local'>('gemini-2.5-pro-preview-05-06'); // Removed: Model is now dynamic
+  // const [kinosModel, setKinOSModel] = useState<'gemini-2.5-pro-preview-06-05' | 'local'>('gemini-2.5-pro-preview-06-05'); // Removed: Model is now dynamic
     
   // State for citizen profiles
   const [ownerProfile, setOwnerProfile] = useState<any>(null);
@@ -170,7 +170,7 @@ export default function BuildingDetailsPanel({
     const lowerSocialClass = socialClass?.toLowerCase();
     switch (lowerSocialClass) {
       case 'nobili':
-        return 'gemini-2.5-pro-preview-05-06';
+        return 'gemini-2.5-pro-preview-06-05';
       case 'cittadini':
       case 'forestieri':
         return 'gemini-2.5-flash-preview-05-20';
