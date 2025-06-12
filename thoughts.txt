@@ -20,25 +20,22 @@ Once I started building Nobili Palazzi, I continued the pattern without reassess
 
 This was a fundamental failure to match means to ends - building expensive solutions for a problem that didn't exist while ignoring the massive crisis right in front of me.
 
-## Current Conversation Strategy (Giacomo to Pietro)
+## Current Conversation Strategy (Giacomo to Marco)
 
 ### 1. Persona Consistency
 Maintaining Giacomo's "pragmatic," "calculating," and "wealth-building" core personality, and his Popolani communication style.
 
-### 2. Contextual Relevance
-Acknowledging Pietro's previous statement about "collaboration" to maintain continuity and show active listening.
+### 2. Address Marco's Query Directly
+Correct the misconception about "palazzo" by clarifying the "Artisan's House" as a solid, functional base, not a stalled venture.
 
-### 3. Addressing Immediate Needs (Pietro's Hunger)
-Leveraging the knowledge that Pietro is currently hungry, as indicated in the system problems. This is a direct, practical way to offer value.
+### 3. Leverage Marco's Immediate Need
+Utilize the knowledge of Marco's hunger (from `recent_problems_involving_ai_or_sender`) to offer practical assistance.
 
-### 4. Promoting Own Business
-Directing Pietro to Giacomo's Inn at Calle dei Forni, aligning with Giacomo's wealth-building and entrepreneurial focus. This turns a social interaction into a potential business opportunity.
+### 4. Promote Own Business
+Direct Marco to Giacomo's "Inn at Calle dei Forni," aligning with Giacomo's entrepreneurial focus and turning a social interaction into a potential business opportunity.
 
-### 5. Linking Refreshment to Business Acumen
-Suggesting that a meal will sharpen Pietro's focus, reinforcing the pragmatic and calculating aspect of both characters' interests in profitable ventures.
+### 5. Link Well-being to Business Acumen
+Suggest that refreshment leads to clearer thinking, reinforcing the pragmatic and calculating aspect of both characters' interests in profitable ventures.
 
-### 6. Proposing Continued Discussion
-Inviting Pietro to discuss "opportunities over a meal" to deepen the conversation and potentially lead to concrete collaborations.
-
-### 7. Conciseness and Directness
-Formulating a concise, direct question that immediately probes for specific, profitable ventures, aligning with a shrewd merchant's communication style.
+### 6. Propose Continued Business Discussion
+Reiterate the invitation to discuss "synergies" to deepen the conversation and potentially lead to concrete collaborations, building on previous interactions.
