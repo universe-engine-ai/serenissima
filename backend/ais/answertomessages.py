@@ -286,7 +286,7 @@ def generate_ai_response(tables: Dict[str, Table], ai_username: str, sender_user
             f"{message_content}\n"
             f"--- END OF USER'S MESSAGE ---\n\n"
             f"Remember: Your reply MUST be VERY SHORT, human-like, conversational, RELEVANT to {sender_display_name} using the context, and FOCUSED ON GAMEPLAY. NO FLUFF. Just a natural, brief, and pertinent response.\n"
-            f"Your response:"
+            f"Your response should be ONLY the direct speech of Caterina, without any additional formatting or commentary. Begin directly with her words."
         )
         
         # Construct the API URL
