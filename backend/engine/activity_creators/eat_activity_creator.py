@@ -147,13 +147,22 @@ def try_create_eat_at_tavern_activity(
             "CreatedAt": effective_start_date_iso, 
             "StartDate": effective_start_date_iso, 
             "EndDate": effective_end_date_iso,
-            "Notes": f"🍲 Eating a meal at the tavern.",
+            # "Notes" will be set below based on details_payload
             "Description": "Eating a meal at the tavern",
             "Status": "created",
             # Specifics like cost or food type consumed can be handled by the processor
         }
+
+        base_notes = f"🍲 Eating a meal at the tavern."
         if details_payload:
-            activity_payload["Details"] = json.dumps(details_payload)
+            try:
+                details_json_str = json.dumps(details_payload)
+                activity_payload["Notes"] = f"{base_notes} DetailsJSON: {details_json_str}"
+            except TypeError as e:
+                log.error(f"Error serializing details_payload to JSON for activity {activity_payload.get('ActivityId', 'N/A')}: {e}. Details: {details_payload}")
+                activity_payload["Notes"] = f"{base_notes} DetailsJSON: Error - unslializable." # Fallback note
+        else:
+            activity_payload["Notes"] = base_notes
             
         activity = tables['activities'].create(activity_payload)
         
