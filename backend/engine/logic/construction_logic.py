@@ -95,6 +95,39 @@ def handle_construction_worker_activity(
                 continue
 
             target_building_pos = _get_building_position_coords(target_building_record) # Position of the current contract's construction site
+
+            # Define required_materials_for_project and site_inventory here
+            target_building_type_str = target_building_record['fields'].get('Type')
+            target_building_def = get_building_type_info(target_building_type_str, building_type_defs)
+            if not target_building_def:
+                log.error(f"    Could not get building definition for target type {target_building_type_str} from pre-fetched definitions. Skipping contract {contract_custom_id}.")
+                continue
+
+            contract_notes_str = contract['fields'].get('Notes', '{}')
+            construction_costs_from_contract = {}
+            try:
+                contract_notes_data = json.loads(contract_notes_str)
+                if isinstance(contract_notes_data, dict) and 'constructionCosts' in contract_notes_data:
+                    construction_costs_from_contract = contract_notes_data['constructionCosts']
+            except json.JSONDecodeError:
+                log.warning(f"Could not parse constructionCosts from contract {contract_custom_id} notes. Notes: {contract_notes_str}")
+            
+            if not construction_costs_from_contract: 
+                construction_costs_from_contract = target_building_def.get('constructionCosts', {})
+                log.info(f"    Using constructionCosts from building definition for {target_building_type_str} as not found in contract notes.")
+
+            if not construction_costs_from_contract:
+                log.warning(f"    Construction costs for {target_building_custom_id} are empty. Assuming no material costs.")
+            
+            required_materials_for_project = {k: float(v) for k, v in construction_costs_from_contract.items() if k != 'ducats' and isinstance(v, (int, float, str))}
+            log.info(f"    Contract {contract_custom_id}: Required materials for {target_building_type_str}: {required_materials_for_project}")
+            
+            target_building_owner_username = contract['fields'].get('Buyer')
+            if not target_building_owner_username:
+                log.warning(f"    Contract {contract_custom_id} is missing Buyer. Skipping.")
+                continue
+            _, site_inventory = get_building_storage_details(tables, target_building_custom_id, target_building_owner_username)
+            log.info(f"    Contract {contract_custom_id}: Site inventory at {target_building_custom_id}: {site_inventory}")
             
             # Check 1: If citizen is AT the construction site AND has materials for THIS project in inventory
             if citizen_position and target_building_pos and _calculate_distance_meters(citizen_position, target_building_pos) < 20:
@@ -158,39 +191,8 @@ def handle_construction_worker_activity(
                     tables['contracts'].update(contract_id_airtable, {'Status': 'completed'})
                 continue
 
-            target_building_type_str = target_building_record['fields'].get('Type')
-            target_building_def = get_building_type_info(target_building_type_str, building_type_defs)
-            if not target_building_def:
-                log.error(f"    Could not get building definition for target type {target_building_type_str} from pre-fetched definitions. Skipping contract {contract_custom_id}.")
-                continue
-
-            # Get construction costs from contract notes (should be stored there by creator)
-            contract_notes_str = contract['fields'].get('Notes', '{}')
-            construction_costs_from_contract = {}
-            try:
-                contract_notes_data = json.loads(contract_notes_str)
-                if isinstance(contract_notes_data, dict) and 'constructionCosts' in contract_notes_data:
-                    construction_costs_from_contract = contract_notes_data['constructionCosts']
-            except json.JSONDecodeError:
-                log.warning(f"Could not parse constructionCosts from contract {contract_custom_id} notes. Notes: {contract_notes_str}")
-            
-            if not construction_costs_from_contract: # Fallback to building_type_def if not in contract
-                construction_costs_from_contract = target_building_def.get('constructionCosts', {})
-                log.info(f"    Using constructionCosts from building definition for {target_building_type_str} as not found in contract notes.")
-
-            if not construction_costs_from_contract:
-                log.warning(f"    Construction costs for {target_building_custom_id} are empty. Assuming no material costs.")
-            
-            required_materials_for_project = {k: float(v) for k, v in construction_costs_from_contract.items() if k != 'ducats' and isinstance(v, (int, float, str))}
-            log.info(f"    Contract {contract_custom_id}: Required materials for {target_building_type_str}: {required_materials_for_project}")
-            
-            target_building_owner_username = contract['fields'].get('Buyer')
-            if not target_building_owner_username:
-                log.warning(f"    Contract {contract_custom_id} is missing Buyer. Skipping.")
-                continue
-            _, site_inventory = get_building_storage_details(tables, target_building_custom_id, target_building_owner_username)
-            log.info(f"    Contract {contract_custom_id}: Site inventory at {target_building_custom_id}: {site_inventory}")
-
+            # Definitions moved earlier, this block is now empty.
+            # The logic for current_construction_minutes_on_building and subsequent checks remain.
             current_construction_minutes_on_building = float(target_building_record['fields'].get('ConstructionMinutesRemaining', 0))
             if current_construction_minutes_on_building <= 0:
                 log.info(f"    Site {target_building_custom_id} already constructed or no minutes remaining. Skipping contract for construction task.")
