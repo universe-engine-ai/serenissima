@@ -652,7 +652,8 @@ def _initiate_reaction_dialogue_if_both_ai(
                 sender_username=actor_username,
                 receiver_username=receiver_of_action_username,
                 content=cleaned_actor_reply,
-                channel_name=dialogue_channel_name # Passer le channel_name
+                channel_name=dialogue_channel_name, # Passer le channel_name
+                message_type="reaction_reply" # Spécifier le type de message
             )
         else:
             log.warning(f"Échec de la génération de la réponse de {actor_username} à la réaction de {receiver_of_action_username}.")
