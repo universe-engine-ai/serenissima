@@ -1187,7 +1187,7 @@ const CitizenMarkers: React.FC<CitizenMarkersProps> = ({
                   points={pointsString}
                   fill="none"
                   stroke={getActivityPathColor(activity)} // Or a specific color for merchant galleys
-                  strokeWidth="4.0" // Twice as bold
+                  strokeWidth="5.0" // Increased thickness
                   strokeOpacity="0.5" // Reduced opacity
                 />
                 {validPoints.map((point, index) => {
@@ -1226,7 +1226,7 @@ const CitizenMarkers: React.FC<CitizenMarkersProps> = ({
                   points={pointsString}
                   fill="none"
                   stroke={getActivityPathColor(activity)}
-                  strokeWidth="2.5"
+                  strokeWidth="3.5" // Increased thickness
                   strokeOpacity="0.9"
                 />
                 {validPoints.map((point, index) => {
@@ -1272,7 +1272,7 @@ const CitizenMarkers: React.FC<CitizenMarkersProps> = ({
                   points={pointsString}
                   fill="none"
                   stroke={getActivityPathColor(activity)}
-                  strokeWidth="2.0" // Consistent thickness
+                  strokeWidth="3.0" // Increased thickness
                   strokeOpacity="0.7" // Consistent opacity
                   style={{
                     strokeDasharray: (isAnimatingThisPath && pathLen) ? pathLen : undefined,
@@ -1323,7 +1323,7 @@ const CitizenMarkers: React.FC<CitizenMarkersProps> = ({
                   points={pointsString}
                   fill="none"
                   stroke={getActivityPathColor(activity)} // Using same color logic for now
-                  strokeWidth="2.0" // Style similar to hovered citizen paths
+                  strokeWidth="3.0" // Increased thickness, consistent with hovered paths
                   strokeOpacity="0.7"
                 />
                 {validPoints.map((point, index) => {
