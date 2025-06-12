@@ -108,7 +108,7 @@ export async function POST(request: Request) {
       );
     } else if (stratagemType === 'burglary') {
       console.log(`[API /stratagems/try-create] Processing 'burglary' stratagem with parameters:`,
-        `TargetBuildingId: ${stratagemDetails?.targetBuildingId}`
+        `TargetBuildingId: ${stratagemDetails?.targetBuildingId}` // Already correct
       );
     } else if (stratagemType === 'employee_corruption') {
       console.log(`[API /stratagems/try-create] Processing 'employee_corruption' stratagem with parameters:`,

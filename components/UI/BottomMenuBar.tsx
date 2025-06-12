@@ -42,7 +42,7 @@ const stratagemNatureConfig: Record<string, StratagemStyleConfig> = {
   'maritime_blockade': { nature: 'illegal', classes: 'bg-rose-700 hover:bg-rose-800 text-white' },
   'cargo_mishap': { nature: 'illegal', classes: 'bg-rose-700 hover:bg-rose-800 text-white' },
   'canal_mugging': { nature: 'illegal', classes: 'bg-rose-700 hover:bg-rose-800 text-white' },
-  'burglary': { nature: 'illegal', classes: 'bg-rose-700 hover:bg-rose-800 text-white' },
+  'burglary': { nature: 'illegal', classes: 'bg-rose-700 hover:bg-rose-800 text-white' }, // Style already correct
   'employee_corruption': { nature: 'illegal', classes: 'bg-rose-700 hover:bg-rose-800 text-white' },
   'arson': { nature: 'illegal', classes: 'bg-rose-700 hover:bg-rose-800 text-white' },
   // Default for any unclassified (should not happen if all are mapped)
@@ -304,9 +304,9 @@ const BottomMenuBar: React.FC = () => {
           }
         },
         {
-          id: 'burglary', label: 'Burglary (Soon)', icon: FaKey,
+          id: 'burglary', label: 'Burglary', icon: FaKey, // Removed (Soon)
           stratagemPanelData: {
-            id: 'burglary', type: 'burglary', title: 'Burglary (Coming Soon)',
+            id: 'burglary', type: 'burglary', title: 'Burglary', // Removed (Coming Soon)
             description: "Steal tools, materials, or finished goods from a competitor's production building.",
             influenceCostBase: 6, hasVariants: false,
           }

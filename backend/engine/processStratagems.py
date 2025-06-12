@@ -86,17 +86,8 @@ def process_reputation_boost_stratagem(
 
 # Placeholder for canal_mugging is removed, as it's now imported.
 
-# Placeholder processor for burglary
-def process_burglary_stratagem(
-    tables: Dict[str, Table], 
-    stratagem_record: Dict, 
-    resource_defs: Dict, 
-    building_type_defs: Dict, 
-    api_base_url: str
-) -> bool:
-    log.warning(f"{LogColors.WARNING}Processing for 'burglary' stratagem (ID: {stratagem_record['id']}) is not yet implemented. Marking as executed for now.{LogColors.ENDC}")
-    tables['stratagems'].update(stratagem_record['id'], {'Status': 'executed', 'Notes': 'Coming Soon - Marked as executed.'})
-    return True
+# Placeholder processor for burglary (removed as panel is being created, actual processor is separate)
+# def process_burglary_stratagem(...)
 
 # Placeholder processor for employee_corruption
 def process_employee_corruption_stratagem(
@@ -231,7 +222,7 @@ STRATAGEM_PROCESSORS = {
     "monopoly_pricing": process_monopoly_pricing_stratagem,
     "reputation_boost": process_reputation_boost_stratagem,
     "canal_mugging": process_canal_mugging_stratagem, # Now maps to the imported processor
-    "burglary": process_burglary_stratagem,
+    # "burglary": process_burglary_stratagem, # Mapping removed, processor to be implemented separately
     "employee_corruption": process_employee_corruption_stratagem,
     "arson": process_arson_stratagem,
     "charity_distribution": process_charity_distribution_stratagem,

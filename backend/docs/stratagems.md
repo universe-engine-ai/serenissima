@@ -1298,8 +1298,8 @@ This would make NLR attempt to mug an opportune citizen transiting by gondola in
 -   **Purpose**: To steal tools, materials, or finished goods from a competitor's production building.
 -   **Category**: `warfare`
 -   **Nature**: `illegal`
--   **Creator**: (To be created: `backend/engine/stratagem_creators/burglary_stratagem_creator.py`)
--   **Processor**: (To be created: `backend/engine/stratagem_processors/burglary_stratagem_processor.py`)
+-   **Creator**: `backend/engine/stratagem_creators/burglary_stratagem_creator.py`
+-   **Processor**: `backend/engine/stratagem_processors/burglary_stratagem_processor.py` (Conceptual - Processor logic not yet implemented in this request)
 
 #### Parameters for Creation (`stratagemDetails` in API request):
 
