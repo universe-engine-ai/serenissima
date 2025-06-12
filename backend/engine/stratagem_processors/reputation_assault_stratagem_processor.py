@@ -353,8 +353,9 @@ def process(
                     "messageType": "stratagem_smear_delivery", # New type to distinguish
                     "notes": { # Optional, but good for tracking
                         "stratagemId": stratagem_id,
-                        "originalTarget": target_citizen_username,
-                        "assaultAngle": assault_angle_from_notes or "N/A"
+                        "originalTarget": target_citizen_username, # This is the one being smeared
+                        "assaultAngle": assault_angle_from_notes or "N/A",
+                        "targetCitizenUsernameForTrustImpact": target_citizen_username # Pass the smeared target for trust impact
                     }
                 }
             }

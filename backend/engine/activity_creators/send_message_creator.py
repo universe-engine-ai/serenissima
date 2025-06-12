@@ -38,8 +38,9 @@ def try_create(
     
     # Extract inReplyToMessageId from the nested 'notes' field if present
     # The 'details' argument to this function *is* activityParameters from the API call.
-    activity_params_notes_field = details.get('notes', {}) 
+    activity_params_notes_field = details.get('notes', {})
     in_reply_to_message_id = activity_params_notes_field.get('inReplyToMessageId')
+    target_citizen_username_for_trust_impact = activity_params_notes_field.get('targetCitizenUsernameForTrustImpact') # New
     
     # Validate required parameters
     if not (receiver_username and content):
@@ -177,6 +178,9 @@ def try_create(
     if in_reply_to_message_id:
         details_for_processor["inReplyToMessageId"] = in_reply_to_message_id
         log.info(f"Including inReplyToMessageId: {in_reply_to_message_id} in Details for deliver_message_interaction.")
+    if target_citizen_username_for_trust_impact: # New
+        details_for_processor["targetCitizenUsernameForTrustImpact"] = target_citizen_username_for_trust_impact
+        log.info(f"Including targetCitizenUsernameForTrustImpact: {target_citizen_username_for_trust_impact} in Details for deliver_message_interaction.")
     
     details_json = json.dumps(details_for_processor)
     
