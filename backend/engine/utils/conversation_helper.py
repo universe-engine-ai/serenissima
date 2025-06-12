@@ -592,58 +592,58 @@ def generate_conversation_turn(
     # --- NEW LOGIC for local model pre-processing ---
     final_add_system_data = add_system_payload # By default, use the full data package
 
-    if effective_kinos_model == 'local':
-        log.info(f"Local model detected for {speaker_username}. Performing attention pre-prompt step.")
+    # if effective_kinos_model == 'local':
+    #     log.info(f"Local model detected for {speaker_username}. Performing attention pre-prompt step.")
         
-        # A. Attention Call
-        attention_channel_name = "attention"
-        attention_prompt = (
-            f"You are an AI assistant helping {speaker_username} prepare for a conversation with {listener_username}. "
-            f"Based on the extensive context provided in `addSystem`, please perform the following two steps:\n\n"
-            f"Step 1: Build a clear picture of the current situation. Describe the relationship, recent events, and any ongoing issues or goals for both individuals.\n\n"
-            f"Step 2: Using the situation picture from Step 1 and your understanding of {speaker_username}'s personality, summarize thoroughly the information and extract the most relevant specific pieces that should influence their next message. "
-            "Focus on what is most important for them to remember or act upon in this specific interaction. Your final output should be this summary in English."
-        )
+    #     # A. Attention Call
+    #     attention_channel_name = "attention"
+    #     attention_prompt = (
+    #         f"You are an AI assistant helping {speaker_username} prepare for a conversation with {listener_username}. "
+    #         f"Based on the extensive context provided in `addSystem`, please perform the following two steps:\n\n"
+    #         f"Step 1: Build a clear picture of the current situation. Describe the relationship, recent events, and any ongoing issues or goals for both individuals.\n\n"
+    #         f"Step 2: Using the situation picture from Step 1 and your understanding of {speaker_username}'s personality, summarize thoroughly the information and extract the most relevant specific pieces that should influence their next message. "
+    #         "Focus on what is most important for them to remember or act upon in this specific interaction. Your final output should be this summary in English."
+    #     )
 
-        summarized_context = make_kinos_channel_call(
-            kinos_api_key,
-            speaker_username,
-            attention_channel_name,
-            attention_prompt,
-            add_system_payload, # Use the full data package for the attention call
-            'local' # Explicitly use local model for this step
-        )
+    #     summarized_context = make_kinos_channel_call(
+    #         kinos_api_key,
+    #         speaker_username,
+    #         attention_channel_name,
+    #         attention_prompt,
+    #         add_system_payload, # Use the full data package for the attention call
+    #         'local' # Explicitly use local model for this step
+    #     )
 
-        if summarized_context:
-            # Clean the summarized context before using it
-            cleaned_summarized_context = clean_thought_content(tables, summarized_context)
-            log.info(f"Successfully generated summarized context for {speaker_username}. Original length: {len(summarized_context)}, Cleaned length: {len(cleaned_summarized_context)}")
-            log.debug(f"Original summarized context: {summarized_context}")
-            log.info(f"{LogColors.LIGHTBLUE}Cleaned summarized context for {speaker_username} (addSystem summarizer response):\n{cleaned_summarized_context}{LogColors.ENDC}") # Log cleaned summary at INFO
+    #     if summarized_context:
+    #         # Clean the summarized context before using it
+    #         cleaned_summarized_context = clean_thought_content(tables, summarized_context)
+    #         log.info(f"Successfully generated summarized context for {speaker_username}. Original length: {len(summarized_context)}, Cleaned length: {len(cleaned_summarized_context)}")
+    #         log.debug(f"Original summarized context: {summarized_context}")
+    #         log.info(f"{LogColors.LIGHTBLUE}Cleaned summarized context for {speaker_username} (addSystem summarizer response):\n{cleaned_summarized_context}{LogColors.ENDC}") # Log cleaned summary at INFO
             
-            # B. Prepare for Conversation Call with cleaned summarized context
-            final_add_system_data = {
-                "summary_of_relevant_context": cleaned_summarized_context,
-                "original_context_available_on_request": "The full data package was summarized. You are now acting as the character based on this summary.",
-                # Ensure system_guidance is carried over if it was set
-                "system_guidance": add_system_payload.get("system_guidance") 
-            }
-            if not final_add_system_data["system_guidance"]: # Remove if None to keep payload clean
-                del final_add_system_data["system_guidance"]
+    #         # B. Prepare for Conversation Call with cleaned summarized context
+    #         final_add_system_data = {
+    #             "summary_of_relevant_context": cleaned_summarized_context,
+    #             "original_context_available_on_request": "The full data package was summarized. You are now acting as the character based on this summary.",
+    #             # Ensure system_guidance is carried over if it was set
+    #             "system_guidance": add_system_payload.get("system_guidance") 
+    #         }
+    #         if not final_add_system_data["system_guidance"]: # Remove if None to keep payload clean
+    #             del final_add_system_data["system_guidance"]
 
-            # Persist this cleaned_summarized_context as a self-thought
-            log.info(f"Persisting AI context summary for {speaker_username} as a self-thought.")
-            persist_message(
-                tables,
-                sender_username=speaker_username,
-                receiver_username=speaker_username, # Message to self
-                content=cleaned_summarized_context, # Already cleaned
-                message_type="ai_context_summary",
-                channel_name=speaker_username # Private channel
-            )
-        else:
-            log.warning(f"Failed to generate summarized context for {speaker_username}. The conversation turn will be aborted for the local model.")
-            return None # Abort the turn if summarization fails
+    #         # Persist this cleaned_summarized_context as a self-thought
+    #         log.info(f"Persisting AI context summary for {speaker_username} as a self-thought.")
+    #         persist_message(
+    #             tables,
+    #             sender_username=speaker_username,
+    #             receiver_username=speaker_username, # Message to self
+    #             content=cleaned_summarized_context, # Already cleaned
+    #             message_type="ai_context_summary",
+    #             channel_name=speaker_username # Private channel
+    #         )
+    #     else:
+    #         log.warning(f"Failed to generate summarized context for {speaker_username}. The conversation turn will be aborted for the local model.")
+    #         return None # Abort the turn if summarization fails
 
     # 6. Call KinOS Engine (using final_add_system_data) or use provided message
     ai_message_content: Optional[str] = None
