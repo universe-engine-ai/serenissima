@@ -7,6 +7,7 @@ import CoordinatePricingStratagemPanel from './ExecutionPanels/CoordinatePricing
 import CanalMuggingStratagemPanel from './ExecutionPanels/CanalMuggingStratagemPanel'; // Ajout de l'import
 import BurglaryStratagemPanel from './ExecutionPanels/BurglaryStratagemPanel'; // Ajout de l'import
 import ReputationAssaultStratagemPanel from './ExecutionPanels/ReputationAssaultStratagemPanel'; // Ajout de l'import
+import MarketplaceGossipStratagemPanel from './ExecutionPanels/MarketplaceGossipStratagemPanel'; // Ajout de l'import
 import DefaultStratagemPanel from './ExecutionPanels/DefaultStratagemPanel';
 // Importer d'autres panneaux spécifiques ici au fur et à mesure de leur création
 // import HoardResourcePanel from './ExecutionPanels/HoardResourcePanel';
@@ -260,7 +261,7 @@ const StratagemExecutionPanel: React.FC<StratagemExecutionPanelProps> = ({
   const isExecuteDisabled = useMemo(() => {
     if (isLoading) return true;
     // Liste des types "Prochainement" ou désactivés globalement
-    const comingSoonTypes = ['supplier_lockout', 'political_campaign', 'information_network', 'maritime_blockade', 'cultural_patronage', 'theater_conspiracy', 'printing_propaganda', 'cargo_mishap', 'marketplace_gossip', 'employee_poaching', 'joint_venture', 'financial_patronage', 'neighborhood_watch', 'monopoly_pricing', 'reputation_boost', 'burglary', 'employee_corruption', 'arson', 'charity_distribution', 'festival_organisation'];
+    const comingSoonTypes = ['supplier_lockout', 'political_campaign', 'information_network', 'maritime_blockade', 'cultural_patronage', 'theater_conspiracy', 'printing_propaganda', 'cargo_mishap', 'employee_poaching', 'joint_venture', 'financial_patronage', 'neighborhood_watch', 'monopoly_pricing', 'reputation_boost', 'employee_corruption', 'arson', 'charity_distribution', 'festival_organisation']; // 'marketplace_gossip', 'burglary' removed
     if (comingSoonTypes.includes(stratagemData.type)) {
       return true;
     }
@@ -282,6 +283,8 @@ const StratagemExecutionPanel: React.FC<StratagemExecutionPanelProps> = ({
         return BurglaryStratagemPanel;
       case 'reputation_assault':
         return ReputationAssaultStratagemPanel;
+      case 'marketplace_gossip': // Ajout du cas pour marketplace_gossip
+        return MarketplaceGossipStratagemPanel;
       // case 'hoard_resource':
       //   return HoardResourcePanel; 
       // Ajouter d'autres cas ici pour les panneaux spécifiques

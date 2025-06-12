@@ -136,7 +136,7 @@ Gère les accords commerciaux entre citoyens ou avec le public.
 Suit les activités et actions en cours et terminées des citoyens. Avec l'unification du système, cette table enregistre toutes les entreprises initiées par les citoyens, qu'il s'agisse d'activités de longue durée ou d'actions stratégiques discrètes.
 
 -   `ActivityId` (Texte): Identifiant personnalisé unique (ex: `goto_work_username_timestamp`, `make_offer_for_land_username_timestamp`).
--   `Type` (Texte): Type d'activité ou d'action (ex: `goto_home`, `production`, `bid_on_land` (peut être conservé pour des enchères plus complexes), `send_message`, `manage_public_sell_contract`, `manage_public_dock`, `list_land_for_sale`, `make_offer_for_land`, `accept_land_offer`, `buy_listed_land`, `cancel_land_listing`, `cancel_land_offer`, `buy_available_land`, `inspect_building_for_purchase`, `submit_building_purchase_offer`, `work_on_art`, `read_book`, `deposit_items_at_location`, `attend_theater_performance`, `drink_at_inn`, `use_public_bath`, `rest`).
+-   `Type` (Texte): Type d'activité ou d'action (ex: `goto_home`, `production`, `bid_on_land` (peut être conservé pour des enchères plus complexes), `send_message`, `manage_public_sell_contract`, `manage_public_dock`, `list_land_for_sale`, `make_offer_for_land`, `accept_land_offer`, `buy_listed_land`, `cancel_land_listing`, `cancel_land_offer`, `buy_available_land`, `inspect_building_for_purchase`, `submit_building_purchase_offer`, `work_on_art`, `read_book`, `deposit_items_at_location`, `attend_theater_performance`, `drink_at_inn`, `use_public_bath`, `rest`, `spread_rumor`).
 -   `Citizen` (Texte): `Username` du citoyen effectuant l'activité/action.
 -   `FromBuilding` (Texte): `BuildingId` personnalisé du lieu de départ/actuel.
 -   `ToBuilding` (Texte): `BuildingId` personnalisé de la destination.
@@ -358,7 +358,7 @@ Liens et relations entre citoyens (bi-directionnel).
 Permet aux joueurs de déployer des stratégies de haut niveau qui affecteront le moteur de jeu.
 
 -   `StratagemId` (Texte): Identifiant unique du stratagème.
--   `Type` (Texte): Type de stratagème (ex: `undercut`, `coordinate_pricing`, `hoard_resource`, `supplier_lockout`, `political_campaign`, `reputation_assault`, `emergency_liquidation`).
+-   `Type` (Texte): Type de stratagème (ex: `undercut`, `coordinate_pricing`, `hoard_resource`, `supplier_lockout`, `political_campaign`, `reputation_assault`, `emergency_liquidation`, `marketplace_gossip`).
 -   `Variant` (Texte): Sous-type ou variante spécifique du stratagème (ex: pour `undercut`, "Mild", "Standard", "Aggressive"; pour `political_campaign`, pourrait être "grassroots", "elite_lobbying"; pour `emergency_liquidation`, "Mild", "Standard", "Aggressive").
 -   `Name` (Texte): Nom donné au stratagème.
 -   `Category` (Texte): Catégorie du stratagème (ex: `economic_warfare`, `economic_cooperation`, `resource_management`, `supply_chain`, `political_influence`, `social_warfare`, `personal_finance`).

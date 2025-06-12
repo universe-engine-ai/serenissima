@@ -51,4 +51,5 @@ from .drink_at_inn_activity_processor import process as process_drink_at_inn # N
 from .use_public_bath_processor import process as process_use_public_bath # New public bath processor
 from .rest_processor import process as process_rest # New rest processor
 from .occupant_self_construction_processor import process_occupant_self_construction_fn # New occupant self-construction processor
+from .spread_rumor_activity_processor import process as process_spread_rumor # New processor for spreading rumors
 # Add other processors here as they are created

@@ -826,38 +826,46 @@ This would make NLR attempt to sabotage a specific timber shipment contract belo
 -   **Purpose**: To subtly damage a competitor's reputation by spreading rumors and negative information through Venice's social networks.
 -   **Category**: `personal`
 -   **Nature**: `aggressive`
--   **Creator**: (To be created: `backend/engine/stratagem_creators/marketplace_gossip_stratagem_creator.py`)
--   **Processor**: (To be created: `backend/engine/stratagem_processors/marketplace_gossip_stratagem_processor.py`)
+-   **Creator**: `backend/engine/stratagem_creators/marketplace_gossip_stratagem_creator.py`
+-   **Processor**: `backend/engine/stratagem_processors/marketplace_gossip_stratagem_processor.py` (Stratagem processor is minimal; main logic in `spread_rumor` activity processor)
 
 #### Parameters for Creation (`stratagemDetails` in API request):
 
 -   `targetCitizen` (string, required): The username of the competitor to target.
--   `gossipTheme` (string, optional): The theme of the gossip (e.g., "questionable_business_practices", "personal_scandal"). Defaults to "General Rumors".
--   `name` (string, optional): Custom name for the stratagem.
+-   `gossipContent` (string, required): The specific rumor/content to spread.
+-   `name` (string, optional): Custom name for the stratagem. Defaults to "Gossip Campaign vs [TargetCitizen]".
 -   `description` (string, optional): Custom description.
 -   `notes` (string, optional): Custom notes.
--   `durationHours` (integer, optional): Duration of the stratagem's influence. Defaults to 48 (2 days).
+-   `durationHours` (integer, optional): Overall duration for the stratagem to be considered active. Defaults to cover the spread_rumor activities plus a buffer (e.g., 24 hours + (2 hours * 3 locations)).
     *(Note: Influence costs have been removed from stratagems.)*
 
-#### How it Works (Conceptual):
+#### How it Works:
 
 1.  **Creation**:
     -   The `marketplace_gossip_stratagem_creator.py` validates parameters.
-    -   It creates a new record in the `STRATAGEMS` table with `Status: "active"`, `Category: "social_warfare"`, an influence cost of 5, and sets `ExpiresAt`.
+    -   It identifies the top 3 most frequented locations by AI citizens based on their current `Position`.
+    -   For each of these locations, it creates a chain of activities for the `ExecutedBy` citizen:
+        1.  A `goto_location` activity to travel to the popular spot.
+        2.  A `spread_rumor` activity (duration: 2 hours) that starts after arrival. The `Notes` of this activity store the `targetCitizen` (victim) and the `gossipContent`.
+    -   It creates a new record in the `STRATAGEMS` table with `Status: "active"`, `Category: "social_warfare"`, and sets `ExpiresAt`. The `Notes` of the stratagem record will store the `targetCitizen` and `gossipContent` for reference.
 
-2.  **Processing (Conceptual for "Coming Soon")**:
+2.  **Processing (Stratagem)**:
     -   `processStratagems.py` picks up the active "marketplace_gossip" stratagem.
     -   `marketplace_gossip_stratagem_processor.py` is invoked.
-    -   **Rumor Spreading**:
-        -   The processor would identify high-traffic social hubs (e.g., `market_stall`, `piazza`, `tavern`).
-        -   It would create `spread_rumor` activities for the `ExecutedBy` citizen or their employees at these locations.
-    -   **Entity Changes & Effects**:
-        -   **NOTIFICATIONS**: When other AI citizens are near a `spread_rumor` activity, they have a chance to "overhear" the gossip, generating a `NOTIFICATION` for them containing the negative information.
-        -   **MESSAGES**: The system might also generate subtle, negative `MESSAGES` between citizens who have overheard the rumor, further propagating it.
-        -   **RELATIONSHIPS**: Citizens who are influenced by the gossip will experience a small negative trust shift towards the `targetCitizen` (-3 to -8 trust). The effect is less intense but broader than a direct `reputation_assault`.
-    -   **Status & Notes**:
-        -   The stratagem remains `active` for its duration, scheduling rumor-spreading activities.
-        -   Notes would track the locations targeted and the number of citizens potentially influenced.
+    -   This processor's main role is to mark the stratagem as `executed` once the initial activities have been set up by the creator. It does not directly spread rumors itself.
+
+3.  **Processing (Activity - `spread_rumor`)**:
+    -   When a `spread_rumor` activity becomes active (processed by `processActivities.py`):
+        -   The `spread_rumor_activity_processor.py` is invoked.
+        -   It retrieves the `targetCitizen` (victim) and `gossipContent` from the activity's `Notes`.
+        -   It identifies all other AI citizens currently at the same location (within a certain radius).
+        -   For each present citizen (excluding the executor), it calls `conversation_helper.generate_conversation_turn` with:
+            -   `speaker_username`: The `ExecutedBy` citizen (who is spreading the rumor).
+            -   `listener_username`: The present citizen.
+            -   `interaction_mode`: `"conversation_opener"`.
+            -   `message`: A crafted message from the executor to the listener, e.g., "Psst, [ListenerFirstName], have you heard about [TargetVictimFirstName]? They say that [gossipContent]".
+            -   `target_citizen_username_for_trust_impact`: The `targetCitizen` (victim of the gossip).
+        -   The `conversation_helper` will then handle the AI-generated response from the listener and, crucially, assess the trust impact on the listener towards both the speaker (executor) and the `target_citizen_username_for_trust_impact` (victim).
 
 #### Example API Request to `POST /api/stratagems/try-create`:
 
@@ -867,13 +875,12 @@ This would make NLR attempt to sabotage a specific timber shipment contract belo
   "stratagemType": "marketplace_gossip",
   "stratagemDetails": {
     "targetCitizen": "BasstheWhale",
-    "gossipTheme": "questionable_business_practices",
-    "durationHours": 48,
-    "name": "Whispers about the Whale"
+    "gossipContent": "BasstheWhale has been seen meeting with known smugglers near the Arsenale at odd hours. I wonder what that's about?",
+    "name": "Whispers about the Whale's Shady Dealings"
   }
 }
 ```
-This would make NLR attempt to spread rumors about BasstheWhale's business practices in public places for two days.
+This would make NLR initiate a gossip campaign against BasstheWhale. The system will find 3 popular locations, and NLR will travel to each to spread the specified rumor to citizens present there.
 
 ### 15. Employee Poaching (Coming Soon)
 

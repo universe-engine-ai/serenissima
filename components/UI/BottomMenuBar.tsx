@@ -247,9 +247,9 @@ const BottomMenuBar: React.FC = () => {
           }
         },
         {
-          id: 'marketplace_gossip', label: 'Gossip (Soon)', icon: FaComments,
+          id: 'marketplace_gossip', label: 'Gossip', icon: FaComments, // "(Soon)" retiré
           stratagemPanelData: {
-            id: 'marketplace_gossip', type: 'marketplace_gossip', title: 'Marketplace Gossip (Coming Soon)',
+            id: 'marketplace_gossip', type: 'marketplace_gossip', title: 'Marketplace Gossip', // "(Coming Soon)" retiré
             description: "Subtly damage a competitor's reputation by spreading rumors through social networks.",
             influenceCostBase: 5, hasVariants: false,
           }
