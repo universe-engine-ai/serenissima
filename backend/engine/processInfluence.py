@@ -92,15 +92,13 @@ def initialize_airtable() -> Optional[Dict[str, Table]]:
 
 # --- Main Processing Logic ---
 
-def process_daily_influence(dry_run: bool = False, building_type_filter: Optional[str] = None):
-    log_header_message = f"Process Daily Influence (dry_run={dry_run})"
+def process_daily_influence(tables: Dict[str, Table], dry_run: bool = False, building_type_filter: Optional[str] = None): # Added tables argument
+    log_header_message = f"Process Daily Building Influence (dry_run={dry_run})"
     if building_type_filter:
         log_header_message += f" for Building Type: {building_type_filter}"
     log_header(log_header_message, LogColors.HEADER)
 
-    tables = initialize_airtable()
-    if not tables:
-        return
+    # tables argument is now passed in, no need to initialize here.
 
     building_type_defs = get_building_types_from_api(API_BASE_URL)
     if not building_type_defs:
@@ -219,6 +217,93 @@ def process_daily_influence(dry_run: bool = False, building_type_filter: Optiona
 
     log.info(f"{LogColors.OKGREEN}Daily influence processing finished.{LogColors.ENDC}")
 
+
+def grant_base_daily_influence(tables: Dict[str, Table], dry_run: bool = False):
+    """Grants a base daily influence to all AI citizens and active human citizens."""
+    log_header("Grant Base Daily Influence to Active Citizens and AI", LogColors.HEADER)
+    
+    base_influence_to_grant = 100.0
+    processed_citizens_count = 0
+    influence_granted_count = 0
+
+    try:
+        all_citizens = tables["citizens"].all()
+        if not all_citizens:
+            log.info("No citizens found. Skipping base daily influence grant.")
+            return
+
+        now_venice = get_venice_time_now()
+        start_of_today_venice = now_venice.replace(hour=0, minute=0, second=0, microsecond=0)
+        start_of_previous_day_venice = start_of_today_venice - timedelta(days=1)
+
+        for citizen_record in all_citizens:
+            processed_citizens_count += 1
+            citizen_fields = citizen_record['fields']
+            username = citizen_fields.get('Username')
+            citizen_airtable_id = citizen_record['id']
+
+            if not username:
+                log.warning(f"{LogColors.WARNING}Citizen record {citizen_airtable_id} missing Username. Skipping.{LogColors.ENDC}")
+                continue
+
+            is_ai = citizen_fields.get('IsAI', False)
+            is_eligible = False
+
+            if is_ai:
+                is_eligible = True
+                log.info(f"  Citizen {username} is an AI. Eligible for base influence.")
+            else:
+                last_active_at_str = citizen_fields.get('LastActiveAt')
+                if last_active_at_str:
+                    try:
+                        last_active_at_dt = pytz.utc.localize(datetime.fromisoformat(last_active_at_str.replace("Z", ""))).astimezone(VENICE_TIMEZONE)
+                        if last_active_at_dt >= start_of_previous_day_venice:
+                            is_eligible = True
+                            log.info(f"  Human citizen {username} is active (LastActiveAt: {last_active_at_dt.strftime('%Y-%m-%d %H:%M:%S %Z')}). Eligible for base influence.")
+                        else:
+                            log.info(f"  Human citizen {username} is inactive (LastActiveAt: {last_active_at_dt.strftime('%Y-%m-%d %H:%M:%S %Z')}). Not eligible for base influence.")
+                    except ValueError as e_date:
+                        log.warning(f"{LogColors.WARNING}    Could not parse LastActiveAt ('{last_active_at_str}') for human citizen {username}. Error: {e_date}. Not eligible for base influence.{LogColors.ENDC}")
+                else:
+                    log.info(f"  Human citizen {username} has no LastActiveAt. Not eligible for base influence.")
+            
+            if is_eligible:
+                current_influence = float(citizen_fields.get('Influence', 0.0))
+                new_influence = current_influence + base_influence_to_grant
+                influence_granted_count +=1
+
+                log.info(f"    Granting {base_influence_to_grant} base influence to {username}. Current: {current_influence}, New: {new_influence}")
+
+                if not dry_run:
+                    try:
+                        tables["citizens"].update(citizen_airtable_id, {"Influence": new_influence})
+                        
+                        notification_content = f"Vous avez gagné {base_influence_to_grant} point(s) d'influence pour votre activité et présence à Venise."
+                        notification_details = {
+                            "event_type": "daily_base_influence_reward",
+                            "influence_gained": base_influence_to_grant,
+                            "new_total_influence": new_influence,
+                            "reason": "Base daily influence for active citizens and AI."
+                        }
+                        tables['notifications'].create({
+                            "Type": "daily_base_influence_reward",
+                            "Content": notification_content,
+                            "Details": json.dumps(notification_details),
+                            "CreatedAt": datetime.now(VENICE_TIMEZONE).isoformat(),
+                            "Citizen": username 
+                        })
+                        log.info(f"    Base influence notification created for {username}.")
+                    except Exception as e_update:
+                        log.error(f"{LogColors.FAIL}    Failed to update base influence or create notification for {username}: {e_update}{LogColors.ENDC}")
+                else:
+                    log.info(f"    [DRY RUN] Would update base influence for {username} to {new_influence} and create notification.")
+        
+        log.info(f"{LogColors.OKGREEN}Base daily influence granting finished. Processed {processed_citizens_count} citizens, granted influence to {influence_granted_count} citizens.{LogColors.ENDC}")
+
+    except Exception as e:
+        log.error(f"{LogColors.FAIL}Error during base daily influence granting: {e}{LogColors.ENDC}")
+        traceback.print_exc()
+
 # --- Main Execution ---
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Process daily influence from buildings.")
@@ -235,4 +320,9 @@ if __name__ == "__main__":
     )
     args = parser.parse_args()
 
-    process_daily_influence(dry_run=args.dry_run, building_type_filter=args.buildingType)
+    tables_main = initialize_airtable()
+    if tables_main:
+        process_daily_influence(tables=tables_main, dry_run=args.dry_run, building_type_filter=args.buildingType)
+        grant_base_daily_influence(tables=tables_main, dry_run=args.dry_run)
+    else:
+        log.error(f"{LogColors.FAIL}Could not initialize Airtable. Aborting all influence processing.{LogColors.ENDC}")
