@@ -31,7 +31,9 @@ except ImportError:
         log.error("Failed to import get_building_record from activity_helpers.")
         try:
             # Attempt direct fetch, assuming building_id_input is the custom BuildingId
-            formula = f"{{BuildingId}} = '{building_id_input.replace(\"'\", \"\\'\")}'"
+            # To avoid potential parsing issues with nested quotes and escapes in f-strings:
+            escaped_building_id = building_id_input.replace("'", "\\'")
+            formula = f"{{BuildingId}} = '{escaped_building_id}'"
             records = tables['buildings'].all(formula=formula, max_records=1)
             return records[0] if records else None
         except Exception as e:
