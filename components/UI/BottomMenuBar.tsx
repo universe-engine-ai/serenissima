@@ -150,6 +150,29 @@ const BottomMenuBar: React.FC = () => {
       ]
     },
     { 
+      id: 'political', 
+      label: 'POLITICAL', 
+      icon: FaScroll, 
+      subItems: [
+        {
+          id: 'political_campaign', label: 'Campaign (Soon)', icon: FaBullhorn,
+          stratagemPanelData: {
+            id: 'political_campaign', type: 'political_campaign', title: 'Political Campaign (Coming Soon)',
+            description: 'Influence governance by lobbying for or against a specific decree or policy change.',
+            influenceCostBase: 50, hasVariants: false,
+          }
+        },
+        {
+          id: 'printing_propaganda', label: 'Propaganda (Soon)', icon: FaNewspaper,
+          stratagemPanelData: {
+            id: 'printing_propaganda', type: 'printing_propaganda', title: 'Printing Propaganda (Coming Soon)',
+            description: 'Conduct information warfare by mass-producing and distributing pamphlets and rumors.',
+            influenceCostBase: 30, hasVariants: false,
+          }
+        }
+      ]
+    },
+    { 
       id: 'social_public', // New ID for clarity
       label: 'SOCIAL', 
       icon: FaLandmark, // New icon for public/cultural impact
@@ -231,29 +254,6 @@ const BottomMenuBar: React.FC = () => {
             id: 'reputation_boost', type: 'reputation_boost', title: 'Reputation Boost (Coming Soon)',
             description: "Actively improve a target citizen's public image and trustworthiness through a coordinated campaign.",
             influenceCostBase: 30, hasVariants: false, 
-          }
-        }
-      ]
-    },
-    { 
-      id: 'political', 
-      label: 'POLITICAL', 
-      icon: FaScroll, 
-      subItems: [
-        {
-          id: 'political_campaign', label: 'Campaign (Soon)', icon: FaBullhorn,
-          stratagemPanelData: {
-            id: 'political_campaign', type: 'political_campaign', title: 'Political Campaign (Coming Soon)',
-            description: 'Influence governance by lobbying for or against a specific decree or policy change.',
-            influenceCostBase: 50, hasVariants: false,
-          }
-        },
-        {
-          id: 'printing_propaganda', label: 'Propaganda (Soon)', icon: FaNewspaper,
-          stratagemPanelData: {
-            id: 'printing_propaganda', type: 'printing_propaganda', title: 'Printing Propaganda (Coming Soon)',
-            description: 'Conduct information warfare by mass-producing and distributing pamphlets and rumors.',
-            influenceCostBase: 30, hasVariants: false,
           }
         }
       ]
