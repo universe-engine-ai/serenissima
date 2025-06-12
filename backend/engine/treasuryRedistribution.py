@@ -396,28 +396,34 @@ def redistribute_treasury(dry_run: bool = False):
     # Get citizens by social class
     citizens_by_class = get_citizens_by_social_class(tables)
     
-    # Calculate amounts to distribute to each social class
-    class_amounts = {}
-    for social_class, percentage in REDISTRIBUTION_PERCENTAGES.items():
-        class_amounts[social_class] = redistribution_amount * percentage
-        log.info(f"Amount for {social_class}: {class_amounts[social_class]} ⚜️ Ducats ({percentage*100}% of total)")
-    
-    # Calculate per-citizen amounts
+    # Calculate total weighted shares
+    total_weighted_shares = 0
+    for social_class, percentage_weight in REDISTRIBUTION_PERCENTAGES.items():
+        citizens_in_class_count = len(citizens_by_class.get(social_class, []))
+        total_weighted_shares += citizens_in_class_count * percentage_weight
+        log.info(f"Class {social_class}: {citizens_in_class_count} citizens, weight {percentage_weight}. Contribution to weighted shares: {citizens_in_class_count * percentage_weight}")
+
+    if total_weighted_shares == 0:
+        log.warning("Total weighted shares is zero. No citizens to distribute to, or all weights are zero. Aborting redistribution.")
+        return
+
+    value_per_share_point = redistribution_amount / total_weighted_shares
+    log.info(f"Total weighted shares: {total_weighted_shares}. Value per share point: {value_per_share_point} ⚜️ Ducats")
+
+    # Calculate per-citizen amounts based on weighted shares
     per_citizen_amounts = {}
-    for social_class, amount in class_amounts.items():
-        citizens_count = len(citizens_by_class.get(social_class, []))
-        if citizens_count > 0:
-            per_citizen_amounts[social_class] = amount / citizens_count
-            log.info(f"Per-citizen amount for {social_class}: {per_citizen_amounts[social_class]} ⚜️ Ducats")
-        else:
-            per_citizen_amounts[social_class] = 0
-            log.warning(f"No citizens found for class {social_class}")
-    
+    for social_class, percentage_weight in REDISTRIBUTION_PERCENTAGES.items():
+        amount_for_citizen_in_class = value_per_share_point * percentage_weight
+        per_citizen_amounts[social_class] = amount_for_citizen_in_class
+        log.info(f"Per-citizen amount for {social_class}: {amount_for_citizen_in_class} ⚜️ Ducats")
+
     if dry_run:
-        log.info("[DRY RUN] Would redistribute the following amounts:")
-        for social_class, amount in class_amounts.items():
+        log.info("[DRY RUN] Would redistribute the following per-citizen amounts:")
+        for social_class, per_citizen_amount_val in per_citizen_amounts.items():
             citizens_count = len(citizens_by_class.get(social_class, []))
-            log.info(f"[DRY RUN] {social_class}: {amount} ⚜️ Ducats to {citizens_count} citizens ({per_citizen_amounts.get(social_class, 0)} per citizen)")
+            class_total_dry_run = citizens_count * per_citizen_amount_val
+            log.info(f"[DRY RUN] {social_class}: {per_citizen_amount_val} ⚜️ Ducats per citizen. Total for class ({citizens_count} citizens): {class_total_dry_run} ⚜️ Ducats")
+        log.info(f"[DRY RUN] Total redistribution amount: {redistribution_amount} ⚜️ Ducats")
         return
     
     # Track redistribution statistics
