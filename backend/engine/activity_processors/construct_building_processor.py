@@ -147,41 +147,74 @@ def process(
             log.warning(f"No construction costs found for {site_building_type_str} in contract or definition. Assuming no material consumption.")
 
         _, site_inventory_map = get_building_storage_details(tables, target_building_custom_id, contract_buyer_username)
-        all_resources_consumed_as_planned = True
+        
+        # --- Pre-check material availability for the potential work in this activity ---
+        materials_sufficient_for_potential_work = True
+        required_materials_for_this_activity_segment: Dict[str, float] = {}
 
-        for res_type, total_amount_needed_for_project_str in construction_costs_from_contract.items():
-            if res_type == 'ducats': continue
-            try:
-                total_amount_needed_for_project = float(total_amount_needed_for_project_str)
-            except ValueError:
-                log.error(f"Invalid amount '{total_amount_needed_for_project_str}' for resource '{res_type}' in construction costs. Skipping this resource.")
-                continue
-            if total_amount_needed_for_project <= 0: continue
+        if total_construction_time_for_building > 0: # Avoid division by zero if building def is misconfigured
+            for res_type, total_amount_needed_for_project_str in construction_costs_from_contract.items():
+                if res_type == 'ducats': continue
+                try:
+                    total_amount_needed_for_project = float(total_amount_needed_for_project_str)
+                except ValueError:
+                    log.error(f"Invalid amount '{total_amount_needed_for_project_str}' for resource '{res_type}' in construction costs. Assuming this material is missing.")
+                    materials_sufficient_for_potential_work = False; break
+                if total_amount_needed_for_project <= 0: continue
 
-            resource_consumption_rate_per_minute = total_amount_needed_for_project / total_construction_time_for_building
-            resource_to_consume_this_activity = resource_consumption_rate_per_minute * actual_work_done_minutes
-            
-            amount_on_site = float(site_inventory_map.get(res_type, 0.0))
-            actual_amount_consumed_this_turn = min(resource_to_consume_this_activity, amount_on_site)
+                resource_consumption_rate_per_minute = total_amount_needed_for_project / total_construction_time_for_building
+                resource_needed_this_activity_segment = resource_consumption_rate_per_minute * actual_work_done_minutes # actual_work_done_minutes is the potential work
+                
+                amount_on_site = float(site_inventory_map.get(res_type, 0.0))
 
-            if actual_amount_consumed_this_turn < resource_to_consume_this_activity - 0.001:
-                log.warning(f"Site {target_building_name_log} has insufficient {res_type} for planned work. "
-                            f"Needed: {resource_to_consume_this_activity:.2f}, Available: {amount_on_site:.2f}, Consumed: {actual_amount_consumed_this_turn:.2f}.")
-                all_resources_consumed_as_planned = False 
+                if amount_on_site < resource_needed_this_activity_segment - 0.001: # Using a small epsilon
+                    log.warning(f"{LogColors.WARNING}Site {target_building_name_log} has insufficient {res_type} for planned work segment. "
+                                f"Needed: {resource_needed_this_activity_segment:.2f}, Available: {amount_on_site:.2f}. Activity will fail.{LogColors.ENDC}")
+                    materials_sufficient_for_potential_work = False
+                    break 
+                else:
+                    required_materials_for_this_activity_segment[res_type] = resource_needed_this_activity_segment
+        else: # total_construction_time_for_building is 0 or less, implies instant build or error in def
+            log.warning(f"Building type {site_building_type_str} has total_construction_time_for_building <= 0. Assuming no material check needed for this segment if actual_work_done_minutes > 0.")
+            # If actual_work_done_minutes is also 0 (e.g. building already complete), this block is fine.
+            # If actual_work_done_minutes > 0 but total_construction_time_for_building is 0, it's a definition issue.
+            # For safety, let's assume materials are sufficient if total time is zero, as rates can't be calculated.
+            materials_sufficient_for_potential_work = True
 
-            if actual_amount_consumed_this_turn > 0:
+
+        if not materials_sufficient_for_potential_work:
+            log.error(f"{LogColors.FAIL}Construction activity {activity_guid} for {target_building_name_log} failed due to insufficient materials for the planned work duration of {actual_work_done_minutes:.2f} minutes.{LogColors.ENDC}")
+            # Update trust score for failure due to lack of materials
+            if contract_record_for_processing and contract_buyer_username and citizen_username_log:
+                contract_seller_username = contract_record_for_processing['fields'].get('Seller')
+                if contract_seller_username:
+                    update_trust_score_for_activity(tables, contract_seller_username, contract_buyer_username, TRUST_SCORE_FAILURE_SIMPLE, "construction_material_shortage", False, "material_shortage", activity_record_for_kinos=activity_record)
+            return False # Activity fails, no minutes deducted, no materials consumed.
+
+        # --- Materials are sufficient, proceed with consumption and work ---
+        log.info(f"All required materials are available for {actual_work_done_minutes:.2f} minutes of work on {target_building_name_log}.")
+        all_resources_consumed_as_planned = True # Will remain true since we pre-checked
+
+        for res_type, amount_to_consume in required_materials_for_this_activity_segment.items():
+            if amount_to_consume > 0:
                 if not update_resource_count(
                     tables, target_building_custom_id, 'building', contract_buyer_username, 
-                    res_type, -actual_amount_consumed_this_turn, resource_defs, 
+                    res_type, -amount_to_consume, resource_defs, 
                     datetime.now(VENICE_TIMEZONE).isoformat()
                 ):
-                    log.error(f"Failed to decrement {res_type} from site {target_building_name_log}. Construction integrity compromised.")
-                    all_resources_consumed_as_planned = False
+                    log.error(f"{LogColors.FAIL}Critical error: Failed to decrement {res_type} from site {target_building_name_log} even after pre-check. Construction integrity compromised. Aborting activity.{LogColors.ENDC}")
+                    # This case should ideally not happen if pre-check is correct and no race conditions.
+                    # If it does, it's a more severe failure.
+                    if contract_record_for_processing and contract_buyer_username and citizen_username_log:
+                         contract_seller_username = contract_record_for_processing['fields'].get('Seller')
+                         if contract_seller_username:
+                            update_trust_score_for_activity(tables, contract_seller_username, contract_buyer_username, TRUST_SCORE_FAILURE_MEDIUM, "construction_consumption_error", False, "system_error_consuming", activity_record_for_kinos=activity_record)
+                    return False # Activity fails
                 else:
-                    log.info(f"Consumed {actual_amount_consumed_this_turn:.2f} of {res_type} from site {target_building_name_log}.")
+                    log.info(f"Consumed {amount_to_consume:.2f} of {res_type} from site {target_building_name_log}.")
         
         new_construction_minutes_remaining = current_construction_minutes_on_building - actual_work_done_minutes
-        log.info(f"Site {target_building_name_log}: Current minutes: {current_construction_minutes_on_building:.2f}, Work done: {actual_work_done_minutes:.2f}, New minutes: {new_construction_minutes_remaining:.2f}")
+        log.info(f"Site {target_building_name_log}: Current minutes: {current_construction_minutes_on_building:.2f}, Work done (effective): {actual_work_done_minutes:.2f}, New minutes remaining: {new_construction_minutes_remaining:.2f}")
 
         update_payload_building = {'ConstructionMinutesRemaining': new_construction_minutes_remaining}
         
