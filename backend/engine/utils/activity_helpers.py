@@ -1581,36 +1581,34 @@ def clean_thought_content(tables: Dict[str, Table], thought_content: str) -> str
     
     processed_content = thought_content
     
+    # Stage 1: Remove [SYSTEM]...[/SYSTEM] blocks
+    processed_content = re.sub(r"\[SYSTEM\].*?\[/SYSTEM\]", "", thought_content, flags=re.DOTALL | re.IGNORECASE)
+    log.debug(f"Content after [SYSTEM] removal: '{processed_content[:100]}...'")
+
+    # Stage 2: <think> tag processing (modified from original Stage 1)
     # Try to match <think>...</think> at the beginning of the string, allowing for leading whitespace.
-    # The (.*?) captures the thought content, and (.*) captures everything after the </think> tag.
-    match = re.match(r"^\s*<think>(.*?)</think>\s*(.*)", thought_content, re.DOTALL)
+    match = re.match(r"^\s*<think>(.*?)</think>\s*(.*)", processed_content, re.DOTALL)
     
     if match:
         # A <think>...</think> block was found at the beginning.
         # The intended message is what comes after this block.
-        processed_content = match.group(2) # group(2) is the content after </think>
+        processed_content = match.group(2) 
         log.debug(f"Found and stripped leading <think> block. Message part starts with: '{processed_content[:100]}...'")
-    # else:
-        # No leading <think>...</think> block, or it's malformed.
-        # The original thought_content will be processed by global removals below.
-        # This handles cases like:
-        # - Message only (no think tags)
-        # - Message <think>thoughts</think> message_continued
-        # - Malformed tags
-        # log.debug(f"No leading <think> block, or malformed. Processing: '{processed_content[:100]}...'")
 
-    # Globally remove any remaining <think>...</think> blocks from the (potentially modified) processed_content.
-    # This handles embedded blocks or cases where the initial match failed.
+    # Globally remove any remaining <think>...</think> blocks
     processed_content = re.sub(r"<think>.*?</think>", "", processed_content, flags=re.DOTALL)
     
-    # Remove any stray <think> or </think> tags that might be left due to malformed input or partial removal.
-    processed_content = processed_content.replace("<think>", "")
-    processed_content = processed_content.replace("</think>", "")
+    # Remove any stray <think> or </think> tags
+    processed_content = processed_content.replace("<think>", "").replace("</think>", "")
     
     current_processing_content = processed_content.strip()
-    log.debug(f"Content after Stage 1 (think tag processing): '{current_processing_content[:100]}...'")
+    log.debug(f"Content after <think> tag processing: '{current_processing_content[:100]}...'")
 
-    # Stage 2: ID replacement
+    # Stage 3: Replace literal '\n' with actual newlines
+    current_processing_content = current_processing_content.replace('\\n', '\n')
+    log.debug(f"Content after newline replacement: '{current_processing_content[:100]}...'")
+
+    # Stage 4: ID replacement
     if tables:
         id_cache = {}
         # More specific regex for IDs like type_id or polygon-id
@@ -1700,7 +1698,7 @@ def clean_thought_content(tables: Dict[str, Table], thought_content: str) -> str
     current_processing_content = " ".join(filtered_sentences)
     log.debug(f"Content after keyword filtering: '{current_processing_content[:100]}...'")
 
-    # Stage 4: Final specific cleanups
+    # Stage 6: Final specific cleanups (was Stage 4)
     current_processing_content = current_processing_content.replace("$COMPUTE", "💰 Ducats")
 
     if "<｜begin of sentence｜>" in current_processing_content:
