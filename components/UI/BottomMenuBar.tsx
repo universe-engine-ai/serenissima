@@ -1,8 +1,9 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { 
-  FaCoins, FaHandshake, FaScroll, FaUserShield, FaBomb, // Main category icons
-  FaArrowCircleDown, FaSyncAlt, FaArchive, FaStoreSlash, FaUserSecret, FaPalette, FaSitemap, FaAnchor, FaHandHoldingUsd, FaBullhorn, FaUsers, // Existing sub-item icons
-  FaMask, FaComments, FaUserPlus, FaNewspaper, FaStar, FaSkullCrossbones, FaKey, FaUserNinja, FaFire, FaGift, FaGlassCheers // New sub-item icons (FaStar, FaSkullCrossbones, FaKey, FaUserNinja, FaFire, FaGift, FaGlassCheers added)
+  FaCoins, FaScroll, FaUserShield, FaBomb, // Main category icons
+  FaArrowCircleDown, FaSyncAlt, FaArchive, FaStoreSlash, FaUserSecret, FaPalette, FaSitemap, FaAnchor, FaHandHoldingUsd, FaBullhorn, // Existing sub-item icons
+  FaMask, FaComments, FaUserPlus, FaNewspaper, FaStar, FaSkullCrossbones, FaKey, FaUserNinja, FaFire, FaGift, FaGlassCheers, // Existing sub-item icons
+  FaLandmark, FaUserCog, FaHandshake // New Main/Sub-item icons
 } from 'react-icons/fa';
 import { eventBus, EventTypes } from '@/lib/utils/eventBus'; // Importer eventBus
 
@@ -79,22 +80,8 @@ const BottomMenuBar: React.FC = () => {
   const [activeMainMenuId, setActiveMainMenuId] = useState<string | null>(null);
   const menuRef = useRef<HTMLDivElement>(null);
 
-  // Mise à jour de la liste des types "Prochainement" pour inclure tous les stratagèmes non disponibles.
-  // Cette liste est utilisée pour le style des boutons.
-  // La constante comingSoonStratagemTypesUpdated est utilisée pour le style des boutons,
-  // mais la logique pour ajouter "(Soon)" au label est directement dans la définition de menuItems.
-  const allStratagemTypesInMenu = [
-    'undercut', 'coordinate_pricing', 'emergency_liquidation', 'hoard_resource', 'supplier_lockout', 'joint_venture', 'monopoly_pricing',
-    'reputation_assault', 'financial_patronage', 'cultural_patronage', 'theater_conspiracy', 'marketplace_gossip', 'employee_poaching', 'reputation_boost', 'charity_distribution', 'festival_organisation',
-    'political_campaign', 'printing_propaganda',
-    'information_network', 'neighborhood_watch',
-    'maritime_blockade', 'cargo_mishap', 'canal_mugging', 'burglary', 'employee_corruption', 'arson'
-  ];
-  const availableStratagemTypes = [ // Liste des stratagèmes réellement implémentés et disponibles
-    'undercut', 'coordinate_pricing', 'emergency_liquidation', 'hoard_resource', 'reputation_assault'
-  ];
-  const comingSoonStratagemTypesUpdated = allStratagemTypesInMenu.filter(type => !availableStratagemTypes.includes(type));
-
+  // Les listes allStratagemTypesInMenu, availableStratagemTypes, et comingSoonStratagemTypesUpdated
+  // ne sont plus nécessaires car le style est géré par stratagemNatureConfig et "(Soon)" est dans les labels.
 
   const menuItems: MenuItem[] = [
     {
@@ -163,9 +150,48 @@ const BottomMenuBar: React.FC = () => {
       ]
     },
     { 
-      id: 'social', 
+      id: 'social_public', // New ID for clarity
       label: 'SOCIAL', 
-      icon: FaUsers, // Changed from FaHandshake to FaUsers for broader social category
+      icon: FaLandmark, // New icon for public/cultural impact
+      subItems: [
+        {
+          id: 'cultural_patronage', label: 'Cult. Patronage (Soon)', icon: FaPalette,
+          stratagemPanelData: {
+            id: 'cultural_patronage', type: 'cultural_patronage', title: 'Cultural Patronage (Coming Soon)',
+            description: 'Sponsor artists, performances, or cultural institutions to build social capital.',
+            influenceCostBase: 30, hasVariants: true,
+          }
+        },
+        {
+          id: 'theater_conspiracy', label: 'Theater Play (Soon)', icon: FaMask,
+          stratagemPanelData: {
+            id: 'theater_conspiracy', type: 'theater_conspiracy', title: 'Theater Conspiracy (Coming Soon)',
+            description: 'Manipulate public opinion by staging theatrical performances with specific themes.',
+            influenceCostBase: 25, hasVariants: false,
+          }
+        },
+        {
+          id: 'charity_distribution', label: 'Charity (Soon)', icon: FaGift,
+          stratagemPanelData: {
+            id: 'charity_distribution', type: 'charity_distribution', title: 'Charity Distribution (Coming Soon)',
+            description: "Anonymously distribute Ducats to poor citizens in a specific district.",
+            influenceCostBase: 3, hasVariants: false, 
+          }
+        },
+        {
+          id: 'festival_organisation', label: 'Festival (Soon)', icon: FaGlassCheers,
+          stratagemPanelData: {
+            id: 'festival_organisation', type: 'festival_organisation', title: 'Festival Organisation (Coming Soon)',
+            description: "Organize and sponsor a public festival in a specific district.",
+            influenceCostBase: 10, hasVariants: false, 
+          }
+        }
+      ]
+    },
+    {
+      id: 'personal_tactics', // New ID for clarity
+      label: 'PERSONAL',
+      icon: FaUserCog, // New icon for interpersonal tactics
       subItems: [
         {
           id: 'reputation_assault', label: 'Reputation Assault', icon: FaUserSecret,
@@ -180,22 +206,6 @@ const BottomMenuBar: React.FC = () => {
           stratagemPanelData: {
             id: 'financial_patronage', type: 'financial_patronage', title: 'Financial Patronage (Coming Soon)',
             description: 'Provide comprehensive financial support to promising individuals or allies.',
-            influenceCostBase: 25, hasVariants: false,
-          }
-        },
-        {
-          id: 'cultural_patronage', label: 'Cult. Patronage (Soon)', icon: FaPalette,
-          stratagemPanelData: {
-            id: 'cultural_patronage', type: 'cultural_patronage', title: 'Cultural Patronage (Coming Soon)',
-            description: 'Sponsor artists, performances, or cultural institutions to build social capital.',
-            influenceCostBase: 30, hasVariants: true,
-          }
-        },
-        {
-          id: 'theater_conspiracy', label: 'Theater Play (Soon)', icon: FaMask,
-          stratagemPanelData: {
-            id: 'theater_conspiracy', type: 'theater_conspiracy', title: 'Theater Conspiracy (Coming Soon)',
-            description: 'Manipulate public opinion by staging theatrical performances with specific themes.',
             influenceCostBase: 25, hasVariants: false,
           }
         },
@@ -220,23 +230,7 @@ const BottomMenuBar: React.FC = () => {
           stratagemPanelData: {
             id: 'reputation_boost', type: 'reputation_boost', title: 'Reputation Boost (Coming Soon)',
             description: "Actively improve a target citizen's public image and trustworthiness through a coordinated campaign.",
-            influenceCostBase: 30, hasVariants: false, // Assuming intensity is a parameter, not variant for cost
-          }
-        },
-        {
-          id: 'charity_distribution', label: 'Charity (Soon)', icon: FaGift,
-          stratagemPanelData: {
-            id: 'charity_distribution', type: 'charity_distribution', title: 'Charity Distribution (Coming Soon)',
-            description: "Anonymously distribute Ducats to poor citizens in a specific district.",
-            influenceCostBase: 3, hasVariants: false, 
-          }
-        },
-        {
-          id: 'festival_organisation', label: 'Festival (Soon)', icon: FaGlassCheers,
-          stratagemPanelData: {
-            id: 'festival_organisation', type: 'festival_organisation', title: 'Festival Organisation (Coming Soon)',
-            description: "Organize and sponsor a public festival in a specific district.",
-            influenceCostBase: 10, hasVariants: false, 
+            influenceCostBase: 30, hasVariants: false, 
           }
         }
       ]
@@ -265,8 +259,8 @@ const BottomMenuBar: React.FC = () => {
       ]
     },
     { 
-      id: 'security_intel', 
-      label: 'SECURITY & INTEL', 
+      id: 'security', // Renamed from security_intel
+      label: 'SECURITY', 
       icon: FaUserShield, 
       subItems: [
         {
