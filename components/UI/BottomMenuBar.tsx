@@ -89,16 +89,7 @@ const BottomMenuBar: React.FC = () => {
       label: 'COMMERCE',
       icon: FaCoins,
       subItems: [
-        { 
-          id: 'undercut', 
-          label: 'Undercut', 
-          icon: FaArrowCircleDown, 
-          stratagemPanelData: {
-            id: 'undercut', type: 'undercut', title: 'Undercut Market Prices',
-            description: 'Strategically lower your prices for a specific resource to undercut competitors. Choose your level of aggression and targets.',
-            influenceCostBase: 5, hasVariants: true,
-          }
-        },
+        // Neutral
         {
           id: 'coordinate_pricing', label: 'Coordinate Prices', icon: FaSyncAlt,
           stratagemPanelData: {
@@ -124,14 +115,6 @@ const BottomMenuBar: React.FC = () => {
           }
         },
         {
-          id: 'supplier_lockout', label: 'Supplier Lockout (Soon)', icon: FaStoreSlash,
-          stratagemPanelData: {
-            id: 'supplier_lockout', type: 'supplier_lockout', title: 'Supplier Lockout (Coming Soon)',
-            description: 'Secure exclusive or priority supply agreements with specific resource suppliers.',
-            influenceCostBase: 20, hasVariants: false,
-          }
-        },
-        {
           id: 'joint_venture', label: 'Joint Venture (Soon)', icon: FaHandshake,
           stratagemPanelData: {
             id: 'joint_venture', type: 'joint_venture', title: 'Joint Venture (Coming Soon)',
@@ -139,14 +122,33 @@ const BottomMenuBar: React.FC = () => {
             influenceCostBase: 20, hasVariants: false,
           }
         },
+        // Aggressive
         {
-          id: 'monopoly_pricing', label: 'Monopoly (Soon)', icon: FaCoins, // Ou FaDollarSign si importé
+          id: 'monopoly_pricing', label: 'Monopoly (Soon)', icon: FaCoins,
           stratagemPanelData: {
             id: 'monopoly_pricing', type: 'monopoly_pricing', title: 'Monopoly Pricing (Coming Soon)',
             description: 'Leverage dominant market position to significantly increase prices for a specific resource.',
-            influenceCostBase: 40, hasVariants: true, // Variants: Mild (30), Standard (40), Aggressive (50)
+            influenceCostBase: 40, hasVariants: true, 
           }
-        }
+        },
+        {
+          id: 'supplier_lockout', label: 'Supplier Lockout (Soon)', icon: FaStoreSlash,
+          stratagemPanelData: {
+            id: 'supplier_lockout', type: 'supplier_lockout', title: 'Supplier Lockout (Coming Soon)',
+            description: 'Secure exclusive or priority supply agreements with specific resource suppliers.',
+            influenceCostBase: 20, hasVariants: false,
+          }
+        },
+        { 
+          id: 'undercut', 
+          label: 'Undercut', 
+          icon: FaArrowCircleDown, 
+          stratagemPanelData: {
+            id: 'undercut', type: 'undercut', title: 'Undercut Market Prices',
+            description: 'Strategically lower your prices for a specific resource to undercut competitors. Choose your level of aggression and targets.',
+            influenceCostBase: 5, hasVariants: true,
+          }
+        },
       ]
     },
     { 
@@ -177,22 +179,7 @@ const BottomMenuBar: React.FC = () => {
       label: 'SOCIAL', 
       icon: FaLandmark, // New icon for public/cultural impact
       subItems: [
-        {
-          id: 'cultural_patronage', label: 'Cult. Patronage (Soon)', icon: FaPalette,
-          stratagemPanelData: {
-            id: 'cultural_patronage', type: 'cultural_patronage', title: 'Cultural Patronage (Coming Soon)',
-            description: 'Sponsor artists, performances, or cultural institutions to build social capital.',
-            influenceCostBase: 30, hasVariants: true,
-          }
-        },
-        {
-          id: 'theater_conspiracy', label: 'Theater Play (Soon)', icon: FaMask,
-          stratagemPanelData: {
-            id: 'theater_conspiracy', type: 'theater_conspiracy', title: 'Theater Conspiracy (Coming Soon)',
-            description: 'Manipulate public opinion by staging theatrical performances with specific themes.',
-            influenceCostBase: 25, hasVariants: false,
-          }
-        },
+        // Good
         {
           id: 'charity_distribution', label: 'Charity (Soon)', icon: FaGift,
           stratagemPanelData: {
@@ -202,13 +189,30 @@ const BottomMenuBar: React.FC = () => {
           }
         },
         {
+          id: 'cultural_patronage', label: 'Cult. Patronage (Soon)', icon: FaPalette,
+          stratagemPanelData: {
+            id: 'cultural_patronage', type: 'cultural_patronage', title: 'Cultural Patronage (Coming Soon)',
+            description: 'Sponsor artists, performances, or cultural institutions to build social capital.',
+            influenceCostBase: 30, hasVariants: true,
+          }
+        },
+        {
           id: 'festival_organisation', label: 'Festival (Soon)', icon: FaGlassCheers,
           stratagemPanelData: {
             id: 'festival_organisation', type: 'festival_organisation', title: 'Festival Organisation (Coming Soon)',
             description: "Organize and sponsor a public festival in a specific district.",
             influenceCostBase: 10, hasVariants: false, 
           }
-        }
+        },
+        // Aggressive
+        {
+          id: 'theater_conspiracy', label: 'Theater Play (Soon)', icon: FaMask,
+          stratagemPanelData: {
+            id: 'theater_conspiracy', type: 'theater_conspiracy', title: 'Theater Conspiracy (Coming Soon)',
+            description: 'Manipulate public opinion by staging theatrical performances with specific themes.',
+            influenceCostBase: 25, hasVariants: false,
+          }
+        },
       ]
     },
     {
@@ -216,20 +220,30 @@ const BottomMenuBar: React.FC = () => {
       label: 'PERSONAL',
       icon: FaUserCog, // New icon for interpersonal tactics
       subItems: [
-        {
-          id: 'reputation_assault', label: 'Reputation Assault', icon: FaUserSecret,
-          stratagemPanelData: {
-            id: 'reputation_assault', type: 'reputation_assault', title: 'Reputation Assault',
-            description: "Subtly damage a competitor's reputation by spreading negative information to their associates.",
-            influenceCostBase: 30, hasVariants: false,
-          }
-        },
+        // Good
         {
           id: 'financial_patronage', label: 'Fin. Patronage (Soon)', icon: FaHandHoldingUsd,
           stratagemPanelData: {
             id: 'financial_patronage', type: 'financial_patronage', title: 'Financial Patronage (Coming Soon)',
             description: 'Provide comprehensive financial support to promising individuals or allies.',
             influenceCostBase: 25, hasVariants: false,
+          }
+        },
+        {
+          id: 'reputation_boost', label: 'Rep. Boost (Soon)', icon: FaStar,
+          stratagemPanelData: {
+            id: 'reputation_boost', type: 'reputation_boost', title: 'Reputation Boost (Coming Soon)',
+            description: "Actively improve a target citizen's public image and trustworthiness through a coordinated campaign.",
+            influenceCostBase: 30, hasVariants: false, 
+          }
+        },
+        // Aggressive
+        {
+          id: 'employee_poaching', label: 'Poach Employee (Soon)', icon: FaUserPlus,
+          stratagemPanelData: {
+            id: 'employee_poaching', type: 'employee_poaching', title: 'Employee Poaching (Coming Soon)',
+            description: 'Recruit a skilled employee from a competitor by making them a better offer.',
+            influenceCostBase: 6, hasVariants: false,
           }
         },
         {
@@ -241,21 +255,13 @@ const BottomMenuBar: React.FC = () => {
           }
         },
         {
-          id: 'employee_poaching', label: 'Poach Employee (Soon)', icon: FaUserPlus,
+          id: 'reputation_assault', label: 'Reputation Assault', icon: FaUserSecret,
           stratagemPanelData: {
-            id: 'employee_poaching', type: 'employee_poaching', title: 'Employee Poaching (Coming Soon)',
-            description: 'Recruit a skilled employee from a competitor by making them a better offer.',
-            influenceCostBase: 6, hasVariants: false,
+            id: 'reputation_assault', type: 'reputation_assault', title: 'Reputation Assault',
+            description: "Subtly damage a competitor's reputation by spreading negative information to their associates.",
+            influenceCostBase: 30, hasVariants: false,
           }
         },
-        {
-          id: 'reputation_boost', label: 'Rep. Boost (Soon)', icon: FaStar,
-          stratagemPanelData: {
-            id: 'reputation_boost', type: 'reputation_boost', title: 'Reputation Boost (Coming Soon)',
-            description: "Actively improve a target citizen's public image and trustworthiness through a coordinated campaign.",
-            influenceCostBase: 30, hasVariants: false, 
-          }
-        }
       ]
     },
     { 
@@ -263,6 +269,16 @@ const BottomMenuBar: React.FC = () => {
       label: 'SECURITY', 
       icon: FaUserShield, 
       subItems: [
+        // Good
+        {
+          id: 'neighborhood_watch', label: 'Neighborhood Watch (Soon)', icon: FaUserShield, 
+          stratagemPanelData: {
+            id: 'neighborhood_watch', type: 'neighborhood_watch', title: 'Neighborhood Watch (Coming Soon)',
+            description: 'Enhance security and reduce crime in a specific district through collective citizen vigilance.',
+            influenceCostBase: 10, hasVariants: false,
+          }
+        },
+        // Neutral
         {
           id: 'information_network', label: 'Info Network (Soon)', icon: FaSitemap,
           stratagemPanelData: {
@@ -271,14 +287,6 @@ const BottomMenuBar: React.FC = () => {
             influenceCostBase: 40, hasVariants: false,
           }
         },
-        {
-          id: 'neighborhood_watch', label: 'Neighborhood Watch (Soon)', icon: FaUserShield, 
-          stratagemPanelData: {
-            id: 'neighborhood_watch', type: 'neighborhood_watch', title: 'Neighborhood Watch (Coming Soon)',
-            description: 'Enhance security and reduce crime in a specific district through collective citizen vigilance.',
-            influenceCostBase: 10, hasVariants: false,
-          }
-        }
       ]
     },
     { 
@@ -286,28 +294,13 @@ const BottomMenuBar: React.FC = () => {
       label: 'WARFARE', 
       icon: FaCrosshairs, // Changed from FaBomb to FaCrosshairs
       subItems: [
+        // Illegal (sorted alphabetically)
         {
-          id: 'maritime_blockade', label: 'Blockade (Soon)', icon: FaAnchor,
+          id: 'arson', label: 'Arson (Soon)', icon: FaFire,
           stratagemPanelData: {
-            id: 'maritime_blockade', type: 'maritime_blockade', title: 'Maritime Blockade (Coming Soon)',
-            description: "Control water access to cripple a competitor's trade and waterfront operations.",
-            influenceCostBase: 70, hasVariants: false, 
-          }
-        },
-        {
-          id: 'cargo_mishap', label: 'Cargo "Mishap" (Soon)', icon: FaAnchor, // Using FaAnchor as it's often maritime
-          stratagemPanelData: {
-            id: 'cargo_mishap', type: 'cargo_mishap', title: 'Cargo "Mishap" (Coming Soon)',
-            description: "Sabotage a competitor's shipment by arranging for their goods to \"disappear\" while in transit.",
-            influenceCostBase: 8, hasVariants: false,
-          }
-        },
-        {
-          id: 'canal_mugging', label: 'Mugging (Soon)', icon: FaSkullCrossbones,
-          stratagemPanelData: {
-            id: 'canal_mugging', type: 'canal_mugging', title: 'Canal Mugging (Coming Soon)',
-            description: "Rob a specific citizen while they are traveling by gondola.",
-            influenceCostBase: 3, hasVariants: false,
+            id: 'arson', type: 'arson', title: 'Arson (Coming Soon)',
+            description: "Burn down a target property, requiring it to be rebuilt.",
+            influenceCostBase: 9, hasVariants: false,
           }
         },
         {
@@ -319,21 +312,37 @@ const BottomMenuBar: React.FC = () => {
           }
         },
         {
+          id: 'canal_mugging', label: 'Mugging (Soon)', icon: FaSkullCrossbones,
+          stratagemPanelData: {
+            id: 'canal_mugging', type: 'canal_mugging', title: 'Canal Mugging (Coming Soon)',
+            description: "Rob a specific citizen while they are traveling by gondola.",
+            influenceCostBase: 3, hasVariants: false,
+          }
+        },
+        {
+          id: 'cargo_mishap', label: 'Cargo "Mishap" (Soon)', icon: FaAnchor,
+          stratagemPanelData: {
+            id: 'cargo_mishap', type: 'cargo_mishap', title: 'Cargo "Mishap" (Coming Soon)',
+            description: "Sabotage a competitor's shipment by arranging for their goods to \"disappear\" while in transit.",
+            influenceCostBase: 8, hasVariants: false,
+          }
+        },
+        {
           id: 'employee_corruption', label: 'Emp. Corrupt. (Soon)', icon: FaUserNinja,
           stratagemPanelData: {
             id: 'employee_corruption', type: 'employee_corruption', title: 'Employee Corruption (Coming Soon)',
             description: "Bribe occupants of businesses to reduce productivity and steal things for you.",
-            influenceCostBase: 7, hasVariants: false, // Bribe amount is a parameter
+            influenceCostBase: 7, hasVariants: false, 
           }
         },
         {
-          id: 'arson', label: 'Arson (Soon)', icon: FaFire,
+          id: 'maritime_blockade', label: 'Blockade (Soon)', icon: FaAnchor,
           stratagemPanelData: {
-            id: 'arson', type: 'arson', title: 'Arson (Coming Soon)',
-            description: "Burn down a target property, requiring it to be rebuilt.",
-            influenceCostBase: 9, hasVariants: false,
+            id: 'maritime_blockade', type: 'maritime_blockade', title: 'Maritime Blockade (Coming Soon)',
+            description: "Control water access to cripple a competitor's trade and waterfront operations.",
+            influenceCostBase: 70, hasVariants: false, 
           }
-        }
+        },
       ]
     }
   ];
