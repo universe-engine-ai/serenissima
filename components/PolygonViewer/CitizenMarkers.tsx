@@ -329,7 +329,7 @@ const CitizenMarkers: React.FC<CitizenMarkersProps> = ({
         // Adjust animation speed: higher step means faster animation
         // Animates over approx. 1 second if step is totalLength / 60.
         // Let's use a fixed pixel step for more consistent visual speed regardless of path length.
-        const step = totalLength / 60; // Animates in approx 1 second (60 frames)
+        const step = totalLength / 180; // Animates in approx 3 seconds (180 frames at 60fps)
         // const step = 50; // Alternative: fixed pixel step
         const newOffset = Math.max(0, offsetForCurrentPath - step);
         
@@ -1270,8 +1270,8 @@ const CitizenMarkers: React.FC<CitizenMarkersProps> = ({
                   points={pointsString}
                   fill="none"
                   stroke={getActivityPathColor(activity)}
-                  strokeWidth={isAnimatingThisPath ? "2.5" : "2.0"} // Slightly thicker if animating
-                  strokeOpacity={isAnimatingThisPath ? "0.9" : "0.7"}
+                  strokeWidth="2.0" // Consistent thickness
+                  strokeOpacity="0.7" // Consistent opacity
                   style={{
                     strokeDasharray: (isAnimatingThisPath && pathLen) ? pathLen : undefined,
                     strokeDashoffset: (isAnimatingThisPath && currentDashOffset !== undefined) 
