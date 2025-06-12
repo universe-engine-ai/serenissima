@@ -631,13 +631,31 @@ def process_ai_message_initiatives(dry_run: bool = False, citizen1_arg: Optional
             
             print(f"\nTraitement des initiatives pour l'IA : {ai_username}")
 
-            # 1. Récupérer le data package complet pour l'IA
-            # get_citizen_data_package est importé de conversation_helper
-            # Il attend api_base_url, qui est BASE_URL dans ce script.
-            ai_data_package = get_citizen_data_package(ai_username, BASE_URL)
+            # 1. Récupérer le data package complet pour l'IA (en format JSON)
+            log.info(f"Récupération du data package JSON pour {ai_username}...")
+            data_package_url = f"{BASE_URL}/api/get-data-package?citizenUsername={ai_username}&format=json"
+            ai_data_package = None # Initialiser au cas où l'appel échoue
+            try:
+                response = requests.get(data_package_url, timeout=20)
+                response.raise_for_status() # Lèvera une exception pour les codes d'erreur HTTP
+                json_response = response.json()
+                if json_response.get("success"):
+                    ai_data_package = json_response.get("data") # Ceci est le dictionnaire attendu
+                    if not isinstance(ai_data_package, dict):
+                        log.error(f"Le data package JSON pour {ai_username} n'est pas un dictionnaire. Reçu : {type(ai_data_package)}")
+                        ai_data_package = None 
+                else:
+                    log.error(f"L'appel API pour le data package JSON de {ai_username} n'a pas réussi : {json_response.get('error')}")
+            except requests.exceptions.RequestException as e:
+                log.error(f"Erreur lors de la récupération du data package JSON pour {ai_username} : {e}")
+            except json.JSONDecodeError as e:
+                log.error(f"Erreur de décodage JSON pour le data package de {ai_username} : {e}. Texte de la réponse : {response.text[:200] if 'response' in locals() else 'N/A'}")
+            
             if not ai_data_package:
-                print(f"Impossible de récupérer le data package pour {ai_username}. Passage au suivant.")
+                print(f"Impossible de récupérer le data package JSON pour {ai_username}. Passage au suivant.")
+                log.warning(f"Impossible de récupérer le data package JSON pour {ai_username}. Passage au suivant.")
                 continue
+            log.info(f"Data package JSON récupéré avec succès pour {ai_username}.")
 
             # 2. Appeler KinOS pour choisir un interlocuteur et une raison
             target_username, reason_for_contact = choose_interlocutor_via_kinos(
