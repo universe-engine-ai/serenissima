@@ -58,7 +58,8 @@ def initialize_airtable():
             'citizens': Table(api_key, base_id, 'CITIZENS'),
             'buildings': Table(api_key, base_id, 'BUILDINGS'),
             'transactions': Table(api_key, base_id, 'TRANSACTIONS'),
-            'notifications': Table(api_key, base_id, 'NOTIFICATIONS')
+            'notifications': Table(api_key, base_id, 'NOTIFICATIONS'),
+            'relationships': Table(api_key, base_id, 'RELATIONSHIPS') # Added RELATIONSHIPS table
         }
         
         # Test connection with one primary table (e.g., citizens)
