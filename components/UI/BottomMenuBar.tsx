@@ -6,14 +6,48 @@ import {
 } from 'react-icons/fa';
 import { eventBus, EventTypes } from '@/lib/utils/eventBus'; // Importer eventBus
 
-// Liste des types de stratagèmes "Prochainement"
-const comingSoonStratagemTypes = [
-  'supplier_lockout', 'political_campaign', 'information_network', 'maritime_blockade', 
-  'cultural_patronage', 'theater_conspiracy', 'printing_propaganda', 'cargo_mishap', 
-  'marketplace_gossip', 'employee_poaching', 'joint_venture', 
-  'financial_patronage', 'neighborhood_watch'
-  // Les nouveaux types seront ajoutés ici par la logique de génération de menuItems
-];
+// Configuration de la nature des stratagèmes pour le style
+type StratagemNature = 'good' | 'neutral' | 'aggressive' | 'illegal';
+interface StratagemStyleConfig {
+  nature: StratagemNature;
+  classes: string;
+}
+
+const stratagemNatureConfig: Record<string, StratagemStyleConfig> = {
+  // Good (Light Blue)
+  'financial_patronage': { nature: 'good', classes: 'bg-sky-600 hover:bg-sky-700 text-white' },
+  'cultural_patronage': { nature: 'good', classes: 'bg-sky-600 hover:bg-sky-700 text-white' },
+  'reputation_boost': { nature: 'good', classes: 'bg-sky-600 hover:bg-sky-700 text-white' },
+  'charity_distribution': { nature: 'good', classes: 'bg-sky-600 hover:bg-sky-700 text-white' },
+  'festival_organisation': { nature: 'good', classes: 'bg-sky-600 hover:bg-sky-700 text-white' },
+  'neighborhood_watch': { nature: 'good', classes: 'bg-sky-600 hover:bg-sky-700 text-white' },
+  // Neutral (Grey)
+  'coordinate_pricing': { nature: 'neutral', classes: 'bg-slate-500 hover:bg-slate-600 text-white' },
+  'emergency_liquidation': { nature: 'neutral', classes: 'bg-slate-500 hover:bg-slate-600 text-white' },
+  'hoard_resource': { nature: 'neutral', classes: 'bg-slate-500 hover:bg-slate-600 text-white' },
+  'information_network': { nature: 'neutral', classes: 'bg-slate-500 hover:bg-slate-600 text-white' },
+  'joint_venture': { nature: 'neutral', classes: 'bg-slate-500 hover:bg-slate-600 text-white' },
+  'political_campaign': { nature: 'neutral', classes: 'bg-slate-500 hover:bg-slate-600 text-white' },
+  'printing_propaganda': { nature: 'neutral', classes: 'bg-slate-500 hover:bg-slate-600 text-white' },
+  // Aggressive (Orange)
+  'undercut': { nature: 'aggressive', classes: 'bg-orange-500 hover:bg-orange-600 text-white' },
+  'supplier_lockout': { nature: 'aggressive', classes: 'bg-orange-500 hover:bg-orange-600 text-white' },
+  'monopoly_pricing': { nature: 'aggressive', classes: 'bg-orange-500 hover:bg-orange-600 text-white' },
+  'reputation_assault': { nature: 'aggressive', classes: 'bg-orange-500 hover:bg-orange-600 text-white' },
+  'marketplace_gossip': { nature: 'aggressive', classes: 'bg-orange-500 hover:bg-orange-600 text-white' },
+  'employee_poaching': { nature: 'aggressive', classes: 'bg-orange-500 hover:bg-orange-600 text-white' },
+  'theater_conspiracy': { nature: 'aggressive', classes: 'bg-orange-500 hover:bg-orange-600 text-white' },
+  // Illegal (Red)
+  'maritime_blockade': { nature: 'illegal', classes: 'bg-red-600 hover:bg-red-700 text-white' },
+  'cargo_mishap': { nature: 'illegal', classes: 'bg-red-600 hover:bg-red-700 text-white' },
+  'canal_mugging': { nature: 'illegal', classes: 'bg-red-600 hover:bg-red-700 text-white' },
+  'burglary': { nature: 'illegal', classes: 'bg-red-600 hover:bg-red-700 text-white' },
+  'employee_corruption': { nature: 'illegal', classes: 'bg-red-600 hover:bg-red-700 text-white' },
+  'arson': { nature: 'illegal', classes: 'bg-red-600 hover:bg-red-700 text-white' },
+  // Default for any unclassified (should not happen if all are mapped)
+  'default': { nature: 'neutral', classes: 'bg-gray-400 hover:bg-gray-500 text-white' }
+};
+
 
 // Interface pour les données passées au panneau de stratagème
 export interface StratagemPanelData {
@@ -349,9 +383,7 @@ const BottomMenuBar: React.FC = () => {
                 setActiveMainMenuId(null); // Ferme le sous-menu après l'action
               }}
               className={`flex flex-col items-center justify-center p-1 rounded-sm transition-colors w-20 h-16 ${
-                comingSoonStratagemTypesUpdated.includes(subItem.stratagemPanelData.type)
-                  ? 'text-amber-50 hover:text-white hover:bg-amber-600/50' // Style pour "Coming Soon"
-                  : 'bg-yellow-500 hover:bg-yellow-600 text-black' // Style pour disponible
+                (stratagemNatureConfig[subItem.stratagemPanelData.type] || stratagemNatureConfig.default).classes
               }`}
               title={subItem.label}
             >
