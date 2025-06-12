@@ -86,6 +86,60 @@ const CitizenMarkers: React.FC<CitizenMarkersProps> = ({
   const thoughtDisplayDurationTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const [isThoughtBubbleHovered, setIsThoughtBubbleHovered] = useState<boolean>(false);
 
+// Helper function to extract main thought (copied from app/api/thoughts/route.ts logic)
+function extractMainThought(content: string): string {
+  if (!content) {
+    return "";
+  }
+  const MIN_LENGTH = 20;
+  const MAX_LENGTH = 400;
+  let potentialThoughts: string[] = [];
+  const boldRegex = /\*\*(.*?)\*\*/; // Non-greedy match for content within **...**
+  const boldMatch = content.match(boldRegex);
+  let boldSentence: string | null = null;
+
+  if (boldMatch && boldMatch[1]) {
+    boldSentence = boldMatch[1].trim();
+    if (boldSentence.length >= MIN_LENGTH && boldSentence.length <= MAX_LENGTH) {
+      return boldSentence; // Ideal case: bold and good length
+    }
+    potentialThoughts.push(boldSentence);
+  }
+
+  const allSentences = content
+    .split(/(?<=[.!?])(?=\s|$)/) 
+    .map(sentence => sentence.trim())
+    .filter(sentence => sentence.length > 0);
+
+  const goodLengthSentences = allSentences.filter(
+    s => s.length >= MIN_LENGTH && s.length <= MAX_LENGTH
+  );
+
+  if (goodLengthSentences.length > 0) {
+    const nonBoldGoodLength = goodLengthSentences.filter(s => s !== boldSentence);
+    if (nonBoldGoodLength.length > 0) {
+      return nonBoldGoodLength[Math.floor(Math.random() * nonBoldGoodLength.length)];
+    }
+    return goodLengthSentences[Math.floor(Math.random() * goodLengthSentences.length)];
+  }
+
+  allSentences.forEach(s => {
+    if (!potentialThoughts.includes(s)) {
+      potentialThoughts.push(s);
+    }
+  });
+  
+  if (potentialThoughts.length === 0 && content.trim().length > 0) {
+    potentialThoughts.push(content.trim());
+  }
+
+  if (potentialThoughts.length > 0) {
+    return potentialThoughts[Math.floor(Math.random() * potentialThoughts.length)];
+  }
+  
+  return content.trim();
+}
+
   const handleThoughtBubbleDurationEnd = useCallback(() => {
     // This function is intentionally empty because the thought cycle logic
     // in CitizenMarkers.useEffect (around line 450) already handles clearing activeThought
@@ -744,15 +798,23 @@ const CitizenMarkers: React.FC<CitizenMarkersProps> = ({
             return;
           }
 
+          const newlyExtractedMainThought = extractMainThought(randomThought.originalContent);
+
           setActiveThought({
-            thought: randomThought,
+            thought: { // Ensure we pass all necessary fields from ThoughtData
+              messageId: randomThought.messageId,
+              citizenUsername: randomThought.citizenUsername,
+              originalContent: randomThought.originalContent,
+              createdAt: randomThought.createdAt,
+              mainThought: newlyExtractedMainThought, // Use the re-extracted thought
+            },
             citizenId: randomThought.citizenUsername,
             position: screenPos,
             socialClass: citizenForThought.socialClass || 'Popolani', // Pass social class
           });
 
-          const wordCount = randomThought.mainThought.split(/\s+/).length;
-          let displayDuration = Math.max(MIN_DISPLAY_TIME, (wordCount / WPM) * 60 * 1000 * 3); // Reading speed 1.5x slower (original * 1.5, so 2 * 1.5 = 3)
+          const wordCount = newlyExtractedMainThought.split(/\s+/).length; // Use word count of the new mainThought
+          let displayDuration = Math.max(MIN_DISPLAY_TIME, (wordCount / WPM) * 60 * 1000 * 3); 
           displayDuration = Math.min(displayDuration, MAX_DISPLAY_TIME);
 
           // Ce minuteur est pour la fin de la durée d'affichage naturelle de la pensée actuelle.
