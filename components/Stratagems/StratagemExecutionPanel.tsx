@@ -276,7 +276,9 @@ const StratagemExecutionPanel: React.FC<StratagemExecutionPanelProps> = ({
               alt={stratagemData.title} 
               className="w-full max-w-xs h-auto object-contain rounded-lg shadow-lg border border-amber-300 mb-4"
               onError={(e) => {
-                // Fallback to a default image or hide if not found
+                const originalSrc = `/images/stratagems/${stratagemData.type}.png`;
+                console.warn(`[StratagemExecutionPanel] Failed to load stratagem image at: ${originalSrc}. Falling back to default.`);
+                // Fallback to a default image
                 (e.target as HTMLImageElement).src = '/images/stratagems/default_stratagem.png'; 
                 (e.target as HTMLImageElement).alt = 'Default Stratagem Image';
               }}
