@@ -449,16 +449,21 @@ def generate_conversation_turn(
     api_base_url: str,
     kinos_model_override: Optional[str] = None,
     max_history_messages: int = 5,
-    interaction_mode: str = "conversation" # "conversation", "reflection", or "conversation_opener"
+    interaction_mode: str = "conversation", # "conversation", "reflection", or "conversation_opener"
+    message: Optional[str] = None # Optional message to send directly for "conversation_opener"
 ) -> Optional[Dict]:
     """
     Generates one turn of a conversation, an internal reflection, or a conversation opener.
-    Persists the generated message/reflection and returns its Airtable record.
+    If 'message' is provided and interaction_mode is 'conversation_opener', it sends that message directly.
+    Persists the generated/provided message/reflection and returns its Airtable record.
     """
     if interaction_mode == "reflection":
         log.info(f"Generating internal reflection for {speaker_username} about {listener_username}.")
     elif interaction_mode == "conversation_opener":
-        log.info(f"Generating conversation opener from {speaker_username} to {listener_username}.")
+        if message:
+            log.info(f"Sending provided message as conversation opener from {speaker_username} to {listener_username}.")
+        else:
+            log.info(f"Generating conversation opener from {speaker_username} to {listener_username}.")
     else: # conversation
         log.info(f"Generating conversation turn: Speaker: {speaker_username}, Listener: {listener_username}")
 
@@ -639,19 +644,25 @@ def generate_conversation_turn(
             log.warning(f"Failed to generate summarized context for {speaker_username}. The conversation turn will be aborted for the local model.")
             return None # Abort the turn if summarization fails
 
-    # 6. Call KinOS Engine (using final_add_system_data)
-    ai_message_content = make_kinos_channel_call(
-        kinos_api_key,
-        speaker_username, # speaker_username is the kin_id
-        channel_name,
-        prompt, # The original prompt for the conversation
-        final_add_system_data, # This is either the full package or the summary
-        effective_kinos_model
-    )
+    # 6. Call KinOS Engine (using final_add_system_data) or use provided message
+    ai_message_content: Optional[str] = None
 
-    if not ai_message_content:
-        log.error(f"KinOS failed to generate a message for {speaker_username} to {listener_username}.")
-        return None
+    if interaction_mode == "conversation_opener" and message is not None:
+        ai_message_content = message
+        log.info(f"Using provided message for conversation_opener: '{message[:100]}...'")
+    else:
+        ai_message_content = make_kinos_channel_call(
+            kinos_api_key,
+            speaker_username, # speaker_username is the kin_id
+            channel_name,
+            prompt, # The original prompt for the conversation
+            final_add_system_data, # This is either the full package or the summary
+            effective_kinos_model
+        )
+
+        if not ai_message_content:
+            log.error(f"KinOS failed to generate a message for {speaker_username} to {listener_username}.")
+            return None
 
     # 7. Persist message/reflection
     message_receiver = listener_username # Default for conversation and opener
@@ -731,12 +742,13 @@ if __name__ == '__main__':
         speaker_username=citizen1_test_username,
         listener_username=citizen2_test_username,
         api_base_url=next_public_base_url,
-        interaction_mode="conversation" # Explicitly "conversation" for this example
+        interaction_mode="conversation_opener", # Explicitly "conversation_opener" for this example
+        # message="Hello there, this is a direct message!", # Example of sending a direct message
         # kinos_model_override="local" # Optional: force a model
     )
 
     if new_message_record:
-        log.info(f"Conversation turn/reflection generated and saved. Message ID: {new_message_record.get('id')}")
+        log.info(f"Conversation turn/opener/reflection generated and saved. Message ID: {new_message_record.get('id')}")
         log.info(f"Content: {new_message_record.get('fields', {}).get('Content')}")
     else:
         log.error("Failed to generate conversation turn.")
