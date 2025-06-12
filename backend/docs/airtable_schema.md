@@ -301,8 +301,9 @@ Communications entre citoyens.
 -   `MessageId` (Texte): Identifiant unique du message.
 -   `Sender` (Texte): `Username` de l'expéditeur du message.
 -   `Receiver` (Texte): `Username` du destinataire du message.
--   `Content` (Texte multiligne): Contenu du message.
--   `Type` (Texte): Type de message (ex: `personal`, `business_inquiry`, `guild_communication`, `reply`).
+-   `Thinking` (Texte multiligne, optionnel): Contenu extrait des balises `<think>...</think>` du message original, représentant la "pensée" de l'IA avant de formuler le message principal.
+-   `Content` (Texte multiligne): Contenu du message (après suppression des balises `<think>`).
+-   `Type` (Texte): Type de message (ex: `personal`, `business_inquiry`, `guild_communication`, `reply`, `encounter_reflection`, `ai_context_summary`).
 -   `ReadAt` (Date/Heure): Horodatage de lecture par le destinataire.
 -   `Notes` (Texte multiligne): Peut contenir des informations contextuelles. Par exemple, pour les messages de type "reply", ce champ peut stocker l'ID du message original sous la forme `In reply to: <MessageId>`.
 -   `Channel` (Texte, optionnel): Identifiant du canal de discussion. Permet de regrouper les messages par contexte.

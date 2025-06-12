@@ -204,16 +204,25 @@ def persist_message(
 ) -> Optional[Dict]:
     """Persists a message to the Airtable MESSAGES table."""
     
-    # Remove <think>...</think> tags from content and apply full cleaning for AI generated types
-    cleaned_content_final = content # Default to original content
+    thinking_content: Optional[str] = None
+    content_for_processing = content # Use a temporary variable for content processing
 
-    if isinstance(content, str): # Ensure content is a string before regex
-        # Step 1: Remove <think> tags
-        cleaned_content_think_tags = re.sub(r"<think>.*?</think>", "", content, flags=re.DOTALL).strip()
-        if not cleaned_content_think_tags and content: # If cleaning resulted in empty string but original had content
-            log.warning(f"Message content from {sender_username} to {receiver_username} (type: {message_type}) became empty after removing <think> tags. Original: '{content[:100]}...'")
+    if isinstance(content_for_processing, str): # Ensure content is a string before regex
+        # Step 1: Extract <think> content
+        think_match = re.search(r"<think>(.*?)</think>", content_for_processing, flags=re.DOTALL)
+        if think_match:
+            thinking_content = think_match.group(1).strip()
+            # Remove the first <think> block for further processing of the main content
+            # This ensures if there are multiple, only the first is captured as "Thinking"
+            # and all are removed from the main content.
+            # content_for_processing = content_for_processing.replace(think_match.group(0), "", 1).strip() # Remove only the first match
         
-        # Step 2: Apply full cleaning for AI generated types
+        # Step 2: Remove all <think> tags from the content that will be stored in "Content" field
+        cleaned_content_think_tags = re.sub(r"<think>.*?</think>", "", content_for_processing, flags=re.DOTALL).strip()
+        if not cleaned_content_think_tags and content_for_processing: # If cleaning resulted in empty string but original had content
+            log.warning(f"Message content from {sender_username} to {receiver_username} (type: {message_type}) became empty after removing <think> tags. Original: '{content_for_processing[:100]}...'")
+        
+        # Step 3: Apply full cleaning for AI generated types to the content for "Content" field
         ai_generated_message_types = [
             "message_ai_augmented",
             "encounter_reflection",
@@ -236,16 +245,23 @@ def persist_message(
         else:
             # For non-AI generated types (or types not explicitly listed), only <think> tag removal is applied
             cleaned_content_final = cleaned_content_think_tags
-    # If content was not a string, cleaned_content_final remains as the original content
+    else: # If content was not a string
+        cleaned_content_final = content_for_processing
+
 
     payload = {
         "Sender": sender_username,
         "Receiver": receiver_username,
-        "Content": cleaned_content_final, # Use fully cleaned content
+        # "Thinking" field will be added conditionally below
+        "Content": cleaned_content_final, # Use fully cleaned content for the "Content" field
         "Type": message_type,
         "Channel": channel_name,
         "CreatedAt": datetime.now(VENICE_TIMEZONE).isoformat(),
     }
+
+    if thinking_content is not None:
+        payload["Thinking"] = thinking_content # Add the extracted thinking content
+
     if sender_username == receiver_username:
         payload["ReadAt"] = datetime.now(VENICE_TIMEZONE).isoformat()
         log.info(f"Message from {sender_username} to self. Setting ReadAt to current time.")
@@ -255,7 +271,9 @@ def persist_message(
         payload["Notes"] = json.dumps({"kinos_message_id": kinos_message_id})
 
     try:
-        log.info(f"Persisting message from {sender_username} to {receiver_username} in channel {channel_name}. Payload: {json.dumps(payload)}")
+        # Log payload without sensitive details if necessary, or just key fields
+        log_payload_summary = {k: (v[:50] + '...' if isinstance(v, str) and len(v) > 50 else v) for k, v in payload.items()}
+        log.info(f"Persisting message from {sender_username} to {receiver_username} in channel {channel_name}. Payload summary: {json.dumps(log_payload_summary)}")
         created_record = tables['messages'].create(payload)
         log.info(f"Message persisted with Airtable ID: {created_record['id']}")
         return created_record
