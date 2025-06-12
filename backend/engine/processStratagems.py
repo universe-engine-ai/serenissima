@@ -145,7 +145,10 @@ logging.basicConfig(
 log = logging.getLogger("process_stratagems")
 
 load_dotenv(os.path.join(PROJECT_ROOT, '.env'))
-API_BASE_URL = os.getenv("API_BASE_URL", "http://localhost:3000")
+# Get API Base URL for internal calls (e.g., to fetch resource/building definitions from Next.js)
+NEXTJS_API_BASE_URL = os.getenv("API_BASE_URL", "http://localhost:3000") # For calls to Next.js API
+# Get Base URL for the Python engine itself (for self-calls like creating activities)
+PYTHON_ENGINE_BASE_URL = os.getenv("BACKEND_BASE_URL", "http://localhost:10000") # Default to 10000 if not set
 
 def initialize_airtable() -> Optional[Dict[str, Table]]:
     """Initialize Airtable connection."""
