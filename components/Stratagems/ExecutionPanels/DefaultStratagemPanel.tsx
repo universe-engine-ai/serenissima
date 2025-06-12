@@ -16,11 +16,11 @@ const DefaultStratagemPanel = forwardRef<StratagemSpecificPanelRef, StratagemSpe
       // details.durationHours = defaultDurationHours; 
       return details;
     },
-    getCalculatedInfluenceCost: () => {
-      // Le coût d'influence pour les panneaux par défaut est généralement juste le coût de base.
-      // Si des variantes génériques étaient gérées ici, cela changerait.
-      return stratagemData.influenceCostBase;
-    }
+    // getCalculatedInfluenceCost: () => { // Removed
+    //   // Le coût d'influence pour les panneaux par défaut est généralement juste le coût de base. // Removed
+    //   // Si des variantes génériques étaient gérées ici, cela changerait. // Removed
+    //   return stratagemData.influenceCostBase; // Removed
+    // } // Removed
   }));
 
   return (

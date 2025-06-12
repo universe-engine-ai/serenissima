@@ -46,6 +46,7 @@ Refer to `backend/docs/airtable_schema.md` for the detailed structure of the `ST
 -   `description` (string, optional): A custom description.
 -   `notes` (string, optional): Custom notes.
 -   `durationHours` (integer, optional): How long the stratagem should remain active, in hours. Defaults to 24 hours. The stratagem will attempt to maintain the undercut prices periodically until it expires.
+    *(Note: Influence costs have been removed from stratagems.)*
 
 #### How it Works:
 
@@ -110,6 +111,7 @@ This will make NLR attempt to sell timber 15% cheaper than BasstheWhale for 48 h
 -   `description` (string, optional): A custom description.
 -   `notes` (string, optional): Custom notes.
 -   `durationHours` (integer, optional): How long the stratagem should remain active, in hours. Defaults to 24 hours. The stratagem will attempt to maintain the coordinated prices periodically until it expires.
+    *(Note: Influence costs have been removed from stratagems.)*
 
 #### How it Works:
 
@@ -176,6 +178,7 @@ This will make NLR attempt to match SerMarco's average selling price for wine fo
 -   `notes` (string, optional): Custom notes.
 -   `durationHours` (integer, optional): How long the stratagem should remain active. Defaults to 72 hours.
 -   `storageContractTargetAmount` (integer, optional): The target capacity for the `storage_query` contract created by the processor. Defaults to a very large number (e.g., 1,000,000).
+    *(Note: Influence costs have been removed from stratagems.)*
 
 #### How it Works:
 
@@ -245,6 +248,7 @@ This will make NLR and their employees attempt to buy Iron Ore from the market a
 -   `description` (string, optional): Custom description.
 -   `notes` (string, optional): Custom notes.
 -   `durationHours` (integer, optional): Duration of the stratagem itself (how long the game will try to maintain this state or report on it). Defaults to `contractDurationDays * 24`.
+    *(Note: Influence costs have been removed from stratagems.)*
 
 #### How it Works (Conceptual):
 
@@ -305,6 +309,7 @@ This would make NLR attempt to secure an exclusive 60-day contract for Iron Ore 
 -   `name` (string, optional): Custom name for the stratagem.
 -   `description` (string, optional): Custom description.
 -   `notes` (string, optional): Custom notes.
+    *(Note: Influence costs have been removed from stratagems.)*
 
 #### How it Works (Conceptual):
 
@@ -367,6 +372,7 @@ This would make NLR launch a 28-day campaign to repeal the "Salt Tax Increase Ac
 -   `description` (string, optional): A custom description.
 -   `notes` (string, optional): Custom notes.
 -   `durationHours` (integer, optional): How long the stratagem should remain active. Defaults to 24 hours. (Note: Current implementation is one-shot message generation upon first processing).
+    *(Note: Influence costs have been removed from stratagems.)*
 
 #### How it Works:
 
@@ -425,6 +431,7 @@ This will make NLR attempt to damage BasstheWhale's reputation by sending AI-gen
 -   `name` (string, optional): A custom name for this stratagem instance. Defaults to "Emergency Liquidation ([Variant])".
 -   `description` (string, optional): A custom description.
 -   `notes` (string, optional): Custom notes.
+    *(Note: Influence costs have been removed from stratagems.)*
 
 #### How it Works:
 
@@ -481,6 +488,7 @@ This will make NLR attempt to sell all items in their inventory at 70% of their 
 -   `description` (string, optional): A custom description.
 -   `notes` (string, optional): Custom notes.
 -   `durationHours` (integer, optional): How long the stratagem and its effects (e.g., reputation boost) should be considered active. Defaults to 168 hours (7 days).
+    *(Note: Influence costs have been removed from stratagems.)*
 
 #### How it Works (Conceptual):
 
@@ -593,6 +601,7 @@ This would make NLR establish an information network focused on the grain trade,
 -   `description` (string, optional): Custom description.
 -   `notes` (string, optional): Custom notes.
 -   `durationHours` (integer, optional): How long the blockade should remain active. Defaults to 72 hours (3 days).
+    *(Note: Influence costs have been removed from stratagems.)*
 
 #### How it Works (Conceptual):
 
@@ -655,6 +664,7 @@ This would make NLR attempt to blockade the waterfront operations associated wit
 -   `description` (string, optional): Custom description.
 -   `notes` (string, optional): Custom notes.
 -   `durationHours` (integer, optional): Duration of the stratagem's influence. Defaults to 168 (7 days).
+    *(Note: Influence costs have been removed from stratagems.)*
 
 #### How it Works (Conceptual):
 
@@ -713,6 +723,7 @@ This would make NLR attempt to stage a play at the "theater_grand_canal_01" that
 -   `description` (string, optional): Custom description.
 -   `notes` (string, optional): Custom notes.
 -   `durationHours` (integer, optional): Duration of the stratagem's influence. Defaults to 168 (7 days).
+    *(Note: Influence costs have been removed from stratagems.)*
 
 #### How it Works (Conceptual):
 
@@ -770,6 +781,7 @@ This would make NLR attempt to use the "printing_house_rialto_01" to produce and
 -   `description` (string, optional): Custom description.
 -   `notes` (string, optional): Custom notes.
 -   `durationHours` (integer, optional): The window of opportunity for the mishap to occur. Defaults to 24 hours.
+    *(Note: Influence costs have been removed from stratagems.)*
 
 #### How it Works (Conceptual):
 
@@ -824,6 +836,7 @@ This would make NLR attempt to sabotage a specific timber shipment contract belo
 -   `description` (string, optional): Custom description.
 -   `notes` (string, optional): Custom notes.
 -   `durationHours` (integer, optional): Duration of the stratagem's influence. Defaults to 48 (2 days).
+    *(Note: Influence costs have been removed from stratagems.)*
 
 #### How it Works (Conceptual):
 
@@ -879,6 +892,7 @@ This would make NLR attempt to spread rumors about BasstheWhale's business pract
 -   `description` (string, optional): Custom description.
 -   `notes` (string, optional): Custom notes.
 -   `durationHours` (integer, optional): Duration for the offer to be considered. Defaults to 48 (2 days).
+    *(Note: Influence costs have been removed from stratagems.)*
 
 #### How it Works (Conceptual):
 
@@ -937,6 +951,7 @@ This would make NLR attempt to recruit "GiovanniArtisan" away from their current
 -   `profitSharingPercentage` (float, optional): The profit share for the initiator (e.g., 0.5 for 50%). Defaults to 0.5.
 -   `durationDays` (integer, optional): The duration of the joint venture in days. Defaults to 30.
 -   `name` (string, optional): Custom name for the stratagem.
+    *(Note: Influence costs have been removed from stratagems.)*
 
 #### How it Works (Conceptual):
 
@@ -996,6 +1011,7 @@ This would make NLR propose a 6-month, 50/50 spice trading joint venture to SerM
 -   `name` (string, optional): Custom name for the stratagem. Defaults to "Patronage of [TargetCitizen]".
 -   `description` (string, optional): Custom description.
 -   `notes` (string, optional): Custom notes.
+    *(Note: Influence costs have been removed from stratagems.)*
 
 #### How it Works (Conceptual):
 
@@ -1054,6 +1070,7 @@ This would make NLR provide "Standard" financial support (e.g., 10 Ducats/day) t
 -   `name` (string, optional): Custom name for the stratagem. Defaults to "Neighborhood Watch for [DistrictName]".
 -   `description` (string, optional): Custom description.
 -   `notes` (string, optional): Custom notes.
+    *(Note: Influence costs have been removed from stratagems.)*
 
 #### How it Works (Conceptual):
 
@@ -1122,6 +1139,7 @@ This would make NLR initiate a Neighborhood Watch in the San Polo district for 4
 -   `description` (string, optional): Custom description.
 -   `notes` (string, optional): Custom notes.
 -   `durationHours` (integer, optional): How long the stratagem should attempt to maintain these prices. Defaults to 168 hours (7 days).
+    *(Note: Influence costs have been removed from stratagems.)*
 
 #### How it Works (Conceptual):
 
@@ -1184,6 +1202,7 @@ This would make NLR attempt to set the price of their Iron Ore to 200% above the
 -   `name` (string, optional): Custom name for the stratagem. Defaults to "Reputation Campaign for [TargetCitizen]".
 -   `description` (string, optional): Custom description.
 -   `notes` (string, optional): Custom notes.
+    *(Note: Influence costs have been removed from stratagems.)*
 
 #### How it Works (Conceptual):
 
@@ -1249,6 +1268,7 @@ This would make NLR launch a "Standard" intensity reputation boost campaign for 
 -   `name` (string, optional): Custom name for the stratagem. Defaults to "Canal Mugging ([Variant]) near [LandName] for [Duration] days".
 -   `description` (string, optional): Custom description.
 -   `notes` (string, optional): Custom notes.
+    *(Note: Influence costs have been removed from stratagems.)*
 
 #### How it Works (Conceptual):
 
@@ -1308,6 +1328,7 @@ This would make NLR attempt to mug an opportune citizen transiting by gondola in
 -   `name` (string, optional): Custom name for the stratagem. Defaults to "Burglary at [TargetBuildingName]".
 -   `description` (string, optional): Custom description.
 -   `notes` (string, optional): Custom notes.
+    *(Note: Influence costs have been removed from stratagems.)*
 
 #### How it Works (Conceptual):
 
@@ -1364,6 +1385,7 @@ This would make NLR attempt to burgle "building-competitor_workshop_01", costing
 -   `name` (string, optional): Custom name for the stratagem. Defaults to "Corruption of [Employee] at [Building]".
 -   `description` (string, optional): Custom description.
 -   `notes` (string, optional): Custom notes.
+    *(Note: Influence costs have been removed from stratagems.)*
 
 #### How it Works (Conceptual):
 
@@ -1423,6 +1445,7 @@ This would make NLR attempt to bribe "GiovanniArtisan" at "building-competitor_w
 -   `name` (string, optional): Custom name for the stratagem. Defaults to "Arson at [TargetBuildingName]".
 -   `description` (string, optional): Custom description.
 -   `notes` (string, optional): Custom notes.
+    *(Note: Influence costs have been removed from stratagems.)*
 
 #### How it Works (Conceptual):
 
@@ -1477,6 +1500,7 @@ This would make NLR attempt to burn down "building-rival_warehouse_03", costing 
 -   `name` (string, optional): Custom name for the stratagem. Defaults to "Charitable Giving in [TargetDistrict]".
 -   `description` (string, optional): Custom description.
 -   `notes` (string, optional): Custom notes.
+    *(Note: Influence costs have been removed from stratagems.)*
 
 #### How it Works (Conceptual):
 
@@ -1535,6 +1559,7 @@ This would make NLR anonymously distribute 1000 Ducats among approximately 10 po
 -   `name` (string, optional): Custom name for the stratagem. Defaults to "Festival in [TargetDistrict]".
 -   `description` (string, optional): Custom description.
 -   `notes` (string, optional): Custom notes.
+    *(Note: Influence costs have been removed from stratagems.)*
 
 #### How it Works (Conceptual):
 

@@ -17,8 +17,8 @@ const CanalMuggingStratagemPanel = forwardRef<StratagemSpecificPanelRef, Stratag
   const [durationDays, setDurationDays] = useState<number>(3); // Default 3 days
   const [selectedVariant, setSelectedVariant] = useState<MuggingVariant>('Standard');
 
-  // Influence cost is now dynamic: durationDays * baseCostPerDay
-  const calculatedInfluenceCost = useMemo(() => durationDays * BASE_INFLUENCE_COST_PER_DAY, [durationDays]);
+  // Influence cost is now dynamic: durationDays * baseCostPerDay // Removed
+  // const calculatedInfluenceCost = useMemo(() => durationDays * BASE_INFLUENCE_COST_PER_DAY, [durationDays]); // Removed
 
   const summaryElements = useMemo(() => {
     const executorName = (currentUserFirstName && currentUserLastName)
@@ -67,9 +67,9 @@ const CanalMuggingStratagemPanel = forwardRef<StratagemSpecificPanelRef, Stratag
       }
       return details;
     },
-    getCalculatedInfluenceCost: () => {
-      return calculatedInfluenceCost;
-    }
+    // getCalculatedInfluenceCost: () => { // Removed
+    //   return calculatedInfluenceCost; // Removed
+    // } // Removed
   }));
 
   return (
@@ -164,7 +164,7 @@ const CanalMuggingStratagemPanel = forwardRef<StratagemSpecificPanelRef, Stratag
           <span>1 day</span>
           <span>7 days</span>
         </div>
-        <p className="text-xs text-amber-600 mt-1">Influence cost will be {calculatedInfluenceCost}🎭 ({durationDays} x {BASE_INFLUENCE_COST_PER_DAY} per day).</p>
+        {/* <p className="text-xs text-amber-600 mt-1">Influence cost will be {calculatedInfluenceCost}🎭 ({durationDays} x {BASE_INFLUENCE_COST_PER_DAY} per day).</p> // Removed */}
       </div>
 
       {/* Variant Selector */}

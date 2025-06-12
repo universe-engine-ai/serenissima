@@ -10,7 +10,7 @@ const BurglaryStratagemPanel = forwardRef<StratagemSpecificPanelRef, StratagemSp
   const [isBuildingDropdownOpen, setIsBuildingDropdownOpen] = useState(false);
   const buildingInputRef = useRef<HTMLInputElement>(null);
 
-  const calculatedInfluenceCost = stratagemData.influenceCostBase; // Burglary has a fixed cost
+  // const calculatedInfluenceCost = stratagemData.influenceCostBase; // Burglary has a fixed cost // Removed
 
   const summaryElements = useMemo(() => {
     const executorName = (currentUserFirstName && currentUserLastName)
@@ -44,9 +44,9 @@ const BurglaryStratagemPanel = forwardRef<StratagemSpecificPanelRef, StratagemSp
         // Other parameters like name, description, notes are handled by the creator with defaults
       };
     },
-    getCalculatedInfluenceCost: () => {
-      return calculatedInfluenceCost;
-    }
+    // getCalculatedInfluenceCost: () => { // Removed
+    //   return calculatedInfluenceCost; // Removed
+    // } // Removed
   }));
 
   return (

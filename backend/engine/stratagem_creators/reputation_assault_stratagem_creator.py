@@ -75,6 +75,7 @@ def try_create(
         "ExpiresAt": expires_at_utc.isoformat(),
         "Description": description,
         "Notes": stratagem_params.get("notes", "") # Base notes
+        # InfluenceCost is not set here
     }
 
     current_notes = stratagem_payload["Notes"]

@@ -23,8 +23,8 @@ const CoordinatePricingStratagemPanel = forwardRef<StratagemSpecificPanelRef, St
   const [isResourceTypeDropdownOpen, setIsResourceTypeDropdownOpen] = useState(false);
   const resourceTypeInputRef = useRef<HTMLInputElement>(null);
   
-  // Ce stratagème n'a pas de variantes affectant le coût de base de l'influence via le panneau.
-  const calculatedInfluenceCost = stratagemData.influenceCostBase;
+  // Ce stratagème n'a pas de variantes affectant le coût de base de l'influence via le panneau. // Removed
+  // const calculatedInfluenceCost = stratagemData.influenceCostBase; // Removed
 
   const summaryElements = useMemo(() => {
     const executorName = (currentUserFirstName && currentUserLastName)
@@ -110,9 +110,9 @@ const CoordinatePricingStratagemPanel = forwardRef<StratagemSpecificPanelRef, St
       // durationHours, name, description, notes sont gérés avec des valeurs par défaut par le créateur pour l'instant.
       return details;
     },
-    getCalculatedInfluenceCost: () => {
-      return calculatedInfluenceCost;
-    }
+    // getCalculatedInfluenceCost: () => { // Removed
+    //   return calculatedInfluenceCost; // Removed
+    // } // Removed
   }));
 
   return (

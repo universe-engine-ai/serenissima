@@ -11,7 +11,7 @@ const ReputationAssaultStratagemPanel = forwardRef<StratagemSpecificPanelRef, St
   const citizenInputRef = useRef<HTMLInputElement>(null);
   const [assaultAngle, setAssaultAngle] = useState('');
 
-  const calculatedInfluenceCost = stratagemData.influenceCostBase; // Fixed cost
+  // const calculatedInfluenceCost = stratagemData.influenceCostBase; // Fixed cost // Removed
 
   const summaryElements = useMemo(() => {
     const executorName = (currentUserFirstName && currentUserLastName)
@@ -55,9 +55,9 @@ const ReputationAssaultStratagemPanel = forwardRef<StratagemSpecificPanelRef, St
         // durationHours, name, description, notes are handled by the creator with defaults
       };
     },
-    getCalculatedInfluenceCost: () => {
-      return calculatedInfluenceCost;
-    }
+    // getCalculatedInfluenceCost: () => { // Removed
+    //   return calculatedInfluenceCost; // Removed
+    // } // Removed
   }));
 
   return (

@@ -28,9 +28,9 @@ const UndercutStratagemPanel = forwardRef<StratagemSpecificPanelRef, StratagemSp
   
   const stratagemHasVariants = stratagemData.hasVariants !== false;
 
-  const calculatedInfluenceCost = stratagemHasVariants
-    ? stratagemData.influenceCostBase * (selectedVariant === 'Mild' ? 1 : selectedVariant === 'Standard' ? 2 : 3)
-    : stratagemData.influenceCostBase;
+  // const calculatedInfluenceCost = stratagemHasVariants // Removed
+  //   ? stratagemData.influenceCostBase * (selectedVariant === 'Mild' ? 1 : selectedVariant === 'Standard' ? 2 : 3) // Removed
+  //   : stratagemData.influenceCostBase; // Removed
 
   // Exposer les méthodes via ref
   useImperativeHandle(ref, () => ({
@@ -57,13 +57,13 @@ const UndercutStratagemPanel = forwardRef<StratagemSpecificPanelRef, StratagemSp
       // TODO: Ajouter durationHours, name, description si ces champs sont ajoutés au panneau
       return details;
     },
-    getCalculatedInfluenceCost: () => {
-      return calculatedInfluenceCost;
-    }
+    // getCalculatedInfluenceCost: () => { // Removed
+    //   return calculatedInfluenceCost; // Removed
+    // } // Removed
   }));
 
-  // Informer le parent du changement de coût d'influence (si la prop est fournie)
-  // Ceci est géré par getCalculatedInfluenceCost, le parent peut l'appeler.
+  // Informer le parent du changement de coût d'influence (si la prop est fournie) // Removed
+  // Ceci est géré par getCalculatedInfluenceCost, le parent peut l'appeler. // Removed
 
   return (
     <div>
@@ -80,9 +80,9 @@ const UndercutStratagemPanel = forwardRef<StratagemSpecificPanelRef, StratagemSp
             className="w-full p-2 border border-amber-300 rounded-md bg-white text-amber-900 focus:ring-amber-500 focus:border-amber-500"
             disabled={isLoading}
           >
-            <option value="Mild">Mild (10% Undercut, Cost x1)</option>
-            <option value="Standard">Standard (15% Undercut, Cost x2)</option>
-            <option value="Aggressive">Aggressive (20% Undercut, Cost x3)</option>
+            <option value="Mild">Mild (10% Undercut)</option>
+            <option value="Standard">Standard (15% Undercut)</option>
+            <option value="Aggressive">Aggressive (20% Undercut)</option>
           </select>
         </div>
       )}

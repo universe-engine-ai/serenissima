@@ -60,7 +60,7 @@ def try_create(
         log.error(f"{LogColors.FAIL}Invalid 'durationDays' format for {STRATAGEM_TYPE}. Must be an integer. Params: {stratagem_params}{LogColors.ENDC}")
         return None
 
-    calculated_influence_cost = duration_days * INFLUENCE_COST_PER_DAY
+    # calculated_influence_cost = duration_days * INFLUENCE_COST_PER_DAY # Influence cost removed
     
     # TargetLand Airtable ID resolution is tricky here as this creator shouldn't access tables directly for lookups.
     # The main API endpoint or a pre-processing step should resolve LandId to Airtable ID if needed.
@@ -94,7 +94,7 @@ def try_create(
         "variant": variant,
         "targetLandId_param": target_land_id_param, 
         # "targetLandName_log": target_land_name_for_log, # This would require a lookup
-        "calculatedInfluenceCost": calculated_influence_cost,
+        # "calculatedInfluenceCost": calculated_influence_cost, # Influence cost removed
         "custom_notes": stratagem_params.get("notes", "")
     }
     notes_json_str = json.dumps(notes_details)
@@ -108,7 +108,7 @@ def try_create(
         "Name": name,
         "Description": description,
         "Notes": notes_json_str,
-        "InfluenceCost": calculated_influence_cost,
+        # "InfluenceCost": calculated_influence_cost, # Influence cost removed
         "ExpiresAt": expires_at_iso,
         "Category": "warfare", # As per schema
         # "TargetLand": [target_land_airtable_id] if target_land_airtable_id else None, # Caller handles this if needed

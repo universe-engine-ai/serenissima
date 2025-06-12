@@ -34,7 +34,7 @@ const StratagemExecutionPanel: React.FC<StratagemExecutionPanelProps> = ({
   const [executionResult, setExecutionResult] = useState<string | null>(null);
   const [errorResult, setErrorResult] = useState<string | null>(null);
   
-  const [currentInfluenceCost, setCurrentInfluenceCost] = useState<number>(stratagemData.influenceCostBase);
+  // const [currentInfluenceCost, setCurrentInfluenceCost] = useState<number>(stratagemData.influenceCostBase); // Removed
 
   const specificPanelRef = useRef<StratagemSpecificPanelRef>(null);
 
@@ -141,27 +141,27 @@ const StratagemExecutionPanel: React.FC<StratagemExecutionPanelProps> = ({
       // Réinitialiser les résultats lors de l'ouverture
       setExecutionResult(null);
       setErrorResult(null);
-      // Mettre à jour le coût d'influence initial basé sur le stratagème
-      if (specificPanelRef.current?.getCalculatedInfluenceCost) {
-        setCurrentInfluenceCost(specificPanelRef.current.getCalculatedInfluenceCost());
-      } else {
-        setCurrentInfluenceCost(stratagemData.influenceCostBase);
-      }
+      // // Mettre à jour le coût d'influence initial basé sur le stratagème // Removed
+      // if (specificPanelRef.current?.getCalculatedInfluenceCost) { // Removed
+      //   setCurrentInfluenceCost(specificPanelRef.current.getCalculatedInfluenceCost()); // Removed
+      // } else { // Removed
+      //   setCurrentInfluenceCost(stratagemData.influenceCostBase); // Removed
+      // } // Removed
     }
-  }, [isOpen, fetchDropdownData, stratagemData.influenceCostBase]);
+  }, [isOpen, fetchDropdownData, stratagemData]); // Removed stratagemData.influenceCostBase
 
-  // Mettre à jour le coût d'influence si le panneau enfant le change (par exemple, via une variante)
-  useEffect(() => {
-    if (specificPanelRef.current?.getCalculatedInfluenceCost) {
-      const newCost = specificPanelRef.current.getCalculatedInfluenceCost();
-      if (newCost !== currentInfluenceCost) {
-        setCurrentInfluenceCost(newCost);
-      }
-    }
-    // Cette dépendance sur currentInfluenceCost est pour réagir si le coût change
-    // à cause d'une interaction dans le panneau enfant qui n'est pas directement
-    // liée à un changement de props ici.
-  }, [stratagemData, currentInfluenceCost]); // Ajouter d'autres dépendances si le coût peut changer autrement
+  // // Mettre à jour le coût d'influence si le panneau enfant le change (par exemple, via une variante) // Removed
+  // useEffect(() => { // Removed
+  //   if (specificPanelRef.current?.getCalculatedInfluenceCost) { // Removed
+  //     const newCost = specificPanelRef.current.getCalculatedInfluenceCost(); // Removed
+  //     if (newCost !== currentInfluenceCost) { // Removed
+  //       setCurrentInfluenceCost(newCost); // Removed
+  //     } // Removed
+  //   } // Removed
+  //   // Cette dépendance sur currentInfluenceCost est pour réagir si le coût change // Removed
+  //   // à cause d'une interaction dans le panneau enfant qui n'est pas directement // Removed
+  //   // liée à un changement de props ici. // Removed
+  // }, [stratagemData, currentInfluenceCost]); // Ajouter d'autres dépendances si le coût peut changer autrement // Removed
 
 
   const handleExecute = async () => {
@@ -320,9 +320,9 @@ const StratagemExecutionPanel: React.FC<StratagemExecutionPanelProps> = ({
               }}
             />
             <p className="text-sm italic text-amber-800 mb-1 text-center">{stratagemData.description}</p>
-            <p className="text-lg font-semibold text-amber-700 mb-6 text-center"> {/* Adjusted margin */}
-              Influence Cost: {currentInfluenceCost} 🎭
-            </p>
+            {/* <p className="text-lg font-semibold text-amber-700 mb-6 text-center"> {/* Adjusted margin */}
+              {/* Influence Cost: {currentInfluenceCost} 🎭 // Removed */}
+            {/* </p> */}
             {/* Static duration display removed, as it's now dynamic within the panel */}
           </div>
 

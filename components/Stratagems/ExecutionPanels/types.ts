@@ -5,7 +5,7 @@ export interface StratagemData {
   type: string;
   title: string;
   description: string;
-  influenceCostBase: number;
+  // influenceCostBase: number; // Removed
   hasVariants?: boolean;
 }
 
@@ -54,5 +54,5 @@ export interface StratagemSpecificPanelProps {
 // Interface pour le handle de la ref des panneaux spécifiques
 export interface StratagemSpecificPanelRef {
   getStratagemDetails: () => Record<string, any> | null;
-  getCalculatedInfluenceCost?: () => number; // Optionnel, si le coût dépend du panneau enfant
+  // getCalculatedInfluenceCost?: () => number; // Removed
 }

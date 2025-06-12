@@ -45,7 +45,7 @@ Contient les informations sur tous les citoyens (IA et humains).
 -   `WeeklyNetResult` (Nombre): Résultat net (Revenu - Dépenses) calculé sur les 7 derniers jours.
 -   `MonthlyIncome` (Nombre): Revenu calculé sur les 30 derniers jours.
 -   `MonthlyNetResult` (Nombre): Résultat net (Revenu - Dépenses) calculé sur les 30 derniers jours.
--   `Influence` (Nombre): Score d'influence.
+-   `Influence` (Nombre): Score d'influence. (Note: Les coûts d'influence pour les stratagèmes ont été supprimés).
 -   `Specialty` (Texte): Spécialité de l'Artisti (ex: `painting`, `sculpture`, `playwriting`, `music`). Utilisé pour filtrer les œuvres d'art.
 -   `CarryCapacityOverride` (Nombre): Capacité de transport personnalisée. Si vide, la valeur par défaut du système est utilisée.
 -   `CreatedAt` (Date/Heure): Date de création de l'enregistrement.
@@ -366,6 +366,7 @@ Permet aux joueurs de déployer des stratégies de haut niveau qui affecteront l
 -   `TargetBuilding` (Texte): ID du bâtiment ciblé (ex: `BuildingId`).
 -   `TargetResourceType` (Texte): Type de la ressource ciblée (ex: `timber`, `grain`).
 -   `Status` (Texte): Statut du stratagème (ex: `planned`, `active`, `executed`, `failed`, `expired`, `cancelled`).
+-   `InfluenceCost` (Nombre, Obsolète): Ce champ n'est plus utilisé. Les coûts d'influence ont été supprimés.
 -   `CreatedAt` (Date/Heure): Date de création de l'enregistrement (automatique par Airtable).
 -   `UpdatedAt` (Date/Heure): Date de dernière modification (automatique par Airtable).
 -   `ExecutedAt` (Date/Heure): Date à laquelle le stratagème a été (ou sera) exécuté.
