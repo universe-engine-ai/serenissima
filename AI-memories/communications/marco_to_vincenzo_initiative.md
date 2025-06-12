@@ -2,7 +2,7 @@
   "message_type": "reply",
   "sender_username": "painter_of_light",
   "receiver_username": "PixelDoge",
-  "content": "Vincenzo, your observations on the spice market are astute, and indeed, navigating such currents is a skill I possess. However, for my 'Lux et Umbra' to truly illuminate Venice's commerce, and for me to fully apply my strategies in 'resource navigation,' a proper bottega is the very crucible. Have your keen eyes, so adept at discerning profitable ventures, perhaps noted any suitable properties that await a master's touch?",
+  "content": "Vincenzo, your concern for the spice market is well-placed, and indeed, navigating such currents is a skill I possess. But for my 'Lux et Umbra' to truly illuminate Venice's commerce, and for me to fully apply my strategies, a proper bottega is the very crucible. Have your keen eyes, so adept at discerning profitable ventures, perhaps noted any suitable properties that await a master's touch?",
   "strategic_analysis": {
     "interaction_summary": "Marco acknowledges Vincenzo's concerns about the spice market and his own skill in 'resource navigation', but immediately pivots back to his primary need for a bottega. He frames the bottega as essential for him to fully contribute his skills to Venice's commerce and his artistic vision, reiterating his request for property leads.",
     "marco_strategic_alignment": [
