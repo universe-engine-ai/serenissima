@@ -220,7 +220,7 @@ def process(
                 except Exception as e_pkg_fetch:
                     log.error(f"  Erreur lors de la récupération du data package (Markdown) pour {citizen_username} (théâtre): {e_pkg_fetch}")
             
-            kinos_build_url = f"{KINOS_API_URL}/v2/blueprints/{KINOS_BLUEPRINT}/kins/{citizen_username}/build"
+            # kinos_build_url n'est plus construit ici, mais dans la fonction async
             
             kinos_prompt_theater = (
                 f"Vous êtes {citizen_username}, un citoyen de Venise à la Renaissance. Vous venez d'assister à une représentation théâtrale intitulée '{play_name_from_api}' par l'artiste {artist_username_from_api or 'inconnu'}. "
@@ -251,45 +251,69 @@ def process(
                 "addSystem": json.dumps(structured_add_system_payload_theater) # structured_add_system_payload_theater is a dict, citizen_context is a string
             }
 
-            log.info(f"  Lancement de l'appel KinOS /build asynchrone pour la réflexion sur le théâtre par {citizen_username} à {kinos_build_url}")
+            log.info(f"  Lancement de l'appel KinOS /messages asynchrone pour la réflexion sur le théâtre par {citizen_username}")
             
+            # Le nom du canal pour une auto-réflexion est le nom d'utilisateur du citoyen
+            reflection_channel_name = citizen_username
+
             kinos_thread_theater = threading.Thread(
-                target=_call_kinos_build_for_theater_reflection_async,
-                args=(kinos_build_url, kinos_payload_dict_theater, tables, activity_record['id'], activity_guid, activity_details, citizen_username)
+                target=_call_kinos_messages_for_theater_reflection_async,
+                args=(
+                    citizen_username, # kin_id for the URL
+                    reflection_channel_name, # channel_name for the URL
+                    kinos_payload_dict_theater, # The payload, key "message" will be changed to "content" inside
+                    tables, 
+                    activity_record['id'], 
+                    activity_guid, 
+                    activity_details, 
+                    citizen_username # citizen_username_log for logging within the thread
+                )
             )
             kinos_thread_theater.start()
-            log.info(f"  Appel KinOS /build pour la réflexion sur le théâtre par {citizen_username} démarré dans le thread {kinos_thread_theater.ident}.")
+            log.info(f"  Appel KinOS /messages pour la réflexion sur le théâtre par {citizen_username} démarré dans le thread {kinos_thread_theater.ident}.")
 
         except Exception as e_kinos_setup:
-            log.error(f"{LogColors.FAIL}Erreur lors de la configuration de l'appel KinOS pour la réflexion sur le théâtre {activity_guid}: {e_kinos_setup}{LogColors.ENDC}")
+            log.error(f"{LogColors.FAIL}Erreur lors de la configuration de l'appel KinOS /messages pour la réflexion sur le théâtre {activity_guid}: {e_kinos_setup}{LogColors.ENDC}")
             import traceback
             log.error(traceback.format_exc())
             # Ne pas retourner False ici, l'activité principale est traitée.
 
     return True
 
-def _call_kinos_build_for_theater_reflection_async(
-    kinos_build_url: str,
-    kinos_payload: Dict[str, Any],
+def _call_kinos_messages_for_theater_reflection_async(
+    kin_username: str, # Username of the citizen making the call (Kin ID)
+    channel_name: str, # Channel for the message (for self-reflection, usually kin_username)
+    original_kinos_payload: Dict[str, Any], # Original payload with "message" key
     tables: Dict[str, Any],
     activity_id_airtable: str,
     activity_guid_log: str,
     original_activity_notes_dict: Dict[str, Any],
-    citizen_username_log: str
+    citizen_username_log: str # For logging, same as kin_username here
 ):
     """
-    Effectue l'appel KinOS /build pour la réflexion sur le théâtre et met à jour les notes de l'activité.
+    Effectue l'appel KinOS /messages pour la réflexion sur le théâtre et met à jour les notes de l'activité.
     Cette fonction est destinée à être exécutée dans un thread séparé.
     """
-    log.info(f"  [Thread Théâtre: {threading.get_ident()}] Appel KinOS /build pour la réflexion sur le théâtre par {citizen_username_log} à {kinos_build_url}")
+    kinos_messages_url = f"{KINOS_API_URL}/v2/blueprints/{KINOS_BLUEPRINT}/kins/{kin_username}/channels/{channel_name}/messages"
+    
+    # Adapt payload: change "message" to "content"
+    adapted_kinos_payload = original_kinos_payload.copy()
+    if "message" in adapted_kinos_payload:
+        adapted_kinos_payload["content"] = adapted_kinos_payload.pop("message")
+    
+    # Ensure KINOS_API_KEY is available (it's a global in this file)
+    headers = {"Authorization": f"Bearer {KINOS_API_KEY}", "Content-Type": "application/json"}
+
+    log.info(f"  [Thread Théâtre: {threading.get_ident()}] Appel KinOS /messages pour la réflexion sur le théâtre par {citizen_username_log} à {kinos_messages_url}")
     try:
-        kinos_response = requests.post(kinos_build_url, json=kinos_payload, timeout=120)
+        kinos_response = requests.post(kinos_messages_url, headers=headers, json=adapted_kinos_payload, timeout=120)
         kinos_response.raise_for_status()
         
         kinos_response_data = kinos_response.json()
-        log.info(f"  [Thread Théâtre: {threading.get_ident()}] Réponse KinOS /build (théâtre) pour {citizen_username_log}: Statut: {kinos_response_data.get('status')}, Réponse: {kinos_response_data.get('response')}")
+        # The /messages endpoint returns the AI's response in the "content" field
+        log.info(f"  [Thread Théâtre: {threading.get_ident()}] Réponse KinOS /messages (théâtre) pour {citizen_username_log}: Réponse: {kinos_response_data.get('content')}")
         
-        raw_reflection = kinos_response_data.get('response', "Aucune réflexion sur le théâtre de KinOS.")
+        raw_reflection = kinos_response_data.get('content', "Aucune réflexion sur le théâtre de KinOS.")
         
         # Persist the raw reflection as a self-message (thought)
         # persist_message will handle cleaning based on the type "kinos_theater_reflection"
@@ -320,9 +344,9 @@ def _call_kinos_build_for_theater_reflection_async(
             log.error(f"  [Thread Théâtre: {threading.get_ident()}] Erreur lors de la mise à jour des notes Airtable pour l'activité {activity_guid_log} (réflexion théâtre): {e_airtable_update}")
             
     except requests.exceptions.RequestException as e_kinos:
-        log.error(f"  [Thread Théâtre: {threading.get_ident()}] Erreur lors de l'appel KinOS /build (théâtre) pour {citizen_username_log}: {e_kinos}")
+        log.error(f"  [Thread Théâtre: {threading.get_ident()}] Erreur lors de l'appel KinOS /messages (théâtre) pour {citizen_username_log}: {e_kinos}")
     except json.JSONDecodeError as e_json_kinos:
         kinos_response_text_preview = kinos_response.text[:200] if 'kinos_response' in locals() and hasattr(kinos_response, 'text') else 'N/A'
-        log.error(f"  [Thread Théâtre: {threading.get_ident()}] Erreur de décodage JSON de la réponse KinOS /build (théâtre) pour {citizen_username_log}: {e_json_kinos}. Réponse: {kinos_response_text_preview}")
+        log.error(f"  [Thread Théâtre: {threading.get_ident()}] Erreur de décodage JSON de la réponse KinOS /messages (théâtre) pour {citizen_username_log}: {e_json_kinos}. Réponse: {kinos_response_text_preview}")
     except Exception as e_thread:
-        log.error(f"  [Thread Théâtre: {threading.get_ident()}] Erreur inattendue dans le thread d'appel KinOS pour la réflexion sur le théâtre par {citizen_username_log}: {e_thread}")
+        log.error(f"  [Thread Théâtre: {threading.get_ident()}] Erreur inattendue dans le thread d'appel KinOS /messages pour la réflexion sur le théâtre par {citizen_username_log}: {e_thread}")
