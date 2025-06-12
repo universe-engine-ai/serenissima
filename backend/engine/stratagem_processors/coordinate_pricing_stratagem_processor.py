@@ -133,26 +133,60 @@ def process(
 
     # Determine which resource types to process
     resource_types_to_process: List[str] = []
-    initial_target_resource_type = stratagem_record['fields'].get('TargetResourceType') # This is required by creator
+    initial_target_resource_type = stratagem_record['fields'].get('TargetResourceType')
 
     if initial_target_resource_type:
         resource_types_to_process.append(initial_target_resource_type)
-    # The creator ensures TargetResourceType is always present.
-    # If logic were to change to allow targeting a citizen/building for *all* their resources:
-    # elif target_building_id_for_relationship:
-    #     resource_types_to_process = _get_distinct_resources_sold_by_building(tables, target_building_id_for_relationship)
-    # elif target_citizen_for_relationship:
-    #     resource_types_to_process = _get_distinct_resources_sold_by_citizen(tables, target_citizen_for_relationship)
-    else: # Should not happen if creator validates
-        log.error(f"{LogColors.FAIL}Stratagem {stratagem_id} missing TargetResourceType. Cannot process.{LogColors.ENDC}")
-        tables['stratagems'].update(stratagem_record['id'], {'Status': 'failed', 'Notes': 'Missing TargetResourceType.'})
-        return False
+    else:
+        # No specific resource type, so find all resources the executor is currently selling
+        log.info(f"{LogColors.PROCESS}No TargetResourceType specified for stratagem {stratagem_id}. Finding all resources sold by {executed_by}.{LogColors.ENDC}")
+        
+        now_iso_for_seller_check = datetime.now(pytz.utc).isoformat()
+        seller_contracts_formula = (
+            f"AND({{Seller}} = '{_escape_airtable_value(executed_by)}', "
+            f"{{Type}} = 'public_sell', "
+            f"{{Status}} = 'active', "
+            f"IS_BEFORE({{CreatedAt}}, '{now_iso_for_seller_check}'), "
+            f"IS_AFTER({{EndAt}}, '{now_iso_for_seller_check}'))"
+        )
+        try:
+            executor_sell_contracts = tables['contracts'].all(formula=seller_contracts_formula, fields=['ResourceType'])
+            distinct_resources_sold = set()
+            for contract in executor_sell_contracts:
+                res_type = contract['fields'].get('ResourceType')
+                if res_type:
+                    distinct_resources_sold.add(res_type)
+            resource_types_to_process = list(distinct_resources_sold)
+            if not resource_types_to_process:
+                log.warning(f"{LogColors.WARNING}Stratagem {stratagem_id}: {executed_by} is not currently selling any resources. Cannot coordinate prices.{LogColors.ENDC}")
+                all_notes_for_stratagem_update: List[str] = [f"{executed_by} is not selling any resources."]
+                final_notes_str = stratagem_record['fields'].get('Notes', "")
+                if all_notes_for_stratagem_update:
+                    new_notes_joined = "\n".join(all_notes_for_stratagem_update)
+                    final_notes_str = f"{final_notes_str}\n{new_notes_joined}".strip() if final_notes_str else new_notes_joined.strip()
+                tables['stratagems'].update(stratagem_record['id'], {'Notes': final_notes_str, 'Status': 'executed'}) # Mark as executed as there's nothing to do
+                return True # Stratagem itself didn't fail, just had no effect
+        except Exception as e_fetch_seller_res:
+            log.error(f"{LogColors.FAIL}Error fetching resources sold by {executed_by} for stratagem {stratagem_id}: {e_fetch_seller_res}{LogColors.ENDC}")
+            tables['stratagems'].update(stratagem_record['id'], {'Status': 'failed', 'Notes': f"Error fetching executor's resources: {e_fetch_seller_res}"})
+            return False
     
     log.info(f"{LogColors.PROCESS}Stratagem {stratagem_id} will attempt to coordinate prices for resource(s): {', '.join(resource_types_to_process)}.{LogColors.ENDC}")
 
     overall_success_for_stratagem = True
     all_activities_initiated_count = 0
-    all_notes_for_stratagem_update: List[str] = []
+    all_notes_for_stratagem_update: List[str] = [] # Initialize here if not already
+
+    if not resource_types_to_process: # Handles case where executor sells nothing when TargetResourceType is blank
+        log.info(f"{LogColors.PROCESS}Stratagem {stratagem_id}: No resources to process for price coordination by {executed_by}.{LogColors.ENDC}")
+        # Notes might have been updated already if this was due to executor selling nothing.
+        # If it was due to a specific TargetResourceType not being sold by executor, that's handled below.
+        # Ensure the stratagem is marked as executed if no actions are taken.
+        current_stratagem_status = stratagem_record['fields'].get('Status')
+        if current_stratagem_status == 'active': # Only update if still active
+             tables['stratagems'].update(stratagem_record['id'], {'Status': 'executed', 'Notes': stratagem_record['fields'].get('Notes', "") + "\nNo resources found to coordinate."})
+        return True
+
 
     for current_resource_type_to_target in resource_types_to_process:
         log.info(f"{LogColors.STRATAGEM_PROCESSOR}--- Processing coordinate_pricing for resource: {current_resource_type_to_target} (Stratagem: {stratagem_id}) ---{LogColors.ENDC}")
@@ -162,7 +196,7 @@ def process(
         if not reference_prices:
             log.info(f"{LogColors.PROCESS}No reference prices found for {current_resource_type_to_target} for stratagem {stratagem_id}. No price adjustment for this resource.{LogColors.ENDC}")
             all_notes_for_stratagem_update.append(f"No reference prices for {current_resource_type_to_target}.")
-            continue 
+            continue
 
         avg_reference_price = statistics.mean(reference_prices)
         target_price = round(avg_reference_price, 2)
@@ -269,16 +303,16 @@ def process(
         if not stratagem_record['fields'].get('ExecutedAt'):
             update_payload_stratagem['ExecutedAt'] = datetime.now(pytz.utc).isoformat()
         
-        notification_resource_target_text = f"resource '{initial_target_resource_type}'"
+        notification_resource_target_text = f"resource '{initial_target_resource_type}'" if initial_target_resource_type else "all their sellable resources"
         if notification_recipient_username and notification_recipient_username != executed_by:
             notification_content = (
                 f"Citizen {executed_by} has initiated a 'coordinate_pricing' stratagem "
                 f"affecting prices for {notification_resource_target_text}. "
                 f"Their prices are now aligned with yours or the market."
             )
-            if target_citizen_for_relationship:
+            if target_citizen_for_relationship: # TargetCitizen is from stratagem_record['fields']
                 notification_content += f" You were the reference for this coordination."
-            elif target_building_id_for_relationship:
+            elif target_building_id_for_relationship: # TargetBuilding is from stratagem_record['fields']
                 notification_content += f" Your building '{target_building_id_for_relationship}' was the reference."
 
             try:

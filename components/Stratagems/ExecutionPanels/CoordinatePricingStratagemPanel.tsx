@@ -5,12 +5,6 @@ import { FaUserShield, FaBuilding, FaBoxOpen, FaTimes, FaLongArrowAltRight } fro
 const CoordinatePricingStratagemPanel = forwardRef<StratagemSpecificPanelRef, StratagemSpecificPanelProps>((props, ref) => {
   const { stratagemData, citizens, buildings, resourceTypes, isLoading, currentUserUsername, currentUserFirstName, currentUserLastName } = props;
 
-  // States for Target Resource Type
-  const [targetResourceType, setTargetResourceType] = useState<string | null>(null);
-  const [resourceTypeSearch, setResourceTypeSearch] = useState('');
-  const [isResourceTypeDropdownOpen, setIsResourceTypeDropdownOpen] = useState(false);
-  const resourceTypeInputRef = useRef<HTMLInputElement>(null);
-
   // States for Target Citizen
   const [targetCitizen, setTargetCitizen] = useState<string | null>(null);
   const [citizenSearch, setCitizenSearch] = useState('');
@@ -22,23 +16,38 @@ const CoordinatePricingStratagemPanel = forwardRef<StratagemSpecificPanelRef, St
   const [buildingSearch, setBuildingSearch] = useState('');
   const [isBuildingDropdownOpen, setIsBuildingDropdownOpen] = useState(false);
   const buildingInputRef = useRef<HTMLInputElement>(null);
+
+  // States for Target Resource Type (now optional)
+  const [targetResourceType, setTargetResourceType] = useState<string | null>(null);
+  const [resourceTypeSearch, setResourceTypeSearch] = useState('');
+  const [isResourceTypeDropdownOpen, setIsResourceTypeDropdownOpen] = useState(false);
+  const resourceTypeInputRef = useRef<HTMLInputElement>(null);
   
   // Ce stratagème n'a pas de variantes affectant le coût de base de l'influence via le panneau.
   const calculatedInfluenceCost = stratagemData.influenceCostBase;
 
   const summaryElements = useMemo(() => {
-    if (!targetResourceType) {
-      return null;
-    }
-
     const executorName = (currentUserFirstName && currentUserLastName)
       ? `${currentUserFirstName} ${currentUserLastName}`
       : currentUserUsername || "You";
 
-    const resource = resourceTypes.find(rt => rt.id === targetResourceType);
-    const resourceName = resource?.name || targetResourceType;
-    const resourceImageUrl = resource ? `https://backend.serenissima.ai/public_assets/images/resources/${resource.id}.png` : null;
-
+    let resourceDisplayElement: JSX.Element | string = "all their sellable resources";
+    if (targetResourceType) {
+      const resource = resourceTypes.find(rt => rt.id === targetResourceType);
+      const resourceName = resource?.name || targetResourceType;
+      const resourceImageUrl = resource ? `https://backend.serenissima.ai/public_assets/images/resources/${resource.id}.png` : null;
+      resourceDisplayElement = (
+        <>
+          {resourceImageUrl && (
+            <img src={resourceImageUrl} alt={resourceName} className="inline-block w-4 h-4 mx-1 object-contain" />
+          )}
+          <span className="font-bold">{resourceName}</span>
+        </>
+      );
+    } else {
+      resourceDisplayElement = <span className="font-bold">all their sellable resources</span>;
+    }
+    
     let targetDescriptionElements: JSX.Element | string;
 
     if (targetCitizen) {
@@ -54,7 +63,7 @@ const CoordinatePricingStratagemPanel = forwardRef<StratagemSpecificPanelRef, St
         // Le processeur essaiera toujours de se coordonner avec les ventes directes de ce citoyen.
         targetDescriptionElements = (
           <>
-            the prices of <span className="font-bold">{citizenDisplayName}</span> for the selected resource. 
+            the prices of <span className="font-bold">{citizenDisplayName}</span> for {targetResourceType ? "the selected resource" : "all resources"}. 
             Note: this citizen does not appear to own any listed business buildings.
           </>
         );
@@ -62,7 +71,7 @@ const CoordinatePricingStratagemPanel = forwardRef<StratagemSpecificPanelRef, St
         // Le citoyen cible est sélectionné et possède des bâtiments.
         targetDescriptionElements = (
           <>
-            the prices of <span className="font-bold">{citizenDisplayName}</span> for the selected resource.
+            the prices of <span className="font-bold">{citizenDisplayName}</span> for {targetResourceType ? "the selected resource" : "all resources"}.
           </>
         );
       }
@@ -71,33 +80,27 @@ const CoordinatePricingStratagemPanel = forwardRef<StratagemSpecificPanelRef, St
       const buildingDisplayName = building?.name || targetBuilding;
       targetDescriptionElements = (
         <>
-          the prices of building <span className="font-bold">{buildingDisplayName}</span> for the selected resource.
+          the prices of building <span className="font-bold">{buildingDisplayName}</span> for {targetResourceType ? "the selected resource" : "all resources"}.
         </>
       );
     } else { // Ni targetCitizen ni targetBuilding ne sont sélectionnés
-      targetDescriptionElements = `the general market average for the selected resource.`;
+      targetDescriptionElements = `the general market average for ${targetResourceType ? "the selected resource" : "all resources"}.`;
     }
 
     return (
       <>
-        <span className="font-bold">{executorName}</span> will coordinate their prices for 
-        {resourceImageUrl && (
-          <img src={resourceImageUrl} alt={resourceName} className="inline-block w-4 h-4 mx-1 object-contain" />
-        )}
-        <span className="font-bold">{resourceName}</span> to match {targetDescriptionElements}
+        <span className="font-bold">{executorName}</span> will coordinate their prices for {resourceDisplayElement} to match {targetDescriptionElements}
       </>
     );
   }, [targetResourceType, targetCitizen, targetBuilding, currentUserUsername, currentUserFirstName, currentUserLastName, resourceTypes, citizens, buildings]);
 
   useImperativeHandle(ref, () => ({
     getStratagemDetails: () => {
-      if (!targetResourceType) {
-        console.error("CoordinatePricingStratagemPanel: Target Resource Type is required.");
-        return null; 
+      // TargetResourceType is now optional. If not selected, it won't be included in details.
+      const details: Record<string, any> = {};
+      if (targetResourceType) {
+        details.targetResourceType = targetResourceType;
       }
-      const details: Record<string, any> = {
-        targetResourceType: targetResourceType,
-      };
       if (targetCitizen) {
         details.targetCitizen = targetCitizen;
       }
@@ -114,69 +117,6 @@ const CoordinatePricingStratagemPanel = forwardRef<StratagemSpecificPanelRef, St
 
   return (
     <div>
-      {/* Target Resource Type */}
-      <div className="mb-4">
-        <label htmlFor="coordinate_targetResourceType_search" className="block text-sm font-medium text-amber-800 mb-1 flex items-center">
-          <FaBoxOpen className="mr-2" /> Target Resource Type <span className="text-red-500 ml-1">*</span>
-        </label>
-        <div className="relative">
-          <input
-            id="coordinate_targetResourceType_search"
-            type="text"
-            ref={resourceTypeInputRef}
-            value={resourceTypeSearch}
-            onChange={(e) => {
-              setResourceTypeSearch(e.target.value);
-              if (!isResourceTypeDropdownOpen) setIsResourceTypeDropdownOpen(true);
-              if (targetResourceType) setTargetResourceType(null);
-            }}
-            onFocus={() => setIsResourceTypeDropdownOpen(true)}
-            onBlur={() => setTimeout(() => setIsResourceTypeDropdownOpen(false), 150)}
-            placeholder={targetResourceType ? resourceTypes.find(rt => rt.id === targetResourceType)?.name || 'Search...' : 'Search Resource Types...'}
-            className="w-full p-2 border border-amber-300 rounded-md bg-white text-amber-900 focus:ring-amber-500 focus:border-amber-500"
-            disabled={isLoading}
-          />
-          {targetResourceType && (
-            <button
-              type="button"
-              onClick={() => {
-                setTargetResourceType(null);
-                setResourceTypeSearch('');
-                resourceTypeInputRef.current?.focus();
-              }}
-              className="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-400 hover:text-gray-600"
-              aria-label="Clear selection"
-            >
-              <FaTimes />
-            </button>
-          )}
-          {isResourceTypeDropdownOpen && (
-            <ul className="absolute z-10 w-full bg-white border border-amber-300 rounded-md mt-1 shadow-lg max-h-60 overflow-y-auto">
-              {resourceTypes
-                .filter(rt => rt.name.toLowerCase().includes(resourceTypeSearch.toLowerCase()) || (rt.category && rt.category.toLowerCase().includes(resourceTypeSearch.toLowerCase())))
-                .map(rt => (
-                  <li
-                    key={`coordinate-resource-opt-${rt.id}`}
-                    onClick={() => {
-                      setTargetResourceType(rt.id);
-                      setResourceTypeSearch(rt.name);
-                      setIsResourceTypeDropdownOpen(false);
-                    }}
-                    className="p-2 hover:bg-amber-100 cursor-pointer text-amber-800 flex items-center"
-                  >
-                    <img 
-                      src={`https://backend.serenissima.ai/public_assets/images/resources/${rt.id}.png`} 
-                      alt={rt.name} 
-                      className="w-5 h-5 mr-2 object-contain" 
-                    />
-                    {rt.name}
-                  </li>
-                ))}
-            </ul>
-          )}
-        </div>
-      </div>
-
       {/* Target Citizen (Optional) */}
       <div className="mb-4">
         <label htmlFor="coordinate_targetCitizen_search" className="block text-sm font-medium text-amber-800 mb-1 flex items-center">
@@ -308,6 +248,70 @@ const CoordinatePricingStratagemPanel = forwardRef<StratagemSpecificPanelRef, St
                     className="p-2 hover:bg-amber-100 cursor-pointer text-amber-800"
                   >
                     {b.name || b.buildingId} (Owner: {b.owner || 'N/A'})
+                  </li>
+                ))}
+            </ul>
+          )}
+        </div>
+      </div>
+
+      {/* Target Resource Type (Optional) - Moved here */}
+      <div className="mb-4">
+        <label htmlFor="coordinate_targetResourceType_search" className="block text-sm font-medium text-amber-800 mb-1 flex items-center">
+          <FaBoxOpen className="mr-2" /> Target Resource Type (Optional)
+        </label>
+        <p className="text-xs text-amber-600 mb-1">If no resource type is selected, coordination will apply to all sellable resources.</p>
+        <div className="relative">
+          <input
+            id="coordinate_targetResourceType_search"
+            type="text"
+            ref={resourceTypeInputRef}
+            value={resourceTypeSearch}
+            onChange={(e) => {
+              setResourceTypeSearch(e.target.value);
+              if (!isResourceTypeDropdownOpen) setIsResourceTypeDropdownOpen(true);
+              if (targetResourceType) setTargetResourceType(null);
+            }}
+            onFocus={() => setIsResourceTypeDropdownOpen(true)}
+            onBlur={() => setTimeout(() => setIsResourceTypeDropdownOpen(false), 150)}
+            placeholder={targetResourceType ? resourceTypes.find(rt => rt.id === targetResourceType)?.name || 'Search...' : 'Search Resource Types (or leave blank for all)...'}
+            className="w-full p-2 border border-amber-300 rounded-md bg-white text-amber-900 focus:ring-amber-500 focus:border-amber-500"
+            disabled={isLoading}
+          />
+          {targetResourceType && (
+            <button
+              type="button"
+              onClick={() => {
+                setTargetResourceType(null);
+                setResourceTypeSearch('');
+                resourceTypeInputRef.current?.focus();
+              }}
+              className="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-400 hover:text-gray-600"
+              aria-label="Clear selection"
+            >
+              <FaTimes />
+            </button>
+          )}
+          {isResourceTypeDropdownOpen && (
+            <ul className="absolute z-10 w-full bg-white border border-amber-300 rounded-md mt-1 shadow-lg max-h-60 overflow-y-auto">
+              {resourceTypes
+                .filter(rt => rt.name.toLowerCase().includes(resourceTypeSearch.toLowerCase()) || (rt.category && rt.category.toLowerCase().includes(resourceTypeSearch.toLowerCase())))
+                .map(rt => (
+                  <li
+                    key={`coordinate-resource-opt-${rt.id}`}
+                    onClick={() => {
+                      setTargetResourceType(rt.id);
+                      setResourceTypeSearch(rt.name);
+                      setIsResourceTypeDropdownOpen(false);
+                    }}
+                    className="p-2 hover:bg-amber-100 cursor-pointer text-amber-800 flex items-center"
+                  >
+                    <img 
+                      src={`https://backend.serenissima.ai/public_assets/images/resources/${rt.id}.png`} 
+                      alt={rt.name} 
+                      className="w-5 h-5 mr-2 object-contain" 
+                    />
+                    {rt.name}
                   </li>
                 ))}
             </ul>

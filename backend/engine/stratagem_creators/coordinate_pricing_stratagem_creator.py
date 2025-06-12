@@ -44,13 +44,15 @@ def try_create(
         log.error(f"{LogColors.FAIL}Stratagem creator for 'coordinate_pricing' called with incorrect type: {stratagem_type}{LogColors.ENDC}")
         return None
 
-    target_resource_type = stratagem_params.get("targetResourceType")
+    target_resource_type = stratagem_params.get("targetResourceType") # Now optional
     target_citizen = stratagem_params.get("targetCitizen")
     target_building = stratagem_params.get("targetBuilding")
 
-    if not target_resource_type:
-        log.error(f"{LogColors.FAIL}TargetResourceType must be specified for coordinate_pricing stratagem.{LogColors.ENDC}")
-        return None
+    # TargetResourceType is now optional. If not provided, the processor will handle coordinating all sellable resources.
+    if not target_resource_type and not target_citizen and not target_building:
+        log.warning(f"{LogColors.WARNING}Coordinate_pricing stratagem initiated without specific resource, citizen, or building. Will target general market for all sellable resources.{LogColors.ENDC}")
+    elif not target_resource_type:
+        log.info(f"{LogColors.STRATAGEM_CREATOR}Coordinate_pricing stratagem initiated without specific resource. Will target selected citizen/building for all sellable resources.{LogColors.ENDC}")
     
     # While targetCitizen or targetBuilding are optional for the stratagem's flexibility (i.e. target general market),
     # the current design implies coordinating *with* someone or a specific entity if these are provided.
@@ -58,11 +60,14 @@ def try_create(
 
     stratagem_id = f"stratagem-{stratagem_type.lower()}-{citizen_username.lower()}-{uuid.uuid4().hex[:8]}"
     
-    name_target_part = target_resource_type
+    name_resource_part = target_resource_type if target_resource_type else "All Resources"
+    name_target_part = name_resource_part
+    
     if target_citizen:
-        name_target_part = f"{target_resource_type} with {target_citizen}"
+        name_target_part = f"{name_resource_part} with {target_citizen}"
     elif target_building:
-        name_target_part = f"{target_resource_type} at {target_building}"
+        name_target_part = f"{name_resource_part} at {target_building}"
+    # If neither citizen nor building, it's general market for the resource part.
     
     name = stratagem_params.get("name") or f"Coordinate Pricing for {name_target_part}"
     description = stratagem_params.get("description") or f"{citizen_username} is attempting to coordinate prices for {name_target_part}."
@@ -84,7 +89,8 @@ def try_create(
         "Notes": stratagem_params.get("notes", "")
     }
 
-    stratagem_payload["TargetResourceType"] = target_resource_type
+    if target_resource_type: # Only add if specified
+        stratagem_payload["TargetResourceType"] = target_resource_type
     if target_citizen:
         stratagem_payload["TargetCitizen"] = target_citizen
     if target_building:

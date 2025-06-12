@@ -113,28 +113,32 @@ This will make NLR attempt to sell timber 15% cheaper than BasstheWhale for 48 h
 
 1.  **Creation**:
     -   The `coordinate_pricing_stratagem_creator.py` receives the request.
-    -   It validates parameters (e.g., `targetResourceType` must be specified).
+    -   It validates parameters. `targetResourceType` is now optional.
     -   It creates a new record in the `STRATAGEMS` table with `Status: "active"`, `Category: "economic_cooperation"`, and sets `ExpiresAt` based on `durationHours`.
 
 2.  **Processing**:
     -   `processStratagems.py` picks up the active "coordinate_pricing" stratagem.
     -   `coordinate_pricing_stratagem_processor.py` is invoked.
-    -   **Reference Price Analysis**:
-        -   It identifies reference sell contracts for the `targetResourceType`.
-        -   If `targetCitizen` is set, it only looks at contracts from that citizen.
-        -   If `targetBuilding` is set, it only looks at contracts from that building.
-        -   If neither is set, it looks at all public sell contracts for the resource from *other* citizens (excluding the `ExecutedBy` citizen).
-    -   **Price Adjustment**:
-        -   If no reference contracts are found, a note is made, and no price adjustment occurs for this cycle.
-        -   Otherwise, it calculates the average price from the identified reference contracts.
-        -   It updates all active public sell contracts of the `ExecutedBy` citizen for the `targetResourceType` to this new average price (ensuring the price is not zero or negative, defaulting to a minimum like 0.01 if necessary). This is done by creating `manage_public_sell_contract` activities.
+    -   **Resource Scope Definition**:
+        -   If `TargetResourceType` is specified in the stratagem record, only that resource is processed.
+        -   If `TargetResourceType` is *not* specified, the processor identifies all distinct resources currently being sold by the `ExecutedBy` citizen via active `public_sell` contracts. Each of these resources will be processed.
+    -   **For each resource to be processed**:
+        -   **Reference Price Analysis**:
+            -   It identifies reference sell contracts for the current resource type.
+            -   If `TargetCitizen` is set, it only looks at contracts from that citizen for this resource.
+            -   If `TargetBuilding` is set, it only looks at contracts from that building for this resource.
+            -   If neither `TargetCitizen` nor `TargetBuilding` is set, it looks at all public sell contracts for this resource from *other* citizens (excluding the `ExecutedBy` citizen).
+        -   **Price Adjustment**:
+            -   If no reference contracts are found for the current resource, a note is made, and no price adjustment occurs for this resource in this cycle.
+            -   Otherwise, it calculates the average price from the identified reference contracts for this resource.
+            -   It updates all active public sell contracts of the `ExecutedBy` citizen for the current resource type to this new average price (ensuring the price is not zero or negative, defaulting to a minimum like 0.01 if necessary). This is done by creating `manage_public_sell_contract` activities.
     -   **Status & Notes**:
         -   The stratagem remains `active` to allow for periodic re-evaluation of reference prices and adjustments.
         -   `ExecutedAt` is set on the first successful processing run that results in at least one activity being initiated.
-        -   Notes are updated with details of the price adjustment or reasons if no adjustment was made.
-        -   If critical parameters are missing (e.g., `TargetResourceType`), the stratagem status is set to `failed` (though the creator should prevent this).
+        -   Notes are updated with details of the price adjustments or reasons if no adjustment was made for specific resources.
+        -   If `TargetResourceType` was initially missing and the executor sells no resources, the stratagem is marked `executed` with a note.
     -   **Notifications & Relationships**:
-        -   If `targetCitizen` or `targetBuilding` was specified, a notification is sent to the target, and a small positive trust impact is applied between the `ExecutedBy` citizen and the target.
+        -   If `TargetCitizen` or `TargetBuilding` was specified, a notification is sent to the target, and a small positive trust impact is applied between the `ExecutedBy` citizen and the target. The notification will mention the specific resource if one was targeted, or refer to "all resources" otherwise.
 
 #### Example API Request to `POST /api/stratagems/try-create`:
 
