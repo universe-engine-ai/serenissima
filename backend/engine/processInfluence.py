@@ -18,7 +18,7 @@ import os
 import sys
 import json
 import traceback
-from datetime import datetime
+from datetime import datetime, timedelta
 import pytz
 from typing import Dict, List, Optional, Any
 import requests
@@ -52,7 +52,8 @@ try:
         _escape_airtable_value,
         VENICE_TIMEZONE,
         get_building_types_from_api, # Use the helper
-        get_citizen_record # Use the helper
+        get_citizen_record, # Use the helper
+        get_venice_time_now # Import for current Venice time
     )
 except ImportError:
     class LogColors: HEADER=OKBLUE=OKCYAN=OKGREEN=WARNING=FAIL=ENDC=BOLD=LIGHTBLUE=""
@@ -61,6 +62,7 @@ except ImportError:
     VENICE_TIMEZONE = pytz.timezone('Europe/Rome')
     def get_building_types_from_api(base_url=None): return {}
     def get_citizen_record(tables, username): return None
+    def get_venice_time_now(): return datetime.now(VENICE_TIMEZONE) # Fallback
     log.error("Failed to import from backend.engine.utils.activity_helpers. Using fallback definitions.")
 
 # --- Helper Functions ---
@@ -153,6 +155,30 @@ def process_daily_influence(dry_run: bool = False, building_type_filter: Optiona
                 if not owner_citizen_record:
                     log.warning(f"{LogColors.WARNING}    Owner citizen {owner_username} not found for building {building_name_log}. Cannot grant influence.{LogColors.ENDC}")
                     continue
+
+                # Check LastActiveAt for human citizens
+                is_ai = owner_citizen_record['fields'].get('IsAI', False)
+                if not is_ai:
+                    last_active_at_str = owner_citizen_record['fields'].get('LastActiveAt')
+                    if last_active_at_str:
+                        try:
+                            # Ensure LastActiveAt is timezone-aware (assume UTC if not specified, then convert to Venice time)
+                            last_active_at_dt = pytz.utc.localize(datetime.fromisoformat(last_active_at_str.replace("Z", ""))).astimezone(VENICE_TIMEZONE)
+                            
+                            # Calculate the beginning of the previous day in Venice time
+                            now_venice = get_venice_time_now()
+                            start_of_today_venice = now_venice.replace(hour=0, minute=0, second=0, microsecond=0)
+                            start_of_previous_day_venice = start_of_today_venice - timedelta(days=1)
+
+                            if last_active_at_dt < start_of_previous_day_venice:
+                                log.info(f"    Skipping influence for human citizen {owner_username} (building {building_name_log}). LastActiveAt ({last_active_at_dt.strftime('%Y-%m-%d %H:%M:%S %Z')}) is before {start_of_previous_day_venice.strftime('%Y-%m-%d %H:%M:%S %Z')}.")
+                                continue
+                            else:
+                                log.info(f"    Processing influence for human citizen {owner_username} (building {building_name_log}). LastActiveAt ({last_active_at_dt.strftime('%Y-%m-%d %H:%M:%S %Z')}) is recent enough.")
+                        except ValueError as e_date:
+                            log.warning(f"{LogColors.WARNING}    Could not parse LastActiveAt ('{last_active_at_str}') for human citizen {owner_username}. Error: {e_date}. Processing influence as fallback.{LogColors.ENDC}")
+                    else:
+                        log.warning(f"{LogColors.WARNING}    Human citizen {owner_username} (building {building_name_log}) has no LastActiveAt. Processing influence as fallback.{LogColors.ENDC}")
                 
                 owner_airtable_id = owner_citizen_record['id']
                 current_influence = float(owner_citizen_record['fields'].get('Influence', 0.0))
