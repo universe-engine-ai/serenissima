@@ -54,6 +54,11 @@ const CitizenMarkers: React.FC<CitizenMarkersProps> = ({
   // Add new state variables for animation
   const [animatedCitizens, setAnimatedCitizens] = useState<Record<string, AnimatedCitizen>>({});
   const [animationActive, setAnimationActive] = useState<boolean>(true);
+  // State for path animation on hover
+  const [animatingPathId, setAnimatingPathId] = useState<string | null>(null);
+  const [pathDashOffsets, setPathDashOffsets] = useState<Record<string, number>>({});
+  const pathTotalLengthsRef = useRef<Record<string, number>>({});
+  const pathAnimationFrameRefs = useRef<Record<string, number | null>>({});
   const animationFrameRef = useRef<number | null>(null);
   const lastFrameTimeRef = useRef<number>(0);
   // Add a new state to track initialization status
@@ -227,6 +232,28 @@ const CitizenMarkers: React.FC<CitizenMarkersProps> = ({
     const citizenId = citizen.username || citizen.citizenid || citizen.CitizenId || citizen.id;
     const paths = activityPaths[citizenId] || [];
     setHoveredCitizenPaths(paths);
+
+    // Start animation for the first path if available
+    if (paths.length > 0) {
+      const pathIdToAnimate = paths[0].id;
+
+      if (animatingPathId && animatingPathId !== pathIdToAnimate && pathAnimationFrameRefs.current[animatingPathId]) {
+        cancelAnimationFrame(pathAnimationFrameRefs.current[animatingPathId]!);
+        pathAnimationFrameRefs.current[animatingPathId] = null;
+      }
+
+      setAnimatingPathId(pathIdToAnimate);
+      const totalLength = activityPathService.calculateTotalDistance(paths[0].path);
+      pathTotalLengthsRef.current[pathIdToAnimate] = totalLength;
+      setPathDashOffsets(prev => ({ ...prev, [pathIdToAnimate]: totalLength }));
+    } else {
+      // No paths for this citizen, clear any ongoing animation
+      if (animatingPathId && pathAnimationFrameRefs.current[animatingPathId]) {
+        cancelAnimationFrame(pathAnimationFrameRefs.current[animatingPathId]!);
+        pathAnimationFrameRefs.current[animatingPathId] = null;
+      }
+      setAnimatingPathId(null);
+    }
     
     // Update the hover state service with the citizen data
     // The service will handle sanitizing the citizen object
@@ -269,7 +296,73 @@ const CitizenMarkers: React.FC<CitizenMarkersProps> = ({
     setHoveredConnections(null);
     setHoveredCitizenPaths([]);
     hoverStateService.clearHoverState(); // Explicitly clear hover state
+
+    if (animatingPathId && pathAnimationFrameRefs.current[animatingPathId]) {
+      cancelAnimationFrame(pathAnimationFrameRefs.current[animatingPathId]!);
+      pathAnimationFrameRefs.current[animatingPathId] = null;
+    }
+    setAnimatingPathId(null);
+    // No need to reset pathDashOffsets here, it will be re-initialized on next hover.
   };
+
+  // Effect for path animation
+  useEffect(() => {
+    if (!animatingPathId) return;
+
+    const pathId = animatingPathId;
+    const totalLength = pathTotalLengthsRef.current[pathId];
+    const currentOffset = pathDashOffsets[pathId];
+
+    if (totalLength === undefined || currentOffset === undefined) return; // Not ready
+
+    const animate = () => {
+      setPathDashOffsets(prevOffsets => {
+        const offsetForCurrentPath = prevOffsets[pathId]; // Get the latest offset
+        if (offsetForCurrentPath === undefined || offsetForCurrentPath <= 0) {
+          if (pathAnimationFrameRefs.current[pathId]) {
+            cancelAnimationFrame(pathAnimationFrameRefs.current[pathId]!);
+            pathAnimationFrameRefs.current[pathId] = null;
+          }
+          return { ...prevOffsets, [pathId]: 0 }; // Ensure it's fully drawn
+        }
+        
+        // Adjust animation speed: higher step means faster animation
+        // Animates over approx. 1 second if step is totalLength / 60.
+        // Let's use a fixed pixel step for more consistent visual speed regardless of path length.
+        const step = totalLength / 60; // Animates in approx 1 second (60 frames)
+        // const step = 50; // Alternative: fixed pixel step
+        const newOffset = Math.max(0, offsetForCurrentPath - step);
+        
+        return { ...prevOffsets, [pathId]: newOffset };
+      });
+
+      // Check the latest state value from pathDashOffsets directly
+      // to decide whether to continue animation.
+      if (pathDashOffsets[pathId] > 0) {
+          pathAnimationFrameRefs.current[pathId] = requestAnimationFrame(animate);
+      }
+    };
+
+    if (currentOffset > 0) {
+      if (pathAnimationFrameRefs.current[pathId]) {
+        cancelAnimationFrame(pathAnimationFrameRefs.current[pathId]!);
+      }
+      pathAnimationFrameRefs.current[pathId] = requestAnimationFrame(animate);
+    } else {
+      // Ensure animation stops if offset is already 0 or less
+       if (pathAnimationFrameRefs.current[pathId]) {
+        cancelAnimationFrame(pathAnimationFrameRefs.current[pathId]!);
+        pathAnimationFrameRefs.current[pathId] = null;
+      }
+    }
+
+    return () => {
+      if (pathAnimationFrameRefs.current[pathId]) {
+        cancelAnimationFrame(pathAnimationFrameRefs.current[pathId]!);
+        pathAnimationFrameRefs.current[pathId] = null;
+      }
+    };
+  }, [animatingPathId, pathDashOffsets]);
   
   useEffect(() => {
     // Load citizens when the component mounts
@@ -1167,16 +1260,29 @@ const CitizenMarkers: React.FC<CitizenMarkersProps> = ({
               .map(point => { const screenPos = latLngToScreen(point.lat, point.lng); return `${screenPos.x},${screenPos.y}`; })
               .join(' ');
 
+            const isAnimatingThisPath = activity.id === animatingPathId;
+            const pathLen = pathTotalLengthsRef.current[activity.id];
+            const currentDashOffset = pathDashOffsets[activity.id];
+
             return (
               <g key={`${activity.id}-hovered`}>
                 <polyline 
                   points={pointsString}
                   fill="none"
                   stroke={getActivityPathColor(activity)}
-                  strokeWidth="2.0"
-                  strokeOpacity="0.7"
+                  strokeWidth={isAnimatingThisPath ? "2.5" : "2.0"} // Slightly thicker if animating
+                  strokeOpacity={isAnimatingThisPath ? "0.9" : "0.7"}
+                  style={{
+                    strokeDasharray: (isAnimatingThisPath && pathLen) ? pathLen : undefined,
+                    strokeDashoffset: (isAnimatingThisPath && currentDashOffset !== undefined) 
+                      ? currentDashOffset 
+                      : (!isAnimatingThisPath ? 0 : undefined), // Fully drawn if not animating, start at full offset if it is
+                  }}
                 />
                 {validPoints.map((point, index) => {
+                  // Optionally, animate points as well, or only show them for the animating path
+                  if (!isAnimatingThisPath && index % 3 !== 0) return null; // Thin out points for non-animating paths
+
                   const screenPos = latLngToScreen(point.lat, point.lng);
                   return (
                     <circle 
