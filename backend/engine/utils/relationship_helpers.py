@@ -37,9 +37,21 @@ from dotenv import load_dotenv
 from .activity_helpers import _escape_airtable_value, VENICE_TIMEZONE, LogColors, clean_thought_content
 from .conversation_helper import DEFAULT_TIMEOUT_SECONDS # Ajout de l'importation
 import time # Ajout de time pour les attentes
+from datetime import date # Ajout pour json_datetime_serializer
 
 
 log = logging.getLogger(__name__)
+
+def json_datetime_serializer(obj: Any) -> str:
+    """JSON serializer for objects not serializable by default json code, specifically for datetime."""
+    if isinstance(obj, (datetime, date)):
+        return obj.isoformat()
+    log.error(f"Type {type(obj)} not serializable with json_datetime_serializer. Value: {str(obj)[:100]}")
+    # Il est préférable de lever une TypeError ici pour que l'appelant puisse la gérer,
+    # plutôt que de retourner une chaîne qui pourrait masquer le problème.
+    # Cependant, pour correspondre au comportement de `default=str`, on pourrait retourner `str(obj)`.
+    # Pour l'instant, levons une exception pour être plus strict.
+    raise TypeError(f"Type {type(obj)} not serializable")
 
 def _make_kinos_request_with_retry(
     method: str,
@@ -506,10 +518,10 @@ def _generate_kinos_message_content(
         
         if final_add_system_data_for_main_call:
             try:
-                payload["addSystem"] = json.dumps(final_add_system_data_for_main_call)
+                payload["addSystem"] = json.dumps(final_add_system_data_for_main_call, default=json_datetime_serializer)
                 log.info(f"Ajout de addSystem data (potentiellement résumé) pour {kin_username} -> {channel_username}.")
-            except TypeError as te:
-                log.error(f"{LogColors.FAIL}Erreur de sérialisation JSON pour final_add_system_data: {te}. Envoi sans addSystem.{LogColors.ENDC}")
+            except TypeError as te: # Devrait être attrapé par json_datetime_serializer, mais par sécurité
+                log.error(f"{LogColors.FAIL}Erreur de sérialisation JSON pour final_add_system_data (appel principal): {te}. Envoi sans addSystem.{LogColors.ENDC}")
         
         # effective_model_for_main_call est kinos_model_override, qui est le modèle basé sur la classe sociale
         if effective_model_for_main_call:
