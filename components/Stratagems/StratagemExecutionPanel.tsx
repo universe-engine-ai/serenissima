@@ -268,21 +268,37 @@ const StratagemExecutionPanel: React.FC<StratagemExecutionPanelProps> = ({
           </button>
         </div>
 
-        <div className="overflow-y-auto pr-2 flex-grow">
-          <p className="text-sm italic text-amber-800 mb-1">{stratagemData.description}</p>
-          <p className="text-lg font-semibold text-amber-700 mb-6">
-            Influence Cost: {currentInfluenceCost} 🎭
-          </p>
+        <div className="flex-grow overflow-y-auto pr-2 flex"> {/* Changed to flex container */}
+          {/* Left Column for Image */}
+          <div className="w-1/3 pr-4 flex flex-col items-center sticky top-0"> {/* Sticky for image */}
+            <img 
+              src={`/images/stratagems/${stratagemData.type}.png`} 
+              alt={stratagemData.title} 
+              className="w-full max-w-xs h-auto object-contain rounded-lg shadow-lg border border-amber-300 mb-4"
+              onError={(e) => {
+                // Fallback to a default image or hide if not found
+                (e.target as HTMLImageElement).src = '/images/stratagems/default_stratagem.png'; 
+                (e.target as HTMLImageElement).alt = 'Default Stratagem Image';
+              }}
+            />
+            <p className="text-sm italic text-amber-800 mb-1 text-center">{stratagemData.description}</p>
+            <p className="text-lg font-semibold text-amber-700 mb-6 text-center">
+              Influence Cost: {currentInfluenceCost} 🎭
+            </p>
+          </div>
 
-          <SpecificStratagemPanelComponent
-            ref={specificPanelRef}
-            stratagemData={stratagemData}
-            currentUserUsername={currentUserUsername}
-            citizens={citizens}
-            buildings={buildings}
-            resourceTypes={resourceTypes}
-            isLoading={isLoading}
-          />
+          {/* Right Column for Form */}
+          <div className="w-2/3 pl-4 overflow-y-auto"> {/* Scrollable form part */}
+            <SpecificStratagemPanelComponent
+              ref={specificPanelRef}
+              stratagemData={stratagemData}
+              currentUserUsername={currentUserUsername}
+              citizens={citizens}
+              buildings={buildings}
+              resourceTypes={resourceTypes}
+              isLoading={isLoading}
+            />
+          </div>
         </div>
         
         {executionResult && <p className="text-green-600 mt-4 p-2 bg-green-100 border border-green-300 rounded">{executionResult}</p>}
