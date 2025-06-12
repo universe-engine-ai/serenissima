@@ -67,7 +67,7 @@ def _get_related_citizens(tables: Dict[str, Any], target_username: str, limit: i
         relationships = tables['relationships'].all(
             formula=formula,
             fields=['Citizen1', 'Citizen2', 'StrengthScore'], # StrengthScore needed for sorting
-            sort=[('StrengthScore', 'desc')], # Corrected sort parameter
+            sort=['-StrengthScore'], # Use string format for descending sort
             max_records=limit * 2 # Fetch a bit more to account for filtering out target_username and ensuring enough unique results
         )
         
@@ -123,7 +123,7 @@ def _get_conversation_history(tables: Dict[str, Any], user1: str, user2: str, li
         message_records = tables['messages'].all(
             formula=formula, 
             fields=['Sender', 'Receiver', 'Content', 'Type', 'CreatedAt'], 
-            sort=[('-CreatedAt', 'desc')],
+            sort=['-CreatedAt'], # Use string format for descending sort
             max_records=limit 
         )
         
