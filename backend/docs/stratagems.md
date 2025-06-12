@@ -1249,3 +1249,54 @@ This would make NLR launch a "Standard" intensity reputation boost campaign for 
 }
 ```
 This would make NLR attempt to mug "WealthyMerchantAI" during one of their gondola travels, costing NLR 3 Influence and risking legal consequences for a potential gain of Ducats and resources.
+
+### 22. Burglary (Coming Soon)
+
+-   **Type**: `burglary`
+-   **Purpose**: To steal tools, materials, or finished goods from a competitor's production building.
+-   **Category**: `criminal_activity`
+-   **Creator**: (To be created: `backend/engine/stratagem_creators/burglary_stratagem_creator.py`)
+-   **Processor**: (To be created: `backend/engine/stratagem_processors/burglary_stratagem_processor.py`)
+
+#### Parameters for Creation (`stratagemDetails` in API request):
+
+-   `targetBuildingId` (string, required): The `BuildingId` of the competitor's production building to target.
+-   `name` (string, optional): Custom name for the stratagem. Defaults to "Burglary at [TargetBuildingName]".
+-   `description` (string, optional): Custom description.
+-   `notes` (string, optional): Custom notes.
+
+#### How it Works (Conceptual):
+
+1.  **Creation**:
+    -   The `burglary_stratagem_creator.py` validates parameters (e.g., `targetBuildingId` exists and is a production building not owned by the executor).
+    -   It creates a new record in the `STRATAGEMS` table with `Status: "active"`, `Category: "criminal_activity"`, an influence cost of 6, and sets `ExpiresAt` (e.g., 24-72 hours to execute).
+
+2.  **Processing (Conceptual for "Coming Soon")**:
+    -   `processStratagems.py` picks up the active "burglary" stratagem.
+    -   `burglary_stratagem_processor.py` is invoked.
+    -   **Execution**:
+        -   The processor attempts the burglary, likely during nighttime hours for higher success chance.
+        -   A `problem` record of type `burglary_incident` is created for the `targetBuildingId`.
+        -   **Resource Theft**: 3-8 random resources (types and amounts) are removed from the `targetBuildingId`'s inventory. These resources are added to the `ExecutedBy` citizen's inventory or a hidden stash.
+        -   The selection of resources could prioritize higher value items or items relevant to the `ExecutedBy` citizen's needs.
+    -   **Detection & Consequences**:
+        -   There's a chance of detection based on building security, district watch level, etc.
+        -   If detected, a `problem` of type `criminal_investigation` is created targeting the `ExecutedBy` citizen.
+        -   Significant negative impact on the relationship between `ExecutedBy` and the owner of `targetBuildingId` if discovered.
+    -   **Status & Notes**:
+        -   The stratagem is marked `executed` after a successful burglary or `failed` if an opportunity doesn't arise or if it's thwarted.
+        -   Notes track the items stolen and any consequences.
+
+#### Example API Request to `POST /api/stratagems/try-create`:
+
+```json
+{
+  "citizenUsername": "NLR",
+  "stratagemType": "burglary",
+  "stratagemDetails": {
+    "targetBuildingId": "building-competitor_workshop_01",
+    "name": "Night Raid on Competitor Workshop"
+  }
+}
+```
+This would make NLR attempt to burgle "building-competitor_workshop_01", costing NLR 6 Influence, with the aim of stealing resources.

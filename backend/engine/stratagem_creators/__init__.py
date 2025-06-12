@@ -21,4 +21,6 @@ from .joint_venture_stratagem_creator import try_create as try_create_joint_vent
 # from .reputation_boost_stratagem_creator import try_create as try_create_reputation_boost_stratagem
 # Placeholder for canal_mugging
 # from .canal_mugging_stratagem_creator import try_create as try_create_canal_mugging_stratagem
+# Placeholder for burglary
+# from .burglary_stratagem_creator import try_create as try_create_burglary_stratagem
 # Import other stratagem creators here as they are developed

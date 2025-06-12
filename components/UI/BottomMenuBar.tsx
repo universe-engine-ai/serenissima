@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { 
   FaCoins, FaHandshake, FaScroll, FaUserShield, FaBomb, // Main category icons
   FaArrowCircleDown, FaSyncAlt, FaArchive, FaStoreSlash, FaUserSecret, FaPalette, FaSitemap, FaAnchor, FaHandHoldingUsd, FaBullhorn, FaUsers, // Existing sub-item icons
-  FaMask, FaComments, FaUserPlus, FaNewspaper, FaStar, FaSkullCrossbones // New sub-item icons (FaStar, FaSkullCrossbones added)
+  FaMask, FaComments, FaUserPlus, FaNewspaper, FaStar, FaSkullCrossbones, FaKey // New sub-item icons (FaStar, FaSkullCrossbones, FaKey added)
 } from 'react-icons/fa';
 import { eventBus, EventTypes } from '@/lib/utils/eventBus'; // Importer eventBus
 
@@ -52,7 +52,7 @@ const BottomMenuBar: React.FC = () => {
     'reputation_assault', 'financial_patronage', 'cultural_patronage', 'theater_conspiracy', 'marketplace_gossip', 'employee_poaching', 'reputation_boost',
     'political_campaign', 'printing_propaganda',
     'information_network', 'neighborhood_watch',
-    'maritime_blockade', 'cargo_mishap', 'canal_mugging'
+    'maritime_blockade', 'cargo_mishap', 'canal_mugging', 'burglary'
   ];
   const availableStratagemTypes = [ // Liste des stratagèmes réellement implémentés et disponibles
     'undercut', 'coordinate_pricing', 'emergency_liquidation', 'hoard_resource', 'reputation_assault'
@@ -262,6 +262,14 @@ const BottomMenuBar: React.FC = () => {
             id: 'canal_mugging', type: 'canal_mugging', title: 'Canal Mugging (Coming Soon)',
             description: "Rob a specific citizen while they are traveling by gondola.",
             influenceCostBase: 3, hasVariants: false,
+          }
+        },
+        {
+          id: 'burglary', label: 'Burglary (Soon)', icon: FaKey,
+          stratagemPanelData: {
+            id: 'burglary', type: 'burglary', title: 'Burglary (Coming Soon)',
+            description: "Steal tools, materials, or finished goods from a competitor's production building.",
+            influenceCostBase: 6, hasVariants: false,
           }
         }
       ]

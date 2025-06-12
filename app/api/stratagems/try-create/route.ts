@@ -105,6 +105,10 @@ export async function POST(request: Request) {
         `TargetCitizenUsername: ${stratagemDetails?.targetCitizenUsername}`,
         `TargetActivityId: ${stratagemDetails?.targetActivityId}`
       );
+    } else if (stratagemType === 'burglary') {
+      console.log(`[API /stratagems/try-create] Processing 'burglary' stratagem with parameters:`,
+        `TargetBuildingId: ${stratagemDetails?.targetBuildingId}`
+      );
     }
 
     let parsedPythonEngineUrl: URL;
