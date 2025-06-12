@@ -289,7 +289,7 @@ export class ActivityPathService {
       const baseClass = socialClass.trim().toLowerCase();
       
       if (baseClass.includes('nobili')) {
-        return 'rgba(218, 165, 32, 0.8)'; // Gold for Nobili
+        return 'rgba(128, 0, 32, 0.8)'; // Burgundy for Nobili
       } else if (baseClass.includes('cittadini')) {
         return 'rgba(70, 130, 180, 0.8)'; // Blue for Cittadini
       } else if (baseClass.includes('popolani')) {
@@ -297,9 +297,9 @@ export class ActivityPathService {
       } else if (baseClass.includes('laborer') || baseClass.includes('facchini')) {
         return 'rgba(128, 128, 128, 0.8)'; // Gray for Facchini
       } else if (baseClass.includes('forestieri')) {
-        return 'rgba(165, 42, 42, 0.8)'; // Burgundy/Brownish-Red for Forestieri (was 128,0,32)
+        return 'rgba(0, 128, 0, 0.8)'; // Green for Forestieri
       } else if (baseClass.includes('artisti')) {
-        return 'rgba(0, 128, 128, 0.8)'; // Teal for Artisti
+        return 'rgba(255, 182, 193, 0.8)'; // Light Pink for Artisti
       }
     }
   
