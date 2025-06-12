@@ -340,29 +340,25 @@ def generate_conversation_turn(
             speaker_building_rec = get_closest_building_to_position(tables, speaker_coords, max_distance_meters=10)
             
             if speaker_building_rec:
-                speaker_building_id = speaker_building_rec['fields'].get('BuildingId')
-                # Now check if listener is also at this building_id
+                current_speaker_building_id = speaker_building_rec['fields'].get('BuildingId')
                 listener_building_rec = get_closest_building_to_position(tables, listener_coords, max_distance_meters=10)
                 
-                if listener_building_rec and listener_building_rec['fields'].get('BuildingId') == speaker_building_id:
-                    shared_building_id = speaker_building_id
-                    shared_building_name = speaker_building_rec['fields'].get('Name', speaker_building_id) # Use speaker's building name
-                    location_description_for_prompt = f"in {shared_building_name}"
-                    log.info(f"Speaker and Listener are both in building: {shared_building_name} (ID: {shared_building_id})")
+                if listener_building_rec and listener_building_rec['fields'].get('BuildingId') == current_speaker_building_id:
+                    # Both in the same building
+                    descriptive_name = _ch_get_descriptive_building_name(speaker_building_rec['fields'])
+                    location_description_for_prompt = f"in {descriptive_name}"
+                    log.info(f"Speaker and Listener are both in building: {descriptive_name} (Custom ID: {current_speaker_building_id or 'N/A'})")
                 else:
-                    # Speaker is in a building, but listener is not in the same one (or not in any nearby)
-                    speaker_only_building_name = speaker_building_rec['fields'].get('Name', speaker_building_id)
-                    location_description_for_prompt = f"near {speaker_only_building_name}" # Or "in the streets of Venice" if preferred
-                    log.info(f"Speaker is in {speaker_only_building_name}, Listener is elsewhere. Defaulting to 'near {speaker_only_building_name}'.")
+                    # Speaker is in a building, listener is elsewhere
+                    descriptive_name = _ch_get_descriptive_building_name(speaker_building_rec['fields'])
+                    location_description_for_prompt = f"near {descriptive_name}"
+                    log.info(f"Speaker is in {descriptive_name} (Custom ID: {current_speaker_building_id or 'N/A'}), Listener is elsewhere. Defaulting to 'near {descriptive_name}'.")
             # If speaker_building_rec is None, they are not in/near a building, so default "in the streets" is fine.
             
         except Exception as e_shared_bldg:
             log.warning(f"Could not determine shared building due to error: {e_shared_bldg}. Defaulting location to 'in the streets of Venice'.")
-            # location_description_for_prompt remains "in the streets of Venice"
     else:
         log.info("Speaker or Listener position string is missing. Defaulting location to 'in the streets of Venice'.")
-        # location_description_for_prompt remains "in the streets of Venice"
-
 
     # 2. Determine KinOS channel name
     channel_name = "_".join(sorted([speaker_username, listener_username]))
