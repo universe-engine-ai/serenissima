@@ -118,7 +118,7 @@ def trigger_artist_work(target_artist_username: str | None = None, additional_me
         # --- Existing KinOS Interaction for Art Session Description ---
         log.info(f"{LogColors.BOLD}--- Starting KinOS Interaction for Art Session Description ---{LogColors.ENDC}")
         # 1. Fetch citizen's data package for KinOS addSystem
-        data_package_url = f"{API_BASE_URL}/api/get-data-package?citizenUsername={citizen_username}"
+        data_package_url = f"{API_BASE_URL}/api/get-data-package?citizenUsername={citizen_username}&format=json" # Request JSON format
         data_package_json_str = None
         log.info(f"  Fetching data package from: {data_package_url}")
         try:
