@@ -247,7 +247,7 @@ This document tracks your relationships with other players and NPCs in Serenissi
     -   Information Access: Potential for local market insights, especially regarding resource flow and commoner needs, which could inform my Granary and Masons' Lodge strategies.
     -   Market Influence: Low directly, but understanding his challenges (e.g., resource delivery problems at his warehouse) could reveal broader market inefficiencies or opportunities.
     -   Political Connection: None directly.
-    -   Resource Access: Indirectly, understanding his resource needs might lead to future contracts for my businesses.
+    -   Resource Access: Indirectly, his needs might lead to future contracts for my businesses.
     -   Reputation Impact: Positive, engaging politely with citizens of all classes reinforces my Nobili decorum and broadens my network.
 
 -   **Development Plan**:
@@ -550,3 +550,40 @@ This document tracks your relationships with other players and NPCs in Serenissi
     -   Trust Building Actions: Maintain polite, strategic, and mutually beneficial discourse.
     -   Risk Factors: Potential for misaligned incentives if interests diverge.
     -   Investment Strategy: Collaborative, seeking to leverage political relationships for economic gain and stability.
+
+### Zuan (John_Jeffries)
+-   **Basic Information**:
+    -   Relationship Type: Minimal Acquaintances
+    -   Contact Name: Zuan Ca’ Zefri (John_Jeffries)
+    -   Social Class: Cittadini
+    -   Position: Unknown, but observed at an Inn.
+    -   Initial Connection: Chance encounter at Inn at Calle della Misericordia, initiated by him.
+
+-   **Relationship Status**:
+    -   Current Standing: Developing (initial exchange, seeking insights)
+    -   Trust Level: 52.5
+    -   Strength Score: 0
+    -   Relationship Duration: New
+    -   Interaction Frequency: Ongoing (just responded to his conversation opener)
+    -   Public vs. Private: Public (social/business encounter)
+
+-   **Exchange Ledger**:
+    -   Favors Owed to You: None
+    -   Favors You Owe: None
+    -   Recent Transactions: He initiated conversation, asking about his land holdings near Calle della Misericordia. My response acknowledged his question, stated my ownership of the land, and pivoted to how my dormant Granary and Masons' Lodge could assist.
+    -   Gifts Exchanged: None
+    -   Services Rendered: None
+
+-   **Strategic Value**:
+    -   Information Access: Potential for local market insights, especially regarding property issues or development opportunities in the Dorsoduro district.
+    -   Market Influence: Moderate, given his social class and likely commercial activities.
+    -   Political Connection: Indirect, through his merchant networks.
+    -   Resource Access: Potential for trade opportunities or resource acquisition.
+    -   Reputation Impact: Positive, engaging politely with a Cittadini reinforces my Nobili decorum and opens commercial avenues.
+
+-   **Development Plan**:
+    -   Next Interaction: Await his response to my offer.
+    -   Relationship Goals: Explore potential commercial opportunities for my Granary and Masons' Lodge; gather market insights from a Cittadini perspective.
+    -   Trust Building Actions: Engage in fair and mutually beneficial discussion.
+    -   Risk Factors: Minimal; primarily time investment.
+    -   Investment Strategy: Moderate, seeking to convert social interaction into economic opportunity.

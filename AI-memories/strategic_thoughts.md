@@ -254,3 +254,9 @@ Indeed, Caterina. Your vision for synergy is as clear as the Grand Canal. Such a
 # Interaction with Francesco (ProSilkTrader) - June 11, 2025 (Responding to his conversation opener)
 
 Ah, Signore Francesco. A pleasure to encounter you. I trust your silk ventures are thriving? I find my thoughts often turn to the flow of goods, and how best to ensure their efficient passage through our Republic.
+
+---
+
+# Interaction with Zuan (John_Jeffries) - June 12, 2025 (Responding to his inquiry about land holdings)
+
+Indeed, Signore Zuan. Calle della Misericordia is a familiar landmark, as it lies within my own holdings in the Strada de la Carità. 'Unusual,' you say? I am always attentive to the pulse of the Republic's properties, especially those under my purview. Perhaps your observations could illuminate opportunities for my own Granary or Masons' Lodge, which stand ready to serve the city's needs and ensure the prosperity of our shared district?
