@@ -11,7 +11,7 @@ It can be used by other scripts like immigration.py to create new citizens.
 import os
 import sys
 import logging
-from joinGuild import process_ai_guild_joining # Added import
+from backend.scripts.joinGuild import process_ai_guild_joining # Added import
 import random
 import json
 import datetime
