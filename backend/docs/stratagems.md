@@ -1300,3 +1300,65 @@ This would make NLR attempt to mug "WealthyMerchantAI" during one of their gondo
 }
 ```
 This would make NLR attempt to burgle "building-competitor_workshop_01", costing NLR 6 Influence, with the aim of stealing resources.
+
+### 23. Employee Corruption (Coming Soon)
+
+-   **Type**: `employee_corruption`
+-   **Purpose**: To bribe occupants (employees) of businesses to reduce productivity and/or steal resources for the executor.
+-   **Category**: `economic_warfare`
+-   **Creator**: (To be created: `backend/engine/stratagem_creators/employee_corruption_stratagem_creator.py`)
+-   **Processor**: (To be created: `backend/engine/stratagem_processors/employee_corruption_stratagem_processor.py`)
+
+#### Parameters for Creation (`stratagemDetails` in API request):
+
+-   `targetEmployeeUsername` (string, required): The username of the employee to corrupt.
+-   `targetBuildingId` (string, required): The `BuildingId` of the business where the employee works.
+-   `corruptionGoal` (string, optional): What the employee is primarily bribed to do ("reduce_productivity", "steal_resources", "both"). Defaults to "both".
+-   `bribeAmountPerPeriod` (integer, optional): Ducats offered to the employee periodically (e.g., daily or weekly). Defaults to a value based on employee's social class and risk (e.g., 10-50 Ducats).
+-   `durationDays` (integer, optional): Duration of the corruption scheme in days. Defaults to 30 days.
+-   `name` (string, optional): Custom name for the stratagem. Defaults to "Corruption of [Employee] at [Building]".
+-   `description` (string, optional): Custom description.
+-   `notes` (string, optional): Custom notes.
+
+#### How it Works (Conceptual):
+
+1.  **Creation**:
+    -   The `employee_corruption_stratagem_creator.py` validates parameters (e.g., `targetEmployeeUsername` works at `targetBuildingId`).
+    -   It creates a new record in the `STRATAGEMS` table with `Status: "active"`, `Category: "economic_warfare"`, an influence cost of 7, and sets `ExpiresAt` based on `durationDays`.
+    -   The `targetEmployeeUsername`, `targetBuildingId`, `corruptionGoal`, and `bribeAmountPerPeriod` are stored.
+
+2.  **Processing (Conceptual for "Coming Soon")**:
+    -   `processStratagems.py` picks up the active "employee_corruption" stratagem.
+    -   `employee_corruption_stratagem_processor.py` is invoked.
+    -   **Bribe Payment**:
+        -   Periodically (e.g., daily), the processor attempts to transfer `bribeAmountPerPeriod` Ducats from the `ExecutedBy` citizen to the `targetEmployeeUsername`. If the executor cannot pay, the stratagem may fail.
+    -   **Productivity Reduction** (if `corruptionGoal` includes "reduce_productivity"):
+        -   The `targetBuildingId` suffers a temporary reduction in productivity or efficiency (e.g., a malus to output quantity or quality, increased spoilage).
+    -   **Resource Theft** (if `corruptionGoal` includes "steal_resources"):
+        -   Periodically, there's a chance the `targetEmployeeUsername` steals a small amount of resources (inputs or finished goods) from the `targetBuildingId`.
+        -   Stolen resources are transferred to the `ExecutedBy` citizen's inventory.
+    -   **Relationship & Detection**:
+        -   The `targetEmployeeUsername`'s relationship with their employer (`RunBy` of `targetBuildingId`) may deteriorate if their performance drops or theft is suspected.
+        -   There's a risk of detection, leading to `problem` records (e.g., `corruption_detected`, `employee_theft_investigation`) for the `ExecutedBy` citizen and/or the `targetEmployeeUsername`.
+        -   The relationship between `ExecutedBy` and `targetEmployeeUsername` becomes transactional or strained.
+    -   **Status & Notes**:
+        -   The stratagem remains `active` for its `durationDays` as long as bribes are paid.
+        -   Notes track bribes paid, resources stolen, productivity impact, and any detection events.
+
+#### Example API Request to `POST /api/stratagems/try-create`:
+
+```json
+{
+  "citizenUsername": "NLR",
+  "stratagemType": "employee_corruption",
+  "stratagemDetails": {
+    "targetEmployeeUsername": "GiovanniArtisan",
+    "targetBuildingId": "building-competitor_workshop_01",
+    "corruptionGoal": "steal_resources",
+    "bribeAmountPerPeriod": 20,
+    "durationDays": 30,
+    "name": "Giovanni's 'Side Hustle'"
+  }
+}
+```
+This would make NLR attempt to bribe "GiovanniArtisan" at "building-competitor_workshop_01" with 20 Ducats periodically for 30 days to steal resources, costing NLR 7 Influence upfront plus ongoing bribe payments.

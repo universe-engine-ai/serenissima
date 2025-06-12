@@ -109,6 +109,13 @@ export async function POST(request: Request) {
       console.log(`[API /stratagems/try-create] Processing 'burglary' stratagem with parameters:`,
         `TargetBuildingId: ${stratagemDetails?.targetBuildingId}`
       );
+    } else if (stratagemType === 'employee_corruption') {
+      console.log(`[API /stratagems/try-create] Processing 'employee_corruption' stratagem with parameters:`,
+        `TargetEmployeeUsername: ${stratagemDetails?.targetEmployeeUsername}`,
+        `TargetBuildingId: ${stratagemDetails?.targetBuildingId}`,
+        `CorruptionGoal: ${stratagemDetails?.corruptionGoal}`,
+        `BribeAmountPerPeriod: ${stratagemDetails?.bribeAmountPerPeriod}`
+      );
     }
 
     let parsedPythonEngineUrl: URL;

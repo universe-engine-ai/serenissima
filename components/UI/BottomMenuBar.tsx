@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { 
   FaCoins, FaHandshake, FaScroll, FaUserShield, FaBomb, // Main category icons
   FaArrowCircleDown, FaSyncAlt, FaArchive, FaStoreSlash, FaUserSecret, FaPalette, FaSitemap, FaAnchor, FaHandHoldingUsd, FaBullhorn, FaUsers, // Existing sub-item icons
-  FaMask, FaComments, FaUserPlus, FaNewspaper, FaStar, FaSkullCrossbones, FaKey // New sub-item icons (FaStar, FaSkullCrossbones, FaKey added)
+  FaMask, FaComments, FaUserPlus, FaNewspaper, FaStar, FaSkullCrossbones, FaKey, FaUserNinja // New sub-item icons (FaStar, FaSkullCrossbones, FaKey, FaUserNinja added)
 } from 'react-icons/fa';
 import { eventBus, EventTypes } from '@/lib/utils/eventBus'; // Importer eventBus
 
@@ -52,7 +52,7 @@ const BottomMenuBar: React.FC = () => {
     'reputation_assault', 'financial_patronage', 'cultural_patronage', 'theater_conspiracy', 'marketplace_gossip', 'employee_poaching', 'reputation_boost',
     'political_campaign', 'printing_propaganda',
     'information_network', 'neighborhood_watch',
-    'maritime_blockade', 'cargo_mishap', 'canal_mugging', 'burglary'
+    'maritime_blockade', 'cargo_mishap', 'canal_mugging', 'burglary', 'employee_corruption'
   ];
   const availableStratagemTypes = [ // Liste des stratagèmes réellement implémentés et disponibles
     'undercut', 'coordinate_pricing', 'emergency_liquidation', 'hoard_resource', 'reputation_assault'
@@ -270,6 +270,14 @@ const BottomMenuBar: React.FC = () => {
             id: 'burglary', type: 'burglary', title: 'Burglary (Coming Soon)',
             description: "Steal tools, materials, or finished goods from a competitor's production building.",
             influenceCostBase: 6, hasVariants: false,
+          }
+        },
+        {
+          id: 'employee_corruption', label: 'Emp. Corrupt. (Soon)', icon: FaUserNinja,
+          stratagemPanelData: {
+            id: 'employee_corruption', type: 'employee_corruption', title: 'Employee Corruption (Coming Soon)',
+            description: "Bribe occupants of businesses to reduce productivity and steal things for you.",
+            influenceCostBase: 7, hasVariants: false, // Bribe amount is a parameter
           }
         }
       ]

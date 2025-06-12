@@ -23,4 +23,6 @@ from .joint_venture_stratagem_creator import try_create as try_create_joint_vent
 # from .canal_mugging_stratagem_creator import try_create as try_create_canal_mugging_stratagem
 # Placeholder for burglary
 # from .burglary_stratagem_creator import try_create as try_create_burglary_stratagem
+# Placeholder for employee_corruption
+# from .employee_corruption_stratagem_creator import try_create as try_create_employee_corruption_stratagem
 # Import other stratagem creators here as they are developed

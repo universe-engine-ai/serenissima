@@ -23,4 +23,6 @@ from .joint_venture_stratagem_processor import process as process_joint_venture_
 # from .canal_mugging_stratagem_processor import process as process_canal_mugging_stratagem
 # Placeholder for burglary
 # from .burglary_stratagem_processor import process as process_burglary_stratagem
+# Placeholder for employee_corruption
+# from .employee_corruption_stratagem_processor import process as process_employee_corruption_stratagem
 # Import other stratagem processors here
