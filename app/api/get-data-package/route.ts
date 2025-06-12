@@ -107,6 +107,7 @@ async function fetchOwnedLands(username: string): Promise<AirtableRecord<FieldSe
   try {
     const records = await airtable('LANDS').select({
       filterByFormula: `{Owner} = '${escapeAirtableValue(username)}'`,
+      sort: [{ field: 'HistoricalName', direction: 'asc' }],
     }).all();
     return [...records]; // Convert ReadonlyArray to Array
   } catch (error) {
@@ -160,6 +161,7 @@ async function fetchOwnedBuildings(username: string): Promise<AirtableRecord<Fie
   try {
     const records = await airtable('BUILDINGS').select({
       filterByFormula: `{Owner} = '${escapeAirtableValue(username)}'`,
+      sort: [{ field: 'Name', direction: 'asc' }],
     }).all();
     return [...records]; // Convert ReadonlyArray to Array
   } catch (error) {
@@ -172,6 +174,7 @@ async function fetchManagedBuildings(username: string): Promise<AirtableRecord<F
   try {
     const records = await airtable('BUILDINGS').select({
       filterByFormula: `{RunBy} = '${escapeAirtableValue(username)}'`,
+      sort: [{ field: 'Name', direction: 'asc' }],
     }).all();
     return [...records];
   } catch (error) {
@@ -256,6 +259,7 @@ async function fetchCitizenContracts(username: string): Promise<AirtableRecord<F
     const escapedUsername = escapeAirtableValue(username);
     const records = await airtable('CONTRACTS').select({
       filterByFormula: `AND(OR({Buyer} = '${escapedUsername}', {Seller} = '${escapedUsername}'), {Status} = 'active')`,
+      sort: [{ field: 'CreatedAt', direction: 'desc' }],
     }).all();
     return [...records]; // Convert ReadonlyArray to Array
   } catch (error) {
