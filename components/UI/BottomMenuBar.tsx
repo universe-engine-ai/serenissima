@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { 
-  FaCoins, FaScroll, FaUserShield, FaBomb, // Main category icons
+  FaCoins, FaScroll, FaUserShield, FaCrosshairs, // Main category icons (FaBomb replaced with FaCrosshairs)
   FaArrowCircleDown, FaSyncAlt, FaArchive, FaStoreSlash, FaUserSecret, FaPalette, FaSitemap, FaAnchor, FaHandHoldingUsd, FaBullhorn, // Existing sub-item icons
   FaMask, FaComments, FaUserPlus, FaNewspaper, FaStar, FaSkullCrossbones, FaKey, FaUserNinja, FaFire, FaGift, FaGlassCheers, // Existing sub-item icons
   FaLandmark, FaUserCog, FaHandshake // New Main/Sub-item icons
@@ -284,7 +284,7 @@ const BottomMenuBar: React.FC = () => {
     { 
       id: 'warfare', // Renamed from covert_ops
       label: 'WARFARE', 
-      icon: FaBomb, // Keeping FaBomb, or could use FaCrosshairs if preferred and imported
+      icon: FaCrosshairs, // Changed from FaBomb to FaCrosshairs
       subItems: [
         {
           id: 'maritime_blockade', label: 'Blockade (Soon)', icon: FaAnchor,
