@@ -1216,7 +1216,11 @@ export async function GET(request: Request) {
 
     // Fetch and add recent messages
     const recentMessagesRecords = await fetchCitizenMessages(citizenUsername);
-    dataPackage.recentMessages = recentMessagesRecords.map(m => ({...normalizeKeysCamelCaseShallow(m.fields), airtableId: m.id}));
+    dataPackage.recentMessages = recentMessagesRecords.map(m => {
+      const normalizedFields = normalizeKeysCamelCaseShallow(m.fields);
+      delete normalizedFields.thinking; // Exclude the 'thinking' field
+      return {...normalizedFields, airtableId: m.id};
+    });
 
     // Fetch and add the last daily update
     const lastDailyUpdateRecord = await fetchLastDailyUpdate();
