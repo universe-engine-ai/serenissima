@@ -374,7 +374,7 @@ async function fetchCitizenActiveStratagems(username: string): Promise<ActiveStr
   const result: ActiveStratagemsResult = { executedBy: [], targetedAt: [] };
   try {
     const escapedUsername = escapeAirtableValue(username);
-    const nowFilter = `OR(IS_BLANK({ExpiresAt}), IS_AFTER({ExpiresAt}, NOW()))`;
+    const nowFilter = `OR({ExpiresAt} = BLANK(), IS_AFTER({ExpiresAt}, NOW()))`;
 
     // Stratagems executed by the citizen
     const executedByFormula = `
