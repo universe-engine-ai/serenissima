@@ -295,10 +295,9 @@ def generate_ai_initiative_message(tables: Dict[str, Table], ai_username: str, t
         # Prompt spécifique pour l'initiative de message
         kinos_prompt = (
             f"You are {ai_display_name}, an AI citizen of Venice. You've decided to initiate/continue the conversation with {target_display_name}.\n"
-            f"IMPORTANT: Your message MUST be VERY SHORT, human-like, and conversational. It should be a natural conversation starter. "
-            f"DO NOT mention that you 'decided to send a message' or that this is an 'initiative'. Just start talking naturally. "
-            f"DO NOT use formal language, DO NOT write long paragraphs, DO NOT include any fluff or boilerplate. "
-            f"Be direct and concise. Imagine you're sending a quick, informal message to someone you know. Start your message naturally, as if you're initiating a casual chat. Examples: 'Hey {target_display_name},', 'Hi {target_display_name},', 'Quick question, {target_display_name}...', 'How are things, {target_display_name}?'\n\n"
+            f"Your message must be very short, human-like, and conversational. Start naturally, like a quick, informal chat. "
+            f"Avoid formal language, long paragraphs, or boilerplate. Just be direct and concise. "
+            f"Examples: 'Hey {target_display_name},', 'Hi {target_display_name},', 'Quick question, {target_display_name}...', 'How are things, {target_display_name}?'\n\n"
             f"CRITICAL: Use the structured context provided in the 'addSystem' field (detailed below) to make your message RELEVANT to {target_display_name} and FOCUSED ON GAMEPLAY. "
             f"Your message should reflect your understanding of your relationship, recent events, and potential gameplay interactions with {target_display_name}.\n\n"
             f"Guide to 'addSystem' content (use this to make your message relevant and gameplay-focused):\n"
