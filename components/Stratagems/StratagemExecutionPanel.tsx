@@ -1,41 +1,16 @@
-import React, { useState, useEffect, useCallback } from 'react';
-import { FaTimes, FaUserShield, FaBuilding, FaBoxOpen, FaBalanceScale } from 'react-icons/fa';
-import { useWalletContext } from '@/components/UI/WalletProvider'; // Pour obtenir le currentUserUsername
-
-interface StratagemData {
-  id: string; // id du subitem, ex: 'undercut'
-  type: string; // type de stratagème pour l'API, ex: 'undercut'
-  title: string;
-  description: string;
-  influenceCostBase: number; // Coût de base, peut être multiplié par la variante
-  hasVariants?: boolean; // Optional: defaults to true if not specified
-  // D'autres champs spécifiques au stratagème peuvent être ajoutés ici
-}
+import React, { useState, useEffect, useCallback, useRef, useMemo } from 'react';
+import { FaTimes, FaBalanceScale } from 'react-icons/fa';
+import { useWalletContext } from '@/components/UI/WalletProvider';
+import { StratagemData, CitizenOption, BuildingOption, ResourceTypeOption, StratagemSpecificPanelRef } from './ExecutionPanels/types';
+import UndercutStratagemPanel from './ExecutionPanels/UndercutStratagemPanel';
+import DefaultStratagemPanel from './ExecutionPanels/DefaultStratagemPanel';
+// Importer d'autres panneaux spécifiques ici au fur et à mesure de leur création
+// import HoardResourcePanel from './ExecutionPanels/HoardResourcePanel';
 
 interface StratagemExecutionPanelProps {
   isOpen: boolean;
   onClose: () => void;
   stratagemData: StratagemData;
-}
-
-interface CitizenOption {
-  username: string;
-  firstName?: string;
-  lastName?: string;
-  socialClass?: string;
-}
-
-interface BuildingOption {
-  buildingId: string;
-  name?: string;
-  type?: string;
-  owner?: string;
-}
-
-interface ResourceTypeOption {
-  id: string;
-  name: string;
-  category?: string;
 }
 
 const StratagemExecutionPanel: React.FC<StratagemExecutionPanelProps> = ({
@@ -46,27 +21,20 @@ const StratagemExecutionPanel: React.FC<StratagemExecutionPanelProps> = ({
   const { citizenProfile } = useWalletContext();
   const currentUserUsername = citizenProfile?.username;
 
-  const [selectedVariant, setSelectedVariant] = useState<'Mild' | 'Standard' | 'Aggressive'>('Standard');
-  const [targetCitizen, setTargetCitizen] = useState<string | null>(null);
-  const [targetBuilding, setTargetBuilding] = useState<string | null>(null);
-  const [targetResourceType, setTargetResourceType] = useState<string | null>(null);
-  // const [targetStorageBuilding, setTargetStorageBuilding] = useState<string | null>(null); // Removed for hoard_resource
-
   const [citizens, setCitizens] = useState<CitizenOption[]>([]);
   const [buildings, setBuildings] = useState<BuildingOption[]>([]);
   const [resourceTypes, setResourceTypes] = useState<ResourceTypeOption[]>([]);
-
-  const [isLoading, setIsLoading] = useState(false);
+  
+  const [isLoading, setIsLoading] = useState(false); // Gère le chargement des données et l'exécution
   const [executionResult, setExecutionResult] = useState<string | null>(null);
   const [errorResult, setErrorResult] = useState<string | null>(null);
+  
+  const [currentInfluenceCost, setCurrentInfluenceCost] = useState<number>(stratagemData.influenceCostBase);
 
-  const stratagemHasVariants = stratagemData.hasVariants !== false; // Default to true if undefined
-  const influenceCost = stratagemHasVariants 
-    ? stratagemData.influenceCostBase * (selectedVariant === 'Mild' ? 1 : selectedVariant === 'Standard' ? 2 : 3)
-    : stratagemData.influenceCostBase;
+  const specificPanelRef = useRef<StratagemSpecificPanelRef>(null);
 
   const fetchDropdownData = useCallback(async () => {
-    if (!isOpen) return;
+    if (!isOpen || (citizens.length && buildings.length && resourceTypes.length)) return; // Ne pas recharger si déjà chargé
     setIsLoading(true);
     try {
       // Fetch Citizens
@@ -137,71 +105,54 @@ const StratagemExecutionPanel: React.FC<StratagemExecutionPanelProps> = ({
   }, [isOpen, currentUserUsername]);
 
   useEffect(() => {
-    fetchDropdownData();
-  }, [fetchDropdownData]);
+    if (isOpen) {
+      fetchDropdownData();
+      // Réinitialiser les résultats lors de l'ouverture
+      setExecutionResult(null);
+      setErrorResult(null);
+      // Mettre à jour le coût d'influence initial basé sur le stratagème
+      if (specificPanelRef.current?.getCalculatedInfluenceCost) {
+        setCurrentInfluenceCost(specificPanelRef.current.getCalculatedInfluenceCost());
+      } else {
+        setCurrentInfluenceCost(stratagemData.influenceCostBase);
+      }
+    }
+  }, [isOpen, fetchDropdownData, stratagemData.influenceCostBase]);
+
+  // Mettre à jour le coût d'influence si le panneau enfant le change (par exemple, via une variante)
+  useEffect(() => {
+    if (specificPanelRef.current?.getCalculatedInfluenceCost) {
+      const newCost = specificPanelRef.current.getCalculatedInfluenceCost();
+      if (newCost !== currentInfluenceCost) {
+        setCurrentInfluenceCost(newCost);
+      }
+    }
+    // Cette dépendance sur currentInfluenceCost est pour réagir si le coût change
+    // à cause d'une interaction dans le panneau enfant qui n'est pas directement
+    // liée à un changement de props ici.
+  }, [stratagemData, currentInfluenceCost]); // Ajouter d'autres dépendances si le coût peut changer autrement
+
 
   const handleExecute = async () => {
     if (!currentUserUsername) {
       setErrorResult("Current user not identified. Cannot execute stratagem.");
       return;
     }
-    if (stratagemData.type === 'hoard_resource') {
-      if (!targetResourceType) {
-        setErrorResult("For Hoard Resource: Target Resource Type must be selected.");
-        return;
-      }
-    } else if (stratagemData.type === 'reputation_assault') {
-      if (!targetCitizen) { 
-        setErrorResult("For Reputation Assault: Target Citizen must be selected.");
-        return;
-      }
-    } else if (stratagemData.type === 'maritime_blockade') {
-      if (!targetCitizen && !targetBuilding) {
-        setErrorResult("For Maritime Blockade: Target Competitor Citizen or Building must be selected.");
-        return;
-      }
-    } else if (['undercut', 'coordinate_pricing'].includes(stratagemData.type)) {
-      if (!targetResourceType) { 
-        setErrorResult(`For ${stratagemData.title}: Target Resource Type must be selected.`);
-        return;
-      }
-    } else if (stratagemData.type === 'information_network') {
-        // Assuming information_network requires either targetCitizens or targetSectors
-        // This panel currently only supports single targetCitizen, targetBuilding, targetResourceType.
-        // For information_network, if it uses these fields, validation would be similar.
-        // If it needs different fields (like lists), the panel needs more complex state.
-        // For now, let's assume it uses targetCitizen or targetBuilding as a proxy for a single target.
-        // Or, if it's "Coming Soon" and disabled, this validation might not be hit.
-        // If it were active and used targetCitizen/targetBuilding:
-        // if (!targetCitizen && !targetBuilding) { // Simplified for current panel structure
-        //   setErrorResult("For Information Network: A target (Citizen or Building representing a sector) must be selected.");
-        //   return;
-        // }
-    } else { 
-      // Default validation for other stratagems if any are added without specific checks here
-      // This might need adjustment if a stratagem has no direct targets from this panel.
-      if (stratagemData.type !== 'emergency_liquidation' && // This one has no direct targets from UI
-          !targetCitizen && !targetBuilding && !targetResourceType) {
-        setErrorResult("At least one target (Citizen, Building, or Resource Type) must be selected for this stratagem.");
-        return;
-      }
+    if (!specificPanelRef.current) {
+      setErrorResult("Stratagem configuration panel not loaded correctly.");
+      return;
+    }
+
+    const details = specificPanelRef.current.getStratagemDetails();
+    if (details === null) { // Le panneau enfant indique que les détails sont invalides
+      setErrorResult("Please complete all required fields for the stratagem.");
+      // Le panneau enfant devrait idéalement gérer l'affichage des erreurs de champ spécifiques.
+      return;
     }
 
     setIsLoading(true);
     setExecutionResult(null);
     setErrorResult(null);
-
-    const stratagemDetails: any = {};
-    if (stratagemHasVariants) {
-      stratagemDetails.variant = selectedVariant;
-    }
-    // Common parameters
-    if (targetCitizen) stratagemDetails.targetCitizen = targetCitizen;
-    if (targetBuilding) stratagemDetails.targetBuilding = targetBuilding;
-    if (targetResourceType) stratagemDetails.targetResourceType = targetResourceType;
-    
-    // targetStorageBuildingId is no longer sent from client for hoard_resource
-    // TODO: Ajouter d'autres paramètres comme durationHours, name, description si nécessaire
 
     try {
       const response = await fetch('/api/stratagems/try-create', {
@@ -273,32 +224,32 @@ const StratagemExecutionPanel: React.FC<StratagemExecutionPanelProps> = ({
     setIsLoading(false);
   };
   
-  const isExecuteDisabled = (() => {
+  // La logique de isExecuteDisabled est simplifiée car le panneau enfant gère la validité de ses propres détails.
+  // Le bouton Exécuter est désactivé si le panneau enfant n'a pas fourni de détails valides (via getStratagemDetails retournant null).
+  const isExecuteDisabled = useMemo(() => {
     if (isLoading) return true;
-    // Updated list of "Coming Soon" or disabled types
-    if (['supplier_lockout', 'political_campaign', 'information_network', 'maritime_blockade', 'cultural_patronage', 'theater_conspiracy', 'printing_propaganda', 'cargo_mishap', 'marketplace_gossip', 'employee_poaching', 'joint_venture', 'financial_patronage', 'neighborhood_watch', 'monopoly_pricing', 'reputation_boost', 'canal_mugging', 'burglary', 'employee_corruption', 'arson', 'charity_distribution', 'festival_organisation'].includes(stratagemData.type)) {
-      return true; 
+    // Liste des types "Prochainement" ou désactivés globalement
+    const comingSoonTypes = ['supplier_lockout', 'political_campaign', 'information_network', 'maritime_blockade', 'cultural_patronage', 'theater_conspiracy', 'printing_propaganda', 'cargo_mishap', 'marketplace_gossip', 'employee_poaching', 'joint_venture', 'financial_patronage', 'neighborhood_watch', 'monopoly_pricing', 'reputation_boost', 'canal_mugging', 'burglary', 'employee_corruption', 'arson', 'charity_distribution', 'festival_organisation'];
+    if (comingSoonTypes.includes(stratagemData.type)) {
+      return true;
     }
+    // D'autres logiques de désactivation globales pourraient être ajoutées ici si nécessaire.
+    // La validité des champs spécifiques est gérée par le panneau enfant qui retournera null de getStratagemDetails() si invalide.
+    return false; 
+  }, [isLoading, stratagemData.type]);
 
-    if (stratagemData.type === 'hoard_resource') {
-      return !targetResourceType;
+
+  const SpecificStratagemPanelComponent = useMemo(() => {
+    switch (stratagemData.type) {
+      case 'undercut':
+        return UndercutStratagemPanel;
+      // case 'hoard_resource':
+      //   return HoardResourcePanel; 
+      // Ajouter d'autres cas ici pour les panneaux spécifiques
+      default:
+        return DefaultStratagemPanel;
     }
-    if (stratagemData.type === 'reputation_assault') {
-      return !targetCitizen;
-    }
-    if (stratagemData.type === 'maritime_blockade') {
-      return !targetCitizen && !targetBuilding; // Requires at least one target
-    }
-    if (['undercut', 'coordinate_pricing'].includes(stratagemData.type)) {
-      return !targetResourceType; // ResourceType is mandatory for these
-    }
-    if (stratagemData.type === 'emergency_liquidation') {
-      return false; // No direct targets from UI, always executable if not loading/coming soon
-    }
-    // Default for other potential types: require at least one target if not specifically handled
-    // This might need adjustment based on future stratagems.
-    return (!targetCitizen && !targetBuilding && !targetResourceType); 
-  })();
+  }, [stratagemData.type]);
 
   if (!isOpen) {
     return null;
@@ -317,132 +268,18 @@ const StratagemExecutionPanel: React.FC<StratagemExecutionPanelProps> = ({
         <div className="overflow-y-auto pr-2 flex-grow">
           <p className="text-sm italic text-amber-800 mb-1">{stratagemData.description}</p>
           <p className="text-lg font-semibold text-amber-700 mb-6">
-            Influence Cost: {influenceCost} 🎭
+            Influence Cost: {currentInfluenceCost} 🎭
           </p>
 
-          {/* Variant Selection - Conditionally render based on stratagemData.hasVariants */}
-          {stratagemHasVariants && (
-            <div className="mb-4">
-              <label htmlFor="variant" className="block text-sm font-medium text-amber-800 mb-1">
-                Aggressiveness Variant {/* TODO: Make this label dynamic if variants mean different things. e.g. "Duration" or "Scale" */}
-              </label>
-              <select
-                id="variant"
-                value={selectedVariant}
-                onChange={(e) => setSelectedVariant(e.target.value as 'Mild' | 'Standard' | 'Aggressive')}
-                className="w-full p-2 border border-amber-300 rounded-md bg-white text-amber-900 focus:ring-amber-500 focus:border-amber-500"
-              >
-                <option value="Mild">Mild (10% Undercut, Cost x1)</option>
-                <option value="Standard">Standard (15% Undercut, Cost x2)</option>
-                <option value="Aggressive">Aggressive (20% Undercut, Cost x3)</option>
-              </select>
-            </div>
-          )}
-
-          {/* Target Citizen - Hide if hoard_resource or reputation_assault (as it's primary target) */}
-          {/* Target Citizen - Conditional rendering based on stratagem type */}
-          {/* Hide for hoard_resource. For reputation_assault, it's the primary target. For others, it's optional. */}
-          {/* For maritime_blockade, targetCitizen (competitor) is an option. */}
-          {stratagemData.type !== 'hoard_resource' && (
-            <div className="mb-4">
-              <label htmlFor="targetCitizen" className="block text-sm font-medium text-amber-800 mb-1 flex items-center">
-                <FaUserShield className="mr-2" /> 
-                {stratagemData.type === 'reputation_assault' ? 'Target Citizen' : 
-                 stratagemData.type === 'maritime_blockade' ? 'Target Competitor Citizen (Optional)' :
-                 'Target Citizen (Optional)'
-                }
-                {stratagemData.type === 'reputation_assault' && <span className="text-red-500 ml-1">*</span>}
-              </label>
-              <select
-                id="targetCitizen"
-                value={targetCitizen || ''}
-                onChange={(e) => setTargetCitizen(e.target.value || null)}
-                className="w-full p-2 border border-amber-300 rounded-md bg-white text-amber-900 focus:ring-amber-500 focus:border-amber-500"
-                disabled={isLoading}
-              >
-                <option value="">-- Select Citizen --</option>
-                {citizens.map((c, index) => {
-                  const namePart = [c.firstName, c.lastName].filter(Boolean).join(' ');
-                  const citizenMainIdentifier = namePart 
-                    ? `${namePart} (${c.username || 'ID Manquant'})` 
-                    : (c.username || ''); 
-                  
-                  const socialClassDisplay = c.socialClass || 'N/A';
-                  let finalDisplayString;
-
-                  if (!citizenMainIdentifier) {
-                    finalDisplayString = socialClassDisplay === 'N/A' 
-                      ? '[Citoyen Inconnu]' 
-                      : `[Citoyen Inconnu] - ${socialClassDisplay}`;
-                  } else {
-                    finalDisplayString = `${citizenMainIdentifier} - ${socialClassDisplay}`;
-                  }
-                  
-                  return (
-                    <option key={`citizen-opt-${c.username || index}`} value={c.username || ''}>
-                      {finalDisplayString}
-                    </option>
-                  );
-                })}
-              </select>
-            </div>
-          )}
-
-          {/* Target Building - Conditional rendering */}
-          {/* Hide for hoard_resource, reputation_assault. Optional for others. */}
-          {/* For maritime_blockade, targetBuilding (competitor's waterfront asset) is an option. */}
-          {stratagemData.type !== 'hoard_resource' && stratagemData.type !== 'reputation_assault' && (
-            <div className="mb-4">
-              <label htmlFor="targetBuilding" className="block text-sm font-medium text-amber-800 mb-1 flex items-center">
-                <FaBuilding className="mr-2" /> 
-                {stratagemData.type === 'maritime_blockade' ? "Target Competitor's Building (Optional)" : "Target Building (Optional)"}
-              </label>
-              <select
-                id="targetBuilding"
-                value={targetBuilding || ''}
-                onChange={(e) => setTargetBuilding(e.target.value || null)}
-                className="w-full p-2 border border-amber-300 rounded-md bg-white text-amber-900 focus:ring-amber-500 focus:border-amber-500"
-                disabled={isLoading}
-              >
-                <option value="">-- Select Building --</option>
-                {buildings
-                  .filter(b => !targetCitizen || (b.owner === targetCitizen)) 
-                  .map(b => (
-                    <option key={`building-opt-${b.buildingId}`} value={b.buildingId}>
-                      {b.name || b.buildingId} (Type: {b.type}, Owner: {b.owner || 'N/A'})
-                    </option>
-                ))}
-              </select>
-            </div>
-          )}
-
-          {/* Target Resource Type - Conditionally render based on stratagem type */}
-          {/* Hide for reputation_assault, maritime_blockade (as it targets operations, not a specific resource type directly via UI) */}
-          {stratagemData.type !== 'reputation_assault' && stratagemData.type !== 'maritime_blockade' && (
-            <div className="mb-4">
-              <label htmlFor="targetResourceType" className="block text-sm font-medium text-amber-800 mb-1 flex items-center">
-                <FaBoxOpen className="mr-2" /> Target Resource Type 
-                {['undercut', 'coordinate_pricing', 'hoard_resource'].includes(stratagemData.type) ? 
-                  <span className="text-red-500 ml-1">*</span> : 
-                  <span className="text-xs text-gray-500 ml-1">(Optional)</span>
-                }
-              </label>
-              <select
-                id="targetResourceType"
-                value={targetResourceType || ''}
-                onChange={(e) => setTargetResourceType(e.target.value || null)}
-                className="w-full p-2 border border-amber-300 rounded-md bg-white text-amber-900 focus:ring-amber-500 focus:border-amber-500"
-                disabled={isLoading}
-              >
-                <option value="">-- Select Resource Type --</option>
-                {resourceTypes.map(rt => (
-                  <option key={`resource-opt-${rt.id}`} value={rt.id}>
-                    {rt.name} (Category: {rt.category || 'N/A'})
-                  </option>
-                ))}
-              </select>
-            </div>
-          )}
+          <SpecificStratagemPanelComponent
+            ref={specificPanelRef}
+            stratagemData={stratagemData}
+            currentUserUsername={currentUserUsername}
+            citizens={citizens}
+            buildings={buildings}
+            resourceTypes={resourceTypes}
+            isLoading={isLoading}
+          />
         </div>
         
         {executionResult && <p className="text-green-600 mt-4 p-2 bg-green-100 border border-green-300 rounded">{executionResult}</p>}
@@ -451,7 +288,7 @@ const StratagemExecutionPanel: React.FC<StratagemExecutionPanelProps> = ({
         <div className="mt-auto pt-4 border-t border-amber-300">
           <button
             onClick={handleExecute}
-            disabled={isExecuteDisabled || isLoading}
+            disabled={isExecuteDisabled || isLoading} // isExecuteDisabled gère les types "coming soon"
             className={`w-full py-3 px-4 rounded-md text-white font-semibold transition-colors flex items-center justify-center
                         ${isExecuteDisabled || isLoading ? 'bg-gray-400 cursor-not-allowed' : 'bg-amber-600 hover:bg-amber-700'}`}
           >
