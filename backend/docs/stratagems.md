@@ -27,6 +27,7 @@ Refer to `backend/docs/airtable_schema.md` for the detailed structure of the `ST
 
 -   **Type**: `undercut`
 -   **Purpose**: To strategically lower the selling prices of a citizen's goods to be cheaper than their competition for a specific resource type.
+-   **Category**: `commerce`
 -   **Creator**: `backend/engine/stratagem_creators/undercut_stratagem_creator.py`
 -   **Processor**: `backend/engine/stratagem_processors/undercut_stratagem_processor.py`
 
@@ -93,6 +94,7 @@ This will make NLR attempt to sell timber 15% cheaper than BasstheWhale for 48 h
 
 -   **Type**: `coordinate_pricing`
 -   **Purpose**: To align the selling prices of a citizen's goods with a target's prices (specific citizen or building) or with the general market average for a specific resource type.
+-   **Category**: `commerce`
 -   **Creator**: `backend/engine/stratagem_creators/coordinate_pricing_stratagem_creator.py`
 -   **Processor**: `backend/engine/stratagem_processors/coordinate_pricing_stratagem_processor.py`
 
@@ -155,6 +157,7 @@ This will make NLR attempt to match SerMarco's average selling price for wine fo
 
 -   **Type**: `hoard_resource`
 -   **Purpose**: To systematically accumulate a specific resource type in a designated storage building. The citizen executing the stratagem and their employees will be tasked with acquiring and storing this resource.
+-   **Category**: `commerce`
 -   **Creator**: `backend/engine/stratagem_creators/hoard_resource_stratagem_creator.py`
 -   **Processor**: `backend/engine/stratagem_processors/hoard_resource_stratagem_processor.py`
 
@@ -219,6 +222,7 @@ This will make NLR and their employees attempt to buy Iron Ore from the market a
 
 -   **Type**: `supplier_lockout`
 -   **Purpose**: To establish exclusive or priority supply agreements with specific resource suppliers, thereby securing a more reliable supply chain and potentially hindering competitors.
+-   **Category**: `commerce`
 -   **Creator**: (To be created: `backend/engine/stratagem_creators/supplier_lockout_stratagem_creator.py`)
 -   **Processor**: (To be created: `backend/engine/stratagem_processors/supplier_lockout_stratagem_processor.py`)
 
@@ -278,6 +282,7 @@ This would make NLR attempt to secure an exclusive 60-day contract for Iron Ore 
 
 -   **Type**: `political_campaign`
 -   **Purpose**: To influence governance by lobbying for or against a specific decree or policy change.
+-   **Category**: `political`
 -   **Creator**: (To be created: `backend/engine/stratagem_creators/political_campaign_stratagem_creator.py`)
 -   **Processor**: (To be created: `backend/engine/stratagem_processors/political_campaign_stratagem_processor.py`)
 
@@ -340,6 +345,7 @@ This would make NLR launch a 28-day campaign to repeal the "Salt Tax Increase Ac
 
 -   **Type**: `reputation_assault`
 -   **Purpose**: To damage a competitor's business relationships and trustworthiness by spreading negative information.
+-   **Category**: `personal`
 -   **Creator**: `backend/engine/stratagem_creators/reputation_assault_stratagem_creator.py`
 -   **Processor**: `backend/engine/stratagem_processors/reputation_assault_stratagem_processor.py`
 
@@ -394,6 +400,7 @@ This will make NLR attempt to damage BasstheWhale's reputation by sending AI-gen
 
 -   **Type**: `emergency_liquidation`
 -   **Purpose**: To quickly convert a citizen's owned inventory into cash, albeit at potentially below-market rates.
+-   **Category**: `commerce`
 -   **Creator**: `backend/engine/stratagem_creators/emergency_liquidation_stratagem_creator.py`
 -   **Processor**: `backend/engine/stratagem_processors/emergency_liquidation_stratagem_processor.py`
 
@@ -446,6 +453,7 @@ This will make NLR attempt to sell all items in their inventory at 70% of their 
 
 -   **Type**: `cultural_patronage`
 -   **Purpose**: To build social capital and enhance reputation by sponsoring artists, performances, or cultural institutions.
+-   **Category**: `social`
 -   **Creator**: `backend/engine/stratagem_creators/cultural_patronage_stratagem_creator.py`
 -   **Processor**: `backend/engine/stratagem_processors/cultural_patronage_stratagem_processor.py`
 
@@ -504,6 +512,7 @@ This would make NLR initiate a "Grand" level of cultural patronage towards the a
 
 -   **Type**: `information_network`
 -   **Purpose**: To establish intelligence gathering operations targeting specific citizens or market sectors, providing advanced information and insights.
+-   **Category**: `security`
 -   **Creator**: `backend/engine/stratagem_creators/information_network_stratagem_creator.py`
 -   **Processor**: `backend/engine/stratagem_processors/information_network_stratagem_processor.py`
 
@@ -556,6 +565,7 @@ This would make NLR establish an information network focused on the grain trade,
 
 -   **Type**: `maritime_blockade`
 -   **Purpose**: To control water access to cripple a competitor's trade and waterfront operations.
+-   **Category**: `warfare`
 -   **Creator**: `backend/engine/stratagem_creators/maritime_blockade_stratagem_creator.py`
 -   **Processor**: `backend/engine/stratagem_processors/maritime_blockade_stratagem_processor.py`
 
@@ -615,7 +625,7 @@ This would make NLR attempt to blockade the waterfront operations associated wit
 
 -   **Type**: `theater_conspiracy`
 -   **Purpose**: To manipulate public opinion and political narratives by commissioning and staging theatrical performances with specific themes.
--   **Category**: `social_warfare`
+-   **Category**: `social`
 -   **Creator**: (To be created: `backend/engine/stratagem_creators/theater_conspiracy_stratagem_creator.py`)
 -   **Processor**: (To be created: `backend/engine/stratagem_processors/theater_conspiracy_stratagem_processor.py`)
 
@@ -673,7 +683,7 @@ This would make NLR attempt to stage a play at the "theater_grand_canal_01" that
 
 -   **Type**: `printing_propaganda`
 -   **Purpose**: To conduct information warfare against competitors by mass-producing and distributing pamphlets, broadsheets, and rumors.
--   **Category**: `information_warfare`
+-   **Category**: `political`
 -   **Creator**: (To be created: `backend/engine/stratagem_creators/printing_propaganda_stratagem_creator.py`)
 -   **Processor**: (To be created: `backend/engine/stratagem_processors/printing_propaganda_stratagem_processor.py`)
 
@@ -731,7 +741,7 @@ This would make NLR attempt to use the "printing_house_rialto_01" to produce and
 
 -   **Type**: `cargo_mishap`
 -   **Purpose**: To sabotage a competitor's shipment by arranging for their goods to "disappear" while in transit.
--   **Category**: `economic_warfare`
+-   **Category**: `warfare`
 -   **Creator**: (To be created: `backend/engine/stratagem_creators/cargo_mishap_stratagem_creator.py`)
 -   **Processor**: (To be created: `backend/engine/stratagem_processors/cargo_mishap_stratagem_processor.py`)
 
@@ -783,7 +793,7 @@ This would make NLR attempt to sabotage a specific timber shipment contract belo
 
 -   **Type**: `marketplace_gossip`
 -   **Purpose**: To subtly damage a competitor's reputation by spreading rumors and negative information through Venice's social networks.
--   **Category**: `social_warfare`
+-   **Category**: `personal`
 -   **Creator**: (To be created: `backend/engine/stratagem_creators/marketplace_gossip_stratagem_creator.py`)
 -   **Processor**: (To be created: `backend/engine/stratagem_processors/marketplace_gossip_stratagem_processor.py`)
 
@@ -836,7 +846,7 @@ This would make NLR attempt to spread rumors about BasstheWhale's business pract
 
 -   **Type**: `employee_poaching`
 -   **Purpose**: To recruit a skilled employee from a competitor by making them a better offer.
--   **Category**: `social_warfare`
+-   **Category**: `personal`
 -   **Creator**: (To be created: `backend/engine/stratagem_creators/employee_poaching_stratagem_creator.py`)
 -   **Processor**: (To be created: `backend/engine/stratagem_processors/employee_poaching_stratagem_processor.py`)
 
@@ -895,7 +905,7 @@ This would make NLR attempt to recruit "GiovanniArtisan" away from their current
 
 -   **Type**: `joint_venture`
 -   **Purpose**: To propose a formal business partnership with another citizen, defining contributions, responsibilities, and profit-sharing.
--   **Category**: `economic_cooperation`
+-   **Category**: `commerce`
 -   **Creator**: (To be created: `backend/engine/stratagem_creators/joint_venture_stratagem_creator.py`)
 -   **Processor**: (To be created: `backend/engine/stratagem_processors/joint_venture_stratagem_processor.py`)
 
@@ -952,7 +962,7 @@ This would make NLR propose a 6-month, 50/50 spice trading joint venture to SerM
 
 -   **Type**: `financial_patronage`
 -   **Purpose**: To provide comprehensive financial support to promising individuals, struggling families, or loyal allies, creating deep personal bonds and long-term obligations.
--   **Category**: `social_support`
+-   **Category**: `personal`
 -   **Creator**: (To be created: `backend/engine/stratagem_creators/financial_patronage_stratagem_creator.py`)
 -   **Processor**: (To be created: `backend/engine/stratagem_processors/financial_patronage_stratagem_processor.py`)
 
@@ -1011,7 +1021,7 @@ This would make NLR provide "Standard" financial support (e.g., 10 Ducats/day) t
 
 -   **Type**: `neighborhood_watch`
 -   **Purpose**: To enhance security and reduce crime in a specific district through collective citizen vigilance.
--   **Category**: `community_safety`
+-   **Category**: `security`
 -   **Creator**: (To be created: `backend/engine/stratagem_creators/neighborhood_watch_stratagem_creator.py`)
 -   **Processor**: (To be created: `backend/engine/stratagem_processors/neighborhood_watch_stratagem_processor.py`)
 
@@ -1073,7 +1083,7 @@ This would make NLR initiate a Neighborhood Watch in the San Polo district for 4
 
 -   **Type**: `monopoly_pricing`
 -   **Purpose**: To leverage dominant market position to significantly increase prices for a specific resource, maximizing profits at the expense of dependent consumers.
--   **Category**: `economic_dominance`
+-   **Category**: `commerce`
 -   **Creator**: (To be created: `backend/engine/stratagem_creators/monopoly_pricing_stratagem_creator.py`)
 -   **Processor**: (To be created: `backend/engine/stratagem_processors/monopoly_pricing_stratagem_processor.py`)
 
@@ -1136,7 +1146,7 @@ This would make NLR attempt to set the price of their Iron Ore to 200% above the
 
 -   **Type**: `reputation_boost`
 -   **Purpose**: To actively improve a target citizen's public image and trustworthiness through a coordinated campaign of positive messaging and relationship building.
--   **Category**: `social_support`
+-   **Category**: `personal`
 -   **Creator**: (To be created: `backend/engine/stratagem_creators/reputation_boost_stratagem_creator.py`)
 -   **Processor**: (To be created: `backend/engine/stratagem_processors/reputation_boost_stratagem_processor.py`)
 
@@ -1198,7 +1208,7 @@ This would make NLR launch a "Standard" intensity reputation boost campaign for 
 
 -   **Type**: `canal_mugging`
 -   **Purpose**: To rob a specific citizen while they are traveling by gondola, stealing Ducats and potentially resources.
--   **Category**: `criminal_activity`
+-   **Category**: `warfare`
 -   **Creator**: (To be created: `backend/engine/stratagem_creators/canal_mugging_stratagem_creator.py`)
 -   **Processor**: (To be created: `backend/engine/stratagem_processors/canal_mugging_stratagem_processor.py`)
 
@@ -1254,7 +1264,7 @@ This would make NLR attempt to mug "WealthyMerchantAI" during one of their gondo
 
 -   **Type**: `burglary`
 -   **Purpose**: To steal tools, materials, or finished goods from a competitor's production building.
--   **Category**: `criminal_activity`
+-   **Category**: `warfare`
 -   **Creator**: (To be created: `backend/engine/stratagem_creators/burglary_stratagem_creator.py`)
 -   **Processor**: (To be created: `backend/engine/stratagem_processors/burglary_stratagem_processor.py`)
 
@@ -1305,7 +1315,7 @@ This would make NLR attempt to burgle "building-competitor_workshop_01", costing
 
 -   **Type**: `employee_corruption`
 -   **Purpose**: To bribe occupants (employees) of businesses to reduce productivity and/or steal resources for the executor.
--   **Category**: `economic_warfare`
+-   **Category**: `warfare`
 -   **Creator**: (To be created: `backend/engine/stratagem_creators/employee_corruption_stratagem_creator.py`)
 -   **Processor**: (To be created: `backend/engine/stratagem_processors/employee_corruption_stratagem_processor.py`)
 
@@ -1367,7 +1377,7 @@ This would make NLR attempt to bribe "GiovanniArtisan" at "building-competitor_w
 
 -   **Type**: `arson`
 -   **Purpose**: To destroy a target building or business operation by setting it on fire, requiring it to be rebuilt.
--   **Category**: `sabotage`
+-   **Category**: `warfare`
 -   **Creator**: (To be created: `backend/engine/stratagem_creators/arson_stratagem_creator.py`)
 -   **Processor**: (To be created: `backend/engine/stratagem_processors/arson_stratagem_processor.py`)
 
@@ -1418,7 +1428,7 @@ This would make NLR attempt to burn down "building-rival_warehouse_03", costing 
 
 -   **Type**: `charity_distribution`
 -   **Purpose**: To anonymously distribute Ducats to poor citizens in a specific district, improving general sentiment and subtly enhancing the executor's reputation.
--   **Category**: `social_support`
+-   **Category**: `social`
 -   **Creator**: (To be created: `backend/engine/stratagem_creators/charity_distribution_stratagem_creator.py`)
 -   **Processor**: (To be created: `backend/engine/stratagem_processors/charity_distribution_stratagem_processor.py`)
 
@@ -1474,7 +1484,7 @@ This would make NLR anonymously distribute 1000 Ducats among approximately 10 po
 
 -   **Type**: `festival_organisation`
 -   **Purpose**: To organize and sponsor a public festival in a specific district, boosting community morale, relationships, and the organizer's reputation.
--   **Category**: `social_event`
+-   **Category**: `social`
 -   **Creator**: (To be created: `backend/engine/stratagem_creators/festival_organisation_stratagem_creator.py`)
 -   **Processor**: (To be created: `backend/engine/stratagem_processors/festival_organisation_stratagem_processor.py`)
 
