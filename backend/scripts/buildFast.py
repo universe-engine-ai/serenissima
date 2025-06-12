@@ -23,10 +23,11 @@ from dotenv import load_dotenv
 
 try:
     from backend.engine.utils.activity_helpers import LogColors, get_building_record, _escape_airtable_value
+    from dateutil import parser as dateutil_parser # Added import
 except ImportError:
-    class LogColors:
+    class LogColors: #type: ignore
         HEADER = OKBLUE = OKGREEN = WARNING = FAIL = ENDC = BOLD = ''
-    def get_building_record(tables: Dict[str, Table], building_id_input: str) -> Optional[Dict[str, Any]]:
+    def get_building_record(tables: Dict[str, Table], building_id_input: str) -> Optional[Dict[str, Any]]: #type: ignore
         # Minimal fallback if imports fail during standalone execution (should not happen in normal use)
         log.error("Failed to import get_building_record from activity_helpers.")
         try:
@@ -39,10 +40,16 @@ except ImportError:
         except Exception as e:
             log.error(f"Fallback get_building_record failed: {e}")
             return None
-    def _escape_airtable_value(value: Any) -> str:
+    def _escape_airtable_value(value: Any) -> str: #type: ignore
         if isinstance(value, str):
             return value.replace("'", "\\'")
         return str(value)
+    # Fallback for dateutil_parser if activity_helpers fails to import it (less likely)
+    try:
+        from dateutil import parser as dateutil_parser #type: ignore
+    except ImportError:
+        log.error("Failed to import dateutil.parser. Date parsing for activities will fail.")
+        dateutil_parser = None #type: ignore
 
 
 # Setup logging
@@ -80,32 +87,84 @@ def initialize_airtable() -> Optional[Dict[str, Table]]:
         log.error(f"{LogColors.FAIL}Failed to initialize Airtable: {e}{LogColors.ENDC}")
         return None
 
-def run_script(script_path: str, citizen_username: Optional[str] = None, activity_id: Optional[str] = None) -> bool:
-    """Runs a given script with optional citizen or activityId argument."""
-    command = ["python", script_path]
-    if citizen_username:
-        command.extend(["--citizen", citizen_username])
-    if activity_id: # Should not be used by processAllActivitiesNow when --citizen is used
-        command.extend(["--ActivityId", activity_id])
+def get_activities_for_citizen(tables: Dict[str, Table], citizen_username: str) -> List[Dict]:
+    """
+    Fetches 'created' or 'in_progress' activities for a specific citizen,
+    sorted by StartDate, excluding 'rest' and 'idle'.
+    """
+    formula_parts = [
+        f"{{Citizen}} = '{_escape_airtable_value(citizen_username)}'",
+        "OR({Status}='created', {Status}='in_progress')",
+        "NOT({Type}='rest')",
+        "NOT({Type}='idle')"
+    ]
+    formula = "AND(" + ", ".join(formula_parts) + ")"
+    log.info(f"Fetching activities for citizen '{citizen_username}' with formula: {formula}")
+    try:
+        all_citizen_activities = tables['activities'].all(formula=formula, fields=['ActivityId', 'StartDate', 'Type', 'Citizen', 'Status'])
+        
+        valid_activities = []
+        if dateutil_parser: # Check if parser was imported
+            for activity_record in all_citizen_activities:
+                start_date_str = activity_record['fields'].get('StartDate')
+                if start_date_str:
+                    try:
+                        activity_record['fields']['_ParsedStartDate'] = dateutil_parser.isoparse(start_date_str)
+                        valid_activities.append(activity_record)
+                    except ValueError:
+                        log.warning(f"Could not parse StartDate '{start_date_str}' for activity {activity_record.get('id')}. Skipping.")
+                else:
+                    log.warning(f"Activity {activity_record.get('id')} missing StartDate. Skipping.")
+            
+            valid_activities.sort(key=lambda x: x['fields']['_ParsedStartDate'])
+        else: # Fallback if dateutil_parser is not available
+            log.error("dateutil.parser not available, cannot sort activities by date. Processing order may be incorrect.")
+            valid_activities = all_citizen_activities # Return unsorted
+        
+        log.info(f"{LogColors.OKBLUE}Found {len(valid_activities)} activities for citizen '{citizen_username}'.{LogColors.ENDC}")
+        return valid_activities
+    except Exception as e:
+        log.error(f"{LogColors.FAIL}Error fetching activities for citizen '{citizen_username}': {e}{LogColors.ENDC}")
+        return []
 
+def run_script(script_path: str, citizen_username: Optional[str] = None, activity_id_param: Optional[str] = None) -> bool:
+    """Runs a given script with specific arguments based on the script type."""
+    command = ["python", script_path]
     script_name = os.path.basename(script_path)
-    log.info(f"{LogColors.OKBLUE}Running {script_name} for citizen '{citizen_username}'... Command: {' '.join(command)}{LogColors.ENDC}")
+    log_context = ""
+
+    if script_name == "createActivities.py":
+        if citizen_username:
+            command.extend(["--citizen", citizen_username])
+            log_context = f"for citizen '{citizen_username}'"
+        # No --ActivityId for createActivities.py
+    elif script_name == "processAllActivitiesNow.py":
+        if activity_id_param:
+            command.extend(["--ActivityId", activity_id_param])
+            log_context = f"for ActivityId '{activity_id_param}'"
+        # No --citizen for processAllActivitiesNow.py as it processes based on its internal query or --ActivityId
+    else: # Fallback for other potential scripts
+        if citizen_username: command.extend(["--citizen", citizen_username])
+        if activity_id_param: command.extend(["--ActivityId", activity_id_param])
+        log_context = f"with citizen='{citizen_username}', activityId='{activity_id_param}'"
+    
+    log.info(f"{LogColors.OKBLUE}Running {script_name} {log_context}... Command: {' '.join(command)}{LogColors.ENDC}")
     try:
         # Stream output directly
-        process = subprocess.Popen(command, stdout=sys.stdout, stderr=sys.stderr)
+        process = subprocess.Popen(command, stdout=sys.stdout, stderr=sys.stderr, text=True)
         process.communicate() # Wait for the process to complete
         
         if process.returncode == 0:
-            log.info(f"{LogColors.OKGREEN}{script_name} completed successfully for citizen '{citizen_username}'.{LogColors.ENDC}")
+            log.info(f"{LogColors.OKGREEN}{script_name} {log_context} completed successfully.{LogColors.ENDC}")
             return True
         else:
-            log.error(f"{LogColors.FAIL}{script_name} failed for citizen '{citizen_username}' with exit code {process.returncode}.{LogColors.ENDC}")
+            log.error(f"{LogColors.FAIL}{script_name} {log_context} failed with exit code {process.returncode}.{LogColors.ENDC}")
             return False
     except FileNotFoundError:
         log.error(f"{LogColors.FAIL}Error: The script at '{script_path}' was not found.{LogColors.ENDC}")
         return False
     except Exception as e:
-        log.error(f"{LogColors.FAIL}An exception occurred while running {script_name} for '{citizen_username}': {e}{LogColors.ENDC}")
+        log.error(f"{LogColors.FAIL}An exception occurred while running {script_name} {log_context}: {e}{LogColors.ENDC}")
         return False
 
 def main():
@@ -193,46 +252,76 @@ def main():
 
     log.info(f"Targeting citizen '{relevant_citizen_username}' for construction of '{args.buildingId}'.")
 
+    building_completed_flag = False
     for i in range(args.maxIterations):
         log.info(f"{LogColors.HEADER}--- Iteration {i + 1}/{args.maxIterations} for building {args.buildingId} ---{LogColors.ENDC}")
+        iteration_failed_flag = False
 
-        # 1. Call createActivities.py
+        # 1. Call createActivities.py for the relevant_citizen_username
         log.info(f"Calling createActivities.py for {relevant_citizen_username}...")
         if not run_script(create_activities_path, citizen_username=relevant_citizen_username):
             log.error(f"{LogColors.FAIL}createActivities.py failed. Stopping BuildFast.{LogColors.ENDC}")
-            break
+            iteration_failed_flag = True
         
-        log.info(f"Waiting {args.delay} seconds...")
-        time.sleep(args.delay)
+        if iteration_failed_flag: break
 
-        # 2. Call processAllActivitiesNow.py
-        log.info(f"Calling processAllActivitiesNow.py for {relevant_citizen_username}...")
-        if not run_script(process_all_activities_path, citizen_username=relevant_citizen_username):
-            log.error(f"{LogColors.FAIL}processAllActivitiesNow.py failed. Stopping BuildFast.{LogColors.ENDC}")
-            break
-        
-        # 3. Check building status
-        current_building_record = get_building_record(tables, args.buildingId)
-        if not current_building_record:
-            log.error(f"{LogColors.FAIL}Building '{args.buildingId}' could not be refetched. Stopping BuildFast.{LogColors.ENDC}")
-            break
+        # 2. Fetch all 'created' or 'in_progress' activities for the relevant_citizen_username, sorted by StartDate
+        activities_to_process_this_iteration = get_activities_for_citizen(tables, relevant_citizen_username)
 
-        if current_building_record['fields'].get('IsConstructed'):
-            log.info(f"{LogColors.OKGREEN}Building '{args.buildingId}' successfully constructed!{LogColors.ENDC}")
-            break
-        
-        construction_minutes_remaining = current_building_record['fields'].get('ConstructionMinutesRemaining', 0)
-        log.info(f"Building '{args.buildingId}' status: IsConstructed={current_building_record['fields'].get('IsConstructed')}, MinutesRemaining={construction_minutes_remaining}")
+        if not activities_to_process_this_iteration:
+            log.info(f"No pending activities found for {relevant_citizen_username} after createActivities. Checking building status.")
+        else:
+            log.info(f"Found {len(activities_to_process_this_iteration)} activities for {relevant_citizen_username} to process this iteration.")
+            for activity_record in activities_to_process_this_iteration:
+                activity_id_custom = activity_record['fields'].get('ActivityId')
+                activity_type_log = activity_record['fields'].get('Type', 'N/A')
+                if not activity_id_custom:
+                    log.warning(f"Activity {activity_record['id']} missing ActivityId. Skipping.")
+                    continue
 
-        # Optional: Check last activity status for the citizen if needed for finer-grained error detection
-        # This would involve querying the ACTIVITIES table for the latest activity by this citizen related to this building.
+                log.info(f"Calling processAllActivitiesNow.py for ActivityId: {activity_id_custom} (Type: {activity_type_log})...")
+                if not run_script(process_all_activities_path, activity_id_param=activity_id_custom):
+                    log.error(f"{LogColors.FAIL}processAllActivitiesNow.py failed for ActivityId {activity_id_custom}. Stopping BuildFast.{LogColors.ENDC}")
+                    iteration_failed_flag = True
+                    break 
+                
+                # Check building status after each activity is processed
+                current_building_record_inner = get_building_record(tables, args.buildingId)
+                if not current_building_record_inner:
+                    log.error(f"{LogColors.FAIL}Building '{args.buildingId}' could not be refetched. Stopping BuildFast.{LogColors.ENDC}")
+                    iteration_failed_flag = True; break
+                if current_building_record_inner['fields'].get('IsConstructed'):
+                    log.info(f"{LogColors.OKGREEN}Building '{args.buildingId}' successfully constructed after processing ActivityId {activity_id_custom}!{LogColors.ENDC}")
+                    building_completed_flag = True; break
+                
+                construction_minutes_remaining_inner = current_building_record_inner['fields'].get('ConstructionMinutesRemaining', 0)
+                log.info(f"Building '{args.buildingId}' after ActivityId {activity_id_custom}: IsConstructed={current_building_record_inner['fields'].get('IsConstructed')}, MinutesRemaining={construction_minutes_remaining_inner}")
+
+
+            if iteration_failed_flag or building_completed_flag: break 
+
+        # 3. Final check for this iteration (if not already broken out)
+        if not building_completed_flag: # Only check if not already marked as completed
+            current_building_record_outer = get_building_record(tables, args.buildingId)
+            if not current_building_record_outer:
+                log.error(f"{LogColors.FAIL}Building '{args.buildingId}' could not be refetched at end of iteration. Stopping BuildFast.{LogColors.ENDC}")
+                break
+            if current_building_record_outer['fields'].get('IsConstructed'):
+                log.info(f"{LogColors.OKGREEN}Building '{args.buildingId}' successfully constructed at end of iteration!{LogColors.ENDC}")
+                building_completed_flag = True
+            else:
+                construction_minutes_remaining_outer = current_building_record_outer['fields'].get('ConstructionMinutesRemaining', 0)
+                log.info(f"Building '{args.buildingId}' status at end of iteration: IsConstructed={current_building_record_outer['fields'].get('IsConstructed')}, MinutesRemaining={construction_minutes_remaining_outer}")
+
+
+        if building_completed_flag: break 
 
         if i < args.maxIterations - 1:
             log.info(f"Waiting {args.delay} seconds before next iteration...")
             time.sleep(args.delay)
-    else:
-        if i == args.maxIterations -1 : # Check if loop finished due to maxIterations
-            log.warning(f"{LogColors.WARNING}Max iterations ({args.maxIterations}) reached. Building '{args.buildingId}' may not be fully constructed.{LogColors.ENDC}")
+        elif i == args.maxIterations -1 and not building_completed_flag: # Max iterations reached and not completed
+             log.warning(f"{LogColors.WARNING}Max iterations ({args.maxIterations}) reached. Building '{args.buildingId}' may not be fully constructed.{LogColors.ENDC}")
+
 
     log.info(f"{LogColors.HEADER}--- BuildFast for BuildingId: {args.buildingId} Finished ---{LogColors.ENDC}")
 
