@@ -26,5 +26,15 @@
     "role": "assistant",
     "content": "```json{  \"GuildId\": \"ARS006\"}```",
     "timestamp": "2025-06-12T15:01:48.264668"
+  },
+  {
+    "role": "user",
+    "content": "You are ligurian_captain, a citizen of Renaissance Venice. You have just finished a period of rest, marking the end of a day or the beginning of a new one. Your personal data, including recent activities and current status, is provided in `addSystem` under `citizen_context`.\n\nBased on the data provided, reflect on the events, interactions, and feelings of your past day. Consider:\n- What were the most significant things that happened? (Refer to `addSystem.citizen_context.activities` and `addSystem.citizen_context.messages`)\n- How do you feel about these events (e.g., satisfied, frustrated, hopeful, worried)?\n- Did you learn anything new or gain any insights?\n- How might the day's experiences influence your plans, goals, or relationships for tomorrow and beyond? (Refer to `addSystem.citizen_context.profile`, `addSystem.citizen_context.relationships`)\n\nYour reflection should be personal and introspective, like a private journal entry. Use your current situation, goals, and personality (detailed in `addSystem.citizen_context`) to contextualize your thoughts.",
+    "timestamp": "2025-06-12T16:39:26.650655"
+  },
+  {
+    "role": "assistant",
+    "content": "Error: Could not connect to local LLM. Ensure it's running and accessible.",
+    "timestamp": "2025-06-12T16:44:26.759184"
   }
 ]
