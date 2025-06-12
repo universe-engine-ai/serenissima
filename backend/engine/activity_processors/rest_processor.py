@@ -25,7 +25,7 @@ KINOS_API_KEY = os.getenv("KINOS_API_KEY")
 def process(
     tables: Dict[str, Any],
     activity_record: Dict[str, Any],
-    building_type_defs: Dict[str, Any], # Not directly used here but part of signature
+    messagesing_type_defs: Dict[str, Any], # Not directly used here but part of signature
     resource_defs: Dict[str, Any],      # Not directly used here but part of signature
     api_base_url: Optional[str] = None
 ) -> bool:
@@ -72,12 +72,12 @@ def process(
                 except Exception as e_pkg_fetch:
                     log.error(f"  Error fetching data package for {citizen_username} (daily reflection): {e_pkg_fetch}")
             
-            kinos_build_url = f"{KINOS_API_URL}/v2/blueprints/{KINOS_BLUEPRINT}/kins/{citizen_username}/build" # Changed to /build
+            kinos_messages_url = f"{KINOS_API_URL}/v2/blueprints/{KINOS_BLUEPRINT}/kins/{citizen_username}/messages" # Changed to /messages
             
             kinos_prompt_daily_reflection = (
                 f"You are {citizen_username}, a citizen of Renaissance Venice. You have just finished a period of rest, marking the end of a day or the beginning of a new one. "
                 f"Your personal data, including recent activities and current status, is provided in `addSystem` under `citizen_context`.\n\n"
-                f"Reflect on the events, interactions, and feelings of your past day. Consider:\n"
+                f"Based on the data provided, reflect on the events, interactions, and feelings of your past day. Consider:\n"
                 f"- What were the most significant things that happened? (Refer to `addSystem.citizen_context.activities` and `addSystem.citizen_context.messages`)\n"
                 f"- How do you feel about these events (e.g., satisfied, frustrated, hopeful, worried)?\n"
                 f"- Did you learn anything new or gain any insights?\n"
@@ -101,14 +101,14 @@ def process(
                 "addSystem": json.dumps(structured_add_system_payload)
             }
 
-            log.info(f"  Launching asynchronous KinOS /build call for daily reflection by {citizen_username} to {kinos_build_url}")
+            log.info(f"  Launching asynchronous KinOS /messages call for daily reflection by {citizen_username} to {kinos_messages_url}")
             
             kinos_thread = threading.Thread(
-                target=_call_kinos_build_for_rest_reflection_async,
-                args=(kinos_build_url, kinos_payload_dict, tables, activity_record['id'], activity_guid, activity_details, citizen_username)
+                target=_call_kinos_messages_for_rest_reflection_async,
+                args=(kinos_messages_url, kinos_payload_dict, tables, activity_record['id'], activity_guid, activity_details, citizen_username)
             )
             kinos_thread.start()
-            log.info(f"  KinOS /build call for daily reflection by {citizen_username} started in thread {kinos_thread.ident}.")
+            log.info(f"  KinOS /messages call for daily reflection by {citizen_username} started in thread {kinos_thread.ident}.")
 
         except Exception as e_kinos_setup:
             log.error(f"{LogColors.FAIL}Error setting up KinOS call for daily reflection (activity {activity_guid}): {e_kinos_setup}{LogColors.ENDC}")
@@ -119,8 +119,8 @@ def process(
     # KinOS reflection is an add-on.
     return True
 
-def _call_kinos_build_for_rest_reflection_async(
-    kinos_build_url: str,
+def _call_kinos_messages_for_rest_reflection_async(
+    kinos_messages_url: str,
     kinos_payload: Dict[str, Any],
     tables: Dict[str, Any],
     activity_id_airtable: str,
@@ -129,16 +129,16 @@ def _call_kinos_build_for_rest_reflection_async(
     citizen_username_log: str
 ):
     """
-    Performs the KinOS /build call for daily reflection and updates the activity notes.
+    Performs the KinOS /messages call for daily reflection and updates the activity notes.
     This function is intended to be executed in a separate thread.
     """
-    log.info(f"  [Thread Daily Reflection: {threading.get_ident()}] Calling KinOS /build for daily reflection by {citizen_username_log} at {kinos_build_url}")
+    log.info(f"  [Thread Daily Reflection: {threading.get_ident()}] Calling KinOS /messages for daily reflection by {citizen_username_log} at {kinos_messages_url}")
     try:
-        kinos_response = requests.post(kinos_build_url, json=kinos_payload, timeout=180) # Increased timeout
+        kinos_response = requests.post(kinos_messages_url, json=kinos_payload, timeout=180) # Increased timeout
         kinos_response.raise_for_status()
         
         kinos_response_data = kinos_response.json()
-        log.info(f"  [Thread Daily Reflection: {threading.get_ident()}] KinOS /build response (daily reflection) for {citizen_username_log}: Status: {kinos_response_data.get('status')}, Response: {kinos_response_data.get('response')}")
+        log.info(f"  [Thread Daily Reflection: {threading.get_ident()}] KinOS /messages response (daily reflection) for {citizen_username_log}: Status: {kinos_response_data.get('status')}, Response: {kinos_response_data.get('response')}")
         
         raw_reflection = kinos_response_data.get('response', "No daily reflection from KinOS.")
 
@@ -171,12 +171,12 @@ def _call_kinos_build_for_rest_reflection_async(
             log.error(f"  [Thread Daily Reflection: {threading.get_ident()}] Error updating Airtable notes for activity {activity_guid_log} (daily reflection): {e_airtable_update}")
             
     except requests.exceptions.RequestException as e_kinos:
-        log.error(f"  [Thread Daily Reflection: {threading.get_ident()}] Error during KinOS /build call (daily reflection) for {citizen_username_log}: {e_kinos}")
+        log.error(f"  [Thread Daily Reflection: {threading.get_ident()}] Error during KinOS /messages call (daily reflection) for {citizen_username_log}: {e_kinos}")
     except json.JSONDecodeError as e_json_kinos:
         kinos_response_text_preview = "N/A"
         if 'kinos_response' in locals() and hasattr(kinos_response, 'text'):
             kinos_response_text_preview = kinos_response.text[:200]
-        log.error(f"  [Thread Daily Reflection: {threading.get_ident()}] JSON decode error for KinOS /build response (daily reflection) for {citizen_username_log}: {e_json_kinos}. Response: {kinos_response_text_preview}")
+        log.error(f"  [Thread Daily Reflection: {threading.get_ident()}] JSON decode error for KinOS /messages response (daily reflection) for {citizen_username_log}: {e_json_kinos}. Response: {kinos_response_text_preview}")
     except Exception as e_thread:
         log.error(f"  [Thread Daily Reflection: {threading.get_ident()}] Unexpected error in KinOS call thread for daily reflection by {citizen_username_log}: {e_thread}")
         import traceback

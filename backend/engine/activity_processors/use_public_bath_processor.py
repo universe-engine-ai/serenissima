@@ -155,7 +155,7 @@ def process(
                 except Exception as e_pkg_fetch:
                     log.error(f"  Error fetching data package for {citizen_username} (public bath): {e_pkg_fetch}")
             
-            kinos_build_url = f"{KINOS_API_URL}/v2/blueprints/{KINOS_BLUEPRINT}/kins/{citizen_username}/build"
+            kinos_build_url = f"{KINOS_API_URL}/v2/blueprints/{KINOS_BLUEPRINT}/kins/{citizen_username}/message"
             
             kinos_prompt_bath = (
                 f"You are {citizen_username}, a citizen of Renaissance Venice. You've just spent some time relaxing and socializing at a public bath. "
