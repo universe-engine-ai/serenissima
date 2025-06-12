@@ -25,12 +25,13 @@ try:
 except ImportError:
     # Fallbacks if run in a context where backend.engine.utils is not directly available
     # This is primarily for robustness; ideally, imports should work.
-    class LogColors: HEADER = OKBLUE = OKCYAN = OKGREEN = WARNING = FAIL = ENDC = BOLD = LIGHTBLUE = PINK = ""
-    def _escape_airtable_value(value: Any) -> str: return str(value).replace("'", "\\'")
+    class LogColors: HEADER = OKBLUE = OKCYAN = OKGREEN = WARNING = FAIL = ENDC = BOLD = LIGHTBLUE = PINK = "" # type: ignore
+    def _escape_airtable_value(value: Any) -> str: return str(value).replace("'", "\\'") # type: ignore
     import pytz
     VENICE_TIMEZONE = pytz.timezone('Europe/Rome')
-    def get_citizen_record(tables, username): return None # Placeholder
-    def get_relationship_trust_score(tables, u1, u2): return 0.0 # Placeholder
+    def get_citizen_record(tables, username): return None # type: ignore # Placeholder
+    def get_relationship_trust_score(tables, u1, u2): return 0.0 # type: ignore # Placeholder
+    def clean_thought_content(tables, content): return content # type: ignore # Placeholder for clean_thought_content
 
 # Load environment variables from the project root .env file
 dotenv_path = os.path.join(PROJECT_ROOT_CONV_HELPER, '.env')
@@ -44,6 +45,40 @@ KINOS_BLUEPRINT_ID = 'serenissima-ai' # From autonomouslyRun.py
 DEFAULT_TIMEOUT_SECONDS = 300 # Increased timeout for KinOS calls to 5 minutes
 
 # --- Helper Functions (adapted from autonomouslyRun.py and Compagno.tsx) ---
+
+def _ch_get_descriptive_building_name(building_record_fields: Dict[str, Any]) -> str:
+    """
+    Generates a descriptive name for a building for use in prompts.
+    Prioritizes Name, then non-coordinate BuildingId, then Type, then generic.
+    """
+    name_from_field = building_record_fields.get('Name')
+    custom_id = building_record_fields.get('BuildingId')
+
+    if name_from_field:
+        return name_from_field
+    
+    if custom_id:
+        # Heuristic for coordinate-like ID (e.g., "building_lat_lng" or "type_lat_lng_idx")
+        # A simple check: contains at least two underscores and at least one dot.
+        is_coordinate_like_id = (custom_id.count('_') >= 2 and '.' in custom_id)
+        
+        if is_coordinate_like_id:
+            building_type = building_record_fields.get('Type')
+            if building_type:
+                readable_type = building_type.replace('_', ' ')
+                return f"a {readable_type}" # e.g., "a canal house"
+            else:
+                return "an unnamed building" # Fallback if type is also missing
+        else:
+            # Custom ID is not coordinate-like, assume it's a meaningful ID
+            return custom_id 
+            
+    # Fallback if no Name and no BuildingId (or BuildingId was coordinate-like without Type)
+    building_type_fallback = building_record_fields.get('Type')
+    if building_type_fallback:
+        return f"a {building_type_fallback.replace('_', ' ')}"
+        
+    return "an unspecified location"
 
 def get_kinos_model_for_social_class(username: Optional[str], social_class: Optional[str]) -> str:
     """Determines the KinOS model. Defaults to 'local' unless it's NLR."""
@@ -289,8 +324,6 @@ def generate_conversation_turn(
     # speaker_current_point_id = speaker_profile.get('Point') # No longer primary way to determine location
     # listener_current_point_id = listener_profile.get('Point')
 
-    shared_building_name: Optional[str] = None
-    shared_building_id: Optional[str] = None
     location_description_for_prompt: str = "in the streets of Venice" # Default
 
     speaker_pos_str = speaker_profile.get('Position')
