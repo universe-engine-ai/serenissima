@@ -501,11 +501,12 @@ def handle_construction_worker_activity(
                                             tables, citizen_airtable_id, citizen_custom_id, citizen_username,
                                             import_contract['fields'].get('ContractId', import_contract['id']),
                                             galley_building_id, # From Galley
-                                            target_building_custom_id, # To Construction Site
+                                            target_building_custom_id, # To Construction Site (Correct: this is the actual final destination)
                                             mat_type_to_source, amount_to_fetch_this_run,
                                             path_to_galley, 
                                             now_utc_dt, resource_defs, building_type_defs, now_venice_dt, transport_api_url, api_base_url
                                         ):
+                                            log.info(f"      Fetch from Galley {galley_building_id} to Site {target_building_custom_id} created.")
                                             return True # Activity created, exit
                                         activity_created_for_this_material = True; break 
                         if activity_created_for_this_material: continue # Next material if this one was sourced

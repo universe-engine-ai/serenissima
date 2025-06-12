@@ -171,11 +171,12 @@ def try_create(
 
     source_building_record = get_building_record(tables, final_from_building_custom_id)
     if not source_building_record:
-        log.error(f"{LogColors.ACTIVITY}[FetchCreator] Source building {final_from_building_custom_id} not found.")
+        # This log is already present above, so we can remove the redundant one here.
+        # log.error(f"{LogColors.ACTIVITY}[FetchCreator] Source building {final_from_building_custom_id} not found.")
         return None
     source_building_pos = _get_building_position_coords(source_building_record)
     if not source_building_pos:
-        log.error(f"Source building {final_from_building_custom_id} has no position.")
+        log.error(f"{LogColors.ACTIVITY}[FetchCreator] Source building {final_from_building_custom_id} has no position.")
         return None
     
     source_building_name_log = source_building_record['fields'].get('Name', final_from_building_custom_id)
