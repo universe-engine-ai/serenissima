@@ -100,11 +100,11 @@ This will make NLR attempt to sell timber 15% cheaper than BasstheWhale for 48 h
 
 #### Parameters for Creation (`stratagemDetails` in API request):
 
--   `targetResourceType` (string, required): The ID of the resource type whose prices are to be coordinated (e.g., "timber", "grain").
--   `targetCitizen` (string, optional): The username of a specific citizen whose prices will be used as the reference. If provided, the executing citizen will match the average price of this target citizen for the specified resource.
--   `targetBuilding` (string, optional): The `BuildingId` of a specific building whose sell contracts will be used as the reference. If provided, the executing citizen will match the average price of contracts from this building for the specified resource.
-    *Note: If neither `targetCitizen` nor `targetBuilding` is provided, the stratagem will target the general market average price for the `targetResourceType` (excluding the executor's own current contracts).*
--   `name` (string, optional): A custom name for this stratagem instance. Defaults to something like "Coordinate Pricing for [ResourceType] with [Target]".
+-   `targetCitizen` (string, optional): The username of a specific citizen whose prices will be used as the reference.
+-   `targetBuilding` (string, optional): The `BuildingId` of a specific building whose sell contracts will be used as the reference.
+-   `targetResourceType` (string, optional): The ID of the resource type whose prices are to be coordinated (e.g., "timber", "grain"). If omitted, the stratagem will attempt to coordinate prices for *all* resources the executor is currently selling, based on the reference target (citizen, building, or general market).
+    *Note: If neither `targetCitizen` nor `targetBuilding` is provided, the stratagem will target the general market average price for the `targetResourceType` (if specified) or for all the executor's resources (if `targetResourceType` is omitted), excluding the executor's own current contracts.*
+-   `name` (string, optional): A custom name for this stratagem instance. Defaults to something like "Coordinate Pricing for [ResourceType or All Resources] with [Target]".
 -   `description` (string, optional): A custom description.
 -   `notes` (string, optional): Custom notes.
 -   `durationHours` (integer, optional): How long the stratagem should remain active, in hours. Defaults to 24 hours. The stratagem will attempt to maintain the coordinated prices periodically until it expires.
