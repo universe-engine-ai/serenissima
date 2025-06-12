@@ -60,7 +60,8 @@ def handle_construction_worker_activity(
         try_create_idle_activity,
         try_create_goto_work_activity, # Used for generic goto for now
         try_create_fetch_from_storage_activity, # Added for fetching from storage
-        try_create_deposit_inventory_orchestrator # Added for inventory deposit
+        try_create_deposit_inventory_orchestrator, # Added for inventory deposit
+        try_create_construct_building_activity # Assurez-vous que cela est importé
     )
     import datetime # Ensure datetime is available
 
@@ -182,8 +183,65 @@ def handle_construction_worker_activity(
                     )
                     if deposit_activity_created:
                         log.info(f"      Created 'deposit_items_at_location' activity for {citizen_username} at {target_building_custom_id}.")
-                        return True # Activity created, process this contract's turn is done.
+                        
+                        # Évaluer la possibilité de construction après ce dépôt simulé
+                        simulated_site_inventory_map = site_inventory.copy() # site_inventory est le current_site_inventory_map
+                        for item_dep in items_to_deposit_for_this_site:
+                            simulated_site_inventory_map[item_dep["ResourceId"]] = simulated_site_inventory_map.get(item_dep["ResourceId"], 0.0) + item_dep["Amount"]
+                        
+                        log.info(f"      Inventaire simulé du site {target_building_custom_id} après dépôt: {simulated_site_inventory_map}")
 
+                        # Recalculer max_permissible_work_minutes avec l'inventaire simulé
+                        # (Logique similaire à celle utilisée plus bas pour la vérification de construction)
+                        max_permissible_work_minutes_after_deposit = float(target_building_record['fields'].get('ConstructionMinutesRemaining', 0))
+                        can_do_any_work_after_deposit = True
+                        
+                        # total_construction_time_for_building est défini plus bas, nous devons l'avoir ici.
+                        # Il est calculé à partir de target_building_def.get('constructionMinutes', 0)
+                        # Assurons-nous qu'il est disponible.
+                        # Pour l'instant, nous allons dupliquer ce calcul ici pour la clarté, ou le déplacer plus haut.
+                        # Pour cet exemple, nous supposons que total_construction_time_for_building est déjà calculé et disponible.
+                        # (Il est défini plus loin dans le code original, après le bloc de dépôt)
+                        # Nous allons le récupérer ici :
+                        current_total_construction_time_for_building = float(target_building_def.get('constructionMinutes', 0))
+                        if current_total_construction_time_for_building <= 0:
+                            current_total_construction_time_for_building = 120.0 # Default
+
+                        if not required_materials_for_project: # required_materials_for_project est défini plus haut
+                            pass # Peut travailler la totalité des minutes restantes
+                        else:
+                            for material, needed_qty_total_for_project_val in required_materials_for_project.items():
+                                needed_qty_total_for_project = float(needed_qty_total_for_project_val)
+                                on_site_qty_simulated = float(simulated_site_inventory_map.get(material, 0.0))
+                                
+                                if on_site_qty_simulated <= 0.001 and needed_qty_total_for_project > 0:
+                                    can_do_any_work_after_deposit = False; break
+                                elif needed_qty_total_for_project > 0 and current_total_construction_time_for_building > 0:
+                                    minutes_this_material_supports = (on_site_qty_simulated / needed_qty_total_for_project) * current_total_construction_time_for_building
+                                    max_permissible_work_minutes_after_deposit = min(max_permissible_work_minutes_after_deposit, minutes_this_material_supports)
+                        
+                        if can_do_any_work_after_deposit and max_permissible_work_minutes_after_deposit > 1:
+                            work_duration_for_chained_construct = min(60, max_permissible_work_minutes_after_deposit) # Standard 60 min chunk
+                            construct_start_time_iso = deposit_activity_created['fields']['EndDate'] # Utiliser l'enregistrement retourné
+                            
+                            log.info(f"      Après dépôt simulé, {max_permissible_work_minutes_after_deposit:.2f} minutes de travail possibles. Tentative de chaînage de 'construct_building'.")
+                            
+                            construct_activity_chained = try_create_construct_building_activity(
+                                tables, citizen_record, target_building_record,
+                                work_duration_for_chained_construct, contract_custom_id, # contract_custom_id est en scope
+                                path_data=None, # Déjà sur site
+                                current_time_utc=now_utc_dt, # Pour CreatedAt
+                                start_time_utc_iso=construct_start_time_iso
+                            )
+                            if construct_activity_chained:
+                                log.info(f"      Activité 'construct_building' chaînée avec succès après dépôt pour {target_building_custom_id}.")
+                            else:
+                                log.warning(f"      Échec du chaînage de 'construct_building' après dépôt pour {target_building_custom_id}.")
+                        else:
+                            log.info(f"      Après dépôt simulé, pas assez de matériaux/temps ({max_permissible_work_minutes_after_deposit:.2f} mins) pour chaîner 'construct_building' pour {target_building_custom_id}.")
+                            
+                        return True # Activité de dépôt (et potentiellement de construction) créée.
+            
             # Original checks continue if no deposit activity was created above
             if target_building_record['fields'].get('IsConstructed'):
                 log.info(f"    Target building {target_building_custom_id} is already constructed. Marking contract {contract_custom_id} as completed if not already.")
