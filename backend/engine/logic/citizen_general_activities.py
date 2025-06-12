@@ -2206,10 +2206,10 @@ def _handle_professional_construction_work( # Renamed from _handle_construction_
 
     workplace_pos = _get_building_position_coords(workplace_record)
     if not citizen_position or not workplace_pos or _calculate_distance_meters(citizen_position, workplace_pos) > 20:
-        log.info(f"{LogColors.OKBLUE}[Construction Pro] Citoyen {citizen_name} ({citizen_social_class}) n'est pas à son atelier {workplace_type}. Pas de tâche de construction pro.{LogColors.ENDC}")
+        log.info(f"{LogColors.OKBLUE}[Construction Pro] Citoyen {citizen_name} ({citizen_social_class}) n'est pas à son atelier {workplace_type_str}. Pas de tâche de construction pro.{LogColors.ENDC}")
         return None # Not at workplace
     
-    log.info(f"{LogColors.OKCYAN}[Construction Pro] Citoyen {citizen_name} ({citizen_social_class}) est à son atelier {workplace_type}. Délégation à handle_construction_worker_activity.{LogColors.ENDC}")
+    log.info(f"{LogColors.OKCYAN}[Construction Pro] Citoyen {citizen_name} ({citizen_social_class}) est à son atelier {workplace_type_str}. Délégation à handle_construction_worker_activity.{LogColors.ENDC}")
     
     # handle_construction_worker_activity returns a boolean. We need to adapt if we want to return the activity record.
     # For now, let's assume if it returns True, an activity was created, but we don't have the record itself here.
