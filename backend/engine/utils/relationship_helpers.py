@@ -36,9 +36,73 @@ from dotenv import load_dotenv
 # Importer les helpers nécessaires depuis activity_helpers
 from .activity_helpers import _escape_airtable_value, VENICE_TIMEZONE, LogColors, clean_thought_content
 from .conversation_helper import DEFAULT_TIMEOUT_SECONDS # Ajout de l'importation
+import time # Ajout de time pour les attentes
 
 
 log = logging.getLogger(__name__)
+
+def _make_kinos_request_with_retry(
+    method: str,
+    url: str,
+    headers: Dict,
+    json_payload: Optional[Dict] = None, # Seulement pour POST
+    timeout: int = DEFAULT_TIMEOUT_SECONDS,
+    kin_username_for_log: str = "UnknownKin", 
+    action_description_for_log: str = "KinOS request"
+) -> Optional[requests.Response]:
+    """Effectue une requête HTTP vers KinOS avec tentatives multiples."""
+    max_retries = 3
+    initial_wait_time = 2  # secondes
+    backoff_factor = 2
+
+    for attempt in range(max_retries):
+        try:
+            log.info(f"{LogColors.INFO}Tentative {attempt + 1}/{max_retries} pour {action_description_for_log} par {kin_username_for_log} vers {url} (Méthode: {method.upper()}){LogColors.ENDC}")
+            
+            response: Optional[requests.Response] = None
+            if method.upper() == "POST":
+                response = requests.post(url, headers=headers, json=json_payload, timeout=timeout)
+            elif method.upper() == "GET":
+                response = requests.get(url, headers=headers, timeout=timeout)
+            else:
+                log.error(f"{LogColors.FAIL}Méthode non supportée {method} pour _make_kinos_request_with_retry.{LogColors.ENDC}")
+                return None
+            
+            response.raise_for_status()  # Lève HTTPError pour les réponses 4xx/5xx
+            return response # Succès
+
+        except requests.exceptions.HTTPError as e_http:
+            if response is not None and (response.status_code >= 500 or response.status_code == 429):
+                log.warning(f"{LogColors.WARNING}Erreur HTTP KinOS ({action_description_for_log}) pour {kin_username_for_log} (Statut: {response.status_code}): {e_http}. Nouvelle tentative...{LogColors.ENDC}")
+                if attempt < max_retries - 1:
+                    wait_time = initial_wait_time * (backoff_factor ** attempt)
+                    log.info(f"Attente de {wait_time} secondes avant la prochaine tentative...")
+                    time.sleep(wait_time)
+                    continue
+                else:
+                    log.error(f"{LogColors.FAIL}Nombre maximal de tentatives atteint pour l'API KinOS ({action_description_for_log}) pour {kin_username_for_log}. Dernière erreur: {e_http}{LogColors.ENDC}")
+                    return None
+            else: # Erreur HTTP non réessayable (ex: 400, 401, 403, 404)
+                log.error(f"{LogColors.FAIL}Erreur HTTP KinOS non réessayable ({action_description_for_log}) pour {kin_username_for_log}: {e_http}{LogColors.ENDC}", exc_info=True)
+                if response is not None:
+                    log.error(f"Contenu de la réponse d'erreur KinOS: {response.text[:500]}")
+                return None
+        except requests.exceptions.RequestException as e_req: # Erreurs réseau, timeouts
+            log.warning(f"{LogColors.WARNING}Erreur de requête API KinOS ({action_description_for_log}) pour {kin_username_for_log}: {e_req}. Nouvelle tentative...{LogColors.ENDC}")
+            if attempt < max_retries - 1:
+                wait_time = initial_wait_time * (backoff_factor ** attempt)
+                log.info(f"Attente de {wait_time} secondes avant la prochaine tentative...")
+                time.sleep(wait_time)
+                continue
+            else:
+                log.error(f"{LogColors.FAIL}Nombre maximal de tentatives atteint pour l'API KinOS (erreur de requête) ({action_description_for_log}) pour {kin_username_for_log}. Dernière erreur: {e_req}{LogColors.ENDC}")
+                return None
+        # json.JSONDecodeError sera attrapé par l'appelant après avoir vérifié response.ok
+        except Exception as e_gen:
+            log.error(f"{LogColors.FAIL}Erreur inattendue dans _make_kinos_request_with_retry ({action_description_for_log}) pour {kin_username_for_log}: {e_gen}{LogColors.ENDC}", exc_info=True)
+            return None 
+    
+    return None # Devrait être inaccessible si la boucle se termine, mais comme fallback
 
 # Configuration pour les appels API KinOS et Next.js
 load_dotenv() # S'assurer que .env est chargé pour KINOS_API_KEY et BASE_URL
@@ -361,19 +425,39 @@ def _generate_kinos_message_content(
             attention_headers = {"Authorization": f"Bearer {kinos_api_key}", "Content-Type": "application/json"}
             attention_payload = {
                 "message": attention_prompt,
-                "addSystem": json.dumps(add_system_data), # Contexte complet pour le résumé
-                "model": "local" # Forcer le modèle local pour l'étape de résumé
+                "addSystem": json.dumps(add_system_data), 
+                "model": "local" 
             }
             
-            log.debug(f"Appel KinOS (attention) : URL={attention_url}, Kin={kin_username}, Channel={attention_channel_name}")
-            attention_response_req = requests.post(attention_url, headers=attention_headers, json=attention_payload, timeout=DEFAULT_TIMEOUT_SECONDS)
-            attention_response_req.raise_for_status() # Lèvera une exception pour les codes d'erreur HTTP
+            log.debug(f"Appel KinOS (attention POST) : URL={attention_url}, Kin={kin_username}, Channel={attention_channel_name}")
+            attention_post_response = _make_kinos_request_with_retry(
+                method="POST",
+                url=attention_url,
+                headers=attention_headers,
+                json_payload=attention_payload,
+                timeout=DEFAULT_TIMEOUT_SECONDS,
+                kin_username_for_log=kin_username,
+                action_description_for_log="Attention pre-prompt POST"
+            )
+
+            if not attention_post_response: # raise_for_status est géré dans le helper
+                raise Exception("Échec de l'appel POST d'attention à KinOS après tentatives.")
 
             # Récupérer la réponse de l'assistant depuis l'historique du canal d'attention
-            attention_history_response = requests.get(attention_url, headers=attention_headers, timeout=20)
-            attention_history_response.raise_for_status()
+            log.debug(f"Appel KinOS (attention GET) : URL={attention_url}, Kin={kin_username}, Channel={attention_channel_name}")
+            attention_history_response_obj = _make_kinos_request_with_retry(
+                method="GET",
+                url=attention_url,
+                headers=attention_headers,
+                timeout=20, # Timeout plus court pour un GET
+                kin_username_for_log=kin_username,
+                action_description_for_log="Attention pre-prompt GET history"
+            )
+
+            if not attention_history_response_obj:
+                 raise Exception("Échec de l'appel GET de l'historique d'attention à KinOS après tentatives.")
             
-            attention_messages_data = attention_history_response.json()
+            attention_messages_data = attention_history_response_obj.json()
             attention_assistant_messages = [msg for msg in attention_messages_data.get("messages", []) if msg.get("role") == "assistant"]
             
             if attention_assistant_messages:
@@ -427,20 +511,37 @@ def _generate_kinos_message_content(
             payload["model"] = effective_model_for_main_call
             log.info(f"Utilisation du modèle KinOS '{effective_model_for_main_call}' pour l'appel principal {kin_username} -> {channel_username}.")
         
-        log.debug(f"Appel KinOS (principal) : URL={url}, Kin={kin_username}, Channel={channel_username}, PayloadKeys={list(payload.keys())}")
-        response = requests.post(url, headers=headers, json=payload, timeout=DEFAULT_TIMEOUT_SECONDS) 
+        log.debug(f"Appel KinOS (principal POST) : URL={url}, Kin={kin_username}, Channel={channel_username}, PayloadKeys={list(payload.keys())}")
+        main_post_response = _make_kinos_request_with_retry(
+            method="POST",
+            url=url,
+            headers=headers,
+            json_payload=payload,
+            timeout=DEFAULT_TIMEOUT_SECONDS,
+            kin_username_for_log=kin_username,
+            action_description_for_log=f"Main message POST to {channel_username}"
+        )
 
-        if response.status_code not in [200, 201]:
-            log.error(f"{LogColors.FAIL}Erreur API KinOS (POST principal {url}): {response.status_code} - {response.text[:200]}{LogColors.ENDC}")
+        if not main_post_response: # raise_for_status est géré dans le helper
+            log.error(f"{LogColors.FAIL}Échec de l'appel POST principal à KinOS pour {kin_username} -> {channel_username} après tentatives.{LogColors.ENDC}")
             return None
 
         # Récupérer la réponse de l'assistant depuis l'historique du canal
-        history_response = requests.get(url, headers=headers, timeout=20)
-        if history_response.status_code != 200:
-            log.error(f"{LogColors.FAIL}Erreur API KinOS (GET {url}): {history_response.status_code} - {history_response.text[:200]}{LogColors.ENDC}")
+        log.debug(f"Appel KinOS (principal GET) : URL={url}, Kin={kin_username}, Channel={channel_username}")
+        main_history_response_obj = _make_kinos_request_with_retry(
+            method="GET",
+            url=url,
+            headers=headers,
+            timeout=20, # Timeout plus court pour un GET
+            kin_username_for_log=kin_username,
+            action_description_for_log=f"Main message GET history from {channel_username}"
+        )
+
+        if not main_history_response_obj:
+            log.error(f"{LogColors.FAIL}Échec de l'appel GET de l'historique principal à KinOS pour {kin_username} -> {channel_username} après tentatives.{LogColors.ENDC}")
             return None
         
-        messages_data = history_response.json()
+        messages_data = main_history_response_obj.json()
         assistant_messages = [msg for msg in messages_data.get("messages", []) if msg.get("role") == "assistant"]
         if not assistant_messages:
             log.warning(f"{LogColors.WARNING}Aucun message d'assistant trouvé dans l'historique KinOS pour {kin_username} -> {channel_username}.{LogColors.ENDC}")
