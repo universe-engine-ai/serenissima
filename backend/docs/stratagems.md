@@ -1469,3 +1469,64 @@ This would make NLR attempt to burn down "building-rival_warehouse_03", costing 
 }
 ```
 This would make NLR anonymously distribute 1000 Ducats among approximately 10 poor citizens in the Castello district, costing NLR 3 Influence upfront plus the 1000 Ducats.
+
+### 26. Festival Organisation (Coming Soon)
+
+-   **Type**: `festival_organisation`
+-   **Purpose**: To organize and sponsor a public festival in a specific district, boosting community morale, relationships, and the organizer's reputation.
+-   **Category**: `social_event`
+-   **Creator**: (To be created: `backend/engine/stratagem_creators/festival_organisation_stratagem_creator.py`)
+-   **Processor**: (To be created: `backend/engine/stratagem_processors/festival_organisation_stratagem_processor.py`)
+
+#### Parameters for Creation (`stratagemDetails` in API request):
+
+-   `targetDistrict` (string, required): The name of the district where the festival will be held (e.g., "San Polo", "Cannaregio").
+-   `festivalTheme` (string, optional): The theme of the festival (e.g., "Harvest Celebration", "Patron Saint's Day", "Carnival Prelude"). Defaults to "General Merriment".
+-   `festivalBudget` (integer, required): Total Ducats allocated for festival expenses (food, drink, entertainment, decorations).
+-   `durationDays` (integer, optional): Duration of the festival in days. Defaults to 1 day. (Range: 1-3 days).
+-   `name` (string, optional): Custom name for the stratagem. Defaults to "Festival in [TargetDistrict]".
+-   `description` (string, optional): Custom description.
+-   `notes` (string, optional): Custom notes.
+
+#### How it Works (Conceptual):
+
+1.  **Creation**:
+    -   The `festival_organisation_stratagem_creator.py` validates parameters (e.g., `targetDistrict` is valid, `festivalBudget` is positive).
+    -   It deducts `festivalBudget` from the `ExecutedBy` citizen's `Ducats` balance immediately.
+    -   It creates a new record in the `STRATAGEMS` table with `Status: "active"`, `Category: "social_event"`, an influence cost of 10, and sets `ExpiresAt` based on `durationDays` (plus some prep time).
+
+2.  **Processing (Conceptual for "Coming Soon")**:
+    -   `processStratagems.py` picks up the active "festival_organisation" stratagem.
+    -   `festival_organisation_stratagem_processor.py` is invoked.
+    -   **Event Simulation**:
+        -   The processor simulates the festival occurring in the `targetDistrict`. This could involve:
+            -   Creating temporary "festival_ground" points or areas.
+            -   Generating `attend_festival` activities for citizens in the district and nearby.
+            -   Simulating the provision of food, drink, and entertainment using the `festivalBudget`.
+    -   **Impact**:
+        -   **Relationships**: General positive shift in `TrustScore` and `StrengthScore` for the `ExecutedBy` citizen with many attendees, especially those in the `targetDistrict`.
+        -   **Reputation**: Significant boost to the `ExecutedBy` citizen's public reputation and `Influence` generation.
+        -   **Community Morale**: Temporary positive mood modifier for citizens in the `targetDistrict`.
+        -   **Economic**: Local businesses (taverns, food stalls) might see increased activity.
+    -   **Notifications**:
+        -   Citizens receive notifications about the festival.
+        -   The `ExecutedBy` citizen receives updates on the festival's success and impact.
+    -   **Status & Notes**:
+        -   The stratagem is marked `executed` after the festival concludes.
+        -   Notes track attendance (estimated), budget expenditure, and observed effects.
+
+#### Example API Request to `POST /api/stratagems/try-create`:
+
+```json
+{
+  "citizenUsername": "NLR",
+  "stratagemType": "festival_organisation",
+  "stratagemDetails": {
+    "targetDistrict": "Cannaregio",
+    "festivalTheme": "Spring Carnival",
+    "festivalBudget": 2500,
+    "durationDays": 2
+  }
+}
+```
+This would make NLR organize a 2-day "Spring Carnival" in Cannaregio, costing 10 Influence upfront and 2500 Ducats for the festival expenses.

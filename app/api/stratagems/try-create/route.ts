@@ -126,6 +126,13 @@ export async function POST(request: Request) {
         `TotalDucatsToDistribute: ${stratagemDetails?.totalDucatsToDistribute}`,
         `NumberOfRecipients: ${stratagemDetails?.numberOfRecipients}`
       );
+    } else if (stratagemType === 'festival_organisation') {
+      console.log(`[API /stratagems/try-create] Processing 'festival_organisation' stratagem with parameters:`,
+        `TargetDistrict: ${stratagemDetails?.targetDistrict}`,
+        `FestivalTheme: ${stratagemDetails?.festivalTheme}`,
+        `FestivalBudget: ${stratagemDetails?.festivalBudget}`,
+        `DurationDays: ${stratagemDetails?.durationDays}`
+      );
     }
 
     let parsedPythonEngineUrl: URL;

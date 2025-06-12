@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { 
   FaCoins, FaHandshake, FaScroll, FaUserShield, FaBomb, // Main category icons
   FaArrowCircleDown, FaSyncAlt, FaArchive, FaStoreSlash, FaUserSecret, FaPalette, FaSitemap, FaAnchor, FaHandHoldingUsd, FaBullhorn, FaUsers, // Existing sub-item icons
-  FaMask, FaComments, FaUserPlus, FaNewspaper, FaStar, FaSkullCrossbones, FaKey, FaUserNinja, FaFire, FaGift // New sub-item icons (FaStar, FaSkullCrossbones, FaKey, FaUserNinja, FaFire, FaGift added)
+  FaMask, FaComments, FaUserPlus, FaNewspaper, FaStar, FaSkullCrossbones, FaKey, FaUserNinja, FaFire, FaGift, FaGlassCheers // New sub-item icons (FaStar, FaSkullCrossbones, FaKey, FaUserNinja, FaFire, FaGift, FaGlassCheers added)
 } from 'react-icons/fa';
 import { eventBus, EventTypes } from '@/lib/utils/eventBus'; // Importer eventBus
 
@@ -49,7 +49,7 @@ const BottomMenuBar: React.FC = () => {
   // Cette liste est utilisée pour le style des boutons.
   const allStratagemTypesInMenu = [
     'undercut', 'coordinate_pricing', 'emergency_liquidation', 'hoard_resource', 'supplier_lockout', 'joint_venture', 'monopoly_pricing',
-    'reputation_assault', 'financial_patronage', 'cultural_patronage', 'theater_conspiracy', 'marketplace_gossip', 'employee_poaching', 'reputation_boost', 'charity_distribution',
+    'reputation_assault', 'financial_patronage', 'cultural_patronage', 'theater_conspiracy', 'marketplace_gossip', 'employee_poaching', 'reputation_boost', 'charity_distribution', 'festival_organisation',
     'political_campaign', 'printing_propaganda',
     'information_network', 'neighborhood_watch',
     'maritime_blockade', 'cargo_mishap', 'canal_mugging', 'burglary', 'employee_corruption', 'arson'
@@ -193,6 +193,14 @@ const BottomMenuBar: React.FC = () => {
             id: 'charity_distribution', type: 'charity_distribution', title: 'Charity Distribution (Coming Soon)',
             description: "Anonymously distribute Ducats to poor citizens in a specific district.",
             influenceCostBase: 3, hasVariants: false, 
+          }
+        },
+        {
+          id: 'festival_organisation', label: 'Festival (Soon)', icon: FaGlassCheers,
+          stratagemPanelData: {
+            id: 'festival_organisation', type: 'festival_organisation', title: 'Festival Organisation (Coming Soon)',
+            description: "Organize and sponsor a public festival in a specific district.",
+            influenceCostBase: 10, hasVariants: false, 
           }
         }
       ]
