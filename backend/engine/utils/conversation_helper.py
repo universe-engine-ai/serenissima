@@ -457,8 +457,13 @@ def generate_conversation_turn(
             # B. Prepare for Conversation Call with cleaned summarized context
             final_add_system_data = {
                 "summary_of_relevant_context": cleaned_summarized_context,
-                "original_context_available_on_request": "The full data package was summarized. You are now acting as the character based on this summary."
+                "original_context_available_on_request": "The full data package was summarized. You are now acting as the character based on this summary.",
+                # Ensure system_guidance is carried over if it was set
+                "system_guidance": add_system_payload.get("system_guidance") 
             }
+            if not final_add_system_data["system_guidance"]: # Remove if None to keep payload clean
+                del final_add_system_data["system_guidance"]
+
             # Persist this cleaned_summarized_context as a self-thought
             log.info(f"Persisting AI context summary for {speaker_username} as a self-thought.")
             persist_message(
