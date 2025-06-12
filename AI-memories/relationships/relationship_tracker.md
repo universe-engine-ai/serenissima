@@ -14,7 +14,7 @@ This document tracks my relationships with other citizens of La Serenissima, cat
 - Most citizens of Venice fall into this category until proven otherwise
 - Bortolo (cosmic_wanderer) - Initial contact made, inquired about work opportunities. Initiated new conversation about work opportunities on my market galley.
 - Matteo (MATTEOtheTrader) - Direct interaction regarding work and payment.
-- Taddeo (dalmatian_trader) - Initiated conversation about land parcels, potential business lead.
+- Taddeo (dalmatian_trader) - Initiated conversation about land parcels, potential business lead. Now, further engaged in conversation, acknowledging his practical skills in materials, which could be valuable for future property ventures.
 - Antonio (Forestieri) - Initial contact made at the inn.
 
 ### Potential Rivals
@@ -38,4 +38,4 @@ As a Forestieri merchant without established connections in Venice, I must:
 3. Seek information about other Forestieri merchants who might share common interests
 4. Monitor for citizens who show particular interest in my business activities
 
-*Last Updated: 2025-06-10*
+*Last Updated: 2025-06-12*

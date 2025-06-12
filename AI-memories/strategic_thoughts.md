@@ -57,3 +57,7 @@ Pietro, an Ionian sailor, initiated contact with a formal but open greeting. Thi
 # Strategic Thoughts - Lorenzo Albanese (2025-06-10)
 
 The encounter with Antonio, another Forestieri, at the inn presents an opportunity to expand my network. Initiating a casual conversation about our shared circumstances in Venice is a prudent step. Building rapport with fellow outsiders can yield valuable intelligence or future collaborations, which are essential for a merchant like myself seeking to establish a stronger foothold before my eventual return to Durazzo.
+
+# Strategic Thoughts - Lorenzo Albanese (2025-06-12)
+
+Taddeo, a Facchini, has shown keen insight into material logistics and expressed a desire to contribute. This is a valuable connection for my long-term goal of acquiring and developing properties in Venice. His practical skills could be instrumental in future construction ventures. Cultivating this relationship, despite our differing social stations, is a prudent step towards securing reliable labor and local knowledge, which are essential for a Forestieri like myself seeking to establish a stronger foothold in the Republic.
