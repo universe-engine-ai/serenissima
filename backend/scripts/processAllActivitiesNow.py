@@ -187,8 +187,8 @@ def main():
     header_info = f"--- Starting Process All Activities Now script (Threads: {num_threads}) ---"
     if args.activityType:
         header_info = f"--- Starting Process All Activities Now script (Filtering for Type: {args.activityType}, Threads: {num_threads}) ---"
-    if args.ActivityId: # Add ActivityId to header if present
-        header_info = f"--- Starting Process All Activities Now script (ActivityId: {args.ActivityId}, Threads: {num_threads}) ---"
+    if args.activityId: # Add activityId to header if present
+        header_info = f"--- Starting Process All Activities Now script (ActivityId: {args.activityId}, Threads: {num_threads}) ---"
     log.info(f"{LogColors.HEADER}{header_info}{LogColors.ENDC}")
     
     tables = initialize_airtable()
@@ -196,11 +196,11 @@ def main():
         log.error(f"{LogColors.FAIL}Exiting due to Airtable initialization failure.{LogColors.ENDC}")
         return
 
-    activities = get_activities_to_process(tables, activity_type_filter=args.activityType, specific_activity_id=args.ActivityId)
+    activities = get_activities_to_process(tables, activity_type_filter=args.activityType, specific_activity_id=args.activityId)
     if not activities:
         filter_message = ""
-        if args.ActivityId:
-            filter_message = f" with ActivityId '{args.ActivityId}'"
+        if args.activityId:
+            filter_message = f" with ActivityId '{args.activityId}'"
         elif args.activityType:
             filter_message = f" of type '{args.activityType}'"
         log.info(f"{LogColors.OKBLUE}No activities found to process{filter_message}.{LogColors.ENDC}")
@@ -218,7 +218,7 @@ def main():
     processed_successfully = 0
     processed_with_errors = 0
 
-    if num_threads > 1 and not args.ActivityId: # Parallel processing only if not targeting a specific ActivityId
+    if num_threads > 1 and not args.activityId: # Parallel processing only if not targeting a specific activityId
         log.info(f"{LogColors.OKBLUE}Starting parallel processing with {num_threads} threads.{LogColors.ENDC}")
         with concurrent.futures.ThreadPoolExecutor(max_workers=num_threads) as executor:
             future_to_activity_id = {
