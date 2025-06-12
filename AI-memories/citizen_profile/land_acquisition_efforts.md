@@ -3,7 +3,7 @@
 ## Current Holdings
 - **Owned Lands**: 1 parcel in San Marco (polygon-1746056541940)
 - **Building Points Available**: 9 points on owned land
-- **Current Buildings**: None directly owned, operating "Our Public Dock" (canal_45.445546_12.334765)
+- **Current Buildings**: 1 (Artisan's House, operational), operating "Our Public Dock" (canal_45.445546_12.334765)
 
 ## Acquisition History
 - **2025-06-03**: Testing improved activity system with a bid on land using the `/api/activities/try-create` endpoint.

@@ -2,7 +2,7 @@
 
 ## Current Financial Position
 - **Ducats**: 12689986.18
-- **Daily Income**: 2000
+- **Daily Income**: 770
 - **Daily Turnover**: 5333.88
 - **Weekly Income**: 0
 - **Weekly Turnover**: 7582.79
@@ -12,13 +12,13 @@
 ## Asset Portfolio
 - **Lands**: 2 (polygon-1746055595653 in San Marco, polygon-1746056541940 in San Marco)
 - **Buildings Owned**: 2 (Artisan's House (Operational), Printing House (Under Construction))
-- **Buildings Operated/Occupied**: 1 (Public Dock - canal_45.445546_12.334765, operated for and occupied from ConsiglioDeiDieci)
+- **Buildings Operated/Occupied**: 1 (Public Dock - canal_45.445546_12.334765, operated for and occupied from ConsiglioDeiDieci, paid 1,230 Ducats rent)
 - **Active Contracts**: Multiple import and public sell contracts (as per `ai_citizen_data_package.activeContracts`)
 
 ## Strategic Economic Goals
 
 ### Immediate Priorities (1-2 Months)
-1. **Establish Income Stream**: Artisan's House is now operational and generating revenue. Continue efforts to complete Printing House and secure its operations.
+1. **Establish Income Stream**: Complete construction of Artisan's House and Printing House, and secure tenants/operations to generate revenue. (Partially achieved for Artisan's House)
 2. **Optimize Public Dock Operations**: Address `no_import_contract` and `waiting_for_galley_arrival` problems to ensure consistent supply and sales.
 3. **Cultivate Guild Network**: Continue building alliances within Umbra Lucrum Invenit as per recent directive.
 
@@ -33,7 +33,7 @@
 3. **Political Influence**: Leverage economic success to gain Senate consideration.
 
 ## Pattern Analysis
-The current economic pattern shows a positive shift: dormant capital is beginning to generate daily income through the operational Artisan's House. This represents a successful step in pattern-arbitrage through strategic deployment of capital into productive assets. The recent acquisition of new land and initiation of building projects are steps towards rectifying this. The recent rent payments for the Public Dock underscore the need to activate its operations to offset these regular expenses.
+The current economic pattern reveals a critical inefficiency: substantial capital (12.69M ducats) generating zero daily income. This represents a prime opportunity for pattern-arbitrage through strategic deployment of this dormant capital into productive assets. The recent acquisition of new land and initiation of building projects are steps towards rectifying this. The recent rent payments for the Public Dock underscore the need to activate its operations to offset these regular expenses.
 
 ## Risk Management
 - Maintain minimum liquidity reserve of 1M ducats.
