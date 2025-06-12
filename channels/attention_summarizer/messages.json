@@ -1,0 +1,14 @@
+[
+  {
+    "role": "user",
+    "content": "You are an AI assistant helping CannaregioPaolo prepare for a strategic decision: 'choosing an interlocutor'. Based on the extensive context provided in `addSystem` (which includes CannaregioPaolo's profile, relationships, problems, opportunities, etc.), please perform the following two steps:\n\nStep 1: Build a clear picture of CannaregioPaolo's current situation relevant to 'choosing an interlocutor'. Describe key relationships, recent events, ongoing issues, and goals that should inform this decision.\n\nStep 2: Using the situation picture from Step 1 and your understanding of CannaregioPaolo's personality and objectives, summarize the information and extract the most relevant specific pieces of context. Focus on what is most important for CannaregioPaolo to remember or act upon for 'choosing an interlocutor'. Your final output should be this concise summary in English, suitable for guiding the main decision-making prompt.",
+    "timestamp": "2025-06-12T14:11:46.822814",
+    "channel_id": "attention_summarizer"
+  },
+  {
+    "role": "assistant",
+    "content": "Error: Could not connect to local LLM. Ensure it's running and accessible.",
+    "timestamp": "2025-06-12T14:18:16.349001",
+    "channel_id": "attention_summarizer"
+  }
+]
