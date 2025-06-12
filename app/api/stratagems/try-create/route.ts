@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 import { z } from 'zod';
 
-const PYTHON_ENGINE_BASE_URL = process.env.BACKEND_BASE_URL || 'http://localhost:10000';
+const BACKEND_BASE_URL = process.env.BACKEND_BASE_URL || 'http://localhost:10000';
 
 // Schéma Zod pour la validation de la requête de création de stratagème
 const TryCreateStratagemRequestSchema = z.object({
@@ -143,15 +143,15 @@ export async function POST(request: Request) {
 
     let parsedPythonEngineUrl: URL;
     try {
-      let base = PYTHON_ENGINE_BASE_URL;
+      let base = BACKEND_BASE_URL;
       if (!base.startsWith('http://') && !base.startsWith('https://')) {
-        console.warn(`[API /stratagems/try-create] PYTHON_ENGINE_BASE_URL (${base}) is missing scheme, prepending http://`);
+        console.warn(`[API /stratagems/try-create] BACKEND_BASE_URL (${base}) is missing scheme, prepending http://`);
         base = 'http://' + base;
       }
       // Nouveau endpoint pour les stratagèmes
       parsedPythonEngineUrl = new URL('/api/v1/engine/try-create-stratagem', base);
     } catch (e: any) {
-      console.error(`[API /stratagems/try-create] Invalid PYTHON_ENGINE_BASE_URL: ${PYTHON_ENGINE_BASE_URL}. Error: ${e.message}`);
+      console.error(`[API /stratagems/try-create] Invalid BACKEND_BASE_URL: ${BACKEND_BASE_URL}. Error: ${e.message}`);
       return NextResponse.json({ success: false, error: 'Internal server configuration error: Python engine URL is invalid.' }, { status: 500 });
     }
     const pythonEngineUrlValidated = parsedPythonEngineUrl.toString();
@@ -222,9 +222,9 @@ export async function POST(request: Request) {
     else if (Array.isArray(error.cause?.errors) && error.cause.errors[0]?.code === 'ECONNREFUSED') isConnectionRefused = true;
 
     if (isConnectionRefused) {
-        const currentPythonBaseUrlForError = process.env.BACKEND_BASE_URL || 'http://localhost:10000';
-        console.error(`[API /stratagems/try-create] Detected ECONNREFUSED. Python engine is likely down or unreachable at ${currentPythonBaseUrlForError}.`);
-        return NextResponse.json({ success: false, error: `Python engine service is unavailable (ECONNREFUSED). Attempted to reach: ${currentPythonBaseUrlForError}` }, { status: 503 });
+        const currentBackendBaseUrlForError = process.env.BACKEND_BASE_URL || 'http://localhost:10000';
+        console.error(`[API /stratagems/try-create] Detected ECONNREFUSED. Python engine is likely down or unreachable at ${currentBackendBaseUrlForError}.`);
+        return NextResponse.json({ success: false, error: `Python engine service is unavailable (ECONNREFUSED). Attempted to reach: ${currentBackendBaseUrlForError}` }, { status: 503 });
     }
     return NextResponse.json({ success: false, error: error.message || 'Failed to process try-create stratagem request' }, { status: 500 });
   }
