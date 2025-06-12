@@ -72,6 +72,7 @@ from backend.engine.activity_creators import (
     try_create_read_book_activity, # Import new creator for reading books
     try_create_attend_theater_performance_activity, # New theater activity
     try_create_drink_at_inn_activity, # New drink at inn activity
+    try_create_use_public_bath_activity, # New public bath activity
     try_create_deposit_inventory_orchestrator, # New orchestrator for depositing inventory
     try_create_construct_building_activity, # Added for occupant construction
     # try_create_fetch_from_galley_activity is not used by process_citizen_activity
@@ -1444,6 +1445,56 @@ def _handle_drink_at_inn(
         log.info(f"{LogColors.OKBLUE}[Boire Auberge] {citizen_name}: Impossible de créer une chaîne d'activités 'boire à l'auberge'.{LogColors.ENDC}")
     return activity_chain_start
 
+def _handle_use_public_bath(
+    tables: Dict[str, Table], citizen_record: Dict, is_night: bool, resource_defs: Dict, building_type_defs: Dict,
+    now_venice_dt: datetime, now_utc_dt: datetime, transport_api_url: str, api_base_url: str,
+    citizen_position: Optional[Dict], citizen_custom_id: str, citizen_username: str, citizen_airtable_id: str, citizen_name: str, citizen_position_str: Optional[str],
+    citizen_social_class: str,
+    check_only: bool = False
+) -> Union[Optional[Dict], bool]:
+    """Prio 42: Handles going to a public bath if it's leisure time."""
+    if not is_leisure_time_for_class(citizen_social_class, now_venice_dt):
+        return False if check_only else None
+    
+    if not citizen_position: return False if check_only else None
+
+    # Check if citizen can afford it (rough estimate, processor does final check)
+    cost_map = { "Facchini": 25, "Popolani": 25, "Cittadini": 40, "Nobili": 100, "Forestieri": 40, "Artisti": 30 }
+    default_cost = 25
+    cost = cost_map.get(citizen_social_class, default_cost)
+    if float(citizen_record['fields'].get('Ducats', 0.0)) < cost:
+        return False if check_only else None
+
+    # Check if a public_bath exists and is reachable
+    bath_record = get_closest_building_of_type(tables, citizen_position, "public_bath")
+    if not bath_record:
+        return False if check_only else None
+    
+    bath_pos = _get_building_position_coords(bath_record)
+    if not bath_pos:
+        return False if check_only else None
+
+    if check_only:
+        if _calculate_distance_meters(citizen_position, bath_pos) < 20:
+            return True # Can create use_public_bath directly
+        else: # Needs travel
+            path_to_bath = get_path_between_points(citizen_position, bath_pos, transport_api_url)
+            return bool(path_to_bath and path_to_bath.get('success'))
+
+    # Actual creation logic
+    log.info(f"{LogColors.OKCYAN}[Bain Public] {citizen_name} ({citizen_social_class}) en période de loisirs. Tentative de création d'activité 'use_public_bath'.{LogColors.ENDC}")
+    activity_chain_start = try_create_use_public_bath_activity(
+        tables=tables, citizen_record=citizen_record, citizen_position=citizen_position,
+        resource_defs=resource_defs, building_type_defs=building_type_defs,
+        now_venice_dt=now_venice_dt, now_utc_dt=now_utc_dt,
+        transport_api_url=transport_api_url, api_base_url=api_base_url,
+        start_time_utc_iso=None
+    )
+    if activity_chain_start:
+        log.info(f"{LogColors.OKGREEN}[Bain Public] {citizen_name}: Chaîne d'activités 'utiliser bain public' créée.{LogColors.ENDC}")
+    else:
+        log.info(f"{LogColors.OKBLUE}[Bain Public] {citizen_name}: Impossible de créer une chaîne d'activités 'utiliser bain public'.{LogColors.ENDC}")
+    return activity_chain_start
 
 # --- Placeholder for new handler functions ---
 
@@ -2507,7 +2558,8 @@ def _try_process_weighted_leisure_activities(
     leisure_candidates = [
         # (handler_function, priority_value, description_for_log)
         (_handle_work_on_art, 35, "Travailler sur une œuvre d'art (Artisti)"),
-        (_handle_drink_at_inn, 40, "Boire un verre à l'auberge"), # Nouvelle activité de loisir
+        (_handle_drink_at_inn, 40, "Boire un verre à l'auberge"), 
+        (_handle_use_public_bath, 42, "Utiliser un bain public"), # Nouvelle activité de loisir
         (_handle_attend_theater_performance, 45, "Aller au théâtre"), 
         (_handle_read_book, 55, "Lire un livre"),
         (_handle_check_business_status, 65, "Vérifier le statut de l'entreprise"), 
@@ -3763,15 +3815,18 @@ def dispatch_specific_activity_request(
 
     elif activity_type == "attend_theater_performance":
         log.info(f"Dispatching to attend_theater_performance_creator for {citizen_name} with params: {activity_parameters}")
-        # The creator expects citizen_record, citizen_position, now_utc_dt, transport_api_url, start_time_utc_iso
-        # activity_parameters are not directly used by this specific creator, but good to pass if structure changes.
+        # The creator expects citizen_record, citizen_position, resource_defs, building_type_defs, now_venice_dt, now_utc_dt, transport_api_url, api_base_url, start_time_utc_iso
         first_activity_of_chain = try_create_attend_theater_performance_activity(
             tables=tables,
             citizen_record=citizen_record_full,
             citizen_position=citizen_position,
+            resource_defs=resource_defs, # Pass through
+            building_type_defs=building_type_defs, # Pass through
+            now_venice_dt=now_venice_dt, # Pass through
             now_utc_dt=now_utc_dt,
             transport_api_url=transport_api_url,
-            start_time_utc_iso=params.get("startTimeUtcIso") # Allow explicit start time if provided
+            api_base_url=api_base_url, # Pass through
+            start_time_utc_iso=params.get("startTimeUtcIso")
         )
         if first_activity_of_chain and isinstance(first_activity_of_chain, dict) and 'fields' in first_activity_of_chain:
             return {"success": True, "message": f"Attend theater performance endeavor initiated for {citizen_name}. First activity: {first_activity_of_chain['fields'].get('Type', 'N/A')}.", "activity": first_activity_of_chain['fields']}
@@ -3793,6 +3848,21 @@ def dispatch_specific_activity_request(
         else:
             log.warning(f"drink_at_inn_activity_creator did not return a valid activity record for {citizen_name}. Returned: {first_activity_of_chain}")
             return {"success": False, "message": f"Could not initiate 'drink_at_inn' endeavor for {citizen_name}.", "activity": None, "reason": "drink_at_inn_creation_failed"}
+
+    elif activity_type == "use_public_bath":
+        log.info(f"Dispatching to use_public_bath_creator for {citizen_name} with params: {activity_parameters}")
+        first_activity_of_chain = try_create_use_public_bath_activity(
+            tables=tables, citizen_record=citizen_record_full, citizen_position=citizen_position,
+            resource_defs=resource_defs, building_type_defs=building_type_defs,
+            now_venice_dt=now_venice_dt, now_utc_dt=now_utc_dt,
+            transport_api_url=transport_api_url, api_base_url=api_base_url,
+            start_time_utc_iso=params.get("startTimeUtcIso")
+        )
+        if first_activity_of_chain and isinstance(first_activity_of_chain, dict) and 'fields' in first_activity_of_chain:
+            return {"success": True, "message": f"Use public bath endeavor initiated for {citizen_name}. First activity: {first_activity_of_chain['fields'].get('Type', 'N/A')}.", "activity": first_activity_of_chain['fields']}
+        else:
+            log.warning(f"use_public_bath_creator did not return a valid activity record for {citizen_name}. Returned: {first_activity_of_chain}")
+            return {"success": False, "message": f"Could not initiate 'use_public_bath' endeavor for {citizen_name}.", "activity": None, "reason": "use_public_bath_creation_failed"}
     
     # Add other activity_type handlers here as needed, for example:
     # elif activity_type == "manage_public_sell_contract":
@@ -3819,8 +3889,9 @@ def dispatch_specific_activity_request(
             'respond_to_building_bid', 'withdraw_building_bid', 
             'manage_markup_buy_contract', 'manage_storage_query_contract', 
             'update_citizen_profile',
-            'attend_theater_performance', # Added new activity type
-            'drink_at_inn' # Added new activity type
+            'attend_theater_performance', 
+            'drink_at_inn', 
+            'use_public_bath' # Added new activity type
             # Add other explicitly handled types here as they are implemented in this dispatcher
         ]
         # Use original_activity_type in the error message if it was redirected

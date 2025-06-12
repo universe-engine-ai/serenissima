@@ -48,4 +48,5 @@ from .goto_inn_processor import process as process_goto_inn # Import for goto_in
 from .deposit_items_at_location_processor import process as process_deposit_items_at_location # New processor
 from .attend_theater_performance_processor import process as process_attend_theater_performance # New theater processor
 from .drink_at_inn_activity_processor import process as process_drink_at_inn # New drink at inn processor
+from .use_public_bath_processor import process as process_use_public_bath # New public bath processor
 # Add other processors here as they are created

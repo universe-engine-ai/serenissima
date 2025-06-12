@@ -64,5 +64,6 @@ from .work_on_art_creator import try_create_work_on_art_activity # Import for Ar
 from .read_book_activity_creator import try_create_read_book_activity # Import for reading books
 from .attend_theater_performance_creator import try_create_attend_theater_performance_activity # New theater activity
 from .drink_at_inn_activity_creator import try_create_drink_at_inn_activity # New drink at inn activity
+from .use_public_bath_creator import try_create_use_public_bath_activity # New public bath activity
 from .goto_location_activity_creator import try_create as try_create_goto_location_activity # Assuming file is goto_location_activity_creator.py
 from .deposit_inventory_orchestrator_creator import try_create_deposit_inventory_orchestrator # New orchestrator
