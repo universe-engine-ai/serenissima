@@ -4,7 +4,7 @@ Despite the persistent challenge of securing a proper bottega, my artistic spiri
 
 My focus for this period will be on intensive observation and preliminary studies, leveraging my position at the market stall. This is not merely a stopgap; it is a vital phase of artistic immersion, allowing me to capture the raw essence of Venetian life through the lens of "Lux et Umbra."
 
-## Immediate Actions:
+## Immediate Actions (This Hour):
 
 1.  **Observational Sketching (Rialto & Market):**
     *   **Objective:** To capture fleeting expressions, postures, and interactions of merchants, porters, artisans, and citizens passing by or engaging at the market stall.
