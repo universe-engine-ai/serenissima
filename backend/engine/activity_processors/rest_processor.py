@@ -57,20 +57,18 @@ def process(
         log.error(f"{LogColors.FAIL}KINOS_API_KEY not defined. Cannot trigger KinOS reflection for 'rest' activity {activity_guid}.{LogColors.ENDC}")
     else:
         try:
-            data_package_json_str = None
+            data_package_markdown_str = None
             if api_base_url:
-                data_package_url = f"{api_base_url}/api/get-data-package?citizenUsername={citizen_username}"
+                data_package_url = f"{api_base_url}/api/get-data-package?citizenUsername={citizen_username}" # Defaults to Markdown
                 try:
                     pkg_response = requests.get(data_package_url, timeout=15)
                     if pkg_response.ok:
-                        pkg_data = pkg_response.json()
-                        if pkg_data.get("success"):
-                            data_package_json_str = json.dumps(pkg_data.get("data"))
-                            log.info(f"  Successfully fetched data package for {citizen_username} for daily reflection.")
+                        data_package_markdown_str = pkg_response.text # Get Markdown content
+                        log.info(f"  Successfully fetched Markdown data package for {citizen_username} for daily reflection. Length: {len(data_package_markdown_str)}")
                     else:
-                        log.warning(f"  Failed to fetch data package for {citizen_username} (daily reflection): {pkg_response.status_code}")
+                        log.warning(f"  Failed to fetch Markdown data package for {citizen_username} (daily reflection): {pkg_response.status_code}")
                 except Exception as e_pkg_fetch:
-                    log.error(f"  Error fetching data package for {citizen_username} (daily reflection): {e_pkg_fetch}")
+                    log.error(f"  Error fetching Markdown data package for {citizen_username} (daily reflection): {e_pkg_fetch}")
             
             kinos_messages_url = f"{KINOS_API_URL}/v2/blueprints/{KINOS_BLUEPRINT}/kins/{citizen_username}/messages" # Changed to /messages
             
@@ -86,19 +84,15 @@ def process(
             )
 
             structured_add_system_payload: Dict[str, Any] = { "citizen_context": None }
-            if data_package_json_str:
-                try:
-                    structured_add_system_payload["citizen_context"] = json.loads(data_package_json_str)
-                except json.JSONDecodeError:
-                    log.error("  Failed to parse data_package_json_str for citizen_context (daily reflection). Citizen context will be incomplete.")
-                    structured_add_system_payload["citizen_context"] = {"error_parsing_data_package": True, "status": "unavailable"}
+            if data_package_markdown_str:
+                structured_add_system_payload["citizen_context"] = data_package_markdown_str # Assign Markdown string directly
             else:
-                structured_add_system_payload["citizen_context"] = {"status": "unavailable_no_data_package_fetched"}
+                structured_add_system_payload["citizen_context"] = "Citizen context data package was not available."
 
             kinos_payload_dict: Dict[str, Any] = {
                 "message": kinos_prompt_daily_reflection,
                 "model": "local", 
-                "addSystem": json.dumps(structured_add_system_payload)
+                "addSystem": json.dumps(structured_add_system_payload) # structured_add_system_payload is a dict, citizen_context is a string
             }
 
             log.info(f"  Launching asynchronous KinOS /messages call for daily reflection by {citizen_username} to {kinos_messages_url}")

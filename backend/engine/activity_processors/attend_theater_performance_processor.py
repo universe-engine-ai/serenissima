@@ -206,21 +206,19 @@ def process(
             if 'representation_data' in locals() and representation_data.get("success") and representation_data.get("representation"):
                 play_content_from_api = representation_data["representation"].get("content", play_content_from_api)
 
-            # Récupérer le data package du citoyen
-            data_package_json_str = None
+            # Récupérer le data package du citoyen (format Markdown)
+            data_package_markdown_str = None
             if api_base_url:
-                data_package_url = f"{api_base_url}/api/get-data-package?citizenUsername={citizen_username}"
+                data_package_url = f"{api_base_url}/api/get-data-package?citizenUsername={citizen_username}" # Defaults to Markdown
                 try:
                     pkg_response = requests.get(data_package_url, timeout=15)
                     if pkg_response.ok:
-                        pkg_data = pkg_response.json()
-                        if pkg_data.get("success"):
-                            data_package_json_str = json.dumps(pkg_data.get("data"))
-                            log.info(f"  Récupération réussie du data package pour {citizen_username} pour la réflexion sur le théâtre.")
+                        data_package_markdown_str = pkg_response.text # Get Markdown content
+                        log.info(f"  Récupération réussie du data package (Markdown) pour {citizen_username} pour la réflexion sur le théâtre. Longueur: {len(data_package_markdown_str)}")
                     else:
-                        log.warning(f"  Échec de la récupération du data package pour {citizen_username} (théâtre): {pkg_response.status_code}")
+                        log.warning(f"  Échec de la récupération du data package (Markdown) pour {citizen_username} (théâtre): {pkg_response.status_code}")
                 except Exception as e_pkg_fetch:
-                    log.error(f"  Erreur lors de la récupération du data package pour {citizen_username} (théâtre): {e_pkg_fetch}")
+                    log.error(f"  Erreur lors de la récupération du data package (Markdown) pour {citizen_username} (théâtre): {e_pkg_fetch}")
             
             kinos_build_url = f"{KINOS_API_URL}/v2/blueprints/{KINOS_BLUEPRINT}/kins/{citizen_username}/build"
             
@@ -242,19 +240,15 @@ def process(
                     "content": play_content_from_api
                 }
             }
-            if data_package_json_str:
-                try:
-                    structured_add_system_payload_theater["citizen_context"] = json.loads(data_package_json_str)
-                except json.JSONDecodeError:
-                    log.error("  Échec du parsing de data_package_json_str pour citizen_context (théâtre). Contexte citoyen incomplet.")
-                    structured_add_system_payload_theater["citizen_context"] = {"error_parsing_data_package": True, "status": "unavailable"}
+            if data_package_markdown_str:
+                structured_add_system_payload_theater["citizen_context"] = data_package_markdown_str # Assign Markdown string directly
             else:
-                structured_add_system_payload_theater["citizen_context"] = {"status": "unavailable_no_data_package_fetched"}
+                structured_add_system_payload_theater["citizen_context"] = "Citizen context data package was not available."
 
             kinos_payload_dict_theater: Dict[str, Any] = {
                 "message": kinos_prompt_theater,
                 "model": "local", # Ou choisir le modèle basé sur la classe sociale/tâche
-                "addSystem": json.dumps(structured_add_system_payload_theater)
+                "addSystem": json.dumps(structured_add_system_payload_theater) # structured_add_system_payload_theater is a dict, citizen_context is a string
             }
 
             log.info(f"  Lancement de l'appel KinOS /build asynchrone pour la réflexion sur le théâtre par {citizen_username} à {kinos_build_url}")
