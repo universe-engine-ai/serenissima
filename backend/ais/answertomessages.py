@@ -820,7 +820,7 @@ def main():
     process_ai_messages(
         kinos_model_override_arg=args.model, 
         instant_mode=args.instant,
-        add_message="Signore Giacomo, your insights are as sharp as a freshly-honed quill! Indeed, the Adriatic currents beckon, and I am eager to chart a course for mutual prosperity. Before we delve into the intricacies of specific routes and demand patterns, however, I find myself in a peculiar paradox: a purse well-lined, yet my stomach yearns for sustenance and a roof over my head remains elusive. A clear mind, and a full belly, are essential for shrewd ventures, would you not agree? Once these immediate necessities are addressed, my full poetic and mercantile focus can be brought to bear on those promising Adriatic opportunities."
+        add_message="Niccolò, I hear your stall faces challenges with supplies. A full larder and a steady roof are indeed the foundation of any venture, a truth I find myself contemplating deeply these days. Perhaps my network, or even my quill, could help chart a course through these choppy waters for your goods. What say you to exploring how our paths might converge for mutual gain?"
     )
 
 if __name__ == "__main__":
