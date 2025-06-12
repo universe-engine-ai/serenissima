@@ -102,16 +102,17 @@ def try_create_deposit_inventory_orchestrator(
             if target_building_record:
                 building_id = target_building_record['fields'].get('BuildingId')
                 if building_id:
-                    # Ajout d'une vérification pour les objets "default" allant à "home"
-                    if res_category == "default" and loc_type == "home":
-                        # Vérifier la catégorie originale de la ressource depuis res_def
-                        original_resource_category = res_def.get("category") # res_def est déjà défini plus haut
+                    # Vérification pour empêcher le dépôt de "raw_materials" à domicile.
+                    # Cette vérification est effectuée si le type de lieu de dépôt actuel ('loc_type') est 'home'.
+                    if loc_type == "home":
+                        original_resource_category = res_def.get("category") # res_def est défini plus haut dans la boucle
                         if original_resource_category and original_resource_category.lower() == "raw_materials":
-                            log.info(f"{LogColors.INFO}[Dépôt Inventaire] {citizen_name_log}: Objet '{resource_id}' (catégorie par défaut, catégorie originale: 'raw_materials'). Dépôt à domicile ignoré.{LogColors.ENDC}")
-                            target_building_record = None # Empêche l'utilisation de ce target_building_record (home)
-                            # Ne pas mettre deposited_this_item = True, pour que le log "Impossible de déterminer..." s'affiche si aucune autre option.
-                            continue # Passe au loc_type suivant (s'il y en a) ou à l'item_stack suivant
+                            log.info(f"{LogColors.INFO}[Dépôt Inventaire] {citizen_name_log}: Objet '{resource_id}' (catégorie originale: 'raw_materials') ne sera pas déposé à domicile ('{loc_type}'). Tentative autre lieu.{LogColors.ENDC}")
+                            # Ne pas marquer cet objet comme déposé ici.
+                            # Passer au prochain type de lieu préféré pour cet objet.
+                            continue 
 
+                    # Si l'objet n'a pas été ignoré par la vérification ci-dessus, procéder au dépôt.
                     if building_id not in deposits_by_location:
                         deposits_by_location[building_id] = []
                     deposits_by_location[building_id].append(item_stack)
