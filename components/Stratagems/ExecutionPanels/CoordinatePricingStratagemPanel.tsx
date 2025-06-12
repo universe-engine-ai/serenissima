@@ -63,7 +63,7 @@ const CoordinatePricingStratagemPanel = forwardRef<StratagemSpecificPanelRef, St
         // Le processeur essaiera toujours de se coordonner avec les ventes directes de ce citoyen.
         targetDescriptionElements = (
           <>
-            the prices of <span className="font-bold">{citizenDisplayName}</span> for {targetResourceType ? "the selected resource" : "all resources"}. 
+            the prices of <span className="font-bold">{citizenDisplayName}</span>. 
             Note: this citizen does not appear to own any listed business buildings.
           </>
         );
@@ -71,7 +71,7 @@ const CoordinatePricingStratagemPanel = forwardRef<StratagemSpecificPanelRef, St
         // Le citoyen cible est sélectionné et possède des bâtiments.
         targetDescriptionElements = (
           <>
-            the prices of <span className="font-bold">{citizenDisplayName}</span> for {targetResourceType ? "the selected resource" : "all resources"}.
+            the prices of <span className="font-bold">{citizenDisplayName}</span>.
           </>
         );
       }
@@ -80,11 +80,11 @@ const CoordinatePricingStratagemPanel = forwardRef<StratagemSpecificPanelRef, St
       const buildingDisplayName = building?.name || targetBuilding;
       targetDescriptionElements = (
         <>
-          the prices of building <span className="font-bold">{buildingDisplayName}</span> for {targetResourceType ? "the selected resource" : "all resources"}.
+          the prices of building <span className="font-bold">{buildingDisplayName}</span>.
         </>
       );
     } else { // Ni targetCitizen ni targetBuilding ne sont sélectionnés
-      targetDescriptionElements = `the general market average for ${targetResourceType ? "the selected resource" : "all resources"}.`;
+      targetDescriptionElements = `the general market average.`;
     }
 
     return (
