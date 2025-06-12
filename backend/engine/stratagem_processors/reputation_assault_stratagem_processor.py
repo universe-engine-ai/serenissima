@@ -111,8 +111,25 @@ def process(
     stratagem_id = stratagem_fields.get('StratagemId', stratagem_record['id'])
     executed_by_username = stratagem_fields.get('ExecutedBy')
     target_citizen_username = stratagem_fields.get('TargetCitizen')
+    stratagem_notes = stratagem_fields.get('Notes', "") # Get notes for assaultAngle
 
-    log.info(f"{LogColors.STRATAGEM_PROCESSOR}Processing 'reputation_assault' stratagem {stratagem_id} by {executed_by_username} against {target_citizen_username}.{LogColors.ENDC}")
+    # Extract assaultAngle from notes if present
+    assault_angle_from_notes: Optional[str] = None
+    if "Angle: " in stratagem_notes:
+        try:
+            # Assumes "Angle: <text>\nOriginal notes..."
+            angle_part = stratagem_notes.split("Angle: ", 1)[1]
+            assault_angle_from_notes = angle_part.split("\n", 1)[0].strip()
+        except IndexError:
+            pass # Could not parse
+    
+    log_message = (
+        f"{LogColors.STRATAGEM_PROCESSOR}Processing 'reputation_assault' stratagem {stratagem_id} "
+        f"by {executed_by_username} against {target_citizen_username}."
+    )
+    if assault_angle_from_notes:
+        log_message += f" Angle: '{assault_angle_from_notes}'."
+    log.info(log_message + LogColors.ENDC)
 
     if not executed_by_username or not target_citizen_username:
         log.error(f"{LogColors.FAIL}Stratagem {stratagem_id} missing ExecutedBy or TargetCitizen. Cannot process.{LogColors.ENDC}")
@@ -197,6 +214,14 @@ def process(
             f"The message should sound natural for your persona and relationship with {related_citizen_display_name}. "
             f"It should not be overtly aggressive or obviously a smear tactic, but rather plant seeds of doubt or concern. "
             f"Refer to specific (but potentially misinterpreted or negatively framed) aspects from {target_display_name}'s data package if possible. "
+        )
+        
+        if assault_angle_from_notes:
+            prompt_for_kinos += (
+                f"Focus your undermining message around the following angle or theme: '{assault_angle_from_notes}'. "
+            )
+        
+        prompt_for_kinos += (
             f"Keep the message concise and conversational."
         )
         

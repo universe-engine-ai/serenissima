@@ -9,6 +9,7 @@ const ReputationAssaultStratagemPanel = forwardRef<StratagemSpecificPanelRef, St
   const [citizenSearch, setCitizenSearch] = useState('');
   const [isCitizenDropdownOpen, setIsCitizenDropdownOpen] = useState(false);
   const citizenInputRef = useRef<HTMLInputElement>(null);
+  const [assaultAngle, setAssaultAngle] = useState(''); // New state for assault angle
 
   const calculatedInfluenceCost = stratagemData.influenceCostBase; // Fixed cost
 
@@ -27,12 +28,17 @@ const ReputationAssaultStratagemPanel = forwardRef<StratagemSpecificPanelRef, St
       targetDescription = <>citizen <span className="font-bold">{citizenDisplayName}</span></>;
     }
 
+    let angleDescription = "";
+    if (assaultAngle.trim()) {
+      angleDescription = <> focusing on the angle: <span className="font-semibold">"{assaultAngle.trim()}"</span></>;
+    }
+
     return (
       <>
-        <span className="font-bold">{executorName}</span> will attempt to damage the reputation of {targetDescription} by spreading negative information to their associates. <em className="italic">(Aggressive)</em>
+        <span className="font-bold">{executorName}</span> will attempt to damage the reputation of {targetDescription} by spreading negative information to their associates{angleDescription}. <em className="italic">(Aggressive)</em>
       </>
     );
-  }, [targetCitizenUsername, currentUserUsername, currentUserFirstName, currentUserLastName, citizens]);
+  }, [targetCitizenUsername, assaultAngle, currentUserUsername, currentUserFirstName, currentUserLastName, citizens]);
 
   useImperativeHandle(ref, () => ({
     getStratagemDetails: () => {
@@ -41,6 +47,7 @@ const ReputationAssaultStratagemPanel = forwardRef<StratagemSpecificPanelRef, St
       }
       return {
         targetCitizen: targetCitizenUsername,
+        assaultAngle: assaultAngle.trim() || null, // Send null if empty
         // durationHours, name, description, notes are handled by the creator with defaults
       };
     },
@@ -123,6 +130,25 @@ const ReputationAssaultStratagemPanel = forwardRef<StratagemSpecificPanelRef, St
         {!targetCitizenUsername && (
           <p className="text-xs text-red-500 mt-1">Target citizen is required.</p>
         )}
+      </div>
+
+      {/* Assault Angle Textarea */}
+      <div className="mb-4">
+        <label htmlFor="reputation_assault_angle" className="block text-sm font-medium text-amber-800 mb-1">
+          Assault Angle / Theme (Optional)
+        </label>
+        <textarea
+          id="reputation_assault_angle"
+          value={assaultAngle}
+          onChange={(e) => setAssaultAngle(e.target.value)}
+          placeholder="e.g., 'Their recent business failures', 'Their questionable alliances', 'Their extravagant spending habits...'"
+          rows={3}
+          className="w-full p-2 border border-amber-300 rounded-md bg-white text-amber-900 focus:ring-amber-500 focus:border-amber-500"
+          disabled={isLoading}
+        />
+        <p className="text-xs text-gray-500 mt-1">
+          Provide a specific theme or angle for the negative information. This will guide the AI in crafting the messages.
+        </p>
       </div>
 
       {summaryElements && (

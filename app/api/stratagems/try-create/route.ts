@@ -90,7 +90,8 @@ export async function POST(request: Request) {
       );
     } else if (stratagemType === 'reputation_assault') {
       console.log(`[API /stratagems/try-create] Processing 'reputation_assault' stratagem with parameters:`,
-        `TargetCitizen: ${stratagemDetails?.targetCitizen}`
+        `TargetCitizen: ${stratagemDetails?.targetCitizen}`,
+        `AssaultAngle: ${stratagemDetails?.assaultAngle}`
       );
     } else if (stratagemType === 'monopoly_pricing') {
       console.log(`[API /stratagems/try-create] Processing 'monopoly_pricing' stratagem with parameters:`,

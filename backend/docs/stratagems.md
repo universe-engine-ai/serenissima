@@ -362,6 +362,7 @@ This would make NLR launch a 28-day campaign to repeal the "Salt Tax Increase Ac
 #### Parameters for Creation (`stratagemDetails` in API request):
 
 -   `targetCitizen` (string, required): The username of the competitor citizen whose reputation is to be targeted.
+-   `assaultAngle` (string, optional): A specific theme or angle for the negative information (e.g., "Their recent business failures", "Questionable alliances"). If provided, this guides the AI in crafting messages.
 -   `name` (string, optional): A custom name for this stratagem instance. Defaults to "Reputation Assault on [TargetCitizen]".
 -   `description` (string, optional): A custom description.
 -   `notes` (string, optional): Custom notes.

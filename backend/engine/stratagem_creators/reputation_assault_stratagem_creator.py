@@ -34,6 +34,7 @@ def try_create(
     - name (str, optional): Custom name for the stratagem.
     - description (str, optional): Custom description.
     - notes (str, optional): Additional notes.
+    - assaultAngle (str, optional): Specific angle or theme for the assault.
     - durationHours (int, optional): Duration of the stratagem in hours. Defaults to 24.
     """
     log.info(f"{LogColors.STRATAGEM_CREATOR}Attempting to create '{stratagem_type}' stratagem for {citizen_username} with params: {stratagem_params}{LogColors.ENDC}")
@@ -55,6 +56,7 @@ def try_create(
     
     name = stratagem_params.get("name") or f"Reputation Assault on {target_citizen}"
     description = stratagem_params.get("description") or f"{citizen_username} is attempting to damage the reputation of {target_citizen}."
+    assault_angle = stratagem_params.get("assaultAngle")
     
     duration_hours = int(stratagem_params.get("durationHours", 24))
     expires_at_utc = now_utc_dt + timedelta(hours=duration_hours)
@@ -70,9 +72,15 @@ def try_create(
         "ExecutedAt": None, 
         "ExpiresAt": expires_at_utc.isoformat(),
         "Description": description,
-        "Notes": stratagem_params.get("notes", "")
+        "Notes": stratagem_params.get("notes", "") # Base notes
     }
-    
+
+    if assault_angle:
+        stratagem_payload["Notes"] = f"Angle: {assault_angle}\n{stratagem_payload['Notes']}".strip()
+        # Alternatively, create a new field like "StratagemSpecificParams" if schema allows
+        # For now, prepending to Notes is a common pattern.
+        # stratagem_payload["StratagemSpecificParams"] = json.dumps({"assaultAngle": assault_angle})
+
     log.info(f"{LogColors.STRATAGEM_CREATOR}Payload for 'reputation_assault' stratagem '{stratagem_id}': {json.dumps(stratagem_payload, indent=2)}{LogColors.ENDC}")
     
     return [stratagem_payload]
