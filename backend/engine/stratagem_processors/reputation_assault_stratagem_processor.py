@@ -167,119 +167,133 @@ def process(
         tables['stratagems'].update(stratagem_record['id'], {'Status': 'failed', 'Notes': 'KinOS API key missing.'})
         return False
 
-    # 1. Get data package for the target citizen
-    target_data_package_response = requests.get(f"{NEXT_JS_BASE_URL}/api/get-data-package?citizenUsername={target_citizen_username}", timeout=30)
-    if not target_data_package_response.ok:
-        log.error(f"{LogColors.FAIL}Failed to fetch data package for target {target_citizen_username}. Status: {target_data_package_response.status_code}{LogColors.ENDC}")
+    # 1. Fetch data packages for executor and target
+    log.info(f"{LogColors.PROCESS}Fetching data package for executor {executed_by_username}...{LogColors.ENDC}")
+    executor_dp_response = requests.get(f"{NEXT_JS_BASE_URL}/api/get-data-package?citizenUsername={executed_by_username}", timeout=30)
+    if not executor_dp_response.ok:
+        log.error(f"{LogColors.FAIL}Failed to fetch data package for executor {executed_by_username}. Status: {executor_dp_response.status_code}{LogColors.ENDC}")
+        tables['stratagems'].update(stratagem_record['id'], {'Status': 'failed', 'Notes': f'Failed to fetch data for executor {executed_by_username}.'})
+        return False
+    executor_data_package = executor_dp_response.json().get('data', {})
+    executor_profile_for_kinos = executor_data_package.get('citizen', {})
+    executor_display_name = executor_profile_for_kinos.get('FirstName', executed_by_username)
+    executor_social_class = executor_profile_for_kinos.get("SocialClass")
+    model_for_executor = _rh_get_kinos_model_for_citizen(executor_social_class) # Model for both KinOS calls
+
+    log.info(f"{LogColors.PROCESS}Fetching data package for target {target_citizen_username}...{LogColors.ENDC}")
+    target_dp_response = requests.get(f"{NEXT_JS_BASE_URL}/api/get-data-package?citizenUsername={target_citizen_username}", timeout=30)
+    if not target_dp_response.ok:
+        log.error(f"{LogColors.FAIL}Failed to fetch data package for target {target_citizen_username}. Status: {target_dp_response.status_code}{LogColors.ENDC}")
         tables['stratagems'].update(stratagem_record['id'], {'Status': 'failed', 'Notes': f'Failed to fetch data for target {target_citizen_username}.'})
         return False
-    target_data_package = target_data_package_response.json().get('data', {})
-    target_profile_for_kinos = target_data_package.get('citizen', {}) # Basic profile for KinOS
-
-    # Get executor's profile (basic details for prompt context)
-    executor_profile_record = get_citizen_record(tables, executed_by_username)
-    executor_profile_for_kinos = executor_profile_record['fields'] if executor_profile_record else {}
-    executor_display_name = executor_profile_for_kinos.get('FirstName', executed_by_username)
+    target_data_package = target_dp_response.json().get('data', {})
+    target_profile_for_kinos = target_data_package.get('citizen', {})
     target_display_name = target_profile_for_kinos.get('FirstName', target_citizen_username)
 
+    # 2. Generate Core Attack Narrative (KinOS Call 1: Executor to Self)
+    log.info(f"{LogColors.PROCESS}Generating core attack narrative for {executed_by_username} against {target_citizen_username}...{LogColors.ENDC}")
+    add_system_for_narrative_gen = {
+        "executor_profile_and_data": executor_data_package,
+        "target_profile_and_data": target_data_package,
+        "assault_angle_directive": assault_angle_from_notes or "any effective angle"
+    }
+    prompt_for_narrative_gen = (
+        f"You are {executor_display_name}. You are planning a reputation assault against {target_display_name}. "
+        f"Your goal is to craft a compelling narrative or set of talking points that will damage their reputation. "
+        f"Use the provided `assault_angle_directive` ('{assault_angle_from_notes or 'any effective angle'}') as the core theme. "
+        f"You have access to your own data (`executor_profile_and_data`) and the target's data (`target_profile_and_data`). "
+        f"You can use factual information, misinterpretations, or even plausible fabrications to build your case. "
+        f"Your output should be ONLY the core attack narrative/talking points you will use. Be strategic and persuasive. This text will be used by you in subsequent messages."
+    )
+    
+    core_attack_narrative = _generate_kinos_message_content(
+        kin_username=executed_by_username,
+        channel_username=executed_by_username, # Self-chat
+        prompt=prompt_for_narrative_gen,
+        kinos_api_key=kinos_api_key,
+        kinos_model_override=model_for_executor,
+        add_system_data=add_system_for_narrative_gen,
+        tables=tables # Pass tables for summarization if local model
+    )
 
-    # 2. Identify citizens related to the target
+    if not core_attack_narrative:
+        log.error(f"{LogColors.FAIL}Failed to generate core attack narrative for stratagem {stratagem_id}. Aborting.{LogColors.ENDC}")
+        tables['stratagems'].update(stratagem_record['id'], {'Status': 'failed', 'Notes': 'Failed to generate core attack narrative.'})
+        return False
+    
+    cleaned_core_attack_narrative = clean_thought_content(tables, core_attack_narrative)
+    log.info(f"{LogColors.PROCESS}Generated Core Attack Narrative (cleaned, first 100 chars): '{cleaned_core_attack_narrative[:100]}...'{LogColors.ENDC}")
+    # Optionally store this narrative as a self-message for the executor
+    _store_message_via_api(tables, executed_by_username, executed_by_username, f"Reputation Assault Plan against {target_citizen_username} (Angle: {assault_angle_from_notes or 'N/A'}):\n\n{cleaned_core_attack_narrative}", f"stratagem_plan_{stratagem_id}")
+
+
+    # 3. Identify citizens related to the target
     related_citizens_usernames = _get_related_citizens(tables, target_citizen_username)
     if not related_citizens_usernames:
         log.info(f"{LogColors.PROCESS}Target {target_citizen_username} has no known relationships. Stratagem {stratagem_id} has no one to message.{LogColors.ENDC}")
-        tables['stratagems'].update(stratagem_record['id'], {'Status': 'executed', 'Notes': 'Target has no relationships.'})
-        return True # Stratagem considered executed as there's nothing to do.
-
+        # Stratagem still considered "processed" as the core damage to executor-target relationship will occur.
+        # No messages sent, but the intent was there.
+    
     messages_sent_count = 0
     for related_citizen_username in related_citizens_usernames:
-        if related_citizen_username == executed_by_username: # Don't message self
+        if related_citizen_username == executed_by_username: # Don't message self with smear
             continue
 
-        log.info(f"{LogColors.PROCESS}Preparing to generate message for {related_citizen_username} about {target_citizen_username} (Stratagem {stratagem_id}).{LogColors.ENDC}")
+        log.info(f"{LogColors.PROCESS}Preparing to generate personalized message for {related_citizen_username} about {target_citizen_username} (Stratagem {stratagem_id}).{LogColors.ENDC}")
 
-        # 3. For each related citizen:
-        #   - Fetch relationship details between related_citizen and target_citizen
-        #   - Fetch conversation history between related_citizen and target_citizen
-        relationship_target_related = _rh_get_relationship_data(tables, target_citizen_username, related_citizen_username)
-        conversation_history_target_related = _get_conversation_history(tables, target_citizen_username, related_citizen_username)
-        
-        # Get related citizen's profile for context (e.g. their social class for model selection if needed)
-        related_citizen_profile_record = get_citizen_record(tables, related_citizen_username)
-        related_citizen_profile_for_kinos = related_citizen_profile_record['fields'] if related_citizen_profile_record else {}
+        # Fetch related citizen's data package
+        related_citizen_dp_response = requests.get(f"{NEXT_JS_BASE_URL}/api/get-data-package?citizenUsername={related_citizen_username}", timeout=30)
+        if not related_citizen_dp_response.ok:
+            log.warning(f"{LogColors.WARNING}Failed to fetch data package for related citizen {related_citizen_username}. Skipping message to them.{LogColors.ENDC}")
+            continue
+        related_citizen_data_package = related_citizen_dp_response.json().get('data', {})
+        related_citizen_profile_for_kinos = related_citizen_data_package.get('citizen', {})
         related_citizen_display_name = related_citizen_profile_for_kinos.get('FirstName', related_citizen_username)
-
-        # Construct addSystem data for KinOS
-        # The "kin" for this message generation is the executor.
-        # The "channel" is with the related_citizen.
-        # The context is about the target_citizen.
-        add_system_data_for_message_gen = {
-            "executing_citizen_profile": executor_profile_for_kinos,
-            "target_citizen_profile_and_data": target_data_package, # Full data package of the one being smeared
-            "related_citizen_profile": related_citizen_profile_for_kinos, # Profile of the message recipient
-            "relationship_executor_with_related": _rh_get_relationship_data(tables, executed_by_username, related_citizen_username),
-            "relationship_target_with_related": relationship_target_related,
-            "conversation_history_target_with_related": conversation_history_target_related,
-            "stratagem_details": {
-                "type": "reputation_assault",
-                "executor": executed_by_username,
-                "target_of_assault": target_citizen_username,
-                "message_recipient": related_citizen_username
-            }
+        
+        # Construct addSystem data for KinOS (Call 2: Executor to RelatedCitizen)
+        add_system_for_smear_message = {
+            "executor_profile": executor_profile_for_kinos, # Basic profile of executor
+            "recipient_profile_and_data": related_citizen_data_package, # Full data package of recipient
+            "core_attack_narrative_from_executor": cleaned_core_attack_narrative,
+            "original_target_profile": target_profile_for_kinos, # Basic profile of the one being smeared
+            "relationship_executor_with_recipient": _rh_get_relationship_data(tables, executed_by_username, related_citizen_username),
+            "relationship_target_with_recipient": _rh_get_relationship_data(tables, target_citizen_username, related_citizen_username),
+            "assault_angle_reminder": assault_angle_from_notes or "any effective angle"
         }
-
-        # Construct prompt for KinOS
-        prompt_for_kinos = (
-            f"You are {executor_display_name}. Your details are in `addSystem.executing_citizen_profile`. "
-            f"You are executing a 'Reputation Assault' stratagem against {target_display_name} (details in `addSystem.target_citizen_profile_and_data`). "
-            f"Your goal is to subtly damage {target_display_name}'s reputation with {related_citizen_display_name} (profile in `addSystem.related_citizen_profile`).\n"
-            f"Consider your relationship with {related_citizen_display_name} (details in `addSystem.relationship_executor_with_related`).\n"
-            f"Also consider {target_display_name}'s relationship with {related_citizen_display_name} (details in `addSystem.relationship_target_with_related`) "
-            f"and their recent conversation history (in `addSystem.conversation_history_target_with_related`).\n"
-            f"Craft a message TO {related_citizen_display_name} that subtly undermines {target_display_name}. "
-            f"The message should sound natural for your persona and relationship with {related_citizen_display_name}. "
-            f"It should not be overtly aggressive or obviously a smear tactic, but rather plant seeds of doubt or concern. "
-            f"Refer to specific (but potentially misinterpreted or negatively framed) aspects from {target_display_name}'s data package if possible. "
+        
+        prompt_for_smear_message = (
+            f"You are {executor_display_name}. You are speaking to {related_citizen_display_name}. "
+            f"Your goal is to subtly damage {target_display_name}'s reputation with {related_citizen_display_name}. "
+            f"Use the `core_attack_narrative_from_executor` you previously prepared, focusing on the `assault_angle_reminder` ('{assault_angle_from_notes or 'any effective angle'}'). "
+            f"Consider your relationship with {related_citizen_display_name} (see `relationship_executor_with_recipient`) and {target_display_name}'s relationship with {related_citizen_display_name} (see `relationship_target_with_recipient`). "
+            f"Use the `recipient_profile_and_data` to personalize your message to {related_citizen_display_name}. "
+            f"Your message should be conversational and not overtly aggressive. Plant seeds of doubt or concern. "
+            f"Your output is ONLY the message TO {related_citizen_display_name}."
         )
-        
-        if assault_angle_from_notes:
-            prompt_for_kinos += (
-                f"Focus your undermining message around the following angle or theme: '{assault_angle_from_notes}'. "
-            )
-        
-        prompt_for_kinos += (
-            f"Keep the message concise and conversational."
-        )
-        
-        # Determine model for the executor (KinOS persona)
-        executor_social_class = executor_profile_for_kinos.get("SocialClass")
-        model_for_executor = _rh_get_kinos_model_for_citizen(executor_social_class)
 
-        # Generate message content using KinOS
-        # The kin_username is the executor, channel_username is the related_citizen
-        generated_message_content = _generate_kinos_message_content(
+        generated_smear_message = _generate_kinos_message_content(
             kin_username=executed_by_username,
-            channel_username=related_citizen_username, # KinOS channel is between executor and recipient
-            prompt=prompt_for_kinos,
+            channel_username=related_citizen_username,
+            prompt=prompt_for_smear_message,
             kinos_api_key=kinos_api_key,
-            kinos_model_override=model_for_executor,
-            add_system_data=add_system_data_for_message_gen
+            kinos_model_override=model_for_executor, # Same model as executor
+            add_system_data=add_system_for_smear_message,
+            tables=tables # Pass tables for summarization if local model
         )
 
-        if generated_message_content:
-            cleaned_message = clean_thought_content(tables, generated_message_content)
-            log.info(f"{LogColors.PROCESS}Generated message from {executed_by_username} to {related_citizen_username} (re: {target_citizen_username}): '{cleaned_message[:100]}...' (Original: '{generated_message_content[:100]}...'){LogColors.ENDC}")
+        if generated_smear_message:
+            cleaned_smear_message = clean_thought_content(tables, generated_smear_message)
+            log.info(f"{LogColors.PROCESS}Generated smear message from {executed_by_username} to {related_citizen_username} (re: {target_citizen_username}): '{cleaned_smear_message[:100]}...' (Original: '{generated_smear_message[:100]}...'){LogColors.ENDC}")
             
-            # Send the message
-            # The channel for storing the message is between executor and related_citizen
             dialogue_channel_name = "_".join(sorted([executed_by_username, related_citizen_username]))
-            if _store_message_via_api(tables, executed_by_username, related_citizen_username, cleaned_message, dialogue_channel_name):
+            if _store_message_via_api(tables, executed_by_username, related_citizen_username, cleaned_smear_message, dialogue_channel_name):
                 messages_sent_count += 1
             else:
-                log.warning(f"{LogColors.WARNING}Failed to store generated message to {related_citizen_username} for stratagem {stratagem_id}.{LogColors.ENDC}")
+                log.warning(f"{LogColors.WARNING}Failed to store generated smear message to {related_citizen_username} for stratagem {stratagem_id}.{LogColors.ENDC}")
         else:
-            log.warning(f"{LogColors.WARNING}Failed to generate message content for {related_citizen_username} (re: {target_citizen_username}) for stratagem {stratagem_id}.{LogColors.ENDC}")
+            log.warning(f"{LogColors.WARNING}Failed to generate smear message content for {related_citizen_username} (re: {target_citizen_username}) for stratagem {stratagem_id}.{LogColors.ENDC}")
 
-    # 4. Damage relationship between executor and target
+    # 4. Damage relationship between executor and target (regardless of messages sent)
     trust_change = -50.0 # Significant negative impact
     update_trust_score_for_activity(
         tables,
