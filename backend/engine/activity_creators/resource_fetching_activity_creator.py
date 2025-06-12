@@ -58,6 +58,7 @@ def try_create(
     3. goto_location (from source to destination building, if destination is specified and different)
     Returns the first activity in the chain.
     """
+    log.info(f"{LogColors.ACTIVITY}[FetchCreator] Init: citizen={citizen_username}, resource={resource_type_id}, amount={amount}, from_bldg_param={from_building_custom_id}, to_bldg_param={to_building_custom_id}")
     
     activity_chain: List[Dict[str, Any]] = []
     current_chain_time_iso = start_time_utc_iso if start_time_utc_iso else current_time_utc.isoformat()
@@ -85,8 +86,17 @@ def try_create(
     final_from_building_custom_id = from_building_custom_id
     final_contract_custom_id = contract_custom_id # Use this for the activity if a contract is found/used
 
+    # Log initial to_building_custom_id name
+    if to_building_custom_id:
+        initial_to_bldg_rec = get_building_record(tables, to_building_custom_id)
+        initial_to_bldg_name = initial_to_bldg_rec['fields'].get('Name', to_building_custom_id) if initial_to_bldg_rec else to_building_custom_id
+        log.info(f"{LogColors.ACTIVITY}[FetchCreator] Initial ToBuilding (destination for delivery): {to_building_custom_id} (Name: {initial_to_bldg_name})")
+    else:
+        log.info(f"{LogColors.ACTIVITY}[FetchCreator] Initial ToBuilding (destination for delivery) is None.")
+
+
     if not final_from_building_custom_id:
-        log.info(f"No explicit source for {citizen_username} requesting {resource_type_id}. Initiating dynamic source finding...")
+        log.info(f"{LogColors.ACTIVITY}[FetchCreator] No explicit source for {citizen_username} requesting {resource_type_id}. Initiating dynamic source finding...")
         
         # Dynamic Source Finding Logic:
         # 1. Look for public_sell contracts for the resource_type_id
@@ -145,21 +155,23 @@ def try_create(
             if best_source_contract_record:
                 final_from_building_custom_id = best_source_contract_record['fields']['SellerBuilding']
                 final_contract_custom_id = best_source_contract_record['fields'].get('ContractId', best_source_contract_record['id'])
-                log.info(f"Dynamically found source: Building {final_from_building_custom_id} via contract {final_contract_custom_id} for {resource_type_id}.")
+                dynamically_found_source_bldg_rec = get_building_record(tables, final_from_building_custom_id)
+                dynamically_found_source_bldg_name = dynamically_found_source_bldg_rec['fields'].get('Name', final_from_building_custom_id) if dynamically_found_source_bldg_rec else final_from_building_custom_id
+                log.info(f"{LogColors.ACTIVITY}[FetchCreator] Dynamically found source: Building {final_from_building_custom_id} (Name: {dynamically_found_source_bldg_name}) via contract {final_contract_custom_id} for {resource_type_id}.")
             else:
-                log.warning(f"No suitable public_sell contract found for {resource_type_id} (amount: {amount}) after dynamic search.")
+                log.warning(f"{LogColors.ACTIVITY}[FetchCreator] No suitable public_sell contract found for {resource_type_id} (amount: {amount}) after dynamic search.")
                 # TODO: Could add logic to find producer buildings as a fallback.
         except Exception as e_dyn_src:
-            log.error(f"Error during dynamic source finding for {resource_type_id}: {e_dyn_src}")
+            log.error(f"{LogColors.ACTIVITY}[FetchCreator] Error during dynamic source finding for {resource_type_id}: {e_dyn_src}")
 
     # After dynamic source finding attempt, check if we have a source
     if not final_from_building_custom_id:
-        log.error(f"Could not determine a source building (explicit or dynamic) for fetching {resource_type_id}. Aborting fetch_resource chain creation.")
+        log.error(f"{LogColors.ACTIVITY}[FetchCreator] Could not determine a source building (explicit or dynamic) for fetching {resource_type_id}. Aborting fetch_resource chain creation.")
         return None
 
     source_building_record = get_building_record(tables, final_from_building_custom_id)
     if not source_building_record:
-        log.error(f"Source building {final_from_building_custom_id} not found.")
+        log.error(f"{LogColors.ACTIVITY}[FetchCreator] Source building {final_from_building_custom_id} not found.")
         return None
     source_building_pos = _get_building_position_coords(source_building_record)
     if not source_building_pos:
@@ -243,15 +255,17 @@ def try_create(
     if to_building_custom_id and to_building_custom_id != final_from_building_custom_id:
         destination_building_record = get_building_record(tables, to_building_custom_id)
         if not destination_building_record:
-            log.error(f"Destination building {to_building_custom_id} not found for delivery.")
+            log.error(f"{LogColors.ACTIVITY}[FetchCreator] Destination building {to_building_custom_id} not found for delivery.")
             return activity_chain[0] # Return chain up to fetch, delivery will fail or be manual
         
         destination_building_pos = _get_building_position_coords(destination_building_record)
         if not destination_building_pos:
-            log.error(f"Destination building {to_building_custom_id} has no position.")
+            log.error(f"{LogColors.ACTIVITY}[FetchCreator] Destination building {to_building_custom_id} has no position.")
             return activity_chain[0]
 
         destination_building_name_log = destination_building_record['fields'].get('Name', to_building_custom_id)
+        log.info(f"{LogColors.ACTIVITY}[FetchCreator] Final destination for delivery: {to_building_custom_id} (Name: {destination_building_name_log})")
+        
         # Corrected call to include api_base_url
         path_to_destination_data = find_path_between_buildings_or_coords(
             tables, # Pass tables
@@ -262,7 +276,7 @@ def try_create(
         )
 
         if not path_to_destination_data or not path_to_destination_data.get('success'):
-            log.error(f"Failed to calculate path from {source_building_name_log} to {destination_building_name_log}.")
+            log.error(f"{LogColors.ACTIVITY}[FetchCreator] Failed to calculate path from {source_building_name_log} to {destination_building_name_log}.")
             return activity_chain[0] # Return chain up to fetch
 
         # The goto_location activity for delivery should carry the resources.

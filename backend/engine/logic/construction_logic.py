@@ -548,11 +548,12 @@ def handle_construction_worker_activity(
                                                 tables, citizen_airtable_id, citizen_custom_id, citizen_username,
                                                 ps_contract['fields'].get('ContractId', ps_contract['id']),
                                                 ps_seller_building_id, 
-                                                target_building_custom_id, # To Construction Site
+                                                target_building_custom_id, # To Construction Site (Correct: this is the actual final destination)
                                                 mat_type_to_source, actual_amount_to_buy,
                                                 path_to_ps_seller, 
                                                 now_utc_dt, resource_defs, building_type_defs, now_venice_dt, transport_api_url, api_base_url
                                             ):
+                                                log.info(f"      Fetch from Public Seller {ps_seller_building_id} to Site {target_building_custom_id} created.")
                                                 return True # Activity created, exit
                                             activity_created_for_this_material = True; break
                         if activity_created_for_this_material: continue # Next material
@@ -707,13 +708,13 @@ def handle_construction_worker_activity(
                         if path_to_source_rec and path_to_source_rec.get('success'):
                             if try_create_resource_fetching_activity(
                                 tables, citizen_airtable_id, citizen_custom_id, citizen_username,
-                                contract_custom_id_rec, from_building_id_recurrent, workplace_custom_id,
+                                contract_custom_id_rec, from_building_id_recurrent, workplace_custom_id, # ToBuilding is workshop for workshop restocking
                                 stored_material_type_id, amount_to_fetch_recurrent, path_to_source_rec,
                                 current_time_utc=now_utc_dt, resource_defs=resource_defs,
                                 building_type_defs=building_type_defs, now_venice_dt=now_venice_dt, # Added
                                 transport_api_url=transport_api_url, api_base_url=api_base_url
                             ):
-                                log.info(f"      Created fetch_resource for recurrent contract {contract_custom_id_rec}.")
+                                log.info(f"      Created fetch_resource for recurrent contract {contract_custom_id_rec} to workshop {workplace_custom_id}.")
                                 return True
             
             # Priority 3: Buy from public sell contract
@@ -752,13 +753,13 @@ def handle_construction_worker_activity(
                         if path_to_seller_ps and path_to_seller_ps.get('success'):
                             if try_create_resource_fetching_activity(
                                 tables, citizen_airtable_id, citizen_custom_id, citizen_username, # Citizen is the fetcher
-                                contract_custom_id_ps, seller_building_id_ps, workplace_custom_id, # ToBuilding is workshop
+                                contract_custom_id_ps, seller_building_id_ps, workplace_custom_id, # ToBuilding is workshop for workshop restocking
                                 stored_material_type_id, amount_to_buy_ps, path_to_seller_ps,
                                 current_time_utc=now_utc_dt, resource_defs=resource_defs,
                                 building_type_defs=building_type_defs, now_venice_dt=now_venice_dt, # Added
                                 transport_api_url=transport_api_url, api_base_url=api_base_url
                             ):
-                                log.info(f"      Created fetch_resource for public sell contract {contract_custom_id_ps}.")
+                                log.info(f"      Created fetch_resource for public sell contract {contract_custom_id_ps} to workshop {workplace_custom_id}.")
                                 return True
             
             # Priority 4: Generic fetch (current fallback behavior)
@@ -766,12 +767,13 @@ def handle_construction_worker_activity(
             amount_for_generic_fetch = min(needed_at_workshop, 10.0) # Fetch a smaller, arbitrary amount
             if try_create_resource_fetching_activity(
                 tables, citizen_airtable_id, citizen_custom_id, citizen_username,
-                None, None, workplace_custom_id, stored_material_type_id, amount_for_generic_fetch, None,
+                None, None, workplace_custom_id, # ToBuilding is workshop for workshop restocking
+                stored_material_type_id, amount_for_generic_fetch, None,
                 current_time_utc=now_utc_dt, resource_defs=resource_defs,
                 building_type_defs=building_type_defs, now_venice_dt=now_venice_dt, # Added
                 transport_api_url=transport_api_url, api_base_url=api_base_url
             ):
-                log.info(f"      Created generic fetch_resource activity for {material_name_display}.")
+                log.info(f"      Created generic fetch_resource activity for {material_name_display} to workshop {workplace_custom_id}.")
                 return True
             
             log.info(f"    Could not create any restocking activity for {material_name_display} for workshop {workplace_custom_id}.")
