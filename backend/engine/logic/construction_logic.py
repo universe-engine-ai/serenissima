@@ -262,6 +262,10 @@ def handle_construction_worker_activity(
             max_permissible_work_minutes = current_construction_minutes_on_building # Start with total remaining
             total_construction_time_for_building = float(target_building_def.get('constructionMinutes', 0))
 
+            # Get citizen's current inventory to check if they already have materials for THIS site
+            citizen_inventory_for_delivery_check = get_citizen_inventory_details(tables, citizen_username)
+            items_citizen_can_deliver_from_inventory: List[Dict[str, Any]] = []
+
             if total_construction_time_for_building <= 0:
                 log.warning(f"    Building type {target_building_type_str} has invalid total_construction_time_for_building ({total_construction_time_for_building}). Using default of 120 minutes.")
                 total_construction_time_for_building = 120.0 # Default construction time
@@ -321,7 +325,58 @@ def handle_construction_worker_activity(
 
             # If can_do_any_work is False OR max_permissible_work_minutes is too low, try to deliver materials_needed_for_delivery
             if materials_needed_for_delivery:
-                log.info(f"    Attempting to deliver materials to site {target_building_custom_id}: {materials_needed_for_delivery}")
+                # Check if citizen already has some of these needed materials (owned by site owner)
+                if citizen_inventory_for_delivery_check:
+                    log.info(f"    Checking if citizen {citizen_username} already has materials for site {target_building_custom_id} (Owner: {target_building_owner_username}).")
+                    citizen_current_load_for_delivery = get_citizen_current_load(tables, citizen_username)
+                    citizen_capacity_for_delivery = get_citizen_effective_carry_capacity(citizen_record)
+                    remaining_carry_capacity_for_delivery = citizen_capacity_for_delivery - citizen_current_load_for_delivery
+
+                    for needed_item_at_site in materials_needed_for_delivery:
+                        needed_type = needed_item_at_site['type']
+                        amount_needed_at_site_for_this_type = needed_item_at_site['amount']
+                        
+                        for item_in_citizen_inv in citizen_inventory_for_delivery_check:
+                            if item_in_citizen_inv.get("ResourceId") == needed_type and \
+                               item_in_citizen_inv.get("Owner") == target_building_owner_username and \
+                               float(item_in_citizen_inv.get("Amount", 0.0)) > 0.001:
+                                
+                                amount_citizen_has_of_this_type = float(item_in_citizen_inv.get("Amount", 0.0))
+                                amount_to_potentially_deliver_from_inv = min(amount_citizen_has_of_this_type, amount_needed_at_site_for_this_type, remaining_carry_capacity_for_delivery)
+                                
+                                if amount_to_potentially_deliver_from_inv > 0.001:
+                                    items_citizen_can_deliver_from_inventory.append({
+                                        "type": needed_type, 
+                                        "amount": amount_to_potentially_deliver_from_inv
+                                    })
+                                    remaining_carry_capacity_for_delivery -= amount_to_potentially_deliver_from_inv
+                                    log.info(f"      Citizen has {amount_to_potentially_deliver_from_inv:.2f} of {needed_type} (for site owner) to deliver from personal inventory.")
+                                    # Assume one material type from inventory is enough to trigger this path for now.
+                                    # More complex logic could try to fill capacity with multiple types.
+                                    break # Move to next needed_item_at_site
+                        if remaining_carry_capacity_for_delivery <= 0.001:
+                            break # Citizen's carry capacity is full
+
+                if items_citizen_can_deliver_from_inventory:
+                    log.info(f"    Citizen {citizen_username} has materials in inventory for site {target_building_custom_id}: {items_citizen_can_deliver_from_inventory}. Creating delivery activity.")
+                    # Path from current location (workshop) to site
+                    path_to_site_from_workshop = get_path_between_points(citizen_position, target_building_pos, transport_api_url)
+                    if path_to_site_from_workshop and path_to_site_from_workshop.get('success'):
+                        # Note: resources_to_deliver are already in citizen's inventory.
+                        # The processor will handle moving them from citizen to building.
+                        # No decrement from workshop needed here.
+                        if try_create_deliver_construction_materials_activity(
+                            tables, citizen_record, workplace_record, target_building_record,
+                            items_citizen_can_deliver_from_inventory, contract_custom_id, 
+                            path_to_site_from_workshop, current_time_utc=now_utc_dt
+                        ):
+                            log.info(f"      Created deliver_construction_materials activity for {citizen_username} to deliver from personal inventory to {target_building_custom_id}.")
+                            return True # Activity created
+                    else:
+                        log.warning(f"      Pathfinding failed for {citizen_username} to deliver from inventory to {target_building_custom_id}. Skipping this delivery option.")
+                
+                # If citizen doesn't have items or pathing failed, proceed to check workshop
+                log.info(f"    Attempting to deliver materials to site {target_building_custom_id} from workshop: {materials_needed_for_delivery}")
                 _, workshop_inventory = get_building_storage_details(tables, workplace_custom_id, workplace_operator_username)
                 deliverable_from_workshop: List[Dict[str, Any]] = []
                 materials_to_fetch_for_workshop: List[str] = []
