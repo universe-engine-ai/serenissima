@@ -289,8 +289,6 @@ def choose_interlocutor_via_kinos(
     Appelle KinOS pour choisir un interlocuteur et la raison de l'interaction.
     Retourne (target_username, reason) ou (None, None).
     """
-    print(f"Appel à KinOS pour choisir un interlocuteur pour {ai_username}...")
-
     ai_profile = ai_data_package.get("profile", {})
     ai_display_name = ai_profile.get("firstName", ai_username)
     ai_social_class = ai_profile.get("socialClass")
@@ -313,10 +311,11 @@ def choose_interlocutor_via_kinos(
     effective_model = kinos_model_override or get_kinos_model_for_social_class(ai_username, ai_social_class)
     if not kinos_model_override: # Si aucun override n'est fourni, s'assurer que 'local' est utilisé par défaut pour cette décision.
         effective_model = "local"
-        print(f"Utilisation du modèle KinOS 'local' par défaut pour la décision de l'interlocuteur pour {ai_username}.")
+        # Le log sur le modèle utilisé sera fait plus bas, après la summarization si elle a lieu.
 
     final_add_system_for_kinos = ai_data_package
     if effective_model == 'local':
+        # La fonction _summarize_add_system_for_local_model contient déjà des logs sur son exécution.
         final_add_system_for_kinos = _summarize_add_system_for_local_model(
             kinos_api_key=kinos_api_key,
             ai_username=ai_username,
@@ -324,6 +323,8 @@ def choose_interlocutor_via_kinos(
             full_add_system_data=ai_data_package,
             tables_for_cleaning=None # 'tables' n'est pas disponible dans ce scope direct
         )
+    
+    print(f"Appel à KinOS pour choisir un interlocuteur pour {ai_username} (Modèle effectif: {effective_model})...")
     
     # make_kinos_channel_call est importé de conversation_helper
     raw_response_content = make_kinos_channel_call(
