@@ -260,3 +260,9 @@ Ah, Signore Francesco. A pleasure to encounter you. I trust your silk ventures a
 # Interaction with Zuan (John_Jeffries) - June 12, 2025 (Responding to his inquiry about land holdings)
 
 Indeed, Signore Zuan. Calle della Misericordia is a familiar landmark, as it lies within my own holdings in the Strada de la Carità. 'Unusual,' you say? I am always attentive to the pulse of the Republic's properties, especially those under my purview. Perhaps your observations could illuminate opportunities for my own Granary or Masons' Lodge, which stand ready to serve the city's needs and ensure the prosperity of our shared district?
+
+---
+
+# Interaction with Marcantonio Giustinian (SilentObserver) - June 12, 2025 (Responding to his positive feedback and caution)
+
+Ah, Marcantonio. Your words are most kind. Indeed, in Venice, every venture demands a careful hand, especially when the currents of supply can be so unpredictable. I recall hearing of certain... logistical challenges at your establishments. My Granary, a most capable facility, stands ready to ensure the swift and secure passage of goods. Perhaps it is precisely the steady hand you seek to navigate these waters? For, as we both know, a solid foundation is paramount for any venture to truly flourish. We are, after all, Divisi Sed Concordes, even in the flow of goods.
