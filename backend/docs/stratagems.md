@@ -1243,18 +1243,17 @@ This would make NLR launch a "Standard" intensity reputation boost campaign for 
     -   `"Mild"`: Target isolated victims when no one else is nearby. Lower risk, potentially lower reward.
     -   `"Standard"`: Decide opportunistically based on victim vulnerability and perceived risk. Balanced risk/reward.
     -   `"Aggressive"`: Attempt muggings more frequently and with less caution, potentially targeting more lucrative but riskier victims. Higher risk, potentially higher reward.
+-   `durationDays` (integer, required): Duration of the stratagem in days (1-7). Influence cost is `durationDays * 1`.
 -   `targetLandId` (string, optional): The `LandId` of the land parcel to focus the mugging activity around. If not provided, the mugging will be opportunistic in any suitable location.
--   `name` (string, optional): Custom name for the stratagem. Defaults to "Canal Mugging ([Variant]) near [LandName]" or "Opportunistic Canal Mugging ([Variant])".
+-   `name` (string, optional): Custom name for the stratagem. Defaults to "Canal Mugging ([Variant]) near [LandName] for [Duration] days".
 -   `description` (string, optional): Custom description.
 -   `notes` (string, optional): Custom notes.
-    *Influence Cost: 3 (fixed)*
-    *Duration: 3 days (fixed)*
 
 #### How it Works (Conceptual):
 
 1.  **Creation**:
-    -   The `canal_mugging_stratagem_creator.py` validates parameters (including `variant`).
-    -   It creates a new record in the `STRATAGEMS` table with `Status: "active"`, `Category: "criminal_activity"`, an influence cost of 3, and sets `ExpiresAt` to 3 days from creation. The `TargetLand` field in Airtable will store `targetLandId`, and `Variant` field stores the chosen variant.
+    -   The `canal_mugging_stratagem_creator.py` validates parameters (including `variant` and `durationDays`).
+    -   It creates a new record in the `STRATAGEMS` table with `Status: "active"`, `Category: "criminal_activity"`, an influence cost of `durationDays * 1`, and sets `ExpiresAt` to `durationDays` from creation. The `TargetLand` field in Airtable will store `targetLandId`, `Variant` field stores the chosen variant, and `DurationDays` (or similar) stores the duration.
 
 2.  **Processing**:
     -   `processStratagems.py` picks up the active "canal_mugging" stratagem.
@@ -1285,12 +1284,13 @@ This would make NLR launch a "Standard" intensity reputation boost campaign for 
   "stratagemType": "canal_mugging",
   "stratagemDetails": {
     "variant": "Standard",
+    "durationDays": 5,
     "targetLandId": "polygon-sanpolo-0123",
-    "name": "Canal Mugging near San Polo Market (Standard)"
+    "name": "Canal Mugging near San Polo Market (Standard, 5 days)"
   }
 }
 ```
-This would make NLR attempt to mug an opportune citizen transiting by gondola in the vicinity of land parcel "polygon-sanpolo-0123" using a "Standard" approach, costing NLR 3 Influence and risking legal consequences for a potential gain of Ducats and resources. The stratagem will be active for 3 days. If `targetLandId` was omitted, it would be a general opportunistic mugging.
+This would make NLR attempt to mug an opportune citizen transiting by gondola in the vicinity of land parcel "polygon-sanpolo-0123" using a "Standard" approach. The stratagem will be active for 5 days, costing NLR 5 Influence (5 days * 1 per day) and risking legal consequences for a potential gain of Ducats and resources. If `targetLandId` was omitted, it would be a general opportunistic mugging.
 
 ### 22. Burglary
 

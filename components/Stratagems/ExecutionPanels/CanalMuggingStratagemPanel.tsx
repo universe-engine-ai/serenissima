@@ -1,10 +1,10 @@
-import React, { useState, useImperativeHandle, forwardRef, useRef, useMemo } from 'react'; // Removed useEffect
+import React, { useState, useImperativeHandle, forwardRef, useRef, useMemo } from 'react';
 import { StratagemSpecificPanelProps, StratagemSpecificPanelRef, LandOption } from './types';
-import { FaMapMarkedAlt, FaTimes, FaSkullCrossbones, FaMoon } from 'react-icons/fa';
+import { FaMapMarkedAlt, FaTimes, FaSkullCrossbones, FaMoon, FaClock } from 'react-icons/fa'; // Added FaClock
 
 type MuggingVariant = 'Mild' | 'Standard' | 'Aggressive';
 
-// VARIANT_COSTS is removed as cost is now fixed.
+const BASE_INFLUENCE_COST_PER_DAY = 1; // Define base cost per day
 
 const CanalMuggingStratagemPanel = forwardRef<StratagemSpecificPanelRef, StratagemSpecificPanelProps>((props, ref) => {
   const { stratagemData, lands, isLoading, currentUserUsername, currentUserFirstName, currentUserLastName } = props;
@@ -13,12 +13,12 @@ const CanalMuggingStratagemPanel = forwardRef<StratagemSpecificPanelRef, Stratag
   const [landSearch, setLandSearch] = useState('');
   const [isLandDropdownOpen, setIsLandDropdownOpen] = useState(false);
   const landInputRef = useRef<HTMLInputElement>(null);
+  
+  const [durationDays, setDurationDays] = useState<number>(3); // Default 3 days
   const [selectedVariant, setSelectedVariant] = useState<MuggingVariant>('Standard');
 
-  // Influence cost is now fixed from stratagemData.influenceCostBase
-  const calculatedInfluenceCost = stratagemData.influenceCostBase; 
-  
-  // useEffect for cost change is removed.
+  // Influence cost is now dynamic: durationDays * baseCostPerDay
+  const calculatedInfluenceCost = useMemo(() => durationDays * BASE_INFLUENCE_COST_PER_DAY, [durationDays]);
 
   const summaryElements = useMemo(() => {
     const executorName = (currentUserFirstName && currentUserLastName)
@@ -51,15 +51,16 @@ const CanalMuggingStratagemPanel = forwardRef<StratagemSpecificPanelRef, Stratag
 
     return (
       <>
-        <span className="font-bold">{executorName}</span> will attempt to rob citizens at night during gondola transits {targetDescription}, operating {variantDescription}. <em className="italic">(Illegal)</em>
+        <span className="font-bold">{executorName}</span> will attempt to rob citizens at night for <span className="font-bold">{durationDays} day{durationDays > 1 ? 's' : ''}</span> during gondola transits {targetDescription}, operating {variantDescription}. <em className="italic">(Illegal)</em>
       </>
     );
-  }, [targetLandId, selectedVariant, currentUserUsername, currentUserFirstName, currentUserLastName, lands]);
+  }, [targetLandId, selectedVariant, durationDays, currentUserUsername, currentUserFirstName, currentUserLastName, lands]);
 
   useImperativeHandle(ref, () => ({
     getStratagemDetails: () => {
       const details: Record<string, any> = {
         variant: selectedVariant,
+        durationDays: durationDays,
       };
       if (targetLandId) {
         details.targetLandId = targetLandId;
@@ -73,7 +74,7 @@ const CanalMuggingStratagemPanel = forwardRef<StratagemSpecificPanelRef, Stratag
 
   return (
     <div>
-      {/* Target Land Parcel Selector - Moved First */}
+      {/* Target Land Parcel Selector */}
       <div className="mb-4">
         <label htmlFor="canal_mugging_targetLand_search" className="block text-sm font-medium text-amber-800 mb-1 flex items-center">
           <FaMapMarkedAlt className="mr-2" /> Target Land Parcel (Optional)
@@ -144,7 +145,29 @@ const CanalMuggingStratagemPanel = forwardRef<StratagemSpecificPanelRef, Stratag
         </div>
       </div>
 
-      {/* Variant Selector - Moved Second */}
+      {/* Duration Slider - New Element */}
+      <div className="mb-6">
+        <label htmlFor="canal_mugging_duration" className="block text-sm font-medium text-amber-800 mb-2 flex items-center">
+          <FaClock className="mr-2" /> Duration: <span className="font-bold ml-1">{durationDays} day{durationDays > 1 ? 's' : ''}</span>
+        </label>
+        <input
+          id="canal_mugging_duration"
+          type="range"
+          min="1"
+          max="7"
+          value={durationDays}
+          onChange={(e) => setDurationDays(parseInt(e.target.value, 10))}
+          className="w-full h-2 bg-amber-200 rounded-lg appearance-none cursor-pointer accent-rose-600"
+          disabled={isLoading}
+        />
+        <div className="flex justify-between text-xs text-amber-600 mt-1">
+          <span>1 day</span>
+          <span>7 days</span>
+        </div>
+        <p className="text-xs text-amber-600 mt-1">Influence cost will be {calculatedInfluenceCost}🎭 ({durationDays} x {BASE_INFLUENCE_COST_PER_DAY} per day).</p>
+      </div>
+
+      {/* Variant Selector */}
       <div className="mb-6">
         <label className="block text-sm font-medium text-amber-800 mb-2 flex items-center">
           <FaMoon className="mr-2" /> Mugging Approach (Variant)
@@ -164,7 +187,7 @@ const CanalMuggingStratagemPanel = forwardRef<StratagemSpecificPanelRef, Stratag
               `}
               disabled={isLoading}
             >
-              {variant}🎭 {/* Removed cost display from button text */}
+              {variant}
             </button>
           ))}
         </div>

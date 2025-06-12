@@ -314,14 +314,10 @@ const StratagemExecutionPanel: React.FC<StratagemExecutionPanelProps> = ({
               }}
             />
             <p className="text-sm italic text-amber-800 mb-1 text-center">{stratagemData.description}</p>
-            <p className="text-lg font-semibold text-amber-700 mb-2 text-center">
+            <p className="text-lg font-semibold text-amber-700 mb-6 text-center"> {/* Adjusted margin */}
               Influence Cost: {currentInfluenceCost} 🎭
             </p>
-            {stratagemData.durationDays && (
-              <p className="text-sm text-amber-600 mb-6 text-center">
-                Duration: {stratagemData.durationDays} days
-              </p>
-            )}
+            {/* Static duration display removed, as it's now dynamic within the panel */}
           </div>
 
           {/* Right Column for Form */}

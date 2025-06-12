@@ -316,9 +316,9 @@ const BottomMenuBar: React.FC = () => {
           stratagemPanelData: {
             id: 'canal_mugging', type: 'canal_mugging', title: 'Canal Mugging',
             description: "Attempt to rob citizens at night during gondola transits. (Illegal)",
-            influenceCostBase: 3, // Fixed influence cost
+            influenceCostBase: 1, // Cost per day
             hasVariants: true, 
-            durationDays: 3 // Added duration
+            // durationDays is now dynamic, remove from here
           }
         },
         {

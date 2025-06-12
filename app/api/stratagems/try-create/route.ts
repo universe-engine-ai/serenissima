@@ -103,7 +103,8 @@ export async function POST(request: Request) {
     } else if (stratagemType === 'canal_mugging') {
       console.log(`[API /stratagems/try-create] Processing 'canal_mugging' stratagem with parameters:`,
         `TargetLandId: ${stratagemDetails?.targetLandId}`,
-        `Variant: ${stratagemDetails?.variant}`
+        `Variant: ${stratagemDetails?.variant}`,
+        `DurationDays: ${stratagemDetails?.durationDays}`
       );
     } else if (stratagemType === 'burglary') {
       console.log(`[API /stratagems/try-create] Processing 'burglary' stratagem with parameters:`,
