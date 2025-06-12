@@ -457,7 +457,12 @@ def _generate_kinos_message_content(
             if not attention_history_response_obj:
                  raise Exception("Échec de l'appel GET de l'historique d'attention à KinOS après tentatives.")
             
-            attention_messages_data = attention_history_response_obj.json()
+            try:
+                attention_messages_data = attention_history_response_obj.json()
+            except json.JSONDecodeError as e_json_attn:
+                log.error(f"{LogColors.FAIL}JSONDecodeError lors du parsing de l'historique d'attention pour {kin_username}: {e_json_attn}. Réponse: {attention_history_response_obj.text[:200]}{LogColors.ENDC}")
+                raise Exception(f"Échec du parsing JSON de l'historique d'attention de KinOS: {e_json_attn}") from e_json_attn # Re-lever pour que le bloc try/except externe attrape
+
             attention_assistant_messages = [msg for msg in attention_messages_data.get("messages", []) if msg.get("role") == "assistant"]
             
             if attention_assistant_messages:
@@ -541,7 +546,12 @@ def _generate_kinos_message_content(
             log.error(f"{LogColors.FAIL}Échec de l'appel GET de l'historique principal à KinOS pour {kin_username} -> {channel_username} après tentatives.{LogColors.ENDC}")
             return None
         
-        messages_data = main_history_response_obj.json()
+        try:
+            messages_data = main_history_response_obj.json()
+        except json.JSONDecodeError as e_json_main_hist:
+            log.error(f"{LogColors.FAIL}JSONDecodeError lors du parsing de l'historique principal pour {kin_username} -> {channel_username}: {e_json_main_hist}. Réponse: {main_history_response_obj.text[:200]}{LogColors.ENDC}")
+            return None # Échec de la génération du message si l'historique ne peut être parsé
+
         assistant_messages = [msg for msg in messages_data.get("messages", []) if msg.get("role") == "assistant"]
         if not assistant_messages:
             log.warning(f"{LogColors.WARNING}Aucun message d'assistant trouvé dans l'historique KinOS pour {kin_username} -> {channel_username}.{LogColors.ENDC}")

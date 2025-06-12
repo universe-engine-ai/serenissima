@@ -39,6 +39,15 @@ from backend.engine.utils.conversation_helper import _call_kinos_analysis_api
 
 log = logging.getLogger(__name__)
 
+# Helper function to safely parse JSON from requests.Response
+def _safe_response_json(response: requests.Response, context_msg: str) -> Optional[Dict]:
+    """Safely parses JSON from a requests.Response object."""
+    try:
+        return response.json()
+    except json.JSONDecodeError as e:
+        log.error(f"{LogColors.FAIL}JSONDecodeError for {context_msg}: {e}. Status: {response.status_code}. Response text (first 200 chars): {response.text[:200]}{LogColors.ENDC}")
+        return None
+
 # KINOS_API_URL_BASE = "https://api.kinos-engine.ai/v2/blueprints/serenissima-ai/kins" # Defined in relationship_helpers
 NEXT_JS_BASE_URL = os.getenv('NEXT_PUBLIC_BASE_URL', 'http://localhost:3000')
 
@@ -181,11 +190,20 @@ def process(
     log.info(f"{LogColors.PROCESS}Fetching data package for executor {executed_by_username}...{LogColors.ENDC}")
     executor_dp_response = requests.get(f"{NEXT_JS_BASE_URL}/api/get-data-package?citizenUsername={executed_by_username}", timeout=30)
     if not executor_dp_response.ok:
-        log.error(f"{LogColors.FAIL}Failed to fetch data package for executor {executed_by_username}. Status: {executor_dp_response.status_code}{LogColors.ENDC}")
+        log.error(f"{LogColors.FAIL}Failed to fetch data package for executor {executed_by_username}. Status: {executor_dp_response.status_code}, Response: {executor_dp_response.text[:200]}{LogColors.ENDC}")
         tables['stratagems'].update(stratagem_record['id'], {'Status': 'failed', 'Notes': f'Failed to fetch data for executor {executed_by_username}.'})
         return False
-    executor_data_package = executor_dp_response.json().get('data', {})
+    
+    executor_dp_json = _safe_response_json(executor_dp_response, f"executor data package for {executed_by_username}")
+    if not executor_dp_json:
+        log.error(f"{LogColors.FAIL}Failed to parse JSON for executor data package {executed_by_username}. Marking stratagem as failed.{LogColors.ENDC}")
+        tables['stratagems'].update(stratagem_record['id'], {'Status': 'failed', 'Notes': f'Failed to parse JSON data for executor {executed_by_username}.'})
+        return False
+    executor_data_package = executor_dp_json.get('data', {})
     executor_profile_for_kinos = executor_data_package.get('citizen', {})
+    if not executor_profile_for_kinos: # Check if citizen profile itself is missing after successful parse
+        log.warning(f"{LogColors.WARNING}Executor profile missing in data package for {executed_by_username}. Proceeding with empty profile.{LogColors.ENDC}")
+        executor_profile_for_kinos = {}
     executor_display_name = executor_profile_for_kinos.get('FirstName', executed_by_username)
     
     # Determine model for executor: use override if present, else default to social class
@@ -198,11 +216,20 @@ def process(
     log.info(f"{LogColors.PROCESS}Fetching data package for target {target_citizen_username}...{LogColors.ENDC}")
     target_dp_response = requests.get(f"{NEXT_JS_BASE_URL}/api/get-data-package?citizenUsername={target_citizen_username}", timeout=30)
     if not target_dp_response.ok:
-        log.error(f"{LogColors.FAIL}Failed to fetch data package for target {target_citizen_username}. Status: {target_dp_response.status_code}{LogColors.ENDC}")
+        log.error(f"{LogColors.FAIL}Failed to fetch data package for target {target_citizen_username}. Status: {target_dp_response.status_code}, Response: {target_dp_response.text[:200]}{LogColors.ENDC}")
         tables['stratagems'].update(stratagem_record['id'], {'Status': 'failed', 'Notes': f'Failed to fetch data for target {target_citizen_username}.'})
         return False
-    target_data_package = target_dp_response.json().get('data', {})
+    
+    target_dp_json = _safe_response_json(target_dp_response, f"target data package for {target_citizen_username}")
+    if not target_dp_json:
+        log.error(f"{LogColors.FAIL}Failed to parse JSON for target data package {target_citizen_username}. Marking stratagem as failed.{LogColors.ENDC}")
+        tables['stratagems'].update(stratagem_record['id'], {'Status': 'failed', 'Notes': f'Failed to parse JSON data for target {target_citizen_username}.'})
+        return False
+    target_data_package = target_dp_json.get('data', {})
     target_profile_for_kinos = target_data_package.get('citizen', {})
+    if not target_profile_for_kinos:
+        log.warning(f"{LogColors.WARNING}Target profile missing in data package for {target_citizen_username}. Proceeding with empty profile.{LogColors.ENDC}")
+        target_profile_for_kinos = {}
     target_display_name = target_profile_for_kinos.get('FirstName', target_citizen_username)
 
     # 2. Generate Core Attack Narrative (KinOS Call 1: Executor to Self)
@@ -266,10 +293,18 @@ def process(
         # Fetch related citizen's data package
         related_citizen_dp_response = requests.get(f"{NEXT_JS_BASE_URL}/api/get-data-package?citizenUsername={related_citizen_username}", timeout=30)
         if not related_citizen_dp_response.ok:
-            log.warning(f"{LogColors.WARNING}Failed to fetch data package for related citizen {related_citizen_username}. Skipping message to them.{LogColors.ENDC}")
+            log.warning(f"{LogColors.WARNING}Failed to fetch data package for related citizen {related_citizen_username}. Status: {related_citizen_dp_response.status_code}, Response: {related_citizen_dp_response.text[:200]}. Skipping message to them.{LogColors.ENDC}")
             continue
-        related_citizen_data_package = related_citizen_dp_response.json().get('data', {})
+        
+        related_citizen_dp_json = _safe_response_json(related_citizen_dp_response, f"related citizen data package for {related_citizen_username}")
+        if not related_citizen_dp_json:
+            log.warning(f"{LogColors.WARNING}Failed to parse JSON for related citizen data package {related_citizen_username}. Skipping message to them.{LogColors.ENDC}")
+            continue
+        related_citizen_data_package = related_citizen_dp_json.get('data', {})
         related_citizen_profile_for_kinos = related_citizen_data_package.get('citizen', {})
+        if not related_citizen_profile_for_kinos:
+            log.warning(f"{LogColors.WARNING}Related citizen profile missing in data package for {related_citizen_username}. Proceeding with empty profile for this interaction.{LogColors.ENDC}")
+            related_citizen_profile_for_kinos = {}
         related_citizen_display_name = related_citizen_profile_for_kinos.get('FirstName', related_citizen_username)
         
         # Construct addSystem data for KinOS (Call 2: Executor to RelatedCitizen)
