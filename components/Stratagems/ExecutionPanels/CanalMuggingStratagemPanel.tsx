@@ -29,7 +29,7 @@ const CanalMuggingStratagemPanel = forwardRef<StratagemSpecificPanelRef, Stratag
 
     return (
       <>
-        <span className="font-bold">{executorName}</span> will attempt to mug an opportune citizen during a gondola transit {targetDescription}.
+        <span className="font-bold">{executorName}</span> will attempt to mug an opportune citizen during a gondola transit {targetDescription} (illegal).
       </>
     );
   }, [targetLandId, currentUserUsername, currentUserFirstName, currentUserLastName, lands]);
@@ -51,9 +51,9 @@ const CanalMuggingStratagemPanel = forwardRef<StratagemSpecificPanelRef, Stratag
     <div>
       <div className="mb-4">
         <label htmlFor="canal_mugging_targetLand_search" className="block text-sm font-medium text-amber-800 mb-1 flex items-center">
-          <FaMapMarkedAlt className="mr-2" /> Target Land Parcel (Optional)
+          <FaMapMarkedAlt className="mr-2" /> Target Land (Recommended)
         </label>
-        <p className="text-xs text-amber-600 mb-1">If no land parcel is selected, the stratagem will target any opportune victim found by the system.</p>
+        <p className="text-xs text-amber-600 mb-1">If no land is selected, the stratagem will be deployed at a random location.</p>
         <div className="relative">
           <input
             id="canal_mugging_targetLand_search"
