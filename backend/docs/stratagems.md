@@ -947,3 +947,62 @@ This would make NLR attempt to recruit "GiovanniArtisan" away from their current
 }
 ```
 This would make NLR propose a 6-month, 50/50 spice trading joint venture to SerMarco.
+
+### 17. Financial Patronage (Coming Soon)
+
+-   **Type**: `financial_patronage`
+-   **Purpose**: To provide comprehensive financial support to promising individuals, struggling families, or loyal allies, creating deep personal bonds and long-term obligations.
+-   **Category**: `social_support`
+-   **Creator**: (To be created: `backend/engine/stratagem_creators/financial_patronage_stratagem_creator.py`)
+-   **Processor**: (To be created: `backend/engine/stratagem_processors/financial_patronage_stratagem_processor.py`)
+
+#### Parameters for Creation (`stratagemDetails` in API request):
+
+-   `targetCitizenUsername` (string, required): The username of the citizen to receive patronage.
+-   `patronageLevel` (string, optional): The level of support ("Modest", "Standard", "Generous"). Defaults to "Standard". Influences Ducats per day and relationship impact.
+-   `durationDays` (integer, optional): Duration of the patronage in days. Defaults to 90 days. (Range: 30-180 days).
+-   `name` (string, optional): Custom name for the stratagem. Defaults to "Patronage of [TargetCitizen]".
+-   `description` (string, optional): Custom description.
+-   `notes` (string, optional): Custom notes.
+
+#### How it Works (Conceptual):
+
+1.  **Creation**:
+    -   The `financial_patronage_stratagem_creator.py` validates parameters (e.g., `targetCitizenUsername` exists and is not self).
+    -   It creates a new record in the `STRATAGEMS` table with `Status: "active"`, `Category: "social_support"`, an influence cost of 25, and sets `ExpiresAt` based on `durationDays`.
+    -   The `patronageLevel` and `targetCitizenUsername` are stored in the stratagem record.
+
+2.  **Processing (Conceptual for "Coming Soon")**:
+    -   `processStratagems.py` picks up the active "financial_patronage" stratagem.
+    -   `financial_patronage_stratagem_processor.py` is invoked.
+    -   **Ducats Transfer**:
+        -   Periodically (e.g., daily), the processor transfers a set amount of Ducats from the `ExecutedBy` citizen to the `targetCitizenUsername`. The amount depends on `patronageLevel` (e.g., Modest: 5 Ducats/day, Standard: 10 Ducats/day, Generous: 20 Ducats/day).
+        -   This is recorded in the `TRANSACTIONS` table.
+    -   **Relationship Impact**:
+        -   The `TrustScore` and `StrengthScore` in the `RELATIONSHIPS` table between the `ExecutedBy` citizen and the `targetCitizenUsername` significantly increase over time. The magnitude of the increase can depend on the `patronageLevel` and the duration of the patronage.
+        -   The `targetCitizenUsername` may develop a "Loyalty" or "Gratitude" status towards the patron.
+    -   **Notifications**:
+        -   The `targetCitizenUsername` receives notifications about the financial support.
+        -   The `ExecutedBy` citizen receives notifications about the transfers and relationship improvements.
+    -   **Obligations (Future Enhancement)**:
+        -   The `targetCitizenUsername` might incur an "obligation" to the patron, which could influence their future decisions or make them more likely to support the patron in political or economic matters.
+    -   **Status & Notes**:
+        -   The stratagem remains `active` for its `durationDays`.
+        -   Notes track the total Ducats transferred and the evolving relationship scores.
+        -   If the `ExecutedBy` citizen runs out of Ducats to fulfill the patronage, the stratagem might be marked as `failed` or `suspended`.
+
+#### Example API Request to `POST /api/stratagems/try-create`:
+
+```json
+{
+  "citizenUsername": "NLR",
+  "stratagemType": "financial_patronage",
+  "stratagemDetails": {
+    "targetCitizenUsername": "StrugglingArtistAI",
+    "patronageLevel": "Standard",
+    "durationDays": 90,
+    "name": "Patronage for StrugglingArtistAI"
+  }
+}
+```
+This would make NLR provide "Standard" financial support (e.g., 10 Ducats/day) to "StrugglingArtistAI" for 90 days, costing NLR 25 Influence upfront and a total of 900 Ducats over the period, while significantly improving their relationship.
