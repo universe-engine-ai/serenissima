@@ -368,7 +368,16 @@ def _call_kinos_build_async(
             if citizen_specialty == "Painter":
                 log.info(f"  [Thread: {threading.get_ident()}] {citizen_username_log} is a Painter. Attempting to parse KinOS JSON for image generation.")
                 try:
-                    painter_json_data = json.loads(kinos_text_response)
+                    # Extract JSON block from the potentially larger kinos_text_response
+                    json_match = re.search(r'(\{[\s\S]*\})', kinos_text_response)
+                    if not json_match:
+                        log.warning(f"  [Thread: {threading.get_ident()}] No JSON block found in KinOS response for Painter {citizen_username_log}. Raw: {kinos_text_response}")
+                        raise json.JSONDecodeError("No JSON block found", kinos_text_response, 0)
+                    
+                    json_to_parse = json_match.group(1)
+                    log.debug(f"  [Thread: {threading.get_ident()}] Extracted JSON for parsing: {json_to_parse[:200]}...")
+                    painter_json_data = json.loads(json_to_parse)
+                    
                     ideogram_prompt = painter_json_data.get("ideogram_prompt")
                     artwork_name = painter_json_data.get("artwork_name")
                     aspect_ratio = painter_json_data.get("aspect_ratio")
