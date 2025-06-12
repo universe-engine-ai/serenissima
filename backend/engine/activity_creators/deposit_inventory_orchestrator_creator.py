@@ -77,15 +77,49 @@ def try_create_deposit_inventory_orchestrator(
 
     for item_stack in inventory:
         resource_id = item_stack.get("ResourceId")
+        item_owner = item_stack.get("Owner") # Owner of the item stack in citizen's inventory
         if not resource_id: continue
 
+        deposited_this_item = False
+
+        # Prioritize depositing client-owned materials to their construction site
+        if item_owner and item_owner != citizen_username:
+            log.debug(f"  Item {resource_id} (owned by {item_owner}) in {citizen_username}'s inventory. Checking for construction project delivery.")
+            # Find active construction_project where citizen is the Seller and item_owner is the Buyer
+            construction_project_formula = (
+                f"AND({{Type}}='construction_project', "
+                f"{{Seller}}='{_escape_airtable_value(citizen_username)}', "
+                f"{{Buyer}}='{_escape_airtable_value(item_owner)}', "
+                f"NOT(OR({{Status}}='completed', {{Status}}='failed', {{Status}}='cancelled')))"
+            )
+            try:
+                active_projects_for_item_owner = tables['contracts'].all(formula=construction_project_formula)
+                if active_projects_for_item_owner:
+                    project_contract = active_projects_for_item_owner[0] # Assume first active project
+                    construction_site_id = project_contract['fields'].get('BuyerBuilding')
+                    
+                    if construction_site_id:
+                        if construction_site_id not in deposits_by_location:
+                            deposits_by_location[construction_site_id] = []
+                        deposits_by_location[construction_site_id].append(item_stack)
+                        deposited_this_item = True
+                        log.info(f"  Item {resource_id} (owned by {item_owner}) assigned to construction site {construction_site_id} via contract {project_contract['fields'].get('ContractId', project_contract['id'])}.")
+                    else:
+                        log.warning(f"  Construction project {project_contract['fields'].get('ContractId', project_contract['id'])} found for item {resource_id} (owner: {item_owner}), but no BuyerBuilding (site ID).")
+            except Exception as e_contract_search:
+                log.error(f"  Error searching for construction projects for item {resource_id} (owner: {item_owner}): {e_contract_search}")
+
+        if deposited_this_item:
+            continue # Move to the next item_stack in inventory, this one is handled
+
+        # Original generic deposit logic if not handled by client-project logic above
         res_def = resource_defs.get(resource_id, {})
         res_category = res_def.get("category", "default").lower()
         
         # Determine preferred deposit locations based on category
         preferred_location_types = RESOURCE_CATEGORIES_FOR_DEPOSIT.get(res_category, RESOURCE_CATEGORIES_FOR_DEPOSIT["default"])
         
-        deposited_this_item = False
+        # deposited_this_item was reset at the start of the item_stack loop
         for loc_type in preferred_location_types:
             target_building_record: Optional[Dict] = None
             if loc_type == "home" and home_record:
