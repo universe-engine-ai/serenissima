@@ -200,8 +200,8 @@ const StratagemExecutionPanel: React.FC<StratagemExecutionPanelProps> = ({
 
       if (response.ok) { // HTTP request to Next.js API was okay
         // result is StratagemEngineResponse from Python
-        if (result.success && (!result.processing_status || ["success", "not_applicable", "pending_processing"].includes(result.processing_status))) {
-          // Python engine reported overall success AND processing was fine or not yet applicable/pending
+        if (result.success && (!result.processing_status || ["success", "not_applicable", "pending_processing", "initiated_background"].includes(result.processing_status))) {
+          // Python engine reported overall success AND processing was fine or not yet applicable/pending/initiated_background
           let successMsg = `Stratagem "${stratagemData.title}" initiated (ID: ${result.stratagem_id_custom || result.stratagem_id_airtable}).`;
           if (result.processing_status) successMsg += ` Processing: ${result.processing_status}.`;
           if (result.processing_notes) successMsg += ` Notes: ${result.processing_notes}.`;
