@@ -1239,33 +1239,32 @@ This would make NLR launch a "Standard" intensity reputation boost campaign for 
 
 #### Parameters for Creation (`stratagemDetails` in API request):
 
--   `targetCitizenUsername` (string, optional): The username of the citizen to target. If not provided, the processor will attempt to find an opportune victim.
--   `name` (string, optional): Custom name for the stratagem. Defaults to "Canal Ambush on [TargetCitizen]" or "Opportunistic Canal Ambush".
+-   `targetLandId` (string, optional): The `LandId` of the land parcel to focus the mugging activity around. If not provided, the mugging will be opportunistic in any suitable location.
+-   `name` (string, optional): Custom name for the stratagem. Defaults to "Canal Mugging near [LandName]" or "Opportunistic Canal Mugging".
 -   `description` (string, optional): Custom description.
 -   `notes` (string, optional): Custom notes.
-    *Note: `targetActivityId` is not directly set by the panel; the processor will handle opportunity identification.*
 
 #### How it Works (Conceptual):
 
 1.  **Creation**:
     -   The `canal_mugging_stratagem_creator.py` validates parameters.
-    -   It creates a new record in the `STRATAGEMS` table with `Status: "active"`, `Category: "criminal_activity"`, an influence cost of 3, and sets `ExpiresAt` (e.g., 24-48 hours to find an opportunity).
+    -   It creates a new record in the `STRATAGEMS` table with `Status: "active"`, `Category: "criminal_activity"`, an influence cost of 3, and sets `ExpiresAt` (e.g., 24-48 hours to find an opportunity). The `TargetLand` field in Airtable will store `targetLandId`.
 
 2.  **Processing**:
     -   `processStratagems.py` picks up the active "canal_mugging" stratagem.
     -   `canal_mugging_stratagem_processor.py` is invoked.
     -   **Opportunity Identification**:
-        -   The processor monitors the `targetCitizenUsername`'s activities.
-        -   If `targetActivityId` is provided, it checks if that activity is ongoing and uses gondola.
-        -   If not, it looks for an active or soon-to-start `goto_location` (or similar travel) activity by the `targetCitizenUsername` where `TransportMode` is "gondola".
+        -   If `TargetLandId` is specified, the processor might prioritize looking for victims traveling by gondola near or through canals adjacent to this land parcel.
+        -   If no `TargetLandId` is specified, or if no opportunities are found near the specified land, it looks for any suitable gondola travel activity by any vulnerable citizen anywhere.
+        -   The processor identifies a vulnerable citizen (e.g., based on wealth, lack of escort, current activity).
     -   **Interception & Robbery**:
-        -   If a suitable gondola travel activity is identified:
-            -   A `problem` record of type `mugging_incident` is created for the `targetCitizenUsername`.
-            -   **Ducats Loss**: The `targetCitizenUsername` loses a random amount of Ducats (e.g., 200-800). This is transferred to the `ExecutedBy` citizen (minus a cut for the "thugs").
-            -   **Resource Theft**: There's a small chance (e.g., 10-25%) that some resources carried by the `targetCitizenUsername` are stolen. The type and amount would be random or based on what they are carrying. These resources are added to the `ExecutedBy` citizen's inventory.
-            -   The travel activity of the `targetCitizenUsername` might be interrupted or delayed.
+        -   If a suitable victim and opportunity are identified:
+            -   A `problem` record of type `mugging_incident` is created for the victim.
+            -   **Ducats Loss**: The victim loses a random amount of Ducats (e.g., 200-800). This is transferred to the `ExecutedBy` citizen (minus a cut for the "thugs").
+            -   **Resource Theft**: There's a small chance (e.g., 10-25%) that some resources carried by the victim are stolen. These are added to the `ExecutedBy` citizen's inventory.
+            -   The victim's travel activity might be interrupted or delayed.
     -   **Relationship & Legal Impact**:
-        -   Significant negative impact on the relationship between `ExecutedBy` and `targetCitizenUsername` if discovered.
+        -   Significant negative impact on the relationship between `ExecutedBy` and the victim if discovered.
         -   High risk of creating a `problem` of type `criminal_investigation` targeting the `ExecutedBy` citizen, potentially leading to fines or other penalties if caught.
     -   **Status & Notes**:
         -   The stratagem is marked `executed` after a successful mugging attempt or `failed` if no opportunity arises before `ExpiresAt`.
@@ -1278,12 +1277,12 @@ This would make NLR launch a "Standard" intensity reputation boost campaign for 
   "citizenUsername": "NLR",
   "stratagemType": "canal_mugging",
   "stratagemDetails": {
-    "targetCitizenUsername": "WealthyMerchantAI",
-    "name": "Canal Ambush on WealthyMerchantAI"
+    "targetLandId": "polygon-sanpolo-0123",
+    "name": "Canal Mugging near San Polo Market"
   }
 }
 ```
-This would make NLR attempt to mug "WealthyMerchantAI" during one of their gondola travels, costing NLR 3 Influence and risking legal consequences for a potential gain of Ducats and resources.
+This would make NLR attempt to mug an opportune citizen transiting by gondola in the vicinity of land parcel "polygon-sanpolo-0123", costing NLR 3 Influence and risking legal consequences for a potential gain of Ducats and resources. If `targetLandId` was omitted, it would be a general opportunistic mugging.
 
 ### 22. Burglary
 

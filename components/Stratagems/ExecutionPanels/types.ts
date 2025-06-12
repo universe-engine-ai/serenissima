@@ -16,6 +16,14 @@ export interface CitizenOption {
   socialClass?: string;
 }
 
+export interface LandOption {
+  landId: string;
+  historicalName?: string;
+  englishName?: string;
+  owner?: string;
+  district?: string;
+}
+
 export interface BuildingOption {
   buildingId: string;
   name?: string;
@@ -36,6 +44,7 @@ export interface StratagemSpecificPanelProps {
   currentUserFirstName?: string; // Ajouté
   currentUserLastName?: string;  // Ajouté
   citizens: CitizenOption[];
+  lands: LandOption[]; // Added lands
   buildings: BuildingOption[];
   resourceTypes: ResourceTypeOption[];
   isLoading: boolean;

@@ -24,6 +24,7 @@ const StratagemExecutionPanel: React.FC<StratagemExecutionPanelProps> = ({
   const currentUserUsername = citizenProfile?.username;
 
   const [citizens, setCitizens] = useState<CitizenOption[]>([]);
+  const [lands, setLands] = useState<LandOption[]>([]); // Added lands state
   const [buildings, setBuildings] = useState<BuildingOption[]>([]);
   const [resourceTypes, setResourceTypes] = useState<ResourceTypeOption[]>([]);
   
@@ -36,7 +37,7 @@ const StratagemExecutionPanel: React.FC<StratagemExecutionPanelProps> = ({
   const specificPanelRef = useRef<StratagemSpecificPanelRef>(null);
 
   const fetchDropdownData = useCallback(async () => {
-    if (!isOpen || (citizens.length && buildings.length && resourceTypes.length)) return; // Ne pas recharger si déjà chargé
+    if (!isOpen || (citizens.length && lands.length && buildings.length && resourceTypes.length)) return; // Ne pas recharger si déjà chargé
     setIsLoading(true);
     try {
       // Fetch Citizens
@@ -63,6 +64,32 @@ const StratagemExecutionPanel: React.FC<StratagemExecutionPanelProps> = ({
         console.error('Failed to fetch citizens, status:', citizensRes.status);
         setErrorResult(prev => prev ? `${prev}\nFailed to load citizen list (status: ${citizensRes.status}).` : `Failed to load citizen list (status: ${citizensRes.status}).`);
         setCitizens([]);
+      }
+
+      // Fetch Lands
+      const landsRes = await fetch('/api/lands');
+      if (landsRes.ok) {
+        const landsData = await landsRes.json();
+        // Assuming API returns { success: true, lands: [...] } or similar
+        // and each land object matches LandOption structure or can be mapped.
+        if (landsData && landsData.success && Array.isArray(landsData.lands)) {
+          const formattedLands = landsData.lands.map((l: any) => ({
+            landId: l.landId || l.polygonId, // Use landId, fallback to polygonId
+            historicalName: l.historicalName,
+            englishName: l.englishName,
+            owner: l.owner,
+            district: l.district,
+          }));
+          setLands(formattedLands);
+        } else {
+          console.error('Failed to fetch lands: landsData.lands is not an array or request failed. Received:', landsData);
+          setErrorResult(prev => prev ? `${prev}\nFailed to load land list (invalid format).` : 'Failed to load land list (invalid format).');
+          setLands([]);
+        }
+      } else {
+        console.error('Failed to fetch lands, status:', landsRes.status);
+        setErrorResult(prev => prev ? `${prev}\nFailed to load land list (status: ${landsRes.status}).` : `Failed to load land list (status: ${landsRes.status}).`);
+        setLands([]);
       }
 
       // Fetch Buildings
@@ -301,6 +328,7 @@ const StratagemExecutionPanel: React.FC<StratagemExecutionPanelProps> = ({
               currentUserFirstName={citizenProfile?.firstName}
               currentUserLastName={citizenProfile?.lastName}
               citizens={citizens}
+              lands={lands} // Pass lands
               buildings={buildings}
               resourceTypes={resourceTypes}
               isLoading={isLoading}

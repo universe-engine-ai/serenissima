@@ -1,14 +1,14 @@
 import React, { useState, useImperativeHandle, forwardRef, useRef, useMemo } from 'react';
-import { StratagemSpecificPanelProps, StratagemSpecificPanelRef, CitizenOption } from './types';
-import { FaUserShield, FaTimes, FaSkullCrossbones } from 'react-icons/fa';
+import { StratagemSpecificPanelProps, StratagemSpecificPanelRef, LandOption } from './types'; // Removed CitizenOption, Added LandOption
+import { FaMapMarkedAlt, FaTimes, FaSkullCrossbones } from 'react-icons/fa'; // Changed FaUserShield to FaMapMarkedAlt
 
 const CanalMuggingStratagemPanel = forwardRef<StratagemSpecificPanelRef, StratagemSpecificPanelProps>((props, ref) => {
-  const { stratagemData, citizens, isLoading, currentUserUsername, currentUserFirstName, currentUserLastName } = props;
+  const { stratagemData, lands, isLoading, currentUserUsername, currentUserFirstName, currentUserLastName } = props; // Changed citizens to lands
 
-  const [targetCitizenUsername, setTargetCitizenUsername] = useState<string | null>(null);
-  const [citizenSearch, setCitizenSearch] = useState('');
-  const [isCitizenDropdownOpen, setIsCitizenDropdownOpen] = useState(false);
-  const citizenInputRef = useRef<HTMLInputElement>(null);
+  const [targetLandId, setTargetLandId] = useState<string | null>(null);
+  const [landSearch, setLandSearch] = useState('');
+  const [isLandDropdownOpen, setIsLandDropdownOpen] = useState(false);
+  const landInputRef = useRef<HTMLInputElement>(null);
 
   const calculatedInfluenceCost = stratagemData.influenceCostBase;
 
@@ -19,30 +19,27 @@ const CanalMuggingStratagemPanel = forwardRef<StratagemSpecificPanelRef, Stratag
 
     let targetDescription: JSX.Element | string;
 
-    if (targetCitizenUsername) {
-      const citizen = citizens.find(c => c.username === targetCitizenUsername);
-      const citizenDisplayName = (citizen?.firstName && citizen?.lastName)
-        ? `${citizen.firstName} ${citizen.lastName} (${citizen.username})`
-        : citizen?.username || targetCitizenUsername;
-      targetDescription = <>citizen <span className="font-bold">{citizenDisplayName}</span></>;
+    if (targetLandId) {
+      const land = lands.find(l => l.landId === targetLandId);
+      const landDisplayName = land?.englishName || land?.historicalName || targetLandId;
+      targetDescription = <>in the vicinity of land parcel <span className="font-bold">{landDisplayName}</span></>;
     } else {
-      targetDescription = <span className="font-bold">an opportune citizen</span>;
+      targetDescription = <span className="font-bold">any opportune location</span>;
     }
 
     return (
       <>
-        <span className="font-bold">{executorName}</span> will attempt to mug {targetDescription} during a gondola transit.
+        <span className="font-bold">{executorName}</span> will attempt to mug an opportune citizen during a gondola transit {targetDescription}.
       </>
     );
-  }, [targetCitizenUsername, currentUserUsername, currentUserFirstName, currentUserLastName, citizens]);
+  }, [targetLandId, currentUserUsername, currentUserFirstName, currentUserLastName, lands]);
 
   useImperativeHandle(ref, () => ({
     getStratagemDetails: () => {
       const details: Record<string, any> = {};
-      if (targetCitizenUsername) {
-        details.targetCitizenUsername = targetCitizenUsername;
+      if (targetLandId) {
+        details.targetLandId = targetLandId;
       }
-      // targetActivityId is not selected in this panel, will be handled by processor if needed
       return details;
     },
     getCalculatedInfluenceCost: () => {
@@ -53,34 +50,34 @@ const CanalMuggingStratagemPanel = forwardRef<StratagemSpecificPanelRef, Stratag
   return (
     <div>
       <div className="mb-4">
-        <label htmlFor="canal_mugging_targetCitizen_search" className="block text-sm font-medium text-amber-800 mb-1 flex items-center">
-          <FaUserShield className="mr-2" /> Target Citizen (Optional)
+        <label htmlFor="canal_mugging_targetLand_search" className="block text-sm font-medium text-amber-800 mb-1 flex items-center">
+          <FaMapMarkedAlt className="mr-2" /> Target Land Parcel (Optional)
         </label>
-        <p className="text-xs text-amber-600 mb-1">If no citizen is selected, the stratagem will target the next opportune victim found by the system.</p>
+        <p className="text-xs text-amber-600 mb-1">If no land parcel is selected, the stratagem will target any opportune victim found by the system.</p>
         <div className="relative">
           <input
-            id="canal_mugging_targetCitizen_search"
+            id="canal_mugging_targetLand_search"
             type="text"
-            ref={citizenInputRef}
-            value={citizenSearch}
+            ref={landInputRef}
+            value={landSearch}
             onChange={(e) => {
-              setCitizenSearch(e.target.value);
-              if (!isCitizenDropdownOpen) setIsCitizenDropdownOpen(true);
-              if (targetCitizenUsername) setTargetCitizenUsername(null);
+              setLandSearch(e.target.value);
+              if (!isLandDropdownOpen) setIsLandDropdownOpen(true);
+              if (targetLandId) setTargetLandId(null);
             }}
-            onFocus={() => setIsCitizenDropdownOpen(true)}
-            onBlur={() => setTimeout(() => setIsCitizenDropdownOpen(false), 150)}
-            placeholder={targetCitizenUsername ? citizens.find(c => c.username === targetCitizenUsername)?.username || 'Search...' : 'Search Citizens (or leave blank)...'}
+            onFocus={() => setIsLandDropdownOpen(true)}
+            onBlur={() => setTimeout(() => setIsLandDropdownOpen(false), 150)}
+            placeholder={targetLandId ? lands.find(l => l.landId === targetLandId)?.englishName || lands.find(l => l.landId === targetLandId)?.historicalName || 'Search...' : 'Search Land Parcels (or leave blank)...'}
             className="w-full p-2 border border-amber-300 rounded-md bg-white text-amber-900 focus:ring-amber-500 focus:border-amber-500"
             disabled={isLoading}
           />
-          {targetCitizenUsername && (
+          {targetLandId && (
             <button
               type="button"
               onClick={() => {
-                setTargetCitizenUsername(null);
-                setCitizenSearch('');
-                citizenInputRef.current?.focus();
+                setTargetLandId(null);
+                setLandSearch('');
+                landInputRef.current?.focus();
               }}
               className="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-400 hover:text-gray-600"
               aria-label="Clear selection"
@@ -88,29 +85,28 @@ const CanalMuggingStratagemPanel = forwardRef<StratagemSpecificPanelRef, Stratag
               <FaTimes />
             </button>
           )}
-          {isCitizenDropdownOpen && (
+          {isLandDropdownOpen && (
             <ul className="absolute z-10 w-full bg-white border border-amber-300 rounded-md mt-1 shadow-lg max-h-60 overflow-y-auto">
-              {citizens
-                .filter(c => c.username !== currentUserUsername) // Exclude self
-                .filter(c => {
-                  const searchTermLower = citizenSearch.toLowerCase();
-                  const namePart = [c.firstName, c.lastName].filter(Boolean).join(' ').toLowerCase();
-                  return (c.username && c.username.toLowerCase().includes(searchTermLower)) ||
-                         namePart.includes(searchTermLower) ||
-                         (c.socialClass && c.socialClass.toLowerCase().includes(searchTermLower));
+              {lands
+                .filter(l => {
+                  const searchTermLower = landSearch.toLowerCase();
+                  return (l.landId && l.landId.toLowerCase().includes(searchTermLower)) ||
+                         (l.englishName && l.englishName.toLowerCase().includes(searchTermLower)) ||
+                         (l.historicalName && l.historicalName.toLowerCase().includes(searchTermLower)) ||
+                         (l.district && l.district.toLowerCase().includes(searchTermLower)) ||
+                         (l.owner && l.owner.toLowerCase().includes(searchTermLower));
                 })
-                .map((c, index) => {
-                  const namePart = [c.firstName, c.lastName].filter(Boolean).join(' ');
-                  const citizenMainIdentifier = namePart ? `${namePart} (${c.username || 'ID Manquant'})` : (c.username || '');
-                  const socialClassDisplay = c.socialClass || 'N/A';
-                  const finalDisplayString = citizenMainIdentifier ? `${citizenMainIdentifier} - ${socialClassDisplay}` : `[Citoyen Inconnu] - ${socialClassDisplay}`;
+                .map((l, index) => {
+                  const displayName = l.englishName || l.historicalName || l.landId;
+                  const districtDisplay = l.district || 'N/A';
+                  const finalDisplayString = `${displayName} (District: ${districtDisplay}, Owner: ${l.owner || 'Unowned'})`;
                   return (
                     <li
-                      key={`canal-mugging-citizen-opt-${c.username || index}`}
+                      key={`canal-mugging-land-opt-${l.landId || index}`}
                       onClick={() => {
-                        setTargetCitizenUsername(c.username || null);
-                        setCitizenSearch(finalDisplayString);
-                        setIsCitizenDropdownOpen(false);
+                        setTargetLandId(l.landId || null);
+                        setLandSearch(finalDisplayString);
+                        setIsLandDropdownOpen(false);
                       }}
                       className="p-2 hover:bg-amber-100 cursor-pointer text-amber-800"
                     >
