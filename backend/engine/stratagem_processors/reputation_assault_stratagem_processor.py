@@ -33,6 +33,9 @@ from backend.engine.utils.relationship_helpers import (
     _store_message_via_api, # Helper to store message
     _rh_get_kinos_model_for_citizen # Helper to get model based on social class
 )
+# Import the new analysis helper
+from backend.engine.utils.conversation_helper import _call_kinos_analysis_api
+
 
 log = logging.getLogger(__name__)
 
@@ -302,6 +305,59 @@ def process(
                 message_type="stratagem_smear_message" # Specific message type
             ):
                 messages_sent_count += 1
+                
+                # --- Trust Impact Analysis via KinOS ---
+                log.info(f"{LogColors.PROCESS}Attempting trust impact analysis for {related_citizen_username} regarding message about {target_citizen_username} from {executed_by_username}.{LogColors.ENDC}")
+                
+                # related_citizen_data_package is already fetched and available
+                # related_citizen_profile_for_kinos is also available
+                
+                model_for_related_citizen = _rh_get_kinos_model_for_citizen(related_citizen_profile_for_kinos.get("SocialClass"))
+                
+                analysis_prompt = (
+                    f"You are {related_citizen_display_name}. You just received the following message from {executor_display_name} regarding {target_display_name}: '{cleaned_smear_message}'. "
+                    f"Considering your personality, your relationship with both individuals ({executor_display_name} and {target_display_name}), and all information in your data package (provided in addSystem), "
+                    f"how does this message impact your trust in {target_display_name}? "
+                    f"Please respond ONLY with a JSON object in the format: {{\"trustChange\": <value>}}, where <value> is an integer between -25 (strong negative impact, e.g., you believe the smear) and +5 (slight positive impact or no negative impact, e.g., you dismiss the smear or it backfires on the sender)."
+                )
+                
+                analysis_response_str = _call_kinos_analysis_api(
+                    kinos_api_key,
+                    related_citizen_username, # The Kin performing the analysis
+                    analysis_prompt,
+                    related_citizen_data_package, # Their own data package as context
+                    model_for_related_citizen
+                )
+                
+                trust_change_value = -5.0 # Default impact if analysis fails or provides invalid data
+
+                if analysis_response_str:
+                    try:
+                        analysis_json = json.loads(analysis_response_str)
+                        extracted_change = analysis_json.get("trustChange")
+                        if isinstance(extracted_change, (int, float)):
+                            trust_change_value = float(max(-25.0, min(5.0, extracted_change))) # Clamp value
+                            log.info(f"{LogColors.PROCESS}Trust impact analysis for {related_citizen_username} on {target_citizen_username}: AI assessed change = {trust_change_value} (original from AI: {extracted_change}){LogColors.ENDC}")
+                        else:
+                            log.warning(f"{LogColors.WARNING}Trust impact analysis for {related_citizen_username}: 'trustChange' key missing or not a number in JSON response: {analysis_response_str}. Using default impact: {trust_change_value}{LogColors.ENDC}")
+                    except json.JSONDecodeError:
+                        log.warning(f"{LogColors.WARNING}Trust impact analysis for {related_citizen_username}: Failed to parse JSON response: '{analysis_response_str[:100]}...'. Using default impact: {trust_change_value}{LogColors.ENDC}")
+                else:
+                    log.warning(f"{LogColors.WARNING}Trust impact analysis for {related_citizen_username}: No response from KinOS analysis API. Using default impact: {trust_change_value}{LogColors.ENDC}")
+
+                # Update trust score between related_citizen and target_citizen
+                update_trust_score_for_activity(
+                    tables,
+                    related_citizen_username, # Citizen1 (whose trust is affected)
+                    target_citizen_username,  # Citizen2 (the target of the smear)
+                    trust_change_value,       # The impact amount
+                    activity_type_for_notes=f"reputation_assault_trust_impact",
+                    success=True, # The assessment itself was "successful" in terms of process
+                    notes_detail=f"AI_assessed_impact_on_{related_citizen_username}_by_smear_from_{executed_by_username}_re_{target_citizen_username}. AI_raw_resp: {analysis_response_str[:50] if analysis_response_str else 'N/A'}",
+                    activity_record_for_kinos=None # IMPORTANT: Pass None to prevent recursive dialogue
+                )
+                log.info(f"{LogColors.PROCESS}Trust score between {related_citizen_username} and {target_citizen_username} updated by {trust_change_value} based on AI analysis.{LogColors.ENDC}")
+                # --- End Trust Impact Analysis ---
             else:
                 log.warning(f"{LogColors.WARNING}Failed to store generated smear message to {related_citizen_username} for stratagem {stratagem_id}.{LogColors.ENDC}")
         else:

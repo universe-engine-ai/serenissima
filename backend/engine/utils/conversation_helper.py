@@ -321,6 +321,71 @@ def make_kinos_channel_call(
         log.error(f"Error in make_kinos_channel_call for {speaker_username} to {channel_name}: {e}", exc_info=True)
     return None
 
+def _call_kinos_analysis_api(
+    kinos_api_key: str,
+    kin_username: str, # The Kin performing the analysis
+    message_prompt: str,
+    add_system_data: Optional[Dict] = None,
+    model_override: Optional[str] = None,
+    min_files: int = 4, # Default from docs
+    max_files: int = 8  # Default from docs
+) -> Optional[str]: # Returns the analysis response content string or None
+    """Makes a call to the KinOS Engine /analysis endpoint."""
+    analysis_url = f"{KINOS_API_CHANNEL_BASE_URL}/blueprints/{KINOS_BLUEPRINT_ID}/kins/{kin_username}/analysis"
+    headers = {"Authorization": f"Bearer {kinos_api_key}", "Content-Type": "application/json"}
+    
+    payload: Dict[str, Any] = {
+        "message": message_prompt,
+        "min_files": min_files,
+        "max_files": max_files,
+        "stream": False # Non-streaming for direct JSON response
+    }
+    
+    if add_system_data:
+        try:
+            payload["addSystem"] = json.dumps(add_system_data)
+        except TypeError as te:
+            log.error(f"Error serializing addSystem data for KinOS analysis call: {te}. Sending without addSystem.")
+    
+    if model_override:
+        payload["model"] = model_override
+        log.info(f"Using KinOS model override '{model_override}' for analysis call by {kin_username}.")
+    else:
+        # Default model for analysis if not overridden (can be set here or rely on KinOS default)
+        # For consistency with other calls, let's allow it to use KinOS default if not specified.
+        # payload["model"] = "gemini/gemini-2.5-flash-preview-05-20" # Example default
+        pass
+
+
+    try:
+        log.info(f"Sending request to KinOS analysis for kin {kin_username}...")
+        log.info(f"{LogColors.LIGHTBLUE}KinOS Analysis Prompt for {kin_username}:\n{message_prompt}{LogColors.ENDC}")
+        if add_system_data:
+            log.debug(f"KinOS Analysis addSystem keys: {list(add_system_data.keys())}")
+
+        response = requests.post(analysis_url, headers=headers, json=payload, timeout=DEFAULT_TIMEOUT_SECONDS)
+        response.raise_for_status()
+        
+        analysis_response_data = response.json()
+        
+        # Expected structure: {"status": "completed", "response": "..."}
+        if analysis_response_data.get("status") == "completed" and "response" in analysis_response_data:
+            ai_response_content = analysis_response_data.get("response")
+            log.info(f"Received KinOS analysis response for kin {kin_username}. Length: {len(ai_response_content) if ai_response_content else 0}")
+            log.info(f"{LogColors.LIGHTBLUE}Full KinOS raw analysis response content for {kin_username}:\n{ai_response_content}{LogColors.ENDC}")
+            return ai_response_content
+        else:
+            log.warning(f"KinOS analysis response for {kin_username} not 'completed' or missing 'response'. Status: {analysis_response_data.get('status')}, Response: {analysis_response_data}")
+            return None
+
+    except requests.exceptions.RequestException as e:
+        log.error(f"KinOS API analysis request error for {kin_username}: {e}", exc_info=True)
+        if hasattr(e, 'response') and e.response is not None:
+            log.error(f"KinOS error response content: {e.response.text[:500]}")
+    except Exception as e:
+        log.error(f"Error in _call_kinos_analysis_api for {kin_username}: {e}", exc_info=True)
+    return None
+
 # --- Main Conversation Turn Generator ---
 
 def generate_conversation_turn(
