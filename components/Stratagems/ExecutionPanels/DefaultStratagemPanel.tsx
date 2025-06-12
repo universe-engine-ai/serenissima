@@ -2,7 +2,8 @@ import React, { useImperativeHandle, forwardRef } from 'react';
 import { StratagemSpecificPanelProps, StratagemSpecificPanelRef } from './types';
 
 const DefaultStratagemPanel = forwardRef<StratagemSpecificPanelRef, StratagemSpecificPanelProps>((props, ref) => {
-  const { stratagemData } = props;
+  const { stratagemData, currentUserFirstName, currentUserLastName } = props;
+  // currentUserFirstName et currentUserLastName ne sont pas utilisés ici, mais sont acceptés pour la cohérence du type.
 
   useImperativeHandle(ref, () => ({
     getStratagemDetails: () => {

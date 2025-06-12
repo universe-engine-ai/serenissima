@@ -33,6 +33,8 @@ export interface ResourceTypeOption {
 export interface StratagemSpecificPanelProps {
   stratagemData: StratagemData;
   currentUserUsername: string | null;
+  currentUserFirstName?: string; // Ajouté
+  currentUserLastName?: string;  // Ajouté
   citizens: CitizenOption[];
   buildings: BuildingOption[];
   resourceTypes: ResourceTypeOption[];

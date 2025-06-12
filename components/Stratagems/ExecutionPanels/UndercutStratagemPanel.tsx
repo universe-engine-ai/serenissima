@@ -3,7 +3,8 @@ import { StratagemSpecificPanelProps, StratagemSpecificPanelRef, StratagemData, 
 import { FaUserShield, FaBuilding, FaBoxOpen, FaTimes } from 'react-icons/fa';
 
 const UndercutStratagemPanel = forwardRef<StratagemSpecificPanelRef, StratagemSpecificPanelProps>((props, ref) => {
-  const { stratagemData, citizens, buildings, resourceTypes, isLoading, currentUserUsername } = props;
+  const { stratagemData, citizens, buildings, resourceTypes, isLoading, currentUserUsername, currentUserFirstName, currentUserLastName } = props;
+  // currentUserFirstName et currentUserLastName ne sont pas utilisés ici, mais sont acceptés pour la cohérence du type.
 
   const [selectedVariant, setSelectedVariant] = useState<'Mild' | 'Standard' | 'Aggressive'>('Standard');
   

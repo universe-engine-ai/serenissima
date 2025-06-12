@@ -1,9 +1,9 @@
-import React, { useState, useImperativeHandle, forwardRef, useRef } from 'react';
+import React, { useState, useImperativeHandle, forwardRef, useRef, useMemo } from 'react';
 import { StratagemSpecificPanelProps, StratagemSpecificPanelRef, CitizenOption, ResourceTypeOption, BuildingOption } from './types';
-import { FaUserShield, FaBuilding, FaBoxOpen, FaTimes } from 'react-icons/fa';
+import { FaUserShield, FaBuilding, FaBoxOpen, FaTimes, FaInfoCircle } from 'react-icons/fa';
 
 const CoordinatePricingStratagemPanel = forwardRef<StratagemSpecificPanelRef, StratagemSpecificPanelProps>((props, ref) => {
-  const { stratagemData, citizens, buildings, resourceTypes, isLoading, currentUserUsername } = props;
+  const { stratagemData, citizens, buildings, resourceTypes, isLoading, currentUserUsername, currentUserFirstName, currentUserLastName } = props;
 
   // States for Target Resource Type
   const [targetResourceType, setTargetResourceType] = useState<string | null>(null);
@@ -25,6 +25,33 @@ const CoordinatePricingStratagemPanel = forwardRef<StratagemSpecificPanelRef, St
   
   // Ce stratagème n'a pas de variantes affectant le coût de base de l'influence via le panneau.
   const calculatedInfluenceCost = stratagemData.influenceCostBase;
+
+  const summarySentence = useMemo(() => {
+    if (!targetResourceType) {
+      return null;
+    }
+
+    const executorName = (currentUserFirstName && currentUserLastName)
+      ? `${currentUserFirstName} ${currentUserLastName}`
+      : currentUserUsername || "You";
+
+    const resourceName = resourceTypes.find(rt => rt.id === targetResourceType)?.name || targetResourceType;
+    let targetDescription = `the general market average for ${resourceName}`;
+
+    if (targetCitizen) {
+      const citizen = citizens.find(c => c.username === targetCitizen);
+      const citizenDisplayName = (citizen?.firstName && citizen?.lastName)
+        ? `${citizen.firstName} ${citizen.lastName}`
+        : citizen?.username || targetCitizen;
+      targetDescription = `the prices of ${citizenDisplayName} for ${resourceName}`;
+    } else if (targetBuilding) {
+      const building = buildings.find(b => b.buildingId === targetBuilding);
+      const buildingDisplayName = building?.name || targetBuilding;
+      targetDescription = `the prices of building ${buildingDisplayName} for ${resourceName}`;
+    }
+
+    return `${executorName} will coordinate their prices for ${resourceName} to match ${targetDescription}.`;
+  }, [targetResourceType, targetCitizen, targetBuilding, currentUserUsername, currentUserFirstName, currentUserLastName, resourceTypes, citizens, buildings]);
 
   useImperativeHandle(ref, () => ({
     getStratagemDetails: () => {
@@ -251,6 +278,13 @@ const CoordinatePricingStratagemPanel = forwardRef<StratagemSpecificPanelRef, St
           )}
         </div>
       </div>
+
+      {summarySentence && (
+        <div className="mt-6 p-3 bg-amber-100 border border-amber-200 rounded-md text-sm text-amber-800 flex items-start">
+          <FaInfoCircle className="text-amber-600 mr-2 mt-1 flex-shrink-0" size={18} />
+          <span>{summarySentence}</span>
+        </div>
+      )}
     </div>
   );
 });
