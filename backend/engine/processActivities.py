@@ -249,7 +249,8 @@ def initialize_airtable() -> Optional[Dict[str, Table]]:
             'relationships': api.table(base_id, 'RELATIONSHIPS'), # Ajout de la table RELATIONSHIPS
             'lands': api.table(base_id, 'LANDS'), # Utiliser la clé 'lands' (minuscule)
             'notifications': api.table(base_id, 'NOTIFICATIONS'), # Ajout de la table NOTIFICATIONS
-            'stratagems': api.table(base_id, 'STRATAGEMS') # Ajout de la table STRATAGEMS
+            'stratagems': api.table(base_id, 'STRATAGEMS'), # Ajout de la table STRATAGEMS
+            'messages': api.table(base_id, 'MESSAGES') # Ajout de la table MESSAGES
         }
 
         # Test connection with one primary table (e.g., citizens)

@@ -72,7 +72,7 @@ def process(
                 except Exception as e_pkg_fetch:
                     log.error(f"  Error fetching data package for {citizen_username} (daily reflection): {e_pkg_fetch}")
             
-            kinos_build_url = f"{KINOS_API_URL}/v2/blueprints/{KINOS_BLUEPRINT}/kins/{citizen_username}/messages"
+            kinos_build_url = f"{KINOS_API_URL}/v2/blueprints/{KINOS_BLUEPRINT}/kins/{citizen_username}/build" # Changed to /build
             
             kinos_prompt_daily_reflection = (
                 f"You are {citizen_username}, a citizen of Renaissance Venice. You have just finished a period of rest, marking the end of a day or the beginning of a new one. "
