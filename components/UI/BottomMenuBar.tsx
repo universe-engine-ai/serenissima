@@ -1,5 +1,9 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { FaCrosshairs, FaHandshake, FaScroll, FaProjectDiagram, FaShieldAlt, FaCoins, FaArrowCircleDown, FaBomb, FaSyncAlt, FaArchive, FaStoreSlash, FaBullhorn, FaUserSecret, FaPalette, FaSitemap, FaAnchor, FaUserShield, FaHandHoldingUsd } from 'react-icons/fa'; // Ajout FaAnchor, FaUserShield (corrigé), FaHandHoldingUsd
+import { 
+  FaCoins, FaHandshake, FaScroll, FaUserShield, FaBomb, // Main category icons
+  FaArrowCircleDown, FaSyncAlt, FaArchive, FaStoreSlash, FaUserSecret, FaPalette, FaSitemap, FaAnchor, FaHandHoldingUsd, FaBullhorn, FaUsers, // Existing sub-item icons
+  FaMask, FaComments, FaUserPlus, FaNewspaper // New sub-item icons
+} from 'react-icons/fa';
 import { eventBus, EventTypes } from '@/lib/utils/eventBus'; // Importer eventBus
 
 // Liste des types de stratagèmes "Prochainement"
@@ -8,7 +12,7 @@ const comingSoonStratagemTypes = [
   'cultural_patronage', 'theater_conspiracy', 'printing_propaganda', 'cargo_mishap', 
   'marketplace_gossip', 'employee_poaching', 'joint_venture', 
   'financial_patronage', 'neighborhood_watch'
-  // Ajouter d'autres types de stratagèmes "Prochainement" ici
+  // Les nouveaux types seront ajoutés ici par la logique de génération de menuItems
 ];
 
 // Interface pour les données passées au panneau de stratagème
@@ -41,95 +45,130 @@ const BottomMenuBar: React.FC = () => {
   const [activeMainMenuId, setActiveMainMenuId] = useState<string | null>(null);
   const menuRef = useRef<HTMLDivElement>(null);
 
+  // Mise à jour de la liste des types "Prochainement" pour inclure tous les stratagèmes non disponibles.
+  // Cette liste est utilisée pour le style des boutons.
+  const allStratagemTypesInMenu = [
+    'undercut', 'coordinate_pricing', 'emergency_liquidation', 'hoard_resource', 'supplier_lockout', 'joint_venture',
+    'reputation_assault', 'financial_patronage', 'cultural_patronage', 'theater_conspiracy', 'marketplace_gossip', 'employee_poaching',
+    'political_campaign', 'printing_propaganda',
+    'information_network', 'neighborhood_watch',
+    'maritime_blockade', 'cargo_mishap'
+  ];
+  const availableStratagemTypes = [ // Liste des stratagèmes réellement implémentés et disponibles
+    'undercut', 'coordinate_pricing', 'emergency_liquidation', 'hoard_resource', 'reputation_assault'
+  ];
+  const comingSoonStratagemTypesUpdated = allStratagemTypesInMenu.filter(type => !availableStratagemTypes.includes(type));
+
+
   const menuItems: MenuItem[] = [
     {
-      id: 'warfare',
-      label: 'WARFARE',
-      icon: FaCrosshairs,
+      id: 'commerce',
+      label: 'COMMERCE',
+      icon: FaCoins,
       subItems: [
-        {
-          id: 'information_network',
-          label: 'Info Network (Soon)',
-          icon: FaSitemap,
-          stratagemPanelData: {
-            id: 'information_network',
-            type: 'information_network',
-            title: 'Information Network (Coming Soon)',
-            description: 'Establish intelligence gathering operations targeting specific citizens or market sectors. Recruit informants, receive advanced notifications about competitor strategies, market movements, and gain priority access to information about incoming merchant galleys.',
-            influenceCostBase: 40,
-            hasVariants: false, // Or true if variants like "Local", "Regional", "City-Wide" are planned
-          }
-        },
-        {
-          id: 'maritime_blockade',
-          label: 'Blockade (Soon)',
-          icon: FaAnchor,
-          stratagemPanelData: {
-            id: 'maritime_blockade',
-            type: 'maritime_blockade',
-            title: 'Maritime Blockade (Coming Soon)',
-            description: "Control water access to cripple a competitor's trade. Coordinate with dock owners and gondola operators to restrict competitor access to key waterways and facilities, including arsenal gates.",
-            influenceCostBase: 70,
-            hasVariants: false, 
-          }
-        },
         { 
           id: 'undercut', 
           label: 'Undercut', 
           icon: FaArrowCircleDown, 
           stratagemPanelData: {
-            id: 'undercut',
-            type: 'undercut', // Type pour l'API
-            title: 'Undercut Market Prices',
-            description: 'Strategically lower your prices for a specific resource to undercut competitors. Choose your level of aggression and targets. This action will impact your relationship with the targeted citizen or building owner.',
-            influenceCostBase: 5, // Coût pour "Mild", sera multiplié pour Standard/Aggressive
-            hasVariants: true,
+            id: 'undercut', type: 'undercut', title: 'Undercut Market Prices',
+            description: 'Strategically lower your prices for a specific resource to undercut competitors. Choose your level of aggression and targets.',
+            influenceCostBase: 5, hasVariants: true,
           }
         },
-        // Exemple d'un autre stratagème
-        // { 
-        //   id: 'sabotage', 
-        //   label: 'Sabotage', 
-        //   icon: FaBomb, 
-        //   stratagemPanelData: {
-        //     id: 'sabotage_production',
-        //     type: 'sabotage',
-        //     title: 'Sabotage Production',
-        //     description: 'Disrupt a competitor\'s production facility to gain an advantage.',
-        //     influenceCostBase: 20,
-        //   }
-        // },
+        {
+          id: 'coordinate_pricing', label: 'Coordinate Prices', icon: FaSyncAlt,
+          stratagemPanelData: {
+            id: 'coordinate_pricing', type: 'coordinate_pricing', title: 'Coordinate Market Prices',
+            description: 'Align your prices for a specific resource with a target citizen, building, or the general market average.',
+            influenceCostBase: 10, hasVariants: false,
+          }
+        },
+        {
+          id: 'emergency_liquidation', label: 'Liquidate Assets', icon: FaCoins,
+          stratagemPanelData: {
+            id: 'emergency_liquidation', type: 'emergency_liquidation', title: 'Emergency Liquidation',
+            description: "Quickly sell off all items in your personal inventory at discounted rates to generate cash.",
+            influenceCostBase: 5, hasVariants: true,
+          }
+        },
+        {
+          id: 'hoard_resource', label: 'Hoard Resource', icon: FaArchive, 
+          stratagemPanelData: {
+            id: 'hoard_resource', type: 'hoard_resource', title: 'Hoard Specific Resource',
+            description: 'Designate a resource to accumulate. Your citizen and their employees will prioritize acquiring this resource.',
+            influenceCostBase: 15, hasVariants: false,
+          }
+        },
+        {
+          id: 'supplier_lockout', label: 'Supplier Lockout (Soon)', icon: FaStoreSlash,
+          stratagemPanelData: {
+            id: 'supplier_lockout', type: 'supplier_lockout', title: 'Supplier Lockout (Coming Soon)',
+            description: 'Secure exclusive or priority supply agreements with specific resource suppliers.',
+            influenceCostBase: 20, hasVariants: false,
+          }
+        },
+        {
+          id: 'joint_venture', label: 'Joint Venture (Soon)', icon: FaHandshake,
+          stratagemPanelData: {
+            id: 'joint_venture', type: 'joint_venture', title: 'Joint Venture (Coming Soon)',
+            description: 'Propose a formal business partnership with another citizen.',
+            influenceCostBase: 20, hasVariants: false,
+          }
+        }
       ]
     },
     { 
-      id: 'alliance', 
-      label: 'ALLIANCE', 
-      icon: FaHandshake, 
+      id: 'social', 
+      label: 'SOCIAL', 
+      icon: FaUsers, // Changed from FaHandshake to FaUsers for broader social category
       subItems: [
         {
-          id: 'financial_patronage',
-          label: 'Patronage (Soon)',
-          icon: FaHandHoldingUsd, // Ou FaHandshake si FaHandHoldingUsd n'est pas souhaitée/disponible
+          id: 'reputation_assault', label: 'Reputation Assault', icon: FaUserSecret,
           stratagemPanelData: {
-            id: 'financial_patronage',
-            type: 'financial_patronage',
-            title: 'Financial Patronage (Coming Soon)',
-            description: 'Provide comprehensive financial support to promising individuals, struggling families, or loyal allies, creating deep personal bonds and long-term obligations. Costs 25 Influence and ongoing Ducats.',
-            influenceCostBase: 25,
-            hasVariants: false, // Le niveau de patronage est un paramètre, pas une variante de coût d'influence ici
+            id: 'reputation_assault', type: 'reputation_assault', title: 'Reputation Assault',
+            description: "Subtly damage a competitor's reputation by spreading negative information to their associates.",
+            influenceCostBase: 30, hasVariants: false,
           }
         },
         {
-          id: 'joint_venture', // Assurez-vous que cet ID est unique et correspond à un stratagème existant ou prévu
-          label: 'Joint Venture (Soon)',
-          icon: FaHandshake, // Icône existante
+          id: 'financial_patronage', label: 'Fin. Patronage (Soon)', icon: FaHandHoldingUsd,
           stratagemPanelData: {
-            id: 'joint_venture',
-            type: 'joint_venture',
-            title: 'Joint Venture (Coming Soon)',
-            description: 'Propose a formal business partnership with another citizen, defining contributions, responsibilities, and profit-sharing.',
-            influenceCostBase: 20, // Coût d'influence de base
-            hasVariants: false, // Pas de variantes de coût d'influence typiques ici
+            id: 'financial_patronage', type: 'financial_patronage', title: 'Financial Patronage (Coming Soon)',
+            description: 'Provide comprehensive financial support to promising individuals or allies.',
+            influenceCostBase: 25, hasVariants: false,
+          }
+        },
+        {
+          id: 'cultural_patronage', label: 'Cult. Patronage (Soon)', icon: FaPalette,
+          stratagemPanelData: {
+            id: 'cultural_patronage', type: 'cultural_patronage', title: 'Cultural Patronage (Coming Soon)',
+            description: 'Sponsor artists, performances, or cultural institutions to build social capital.',
+            influenceCostBase: 30, hasVariants: true,
+          }
+        },
+        {
+          id: 'theater_conspiracy', label: 'Theater Play (Soon)', icon: FaMask,
+          stratagemPanelData: {
+            id: 'theater_conspiracy', type: 'theater_conspiracy', title: 'Theater Conspiracy (Coming Soon)',
+            description: 'Manipulate public opinion by staging theatrical performances with specific themes.',
+            influenceCostBase: 25, hasVariants: false,
+          }
+        },
+        {
+          id: 'marketplace_gossip', label: 'Gossip (Soon)', icon: FaComments,
+          stratagemPanelData: {
+            id: 'marketplace_gossip', type: 'marketplace_gossip', title: 'Marketplace Gossip (Coming Soon)',
+            description: "Subtly damage a competitor's reputation by spreading rumors through social networks.",
+            influenceCostBase: 5, hasVariants: false,
+          }
+        },
+        {
+          id: 'employee_poaching', label: 'Poach Employee (Soon)', icon: FaUserPlus,
+          stratagemPanelData: {
+            id: 'employee_poaching', type: 'employee_poaching', title: 'Employee Poaching (Coming Soon)',
+            description: 'Recruit a skilled employee from a competitor by making them a better offer.',
+            influenceCostBase: 6, hasVariants: false,
           }
         }
       ]
@@ -140,136 +179,69 @@ const BottomMenuBar: React.FC = () => {
       icon: FaScroll, 
       subItems: [
         {
-          id: 'political_campaign',
-          label: 'Campaign (Soon)',
-          icon: FaBullhorn,
+          id: 'political_campaign', label: 'Campaign (Soon)', icon: FaBullhorn,
           stratagemPanelData: {
-            id: 'political_campaign',
-            type: 'political_campaign', // API type
-            title: 'Political Campaign (Coming Soon)',
-            description: 'Target: Specific decree/policy change. Effect: Use wealth and relationships to influence governance. Duration: Until decree vote or campaign abandoned. Entity Changes: Spend INFLUENCE and DUCATS to lobby citizens and officials. Create multiple MESSAGES to citizens explaining policy benefits. May create new DECREES entry with your proposed policy. RELATIONSHIPS scores shift based on citizen agreement with your position. If successful, new decree creates systematic CONTRACTS or economic rule changes. Failed campaigns may damage your political reputation. Success increases your ongoing INFLUENCE generation.',
-            influenceCostBase: 50, // Placeholder cost
-            hasVariants: false, // Ou true si des variantes d'intensité sont prévues
+            id: 'political_campaign', type: 'political_campaign', title: 'Political Campaign (Coming Soon)',
+            description: 'Influence governance by lobbying for or against a specific decree or policy change.',
+            influenceCostBase: 50, hasVariants: false,
           }
-        }
-        // Add other political stratagems here
-      ]
-    },
-    { id: 'cocontrol', label: 'CONTROL', icon: FaProjectDiagram, action: () => console.log('Control clicked') },
-    { 
-      id: 'defensive', 
-      label: 'DEFENSIVE', 
-      icon: FaShieldAlt, 
-      subItems: [
+        },
         {
-          id: 'neighborhood_watch',
-          label: 'Watch (Soon)',
-          icon: FaUserShield, // Corrigé: FaUserShield
+          id: 'printing_propaganda', label: 'Propaganda (Soon)', icon: FaNewspaper,
           stratagemPanelData: {
-            id: 'neighborhood_watch',
-            type: 'neighborhood_watch',
-            title: 'Neighborhood Watch (Coming Soon)',
-            description: 'Enhance security and reduce crime in a specific district through collective citizen vigilance. Costs 10 Influence.',
-            influenceCostBase: 10,
-            hasVariants: false,
+            id: 'printing_propaganda', type: 'printing_propaganda', title: 'Printing Propaganda (Coming Soon)',
+            description: 'Conduct information warfare by mass-producing and distributing pamphlets and rumors.',
+            influenceCostBase: 30, hasVariants: false,
           }
         }
       ]
     },
     { 
-      id: 'economic', 
-      label: 'ECONOMIC', 
-      icon: FaCoins, 
+      id: 'security_intel', 
+      label: 'SECURITY & INTEL', 
+      icon: FaUserShield, 
       subItems: [
         {
-          id: 'reputation_assault',
-          label: 'Reputation Assault',
-          icon: FaUserSecret, // Placeholder, consider a more fitting icon like FaUserSlash or FaCommentSlash
+          id: 'information_network', label: 'Info Network (Soon)', icon: FaSitemap,
           stratagemPanelData: {
-            id: 'reputation_assault',
-            type: 'reputation_assault',
-            title: 'Reputation Assault',
-            description: "Subtly damage a competitor's reputation by spreading negative information to their associates. This action will severely impact your relationship with the target.",
-            influenceCostBase: 30, // Example cost
-            hasVariants: false, // No variants for this one
+            id: 'information_network', type: 'information_network', title: 'Information Network (Coming Soon)',
+            description: 'Establish intelligence gathering operations targeting specific citizens or market sectors.',
+            influenceCostBase: 40, hasVariants: false,
           }
         },
         {
-          id: 'emergency_liquidation',
-          label: 'Liquidate Assets',
-          icon: FaCoins, // Consider FaGavel or FaShoppingCart with a down arrow
+          id: 'neighborhood_watch', label: 'Neighborhood Watch (Soon)', icon: FaUserShield, 
           stratagemPanelData: {
-            id: 'emergency_liquidation',
-            type: 'emergency_liquidation',
-            title: 'Emergency Liquidation',
-            description: "Quickly sell off all items in your personal inventory at discounted rates to generate cash. Choose the level of discount, which also affects how long the sale lasts.",
-            influenceCostBase: 5, // Low cost as it's a personal action
-            hasVariants: true, // Mild, Standard, Aggressive for discount levels
-          }
-        },
-        {
-          id: 'coordinate_pricing',
-          label: 'Coordinate Prices',
-          icon: FaSyncAlt,
-          stratagemPanelData: {
-            id: 'coordinate_pricing',
-            type: 'coordinate_pricing',
-            title: 'Coordinate Market Prices',
-            description: 'Align your prices for a specific resource with a target citizen, building, or the general market average. This helps in stabilizing prices or forming economic ententes.',
-            influenceCostBase: 10,
-            hasVariants: false,
-          }
-        },
-        {
-          id: 'hoard_resource',
-          label: 'Hoard Resource',
-          icon: FaArchive, 
-          stratagemPanelData: {
-            id: 'hoard_resource',
-            type: 'hoard_resource',
-            title: 'Hoard Specific Resource',
-            description: 'Designate a resource to accumulate. Your citizen and their employees will prioritize acquiring this resource and storing it in an available storage (private or public).',
-            influenceCostBase: 15,
-            hasVariants: false,
-          }
-        },
-        {
-          id: 'supplier_lockout',
-          label: 'Supplier Lockout (Soon)',
-          icon: FaStoreSlash,
-          stratagemPanelData: {
-            id: 'supplier_lockout',
-            type: 'supplier_lockout', // API type
-            title: 'Supplier Lockout (Coming Soon)',
-            description: 'Target: Specific resource suppliers. Effect: Secure exclusive or priority relationships. Duration: Based on contract terms negotiated. Entity Changes: Create long-term CONTRACTS (import) with premium pricing (+10-20%). Suppliers agree to fulfill your orders before public contracts. Your RESOURCES supply becomes more reliable and predictable. Competitors lose access to preferred suppliers. Creates PROBLEMS for competitors who relied on those suppliers. Builds stronger RELATIONSHIPS trust with supplier citizens. Requires sustained higher DUCATS expenditure.',
-            influenceCostBase: 20, // Placeholder cost
-            hasVariants: false,
+            id: 'neighborhood_watch', type: 'neighborhood_watch', title: 'Neighborhood Watch (Coming Soon)',
+            description: 'Enhance security and reduce crime in a specific district through collective citizen vigilance.',
+            influenceCostBase: 10, hasVariants: false,
           }
         }
-        // Add other economic stratagems here
       ]
     },
-    {
-      id: 'culture',
-      label: 'CULTURE',
-      icon: FaPalette, // Nouvelle icône pour la culture
+    { 
+      id: 'covert_ops', 
+      label: 'COVERT OPS', 
+      icon: FaBomb, 
       subItems: [
         {
-          id: 'cultural_patronage',
-          label: 'Patronage (Soon)',
-          icon: FaPalette, // Ou une autre icône plus spécifique si disponible
+          id: 'maritime_blockade', label: 'Blockade (Soon)', icon: FaAnchor,
           stratagemPanelData: {
-            id: 'cultural_patronage',
-            type: 'cultural_patronage', // API type
-            title: 'Cultural Patronage (Coming Soon)',
-            description: 'Sponsor artists, performances, or cultural institutions to build social capital and enhance your reputation. This action increases your influence generation and improves relationships with cultural elites.',
-            influenceCostBase: 30, // Coût de base, peut varier
-            hasVariants: true, // Pourrait avoir des variantes de niveau de patronage (Modest, Standard, Grand)
+            id: 'maritime_blockade', type: 'maritime_blockade', title: 'Maritime Blockade (Coming Soon)',
+            description: "Control water access to cripple a competitor's trade and waterfront operations.",
+            influenceCostBase: 70, hasVariants: false, 
+          }
+        },
+        {
+          id: 'cargo_mishap', label: 'Cargo "Mishap" (Soon)', icon: FaAnchor, // Using FaAnchor as it's often maritime
+          stratagemPanelData: {
+            id: 'cargo_mishap', type: 'cargo_mishap', title: 'Cargo "Mishap" (Coming Soon)',
+            description: "Sabotage a competitor's shipment by arranging for their goods to \"disappear\" while in transit.",
+            influenceCostBase: 8, hasVariants: false,
           }
         }
-        // Add other cultural stratagems here
       ]
-    },
+    }
   ];
 
   const handleMainMenuClick = (item: MenuItem) => {
@@ -313,7 +285,7 @@ const BottomMenuBar: React.FC = () => {
                 setActiveMainMenuId(null); // Ferme le sous-menu après l'action
               }}
               className={`flex flex-col items-center justify-center p-1 rounded-sm transition-colors w-20 h-16 ${
-                comingSoonStratagemTypes.includes(subItem.stratagemPanelData.type)
+                comingSoonStratagemTypesUpdated.includes(subItem.stratagemPanelData.type)
                   ? 'text-amber-50 hover:text-white hover:bg-amber-600/50' // Style pour "Coming Soon"
                   : 'bg-yellow-500 hover:bg-yellow-600 text-black' // Style pour disponible
               }`}
