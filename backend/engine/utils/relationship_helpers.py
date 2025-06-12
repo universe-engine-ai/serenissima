@@ -35,6 +35,7 @@ from dotenv import load_dotenv
 
 # Importer les helpers nécessaires depuis activity_helpers
 from .activity_helpers import _escape_airtable_value, VENICE_TIMEZONE, LogColors, clean_thought_content
+from .conversation_helper import DEFAULT_TIMEOUT_SECONDS # Ajout de l'importation
 
 
 log = logging.getLogger(__name__)
