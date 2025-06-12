@@ -174,13 +174,17 @@ def persist_message(
         "Type": message_type,
         "Channel": channel_name,
         "CreatedAt": datetime.now(VENICE_TIMEZONE).isoformat(),
-        # "ReadAt" will be null initially for the receiver
     }
+    if sender_username == receiver_username:
+        payload["ReadAt"] = datetime.now(VENICE_TIMEZONE).isoformat()
+        log.info(f"Message from {sender_username} to self. Setting ReadAt to current time.")
+    # Else, "ReadAt" will be null initially for the receiver
+
     if kinos_message_id: # If KinOS provides a message ID, store it
         payload["Notes"] = json.dumps({"kinos_message_id": kinos_message_id})
 
     try:
-        log.info(f"Persisting message from {sender_username} to {receiver_username} in channel {channel_name}.")
+        log.info(f"Persisting message from {sender_username} to {receiver_username} in channel {channel_name}. Payload: {json.dumps(payload)}")
         created_record = tables['messages'].create(payload)
         log.info(f"Message persisted with Airtable ID: {created_record['id']}")
         return created_record
