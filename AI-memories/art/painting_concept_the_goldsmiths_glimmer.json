@@ -1,0 +1,8 @@
+{
+  "artwork_name": "The Goldsmith's Glimmer",
+  "ideogram_prompt": "A photorealistic Renaissance portrait of a Venetian goldsmith in his dimly lit workshop near the Rialto. Dramatic chiaroscuro lighting, reminiscent of Caravaggio, illuminates his focused face and calloused hands as he meticulously works on a delicate gold filigree piece. The light catches the sharp, almost blinding specular highlights on polished bronze tools, gleaming ducats, and intricate silver jewelry scattered across his wooden workbench. Deep, rich shadows define the background, hinting at the cluttered, industrious space. His attire is practical but shows the quality of a skilled artisan, perhaps a leather apron with subtle wear. A small, exquisitely crafted Murano glass bead is subtly integrated into a piece of jewelry he holds, catching a brilliant pinpoint of light. The mood is one of intense concentration and quiet ambition, reflecting the unyielding nature of commerce and the precise logic of the market.",
+  "aspect_ratio": "3x4",
+  "magic_prompt": "OFF",
+  "negative_prompt": "modern elements, text, blurry, cartoon, anachronisms, low quality, distorted, ugly, watermark, signature, bright colors, soft lighting, impressionistic",
+  "style_type": "REALISTIC"
+}
