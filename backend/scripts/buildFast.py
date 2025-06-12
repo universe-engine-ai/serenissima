@@ -69,9 +69,11 @@ def initialize_airtable() -> Optional[Dict[str, Table]]:
         tables = {
             'buildings': api.table(base_id, 'BUILDINGS'),
             'activities': api.table(base_id, 'ACTIVITIES'), # Needed to check last activity status
+            'contracts': api.table(base_id, 'CONTRACTS'), # Added contracts table
         }
         # Test connection
         tables['buildings'].all(max_records=1)
+        tables['contracts'].all(max_records=1) # Test contracts table connection
         log.info(f"{LogColors.OKGREEN}Airtable connection successful.{LogColors.ENDC}")
         return tables
     except Exception as e:
@@ -135,12 +137,58 @@ def main():
         return
 
     # Determine the relevant citizen
-    relevant_citizen_username = building_record['fields'].get('RunBy')
+    relevant_citizen_username: Optional[str] = None
+
+    # Attempt to find a builder via contract
+    try:
+        # Assuming BuyerBuilding links to the building being constructed.
+        # Or Asset might be used. Let's check for BuyerBuilding first as it's more specific.
+        # Status should be active (e.g., 'pending_materials', 'in_progress', or simply not 'completed' or 'failed')
+        contract_formula = f"AND({{Type}}='construction_project', {{BuyerBuilding}}='{_escape_airtable_value(args.buildingId)}', NOT(OR({{Status}}='completed', {{Status}}='failed', {{Status}}='cancelled')))"
+        log.info(f"Searching for construction contract with formula: {contract_formula}")
+        construction_contracts = tables['contracts'].all(formula=contract_formula, max_records=1)
+
+        if construction_contracts:
+            contract = construction_contracts[0]
+            log.info(f"Found active construction contract: {contract['fields'].get('ContractId', contract['id'])}")
+            workshop_building_id = contract['fields'].get('SellerBuilding')
+            if workshop_building_id:
+                log.info(f"Builder's workshop ID from contract: {workshop_building_id}")
+                workshop_record = get_building_record(tables, workshop_building_id)
+                if workshop_record:
+                    relevant_citizen_username = workshop_record['fields'].get('Occupant')
+                    if relevant_citizen_username:
+                        log.info(f"Using Occupant of workshop '{workshop_building_id}': {relevant_citizen_username}")
+                    else:
+                        relevant_citizen_username = workshop_record['fields'].get('RunBy')
+                        if relevant_citizen_username:
+                            log.info(f"Workshop '{workshop_building_id}' has no Occupant, using RunBy: {relevant_citizen_username}")
+                        else:
+                            log.warning(f"{LogColors.WARNING}Workshop '{workshop_building_id}' has no Occupant or RunBy.{LogColors.ENDC}")
+                else:
+                    log.warning(f"{LogColors.WARNING}Could not fetch workshop building record for ID: {workshop_building_id}{LogColors.ENDC}")
+            else:
+                log.warning(f"{LogColors.WARNING}Construction contract {contract['id']} found, but no SellerBuilding specified.{LogColors.ENDC}")
+        else:
+            log.info(f"No active construction contract found for building '{args.buildingId}'. Assuming self-construction or direct owner involvement.")
+    except Exception as e_contract:
+        log.error(f"{LogColors.FAIL}Error while searching for construction contract: {e_contract}{LogColors.ENDC}")
+
+    # If no builder found via contract, fall back to owner of the building being constructed
     if not relevant_citizen_username:
+        log.info("Falling back to Owner of the target building for construction.")
         relevant_citizen_username = building_record['fields'].get('Owner')
+        if relevant_citizen_username:
+            log.info(f"Using Owner of target building '{args.buildingId}': {relevant_citizen_username}")
+        else:
+            # As a last resort, check RunBy of the target building, though less likely for unconstructed.
+            relevant_citizen_username = building_record['fields'].get('RunBy')
+            if relevant_citizen_username:
+                log.info(f"Target building '{args.buildingId}' has no Owner, using RunBy: {relevant_citizen_username}")
+
 
     if not relevant_citizen_username:
-        log.error(f"{LogColors.FAIL}Could not determine a relevant citizen (RunBy or Owner) for building '{args.buildingId}'.{LogColors.ENDC}")
+        log.error(f"{LogColors.FAIL}Could not determine a relevant citizen for building '{args.buildingId}'. Searched contract, then Owner/RunBy of target building.{LogColors.ENDC}")
         return
 
     log.info(f"Targeting citizen '{relevant_citizen_username}' for construction of '{args.buildingId}'.")
