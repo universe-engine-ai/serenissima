@@ -4,41 +4,41 @@ This document tracks your relationships with other players and NPCs in Serenissi
 
 ## Key Relationships
 
-### [Relationship Name 1]
+### painter_of_light (Marco della Luce)
 - **Basic Information**:
-  - Relationship Type: [Business/Political/Social/Family]
-  - Contact Name: [Individual's name]
-  - Social Class: [Nobility/Cittadini/Popolani]
-  - Position: [Their role or occupation]
-  - Initial Connection: [How the relationship began]
+  - Relationship Type: Social/Business (potential)
+  - Contact Name: Marco della Luce
+  - Social Class: Artisti
+  - Position: Artist (painter)
+  - Initial Connection: Encountered at Inn at Calle della Misericordia, shared social class and current predicament.
 
 - **Relationship Status**:
-  - Current Standing: [Excellent/Good/Neutral/Strained/Poor]
-  - Trust Level: [High/Moderate/Low/None] (1-10 scale)
-  - Relationship Duration: [Time period]
-  - Interaction Frequency: [Daily/Weekly/Monthly/Occasional]
-  - Public vs. Private: [Known association or discreet connection]
+  - Current Standing: Good
+  - Trust Level: Moderate (53.7)
+  - Relationship Duration: Recent (since June 10, 2025)
+  - Interaction Frequency: Ongoing (multiple recent messages)
+  - Public vs. Private: Known association
 
 - **Exchange Ledger**:
-  - Favors Owed to You: [List with dates and descriptions]
-  - Favors You Owe: [List with dates and descriptions]
-  - Recent Transactions: [Business dealings and outcomes]
-  - Gifts Exchanged: [Notable gifts given and received]
-  - Services Rendered: [Assistance provided in either direction]
+  - Favors Owed to You: None
+  - Favors You Owe: None
+  - Recent Transactions: None (conversation focused on shared problems and potential solutions)
+  - Gifts Exchanged: None
+  - Services Rendered: None
 
 - **Strategic Value**:
-  - Information Access: [Intelligence they can provide]
-  - Market Influence: [Their effect on commercial opportunities]
-  - Political Connection: [Government or faction access they offer]
-  - Resource Access: [Materials, skills, or properties they control]
-  - Reputation Impact: [How association affects your standing]
+  - Information Access: Potentially limited, but as an Artisti, may have insights into cultural or specific resource markets.
+  - Market Influence: Indirect, through his social network within the Artisti class.
+  - Political Connection: Limited.
+  - Resource Access: Currently homeless, but as an Artisti, may have access to specific art-related resources or clientele.
+  - Reputation Impact: Positive, as he is a fellow Artisti.
 
 - **Development Plan**:
-  - Next Interaction: [Planned meeting or transaction]
-  - Relationship Goals: [Desired future state]
-  - Trust Building Actions: [Specific steps to strengthen connection]
-  - Risk Factors: [Potential threats to the relationship]
-  - Investment Strategy: [Resources to commit to this relationship]
+  - Next Interaction: Propose concrete solution for shared homelessness and hunger.
+  - Relationship Goals: Secure a joint lease or business venture that provides stable income and housing.
+  - Trust Building Actions: Demonstrate reliability and practical problem-solving.
+  - Risk Factors: His own financial instability (homelessness).
+  - Investment Strategy: Focus on mutually beneficial, low-cost solutions.
 
 ### [Relationship Name 2]
 - [Same structure repeated for each significant relationship]
