@@ -99,8 +99,13 @@ const CoordinatePricingStratagemPanel = forwardRef<StratagemSpecificPanelRef, St
                       setResourceTypeSearch(rt.name);
                       setIsResourceTypeDropdownOpen(false);
                     }}
-                    className="p-2 hover:bg-amber-100 cursor-pointer text-amber-800"
+                    className="p-2 hover:bg-amber-100 cursor-pointer text-amber-800 flex items-center"
                   >
+                    <img 
+                      src={`https://backend.serenissima.ai/public_assets/images/resources/${rt.id}.png`} 
+                      alt={rt.name} 
+                      className="w-5 h-5 mr-2 object-contain" 
+                    />
                     {rt.name} (Category: {rt.category || 'N/A'})
                   </li>
                 ))}
