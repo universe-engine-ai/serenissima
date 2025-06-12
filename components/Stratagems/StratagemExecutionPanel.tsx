@@ -3,6 +3,7 @@ import { FaTimes, FaBalanceScale } from 'react-icons/fa';
 import { useWalletContext } from '@/components/UI/WalletProvider';
 import { StratagemData, CitizenOption, BuildingOption, ResourceTypeOption, StratagemSpecificPanelRef } from './ExecutionPanels/types';
 import UndercutStratagemPanel from './ExecutionPanels/UndercutStratagemPanel';
+import CoordinatePricingStratagemPanel from './ExecutionPanels/CoordinatePricingStratagemPanel'; // Ajout de l'import
 import DefaultStratagemPanel from './ExecutionPanels/DefaultStratagemPanel';
 // Importer d'autres panneaux spécifiques ici au fur et à mesure de leur création
 // import HoardResourcePanel from './ExecutionPanels/HoardResourcePanel';
@@ -243,6 +244,8 @@ const StratagemExecutionPanel: React.FC<StratagemExecutionPanelProps> = ({
     switch (stratagemData.type) {
       case 'undercut':
         return UndercutStratagemPanel;
+      case 'coordinate_pricing': // Ajout du cas pour coordinate_pricing
+        return CoordinatePricingStratagemPanel;
       // case 'hoard_resource':
       //   return HoardResourcePanel; 
       // Ajouter d'autres cas ici pour les panneaux spécifiques
