@@ -260,6 +260,7 @@ async function fetchCitizenContracts(username: string): Promise<AirtableRecord<F
     const records = await airtable('CONTRACTS').select({
       filterByFormula: `AND(OR({Buyer} = '${escapedUsername}', {Seller} = '${escapedUsername}'), {Status} = 'active')`,
       sort: [{ field: 'CreatedAt', direction: 'desc' }],
+      maxRecords: 20, // Limit to 20 records
     }).all();
     return [...records]; // Convert ReadonlyArray to Array
   } catch (error) {
@@ -346,7 +347,7 @@ async function fetchCitizenMessages(username: string): Promise<AirtableRecord<Fi
     const records = await airtable('MESSAGES').select({
       filterByFormula: `OR({Sender} = '${escapedUsername}', {Receiver} = '${escapedUsername}')`,
       sort: [{ field: 'CreatedAt', direction: 'desc' }],
-      maxRecords: 10,
+      maxRecords: 20, // Limit to 20 records
     }).all();
     return [...records]; // Convert ReadonlyArray to Array
   } catch (error) {
@@ -860,6 +861,10 @@ function convertDataPackageToMarkdown(dataPackage: any, citizenUsername: string 
       md += `### Contract ${index + 1}: ${contract.title || contract.contractId}\n`;
       md += formatSimpleObjectForMarkdown(contract, ['type', 'buyer', 'seller', 'resourceType', 'pricePerResource', 'targetAmount', 'status', 'createdAt', 'endAt']);
     });
+    if (dataPackage.activeContracts.length === 20) {
+      md += `- ... (et plus)\n`;
+    }
+    md += '\n';
   } else {
     md += `- No active contracts.\n\n`;
   }
@@ -904,12 +909,16 @@ function convertDataPackageToMarkdown(dataPackage: any, citizenUsername: string 
   }
 
   // Recent Messages
-  md += `## Recent Messages (Last 10) (${dataPackage.recentMessages?.length || 0})\n`;
+  md += `## Recent Messages (Last 20) (${dataPackage.recentMessages?.length || 0})\n`;
   if (dataPackage.recentMessages && dataPackage.recentMessages.length > 0) {
     dataPackage.recentMessages.forEach((message: any, index: number) => {
       md += `### Message ${index + 1} (ID: ${message.messageId})\n`;
       md += formatSimpleObjectForMarkdown(message, ['sender', 'receiver', 'type', 'content', 'channel', 'createdAt']);
     });
+    if (dataPackage.recentMessages.length === 20) {
+      md += `- ... (et plus)\n`;
+    }
+    md += '\n';
   } else {
     md += `- No recent messages.\n\n`;
   }
