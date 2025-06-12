@@ -174,10 +174,9 @@ def _create_building_project(
     if not permit_fee_already_paid:
         permit_fee_to_charge = max(50, building_cost_ducats * 0.05)  # 5% fee, minimum 50 Ducats
     
-    # If there's a builder contract, add a deposit (typically 20% of the contract value)
-    builder_deposit_to_charge = 0
-    builder_username_from_details = None # Store builder from details separately
-    actual_contract_value_for_builder = 0 # For contract creation
+    # If there's a builder contract, determine its value. No deposit is charged by this processor.
+    builder_username_from_details = None
+    actual_contract_value_for_builder = 0
 
     if builder_contract_details:
         builder_username_from_details = builder_contract_details.get('builderUsername')
@@ -187,29 +186,23 @@ def _create_building_project(
         else:
             rate_from_details = builder_contract_details.get('rate')
             if rate_from_details is not None:
-                # Correctly calculate contract value if rate is a multiplier
                 actual_contract_value_for_builder = building_cost_ducats * float(rate_from_details)
             else:
-                # Default contract value if neither contractValue nor rate is provided
-                actual_contract_value_for_builder = building_cost_ducats * 1.2 
+                actual_contract_value_for_builder = building_cost_ducats * 1.2
         
-        potential_builder_deposit = actual_contract_value_for_builder * 0.2
-
         # Check if this specific builder contract already exists and is active
-        skip_builder_deposit_and_contract = False
+        skip_builder_contract_creation = False
         if building_shell_exists_and_matches and builder_username_from_details:
             formula_contract_check = f"AND({{Asset}}='{_escape_airtable_value(building_id)}', {{Buyer}}='{_escape_airtable_value(citizen)}', {{Seller}}='{_escape_airtable_value(builder_username_from_details)}', NOT(OR({{Status}}='failed', {{Status}}='cancelled', {{Status}}='completed')))"
             existing_builder_contracts = tables['contracts'].all(formula=formula_contract_check, max_records=1)
             if existing_builder_contracts:
-                log.info(f"Un contrat de construction actif avec le constructeur {builder_username_from_details} pour le projet {building_id} existe déjà. L'acompte et la création du contrat seront ignorés.")
-                skip_builder_deposit_and_contract = True
+                log.info(f"Un contrat de construction actif avec le constructeur {builder_username_from_details} pour le projet {building_id} existe déjà. La création du contrat sera ignorée.")
+                skip_builder_contract_creation = True
         
-        if not skip_builder_deposit_and_contract:
-            builder_deposit_to_charge = potential_builder_deposit
-        else: # Builder deposit is skipped, so ensure contract value for new contract is 0 if we were to create one (which we won't)
-            actual_contract_value_for_builder = 0 # This prevents creating a new contract with value if deposit is skipped
+        if skip_builder_contract_creation:
+             actual_contract_value_for_builder = 0 # Prevents creating a new contract if one already exists
             
-    total_cost = permit_fee_to_charge + builder_deposit_to_charge
+    total_cost = permit_fee_to_charge # Only permit fee is charged by this processor
     
     # Check if citizen has enough Ducats to pay the fees
     try:
@@ -221,8 +214,8 @@ def _create_building_project(
         citizen_record = citizen_records[0]
         citizen_ducats = float(citizen_record['fields'].get('Ducats', 0))
         
-        if total_cost > 0 and citizen_ducats < total_cost: # Check only if there's a cost
-            log.error(f"Citizen {citizen} has insufficient Ducats ({citizen_ducats}) to pay total fees ({total_cost}). Permit fee: {permit_fee_to_charge}, Builder deposit: {builder_deposit_to_charge}")
+        if total_cost > 0 and citizen_ducats < total_cost: # Check only if there's a permit_fee_to_charge
+            log.error(f"Citizen {citizen} has insufficient Ducats ({citizen_ducats}) to pay permit fee ({permit_fee_to_charge}).")
             return False
         
         office_operator = "ConsiglioDeiDieci"  # Default to city government
@@ -233,9 +226,9 @@ def _create_building_project(
                 office_operator = buildings[0]['fields'].get('RunBy')
                 log.info(f"Found office operator {office_operator} for building {office_building_id} for permit fee.")
         
-        if total_cost > 0: # Deduct only if there's a cost
+        if total_cost > 0: # Deduct only if there's a permit_fee_to_charge
             tables['citizens'].update(citizen_record['id'], {'Ducats': citizen_ducats - total_cost})
-            log.info(f"Deducted {total_cost} Ducats from {citizen}. Permit: {permit_fee_to_charge}, Deposit: {builder_deposit_to_charge}.")
+            log.info(f"Deducted {total_cost} Ducats (permit fee) from {citizen}.")
         
         # Add permit fee to office operator if it was charged
         if permit_fee_to_charge > 0:
@@ -255,27 +248,6 @@ def _create_building_project(
             }
             tables["transactions"].create(permit_transaction_fields)
             log.info(f"Permit fee of {permit_fee_to_charge} Ducats paid by {citizen} to {office_operator}.")
-
-        # Add builder deposit to builder if it was charged
-        if builder_username_from_details and builder_deposit_to_charge > 0:
-            builder_formula = f"{{Username}}='{_escape_airtable_value(builder_username_from_details)}'"
-            builder_records = tables["citizens"].all(formula=builder_formula, max_records=1)
-            if builder_records:
-                builder_record_data = builder_records[0]
-                builder_ducats = float(builder_record_data['fields'].get('Ducats', 0))
-                tables["citizens"].update(builder_record_data['id'], {'Ducats': builder_ducats + builder_deposit_to_charge})
-                # Record the builder deposit transaction
-                deposit_transaction_fields = {
-                    "Type": "builder_deposit", "AssetType": "land", "Asset": land_id,
-                    "Seller": citizen, "Buyer": builder_username_from_details, "Price": builder_deposit_to_charge,
-                    "Notes": json.dumps({"building_type": building_type, "point_details": point_details, "contract_details": builder_contract_details}),
-                    "CreatedAt": now.isoformat(), "ExecutedAt": now.isoformat()
-                }
-                tables["transactions"].create(deposit_transaction_fields)
-                log.info(f"Builder deposit of {builder_deposit_to_charge} Ducats paid by {citizen} to {builder_username_from_details}.")
-            else:
-                log.error(f"Builder {builder_username_from_details} not found")
-                # Continue anyway, the deposit will go to the city
         
         # Determine RunBy for the project
         final_run_by_for_project: Optional[str] = None
@@ -319,10 +291,10 @@ def _create_building_project(
                 tables['buildings'].update(existing_building_airtable_id, {'RunBy': final_run_by_for_project})
                 log.info(f"Updated RunBy for existing building project {building_id} from '{current_run_by_on_shell}' to '{final_run_by_for_project}'.")
         
-        # Create the builder contract if builder_username_from_details is set and deposit was charged (or contract doesn't exist)
-        # The check for skip_builder_deposit_and_contract handles if contract already exists.
+        # Create the builder contract if builder_username_from_details is set and a new contract is needed.
+        # The check for skip_builder_contract_creation handles if contract already exists.
         # actual_contract_value_for_builder will be > 0 only if a new contract is needed.
-        if builder_username_from_details and actual_contract_value_for_builder > 0 and builder_deposit_to_charge > 0: # Ensure deposit was meant to be charged for this new contract
+        if builder_username_from_details and actual_contract_value_for_builder > 0 and not skip_builder_contract_creation:
             contract_id = f"construction_{building_id}_{builder_username_from_details}_{int(now.timestamp())}"
             contract_payload = {
                 "ContractId": contract_id, "Type": "construction_project",
@@ -348,8 +320,7 @@ def _create_building_project(
         log.info(f"Successfully processed building project submission for {building_type} on land {land_id} by {citizen}.")
         if permit_fee_to_charge > 0:
             log.info(f"Permit fee of {permit_fee_to_charge} Ducats collected.")
-        if builder_deposit_to_charge > 0:
-            log.info(f"Builder deposit of {builder_deposit_to_charge} Ducats collected for {builder_username_from_details}.")
+        # No builder deposit is collected by this processor.
         
         return True
     except Exception as e:
