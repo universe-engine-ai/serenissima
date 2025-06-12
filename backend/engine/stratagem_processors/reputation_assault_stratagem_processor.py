@@ -39,33 +39,58 @@ log = logging.getLogger(__name__)
 # KINOS_API_URL_BASE = "https://api.kinos-engine.ai/v2/blueprints/serenissima-ai/kins" # Defined in relationship_helpers
 NEXT_JS_BASE_URL = os.getenv('NEXT_PUBLIC_BASE_URL', 'http://localhost:3000')
 
-def _get_related_citizens(tables: Dict[str, Any], target_username: str) -> List[str]:
-    """Fetches usernames of citizens who have a relationship with the target_username."""
-    related_usernames: List[str] = []
+def _get_related_citizens(tables: Dict[str, Any], target_username: str, limit: int = 50) -> List[str]:
+    """
+    Fetches usernames of citizens who have a relationship with the target_username,
+    ordered by StrengthScore descending, up to a specified limit.
+    """
+    related_usernames_set: set[str] = set()
     try:
-        # Relationships where target_username is Citizen1
-        formula1 = f"{{Citizen1}} = '{_escape_airtable_value(target_username)}'"
-        rels1 = tables['relationships'].all(formula=formula1, fields=['Citizen2'])
-        for rel in rels1:
-            if rel['fields'].get('Citizen2'):
-                related_usernames.append(rel['fields']['Citizen2'])
-
-        # Relationships where target_username is Citizen2
-        formula2 = f"{{Citizen2}} = '{_escape_airtable_value(target_username)}'"
-        rels2 = tables['relationships'].all(formula=formula2, fields=['Citizen1'])
-        for rel in rels2:
-            if rel['fields'].get('Citizen1'):
-                related_usernames.append(rel['fields']['Citizen1'])
+        escaped_target_username = _escape_airtable_value(target_username)
+        formula = f"OR({{Citizen1}}='{escaped_target_username}', {{Citizen2}}='{escaped_target_username}')"
         
-        # Remove duplicates and the target themselves if they somehow appeared
-        unique_related = list(set(related_usernames))
-        if target_username in unique_related:
-            unique_related.remove(target_username)
+        # Fetch relationships, sorted by StrengthScore descending
+        # Ensure StrengthScore is a number in Airtable for correct sorting.
+        # Pyairtable handles missing fields by typically sorting them last.
+        relationships = tables['relationships'].all(
+            formula=formula,
+            fields=['Citizen1', 'Citizen2', 'StrengthScore'], # StrengthScore needed for sorting
+            sort=[('-StrengthScore', 'desc')],
+            max_records=limit * 2 # Fetch a bit more to account for filtering out target_username and ensuring enough unique results
+        )
+        
+        log.info(f"{LogColors.PROCESS}Fetched {len(relationships)} raw relationship records for {target_username} (sorted by StrengthScore desc).")
+
+        count = 0
+        for rel in relationships:
+            if count >= limit:
+                break
+
+            c1 = rel['fields'].get('Citizen1')
+            c2 = rel['fields'].get('Citizen2')
             
-        log.info(f"{LogColors.PROCESS}Found {len(unique_related)} citizens related to {target_username}: {unique_related}{LogColors.ENDC}")
-        return unique_related
+            other_citizen = None
+            if c1 == target_username:
+                other_citizen = c2
+            elif c2 == target_username:
+                other_citizen = c1
+            
+            if other_citizen and other_citizen != target_username: # Ensure it's not the target themselves
+                if other_citizen not in related_usernames_set:
+                    related_usernames_set.add(other_citizen)
+                    count += 1
+        
+        unique_related_list = list(related_usernames_set)
+        # The list is already effectively sorted by StrengthScore due to the query order and set insertion order (for unique elements)
+        # If strict top N by score is needed even after deduplication, a re-sort might be needed if many duplicates exist among top scores.
+        # However, for this use case, this should be sufficient.
+
+        log.info(f"{LogColors.PROCESS}Found {len(unique_related_list)} unique citizens related to {target_username} (top {limit} by StrengthScore): {unique_related_list}{LogColors.ENDC}")
+        return unique_related_list
     except Exception as e:
         log.error(f"{LogColors.FAIL}Error fetching related citizens for {target_username}: {e}{LogColors.ENDC}")
+        import traceback
+        log.error(traceback.format_exc())
         return []
 
 def _get_conversation_history(tables: Dict[str, Any], user1: str, user2: str, limit: int = 20) -> List[Dict[str, Any]]:
