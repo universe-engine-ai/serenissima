@@ -103,7 +103,7 @@ def try_create_work_on_art_activity(
         goto_activity = try_create_goto_location_activity(
             tables=tables,
             citizen_record=citizen_record,
-            destination_building_id=target_location_custom_id,
+            to_building_id=target_location_custom_id, # Changed from destination_building_id
             path_data=path_to_target,
             current_time_utc=now_utc_dt, # For CreatedAt if start_time_utc_iso is None
             notes=goto_notes,
