@@ -9,7 +9,8 @@ const ReputationAssaultStratagemPanel = forwardRef<StratagemSpecificPanelRef, St
   const [citizenSearch, setCitizenSearch] = useState('');
   const [isCitizenDropdownOpen, setIsCitizenDropdownOpen] = useState(false);
   const citizenInputRef = useRef<HTMLInputElement>(null);
-  const [assaultAngle, setAssaultAngle] = useState(''); // New state for assault angle
+  const [assaultAngle, setAssaultAngle] = useState('');
+  const [kinosModelOverride, setKinosModelOverride] = useState(''); // New state for KinOS model override
 
   const calculatedInfluenceCost = stratagemData.influenceCostBase; // Fixed cost
 
@@ -32,13 +33,18 @@ const ReputationAssaultStratagemPanel = forwardRef<StratagemSpecificPanelRef, St
     if (assaultAngle.trim()) {
       angleDescription = <> focusing on the angle: <span className="font-semibold">"{assaultAngle.trim()}"</span></>;
     }
+    
+    let modelDescription = "";
+    if (kinosModelOverride.trim()) {
+      modelDescription = <> using the AI model <span className="font-semibold">"{kinosModelOverride.trim()}"</span></>;
+    }
 
     return (
       <>
-        <span className="font-bold">{executorName}</span> will attempt to damage the reputation of {targetDescription} by spreading negative information to their associates{angleDescription}. <em className="italic">(Aggressive)</em>
+        <span className="font-bold">{executorName}</span> will attempt to damage the reputation of {targetDescription} by spreading negative information to their associates{angleDescription}{modelDescription}. <em className="italic">(Aggressive)</em>
       </>
     );
-  }, [targetCitizenUsername, assaultAngle, currentUserUsername, currentUserFirstName, currentUserLastName, citizens]);
+  }, [targetCitizenUsername, assaultAngle, kinosModelOverride, currentUserUsername, currentUserFirstName, currentUserLastName, citizens]);
 
   useImperativeHandle(ref, () => ({
     getStratagemDetails: () => {
@@ -47,7 +53,8 @@ const ReputationAssaultStratagemPanel = forwardRef<StratagemSpecificPanelRef, St
       }
       return {
         targetCitizen: targetCitizenUsername,
-        assaultAngle: assaultAngle.trim() || null, // Send null if empty
+        assaultAngle: assaultAngle.trim() || null,
+        kinosModelOverride: kinosModelOverride.trim() || null, // Send null if empty
         // durationHours, name, description, notes are handled by the creator with defaults
       };
     },
@@ -148,6 +155,25 @@ const ReputationAssaultStratagemPanel = forwardRef<StratagemSpecificPanelRef, St
         />
         <p className="text-xs text-gray-500 mt-1">
           Provide a specific theme or angle for the negative information. This will guide the AI in crafting the messages.
+        </p>
+      </div>
+
+      {/* KinOS Model Override Input */}
+      <div className="mb-4">
+        <label htmlFor="reputation_assault_kinos_model" className="block text-sm font-medium text-amber-800 mb-1">
+          KinOS Model Override (Optional)
+        </label>
+        <input
+          id="reputation_assault_kinos_model"
+          type="text"
+          value={kinosModelOverride}
+          onChange={(e) => setKinosModelOverride(e.target.value)}
+          placeholder="e.g., local, gemini-2.5-flash-preview-05-20"
+          className="w-full p-2 border border-amber-300 rounded-md bg-white text-amber-900 focus:ring-amber-500 focus:border-amber-500"
+          disabled={isLoading}
+        />
+        <p className="text-xs text-gray-500 mt-1">
+          Specify a KinOS model for message generation. If empty, defaults to executor's social class model.
         </p>
       </div>
 

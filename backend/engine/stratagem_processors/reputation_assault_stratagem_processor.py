@@ -139,25 +139,32 @@ def process(
     stratagem_id = stratagem_fields.get('StratagemId', stratagem_record['id'])
     executed_by_username = stratagem_fields.get('ExecutedBy')
     target_citizen_username = stratagem_fields.get('TargetCitizen')
-    stratagem_notes = stratagem_fields.get('Notes', "") # Get notes for assaultAngle
+    stratagem_notes = stratagem_fields.get('Notes', "")
 
-    # Extract assaultAngle from notes if present
+    # Extract assaultAngle and kinosModelOverride from notes
     assault_angle_from_notes: Optional[str] = None
-    if "Angle: " in stratagem_notes:
-        try:
-            # Assumes "Angle: <text>\nOriginal notes..."
-            angle_part = stratagem_notes.split("Angle: ", 1)[1]
-            assault_angle_from_notes = angle_part.split("\n", 1)[0].strip()
-        except IndexError:
-            pass # Could not parse
+    kinos_model_override_from_notes: Optional[str] = None
+
+    notes_lines = stratagem_notes.split('\n')
+    remaining_notes_for_log = []
+    for line in notes_lines:
+        if line.startswith("Angle: "):
+            assault_angle_from_notes = line.split("Angle: ", 1)[1].strip()
+        elif line.startswith("KinosModelOverride: "):
+            kinos_model_override_from_notes = line.split("KinosModelOverride: ", 1)[1].strip()
+        else:
+            remaining_notes_for_log.append(line)
     
-    log_message = (
-        f"{LogColors.STRATAGEM_PROCESSOR}Processing 'reputation_assault' stratagem {stratagem_id} "
+    log_message_parts = [
+        f"{LogColors.STRATAGEM_PROCESSOR}Processing 'reputation_assault' stratagem {stratagem_id} ",
         f"by {executed_by_username} against {target_citizen_username}."
-    )
+    ]
     if assault_angle_from_notes:
-        log_message += f" Angle: '{assault_angle_from_notes}'."
-    log.info(log_message + LogColors.ENDC)
+        log_message_parts.append(f" Angle: '{assault_angle_from_notes}'.")
+    if kinos_model_override_from_notes:
+        log_message_parts.append(f" KinOS Model Override: '{kinos_model_override_from_notes}'.")
+    
+    log.info("".join(log_message_parts) + LogColors.ENDC)
 
     if not executed_by_username or not target_citizen_username:
         log.error(f"{LogColors.FAIL}Stratagem {stratagem_id} missing ExecutedBy or TargetCitizen. Cannot process.{LogColors.ENDC}")
@@ -180,8 +187,13 @@ def process(
     executor_data_package = executor_dp_response.json().get('data', {})
     executor_profile_for_kinos = executor_data_package.get('citizen', {})
     executor_display_name = executor_profile_for_kinos.get('FirstName', executed_by_username)
-    executor_social_class = executor_profile_for_kinos.get("SocialClass")
-    model_for_executor = _rh_get_kinos_model_for_citizen(executor_social_class) # Model for both KinOS calls
+    
+    # Determine model for executor: use override if present, else default to social class
+    model_for_executor = kinos_model_override_from_notes
+    if not model_for_executor:
+        executor_social_class = executor_profile_for_kinos.get("SocialClass")
+        model_for_executor = _rh_get_kinos_model_for_citizen(executor_social_class)
+    log.info(f"{LogColors.PROCESS}Executor '{executed_by_username}' will use KinOS model: '{model_for_executor}' for generating messages.{LogColors.ENDC}")
 
     log.info(f"{LogColors.PROCESS}Fetching data package for target {target_citizen_username}...{LogColors.ENDC}")
     target_dp_response = requests.get(f"{NEXT_JS_BASE_URL}/api/get-data-package?citizenUsername={target_citizen_username}", timeout=30)
