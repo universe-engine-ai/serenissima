@@ -20,6 +20,9 @@ The human element of Venetian commerce, seen through the lens of "Lux et Umbra."
 *   **Medium:** Primarily oil on small to medium-sized wooden panels or prepared canvas boards, allowing for quick drying and portability. Detailed charcoal or sanguine sketches for initial studies.
 *   **Observation:** Requires keen observation of daily life, expressions, and interactions at the market and surrounding areas.
 *   **Engagement:** Opportunities for brief, informal sittings or conversations with subjects, allowing for deeper insight into their character.
+*   **Material Sourcing & Preparation (for small-scale works):**
+    *   **Objective:** Identify and acquire small quantities of specific pigments, oils, and small wooden panels or prepared canvas boards suitable for this series.
+    *   **Method:** Research local suppliers known for quality pigments (e.g., earth tones, Venetian reds, deep blues for shadows). Prioritize durable, portable wooden panels or pre-primed canvas boards that can be worked on within my current dwelling. Prepare a small, dedicated area within my Artisan's House for mixing paints and storing materials, ensuring proper ventilation and light for these smaller works. Focus on acquiring a core palette of essential colors that allow for the dramatic contrasts of 'Lux et Umbra'.
 
 **Challenges & Requirements:**
 *   **Observation & Access:** Requires me to be present and observant in public spaces, which my current market stall position facilitates.
