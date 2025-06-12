@@ -456,7 +456,7 @@ def process_work_on_art_fn(
             log.warning(f"  Could not find citizen record for {citizen_username} to determine specialty.")
 
         # 1. Fetch citizen's data package for KinOS addSystem
-        data_package_url = f"{api_base_url}/api/get-data-package?citizenUsername={citizen_username}"
+        data_package_url = f"{api_base_url}/api/get-data-package?citizenUsername={citizen_username}&format=json" # Request JSON format
         data_package_json_str = None
         try:
             data_package_response = requests.get(data_package_url, timeout=15)
