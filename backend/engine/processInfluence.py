@@ -100,13 +100,15 @@ def process_daily_influence(tables: Dict[str, Table], dry_run: bool = False, bui
 
     # tables argument is now passed in, no need to initialize here.
 
-    building_type_defs = get_building_types_from_api(API_BASE_URL)
-    if not building_type_defs:
-        log.error(f"{LogColors.FAIL}Failed to get building type definitions. Aborting.{LogColors.ENDC}")
+    # Building type definitions are now passed in if this function is refactored to accept them.
+    # For now, it still fetches its own copy.
+    building_type_defs_local = get_building_types_from_api(API_BASE_URL)
+    if not building_type_defs_local:
+        log.error(f"{LogColors.FAIL}Failed to get building type definitions for process_daily_influence. Aborting this part.{LogColors.ENDC}")
         return
     
     influence_granting_building_types: Dict[str, float] = {}
-    for type_name, type_def in building_type_defs.items():
+    for type_name, type_def in building_type_defs_local.items(): # Use local copy
         daily_influence = type_def.get("dailyInfluence")
         if daily_influence is not None:
             try:
@@ -304,6 +306,129 @@ def grant_base_daily_influence(tables: Dict[str, Table], dry_run: bool = False):
         log.error(f"{LogColors.FAIL}Error during base daily influence granting: {e}{LogColors.ENDC}")
         traceback.print_exc()
 
+def grant_home_occupant_influence(tables: Dict[str, Table], building_type_defs: Dict[str, Any], dry_run: bool = False):
+    """Grants daily influence to occupants of 'home' category buildings based on consumeTier."""
+    log_header("Grant Home Occupant Influence", LogColors.HEADER)
+
+    processed_homes_count = 0
+    influence_granted_count = 0
+
+    try:
+        home_buildings = tables["buildings"].all(formula="{Category} = 'home'")
+        if not home_buildings:
+            log.info("No 'home' category buildings found. Skipping home occupant influence grant.")
+            return
+
+        now_venice = get_venice_time_now()
+        start_of_today_venice = now_venice.replace(hour=0, minute=0, second=0, microsecond=0)
+        start_of_previous_day_venice = start_of_today_venice - timedelta(days=1)
+
+        for home_building_record in home_buildings:
+            processed_homes_count += 1
+            building_fields = home_building_record['fields']
+            building_id = building_fields.get('BuildingId', home_building_record['id'])
+            building_name_log = building_fields.get('Name', building_id)
+            building_type_name = building_fields.get('Type')
+            occupant_username = building_fields.get('Occupant')
+
+            if not occupant_username:
+                log.info(f"  Home building {building_name_log} (Type: {building_type_name}) has no occupant. Skipping.")
+                continue
+
+            if not building_type_name:
+                log.warning(f"{LogColors.WARNING}  Home building {building_name_log} (Occupant: {occupant_username}) has no 'Type'. Skipping.{LogColors.ENDC}")
+                continue
+            
+            building_type_detail = building_type_defs.get(building_type_name)
+            if not building_type_detail:
+                log.warning(f"{LogColors.WARNING}  Building type definition for '{building_type_name}' not found for home {building_name_log}. Skipping.{LogColors.ENDC}")
+                continue
+
+            consume_tier_str = building_type_detail.get('consumeTier')
+            if consume_tier_str is None: # Explicitly check for None, as 0 could be a valid tier if design changes
+                log.warning(f"{LogColors.WARNING}  Home building {building_name_log} (Type: {building_type_name}) has no 'consumeTier' defined. Skipping.{LogColors.ENDC}")
+                continue
+            
+            try:
+                consume_tier = int(consume_tier_str)
+                if not (1 <= consume_tier <= 5):
+                    log.warning(f"{LogColors.WARNING}  Home building {building_name_log} (Type: {building_type_name}) has invalid 'consumeTier' {consume_tier}. Must be 1-5. Skipping.{LogColors.ENDC}")
+                    continue
+            except ValueError:
+                log.warning(f"{LogColors.WARNING}  Home building {building_name_log} (Type: {building_type_name}) has non-integer 'consumeTier' '{consume_tier_str}'. Skipping.{LogColors.ENDC}")
+                continue
+
+            influence_to_grant = consume_tier * 10.0
+            log.info(f"  Processing home: {building_name_log} (Type: {building_type_name}, Tier: {consume_tier}, Occupant: {occupant_username}). Influence to grant: {influence_to_grant}")
+
+            occupant_citizen_record = get_citizen_record(tables, occupant_username)
+            if not occupant_citizen_record:
+                log.warning(f"{LogColors.WARNING}    Occupant citizen {occupant_username} not found for home {building_name_log}. Cannot grant influence.{LogColors.ENDC}")
+                continue
+            
+            occupant_airtable_id = occupant_citizen_record['id']
+            occupant_fields = occupant_citizen_record['fields']
+            is_ai = occupant_fields.get('IsAI', False)
+            is_eligible = False
+
+            if is_ai:
+                is_eligible = True
+                log.info(f"    Occupant {occupant_username} is an AI. Eligible for home influence.")
+            else:
+                last_active_at_str = occupant_fields.get('LastActiveAt')
+                if last_active_at_str:
+                    try:
+                        last_active_at_dt = pytz.utc.localize(datetime.fromisoformat(last_active_at_str.replace("Z", ""))).astimezone(VENICE_TIMEZONE)
+                        if last_active_at_dt >= start_of_previous_day_venice:
+                            is_eligible = True
+                            log.info(f"    Human occupant {occupant_username} is active (LastActiveAt: {last_active_at_dt.strftime('%Y-%m-%d %H:%M:%S %Z')}). Eligible for home influence.")
+                        else:
+                            log.info(f"    Human occupant {occupant_username} is inactive (LastActiveAt: {last_active_at_dt.strftime('%Y-%m-%d %H:%M:%S %Z')}). Not eligible for home influence.")
+                    except ValueError as e_date:
+                        log.warning(f"{LogColors.WARNING}      Could not parse LastActiveAt ('{last_active_at_str}') for human occupant {occupant_username}. Error: {e_date}. Not eligible.{LogColors.ENDC}")
+                else:
+                    log.info(f"    Human occupant {occupant_username} has no LastActiveAt. Not eligible for home influence.")
+            
+            if is_eligible:
+                current_influence = float(occupant_fields.get('Influence', 0.0))
+                new_influence = current_influence + influence_to_grant
+                influence_granted_count += 1
+
+                log.info(f"      Granting {influence_to_grant} home influence to {occupant_username}. Current: {current_influence}, New: {new_influence}")
+
+                if not dry_run:
+                    try:
+                        tables["citizens"].update(occupant_airtable_id, {"Influence": new_influence})
+                        
+                        notification_content = f"Vous avez gagné {influence_to_grant} point(s) d'influence pour la qualité de votre résidence ({building_name_log}, Tier {consume_tier})."
+                        notification_details = {
+                            "event_type": "daily_home_occupant_influence",
+                            "building_id": building_id,
+                            "building_name": building_name_log,
+                            "building_type": building_type_name,
+                            "consume_tier": consume_tier,
+                            "influence_gained": influence_to_grant,
+                            "new_total_influence": new_influence
+                        }
+                        tables['notifications'].create({
+                            "Type": "daily_home_occupant_influence",
+                            "Content": notification_content,
+                            "Details": json.dumps(notification_details),
+                            "CreatedAt": datetime.now(VENICE_TIMEZONE).isoformat(),
+                            "Citizen": occupant_username 
+                        })
+                        log.info(f"      Home occupant influence notification created for {occupant_username}.")
+                    except Exception as e_update:
+                        log.error(f"{LogColors.FAIL}      Failed to update home occupant influence or create notification for {occupant_username}: {e_update}{LogColors.ENDC}")
+                else:
+                    log.info(f"      [DRY RUN] Would update home occupant influence for {occupant_username} to {new_influence} and create notification.")
+        
+        log.info(f"{LogColors.OKGREEN}Home occupant influence granting finished. Processed {processed_homes_count} homes, granted influence to {influence_granted_count} occupants.{LogColors.ENDC}")
+
+    except Exception as e:
+        log.error(f"{LogColors.FAIL}Error during home occupant influence granting: {e}{LogColors.ENDC}")
+        traceback.print_exc()
+
 # --- Main Execution ---
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Process daily influence from buildings.")
@@ -322,7 +447,14 @@ if __name__ == "__main__":
 
     tables_main = initialize_airtable()
     if tables_main:
-        process_daily_influence(tables=tables_main, dry_run=args.dry_run, building_type_filter=args.buildingType)
+        # Fetch building type definitions once for all functions that might need them
+        building_type_defs_main = get_building_types_from_api(API_BASE_URL)
+        if not building_type_defs_main:
+            log.error(f"{LogColors.FAIL}Failed to get building type definitions. Some influence processing might be skipped or fail.{LogColors.ENDC}")
+            # Decide if to abort all or proceed with what's possible. For now, proceed.
+
+        process_daily_influence(tables=tables_main, dry_run=args.dry_run, building_type_filter=args.buildingType) # This function re-fetches building_type_defs, could be optimized
         grant_base_daily_influence(tables=tables_main, dry_run=args.dry_run)
+        grant_home_occupant_influence(tables=tables_main, building_type_defs=building_type_defs_main, dry_run=args.dry_run)
     else:
         log.error(f"{LogColors.FAIL}Could not initialize Airtable. Aborting all influence processing.{LogColors.ENDC}")
