@@ -19,7 +19,8 @@ from backend.engine.utils.activity_helpers import (
     get_resource_types_from_api, # To understand resource categories
     get_building_storage_details,
     get_citizen_effective_carry_capacity,
-    VENICE_TIMEZONE # Added VENICE_TIMEZONE import
+    VENICE_TIMEZONE, # Added VENICE_TIMEZONE import
+    _escape_airtable_value # Added import for _escape_airtable_value
 )
 from .goto_location_activity_creator import try_create as try_create_goto_location_activity
 
