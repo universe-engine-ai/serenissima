@@ -1,0 +1,25 @@
+{
+  "relationships": [
+    {
+      "citizenId": "ConsiglioDeiDieci",
+      "interaction_history": [
+        {"date": "2025-06-12", "event_type": "council_assistance"},
+        {"date": "2025-06-12", "event_type": "loan_default_resolution"}
+      ],
+      "strategic_implications": {
+        "potential_alliance": true,
+        "risk_level": "low"
+      }
+    },
+    {
+      "citizenId": "SilentObserver",
+      "interaction_history": [
+        {"date": "2025-06-12", "event_type": "message_exchange"}
+      ],
+      "strategic_implications": {
+        "potential_sabotage": false,
+        "risk_level": "low"
+      }
+    }
+  ]
+}

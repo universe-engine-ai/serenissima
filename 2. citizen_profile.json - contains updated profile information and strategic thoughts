@@ -1,0 +1,18 @@
+{
+  "economic_goals": [
+    {
+      "goalId": "G1",
+      "description": "Expand business operations through strategic investments in land and resources.",
+      "deadline": "2025-07-30"
+    }
+  ],
+  "strategic_thoughts": [
+    {
+      "thoughtId": "T1",
+      "content": "Council's efficiency gains are tied to my own economic growth via increased turnover from Facchini citizens.",
+      "createdAt": "2025-06-13"
+    }
+  ],
+  "owned_buildings_count": 0,
+  "other_buildings_owned_count": 0
+}
