@@ -43,7 +43,8 @@ from backend.engine.stratagem_creators import (
     try_create_emergency_liquidation_stratagem,
     try_create_cultural_patronage_stratagem, # Added cultural_patronage
     try_create_information_network_stratagem, # Added information_network
-    try_create_maritime_blockade_stratagem # Added maritime_blockade
+    try_create_maritime_blockade_stratagem, # Added maritime_blockade
+    try_create_canal_mugging_stratagem # Added canal_mugging
 )
 from backend.engine.stratagem_processors import (
     process_undercut_stratagem,
@@ -54,7 +55,8 @@ from backend.engine.stratagem_processors import (
     process_emergency_liquidation_stratagem,
     process_cultural_patronage_stratagem, # Added cultural_patronage
     process_information_network_stratagem, # Added information_network
-    process_maritime_blockade_stratagem # Added maritime_blockade
+    process_maritime_blockade_stratagem, # Added maritime_blockade
+    process_canal_mugging_stratagem # Added canal_mugging
 )
 
 
@@ -3344,6 +3346,7 @@ STRATAGEM_CREATORS_ENGINE = {
     "cultural_patronage": try_create_cultural_patronage_stratagem, # Added cultural_patronage
     "information_network": try_create_information_network_stratagem, # Added information_network
     "maritime_blockade": try_create_maritime_blockade_stratagem, # Added maritime_blockade
+    "canal_mugging": try_create_canal_mugging_stratagem, # Added canal_mugging
     # Add other stratagem creators here
 }
 
@@ -3357,6 +3360,7 @@ STRATAGEM_PROCESSORS_ENGINE = {
     "cultural_patronage": process_cultural_patronage_stratagem, # Added cultural_patronage
     "information_network": process_information_network_stratagem, # Added information_network
     "maritime_blockade": process_maritime_blockade_stratagem, # Added maritime_blockade
+    "canal_mugging": process_canal_mugging_stratagem, # Added canal_mugging
     # Add other stratagem processors here
 }
 
