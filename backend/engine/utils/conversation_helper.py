@@ -5,7 +5,7 @@ import logging
 import time
 import re
 from datetime import datetime
-from typing import Dict, List, Optional, Any, Tuple
+from typing import Dict, List, Optional, Any, Tuple, Union
 
 import requests
 from pyairtable import Table
