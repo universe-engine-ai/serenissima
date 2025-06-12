@@ -79,7 +79,7 @@ def process(
     all_citizens_records = tables['citizens'].all(formula="{IsAI}=TRUE()") # Uniquement les IA pour l'instant
     present_citizens_usernames = []
 
-    for citizen_rec in all_ai_citizens_records:
+    for citizen_rec in all_citizens_records: # Correction de la faute de frappe
         other_citizen_username = citizen_rec['fields'].get('Username')
         if not other_citizen_username or other_citizen_username == executor_username:
             continue

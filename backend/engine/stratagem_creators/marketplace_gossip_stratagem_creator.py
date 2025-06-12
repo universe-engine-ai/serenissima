@@ -11,7 +11,8 @@ from backend.engine.utils.activity_helpers import (
     LogColors,
     get_building_record,
     _get_building_position_coords,
-    find_path_between_buildings_or_coords
+    find_path_between_buildings_or_coords,
+    _calculate_distance_meters # Ajout de l'import manquant
 )
 from backend.engine.utils.notification_helpers import create_notification
 
