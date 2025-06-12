@@ -320,7 +320,7 @@ const CoordinatePricingStratagemPanel = forwardRef<StratagemSpecificPanelRef, St
       </div>
 
       {summaryElements && (
-        <div className="mt-6 p-3 bg-amber-100 border border-amber-200 rounded-md text-sm text-amber-800 flex items-start">
+        <div className="mt-6 p-3 bg-amber-100 border border-amber-200 rounded-md text-base text-amber-800 flex items-start">
           <FaLongArrowAltRight className="text-amber-600 mr-2 mt-1 flex-shrink-0" size={18} />
           <span>{summaryElements}</span>
         </div>
