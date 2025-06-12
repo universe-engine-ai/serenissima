@@ -17,4 +17,6 @@ from .employee_poaching_stratagem_processor import process as process_employee_p
 from .joint_venture_stratagem_processor import process as process_joint_venture_stratagem
 # Placeholder for monopoly_pricing
 # from .monopoly_pricing_stratagem_processor import process as process_monopoly_pricing_stratagem
+# Placeholder for reputation_boost
+# from .reputation_boost_stratagem_processor import process as process_reputation_boost_stratagem
 # Import other stratagem processors here

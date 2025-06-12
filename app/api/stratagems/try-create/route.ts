@@ -93,6 +93,13 @@ export async function POST(request: Request) {
         `TargetResourceType: ${stratagemDetails?.targetResourceType}`,
         `Variant: ${stratagemDetails?.variant}`
       );
+    } else if (stratagemType === 'reputation_boost') {
+      console.log(`[API /stratagems/try-create] Processing 'reputation_boost' stratagem with parameters:`,
+        `TargetCitizenUsername: ${stratagemDetails?.targetCitizenUsername}`,
+        `CampaignIntensity: ${stratagemDetails?.campaignIntensity}`,
+        `CampaignDurationDays: ${stratagemDetails?.campaignDurationDays}`,
+        `CampaignBudget: ${stratagemDetails?.campaignBudget}`
+      );
     }
 
     let parsedPythonEngineUrl: URL;

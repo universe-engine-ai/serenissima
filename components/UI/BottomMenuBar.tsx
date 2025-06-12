@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { 
   FaCoins, FaHandshake, FaScroll, FaUserShield, FaBomb, // Main category icons
   FaArrowCircleDown, FaSyncAlt, FaArchive, FaStoreSlash, FaUserSecret, FaPalette, FaSitemap, FaAnchor, FaHandHoldingUsd, FaBullhorn, FaUsers, // Existing sub-item icons
-  FaMask, FaComments, FaUserPlus, FaNewspaper // New sub-item icons
+  FaMask, FaComments, FaUserPlus, FaNewspaper, FaStar // New sub-item icons (FaStar added)
 } from 'react-icons/fa';
 import { eventBus, EventTypes } from '@/lib/utils/eventBus'; // Importer eventBus
 
@@ -49,7 +49,7 @@ const BottomMenuBar: React.FC = () => {
   // Cette liste est utilisée pour le style des boutons.
   const allStratagemTypesInMenu = [
     'undercut', 'coordinate_pricing', 'emergency_liquidation', 'hoard_resource', 'supplier_lockout', 'joint_venture', 'monopoly_pricing',
-    'reputation_assault', 'financial_patronage', 'cultural_patronage', 'theater_conspiracy', 'marketplace_gossip', 'employee_poaching',
+    'reputation_assault', 'financial_patronage', 'cultural_patronage', 'theater_conspiracy', 'marketplace_gossip', 'employee_poaching', 'reputation_boost',
     'political_campaign', 'printing_propaganda',
     'information_network', 'neighborhood_watch',
     'maritime_blockade', 'cargo_mishap'
@@ -177,6 +177,14 @@ const BottomMenuBar: React.FC = () => {
             id: 'employee_poaching', type: 'employee_poaching', title: 'Employee Poaching (Coming Soon)',
             description: 'Recruit a skilled employee from a competitor by making them a better offer.',
             influenceCostBase: 6, hasVariants: false,
+          }
+        },
+        {
+          id: 'reputation_boost', label: 'Rep. Boost (Soon)', icon: FaStar,
+          stratagemPanelData: {
+            id: 'reputation_boost', type: 'reputation_boost', title: 'Reputation Boost (Coming Soon)',
+            description: "Actively improve a target citizen's public image and trustworthiness through a coordinated campaign.",
+            influenceCostBase: 30, hasVariants: false, // Assuming intensity is a parameter, not variant for cost
           }
         }
       ]

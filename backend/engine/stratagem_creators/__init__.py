@@ -17,4 +17,6 @@ from .employee_poaching_stratagem_creator import try_create as try_create_employ
 from .joint_venture_stratagem_creator import try_create as try_create_joint_venture_stratagem
 # Placeholder for monopoly_pricing
 # from .monopoly_pricing_stratagem_creator import try_create as try_create_monopoly_pricing_stratagem
+# Placeholder for reputation_boost
+# from .reputation_boost_stratagem_creator import try_create as try_create_reputation_boost_stratagem
 # Import other stratagem creators here as they are developed

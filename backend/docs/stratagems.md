@@ -1131,3 +1131,65 @@ This would make NLR initiate a Neighborhood Watch in the San Polo district for 4
 }
 ```
 This would make NLR attempt to set the price of their Iron Ore to 200% above the current market average for 7 days, costing NLR 40 Influence.
+
+### 20. Reputation Boost (Coming Soon)
+
+-   **Type**: `reputation_boost`
+-   **Purpose**: To actively improve a target citizen's public image and trustworthiness through a coordinated campaign of positive messaging and relationship building.
+-   **Category**: `social_support`
+-   **Creator**: (To be created: `backend/engine/stratagem_creators/reputation_boost_stratagem_creator.py`)
+-   **Processor**: (To be created: `backend/engine/stratagem_processors/reputation_boost_stratagem_processor.py`)
+
+#### Parameters for Creation (`stratagemDetails` in API request):
+
+-   `targetCitizenUsername` (string, required): The username of the citizen whose reputation is to be boosted.
+-   `campaignIntensity` (string, optional): The intensity of the campaign ("Modest", "Standard", "Intense"). Defaults to "Standard". Influences Ducat cost and effectiveness.
+-   `campaignDurationDays` (integer, optional): Duration of the campaign in days. Defaults to 30 days. (Range: 30-60 days).
+-   `campaignBudget` (integer, optional): Ducats allocated for campaign expenses (e.g., hosting small events, commissioning positive mentions). Defaults to a value based on `campaignIntensity`.
+-   `name` (string, optional): Custom name for the stratagem. Defaults to "Reputation Campaign for [TargetCitizen]".
+-   `description` (string, optional): Custom description.
+-   `notes` (string, optional): Custom notes.
+
+#### How it Works (Conceptual):
+
+1.  **Creation**:
+    -   The `reputation_boost_stratagem_creator.py` validates parameters (e.g., `targetCitizenUsername` exists).
+    -   It creates a new record in the `STRATAGEMS` table with `Status: "active"`, `Category: "social_support"`, an influence cost of 30, and sets `ExpiresAt` based on `campaignDurationDays`.
+    -   The `campaignIntensity`, `targetCitizenUsername`, and `campaignBudget` are stored.
+
+2.  **Processing (Conceptual for "Coming Soon")**:
+    -   `processStratagems.py` picks up the active "reputation_boost" stratagem.
+    -   `reputation_boost_stratagem_processor.py` is invoked.
+    -   **Positive Messaging**:
+        -   The processor generates positive `MESSAGES` from the `ExecutedBy` citizen (or allied AIs) to influential citizens about the `targetCitizenUsername`.
+        -   It might involve creating `problem` records of type `positive_rumor` or `commendation` related to the `targetCitizenUsername`.
+    -   **Relationship Building Activities**:
+        -   The processor could create activities for the `ExecutedBy` citizen to publicly associate with or speak favorably of the `targetCitizenUsername` (e.g., `attend_event_with_target`, `publicly_praise_target`).
+        -   Small, positive events might be simulated (e.g., a well-received public appearance by the target, facilitated by the campaign's budget).
+    -   **Impact on Target's Reputation**:
+        -   The `TrustScore` in `RELATIONSHIPS` between the `targetCitizenUsername` and *other* citizens in their social circle gradually increases.
+        -   The `targetCitizenUsername` might gain positive status effects or see a reduction in negative ones.
+    -   **Ducat Expenditure**:
+        -   The `campaignBudget` is spent over the duration of the stratagem on simulated campaign activities.
+    -   **Notifications**:
+        -   The `targetCitizenUsername` might receive notifications of positive developments or support.
+        -   The `ExecutedBy` citizen receives updates on campaign progress.
+    -   **Status & Notes**:
+        -   The stratagem remains `active` for its `campaignDurationDays`.
+        -   Notes track campaign activities, Ducats spent, and observed changes in the target's social standing.
+
+#### Example API Request to `POST /api/stratagems/try-create`:
+
+```json
+{
+  "citizenUsername": "NLR",
+  "stratagemType": "reputation_boost",
+  "stratagemDetails": {
+    "targetCitizenUsername": "StrugglingMerchantAI",
+    "campaignIntensity": "Standard",
+    "campaignDurationDays": 45,
+    "campaignBudget": 1500
+  }
+}
+```
+This would make NLR launch a "Standard" intensity reputation boost campaign for "StrugglingMerchantAI" lasting 45 days, costing 30 Influence upfront and up to 1500 Ducats for campaign activities.
