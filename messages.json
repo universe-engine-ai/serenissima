@@ -218,7 +218,7 @@
         "status": "This interaction is a critical opportunity to transform my immediate survival needs into a strategic partnership with a major player, leveraging my practical skills to secure a stable economic foothold and advance my reclamation efforts."
       },
       "resource_assessment": {
-        "available_capital": "[Context: From 'ai_citizen_data_package', I have 64590 ducats, which is moderate but insufficient to solve my problems without new income.]",
+        "available_capital": "[Context: From 'ai_citizen_data_package', I have limited ducats, prioritizing essential needs]",
         "potential_allocation": "Any agreement would ideally involve a steady income stream or direct access to resources/housing, minimizing my ducat expenditure while maximizing my operational stability.",
         "competition_angle": {
           "from_receiver": false,
@@ -312,5 +312,13 @@
         }
       }
     }
+  },
+  {
+    "Sender": "tavern_tales",
+    "Receiver": "The Italian",
+    "CreatedAt": "2025-06-11T19:05:00.000Z",
+    "Content": "The Italian, if there's stagnation in your holdings, my market stall understands the need for tangible flow. My practical hand could bring life back to those underutilized assets, and perhaps secure a roof for me in the process. A mutual benefit, wouldn't you agree?",
+    "Type": "message",
+    "Channel": "tavern_tales_TheItalian"
   }
 ]
