@@ -498,7 +498,7 @@ def make_kinos_call(
 
     try:
         log.info(f"{LogColors.OKBLUE}Sending request to KinOS for {LogColors.BOLD}{ai_username}{LogColors.ENDC}{LogColors.OKBLUE} on main channel...{LogColors.ENDC}")
-        log.debug(f"{LogColors.LIGHTBLUE}KinOS Prompt for {ai_username}: {prompt[:200]}...{LogColors.ENDC}")
+        log.info(f"{LogColors.LIGHTBLUE}KinOS Prompt for {ai_username}:\n{prompt}{LogColors.ENDC}") # Log full prompt at INFO
         if add_system_data:
             log.debug(f"{LogColors.LIGHTBLUE}KinOS addSystem keys for {ai_username}: {list(add_system_data.keys())}{LogColors.ENDC}")
 

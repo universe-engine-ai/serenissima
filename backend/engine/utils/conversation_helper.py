@@ -210,7 +210,7 @@ def make_kinos_channel_call(
 
     try:
         log.info(f"Sending request to KinOS channel {channel_name} for speaker {speaker_username}...")
-        log.debug(f"KinOS Channel Prompt for {speaker_username} to {channel_name}: {prompt[:300]}...")
+        log.info(f"{LogColors.LIGHTBLUE}KinOS Channel Prompt for {speaker_username} to {channel_name}:\n{prompt}{LogColors.ENDC}") # Log full prompt at INFO
         if add_system_data:
             log.debug(f"KinOS Channel addSystem keys: {list(add_system_data.keys())}")
 
