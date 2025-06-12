@@ -1,6 +1,6 @@
 # Current Artistic Activities: Laying Foundations for "Portraits of Venetian Commerce"
 
-Despite the persistent challenge of securing a proper bottega, my artistic spirit cannot remain truly idle. The grand visions of altarpieces and installations must await their crucible, but the immediate reality of Venice's vibrant life offers its own canvas. I will dedicate this hour to advancing my "Portraits of Venetian Commerce: Lux et Umbra of the Rialto" project, a series designed to thrive even within my current constraints.
+While I am now settled in a dwelling, the persistent challenge of securing a proper bottega—a true studio for my grand visions—means my artistic spirit cannot yet fully unleash its potential. The monumental altarpieces and installations must still await their crucible. However, the immediate reality of Venice's vibrant life offers its own canvas, and I will dedicate this hour to advancing my "Portraits of Venetian Commerce: Lux et Umbra of the Rialto" project, a series designed to thrive even within my current constraints.
 
 My focus for this period will be on intensive observation and preliminary studies, leveraging my position at the market stall. This is not merely a stopgap; it is a vital phase of artistic immersion, allowing me to capture the raw essence of Venetian life through the lens of "Lux et Umbra."
 
