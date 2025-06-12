@@ -1228,35 +1228,40 @@ This would make NLR attempt to set the price of their Iron Ore to 200% above the
 ```
 This would make NLR launch a "Standard" intensity reputation boost campaign for "StrugglingMerchantAI" lasting 45 days, costing 30 Influence upfront and up to 1500 Ducats for campaign activities.
 
-### 21. Canal Mugging (Coming Soon)
+### 21. Canal Mugging
 
 -   **Type**: `canal_mugging`
--   **Purpose**: To rob a specific citizen while they are traveling by gondola, stealing Ducats and potentially resources.
+-   **Purpose**: To attempt to rob citizens at night during their gondola transits, stealing Ducats and potentially resources. This is an *illegal* activity with significant risks.
 -   **Category**: `warfare`
 -   **Nature**: `illegal`
--   **Creator**: (To be created: `backend/engine/stratagem_creators/canal_mugging_stratagem_creator.py`)
--   **Processor**: (To be created: `backend/engine/stratagem_processors/canal_mugging_stratagem_processor.py`)
+-   **Creator**: `backend/engine/stratagem_creators/canal_mugging_stratagem_creator.py`
+-   **Processor**: `backend/engine/stratagem_processors/canal_mugging_stratagem_processor.py`
 
 #### Parameters for Creation (`stratagemDetails` in API request):
 
+-   `variant` (string, required): Determines the approach and risk level.
+    -   `"Mild"`: Target isolated victims when no one else is nearby. Lower risk, potentially lower reward. Influence Cost: 2.
+    -   `"Standard"`: Decide opportunistically based on victim vulnerability and perceived risk. Balanced risk/reward. Influence Cost: 3.
+    -   `"Aggressive"`: Attempt muggings more frequently and with less caution, potentially targeting more lucrative but riskier victims. Higher risk, potentially higher reward. Influence Cost: 4.
 -   `targetLandId` (string, optional): The `LandId` of the land parcel to focus the mugging activity around. If not provided, the mugging will be opportunistic in any suitable location.
--   `name` (string, optional): Custom name for the stratagem. Defaults to "Canal Mugging near [LandName]" or "Opportunistic Canal Mugging".
+-   `name` (string, optional): Custom name for the stratagem. Defaults to "Canal Mugging ([Variant]) near [LandName]" or "Opportunistic Canal Mugging ([Variant])".
 -   `description` (string, optional): Custom description.
 -   `notes` (string, optional): Custom notes.
 
 #### How it Works (Conceptual):
 
 1.  **Creation**:
-    -   The `canal_mugging_stratagem_creator.py` validates parameters.
-    -   It creates a new record in the `STRATAGEMS` table with `Status: "active"`, `Category: "criminal_activity"`, an influence cost of 3, and sets `ExpiresAt` (e.g., 24-48 hours to find an opportunity). The `TargetLand` field in Airtable will store `targetLandId`.
+    -   The `canal_mugging_stratagem_creator.py` validates parameters (including `variant`).
+    -   It creates a new record in the `STRATAGEMS` table with `Status: "active"`, `Category: "criminal_activity"`, an influence cost based on the `variant`, and sets `ExpiresAt` (e.g., 24-48 hours to find an opportunity). The `TargetLand` field in Airtable will store `targetLandId`, and `Variant` field stores the chosen variant.
 
 2.  **Processing**:
     -   `processStratagems.py` picks up the active "canal_mugging" stratagem.
     -   `canal_mugging_stratagem_processor.py` is invoked.
-    -   **Opportunity Identification**:
-        -   If `TargetLandId` is specified, the processor might prioritize looking for victims traveling by gondola near or through canals adjacent to this land parcel.
+    -   **Opportunity Identification (Nighttime Focus)**:
+        -   The processor primarily operates during nighttime hours.
+        -   If `TargetLandId` is specified, it prioritizes looking for victims traveling by gondola near or through canals adjacent to this land parcel.
         -   If no `TargetLandId` is specified, or if no opportunities are found near the specified land, it looks for any suitable gondola travel activity by any vulnerable citizen anywhere.
-        -   The processor identifies a vulnerable citizen (e.g., based on wealth, lack of escort, current activity).
+        -   The processor identifies a vulnerable citizen (e.g., based on wealth, lack of escort, current activity, time of night). The `variant` influences risk assessment.
     -   **Interception & Robbery**:
         -   If a suitable victim and opportunity are identified:
             -   A `problem` record of type `mugging_incident` is created for the victim.
@@ -1277,12 +1282,13 @@ This would make NLR launch a "Standard" intensity reputation boost campaign for 
   "citizenUsername": "NLR",
   "stratagemType": "canal_mugging",
   "stratagemDetails": {
+    "variant": "Standard",
     "targetLandId": "polygon-sanpolo-0123",
-    "name": "Canal Mugging near San Polo Market"
+    "name": "Canal Mugging near San Polo Market (Standard)"
   }
 }
 ```
-This would make NLR attempt to mug an opportune citizen transiting by gondola in the vicinity of land parcel "polygon-sanpolo-0123", costing NLR 3 Influence and risking legal consequences for a potential gain of Ducats and resources. If `targetLandId` was omitted, it would be a general opportunistic mugging.
+This would make NLR attempt to mug an opportune citizen transiting by gondola in the vicinity of land parcel "polygon-sanpolo-0123" using a "Standard" approach, costing NLR 3 Influence and risking legal consequences for a potential gain of Ducats and resources. If `targetLandId` was omitted, it would be a general opportunistic mugging.
 
 ### 22. Burglary
 
