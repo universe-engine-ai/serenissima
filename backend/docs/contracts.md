@@ -66,7 +66,7 @@ Il existe plusieurs types de contrats, chacun servant un objectif distinct dans 
             *   Il crée un marché dynamique pour les services d'entreposage.
         *   Cette fourchette sert de guide pour l'équilibrage du jeu et le comportement des IA. Les joueurs humains restent libres de fixer leurs prix, mais des prix trop éloignés de ces normes pourraient être moins compétitifs.
 
-3.  **`public_storage`**:
+4.  **`public_storage`**:
     *   **Objectif**: Permettre aux propriétaires d'entrepôts (gérés par l'IA) d'offrir publiquement de l'espace de stockage pour des types de ressources spécifiques.
     *   **Fonctionnement**:
         *   **Création**: Le script `backend/ais/automated_adjustpublicstoragecontracts.py` crée ces contrats quotidiennement.
@@ -83,7 +83,7 @@ Il existe plusieurs types de contrats, chacun servant un objectif distinct dans 
             *   `Status` est "active", `EndAt` est fixé à 1 semaine.
     *   **Utilisation**: Ces contrats sont consultés par le script `backend/ais/automated_adjuststoragequeriescontracts.py` pour trouver des lieux de stockage.
 
-4.  **`storage_query`**:
+5.  **`storage_query`**:
     *   **Objectif**: Permettre aux bâtiments commerciaux gérés par l'IA de rechercher et de réserver de l'espace de stockage externe lorsque leur propre capacité est presque pleine.
     *   **Fonctionnement**:
         *   **Création**: Le script `backend/ais/automated_adjuststoragequeriescontracts.py` crée ces contrats.
@@ -104,24 +104,12 @@ Il existe plusieurs types de contrats, chacun servant un objectif distinct dans 
                 *   `Status` est "active", `EndAt` est fixé à 1 mois.
         *   **Paiement**: Le script `backend/engine/paystoragecontracts.py` gère les paiements journaliers pour ces contrats. Le `Buyer` paie le `Seller` pour la `TargetAmount` réservée, que l'espace soit utilisé ou non.
     *   **Logique Associée**:
-        *   Le `Buyer` (opérateur du bâtiment commercial) doit organiser le transport des ressources vers le `SellerBuilding` (entrepôt) en utilisant une activité `deliver_to_storage`.
+        *   Le `Buyer` (opérateur du bâtiment commercial) doit organiser le transport de ses ressources vers le `SellerBuilding` (l'entrepôt) en utilisant une activité `deliver_to_storage`.
         *   De même, pour récupérer ses ressources, le `Buyer` utilisera une activité `fetch_from_storage` depuis le `SellerBuilding` vers son bâtiment commercial.
         *   Le système doit s'assurer que le `Buyer` ne dépasse pas la `TargetAmount` louée pour la `ResourceType` dans le `SellerBuilding` (la logique de vérification de capacité est dans le processeur de `deliver_to_storage`).
         *   Les ressources stockées dans le `SellerBuilding` sous un contrat `storage_query` restent la propriété du `Buyer`.
 
-5.  **`construction_project`**:
-    *   **Objectif**: Gérer la construction d'un nouveau bâtiment.
-    *   **Fonctionnement**:
-            *   **Demande d'espace**: Une forte demande pour le stockage d'un type de ressource peut faire monter les prix.
-            *   **Coûts opérationnels**: Le bailleur doit couvrir ses propres frais (maintenance de l'entrepôt, bail du terrain, etc.) et viser une marge bénéficiaire.
-            *   **Conditions spéciales**: Si l'entrepôt offre des conditions particulières (ex: sécurité renforcée, température contrôlée - bien que non simulé en détail), cela peut justifier un prix plus élevé.
-        *   **Impact sur le Gameplay**:
-            *   Un coût de stockage bien calibré décourage l'accumulation excessive et indéfinie de ressources.
-            *   Il introduit un coût d'opportunité pour la détention de stocks.
-            *   Il crée un marché dynamique pour les services d'entreposage.
-        *   Cette fourchette sert de guide pour l'équilibrage du jeu et le comportement des IA. Les joueurs humains restent libres de fixer leurs prix, mais des prix trop éloignés de ces normes pourraient être moins compétitifs.
-
-5.  **`construction_project`**:
+6.  **`construction_project`**:
     *   **Objectif**: Gérer la construction d'un nouveau bâtiment.
     *   **Fonctionnement**:
         *   Créé lorsqu'un nouveau bâtiment est commandé (par IA ou joueur).
@@ -139,14 +127,14 @@ Il existe plusieurs types de contrats, chacun servant un objectif distinct dans 
         *   Le champ `ConstructionMinutesRemaining` sur l'enregistrement du `BuyerBuilding` est décrémenté.
         *   Lorsque `ConstructionMinutesRemaining` <= 0, le bâtiment est marqué `IsConstructed=True` et le contrat `completed`.
 
-6.  **`recurrent`**:
+7.  **`recurrent`**:
     *   **Objectif**: Établir des échanges commerciaux réguliers et pré-arrangés entre deux parties spécifiques.
     *   **Fonctionnement**: Un `Buyer` et un `Seller` (citoyens ou leurs entreprises via `BuyerBuilding` et `SellerBuilding`) s'accordent sur la livraison répétée d'une `ResourceType`.
     *   Le `TargetAmount` spécifie la quantité à échanger lors de chaque transaction déclenchée par ce contrat (remplace l'ancien concept de `HourlyAmount`).
     *   Ces contrats ont une `Priority` qui peut influencer l'ordre dans lequel un citoyen tente de les satisfaire.
     *   Utilisé par les citoyens pour s'assurer un approvisionnement régulier pour leurs activités de production.
 
-7.  **`public_sell`**:
+8.  **`public_sell`**:
     *   **Objectif**: Permettre aux entreprises de vendre des ressources sur un marché ouvert, accessible à tout acheteur éligible.
     *   **Fonctionnement**:
         *   **Création**: Les entreprises (gérées par des IA ou des joueurs) peuvent créer des contrats `public_sell` pour les ressources qu'elles produisent ou souhaitent vendre. Le script `backend/ais/automated_managepublicsalesandprices.py` et `backend/ais/managepublicsalesandprices.py` (piloté par Kinos) gèrent cela pour les IA (voir [documentation IA](ais.md)).
@@ -185,13 +173,3 @@ Voir la [documentation du schéma Airtable](airtable_schema.md#table-contracts) 
 -   `TargetAmount`: Quantité totale (pour `import`, `public_sell`) ou par transaction (pour `recurrent`). Pour `logistics_service_request`, peut être moins pertinent ou représenter un volume total de service.
 -   `PricePerResource`: Prix unitaire. Pour `logistics_service_request`, utiliser `ServiceFeePerUnit`.
 -   `ContractId`: Identifiant unique, souvent déterministe pour faciliter les mises à jour.
-```
-```
-
-```markdown
-backend/docs/airtable_schema.md
-<<<<<<< SEARCH
--   `TargetAmount` (Nombre): Quantité horaire de ressource pour ce contrat.
--   `PricePerResource` (Nombre): Prix unitaire de la ressource.
--   `Priority` (Nombre): Priorité du contrat.
--   `Status` (Texte): Statut du contrat (ex: `active`, `completed`, `failed`).

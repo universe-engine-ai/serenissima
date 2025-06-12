@@ -43,7 +43,7 @@ def initialize_airtable():
 def get_ai_citizens(tables) -> List[Dict]:
     """Get all citizens that are marked as AI, are in Venice."""
     try:
-        # Query citizens with IsAI=true, InVenice=true, and SocialClass is either Nobili or Cittadini
+        # Query citizens with IsAI=true, InVenice=1, and SocialClass is either Nobili or Cittadini
         formula = "AND({IsAI}=1, {InVenice}=1)"
         ai_citizens = tables["citizens"].all(formula=formula)
         print(f"Found {len(ai_citizens)} AI citizens in Venice")
@@ -272,7 +272,8 @@ def generate_ai_response(tables: Dict[str, Table], ai_username: str, sender_user
             f"DO NOT use formal language, DO NOT write long paragraphs, DO NOT include any fluff or boilerplate. "
             f"Be direct, natural, and concise. Imagine you're sending a quick, informal message.\n\n"
             f"CRITICAL: Use the structured context provided in the 'addSystem' field (detailed below) to make your response RELEVANT to {sender_display_name} and FOCUSED ON GAMEPLAY. "
-            f"Your message should reflect your understanding of your relationship, recent events, and potential gameplay interactions with {sender_display_name}.\n\n"
+            f"Your message should reflect your understanding of your relationship, recent events, and potential gameplay interactions with {sender_display_name}. "
+            f"As {ai_display_name}, ensure your reply leverages your unique persona and strategic goals (e.g., as a GlassMaster, consider material needs or market expansion) and seeks to advance your position in Venice through this interaction.\n\n"
             f"Guide to 'addSystem' content (use this to make your message relevant and gameplay-focused):\n"
             f"- 'ai_citizen_profile': Your own detailed profile (status, wealth, etc.).\n"
             f"- 'sender_citizen_profile': The profile of {sender_display_name}.\n"
