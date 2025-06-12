@@ -26,28 +26,49 @@ def process_goto_location_fn(
     citizen = fields.get('Citizen')
     notes_str = fields.get('Notes') # Changed 'Details' to 'Notes'
     
-    # If no notes (containing JSON details), just process as a simple travel activity
-    if not notes_str:
-        log.info(f"Processed simple goto_location activity for citizen {citizen} (no JSON Notes found).")
-        return True
+    activity_guid = fields.get('ActivityId', activity_record.get('id', 'UnknownID')) # Get a reliable ID for logging
+    details_str = fields.get('Details') # Airtable field for structured JSON for goto_location
+    notes_str = fields.get('Notes')     # Airtable field for simple text notes or fallback JSON
+
+    parsed_structured_data: Optional[Dict[str, Any]] = None
+
+    if details_str: # Prioritize 'Details' field for structured data
+        try:
+            potential_json_details = json.loads(details_str)
+            if isinstance(potential_json_details, dict):
+                parsed_structured_data = potential_json_details
+                log.info(f"Activity {activity_guid}: Parsed 'Details' field as JSON for chaining information.")
+            else:
+                log.info(f"Activity {activity_guid}: 'Details' field parsed, but is not a dictionary (type: {type(potential_json_details)}). Content: '{details_str[:100]}...'")
+        except json.JSONDecodeError:
+            log.info(f"Activity {activity_guid}: 'Details' field is not valid JSON. Content: '{details_str[:100]}...'")
     
-    try:
-        details = json.loads(notes_str) # Parse 'Notes' as JSON
-    except Exception as e:
-        log.error(f"Error parsing Details for goto_location: {e}")
-        return True  # Still mark as processed even if details parsing fails
-    
-    # Check if this is part of a multi-activity chain
-    activity_type = details.get("activityType")
-    next_step = details.get("nextStep")
-    
-    if activity_type and next_step:
-        log.info(f"goto_location is part of a {activity_type} activity chain, next step: {next_step}")
-        log.info(f"The {next_step} activity should already be scheduled to start after this activity.")
+    if not parsed_structured_data and notes_str: # Fallback to 'Notes' if 'Details' didn't yield structured data
+        try:
+            potential_json_notes = json.loads(notes_str)
+            if isinstance(potential_json_notes, dict):
+                parsed_structured_data = potential_json_notes
+                log.info(f"Activity {activity_guid}: Parsed 'Notes' field as JSON for chaining information (fallback).")
+            else:
+                # Notes parsed but not a dict, treat as informational
+                log.info(f"Activity {activity_guid}: 'Notes' field parsed, but is not a dictionary (type: {type(potential_json_notes)}). Treating as informational text: '{notes_str[:100]}...'")
+        except json.JSONDecodeError:
+            # Notes is not JSON, treat as informational
+            log.info(f"Activity {activity_guid}: 'Notes' field is not valid JSON. Treating as informational text: '{notes_str[:100]}...'")
+    elif not details_str and not notes_str: # Neither field has content
+        log.info(f"Activity {activity_guid}: No 'Details' or 'Notes' field found.")
+
+    # Check for chaining information if any structured data was successfully parsed
+    if parsed_structured_data:
+        activity_type_from_data = parsed_structured_data.get("activityType")
+        next_step_from_data = parsed_structured_data.get("nextStep")
         
-        # No need to delegate to specialized processors or create follow-up activities
-        # as they are already created by the activity creator
+        if activity_type_from_data and next_step_from_data:
+            log.info(f"Activity {activity_guid} (goto_location) is part of a '{activity_type_from_data}' activity chain, next step: '{next_step_from_data}'.")
+            log.info(f"The '{next_step_from_data}' activity should already be scheduled to start after this activity.")
+        # else: The parsed JSON didn't contain chaining info.
     
-    # Default: just mark as processed
-    log.info(f"Processed goto_location activity for citizen {citizen}")
+    # Default: Mark as processed. The primary function of goto_location is movement,
+    # which is considered complete when this processor runs.
+    log.info(f"Processed goto_location activity {activity_guid} for citizen {citizen}.")
     return True
