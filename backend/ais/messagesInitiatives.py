@@ -280,6 +280,7 @@ def _summarize_add_system_for_local_model(
         return full_add_system_data
 
 def choose_interlocutor_via_kinos(
+    tables: Dict[str, Table], # Added tables argument
     ai_username: str,
     kinos_api_key: str,
     ai_data_package: Dict[str, Any],
@@ -321,7 +322,7 @@ def choose_interlocutor_via_kinos(
             ai_username=ai_username,
             purpose_of_call="choosing an interlocutor",
             full_add_system_data=ai_data_package,
-            tables_for_cleaning=None # 'tables' n'est pas disponible dans ce scope direct
+            tables_for_cleaning=tables # Pass tables here
         )
     
     print(f"Appel à KinOS pour choisir un interlocuteur pour {ai_username} (Modèle effectif: {effective_model})...")
@@ -659,6 +660,7 @@ def process_ai_message_initiatives(dry_run: bool = False, citizen1_arg: Optional
 
             # 2. Appeler KinOS pour choisir un interlocuteur et une raison
             target_username, reason_for_contact = choose_interlocutor_via_kinos(
+                tables, # Pass tables
                 ai_username, 
                 kinos_api_key_local, 
                 ai_data_package, 
