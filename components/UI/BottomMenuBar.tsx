@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { 
   FaCoins, FaHandshake, FaScroll, FaUserShield, FaBomb, // Main category icons
   FaArrowCircleDown, FaSyncAlt, FaArchive, FaStoreSlash, FaUserSecret, FaPalette, FaSitemap, FaAnchor, FaHandHoldingUsd, FaBullhorn, FaUsers, // Existing sub-item icons
-  FaMask, FaComments, FaUserPlus, FaNewspaper, FaStar, FaSkullCrossbones, FaKey, FaUserNinja // New sub-item icons (FaStar, FaSkullCrossbones, FaKey, FaUserNinja added)
+  FaMask, FaComments, FaUserPlus, FaNewspaper, FaStar, FaSkullCrossbones, FaKey, FaUserNinja, FaFire // New sub-item icons (FaStar, FaSkullCrossbones, FaKey, FaUserNinja, FaFire added)
 } from 'react-icons/fa';
 import { eventBus, EventTypes } from '@/lib/utils/eventBus'; // Importer eventBus
 
@@ -52,7 +52,7 @@ const BottomMenuBar: React.FC = () => {
     'reputation_assault', 'financial_patronage', 'cultural_patronage', 'theater_conspiracy', 'marketplace_gossip', 'employee_poaching', 'reputation_boost',
     'political_campaign', 'printing_propaganda',
     'information_network', 'neighborhood_watch',
-    'maritime_blockade', 'cargo_mishap', 'canal_mugging', 'burglary', 'employee_corruption'
+    'maritime_blockade', 'cargo_mishap', 'canal_mugging', 'burglary', 'employee_corruption', 'arson'
   ];
   const availableStratagemTypes = [ // Liste des stratagèmes réellement implémentés et disponibles
     'undercut', 'coordinate_pricing', 'emergency_liquidation', 'hoard_resource', 'reputation_assault'
@@ -278,6 +278,14 @@ const BottomMenuBar: React.FC = () => {
             id: 'employee_corruption', type: 'employee_corruption', title: 'Employee Corruption (Coming Soon)',
             description: "Bribe occupants of businesses to reduce productivity and steal things for you.",
             influenceCostBase: 7, hasVariants: false, // Bribe amount is a parameter
+          }
+        },
+        {
+          id: 'arson', label: 'Arson (Soon)', icon: FaFire,
+          stratagemPanelData: {
+            id: 'arson', type: 'arson', title: 'Arson (Coming Soon)',
+            description: "Burn down a target property, requiring it to be rebuilt.",
+            influenceCostBase: 9, hasVariants: false,
           }
         }
       ]

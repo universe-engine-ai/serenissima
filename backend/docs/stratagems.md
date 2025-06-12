@@ -1362,3 +1362,54 @@ This would make NLR attempt to burgle "building-competitor_workshop_01", costing
 }
 ```
 This would make NLR attempt to bribe "GiovanniArtisan" at "building-competitor_workshop_01" with 20 Ducats periodically for 30 days to steal resources, costing NLR 7 Influence upfront plus ongoing bribe payments.
+
+### 24. Arson (Coming Soon)
+
+-   **Type**: `arson`
+-   **Purpose**: To destroy a target building or business operation by setting it on fire, requiring it to be rebuilt.
+-   **Category**: `sabotage`
+-   **Creator**: (To be created: `backend/engine/stratagem_creators/arson_stratagem_creator.py`)
+-   **Processor**: (To be created: `backend/engine/stratagem_processors/arson_stratagem_processor.py`)
+
+#### Parameters for Creation (`stratagemDetails` in API request):
+
+-   `targetBuildingId` (string, required): The `BuildingId` of the building to target for arson.
+-   `name` (string, optional): Custom name for the stratagem. Defaults to "Arson at [TargetBuildingName]".
+-   `description` (string, optional): Custom description.
+-   `notes` (string, optional): Custom notes.
+
+#### How it Works (Conceptual):
+
+1.  **Creation**:
+    -   The `arson_stratagem_creator.py` validates parameters (e.g., `targetBuildingId` exists and is not owned by the executor).
+    -   It creates a new record in the `STRATAGEMS` table with `Status: "active"`, `Category: "sabotage"`, an influence cost of 9, and sets `ExpiresAt` (e.g., 24-72 hours to execute).
+
+2.  **Processing (Conceptual for "Coming Soon")**:
+    -   `processStratagems.py` picks up the active "arson" stratagem.
+    -   `arson_stratagem_processor.py` is invoked.
+    -   **Execution**:
+        -   The processor attempts the arson, likely during nighttime hours for higher success chance and lower witness probability.
+        -   A `problem` record of type `arson_incident` is created for the `targetBuildingId`.
+        -   **Building Destruction**: The `targetBuildingId`'s `IsConstructed` field is set to `false`. Its `ConstructionMinutesRemaining` is reset to its original construction time (from building type definition). Any occupants are displaced. Resources within the building may be destroyed or significantly reduced.
+    -   **Detection & Consequences**:
+        -   High chance of detection by city watch or nearby citizens, especially if not executed perfectly.
+        -   If detected, a `problem` of type `criminal_investigation_arson` is created targeting the `ExecutedBy` citizen, potentially leading to severe penalties (large fines, imprisonment, execution).
+        -   Massive negative impact on the relationship between `ExecutedBy` and the owner of `targetBuildingId` if discovered.
+        -   General negative impact on public order and reputation in the district.
+    -   **Status & Notes**:
+        -   The stratagem is marked `executed` after a successful arson or `failed` if an opportunity doesn't arise or if it's thwarted.
+        -   Notes track the outcome and any consequences.
+
+#### Example API Request to `POST /api/stratagems/try-create`:
+
+```json
+{
+  "citizenUsername": "NLR",
+  "stratagemType": "arson",
+  "stratagemDetails": {
+    "targetBuildingId": "building-rival_warehouse_03",
+    "name": "Inferno at Rival Warehouse"
+  }
+}
+```
+This would make NLR attempt to burn down "building-rival_warehouse_03", costing NLR 9 Influence, with severe risks and consequences.

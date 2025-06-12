@@ -116,6 +116,10 @@ export async function POST(request: Request) {
         `CorruptionGoal: ${stratagemDetails?.corruptionGoal}`,
         `BribeAmountPerPeriod: ${stratagemDetails?.bribeAmountPerPeriod}`
       );
+    } else if (stratagemType === 'arson') {
+      console.log(`[API /stratagems/try-create] Processing 'arson' stratagem with parameters:`,
+        `TargetBuildingId: ${stratagemDetails?.targetBuildingId}`
+      );
     }
 
     let parsedPythonEngineUrl: URL;
