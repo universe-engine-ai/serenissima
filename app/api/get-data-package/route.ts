@@ -893,6 +893,10 @@ function convertDataPackageToMarkdown(dataPackage: any, citizenUsername: string 
       md += `### Relationship ${index + 1} with ${otherCitizen}\n`;
       md += formatSimpleObjectForMarkdown(rel, ['title', 'status', 'strengthScore', 'trustScore', 'lastInteraction']);
     });
+    if (dataPackage.strongestRelationships.length === 20) {
+      md += `- ... (and more)\n`;
+    }
+    md += '\n';
   } else {
     md += `- No significant relationships.\n\n`;
   }
@@ -904,6 +908,10 @@ function convertDataPackageToMarkdown(dataPackage: any, citizenUsername: string 
       md += `### Problem ${index + 1}: ${problem.title || problem.problemId}\n`;
       md += formatSimpleObjectForMarkdown(problem, ['type', 'assetType', 'asset', 'status', 'severity', 'description', 'createdAt']);
     });
+    if (dataPackage.recentProblems.length === 20) {
+      md += `- ... (and more)\n`;
+    }
+    md += '\n';
   } else {
     md += `- No recent problems.\n\n`;
   }
