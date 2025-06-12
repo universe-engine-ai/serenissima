@@ -332,16 +332,29 @@ def process(
                 trust_change_value = -5.0 # Default impact if analysis fails or provides invalid data
 
                 if analysis_response_str:
+                    cleaned_analysis_response_str = analysis_response_str # Initialize with original
                     try:
-                        analysis_json = json.loads(analysis_response_str)
+                        # Attempt to clean the response string if it's not perfect JSON
+                        # Basic cleaning: remove potential markdown code block fences
+                        cleaned_analysis_response_str = analysis_response_str.strip()
+                        if cleaned_analysis_response_str.startswith("```json"):
+                            cleaned_analysis_response_str = cleaned_analysis_response_str[len("```json"):]
+                        if cleaned_analysis_response_str.startswith("```"): # Handle cases with just ```
+                            cleaned_analysis_response_str = cleaned_analysis_response_str[len("```"):]
+                        if cleaned_analysis_response_str.endswith("```"):
+                            cleaned_analysis_response_str = cleaned_analysis_response_str[:-len("```")]
+                        cleaned_analysis_response_str = cleaned_analysis_response_str.strip()
+
+                        analysis_json = json.loads(cleaned_analysis_response_str)
                         extracted_change = analysis_json.get("trustChange")
                         if isinstance(extracted_change, (int, float)):
                             trust_change_value = float(max(-25.0, min(5.0, extracted_change))) # Clamp value
                             log.info(f"{LogColors.PROCESS}Trust impact analysis for {related_citizen_username} on {target_citizen_username}: AI assessed change = {trust_change_value} (original from AI: {extracted_change}){LogColors.ENDC}")
                         else:
-                            log.warning(f"{LogColors.WARNING}Trust impact analysis for {related_citizen_username}: 'trustChange' key missing or not a number in JSON response: {analysis_response_str}. Using default impact: {trust_change_value}{LogColors.ENDC}")
+                            log.warning(f"{LogColors.WARNING}Trust impact analysis for {related_citizen_username}: 'trustChange' key missing or not a number in JSON response: '{cleaned_analysis_response_str}'. Using default impact: {trust_change_value}{LogColors.ENDC}")
                     except json.JSONDecodeError:
-                        log.warning(f"{LogColors.WARNING}Trust impact analysis for {related_citizen_username}: Failed to parse JSON response: '{analysis_response_str[:100]}...'. Using default impact: {trust_change_value}{LogColors.ENDC}")
+                        # Log the string that failed to parse (cleaned_analysis_response_str)
+                        log.warning(f"{LogColors.WARNING}Trust impact analysis for {related_citizen_username}: Failed to parse JSON response: '{cleaned_analysis_response_str[:100]}...'. Original was: '{analysis_response_str[:100]}...'. Using default impact: {trust_change_value}{LogColors.ENDC}")
                 else:
                     log.warning(f"{LogColors.WARNING}Trust impact analysis for {related_citizen_username}: No response from KinOS analysis API. Using default impact: {trust_change_value}{LogColors.ENDC}")
 
