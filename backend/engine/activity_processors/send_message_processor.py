@@ -10,6 +10,9 @@ from backend.engine.utils.activity_helpers import (
     get_building_record,
     get_citizen_record
 )
+from backend.engine.utils.conversation_helper import generate_conversation_turn
+from backend.engine.utils.notification_helpers import create_notification
+import os # For KINOS_API_KEY
 
 log = logging.getLogger(__name__)
 
@@ -49,7 +52,11 @@ def process_send_message_fn(
     
     # Handle deliver_message_interaction activity (second step in chain)
     elif activity_type == "deliver_message_interaction":
-        return _process_message_delivery(tables, activity_record, details)
+        # api_base_url is required by generate_conversation_turn
+        if not api_base_url:
+            log.error("api_base_url is required for deliver_message_interaction but not provided.")
+            return False
+        return _process_message_delivery(tables, activity_record, details, api_base_url)
     
     # Handle direct send_message activity (no physical interaction required)
     elif activity_type == "send_message":
@@ -180,10 +187,16 @@ def _process_direct_message(
 def _process_message_delivery(
     tables: Dict[str, Any],
     message_activity: Dict[str, Any],
-    details: Dict[str, Any]
+    details: Dict[str, Any],
+    api_base_url: str # Added api_base_url
 ) -> bool:
     """Process the message delivery when the deliver_message_interaction activity is executed."""
     fields = message_activity.get('fields', {})
+    kinos_api_key = os.getenv("KINOS_API_KEY")
+    if not kinos_api_key:
+        log.error("KINOS_API_KEY not found in environment variables. Cannot proceed with message delivery.")
+        return False
+        
     sender = fields.get('Citizen')
     receiver_username = details.get('receiverUsername')
     content = details.get('content')
@@ -206,29 +219,31 @@ def _process_message_delivery(
     receiver_record = receiver_records[0]
     
     try:
-        # 1. Create the message record
-        message_id = f"msg_{sender}_{receiver_username}_{datetime.now(timezone.utc).strftime('%Y%m%d%H%M%S')}"
-        
-        message_fields = {
-            "MessageId": message_id,
-            "Sender": sender,
-            "Receiver": receiver_username,
-            "Content": content,
-            "Type": message_type,
-            "CreatedAt": datetime.now(timezone.utc).isoformat(),
-            "ReadAt": None # Mark as unread initially
-        }
-        
-        if in_reply_to_id:
-            message_fields["Notes"] = f"In reply to: {in_reply_to_id}"
-            log.info(f"Message {message_id} from {sender} to {receiver_username} is a reply to {in_reply_to_id}. Storing in Notes.")
-        
-        if channel:
-            message_fields["Channel"] = channel
-            log.info(f"Message {message_id} from {sender} to {receiver_username} assigned to channel: {channel}.")
+        # 1. Generate conversation opener using the conversation helper
+        log.info(f"Calling generate_conversation_turn for {sender} to {receiver_username} with original content.")
+        new_message_airtable_record = generate_conversation_turn(
+            tables=tables,
+            kinos_api_key=kinos_api_key,
+            speaker_username=sender,
+            listener_username=receiver_username,
+            api_base_url=api_base_url,
+            interaction_mode="conversation_opener",
+            message=content # Pass the original content as the message to be sent
+        )
 
-        created_message_record = tables["messages"].create(message_fields) # Capture created record for logging ID
+        if not new_message_airtable_record or 'fields' not in new_message_airtable_record:
+            log.error(f"Failed to generate or persist conversation opener message from {sender} to {receiver_username}.")
+            return False
+
+        message_id = new_message_airtable_record['fields'].get('MessageId')
+        actual_content_stored = new_message_airtable_record['fields'].get('Content', content) # Fallback to original content if not in record
         
+        if not message_id:
+            log.error(f"Conversation helper did not return a MessageId for the message from {sender} to {receiver_username}.")
+            return False
+            
+        log.info(f"Message from {sender} to {receiver_username} (Type: {message_type}, Channel: {channel or 'N/A'}) processed by conversation helper. New MessageId: {message_id}")
+
         # 2. Check if a relationship exists between sender and receiver
         relationship_formula = f"OR(AND({{Citizen1}}='{_escape_airtable_value(sender)}', {{Citizen2}}='{_escape_airtable_value(receiver_username)}'), AND({{Citizen1}}='{_escape_airtable_value(receiver_username)}', {{Citizen2}}='{_escape_airtable_value(sender)}'))"
         relationship_records = tables["relationships"].all(formula=relationship_formula, max_records=1)
@@ -278,27 +293,24 @@ def _process_message_delivery(
             
             log.info(f"Created new relationship between {sender} and {receiver_username}")
         
-        # 3. Create a notification for the receiver
-        notification_fields = {
-            "Citizen": receiver_username,
-            "Type": "message_received",
-            "Content": f"You have received a {message_type} message from {sender}.",
-            "Details": json.dumps({
-                "messageId": message_id,
-                "sender": sender,
-                "messageType": message_type,
-                "preview": content[:50] + ("..." if len(content) > 50 else "")
-            }),
-            "Asset": message_id,
-            "AssetType": "message",
-            "Status": "unread",
-            "CreatedAt": datetime.now(timezone.utc).isoformat()
+        # 3. Create a notification for the receiver using the helper
+        notification_content = f"You have received a {message_type} message from {sender}."
+        notification_details = {
+            "messageId": message_id,
+            "sender": sender,
+            "messageType": message_type, # Use the original message_type for the notification
+            "preview": actual_content_stored[:50] + ("..." if len(actual_content_stored) > 50 else "")
         }
-        
-        tables["notifications"].create(notification_fields)
-        
-        # Log the ID of the created message record
-        log.info(f"Created message record with ID: {created_message_record['id']} (Custom MessageId: {message_id}). Channel: {channel or 'N/A'}.")
+        create_notification(
+            tables=tables,
+            citizen_username=receiver_username,
+            notification_type="message_received",
+            content=notification_content,
+            details=notification_details,
+            asset_id=message_id,
+            asset_type="message"
+        )
+        log.info(f"Notification created for {receiver_username} regarding message {message_id} from {sender}.")
         
         # 4. Create a reply_to_message activity for the receiver
         # Get current position of the receiver
