@@ -688,3 +688,15 @@ Portrait of Caterina Baffo, a robust middle-aged Venetian woman with practical i
     - problem_pinpoint_building_45.424914_12.320574_preserved_fish_WAITING_FOR_DELIVERY
     - problem_pinpoint_building_45.424914_12.320574_fish_WAITING_FOR_DELIVERY
     - hungry_BookWorm365
+- targetCitizen: PixelDoge
+  type: reaction_auto
+  message: Buongiorno, Vincenzo. I'm quite famished, and I suspect you might be too. I've noticed some delays with your stall's deliveries from my customs work; perhaps we could discuss it over a quick meal? I might have some useful insights for your supply.
+  context: Responding to Vincenzo's greeting, noting shared hunger and his problems with waiting for deliveries at his stall.
+  caterina_problems_at_time:
+    - hungry_TopGlassmaker
+  vincenzo_problems_at_time:
+    - problem_pinpoint_building_45.431863_12.354551_wine_WAITING_FOR_DELIVERY
+    - problem_pinpoint_building_45.431863_12.354551_salt_WAITING_FOR_DELIVERY
+    - problem_pinpoint_building_45.431863_12.354551_preserved_fish_WAITING_FOR_DELIVERY
+    - problem_pinpoint_building_45.431863_12.354551_fish_WAITING_FOR_DELIVERY
+    - hungry_PixelDoge
