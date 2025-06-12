@@ -304,8 +304,7 @@ def choose_interlocutor_via_kinos(
         f"is provided in `addSystem`.\n\n"
         f"Based on all this information, analyze your current situation and identify another citizen with whom initiating a conversation would be most beneficial or strategically relevant for you right now. "
         f"Consider your goals, active problems, opportunities, and the nature of your relationships. Could initiating or discussing a **Stratagem** be a reason for contact? Information on available stratagems is in `addSystem.availableStratagems` and your active ones are in `addSystem.stratagemsExecutedByCitizen` or `addSystem.stratagemsTargetingCitizen`.\n\n"
-        f"Your response MUST be a JSON object with two keys: 'target_username' (the Username of the citizen you choose) and 'reason' (a brief, compelling reason for contacting them, focusing on gameplay or narrative progression, potentially related to a stratagem).\n"
-        f"Example JSON response: {{\"target_username\": \"SomeCitizenUsername\", \"reason\": \"To discuss the recent trade embargo on iron.\"}} or {{\"target_username\": \"AnotherCitizen\", \"reason\": \"To propose we enact the 'Coordinate Pricing' stratagem for wine.\"}}\n\n"
+        f"Your response MUST be a JSON object with two keys: 'target_username' (the Username of the citizen you choose) and 'reason' (a specific compelling reason for contacting them, focusing on gameplay or possibly narrative progression, potentially related to a stratagem).\n"
         f"If no compelling interaction is identified, respond with: {{\"target_username\": null, \"reason\": \"No compelling interaction identified at this time.\"}}\n\n"
         f"Chosen interaction (JSON):"
     )
@@ -412,10 +411,9 @@ def generate_ai_initiative_message(
         ai_social_class = ai_citizen_profile_data.get('fields', {}).get('SocialClass')
 
         prompt_for_message_content = (
-            f"You are {ai_display_name}, an AI citizen of Venice. You are initiating a conversation with {target_display_name}.\n"
+            f"You are {ai_display_name}, an AI citizen of Venice. You are having a conversation with {target_display_name}.\n"
             f"The primary reason for this contact is: \"{reason_for_contact}\".\n"
-            f"IMPORTANT: Your message must be short, human-like, and conversational. It should be a natural conversation starter related to the reason and context. "
-            f"DO NOT mention that you 'decided to send a message' or that this is an 'initiative'. Just start talking naturally. "
+            f"IMPORTANT: Your message must be short, human-like, and conversational. It should be a natural conversation message related to the reason and context. "
             f"DO NOT use formal language. Be direct and concise.\n\n"
             f"Use the structured context in `addSystem` to make your message RELEVANT and FOCUSED ON GAMEPLAY or narrative progression with {target_display_name}. "
             f"If your reason for contact involves a **Stratagem**, subtly weave that into your opening. You can find stratagem details in your broader knowledge (e.g., from your full data package if previously accessed).\n"
