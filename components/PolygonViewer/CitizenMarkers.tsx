@@ -398,8 +398,8 @@ const CitizenMarkers: React.FC<CitizenMarkersProps> = ({
 
     for (const citizenId in newAnimatedCitizensFromService) {
       if (Object.prototype.hasOwnProperty.call(newAnimatedCitizensFromService, citizenId)) {
-        const oldCitizenData = animatedCitizens[citizenId];
-        const newCitizenData = newAnimatedCitizensFromService[citizenId];
+        const oldCitizenData = animatedCitizens[citizenId] as any;
+        const newCitizenData = newAnimatedCitizensFromService[citizenId] as any;
 
         // Check if oldData and newData exist and if they have an activityPath property
         if (oldCitizenData && newCitizenData && 
