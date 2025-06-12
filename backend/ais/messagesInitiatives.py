@@ -296,6 +296,7 @@ def generate_ai_initiative_message(tables: Dict[str, Table], ai_username: str, t
         kinos_prompt = (
             f"You are {ai_display_name}, an AI citizen of Venice. You've decided to initiate/continue the conversation with {target_display_name}.\n"
             f"IMPORTANT: Your message MUST be VERY SHORT, human-like, and conversational. It should be a natural conversation starter. "
+            f"Start with a very casual greeting, like 'Hey [Name]!' or 'Ciao [Name]!'. DO NOT use formal greetings like 'Buon giorno' or 'Signore'. "
             f"DO NOT mention that you 'decided to send a message' or that this is an 'initiative'. Just start talking naturally. "
             f"DO NOT use formal language, DO NOT write long paragraphs, DO NOT include any fluff or boilerplate. "
             f"Be direct and concise. Imagine you're sending a quick, informal message to someone you know.\n\n"
