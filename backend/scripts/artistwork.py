@@ -8,6 +8,7 @@ import argparse
 from datetime import datetime, timedelta # Added timedelta
 import pytz # Keep pytz for timezone operations
 from typing import Any, Dict, Optional # Added Dict, Optional
+import subprocess # Ajout pour exécuter un script externe
 
 # Add the project root to sys.path
 PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
@@ -221,9 +222,43 @@ def trigger_artist_work(target_artist_username: str | None = None, additional_me
 
             if created_activity_chain_start:
                 activity_type = created_activity_chain_start['fields'].get('Type')
-                activity_id = created_activity_chain_start['fields'].get('ActivityId', created_activity_chain_start['id'])
-                log.info(f"{LogColors.OKGREEN}  Successfully created activity chain starting with '{activity_type}' (ID: {activity_id}) for {citizen_name_log}.{LogColors.ENDC}")
+                activity_type = created_activity_chain_start['fields'].get('Type')
+                activity_id_guid = created_activity_chain_start['fields'].get('ActivityId') # GUID personnalisé
+                airtable_record_id = created_activity_chain_start['id'] # ID d'enregistrement Airtable
+
+                log.info(f"{LogColors.OKGREEN}  Successfully created activity chain starting with '{activity_type}' (GUID: {activity_id_guid}, Airtable ID: {airtable_record_id}) for {citizen_name_log}.{LogColors.ENDC}")
                 print(f"  Created activity details: {json.dumps(created_activity_chain_start['fields'], indent=2, default=str)}")
+
+                if activity_id_guid:
+                    log.info(f"{LogColors.BOLD}--- Attempting to process created activity {activity_id_guid} immediately ---{LogColors.ENDC}")
+                    try:
+                        # Construire le chemin relatif vers le script processAllActivitiesnow.py
+                        process_script_path = os.path.join(PROJECT_ROOT, 'backend', 'scripts', 'processAllActivitiesnow.py')
+                        command = [
+                            sys.executable, # Utiliser l'interpréteur Python actuel
+                            process_script_path,
+                            '--activityId', activity_id_guid
+                        ]
+                        log.info(f"  Executing command: {' '.join(command)}")
+                        
+                        # Exécuter le script et streamer la sortie
+                        process = subprocess.Popen(command, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True, bufsize=1, universal_newlines=True)
+                        
+                        if process.stdout:
+                            for line in iter(process.stdout.readline, ''):
+                                print(f"  [ProcessActivitiesNow] {line.strip()}")
+                            process.stdout.close()
+                        
+                        return_code = process.wait()
+                        if return_code == 0:
+                            log.info(f"{LogColors.OKGREEN}  Successfully processed activity {activity_id_guid}.{LogColors.ENDC}")
+                        else:
+                            log.error(f"{LogColors.FAIL}  Error processing activity {activity_id_guid}. processAllActivitiesnow.py exited with code {return_code}.{LogColors.ENDC}")
+                    except Exception as e_proc:
+                        log.error(f"{LogColors.FAIL}  Exception while trying to run processAllActivitiesnow.py for {activity_id_guid}: {e_proc}{LogColors.ENDC}")
+                else:
+                    log.warning(f"{LogColors.WARNING}  Activity GUID (ActivityId) not found for the created activity. Cannot trigger immediate processing.{LogColors.ENDC}")
+
             else:
                 log.error(f"{LogColors.FAIL}  Failed to create 'work_on_art' activity or chain for {citizen_name_log}.{LogColors.ENDC}")
                 print(f"  'work_on_art' activity creation returned None for {citizen_name_log}.")
