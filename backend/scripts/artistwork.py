@@ -118,23 +118,18 @@ def trigger_artist_work(target_artist_username: str | None = None, additional_me
         # --- Existing KinOS Interaction for Art Session Description ---
         log.info(f"{LogColors.BOLD}--- Starting KinOS Interaction for Art Session Description ---{LogColors.ENDC}")
         # 1. Fetch citizen's data package for KinOS addSystem
-        data_package_url = f"{API_BASE_URL}/api/get-data-package?citizenUsername={citizen_username}&format=json" # Request JSON format
-        data_package_json_str = None
-        log.info(f"  Fetching data package from: {data_package_url}")
+        data_package_url = f"{API_BASE_URL}/api/get-data-package?citizenUsername={citizen_username}" # Defaults to Markdown format
+        data_package_markdown_str = None # Changed variable name for clarity
+        log.info(f"  Fetching data package (Markdown) from: {data_package_url}")
         try:
             data_package_response = requests.get(data_package_url, timeout=20)
             data_package_response.raise_for_status()
-            data_package_data = data_package_response.json()
-            if data_package_data.get("success"):
-                data_package_json_str = json.dumps(data_package_data.get("data"), indent=2) # indent for readability if logged
-                log.info(f"  Successfully fetched data package for {citizen_username}.")
-            else:
-                log.warning(f"  Failed to fetch data package for {citizen_username}: {data_package_data.get('error')}")
-                # Continue without data package if it fails, KinOS might still work with just the prompt.
+            # The response is now expected to be Markdown text
+            data_package_markdown_str = data_package_response.text
+            log.info(f"  Successfully fetched Markdown data package for {citizen_username} (length: {len(data_package_markdown_str)}).")
         except requests.exceptions.RequestException as e_pkg:
-            log.error(f"  Error fetching data package for {citizen_username}: {e_pkg}")
-        except json.JSONDecodeError as e_json_pkg:
-            log.error(f"  Error decoding data package JSON for {citizen_username}: {e_json_pkg}")
+            log.error(f"  Error fetching Markdown data package for {citizen_username}: {e_pkg}")
+            # Continue without data package if it fails, KinOS might still work with just the prompt.
 
         # 2. Construct KinOS /build request
         kinos_build_url = f"{KINOS_API_URL}/v2/blueprints/{KINOS_BLUEPRINT}/kins/{citizen_username}/build"
@@ -161,8 +156,8 @@ def trigger_artist_work(target_artist_username: str | None = None, additional_me
             kinos_payload["model"] = "local"
             log.info(f"  Using default KinOS model: local")
 
-        if data_package_json_str:
-            kinos_payload["addSystem"] = data_package_json_str
+        if data_package_markdown_str: # Use the new variable name
+            kinos_payload["addSystem"] = data_package_markdown_str
         
         log.info(f"  Calling KinOS /build endpoint for {citizen_username} at {kinos_build_url}")
         log.info(f"  KinOS payload for {citizen_username}: {json.dumps(kinos_payload, indent=2)}") # Log the payload
