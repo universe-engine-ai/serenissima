@@ -12,7 +12,7 @@ from backend.engine.utils.activity_helpers import (
     get_closest_building_of_type,
     _get_building_position_coords,
     _calculate_distance_meters,
-    get_path_between_points,
+    # get_path_between_points, # No longer called directly here
     create_activity_record,
     VENICE_TIMEZONE,
     dateutil_parser # For robust date parsing
@@ -30,6 +30,7 @@ def try_create_work_on_art_activity(
     citizen_position: Optional[Dict[str, float]],
     now_utc_dt: datetime,
     transport_api_url: str,
+    api_base_url: str, # New parameter
     start_time_utc_iso: Optional[str] = None # For chaining
 ) -> Optional[Dict[str, Any]]:
     """
@@ -91,24 +92,32 @@ def try_create_work_on_art_activity(
         work_art_start_time_iso = start_time_utc_iso if start_time_utc_iso else now_utc_dt.isoformat()
     else:
         log.info(f"{LogColors.OKBLUE}[Artiste Travail] {citizen_name_log} doit se rendre à {target_location_name_display}. Création de 'goto_location' d'abord.{LogColors.ENDC}")
-        path_to_target = get_path_between_points(citizen_position, target_location_pos, transport_api_url)
-        if not (path_to_target and path_to_target.get('success')):
-            log.warning(f"{LogColors.WARNING}[Artiste Travail] {citizen_name_log}: Impossible de trouver un chemin vers {target_location_name_display}.{LogColors.ENDC}")
-            return None
+        # path_to_target is no longer calculated here; goto_location_activity_creator will handle it.
 
         goto_notes = f"Se rendant à {target_location_name_display} pour travailler sur son art."
         
+        # Prepare parameters for try_create_goto_location_activity
+        activity_params_for_goto = {
+            'targetBuildingId': target_location_custom_id,
+            'notes': goto_notes,
+            # 'fromBuildingId' can be omitted; goto_location_creator will use citizen's current position.
+            # 'details' can be omitted if no specific chained activity data is needed beyond notes.
+            'start_time_utc_iso': start_time_utc_iso if start_time_utc_iso else now_utc_dt.isoformat()
+        }
+        
+        now_venice_dt = now_utc_dt.astimezone(VENICE_TIMEZONE)
+
         # Create goto_location activity
-        # The start_time_utc_iso for goto_location is the overall chain start time or now.
         goto_activity = try_create_goto_location_activity(
             tables=tables,
             citizen_record=citizen_record,
-            to_building_id=target_location_custom_id, # Changed from destination_building_id
-            path_data=path_to_target,
-            current_time_utc=now_utc_dt, # For CreatedAt if start_time_utc_iso is None
-            notes=goto_notes,
-            details_payload=None, # No details_payload, as we create the chain explicitly
-            start_time_utc_iso=start_time_utc_iso if start_time_utc_iso else now_utc_dt.isoformat()
+            activity_params=activity_params_for_goto,
+            resource_defs={},  # Not used by goto_location
+            building_type_defs={},  # Not used by goto_location
+            now_venice_dt=now_venice_dt,
+            now_utc_dt=now_utc_dt,
+            transport_api_url=transport_api_url,
+            api_base_url=api_base_url
         )
         
         if not goto_activity:

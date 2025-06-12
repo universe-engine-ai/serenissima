@@ -212,10 +212,11 @@ def trigger_artist_work(target_artist_username: str | None = None, additional_me
             # Ensure the full artist_record (which is a dict with 'id' and 'fields') is passed
             created_activity_chain_start = try_create_work_on_art_activity(
                 tables=tables,
-                citizen_record=artist_record, 
+                citizen_record=artist_record,
                 citizen_position=citizen_position_coords,
                 now_utc_dt=now_utc_dt,
-                transport_api_url=transport_api_url
+                transport_api_url=transport_api_url,
+                api_base_url=API_BASE_URL # Pass API_BASE_URL
             )
 
             if created_activity_chain_start:
