@@ -18,6 +18,7 @@ from backend.engine.utils.relationship_helpers import (
     update_trust_score_for_activity,
     TRUST_SCORE_MINOR_POSITIVE
 )
+from backend.engine.utils.conversation_helper import persist_message # Added import
 
 log = logging.getLogger(__name__)
 
@@ -220,9 +221,22 @@ def _call_kinos_build_for_bath_reflection_async(
         log.info(f"  [Thread Public Bath: {threading.get_ident()}] KinOS /build response (public bath) for {citizen_username_log}: Status: {kinos_response_data.get('status')}, Response: {kinos_response_data.get('response')}")
         
         raw_reflection = kinos_response_data.get('response', "No reflection on public bath from KinOS.")
-        cleaned_reflection = clean_thought_content(tables, raw_reflection)
 
-        original_activity_notes_dict['kinos_public_bath_reflection'] = cleaned_reflection
+        # Persist the raw reflection as a self-message (thought)
+        persist_message(
+            tables=tables,
+            sender_username=citizen_username_log,
+            receiver_username=citizen_username_log,
+            content=raw_reflection,
+            message_type="kinos_public_bath_reflection",
+            channel_name=citizen_username_log
+        )
+        log.info(f"  [Thread Public Bath: {threading.get_ident()}] Réflexion sur le bain public persistée comme message à soi-même pour {citizen_username_log}.")
+
+        # Update activity notes (optional, kept for now)
+        cleaned_reflection_for_notes = clean_thought_content(tables, raw_reflection)
+
+        original_activity_notes_dict['kinos_public_bath_reflection'] = cleaned_reflection_for_notes
         original_activity_notes_dict['kinos_public_bath_reflection_status'] = kinos_response_data.get('status', 'unknown')
         
         new_notes_json = json.dumps(original_activity_notes_dict)

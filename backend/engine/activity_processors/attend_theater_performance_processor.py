@@ -17,6 +17,7 @@ from backend.engine.utils.relationship_helpers import (
     update_trust_score_for_activity,
     TRUST_SCORE_MINOR_POSITIVE
 )
+from backend.engine.utils.conversation_helper import persist_message # Added import
 
 log = logging.getLogger(__name__)
 
@@ -295,11 +296,25 @@ def _call_kinos_build_for_theater_reflection_async(
         log.info(f"  [Thread Théâtre: {threading.get_ident()}] Réponse KinOS /build (théâtre) pour {citizen_username_log}: Statut: {kinos_response_data.get('status')}, Réponse: {kinos_response_data.get('response')}")
         
         raw_reflection = kinos_response_data.get('response', "Aucune réflexion sur le théâtre de KinOS.")
-        # Importer clean_thought_content ici car c'est un thread séparé
-        from backend.engine.utils.activity_helpers import clean_thought_content
-        cleaned_reflection = clean_thought_content(tables, raw_reflection)
+        
+        # Persist the raw reflection as a self-message (thought)
+        # persist_message will handle cleaning based on the type "kinos_theater_reflection"
+        persist_message(
+            tables=tables,
+            sender_username=citizen_username_log,
+            receiver_username=citizen_username_log,
+            content=raw_reflection,
+            message_type="kinos_theater_reflection",
+            channel_name=citizen_username_log # Private channel for self-thoughts
+        )
+        log.info(f"  [Thread Théâtre: {threading.get_ident()}] Réflexion sur le théâtre persistée comme message à soi-même pour {citizen_username_log}.")
 
-        original_activity_notes_dict['kinos_theater_reflection'] = cleaned_reflection
+        # Update activity notes (optional, kept for now)
+        # Importer clean_thought_content ici car c'est un thread séparé
+        from backend.engine.utils.activity_helpers import clean_thought_content # Keep for notes if needed
+        cleaned_reflection_for_notes = clean_thought_content(tables, raw_reflection) # Clean separately for notes
+
+        original_activity_notes_dict['kinos_theater_reflection'] = cleaned_reflection_for_notes
         original_activity_notes_dict['kinos_theater_reflection_status'] = kinos_response_data.get('status', 'unknown')
         
         new_notes_json = json.dumps(original_activity_notes_dict)

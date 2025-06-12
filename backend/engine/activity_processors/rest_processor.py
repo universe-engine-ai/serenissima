@@ -12,6 +12,7 @@ from backend.engine.utils.activity_helpers import (
     clean_thought_content,
     VENICE_TIMEZONE # For logging or future use
 )
+from backend.engine.utils.conversation_helper import persist_message # Added import
 # Note: No direct ducat transactions or influence gain for 'rest' itself.
 
 log = logging.getLogger(__name__)
@@ -140,14 +141,25 @@ def _call_kinos_build_for_rest_reflection_async(
         log.info(f"  [Thread Daily Reflection: {threading.get_ident()}] KinOS /build response (daily reflection) for {citizen_username_log}: Status: {kinos_response_data.get('status')}, Response: {kinos_response_data.get('response')}")
         
         raw_reflection = kinos_response_data.get('response', "No daily reflection from KinOS.")
-        cleaned_reflection = clean_thought_content(tables, raw_reflection) # clean_thought_content is imported in the main scope
 
-        # Update the original_activity_notes_dict (which was parsed from activity's Notes field)
-        # If original_activity_notes_dict was empty or not a dict, initialize it.
+        # Persist the raw reflection as a self-message (thought)
+        persist_message(
+            tables=tables,
+            sender_username=citizen_username_log,
+            receiver_username=citizen_username_log,
+            content=raw_reflection,
+            message_type="kinos_daily_reflection",
+            channel_name=citizen_username_log
+        )
+        log.info(f"  [Thread Daily Reflection: {threading.get_ident()}] Réflexion quotidienne persistée comme message à soi-même pour {citizen_username_log}.")
+
+        # Update activity notes (optional, kept for now)
+        cleaned_reflection_for_notes = clean_thought_content(tables, raw_reflection)
+
         if not isinstance(original_activity_notes_dict, dict):
             original_activity_notes_dict = {}
             
-        original_activity_notes_dict['kinos_daily_reflection'] = cleaned_reflection
+        original_activity_notes_dict['kinos_daily_reflection'] = cleaned_reflection_for_notes
         original_activity_notes_dict['kinos_daily_reflection_status'] = kinos_response_data.get('status', 'unknown')
         
         new_notes_json = json.dumps(original_activity_notes_dict)

@@ -144,11 +144,15 @@ def persist_message(
         
         # Step 2: Apply full cleaning for AI generated types
         ai_generated_message_types = [
-            "message_ai_augmented", 
-            "encounter_reflection", 
-            "conversation_opener", 
+            "message_ai_augmented",
+            "encounter_reflection",
+            "conversation_opener",
             "reaction_auto",
-            "ai_initiative_reasoning" # Ajout du nouveau type pour le nettoyage
+            "ai_initiative_reasoning",
+            "kinos_daily_reflection",       # For rest_processor
+            "kinos_theater_reflection",     # For attend_theater_performance_processor
+            "kinos_public_bath_reflection", # For use_public_bath_processor
+            "ai_context_summary"            # For local model's attention pre-prompt summary
         ]
         if message_type in ai_generated_message_types:
             log.info(f"Nettoyage complet du contenu du message de type '{message_type}' de {sender_username} à {receiver_username}.")
@@ -422,6 +426,16 @@ def generate_conversation_turn(
                 "summary_of_relevant_context": cleaned_summarized_context,
                 "original_context_available_on_request": "The full data package was summarized. You are now acting as the character based on this summary."
             }
+            # Persist this cleaned_summarized_context as a self-thought
+            log.info(f"Persisting AI context summary for {speaker_username} as a self-thought.")
+            persist_message(
+                tables,
+                sender_username=speaker_username,
+                receiver_username=speaker_username, # Message to self
+                content=cleaned_summarized_context, # Already cleaned
+                message_type="ai_context_summary",
+                channel_name=speaker_username # Private channel
+            )
         else:
             log.warning(f"Failed to generate summarized context for {speaker_username}. The conversation turn will be aborted for the local model.")
             return None # Abort the turn if summarization fails
