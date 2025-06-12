@@ -25,7 +25,8 @@ def process_fishing_activity(
     tables: Dict[str, Any],
     activity_record: Dict,
     building_type_defs: Dict, # Not directly used, but part of signature
-    resource_defs: Dict
+    resource_defs: Dict,
+    api_base_url: Optional[str] = None # Added to match processor call signature
 ) -> bool:
     """Processes a 'fishing' or 'emergency_fishing' activity."""
     activity_fields = activity_record['fields']
