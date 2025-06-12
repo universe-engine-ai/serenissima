@@ -246,18 +246,118 @@ def handle_construction_worker_activity(
                                     current_time_utc=now_utc_dt
                                 ):
                                     return True # Delivery activity created
-                elif materials_to_fetch_for_workshop:
-                    material_to_fetch_now = materials_to_fetch_for_workshop[0]
-                    if try_create_resource_fetching_activity(
-                        tables, citizen_airtable_id, citizen_custom_id, citizen_username,
-                        contract_custom_id, None, workplace_custom_id, material_to_fetch_now,
-                        10.0, None, current_time_utc=now_utc_dt, resource_defs=resource_defs,
-                        building_type_defs=building_type_defs, now_venice_dt=now_venice_dt,
-                        transport_api_url=transport_api_url, api_base_url=api_base_url
-                    ):
-                        return True # Fetching activity created
-            continue # Next contract
-        return False # No activity created from construction contracts
+                # If workshop cannot supply, try to source directly to the construction site
+                elif materials_needed_for_delivery: # This implies deliverable_from_workshop was empty or didn't lead to an activity
+                    log.info(f"    Workshop {workplace_custom_id} cannot supply. Attempting to source materials directly for site {target_building_custom_id}.")
+                    site_owner_username = contract['fields'].get('Buyer') # Owner of the construction site project
+
+                    for item_needed_at_site in materials_needed_for_delivery:
+                        mat_type_to_source = item_needed_at_site['type']
+                        # Amount needed at site for this material to complete the project.
+                        # We'll try to fetch a manageable chunk.
+                        amount_total_needed_for_project_for_this_mat = item_needed_at_site['amount'] 
+
+                        citizen_current_load = get_citizen_current_load(tables, citizen_username)
+                        effective_capacity = get_citizen_effective_carry_capacity(citizen_record)
+                        remaining_carry_capacity = effective_capacity - citizen_current_load
+                        
+                        # Fetch up to remaining capacity, or a max of 10 units, or what's needed for the project, whichever is smallest.
+                        amount_to_fetch_this_run = min(amount_total_needed_for_project_for_this_mat, remaining_carry_capacity, 10.0)
+                        amount_to_fetch_this_run = float(f"{amount_to_fetch_this_run:.4f}")
+
+                        if amount_to_fetch_this_run < 0.1:
+                            log.info(f"      Skipping fetch for {mat_type_to_source} to site {target_building_custom_id}: amount to fetch ({amount_to_fetch_this_run:.2f}) is too small or no carry capacity.")
+                            continue
+
+                        # Priority 1: Fetch from Galley (Import Contract for site owner)
+                        import_contracts_formula = f"AND({{Type}}='import', {{Buyer}}='{_escape_airtable_value(site_owner_username)}', {{ResourceType}}='{_escape_airtable_value(mat_type_to_source)}', {{Status}}='active')"
+                        active_import_contracts = tables['contracts'].all(formula=import_contracts_formula)
+                        
+                        activity_created_for_this_material = False
+                        for import_contract in active_import_contracts:
+                            galley_building_id = import_contract['fields'].get('SellerBuilding')
+                            if not galley_building_id: continue
+                            
+                            galley_record = get_building_record(tables, galley_building_id)
+                            if not galley_record or not galley_record['fields'].get('IsConstructed'): continue
+
+                            import_contract_seller = import_contract['fields'].get('Seller')
+                            if not import_contract_seller: continue
+                            
+                            _, galley_inventory = get_building_storage_details(tables, galley_building_id, import_contract_seller)
+                            stock_in_galley = galley_inventory.get(mat_type_to_source, 0.0)
+                            
+                            if stock_in_galley >= amount_to_fetch_this_run:
+                                log.info(f"      Sourcing {mat_type_to_source} from Galley {galley_building_id} for site {target_building_custom_id}.")
+                                galley_pos = _get_building_position_coords(galley_record)
+                                if citizen_position and galley_pos: # citizen_position is at workshop
+                                    path_to_galley = get_path_between_points(citizen_position, galley_pos, transport_api_url)
+                                    if path_to_galley and path_to_galley.get('success'):
+                                        if try_create_resource_fetching_activity(
+                                            tables, citizen_airtable_id, citizen_custom_id, citizen_username,
+                                            import_contract['fields'].get('ContractId', import_contract['id']),
+                                            galley_building_id, # From Galley
+                                            target_building_custom_id, # To Construction Site
+                                            mat_type_to_source, amount_to_fetch_this_run,
+                                            path_to_galley, 
+                                            now_utc_dt, resource_defs, building_type_defs, now_venice_dt, transport_api_url, api_base_url
+                                        ):
+                                            return True # Activity created, exit
+                                        activity_created_for_this_material = True; break 
+                        if activity_created_for_this_material: continue # Next material if this one was sourced
+
+                        # Priority 2: Fetch from Public Sell contract
+                        public_sell_formula = f"AND({{Type}}='public_sell', {{ResourceType}}='{_escape_airtable_value(mat_type_to_source)}', {{EndAt}}>'{now_utc_dt.isoformat()}', {{TargetAmount}}>0)"
+                        public_sell_contracts = tables['contracts'].all(formula=public_sell_formula, sort=[('PricePerResource', 'asc')])
+
+                        for ps_contract in public_sell_contracts:
+                            ps_seller_building_id = ps_contract['fields'].get('SellerBuilding')
+                            if not ps_seller_building_id: continue
+                            
+                            ps_seller_building_rec = get_building_record(tables, ps_seller_building_id)
+                            if not ps_seller_building_rec: continue
+
+                            ps_price = float(ps_contract['fields'].get('PricePerResource', 0))
+                            ps_available = float(ps_contract['fields'].get('TargetAmount', 0))
+                            ps_seller_username = ps_contract['fields'].get('Seller')
+                            if not ps_seller_username: continue
+
+                            site_owner_rec = get_citizen_record(tables, site_owner_username)
+                            if not site_owner_rec: break 
+                            site_owner_ducats = float(site_owner_rec['fields'].get('Ducats', 0))
+
+                            max_affordable_units = (site_owner_ducats / ps_price) if ps_price > 0 else float('inf')
+                            actual_amount_to_buy = min(amount_to_fetch_this_run, ps_available, max_affordable_units)
+                            actual_amount_to_buy = float(f"{actual_amount_to_buy:.4f}")
+
+                            if actual_amount_to_buy >= 0.1:
+                                _, ps_seller_inventory = get_building_storage_details(tables, ps_seller_building_id, ps_seller_username)
+                                stock_at_ps_seller = ps_seller_inventory.get(mat_type_to_source, 0.0)
+
+                                if stock_at_ps_seller >= actual_amount_to_buy:
+                                    log.info(f"      Sourcing {mat_type_to_source} from Public Seller {ps_seller_building_id} for site {target_building_custom_id}.")
+                                    ps_seller_pos = _get_building_position_coords(ps_seller_building_rec)
+                                    if citizen_position and ps_seller_pos:
+                                        path_to_ps_seller = get_path_between_points(citizen_position, ps_seller_pos, transport_api_url)
+                                        if path_to_ps_seller and path_to_ps_seller.get('success'):
+                                            if try_create_resource_fetching_activity(
+                                                tables, citizen_airtable_id, citizen_custom_id, citizen_username,
+                                                ps_contract['fields'].get('ContractId', ps_contract['id']),
+                                                ps_seller_building_id, 
+                                                target_building_custom_id, # To Construction Site
+                                                mat_type_to_source, actual_amount_to_buy,
+                                                path_to_ps_seller, 
+                                                now_utc_dt, resource_defs, building_type_defs, now_venice_dt, transport_api_url, api_base_url
+                                            ):
+                                                return True # Activity created, exit
+                                            activity_created_for_this_material = True; break
+                        if activity_created_for_this_material: continue # Next material
+
+                        log.info(f"      Could not find a direct source (Galley/Public_Sell) for {mat_type_to_source} for site {target_building_custom_id}.")
+                    # End of loop for materials_needed_for_delivery
+            # If loop completes, no activity was created for this contract. Try next contract.
+            continue 
+        return False # No activity created from any construction contract
     
     # --- Attempt to process active construction contracts ---
     if _try_process_active_construction_contracts():
