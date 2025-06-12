@@ -413,11 +413,19 @@ def generate_conversation_turn(
         system_explanation = (
             f"[SYSTEM]You are {speaker_profile.get('FirstName', speaker_username)}, a {speaker_profile.get('SocialClass', 'citizen')} of Venice. "
             f"You are currently in conversation with {listener_profile.get('FirstName', listener_username)}. {location_context}"
-            f"Review your knowledge in `addSystem` (your data package including `availableStratagems` and active stratagems, problems, relationship, listener's problems, and recent conversation history). "
+            f"Review your knowledge in `addSystem` (your data package including `availableStratagems` and active stratagems, problems, relationship, listener's problems, and recent conversation history, plus this `system_guidance`). "
             f"Answer/continue the conversation naturally in English, keeping your persona and objectives in mind. If strategic elements arise, remember that **Stratagems** are a key way to interact with the world. Your response should be direct speech.[/SYSTEM]\n\n"
         )
+        add_system_payload["system_guidance"] = system_explanation
         
-        prompt = system_explanation + f"{speaker_profile.get('FirstName', speaker_username)} (you): "
+        if add_system_payload["conversation_history"]:
+            last_message = add_system_payload["conversation_history"][-1]
+            prompt = last_message.get("Content", "An error occurred, I did not receive your last message. Could you repeat?") # Fallback if Content is missing
+            if not prompt: # If Content was empty string
+                 prompt = "Your previous message was empty. What do you mean?"
+        else:
+            log.warning(f"Conversation mode for {speaker_username} to {listener_username} but no conversation history found. Using generic prompt.")
+            prompt = "Continue the conversation." # Generic prompt if history is empty
 
     # 5. Determine KinOS model
     effective_kinos_model = kinos_model_override or get_kinos_model_for_social_class(speaker_username, speaker_social_class)
