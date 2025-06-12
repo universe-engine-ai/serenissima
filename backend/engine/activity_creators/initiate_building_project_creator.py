@@ -197,6 +197,11 @@ def try_create(
     activities_to_create = []
     
     # 1. Create goto_land activity
+    goto_land_details_json = json.dumps({
+        "landId": land_id,
+        "buildingTypeDefinition": building_type_definition,
+        "pointDetails": point_details
+    })
     goto_land_payload = {
         "ActivityId": f"goto_land_{_escape_airtable_value(land_id)}_{citizen}_{ts}",
         "Type": "goto_location",
@@ -204,13 +209,8 @@ def try_create(
         "FromBuilding": None,  # Starting from current position
         "ToBuilding": None,    # Going to a land plot, not a building
         "Path": json.dumps(path_to_land.get('path', [])),
-        "Notes": json.dumps({ # Changed Details to Notes
-            "landId": land_id,
-            "buildingTypeDefinition": building_type_definition,
-            "pointDetails": point_details
-            # "activityType": "initiate_building_project", # No longer needed for chaining
-            # "nextStep": "inspect_land_plot" # No longer needed for chaining
-        }),
+        "Details": goto_land_details_json, # Structured JSON goes into Details for goto_location
+        "Notes": f"Traveling to inspect land {land_id} for building a {building_type_definition.get('name', 'building')}.", # Simple text note
         "Status": "created",
         "Title": f"Traveling to inspect land {land_id}",
         "Description": f"Traveling to land {land_id} to inspect it for building a {building_type_definition.get('name', 'building')}. First step of initiate_building_project process. Will be followed by land inspection.",
@@ -221,21 +221,20 @@ def try_create(
     }
     activities_to_create.append(goto_land_payload)
     
-    # 2. Create inspect_land_plot activity
+    # 2. Create inspect_land_plot activity (Uses Notes for JSON as it's not goto_location)
+    inspect_land_notes_json = json.dumps({
+        "landId": land_id,
+        "buildingTypeDefinition": building_type_definition,
+        "pointDetails": point_details,
+        "builderContractDetails": builder_contract_details
+    })
     inspect_land_payload = {
         "ActivityId": inspect_land_activity_id,
         "Type": "inspect_land_plot",
         "Citizen": citizen,
         "FromBuilding": None,  # At a land plot, not a building
         "ToBuilding": None,    # At a land plot, not a building
-        "Notes": json.dumps({ # Changed Details to Notes
-            "landId": land_id,
-            "buildingTypeDefinition": building_type_definition,
-            "pointDetails": point_details,
-            "builderContractDetails": builder_contract_details
-            # "activityType": "initiate_building_project", # No longer needed for chaining
-            # "nextStep": "goto_office" # No longer needed for chaining
-        }),
+        "Notes": inspect_land_notes_json, # JSON in Notes for non-goto_location types
         "Status": "created",
         "Title": f"Inspecting land {land_id}",
         "Description": f"Inspecting land {land_id} for building a {building_type_definition.get('name', 'building')}. Second step of initiate_building_project process. Will be followed by visit to office.",
@@ -247,6 +246,12 @@ def try_create(
     activities_to_create.append(inspect_land_payload)
     
     # 3. Create goto_office activity
+    goto_office_details_json = json.dumps({
+        "landId": land_id,
+        "buildingTypeDefinition": building_type_definition,
+        "pointDetails": point_details,
+        "builderContractDetails": builder_contract_details
+    })
     goto_office_payload = {
         "ActivityId": goto_office_activity_id,
         "Type": "goto_location",
@@ -254,14 +259,8 @@ def try_create(
         "FromBuilding": None,  # Coming from a land plot, not a building
         "ToBuilding": target_office_building_id,
         "Path": json.dumps(path_to_office.get('path', [])),
-        "Notes": json.dumps({ # Changed Details to Notes
-            "landId": land_id,
-            "buildingTypeDefinition": building_type_definition,
-            "pointDetails": point_details,
-            "builderContractDetails": builder_contract_details
-            # "activityType": "initiate_building_project", # No longer needed for chaining
-            # "nextStep": "submit_building_project" # No longer needed for chaining
-        }),
+        "Details": goto_office_details_json, # Structured JSON into Details for goto_location
+        "Notes": f"Traveling to {target_office_building_record['fields'].get('Name', target_office_building_id)} to submit building project.", # Simple text note
         "Status": "created",
         "Title": f"Traveling to office to submit building project",
         "Description": f"Traveling to {target_office_building_record['fields'].get('Name', target_office_building_id)} to submit building project for land {land_id}. Third step of initiate_building_project process. Will be followed by project submission.",
@@ -272,19 +271,20 @@ def try_create(
     }
     activities_to_create.append(goto_office_payload)
     
-    # 4. Create submit_building_project activity
+    # 4. Create submit_building_project activity (Uses Notes for JSON)
+    submit_project_notes_json = json.dumps({
+        "landId": land_id,
+        "buildingTypeDefinition": building_type_definition,
+        "pointDetails": point_details,
+        "builderContractDetails": builder_contract_details
+    })
     submit_project_payload = {
         "ActivityId": submit_project_activity_id,
         "Type": "submit_building_project",
         "Citizen": citizen,
         "FromBuilding": target_office_building_id,
         "ToBuilding": target_office_building_id,  # Same location
-        "Notes": json.dumps({ # Changed Details to Notes
-            "landId": land_id,
-            "buildingTypeDefinition": building_type_definition,
-            "pointDetails": point_details,
-            "builderContractDetails": builder_contract_details
-        }),
+        "Notes": submit_project_notes_json, # JSON in Notes for non-goto_location types
         "Status": "created",
         "Title": f"Submitting building project for land {land_id}",
         "Description": f"Submitting plans to build a {building_type_definition.get('name', 'building')} on land {land_id}. Final step of initiate_building_project process. Will create the building project.",
