@@ -366,7 +366,7 @@ def generate_conversation_turn(
             f"Review your knowledge in `addSystem` (your data package including `availableStratagems` and active stratagems, problems, your relationship with them, their problems, and any recent direct conversation history). "
             f"What are your internal thoughts or observations about their presence and this encounter? Consider any opportunities, risks, or social implications. Could a **Stratagem** be relevant here (either one you are running, one targeting you, or one you might propose)? "
             f"Your response should be your internal monologue or reflection in English, not direct speech to them. "
-            f"Keep it concise and focused on potential gameplay impact or character development.[/SYSTEM]\n\n"
+            f"Keep it focused on potential gameplay impact or character development.[/SYSTEM]\n\n"
         )
         prompt = system_explanation + f"{speaker_profile.get('FirstName', speaker_username)}'s internal thoughts about {listener_profile.get('FirstName', listener_username)}: "
     elif interaction_mode == "conversation_opener":
@@ -405,7 +405,7 @@ def generate_conversation_turn(
             f"You are an AI assistant helping {speaker_username} prepare for a conversation with {listener_username}. "
             f"Based on the extensive context provided in `addSystem`, please perform the following two steps:\n\n"
             f"Step 1: Build a clear picture of the current situation. Describe the relationship, recent events, and any ongoing issues or goals for both individuals.\n\n"
-            f"Step 2: Using the situation picture from Step 1 and your understanding of {speaker_username}'s personality, summarize the information and extract the most relevant specific pieces that should influence their next message. "
+            f"Step 2: Using the situation picture from Step 1 and your understanding of {speaker_username}'s personality, summarize thoroughly the information and extract the most relevant specific pieces that should influence their next message. "
             "Focus on what is most important for them to remember or act upon in this specific interaction. Your final output should be this summary in English."
         )
 
