@@ -112,15 +112,11 @@ export async function GET() {
           {Type} = 'thought_log', 
           {Type} = 'unguided_run_log', 
           {Type} = 'autonomous_run_log',
-          {Type} = 'message_ai_augmented',
           {Type} = 'encounter_reflection',
-          {Type} = 'conversation_opener',
-          {Type} = 'reaction_auto',
           {Type} = 'ai_initiative_reasoning',
           {Type} = 'kinos_daily_reflection',
           {Type} = 'kinos_theater_reflection',
-          {Type} = 'kinos_public_bath_reflection',
-          {Type} = 'ai_context_summary'
+          {Type} = 'kinos_public_bath_reflection'
         ), IS_AFTER({CreatedAt}, '${twentyFourHoursAgo}'))`,
         fields: ['MessageId', 'Sender', 'Receiver', 'Content', 'Type', 'CreatedAt'], // Changed Recipient to Receiver
         sort: [{ field: 'CreatedAt', direction: 'desc' }],
