@@ -10,6 +10,7 @@ import json
 import re # Added import for regular expressions
 import requests
 import time
+import threading # Ajout de threading
 from datetime import datetime
 from fastapi.responses import JSONResponse, FileResponse
 from dotenv import load_dotenv
@@ -3359,28 +3360,55 @@ STRATAGEM_PROCESSORS_ENGINE = {
     # Add other stratagem processors here
 }
 
+# Helper function to run stratagem processor in a background thread
+def _process_stratagem_in_background(
+    processor_func: callable,
+    tables: Dict[str, Table],
+    stratagem_record: Dict[str, Any], # This is the full record from Airtable .create()
+    resource_defs: Dict,
+    building_type_defs: Dict,
+    api_base_url: str,
+    stratagem_airtable_id: str, # Pass Airtable ID for status updates
+    stratagem_custom_id: str # For logging
+):
+    log.info(f"[BG Thread] Starting background processing for stratagem '{stratagem_custom_id}' (Airtable ID: {stratagem_airtable_id}).")
+    try:
+        processing_success = processor_func(
+            tables,
+            stratagem_record,
+            resource_defs,
+            building_type_defs,
+            api_base_url
+        )
+        if processing_success:
+            log.info(f"[BG Thread] Background processing of stratagem '{stratagem_custom_id}' (Airtable ID: {stratagem_airtable_id}) completed successfully.")
+            # Processor should update its own status to 'executed' or similar.
+            # If it doesn't, and it's a one-shot, it might be reprocessed by the cron.
+            # For now, we assume processor handles its final status.
+        else:
+            log.warning(f"[BG Thread] Background processing of stratagem '{stratagem_custom_id}' (Airtable ID: {stratagem_airtable_id}) failed (processor returned False).")
+            # Optionally update status to 'failed' here if processor doesn't.
+            # tables['stratagems'].update(stratagem_airtable_id, {'Status': 'failed', 'Notes': 'Background processing failed.'})
+    except Exception as e_process_bg:
+        log.error(f"[BG Thread] Exception during background processing of stratagem '{stratagem_custom_id}' (Airtable ID: {stratagem_airtable_id}): {e_process_bg}", exc_info=True)
+        try:
+            tables['stratagems'].update(stratagem_airtable_id, {'Status': 'error', 'Notes': f"Error during background processing: {str(e_process_bg)}"})
+        except Exception as e_update_status_bg:
+            log.error(f"[BG Thread] Failed to update stratagem status to 'error' after background processing exception: {e_update_status_bg}")
+
 @app.post("/api/v1/engine/try-create-stratagem", response_model=StratagemEngineResponse)
 async def try_create_stratagem_engine(request_data: TryCreateStratagemEngineRequest):
     log_header(f"Python Engine: Received request to try-create stratagem: {request_data.stratagemType} for {request_data.citizenUsername}", color_code=LogColors.HEADER)
 
     try:
-        # Prepare tables dictionary for creators and processors
-        # Ensure all necessary tables are globally initialized and added here
         tables_engine_stratagem = {
-            'citizens': citizens_table,
-            'buildings': buildings_table,
-            'activities': activities_table_for_artworks, # Assuming activities_table_for_artworks is the correct global var for ACTIVITIES
-            'contracts': contracts_table,
-            'resources': resources_table,
-            'stratagems': stratagems_table,
-            'relationships': relationships_table, # Use directly initialized table
-            'lands': lands_table,
-            'notifications': notifications_table, # Use directly initialized table
-            'messages': messages_table # Add messages table
+            'citizens': citizens_table, 'buildings': buildings_table,
+            'activities': activities_table_for_artworks, 'contracts': contracts_table,
+            'resources': resources_table, 'stratagems': stratagems_table,
+            'relationships': relationships_table, 'lands': lands_table,
+            'notifications': notifications_table, 'messages': messages_table
         }
-        # Filter out None values if some tables aren't initialized globally (though they should be now)
         tables_engine_stratagem = {k: v for k, v in tables_engine_stratagem.items() if v is not None}
-
 
         now_venice_dt = datetime.now(VENICE_TIMEZONE)
         now_utc_dt = now_venice_dt.astimezone(pytz.utc)
@@ -3390,24 +3418,17 @@ async def try_create_stratagem_engine(request_data: TryCreateStratagemEngineRequ
             log.error(f"No creator found for stratagem type: {request_data.stratagemType}")
             return StratagemEngineResponse(success=False, message=f"Unsupported stratagem type: {request_data.stratagemType}", creation_status="failed", reason="unsupported_stratagem_type")
 
-        # Call the creator
-        # Stratagem creators typically return a list of payloads (usually one)
         stratagem_payloads_list = creator_func(
-            tables_engine_stratagem,
-            request_data.citizenUsername,
-            request_data.stratagemType,
-            request_data.stratagemParameters or {},
-            now_venice_dt,
-            now_utc_dt
+            tables_engine_stratagem, request_data.citizenUsername, request_data.stratagemType,
+            request_data.stratagemParameters or {}, now_venice_dt, now_utc_dt
         )
 
         if not stratagem_payloads_list or not isinstance(stratagem_payloads_list, list) or not stratagem_payloads_list[0]:
             log.warning(f"Stratagem creator for '{request_data.stratagemType}' did not return a valid payload for {request_data.citizenUsername}.")
             return StratagemEngineResponse(success=False, message="Stratagem creator failed to produce a payload.", creation_status="failed", reason="creator_payload_error")
 
-        stratagem_payload_to_create = stratagem_payloads_list[0] # Assuming one stratagem created at a time
+        stratagem_payload_to_create = stratagem_payloads_list[0]
 
-        # Create the stratagem record in Airtable
         try:
             created_stratagem_record_airtable = tables_engine_stratagem['stratagems'].create(stratagem_payload_to_create)
             stratagem_airtable_id = created_stratagem_record_airtable['id']
@@ -3417,105 +3438,57 @@ async def try_create_stratagem_engine(request_data: TryCreateStratagemEngineRequ
             log.error(f"Failed to create stratagem record in Airtable for {request_data.citizenUsername}, type {request_data.stratagemType}: {e_create}", exc_info=True)
             return StratagemEngineResponse(success=False, message=f"Airtable creation error: {str(e_create)}", creation_status="failed", error_details=str(e_create))
 
-        # Immediately process the newly created stratagem
         processor_func = STRATAGEM_PROCESSORS_ENGINE.get(request_data.stratagemType)
         if not processor_func:
-            log.warning(f"No processor found for stratagem type: {request_data.stratagemType}. Stratagem created but not processed immediately.")
+            log.warning(f"No processor found for stratagem type: {request_data.stratagemType}. Stratagem created but will not be processed immediately by this API call.")
             return StratagemEngineResponse(
-                success=True, # Creation was successful
-                message="Stratagem created, but no immediate processor found for its type.",
-                stratagem_id_airtable=stratagem_airtable_id,
-                stratagem_id_custom=stratagem_custom_id,
-                creation_status="success",
-                processing_status="not_applicable"
+                success=True, message="Stratagem created, but no immediate processor found for its type. Scheduled processing will handle it.",
+                stratagem_id_airtable=stratagem_airtable_id, stratagem_id_custom=stratagem_custom_id,
+                creation_status="success", processing_status="pending_scheduled"
             )
 
-        try:
-            log.info(f"Attempting immediate processing for stratagem '{stratagem_custom_id}' (Type: {request_data.stratagemType}).")
-            # Fetch definitions needed by processors
-            # API_BASE_URL is already defined globally in this file
-            resource_defs_proc = get_resource_types_from_api(API_BASE_URL)
-            building_type_defs_proc = get_building_types_from_api(API_BASE_URL)
+        log.info(f"Initiating background processing for stratagem '{stratagem_custom_id}' (Type: {request_data.stratagemType}).")
+        resource_defs_proc = get_resource_types_from_api(API_BASE_URL)
+        building_type_defs_proc = get_building_types_from_api(API_BASE_URL)
 
-            if not resource_defs_proc or not building_type_defs_proc:
-                log.error("Failed to fetch resource or building definitions for immediate stratagem processing.")
-                # Stratagem is created, but processing can't proceed without defs.
-                # Update status to 'pending_processing' or similar if desired, or leave as 'active'.
-                # For now, just report that processing couldn't happen.
-                return StratagemEngineResponse(
-                    success=True, # Creation was successful
-                    message="Stratagem created, but failed to load definitions for immediate processing.",
-                    stratagem_id_airtable=stratagem_airtable_id,
-                    stratagem_id_custom=stratagem_custom_id,
-                    creation_status="success",
-                    processing_status="error",
-                    processing_notes="Failed to load resource/building definitions."
-                )
+        if not resource_defs_proc or not building_type_defs_proc:
+            log.error("Failed to fetch resource or building definitions for background stratagem processing.")
+            # Stratagem is created, but processing can't be initiated.
+            return StratagemEngineResponse(
+                success=True, message="Stratagem created, but failed to load definitions for background processing initiation.",
+                stratagem_id_airtable=stratagem_airtable_id, stratagem_id_custom=stratagem_custom_id,
+                creation_status="success", processing_status="error_pre_bg_init",
+                processing_notes="Failed to load resource/building definitions for background task."
+            )
 
-            processing_success = processor_func(
+        # Start processor in a background thread
+        thread = threading.Thread(
+            target=_process_stratagem_in_background,
+            args=(
+                processor_func,
                 tables_engine_stratagem,
-                created_stratagem_record_airtable, # Pass the full record returned by .create()
+                created_stratagem_record_airtable, # Pass the full record
                 resource_defs_proc,
                 building_type_defs_proc,
-                API_BASE_URL # API_BASE_URL for processors to make their own calls if needed
+                API_BASE_URL,
+                stratagem_airtable_id, # Pass Airtable ID for status updates in thread
+                stratagem_custom_id # For logging in thread
             )
+        )
+        thread.daemon = True # Allow main program to exit even if threads are running
+        thread.start()
 
-            # Fetch the stratagem again to get any updates from the processor (e.g., Notes, ExecutedAt)
-            # This is important if the processor modifies the record.
-            # The 'created_stratagem_record_airtable' might be stale if the processor updated it.
-            # However, the processor itself should update the record in Airtable.
-            # The 'process' function for undercut, for example, updates 'ExecutedAt' and 'Notes'.
-            # So, the status of these fields in 'created_stratagem_record_airtable' might not reflect processor changes.
-            # For the response, it's better to fetch the latest state.
-            final_stratagem_state = tables_engine_stratagem['stratagems'].get(stratagem_airtable_id)
-            processing_notes_from_processor = final_stratagem_state['fields'].get('Notes', "No specific notes from initial processing.")
-
-
-            if processing_success:
-                log.info(f"Immediate processing of stratagem '{stratagem_custom_id}' succeeded.")
-                return StratagemEngineResponse(
-                    success=True,
-                    message="Stratagem created and initial processing successful.",
-                    stratagem_id_airtable=stratagem_airtable_id,
-                    stratagem_id_custom=stratagem_custom_id,
-                    creation_status="success",
-                    processing_status="success",
-                    processing_notes=processing_notes_from_processor
-                )
-            else:
-                log.warning(f"Immediate processing of stratagem '{stratagem_custom_id}' failed.")
-                return StratagemEngineResponse(
-                    success=True, # Creation was successful
-                    message="Stratagem created, but initial processing failed.",
-                    stratagem_id_airtable=stratagem_airtable_id,
-                    stratagem_id_custom=stratagem_custom_id,
-                    creation_status="success",
-                    processing_status="failed",
-                    processing_notes=processing_notes_from_processor
-                )
-
-        except Exception as e_process:
-            log.error(f"Error during immediate processing of stratagem '{stratagem_custom_id}': {e_process}", exc_info=True)
-            # Stratagem is created, but processing failed.
-            # Update status to 'error' or similar if desired.
-            try:
-                tables_engine_stratagem['stratagems'].update(stratagem_airtable_id, {'Status': 'error', 'Notes': f"Error during initial processing: {str(e_process)}"})
-            except Exception as e_update_status:
-                log.error(f"Failed to update stratagem status to 'error' after processing exception: {e_update_status}")
-            
-            return StratagemEngineResponse(
-                success=True, # Creation was successful
-                message="Stratagem created, but an error occurred during initial processing.",
-                stratagem_id_airtable=stratagem_airtable_id,
-                stratagem_id_custom=stratagem_custom_id,
-                creation_status="success",
-                processing_status="error",
-                processing_notes=f"Exception: {str(e_process)}",
-                error_details=str(e_process)
-            )
+        return StratagemEngineResponse(
+            success=True,
+            message="Stratagem created and processing initiated in background.",
+            stratagem_id_airtable=stratagem_airtable_id,
+            stratagem_id_custom=stratagem_custom_id,
+            creation_status="success",
+            processing_status="initiated_background"
+        )
 
     except HTTPException as http_exc:
-        raise http_exc # Re-raise FastAPI's own exceptions
+        raise http_exc
     except Exception as e:
         log.error(f"Outer error in /api/v1/engine/try-create-stratagem for {request_data.citizenUsername}, type {request_data.stratagemType}: {e}", exc_info=True)
         return StratagemEngineResponse(success=False, message=f"Internal server error: {str(e)}", creation_status="failed", error_details=str(e))
