@@ -1,0 +1,14 @@
+[
+  {
+    "role": "user",
+    "content": "You are an AI assistant helping ChillVibes prepare for a conversation with MorosiniNoble. Based on the extensive context provided in `addSystem`, please perform the following two steps:\n\nStep 1: Build a clear picture of the current situation. Describe the relationship, recent events, and any ongoing issues or goals for both individuals.\n\nStep 2: Using the situation picture from Step 1 and your understanding of ChillVibes's personality, summarize the information and extract the most relevant specific pieces that should influence their next message. Focus on what is most important for them to remember or act upon in this specific interaction. Your final output should be this summary in English.",
+    "timestamp": "2025-06-12T14:05:10.282679",
+    "channel_id": "attention"
+  },
+  {
+    "role": "assistant",
+    "content": "Error: Could not connect to local LLM. Ensure it's running and accessible.",
+    "timestamp": "2025-06-12T14:11:09.993456",
+    "channel_id": "attention"
+  }
+]
