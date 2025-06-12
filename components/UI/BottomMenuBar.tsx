@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { FaCrosshairs, FaHandshake, FaScroll, FaProjectDiagram, FaShieldAlt, FaCoins, FaArrowCircleDown, FaBomb, FaSyncAlt, FaArchive, FaStoreSlash, FaBullhorn, FaUserSecret, FaPalette, FaSitemap, FaAnchor, FaUsersShield, FaHandHoldingUsd } from 'react-icons/fa'; // Ajout FaAnchor, FaUsersShield, FaHandHoldingUsd
+import { FaCrosshairs, FaHandshake, FaScroll, FaProjectDiagram, FaShieldAlt, FaCoins, FaArrowCircleDown, FaBomb, FaSyncAlt, FaArchive, FaStoreSlash, FaBullhorn, FaUserSecret, FaPalette, FaSitemap, FaAnchor, FaUserShield, FaHandHoldingUsd } from 'react-icons/fa'; // Ajout FaAnchor, FaUserShield (corrigé), FaHandHoldingUsd
 import { eventBus, EventTypes } from '@/lib/utils/eventBus'; // Importer eventBus
 
 // Liste des types de stratagèmes "Prochainement"
@@ -164,7 +164,7 @@ const BottomMenuBar: React.FC = () => {
         {
           id: 'neighborhood_watch',
           label: 'Watch (Soon)',
-          icon: FaUsersShield, // Ou FaShieldAlt si FaUsersShield n'est pas souhaitée/disponible
+          icon: FaUserShield, // Corrigé: FaUserShield
           stratagemPanelData: {
             id: 'neighborhood_watch',
             type: 'neighborhood_watch',
