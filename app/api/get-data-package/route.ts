@@ -736,8 +736,21 @@ function convertDataPackageToMarkdown(dataPackage: any, citizenUsername: string 
   if (dataPackage.citizen?.position) {
     md += `- **position**: Lat: ${dataPackage.citizen.position.lat}, Lng: ${dataPackage.citizen.position.lng}\n`;
   }
-   if (dataPackage.citizen?.corePersonality) {
-    md += `- **corePersonality**: ${Object.entries(dataPackage.citizen.corePersonality).map(([k,v]) => `${k}: ${v}`).join(', ')}\n`;
+  if (dataPackage.citizen?.corePersonality) {
+    let personalityDisplay = String(dataPackage.citizen.corePersonality); // Fallback
+    if (typeof dataPackage.citizen.corePersonality === 'string') {
+      try {
+        const parsedPersonality = JSON.parse(dataPackage.citizen.corePersonality);
+        if (Array.isArray(parsedPersonality)) {
+          // Format as a JSON array string, e.g., ["Trait1", "Trait2"]
+          personalityDisplay = JSON.stringify(parsedPersonality);
+        }
+      } catch (e) {
+        // If parsing fails, personalityDisplay remains the original string
+        console.warn(`[API get-data-package] Could not parse corePersonality as JSON array: ${dataPackage.citizen.corePersonality}`, e);
+      }
+    }
+    md += `- **corePersonality**: ${personalityDisplay}\n`;
   }
   md += '\n';
 
