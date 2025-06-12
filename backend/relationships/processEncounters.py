@@ -301,34 +301,49 @@ def main(args):
 
         log.info(f"\nProcessing location: {location_name} (ID: {location_id}) with {len(citizens_at_location)} citizens.")
 
-        # Generate pairs of citizens at this location
-        citizen_pairs = list(itertools.combinations(citizens_at_location, 2))
-        random.shuffle(citizen_pairs) # Shuffle pairs within this location
+        # New logic: Each citizen initiates one conversation
+        if len(citizens_at_location) < 2:
+            log.info(f"Not enough citizens at {location_name} to form pairs. Skipping.")
+            continue
 
-        processed_pairs_at_location = 0
-        for pair in citizen_pairs:
-            # Removed MAX_ENCOUNTERS_PER_RUN and MAX_ENCOUNTERS_PER_LOCATION checks here
+        random.shuffle(citizens_at_location) # Shuffle to randomize initiation order
 
-            citizen1_record, citizen2_record = pair
-            citizen1_username = citizen1_record['fields'].get('Username')
-            citizen2_username = citizen2_record['fields'].get('Username')
-
-            if not citizen1_username or not citizen2_username:
-                log.warning("Skipping pair due to missing username.")
+        processed_initiations_at_location = 0 # Renamed counter for clarity
+        for initiator_record in citizens_at_location:
+            initiator_username = initiator_record['fields'].get('Username')
+            if not initiator_username:
+                log.warning(f"Skipping potential initiator {initiator_record.get('id')} due to missing username.")
                 continue
 
-            if args.citizen and args.citizen not in [citizen1_username, citizen2_username]:
-                continue # Skip if not involving the target citizen
+            potential_listeners = [
+                c_record for c_record in citizens_at_location if c_record['id'] != initiator_record['id']
+            ]
 
+            if not potential_listeners:
+                # This case should ideally not be reached if len(citizens_at_location) >= 2
+                log.debug(f"No potential listeners for {initiator_username} at {location_name}. Skipping initiation.")
+                continue
+
+            listener_record = random.choice(potential_listeners)
+            listener_username = listener_record['fields'].get('Username')
+            if not listener_username:
+                log.warning(f"Skipping potential listener {listener_record.get('id')} for initiator {initiator_username} due to missing username.")
+                continue
+            
+            # Apply --citizen filter: only process if the target citizen is the initiator or the listener
+            if args.citizen and args.citizen not in [initiator_username, listener_username]:
+                log.debug(f"Skipping encounter between {initiator_username} and {listener_username} due to --citizen filter for {args.citizen}.")
+                continue
+
+            log.info(f"Citizen {initiator_username} initiating encounter with {listener_username} at {location_name}.")
             process_encounter_pair(
                 tables, KINOS_API_KEY, API_BASE_URL,
-                citizen1_username, citizen2_username, location_id, args.dry_run, args.turns
+                initiator_username, listener_username, location_id, args.dry_run, args.turns
             )
-            processed_pairs_total += 1
-            processed_pairs_at_location +=1
+            processed_pairs_total += 1 # Still counts total encounters
+            processed_initiations_at_location += 1
 
-            # Removed MAX_ENCOUNTERS_PER_RUN check before sleep
-            log.info(f"Waiting {DELAY_BETWEEN_PAIRS_SECONDS}s before next pair...")
+            log.info(f"Waiting {DELAY_BETWEEN_PAIRS_SECONDS}s before next initiation at this location...")
             time.sleep(DELAY_BETWEEN_PAIRS_SECONDS)
 
 
