@@ -292,7 +292,7 @@ def _fetch_and_encode_latest_paintings(
         records = activities_table.all(
             formula=formula,
             fields=["Notes", "CreatedAt"],
-            sort=[("-CreatedAt", "desc")],
+            sort=["-CreatedAt"], # Corrected sort format
             max_records=limit 
         )
 
