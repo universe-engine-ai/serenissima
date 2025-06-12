@@ -1,0 +1,8 @@
+{
+  "artwork_name": "The Merchant's Shadow",
+  "ideogram_prompt": "A photorealistic Renaissance Venetian painting in the dramatic chiaroscuro style of Caravaggio or Tintoretto. The scene depicts an aging, contemplative Venetian merchant, his face etched with the burdens of trade, seated at a heavy wooden table in a dimly lit, private corner of a bustling Rialto market. A single, strong light source, perhaps from a high, unseen window, illuminates one side of his face and his hands, which are meticulously counting a small pile of ducats and resting on a large, open ledger. The other side of his face and the background are cast in deep, evocative shadow, with only faint hints of market activity or shelves of goods visible in the obscurity. His expression is a complex mix of weariness, shrewdness, and quiet resolve, embodying the 'Lux et Umbra' of commerce – the visible prosperity and the unseen struggles. He wears a practical, dark velvet doublet, subtly adorned. The color palette is rich with deep browns, ochres, and crimson, emphasizing the stark contrasts of light and shadow.",
+  "aspect_ratio": "3x2",
+  "magic_prompt": "OFF",
+  "negative_prompt": "modern elements, text, blurry, cartoon, anime, distorted, ugly, deformed, extra limbs, missing limbs, bad anatomy, poorly drawn hands, poorly drawn feet, watermark, signature, bright colors, cheerful, happy, smiling",
+  "style_type": "REALISTIC"
+}
