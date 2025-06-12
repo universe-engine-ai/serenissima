@@ -1,0 +1,8 @@
+{
+  "artwork_name": "The Merchant's Burden",
+  "ideogram_prompt": "A photorealistic, highly detailed Renaissance portrait in the dramatic chiaroscuro style of Caravaggio. The scene depicts a Venetian merchant in his late 40s, seated at a heavy, dark wooden desk within a dimly lit, austere counting house. A single, strong beam of light from an unseen high window cuts across the scene, intensely illuminating one side of his weary, contemplative face and his gnarled hands. His eyes are deep-set and burdened, reflecting years of shrewd dealings and the 'Lux et Umbra' of his soul. He wears a practical, dark velvet doublet, its rich texture visible in the light, and a simple, dark merchant's cap. On the desk, a worn leather-bound ledger lies open, and a single, gleaming gold ducat catches the light, symbolizing the tangible weight of his world. The background recedes into deep, impenetrable shadow, emphasizing the isolation and internal struggle of the figure. The mood is one of profound introspection, quiet anxiety, and the heavy burden of commerce.",
+  "aspect_ratio": "3x4",
+  "magic_prompt": "OFF",
+  "negative_prompt": "modern elements, text, blurry, cartoon, abstract, vibrant colors, happy expression, smiling, clean, new, bright room",
+  "style_type": "REALISTIC"
+}
