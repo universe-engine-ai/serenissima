@@ -46,12 +46,27 @@ const CoordinatePricingStratagemPanel = forwardRef<StratagemSpecificPanelRef, St
       const citizenDisplayName = (citizen?.firstName && citizen?.lastName)
         ? `${citizen.firstName} ${citizen.lastName}`
         : citizen?.username || targetCitizen;
-      targetDescriptionElements = (
-        <>
-          the prices of <span className="font-bold">{citizenDisplayName}</span> for the selected resource.
-        </>
-      );
-    } else if (targetBuilding) {
+
+      const citizenOwnedBuildings = buildings.filter(b => b.owner === targetCitizen);
+
+      if (citizenOwnedBuildings.length === 0) {
+        // Le citoyen cible est sélectionné, mais ne possède aucun bâtiment dans la liste fournie.
+        // Le processeur essaiera toujours de se coordonner avec les ventes directes de ce citoyen.
+        targetDescriptionElements = (
+          <>
+            the prices of <span className="font-bold">{citizenDisplayName}</span> for the selected resource. 
+            Note: this citizen does not appear to own any listed business buildings.
+          </>
+        );
+      } else {
+        // Le citoyen cible est sélectionné et possède des bâtiments.
+        targetDescriptionElements = (
+          <>
+            the prices of <span className="font-bold">{citizenDisplayName}</span> for the selected resource.
+          </>
+        );
+      }
+    } else if (targetBuilding) { // targetCitizen n'est PAS sélectionné, mais targetBuilding l'EST
       const building = buildings.find(b => b.buildingId === targetBuilding);
       const buildingDisplayName = building?.name || targetBuilding;
       targetDescriptionElements = (
@@ -59,7 +74,7 @@ const CoordinatePricingStratagemPanel = forwardRef<StratagemSpecificPanelRef, St
           the prices of building <span className="font-bold">{buildingDisplayName}</span> for the selected resource.
         </>
       );
-    } else {
+    } else { // Ni targetCitizen ni targetBuilding ne sont sélectionnés
       targetDescriptionElements = `the general market average for the selected resource.`;
     }
 
