@@ -442,7 +442,7 @@ interface ShortStratagemDefinition {
 }
 
 
-async function fetchStratagemDefinitions(): Promise<ShortStratagemDefinition[]> {
+async function fetchStratagemDefinitions(): Promise<Record<string, Record<string, ShortStratagemDefinition[]>>> {
   const definitions = [ // No longer explicitly typed as StratagemDefinition[] here
     {
       name: 'Undercut',
@@ -662,7 +662,23 @@ async function fetchStratagemDefinitions(): Promise<ShortStratagemDefinition[]> 
     nature: def.nature, // Added nature
     status: def.status,
   }));
-  return Promise.resolve(shortDefinitions);
+
+  const categorizedStratagems: Record<string, Record<string, ShortStratagemDefinition[]>> = {};
+
+  for (const stratagem of shortDefinitions) {
+    const categoryKey = stratagem.category || 'Uncategorized'; // Default key for null category
+    const natureKey = stratagem.nature || 'Unspecified';   // Default key for undefined nature
+
+    if (!categorizedStratagems[categoryKey]) {
+      categorizedStratagems[categoryKey] = {};
+    }
+    if (!categorizedStratagems[categoryKey][natureKey]) {
+      categorizedStratagems[categoryKey][natureKey] = [];
+    }
+    categorizedStratagems[categoryKey][natureKey].push(stratagem);
+  }
+
+  return Promise.resolve(categorizedStratagems);
 }
 
 export async function GET(request: Request) {
@@ -772,13 +788,13 @@ export async function GET(request: Request) {
       recentProblems: [] as any[], // Initialize recentProblems array
       recentMessages: [] as any[], // Initialize recentMessages array
       latestDailyUpdate: null as any | null, // Initialize latestDailyUpdate
-      availableStratagems: [] as StratagemDefinition[], // Initialize availableStratagems
+      availableStratagems: {} as Record<string, Record<string, ShortStratagemDefinition[]>>, // Initialize availableStratagems
       stratagemsExecutedByCitizen: [] as any[], // Stratagems executed by the citizen
       stratagemsTargetingCitizen: [] as any[], // Stratagems targeting the citizen
     };
 
     // Fetch and add available stratagems (definitions)
-    dataPackage.availableStratagems = await fetchStratagemDefinitions();
+    dataPackage.availableStratagems = await fetchStratagemDefinitions(); // Assigns the new categorized structure
 
     // Fetch and add active stratagems involving the citizen
     const activeStratagemsResult = await fetchCitizenActiveStratagems(citizenUsername);
