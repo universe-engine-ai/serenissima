@@ -282,9 +282,9 @@ const BottomMenuBar: React.FC = () => {
       ]
     },
     { 
-      id: 'covert_ops', 
-      label: 'COVERT OPS', 
-      icon: FaBomb, 
+      id: 'warfare', // Renamed from covert_ops
+      label: 'WARFARE', 
+      icon: FaBomb, // Keeping FaBomb, or could use FaCrosshairs if preferred and imported
       subItems: [
         {
           id: 'maritime_blockade', label: 'Blockade (Soon)', icon: FaAnchor,
