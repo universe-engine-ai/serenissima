@@ -3986,7 +3986,7 @@ def process_citizen_activity(
         (4, _handle_emergency_fishing, "Pêche d'urgence (Facchini affamé, pas en repos)"),
         (5, _handle_shop_for_food_at_retail, "Acheter nourriture au détail (si faim, loisir)"),
         (6, _handle_eat_at_tavern_or_goto, "Manger à la taverne / Aller à la taverne (si faim et loisir/pause)"),
-        (10, _handle_deposit_full_inventory, "Déposer l'inventaire plein"), 
+        # (10, _handle_deposit_full_inventory, "Déposer l'inventaire plein"), # Déplacé plus bas
         (15, _handle_night_shelter, "Abri nocturne / Repos (selon horaire de classe)"),
         # (20, _handle_deposit_inventory_at_work, "Déposer inventaire plein au travail (si proche du travail)"), # Remplacé par _handle_deposit_full_inventory
     ]
@@ -4050,13 +4050,22 @@ def process_citizen_activity(
             log.error(f"{LogColors.FAIL}{citizen_name} ({citizen_social_class}): ERREUR dans handler séquentiel '{description}': {e_handler}{LogColors.ENDC}", exc_info=True)
 
     # Fallback logic if no activity was created
-    log.info(f"{LogColors.OKBLUE}{citizen_name} ({citizen_social_class}): Aucune activité spécifique. Évaluation fallback (repos ou oisiveté).{LogColors.ENDC}")
-    # Try rest via _handle_night_shelter as a final fallback if appropriate
+    log.info(f"{LogColors.OKBLUE}{citizen_name} ({citizen_social_class}): Aucune activité spécifique. Évaluation fallback (repos, dépôt inventaire ou oisiveté).{LogColors.ENDC}")
+    
+    # Try rest via _handle_night_shelter as a high-priority fallback if appropriate
     if is_rest_time_for_class(citizen_social_class, now_venice_dt): # Check if it's actually rest time
+        log.info(f"{LogColors.OKBLUE}Fallback pour {citizen_name}: Tentative de création d'activité de repos via _handle_night_shelter.{LogColors.ENDC}")
         fallback_rest_activity = _handle_night_shelter(*handler_args_tuple)
         if fallback_rest_activity:
             log.info(f"{LogColors.OKGREEN}Fallback pour {citizen_name}: Activité 'rest' (ou chaîne) créée par _handle_night_shelter.{LogColors.ENDC}")
             return fallback_rest_activity
+            
+    # Try depositing full inventory as a next fallback, before idling
+    log.info(f"{LogColors.OKBLUE}Fallback pour {citizen_name}: Tentative de dépôt d'inventaire via _handle_deposit_full_inventory.{LogColors.ENDC}")
+    deposit_inventory_activity = _handle_deposit_full_inventory(*handler_args_tuple)
+    if deposit_inventory_activity:
+        log.info(f"{LogColors.OKGREEN}Fallback pour {citizen_name}: Activité de dépôt d'inventaire (ou chaîne) créée par _handle_deposit_full_inventory.{LogColors.ENDC}")
+        return deposit_inventory_activity
     
     log.info(f"{LogColors.OKBLUE}Fallback final pour {citizen_name}: Création d'une activité 'idle'.{LogColors.ENDC}")
     idle_end_time_iso = (now_utc_dt + timedelta(hours=IDLE_ACTIVITY_DURATION_HOURS)).isoformat()
