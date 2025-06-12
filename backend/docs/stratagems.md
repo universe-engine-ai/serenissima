@@ -1006,3 +1006,65 @@ This would make NLR propose a 6-month, 50/50 spice trading joint venture to SerM
 }
 ```
 This would make NLR provide "Standard" financial support (e.g., 10 Ducats/day) to "StrugglingArtistAI" for 90 days, costing NLR 25 Influence upfront and a total of 900 Ducats over the period, while significantly improving their relationship.
+
+### 18. Neighborhood Watch (Coming Soon)
+
+-   **Type**: `neighborhood_watch`
+-   **Purpose**: To enhance security and reduce crime in a specific district through collective citizen vigilance.
+-   **Category**: `community_safety`
+-   **Creator**: (To be created: `backend/engine/stratagem_creators/neighborhood_watch_stratagem_creator.py`)
+-   **Processor**: (To be created: `backend/engine/stratagem_processors/neighborhood_watch_stratagem_processor.py`)
+
+#### Parameters for Creation (`stratagemDetails` in API request):
+
+-   `districtName` (string, required): The name of the district where the neighborhood watch will be established (e.g., "San Polo", "Dorsoduro").
+-   `name` (string, optional): Custom name for the stratagem. Defaults to "Neighborhood Watch for [DistrictName]".
+-   `description` (string, optional): Custom description.
+-   `notes` (string, optional): Custom notes.
+
+#### How it Works (Conceptual):
+
+1.  **Creation**:
+    -   The `neighborhood_watch_stratagem_creator.py` validates parameters (e.g., `districtName` is a valid district).
+    -   It creates a new record in the `STRATAGEMS` table with `Status: "active"`, `Category: "community_safety"`, an influence cost of 10, and `ExpiresAt` set to 45 days from creation.
+    -   The `districtName` is stored in the stratagem record.
+
+2.  **Processing (Conceptual for "Coming Soon")**:
+    -   `processStratagems.py` picks up the active "neighborhood_watch" stratagem.
+    -   `neighborhood_watch_stratagem_processor.py` is invoked.
+    -   **Citizen Participation**:
+        -   The processor identifies citizens residing or owning property in the `districtName`.
+        -   It might send notifications inviting them to participate or automatically enroll them.
+        -   Participating citizens might have a slight increase in their "civic duty" or "security awareness" status.
+    -   **Building Security Enhancement**:
+        -   For buildings within the `districtName` (owned by participants or all buildings in the district):
+            -   A temporary "security_modifier" could be applied, making them less susceptible to certain negative events. This could be a hidden flag or a numeric modifier.
+    -   **Problem Reduction**:
+        -   The probability of certain `problem` types occurring in the `districtName` is reduced for the duration of the stratagem. This includes problems like:
+            -   `theft`
+            -   `sabotage` (minor acts of vandalism or disruption)
+            -   `criminal_activity` (generic minor crimes)
+        -   This could be implemented by adding a negative modifier to the problem generation chance in that district or by having the processor actively resolve/prevent a certain number of such problems.
+    -   **Vigilance Activities (Optional Enhancement)**:
+        -   The processor could create low-intensity `patrol` or `vigilance` activities for participating citizens during their leisure time. These activities would contribute to the overall security effect.
+    -   **Relationship Impact**:
+        -   Small positive increases in `TrustScore` and `StrengthScore` among citizens participating in the watch within the same district.
+    -   **Notifications**:
+        -   Citizens in the district receive notifications about the establishment of the watch and any notable successes (e.g., "Crime has noticeably decreased in San Polo thanks to the diligent watch!").
+    -   **Status & Notes**:
+        -   The stratagem remains `active` for 45 days.
+        -   Notes could track the number of participating citizens and any observed reduction in crime incidents.
+
+#### Example API Request to `POST /api/stratagems/try-create`:
+
+```json
+{
+  "citizenUsername": "NLR",
+  "stratagemType": "neighborhood_watch",
+  "stratagemDetails": {
+    "districtName": "San Polo",
+    "name": "San Polo Vigilance Initiative"
+  }
+}
+```
+This would make NLR initiate a Neighborhood Watch in the San Polo district for 45 days, costing NLR 10 Influence. This aims to improve security and reduce minor crimes in the area.
