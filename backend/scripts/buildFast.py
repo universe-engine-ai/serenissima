@@ -11,7 +11,7 @@ import logging
 import argparse
 import time
 import json
-from typing import Optional, Dict, Any
+from typing import Optional, Dict, Any, List # Added List
 
 # Add project root to sys.path for consistent imports
 PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
@@ -48,7 +48,7 @@ except ImportError:
     try:
         from dateutil import parser as dateutil_parser #type: ignore
     except ImportError:
-        log.error("Failed to import dateutil.parser. Date parsing for activities will fail.")
+        print("ERROR: Failed to import dateutil.parser. Date parsing for activities will fail.") # Changed log.error to print
         dateutil_parser = None #type: ignore
 
 
