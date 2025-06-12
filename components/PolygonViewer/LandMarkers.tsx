@@ -703,7 +703,7 @@ export default function LandMarkers({
                 top: `${finalY}px`,
                 width: `${width}px`,
                 height: `${height}px`,
-                zIndex: isSelected ? 15 : (isHovered ? 12 : 10),
+                zIndex: isSelected ? 9 : (isHovered ? 7 : 5), // Lowered z-index range
                 transform: 'translate(-50%, -50%)',
                 border: isSelected 
                   ? '2px dashed red' 
@@ -791,7 +791,7 @@ export default function LandMarkers({
                 top: `${finalY}px`,
                 width: `${width}px`,
                 height: `${height}px`,
-                zIndex: 10, // Static z-index
+                zIndex: 5, // Lowered static z-index
                 transition: 'opacity 0.2s ease-out', // Only transition opacity if needed, or remove
                 transform: `translate(-50%, -50%)`, // No scaling
                 cursor: 'default', // Default cursor
