@@ -322,48 +322,115 @@ def _generate_kinos_message_content(
     prompt: str, 
     kinos_api_key: str, 
     kinos_model_override: Optional[str] = None,
-    add_system_data: Optional[Dict[str, Any]] = None
+    add_system_data: Optional[Dict[str, Any]] = None,
+    tables: Optional[Dict[str, Table]] = None # Ajout de tables pour le résumé et la persistance
 ) -> Optional[str]:
-    """Appelle KinOS pour générer le contenu d'un message, avec addSystem facultatif."""
+    """
+    Appelle KinOS pour générer le contenu d'un message, avec addSystem facultatif.
+    Inclut une étape de résumé du contexte si le modèle effectif est 'local'.
+    """
+    final_add_system_data_for_main_call = add_system_data
+    effective_model_for_main_call = kinos_model_override
+
+    # Déterminer le modèle effectif si non surchargé (ceci est déjà géré par l'appelant _initiate_reaction_dialogue_if_both_ai)
+    # Ici, kinos_model_override EST le modèle effectif.
+    
+    if effective_model_for_main_call == 'local' and add_system_data and tables:
+        log.info(f"{LogColors.INFO}Modèle local détecté pour {kin_username} dans relationship_helpers. Exécution de l'étape de résumé du contexte.{LogColors.ENDC}")
+        
+        attention_channel_name = "attention" # Canal dédié pour les appels de résumé
+        attention_prompt = (
+            f"You are an AI assistant helping {kin_username} prepare for an interaction with {channel_username}. "
+            f"Based on the extensive context provided in `addSystem` (which includes profiles, relationship details, "
+            f"notifications, problems, relevancies, and potentially triggering activity details or prior messages), "
+            f"please perform the following two steps:\n\n"
+            f"Step 1: Build a clear picture of the current situation. Describe the relationship, recent events, "
+            f"and any ongoing issues or goals for both individuals.\n\n"
+            f"Step 2: Using the situation picture from Step 1 and your understanding of {kin_username}'s personality, "
+            f"summarize the information and extract the most relevant specific pieces that should influence their next message. "
+            f"Focus on what is most important for them to remember or act upon in this specific interaction. "
+            f"Your final output should be this summary in English, concise and directly usable."
+        )
+
+        try:
+            # Appel KinOS pour le résumé (utilise le modèle 'local' par défaut pour cette étape)
+            # Note: Cet appel interne ne doit pas lui-même déclencher une autre étape de résumé.
+            # Nous faisons un appel direct à requests.post ici pour éviter la récursion complexe.
+            attention_url = f"{KINOS_API_URL_BASE}/{kin_username}/channels/{attention_channel_name}/messages"
+            attention_headers = {"Authorization": f"Bearer {kinos_api_key}", "Content-Type": "application/json"}
+            attention_payload = {
+                "message": attention_prompt,
+                "addSystem": json.dumps(add_system_data), # Contexte complet pour le résumé
+                "model": "local" # Forcer le modèle local pour l'étape de résumé
+            }
+            
+            log.debug(f"Appel KinOS (attention) : URL={attention_url}, Kin={kin_username}, Channel={attention_channel_name}")
+            attention_response_req = requests.post(attention_url, headers=attention_headers, json=attention_payload, timeout=DEFAULT_TIMEOUT_SECONDS)
+            attention_response_req.raise_for_status() # Lèvera une exception pour les codes d'erreur HTTP
+
+            # Récupérer la réponse de l'assistant depuis l'historique du canal d'attention
+            attention_history_response = requests.get(attention_url, headers=attention_headers, timeout=20)
+            attention_history_response.raise_for_status()
+            
+            attention_messages_data = attention_history_response.json()
+            attention_assistant_messages = [msg for msg in attention_messages_data.get("messages", []) if msg.get("role") == "assistant"]
+            
+            if attention_assistant_messages:
+                attention_assistant_messages.sort(key=lambda x: x.get("timestamp", ""), reverse=True)
+                summarized_context_raw = attention_assistant_messages[0].get("content")
+
+                if summarized_context_raw:
+                    cleaned_summary = clean_thought_content(tables, summarized_context_raw)
+                    log.info(f"{LogColors.OKGREEN}Résumé du contexte généré et nettoyé pour {kin_username}. Longueur originale: {len(summarized_context_raw)}, Longueur nettoyée: {len(cleaned_summary)}{LogColors.ENDC}")
+                    log.info(f"{LogColors.LIGHTBLUE}Résumé nettoyé du contexte pour {kin_username} (réponse du synthétiseur addSystem):\n{cleaned_summary}{LogColors.ENDC}")
+
+                    # Persister le résumé comme une pensée personnelle
+                    _store_message_via_api(
+                        tables=tables,
+                        sender_username=kin_username,
+                        receiver_username=kin_username, # Message à soi-même
+                        content=cleaned_summary,
+                        message_type="ai_context_summary",
+                        channel_name=kin_username # Canal privé pour les pensées personnelles
+                    )
+                    
+                    final_add_system_data_for_main_call = {
+                        "summary_of_relevant_context": cleaned_summary,
+                        "original_context_available_on_request": "The full data package was summarized. You are now acting as the character based on this summary."
+                    }
+                else:
+                    log.warning(f"{LogColors.WARNING}Le résumé du contexte pour {kin_username} était vide. Utilisation du contexte complet.{LogColors.ENDC}")
+            else:
+                log.warning(f"{LogColors.WARNING}Aucun message d'assistant trouvé dans l'historique d'attention pour {kin_username}. Utilisation du contexte complet.{LogColors.ENDC}")
+
+        except requests.exceptions.RequestException as e_summary:
+            log.error(f"{LogColors.FAIL}Erreur de requête API KinOS (résumé) pour {kin_username}: {e_summary}. Utilisation du contexte complet.{LogColors.ENDC}")
+        except Exception as e_summary_gen:
+            log.error(f"{LogColors.FAIL}Erreur dans la génération du résumé pour {kin_username}: {e_summary_gen}. Utilisation du contexte complet.{LogColors.ENDC}")
+            
     try:
         url = f"{KINOS_API_URL_BASE}/{kin_username}/channels/{channel_username}/messages"
         headers = {"Authorization": f"Bearer {kinos_api_key}", "Content-Type": "application/json"}
+        # Utiliser final_add_system_data_for_main_call qui peut être le résumé ou le contexte complet
         payload = {"message": prompt}
-
-        actual_model_to_use = kinos_model_override
-        if not actual_model_to_use:
-            # Determine social class from add_system_data if possible, or fetch if necessary
-            # This function is generic, so social class might not always be in add_system_data
-            # For reaction dialogues, the calling function _initiate_reaction_dialogue_if_both_ai
-            # will determine the model based on the kin_username's social class.
-            # This function will prioritize kinos_model_override if passed.
-            # If kinos_model_override is None, the calling function should have already decided.
-            # However, to be robust, if add_system_data contains profile info, we can try to use it.
-            # This is a bit complex as the structure of add_system_data can vary.
-            # For now, we rely on kinos_model_override being correctly set by the caller.
-            # If it's not set, KinOS default will be used.
-            # The primary logic for model selection based on social class should be in the functions
-            # that *prepare* the call to _generate_kinos_message_content.
-            pass # Rely on kinos_model_override or KinOS default if not set.
-
-        if actual_model_to_use: # If an override was provided
-            payload["model"] = actual_model_to_use
-            log.info(f"Utilisation du modèle KinOS '{actual_model_to_use}' pour {kin_username} -> {channel_username}.")
-        # If no override, KinOS default is used. The calling function is responsible for class-based selection.
         
-        if add_system_data:
+        if final_add_system_data_for_main_call:
             try:
-                payload["addSystem"] = json.dumps(add_system_data)
-                log.info(f"Ajout de addSystem data pour {kin_username} -> {channel_username}.")
+                payload["addSystem"] = json.dumps(final_add_system_data_for_main_call)
+                log.info(f"Ajout de addSystem data (potentiellement résumé) pour {kin_username} -> {channel_username}.")
             except TypeError as te:
-                log.error(f"{LogColors.FAIL}Erreur de sérialisation JSON pour addSystem data: {te}. Envoi sans addSystem.{LogColors.ENDC}")
-
-
-        log.debug(f"Appel KinOS : URL={url}, Kin={kin_username}, Channel={channel_username}, PayloadKeys={list(payload.keys())}")
-        response = requests.post(url, headers=headers, json=payload, timeout=300) # Augmentation du timeout à 300s (5 minutes)
+                log.error(f"{LogColors.FAIL}Erreur de sérialisation JSON pour final_add_system_data: {te}. Envoi sans addSystem.{LogColors.ENDC}")
+        
+        # effective_model_for_main_call est kinos_model_override, qui est le modèle basé sur la classe sociale
+        if effective_model_for_main_call:
+            payload["model"] = effective_model_for_main_call
+            log.info(f"Utilisation du modèle KinOS '{effective_model_for_main_call}' pour l'appel principal {kin_username} -> {channel_username}.")
+        
+        log.debug(f"Appel KinOS (principal) : URL={url}, Kin={kin_username}, Channel={channel_username}, PayloadKeys={list(payload.keys())}")
+        response = requests.post(url, headers=headers, json=payload, timeout=DEFAULT_TIMEOUT_SECONDS) 
 
         if response.status_code not in [200, 201]:
-            log.error(f"{LogColors.FAIL}Erreur API KinOS (POST {url}): {response.status_code} - {response.text[:200]}{LogColors.ENDC}")
+            log.error(f"{LogColors.FAIL}Erreur API KinOS (POST principal {url}): {response.status_code} - {response.text[:200]}{LogColors.ENDC}")
             return None
 
         # Récupérer la réponse de l'assistant depuis l'historique du canal
@@ -537,8 +604,9 @@ def _initiate_reaction_dialogue_if_both_ai(
         channel_username=actor_username,
         prompt=prompt_for_receiver,
         kinos_api_key=kinos_api_key,
-        kinos_model_override=model_for_receiver, # Utiliser le modèle basé sur la classe sociale
-        add_system_data=system_context_data # Passer le contexte
+        kinos_model_override=model_for_receiver, 
+        add_system_data=system_context_data,
+        tables=tables # Passer tables pour le résumé
     )
 
     if receiver_reaction_content:
@@ -590,8 +658,9 @@ def _initiate_reaction_dialogue_if_both_ai(
             channel_username=receiver_of_action_username,
             prompt=prompt_for_actor_reply,
             kinos_api_key=kinos_api_key,
-            kinos_model_override=model_for_actor_reply, # Utiliser le modèle basé sur la classe sociale
-            add_system_data=system_context_data_for_actor_reply # Passer le contexte mis à jour
+            kinos_model_override=model_for_actor_reply, 
+            add_system_data=system_context_data_for_actor_reply,
+            tables=tables # Passer tables pour le résumé
         )
 
         if actor_reply_content:
