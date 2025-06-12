@@ -1239,19 +1239,19 @@ This would make NLR launch a "Standard" intensity reputation boost campaign for 
 
 #### Parameters for Creation (`stratagemDetails` in API request):
 
--   `targetCitizenUsername` (string, required): The username of the citizen to target.
--   `targetActivityId` (string, optional): The `ActivityId` of the specific travel activity (e.g., `goto_location` with `TransportMode: "gondola"`) to intercept. If not provided, the processor might attempt to target the next suitable gondola travel activity of the target.
--   `name` (string, optional): Custom name for the stratagem. Defaults to "Canal Ambush on [TargetCitizen]".
+-   `targetCitizenUsername` (string, optional): The username of the citizen to target. If not provided, the processor will attempt to find an opportune victim.
+-   `name` (string, optional): Custom name for the stratagem. Defaults to "Canal Ambush on [TargetCitizen]" or "Opportunistic Canal Ambush".
 -   `description` (string, optional): Custom description.
 -   `notes` (string, optional): Custom notes.
+    *Note: `targetActivityId` is not directly set by the panel; the processor will handle opportunity identification.*
 
 #### How it Works (Conceptual):
 
 1.  **Creation**:
-    -   The `canal_mugging_stratagem_creator.py` validates parameters (e.g., `targetCitizenUsername` exists).
+    -   The `canal_mugging_stratagem_creator.py` validates parameters.
     -   It creates a new record in the `STRATAGEMS` table with `Status: "active"`, `Category: "criminal_activity"`, an influence cost of 3, and sets `ExpiresAt` (e.g., 24-48 hours to find an opportunity).
 
-2.  **Processing (Conceptual for "Coming Soon")**:
+2.  **Processing**:
     -   `processStratagems.py` picks up the active "canal_mugging" stratagem.
     -   `canal_mugging_stratagem_processor.py` is invoked.
     -   **Opportunity Identification**:
@@ -1285,7 +1285,7 @@ This would make NLR launch a "Standard" intensity reputation boost campaign for 
 ```
 This would make NLR attempt to mug "WealthyMerchantAI" during one of their gondola travels, costing NLR 3 Influence and risking legal consequences for a potential gain of Ducats and resources.
 
-### 22. Burglary (Coming Soon)
+### 22. Burglary
 
 -   **Type**: `burglary`
 -   **Purpose**: To steal tools, materials, or finished goods from a competitor's production building.

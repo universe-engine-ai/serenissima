@@ -102,8 +102,8 @@ export async function POST(request: Request) {
       );
     } else if (stratagemType === 'canal_mugging') {
       console.log(`[API /stratagems/try-create] Processing 'canal_mugging' stratagem with parameters:`,
-        `TargetCitizenUsername: ${stratagemDetails?.targetCitizenUsername}`,
-        `TargetActivityId: ${stratagemDetails?.targetActivityId}`
+        `TargetCitizenUsername: ${stratagemDetails?.targetCitizenUsername}` 
+        // TargetActivityId is not passed from this panel, processor will handle if needed
       );
     } else if (stratagemType === 'burglary') {
       console.log(`[API /stratagems/try-create] Processing 'burglary' stratagem with parameters:`,

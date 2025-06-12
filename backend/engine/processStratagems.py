@@ -50,7 +50,8 @@ from backend.engine.stratagem_processors import (
     process_printing_propaganda_stratagem,
     process_cargo_mishap_stratagem,
     process_marketplace_gossip_stratagem,
-    process_joint_venture_stratagem
+    process_joint_venture_stratagem,
+    process_canal_mugging_stratagem # Added import
     # Import other stratagem processors here
 )
 
@@ -89,9 +90,14 @@ def process_canal_mugging_stratagem(
     building_type_defs: Dict, 
     api_base_url: str
 ) -> bool:
-    log.warning(f"{LogColors.WARNING}Processing for 'canal_mugging' stratagem (ID: {stratagem_record['id']}) is not yet implemented. Marking as executed for now.{LogColors.ENDC}")
-    tables['stratagems'].update(stratagem_record['id'], {'Status': 'executed', 'Notes': 'Coming Soon - Marked as executed.'})
-    return True
+    # This placeholder is now removed as we'll map to the actual (or new placeholder) processor
+    # log.warning(f"{LogColors.WARNING}Processing for 'canal_mugging' stratagem (ID: {stratagem_record['id']}) is not yet implemented. Marking as executed for now.{LogColors.ENDC}")
+    # tables['stratagems'].update(stratagem_record['id'], {'Status': 'executed', 'Notes': 'Coming Soon - Marked as executed.'})
+    # return True
+    # The actual processor (even if a placeholder) will be called from the map.
+    # For now, assuming process_canal_mugging_stratagem is imported and will handle it.
+    # If it's still a placeholder, it will log its own "not implemented" message.
+    pass # This function is removed, the imported one will be used.
 
 # Placeholder processor for burglary
 def process_burglary_stratagem(
@@ -237,7 +243,7 @@ STRATAGEM_PROCESSORS = {
     "joint_venture": process_joint_venture_stratagem,
     "monopoly_pricing": process_monopoly_pricing_stratagem,
     "reputation_boost": process_reputation_boost_stratagem,
-    "canal_mugging": process_canal_mugging_stratagem,
+    "canal_mugging": process_canal_mugging_stratagem, # Now maps to the imported processor
     "burglary": process_burglary_stratagem,
     "employee_corruption": process_employee_corruption_stratagem,
     "arson": process_arson_stratagem,

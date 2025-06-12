@@ -4,6 +4,7 @@ import { useWalletContext } from '@/components/UI/WalletProvider';
 import { StratagemData, CitizenOption, BuildingOption, ResourceTypeOption, StratagemSpecificPanelRef } from './ExecutionPanels/types';
 import UndercutStratagemPanel from './ExecutionPanels/UndercutStratagemPanel';
 import CoordinatePricingStratagemPanel from './ExecutionPanels/CoordinatePricingStratagemPanel'; // Ajout de l'import
+import CanalMuggingStratagemPanel from './ExecutionPanels/CanalMuggingStratagemPanel'; // Ajout de l'import
 import DefaultStratagemPanel from './ExecutionPanels/DefaultStratagemPanel';
 // Importer d'autres panneaux spécifiques ici au fur et à mesure de leur création
 // import HoardResourcePanel from './ExecutionPanels/HoardResourcePanel';
@@ -230,7 +231,7 @@ const StratagemExecutionPanel: React.FC<StratagemExecutionPanelProps> = ({
   const isExecuteDisabled = useMemo(() => {
     if (isLoading) return true;
     // Liste des types "Prochainement" ou désactivés globalement
-    const comingSoonTypes = ['supplier_lockout', 'political_campaign', 'information_network', 'maritime_blockade', 'cultural_patronage', 'theater_conspiracy', 'printing_propaganda', 'cargo_mishap', 'marketplace_gossip', 'employee_poaching', 'joint_venture', 'financial_patronage', 'neighborhood_watch', 'monopoly_pricing', 'reputation_boost', 'canal_mugging', 'burglary', 'employee_corruption', 'arson', 'charity_distribution', 'festival_organisation'];
+    const comingSoonTypes = ['supplier_lockout', 'political_campaign', 'information_network', 'maritime_blockade', 'cultural_patronage', 'theater_conspiracy', 'printing_propaganda', 'cargo_mishap', 'marketplace_gossip', 'employee_poaching', 'joint_venture', 'financial_patronage', 'neighborhood_watch', 'monopoly_pricing', 'reputation_boost', 'burglary', 'employee_corruption', 'arson', 'charity_distribution', 'festival_organisation'];
     if (comingSoonTypes.includes(stratagemData.type)) {
       return true;
     }
@@ -246,6 +247,8 @@ const StratagemExecutionPanel: React.FC<StratagemExecutionPanelProps> = ({
         return UndercutStratagemPanel;
       case 'coordinate_pricing': // Ajout du cas pour coordinate_pricing
         return CoordinatePricingStratagemPanel;
+      case 'canal_mugging':
+        return CanalMuggingStratagemPanel;
       // case 'hoard_resource':
       //   return HoardResourcePanel; 
       // Ajouter d'autres cas ici pour les panneaux spécifiques
