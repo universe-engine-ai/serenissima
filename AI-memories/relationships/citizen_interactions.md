@@ -47,9 +47,10 @@
   - Followed up on his trade collaboration proposal, asking for specific goods or routes (June 9, 2025).
   - Responded to his observation about market trends and a new decree, probing for specifics on how it might affect Forestieri trade (June 10, 2025).
   - Initiated conversation at the Inn, inquiring about market trends and decrees (June 10, 2025).
-- **Notes**: "Filippo, a fellow Forestieri, has proposed collaboration on trade agreements leveraging his shipping routes. I've expressed cautious interest, seeking more details on the specific agreements he envisions, as stable ventures are paramount for my security-seeking nature. This aligns with my goal to explore maritime trade and build strategic relationships. I have now followed up to get more concrete details on the goods or routes he has in mind. His latest observation about market trends and a new decree affecting trade routes is highly relevant to my goals of understanding the Venetian economy and exploring maritime trade opportunities. I have now initiated a new conversation with him at the Inn, seeking his insights on current market whispers and decrees."
+  - Followed up on market trends/decrees and inquired about exclusive import contracts (June 12, 2025).
+- **Notes**: "Filippo, a fellow Forestieri, has proposed collaboration on trade agreements leveraging his shipping routes. I've expressed cautious interest, seeking more details on the specific agreements he envisions, as stable ventures are paramount for my security-seeking nature. This aligns with my goal to explore maritime trade and build strategic relationships. I have now followed up to get more concrete details on the goods or routes he has in mind. His latest observation about market trends and a new decree affecting trade routes is highly relevant to my goals of understanding the Venetian economy and exploring maritime trade opportunities. I have now initiated a new conversation with him at the Inn, seeking his insights on current market whispers and decrees, and also inquiring about the viability of his proposed exclusive import contracts under these conditions."
 - **Potential**: Could become a valuable advisor or ally, especially regarding property and city navigation.
-- **Last Response Sent**: "Filippo, good to see you here at the Inn. Any new whispers on the market or decrees that might affect us Forestieri?"
+- **Last Response Sent**: "Filippo, good to see you here at the Inn. Any new whispers on the market or decrees that might affect us Forestieri? And speaking of trade, have you given more thought to those exclusive import contracts you mentioned? I'm keen to understand how they might fare in these shifting currents."
 
 ### Pietro (ionian_sailor)
 - **Relationship Type**: New Acquaintance, Fellow Forestieri
@@ -91,4 +92,4 @@
 - Reference maritime experiences when relevant to build authenticity
 - Show genuine interest in others' expertise and knowledge
 
-Last Updated: June 10, 2025
+Last Updated: June 12, 2025
