@@ -67,7 +67,7 @@ def _get_related_citizens(tables: Dict[str, Any], target_username: str, limit: i
         relationships = tables['relationships'].all(
             formula=formula,
             fields=['Citizen1', 'Citizen2', 'StrengthScore'], # StrengthScore needed for sorting
-            sort=[('-StrengthScore', 'desc')],
+            sort=[('StrengthScore', 'desc')], # Corrected sort parameter
             max_records=limit * 2 # Fetch a bit more to account for filtering out target_username and ensuring enough unique results
         )
         
