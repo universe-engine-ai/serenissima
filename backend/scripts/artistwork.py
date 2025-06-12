@@ -48,7 +48,8 @@ def initialize_airtable() -> dict[str, AirtableTable] | None:
         api = AirtableApi(api_key)
         tables = {
             'citizens': api.table(base_id, 'CITIZENS'),
-            'activities': api.table(base_id, 'ACTIVITIES') # For potential future use
+            'activities': api.table(base_id, 'ACTIVITIES'), # For potential future use
+            'buildings': api.table(base_id, 'BUILDINGS') # Added BUILDINGS table
         }
         log.info(f"{LogColors.OKGREEN}Airtable connection successful.{LogColors.ENDC}")
         return tables
