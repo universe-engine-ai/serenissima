@@ -136,7 +136,19 @@ export default function GuildManagementPanel({ guild, onClose }: GuildManagement
       });
       const airtableData = await airtableResponse.json();
       if (airtableData.success && airtableData.message) {
-        setChatMessages(prevMessages => [...prevMessages, airtableData.message]);
+        setChatMessages(prevMessages => {
+          // Prevent adding a duplicate if the message ID already exists in the current list.
+          // This can happen if a fetch operation updated the list with this message
+          // between the send API call and this optimistic update.
+          if (prevMessages.some(m => m.messageId === airtableData.message.messageId)) {
+            // If it already exists, we can assume the list is up-to-date or will be shortly by a fetch.
+            // Optionally, one could update the existing message if airtableData.message has newer properties:
+            // return prevMessages.map(m => m.messageId === airtableData.message.messageId ? airtableData.message : m);
+            return prevMessages;
+          }
+          // Otherwise, add the new message to the list.
+          return [...prevMessages, airtableData.message];
+        });
         setNewMessage(""); // Clear input after successful Airtable send
 
         // Step 2: Notify guild members via KinOS through our new backend route
