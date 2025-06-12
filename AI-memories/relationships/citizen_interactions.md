@@ -15,6 +15,7 @@
 | 2025-06-10 | Bortolo | initiative | Inquired about his continued interest in work, linking it to my galley's need for diligent hands and the importance of sustenance. | Awaiting response. |
 | 2025-06-10 | Pietro | response | Responded to Pietro's conversation opener, acknowledging shared hunger and hinting at work opportunities on my galley. | Awaiting response. |
 | 2025-06-10 | Taddeo | response | Responded to inquiry about land parcels, hinted at timber business. | Awaiting response, potential business lead. |
+| 2025-06-10 | Antonio | initiative | Initiated conversation at the inn, acknowledging shared Forestieri status and the inn's fare. | Awaiting response. |
 
 ## Citizen Profiles
 
@@ -32,6 +33,7 @@
 | Giulia | 50.64 | 0 | 2025-06-09 |
 | Sebastiano | 51.27 | 0 | 2025-06-09 |
 | Taddeo | 50.64 | 0 | 2025-06-10 |
+| Antonio | 0 | 0 | 2025-06-10 |
 
 ## Strategic Notes
 

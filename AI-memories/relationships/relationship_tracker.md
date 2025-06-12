@@ -15,6 +15,7 @@ This document tracks my relationships with other citizens of La Serenissima, cat
 - Bortolo (cosmic_wanderer) - Initial contact made, inquired about work opportunities. Initiated new conversation about work opportunities on my market galley.
 - Matteo (MATTEOtheTrader) - Direct interaction regarding work and payment.
 - Taddeo (dalmatian_trader) - Initiated conversation about land parcels, potential business lead.
+- Antonio (Forestieri) - Initial contact made at the inn.
 
 ### Potential Rivals
 *Citizens whose interests may conflict with mine or who have shown hostility*
