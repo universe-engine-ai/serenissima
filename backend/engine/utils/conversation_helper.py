@@ -22,6 +22,7 @@ try:
         get_relationship_trust_score, # Re-using this, though it only returns score. We need full record.
         clean_thought_content # Added import for clean_thought_content
     )
+    from backend.engine.utils.relationship_helpers import update_trust_score_for_activity # Added import
 except ImportError:
     # Fallbacks if run in a context where backend.engine.utils is not directly available
     # This is primarily for robustness; ideally, imports should work.
@@ -689,10 +690,74 @@ def generate_conversation_turn(
     if persisted_message_record:
         if interaction_mode == "reflection":
             log.info(f"Successfully generated and persisted reflection from {speaker_username} about {listener_username}.")
-        elif interaction_mode == "conversation_opener":
-            log.info(f"Successfully generated and persisted conversation opener from {speaker_username} to {listener_username}.")
-        else: # conversation
-            log.info(f"Successfully generated and persisted conversation turn from {speaker_username}.")
+        elif interaction_mode in ["conversation_opener", "conversation"]:
+            if interaction_mode == "conversation_opener":
+                log.info(f"Successfully generated and persisted conversation opener from {speaker_username} to {listener_username}.")
+            else: # conversation
+                log.info(f"Successfully generated and persisted conversation turn from {speaker_username}.")
+
+            # --- Trust Impact Analysis via KinOS ---
+            log.info(f"Attempting trust impact analysis for {listener_username} regarding message from {speaker_username}.")
+            
+            listener_data_package = get_citizen_data_package(listener_username, api_base_url)
+            listener_profile_for_analysis = get_citizen_record(tables, listener_username)
+            listener_social_class_for_analysis = listener_profile_for_analysis['fields'].get('SocialClass') if listener_profile_for_analysis else None
+            model_for_listener_analysis = get_kinos_model_for_social_class(listener_username, listener_social_class_for_analysis)
+
+            analysis_prompt = (
+                f"You are {listener_profile.get('FirstName', listener_username)}. You just received the following message from {speaker_profile.get('FirstName', speaker_username)}: '{ai_message_content}'. "
+                f"Considering your personality, your relationship with {speaker_profile.get('FirstName', speaker_username)}, and all information in your data package (provided in addSystem), "
+                f"how does this message impact your trust in {speaker_profile.get('FirstName', speaker_username)}? "
+                f"Please respond ONLY with a JSON object in the format: {{\"trustChange\": <value>}}, where <value> is an integer between -5 (strong negative impact, e.g., you believe the smear or find the message untrustworthy) and +5 (strong positive impact, e.g., the message builds significant trust)."
+            )
+            
+            analysis_response_str = _call_kinos_analysis_api(
+                kinos_api_key,
+                listener_username, # The Kin performing the analysis
+                analysis_prompt,
+                listener_data_package if isinstance(listener_data_package, dict) else {"error": "Listener data package not available or invalid"}, # Their own data package as context
+                model_for_listener_analysis
+            )
+            
+            trust_change_value = 0.0 # Default no impact
+
+            if analysis_response_str:
+                cleaned_analysis_response_str = analysis_response_str 
+                try:
+                    cleaned_analysis_response_str = analysis_response_str.strip()
+                    if cleaned_analysis_response_str.startswith("```json"):
+                        cleaned_analysis_response_str = cleaned_analysis_response_str[len("```json"):]
+                    if cleaned_analysis_response_str.startswith("```"):
+                        cleaned_analysis_response_str = cleaned_analysis_response_str[len("```"):]
+                    if cleaned_analysis_response_str.endswith("```"):
+                        cleaned_analysis_response_str = cleaned_analysis_response_str[:-len("```")]
+                    cleaned_analysis_response_str = cleaned_analysis_response_str.strip()
+
+                    analysis_json = json.loads(cleaned_analysis_response_str)
+                    extracted_change = analysis_json.get("trustChange")
+                    if isinstance(extracted_change, (int, float)):
+                        trust_change_value = float(max(-5.0, min(5.0, extracted_change))) # Clamp value
+                        log.info(f"Trust impact analysis for {listener_username} on {speaker_username} due to message: AI assessed change = {trust_change_value} (original from AI: {extracted_change})")
+                    else:
+                        log.warning(f"Trust impact analysis for {listener_username} on {speaker_username}: 'trustChange' key missing or not a number in JSON response: '{cleaned_analysis_response_str}'. Using default impact: {trust_change_value}")
+                except json.JSONDecodeError:
+                    log.warning(f"Trust impact analysis for {listener_username} on {speaker_username}: Failed to parse JSON response: '{cleaned_analysis_response_str[:100]}...'. Original was: '{analysis_response_str[:100]}...'. Using default impact: {trust_change_value}")
+            else:
+                log.warning(f"Trust impact analysis for {listener_username} on {speaker_username}: No response from KinOS analysis API. Using default impact: {trust_change_value}")
+
+            if trust_change_value != 0.0:
+                update_trust_score_for_activity(
+                    tables,
+                    listener_username,  # Citizen1 (whose trust is affected)
+                    speaker_username,   # Citizen2 (who sent the message)
+                    trust_change_value, # The impact amount
+                    activity_type_for_notes=f"conversation_trust_shift",
+                    success=True, 
+                    notes_detail=f"AI_assessed_impact_on_{listener_username}_by_message_from_{speaker_username}. MsgPreview: {ai_message_content[:30]}... AI_raw_resp: {analysis_response_str[:50] if analysis_response_str else 'N/A'}",
+                    activity_record_for_kinos=None # IMPORTANT: Pass None to prevent recursive dialogue
+                )
+                log.info(f"Trust score between {listener_username} and {speaker_username} updated by {trust_change_value} based on AI analysis of conversation turn.")
+            # --- End Trust Impact Analysis ---
         return persisted_message_record # Return the full Airtable record
     else:
         log.error(f"Failed to persist KinOS message from {speaker_username}.")
