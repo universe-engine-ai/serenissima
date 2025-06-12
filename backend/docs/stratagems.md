@@ -1068,3 +1068,66 @@ This would make NLR provide "Standard" financial support (e.g., 10 Ducats/day) t
 }
 ```
 This would make NLR initiate a Neighborhood Watch in the San Polo district for 45 days, costing NLR 10 Influence. This aims to improve security and reduce minor crimes in the area.
+
+### 19. Monopoly Pricing (Coming Soon)
+
+-   **Type**: `monopoly_pricing`
+-   **Purpose**: To leverage dominant market position to significantly increase prices for a specific resource, maximizing profits at the expense of dependent consumers.
+-   **Category**: `economic_dominance`
+-   **Creator**: (To be created: `backend/engine/stratagem_creators/monopoly_pricing_stratagem_creator.py`)
+-   **Processor**: (To be created: `backend/engine/stratagem_processors/monopoly_pricing_stratagem_processor.py`)
+
+#### Parameters for Creation (`stratagemDetails` in API request):
+
+-   `targetResourceType` (string, required): The ID of the resource type for which to apply monopoly pricing (e.g., "iron_ore", "spices").
+-   `variant` (string, required): Determines the level of price escalation.
+    -   `"Mild"`: Sets prices 150% above current market average. Influence Cost: 30.
+    -   `"Standard"`: Sets prices 200% above current market average. Influence Cost: 40.
+    -   `"Aggressive"`: Sets prices 300% above current market average. Influence Cost: 50.
+-   `name` (string, optional): Custom name for the stratagem. Defaults to "Monopoly Pricing for [ResourceType]".
+-   `description` (string, optional): Custom description.
+-   `notes` (string, optional): Custom notes.
+-   `durationHours` (integer, optional): How long the stratagem should attempt to maintain these prices. Defaults to 168 hours (7 days).
+
+#### How it Works (Conceptual):
+
+1.  **Creation**:
+    -   The `monopoly_pricing_stratagem_creator.py` validates parameters (e.g., `targetResourceType` exists, `ExecutedBy` has significant market share for this resource - this check might be complex and initially simplified).
+    -   It creates a new record in the `STRATAGEMS` table with `Status: "active"`, `Category: "economic_dominance"`, an influence cost based on `variant`, and sets `ExpiresAt`.
+
+2.  **Processing (Conceptual for "Coming Soon")**:
+    -   `processStratagems.py` picks up the active "monopoly_pricing" stratagem.
+    -   `monopoly_pricing_stratagem_processor.py` is invoked.
+    -   **Market Analysis**:
+        -   It determines the current average market price for the `targetResourceType` (excluding the `ExecutedBy` citizen's own contracts).
+    -   **Price Escalation**:
+        -   It calculates the new target price by applying the `variant` percentage increase (e.g., Mild: average * 1.5, Standard: average * 2.0, Aggressive: average * 3.0).
+        -   It updates all active public sell contracts of the `ExecutedBy` citizen for the `targetResourceType` to this new inflated price.
+    -   **Impact on Consumers**:
+        -   Citizens and businesses dependent on this resource will face significantly higher costs.
+        -   This may create `problem` records for them (e.g., `resource_shortage_high_price`, `production_halted_costs`).
+        -   Relationships between the `ExecutedBy` citizen and affected consumers will likely deteriorate.
+    -   **Competitor Response (Future Enhancement)**:
+        -   Competitors might try to undercut the monopoly price if they can source the resource cheaper.
+        -   Consumers might seek alternative resources or suppliers.
+    -   **Political Intervention (Future Enhancement)**:
+        -   Extreme monopoly pricing could trigger political intervention (e.g., decrees to regulate prices, investigations).
+    -   **Status & Notes**:
+        -   The stratagem remains `active` for its `durationHours`, periodically re-evaluating and adjusting prices if the market average shifts (though the monopolist aims to *be* the market).
+        -   Notes track the inflated prices and observed economic impact.
+
+#### Example API Request to `POST /api/stratagems/try-create`:
+
+```json
+{
+  "citizenUsername": "NLR",
+  "stratagemType": "monopoly_pricing",
+  "stratagemDetails": {
+    "targetResourceType": "iron_ore",
+    "variant": "Standard",
+    "durationHours": 168,
+    "name": "Iron Ore Price Control"
+  }
+}
+```
+This would make NLR attempt to set the price of their Iron Ore to 200% above the current market average for 7 days, costing NLR 40 Influence.

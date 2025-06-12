@@ -54,6 +54,21 @@ from backend.engine.stratagem_processors import (
     # Import other stratagem processors here
 )
 
+# Placeholder processor for monopoly_pricing
+def process_monopoly_pricing_stratagem(
+    tables: Dict[str, Table], 
+    stratagem_record: Dict, 
+    resource_defs: Dict, 
+    building_type_defs: Dict, 
+    api_base_url: str
+) -> bool:
+    log.warning(f"{LogColors.WARNING}Processing for 'monopoly_pricing' stratagem (ID: {stratagem_record['id']}) is not yet implemented. Marking as executed for now.{LogColors.ENDC}")
+    # Mark as executed to prevent re-processing if it's a one-shot conceptual action
+    # Or keep active if it's meant to be continuous and re-evaluated
+    # For now, let's assume it's a one-shot setup for "Coming Soon"
+    tables['stratagems'].update(stratagem_record['id'], {'Status': 'executed', 'Notes': 'Coming Soon - Marked as executed.'})
+    return True
+
 logging.basicConfig(
     level=logging.INFO,
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
@@ -135,7 +150,8 @@ STRATAGEM_PROCESSORS = {
     "printing_propaganda": process_printing_propaganda_stratagem,
     "cargo_mishap": process_cargo_mishap_stratagem,
     "marketplace_gossip": process_marketplace_gossip_stratagem,
-    "joint_venture": process_joint_venture_stratagem
+    "joint_venture": process_joint_venture_stratagem,
+    "monopoly_pricing": process_monopoly_pricing_stratagem
     # Add other stratagem type to processor mappings here
 }
 

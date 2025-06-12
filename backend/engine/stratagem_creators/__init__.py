@@ -15,4 +15,6 @@ from .cargo_mishap_stratagem_creator import try_create as try_create_cargo_misha
 from .marketplace_gossip_stratagem_creator import try_create as try_create_marketplace_gossip_stratagem
 from .employee_poaching_stratagem_creator import try_create as try_create_employee_poaching_stratagem
 from .joint_venture_stratagem_creator import try_create as try_create_joint_venture_stratagem
+# Placeholder for monopoly_pricing
+# from .monopoly_pricing_stratagem_creator import try_create as try_create_monopoly_pricing_stratagem
 # Import other stratagem creators here as they are developed

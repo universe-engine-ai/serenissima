@@ -48,7 +48,7 @@ const BottomMenuBar: React.FC = () => {
   // Mise à jour de la liste des types "Prochainement" pour inclure tous les stratagèmes non disponibles.
   // Cette liste est utilisée pour le style des boutons.
   const allStratagemTypesInMenu = [
-    'undercut', 'coordinate_pricing', 'emergency_liquidation', 'hoard_resource', 'supplier_lockout', 'joint_venture',
+    'undercut', 'coordinate_pricing', 'emergency_liquidation', 'hoard_resource', 'supplier_lockout', 'joint_venture', 'monopoly_pricing',
     'reputation_assault', 'financial_patronage', 'cultural_patronage', 'theater_conspiracy', 'marketplace_gossip', 'employee_poaching',
     'political_campaign', 'printing_propaganda',
     'information_network', 'neighborhood_watch',
@@ -114,6 +114,14 @@ const BottomMenuBar: React.FC = () => {
             id: 'joint_venture', type: 'joint_venture', title: 'Joint Venture (Coming Soon)',
             description: 'Propose a formal business partnership with another citizen.',
             influenceCostBase: 20, hasVariants: false,
+          }
+        },
+        {
+          id: 'monopoly_pricing', label: 'Monopoly (Soon)', icon: FaCoins, // Ou FaDollarSign si importé
+          stratagemPanelData: {
+            id: 'monopoly_pricing', type: 'monopoly_pricing', title: 'Monopoly Pricing (Coming Soon)',
+            description: 'Leverage dominant market position to significantly increase prices for a specific resource.',
+            influenceCostBase: 40, hasVariants: true, // Variants: Mild (30), Standard (40), Aggressive (50)
           }
         }
       ]

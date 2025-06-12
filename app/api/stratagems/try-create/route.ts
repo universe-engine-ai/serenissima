@@ -88,6 +88,11 @@ export async function POST(request: Request) {
         `TargetPartnerUsername: ${stratagemDetails?.targetPartnerUsername}`,
         `VentureDetails: ${stratagemDetails?.ventureDetails}`
       );
+    } else if (stratagemType === 'monopoly_pricing') {
+      console.log(`[API /stratagems/try-create] Processing 'monopoly_pricing' stratagem with parameters:`,
+        `TargetResourceType: ${stratagemDetails?.targetResourceType}`,
+        `Variant: ${stratagemDetails?.variant}`
+      );
     }
 
     let parsedPythonEngineUrl: URL;

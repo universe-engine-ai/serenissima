@@ -15,4 +15,6 @@ from .cargo_mishap_stratagem_processor import process as process_cargo_mishap_st
 from .marketplace_gossip_stratagem_processor import process as process_marketplace_gossip_stratagem
 from .employee_poaching_stratagem_processor import process as process_employee_poaching_stratagem
 from .joint_venture_stratagem_processor import process as process_joint_venture_stratagem
+# Placeholder for monopoly_pricing
+# from .monopoly_pricing_stratagem_processor import process as process_monopoly_pricing_stratagem
 # Import other stratagem processors here
