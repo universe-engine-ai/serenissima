@@ -13,7 +13,7 @@ Social class influences activity patterns:
 
 Core activity categories include:
 
-- **Rest (`rest`)**: Periods of sleep and rest.
+- **Rest (`rest`)**: Periods of sleep and rest. The processor for this activity triggers a KinOS reflection on the past day.
 - **Work (`production`, `fetch_resource`, etc.)**: Productive activities.
 - **Consumption/Leisure Activities**: Meals, shopping, socialization.
 - **Travel (`goto_home`, `goto_work`, `goto_inn`, etc.)**: Movement between locations.

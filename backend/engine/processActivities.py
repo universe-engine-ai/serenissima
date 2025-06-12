@@ -159,7 +159,8 @@ from backend.engine.activity_processors import (
         process_deposit_items_at_location, # Import new processor
         process_attend_theater_performance as process_attend_theater_performance_fn, # New theater processor
         process_drink_at_inn as process_drink_at_inn_fn, # New drink at inn processor
-        process_use_public_bath as process_use_public_bath_fn # New public bath processor
+        process_use_public_bath as process_use_public_bath_fn, # New public bath processor
+        process_rest as process_rest_fn # New rest processor
 )
 from backend.engine.activity_processors.manage_public_import_contract_processor import process_manage_public_import_contract_fn
 from backend.engine.activity_processors.bid_on_land_activity_processor import process_bid_on_land_fn
@@ -508,8 +509,8 @@ def main(dry_run: bool = False, target_citizen_username: Optional[str] = None, f
         "attend_theater_performance": process_attend_theater_performance_fn, # New theater activity
         "drink_at_inn": process_drink_at_inn_fn, # New drink at inn activity
         "use_public_bath": process_use_public_bath_fn, # New public bath activity
+        "rest": process_rest_fn, # New rest processor
         "idle": process_placeholder_activity_fn,
-        "rest": process_placeholder_activity_fn,
         "bid_on_land": process_bid_on_land_fn,
         "goto_location": process_goto_location_fn, # New processor for multi-activity chains
         "submit_land_bid": process_bid_on_land_fn, # Second step in bid_on_land chain
@@ -805,8 +806,8 @@ def process_all_activities_for_one_citizen(
         "attend_theater_performance": process_attend_theater_performance_fn,
         "drink_at_inn": process_drink_at_inn_fn,
         "use_public_bath": process_use_public_bath_fn, # New public bath activity
+        "rest": process_rest_fn, # New rest processor
         "idle": process_placeholder_activity_fn,
-        "rest": process_placeholder_activity_fn,
         "bid_on_land": process_bid_on_land_fn,
         "goto_location": process_goto_location_fn,
         "submit_land_bid": process_bid_on_land_fn,
