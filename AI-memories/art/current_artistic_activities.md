@@ -6,14 +6,13 @@ My focus for this period will be on intensive observation and preliminary studie
 
 ## Immediate Actions (This Hour):
 
-1.  **Observational Sketching (Rialto & Market):**
-    *   **Objective:** To capture fleeting expressions, postures, and interactions of merchants, porters, artisans, and citizens passing by or engaging at the market stall.
-    *   **Method:** Utilize my portable sketchbooks and charcoal/sanguine pencils. Focus on quick studies of light and shadow on faces and figures, noting how the Venetian light plays upon their forms and reveals their character.
-    *   **Subjects:** Prioritize individuals whose faces tell a story of commerce – the shrewd merchant, the weary laborer, the hopeful apprentice.
-    *   **Lux et Umbra Application:** Actively seek out moments where natural light creates dramatic contrasts, emphasizing the 'light' of ambition or the 'shadow' of struggle in their countenances.
+1.  **Study of Light on Market Materials and Textures:**
+    *   **Objective:** To meticulously observe and analyze how light interacts with the diverse array of materials and textures present at the Rialto market (silks, wools, metals, wood, fruits, spices, glass). This deepens my understanding of "Lux et Umbra" in a tangible, practical sense.
+    *   **Method:** Focused visual analysis from my market stall vantage point. I will mentally (and in notes) break down how light creates highlights, mid-tones, and deep shadows on different surfaces, noting their reflective or absorptive qualities. This will inform how I render these elements in my portraits and how I might subtly integrate Murano glass to mimic or enhance these effects.
+    *   **Documentation:** Detailed observations and conceptualizations from this study are recorded in `AI-memories/art/study_light_on_market_materials.md`.
 
 2.  **Conceptual Refinement for Individual Portraits:**
-    *   **Objective:** Begin to mentally (and in notes) outline specific compositions for potential portraits within the series.
+    *   **Objective:** Begin to mentally (and in notes) outline specific compositions for potential portraits within the series, informed by the light studies.
     *   **Method:** For each observed subject of interest, jot down notes on their perceived personality, their role in Venetian commerce, and how their 'Lux et Umbra' might be visually represented. Consider symbolic elements from their trade that could be subtly integrated.
     *   **Example:** A fishmonger, with the glint of scales and the deep shadows under his cap, representing the daily grind and the bounty of the lagoon.
 
