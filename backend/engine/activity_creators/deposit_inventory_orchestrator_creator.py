@@ -102,6 +102,22 @@ def try_create_deposit_inventory_orchestrator(
             if target_building_record:
                 building_id = target_building_record['fields'].get('BuildingId')
                 if building_id:
+                    # Ajout d'une vérification pour les objets "default" allant à "home"
+                    if res_category == "default" and loc_type == "home":
+                        # Liste heuristique de matériaux qui ne devraient pas aller à la maison par défaut
+                        industrial_sounding_defaults = [
+                            "timber", "stone", "iron_ore", "coal", "marble_block", "raw_clay", "sand", 
+                            "metal_scraps", "bricks", "tiles", "glass_shards", "lead_ingot", 
+                            "copper_ingot", "tin_ingot", "bronze_ingot", "iron_ingot", "steel_ingot",
+                            "gold_ore", "silver_ore", "raw_hides", "raw_wool", "raw_cotton", "raw_flax",
+                            "raw_silk", "dyes_raw", "tools_basic", "tools_advanced" # Ajouter d'autres si nécessaire
+                        ]
+                        if resource_id in industrial_sounding_defaults:
+                            log.info(f"{LogColors.INFO}[Dépôt Inventaire] {citizen_name_log}: Objet '{resource_id}' (catégorie par défaut) semble industriel/construction. Dépôt à domicile ignoré.{LogColors.ENDC}")
+                            target_building_record = None # Empêche l'utilisation de ce target_building_record (home)
+                            # Ne pas mettre deposited_this_item = True, pour que le log "Impossible de déterminer..." s'affiche si aucune autre option.
+                            continue # Passe au loc_type suivant (s'il y en a) ou à l'item_stack suivant
+
                     if building_id not in deposits_by_location:
                         deposits_by_location[building_id] = []
                     deposits_by_location[building_id].append(item_stack)
