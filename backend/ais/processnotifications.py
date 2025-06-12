@@ -15,7 +15,12 @@ if PROJECT_ROOT not in sys.path:
     sys.path.insert(0, PROJECT_ROOT)
 
 from backend.app.citizen_utils import find_citizen_by_identifier # Correction du chemin d'importation
-from backend.engine.utils.activity_helpers import log_header, LogColors
+from backend.engine.utils.activity_helpers import log_header, LogColors, VENICE_TIMEZONE # Import VENICE_TIMEZONE
+
+# Setup logging for this module
+import logging
+log = logging.getLogger(__name__)
+logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 
 def initialize_airtable():
     """Initialize connection to Airtable."""

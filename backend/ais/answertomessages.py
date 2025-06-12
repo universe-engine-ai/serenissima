@@ -15,7 +15,7 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 # Import LogColors if available, or define a basic version
 try:
-    from backend.engine.utils.activity_helpers import LogColors
+    from backend.engine.utils.activity_helpers import LogColors, VENICE_TIMEZONE # Import VENICE_TIMEZONE
 except ImportError:
     class LogColors:
         HEADER = '\033[95m'
