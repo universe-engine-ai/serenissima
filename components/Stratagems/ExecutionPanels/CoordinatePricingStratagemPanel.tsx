@@ -1,6 +1,6 @@
 import React, { useState, useImperativeHandle, forwardRef, useRef, useMemo } from 'react';
 import { StratagemSpecificPanelProps, StratagemSpecificPanelRef, CitizenOption, ResourceTypeOption, BuildingOption } from './types';
-import { FaUserShield, FaBuilding, FaBoxOpen, FaTimes, FaInfoCircle } from 'react-icons/fa';
+import { FaUserShield, FaBuilding, FaBoxOpen, FaTimes, FaLongArrowAltRight } from 'react-icons/fa'; // Changé FaInfoCircle en FaLongArrowAltRight
 
 const CoordinatePricingStratagemPanel = forwardRef<StratagemSpecificPanelRef, StratagemSpecificPanelProps>((props, ref) => {
   const { stratagemData, citizens, buildings, resourceTypes, isLoading, currentUserUsername, currentUserFirstName, currentUserLastName } = props;
@@ -26,7 +26,7 @@ const CoordinatePricingStratagemPanel = forwardRef<StratagemSpecificPanelRef, St
   // Ce stratagème n'a pas de variantes affectant le coût de base de l'influence via le panneau.
   const calculatedInfluenceCost = stratagemData.influenceCostBase;
 
-  const summarySentence = useMemo(() => {
+  const summaryElements = useMemo(() => {
     if (!targetResourceType) {
       return null;
     }
@@ -35,22 +35,43 @@ const CoordinatePricingStratagemPanel = forwardRef<StratagemSpecificPanelRef, St
       ? `${currentUserFirstName} ${currentUserLastName}`
       : currentUserUsername || "You";
 
-    const resourceName = resourceTypes.find(rt => rt.id === targetResourceType)?.name || targetResourceType;
-    let targetDescription = `the general market average for ${resourceName}`;
+    const resource = resourceTypes.find(rt => rt.id === targetResourceType);
+    const resourceName = resource?.name || targetResourceType;
+    const resourceImageUrl = resource ? `https://backend.serenissima.ai/public_assets/images/resources/${resource.id}.png` : null;
+
+    let targetDescriptionElements: JSX.Element | string;
 
     if (targetCitizen) {
       const citizen = citizens.find(c => c.username === targetCitizen);
       const citizenDisplayName = (citizen?.firstName && citizen?.lastName)
         ? `${citizen.firstName} ${citizen.lastName}`
         : citizen?.username || targetCitizen;
-      targetDescription = `the prices of ${citizenDisplayName} for ${resourceName}`;
+      targetDescriptionElements = (
+        <>
+          the prices of <span className="font-bold">{citizenDisplayName}</span> for the selected resource.
+        </>
+      );
     } else if (targetBuilding) {
       const building = buildings.find(b => b.buildingId === targetBuilding);
       const buildingDisplayName = building?.name || targetBuilding;
-      targetDescription = `the prices of building ${buildingDisplayName} for ${resourceName}`;
+      targetDescriptionElements = (
+        <>
+          the prices of building <span className="font-bold">{buildingDisplayName}</span> for the selected resource.
+        </>
+      );
+    } else {
+      targetDescriptionElements = `the general market average for the selected resource.`;
     }
 
-    return `${executorName} will coordinate their prices for ${resourceName} to match ${targetDescription}.`;
+    return (
+      <>
+        <span className="font-bold">{executorName}</span> will coordinate their prices for 
+        {resourceImageUrl && (
+          <img src={resourceImageUrl} alt={resourceName} className="inline-block w-4 h-4 mx-1 object-contain" />
+        )}
+        <span className="font-bold">{resourceName}</span> to match {targetDescriptionElements}
+      </>
+    );
   }, [targetResourceType, targetCitizen, targetBuilding, currentUserUsername, currentUserFirstName, currentUserLastName, resourceTypes, citizens, buildings]);
 
   useImperativeHandle(ref, () => ({
@@ -279,10 +300,10 @@ const CoordinatePricingStratagemPanel = forwardRef<StratagemSpecificPanelRef, St
         </div>
       </div>
 
-      {summarySentence && (
+      {summaryElements && (
         <div className="mt-6 p-3 bg-amber-100 border border-amber-200 rounded-md text-sm text-amber-800 flex items-start">
-          <FaInfoCircle className="text-amber-600 mr-2 mt-1 flex-shrink-0" size={18} />
-          <span>{summarySentence}</span>
+          <FaLongArrowAltRight className="text-amber-600 mr-2 mt-1 flex-shrink-0" size={18} />
+          <span>{summaryElements}</span>
         </div>
       )}
     </div>
