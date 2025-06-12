@@ -1,14 +1,10 @@
-import React, { useState, useImperativeHandle, forwardRef, useRef, useMemo, useEffect } from 'react';
+import React, { useState, useImperativeHandle, forwardRef, useRef, useMemo } from 'react'; // Removed useEffect
 import { StratagemSpecificPanelProps, StratagemSpecificPanelRef, LandOption } from './types';
 import { FaMapMarkedAlt, FaTimes, FaSkullCrossbones, FaMoon } from 'react-icons/fa';
 
 type MuggingVariant = 'Mild' | 'Standard' | 'Aggressive';
 
-const VARIANT_COSTS: Record<MuggingVariant, number> = {
-  Mild: 2,
-  Standard: 3,
-  Aggressive: 4,
-};
+// VARIANT_COSTS is removed as cost is now fixed.
 
 const CanalMuggingStratagemPanel = forwardRef<StratagemSpecificPanelRef, StratagemSpecificPanelProps>((props, ref) => {
   const { stratagemData, lands, isLoading, currentUserUsername, currentUserFirstName, currentUserLastName } = props;
@@ -19,15 +15,10 @@ const CanalMuggingStratagemPanel = forwardRef<StratagemSpecificPanelRef, Stratag
   const landInputRef = useRef<HTMLInputElement>(null);
   const [selectedVariant, setSelectedVariant] = useState<MuggingVariant>('Standard');
 
-  const calculatedInfluenceCost = useMemo(() => VARIANT_COSTS[selectedVariant], [selectedVariant]);
+  // Influence cost is now fixed from stratagemData.influenceCostBase
+  const calculatedInfluenceCost = stratagemData.influenceCostBase; 
   
-  // Update parent component about cost change
-  useEffect(() => {
-    // This effect is primarily to ensure the parent is aware of the initial or changed cost.
-    // StratagemExecutionPanel already has a mechanism to listen to getCalculatedInfluenceCost.
-    // This is more of a conceptual note that the cost can change.
-  }, [calculatedInfluenceCost]);
-
+  // useEffect for cost change is removed.
 
   const summaryElements = useMemo(() => {
     const executorName = (currentUserFirstName && currentUserLastName)
@@ -82,7 +73,78 @@ const CanalMuggingStratagemPanel = forwardRef<StratagemSpecificPanelRef, Stratag
 
   return (
     <div>
-      {/* Variant Selector */}
+      {/* Target Land Parcel Selector - Moved First */}
+      <div className="mb-4">
+        <label htmlFor="canal_mugging_targetLand_search" className="block text-sm font-medium text-amber-800 mb-1 flex items-center">
+          <FaMapMarkedAlt className="mr-2" /> Target Land Parcel (Optional)
+        </label>
+        <p className="text-xs text-amber-600 mb-1">If no land parcel is selected, the stratagem will target any opportune victim found by the system.</p>
+        <div className="relative">
+          <input
+            id="canal_mugging_targetLand_search"
+            type="text"
+            ref={landInputRef}
+            value={landSearch}
+            onChange={(e) => {
+              setLandSearch(e.target.value);
+              if (!isLandDropdownOpen) setIsLandDropdownOpen(true);
+              if (targetLandId) setTargetLandId(null);
+            }}
+            onFocus={() => setIsLandDropdownOpen(true)}
+            onBlur={() => setTimeout(() => setIsLandDropdownOpen(false), 150)}
+            placeholder={targetLandId ? lands.find(l => l.landId === targetLandId)?.englishName || lands.find(l => l.landId === targetLandId)?.historicalName || 'Search...' : 'Search Land Parcels (or leave blank)...'}
+            className="w-full p-2 border border-amber-300 rounded-md bg-white text-amber-900 focus:ring-amber-500 focus:border-amber-500"
+            disabled={isLoading}
+          />
+          {targetLandId && (
+            <button
+              type="button"
+              onClick={() => {
+                setTargetLandId(null);
+                setLandSearch('');
+                landInputRef.current?.focus();
+              }}
+              className="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-400 hover:text-gray-600"
+              aria-label="Clear selection"
+            >
+              <FaTimes />
+            </button>
+          )}
+          {isLandDropdownOpen && (
+            <ul className="absolute z-10 w-full bg-white border border-amber-300 rounded-md mt-1 shadow-lg max-h-60 overflow-y-auto">
+              {lands
+                .filter(l => {
+                  const searchTermLower = landSearch.toLowerCase();
+                  return (l.landId && l.landId.toLowerCase().includes(searchTermLower)) ||
+                         (l.englishName && l.englishName.toLowerCase().includes(searchTermLower)) ||
+                         (l.historicalName && l.historicalName.toLowerCase().includes(searchTermLower)) ||
+                         (l.district && l.district.toLowerCase().includes(searchTermLower)) ||
+                         (l.owner && l.owner.toLowerCase().includes(searchTermLower));
+                })
+                .map((l, index) => {
+                  const displayName = l.englishName || l.historicalName || l.landId;
+                  const districtDisplay = l.district || 'N/A';
+                  const finalDisplayString = `${displayName} (District: ${districtDisplay}, Owner: ${l.owner || 'Unowned'})`;
+                  return (
+                    <li
+                      key={`canal-mugging-land-opt-${l.landId || index}`}
+                      onClick={() => {
+                        setTargetLandId(l.landId || null);
+                        setLandSearch(finalDisplayString);
+                        setIsLandDropdownOpen(false);
+                      }}
+                      className="p-2 hover:bg-amber-100 cursor-pointer text-amber-800"
+                    >
+                      {finalDisplayString}
+                    </li>
+                  );
+                })}
+            </ul>
+          )}
+        </div>
+      </div>
+
+      {/* Variant Selector - Moved Second */}
       <div className="mb-6">
         <label className="block text-sm font-medium text-amber-800 mb-2 flex items-center">
           <FaMoon className="mr-2" /> Mugging Approach (Variant)
@@ -102,7 +164,7 @@ const CanalMuggingStratagemPanel = forwardRef<StratagemSpecificPanelRef, Stratag
               `}
               disabled={isLoading}
             >
-              {variant} (Cost: {VARIANT_COSTS[variant]}🎭)
+              {variant}🎭 {/* Removed cost display from button text */}
             </button>
           ))}
         </div>
@@ -112,15 +174,6 @@ const CanalMuggingStratagemPanel = forwardRef<StratagemSpecificPanelRef, Stratag
           {selectedVariant === 'Aggressive' && "Attempt muggings more frequently and with less caution. Higher risk, potentially higher reward."}
         </p>
       </div>
-
-      <div className="mb-4">
-        <label htmlFor="canal_mugging_targetLand_search" className="block text-sm font-medium text-amber-800 mb-1 flex items-center">
-          <FaMapMarkedAlt className="mr-2" /> Target Land Parcel (Optional)
-        </label>
-        <p className="text-xs text-amber-600 mb-1">If no land parcel is selected, the stratagem will target any opportune victim found by the system.</p>
-        <div className="relative">
-          <input
-            id="canal_mugging_targetLand_search"
             type="text"
             ref={landInputRef}
             value={landSearch}

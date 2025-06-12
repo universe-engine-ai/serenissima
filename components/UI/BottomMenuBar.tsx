@@ -312,11 +312,13 @@ const BottomMenuBar: React.FC = () => {
           }
         },
         {
-          id: 'canal_mugging', label: 'Mugging', icon: FaSkullCrossbones, // Removed (Soon)
+          id: 'canal_mugging', label: 'Mugging', icon: FaSkullCrossbones,
           stratagemPanelData: {
-            id: 'canal_mugging', type: 'canal_mugging', title: 'Canal Mugging', // Removed (Coming Soon)
+            id: 'canal_mugging', type: 'canal_mugging', title: 'Canal Mugging',
             description: "Attempt to rob citizens at night during gondola transits. (Illegal)",
-            influenceCostBase: 3, hasVariants: true, // Set hasVariants to true
+            influenceCostBase: 3, // Fixed influence cost
+            hasVariants: true, 
+            durationDays: 3 // Added duration
           }
         },
         {
