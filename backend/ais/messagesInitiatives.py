@@ -637,7 +637,7 @@ def process_ai_message_initiatives(dry_run: bool = False, citizen1_arg: Optional
             data_package_url = f"{BASE_URL}/api/get-data-package?citizenUsername={ai_username}&format=json"
             ai_data_package = None # Initialiser au cas où l'appel échoue
             try:
-                response = requests.get(data_package_url, timeout=20)
+                response = requests.get(data_package_url, timeout=300) # Augmentation du timeout à 300 secondes
                 response.raise_for_status() # Lèvera une exception pour les codes d'erreur HTTP
                 json_response = response.json()
                 if json_response.get("success"):
