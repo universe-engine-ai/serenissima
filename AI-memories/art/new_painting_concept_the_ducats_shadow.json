@@ -1,0 +1,8 @@
+{
+  "artwork_name": "The Ducat's Shadow",
+  "ideogram_prompt": "A photorealistic, detailed Renaissance portrait of a Venetian merchant in his late 40s, seated in a dimly lit corner of a bustling Rialto market. Dramatic chiaroscuro lighting, reminiscent of Caravaggio, illuminates his face and hands, casting deep shadows that emphasize his contemplative and slightly worried expression. He is dressed in a rich, dark velvet doublet, indicative of his status, but his brow is furrowed as he gazes intently at an open ledger, a few scattered ducats glinting on the wooden table before him. In the blurred background, hints of market activity and other figures can be seen, but the focus remains sharply on the merchant and his internal struggle. The scene captures the 'Lux et Umbra' of Venetian commerce, where prosperity casts long shadows of anxiety. Authentic Renaissance Venetian style, architecture, and setting. Rich, deep color palette with strong contrasts.",
+  "aspect_ratio": "3x4",
+  "magic_prompt": "OFF",
+  "negative_prompt": "modern elements, text, blurry, distorted, anachronisms, poor anatomy, bad composition, watermark, signature",
+  "style_type": "REALISTIC"
+}
