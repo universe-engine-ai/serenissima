@@ -356,14 +356,31 @@ def make_api_get_request(endpoint: str, params: Optional[Dict] = None) -> Option
             log.info(f"{LogColors.OKBLUE}Making API GET request to: {LogColors.BOLD}{url}{LogColors.ENDC}{LogColors.OKBLUE} with params: {params} (Attempt {attempt + 1}/{MAX_RETRIES + 1}){LogColors.ENDC}")
             response = requests.get(url, params=params, timeout=DEFAULT_TIMEOUT_GET)
             response.raise_for_status()
-            response_json = response.json()
             
-            entity_count = _get_entity_count_from_response(response_json)
-            count_message = f" Fetched {entity_count} entities." if entity_count is not None else ""
+            content_type = response.headers.get('Content-Type', '')
             
-            log.info(f"{LogColors.OKGREEN}API GET request to {LogColors.BOLD}{url}{LogColors.ENDC}{LogColors.OKGREEN} successful.{count_message}{LogColors.ENDC}")
-            log.debug(f"{LogColors.PINK}Full response from GET {url}:\n{json.dumps(response_json, indent=2)}{LogColors.ENDC}")
-            return response_json
+            if 'text/markdown' in content_type:
+                log.info(f"{LogColors.OKGREEN}API GET request to {LogColors.BOLD}{url}{LogColors.ENDC}{LogColors.OKGREEN} successful (Markdown response).{LogColors.ENDC}")
+                log.debug(f"{LogColors.PINK}Markdown response from GET {url} (first 500 chars):\n{response.text[:500]}...{LogColors.ENDC}")
+                return response.text # Return Markdown string
+            elif 'application/json' in content_type:
+                try:
+                    response_json = response.json()
+                    entity_count = _get_entity_count_from_response(response_json)
+                    count_message = f" Fetched {entity_count} entities." if entity_count is not None else ""
+                    log.info(f"{LogColors.OKGREEN}API GET request to {LogColors.BOLD}{url}{LogColors.ENDC}{LogColors.OKGREEN} successful (JSON response).{count_message}{LogColors.ENDC}")
+                    log.debug(f"{LogColors.PINK}Full response from GET {url}:\n{json.dumps(response_json, indent=2)}{LogColors.ENDC}")
+                    return response_json
+                except json.JSONDecodeError as e_json_inner:
+                    last_exception = e_json_inner
+                    log.error(f"{LogColors.FAIL}Failed to decode JSON response from GET {url} (Content-Type was application/json) on attempt {attempt + 1}: {e_json_inner}{LogColors.ENDC}", exc_info=True)
+                    log.debug(f"{LogColors.PINK}Raw text from failed JSON decode: {response.text[:500]}...{LogColors.ENDC}")
+                    # Return raw text if JSON decode fails but content type was JSON
+                    return {"error": "Failed to decode JSON response", "raw_text": response.text}
+            else:
+                log.warning(f"{LogColors.WARNING}Unexpected Content-Type '{content_type}' from GET {url}. Returning raw text.{LogColors.ENDC}")
+                return response.text # Fallback for other content types
+
         except requests.exceptions.RequestException as e:
             last_exception = e
             log.warning(f"{LogColors.WARNING}API GET request to {LogColors.BOLD}{url}{LogColors.ENDC}{LogColors.WARNING} failed on attempt {attempt + 1}: {e}{LogColors.ENDC}")
@@ -372,14 +389,9 @@ def make_api_get_request(endpoint: str, params: Optional[Dict] = None) -> Option
                 time.sleep(RETRY_DELAY_SECONDS)
             else:
                 log.error(f"{LogColors.FAIL}API GET request to {url} failed after {MAX_RETRIES + 1} attempts: {last_exception}{LogColors.ENDC}", exc_info=True)
-        except json.JSONDecodeError as e_json:
-            last_exception = e_json
-            log.error(f"{LogColors.FAIL}Failed to decode JSON response from GET {url} on attempt {attempt + 1}: {e_json}{LogColors.ENDC}", exc_info=True)
-            # Typically, JSON decode errors are not retried unless the server might return transient malformed JSON.
-            # For now, we'll break on JSON decode error.
-            break 
+                return {"error": f"API GET request failed after retries: {str(last_exception)}"}
             
-    return None
+    return {"error": f"API GET request failed after all attempts: {str(last_exception)}"}
 
 def _get_latest_activity_api(citizen_username: str) -> Optional[Dict]:
     """Fetches the latest activity for a citizen via the Next.js API."""
@@ -1350,15 +1362,20 @@ def autonomously_run_ai_citizen_unguided(
         initial_data_package = None
         if not dry_run:
             log.info(f"{LogColors.OKBLUE}Fetching initial data package for {ai_username}...{LogColors.ENDC}")
-            initial_data_package = make_api_get_request(f"/api/get-data-package?citizenUsername={ai_username}")
-            if not initial_data_package or not initial_data_package.get("success"):
-                log.warning(f"{LogColors.WARNING}Failed to fetch initial data package for {ai_username}. Proceeding with limited context. Error: {initial_data_package.get('error') if initial_data_package else 'No response'}{LogColors.ENDC}")
-                initial_data_package = {"error": "Failed to fetch initial data package"} # Provide error structure
+            # make_api_get_request now returns Markdown string directly or an error dict
+            initial_data_package_content = make_api_get_request(f"/api/get-data-package?citizenUsername={ai_username}")
+            if isinstance(initial_data_package_content, str): # Successfully fetched Markdown
+                log.info(f"{LogColors.OKGREEN}Successfully fetched Markdown data package for {ai_username}. Length: {len(initial_data_package_content)}{LogColors.ENDC}")
+            elif isinstance(initial_data_package_content, dict) and "error" in initial_data_package_content:
+                log.warning(f"{LogColors.WARNING}Failed to fetch initial data package for {ai_username}. Error: {initial_data_package_content.get('error')}{LogColors.ENDC}")
+                # Keep initial_data_package_content as the error dict for the AI to see
+            else: # Unexpected response
+                log.warning(f"{LogColors.WARNING}Unexpected response type ({type(initial_data_package_content)}) or structure for initial data package for {ai_username}. Content: {str(initial_data_package_content)[:200]}...{LogColors.ENDC}")
+                initial_data_package_content = {"error": "Unexpected response for data package"}
         else:
             log.info(f"{Fore.YELLOW}[DRY RUN] Would fetch initial data package for {ai_username}.{Style.RESET_ALL}")
-            initial_data_package = {"dry_run_data": "Simulated initial data package"}
+            initial_data_package_content = "# [DRY RUN] Simulated Markdown Data Package\n..."
         
-        # latest_activity_data_unguided = _get_latest_activity_api(ai_username) # Now part of initial_data_package
         latest_daily_update_content_unguided = _get_latest_daily_update(tables)
 
         prompt_intro = f"You are {ai_display_name}, a citizen of La Serenissima, navigating the complexities of 15th-century Venetian life. Your objective is to act autonomously and strategically to advance your interests. "
@@ -1401,10 +1418,10 @@ def autonomously_run_ai_citizen_unguided(
             current_prompt += f"\n\nIMPORTANT SYSTEM NOTE: {add_system_prompt_text}"
 
         add_system_data = {
-            "intelligence_briefing": initial_data_package.get("data") if initial_data_package and initial_data_package.get("success") else initial_data_package,
+            "intelligence_briefing": initial_data_package_content, # This is now the Markdown string or error dict
             "summary_of_available_missives": API_DOCUMENTATION_SUMMARY, # General API notes
             "compendium_of_simplified_reads": READS_REFERENCE_EXTRACTED_TEXT, # Specifics for /api/try-read
-            "guide_to_decreeing_undertakings": ACTIVITY_CREATION_REFERENCE_EXTRACTED_TEXT, 
+            "guide_to_decreeing_undertakings": ACTIVITY_CREATION_REFERENCE_EXTRACTED_TEXT,
             "current_venice_time": datetime.now(VENICE_TIMEZONE).isoformat(),
             "latest_city_dispatch": latest_daily_update_content_unguided or "No recent city dispatch available.",
             "outcomes_of_prior_actions": previous_api_results,

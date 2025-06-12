@@ -97,21 +97,56 @@ def make_api_get_request_helper(endpoint: str, api_base_url: str, params: Option
         log.debug(f"Making helper GET request to: {url} with params: {params}")
         response = requests.get(url, params=params, timeout=30)
         response.raise_for_status()
-        return response.json()
+        
+        content_type = response.headers.get('Content-Type', '')
+        if 'text/markdown' in content_type:
+            log.debug(f"Helper GET to {url} returned Markdown. Returning text.")
+            return response.text # Return Markdown string
+        elif 'application/json' in content_type:
+            try:
+                return response.json()
+            except json.JSONDecodeError as e_json_inner:
+                log.error(f"Failed to decode JSON from helper GET {url} (Content-Type was application/json): {e_json_inner}")
+                return {"error": "Failed to decode JSON response", "raw_text": response.text}
+        else:
+            log.warning(f"Unexpected Content-Type '{content_type}' from helper GET {url}. Returning raw text.")
+            return response.text
+
     except requests.exceptions.RequestException as e:
         log.error(f"Helper GET request to {url} failed: {e}")
-    except json.JSONDecodeError as e_json:
-        log.error(f"Failed to decode JSON from helper GET {url}: {e_json}")
+        return {"error": f"API request failed: {str(e)}"}
+    except Exception as e_gen: # Catch any other unexpected error during processing
+        log.error(f"Unexpected error in make_api_get_request_helper for {url}: {e_gen}")
+        return {"error": f"Unexpected error: {str(e_gen)}"}
+
+
+def get_citizen_data_package(username: str, api_base_url: str) -> Optional[Union[str, Dict]]:
+    """
+    Fetches the data package for a citizen.
+    Returns Markdown string if successful and content is Markdown.
+    Returns the 'data' part of JSON if successful and content is JSON.
+    Returns None or an error dictionary on failure.
+    """
+    log.info(f"Fetching data package for {username}...")
+    response_content = make_api_get_request_helper(f"/api/get-data-package?citizenUsername={username}", api_base_url)
+
+    if isinstance(response_content, str): # Markdown response or raw text fallback
+        # Assume if it's a string, it's the intended Markdown data package
+        # (or an error string from make_api_get_request_helper if it couldn't determine content type)
+        # A simple check for "error" key might not be enough if the string itself is an error message.
+        # For now, we trust that if it's a string, it's the Markdown.
+        return response_content
+    
+    if isinstance(response_content, dict):
+        if response_content.get("success"): # This implies it was a JSON response originally
+            return response_content.get("data")
+        else: # It's an error dictionary from make_api_get_request_helper or the API itself
+            log.warning(f"Failed to fetch data package for {username}: {response_content.get('error', 'Unknown error')}")
+            return response_content # Return the error dict
+            
+    log.warning(f"Unexpected type or structure from make_api_get_request_helper for {username}: {type(response_content)}")
     return None
 
-def get_citizen_data_package(username: str, api_base_url: str) -> Optional[Dict]:
-    """Fetches the full data package for a citizen."""
-    log.info(f"Fetching data package for {username}...")
-    response = make_api_get_request_helper(f"/api/get-data-package?citizenUsername={username}", api_base_url)
-    if response and response.get("success"):
-        return response.get("data")
-    log.warning(f"Failed to fetch data package for {username}: {response.get('error') if response else 'No response'}")
-    return None
 
 def get_citizen_problems_list(username: str, api_base_url: str) -> List[Dict]:
     """Fetches active problems for a citizen."""

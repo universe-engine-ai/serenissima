@@ -258,18 +258,32 @@ def _get_data_package_for_citizen(username: str) -> Optional[Dict]:
         api_url = f"{BASE_URL}/api/get-data-package?citizenUsername={username}"
         # Using print as per existing style in this script for ais module
         print(f"  Fetching data package for {username} from {api_url}...")
-        response = requests.get(api_url, timeout=45) 
+        response = requests.get(api_url, timeout=45)
         response.raise_for_status()
         
-        data = response.json()
-        print(f"  Successfully fetched data package for {username}.")
-        return data
+        content_type = response.headers.get('Content-Type', '')
+        if 'text/markdown' in content_type:
+            print(f"  Successfully fetched Markdown data package for {username}.")
+            return response.text # Return the Markdown string directly
+        elif 'application/json' in content_type:
+            try:
+                data = response.json()
+                if data.get("success"):
+                    print(f"  Successfully fetched JSON data package for {username} (returning data field).")
+                    return data.get("data") # Return the 'data' field from JSON
+                else:
+                    print(f"  {LogColors.FAIL}API Error in JSON data package for {username}: {data.get('error', 'Unknown error')}{LogColors.ENDC}")
+                    return {"error": data.get('error', 'Unknown error')}
+            except json.JSONDecodeError:
+                print(f"  {LogColors.FAIL}Failed to decode JSON response for data package of {username}. Response: {response.text[:200]}{LogColors.ENDC}")
+                return {"error": "Failed to decode JSON response", "content_snippet": response.text[:200]}
+        else:
+            print(f"  {LogColors.WARNING}Unexpected Content-Type '{content_type}' for data package of {username}. Returning raw text.{LogColors.ENDC}")
+            return response.text # Fallback to raw text for other content types
+
     except requests.exceptions.RequestException as e:
         print(f"  {LogColors.FAIL}API Error fetching data package for {username}: {e}{LogColors.ENDC}")
-        return None
-    except json.JSONDecodeError:
-        print(f"  {LogColors.FAIL}Failed to decode JSON response for data package of {username}. Response: {response.text[:200]}{LogColors.ENDC}")
-        return None
+        return {"error": str(e)}
     except Exception as e:
         print(f"  {LogColors.FAIL}Unexpected error fetching data package for {username}: {e}{LogColors.ENDC}")
         return None
