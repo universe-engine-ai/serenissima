@@ -178,7 +178,10 @@ def trigger_artist_work(target_artist_username: str | None = None, additional_me
             kinos_actual_response_content = kinos_response_data.get('response', "No response content from KinOS.")
             
             print(f"\n--- KinOS Response for {citizen_name_log} ({citizen_username}) ---")
-            print(kinos_actual_response_content)
+            # Ensure the content is a string before encoding
+            response_str_to_print = str(kinos_actual_response_content)
+            sys.stdout.buffer.write(response_str_to_print.encode('utf-8', errors='replace') + b'\n')
+            sys.stdout.flush()
             print(f"--- End KinOS Response for {citizen_name_log} ---\n")
             
             if kinos_response_data.get('status') != 'completed':
