@@ -547,6 +547,7 @@ This would make NLR initiate a "Grand" level of cultural patronage towards the a
 -   `description` (string, optional): A custom description.
 -   `notes` (string, optional): Custom notes.
 -   `durationHours` (integer, optional): How long the information network should remain active and provide benefits. Defaults to 168 hours (7 days).
+    *(Note: Influence costs have been removed from stratagems.)*
 
 #### How it Works (Conceptual):
 
