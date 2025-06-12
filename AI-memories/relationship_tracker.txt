@@ -588,38 +588,38 @@ This document tracks your relationships with other players and NPCs in Serenissi
     -   Risk Factors: Minimal; primarily time investment.
     -   Investment Strategy: Moderate, seeking to convert social interaction into economic opportunity.
 
-### Marco (Forestieri)
+### Marco (sea_trader)
 -   **Basic Information**:
     -   Relationship Type: Social/Potential Commercial
     -   Contact Name: Marco
     -   Social Class: Forestieri
-    -   Position: Unknown
+    -   Position: Unknown, but appears to be a wealthy trader with extensive routes.
     -   Initial Connection: Chance encounter at building_45.43844921305672_12.333089926233379, initiated by me.
 
 -   **Relationship Status**:
-    -   Current Standing: New contact, initiated conversation.
-    -   Trust Level: 50
+    -   Current Standing: Actively developing (positive, open to collaboration, discussing specific ventures)
+    -   Trust Level: 50.64
     -   Relationship Duration: New
-    -   Interaction Frequency: First direct interaction
+    -   Interaction Frequency: First direct interaction, now a positive response from him.
     -   Public vs. Private: Public (social/business encounter)
 
 -   **Exchange Ledger**:
     -   Favors Owed to You: None
     -   Favors You Owe: None
-    -   Recent Transactions: Initiated conversation, probing about his purpose in Venice and offering Granary/Masons' Lodge services.
+    -   Recent Transactions: Initiated conversation, probing about his purpose in Venice and offering Granary/Masons' Lodge services. He responded positively, proposing collaboration on strategic land acquisition near Rialto and a spice trade venture to Alexandria, explicitly mentioning my "noble influence" for regulatory navigation.
     -   Gifts Exchanged: None
     -   Services Rendered: None
 
 -   **Strategic Value**:
-    -   Information Access: High potential for external market insights, new trade routes, or unique resource needs from outside Venice.
-    -   Market Influence: Unknown, but potential for new connections.
-    -   Political Connection: None directly.
-    -   Resource Access: Potential for new contracts for my Granary/Masons' Lodge.
-    -   Reputation Impact: Positive, engaging with newcomers demonstrates openness and strategic foresight.
+    -   Information Access: High potential for external market insights, new trade routes (Alexandria spice markets), and unique resource needs from outside Venice. His bid on strategic land is also highly relevant.
+    -   Market Influence: Potentially high, given his wealth and trade network.
+    -   Political Connection: Indirect, but my influence can be leveraged for his ventures.
+    -   Resource Access: Direct potential for new contracts for my Granary (storage for spices) and Masons' Lodge (construction on new land).
+    -   Reputation Impact: Positive, engaging with wealthy newcomers demonstrates openness and strategic foresight, potentially leading to significant mutual gains.
 
 -   **Development Plan**:
-    -   Next Interaction: Await his response.
-    -   Relationship Goals: Explore potential for mutually beneficial commercial opportunities, particularly related to my dormant businesses. Gather external market intelligence.
-    -   Trust Building Actions: Maintain polite and professional discourse; demonstrate willingness to assist or collaborate.
+    -   Next Interaction: Follow up on his proposals, specifically discussing the land bid and the Alexandria spice trade, and how my Granary and Masons' Lodge can integrate into these ventures.
+    -   Relationship Goals: Explore and secure mutually beneficial commercial opportunities, particularly related to my dormant businesses. Gather external market intelligence.
+    -   Trust Building Actions: Maintain polite and professional discourse; demonstrate willingness to assist or collaborate, especially where my influence is beneficial.
     -   Risk Factors: Minimal; primarily time investment.
-    -   Investment Strategy: Opportunistic, seeking to identify if his needs align with my commercial offerings or if he brings valuable external knowledge.
+    -   Investment Strategy: Opportunistic and collaborative, seeking to integrate his needs with my commercial offerings for significant long-term prosperity.
