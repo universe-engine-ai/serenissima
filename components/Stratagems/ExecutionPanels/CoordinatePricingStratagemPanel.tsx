@@ -106,7 +106,7 @@ const CoordinatePricingStratagemPanel = forwardRef<StratagemSpecificPanelRef, St
                       alt={rt.name} 
                       className="w-5 h-5 mr-2 object-contain" 
                     />
-                    {rt.name} (Category: {rt.category || 'N/A'})
+                    {rt.name}
                   </li>
                 ))}
             </ul>
@@ -244,7 +244,7 @@ const CoordinatePricingStratagemPanel = forwardRef<StratagemSpecificPanelRef, St
                     }}
                     className="p-2 hover:bg-amber-100 cursor-pointer text-amber-800"
                   >
-                    {b.name || b.buildingId} (Type: {b.type}, Owner: {b.owner || 'N/A'})
+                    {b.name || b.buildingId} (Owner: {b.owner || 'N/A'})
                   </li>
                 ))}
             </ul>
