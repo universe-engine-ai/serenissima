@@ -437,6 +437,7 @@ interface ShortStratagemDefinition {
   type: string;
   purpose: string;
   category: string | null;
+  nature?: 'benevolent' | 'neutral' | 'aggressive' | 'illegal'; // Added nature
   status: 'Implemented' | 'Coming Soon' | 'Partially Implemented';
 }
 
@@ -448,6 +449,7 @@ async function fetchStratagemDefinitions(): Promise<ShortStratagemDefinition[]> 
       type: 'undercut',
       purpose: "To strategically lower the selling prices of a citizen's goods to be cheaper than their competition for a specific resource type.",
       category: 'commerce',
+      nature: 'aggressive',
       status: 'Implemented',
     },
     {
@@ -455,6 +457,7 @@ async function fetchStratagemDefinitions(): Promise<ShortStratagemDefinition[]> 
       type: 'coordinate_pricing',
       purpose: "To align the selling prices of a citizen's goods with a target's prices (specific citizen or building) or with the general market average for a specific resource type.",
       category: 'commerce',
+      nature: 'neutral',
       status: 'Implemented',
     },
     {
@@ -462,6 +465,7 @@ async function fetchStratagemDefinitions(): Promise<ShortStratagemDefinition[]> 
       type: 'hoard_resource',
       purpose: "To systematically accumulate a specific resource type in a designated storage building.",
       category: 'commerce',
+      nature: 'neutral',
       status: 'Implemented',
     },
     {
@@ -469,6 +473,7 @@ async function fetchStratagemDefinitions(): Promise<ShortStratagemDefinition[]> 
       type: 'supplier_lockout',
       purpose: "To establish exclusive or priority supply agreements with specific resource suppliers.",
       category: 'commerce',
+      nature: 'aggressive',
       status: 'Coming Soon',
     },
     {
@@ -476,6 +481,7 @@ async function fetchStratagemDefinitions(): Promise<ShortStratagemDefinition[]> 
       type: 'political_campaign',
       purpose: "To influence governance by lobbying for or against a specific decree or policy change.",
       category: 'political',
+      nature: 'neutral',
       status: 'Coming Soon',
     },
     {
@@ -483,6 +489,7 @@ async function fetchStratagemDefinitions(): Promise<ShortStratagemDefinition[]> 
       type: 'reputation_assault',
       purpose: "To damage a competitor's business relationships and trustworthiness by spreading negative information.",
       category: 'personal',
+      nature: 'aggressive',
       status: 'Implemented',
     },
     {
@@ -490,6 +497,7 @@ async function fetchStratagemDefinitions(): Promise<ShortStratagemDefinition[]> 
       type: 'emergency_liquidation',
       purpose: "To quickly convert a citizen's owned inventory into cash, albeit at potentially below-market rates.",
       category: 'commerce',
+      nature: 'neutral',
       status: 'Implemented',
     },
     {
@@ -497,6 +505,7 @@ async function fetchStratagemDefinitions(): Promise<ShortStratagemDefinition[]> 
         type: 'cultural_patronage',
         purpose: 'To build social capital and enhance reputation by sponsoring artists, performances, or cultural institutions.',
         category: 'social',
+        nature: 'benevolent',
         status: 'Coming Soon',
     },
     {
@@ -504,6 +513,7 @@ async function fetchStratagemDefinitions(): Promise<ShortStratagemDefinition[]> 
         type: 'information_network',
         purpose: 'To establish intelligence gathering operations targeting specific citizens or market sectors.',
         category: 'security',
+        nature: 'neutral',
         status: 'Coming Soon',
     },
     {
@@ -511,6 +521,7 @@ async function fetchStratagemDefinitions(): Promise<ShortStratagemDefinition[]> 
         type: 'maritime_blockade',
         purpose: "To control water access to cripple a competitor's trade and waterfront operations.",
         category: 'warfare',
+        nature: 'aggressive',
         status: 'Coming Soon',
     },
     {
@@ -518,6 +529,7 @@ async function fetchStratagemDefinitions(): Promise<ShortStratagemDefinition[]> 
         type: 'theater_conspiracy',
         purpose: 'To manipulate public opinion and political narratives by commissioning and staging theatrical performances with specific themes.',
         category: 'social',
+        nature: 'neutral',
         status: 'Coming Soon',
     },
     {
@@ -525,6 +537,7 @@ async function fetchStratagemDefinitions(): Promise<ShortStratagemDefinition[]> 
         type: 'printing_propaganda',
         purpose: 'To conduct information warfare against competitors by mass-producing and distributing pamphlets and rumors.',
         category: 'political',
+        nature: 'aggressive',
         status: 'Coming Soon',
     },
     {
@@ -532,6 +545,7 @@ async function fetchStratagemDefinitions(): Promise<ShortStratagemDefinition[]> 
         type: 'cargo_mishap',
         purpose: 'To sabotage a competitor\'s shipment by arranging for their goods to "disappear" while in transit.',
         category: 'warfare',
+        nature: 'illegal',
         status: 'Coming Soon',
     },
     {
@@ -539,6 +553,7 @@ async function fetchStratagemDefinitions(): Promise<ShortStratagemDefinition[]> 
         type: 'marketplace_gossip',
         purpose: "To subtly damage a competitor's reputation by spreading rumors through social networks.",
         category: 'personal',
+        nature: 'aggressive',
         status: 'Coming Soon',
     },
     {
@@ -546,6 +561,7 @@ async function fetchStratagemDefinitions(): Promise<ShortStratagemDefinition[]> 
         type: 'employee_poaching',
         purpose: 'To recruit a skilled employee from a competitor by making them a better offer.',
         category: 'personal',
+        nature: 'aggressive',
         status: 'Coming Soon',
     },
     {
@@ -553,6 +569,7 @@ async function fetchStratagemDefinitions(): Promise<ShortStratagemDefinition[]> 
         type: 'joint_venture',
         purpose: 'To propose a formal business partnership with another citizen, defining contributions and profit-sharing.',
         category: 'commerce',
+        nature: 'benevolent',
         status: 'Coming Soon',
     },
     {
@@ -560,6 +577,7 @@ async function fetchStratagemDefinitions(): Promise<ShortStratagemDefinition[]> 
         type: 'financial_patronage',
         purpose: 'To provide comprehensive financial support to promising individuals or loyal allies, creating deep personal bonds.',
         category: 'personal',
+        nature: 'benevolent',
         status: 'Coming Soon',
     },
     {
@@ -567,6 +585,7 @@ async function fetchStratagemDefinitions(): Promise<ShortStratagemDefinition[]> 
         type: 'neighborhood_watch',
         purpose: 'To enhance security and reduce crime in a specific district through collective citizen vigilance.',
         category: 'security',
+        nature: 'benevolent',
         status: 'Coming Soon',
     },
     {
@@ -574,6 +593,7 @@ async function fetchStratagemDefinitions(): Promise<ShortStratagemDefinition[]> 
         type: 'monopoly_pricing',
         purpose: 'To leverage dominant market position to significantly increase prices for a specific resource.',
         category: 'commerce',
+        nature: 'aggressive',
         status: 'Coming Soon',
     },
     {
@@ -581,6 +601,7 @@ async function fetchStratagemDefinitions(): Promise<ShortStratagemDefinition[]> 
         type: 'reputation_boost',
         purpose: "To actively improve a target citizen's public image and trustworthiness through positive messaging.",
         category: 'personal',
+        nature: 'benevolent',
         status: 'Coming Soon',
     },
     {
@@ -588,6 +609,7 @@ async function fetchStratagemDefinitions(): Promise<ShortStratagemDefinition[]> 
         type: 'canal_mugging',
         purpose: 'To rob a specific citizen while they are traveling by gondola, stealing Ducats and potentially resources.',
         category: 'warfare',
+        nature: 'illegal',
         status: 'Coming Soon',
     },
     {
@@ -595,6 +617,7 @@ async function fetchStratagemDefinitions(): Promise<ShortStratagemDefinition[]> 
         type: 'burglary',
         purpose: "To steal tools, materials, or finished goods from a competitor's production building.",
         category: 'warfare',
+        nature: 'illegal',
         status: 'Coming Soon',
     },
     {
@@ -602,6 +625,7 @@ async function fetchStratagemDefinitions(): Promise<ShortStratagemDefinition[]> 
         type: 'employee_corruption',
         purpose: 'To bribe employees of businesses to reduce productivity and/or steal resources for the executor.',
         category: 'warfare',
+        nature: 'illegal',
         status: 'Coming Soon',
     },
     {
@@ -609,6 +633,7 @@ async function fetchStratagemDefinitions(): Promise<ShortStratagemDefinition[]> 
         type: 'arson',
         purpose: 'To destroy a target building or business operation by setting it on fire.',
         category: 'warfare',
+        nature: 'illegal',
         status: 'Coming Soon',
     },
     {
@@ -616,6 +641,7 @@ async function fetchStratagemDefinitions(): Promise<ShortStratagemDefinition[]> 
         type: 'charity_distribution',
         purpose: 'To anonymously distribute Ducats to poor citizens in a specific district, improving general sentiment.',
         category: 'social',
+        nature: 'benevolent',
         status: 'Coming Soon',
     },
     {
@@ -623,6 +649,7 @@ async function fetchStratagemDefinitions(): Promise<ShortStratagemDefinition[]> 
         type: 'festival_organisation',
         purpose: "To organize and sponsor a public festival, boosting community morale and the organizer's reputation.",
         category: 'social',
+        nature: 'benevolent',
         status: 'Coming Soon',
     }
   ];
@@ -632,6 +659,7 @@ async function fetchStratagemDefinitions(): Promise<ShortStratagemDefinition[]> 
     type: def.type,
     purpose: def.purpose,
     category: def.category,
+    nature: def.nature, // Added nature
     status: def.status,
   }));
   return Promise.resolve(shortDefinitions);
