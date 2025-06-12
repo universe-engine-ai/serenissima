@@ -6,6 +6,7 @@ import UndercutStratagemPanel from './ExecutionPanels/UndercutStratagemPanel';
 import CoordinatePricingStratagemPanel from './ExecutionPanels/CoordinatePricingStratagemPanel'; // Ajout de l'import
 import CanalMuggingStratagemPanel from './ExecutionPanels/CanalMuggingStratagemPanel'; // Ajout de l'import
 import BurglaryStratagemPanel from './ExecutionPanels/BurglaryStratagemPanel'; // Ajout de l'import
+import ReputationAssaultStratagemPanel from './ExecutionPanels/ReputationAssaultStratagemPanel'; // Ajout de l'import
 import DefaultStratagemPanel from './ExecutionPanels/DefaultStratagemPanel';
 // Importer d'autres panneaux spécifiques ici au fur et à mesure de leur création
 // import HoardResourcePanel from './ExecutionPanels/HoardResourcePanel';
@@ -279,6 +280,8 @@ const StratagemExecutionPanel: React.FC<StratagemExecutionPanelProps> = ({
         return CanalMuggingStratagemPanel;
       case 'burglary':
         return BurglaryStratagemPanel;
+      case 'reputation_assault':
+        return ReputationAssaultStratagemPanel;
       // case 'hoard_resource':
       //   return HoardResourcePanel; 
       // Ajouter d'autres cas ici pour les panneaux spécifiques

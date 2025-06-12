@@ -4,6 +4,7 @@ from .undercut_stratagem_creator import try_create as try_create_undercut_strata
 from .coordinate_pricing_stratagem_creator import try_create as try_create_coordinate_pricing_stratagem
 from .hoard_resource_stratagem_creator import try_create as try_create_hoard_resource_stratagem
 from .political_campaign_stratagem_creator import try_create as try_create_political_campaign_stratagem
+# reputation_assault_stratagem_creator is already imported
 from .reputation_assault_stratagem_creator import try_create as try_create_reputation_assault_stratagem
 from .emergency_liquidation_stratagem_creator import try_create as try_create_emergency_liquidation_stratagem
 from .cultural_patronage_stratagem_creator import try_create as try_create_cultural_patronage_stratagem
@@ -38,7 +39,7 @@ STRATAGEM_CREATORS = {
     "coordinate_pricing": try_create_coordinate_pricing_stratagem,
     "hoard_resource": try_create_hoard_resource_stratagem,
     "political_campaign": try_create_political_campaign_stratagem,
-    "reputation_assault": try_create_reputation_assault_stratagem,
+    "reputation_assault": try_create_reputation_assault_stratagem, # Already mapped
     "emergency_liquidation": try_create_emergency_liquidation_stratagem,
     "cultural_patronage": try_create_cultural_patronage_stratagem,
     "information_network": try_create_information_network_stratagem,

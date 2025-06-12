@@ -50,7 +50,8 @@ from backend.engine.stratagem_processors import (
     process_printing_propaganda_stratagem,
     process_cargo_mishap_stratagem,
     process_marketplace_gossip_stratagem,
-    process_joint_venture_stratagem
+    process_joint_venture_stratagem,
+    process_reputation_assault_stratagem # Added import
     # process_canal_mugging_stratagem is now imported from its own module
     # Import other stratagem processors here
 )
@@ -219,6 +220,7 @@ STRATAGEM_PROCESSORS = {
     "cargo_mishap": process_cargo_mishap_stratagem,
     "marketplace_gossip": process_marketplace_gossip_stratagem,
     "joint_venture": process_joint_venture_stratagem,
+    "reputation_assault": process_reputation_assault_stratagem, # Added mapping
     "monopoly_pricing": process_monopoly_pricing_stratagem,
     "reputation_boost": process_reputation_boost_stratagem,
     "canal_mugging": process_canal_mugging_stratagem, # Now maps to the imported processor

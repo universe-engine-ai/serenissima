@@ -88,6 +88,10 @@ export async function POST(request: Request) {
         `TargetPartnerUsername: ${stratagemDetails?.targetPartnerUsername}`,
         `VentureDetails: ${stratagemDetails?.ventureDetails}`
       );
+    } else if (stratagemType === 'reputation_assault') {
+      console.log(`[API /stratagems/try-create] Processing 'reputation_assault' stratagem with parameters:`,
+        `TargetCitizen: ${stratagemDetails?.targetCitizen}`
+      );
     } else if (stratagemType === 'monopoly_pricing') {
       console.log(`[API /stratagems/try-create] Processing 'monopoly_pricing' stratagem with parameters:`,
         `TargetResourceType: ${stratagemDetails?.targetResourceType}`,

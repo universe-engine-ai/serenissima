@@ -34,7 +34,7 @@ const stratagemNatureConfig: Record<string, StratagemStyleConfig> = {
   'undercut': { nature: 'aggressive', classes: 'bg-amber-500 hover:bg-amber-600 text-white' },
   'supplier_lockout': { nature: 'aggressive', classes: 'bg-amber-500 hover:bg-amber-600 text-white' },
   'monopoly_pricing': { nature: 'aggressive', classes: 'bg-amber-500 hover:bg-amber-600 text-white' },
-  'reputation_assault': { nature: 'aggressive', classes: 'bg-amber-500 hover:bg-amber-600 text-white' },
+  'reputation_assault': { nature: 'aggressive', classes: 'bg-amber-500 hover:bg-amber-600 text-white' }, // Style already correct
   'marketplace_gossip': { nature: 'aggressive', classes: 'bg-amber-500 hover:bg-amber-600 text-white' },
   'employee_poaching': { nature: 'aggressive', classes: 'bg-amber-500 hover:bg-amber-600 text-white' },
   'theater_conspiracy': { nature: 'aggressive', classes: 'bg-amber-500 hover:bg-amber-600 text-white' },
