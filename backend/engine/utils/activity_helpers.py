@@ -1395,19 +1395,16 @@ def create_activity_record(
     if to_building_id: payload["ToBuilding"] = to_building_id
     if path_json: payload["Path"] = path_json
 
-    # Handle Details vs Notes based on activity_type
-    if activity_type == "goto_location":
-        if details_json:
-            payload["Details"] = details_json # Structured JSON for goto_location goes into Details
-        if notes: # Simple text notes for goto_location go into Notes
-            payload["Notes"] = notes
-        elif not details_json and not notes: # Ensure Notes is at least an empty string if neither provided for goto_location
-             payload["Notes"] = "{}" # Or an empty JSON string if Details is also empty, to avoid processing errors if processor expects JSON in Notes too
-    else: # For other activity types
-        if details_json:
-            payload["Notes"] = details_json # Structured JSON goes into Notes
-        elif notes:
-            payload["Notes"] = notes # Simple text notes
+    # Consolidated logic for Notes field
+    final_notes_parts = []
+    if notes:  # This is the simple text part
+        final_notes_parts.append(notes)
+    if details_json:  # This is the structured JSON string part
+        final_notes_parts.append(f"DetailsJSON: {details_json}")
+
+    if final_notes_parts:
+        payload["Notes"] = " ".join(final_notes_parts)  # Join with a space if both are present
+    # If neither notes nor details_json, Notes field remains unset or can be defaulted if needed by processors
 
     if contract_id: payload["ContractId"] = contract_id
     if transporter_username: payload["Transporter"] = transporter_username

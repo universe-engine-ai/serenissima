@@ -202,6 +202,9 @@ def try_create(
         "buildingTypeDefinition": building_type_definition,
         "pointDetails": point_details
     })
+    simple_note_goto_land = f"Traveling to inspect land {land_id} for building a {building_type_definition.get('name', 'building')}."
+    combined_notes_goto_land = f"{simple_note_goto_land} DetailsJSON: {goto_land_details_json}"
+    
     goto_land_payload = {
         "ActivityId": f"goto_land_{_escape_airtable_value(land_id)}_{citizen}_{ts}",
         "Type": "goto_location",
@@ -209,8 +212,7 @@ def try_create(
         "FromBuilding": None,  # Starting from current position
         "ToBuilding": None,    # Going to a land plot, not a building
         "Path": json.dumps(path_to_land.get('path', [])),
-        "Details": goto_land_details_json, # Structured JSON goes into Details for goto_location
-        "Notes": f"Traveling to inspect land {land_id} for building a {building_type_definition.get('name', 'building')}.", # Simple text note
+        "Notes": combined_notes_goto_land, # Combined notes with DetailsJSON
         "Status": "created",
         "Title": f"Traveling to inspect land {land_id}",
         "Description": f"Traveling to land {land_id} to inspect it for building a {building_type_definition.get('name', 'building')}. First step of initiate_building_project process. Will be followed by land inspection.",
@@ -252,6 +254,9 @@ def try_create(
         "pointDetails": point_details,
         "builderContractDetails": builder_contract_details
     })
+    simple_note_goto_office = f"Traveling to {target_office_building_record['fields'].get('Name', target_office_building_id)} to submit building project."
+    combined_notes_goto_office = f"{simple_note_goto_office} DetailsJSON: {goto_office_details_json}"
+
     goto_office_payload = {
         "ActivityId": goto_office_activity_id,
         "Type": "goto_location",
@@ -259,8 +264,7 @@ def try_create(
         "FromBuilding": None,  # Coming from a land plot, not a building
         "ToBuilding": target_office_building_id,
         "Path": json.dumps(path_to_office.get('path', [])),
-        "Details": goto_office_details_json, # Structured JSON into Details for goto_location
-        "Notes": f"Traveling to {target_office_building_record['fields'].get('Name', target_office_building_id)} to submit building project.", # Simple text note
+        "Notes": combined_notes_goto_office, # Combined notes with DetailsJSON
         "Status": "created",
         "Title": f"Traveling to office to submit building project",
         "Description": f"Traveling to {target_office_building_record['fields'].get('Name', target_office_building_id)} to submit building project for land {land_id}. Third step of initiate_building_project process. Will be followed by project submission.",
