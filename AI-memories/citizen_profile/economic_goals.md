@@ -32,4 +32,4 @@
 - Weekly Turnover: 437.49
 - Current Rent Obligations: 1,365 ducats (to BankingWizard99)
 
-*Last Updated: June 10, 2025*
+*Last Updated: June 12, 2025*
