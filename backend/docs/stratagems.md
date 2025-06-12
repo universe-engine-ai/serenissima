@@ -1193,3 +1193,59 @@ This would make NLR attempt to set the price of their Iron Ore to 200% above the
 }
 ```
 This would make NLR launch a "Standard" intensity reputation boost campaign for "StrugglingMerchantAI" lasting 45 days, costing 30 Influence upfront and up to 1500 Ducats for campaign activities.
+
+### 21. Canal Mugging (Coming Soon)
+
+-   **Type**: `canal_mugging`
+-   **Purpose**: To rob a specific citizen while they are traveling by gondola, stealing Ducats and potentially resources.
+-   **Category**: `criminal_activity`
+-   **Creator**: (To be created: `backend/engine/stratagem_creators/canal_mugging_stratagem_creator.py`)
+-   **Processor**: (To be created: `backend/engine/stratagem_processors/canal_mugging_stratagem_processor.py`)
+
+#### Parameters for Creation (`stratagemDetails` in API request):
+
+-   `targetCitizenUsername` (string, required): The username of the citizen to target.
+-   `targetActivityId` (string, optional): The `ActivityId` of the specific travel activity (e.g., `goto_location` with `TransportMode: "gondola"`) to intercept. If not provided, the processor might attempt to target the next suitable gondola travel activity of the target.
+-   `name` (string, optional): Custom name for the stratagem. Defaults to "Canal Ambush on [TargetCitizen]".
+-   `description` (string, optional): Custom description.
+-   `notes` (string, optional): Custom notes.
+
+#### How it Works (Conceptual):
+
+1.  **Creation**:
+    -   The `canal_mugging_stratagem_creator.py` validates parameters (e.g., `targetCitizenUsername` exists).
+    -   It creates a new record in the `STRATAGEMS` table with `Status: "active"`, `Category: "criminal_activity"`, an influence cost of 3, and sets `ExpiresAt` (e.g., 24-48 hours to find an opportunity).
+
+2.  **Processing (Conceptual for "Coming Soon")**:
+    -   `processStratagems.py` picks up the active "canal_mugging" stratagem.
+    -   `canal_mugging_stratagem_processor.py` is invoked.
+    -   **Opportunity Identification**:
+        -   The processor monitors the `targetCitizenUsername`'s activities.
+        -   If `targetActivityId` is provided, it checks if that activity is ongoing and uses gondola.
+        -   If not, it looks for an active or soon-to-start `goto_location` (or similar travel) activity by the `targetCitizenUsername` where `TransportMode` is "gondola".
+    -   **Interception & Robbery**:
+        -   If a suitable gondola travel activity is identified:
+            -   A `problem` record of type `mugging_incident` is created for the `targetCitizenUsername`.
+            -   **Ducats Loss**: The `targetCitizenUsername` loses a random amount of Ducats (e.g., 200-800). This is transferred to the `ExecutedBy` citizen (minus a cut for the "thugs").
+            -   **Resource Theft**: There's a small chance (e.g., 10-25%) that some resources carried by the `targetCitizenUsername` are stolen. The type and amount would be random or based on what they are carrying. These resources are added to the `ExecutedBy` citizen's inventory.
+            -   The travel activity of the `targetCitizenUsername` might be interrupted or delayed.
+    -   **Relationship & Legal Impact**:
+        -   Significant negative impact on the relationship between `ExecutedBy` and `targetCitizenUsername` if discovered.
+        -   High risk of creating a `problem` of type `criminal_investigation` targeting the `ExecutedBy` citizen, potentially leading to fines or other penalties if caught.
+    -   **Status & Notes**:
+        -   The stratagem is marked `executed` after a successful mugging attempt or `failed` if no opportunity arises before `ExpiresAt`.
+        -   Notes track the outcome, amount stolen, and any legal repercussions.
+
+#### Example API Request to `POST /api/stratagems/try-create`:
+
+```json
+{
+  "citizenUsername": "NLR",
+  "stratagemType": "canal_mugging",
+  "stratagemDetails": {
+    "targetCitizenUsername": "WealthyMerchantAI",
+    "name": "Canal Ambush on WealthyMerchantAI"
+  }
+}
+```
+This would make NLR attempt to mug "WealthyMerchantAI" during one of their gondola travels, costing NLR 3 Influence and risking legal consequences for a potential gain of Ducats and resources.

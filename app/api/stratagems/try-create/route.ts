@@ -100,6 +100,11 @@ export async function POST(request: Request) {
         `CampaignDurationDays: ${stratagemDetails?.campaignDurationDays}`,
         `CampaignBudget: ${stratagemDetails?.campaignBudget}`
       );
+    } else if (stratagemType === 'canal_mugging') {
+      console.log(`[API /stratagems/try-create] Processing 'canal_mugging' stratagem with parameters:`,
+        `TargetCitizenUsername: ${stratagemDetails?.targetCitizenUsername}`,
+        `TargetActivityId: ${stratagemDetails?.targetActivityId}`
+      );
     }
 
     let parsedPythonEngineUrl: URL;

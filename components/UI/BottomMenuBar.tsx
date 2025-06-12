@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { 
   FaCoins, FaHandshake, FaScroll, FaUserShield, FaBomb, // Main category icons
   FaArrowCircleDown, FaSyncAlt, FaArchive, FaStoreSlash, FaUserSecret, FaPalette, FaSitemap, FaAnchor, FaHandHoldingUsd, FaBullhorn, FaUsers, // Existing sub-item icons
-  FaMask, FaComments, FaUserPlus, FaNewspaper, FaStar // New sub-item icons (FaStar added)
+  FaMask, FaComments, FaUserPlus, FaNewspaper, FaStar, FaSkullCrossbones // New sub-item icons (FaStar, FaSkullCrossbones added)
 } from 'react-icons/fa';
 import { eventBus, EventTypes } from '@/lib/utils/eventBus'; // Importer eventBus
 
@@ -52,7 +52,7 @@ const BottomMenuBar: React.FC = () => {
     'reputation_assault', 'financial_patronage', 'cultural_patronage', 'theater_conspiracy', 'marketplace_gossip', 'employee_poaching', 'reputation_boost',
     'political_campaign', 'printing_propaganda',
     'information_network', 'neighborhood_watch',
-    'maritime_blockade', 'cargo_mishap'
+    'maritime_blockade', 'cargo_mishap', 'canal_mugging'
   ];
   const availableStratagemTypes = [ // Liste des stratagèmes réellement implémentés et disponibles
     'undercut', 'coordinate_pricing', 'emergency_liquidation', 'hoard_resource', 'reputation_assault'
@@ -254,6 +254,14 @@ const BottomMenuBar: React.FC = () => {
             id: 'cargo_mishap', type: 'cargo_mishap', title: 'Cargo "Mishap" (Coming Soon)',
             description: "Sabotage a competitor's shipment by arranging for their goods to \"disappear\" while in transit.",
             influenceCostBase: 8, hasVariants: false,
+          }
+        },
+        {
+          id: 'canal_mugging', label: 'Mugging (Soon)', icon: FaSkullCrossbones,
+          stratagemPanelData: {
+            id: 'canal_mugging', type: 'canal_mugging', title: 'Canal Mugging (Coming Soon)',
+            description: "Rob a specific citizen while they are traveling by gondola.",
+            influenceCostBase: 3, hasVariants: false,
           }
         }
       ]

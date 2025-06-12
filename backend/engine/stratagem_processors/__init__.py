@@ -19,4 +19,6 @@ from .joint_venture_stratagem_processor import process as process_joint_venture_
 # from .monopoly_pricing_stratagem_processor import process as process_monopoly_pricing_stratagem
 # Placeholder for reputation_boost
 # from .reputation_boost_stratagem_processor import process as process_reputation_boost_stratagem
+# Placeholder for canal_mugging
+# from .canal_mugging_stratagem_processor import process as process_canal_mugging_stratagem
 # Import other stratagem processors here
