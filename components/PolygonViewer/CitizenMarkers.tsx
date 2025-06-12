@@ -1191,6 +1191,7 @@ const CitizenMarkers: React.FC<CitizenMarkersProps> = ({
                   strokeOpacity="0.5" // Reduced opacity
                 />
                 {validPoints.map((point, index) => {
+                  if (index !== 0 && index !== validPoints.length - 1) return null; // Only draw start and end points
                   const screenPos = latLngToScreen(point.lat, point.lng);
                   return (
                     <circle 
@@ -1229,6 +1230,7 @@ const CitizenMarkers: React.FC<CitizenMarkersProps> = ({
                   strokeOpacity="0.9"
                 />
                 {validPoints.map((point, index) => {
+                  if (index !== 0 && index !== validPoints.length - 1) return null; // Only draw start and end points
                   const screenPos = latLngToScreen(point.lat, point.lng);
                   return (
                     <circle 
@@ -1280,8 +1282,8 @@ const CitizenMarkers: React.FC<CitizenMarkersProps> = ({
                   }}
                 />
                 {validPoints.map((point, index) => {
-                  // Optionally, animate points as well, or only show them for the animating path
-                  if (!isAnimatingThisPath && index % 3 !== 0) return null; // Thin out points for non-animating paths
+                  // Only draw start and end points
+                  if (index !== 0 && index !== validPoints.length - 1) return null; 
 
                   const screenPos = latLngToScreen(point.lat, point.lng);
                   return (
@@ -1325,6 +1327,7 @@ const CitizenMarkers: React.FC<CitizenMarkersProps> = ({
                   strokeOpacity="0.7"
                 />
                 {validPoints.map((point, index) => {
+                  if (index !== 0 && index !== validPoints.length - 1) return null; // Only draw start and end points
                   const screenPos = latLngToScreen(point.lat, point.lng);
                   return (
                     <circle 
