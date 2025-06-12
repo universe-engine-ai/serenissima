@@ -5,6 +5,7 @@ import argparse
 from datetime import datetime
 from typing import Dict, List, Optional
 import requests
+import pytz # Added for timezone conversion
 from dotenv import load_dotenv
 from pyairtable import Api, Table
 
@@ -63,10 +64,10 @@ def get_unread_notifications_for_ai(tables, ai_username: str) -> List[Dict]:
 def mark_notifications_as_read(tables, notification_ids: List[str]) -> bool:
     """Mark multiple notifications as read."""
     try:
-        now = datetime.now().isoformat()
+        now_venice_iso = datetime.now(VENICE_TIMEZONE).isoformat() # Use Venice time
         for notification_id in notification_ids:
             tables["notifications"].update(notification_id, {
-                "ReadAt": now
+                "ReadAt": now_venice_iso
             })
         print(f"Marked {len(notification_ids)} notifications as read")
         return True
@@ -130,12 +131,17 @@ def send_notifications_to_ai(ai_citizen_record: Dict, notifications: List[Dict],
             content = notification["fields"].get("Content", "No content")
             created_at = notification["fields"].get("CreatedAt", "")
             
-            # Format the date for better readability
+            # Format the date for better readability in Venice time
             try:
-                date_obj = datetime.fromisoformat(created_at.replace('Z', '+00:00'))
-                formatted_date = date_obj.strftime("%B %d, %Y at %H:%M")
-            except:
-                formatted_date = created_at
+                # Assume created_at is an ISO string, potentially UTC
+                date_obj_utc = datetime.fromisoformat(created_at.replace('Z', '+00:00'))
+                if date_obj_utc.tzinfo is None: # If naive, assume UTC
+                    date_obj_utc = pytz.utc.localize(date_obj_utc)
+                date_obj_venice = date_obj_utc.astimezone(VENICE_TIMEZONE) # VENICE_TIMEZONE is imported
+                formatted_date = date_obj_venice.strftime("%B %d, %Y at %H:%M (%Z)") # Added %Z for timezone
+            except Exception as e_date_fmt:
+                log.warning(f"Could not format date '{created_at}' for notification: {e_date_fmt}") # Use log from CustomLoggerAdapter if available
+                formatted_date = created_at # Fallback
             
             notification_message += f"**{i}. [{notification_type.upper()}]** - _{formatted_date}_\n{content}\n\n"
         
@@ -186,7 +192,7 @@ def send_notifications_to_ai(ai_citizen_record: Dict, notifications: List[Dict],
 def create_admin_notification(tables, ai_notification_counts: Dict[str, int]) -> None:
     """Create a notification for admins with the AI notification processing summary."""
     try:
-        now = datetime.now().isoformat()
+        now_venice_iso = datetime.now(VENICE_TIMEZONE).isoformat() # Use Venice time
         
         # Create a summary message
         message = "📊 **AI Notification Processing Summary** 📊\n\n"
@@ -199,11 +205,11 @@ def create_admin_notification(tables, ai_notification_counts: Dict[str, int]) ->
             "Citizen": "admin",
             "Type": "ai_notifications",
             "Content": message,
-            "CreatedAt": now,
+            "CreatedAt": now_venice_iso,
             "ReadAt": None,
             "Details": json.dumps({
                 "ai_notification_counts": ai_notification_counts,
-                "timestamp": now
+                "timestamp": now_venice_iso
             })
         }
         

@@ -956,7 +956,7 @@ If you decide not to build anything at this time, return an empty JSON object.
 def create_admin_notification(tables, ai_strategy_results: Dict[str, bool]) -> None:
     """Create a notification for admins with the AI building strategy results."""
     try:
-        now = datetime.now().isoformat()
+        now_venice_iso = datetime.now(VENICE_TIMEZONE).isoformat() # Use Venice time
         
         # Create a summary message
         message = "AI Building Strategy Results:\n\n"
@@ -971,12 +971,12 @@ def create_admin_notification(tables, ai_strategy_results: Dict[str, bool]) -> N
             "Citizen": "ConsiglioDeiDieci", # Standardized admin user
             "Type": "ai_building_strategy",
             "Content": f"🏗️ **AI Building Strategy Results** 🏗️\n\n{message}",
-            "CreatedAt": datetime.now(VENICE_TIMEZONE).isoformat(), # Use VENICE_TIMEZONE
+            "CreatedAt": now_venice_iso, # Use Venice time for CreatedAt
             "ReadAt": None, # Mark as unread for admin
             "Status": "unread", # Explicitly unread
             "Details": json.dumps({
                 "ai_strategy_results": ai_strategy_results,
-                "timestamp": datetime.now(VENICE_TIMEZONE).isoformat() # Use VENICE_TIMEZONE
+                "timestamp": now_venice_iso # Use Venice time for timestamp in Details
             })
         }
         

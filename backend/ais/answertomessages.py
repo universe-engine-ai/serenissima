@@ -6,6 +6,7 @@ import argparse
 from datetime import datetime, timezone
 from typing import Dict, List, Optional, Any, Literal
 import requests
+import pytz # Added for timezone conversion
 from dotenv import load_dotenv
 from pyairtable import Api, Base, Table # Import Base
 
@@ -519,7 +520,7 @@ def call_try_create_activity_api(
 def create_admin_notification(tables, ai_response_counts: Dict[str, int], model_used: str = "local") -> None:
     """Create a notification for admins with the AI response summary."""
     try:
-        now = datetime.now().isoformat()
+        now_venice_iso = datetime.now(VENICE_TIMEZONE).isoformat() # Use Venice time
         
         # Create a summary message
         message = f"💬 **AI Message Response Summary** 💬\n\nModel utilisé: **{model_used}**\n\n"
@@ -532,13 +533,13 @@ def create_admin_notification(tables, ai_response_counts: Dict[str, int], model_
             "Citizen": "admin",
             "Type": "ai_messaging",
             "Content": message,
-            "CreatedAt": now,
-            "ReadAt": now, # Set to current time
+            "CreatedAt": now_venice_iso,
+            "ReadAt": now_venice_iso, # Set to current time
             "Status": "read", # Set status to read
             "Details": json.dumps({
                 "ai_response_counts": ai_response_counts,
                 "model_used": model_used,
-                "timestamp": now
+                "timestamp": now_venice_iso
             })
         }
         
@@ -726,17 +727,17 @@ def create_direct_message(sender: str, receiver: str, content: str, message_type
         content = re.sub(r'<think>.*?</think>', '', content, flags=re.DOTALL)
         content = content.strip()
         
-        # Create a message ID
-        message_id = f"msg_{sender}_{receiver}_{datetime.now(timezone.utc).strftime('%Y%m%d%H%M%S')}"
+        # Create a message ID using Venice time for consistency in generation
+        message_id = f"msg_{sender}_{receiver}_{datetime.now(VENICE_TIMEZONE).strftime('%Y%m%d%H%M%S%f')}" # Added %f for microseconds
         
-        # Create the message record
+        # Create the message record using Venice time
         message_fields = {
             "MessageId": message_id,
             "Sender": sender,
             "Receiver": receiver,
             "Content": content,
             "Type": message_type,
-            "CreatedAt": datetime.now(timezone.utc).isoformat()
+            "CreatedAt": datetime.now(VENICE_TIMEZONE).isoformat()
         }
         
         # Don't store the reply reference since neither InReplyTo nor Details 
@@ -762,7 +763,7 @@ def create_direct_message(sender: str, receiver: str, content: str, message_type
             "Asset": message_id,
             "AssetType": "message",
             "Status": "unread",
-            "CreatedAt": datetime.now(timezone.utc).isoformat()
+            "CreatedAt": datetime.now(VENICE_TIMEZONE).isoformat() # Use Venice time
         }
         
         tables["notifications"].create(notification_fields)
@@ -782,7 +783,7 @@ def create_direct_message(sender: str, receiver: str, content: str, message_type
             new_strength = min(100, current_strength + 2)  # Increment by 2, max 100
             
             tables["relationships"].update(relationship_id, {
-                'LastInteraction': datetime.now(timezone.utc).isoformat(),
+                'LastInteraction': datetime.now(VENICE_TIMEZONE).isoformat(), # Use Venice time
                 'StrengthScore': new_strength
             })
             
@@ -805,12 +806,12 @@ def create_direct_message(sender: str, receiver: str, content: str, message_type
                 "Citizen2": citizen2,
                 "Title": "Acquaintance",  # Default relationship type
                 "Description": f"Initial contact established when {sender} sent a message to {receiver}.",
-                "LastInteraction": datetime.now(timezone.utc).isoformat(),
+                "LastInteraction": datetime.now(VENICE_TIMEZONE).isoformat(), # Use Venice time
                 "Tier": 1,  # Initial tier
                 "Status": "active",
                 "StrengthScore": 10,  # Initial strength
                 "TrustScore": 5,  # Initial trust
-                "CreatedAt": datetime.now(timezone.utc).isoformat()
+                "CreatedAt": datetime.now(VENICE_TIMEZONE).isoformat() # Use Venice time
             }
             
             tables["relationships"].create(relationship_fields)

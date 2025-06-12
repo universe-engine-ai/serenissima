@@ -686,7 +686,8 @@ async function fetchStratagemDefinitions(): Promise<Record<string, Record<string
 function formatDate(dateString?: string | Date): string {
   if (!dateString) return 'N/A';
   try {
-    return new Date(dateString).toLocaleString('fr-FR', { dateStyle: 'medium', timeStyle: 'short' });
+    // Ensure dates are displayed in Venice time for human readability
+    return new Date(dateString).toLocaleString('fr-FR', { dateStyle: 'medium', timeStyle: 'short', timeZone: 'Europe/Rome' });
   } catch (e) {
     return String(dateString); // Fallback if date is invalid
   }
