@@ -14,13 +14,13 @@ interface StratagemStyleConfig {
 }
 
 const stratagemNatureConfig: Record<string, StratagemStyleConfig> = {
-  // Good (Light Blue)
-  'financial_patronage': { nature: 'good', classes: 'bg-sky-600 hover:bg-sky-700 text-white' },
-  'cultural_patronage': { nature: 'good', classes: 'bg-sky-600 hover:bg-sky-700 text-white' },
-  'reputation_boost': { nature: 'good', classes: 'bg-sky-600 hover:bg-sky-700 text-white' },
-  'charity_distribution': { nature: 'good', classes: 'bg-sky-600 hover:bg-sky-700 text-white' },
-  'festival_organisation': { nature: 'good', classes: 'bg-sky-600 hover:bg-sky-700 text-white' },
-  'neighborhood_watch': { nature: 'good', classes: 'bg-sky-600 hover:bg-sky-700 text-white' },
+  // Good (More interesting Blue)
+  'financial_patronage': { nature: 'good', classes: 'bg-sky-500 hover:bg-sky-600 text-white' },
+  'cultural_patronage': { nature: 'good', classes: 'bg-sky-500 hover:bg-sky-600 text-white' },
+  'reputation_boost': { nature: 'good', classes: 'bg-sky-500 hover:bg-sky-600 text-white' },
+  'charity_distribution': { nature: 'good', classes: 'bg-sky-500 hover:bg-sky-600 text-white' },
+  'festival_organisation': { nature: 'good', classes: 'bg-sky-500 hover:bg-sky-600 text-white' },
+  'neighborhood_watch': { nature: 'good', classes: 'bg-sky-500 hover:bg-sky-600 text-white' },
   // Neutral (Grey)
   'coordinate_pricing': { nature: 'neutral', classes: 'bg-slate-500 hover:bg-slate-600 text-white' },
   'emergency_liquidation': { nature: 'neutral', classes: 'bg-slate-500 hover:bg-slate-600 text-white' },
@@ -29,21 +29,21 @@ const stratagemNatureConfig: Record<string, StratagemStyleConfig> = {
   'joint_venture': { nature: 'neutral', classes: 'bg-slate-500 hover:bg-slate-600 text-white' },
   'political_campaign': { nature: 'neutral', classes: 'bg-slate-500 hover:bg-slate-600 text-white' },
   'printing_propaganda': { nature: 'neutral', classes: 'bg-slate-500 hover:bg-slate-600 text-white' },
-  // Aggressive (Orange)
-  'undercut': { nature: 'aggressive', classes: 'bg-orange-500 hover:bg-orange-600 text-white' },
-  'supplier_lockout': { nature: 'aggressive', classes: 'bg-orange-500 hover:bg-orange-600 text-white' },
-  'monopoly_pricing': { nature: 'aggressive', classes: 'bg-orange-500 hover:bg-orange-600 text-white' },
-  'reputation_assault': { nature: 'aggressive', classes: 'bg-orange-500 hover:bg-orange-600 text-white' },
-  'marketplace_gossip': { nature: 'aggressive', classes: 'bg-orange-500 hover:bg-orange-600 text-white' },
-  'employee_poaching': { nature: 'aggressive', classes: 'bg-orange-500 hover:bg-orange-600 text-white' },
-  'theater_conspiracy': { nature: 'aggressive', classes: 'bg-orange-500 hover:bg-orange-600 text-white' },
-  // Illegal (Red)
-  'maritime_blockade': { nature: 'illegal', classes: 'bg-red-600 hover:bg-red-700 text-white' },
-  'cargo_mishap': { nature: 'illegal', classes: 'bg-red-600 hover:bg-red-700 text-white' },
-  'canal_mugging': { nature: 'illegal', classes: 'bg-red-600 hover:bg-red-700 text-white' },
-  'burglary': { nature: 'illegal', classes: 'bg-red-600 hover:bg-red-700 text-white' },
-  'employee_corruption': { nature: 'illegal', classes: 'bg-red-600 hover:bg-red-700 text-white' },
-  'arson': { nature: 'illegal', classes: 'bg-red-600 hover:bg-red-700 text-white' },
+  // Aggressive (Less saturated Orange / Amber)
+  'undercut': { nature: 'aggressive', classes: 'bg-amber-500 hover:bg-amber-600 text-white' },
+  'supplier_lockout': { nature: 'aggressive', classes: 'bg-amber-500 hover:bg-amber-600 text-white' },
+  'monopoly_pricing': { nature: 'aggressive', classes: 'bg-amber-500 hover:bg-amber-600 text-white' },
+  'reputation_assault': { nature: 'aggressive', classes: 'bg-amber-500 hover:bg-amber-600 text-white' },
+  'marketplace_gossip': { nature: 'aggressive', classes: 'bg-amber-500 hover:bg-amber-600 text-white' },
+  'employee_poaching': { nature: 'aggressive', classes: 'bg-amber-500 hover:bg-amber-600 text-white' },
+  'theater_conspiracy': { nature: 'aggressive', classes: 'bg-amber-500 hover:bg-amber-600 text-white' },
+  // Illegal (Burgundy / Darker Red - Rose)
+  'maritime_blockade': { nature: 'illegal', classes: 'bg-rose-700 hover:bg-rose-800 text-white' },
+  'cargo_mishap': { nature: 'illegal', classes: 'bg-rose-700 hover:bg-rose-800 text-white' },
+  'canal_mugging': { nature: 'illegal', classes: 'bg-rose-700 hover:bg-rose-800 text-white' },
+  'burglary': { nature: 'illegal', classes: 'bg-rose-700 hover:bg-rose-800 text-white' },
+  'employee_corruption': { nature: 'illegal', classes: 'bg-rose-700 hover:bg-rose-800 text-white' },
+  'arson': { nature: 'illegal', classes: 'bg-rose-700 hover:bg-rose-800 text-white' },
   // Default for any unclassified (should not happen if all are mapped)
   'default': { nature: 'neutral', classes: 'bg-gray-400 hover:bg-gray-500 text-white' }
 };
