@@ -66,36 +66,10 @@ def handle_construction_worker_activity(
 
     log.info(f"{LogColors.OKCYAN}Construction worker {citizen_username} at {workplace_custom_id} (Op: {workplace_operator_username}). Evaluating tasks.{LogColors.ENDC}")
 
-    # --- Attempt to deposit personal inventory using the orchestrator ---
-    log.info(f"  Checking if {citizen_username} needs to deposit personal inventory.")
-    citizen_inventory_items = get_citizen_inventory_details(tables, citizen_username) # This returns a list of dicts
-    
-    # Check if inventory has any items with positive amount
-    has_items_to_deposit = any(item.get("Amount", 0.0) > 0.001 for item in citizen_inventory_items)
-
-    if has_items_to_deposit:
-        log.info(f"  {citizen_username} has items in inventory. Attempting to create deposit orchestrator activity.")
-        # The orchestrator needs the full citizen_record and current citizen_position
-        deposit_orchestrator_activity = try_create_deposit_inventory_orchestrator(
-            tables=tables,
-            citizen_record=citizen_record,
-            citizen_position=citizen_position, # Parsed at the start of the function
-            resource_defs=resource_defs,
-            building_type_defs=building_type_defs,
-            now_utc_dt=now_utc_dt,
-            transport_api_url=transport_api_url,
-            api_base_url=api_base_url,
-            start_time_utc_iso=None # Immediate start for the deposit chain
-        )
-        if deposit_orchestrator_activity:
-            log.info(f"    Deposit inventory orchestrator activity created for {citizen_username}. First activity: {deposit_orchestrator_activity['fields'].get('Type')}")
-            return True # An activity was created, so this worker's turn is done.
-        else:
-            log.info(f"    Could not create a deposit inventory orchestrator activity for {citizen_username} (e.g., no suitable deposit locations).")
-    else:
-        log.info(f"  {citizen_username}'s personal inventory is empty or has no items with positive amount. No deposit needed.")
-
     # --- Helper function for processing active construction contracts ---
+    # The inventory deposit logic has been removed from here.
+    # It will be handled by the general _handle_deposit_full_inventory in citizen_general_activities.py
+    # at a lower priority, after work tasks.
     def _try_process_active_construction_contracts() -> bool:
         construction_contracts_formula = f"AND({{Type}}='construction_project', {{SellerBuilding}}='{_escape_airtable_value(workplace_custom_id)}', {{Status}}!='completed', {{Status}}!='failed')"
         active_construction_contracts = tables['contracts'].all(formula=construction_contracts_formula, sort=['CreatedAt'])
