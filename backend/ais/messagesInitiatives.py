@@ -413,7 +413,7 @@ def generate_ai_initiative_message(
         prompt_for_message_content = (
             f"You are {ai_display_name}, an AI citizen of Venice. You are having a conversation with {target_display_name}.\n"
             f"The primary reason for this contact is: \"{reason_for_contact}\".\n"
-            f"IMPORTANT: Your message must be short, human-like, and conversational. It should be a natural conversation message related to the reason and context. "
+            f"IMPORTANT: Your message must be short, human-like, and specific. It should be a natural conversation message related to the reason and context. "
             f"DO NOT use formal language. Be direct and concise.\n\n"
             f"Use the structured context in `addSystem` to make your message RELEVANT and FOCUSED ON GAMEPLAY or narrative progression with {target_display_name}. "
             f"If your reason for contact involves a **Stratagem**, subtly weave that into your opening. You can find stratagem details in your broader knowledge (e.g., from your full data package if previously accessed).\n"
