@@ -120,6 +120,12 @@ export async function POST(request: Request) {
       console.log(`[API /stratagems/try-create] Processing 'arson' stratagem with parameters:`,
         `TargetBuildingId: ${stratagemDetails?.targetBuildingId}`
       );
+    } else if (stratagemType === 'charity_distribution') {
+      console.log(`[API /stratagems/try-create] Processing 'charity_distribution' stratagem with parameters:`,
+        `TargetDistrict: ${stratagemDetails?.targetDistrict}`,
+        `TotalDucatsToDistribute: ${stratagemDetails?.totalDucatsToDistribute}`,
+        `NumberOfRecipients: ${stratagemDetails?.numberOfRecipients}`
+      );
     }
 
     let parsedPythonEngineUrl: URL;

@@ -1413,3 +1413,59 @@ This would make NLR attempt to bribe "GiovanniArtisan" at "building-competitor_w
 }
 ```
 This would make NLR attempt to burn down "building-rival_warehouse_03", costing NLR 9 Influence, with severe risks and consequences.
+
+### 25. Charity Distribution (Coming Soon)
+
+-   **Type**: `charity_distribution`
+-   **Purpose**: To anonymously distribute Ducats to poor citizens in a specific district, improving general sentiment and subtly enhancing the executor's reputation.
+-   **Category**: `social_support`
+-   **Creator**: (To be created: `backend/engine/stratagem_creators/charity_distribution_stratagem_creator.py`)
+-   **Processor**: (To be created: `backend/engine/stratagem_processors/charity_distribution_stratagem_processor.py`)
+
+#### Parameters for Creation (`stratagemDetails` in API request):
+
+-   `targetDistrict` (string, required): The name of the district where the charity will be distributed (e.g., "San Polo", "Castello").
+-   `totalDucatsToDistribute` (integer, required): The total amount of Ducats to be distributed. (e.g., 500, 1000).
+-   `numberOfRecipients` (integer, optional): The approximate number of recipients. If not provided, the processor will determine a reasonable number based on district population and `totalDucatsToDistribute`. Defaults to 5-10.
+-   `name` (string, optional): Custom name for the stratagem. Defaults to "Charitable Giving in [TargetDistrict]".
+-   `description` (string, optional): Custom description.
+-   `notes` (string, optional): Custom notes.
+
+#### How it Works (Conceptual):
+
+1.  **Creation**:
+    -   The `charity_distribution_stratagem_creator.py` validates parameters (e.g., `targetDistrict` is valid, `totalDucatsToDistribute` is positive).
+    -   It deducts `totalDucatsToDistribute` from the `ExecutedBy` citizen's `Ducats` balance immediately.
+    -   It creates a new record in the `STRATAGEMS` table with `Status: "active"`, `Category: "social_support"`, an influence cost of 3, and sets `ExpiresAt` (e.g., 24-48 hours to complete distribution).
+
+2.  **Processing (Conceptual for "Coming Soon")**:
+    -   `processStratagems.py` picks up the active "charity_distribution" stratagem.
+    -   `charity_distribution_stratagem_processor.py` is invoked.
+    -   **Recipient Identification**:
+        -   The processor identifies citizens residing in the `targetDistrict` who are considered "poor" (e.g., SocialClass `Facchini`, `Popolani` with low `Ducats`).
+        -   It selects a number of recipients based on `numberOfRecipients` or an internal calculation.
+    -   **Ducat Distribution**:
+        -   For each selected recipient, an amount of Ducats (e.g., 50-200, or `totalDucatsToDistribute` divided by `numberOfRecipients`, with some randomization) is added to their `Ducats` balance.
+        -   A `TRANSACTION` record is created for each distribution, with "anonymous_benefactor" or similar as the sender.
+    -   **Notifications & Impact**:
+        -   Recipients receive a `NOTIFICATION` about the "anonymous charity".
+        -   The `ExecutedBy` citizen might receive a small, delayed reputation boost or positive relationship modifiers with citizens in the district, reflecting the goodwill generated (even if anonymous, word might spread or general sentiment improves).
+        -   May slightly reduce the chance of certain `problem` types (e.g., `poverty_distress`) in the district temporarily.
+    -   **Status & Notes**:
+        -   The stratagem is marked `executed` after the distribution is complete.
+        -   Notes track the total Ducats distributed and the number of recipients.
+
+#### Example API Request to `POST /api/stratagems/try-create`:
+
+```json
+{
+  "citizenUsername": "NLR",
+  "stratagemType": "charity_distribution",
+  "stratagemDetails": {
+    "targetDistrict": "Castello",
+    "totalDucatsToDistribute": 1000,
+    "numberOfRecipients": 10
+  }
+}
+```
+This would make NLR anonymously distribute 1000 Ducats among approximately 10 poor citizens in the Castello district, costing NLR 3 Influence upfront plus the 1000 Ducats.

@@ -129,6 +129,18 @@ def process_arson_stratagem(
     tables['stratagems'].update(stratagem_record['id'], {'Status': 'executed', 'Notes': 'Coming Soon - Marked as executed.'})
     return True
 
+# Placeholder processor for charity_distribution
+def process_charity_distribution_stratagem(
+    tables: Dict[str, Table], 
+    stratagem_record: Dict, 
+    resource_defs: Dict, 
+    building_type_defs: Dict, 
+    api_base_url: str
+) -> bool:
+    log.warning(f"{LogColors.WARNING}Processing for 'charity_distribution' stratagem (ID: {stratagem_record['id']}) is not yet implemented. Marking as executed for now.{LogColors.ENDC}")
+    tables['stratagems'].update(stratagem_record['id'], {'Status': 'executed', 'Notes': 'Coming Soon - Marked as executed.'})
+    return True
+
 logging.basicConfig(
     level=logging.INFO,
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
@@ -216,7 +228,8 @@ STRATAGEM_PROCESSORS = {
     "canal_mugging": process_canal_mugging_stratagem,
     "burglary": process_burglary_stratagem,
     "employee_corruption": process_employee_corruption_stratagem,
-    "arson": process_arson_stratagem
+    "arson": process_arson_stratagem,
+    "charity_distribution": process_charity_distribution_stratagem
     # Add other stratagem type to processor mappings here
 }
 

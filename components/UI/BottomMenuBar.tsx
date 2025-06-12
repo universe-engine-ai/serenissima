@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { 
   FaCoins, FaHandshake, FaScroll, FaUserShield, FaBomb, // Main category icons
   FaArrowCircleDown, FaSyncAlt, FaArchive, FaStoreSlash, FaUserSecret, FaPalette, FaSitemap, FaAnchor, FaHandHoldingUsd, FaBullhorn, FaUsers, // Existing sub-item icons
-  FaMask, FaComments, FaUserPlus, FaNewspaper, FaStar, FaSkullCrossbones, FaKey, FaUserNinja, FaFire // New sub-item icons (FaStar, FaSkullCrossbones, FaKey, FaUserNinja, FaFire added)
+  FaMask, FaComments, FaUserPlus, FaNewspaper, FaStar, FaSkullCrossbones, FaKey, FaUserNinja, FaFire, FaGift // New sub-item icons (FaStar, FaSkullCrossbones, FaKey, FaUserNinja, FaFire, FaGift added)
 } from 'react-icons/fa';
 import { eventBus, EventTypes } from '@/lib/utils/eventBus'; // Importer eventBus
 
@@ -49,7 +49,7 @@ const BottomMenuBar: React.FC = () => {
   // Cette liste est utilisée pour le style des boutons.
   const allStratagemTypesInMenu = [
     'undercut', 'coordinate_pricing', 'emergency_liquidation', 'hoard_resource', 'supplier_lockout', 'joint_venture', 'monopoly_pricing',
-    'reputation_assault', 'financial_patronage', 'cultural_patronage', 'theater_conspiracy', 'marketplace_gossip', 'employee_poaching', 'reputation_boost',
+    'reputation_assault', 'financial_patronage', 'cultural_patronage', 'theater_conspiracy', 'marketplace_gossip', 'employee_poaching', 'reputation_boost', 'charity_distribution',
     'political_campaign', 'printing_propaganda',
     'information_network', 'neighborhood_watch',
     'maritime_blockade', 'cargo_mishap', 'canal_mugging', 'burglary', 'employee_corruption', 'arson'
@@ -185,6 +185,14 @@ const BottomMenuBar: React.FC = () => {
             id: 'reputation_boost', type: 'reputation_boost', title: 'Reputation Boost (Coming Soon)',
             description: "Actively improve a target citizen's public image and trustworthiness through a coordinated campaign.",
             influenceCostBase: 30, hasVariants: false, // Assuming intensity is a parameter, not variant for cost
+          }
+        },
+        {
+          id: 'charity_distribution', label: 'Charity (Soon)', icon: FaGift,
+          stratagemPanelData: {
+            id: 'charity_distribution', type: 'charity_distribution', title: 'Charity Distribution (Coming Soon)',
+            description: "Anonymously distribute Ducats to poor citizens in a specific district.",
+            influenceCostBase: 3, hasVariants: false, 
           }
         }
       ]

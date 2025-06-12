@@ -27,4 +27,6 @@ from .joint_venture_stratagem_processor import process as process_joint_venture_
 # from .employee_corruption_stratagem_processor import process as process_employee_corruption_stratagem
 # Placeholder for arson
 # from .arson_stratagem_processor import process as process_arson_stratagem
+# Placeholder for charity_distribution
+# from .charity_distribution_stratagem_processor import process as process_charity_distribution_stratagem
 # Import other stratagem processors here
