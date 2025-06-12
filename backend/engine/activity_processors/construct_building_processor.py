@@ -190,6 +190,32 @@ def process(
             update_payload_building['IsConstructed'] = True
             update_payload_building['ConstructionDate'] = datetime.now(VENICE_TIMEZONE).isoformat()
             update_payload_building['ConstructionMinutesRemaining'] = 0 # Ensure it's exactly 0
+
+            # Determine RunBy based on Owner's business count
+            building_owner_username = target_building_record['fields'].get('Owner')
+            final_run_by_on_completion: Optional[str] = None
+
+            if building_owner_username:
+                log.info(f"Determining RunBy for completed building {target_building_name_log} (Owner: {building_owner_username}).")
+                owner_business_buildings_formula = f"AND({{RunBy}}='{_escape_airtable_value(building_owner_username)}', {{Category}}='business')"
+                try:
+                    owner_business_buildings = tables['buildings'].all(formula=owner_business_buildings_formula)
+                    num_businesses_run_by_owner = len(owner_business_buildings)
+                    if num_businesses_run_by_owner < 10:
+                        log.info(f"Owner {building_owner_username} runs {num_businesses_run_by_owner} businesses. Setting RunBy to Owner.")
+                        final_run_by_on_completion = building_owner_username
+                    else:
+                        log.info(f"Owner {building_owner_username} runs {num_businesses_run_by_owner} businesses (limit 10). Setting RunBy to None.")
+                        final_run_by_on_completion = None # Explicitly None
+                except Exception as e_count_owner_buildings:
+                    log.error(f"Error counting business buildings for owner {building_owner_username}: {e_count_owner_buildings}. Defaulting RunBy to Owner for safety.")
+                    final_run_by_on_completion = building_owner_username # Fallback to owner
+            else:
+                log.warning(f"Building {target_building_name_log} has no Owner. RunBy will be None.")
+                final_run_by_on_completion = None
+            
+            update_payload_building['RunBy'] = final_run_by_on_completion
+            log.info(f"RunBy for completed building {target_building_name_log} set to: {final_run_by_on_completion}")
             
             if contract_record_for_processing and contract_record_for_processing['fields'].get('Status') != 'completed':
                 tables['contracts'].update(contract_airtable_id, {'Status': 'completed'})
