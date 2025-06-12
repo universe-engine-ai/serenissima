@@ -279,7 +279,18 @@ def main(args):
 
     log.info(f"Found {len(citizens_by_loc)} locations with 2 or more citizens.")
 
+    # Calculate total number of pairs to process
+    total_pairs_to_process = 0
+    for loc_id in citizens_by_loc:
+        citizens_in_loc = citizens_by_loc[loc_id]
+        if len(citizens_in_loc) >= 2:
+            # Each citizen initiates one conversation
+            total_pairs_to_process += len(citizens_in_loc)
+    
+    log.info(f"{LogColors.OKBLUE}Total potential encounter pairs to process: {total_pairs_to_process}{LogColors.ENDC}")
+
     processed_pairs_total = 0
+    progress_bar_length = 50 # Length of the progress bar
 
     # Shuffle locations to vary processing order if not targeting a specific location
     location_ids_to_process = list(citizens_by_loc.keys())
@@ -342,11 +353,19 @@ def main(args):
             )
             processed_pairs_total += 1 # Still counts total encounters
             processed_initiations_at_location += 1
+            
+            # Update progress bar
+            if total_pairs_to_process > 0:
+                progress = processed_pairs_total / total_pairs_to_process
+                filled_length = int(progress_bar_length * progress)
+                bar = '█' * filled_length + '-' * (progress_bar_length - filled_length)
+                sys.stdout.write(f"\rProgress: |{bar}| {processed_pairs_total}/{total_pairs_to_process} pairs ({progress*100:.2f}%)")
+                sys.stdout.flush()
 
             log.info(f"Waiting {DELAY_BETWEEN_PAIRS_SECONDS}s before next initiation at this location...")
             time.sleep(DELAY_BETWEEN_PAIRS_SECONDS)
 
-
+    sys.stdout.write('\n') # New line after progress bar finishes
     log.info(f"\n{LogColors.OKGREEN}Encounter processing finished. Total pairs processed: {processed_pairs_total}.{LogColors.ENDC}")
 
 if __name__ == "__main__":
