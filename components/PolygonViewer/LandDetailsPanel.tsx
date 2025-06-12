@@ -496,7 +496,7 @@ export default function LandDetailsPanel({ selectedPolygonId, onClose, polygons,
         body: JSON.stringify({
           citizenUsername: currentCitizenUsername,
           activityType,
-          activityParameters: parameters,
+          activityDetails: parameters, // Changed activityParameters to activityDetails
         }),
       });
       const result = await response.json();
