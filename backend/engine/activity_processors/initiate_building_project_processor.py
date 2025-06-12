@@ -182,15 +182,40 @@ def _create_building_project(
     if builder_contract_details:
         builder_username_from_details = builder_contract_details.get('builderUsername')
         contract_value_from_details = builder_contract_details.get('contractValue')
+
+        MIN_BUILDER_PAYMENT_ABSOLUTE = 50.0
+        MIN_BUILDER_PAYMENT_RELATIVE_TO_COST = 0.01 # 1% of building cost
+
+        use_explicit_contract_value = False
         if contract_value_from_details is not None:
-            actual_contract_value_for_builder = float(contract_value_from_details)
-        else:
+            parsed_contract_value = float(contract_value_from_details)
+            is_above_absolute_min = parsed_contract_value >= MIN_BUILDER_PAYMENT_ABSOLUTE
+            is_above_relative_min = parsed_contract_value >= (building_cost_ducats * MIN_BUILDER_PAYMENT_RELATIVE_TO_COST)
+
+            if parsed_contract_value > 0 and is_above_absolute_min and is_above_relative_min:
+                actual_contract_value_for_builder = parsed_contract_value
+                use_explicit_contract_value = True
+                log.info(f"Using provided contractValue for builder: {actual_contract_value_for_builder}")
+            else:
+                if parsed_contract_value <= 0:
+                    log.warning(f"Provided contractValue {parsed_contract_value} is zero or negative. Falling back.")
+                else:
+                    log.warning(f"Provided contractValue {parsed_contract_value} is considered too low (Absolute Min: {MIN_BUILDER_PAYMENT_ABSOLUTE}, Relative Min: {building_cost_ducats * MIN_BUILDER_PAYMENT_RELATIVE_TO_COST}). Falling back to rate or default rate.")
+        
+        if not use_explicit_contract_value: # contract_value_from_details was None, or was too low/zero
             rate_from_details = builder_contract_details.get('rate')
             if rate_from_details is not None:
-                actual_contract_value_for_builder = building_cost_ducats * float(rate_from_details)
-            else:
-                # Default contract value if neither contractValue nor rate is provided
+                parsed_rate = float(rate_from_details)
+                if parsed_rate > 0:
+                    actual_contract_value_for_builder = building_cost_ducats * parsed_rate
+                    log.info(f"Using provided rate for builder: {parsed_rate} * {building_cost_ducats} = {actual_contract_value_for_builder}")
+                else:
+                    log.warning(f"Provided rate {parsed_rate} is zero or negative. Falling back to default rate.")
+                    actual_contract_value_for_builder = building_cost_ducats * 1.2 
+                    log.info(f"Using default rate 1.2 for builder: 1.2 * {building_cost_ducats} = {actual_contract_value_for_builder}")
+            else: # contract_value_from_details was None/low/zero AND rate_from_details is None
                 actual_contract_value_for_builder = building_cost_ducats * 1.2
+                log.info(f"No valid contractValue or rate. Using default rate 1.2 for builder: 1.2 * {building_cost_ducats} = {actual_contract_value_for_builder}")
         
         # Check if this specific builder contract already exists and is active
         skip_builder_contract_creation_and_payment = False
