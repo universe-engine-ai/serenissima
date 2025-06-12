@@ -1,6 +1,15 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { FaCrosshairs, FaHandshake, FaScroll, FaProjectDiagram, FaShieldAlt, FaCoins, FaArrowCircleDown, FaBomb, FaSyncAlt, FaArchive, FaStoreSlash, FaBullhorn, FaUserSecret, FaPalette, FaSitemap, FaAnchor } from 'react-icons/fa'; // Ajout FaAnchor
+import { FaCrosshairs, FaHandshake, FaScroll, FaProjectDiagram, FaShieldAlt, FaCoins, FaArrowCircleDown, FaBomb, FaSyncAlt, FaArchive, FaStoreSlash, FaBullhorn, FaUserSecret, FaPalette, FaSitemap, FaAnchor, FaUsersShield, FaHandHoldingUsd } from 'react-icons/fa'; // Ajout FaAnchor, FaUsersShield, FaHandHoldingUsd
 import { eventBus, EventTypes } from '@/lib/utils/eventBus'; // Importer eventBus
+
+// Liste des types de stratagèmes "Prochainement"
+const comingSoonStratagemTypes = [
+  'supplier_lockout', 'political_campaign', 'information_network', 'maritime_blockade', 
+  'cultural_patronage', 'theater_conspiracy', 'printing_propaganda', 'cargo_mishap', 
+  'marketplace_gossip', 'employee_poaching', 'joint_venture', 
+  'financial_patronage', 'neighborhood_watch'
+  // Ajouter d'autres types de stratagèmes "Prochainement" ici
+];
 
 // Interface pour les données passées au panneau de stratagème
 export interface StratagemPanelData {
@@ -92,7 +101,39 @@ const BottomMenuBar: React.FC = () => {
         // },
       ]
     },
-    { id: 'alliance', label: 'ALLIANCE', icon: FaHandshake, action: () => console.log('Alliance clicked') },
+    { 
+      id: 'alliance', 
+      label: 'ALLIANCE', 
+      icon: FaHandshake, 
+      subItems: [
+        {
+          id: 'financial_patronage',
+          label: 'Patronage (Soon)',
+          icon: FaHandHoldingUsd, // Ou FaHandshake si FaHandHoldingUsd n'est pas souhaitée/disponible
+          stratagemPanelData: {
+            id: 'financial_patronage',
+            type: 'financial_patronage',
+            title: 'Financial Patronage (Coming Soon)',
+            description: 'Provide comprehensive financial support to promising individuals, struggling families, or loyal allies, creating deep personal bonds and long-term obligations. Costs 25 Influence and ongoing Ducats.',
+            influenceCostBase: 25,
+            hasVariants: false, // Le niveau de patronage est un paramètre, pas une variante de coût d'influence ici
+          }
+        },
+        {
+          id: 'joint_venture', // Assurez-vous que cet ID est unique et correspond à un stratagème existant ou prévu
+          label: 'Joint Venture (Soon)',
+          icon: FaHandshake, // Icône existante
+          stratagemPanelData: {
+            id: 'joint_venture',
+            type: 'joint_venture',
+            title: 'Joint Venture (Coming Soon)',
+            description: 'Propose a formal business partnership with another citizen, defining contributions, responsibilities, and profit-sharing.',
+            influenceCostBase: 20, // Coût d'influence de base
+            hasVariants: false, // Pas de variantes de coût d'influence typiques ici
+          }
+        }
+      ]
+    },
     { 
       id: 'political', 
       label: 'POLITICAL', 
@@ -115,7 +156,26 @@ const BottomMenuBar: React.FC = () => {
       ]
     },
     { id: 'cocontrol', label: 'CONTROL', icon: FaProjectDiagram, action: () => console.log('Control clicked') },
-    { id: 'defensive', label: 'DEFENSIVE', icon: FaShieldAlt, action: () => console.log('Defensive clicked') },
+    { 
+      id: 'defensive', 
+      label: 'DEFENSIVE', 
+      icon: FaShieldAlt, 
+      subItems: [
+        {
+          id: 'neighborhood_watch',
+          label: 'Watch (Soon)',
+          icon: FaUsersShield, // Ou FaShieldAlt si FaUsersShield n'est pas souhaitée/disponible
+          stratagemPanelData: {
+            id: 'neighborhood_watch',
+            type: 'neighborhood_watch',
+            title: 'Neighborhood Watch (Coming Soon)',
+            description: 'Enhance security and reduce crime in a specific district through collective citizen vigilance. Costs 10 Influence.',
+            influenceCostBase: 10,
+            hasVariants: false,
+          }
+        }
+      ]
+    },
     { 
       id: 'economic', 
       label: 'ECONOMIC', 
@@ -252,11 +312,15 @@ const BottomMenuBar: React.FC = () => {
                 eventBus.emit(EventTypes.OPEN_STRATAGEM_PANEL, subItem.stratagemPanelData);
                 setActiveMainMenuId(null); // Ferme le sous-menu après l'action
               }}
-              className="flex flex-col items-center justify-center text-amber-50 hover:text-white hover:bg-amber-600/50 p-1 rounded-sm transition-colors w-20 h-16" // Taille ajustée pour correspondre au menu principal
+              className={`flex flex-col items-center justify-center p-1 rounded-sm transition-colors w-20 h-16 ${
+                comingSoonStratagemTypes.includes(subItem.stratagemPanelData.type)
+                  ? 'text-amber-50 hover:text-white hover:bg-amber-600/50' // Style pour "Coming Soon"
+                  : 'bg-yellow-500 hover:bg-yellow-600 text-black' // Style pour disponible
+              }`}
               title={subItem.label}
             >
-              <subItem.icon className="w-6 h-6 mb-0.5" /> {/* Taille d'icône ajustée */}
-              <span className="text-[10px] font-medium uppercase tracking-normal">{subItem.label}</span> {/* Taille de texte ajustée */}
+              <subItem.icon className="w-6 h-6 mb-0.5" />
+              <span className="text-[10px] font-medium uppercase tracking-normal">{subItem.label}</span>
             </button>
           ))}
         </div>
