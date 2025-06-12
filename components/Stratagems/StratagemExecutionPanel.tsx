@@ -259,8 +259,8 @@ const StratagemExecutionPanel: React.FC<StratagemExecutionPanelProps> = ({
   }
 
   return (
-    <div className="fixed inset-0 bg-black/80 backdrop-blur-sm z-40 flex items-center justify-center p-4 overflow-y-auto">
-      <div className="bg-amber-50/95 text-amber-900 p-6 rounded-lg shadow-2xl w-full max-w-2xl max-h-[90vh] flex flex-col border-2 border-amber-400">
+    <div className="fixed inset-0 bg-black/80 backdrop-blur-sm z-40 flex items-center justify-center p-4 md:p-8 overflow-y-auto">
+      <div className="bg-amber-50/95 text-amber-900 p-6 rounded-lg shadow-2xl w-full h-full flex flex-col border-2 border-amber-400">
         <div className="flex justify-between items-center mb-4">
           <h2 className="text-3xl font-serif text-amber-700">{stratagemData.title}</h2>
           <button onClick={onClose} className="text-amber-600 hover:text-amber-800">
