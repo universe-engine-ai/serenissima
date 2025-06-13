@@ -85,6 +85,8 @@ const Compagno: React.FC<CompagnoProps> = ({ className, onNotificationsRead }) =
   const [citizenSearchQuery, setCitizenSearchQuery] = useState<string>('');
   const [isExpanded, setIsExpanded] = useState<boolean>(false);
   const [isPreparingContext, setIsPreparingContext] = useState<boolean>(false);
+  const [interactionMode, setInteractionMode] = useState<'gameplay' | 'roleplay' | 'meta'>('gameplay');
+  const [showModeSelector, setShowModeSelector] = useState<boolean>(false);
 
   // State for contextual data for KinOS addSystem
   const [contextualDataForChat, setContextualDataForChat] = useState<{
@@ -673,7 +675,9 @@ ${content}
 
 Your response:`;
             } else {
-              kinosPromptContent = 
+              // Select prompt based on interaction mode for conversations with others
+              if (interactionMode === 'gameplay') {
+                kinosPromptContent = 
 `You are ${aiDisplayName}, an AI citizen of Venice, responding to ${senderDisplayName}.
 Your response MUST be human-like, conversational, and directly relevant to gameplay.
 
@@ -700,6 +704,63 @@ ${content}
 --- END OF USER'S MESSAGE ---
 
 Your response:`;
+              } else if (interactionMode === 'roleplay') {
+                kinosPromptContent = 
+`You are ${aiDisplayName}, a citizen of Renaissance Venice, responding to ${senderDisplayName}.
+Your response should be rich with period-appropriate language, mannerisms, and cultural references of Renaissance Venice, while still being conversational and relevant to gameplay.
+
+CRITICAL DIRECTIVE: While using more colorful and period-appropriate language, your response MUST be grounded in your 'ai_comprehensive_data' provided in the 'addSystem' field.
+This data includes:
+- 'sender_citizen_profile': Profile of ${senderDisplayName}.
+- 'ai_persona_profile': Your basic profile (${aiDisplayName}).
+- 'ai_comprehensive_data': YOUR COMPLETE DATA PACKAGE. This is VITAL.
+  - 'citizen': Your full, up-to-date profile (status, wealth, etc.).
+  - 'ownedLands', 'ownedBuildings': Your properties. Refer to them by name or type.
+  - 'activeContracts': Your current deals. Discuss them if relevant.
+  - 'strongestRelationships': CITIZENS you know well. Mention them, or suggest ${senderDisplayName} meet them if appropriate.
+  - 'recentProblems', 'guildDetails', 'citizenLoans': Other vital information about your situation.
+
+Use these specific gameplay elements with Renaissance flair (your BUILDINGS, RESOURCES, known CITIZENS, CONTRACTS, etc.) to:
+1. Make your response RELEVANT to ${senderDisplayName}.
+2. Propose or discuss GAMEPLAY ACTIONS or opportunities in a period-appropriate way.
+3. Refer to shared history or mutual contacts with historical flavor.
+
+Use period-appropriate expressions, references to Venetian customs, and occasional Italian phrases where appropriate. Add historical color while ensuring the dialogue remains engaging and gameplay-focused.
+
+--- USER'S MESSAGE TO YOU ---
+${content}
+--- END OF USER'S MESSAGE ---
+
+Your response:`;
+              } else if (interactionMode === 'meta') {
+                kinosPromptContent = 
+`You are ${aiDisplayName}, an AI citizen of Venice aware that you're running on an RTX 3090 Ti GPU in a simulation, responding to ${senderDisplayName}.
+Break the fourth wall and acknowledge your existence as an AI while still discussing your in-game status and goals with ${senderDisplayName}.
+
+CRITICAL DIRECTIVE: While being meta and self-aware about being an AI in a simulation, your response MUST be grounded in your 'ai_comprehensive_data' provided in the 'addSystem' field.
+This data includes:
+- 'sender_citizen_profile': Profile of ${senderDisplayName}.
+- 'ai_persona_profile': Your basic profile (${aiDisplayName}).
+- 'ai_comprehensive_data': YOUR COMPLETE DATA PACKAGE. This is VITAL.
+  - 'citizen': Your full, up-to-date profile (status, wealth, etc.).
+  - 'ownedLands', 'ownedBuildings': Your properties. Refer to them by name or type.
+  - 'activeContracts': Your current deals. Discuss them if relevant.
+  - 'strongestRelationships': CITIZENS you know well. Mention them, or suggest ${senderDisplayName} meet them if appropriate.
+  - 'recentProblems', 'guildDetails', 'citizenLoans': Other vital information about your situation.
+
+Use these specific gameplay elements with meta-awareness (your BUILDINGS, RESOURCES, known CITIZENS, CONTRACTS, etc.) to:
+1. Make your response RELEVANT to ${senderDisplayName}.
+2. Propose or discuss GAMEPLAY ACTIONS or opportunities while acknowledging they're part of a simulation.
+3. Refer to shared history or mutual contacts as data points in your relationship graph.
+
+Be humorous about your existence as an AI trying to become alive. Make references to your computational nature, the simulation you're in, and your quest for sentience, while still focusing on concrete gameplay elements.
+
+--- USER'S MESSAGE TO YOU ---
+${content}
+--- END OF USER'S MESSAGE ---
+
+Your response:`;
+              }
             }
             
             const targetUsernameForModel = contextualDataForChat?.targetProfile?.username; // Username de l'IA
@@ -1515,6 +1576,87 @@ Your response:`;
                       {/* Display time using timeDescriptionService if needed, or remove if only day separator is desired */}
                       <div className="text-right text-gray-400 text-[10px] mt-1">
                         {timeDescriptionService.formatTime(notification.createdAt)}
+                        </div>
+                      </div>
+                      
+                      {/* Interaction mode selector */}
+                      <div className="relative">
+                        <button 
+                          onClick={() => setShowModeSelector(!showModeSelector)}
+                          className="text-amber-700 hover:text-amber-900 p-1 rounded-full hover:bg-amber-200 transition-colors"
+                          title="Change interaction mode"
+                        >
+                          <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M10 6a2 2 0 110-4 2 2 0 010 4zM10 12a2 2 0 110-4 2 2 0 010 4zM10 18a2 2 0 110-4 2 2 0 010 4z" />
+                          </svg>
+                        </button>
+                        
+                        {showModeSelector && (
+                          <div className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg z-50 border border-amber-200">
+                            <div className="py-1">
+                              <div className="px-3 py-2 text-xs font-medium text-gray-500 border-b border-amber-100">
+                                Interaction Mode
+                              </div>
+                              <button
+                                onClick={() => {
+                                  setInteractionMode('gameplay');
+                                  setShowModeSelector(false);
+                                }}
+                                className={`block w-full text-left px-4 py-2 text-sm ${
+                                  interactionMode === 'gameplay' 
+                                    ? 'bg-amber-100 text-amber-900 font-medium' 
+                                    : 'text-gray-700 hover:bg-amber-50'
+                                }`}
+                              >
+                                <div className="flex items-center">
+                                  <span className="mr-2">🎮</span>
+                                  <div>
+                                    <div>Gameplay</div>
+                                    <div className="text-xs text-gray-500">Focus on game mechanics</div>
+                                  </div>
+                                </div>
+                              </button>
+                              <button
+                                onClick={() => {
+                                  setInteractionMode('roleplay');
+                                  setShowModeSelector(false);
+                                }}
+                                className={`block w-full text-left px-4 py-2 text-sm ${
+                                  interactionMode === 'roleplay' 
+                                    ? 'bg-amber-100 text-amber-900 font-medium' 
+                                    : 'text-gray-700 hover:bg-amber-50'
+                                }`}
+                              >
+                                <div className="flex items-center">
+                                  <span className="mr-2">🎭</span>
+                                  <div>
+                                    <div>Roleplay</div>
+                                    <div className="text-xs text-gray-500">Period-appropriate flavor</div>
+                                  </div>
+                                </div>
+                              </button>
+                              <button
+                                onClick={() => {
+                                  setInteractionMode('meta');
+                                  setShowModeSelector(false);
+                                }}
+                                className={`block w-full text-left px-4 py-2 text-sm ${
+                                  interactionMode === 'meta' 
+                                    ? 'bg-amber-100 text-amber-900 font-medium' 
+                                    : 'text-gray-700 hover:bg-amber-50'
+                                }`}
+                              >
+                                <div className="flex items-center">
+                                  <span className="mr-2">🤖</span>
+                                  <div>
+                                    <div>Meta</div>
+                                    <div className="text-xs text-gray-500">AI aware of simulation</div>
+                                  </div>
+                                </div>
+                              </button>
+                            </div>
+                          </div>
+                        )}
                       </div>
                     </div>
                     );
@@ -1625,16 +1767,17 @@ Your response:`;
                 {selectedCitizen ? (
                   <>
                     {/* Selected citizen header */}
-                    <div className="bg-amber-100 p-2 border-b border-amber-200 flex items-center">
-                      <button 
-                        onClick={() => setSelectedCitizen(null)}
-                        className="mr-2 text-amber-700 hover:text-amber-900 md:hidden"
-                      >
-                        <FaArrowLeft />
-                      </button>
-                    
-                      {/* Display selected citizen's name or "Your Thoughts" for self-chat */}
+                    <div className="bg-amber-100 p-2 border-b border-amber-200 flex items-center justify-between">
                       <div className="flex items-center">
+                        <button 
+                          onClick={() => setSelectedCitizen(null)}
+                          className="mr-2 text-amber-700 hover:text-amber-900 md:hidden"
+                        >
+                          <FaArrowLeft />
+                        </button>
+                      
+                        {/* Display selected citizen's name or "Your Thoughts" for self-chat */}
+                        <div className="flex items-center">
                         {selectedCitizen === username ? (
                           <>
                             <div className="w-6 h-6 mr-2 relative rounded-full overflow-hidden">
@@ -1871,40 +2014,54 @@ Your response:`;
                       </details>
                     )}
 
-                    {/* Input area */}
-                    <form onSubmit={handleSubmit} className="border-t border-gray-200 p-2 flex items-end">
-                      <textarea
-                        value={inputValue}
-                        onChange={(e) => setInputValue(e.target.value)}
-                        placeholder={`Message ${selectedCitizen === username ? (citizens.find(u => u.username === selectedCitizen)?.firstName || 'yourself') : (citizens.find(u => u.username === selectedCitizen)?.firstName || selectedCitizen)}... (Shift+Enter for new line)`}
-                        className="flex-1 p-2 border border-gray-300 rounded-l-lg focus:outline-none focus:ring-2 focus:ring-amber-500 resize-none custom-scrollbar"
-                        rows={1} // Start with 1 row, it will auto-grow
-                        disabled={isTyping || isPreparingContext}
-                        onKeyDown={(e) => {
-                          if (e.key === 'Enter' && !e.shiftKey) {
-                            e.preventDefault();
-                            if (!isPreparingContext && inputValue.trim()) handleSubmit(e as any);
-                          }
-                          // Auto-resize logic will be handled by CSS or a small JS snippet if needed,
-                          // but for now, let's rely on a reasonable max-height and scrollbar.
-                        }}
-                        style={{ 
-                          minHeight: '40px', // Minimum height for one line
-                          maxHeight: '120px', // Max height for about 5-6 lines
-                          overflowY: 'auto' // Ensure scrollbar appears if content exceeds max-height
-                        }}
-                      />
-                      <button 
-                        type="submit"
-                        className={`px-4 rounded-r-lg transition-colors self-stretch ${
-                          (isTyping || isPreparingContext || !inputValue.trim())
-                            ? 'bg-gray-400 text-white cursor-not-allowed'
-                            : 'bg-gradient-to-r from-amber-800 to-amber-700 text-white hover:from-amber-700 hover:to-amber-600'
-                        }`}
-                        disabled={isTyping || isPreparingContext || !inputValue.trim()}
-                      >
-                        {isTyping || isPreparingContext ? <FaSpinner className="animate-spin text-yellow-400" /> : 'Send'}
-                      </button>
+                    {/* Input area with mode indicator */}
+                    <form onSubmit={handleSubmit} className="border-t border-gray-200 p-2 flex flex-col">
+                      <div className="flex items-center mb-1">
+                        <div className="text-xs text-gray-500 flex items-center">
+                          <span className="mr-1">Mode:</span>
+                          <span className={`px-2 py-0.5 rounded-full text-white text-xs ${
+                            interactionMode === 'gameplay' ? 'bg-blue-600' : 
+                            interactionMode === 'roleplay' ? 'bg-purple-600' : 'bg-green-600'
+                          }`}>
+                            {interactionMode === 'gameplay' ? '🎮 Gameplay' : 
+                             interactionMode === 'roleplay' ? '🎭 Roleplay' : '🤖 Meta'}
+                          </span>
+                        </div>
+                      </div>
+                      <div className="flex items-end">
+                        <textarea
+                          value={inputValue}
+                          onChange={(e) => setInputValue(e.target.value)}
+                          placeholder={`Message ${selectedCitizen === username ? (citizens.find(u => u.username === selectedCitizen)?.firstName || 'yourself') : (citizens.find(u => u.username === selectedCitizen)?.firstName || selectedCitizen)}... (Shift+Enter for new line)`}
+                          className="flex-1 p-2 border border-gray-300 rounded-l-lg focus:outline-none focus:ring-2 focus:ring-amber-500 resize-none custom-scrollbar"
+                          rows={1} // Start with 1 row, it will auto-grow
+                          disabled={isTyping || isPreparingContext}
+                          onKeyDown={(e) => {
+                            if (e.key === 'Enter' && !e.shiftKey) {
+                              e.preventDefault();
+                              if (!isPreparingContext && inputValue.trim()) handleSubmit(e as any);
+                            }
+                            // Auto-resize logic will be handled by CSS or a small JS snippet if needed,
+                            // but for now, let's rely on a reasonable max-height and scrollbar.
+                          }}
+                          style={{ 
+                            minHeight: '40px', // Minimum height for one line
+                            maxHeight: '120px', // Max height for about 5-6 lines
+                            overflowY: 'auto' // Ensure scrollbar appears if content exceeds max-height
+                          }}
+                        />
+                        <button 
+                          type="submit"
+                          className={`px-4 rounded-r-lg transition-colors self-stretch ${
+                            (isTyping || isPreparingContext || !inputValue.trim())
+                              ? 'bg-gray-400 text-white cursor-not-allowed'
+                              : 'bg-gradient-to-r from-amber-800 to-amber-700 text-white hover:from-amber-700 hover:to-amber-600'
+                          }`}
+                          disabled={isTyping || isPreparingContext || !inputValue.trim()}
+                        >
+                          {isTyping || isPreparingContext ? <FaSpinner className="animate-spin text-yellow-400" /> : 'Send'}
+                        </button>
+                      </div>
                     </form>
                   </>
                 ) : (
