@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback, useMemo } from 'react';
+import { useState, useEffect, useCallback, useMemo, useRef } from 'react';
 import { buildingPointsService } from '@/lib/services/BuildingPointsService'; // For position lookup if needed
 import { hoverStateService } from '@/lib/services/HoverStateService';
 import { eventBus, EventTypes } from '@/lib/utils/eventBus';
@@ -21,6 +21,9 @@ interface BuildingMarkersProps {
   // citizens: Record<string, any>; // Prop for citizens data if needed for other purposes
 }
 
+// Constante pour définir le seuil de zoom à partir duquel on affiche les intérieurs
+const INTERIOR_VIEW_ZOOM_THRESHOLD = 14.0;
+
 export default function BuildingMarkers({
   isVisible,
   scale,
@@ -38,10 +41,28 @@ export default function BuildingMarkers({
 }: BuildingMarkersProps) {
   const [buildings, setBuildings] = useState<any[]>(initialBuildings);
   const [hoveredBuildingId, setHoveredBuildingId] = useState<string | null>(null);
+  const [showInteriors, setShowInteriors] = useState<boolean>(false);
+  const [interiorImageCache, setInteriorImageCache] = useState<Record<string, { loaded: boolean, url: string }>>({});
+  const prevScaleRef = useRef<number>(scale);
 
   useEffect(() => {
     setBuildings(initialBuildings);
   }, [initialBuildings]);
+  
+  // Effet pour détecter quand le zoom dépasse le seuil pour afficher les intérieurs
+  useEffect(() => {
+    const isMaxZoom = scale >= INTERIOR_VIEW_ZOOM_THRESHOLD;
+    
+    // Si on vient de dépasser le seuil (dans un sens ou dans l'autre)
+    if (isMaxZoom !== showInteriors) {
+      // Petit délai pour permettre une transition fluide
+      setTimeout(() => {
+        setShowInteriors(isMaxZoom);
+      }, 100);
+    }
+    
+    prevScaleRef.current = scale;
+  }, [scale, showInteriors]);
   
   const currentCitizen = getCurrentCitizenIdentifier();
 
@@ -168,6 +189,45 @@ export default function BuildingMarkers({
         const iconUrl = `https://backend.serenissima.ai/public_assets/images/buildings/icons/${iconType}.png`;
         const defaultIconUrl = 'https://backend.serenissima.ai/public_assets/images/buildings/icons/default.png';
 
+        // Préparer les URLs pour les images d'icône et d'intérieur
+        const iconType = building.type ? building.type.toLowerCase().replace(/\s+/g, '_') : 'default';
+        const iconUrl = `https://backend.serenissima.ai/public_assets/images/buildings/icons/${iconType}.png`;
+        const defaultIconUrl = 'https://backend.serenissima.ai/public_assets/images/buildings/icons/default.png';
+          
+        // URL pour l'image d'intérieur
+        const interiorUrl = `/images/interiors/${iconType}.png`;
+        const defaultInteriorUrl = '/images/interiors/default.png';
+          
+        // Vérifier si l'image d'intérieur est dans le cache
+        if (!interiorImageCache[iconType]) {
+          // Ajouter au cache avec un état initial
+          setInteriorImageCache(prev => ({
+            ...prev,
+            [iconType]: { loaded: false, url: interiorUrl }
+          }));
+            
+          // Précharger l'image d'intérieur
+          const img = new Image();
+          img.onload = () => {
+            setInteriorImageCache(prev => ({
+              ...prev,
+              [iconType]: { loaded: true, url: interiorUrl }
+            }));
+          };
+          img.onerror = () => {
+            setInteriorImageCache(prev => ({
+              ...prev,
+              [iconType]: { loaded: true, url: defaultInteriorUrl }
+            }));
+          };
+          img.src = interiorUrl;
+        }
+          
+        // Déterminer quelle image afficher
+        const displayUrl = showInteriors 
+          ? (interiorImageCache[iconType]?.loaded ? interiorImageCache[iconType].url : iconUrl) 
+          : iconUrl;
+          
         return (
           <div
             key={building.id}
@@ -206,18 +266,36 @@ export default function BuildingMarkers({
                 overflow: 'hidden', // Ensures the image is clipped by the borderRadius
               }}
             >
-              <img
-                src={iconUrl}
-                alt={building.name || building.type}
-                style={{
-                  width: '100%', // Icon takes full width of its padded container
-                  height: '100%', // Icon takes full height of its padded container
-                  objectFit: 'contain', 
-                }}
-                onError={(e) => {
-                  (e.target as HTMLImageElement).src = defaultIconUrl;
-                }}
-              />
+              {/* Utiliser une div avec deux images pour permettre la transition */}
+              <div className="relative w-full h-full">
+                {/* Image d'icône (toujours présente) */}
+                <img
+                  src={iconUrl}
+                  alt={building.name || building.type}
+                  className="absolute inset-0 w-full h-full object-contain transition-opacity duration-300"
+                  style={{
+                    opacity: showInteriors && interiorImageCache[iconType]?.loaded ? 0 : 1,
+                  }}
+                  onError={(e) => {
+                    (e.target as HTMLImageElement).src = defaultIconUrl;
+                  }}
+                />
+                  
+                {/* Image d'intérieur (visible uniquement au zoom max) */}
+                {interiorImageCache[iconType]?.loaded && (
+                  <img
+                    src={interiorImageCache[iconType].url}
+                    alt={`Interior of ${building.name || building.type}`}
+                    className="absolute inset-0 w-full h-full object-contain transition-opacity duration-300"
+                    style={{
+                      opacity: showInteriors ? 1 : 0,
+                    }}
+                    onError={(e) => {
+                      (e.target as HTMLImageElement).src = defaultInteriorUrl;
+                    }}
+                  />
+                )}
+              </div>
             </div>
           </div>
         );
