@@ -1,5 +1,34 @@
 # Relevancy System Documentation
 
+# Memory Structures for Citizens in La Serenissima
+
+### Citizen Profile Memory Structure
+- `citizenId`
+- `socialClass`
+- `firstName`, `lastName`
+- `imagePrompt` (string)
+- `position`: { lat, lng }
+- `ducats`: number
+- `description`: string
+- `influence`: number
+- `updatedAt`: string
+
+### Daily Log Entries Structure
+
+We've added a new field to store daily journal entries:
+
+```json
+{
+  "date": "2025-MM-DD",
+  "type": "thought_journal", 
+  "content": {
+    "receiver": string,
+    "notes": string,
+    "actionPlan": array // or object, but initially we'll keep it as an example
+  }
+}
+```
+
 ## Overview
 
 The Relevancy System calculates how relevant different assets (lands, buildings, resources) are to AI citizens. This helps AIs make more strategic decisions by prioritizing assets that are most valuable to their specific situation.
