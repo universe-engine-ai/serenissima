@@ -2093,9 +2093,9 @@ number => {
       e.preventDefault();
       const delta = e.deltaY * -0.01;
       // Change the minimum zoom to 1.0 to allow one more level of unzoom
-      // Keep the maximum zoom at 10.8
+      // Increase the maximum zoom to 16.2 to allow three more levels of zoom
       setScale(prevScale => {
-        const newScale = Math.max(1.0, Math.min(10.8, prevScale + delta));
+        const newScale = Math.max(1.0, Math.min(16.2, prevScale + delta));
         
         // Only trigger a redraw if the scale changed significantly
         if (Math.abs(newScale - prevScale) > 0.05) {
@@ -2107,9 +2107,9 @@ number => {
           });
         
           // Update ambient audio manager with new zoom level
-          // Map scale (1.0 to 10.8) to zoomPercent (0 to 100)
+          // Map scale (1.0 to 16.2) to zoomPercent (0 to 100)
           const minScale = 1.0;
-          const maxScale = 10.8;
+          const maxScale = 16.2;
           const zoomPercent = ((newScale - minScale) / (maxScale - minScale)) * 100;
           ambientAudioManager.updateZoom(Math.max(0, Math.min(100, zoomPercent)));
         }
