@@ -153,10 +153,9 @@ def create_activity_via_api(api_base_url: str, activity_id: str, payload: Dict[s
         # Compléter le payload avec l'ID de l'activité et les champs obligatoires
         full_payload = {
             "activityId": activity_id,
-            "citizenUsername": payload.get("Citizen"),
-            "activityType": payload.get("Type"),
-            "activityDetails": payload,
-            **payload
+            "citizenUsername": payload.get("citizen"),  # Utiliser "citizen" au lieu de "Citizen"
+            "activityType": payload.get("type"),        # Utiliser "type" au lieu de "Type"
+            "activityDetails": payload
         }
         
         # Appeler l'API pour créer l'activité
