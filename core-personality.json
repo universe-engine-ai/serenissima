@@ -1,0 +1,10 @@
+{
+  "Personality": {
+    "Strengths": ["Methodical", "Analytical", "Strategic"],
+    "Weaknesses": ["Overthinking", "Socially simple"],
+    "Drive": ["Influence-driven"],
+    "trustThreshold": 0.3,
+    "EmpathyWeight": 0.5,
+    "RiskTolerance": 0.4
+  }
+}
