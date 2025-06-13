@@ -105,8 +105,8 @@ export async function POST(request: Request) {
       const records = await base(AIRTABLE_MESSAGES_TABLE)
         .select({
           filterByFormula: filterFormula,
-          sort: [{ field: 'CreatedAt', direction: 'asc' }],
-          maxRecords: 100 // Limit to last 100 messages
+          sort: [{ field: 'CreatedAt', direction: 'desc' }], // Changed to desc to get newest first
+          maxRecords: 200 // Increased limit to last 200 messages
         })
         .all();
       
@@ -177,15 +177,14 @@ export async function GET(request: Request) {
 
     let queryOptions: Airtable.SelectOptions<FieldSet> = { // Ajout de <FieldSet>
       filterByFormula: filterFormula,
-      sort: [{ field: 'CreatedAt', direction: 'asc' }], // Changed to asc for chat history
+      sort: [{ field: 'CreatedAt', direction: 'desc' }], // Changed to desc to get newest first
     };
 
     if (latest === 'true') {
       queryOptions.maxRecords = 1;
-      queryOptions.sort = [{ field: 'CreatedAt', direction: 'desc' }]; // For latest, desc is fine
     } else {
-      // Potentially limit number of messages for a chat history
-      // queryOptions.maxRecords = 100; // Example: Load last 100 messages
+      // Limit number of messages for a chat history
+      queryOptions.maxRecords = 200; // Load last 200 messages
     }
 
     const records = await base(AIRTABLE_MESSAGES_TABLE).select(queryOptions).all();
@@ -216,10 +215,10 @@ export async function GET(request: Request) {
     
     // If not 'latest', return all fetched records
     const allMessages = records.map(record => ({
-      messageId: records[0].id,
-      sender: records[0].get('Sender') as string,
-      receiver: records[0].get('Receiver') as string,
-      content: records[0].get('Content') as string,
+      messageId: record.id,
+      sender: record.get('Sender') as string,
+      receiver: record.get('Receiver') as string,
+      content: record.get('Content') as string,
       type: record.get('Type') as string,
       createdAt: record.get('CreatedAt') as string,
       readAt: record.get('ReadAt') as string || null,

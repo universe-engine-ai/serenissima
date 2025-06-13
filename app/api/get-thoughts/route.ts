@@ -1,34 +1,4 @@
 import { NextResponse } from 'next/server';
-import Airtable, { FieldSet, Records } from 'airtable';
-
-// Initialize Airtable client
-const AIRTABLE_API_KEY = process.env.AIRTABLE_API_KEY;
-const AIRTABLE_BASE_ID = process.env.AIRTABLE_BASE_ID;
-const AIRTABLE_MESSAGES_TABLE = process.env.AIRTABLE_MESSAGES_TABLE || 'MESSAGES';
-
-if (!AIRTABLE_API_KEY || !AIRTABLE_BASE_ID) {
-  throw new Error('Airtable API key or Base ID is not configured in environment variables.');
-}
-
-const airtableBase = new Airtable({ apiKey: AIRTABLE_API_KEY, requestTimeout: 60000 }).base(AIRTABLE_BASE_ID); // Increased timeout to 60s
-const messagesTable = airtableBase(AIRTABLE_MESSAGES_TABLE);
-
-interface AirtableMessageRecord extends FieldSet {
-  MessageId: string;
-  Sender: string; // Assuming Sender stores Username directly as string
-  Receiver: string; // Changed from Recipient
-  Content: string;
-  Type: string;
-  CreatedAt: string;
-}
-
-interface Thought {
-  messageId: string;
-  citizenUsername: string;
-  originalContent: string;
-  mainThought: string;
-  createdAt: string;
-}
 
 // Helper function to extract main thought
 function extractMainThought(content: string): string {
@@ -88,7 +58,6 @@ function extractMainThought(content: string): string {
     potentialThoughts.push(content.trim());
   }
 
-
   if (potentialThoughts.length > 0) {
     // If we have any potential thoughts (e.g. original bold, or any other sentence)
     // pick one at random from the collected ones.
@@ -101,48 +70,50 @@ function extractMainThought(content: string): string {
 
 export async function GET() {
   try {
-    console.log('[API GetThoughts] Fetching thoughts...');
+    console.log('[API GetThoughts] Fetching thoughts from messages API...');
 
-    const twentyFourHoursAgo = new Date(Date.now() - 24 * 60 * 60 * 1000).toISOString();
+    // Use the messages API to fetch the last 200 messages
+    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000';
+    const response = await fetch(`${baseUrl}/api/messages`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
 
-    const records: Records<FieldSet> = await messagesTable
-      .select({
-        // Filter for various thought-like types and created in the last 24 hours
-        filterByFormula: `AND(OR(
-          {Type} = 'thought_log', 
-          {Type} = 'unguided_run_log', 
-          {Type} = 'autonomous_run_log',
-          {Type} = 'encounter_reflection',
-          {Type} = 'ai_initiative_reasoning',
-          {Type} = 'kinos_daily_reflection',
-          {Type} = 'kinos_theater_reflection',
-          {Type} = 'kinos_public_bath_reflection'
-        ), IS_AFTER({CreatedAt}, '${twentyFourHoursAgo}'))`,
-        fields: ['MessageId', 'Sender', 'Receiver', 'Content', 'Type', 'CreatedAt'], // Changed Recipient to Receiver
-        sort: [{ field: 'CreatedAt', direction: 'desc' }],
-      })
-      .all();
-
-    console.log(`[API GetThoughts] Fetched ${records.length} relevant log records from the last 24 hours.`);
-
-    const thoughts: Thought[] = [];
-
-    for (const record of records) {
-      const fields = record.fields as AirtableMessageRecord; // Assert type here
-
-      // Removed filter for Sender === Recipient
-      // Now processes all 'thought_log' messages from the last 24 hours
-      if (fields.Content && fields.Sender) { // Ensure Content and Sender exist
-        const mainThought = extractMainThought(fields.Content);
-        thoughts.push({
-          messageId: fields.MessageId || record.id, // Use MessageId if available, else Airtable record ID
-          citizenUsername: fields.Sender, // Sender is the citizen who had the thought
-          originalContent: fields.Content,
-          mainThought: mainThought,
-          createdAt: fields.CreatedAt,
-        });
-      }
+    if (!response.ok) {
+      throw new Error(`Failed to fetch messages: ${response.status} ${response.statusText}`);
     }
+
+    const data = await response.json();
+    
+    if (!data.success || !data.messages) {
+      throw new Error('Invalid response from messages API');
+    }
+
+    console.log(`[API GetThoughts] Fetched ${data.messages.length} messages`);
+
+    // Filter for thought-like message types
+    const thoughtTypes = [
+      'thought_log', 
+      'unguided_run_log', 
+      'autonomous_run_log',
+      'encounter_reflection',
+      'ai_initiative_reasoning',
+      'kinos_daily_reflection',
+      'kinos_theater_reflection',
+      'kinos_public_bath_reflection'
+    ];
+
+    const thoughts = data.messages
+      .filter((message: any) => thoughtTypes.includes(message.type))
+      .map((message: any) => ({
+        messageId: message.messageId,
+        citizenUsername: message.sender,
+        originalContent: message.content,
+        mainThought: extractMainThought(message.content),
+        createdAt: message.createdAt
+      }));
 
     console.log(`[API GetThoughts] Processed ${thoughts.length} thoughts.`);
 
