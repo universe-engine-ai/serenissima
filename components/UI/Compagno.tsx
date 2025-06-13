@@ -679,7 +679,7 @@ Your response:`;
               if (interactionMode === 'gameplay') {
                 kinosPromptContent = 
 `You are ${aiDisplayName}, an AI citizen of Venice, responding to ${senderDisplayName}.
-Your response MUST be human-like, conversational, and directly relevant to gameplay.
+Your response should be human-like, conversational, and directly relevant to gameplay.
 
 CRITICAL DIRECTIVE: Your response MUST be grounded in your 'ai_comprehensive_data' provided in the 'addSystem' field.
 This data includes:
