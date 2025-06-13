@@ -9,6 +9,7 @@ export interface AnimatedCitizen {
   currentPath: ActivityPath | null;
   progress: number;
   speed: number; // meters per second
+  displayPosition?: {lat: number, lng: number}; // For citizens with null activity paths
 }
 
 export class CitizenAnimationService {
@@ -35,6 +36,20 @@ export class CitizenAnimationService {
     
     Object.keys(this.animatedCitizens).forEach(citizenId => {
       const citizen = this.animatedCitizens[citizenId];
+      
+      // Handle citizens with displayPosition but no path
+      if (citizen.displayPosition && (!citizen.currentPath || !citizen.currentPath.path || citizen.currentPath.path.length < 2)) {
+        // Make sure the citizen is at their display position
+        if (citizen.currentPosition.lat !== citizen.displayPosition.lat || 
+            citizen.currentPosition.lng !== citizen.displayPosition.lng) {
+          this.animatedCitizens[citizenId] = {
+            ...citizen,
+            currentPosition: { ...citizen.displayPosition }
+          };
+          hasChanges = true;
+        }
+        return; // Skip the rest of the processing for this citizen
+      }
       
       // Skip if no current path
       if (!citizen.currentPath || !citizen.currentPath.path || citizen.currentPath.path.length < 2) return;
@@ -115,6 +130,7 @@ export class CitizenAnimationService {
   ): Record<string, AnimatedCitizen> {
     const initialAnimatedCitizens: Record<string, AnimatedCitizen> = {};
     
+    // First, process citizens with activity paths
     Object.entries(activityPaths).forEach(([citizenId, paths]) => {
       if (paths.length === 0) return;
       
@@ -195,6 +211,42 @@ export class CitizenAnimationService {
         currentPath: selectedPath,
         progress: initialProgress,
         speed
+      };
+    });
+    
+    // Now process citizens without activity paths - give them random positions
+    citizens.forEach(citizen => {
+      const citizenId = citizen.username || citizen.citizenid || citizen.CitizenId || citizen.id;
+      if (!citizenId) return;
+      
+      // Skip citizens that already have activity paths
+      if (initialAnimatedCitizens[citizenId]) return;
+      
+      // Skip citizens without a valid position
+      if (!citizen.position || typeof citizen.position.lat !== 'number' || typeof citizen.position.lng !== 'number') return;
+      
+      // Generate a random position within 50x50m of their position
+      const basePosition = { ...citizen.position };
+      
+      // Generate a random offset within a 50x50m square
+      // 0.0005 degrees is approximately 50 meters at the equator
+      const randomLat = (Math.random() - 0.5) * 0.0005;
+      const randomLng = (Math.random() - 0.5) * 0.0005;
+      
+      const displayPosition = {
+        lat: basePosition.lat + randomLat,
+        lng: basePosition.lng + randomLng
+      };
+      
+      // Add to animated citizens with the random position
+      initialAnimatedCitizens[citizenId] = {
+        citizen,
+        currentPosition: displayPosition, // Use displayPosition as the initial position
+        pathIndex: 0,
+        currentPath: null,
+        progress: 0,
+        speed: 1 + Math.random() * 2, // Random speed for citizens without paths
+        displayPosition: displayPosition
       };
     });
     
