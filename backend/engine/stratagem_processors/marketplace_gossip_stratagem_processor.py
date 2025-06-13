@@ -150,14 +150,17 @@ def create_activity_via_api(api_base_url: str, activity_id: str, payload: Dict[s
         bool: True si l'activité a été créée avec succès, False sinon
     """
     try:
-        # Compléter le payload avec l'ID de l'activité
+        # Compléter le payload avec l'ID de l'activité et les champs obligatoires
         full_payload = {
             "activityId": activity_id,
+            "citizenUsername": payload.get("Citizen"),
+            "activityType": payload.get("Type"),
+            "activityDetails": payload,
             **payload
         }
         
         # Appeler l'API pour créer l'activité
-        # L'URL correcte est /api/activities/create (sans /v1)
+        # L'URL correcte est /api/activities/try-create
         response = requests.post(
             f"{api_base_url}/api/activities/try-create",
             json=full_payload,
