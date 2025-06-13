@@ -10,7 +10,6 @@ LIFETIME_DATA = {
   "bricks": {"lifetimeHours": None, "consumptionHours": None},
   "building_materials": {"lifetimeHours": None, "consumptionHours": None},
   "clay": {"lifetimeHours": None, "consumptionHours": None},
-  "criminal_contacts": {"lifetimeHours": None, "consumptionHours": None},
   "cut_stone": {"lifetimeHours": None, "consumptionHours": None},
   "disguise_materials": {"lifetimeHours": 117, "consumptionHours": 10},
   "dyed_textiles": {"lifetimeHours": 584, "consumptionHours": 117},

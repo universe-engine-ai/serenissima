@@ -1,8 +1,8 @@
 {
   "name": "Public Bath",
   "pointType": "building",
-  "category": "Public & Government",
-  "subCategory": "Health & Safety",
+  "category": "business",
+  "subCategory": "",
   "size": 1,
   "unlockCondition": "3,000,000 ducats, Health Office approval",
   "calculationsAnalysis": "The Public Bath balances basic health infrastructure with modest service fees. The construction cost of 2,000,000 ducats reflects the specialized water and heating systems required, while the income of 15,000 ducats (0.75% return) represents modest usage fees. The maintenance cost of 17,500 ducats exceeds income, creating a realistic scenario where public hygiene facilities required subsidy but provided essential health benefits. The employment capacity of 10 represents the attendants and maintenance staff needed. The construction time of 5 days (432000000ms) reflects the specialized construction requirements. This building creates an accessible investment in public health that improves population wellbeing and disease resistance, reflecting Venice's historically advanced approach to public hygiene compared to other European cities of the era.",

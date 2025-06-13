@@ -30,8 +30,7 @@
       "smuggler_maps",
       "forgery_tools",
       "disguise_materials",
-      "poison_components",
-      "criminal_contacts"
+      "poison_components"
     ],
     "sells": [
       "blackmail_evidence",

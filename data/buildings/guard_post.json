@@ -39,15 +39,13 @@
     "Arti": [],
     "storageCapacity": 50,
     "stores": [
-      "criminal_contacts",
       "blackmail_evidence",
       "smuggler_maps",
       "weapons",
       "porter_equipment"
     ],
     "sells": [
-      "blackmail_evidence",
-      "criminal_contacts"
+      "blackmail_evidence"
     ]
   },
   "buildTier": 1,

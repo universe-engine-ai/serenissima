@@ -21,27 +21,6 @@
     "Arti": [
     {
       "inputs": {
-        "paper": 3,
-        "criminal_contacts": 1
-      },
-      "outputs": {
-        "smuggler_maps": 2
-      },
-      "craftMinutes": 120
-    },
-    {
-      "inputs": {
-        "paper": 5,
-        "criminal_contacts": 1,
-        "gold": 1
-      },
-      "outputs": {
-        "blackmail_evidence": 1
-      },
-      "craftMinutes": 240
-    },
-    {
-      "inputs": {
         "tools": 1,
         "paper": 2,
         "dyestuffs": 1
@@ -56,7 +35,6 @@
     "stores": [
       "maps",
       "banking_services",
-      "criminal_contacts",
       "paper",
       "smuggler_maps",
       "blackmail_evidence",

@@ -137,15 +137,15 @@ def run_script(script_path: str, citizen_username: Optional[str] = None, activit
         if citizen_username:
             command.extend(["--citizen", citizen_username])
             log_context = f"for citizen '{citizen_username}'"
-        # No --ActivityId for createActivities.py
+        # No --activityId for createActivities.py
     elif script_name == "processAllActivitiesNow.py":
         if activity_id_param:
-            command.extend(["--ActivityId", activity_id_param])
-            log_context = f"for ActivityId '{activity_id_param}'"
-        # No --citizen for processAllActivitiesNow.py as it processes based on its internal query or --ActivityId
+            command.extend(["--activityId", activity_id_param])
+            log_context = f"for activityId '{activity_id_param}'"
+        # No --citizen for processAllActivitiesNow.py as it processes based on its internal query or --activityId
     else: # Fallback for other potential scripts
         if citizen_username: command.extend(["--citizen", citizen_username])
-        if activity_id_param: command.extend(["--ActivityId", activity_id_param])
+        if activity_id_param: command.extend(["--activityId", activity_id_param])
         log_context = f"with citizen='{citizen_username}', activityId='{activity_id_param}'"
     
     log.info(f"{LogColors.OKBLUE}Running {script_name} {log_context}... Command: {' '.join(command)}{LogColors.ENDC}")
@@ -279,9 +279,9 @@ def main():
                     log.warning(f"Activity {activity_record['id']} missing ActivityId. Skipping.")
                     continue
 
-                log.info(f"Calling processAllActivitiesNow.py for ActivityId: {activity_id_custom} (Type: {activity_type_log})...")
+                log.info(f"Calling processAllActivitiesNow.py for activityId: {activity_id_custom} (Type: {activity_type_log})...")
                 if not run_script(process_all_activities_path, activity_id_param=activity_id_custom):
-                    log.error(f"{LogColors.FAIL}processAllActivitiesNow.py failed for ActivityId {activity_id_custom}. Stopping BuildFast.{LogColors.ENDC}")
+                    log.error(f"{LogColors.FAIL}processAllActivitiesNow.py failed for activityId {activity_id_custom}. Stopping BuildFast.{LogColors.ENDC}")
                     iteration_failed_flag = True
                     break 
                 

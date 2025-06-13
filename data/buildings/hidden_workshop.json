@@ -52,8 +52,7 @@
     },
     {
       "inputs": {
-        "paper": 2,
-        "criminal_contacts": 1
+        "paper": 2
       },
       "outputs": {
         "smuggler_maps": 3
@@ -80,8 +79,7 @@
       "forgery_tools",
       "disguise_materials",
       "smuggler_maps",
-      "blackmail_evidence",
-      "criminal_contacts"
+      "blackmail_evidence"
     ],
     "sells": [
       "poison_components",

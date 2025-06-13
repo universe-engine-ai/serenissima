@@ -41,7 +41,6 @@
     "Arti": [],
     "storageCapacity": 75,
     "stores": [
-      "criminal_contacts",
       "blackmail_evidence",
       "smuggler_maps",
       "rags",
@@ -52,12 +51,7 @@
       "weapons",
       "poison_components"
     ],
-    "sells": [
-      "smuggler_maps",
-      "forgery_tools",
-      "weapons",
-      "blackmail_evidence"
-    ]
+    "sells": []
   },
   "buildTier": 3,
   "workTier": 2,

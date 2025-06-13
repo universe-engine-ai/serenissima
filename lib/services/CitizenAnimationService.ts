@@ -253,10 +253,10 @@ export class CitizenAnimationService {
       // Create a seeded random generator using the citizen's username
       const random = seededRandom(citizenId);
       
-      // Generate a deterministic offset within a 35x35m square
-      // 0.0005 degrees is approximately 35 meters at the equator
-      const randomLat = (random() - 0.5) * 0.00035;
-      const randomLng = (random() - 0.5) * 0.00035;
+      // Generate a deterministic offset within a 18x10m square
+      // 0.0005 degrees is approximately 50 meters at the equator
+      const randomLat = (random() - 0.5) * 0.00010;
+      const randomLng = (random() - 0.5) * 0.00018;
       
       const displayPosition = {
         lat: basePosition.lat + randomLat,

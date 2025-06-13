@@ -2,7 +2,7 @@
   "name": "Art Gallery",
   "pointType": "building",
   "category": "business",
-  "subCategory": "art",
+  "subCategory": "retail_goods",
   "size": 2,
  "calculationsAnalysis": "The Art Gallery balances cultural curation with commercial viability in Venice's art market. The construction cost of 6,000,000 ducats reflects specialized exhibition spaces, climate control, and security systems required for valuable artworks. The income of 35,000 ducats (0.58% return) represents commissions from art sales (20-30%), exhibition fees from artists, and private event hosting. The maintenance cost of 40,000 ducats exceeds income, creating a realistic scenario where cultural institutions require patronage or must carefully curate high-value exhibitions to remain profitable. The employment capacity of 25 represents curators, gallery assistants, security staff, and art handlers. The construction time of 14 days reflects the specialized requirements for proper lighting, wall systems, and climate control. This building creates a strategic cultural hub that connects artists with collectors, enhances Venice's artistic reputation, and provides a marketplace for the emerging art economy.",
  "shortDescription": "Professional exhibition space for displaying and selling paintings, sculptures, and fine arts.",

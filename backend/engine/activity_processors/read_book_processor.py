@@ -153,7 +153,7 @@ def process_read_book_fn(
             log.info(f"  Book '{book_title}' does not have a specific KinOS path in activity notes. Reflection will be more general.")
 
         # 3. Construct KinOS /build request
-        kinos_build_url = f"{KINOS_API_URL}/v2/blueprints/{KINOS_BLUEPRINT}/kins/{citizen_username}/build"
+        kinos_build_url = f"{KINOS_API_URL}/v2/blueprints/{KINOS_BLUEPRINT}/kins/{citizen_username}/messages"
         
         # Updated KinOS prompt to reflect new addSystem structure
         kinos_prompt = (

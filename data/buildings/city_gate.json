@@ -45,13 +45,11 @@
       "weapons",
       "tools",
       "wine",
-      "criminal_contacts",
       "blackmail_evidence",
       "smuggler_maps",
       "salt"
     ],
     "sells": [
-      "criminal_contacts",
       "blackmail_evidence",
       "smuggler_maps"
     ]

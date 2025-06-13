@@ -64,7 +64,6 @@ bread
 bricks
 building_materials
 clay
-criminal_contacts
 cut_stone
 disguise_materials
 dyed_textiles

@@ -51,31 +51,6 @@
     ],
     "sells": []
   },
-  "soundDesign": {
-    "ambientSound": "Large scale construction planning, material organization, distant hammering and sawing",
-    "activitySounds": "Cranes moving materials, architects discussing plans, workers receiving instructions",
-    "musicTheme": "Costruzione Monumentale"
-  },
-  "seasonalEffects": {
-    "winter": "Slower outdoor material handling, focus on indoor prefabrication and planning",
-    "construction_season": "Peak activity, continuous material flow and project dispatch"
-  },
-  "aiInteractionPoints": [
-    "Material receiving yards",
-    "Architectural design office",
-    "Project planning hall",
-    "Prefabrication workshops",
-    "Tool and equipment storage",
-    "Master builder's office"
-  ],
-  "assets": {
-    "models": "/assets/buildings/models/master_builders_workshop",
-    "variants": [
-      "model"
-    ],
-    "textures": "/assets/buildings/textures/master_builders_workshop/",
-    "thumbnail": "/assets/buildings/thumbnails/master_builders_workshop.png"
-  },
   "buildTier": 4,
   "workTier": 4,
   "consumeTier": 0,

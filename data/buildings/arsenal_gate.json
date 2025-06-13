@@ -50,14 +50,12 @@
       "timber",
       "iron_fittings",
       "rope",
-      "criminal_contacts",
       "sailcloth",
       "war_galley"
     ],
     "sells": [
       "weapons",
-      "smuggler_maps",
-      "criminal_contacts"
+      "smuggler_maps"
     ]
   },
   "buildTier": 4,

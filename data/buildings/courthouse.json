@@ -43,7 +43,6 @@
     "stores": [
       "paper",
       "blackmail_evidence",
-      "criminal_contacts",
       "smuggler_maps",
       "forgery_tools"
     ],
