@@ -225,13 +225,13 @@ export class CitizenAnimationService {
       // Skip citizens without a valid position
       if (!citizen.position || typeof citizen.position.lat !== 'number' || typeof citizen.position.lng !== 'number') return;
       
-      // Generate a random position within 50x50m of their position
+      // Generate a random position within 35x35m of their position
       const basePosition = { ...citizen.position };
       
-      // Generate a random offset within a 50x50m square
-      // 0.0005 degrees is approximately 50 meters at the equator
-      const randomLat = (Math.random() - 0.5) * 0.0005;
-      const randomLng = (Math.random() - 0.5) * 0.0005;
+      // Generate a random offset within a 35x35m square
+      // 0.0005 degrees is approximately 35 meters at the equator
+      const randomLat = (Math.random() - 0.5) * 0.00035;
+      const randomLng = (Math.random() - 0.5) * 0.00035;
       
       const displayPosition = {
         lat: basePosition.lat + randomLat,
