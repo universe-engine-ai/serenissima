@@ -27,6 +27,15 @@ const StratagemExecutionPanel: React.FC<StratagemExecutionPanelProps> = ({
   const currentUserUsername = citizenProfile?.username;
 
   const [citizens, setCitizens] = useState<CitizenOption[]>([]);
+  // Define LandOption interface
+  interface LandOption {
+    landId: string;
+    historicalName?: string;
+    englishName?: string;
+    owner?: string;
+    district?: string;
+  }
+  
   const [lands, setLands] = useState<LandOption[]>([]); // Added lands state
   const [buildings, setBuildings] = useState<BuildingOption[]>([]);
   const [resourceTypes, setResourceTypes] = useState<ResourceTypeOption[]>([]);

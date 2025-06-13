@@ -25,7 +25,7 @@ const MarketplaceGossipStratagemPanel = forwardRef<StratagemSpecificPanelRef, St
       targetDescription = <>citizen <span className="font-bold">{citizenDisplayName}</span></>;
     }
 
-    let gossipDescription = "";
+    let gossipDescription: JSX.Element | string = "";
     if (gossipContent.trim()) {
       gossipDescription = <> by spreading the rumor: <span className="font-semibold">"{gossipContent.trim().substring(0, 50)}{gossipContent.trim().length > 50 ? '...' : ''}"</span></>;
     } else {

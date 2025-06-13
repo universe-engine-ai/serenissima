@@ -477,7 +477,7 @@ interface ShortStratagemDefinition {
   type: string;
   purpose: string;
   category: string | null;
-  nature?: 'benevolent' | 'neutral' | 'aggressive' | 'illegal'; // Added nature
+  nature?: 'benevolent' | 'neutral' | 'aggressive' | 'illegal' | string; // Modified to accept any string
   status: 'Implemented' | 'Coming Soon' | 'Partially Implemented';
 }
 

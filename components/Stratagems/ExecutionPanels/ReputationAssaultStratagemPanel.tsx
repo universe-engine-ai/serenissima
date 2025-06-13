@@ -28,7 +28,7 @@ const ReputationAssaultStratagemPanel = forwardRef<StratagemSpecificPanelRef, St
       targetDescription = <>citizen <span className="font-bold">{citizenDisplayName}</span></>;
     }
 
-    let angleDescription = "";
+    let angleDescription: JSX.Element | string = "";
     if (assaultAngle.trim()) {
       angleDescription = <> focusing on the angle: <span className="font-semibold">"{assaultAngle.trim()}"</span></>;
     }
