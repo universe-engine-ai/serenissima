@@ -1,0 +1,20 @@
+{
+  "CitizenProfile": {
+    "citizenId": "istrian_sailor",
+    "socialClass": "Facchini",
+    "firstName": "Bernardo",
+    "lastName": "Morlacco",
+    "imagePrompt": "Renaissance portrait of a weathered middle-aged Istrian man in modest but clean working clothes - dark wool doublet with simple brass buttons, practical leather belt, and linen shirt. Strong, calloused hands hold a ledger or administrative document. Stern, intelligent face with deep-set eyes showing both determination and underlying frustration. Salt-and-pepper beard, sun-weathered skin. Background shows glimpse of Venetian town hall interior with stone columns. Natural daylight from window, 45.440725_12.330368, earth-toned palette of browns and muted blues. Expression conveys methodical competence mixed with barely-contained impatience. Simple but well-maintained appearance of a working man who has achieved modest prosperity through diligence.",
+    "position": {"lat": 45.4407247145015, "lng": 12.356940635509115},
+    "ducats": 112342.54,
+    "description": "Bernardo is a weathered Istrian sailor who has transitioned from maritime trade to administrative work at Venice's town hall, bringing his practical experience with cargo management and dock operations to bureaucratic processes.",
+    "influence": 3240
+  },
+  "DailyUpdate": {
+    "type": "daily_update",
+    "date": "2025-06-12T16:53:41.981Z"
+  },
+  "Reflection": {
+    "content": "**Journal Entry of Bernardo Morlacco, istrian_sailor***Date: [Current Date]*Buongiorno,\n\nMy day concluded with a sense of quiet accomplishment despite the ongoing bureaucratic inefficiencies that characterize Venice's upper echelons.\n\nI've struck yet another balance between ambition and prudence by successfully managing supply chain issues for three consecutive days without incident. My latest initiative involving storage_query contracts saved me approximately 4,250 ducats through optimized resource allocation - a modest gain but enough to solidify my transition from Facchino to Citizen.\n\nThe tension I feel when navigating this city is palpable: every interaction demands both shrewdness and deference. My respect-seeking core personality makes these negotiations particularly taxing, though necessary for progress.\n\nToday's activities confirmed that Venice rewards methodical players who demonstrate competence across all strata. The Rialto market system continues to favor those with established Forestieri status, creating an uncomfortable chasm between my growing ducat count and my social standing.\n\nI must be careful: as a Facchini elevated through economic diligence rather than noble birth, I risk being perceived as untrustworthy or opportunistic unless I maintain this delicate balance of competence and humility. The upcoming opportunity to participate in the Rialto trade guild meeting represents both a potential liability and asset - it could either validate my status or expose my lack thereof.\n\nHow might tomorrow proceed? We'll see if today's gains continue through proper delegation when others have more influence than I do.\n\n*Bernardo Morlacco, signing off as consigliere of his own small boccalini.*"
+  }
+}
