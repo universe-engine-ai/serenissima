@@ -24,7 +24,9 @@ def try_create(
     stratagem_type: str, 
     stratagem_params: Dict[str, Any], 
     now_venice_dt: datetime,
-    now_utc_dt: datetime
+    now_utc_dt: datetime,
+    api_base_url: Optional[str] = None, # Added for consistency
+    transport_api_url: Optional[str] = None # Added for consistency
 ) -> Optional[List[Dict[str, Any]]]:
     """
     Creates a "reputation_assault" stratagem.

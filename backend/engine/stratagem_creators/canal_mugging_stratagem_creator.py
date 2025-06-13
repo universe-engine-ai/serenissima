@@ -31,7 +31,9 @@ def try_create(
     stratagem_type: str, # Added stratagem_type
     stratagem_params: Dict[str, Any],
     now_venice_dt: datetime, # Added now_venice_dt
-    now_utc_dt: datetime # Added now_utc_dt
+    now_utc_dt: datetime, # Added now_utc_dt
+    api_base_url: Optional[str] = None, # Added for consistency
+    transport_api_url: Optional[str] = None # Added for consistency
 ) -> Optional[List[Dict[str, Any]]]:
     """
     Prepares the payload for a 'canal_mugging' stratagem.

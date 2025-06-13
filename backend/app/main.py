@@ -3427,8 +3427,14 @@ async def try_create_stratagem_engine(request_data: TryCreateStratagemEngineRequ
             return StratagemEngineResponse(success=False, message=f"Unsupported stratagem type: {request_data.stratagemType}", creation_status="failed", reason="unsupported_stratagem_type")
 
         stratagem_payloads_list = creator_func(
-            tables_engine_stratagem, request_data.citizenUsername, request_data.stratagemType,
-            request_data.stratagemParameters or {}, now_venice_dt, now_utc_dt
+            tables_engine_stratagem, 
+            request_data.citizenUsername, 
+            request_data.stratagemType,
+            request_data.stratagemParameters or {}, 
+            now_venice_dt, 
+            now_utc_dt,
+            api_base_url=API_BASE_URL, # Pass Next.js API base URL
+            transport_api_url=None    # Let helper derive from api_base_url
         )
 
         if not stratagem_payloads_list or not isinstance(stratagem_payloads_list, list) or not stratagem_payloads_list[0]:
