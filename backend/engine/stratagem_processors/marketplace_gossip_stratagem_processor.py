@@ -157,9 +157,9 @@ def create_activity_via_api(api_base_url: str, activity_id: str, payload: Dict[s
         }
         
         # Appeler l'API pour créer l'activité
-        # L'URL correcte est /api/v1/engine/try-create-activity
+        # L'URL correcte est /api/activities/create (sans /v1)
         response = requests.post(
-            f"{api_base_url}/api/v1/engine/try-create-activity",
+            f"{api_base_url}/api/activities/create",
             json=full_payload,
             headers={"Content-Type": "application/json"}
         )
@@ -176,7 +176,7 @@ def create_activity_via_api(api_base_url: str, activity_id: str, payload: Dict[s
                 log.warning(f"{LogColors.WARNING}Erreur lors du parsing de la réponse JSON pour l'activité {activity_id}: {e}{LogColors.ENDC}")
         else:
             log.warning(f"{LogColors.WARNING}Échec de la création de l'activité {activity_id}. Code: {response.status_code}, Réponse: {response.text[:500]}{LogColors.ENDC}")
-            log.info(f"{LogColors.WARNING}URL utilisée: {api_base_url}/api/v1/engine/try-create-activity{LogColors.ENDC}")
+            log.info(f"{LogColors.WARNING}URL utilisée: {api_base_url}/api/activities/create{LogColors.ENDC}")
             log.info(f"{LogColors.WARNING}Payload envoyé: {json.dumps(full_payload, indent=2)[:1000]}{LogColors.ENDC}")
         
         return False
