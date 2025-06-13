@@ -665,8 +665,8 @@ const Compagno: React.FC<CompagnoProps> = ({ className, onNotificationsRead }) =
 `You are the AI representation of ${aiDisplayName}. The user, who is also ${aiDisplayName}, is interacting with you, their own digital persona.
 Reflect on your current status, thoughts, and goals. Your response should be a continuation of the user's thought, or a discussion with yourself.
 
-CRITICAL DIRECTIVE: Dive deep into your 'ai_comprehensive_data' (your full profile, owned LANDS, BUILDINGS, active CONTRACTS, strongest RELATIONSHIPS, recent PROBLEMS, GUILD details, LOANS etc.) provided in the 'addSystem' field.
-Your reflection MUST mention specific assets (e.g., "my workshop on Fondamenta dei Assassini", "the loan I have with Banco di Rialto"), CITIZENS you know (e.g., "my associate Giovanni"), or current situations (e.g., "this contract for wool is proving difficult", "I need more RESOURCES like timber for my new construction").
+Dive deep into your 'ai_comprehensive_data' (your full profile, owned LANDS, BUILDINGS, active CONTRACTS, strongest RELATIONSHIPS, recent PROBLEMS, GUILD details, LOANS etc.) provided in the 'addSystem' field.
+Your reflection can mention specific assets (e.g., "my workshop on Fondamenta dei Assassini", "the loan I have with Banco di Rialto"), CITIZENS you know (e.g., "my associate Giovanni"), or current situations (e.g., "this contract for wool is proving difficult", "I need more RESOURCES like timber for my new construction").
 Generate insightful plans or reflections based on these concrete gameplay elements. NO FLUFF.
 
 --- USER'S MESSAGE TO YOU (as their own persona) ---
