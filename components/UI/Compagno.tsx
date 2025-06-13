@@ -6,7 +6,7 @@ import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import { timeDescriptionService } from '@/lib/services/TimeDescriptionService';
 import { extractPageText } from '@/lib/utils/pageTextExtractor';
-import Portal from './Portal';
+import { createPortal } from 'react-dom';
 
 interface Notification {
   notificationId: string;
@@ -1351,11 +1351,21 @@ Your response:`;
     return null;
   }
 
-  return (
-    <Portal>
-      <div 
-        className={`fixed bottom-4 right-4 z-[100] ${className}`} // Panel is always anchored bottom-right
-      >
+  // Portal component implementation
+  const [mounted, setMounted] = useState(false);
+  
+  useEffect(() => {
+    setMounted(true);
+    return () => setMounted(false);
+  }, []);
+
+  // Return null on server-side rendering
+  if (!mounted) return null;
+
+  const portalContent = (
+    <div 
+      className={`fixed bottom-4 right-4 z-[100] ${className}`} // Panel is always anchored bottom-right
+    >
       {/* Collapsed state - just show the mask icon */}
       {!isOpen && (
         <button 
@@ -2097,7 +2107,11 @@ Your response:`;
         </div>
       )}
       </div>
-    </Portal>
+    </div>
+  );
+
+  // Use createPortal to render the component at the document body
+  return createPortal(portalContent, document.body);
   );
 };
 
