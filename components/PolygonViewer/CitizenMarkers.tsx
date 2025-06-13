@@ -775,11 +775,16 @@ function extractMainThought(content: string): string {
         const citizenForThought = citizens.find(c => c.username === randomThought.citizenUsername);
 
         if (citizenForThought) {
-          // Determine current position: prioritize animated, fallback to static
+          // Determine current position: prioritize animated (with displayPosition if available), fallback to static
           const animatedCitizenData = animatedCitizens[randomThought.citizenUsername];
-          const currentCitizenPosition = animatedCitizenData 
-            ? animatedCitizenData.currentPosition 
-            : citizenForThought.position;
+          let currentCitizenPosition;
+          
+          if (animatedCitizenData) {
+            // Use displayPosition if available (for citizens with null activity paths)
+            currentCitizenPosition = animatedCitizenData.displayPosition || animatedCitizenData.currentPosition;
+          } else {
+            currentCitizenPosition = citizenForThought.position;
+          }
 
           if (!currentCitizenPosition) {
             // Should not happen if ensureCitizenPosition works, but as a safeguard
@@ -857,7 +862,9 @@ function extractMainThought(content: string): string {
   // Update activeThought position if the citizen moves
   useEffect(() => {
     if (activeThought && animatedCitizens[activeThought.citizenId]) {
-      const newPos = animatedCitizens[activeThought.citizenId].currentPosition;
+      // Use displayPosition if available (for citizens with null activity paths)
+      const animatedCitizen = animatedCitizens[activeThought.citizenId];
+      const newPos = animatedCitizen.displayPosition || animatedCitizen.currentPosition;
       const newScreenPos = latLngToScreen(newPos.lat, newPos.lng);
       if (Math.abs(newScreenPos.x - activeThought.position.x) > 1 || Math.abs(newScreenPos.y - activeThought.position.y) > 1) {
         setActiveThought(prev => prev ? { ...prev, position: newScreenPos } : null);
@@ -940,10 +947,12 @@ function extractMainThought(content: string): string {
       <div className="absolute inset-0 pointer-events-none overflow-visible">
         {/* Animated Citizens */}
         {Object.values(animatedCitizens).map((animatedCitizen) => {
-          // Use the animated position instead of the original position
+          // Use the displayPosition if available (for citizens with null activity paths)
+          // otherwise use the animated position from the path
+          const positionToUse = animatedCitizen.displayPosition || animatedCitizen.currentPosition;
           const position = latLngToScreen(
-            animatedCitizen.currentPosition.lat, 
-            animatedCitizen.currentPosition.lng
+            positionToUse.lat, 
+            positionToUse.lng
           );
           
           // Skip if position is off-screen (with some margin)
