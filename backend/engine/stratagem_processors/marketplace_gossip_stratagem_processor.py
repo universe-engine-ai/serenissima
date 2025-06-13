@@ -159,7 +159,7 @@ def create_activity_via_api(api_base_url: str, activity_id: str, payload: Dict[s
         # Appeler l'API pour créer l'activité
         # L'URL correcte est /api/activities/create (sans /v1)
         response = requests.post(
-            f"{api_base_url}/api/activities/create",
+            f"{api_base_url}/api/activities/try-create",
             json=full_payload,
             headers={"Content-Type": "application/json"}
         )
