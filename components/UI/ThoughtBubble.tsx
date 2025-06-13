@@ -13,6 +13,8 @@ interface ThoughtBubbleProps {
   onBubbleMouseEnter: () => void; // Callback for mouse enter
   onBubbleMouseLeave: () => void; // Callback for mouse leave
   isHovered: boolean; // Indicates if the bubble is currently hovered
+  sender?: string; // Added sender username
+  receiver?: string; // Added receiver username
 }
 
 import { citizenService } from '@/lib/services/CitizenService'; // Import citizenService
@@ -28,7 +30,11 @@ const ThoughtBubble: React.FC<ThoughtBubbleProps> = ({
   onBubbleMouseEnter,
   onBubbleMouseLeave,
   isHovered,
+  sender,
+  receiver,
 }) => {
+  // Determine if this is a thought (sender === receiver) or a chat message
+  const isThought = !sender || !receiver || sender === receiver;
   const [showOriginal, setShowOriginal] = useState(false);
   const [internalVisible, setInternalVisible] = useState(false);
 
@@ -113,15 +119,18 @@ const ThoughtBubble: React.FC<ThoughtBubbleProps> = ({
     // If rgbaMatch is false, the default gray colors (set above) will be used.
   }
   
-  // Define tail properties
-  const tailCircles = [
+  // Define tail properties based on bubble type
+  const tailCircles = isThought ? [
     { size: 12, offset: 0 }, // Largest, closest to bubble
     { size: 9, offset: 12 + 2 },  // Medium, below largest + spacing
     { size: 6, offset: 12 + 2 + 9 + 2 }, // Smallest, below medium + spacing
-  ];
-  const totalTailHeight = tailCircles.reduce((sum, circle, index) => {
-    return sum + circle.size + (index < tailCircles.length - 1 ? 2 : 0); // size + spacing
-  }, 0) - tailCircles[tailCircles.length-1].size / 2; // Effective height to the center of the smallest circle
+  ] : [];
+  
+  const totalTailHeight = isThought ? 
+    tailCircles.reduce((sum, circle, index) => {
+      return sum + circle.size + (index < tailCircles.length - 1 ? 2 : 0); // size + spacing
+    }, 0) - tailCircles[tailCircles.length-1].size / 2 // Effective height to the center of the smallest circle
+    : 0;
 
   const bubbleStyle: React.CSSProperties = {
     left: `${citizenPosition.x}px`,
@@ -129,27 +138,36 @@ const ThoughtBubble: React.FC<ThoughtBubbleProps> = ({
     backgroundColor: finalBackgroundColor, // Use new background color
     borderColor: finalBorderColor, // Use new border color
     color: finalTextColor, // Use new text color
-    transform: `translate(-50%, -100%) translateY(-${totalTailHeight}px)`, // Position bubble so tip of tail is at citizenPosition.y
+    transform: isThought 
+      ? `translate(-50%, -100%) translateY(-${totalTailHeight}px)` // Position thought bubble so tip of tail is at citizenPosition.y
+      : `translate(-50%, -100%) translateY(-10px)`, // Position chat bubble slightly above citizen
     opacity: internalVisible ? 0.97 : 0, // Overall bubble opacity
     transition: `opacity ${internalVisible ? FADE_IN_MS : FADE_OUT_MS}ms ease-in-out, transform ${internalVisible ? FADE_IN_MS : FADE_OUT_MS}ms ease-in-out`, // Transition conditionnelle
     pointerEvents: internalVisible ? 'auto' : 'none',
+    borderRadius: isThought ? '1.5rem' : '1.25rem 1.25rem 1.25rem 0.25rem', // Rounded for thought, chat-like for messages
   };
 
   return (
     <div
-      className={`absolute z-[25] p-4 border-2 rounded-3xl shadow-xl text-sm ${showOriginal ? 'max-w-xl' : 'max-w-xs'} transition-all duration-700 ease-in-out`} // Changed z-[45] to z-[25]
+      className={`absolute z-[25] p-4 border-2 shadow-xl text-sm ${showOriginal ? 'max-w-xl' : 'max-w-xs'} transition-all duration-700 ease-in-out`} // Removed rounded-3xl as it's now in style
       style={bubbleStyle}
       onMouseEnter={() => { setShowOriginal(true); onBubbleMouseEnter(); }}
       onMouseLeave={() => { setShowOriginal(false); onBubbleMouseLeave(); }}
       data-ui-panel="true"
     >
+      {!isThought && (
+        <div className="absolute -top-5 left-2 text-xs font-medium px-2 py-1 rounded-t-lg" 
+             style={{ backgroundColor: finalBackgroundColor, borderColor: finalBorderColor, color: finalTextColor, border: `2px solid ${finalBorderColor}`, borderBottom: 'none' }}>
+          {sender}
+        </div>
+      )}
       <div className="relative prose prose-sm"> {/* Apply prose classes to the wrapper */}
         <ReactMarkdown remarkPlugins={[remarkGfm]}>
           {showOriginal ? originalContent : mainThought}
         </ReactMarkdown>
       </div>
-      {/* Thought bubble tail circles */}
-      {tailCircles.map((circle, index) => (
+      {/* Thought bubble tail circles - only for thoughts */}
+      {isThought && tailCircles.map((circle, index) => (
         <div
           key={`tail-circle-${index}`}
           className="absolute left-1/2 border-2 rounded-full" // Removed bg-amber-50 and border-amber-200
@@ -168,6 +186,23 @@ const ThoughtBubble: React.FC<ThoughtBubbleProps> = ({
           }}
         ></div>
       ))}
+      
+      {/* Chat bubble tail - only for messages */}
+      {!isThought && (
+        <div
+          className="absolute left-4 border-2 rotate-45" 
+          style={{
+            width: '16px',
+            height: '16px',
+            backgroundColor: finalBackgroundColor,
+            borderColor: finalBorderColor,
+            borderRight: 'none',
+            borderTop: 'none',
+            bottom: '-8px',
+            zIndex: -1,
+          }}
+        ></div>
+      )}
       {showOriginal}
     </div>
   );

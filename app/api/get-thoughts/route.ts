@@ -112,7 +112,9 @@ export async function GET() {
         citizenUsername: message.sender,
         originalContent: message.content,
         mainThought: extractMainThought(message.content),
-        createdAt: message.createdAt
+        createdAt: message.createdAt,
+        sender: message.sender,
+        receiver: message.receiver
       }));
 
     console.log(`[API GetThoughts] Processed ${thoughts.length} thoughts.`);
