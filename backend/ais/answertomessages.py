@@ -3,7 +3,7 @@ import sys
 import json
 import random
 from datetime import datetime, timedelta
-from typing import Dict, List, Optional, Any # Added Any
+from typing import Dict, List, Optional, Any
 import requests
 from dotenv import load_dotenv
 from pyairtable import Api, Base, Table # Import Base
@@ -100,7 +100,8 @@ def _escape_airtable_value(value: Any) -> str:
     value = value.replace('"', '\\"') # Échappe les guillemets doubles
     return value
 
-def _get_citizen_data(tables: Dict[str, Table], username: str) -> Optional[Dict]:
+def _get_citizen_profile_data(tables: Dict[str, Table], username: str) -> Optional[Dict]:
+    """Fetches a citizen's profile data from Airtable."""
     try:
         safe_username = _escape_airtable_value(username)
         records = tables["citizens"].all(formula=f"{{Username}} = '{safe_username}'", max_records=1)
@@ -108,7 +109,25 @@ def _get_citizen_data(tables: Dict[str, Table], username: str) -> Optional[Dict]
             return {'id': records[0]['id'], 'fields': records[0]['fields']}
         return None
     except Exception as e:
-        print(f"Error fetching citizen data for {username}: {e}")
+        print(f"Error fetching citizen profile data for {username}: {e}")
+        return None
+
+def _get_ai_citizen_data_package_api(username: str) -> Optional[Dict]:
+    """Fetches the comprehensive AI citizen data package via the Next.js API."""
+    try:
+        url = f"{BASE_URL}/api/citizens/{username}"
+        response = requests.get(url, timeout=10)
+        response.raise_for_status()
+        data = response.json()
+        if data.get("success") and data.get("citizen"): # The API returns { success: true, citizen: {...}, lastActivity: {...}, ownedLands: [...], etc. }
+            return data # Return the whole package
+        print(f"Failed to get full citizen data package for {username} from API: {data.get('error')}")
+        return None
+    except requests.exceptions.RequestException as e:
+        print(f"API request error fetching full citizen data package for {username}: {e}")
+        return None
+    except json.JSONDecodeError:
+        print(f"JSON decode error fetching full citizen data package for {username}. Response: {response.text[:200]}")
         return None
 
 def _get_relationship_data(tables: Dict[str, Table], username1: str, username2: str) -> Optional[Dict]:
@@ -243,8 +262,9 @@ def generate_ai_response(tables: Dict[str, Table], ai_username: str, sender_user
         blueprint = "serenissima-ai"
         
         # 1. Fetch all contextual data
-        ai_citizen_data = _get_citizen_data(tables, ai_username)
-        sender_citizen_data = _get_citizen_data(tables, sender_username)
+        ai_citizen_profile_data = _get_citizen_profile_data(tables, ai_username)
+        sender_citizen_profile_data = _get_citizen_profile_data(tables, sender_username)
+        ai_citizen_full_data_package = _get_ai_citizen_data_package_api(ai_username) # Fetch the full data package
         relationship_data = _get_relationship_data(tables, ai_username, sender_username)
         notifications_data = _get_notifications_data(tables, ai_username, limit=50)
         relevancies_data = _get_relevancies_data(tables, ai_username, sender_username, limit=50)
@@ -252,8 +272,9 @@ def generate_ai_response(tables: Dict[str, Table], ai_username: str, sender_user
 
         # 2. Construct the addSystem JSON object
         system_context_data = {
-            "ai_citizen_profile": ai_citizen_data,
-            "sender_citizen_profile": sender_citizen_data,
+            "ai_citizen_profile": ai_citizen_profile_data,
+            "sender_citizen_profile": sender_citizen_profile_data,
+            "ai_citizen_data_package": ai_citizen_full_data_package, # Add this to context
             "relationship_with_sender": relationship_data,
             "recent_notifications_for_ai": notifications_data,
             "recent_relevancies_ai_to_sender": relevancies_data,
@@ -263,8 +284,8 @@ def generate_ai_response(tables: Dict[str, Table], ai_username: str, sender_user
 
         # 3. Construct the prompt for the Kinos API
         # Emphasize brevity, human-like tone, and no fluff multiple times.
-        ai_display_name = ai_citizen_data.get('fields', {}).get('FirstName', ai_username) if ai_citizen_data else ai_username
-        sender_display_name = sender_citizen_data.get('fields', {}).get('FirstName', sender_username) if sender_citizen_data else sender_username
+        ai_display_name = ai_citizen_profile_data.get('fields', {}).get('FirstName', ai_username) if ai_citizen_profile_data else ai_username
+        sender_display_name = sender_citizen_profile_data.get('fields', {}).get('FirstName', sender_username) if sender_citizen_profile_data else sender_username
 
         kinos_prompt = (
             f"You are {ai_display_name}, an AI citizen of Venice. You are responding to a message from {sender_display_name}.\n"
@@ -276,6 +297,7 @@ def generate_ai_response(tables: Dict[str, Table], ai_username: str, sender_user
             f"Guide to 'addSystem' content (use this to make your message relevant and gameplay-focused):\n"
             f"- 'ai_citizen_profile': Your own detailed profile (status, wealth, etc.).\n"
             f"- 'sender_citizen_profile': The profile of {sender_display_name}.\n"
+            f"- 'ai_citizen_data_package': Your comprehensive current state (inventory, buildings, contracts, guild, etc.). This is crucial for gameplay-focused responses!\n" # Added this line
             f"- 'relationship_with_sender': Your existing relationship status with {sender_display_name}.\n"
             f"- 'recent_notifications_for_ai': Recent news/events you've received that might be relevant to your conversation.\n"
             f"- 'recent_relevancies_ai_to_sender': Why {sender_display_name} (or things related to them) are specifically relevant to you. This is key for a relevant response!\n"
@@ -301,35 +323,121 @@ def generate_ai_response(tables: Dict[str, Table], ai_username: str, sender_user
         }
         
         # Make the API request
+        print(f"Making API request to Kinos for {ai_username}...")
         response = requests.post(url, headers=headers, json=payload, timeout=30) # Increased timeout
         
+        # Log the API response details
+        print(f"API response status code: {response.status_code}")
+        
+        # Check if the request was successful
         if response.status_code == 200 or response.status_code == 201:
-            # Attempt to get the latest assistant message from the conversation history
-            # TODO: Check if Kinos API POST response already contains the assistant's message,
-            # to avoid the subsequent GET call for messages. This is still a valid TODO.
-            messages_url = f"https://api.kinos-engine.ai/v2/blueprints/{blueprint}/kins/{ai_username}/channels/{sender_username}/messages"
-            messages_response = requests.get(messages_url, headers=headers, timeout=15)
+            response_data = response.json()
+            status = response_data.get("status")
             
-            if messages_response.status_code == 200:
-                messages_data = messages_response.json()
-                assistant_messages = [
-                    msg for msg in messages_data.get("messages", [])
-                    if msg.get("role") == "assistant"
-                ]
-                if assistant_messages:
-                    assistant_messages.sort(key=lambda x: x.get("timestamp", ""), reverse=True)
-                    return assistant_messages[0].get("content")
+            print(f"API response status: {status}")
             
-            # Fallback if history retrieval fails or no assistant message found
-            print(f"Kinos POST successful but couldn't retrieve specific assistant reply from history for {ai_username} to {sender_username}. Check Kinos logs.")
-            return "Thank you for your message. I will consider it." # Shorter fallback
+            if status == "completed":
+                print(f"Successfully sent import strategy request to AI citizen {ai_username}")
+                
+                # The response content is in the response field of response_data
+                content = response_data.get('response', '')
+                
+                # Log the entire response for debugging
+                print(f"FULL AI RESPONSE FROM {ai_username}:")
+                print("="*80)
+                print(content)
+                print("="*80)
+                
+                print(f"AI {ai_username} response length: {len(content)} characters")
+                print(f"AI {ai_username} response preview: {content[:5000]}...")
+                
+                # Try to extract the JSON decision from the response
+                try:
+                    # Look for JSON block in the response - try multiple patterns
+                    import re
+                    
+                    # First try to find JSON in code blocks
+                    json_match = re.search(r'```(?:json)?\s*(.*?)\s*```', content, re.DOTALL)
+                    
+                    if json_match:
+                        json_str = json_match.group(1)
+                        try:
+                            decisions = json.loads(json_str)
+                            if "import_decisions" in decisions:
+                                print(f"Found import decisions in code block: {len(decisions['import_decisions'])}")
+                                return decisions
+                        except json.JSONDecodeError as e:
+                            print(f"Error parsing JSON from code block: {str(e)}")
+                    
+                    # Next, try to find JSON with curly braces pattern
+                    json_match = re.search(r'(\{[\s\S]*"import_decisions"[\s\S]*\})', content)
+                    if json_match:
+                        json_str = json_match.group(1)
+                        try:
+                            decisions = json.loads(json_str)
+                            if "import_decisions" in decisions:
+                                print(f"Found import decisions in curly braces pattern: {len(decisions['import_decisions'])}")
+                                return decisions
+                        except json.JSONDecodeError as e:
+                            print(f"Error parsing JSON from curly braces pattern: {str(e)}")
+                    
+                    # If we couldn't find a JSON block, try to parse the entire response
+                    try:
+                        decisions = json.loads(content)
+                        if "import_decisions" in decisions:
+                            print(f"Found import decisions in full response: {len(decisions['import_decisions'])}")
+                            return decisions
+                    except json.JSONDecodeError:
+                        print("Could not parse full response as JSON")
+                    
+                    # Last resort: try to extract just the array part
+                    array_match = re.search(r'"import_decisions"\s*:\s*(\[\s*\{.*?\}\s*\])', content, re.DOTALL)
+                    if array_match:
+                        array_str = array_match.group(1)
+                        try:
+                            array_data = json.loads(array_str)
+                            decisions = {"import_decisions": array_data}
+                            print(f"Found import decisions in array extraction: {len(decisions['import_decisions'])}")
+                            return decisions
+                        except json.JSONDecodeError as e:
+                            print(f"Error parsing JSON from array extraction: {str(e)}")
+                    
+                    # Manual extraction as last resort
+                    building_ids = re.findall(r'"building_id"\s*:\s*"([^"]+)"', content)
+                    resource_types = re.findall(r'"resource_type"\s*:\s*"([^"]+)"', content)
+                    target_amounts = re.findall(r'"target_amount"\s*:\s*(\d+)', content)
+                    reasons = re.findall(r'"reason"\s*:\s*"([^"]+)"', content)
+                    
+                    if building_ids and resource_types and target_amounts and len(building_ids) == len(resource_types) == len(target_amounts):
+                        # Create a manually constructed decision object
+                        import_decisions = []
+                        for i in range(len(building_ids)):
+                            reason = reasons[i] if i < len(reasons) else "No reason provided"
+                            import_decisions.append({
+                                "building_id": building_ids[i],
+                                "resource_type": resource_types[i],
+                                "target_amount": int(target_amounts[i]),
+                                "reason": reason
+                            })
+                        
+                        decisions = {"import_decisions": import_decisions}
+                        print(f"Manually extracted import decisions: {len(decisions['import_decisions'])}")
+                        return decisions
+                    
+                    # If we get here, no valid decision was found
+                    print(f"No valid import decision found in AI response. Full response:")
+                    print(content)
+                    return None
+                except Exception as e:
+                    print(f"Error extracting decision from AI response: {str(e)}")
+                    print(f"Full response content that caused the error:")
+                    print(content)
+                    return None
+            else:
+                print(f"Error processing import strategy request for AI citizen {ai_username}: {response_data}")
+                return None
         else:
-            print(f"Error from Kinos API for {ai_username} to {sender_username}: {response.status_code} - {response.text}")
-            try:
-                error_details = response.json()
-                print(f"Kinos error details: {error_details}")
-            except json.JSONDecodeError:
-                pass # No JSON in error response
+            print(f"Error from Kinos API: {response.status_code} - {response.text}")
             return None
     except Exception as e:
         print(f"Error in generate_ai_response for {ai_username} to {sender_username}: {str(e)}")
@@ -461,7 +569,7 @@ def process_ai_messages(dry_run: bool = False):
                 
                 if marked_read:
                     # Check if the sender is an AI
-                    sender_citizen_data = _get_citizen_data(tables, sender_username)
+                    sender_citizen_data = _get_citizen_profile_data(tables, sender_username)
                     sender_is_ai = False
                     if sender_citizen_data and sender_citizen_data.get('fields', {}).get('IsAI', False):
                         sender_is_ai = True
@@ -496,7 +604,7 @@ def process_ai_messages(dry_run: bool = False):
             else:
                 # In dry run mode, just log what would happen
                 # Simulate the AI sender check for dry run as well
-                sender_citizen_data = _get_citizen_data(tables, sender_username) # This call is safe in dry_run
+                sender_citizen_data = _get_citizen_profile_data(tables, sender_username) # This call is safe in dry_run
                 sender_is_ai = False
                 if sender_citizen_data and sender_citizen_data.get('fields', {}).get('IsAI', False):
                     sender_is_ai = True
