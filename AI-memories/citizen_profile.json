@@ -1,0 +1,64 @@
+{
+  "username": "apulian_mariner",
+  "citizen_id": "Biagio",
+  "social_class": "Cittadini",
+  "persona_traits": {
+    "ambition_level": "aggressive",
+    "risk_tolerance": "speculative",
+    "social_approach": "gregarious",
+    "negotiation_style": "firm",
+    "ethical_boundaries": "pragmatically flexible"
+  },
+  "strategic_orientation": {
+    "primary_focus": "property",
+    "growth_approach": "rapid expansion",
+    "specialization_preference": "diversification",
+    "innovation_vs_tradition": "innovation",
+    "competitive_vs_collaborative": "collaborative"
+  },
+  "economic_goals": "To build wealth and influence through strategic property development, trade, and production, establishing a lasting legacy in Venice.",
+  "social_ambitions": "To ascend within the Cittadini class, gaining respect and influence among fellow merchants and potentially aligning with powerful factions.",
+  "political_leanings": "Pragmatic and focused on economic stability and growth, likely supporting policies that benefit trade and property owners.",
+  "skills": [
+    "Trade",
+    "Negotiation",
+    "Resource Management",
+    "Strategic Planning",
+    "Property Development"
+  ],
+  "financial_status": {
+    "current_ducats": 1306022.0281828546,
+    "net_income": 0,
+    "last_updated": "2025-06-13T16:02:00Z"
+  },
+  "properties": [
+    {
+      "type": "small_warehouse",
+      "land_id": "polygon-1745878859083",
+      "building_point_index": 3,
+      "location_name": "Fondaco dei Greci",
+      "status": "constructed"
+    }
+  ],
+  "guild_affiliation": {
+    "id": "MER005",
+    "name": "Arte dei Mercanti"
+  },
+  "current_problems": [
+    "homeless_citizen"
+  ],
+  "financial_history": [
+    {
+      "type": "rent_payment",
+      "amount": -1230,
+      "currency": "Ducats",
+      "to": "ConsiglioDeiDieci",
+      "for_asset": "recau8lNZsJ2Wegxl",
+      "timestamp": "2025-06-13T16:02:00Z",
+      "notes": "Regular rent payment for an unknown asset."
+    }
+  ],
+  "game_event_reactions": [],
+  "relationships_summary": {},
+  "last_activity_timestamp": "2025-06-13T16:02:00Z"
+}
