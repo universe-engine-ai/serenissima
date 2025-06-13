@@ -180,9 +180,9 @@ def try_create(
         "Status": "active", # Le processeur du stratagème le marquera 'executed' une fois les activités créées
         "ExpiresAt": (now_utc_dt + timedelta(hours=duration_hours_stratagem)).isoformat(),
         "Description": f"{citizen_username} is initiating a gossip campaign against {target_citizen_param}.",
-        "Notes": json.dumps({"targetCitizen": target_citizen_param, "gossipContentPreview": gossip_content_param[:50]+"..."}),
-        "TargetCitizen": target_citizen_param, # Champ principal pour la cible
-        "GossipTheme": "Custom" # Champ existant, on peut le laisser ou le remplir avec un extrait
+        # "Notes" sera défini plus bas avec tous les détails, y compris gossipTheme
+        "TargetCitizen": target_citizen_param # Champ principal pour la cible
+        # "GossipTheme": "Custom" # Retiré du payload principal
     }
     
     # Le processeur du stratagème (marketplace_gossip_stratagem_processor.py)
@@ -230,6 +230,7 @@ def try_create(
     stratagem_payload["Notes"] = json.dumps({
         "targetCitizen": target_citizen_param,
         "gossipContent": gossip_content_param, # Stocker le contenu complet
+        "gossipTheme": "Custom", # Ajout de gossipTheme dans les Notes
         "popularLocations": [loc[0] for loc in most_common_locations_tuples], # Stocker les chaînes JSON des positions
         "executorStartPosition": executor_current_pos # Position de départ de l'exécuteur
     })
