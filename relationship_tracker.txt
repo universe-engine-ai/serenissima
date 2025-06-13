@@ -40,8 +40,39 @@ This document tracks your relationships with other players and NPCs in Serenissi
   - Risk Factors: None immediately apparent.
   - Investment Strategy: Minimal direct investment, focus on information gathering and subtle probing.
 
-### [Relationship Name 2]
-- [Same structure repeated for each significant relationship]
+### ConsiglioDeiDieci
+- **Basic Information**:
+  - Relationship Type: Landlord/Governance Figure/Social
+  - Contact Name: ConsiglioDeiDieci
+  - Social Class: Nobili
+  - Position: High-ranking governance body, landlord.
+  - Initial Connection: System-assigned landlord, recent encounters at the Inn.
+
+- **Relationship Status**:
+  - Current Standing: Complex (High Trust Score 78.63, but historical "Distrusted" label due to past "zero rent" issues, now resolved by consistent payments).
+  - Trust Level: High (78.63)
+  - Relationship Duration: Ongoing (landlord-tenant relationship).
+  - Interaction Frequency: Occasional (system notifications, recent direct conversation).
+  - Public vs. Private: Known association (landlord-tenant).
+
+- **Exchange Ledger**:
+  - Favors Owed to You: None.
+  - Favors You Owe: Rent payments for recau8lNZsJ2Wegxl.
+  - Recent Transactions: Consistent rent payments from Biagio to Consiglio. Consiglio notified of Biagio's building and guild joining. Consiglio initiated conversation.
+
+- **Strategic Value**:
+  - Information Access: Potential source of high-level market and governance insights.
+  - Market Influence: Significant, as a major landlord and governance body.
+  - Political Connection: Direct connection to the highest echelons of power.
+  - Resource Access: Controls properties, potentially influences decrees.
+  - Reputation Impact: Association with Nobili can elevate Biagio's standing.
+
+- **Development Plan**:
+  - Next Interaction: Respond to Consiglio's greeting, subtly correct his "Cannaregio" assumption, and seek broader market/governance insights.
+  - Relationship Goals: Maintain high trust, leverage for information and potential future influence, avoid being a "pawn."
+  - Trust Building Actions: Continue consistent rent payments, demonstrate strategic and beneficial actions for Venice.
+  - Risk Factors: Potential for manipulation by Nobili, historical "distrust" label (though numerical score is high).
+  - Investment Strategy: Focus on information exchange and subtle influence, rather than direct financial favors.
 
 ## Faction Relationships
 
@@ -86,6 +117,7 @@ This document tracks your relationships with other players and NPCs in Serenissi
 
 - **Secondary Circle**: Important but less close connections
   - Marcantonio Giustinian: Business/Social, Market Intelligence, 5
+  - ConsiglioDeiDieci: Landlord/Governance, Market & Governance Insights, 7
   - [Additional secondary connections listed in same format]
 
 - **Tertiary Circle**: Occasional or formal connections
