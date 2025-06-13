@@ -94,7 +94,7 @@ export async function GET() {
     console.log(`[API GetThoughts] Fetched ${data.messages.length} messages`);
 
     // Filter for thought-like message types
-    const thoughtTypes = [
+    /*const thoughtTypes = [
       'thought_log', 
       'unguided_run_log', 
       'autonomous_run_log',
@@ -103,10 +103,10 @@ export async function GET() {
       'kinos_daily_reflection',
       'kinos_theater_reflection',
       'kinos_public_bath_reflection'
-    ];
+    ];*/
 
     const thoughts = data.messages
-      .filter((message: any) => thoughtTypes.includes(message.type))
+      //.filter((message: any) => thoughtTypes.includes(message.type))
       .map((message: any) => ({
         messageId: message.messageId,
         citizenUsername: message.sender,
