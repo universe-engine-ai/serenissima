@@ -139,13 +139,24 @@ def detect_workless_problems(base_url: str) -> Dict:
 def detect_problems():
     """Detect various problems for citizens and lands."""
     try:
+        # Initialize all necessary tables
         tables = initialize_airtable()
-        if not tables or 'problems' not in tables:
-            log.error("Failed to initialize Airtable tables, including PROBLEMS table. Aborting problem detection.")
+        
+        # Check if we have the PROBLEMS table (for storing detected issues)
+        if not tables.get('problems'):
+            log.error("Could not initialize 'PROBLEMS' Airtable table. Aborting problem detection.")
             return False
             
         base_url = os.environ.get('NEXT_PUBLIC_BASE_URL', 'http://localhost:3000')
         log.info(f"Using base URL: {base_url}")
+        
+        # Add new API endpoints for reflection
+        api_urls['daily_reflections'] = f"{base_url}/api/problems/daily-reflections"
+        api_urls['problems'] = f"{base_url}/api/problems/active-problems"
+        api_urls['citizen_notifications'] = f"{base_url}/api/citizens/notifications"
+        
+        # Add endpoint for triggering daily reflection generation
+        add_system_endpoint('trigger_daily_reflection', base_url)
 
         # Delete all existing problems before starting detection
         problems_table = tables['problems']

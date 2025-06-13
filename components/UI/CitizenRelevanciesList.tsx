@@ -3,12 +3,15 @@ import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import InfoIcon from './InfoIcon'; // Assuming InfoIcon is in the same directory or adjust path
 
+export interface DailyReflection extends Omit<Relevancy, 'score'> {
+  score?: never; // Reflections don't get scores like regular relevancies
+}
+
 interface Relevancy {
   relevancyId: string;
   title: string;
   description: string;
-  score: number;
-  // Add any other fields from the relevancy object that are used
+  score: number; // This remains as part of the standard Airtable structure
 }
 
 interface CitizenForFormatting {
@@ -84,20 +87,43 @@ const CitizenRelevanciesList: React.FC<CitizenRelevanciesListProps> = ({
     }
   }, [citizen]);
 
-  // Helper to format date for thoughts
-  const formatThoughtDate = (dateString: string): string => {
-    if (!dateString) return 'Unknown';
-    try {
-      const date = new Date(dateString);
-      const now = new Date();
-      const diffMs = now.getTime() - date.getTime();
-      const diffHours = Math.floor(diffMs / (1000 * 60 * 60));
-      if (diffHours < 1) return 'Just now';
-      if (diffHours < 24) return `${diffHours}h ago`;
-      return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
-    } catch (e) {
-      return 'Invalid date';
+  const formatDailyReflectionText = (
+    text: string,
+    currentCitizen: CitizenForFormatting | null
+  ): React.ReactNode => {
+    if (!text || !currentCitizen) return text;
+    
+    // Format dates in the reflection content (if any)
+    const formattedDatesText = text.replace(
+      /(\d{4}-\d{2}-\d{2}) (\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2})/g,
+      (_, date1, date2) => {
+        const formattedDate1 = new Date(date1).toLocaleDateString('en-US', { 
+          weekday: 'long',
+          month: 'long',
+          day: 'numeric'
+        });
+        
+        const formattedDate2 = new Date(date2).toLocaleDateString('en-US');
+        
+        return `${formattedDate1} - ${formattedDate2}`;
+      }
+    );
+    
+    // Replace placeholders like %TARGETCITIZEN%
+    let newText = text;
+    newText = newText.replace(/%CURRENT_CITIZEN_NAME%/g, currentCitizen.firstName ? `${currentCitizen.firstName.trim()} ` : 'citizen');
+    newText = newText.replace(/%CURRENT_CITIZEN_USERNAME%/g, (currentCitizen.username || '').trim());
+    newText = newText.replace(/(\*\*)(.*)(\*\*)/g, (_, open, text, close) => {
+      // If this is a bold section, return just the text without formatting
+      return text;
+    });
+    
+    if (!newText.trim()) {
+      // Default reflection text format if no special placeholders exist
+      newText = `On ${currentCitizen.firstName} day, as an Artisti navigating Venice's trade landscape, I reflect on my journey through commerce and creativity.`;
     }
+    
+    return ReactMarkdown(formattedDatesText)(text);
   };
 
   return (
@@ -147,29 +173,34 @@ const CitizenRelevanciesList: React.FC<CitizenRelevanciesListProps> = ({
         <p className="text-amber-700 italic text-xs">No notable relevancies with this citizen at present. Future ventures may arise as your paths cross in Venetian society.</p>
       )}
 
-      {/* New Thoughts Section */}
+      {/* New Daily Reflection Section */}
       <div className="mt-4">
         <div className="flex items-center">
-          <h4 className="text-md font-serif text-amber-700 mb-2 border-b border-amber-200 pb-1">Recent Musings</h4>
-          <InfoIcon tooltipText="Latest thoughts recorded by this citizen." />
+          <h3 className="text-md font-serif text-amber-800 mb-2 border-b border-amber-200 pb-1">Daily Reflection</h3>
+          <InfoIcon tooltipText="Latest journal entries and reflections from this citizen." />
         </div>
 
-        {isLoadingThoughts ? (
+        {isLoadingReflections ? (
           <div className="flex justify-center py-2">
-            <div className="w-5 h-5 border-2 border-amber-500 border-t-transparent rounded-full animate-spin"></div>
+            <div className="w-5 h-5 border-2 border-amber-600 border-t-transparent rounded-full animate-spin"></div>
           </div>
-        ) : citizenThoughts.length > 0 ? (
-          <div className="space-y-2 max-h-[200px] overflow-y-auto pr-1 custom-scrollbar">
-            {citizenThoughts.map((thought) => (
-              <div key={thought.messageId} className="bg-stone-100 rounded-lg p-2.5 text-xs border border-stone-200">
-                <p className="text-stone-700 italic">"{thought.mainThought}"</p>
-                <p className="text-right text-stone-500 mt-1 text-[10px]">{formatThoughtDate(thought.createdAt)}</p>
-              </div>
-            ))}
+        ) : dailyReflections.length > 0 ? (
+          <div className="space-y-3 max-h-[400px] overflow-y-auto pr-1 custom-scrollbar">
+            {dailyReflections.map((reflection) => {
+              // For each reflection, format the text and display it
+              const formattedText = formatDailyReflectionText(reflection.content || '', citizen);
+              
+              return (
+                <div key={reflection.relevancyId} className="bg-stone-100 rounded-lg p-3 border border-stone-200">
+                  <p className="text-stone-700 italic text-sm">{formattedText}</p>
+                </div>
+              );
+            })}
           </div>
         ) : (
-          <p className="text-amber-700 italic text-xs">No recent thoughts recorded for this citizen.</p>
+          <p className="text-amber-600 italic text-xs">No recent reflections recorded for this citizen.</p>
         )}
+      </div>
       </div>
     </>
   );
