@@ -157,21 +157,23 @@ def create_activity_via_api(api_base_url: str, activity_id: str, payload: Dict[s
         }
         
         # Appeler l'API pour créer l'activité
+        # L'URL correcte est /api/activities/create et non /api/v1/engine/try-create-activity
         response = requests.post(
-            f"{api_base_url}/api/v1/engine/try-create-activity",
+            f"{api_base_url}/api/activities/create",
             json=full_payload,
             headers={"Content-Type": "application/json"}
         )
         
-        if response.status_code == 200:
+        if response.status_code == 200 or response.status_code == 201:
             response_data = response.json()
-            if response_data.get("success"):
+            if response_data.get("success") or response_data.get("id"):
                 log.info(f"{LogColors.OKGREEN}Activité {activity_id} créée avec succès.{LogColors.ENDC}")
                 return True
             else:
                 log.warning(f"{LogColors.WARNING}Échec de la création de l'activité {activity_id}: {response_data.get('error', 'Raison inconnue')}{LogColors.ENDC}")
         else:
-            log.warning(f"{LogColors.WARNING}Échec de la création de l'activité {activity_id}. Code: {response.status_code}, Réponse: {response.text}{LogColors.ENDC}")
+            log.warning(f"{LogColors.WARNING}Échec de la création de l'activité {activity_id}. Code: {response.status_code}, Réponse: {response.text[:500]}{LogColors.ENDC}")
+            log.debug(f"Payload envoyé: {json.dumps(full_payload, indent=2)}")
         
         return False
     except Exception as e:
