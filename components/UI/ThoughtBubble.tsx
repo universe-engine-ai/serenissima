@@ -35,6 +35,7 @@ const ThoughtBubble: React.FC<ThoughtBubbleProps> = ({
 }) => {
   // Determine if this is a thought (sender === receiver) or a chat message
   const isThought = !sender || !receiver || sender === receiver;
+  console.log('ThoughtBubble:', { sender, receiver, isThought });
   const [showOriginal, setShowOriginal] = useState(false);
   const [internalVisible, setInternalVisible] = useState(false);
 
