@@ -2,6 +2,23 @@ import { throttle } from '../utils/performanceUtils';
 import { calculateDistance } from '../utils/hoverDetectionUtils';
 import { ActivityPath, activityPathService } from './ActivityPathService';
 
+// Simple seeded random number generator
+function seededRandom(seed: string) {
+  // Create a numeric hash from the string seed
+  let hash = 0;
+  for (let i = 0; i < seed.length; i++) {
+    hash = ((hash << 5) - hash) + seed.charCodeAt(i);
+    hash |= 0; // Convert to 32bit integer
+  }
+  
+  // Return a function that generates a random number between 0 and 1
+  return function() {
+    // Simple LCG (Linear Congruential Generator)
+    hash = (hash * 9301 + 49297) % 233280;
+    return hash / 233280;
+  };
+}
+
 export interface AnimatedCitizen {
   citizen: any;
   currentPosition: {lat: number, lng: number};
@@ -183,10 +200,12 @@ export class CitizenAnimationService {
         }
       }
       
-      // If no active or recent path was found, just use the first path with random progress
+      // If no active or recent path was found, just use the first path with deterministic progress
       if (!selectedPath && paths.length > 0) {
         selectedPath = paths[0];
-        initialProgress = Math.random(); // Random progress between 0 and 1
+        // Create a seeded random generator using the citizen's username
+        const random = seededRandom(citizenId);
+        initialProgress = random(); // Deterministic progress between 0 and 1
       }
       
       // Skip if no suitable path was found
@@ -195,13 +214,16 @@ export class CitizenAnimationService {
       // Calculate position based on progress
       const initialPosition = activityPathService.calculatePositionAlongPath(selectedPath.path, initialProgress) || selectedPath.path[0];
       
-      // Random speed between 1-5 m/s (walking to running)
+      // Create a seeded random generator using the citizen's username
+      const random = seededRandom(citizenId);
+      
+      // Deterministic speed between 1-5 m/s (walking to running)
       // Adjust speed based on activity type - slower for work, faster for transport
-      let speed = 1 + Math.random() * 4;
+      let speed = 1 + random() * 4;
       if (selectedPath.type.toLowerCase().includes('work')) {
-        speed = 0.5 + Math.random() * 1.5; // Slower for work activities
+        speed = 0.5 + random() * 1.5; // Slower for work activities
       } else if (selectedPath.type.toLowerCase().includes('transport')) {
-        speed = 3 + Math.random() * 3; // Faster for transport activities
+        speed = 3 + random() * 3; // Faster for transport activities
       }
       
       initialAnimatedCitizens[citizenId] = {
@@ -225,27 +247,30 @@ export class CitizenAnimationService {
       // Skip citizens without a valid position
       if (!citizen.position || typeof citizen.position.lat !== 'number' || typeof citizen.position.lng !== 'number') return;
       
-      // Generate a random position within 35x35m of their position
+      // Generate a deterministic position based on username
       const basePosition = { ...citizen.position };
       
-      // Generate a random offset within a 35x35m square
+      // Create a seeded random generator using the citizen's username
+      const random = seededRandom(citizenId);
+      
+      // Generate a deterministic offset within a 35x35m square
       // 0.0005 degrees is approximately 35 meters at the equator
-      const randomLat = (Math.random() - 0.5) * 0.00035;
-      const randomLng = (Math.random() - 0.5) * 0.00035;
+      const randomLat = (random() - 0.5) * 0.00035;
+      const randomLng = (random() - 0.5) * 0.00035;
       
       const displayPosition = {
         lat: basePosition.lat + randomLat,
         lng: basePosition.lng + randomLng
       };
       
-      // Add to animated citizens with the random position
+      // Add to animated citizens with the deterministic position
       initialAnimatedCitizens[citizenId] = {
         citizen,
         currentPosition: displayPosition, // Use displayPosition as the initial position
         pathIndex: 0,
         currentPath: null,
         progress: 0,
-        speed: 1 + Math.random() * 2, // Random speed for citizens without paths
+        speed: 1 + random() * 2, // Deterministic speed based on username
         displayPosition: displayPosition
       };
     });
@@ -315,12 +340,15 @@ export class CitizenAnimationService {
     // Calculate initial position
     const initialPosition = activityPathService.calculatePositionAlongPath(path.path, initialProgress) || path.path[0];
     
-    // Determine speed based on activity type
-    let speed = 1 + Math.random() * 4; // Default random speed
+    // Create a seeded random generator using the citizen's username
+    const random = seededRandom(citizenId);
+    
+    // Determine speed based on activity type with deterministic randomness
+    let speed = 1 + random() * 4; // Default deterministic speed
     if (path.type.toLowerCase().includes('work')) {
-      speed = 0.5 + Math.random() * 1.5; // Slower for work activities
+      speed = 0.5 + random() * 1.5; // Slower for work activities
     } else if (path.type.toLowerCase().includes('transport')) {
-      speed = 3 + Math.random() * 3; // Faster for transport activities
+      speed = 3 + random() * 3; // Faster for transport activities
     }
     
     this.animatedCitizens[citizenId] = {
