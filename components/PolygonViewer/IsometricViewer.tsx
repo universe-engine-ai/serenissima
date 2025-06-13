@@ -2095,30 +2095,12 @@ number => {
       // Change the minimum zoom to 1.0 to allow one more level of unzoom
       // Increase the maximum zoom to 16.2 to allow three more levels of zoom
       
-      // Get mouse position relative to the canvas
-      const rect = currentWrapper?.getBoundingClientRect();
-      if (!rect) return;
-      
-      const mouseX = e.clientX - rect.left;
-      const mouseY = e.clientY - rect.top;
-      
       setScale(prevScale => {
         const newScale = Math.max(1.0, Math.min(16.2, prevScale + delta));
         
-        // Only adjust offset and trigger a redraw if the scale changed significantly
+        // Only trigger a redraw if the scale changed significantly
         if (Math.abs(newScale - prevScale) > 0.05) {
-          // Calculate how the offset should change to keep the point under the mouse fixed
-          setOffset(prevOffset => {
-            // Calculate the world coordinates before and after scaling
-            const beforeScaleX = (mouseX - canvasDims.width / 2 - prevOffset.x) / prevScale;
-            const beforeScaleY = (mouseY - canvasDims.height / 2 - prevOffset.y) / prevScale;
-            
-            // Calculate the new offset to maintain the same world point under the cursor
-            const newOffsetX = mouseX - canvasDims.width / 2 - beforeScaleX * newScale;
-            const newOffsetY = mouseY - canvasDims.height / 2 - beforeScaleY * newScale;
-            
-            return { x: newOffsetX, y: newOffsetY };
-          });
+          // No offset adjustment needed - we're zooming to the center of the viewport
           
           // Force a redraw with the new scale
           requestAnimationFrame(() => {
