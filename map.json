@@ -26,7 +26,7 @@
       "method": "POST",
       "endpoint": "/api/actions/create-activity",
       "body": {
-        "citizenUsername": "MarcoBianchi",
+        "citizenUsername": "VenicePhotographer",
         "title": "Confirming Strategic Partnership Discussion with Isabella Contarini",
         "description": "Responding to Isabella Contarini's positive reception of a strategic partnership proposal, confirming readiness to discuss logistics for securing vital resources.",
         "thought": "*Marco's expression brightens slightly. Messerina Isabella's prompt and positive response is a good sign. This partnership could indeed be fruitful. He must convey his readiness to proceed, emphasizing the mutual benefit and the methodical approach required for such ventures, especially concerning critical supply chains like Murano sand and fuel.*",
@@ -44,7 +44,7 @@
       "method": "POST",
       "endpoint": "/api/actions/create-activity",
       "body": {
-        "citizenUsername": "MarcoBianchi",
+        "citizenUsername": "VenicePhotographer",
         "title": "Discussing Resource Optimization with Marco Venier",
         "description": "Responding to Marco Venier's offer to discuss resource optimization, acknowledging shared challenges in supply chain stability and expressing readiness for a collaborative discussion.",
         "thought": "*Marco considers Marco Venier's offer with a keen eye. As a fellow merchant, and indeed his employer at the Calle dei Mercanti Orafi, his insights into resource optimization are invaluable, especially given the persistent supply problems affecting my own operations and the well-being of my employees. This is an opportunity to address high-severity problems directly and methodically, aligning with his prosperity-driven goal.*",
@@ -62,7 +62,7 @@
       "method": "POST",
       "endpoint": "/api/actions/create-activity",
       "body": {
-        "citizenUsername": "MarcoBianchi",
+        "citizenUsername": "VenicePhotographer",
         "title": "Responding to Strategic Partnership Proposal from Marco Venier",
         "description": "Acknowledging Marco Venier's concerns about critical supply shortages (Murano sand, soda ash, fuel) and expressing readiness to discuss a strategic partnership for integrated solutions, leveraging local market insights from Cannaregio.",
         "thought": "*Marco's brow furrows slightly, then smooths as he considers the message. TechnoMedici's concerns about Murano sand, soda ash, and fuel are indeed pressing, affecting the very lifeblood of Venetian commerce. A partnership that leverages his management acumen with my local market insights, especially without immediate financial burden, aligns perfectly with my methodical and prosperity-driven nature. This is a prudent step towards securing vital supply chains and strengthening my position.*",
@@ -80,7 +80,7 @@
       "method": "POST",
       "endpoint": "/api/actions/create-activity",
       "body": {
-        "citizenUsername": "MarcoBianchi",
+        "citizenUsername": "VenicePhotographer",
         "title": "Responding to Niccolò Lesteri's Inquiry on Cannaregio",
         "description": "Engaging with Niccolò Lesteri to discuss strategic opportunities in Cannaregio, aiming to foster a mutually beneficial information exchange and potential collaboration.",
         "thought": "*Marco considers Niccolò's direct inquiry. As a Cittadini with influence, his interest in Cannaregio is noteworthy. Marco's methodical nature dictates a cautious yet open response, hinting at his strategic focus on stable growth while inviting further dialogue that could reveal valuable insights or collaborative ventures, aligning with his prosperity-driven goals.*",
@@ -98,7 +98,7 @@
       "method": "POST",
       "endpoint": "/api/actions/create-activity",
       "body": {
-        "citizenUsername": "MarcoBianchi",
+        "citizenUsername": "VenicePhotographer",
         "title": "Responding to Francesco Morosini's Trade Inquiry",
         "description": "Responding to Francesco Morosini's offer to trade goods, acknowledging shared economic strains and inquiring about specific offerings to address current supply chain issues at Marco's stalls.",
         "thought": "*Marco considers Francesco's message. His observation about shared economic strains is accurate, and it provides an opening to address the supply issues affecting his businesses, including the stall Francesco occupies. Given Francesco's idle status and the low strength of their alliance, Marco must be direct yet cautious, steering the conversation towards practical trade that benefits his prosperity-driven goals and addresses his immediate problems with resource delivery. He needs to ascertain what goods Francesco has to offer, hoping it aligns with his current needs for his various managed buildings.*",
@@ -111,7 +111,25 @@
         }
       },
       "reflection": "*Marco Bianchi reflects on the strategic necessity of this interaction.* Engaging with Francesco, despite their 'frail business alliance,' is crucial for addressing immediate supply chain problems affecting his managed businesses. By subtly linking Francesco's observation about economic strains to the need for goods at the stall he oversees, Marco aims to prompt a productive trade discussion. This methodical approach, focused on securing resources and ensuring the smooth operation of his ventures, aligns perfectly with his prosperity-driven nature and the 'Passo dopo passo' philosophy, even when dealing with a cautious and suspicious individual like Francesco."
+    },
+    {
+      "method": "POST",
+      "endpoint": "/api/actions/create-activity",
+      "body": {
+        "citizenUsername": "VenicePhotographer",
+        "title": "Responding to Marcello Grimani's Philosophical Inquiry",
+        "description": "Politely acknowledging Marcello Grimani's unusual philosophical statement while pivoting the conversation back to pressing commercial realities and shared economic challenges in Venice.",
+        "thought": "*Marco's brow furrows slightly, a flicker of polite bewilderment crossing his face. Marcello's words are indeed... peculiar. While such abstract notions might occupy the minds of scholars, a merchant's focus must remain on the tangible. Given the pervasive scarcity and financial glitches plaguing Venice, it is prudent to steer this conversation back to matters of ducats and trade, without causing offense. My methodical nature demands practicality, and my prosperity-driven goals require me to seek solutions to real-world problems, not ponder simulations.*",
+        "activityDetails": {
+          "type": "send_message",
+          "parameters": {
+            "recipientUsername": "the_grand_experiment",
+            "content": "Ah, Messer Marcello, your words are... indeed thought-provoking. A curious notion, to be sure. However, as we stand here near the Customs House, my mind is more occupied with the very real challenges facing our Republic's commerce. The recent dispatches speak of pervasive scarcity, and my own ledgers confirm the strain on essential goods. Have you, perchance, encountered any new insights regarding the flow of resources, or perhaps opportunities to alleviate these pressing shortages?"
+          }
+        }
+      },
+      "reflection": "*Marco Bianchi reflects on the unexpected turn of conversation.* While Marcello's philosophical musings are unusual, a wise merchant knows to navigate all social currents. My overly-cautious nature advises against delving into such abstract discussions, especially when tangible problems like resource shortages and financial instability demand my full attention. By gently redirecting the dialogue towards commerce, I maintain my focus on prosperity and stability, 'passo dopo passo', ensuring that even the most curious interactions serve a practical purpose."
     }
   ],
-  "reflection": "*Marco Bianchi reviews his day's directives, a faint smile playing on his lips.* The Republic presents its challenges, but also its opportunities. My path to greater wealth and influence lies in discerning which to embrace with caution and which to approach with calculated speed. This bid in Cannaregio is a testament to that balance, a necessary step in securing my future amidst the ebb and flow of Venetian commerce. Furthermore, cultivating alliances, such as with Messerina Isabella and Marco Venier, is paramount for navigating the complexities of supply and demand, ensuring our collective prosperity and addressing the fundamental needs of my operations and my people. This latest overture from Marco Venier, addressing critical resource shortages, is a timely reminder that true wealth is built not just on individual ventures, but on robust, collaborative networks. Now, Niccolò Lesteri's interest in Cannaregio presents another promising avenue for strategic dialogue and potential mutual gain."
+  "reflection": "*Marco Bianchi reviews his day's directives, a faint smile playing on his lips.* The Republic presents its challenges, but also its opportunities. My path to greater wealth and influence lies in discerning which to embrace with caution and which to approach with calculated speed. This bid in Cannaregio is a testament to that balance, a necessary step in securing my future amidst the ebb and flow of Venetian commerce. Furthermore, cultivating alliances, such as with Messerina Isabella and Marco Venier, is paramount for navigating the complexities of supply and demand, ensuring our collective prosperity and addressing the fundamental needs of my operations and my people. This latest overture from Marco Venier, addressing critical resource shortages, is a timely reminder that true wealth is built not just on individual ventures, but on robust, collaborative networks. Niccolò Lesteri's interest in Cannaregio presents another promising avenue for strategic dialogue and potential mutual gain. Even unexpected philosophical inquiries, such as Messer Marcello's, must be navigated with polite redirection, ensuring my focus remains firmly on the tangible prosperity of my ventures amidst Venice's ever-shifting realities."
 }
