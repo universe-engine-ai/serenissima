@@ -63,12 +63,22 @@ def _make_direct_kinos_channel_call(
         
         log.info(f"{LogColors.PROCESS}Making direct KinOS API call for {kin_username} to channel {channel_username} with model: {payload.get('model')}{LogColors.ENDC}")
         
+        # Log request details for debugging
+        log.info(f"{LogColors.PROCESS}KinOS API request URL: {url}{LogColors.ENDC}")
+        log.info(f"{LogColors.PROCESS}KinOS API request headers: {headers}{LogColors.ENDC}")
+        log.info(f"{LogColors.PROCESS}KinOS API request payload: {json.dumps({k: v if k != 'addSystem' else '<<SYSTEM_DATA>>' for k, v in payload.items()}, indent=2)}{LogColors.ENDC}")
+        
         # Make the API call
         response = requests.post(url, headers=headers, json=payload, timeout=300)  # 5 minutes timeout for AI responses
         response.raise_for_status()  # Raise exception for HTTP errors
         
         # Parse response
         response_data = response.json()
+        
+        # Log response details for debugging
+        log.info(f"{LogColors.PROCESS}KinOS API response status code: {response.status_code}{LogColors.ENDC}")
+        log.info(f"{LogColors.PROCESS}KinOS API response headers: {dict(response.headers)}{LogColors.ENDC}")
+        log.info(f"{LogColors.PROCESS}KinOS API response data: {json.dumps(response_data, indent=2)}{LogColors.ENDC}")
         
         if response_data.get("success") and "response" in response_data:
             log.info(f"{LogColors.OKGREEN}Successfully received KinOS response for {kin_username} to channel {channel_username}{LogColors.ENDC}")
