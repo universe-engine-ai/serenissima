@@ -4,7 +4,7 @@ import requests
 from typing import Dict, Any, Optional, List
 from datetime import datetime, timezone
 
-from backend.engine.utils.activity_helpers import LogColors
+from backend.engine.utils.activity_helpers import LogColors, _escape_airtable_value
 
 log = logging.getLogger(__name__)
 
@@ -48,6 +48,34 @@ def process(
 
     if not target_citizen_gossip or not gossip_content or not popular_locations:
         log.error(f"{LogColors.FAIL}Informations manquantes dans les Notes du stratagème {stratagem_id_custom}.{LogColors.ENDC}")
+        return False
+        
+    # Vérifier que l'exécuteur et la cible existent
+    executor_record = None
+    try:
+        executor_formula = f"{{Username}}='{_escape_airtable_value(executed_by)}'"
+        executor_records = tables['citizens'].all(formula=executor_formula)
+        if executor_records:
+            executor_record = executor_records[0]
+        else:
+            log.error(f"{LogColors.FAIL}L'exécuteur {executed_by} n'existe pas. Impossible de créer les activités de rumeur.{LogColors.ENDC}")
+            return False
+    except Exception as e:
+        log.error(f"{LogColors.FAIL}Erreur lors de la recherche de l'exécuteur {executed_by}: {e}{LogColors.ENDC}")
+        return False
+        
+    # Vérifier que la cible existe
+    target_record = None
+    try:
+        target_formula = f"{{Username}}='{_escape_airtable_value(target_citizen_gossip)}'"
+        target_records = tables['citizens'].all(formula=target_formula)
+        if target_records:
+            target_record = target_records[0]
+        else:
+            log.error(f"{LogColors.FAIL}La cible {target_citizen_gossip} n'existe pas. Impossible de créer les activités de rumeur.{LogColors.ENDC}")
+            return False
+    except Exception as e:
+        log.error(f"{LogColors.FAIL}Erreur lors de la recherche de la cible {target_citizen_gossip}: {e}{LogColors.ENDC}")
         return False
 
     if not api_base_url:
@@ -183,38 +211,60 @@ def create_activity_via_api(api_base_url: str, activity_id: str, payload: Dict[s
         bool: True si l'activité a été créée avec succès, False sinon
     """
     try:
+        # Vérifier que les champs obligatoires sont présents
+        citizen_username = payload.get("citizen")
+        activity_type = payload.get("type")
+        
+        if not citizen_username:
+            log.error(f"{LogColors.FAIL}Champ 'citizen' manquant dans le payload pour l'activité {activity_id}.{LogColors.ENDC}")
+            return False
+            
+        if not activity_type:
+            log.error(f"{LogColors.FAIL}Champ 'type' manquant dans le payload pour l'activité {activity_id}.{LogColors.ENDC}")
+            return False
+        
         # Compléter le payload avec l'ID de l'activité et les champs obligatoires
         full_payload = {
             "activityId": activity_id,
-            "citizenUsername": payload.get("citizen"),  # Utiliser "citizen" au lieu de "Citizen"
-            "activityType": payload.get("type"),        # Utiliser "type" au lieu de "Type"
+            "citizenUsername": citizen_username,  # Utiliser "citizen" au lieu de "Citizen"
+            "activityType": activity_type,        # Utiliser "type" au lieu de "Type"
             "activityDetails": payload
         }
         
+        # Vérifier que l'URL de base est valide
+        if not api_base_url:
+            log.error(f"{LogColors.FAIL}URL de base de l'API non fournie pour l'activité {activity_id}.{LogColors.ENDC}")
+            return False
+            
         # Appeler l'API pour créer l'activité
         # L'URL correcte est /api/activities/try-create
-        response = requests.post(
-            f"{api_base_url}/api/activities/try-create",
-            json=full_payload,
-            headers={"Content-Type": "application/json"}
-        )
-        
-        if response.status_code == 200 or response.status_code == 201:
-            try:
-                response_data = response.json()
-                if response_data.get("success") or response_data.get("id"):
-                    log.info(f"{LogColors.OKGREEN}Activité {activity_id} créée avec succès.{LogColors.ENDC}")
-                    return True
-                else:
-                    log.warning(f"{LogColors.WARNING}Échec de la création de l'activité {activity_id}: {response_data.get('error', 'Raison inconnue')}{LogColors.ENDC}")
-            except Exception as e:
-                log.warning(f"{LogColors.WARNING}Erreur lors du parsing de la réponse JSON pour l'activité {activity_id}: {e}{LogColors.ENDC}")
-        else:
-            log.warning(f"{LogColors.WARNING}Échec de la création de l'activité {activity_id}. Code: {response.status_code}, Réponse: {response.text[:500]}{LogColors.ENDC}")
-            log.info(f"{LogColors.WARNING}URL utilisée: {api_base_url}/api/activities/create{LogColors.ENDC}")
-            log.info(f"{LogColors.WARNING}Payload envoyé: {json.dumps(full_payload, indent=2)[:1000]}{LogColors.ENDC}")
-        
-        return False
+        try:
+            response = requests.post(
+                f"{api_base_url}/api/activities/try-create",
+                json=full_payload,
+                headers={"Content-Type": "application/json"},
+                timeout=10  # Ajouter un timeout pour éviter les blocages
+            )
+            
+            if response.status_code == 200 or response.status_code == 201:
+                try:
+                    response_data = response.json()
+                    if response_data.get("success") or response_data.get("id"):
+                        log.info(f"{LogColors.OKGREEN}Activité {activity_id} créée avec succès.{LogColors.ENDC}")
+                        return True
+                    else:
+                        log.warning(f"{LogColors.WARNING}Échec de la création de l'activité {activity_id}: {response_data.get('error', 'Raison inconnue')}{LogColors.ENDC}")
+                except Exception as e:
+                    log.warning(f"{LogColors.WARNING}Erreur lors du parsing de la réponse JSON pour l'activité {activity_id}: {e}{LogColors.ENDC}")
+            else:
+                log.warning(f"{LogColors.WARNING}Échec de la création de l'activité {activity_id}. Code: {response.status_code}, Réponse: {response.text[:500]}{LogColors.ENDC}")
+                log.info(f"{LogColors.WARNING}URL utilisée: {api_base_url}/api/activities/try-create{LogColors.ENDC}")
+                log.info(f"{LogColors.WARNING}Payload envoyé: {json.dumps(full_payload, indent=2)[:1000]}{LogColors.ENDC}")
+            
+            return False
+        except requests.exceptions.RequestException as e:
+            log.error(f"{LogColors.FAIL}Erreur de requête HTTP lors de la création de l'activité {activity_id}: {e}{LogColors.ENDC}")
+            return False
     except Exception as e:
         log.error(f"{LogColors.FAIL}Exception lors de la création de l'activité {activity_id}: {e}{LogColors.ENDC}")
         return False

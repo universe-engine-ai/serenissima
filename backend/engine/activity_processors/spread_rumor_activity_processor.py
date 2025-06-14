@@ -187,22 +187,42 @@ def process(
         log.info(f"  Tentative d'initiation de conversation de rumeur de {executor_username} à {listener_username} concernant {target_citizen_gossip}.")
         log.info(f"  Message d'initiation: \"{rumor_initiation_message[:100]}...\"")
 
-        conversation_result = generate_conversation_turn(
-            tables=tables,
-            kinos_api_key=kinos_api_key,
-            speaker_username=executor_username,
-            listener_username=listener_username,
-            api_base_url=api_base_url,
-            interaction_mode="conversation_opener", # Pour initier la conversation
-            message=rumor_initiation_message, # Le message que l'exécuteur envoie
-            target_citizen_username_for_trust_impact=target_citizen_gossip # La personne visée par la rumeur
-        )
+        # Vérifier que les profils des citoyens existent avant d'essayer d'initier la conversation
+        executor_record = get_citizen_record(tables, executor_username)
+        listener_record = get_citizen_record(tables, listener_username)
+        target_record = get_citizen_record(tables, target_citizen_gossip)
+        
+        if not executor_record:
+            log.warning(f"    Impossible de trouver le profil de l'exécuteur {executor_username}. Conversation ignorée.")
+            continue
+            
+        if not listener_record:
+            log.warning(f"    Impossible de trouver le profil du destinataire {listener_username}. Conversation ignorée.")
+            continue
+            
+        if not target_record:
+            log.warning(f"    Impossible de trouver le profil de la cible {target_citizen_gossip}. Conversation ignorée.")
+            continue
+        
+        try:
+            conversation_result = generate_conversation_turn(
+                tables=tables,
+                kinos_api_key=kinos_api_key,
+                speaker_username=executor_username,
+                listener_username=listener_username,
+                api_base_url=api_base_url,
+                interaction_mode="conversation_opener", # Pour initier la conversation
+                message=rumor_initiation_message, # Le message que l'exécuteur envoie
+                target_citizen_username_for_trust_impact=target_citizen_gossip # La personne visée par la rumeur
+            )
 
-        if conversation_result:
-            log.info(f"    Conversation de rumeur initiée avec succès avec {listener_username}.")
-            success_count += 1
-        else:
-            log.warning(f"    Échec de l'initiation de la conversation de rumeur avec {listener_username}.")
+            if conversation_result:
+                log.info(f"    Conversation de rumeur initiée avec succès avec {listener_username}.")
+                success_count += 1
+            else:
+                log.warning(f"    Échec de l'initiation de la conversation de rumeur avec {listener_username}.")
+        except Exception as e:
+            log.error(f"    Exception lors de l'initiation de la conversation avec {listener_username}: {e}")
 
     if success_count == len(present_citizens_usernames):
         log.info(f"{LogColors.OKGREEN}Toutes les conversations de rumeur pour {activity_guid} ont été initiées avec succès.{LogColors.ENDC}")
