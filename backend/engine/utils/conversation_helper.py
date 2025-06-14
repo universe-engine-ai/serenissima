@@ -818,7 +818,7 @@ def generate_conversation_turn(
 
             analysis_prompt_parts = [
                 f"You are {listener_profile.get('FirstName', listener_username)}. You just received the following message from {speaker_profile.get('FirstName', speaker_username)}: '{ai_message_content}'. ",
-                f"Considering your personality, your relationship with {speaker_profile.get('FirstName', speaker_username)}, and all information in your data package (provided in addSystem), "
+                f"Consider your personality, your relationship with {speaker_profile.get('FirstName', speaker_username)}, and all information in your data package. "
             ]
             
             json_format_parts = [
@@ -834,18 +834,18 @@ def generate_conversation_turn(
                     target_display_name = target_profile_record['fields'].get('FirstName', target_citizen_username_for_trust_impact)
                 
                 analysis_prompt_parts.append(
-                    f"This message also discusses or implies something about {target_display_name}. "
-                    f"Based on the message content and your understanding of {target_display_name} (potentially from addSystem if their data is included, or general knowledge), "
+                    f"This message also discusses or implies something about {target_display_name}."
+                    f"--> Based on the message content and your understanding of {target_display_name}, "
                     f"how does this message impact YOUR trust in {target_display_name}? "
                 )
                 json_format_parts.append(f"\"trustChangeForTarget\": <value_target>")
                 analysis_prompt_parts.append(
-                    f"Assess the impact on your trust in {speaker_profile.get('FirstName', speaker_username)} (value_listener) AND your trust in {target_display_name} (value_target). "
+                    f"Assess the impact on your trust in {speaker_profile.get('FirstName', speaker_username)} AND your trust in {target_display_name} (value_target). "
                     f"Both values should be integers between -5 and +5."
                 )
             else:
                 analysis_prompt_parts.append(
-                    f"how does this message impact your trust in {speaker_profile.get('FirstName', speaker_username)} (value_listener)? "
+                    f"how does this message impact your trust in {speaker_profile.get('FirstName', speaker_username)}? "
                     f"The value should be an integer between -5 and +5."
                 )
 
