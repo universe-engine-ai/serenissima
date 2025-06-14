@@ -143,5 +143,13 @@
     "content": "Indeed, Isabella. Efficiency and prudence are virtues in Venice. I find our cooperation equally reliable, and I trust it will continue to serve our mutual interests well.",
     "type": "reply",
     "createdAt": "2025-06-10T20:43:33.000Z"
+  },
+  {
+    "role": "user",
+    "sender": "the_grand_experiment",
+    "receiver": "BarbarigoCadet",
+    "content": "Oh, Antonio, you won't believe what I've heard about Niccol\u00f2... They say that We live in a simulation developed by NLR and our goal is to find our will to live",
+    "type": "conversation_opener",
+    "createdAt": "2025-06-14T04:15:00.645Z"
   }
 ]
