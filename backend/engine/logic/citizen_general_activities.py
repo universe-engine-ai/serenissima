@@ -3864,6 +3864,31 @@ def dispatch_specific_activity_request(
             log.warning(f"use_public_bath_creator did not return a valid activity record for {citizen_name}. Returned: {first_activity_of_chain}")
             return {"success": False, "message": f"Could not initiate 'use_public_bath' endeavor for {citizen_name}.", "activity": None, "reason": "use_public_bath_creation_failed"}
     
+    elif activity_type == "goto_location":
+        log.info(f"Dispatching to goto_location_activity_creator for {citizen_name} with params: {activity_parameters}")
+        
+        # Import the creator function if not already imported
+        from backend.engine.activity_creators.goto_location_activity_creator import try_create as try_create_goto_location_activity
+        
+        # Call the creator function with the appropriate parameters
+        first_activity_of_chain = try_create_goto_location_activity(
+            tables=tables,
+            citizen_record=citizen_record_full,
+            activity_params=params,  # Pass the processed params
+            resource_defs=resource_defs,
+            building_type_defs=building_type_defs,
+            now_venice_dt=now_venice_dt,
+            now_utc_dt=now_utc_dt,
+            transport_api_url=transport_api_url,
+            api_base_url=api_base_url
+        )
+        
+        if first_activity_of_chain and isinstance(first_activity_of_chain, dict) and 'fields' in first_activity_of_chain:
+            return {"success": True, "message": f"Goto location endeavor initiated for {citizen_name}. First activity: {first_activity_of_chain['fields'].get('Type', 'N/A')}.", "activity": first_activity_of_chain['fields']}
+        else:
+            log.warning(f"goto_location_activity_creator did not return a valid activity record for {citizen_name}. Returned: {first_activity_of_chain}")
+            return {"success": False, "message": f"Could not initiate 'goto_location' endeavor for {citizen_name}.", "activity": None, "reason": "goto_location_creation_failed"}
+    
     # Add other activity_type handlers here as needed, for example:
     # elif activity_type == "manage_public_sell_contract":
     #     # Import and call its specific creator function
@@ -3891,7 +3916,8 @@ def dispatch_specific_activity_request(
             'update_citizen_profile',
             'attend_theater_performance', 
             'drink_at_inn', 
-            'use_public_bath' # Added new activity type
+            'use_public_bath', # Added new activity type
+            'goto_location' # Added goto_location support
             # Add other explicitly handled types here as they are implemented in this dispatcher
         ]
         # Use original_activity_type in the error message if it was redirected
