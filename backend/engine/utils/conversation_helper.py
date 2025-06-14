@@ -941,7 +941,9 @@ def generate_conversation_turn(
                     notes_detail=f"AI_impact_on_{listener_username}_by_msg_from_{speaker_username}. Msg: {ai_message_content[:20]}...",
                     activity_record_for_kinos=None
                 )
-                log.info(f"Trust score between {listener_username} and {speaker_username} updated by {trust_change_for_listener}.")
+                # Colorized log for trust score update
+                color_code = LogColors.OKGREEN if trust_change_for_listener > 0 else LogColors.WARNING
+                log.info(f"{color_code}Trust score between {listener_username} and {speaker_username} updated by {trust_change_for_listener}.{LogColors.ENDC}")
 
             # Update trust score for listener towards target_citizen_username_for_trust_impact
             if target_citizen_username_for_trust_impact and target_citizen_username_for_trust_impact != listener_username and trust_change_for_target != 0.0:
@@ -951,7 +953,9 @@ def generate_conversation_turn(
                     notes_detail=f"AI_impact_on_{listener_username}_re_{target_citizen_username_for_trust_impact}_due_to_msg_from_{speaker_username}. Msg: {ai_message_content[:20]}...",
                     activity_record_for_kinos=None
                 )
-                log.info(f"Trust score between {listener_username} and {target_citizen_username_for_trust_impact} updated by {trust_change_for_target}.")
+                # Colorized log for trust score update
+                color_code = LogColors.OKGREEN if trust_change_for_target > 0 else LogColors.WARNING
+                log.info(f"{color_code}Trust score between {listener_username} and {target_citizen_username_for_trust_impact} updated by {trust_change_for_target}.{LogColors.ENDC}")
             # --- End Trust Impact Analysis ---
             
             # Return the original message record (not the reply)
