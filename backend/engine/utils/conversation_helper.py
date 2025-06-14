@@ -490,10 +490,13 @@ def generate_conversation_turn(
 
     # 1. Get Speaker and Listener (observed/spoken-to citizen) profiles
     speaker_profile_record = get_citizen_record(tables, speaker_username)
+    if not speaker_profile_record:
+        log.error(f"Could not find profile for speaker: {speaker_username}")
+        return None
+        
     listener_profile_record = get_citizen_record(tables, listener_username)
-
-    if not speaker_profile_record or not listener_profile_record:
-        log.error("Could not find profile for speaker or listener.")
+    if not listener_profile_record:
+        log.error(f"Could not find profile for listener: {listener_username}")
         return None
     
     speaker_profile = speaker_profile_record['fields']
@@ -735,7 +738,11 @@ def generate_conversation_turn(
 
             if target_citizen_username_for_trust_impact and target_citizen_username_for_trust_impact != listener_username:
                 target_profile_record = get_citizen_record(tables, target_citizen_username_for_trust_impact)
-                target_display_name = target_profile_record['fields'].get('FirstName', target_citizen_username_for_trust_impact) if target_profile_record else target_citizen_username_for_trust_impact
+                if not target_profile_record:
+                    log.warning(f"Could not find profile for trust impact target: {target_citizen_username_for_trust_impact}. Using username as display name.")
+                    target_display_name = target_citizen_username_for_trust_impact
+                else:
+                    target_display_name = target_profile_record['fields'].get('FirstName', target_citizen_username_for_trust_impact)
                 
                 analysis_prompt_parts.append(
                     f"This message also discusses or implies something about {target_display_name}. "

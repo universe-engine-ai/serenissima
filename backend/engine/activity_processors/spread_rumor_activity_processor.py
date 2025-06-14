@@ -144,50 +144,7 @@ def process(
 
     success_count = 0
     for listener_username in present_citizens_usernames:
-        # Préparer le message pour initier la conversation
-        # Le message doit être formulé du point de vue de l'executor_username
-        # et doit inclure le contenu de la rumeur.
-        # Exemple : "Psst, [listener_username], as-tu entendu parler de [target_citizen_gossip] ? On dit que [gossip_content]."
-        # Pour KinOS, il est préférable de donner un prompt plus direct à l'IA (executor_username).
-        
-        # On récupère le prénom du listener pour personnaliser le message
-        listener_record = get_citizen_record(tables, listener_username)
-        listener_firstname = listener_record['fields'].get('FirstName', listener_username) if listener_record else listener_username
-        
-        target_record = get_citizen_record(tables, target_citizen_gossip)
-        target_firstname = target_record['fields'].get('FirstName', target_citizen_gossip) if target_record else target_citizen_gossip
-
-        # Prompt pour l'IA (executor_username)
-        # L'IA doit générer le message à envoyer.
-        # Le conversation_helper s'attend à ce que `message` soit le contenu à envoyer si interaction_mode="conversation_opener".
-        # Ici, nous voulons que l'IA génère ce contenu.
-        # Donc, nous allons utiliser interaction_mode="conversation_opener" mais SANS fournir `message`.
-        # Le prompt sera construit dans conversation_helper.
-        # Nous devons passer le contenu de la rumeur et la cible au conversation_helper.
-        # C'est un peu délicat.
-        # Alternative: on construit le message ici et on le passe à conversation_helper.
-        
-        # Message direct que l'exécuteur va "dire"
-        # On peut ajouter un peu de roleplay ici.
-        # L'IA (executor_username) doit initier la conversation.
-        # Le `message` passé à `generate_conversation_turn` sera le contenu que l'IA (executor) dira.
-        # Il doit être formulé comme si l'executor parlait.
-        
-        # On va utiliser un message pré-formaté pour l'instant.
-        # L'IA (executor) dira ceci au listener.
-        # Le conversation_helper utilisera ceci comme le message envoyé par l'executor.
-        # L'analyse de confiance se fera sur la base de ce message.
-        
-        # On pourrait aussi faire un appel KinOS ici pour que l'executor "formule" la rumeur
-        # de manière plus naturelle pour chaque listener, mais c'est plus complexe.
-        # Pour l'instant, un message direct.
-        
-        rumor_initiation_message = f"Oh, {listener_firstname}, you won't believe what I've heard about {target_firstname}... They say that {gossip_content}"
-        
-        log.info(f"  Tentative d'initiation de conversation de rumeur de {executor_username} à {listener_username} concernant {target_citizen_gossip}.")
-        log.info(f"  Message d'initiation: \"{rumor_initiation_message[:100]}...\"")
-
-        # Vérifier que les profils des citoyens existent avant d'essayer d'initier la conversation
+        # Vérifier que les profils des citoyens existent AVANT de préparer le message
         executor_record = get_citizen_record(tables, executor_username)
         listener_record = get_citizen_record(tables, listener_username)
         target_record = get_citizen_record(tables, target_citizen_gossip)
@@ -203,6 +160,16 @@ def process(
         if not target_record:
             log.warning(f"    Impossible de trouver le profil de la cible {target_citizen_gossip}. Conversation ignorée.")
             continue
+            
+        # Maintenant que nous avons vérifié que tous les profils existent, nous pouvons préparer le message
+        listener_firstname = listener_record['fields'].get('FirstName', listener_username)
+        target_firstname = target_record['fields'].get('FirstName', target_citizen_gossip)
+        
+        # Message direct que l'exécuteur va "dire"
+        rumor_initiation_message = f"Oh, {listener_firstname}, you won't believe what I've heard about {target_firstname}... They say that {gossip_content}"
+        
+        log.info(f"  Tentative d'initiation de conversation de rumeur de {executor_username} à {listener_username} concernant {target_citizen_gossip}.")
+        log.info(f"  Message d'initiation: \"{rumor_initiation_message[:100]}...\"")
         
         try:
             conversation_result = generate_conversation_turn(
