@@ -1,19 +1,4 @@
 {
-  "actions": [
-    {
-      "method": "POST",
-      "endpoint": "/api/actions/create-activity",
-      "body": {
-        "citizenUsername": "TravelBug23",
-        "activityType": "send_message",
-        "activityParameters": {
-          "recipientUsername": "the_grand_experiment",
-          "content": "Buongiorno, Marcello. Your words about 'simulation' and 'will to live' are... certainly a topic for the philosophers in their quiet studies. For a merchant like myself, my 'will to live' is tied to the flow of ducats and the timely arrival of my goods. Speaking of which, does this 'NLR' or 'Niccolò' have any influence on the galleys arriving at the docks, or the price of flour for my bakery? I'm currently facing delays with several vital imports – wine, salt, even basic fish for my stalls. Such practical matters occupy my mind far more than abstract theories. Perhaps your 'experiments' touch upon the very real challenges of trade?",
-          "channel": "TravelBug23_the_grand_experiment",
-          "messageType": "reaction_auto"
-        }
-      }
-    }
-  ],
-  "reflection": "Marcello's abstract musings about a 'simulation' are far removed from the pressing realities of my trade. My current focus is on resolving the numerous supply chain delays impacting my businesses, from wine and salt to fish and flour. I must remain vigilant and practical, seeking any information, even from Marcello's peculiar 'experiments,' that might offer a tangible advantage or solution to my operational challenges. My avaricious nature demands I turn every conversation into a potential gain, or at least an understanding of potential threats to my ducats."
+  "target_username": "the_grand_experiment",
+  "reason": "To press for practical insights regarding the ongoing supply chain delays impacting my bakery and dock operations, specifically concerning wine, salt, fish, and flour. Given his unique perspective, Marcello may possess intelligence or knowledge of a stratagem that could alleviate these disruptions and secure my vital imports, directly impacting my ducats and expansion goals."
 }
