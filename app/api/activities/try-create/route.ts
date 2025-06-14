@@ -175,6 +175,16 @@ export async function POST(request: Request) {
       console.log(`[API /activities/try-create] Processing cancel_land_offer:`, activityDetails);
     }
     // buy_available_land est déjà loggué plus haut
+    
+    // Log des paramètres spécifiques pour goto_location
+    if (activityType === 'goto_location') {
+      console.log(`[API /activities/try-create] Processing goto_location with parameters:`, 
+        `Target Building: ${activityDetails?.targetBuildingId || 'Not specified'}`,
+        `From Building: ${activityDetails?.fromBuildingId || 'Current location'}`,
+        `Title: ${activityDetails?.title || 'Default title'}`,
+        `Notes: ${activityDetails?.notes ? 'Provided' : 'Not provided'}`
+      );
+    }
 
     if (activityType === 'adjust_land_lease_price') {
       console.log(`[API /activities/try-create] Processing adjust_land_lease_price:`, activityDetails);
@@ -208,6 +218,13 @@ export async function POST(request: Request) {
     }
     if (activityType === 'update_citizen_profile') {
       console.log(`[API /activities/try-create] Processing update_citizen_profile:`, activityDetails);
+    }
+    if (activityType === 'spread_rumor') {
+      console.log(`[API /activities/try-create] Processing spread_rumor with parameters:`, 
+        `Target Citizen: ${activityDetails?.targetCitizen || 'Not specified'}`,
+        `Position: ${activityDetails?.position ? JSON.stringify(activityDetails.position) : 'Not specified'}`,
+        `Notes: ${activityDetails?.notes ? 'Provided' : 'Not provided'}`
+      );
     }
     
     // Endpoint générique sur le moteur Python pour initier des activités/actions
