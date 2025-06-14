@@ -52,6 +52,38 @@ from .use_public_bath_processor import process as process_use_public_bath # New 
 from .rest_processor import process as process_rest # New rest processor
 from .occupant_self_construction_processor import process_occupant_self_construction_fn # New occupant self-construction processor
 from .spread_rumor_activity_processor import process as process_spread_rumor # New processor for spreading rumors
+
+# Imports pour les processeurs de terrains et contrats
+from .bid_on_land_activity_processor import process_bid_on_land_fn
+from .manage_public_sell_contract_processor import process_manage_public_sell_contract_fn
+from .manage_import_contract_processor import process_manage_import_contract_fn
+from .manage_public_import_contract_processor import process_manage_public_import_contract_fn
+from .manage_logistics_service_contract_processor import process_manage_logistics_service_contract_fn
+from .buy_available_land_processor import process_buy_available_land_fn
+from .initiate_building_project_processor import process_initiate_building_project_fn
+from .adjust_land_lease_price_processor import process_adjust_land_lease_price_fn
+from .adjust_building_rent_price_processor import process_adjust_building_rent_price_fn
+from .adjust_building_lease_price_processor import process_file_building_lease_adjustment_fn
+from .adjust_business_wages_processor import process_adjust_business_wages_fn
+from .change_business_manager_processor import process_change_business_manager_fn
+from .request_loan_processor import process_request_loan_fn
+from .offer_loan_processor import process_offer_loan_fn
+from .reply_to_message_processor import process_reply_to_message_fn
+from .manage_public_storage_contract_processor import process_register_public_storage_offer_fn
+from .list_land_for_sale_processor import process_list_land_for_sale_fn
+from .make_offer_for_land_processor import process_make_offer_for_land_fn
+from .accept_land_offer_processor import process_accept_land_offer_fn
+from .buy_listed_land_processor import process_buy_listed_land_fn
+from .cancel_land_listing_processor import process_cancel_land_listing_fn
+from .cancel_land_offer_processor import process_cancel_land_offer_fn
+
+# Fonction de traitement générique pour les activités simples
+def process_placeholder_activity_fn(tables, activity_record, building_type_defs, resource_defs, api_base_url=None):
+    """Processeur générique pour les activités simples qui n'ont pas besoin de logique spécifique."""
+    activity_guid = activity_record['fields'].get('ActivityId', activity_record['id'])
+    activity_type = activity_record['fields'].get('Type')
+    log.info(f"Activité {activity_guid} (type: {activity_type}) traitée par le processeur générique.")
+    return True
 # Add other processors here as they are created
 
 # Dictionary mapping activity types to their processor functions
@@ -76,6 +108,7 @@ ACTIVITY_PROCESSORS = {
     'fetch_for_logistics_client': process_fetch_for_logistics_client,
     'check_business_status': process_check_business_status,
     'fishing': process_fishing_activity,
+    'emergency_fishing': process_fishing_activity,
     'inspect_building_for_purchase': process_inspect_building_for_purchase_fn,
     'submit_building_purchase_offer': process_submit_building_purchase_offer_fn,
     'send_message': process_send_message_fn,
@@ -97,4 +130,36 @@ ACTIVITY_PROCESSORS = {
     'rest': process_rest,
     'occupant_self_construction': process_occupant_self_construction_fn,
     'spread_rumor': process_spread_rumor,
+    # Ajout des processeurs pour les activités liées aux terrains et aux contrats
+    'bid_on_land': process_bid_on_land_fn,
+    'submit_land_bid': process_bid_on_land_fn,
+    'prepare_goods_for_sale': process_manage_public_sell_contract_fn,
+    'register_public_sell_offer': process_manage_public_sell_contract_fn,
+    'assess_import_needs': process_manage_import_contract_fn,
+    'register_import_agreement': process_manage_import_contract_fn,
+    'register_public_import_agreement': process_manage_public_import_contract_fn,
+    'assess_logistics_needs': process_manage_logistics_service_contract_fn,
+    'register_logistics_service_contract': process_manage_logistics_service_contract_fn,
+    'finalize_land_purchase': process_buy_available_land_fn,
+    'inspect_land_plot': process_initiate_building_project_fn,
+    'submit_building_project': process_initiate_building_project_fn,
+    'file_lease_adjustment': process_adjust_land_lease_price_fn,
+    'file_rent_adjustment': process_adjust_building_rent_price_fn,
+    'file_building_lease_adjustment': process_file_building_lease_adjustment_fn,
+    'update_wage_ledger': process_adjust_business_wages_fn,
+    'finalize_operator_change': process_change_business_manager_fn,
+    'submit_loan_application_form': process_request_loan_fn,
+    'register_loan_offer_terms': process_offer_loan_fn,
+    'deliver_message_interaction': process_send_message_fn,
+    'reply_to_message': process_reply_to_message_fn,
+    'perform_guild_membership_action': process_manage_guild_membership,
+    'register_public_storage_offer': process_register_public_storage_offer_fn,
+    'finalize_list_land_for_sale': process_list_land_for_sale_fn,
+    'finalize_make_offer_for_land': process_make_offer_for_land_fn,
+    'execute_accept_land_offer': process_accept_land_offer_fn,
+    'execute_buy_listed_land': process_buy_listed_land_fn,
+    'execute_cancel_land_listing': process_cancel_land_listing_fn,
+    'execute_cancel_land_offer': process_cancel_land_offer_fn,
+    'idle': process_placeholder_activity_fn,
+    'secure_warehouse': process_placeholder_activity_fn,
 }
