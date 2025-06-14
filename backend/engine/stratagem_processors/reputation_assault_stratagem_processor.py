@@ -64,7 +64,7 @@ def _make_direct_kinos_channel_call(
         log.info(f"{LogColors.PROCESS}Making direct KinOS API call for {kin_username} to channel {channel_username} with model: {payload.get('model')}{LogColors.ENDC}")
         
         # Make the API call
-        response = requests.post(url, headers=headers, json=payload, timeout=60)  # Longer timeout for AI responses
+        response = requests.post(url, headers=headers, json=payload, timeout=300)  # 5 minutes timeout for AI responses
         response.raise_for_status()  # Raise exception for HTTP errors
         
         # Parse response
