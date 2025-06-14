@@ -63,11 +63,6 @@ def _make_direct_kinos_channel_call(
         
         log.info(f"{LogColors.PROCESS}Making direct KinOS API call for {kin_username} to channel {channel_username} with model: {payload.get('model')}{LogColors.ENDC}")
         
-        # Log request details for debugging
-        log.info(f"{LogColors.PROCESS}KinOS API request URL: {url}{LogColors.ENDC}")
-        log.info(f"{LogColors.PROCESS}KinOS API request headers: {headers}{LogColors.ENDC}")
-        log.info(f"{LogColors.PROCESS}KinOS API request payload: {json.dumps({k: v if k != 'addSystem' else add_system_data for k, v in payload.items()}, indent=2)}{LogColors.ENDC}")
-        
         # Make the API call
         response = requests.post(url, headers=headers, json=payload, timeout=300)  # 5 minutes timeout for AI responses
         response.raise_for_status()  # Raise exception for HTTP errors
@@ -227,51 +222,16 @@ def process(
         tables['stratagems'].update(stratagem_record['id'], {'Status': 'failed', 'Notes': f'Failed to fetch data for executor {executed_by_username}.'})
         return False
     
-    try:
-        executor_data_package = executor_dp_response.json()
-        if not executor_data_package:
-            log.error(f"{LogColors.FAIL}Empty data package for executor {executed_by_username}. Marking stratagem as failed.{LogColors.ENDC}")
-            tables['stratagems'].update(stratagem_record['id'], {'Status': 'failed', 'Notes': f'Empty data package for executor {executed_by_username}.'})
-            return False
-    except (json.JSONDecodeError, ValueError) as e_json:
-        log.error(f"{LogColors.FAIL}Failed to parse JSON data package for executor {executed_by_username}: {e_json}. Response text: {executor_dp_response.text[:200]}{LogColors.ENDC}")
-        tables['stratagems'].update(stratagem_record['id'], {'Status': 'failed', 'Notes': f'Failed to parse JSON data package for executor {executed_by_username}. Error: {str(e_json)}'})
-        return False
-    executor_profile_for_kinos = executor_data_package.get('citizen', {})
-    if not executor_profile_for_kinos: # Check if citizen profile itself is missing after successful parse
-        log.warning(f"{LogColors.WARNING}Executor profile missing in data package for {executed_by_username}. Proceeding with empty profile.{LogColors.ENDC}")
-        executor_profile_for_kinos = {}
-    executor_display_name = executor_profile_for_kinos.get('FirstName', executed_by_username)
-    
-    # Determine model for executor: use override if present, else default to social class
-    model_for_executor = kinos_model_override_from_notes
-    if not model_for_executor:
-        executor_social_class = executor_profile_for_kinos.get("SocialClass")
-        model_for_executor = _rh_get_kinos_model_for_citizen(executor_social_class)
-    log.info(f"{LogColors.PROCESS}Executor '{executed_by_username}' will use KinOS model: '{model_for_executor}' for generating messages.{LogColors.ENDC}")
+    executor_data_package = executor_dp_response
 
-    log.info(f"{LogColors.PROCESS}Fetching data package for target {target_citizen_username}...{LogColors.ENDC}")
-    target_dp_response = requests.get(f"{NEXT_JS_BASE_URL}/api/get-data-package?citizenUsername={target_citizen_username}&format=json", timeout=30)
-    if not target_dp_response.ok:
-        log.error(f"{LogColors.FAIL}Failed to fetch data package for target {target_citizen_username}. Status: {target_dp_response.status_code}, Response: {target_dp_response.text[:200]}{LogColors.ENDC}")
-        tables['stratagems'].update(stratagem_record['id'], {'Status': 'failed', 'Notes': f'Failed to fetch data for target {target_citizen_username}.'})
-        return False
+    executor_display_name = executed_by_username
     
-    try:
-        target_data_package = target_dp_response.json()
-        if not target_data_package:
-            log.error(f"{LogColors.FAIL}Empty data package for target {target_citizen_username}. Marking stratagem as failed.{LogColors.ENDC}")
-            tables['stratagems'].update(stratagem_record['id'], {'Status': 'failed', 'Notes': f'Empty data package for target {target_citizen_username}.'})
-            return False
-    except (json.JSONDecodeError, ValueError) as e_json:
-        log.error(f"{LogColors.FAIL}Failed to parse JSON data package for target {target_citizen_username}: {e_json}. Response text: {target_dp_response.text[:200]}{LogColors.ENDC}")
-        tables['stratagems'].update(stratagem_record['id'], {'Status': 'failed', 'Notes': f'Failed to parse JSON data package for target {target_citizen_username}. Error: {str(e_json)}'})
-        return False
-    target_profile_for_kinos = target_data_package.get('citizen', {})
-    if not target_profile_for_kinos:
-        log.warning(f"{LogColors.WARNING}Target profile missing in data package for {target_citizen_username}. Proceeding with empty profile.{LogColors.ENDC}")
-        target_profile_for_kinos = {} # Ensure it's a dict
-    target_display_name = target_profile_for_kinos.get('FirstName', target_citizen_username)
+    log.info(f"{LogColors.PROCESS}Fetching data package for target {target_citizen_username}...{LogColors.ENDC}")
+    target_dp_response = requests.get(f"{NEXT_JS_BASE_URL}/api/get-data-package?citizenUsername={target_citizen_username}", timeout=90)
+
+    target_data_package = target_dp_response
+
+    target_display_name = target_citizen_username
 
     # 2. Generate Core Attack Narrative (KinOS Call 1: Executor to Self)
     log.info(f"{LogColors.PROCESS}Generating core attack narrative for {executed_by_username} against {target_citizen_username}...{LogColors.ENDC}")
@@ -293,7 +253,7 @@ def process(
         channel_username=executed_by_username, # Self-chat
         prompt=prompt_for_narrative_gen,
         kinos_api_key=kinos_api_key,
-        kinos_model_override=model_for_executor,
+        kinos_model_override="claude-3-7-sonnet-latest" or "local",
         add_system_data=add_system_for_narrative_gen
     )
 
