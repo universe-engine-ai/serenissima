@@ -54,7 +54,7 @@ def _make_direct_kinos_channel_call(
         # Prepare payload
         payload = {
             "prompt": prompt,
-            "model": kinos_model_override or "local" # Default model if none specified
+            "model": "claude-3-7-sonnet-latest" or kinos_model_override or "local" # Default model if none specified
         }
         
         # Add system data if provided
