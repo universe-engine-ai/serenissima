@@ -267,10 +267,38 @@ def get_resource_types_from_api(api_base_url: Optional[str] = None) -> Dict:
 
 def get_citizen_record(tables: Dict[str, Table], username: str) -> Optional[Dict]:
     """Fetches a citizen record by username."""
+    if not username:
+        log.error(f"{LogColors.FAIL}Empty username provided to get_citizen_record{LogColors.ENDC}")
+        return None
+        
     formula = f"{{Username}} = '{_escape_airtable_value(username)}'"
     try:
         records = tables['citizens'].all(formula=formula, max_records=1)
-        return records[0] if records else None
+        if records:
+            return records[0]
+        
+        # Si aucun enregistrement n'est trouvé, essayons avec une recherche insensible à la casse
+        log.warning(f"{LogColors.WARNING}No exact match for username '{username}'. Trying case-insensitive search.{LogColors.ENDC}")
+        # Utiliser LOWER() pour une recherche insensible à la casse
+        formula_case_insensitive = f"LOWER({{Username}}) = '{_escape_airtable_value(username.lower())}'"
+        records_case_insensitive = tables['citizens'].all(formula=formula_case_insensitive, max_records=1)
+        
+        if records_case_insensitive:
+            actual_username = records_case_insensitive[0]['fields'].get('Username')
+            log.info(f"{LogColors.OKGREEN}Found citizen with case-insensitive match: '{actual_username}' for query '{username}'{LogColors.ENDC}")
+            return records_case_insensitive[0]
+            
+        # Si toujours rien, essayons avec CitizenId au lieu de Username
+        log.warning(f"{LogColors.WARNING}No username match for '{username}'. Trying with CitizenId field.{LogColors.ENDC}")
+        formula_citizen_id = f"{{CitizenId}} = '{_escape_airtable_value(username)}'"
+        records_citizen_id = tables['citizens'].all(formula=formula_citizen_id, max_records=1)
+        
+        if records_citizen_id:
+            log.info(f"{LogColors.OKGREEN}Found citizen with CitizenId match for '{username}'{LogColors.ENDC}")
+            return records_citizen_id[0]
+            
+        log.error(f"{LogColors.FAIL}Citizen with username or CitizenId '{username}' not found after all attempts{LogColors.ENDC}")
+        return None
     except Exception as e:
         log.error(f"{LogColors.FAIL}Error fetching citizen record for {username}: {e}{LogColors.ENDC}")
         return None
