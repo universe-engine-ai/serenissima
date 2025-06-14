@@ -77,6 +77,7 @@ from backend.engine.activity_creators import (
     try_create_construct_building_activity, # Added for occupant construction
     # try_create_fetch_from_galley_activity is not used by process_citizen_activity
 )
+from backend.engine.activity_creators.spread_rumor_activity_creator import try_create as try_create_spread_rumor_activity
 from backend.engine.activity_creators.send_message_creator import try_create as try_create_send_message_chain # Import for send_message
 from backend.engine.activity_creators.manage_public_storage_offer_creator import try_create as try_create_manage_public_storage_offer_chain
 
@@ -3888,6 +3889,45 @@ def dispatch_specific_activity_request(
         else:
             log.warning(f"goto_location_activity_creator did not return a valid activity record for {citizen_name}. Returned: {first_activity_of_chain}")
             return {"success": False, "message": f"Could not initiate 'goto_location' endeavor for {citizen_name}.", "activity": None, "reason": "goto_location_creation_failed"}
+            
+    elif activity_type == "spread_rumor":
+        log.info(f"Dispatching to spread_rumor_activity_creator for {citizen_name} with params: {activity_parameters}")
+        
+        # Call the creator function
+        creation_successful = try_create_spread_rumor_activity(
+            tables=tables,
+            citizen_record=citizen_record_full,
+            activity_params=params,
+            resource_defs=resource_defs,
+            building_type_defs=building_type_defs,
+            now_venice_dt=now_venice_dt,
+            now_utc_dt=now_utc_dt,
+            transport_api_url=transport_api_url,
+            api_base_url=api_base_url
+        )
+        
+        if creation_successful:
+            # The creator returns a boolean, so we need to find the created activity
+            # Look for recently created activities for this citizen
+            time_buffer_seconds = 5
+            search_start_time_iso = (now_utc_dt - timedelta(seconds=time_buffer_seconds)).isoformat()
+            
+            # First try to find a spread_rumor activity
+            activity_formula = f"AND({{Citizen}}='{_escape_airtable_value(citizen_username)}', OR({{Type}}='spread_rumor', {{Type}}='goto_location'), {{CreatedAt}} >= '{search_start_time_iso}')"
+            
+            try:
+                recent_activities = tables['activities'].all(formula=activity_formula, sort=['-CreatedAt'], max_records=1)
+                if recent_activities:
+                    activity_fields = recent_activities[0]['fields']
+                    return {"success": True, "message": f"Spread rumor endeavor initiated for {citizen_name}. First activity: {activity_fields.get('Type', 'N/A')}.", "activity": activity_fields}
+                else:
+                    # Creator reported success but we couldn't find the activity
+                    return {"success": True, "message": f"Spread rumor endeavor reported as initiated for {citizen_name}, but activity details could not be retrieved.", "activity": None}
+            except Exception as e_fetch:
+                log.error(f"Error fetching created spread_rumor activity for {citizen_name}: {e_fetch}")
+                return {"success": True, "message": f"Spread rumor endeavor reported as initiated for {citizen_name}, but failed to retrieve activity details.", "activity": None}
+        else:
+            return {"success": False, "message": f"Could not initiate 'spread_rumor' endeavor for {citizen_name}.", "activity": None, "reason": "spread_rumor_creation_failed"}
     
     # Add other activity_type handlers here as needed, for example:
     # elif activity_type == "manage_public_sell_contract":
@@ -3917,7 +3957,8 @@ def dispatch_specific_activity_request(
             'attend_theater_performance', 
             'drink_at_inn', 
             'use_public_bath', # Added new activity type
-            'goto_location' # Added goto_location support
+            'goto_location', # Added goto_location support
+            'spread_rumor' # Added spread_rumor support
             # Add other explicitly handled types here as they are implemented in this dispatcher
         ]
         # Use original_activity_type in the error message if it was redirected
