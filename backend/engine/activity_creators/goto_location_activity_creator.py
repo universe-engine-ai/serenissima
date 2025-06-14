@@ -53,7 +53,49 @@ def try_create(
     
     details_for_activity = activity_params.get('details') # This is a dict
     notes_for_activity = activity_params.get('notes')     # This is a string
-
+    
+    # Vérifier si des coordonnées de destination sont fournies directement
+    to_position = activity_params.get('toPosition')
+    
+    if not target_building_id and not to_position:
+        log.error(f"Missing both targetBuildingId and toPosition for goto_location for {citizen_username}.")
+        return None
+        
+    # Si nous avons toPosition mais pas targetBuildingId, essayons de trouver le bâtiment le plus proche
+    if not target_building_id and to_position:
+        log.info(f"toPosition provided but no targetBuildingId for {citizen_username}. Attempting to find nearest building.")
+        try:
+            # Rechercher tous les bâtiments pour trouver le plus proche
+            all_buildings = tables['buildings'].all()
+            nearest_building_id = None
+            min_distance = float('inf')
+            
+            for building in all_buildings:
+                building_pos_str = building['fields'].get('Position')
+                if not building_pos_str:
+                    continue
+                
+                try:
+                    building_pos = json.loads(building_pos_str)
+                    distance = ((building_pos['lat'] - to_position['lat'])**2 + 
+                               (building_pos['lng'] - to_position['lng'])**2)**0.5
+                    
+                    if distance < min_distance:
+                        min_distance = distance
+                        nearest_building_id = building['fields'].get('BuildingId')
+                except (json.JSONDecodeError, KeyError):
+                    continue
+                    
+            if nearest_building_id:
+                target_building_id = nearest_building_id
+                log.info(f"Found nearest building {target_building_id} for goto_location for {citizen_username}.")
+            else:
+                log.error(f"Could not find any building near the provided toPosition for {citizen_username}.")
+                return None
+        except Exception as e:
+            log.error(f"Error finding nearest building for goto_location for {citizen_username}: {e}")
+            return None
+    
     if not target_building_id:
         log.error(f"Missing targetBuildingId for goto_location for {citizen_username}.")
         return None

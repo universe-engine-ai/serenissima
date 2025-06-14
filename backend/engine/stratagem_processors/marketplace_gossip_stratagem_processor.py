@@ -65,11 +65,44 @@ def process(
             
             # Créer l'activité goto_location
             goto_activity_id = f"goto_gossip_loc_{executed_by.lower()}_{int(current_time.timestamp())}_{i}"
+            
+            # Trouver le bâtiment le plus proche des coordonnées cibles
+            # C'est nécessaire car goto_location_activity_creator exige un targetBuildingId
+            nearest_building_id = None
+            min_distance = float('inf')
+            
+            try:
+                # Rechercher tous les bâtiments pour trouver le plus proche
+                all_buildings = tables['buildings'].all()
+                for building in all_buildings:
+                    building_pos_str = building['fields'].get('Position')
+                    if not building_pos_str:
+                        continue
+                    
+                    try:
+                        building_pos = json.loads(building_pos_str)
+                        distance = ((building_pos['lat'] - location_coords['lat'])**2 + 
+                                   (building_pos['lng'] - location_coords['lng'])**2)**0.5
+                        
+                        if distance < min_distance:
+                            min_distance = distance
+                            nearest_building_id = building['fields'].get('BuildingId')
+                    except (json.JSONDecodeError, KeyError):
+                        continue
+            except Exception as e:
+                log.warning(f"{LogColors.WARNING}Erreur lors de la recherche du bâtiment le plus proche: {e}{LogColors.ENDC}")
+            
+            # Si aucun bâtiment n'est trouvé, on ne peut pas créer l'activité goto_location
+            if not nearest_building_id:
+                log.warning(f"{LogColors.WARNING}Aucun bâtiment trouvé près des coordonnées {location_coords}. Impossible de créer l'activité goto_location.{LogColors.ENDC}")
+                continue
+                
             goto_payload = {
                 "type": "goto_location",
                 "citizen": executed_by,
                 "title": f"Se rendre au lieu de rumeur {i+1}",
                 "priority": 25,
+                "targetBuildingId": nearest_building_id,  # Paramètre obligatoire pour goto_location_activity_creator
                 "notes": json.dumps({
                     "purpose": "Travel to spread rumor",
                     "targetLocationCoords": location_coords,
