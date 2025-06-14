@@ -103,38 +103,6 @@ def _get_related_citizens(tables: Dict[str, Any], target_username: str, limit: i
         log.error(traceback.format_exc())
         return []
 
-def _get_conversation_history(tables: Dict[str, Any], user1: str, user2: str, limit: int = 20) -> List[Dict[str, Any]]:
-    """Fetches the last 'limit' messages between two users."""
-    messages: List[Dict[str, Any]] = []
-    try:
-        # Ensure consistent order for querying
-        u1_sorted, u2_sorted = sorted([user1, user2])
-        
-        # Construct channel name as it would be stored by Compagno/message API
-        channel_name = f"{u1_sorted}_{u2_sorted}"
-        
-        # Query MESSAGES table for this channel
-        # Assuming 'Channel' field exists and is populated correctly
-        formula = f"{{Channel}} = '{_escape_airtable_value(channel_name)}'"
-        
-        # Fetch messages, sorted by CreatedAt descending to get the latest ones
-        message_records = tables['messages'].all(
-            formula=formula, 
-            fields=['Sender', 'Receiver', 'Content', 'Type', 'CreatedAt'], 
-            sort=['-CreatedAt'], # Use string format for descending sort
-            max_records=limit 
-        )
-        
-        if message_records:
-            # Records are already sorted latest first, reverse to get chronological for prompt
-            messages = [msg['fields'] for msg in reversed(message_records)] 
-        
-        log.info(f"{LogColors.PROCESS}Fetched {len(messages)} messages for conversation history between {user1} and {user2}.{LogColors.ENDC}")
-    except Exception as e:
-        log.error(f"{LogColors.FAIL}Error fetching conversation history between {user1} and {user2}: {e}{LogColors.ENDC}")
-    return messages
-
-
 def process(
     tables: Dict[str, Any],
     stratagem_record: Dict[str, Any],
