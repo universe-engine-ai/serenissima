@@ -373,7 +373,7 @@ def main(dry_run: bool = False, specific_stratagem_id: Optional[str] = None):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Process active stratagems.")
     parser.add_argument("--dry-run", action="store_true", help="Simulate the process without making changes to Airtable.")
-    parser.add_argument("--stratagemId", type=str, help="Process a specific stratagem by its custom StratagemId.")
+    parser.add_argument("--stratagem-id", "--stratagemId", type=str, dest="stratagemId", help="Process a specific stratagem by its custom StratagemId.")
     
     args = parser.parse_args()
     main(dry_run=args.dry_run, specific_stratagem_id=args.stratagemId)
