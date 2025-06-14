@@ -549,7 +549,6 @@ def main(dry_run: bool = False, target_citizen_username: Optional[str] = None, f
         "execute_cancel_land_listing": process_cancel_land_listing_fn,
         "execute_cancel_land_offer": process_cancel_land_offer_fn,
         "spread_rumor": process_spread_rumor_fn, # Ajout du nouveau processeur
-        "spread_rumor": process_spread_rumor_fn, # Ajout du nouveau processeur
         # process_buy_available_land_fn is already in the dict for "finalize_land_purchase"
     }
 
