@@ -470,7 +470,8 @@ def generate_conversation_turn(
     max_history_messages: int = 5,
     interaction_mode: str = "conversation", # "conversation", "reflection", or "conversation_opener"
     message: Optional[str] = None, # Optional message to send directly for "conversation_opener"
-    target_citizen_username_for_trust_impact: Optional[str] = None # New: For 3-way trust impact
+    target_citizen_username_for_trust_impact: Optional[str] = None, # For 3-way trust impact
+    process_reply: bool = True # Whether to generate a reply from the listener
 ) -> Optional[Dict]:
     """
     Generates one turn of a conversation, an internal reflection, or a conversation opener.
@@ -802,13 +803,38 @@ def generate_conversation_turn(
     if persisted_message_record:
         if interaction_mode == "reflection":
             log.info(f"Successfully generated and persisted reflection from {speaker_username} about {listener_username}.")
+            return persisted_message_record # Return the full Airtable record for reflections
         elif interaction_mode in ["conversation_opener", "conversation"]:
             if interaction_mode == "conversation_opener":
                 log.info(f"Successfully generated and persisted conversation opener from {speaker_username} to {listener_username}.")
             else: # conversation
                 log.info(f"Successfully generated and persisted conversation turn from {speaker_username}.")
-
+            
+            # Process reply if requested (default is True)
+            listener_reply_record = None
+            if process_reply and interaction_mode in ["conversation_opener", "conversation"]:
+                log.info(f"Generating reply from {listener_username} to {speaker_username}...")
+                
+                # Generate the reply by swapping speaker and listener
+                listener_reply_record = generate_conversation_turn(
+                    tables=tables,
+                    kinos_api_key=kinos_api_key,
+                    speaker_username=listener_username,  # Listener becomes speaker
+                    listener_username=speaker_username,  # Speaker becomes listener
+                    api_base_url=api_base_url,
+                    kinos_model_override=kinos_model_override,
+                    max_history_messages=max_history_messages,
+                    interaction_mode="conversation",  # Always use conversation mode for replies
+                    message=None,  # No direct message for replies
+                    target_citizen_username_for_trust_impact=target_citizen_username_for_trust_impact,
+                    process_reply=False  # Prevent infinite recursion
+                )
+                
+                if not listener_reply_record:
+                    log.warning(f"Failed to generate reply from {listener_username} to {speaker_username}.")
+            
             # --- Trust Impact Analysis via KinOS ---
+            # Only perform trust analysis after we have both the message and reply
             log.info(f"Attempting trust impact analysis for {listener_username} regarding message from {speaker_username}.")
             
             listener_data_package = get_citizen_data_package(listener_username, api_base_url)
@@ -816,10 +842,19 @@ def generate_conversation_turn(
             listener_social_class_for_analysis = listener_profile_for_analysis['fields'].get('SocialClass') if listener_profile_for_analysis else None
             model_for_listener_analysis = get_kinos_model_for_social_class(listener_username, listener_social_class_for_analysis)
 
+            # Include the reply in the analysis if available
+            reply_content = ""
+            if listener_reply_record and 'fields' in listener_reply_record:
+                reply_content = listener_reply_record['fields'].get('Content', '')
+                
             analysis_prompt_parts = [
-                f"You are {listener_profile.get('FirstName', listener_username)}. You just received the following message from {speaker_profile.get('FirstName', speaker_username)}: '{ai_message_content}'. ",
-                f"Consider your personality, your relationship with {speaker_profile.get('FirstName', speaker_username)}, and all information in your data package. "
+                f"You are {listener_profile.get('FirstName', listener_username)}. You received the following message from {speaker_profile.get('FirstName', speaker_username)}: '{ai_message_content}'. ",
             ]
+            
+            if reply_content:
+                analysis_prompt_parts.append(f"You replied with: '{reply_content}'. ")
+                
+            analysis_prompt_parts.append(f"Consider your personality, your relationship with {speaker_profile.get('FirstName', speaker_username)}, and all information in your data package. ")
             
             json_format_parts = [
                 f"\"trustChangeForListener\": <value_listener>"
@@ -918,7 +953,9 @@ def generate_conversation_turn(
                 )
                 log.info(f"Trust score between {listener_username} and {target_citizen_username_for_trust_impact} updated by {trust_change_for_target}.")
             # --- End Trust Impact Analysis ---
-        return persisted_message_record # Return the full Airtable record
+            
+            # Return the original message record (not the reply)
+            return persisted_message_record
     else:
         log.error(f"Failed to persist KinOS message from {speaker_username}.")
         return None

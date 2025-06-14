@@ -203,7 +203,8 @@ def process(
                 api_base_url=api_base_url,
                 interaction_mode="conversation_opener", # Pour initier la conversation
                 message=rumor_initiation_message, # Le message que l'exécuteur envoie
-                target_citizen_username_for_trust_impact=target_citizen_gossip # La personne visée par la rumeur
+                target_citizen_username_for_trust_impact=target_citizen_gossip, # La personne visée par la rumeur
+                process_reply=True # Générer automatiquement une réponse
             )
 
             if conversation_result:
