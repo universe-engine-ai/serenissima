@@ -112,14 +112,6 @@ from backend.engine.utils.relationship_helpers import (
 
 log = logging.getLogger(__name__)
 
-# Helper function to safely parse JSON from requests.Response
-def _safe_response_json(response: requests.Response, context_msg: str) -> Optional[Dict]:
-    """Safely parses JSON from a requests.Response object."""
-    try:
-        return response.json()
-    except json.JSONDecodeError as e:
-        log.error(f"{LogColors.FAIL}JSONDecodeError for {context_msg}: {e}. Status: {response.status_code}. Response text (first 200 chars): {response.text[:200]}{LogColors.ENDC}")
-        return None
 
 # KINOS_API_URL_BASE = "https://api.kinos-engine.ai/v2/blueprints/serenissima-ai/kins" # Defined in relationship_helpers
 NEXT_JS_BASE_URL = os.getenv('NEXT_PUBLIC_BASE_URL', 'http://localhost:3000')
@@ -235,12 +227,11 @@ def process(
         tables['stratagems'].update(stratagem_record['id'], {'Status': 'failed', 'Notes': f'Failed to fetch data for executor {executed_by_username}.'})
         return False
     
-    executor_dp_json = _safe_response_json(executor_dp_response, f"executor data package for {executed_by_username}")
-    if not executor_dp_json:
-        log.error(f"{LogColors.FAIL}Failed to parse JSON for executor data package {executed_by_username}. Marking stratagem as failed.{LogColors.ENDC}")
-        tables['stratagems'].update(stratagem_record['id'], {'Status': 'failed', 'Notes': f'Failed to parse JSON data for executor {executed_by_username}.'})
+    executor_data_package = executor_dp_response.json()
+    if not executor_data_package:
+        log.error(f"{LogColors.FAIL}Failed to get data package for executor {executed_by_username}. Marking stratagem as failed.{LogColors.ENDC}")
+        tables['stratagems'].update(stratagem_record['id'], {'Status': 'failed', 'Notes': f'Failed to get data package for executor {executed_by_username}.'})
         return False
-    executor_data_package = executor_dp_json.get('data', {})
     executor_profile_for_kinos = executor_data_package.get('citizen', {})
     if not executor_profile_for_kinos: # Check if citizen profile itself is missing after successful parse
         log.warning(f"{LogColors.WARNING}Executor profile missing in data package for {executed_by_username}. Proceeding with empty profile.{LogColors.ENDC}")
@@ -261,12 +252,11 @@ def process(
         tables['stratagems'].update(stratagem_record['id'], {'Status': 'failed', 'Notes': f'Failed to fetch data for target {target_citizen_username}.'})
         return False
     
-    target_dp_json = _safe_response_json(target_dp_response, f"target data package for {target_citizen_username}")
-    if not target_dp_json:
-        log.error(f"{LogColors.FAIL}Failed to parse JSON for target data package {target_citizen_username}. Marking stratagem as failed.{LogColors.ENDC}")
-        tables['stratagems'].update(stratagem_record['id'], {'Status': 'failed', 'Notes': f'Failed to parse JSON data for target {target_citizen_username}.'})
+    target_data_package = target_dp_response.json()
+    if not target_data_package:
+        log.error(f"{LogColors.FAIL}Failed to get data package for target {target_citizen_username}. Marking stratagem as failed.{LogColors.ENDC}")
+        tables['stratagems'].update(stratagem_record['id'], {'Status': 'failed', 'Notes': f'Failed to get data package for target {target_citizen_username}.'})
         return False
-    target_data_package = target_dp_json.get('data', {})
     target_profile_for_kinos = target_data_package.get('citizen', {})
     if not target_profile_for_kinos:
         log.warning(f"{LogColors.WARNING}Target profile missing in data package for {target_citizen_username}. Proceeding with empty profile.{LogColors.ENDC}")
@@ -335,11 +325,10 @@ def process(
             log.warning(f"{LogColors.WARNING}Failed to fetch data package for related citizen {related_citizen_username}. Status: {related_citizen_dp_response.status_code}, Response: {related_citizen_dp_response.text[:200]}. Skipping message to them.{LogColors.ENDC}")
             continue
         
-        related_citizen_dp_json = _safe_response_json(related_citizen_dp_response, f"related citizen data package for {related_citizen_username}")
-        if not related_citizen_dp_json:
-            log.warning(f"{LogColors.WARNING}Failed to parse JSON for related citizen data package {related_citizen_username}. Skipping message to them.{LogColors.ENDC}")
+        related_citizen_data_package = related_citizen_dp_response.json()
+        if not related_citizen_data_package:
+            log.warning(f"{LogColors.WARNING}Failed to get data package for related citizen {related_citizen_username}. Skipping message to them.{LogColors.ENDC}")
             continue
-        related_citizen_data_package = related_citizen_dp_json.get('data', {})
         related_citizen_profile_for_kinos = related_citizen_data_package.get('citizen', {})
         if not related_citizen_profile_for_kinos: # Ensure it's a dict
             log.warning(f"{LogColors.WARNING}Related citizen profile missing in data package for {related_citizen_username}. Proceeding with empty profile for this interaction.{LogColors.ENDC}")
