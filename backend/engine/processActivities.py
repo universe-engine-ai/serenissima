@@ -161,7 +161,8 @@ from backend.engine.activity_processors import (
         process_drink_at_inn as process_drink_at_inn_fn, # New drink at inn processor
         process_use_public_bath as process_use_public_bath_fn, # New public bath processor
         process_rest as process_rest_fn, # New rest processor
-        process_occupant_self_construction_fn # New occupant self-construction processor
+        process_occupant_self_construction_fn, # New occupant self-construction processor
+        process_spread_rumor_fn # Import spread_rumor processor
 )
 from backend.engine.activity_processors.manage_public_import_contract_processor import process_manage_public_import_contract_fn
 from backend.engine.activity_processors.bid_on_land_activity_processor import process_bid_on_land_fn
