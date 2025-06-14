@@ -205,5 +205,15 @@
     "role": "assistant",
     "content": "In the heart of Venice, a merchant's success is rooted in shrewd placement. For my nascent warehouse, I choose the location of the former `Fondaco dei Greci`. This site, steeped in the history of international trade and serving once as a foreign merchants' warehouse, offers unparalleled strategic advantage. Its inherent connection to the Republic's commerce, and likely proximity to vital canal access, aligns perfectly with my ambition to establish a thriving trade operation. This is where the flow of goods was once managed, and where it shall flourish anew under my stewardship.```json{  \"selected_point_index\": 3,  \"reason\": \"I have selected the point corresponding to the historical 'Fondaco dei Greci' (Greek Merchants' Warehouse). This location is intrinsically aligned with the purpose of a Small Warehouse, offering historical precedent as a center for trade and storage. Its strategic positioning, likely with excellent canal access and within a historically significant commercial area, will provide maximum visibility and potential for income, directly supporting my persona's focus on trade and rapid expansion.\"}```",
     "timestamp": "2025-06-14T19:08:49.460731"
+  },
+  {
+    "role": "user",
+    "content": "\nAs a citizen in La Serenissima with social class Cittadini, you need to decide on your next building investment.\n\nHere's your current situation:\n- You are considering 120 land(s).\n- You have 0 buildings.\n- Your current net income is 0 ducats.\n- You have 1371183.5831326118 ducats available.\n\nWhen making your decision, carefully consider the information that you have at your disposition.\n\nAfter your analysis, provide your building decision in this JSON format:\n```json\n{\n  \"building_type\": \"type_of_building_to_build\",\n  \"land_id\": \"id_of_land_to_build_on\",\n  \"reason\": \"brief explanation of why this building\"\n}\n```\n\nIf you decide not to build anything at this time, return an empty JSON object:\n```json\n{}\n```\n",
+    "timestamp": "2025-06-14T20:00:18.592671"
+  },
+  {
+    "role": "assistant",
+    "content": "I apologize, but I encountered an error with Gemini: You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits.. Please try again.",
+    "timestamp": "2025-06-14T20:00:19.062595"
   }
 ]
