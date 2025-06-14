@@ -43,7 +43,7 @@ def _make_direct_kinos_channel_call(
         kinos_api_url_base = "https://api.kinos-engine.ai/v2/blueprints/serenissima-ai/kins"
         
         # Construct the full URL for the channel
-        url = f"{kinos_api_url_base}/{kin_username}/channels/{channel_username}/messages"
+        url = f"{kinos_api_url_base}/{kin_username}/channels/{channel_username}"
         
         # Prepare headers with API key
         headers = {
