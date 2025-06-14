@@ -60,5 +60,11 @@
     "sender": "BankingWizard99",
     "receiver": "TechnoMedici",
     "content": "Buongiorno, Marco. Ready to put our heads together on those supply challenges?"
+  },
+  {
+    "role": "assistant",
+    "sender": "BankingWizard99",
+    "receiver": "the_grand_experiment",
+    "content": "Marcello, that's quite a notion you've stumbled upon! My mind, however, is more concerned with the very tangible realities of our Venetian markets. Have you seen the delays in wine and salt deliveries to my stalls at Fondamenta delle Zattere? These are the 'mysteries' that truly keep a merchant like myself awake at night."
   }
 ]
