@@ -172,6 +172,29 @@ def process(
         log.info(f"  Message d'initiation: \"{rumor_initiation_message[:100]}...\"")
         
         try:
+            # Vérifier que les tables sont correctement passées
+            if 'citizens' not in tables or tables['citizens'] is None:
+                log.error(f"    Table 'citizens' manquante ou None avant d'appeler generate_conversation_turn. Tables disponibles: {list(tables.keys())}")
+                continue
+                
+            # Vérifier explicitement que les profils existent avant d'appeler generate_conversation_turn
+            executor_check = get_citizen_record(tables, executor_username)
+            if not executor_check:
+                log.error(f"    Impossible de trouver le profil de l'exécuteur {executor_username} juste avant d'appeler generate_conversation_turn.")
+                continue
+                
+            listener_check = get_citizen_record(tables, listener_username)
+            if not listener_check:
+                log.error(f"    Impossible de trouver le profil du destinataire {listener_username} juste avant d'appeler generate_conversation_turn.")
+                continue
+                
+            target_check = get_citizen_record(tables, target_citizen_gossip)
+            if not target_check:
+                log.error(f"    Impossible de trouver le profil de la cible {target_citizen_gossip} juste avant d'appeler generate_conversation_turn.")
+                continue
+            
+            log.info(f"    Tous les profils vérifiés avec succès. Appel de generate_conversation_turn...")
+            
             conversation_result = generate_conversation_turn(
                 tables=tables,
                 kinos_api_key=kinos_api_key,
@@ -190,6 +213,8 @@ def process(
                 log.warning(f"    Échec de l'initiation de la conversation de rumeur avec {listener_username}.")
         except Exception as e:
             log.error(f"    Exception lors de l'initiation de la conversation avec {listener_username}: {e}")
+            import traceback
+            log.error(f"    Traceback: {traceback.format_exc()}")
 
     if success_count == len(present_citizens_usernames):
         log.info(f"{LogColors.OKGREEN}Toutes les conversations de rumeur pour {activity_guid} ont été initiées avec succès.{LogColors.ENDC}")

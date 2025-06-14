@@ -270,17 +270,30 @@ def get_citizen_record(tables: Dict[str, Table], username: str) -> Optional[Dict
     if not username:
         log.error(f"{LogColors.FAIL}Empty username provided to get_citizen_record{LogColors.ENDC}")
         return None
+    
+    # Vérifier que tables contient bien la table 'citizens'
+    if 'citizens' not in tables:
+        log.error(f"{LogColors.FAIL}Table 'citizens' not found in tables dictionary. Available tables: {list(tables.keys())}{LogColors.ENDC}")
+        return None
+    
+    # Vérifier que la table citizens est bien initialisée
+    if tables['citizens'] is None:
+        log.error(f"{LogColors.FAIL}Table 'citizens' is None in tables dictionary{LogColors.ENDC}")
+        return None
         
     formula = f"{{Username}} = '{_escape_airtable_value(username)}'"
     try:
+        log.debug(f"Searching for citizen with formula: {formula}")
         records = tables['citizens'].all(formula=formula, max_records=1)
         if records:
+            log.info(f"{LogColors.OKGREEN}Found citizen with exact username match: '{username}'{LogColors.ENDC}")
             return records[0]
         
         # Si aucun enregistrement n'est trouvé, essayons avec une recherche insensible à la casse
         log.warning(f"{LogColors.WARNING}No exact match for username '{username}'. Trying case-insensitive search.{LogColors.ENDC}")
         # Utiliser LOWER() pour une recherche insensible à la casse
         formula_case_insensitive = f"LOWER({{Username}}) = '{_escape_airtable_value(username.lower())}'"
+        log.debug(f"Searching with case-insensitive formula: {formula_case_insensitive}")
         records_case_insensitive = tables['citizens'].all(formula=formula_case_insensitive, max_records=1)
         
         if records_case_insensitive:
@@ -291,13 +304,29 @@ def get_citizen_record(tables: Dict[str, Table], username: str) -> Optional[Dict
         # Si toujours rien, essayons avec CitizenId au lieu de Username
         log.warning(f"{LogColors.WARNING}No username match for '{username}'. Trying with CitizenId field.{LogColors.ENDC}")
         formula_citizen_id = f"{{CitizenId}} = '{_escape_airtable_value(username)}'"
+        log.debug(f"Searching with CitizenId formula: {formula_citizen_id}")
         records_citizen_id = tables['citizens'].all(formula=formula_citizen_id, max_records=1)
         
         if records_citizen_id:
             log.info(f"{LogColors.OKGREEN}Found citizen with CitizenId match for '{username}'{LogColors.ENDC}")
             return records_citizen_id[0]
+        
+        # Essayons une dernière approche: rechercher tous les citoyens et vérifier manuellement
+        try:
+            log.warning(f"{LogColors.WARNING}Attempting last resort: manual search for '{username}' in all citizens{LogColors.ENDC}")
+            all_citizens = tables['citizens'].all(max_records=100)  # Limiter à 100 pour éviter de surcharger les logs
+            for citizen in all_citizens:
+                citizen_username = citizen['fields'].get('Username', '')
+                citizen_id = citizen['fields'].get('CitizenId', '')
+                if username.lower() == citizen_username.lower() or username.lower() == citizen_id.lower():
+                    log.info(f"{LogColors.OKGREEN}Found citizen via manual search: Username='{citizen_username}', CitizenId='{citizen_id}'{LogColors.ENDC}")
+                    return citizen
             
-        log.error(f"{LogColors.FAIL}Citizen with username or CitizenId '{username}' not found after all attempts{LogColors.ENDC}")
+            # Si on arrive ici, on n'a vraiment pas trouvé le citoyen
+            log.error(f"{LogColors.FAIL}Citizen with username or CitizenId '{username}' not found after all attempts including manual search{LogColors.ENDC}")
+        except Exception as e_manual:
+            log.error(f"{LogColors.FAIL}Error during manual search for citizen '{username}': {e_manual}{LogColors.ENDC}")
+            
         return None
     except Exception as e:
         log.error(f"{LogColors.FAIL}Error fetching citizen record for {username}: {e}{LogColors.ENDC}")
