@@ -66,7 +66,7 @@ def _make_direct_kinos_channel_call(
         # Log request details for debugging
         log.info(f"{LogColors.PROCESS}KinOS API request URL: {url}{LogColors.ENDC}")
         log.info(f"{LogColors.PROCESS}KinOS API request headers: {headers}{LogColors.ENDC}")
-        log.info(f"{LogColors.PROCESS}KinOS API request payload: {json.dumps({k: v if k != 'addSystem' else '<<SYSTEM_DATA>>' for k, v in payload.items()}, indent=2)}{LogColors.ENDC}")
+        log.info(f"{LogColors.PROCESS}KinOS API request payload: {json.dumps({k: v if k != 'addSystem' else add_system_data for k, v in payload.items()}, indent=2)}{LogColors.ENDC}")
         
         # Make the API call
         response = requests.post(url, headers=headers, json=payload, timeout=300)  # 5 minutes timeout for AI responses
