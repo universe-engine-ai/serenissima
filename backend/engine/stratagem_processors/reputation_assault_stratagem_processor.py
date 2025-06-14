@@ -227,10 +227,15 @@ def process(
         tables['stratagems'].update(stratagem_record['id'], {'Status': 'failed', 'Notes': f'Failed to fetch data for executor {executed_by_username}.'})
         return False
     
-    executor_data_package = executor_dp_response.json()
-    if not executor_data_package:
-        log.error(f"{LogColors.FAIL}Failed to get data package for executor {executed_by_username}. Marking stratagem as failed.{LogColors.ENDC}")
-        tables['stratagems'].update(stratagem_record['id'], {'Status': 'failed', 'Notes': f'Failed to get data package for executor {executed_by_username}.'})
+    try:
+        executor_data_package = executor_dp_response.json()
+        if not executor_data_package:
+            log.error(f"{LogColors.FAIL}Empty data package for executor {executed_by_username}. Marking stratagem as failed.{LogColors.ENDC}")
+            tables['stratagems'].update(stratagem_record['id'], {'Status': 'failed', 'Notes': f'Empty data package for executor {executed_by_username}.'})
+            return False
+    except (json.JSONDecodeError, ValueError) as e_json:
+        log.error(f"{LogColors.FAIL}Failed to parse JSON data package for executor {executed_by_username}: {e_json}. Response text: {executor_dp_response.text[:200]}{LogColors.ENDC}")
+        tables['stratagems'].update(stratagem_record['id'], {'Status': 'failed', 'Notes': f'Failed to parse JSON data package for executor {executed_by_username}. Error: {str(e_json)}'})
         return False
     executor_profile_for_kinos = executor_data_package.get('citizen', {})
     if not executor_profile_for_kinos: # Check if citizen profile itself is missing after successful parse
@@ -252,10 +257,15 @@ def process(
         tables['stratagems'].update(stratagem_record['id'], {'Status': 'failed', 'Notes': f'Failed to fetch data for target {target_citizen_username}.'})
         return False
     
-    target_data_package = target_dp_response.json()
-    if not target_data_package:
-        log.error(f"{LogColors.FAIL}Failed to get data package for target {target_citizen_username}. Marking stratagem as failed.{LogColors.ENDC}")
-        tables['stratagems'].update(stratagem_record['id'], {'Status': 'failed', 'Notes': f'Failed to get data package for target {target_citizen_username}.'})
+    try:
+        target_data_package = target_dp_response.json()
+        if not target_data_package:
+            log.error(f"{LogColors.FAIL}Empty data package for target {target_citizen_username}. Marking stratagem as failed.{LogColors.ENDC}")
+            tables['stratagems'].update(stratagem_record['id'], {'Status': 'failed', 'Notes': f'Empty data package for target {target_citizen_username}.'})
+            return False
+    except (json.JSONDecodeError, ValueError) as e_json:
+        log.error(f"{LogColors.FAIL}Failed to parse JSON data package for target {target_citizen_username}: {e_json}. Response text: {target_dp_response.text[:200]}{LogColors.ENDC}")
+        tables['stratagems'].update(stratagem_record['id'], {'Status': 'failed', 'Notes': f'Failed to parse JSON data package for target {target_citizen_username}. Error: {str(e_json)}'})
         return False
     target_profile_for_kinos = target_data_package.get('citizen', {})
     if not target_profile_for_kinos:
@@ -325,9 +335,13 @@ def process(
             log.warning(f"{LogColors.WARNING}Failed to fetch data package for related citizen {related_citizen_username}. Status: {related_citizen_dp_response.status_code}, Response: {related_citizen_dp_response.text[:200]}. Skipping message to them.{LogColors.ENDC}")
             continue
         
-        related_citizen_data_package = related_citizen_dp_response.json()
-        if not related_citizen_data_package:
-            log.warning(f"{LogColors.WARNING}Failed to get data package for related citizen {related_citizen_username}. Skipping message to them.{LogColors.ENDC}")
+        try:
+            related_citizen_data_package = related_citizen_dp_response.json()
+            if not related_citizen_data_package:
+                log.warning(f"{LogColors.WARNING}Empty data package for related citizen {related_citizen_username}. Skipping message to them.{LogColors.ENDC}")
+                continue
+        except (json.JSONDecodeError, ValueError) as e_json:
+            log.warning(f"{LogColors.WARNING}Failed to parse JSON data package for related citizen {related_citizen_username}: {e_json}. Response text: {related_citizen_dp_response.text[:200]}. Skipping message to them.{LogColors.ENDC}")
             continue
         related_citizen_profile_for_kinos = related_citizen_data_package.get('citizen', {})
         if not related_citizen_profile_for_kinos: # Ensure it's a dict
