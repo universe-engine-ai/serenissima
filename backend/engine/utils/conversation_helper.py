@@ -489,11 +489,35 @@ def generate_conversation_turn(
         log.info(f"Generating conversation turn: Speaker: {speaker_username}, Listener: {listener_username}")
 
     # 1. Get Speaker and Listener (observed/spoken-to citizen) profiles
+    log.info(f"Fetching profiles for conversation between {speaker_username} (speaker) and {listener_username} (listener)")
+    
+    # Vérifier que tables contient bien la table 'citizens'
+    if 'citizens' not in tables:
+        log.error(f"Table 'citizens' not found in tables dictionary. Available tables: {list(tables.keys())}")
+        return None
+    
+    # Vérifier que la table citizens est bien initialisée
+    if tables['citizens'] is None:
+        log.error(f"Table 'citizens' is None in tables dictionary")
+        return None
+    
+    # Ajouter plus de logs pour le débogage
+    log.info(f"Attempting to get citizen record for speaker: {speaker_username}")
     speaker_profile_record = get_citizen_record(tables, speaker_username)
     if not speaker_profile_record:
         log.error(f"Could not find profile for speaker: {speaker_username}")
+        # Essayer de lister quelques citoyens pour vérifier que la table fonctionne
+        try:
+            sample_citizens = tables['citizens'].all(max_records=3)
+            if sample_citizens:
+                log.info(f"Sample citizens in database: {[c['fields'].get('Username', 'Unknown') for c in sample_citizens]}")
+            else:
+                log.warning("No citizens found in database when sampling")
+        except Exception as e:
+            log.error(f"Error when trying to sample citizens: {e}")
         return None
         
+    log.info(f"Attempting to get citizen record for listener: {listener_username}")
     listener_profile_record = get_citizen_record(tables, listener_username)
     if not listener_profile_record:
         log.error(f"Could not find profile for listener: {listener_username}")
