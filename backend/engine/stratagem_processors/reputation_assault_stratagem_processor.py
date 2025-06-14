@@ -24,6 +24,70 @@ from backend.engine.utils.activity_helpers import (
 )
 # Import for direct KinOS API calls
 import requests
+
+# Define the KinOS API call function at the module level
+def _make_direct_kinos_channel_call(
+    kin_username: str,
+    channel_username: str,
+    prompt: str,
+    kinos_api_key: str,
+    kinos_model_override: Optional[str] = None,
+    add_system_data: Optional[Dict[str, Any]] = None
+) -> Optional[str]:
+    """
+    Makes a direct call to the KinOS API for a specific channel.
+    Returns the response text or None if the call fails.
+    """
+    try:
+        # Base URL for KinOS API
+        kinos_api_url_base = "https://api.kinos-engine.ai/v2/blueprints/serenissima-ai/kins"
+        
+        # Construct the full URL for the channel
+        url = f"{kinos_api_url_base}/{kin_username}/channels/{channel_username}"
+        
+        # Prepare headers with API key
+        headers = {
+            "Content-Type": "application/json",
+            "Authorization": f"Bearer {kinos_api_key}"
+        }
+        
+        # Prepare payload
+        payload = {
+            "prompt": prompt,
+            "model": kinos_model_override or "gemini-1.5-pro-latest" # Default model if none specified
+        }
+        
+        # Add system data if provided
+        if add_system_data:
+            payload["addSystem"] = add_system_data
+        
+        log.info(f"{LogColors.PROCESS}Making direct KinOS API call for {kin_username} to channel {channel_username} with model: {payload.get('model')}{LogColors.ENDC}")
+        
+        # Make the API call
+        response = requests.post(url, headers=headers, json=payload, timeout=60)  # Longer timeout for AI responses
+        response.raise_for_status()  # Raise exception for HTTP errors
+        
+        # Parse response
+        response_data = response.json()
+        
+        if response_data.get("success") and "response" in response_data:
+            log.info(f"{LogColors.OKGREEN}Successfully received KinOS response for {kin_username} to channel {channel_username}{LogColors.ENDC}")
+            return response_data["response"]
+        else:
+            log.error(f"{LogColors.FAIL}KinOS API call succeeded but returned error: {response_data.get('error', 'Unknown error')}{LogColors.ENDC}")
+            return None
+            
+    except requests.exceptions.RequestException as e:
+        log.error(f"{LogColors.FAIL}RequestException in KinOS API call: {e}{LogColors.ENDC}")
+        return None
+    except json.JSONDecodeError as e:
+        log.error(f"{LogColors.FAIL}JSONDecodeError in KinOS API call: {e}. Response text: {response.text[:200] if 'response' in locals() and hasattr(response, 'text') else 'N/A'}{LogColors.ENDC}")
+        return None
+    except Exception as e:
+        log.error(f"{LogColors.FAIL}Unexpected error in KinOS API call: {e}{LogColors.ENDC}")
+        import traceback
+        log.error(traceback.format_exc())
+        return None
 from backend.engine.utils.relationship_helpers import (
     update_trust_score_for_activity,
     _rh_get_relationship_data, # Helper to get relationship details
