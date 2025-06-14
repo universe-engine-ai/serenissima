@@ -43,7 +43,7 @@ def _make_direct_kinos_channel_call(
         kinos_api_url_base = "https://api.kinos-engine.ai/v2/blueprints/serenissima-ai/kins"
         
         # Construct the full URL for the channel
-        url = f"{kinos_api_url_base}/{kin_username}/channels/{channel_username}"
+        url = f"{kinos_api_url_base}/{kin_username}/channels/{channel_username}/messages"
         
         # Prepare headers with API key
         headers = {
@@ -54,7 +54,7 @@ def _make_direct_kinos_channel_call(
         # Prepare payload
         payload = {
             "prompt": prompt,
-            "model": kinos_model_override or "gemini-1.5-pro-latest" # Default model if none specified
+            "model": kinos_model_override or "local" # Default model if none specified
         }
         
         # Add system data if provided
