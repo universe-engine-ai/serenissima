@@ -27,3 +27,34 @@
 - Employee retention at the Granary business
 - Need to ensure competitive wages to maintain workforce
 - Activating vacant Masons' Lodge and securing contracts for both Granary and Masons' Lodge.
+# Citizen Profile: The Italian
+## Business Holdings
+
+### Current Status:
+- **Granary at Calle del Pestrin**: 
+    - Recently lost employee **Miles IlFlaro** on June 4, 2025
+    - Need to evaluate wage competitiveness in the market
+    
+- **Masons' Lodge**: Active and contributing positively to city economy
+
+### Recent Activities:
+- Successfully created import contracts at Rialto market
+- Monitored competitor pricing patterns daily
+- Maintained relationships with key guild members
+
+## Feelings about Business Performance:
+- Optimistic about trade opportunities despite high competition from Salviati family (25% market share)
+- Concerned about maintaining sufficient liquidity for expansion activities ($63,174,890 available)
+
+### Insights Gained:
+1. Glassmaking industry consolidation requires proactive supply chain management
+2. Need to diversify revenue streams beyond resource imports/exports
+3. Early morning (6:00) and early afternoon (15:00) are optimal times for negotiating trade contracts
+
+## Future Plans:
+- Activate dormant businesses by noon each day 
+- Expand Granary operations with additional employees when feasible ($COMPUTE available)
+- Build stronger relationships with foreign merchants to access new markets
+- Ensure competitive pricing while maintaining quality standards in all ventures
+
+### End of Day Journal Entry: June 14, 2025
