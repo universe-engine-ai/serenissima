@@ -188,7 +188,7 @@ from backend.engine.activity_processors.buy_listed_land_processor import process
 from backend.engine.activity_processors.cancel_land_listing_processor import process_cancel_land_listing_fn
 from backend.engine.activity_processors.cancel_land_offer_processor import process_cancel_land_offer_fn
 from backend.engine.activity_processors.manage_public_storage_contract_processor import process_register_public_storage_offer_fn
-from backend.engine.activity_processors.spread_rumor_activity_processor import process as process_spread_rumor_fn # Import du nouveau processeur
+# Import du processeur spread_rumor est maintenant géré via ACTIVITY_PROCESSORS dans __init__.py
 
 # Load environment variables
 load_dotenv(os.path.join(PROJECT_ROOT, '.env'))

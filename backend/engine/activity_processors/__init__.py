@@ -54,7 +54,7 @@ from .drink_at_inn_activity_processor import process as process_drink_at_inn # N
 from .use_public_bath_processor import process as process_use_public_bath # New public bath processor
 from .rest_processor import process as process_rest # New rest processor
 from .occupant_self_construction_processor import process_occupant_self_construction_fn # New occupant self-construction processor
-from .spread_rumor_activity_processor import process as process_spread_rumor # New processor for spreading rumors
+from .spread_rumor_activity_processor import process as process_spread_rumor_fn # New processor for spreading rumors
 
 # Imports pour les processeurs de terrains et contrats
 from .bid_on_land_activity_processor import process_bid_on_land_fn
@@ -132,7 +132,7 @@ ACTIVITY_PROCESSORS = {
     'use_public_bath': process_use_public_bath,
     'rest': process_rest,
     'occupant_self_construction': process_occupant_self_construction_fn,
-    'spread_rumor': process_spread_rumor,
+    'spread_rumor': process_spread_rumor_fn,
     # Ajout des processeurs pour les activités liées aux terrains et aux contrats
     'bid_on_land': process_bid_on_land_fn,
     'submit_land_bid': process_bid_on_land_fn,
