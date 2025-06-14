@@ -22,6 +22,8 @@ from backend.engine.utils.activity_helpers import (
     get_citizen_record,
     clean_thought_content # For cleaning AI generated messages
 )
+# Import for direct KinOS API calls
+import requests
 from backend.engine.utils.relationship_helpers import (
     update_trust_score_for_activity,
     _rh_get_relationship_data, # Helper to get relationship details
@@ -304,41 +306,57 @@ def process(
             cleaned_specific_message = clean_thought_content(tables, specific_message_content)
             log.info(f"{LogColors.PROCESS}Generated specific message from {executed_by_username} (self-chat) for {related_citizen_username}: '{cleaned_specific_message[:100]}...'{LogColors.ENDC}")
 
-            # --- Create send_message activity ---
+            # --- Create send_message activity directly using the send_message_creator ---
             if not api_base_url:
                 log.error(f"{LogColors.FAIL}Python engine API base URL not provided. Cannot create send_message activity for stratagem {stratagem_id}.{LogColors.ENDC}")
                 continue
 
-            activity_payload = {
-                "citizenUsername": executed_by_username,
-                "activityType": "send_message",
-                "activityParameters": {
-                    "receiverUsername": related_citizen_username,
-                    "content": cleaned_specific_message,
-                    "messageType": "stratagem_smear_delivery", # New type to distinguish
-                    "notes": { # Optional, but good for tracking
-                        "stratagemId": stratagem_id,
-                        "originalTarget": target_citizen_username, # This is the one being smeared
-                        "assaultAngle": assault_angle_from_notes or "N/A",
-                        "targetCitizenUsernameForTrustImpact": target_citizen_username # Pass the smeared target for trust impact
-                    }
+            # Import the send_message_creator directly
+            from backend.engine.activity_creators.send_message_creator import try_create as try_create_send_message
+            
+            # Get the executor's citizen record
+            executor_citizen_record = get_citizen_record(tables, executed_by_username)
+            if not executor_citizen_record:
+                log.error(f"{LogColors.FAIL}Could not find citizen record for executor {executed_by_username}. Skipping message to {related_citizen_username}.{LogColors.ENDC}")
+                continue
+                
+            # Prepare activity parameters similar to what the API would expect
+            activity_details = {
+                "receiverUsername": related_citizen_username,
+                "content": cleaned_specific_message,
+                "messageType": "stratagem_smear_delivery", # New type to distinguish
+                "notes": { # Optional, but good for tracking
+                    "stratagemId": stratagem_id,
+                    "originalTarget": target_citizen_username, # This is the one being smeared
+                    "assaultAngle": assault_angle_from_notes or "N/A",
+                    "targetCitizenUsernameForTrustImpact": target_citizen_username # Pass the smeared target for trust impact
                 }
             }
+            
+            # Get transport API URL from the base URL if not provided
+            transport_api_url = f"{api_base_url}/api/transport" if api_base_url else None
+            
+            log.info(f"{LogColors.PROCESS}Directly calling send_message_creator.try_create for {executed_by_username} to send message to {related_citizen_username}{LogColors.ENDC}")
+            
             try:
-                create_activity_url = f"{api_base_url}/api/v1/engine/try-create-activity"
-                log.info(f"{LogColors.PROCESS}Attempting to create send_message activity via: {create_activity_url}{LogColors.ENDC}")
-                response = requests.post(create_activity_url, json=activity_payload, timeout=30)
-                response.raise_for_status()
-                response_data = response.json()
-                if response_data.get("success"):
-                    log.info(f"{LogColors.OKGREEN}Successfully initiated send_message activity for {executed_by_username} to {related_citizen_username}. Activity: {response_data.get('activity', {}).get('Type', 'N/A')}{LogColors.ENDC}")
+                # Call the send_message_creator directly
+                created_activity = try_create_send_message(
+                    tables=tables,
+                    citizen_record=executor_citizen_record,
+                    details=activity_details,
+                    api_base_url=api_base_url,
+                    transport_api_url=transport_api_url
+                )
+                
+                if created_activity:
+                    log.info(f"{LogColors.OKGREEN}Successfully created send_message activity directly for {executed_by_username} to {related_citizen_username}. Activity ID: {created_activity.get('id', 'N/A')}{LogColors.ENDC}")
                     messages_sent_count += 1
                 else:
-                    log.warning(f"{LogColors.WARNING}Failed to create send_message activity for {related_citizen_username}. API Response: {response_data.get('message', 'Unknown error')}{LogColors.ENDC}")
-            except requests.exceptions.RequestException as e_activity:
-                log.error(f"{LogColors.FAIL}Error creating send_message activity for {related_citizen_username}: {e_activity}{LogColors.ENDC}")
-            except json.JSONDecodeError as e_json_activity:
-                log.error(f"{LogColors.FAIL}Error decoding JSON response from create activity API for {related_citizen_username}: {e_json_activity}. Response text: {response.text[:200] if 'response' in locals() and hasattr(response, 'text') else 'N/A'}{LogColors.ENDC}")
+                    log.warning(f"{LogColors.WARNING}Failed to create send_message activity directly for {executed_by_username} to {related_citizen_username}.{LogColors.ENDC}")
+            except Exception as e_direct_create:
+                log.error(f"{LogColors.FAIL}Error directly creating send_message activity for {related_citizen_username}: {e_direct_create}{LogColors.ENDC}")
+                import traceback
+                log.error(traceback.format_exc())
         else:
             log.warning(f"{LogColors.WARNING}Failed to generate specific message content (self-chat) for {related_citizen_username} (re: {target_citizen_username}) for stratagem {stratagem_id}.{LogColors.ENDC}")
 
