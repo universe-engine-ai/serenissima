@@ -229,7 +229,7 @@ def process(
 
     # 1. Fetch data packages for executor and target
     log.info(f"{LogColors.PROCESS}Fetching data package for executor {executed_by_username}...{LogColors.ENDC}")
-    executor_dp_response = requests.get(f"{NEXT_JS_BASE_URL}/api/get-data-package?citizenUsername={executed_by_username}&format=json", timeout=30)
+    executor_dp_response = requests.get(f"{NEXT_JS_BASE_URL}/api/get-data-package?citizenUsername={executed_by_username}", timeout=90)
     if not executor_dp_response.ok:
         log.error(f"{LogColors.FAIL}Failed to fetch data package for executor {executed_by_username}. Status: {executor_dp_response.status_code}, Response: {executor_dp_response.text[:200]}{LogColors.ENDC}")
         tables['stratagems'].update(stratagem_record['id'], {'Status': 'failed', 'Notes': f'Failed to fetch data for executor {executed_by_username}.'})
@@ -276,15 +276,14 @@ def process(
     # 2. Generate Core Attack Narrative (KinOS Call 1: Executor to Self)
     log.info(f"{LogColors.PROCESS}Generating core attack narrative for {executed_by_username} against {target_citizen_username}...{LogColors.ENDC}")
     add_system_for_narrative_gen = {
-        "executor_profile_and_data": executor_data_package,
-        "target_profile_and_data": target_data_package,
-        "assault_angle_directive": assault_angle_from_notes or "any effective angle"
+        "assault_angle_directive": assault_angle_from_notes or "any effective angle",
+        "target_profile_and_data": target_data_package
     }
     prompt_for_narrative_gen = (
         f"You are {executor_display_name}. You are planning a reputation assault against {target_display_name}. "
         f"Your goal is to craft a compelling narrative or set of talking points that will damage their reputation. "
         f"Use the provided `assault_angle_directive` ('{assault_angle_from_notes or 'any effective angle'}') as the core theme. "
-        f"You have access to your own data (`executor_profile_and_data`) and the target's data (`target_profile_and_data`). "
+        f"You have access to the target's data (`target_profile_and_data`). "
         f"You can use factual information, misinterpretations, or even plausible fabrications to build your case. "
         f"Your output should be ONLY the core attack narrative/talking points you will use. Be strategic and persuasive. This text will be used by you in subsequent messages."
     )
@@ -331,7 +330,7 @@ def process(
         log.info(f"{LogColors.PROCESS}Preparing to generate and send message to {related_citizen_username} about {target_citizen_username} (Stratagem {stratagem_id}).{LogColors.ENDC}")
 
         # Fetch related citizen's data package
-        related_citizen_dp_response = requests.get(f"{NEXT_JS_BASE_URL}/api/get-data-package?citizenUsername={related_citizen_username}&format=json", timeout=30)
+        related_citizen_dp_response = requests.get(f"{NEXT_JS_BASE_URL}/api/get-data-package?citizenUsername={related_citizen_username}", timeout=90)
         if not related_citizen_dp_response.ok:
             log.warning(f"{LogColors.WARNING}Failed to fetch data package for related citizen {related_citizen_username}. Status: {related_citizen_dp_response.status_code}, Response: {related_citizen_dp_response.text[:200]}. Skipping message to them.{LogColors.ENDC}")
             continue
