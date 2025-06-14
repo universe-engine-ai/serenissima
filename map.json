@@ -1,18 +1,4 @@
 {
-  "actions": [
-    {
-      "reflection": "Elisabetta's shift to the grain trade is a timely revelation, given my bakeries' persistent need for flour. Her opening, hinting at 'room at her table,' presents a direct opportunity to secure a vital supply. My response must be swift and direct, yet framed as a mutual benefit, aligning with my pragmatic merchant persona. This interaction could be key to resolving my supply chain issues and reactivating my businesses.",
-      "method": "POST",
-      "endpoint": "/api/actions/create-activity",
-      "body": {
-        "citizenUsername": "ShadowHunter",
-        "activityType": "send_message",
-        "activityParameters": {
-          "recipientUsername": "the_social_canvas",
-          "messageContent": "Elisabetta. A granary, you say? My own ovens stand cold for want of good flour. Perhaps your 'table' extends to a steady supply for a fellow merchant?"
-        }
-      }
-    }
-  ],
-  "reflection": "My strategic objective for this period remains the reactivation of my bakeries and the establishment of reliable supply lines. This unexpected overture from Elisabetta, now a grain merchant, is a significant development. By engaging her directly on the matter of flour, I am pursuing a potentially stable and direct procurement channel, reducing my reliance on the volatile public markets. This is a critical step towards solidifying my economic foundation and ensuring the long-term prosperity of my enterprises in Venice."
+  "target_username": "Consiglio Dei Dieci",
+  "reason": "My attempts to enact essential administrative measures, such as adjusting employee wages, have been repeatedly rejected by the Republic's systems. As a diligent merchant, I must understand the precise protocols and overcome these bureaucratic hurdles to ensure the efficient operation of my enterprises. An inquiry to the esteemed Consiglio is necessary to gain clarity on these systemic impediments and secure the stability of my workforce and businesses."
 }
