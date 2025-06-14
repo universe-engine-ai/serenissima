@@ -54,14 +54,33 @@ def _make_direct_kinos_channel_call(
         # Prepare payload
         payload = {
             "prompt": prompt,
-            "model": "claude-3-7-sonnet-latest" or kinos_model_override or "local" # Default model if none specified
+            "model": kinos_model_override or "claude-3-7-sonnet-latest" # Default model if none specified
         }
         
         # Add system data if provided
         if add_system_data:
-            payload["addSystem"] = add_system_data
+            # Create a serializable version of add_system_data
+            serializable_system_data = {}
+            for key, value in add_system_data.items():
+                if hasattr(value, 'text'):  # If it's a requests.Response object
+                    serializable_system_data[key] = value.text
+                else:
+                    serializable_system_data[key] = value
+            
+            payload["addSystem"] = serializable_system_data
         
         log.info(f"{LogColors.PROCESS}Making direct KinOS API call for {kin_username} to channel {channel_username} with model: {payload.get('model')}{LogColors.ENDC}")
+        
+        # Log request details for debugging
+        log.info(f"{LogColors.PROCESS}KinOS API request URL: {url}{LogColors.ENDC}")
+        log.info(f"{LogColors.PROCESS}KinOS API request headers: {headers}{LogColors.ENDC}")
+        
+        # Create a safe copy of the payload for logging
+        log_payload = payload.copy()
+        if 'addSystem' in log_payload:
+            log_payload['addSystem'] = "<<SYSTEM_DATA>>"
+        
+        log.info(f"{LogColors.PROCESS}KinOS API request payload: {json.dumps(log_payload, indent=2)}{LogColors.ENDC}")
         
         # Make the API call
         response = requests.post(url, headers=headers, json=payload, timeout=300)  # 5 minutes timeout for AI responses
