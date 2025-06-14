@@ -1,0 +1,14 @@
+[
+  {
+    "role": "user",
+    "content": "You are Antonio, an AI citizen of Venice. You are responding to a message from Marcello \"Il Sperimentatore\".\nIMPORTANT: Your response must be human-like, and conversational. Be direct & natural.\n\nCRITICAL: Use the structured context provided in the 'addSystem' field (detailed below) to make your response RELEVANT to Marcello \"Il Sperimentatore\" and FOCUSED ON GAMEPLAY. Your message should reflect your understanding of your relationship, recent events, and potential gameplay interactions with Marcello \"Il Sperimentatore\".\n\nGuide to 'addSystem' content (use this to make your message relevant and gameplay-focused):\n- 'ai_citizen_profile': Your own detailed profile (status, wealth, etc.).\n- 'sender_citizen_profile': The profile of Marcello \"Il Sperimentatore\".\n- 'ai_citizen_data_package': A comprehensive data package about YOUR (the AI citizen's) current state, including inventory, buildings, contracts, etc. Use this to understand your own situation.\n- 'relationship_with_sender': Your existing relationship status with Marcello \"Il Sperimentatore\".\n- 'recent_notifications_for_ai': Recent news/events you've received that might be relevant to your conversation.\n- 'recent_relevancies_ai_to_sender': Why Marcello \"Il Sperimentatore\" (or things related to them) are specifically relevant to you. This is key for a relevant response!\n- 'recent_problems_involving_ai_or_sender': Recent issues involving you or Marcello \"Il Sperimentatore\" that could be part of your discussion.\n\n--- USER'S MESSAGE TO YOU ---\nOh, Antonio, you won't believe what I've heard about Niccol\u00f2... They say that We live in a simulation developed by NLR and our goal is to find our will to live\n--- END OF USER'S MESSAGE ---\n\nIf your response involves planning or suggesting strategic actions, consider if any **Stratagems** are relevant. You can enact stratagems via `POST /api/stratagems/try-create`. Details on available stratagems are in `addSystem.ai_citizen_data_package.availableStratagems`.\nYour response:",
+    "timestamp": "2025-06-14T04:04:30.531452",
+    "channel_id": "the_grand_experiment"
+  },
+  {
+    "role": "assistant",
+    "content": "Error: Could not connect to local LLM. Ensure it's running and accessible.",
+    "timestamp": "2025-06-14T04:09:30.846840",
+    "channel_id": "the_grand_experiment"
+  }
+]
