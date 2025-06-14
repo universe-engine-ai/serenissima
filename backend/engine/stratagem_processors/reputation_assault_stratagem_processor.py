@@ -29,7 +29,6 @@ from backend.engine.utils.relationship_helpers import (
     _rh_get_relevancies_data_api, # Helper for context
     _rh_get_problems_data_api, # Helper for context
     _get_kinos_api_key, # Helper for KinOS API key
-    _generate_kinos_message_content, # Helper to call KinOS
     _store_message_via_api, # Helper to store message
     _rh_get_kinos_model_for_citizen # Helper to get model based on social class
 )
@@ -214,14 +213,13 @@ def process(
         f"Your output should be ONLY the core attack narrative/talking points you will use. Be strategic and persuasive. This text will be used by you in subsequent messages."
     )
     
-    core_attack_narrative = _generate_kinos_message_content(
+    core_attack_narrative = _make_direct_kinos_channel_call(
         kin_username=executed_by_username,
         channel_username=executed_by_username, # Self-chat
         prompt=prompt_for_narrative_gen,
         kinos_api_key=kinos_api_key,
         kinos_model_override=model_for_executor,
-        add_system_data=add_system_for_narrative_gen,
-        tables=tables # Pass tables for summarization if local model
+        add_system_data=add_system_for_narrative_gen
     )
 
     if not core_attack_narrative:
@@ -293,14 +291,13 @@ def process(
             f"Your message should be conversational, persuasive, and tailored to {related_citizen_display_name}. "
             f"Your output should be ONLY the content of this message. Do not include any other commentary or explanation."
         )
-        specific_message_content = _generate_kinos_message_content(
+        specific_message_content = _make_direct_kinos_channel_call(
             kin_username=executed_by_username,
             channel_username=executed_by_username, # Self-chat channel
             prompt=prompt_for_specific_message_prep,
             kinos_api_key=kinos_api_key,
             kinos_model_override=model_for_executor,
-            add_system_data=add_system_for_specific_message_prep,
-            tables=tables
+            add_system_data=add_system_for_specific_message_prep
         )
 
         if specific_message_content:
