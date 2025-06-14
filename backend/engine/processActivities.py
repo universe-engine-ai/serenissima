@@ -878,6 +878,7 @@ def process_all_activities_for_one_citizen(
                         processing_status = "failed"
                 else:
                     log.warning(f"{LogColors.WARNING}Citizen {citizen_username_log_ctx}: No processor for activity type: {activity_type} (ID: {activity_guid}). Marking as failed.{LogColors.ENDC}")
+                    log.info(f"Available processors: {', '.join(sorted(ACTIVITY_PROCESSORS.keys()))}")
                     processing_status = "failed"
             except Exception as e_process:
                 log.error(f"{LogColors.FAIL}Citizen {citizen_username_log_ctx}: Exception during processing of activity {activity_guid} (type {activity_type}): {e_process}{LogColors.ENDC}")
