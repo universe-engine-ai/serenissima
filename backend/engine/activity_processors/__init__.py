@@ -13,6 +13,9 @@
 # - If an activity in a chain fails, the processor should mark it as failed
 #   and the processActivities.py script will handle marking dependent activities as failed
 
+import logging
+log = logging.getLogger(__name__)
+
 from .deliver_resource_batch_processor import process as process_deliver_resource_batch
 from .goto_home_processor import process as process_goto_home
 from .goto_work_processor import process as process_goto_work
