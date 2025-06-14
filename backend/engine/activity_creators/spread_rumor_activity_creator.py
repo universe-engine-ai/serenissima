@@ -48,15 +48,40 @@ def try_create(
     citizen_custom_id = citizen_record['fields'].get('CitizenId')
     citizen_airtable_id = citizen_record['id']
     
+    # Check if parameters are directly in activity_params or in a nested 'notes' JSON string
     target_citizen = activity_params.get('targetCitizen')
     gossip_content = activity_params.get('gossipContent')
     location_id = activity_params.get('locationId')
     location_coords_raw = activity_params.get('locationCoords')
+    position = activity_params.get('position')  # Direct position parameter
+    
+    # If parameters are in notes JSON string, extract them
+    notes_str = activity_params.get('notes')
+    if notes_str and not (target_citizen and gossip_content):
+        try:
+            if isinstance(notes_str, str):
+                notes_data = json.loads(notes_str)
+                target_citizen = target_citizen or notes_data.get('targetCitizen')
+                gossip_content = gossip_content or notes_data.get('gossipContent')
+                location_coords_raw = location_coords_raw or notes_data.get('locationCoords')
+            elif isinstance(notes_str, dict):
+                # Already a dictionary
+                target_citizen = target_citizen or notes_str.get('targetCitizen')
+                gossip_content = gossip_content or notes_str.get('gossipContent')
+                location_coords_raw = location_coords_raw or notes_str.get('locationCoords')
+        except json.JSONDecodeError as e:
+            log.warning(f"Could not parse notes JSON for spread_rumor: {e}")
+    
+    # If position is provided directly but not locationCoords, use position
+    if not location_coords_raw and position:
+        location_coords_raw = position
     
     # Validate required parameters
     if not all([citizen_username, target_citizen, gossip_content]):
         log.error(f"{LogColors.FAIL}Missing required parameters for spread_rumor for {citizen_username}. Params: {activity_params}{LogColors.ENDC}")
         return False
+    
+    log.info(f"{LogColors.OKBLUE}Creating spread_rumor activity for {citizen_username} targeting {target_citizen} with coordinates: {location_coords_raw}{LogColors.ENDC}")
     
     # Validate target citizen exists
     target_citizen_record = get_citizen_record(tables, target_citizen)

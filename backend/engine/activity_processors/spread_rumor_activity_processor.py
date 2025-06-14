@@ -49,18 +49,55 @@ def process(
         return False
 
     try:
-        rumor_details = json.loads(notes_str)
+        # Try to parse notes as JSON
+        if isinstance(notes_str, str):
+            try:
+                rumor_details = json.loads(notes_str)
+            except json.JSONDecodeError:
+                log.error(f"{LogColors.FAIL}Impossible de parser JSON depuis les notes de l'activité {activity_guid}. Notes: {notes_str}{LogColors.ENDC}")
+                return False
+        else:
+            # Notes might already be a dictionary
+            rumor_details = notes_str if isinstance(notes_str, dict) else {}
+            
         target_citizen_gossip = rumor_details.get("targetCitizen")
         gossip_content = rumor_details.get("gossipContent")
         location_coords_rumor_str = rumor_details.get("locationCoords") # Coords où la rumeur est répandue
         
         if not location_coords_rumor_str: # Fallback si locationCoords n'est pas dans les notes
-            # Essayer de déduire du FromBuilding ou ToBuilding de l'activité
-            # Cela suppose que l'activité spread_rumor a un FromBuilding/ToBuilding pertinent
-            # Ce n'est pas le cas actuellement car le créateur ne le définit pas.
-            # Pour l'instant, on logue une erreur si locationCoords est manquant.
-            log.error(f"{LogColors.FAIL}Coordonnées du lieu de la rumeur ('locationCoords') manquantes dans les notes de {activity_guid}.{LogColors.ENDC}")
-            return False
+            # Try to get position from the activity record directly
+            position_field = fields.get('Position')
+            if position_field:
+                try:
+                    if isinstance(position_field, str):
+                        location_coords_rumor_str = position_field
+                    else:
+                        # Position might already be a dictionary
+                        location_coords_rumor_str = json.dumps(position_field) if isinstance(position_field, dict) else None
+                except Exception as e:
+                    log.warning(f"Error parsing Position field: {e}")
+            
+            # If still no coordinates, try FromBuilding or ToBuilding
+            if not location_coords_rumor_str:
+                from_building_id = fields.get('FromBuilding')
+                to_building_id = fields.get('ToBuilding')
+                building_id = to_building_id or from_building_id
+                
+                if building_id:
+                    try:
+                        building_formula = f"{{BuildingId}}='{_escape_airtable_value(building_id)}'"
+                        building_records = tables['buildings'].all(formula=building_formula)
+                        if building_records:
+                            building_pos = _get_building_position_coords(building_records[0])
+                            if building_pos:
+                                location_coords_rumor_str = json.dumps(building_pos)
+                    except Exception as e:
+                        log.warning(f"Error getting building coordinates: {e}")
+            
+            # If still no coordinates, log error and return
+            if not location_coords_rumor_str:
+                log.error(f"{LogColors.FAIL}Coordonnées du lieu de la rumeur ('locationCoords') manquantes dans les notes de {activity_guid}.{LogColors.ENDC}")
+                return False
 
         location_coords_rumor = json.loads(location_coords_rumor_str) if isinstance(location_coords_rumor_str, str) else location_coords_rumor_str
 
