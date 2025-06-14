@@ -132,7 +132,6 @@ ACTIVITY_PROCESSORS = {
     'use_public_bath': process_use_public_bath,
     'rest': process_rest,
     'occupant_self_construction': process_occupant_self_construction_fn,
-    'spread_rumor': process_spread_rumor_fn,
     # Ajout des processeurs pour les activités liées aux terrains et aux contrats
     'bid_on_land': process_bid_on_land_fn,
     'submit_land_bid': process_bid_on_land_fn,
@@ -163,6 +162,7 @@ ACTIVITY_PROCESSORS = {
     'execute_buy_listed_land': process_buy_listed_land_fn,
     'execute_cancel_land_listing': process_cancel_land_listing_fn,
     'execute_cancel_land_offer': process_cancel_land_offer_fn,
+    'spread_rumor': process_spread_rumor_fn,
     'idle': process_placeholder_activity_fn,
     'secure_warehouse': process_placeholder_activity_fn,
 }
