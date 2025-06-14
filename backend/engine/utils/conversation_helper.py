@@ -508,20 +508,85 @@ def generate_conversation_turn(
         log.error(f"Could not find profile for speaker: {speaker_username}")
         # Essayer de lister quelques citoyens pour vérifier que la table fonctionne
         try:
-            sample_citizens = tables['citizens'].all(max_records=3)
+            sample_citizens = tables['citizens'].all(max_records=10)
             if sample_citizens:
-                log.info(f"Sample citizens in database: {[c['fields'].get('Username', 'Unknown') for c in sample_citizens]}")
+                sample_usernames = [c['fields'].get('Username', 'Unknown') for c in sample_citizens]
+                log.info(f"Sample citizens in database: {sample_usernames}")
+                
+                # Vérifier si le citoyen recherché est dans les échantillons
+                if speaker_username in sample_usernames:
+                    log.warning(f"Citizen {speaker_username} found in sample but not by get_citizen_record. Trying direct lookup.")
+                    # Recherche directe par correspondance dans les échantillons
+                    for citizen in sample_citizens:
+                        if citizen['fields'].get('Username') == speaker_username:
+                            log.info(f"Found {speaker_username} directly in sample citizens. Using this record.")
+                            speaker_profile_record = citizen
+                            break
+                
+                if not speaker_profile_record:
+                    # Essayer une recherche directe dans la table complète
+                    log.warning(f"Trying full table scan for {speaker_username}")
+                    all_citizens = tables['citizens'].all(max_records=100)
+                    for citizen in all_citizens:
+                        if citizen['fields'].get('Username') == speaker_username:
+                            log.info(f"Found {speaker_username} in full table scan. Using this record.")
+                            speaker_profile_record = citizen
+                            break
+                
+                if speaker_profile_record:
+                    # Si on a trouvé le citoyen par une méthode alternative, continuer
+                    log.info(f"Successfully recovered profile for {speaker_username} using alternative method.")
+                else:
+                    # Si toujours pas trouvé, abandonner
+                    log.error(f"Could not find profile for {speaker_username} even with alternative methods.")
+                    return None
             else:
                 log.warning("No citizens found in database when sampling")
+                return None
         except Exception as e:
             log.error(f"Error when trying to sample citizens: {e}")
-        return None
+            return None
         
     log.info(f"Attempting to get citizen record for listener: {listener_username}")
     listener_profile_record = get_citizen_record(tables, listener_username)
     if not listener_profile_record:
         log.error(f"Could not find profile for listener: {listener_username}")
-        return None
+        # Essayer de lister quelques citoyens pour vérifier que la table fonctionne
+        try:
+            # Utiliser les échantillons déjà récupérés si disponibles
+            if 'sample_citizens' in locals() and sample_citizens:
+                sample_usernames = [c['fields'].get('Username', 'Unknown') for c in sample_citizens]
+                
+                # Vérifier si le citoyen recherché est dans les échantillons
+                if listener_username in sample_usernames:
+                    log.warning(f"Citizen {listener_username} found in sample but not by get_citizen_record. Trying direct lookup.")
+                    # Recherche directe par correspondance dans les échantillons
+                    for citizen in sample_citizens:
+                        if citizen['fields'].get('Username') == listener_username:
+                            log.info(f"Found {listener_username} directly in sample citizens. Using this record.")
+                            listener_profile_record = citizen
+                            break
+            
+            if not listener_profile_record:
+                # Essayer une recherche directe dans la table complète
+                log.warning(f"Trying full table scan for {listener_username}")
+                all_citizens = tables['citizens'].all(max_records=100)
+                for citizen in all_citizens:
+                    if citizen['fields'].get('Username') == listener_username:
+                        log.info(f"Found {listener_username} in full table scan. Using this record.")
+                        listener_profile_record = citizen
+                        break
+            
+            if listener_profile_record:
+                # Si on a trouvé le citoyen par une méthode alternative, continuer
+                log.info(f"Successfully recovered profile for {listener_username} using alternative method.")
+            else:
+                # Si toujours pas trouvé, abandonner
+                log.error(f"Could not find profile for {listener_username} even with alternative methods.")
+                return None
+        except Exception as e:
+            log.error(f"Error when trying to find listener profile: {e}")
+            return None
     
     speaker_profile = speaker_profile_record['fields']
     listener_profile = listener_profile_record['fields']
