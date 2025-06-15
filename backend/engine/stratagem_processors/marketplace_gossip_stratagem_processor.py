@@ -244,7 +244,7 @@ def create_activity_via_api(api_base_url: str, activity_id: str, payload: Dict[s
                 f"{api_base_url}/api/activities/try-create",
                 json=full_payload,
                 headers={"Content-Type": "application/json"},
-                timeout=10  # Ajouter un timeout pour éviter les blocages
+                timeout=90  # Augmenté de 10 à 90 secondes pour éviter les timeouts
             )
             
             if response.status_code == 200 or response.status_code == 201:
