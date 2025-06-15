@@ -289,16 +289,29 @@ def choose_interlocutor_via_kinos(
     tables: Dict[str, Table], # Added tables argument
     ai_username: str,
     kinos_api_key: str,
-    ai_data_package: Dict[str, Any],
+    ai_data_package: str,  # Maintenant une chaîne markdown au lieu d'un dictionnaire
     kinos_model_override: Optional[str] = None
 ) -> Optional[Tuple[str, str]]:
     """
     Appelle KinOS pour choisir un interlocuteur et la raison de l'interaction.
     Retourne (target_username, reason) ou (None, None).
     """
-    ai_profile = ai_data_package.get("profile", {})
-    ai_display_name = ai_profile.get("firstName", ai_username)
-    ai_social_class = ai_profile.get("socialClass")
+    # Extraire le prénom et la classe sociale du citoyen à partir du markdown
+    # Utiliser des expressions régulières pour extraire ces informations
+    ai_display_name = ai_username  # Valeur par défaut
+    ai_social_class = None  # Valeur par défaut
+    
+    # Rechercher le prénom dans le markdown
+    first_name_match = re.search(r'firstName: ([^\n]+)', ai_data_package, re.IGNORECASE) or \
+                      re.search(r'FirstName: ([^\n]+)', ai_data_package, re.IGNORECASE)
+    if first_name_match:
+        ai_display_name = first_name_match.group(1).strip()
+    
+    # Rechercher la classe sociale dans le markdown
+    social_class_match = re.search(r'socialClass: ([^\n]+)', ai_data_package, re.IGNORECASE) or \
+                         re.search(r'SocialClass: ([^\n]+)', ai_data_package, re.IGNORECASE)
+    if social_class_match:
+        ai_social_class = social_class_match.group(1).strip()
 
     # Le canal "strategist" est un canal conceptuel pour ce type de décision.
     # L'ID du kin est l'IA elle-même.
@@ -306,9 +319,9 @@ def choose_interlocutor_via_kinos(
 
     prompt = (
         f"You are {ai_display_name}, an AI citizen of Venice. Your data package "
-        f"is provided in `addSystem`.\n\n"
+        f"is provided in `addSystem` in markdown format.\n\n"
         f"Based on this information, analyze your current situation and identify another citizen with whom initiating a conversation would be most beneficial or strategically relevant for you right now. "
-        f"Consider your goals, active problems, opportunities, and the nature of your relationships. Could initiating or discussing a **Stratagem** be a reason for contact? Information on available stratagems is in `addSystem.availableStratagems` and your active ones are in `addSystem.stratagemsExecutedByCitizen` or `addSystem.stratagemsTargetingCitizen`.\n\n"
+        f"Consider your goals, active problems, opportunities, and the nature of your relationships. Could initiating or discussing a **Stratagem** be a reason for contact? Information on available stratagems is in the 'Available Stratagems' section of your data package.\n\n"
         f"Your response MUST be a JSON object with two keys: 'target_username' (the Username of the citizen you choose) and 'reason' (a specific compelling reason for contacting them, focusing on gameplay or possibly narrative progression, potentially related to a stratagem).\n"
         f"If no compelling interaction is identified, respond with: {{\"target_username\": null, \"reason\": \"No compelling interaction identified at this time.\"}}\n\n"
         f"Chosen interaction (JSON):"
@@ -321,13 +334,18 @@ def choose_interlocutor_via_kinos(
     
     print(f"Appel à KinOS pour choisir un interlocuteur pour {ai_username} (Modèle effectif: {effective_model})...")
     
+    # Créer un wrapper pour passer le markdown comme addSystem
+    wrapper_data = {
+        "data_package_markdown": ai_data_package
+    }
+    
     # make_kinos_channel_call est importé de conversation_helper
     raw_response_content = make_kinos_channel_call(
         kinos_api_key=kinos_api_key,
         speaker_username=ai_username, # L'IA elle-même est le "speaker" pour cette décision
         channel_name=kinos_channel_for_decision,
         prompt=prompt,
-        add_system_data=ai_data_package, 
+        add_system_data=wrapper_data, 
         kinos_model_override=effective_model
     )
 
@@ -652,31 +670,25 @@ def process_ai_message_initiatives(dry_run: bool = False, citizen1_arg: Optional
             
             print(f"\nTraitement des initiatives pour l'IA : {ai_username}")
 
-            # 1. Récupérer le data package complet pour l'IA (en format JSON)
-            log.info(f"Récupération du data package JSON pour {ai_username}...")
-            data_package_url = f"{BASE_URL}/api/get-data-package?citizenUsername={ai_username}&format=json"
+            # 1. Récupérer le data package complet pour l'IA (en format markdown)
+            log.info(f"Récupération du data package markdown pour {ai_username}...")
+            data_package_url = f"{BASE_URL}/api/get-data-package?citizenUsername={ai_username}&format=markdown"
             ai_data_package = None # Initialiser au cas où l'appel échoue
             try:
                 response = requests.get(data_package_url, timeout=300) # Augmentation du timeout à 300 secondes
                 response.raise_for_status() # Lèvera une exception pour les codes d'erreur HTTP
-                json_response = response.json()
-                if json_response.get("success"):
-                    ai_data_package = json_response.get("data") # Ceci est le dictionnaire attendu
-                    if not isinstance(ai_data_package, dict):
-                        log.error(f"Le data package JSON pour {ai_username} n'est pas un dictionnaire. Reçu : {type(ai_data_package)}")
-                        ai_data_package = None 
-                else:
-                    log.error(f"L'appel API pour le data package JSON de {ai_username} n'a pas réussi : {json_response.get('error')}")
+                ai_data_package = response.text # Récupérer directement le texte markdown
+                if not ai_data_package or len(ai_data_package) < 100:  # Vérification basique que le contenu semble valide
+                    log.error(f"Le data package markdown pour {ai_username} semble vide ou trop court. Longueur : {len(ai_data_package) if ai_data_package else 0}")
+                    ai_data_package = None
             except requests.exceptions.RequestException as e:
-                log.error(f"Erreur lors de la récupération du data package JSON pour {ai_username} : {e}")
-            except json.JSONDecodeError as e:
-                log.error(f"Erreur de décodage JSON pour le data package de {ai_username} : {e}. Texte de la réponse : {response.text[:200] if 'response' in locals() else 'N/A'}")
+                log.error(f"Erreur lors de la récupération du data package markdown pour {ai_username} : {e}")
             
             if not ai_data_package:
-                print(f"Impossible de récupérer le data package JSON pour {ai_username}. Passage au suivant.")
-                log.warning(f"Impossible de récupérer le data package JSON pour {ai_username}. Passage au suivant.")
+                print(f"Impossible de récupérer le data package markdown pour {ai_username}. Passage au suivant.")
+                log.warning(f"Impossible de récupérer le data package markdown pour {ai_username}. Passage au suivant.")
                 continue
-            log.info(f"Data package JSON récupéré avec succès pour {ai_username}.")
+            log.info(f"Data package markdown récupéré avec succès pour {ai_username}. Taille : {len(ai_data_package)} caractères")
 
             # 2. Appeler KinOS pour choisir un interlocuteur et une raison
             target_username, reason_for_contact = choose_interlocutor_via_kinos(
