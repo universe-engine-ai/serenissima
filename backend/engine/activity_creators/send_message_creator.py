@@ -35,6 +35,7 @@ def try_create(
     message_type = details.get('messageType', 'personal')
     target_building_id = details.get('targetBuildingId')  # Optional specific meeting place
     conversation_length = details.get('conversationLength', 3)  # Default to 3 exchanges
+    channel = details.get('channel')  # Extract channel parameter
     
     # Extract inReplyToMessageId and other parameters from the nested 'notes' field if present
     # The 'details' argument to this function *is* activityParameters from the API call.
@@ -54,7 +55,7 @@ def try_create(
     
     # Validate required parameters
     if not (receiver_username and content):
-        log.error(f"Missing required details for send_message: receiverUsername or content")
+        log.error(f"Missing required details for send_message: receiverUsername or content. Details received: {details}")
         return None
     
     # Validate conversation_length
@@ -185,6 +186,10 @@ def try_create(
         "messageType": message_type,
         "conversationLength": conversation_length
     }
+    
+    # Add channel if provided
+    if channel:
+        details_for_processor["channel"] = channel
     if in_reply_to_message_id:
         details_for_processor["inReplyToMessageId"] = in_reply_to_message_id
         log.info(f"Including inReplyToMessageId: {in_reply_to_message_id} in Details for deliver_message_interaction.")
@@ -214,7 +219,8 @@ def try_create(
             "messageType": message_type,
             "conversationLength": conversation_length,
             "activityType": "send_message",
-            "nextStep": "deliver_message_interaction"
+            "nextStep": "deliver_message_interaction",
+            "channel": channel
         }),
         "Status": "created",
         "Title": f"Traveling to deliver a message to {receiver_username}",
