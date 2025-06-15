@@ -263,27 +263,39 @@ def detect_problems():
                             log.warning(f"Sellable resource for building {building_name_log} missing 'resourceType': {resource_info}")
                             continue
 
-                        pinpoint_api_url = f"{base_url}/api/pinpoint-problem?buildingId={building_id}&resourceType={resource_type_id}"
+                        # Add checkAllInputs=true to check all input resources for this building
+                        pinpoint_api_url = f"{base_url}/api/pinpoint-problem?buildingId={building_id}&resourceType={resource_type_id}&checkAllInputs=true"
                         log.info(f"Checking resource {resource_type_id} for building {building_name_log} via API: {pinpoint_api_url}")
                         
-                        pinpoint_response = requests.get(pinpoint_api_url, timeout=30)
+                        pinpoint_response = requests.get(pinpoint_api_url, timeout=60)  # Increased timeout for checking all inputs
                         if not pinpoint_response.ok:
                             log.error(f"Pinpoint API call failed for {building_name_log}, resource {resource_type_id}: {pinpoint_response.status_code} - {pinpoint_response.text}")
                             continue
 
                         pinpoint_data = pinpoint_response.json()
-                        if pinpoint_data.get('problem_identified') and pinpoint_data.get('problemDetails'):
-                            problem_details = pinpoint_data['problemDetails']
-                            pinpoint_problems_detected_count += 1
+                        if pinpoint_data.get('problem_identified'):
+                            # Check if we have a list of problems or just a single problem
+                            problems_list = pinpoint_data.get('problems', [])
+                            if not problems_list and pinpoint_data.get('problemDetails'):
+                                # Backward compatibility - single problem in problemDetails
+                                problems_list = [pinpoint_data['problemDetails']]
                             
-                            # Create or update problem in Airtable
-                            created_or_updated = _create_or_update_problem_record_from_pinpoint(problem_details, problems_table)
-                            if created_or_updated:
-                                pinpoint_problems_saved_count += 1
-                                if problem_details.get('citizenToNotify'):
-                                    pinpoint_affected_operators.add(problem_details['citizenToNotify'])
-                            
-                            log.info(f"Pinpointed problem for {building_name_log}, resource {resource_type_id}: {problem_details.get('title')}")
+                            if problems_list:
+                                log.info(f"Found {len(problems_list)} problems for {building_name_log}, resource {resource_type_id}")
+                                
+                                for problem_details in problems_list:
+                                    pinpoint_problems_detected_count += 1
+                                    
+                                    # Create or update problem in Airtable
+                                    created_or_updated = _create_or_update_problem_record_from_pinpoint(problem_details, problems_table)
+                                    if created_or_updated:
+                                        pinpoint_problems_saved_count += 1
+                                        if problem_details.get('citizenToNotify'):
+                                            pinpoint_affected_operators.add(problem_details['citizenToNotify'])
+                                    
+                                    log.info(f"Pinpointed problem for {building_name_log}, resource {resource_type_id}: {problem_details.get('title')}")
+                            else:
+                                log.warning(f"Problem identified but no problem details found for {building_name_log}, resource {resource_type_id}")
                         else:
                             log.info(f"No pinpoint problem identified for {building_name_log}, resource {resource_type_id}.")
 

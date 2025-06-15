@@ -188,6 +188,7 @@ export async function GET(request: NextRequest) {
     const { searchParams } = new URL(request.url);
     const buildingIdParam = searchParams.get('buildingId');
     const resourceTypeParam = searchParams.get('resourceType'); // Changed from resourceIdParam
+    const checkAllInputsParam = searchParams.get('checkAllInputs') === 'true';
 
     const paramsToValidate = {
       buildingId: buildingIdParam,
@@ -261,7 +262,8 @@ export async function GET(request: NextRequest) {
         success: true, 
         problem_identified: true, 
         issue: 'NO_SALE_CONTRACT', 
-        problemDetails: problem
+        problemDetails: problem,
+        problems: [problem] // Return as array for consistency
       });
     }
 
@@ -287,7 +289,8 @@ export async function GET(request: NextRequest) {
             success: true, 
             problem_identified: true, 
             issue: 'NO_OPERATOR_FOR_STOCK', 
-            problemDetails: problem
+            problemDetails: problem,
+            problems: [problem] // Return as array for consistency
         });
     }
 
@@ -702,12 +705,193 @@ export async function GET(request: NextRequest) {
       }
     } // End of the 'else' for buildingCanProduceThisResource
 
-      return NextResponse.json({ 
-        success: true, 
-        problem_identified: true, 
-        issue: problem.type.toUpperCase(), 
-        problemDetails: problem
-      });
+      // If we're checking all inputs, we need to collect all problems
+      if (checkAllInputsParam && buildingCanProduceThisResource) {
+        // We'll collect all problems for all inputs
+        const allProblems: ProblemDetails[] = [];
+        
+        // First add the main problem for the requested resource
+        allProblems.push(problem);
+        
+        // Now check each input resource that's missing
+        if (buildingTypeDef && buildingTypeDef.productionInformation && Array.isArray(buildingTypeDef.productionInformation.Arti)) {
+          const artiRecipes = buildingTypeDef.productionInformation.Arti;
+          
+          // Find recipes that produce our target resource
+          for (const recipe of artiRecipes) {
+            if (!recipe || !recipe.outputs) continue;
+            
+            // Check if this recipe produces our target resource
+            let producesTargetResource = false;
+            const outputsField = recipe.outputs;
+            if (typeof outputsField === 'object' && !Array.isArray(outputsField) && outputsField !== null) {
+              if (resourceType in outputsField) producesTargetResource = true;
+            } else if (Array.isArray(outputsField)) {
+              for (const outputItem of outputsField) {
+                if (typeof outputItem === 'string' && outputItem === resourceType) { producesTargetResource = true; break; }
+                else if (typeof outputItem === 'object' && outputItem !== null && typeof outputItem.type === 'string' && outputItem.type === resourceType) { producesTargetResource = true; break; }
+              }
+            }
+            
+            // If this recipe produces our target resource, check each input
+            if (producesTargetResource && recipe.inputs && typeof recipe.inputs === 'object') {
+              for (const [inputResType, neededAmountStr] of Object.entries(recipe.inputs)) {
+                // For each input, check if we have a problem
+                const neededAmount = parseFloat(String(neededAmountStr));
+                const inputStock = await getResourceStock(buildingId, inputResType, operatorForStockCheck);
+                
+                if (inputStock < neededAmount) {
+                  // Check for markup_buy contract for this input
+                  const markupBuyContractFormula = `AND({BuyerBuilding} = '${escapeAirtableValue(buildingId)}', {ResourceType} = '${escapeAirtableValue(inputResType)}', {Type} = 'markup_buy', {Status} = 'active', IS_BEFORE({CreatedAt}, '${nowUTC}'), IS_AFTER({EndAt}, '${nowUTC}'))`;
+                  const activeMarkupBuyContracts = await base(CONTRACTS_TABLE).select({ filterByFormula: markupBuyContractFormula, maxRecords: 1 }).firstPage();
+                  
+                  // Check for import contract for this input
+                  const importContractFormula = `AND({BuyerBuilding} = '${escapeAirtableValue(buildingId)}', {ResourceType} = '${escapeAirtableValue(inputResType)}', {Type} = 'import', {Status} = 'active', IS_BEFORE({CreatedAt}, '${nowUTC}'), IS_AFTER({EndAt}, '${nowUTC}'))`;
+                  const activeImportContracts = await base(CONTRACTS_TABLE).select({ filterByFormula: importContractFormula, maxRecords: 1 }).firstPage();
+                  
+                  // Create appropriate problem based on contract status
+                  if (activeMarkupBuyContracts.length === 0 && activeImportContracts.length === 0) {
+                    // No contract for this input
+                    const inputProblem: ProblemDetails = {
+                      problemId: `problem_pinpoint_${buildingId}_${inputResType}_NO_CONTRACT_FOR_INPUT`,
+                      type: 'no_markup_buy_contract_for_input',
+                      title: `Missing Purchase Contract for Input: ${inputResType} at ${buildingName}`,
+                      description: `Building '${buildingName}' (ID: ${buildingId}) is missing input ${inputResType} to produce '${resourceType}' and has no active purchase contract (markup_buy) for this input.`,
+                      severity: 4, // High
+                      citizenToNotify: responsibleCitizen, 
+                      buildingPosition, 
+                      buildingName, 
+                      asset: buildingId, 
+                      assetType: 'building',
+                      solutions: `Create a 'markup_buy' contract for the missing input ${inputResType} for building '${buildingName}'.`
+                    };
+                    allProblems.push(inputProblem);
+                  } else if (activeMarkupBuyContracts.length > 0) {
+                    // Check supplier stock for markup_buy
+                    const contract = activeMarkupBuyContracts[0];
+                    const sellerBuildingId = contract.fields.SellerBuilding as string;
+                    const sellerUsername = contract.fields.Seller as string;
+                    
+                    if (sellerBuildingId && sellerUsername) {
+                      const supplierStock = await getResourceStock(sellerBuildingId, inputResType, sellerUsername);
+                      if (supplierStock <= 0) {
+                        // Supplier shortage
+                        const sellerBuildingRecord = await getBuildingRecord(sellerBuildingId);
+                        const sellerBuildingName = sellerBuildingRecord?.fields?.Name as string || sellerBuildingId;
+                        
+                        const inputProblem: ProblemDetails = {
+                          problemId: `problem_pinpoint_${buildingId}_${inputResType}_SUPPLIER_SHORTAGE`,
+                          type: 'supplier_shortage',
+                          title: `Supplier Shortage for Input: ${inputResType} at ${buildingName}`,
+                          description: `Building '${buildingName}' (ID: ${buildingId}) is waiting for input ${inputResType} to produce '${resourceType}', but supplier '${sellerBuildingName}' (${sellerUsername}) is out of stock.`,
+                          severity: 4, // High
+                          citizenToNotify: responsibleCitizen, 
+                          buildingPosition, 
+                          buildingName, 
+                          asset: buildingId, 
+                          assetType: 'building',
+                          solutions: `Address supplier shortage for ${inputResType}. This may involve the supplier creating new import/markup_buy contracts for their inputs, or finding alternative suppliers.`
+                        };
+                        allProblems.push(inputProblem);
+                      } else {
+                        // Waiting for delivery
+                        const inputProblem: ProblemDetails = {
+                          problemId: `problem_pinpoint_${buildingId}_${inputResType}_WAITING_ON_DELIVERY`,
+                          type: 'waiting_on_input_delivery',
+                          title: `Awaiting Input Delivery: ${inputResType} at ${buildingName}`,
+                          description: `Building '${buildingName}' (ID: ${buildingId}) is missing input ${inputResType} to produce '${resourceType}', but a purchase contract exists and the supplier has stock. Awaiting delivery.`,
+                          severity: 3, // Medium
+                          citizenToNotify: responsibleCitizen, 
+                          buildingPosition, 
+                          buildingName, 
+                          asset: buildingId, 
+                          assetType: 'building',
+                          solutions: `Monitor purchase contract for input ${inputResType}. Ensure deliveries are in progress or resolve any delivery issues.`
+                        };
+                        allProblems.push(inputProblem);
+                      }
+                    }
+                  } else if (activeImportContracts.length > 0) {
+                    // Check galley status for import
+                    const contract = activeImportContracts[0];
+                    const galleyBuildingId = contract.fields.SellerBuilding as string;
+                    
+                    if (galleyBuildingId) {
+                      const galleyRecord = await getBuildingRecord(galleyBuildingId);
+                      let galleyArrived = false;
+                      let galleyName = galleyBuildingId || "Unknown Galley";
+                      
+                      if (galleyRecord) {
+                        galleyName = (galleyRecord.fields.Name as string) || galleyBuildingId;
+                        const isConstructed = galleyRecord.fields.IsConstructed === true || galleyRecord.fields.IsConstructed === 1;
+                        const constructionDateStr = galleyRecord.fields.ConstructionDate as string;
+                        let constructionDateInPast = false;
+                        if (constructionDateStr) {
+                          try {
+                            constructionDateInPast = new Date(constructionDateStr) <= new Date(nowUTC);
+                          } catch (e) { /* ignore date parse error */ }
+                        }
+                        galleyArrived = isConstructed || constructionDateInPast;
+                      }
+                      
+                      if (galleyArrived) {
+                        // Waiting for unloading
+                        const inputProblem: ProblemDetails = {
+                          problemId: `problem_pinpoint_${buildingId}_${inputResType}_WAITING_FOR_GALLEY_UNLOADING`,
+                          type: 'waiting_for_galley_unloading',
+                          title: `Waiting for Unloading: ${inputResType} at ${buildingName}`,
+                          description: `Building '${buildingName}' (ID: ${buildingId}) is out of stock for input '${inputResType}' needed to produce '${resourceType}'. The delivering galley '${galleyName}' has arrived but goods are not yet unloaded.`,
+                          severity: 3, // Medium
+                          citizenToNotify: responsibleCitizen, 
+                          buildingPosition, 
+                          buildingName, 
+                          asset: buildingId, 
+                          assetType: 'building',
+                          solutions: `Ensure 'fetch_from_galley' activities are created and processed for building '${buildingName}' to retrieve '${inputResType}' from galley '${galleyName}'.`
+                        };
+                        allProblems.push(inputProblem);
+                      } else {
+                        // Waiting for galley arrival
+                        const inputProblem: ProblemDetails = {
+                          problemId: `problem_pinpoint_${buildingId}_${inputResType}_WAITING_FOR_GALLEY_ARRIVAL`,
+                          type: 'waiting_for_galley_arrival',
+                          title: `Waiting for Galley: ${inputResType} at ${buildingName}`,
+                          description: `Building '${buildingName}' (ID: ${buildingId}) is out of stock for input '${inputResType}' needed to produce '${resourceType}' and is awaiting arrival of the delivering galley '${galleyName}'.`,
+                          severity: 3, // Medium
+                          citizenToNotify: responsibleCitizen, 
+                          buildingPosition, 
+                          buildingName, 
+                          asset: buildingId, 
+                          assetType: 'building',
+                          solutions: `Monitor the import contract for '${inputResType}'. The galley '${galleyName}' is still en route or its arrival has not yet been processed.`
+                        };
+                        allProblems.push(inputProblem);
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+        
+        return NextResponse.json({ 
+          success: true, 
+          problem_identified: true, 
+          issue: problem.type.toUpperCase(), 
+          problemDetails: problem,
+          problems: allProblems
+        });
+      } else {
+        // Original behavior - return single problem
+        return NextResponse.json({ 
+          success: true, 
+          problem_identified: true, 
+          issue: problem.type.toUpperCase(), 
+          problemDetails: problem,
+          problems: [problem] // Return as array for consistency
+        });
+      }
     }
 
     // Step 3: If in stock, check for an Occupant
@@ -730,7 +914,8 @@ export async function GET(request: NextRequest) {
         success: true, 
         problem_identified: true, 
         issue: 'NO_OCCUPANT', 
-        problemDetails: problem
+        problemDetails: problem,
+        problems: [problem] // Return as array for consistency
       });
     }
 
@@ -738,6 +923,7 @@ export async function GET(request: NextRequest) {
     return NextResponse.json({ 
       success: true, 
       problem_identified: false, 
+      problems: [], // Return empty array when no problems
       message: `Resource '${resourceType}' appears to be available for sale at '${buildingName}' (ID: ${buildingId}). It has an active sale contract, is in stock, and the building has an occupant.`
     });
 
