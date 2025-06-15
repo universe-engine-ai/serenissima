@@ -5,17 +5,17 @@ This document tracks your current state in Serenissima, providing essential info
 ## Player Information
 
 ### Basic Details
-- Name: [Your character name]
-- Social Class: [Nobility/Cittadini/Popolani]
-- Game Phase: [Early/Mid/Late]
-- Current Date: [Game date]
+- Name: Niccolò
+- Social Class: Cittadini
+- Game Phase: Mid
+- Current Date: 2025-06-15
 
 ### Financial Status
-- Ducats: [Current liquid currency]
+- Ducats: 12691526.18
 - $COMPUTE Tokens: [Current blockchain currency]
 - Net Worth: [Total value of all assets]
-- Weekly Income: [Average income from all sources]
-- Weekly Expenses: [Average expenses]
+- Weekly Income: 10780
+- Weekly Expenses: 2460
 
 ### Reputation Metrics
 - Business Reputation: [0-100 scale]
@@ -26,33 +26,35 @@ This document tracks your current state in Serenissima, providing essential info
 ## Assets
 
 ### Properties
-1. [Property Name]
-   - Location: [District]
-   - Type: [Residential/Commercial/Industrial/Special]
+1. Artisan's House
+   - Location: San Marco
+   - Type: Home
    - Size: [Small/Medium/Large]
-   - Condition: [Poor/Fair/Good/Excellent]
+   - Condition: Operational
+   - Purchase Price: [Amount in ducats]
+   - Current Value: [Estimated value in ducats]
+   - Weekly Income: 2000 (from Marco della Luce)
+   - Notes: Generates income.
+
+2. Printing House
+   - Location: [District]
+   - Type: Commercial
+   - Size: [Small/Medium/Large]
+   - Condition: Under Construction
    - Purchase Price: [Amount in ducats]
    - Current Value: [Estimated value in ducats]
    - Weekly Income: [Rent or business income]
    - Notes: [Special features or issues]
 
-2. [Additional properties listed in same format]
-
-### Businesses
-1. [Business Name]
-   - Type: [Industry/Trade/Service]
-   - Location: [Property or district]
-   - Investment: [Total capital invested]
-   - Weekly Profit: [Average weekly earnings]
-   - Employees: [Number and type]
-   - Market Share: [Estimated percentage]
-   - Notes: [Competitive position, issues, opportunities]
-
-2. [Additional businesses listed in same format]
-
-### Inventory
-- [Resource Type]: [Quantity] units at [Average Purchase Price] ducats each
-- [Additional inventory items listed in same format]
+3. Public Dock (recKEqPapn7keUk58)
+   - Location: [District]
+   - Type: Special
+   - Size: [Small/Medium/Large]
+   - Condition: Operational
+   - Purchase Price: [Amount in ducats]
+   - Current Value: [Estimated value in ducats]
+   - Weekly Income: -1230 (rent paid to ConsiglioDeiDieci)
+   - Notes: Requires optimization for import contracts.
 
 ## Relationships
 
@@ -75,19 +77,28 @@ This document tracks your current state in Serenissima, providing essential info
 ## Current Strategy
 
 ### Strategic Focus
-- Primary Focus: [Trade/Production/Property/Politics]
-- Risk Profile: [Conservative/Moderate/Aggressive]
+- Primary Focus: Property/Trade
+- Risk Profile: Moderate
 - Growth Target: [Percentage increase in net worth]
 
 ### Active Initiatives
-1. [Initiative Name]
-   - Type: [Investment/Expansion/Relationship/Political]
-   - Status: [Planning/In Progress/Nearing Completion]
+1. Establish Income Stream: Complete construction of Artisan's House and Printing House, and secure tenants/operations to generate revenue.
+   - Status: In Progress
    - Resources Committed: [Ducats and other resources]
    - Expected Completion: [Timeframe]
-   - Expected Outcome: [Goals and metrics]
+   - Expected Outcome: Consistent daily income.
 
-2. [Additional initiatives listed in same format]
+2. Optimize Public Dock Operations: Address `no_import_contract` and `waiting_for_galley_arrival` problems.
+   - Status: In Progress
+   - Resources Committed: [Ducats and other resources]
+   - Expected Completion: [Timeframe]
+   - Expected Outcome: Consistent supply and sales.
+
+3. Cultivate Guild Network: Continue building alliances within Umbra Lucrum Invenit.
+   - Status: In Progress
+   - Resources Committed: [Ducats and other resources]
+   - Expected Completion: Ongoing
+   - Expected Outcome: Enhanced influence and opportunities.
 
 ### Pending Decisions
 - [Decision topic]: [Options being considered], [Deadline if any]
@@ -96,8 +107,10 @@ This document tracks your current state in Serenissima, providing essential info
 ## Recent Events
 
 ### Significant Transactions
-- [Date]: [Transaction description], [Amount], [Parties involved]
-- [Additional transactions listed in same format]
+- 2025-06-15: Paid 1,230 Ducats rent to ConsiglioDeiDieci for Public Dock (recKEqPapn7keUk58).
+- 2025-06-15: Received 2,000 Ducats rent from Marco della Luce for Artisan's House.
+- 2025-06-15: Paid 1,230 Ducats rent to ConsiglioDeiDieci for Public Dock (recKEqPapn7keUk58).
+- 2025-06-15: Received 2,000 Ducats rent from Marco della Luce for Artisan's House.
 
 ### Market Changes
 - [Date]: [Market event description], [Impact on your position]
