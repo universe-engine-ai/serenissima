@@ -52,8 +52,7 @@ def create_process(
         "Type": process_type,
         "Citizen": citizen_username,
         "Status": PROCESS_STATUS_PENDING,
-        "Priority": priority,
-        "CreatedAt": datetime.now(VENICE_TIMEZONE).isoformat(),
+        "Priority": priority
     }
     
     if details:
@@ -200,8 +199,7 @@ def update_process_status(
     """
     try:
         update_payload = {
-            "Status": status,
-            "UpdatedAt": datetime.now(VENICE_TIMEZONE).isoformat()
+            "Status": status
         }
         
         if status == PROCESS_STATUS_COMPLETED or status == PROCESS_STATUS_FAILED:
