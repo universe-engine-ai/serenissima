@@ -843,7 +843,7 @@ function convertDataPackageToMarkdown(dataPackage: any, citizenUsername: string 
     dataPackage.citizen.ducats = Math.floor(Number(dataPackage.citizen.ducats));
   }
   
-  md += formatSimpleObjectForMarkdown(dataPackage.citizen, ['username', 'firstName', 'lastName', 'socialClass', 'ducats', 'isAI', 'inVenice', 'homeCity', 'influence', 'specialty', 'lastActiveAt']);
+  md += formatSimpleObjectForMarkdown(dataPackage.citizen, ['username', 'firstName', 'lastName', 'socialClass', 'ducats', 'isAI', 'inVenice', 'homeCity', 'influence', 'specialty']);
   if (dataPackage.citizen?.position) {
     md += `- **position**: Lat: ${dataPackage.citizen.position.lat}, Lng: ${dataPackage.citizen.position.lng}\n`;
   }
