@@ -28,7 +28,8 @@ def create_process(
     process_type: str,
     citizen_username: str,
     priority: int = 5,
-    details: Optional[Dict[str, Any]] = None
+    details: Optional[Dict[str, Any]] = None,
+    api_base_url: Optional[str] = None
 ) -> Optional[Dict[str, Any]]:
     """
     Creates a new process record in the PROCESSES table.
