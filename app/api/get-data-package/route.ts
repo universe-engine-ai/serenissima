@@ -1223,88 +1223,98 @@ export async function GET(request: Request) {
       stratagemsTargetingCitizenPast: [] as any[], // Past Executed Stratagems targeting citizen
     };
 
-    // Fetch and add available stratagems (definitions)
-    dataPackage.availableStratagems = await fetchStratagemDefinitions(); // Assigns the new categorized structure
+    // Parallelize all independent data fetching operations
+    const [
+      availableStratagems,
+      stratagemsResult,
+      activeContractsRecords,
+      guildRecord,
+      citizenLoansRecords,
+      strongestRelationshipsRecords,
+      recentProblemsRecords,
+      recentMessagesRecords,
+      lastDailyUpdateRecord
+    ] = await Promise.all([
+      fetchStratagemDefinitions(),
+      fetchCitizenActiveStratagems(citizenUsername),
+      fetchCitizenContracts(citizenUsername),
+      citizenRecord.fields.GuildId ? fetchGuildDetails(citizenRecord.fields.GuildId as string) : Promise.resolve(null),
+      fetchCitizenLoans(citizenUsername),
+      fetchCitizenRelationships(citizenUsername),
+      fetchCitizenProblems(citizenUsername),
+      fetchCitizenMessages(citizenUsername),
+      fetchLastDailyUpdate()
+    ]);
 
-    // Fetch and add active and past stratagems involving the citizen
-    const stratagemsResult = await fetchCitizenActiveStratagems(citizenUsername);
+    // Assign results to dataPackage
+    dataPackage.availableStratagems = availableStratagems;
+    
+    // Stratagems
     dataPackage.stratagemsExecutedByCitizen = stratagemsResult.executedBy.map(s => ({...normalizeKeysCamelCaseShallow(s.fields), airtableId: s.id}));
     dataPackage.stratagemsTargetingCitizen = stratagemsResult.targetedAt.map(s => ({...normalizeKeysCamelCaseShallow(s.fields), airtableId: s.id}));
     dataPackage.stratagemsExecutedByCitizenPast = stratagemsResult.executedByPast.map(s => ({...normalizeKeysCamelCaseShallow(s.fields), airtableId: s.id}));
     dataPackage.stratagemsTargetingCitizenPast = stratagemsResult.targetedAtPast.map(s => ({...normalizeKeysCamelCaseShallow(s.fields), airtableId: s.id}));
     
-    // Fetch and add active contracts
-    const activeContractsRecords = await fetchCitizenContracts(citizenUsername);
+    // Contracts
     dataPackage.activeContracts = activeContractsRecords.map(c => ({...normalizeKeysCamelCaseShallow(c.fields), airtableId: c.id}));
 
-    // Fetch and add guild details if GuildId exists
-    const guildId = citizenRecord.fields.GuildId as string;
-    if (guildId) {
-      const guildRecord = await fetchGuildDetails(guildId);
-      if (guildRecord) {
-        dataPackage.guildDetails = {...normalizeKeysCamelCaseShallow(guildRecord.fields), airtableId: guildRecord.id};
-      }
+    // Guild details
+    if (guildRecord) {
+      dataPackage.guildDetails = {...normalizeKeysCamelCaseShallow(guildRecord.fields), airtableId: guildRecord.id};
     }
 
-    // Fetch and add citizen loans
-    const citizenLoansRecords = await fetchCitizenLoans(citizenUsername);
+    // Loans
     dataPackage.citizenLoans = citizenLoansRecords.map(l => ({...normalizeKeysCamelCaseShallow(l.fields), airtableId: l.id}));
 
-    // Add managed buildings to dataPackage
+    // Buildings
     dataPackage.managedBuildings = managedBuildingsRecords.map(b => ({...normalizeKeysCamelCaseShallow(b.fields), airtableId: b.id}));
-
-    // Add workplace building to dataPackage
+    
     if (workplaceBuildingRecord) {
       dataPackage.workplaceBuilding = {...normalizeKeysCamelCaseShallow(workplaceBuildingRecord.fields), airtableId: workplaceBuildingRecord.id};
     }
 
-    // Add home building to dataPackage
     if (homeBuildingRecord) {
       dataPackage.homeBuilding = {...normalizeKeysCamelCaseShallow(homeBuildingRecord.fields), airtableId: homeBuildingRecord.id};
     }
 
-    // Fetch and add strongest relationships
-    const strongestRelationshipsRecords = await fetchCitizenRelationships(citizenUsername);
+    // Relationships
     dataPackage.strongestRelationships = strongestRelationshipsRecords.map(r => {
       const normalized = normalizeKeysCamelCaseShallow(r.fields);
-      // combinedScore was added temporarily for sorting, remove if not needed in final package
-      // or keep if useful client-side. For now, let's assume it's not part of the final schema.
-      // delete (r as any).combinedScore; // This would modify the original if not careful
-      const { combinedScore, ...fieldsWithoutCombinedScore } = normalized; // Exclude combinedScore from final object
+      const { combinedScore, ...fieldsWithoutCombinedScore } = normalized;
       return {...fieldsWithoutCombinedScore, airtableId: r.id};
     });
     
-    // Fetch and add recent problems
-    const recentProblemsRecords = await fetchCitizenProblems(citizenUsername);
+    // Problems
     dataPackage.recentProblems = recentProblemsRecords.map(p => ({...normalizeKeysCamelCaseShallow(p.fields), airtableId: p.id}));
 
-    // Fetch and add recent messages
-    const recentMessagesRecords = await fetchCitizenMessages(citizenUsername);
+    // Messages
     dataPackage.recentMessages = recentMessagesRecords.map(m => {
       const normalizedFields = normalizeKeysCamelCaseShallow(m.fields);
-      delete normalizedFields.thinking; // Exclude the 'thinking' field
+      delete normalizedFields.thinking;
       return {...normalizedFields, airtableId: m.id};
     });
 
-    // Fetch and add the last daily update
-    const lastDailyUpdateRecord = await fetchLastDailyUpdate();
+    // Daily update
     if (lastDailyUpdateRecord) {
       dataPackage.latestDailyUpdate = {...normalizeKeysCamelCaseShallow(lastDailyUpdateRecord.fields), airtableId: lastDailyUpdateRecord.id};
     }
 
-    for (const buildingRecord of ownedBuildingsRecords) {
-      const buildingId = buildingRecord.fields.BuildingId as string;
-      if (!buildingId) continue;
-
-      const resourceDetails = await fetchBuildingResourceDetails(buildingId);
-      const normalizedBuildingFields = normalizeKeysCamelCaseShallow(buildingRecord.fields);
-      
-      dataPackage.ownedBuildings.push({
-        ...normalizedBuildingFields,
-        airtableId: buildingRecord.id,
-        resourceDetails: resourceDetails // Add resource details
+    // Parallelize fetching resource details for all owned buildings
+    const buildingDetailsPromises = ownedBuildingsRecords
+      .filter(buildingRecord => buildingRecord.fields.BuildingId)
+      .map(async (buildingRecord) => {
+        const buildingId = buildingRecord.fields.BuildingId as string;
+        const resourceDetails = await fetchBuildingResourceDetails(buildingId);
+        const normalizedBuildingFields = normalizeKeysCamelCaseShallow(buildingRecord.fields);
+        
+        return {
+          ...normalizedBuildingFields,
+          airtableId: buildingRecord.id,
+          resourceDetails: resourceDetails
+        };
       });
-    }
+    
+    dataPackage.ownedBuildings = await Promise.all(buildingDetailsPromises);
 
     if (format.toLowerCase() === 'markdown') {
       const markdownContent = convertDataPackageToMarkdown(dataPackage, citizenUsername);
