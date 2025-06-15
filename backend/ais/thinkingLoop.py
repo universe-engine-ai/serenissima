@@ -35,9 +35,37 @@ if PROJECT_ROOT not in sys.path:
 
 # Import necessary modules
 from backend.engine.utils.activity_helpers import (
-    LogColors, log_info, log_warning, log_error, log_header,
-    VENICE_TIMEZONE, get_tables
+    LogColors, VENICE_TIMEZONE, get_tables
 )
+
+# Define logging functions
+def log_info(message):
+    """Log an info message with color."""
+    print(f"{LogColors.OKBLUE}{message}{LogColors.ENDC}")
+
+def log_warning(message):
+    """Log a warning message with color."""
+    print(f"{LogColors.WARNING}{message}{LogColors.ENDC}")
+
+def log_error(message):
+    """Log an error message with color."""
+    print(f"{LogColors.FAIL}{message}{LogColors.ENDC}")
+
+def log_header(message, color_code=LogColors.HEADER):
+    """Log a header message with color."""
+    border_char = "-"
+    side_char = "|"
+    corner_tl = "+"
+    corner_tr = "+"
+    corner_bl = "+"
+    corner_br = "+"
+    
+    message_len = len(message)
+    width = 80
+    
+    print(f"\n{color_code}{corner_tl}{border_char * (width - 2)}{corner_tr}{LogColors.ENDC}")
+    print(f"{color_code}{side_char} {message.center(width - 4)} {side_char}{LogColors.ENDC}")
+    print(f"{color_code}{corner_bl}{border_char * (width - 2)}{corner_br}{LogColors.ENDC}\n")
 
 # Social class weights for citizen selection
 SOCIAL_CLASS_WEIGHTS = {
