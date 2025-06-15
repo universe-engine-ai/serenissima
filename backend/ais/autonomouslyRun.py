@@ -312,7 +312,7 @@ def get_ai_citizens_for_autonomous_run(
                 log.info(f"{LogColors.OKBLUE}Fetching AI citizens of specified social classes: {', '.join(effective_social_classes)}{LogColors.ENDC}")
             else:
                 # Default to Nobili, Cittadini, Forestieri if no specific citizen and no specific classes are requested
-                effective_social_classes = ['Nobili', 'Cittadini', 'Forestieri']
+                effective_social_classes = ['Artisti', 'Nobili', 'Cittadini', 'Forestieri']
                 log.info(f"{LogColors.OKBLUE}Fetching all eligible AI citizens (Default: Nobili, Cittadini, Forestieri) for autonomous run.{LogColors.ENDC}")
 
             if effective_social_classes:

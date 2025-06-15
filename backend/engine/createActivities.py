@@ -146,7 +146,8 @@ def initialize_airtable():
             'contracts': api.table(base_id, 'CONTRACTS'),
             'resources': api.table(base_id, 'RESOURCES'),
             'relationships': api.table(base_id, 'RELATIONSHIPS'), # Ajout de la table RELATIONSHIPS
-            'stratagems': api.table(base_id, 'STRATAGEMS') # Ajout de la table STRATAGEMS
+            'stratagems': api.table(base_id, 'STRATAGEMS'), # Ajout de la table STRATAGEMS
+            'processes': api.table(base_id, 'PROCESSES')
         }
     except Exception as e:
         log.error(f"{LogColors.FAIL}Failed to initialize Airtable: {e}{LogColors.ENDC}")

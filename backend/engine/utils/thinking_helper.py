@@ -1263,7 +1263,7 @@ def process_continue_thought(
             messages = tables['messages'].all(
                 formula=formula,
                 sort=[{"field": "CreatedAt", "direction": "desc"}],
-                maxRecords=1
+                max_records=1
             )
             
             if messages and len(messages) > 0:

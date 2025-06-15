@@ -401,12 +401,12 @@ def main():
                         log_info(f"There are already {pending_count} pending processes. Skipping random citizen thinking.")
                 
                 # Sleep for a short time to avoid hammering the database
-                time.sleep(30)
+                time.sleep(300)
                 
             except Exception as loop_error:
                 log_error(f"Error in thinking loop: {str(loop_error)}")
                 traceback.print_exc()
-                time.sleep(120)  # Longer sleep on error
+                time.sleep(600)  # Longer sleep on error
     
     except KeyboardInterrupt:
         log_info("Thinking loop interrupted by user")
