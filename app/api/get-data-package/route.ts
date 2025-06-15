@@ -854,9 +854,12 @@ function convertDataPackageToMarkdown(dataPackage: any, citizenUsername: string 
     const buildingAtPosition = dataPackage.citizen.buildingAtPosition;
     if (buildingAtPosition) {
       locationDescription = `At ${buildingAtPosition}`;
-    } else {
-      // If not at a building, show general location based on InVenice flag
+    } else if (dataPackage.citizen.position.lat && dataPackage.citizen.position.lng) {
+      // If coordinates are valid but no building found
       locationDescription = dataPackage.citizen.inVenice ? "In the streets of Venice" : "Navigating the world";
+    } else {
+      // If coordinates are invalid
+      locationDescription = "Unknown location";
     }
     
     md += `- **position**: ${locationDescription}\n`;
@@ -1303,66 +1306,24 @@ export async function GET(request: Request) {
       }
     }
     
-    // Find building at citizen position
+    // Find building at citizen position using API
     let buildingAtPosition = null;
-    if (citizenPosition) {
-      // Check if the citizen is at their workplace
-      if (workplaceBuildingRecord && workplaceBuildingRecord.fields.Position) {
-        try {
-          const workplacePosition = JSON.parse(workplaceBuildingRecord.fields.Position as string);
-          if (workplacePosition.lat === citizenPosition.lat && workplacePosition.lng === citizenPosition.lng) {
-            buildingAtPosition = workplaceBuildingRecord.fields.Name || workplaceBuildingRecord.fields.Type;
-          }
-        } catch (e) {
-          console.warn(`Could not parse workplace position: ${workplaceBuildingRecord.fields.Position}`);
-        }
-      }
-      
-      // Check if the citizen is at their home
-      if (!buildingAtPosition && homeBuildingRecord && homeBuildingRecord.fields.Position) {
-        try {
-          const homePosition = JSON.parse(homeBuildingRecord.fields.Position as string);
-          if (homePosition.lat === citizenPosition.lat && homePosition.lng === citizenPosition.lng) {
-            buildingAtPosition = homeBuildingRecord.fields.Name || homeBuildingRecord.fields.Type;
-          }
-        } catch (e) {
-          console.warn(`Could not parse home position: ${homeBuildingRecord.fields.Position}`);
-        }
-      }
-      
-      // Check other buildings if needed
-      if (!buildingAtPosition) {
-        // Check owned buildings
-        for (const building of ownedBuildingsRecords) {
-          if (building.fields.Position) {
-            try {
-              const buildingPosition = JSON.parse(building.fields.Position as string);
-              if (buildingPosition.lat === citizenPosition.lat && buildingPosition.lng === citizenPosition.lng) {
-                buildingAtPosition = building.fields.Name || building.fields.Type;
-                break;
-              }
-            } catch (e) {
-              // Skip buildings with invalid position
-            }
-          }
-        }
+    if (citizenPosition && citizenPosition.lat && citizenPosition.lng) {
+      try {
+        // Use the buildings API to find any building at this exact position
+        const buildingQueryUrl = `/api/buildings?Position={"lat":${citizenPosition.lat},"lng":${citizenPosition.lng}}`;
+        const buildingResponse = await fetch(buildingQueryUrl);
         
-        // Check managed buildings if still not found
-        if (!buildingAtPosition) {
-          for (const building of managedBuildingsRecords) {
-            if (building.fields.Position) {
-              try {
-                const buildingPosition = JSON.parse(building.fields.Position as string);
-                if (buildingPosition.lat === citizenPosition.lat && buildingPosition.lng === citizenPosition.lng) {
-                  buildingAtPosition = building.fields.Name || building.fields.Type;
-                  break;
-                }
-              } catch (e) {
-                // Skip buildings with invalid position
-              }
-            }
+        if (buildingResponse.ok) {
+          const buildingData = await buildingResponse.json();
+          if (buildingData.success && buildingData.buildings && buildingData.buildings.length > 0) {
+            const buildingAtPos = buildingData.buildings[0];
+            buildingAtPosition = buildingAtPos.name || buildingAtPos.type;
+            console.log(`Found building at citizen position: ${buildingAtPosition}`);
           }
         }
+      } catch (error) {
+        console.error('Error fetching building at position:', error);
       }
     }
 
