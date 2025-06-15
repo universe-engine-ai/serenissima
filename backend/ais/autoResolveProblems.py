@@ -741,6 +741,107 @@ def resolve_zero_wages_business(problem: Dict, tables: Dict[str, Table], dry_run
     log.info(f"  Calling 'adjust_business_wages' for {operator_username}, building {building_id}, new wages {new_wages} (failures: {failure_count}).")
     return call_try_create_activity_api(operator_username, "adjust_business_wages", activity_params, dry_run)
 
+def resolve_waiting_for_galley_unloading(problem: Dict, tables: Dict[str, Table], resource_defs: Dict, building_type_defs: Dict, dry_run: bool) -> bool:
+    """Attempts to resolve 'waiting_for_galley_unloading' by creating a fetch_from_galley activity for the building's occupant."""
+    log.info(f"Attempting to resolve 'waiting_for_galley_unloading': {problem['fields'].get('Title')}")
+    building_id = problem['fields'].get('Asset')
+    if not building_id:
+        log.error(f"  Missing BuildingId for problem {problem['id']}. Cannot resolve.")
+        return False
+
+    building_record = get_building_record(tables, building_id)
+    if not building_record:
+        log.error(f"  Building {building_id} not found. Cannot resolve problem {problem['id']}.")
+        return False
+
+    # Get the occupant of the building
+    occupant_username = building_record['fields'].get('Occupant')
+    if not occupant_username:
+        log.error(f"  Building {building_id} has no occupant. Cannot create fetch activity.")
+        return False
+    
+    # Extract resource type and galley name from title or description
+    resource_type = None
+    galley_id = None
+    title = problem['fields'].get('Title', '')
+    description = problem['fields'].get('Description', '')
+    
+    # Try to extract resource type from title first
+    title_match = re.search(r"Waiting for Unloading: (\w+)", title)
+    if title_match:
+        resource_type = title_match.group(1)
+    
+    # Try to extract galley info from description
+    galley_match = re.search(r"galley '([^']+)'", description)
+    if galley_match:
+        galley_name = galley_match.group(1)
+        # Try to find the galley building by name
+        try:
+            galley_formula = f"{{Name}}='{_escape_airtable_value(galley_name)}'"
+            galley_records = tables['buildings'].all(formula=galley_formula, max_records=1)
+            if galley_records:
+                galley_id = galley_records[0]['fields'].get('BuildingId')
+        except Exception as e:
+            log.warning(f"  Error finding galley by name '{galley_name}': {e}")
+    
+    if not resource_type:
+        log.error(f"  Could not determine resource type from problem title or description. Cannot create fetch activity.")
+        return False
+    
+    if not galley_id:
+        # If we couldn't find the galley by name, try to find it by looking for import contracts
+        try:
+            import_contract_formula = f"AND({{BuyerBuilding}}='{_escape_airtable_value(building_id)}', {{ResourceType}}='{_escape_airtable_value(resource_type)}', {{Type}}='import', {{Status}}='active')"
+            import_contracts = tables['contracts'].all(formula=import_contract_formula, max_records=1)
+            
+            if import_contracts:
+                galley_id = import_contracts[0]['fields'].get('SellerBuilding')
+                if not galley_id:
+                    log.error(f"  Found import contract but no SellerBuilding (galley) specified. Cannot create fetch activity.")
+                    return False
+        except Exception as e:
+            log.warning(f"  Error finding import contract for {resource_type}: {e}")
+    
+    if not galley_id:
+        log.error(f"  Could not determine galley ID. Cannot create fetch activity.")
+        return False
+    
+    # Check if there's already an active fetch_from_galley activity for this occupant and resource
+    try:
+        # Look for active fetch_from_galley or goto_location activities heading to the galley
+        fetch_activity_formula = f"AND({{Citizen}}='{_escape_airtable_value(occupant_username)}', OR({{Type}}='fetch_from_galley', AND({{Type}}='goto_location', {{ToBuilding}}='{_escape_airtable_value(galley_id)}')), OR({{Status}}='created', {{Status}}='in_progress'))"
+        existing_activities = tables['activities'].all(formula=fetch_activity_formula)
+        
+        if existing_activities:
+            log.info(f"  Found existing activity for {occupant_username} related to galley {galley_id}. Skipping creation.")
+            return True
+    except Exception as e:
+        log.warning(f"  Error checking for existing activities: {e}")
+    
+    # Find the import contract for this resource
+    contract_id = None
+    try:
+        contract_formula = f"AND({{BuyerBuilding}}='{_escape_airtable_value(building_id)}', {{ResourceType}}='{_escape_airtable_value(resource_type)}', {{Type}}='import', {{Status}}='active')"
+        import_contracts = tables['contracts'].all(formula=contract_formula, max_records=1)
+        
+        if import_contracts:
+            contract_id = import_contracts[0]['fields'].get('ContractId', import_contracts[0]['id'])
+    except Exception as e:
+        log.warning(f"  Error finding import contract: {e}")
+    
+    # Create fetch_from_galley activity
+    activity_params = {
+        "resourceType": resource_type,
+        "fromBuildingId": galley_id,  # Galley is the source
+        "toBuildingId": building_id,  # Destination is the building that needs the resource
+        "contractId": contract_id,
+        "title": f"Fetch {resource_type} from galley for {building_record['fields'].get('Name', building_id)}",
+        "description": f"Fetching {resource_type} from galley to resolve resource shortage at {building_record['fields'].get('Name', building_id)}"
+    }
+    
+    log.info(f"  Calling try-create for 'fetch_from_galley' for {occupant_username}, from galley {galley_id} to {building_id}, resource {resource_type}.")
+    return call_try_create_activity_api(occupant_username, "fetch_from_galley", activity_params, dry_run)
+
 def resolve_waiting_on_input_delivery(problem: Dict, tables: Dict[str, Table], resource_defs: Dict, building_type_defs: Dict, dry_run: bool) -> bool:
     """Attempts to resolve 'waiting_on_input_delivery' by creating a fetch_resource activity for the building's occupant."""
     log.info(f"Attempting to resolve 'waiting_on_input_delivery': {problem['fields'].get('Title')}")
@@ -881,7 +982,7 @@ def auto_resolve_problems_main(dry_run: bool = False, problem_type_filter: Optio
         "supplier_shortage": resolve_supplier_or_resource_shortage, # 5. Oui (augmente prix markup_buy)
         "waiting_on_input_delivery": resolve_waiting_on_input_delivery, # 6. Create fetch_resource activity
         "no_import_contract": resolve_no_import_contract, # 7. Oui, manage_import_contract
-        "waiting_for_galley_unloading": resolve_do_nothing, # 8. Ne rien faire
+        "waiting_for_galley_unloading": resolve_waiting_for_galley_unloading, # 8. Create fetch_from_galley activity
         "waiting_for_galley_arrival": resolve_do_nothing, # 9. Oui (ne rien faire)
         "no_markup_buy_contract": resolve_no_markup_buy_contract_final_product, # 10. Oui (similaire à 4)
         "resource_shortage": resolve_do_nothing, # 11. Ne rien faire (modifié)
@@ -930,7 +1031,6 @@ def auto_resolve_problems_main(dry_run: bool = False, problem_type_filter: Optio
                 "hungry_citizen",
                 "zero_rent_building",
                 "zero_wages_business",
-                "waiting_for_galley_unloading", # do_nothing
                 "waiting_for_galley_arrival", # do_nothing
                 "waiting_for_resource_delivery", # do_nothing
                 "homeless_citizen", # do_nothing
@@ -938,7 +1038,7 @@ def auto_resolve_problems_main(dry_run: bool = False, problem_type_filter: Optio
                 "resource_shortage" # do_nothing (moved here)
             ]:
                 resolution_status = resolver_func(problem, tables, dry_run)
-            elif problem_type == "waiting_on_input_delivery":
+            elif problem_type in ["waiting_on_input_delivery", "waiting_for_galley_unloading"]:
                 resolution_status = resolver_func(problem, tables, resource_defs, building_type_defs, dry_run)
             elif problem_type in [
                 "no_operator_for_stock", 
