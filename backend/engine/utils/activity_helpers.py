@@ -10,10 +10,14 @@ import os # Added import for os module
 import textwrap # For log_header
 from colorama import Fore, Style # For log_header
 from typing import Dict, List, Optional, Any, Tuple, Union # Added Tuple and Union
-from pyairtable import Table # Import Table for type hinting
+from pyairtable import Table, Api # Import Table and Api for type hinting
 from dateutil import parser as dateutil_parser # For robust date parsing
+from dotenv import load_dotenv
 
 log = logging.getLogger(__name__)
+
+# Load environment variables
+load_dotenv()
 
 # Define ANSI color codes for logging
 class LogColors:
@@ -1613,6 +1617,64 @@ def log_header(message: str, color_code: str = Fore.CYAN):
     print(f"\n{color_code}{Style.BRIGHT}{corner_tl}{border_char * (width - 2)}{corner_tr}{Style.RESET_ALL}")
     print(f"{color_code}{Style.BRIGHT}{side_char} {message.center(width - 4)} {side_char}{Style.RESET_ALL}")
     print(f"{color_code}{Style.BRIGHT}{corner_bl}{border_char * (width - 2)}{corner_br}{Style.RESET_ALL}\n")
+
+def get_tables() -> Dict[str, Table]:
+    """
+    Initialize and return a dictionary of Airtable tables.
+    This function centralizes table initialization to ensure consistent access across the application.
+    
+    Returns:
+        Dict[str, Table]: Dictionary of table names to Table objects
+    """
+    try:
+        # Get Airtable credentials from environment variables
+        airtable_api_key = os.getenv("AIRTABLE_API_KEY")
+        airtable_base_id = os.getenv("AIRTABLE_BASE_ID")
+        
+        if not airtable_api_key or not airtable_base_id:
+            log.error(f"{LogColors.FAIL}Missing Airtable credentials. Ensure AIRTABLE_API_KEY and AIRTABLE_BASE_ID are set in environment variables.{LogColors.ENDC}")
+            return {}
+        
+        # Initialize Airtable API
+        api = Api(airtable_api_key)
+        
+        # Define table names and their Airtable table IDs
+        table_mapping = {
+            'citizens': 'CITIZENS',
+            'buildings': 'BUILDINGS',
+            'resources': 'RESOURCES',
+            'contracts': 'CONTRACTS',
+            'activities': 'ACTIVITIES',
+            'lands': 'LANDS',
+            'notifications': 'NOTIFICATIONS',
+            'transactions': 'TRANSACTIONS',
+            'problems': 'PROBLEMS',
+            'decrees': 'DECREES',
+            'guilds': 'GUILDS',
+            'loans': 'LOANS',
+            'messages': 'MESSAGES',
+            'relevancies': 'RELEVANCIES',
+            'relationships': 'RELATIONSHIPS',
+            'stratagems': 'STRATAGEMS',
+            'processes': 'PROCESSES'
+        }
+        
+        # Initialize tables
+        tables = {}
+        for table_key, table_name in table_mapping.items():
+            try:
+                tables[table_key] = api.table(airtable_base_id, table_name)
+                log.debug(f"Initialized table: {table_key} -> {table_name}")
+            except Exception as e_table:
+                log.error(f"{LogColors.FAIL}Error initializing table {table_key} ({table_name}): {e_table}{LogColors.ENDC}")
+        
+        log.info(f"{LogColors.OKGREEN}Successfully initialized {len(tables)} Airtable tables.{LogColors.ENDC}")
+        return tables
+    except Exception as e:
+        log.error(f"{LogColors.FAIL}Error in get_tables(): {e}{LogColors.ENDC}")
+        import traceback
+        log.error(traceback.format_exc())
+        return {}
 
 # --- Thought Cleaning Function ---
 TECHNICAL_KEYWORDS_FOR_CLEANING = [
