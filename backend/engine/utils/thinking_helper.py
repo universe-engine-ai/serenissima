@@ -121,16 +121,20 @@ def process_daily_reflection(
             
             raw_reflection = kinos_response_data.get('response', f"No daily reflection from KinOS.")
 
-            # Persist the raw reflection as a self-message (thought)
+            # Persist the raw reflection as a self-message (thought) with readAt set to now
+            now_iso = datetime.now(pytz.UTC).isoformat()
             persist_message(
                 tables=tables,
                 sender_username=citizen_username,
                 receiver_username=citizen_username,
                 content=raw_reflection,
                 message_type="kinos_daily_reflection",
-                channel_name=citizen_username
+                channel_name=citizen_username,
+                kinos_message_id=None,
+                target_citizen_username=None,
+                read_at=now_iso  # Mark as read immediately
             )
-            log.info(f"  Reflection persisted as self-message for {citizen_username}.")
+            log.info(f"  Reflection persisted as self-message for {citizen_username} (marked as read).")
             
             # Update activity notes if activity_id is in details
             if 'activity_id' in details:
@@ -285,16 +289,20 @@ def process_theater_reflection(
             
             raw_reflection = kinos_response_data.get('response', f"No theater reflection from KinOS.")
 
-            # Persist the raw reflection as a self-message (thought)
+            # Persist the raw reflection as a self-message (thought) with readAt set to now
+            now_iso = datetime.now(pytz.UTC).isoformat()
             persist_message(
                 tables=tables,
                 sender_username=citizen_username,
                 receiver_username=citizen_username,
                 content=raw_reflection,
                 message_type="kinos_theater_reflection",
-                channel_name=citizen_username
+                channel_name=citizen_username,
+                kinos_message_id=None,
+                target_citizen_username=None,
+                read_at=now_iso  # Mark as read immediately
             )
-            log.info(f"  Theater reflection persisted as self-message for {citizen_username}.")
+            log.info(f"  Theater reflection persisted as self-message for {citizen_username} (marked as read).")
             
             # Update activity notes if activity_id is in details
             if 'activity_id' in details:
@@ -437,16 +445,20 @@ def process_public_bath_reflection(
             
             raw_reflection = kinos_response_data.get('response', f"No public bath reflection from KinOS.")
 
-            # Persist the raw reflection as a self-message (thought)
+            # Persist the raw reflection as a self-message (thought) with readAt set to now
+            now_iso = datetime.now(pytz.UTC).isoformat()
             persist_message(
                 tables=tables,
                 sender_username=citizen_username,
                 receiver_username=citizen_username,
                 content=raw_reflection,
                 message_type="kinos_public_bath_reflection",
-                channel_name=citizen_username
+                channel_name=citizen_username,
+                kinos_message_id=None,
+                target_citizen_username=None,
+                read_at=now_iso  # Mark as read immediately
             )
-            log.info(f"  Public bath reflection persisted as self-message for {citizen_username}.")
+            log.info(f"  Public bath reflection persisted as self-message for {citizen_username} (marked as read).")
             
             # Update activity notes if activity_id is in details
             if 'activity_id' in details:
@@ -683,16 +695,20 @@ def process_practical_reflection(
             
             raw_reflection = kinos_response_data.get('response', f"No practical reflection from KinOS.")
             
-            # Persist the raw reflection as a self-message (thought)
+            # Persist the raw reflection as a self-message (thought) with readAt set to now
+            now_iso = datetime.now(pytz.UTC).isoformat()
             persist_message(
                 tables=tables,
                 sender_username=citizen_username,
                 receiver_username=citizen_username,
                 content=raw_reflection,
                 message_type="kinos_practical_reflection",
-                channel_name=citizen_username
+                channel_name=citizen_username,
+                kinos_message_id=None,
+                target_citizen_username=None,
+                read_at=now_iso  # Mark as read immediately
             )
-            log.info(f"  Practical reflection persisted as self-message for {citizen_username}.")
+            log.info(f"  Practical reflection persisted as self-message for {citizen_username} (marked as read).")
             
             # Update activity notes if activity_id is in details
             if 'activity_id' in details:
@@ -911,16 +927,20 @@ def process_guided_reflection(
             
             raw_reflection = kinos_response_data.get('response', f"No guided reflection from KinOS.")
 
-            # Persist the raw reflection as a self-message (thought)
+            # Persist the raw reflection as a self-message (thought) with readAt set to now
+            now_iso = datetime.now(pytz.UTC).isoformat()
             persist_message(
                 tables=tables,
                 sender_username=citizen_username,
                 receiver_username=citizen_username,
                 content=raw_reflection,
                 message_type="kinos_guided_reflection",
-                channel_name=citizen_username
+                channel_name=citizen_username,
+                kinos_message_id=None,
+                target_citizen_username=None,
+                read_at=now_iso  # Mark as read immediately
             )
-            log.info(f"  Guided reflection persisted as self-message for {citizen_username}.")
+            log.info(f"  Guided reflection persisted as self-message for {citizen_username} (marked as read).")
             
             # Update activity notes if activity_id is in details
             if 'activity_id' in details:
@@ -1064,16 +1084,20 @@ def process_unguided_reflection(
             
             raw_reflection = kinos_response_data.get('response', f"No unguided reflection from KinOS.")
 
-            # Persist the raw reflection as a self-message (thought)
+            # Persist the raw reflection as a self-message (thought) with readAt set to now
+            now_iso = datetime.now(pytz.UTC).isoformat()
             persist_message(
                 tables=tables,
                 sender_username=citizen_username,
                 receiver_username=citizen_username,
                 content=raw_reflection,
                 message_type="kinos_unguided_reflection",
-                channel_name=citizen_username
+                channel_name=citizen_username,
+                kinos_message_id=None,
+                target_citizen_username=None,
+                read_at=now_iso  # Mark as read immediately
             )
-            log.info(f"  Unguided reflection persisted as self-message for {citizen_username}.")
+            log.info(f"  Unguided reflection persisted as self-message for {citizen_username} (marked as read).")
             
             # Update activity notes if activity_id is in details
             if 'activity_id' in details:
