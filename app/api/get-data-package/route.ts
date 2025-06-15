@@ -103,6 +103,20 @@ async function fetchLastActivity(username: string): Promise<AirtableRecord<Field
   }
 }
 
+async function fetchLastActivities(username: string, count: number = 5): Promise<AirtableRecord<FieldSet>[]> {
+  try {
+    const records = await airtable('ACTIVITIES').select({
+      filterByFormula: `{Citizen} = '${escapeAirtableValue(username)}'`,
+      sort: [{ field: 'EndDate', direction: 'desc' }], // Get the most recently ended or current
+      maxRecords: count,
+    }).firstPage();
+    return [...records]; // Convert ReadonlyArray to Array
+  } catch (error) {
+    console.error(`Error fetching last ${count} activities for ${username}:`, error);
+    return [];
+  }
+}
+
 async function fetchOwnedLands(username: string): Promise<AirtableRecord<FieldSet>[]> {
   try {
     const records = await airtable('LANDS').select({
@@ -835,6 +849,18 @@ function convertDataPackageToMarkdown(dataPackage: any, citizenUsername: string 
   md += `## Last Activity\n`;
   md += formatSimpleObjectForMarkdown(dataPackage.lastActivity, ['type', 'title', 'status', 'startDate', 'endDate']);
   md += '\n';
+  
+  // Last 5 Activities
+  md += `## Recent Activities (Last 5)\n`;
+  if (dataPackage.lastActivities && dataPackage.lastActivities.length > 0) {
+    dataPackage.lastActivities.forEach((activity: any, index: number) => {
+      md += `### Activity ${index + 1}: ${activity.title || activity.type}\n`;
+      md += formatSimpleObjectForMarkdown(activity, ['type', 'status', 'startDate', 'endDate', 'description', 'thought']);
+    });
+  } else {
+    md += `- No recent activities found.\n`;
+  }
+  md += '\n';
 
   // Workplace
   md += `## Workplace\n`;
@@ -1204,6 +1230,7 @@ export async function GET(request: Request) {
     const dataPackage = {
       citizen: {...normalizeKeysCamelCaseShallow(citizenRecord.fields), airtableId: citizenRecord.id},
       lastActivity: lastActivityRecord ? {...normalizeKeysCamelCaseShallow(lastActivityRecord.fields), airtableId: lastActivityRecord.id} : null,
+      lastActivities: [] as any[], // Initialize lastActivities array
       ownedLands: ownedLandsData,
       ownedBuildings: [] as any[],
       managedBuildings: [] as any[],
@@ -1233,7 +1260,8 @@ export async function GET(request: Request) {
       strongestRelationshipsRecords,
       recentProblemsRecords,
       recentMessagesRecords,
-      lastDailyUpdateRecord
+      lastDailyUpdateRecord,
+      lastActivitiesRecords
     ] = await Promise.all([
       fetchStratagemDefinitions(),
       fetchCitizenActiveStratagems(citizenUsername),
@@ -1243,11 +1271,15 @@ export async function GET(request: Request) {
       fetchCitizenRelationships(citizenUsername),
       fetchCitizenProblems(citizenUsername),
       fetchCitizenMessages(citizenUsername),
-      fetchLastDailyUpdate()
+      fetchLastDailyUpdate(),
+      fetchLastActivities(citizenUsername, 5)
     ]);
 
     // Assign results to dataPackage
     dataPackage.availableStratagems = availableStratagems;
+    
+    // Last Activities
+    dataPackage.lastActivities = lastActivitiesRecords.map(a => ({...normalizeKeysCamelCaseShallow(a.fields), airtableId: a.id}));
     
     // Stratagems
     dataPackage.stratagemsExecutedByCitizen = stratagemsResult.executedBy.map(s => ({...normalizeKeysCamelCaseShallow(s.fields), airtableId: s.id}));
