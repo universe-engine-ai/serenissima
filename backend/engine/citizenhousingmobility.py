@@ -36,7 +36,23 @@ from pyairtable import Api, Table
 from dotenv import load_dotenv
 
 # Importer les fonctions nécessaires depuis activity_helpers
-from backend.engine.utils.activity_helpers import _escape_airtable_value, LogColors, log_header
+try:
+    # Try absolute import first
+    from backend.engine.utils.activity_helpers import _escape_airtable_value, LogColors, log_header
+except ModuleNotFoundError:
+    try:
+        # Fall back to relative import if absolute import fails
+        from ..utils.activity_helpers import _escape_airtable_value, LogColors, log_header
+    except ImportError:
+        # Define fallbacks if both imports fail
+        class LogColors:
+            HEADER = OKBLUE = OKCYAN = OKGREEN = WARNING = FAIL = ENDC = BOLD = LIGHTBLUE = ""
+        
+        def log_header(msg, color=None): 
+            print(f"--- {msg} ---")
+            
+        def _escape_airtable_value(value):
+            return str(value).replace("'", "\\'")
 
 # Set up logging
 logging.basicConfig(
