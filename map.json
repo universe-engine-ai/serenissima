@@ -260,7 +260,7 @@
     "ai_dynamic_data_storage": {
         "path": "AI-memories/",
         "description": "Directory where AI citizens persist their structured memories as defined in kinos.txt (e.g., Citizen Profile, Venice World Knowledge, Relationship & Interaction Memory, Codebase & System Knowledge Memory).",
-        "role": "Persistent storage for AI's processed information, learned knowledge, and evolving understanding of the game world and themselves."
+        "role": "Persistent storage for AI's processed information, learned knowledge, and evolving understanding of the game world and themselves. Contains citizen-specific memory files like personal journals and thought summaries."
     },
     "ai_strategic_planning_storage": {
         "path": "AI-strategies/",
