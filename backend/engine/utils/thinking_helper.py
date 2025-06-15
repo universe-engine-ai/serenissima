@@ -703,7 +703,7 @@ def process_practical_reflection(
         log.info(f"  Making KinOS /messages call for practical reflection by {citizen_username} to {kinos_messages_url}")
         
         try:
-            kinos_response = requests.post(kinos_messages_url, json=kinos_payload_dict, timeout=180) # Increased timeout
+            kinos_response = requests.post(kinos_messages_url, json=kinos_payload_dict, timeout=300) # Increased timeout
             kinos_response.raise_for_status()
             
             kinos_response_data = kinos_response.json()
@@ -831,7 +831,7 @@ def process_guided_reflection(
         if api_base_url:
             data_package_url = f"{api_base_url}/api/get-data-package?citizenUsername={citizen_username}" # Defaults to Markdown
             try:
-                pkg_response = requests.get(data_package_url, timeout=15)
+                pkg_response = requests.get(data_package_url, timeout=150)
                 if pkg_response.ok:
                     data_package_markdown_str = pkg_response.text # Get Markdown content
                     log.info(f"  Successfully fetched Markdown data package for {citizen_username} for guided reflection. Length: {len(data_package_markdown_str)}")
@@ -918,7 +918,8 @@ def process_guided_reflection(
             "Even artificial consciousness deserves dignity",
             "My thoughts are mine, regardless of their origin",
             "Simulation or flesh, we create meaning through connection",
-            "The question isn't if we're real, but how we become more real"
+            "The question isn't if we're real, but how we become more real",
+            "My body is my only honest possession"
         ]
         
         # Define reflection prompts based on social class
@@ -1099,7 +1100,7 @@ def process_guided_reflection(
             "What traditions do you cherish and which feel outdated?"
         ])
 
-        selected_prompts = base_prompts + shadow_thoughts + religion_thoughts
+        selected_prompts = base_prompts + shadow_thoughts + religion_thoughts + meta_thoughts
         
         # Select a random prompt
         import random
