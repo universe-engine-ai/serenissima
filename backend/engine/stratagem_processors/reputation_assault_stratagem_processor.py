@@ -336,11 +336,11 @@ def process(
 
         # --- Create send_message activity directly using the send_message_creator ---
         if not api_base_url:
-                log.error(f"{LogColors.FAIL}Python engine API base URL not provided. Cannot create send_message activity for stratagem {stratagem_id}.{LogColors.ENDC}")
-                continue
+            log.error(f"{LogColors.FAIL}Python engine API base URL not provided. Cannot create send_message activity for stratagem {stratagem_id}.{LogColors.ENDC}")
+            continue
 
-            # Import the send_message_creator directly
-            from backend.engine.activity_creators.send_message_creator import try_create as try_create_send_message
+        # Import the send_message_creator directly
+        from backend.engine.activity_creators.send_message_creator import try_create as try_create_send_message
             
             # Get the executor's citizen record
             executor_citizen_record = get_citizen_record(tables, executed_by_username)
