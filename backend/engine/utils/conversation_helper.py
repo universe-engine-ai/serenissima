@@ -263,7 +263,11 @@ def persist_message(
     if thinking_content is not None:
         payload["Thinking"] = thinking_content # Add the extracted thinking content
 
-    if sender_username == receiver_username:
+    # Use provided read_at if available, otherwise set ReadAt for self-messages
+    if read_at:
+        payload["ReadAt"] = read_at
+        log.info(f"Message marked as read with provided timestamp: {read_at}")
+    elif sender_username == receiver_username:
         payload["ReadAt"] = datetime.now(VENICE_TIMEZONE).isoformat()
         log.info(f"Message from {sender_username} to self. Setting ReadAt to current time.")
     # Else, "ReadAt" will be null initially for the receiver
