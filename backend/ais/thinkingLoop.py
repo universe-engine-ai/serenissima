@@ -167,8 +167,8 @@ def perform_thinking(citizen, tables):
             PROCESS_TYPE_UNGUIDED_REFLECTION
         ]
         
-        # Add a 10% chance to continue a previous thought
-        if random.random() < 0.10:  # 10% chance
+        # Add a 30% chance to continue a previous thought
+        if random.random() < 0.30:  # 30% chance
             # Import here to avoid circular imports
             from backend.engine.utils.thinking_helper import process_continue_thought
             
