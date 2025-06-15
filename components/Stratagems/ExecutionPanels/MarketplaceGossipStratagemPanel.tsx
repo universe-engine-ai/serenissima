@@ -149,7 +149,7 @@ const MarketplaceGossipStratagemPanel = forwardRef<StratagemSpecificPanelRef, St
           disabled={isLoading}
         />
         <p className="text-xs text-gray-500 mt-1">
-          Craft the rumor you want to spread. This will be used by your citizen to initiate conversations.
+          Craft the rumor you want to spread. This will be used by your citizen to initiate conversations. Note that gossip is not necessarily negative, though it often is.
         </p>
         {!gossipContent.trim() && (
           <p className="text-xs text-red-500 mt-1">Gossip content is required.</p>
