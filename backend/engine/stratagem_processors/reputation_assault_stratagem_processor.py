@@ -108,7 +108,6 @@ def _make_direct_kinos_channel_call(
         log.error(traceback.format_exc())
         return None
 from backend.engine.utils.relationship_helpers import (
-    update_trust_score_for_activity,
     _rh_get_relationship_data, # Helper to get relationship details
     _rh_get_notifications_data_api, # Helper for context
     _rh_get_relevancies_data_api, # Helper for context
@@ -137,7 +136,7 @@ def _get_related_citizens(tables: Dict[str, Any], target_username: str, limit: i
         import requests
         api_url = f"{NEXT_JS_BASE_URL}/api/relationships?targetCitizen={target_username}"
         log.info(f"{LogColors.PROCESS}Fetching relationships via API: {api_url}{LogColors.ENDC}")
-        response = requests.get(api_url, timeout=30)
+        response = requests.get(api_url, timeout=60)
         if response.ok:
             relationships_data = response.json()
             if relationships_data.get('success') and 'relationships' in relationships_data:
@@ -457,30 +456,7 @@ def process(
         else:
             log.warning(f"{LogColors.WARNING}Failed to generate specific message content (self-chat) for {related_citizen_username} (re: {target_citizen_username}) for stratagem {stratagem_id}.{LogColors.ENDC}")
 
-    # 4. Damage relationship between executor and target (regardless of messages sent/activities created)
-    trust_change = -50.0 # Significant negative impact
-    try:
-        # Utiliser directement update_trust_score_for_activity
-        if 'relationships' in tables:
-            update_trust_score_for_activity(
-                tables,
-                executed_by_username,
-                target_citizen_username,
-                trust_change,
-                activity_type_for_notes=f"stratagem_reputation_assault_on_{target_citizen_username}",
-                success=False, # From target's perspective, this is a negative action
-                notes_detail=f"executed_by_{executed_by_username}",
-                activity_record_for_kinos=stratagem_record # Pass the stratagem record for context
-            )
-            log.info(f"{LogColors.PROCESS}Trust score between {executed_by_username} and {target_citizen_username} impacted by {trust_change} due to stratagem {stratagem_id}.{LogColors.ENDC}")
-        else:
-            log.error(f"{LogColors.FAIL}Could not update trust score: 'relationships' table not found{LogColors.ENDC}")
-    except Exception as e_trust:
-        log.error(f"{LogColors.FAIL}Error during trust score update: {e_trust}{LogColors.ENDC}")
-        import traceback
-        log.error(traceback.format_exc())
-
-    # 5. Update stratagem status
+    # 4. Update stratagem status
     final_notes = f"Reputation assault executed. {messages_sent_count} 'send_message' activities initiated to relations of {target_citizen_username}."
     if not stratagem_fields.get('ExecutedAt'):
         tables['stratagems'].update(stratagem_record['id'], {'ExecutedAt': datetime.now(pytz.utc).isoformat(), 'Status': 'executed', 'Notes': final_notes})
