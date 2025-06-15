@@ -334,8 +334,8 @@ def process(
         cleaned_specific_message = f"Je dois vous parler de {target_display_name}..."
         log.info(f"{LogColors.PROCESS}Message générique préparé pour {related_citizen_username}, sera personnalisé par KinOS lors de la livraison{LogColors.ENDC}")
 
-            # --- Create send_message activity directly using the send_message_creator ---
-            if not api_base_url:
+        # --- Create send_message activity directly using the send_message_creator ---
+        if not api_base_url:
                 log.error(f"{LogColors.FAIL}Python engine API base URL not provided. Cannot create send_message activity for stratagem {stratagem_id}.{LogColors.ENDC}")
                 continue
 

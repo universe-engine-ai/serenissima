@@ -731,7 +731,7 @@ def generate_conversation_turn(
                 # Remplacer le prompt standard par un prompt spécifique pour le stratagème
                 system_explanation = (
                     f"[SYSTEM]You are {speaker_profile.get('FirstName', speaker_username)}, a {speaker_profile.get('SocialClass', 'citizen')} of Venice. "
-                    f"{location_context}You see {listener_profile.get('FirstName', listener_username)} (Social Class: {listener_profile.get('SocialClass', 'unknown')}) here. "
+                    f"You are both currently {location_description_for_prompt}. You see {listener_profile.get('FirstName', listener_username)} (Social Class: {listener_profile.get('SocialClass', 'unknown')}) here. "
                     f"Your objective is to damage the reputation of {target_display_name} in the eyes of {listener_profile.get('FirstName', listener_username)}. "
                     f"You have a core attack narrative about {target_display_name} (see `additional_message_data.coreAttackNarrative` in addSystem). "
                     f"Using that narrative as a foundation, and considering all the contextual information in addSystem, "
