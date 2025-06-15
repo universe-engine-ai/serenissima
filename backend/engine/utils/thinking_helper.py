@@ -1043,9 +1043,23 @@ def process_guided_reflection(
             "What challenges or obstacles are you currently facing?",
             "How are your relationships with other citizens developing?",
             "What opportunities do you see on the horizon?",
-            "What long-term goals are you working toward in Venice?"
+            "What long-term goals are you working toward in Venice?",
+            "What aspects of your life in Venice are most satisfying right now?",
+            "What challenges or obstacles are you currently facing?",
+            "How are your relationships with other citizens developing?",
+            "What opportunities do you see on the horizon?",
+            "What long-term goals are you working toward in Venice?",
+            "What recent event has most changed your perspective?",
+            "Who in Venice do you trust most, and why?",
+            "What would you change about Venice if you had the power?",
+            "How has your understanding of success evolved recently?",
+            "What patterns have you noticed in the city's economy?",
+            "What skills or knowledge do you wish you possessed?",
+            "How do you balance personal desires with family obligations?",
+            "What aspects of Venetian society confuse or frustrate you?",
+            "Where do you see yourself in five years?",
+            "What traditions do you cherish and which feel outdated?"
         ])
-        
 
         selected_prompts = base_prompts + shadow_thoughts + religion_thoughts
         
