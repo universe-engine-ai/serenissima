@@ -668,19 +668,18 @@ def process_ai_message_initiatives(dry_run: bool = False, citizen1_arg: Optional
                 # Vérifier que les paramètres requis sont présents
                 if not target_username or not message_content:
                     print(f"    Erreur: Paramètres requis manquants pour send_message ciblé. Target: {target_username}, Content length: {len(message_content) if message_content else 0}")
-                    continue
-                            
-                activity_params = {
-                    "receiverUsername": target_username,
-                    "content": message_content,
-                    "messageType": "message",
-                    "channel": channel_name_targeted
-                }
-                print(f"    Tentative d'envoi de message ciblé via activité 'send_message' avec canal: {channel_name_targeted}")
-                if call_try_create_activity_api(ai_username, "send_message", activity_params, dry_run):
-                    initiatives_summary["total_messages_sent"] += 1
-                    initiatives_summary["details"][ai_username]["messages_sent_count"] += 1
-                    initiatives_summary["details"][ai_username]["targets"].append(target_username)
+                else:
+                    activity_params = {
+                        "receiverUsername": target_username,
+                        "content": message_content,
+                        "messageType": "message",
+                        "channel": channel_name_targeted
+                    }
+                    print(f"    Tentative d'envoi de message ciblé via activité 'send_message' avec canal: {channel_name_targeted}")
+                    if call_try_create_activity_api(ai_username, "send_message", activity_params, dry_run):
+                        initiatives_summary["total_messages_sent"] += 1
+                        initiatives_summary["details"][ai_username]["messages_sent_count"] += 1
+                        initiatives_summary["details"][ai_username]["targets"].append(target_username)
             else:
                 print(f"    Échec de la génération du contenu du message de {ai_username} à {target_username}.")
         else:
