@@ -2403,103 +2403,38 @@ def _handle_send_leisure_message(
         log.error(f"{LogColors.FAIL}[Message Loisir] Erreur lors de la vérification des messages récents pour {citizen_name}: {e_check_recent}{LogColors.ENDC}")
         return False if check_only else None
 
-    # Trouver des citoyens potentiels à qui envoyer un message
-    # Exclure le citoyen lui-même et prioriser les citoyens avec qui il a déjà une relation
-    try:
-        # D'abord, chercher des citoyens avec qui il a une relation
-        relationships_formula = f"OR({{Citizen1}}='{_escape_airtable_value(citizen_username)}', {{Citizen2}}='{_escape_airtable_value(citizen_username)}')"
-        relationships = tables['relationships'].all(formula=relationships_formula)
-        
-        potential_recipients = []
-        
-        # Extraire les citoyens des relations
-        for rel in relationships:
-            c1 = rel['fields'].get('Citizen1')
-            c2 = rel['fields'].get('Citizen2')
-            trust_score = float(rel['fields'].get('TrustScore', 0))
-            
-            # Ajouter l'autre citoyen de la relation
-            other_citizen = c2 if c1 == citizen_username else c1
-            if other_citizen != citizen_username:  # Vérification redondante mais sécuritaire
-                potential_recipients.append((other_citizen, trust_score))
-        
-        # Si moins de 3 relations trouvées, ajouter d'autres citoyens aléatoires
-        if len(potential_recipients) < 3:
-            all_citizens_formula = f"{{Username}}!='{_escape_airtable_value(citizen_username)}'"
-            all_citizens = tables['citizens'].all(formula=all_citizens_formula)
-            
-            # Filtrer pour exclure ceux déjà dans potential_recipients
-            existing_recipients = [r[0] for r in potential_recipients]
-            additional_citizens = [c['fields'].get('Username') for c in all_citizens 
-                                  if c['fields'].get('Username') not in existing_recipients]
-            
-            # Ajouter jusqu'à 5 citoyens aléatoires avec un score de confiance par défaut de 0
-            import random
-            random.shuffle(additional_citizens)
-            for c in additional_citizens[:5]:
-                potential_recipients.append((c, 0))
-        
-        # Si toujours aucun destinataire potentiel, abandonner
-        if not potential_recipients:
-            log.info(f"{LogColors.OKBLUE}[Message Loisir] Aucun destinataire potentiel trouvé pour {citizen_name}.{LogColors.ENDC}")
-            return False if check_only else None
-        
-        # Trier par score de confiance (plus élevé d'abord) et prendre les 5 premiers
-        potential_recipients.sort(key=lambda x: x[1], reverse=True)
-        top_recipients = potential_recipients[:5]
-        
-        if check_only:
-            return len(top_recipients) > 0
-        
-        # Choisir un destinataire aléatoire parmi les meilleurs
-        import random
-        chosen_recipient, trust_score = random.choice(top_recipients)
-        
-        # Obtenir les informations sur le destinataire
-        recipient_record = get_citizen_record(tables, chosen_recipient)
-        if not recipient_record:
-            log.warning(f"{LogColors.WARNING}[Message Loisir] Destinataire {chosen_recipient} non trouvé dans la base de données.{LogColors.ENDC}")
-            return None
-        
-        recipient_name = f"{recipient_record['fields'].get('FirstName', '')} {recipient_record['fields'].get('LastName', '')}".strip() or chosen_recipient
-        
-        # Générer un contenu de message simple
-        message_content = f"Bonjour {recipient_name}, comment allez-vous aujourd'hui? Je profite de mon temps libre pour prendre de vos nouvelles."
-        
-        # Créer l'activité d'envoi de message
-        from backend.engine.activity_creators.send_message_creator import try_create as try_create_send_message_chain
-        
-        message_details = {
-            "receiverUsername": chosen_recipient,
-            "content": message_content,
-            "messageType": "personal",
-            "conversationLength": 3,  # Conversation de longueur moyenne
-            "notes": {
-                "purpose": "leisure_initiative",
-                "targetCitizenUsernameForTrustImpact": chosen_recipient
-            }
+    if check_only:
+        return True  # Si on vérifie juste la possibilité, on suppose que c'est possible
+    
+    # Créer l'activité d'envoi de message sans spécifier de destinataire
+    # La sélection du destinataire sera gérée par choose_interlocutor_via_kinos dans send_message_creator
+    from backend.engine.activity_creators.send_message_creator import try_create as try_create_send_message_chain
+    
+    message_details = {
+        "receiverUsername": None,  # Pas de destinataire spécifié, sera choisi dynamiquement
+        "content": None,  # Le contenu sera généré en fonction du destinataire choisi
+        "messageType": "personal",
+        "conversationLength": 3,  # Conversation de longueur moyenne
+        "notes": {
+            "purpose": "leisure_initiative"
+            # targetCitizenUsernameForTrustImpact sera ajouté par send_message_creator
         }
+    }
+    
+    activity_record = try_create_send_message_chain(
+        tables,
+        citizen_record,
+        message_details,
+        api_base_url,
+        transport_api_url
+    )
+    
+    if activity_record:
+        log.info(f"{LogColors.OKGREEN}[Message Loisir] {citizen_name}: Activité d'envoi de message créée avec destinataire choisi dynamiquement.{LogColors.ENDC}")
+    else:
+        log.info(f"{LogColors.OKBLUE}[Message Loisir] {citizen_name}: Impossible de créer une activité d'envoi de message.{LogColors.ENDC}")
         
-        activity_record = try_create_send_message_chain(
-            tables,
-            citizen_record,
-            message_details,
-            api_base_url,
-            transport_api_url
-        )
-        
-        if activity_record:
-            log.info(f"{LogColors.OKGREEN}[Message Loisir] {citizen_name}: Activité d'envoi de message créée vers {recipient_name}.{LogColors.ENDC}")
-        else:
-            log.info(f"{LogColors.OKBLUE}[Message Loisir] {citizen_name}: Impossible de créer une activité d'envoi de message vers {recipient_name}.{LogColors.ENDC}")
-            
-        return activity_record
-        
-    except Exception as e_find_recipients:
-        log.error(f"{LogColors.FAIL}[Message Loisir] Erreur lors de la recherche de destinataires pour {citizen_name}: {e_find_recipients}{LogColors.ENDC}")
-        import traceback
-        log.error(traceback.format_exc())
-        return None
+    return activity_record
 
 def _handle_read_book(
     tables: Dict[str, Table], citizen_record: Dict, is_night: bool, resource_defs: Dict, building_type_defs: Dict,
