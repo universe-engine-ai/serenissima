@@ -343,23 +343,14 @@ def main():
                     elif process_type == "public_bath_reflection":
                         process_public_bath_reflection(tables, pending_process)
                     elif process_type == "guided_reflection":
-                        # TODO: Implement guided reflection processing
-                        log_warning(f"Guided reflection processing not yet implemented")
-                        # For now, mark as completed to avoid blocking the queue
-                        from backend.engine.utils.process_helper import update_process_status, PROCESS_STATUS_COMPLETED
-                        update_process_status(tables, pending_process['id'], PROCESS_STATUS_COMPLETED, {"result": "Not implemented yet"})
+                        from backend.engine.utils.thinking_helper import process_guided_reflection
+                        process_guided_reflection(tables, pending_process)
                     elif process_type == "practical_reflection":
-                        # TODO: Implement practical reflection processing
-                        log_warning(f"Practical reflection processing not yet implemented")
-                        # For now, mark as completed to avoid blocking the queue
-                        from backend.engine.utils.process_helper import update_process_status, PROCESS_STATUS_COMPLETED
-                        update_process_status(tables, pending_process['id'], PROCESS_STATUS_COMPLETED, {"result": "Not implemented yet"})
+                        from backend.engine.utils.thinking_helper import process_practical_reflection
+                        process_practical_reflection(tables, pending_process)
                     elif process_type == "unguided_reflection":
-                        # TODO: Implement unguided reflection processing
-                        log_warning(f"Unguided reflection processing not yet implemented")
-                        # For now, mark as completed to avoid blocking the queue
-                        from backend.engine.utils.process_helper import update_process_status, PROCESS_STATUS_COMPLETED
-                        update_process_status(tables, pending_process['id'], PROCESS_STATUS_COMPLETED, {"result": "Not implemented yet"})
+                        from backend.engine.utils.thinking_helper import process_unguided_reflection
+                        process_unguided_reflection(tables, pending_process)
                     elif process_type == "autonomous_run":
                         # TODO: Implement autonomous run processing
                         log_warning(f"Autonomous run processing not yet implemented")
