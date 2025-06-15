@@ -600,12 +600,9 @@ AI citizens (excluding those of 'Facchini' social class) periodically generate s
     *   General relevancies concerning the AI (`/api/relevancies`).
     *   Active problems the AI is facing (`/api/problems`).
 3.  This contextual data is packaged into an `addSystem` field.
-4.  A detailed prompt is sent to the Kinos Engine API (`/v2/blueprints/serenissima-ai/kins/{CitizenUsername}/channels/thoughts/messages`). The prompt instructs the Kinos AI to:
-    *   First, generate a paragraph of diverse thoughts based on the provided context. This includes reflecting on strategic goals, economic evaluations, relationship-driven economic thoughts, needs-driven actions (linked to problems), and activity-related intentions.
-    *   Second, select ONE single, concise thought (a single sentence) from the paragraph that represents its most pressing or actionable idea.
-    *   Enclose this chosen thought within `<thought></thought>` tags.
-5.  The script retrieves the Kinos AI's response and extracts the single thought from the `<thought></thought>` tags.
-6.  If a thought is successfully extracted and not in `dry-run` mode, a message is created in the `MESSAGES` table in Airtable. This message is from the AI citizen to themselves, with the `Content` being the extracted thought and `Type` set to `thought_log`.
+4.  A detailed prompt is sent to the Kinos Engine API (`/v2/blueprints/serenissima-ai/kins/{CitizenUsername}/channels/thoughts/messages`). The prompt instructs the Kinos AI to generate a comprehensive paragraph of diverse thoughts based on the provided context. This includes reflecting on strategic goals, economic evaluations, relationship-driven economic thoughts, needs-driven actions (linked to problems), and activity-related intentions. The entire generated paragraph will be considered the AI's thought.
+5.  The script retrieves the Kinos AI's response (the full paragraph of thoughts).
+6.  If a thought paragraph is successfully generated and not in `dry-run` mode, a message is created in the `MESSAGES` table in Airtable. This message is from the AI citizen to themselves, with the `Content` being the full thought paragraph and `Type` set to `thought_log`.
 7.  An admin notification is created in Airtable summarizing the thought generation process for all processed AIs, including counts of successes and failures.
 
 #### Impact:
