@@ -267,28 +267,8 @@ def update_trust_score_for_activity(
         import traceback
         log.error(traceback.format_exc())
     
-    # Déclencher la réaction KinOS si les deux sont des IA, de manière asynchrone
-    # citizen1_username est l'acteur, citizen2_username est celui qui subit l'action
-    # Donc, citizen2_username (receiver_of_action) réagit en premier.
-    if activity_record_for_kinos: # S'assurer qu'il y a un enregistrement d'activité à passer
-        try:
-            kinos_reaction_thread = threading.Thread(
-                target=_initiate_reaction_dialogue_if_both_ai,
-                args=(
-                    tables,
-                    citizen1_username, # actor_username
-                    citizen2_username, # receiver_of_action_username
-                    activity_record_for_kinos
-                )
-            )
-            kinos_reaction_thread.start()
-            log.info(f"Thread de dialogue de réaction KinOS démarré ({kinos_reaction_thread.ident}) pour {citizen1_username} et {citizen2_username}.")
-        except Exception as e_thread_start:
-            log.error(f"{LogColors.FAIL}Erreur lors du démarrage du thread de dialogue de réaction KinOS pour {citizen1_username} et {citizen2_username}: {e_thread_start}{LogColors.ENDC}")
-            import traceback
-            log.error(traceback.format_exc())
-    else:
-        log.debug("Aucun activity_record_for_kinos fourni, pas de dialogue de réaction KinOS déclenché.")
+    # The reaction dialogue functionality has been removed as it's now handled by the conversation system
+    # Dialogues can be initiated even if both citizens are not AI
 
 # --- Fonctions d'assistance pour l'interaction KinOS ---
 
