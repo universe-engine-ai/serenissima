@@ -1,30 +1,25 @@
 import logging
 import json
-import requests # Ajout de requests
-import os # Ajout de os pour KINOS_API_KEY
-import threading # Ajout de threading pour KinOS
-from datetime import datetime # Ajout de datetime
+from datetime import datetime
 from typing import Dict, Any, Optional
 
 from backend.engine.utils.activity_helpers import (
     LogColors,
     get_citizen_record,
-    get_building_record, # Ajout de l'importation
+    get_building_record,
     update_citizen_ducats,
-    VENICE_TIMEZONE # For potential future use with LastLeisureAt
+    VENICE_TIMEZONE
 )
 from backend.engine.utils.relationship_helpers import (
     update_trust_score_for_activity,
     TRUST_SCORE_MINOR_POSITIVE
 )
-from backend.engine.utils.conversation_helper import persist_message # Added import
+from backend.engine.utils.process_helper import (
+    create_process,
+    PROCESS_TYPE_THEATER_REFLECTION
+)
 
 log = logging.getLogger(__name__)
-
-# KinOS constants
-KINOS_API_URL = "https://api.kinos-engine.ai" # Always use production KinOS API
-KINOS_BLUEPRINT = "serenissima-ai"
-KINOS_API_KEY = os.getenv("KINOS_API_KEY")
 
 # Prices and influence based on social class - these are also in the creator,
 # but the processor should re-evaluate based on current class at time of processing.
@@ -87,6 +82,7 @@ def process(
     play_name_from_api = "Pièce inconnue"
     if api_base_url and theater_id:
         try:
+            import requests # Import here to avoid global dependency
             representation_url = f"{api_base_url}/api/get-theater-current-representation?buildingId={theater_id}"
             response = requests.get(representation_url, timeout=30) # Increased timeout to 30 seconds
             response.raise_for_status()
@@ -95,12 +91,16 @@ def process(
                 artist_username_from_api = representation_data["representation"].get("artist")
                 play_name_from_api = representation_data["representation"].get("name", play_name_from_api)
                 log.info(f"Pièce actuelle à {theater_name}: '{play_name_from_api}' par {artist_username_from_api or 'Artiste inconnu'}.")
+                
+                # Store play content for the reflection process
+                if representation_data["representation"].get("content"):
+                    activity_details["play_content"] = representation_data["representation"].get("content")
+                    activity_details["play_name"] = play_name_from_api
+                    activity_details["play_artist"] = artist_username_from_api
             else:
                 log.warning(f"Impossible de récupérer la représentation actuelle pour {theater_id}: {representation_data.get('error')}")
-        except requests.exceptions.RequestException as e_req:
-            log.error(f"Erreur API lors de la récupération de la représentation pour {theater_id}: {e_req}")
         except Exception as e_repr:
-            log.error(f"Erreur inattendue lors de la récupération de la représentation pour {theater_id}: {e_repr}")
+            log.error(f"Erreur lors de la récupération de la représentation pour {theater_id}: {e_repr}")
     else:
         log.warning("api_base_url ou theater_id manquant, impossible de récupérer les détails de la pièce.")
 
@@ -195,88 +195,27 @@ def process(
                 activity_record_for_kinos=activity_record 
             )
 
-    log.info(f"{LogColors.OKGREEN}Activité 'attend_theater_performance' {activity_guid} pour {citizen_username} à {theater_name} traitée avec succès (paiements et influence). Lancement de la réflexion KinOS.{LogColors.ENDC}")
+    log.info(f"{LogColors.OKGREEN}Activité 'attend_theater_performance' {activity_guid} pour {citizen_username} à {theater_name} traitée avec succès (paiements et influence). Création d'un processus de réflexion.{LogColors.ENDC}")
 
-    # --- KinOS Reflection (asynchrone) ---
-    if not KINOS_API_KEY:
-        log.error(f"{LogColors.FAIL}KINOS_API_KEY non défini. Impossible de déclencher la réflexion KinOS pour 'attend_theater_performance' {activity_guid}.{LogColors.ENDC}")
-    else:
-        try:
-            play_content_from_api = "Contenu de la pièce non disponible."
-            if 'representation_data' in locals() and representation_data.get("success") and representation_data.get("representation"):
-                play_content_from_api = representation_data["representation"].get("content", play_content_from_api)
-
-            # Récupérer le data package du citoyen (format Markdown)
-            data_package_markdown_str = None
-            if api_base_url:
-                data_package_url = f"{api_base_url}/api/get-data-package?citizenUsername={citizen_username}" # Defaults to Markdown
-                try:
-                    pkg_response = requests.get(data_package_url, timeout=15)
-                    if pkg_response.ok:
-                        data_package_markdown_str = pkg_response.text # Get Markdown content
-                        log.info(f"  Récupération réussie du data package (Markdown) pour {citizen_username} pour la réflexion sur le théâtre. Longueur: {len(data_package_markdown_str)}")
-                    else:
-                        log.warning(f"  Échec de la récupération du data package (Markdown) pour {citizen_username} (théâtre): {pkg_response.status_code}")
-                except Exception as e_pkg_fetch:
-                    log.error(f"  Erreur lors de la récupération du data package (Markdown) pour {citizen_username} (théâtre): {e_pkg_fetch}")
-            
-            # kinos_build_url n'est plus construit ici, mais dans la fonction async
-            
-            kinos_prompt_theater = (
-                f"Vous êtes {citizen_username}, un citoyen de Venise à la Renaissance. Vous venez d'assister à une représentation théâtrale intitulée '{play_name_from_api}' par l'artiste {artist_username_from_api or 'inconnu'}. "
-                f"Le contenu/résumé de la pièce (si disponible) et vos données personnelles sont fournis dans `addSystem` sous `play_context` et `citizen_context`.\n\n"
-                f"Réfléchissez à la pièce que vous venez de voir. Considérez :\n"
-                f"- Quels étaient les thèmes principaux ou les messages de la pièce (voir `addSystem.play_context.content`) ?\n"
-                f"- Y a-t-il eu des éléments qui vous ont particulièrement marqué, interpellé ou inspiré ?\n"
-                f"- Comment les idées ou émotions suscitées par cette pièce pourraient-elles influencer vos pensées, décisions ou actions futures concernant votre vie, travail, relations ou ambitions à Venise (référez-vous à `addSystem.citizen_context`) ?\n\n"
-                f"Votre réflexion doit être personnelle et introspective. Utilisez votre situation actuelle, vos objectifs et votre personnalité (détaillés dans `addSystem.citizen_context`) pour contextualiser vos pensées sur la pièce."
-            )
-
-            structured_add_system_payload_theater: Dict[str, Any] = {
-                "citizen_context": None,
-                "play_context": {
-                    "title": play_name_from_api,
-                    "artist": artist_username_from_api or "Artiste inconnu",
-                    "content": play_content_from_api
-                }
-            }
-            if data_package_markdown_str:
-                structured_add_system_payload_theater["citizen_context"] = data_package_markdown_str # Assign Markdown string directly
-            else:
-                structured_add_system_payload_theater["citizen_context"] = "Citizen context data package was not available."
-
-            kinos_payload_dict_theater: Dict[str, Any] = {
-                "message": kinos_prompt_theater,
-                "model": "local", # Ou choisir le modèle basé sur la classe sociale/tâche
-                "addSystem": json.dumps(structured_add_system_payload_theater) # structured_add_system_payload_theater is a dict, citizen_context is a string
-            }
-
-            log.info(f"  Lancement de l'appel KinOS /messages asynchrone pour la réflexion sur le théâtre par {citizen_username}")
-            
-            # Le nom du canal pour une auto-réflexion est le nom d'utilisateur du citoyen
-            reflection_channel_name = citizen_username
-
-            kinos_thread_theater = threading.Thread(
-                target=_call_kinos_messages_for_theater_reflection_async,
-                args=(
-                    citizen_username, # kin_id for the URL
-                    reflection_channel_name, # channel_name for the URL
-                    kinos_payload_dict_theater, # The payload, key "message" will be changed to "content" inside
-                    tables, 
-                    activity_record['id'], 
-                    activity_guid, 
-                    activity_details, 
-                    citizen_username # citizen_username_log for logging within the thread
-                )
-            )
-            kinos_thread_theater.start()
-            log.info(f"  Appel KinOS /messages pour la réflexion sur le théâtre par {citizen_username} démarré dans le thread {kinos_thread_theater.ident}.")
-
-        except Exception as e_kinos_setup:
-            log.error(f"{LogColors.FAIL}Erreur lors de la configuration de l'appel KinOS /messages pour la réflexion sur le théâtre {activity_guid}: {e_kinos_setup}{LogColors.ENDC}")
-            import traceback
-            log.error(traceback.format_exc())
-            # Ne pas retourner False ici, l'activité principale est traitée.
+    # --- Create a process for theater reflection ---
+    process_details = {
+        "activity_id": activity_record['id'],
+        "activity_guid": activity_guid,
+        "activity_details": activity_details,
+        "theater_id": theater_id,
+        "theater_name": theater_name,
+        "play_name": play_name_from_api,
+        "artist_username": artist_username_from_api
+    }
+    
+    create_process(
+        tables=tables,
+        process_type=PROCESS_TYPE_THEATER_REFLECTION,
+        citizen_username=citizen_username,
+        priority=5,  # Medium priority
+        details=process_details,
+        api_base_url=api_base_url
+    )
 
     return True
 

@@ -256,11 +256,9 @@ def main():
                     if process_type == PROCESS_TYPE_DAILY_REFLECTION:
                         process_daily_reflection(tables, pending_process)
                     elif process_type == PROCESS_TYPE_THEATER_REFLECTION:
-                        # TODO: Implement theater reflection processing
-                        log_warning(f"Theater reflection processing not yet implemented")
+                        process_theater_reflection(tables, pending_process)
                     elif process_type == PROCESS_TYPE_PUBLIC_BATH_REFLECTION:
-                        # TODO: Implement public bath reflection processing
-                        log_warning(f"Public bath reflection processing not yet implemented")
+                        process_public_bath_reflection(tables, pending_process)
                     elif process_type == PROCESS_TYPE_AUTONOMOUS_RUN:
                         # TODO: Implement autonomous run processing
                         log_warning(f"Autonomous run processing not yet implemented")

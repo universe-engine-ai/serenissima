@@ -193,58 +193,10 @@ def process(
 
     return True
 
-def _call_kinos_build_for_bath_reflection_async(
-    kinos_build_url: str,
-    kinos_payload: Dict[str, Any],
-    tables: Dict[str, Any],
-    activity_id_airtable: str,
-    activity_guid_log: str,
-    original_activity_notes_dict: Dict[str, Any],
-    citizen_username_log: str
-):
-    """
-    Performs the KinOS /build call for public bath reflection and updates the activity notes.
-    This function is intended to be executed in a separate thread.
-    """
-    log.info(f"  [Thread Public Bath: {threading.get_ident()}] Calling KinOS /build for public bath reflection by {citizen_username_log} at {kinos_build_url}")
-    try:
-        kinos_response = requests.post(kinos_build_url, json=kinos_payload, timeout=120)
-        kinos_response.raise_for_status()
-        
-        kinos_response_data = kinos_response.json()
-        log.info(f"  [Thread Public Bath: {threading.get_ident()}] KinOS /build response (public bath) for {citizen_username_log}: Status: {kinos_response_data.get('status')}, Response: {kinos_response_data.get('response')}")
-        
-        raw_reflection = kinos_response_data.get('response', "No reflection on public bath from KinOS.")
-
-        # Persist the raw reflection as a self-message (thought)
-        persist_message(
-            tables=tables,
-            sender_username=citizen_username_log,
-            receiver_username=citizen_username_log,
-            content=raw_reflection,
-            message_type="kinos_public_bath_reflection",
-            channel_name=citizen_username_log
-        )
-        log.info(f"  [Thread Public Bath: {threading.get_ident()}] Réflexion sur le bain public persistée comme message à soi-même pour {citizen_username_log}.")
-
-        # Update activity notes (optional, kept for now)
-        cleaned_reflection_for_notes = clean_thought_content(tables, raw_reflection)
-
-        original_activity_notes_dict['kinos_public_bath_reflection'] = cleaned_reflection_for_notes
-        original_activity_notes_dict['kinos_public_bath_reflection_status'] = kinos_response_data.get('status', 'unknown')
-        
-        new_notes_json = json.dumps(original_activity_notes_dict)
-
-        try:
-            tables['activities'].update(activity_id_airtable, {'Notes': new_notes_json})
-            log.info(f"  [Thread Public Bath: {threading.get_ident()}] Activity notes updated with KinOS public bath reflection for {activity_guid_log}.")
-        except Exception as e_airtable_update:
-            log.error(f"  [Thread Public Bath: {threading.get_ident()}] Error updating Airtable notes for activity {activity_guid_log} (public bath reflection): {e_airtable_update}")
-            
-    except requests.exceptions.RequestException as e_kinos:
-        log.error(f"  [Thread Public Bath: {threading.get_ident()}] Error during KinOS /build call (public bath) for {citizen_username_log}: {e_kinos}")
-    except json.JSONDecodeError as e_json_kinos:
-        kinos_response_text_preview = kinos_response.text[:200] if 'kinos_response' in locals() and hasattr(kinos_response, 'text') else 'N/A'
-        log.error(f"  [Thread Public Bath: {threading.get_ident()}] JSON decode error for KinOS /build response (public bath) for {citizen_username_log}: {e_json_kinos}. Response: {kinos_response_text_preview}")
-    except Exception as e_thread:
-        log.error(f"  [Thread Public Bath: {threading.get_ident()}] Unexpected error in KinOS call thread for public bath reflection by {citizen_username_log}: {e_thread}")
+# Public bath costs and influence gain
+PUBLIC_BATH_COSTS = {
+    "Facchini": 25, "Popolani": 25, "Cittadini": 40,
+    "Nobili": 100, "Forestieri": 40, "Artisti": 30 # Artisti cost
+}
+DEFAULT_PUBLIC_BATH_COST = 25 # Fallback cost
+PUBLIC_BATH_INFLUENCE_GAIN = 5 # Constant for all classes
