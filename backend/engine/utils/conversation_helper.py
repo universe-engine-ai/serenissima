@@ -288,13 +288,17 @@ def make_kinos_channel_call(
     channel_name: str,
     prompt: str,
     add_system_data: Optional[Dict] = None,
-    kinos_model_override: Optional[str] = None
+    kinos_model_override: Optional[str] = None,
+    tables: Optional[Dict[str, Table]] = None  # Added tables parameter for clean_thought_content
 ) -> Optional[str]: # Returns the AI's message content string or None
     """Makes a call to a specific KinOS Engine citizen-to-citizen channel."""
     kinos_url = f"{KINOS_API_CHANNEL_BASE_URL}/blueprints/{KINOS_BLUEPRINT_ID}/kins/{speaker_username}/channels/{channel_name}/messages"
     headers = {"Authorization": f"Bearer {kinos_api_key}", "Content-Type": "application/json"}
     
-    payload: Dict[str, Any] = {"content": prompt} # Changed "message" to "content" as per Compagno.tsx
+    # Clean the prompt if it's AI-generated
+    cleaned_prompt = clean_thought_content(tables, prompt) if tables else prompt
+    
+    payload: Dict[str, Any] = {"content": cleaned_prompt} # Changed "message" to "content" as per Compagno.tsx
     if add_system_data:
         try:
             payload["addSystem"] = json.dumps(add_system_data)
@@ -312,7 +316,7 @@ def make_kinos_channel_call(
     for attempt in range(max_retries):
         try:
             log.info(f"Sending request to KinOS channel {channel_name} for speaker {speaker_username} (Attempt {attempt + 1}/{max_retries})...")
-            log.info(f"{LogColors.LIGHTBLUE}KinOS Channel Prompt for {speaker_username} to {channel_name}:\n{prompt}{LogColors.ENDC}")
+            log.info(f"{LogColors.LIGHTBLUE}KinOS Channel Prompt for {speaker_username} to {channel_name}:\n{cleaned_prompt}{LogColors.ENDC}")
             if add_system_data:
                 log.debug(f"KinOS Channel addSystem keys: {list(add_system_data.keys())}")
                 
@@ -320,8 +324,9 @@ def make_kinos_channel_call(
             print(f"Speaker: {speaker_username}, Channel: {channel_name}")
             print(f"URL: {kinos_url}")
             print(f"Model Override: {kinos_model_override}")
-            print(f"Payload Content: {prompt}")
+            print(f"Payload Content: {cleaned_prompt}")
             print(f"Payload addSystem Keys: {list(add_system_data.keys()) if add_system_data else 'None'}")
+            print(f"Tables object provided: {tables is not None}")
             print(f"================================\n\n")
 
             response = requests.post(kinos_url, headers=headers, json=payload, timeout=DEFAULT_TIMEOUT_SECONDS)

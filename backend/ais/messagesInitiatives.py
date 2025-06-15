@@ -275,7 +275,8 @@ def _summarize_target_data_package(
         channel_name=attention_channel_name,
         prompt=attention_prompt,
         add_system_data=wrapper_data,
-        kinos_model_override='local' 
+        kinos_model_override='local',
+        tables=tables_for_cleaning  # Pass tables_for_cleaning to make_kinos_channel_call
     )
 
     if summarized_context_content:
@@ -285,6 +286,9 @@ def _summarize_target_data_package(
         print(f"====================================================\n\n")
         
         # clean_thought_content is imported from activity_helpers
+        # Ensure tables_for_cleaning is passed to clean_thought_content
+        if tables_for_cleaning is None:
+            log.warning(f"{LogColors.WARNING}No tables object provided for clean_thought_content in _summarize_target_data_package. ID replacement will be skipped.{LogColors.ENDC}")
         cleaned_summarized_context = clean_thought_content(tables_for_cleaning, summarized_context_content)
         
         log.info(f"{LogColors.OKGREEN}Successfully summarized target data package for {target_username}. Original length: {len(target_data_package)}, Summary length: {len(cleaned_summarized_context)}{LogColors.ENDC}")
@@ -363,7 +367,8 @@ def choose_interlocutor_via_kinos(
         channel_name=kinos_channel_for_decision,
         prompt=prompt,
         add_system_data=wrapper_data, 
-        kinos_model_override=effective_model
+        kinos_model_override=effective_model,
+        tables=tables  # Pass tables to make_kinos_channel_call
     )
     
     if raw_response_content:
@@ -509,7 +514,8 @@ def generate_ai_initiative_message(
             channel_name=target_username, # Le canal est avec le target_username
             prompt=prompt_for_message_content,
             add_system_data=focused_system_context,
-            kinos_model_override=effective_model
+            kinos_model_override=effective_model,
+            tables=tables  # Pass tables to make_kinos_channel_call
         )
         
         if raw_message_content:
