@@ -150,8 +150,8 @@ def process(
             log.warning(f"Impossible de calculer la distance pour {other_citizen_username} au lieu de la rumeur: {e_dist}")
 
     if not present_citizens_usernames:
-        log.info(f"{LogColors.OKBLUE}Aucun autre citoyen IA trouvé à proximité pour l'activité de rumeur {activity_guid}.{LogColors.ENDC}")
-        return True # L'activité est "traitée" car il n'y avait personne à qui parler.
+        log.info(f"{LogColors.OKBLUE}Aucun autre citoyen IA trouvé à proximité pour l'activité de rumeur {activity_guid}. Échec de l'activité pour permettre d'autres loisirs.{LogColors.ENDC}")
+        return False # L'activité échoue pour permettre au système de tenter une autre activité de loisir
 
     log.info(f"{LogColors.ACTIVITY}Citoyens présents pour la rumeur (par {executor_username} sur {target_citizen_gossip}): {present_citizens_usernames}{LogColors.ENDC}")
 
