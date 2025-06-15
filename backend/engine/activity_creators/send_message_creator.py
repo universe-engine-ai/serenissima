@@ -55,7 +55,7 @@ def try_create(
     # Validate required parameters
     if not (receiver_username and content):
         log.error(f"Missing required details for send_message: receiverUsername or content")
-        return False
+        return None
     
     # Validate conversation_length
     if not isinstance(conversation_length, int) or conversation_length < 1:
@@ -73,13 +73,13 @@ def try_create(
             current_position = json.loads(sender_position_str)
         except json.JSONDecodeError:
             log.error(f"Could not parse sender position: {sender_position_str}")
-            return False
+            return None
     
     # Get receiver record to determine their position
     receiver_record = get_citizen_record(tables, receiver_username)
     if not receiver_record:
         log.error(f"Receiver {receiver_username} not found")
-        return False
+        return None
     
     # Determine the destination (receiver's location or specified meeting place)
     destination_building_id = None
@@ -127,7 +127,7 @@ def try_create(
     # If still no valid destination, fail
     if not destination_building_id and not receiver_position:
         log.error(f"Could not determine a valid destination to meet receiver {receiver_username}")
-        return False
+        return None
     
     # Calculate path to destination
     path_data = None
