@@ -277,7 +277,7 @@ def process(
     
     core_attack_narrative = _make_direct_kinos_channel_call(
         kin_username=executed_by_username,
-        channel_username=executed_by_username, # Self-chat
+        channel_username=target_citizen_username, # Self-chat
         prompt=prompt_for_narrative_gen,
         kinos_api_key=kinos_api_key,
         kinos_model_override="claude-3-7-sonnet-latest" or "local",
@@ -298,7 +298,7 @@ def process(
         executed_by_username, 
         executed_by_username, 
         f"Strategizing Reputation Assault against {target_citizen_username} (Angle: {assault_angle_from_notes or 'N/A'}):\n\n{cleaned_core_attack_narrative}", 
-        f"stratagem_plan_{stratagem_id}",
+        f"target_citizen_username",
         message_type="stratagem_plan_thought" # Specific message type
     )
 
