@@ -12,6 +12,12 @@ from backend.engine.utils.activity_helpers import (
     VENICE_TIMEZONE
 )
 from backend.engine.utils.conversation_helper import persist_message
+from backend.engine.utils.process_helper import (
+    update_process_status,
+    PROCESS_STATUS_COMPLETED,
+    PROCESS_STATUS_FAILED,
+    PROCESS_STATUS_IN_PROGRESS
+)
 
 log = logging.getLogger(__name__)
 
@@ -20,26 +26,41 @@ KINOS_API_URL = "https://api.kinos-engine.ai"
 KINOS_BLUEPRINT = "serenissima-ai"
 KINOS_API_KEY = os.getenv("KINOS_API_KEY")
 
-def generate_daily_reflection(
+def process_daily_reflection(
     tables: Dict[str, Any],
-    citizen_username: str,
-    api_base_url: Optional[str] = None
+    process_record: Dict[str, Any]
 ) -> bool:
     """
-    Generates a daily reflection for a citizen using KinOS.
+    Processes a daily reflection for a citizen using KinOS.
     
     Args:
         tables: Dictionary of Airtable tables
-        citizen_username: Username of the citizen
-        api_base_url: Optional base URL for API calls
+        process_record: The process record from the PROCESSES table
         
     Returns:
         True if successful, False otherwise
     """
-    log.info(f"{LogColors.ACTIVITY}Generating daily reflection for {citizen_username}.{LogColors.ENDC}")
+    process_id = process_record['id']
+    process_fields = process_record['fields']
+    citizen_username = process_fields.get('Citizen')
+    api_base_url = process_fields.get('ApiBaseUrl')
+    details_str = process_fields.get('Details')
+    
+    details = {}
+    if details_str:
+        try:
+            details = json.loads(details_str)
+        except json.JSONDecodeError:
+            log.warning(f"Could not parse Details JSON for process {process_id}: {details_str}")
+    
+    log.info(f"{LogColors.ACTIVITY}Processing daily reflection for {citizen_username} (Process ID: {process_id}).{LogColors.ENDC}")
+    
+    # Update process status to in progress
+    update_process_status(tables, process_id, PROCESS_STATUS_IN_PROGRESS)
     
     if not KINOS_API_KEY:
         log.error(f"{LogColors.FAIL}KINOS_API_KEY not defined. Cannot trigger KinOS reflection.{LogColors.ENDC}")
+        update_process_status(tables, process_id, PROCESS_STATUS_FAILED, {"error": "KINOS_API_KEY not defined"})
         return False
     
     try:
@@ -81,20 +102,76 @@ def generate_daily_reflection(
             "addSystem": json.dumps(structured_add_system_payload) # structured_add_system_payload is a dict, citizen_context is a string
         }
 
-        log.info(f"  Launching asynchronous KinOS /messages call for daily reflection by {citizen_username} to {kinos_messages_url}")
+        log.info(f"  Making KinOS /messages call for daily reflection by {citizen_username} to {kinos_messages_url}")
         
-        kinos_thread = threading.Thread(
-            target=_call_kinos_messages_for_reflection_async,
-            args=(kinos_messages_url, kinos_payload_dict, tables, citizen_username, "kinos_daily_reflection")
-        )
-        kinos_thread.start()
-        log.info(f"  KinOS /messages call for daily reflection by {citizen_username} started in thread {kinos_thread.ident}.")
-        return True
+        try:
+            kinos_response = requests.post(kinos_messages_url, json=kinos_payload_dict, timeout=180) # Increased timeout
+            kinos_response.raise_for_status()
+            
+            kinos_response_data = kinos_response.json()
+            log.info(f"  KinOS /messages response (daily reflection) for {citizen_username}: Status: {kinos_response_data.get('status')}, Response: {kinos_response_data.get('response')}")
+            
+            raw_reflection = kinos_response_data.get('response', f"No daily reflection from KinOS.")
+
+            # Persist the raw reflection as a self-message (thought)
+            persist_message(
+                tables=tables,
+                sender_username=citizen_username,
+                receiver_username=citizen_username,
+                content=raw_reflection,
+                message_type="kinos_daily_reflection",
+                channel_name=citizen_username
+            )
+            log.info(f"  Reflection persisted as self-message for {citizen_username}.")
+            
+            # Update activity notes if activity_id is in details
+            if 'activity_id' in details:
+                activity_id = details['activity_id']
+                activity_details = details.get('activity_details', {})
+                
+                cleaned_reflection_for_notes = clean_thought_content(tables, raw_reflection)
+                
+                if not isinstance(activity_details, dict):
+                    activity_details = {}
+                    
+                activity_details['kinos_daily_reflection'] = cleaned_reflection_for_notes
+                activity_details['kinos_daily_reflection_status'] = kinos_response_data.get('status', 'unknown')
+                
+                new_notes_json = json.dumps(activity_details)
+
+                try:
+                    tables['activities'].update(activity_id, {'Notes': new_notes_json})
+                    log.info(f"  Activity notes updated with KinOS daily reflection for {details.get('activity_guid', 'unknown')}.")
+                except Exception as e_airtable_update:
+                    log.error(f"  Error updating Airtable notes for activity {details.get('activity_guid', 'unknown')} (daily reflection): {e_airtable_update}")
+            
+            # Update process status to completed
+            update_process_status(
+                tables, 
+                process_id, 
+                PROCESS_STATUS_COMPLETED, 
+                {"reflection": raw_reflection, "status": kinos_response_data.get('status', 'unknown')}
+            )
+            
+            return True
+                
+        except requests.exceptions.RequestException as e_kinos:
+            log.error(f"  Error during KinOS /messages call (daily reflection) for {citizen_username}: {e_kinos}")
+            update_process_status(tables, process_id, PROCESS_STATUS_FAILED, {"error": str(e_kinos)})
+            return False
+        except json.JSONDecodeError as e_json_kinos:
+            kinos_response_text_preview = "N/A"
+            if 'kinos_response' in locals() and hasattr(kinos_response, 'text'):
+                kinos_response_text_preview = kinos_response.text[:200]
+            log.error(f"  JSON decode error for KinOS /messages response (daily reflection) for {citizen_username}: {e_json_kinos}. Response: {kinos_response_text_preview}")
+            update_process_status(tables, process_id, PROCESS_STATUS_FAILED, {"error": f"JSON decode error: {str(e_json_kinos)}"})
+            return False
 
     except Exception as e_kinos_setup:
-        log.error(f"{LogColors.FAIL}Error setting up KinOS call for daily reflection: {e_kinos_setup}{LogColors.ENDC}")
+        log.error(f"{LogColors.FAIL}Error processing daily reflection: {e_kinos_setup}{LogColors.ENDC}")
         import traceback
         log.error(traceback.format_exc())
+        update_process_status(tables, process_id, PROCESS_STATUS_FAILED, {"error": str(e_kinos_setup)})
         return False
 
 def generate_theater_reflection(

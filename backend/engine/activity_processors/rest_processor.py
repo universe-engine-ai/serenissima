@@ -7,7 +7,10 @@ from backend.engine.utils.activity_helpers import (
     get_citizen_record,
     clean_thought_content
 )
-from backend.engine.utils.thinking_helper import generate_daily_reflection
+from backend.engine.utils.process_helper import (
+    create_process,
+    PROCESS_TYPE_DAILY_REFLECTION
+)
 
 log = logging.getLogger(__name__)
 
@@ -33,7 +36,7 @@ def process(
             log.warning(f"Could not parse Notes JSON for rest activity {activity_guid}: {notes_str}")
             # Continue, as notes are not critical for basic rest processing + KinOS reflection
 
-    log.info(f"{LogColors.ACTIVITY}😴 Processing 'rest' activity: {activity_guid} for {citizen_username}. Triggering daily reflection.{LogColors.ENDC}")
+    log.info(f"{LogColors.ACTIVITY}😴 Processing 'rest' activity: {activity_guid} for {citizen_username}. Queueing daily reflection.{LogColors.ENDC}")
 
     citizen_airtable_record = get_citizen_record(tables, citizen_username)
     if not citizen_airtable_record:
@@ -41,9 +44,22 @@ def process(
         # Still return True as the 'rest' activity itself is considered processed by time passing.
         return True 
 
-    # Generate daily reflection using the thinking_helper
-    generate_daily_reflection(tables, citizen_username, api_base_url)
+    # Create a process for daily reflection instead of generating it directly
+    process_details = {
+        "activity_id": activity_record['id'],
+        "activity_guid": activity_guid,
+        "activity_details": activity_details
+    }
+    
+    create_process(
+        tables=tables,
+        process_type=PROCESS_TYPE_DAILY_REFLECTION,
+        citizen_username=citizen_username,
+        priority=5,  # Medium priority
+        details=process_details,
+        api_base_url=api_base_url
+    )
 
     # The 'rest' activity itself is considered successful by its completion.
-    # KinOS reflection is an add-on.
+    # KinOS reflection is an add-on that will be processed asynchronously.
     return True

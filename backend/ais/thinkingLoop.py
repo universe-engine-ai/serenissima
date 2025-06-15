@@ -2,14 +2,16 @@
 """
 thinkingLoop.py - A continuous thinking process for AI citizens
 
-This script selects a random citizen with weighting based on social class:
+This script processes the queue of thinking tasks and also selects random citizens
+for thinking operations when the queue is empty.
+
+For random citizen selection, weighting is based on social class:
 - Artisti: 5x chance
 - Nobili: 4x chance
 - Cittadini: 3x chance
 - Popolani: 2x chance
 - Facchini: 1x chance
 
-It then performs a thinking operation for the selected citizen.
 The script is designed to be run continuously by the scheduler.
 It uses a file lock mechanism to ensure only one instance runs at a time.
 """
@@ -111,7 +113,6 @@ def select_random_citizen(tables):
 def perform_thinking(citizen, tables):
     """
     Perform a thinking operation for the selected citizen.
-    Randomly selects one of several thinking functions to execute.
     
     Args:
         citizen: The citizen record
@@ -121,38 +122,41 @@ def perform_thinking(citizen, tables):
         username = citizen['fields'].get('Username', 'Unknown')
         log_info(f"Performing thinking for citizen: {username}")
         
-        # Import the thinking helper here to avoid circular imports
-        from backend.engine.utils.thinking_helper import (
-            generate_daily_reflection,
-            generate_theater_reflection,
-            generate_public_bath_reflection
+        # Import the process helper and thinking helper here to avoid circular imports
+        from backend.engine.utils.process_helper import (
+            create_process,
+            PROCESS_TYPE_DAILY_REFLECTION,
+            PROCESS_TYPE_THEATER_REFLECTION,
+            PROCESS_TYPE_PUBLIC_BATH_REFLECTION
         )
         
-        # List of available thinking functions
-        thinking_functions = [
-            generate_daily_reflection,
-            generate_theater_reflection,
-            generate_public_bath_reflection
+        # List of available process types
+        process_types = [
+            PROCESS_TYPE_DAILY_REFLECTION,
+            PROCESS_TYPE_THEATER_REFLECTION,
+            PROCESS_TYPE_PUBLIC_BATH_REFLECTION
         ]
         
-        # Select a random thinking function
-        selected_function = random.choice(thinking_functions)
-        function_name = selected_function.__name__
+        # Select a random process type
+        selected_process_type = random.choice(process_types)
         
-        log_info(f"Selected thinking function for {username}: {function_name}")
+        log_info(f"Selected process type for {username}: {selected_process_type}")
         
-        # Execute the selected thinking function
-        result = selected_function(tables, username)
+        # Create a process for the selected type
+        process_record = create_process(
+            tables=tables,
+            process_type=selected_process_type,
+            citizen_username=username,
+            priority=10  # Lower priority than processes created by activity processors
+        )
         
-        if result:
-            log_info(f"Successfully executed {function_name} for {username}")
+        if process_record:
+            log_info(f"Successfully created {selected_process_type} process for {username}")
+            return True
         else:
-            log_warning(f"Function {function_name} returned False for {username}")
+            log_warning(f"Failed to create {selected_process_type} process for {username}")
+            return False
         
-        log_info(f"Thinking process completed for {username}")
-        
-        return True
-    
     except Exception as e:
         log_error(f"Error during thinking process: {str(e)}")
         traceback.print_exc()
@@ -216,18 +220,73 @@ def main():
         # Initialize tables
         tables = get_tables()
         
+        # Import process helper here to avoid circular imports
+        from backend.engine.utils.process_helper import (
+            get_next_pending_process,
+            get_pending_processes_count,
+            PROCESS_TYPE_DAILY_REFLECTION,
+            PROCESS_TYPE_THEATER_REFLECTION,
+            PROCESS_TYPE_PUBLIC_BATH_REFLECTION,
+            PROCESS_TYPE_AUTONOMOUS_RUN
+        )
+        
+        # Import thinking helper for process execution
+        from backend.engine.utils.thinking_helper import (
+            process_daily_reflection
+        )
+        
+        # Import autonomouslyRun for autonomous run processes
+        from backend.ais.autonomouslyRun import autonomously_run_ai_citizen_unguided
+        
         # Main loop
         while True:
             try:
-                # Select a random citizen
-                citizen = select_random_citizen(tables)
+                # Check for pending processes first
+                pending_process = get_next_pending_process(tables)
                 
-                if citizen:
-                    # Perform thinking for the selected citizen
-                    perform_thinking(citizen, tables)
+                if pending_process:
+                    process_id = pending_process['id']
+                    process_fields = pending_process['fields']
+                    process_type = process_fields.get('Type')
+                    citizen_username = process_fields.get('Citizen')
+                    
+                    log_info(f"Processing pending process {process_id} of type {process_type} for citizen {citizen_username}")
+                    
+                    # Process based on type
+                    if process_type == PROCESS_TYPE_DAILY_REFLECTION:
+                        process_daily_reflection(tables, pending_process)
+                    elif process_type == PROCESS_TYPE_THEATER_REFLECTION:
+                        # TODO: Implement theater reflection processing
+                        log_warning(f"Theater reflection processing not yet implemented")
+                    elif process_type == PROCESS_TYPE_PUBLIC_BATH_REFLECTION:
+                        # TODO: Implement public bath reflection processing
+                        log_warning(f"Public bath reflection processing not yet implemented")
+                    elif process_type == PROCESS_TYPE_AUTONOMOUS_RUN:
+                        # TODO: Implement autonomous run processing
+                        log_warning(f"Autonomous run processing not yet implemented")
+                    else:
+                        log_warning(f"Unknown process type: {process_type}")
+                    
+                    # Sleep briefly after processing a task to avoid hammering the API
+                    time.sleep(5)
+                else:
+                    # If no pending processes, check if we should create a random thinking process
+                    # Only create random thinking if there are fewer than 5 pending processes
+                    pending_count = get_pending_processes_count(tables)
+                    
+                    if pending_count < 5:
+                        log_info(f"No pending processes or fewer than 5 ({pending_count}). Selecting random citizen for thinking.")
+                        # Select a random citizen
+                        citizen = select_random_citizen(tables)
+                        
+                        if citizen:
+                            # Perform thinking for the selected citizen
+                            perform_thinking(citizen, tables)
+                    else:
+                        log_info(f"There are already {pending_count} pending processes. Skipping random citizen thinking.")
                 
                 # Sleep for a short time to avoid hammering the database
-                time.sleep(60)
+                time.sleep(30)
                 
             except Exception as loop_error:
                 log_error(f"Error in thinking loop: {str(loop_error)}")
