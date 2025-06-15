@@ -16,7 +16,7 @@ const MarketplaceGossipStratagemPanel = forwardRef<StratagemSpecificPanelRef, St
       ? `${currentUserFirstName} ${currentUserLastName}`
       : currentUserUsername || "You";
 
-    let targetDescription: JSX.Element | string = <span className="font-bold text-red-500">a target citizen (required)</span>;
+    let targetDescription: JSX.Element | string = <span className="font-italic text-gray-600">general gossip (no specific target)</span>;
     if (targetCitizenUsername) {
       const citizen = citizens.find(c => c.username === targetCitizenUsername);
       const citizenDisplayName = (citizen?.firstName && citizen?.lastName)
@@ -41,14 +41,20 @@ const MarketplaceGossipStratagemPanel = forwardRef<StratagemSpecificPanelRef, St
 
   useImperativeHandle(ref, () => ({
     getStratagemDetails: () => {
-      if (!targetCitizenUsername || !gossipContent.trim()) {
-        return null; // Details incomplete
+      if (!gossipContent.trim()) {
+        return null; // Details incomplete - only content is required
       }
-      return {
-        targetCitizen: targetCitizenUsername,
+      const details: any = {
         gossipContent: gossipContent.trim(),
         // durationHours, name, description, notes are handled by the creator with defaults
       };
+      
+      // Only include targetCitizen if one was selected
+      if (targetCitizenUsername) {
+        details.targetCitizen = targetCitizenUsername;
+      }
+      
+      return details;
     },
   }));
 
@@ -57,7 +63,7 @@ const MarketplaceGossipStratagemPanel = forwardRef<StratagemSpecificPanelRef, St
       {/* Target Citizen Selector */}
       <div className="mb-4">
         <label htmlFor="marketplace_gossip_targetCitizen_search" className="block text-sm font-medium text-amber-800 mb-1 flex items-center">
-          <FaUserShield className="mr-2" /> Target Citizen <span className="text-red-500 ml-1">*</span>
+          <FaUserShield className="mr-2" /> Target Citizen <span className="text-gray-500 ml-1">(optional)</span>
         </label>
         <div className="relative">
           <input
@@ -73,7 +79,7 @@ const MarketplaceGossipStratagemPanel = forwardRef<StratagemSpecificPanelRef, St
             onFocus={() => setIsCitizenDropdownOpen(true)}
             onBlur={() => setTimeout(() => setIsCitizenDropdownOpen(false), 150)} // Delay to allow click on dropdown
             placeholder={targetCitizenUsername ? citizens.find(c => c.username === targetCitizenUsername)?.username || 'Search...' : 'Search Citizens...'}
-            className={`w-full p-2 border rounded-md bg-white text-amber-900 focus:ring-amber-500 focus:border-amber-500 ${!targetCitizenUsername ? 'border-red-400' : 'border-amber-300'}`}
+            className={`w-full p-2 border rounded-md bg-white text-amber-900 focus:ring-amber-500 focus:border-amber-500 border-amber-300`}
             disabled={isLoading}
           />
           {targetCitizenUsername && (
@@ -123,9 +129,9 @@ const MarketplaceGossipStratagemPanel = forwardRef<StratagemSpecificPanelRef, St
             </ul>
           )}
         </div>
-        {!targetCitizenUsername && (
-          <p className="text-xs text-red-500 mt-1">Target citizen is required.</p>
-        )}
+        <p className="text-xs text-gray-500 mt-1">
+          If no target is specified, the gossip will be about a general topic rather than a specific citizen.
+        </p>
       </div>
 
       {/* Gossip Content Textarea */}

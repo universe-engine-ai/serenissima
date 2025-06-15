@@ -41,12 +41,12 @@ def process(
         return False
 
     # Extraire les informations nécessaires
-    target_citizen_gossip = notes_data.get('targetCitizen')
+    target_citizen_gossip = notes_data.get('targetCitizen')  # Peut être None
     gossip_content = notes_data.get('gossipContent')
     popular_locations = notes_data.get('popularLocations', [])
     executor_start_position = notes_data.get('executorStartPosition')
 
-    if not target_citizen_gossip or not gossip_content or not popular_locations:
+    if not gossip_content or not popular_locations:
         log.error(f"{LogColors.FAIL}Informations manquantes dans les Notes du stratagème {stratagem_id_custom}.{LogColors.ENDC}")
         return False
         
@@ -64,19 +64,20 @@ def process(
         log.error(f"{LogColors.FAIL}Erreur lors de la recherche de l'exécuteur {executed_by}: {e}{LogColors.ENDC}")
         return False
         
-    # Vérifier que la cible existe
+    # Vérifier que la cible existe si elle est spécifiée
     target_record = None
-    try:
-        target_formula = f"{{Username}}='{_escape_airtable_value(target_citizen_gossip)}'"
-        target_records = tables['citizens'].all(formula=target_formula)
-        if target_records:
-            target_record = target_records[0]
-        else:
-            log.error(f"{LogColors.FAIL}La cible {target_citizen_gossip} n'existe pas. Impossible de créer les activités de rumeur.{LogColors.ENDC}")
+    if target_citizen_gossip:
+        try:
+            target_formula = f"{{Username}}='{_escape_airtable_value(target_citizen_gossip)}'"
+            target_records = tables['citizens'].all(formula=target_formula)
+            if target_records:
+                target_record = target_records[0]
+            else:
+                log.error(f"{LogColors.FAIL}La cible {target_citizen_gossip} n'existe pas. Impossible de créer les activités de rumeur.{LogColors.ENDC}")
+                return False
+        except Exception as e:
+            log.error(f"{LogColors.FAIL}Erreur lors de la recherche de la cible {target_citizen_gossip}: {e}{LogColors.ENDC}")
             return False
-    except Exception as e:
-        log.error(f"{LogColors.FAIL}Erreur lors de la recherche de la cible {target_citizen_gossip}: {e}{LogColors.ENDC}")
-        return False
 
     if not api_base_url:
         log.error(f"{LogColors.FAIL}api_base_url est requis pour créer des activités mais n'a pas été fourni.{LogColors.ENDC}")

@@ -46,14 +46,11 @@ def try_create(
     target_citizen_param = stratagem_params.get("targetCitizen")
     gossip_content_param = stratagem_params.get("gossipContent")
 
-    if not target_citizen_param:
-        log.error(f"{LogColors.FAIL}Paramètre requis manquant (targetCitizen) pour le stratagème marketplace_gossip.{LogColors.ENDC}")
-        return None
     if not gossip_content_param:
         log.error(f"{LogColors.FAIL}Paramètre requis manquant (gossipContent) pour le stratagème marketplace_gossip.{LogColors.ENDC}")
         return None
     
-    if target_citizen_param == citizen_username:
+    if target_citizen_param and target_citizen_param == citizen_username:
         log.error(f"{LogColors.FAIL}Impossible de se cibler soi-même pour le stratagème marketplace_gossip.{LogColors.ENDC}")
         return None
 
@@ -227,12 +224,17 @@ def try_create(
     # lira les notes et créera les activités.
     # Donc, nous stockons les infos nécessaires dans les Notes du stratagème.
     
-    stratagem_payload["Notes"] = json.dumps({
-        "targetCitizen": target_citizen_param,
+    notes_data = {
         "gossipContent": gossip_content_param, # Stocker le contenu complet
         "gossipTheme": "Custom", # Ajout de gossipTheme dans les Notes
         "popularLocations": [loc[0] for loc in most_common_locations_tuples], # Stocker les chaînes JSON des positions
         "executorStartPosition": executor_current_pos # Position de départ de l'exécuteur
-    })
+    }
+    
+    # Ajouter targetCitizen seulement s'il est spécifié
+    if target_citizen_param:
+        notes_data["targetCitizen"] = target_citizen_param
+    
+    stratagem_payload["Notes"] = json.dumps(notes_data)
     
     return [stratagem_payload]
