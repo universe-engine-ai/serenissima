@@ -257,7 +257,7 @@ def get_housed_citizens(tables) -> List[Dict]:
         # We also need the building's Type to determine its Tier later if not directly on building record
         occupied_buildings = tables['buildings'].all(
             formula="NOT(OR({Occupant} = '', {Occupant} = BLANK()))",
-            fields=['Occupant', 'Name', 'RentPrice', 'Citizen', 'Type', 'Tier'] # Added Tier
+            fields=['Occupant', 'Name', 'RentPrice', 'Owner', 'Type', 'Tier'] # Added Tier
         )
         
         # Extract the occupant IDs
@@ -322,7 +322,7 @@ def get_available_buildings(
         formula = f"AND({{Type}} = '{building_type_preference}', OR({{Occupant}} = '', {{Occupant}} = BLANK()), {{IsConstructed}}=TRUE())"
         candidate_buildings = tables['buildings'].all(
             formula=formula,
-            fields=['Name', 'RentPrice', 'Citizen', 'Type', 'Tier', 'Position'] # Ensure Position is fetched
+            fields=['Name', 'RentPrice', 'Owner', 'Type', 'Tier', 'Position'] # Ensure Position is fetched
         )
         
         allowed_tiers_for_class = get_allowed_building_tiers(social_class)
@@ -449,8 +449,8 @@ def send_notifications(tables, citizen: Dict, old_building: Dict, new_building: 
     new_rent = new_building['fields'].get('RentPrice', 0)
     
     # Get landlords (building owners)
-    old_landlord = old_building['fields'].get('Citizen', 'Unknown')
-    new_landlord = new_building['fields'].get('Citizen', 'Unknown')
+    old_landlord = old_building['fields'].get('Owner', 'Unknown')
+    new_landlord = new_building['fields'].get('Owner', 'Unknown')
     
     # Notification for old landlord
     if old_landlord and old_landlord != 'Unknown':
