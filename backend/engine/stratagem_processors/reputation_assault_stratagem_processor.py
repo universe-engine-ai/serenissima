@@ -84,8 +84,13 @@ def _make_direct_kinos_channel_call(
         log.info(f"{LogColors.PROCESS}KinOS API response status code: {response.status_code}{LogColors.ENDC}")
         log.info(f"{LogColors.PROCESS}KinOS API response data: {json.dumps(response_data, indent=2)}{LogColors.ENDC}")
         
-        if response_data.get("success") and "response" in response_data:
+        # Check for content in the response (new KinOS API format)
+        if "content" in response_data:
             log.info(f"{LogColors.OKGREEN}Successfully received KinOS response for {kin_username} to channel {channel_username}{LogColors.ENDC}")
+            return response_data["content"]
+        # Check for older API format with success and response fields
+        elif response_data.get("success") and "response" in response_data:
+            log.info(f"{LogColors.OKGREEN}Successfully received KinOS response for {kin_username} to channel {channel_username} (legacy format){LogColors.ENDC}")
             return response_data["response"]
         else:
             log.error(f"{LogColors.FAIL}KinOS API call succeeded but returned error: {response_data.get('error', 'Unknown error')}{LogColors.ENDC}")
