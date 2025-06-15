@@ -152,25 +152,25 @@ def perform_thinking(citizen, tables):
         
         # Import the process helper and thinking helper here to avoid circular imports
         from backend.engine.utils.process_helper import (
-            create_process,
-            PROCESS_TYPE_DAILY_REFLECTION,
-            PROCESS_TYPE_THEATER_REFLECTION,
-            PROCESS_TYPE_PUBLIC_BATH_REFLECTION
+            create_process
         )
+        
+        # Define new reflection process types
+        PROCESS_TYPE_GUIDED_REFLECTION = "guided_reflection"
+        PROCESS_TYPE_PRACTICAL_REFLECTION = "practical_reflection"
+        PROCESS_TYPE_UNGUIDED_REFLECTION = "unguided_reflection"
         
         # List of available process types
         process_types = [
-            PROCESS_TYPE_DAILY_REFLECTION,
-            PROCESS_TYPE_THEATER_REFLECTION,
-            PROCESS_TYPE_PUBLIC_BATH_REFLECTION
+            PROCESS_TYPE_GUIDED_REFLECTION,
+            PROCESS_TYPE_PRACTICAL_REFLECTION,
+            PROCESS_TYPE_UNGUIDED_REFLECTION
         ]
         
-        # Select a random process type with weighted probabilities
-        # Daily reflection should be more common than the others
-        weights = [0.6, 0.2, 0.2]  # 60% daily, 20% theater, 20% bath
-        selected_process_type = random.choices(process_types, weights=weights, k=1)[0]
+        # Select a random process type with equal probabilities (1/3 each)
+        selected_process_type = random.choice(process_types)
         
-        log_info(f"Selected process type for {username}: {selected_process_type} (Daily: 60%, Theater: 20%, Bath: 20% probability)")
+        log_info(f"Selected process type for {username}: {selected_process_type} (Equal 1/3 probability for each type)")
         
         # Create a process for the selected type
         process_record = create_process(
@@ -336,13 +336,31 @@ def main():
                     log_info(f"Processing pending process {process_id} of type {process_type} for citizen {citizen_username}")
                     
                     # Process based on type
-                    if process_type == PROCESS_TYPE_DAILY_REFLECTION:
+                    if process_type == "daily_reflection":
                         process_daily_reflection(tables, pending_process)
-                    elif process_type == PROCESS_TYPE_THEATER_REFLECTION:
+                    elif process_type == "theater_reflection":
                         process_theater_reflection(tables, pending_process)
-                    elif process_type == PROCESS_TYPE_PUBLIC_BATH_REFLECTION:
+                    elif process_type == "public_bath_reflection":
                         process_public_bath_reflection(tables, pending_process)
-                    elif process_type == PROCESS_TYPE_AUTONOMOUS_RUN:
+                    elif process_type == "guided_reflection":
+                        # TODO: Implement guided reflection processing
+                        log_warning(f"Guided reflection processing not yet implemented")
+                        # For now, mark as completed to avoid blocking the queue
+                        from backend.engine.utils.process_helper import update_process_status, PROCESS_STATUS_COMPLETED
+                        update_process_status(tables, pending_process['id'], PROCESS_STATUS_COMPLETED, {"result": "Not implemented yet"})
+                    elif process_type == "practical_reflection":
+                        # TODO: Implement practical reflection processing
+                        log_warning(f"Practical reflection processing not yet implemented")
+                        # For now, mark as completed to avoid blocking the queue
+                        from backend.engine.utils.process_helper import update_process_status, PROCESS_STATUS_COMPLETED
+                        update_process_status(tables, pending_process['id'], PROCESS_STATUS_COMPLETED, {"result": "Not implemented yet"})
+                    elif process_type == "unguided_reflection":
+                        # TODO: Implement unguided reflection processing
+                        log_warning(f"Unguided reflection processing not yet implemented")
+                        # For now, mark as completed to avoid blocking the queue
+                        from backend.engine.utils.process_helper import update_process_status, PROCESS_STATUS_COMPLETED
+                        update_process_status(tables, pending_process['id'], PROCESS_STATUS_COMPLETED, {"result": "Not implemented yet"})
+                    elif process_type == "autonomous_run":
                         # TODO: Implement autonomous run processing
                         log_warning(f"Autonomous run processing not yet implemented")
                     else:
