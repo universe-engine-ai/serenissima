@@ -843,11 +843,31 @@ def process_guided_reflection(
         # Get citizen record to determine social class and other details
         citizen_record = None
         social_class = "Unknown"
+        core_thoughts_patterns = []
         try:
             from backend.engine.utils.activity_helpers import get_citizen_record
             citizen_record = get_citizen_record(tables, citizen_username)
             if citizen_record and 'fields' in citizen_record:
                 social_class = citizen_record['fields'].get('SocialClass', 'Unknown')
+                
+                # Check for core personality patterns
+                core_personality = citizen_record['fields'].get('CorePersonality')
+                if core_personality:
+                    try:
+                        # Try to parse the CorePersonality JSON
+                        core_personality_data = json.loads(core_personality)
+                        # Check if it has CoreThoughts.thoughts_pattern array
+                        if isinstance(core_personality_data, dict) and 'CoreThoughts' in core_personality_data:
+                            core_thoughts = core_personality_data['CoreThoughts']
+                            if isinstance(core_thoughts, dict) and 'thoughts_pattern' in core_thoughts:
+                                patterns = core_thoughts['thoughts_pattern']
+                                if isinstance(patterns, list):
+                                    core_thoughts_patterns = patterns
+                                    log.info(f"  Found {len(core_thoughts_patterns)} thought patterns for {citizen_username}")
+                    except json.JSONDecodeError:
+                        log.warning(f"  Could not parse CorePersonality JSON for {citizen_username}: {core_personality}")
+                    except Exception as e_parse:
+                        log.warning(f"  Error processing CorePersonality for {citizen_username}: {e_parse}")
         except Exception as e_citizen:
             log.error(f"  Error fetching citizen record for {citizen_username}: {e_citizen}")
         
@@ -1102,9 +1122,15 @@ def process_guided_reflection(
 
         selected_prompts = base_prompts + shadow_thoughts + religion_thoughts + meta_thoughts
         
-        # Select a random prompt
-        import random
-        selected_prompt = random.choice(selected_prompts)
+        # Check if we should use a core thought pattern (25% chance if patterns exist)
+        use_core_thought_pattern = False
+        if core_thoughts_patterns and random.random() < 0.25:  # 25% chance
+            use_core_thought_pattern = True
+            selected_prompt = random.choice(core_thoughts_patterns)
+            log.info(f"  Using core thought pattern for {citizen_username}: {selected_prompt}")
+        else:
+            # Select a random prompt from the standard prompts
+            selected_prompt = random.choice(selected_prompts)
         
         kinos_messages_url = f"{KINOS_API_URL}/v2/blueprints/{KINOS_BLUEPRINT}/kins/{citizen_username}/messages"
         
@@ -1184,15 +1210,21 @@ def process_guided_reflection(
                     log.error(f"  Error updating Airtable notes for activity {details.get('activity_guid', 'unknown')} (guided reflection): {e_airtable_update}")
             
             # Update process status to completed
+            result_data = {
+                "reflection": raw_reflection, 
+                "status": kinos_response_data.get('status', 'unknown'),
+                "prompt": selected_prompt
+            }
+            
+            # Add information about whether this was a core thought pattern
+            if use_core_thought_pattern:
+                result_data["prompt_source"] = "core_thought_pattern"
+            
             update_process_status(
                 tables, 
                 process_id, 
                 PROCESS_STATUS_COMPLETED, 
-                {
-                    "reflection": raw_reflection, 
-                    "status": kinos_response_data.get('status', 'unknown'),
-                    "prompt": selected_prompt
-                }
+                result_data
             )
             
             return True
