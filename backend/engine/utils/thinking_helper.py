@@ -849,6 +849,22 @@ def process_guided_reflection(
         except Exception as e_citizen:
             log.error(f"  Error fetching citizen record for {citizen_username}: {e_citizen}")
         
+        # Shadow thoughts that can be mixed with any social class
+        shadow_thoughts = [
+            "The criminal underworld seems more organized than the guilds",
+            "That 'merchant' never seems to actually trade anything",
+            "Certain buildings operate all night, but produce nothing",
+            "Information has become more valuable than gold",
+            "Following the money leads to unexpected places",
+            "The most respected citizens have the darkest connections",
+            "Every legitimate business needs its shadow",
+            "The real power never shows its face in daylight",
+            "Perhaps the underworld is just another guild",
+            "Criminal contacts might be the edge I need",
+            "The line between merchant and smuggler is thinner than I thought",
+            "In Venice, everyone serves someone in the shadows"
+        ]
+        
         # Define reflection prompts based on social class
         reflection_prompts = {
             "Nobili": [
