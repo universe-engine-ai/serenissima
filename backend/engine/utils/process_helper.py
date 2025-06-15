@@ -57,7 +57,11 @@ def create_process(
     }
     
     if details:
-        payload["Details"] = json.dumps(details)
+        try:
+            payload["Details"] = json.dumps(details, default=str)
+        except Exception as e_json:
+            log.error(f"{LogColors.FAIL}Error serializing details for process {process_id}: {e_json}{LogColors.ENDC}")
+            # Continue with the process creation without the details
     
     if api_base_url:
         payload["ApiBaseUrl"] = api_base_url
@@ -65,10 +69,15 @@ def create_process(
     try:
         log.info(f"{LogColors.OKBLUE}Creating process {process_id} of type {process_type} for citizen {citizen_username} with priority {priority}{LogColors.ENDC}")
         
-        # Check if 'processes' table exists in the tables dictionary
+        # Check if 'processes' table exists and is properly initialized in the tables dictionary
         if 'processes' not in tables:
             log.warning(f"{LogColors.WARNING}Table 'processes' not found in tables dictionary. Available tables: {list(tables.keys())}{LogColors.ENDC}")
             log.info(f"{LogColors.OKBLUE}Process {process_id} creation skipped due to missing 'processes' table.{LogColors.ENDC}")
+            return None
+        
+        if tables['processes'] is None:
+            log.warning(f"{LogColors.WARNING}Table 'processes' is None in tables dictionary.{LogColors.ENDC}")
+            log.info(f"{LogColors.OKBLUE}Process {process_id} creation skipped due to 'processes' table being None.{LogColors.ENDC}")
             return None
             
         process_record = tables['processes'].create(payload)

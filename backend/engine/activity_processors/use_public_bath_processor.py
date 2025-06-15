@@ -140,17 +140,24 @@ def process(
     }
     
     # Check if 'processes' table exists before creating process
-    if 'processes' in tables:
-        create_process(
-            tables=tables,
-            process_type=PROCESS_TYPE_PUBLIC_BATH_REFLECTION,
-            citizen_username=citizen_username,
-            priority=5,  # Medium priority
-            details=process_details,
-            api_base_url=api_base_url
-        )
+    if 'processes' in tables and tables['processes'] is not None:
+        try:
+            process_record = create_process(
+                tables=tables,
+                process_type=PROCESS_TYPE_PUBLIC_BATH_REFLECTION,
+                citizen_username=citizen_username,
+                priority=5,  # Medium priority
+                details=process_details,
+                api_base_url=api_base_url
+            )
+            if process_record:
+                log.info(f"{LogColors.OKGREEN}Successfully created public bath reflection process for {citizen_username}.{LogColors.ENDC}")
+            else:
+                log.warning(f"{LogColors.WARNING}Failed to create public bath reflection process for {citizen_username}.{LogColors.ENDC}")
+        except Exception as e:
+            log.error(f"{LogColors.FAIL}Error creating public bath reflection process for {citizen_username}: {e}{LogColors.ENDC}")
     else:
-        log.warning(f"{LogColors.WARNING}Cannot create public bath reflection process for {citizen_username} - 'processes' table not available.{LogColors.ENDC}")
+        log.warning(f"{LogColors.WARNING}Cannot create public bath reflection process for {citizen_username} - 'processes' table not available or is None.{LogColors.ENDC}")
 
     return True
 
