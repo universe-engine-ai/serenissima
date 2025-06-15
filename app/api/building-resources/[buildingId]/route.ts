@@ -326,10 +326,12 @@ export async function GET(request: NextRequest) {
               const resourceType = resourceTypes.find(rt => rt.id === resourceId || rt.name === resourceId);
               
               inputs.push({
+                type: resourceId,
                 resourceType: resourceId,
                 name: resourceType?.name || resourceId,
                 category: resourceType?.category || 'unknown',
-                amount: amount,
+                count: Number(amount),
+                amount: Number(amount),
                 icon: resourceType?.icon || `${resourceId.toLowerCase().replace(/\s+/g, '_')}.png`,
                 description: resourceType?.description || ''
               });
@@ -343,10 +345,12 @@ export async function GET(request: NextRequest) {
               const resourceType = resourceTypes.find(rt => rt.id === resourceId || rt.name === resourceId);
               
               outputs.push({
+                type: resourceId,
                 resourceType: resourceId,
                 name: resourceType?.name || resourceId,
                 category: resourceType?.category || 'unknown',
-                amount: amount,
+                count: Number(amount),
+                amount: Number(amount),
                 icon: resourceType?.icon || `${resourceId.toLowerCase().replace(/\s+/g, '_')}.png`,
                 description: resourceType?.description || ''
               });
@@ -355,9 +359,10 @@ export async function GET(request: NextRequest) {
           
           transformationRecipes.push({
             id: `recipe-${index}`,
+            recipeName: recipe.name || `Recipe ${index + 1}`,
             inputs,
             outputs,
-            craftMinutes: recipe.craftMinutes || 0
+            durationMinutes: recipe.durationMinutes || recipe.craftMinutes || 0
           });
         });
       }

@@ -960,12 +960,12 @@ function convertDataPackageToMarkdown(dataPackage: any, citizenUsername: string 
          if (rd.resources?.transformationRecipes && rd.resources.transformationRecipes.length > 0) {
             md += `- **Production Recipes (${rd.resources.transformationRecipes.length})**:\n`;
             rd.resources.transformationRecipes.forEach((recipe: any) => {
-                const inputs = recipe.inputs.map((i: any) => `${i.count} ${i.type}`).join(', ');
-                const outputs = recipe.outputs.map((o: any) => `${o.count} ${o.type}`).join(', ');
-                md += `  - Recipe: ${recipe.recipeName || outputs}\n`;
+                const inputs = recipe.inputs.map((i: any) => `${i.count || i.amount || 0} ${i.name || i.type}`).join(', ');
+                const outputs = recipe.outputs.map((o: any) => `${o.count || o.amount || 0} ${o.name || o.type}`).join(', ');
+                md += `  - Recipe: ${recipe.recipeName || 'Production Recipe'}\n`;
                 md += `    - Inputs: ${inputs}\n`;
                 md += `    - Outputs: ${outputs}\n`;
-                md += `    - Duration: ${recipe.durationMinutes} minutes\n`;
+                md += `    - Duration: ${recipe.durationMinutes || recipe.craftMinutes || 0} minutes\n`;
             });
         }
         md += '\n';
