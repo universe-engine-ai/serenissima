@@ -257,7 +257,7 @@ def get_housed_citizens(tables) -> List[Dict]:
         # We also need the building's Type to determine its Tier later if not directly on building record
         occupied_buildings = tables['buildings'].all(
             formula="NOT(OR({Occupant} = '', {Occupant} = BLANK()))",
-            fields=['Occupant', 'Name', 'RentPrice', 'Owner', 'Type', 'Tier'] # Added Tier
+            fields=['Occupant', 'Name', 'RentPrice', 'Owner', 'Type'] # Removed Tier as it doesn't exist in Airtable
         )
         
         # Extract the occupant IDs
@@ -322,7 +322,7 @@ def get_available_buildings(
         formula = f"AND({{Type}} = '{building_type_preference}', OR({{Occupant}} = '', {{Occupant}} = BLANK()), {{IsConstructed}}=TRUE())"
         candidate_buildings = tables['buildings'].all(
             formula=formula,
-            fields=['Name', 'RentPrice', 'Owner', 'Type', 'Tier', 'Position'] # Ensure Position is fetched
+            fields=['Name', 'RentPrice', 'Owner', 'Type', 'Position'] # Removed Tier, ensure Position is fetched
         )
         
         allowed_tiers_for_class = get_allowed_building_tiers(social_class)
@@ -332,19 +332,9 @@ def get_available_buildings(
         for building in candidate_buildings:
             building_actual_type = building['fields'].get('Type') # This should match building_type_preference
             
-            # Determine the tier of this specific building instance
-            # Option 1: Building record has a 'Tier' field directly
-            building_instance_tier_str = building['fields'].get('Tier')
+            # Determine tier from building type definition
             building_instance_tier = None
-            if building_instance_tier_str is not None:
-                try:
-                    building_instance_tier = int(building_instance_tier_str)
-                except ValueError:
-                    log.warning(f"Building {building['id']} has non-integer Tier value: '{building_instance_tier_str}'. Skipping.")
-                    continue
-            
-            # Option 2: Determine tier from its Type definition if not on instance
-            if building_instance_tier is None and building_actual_type:
+            if building_actual_type:
                 building_instance_tier = get_building_tier(building_actual_type, all_building_type_definitions)
             
             if building_instance_tier is None:
@@ -563,20 +553,15 @@ def get_citizen_owned_vacant_suitable_homes(
         
         candidate_owned_buildings = tables['buildings'].all(
             formula=formula,
-            fields=['Name', 'RentPrice', 'Citizen', 'Type', 'Tier', 'Position', 'BuildingId'] # Added BuildingId
+            fields=['Name', 'RentPrice', 'Owner', 'Type', 'Position', 'BuildingId'] # Removed Tier, changed Citizen to Owner
         )
 
         allowed_tiers_for_class = get_allowed_building_tiers(social_class)
         
         for building in candidate_owned_buildings:
             building_actual_type = building['fields'].get('Type')
-            building_instance_tier_str = building['fields'].get('Tier')
             building_instance_tier = None
-            if building_instance_tier_str is not None:
-                try: building_instance_tier = int(building_instance_tier_str)
-                except ValueError: continue
-            
-            if building_instance_tier is None and building_actual_type:
+            if building_actual_type:
                 building_instance_tier = get_building_tier(building_actual_type, all_building_type_definitions)
             
             if building_instance_tier is None or building_instance_tier not in allowed_tiers_for_class:
@@ -678,16 +663,10 @@ def process_housing_mobility(dry_run: bool = False):
         else:
             log.info(f"Citizen {citizen_name} has no defined workplace. Distance to work will not be a factor.")
 
-        # Determine current building's actual tier
+        # Determine current building's actual tier from building type definition
         current_building_type = current_building['fields'].get('Type')
-        current_building_tier_from_record = current_building['fields'].get('Tier')
         current_building_actual_tier = None
-        if current_building_tier_from_record is not None:
-            try:
-                current_building_actual_tier = int(current_building_tier_from_record)
-            except ValueError:
-                log.warning(f"Citizen {citizen_name}'s current building {current_building['id']} has non-integer Tier: '{current_building_tier_from_record}'.")
-        if current_building_actual_tier is None and current_building_type:
+        if current_building_type:
             current_building_actual_tier = get_building_tier(current_building_type, all_building_type_definitions)
 
         if current_building_actual_tier is None:
