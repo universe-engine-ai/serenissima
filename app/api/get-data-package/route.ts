@@ -897,22 +897,56 @@ function convertDataPackageToMarkdown(dataPackage: any, citizenUsername: string 
     
     // Check if the citizen is at a building
     const buildingAtPosition = dataPackage.citizen.buildingAtPosition;
+    const buildingDetails = dataPackage.citizen.buildingDetails;
     const citizensAtSamePosition = dataPackage.citizen.citizensAtSamePosition || [];
     
     if (buildingAtPosition) {
       // Format the location with building name and other citizens if any
       locationDescription = `At ${buildingAtPosition}`;
       
-      if (citizensAtSamePosition.length > 0) {
-        locationDescription += ` with ${citizensAtSamePosition.length} other citizen${citizensAtSamePosition.length > 1 ? 's' : ''}`;
+      // Add building details if available
+      if (buildingDetails) {
+        if (buildingDetails.category) {
+          locationDescription += ` (${buildingDetails.category})`;
+        }
         
-        // Add the list of usernames if there are citizens
+        if (buildingDetails.owner && buildingDetails.owner !== citizenUsername) {
+          locationDescription += `, owned by ${buildingDetails.owner}`;
+        }
+        
+        if (buildingDetails.runBy && buildingDetails.runBy !== citizenUsername && buildingDetails.runBy !== buildingDetails.owner) {
+          locationDescription += `, run by ${buildingDetails.runBy}`;
+        }
+      }
+      
+      if (citizensAtSamePosition.length > 0) {
+        locationDescription += `\n- **With**: ${citizensAtSamePosition.length} other citizen${citizensAtSamePosition.length > 1 ? 's' : ''}`;
+        
+        // Add the list of citizens with more details if available
         if (citizensAtSamePosition.length <= 5) {
-          // Show all usernames if 5 or fewer
-          locationDescription += ` (${citizensAtSamePosition.join(', ')})`;
+          // Show all citizens if 5 or fewer
+          citizensAtSamePosition.forEach((citizen, index) => {
+            if (typeof citizen === 'object' && citizen.username) {
+              const name = [citizen.firstName, citizen.lastName].filter(Boolean).join(' ');
+              const displayName = name ? `${citizen.username} (${name})` : citizen.username;
+              const socialClass = citizen.socialClass ? `, ${citizen.socialClass}` : '';
+              locationDescription += `\n  ${index + 1}. ${displayName}${socialClass}`;
+            } else {
+              locationDescription += `\n  ${index + 1}. ${citizen}`;
+            }
+          });
         } else {
-          // Show first 3 and count if more than 5
-          locationDescription += ` (${citizensAtSamePosition.slice(0, 3).join(', ')} and ${citizensAtSamePosition.length - 3} more)`;
+          // Show all citizens if more than 5
+          citizensAtSamePosition.forEach((citizen, index) => {
+            if (typeof citizen === 'object' && citizen.username) {
+              const name = [citizen.firstName, citizen.lastName].filter(Boolean).join(' ');
+              const displayName = name ? `${citizen.username} (${name})` : citizen.username;
+              const socialClass = citizen.socialClass ? `, ${citizen.socialClass}` : '';
+              locationDescription += `\n  ${index + 1}. ${displayName}${socialClass}`;
+            } else {
+              locationDescription += `\n  ${index + 1}. ${citizen}`;
+            }
+          });
         }
       }
     } else if (dataPackage.citizen.position.lat && dataPackage.citizen.position.lng) {
@@ -921,13 +955,31 @@ function convertDataPackageToMarkdown(dataPackage: any, citizenUsername: string 
       
       // Add other citizens if any
       if (citizensAtSamePosition.length > 0) {
-        locationDescription += ` with ${citizensAtSamePosition.length} other citizen${citizensAtSamePosition.length > 1 ? 's' : ''}`;
+        locationDescription += `\n- **With**: ${citizensAtSamePosition.length} other citizen${citizensAtSamePosition.length > 1 ? 's' : ''}`;
         
-        // Add the list of usernames if there are citizens
+        // Add the list of citizens with more details if available
         if (citizensAtSamePosition.length <= 5) {
-          locationDescription += ` (${citizensAtSamePosition.join(', ')})`;
+          citizensAtSamePosition.forEach((citizen, index) => {
+            if (typeof citizen === 'object' && citizen.username) {
+              const name = [citizen.firstName, citizen.lastName].filter(Boolean).join(' ');
+              const displayName = name ? `${citizen.username} (${name})` : citizen.username;
+              const socialClass = citizen.socialClass ? `, ${citizen.socialClass}` : '';
+              locationDescription += `\n  ${index + 1}. ${displayName}${socialClass}`;
+            } else {
+              locationDescription += `\n  ${index + 1}. ${citizen}`;
+            }
+          });
         } else {
-          locationDescription += ` (${citizensAtSamePosition.slice(0, 3).join(', ')} and ${citizensAtSamePosition.length - 3} more)`;
+          citizensAtSamePosition.forEach((citizen, index) => {
+            if (typeof citizen === 'object' && citizen.username) {
+              const name = [citizen.firstName, citizen.lastName].filter(Boolean).join(' ');
+              const displayName = name ? `${citizen.username} (${name})` : citizen.username;
+              const socialClass = citizen.socialClass ? `, ${citizen.socialClass}` : '';
+              locationDescription += `\n  ${index + 1}. ${displayName}${socialClass}`;
+            } else {
+              locationDescription += `\n  ${index + 1}. ${citizen}`;
+            }
+          });
         }
       }
     } else {
