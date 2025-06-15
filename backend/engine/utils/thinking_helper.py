@@ -933,13 +933,24 @@ def process_guided_reflection(
         }
         
         # Select prompts based on social class or use default prompts
-        selected_prompts = reflection_prompts.get(social_class, [
+        base_prompts = reflection_prompts.get(social_class, [
             "What aspects of your life in Venice are most satisfying right now?",
             "What challenges or obstacles are you currently facing?",
             "How are your relationships with other citizens developing?",
             "What opportunities do you see on the horizon?",
             "What long-term goals are you working toward in Venice?"
         ])
+        
+        # Mix in shadow thoughts for all social classes
+        # For Nobili and Cittadini, they're already included in their specific arrays
+        if social_class not in ["Nobili", "Cittadini"]:
+            # 30% chance to include shadow thoughts for other classes
+            if random.random() < 0.3:
+                selected_prompts = base_prompts + shadow_thoughts
+            else:
+                selected_prompts = base_prompts
+        else:
+            selected_prompts = base_prompts
         
         # Select a random prompt
         import random
