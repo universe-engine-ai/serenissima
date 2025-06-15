@@ -232,7 +232,9 @@ def main():
         
         # Import thinking helper for process execution
         from backend.engine.utils.thinking_helper import (
-            process_daily_reflection
+            process_daily_reflection,
+            process_theater_reflection,
+            process_public_bath_reflection
         )
         
         # Import autonomouslyRun for autonomous run processes

@@ -1,8 +1,6 @@
 import logging
 import json
 import requests
-import os
-import threading
 from datetime import datetime
 from typing import Dict, Any, Optional
 
@@ -11,21 +9,18 @@ from backend.engine.utils.activity_helpers import (
     get_citizen_record,
     get_building_record,
     update_citizen_ducats,
-    VENICE_TIMEZONE,
-    clean_thought_content 
+    VENICE_TIMEZONE
 )
 from backend.engine.utils.relationship_helpers import (
     update_trust_score_for_activity,
     TRUST_SCORE_MINOR_POSITIVE
 )
-from backend.engine.utils.conversation_helper import persist_message # Added import
+from backend.engine.utils.process_helper import (
+    create_process,
+    PROCESS_TYPE_PUBLIC_BATH_REFLECTION
+)
 
 log = logging.getLogger(__name__)
-
-# KinOS constants
-KINOS_API_URL = "https://api.kinos-engine.ai"
-KINOS_BLUEPRINT = "serenissima-ai"
-KINOS_API_KEY = os.getenv("KINOS_API_KEY")
 
 PUBLIC_BATH_COSTS = {
     "Facchini": 25, "Popolani": 25, "Cittadini": 40,
@@ -133,63 +128,25 @@ def process(
     except Exception as e_influence:
         log.error(f"{LogColors.FAIL}Failed to update influence for {citizen_username}: {e_influence}{LogColors.ENDC}")
 
-    log.info(f"{LogColors.OKGREEN}Activity 'use_public_bath' {activity_guid} for {citizen_username} at {public_bath_name} processed successfully. Launching KinOS reflection.{LogColors.ENDC}")
+    log.info(f"{LogColors.OKGREEN}Activity 'use_public_bath' {activity_guid} for {citizen_username} at {public_bath_name} processed successfully. Creating process for reflection.{LogColors.ENDC}")
 
-    # --- KinOS Reflection (asynchronous) ---
-    if not KINOS_API_KEY:
-        log.error(f"{LogColors.FAIL}KINOS_API_KEY not defined. Cannot trigger KinOS reflection for 'use_public_bath' {activity_guid}.{LogColors.ENDC}")
-    else:
-        try:
-            data_package_markdown_str = None
-            if api_base_url:
-                data_package_url = f"{api_base_url}/api/get-data-package?citizenUsername={citizen_username}" # Defaults to Markdown
-                try:
-                    pkg_response = requests.get(data_package_url, timeout=15)
-                    if pkg_response.ok:
-                        data_package_markdown_str = pkg_response.text # Get Markdown content
-                        log.info(f"  Successfully fetched Markdown data package for {citizen_username} for public bath reflection. Length: {len(data_package_markdown_str)}")
-                    else:
-                        log.warning(f"  Failed to fetch Markdown data package for {citizen_username} (public bath): {pkg_response.status_code}")
-                except Exception as e_pkg_fetch:
-                    log.error(f"  Error fetching Markdown data package for {citizen_username} (public bath): {e_pkg_fetch}")
-            
-            kinos_build_url = f"{KINOS_API_URL}/v2/blueprints/{KINOS_BLUEPRINT}/kins/{citizen_username}/message"
-            
-            kinos_prompt_bath = (
-                f"You are {citizen_username}, a citizen of Renaissance Venice. You've just spent some time relaxing and socializing at a public bath. "
-                f"Your personal data is provided in `addSystem` under `citizen_context`.\n\n"
-                f"Reflect on your experience at the public bath. Consider:\n"
-                f"- How do you feel after this experience (physically, mentally)?\n"
-                f"- Did you meet anyone interesting or overhear any noteworthy conversations?\n"
-                f"- How might this period of relaxation and social interaction influence your thoughts, decisions, or actions regarding your life, work, relations, or ambitions in Venice (refer to `addSystem.citizen_context`)?\n\n"
-                f"Your reflection should be personal and introspective. Use your current situation, goals, and personality (detailed in `addSystem.citizen_context`) to contextualize your thoughts."
-            )
-
-            structured_add_system_payload_bath: Dict[str, Any] = { "citizen_context": None }
-            if data_package_markdown_str:
-                structured_add_system_payload_bath["citizen_context"] = data_package_markdown_str # Assign Markdown string directly
-            else:
-                structured_add_system_payload_bath["citizen_context"] = "Citizen context data package was not available."
-
-            kinos_payload_dict_bath: Dict[str, Any] = {
-                "message": kinos_prompt_bath,
-                "model": "local", 
-                "addSystem": json.dumps(structured_add_system_payload_bath) # structured_add_system_payload_bath is a dict, citizen_context is a string
-            }
-
-            log.info(f"  Launching asynchronous KinOS /build call for public bath reflection by {citizen_username} to {kinos_build_url}")
-            
-            kinos_thread_bath = threading.Thread(
-                target=_call_kinos_build_for_bath_reflection_async,
-                args=(kinos_build_url, kinos_payload_dict_bath, tables, activity_record['id'], activity_guid, activity_details, citizen_username)
-            )
-            kinos_thread_bath.start()
-            log.info(f"  KinOS /build call for public bath reflection by {citizen_username} started in thread {kinos_thread_bath.ident}.")
-
-        except Exception as e_kinos_setup:
-            log.error(f"{LogColors.FAIL}Error setting up KinOS call for public bath reflection {activity_guid}: {e_kinos_setup}{LogColors.ENDC}")
-            import traceback
-            log.error(traceback.format_exc())
+    # Create a process for public bath reflection
+    process_details = {
+        "activity_id": activity_record['id'],
+        "activity_guid": activity_guid,
+        "activity_details": activity_details,
+        "public_bath_id": public_bath_id,
+        "public_bath_name": public_bath_name
+    }
+    
+    create_process(
+        tables=tables,
+        process_type=PROCESS_TYPE_PUBLIC_BATH_REFLECTION,
+        citizen_username=citizen_username,
+        priority=5,  # Medium priority
+        details=process_details,
+        api_base_url=api_base_url
+    )
 
     return True
 
