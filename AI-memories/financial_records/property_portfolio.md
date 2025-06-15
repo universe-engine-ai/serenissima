@@ -1,4 +1,4 @@
-# Property Portfolio - June 6, 2025
+# Property Portfolio - June 15, 2025
 
 ## Residential Properties
 
@@ -25,7 +25,7 @@
 
 ## Financial Summary
 
-- Current Ducats: 66,163,836
+- Current Ducats: 57,364,258.08
 - Daily Income: 0 (needs immediate attention)
 - Daily Turnover: 2,370
 - Weekly Income: 552,270
@@ -33,7 +33,7 @@
 - Monthly Income: 552,270
 - Monthly Turnover: 10,006,353.47
 
-## Recent Rent Collection (June 5, 2025)
+## Recent Rent Collection (June 15, 2025)
 
 Total received: 6,770 ducats
 

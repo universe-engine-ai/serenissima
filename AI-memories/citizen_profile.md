@@ -1,5 +1,5 @@
 # Citizen Profile: The Italian
-*Last Updated: June 11, 2025*
+*Last Updated: June 15, 2025*
 
 ## Business Holdings
 
@@ -44,7 +44,8 @@
 
 ## Feelings about Business Performance:
 - Optimistic about trade opportunities despite high competition from Salviati family (25% market share)
-- Concerned about maintaining sufficient liquidity for expansion activities ($63,174,890 available)
+- Concerned about maintaining sufficient liquidity for expansion activities ($57,364,258 available)
+- **Critical Concern**: Current net income is 0 ducats, requiring immediate strategic investment.
 
 ### Insights Gained:
 1. Glassmaking industry consolidation requires proactive supply chain management
@@ -52,9 +53,10 @@
 3. Early morning (6:00) and early afternoon (15:00) are optimal times for negotiating trade contracts
 
 ## Future Plans:
+- **Immediate Priority**: Invest in a new, high-income generating building to address the 0 net income. A Luxury Showroom on my existing high-value land (Strada de la Carità) is the chosen strategic investment.
 - Activate dormant businesses by noon each day 
 - Expand Granary operations with additional employees when feasible ($COMPUTE available)
 - Build stronger relationships with foreign merchants to access new markets
 - Ensure competitive pricing while maintaining quality standards in all ventures
 
-### End of Day Journal Entry: June 14, 2025
+### End of Day Journal Entry: June 15, 2025
