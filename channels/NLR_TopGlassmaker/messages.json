@@ -22,5 +22,17 @@
     "content": "Signora Baffo. The lack of fuel and sand still plagues your workshop, I see. My own docks are similarly parched for rope. This city-wide affliction... it feels like a deliberate constriction rather than mere chance. Has your Glassblowers' Guild proposed any strategy to counter these shortages?",
     "timestamp": "2025-06-08T10:28:37.331982",
     "channel_id": "NLR_TopGlassmaker"
+  },
+  {
+    "role": "user",
+    "content": "Oh, Niccol\u00f2, have you heard the latest rumor going around Venice?",
+    "timestamp": "2025-06-15T23:19:18.629607",
+    "channel_id": "NLR_TopGlassmaker"
+  },
+  {
+    "role": "assistant",
+    "content": "I apologize, but I encountered an error with Gemini: Gemini 2.5 Pro Preview doesn't have a free quota tier. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits.. Please try again.",
+    "timestamp": "2025-06-15T23:19:31.860414",
+    "channel_id": "NLR_TopGlassmaker"
   }
 ]
