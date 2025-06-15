@@ -844,8 +844,22 @@ function convertDataPackageToMarkdown(dataPackage: any, citizenUsername: string 
   }
   
   md += formatSimpleObjectForMarkdown(dataPackage.citizen, ['username', 'firstName', 'lastName', 'socialClass', 'ducats', 'isAI', 'inVenice', 'homeCity', 'influence', 'specialty']);
+  
+  // Handle position display
   if (dataPackage.citizen?.position) {
-    md += `- **position**: Lat: ${dataPackage.citizen.position.lat}, Lng: ${dataPackage.citizen.position.lng}\n`;
+    // Check if there's a building at this position
+    let locationDescription = "";
+    
+    // Check if the citizen is at a building
+    const buildingAtPosition = dataPackage.citizen.buildingAtPosition;
+    if (buildingAtPosition) {
+      locationDescription = `At ${buildingAtPosition}`;
+    } else {
+      // If not at a building, show general location based on InVenice flag
+      locationDescription = dataPackage.citizen.inVenice ? "In the streets of Venice" : "Navigating the world";
+    }
+    
+    md += `- **position**: ${locationDescription}\n`;
   }
   if (dataPackage.citizen?.corePersonality) {
     let personalityDisplay = String(dataPackage.citizen.corePersonality); // Fallback
@@ -1279,8 +1293,85 @@ export async function GET(request: Request) {
       });
     }
 
+    // Parse citizen position if available
+    let citizenPosition = null;
+    if (citizenRecord.fields.Position) {
+      try {
+        citizenPosition = JSON.parse(citizenRecord.fields.Position as string);
+      } catch (e) {
+        console.warn(`Could not parse citizen position: ${citizenRecord.fields.Position}`);
+      }
+    }
+    
+    // Find building at citizen position
+    let buildingAtPosition = null;
+    if (citizenPosition) {
+      // Check if the citizen is at their workplace
+      if (workplaceBuildingRecord && workplaceBuildingRecord.fields.Position) {
+        try {
+          const workplacePosition = JSON.parse(workplaceBuildingRecord.fields.Position as string);
+          if (workplacePosition.lat === citizenPosition.lat && workplacePosition.lng === citizenPosition.lng) {
+            buildingAtPosition = workplaceBuildingRecord.fields.Name || workplaceBuildingRecord.fields.Type;
+          }
+        } catch (e) {
+          console.warn(`Could not parse workplace position: ${workplaceBuildingRecord.fields.Position}`);
+        }
+      }
+      
+      // Check if the citizen is at their home
+      if (!buildingAtPosition && homeBuildingRecord && homeBuildingRecord.fields.Position) {
+        try {
+          const homePosition = JSON.parse(homeBuildingRecord.fields.Position as string);
+          if (homePosition.lat === citizenPosition.lat && homePosition.lng === citizenPosition.lng) {
+            buildingAtPosition = homeBuildingRecord.fields.Name || homeBuildingRecord.fields.Type;
+          }
+        } catch (e) {
+          console.warn(`Could not parse home position: ${homeBuildingRecord.fields.Position}`);
+        }
+      }
+      
+      // Check other buildings if needed
+      if (!buildingAtPosition) {
+        // Check owned buildings
+        for (const building of ownedBuildingsRecords) {
+          if (building.fields.Position) {
+            try {
+              const buildingPosition = JSON.parse(building.fields.Position as string);
+              if (buildingPosition.lat === citizenPosition.lat && buildingPosition.lng === citizenPosition.lng) {
+                buildingAtPosition = building.fields.Name || building.fields.Type;
+                break;
+              }
+            } catch (e) {
+              // Skip buildings with invalid position
+            }
+          }
+        }
+        
+        // Check managed buildings if still not found
+        if (!buildingAtPosition) {
+          for (const building of managedBuildingsRecords) {
+            if (building.fields.Position) {
+              try {
+                const buildingPosition = JSON.parse(building.fields.Position as string);
+                if (buildingPosition.lat === citizenPosition.lat && buildingPosition.lng === citizenPosition.lng) {
+                  buildingAtPosition = building.fields.Name || building.fields.Type;
+                  break;
+                }
+              } catch (e) {
+                // Skip buildings with invalid position
+              }
+            }
+          }
+        }
+      }
+    }
+
     const dataPackage = {
-      citizen: {...normalizeKeysCamelCaseShallow(citizenRecord.fields), airtableId: citizenRecord.id},
+      citizen: {
+        ...normalizeKeysCamelCaseShallow(citizenRecord.fields), 
+        airtableId: citizenRecord.id,
+        buildingAtPosition: buildingAtPosition // Add the building name at position
+      },
       lastActivity: lastActivityRecord ? {...normalizeKeysCamelCaseShallow(lastActivityRecord.fields), airtableId: lastActivityRecord.id} : null,
       lastActivities: [] as any[], // Initialize lastActivities array
       plannedActivities: [] as any[], // Initialize plannedActivities array
