@@ -867,6 +867,22 @@ def process_guided_reflection(
             "In Venice, everyone serves someone in the shadows"
         ]
         
+        # Religion thoughts that can be mixed with any social class
+        religion_thoughts = [
+            "The priest preaches poverty while wearing silk",
+            "God seems closer in my workshop than in the basilica",
+            "If Venice is blessed, why do the blessed starve?",
+            "Perhaps the divine speaks through our creations",
+            "The Muslims have different answers to the same questions",
+            "Ancient philosophy offers what modern religion cannot",
+            "Maybe meaning comes from within, not above",
+            "Science explains more than scripture these days",
+            "Faith in each other might matter more than faith in heaven",
+            "My work is my worship, my craft is my prayer",
+            "Venice itself has become our religion",
+            "We create our own salvation through community"
+        ]
+        
         # Define reflection prompts based on social class
         reflection_prompts = {
             "Nobili": [
@@ -959,16 +975,23 @@ def process_guided_reflection(
             "What long-term goals are you working toward in Venice?"
         ])
         
-        # Mix in shadow thoughts for all social classes
-        # For Nobili and Cittadini, they're already included in their specific arrays
+        # Mix in shadow thoughts and religion thoughts for all social classes
+        # For Nobili and Cittadini, shadow thoughts are already included in their specific arrays
         if social_class not in ["Nobili", "Cittadini"]:
             # 30% chance to include shadow thoughts for other classes
             if random.random() < 0.3:
                 selected_prompts = base_prompts + shadow_thoughts
+            # 25% chance to include religion thoughts for all classes
+            elif random.random() < 0.25:
+                selected_prompts = base_prompts + religion_thoughts
             else:
                 selected_prompts = base_prompts
         else:
-            selected_prompts = base_prompts
+            # For Nobili and Cittadini, still give a chance for religion thoughts
+            if random.random() < 0.25:
+                selected_prompts = base_prompts + religion_thoughts
+            else:
+                selected_prompts = base_prompts
         
         # Select a random prompt
         import random
