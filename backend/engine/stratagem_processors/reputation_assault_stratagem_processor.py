@@ -54,7 +54,9 @@ def _make_direct_kinos_channel_call(
         # Prepare payload
         payload = {
             "prompt": prompt,
-            "model": kinos_model_override or "claude-3-7-sonnet-latest" # Default model if none specified
+            "model": kinos_model_override or "claude-3-7-sonnet-latest", # Default model if none specified
+            "min_files": 0,
+            "max_files": 0 
         }
         
         # Add system data if provided
@@ -71,17 +73,6 @@ def _make_direct_kinos_channel_call(
         
         log.info(f"{LogColors.PROCESS}Making direct KinOS API call for {kin_username} to channel {channel_username} with model: {payload.get('model')}{LogColors.ENDC}")
         
-        # Log request details for debugging
-        log.info(f"{LogColors.PROCESS}KinOS API request URL: {url}{LogColors.ENDC}")
-        log.info(f"{LogColors.PROCESS}KinOS API request headers: {headers}{LogColors.ENDC}")
-        
-        # Create a safe copy of the payload for logging
-        log_payload = payload.copy()
-        if 'addSystem' in log_payload:
-            log_payload['addSystem'] = "<<SYSTEM_DATA>>"
-        
-        log.info(f"{LogColors.PROCESS}KinOS API request payload: {json.dumps(log_payload, indent=2)}{LogColors.ENDC}")
-        
         # Make the API call
         response = requests.post(url, headers=headers, json=payload, timeout=300)  # 5 minutes timeout for AI responses
         response.raise_for_status()  # Raise exception for HTTP errors
@@ -91,7 +82,6 @@ def _make_direct_kinos_channel_call(
         
         # Log response details for debugging
         log.info(f"{LogColors.PROCESS}KinOS API response status code: {response.status_code}{LogColors.ENDC}")
-        log.info(f"{LogColors.PROCESS}KinOS API response headers: {dict(response.headers)}{LogColors.ENDC}")
         log.info(f"{LogColors.PROCESS}KinOS API response data: {json.dumps(response_data, indent=2)}{LogColors.ENDC}")
         
         if response_data.get("success") and "response" in response_data:
