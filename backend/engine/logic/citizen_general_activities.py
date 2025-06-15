@@ -2381,6 +2381,126 @@ def _handle_deposit_full_inventory(
     return first_activity_in_chain
 
 
+def _handle_send_leisure_message(
+    tables: Dict[str, Table], citizen_record: Dict, is_night: bool, resource_defs: Dict, building_type_defs: Dict,
+    now_venice_dt: datetime, now_utc_dt: datetime, transport_api_url: str, api_base_url: str,
+    citizen_position: Optional[Dict], citizen_custom_id: str, citizen_username: str, citizen_airtable_id: str, citizen_name: str, citizen_position_str: Optional[str],
+    citizen_social_class: str,
+    check_only: bool = False
+) -> Union[Optional[Dict], bool]:
+    """Prio 60: Handles sending a message to another citizen during leisure time."""
+    if not is_leisure_time_for_class(citizen_social_class, now_venice_dt):
+        return False if check_only else None
+
+    # Vérifier si le citoyen a déjà envoyé un message récemment (dans les 4 dernières heures)
+    recent_message_activities_formula = f"AND({{Citizen}}='{_escape_airtable_value(citizen_username)}', OR({{Type}}='deliver_message_interaction', {{Type}}='goto_location_for_message'), {{CreatedAt}} >= '{(now_utc_dt - timedelta(hours=4)).isoformat()}')"
+    try:
+        recent_message_activities = tables['activities'].all(formula=recent_message_activities_formula, max_records=1)
+        if recent_message_activities:
+            log.info(f"{LogColors.OKBLUE}[Message Loisir] {citizen_name} a déjà envoyé un message récemment. Pas de nouveau message pour l'instant.{LogColors.ENDC}")
+            return False if check_only else None
+    except Exception as e_check_recent:
+        log.error(f"{LogColors.FAIL}[Message Loisir] Erreur lors de la vérification des messages récents pour {citizen_name}: {e_check_recent}{LogColors.ENDC}")
+        return False if check_only else None
+
+    # Trouver des citoyens potentiels à qui envoyer un message
+    # Exclure le citoyen lui-même et prioriser les citoyens avec qui il a déjà une relation
+    try:
+        # D'abord, chercher des citoyens avec qui il a une relation
+        relationships_formula = f"OR({{Citizen1}}='{_escape_airtable_value(citizen_username)}', {{Citizen2}}='{_escape_airtable_value(citizen_username)}')"
+        relationships = tables['relationships'].all(formula=relationships_formula)
+        
+        potential_recipients = []
+        
+        # Extraire les citoyens des relations
+        for rel in relationships:
+            c1 = rel['fields'].get('Citizen1')
+            c2 = rel['fields'].get('Citizen2')
+            trust_score = float(rel['fields'].get('TrustScore', 0))
+            
+            # Ajouter l'autre citoyen de la relation
+            other_citizen = c2 if c1 == citizen_username else c1
+            if other_citizen != citizen_username:  # Vérification redondante mais sécuritaire
+                potential_recipients.append((other_citizen, trust_score))
+        
+        # Si moins de 3 relations trouvées, ajouter d'autres citoyens aléatoires
+        if len(potential_recipients) < 3:
+            all_citizens_formula = f"{{Username}}!='{_escape_airtable_value(citizen_username)}'"
+            all_citizens = tables['citizens'].all(formula=all_citizens_formula)
+            
+            # Filtrer pour exclure ceux déjà dans potential_recipients
+            existing_recipients = [r[0] for r in potential_recipients]
+            additional_citizens = [c['fields'].get('Username') for c in all_citizens 
+                                  if c['fields'].get('Username') not in existing_recipients]
+            
+            # Ajouter jusqu'à 5 citoyens aléatoires avec un score de confiance par défaut de 0
+            import random
+            random.shuffle(additional_citizens)
+            for c in additional_citizens[:5]:
+                potential_recipients.append((c, 0))
+        
+        # Si toujours aucun destinataire potentiel, abandonner
+        if not potential_recipients:
+            log.info(f"{LogColors.OKBLUE}[Message Loisir] Aucun destinataire potentiel trouvé pour {citizen_name}.{LogColors.ENDC}")
+            return False if check_only else None
+        
+        # Trier par score de confiance (plus élevé d'abord) et prendre les 5 premiers
+        potential_recipients.sort(key=lambda x: x[1], reverse=True)
+        top_recipients = potential_recipients[:5]
+        
+        if check_only:
+            return len(top_recipients) > 0
+        
+        # Choisir un destinataire aléatoire parmi les meilleurs
+        import random
+        chosen_recipient, trust_score = random.choice(top_recipients)
+        
+        # Obtenir les informations sur le destinataire
+        recipient_record = get_citizen_record(tables, chosen_recipient)
+        if not recipient_record:
+            log.warning(f"{LogColors.WARNING}[Message Loisir] Destinataire {chosen_recipient} non trouvé dans la base de données.{LogColors.ENDC}")
+            return None
+        
+        recipient_name = f"{recipient_record['fields'].get('FirstName', '')} {recipient_record['fields'].get('LastName', '')}".strip() or chosen_recipient
+        
+        # Générer un contenu de message simple
+        message_content = f"Bonjour {recipient_name}, comment allez-vous aujourd'hui? Je profite de mon temps libre pour prendre de vos nouvelles."
+        
+        # Créer l'activité d'envoi de message
+        from backend.engine.activity_creators.send_message_creator import try_create as try_create_send_message_chain
+        
+        message_details = {
+            "receiverUsername": chosen_recipient,
+            "content": message_content,
+            "messageType": "personal",
+            "conversationLength": 3,  # Conversation de longueur moyenne
+            "notes": {
+                "purpose": "leisure_initiative",
+                "targetCitizenUsernameForTrustImpact": chosen_recipient
+            }
+        }
+        
+        activity_record = try_create_send_message_chain(
+            tables,
+            citizen_record,
+            message_details,
+            api_base_url,
+            transport_api_url
+        )
+        
+        if activity_record:
+            log.info(f"{LogColors.OKGREEN}[Message Loisir] {citizen_name}: Activité d'envoi de message créée vers {recipient_name}.{LogColors.ENDC}")
+        else:
+            log.info(f"{LogColors.OKBLUE}[Message Loisir] {citizen_name}: Impossible de créer une activité d'envoi de message vers {recipient_name}.{LogColors.ENDC}")
+            
+        return activity_record
+        
+    except Exception as e_find_recipients:
+        log.error(f"{LogColors.FAIL}[Message Loisir] Erreur lors de la recherche de destinataires pour {citizen_name}: {e_find_recipients}{LogColors.ENDC}")
+        import traceback
+        log.error(traceback.format_exc())
+        return None
+
 def _handle_read_book(
     tables: Dict[str, Table], citizen_record: Dict, is_night: bool, resource_defs: Dict, building_type_defs: Dict,
     now_venice_dt: datetime, now_utc_dt: datetime, transport_api_url: str, api_base_url: str,
@@ -2563,6 +2683,7 @@ def _try_process_weighted_leisure_activities(
         (_handle_use_public_bath, 42, "Utiliser un bain public"), # Nouvelle activité de loisir
         (_handle_attend_theater_performance, 45, "Aller au théâtre"), 
         (_handle_read_book, 55, "Lire un livre"),
+        (_handle_send_leisure_message, 60, "Envoyer un message à un autre citoyen"), # Nouvelle activité de message
         (_handle_check_business_status, 65, "Vérifier le statut de l'entreprise"), 
         (_handle_manage_public_dock, 66, "Gérer un quai public"), 
         # _handle_shopping_tasks est pour l'instant géré séparément
