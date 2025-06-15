@@ -852,11 +852,39 @@ function convertDataPackageToMarkdown(dataPackage: any, citizenUsername: string 
     
     // Check if the citizen is at a building
     const buildingAtPosition = dataPackage.citizen.buildingAtPosition;
+    const citizensAtSamePosition = dataPackage.citizen.citizensAtSamePosition || [];
+    
     if (buildingAtPosition) {
+      // Format the location with building name and other citizens if any
       locationDescription = `At ${buildingAtPosition}`;
+      
+      if (citizensAtSamePosition.length > 0) {
+        locationDescription += ` with ${citizensAtSamePosition.length} other citizen${citizensAtSamePosition.length > 1 ? 's' : ''}`;
+        
+        // Add the list of usernames if there are citizens
+        if (citizensAtSamePosition.length <= 5) {
+          // Show all usernames if 5 or fewer
+          locationDescription += ` (${citizensAtSamePosition.join(', ')})`;
+        } else {
+          // Show first 3 and count if more than 5
+          locationDescription += ` (${citizensAtSamePosition.slice(0, 3).join(', ')} and ${citizensAtSamePosition.length - 3} more)`;
+        }
+      }
     } else if (dataPackage.citizen.position.lat && dataPackage.citizen.position.lng) {
       // If coordinates are valid but no building found
       locationDescription = dataPackage.citizen.inVenice ? "In the streets of Venice" : "Navigating the world";
+      
+      // Add other citizens if any
+      if (citizensAtSamePosition.length > 0) {
+        locationDescription += ` with ${citizensAtSamePosition.length} other citizen${citizensAtSamePosition.length > 1 ? 's' : ''}`;
+        
+        // Add the list of usernames if there are citizens
+        if (citizensAtSamePosition.length <= 5) {
+          locationDescription += ` (${citizensAtSamePosition.join(', ')})`;
+        } else {
+          locationDescription += ` (${citizensAtSamePosition.slice(0, 3).join(', ')} and ${citizensAtSamePosition.length - 3} more)`;
+        }
+      }
     } else {
       // If coordinates are invalid
       locationDescription = "Unknown location";
@@ -1345,7 +1373,8 @@ export async function GET(request: Request) {
       }
       
       // If still not found, try the citizens-at-position API which has better position matching
-      if (!buildingAtPosition) {
+      let citizensAtSamePosition = [];
+      if (!buildingAtPosition || true) { // Always fetch citizens at position for enhanced display
         try {
           // Use the full URL with baseUrl for the API call
           const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000';
@@ -1356,11 +1385,21 @@ export async function GET(request: Request) {
           
           if (positionResponse.ok) {
             const positionData = await positionResponse.json();
-            if (positionData.success && positionData.building) {
+            
+            // Get building information if not already found
+            if (!buildingAtPosition && positionData.success && positionData.building) {
               buildingAtPosition = positionData.building.name || positionData.building.type;
               console.log(`Found building at citizen position via citizens-at-position API: ${buildingAtPosition}`);
-            } else {
-              console.log(`No buildings found at position via citizens-at-position API`);
+            }
+            
+            // Get other citizens at the same position
+            if (positionData.success && positionData.citizens && positionData.citizens.length > 0) {
+              // Filter out the current citizen
+              citizensAtSamePosition = positionData.citizens
+                .filter(c => c.username !== citizenUsername)
+                .map(c => c.username);
+              
+              console.log(`Found ${citizensAtSamePosition.length} other citizens at the same position`);
             }
           } else {
             console.error(`citizens-at-position API response not OK: ${positionResponse.status}`);
@@ -1377,7 +1416,8 @@ export async function GET(request: Request) {
       citizen: {
         ...normalizeKeysCamelCaseShallow(citizenRecord.fields), 
         airtableId: citizenRecord.id,
-        buildingAtPosition: buildingAtPosition // Add the building name at position
+        buildingAtPosition: buildingAtPosition, // Add the building name at position
+        citizensAtSamePosition: citizensAtSamePosition // Add other citizens at the same position
       },
       lastActivity: lastActivityRecord ? {...normalizeKeysCamelCaseShallow(lastActivityRecord.fields), airtableId: lastActivityRecord.id} : null,
       lastActivities: [] as any[], // Initialize lastActivities array
