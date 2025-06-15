@@ -1242,7 +1242,7 @@ function convertDataPackageToMarkdown(dataPackage: any, citizenUsername: string 
   md += `## Recent Messages (Last 20) (${dataPackage.recentMessages?.length || 0})\n`;
   if (dataPackage.recentMessages && dataPackage.recentMessages.length > 0) {
     dataPackage.recentMessages.forEach((message: any, index: number) => {
-      md += `### Message ${index + 1} (ID: ${message.messageId})\n`;
+      md += `### Message ${index + 1}\n`;
       md += formatSimpleObjectForMarkdown(message, ['sender', 'receiver', 'type', 'content', 'channel', 'createdAt']);
     });
     if (dataPackage.recentMessages.length === 20) {
