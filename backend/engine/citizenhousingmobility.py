@@ -267,9 +267,12 @@ def get_housed_citizens(tables) -> List[Dict]:
         if not occupant_ids:
             log.info("No housed citizens found")
             return []
+            
+        log.info(f"Found {len(occupant_ids)} potential occupants: {', '.join(occupant_ids)}")
         
         # Create a formula to get these citizens, including their SocialClass
-        citizen_conditions = [f"RECORD_ID()='{occupant_id}'" for occupant_id in occupant_ids]
+        # Use Username field instead of record ID for matching
+        citizen_conditions = [f"{{Username}}='{occupant_id}'" for occupant_id in occupant_ids]
         formula = f"OR({', '.join(citizen_conditions)})"
         
         all_housed_citizens_records = tables['citizens'].all(
@@ -286,8 +289,9 @@ def get_housed_citizens(tables) -> List[Dict]:
                 continue
 
             # Find the building this citizen occupies
+            citizen_username = citizen_record['fields'].get('Username')
             for building in occupied_buildings:
-                if building['fields'].get('Occupant') == citizen_record['id']:
+                if building['fields'].get('Occupant') == citizen_username:
                     citizen_record['current_building'] = building
                     break
             housed_citizens_filtered.append(citizen_record)
