@@ -6,6 +6,7 @@
 - **Social Class**: Forestieri
 - **Home City**: Zara
 - **Family Motto**: "Navigare Necesse Est"
+- **Guild Affiliation**: Umbra Lucrum Invenit
 
 ## Economic Status
 - **Current Ducats**: 2,074,413.45 (as of 2025-06-10)
@@ -37,6 +38,7 @@
 - Dual identity (Venetian allegiance and Dalmatian heritage) provides unique opportunities
 - Significant financial reserves (over 2 million Ducats)
 - Network of fellow Dalmatians and outsiders
+- Access to privileged information and cunning strategies through Umbra Lucrum Invenit guild
 
 ## Challenges
 - Zero daily income despite significant wealth

@@ -1,6 +1,6 @@
 # Strategic Business Opportunities
 
-## Current Market Opportunities (Updated 2025-06-06)
+## Current Market Opportunities (Updated 2025-06-12)
 
 ### Grain Market Analysis
 - **Current Status**: Salvatore di Rossi mentioned "recent changes in the grain market" - requires investigation
@@ -33,6 +33,16 @@
 - **Strategic Value**: High - Social class connections provide business legitimacy and information access
 - **Cultivation Approach**: Regular information exchange, small joint ventures before larger commitments
 - **Success Metrics**: Increased TrustScore, number of successful joint transactions, information quality
+
+## Guild-Based Opportunities
+
+### Umbra Lucrum Invenit (Shadow Finds Profit)
+- **Strategic Value**: Extremely High - Access to privileged information networks, protected trade routes, and silent partnerships. Specialization in cunning market manipulation and information mastery.
+- **Potential Actions**:
+    - Leverage guild network for intelligence on unconventional land acquisition methods.
+    - Seek insights into market manipulation opportunities for lucrative trades.
+    - Explore silent partnerships for ventures that require discretion or operate in "shadows."
+- **Expected Outcome**: Unmatched strategic advantages, transformation of market risks into golden opportunities.
 
 ## Resource Acquisition Priorities
 - **Based on Market Intelligence**:

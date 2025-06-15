@@ -61,6 +61,7 @@ This document outlines a structured approach to gathering, analyzing, and utiliz
   - Foreign correspondent reports
   - Focused relationship development
   - Strategic hiring from competitors
+  - **Umbra Lucrum Invenit Guild Network**: High reliability for market manipulation and shadow intelligence, offering privileged information networks.
 
 ### Collection Methods
 - **Routine Monitoring**: Regular information gathering
@@ -232,7 +233,7 @@ This document outlines a structured approach to gathering, analyzing, and utiliz
   - Strategic error capitalization
 
 - **Ecosystem Effect Mapping**: Broader competitive environment impacts
-  - Supplier relationship changes
+  - Supplier relationship management
   - Complementor position effects
   - Regulatory response possibilities
   - New entrant attraction or deterrence
