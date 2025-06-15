@@ -165,10 +165,12 @@ def perform_thinking(citizen, tables):
             PROCESS_TYPE_PUBLIC_BATH_REFLECTION
         ]
         
-        # Select a random process type
-        selected_process_type = random.choice(process_types)
+        # Select a random process type with weighted probabilities
+        # Daily reflection should be more common than the others
+        weights = [0.6, 0.2, 0.2]  # 60% daily, 20% theater, 20% bath
+        selected_process_type = random.choices(process_types, weights=weights, k=1)[0]
         
-        log_info(f"Selected process type for {username}: {selected_process_type}")
+        log_info(f"Selected process type for {username}: {selected_process_type} (Daily: 60%, Theater: 20%, Bath: 20% probability)")
         
         # Create a process for the selected type
         process_record = create_process(
