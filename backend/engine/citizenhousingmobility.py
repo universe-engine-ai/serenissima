@@ -68,6 +68,7 @@ load_dotenv()
 MOBILITY_CHANCE = {
     "Nobili": 0.10,  # 10% chance
     "Cittadini": 0.20,  # 20% chance
+    "Artisti": 0.20,    # 20% chance (same as Cittadini)
     "Popolani": 0.30,   # 30% chance
     "Facchini": 0.40    # 40% chance
 }
@@ -76,6 +77,7 @@ MOBILITY_CHANCE = {
 RENT_REDUCTION_THRESHOLD = {
     "Nobili": 0.12,  # 12% cheaper
     "Cittadini": 0.08,  # 8% cheaper
+    "Artisti": 0.08,    # 8% cheaper (same as Cittadini)
     "Popolani": 0.06,   # 6% cheaper
     "Facchini": 0.04    # 4% cheaper
 }
@@ -86,6 +88,7 @@ RENT_REDUCTION_THRESHOLD = {
 BUILDING_PREFERENCES = {
     "Nobili": ["canal_house"],
     "Cittadini": ["merchant_s_house"],
+    "Artisti": ["merchant_s_house"],  # Same as Cittadini
     "Popolani": ["artisan_s_house"],
     "Facchini": ["fisherman_s_cottage"]
 }
@@ -155,11 +158,11 @@ def get_allowed_building_tiers(social_class: str) -> List[int]:
     # La demande est "tier adaptés", ce qui suggère une plage.
     # Facchini: Tier 1
     # Popolani: Tier 1, 2
-    # Cittadini: Tier 1, 2, 3
+    # Cittadini/Artisti: Tier 1, 2, 3
     # Nobili: Tier 1, 2, 3, 4 (peuvent occuper tous les tiers, mais chercheront probablement dans leur rang ou en dessous)
     if social_class == 'Nobili':
         return [1, 2, 3, 4]
-    elif social_class == 'Cittadini':
+    elif social_class in ['Cittadini', 'Artisti']:
         return [1, 2, 3]
     elif social_class == 'Popolani':
         return [1, 2]
@@ -512,6 +515,11 @@ def create_admin_summary(tables, mobility_summary) -> None:
                     "looking": mobility_summary['by_class'].get('Cittadini', {}).get('looking', 0),
                     "moved": mobility_summary['by_class'].get('Cittadini', {}).get('moved', 0)
                 },
+                "Artisti": {
+                    "checked": mobility_summary['by_class'].get('Artisti', {}).get('checked', 0),
+                    "looking": mobility_summary['by_class'].get('Artisti', {}).get('looking', 0),
+                    "moved": mobility_summary['by_class'].get('Artisti', {}).get('moved', 0)
+                },
                 "Popolani": {
                     "checked": mobility_summary['by_class'].get('Popolani', {}).get('checked', 0),
                     "looking": mobility_summary['by_class'].get('Popolani', {}).get('looking', 0),
@@ -628,6 +636,7 @@ def process_housing_mobility(dry_run: bool = False):
         "by_class": {
             "Nobili": {"checked": 0, "looking": 0, "moved": 0},
             "Cittadini": {"checked": 0, "looking": 0, "moved": 0},
+            "Artisti": {"checked": 0, "looking": 0, "moved": 0},
             "Popolani": {"checked": 0, "looking": 0, "moved": 0},
             "Facchini": {"checked": 0, "looking": 0, "moved": 0}
         }
