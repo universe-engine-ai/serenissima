@@ -98,6 +98,9 @@ def process_daily_reflection(
             f"- How might the day's experiences influence your plans, goals, or relationships for tomorrow and beyond? (Refer to `addSystem.citizen_context.profile`, `addSystem.citizen_context.relationships`)\n\n"
             f"Your reflection should be personal and introspective, like a private journal entry. Use your current situation, goals, and personality (detailed in `addSystem.citizen_context`) to contextualize your thoughts."
         )
+        
+        # Log the prompt
+        log.info(f"[PROMPT] Daily reflection for {citizen_username}:\n{kinos_prompt_daily_reflection}")
 
         structured_add_system_payload: Dict[str, Any] = { "citizen_context": None }
         if data_package_markdown_str:
@@ -118,7 +121,8 @@ def process_daily_reflection(
             kinos_response.raise_for_status()
             
             kinos_response_data = kinos_response.json()
-            log.info(f"  KinOS /messages response (daily reflection) for {citizen_username}: Status: {kinos_response_data.get('status')}, Response: {kinos_response_data.get('response')}")
+            log.info(f"  KinOS /messages response (daily reflection) for {citizen_username}: Status: {kinos_response_data.get('status')}")
+            log.info(f"[RESPONSE] Daily reflection for {citizen_username}:\n{kinos_response_data.get('response')}")
             
             raw_reflection = kinos_response_data.get('response', f"No daily reflection from KinOS.")
 
@@ -266,6 +270,9 @@ def process_theater_reflection(
             f"- What thoughts or inspirations did the performance provoke?\n\n"
             f"Your reflection should be personal and introspective, like a private journal entry about your theater experience."
         )
+        
+        # Log the prompt
+        log.info(f"[PROMPT] Theater reflection for {citizen_username}:\n{kinos_prompt_theater_reflection}")
 
         structured_add_system_payload: Dict[str, Any] = { "citizen_context": None }
         if data_package_markdown_str:
@@ -286,7 +293,8 @@ def process_theater_reflection(
             kinos_response.raise_for_status()
             
             kinos_response_data = kinos_response.json()
-            log.info(f"  KinOS /messages response (theater reflection) for {citizen_username}: Status: {kinos_response_data.get('status')}, Response: {kinos_response_data.get('response')}")
+            log.info(f"  KinOS /messages response (theater reflection) for {citizen_username}: Status: {kinos_response_data.get('status')}")
+            log.info(f"[RESPONSE] Theater reflection for {citizen_username}:\n{kinos_response_data.get('response')}")
             
             raw_reflection = kinos_response_data.get('response', f"No theater reflection from KinOS.")
 
@@ -422,6 +430,9 @@ def process_public_bath_reflection(
             f"- Did you overhear any interesting gossip or news?\n\n"
             f"Your reflection should be personal and introspective, like a private journal entry about your visit to the public bath."
         )
+        
+        # Log the prompt
+        log.info(f"[PROMPT] Public bath reflection for {citizen_username}:\n{kinos_prompt_bath_reflection}")
 
         structured_add_system_payload: Dict[str, Any] = { "citizen_context": None }
         if data_package_markdown_str:
@@ -442,7 +453,8 @@ def process_public_bath_reflection(
             kinos_response.raise_for_status()
             
             kinos_response_data = kinos_response.json()
-            log.info(f"  KinOS /messages response (public bath reflection) for {citizen_username}: Status: {kinos_response_data.get('status')}, Response: {kinos_response_data.get('response')}")
+            log.info(f"  KinOS /messages response (public bath reflection) for {citizen_username}: Status: {kinos_response_data.get('status')}")
+            log.info(f"[RESPONSE] Public bath reflection for {citizen_username}:\n{kinos_response_data.get('response')}")
             
             raw_reflection = kinos_response_data.get('response', f"No public bath reflection from KinOS.")
 
@@ -673,6 +685,9 @@ def process_practical_reflection(
                 f"Your reflection should be practical and forward-looking, considering both immediate actions and strategic planning."
             )
         
+        # Log the prompt
+        log.info(f"[PROMPT] Practical reflection for {citizen_username}:\n{kinos_prompt_practical_reflection}")
+        
         structured_add_system_payload: Dict[str, Any] = { "citizen_context": None }
         if data_package_markdown_str:
             structured_add_system_payload["citizen_context"] = data_package_markdown_str # Assign Markdown string directly
@@ -692,7 +707,8 @@ def process_practical_reflection(
             kinos_response.raise_for_status()
             
             kinos_response_data = kinos_response.json()
-            log.info(f"  KinOS /messages response (practical reflection) for {citizen_username}: Status: {kinos_response_data.get('status')}, Response: {kinos_response_data.get('response')}")
+            log.info(f"  KinOS /messages response (practical reflection) for {citizen_username}: Status: {kinos_response_data.get('status')}")
+            log.info(f"[RESPONSE] Practical reflection for {citizen_username}:\n{kinos_response_data.get('response')}")
             
             raw_reflection = kinos_response_data.get('response', f"No practical reflection from KinOS.")
             
@@ -903,6 +919,9 @@ def process_guided_reflection(
             f"Your reflection should be personal and introspective, drawing on specific details from your life in Venice. "
             f"Feel free to mention specific people, places, or events that are relevant to your thoughts on this matter."
         )
+        
+        # Log the prompt
+        log.info(f"[PROMPT] Guided reflection for {citizen_username}:\n{kinos_prompt_guided_reflection}")
 
         structured_add_system_payload: Dict[str, Any] = { "citizen_context": None }
         if data_package_markdown_str:
@@ -924,7 +943,8 @@ def process_guided_reflection(
             kinos_response.raise_for_status()
             
             kinos_response_data = kinos_response.json()
-            log.info(f"  KinOS /messages response (guided reflection) for {citizen_username}: Status: {kinos_response_data.get('status')}, Response: {kinos_response_data.get('response')}")
+            log.info(f"  KinOS /messages response (guided reflection) for {citizen_username}: Status: {kinos_response_data.get('status')}")
+            log.info(f"[RESPONSE] Guided reflection for {citizen_username}:\n{kinos_response_data.get('response')}")
             
             raw_reflection = kinos_response_data.get('response', f"No guided reflection from KinOS.")
 
@@ -1089,6 +1109,9 @@ def process_continue_thought(
             f"Please continue this line of thought. Expand on your previous reflections, explore new angles, or develop your ideas further. "
             f"What additional insights or considerations come to mind as you revisit these thoughts?"
         )
+        
+        # Log the prompt
+        log.info(f"[PROMPT] Thought continuation for {citizen_username}:\n{kinos_prompt_continue_thought}")
 
         structured_add_system_payload: Dict[str, Any] = { "citizen_context": None }
         if data_package_markdown_str:
@@ -1109,7 +1132,8 @@ def process_continue_thought(
             kinos_response.raise_for_status()
             
             kinos_response_data = kinos_response.json()
-            log.info(f"  KinOS /messages response (thought continuation) for {citizen_username}: Status: {kinos_response_data.get('status')}, Response: {kinos_response_data.get('response')}")
+            log.info(f"  KinOS /messages response (thought continuation) for {citizen_username}: Status: {kinos_response_data.get('status')}")
+            log.info(f"[RESPONSE] Thought continuation for {citizen_username}:\n{kinos_response_data.get('response')}")
             
             raw_continuation = kinos_response_data.get('response', f"No thought continuation from KinOS.")
 
@@ -1225,6 +1249,9 @@ def process_unguided_reflection(
             f"Your reflection should be personal and authentic, drawing on specific details from your life in Venice. "
             f"Feel free to explore any aspect of your existence that seems significant at this moment."
         )
+        
+        # Log the prompt
+        log.info(f"[PROMPT] Unguided reflection for {citizen_username}:\n{kinos_prompt_unguided_reflection}")
 
         structured_add_system_payload: Dict[str, Any] = { "citizen_context": None }
         if data_package_markdown_str:
@@ -1245,7 +1272,8 @@ def process_unguided_reflection(
             kinos_response.raise_for_status()
             
             kinos_response_data = kinos_response.json()
-            log.info(f"  KinOS /messages response (unguided reflection) for {citizen_username}: Status: {kinos_response_data.get('status')}, Response: {kinos_response_data.get('response')}")
+            log.info(f"  KinOS /messages response (unguided reflection) for {citizen_username}: Status: {kinos_response_data.get('status')}")
+            log.info(f"[RESPONSE] Unguided reflection for {citizen_username}:\n{kinos_response_data.get('response')}")
             
             raw_reflection = kinos_response_data.get('response', f"No unguided reflection from KinOS.")
 
