@@ -22,11 +22,11 @@ import time
 import random
 import traceback
 import json
-import fcntl
 import signal
 import atexit
 from datetime import datetime, timedelta
 import pytz
+import platform
 
 # Add the project root to the Python path
 PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
@@ -166,14 +166,22 @@ def perform_thinking(citizen, tables):
 LOCK_FILE_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), '.thinking_loop.lock')
 lock_file = None
 
+# Platform-specific locking mechanism
+is_windows = platform.system() == 'Windows'
+
 def cleanup():
     """Cleanup function to release the lock file when the script exits"""
     global lock_file
     if lock_file:
         try:
-            fcntl.flock(lock_file, fcntl.LOCK_UN)
+            if not is_windows:
+                import fcntl
+                fcntl.flock(lock_file, fcntl.LOCK_UN)
             lock_file.close()
             log_info("Lock file released")
+            # On Windows, we can now safely remove the lock file
+            if is_windows and os.path.exists(LOCK_FILE_PATH):
+                os.remove(LOCK_FILE_PATH)
         except Exception as e:
             log_error(f"Error releasing lock file: {str(e)}")
 
@@ -186,19 +194,56 @@ def signal_handler(sig, frame):
 def acquire_lock():
     """Try to acquire the lock file to ensure only one instance runs"""
     global lock_file
-    try:
-        lock_file = open(LOCK_FILE_PATH, 'w')
-        # Try to acquire an exclusive lock, non-blocking
-        fcntl.flock(lock_file, fcntl.LOCK_EX | fcntl.LOCK_NB)
-        lock_file.write(str(os.getpid()))
-        lock_file.flush()
-        return True
-    except IOError:
-        # Another instance is already running
-        return False
-    except Exception as e:
-        log_error(f"Error acquiring lock: {str(e)}")
-        return False
+    
+    if is_windows:
+        # Windows-specific locking mechanism
+        try:
+            # Check if the lock file exists
+            if os.path.exists(LOCK_FILE_PATH):
+                # Try to open and read the PID
+                with open(LOCK_FILE_PATH, 'r') as f:
+                    pid = f.read().strip()
+                    # Check if the process with this PID is still running
+                    try:
+                        pid = int(pid)
+                        # This will raise an exception if the process is not running
+                        import ctypes
+                        kernel32 = ctypes.windll.kernel32
+                        handle = kernel32.OpenProcess(1, 0, pid)
+                        if handle:
+                            kernel32.CloseHandle(handle)
+                            # Process is still running
+                            log_info(f"Another instance is already running with PID {pid}")
+                            return False
+                    except (ValueError, OSError, Exception):
+                        # Process is not running, we can remove the stale lock file
+                        log_info("Removing stale lock file")
+                        os.remove(LOCK_FILE_PATH)
+            
+            # Create a new lock file
+            lock_file = open(LOCK_FILE_PATH, 'w')
+            lock_file.write(str(os.getpid()))
+            lock_file.flush()
+            return True
+        except Exception as e:
+            log_error(f"Error acquiring lock on Windows: {str(e)}")
+            return False
+    else:
+        # Unix-specific locking mechanism
+        try:
+            import fcntl
+            lock_file = open(LOCK_FILE_PATH, 'w')
+            # Try to acquire an exclusive lock, non-blocking
+            fcntl.flock(lock_file, fcntl.LOCK_EX | fcntl.LOCK_NB)
+            lock_file.write(str(os.getpid()))
+            lock_file.flush()
+            return True
+        except IOError:
+            # Another instance is already running
+            return False
+        except Exception as e:
+            log_error(f"Error acquiring lock: {str(e)}")
+            return False
 
 def main():
     """Main function to run the thinking loop"""
