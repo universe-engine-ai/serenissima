@@ -283,19 +283,23 @@ def resolve_resource_not_for_sale(problem: Dict, tables: Dict[str, Table], resou
     target_amount = round(remaining_capacity * DEFAULT_TARGET_AMOUNT_STORAGE_PERCENTAGE, 2)
     
     # Ensure target_amount is at least a small positive value if there's any capacity, or if capacity is 0 (e.g. market stall)
-    if storage_capacity == 0: # For buildings with no defined storage (like market stalls)
-        target_amount = 20.0 # Default small amount
+    if storage_capacity == 0: # For buildings with no defined storage (like market stalls or public docks)
+        target_amount = 20.0 # Default small amount for buildings with no defined storage
+        log.info(f"  Building {building_id} has no defined storage capacity. Using default target amount of {target_amount} for {resource_type}.")
     elif target_amount < 1.0 and remaining_capacity > 0: # If calculated amount is too small but there's space
         target_amount = max(1.0, round(remaining_capacity * 0.1, 2)) # Try 10% or at least 1
-    elif target_amount < 1.0 and remaining_capacity <=0: # No space
-        target_amount = 0.0 # Cannot sell if no space to even hold 1 unit for sale logic
+    elif target_amount < 1.0 and remaining_capacity <= 0: # No space
+        # Special case for public docks and similar buildings that should still be able to sell
+        if building_type_str in ["public_dock", "market_stall", "retail_shop"]:
+            target_amount = 5.0 # Small default amount for these special building types
+            log.info(f"  Building {building_id} ({building_type_str}) has no remaining capacity but is a special type. Using default target amount of {target_amount} for {resource_type}.")
+        else:
+            target_amount = 0.0 # Cannot sell if no space to even hold 1 unit for sale logic
 
     if target_amount == 0.0:
         log.warning(f"  Building {building_id} has no remaining storage capacity. Cannot create sell contract for {resource_type}.")
         # This isn't a failure of the resolver itself, but a condition preventing resolution.
         # We might want to update the problem notes differently or return a specific status.
-        # For now, let it proceed, the activity might fail or create a 0 amount contract.
-        # Or, better, return False here as we can't meaningfully resolve.
         return False
 
 
