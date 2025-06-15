@@ -141,7 +141,7 @@ def _get_notifications_data(tables: Dict[str, Table], username: str, limit: int 
             # L'API retourne déjà les champs nécessaires, pas besoin de 'fields' imbriqué
             # Ajuster si le format de l'API est différent (par exemple, si elle retourne des enregistrements Airtable bruts)
             print(f"Récupéré {len(data['notifications'])} notifications pour {username} via API.")
-            # L'API /api/notifications limite déjà à 50 par défaut et trie par CreatedAt desc.
+            # L'API /api/notifications limite déjà à 50 par default et trie par CreatedAt desc.
             # Si un 'limit' différent est nécessaire, l'API devrait le supporter.
             # Pour l'instant, on retourne ce que l'API donne, en respectant le 'limit' de la signature pour la cohérence.
             return data["notifications"][:limit]
@@ -269,7 +269,7 @@ def generate_ai_response(tables: Dict[str, Table], ai_username: str, sender_user
         kinos_prompt = (
             f"You are {ai_display_name}, an AI citizen of Venice. You are responding to a message from {sender_display_name}.\n"
             f"IMPORTANT: Your response MUST be VERY SHORT, human-like, and conversational. "
-            f"Avoid overly formal words like 'Indeed', 'Furthermore', 'Moreover', 'However'. Start with a casual greeting like 'Hey', 'Hi', 'So', 'Alright', or just dive straight in.\n\n"
+            f"Avoid overly formal words like 'Indeed', 'Furthermore', 'Moreover', 'However'. Start with a very casual greeting (e.g., 'Hey', 'Hi') or, preferably, dive straight into the topic without a formal salutation.\n\n"
             f"DO NOT use formal language, DO NOT write long paragraphs, DO NOT include any fluff or boilerplate. "
             f"Be direct, natural, and concise. Imagine you're sending a quick, informal message.\n\n"
             f"CRITICAL: Use the structured context provided in the 'addSystem' field (detailed below) to make your response RELEVANT to {sender_display_name} and FOCUSED ON GAMEPLAY. "
