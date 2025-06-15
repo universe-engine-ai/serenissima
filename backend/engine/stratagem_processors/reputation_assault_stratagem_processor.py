@@ -460,54 +460,21 @@ def process(
     # 4. Damage relationship between executor and target (regardless of messages sent/activities created)
     trust_change = -50.0 # Significant negative impact
     try:
-        # Utiliser l'API en première intention pour mettre à jour la relation
-        try:
-            import requests
-            api_url = f"{NEXT_JS_BASE_URL}/api/relationships/update-trust"
-            payload = {
-                "citizen1": executed_by_username,
-                "citizen2": target_citizen_username,
-                "trustChange": trust_change,
-                "reason": f"Stratagem reputation assault (ID: {stratagem_id})"
-            }
-            log.info(f"{LogColors.PROCESS}Updating trust score via API: {api_url}{LogColors.ENDC}")
-            response = requests.post(api_url, json=payload, timeout=30)
-            if response.ok:
-                log.info(f"{LogColors.OKGREEN}Successfully updated trust score via API{LogColors.ENDC}")
-            else:
-                log.warning(f"{LogColors.WARNING}Failed to update trust score via API: {response.status_code}. Falling back to Airtable.{LogColors.ENDC}")
-                # Fallback: Utiliser Airtable si l'API échoue
-                if 'relationships' in tables:
-                    update_trust_score_for_activity(
-                        tables,
-                        executed_by_username,
-                        target_citizen_username,
-                        trust_change,
-                        activity_type_for_notes=f"stratagem_reputation_assault_on_{target_citizen_username}",
-                        success=False, # From target's perspective, this is a negative action
-                        notes_detail=f"executed_by_{executed_by_username}",
-                        activity_record_for_kinos=stratagem_record # Pass the stratagem record for context
-                    )
-                    log.info(f"{LogColors.PROCESS}Trust score between {executed_by_username} and {target_citizen_username} impacted by {trust_change} due to stratagem {stratagem_id}.{LogColors.ENDC}")
-                else:
-                    log.error(f"{LogColors.FAIL}Could not update trust score: API failed and 'relationships' table not found{LogColors.ENDC}")
-        except Exception as e_api:
-            log.error(f"{LogColors.FAIL}Error updating trust score via API: {e_api}. Falling back to Airtable.{LogColors.ENDC}")
-            # Fallback: Utiliser Airtable si l'API échoue
-            if 'relationships' in tables:
-                update_trust_score_for_activity(
-                    tables,
-                    executed_by_username,
-                    target_citizen_username,
-                    trust_change,
-                    activity_type_for_notes=f"stratagem_reputation_assault_on_{target_citizen_username}",
-                    success=False, # From target's perspective, this is a negative action
-                    notes_detail=f"executed_by_{executed_by_username}",
-                    activity_record_for_kinos=stratagem_record # Pass the stratagem record for context
-                )
-                log.info(f"{LogColors.PROCESS}Trust score between {executed_by_username} and {target_citizen_username} impacted by {trust_change} due to stratagem {stratagem_id}.{LogColors.ENDC}")
-            else:
-                log.error(f"{LogColors.FAIL}Could not update trust score: API failed and 'relationships' table not found{LogColors.ENDC}")
+        # Utiliser directement update_trust_score_for_activity
+        if 'relationships' in tables:
+            update_trust_score_for_activity(
+                tables,
+                executed_by_username,
+                target_citizen_username,
+                trust_change,
+                activity_type_for_notes=f"stratagem_reputation_assault_on_{target_citizen_username}",
+                success=False, # From target's perspective, this is a negative action
+                notes_detail=f"executed_by_{executed_by_username}",
+                activity_record_for_kinos=stratagem_record # Pass the stratagem record for context
+            )
+            log.info(f"{LogColors.PROCESS}Trust score between {executed_by_username} and {target_citizen_username} impacted by {trust_change} due to stratagem {stratagem_id}.{LogColors.ENDC}")
+        else:
+            log.error(f"{LogColors.FAIL}Could not update trust score: 'relationships' table not found{LogColors.ENDC}")
     except Exception as e_trust:
         log.error(f"{LogColors.FAIL}Error during trust score update: {e_trust}{LogColors.ENDC}")
         import traceback
