@@ -33,6 +33,25 @@ export async function POST(request: Request) {
     // Log the actual payload being sent to Python for debugging
     console.log(`[API /activities/try-create] Actual payload being sent to Python:`, JSON.stringify(pythonPayload, null, 2));
     
+    // Special handling for send_message to ensure parameters are passed correctly
+    if (activityType === 'send_message' && activityDetails) {
+      // Ensure activityParameters contains the required fields directly
+      if (!pythonPayload.activityParameters.receiverUsername && activityDetails.receiverUsername) {
+        pythonPayload.activityParameters.receiverUsername = activityDetails.receiverUsername;
+      }
+      if (!pythonPayload.activityParameters.content && activityDetails.content) {
+        pythonPayload.activityParameters.content = activityDetails.content;
+      }
+      if (!pythonPayload.activityParameters.messageType && activityDetails.messageType) {
+        pythonPayload.activityParameters.messageType = activityDetails.messageType;
+      }
+      if (!pythonPayload.activityParameters.channel && activityDetails.channel) {
+        pythonPayload.activityParameters.channel = activityDetails.channel;
+      }
+      
+      console.log(`[API /activities/try-create] Enhanced send_message payload:`, JSON.stringify(pythonPayload.activityParameters, null, 2));
+    }
+    
     // Log des paramètres spécifiques pour manage_public_sell_contract
     if (activityType === 'manage_public_sell_contract') {
       console.log(`[API /activities/try-create] Processing manage_public_sell_contract with parameters:`, 

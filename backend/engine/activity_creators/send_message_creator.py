@@ -56,6 +56,14 @@ def try_create(
     # Validate required parameters
     if not (receiver_username and content):
         log.error(f"Missing required details for send_message: receiverUsername or content. Details received: {details}")
+        log.error(f"Details type: {type(details)}, Keys: {list(details.keys()) if isinstance(details, dict) else 'Not a dict'}")
+        
+        # Dump the entire details object for debugging
+        try:
+            log.error(f"Full details object: {json.dumps(details)}")
+        except:
+            log.error(f"Could not serialize details object to JSON")
+        
         # Check if activityParameters might be nested one level deeper (common API issue)
         if 'activityParameters' in details and isinstance(details['activityParameters'], dict):
             nested_params = details['activityParameters']
@@ -75,7 +83,34 @@ def try_create(
                 log.info(f"Successfully extracted parameters from nested structure: receiver={receiver_username}, content_length={len(content)}")
                 # Continue with the extracted parameters
         else:
-            return None
+            # Try to look for parameters directly in the request body
+            # This is a fallback for when the API structure might be inconsistent
+            if isinstance(details, dict) and 'citizenUsername' in details and 'activityType' in details:
+                log.info("Found top-level request structure, checking for parameters at root level")
+                if 'receiverUsername' in details:
+                    receiver_username = details.get('receiverUsername')
+                    log.info(f"Found receiverUsername at root level: {receiver_username}")
+                if 'content' in details:
+                    content = details.get('content')
+                    log.info(f"Found content at root level, length: {len(content) if content else 0}")
+                if 'messageType' in details:
+                    message_type = details.get('messageType', 'personal')
+                if 'targetBuildingId' in details:
+                    target_building_id = details.get('targetBuildingId')
+                if 'conversationLength' in details:
+                    conversation_length = details.get('conversationLength', 3)
+                if 'channel' in details:
+                    channel = details.get('channel')
+                
+                # Re-validate after extracting from root level
+                if receiver_username and content:
+                    log.info(f"Successfully extracted parameters from root level: receiver={receiver_username}, content_length={len(content)}")
+                    # Continue with the extracted parameters
+                else:
+                    log.error(f"Still missing required details after checking root level")
+                    return None
+            else:
+                return None
     
     # Validate conversation_length
     if not isinstance(conversation_length, int) or conversation_length < 1:

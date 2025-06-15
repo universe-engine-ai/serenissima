@@ -588,11 +588,22 @@ def call_try_create_activity_api(
             return False
 
     api_url = f"{BASE_URL}/api/activities/try-create" # BASE_URL is defined at the top
-    payload = {
-        "citizenUsername": citizen_username,
-        "activityType": activity_type,
-        "activityParameters": activity_parameters
-    }
+    
+    # For send_message, ensure parameters are at the correct level in the payload
+    if activity_type == "send_message":
+        payload = {
+            "citizenUsername": citizen_username,
+            "activityType": activity_type,
+            "activityDetails": activity_parameters  # Use activityDetails instead of activityParameters
+        }
+        print(f"Using activityDetails for send_message: {json.dumps(payload)}")
+    else:
+        payload = {
+            "citizenUsername": citizen_username,
+            "activityType": activity_type,
+            "activityParameters": activity_parameters
+        }
+    
     headers = {"Content-Type": "application/json"}
     
     try:
