@@ -240,10 +240,10 @@ def _summarize_target_data_package(
     """
     log.info(f"{LogColors.OKBLUE}Summarizing target data package for {target_username} for {ai_username}'s purpose: '{purpose_of_call}'.{LogColors.ENDC}")
     
-    attention_channel_name = "attention_summarizer" 
+    attention_channel_name = target_username
     
     attention_prompt = (
-        f"You are an AI assistant helping {ai_username} understand {target_username} for: '{purpose_of_call}'. "
+        f"You are {ai_username} trying to understand {target_username} for: '{purpose_of_call}'. "
         f"I will provide you with {target_username}'s complete data package in markdown format. "
         f"Please summarize the most relevant information about {target_username} that would be useful for {ai_username} "
         f"when deciding how to interact with them.\n\n"
