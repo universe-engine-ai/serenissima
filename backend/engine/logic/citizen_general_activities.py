@@ -2436,6 +2436,68 @@ def _handle_send_leisure_message(
         
     return activity_record
 
+def _handle_spread_rumor(
+    tables: Dict[str, Table], citizen_record: Dict, is_night: bool, resource_defs: Dict, building_type_defs: Dict,
+    now_venice_dt: datetime, now_utc_dt: datetime, transport_api_url: str, api_base_url: str,
+    citizen_position: Optional[Dict], citizen_custom_id: str, citizen_username: str, citizen_airtable_id: str, citizen_name: str, citizen_position_str: Optional[str],
+    citizen_social_class: str,
+    check_only: bool = False
+) -> Union[Optional[Dict], bool]:
+    """Prio 58: Handles spreading rumors during leisure time."""
+    if not is_leisure_time_for_class(citizen_social_class, now_venice_dt):
+        return False if check_only else None
+    
+    # Vérifier si le citoyen a déjà répandu une rumeur récemment (dans les 8 dernières heures)
+    recent_rumor_activities_formula = f"AND({{Citizen}}='{_escape_airtable_value(citizen_username)}', {{Type}}='spread_rumor', {{CreatedAt}} >= '{(now_utc_dt - timedelta(hours=8)).isoformat()}')"
+    try:
+        recent_rumor_activities = tables['activities'].all(formula=recent_rumor_activities_formula, max_records=1)
+        if recent_rumor_activities:
+            log.info(f"{LogColors.OKBLUE}[Rumeur] {citizen_name} a déjà répandu une rumeur récemment. Pas de nouvelle rumeur pour l'instant.{LogColors.ENDC}")
+            return False if check_only else None
+    except Exception as e_check_recent:
+        log.error(f"{LogColors.FAIL}[Rumeur] Erreur lors de la vérification des rumeurs récentes pour {citizen_name}: {e_check_recent}{LogColors.ENDC}")
+        return False if check_only else None
+
+    if check_only:
+        return True  # Si on vérifie juste la possibilité, on suppose que c'est possible
+    
+    # Appeler le créateur d'activité spread_rumor
+    activity_params = {}  # Paramètres vides, le créateur choisira la cible et le contenu
+    
+    creation_successful = try_create_spread_rumor_activity(
+        tables=tables,
+        citizen_record=citizen_record,
+        activity_params=activity_params,
+        resource_defs=resource_defs,
+        building_type_defs=building_type_defs,
+        now_venice_dt=now_venice_dt,
+        now_utc_dt=now_utc_dt,
+        transport_api_url=transport_api_url,
+        api_base_url=api_base_url
+    )
+    
+    if creation_successful:
+        # Le créateur retourne un booléen, donc nous devons trouver l'activité créée
+        time_buffer_seconds = 5
+        search_start_time_iso = (now_utc_dt - timedelta(seconds=time_buffer_seconds)).isoformat()
+        
+        activity_formula = f"AND({{Citizen}}='{_escape_airtable_value(citizen_username)}', OR({{Type}}='spread_rumor', {{Type}}='goto_location'), {{CreatedAt}} >= '{search_start_time_iso}')"
+        
+        try:
+            recent_activities = tables['activities'].all(formula=activity_formula, sort=['-CreatedAt'], max_records=1)
+            if recent_activities:
+                log.info(f"{LogColors.OKGREEN}[Rumeur] {citizen_name}: Activité 'spread_rumor' (ou chaîne) créée.{LogColors.ENDC}")
+                return recent_activities[0]  # Retourne l'enregistrement de l'activité
+            else:
+                log.warning(f"{LogColors.WARNING}[Rumeur] {citizen_name}: Activité 'spread_rumor' signalée comme créée mais introuvable.{LogColors.ENDC}")
+                return None
+        except Exception as e_fetch:
+            log.error(f"{LogColors.FAIL}[Rumeur] Erreur lors de la récupération de l'activité 'spread_rumor' pour {citizen_name}: {e_fetch}{LogColors.ENDC}")
+            return None
+    else:
+        log.info(f"{LogColors.OKBLUE}[Rumeur] {citizen_name}: Impossible de créer une activité 'spread_rumor'.{LogColors.ENDC}")
+        return None
+
 def _handle_read_book(
     tables: Dict[str, Table], citizen_record: Dict, is_night: bool, resource_defs: Dict, building_type_defs: Dict,
     now_venice_dt: datetime, now_utc_dt: datetime, transport_api_url: str, api_base_url: str,
@@ -2621,6 +2683,7 @@ def _try_process_weighted_leisure_activities(
         (_handle_send_leisure_message, 60, "Envoyer un message à un autre citoyen"), # Nouvelle activité de message
         (_handle_check_business_status, 65, "Vérifier le statut de l'entreprise"), 
         (_handle_manage_public_dock, 66, "Gérer un quai public"), 
+        (_handle_spread_rumor, 58, "Répandre une rumeur"), # Ajout de l'activité spread_rumor
         # _handle_shopping_tasks est pour l'instant géré séparément
     ]
 
