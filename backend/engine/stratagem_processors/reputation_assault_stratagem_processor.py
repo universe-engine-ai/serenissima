@@ -350,54 +350,54 @@ def process(
             
         # Prepare activity parameters similar to what the API would expect
         activity_details = {
-                "receiverUsername": related_citizen_username,
-                "content": cleaned_specific_message,
-                "messageType": "stratagem_smear_delivery", # New type to distinguish
-                "notes": { # Optional, but good for tracking
-                    "stratagemId": stratagem_id,
-                    "originalTarget": target_citizen_username, # This is the one being smeared
-                    "assaultAngle": assault_angle_from_notes or "N/A",
-                    "targetCitizenUsernameForTrustImpact": target_citizen_username # Pass the smeared target for trust impact
-                },
-                "addMessage": {
-                    "stratagemId": stratagem_id,
-                    "stratagemType": "reputation_assault",
-                    "originalTarget": target_citizen_username,
-                    "assaultAngle": assault_angle_from_notes or "N/A",
-                    "coreAttackNarrative": cleaned_core_attack_narrative,
-                    "executorUsername": executed_by_username,
-                    "targetDisplayName": target_display_name,
-                    "recipientUsername": related_citizen_username,
-                    "generateMessageOnDelivery": True,
-                    "relationshipWithTarget": _rh_get_relationship_data(tables, target_citizen_username, related_citizen_username),
-                    "relationshipWithRecipient": _rh_get_relationship_data(tables, executed_by_username, related_citizen_username)
-                }
+            "receiverUsername": related_citizen_username,
+            "content": cleaned_specific_message,
+            "messageType": "stratagem_smear_delivery", # New type to distinguish
+            "notes": { # Optional, but good for tracking
+                "stratagemId": stratagem_id,
+                "originalTarget": target_citizen_username, # This is the one being smeared
+                "assaultAngle": assault_angle_from_notes or "N/A",
+                "targetCitizenUsernameForTrustImpact": target_citizen_username # Pass the smeared target for trust impact
+            },
+            "addMessage": {
+                "stratagemId": stratagem_id,
+                "stratagemType": "reputation_assault",
+                "originalTarget": target_citizen_username,
+                "assaultAngle": assault_angle_from_notes or "N/A",
+                "coreAttackNarrative": cleaned_core_attack_narrative,
+                "executorUsername": executed_by_username,
+                "targetDisplayName": target_display_name,
+                "recipientUsername": related_citizen_username,
+                "generateMessageOnDelivery": True,
+                "relationshipWithTarget": _rh_get_relationship_data(tables, target_citizen_username, related_citizen_username),
+                "relationshipWithRecipient": _rh_get_relationship_data(tables, executed_by_username, related_citizen_username)
             }
+        }
+        
+        # Get transport API URL from the base URL if not provided
+        transport_api_url = f"{api_base_url}/api/transport" if api_base_url else None
+        
+        log.info(f"{LogColors.PROCESS}Directly calling send_message_creator.try_create for {executed_by_username} to send message to {related_citizen_username}{LogColors.ENDC}")
             
-            # Get transport API URL from the base URL if not provided
-            transport_api_url = f"{api_base_url}/api/transport" if api_base_url else None
+        try:
+            # Call the send_message_creator directly
+            created_activity = try_create_send_message(
+                tables=tables,
+                citizen_record=executor_citizen_record,
+                details=activity_details,
+                api_base_url=api_base_url,
+                transport_api_url=transport_api_url
+            )
             
-            log.info(f"{LogColors.PROCESS}Directly calling send_message_creator.try_create for {executed_by_username} to send message to {related_citizen_username}{LogColors.ENDC}")
-            
-            try:
-                # Call the send_message_creator directly
-                created_activity = try_create_send_message(
-                    tables=tables,
-                    citizen_record=executor_citizen_record,
-                    details=activity_details,
-                    api_base_url=api_base_url,
-                    transport_api_url=transport_api_url
-                )
-                
-                if created_activity:
-                    log.info(f"{LogColors.OKGREEN}Successfully created send_message activity directly for {executed_by_username} to {related_citizen_username}. Activity ID: {created_activity.get('id', 'N/A')}{LogColors.ENDC}")
-                    messages_sent_count += 1
-                else:
-                    log.warning(f"{LogColors.WARNING}Failed to create send_message activity directly for {executed_by_username} to {related_citizen_username}.{LogColors.ENDC}")
-            except Exception as e_direct_create:
-                log.error(f"{LogColors.FAIL}Error directly creating send_message activity for {related_citizen_username}: {e_direct_create}{LogColors.ENDC}")
-                import traceback
-                log.error(traceback.format_exc())
+            if created_activity:
+                log.info(f"{LogColors.OKGREEN}Successfully created send_message activity directly for {executed_by_username} to {related_citizen_username}. Activity ID: {created_activity.get('id', 'N/A')}{LogColors.ENDC}")
+                messages_sent_count += 1
+            else:
+                log.warning(f"{LogColors.WARNING}Failed to create send_message activity directly for {executed_by_username} to {related_citizen_username}.{LogColors.ENDC}")
+        except Exception as e_direct_create:
+            log.error(f"{LogColors.FAIL}Error directly creating send_message activity for {related_citizen_username}: {e_direct_create}{LogColors.ENDC}")
+            import traceback
+            log.error(traceback.format_exc())
         else:
             log.warning(f"{LogColors.WARNING}Failed to generate specific message content (self-chat) for {related_citizen_username} (re: {target_citizen_username}) for stratagem {stratagem_id}.{LogColors.ENDC}")
 
