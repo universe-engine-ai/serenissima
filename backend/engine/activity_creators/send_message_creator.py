@@ -25,10 +25,8 @@ def choose_interlocutor_via_kinos(
     api_base_url: str
 ) -> Optional[Tuple[str, str]]:
     """
-    Appelle l'API pour choisir un interlocuteur et la raison de l'interaction.
+    Appelle KinOS pour choisir un interlocuteur et la raison de l'interaction.
     Retourne (target_username, reason) ou (None, None).
-    
-    Cette version simplifiée utilise l'API directement plutôt que KinOS.
     """
     try:
         # Extraire le prénom et la classe sociale du citoyen à partir du markdown
@@ -47,37 +45,84 @@ def choose_interlocutor_via_kinos(
         if social_class_match:
             ai_social_class = social_class_match.group(1).strip()
 
-        # Appel à l'API pour obtenir des suggestions d'interlocuteurs
-        import requests
-        api_url = f"{api_base_url}/api/suggest-interlocutors"
-        payload = {
-            "citizenUsername": ai_username,
-            "limit": 5
+        # Importer les fonctions nécessaires pour appeler KinOS
+        from backend.engine.utils.conversation_helper import (
+            make_kinos_channel_call,
+            get_kinos_model_for_social_class,
+            clean_thought_content
+        )
+        import os
+        import json
+
+        # Récupérer la clé API KinOS
+        kinos_api_key = os.getenv("KINOS_API_KEY")
+        if not kinos_api_key:
+            log.error("Clé API KinOS non trouvée dans les variables d'environnement")
+            return None, None
+
+        # Le canal "strategist" est un canal conceptuel pour ce type de décision
+        kinos_channel_for_decision = "strategist" 
+
+        prompt = (
+            f"You are {ai_display_name}, an AI citizen of Venice. Your data package "
+            f"is provided in `addSystem` in markdown format.\n\n"
+            f"Based on this information, analyze your current situation and identify another citizen with whom initiating a conversation would be most beneficial or strategically relevant for you right now. "
+            f"Consider your goals, active problems, opportunities, and the nature of your relationships. Could initiating or discussing a **Stratagem** be a reason for contact? Information on available stratagems is in the 'Available Stratagems' section of your data package.\n\n"
+            f"Your response MUST be a JSON object with two keys: 'target_username' (the Username of the citizen you choose) and 'reason' (a specific compelling reason for contacting them, focusing on gameplay or possibly narrative progression, potentially related to a stratagem).\n"
+            f"If no compelling interaction is identified, respond with: {{\"target_username\": null, \"reason\": \"<Explanations>\"}}\n\n"
+            f"Chosen interaction (JSON):"
+        )
+
+        # Utiliser le modèle local par défaut pour cette décision
+        effective_model = "local"
+        
+        log.info(f"Appel à KinOS pour choisir un interlocuteur pour {ai_username} (Modèle: {effective_model})")
+        
+        # Créer un wrapper pour passer le markdown comme addSystem
+        wrapper_data = {
+            "data_package_markdown": ai_data_package
         }
         
-        response = requests.post(api_url, json=payload, timeout=30)
-        if not response.ok:
-            log.error(f"Erreur lors de l'appel à l'API suggest-interlocutors: {response.status_code} {response.text}")
-            return None, None
-            
-        data = response.json()
-        if not data.get("success") or not data.get("suggestions"):
-            log.warning(f"Aucune suggestion d'interlocuteur retournée par l'API pour {ai_username}")
-            return None, None
-            
-        suggestions = data.get("suggestions", [])
-        if not suggestions:
-            return None, None
-            
-        # Choisir aléatoirement parmi les suggestions
-        chosen_suggestion = random.choice(suggestions)
-        target_username = chosen_suggestion.get("username")
-        reason = chosen_suggestion.get("reason", "Prendre des nouvelles")
+        # Appel à KinOS via make_kinos_channel_call
+        raw_response_content = make_kinos_channel_call(
+            kinos_api_key=kinos_api_key,
+            speaker_username=ai_username,
+            channel_name=kinos_channel_for_decision,
+            prompt=prompt,
+            add_system_data=wrapper_data, 
+            kinos_model_override=effective_model,
+            tables=tables
+        )
         
-        if target_username:
-            log.info(f"Interlocuteur choisi pour {ai_username}: {target_username}. Raison: {reason}")
-            return target_username, reason
-        else:
+        if not raw_response_content:
+            log.warning(f"KinOS n'a pas retourné de réponse pour la décision de l'interlocuteur pour {ai_username}")
+            return None, None
+
+        try:
+            # Nettoyer le contenu avant de parser le JSON (KinOS peut ajouter des <think> tags)
+            cleaned_response = clean_thought_content(tables, raw_response_content)
+            
+            # Extraire le JSON de la réponse nettoyée
+            json_match = re.search(r'\{.*\}', cleaned_response, re.DOTALL)
+            if not json_match:
+                log.warning(f"Réponse KinOS ne contient pas de JSON valide pour {ai_username}: {cleaned_response}")
+                return None, None
+                
+            decision_data = json.loads(json_match.group(0))
+            target_username = decision_data.get("target_username")
+            reason = decision_data.get("reason")
+
+            if target_username and reason:
+                log.info(f"KinOS a choisi {target_username} pour {ai_username}. Raison: {reason}")
+                return target_username, reason
+            else:
+                log.info(f"KinOS n'a pas identifié d'interlocuteur pour {ai_username}. Raison: {reason}")
+                return None, None
+        except json.JSONDecodeError:
+            log.error(f"Erreur de décodage JSON de la réponse KinOS pour {ai_username}")
+            return None, None
+        except Exception as e:
+            log.error(f"Erreur lors du traitement de la réponse KinOS pour {ai_username}: {e}")
             return None, None
             
     except Exception as e:
