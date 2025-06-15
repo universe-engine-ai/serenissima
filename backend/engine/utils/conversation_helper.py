@@ -527,7 +527,8 @@ def generate_conversation_turn(
     interaction_mode: str = "conversation", # "conversation", "reflection", or "conversation_opener"
     message: Optional[str] = None, # Optional message to send directly for "conversation_opener"
     target_citizen_username_for_trust_impact: Optional[str] = None, # For 3-way trust impact
-    process_reply: bool = True # Whether to generate a reply from the listener
+    process_reply: bool = True, # Whether to generate a reply from the listener
+    add_message: Optional[Dict[str, Any]] = None # Additional message data to include in addSystem
 ) -> Optional[Dict]:
     """
     Generates one turn of a conversation, an internal reflection, or a conversation opener.
@@ -711,6 +712,11 @@ def generate_conversation_turn(
         "relationship_details": get_relationship_details(tables, speaker_username, listener_username) or {},
         "conversation_history": get_conversation_history(tables, channel_name, limit=max_history_messages)
     }
+    
+    # Add additional message data if provided
+    if add_message:
+        add_system_payload["additional_message_data"] = add_message
+        log.info(f"Including additional message data in addSystem payload: {list(add_message.keys())}")
 
     # 4. Construct KinOS prompt
     # location_description_for_prompt is now set above.

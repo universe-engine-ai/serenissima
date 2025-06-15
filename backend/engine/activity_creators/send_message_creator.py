@@ -512,6 +512,11 @@ def try_create(
         "conversationLength": conversation_length
     }
     
+    # Add addMessage if provided in the original details
+    if details.get('addMessage'):
+        details_for_processor["addMessage"] = details.get('addMessage')
+        log.info(f"Including addMessage in Details for deliver_message_interaction.")
+    
     # Add channel if provided
     if channel:
         details_for_processor["channel"] = channel

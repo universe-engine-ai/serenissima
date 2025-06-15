@@ -383,6 +383,14 @@ def process(
                     "originalTarget": target_citizen_username, # This is the one being smeared
                     "assaultAngle": assault_angle_from_notes or "N/A",
                     "targetCitizenUsernameForTrustImpact": target_citizen_username # Pass the smeared target for trust impact
+                },
+                "addMessage": {
+                    "stratagemId": stratagem_id,
+                    "stratagemType": "reputation_assault",
+                    "originalTarget": target_citizen_username,
+                    "assaultAngle": assault_angle_from_notes or "N/A",
+                    "coreAttackNarrative": cleaned_core_attack_narrative,
+                    "executorUsername": executed_by_username
                 }
             }
             

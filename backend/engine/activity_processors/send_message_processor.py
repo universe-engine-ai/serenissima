@@ -79,6 +79,7 @@ def _process_direct_message(
     message_type = details.get('messageType', 'message')
     in_reply_to = details.get('inReplyToMessageId')
     channel = details.get('channel') # Extract channel
+    add_message = details.get('addMessage') # Extract addMessage if present
     
     if not (sender and receiver_username and content):
         log.error(f"Missing data for direct message: sender={sender}, receiver={receiver_username}, content={'present' if content else 'missing'}")
@@ -204,6 +205,7 @@ def _process_message_delivery(
     in_reply_to_id = details.get('inReplyToMessageId') # Extract from parsed Details
     channel = details.get('channel') # Extract channel
     target_citizen_username_for_trust_impact = details.get('targetCitizenUsernameForTrustImpact') # New
+    add_message = details.get('addMessage') # Extract addMessage if present
     
     if not (sender and receiver_username and content):
         log.error(f"Missing data for message delivery: sender={sender}, receiver={receiver_username}, content={'present' if content else 'missing'}")
@@ -230,7 +232,8 @@ def _process_message_delivery(
             api_base_url=api_base_url,
             interaction_mode="conversation_opener",
             message=content, # Pass the original content as the message to be sent
-            target_citizen_username_for_trust_impact=target_citizen_username_for_trust_impact # New
+            target_citizen_username_for_trust_impact=target_citizen_username_for_trust_impact, # New
+            add_message=add_message # Pass addMessage to conversation helper
         )
 
         if not new_message_airtable_record or 'fields' not in new_message_airtable_record:
