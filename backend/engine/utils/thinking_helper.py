@@ -786,6 +786,8 @@ def process_practical_reflection(
         update_process_status(tables, process_id, PROCESS_STATUS_FAILED, {"error": str(e_kinos_setup)})
         return False
 
+import random
+
 def process_guided_reflection(
     tables: Dict[str, Any],
     process_record: Dict[str, Any]
