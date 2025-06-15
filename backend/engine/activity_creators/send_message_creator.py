@@ -67,7 +67,7 @@ def choose_interlocutor_via_kinos(
             f"You are {ai_display_name}, an AI citizen of Venice. Your data package "
             f"is provided in `addSystem` in markdown format.\n\n"
             f"Based on this information, analyze your current situation and identify another citizen with whom initiating a conversation would be most beneficial or strategically relevant for you right now. "
-            f"Consider your goals, active problems, opportunities, and the nature of your relationships. Could initiating or discussing a **Stratagem** be a reason for contact? Information on available stratagems is in the 'Available Stratagems' section of your data package.\n\n"
+            f"Consider your goals, active problems, opportunities, and the nature of your relationships. Could initiating or discussing a **Stratagem** be a reason for contact? Note that gossip or rumors are not necessarily negative (though they often are). Information on available stratagems is in the 'Available Stratagems' section of your data package.\n\n"
             f"Your response MUST be a JSON object with two keys: 'target_username' (the Username of the citizen you choose) and 'reason' (a specific compelling reason for contacting them, focusing on gameplay or possibly narrative progression, potentially related to a stratagem).\n"
             f"If no compelling interaction is identified, respond with: {{\"target_username\": null, \"reason\": \"<Explanations>\"}}\n\n"
             f"Chosen interaction (JSON):"
