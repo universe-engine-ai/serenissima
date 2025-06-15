@@ -116,6 +116,42 @@ async function fetchOwnedLands(username: string): Promise<AirtableRecord<FieldSe
   }
 }
 
+async function fetchAllBuildingsForLands(landIds: string[]): Promise<Record<string, AirtableRecord<FieldSet>[]>> {
+  if (!landIds.length) return {};
+  
+  try {
+    // Create a formula that matches any of the landIds
+    const escapedLandIds = landIds.map(id => `'${escapeAirtableValue(id)}'`).join(', ');
+    const formula = `OR(${landIds.map(id => `{LandId} = '${escapeAirtableValue(id)}'`).join(', ')})`;
+    
+    const records = await airtable('BUILDINGS').select({
+      filterByFormula: formula,
+    }).all();
+    
+    // Group buildings by landId
+    const buildingsByLand: Record<string, AirtableRecord<FieldSet>[]> = {};
+    
+    // Initialize empty arrays for each landId
+    landIds.forEach(id => {
+      buildingsByLand[id] = [];
+    });
+    
+    // Populate the groups
+    records.forEach(record => {
+      const landId = record.fields.LandId as string;
+      if (landId && buildingsByLand[landId]) {
+        buildingsByLand[landId].push(record);
+      }
+    });
+    
+    return buildingsByLand;
+  } catch (error) {
+    console.error(`Error fetching buildings for lands: ${landIds.join(', ')}`, error);
+    return {};
+  }
+}
+
+// Keep this for backward compatibility or specific cases
 async function fetchBuildingsOnLand(landId: string): Promise<AirtableRecord<FieldSet>[]> {
   try {
     const records = await airtable('BUILDINGS').select({
@@ -1066,12 +1102,21 @@ export async function GET(request: Request) {
     const workplaceBuildingRecord = await fetchWorkplaceBuilding(citizenUsername);
     const homeBuildingRecord = await fetchHomeBuilding(citizenUsername);
 
+    // Extract all landIds first
+    const landIds = ownedLandsRecords
+      .map(landRecord => landRecord.fields.LandId as string)
+      .filter(Boolean);
+    
+    // Fetch all buildings for all lands in one batch
+    const allBuildingsByLand = await fetchAllBuildingsForLands(landIds);
+    
+    // Process each land with its buildings
     const ownedLandsData = [];
     for (const landRecord of ownedLandsRecords) {
       const landId = landRecord.fields.LandId as string;
       if (!landId) continue;
 
-      const buildingsOnLandRecords = await fetchBuildingsOnLand(landId);
+      const buildingsOnLandRecords = allBuildingsByLand[landId] || [];
       const polygonData = await fetchPolygonDataForLand(landId);
 
       let unoccupiedBuildingPoints: BuildingPoint[] = [];
