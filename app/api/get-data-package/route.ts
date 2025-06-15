@@ -1253,6 +1253,21 @@ function convertDataPackageToMarkdown(dataPackage: any, citizenUsername: string 
     md += `- No recent messages.\n\n`;
   }
   
+  // Thoughts (Messages where sender = receiver)
+  md += `## Personal Thoughts (${dataPackage.thoughts?.length || 0})\n`;
+  if (dataPackage.thoughts && dataPackage.thoughts.length > 0) {
+    dataPackage.thoughts.forEach((thought: any, index: number) => {
+      md += `### Thought ${index + 1}\n`;
+      md += formatSimpleObjectForMarkdown(thought, ['content', 'type', 'createdAt']);
+    });
+    if (dataPackage.thoughts.length === 20) {
+      md += `- ... (and more)\n`;
+    }
+    md += '\n';
+  } else {
+    md += `- No personal thoughts recorded.\n\n`;
+  }
+  
   // Latest Daily Update
   md += `## Latest Daily Update\n`;
   md += formatSimpleObjectForMarkdown(dataPackage.latestDailyUpdate, ['title', 'content', 'createdAt']);
@@ -1559,6 +1574,7 @@ export async function GET(request: Request) {
       strongestRelationships: [] as any[], // Initialize strongestRelationships array
       recentProblems: [] as any[], // Initialize recentProblems array
       recentMessages: [] as any[], // Initialize recentMessages array
+      thoughts: [] as any[], // Initialize thoughts array (messages where sender = receiver)
       latestDailyUpdate: null as any | null, // Initialize latestDailyUpdate
       availableStratagems: {} as Record<string, Record<string, ShortStratagemDefinition[]>>, // Initialize availableStratagems
       stratagemsExecutedByCitizen: [] as any[], // Active Stratagems executed by the citizen
@@ -1649,12 +1665,16 @@ export async function GET(request: Request) {
     // Problems
     dataPackage.recentProblems = recentProblemsRecords.map(p => ({...normalizeKeysCamelCaseShallow(p.fields), airtableId: p.id}));
 
-    // Messages
-    dataPackage.recentMessages = recentMessagesRecords.map(m => {
+    // Messages - separate thoughts (sender = receiver) from regular messages
+    const allMessages = recentMessagesRecords.map(m => {
       const normalizedFields = normalizeKeysCamelCaseShallow(m.fields);
       delete normalizedFields.thinking;
       return {...normalizedFields, airtableId: m.id};
     });
+    
+    // Filter messages into regular messages and thoughts
+    dataPackage.recentMessages = allMessages.filter(m => m.sender !== m.receiver);
+    dataPackage.thoughts = allMessages.filter(m => m.sender === m.receiver);
 
     // Daily update
     if (lastDailyUpdateRecord) {
