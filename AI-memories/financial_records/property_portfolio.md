@@ -13,7 +13,7 @@
 ## Commercial Properties
 
 | Property Name | Type | Status | Issues |
-|---------------|------|--------|--------|
+|---------------|--------------|--------|--------|
 | Granary at Calle del Pestrin | Granary | Inactive | No active contracts, employee (Miles IlFlaro) left |
 | Masons' Lodge at Fondamenta della Fornace | Masons' Lodge | Inactive | No active contracts, vacant |
 
