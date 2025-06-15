@@ -498,6 +498,261 @@ def process_public_bath_reflection(
         update_process_status(tables, process_id, PROCESS_STATUS_FAILED, {"error": str(e_kinos_setup)})
         return False
 
+def process_practical_reflection(
+    tables: Dict[str, Any],
+    process_record: Dict[str, Any]
+) -> bool:
+    """
+    Processes a practical reflection for a citizen using KinOS.
+    This reflection focuses on a randomly selected item from the citizen's data package.
+    
+    Args:
+        tables: Dictionary of Airtable tables
+        process_record: The process record from the PROCESSES table
+        
+    Returns:
+        True if successful, False otherwise
+    """
+    process_id = process_record['id']
+    process_fields = process_record['fields']
+    citizen_username = process_fields.get('Citizen')
+    api_base_url = process_fields.get('ApiBaseUrl')
+    details_str = process_fields.get('Details')
+    
+    details = {}
+    if details_str:
+        try:
+            details = json.loads(details_str)
+        except json.JSONDecodeError:
+            log.warning(f"Could not parse Details JSON for process {process_id}: {details_str}")
+    
+    log.info(f"{LogColors.ACTIVITY}Processing practical reflection for {citizen_username} (Process ID: {process_id}).{LogColors.ENDC}")
+    
+    # Update process status to in progress
+    update_process_status(tables, process_id, PROCESS_STATUS_IN_PROGRESS)
+    
+    if not KINOS_API_KEY:
+        log.error(f"{LogColors.FAIL}KINOS_API_KEY not defined. Cannot trigger KinOS reflection.{LogColors.ENDC}")
+        update_process_status(tables, process_id, PROCESS_STATUS_FAILED, {"error": "KINOS_API_KEY not defined"})
+        return False
+    
+    try:
+        # Fetch data package in JSON format
+        data_package_json = None
+        if api_base_url:
+            data_package_url = f"{api_base_url}/api/get-data-package?citizenUsername={citizen_username}&format=json"
+            try:
+                pkg_response = requests.get(data_package_url, timeout=30)  # Increased timeout for JSON data
+                if pkg_response.ok:
+                    data_package_json = pkg_response.json()
+                    log.info(f"  Successfully fetched JSON data package for {citizen_username} for practical reflection.")
+                else:
+                    log.warning(f"  Failed to fetch JSON data package for {citizen_username} (practical reflection): {pkg_response.status_code}")
+            except Exception as e_pkg_fetch:
+                log.error(f"  Error fetching JSON data package for {citizen_username} (practical reflection): {e_pkg_fetch}")
+        
+        # Also fetch the markdown version for the addSystem payload
+        data_package_markdown_str = None
+        if api_base_url:
+            markdown_url = f"{api_base_url}/api/get-data-package?citizenUsername={citizen_username}"
+            try:
+                markdown_response = requests.get(markdown_url, timeout=15)
+                if markdown_response.ok:
+                    data_package_markdown_str = markdown_response.text
+                    log.info(f"  Successfully fetched Markdown data package for {citizen_username} for practical reflection. Length: {len(data_package_markdown_str)}")
+                else:
+                    log.warning(f"  Failed to fetch Markdown data package for {citizen_username} (practical reflection): {markdown_response.status_code}")
+            except Exception as e_markdown_fetch:
+                log.error(f"  Error fetching Markdown data package for {citizen_username} (practical reflection): {e_markdown_fetch}")
+        
+        # Select a random item from the data package
+        selected_item = None
+        selected_category = None
+        selected_item_description = None
+        
+        if data_package_json and data_package_json.get('success') and data_package_json.get('data'):
+            data = data_package_json['data']
+            
+            # Define categories with lists that we can randomly select from
+            categories_with_lists = {
+                'ownedLands': data.get('ownedLands', []),
+                'ownedBuildings': data.get('ownedBuildings', []),
+                'managedBuildings': data.get('managedBuildings', []),
+                'activeContracts': data.get('activeContracts', []),
+                'citizenLoans': data.get('citizenLoans', []),
+                'strongestRelationships': data.get('strongestRelationships', []),
+                'recentProblems': data.get('recentProblems', []),
+                'recentMessages': data.get('recentMessages', []),
+                'stratagemsExecutedByCitizen': data.get('stratagemsExecutedByCitizen', []),
+                'stratagemsTargetingCitizen': data.get('stratagemsTargetingCitizen', [])
+            }
+            
+            # Filter out empty lists
+            non_empty_categories = {k: v for k, v in categories_with_lists.items() if v}
+            
+            if non_empty_categories:
+                # Select a random category
+                import random
+                selected_category = random.choice(list(non_empty_categories.keys()))
+                
+                # Select a random item from that category
+                selected_item = random.choice(non_empty_categories[selected_category])
+                
+                # Create a description of the selected item
+                if selected_category == 'ownedLands':
+                    selected_item_description = f"one of your owned lands: {selected_item.get('historicalName') or selected_item.get('englishName') or selected_item.get('landId')}"
+                elif selected_category == 'ownedBuildings':
+                    selected_item_description = f"one of your owned buildings: {selected_item.get('name') or selected_item.get('buildingId')}"
+                elif selected_category == 'managedBuildings':
+                    selected_item_description = f"one of the buildings you manage: {selected_item.get('name') or selected_item.get('buildingId')}"
+                elif selected_category == 'activeContracts':
+                    selected_item_description = f"one of your active contracts: {selected_item.get('title') or selected_item.get('contractId')}"
+                elif selected_category == 'citizenLoans':
+                    selected_item_description = f"one of your loans: {selected_item.get('name') or selected_item.get('loanId')}"
+                elif selected_category == 'strongestRelationships':
+                    other_citizen = selected_item.get('citizen1') if selected_item.get('citizen1') != citizen_username else selected_item.get('citizen2')
+                    selected_item_description = f"your relationship with {other_citizen}"
+                elif selected_category == 'recentProblems':
+                    selected_item_description = f"one of your recent problems: {selected_item.get('title') or selected_item.get('problemId')}"
+                elif selected_category == 'recentMessages':
+                    other_party = selected_item.get('sender') if selected_item.get('sender') != citizen_username else selected_item.get('receiver')
+                    selected_item_description = f"a recent message between you and {other_party}"
+                elif selected_category == 'stratagemsExecutedByCitizen':
+                    selected_item_description = f"one of your active stratagems: {selected_item.get('name') or selected_item.get('type')}"
+                elif selected_category == 'stratagemsTargetingCitizen':
+                    selected_item_description = f"a stratagem targeting you: {selected_item.get('name') or selected_item.get('type')} (executed by {selected_item.get('executedBy')})"
+                else:
+                    selected_item_description = f"an item from your {selected_category}"
+                
+                log.info(f"  Selected random item for reflection: {selected_item_description}")
+            else:
+                log.warning(f"  No non-empty categories found in data package for {citizen_username}")
+        else:
+            log.warning(f"  Invalid or empty data package for {citizen_username}")
+        
+        kinos_messages_url = f"{KINOS_API_URL}/v2/blueprints/{KINOS_BLUEPRINT}/kins/{citizen_username}/messages"
+        
+        # Create the prompt based on the selected item
+        if selected_item and selected_category and selected_item_description:
+            kinos_prompt_practical_reflection = (
+                f"You are {citizen_username}, a citizen of Renaissance Venice. "
+                f"Your personal data, including recent activities and current status, is provided in `addSystem` under `citizen_context`.\n\n"
+                f"I'd like you to reflect on {selected_item_description}. Here are the specific details about this item:\n\n"
+                f"```json\n{json.dumps(selected_item, indent=2, default=str)}\n```\n\n"
+                f"Based on this information and your overall context, please reflect on:\n"
+                f"- What does this {selected_category.rstrip('s')} mean to you personally?\n"
+                f"- How does it fit into your current situation and goals?\n"
+                f"- What practical actions or decisions might you consider regarding this matter?\n"
+                f"- What opportunities or challenges does it present?\n"
+                f"- How might this affect your relationships or standing in Venice?\n\n"
+                f"Your reflection should be practical and forward-looking, considering both immediate implications and longer-term considerations."
+            )
+        else:
+            # Fallback prompt if we couldn't select a specific item
+            kinos_prompt_practical_reflection = (
+                f"You are {citizen_username}, a citizen of Renaissance Venice. "
+                f"Your personal data, including recent activities and current status, is provided in `addSystem` under `citizen_context`.\n\n"
+                f"Please reflect on your current situation in Venice. Consider:\n"
+                f"- What are your most pressing concerns or opportunities right now?\n"
+                f"- How are your business interests, properties, or relationships developing?\n"
+                f"- What practical steps might you take to improve your position or address challenges?\n"
+                f"- What longer-term goals should you be working toward?\n\n"
+                f"Your reflection should be practical and forward-looking, considering both immediate actions and strategic planning."
+            )
+        
+        structured_add_system_payload: Dict[str, Any] = { "citizen_context": None }
+        if data_package_markdown_str:
+            structured_add_system_payload["citizen_context"] = data_package_markdown_str # Assign Markdown string directly
+        else:
+            structured_add_system_payload["citizen_context"] = "Citizen context data package was not available."
+        
+        kinos_payload_dict: Dict[str, Any] = {
+            "message": kinos_prompt_practical_reflection,
+            "model": "local", 
+            "addSystem": json.dumps(structured_add_system_payload)
+        }
+        
+        log.info(f"  Making KinOS /messages call for practical reflection by {citizen_username} to {kinos_messages_url}")
+        
+        try:
+            kinos_response = requests.post(kinos_messages_url, json=kinos_payload_dict, timeout=180) # Increased timeout
+            kinos_response.raise_for_status()
+            
+            kinos_response_data = kinos_response.json()
+            log.info(f"  KinOS /messages response (practical reflection) for {citizen_username}: Status: {kinos_response_data.get('status')}, Response: {kinos_response_data.get('response')}")
+            
+            raw_reflection = kinos_response_data.get('response', f"No practical reflection from KinOS.")
+            
+            # Persist the raw reflection as a self-message (thought)
+            persist_message(
+                tables=tables,
+                sender_username=citizen_username,
+                receiver_username=citizen_username,
+                content=raw_reflection,
+                message_type="kinos_practical_reflection",
+                channel_name=citizen_username
+            )
+            log.info(f"  Practical reflection persisted as self-message for {citizen_username}.")
+            
+            # Update activity notes if activity_id is in details
+            if 'activity_id' in details:
+                activity_id = details['activity_id']
+                activity_details = details.get('activity_details', {})
+                
+                cleaned_reflection_for_notes = clean_thought_content(tables, raw_reflection)
+                
+                if not isinstance(activity_details, dict):
+                    activity_details = {}
+                    
+                activity_details['kinos_practical_reflection'] = cleaned_reflection_for_notes
+                activity_details['kinos_practical_reflection_status'] = kinos_response_data.get('status', 'unknown')
+                if selected_item_description:
+                    activity_details['reflection_topic'] = selected_item_description
+                
+                new_notes_json = json.dumps(activity_details)
+                
+                try:
+                    tables['activities'].update(activity_id, {'Notes': new_notes_json})
+                    log.info(f"  Activity notes updated with KinOS practical reflection for {details.get('activity_guid', 'unknown')}.")
+                except Exception as e_airtable_update:
+                    log.error(f"  Error updating Airtable notes for activity {details.get('activity_guid', 'unknown')} (practical reflection): {e_airtable_update}")
+            
+            # Update process status to completed
+            result_data = {
+                "reflection": raw_reflection,
+                "status": kinos_response_data.get('status', 'unknown')
+            }
+            if selected_item_description:
+                result_data["reflection_topic"] = selected_item_description
+            
+            update_process_status(
+                tables,
+                process_id,
+                PROCESS_STATUS_COMPLETED,
+                result_data
+            )
+            
+            return True
+            
+        except requests.exceptions.RequestException as e_kinos:
+            log.error(f"  Error during KinOS /messages call (practical reflection) for {citizen_username}: {e_kinos}")
+            update_process_status(tables, process_id, PROCESS_STATUS_FAILED, {"error": str(e_kinos)})
+            return False
+        except json.JSONDecodeError as e_json_kinos:
+            kinos_response_text_preview = "N/A"
+            if 'kinos_response' in locals() and hasattr(kinos_response, 'text'):
+                kinos_response_text_preview = kinos_response.text[:200]
+            log.error(f"  JSON decode error for KinOS /messages response (practical reflection) for {citizen_username}: {e_json_kinos}. Response: {kinos_response_text_preview}")
+            update_process_status(tables, process_id, PROCESS_STATUS_FAILED, {"error": f"JSON decode error: {str(e_json_kinos)}"})
+            return False
+    
+    except Exception as e_kinos_setup:
+        log.error(f"{LogColors.FAIL}Error processing practical reflection: {e_kinos_setup}{LogColors.ENDC}")
+        import traceback
+        log.error(traceback.format_exc())
+        update_process_status(tables, process_id, PROCESS_STATUS_FAILED, {"error": str(e_kinos_setup)})
+        return False
+
 def process_guided_reflection(
     tables: Dict[str, Any],
     process_record: Dict[str, Any]
@@ -620,7 +875,7 @@ def process_guided_reflection(
         import random
         selected_prompt = random.choice(selected_prompts)
         
-        kinos_messages_url = f"{KINOS_API_URL}/v2/blueprints/{KINOS_BLUEPRINT_ID}/kins/{citizen_username}/messages"
+        kinos_messages_url = f"{KINOS_API_URL}/v2/blueprints/{KINOS_BLUEPRINT}/kins/{citizen_username}/messages"
         
         kinos_prompt_guided_reflection = (
             f"You are {citizen_username}, a citizen of Renaissance Venice. "
@@ -774,7 +1029,7 @@ def process_unguided_reflection(
             except Exception as e_pkg_fetch:
                 log.error(f"  Error fetching Markdown data package for {citizen_username} (unguided reflection): {e_pkg_fetch}")
         
-        kinos_messages_url = f"{KINOS_API_URL}/v2/blueprints/{KINOS_BLUEPRINT_ID}/kins/{citizen_username}/messages"
+        kinos_messages_url = f"{KINOS_API_URL}/v2/blueprints/{KINOS_BLUEPRINT}/kins/{citizen_username}/messages"
         
         kinos_prompt_unguided_reflection = (
             f"You are {citizen_username}, a citizen of Renaissance Venice. "
