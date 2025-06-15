@@ -341,15 +341,15 @@ def process(
 
         # Import the send_message_creator directly
         from backend.engine.activity_creators.send_message_creator import try_create as try_create_send_message
+        
+        # Get the executor's citizen record
+        executor_citizen_record = get_citizen_record(tables, executed_by_username)
+        if not executor_citizen_record:
+            log.error(f"{LogColors.FAIL}Could not find citizen record for executor {executed_by_username}. Skipping message to {related_citizen_username}.{LogColors.ENDC}")
+            continue
             
-            # Get the executor's citizen record
-            executor_citizen_record = get_citizen_record(tables, executed_by_username)
-            if not executor_citizen_record:
-                log.error(f"{LogColors.FAIL}Could not find citizen record for executor {executed_by_username}. Skipping message to {related_citizen_username}.{LogColors.ENDC}")
-                continue
-                
-            # Prepare activity parameters similar to what the API would expect
-            activity_details = {
+        # Prepare activity parameters similar to what the API would expect
+        activity_details = {
                 "receiverUsername": related_citizen_username,
                 "content": cleaned_specific_message,
                 "messageType": "stratagem_smear_delivery", # New type to distinguish
