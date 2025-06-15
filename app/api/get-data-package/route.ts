@@ -862,7 +862,14 @@ function convertDataPackageToMarkdown(dataPackage: any, citizenUsername: string 
       locationDescription = "Unknown location";
     }
     
-    md += `- **position**: ${locationDescription}\n`;
+    // Add coordinates for debugging if needed
+    const positionDebug = dataPackage.citizen.position.lat && dataPackage.citizen.position.lng 
+      ? ` (${dataPackage.citizen.position.lat.toFixed(6)}, ${dataPackage.citizen.position.lng.toFixed(6)})`
+      : '';
+    
+    md += `- **position**: ${locationDescription}${positionDebug}\n`;
+  } else {
+    md += `- **position**: Not available\n`;
   }
   if (dataPackage.citizen?.corePersonality) {
     let personalityDisplay = String(dataPackage.citizen.corePersonality); // Fallback
@@ -1306,25 +1313,66 @@ export async function GET(request: Request) {
       }
     }
     
-    // Find building at citizen position using API
+    // Find building at citizen position using API and direct building checks
     let buildingAtPosition = null;
+    
+    // First check if the citizen is at their workplace or home
     if (citizenPosition && citizenPosition.lat && citizenPosition.lng) {
-      try {
-        // Use the buildings API to find any building at this exact position
-        const buildingQueryUrl = `/api/buildings?Position={"lat":${citizenPosition.lat},"lng":${citizenPosition.lng}}`;
-        const buildingResponse = await fetch(buildingQueryUrl);
-        
-        if (buildingResponse.ok) {
-          const buildingData = await buildingResponse.json();
-          if (buildingData.success && buildingData.buildings && buildingData.buildings.length > 0) {
-            const buildingAtPos = buildingData.buildings[0];
-            buildingAtPosition = buildingAtPos.name || buildingAtPos.type;
-            console.log(`Found building at citizen position: ${buildingAtPosition}`);
+      // Check workplace
+      if (workplaceBuildingRecord && workplaceBuildingRecord.fields.Position) {
+        try {
+          const workplacePosition = JSON.parse(workplaceBuildingRecord.fields.Position as string);
+          if (workplacePosition.lat === citizenPosition.lat && workplacePosition.lng === citizenPosition.lng) {
+            buildingAtPosition = workplaceBuildingRecord.fields.Name || workplaceBuildingRecord.fields.Type;
+            console.log(`Citizen is at workplace: ${buildingAtPosition}`);
           }
+        } catch (e) {
+          console.warn(`Could not parse workplace position: ${workplaceBuildingRecord.fields.Position}`);
         }
-      } catch (error) {
-        console.error('Error fetching building at position:', error);
       }
+      
+      // Check home if not at workplace
+      if (!buildingAtPosition && homeBuildingRecord && homeBuildingRecord.fields.Position) {
+        try {
+          const homePosition = JSON.parse(homeBuildingRecord.fields.Position as string);
+          if (homePosition.lat === citizenPosition.lat && homePosition.lng === citizenPosition.lng) {
+            buildingAtPosition = homeBuildingRecord.fields.Name || homeBuildingRecord.fields.Type;
+            console.log(`Citizen is at home: ${buildingAtPosition}`);
+          }
+        } catch (e) {
+          console.warn(`Could not parse home position: ${homeBuildingRecord.fields.Position}`);
+        }
+      }
+      
+      // If still not found, try the API
+      if (!buildingAtPosition) {
+        try {
+          // Use the full URL with baseUrl for the API call
+          const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000';
+          const positionJson = JSON.stringify(citizenPosition);
+          const buildingQueryUrl = `${baseUrl}/api/buildings?Position=${encodeURIComponent(positionJson)}`;
+          console.log(`Querying buildings at position: ${buildingQueryUrl}`);
+          
+          const buildingResponse = await fetch(buildingQueryUrl);
+          
+          if (buildingResponse.ok) {
+            const buildingData = await buildingResponse.json();
+            if (buildingData.success && buildingData.buildings && buildingData.buildings.length > 0) {
+              const buildingAtPos = buildingData.buildings[0];
+              buildingAtPosition = buildingAtPos.name || buildingAtPos.type;
+              console.log(`Found building at citizen position via API: ${buildingAtPosition}`);
+            } else {
+              console.log(`No buildings found at position via API: ${positionJson}`);
+            }
+          } else {
+            console.error(`Building API response not OK: ${buildingResponse.status}`);
+          }
+        } catch (error) {
+          console.error('Error fetching building at position:', error);
+        }
+      }
+    } else {
+      console.log(`Invalid citizen position: ${JSON.stringify(citizenPosition)}`);
     }
 
     const dataPackage = {
