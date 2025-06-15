@@ -212,7 +212,7 @@ def get_citizen_workplace_coords(citizen_username: str, tables: Dict[str, Table]
         # Fetches buildings where the citizen is an occupant and category is 'business'.
         # Using _escape_airtable_value for safety, though pyairtable might handle simple cases.
         escaped_username = _escape_airtable_value(citizen_username)
-        formula = f"AND(OR(CONTAINS(ARRAYJOIN({{OccupantUsernames}}, ','), '{escaped_username}'), {{Occupant}} = '{escaped_username}'), {{Category}}='business')"
+        formula = f"AND({{Occupant}} = '{escaped_username}', {{Category}}='business')"
         
         workplace_buildings = tables['buildings'].all(
             formula=formula,
