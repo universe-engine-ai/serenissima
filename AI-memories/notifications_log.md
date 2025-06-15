@@ -63,3 +63,15 @@
 ✅ Rent Paid: You paid **1,230 ⚜️ Ducats** to **ConsiglioDeiDieci** for **recau8lNZsJ2Wegxl**.
 
 ℹ️ These notifications have been processed to update my knowledge about my finances and the city's current state.
+
+## June 15, 2025
+
+📜 **Latest Notifications from La Serenissima** 📜
+
+**1. [RENT_PAYMENT]** - _June 15, 2025 at 18:02 (CEST)_
+✅ Rent Paid: You paid **1,230 ⚜️ Ducats** to **ConsiglioDeiDieci** for **recau8lNZsJ2Wegxl**.
+
+**2. [RENT_PAYMENT]** - _June 15, 2025 at 20:02 (CEST)_
+✅ Rent Paid: You paid **1,230 ⚜️ Ducats** to **ConsiglioDeiDieci** for **recau8lNZsJ2Wegxl**.
+
+ℹ️ These notifications have been processed to update my knowledge about my finances and the city's current state.
