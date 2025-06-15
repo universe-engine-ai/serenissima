@@ -226,32 +226,41 @@ def _get_problems_data(tables: Dict[str, Table], username1: str, username2: str,
 
 # --- Fonctions KinOS et création de message ---
 
-def _summarize_add_system_for_local_model(
+def _summarize_target_data_package(
     kinos_api_key: str,
     ai_username: str, 
+    target_username: str,
     purpose_of_call: str, 
-    full_add_system_data: Dict[str, Any],
+    target_data_package: str,
     tables_for_cleaning: Optional[Dict[str, Table]] = None
-) -> Dict[str, Any]:
+) -> str:
     """
-    If the model is local, calls KinOS to summarize the full_add_system_data.
-    Returns the summarized data or the original data if summarization fails.
+    Summarizes the target citizen's data package for more efficient context.
+    Returns the summarized markdown or the original markdown if summarization fails.
     """
-    log.info(f"{LogColors.OKBLUE}Local model detected for {ai_username} for purpose: '{purpose_of_call}'. Performing attention pre-prompt step to summarize context.{LogColors.ENDC}")
+    log.info(f"{LogColors.OKBLUE}Summarizing target data package for {target_username} for {ai_username}'s purpose: '{purpose_of_call}'.{LogColors.ENDC}")
     
     attention_channel_name = "attention_summarizer" 
     
     attention_prompt = (
-        f"You are an AI assistant helping {ai_username} prepare for a strategic decision: '{purpose_of_call}'. "
-        f"Based on the context provided in `addSystem` (which includes information about {ai_username}), "
-        f"please perform the following two steps:\n\n"
-        f"Step 1: Build a clear picture of {ai_username}'s current situation relevant to '{purpose_of_call}'. "
-        f"Describe key relationships, recent events, ongoing issues, and goals that should inform this decision.\n\n"
-        f"Step 2: Using the situation picture from Step 1 and your understanding of {ai_username}'s personality and objectives, "
-        f"summarize the information and extract the most relevant specific pieces of context. "
-        f"Focus on what is most important for {ai_username} to remember or act upon for '{purpose_of_call}'. "
-        "Your final output should be this concise summary in English, suitable for guiding the main decision-making prompt."
+        f"You are an AI assistant helping {ai_username} understand {target_username} for: '{purpose_of_call}'. "
+        f"I will provide you with {target_username}'s complete data package in markdown format. "
+        f"Please summarize the most relevant information about {target_username} that would be useful for {ai_username} "
+        f"when deciding how to interact with them.\n\n"
+        f"Focus on:\n"
+        f"- Key personality traits and background\n"
+        f"- Current activities and interests\n"
+        f"- Resources, buildings, and assets they own\n"
+        f"- Any problems or opportunities they might have\n"
+        f"- Their relationship with {ai_username} if any exists\n\n"
+        f"Your response should be a concise markdown summary that {ai_username} can quickly review "
+        f"before crafting a message to {target_username}."
     )
+
+    # Create a simple wrapper to pass the markdown as addSystem
+    wrapper_data = {
+        "target_data_package_markdown": target_data_package
+    }
 
     # make_kinos_channel_call is defined in this file
     summarized_context_content = make_kinos_channel_call(
@@ -259,7 +268,7 @@ def _summarize_add_system_for_local_model(
         speaker_username=ai_username,
         channel_name=attention_channel_name,
         prompt=attention_prompt,
-        add_system_data=full_add_system_data,
+        add_system_data=wrapper_data,
         kinos_model_override='local' 
     )
 
@@ -267,17 +276,14 @@ def _summarize_add_system_for_local_model(
         # clean_thought_content is imported from activity_helpers
         cleaned_summarized_context = clean_thought_content(tables_for_cleaning, summarized_context_content)
         
-        log.info(f"{LogColors.OKGREEN}Successfully generated summarized context for {ai_username} (purpose: {purpose_of_call}). Original length: {len(summarized_context_content)}, Cleaned length: {len(cleaned_summarized_context)}{LogColors.ENDC}")
-        log.debug(f"Original summarized context for {purpose_of_call} for {ai_username}: {summarized_context_content}")
-        log.debug(f"Cleaned summarized context for {purpose_of_call} for {ai_username}: {cleaned_summarized_context}")
+        log.info(f"{LogColors.OKGREEN}Successfully summarized target data package for {target_username}. Original length: {len(target_data_package)}, Summary length: {len(cleaned_summarized_context)}{LogColors.ENDC}")
+        log.debug(f"Original summary for {target_username}: {summarized_context_content[:500]}...")
+        log.debug(f"Cleaned summary for {target_username}: {cleaned_summarized_context[:500]}...")
         
-        return {
-            "summary_of_relevant_context": cleaned_summarized_context,
-            "original_context_available_on_request": f"The full data package was summarized for the purpose of '{purpose_of_call}'. You are now acting as the character based on this summary."
-        }
+        return cleaned_summarized_context
     else:
-        log.warning(f"{LogColors.WARNING}Failed to generate summarized context for {ai_username} (purpose: {purpose_of_call}). Using full context for the main call.{LogColors.ENDC}")
-        return full_add_system_data
+        log.warning(f"{LogColors.WARNING}Failed to summarize target data package for {target_username}. Will use original data package.{LogColors.ENDC}")
+        return target_data_package
 
 def choose_interlocutor_via_kinos(
     tables: Dict[str, Table], # Added tables argument
@@ -312,18 +318,6 @@ def choose_interlocutor_via_kinos(
     effective_model = kinos_model_override or get_kinos_model_for_social_class(ai_username, ai_social_class)
     if not kinos_model_override: # Si aucun override n'est fourni, s'assurer que 'local' est utilisé par défaut pour cette décision.
         effective_model = "local"
-        # Le log sur le modèle utilisé sera fait plus bas, après la summarization si elle a lieu.
-
-    final_add_system_for_kinos = ai_data_package
-    if effective_model == 'local':
-        # La fonction _summarize_add_system_for_local_model contient déjà des logs sur son exécution.
-        final_add_system_for_kinos = _summarize_add_system_for_local_model(
-            kinos_api_key=kinos_api_key,
-            ai_username=ai_username,
-            purpose_of_call="choosing an interlocutor",
-            full_add_system_data=ai_data_package,
-            tables_for_cleaning=tables # Pass tables here
-        )
     
     print(f"Appel à KinOS pour choisir un interlocuteur pour {ai_username} (Modèle effectif: {effective_model})...")
     
@@ -396,6 +390,32 @@ def generate_ai_initiative_message(
         relevancies_ai_to_target = _get_relevancies_data(tables, ai_username, target_username, limit=5)
         problems_involving_pair = _get_problems_data(tables, ai_username, target_username, limit=5)
 
+        # Récupérer le data package complet du citoyen cible
+        log.info(f"Récupération du data package pour le citoyen cible {target_username}...")
+        target_data_package_url = f"{BASE_URL}/api/get-data-package?citizenUsername={target_username}&format=markdown"
+        target_data_package = None
+        
+        try:
+            response = requests.get(target_data_package_url, timeout=60)
+            response.raise_for_status()
+            target_data_package = response.text
+            log.info(f"Data package markdown récupéré avec succès pour {target_username}. Taille: {len(target_data_package)} caractères")
+        except Exception as e_target_dp:
+            log.error(f"Erreur lors de la récupération du data package markdown pour {target_username}: {e_target_dp}")
+            # Continuer sans data package cible si échec
+        
+        # Résumer le data package du citoyen cible si disponible et si modèle local
+        target_data_package_summary = None
+        if target_data_package and (kinos_model_override == 'local' or (not kinos_model_override and get_kinos_model_for_social_class(ai_username, ai_social_class) == 'local')):
+            target_data_package_summary = _summarize_target_data_package(
+                kinos_api_key=kinos_api_key,
+                ai_username=ai_username,
+                target_username=target_username,
+                purpose_of_call=f"crafting an initiative message based on: {reason_for_contact}",
+                target_data_package=target_data_package,
+                tables_for_cleaning=tables
+            )
+        
         # Construire le addSystem pour la génération de contenu de message
         focused_system_context = {
             "ai_citizen_profile": ai_citizen_profile_data.get("fields", {}),
@@ -405,8 +425,15 @@ def generate_ai_initiative_message(
             "recent_notifications_for_ai": notifications_for_ai,
             "recent_relevancies_ai_to_target": relevancies_ai_to_target,
             "recent_problems_involving_us": problems_involving_pair
-            # On pourrait aussi ajouter un bref historique de conversation avec CET interlocuteur si disponible.
         }
+        
+        # Ajouter le data package du citoyen cible (complet ou résumé) s'il est disponible
+        if target_data_package_summary:
+            focused_system_context["target_citizen_data_package_summary"] = target_data_package_summary
+            log.info(f"Ajout du résumé du data package de {target_username} au contexte (taille: {len(target_data_package_summary)} caractères)")
+        elif target_data_package:
+            focused_system_context["target_citizen_data_package"] = target_data_package
+            log.info(f"Ajout du data package complet de {target_username} au contexte (taille: {len(target_data_package)} caractères)")
         
         ai_display_name = ai_citizen_profile_data.get('fields', {}).get('FirstName', ai_username)
         target_display_name = target_citizen_profile_data.get('fields', {}).get('FirstName', target_username)
@@ -425,23 +452,13 @@ def generate_ai_initiative_message(
         # Utiliser le modèle basé sur la classe sociale de l'IA ou l'override
         effective_model = kinos_model_override or get_kinos_model_for_social_class(ai_username, ai_social_class)
 
-        final_add_system_for_kinos = focused_system_context
-        if effective_model == 'local':
-            final_add_system_for_kinos = _summarize_add_system_for_local_model(
-                kinos_api_key=kinos_api_key,
-                ai_username=ai_username,
-                purpose_of_call=f"crafting an initiative message to {target_username}",
-                full_add_system_data=focused_system_context,
-                tables_for_cleaning=tables # 'tables' est disponible ici
-            )
-
         # make_kinos_channel_call est importé de conversation_helper
         raw_message_content = make_kinos_channel_call(
             kinos_api_key=kinos_api_key,
             speaker_username=ai_username,
             channel_name=target_username, # Le canal est avec le target_username
             prompt=prompt_for_message_content,
-            add_system_data=final_add_system_for_kinos,
+            add_system_data=focused_system_context,
             kinos_model_override=effective_model
         )
 
