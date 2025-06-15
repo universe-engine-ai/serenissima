@@ -77,7 +77,7 @@ def process_daily_reflection(
         if api_base_url:
             data_package_url = f"{api_base_url}/api/get-data-package?citizenUsername={citizen_username}" # Defaults to Markdown
             try:
-                pkg_response = requests.get(data_package_url, timeout=15)
+                pkg_response = requests.get(data_package_url, timeout=150)
                 if pkg_response.ok:
                     data_package_markdown_str = pkg_response.text # Get Markdown content
                     log.info(f"  Successfully fetched Markdown data package for {citizen_username} for daily reflection. Length: {len(data_package_markdown_str)}")
@@ -117,7 +117,7 @@ def process_daily_reflection(
         log.info(f"  Making KinOS /messages call for daily reflection by {citizen_username} to {kinos_messages_url}")
         
         try:
-            kinos_response = requests.post(kinos_messages_url, json=kinos_payload_dict, timeout=180) # Increased timeout
+            kinos_response = requests.post(kinos_messages_url, json=kinos_payload_dict, timeout=150) # Increased timeout
             kinos_response.raise_for_status()
             
             kinos_response_data = kinos_response.json()
@@ -233,7 +233,7 @@ def process_theater_reflection(
         if api_base_url:
             data_package_url = f"{api_base_url}/api/get-data-package?citizenUsername={citizen_username}" # Defaults to Markdown
             try:
-                pkg_response = requests.get(data_package_url, timeout=15)
+                pkg_response = requests.get(data_package_url, timeout=150)
                 if pkg_response.ok:
                     data_package_markdown_str = pkg_response.text # Get Markdown content
                     log.info(f"  Successfully fetched Markdown data package for {citizen_username} for theater reflection. Length: {len(data_package_markdown_str)}")
@@ -975,23 +975,8 @@ def process_guided_reflection(
             "What long-term goals are you working toward in Venice?"
         ])
         
-        # Mix in shadow thoughts and religion thoughts for all social classes
-        # For Nobili and Cittadini, shadow thoughts are already included in their specific arrays
-        if social_class not in ["Nobili", "Cittadini"]:
-            # 30% chance to include shadow thoughts for other classes
-            if random.random() < 0.3:
-                selected_prompts = base_prompts + shadow_thoughts
-            # 25% chance to include religion thoughts for all classes
-            elif random.random() < 0.25:
-                selected_prompts = base_prompts + religion_thoughts
-            else:
-                selected_prompts = base_prompts
-        else:
-            # For Nobili and Cittadini, still give a chance for religion thoughts
-            if random.random() < 0.25:
-                selected_prompts = base_prompts + religion_thoughts
-            else:
-                selected_prompts = base_prompts
+
+        selected_prompts = base_prompts + shadow_thoughts + religion_thoughts
         
         # Select a random prompt
         import random
@@ -1178,7 +1163,7 @@ def process_continue_thought(
         if api_base_url:
             data_package_url = f"{api_base_url}/api/get-data-package?citizenUsername={citizen_username}" # Defaults to Markdown
             try:
-                pkg_response = requests.get(data_package_url, timeout=15)
+                pkg_response = requests.get(data_package_url, timeout=150)
                 if pkg_response.ok:
                     data_package_markdown_str = pkg_response.text # Get Markdown content
                     log.info(f"  Successfully fetched Markdown data package for {citizen_username} for thought continuation. Length: {len(data_package_markdown_str)}")
@@ -1318,7 +1303,7 @@ def process_unguided_reflection(
         if api_base_url:
             data_package_url = f"{api_base_url}/api/get-data-package?citizenUsername={citizen_username}" # Defaults to Markdown
             try:
-                pkg_response = requests.get(data_package_url, timeout=15)
+                pkg_response = requests.get(data_package_url, timeout=150)
                 if pkg_response.ok:
                     data_package_markdown_str = pkg_response.text # Get Markdown content
                     log.info(f"  Successfully fetched Markdown data package for {citizen_username} for unguided reflection. Length: {len(data_package_markdown_str)}")
