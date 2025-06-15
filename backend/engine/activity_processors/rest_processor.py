@@ -52,7 +52,35 @@ def process(
     }
     
     # Check if 'processes' table exists before creating process
-    if 'processes' in tables and tables['processes'] is not None:
+    from backend.engine.utils.process_helper import is_processes_table_available
+    
+    if not is_processes_table_available(tables):
+        log.error(f"{LogColors.FAIL}Cannot create daily reflection process for {citizen_username} - 'processes' table not available or is not properly initialized.{LogColors.ENDC}")
+        log.info(f"{LogColors.WARNING}Attempting to reinitialize tables to get a working processes table...{LogColors.ENDC}")
+        
+        # Try to reinitialize the tables
+        try:
+            from backend.engine.utils.activity_helpers import get_tables
+            new_tables = get_tables()
+            if is_processes_table_available(new_tables):
+                log.info(f"{LogColors.OKGREEN}Successfully reinitialized tables and found working 'processes' table. Attempting to create process with new tables.{LogColors.ENDC}")
+                process_record = create_process(
+                    tables=new_tables,
+                    process_type=PROCESS_TYPE_DAILY_REFLECTION,
+                    citizen_username=citizen_username,
+                    priority=5,  # Medium priority
+                    details=process_details,
+                    api_base_url=api_base_url
+                )
+                if process_record:
+                    log.info(f"{LogColors.OKGREEN}Successfully created daily reflection process for {citizen_username} after table reinitialization.{LogColors.ENDC}")
+                else:
+                    log.warning(f"{LogColors.WARNING}Failed to create daily reflection process for {citizen_username} even after table reinitialization.{LogColors.ENDC}")
+            else:
+                log.error(f"{LogColors.FAIL}Failed to get working 'processes' table even after reinitialization. Process creation failed.{LogColors.ENDC}")
+        except Exception as e_reinit:
+            log.error(f"{LogColors.FAIL}Error reinitializing tables: {e_reinit}{LogColors.ENDC}")
+    else:
         try:
             process_record = create_process(
                 tables=tables,
@@ -68,8 +96,6 @@ def process(
                 log.warning(f"{LogColors.WARNING}Failed to create daily reflection process for {citizen_username}.{LogColors.ENDC}")
         except Exception as e:
             log.error(f"{LogColors.FAIL}Error creating daily reflection process for {citizen_username}: {e}{LogColors.ENDC}")
-    else:
-        log.warning(f"{LogColors.WARNING}Cannot create daily reflection process for {citizen_username} - 'processes' table not available or is None.{LogColors.ENDC}")
 
     # The 'rest' activity itself is considered successful by its completion.
     # KinOS reflection is an add-on that will be processed asynchronously.

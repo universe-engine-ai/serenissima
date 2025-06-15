@@ -71,14 +71,66 @@ def create_process(
         
         # Check if 'processes' table exists and is properly initialized in the tables dictionary
         if 'processes' not in tables:
-            log.warning(f"{LogColors.WARNING}Table 'processes' not found in tables dictionary. Available tables: {list(tables.keys())}{LogColors.ENDC}")
-            log.info(f"{LogColors.OKBLUE}Process {process_id} creation skipped due to missing 'processes' table.{LogColors.ENDC}")
-            return None
+            log.error(f"{LogColors.FAIL}Table 'processes' not found in tables dictionary. Available tables: {list(tables.keys())}{LogColors.ENDC}")
+            log.error(f"{LogColors.FAIL}Process {process_id} creation failed due to missing 'processes' table. This is a critical error that needs to be fixed.{LogColors.ENDC}")
+            
+            # Try to reinitialize the tables to see if we can get the processes table
+            try:
+                from backend.engine.utils.activity_helpers import get_tables
+                new_tables = get_tables()
+                if 'processes' in new_tables and new_tables['processes'] is not None:
+                    log.info(f"{LogColors.OKGREEN}Successfully reinitialized tables and found 'processes' table. Attempting to create process with new tables.{LogColors.ENDC}")
+                    process_record = new_tables['processes'].create(payload)
+                    log.info(f"{LogColors.OKGREEN}Successfully created process {process_id} after table reinitialization{LogColors.ENDC}")
+                    return process_record
+                else:
+                    log.error(f"{LogColors.FAIL}Failed to get 'processes' table even after reinitialization. Process creation failed.{LogColors.ENDC}")
+                    return None
+            except Exception as e_reinit:
+                log.error(f"{LogColors.FAIL}Error reinitializing tables: {e_reinit}{LogColors.ENDC}")
+                return None
         
         if tables['processes'] is None:
-            log.warning(f"{LogColors.WARNING}Table 'processes' is None in tables dictionary.{LogColors.ENDC}")
-            log.info(f"{LogColors.OKBLUE}Process {process_id} creation skipped due to 'processes' table being None.{LogColors.ENDC}")
-            return None
+            log.error(f"{LogColors.FAIL}Table 'processes' is None in tables dictionary. This is a critical error that needs to be fixed.{LogColors.ENDC}")
+            
+            # Try to reinitialize the tables to see if we can get a non-None processes table
+            try:
+                from backend.engine.utils.activity_helpers import get_tables
+                new_tables = get_tables()
+                if 'processes' in new_tables and new_tables['processes'] is not None:
+                    log.info(f"{LogColors.OKGREEN}Successfully reinitialized tables and found non-None 'processes' table. Attempting to create process with new tables.{LogColors.ENDC}")
+                    process_record = new_tables['processes'].create(payload)
+                    log.info(f"{LogColors.OKGREEN}Successfully created process {process_id} after table reinitialization{LogColors.ENDC}")
+                    return process_record
+                else:
+                    log.error(f"{LogColors.FAIL}Failed to get non-None 'processes' table even after reinitialization. Process creation failed.{LogColors.ENDC}")
+                    return None
+            except Exception as e_reinit:
+                log.error(f"{LogColors.FAIL}Error reinitializing tables: {e_reinit}{LogColors.ENDC}")
+                return None
+            
+        # Verify the processes table is callable
+        try:
+            # Test if the table object is callable by trying a simple operation
+            test_result = tables['processes'].all(max_records=1)
+            log.debug(f"Processes table test successful, found {len(test_result)} records")
+        except Exception as e_test:
+            log.error(f"{LogColors.FAIL}Processes table exists but is not properly initialized or callable: {e_test}{LogColors.ENDC}")
+            # Try to reinitialize just the processes table
+            try:
+                from backend.engine.utils.activity_helpers import get_tables
+                new_tables = get_tables()
+                if 'processes' in new_tables and new_tables['processes'] is not None:
+                    log.info(f"{LogColors.OKGREEN}Successfully reinitialized processes table. Attempting to create process with new table.{LogColors.ENDC}")
+                    process_record = new_tables['processes'].create(payload)
+                    log.info(f"{LogColors.OKGREEN}Successfully created process {process_id} after table reinitialization{LogColors.ENDC}")
+                    return process_record
+                else:
+                    log.error(f"{LogColors.FAIL}Failed to get working 'processes' table even after reinitialization. Process creation failed.{LogColors.ENDC}")
+                    return None
+            except Exception as e_reinit:
+                log.error(f"{LogColors.FAIL}Error reinitializing processes table: {e_reinit}{LogColors.ENDC}")
+                return None
             
         process_record = tables['processes'].create(payload)
         log.info(f"{LogColors.OKGREEN}Successfully created process {process_id}{LogColors.ENDC}")
@@ -87,6 +139,19 @@ def create_process(
         log.error(f"{LogColors.FAIL}Error creating process {process_id}: {e}{LogColors.ENDC}")
         import traceback
         log.error(traceback.format_exc())
+        
+        # Try one more time with a fresh table initialization as a last resort
+        try:
+            log.info(f"{LogColors.WARNING}Attempting one final retry with fresh table initialization...{LogColors.ENDC}")
+            from backend.engine.utils.activity_helpers import get_tables
+            fresh_tables = get_tables()
+            if 'processes' in fresh_tables and fresh_tables['processes'] is not None:
+                process_record = fresh_tables['processes'].create(payload)
+                log.info(f"{LogColors.OKGREEN}Successfully created process {process_id} on final retry{LogColors.ENDC}")
+                return process_record
+        except Exception as e_final:
+            log.error(f"{LogColors.FAIL}Final retry failed: {e_final}{LogColors.ENDC}")
+        
         return None
 
 def get_next_pending_process(tables: Dict[str, Any]) -> Optional[Dict[str, Any]]:
@@ -155,6 +220,33 @@ def update_process_status(
         log.error(traceback.format_exc())
         return False
 
+def is_processes_table_available(tables: Dict[str, Any]) -> bool:
+    """
+    Checks if the processes table is available and properly initialized.
+    
+    Args:
+        tables: Dictionary of Airtable tables
+        
+    Returns:
+        True if the processes table is available and properly initialized, False otherwise
+    """
+    if 'processes' not in tables:
+        log.error(f"{LogColors.FAIL}Table 'processes' not found in tables dictionary. Available tables: {list(tables.keys())}{LogColors.ENDC}")
+        return False
+    
+    if tables['processes'] is None:
+        log.error(f"{LogColors.FAIL}Table 'processes' is None in tables dictionary.{LogColors.ENDC}")
+        return False
+    
+    try:
+        # Test if the table object is callable by trying a simple operation
+        test_result = tables['processes'].all(max_records=1)
+        log.info(f"{LogColors.OKGREEN}Processes table test successful, found {len(test_result)} records{LogColors.ENDC}")
+        return True
+    except Exception as e_test:
+        log.error(f"{LogColors.FAIL}Processes table exists but is not properly initialized or callable: {e_test}{LogColors.ENDC}")
+        return False
+
 def get_pending_processes_count(tables: Dict[str, Any]) -> int:
     """
     Gets the count of pending processes.
@@ -165,6 +257,10 @@ def get_pending_processes_count(tables: Dict[str, Any]) -> int:
     Returns:
         Count of pending processes
     """
+    if not is_processes_table_available(tables):
+        log.error(f"{LogColors.FAIL}Cannot get pending processes count because processes table is not available{LogColors.ENDC}")
+        return 0
+        
     try:
         formula = f"{{Status}}='{PROCESS_STATUS_PENDING}'"
         processes = tables['processes'].all(formula=formula)
