@@ -370,7 +370,18 @@ def process(
                 "recipientUsername": related_citizen_username,
                 "generateMessageOnDelivery": True,
                 "relationshipWithTarget": _rh_get_relationship_data(tables, target_citizen_username, related_citizen_username),
-                "relationshipWithRecipient": _rh_get_relationship_data(tables, executed_by_username, related_citizen_username)
+                "relationshipWithRecipient": _rh_get_relationship_data(tables, executed_by_username, related_citizen_username),
+                "customPrompt": (
+                    f"[SYSTEM]You are {executed_by_username}, a citizen of Venice. "
+                    f"Your objective is to damage the reputation of {target_display_name} in the eyes of {related_citizen_username}. "
+                    f"You have a core attack narrative about {target_display_name} (see `additional_message_data.coreAttackNarrative` in addSystem). "
+                    f"Using that narrative as a foundation, and considering all the contextual information in addSystem, "
+                    f"craft a persuasive message to {related_citizen_username} that subtly damages {target_display_name}'s reputation. "
+                    f"Your message should be conversational, persuasive, and tailored to your relationship with {related_citizen_username}. "
+                    f"Focus on the assault angle: '{assault_angle_from_notes or 'any effective angle'}'. "
+                    f"Your response should be direct speech TO {related_citizen_username}, in plain text in English.[/SYSTEM]\n\n"
+                    f"{executed_by_username} (you) to {related_citizen_username} about {target_display_name}: "
+                )
             }
         }
         

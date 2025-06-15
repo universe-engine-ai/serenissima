@@ -231,7 +231,7 @@ def _process_message_delivery(
             listener_username=receiver_username,
             api_base_url=api_base_url,
             interaction_mode="conversation_opener",
-            message=content, # Pass the original content as the message to be sent
+            message=add_message.get("customPrompt") if add_message and add_message.get("generateMessageOnDelivery") else content, # Use customPrompt if available
             target_citizen_username_for_trust_impact=target_citizen_username_for_trust_impact, # New
             add_message=add_message # Pass addMessage to conversation helper
         )

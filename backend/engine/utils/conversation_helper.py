@@ -717,31 +717,6 @@ def generate_conversation_turn(
     if add_message:
         add_system_payload["additional_message_data"] = add_message
         log.info(f"Including additional message data in addSystem payload: {list(add_message.keys())}")
-        
-        # Si c'est un message de stratagème reputation_assault avec generateMessageOnDelivery=True,
-        # on modifie le prompt pour générer un message personnalisé
-        if add_message.get("stratagemType") == "reputation_assault" and add_message.get("generateMessageOnDelivery"):
-            if interaction_mode == "conversation_opener":
-                log.info(f"Detected reputation_assault stratagem with generateMessageOnDelivery=True. Customizing prompt.")
-                target_display_name = add_message.get("targetDisplayName", add_message.get("originalTarget", "the target"))
-                recipient_username = add_message.get("recipientUsername", listener_username)
-                assault_angle = add_message.get("assaultAngle", "any effective angle")
-                core_narrative = add_message.get("coreAttackNarrative", "")
-                
-                # Remplacer le prompt standard par un prompt spécifique pour le stratagème
-                system_explanation = (
-                    f"[SYSTEM]You are {speaker_profile.get('FirstName', speaker_username)}, a {speaker_profile.get('SocialClass', 'citizen')} of Venice. "
-                    f"You are both currently {location_description_for_prompt}. You see {listener_profile.get('FirstName', listener_username)} (Social Class: {listener_profile.get('SocialClass', 'unknown')}) here. "
-                    f"Your objective is to damage the reputation of {target_display_name} in the eyes of {listener_profile.get('FirstName', listener_username)}. "
-                    f"You have a core attack narrative about {target_display_name} (see `additional_message_data.coreAttackNarrative` in addSystem). "
-                    f"Using that narrative as a foundation, and considering all the contextual information in addSystem, "
-                    f"craft a persuasive message to {listener_profile.get('FirstName', listener_username)} that subtly damages {target_display_name}'s reputation. "
-                    f"Your message should be conversational, persuasive, and tailored to your relationship with {listener_profile.get('FirstName', listener_username)}. "
-                    f"Focus on the assault angle: '{assault_angle}'. "
-                    f"Your response should be direct speech TO {listener_profile.get('FirstName', listener_username)}, in plain text in English.[/SYSTEM]\n\n"
-                )
-                
-                prompt = system_explanation + f"{speaker_profile.get('FirstName', speaker_username)} (you) to {listener_profile.get('FirstName', listener_username)} about {target_display_name}: "
 
     # 4. Construct KinOS prompt
     # location_description_for_prompt is now set above.
