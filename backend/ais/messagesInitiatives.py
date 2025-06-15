@@ -577,6 +577,15 @@ def call_try_create_activity_api(
     if dry_run:
         print(f"[DRY RUN] Would call /api/activities/try-create for {citizen_username} with type '{activity_type}' and params: {json.dumps(activity_parameters)}")
         return True
+        
+    # Vérification des paramètres requis pour send_message
+    if activity_type == "send_message":
+        if not activity_parameters.get("receiverUsername"):
+            print(f"Erreur: Paramètre 'receiverUsername' manquant pour l'activité send_message")
+            return False
+        if not activity_parameters.get("content"):
+            print(f"Erreur: Paramètre 'content' manquant pour l'activité send_message")
+            return False
 
     api_url = f"{BASE_URL}/api/activities/try-create" # BASE_URL is defined at the top
     payload = {
@@ -587,6 +596,7 @@ def call_try_create_activity_api(
     headers = {"Content-Type": "application/json"}
     
     try:
+        print(f"Envoi de la requête à {api_url} avec payload: {json.dumps(payload)[:200]}...")
         response = requests.post(api_url, headers=headers, json=payload, timeout=30)
         response.raise_for_status()
         response_data = response.json()
@@ -655,6 +665,11 @@ def process_ai_message_initiatives(dry_run: bool = False, citizen1_arg: Optional
             if message_content:
                 sorted_usernames_for_channel_targeted = sorted([ai_username, target_username])
                 channel_name_targeted = f"{sorted_usernames_for_channel_targeted[0]}_{sorted_usernames_for_channel_targeted[1]}"
+                # Vérifier que les paramètres requis sont présents
+                if not target_username or not message_content:
+                    print(f"    Erreur: Paramètres requis manquants pour send_message ciblé. Target: {target_username}, Content length: {len(message_content) if message_content else 0}")
+                    continue
+                            
                 activity_params = {
                     "receiverUsername": target_username,
                     "content": message_content,
@@ -767,7 +782,12 @@ def process_ai_message_initiatives(dry_run: bool = False, citizen1_arg: Optional
                     if message_content:
                         sorted_usernames_for_channel_initiative = sorted([ai_username, target_username])
                         channel_name_initiative = f"{sorted_usernames_for_channel_initiative[0]}_{sorted_usernames_for_channel_initiative[1]}"
-                        
+                            
+                        # Vérifier que les paramètres requis sont présents
+                        if not target_username or not message_content:
+                            print(f"    Erreur: Paramètres requis manquants pour send_message. Target: {target_username}, Content length: {len(message_content) if message_content else 0}")
+                            continue
+                                
                         activity_params = {
                             "receiverUsername": target_username,
                             "content": message_content,
