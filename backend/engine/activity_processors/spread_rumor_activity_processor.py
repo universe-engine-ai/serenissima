@@ -108,47 +108,11 @@ def process(
         log.error(f"{LogColors.FAIL}Erreur lors de l'extraction des détails de la rumeur depuis les notes de {activity_guid}: {e}{LogColors.ENDC}")
         return False
 
-    # Si target_citizen_gossip ou gossip_content sont manquants, on les génère dynamiquement
-    if not target_citizen_gossip or not gossip_content:
-        log.info(f"{LogColors.OKBLUE}Détails de la rumeur incomplets dans {activity_guid}. Génération dynamique...{LogColors.ENDC}")
-        
-        # Trouver une cible aléatoire si non spécifiée
-        if not target_citizen_gossip:
-            try:
-                # Exclure l'exécuteur lui-même
-                potential_targets = tables['citizens'].all(
-                    formula=f"AND({{Username}}!='{_escape_airtable_value(executor_username)}', {{IsAI}}=TRUE())"
-                )
-                if potential_targets:
-                    import random
-                    random_target = random.choice(potential_targets)
-                    target_citizen_gossip = random_target['fields'].get('Username')
-                    log.info(f"{LogColors.OKBLUE}Cible de rumeur générée dynamiquement: {target_citizen_gossip}{LogColors.ENDC}")
-                else:
-                    log.error(f"{LogColors.FAIL}Impossible de trouver une cible pour la rumeur dans {activity_guid}.{LogColors.ENDC}")
-                    return False
-            except Exception as e_target:
-                log.error(f"{LogColors.FAIL}Erreur lors de la génération d'une cible pour la rumeur: {e_target}{LogColors.ENDC}")
-                return False
-        
-        # Générer un contenu de rumeur si non spécifié
-        if not gossip_content:
-            # Contenu générique de rumeur
-            generic_rumors = [
-                "they've been secretly meeting with members of the Council of Ten",
-                "they're planning to leave Venice soon",
-                "they've been seen with suspicious foreigners near the docks",
-                "they're in serious debt to some powerful people",
-                "they've been selling goods without proper permits",
-                "they've been spreading false information about market prices",
-                "they've been seen entering the Doge's Palace at unusual hours",
-                "they're hoarding resources during these difficult times",
-                "they've been making deals with rival merchants behind everyone's back",
-                "they've acquired a significant amount of wealth recently from unknown sources"
-            ]
-            import random
-            gossip_content = random.choice(generic_rumors)
-            log.info(f"{LogColors.OKBLUE}Contenu de rumeur généré dynamiquement: {gossip_content}{LogColors.ENDC}")
+    # Vérifier si les détails de la rumeur sont présents
+    # Pas besoin de cible spécifique, la rumeur peut être générale
+    # Le contenu sera généré par KinOS si non spécifié
+    if not gossip_content:
+        log.info(f"{LogColors.OKBLUE}Contenu de rumeur non spécifié dans {activity_guid}. KinOS générera le contenu.{LogColors.ENDC}")
 
     # Identifier les citoyens présents au lieu de la rumeur
     all_citizens_records = tables['citizens'].all(formula="{IsAI}=TRUE()") # Uniquement les IA pour l'instant
@@ -185,7 +149,7 @@ def process(
         # Vérifier que les profils des citoyens existent AVANT de préparer le message
         executor_record = get_citizen_record(tables, executor_username)
         listener_record = get_citizen_record(tables, listener_username)
-        target_record = get_citizen_record(tables, target_citizen_gossip)
+        target_record = None
         
         if not executor_record:
             log.warning(f"    Impossible de trouver le profil de l'exécuteur {executor_username}. Conversation ignorée.")
@@ -195,16 +159,27 @@ def process(
             log.warning(f"    Impossible de trouver le profil du destinataire {listener_username}. Conversation ignorée.")
             continue
             
-        if not target_record:
-            log.warning(f"    Impossible de trouver le profil de la cible {target_citizen_gossip}. Conversation ignorée.")
-            continue
+        # Vérifier le profil de la cible seulement si une cible est spécifiée
+        if target_citizen_gossip:
+            target_record = get_citizen_record(tables, target_citizen_gossip)
+            if not target_record:
+                log.warning(f"    Impossible de trouver le profil de la cible {target_citizen_gossip}. Conversation ignorée.")
+                continue
             
         # Maintenant que nous avons vérifié que tous les profils existent, nous pouvons préparer le message
         listener_firstname = listener_record['fields'].get('FirstName', listener_username)
-        target_firstname = target_record['fields'].get('FirstName', target_citizen_gossip)
         
         # Message direct que l'exécuteur va "dire"
-        rumor_initiation_message = f"Oh, {listener_firstname}, you won't believe what I've heard about {target_firstname}... They say that {gossip_content}"
+        if target_citizen_gossip and target_record:
+            target_firstname = target_record['fields'].get('FirstName', target_citizen_gossip)
+            rumor_initiation_message = f"Oh, {listener_firstname}, you won't believe what I've heard about {target_firstname}..."
+            if gossip_content:
+                rumor_initiation_message += f" They say that {gossip_content}"
+        else:
+            # Rumeur générale sans cible spécifique
+            rumor_initiation_message = f"Oh, {listener_firstname}, have you heard the latest rumor going around Venice?"
+            if gossip_content:
+                rumor_initiation_message += f" People are saying that {gossip_content}"
         
         log.info(f"  Tentative d'initiation de conversation de rumeur de {executor_username} à {listener_username} concernant {target_citizen_gossip}.")
         log.info(f"  Message d'initiation: \"{rumor_initiation_message[:100]}...\"")
@@ -226,10 +201,13 @@ def process(
                 log.error(f"    Impossible de trouver le profil du destinataire {listener_username} juste avant d'appeler generate_conversation_turn.")
                 continue
                 
-            target_check = get_citizen_record(tables, target_citizen_gossip)
-            if not target_check:
-                log.error(f"    Impossible de trouver le profil de la cible {target_citizen_gossip} juste avant d'appeler generate_conversation_turn.")
-                continue
+            # Vérifier le profil de la cible seulement si une cible est spécifiée
+            target_check = None
+            if target_citizen_gossip:
+                target_check = get_citizen_record(tables, target_citizen_gossip)
+                if not target_check:
+                    log.error(f"    Impossible de trouver le profil de la cible {target_citizen_gossip} juste avant d'appeler generate_conversation_turn.")
+                    continue
             
             log.info(f"    Tous les profils vérifiés avec succès. Appel de generate_conversation_turn...")
             
