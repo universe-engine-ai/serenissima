@@ -170,13 +170,10 @@ def get_next_pending_process(tables: Dict[str, Any]) -> Optional[Dict[str, Any]]
     """
     try:
         formula = f"{{Status}}='{PROCESS_STATUS_PENDING}'"
-        # Fix: Use dictionary format for sort parameter instead of tuples
+        # Fix: Use string format for sort parameter as expected by pyairtable
         processes = tables['processes'].all(
             formula=formula, 
-            sort=[
-                {"field": "Priority", "direction": "asc"}, 
-                {"field": "CreatedAt", "direction": "asc"}
-            ]
+            sort=["Priority", "CreatedAt"]
         )
         
         if processes:
