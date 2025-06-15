@@ -58,7 +58,7 @@ def select_random_citizen(tables):
     """
     try:
         # Get all AI citizens
-        citizens = tables['citizens'].all(formula="{IsAI}=1")
+        citizens = tables['citizens'].all()
         
         if not citizens:
             log_warning("No AI citizens found in the database")
@@ -124,12 +124,6 @@ def perform_thinking(citizen, tables):
         # TODO: Implement different thinking functions and select one randomly
         # For now, just log that we would be thinking
         log_info(f"Thinking process completed for {username}")
-        
-        # Update the LastActiveAt field to show the citizen has been processed
-        now = datetime.now(VENICE_TIMEZONE).isoformat()
-        tables['citizens'].update(citizen['id'], {
-            'LastActiveAt': now
-        })
         
         return True
     
@@ -207,12 +201,12 @@ def main():
                     perform_thinking(citizen, tables)
                 
                 # Sleep for a short time to avoid hammering the database
-                time.sleep(5)
+                time.sleep(60)
                 
             except Exception as loop_error:
                 log_error(f"Error in thinking loop: {str(loop_error)}")
                 traceback.print_exc()
-                time.sleep(30)  # Longer sleep on error
+                time.sleep(120)  # Longer sleep on error
     
     except KeyboardInterrupt:
         log_info("Thinking loop interrupted by user")
