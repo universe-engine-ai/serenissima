@@ -998,6 +998,170 @@ def process_guided_reflection(
         update_process_status(tables, process_id, PROCESS_STATUS_FAILED, {"error": str(e_kinos_setup)})
         return False
 
+def process_continue_thought(
+    tables: Dict[str, Any],
+    process_record: Dict[str, Any]
+) -> bool:
+    """
+    Processes a continuation of a previous thought for a citizen using KinOS.
+    This takes the citizen's most recent self-message and asks them to continue reflecting on it.
+    
+    Args:
+        tables: Dictionary of Airtable tables
+        process_record: The process record from the PROCESSES table
+        
+    Returns:
+        True if successful, False otherwise
+    """
+    process_id = process_record['id']
+    process_fields = process_record['fields']
+    citizen_username = process_fields.get('Citizen')
+    api_base_url = process_fields.get('ApiBaseUrl')
+    details_str = process_fields.get('Details')
+    
+    details = {}
+    if details_str:
+        try:
+            details = json.loads(details_str)
+        except json.JSONDecodeError:
+            log.warning(f"Could not parse Details JSON for process {process_id}: {details_str}")
+    
+    log.info(f"{LogColors.ACTIVITY}Processing thought continuation for {citizen_username} (Process ID: {process_id}).{LogColors.ENDC}")
+    
+    # Update process status to in progress
+    update_process_status(tables, process_id, PROCESS_STATUS_IN_PROGRESS)
+    
+    if not KINOS_API_KEY:
+        log.error(f"{LogColors.FAIL}KINOS_API_KEY not defined. Cannot trigger KinOS thought continuation.{LogColors.ENDC}")
+        update_process_status(tables, process_id, PROCESS_STATUS_FAILED, {"error": "KINOS_API_KEY not defined"})
+        return False
+    
+    try:
+        # Fetch the citizen's most recent self-message
+        most_recent_thought = None
+        try:
+            # Find the most recent message from the citizen to themselves
+            formula = f"AND({{Sender}}='{citizen_username}', {{Receiver}}='{citizen_username}')"
+            messages = tables['messages'].all(
+                formula=formula,
+                sort=[{"field": "CreatedAt", "direction": "desc"}],
+                maxRecords=1
+            )
+            
+            if messages and len(messages) > 0:
+                most_recent_thought = messages[0]
+                log.info(f"  Found most recent thought for {citizen_username} (ID: {most_recent_thought['id']})")
+            else:
+                log.warning(f"  No recent thoughts found for {citizen_username}. Cannot continue thought.")
+                update_process_status(tables, process_id, PROCESS_STATUS_FAILED, {"error": "No recent thoughts found"})
+                return False
+        except Exception as e_fetch:
+            log.error(f"  Error fetching recent thoughts for {citizen_username}: {e_fetch}")
+            update_process_status(tables, process_id, PROCESS_STATUS_FAILED, {"error": f"Error fetching thoughts: {str(e_fetch)}"})
+            return False
+        
+        # Get the content of the most recent thought
+        thought_content = most_recent_thought['fields'].get('Content', '')
+        thought_type = most_recent_thought['fields'].get('Type', 'unknown')
+        
+        # Fetch data package for context
+        data_package_markdown_str = None
+        if api_base_url:
+            data_package_url = f"{api_base_url}/api/get-data-package?citizenUsername={citizen_username}" # Defaults to Markdown
+            try:
+                pkg_response = requests.get(data_package_url, timeout=15)
+                if pkg_response.ok:
+                    data_package_markdown_str = pkg_response.text # Get Markdown content
+                    log.info(f"  Successfully fetched Markdown data package for {citizen_username} for thought continuation. Length: {len(data_package_markdown_str)}")
+                else:
+                    log.warning(f"  Failed to fetch Markdown data package for {citizen_username} (thought continuation): {pkg_response.status_code}")
+            except Exception as e_pkg_fetch:
+                log.error(f"  Error fetching Markdown data package for {citizen_username} (thought continuation): {e_pkg_fetch}")
+        
+        kinos_messages_url = f"{KINOS_API_URL}/v2/blueprints/{KINOS_BLUEPRINT}/kins/{citizen_username}/messages"
+        
+        # Create a prompt that asks the citizen to continue their previous thought
+        kinos_prompt_continue_thought = (
+            f"You are {citizen_username}, a citizen of Renaissance Venice. "
+            f"Your personal data, including recent activities and current status, is provided in `addSystem` under `citizen_context`.\n\n"
+            f"Earlier, you were reflecting on something and wrote the following:\n\n"
+            f"```\n{thought_content}\n```\n\n"
+            f"Please continue this line of thought. Expand on your previous reflections, explore new angles, or develop your ideas further. "
+            f"What additional insights or considerations come to mind as you revisit these thoughts?"
+        )
+
+        structured_add_system_payload: Dict[str, Any] = { "citizen_context": None }
+        if data_package_markdown_str:
+            structured_add_system_payload["citizen_context"] = data_package_markdown_str # Assign Markdown string directly
+        else:
+            structured_add_system_payload["citizen_context"] = "Citizen context data package was not available."
+
+        kinos_payload_dict: Dict[str, Any] = {
+            "message": kinos_prompt_continue_thought,
+            "model": "local", 
+            "addSystem": json.dumps(structured_add_system_payload)
+        }
+
+        log.info(f"  Making KinOS /messages call for thought continuation by {citizen_username} to {kinos_messages_url}")
+        
+        try:
+            kinos_response = requests.post(kinos_messages_url, json=kinos_payload_dict, timeout=180) # Increased timeout
+            kinos_response.raise_for_status()
+            
+            kinos_response_data = kinos_response.json()
+            log.info(f"  KinOS /messages response (thought continuation) for {citizen_username}: Status: {kinos_response_data.get('status')}, Response: {kinos_response_data.get('response')}")
+            
+            raw_continuation = kinos_response_data.get('response', f"No thought continuation from KinOS.")
+
+            # Persist the raw continuation as a self-message (thought) with readAt set to now
+            now_iso = datetime.now(pytz.UTC).isoformat()
+            persist_message(
+                tables=tables,
+                sender_username=citizen_username,
+                receiver_username=citizen_username,
+                content=raw_continuation,
+                message_type=f"kinos_thought_continuation_{thought_type}",
+                channel_name=citizen_username,
+                kinos_message_id=None,
+                target_citizen_username=None,
+                read_at=now_iso  # Mark as read immediately
+            )
+            log.info(f"  Thought continuation persisted as self-message for {citizen_username} (marked as read).")
+            
+            # Update process status to completed
+            update_process_status(
+                tables, 
+                process_id, 
+                PROCESS_STATUS_COMPLETED, 
+                {
+                    "continuation": raw_continuation, 
+                    "original_thought": thought_content,
+                    "original_thought_id": most_recent_thought['id'],
+                    "status": kinos_response_data.get('status', 'unknown')
+                }
+            )
+            
+            return True
+                
+        except requests.exceptions.RequestException as e_kinos:
+            log.error(f"  Error during KinOS /messages call (thought continuation) for {citizen_username}: {e_kinos}")
+            update_process_status(tables, process_id, PROCESS_STATUS_FAILED, {"error": str(e_kinos)})
+            return False
+        except json.JSONDecodeError as e_json_kinos:
+            kinos_response_text_preview = "N/A"
+            if 'kinos_response' in locals() and hasattr(kinos_response, 'text'):
+                kinos_response_text_preview = kinos_response.text[:200]
+            log.error(f"  JSON decode error for KinOS /messages response (thought continuation) for {citizen_username}: {e_json_kinos}. Response: {kinos_response_text_preview}")
+            update_process_status(tables, process_id, PROCESS_STATUS_FAILED, {"error": f"JSON decode error: {str(e_json_kinos)}"})
+            return False
+
+    except Exception as e_kinos_setup:
+        log.error(f"{LogColors.FAIL}Error processing thought continuation: {e_kinos_setup}{LogColors.ENDC}")
+        import traceback
+        log.error(traceback.format_exc())
+        update_process_status(tables, process_id, PROCESS_STATUS_FAILED, {"error": str(e_kinos_setup)})
+        return False
+
 def process_unguided_reflection(
     tables: Dict[str, Any],
     process_record: Dict[str, Any]

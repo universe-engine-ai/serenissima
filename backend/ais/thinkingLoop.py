@@ -167,6 +167,27 @@ def perform_thinking(citizen, tables):
             PROCESS_TYPE_UNGUIDED_REFLECTION
         ]
         
+        # Add a 10% chance to continue a previous thought
+        if random.random() < 0.10:  # 10% chance
+            # Import here to avoid circular imports
+            from backend.engine.utils.thinking_helper import process_continue_thought
+            
+            # Create a process for continuing a thought
+            process_record = create_process(
+                tables=tables,
+                process_type="continue_thought",
+                citizen_username=username,
+                priority=10,  # Lower priority than processes created by activity processors
+                api_base_url=os.getenv("API_BASE_URL", "http://localhost:3000")  # Pass API base URL
+            )
+            
+            if process_record:
+                log_info(f"Successfully created continue_thought process for {username}")
+                return True
+            else:
+                log_info(f"Failed to create continue_thought process for {username}, falling back to standard reflection")
+                # Fall through to standard reflection selection
+        
         # Select a random process type with equal probabilities (1/3 each)
         selected_process_type = random.choice(process_types)
                 
@@ -352,6 +373,9 @@ def main():
                     elif process_type == "unguided_reflection":
                         from backend.engine.utils.thinking_helper import process_unguided_reflection
                         process_unguided_reflection(tables, pending_process)
+                    elif process_type == "continue_thought":
+                        from backend.engine.utils.thinking_helper import process_continue_thought
+                        process_continue_thought(tables, pending_process)
                     elif process_type == "autonomous_run":
                         # TODO: Implement autonomous run processing
                         log_warning(f"Autonomous run processing not yet implemented")

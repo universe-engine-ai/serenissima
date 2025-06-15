@@ -16,6 +16,7 @@ PROCESS_TYPE_DAILY_REFLECTION = "daily_reflection"
 PROCESS_TYPE_THEATER_REFLECTION = "theater_reflection"
 PROCESS_TYPE_PUBLIC_BATH_REFLECTION = "public_bath_reflection"
 PROCESS_TYPE_AUTONOMOUS_RUN = "autonomous_run"
+PROCESS_TYPE_CONTINUE_THOUGHT = "continue_thought"
 
 # Process statuses
 PROCESS_STATUS_PENDING = "pending"
