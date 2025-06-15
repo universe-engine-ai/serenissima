@@ -169,17 +169,18 @@ def perform_thinking(citizen, tables):
         
         # Select a random process type with equal probabilities (1/3 each)
         selected_process_type = random.choice(process_types)
-        
+                
         log_info(f"Selected process type for {username}: {selected_process_type} (Equal 1/3 probability for each type)")
-        
+                
         # Create a process for the selected type
         process_record = create_process(
             tables=tables,
             process_type=selected_process_type,
             citizen_username=username,
-            priority=10  # Lower priority than processes created by activity processors
+            priority=10,  # Lower priority than processes created by activity processors
+            api_base_url=os.getenv("API_BASE_URL", "http://localhost:3000")  # Pass API base URL
         )
-        
+                
         if process_record:
             log_info(f"Successfully created {selected_process_type} process for {username}")
             return True
