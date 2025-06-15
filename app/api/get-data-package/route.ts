@@ -910,11 +910,20 @@ function convertDataPackageToMarkdown(dataPackage: any, citizenUsername: string 
       md += `- **Bridge Points**: ${land.unoccupiedBridgePoints?.length || 0} unoccupied / ${land.totalBridgePoints || 0} total\n`;
       
       if (land.buildings && land.buildings.length > 0) {
-        md += `#### Buildings on this land (${land.buildings.length}):\n`;
-        land.buildings.forEach((building: any, bIndex: number) => {
-          md += `##### Building ${bIndex + 1}: ${building.name || building.buildingId}\n`;
-          md += formatSimpleObjectForMarkdown(building, ['type', 'category', 'owner', 'runBy', 'occupant', 'isConstructed']);
-        });
+        // Filter buildings to only show those owned by the user
+        const ownedBuildings = land.buildings.filter((building: any) => 
+          building.owner === citizenUsername
+        );
+        
+        if (ownedBuildings.length > 0) {
+          md += `#### Buildings on this land owned by you (${ownedBuildings.length}):\n`;
+          ownedBuildings.forEach((building: any, bIndex: number) => {
+            md += `##### Building ${bIndex + 1}: ${building.name || building.buildingId}\n`;
+            md += formatSimpleObjectForMarkdown(building, ['type', 'category', 'runBy', 'occupant', 'isConstructed']);
+          });
+        } else {
+          md += `#### Buildings on this land: None owned by you\n`;
+        }
       }
       md += '\n';
     });
