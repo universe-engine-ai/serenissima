@@ -36,9 +36,19 @@ def try_create(
     target_building_id = details.get('targetBuildingId')  # Optional specific meeting place
     conversation_length = details.get('conversationLength', 3)  # Default to 3 exchanges
     
-    # Extract inReplyToMessageId from the nested 'notes' field if present
+    # Extract inReplyToMessageId and other parameters from the nested 'notes' field if present
     # The 'details' argument to this function *is* activityParameters from the API call.
-    activity_params_notes_field = details.get('notes', {})
+    activity_params_notes_field = {}
+    
+    # Handle both string and object formats for notes
+    if isinstance(details.get('notes'), str):
+        try:
+            activity_params_notes_field = json.loads(details.get('notes', '{}'))
+        except json.JSONDecodeError:
+            activity_params_notes_field = {}
+    elif isinstance(details.get('notes'), dict):
+        activity_params_notes_field = details.get('notes', {})
+    
     in_reply_to_message_id = activity_params_notes_field.get('inReplyToMessageId')
     target_citizen_username_for_trust_impact = activity_params_notes_field.get('targetCitizenUsernameForTrustImpact') # New
     
@@ -181,6 +191,12 @@ def try_create(
     if target_citizen_username_for_trust_impact: # New
         details_for_processor["targetCitizenUsernameForTrustImpact"] = target_citizen_username_for_trust_impact
         log.info(f"Including targetCitizenUsernameForTrustImpact: {target_citizen_username_for_trust_impact} in Details for deliver_message_interaction.")
+    
+    # Include any other fields from the original notes that might be needed
+    if isinstance(activity_params_notes_field, dict):
+        for key, value in activity_params_notes_field.items():
+            if key not in ["inReplyToMessageId", "targetCitizenUsernameForTrustImpact"] and key not in details_for_processor:
+                details_for_processor[key] = value
     
     details_json = json.dumps(details_for_processor)
     

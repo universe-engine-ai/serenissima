@@ -1452,15 +1452,11 @@ def create_activity_record(
     if to_building_id: payload["ToBuilding"] = to_building_id
     if path_json: payload["Path"] = path_json
 
-    # Consolidated logic for Notes field
-    final_notes_parts = []
-    if notes:  # This is the simple text part
-        final_notes_parts.append(notes)
-    if details_json:  # This is the structured JSON string part
-        final_notes_parts.append(f"DetailsJSON: {details_json}")
-
-    if final_notes_parts:
-        payload["Notes"] = " ".join(final_notes_parts)  # Join with a space if both are present
+    # Use details_json directly as the Notes field for structured data
+    if details_json:
+        payload["Notes"] = details_json  # Use the JSON string directly
+    elif notes:  # Only use notes if details_json is not available
+        payload["Notes"] = notes
     # If neither notes nor details_json, Notes field remains unset or can be defaulted if needed by processors
 
     if contract_id: payload["ContractId"] = contract_id
