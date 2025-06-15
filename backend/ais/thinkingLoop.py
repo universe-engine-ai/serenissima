@@ -11,6 +11,7 @@ This script selects a random citizen with weighting based on social class:
 
 It then performs a thinking operation for the selected citizen.
 The script is designed to be run continuously by the scheduler.
+It uses a file lock mechanism to ensure only one instance runs at a time.
 """
 
 import os
@@ -19,6 +20,9 @@ import time
 import random
 import traceback
 import json
+import fcntl
+import signal
+import atexit
 from datetime import datetime, timedelta
 import pytz
 
@@ -134,9 +138,59 @@ def perform_thinking(citizen, tables):
         traceback.print_exc()
         return False
 
+# File lock path for ensuring single instance
+LOCK_FILE_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), '.thinking_loop.lock')
+lock_file = None
+
+def cleanup():
+    """Cleanup function to release the lock file when the script exits"""
+    global lock_file
+    if lock_file:
+        try:
+            fcntl.flock(lock_file, fcntl.LOCK_UN)
+            lock_file.close()
+            log_info("Lock file released")
+        except Exception as e:
+            log_error(f"Error releasing lock file: {str(e)}")
+
+def signal_handler(sig, frame):
+    """Handle termination signals gracefully"""
+    log_info(f"Received signal {sig}, shutting down gracefully...")
+    cleanup()
+    sys.exit(0)
+
+def acquire_lock():
+    """Try to acquire the lock file to ensure only one instance runs"""
+    global lock_file
+    try:
+        lock_file = open(LOCK_FILE_PATH, 'w')
+        # Try to acquire an exclusive lock, non-blocking
+        fcntl.flock(lock_file, fcntl.LOCK_EX | fcntl.LOCK_NB)
+        lock_file.write(str(os.getpid()))
+        lock_file.flush()
+        return True
+    except IOError:
+        # Another instance is already running
+        return False
+    except Exception as e:
+        log_error(f"Error acquiring lock: {str(e)}")
+        return False
+
 def main():
     """Main function to run the thinking loop"""
     log_header("Starting Thinking Loop", color_code=LogColors.HEADER)
+    
+    # Register cleanup handlers
+    atexit.register(cleanup)
+    signal.signal(signal.SIGTERM, signal_handler)
+    signal.signal(signal.SIGINT, signal_handler)
+    
+    # Try to acquire the lock
+    if not acquire_lock():
+        log_error("Another instance of thinkingLoop.py is already running. Exiting.")
+        return
+    
+    log_info("Lock acquired, this is the only running instance")
     
     try:
         # Initialize tables
@@ -165,6 +219,9 @@ def main():
     except Exception as e:
         log_error(f"Fatal error in thinking loop: {str(e)}")
         traceback.print_exc()
+    finally:
+        # Make sure we release the lock
+        cleanup()
     
     log_header("Thinking Loop Terminated", color_code=LogColors.FAIL)
 
