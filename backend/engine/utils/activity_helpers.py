@@ -1614,7 +1614,7 @@ def log_header(message: str, color_code: str = Fore.CYAN):
     print(f"{color_code}{Style.BRIGHT}{side_char} {message.center(width - 4)} {side_char}{Style.RESET_ALL}")
     print(f"{color_code}{Style.BRIGHT}{corner_bl}{border_char * (width - 2)}{corner_br}{Style.RESET_ALL}\n")
 
-# --- Thought Cleaning Function (moved from autonomouslyRun.py) ---
+# --- Thought Cleaning Function ---
 TECHNICAL_KEYWORDS_FOR_CLEANING = [
     "gemini ", "api", "argument", "auth", "aws", "azure", "backend", "branch", "bug", "cache", "ci/cd",
     "cli", "cloud", "code", "commit", "component", "container", "cookie", "cpu", "css",

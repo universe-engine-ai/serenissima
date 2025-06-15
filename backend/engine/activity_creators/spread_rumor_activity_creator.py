@@ -215,72 +215,27 @@ def try_create(
     # Create the activity
     activity_id = f"spread-rumor-{uuid.uuid4().hex[:8]}"
     
-    if is_at_target_location:
-        # If already at the target location, create spread_rumor activity directly
-        activity_fields = {
-            "ActivityId": activity_id,
-            "Type": "spread_rumor",
-            "Citizen": citizen_username,
-            "CitizenId": citizen_custom_id,
-            "Status": "created",
-            "CreatedAt": now_utc_dt.isoformat(),
-            "StartDate": now_utc_dt.isoformat(),
-            "EndDate": (now_utc_dt + timedelta(minutes=30)).isoformat(),  # Rumor spreading takes 30 minutes
-            "Notes": json.dumps(activity_details),
-            "Title": f"Spreading rumors about {target_citizen}",
-            "Description": f"Spreading gossip about {target_citizen} at a public place."
-        }
-        
-        if target_building_record:
-            building_id = target_building_record['fields'].get('BuildingId')
-            activity_fields["ToBuilding"] = building_id
-        
-        try:
-            created_activity = tables['activities'].create(activity_fields)
-            log.info(f"{LogColors.OKGREEN}Created spread_rumor activity {activity_id} for {citizen_username} targeting {target_citizen}.{LogColors.ENDC}")
-            return True
-        except Exception as e:
-            log.error(f"{LogColors.FAIL}Failed to create spread_rumor activity for {citizen_username}: {e}{LogColors.ENDC}")
-            return False
-    else:
-        # If not at the target location, create goto_location activity with spread_rumor as next activity
-        goto_activity_id = f"goto-for-rumor-{uuid.uuid4().hex[:8]}"
-        
-        # Calculate travel time based on path data
-        path_distance = path_data.get('distance', 0)  # in meters
-        walking_speed = 1.4  # m/s
-        travel_time_seconds = path_distance / walking_speed
-        travel_time_minutes = max(1, int(travel_time_seconds / 60))
-        
-        end_date = now_utc_dt + timedelta(minutes=travel_time_minutes)
-        
-        goto_activity_fields = {
-            "ActivityId": goto_activity_id,
-            "Type": "goto_location",
-            "Citizen": citizen_username,
-            "CitizenId": citizen_custom_id,
-            "Status": "created",
-            "CreatedAt": now_utc_dt.isoformat(),
-            "StartDate": now_utc_dt.isoformat(),
-            "EndDate": end_date.isoformat(),
-            "Path": json.dumps(path_data),
-            "Notes": json.dumps({
-                "nextActivityType": "spread_rumor",
-                "nextActivityParameters": activity_details,
-                "targetReason": f"spread rumors about {target_citizen}"
-            }),
-            "Title": f"Going to spread rumors about {target_citizen}",
-            "Description": f"Heading to a public place to spread gossip about {target_citizen}."
-        }
-        
-        if target_building_record:
-            building_id = target_building_record['fields'].get('BuildingId')
-            goto_activity_fields["ToBuilding"] = building_id
-        
-        try:
-            created_activity = tables['activities'].create(goto_activity_fields)
-            log.info(f"{LogColors.OKGREEN}Created goto_location activity {goto_activity_id} for {citizen_username} to spread rumors about {target_citizen}.{LogColors.ENDC}")
-            return True
-        except Exception as e:
-            log.error(f"{LogColors.FAIL}Failed to create goto_location activity for {citizen_username} to spread rumors: {e}{LogColors.ENDC}")
-            return False
+    activity_fields = {
+        "ActivityId": activity_id,
+        "Type": "spread_rumor",
+        "Citizen": citizen_username,
+        "Status": "created",
+        "CreatedAt": now_utc_dt.isoformat(),
+        "StartDate": now_utc_dt.isoformat(),
+        "EndDate": (now_utc_dt + timedelta(minutes=30)).isoformat(),  # Rumor spreading takes 30 minutes
+        "Notes": json.dumps(activity_details),
+        "Title": f"Spreading rumors about {target_citizen}",
+        "Description": f"Spreading gossip about {target_citizen} at a public place."
+    }
+    
+    if target_building_record:
+        building_id = target_building_record['fields'].get('BuildingId')
+        activity_fields["ToBuilding"] = building_id
+    
+    try:
+        created_activity = tables['activities'].create(activity_fields)
+        log.info(f"{LogColors.OKGREEN}Created spread_rumor activity {activity_id} for {citizen_username} targeting {target_citizen}.{LogColors.ENDC}")
+        return True
+    except Exception as e:
+        log.error(f"{LogColors.FAIL}Failed to create spread_rumor activity for {citizen_username}: {e}{LogColors.ENDC}")
+        return False

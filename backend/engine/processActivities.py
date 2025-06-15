@@ -845,6 +845,7 @@ def process_all_activities_for_one_citizen(
         "execute_buy_listed_land": process_buy_listed_land_fn,
         "execute_cancel_land_listing": process_cancel_land_listing_fn,
         "execute_cancel_land_offer": process_cancel_land_offer_fn,
+        "spread_rumor": process_spread_rumor_fn,
     }
 
     for activity_record in citizen_activities:
