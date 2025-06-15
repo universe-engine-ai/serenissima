@@ -225,7 +225,6 @@ def try_create(
         "Status": "created",
         "Title": f"Traveling to deliver a message to {receiver_username}",
         "Description": f"Traveling to meet {receiver_username} to deliver a {message_type} message",
-        "Notes": f"First step of send_message process. Will be followed by deliver_message_interaction activity.",
         "CreatedAt": travel_start_date,
         "StartDate": travel_start_date,
         "EndDate": travel_end_date,
