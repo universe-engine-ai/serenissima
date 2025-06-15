@@ -221,13 +221,16 @@ def process(
             new_tables = get_tables()
             if is_processes_table_available(new_tables):
                 log.info(f"{LogColors.OKGREEN}Successfully reinitialized tables and found working 'processes' table. Attempting to create process with new tables.{LogColors.ENDC}")
+                # Include api_base_url in process_details
+                if api_base_url:
+                    process_details["api_base_url"] = api_base_url
+                
                 process_record = create_process(
                     tables=new_tables,
                     process_type=PROCESS_TYPE_THEATER_REFLECTION,
                     citizen_username=citizen_username,
                     priority=5,  # Medium priority
-                    details=process_details,
-                    api_base_url=api_base_url
+                    details=process_details
                 )
                 if process_record:
                     log.info(f"{LogColors.OKGREEN}Successfully created theater reflection process for {citizen_username} after table reinitialization.{LogColors.ENDC}")
@@ -239,13 +242,16 @@ def process(
             log.error(f"{LogColors.FAIL}Error reinitializing tables: {e_reinit}{LogColors.ENDC}")
     else:
         try:
+            # Include api_base_url in process_details
+            if api_base_url:
+                process_details["api_base_url"] = api_base_url
+            
             process_record = create_process(
                 tables=tables,
                 process_type=PROCESS_TYPE_THEATER_REFLECTION,
                 citizen_username=citizen_username,
                 priority=5,  # Medium priority
-                details=process_details,
-                api_base_url=api_base_url
+                details=process_details
             )
             if process_record:
                 log.info(f"{LogColors.OKGREEN}Successfully created theater reflection process for {citizen_username}.{LogColors.ENDC}")

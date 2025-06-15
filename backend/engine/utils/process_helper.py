@@ -28,8 +28,7 @@ def create_process(
     process_type: str,
     citizen_username: str,
     priority: int = 5,
-    details: Optional[Dict[str, Any]] = None,
-    api_base_url: Optional[str] = None
+    details: Optional[Dict[str, Any]] = None
 ) -> Optional[Dict[str, Any]]:
     """
     Creates a new process record in the PROCESSES table.
@@ -63,7 +62,12 @@ def create_process(
             # Continue with the process creation without the details
     
     if api_base_url:
-        payload["ApiBaseUrl"] = api_base_url
+        # Store API base URL in the Details field instead of as a separate field
+        if details:
+            details["api_base_url"] = api_base_url
+            payload["Details"] = json.dumps(details, default=str)
+        else:
+            payload["Details"] = json.dumps({"api_base_url": api_base_url}, default=str)
     
     try:
         log.info(f"{LogColors.OKBLUE}Creating process {process_id} of type {process_type} for citizen {citizen_username} with priority {priority}{LogColors.ENDC}")
