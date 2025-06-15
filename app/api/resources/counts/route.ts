@@ -50,7 +50,9 @@ export async function GET(request: Request) {
       // Build filter formula based on parameters
       let filterFormula = '';
       if (buildingId) {
-        filterFormula = `{Asset}='${buildingId}' AND {AssetType}='building'`;
+        // Escape single quotes in buildingId to prevent formula errors
+        const escapedBuildingId = buildingId.replace(/'/g, "\\'");
+        filterFormula = `{Asset}='${escapedBuildingId}' AND {AssetType}='building'`;
       }
       
       const selectOptions: any = {
@@ -59,6 +61,7 @@ export async function GET(request: Request) {
       
       if (filterFormula) {
         selectOptions.filterByFormula = filterFormula;
+        console.log(`Using Airtable filter formula: ${filterFormula}`);
       }
       
       base('RESOURCES')
