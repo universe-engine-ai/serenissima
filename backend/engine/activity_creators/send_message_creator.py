@@ -165,7 +165,7 @@ def try_create(
         try:
             data_package_url = f"{api_base_url}/api/get-data-package?citizenUsername={sender_username}&format=markdown"
             import requests
-            response = requests.get(data_package_url, timeout=60)
+            response = requests.get(data_package_url, timeout=150)
             if response.ok:
                 ai_data_package = response.text
                 receiver_username, reason_for_contact = choose_interlocutor_via_kinos(
