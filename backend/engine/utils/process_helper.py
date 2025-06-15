@@ -170,7 +170,14 @@ def get_next_pending_process(tables: Dict[str, Any]) -> Optional[Dict[str, Any]]
     """
     try:
         formula = f"{{Status}}='{PROCESS_STATUS_PENDING}'"
-        processes = tables['processes'].all(formula=formula, sort=[("Priority", "asc"), ("CreatedAt", "asc")])
+        # Fix: Use dictionary format for sort parameter instead of tuples
+        processes = tables['processes'].all(
+            formula=formula, 
+            sort=[
+                {"field": "Priority", "direction": "asc"}, 
+                {"field": "CreatedAt", "direction": "asc"}
+            ]
+        )
         
         if processes:
             log.info(f"{LogColors.OKBLUE}Found {len(processes)} pending processes. Selecting highest priority.{LogColors.ENDC}")
