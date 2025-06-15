@@ -952,6 +952,35 @@ def generate_conversation_turn(
                 # Colorized log for trust score update
                 color_code = LogColors.OKGREEN if trust_change_for_listener > 0 else LogColors.WARNING
                 log.info(f"{color_code}Trust score between {listener_username} and {speaker_username} updated by {trust_change_for_listener}.{LogColors.ENDC}")
+                
+                # Save trust impact details in the message Notes
+                if persisted_message_record and 'id' in persisted_message_record:
+                    try:
+                        message_id = persisted_message_record['id']
+                        current_notes = persisted_message_record.get('fields', {}).get('Notes', '{}')
+                        trust_impact_data = {
+                            "trustImpact": {
+                                "listener_to_speaker": trust_change_for_listener
+                            }
+                        }
+                        
+                        # Merge with existing Notes if it's valid JSON
+                        try:
+                            if current_notes:
+                                existing_data = json.loads(current_notes)
+                                if isinstance(existing_data, dict):
+                                    existing_data.update(trust_impact_data)
+                                    trust_impact_data = existing_data
+                        except json.JSONDecodeError:
+                            # If existing Notes is not valid JSON, just use the new data
+                            pass
+                            
+                        tables['messages'].update(message_id, {
+                            'Notes': json.dumps(trust_impact_data)
+                        })
+                        log.info(f"Updated message {message_id} Notes with trust impact data")
+                    except Exception as e_notes:
+                        log.warning(f"Failed to update message Notes with trust impact: {e_notes}")
 
             # Update trust score for listener towards target_citizen_username_for_trust_impact
             if target_citizen_username_for_trust_impact and target_citizen_username_for_trust_impact != listener_username and trust_change_for_target != 0.0:
@@ -964,6 +993,34 @@ def generate_conversation_turn(
                 # Colorized log for trust score update
                 color_code = LogColors.OKGREEN if trust_change_for_target > 0 else LogColors.WARNING
                 log.info(f"{color_code}Trust score between {listener_username} and {target_citizen_username_for_trust_impact} updated by {trust_change_for_target}.{LogColors.ENDC}")
+                
+                # Add target trust impact to the message Notes if we already updated it
+                if persisted_message_record and 'id' in persisted_message_record:
+                    try:
+                        message_id = persisted_message_record['id']
+                        current_notes = persisted_message_record.get('fields', {}).get('Notes', '{}')
+                        
+                        # Try to parse existing Notes
+                        try:
+                            existing_data = json.loads(current_notes) if current_notes else {}
+                            if not isinstance(existing_data, dict):
+                                existing_data = {}
+                        except json.JSONDecodeError:
+                            existing_data = {}
+                        
+                        # Add or update the trustImpact section
+                        if 'trustImpact' not in existing_data:
+                            existing_data['trustImpact'] = {}
+                        
+                        existing_data['trustImpact']['listener_to_target'] = trust_change_for_target
+                        existing_data['trustImpact']['target_username'] = target_citizen_username_for_trust_impact
+                        
+                        tables['messages'].update(message_id, {
+                            'Notes': json.dumps(existing_data)
+                        })
+                        log.info(f"Updated message {message_id} Notes with target trust impact data")
+                    except Exception as e_target_notes:
+                        log.warning(f"Failed to update message Notes with target trust impact: {e_target_notes}")
             # --- End Trust Impact Analysis ---
             
             # Return the original message record (not the reply)
