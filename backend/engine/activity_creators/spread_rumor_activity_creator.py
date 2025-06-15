@@ -90,11 +90,12 @@ def try_create(
     
     log.info(f"{LogColors.OKBLUE}Creating spread_rumor activity for {citizen_username} targeting {target_citizen} with coordinates: {location_coords_raw}{LogColors.ENDC}")
     
-    # Validate target citizen exists
-    target_citizen_record = get_citizen_record(tables, target_citizen)
-    if not target_citizen_record:
-        log.error(f"{LogColors.FAIL}Target citizen {target_citizen} not found for spread_rumor by {citizen_username}.{LogColors.ENDC}")
-        return False
+    # Validate target citizen exists only if specified
+    if target_citizen:
+        target_citizen_record = get_citizen_record(tables, target_citizen)
+        if not target_citizen_record:
+            log.error(f"{LogColors.FAIL}Target citizen {target_citizen} not found for spread_rumor by {citizen_username}.{LogColors.ENDC}")
+            return False
     
     # Get citizen's current position
     citizen_position_str = citizen_record['fields'].get('Position')
