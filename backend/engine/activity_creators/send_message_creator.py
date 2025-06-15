@@ -159,7 +159,7 @@ def try_create(
     
     if not path_data or not path_data.get('success') or not path_data.get('path'):
         log.error(f"Could not find path to destination. Path data: {path_data}")
-        return None # Changed from False
+        return None
     
     # Create activity IDs
     goto_activity_id = f"goto_location_for_message_{sender}_{receiver_username}_{ts}"
