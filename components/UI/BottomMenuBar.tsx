@@ -6,6 +6,7 @@ import {
   FaLandmark, FaUserCog, FaHandshake // New Main/Sub-item icons
 } from 'react-icons/fa';
 import { eventBus, EventTypes } from '@/lib/utils/eventBus'; // Importer eventBus
+import { useWalletContext } from '@/components/UI/WalletProvider'; // Pour obtenir le username actuel
 
 // Configuration de la nature des stratagèmes pour le style
 type StratagemNature = 'good' | 'neutral' | 'aggressive' | 'illegal';
@@ -76,9 +77,61 @@ interface MenuItem {
   subItems?: SubMenuItem[];
 }
 
+// Interface pour les stratagèmes actifs
+interface ActiveStratagem {
+  stratagemId: string;
+  type: string;
+  executedBy: string;
+  targetCitizen?: string;
+  status: string;
+}
+
 const BottomMenuBar: React.FC = () => {
   const [activeMainMenuId, setActiveMainMenuId] = useState<string | null>(null);
   const menuRef = useRef<HTMLDivElement>(null);
+  const { citizenProfile } = useWalletContext();
+  const [activeStratagems, setActiveStratagems] = useState<ActiveStratagem[]>([]);
+  const [isLoadingStratagems, setIsLoadingStratagems] = useState<boolean>(false);
+  
+  // Récupérer les stratagèmes actifs
+  useEffect(() => {
+    const fetchActiveStratagems = async () => {
+      if (!citizenProfile?.username) return;
+      
+      setIsLoadingStratagems(true);
+      try {
+        // Récupérer les stratagèmes exécutés par l'utilisateur
+        const response = await fetch(`/api/stratagems?status=active&executedBy=${citizenProfile.username}`);
+        
+        // Récupérer les stratagèmes ciblant l'utilisateur
+        const targetResponse = await fetch(`/api/stratagems?status=active&targetCitizen=${citizenProfile.username}`);
+        
+        if (response.ok && targetResponse.ok) {
+          const data = await response.json();
+          const targetData = await targetResponse.json();
+          
+          const userStratagems = data.success ? data.stratagems : [];
+          const targetStratagems = targetData.success ? targetData.stratagems : [];
+          
+          setActiveStratagems([...userStratagems, ...targetStratagems]);
+          console.log(`Loaded ${userStratagems.length} active stratagems by user and ${targetStratagems.length} targeting user`);
+        } else {
+          console.error('Failed to fetch active stratagems');
+        }
+      } catch (error) {
+        console.error('Error fetching stratagems:', error);
+      } finally {
+        setIsLoadingStratagems(false);
+      }
+    };
+
+    fetchActiveStratagems();
+    
+    // Rafraîchir les stratagèmes toutes les 5 minutes
+    const intervalId = setInterval(fetchActiveStratagems, 5 * 60 * 1000);
+    
+    return () => clearInterval(intervalId);
+  }, [citizenProfile?.username]);
 
   // Les listes allStratagemTypesInMenu, availableStratagemTypes, et comingSoonStratagemTypesUpdated
   // ne sont plus nécessaires car le style est géré par stratagemNatureConfig et "(Soon)" est dans les labels.
@@ -354,6 +407,21 @@ const BottomMenuBar: React.FC = () => {
 
   const activeSubItems = menuItems.find(item => item.id === activeMainMenuId)?.subItems;
 
+  // Fonction pour compter les stratagèmes actifs par type
+  const countActiveStratagemsByType = (type: string): { byUser: number, againstUser: number } => {
+    if (!citizenProfile?.username) return { byUser: 0, againstUser: 0 };
+    
+    const byUser = activeStratagems.filter(
+      s => s.type === type && s.executedBy === citizenProfile.username
+    ).length;
+    
+    const againstUser = activeStratagems.filter(
+      s => s.type === type && s.targetCitizen === citizenProfile.username
+    ).length;
+    
+    return { byUser, againstUser };
+  };
+
   return (
     <div 
       ref={menuRef} 
@@ -364,21 +432,41 @@ const BottomMenuBar: React.FC = () => {
       {activeSubItems && activeSubItems.length > 0 && (
         <div className="mb-2 flex space-x-1 bg-black/60 p-1.5 rounded-md shadow-md border border-amber-500/50">
           {activeSubItems.map((subItem) => (
-            <button
-              key={subItem.id}
-              onClick={() => { // Le clic sur un sous-élément exécute toujours l'action
-                console.log(`Submenu item ${subItem.label} clicked. Emitting event to open stratagem panel.`);
-                eventBus.emit(EventTypes.OPEN_STRATAGEM_PANEL, subItem.stratagemPanelData);
-                setActiveMainMenuId(null); // Ferme le sous-menu après l'action
-              }}
-              className={`flex flex-col items-center justify-center p-1 rounded-sm transition-colors w-20 h-16 ${
-                (stratagemNatureConfig[subItem.stratagemPanelData.type] || stratagemNatureConfig.default).classes
-              }`}
-              title={subItem.label}
-            >
-              <subItem.icon className="w-6 h-6 mb-0.5" />
-              <span className="text-[10px] font-medium uppercase tracking-normal">{subItem.label}</span>
-            </button>
+            <div key={subItem.id} className="relative">
+              <button
+                onClick={() => { // Le clic sur un sous-élément exécute toujours l'action
+                  console.log(`Submenu item ${subItem.label} clicked. Emitting event to open stratagem panel.`);
+                  eventBus.emit(EventTypes.OPEN_STRATAGEM_PANEL, subItem.stratagemPanelData);
+                  setActiveMainMenuId(null); // Ferme le sous-menu après l'action
+                }}
+                className={`flex flex-col items-center justify-center p-1 rounded-sm transition-colors w-20 h-16 ${
+                  (stratagemNatureConfig[subItem.stratagemPanelData.type] || stratagemNatureConfig.default).classes
+                }`}
+                title={subItem.label}
+              >
+                <subItem.icon className="w-6 h-6 mb-0.5" />
+                <span className="text-[10px] font-medium uppercase tracking-normal">{subItem.label}</span>
+              </button>
+              
+              {/* Indicateurs de notification pour les stratagèmes actifs */}
+              {citizenProfile?.username && (
+                <>
+                  {/* Stratagèmes exécutés par l'utilisateur (bleu foncé) */}
+                  {countActiveStratagemsByType(subItem.stratagemPanelData.type).byUser > 0 && (
+                    <div className="absolute -top-1 -right-1 w-5 h-5 rounded-full bg-blue-800 text-white text-xs flex items-center justify-center border border-blue-300">
+                      {countActiveStratagemsByType(subItem.stratagemPanelData.type).byUser}
+                    </div>
+                  )}
+                  
+                  {/* Stratagèmes contre l'utilisateur (bordeaux) */}
+                  {countActiveStratagemsByType(subItem.stratagemPanelData.type).againstUser > 0 && (
+                    <div className="absolute -top-1 -left-1 w-5 h-5 rounded-full bg-rose-800 text-white text-xs flex items-center justify-center border border-rose-300">
+                      {countActiveStratagemsByType(subItem.stratagemPanelData.type).againstUser}
+                    </div>
+                  )}
+                </>
+              )}
+            </div>
           ))}
         </div>
       )}
