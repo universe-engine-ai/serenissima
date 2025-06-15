@@ -79,17 +79,62 @@ export async function GET(request: NextRequest) {
     const positionString = JSON.stringify(position);
     const escapedPositionString = escapeAirtableValue(positionString);
     
-    // 1. Find citizens at this position
-    const citizensAtPosition = await airtable('CITIZENS').select({
-      filterByFormula: `{Position} = '${escapedPositionString}'`
+    console.log(`[API get-citizens-at-position] Position string for query: ${positionString}`);
+    
+    // We need to handle floating point precision issues in position matching
+    // Instead of exact string matching, we'll fetch all citizens and buildings and filter them
+    
+    // 1. Fetch citizens with position data
+    const citizensWithPosition = await airtable('CITIZENS').select({
+      filterByFormula: `NOT({Position} = '')`,
     }).all();
     
-    console.log(`[API get-citizens-at-position] Found ${citizensAtPosition.length} citizens at position`);
+    console.log(`[API get-citizens-at-position] Found ${citizensWithPosition.length} citizens with position data`);
     
-    // 2. Find building at this position
-    const buildingsAtPosition = await airtable('BUILDINGS').select({
-      filterByFormula: `{Position} = '${escapedPositionString}'`
+    // Filter citizens at the requested position with tolerance for floating point precision
+    const citizensAtPosition = citizensWithPosition.filter(record => {
+      try {
+        if (!record.fields.Position) return false;
+        
+        const citizenPos = JSON.parse(record.fields.Position as string);
+        // Use small epsilon for floating point comparison
+        const latMatch = Math.abs(citizenPos.lat - position.lat) < 0.0000001;
+        const lngMatch = Math.abs(citizenPos.lng - position.lng) < 0.0000001;
+        
+        return latMatch && lngMatch;
+      } catch (e) {
+        console.warn(`Could not parse position for citizen record: ${record.id}`);
+        return false;
+      }
+    });
+    
+    console.log(`[API get-citizens-at-position] Found ${citizensAtPosition.length} citizens at the exact position`);
+    
+    // 2. Fetch buildings with position data
+    const buildingsWithPosition = await airtable('BUILDINGS').select({
+      filterByFormula: `NOT({Position} = '')`,
     }).all();
+    
+    console.log(`[API get-citizens-at-position] Found ${buildingsWithPosition.length} buildings with position data`);
+    
+    // Filter buildings at the requested position with tolerance for floating point precision
+    const buildingsAtPosition = buildingsWithPosition.filter(record => {
+      try {
+        if (!record.fields.Position) return false;
+        
+        const buildingPos = JSON.parse(record.fields.Position as string);
+        // Use small epsilon for floating point comparison
+        const latMatch = Math.abs(buildingPos.lat - position.lat) < 0.0000001;
+        const lngMatch = Math.abs(buildingPos.lng - position.lng) < 0.0000001;
+        
+        return latMatch && lngMatch;
+      } catch (e) {
+        console.warn(`Could not parse position for building record: ${record.id}`);
+        return false;
+      }
+    });
+    
+    console.log(`[API get-citizens-at-position] Found ${buildingsAtPosition.length} buildings at the exact position`);
     
     console.log(`[API get-citizens-at-position] Found ${buildingsAtPosition.length} buildings at position`);
     

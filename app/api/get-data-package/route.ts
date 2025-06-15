@@ -1344,28 +1344,26 @@ export async function GET(request: Request) {
         }
       }
       
-      // If still not found, try the API
+      // If still not found, try the citizens-at-position API which has better position matching
       if (!buildingAtPosition) {
         try {
           // Use the full URL with baseUrl for the API call
           const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000';
-          const positionJson = JSON.stringify(citizenPosition);
-          const buildingQueryUrl = `${baseUrl}/api/buildings?Position=${encodeURIComponent(positionJson)}`;
-          console.log(`Querying buildings at position: ${buildingQueryUrl}`);
+          const positionQueryUrl = `${baseUrl}/api/get-citizens-at-position?lat=${citizenPosition.lat}&lng=${citizenPosition.lng}`;
+          console.log(`Querying citizens and buildings at position: ${positionQueryUrl}`);
           
-          const buildingResponse = await fetch(buildingQueryUrl);
+          const positionResponse = await fetch(positionQueryUrl);
           
-          if (buildingResponse.ok) {
-            const buildingData = await buildingResponse.json();
-            if (buildingData.success && buildingData.buildings && buildingData.buildings.length > 0) {
-              const buildingAtPos = buildingData.buildings[0];
-              buildingAtPosition = buildingAtPos.name || buildingAtPos.type;
-              console.log(`Found building at citizen position via API: ${buildingAtPosition}`);
+          if (positionResponse.ok) {
+            const positionData = await positionResponse.json();
+            if (positionData.success && positionData.building) {
+              buildingAtPosition = positionData.building.name || positionData.building.type;
+              console.log(`Found building at citizen position via citizens-at-position API: ${buildingAtPosition}`);
             } else {
-              console.log(`No buildings found at position via API: ${positionJson}`);
+              console.log(`No buildings found at position via citizens-at-position API`);
             }
           } else {
-            console.error(`Building API response not OK: ${buildingResponse.status}`);
+            console.error(`citizens-at-position API response not OK: ${positionResponse.status}`);
           }
         } catch (error) {
           console.error('Error fetching building at position:', error);
