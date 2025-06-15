@@ -16,18 +16,20 @@ def try_create(
     citizen_airtable_id: str,
     citizen_custom_id: str,
     citizen_username: str,
-    galley_airtable_id: str,
-    galley_custom_id: str,
-    original_contract_custom_id: str,
-    resource_id_to_fetch: str,
-    amount_to_fetch: float,
-    path_data_to_galley: Dict,
-    current_time_utc: datetime.datetime,
-    resource_defs: Dict[str, Any],
-    buyer_destination_building_record: Dict[str, Any], # Added destination
-    api_base_url: str, # Added for pathfinding
-    transport_api_url: str, # Added for pathfinding
-    start_time_utc_iso: Optional[str] = None
+    galley_airtable_id: str = None,
+    galley_custom_id: str = None,
+    original_contract_custom_id: str = None,
+    resource_id_to_fetch: str = None,
+    amount_to_fetch: float = None,
+    path_data_to_galley: Dict = None,
+    current_time_utc: datetime.datetime = None,
+    resource_defs: Dict[str, Any] = None,
+    buyer_destination_building_record: Dict[str, Any] = None,
+    api_base_url: str = None,
+    transport_api_url: str = None,
+    start_time_utc_iso: Optional[str] = None,
+    # Add parameters to support direct API calls
+    activity_params: Dict[str, Any] = None
 ) -> Optional[Dict]:
     """
     Creates a chain of activities for fetching resources from a galley and delivering them:
@@ -37,6 +39,48 @@ def try_create(
     4. deliver_resource_to_buyer (at destination)
     Returns the first activity in the chain (goto_location to galley).
     """
+    # Handle direct API calls with activity_params
+    if activity_params:
+        # Extract parameters from activity_params
+        from_building_id = activity_params.get("fromBuildingId")
+        to_building_id = activity_params.get("toBuildingId")
+        contract_id = activity_params.get("contractId")
+        resource_type = activity_params.get("resourceType")
+        amount = activity_params.get("amount", 10.0)  # Default to 10 if not specified
+        
+        # Override parameters with values from activity_params
+        if from_building_id:
+            galley_custom_id = from_building_id
+        if contract_id:
+            original_contract_custom_id = contract_id
+        if resource_type:
+            resource_id_to_fetch = resource_type
+        if amount:
+            amount_to_fetch = float(amount)
+            
+        # Get galley record if not provided
+        if galley_custom_id and not galley_airtable_id:
+            try:
+                galley_records = tables['buildings'].all(formula=f"{{BuildingId}}='{galley_custom_id}'", max_records=1)
+                if galley_records:
+                    galley_airtable_id = galley_records[0]['id']
+            except Exception as e:
+                log.error(f"Error fetching galley record for {galley_custom_id}: {e}")
+                
+        # Get buyer destination building record if not provided
+        if to_building_id and not buyer_destination_building_record:
+            try:
+                destination_records = tables['buildings'].all(formula=f"{{BuildingId}}='{to_building_id}'", max_records=1)
+                if destination_records:
+                    buyer_destination_building_record = destination_records[0]
+            except Exception as e:
+                log.error(f"Error fetching destination building record for {to_building_id}: {e}")
+                return None
+    
+    if not galley_custom_id or not resource_id_to_fetch or not amount_to_fetch or not buyer_destination_building_record:
+        log.error(f"Missing required parameters for fetch_from_galley activity creation")
+        return None
+        
     log.info(f"Attempting to create 'fetch_from_galley' chain for {citizen_username} to galley {galley_custom_id} for contract {original_contract_custom_id}, delivering to {buyer_destination_building_record['fields'].get('BuildingId')}")
 
     # --- Activity 1: Go to Galley ---

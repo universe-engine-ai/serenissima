@@ -830,13 +830,16 @@ def resolve_waiting_for_galley_unloading(problem: Dict, tables: Dict[str, Table]
         log.warning(f"  Error finding import contract: {e}")
     
     # Create fetch_from_galley activity
+    # The backend expects a specific structure for fetch_from_galley activities
     activity_params = {
         "resourceType": resource_type,
         "fromBuildingId": galley_id,  # Galley is the source
         "toBuildingId": building_id,  # Destination is the building that needs the resource
         "contractId": contract_id,
         "title": f"Fetch {resource_type} from galley for {building_record['fields'].get('Name', building_id)}",
-        "description": f"Fetching {resource_type} from galley to resolve resource shortage at {building_record['fields'].get('Name', building_id)}"
+        "description": f"Fetching {resource_type} from galley to resolve resource shortage at {building_record['fields'].get('Name', building_id)}",
+        # Add amount parameter which is required by the backend
+        "amount": 10.0  # Default amount if not specified elsewhere
     }
     
     log.info(f"  Calling try-create for 'fetch_from_galley' for {occupant_username}, from galley {galley_id} to {building_id}, resource {resource_type}.")
