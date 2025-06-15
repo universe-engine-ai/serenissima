@@ -254,6 +254,9 @@ def detect_problems():
                     
                     # log.info(f"Building {building_name_log} ({building_id}) has {len(sellable_resources)} sellable resource types.")
 
+                    # Process all sellable resources for this building
+                    log.info(f"Building {building_name_log} ({building_id}) has {len(sellable_resources)} sellable resource types to check.")
+                    
                     for resource_info in sellable_resources:
                         resource_type_id = resource_info.get('resourceType') # Changed 'id' to 'resourceType'
                         if not resource_type_id:
@@ -261,7 +264,7 @@ def detect_problems():
                             continue
 
                         pinpoint_api_url = f"{base_url}/api/pinpoint-problem?buildingId={building_id}&resourceType={resource_type_id}"
-                        # log.debug(f"Calling pinpoint API: {pinpoint_api_url}")
+                        log.info(f"Checking resource {resource_type_id} for building {building_name_log} via API: {pinpoint_api_url}")
                         
                         pinpoint_response = requests.get(pinpoint_api_url, timeout=30)
                         if not pinpoint_response.ok:
@@ -280,9 +283,9 @@ def detect_problems():
                                 if problem_details.get('citizenToNotify'):
                                     pinpoint_affected_operators.add(problem_details['citizenToNotify'])
                             
-                            # log.info(f"Pinpointed problem for {building_name_log}, resource {resource_type_id}: {problem_details.get('title')}")
-                        # else:
-                            # log.debug(f"No pinpoint problem identified for {building_name_log}, resource {resource_type_id}.")
+                            log.info(f"Pinpointed problem for {building_name_log}, resource {resource_type_id}: {problem_details.get('title')}")
+                        else:
+                            log.info(f"No pinpoint problem identified for {building_name_log}, resource {resource_type_id}.")
 
                 except requests.exceptions.RequestException as req_ex:
                     log.error(f"Request error fetching resources or pinpointing for building {building_name_log}: {req_ex}")
