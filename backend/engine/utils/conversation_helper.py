@@ -315,6 +315,14 @@ def make_kinos_channel_call(
             log.info(f"{LogColors.LIGHTBLUE}KinOS Channel Prompt for {speaker_username} to {channel_name}:\n{prompt}{LogColors.ENDC}")
             if add_system_data:
                 log.debug(f"KinOS Channel addSystem keys: {list(add_system_data.keys())}")
+                
+            print(f"\n\n===== KINOS API CALL DETAILS =====")
+            print(f"Speaker: {speaker_username}, Channel: {channel_name}")
+            print(f"URL: {kinos_url}")
+            print(f"Model Override: {kinos_model_override}")
+            print(f"Payload Content: {prompt}")
+            print(f"Payload addSystem Keys: {list(add_system_data.keys()) if add_system_data else 'None'}")
+            print(f"================================\n\n")
 
             response = requests.post(kinos_url, headers=headers, json=payload, timeout=DEFAULT_TIMEOUT_SECONDS)
             response.raise_for_status() # Raises HTTPError for 4xx/5xx responses
@@ -325,14 +333,33 @@ def make_kinos_channel_call(
             if ai_message_content:
                 log.info(f"Received KinOS response from channel {channel_name} for speaker {speaker_username}. Length: {len(ai_message_content)}")
                 log.info(f"{LogColors.LIGHTBLUE}Full KinOS raw response content from channel call by {speaker_username} to {channel_name}:\n{ai_message_content}{LogColors.ENDC}")
+                
+                print(f"\n\n===== KINOS API RESPONSE =====")
+                print(f"Response Length: {len(ai_message_content)}")
+                print(f"Response Content: {ai_message_content}")
+                print(f"=============================\n\n")
+                
                 return ai_message_content
             else:
                 log.warning(f"KinOS response from channel {channel_name} for {speaker_username} missing 'content'. Response: {kinos_response_data}")
+                
+                print(f"\n\n===== KINOS API ERROR RESPONSE =====")
+                print(f"Error: Missing 'content' in response")
+                print(f"Response Data: {kinos_response_data}")
+                print(f"==================================\n\n")
+                
                 return None # Non-retryable application-level issue
 
         except requests.exceptions.HTTPError as e_http:
             if e_http.response.status_code >= 500 or e_http.response.status_code == 429:
                 log.warning(f"KinOS API channel HTTP error for {speaker_username} to {channel_name} (Status: {e_http.response.status_code}): {e_http}. Retrying...")
+                
+                print(f"\n\n===== KINOS API HTTP ERROR (RETRYABLE) =====")
+                print(f"Status Code: {e_http.response.status_code}")
+                print(f"Error: {e_http}")
+                print(f"Attempt: {attempt + 1}/{max_retries}")
+                print(f"==========================================\n\n")
+                
                 if attempt < max_retries - 1:
                     wait_time = initial_wait_time * (backoff_factor ** attempt)
                     log.info(f"Waiting {wait_time} seconds before next retry...")
@@ -343,11 +370,24 @@ def make_kinos_channel_call(
                     return None
             else: # Non-retryable HTTP error
                 log.error(f"Non-retryable KinOS API channel HTTP error for {speaker_username} to {channel_name}: {e_http}", exc_info=True)
+                
+                print(f"\n\n===== KINOS API HTTP ERROR (NON-RETRYABLE) =====")
+                print(f"Status Code: {e_http.response.status_code}")
+                print(f"Error: {e_http}")
+                print(f"Response Text: {e_http.response.text[:500] if hasattr(e_http, 'response') and e_http.response is not None else 'N/A'}")
+                print(f"==============================================\n\n")
+                
                 if hasattr(e_http, 'response') and e_http.response is not None:
                     log.error(f"KinOS error response content: {e_http.response.text[:500]}")
                 return None
         except requests.exceptions.RequestException as e_req: # Catches network errors, timeouts
             log.warning(f"KinOS API channel request error for {speaker_username} to {channel_name}: {e_req}. Retrying...")
+            
+            print(f"\n\n===== KINOS API REQUEST ERROR =====")
+            print(f"Error: {e_req}")
+            print(f"Attempt: {attempt + 1}/{max_retries}")
+            print(f"=================================\n\n")
+            
             if attempt < max_retries - 1:
                 wait_time = initial_wait_time * (backoff_factor ** attempt)
                 log.info(f"Waiting {wait_time} seconds before next retry...")
@@ -358,9 +398,20 @@ def make_kinos_channel_call(
                 return None
         except json.JSONDecodeError as e_json: # If response is not JSON after a 2xx status
             log.error(f"Error decoding KinOS channel JSON response for {speaker_username} to {channel_name}: {e_json}. Response text: {response.text[:200] if 'response' in locals() and hasattr(response, 'text') else 'N/A'}")
+            
+            print(f"\n\n===== KINOS API JSON DECODE ERROR =====")
+            print(f"Error: {e_json}")
+            print(f"Response Text: {response.text[:200] if 'response' in locals() and hasattr(response, 'text') else 'N/A'}")
+            print(f"======================================\n\n")
+            
             return None # Non-retryable
         except Exception as e_gen:
             log.error(f"Unexpected error in make_kinos_channel_call for {speaker_username} to {channel_name}: {e_gen}", exc_info=True)
+            
+            print(f"\n\n===== KINOS API UNEXPECTED ERROR =====")
+            print(f"Error: {e_gen}")
+            print(f"======================================\n\n")
+            
             return None # Non-retryable
             
     return None # Should be unreachable

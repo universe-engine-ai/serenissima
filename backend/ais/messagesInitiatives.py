@@ -262,6 +262,12 @@ def _summarize_target_data_package(
         "target_data_package_markdown": target_data_package
     }
 
+    print(f"\n\n===== SUMMARIZE TARGET DATA PACKAGE PROMPT =====")
+    print(f"AI: {ai_username}, Target: {target_username}, Purpose: {purpose_of_call}")
+    print(f"System Prompt: {attention_prompt}")
+    print(f"Data Package Length: {len(target_data_package)} characters")
+    print(f"=================================================\n\n")
+
     # make_kinos_channel_call is defined in this file
     summarized_context_content = make_kinos_channel_call(
         kinos_api_key=kinos_api_key,
@@ -273,6 +279,11 @@ def _summarize_target_data_package(
     )
 
     if summarized_context_content:
+        print(f"\n\n===== SUMMARIZE TARGET DATA PACKAGE RESPONSE =====")
+        print(f"Raw Response Length: {len(summarized_context_content)} characters")
+        print(f"Raw Response (first 1000 chars): {summarized_context_content[:1000]}...")
+        print(f"====================================================\n\n")
+        
         # clean_thought_content is imported from activity_helpers
         cleaned_summarized_context = clean_thought_content(tables_for_cleaning, summarized_context_content)
         
@@ -334,6 +345,12 @@ def choose_interlocutor_via_kinos(
     
     print(f"Appel à KinOS pour choisir un interlocuteur pour {ai_username} (Modèle effectif: {effective_model})...")
     
+    print(f"\n\n===== CHOOSE INTERLOCUTOR PROMPT =====")
+    print(f"AI: {ai_username} ({ai_display_name}), Social Class: {ai_social_class}")
+    print(f"System Prompt: {prompt}")
+    print(f"Data Package Length: {len(ai_data_package)} characters")
+    print(f"=====================================\n\n")
+    
     # Créer un wrapper pour passer le markdown comme addSystem
     wrapper_data = {
         "data_package_markdown": ai_data_package
@@ -348,6 +365,11 @@ def choose_interlocutor_via_kinos(
         add_system_data=wrapper_data, 
         kinos_model_override=effective_model
     )
+    
+    if raw_response_content:
+        print(f"\n\n===== CHOOSE INTERLOCUTOR RESPONSE =====")
+        print(f"Raw Response: {raw_response_content}")
+        print(f"=========================================\n\n")
 
     if not raw_response_content:
         print(f"KinOS n'a pas retourné de réponse pour la décision de l'interlocuteur pour {ai_username}.")
@@ -473,6 +495,13 @@ def generate_ai_initiative_message(
         # Utiliser le modèle basé sur la classe sociale de l'IA ou l'override
         effective_model = kinos_model_override or get_kinos_model_for_social_class(ai_username, ai_social_class)
 
+        print(f"\n\n===== GENERATE INITIATIVE MESSAGE PROMPT =====")
+        print(f"AI: {ai_username} ({ai_display_name}), Target: {target_username} ({target_display_name})")
+        print(f"Reason for contact: {reason_for_contact}")
+        print(f"System Prompt: {prompt_for_message_content}")
+        print(f"Context Keys: {list(focused_system_context.keys())}")
+        print(f"==============================================\n\n")
+
         # make_kinos_channel_call est importé de conversation_helper
         raw_message_content = make_kinos_channel_call(
             kinos_api_key=kinos_api_key,
@@ -482,6 +511,11 @@ def generate_ai_initiative_message(
             add_system_data=focused_system_context,
             kinos_model_override=effective_model
         )
+        
+        if raw_message_content:
+            print(f"\n\n===== GENERATE INITIATIVE MESSAGE RESPONSE =====")
+            print(f"Raw Response: {raw_message_content}")
+            print(f"================================================\n\n")
 
         if raw_message_content:
             # clean_thought_content est importé de activity_helpers
