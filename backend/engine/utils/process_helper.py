@@ -64,6 +64,13 @@ def create_process(
     
     try:
         log.info(f"{LogColors.OKBLUE}Creating process {process_id} of type {process_type} for citizen {citizen_username} with priority {priority}{LogColors.ENDC}")
+        
+        # Check if 'processes' table exists in the tables dictionary
+        if 'processes' not in tables:
+            log.warning(f"{LogColors.WARNING}Table 'processes' not found in tables dictionary. Available tables: {list(tables.keys())}{LogColors.ENDC}")
+            log.info(f"{LogColors.OKBLUE}Process {process_id} creation skipped due to missing 'processes' table.{LogColors.ENDC}")
+            return None
+            
         process_record = tables['processes'].create(payload)
         log.info(f"{LogColors.OKGREEN}Successfully created process {process_id}{LogColors.ENDC}")
         return process_record

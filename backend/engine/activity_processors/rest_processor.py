@@ -51,14 +51,18 @@ def process(
         "activity_details": activity_details
     }
     
-    create_process(
-        tables=tables,
-        process_type=PROCESS_TYPE_DAILY_REFLECTION,
-        citizen_username=citizen_username,
-        priority=5,  # Medium priority
-        details=process_details,
-        api_base_url=api_base_url
-    )
+    # Check if 'processes' table exists before creating process
+    if 'processes' in tables:
+        create_process(
+            tables=tables,
+            process_type=PROCESS_TYPE_DAILY_REFLECTION,
+            citizen_username=citizen_username,
+            priority=5,  # Medium priority
+            details=process_details,
+            api_base_url=api_base_url
+        )
+    else:
+        log.warning(f"{LogColors.WARNING}Cannot create daily reflection process for {citizen_username} - 'processes' table not available.{LogColors.ENDC}")
 
     # The 'rest' activity itself is considered successful by its completion.
     # KinOS reflection is an add-on that will be processed asynchronously.

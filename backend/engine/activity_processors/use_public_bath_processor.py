@@ -139,14 +139,18 @@ def process(
         "public_bath_name": public_bath_name
     }
     
-    create_process(
-        tables=tables,
-        process_type=PROCESS_TYPE_PUBLIC_BATH_REFLECTION,
-        citizen_username=citizen_username,
-        priority=5,  # Medium priority
-        details=process_details,
-        api_base_url=api_base_url
-    )
+    # Check if 'processes' table exists before creating process
+    if 'processes' in tables:
+        create_process(
+            tables=tables,
+            process_type=PROCESS_TYPE_PUBLIC_BATH_REFLECTION,
+            citizen_username=citizen_username,
+            priority=5,  # Medium priority
+            details=process_details,
+            api_base_url=api_base_url
+        )
+    else:
+        log.warning(f"{LogColors.WARNING}Cannot create public bath reflection process for {citizen_username} - 'processes' table not available.{LogColors.ENDC}")
 
     return True
 

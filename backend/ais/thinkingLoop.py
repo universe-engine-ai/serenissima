@@ -220,6 +220,12 @@ def main():
         # Initialize tables
         tables = get_tables()
         
+        # Check if processes table exists
+        if 'processes' not in tables:
+            log_error("PROCESSES table not found in Airtable. This is required for the thinking loop to function.")
+            log_info("Available tables: " + ", ".join(tables.keys()))
+            return
+        
         # Import process helper here to avoid circular imports
         from backend.engine.utils.process_helper import (
             get_next_pending_process,
