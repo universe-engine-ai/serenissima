@@ -253,11 +253,11 @@ def get_housed_citizens(tables) -> List[Dict]:
     log.info("Fetching housed citizens...")
     
     try:
-        # Get buildings with non-empty Occupant field
+        # Get buildings with non-empty Occupant field AND Category = 'home'
         # We also need the building's Type to determine its Tier later if not directly on building record
         occupied_buildings = tables['buildings'].all(
-            formula="NOT(OR({Occupant} = '', {Occupant} = BLANK()))",
-            fields=['Occupant', 'Name', 'RentPrice', 'Owner', 'Type'] # Removed Tier as it doesn't exist in Airtable
+            formula="AND({Category}='home', NOT(OR({Occupant} = '', {Occupant} = BLANK())))",
+            fields=['Occupant', 'Name', 'RentPrice', 'Owner', 'Type', 'Category'] # Added Category for verification
         )
         
         # Extract the occupant IDs
