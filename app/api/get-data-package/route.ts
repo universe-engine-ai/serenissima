@@ -962,7 +962,26 @@ function convertDataPackageToMarkdown(dataPackage: any, citizenUsername: string 
     dataPackage.strongestRelationships.forEach((rel: any, index: number) => {
       const otherCitizen = rel.citizen1 === citizenUsername ? rel.citizen2 : rel.citizen1;
       md += `### Relationship ${index + 1} with ${otherCitizen}\n`;
-      md += formatSimpleObjectForMarkdown(rel, ['title', 'status', 'strengthScore', 'trustScore', 'lastInteraction']);
+      
+      // Add title with proper formatting if available
+      if (rel.title) {
+        md += `- **Relationship Type**: ${rel.title}\n`;
+      }
+      
+      // Add description with proper formatting if available
+      if (rel.description) {
+        md += `- **Description**: ${rel.description}\n`;
+      }
+      
+      // Add other relationship details
+      md += `- **Status**: ${rel.status || 'Unknown'}\n`;
+      md += `- **Strength Score**: ${rel.strengthScore || '0'}\n`;
+      md += `- **Trust Score**: ${rel.trustScore || '0'}\n`;
+      
+      // Format the last interaction date if available
+      if (rel.lastInteraction) {
+        md += `- **Last Interaction**: ${formatDate(rel.lastInteraction)}\n`;
+      }
     });
     if (dataPackage.strongestRelationships.length === 20) {
       md += `- ... (and more)\n`;
