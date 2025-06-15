@@ -289,18 +289,9 @@ def resolve_resource_not_for_sale(problem: Dict, tables: Dict[str, Table], resou
     elif target_amount < 1.0 and remaining_capacity > 0: # If calculated amount is too small but there's space
         target_amount = max(1.0, round(remaining_capacity * 0.1, 2)) # Try 10% or at least 1
     elif target_amount < 1.0 and remaining_capacity <= 0: # No space
-        # Special case for public docks and similar buildings that should still be able to sell
-        if building_type_str in ["public_dock", "market_stall", "retail_shop"]:
-            target_amount = 5.0 # Small default amount for these special building types
-            log.info(f"  Building {building_id} ({building_type_str}) has no remaining capacity but is a special type. Using default target amount of {target_amount} for {resource_type}.")
-        else:
-            target_amount = 0.0 # Cannot sell if no space to even hold 1 unit for sale logic
-
-    if target_amount == 0.0:
-        log.warning(f"  Building {building_id} has no remaining storage capacity. Cannot create sell contract for {resource_type}.")
-        # This isn't a failure of the resolver itself, but a condition preventing resolution.
-        # We might want to update the problem notes differently or return a specific status.
-        return False
+        # All buildings should be able to sell regardless of storage capacity
+        target_amount = 5.0 # Default amount for buildings with no remaining capacity
+        log.info(f"  Building {building_id} ({building_type_str}) has no remaining capacity. Using default target amount of {target_amount} for {resource_type}.")
 
 
     activity_params = {
