@@ -805,6 +805,7 @@ def process_ai_message_initiatives(dry_run: bool = False, citizen1_arg: Optional
                             "channel": channel_name_initiative
                         }
                         print(f"    Tentative d'envoi de message via activité 'send_message' avec canal: {channel_name_initiative}")
+                        print(f"    Paramètres d'activité: {json.dumps(activity_params)}")
                         if call_try_create_activity_api(ai_username, "send_message", activity_params, dry_run):
                             initiatives_summary["total_messages_sent"] += 1
                             initiatives_summary["details"][ai_username]["messages_sent_count"] += 1
