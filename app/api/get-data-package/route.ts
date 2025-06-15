@@ -490,7 +490,7 @@ async function fetchStratagemDefinitions(): Promise<Record<string, Record<string
       purpose: "To strategically lower the selling prices of a citizen's goods to be cheaper than their competition for a specific resource type.",
       category: 'commerce',
       nature: 'aggressive',
-      status: 'Implemented',
+      status: 'Coming Soon',
     },
     {
       name: 'Coordinate Pricing',
@@ -506,7 +506,7 @@ async function fetchStratagemDefinitions(): Promise<Record<string, Record<string
       purpose: "To systematically accumulate a specific resource type in a designated storage building.",
       category: 'commerce',
       nature: 'neutral',
-      status: 'Implemented',
+      status: 'Coming Soon',
     },
     {
       name: 'Supplier Lockout',
@@ -538,7 +538,7 @@ async function fetchStratagemDefinitions(): Promise<Record<string, Record<string
       purpose: "To quickly convert a citizen's owned inventory into cash, albeit at potentially below-market rates.",
       category: 'commerce',
       nature: 'neutral',
-      status: 'Implemented',
+      status: 'Coming Soon',
     },
     {
         name: 'Cultural Patronage',
@@ -594,7 +594,7 @@ async function fetchStratagemDefinitions(): Promise<Record<string, Record<string
         purpose: "To subtly damage a competitor's reputation by spreading rumors through social networks.",
         category: 'personal',
         nature: 'aggressive',
-        status: 'Coming Soon',
+        status: 'Implemented',
     },
     {
         name: 'Employee Poaching',
