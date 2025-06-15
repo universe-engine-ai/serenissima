@@ -117,8 +117,12 @@ def process(
     # Identifier les citoyens présents au lieu de la rumeur
     all_citizens_records = tables['citizens'].all(formula="{IsAI}=TRUE()") # Uniquement les IA pour l'instant
     present_citizens_usernames = []
+    
+    # Récupérer la position de l'exécuteur sous forme de chaîne pour comparaison exacte
+    executor_record = get_citizen_record(tables, executor_username)
+    executor_pos_str = executor_record['fields'].get('Position') if executor_record else None
 
-    for citizen_rec in all_citizens_records: # Correction de la faute de frappe
+    for citizen_rec in all_citizens_records:
         other_citizen_username = citizen_rec['fields'].get('Username')
         if not other_citizen_username or other_citizen_username == executor_username:
             continue
@@ -127,6 +131,13 @@ def process(
         if not other_citizen_pos_str:
             continue
         
+        # Vérifier d'abord si la position est exactement la même (comparaison de chaînes)
+        if executor_pos_str and other_citizen_pos_str == executor_pos_str:
+            log.info(f"Citoyen {other_citizen_username} est à la même position exacte que {executor_username}. Ajouté comme destinataire de la rumeur.")
+            present_citizens_usernames.append(other_citizen_username)
+            continue
+        
+        # Sinon, vérifier la proximité par distance
         try:
             other_citizen_pos = json.loads(other_citizen_pos_str)
             distance = calculate_haversine_distance_meters(

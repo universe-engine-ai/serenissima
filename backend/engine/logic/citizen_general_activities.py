@@ -2457,12 +2457,45 @@ def _handle_spread_rumor(
     except Exception as e_check_recent:
         log.error(f"{LogColors.FAIL}[Rumeur] Erreur lors de la vérification des rumeurs récentes pour {citizen_name}: {e_check_recent}{LogColors.ENDC}")
         return False if check_only else None
+        
+    # Vérifier qu'il y a au moins un autre citoyen à la même position exacte (comparaison de chaînes)
+    if not citizen_position_str:
+        log.info(f"{LogColors.OKBLUE}[Rumeur] {citizen_name} n'a pas de position sous forme de chaîne. Impossible de vérifier la présence d'autres citoyens.{LogColors.ENDC}")
+        return False if check_only else None
+        
+    other_citizens_at_same_position = False
+    try:
+        # Rechercher tous les citoyens IA qui ont exactement la même position (comparaison de chaînes)
+        all_citizens = tables['citizens'].all(formula="{IsAI}=TRUE()")
+        for other_citizen in all_citizens:
+            other_username = other_citizen['fields'].get('Username')
+            other_position_str = other_citizen['fields'].get('Position')
+            
+            # Ignorer le citoyen lui-même et ceux sans position
+            if other_username == citizen_username or not other_position_str:
+                continue
+                
+            # Comparaison exacte des chaînes de position
+            if other_position_str == citizen_position_str:
+                other_citizens_at_same_position = True
+                log.info(f"{LogColors.OKBLUE}[Rumeur] {citizen_name} a trouvé {other_username} à la même position exacte.{LogColors.ENDC}")
+                break
+                
+        if not other_citizens_at_same_position:
+            log.info(f"{LogColors.OKBLUE}[Rumeur] {citizen_name} n'a trouvé aucun autre citoyen à la même position exacte. Pas de rumeur possible.{LogColors.ENDC}")
+            return False if check_only else None
+    except Exception as e_check_position:
+        log.error(f"{LogColors.FAIL}[Rumeur] Erreur lors de la vérification des citoyens à la même position que {citizen_name}: {e_check_position}{LogColors.ENDC}")
+        return False if check_only else None
 
     if check_only:
         return True  # Si on vérifie juste la possibilité, on suppose que c'est possible
     
     # Appeler le créateur d'activité spread_rumor
-    activity_params = {}  # Paramètres vides, le créateur choisira la cible et le contenu
+    activity_params = {
+        "position": citizen_position,  # Ajouter la position actuelle pour que le créateur l'utilise
+        "positionStr": citizen_position_str  # Ajouter la position sous forme de chaîne pour référence
+    }  # Paramètres avec position, le créateur choisira la cible et le contenu
     
     creation_successful = try_create_spread_rumor_activity(
         tables=tables,
