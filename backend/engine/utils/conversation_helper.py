@@ -200,7 +200,8 @@ def persist_message(
     content: str,
     message_type: str,
     channel_name: str,
-    kinos_message_id: Optional[str] = None
+    kinos_message_id: Optional[str] = None,
+    target_citizen_username: Optional[str] = None  # Nouveau paramètre pour stocker la cible
 ) -> Optional[Dict]:
     """Persists a message to the Airtable MESSAGES table."""
     
@@ -267,8 +268,21 @@ def persist_message(
         log.info(f"Message from {sender_username} to self. Setting ReadAt to current time.")
     # Else, "ReadAt" will be null initially for the receiver
 
-    if kinos_message_id: # If KinOS provides a message ID, store it
-        payload["Notes"] = json.dumps({"kinos_message_id": kinos_message_id})
+    # Préparer les données pour le champ Notes
+    notes_data = {}
+    
+    # Ajouter kinos_message_id si présent
+    if kinos_message_id:
+        notes_data["kinos_message_id"] = kinos_message_id
+    
+    # Ajouter targetCitizen si présent
+    if target_citizen_username:
+        notes_data["targetCitizen"] = target_citizen_username
+        log.info(f"Storing targetCitizen '{target_citizen_username}' in message Notes")
+    
+    # Ajouter le champ Notes seulement si nous avons des données à stocker
+    if notes_data:
+        payload["Notes"] = json.dumps(notes_data)
 
     try:
         # Log payload without sensitive details if necessary, or just key fields
@@ -805,7 +819,8 @@ def generate_conversation_turn(
         receiver_username=message_receiver,
         content=ai_message_content,
         message_type=message_type_to_persist,
-        channel_name=channel_name # Channel remains the pair for context, type differentiates
+        channel_name=channel_name, # Channel remains the pair for context, type differentiates
+        target_citizen_username=target_citizen_username_for_trust_impact  # Passer la cible pour stockage dans Notes
     )
 
     if persisted_message_record:
