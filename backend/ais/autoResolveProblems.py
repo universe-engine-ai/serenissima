@@ -741,6 +741,108 @@ def resolve_zero_wages_business(problem: Dict, tables: Dict[str, Table], dry_run
     log.info(f"  Calling 'adjust_business_wages' for {operator_username}, building {building_id}, new wages {new_wages} (failures: {failure_count}).")
     return call_try_create_activity_api(operator_username, "adjust_business_wages", activity_params, dry_run)
 
+def resolve_waiting_on_input_delivery(problem: Dict, tables: Dict[str, Table], resource_defs: Dict, building_type_defs: Dict, dry_run: bool) -> bool:
+    """Attempts to resolve 'waiting_on_input_delivery' by creating a fetch_resource activity for the building's occupant."""
+    log.info(f"Attempting to resolve 'waiting_on_input_delivery': {problem['fields'].get('Title')}")
+    building_id = problem['fields'].get('Asset')
+    if not building_id:
+        log.error(f"  Missing BuildingId for problem {problem['id']}. Cannot resolve.")
+        return False
+
+    building_record = get_building_record(tables, building_id)
+    if not building_record:
+        log.error(f"  Building {building_id} not found. Cannot resolve problem {problem['id']}.")
+        return False
+
+    # Get the occupant of the building
+    occupant_username = building_record['fields'].get('Occupant')
+    if not occupant_username:
+        log.error(f"  Building {building_id} has no occupant. Cannot create fetch activity.")
+        return False
+    
+    # Extract resource type from title or description
+    resource_type = None
+    title = problem['fields'].get('Title', '')
+    description = problem['fields'].get('Description', '')
+    
+    # Try to extract from title first
+    title_match = re.search(r"Awaiting Input Delivery: (\w+)", title)
+    if title_match:
+        resource_type = title_match.group(1)
+    else:
+        # Try to extract from description
+        desc_match = re.search(r"missing inputs \((\w+)\)", description)
+        if desc_match:
+            resource_type = desc_match.group(1)
+    
+    if not resource_type:
+        log.error(f"  Could not determine resource type from problem title or description. Cannot create fetch activity.")
+        return False
+    
+    # Check if there's already an active fetch_resource activity for this occupant and resource
+    try:
+        # Look for active fetch_resource activities
+        fetch_activity_formula = f"AND({{Citizen}}='{_escape_airtable_value(occupant_username)}', {{Type}}='fetch_resource', OR({{Status}}='created', {{Status}}='in_progress'))"
+        existing_activities = tables['activities'].all(formula=fetch_activity_formula)
+        
+        for activity in existing_activities:
+            # Check if this activity is for the resource we need
+            resources_json = activity['fields'].get('Resources')
+            if resources_json:
+                try:
+                    resources_list = json.loads(resources_json)
+                    for resource_item in resources_list:
+                        if resource_item.get('ResourceId') == resource_type:
+                            log.info(f"  Found existing fetch_resource activity for {occupant_username} and resource {resource_type}. Skipping creation.")
+                            return True
+                except (json.JSONDecodeError, TypeError):
+                    pass
+    except Exception as e:
+        log.warning(f"  Error checking for existing fetch activities: {e}")
+    
+    # Find the source building with the resource (from markup_buy contract)
+    source_building_id = None
+    contract_id = None
+    
+    try:
+        # Look for active markup_buy contracts for this building and resource
+        contract_formula = f"AND({{BuyerBuilding}}='{_escape_airtable_value(building_id)}', {{ResourceType}}='{_escape_airtable_value(resource_type)}', {{Type}}='markup_buy', {{Status}}='active')"
+        markup_buy_contracts = tables['contracts'].all(formula=contract_formula)
+        
+        for contract in markup_buy_contracts:
+            seller_building_id = contract['fields'].get('SellerBuilding')
+            if seller_building_id:
+                # Check if the seller has stock
+                seller_username = contract['fields'].get('Seller')
+                if seller_username:
+                    # Get resource stock at seller building
+                    resource_formula = f"AND({{Asset}}='{_escape_airtable_value(seller_building_id)}', {{AssetType}}='building', {{Type}}='{_escape_airtable_value(resource_type)}', {{Owner}}='{_escape_airtable_value(seller_username)}')"
+                    resource_records = tables['resources'].all(formula=resource_formula)
+                    
+                    if resource_records and float(resource_records[0]['fields'].get('Count', 0)) > 0:
+                        source_building_id = seller_building_id
+                        contract_id = contract['fields'].get('ContractId', contract['id'])
+                        break
+    except Exception as e:
+        log.warning(f"  Error finding source building with stock: {e}")
+    
+    if not source_building_id:
+        log.warning(f"  Could not find a source building with stock for {resource_type}. Cannot create fetch activity.")
+        return False
+    
+    # Create fetch_resource activity
+    activity_params = {
+        "resourceType": resource_type,
+        "fromBuildingId": source_building_id,
+        "toBuildingId": building_id,
+        "contractId": contract_id,
+        "title": f"Fetch {resource_type} for {building_record['fields'].get('Name', building_id)}",
+        "description": f"Fetching {resource_type} from supplier to resolve input shortage at {building_record['fields'].get('Name', building_id)}"
+    }
+    
+    log.info(f"  Calling try-create for 'fetch_resource' for {occupant_username}, from building {source_building_id} to {building_id}, resource {resource_type}.")
+    return call_try_create_activity_api(occupant_username, "fetch_resource", activity_params, dry_run)
+
 def resolve_do_nothing(problem: Dict, tables: Dict[str, Table], dry_run: bool) -> str: # Changed return type
     """Resolver for problems where the defined action is to do nothing."""
     problem_type = problem['fields'].get('Type')
@@ -777,7 +879,7 @@ def auto_resolve_problems_main(dry_run: bool = False, problem_type_filter: Optio
         "waiting_for_production": resolve_waiting_for_production, # 3. Si pas d'Occupant: Augmente wages
         "no_markup_buy_contract_for_input": resolve_no_markup_buy_contract_for_input, # 4. Oui
         "supplier_shortage": resolve_supplier_or_resource_shortage, # 5. Oui (augmente prix markup_buy)
-        "waiting_on_input_delivery": resolve_do_nothing, # 6. Oui (ne rien faire pour l'instant)
+        "waiting_on_input_delivery": resolve_waiting_on_input_delivery, # 6. Create fetch_resource activity
         "no_import_contract": resolve_no_import_contract, # 7. Oui, manage_import_contract
         "waiting_for_galley_unloading": resolve_do_nothing, # 8. Ne rien faire
         "waiting_for_galley_arrival": resolve_do_nothing, # 9. Oui (ne rien faire)
@@ -828,7 +930,6 @@ def auto_resolve_problems_main(dry_run: bool = False, problem_type_filter: Optio
                 "hungry_citizen",
                 "zero_rent_building",
                 "zero_wages_business",
-                "waiting_on_input_delivery", # do_nothing
                 "waiting_for_galley_unloading", # do_nothing
                 "waiting_for_galley_arrival", # do_nothing
                 "waiting_for_resource_delivery", # do_nothing
@@ -837,6 +938,8 @@ def auto_resolve_problems_main(dry_run: bool = False, problem_type_filter: Optio
                 "resource_shortage" # do_nothing (moved here)
             ]:
                 resolution_status = resolver_func(problem, tables, dry_run)
+            elif problem_type == "waiting_on_input_delivery":
+                resolution_status = resolver_func(problem, tables, resource_defs, building_type_defs, dry_run)
             elif problem_type in [
                 "no_operator_for_stock", 
                 "waiting_for_production", 
