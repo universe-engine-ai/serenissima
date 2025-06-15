@@ -863,7 +863,19 @@ def process_guided_reflection(
                 "What opportunities exist to expand your commercial interests or enter new markets?",
                 "How might you increase your social standing and influence among the merchant class?",
                 "What threats to your business interests require your attention?",
-                "How can you balance commercial success with civic responsibility in Venice?"
+                "How can you balance commercial success with civic responsibility in Venice?",
+                "Strange how bread prices rise just before the galleys arrive",
+                "The Tedeschi merchants seem unusually coordinated lately",
+                "Every time I find a good supplier, someone undercuts me within days",
+                "Information flows through this city like water, but who controls the source?",
+                "It's always the same five merchants at the dock auctions",
+                "Their bids stop competing once outsiders drop out",
+                "The guild meetings feel more like theater than governance",
+                "Someone profits from our predictability",
+                "What if we small merchants formed our own intelligence network?",
+                "Collective purchasing could break their stranglehold",
+                "The porters see everything - they could be our eyes",
+                "Trust is our weapon; secrecy is theirs"
             ],
             "Popolani": [
                 "How is your craft or trade developing? Are there new techniques or approaches you should master?",
