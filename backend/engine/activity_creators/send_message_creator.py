@@ -1,8 +1,10 @@
 import json
 import uuid
 import logging
+import random
+import re
 from datetime import datetime, timezone, timedelta
-from typing import Dict, Any, Optional
+from typing import Dict, Any, Optional, Tuple, List, Union
 from backend.engine.utils.activity_helpers import (
     _escape_airtable_value,
     VENICE_TIMEZONE,
@@ -10,10 +12,79 @@ from backend.engine.utils.activity_helpers import (
     get_building_record,
     get_citizen_record,
     get_citizen_home,
-    get_citizen_workplace
+    get_citizen_workplace,
+    clean_thought_content
 )
 
 log = logging.getLogger(__name__)
+
+def choose_interlocutor_via_kinos(
+    tables: Dict[str, Any],
+    ai_username: str,
+    ai_data_package: str,
+    api_base_url: str
+) -> Optional[Tuple[str, str]]:
+    """
+    Appelle l'API pour choisir un interlocuteur et la raison de l'interaction.
+    Retourne (target_username, reason) ou (None, None).
+    
+    Cette version simplifiée utilise l'API directement plutôt que KinOS.
+    """
+    try:
+        # Extraire le prénom et la classe sociale du citoyen à partir du markdown
+        ai_display_name = ai_username  # Valeur par défaut
+        ai_social_class = None  # Valeur par défaut
+        
+        # Rechercher le prénom dans le markdown
+        first_name_match = re.search(r'firstName: ([^\n]+)', ai_data_package, re.IGNORECASE) or \
+                          re.search(r'FirstName: ([^\n]+)', ai_data_package, re.IGNORECASE)
+        if first_name_match:
+            ai_display_name = first_name_match.group(1).strip()
+        
+        # Rechercher la classe sociale dans le markdown
+        social_class_match = re.search(r'socialClass: ([^\n]+)', ai_data_package, re.IGNORECASE) or \
+                             re.search(r'SocialClass: ([^\n]+)', ai_data_package, re.IGNORECASE)
+        if social_class_match:
+            ai_social_class = social_class_match.group(1).strip()
+
+        # Appel à l'API pour obtenir des suggestions d'interlocuteurs
+        import requests
+        api_url = f"{api_base_url}/api/suggest-interlocutors"
+        payload = {
+            "citizenUsername": ai_username,
+            "limit": 5
+        }
+        
+        response = requests.post(api_url, json=payload, timeout=30)
+        if not response.ok:
+            log.error(f"Erreur lors de l'appel à l'API suggest-interlocutors: {response.status_code} {response.text}")
+            return None, None
+            
+        data = response.json()
+        if not data.get("success") or not data.get("suggestions"):
+            log.warning(f"Aucune suggestion d'interlocuteur retournée par l'API pour {ai_username}")
+            return None, None
+            
+        suggestions = data.get("suggestions", [])
+        if not suggestions:
+            return None, None
+            
+        # Choisir aléatoirement parmi les suggestions
+        chosen_suggestion = random.choice(suggestions)
+        target_username = chosen_suggestion.get("username")
+        reason = chosen_suggestion.get("reason", "Prendre des nouvelles")
+        
+        if target_username:
+            log.info(f"Interlocuteur choisi pour {ai_username}: {target_username}. Raison: {reason}")
+            return target_username, reason
+        else:
+            return None, None
+            
+    except Exception as e:
+        log.error(f"Erreur lors du choix d'un interlocuteur pour {ai_username}: {e}")
+        import traceback
+        log.error(traceback.format_exc())
+        return None, None
 
 def try_create(
     tables: Dict[str, Any],
@@ -28,6 +99,9 @@ def try_create(
     2. A deliver_message_interaction activity to deliver the message
     
     This approach creates the complete activity chain upfront.
+    
+    If receiverUsername is not specified, it will attempt to dynamically select
+    a recipient using the choose_interlocutor_via_kinos function.
     """
     # Extract required parameters
     receiver_username = details.get('receiverUsername')
@@ -36,6 +110,46 @@ def try_create(
     target_building_id = details.get('targetBuildingId')  # Optional specific meeting place
     conversation_length = details.get('conversationLength', 3)  # Default to 3 exchanges
     channel = details.get('channel')  # Extract channel parameter
+    
+    # Si aucun destinataire n'est spécifié, essayer d'en choisir un dynamiquement
+    if not receiver_username:
+        log.info("Aucun destinataire spécifié. Tentative de sélection dynamique d'un interlocuteur.")
+        sender_username = citizen_record['fields'].get('Username')
+        
+        # Récupérer le data package du citoyen pour l'analyse
+        try:
+            data_package_url = f"{api_base_url}/api/get-data-package?citizenUsername={sender_username}&format=markdown"
+            import requests
+            response = requests.get(data_package_url, timeout=60)
+            if response.ok:
+                ai_data_package = response.text
+                receiver_username, reason_for_contact = choose_interlocutor_via_kinos(
+                    tables, 
+                    sender_username, 
+                    ai_data_package,
+                    api_base_url
+                )
+                
+                if receiver_username and not content:
+                    # Générer un contenu de message basé sur la raison du contact
+                    content = f"Bonjour, je vous contacte à propos de: {reason_for_contact}"
+                    log.info(f"Message généré automatiquement pour {receiver_username}: {content}")
+                    
+                    # Ajouter la raison aux notes pour le traitement
+                    if isinstance(details.get('notes'), dict):
+                        details['notes']['purpose'] = reason_for_contact
+                        details['notes']['dynamicallySelected'] = True
+                    else:
+                        details['notes'] = {
+                            'purpose': reason_for_contact,
+                            'dynamicallySelected': True
+                        }
+            else:
+                log.error(f"Impossible de récupérer le data package pour {sender_username}: {response.status_code}")
+        except Exception as e:
+            log.error(f"Erreur lors de la récupération du data package ou de la sélection d'un interlocuteur: {e}")
+            import traceback
+            log.error(traceback.format_exc())
     
     # Extract inReplyToMessageId and other parameters from the nested 'notes' field if present
     # The 'details' argument to this function *is* activityParameters from the API call.
@@ -78,7 +192,43 @@ def try_create(
             # Re-validate after extracting from nested parameters
             if not (receiver_username and content):
                 log.error(f"Still missing required details after checking nested parameters")
-                return None
+                
+                # Essayer de sélectionner dynamiquement un destinataire si toujours manquant
+                if not receiver_username:
+                    log.info("Tentative de sélection dynamique d'un interlocuteur après échec de l'extraction des paramètres imbriqués.")
+                    sender_username = citizen_record['fields'].get('Username')
+                    
+                    try:
+                        data_package_url = f"{api_base_url}/api/get-data-package?citizenUsername={sender_username}&format=markdown"
+                        import requests
+                        response = requests.get(data_package_url, timeout=60)
+                        if response.ok:
+                            ai_data_package = response.text
+                            receiver_username, reason_for_contact = choose_interlocutor_via_kinos(
+                                tables, 
+                                sender_username, 
+                                ai_data_package,
+                                api_base_url
+                            )
+                            
+                            if receiver_username and not content:
+                                content = f"Bonjour, je vous contacte à propos de: {reason_for_contact}"
+                                log.info(f"Message généré automatiquement pour {receiver_username}: {content}")
+                                
+                                # Ajouter la raison aux notes
+                                nested_params['notes'] = {
+                                    'purpose': reason_for_contact,
+                                    'dynamicallySelected': True
+                                }
+                    except Exception as e:
+                        log.error(f"Erreur lors de la sélection dynamique d'un interlocuteur: {e}")
+                
+                # Re-vérifier après tentative de sélection dynamique
+                if not (receiver_username and content):
+                    log.error(f"Toujours des détails manquants après tentative de sélection dynamique")
+                    return None
+                else:
+                    log.info(f"Paramètres complétés avec succès: receiver={receiver_username}, content_length={len(content)}")
             else:
                 log.info(f"Successfully extracted parameters from nested structure: receiver={receiver_username}, content_length={len(content)}")
                 # Continue with the extracted parameters
@@ -103,14 +253,90 @@ def try_create(
                     channel = details.get('channel')
                 
                 # Re-validate after extracting from root level
-                if receiver_username and content:
+                if not (receiver_username and content):
+                    # Essayer de sélectionner dynamiquement un destinataire si toujours manquant
+                    if not receiver_username:
+                        log.info("Tentative de sélection dynamique d'un interlocuteur après échec de l'extraction des paramètres au niveau racine.")
+                        sender_username = citizen_record['fields'].get('Username')
+                        
+                        try:
+                            data_package_url = f"{api_base_url}/api/get-data-package?citizenUsername={sender_username}&format=markdown"
+                            import requests
+                            response = requests.get(data_package_url, timeout=60)
+                            if response.ok:
+                                ai_data_package = response.text
+                                receiver_username, reason_for_contact = choose_interlocutor_via_kinos(
+                                    tables, 
+                                    sender_username, 
+                                    ai_data_package,
+                                    api_base_url
+                                )
+                                
+                                if receiver_username and not content:
+                                    content = f"Bonjour, je vous contacte à propos de: {reason_for_contact}"
+                                    log.info(f"Message généré automatiquement pour {receiver_username}: {content}")
+                                    
+                                    # Ajouter la raison aux notes
+                                    details['notes'] = {
+                                        'purpose': reason_for_contact,
+                                        'dynamicallySelected': True
+                                    }
+                        except Exception as e:
+                            log.error(f"Erreur lors de la sélection dynamique d'un interlocuteur: {e}")
+                    
+                    # Re-vérifier après tentative de sélection dynamique
+                    if not (receiver_username and content):
+                        log.error(f"Toujours des détails manquants après tentative de sélection dynamique")
+                        return None
+                    else:
+                        log.info(f"Paramètres complétés avec succès: receiver={receiver_username}, content_length={len(content)}")
+                else:
                     log.info(f"Successfully extracted parameters from root level: receiver={receiver_username}, content_length={len(content)}")
                     # Continue with the extracted parameters
-                else:
-                    log.error(f"Still missing required details after checking root level")
-                    return None
             else:
-                return None
+                # Dernière tentative de sélection dynamique avant d'abandonner
+                sender_username = citizen_record['fields'].get('Username')
+                try:
+                    data_package_url = f"{api_base_url}/api/get-data-package?citizenUsername={sender_username}&format=markdown"
+                    import requests
+                    response = requests.get(data_package_url, timeout=60)
+                    if response.ok:
+                        ai_data_package = response.text
+                        receiver_username, reason_for_contact = choose_interlocutor_via_kinos(
+                            tables, 
+                            sender_username, 
+                            ai_data_package,
+                            api_base_url
+                        )
+                        
+                        if receiver_username:
+                            if not content:
+                                content = f"Bonjour, je vous contacte à propos de: {reason_for_contact}"
+                            log.info(f"Message généré automatiquement pour {receiver_username}: {content}")
+                            
+                            # Créer ou mettre à jour les notes
+                            if not isinstance(details, dict):
+                                details = {}
+                            details['notes'] = {
+                                'purpose': reason_for_contact,
+                                'dynamicallySelected': True
+                            }
+                            
+                            # Re-vérifier après tentative de sélection dynamique
+                            if receiver_username and content:
+                                log.info(f"Paramètres complétés avec succès via sélection dynamique: receiver={receiver_username}, content_length={len(content)}")
+                            else:
+                                log.error(f"Échec de la sélection dynamique finale")
+                                return None
+                        else:
+                            log.error(f"Échec de la sélection dynamique finale - aucun destinataire trouvé")
+                            return None
+                    else:
+                        log.error(f"Impossible de récupérer le data package pour la sélection dynamique finale")
+                        return None
+                except Exception as e:
+                    log.error(f"Erreur lors de la tentative finale de sélection dynamique: {e}")
+                    return None
     
     # Validate conversation_length
     if not isinstance(conversation_length, int) or conversation_length < 1:
