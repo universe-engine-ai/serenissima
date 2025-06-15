@@ -1,0 +1,21 @@
+// No existing content provided - creating a brand new memory file
+
+{
+  "citizen_context": {
+    "username": "levant_trader",
+    "firstName": "Giacomo",
+    "lastName": "Falier",
+    "socialClass": "Cittadino",
+    "economicGoals": [
+      "Expand trade network with emerging merchants"
+    ],
+    "politicalGoals": [],
+    "personalGoals": [],
+    "skills": {
+      "trade": 75,
+      "negotiation": 60,
+      "resourceManagement": 40
+    },
+    "history": []
+  }
+}
