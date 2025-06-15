@@ -159,7 +159,7 @@ def process(
             spread_rumor_payload = {
                 "type": "spread_rumor",
                 "citizen": executed_by,
-                "title": f"Répandre une rumeur sur {target_citizen_gossip} au lieu {i+1}",
+                "title": f"Répandre une rumeur {target_citizen_gossip and 'sur ' + target_citizen_gossip or 'générale'} au lieu {i+1}",
                 "priority": 25,
                 "notes": json.dumps({
                     "targetCitizen": target_citizen_gossip,

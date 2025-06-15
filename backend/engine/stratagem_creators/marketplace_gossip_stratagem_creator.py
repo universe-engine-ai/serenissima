@@ -149,10 +149,13 @@ def try_create(
         rumor_end_utc = rumor_start_utc + timedelta(hours=SPREAD_RUMOR_DURATION_HOURS)
         
         spread_rumor_notes_details = {
-            "targetCitizen": target_citizen_param,
             "gossipContent": gossip_content_param,
             "locationCoords": target_coords # Où la rumeur est répandue
         }
+        
+        # Ajouter targetCitizen seulement s'il est spécifié
+        if target_citizen_param:
+            spread_rumor_notes_details["targetCitizen"] = target_citizen_param
         # FromBuilding/ToBuilding pour spread_rumor peut être le bâtiment le plus proche du target_coords
         # Pour l'instant, on le laisse vide, le processeur utilisera locationCoords des Notes.
         spread_rumor_payload = {
