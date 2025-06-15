@@ -201,7 +201,8 @@ def persist_message(
     message_type: str,
     channel_name: str,
     kinos_message_id: Optional[str] = None,
-    target_citizen_username: Optional[str] = None  # Nouveau paramètre pour stocker la cible
+    target_citizen_username: Optional[str] = None,  # Nouveau paramètre pour stocker la cible
+    read_at: Optional[str] = None  # Parameter to mark message as read immediately
 ) -> Optional[Dict]:
     """Persists a message to the Airtable MESSAGES table."""
     
