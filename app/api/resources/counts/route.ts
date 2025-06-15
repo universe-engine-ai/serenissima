@@ -50,13 +50,12 @@ export async function GET(request: Request) {
       // Build filter formula based on parameters
       let filterFormula = '';
       if (buildingId) {
-        // Properly escape the buildingId for Airtable formula
-        // Need to handle special characters like dots in coordinates
+        // Use direct equality with proper escaping for Airtable formula
+        // The SEARCH function doesn't work well with special characters like dots
         const escapedBuildingId = buildingId.replace(/'/g, "\\'");
         
-        // Use SEARCH() function instead of direct equality for more reliable matching
-        // This avoids issues with special characters in the buildingId
-        filterFormula = `SEARCH('${escapedBuildingId}', {Asset}) AND {AssetType}='building'`;
+        // Use direct equality instead of SEARCH
+        filterFormula = `{Asset}='${escapedBuildingId}' AND {AssetType}='building'`;
       }
       
       const selectOptions: any = {
