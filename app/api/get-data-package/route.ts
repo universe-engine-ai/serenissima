@@ -1372,9 +1372,9 @@ export async function GET(request: Request) {
       dataPackage.latestDailyUpdate = {...normalizeKeysCamelCaseShallow(lastDailyUpdateRecord.fields), airtableId: lastDailyUpdateRecord.id};
     }
 
-    // Parallelize fetching resource details for all owned buildings
+    // Parallelize fetching resource details for all owned buildings (only for business buildings)
     const buildingDetailsPromises = ownedBuildingsRecords
-      .filter(buildingRecord => buildingRecord.fields.BuildingId)
+      .filter(buildingRecord => buildingRecord.fields.BuildingId && buildingRecord.fields.Category === 'business')
       .map(async (buildingRecord) => {
         const buildingId = buildingRecord.fields.BuildingId as string;
         const resourceDetails = await fetchBuildingResourceDetails(buildingId);
@@ -1387,7 +1387,17 @@ export async function GET(request: Request) {
         };
       });
     
-    dataPackage.ownedBuildings = await Promise.all(buildingDetailsPromises);
+    // Add non-business buildings without resource details
+    const nonBusinessBuildings = ownedBuildingsRecords
+      .filter(buildingRecord => buildingRecord.fields.BuildingId && buildingRecord.fields.Category !== 'business')
+      .map(buildingRecord => ({
+        ...normalizeKeysCamelCaseShallow(buildingRecord.fields),
+        airtableId: buildingRecord.id
+      }));
+    
+    // Combine business buildings (with resource details) and non-business buildings
+    const businessBuildings = await Promise.all(buildingDetailsPromises);
+    dataPackage.ownedBuildings = [...businessBuildings, ...nonBusinessBuildings];
 
     if (format.toLowerCase() === 'markdown') {
       const markdownContent = convertDataPackageToMarkdown(dataPackage, citizenUsername);

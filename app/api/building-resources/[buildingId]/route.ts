@@ -51,6 +51,19 @@ export async function GET(request: NextRequest) {
       );
     }
     
+    // Check if the building is a business - only process resource details for businesses
+    if (building.category !== 'business') {
+      return NextResponse.json({
+        success: true,
+        buildingId,
+        buildingType: building.type,
+        buildingName: building.name || building.type,
+        category: building.category,
+        owner: building.owner,
+        message: 'Resource details are only available for business buildings'
+      });
+    }
+    
     // 2. Fetch contracts for this building
     console.log(`Fetching contracts for building: ${buildingId}`);
     const contractsResponse = await fetch(`${baseUrl}/api/contracts?sellerBuilding=${encodeURIComponent(buildingId)}`);
