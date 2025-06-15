@@ -54,8 +54,8 @@ export async function GET(request: Request) {
         // The SEARCH function doesn't work well with special characters like dots
         const escapedBuildingId = buildingId.replace(/'/g, "\\'");
         
-        // Use direct equality instead of SEARCH
-        filterFormula = `{Asset}='${escapedBuildingId}' AND {AssetType}='building'`;
+        // Use Airtable's AND() function for proper formula syntax
+        filterFormula = `AND({Asset}='${escapedBuildingId}', {AssetType}='building')`;
       }
       
       const selectOptions: any = {
