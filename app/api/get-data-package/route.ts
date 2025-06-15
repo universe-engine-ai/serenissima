@@ -857,6 +857,17 @@ function convertDataPackageToMarkdown(dataPackage: any, citizenUsername: string 
     }
     md += `- **corePersonality**: ${personalityDisplay}\n`;
   }
+  
+  // Add description if available
+  if (dataPackage.citizen?.description) {
+    md += `\n### Description\n${dataPackage.citizen.description}\n`;
+  }
+  
+  // Add personality if available
+  if (dataPackage.citizen?.personality) {
+    md += `\n### Personality\n${dataPackage.citizen.personality}\n`;
+  }
+  
   md += '\n';
 
   // Last Activity
