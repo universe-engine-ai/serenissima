@@ -143,6 +143,37 @@ def _get_related_citizens(tables: Dict[str, Any], target_username: str, limit: i
         
         if not relationships_table:
             log.error(f"{LogColors.FAIL}Table 'relationships' not found in tables dictionary. Available tables: {list(tables.keys()) if isinstance(tables, dict) else 'Not a dict'}{LogColors.ENDC}")
+            
+            # Essayer d'obtenir les relations via l'API
+            try:
+                import requests
+                api_url = f"{NEXT_JS_BASE_URL}/api/relationships?targetCitizen={target_username}"
+                log.info(f"{LogColors.PROCESS}Attempting to fetch relationships via API: {api_url}{LogColors.ENDC}")
+                response = requests.get(api_url, timeout=30)
+                if response.ok:
+                    relationships_data = response.json()
+                    if relationships_data.get('success') and 'relationships' in relationships_data:
+                        log.info(f"{LogColors.OKGREEN}Successfully fetched {len(relationships_data['relationships'])} relationships via API{LogColors.ENDC}")
+                        # Extraire les usernames des citoyens liés
+                        for rel in relationships_data['relationships']:
+                            other_citizen = None
+                            if rel.get('citizen1') == target_username:
+                                other_citizen = rel.get('citizen2')
+                            elif rel.get('citizen2') == target_username:
+                                other_citizen = rel.get('citizen1')
+                            
+                            if other_citizen and other_citizen != target_username:
+                                related_usernames_set.add(other_citizen)
+                                if len(related_usernames_set) >= limit:
+                                    break
+                        return list(related_usernames_set)
+                    else:
+                        log.warning(f"{LogColors.WARNING}API returned success=false or no relationships{LogColors.ENDC}")
+                else:
+                    log.warning(f"{LogColors.WARNING}Failed to fetch relationships via API: {response.status_code}{LogColors.ENDC}")
+            except Exception as e_api:
+                log.error(f"{LogColors.FAIL}Error fetching relationships via API: {e_api}{LogColors.ENDC}")
+            
             return []
             
         escaped_target_username = _escape_airtable_value(target_username)
@@ -427,17 +458,43 @@ def process(
 
     # 4. Damage relationship between executor and target (regardless of messages sent/activities created)
     trust_change = -50.0 # Significant negative impact
-    update_trust_score_for_activity(
-        tables,
-        executed_by_username,
-        target_citizen_username,
-        trust_change,
-        activity_type_for_notes=f"stratagem_reputation_assault_on_{target_citizen_username}",
-        success=False, # From target's perspective, this is a negative action
-        notes_detail=f"executed_by_{executed_by_username}",
-        activity_record_for_kinos=stratagem_record # Pass the stratagem record for context
-    )
-    log.info(f"{LogColors.PROCESS}Trust score between {executed_by_username} and {target_citizen_username} impacted by {trust_change} due to stratagem {stratagem_id}.{LogColors.ENDC}")
+    try:
+        # Vérifier si la table 'relationships' existe avant d'appeler update_trust_score_for_activity
+        if 'relationships' in tables:
+            update_trust_score_for_activity(
+                tables,
+                executed_by_username,
+                target_citizen_username,
+                trust_change,
+                activity_type_for_notes=f"stratagem_reputation_assault_on_{target_citizen_username}",
+                success=False, # From target's perspective, this is a negative action
+                notes_detail=f"executed_by_{executed_by_username}",
+                activity_record_for_kinos=stratagem_record # Pass the stratagem record for context
+            )
+            log.info(f"{LogColors.PROCESS}Trust score between {executed_by_username} and {target_citizen_username} impacted by {trust_change} due to stratagem {stratagem_id}.{LogColors.ENDC}")
+        else:
+            # Fallback: Utiliser l'API pour mettre à jour la relation
+            try:
+                import requests
+                api_url = f"{NEXT_JS_BASE_URL}/api/relationships/update-trust"
+                payload = {
+                    "citizen1": executed_by_username,
+                    "citizen2": target_citizen_username,
+                    "trustChange": trust_change,
+                    "reason": f"Stratagem reputation assault (ID: {stratagem_id})"
+                }
+                log.info(f"{LogColors.PROCESS}Attempting to update trust score via API: {api_url}{LogColors.ENDC}")
+                response = requests.post(api_url, json=payload, timeout=30)
+                if response.ok:
+                    log.info(f"{LogColors.OKGREEN}Successfully updated trust score via API{LogColors.ENDC}")
+                else:
+                    log.warning(f"{LogColors.WARNING}Failed to update trust score via API: {response.status_code}{LogColors.ENDC}")
+            except Exception as e_api:
+                log.error(f"{LogColors.FAIL}Error updating trust score via API: {e_api}{LogColors.ENDC}")
+    except Exception as e_trust:
+        log.error(f"{LogColors.FAIL}Error during trust score update: {e_trust}{LogColors.ENDC}")
+        import traceback
+        log.error(traceback.format_exc())
 
     # 5. Update stratagem status
     final_notes = f"Reputation assault executed. {messages_sent_count} 'send_message' activities initiated to relations of {target_citizen_username}."
