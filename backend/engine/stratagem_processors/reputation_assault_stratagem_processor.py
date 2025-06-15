@@ -326,38 +326,13 @@ def process(
         # Get the appropriate KinOS model for the executor based on social class
         model_for_executor = _rh_get_kinos_model_for_citizen(tables, executed_by_username) or kinos_model_override_from_notes or "claude-3-7-sonnet-latest"
         
-        # --- New KinOS Self-Chat to Prepare Specific Message ---
-        log.info(f"{LogColors.PROCESS}Executor {executed_by_username} self-chatting to prepare message for {related_citizen_username}...{LogColors.ENDC}")
-        add_system_for_specific_message_prep = {
-            "your_profile_and_full_data": executor_data_package,
-            "original_target_profile_and_data": target_data_package,
-            "intended_recipient_profile_and_data": related_citizen_data_package,
-            "your_core_attack_narrative": cleaned_core_attack_narrative,
-            "your_relationship_with_intended_recipient": _rh_get_relationship_data(tables, executed_by_username, related_citizen_username),
-            "original_target_relationship_with_intended_recipient": _rh_get_relationship_data(tables, target_citizen_username, related_citizen_username),
-            "assault_angle_reminder": assault_angle_from_notes or "any effective angle"
-        }
-        prompt_for_specific_message_prep = (
-            f"You are {executor_display_name}. Your objective is to damage the reputation of {target_display_name} in the eyes of {related_citizen_display_name}. "
-            f"You have already formulated a `your_core_attack_narrative` (see addSystem). "
-            f"Now, using that core narrative as a foundation, and considering all the contextual information provided in `addSystem` "
-            f"(about yourself, {target_display_name}, and especially {related_citizen_display_name}, including your relationships), "
-            f"craft the specific message you will send TO {related_citizen_display_name}. "
-            f"Your message should be conversational, persuasive, and tailored to {related_citizen_display_name}. "
-            f"Your output should be ONLY the content of this message. Do not include any other commentary or explanation."
-        )
-        specific_message_content = _make_direct_kinos_channel_call(
-            kin_username=executed_by_username,
-            channel_username=executed_by_username, # Self-chat channel
-            prompt=prompt_for_specific_message_prep,
-            kinos_api_key=kinos_api_key,
-            kinos_model_override=model_for_executor,
-            add_system_data=add_system_for_specific_message_prep
-        )
-
-        if specific_message_content:
-            cleaned_specific_message = clean_thought_content(tables, specific_message_content)
-            log.info(f"{LogColors.PROCESS}Generated specific message from {executed_by_username} (self-chat) for {related_citizen_username}: '{cleaned_specific_message[:100]}...'{LogColors.ENDC}")
+        # Au lieu de générer un message spécifique maintenant, nous allons préparer les données
+        # qui seront transmises via addMessage pour que KinOS génère le message au moment de la livraison
+        log.info(f"{LogColors.PROCESS}Préparation des données pour message futur de {executed_by_username} à {related_citizen_username}...{LogColors.ENDC}")
+            
+        # Nous utiliserons un message générique qui sera remplacé par KinOS au moment de la livraison
+        cleaned_specific_message = f"Je dois vous parler de {target_display_name}..."
+        log.info(f"{LogColors.PROCESS}Message générique préparé pour {related_citizen_username}, sera personnalisé par KinOS lors de la livraison{LogColors.ENDC}")
 
             # --- Create send_message activity directly using the send_message_creator ---
             if not api_base_url:
@@ -390,7 +365,12 @@ def process(
                     "originalTarget": target_citizen_username,
                     "assaultAngle": assault_angle_from_notes or "N/A",
                     "coreAttackNarrative": cleaned_core_attack_narrative,
-                    "executorUsername": executed_by_username
+                    "executorUsername": executed_by_username,
+                    "targetDisplayName": target_display_name,
+                    "recipientUsername": related_citizen_username,
+                    "generateMessageOnDelivery": True,
+                    "relationshipWithTarget": _rh_get_relationship_data(tables, target_citizen_username, related_citizen_username),
+                    "relationshipWithRecipient": _rh_get_relationship_data(tables, executed_by_username, related_citizen_username)
                 }
             }
             
