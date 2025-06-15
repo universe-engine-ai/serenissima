@@ -60,7 +60,7 @@ def process(
             # Notes might already be a dictionary
             rumor_details = notes_str if isinstance(notes_str, dict) else {}
             
-        target_citizen_gossip = rumor_details.get("targetCitizen")
+        target_citizen_gossip = rumor_details.get("targetCitizen")  # Peut être None pour une rumeur générale
         gossip_content = rumor_details.get("gossipContent")
         location_coords_rumor_str = rumor_details.get("locationCoords") # Coords où la rumeur est répandue
         
