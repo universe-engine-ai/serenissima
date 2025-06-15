@@ -837,7 +837,13 @@ function convertDataPackageToMarkdown(dataPackage: any, citizenUsername: string 
 
   // Citizen Details
   md += `## Citizen Details\n`;
-  md += formatSimpleObjectForMarkdown(dataPackage.citizen, ['username', 'firstName', 'lastName', 'socialClass', 'ducats', 'isAI', 'inVenice', 'homeCity', 'influence', 'specialty', 'lastActiveAt', 'createdAt']);
+  
+  // Format ducats as integer if present
+  if (dataPackage.citizen?.ducats !== undefined && dataPackage.citizen.ducats !== null) {
+    dataPackage.citizen.ducats = Math.floor(Number(dataPackage.citizen.ducats));
+  }
+  
+  md += formatSimpleObjectForMarkdown(dataPackage.citizen, ['username', 'firstName', 'lastName', 'socialClass', 'ducats', 'isAI', 'inVenice', 'homeCity', 'influence', 'specialty', 'lastActiveAt']);
   if (dataPackage.citizen?.position) {
     md += `- **position**: Lat: ${dataPackage.citizen.position.lat}, Lng: ${dataPackage.citizen.position.lng}\n`;
   }
