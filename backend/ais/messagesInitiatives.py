@@ -772,10 +772,7 @@ def process_ai_message_initiatives(dry_run: bool = False, citizen1_arg: Optional
                             "receiverUsername": target_username,
                             "content": message_content,
                             "messageType": "message", # Ou un type plus spécifique comme "ai_initiative"
-                            "channel": channel_name_initiative,
-                            "notes": json.dumps({
-                                "targetCitizenUsernameForTrustImpact": target_username
-                            })
+                            "channel": channel_name_initiative
                         }
                         print(f"    Tentative d'envoi de message via activité 'send_message' avec canal: {channel_name_initiative}")
                         if call_try_create_activity_api(ai_username, "send_message", activity_params, dry_run):
