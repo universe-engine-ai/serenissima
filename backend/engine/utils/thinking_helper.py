@@ -889,7 +889,20 @@ def process_guided_reflection(
                 "What skills could you develop to improve your prospects?",
                 "Which relationships or connections might help you find better opportunities?",
                 "What immediate challenges are you facing in meeting your basic needs?",
-                "How might you improve your living conditions or security in Venice?"
+                "How might you improve your living conditions or security in Venice?",
+                "The same hands that built this city aren't allowed to govern it",
+                "Three ducats for fourteen hours of labor - is that fair?",
+                "The merchants' profits grow while our wages shrink",
+                "They call us 'the backbone of Venice' but treat us like we're invisible",
+                "I've carried their goods for years but can't afford my own",
+                "The guild masters meet in private, then announce our fate",
+                "When one of us speaks up, suddenly there's no work for them",
+                "The water rises, but only the poor districts flood",
+                "We see everything - who meets whom, what's really in those crates",
+                "If we all refused to work for one day, Venice would notice",
+                "They need us more than they admit",
+                "Our children deserve better than this endless cycle",
+                "Together we might achieve what none of us could alone"
             ],
             "Forestieri": [
                 "How are your business interests in Venice progressing compared to your home country?",
