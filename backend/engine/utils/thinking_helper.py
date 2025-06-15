@@ -910,12 +910,9 @@ def process_guided_reflection(
                 "The pattern in these grain sacks tells a story of power",
                 "My daily struggles might be worth documenting",
                 "Others pause when they see my sketches on the wall",
-                "The printer asked if I had more 'observations' to share",
-                "My neighbor said my words helped her understand her own pain",
                 "Perhaps artists are the conscience of Venice",
                 "If one voice can inspire two, and two can inspire four...",
                 "We could meet after work to share our creations",
-                "The abandoned warehouse could become our salon",
                 "Art without audience is just personal therapy",
                 "The nobles have their palazzos; we have truth",
                 "History will remember those who captured this moment"
