@@ -101,8 +101,41 @@ export async function GET(request: NextRequest) {
         ? resourceCountsData.buildingResourceCounts 
         : [];
       console.log(`Found ${storedResources.length} stored resources for building ${buildingId}`);
+      
+      // Additional debug logging for stored resources
+      if (storedResources.length > 0) {
+        console.log(`First stored resource sample: ${JSON.stringify(storedResources[0])}`);
+      } else {
+        // Try direct query to see if there are resources with this Asset
+        try {
+          const directResourceResponse = await fetch(`${baseUrl}/api/resources?asset=${encodeURIComponent(buildingId)}`);
+          if (directResourceResponse.ok) {
+            const directResourceData = await directResourceResponse.json();
+            if (directResourceData.success && directResourceData.resources && directResourceData.resources.length > 0) {
+              console.log(`Found ${directResourceData.resources.length} resources directly for building ${buildingId}`);
+              storedResources = directResourceData.resources;
+            }
+          }
+        } catch (directError) {
+          console.warn(`Failed direct resource query: ${directError}`);
+        }
+      }
     } else {
       console.warn(`Failed to fetch resource counts: ${resourceCountsResponse.status}`);
+      
+      // Fallback: try direct query to resources endpoint
+      try {
+        const directResourceResponse = await fetch(`${baseUrl}/api/resources?asset=${encodeURIComponent(buildingId)}`);
+        if (directResourceResponse.ok) {
+          const directResourceData = await directResourceResponse.json();
+          if (directResourceData.success && directResourceData.resources && directResourceData.resources.length > 0) {
+            console.log(`Fallback: Found ${directResourceData.resources.length} resources directly for building ${buildingId}`);
+            storedResources = directResourceData.resources;
+          }
+        }
+      } catch (fallbackError) {
+        console.warn(`Failed fallback resource query: ${fallbackError}`);
+      }
     }
     
     // 5. Fetch building definition to get production information
@@ -150,7 +183,7 @@ export async function GET(request: NextRequest) {
         ...resource,
         name: resourceType?.name || resource.name || resource.type,
         category: resourceType?.category || resource.category || 'unknown',
-        icon: resourceType?.icon || resource.icon || `${resource.type.toLowerCase().replace(/\s+/g, '_')}.png`,
+        icon: resourceType?.icon || resource.icon || `${(resource.type || '').toLowerCase().replace(/\s+/g, '_')}.png`,
         description: resourceType?.description || resource.description || ''
       };
     });
