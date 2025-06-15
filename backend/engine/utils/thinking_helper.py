@@ -913,11 +913,11 @@ def process_guided_reflection(
         kinos_prompt_guided_reflection = (
             f"You are {citizen_username}, a citizen of Renaissance Venice. "
             f"Your personal data, including recent activities and current status, is provided in `addSystem` under `citizen_context`.\n\n"
-            f"I'd like you to reflect deeply on the following question:\n\n"
+            f"I'd like you to reflect deeply on the following thought:\n\n"
             f"**{selected_prompt}**\n\n"
             f"Consider your current situation, recent experiences, and future aspirations as you respond. "
             f"Your reflection should be personal and introspective, drawing on specific details from your life in Venice. "
-            f"Feel free to mention specific people, places, or events that are relevant to your thoughts on this matter."
+            f"Feel free to mention, based on the `addSystem`, specific people, places, or events that are relevant to your thoughts on this matter."
         )
         
         # Log the prompt
