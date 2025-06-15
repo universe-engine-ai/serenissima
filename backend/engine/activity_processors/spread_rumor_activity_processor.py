@@ -108,9 +108,47 @@ def process(
         log.error(f"{LogColors.FAIL}Erreur lors de l'extraction des détails de la rumeur depuis les notes de {activity_guid}: {e}{LogColors.ENDC}")
         return False
 
+    # Si target_citizen_gossip ou gossip_content sont manquants, on les génère dynamiquement
     if not target_citizen_gossip or not gossip_content:
-        log.error(f"{LogColors.FAIL}Détails de la rumeur incomplets (targetCitizen ou gossipContent manquant) dans {activity_guid}.{LogColors.ENDC}")
-        return False
+        log.info(f"{LogColors.OKBLUE}Détails de la rumeur incomplets dans {activity_guid}. Génération dynamique...{LogColors.ENDC}")
+        
+        # Trouver une cible aléatoire si non spécifiée
+        if not target_citizen_gossip:
+            try:
+                # Exclure l'exécuteur lui-même
+                potential_targets = tables['citizens'].all(
+                    formula=f"AND({{Username}}!='{_escape_airtable_value(executor_username)}', {{IsAI}}=TRUE())"
+                )
+                if potential_targets:
+                    import random
+                    random_target = random.choice(potential_targets)
+                    target_citizen_gossip = random_target['fields'].get('Username')
+                    log.info(f"{LogColors.OKBLUE}Cible de rumeur générée dynamiquement: {target_citizen_gossip}{LogColors.ENDC}")
+                else:
+                    log.error(f"{LogColors.FAIL}Impossible de trouver une cible pour la rumeur dans {activity_guid}.{LogColors.ENDC}")
+                    return False
+            except Exception as e_target:
+                log.error(f"{LogColors.FAIL}Erreur lors de la génération d'une cible pour la rumeur: {e_target}{LogColors.ENDC}")
+                return False
+        
+        # Générer un contenu de rumeur si non spécifié
+        if not gossip_content:
+            # Contenu générique de rumeur
+            generic_rumors = [
+                "they've been secretly meeting with members of the Council of Ten",
+                "they're planning to leave Venice soon",
+                "they've been seen with suspicious foreigners near the docks",
+                "they're in serious debt to some powerful people",
+                "they've been selling goods without proper permits",
+                "they've been spreading false information about market prices",
+                "they've been seen entering the Doge's Palace at unusual hours",
+                "they're hoarding resources during these difficult times",
+                "they've been making deals with rival merchants behind everyone's back",
+                "they've acquired a significant amount of wealth recently from unknown sources"
+            ]
+            import random
+            gossip_content = random.choice(generic_rumors)
+            log.info(f"{LogColors.OKBLUE}Contenu de rumeur généré dynamiquement: {gossip_content}{LogColors.ENDC}")
 
     # Identifier les citoyens présents au lieu de la rumeur
     all_citizens_records = tables['citizens'].all(formula="{IsAI}=TRUE()") # Uniquement les IA pour l'instant

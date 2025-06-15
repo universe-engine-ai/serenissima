@@ -77,9 +77,13 @@ def try_create(
         location_coords_raw = position
     
     # Validate required parameters
-    if not all([citizen_username, target_citizen, gossip_content]):
-        log.error(f"{LogColors.FAIL}Missing required parameters for spread_rumor for {citizen_username}. Params: {activity_params}{LogColors.ENDC}")
+    if not citizen_username:
+        log.error(f"{LogColors.FAIL}Missing citizen_username for spread_rumor. Params: {activity_params}{LogColors.ENDC}")
         return False
+    
+    # target_citizen and gossip_content can be optional - if missing, they will be generated dynamically
+    if not target_citizen or not gossip_content:
+        log.info(f"{LogColors.OKBLUE}Target citizen or gossip content not provided for {citizen_username}. Will be generated dynamically.{LogColors.ENDC}")
     
     log.info(f"{LogColors.OKBLUE}Creating spread_rumor activity for {citizen_username} targeting {target_citizen} with coordinates: {location_coords_raw}{LogColors.ENDC}")
     
