@@ -1343,6 +1343,7 @@ export async function GET(request: Request) {
     
     // Find building at citizen position using API and direct building checks
     let buildingAtPosition = null;
+    let citizensAtSamePosition = []; // Initialize the array here to avoid undefined errors
     
     // First check if the citizen is at their workplace or home
     if (citizenPosition && citizenPosition.lat && citizenPosition.lng) {
@@ -1373,7 +1374,6 @@ export async function GET(request: Request) {
       }
       
       // If still not found, try the citizens-at-position API which has better position matching
-      let citizensAtSamePosition = [];
       if (!buildingAtPosition || true) { // Always fetch citizens at position for enhanced display
         try {
           // Use the full URL with baseUrl for the API call
