@@ -36,6 +36,7 @@ const normalizeKeysCamelCaseShallow = (obj: Record<string, any>): Record<string,
 };
 
 export async function GET(request: NextRequest) {
+  const startTime = Date.now();
   try {
     const { searchParams } = new URL(request.url);
     const lat = searchParams.get('lat');
@@ -138,19 +139,31 @@ export async function GET(request: NextRequest) {
     
     console.log(`[API get-citizens-at-position] Found ${buildingsAtPosition.length} buildings at position`);
     
-    // Process citizens data
+    // Process citizens data with more efficient field extraction
     const citizens = citizensAtPosition.map(record => {
       const fields = normalizeKeysCamelCaseShallow(record.fields);
       
       // Parse position if it exists
+      let parsedPosition = null;
       if (fields.position) {
         try {
-          fields.position = JSON.parse(fields.position as string);
+          parsedPosition = JSON.parse(fields.position as string);
         } catch (e) {
           console.warn(`Could not parse position for citizen: ${fields.username}`);
         }
       }
       
+      // Extract coat of arms URL efficiently
+      let coatOfArmsUrl = null;
+      if (fields.coatOfArms) {
+        if (Array.isArray(fields.coatOfArms) && fields.coatOfArms[0]?.url) {
+          coatOfArmsUrl = fields.coatOfArms[0].url;
+        } else if (typeof fields.coatOfArms === 'string') {
+          coatOfArmsUrl = fields.coatOfArms;
+        }
+      }
+      
+      // Return only the fields we need to reduce payload size
       return {
         id: record.id,
         citizenId: fields.citizenId || fields.username,
@@ -160,37 +173,53 @@ export async function GET(request: NextRequest) {
         socialClass: fields.socialClass,
         isAI: fields.isAI === 1 || fields.isAI === true,
         inVenice: fields.inVenice === 1 || fields.inVenice === true,
-        position: fields.position,
-        // Include other relevant fields
+        position: parsedPosition,
+        // Include only the most relevant fields to reduce payload size
         homeCity: fields.homeCity,
         specialty: fields.specialty,
         color: fields.color,
         secondaryColor: fields.secondaryColor,
         familyMotto: fields.familyMotto,
         influence: fields.influence,
-        // Add coatOfArms URL if available
-        coatOfArmsImageUrl: fields.coatOfArms 
-          ? (Array.isArray(fields.coatOfArms) && fields.coatOfArms[0]?.url 
-              ? fields.coatOfArms[0].url 
-              : null)
-          : null
+        coatOfArmsImageUrl: coatOfArmsUrl
       };
     });
     
-    // Process building data
-    const building = buildingsAtPosition.length > 0 ? {
-      id: buildingsAtPosition[0].id,
-      buildingId: buildingsAtPosition[0].fields.BuildingId,
-      name: buildingsAtPosition[0].fields.Name,
-      type: buildingsAtPosition[0].fields.Type,
-      category: buildingsAtPosition[0].fields.Category,
-      owner: buildingsAtPosition[0].fields.Owner,
-      runBy: buildingsAtPosition[0].fields.RunBy,
-      occupant: buildingsAtPosition[0].fields.Occupant,
-      position: buildingsAtPosition[0].fields.Position 
-        ? JSON.parse(buildingsAtPosition[0].fields.Position as string) 
-        : null
-    } : null;
+    // Process building data more efficiently
+    let building = null;
+    if (buildingsAtPosition.length > 0) {
+      const buildingRecord = buildingsAtPosition[0];
+      const fields = buildingRecord.fields;
+      
+      // Parse position once
+      let parsedPosition = null;
+      if (fields.Position) {
+        try {
+          parsedPosition = JSON.parse(fields.Position as string);
+        } catch (e) {
+          console.warn(`Could not parse position for building: ${fields.BuildingId}`);
+        }
+      }
+      
+      building = {
+        id: buildingRecord.id,
+        buildingId: fields.BuildingId,
+        name: fields.Name,
+        type: fields.Type,
+        category: fields.Category,
+        owner: fields.Owner,
+        runBy: fields.RunBy,
+        occupant: fields.Occupant,
+        position: parsedPosition,
+        // Add additional useful fields
+        isConstructed: fields.IsConstructed === 1 || fields.IsConstructed === true,
+        landId: fields.LandId
+      };
+    }
+    
+    // Add timing information for performance monitoring
+    const endTime = Date.now();
+    const executionTime = endTime - startTime;
     
     return NextResponse.json({
       success: true,
@@ -200,6 +229,11 @@ export async function GET(request: NextRequest) {
       counts: {
         citizens: citizens.length,
         buildings: buildingsAtPosition.length
+      },
+      performance: {
+        executionTimeMs: executionTime,
+        citizensWithPositionCount: citizensWithPosition.length,
+        buildingsWithPositionCount: buildingsWithPosition.length
       }
     });
     

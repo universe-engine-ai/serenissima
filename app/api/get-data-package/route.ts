@@ -192,28 +192,50 @@ async function fetchBuildingsOnLand(landId: string): Promise<AirtableRecord<Fiel
   }
 }
 
+// Cache for polygon data to avoid redundant API calls
+const polygonDataCache: Map<string, { data: PolygonData | null, timestamp: number }> = new Map();
+const POLYGON_CACHE_TTL = 10 * 60 * 1000; // 10 minutes in milliseconds
+
 async function fetchPolygonDataForLand(landId: string): Promise<PolygonData | null> {
   try {
+    // Check cache first
+    const now = Date.now();
+    const cached = polygonDataCache.get(landId);
+    
+    if (cached && (now - cached.timestamp < POLYGON_CACHE_TTL)) {
+      console.log(`Using cached polygon data for land ${landId}`);
+      return cached.data;
+    }
+    
+    console.log(`Fetching polygon data for land ${landId} from API`);
     // Use the existing /api/lands endpoint as it merges polygon data
-    // Or directly call /api/get-polygons if more suitable
     const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000';
     const response = await fetch(`${baseUrl}/api/lands?LandId=${encodeURIComponent(landId)}`);
+    
     if (!response.ok) {
       console.error(`Failed to fetch polygon data for land ${landId} from /api/lands: ${response.status}`);
+      polygonDataCache.set(landId, { data: null, timestamp: now });
       return null;
     }
+    
     const data = await response.json();
     if (data.success && data.lands && data.lands.length > 0) {
       // Assuming /api/lands returns buildingPoints in the desired format
       const landData = data.lands[0];
-      return {
+      const polygonData = {
         id: landData.landId, // or landData.id
         buildingPoints: landData.buildingPoints || [],
         canalPoints: landData.canalPoints || [], // Add canalPoints
         bridgePoints: landData.bridgePoints || [], // Add bridgePoints
       };
+      
+      // Cache the successful response
+      polygonDataCache.set(landId, { data: polygonData, timestamp: now });
+      return polygonData;
     }
+    
     console.warn(`No land data found for ${landId} via /api/lands`);
+    polygonDataCache.set(landId, { data: null, timestamp: now });
     return null;
   } catch (error) {
     console.error(`Error fetching polygon data for land ${landId}:`, error);
@@ -302,16 +324,39 @@ interface BuildingResourceDetails {
   error?: string;
 }
 
+// Cache for building resource details to avoid redundant API calls
+const buildingResourceCache: Map<string, { data: BuildingResourceDetails | null, timestamp: number }> = new Map();
+const CACHE_TTL = 5 * 60 * 1000; // 5 minutes in milliseconds
+
 async function fetchBuildingResourceDetails(buildingId: string): Promise<BuildingResourceDetails | null> {
   try {
+    // Check cache first
+    const now = Date.now();
+    const cached = buildingResourceCache.get(buildingId);
+    
+    if (cached && (now - cached.timestamp < CACHE_TTL)) {
+      console.log(`Using cached resource details for building ${buildingId}`);
+      return cached.data;
+    }
+    
+    console.log(`Fetching resource details for building ${buildingId} from API`);
     const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000';
     const response = await fetch(`${baseUrl}/api/building-resources/${encodeURIComponent(buildingId)}`);
+    
     if (!response.ok) {
       console.error(`Failed to fetch resource details for building ${buildingId}: ${response.status}`);
-      return { success: false, error: `Failed to fetch resource details: ${response.status}` };
+      const errorData = { success: false, error: `Failed to fetch resource details: ${response.status}` };
+      
+      // Cache the error response too to avoid hammering the API with failing requests
+      buildingResourceCache.set(buildingId, { data: errorData, timestamp: now });
+      return errorData;
     }
+    
     const data = await response.json();
-    return data as BuildingResourceDetails; // Assuming data matches the interface
+    
+    // Cache the successful response
+    buildingResourceCache.set(buildingId, { data, timestamp: now });
+    return data as BuildingResourceDetails;
   } catch (error) {
     console.error(`Error fetching resource details for building ${buildingId}:`, error);
     return null;
@@ -1344,6 +1389,7 @@ export async function GET(request: Request) {
     // Find building at citizen position using API and direct building checks
     let buildingAtPosition = null;
     let citizensAtSamePosition = []; // Initialize the array here to avoid undefined errors
+    let buildingDetails = null;
     
     // First check if the citizen is at their workplace or home
     if (citizenPosition && citizenPosition.lat && citizenPosition.lng) {
@@ -1353,6 +1399,14 @@ export async function GET(request: Request) {
           const workplacePosition = JSON.parse(workplaceBuildingRecord.fields.Position as string);
           if (workplacePosition.lat === citizenPosition.lat && workplacePosition.lng === citizenPosition.lng) {
             buildingAtPosition = workplaceBuildingRecord.fields.Name || workplaceBuildingRecord.fields.Type;
+            buildingDetails = {
+              id: workplaceBuildingRecord.id,
+              buildingId: workplaceBuildingRecord.fields.BuildingId,
+              type: workplaceBuildingRecord.fields.Type,
+              category: workplaceBuildingRecord.fields.Category,
+              owner: workplaceBuildingRecord.fields.Owner,
+              runBy: workplaceBuildingRecord.fields.RunBy
+            };
             console.log(`Citizen is at workplace: ${buildingAtPosition}`);
           }
         } catch (e) {
@@ -1366,6 +1420,14 @@ export async function GET(request: Request) {
           const homePosition = JSON.parse(homeBuildingRecord.fields.Position as string);
           if (homePosition.lat === citizenPosition.lat && homePosition.lng === citizenPosition.lng) {
             buildingAtPosition = homeBuildingRecord.fields.Name || homeBuildingRecord.fields.Type;
+            buildingDetails = {
+              id: homeBuildingRecord.id,
+              buildingId: homeBuildingRecord.fields.BuildingId,
+              type: homeBuildingRecord.fields.Type,
+              category: homeBuildingRecord.fields.Category,
+              owner: homeBuildingRecord.fields.Owner,
+              runBy: homeBuildingRecord.fields.RunBy
+            };
             console.log(`Citizen is at home: ${buildingAtPosition}`);
           }
         } catch (e) {
@@ -1389,6 +1451,7 @@ export async function GET(request: Request) {
             // Get building information if not already found
             if (!buildingAtPosition && positionData.success && positionData.building) {
               buildingAtPosition = positionData.building.name || positionData.building.type;
+              buildingDetails = positionData.building;
               console.log(`Found building at citizen position via citizens-at-position API: ${buildingAtPosition}`);
             }
             
@@ -1397,7 +1460,12 @@ export async function GET(request: Request) {
               // Filter out the current citizen
               citizensAtSamePosition = positionData.citizens
                 .filter(c => c.username !== citizenUsername)
-                .map(c => c.username);
+                .map(c => ({
+                  username: c.username,
+                  firstName: c.firstName,
+                  lastName: c.lastName,
+                  socialClass: c.socialClass
+                }));
               
               console.log(`Found ${citizensAtSamePosition.length} other citizens at the same position`);
             }
@@ -1417,7 +1485,8 @@ export async function GET(request: Request) {
         ...normalizeKeysCamelCaseShallow(citizenRecord.fields), 
         airtableId: citizenRecord.id,
         buildingAtPosition: buildingAtPosition, // Add the building name at position
-        citizensAtSamePosition: citizensAtSamePosition // Add other citizens at the same position
+        buildingDetails: buildingDetails, // Add detailed building information
+        citizensAtSamePosition: citizensAtSamePosition // Add other citizens at the same position with more details
       },
       lastActivity: lastActivityRecord ? {...normalizeKeysCamelCaseShallow(lastActivityRecord.fields), airtableId: lastActivityRecord.id} : null,
       lastActivities: [] as any[], // Initialize lastActivities array
