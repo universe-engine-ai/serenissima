@@ -243,7 +243,7 @@ def _summarize_add_system_for_local_model(
     
     attention_prompt = (
         f"You are an AI assistant helping {ai_username} prepare for a strategic decision: '{purpose_of_call}'. "
-        f"Based on the extensive context provided in `addSystem` (which includes {ai_username}'s profile, relationships, problems, opportunities, etc.), "
+        f"Based on the context provided in `addSystem` (which includes information about {ai_username}), "
         f"please perform the following two steps:\n\n"
         f"Step 1: Build a clear picture of {ai_username}'s current situation relevant to '{purpose_of_call}'. "
         f"Describe key relationships, recent events, ongoing issues, and goals that should inform this decision.\n\n"
@@ -299,9 +299,9 @@ def choose_interlocutor_via_kinos(
     kinos_channel_for_decision = "strategist" 
 
     prompt = (
-        f"You are {ai_display_name}, an AI citizen of Venice. Your full data package (profile, relationships, problems, opportunities, recent activities, etc.) "
+        f"You are {ai_display_name}, an AI citizen of Venice. Your data package "
         f"is provided in `addSystem`.\n\n"
-        f"Based on all this information, analyze your current situation and identify another citizen with whom initiating a conversation would be most beneficial or strategically relevant for you right now. "
+        f"Based on this information, analyze your current situation and identify another citizen with whom initiating a conversation would be most beneficial or strategically relevant for you right now. "
         f"Consider your goals, active problems, opportunities, and the nature of your relationships. Could initiating or discussing a **Stratagem** be a reason for contact? Information on available stratagems is in `addSystem.availableStratagems` and your active ones are in `addSystem.stratagemsExecutedByCitizen` or `addSystem.stratagemsTargetingCitizen`.\n\n"
         f"Your response MUST be a JSON object with two keys: 'target_username' (the Username of the citizen you choose) and 'reason' (a specific compelling reason for contacting them, focusing on gameplay or possibly narrative progression, potentially related to a stratagem).\n"
         f"If no compelling interaction is identified, respond with: {{\"target_username\": null, \"reason\": \"No compelling interaction identified at this time.\"}}\n\n"
@@ -417,8 +417,8 @@ def generate_ai_initiative_message(
             f"The primary reason for this contact is: \"{reason_for_contact}\".\n"
             f"IMPORTANT: Your message must be short, human-like, and specific. It should be a natural conversation message related to the reason and context. "
             f"DO NOT use formal language. Be direct and concise.\n\n"
-            f"Use the structured context in `addSystem` to make your message RELEVANT and FOCUSED ON GAMEPLAY or narrative progression with {target_display_name}. "
-            f"If your reason for contact involves a **Stratagem**, subtly weave that into your opening. You can find stratagem details in your broader knowledge (e.g., from your full data package if previously accessed).\n"
+            f"Use the context in `addSystem` to make your message RELEVANT and FOCUSED ON GAMEPLAY or narrative progression with {target_display_name}. "
+            f"If your reason for contact involves a **Stratagem**, subtly weave that into your opening. You can find stratagem details in your broader knowledge (e.g., from your data package if previously accessed).\n"
             f"Your message to {target_display_name}:"
         )
         
