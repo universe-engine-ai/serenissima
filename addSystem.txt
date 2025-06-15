@@ -3655,7 +3655,7 @@ Here is the complete data about your current situation:
       "pointType": "building"
     }
   },
-  "timestamp": "2025-06-15T21:00:18.208932+02:00",
+  "timestamp": "2025-06-15T21:46:14.234643+02:00",
   "building_ownership_relevancies": []
 }
 
