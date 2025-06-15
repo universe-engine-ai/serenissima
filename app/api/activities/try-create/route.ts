@@ -27,8 +27,7 @@ export async function POST(request: Request) {
     const pythonPayload: any = {
       citizenUsername: citizenUsername,
       activityType: activityType, // Le moteur Python utilisera ceci pour router vers la bonne logique (activité ou action)
-      // Pass the received activityDetails as activityParameters to the Python engine
-      ...(activityDetails && { activityParameters: activityDetails }), 
+      activityParameters: activityDetails || {} // Always include activityParameters, even if empty
     };
     
     // Log des paramètres spécifiques pour manage_public_sell_contract
