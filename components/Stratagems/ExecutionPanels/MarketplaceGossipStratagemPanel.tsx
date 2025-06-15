@@ -99,7 +99,7 @@ const MarketplaceGossipStratagemPanel = forwardRef<StratagemSpecificPanelRef, St
           {isCitizenDropdownOpen && (
             <ul className="absolute z-10 w-full bg-white border border-amber-300 rounded-md mt-1 shadow-lg max-h-60 overflow-y-auto">
               {citizens
-                .filter(c => c.username !== currentUserUsername) // Cannot target self
+                // Removed filter that prevented targeting self
                 .filter(c => {
                   const searchTermLower = citizenSearch.toLowerCase();
                   const namePart = [c.firstName, c.lastName].filter(Boolean).join(' ').toLowerCase();

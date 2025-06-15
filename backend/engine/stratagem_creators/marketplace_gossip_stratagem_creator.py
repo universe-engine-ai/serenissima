@@ -50,9 +50,8 @@ def try_create(
         log.error(f"{LogColors.FAIL}Paramètre requis manquant (gossipContent) pour le stratagème marketplace_gossip.{LogColors.ENDC}")
         return None
     
-    if target_citizen_param and target_citizen_param == citizen_username:
-        log.error(f"{LogColors.FAIL}Impossible de se cibler soi-même pour le stratagème marketplace_gossip.{LogColors.ENDC}")
-        return None
+    # Suppression de la vérification qui empêchait de se cibler soi-même
+    # Un citoyen peut maintenant répandre des rumeurs sur lui-même
 
     # 1. Identifier les lieux populaires
     all_ai_citizens_records = tables['citizens'].all(formula="{IsAI}=TRUE()")
