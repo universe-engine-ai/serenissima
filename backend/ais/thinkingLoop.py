@@ -111,7 +111,7 @@ def select_random_citizen(tables):
 def perform_thinking(citizen, tables):
     """
     Perform a thinking operation for the selected citizen.
-    This is a placeholder for future implementation of different thinking functions.
+    Randomly selects one of several thinking functions to execute.
     
     Args:
         citizen: The citizen record
@@ -121,8 +121,34 @@ def perform_thinking(citizen, tables):
         username = citizen['fields'].get('Username', 'Unknown')
         log_info(f"Performing thinking for citizen: {username}")
         
-        # TODO: Implement different thinking functions and select one randomly
-        # For now, just log that we would be thinking
+        # Import the thinking helper here to avoid circular imports
+        from backend.engine.utils.thinking_helper import (
+            generate_daily_reflection,
+            generate_theater_reflection,
+            generate_public_bath_reflection
+        )
+        
+        # List of available thinking functions
+        thinking_functions = [
+            generate_daily_reflection,
+            generate_theater_reflection,
+            generate_public_bath_reflection
+        ]
+        
+        # Select a random thinking function
+        selected_function = random.choice(thinking_functions)
+        function_name = selected_function.__name__
+        
+        log_info(f"Selected thinking function for {username}: {function_name}")
+        
+        # Execute the selected thinking function
+        result = selected_function(tables, username)
+        
+        if result:
+            log_info(f"Successfully executed {function_name} for {username}")
+        else:
+            log_warning(f"Function {function_name} returned False for {username}")
+        
         log_info(f"Thinking process completed for {username}")
         
         return True
