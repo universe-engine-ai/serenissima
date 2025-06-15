@@ -887,7 +887,7 @@ function convertDataPackageToMarkdown(dataPackage: any, citizenUsername: string 
       }
     } else {
       // If coordinates are invalid
-      locationDescription = "Unknown location";
+      locationDescription = "In the streets of Venice";
     }
     
     // Add coordinates for debugging if needed
