@@ -327,7 +327,7 @@ def choose_interlocutor_via_kinos(
         speaker_username=ai_username, # L'IA elle-même est le "speaker" pour cette décision
         channel_name=kinos_channel_for_decision,
         prompt=prompt,
-        add_system_data=final_add_system_for_kinos, 
+        add_system_data=ai_data_package, 
         kinos_model_override=effective_model
     )
 
@@ -403,6 +403,9 @@ def generate_ai_initiative_message(
         except Exception as e_target_dp:
             log.error(f"Erreur lors de la récupération du data package markdown pour {target_username}: {e_target_dp}")
             # Continuer sans data package cible si échec
+        
+        # Récupérer la classe sociale du citoyen IA
+        ai_social_class = ai_citizen_profile_data.get('fields', {}).get('SocialClass')
         
         # Résumer le data package du citoyen cible si disponible et si modèle local
         target_data_package_summary = None
