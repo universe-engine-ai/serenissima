@@ -1316,8 +1316,16 @@ export async function GET(request: Request) {
     // Assign results to dataPackage
     dataPackage.availableStratagems = availableStratagems;
     
-    // Last Activities
-    dataPackage.lastActivities = lastActivitiesRecords.map(a => ({...normalizeKeysCamelCaseShallow(a.fields), airtableId: a.id}));
+    // Last Activities - filter out duplicates of the last activity
+    if (lastActivityRecord) {
+      const lastActivityId = lastActivityRecord.id;
+      // Filter out the last activity from the recent activities list to avoid duplication
+      dataPackage.lastActivities = lastActivitiesRecords
+        .filter(a => a.id !== lastActivityId)
+        .map(a => ({...normalizeKeysCamelCaseShallow(a.fields), airtableId: a.id}));
+    } else {
+      dataPackage.lastActivities = lastActivitiesRecords.map(a => ({...normalizeKeysCamelCaseShallow(a.fields), airtableId: a.id}));
+    }
     
     // Planned Activities
     dataPackage.plannedActivities = plannedActivitiesRecords.map(a => ({...normalizeKeysCamelCaseShallow(a.fields), airtableId: a.id}));
