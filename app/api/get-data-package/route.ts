@@ -890,6 +890,38 @@ function convertDataPackageToMarkdown(dataPackage: any, citizenUsername: string 
   
   md += formatSimpleObjectForMarkdown(dataPackage.citizen, ['username', 'firstName', 'lastName', 'socialClass', 'ducats', 'isAI', 'inVenice', 'homeCity', 'influence', 'specialty']);
   
+  if (dataPackage.citizen?.corePersonality) {
+    let personalityDisplay = String(dataPackage.citizen.corePersonality); // Fallback
+    if (typeof dataPackage.citizen.corePersonality === 'string') {
+      try {
+        const parsedPersonality = JSON.parse(dataPackage.citizen.corePersonality);
+        if (Array.isArray(parsedPersonality)) {
+          // Format as a JSON array string, e.g., ["Trait1", "Trait2"]
+          personalityDisplay = JSON.stringify(parsedPersonality);
+        }
+      } catch (e) {
+        // If parsing fails, personalityDisplay remains the original string
+        console.warn(`[API get-data-package] Could not parse corePersonality as JSON array: ${dataPackage.citizen.corePersonality}`, e);
+      }
+    }
+    md += `- **corePersonality**: ${personalityDisplay}\n`;
+  }
+  
+  // Add description if available
+  if (dataPackage.citizen?.description) {
+    md += `\n### Description\n${dataPackage.citizen.description}\n`;
+  }
+  
+  // Add personality if available
+  if (dataPackage.citizen?.personality) {
+    md += `\n### Personality\n${dataPackage.citizen.personality}\n`;
+  }
+  
+  md += '\n';
+
+  // Current Location
+  md += `## Current Location\n`;
+  
   // Handle position display
   if (dataPackage.citizen?.position) {
     // Check if there's a building at this position
@@ -992,37 +1024,10 @@ function convertDataPackageToMarkdown(dataPackage: any, citizenUsername: string 
       ? ` (${dataPackage.citizen.position.lat.toFixed(6)}, ${dataPackage.citizen.position.lng.toFixed(6)})`
       : '';
     
-    md += `- **position**: ${locationDescription}${positionDebug}\n`;
+    md += `${locationDescription}${positionDebug}\n`;
   } else {
-    md += `- **position**: Not available\n`;
+    md += `Location not available\n`;
   }
-  if (dataPackage.citizen?.corePersonality) {
-    let personalityDisplay = String(dataPackage.citizen.corePersonality); // Fallback
-    if (typeof dataPackage.citizen.corePersonality === 'string') {
-      try {
-        const parsedPersonality = JSON.parse(dataPackage.citizen.corePersonality);
-        if (Array.isArray(parsedPersonality)) {
-          // Format as a JSON array string, e.g., ["Trait1", "Trait2"]
-          personalityDisplay = JSON.stringify(parsedPersonality);
-        }
-      } catch (e) {
-        // If parsing fails, personalityDisplay remains the original string
-        console.warn(`[API get-data-package] Could not parse corePersonality as JSON array: ${dataPackage.citizen.corePersonality}`, e);
-      }
-    }
-    md += `- **corePersonality**: ${personalityDisplay}\n`;
-  }
-  
-  // Add description if available
-  if (dataPackage.citizen?.description) {
-    md += `\n### Description\n${dataPackage.citizen.description}\n`;
-  }
-  
-  // Add personality if available
-  if (dataPackage.citizen?.personality) {
-    md += `\n### Personality\n${dataPackage.citizen.personality}\n`;
-  }
-  
   md += '\n';
 
   // Last Activity
