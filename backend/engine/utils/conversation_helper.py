@@ -174,7 +174,17 @@ def get_relationship_details(tables: Dict[str, Table], username1: str, username2
 def get_conversation_history(tables: Dict[str, Table], channel_name: Any, limit: int = 5) -> List[Dict]: # Changed type hint for channel_name to Any for robustness check
     """Fetches the last few messages for a given channel."""
     # Ensure channel_name is definitely a string before use
-    str_channel_name = str(channel_name)
+    try:
+        str_channel_name = str(channel_name)
+    except Exception as e_str:
+        log.error(f"Error converting channel_name to string: {e_str}. Type: {type(channel_name)}")
+        # If channel_name is a dict, try to extract a usable identifier
+        if isinstance(channel_name, dict) and ('id' in channel_name or 'name' in channel_name):
+            str_channel_name = str(channel_name.get('id', channel_name.get('name', 'unknown_channel')))
+            log.info(f"Extracted channel identifier from dict: {str_channel_name}")
+        else:
+            log.error(f"Could not extract usable channel name from: {repr(channel_name)[:100]}")
+            return []  # Return empty list if we can't get a usable channel name
     
     log.info(f"Fetching conversation history for channel {str_channel_name} (limit {limit})...")
     try:
@@ -191,6 +201,8 @@ def get_conversation_history(tables: Dict[str, Table], channel_name: Any, limit:
         # Add specific logging if the error is the one reported
         if isinstance(e, AttributeError) and "'tuple' object has no attribute 'startswith'" in str(e):
             log.error(f"Type of original channel_name parameter was: {type(channel_name)}")
+        elif isinstance(e, AttributeError) and "'dict' object has no attribute 'startswith'" in str(e):
+            log.error(f"Dict channel_name issue: {repr(channel_name)[:100]}")
     return []
 
 def persist_message(
