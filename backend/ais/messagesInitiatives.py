@@ -581,10 +581,10 @@ def call_try_create_activity_api(
     # Vérification des paramètres requis pour send_message
     if activity_type == "send_message":
         if not activity_parameters.get("receiverUsername"):
-            print(f"Erreur: Paramètre 'receiverUsername' manquant pour l'activité send_message")
+            print(f"Erreur: Paramètre 'receiverUsername' manquant pour l'activité send_message. Paramètres reçus: {json.dumps(activity_parameters)}")
             return False
         if not activity_parameters.get("content"):
-            print(f"Erreur: Paramètre 'content' manquant pour l'activité send_message")
+            print(f"Erreur: Paramètre 'content' manquant pour l'activité send_message. Paramètres reçus: {json.dumps(activity_parameters)}")
             return False
 
     api_url = f"{BASE_URL}/api/activities/try-create" # BASE_URL is defined at the top

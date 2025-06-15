@@ -30,6 +30,9 @@ export async function POST(request: Request) {
       activityParameters: activityDetails || {} // Always include activityParameters, even if empty
     };
     
+    // Log the actual payload being sent to Python for debugging
+    console.log(`[API /activities/try-create] Actual payload being sent to Python:`, JSON.stringify(pythonPayload, null, 2));
+    
     // Log des paramètres spécifiques pour manage_public_sell_contract
     if (activityType === 'manage_public_sell_contract') {
       console.log(`[API /activities/try-create] Processing manage_public_sell_contract with parameters:`, 

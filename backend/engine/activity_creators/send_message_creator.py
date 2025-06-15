@@ -56,7 +56,26 @@ def try_create(
     # Validate required parameters
     if not (receiver_username and content):
         log.error(f"Missing required details for send_message: receiverUsername or content. Details received: {details}")
-        return None
+        # Check if activityParameters might be nested one level deeper (common API issue)
+        if 'activityParameters' in details and isinstance(details['activityParameters'], dict):
+            nested_params = details['activityParameters']
+            log.info(f"Found nested activityParameters, trying to use those instead: {nested_params}")
+            receiver_username = nested_params.get('receiverUsername')
+            content = nested_params.get('content')
+            message_type = nested_params.get('messageType', 'personal')
+            target_building_id = nested_params.get('targetBuildingId')
+            conversation_length = nested_params.get('conversationLength', 3)
+            channel = nested_params.get('channel')
+            
+            # Re-validate after extracting from nested parameters
+            if not (receiver_username and content):
+                log.error(f"Still missing required details after checking nested parameters")
+                return None
+            else:
+                log.info(f"Successfully extracted parameters from nested structure: receiver={receiver_username}, content_length={len(content)}")
+                # Continue with the extracted parameters
+        else:
+            return None
     
     # Validate conversation_length
     if not isinstance(conversation_length, int) or conversation_length < 1:
