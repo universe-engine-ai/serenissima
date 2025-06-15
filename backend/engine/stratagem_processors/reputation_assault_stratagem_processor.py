@@ -132,13 +132,26 @@ def _get_related_citizens(tables: Dict[str, Any], target_username: str, limit: i
     """
     related_usernames_set: set[str] = set()
     try:
+        # Vérifier si 'relationships' est directement dans tables ou s'il faut l'accéder différemment
+        relationships_table = None
+        
+        if 'relationships' in tables:
+            relationships_table = tables['relationships']
+        elif hasattr(tables, 'get') and callable(tables.get):
+            # Si tables est un dictionnaire avec une méthode get()
+            relationships_table = tables.get('relationships')
+        
+        if not relationships_table:
+            log.error(f"{LogColors.FAIL}Table 'relationships' not found in tables dictionary. Available tables: {list(tables.keys()) if isinstance(tables, dict) else 'Not a dict'}{LogColors.ENDC}")
+            return []
+            
         escaped_target_username = _escape_airtable_value(target_username)
         formula = f"OR({{Citizen1}}='{escaped_target_username}', {{Citizen2}}='{escaped_target_username}')"
         
         # Fetch relationships, sorted by StrengthScore descending
         # Ensure StrengthScore is a number in Airtable for correct sorting.
         # Pyairtable handles missing fields by typically sorting them last.
-        relationships = tables['relationships'].all(
+        relationships = relationships_table.all(
             formula=formula,
             fields=['Citizen1', 'Citizen2', 'StrengthScore'], # StrengthScore needed for sorting
             sort=['-StrengthScore'], # Use string format for descending sort
