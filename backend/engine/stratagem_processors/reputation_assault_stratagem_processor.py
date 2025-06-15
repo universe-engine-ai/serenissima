@@ -323,6 +323,9 @@ def process(
             related_citizen_profile_for_kinos = {}
         related_citizen_display_name = related_citizen_profile_for_kinos.get('FirstName', related_citizen_username)
         
+        # Get the appropriate KinOS model for the executor based on social class
+        model_for_executor = _rh_get_kinos_model_for_citizen(tables, executed_by_username) or kinos_model_override_from_notes or "claude-3-7-sonnet-latest"
+        
         # --- New KinOS Self-Chat to Prepare Specific Message ---
         log.info(f"{LogColors.PROCESS}Executor {executed_by_username} self-chatting to prepare message for {related_citizen_username}...{LogColors.ENDC}")
         add_system_for_specific_message_prep = {
