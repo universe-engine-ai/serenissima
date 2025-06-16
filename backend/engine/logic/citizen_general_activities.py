@@ -4176,6 +4176,37 @@ def dispatch_specific_activity_request(
                 return {"success": True, "message": f"Spread rumor endeavor reported as initiated for {citizen_name}, but failed to retrieve activity details.", "activity": None}
         else:
             return {"success": False, "message": f"Could not initiate 'spread_rumor' endeavor for {citizen_name}.", "activity": None, "reason": "spread_rumor_creation_failed"}
+            
+    elif activity_type == "production":
+        log.info(f"Dispatching to production_activity_creator for {citizen_name} with params: {activity_parameters}")
+        
+        # Import the production activity creator
+        from backend.engine.activity_creators.production_activity_creator import try_create as try_create_production_activity
+        
+        # Extract required parameters
+        building_id = params.get("buildingId")
+        recipe = params.get("recipe")
+        
+        if not building_id or not recipe:
+            return {"success": False, "message": "Missing required parameters (buildingId or recipe) for production activity.", "activity": None, "reason": "missing_production_parameters"}
+        
+        # Call the production activity creator
+        production_activity = try_create_production_activity(
+            tables=tables,
+            citizen_airtable_id=citizen_airtable_id,
+            citizen_custom_id=citizen_custom_id,
+            citizen_username=citizen_username,
+            building_custom_id=building_id,
+            recipe_def=recipe,
+            current_time_utc=now_utc_dt,
+            start_time_utc_iso=params.get("startTimeUtcIso")
+        )
+        
+        if production_activity and isinstance(production_activity, dict) and 'fields' in production_activity:
+            return {"success": True, "message": f"Production activity initiated for {citizen_name} at building {building_id}.", "activity": production_activity['fields']}
+        else:
+            log.warning(f"production_activity_creator did not return a valid activity record for {citizen_name}. Returned: {production_activity}")
+            return {"success": False, "message": f"Could not initiate 'production' activity for {citizen_name}.", "activity": None, "reason": "production_creation_failed"}
     
     # Add other activity_type handlers here as needed, for example:
     # elif activity_type == "manage_public_sell_contract":
@@ -4206,7 +4237,8 @@ def dispatch_specific_activity_request(
             'drink_at_inn', 
             'use_public_bath', # Added new activity type
             'goto_location', # Added goto_location support
-            'spread_rumor' # Added spread_rumor support
+            'spread_rumor', # Added spread_rumor support
+            'production' # Added production support
             # Add other explicitly handled types here as they are implemented in this dispatcher
         ]
         # Use original_activity_type in the error message if it was redirected
