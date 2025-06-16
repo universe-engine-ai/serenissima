@@ -8,7 +8,7 @@ Here is the complete data about your current situation:
 {
   "citizen": {
     "username": "SpiceHunter420",
-    "ducats": 339023.1342242684,
+    "ducats": 346417.39573644334,
     "social_class": "Facchini",
     "description": "Taddeo Crivelli, a weathered facchino with calloused hands and a sturdy frame built from years of hauling goods at Venice's bustling public docks. Born to a family of porters who have served the Republic for generations, Taddeo inherited not only his father's profession but also his sharp eye for valuable cargo and merchant connections. While lacking formal education, he possesses an intuitive understanding of trade flows and commercial relationships gleaned from years observing merchant transactions. Recently, Taddeo has shrewdly invested his hard-earned savings in a small warehouse near the docks, elevating himself slightly above his fellow porters. He rises before dawn each day to secure prime positions at the busiest landing areas, works tirelessly until midday, then spends afternoons managing his warehouse operations. Despite his humble origins, Taddeo dreams of expanding his nascent storage business into a modest commercial empire, perhaps one day earning citizenship for his descendants. His reputation for reliability among merchants and sailors\u2014combined with his unparalleled knowledge of Venice's labyrinthine cargo routes\u2014has made him an indispensable fixture in the maritime trading network of La Serenissima.",
     "core_personality": "[\"Diligent\", \"Secretive\", \"Advancement-seeking\"]",
@@ -3192,6 +3192,36 @@ Here is the complete data about your current situation:
   "latest_citizen_problems": [],
   "recent_notifications_for_ai": [
     {
+      "notificationId": "recvpFYyU0pxdtmfy",
+      "type": "rent_payment",
+      "citizen": "SpiceHunter420",
+      "content": "\u2705 Rent Paid: You paid **1,125 \u269c\ufe0f Ducats** to **ConsiglioDeiDieci** for **recDtWltmBLHxCC3M**.",
+      "details": {
+        "building_id": "recDtWltmBLHxCC3M",
+        "building_name": "recDtWltmBLHxCC3M",
+        "rent_price": 1125,
+        "building_owner": "ConsiglioDeiDieci",
+        "event_type": "rent_payment_made"
+      },
+      "createdAt": "2025-06-16T18:01:39.037Z",
+      "readAt": null
+    },
+    {
+      "notificationId": "recGKnUJ2cwItjpQj",
+      "type": "rent_payment",
+      "citizen": "SpiceHunter420",
+      "content": "\u2705 Rent Paid: You paid **1,125 \u269c\ufe0f Ducats** to **ConsiglioDeiDieci** for **recDtWltmBLHxCC3M**.",
+      "details": {
+        "building_id": "recDtWltmBLHxCC3M",
+        "building_name": "recDtWltmBLHxCC3M",
+        "rent_price": 1125,
+        "building_owner": "ConsiglioDeiDieci",
+        "event_type": "rent_payment_made"
+      },
+      "createdAt": "2025-06-16T16:01:11.527Z",
+      "readAt": null
+    },
+    {
       "notificationId": "recs6ow3bh28JhaKd",
       "type": "rent_payment",
       "citizen": "SpiceHunter420",
@@ -3655,7 +3685,7 @@ Here is the complete data about your current situation:
       "pointType": "building"
     }
   },
-  "timestamp": "2025-06-15T21:48:17.317530+02:00",
+  "timestamp": "2025-06-16T21:03:02.784622+02:00",
   "building_ownership_relevancies": []
 }
 
