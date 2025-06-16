@@ -254,13 +254,8 @@ def try_create(
                 else:
                     log.warning(f"{LogColors.ACTIVITY}[FetchCreator] No suitable public_sell contract found for {resource_type_id} (amount: {amount}) after dynamic search.")
                     # TODO: Could add logic to find producer buildings as a fallback.
-                except Exception as e_dyn_src:
-                    log.error(f"{LogColors.ACTIVITY}[FetchCreator] Error during dynamic source finding for {resource_type_id}: {e_dyn_src}")
-            else:
-                log.warning(f"{LogColors.ACTIVITY}[FetchCreator] No suitable public_sell contract found for {resource_type_id} (amount: {amount}) after dynamic search.")
-                # TODO: Could add logic to find producer buildings as a fallback.
-        except Exception as e_dyn_src:
-            log.error(f"{LogColors.ACTIVITY}[FetchCreator] Error during dynamic source finding for {resource_type_id}: {e_dyn_src}")
+            except Exception as e_dyn_src:
+                log.error(f"{LogColors.ACTIVITY}[FetchCreator] Error during dynamic source finding for {resource_type_id}: {e_dyn_src}")
 
     # After dynamic source finding attempt, check if we have a source
     if not final_from_building_custom_id:
