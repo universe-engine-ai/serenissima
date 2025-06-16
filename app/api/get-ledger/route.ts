@@ -887,6 +887,8 @@ function formatSimpleObjectForMarkdown(obj: Record<string, any> | null, fieldsTo
 function convertLedgerToMarkdown(Ledger: any, citizenUsername: string | null): string {
   let md = `# Ledger for ${citizenUsername || 'Unknown Citizen'}\n\n`;
   
+  md += `Your Ledger contains up-to-date information about your life in Venice — your properties, relationships, contracts, and recent activities — essential intelligence for making informed strategic decisions in La Serenissima.\n\n`;
+
   // Citizen Details
   md += `## Citizen Details\n`;
   
@@ -895,7 +897,7 @@ function convertLedgerToMarkdown(Ledger: any, citizenUsername: string | null): s
     Ledger.citizen.ducats = Math.floor(Number(Ledger.citizen.ducats));
   }
   
-  md += formatSimpleObjectForMarkdown(Ledger.citizen, ['username', 'firstName', 'lastName', 'socialClass', 'ducats', 'isAI', 'inVenice', 'homeCity', 'influence', 'specialty']);
+  md += formatSimpleObjectForMarkdown(Ledger.citizen, ['username', 'firstName', 'lastName', 'socialClass', 'ducats', 'inVenice', 'homeCity', 'influence', 'specialty']);
   
   if (Ledger.citizen?.corePersonality) {
     let personalityDisplay = String(Ledger.citizen.corePersonality); // Fallback
