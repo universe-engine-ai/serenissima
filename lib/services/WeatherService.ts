@@ -40,6 +40,13 @@ class WeatherService {
     }
     console.log('[WeatherService] Initializing...');
     await this.fetchWeather(); // Initial fetch
+    
+    // Emit an initial weather update event with the current weather
+    if (this.currentWeatherData) {
+      console.log('[WeatherService] Emitting initial weather data on initialization');
+      eventBus.emit(EventTypes.WEATHER_UPDATED, this.currentWeatherData);
+    }
+    
     this.intervalId = setInterval(() => this.fetchWeather(), WEATHER_UPDATE_INTERVAL_MS);
   }
 
@@ -86,6 +93,7 @@ class WeatherService {
           error: data.error,
         };
         console.log('[WeatherService] Weather data updated:', this.currentWeatherData);
+        console.log(`[WeatherService] Weather condition: ${this.currentWeatherData.condition}`);
         eventBus.emit(EventTypes.WEATHER_UPDATED, this.currentWeatherData);
       } else {
         throw new Error(data.error || 'Unknown error fetching weather data');
