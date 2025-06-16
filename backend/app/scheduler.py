@@ -201,7 +201,7 @@ def run_scheduled_tasks(forced_hour: Optional[int] = None): # Added forced_hour 
                 18: [("engine/dailyrentpayments.py", "Daily rent payments", 0)], # 18:00 VT
                 19: [("engine/calculateIncomeAndTurnover.py", "Citizen Income and Turnover Calculation", 0), # 19:00 VT
                      ("engine/processStratagems.py", "Process Active Stratagems (Evening)", 5)], # 19:05 VT
-                20: [("ais/bidonlands.py", "AI land bidding", 0), # 20:00 VT
+                20: [ # ("ais/bidonlands.py", "AI land bidding", 0), # 20:00 VT
                      ("ais/delegateBusinesses.py", "AI Business Delegation", 5), # 20:05 VT
                      ("engine/createmarketgalley.py --construction", "Create Market Galley (Construction)", 10)], # 20:10 VT
                 21: [("ais/buildbuildings.py --model local", "AI building construction", 0), # 21:00 VT
