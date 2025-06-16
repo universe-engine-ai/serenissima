@@ -838,9 +838,9 @@ function formatDate(dateString?: string | Date): string {
     // Create a date object from the input
     const date = new Date(dateString);
     
-    // Subtract 500 years from the date
+    // Subtract 1000 years from the date
     const adjustedDate = new Date(date);
-    adjustedDate.setFullYear(date.getFullYear() - 500);
+    adjustedDate.setFullYear(date.getFullYear() - 1000);
     
     // Ensure dates are displayed in Venice time for human readability
     return adjustedDate.toLocaleString('fr-FR', { dateStyle: 'medium', timeStyle: 'short', timeZone: 'Europe/Rome' });
@@ -1042,7 +1042,8 @@ function convertDataPackageToMarkdown(dataPackage: any, citizenUsername: string 
   historicalDate.setFullYear(currentDate.getFullYear() - 500);
   
   md += `\n## Current Date\n`;
-  md += `${formatDate(historicalDate)}\n`;
+  // Use direct formatting for the current date to ensure it's 500 years ago
+  md += `${historicalDate.toLocaleString('fr-FR', { dateStyle: 'medium', timeStyle: 'short', timeZone: 'Europe/Rome' })}\n`;
   md += '\n';
 
   // Last Activity
