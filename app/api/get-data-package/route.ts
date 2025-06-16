@@ -1028,6 +1028,11 @@ function convertDataPackageToMarkdown(dataPackage: any, citizenUsername: string 
   } else {
     md += `Location not available\n`;
   }
+  
+  // Add current date
+  const currentDate = new Date();
+  md += `\n## Current Date\n`;
+  md += `${formatDate(currentDate)}\n`;
   md += '\n';
 
   // Last Activity
