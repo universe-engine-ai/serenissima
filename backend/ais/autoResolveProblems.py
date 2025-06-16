@@ -323,6 +323,12 @@ def resolve_no_markup_buy_contract_for_input(problem: Dict, tables: Dict[str, Ta
     if title_match_input_style1:
         input_resource_type = title_match_input_style1.group(1)
     
+    # Try regex for "Input: resource_name" in title (singular form)
+    if not input_resource_type:
+        title_match_input_singular = re.search(r"Input: (\w+)", problem_title)
+        if title_match_input_singular:
+            input_resource_type = title_match_input_singular.group(1)
+    
     # If not found, try regex for "missing inputs (resource_name)" in description
     if not input_resource_type:
         desc_match_input_style = re.search(r"missing inputs \((\w+)\)", problem_description)
@@ -341,7 +347,26 @@ def resolve_no_markup_buy_contract_for_input(problem: Dict, tables: Dict[str, Ta
         title_match_supplier_shortage_style = re.search(r"Supplier Shortage for Inputs: (\w+)", problem_title)
         if title_match_supplier_shortage_style:
             input_resource_type = title_match_supplier_shortage_style.group(1)
+            
+    # If still not found, try regex for "Missing Purchase Contract for Input: resource_name" in title
+    if not input_resource_type:
+        title_match_missing_purchase = re.search(r"Missing Purchase Contract for Input: (\w+)", problem_title)
+        if title_match_missing_purchase:
+            input_resource_type = title_match_missing_purchase.group(1)
 
+    # Extract building ID from title if not already set
+    if not buyer_building_id:
+        # Try to extract building ID from title format like "at 'Building Name (ID: bld_xyz)'"
+        building_id_match = re.search(r"at '.*?\((ID: )?(bld_[\w\.]+)\)'", problem_title)
+        if building_id_match:
+            buyer_building_id = building_id_match.group(2)
+            log.info(f"  Extracted building ID from title: {buyer_building_id}")
+        
+        # If still not found, try to extract from Asset field directly
+        if not buyer_building_id:
+            buyer_building_id = problem['fields'].get('Asset')
+            log.info(f"  Using Asset field as building ID: {buyer_building_id}")
+    
     if not buyer_building_id or not input_resource_type:
         log.error(f"  Missing BuyerBuildingId or InputResourceType for problem {problem['id']}. Title: '{problem_title}'. Cannot resolve.")
         return False
