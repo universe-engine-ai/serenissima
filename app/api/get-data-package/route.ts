@@ -842,8 +842,8 @@ function formatDate(dateString?: string | Date): string {
     const adjustedDate = new Date(date);
     adjustedDate.setFullYear(date.getFullYear() - 500);
     
-    // Ensure dates are displayed in Venice time for human readability
-    return adjustedDate.toLocaleString('fr-FR', { dateStyle: 'medium', timeStyle: 'short', timeZone: 'Europe/Rome' });
+    // Ensure dates are displayed in Venice time with English month names
+    return adjustedDate.toLocaleString('en-GB', { dateStyle: 'medium', timeStyle: 'short', timeZone: 'Europe/Rome' });
   } catch (e) {
     return String(dateString); // Fallback if date is invalid
   }
@@ -1042,8 +1042,8 @@ function convertDataPackageToMarkdown(dataPackage: any, citizenUsername: string 
   historicalDate.setFullYear(currentDate.getFullYear() - 500);
   
   md += `\n## Current Date\n`;
-  // Use direct formatting for the current date to ensure it's 500 years ago
-  md += `${historicalDate.toLocaleString('fr-FR', { dateStyle: 'medium', timeStyle: 'short', timeZone: 'Europe/Rome' })}\n`;
+  // Use direct formatting for the current date to ensure it's 500 years ago with English month names
+  md += `${historicalDate.toLocaleString('en-GB', { dateStyle: 'medium', timeStyle: 'short', timeZone: 'Europe/Rome' })}\n`;
   md += '\n';
 
   // Last Activity
