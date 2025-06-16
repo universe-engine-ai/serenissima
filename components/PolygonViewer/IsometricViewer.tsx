@@ -2916,14 +2916,17 @@ const darkenColor = (colorStr: string, percent: number): string => {
     // Draw water background with weather-based coloring
     let waterColor = isNight ? '#001A33' : '#4A9BC1'; // Very Dark Blue for night, Darker desaturated cyan for day
   
-    // Adjust water color based on weather condition
-    const weatherCondition = currentHoverState.data?.weatherCondition || 'clear';
-    if (weatherCondition === 'rainy') {
+    // Adjust water color based on weather condition from component state, not hover state
+    if (currentWeather === 'rainy') {
       // Darken the water color for rainy weather
       waterColor = isNight ? '#00111F' : '#3A7A9B'; // Even darker blue for rainy conditions
-    } else if (weatherCondition === 'windy') {
+      console.log('[IsometricViewer] Using rainy water color:', waterColor);
+    } else if (currentWeather === 'windy') {
       // Slightly choppier look for windy weather (slightly darker with a hint of gray)
       waterColor = isNight ? '#001528' : '#4089AB'; 
+      console.log('[IsometricViewer] Using windy water color:', waterColor);
+    } else {
+      console.log('[IsometricViewer] Using default water color:', waterColor);
     }
   
     ctx.fillStyle = waterColor;
