@@ -1749,35 +1749,83 @@ def _handle_production_and_general_work_tasks(
                 # Prio 3: Buy from public sell contract
                 if not first_fetch_activity_for_this_input:
                     log.info(f"    [Réappro. Arti Prio 3] Recherche de contrat 'public_sell' pour {res_name_display}.")
-                    public_sell_formula = f"AND({{Type}}='public_sell', {{ResourceType}}='{_escape_airtable_value(input_res_id_to_fetch)}', {{EndAt}}>'{now_utc_dt.isoformat()}', {{TargetAmount}}>0)"
-                    all_public_sell_for_res = tables['contracts'].all(formula=public_sell_formula, sort=['PricePerResource'])
-                    for contract_ps in all_public_sell_for_res:
-                        seller_bldg_id_ps = contract_ps['fields'].get('SellerBuilding')
-                        if not seller_bldg_id_ps: continue
-                        seller_bldg_rec_ps = get_building_record(tables, seller_bldg_id_ps)
-                        if not seller_bldg_rec_ps: continue
-                        price_ps = float(contract_ps['fields'].get('PricePerResource', 0))
-                        available_ps = float(contract_ps['fields'].get('TargetAmount', 0))
-                        seller_ps = contract_ps['fields'].get('Seller')
-                        if not seller_ps: continue
-                        buyer_rec_ps = get_citizen_record(tables, workplace_operator)
-                        if not buyer_rec_ps: continue
-                        ducats_ps = float(buyer_rec_ps['fields'].get('Ducats', 0))
-                        max_affordable_ps = (ducats_ps / price_ps) if price_ps > 0 else float('inf')
-                        amount_to_buy_ps = min(amount_to_fetch_for_recipe, available_ps, max_affordable_ps) # Use deficit
-                        amount_to_buy_ps = float(f"{amount_to_buy_ps:.4f}")
-                        if amount_to_buy_ps >= 0.0001:
-                            _, source_stock_ps_map = get_building_storage_details(tables, seller_bldg_id_ps, seller_ps)
-                            actual_stock_at_source = source_stock_ps_map.get(input_res_id_to_fetch, 0.0)
-                            if actual_stock_at_source >= amount_to_buy_ps:
-                                contract_custom_id_ps_str = contract_ps['fields'].get('ContractId', contract_ps['id'])
-                                if _has_recent_failed_activity_for_contract(tables, 'fetch_resource', contract_custom_id_ps_str): continue
-                                seller_bldg_pos_ps = _get_building_position_coords(seller_bldg_rec_ps)
-                                if citizen_position and seller_bldg_pos_ps:
-                                    path_seller_ps = get_path_between_points(citizen_position, seller_bldg_pos_ps, transport_api_url)
-                                    if path_seller_ps and path_seller_ps.get('success'):
-                                        first_fetch_activity_for_this_input = try_create_resource_fetching_activity(tables, citizen_airtable_id, citizen_custom_id, citizen_username, contract_custom_id_ps_str, seller_bldg_id_ps, workplace_custom_id, input_res_id_to_fetch, amount_to_buy_ps, path_seller_ps, now_utc_dt, resource_defs, building_type_defs, now_venice_dt, transport_api_url, api_base_url, start_time_utc_iso=None)
-                                        if first_fetch_activity_for_this_input: log.info(f"      [Travail Général - Arti] Activité 'fetch_resource' (public_sell) créée."); break
+                    
+                    # Special handling for water resource - similar to autoResolveProblems.py
+                    if input_res_id_to_fetch == "water":
+                        log.info(f"      [Réappro. Arti Prio 3] Recherche spécifique pour l'eau: puits, citernes, ou autres sources d'eau...")
+                        # Look for buildings with water-related types
+                        water_building_types = ["well", "cistern", "fountain", "water_cistern"]
+                        water_subcategories = ["Water Management", "storage"]
+                        
+                        # First try to find water sources with public_sell contracts
+                        water_contract_formula = f"AND({{ResourceType}}='{_escape_airtable_value(input_res_id_to_fetch)}', {{Type}}='public_sell', {{Status}}='active')"
+                        water_contracts = tables['contracts'].all(formula=water_contract_formula)
+                        
+                        for contract in water_contracts:
+                            seller_bldg_id = contract['fields'].get('SellerBuilding')
+                            if not seller_bldg_id: continue
+                            seller_bldg_rec = get_building_record(tables, seller_bldg_id)
+                            if not seller_bldg_rec: continue
+                            seller = contract['fields'].get('Seller')
+                            if not seller: continue
+                            
+                            # Check if this building has water stock
+                            _, source_stock_map = get_building_storage_details(tables, seller_bldg_id, seller)
+                            actual_stock = source_stock_map.get(input_res_id_to_fetch, 0.0)
+                            
+                            if actual_stock >= amount_to_fetch_for_recipe:
+                                contract_custom_id_str = contract['fields'].get('ContractId', contract['id'])
+                                if _has_recent_failed_activity_for_contract(tables, 'fetch_resource', contract_custom_id_str): continue
+                                seller_bldg_pos = _get_building_position_coords(seller_bldg_rec)
+                                if citizen_position and seller_bldg_pos:
+                                    path_to_seller = get_path_between_points(citizen_position, seller_bldg_pos, transport_api_url)
+                                    if path_to_seller and path_to_seller.get('success'):
+                                        first_fetch_activity_for_this_input = try_create_resource_fetching_activity(
+                                            tables, citizen_airtable_id, citizen_custom_id, citizen_username, 
+                                            contract_custom_id_str, seller_bldg_id, workplace_custom_id, 
+                                            input_res_id_to_fetch, amount_to_fetch_for_recipe, 
+                                            path_to_seller, now_utc_dt, resource_defs, building_type_defs, 
+                                            now_venice_dt, transport_api_url, api_base_url, start_time_utc_iso=None
+                                        )
+                                        if first_fetch_activity_for_this_input: 
+                                            log.info(f"      [Travail Général - Arti] Activité 'fetch_resource' (eau) créée depuis {seller_bldg_id}.")
+                                            break
+                        
+                        # If still no water source found, continue with regular public_sell search
+                        if not first_fetch_activity_for_this_input:
+                            log.info(f"      [Réappro. Arti Prio 3] Pas de source d'eau spécifique trouvée. Poursuite avec recherche standard.")
+                    
+                    # Standard public_sell contract search (for all resources including water if special handling failed)
+                    if not first_fetch_activity_for_this_input:
+                        public_sell_formula = f"AND({{Type}}='public_sell', {{ResourceType}}='{_escape_airtable_value(input_res_id_to_fetch)}', {{EndAt}}>'{now_utc_dt.isoformat()}', {{TargetAmount}}>0)"
+                        all_public_sell_for_res = tables['contracts'].all(formula=public_sell_formula, sort=['PricePerResource'])
+                        for contract_ps in all_public_sell_for_res:
+                            seller_bldg_id_ps = contract_ps['fields'].get('SellerBuilding')
+                            if not seller_bldg_id_ps: continue
+                            seller_bldg_rec_ps = get_building_record(tables, seller_bldg_id_ps)
+                            if not seller_bldg_rec_ps: continue
+                            price_ps = float(contract_ps['fields'].get('PricePerResource', 0))
+                            available_ps = float(contract_ps['fields'].get('TargetAmount', 0))
+                            seller_ps = contract_ps['fields'].get('Seller')
+                            if not seller_ps: continue
+                            buyer_rec_ps = get_citizen_record(tables, workplace_operator)
+                            if not buyer_rec_ps: continue
+                            ducats_ps = float(buyer_rec_ps['fields'].get('Ducats', 0))
+                            max_affordable_ps = (ducats_ps / price_ps) if price_ps > 0 else float('inf')
+                            amount_to_buy_ps = min(amount_to_fetch_for_recipe, available_ps, max_affordable_ps) # Use deficit
+                            amount_to_buy_ps = float(f"{amount_to_buy_ps:.4f}")
+                            if amount_to_buy_ps >= 0.0001:
+                                _, source_stock_ps_map = get_building_storage_details(tables, seller_bldg_id_ps, seller_ps)
+                                actual_stock_at_source = source_stock_ps_map.get(input_res_id_to_fetch, 0.0)
+                                if actual_stock_at_source >= amount_to_buy_ps:
+                                    contract_custom_id_ps_str = contract_ps['fields'].get('ContractId', contract_ps['id'])
+                                    if _has_recent_failed_activity_for_contract(tables, 'fetch_resource', contract_custom_id_ps_str): continue
+                                    seller_bldg_pos_ps = _get_building_position_coords(seller_bldg_rec_ps)
+                                    if citizen_position and seller_bldg_pos_ps:
+                                        path_seller_ps = get_path_between_points(citizen_position, seller_bldg_pos_ps, transport_api_url)
+                                        if path_seller_ps and path_seller_ps.get('success'):
+                                            first_fetch_activity_for_this_input = try_create_resource_fetching_activity(tables, citizen_airtable_id, citizen_custom_id, citizen_username, contract_custom_id_ps_str, seller_bldg_id_ps, workplace_custom_id, input_res_id_to_fetch, amount_to_buy_ps, path_seller_ps, now_utc_dt, resource_defs, building_type_defs, now_venice_dt, transport_api_url, api_base_url, start_time_utc_iso=None)
+                                            if first_fetch_activity_for_this_input: log.info(f"      [Travail Général - Arti] Activité 'fetch_resource' (public_sell) créée."); break
                     if first_fetch_activity_for_this_input: break # Break from public_sell contracts loop
                 
                 # Prio 4: Generic fetch_resource (fallback)
@@ -1900,28 +1948,76 @@ def _handle_production_and_general_work_tasks(
                 # Prio 3: Buy from public sell contract (via building's own markup_buy contract)
                 if not first_fetch_activity_for_this_sellable:
                     log.info(f"    [Réappro. Vente - Prio 3] Recherche de contrat 'markup_buy' de {workplace_custom_id} pour {res_name_display_sell}...")
-                    markup_buy_formula_sell = f"AND({{Type}}='markup_buy', {{BuyerBuilding}}='{_escape_airtable_value(workplace_custom_id)}', {{ResourceType}}='{_escape_airtable_value(item_to_sell_id_fetch)}', {{EndAt}}>'{now_utc_dt.isoformat()}', {{TargetAmount}}>0, {{Status}}='active')"
-                    all_markup_buy_for_sell_item = tables['contracts'].all(formula=markup_buy_formula_sell, sort=['PricePerResource'])
-                    for contract_mb_sell in all_markup_buy_for_sell_item:
-                        seller_bldg_id_mb_sell = contract_mb_sell['fields'].get('SellerBuilding')
-                        seller_username_mb_sell = contract_mb_sell['fields'].get('Seller')
-                        if seller_bldg_id_mb_sell and seller_username_mb_sell: 
-                            seller_bldg_rec_mb_sell = get_building_record(tables, seller_bldg_id_mb_sell)
-                            if seller_bldg_rec_mb_sell:
-                                _, source_stock_mb_sell_map = get_building_storage_details(tables, seller_bldg_id_mb_sell, seller_username_mb_sell)
-                                actual_stock_at_source_mb_sell = source_stock_mb_sell_map.get(item_to_sell_id_fetch, 0.0)
-                                if actual_stock_at_source_mb_sell >= needed_amount_for_sale_fetch:
-                                    contract_custom_id_mb_sell_str = contract_mb_sell['fields'].get('ContractId', contract_mb_sell['id'])
-                                    if _has_recent_failed_activity_for_contract(tables, 'fetch_resource', contract_custom_id_mb_sell_str): continue
-                                    path_seller_mb_sell = get_path_between_points(citizen_position, _get_building_position_coords(seller_bldg_rec_mb_sell), transport_api_url)
-                                    if path_seller_mb_sell and path_seller_mb_sell.get('success'):
-                                        first_fetch_activity_for_this_sellable = try_create_resource_fetching_activity( tables, citizen_airtable_id, citizen_custom_id, citizen_username, contract_custom_id_mb_sell_str, seller_bldg_id_mb_sell, workplace_custom_id, item_to_sell_id_fetch, needed_amount_for_sale_fetch, path_seller_mb_sell, now_utc_dt, resource_defs, building_type_defs, now_venice_dt, transport_api_url, api_base_url, start_time_utc_iso=None )
-                                        if first_fetch_activity_for_this_sellable: log.info(f"      [Réappro. Vente] Activité 'fetch_resource' (markup_buy spécifique) créée."); break
-                        else: # Public markup_buy by the stall
-                            contract_custom_id_mb_sell_str = contract_mb_sell['fields'].get('ContractId', contract_mb_sell['id'])
-                            if _has_recent_failed_activity_for_contract(tables, 'fetch_resource', contract_custom_id_mb_sell_str): continue
-                            first_fetch_activity_for_this_sellable = try_create_resource_fetching_activity( tables, citizen_airtable_id, citizen_custom_id, citizen_username, contract_custom_id_mb_sell_str, None, workplace_custom_id, item_to_sell_id_fetch, needed_amount_for_sale_fetch, None, now_utc_dt, resource_defs, building_type_defs, now_venice_dt, transport_api_url, api_base_url, start_time_utc_iso=None )
-                            if first_fetch_activity_for_this_sellable: log.info(f"      [Réappro. Vente] Activité 'fetch_resource' (markup_buy public) créée."); break
+                    
+                    # Special handling for water resource - similar to autoResolveProblems.py
+                    if item_to_sell_id_fetch == "water":
+                        log.info(f"      [Réappro. Vente - Prio 3] Recherche spécifique pour l'eau: puits, citernes, ou autres sources d'eau...")
+                        # Look for buildings with water-related types
+                        water_building_types = ["well", "cistern", "fountain", "water_cistern"]
+                        water_subcategories = ["Water Management", "storage"]
+                        
+                        # First try to find water sources with public_sell contracts
+                        water_contract_formula = f"AND({{ResourceType}}='{_escape_airtable_value(item_to_sell_id_fetch)}', {{Type}}='public_sell', {{Status}}='active')"
+                        water_contracts = tables['contracts'].all(formula=water_contract_formula)
+                        
+                        for contract in water_contracts:
+                            seller_bldg_id = contract['fields'].get('SellerBuilding')
+                            if not seller_bldg_id: continue
+                            seller_bldg_rec = get_building_record(tables, seller_bldg_id)
+                            if not seller_bldg_rec: continue
+                            seller = contract['fields'].get('Seller')
+                            if not seller: continue
+                            
+                            # Check if this building has water stock
+                            _, source_stock_map = get_building_storage_details(tables, seller_bldg_id, seller)
+                            actual_stock = source_stock_map.get(item_to_sell_id_fetch, 0.0)
+                            
+                            if actual_stock >= needed_amount_for_sale_fetch:
+                                contract_custom_id_str = contract['fields'].get('ContractId', contract['id'])
+                                if _has_recent_failed_activity_for_contract(tables, 'fetch_resource', contract_custom_id_str): continue
+                                seller_bldg_pos = _get_building_position_coords(seller_bldg_rec)
+                                if citizen_position and seller_bldg_pos:
+                                    path_to_seller = get_path_between_points(citizen_position, seller_bldg_pos, transport_api_url)
+                                    if path_to_seller and path_to_seller.get('success'):
+                                        first_fetch_activity_for_this_sellable = try_create_resource_fetching_activity(
+                                            tables, citizen_airtable_id, citizen_custom_id, citizen_username, 
+                                            contract_custom_id_str, seller_bldg_id, workplace_custom_id, 
+                                            item_to_sell_id_fetch, needed_amount_for_sale_fetch, 
+                                            path_to_seller, now_utc_dt, resource_defs, building_type_defs, 
+                                            now_venice_dt, transport_api_url, api_base_url, start_time_utc_iso=None
+                                        )
+                                        if first_fetch_activity_for_this_sellable: 
+                                            log.info(f"      [Réappro. Vente] Activité 'fetch_resource' (eau) créée depuis {seller_bldg_id}.")
+                                            break
+                        
+                        # If still no water source found, continue with regular markup_buy search
+                        if not first_fetch_activity_for_this_sellable:
+                            log.info(f"      [Réappro. Vente - Prio 3] Pas de source d'eau spécifique trouvée. Poursuite avec recherche standard.")
+                    
+                    # Standard markup_buy contract search
+                    if not first_fetch_activity_for_this_sellable:
+                        markup_buy_formula_sell = f"AND({{Type}}='markup_buy', {{BuyerBuilding}}='{_escape_airtable_value(workplace_custom_id)}', {{ResourceType}}='{_escape_airtable_value(item_to_sell_id_fetch)}', {{EndAt}}>'{now_utc_dt.isoformat()}', {{TargetAmount}}>0, {{Status}}='active')"
+                        all_markup_buy_for_sell_item = tables['contracts'].all(formula=markup_buy_formula_sell, sort=['PricePerResource'])
+                        for contract_mb_sell in all_markup_buy_for_sell_item:
+                            seller_bldg_id_mb_sell = contract_mb_sell['fields'].get('SellerBuilding')
+                            seller_username_mb_sell = contract_mb_sell['fields'].get('Seller')
+                            if seller_bldg_id_mb_sell and seller_username_mb_sell: 
+                                seller_bldg_rec_mb_sell = get_building_record(tables, seller_bldg_id_mb_sell)
+                                if seller_bldg_rec_mb_sell:
+                                    _, source_stock_mb_sell_map = get_building_storage_details(tables, seller_bldg_id_mb_sell, seller_username_mb_sell)
+                                    actual_stock_at_source_mb_sell = source_stock_mb_sell_map.get(item_to_sell_id_fetch, 0.0)
+                                    if actual_stock_at_source_mb_sell >= needed_amount_for_sale_fetch:
+                                        contract_custom_id_mb_sell_str = contract_mb_sell['fields'].get('ContractId', contract_mb_sell['id'])
+                                        if _has_recent_failed_activity_for_contract(tables, 'fetch_resource', contract_custom_id_mb_sell_str): continue
+                                        path_seller_mb_sell = get_path_between_points(citizen_position, _get_building_position_coords(seller_bldg_rec_mb_sell), transport_api_url)
+                                        if path_seller_mb_sell and path_seller_mb_sell.get('success'):
+                                            first_fetch_activity_for_this_sellable = try_create_resource_fetching_activity( tables, citizen_airtable_id, citizen_custom_id, citizen_username, contract_custom_id_mb_sell_str, seller_bldg_id_mb_sell, workplace_custom_id, item_to_sell_id_fetch, needed_amount_for_sale_fetch, path_seller_mb_sell, now_utc_dt, resource_defs, building_type_defs, now_venice_dt, transport_api_url, api_base_url, start_time_utc_iso=None )
+                                            if first_fetch_activity_for_this_sellable: log.info(f"      [Réappro. Vente] Activité 'fetch_resource' (markup_buy spécifique) créée."); break
+                            else: # Public markup_buy by the stall
+                                contract_custom_id_mb_sell_str = contract_mb_sell['fields'].get('ContractId', contract_mb_sell['id'])
+                                if _has_recent_failed_activity_for_contract(tables, 'fetch_resource', contract_custom_id_mb_sell_str): continue
+                                first_fetch_activity_for_this_sellable = try_create_resource_fetching_activity( tables, citizen_airtable_id, citizen_custom_id, citizen_username, contract_custom_id_mb_sell_str, None, workplace_custom_id, item_to_sell_id_fetch, needed_amount_for_sale_fetch, None, now_utc_dt, resource_defs, building_type_defs, now_venice_dt, transport_api_url, api_base_url, start_time_utc_iso=None )
+                                if first_fetch_activity_for_this_sellable: log.info(f"      [Réappro. Vente] Activité 'fetch_resource' (markup_buy public) créée."); break
                     if first_fetch_activity_for_this_sellable: break
 
                 # Prio 4: Generic fetch_resource (fallback)

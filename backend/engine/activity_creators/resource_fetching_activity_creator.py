@@ -110,15 +110,96 @@ def try_create(
     if not final_from_building_custom_id:
         log.info(f"{LogColors.ACTIVITY}[FetchCreator] No explicit source for {citizen_username} requesting {resource_type_id}. Initiating dynamic source finding...")
         
-        # Dynamic Source Finding Logic:
-        # 1. Look for public_sell contracts for the resource_type_id
-        public_sell_formula = f"AND({{Type}}='public_sell', {{ResourceType}}='{_escape_airtable_value(resource_type_id)}', {{EndAt}}>'{current_time_utc.isoformat()}', {{TargetAmount}}>0, {{Status}}='active')"
-        try:
-            all_public_sell_contracts = tables['contracts'].all(formula=public_sell_formula, sort=['PricePerResource']) # Cheaper first
+        # Special handling for water resource
+        if resource_type_id == "water":
+            log.info(f"{LogColors.ACTIVITY}[FetchCreator] Special handling for water resource. Looking for wells, cisterns, or other water sources...")
             
-            best_source_contract_record = None
-            
-            for contract_rec_dyn in all_public_sell_contracts:
+            # First try to find water sources with public_sell contracts
+            water_contract_formula = f"AND({{ResourceType}}='{_escape_airtable_value(resource_type_id)}', {{Type}}='public_sell', {{Status}}='active')"
+            try:
+                water_contracts = tables['contracts'].all(formula=water_contract_formula)
+                
+                for contract in water_contracts:
+                    seller_bldg_id = contract['fields'].get('SellerBuilding')
+                    if not seller_bldg_id: continue
+                    seller_bldg_rec = get_building_record(tables, seller_bldg_id)
+                    if not seller_bldg_rec: continue
+                    seller = contract['fields'].get('Seller')
+                    if not seller: continue
+                    
+                    # Check if this building has water stock
+                    _, source_stock_map = get_building_storage_details(tables, seller_bldg_id, seller)
+                    actual_stock = source_stock_map.get(resource_type_id, 0.0)
+                    
+                    if actual_stock >= amount:
+                        final_from_building_custom_id = seller_bldg_id
+                        final_contract_custom_id = contract['fields'].get('ContractId', contract['id'])
+                        log.info(f"{LogColors.ACTIVITY}[FetchCreator] Found water source with public_sell contract: {seller_bldg_id}")
+                        break
+                
+                # If still no source, look for buildings with water-related types
+                if not final_from_building_custom_id:
+                    water_building_types = ["well", "cistern", "fountain", "water_cistern"]
+                    water_subcategories = ["Water Management", "storage"]
+                    
+                    # Try to find buildings by type
+                    for building_type in water_building_types:
+                        building_formula = f"{{Type}}='{_escape_airtable_value(building_type)}'"
+                        water_buildings = tables['buildings'].all(formula=building_formula)
+                        
+                        for water_building in water_buildings:
+                            water_building_id = water_building['fields'].get('BuildingId')
+                            owner_username = water_building['fields'].get('Owner')
+                            
+                            if water_building_id and owner_username:
+                                # Check if this building has water
+                                _, source_stock_map = get_building_storage_details(tables, water_building_id, owner_username)
+                                actual_stock = source_stock_map.get(resource_type_id, 0.0)
+                                
+                                if actual_stock >= amount:
+                                    final_from_building_custom_id = water_building_id
+                                    log.info(f"{LogColors.ACTIVITY}[FetchCreator] Found water source by building type: {water_building_id} (Type: {building_type})")
+                                    break
+                        
+                        if final_from_building_custom_id:
+                            break
+                    
+                    # If still no source, try by subcategory
+                    if not final_from_building_custom_id:
+                        for subcategory in water_subcategories:
+                            building_formula = f"{{SubCategory}}='{_escape_airtable_value(subcategory)}'"
+                            water_buildings = tables['buildings'].all(formula=building_formula)
+                            
+                            for water_building in water_buildings:
+                                water_building_id = water_building['fields'].get('BuildingId')
+                                owner_username = water_building['fields'].get('Owner')
+                                
+                                if water_building_id and owner_username:
+                                    # Check if this building has water
+                                    _, source_stock_map = get_building_storage_details(tables, water_building_id, owner_username)
+                                    actual_stock = source_stock_map.get(resource_type_id, 0.0)
+                                    
+                                    if actual_stock >= amount:
+                                        final_from_building_custom_id = water_building_id
+                                        log.info(f"{LogColors.ACTIVITY}[FetchCreator] Found water source by subcategory: {water_building_id} (SubCategory: {subcategory})")
+                                        break
+                            
+                            if final_from_building_custom_id:
+                                break
+            except Exception as e:
+                log.error(f"{LogColors.ACTIVITY}[FetchCreator] Error finding water source: {e}")
+        
+        # Standard dynamic source finding for all resources (including water if special handling failed)
+        if not final_from_building_custom_id:
+            # Dynamic Source Finding Logic:
+            # 1. Look for public_sell contracts for the resource_type_id
+            public_sell_formula = f"AND({{Type}}='public_sell', {{ResourceType}}='{_escape_airtable_value(resource_type_id)}', {{EndAt}}>'{current_time_utc.isoformat()}', {{TargetAmount}}>0, {{Status}}='active')"
+            try:
+                all_public_sell_contracts = tables['contracts'].all(formula=public_sell_formula, sort=['PricePerResource']) # Cheaper first
+                
+                best_source_contract_record = None
+                
+                for contract_rec_dyn in all_public_sell_contracts:
                 seller_building_id_cand = contract_rec_dyn['fields'].get('SellerBuilding')
                 if not seller_building_id_cand: continue
                 
