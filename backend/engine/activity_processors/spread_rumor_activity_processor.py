@@ -152,6 +152,12 @@ def process(
     if not present_citizens_usernames:
         log.info(f"{LogColors.OKBLUE}Aucun autre citoyen IA trouvé à proximité pour l'activité de rumeur {activity_guid}. Échec de l'activité pour permettre d'autres loisirs.{LogColors.ENDC}")
         return False # L'activité échoue pour permettre au système de tenter une autre activité de loisir
+    
+    # Limit to 10 citizens maximum to avoid overloading the system
+    if len(present_citizens_usernames) > 10:
+        log.info(f"{LogColors.WARNING}Trop de citoyens présents ({len(present_citizens_usernames)}). Limitation à 10 citoyens pour la rumeur.{LogColors.ENDC}")
+        import random
+        present_citizens_usernames = random.sample(present_citizens_usernames, 10)
 
     log.info(f"{LogColors.ACTIVITY}Citoyens présents pour la rumeur (par {executor_username} sur {target_citizen_gossip}): {present_citizens_usernames}{LogColors.ENDC}")
 
