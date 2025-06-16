@@ -1049,7 +1049,8 @@ def resolve_waiting_on_input_delivery(problem: Dict, tables: Dict[str, Table], r
         "toBuildingId": building_id,
         "contractId": contract_id,
         "title": f"Fetch {resource_type} for {building_record['fields'].get('Name', building_id)}",
-        "description": f"Fetching {resource_type} from supplier to resolve input shortage at {building_record['fields'].get('Name', building_id)}"
+        "description": f"Fetching {resource_type} from supplier to resolve input shortage at {building_record['fields'].get('Name', building_id)}",
+        "amount": 1.0  # Add default amount parameter which is required by the fetch_resource activity creator
     }
     
     log.info(f"  Calling try-create for 'fetch_resource' for {occupant_username}, from building {source_building_id} to {building_id}, resource {resource_type}.")

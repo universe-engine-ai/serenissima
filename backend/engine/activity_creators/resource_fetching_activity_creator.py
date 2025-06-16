@@ -57,6 +57,18 @@ def try_create(
     2. fetch_resource (pickup at source building)
     3. goto_location (from source to destination building, if destination is specified and different)
     Returns the first activity in the chain.
+    
+    Parameters:
+    -----------
+    amount: float
+        The amount of resource to fetch. This is required and must be a positive number.
+    """
+    """
+    Creates a chain of activities for fetching a resource:
+    1. goto_location (to source building, if not already there)
+    2. fetch_resource (pickup at source building)
+    3. goto_location (from source to destination building, if destination is specified and different)
+    Returns the first activity in the chain.
     """
     log.info(f"{LogColors.ACTIVITY}[FetchCreator] Init: citizen={citizen_username}, resource={resource_type_id}, amount={amount}, from_bldg_param={from_building_custom_id}, to_bldg_param={to_building_custom_id}")
     
