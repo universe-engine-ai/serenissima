@@ -357,7 +357,7 @@ def process(
             else:
                 log.warning(f"RecipeCraftMinutes is {recipe_duration_minutes} for activity {activity_guid}. Assuming full duration-based ratio.")
         except ValueError:
-            log.warning(f"Invalid RecipeCraftMinutes value '{recipe_craft_minutes_val}' for activity {activity_guid}. Assuming full duration-based ratio.")
+            log.warning(f"Invalid RecipeCraftMinutes value '{craft_minutes}' for activity {activity_guid}. Assuming full duration-based ratio.")
     else:
         log.info(f"RecipeCraftMinutes not found for activity {activity_guid}. Assuming full duration-based ratio (old behavior).")
 
