@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { FaTimes, FaSpinner, FaChartLine, FaCoins, FaHandHoldingUsd, FaUsers } from 'react-icons/fa';
 import AnimatedDucats from './AnimatedDucats';
+import CitizenIncomeGraphs from './CitizenIncomeGraphs';
 
 interface EconomyPanelProps {
   onClose: () => void;
@@ -21,6 +22,7 @@ const EconomyPanel: React.FC<EconomyPanelProps> = ({ onClose }) => {
   const [economyData, setEconomyData] = useState<EconomyData | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [activeTab, setActiveTab] = useState<'overview' | 'citizens'>('overview');
   
   // Fetch economy data
   useEffect(() => {
@@ -81,14 +83,40 @@ const EconomyPanel: React.FC<EconomyPanelProps> = ({ onClose }) => {
           </button>
         </div>
         
+        {/* Tabs */}
+        <div className="border-b border-amber-200 mb-6">
+          <nav className="-mb-px flex space-x-8">
+            <button
+              className={`pb-4 px-1 border-b-2 font-medium text-sm ${
+                activeTab === 'overview' 
+                  ? 'border-amber-600 text-amber-800' 
+                  : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
+              }`}
+              onClick={() => setActiveTab('overview')}
+            >
+              Overview
+            </button>
+            <button
+              className={`pb-4 px-1 border-b-2 font-medium text-sm ${
+                activeTab === 'citizens' 
+                  ? 'border-amber-600 text-amber-800' 
+                  : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
+              }`}
+              onClick={() => setActiveTab('citizens')}
+            >
+              Citizens
+            </button>
+          </nav>
+        </div>
+        
         {/* Content */}
         <div className="p-2">
-          {isLoading ? (
+          {isLoading && activeTab === 'overview' ? (
             <div className="flex flex-col items-center justify-center py-12">
               <FaSpinner className="animate-spin text-amber-600 text-4xl mb-4" />
               <p className="text-amber-800">Loading economic data...</p>
             </div>
-          ) : error ? (
+          ) : error && activeTab === 'overview' ? (
             <div className="bg-red-50 text-red-700 p-4 rounded-lg">
               <p className="font-medium">Error loading economic data</p>
               <p className="text-sm mt-1">{error}</p>
@@ -99,7 +127,7 @@ const EconomyPanel: React.FC<EconomyPanelProps> = ({ onClose }) => {
                 Try Again
               </button>
             </div>
-          ) : economyData ? (
+          ) : activeTab === 'overview' && economyData ? (
             <div className="space-y-6">
               {/* Overview Cards */}
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -190,11 +218,13 @@ const EconomyPanel: React.FC<EconomyPanelProps> = ({ onClose }) => {
                 Last updated: {formatDate(economyData.lastUpdated)}
               </div>
             </div>
-          ) : (
+          ) : activeTab === 'overview' ? (
             <div className="text-center py-8 text-amber-700">
               No economic data available
             </div>
-          )}
+          ) : activeTab === 'citizens' ? (
+            <CitizenIncomeGraphs limit={10} />
+          ) : null}
         </div>
       </div>
     </div>

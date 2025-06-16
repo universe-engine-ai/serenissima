@@ -1209,6 +1209,18 @@ function convertDataPackageToMarkdown(dataPackage: any, citizenUsername: string 
   } else {
     md += `- No active loans.\n\n`;
   }
+  
+  // Create a separate tab for Citizens income data
+  md += `## Citizens\n\n`;
+  md += `### Income Statistics\n`;
+  md += `This section displays income statistics for citizens in La Serenissima. The graphs show the top citizens by various income metrics.\n\n`;
+  md += `- **Daily Income**: Revenue generated in the last 24 hours\n`;
+  md += `- **Daily Net Result**: Profit/loss (income minus expenses) in the last 24 hours\n`;
+  md += `- **Weekly Income**: Revenue generated in the last 7 days\n`;
+  md += `- **Weekly Net Result**: Profit/loss in the last 7 days\n`;
+  md += `- **Monthly Income**: Revenue generated in the last 30 days\n`;
+  md += `- **Monthly Net Result**: Profit/loss in the last 30 days\n\n`;
+  md += `*Note: Use the Citizens tab in the UI to view interactive bar graphs of this data.*\n\n`;
 
   // Strongest Relationships
   md += `## Strongest Relationships (Top 20) (${dataPackage.strongestRelationships?.length || 0})\n`;
