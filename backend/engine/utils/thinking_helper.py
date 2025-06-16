@@ -77,7 +77,7 @@ def process_daily_reflection(
         if api_base_url:
             data_package_url = f"{api_base_url}/api/get-data-package?citizenUsername={citizen_username}" # Defaults to Markdown
             try:
-                pkg_response = requests.get(data_package_url, timeout=150)
+                pkg_response = requests.get(data_package_url, timeout=200)
                 if pkg_response.ok:
                     data_package_markdown_str = pkg_response.text # Get Markdown content
                     log.info(f"  Successfully fetched Markdown data package for {citizen_username} for daily reflection. Length: {len(data_package_markdown_str)}")
@@ -117,7 +117,7 @@ def process_daily_reflection(
         log.info(f"  Making KinOS /messages call for daily reflection by {citizen_username} to {kinos_messages_url}")
         
         try:
-            kinos_response = requests.post(kinos_messages_url, json=kinos_payload_dict, timeout=150) # Increased timeout
+            kinos_response = requests.post(kinos_messages_url, json=kinos_payload_dict, timeout=600) # Increased timeout
             kinos_response.raise_for_status()
             
             kinos_response_data = kinos_response.json()
@@ -233,7 +233,7 @@ def process_theater_reflection(
         if api_base_url:
             data_package_url = f"{api_base_url}/api/get-data-package?citizenUsername={citizen_username}" # Defaults to Markdown
             try:
-                pkg_response = requests.get(data_package_url, timeout=150)
+                pkg_response = requests.get(data_package_url, timeout=200)
                 if pkg_response.ok:
                     data_package_markdown_str = pkg_response.text # Get Markdown content
                     log.info(f"  Successfully fetched Markdown data package for {citizen_username} for theater reflection. Length: {len(data_package_markdown_str)}")
@@ -831,7 +831,7 @@ def process_guided_reflection(
         if api_base_url:
             data_package_url = f"{api_base_url}/api/get-data-package?citizenUsername={citizen_username}" # Defaults to Markdown
             try:
-                pkg_response = requests.get(data_package_url, timeout=150)
+                pkg_response = requests.get(data_package_url, timeout=200)
                 if pkg_response.ok:
                     data_package_markdown_str = pkg_response.text # Get Markdown content
                     log.info(f"  Successfully fetched Markdown data package for {citizen_username} for guided reflection. Length: {len(data_package_markdown_str)}")
@@ -1319,7 +1319,7 @@ def process_continue_thought(
         if api_base_url:
             data_package_url = f"{api_base_url}/api/get-data-package?citizenUsername={citizen_username}" # Defaults to Markdown
             try:
-                pkg_response = requests.get(data_package_url, timeout=150)
+                pkg_response = requests.get(data_package_url, timeout=200)
                 if pkg_response.ok:
                     data_package_markdown_str = pkg_response.text # Get Markdown content
                     log.info(f"  Successfully fetched Markdown data package for {citizen_username} for thought continuation. Length: {len(data_package_markdown_str)}")
@@ -1459,7 +1459,7 @@ def process_unguided_reflection(
         if api_base_url:
             data_package_url = f"{api_base_url}/api/get-data-package?citizenUsername={citizen_username}" # Defaults to Markdown
             try:
-                pkg_response = requests.get(data_package_url, timeout=150)
+                pkg_response = requests.get(data_package_url, timeout=200)
                 if pkg_response.ok:
                     data_package_markdown_str = pkg_response.text # Get Markdown content
                     log.info(f"  Successfully fetched Markdown data package for {citizen_username} for unguided reflection. Length: {len(data_package_markdown_str)}")
@@ -1498,7 +1498,7 @@ def process_unguided_reflection(
         log.info(f"  Making KinOS /messages call for unguided reflection by {citizen_username} to {kinos_messages_url}")
         
         try:
-            kinos_response = requests.post(kinos_messages_url, json=kinos_payload_dict, timeout=180) # Increased timeout
+            kinos_response = requests.post(kinos_messages_url, json=kinos_payload_dict, timeout=600) # Increased timeout
             kinos_response.raise_for_status()
             
             kinos_response_data = kinos_response.json()
