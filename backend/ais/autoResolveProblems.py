@@ -930,8 +930,116 @@ def resolve_waiting_on_input_delivery(problem: Dict, tables: Dict[str, Table], r
     except Exception as e:
         log.warning(f"  Error finding source building with stock: {e}")
     
+    # If no source found through markup_buy contracts, check for special resources like water
+    if not source_building_id and resource_type == "water":
+        log.info(f"  No markup_buy source found for water. Looking for wells, cisterns, or other water sources...")
+        try:
+            # First, look for public_sell contracts for water with zero price (common for wells/cisterns)
+            water_contract_formula = f"AND({{ResourceType}}='{_escape_airtable_value(resource_type)}', {{Type}}='public_sell', {{Status}}='active', {{PricePerResource}}=0)"
+            water_contracts = tables['contracts'].all(formula=water_contract_formula)
+            
+            for contract in water_contracts:
+                seller_building_id = contract['fields'].get('SellerBuilding')
+                if seller_building_id:
+                    # Check if the seller has stock
+                    seller_username = contract['fields'].get('Seller')
+                    if seller_username:
+                        # Get resource stock at seller building
+                        resource_formula = f"AND({{Asset}}='{_escape_airtable_value(seller_building_id)}', {{AssetType}}='building', {{Type}}='{_escape_airtable_value(resource_type)}', {{Owner}}='{_escape_airtable_value(seller_username)}')"
+                        resource_records = tables['resources'].all(formula=resource_formula)
+                        
+                        if resource_records and float(resource_records[0]['fields'].get('Count', 0)) > 0:
+                            source_building_id = seller_building_id
+                            contract_id = contract['fields'].get('ContractId', contract['id'])
+                            log.info(f"  Found water source with public_sell contract: {seller_building_id}")
+                            break
+            
+            # If still no source, look for buildings that might have water (wells, cisterns)
+            if not source_building_id:
+                # Look for buildings with SubCategory "Water Management" or similar
+                water_building_types = ["well", "cistern", "fountain", "water_cistern"]
+                water_subcategories = ["Water Management", "storage"]
+                
+                # First try to find buildings by type
+                for building_type in water_building_types:
+                    building_formula = f"{{Type}}='{_escape_airtable_value(building_type)}'"
+                    water_buildings = tables['buildings'].all(formula=building_formula)
+                    
+                    for water_building in water_buildings:
+                        water_building_id = water_building['fields'].get('BuildingId')
+                        owner_username = water_building['fields'].get('Owner')
+                        
+                        if water_building_id and owner_username:
+                            # Check if this building has water
+                            resource_formula = f"AND({{Asset}}='{_escape_airtable_value(water_building_id)}', {{AssetType}}='building', {{Type}}='{_escape_airtable_value(resource_type)}')"
+                            resource_records = tables['resources'].all(formula=resource_formula)
+                            
+                            if resource_records and float(resource_records[0]['fields'].get('Count', 0)) > 0:
+                                source_building_id = water_building_id
+                                log.info(f"  Found water source by building type: {water_building_id} (Type: {building_type})")
+                                break
+                    
+                    if source_building_id:
+                        break
+                
+                # If still no source, try by subcategory
+                if not source_building_id:
+                    for subcategory in water_subcategories:
+                        building_formula = f"{{SubCategory}}='{_escape_airtable_value(subcategory)}'"
+                        water_buildings = tables['buildings'].all(formula=building_formula)
+                        
+                        for water_building in water_buildings:
+                            water_building_id = water_building['fields'].get('BuildingId')
+                            owner_username = water_building['fields'].get('Owner')
+                            
+                            if water_building_id and owner_username:
+                                # Check if this building has water
+                                resource_formula = f"AND({{Asset}}='{_escape_airtable_value(water_building_id)}', {{AssetType}}='building', {{Type}}='{_escape_airtable_value(resource_type)}')"
+                                resource_records = tables['resources'].all(formula=resource_formula)
+                                
+                                if resource_records and float(resource_records[0]['fields'].get('Count', 0)) > 0:
+                                    source_building_id = water_building_id
+                                    log.info(f"  Found water source by subcategory: {water_building_id} (SubCategory: {subcategory})")
+                                    break
+                        
+                        if source_building_id:
+                            break
+        except Exception as e:
+            log.warning(f"  Error finding water source: {e}")
+    
+    # If still no source, look for any building with the resource in stock
     if not source_building_id:
-        log.warning(f"  Could not find a source building with stock for {resource_type}. Cannot create fetch activity.")
+        try:
+            # Find any building with this resource type in stock
+            resource_formula = f"AND({{AssetType}}='building', {{Type}}='{_escape_airtable_value(resource_type)}', {{Count}}>0)"
+            all_resource_records = tables['resources'].all(formula=resource_formula)
+            
+            for resource_record in all_resource_records:
+                potential_source_id = resource_record['fields'].get('Asset')
+                owner_username = resource_record['fields'].get('Owner')
+                
+                if potential_source_id and owner_username and potential_source_id != building_id:
+                    # Check if there's a public_sell contract for this resource from this building
+                    contract_formula = f"AND({{SellerBuilding}}='{_escape_airtable_value(potential_source_id)}', {{ResourceType}}='{_escape_airtable_value(resource_type)}', {{Type}}='public_sell', {{Status}}='active')"
+                    sell_contracts = tables['contracts'].all(formula=contract_formula, max_records=1)
+                    
+                    if sell_contracts:
+                        source_building_id = potential_source_id
+                        contract_id = sell_contracts[0]['fields'].get('ContractId', sell_contracts[0]['id'])
+                        log.info(f"  Found source building with public_sell contract: {potential_source_id}")
+                        break
+            
+            # If still no source with contract, just use any building with stock as last resort
+            if not source_building_id and all_resource_records:
+                potential_source_id = all_resource_records[0]['fields'].get('Asset')
+                if potential_source_id and potential_source_id != building_id:
+                    source_building_id = potential_source_id
+                    log.info(f"  Last resort: Found source building with stock but no contract: {potential_source_id}")
+        except Exception as e:
+            log.warning(f"  Error finding any source building with stock: {e}")
+    
+    if not source_building_id:
+        log.warning(f"  Could not find any source building with stock for {resource_type}. Cannot create fetch activity.")
         return False
     
     # Create fetch_resource activity
