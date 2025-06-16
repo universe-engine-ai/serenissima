@@ -200,50 +200,50 @@ def try_create(
                 best_source_contract_record = None
                 
                 for contract_rec_dyn in all_public_sell_contracts:
-                seller_building_id_cand = contract_rec_dyn['fields'].get('SellerBuilding')
-                if not seller_building_id_cand: continue
-                
-                seller_building_rec_cand = get_building_record(tables, seller_building_id_cand)
-                if not seller_building_rec_cand: continue
-                
-                seller_building_pos_cand = _get_building_position_coords(seller_building_rec_cand)
-                if not seller_building_pos_cand: continue
-
-                contract_seller_username = contract_rec_dyn['fields'].get('Seller')
-                if not contract_seller_username: continue
-                
-                _, seller_stock_map = get_building_storage_details(tables, seller_building_id_cand, contract_seller_username)
-                if seller_stock_map.get(resource_type_id, 0.0) >= amount:
-                    # Check buyer's (workshop operator) ability to pay
-                    # to_building_custom_id is the workshop where goods are delivered
-                    if not to_building_custom_id:
-                        log.warning(f"Dynamic source finding: to_building_custom_id (workshop) is None. Cannot check payment ability. Skipping contract {contract_rec_dyn['id']}.")
-                        continue
-
-                    workshop_record_for_payment = get_building_record(tables, to_building_custom_id)
-                    if not workshop_record_for_payment:
-                        log.warning(f"Dynamic source finding: Workshop {to_building_custom_id} not found for payment check. Skipping contract {contract_rec_dyn['id']}.")
-                        continue
+                    seller_building_id_cand = contract_rec_dyn['fields'].get('SellerBuilding')
+                    if not seller_building_id_cand: continue
                     
-                    workshop_operator_for_payment = workshop_record_for_payment['fields'].get('RunBy') or workshop_record_for_payment['fields'].get('Owner')
-                    if not workshop_operator_for_payment:
-                        log.warning(f"Dynamic source finding: Workshop {to_building_custom_id} has no operator for payment. Skipping contract {contract_rec_dyn['id']}.")
-                        continue
+                    seller_building_rec_cand = get_building_record(tables, seller_building_id_cand)
+                    if not seller_building_rec_cand: continue
                     
-                    operator_citizen_record = get_citizen_record(tables, workshop_operator_for_payment)
-                    if not operator_citizen_record:
-                        log.warning(f"Dynamic source finding: Workshop operator {workshop_operator_for_payment} not found. Skipping contract {contract_rec_dyn['id']}.")
-                        continue
+                    seller_building_pos_cand = _get_building_position_coords(seller_building_rec_cand)
+                    if not seller_building_pos_cand: continue
+
+                    contract_seller_username = contract_rec_dyn['fields'].get('Seller')
+                    if not contract_seller_username: continue
+                    
+                    _, seller_stock_map = get_building_storage_details(tables, seller_building_id_cand, contract_seller_username)
+                    if seller_stock_map.get(resource_type_id, 0.0) >= amount:
+                        # Check buyer's (workshop operator) ability to pay
+                        # to_building_custom_id is the workshop where goods are delivered
+                        if not to_building_custom_id:
+                            log.warning(f"Dynamic source finding: to_building_custom_id (workshop) is None. Cannot check payment ability. Skipping contract {contract_rec_dyn['id']}.")
+                            continue
+
+                        workshop_record_for_payment = get_building_record(tables, to_building_custom_id)
+                        if not workshop_record_for_payment:
+                            log.warning(f"Dynamic source finding: Workshop {to_building_custom_id} not found for payment check. Skipping contract {contract_rec_dyn['id']}.")
+                            continue
                         
-                    operator_ducats = float(operator_citizen_record['fields'].get('Ducats', 0))
-                    price_per_unit = float(contract_rec_dyn['fields'].get('PricePerResource', 0))
-                    total_cost = price_per_unit * amount
-                    
-                    if operator_ducats >= total_cost:
-                        best_source_contract_record = contract_rec_dyn
-                        break 
-                    else:
-                        log.info(f"  Dynamic source finding: Contract {contract_rec_dyn['id']} viable, but workshop operator {workshop_operator_for_payment} has insufficient ducats ({operator_ducats:.2f}) for cost {total_cost:.2f}.")
+                        workshop_operator_for_payment = workshop_record_for_payment['fields'].get('RunBy') or workshop_record_for_payment['fields'].get('Owner')
+                        if not workshop_operator_for_payment:
+                            log.warning(f"Dynamic source finding: Workshop {to_building_custom_id} has no operator for payment. Skipping contract {contract_rec_dyn['id']}.")
+                            continue
+                        
+                        operator_citizen_record = get_citizen_record(tables, workshop_operator_for_payment)
+                        if not operator_citizen_record:
+                            log.warning(f"Dynamic source finding: Workshop operator {workshop_operator_for_payment} not found. Skipping contract {contract_rec_dyn['id']}.")
+                            continue
+                            
+                        operator_ducats = float(operator_citizen_record['fields'].get('Ducats', 0))
+                        price_per_unit = float(contract_rec_dyn['fields'].get('PricePerResource', 0))
+                        total_cost = price_per_unit * amount
+                        
+                        if operator_ducats >= total_cost:
+                            best_source_contract_record = contract_rec_dyn
+                            break 
+                        else:
+                            log.info(f"  Dynamic source finding: Contract {contract_rec_dyn['id']} viable, but workshop operator {workshop_operator_for_payment} has insufficient ducats ({operator_ducats:.2f}) for cost {total_cost:.2f}.")
             
             if best_source_contract_record:
                 final_from_building_custom_id = best_source_contract_record['fields']['SellerBuilding']
