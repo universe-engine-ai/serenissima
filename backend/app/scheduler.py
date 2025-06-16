@@ -180,7 +180,8 @@ def run_scheduled_tasks(forced_hour: Optional[int] = None): # Added forced_hour 
                     ("ais/answertomessages.py --model local", "AI message responses", 5), # 8:05 VT
                     ("engine/createmarketgalley.py --food", "Create Market Galley (Food)", 10)], # 8:10 VT
                 9: [("engine/distributeLeases.py", "Lease distribution", 0), # 9:00 VT
-                    ("engine/dailyUpdate.py", "Daily Update Generation", 30)], # 9:30 VT
+                    ("engine/dailyUpdate.py", "Daily Update Generation", 30), # 9:30 VT
+                    ("ais/autoResolveProblems.py", "Auto Resolve Problems (Morning)", 45)], # 9:45 VT
                 10: [("engine/citizensgetjobs.py", "Citizen job assignment", 0), # 10:00 VT
                      ("ais/answertomessages.py --model local", "AI message responses", 5)], # 10:05 VT
                 11: [("engine/immigration.py", "Immigration", 0), # 11:00 VT
@@ -189,7 +190,8 @@ def run_scheduled_tasks(forced_hour: Optional[int] = None): # Added forced_hour 
                      ("ais/answertomessages.py --model local", "AI message responses", 5)], # 12:05 VT
                 13: [("engine/createimportactivities.py", "Process resource imports (Afternoon)", 0), # 13:00 VT
                      ("engine/decrees/affectpublicbuildingstolandowners.py", "Public buildings assignment", 5), # 13:05 VT
-                     ("engine/updateSocialClass.py", "Social class updates", 10)], # 13:10 VT
+                     ("engine/updateSocialClass.py", "Social class updates", 10), # 13:10 VT
+                     ("ais/autoResolveProblems.py", "Auto Resolve Problems (Afternoon)", 15)], # 13:15 VT
                 14: [("engine/citizenhousingmobility.py", "Citizen housing mobility", 0), # 14:00 VT
                      ("ais/answertomessages.py --model local", "AI message responses", 5), # 14:05 VT
                      ("engine/createmarketgalley.py --goods", "Create Market Galley (Goods)", 10)], # 14:10 VT
