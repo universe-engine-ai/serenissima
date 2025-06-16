@@ -44,6 +44,14 @@ def try_create(
         
         activity_id_str = f"produce_{citizen_custom_id}_{uuid.uuid4()}"
         
+        # Store recipe information in the Notes field as JSON since RecipeInputs, 
+        # RecipeOutputs, and RecipeCraftMinutes fields don't exist in Airtable
+        recipe_info = {
+            "inputs": inputs,
+            "outputs": outputs,
+            "craftMinutes": craft_minutes
+        }
+        
         activity_payload = {
             "ActivityId": activity_id_str,
             "Type": "production",
@@ -53,11 +61,11 @@ def try_create(
             "CreatedAt": effective_start_date_iso,
             "StartDate": effective_start_date_iso,
             "EndDate": effective_end_date_iso,
-            "Notes": f"⚒️ Producing {output_desc} from {input_desc}",
+            "Notes": json.dumps({
+                "display": f"⚒️ Producing {output_desc} from {input_desc}",
+                "recipe": recipe_info
+            }),
             "Description": f"Producing {output_desc}",
-            "RecipeInputs": json.dumps(inputs),
-            "RecipeOutputs": json.dumps(outputs),
-            "RecipeCraftMinutes": craft_minutes, # Store the craft minutes for this recipe
             "Status": "created"
         }
         activity = tables['activities'].create(activity_payload)

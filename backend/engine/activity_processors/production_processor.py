@@ -153,17 +153,32 @@ def process(
     log.info(f"Processing 'production' activity: {activity_guid}")
 
     # FromBuilding in activity is now the custom BuildingId
-    building_custom_id_from_activity = activity_fields.get('FromBuilding') 
-    recipe_inputs_json = activity_fields.get('RecipeInputs')
-    recipe_outputs_json = activity_fields.get('RecipeOutputs')
-
-    if not all([building_custom_id_from_activity, recipe_inputs_json, recipe_outputs_json]):
-        log.error(f"Activity {activity_guid} is missing Building (custom ID), RecipeInputs, or RecipeOutputs.")
+    building_custom_id_from_activity = activity_fields.get('FromBuilding')
+    notes_json = activity_fields.get('Notes')
+    
+    # Extract recipe information from Notes field
+    recipe_inputs = {}
+    recipe_outputs = {}
+    
+    if not building_custom_id_from_activity:
+        log.error(f"Activity {activity_guid} is missing Building (custom ID).")
         return False
-
+    
+    if not notes_json:
+        log.error(f"Activity {activity_guid} is missing Notes field containing recipe information.")
+        return False
+    
     try:
-        recipe_inputs = json.loads(recipe_inputs_json)
-        recipe_outputs = json.loads(recipe_outputs_json)
+        # Try to parse Notes as JSON first
+        notes_data = json.loads(notes_json)
+        if isinstance(notes_data, dict) and 'recipe' in notes_data:
+            recipe_info = notes_data['recipe']
+            recipe_inputs = recipe_info.get('inputs', {})
+            recipe_outputs = recipe_info.get('outputs', {})
+        else:
+            # Legacy format or plain text notes
+            log.warning(f"Activity {activity_guid} Notes field does not contain recipe information in expected format.")
+            return False
     except json.JSONDecodeError:
         log.error(f"Failed to parse RecipeInputs or RecipeOutputs JSON for activity {activity_guid}.")
         return False
@@ -246,10 +261,18 @@ def process(
     # Also apply penalties for homelessness, hunger, and business not being checked.
     production_penalty_modifier = 1.0
     operator_citizen_record = get_citizen_record(tables, operator_username)
-    activity_end_dt_for_check = datetime.datetime.fromisoformat(activity_fields.get('EndDate').replace("Z", "+00:00"))
+    activity_end_dt_for_check = datetime.fromisoformat(activity_fields.get('EndDate').replace("Z", "+00:00"))
     if activity_end_dt_for_check.tzinfo is None:
         activity_end_dt_for_check = pytz.UTC.localize(activity_end_dt_for_check)
 
+    # Get craft minutes from recipe info in Notes
+    craft_minutes = 60  # Default value
+    try:
+        notes_data = json.loads(notes_json)
+        if isinstance(notes_data, dict) and 'recipe' in notes_data:
+            craft_minutes = notes_data['recipe'].get('craftMinutes', 60)
+    except (json.JSONDecodeError, KeyError, TypeError):
+        log.warning(f"Could not extract craft minutes from Notes for activity {activity_guid}. Using default.")
 
     if operator_citizen_record:
         # Check for homelessness
@@ -306,11 +329,10 @@ def process(
         production_penalty_modifier *= 0.5
         
     duration_based_ratio = 1.0  # Default to full production if duration calculation fails
-    recipe_craft_minutes_val = activity_fields.get('RecipeCraftMinutes')
-
-    if recipe_craft_minutes_val is not None:
+    
+    if craft_minutes is not None:
         try:
-            recipe_duration_minutes = float(recipe_craft_minutes_val)
+            recipe_duration_minutes = float(craft_minutes)
             if recipe_duration_minutes > 0:
                 start_date_str = activity_fields.get('StartDate')
                 end_date_str = activity_fields.get('EndDate')
