@@ -63,3 +63,24 @@
    - Invest in appreciating assets (property, businesses)
    - Develop contingency plans for economic downturns
    - Avoid high-risk ventures that could threaten core wealth
+# Economic Goals and Plans - June 4, 2025
+
+## Current Financial Status
+- **Ducats**: 187,367.73 (as of June 4, 2025)
+- **Daily Income**: 1,620 ducats (from employment at Chapel at Sottoportego della Giustizia)
+- **Weekly Income**: 3,325 ducats
+- **Monthly Income**: 3,325 ducats
+- **Daily Expenses**:
+    - Rent for residence: 1,340 ducats
+
+## Short-term Goals (Immediate Actions)
+1. Resolve the zero-wage issue at John_Jeffries' timber yard to prevent burnout and maintain operations.
+2. Evaluate land offers carefully from both ConsiglioDeiDieci and Italia to maximize passive income while minimizing risks.
+
+## Medium-term Goals
+1. Deploy idle ducats (~187,367) into low-risk storage contracts or business expansions near my current residence.
+2. Investigate opportunities for diversification within the Cittadini class that align with my security-driven approach.
+
+## Long-term Goals
+1. Achieve financial stability through multiple income streams including property ownership and strategic investments.
+2. Maintain social standing by balancing economic growth with responsible citizenship in Venice.
