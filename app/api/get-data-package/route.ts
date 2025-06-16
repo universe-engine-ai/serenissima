@@ -838,9 +838,9 @@ function formatDate(dateString?: string | Date): string {
     // Create a date object from the input
     const date = new Date(dateString);
     
-    // Subtract 1000 years from the date
+    // Subtract 500 years from the date
     const adjustedDate = new Date(date);
-    adjustedDate.setFullYear(date.getFullYear() - 1000);
+    adjustedDate.setFullYear(date.getFullYear() - 500);
     
     // Ensure dates are displayed in Venice time for human readability
     return adjustedDate.toLocaleString('fr-FR', { dateStyle: 'medium', timeStyle: 'short', timeZone: 'Europe/Rome' });
