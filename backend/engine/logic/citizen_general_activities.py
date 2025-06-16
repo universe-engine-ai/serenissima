@@ -4207,6 +4207,36 @@ def dispatch_specific_activity_request(
         else:
             log.warning(f"production_activity_creator did not return a valid activity record for {citizen_name}. Returned: {production_activity}")
             return {"success": False, "message": f"Could not initiate 'production' activity for {citizen_name}.", "activity": None, "reason": "production_creation_failed"}
+            
+    elif activity_type == "fetch_from_galley":
+        log.info(f"Dispatching to fetch_from_galley_activity_creator for {citizen_name} with params: {activity_parameters}")
+        
+        # Import the fetch_from_galley activity creator
+        from backend.engine.activity_creators.fetch_from_galley_activity_creator import try_create as try_create_fetch_from_galley_activity
+        
+        # Call the creator function with the appropriate parameters
+        first_activity_of_chain = try_create_fetch_from_galley_activity(
+            tables=tables,
+            citizen_airtable_id=citizen_airtable_id,
+            citizen_custom_id=citizen_custom_id,
+            citizen_username=citizen_username,
+            galley_custom_id=params.get("fromBuildingId"),
+            original_contract_custom_id=params.get("contractId"),
+            resource_id_to_fetch=params.get("resourceType"),
+            amount_to_fetch=float(params.get("amount", 0)),
+            buyer_destination_building_record=get_building_record(tables, params.get("toBuildingId")),
+            current_time_utc=now_utc_dt,
+            resource_defs=resource_defs,
+            api_base_url=api_base_url,
+            transport_api_url=transport_api_url,
+            activity_params=params  # Pass the full params for direct API calls
+        )
+        
+        if first_activity_of_chain and isinstance(first_activity_of_chain, dict) and 'fields' in first_activity_of_chain:
+            return {"success": True, "message": f"Fetch from galley endeavor initiated for {citizen_name}. First activity: {first_activity_of_chain['fields'].get('Type', 'N/A')}.", "activity": first_activity_of_chain['fields']}
+        else:
+            log.warning(f"fetch_from_galley_activity_creator did not return a valid activity record for {citizen_name}. Returned: {first_activity_of_chain}")
+            return {"success": False, "message": f"Could not initiate 'fetch_from_galley' endeavor for {citizen_name}.", "activity": None, "reason": "fetch_from_galley_creation_failed"}
     
     # Add other activity_type handlers here as needed, for example:
     # elif activity_type == "manage_public_sell_contract":
@@ -4238,7 +4268,8 @@ def dispatch_specific_activity_request(
             'use_public_bath', # Added new activity type
             'goto_location', # Added goto_location support
             'spread_rumor', # Added spread_rumor support
-            'production' # Added production support
+            'production', # Added production support
+            'fetch_from_galley' # Added fetch_from_galley support
             # Add other explicitly handled types here as they are implemented in this dispatcher
         ]
         # Use original_activity_type in the error message if it was redirected
