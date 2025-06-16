@@ -1615,28 +1615,28 @@ def _handle_production_and_general_work_tasks(
     # 1. Try to produce
     if recipes:
         current_workplace_stock_map = get_building_resources(tables, workplace_custom_id) # Fetches {res_id: count}
-        for recipe_idx, recipe_def in enumerate(recipes):
-            if not isinstance(recipe_def, dict): continue # Skip if recipe_def is not a dict
+        for recipe_idx, recipe in enumerate(recipes):
+            if not isinstance(recipe, dict): continue # Skip if recipe is not a dict
             
             can_produce_this_recipe = True
-            if not recipe_def.get('inputs'): # Recipe with no inputs (e.g. research)
+            if not recipe.get('inputs'): # Recipe with no inputs (e.g. research)
                  pass # can_produce_this_recipe remains true
             else:
-                for input_res, input_qty_needed in recipe_def.get('inputs', {}).items():
+                for input_res, input_qty_needed in recipe.get('inputs', {}).items():
                     if current_workplace_stock_map.get(input_res, 0.0) < float(input_qty_needed):
                         can_produce_this_recipe = False; break
             
             if can_produce_this_recipe:
                 log.info(f"{LogColors.PROCESS}[Prod/Général] {citizen_name}: Tous les inputs pour la recette {recipe_idx} de '{workplace_type}' sont disponibles en stock.")
                 # Check output space
-                output_total_volume = sum(float(qty) for qty in recipe_def.get('outputs', {}).values())
+                output_total_volume = sum(float(qty) for qty in recipe.get('outputs', {}).values())
                 current_total_stock_volume = sum(current_workplace_stock_map.values())
                 # Approximate available space check
-                if storage_capacity == 0 or (storage_capacity - current_total_stock_volume + sum(float(qty) for qty in recipe_def.get('inputs', {}).values())) >= output_total_volume:
+                if storage_capacity == 0 or (storage_capacity - current_total_stock_volume + sum(float(qty) for qty in recipe.get('inputs', {}).values())) >= output_total_volume:
                     # Create production activity with immediate start
                     production_activity = try_create_production_activity(
                         tables, citizen_airtable_id, citizen_custom_id, citizen_username, 
-                        workplace_custom_id, recipe_def, now_utc_dt, start_time_utc_iso=None
+                        workplace_custom_id, recipe, now_utc_dt, start_time_utc_iso=None
                     )
                     if production_activity:
                         log.info(f"{LogColors.OKGREEN}[Travail Général] Citoyen {citizen_name} a commencé la production à {workplace_custom_id}.{LogColors.ENDC}")
@@ -1650,11 +1650,11 @@ def _handle_production_and_general_work_tasks(
     # 2. Try to restock inputs for production
     if recipes:
         current_workplace_stock_map_for_restock = get_building_resources(tables, workplace_custom_id)
-        all_missing_inputs_for_arti = [] # Stores dicts: {"resource_id", "needed_for_recipe", "currently_in_stock", "recipe_def", "deficit"}
+        all_missing_inputs_for_arti = [] # Stores dicts: {"resource_id", "needed_for_recipe", "currently_in_stock", "recipe", "deficit"}
 
-        for recipe_idx, recipe_def in enumerate(recipes):
-            if not isinstance(recipe_def, dict): continue
-            inputs_for_this_recipe = recipe_def.get('inputs', {})
+        for recipe_idx, recipe in enumerate(recipes):
+            if not isinstance(recipe, dict): continue
+            inputs_for_this_recipe = recipe.get('inputs', {})
             if not inputs_for_this_recipe: continue
 
             for input_res_id, input_qty_needed_val in inputs_for_this_recipe.items():
@@ -1665,7 +1665,7 @@ def _handle_production_and_general_work_tasks(
                         "resource_id": input_res_id,
                         "needed_for_recipe": input_qty_needed,
                         "currently_in_stock": current_stock_of_input,
-                        "recipe_def": recipe_def,
+                        "recipe": recipe,
                         "deficit": input_qty_needed - current_stock_of_input
                     })
         
@@ -1675,17 +1675,17 @@ def _handle_production_and_general_work_tasks(
 
             log.info(f"{LogColors.PROCESS}[Prod/Général - Arti Restock] {citizen_name}: Missing inputs identified. Prioritized list (first is highest prio):")
             for i, item in enumerate(all_missing_inputs_for_arti[:3]): # Log top 3
-                outputs_str = list(item['recipe_def'].get('outputs',{}).keys())
+                outputs_str = list(item['recipe'].get('outputs',{}).keys())
                 log.info(f"  {i+1}. Res: {item['resource_id']}, Stock: {item['currently_in_stock']:.2f}/{item['needed_for_recipe']:.2f} (Deficit: {item['deficit']:.2f}) for recipe producing {outputs_str}")
 
             for missing_input_info in all_missing_inputs_for_arti:
                 input_res_id_to_fetch = missing_input_info["resource_id"]
                 # amount_to_fetch_for_recipe is the deficit for *this specific recipe's input need*
                 amount_to_fetch_for_recipe = missing_input_info["deficit"] 
-                recipe_def_to_chain = missing_input_info["recipe_def"]
+                recipe_to_chain = missing_input_info["recipe"]
                 res_name_display = _get_res_display_name_module(input_res_id_to_fetch, resource_defs)
                 
-                outputs_to_chain_str = list(recipe_def_to_chain.get('outputs',{}).keys())
+                outputs_to_chain_str = list(recipe_to_chain.get('outputs',{}).keys())
                 log.info(f"{LogColors.OKBLUE}  [Réappro. Arti Prioritaire] {workplace_custom_id} a besoin de {amount_to_fetch_for_recipe:.2f} de {res_name_display} (pour recette {outputs_to_chain_str}).{LogColors.ENDC}")
 
                 # Initialize first_fetch_activity for this iteration
@@ -1843,7 +1843,7 @@ def _handle_production_and_general_work_tasks(
                     next_start_time_iso = first_fetch_activity_for_this_input['fields']['EndDate']
                     chained_production = try_create_production_activity(
                         tables, citizen_airtable_id, citizen_custom_id, citizen_username,
-                        workplace_custom_id, recipe_def_to_chain, now_utc_dt,
+                        workplace_custom_id, recipe_to_chain, now_utc_dt,
                         start_time_utc_iso=next_start_time_iso
                     )
                     if chained_production:
@@ -4197,7 +4197,7 @@ def dispatch_specific_activity_request(
             citizen_custom_id=citizen_custom_id,
             citizen_username=citizen_username,
             building_custom_id=building_id,
-            recipe_def=recipe,
+            recipe=recipe,
             current_time_utc=now_utc_dt,
             start_time_utc_iso=params.get("startTimeUtcIso")
         )
