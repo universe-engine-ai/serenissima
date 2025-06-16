@@ -461,8 +461,8 @@ def resolve_no_operator_for_stock(problem: Dict, tables: Dict[str, Table], dry_r
     log.info(f"  Calling try-create for 'adjust_business_wages' for {action_performer_username}, building {building_id}, new wages {new_wages}.")
     return call_try_create_activity_api(action_performer_username, "adjust_business_wages", activity_params, dry_run)
 
-def resolve_waiting_for_production(problem: Dict, tables: Dict[str, Table], dry_run: bool) -> bool:
-    """Attempts to resolve 'waiting_for_production' if no occupant by increasing wages."""
+def resolve_waiting_for_production(problem: Dict, tables: Dict[str, Table], resource_defs: Dict, building_type_defs: Dict, dry_run: bool) -> bool:
+    """Attempts to resolve 'waiting_for_production' by checking for existing production activity or creating one."""
     log.info(f"Attempting to resolve 'waiting_for_production': {problem['fields'].get('Title')}")
     building_id = problem['fields'].get('Asset')
     if not building_id:
@@ -474,25 +474,91 @@ def resolve_waiting_for_production(problem: Dict, tables: Dict[str, Table], dry_
         log.error(f"  Building {building_id} not found. Cannot resolve problem {problem['id']}.")
         return False
 
-    if building_record['fields'].get('Occupant'):
-        log.info(f"  Building {building_id} has an Occupant. No action taken for 'waiting_for_production'.")
-        return False # No action if occupant exists
-
-    action_performer_username = building_record['fields'].get('RunBy') or building_record['fields'].get('Owner')
-    if not action_performer_username:
-        log.error(f"  Building {building_id} has no RunBy or Owner. Cannot adjust wages for problem {problem['id']}.")
-        return False
+    occupant_username = building_record['fields'].get('Occupant')
+    if not occupant_username:
+        # If no occupant, try to increase wages to attract workers
+        log.info(f"  Building {building_id} has no Occupant. Attempting to increase wages.")
         
-    current_wages = float(building_record['fields'].get('Wages', 0.0))
-    new_wages = _calculate_new_value_percentage_change(current_wages, 2.0, is_increase=True, min_value=1.0)
+        action_performer_username = building_record['fields'].get('RunBy') or building_record['fields'].get('Owner')
+        if not action_performer_username:
+            log.error(f"  Building {building_id} has no RunBy or Owner. Cannot adjust wages for problem {problem['id']}.")
+            return False
+            
+        current_wages = float(building_record['fields'].get('Wages', 0.0))
+        new_wages = _calculate_new_value_percentage_change(current_wages, 2.0, is_increase=True, min_value=1.0)
 
-    activity_params = {
-        "businessBuildingId": building_id,
-        "newWageAmount": new_wages,
-        "strategy": "auto_resolve_waiting_for_production_no_occupant"
-    }
-    log.info(f"  No Occupant. Calling try-create for 'adjust_business_wages' for {action_performer_username}, building {building_id}, new wages {new_wages}.")
-    return call_try_create_activity_api(action_performer_username, "adjust_business_wages", activity_params, dry_run)
+        activity_params = {
+            "businessBuildingId": building_id,
+            "newWageAmount": new_wages,
+            "strategy": "auto_resolve_waiting_for_production_no_occupant"
+        }
+        log.info(f"  No Occupant. Calling try-create for 'adjust_business_wages' for {action_performer_username}, building {building_id}, new wages {new_wages}.")
+        return call_try_create_activity_api(action_performer_username, "adjust_business_wages", activity_params, dry_run)
+    
+    # Check if there's already an active production activity for this building
+    try:
+        production_activity_formula = f"AND({{FromBuilding}}='{_escape_airtable_value(building_id)}', {{Type}}='production', OR({{Status}}='created', {{Status}}='in_progress'))"
+        existing_activities = tables['activities'].all(formula=production_activity_formula)
+        
+        if existing_activities:
+            log.info(f"  Found existing production activity for building {building_id}. No need to create a new one.")
+            return True
+    except Exception as e:
+        log.warning(f"  Error checking for existing production activities: {e}")
+    
+    # No existing production activity found, try to create one
+    log.info(f"  No active production activity found for building {building_id}. Attempting to create one.")
+    
+    # Get building type to find production recipes
+    building_type = building_record['fields'].get('Type')
+    if not building_type:
+        log.error(f"  Building {building_id} has no Type defined. Cannot determine production recipe.")
+        return False
+    
+    building_def = building_type_defs.get(building_type, {})
+    production_info = building_def.get('productionInformation', {})
+    recipes = production_info.get('Arti', [])
+    
+    if not recipes:
+        log.warning(f"  No production recipes found for building type {building_type}. Cannot create production activity.")
+        return False
+    
+    # Check if building has required inputs for any recipe
+    for recipe in recipes:
+        inputs = recipe.get('inputs', {})
+        if not inputs:
+            continue
+        
+        # Check if all inputs are available in sufficient quantity
+        all_inputs_available = True
+        for input_type, required_amount in inputs.items():
+            # Get resource stock at building
+            try:
+                resource_formula = f"AND({{Asset}}='{_escape_airtable_value(building_id)}', {{AssetType}}='building', {{Type}}='{_escape_airtable_value(input_type)}')"
+                resource_records = tables['resources'].all(formula=resource_formula)
+                
+                total_available = sum(float(r['fields'].get('Count', 0)) for r in resource_records)
+                if total_available < required_amount:
+                    all_inputs_available = False
+                    log.info(f"  Insufficient {input_type} for production: need {required_amount}, have {total_available}")
+                    break
+            except Exception as e:
+                log.warning(f"  Error checking resource {input_type} availability: {e}")
+                all_inputs_available = False
+                break
+        
+        if all_inputs_available:
+            # We found a recipe with all inputs available, create production activity
+            activity_params = {
+                "buildingId": building_id,
+                "recipe": recipe
+            }
+            log.info(f"  Calling try-create for 'production' activity for {occupant_username}, building {building_id}.")
+            return call_try_create_activity_api(occupant_username, "production", activity_params, dry_run)
+    
+    # If we get here, no recipe had all inputs available
+    log.warning(f"  No recipe has all required inputs available for building {building_id}. Cannot create production activity.")
+    return False
 
 def resolve_supplier_or_resource_shortage(problem: Dict, tables: Dict[str, Table], resource_defs: Dict, dry_run: bool) -> bool:
     """Attempts to resolve supplier/resource shortage by increasing price on the main markup_buy contract."""
@@ -1144,7 +1210,6 @@ def auto_resolve_problems_main(dry_run: bool = False, problem_type_filter: Optio
                     resolution_status = resolver_func(problem, tables, resource_defs, dry_run)
             elif problem_type in [
                 "no_operator_for_stock", 
-                "waiting_for_production", 
                 "no_occupant",
                 "vacant_building",
                 "hungry_citizen",
@@ -1157,6 +1222,8 @@ def auto_resolve_problems_main(dry_run: bool = False, problem_type_filter: Optio
                 "resource_shortage" # do_nothing (moved here)
             ]:
                 resolution_status = resolver_func(problem, tables, dry_run)
+            elif problem_type in ["waiting_for_production"]:
+                resolution_status = resolver_func(problem, tables, resource_defs, building_type_defs, dry_run)
             elif problem_type in ["waiting_on_input_delivery", "waiting_for_galley_unloading"]:
                 resolution_status = resolver_func(problem, tables, resource_defs, building_type_defs, dry_run)
             elif problem_type in [
