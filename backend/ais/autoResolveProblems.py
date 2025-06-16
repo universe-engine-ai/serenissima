@@ -1153,6 +1153,211 @@ def resolve_do_nothing(problem: Dict, tables: Dict[str, Table], dry_run: bool) -
     log.info(f"Problem type '{problem_type}' for problem '{problem['fields'].get('Title')}' is configured for no automated action. Skipping.")
     return "NO_ACTION_INTENDED" # Return specific string
 
+def resolve_waiting_for_resource_delivery(problem: Dict, tables: Dict[str, Table], resource_defs: Dict, building_type_defs: Dict, dry_run: bool) -> bool:
+    """Attempts to resolve 'waiting_for_resource_delivery' by checking for existing activities or creating a fetch_resource activity."""
+    log.info(f"Attempting to resolve 'waiting_for_resource_delivery': {problem['fields'].get('Title')}")
+    building_id = problem['fields'].get('Asset')
+    if not building_id:
+        log.error(f"  Missing BuildingId for problem {problem['id']}. Cannot resolve.")
+        return False
+
+    building_record = get_building_record(tables, building_id)
+    if not building_record:
+        log.error(f"  Building {building_id} not found. Cannot resolve problem {problem['id']}.")
+        return False
+
+    # Get the occupant of the building
+    occupant_username = building_record['fields'].get('Occupant')
+    if not occupant_username:
+        log.error(f"  Building {building_id} has no occupant. Cannot create fetch activity.")
+        return False
+    
+    # Extract resource type from title or description
+    resource_type = None
+    title = problem['fields'].get('Title', '')
+    description = problem['fields'].get('Description', '')
+    
+    # Try to extract from title first
+    title_match = re.search(r"Waiting for Delivery: (\w+)", title)
+    if title_match:
+        resource_type = title_match.group(1)
+    else:
+        # Try alternative title format
+        title_match_alt = re.search(r"Waiting for Resource Delivery: (\w+)", title)
+        if title_match_alt:
+            resource_type = title_match_alt.group(1)
+        else:
+            # Try to extract from description
+            desc_match = re.search(r"waiting for delivery of (\w+)", description)
+            if desc_match:
+                resource_type = desc_match.group(1)
+    
+    if not resource_type:
+        log.error(f"  Could not determine resource type from problem title or description. Cannot create fetch activity.")
+        return False
+    
+    # Check if there's already an active fetch_resource or similar activity for this occupant and resource
+    try:
+        # Look for active fetch_resource, fetch_from_storage, fetch_from_galley activities
+        fetch_activity_formula = f"AND({{Citizen}}='{_escape_airtable_value(occupant_username)}', OR({{Type}}='fetch_resource', {{Type}}='fetch_from_storage', {{Type}}='fetch_from_galley', {{Type}}='goto_location'), OR({{Status}}='created', {{Status}}='in_progress'))"
+        existing_activities = tables['activities'].all(formula=fetch_activity_formula)
+        
+        for activity in existing_activities:
+            activity_type = activity['fields'].get('Type')
+            
+            # For fetch_resource, fetch_from_storage, fetch_from_galley, check Resources field
+            if activity_type in ['fetch_resource', 'fetch_from_storage', 'fetch_from_galley']:
+                resources_json = activity['fields'].get('Resources')
+                if resources_json:
+                    try:
+                        resources_list = json.loads(resources_json)
+                        for resource_item in resources_list:
+                            if resource_item.get('ResourceId') == resource_type:
+                                log.info(f"  Found existing {activity_type} activity for {occupant_username} and resource {resource_type}. Skipping creation.")
+                                return True
+                    except (json.JSONDecodeError, TypeError):
+                        pass
+            
+            # For goto_location, check Notes field for chained activities
+            elif activity_type == 'goto_location':
+                notes_json = activity['fields'].get('Notes')
+                if notes_json:
+                    try:
+                        notes_data = json.loads(notes_json)
+                        # Check if this goto is part of a fetch chain
+                        if notes_data.get('action_on_arrival') in ['pickup_from_galley', 'fetch_resource']:
+                            if notes_data.get('resource_id') == resource_type:
+                                log.info(f"  Found existing goto_location activity for {occupant_username} leading to resource {resource_type} pickup. Skipping creation.")
+                                return True
+                    except (json.JSONDecodeError, TypeError):
+                        pass
+    except Exception as e:
+        log.warning(f"  Error checking for existing fetch activities: {e}")
+    
+    # Find a source for the resource
+    source_building_id = None
+    contract_id = None
+    
+    # First, check for markup_buy contracts
+    try:
+        contract_formula = f"AND({{BuyerBuilding}}='{_escape_airtable_value(building_id)}', {{ResourceType}}='{_escape_airtable_value(resource_type)}', {{Type}}='markup_buy', {{Status}}='active')"
+        markup_buy_contracts = tables['contracts'].all(formula=contract_formula)
+        
+        for contract in markup_buy_contracts:
+            seller_building_id = contract['fields'].get('SellerBuilding')
+            if seller_building_id:
+                # Check if the seller has stock
+                seller_username = contract['fields'].get('Seller')
+                if seller_username:
+                    # Get resource stock at seller building
+                    resource_formula = f"AND({{Asset}}='{_escape_airtable_value(seller_building_id)}', {{AssetType}}='building', {{Type}}='{_escape_airtable_value(resource_type)}', {{Owner}}='{_escape_airtable_value(seller_username)}')"
+                    resource_records = tables['resources'].all(formula=resource_formula)
+                    
+                    if resource_records and float(resource_records[0]['fields'].get('Count', 0)) > 0:
+                        source_building_id = seller_building_id
+                        contract_id = contract['fields'].get('ContractId', contract['id'])
+                        log.info(f"  Found source building with markup_buy contract: {source_building_id}")
+                        break
+    except Exception as e:
+        log.warning(f"  Error finding markup_buy contracts: {e}")
+    
+    # If no markup_buy source, check for import contracts and galleys
+    if not source_building_id:
+        try:
+            import_formula = f"AND({{BuyerBuilding}}='{_escape_airtable_value(building_id)}', {{ResourceType}}='{_escape_airtable_value(resource_type)}', {{Type}}='import', {{Status}}='active')"
+            import_contracts = tables['contracts'].all(formula=import_formula)
+            
+            if import_contracts:
+                # Look for galleys with this resource
+                for galley_type in ['galley', 'market_galley']:
+                    galley_formula = f"{{Type}}='{galley_type}'"
+                    galleys = tables['buildings'].all(formula=galley_formula)
+                    
+                    for galley in galleys:
+                        galley_id = galley['fields'].get('BuildingId')
+                        if galley_id:
+                            # Check if galley has the resource
+                            resource_formula = f"AND({{Asset}}='{_escape_airtable_value(galley_id)}', {{AssetType}}='building', {{Type}}='{_escape_airtable_value(resource_type)}')"
+                            galley_resources = tables['resources'].all(formula=resource_formula)
+                            
+                            if galley_resources and float(galley_resources[0]['fields'].get('Count', 0)) > 0:
+                                source_building_id = galley_id
+                                contract_id = import_contracts[0]['fields'].get('ContractId', import_contracts[0]['id'])
+                                log.info(f"  Found galley with resource for import contract: {source_building_id}")
+                                break
+                    
+                    if source_building_id:
+                        break
+        except Exception as e:
+            log.warning(f"  Error finding import contracts and galleys: {e}")
+    
+    # If still no source, check for public_sell contracts
+    if not source_building_id:
+        try:
+            public_sell_formula = f"AND({{ResourceType}}='{_escape_airtable_value(resource_type)}', {{Type}}='public_sell', {{Status}}='active')"
+            public_sell_contracts = tables['contracts'].all(formula=public_sell_formula)
+            
+            for contract in public_sell_contracts:
+                seller_building_id = contract['fields'].get('SellerBuilding')
+                if seller_building_id:
+                    # Check if the seller has stock
+                    seller_username = contract['fields'].get('Seller')
+                    if seller_username:
+                        # Get resource stock at seller building
+                        resource_formula = f"AND({{Asset}}='{_escape_airtable_value(seller_building_id)}', {{AssetType}}='building', {{Type}}='{_escape_airtable_value(resource_type)}', {{Owner}}='{_escape_airtable_value(seller_username)}')"
+                        resource_records = tables['resources'].all(formula=resource_formula)
+                        
+                        if resource_records and float(resource_records[0]['fields'].get('Count', 0)) > 0:
+                            source_building_id = seller_building_id
+                            contract_id = contract['fields'].get('ContractId', contract['id'])
+                            log.info(f"  Found source building with public_sell contract: {source_building_id}")
+                            break
+        except Exception as e:
+            log.warning(f"  Error finding public_sell contracts: {e}")
+    
+    # If still no source, look for any building with the resource in stock
+    if not source_building_id:
+        try:
+            # Find any building with this resource type in stock
+            resource_formula = f"AND({{AssetType}}='building', {{Type}}='{_escape_airtable_value(resource_type)}', {{Count}}>0)"
+            all_resource_records = tables['resources'].all(formula=resource_formula)
+            
+            for resource_record in all_resource_records:
+                potential_source_id = resource_record['fields'].get('Asset')
+                if potential_source_id and potential_source_id != building_id:
+                    source_building_id = potential_source_id
+                    log.info(f"  Last resort: Found source building with stock but no contract: {potential_source_id}")
+                    break
+        except Exception as e:
+            log.warning(f"  Error finding any source building with stock: {e}")
+    
+    if not source_building_id:
+        log.warning(f"  Could not find any source building with stock for {resource_type}. Cannot create fetch activity.")
+        return False
+    
+    # Determine which activity type to create based on the source
+    activity_type = "fetch_resource"  # Default
+    
+    # Check if source is a galley
+    source_building_record = get_building_record(tables, source_building_id)
+    if source_building_record and source_building_record['fields'].get('Type') in ['galley', 'market_galley']:
+        activity_type = "fetch_from_galley"
+        log.info(f"  Source is a galley, using fetch_from_galley activity type")
+    
+    # Create appropriate fetch activity
+    activity_params = {
+        "resourceType": resource_type,
+        "fromBuildingId": source_building_id,
+        "toBuildingId": building_id,
+        "contractId": contract_id,
+        "title": f"Fetch {resource_type} for {building_record['fields'].get('Name', building_id)}",
+        "description": f"Fetching {resource_type} to resolve delivery wait at {building_record['fields'].get('Name', building_id)}",
+        "amount": 20.0  # Default amount
+    }
+    
+    log.info(f"  Calling try-create for '{activity_type}' for {occupant_username}, from building {source_building_id} to {building_id}, resource {resource_type}.")
+    return call_try_create_activity_api(occupant_username, activity_type, activity_params, dry_run)
+
 # --- Main Processing Logic ---
 def auto_resolve_problems_main(dry_run: bool = False, problem_type_filter: Optional[str] = None, asset_filter: Optional[str] = None):
     log_header(f"Auto Problem Resolution Process (dry_run={dry_run})", LogColors.HEADER)
@@ -1196,7 +1401,7 @@ def auto_resolve_problems_main(dry_run: bool = False, problem_type_filter: Optio
         "waiting_for_galley_arrival": resolve_do_nothing, # 9. Oui (ne rien faire)
         "no_markup_buy_contract": resolve_no_markup_buy_contract_final_product, # 10. Oui (similaire à 4)
         "resource_shortage": resolve_do_nothing, # 11. Ne rien faire (modifié)
-        "waiting_for_resource_delivery": resolve_do_nothing, # 12. Ne rien faire
+        "waiting_for_resource_delivery": resolve_waiting_for_resource_delivery, # 12. Créer fetch_resource/fetch_from_galley
         "no_occupant": resolve_no_occupant, # 13. Augmente wages
         "homeless_citizen": resolve_do_nothing, # 14. Ne rien faire
         "workless_citizen": resolve_do_nothing, # 15. Ne rien faire
@@ -1249,20 +1454,16 @@ def auto_resolve_problems_main(dry_run: bool = False, problem_type_filter: Optio
                 resolution_status = resolver_func(problem, tables, dry_run)
             elif problem_type in ["waiting_for_production"]:
                 resolution_status = resolver_func(problem, tables, resource_defs, building_type_defs, dry_run)
-            elif problem_type in ["waiting_on_input_delivery", "waiting_for_galley_unloading"]:
+            elif problem_type in ["waiting_on_input_delivery", "waiting_for_galley_unloading", "waiting_for_resource_delivery"]:
                 resolution_status = resolver_func(problem, tables, resource_defs, building_type_defs, dry_run)
             elif problem_type in [
                 "no_operator_for_stock", 
-                "waiting_for_production", 
                 "no_occupant",
                 "vacant_building",
                 "hungry_citizen",
                 "zero_rent_building",
                 "zero_wages_business",
-                "waiting_on_input_delivery", # do_nothing
-                "waiting_for_galley_unloading", # do_nothing
                 "waiting_for_galley_arrival", # do_nothing
-                "waiting_for_resource_delivery", # do_nothing
                 "homeless_citizen", # do_nothing
                 "workless_citizen", # do_nothing
                 "resource_shortage" # do_nothing (moved here)
