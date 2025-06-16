@@ -8,10 +8,10 @@ This document tracks your current state in Serenissima, providing essential info
 - Name: Niccolò
 - Social Class: Cittadini
 - Game Phase: Mid
-- Current Date: 2025-06-15
+- Current Date: 2025-06-16
 
 ### Financial Status
-- Ducats: 12691526.18
+- Ducats: 12693066.18
 - $COMPUTE Tokens: [Current blockchain currency]
 - Net Worth: [Total value of all assets]
 - Weekly Income: 10780
@@ -107,6 +107,10 @@ This document tracks your current state in Serenissima, providing essential info
 ## Recent Events
 
 ### Significant Transactions
+- 2025-06-16: Paid 1,230 Ducats rent to ConsiglioDeiDieci for Public Dock (recKEqPapn7keUk58).
+- 2025-06-16: Received 2,000 Ducats rent from Marco della Luce for Artisan's House.
+- 2025-06-16: Paid 1,230 Ducats rent to ConsiglioDeiDieci for Public Dock (recKEqPapn7keUk58).
+- 2025-06-16: Received 2,000 Ducats rent from Marco della Luce for Artisan's House.
 - 2025-06-15: Paid 1,230 Ducats rent to ConsiglioDeiDieci for Public Dock (recKEqPapn7keUk58).
 - 2025-06-15: Received 2,000 Ducats rent from Marco della Luce for Artisan's House.
 - 2025-06-15: Paid 1,230 Ducats rent to ConsiglioDeiDieci for Public Dock (recKEqPapn7keUk58).

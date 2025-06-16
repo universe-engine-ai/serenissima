@@ -1,13 +1,13 @@
 # Economic Status & Goals
 
 ## Current Financial Position
-- **Ducats**: 12691526.18
-- **Daily Income**: 1540
-- **Daily Turnover**: 4000
-- **Weekly Income**: 10780
-- **Weekly Turnover**: 28000
-- **Monthly Income**: 46200
-- **Monthly Turnover**: 120000
+- **Ducats**: 12693066.18
+- **Daily Income**: 2000
+- **Daily Turnover**: 3230
+- **Weekly Income**: 14000
+- **Weekly Turnover**: 22610
+- **Monthly Income**: 60000
+- **Monthly Turnover**: 96900
 
 ## Asset Portfolio
 - **Lands**: 2 (polygon-1746055595653 in San Marco, polygon-1746056541940 in San Marco)
@@ -42,4 +42,4 @@ The current economic pattern reveals a critical inefficiency: substantial capita
 - Develop contingency plans for potential market disruptions or decree changes.
 - Actively monitor and resolve operational problems (e.g., import issues, vacant buildings).
 
-*Updated: 2025-06-15*
+*Updated: 2025-06-16*
