@@ -130,9 +130,30 @@ def process_eat_at_home(
     activity_guid = activity_fields.get('ActivityId', activity_record['id'])
     citizen_username = activity_fields.get('Citizen')
     # FromBuilding in activity is now the custom BuildingId of the home
-    home_building_custom_id_from_activity = activity_fields.get('FromBuilding') 
-    food_resource_type = activity_fields.get('ResourceId')
-    amount_to_eat = float(activity_fields.get('Amount', FOOD_UNIT_CONSUMED))
+    home_building_custom_id_from_activity = activity_fields.get('FromBuilding')
+    
+    # Extract food resource type from Resources JSON field if present
+    food_resource_type = None
+    amount_to_eat = FOOD_UNIT_CONSUMED
+    
+    resources_json_str = activity_fields.get('Resources')
+    if resources_json_str:
+        try:
+            resources_list = json.loads(resources_json_str)
+            if isinstance(resources_list, list) and len(resources_list) > 0:
+                food_resource_type = resources_list[0].get('ResourceId')
+                amount_to_eat = float(resources_list[0].get('Amount', FOOD_UNIT_CONSUMED))
+        except json.JSONDecodeError:
+            log.error(f"Could not parse Resources JSON for activity {activity_guid}: {resources_json_str}")
+    
+    # Fall back to legacy fields if Resources JSON is not available
+    if not food_resource_type:
+        food_resource_type = activity_fields.get('ResourceId')
+        amount_to_eat = float(activity_fields.get('Amount', FOOD_UNIT_CONSUMED))
+    
+    if not food_resource_type:
+        log.error(f"No food resource type specified for 'eat_at_home' activity {activity_guid}.")
+        return False
 
     log.info(f"Processing 'eat_at_home' ({activity_guid}) for {citizen_username} at {home_building_custom_id_from_activity}, eating {food_resource_type}")
 

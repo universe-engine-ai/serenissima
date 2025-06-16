@@ -99,8 +99,12 @@ def try_create_eat_at_home_activity(
             "StartDate": effective_start_date_iso,
             "EndDate": effective_end_date_iso,
             "Description": f"Eating {amount_to_eat:.1f} {food_name} at home",
-            "Status": "created"
+            "Status": "created",
+            # Add ResourceId directly for backward compatibility
+            "ResourceId": food_resource_type_id,
+            "Amount": amount_to_eat
         }
+        # Also add the Resources field in the new JSON format
         activity_payload["Resources"] = json.dumps([{"ResourceId": food_resource_type_id, "Amount": amount_to_eat}])
         activity_payload["Notes"] = f"🍲 Eating {amount_to_eat:.1f} {food_name} at home."
         activity = tables['activities'].create(activity_payload)
