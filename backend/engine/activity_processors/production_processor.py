@@ -286,8 +286,9 @@ def process(
         activity_end_date_str = activity_fields.get('EndDate')
         if ate_at_str and activity_end_date_str:
             try:
-                ate_at_dt = datetime.fromisoformat(ate_at_str)
-                activity_end_dt = datetime.fromisoformat(activity_end_date_str)
+                # Handle ISO format with Z for UTC timezone
+                ate_at_dt = datetime.fromisoformat(ate_at_str.replace("Z", "+00:00"))
+                activity_end_dt = datetime.fromisoformat(activity_end_date_str.replace("Z", "+00:00"))
                 
                 # Ensure timezone awareness (assume UTC if naive)
                 if ate_at_dt.tzinfo is None:
@@ -312,7 +313,7 @@ def process(
     checked_at_str = prod_building_record['fields'].get('CheckedAt')
     if checked_at_str:
         try:
-            checked_at_dt = datetime.datetime.fromisoformat(checked_at_str.replace("Z", "+00:00"))
+            checked_at_dt = datetime.fromisoformat(checked_at_str.replace("Z", "+00:00"))
             if checked_at_dt.tzinfo is None: # Ensure timezone aware
                 checked_at_dt = pytz.UTC.localize(checked_at_dt)
             
