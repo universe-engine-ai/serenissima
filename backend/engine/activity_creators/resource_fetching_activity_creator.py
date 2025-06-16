@@ -254,13 +254,8 @@ def try_create(
                 else:
                     log.warning(f"{LogColors.ACTIVITY}[FetchCreator] No suitable public_sell contract found for {resource_type_id} (amount: {amount}) after dynamic search.")
                     # TODO: Could add logic to find producer buildings as a fallback.
-            except Exception as e_dyn_src:
-                log.error(f"{LogColors.ACTIVITY}[FetchCreator] Error during dynamic source finding for {resource_type_id}: {e_dyn_src}")
-                final_from_building_custom_id = best_source_contract_record['fields']['SellerBuilding']
-                final_contract_custom_id = best_source_contract_record['fields'].get('ContractId', best_source_contract_record['id'])
-                dynamically_found_source_bldg_rec = get_building_record(tables, final_from_building_custom_id)
-                dynamically_found_source_bldg_name = dynamically_found_source_bldg_rec['fields'].get('Name', final_from_building_custom_id) if dynamically_found_source_bldg_rec else final_from_building_custom_id
-                log.info(f"{LogColors.ACTIVITY}[FetchCreator] Dynamically found source: Building {final_from_building_custom_id} (Name: {dynamically_found_source_bldg_name}) via contract {final_contract_custom_id} for {resource_type_id}.")
+                except Exception as e_dyn_src:
+                    log.error(f"{LogColors.ACTIVITY}[FetchCreator] Error during dynamic source finding for {resource_type_id}: {e_dyn_src}")
             else:
                 log.warning(f"{LogColors.ACTIVITY}[FetchCreator] No suitable public_sell contract found for {resource_type_id} (amount: {amount}) after dynamic search.")
                 # TODO: Could add logic to find producer buildings as a fallback.
