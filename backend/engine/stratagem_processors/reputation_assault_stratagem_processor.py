@@ -272,22 +272,22 @@ def process(
         tables['stratagems'].update(stratagem_record['id'], {'Status': 'failed', 'Notes': 'KinOS API key missing.'})
         return False
 
-    # 1. Fetch data packages for executor and target
-    log.info(f"{LogColors.PROCESS}Fetching data package for executor {executed_by_username}...{LogColors.ENDC}")
-    executor_dp_response = requests.get(f"{NEXT_JS_BASE_URL}/api/get-data-package?citizenUsername={executed_by_username}", timeout=90)
+    # 1. Fetch ledgers for executor and target
+    log.info(f"{LogColors.PROCESS}Fetching ledger for executor {executed_by_username}...{LogColors.ENDC}")
+    executor_dp_response = requests.get(f"{NEXT_JS_BASE_URL}/api/get-ledger?citizenUsername={executed_by_username}", timeout=90)
     if not executor_dp_response.ok:
-        log.error(f"{LogColors.FAIL}Failed to fetch data package for executor {executed_by_username}. Status: {executor_dp_response.status_code}, Response: {executor_dp_response.text[:200]}{LogColors.ENDC}")
+        log.error(f"{LogColors.FAIL}Failed to fetch ledger for executor {executed_by_username}. Status: {executor_dp_response.status_code}, Response: {executor_dp_response.text[:200]}{LogColors.ENDC}")
         tables['stratagems'].update(stratagem_record['id'], {'Status': 'failed', 'Notes': f'Failed to fetch data for executor {executed_by_username}.'})
         return False
     
-    executor_data_package = executor_dp_response
+    executor_ledger = executor_dp_response
 
     executor_display_name = executed_by_username
     
-    log.info(f"{LogColors.PROCESS}Fetching data package for target {target_citizen_username}...{LogColors.ENDC}")
-    target_dp_response = requests.get(f"{NEXT_JS_BASE_URL}/api/get-data-package?citizenUsername={target_citizen_username}", timeout=90)
+    log.info(f"{LogColors.PROCESS}Fetching ledger for target {target_citizen_username}...{LogColors.ENDC}")
+    target_dp_response = requests.get(f"{NEXT_JS_BASE_URL}/api/get-ledger?citizenUsername={target_citizen_username}", timeout=90)
 
-    target_data_package = target_dp_response
+    target_ledger = target_dp_response
 
     target_display_name = target_citizen_username
 
@@ -295,7 +295,7 @@ def process(
     log.info(f"{LogColors.PROCESS}Generating core attack narrative for {executed_by_username} against {target_citizen_username}...{LogColors.ENDC}")
     add_system_for_narrative_gen = {
         "assault_angle_directive": assault_angle_from_notes or "any effective angle",
-        "target_profile_and_data": target_data_package
+        "target_profile_and_data": target_ledger
     }
     prompt_for_narrative_gen = (
         f"You are {executor_display_name}. You are planning a reputation assault against {target_display_name}. "
@@ -347,23 +347,23 @@ def process(
 
         log.info(f"{LogColors.PROCESS}Preparing to generate and send message to {related_citizen_username} about {target_citizen_username} (Stratagem {stratagem_id}).{LogColors.ENDC}")
 
-        # Fetch related citizen's data package
-        related_citizen_dp_response = requests.get(f"{NEXT_JS_BASE_URL}/api/get-data-package?citizenUsername={related_citizen_username}", timeout=90)
+        # Fetch related citizen's ledger
+        related_citizen_dp_response = requests.get(f"{NEXT_JS_BASE_URL}/api/get-ledger?citizenUsername={related_citizen_username}", timeout=90)
         if not related_citizen_dp_response.ok:
-            log.warning(f"{LogColors.WARNING}Failed to fetch data package for related citizen {related_citizen_username}. Status: {related_citizen_dp_response.status_code}, Response: {related_citizen_dp_response.text[:200]}. Skipping message to them.{LogColors.ENDC}")
+            log.warning(f"{LogColors.WARNING}Failed to fetch ledger for related citizen {related_citizen_username}. Status: {related_citizen_dp_response.status_code}, Response: {related_citizen_dp_response.text[:200]}. Skipping message to them.{LogColors.ENDC}")
             continue
         
         try:
-            related_citizen_data_package = related_citizen_dp_response.json()
-            if not related_citizen_data_package:
-                log.warning(f"{LogColors.WARNING}Empty data package for related citizen {related_citizen_username}. Skipping message to them.{LogColors.ENDC}")
+            related_citizen_ledger = related_citizen_dp_response.json()
+            if not related_citizen_ledger:
+                log.warning(f"{LogColors.WARNING}Empty ledger for related citizen {related_citizen_username}. Skipping message to them.{LogColors.ENDC}")
                 continue
         except (json.JSONDecodeError, ValueError) as e_json:
-            log.warning(f"{LogColors.WARNING}Failed to parse JSON data package for related citizen {related_citizen_username}: {e_json}. Response text: {related_citizen_dp_response.text[:200]}. Skipping message to them.{LogColors.ENDC}")
+            log.warning(f"{LogColors.WARNING}Failed to parse JSON ledger for related citizen {related_citizen_username}: {e_json}. Response text: {related_citizen_dp_response.text[:200]}. Skipping message to them.{LogColors.ENDC}")
             continue
-        related_citizen_profile_for_kinos = related_citizen_data_package.get('citizen', {})
+        related_citizen_profile_for_kinos = related_citizen_ledger.get('citizen', {})
         if not related_citizen_profile_for_kinos: # Ensure it's a dict
-            log.warning(f"{LogColors.WARNING}Related citizen profile missing in data package for {related_citizen_username}. Proceeding with empty profile for this interaction.{LogColors.ENDC}")
+            log.warning(f"{LogColors.WARNING}Related citizen profile missing in ledger for {related_citizen_username}. Proceeding with empty profile for this interaction.{LogColors.ENDC}")
             related_citizen_profile_for_kinos = {}
         related_citizen_display_name = related_citizen_profile_for_kinos.get('FirstName', related_citizen_username)
         

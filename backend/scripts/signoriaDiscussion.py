@@ -76,30 +76,30 @@ def _escape_airtable_value(value: Any) -> str:
 
 # --- KinOS API Interaction ---
 KINOS_ENGINE_API_BASE_URL = os.getenv("KINOS_ENGINE_API_BASE_URL", "https://api.kinos-engine.ai") # For KinOS Engine specific calls if any
-NEXT_PUBLIC_BASE_URL = os.getenv("NEXT_PUBLIC_BASE_URL", "http://localhost:3000") # For Next.js API calls like get-data-package
+NEXT_PUBLIC_BASE_URL = os.getenv("NEXT_PUBLIC_BASE_URL", "http://localhost:3000") # For Next.js API calls like get-ledger
 
-def _get_data_package_for_citizen(username: str) -> Optional[Dict]:
-    """Fetches the data package for a citizen using the Next.js API."""
+def _get_ledger_for_citizen(username: str) -> Optional[Dict]:
+    """Fetches the ledger for a citizen using the Next.js API."""
     try:
         # Use NEXT_PUBLIC_BASE_URL for this API call
-        api_url = f"{NEXT_PUBLIC_BASE_URL}/api/get-data-package?citizenUsername={username}"
-        print(f"  Fetching data package for {username} from {api_url}...")
+        api_url = f"{NEXT_PUBLIC_BASE_URL}/api/get-ledger?citizenUsername={username}"
+        print(f"  Fetching ledger for {username} from {api_url}...")
         response = requests.get(api_url, timeout=45) # Increased timeout
         response.raise_for_status()
         
         data = response.json()
         # Assuming the API returns the package directly on success
         # If it's wrapped, e.g., {"success": true, "data": {...}}, adjust accordingly
-        print(f"  Successfully fetched data package for {username}.")
+        print(f"  Successfully fetched ledger for {username}.")
         return data
     except requests.exceptions.RequestException as e:
-        print(f"  {LogColors.FAIL}API Error fetching data package for {username}: {e}{LogColors.ENDC}")
+        print(f"  {LogColors.FAIL}API Error fetching ledger for {username}: {e}{LogColors.ENDC}")
         return None
     except json.JSONDecodeError:
-        print(f"  {LogColors.FAIL}Failed to decode JSON response for data package of {username}. Response: {response.text[:200]}{LogColors.ENDC}")
+        print(f"  {LogColors.FAIL}Failed to decode JSON response for ledger of {username}. Response: {response.text[:200]}{LogColors.ENDC}")
         return None
     except Exception as e:
-        print(f"  {LogColors.FAIL}Unexpected error fetching data package for {username}: {e}{LogColors.ENDC}")
+        print(f"  {LogColors.FAIL}Unexpected error fetching ledger for {username}: {e}{LogColors.ENDC}")
         return None
 
 def _get_relationship_data(tables: Dict[str, AirtableTable], username1: str, username2: str) -> Optional[Dict[str, Any]]:
@@ -376,17 +376,17 @@ def main(kinos_model: str, kinos_api_url: str, kinos_blueprint: str):
         )
 
         # Prepare system context for the KinOS API
-        speaker_data_package = _get_data_package_for_citizen(speaker_username)
+        speaker_ledger = _get_ledger_for_citizen(speaker_username)
         current_speaker_profile_data = {
             "username": speaker_info["username"],
             "influence": speaker_info["influence"],
             "profile_fields": speaker_info["fields"], # Full profile fields
-            "data_package": speaker_data_package # Data package for the current speaker
+            "ledger": speaker_ledger # Ledger for the current speaker
         }
 
         all_member_profiles_data = []
         for m in signoria_members:
-            # Only include full profile fields, not the detailed data_package for non-speakers
+            # Only include full profile fields, not the detailed ledger for non-speakers
             all_member_profiles_data.append({
                 "username": m["username"],
                 "influence": m["influence"],
@@ -410,12 +410,12 @@ def main(kinos_model: str, kinos_api_url: str, kinos_blueprint: str):
                 "You are expected to speak thoughtfully on matters of state, considering your relationships with other members and the overall political climate. "
                 "Your response should be concise and directly address the Doge's prompt.\n"
                 "Contextual Data Guide:\n"
-                "- 'current_speaker_profile': Your detailed profile, including your 'data_package' (inventory, buildings, etc.).\n"
-                "- 'all_signoria_member_profiles': Profiles of all Signoria members present (does NOT include their detailed 'data_package' unless they are the current speaker).\n"
+                "- 'current_speaker_profile': Your detailed profile, including your 'ledger' (inventory, buildings, etc.).\n"
+                "- 'all_signoria_member_profiles': Profiles of all Signoria members present (does NOT include their detailed 'ledger' unless they are the current speaker).\n"
                 "- 'signoria_relationships': Details on relationships between Signoria members."
             ),
-            "current_speaker_profile": current_speaker_profile_data, # Includes data_package
-            "all_signoria_member_profiles": all_member_profiles_data, # Does not include data_package for non-speakers
+            "current_speaker_profile": current_speaker_profile_data, # Includes ledger
+            "all_signoria_member_profiles": all_member_profiles_data, # Does not include ledger for non-speakers
             "signoria_relationships": signoria_relationships_list
         }
         add_system_json = json.dumps(system_context_data)

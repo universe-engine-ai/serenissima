@@ -172,7 +172,7 @@ def get_kinos_api_key() -> str:
     return api_key
 
 def prepare_rent_analysis_data(ai_citizen: Dict, citizen_buildings: List[Dict], citizens_info: Dict[str, Dict]) -> Dict:
-    """Prepare a comprehensive data package for the AI to analyze rent situations."""
+    """Prepare a comprehensive ledger for the AI to analyze rent situations."""
     
     # Extract citizen information
     username = ai_citizen["fields"].get("Username", "")
@@ -222,8 +222,8 @@ def prepare_rent_analysis_data(ai_citizen: Dict, citizen_buildings: List[Dict], 
     recent_relevancies_for_ai = _get_relevancies_data_api(username)
     recent_problems_for_ai = _get_problems_data_api(username)
     
-    # Prepare the complete data package
-    data_package = {
+    # Prepare the complete ledger
+    ledger = {
         "ai_citizen_profile": ai_citizen_profile_api or {"username": username, "ducats": ducats}, # Fallback if API fails
         "citizen_financial_summary": { # Keep existing financial summary separate
             "username": username,
@@ -243,9 +243,9 @@ def prepare_rent_analysis_data(ai_citizen: Dict, citizen_buildings: List[Dict], 
         "timestamp": datetime.now().isoformat()
     }
     
-    return data_package
+    return ledger
 
-def send_rent_adjustment_request(ai_username: str, data_package: Dict) -> Optional[Dict]:
+def send_rent_adjustment_request(ai_username: str, ledger: Dict) -> Optional[Dict]:
     """Send the rent adjustment request to the AI via KinOS API."""
     try:
         api_key = get_kinos_api_key()
@@ -263,17 +263,17 @@ def send_rent_adjustment_request(ai_username: str, data_package: Dict) -> Option
         # Log the API request details
         print(f"Sending rent adjustment request to AI citizen {ai_username}")
         print(f"API URL: {url}")
-        print(f"Citizen has {data_package['citizen']['ducats']} ducats")
-        print(f"Citizen owns {len(data_package['buildings'])} buildings")
+        print(f"Citizen has {ledger['citizen']['ducats']} ducats")
+        print(f"Citizen owns {len(ledger['buildings'])} buildings")
         
         # Create a detailed prompt that addresses the AI directly as the decision-maker
         prompt = f"""
 As a building owner in La Serenissima, you need to review and adjust the rent amounts for your buildings.
 
 Here's your current situation:
-- You own {len(data_package['buildings'])} buildings
-- Your current net income is {data_package['citizen']['financial']['net_income']} ducats
-- You receive {data_package['citizen']['financial']['total_rent_received']} ducats in rent from your buildings
+- You own {len(ledger['buildings'])} buildings
+- Your current net income is {ledger['citizen']['financial']['net_income']} ducats
+- You receive {ledger['citizen']['financial']['total_rent_received']} ducats in rent from your buildings
 
 Please analyze your rent situation and develop a strategy for adjusting rent amounts for your buildings. Consider:
 1. The income and maintenance costs of each building
@@ -313,7 +313,7 @@ If you decide not to adjust any rents at this time, return an empty array:
 You are {ai_username}, an AI building owner in La Serenissima. You make your own decisions about rent strategies.
 
 Here is the complete data about your current situation:
-{json.dumps(data_package, indent=2)}
+{json.dumps(ledger, indent=2)}
 
 When developing your rent adjustment strategy:
 1. Analyze each building's profitability (income minus maintenance)
@@ -645,12 +645,12 @@ def process_ai_rent_adjustments(dry_run: bool = False):
         # Get citizen information for occupants
         citizens_info = get_citizen_info(tables, occupant_ids)
         
-        # Prepare the data package for the AI
-        data_package = prepare_rent_analysis_data(ai_citizen, citizen_buildings, citizens_info)
+        # Prepare the ledger for the AI
+        ledger = prepare_rent_analysis_data(ai_citizen, citizen_buildings, citizens_info)
         
         # Send the rent adjustment request to the AI
         if not dry_run:
-            decisions = send_rent_adjustment_request(ai_username, data_package)
+            decisions = send_rent_adjustment_request(ai_username, ledger)
             
             if decisions and "rent_adjustments" in decisions:
                 rent_adjustments = decisions["rent_adjustments"]
@@ -719,10 +719,10 @@ def process_ai_rent_adjustments(dry_run: bool = False):
         else:
             # In dry run mode, just log what would happen
             print(f"[DRY RUN] Would send rent adjustment request to AI citizen {ai_username}")
-            print(f"[DRY RUN] Data package summary:")
-            print(f"  - Citizen: {data_package['citizen']['username']}")
-            print(f"  - Buildings: {len(data_package['buildings'])}")
-            print(f"  - Net Income: {data_package['citizen']['financial']['net_income']}")
+            print(f"[DRY RUN] Ledger summary:")
+            print(f"  - Citizen: {ledger['citizen']['username']}")
+            print(f"  - Buildings: {len(ledger['buildings'])}")
+            print(f"  - Net Income: {ledger['citizen']['financial']['net_income']}")
     
     # Create admin notification with summary
     if not dry_run and any(adjustments for adjustments in ai_rent_adjustments.values()):

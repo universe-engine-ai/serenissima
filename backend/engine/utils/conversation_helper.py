@@ -121,18 +121,18 @@ def make_api_get_request_helper(endpoint: str, api_base_url: str, params: Option
         return {"error": f"Unexpected error: {str(e_gen)}"}
 
 
-def get_citizen_data_package(username: str, api_base_url: str) -> Optional[Union[str, Dict]]:
+def get_citizen_ledger(username: str, api_base_url: str) -> Optional[Union[str, Dict]]:
     """
-    Fetches the data package for a citizen.
+    Fetches the ledger for a citizen.
     Returns Markdown string if successful and content is Markdown.
     Returns the 'data' part of JSON if successful and content is JSON.
     Returns None or an error dictionary on failure.
     """
-    log.info(f"Fetching data package for {username}...")
-    response_content = make_api_get_request_helper(f"/api/get-data-package?citizenUsername={username}", api_base_url)
+    log.info(f"Fetching ledger for {username}...")
+    response_content = make_api_get_request_helper(f"/api/get-ledger?citizenUsername={username}", api_base_url)
 
     if isinstance(response_content, str): # Markdown response or raw text fallback
-        # Assume if it's a string, it's the intended Markdown data package
+        # Assume if it's a string, it's the intended Markdown ledger
         # (or an error string from make_api_get_request_helper if it couldn't determine content type)
         # A simple check for "error" key might not be enough if the string itself is an error message.
         # For now, we trust that if it's a string, it's the Markdown.
@@ -142,7 +142,7 @@ def get_citizen_data_package(username: str, api_base_url: str) -> Optional[Union
         if response_content.get("success"): # This implies it was a JSON response originally
             return response_content.get("data")
         else: # It's an error dictionary from make_api_get_request_helper or the API itself
-            log.warning(f"Failed to fetch data package for {username}: {response_content.get('error', 'Unknown error')}")
+            log.warning(f"Failed to fetch ledger for {username}: {response_content.get('error', 'Unknown error')}")
             return response_content # Return the error dict
             
     log.warning(f"Unexpected type or structure from make_api_get_request_helper for {username}: {type(response_content)}")
@@ -737,7 +737,7 @@ def generate_conversation_turn(
             "lastName": listener_profile.get("LastName"),
             "socialClass": listener_profile.get("SocialClass")
         },
-        "speaker_data_package": get_citizen_data_package(speaker_username, api_base_url) or {},
+        "speaker_ledger": get_citizen_ledger(speaker_username, api_base_url) or {},
         "speaker_problems": get_citizen_problems_list(speaker_username, api_base_url),
         "listener_problems": get_citizen_problems_list(listener_username, api_base_url),
         "relationship_details": get_relationship_details(tables, speaker_username, listener_username) or {},
@@ -757,7 +757,7 @@ def generate_conversation_turn(
         system_explanation = (
             f"[SYSTEM]You are {speaker_profile.get('FirstName', speaker_username)}, a {speaker_profile.get('SocialClass', 'citizen')} of Venice. "
             f"{location_context}You have noticed {listener_profile.get('FirstName', listener_username)} (Social Class: {listener_profile.get('SocialClass', 'unknown')}) is also here. "
-            f"Review your knowledge in `addSystem` (your data package including `availableStratagems` and active stratagems, problems, your relationship with them, their problems, and any recent direct conversation history). "
+            f"Review your knowledge in `addSystem` (your ledger including `availableStratagems` and active stratagems, problems, your relationship with them, their problems, and any recent direct conversation history). "
             f"What are your internal thoughts or observations about their presence and this encounter? Consider any opportunities, risks, or social implications. Could a **Stratagem** be relevant here (either one you are running, one targeting you, or one you might propose)? "
             f"Your response should be your internal monologue or reflection in plain text in English, not direct speech to them. "
             f"Keep it focused on potential gameplay impact or character development.[/SYSTEM]\n\n"
@@ -767,7 +767,7 @@ def generate_conversation_turn(
         system_explanation = (
             f"[SYSTEM]You are {speaker_profile.get('FirstName', speaker_username)}, a {speaker_profile.get('SocialClass', 'citizen')} of Venice. "
             f"{location_context}You see {listener_profile.get('FirstName', listener_username)} (Social Class: {listener_profile.get('SocialClass', 'unknown')}) here. "
-            f"Review your knowledge in `addSystem` (your data package including `availableStratagems` and active stratagems, problems, your relationship with them, their problems, and any recent direct conversation history). "
+            f"Review your knowledge in `addSystem` (your ledger including `availableStratagems` and active stratagems, problems, your relationship with them, their problems, and any recent direct conversation history). "
             f"What would you say to them to initiate or continue a conversation? Your opening could be related to a shared interest, a problem, an opportunity, or perhaps a **Stratagem** you wish to discuss or propose. "
             f"Your response should be direct speech TO {listener_profile.get('FirstName', listener_username)}, in plain text in English. "
             f"Keep it concise, in character, and relevant to your current situation or relationship.[/SYSTEM]\n\n"
@@ -778,7 +778,7 @@ def generate_conversation_turn(
         system_explanation = (
             f"[SYSTEM]You are {speaker_profile.get('FirstName', speaker_username)}, a {speaker_profile.get('SocialClass', 'citizen')} of Venice. "
             f"You are currently in conversation with {listener_profile.get('FirstName', listener_username)}. {location_context}"
-            f"Review your knowledge in `addSystem` (your data package including `availableStratagems` and active stratagems, problems, relationship, listener's problems, and recent conversation histories, plus this `system_guidance`). "
+            f"Review your knowledge in `addSystem` (your ledger including `availableStratagems` and active stratagems, problems, relationship, listener's problems, and recent conversation histories, plus this `system_guidance`). "
             f"Continue the conversation naturally in plain text in English, keeping your persona and objectives in mind. If strategic elements arise, remember that **Stratagems** are a key way to interact with the world. Your response should be direct speech.[/SYSTEM]\n\n"
         )
         add_system_payload["system_guidance"] = system_explanation
@@ -796,7 +796,7 @@ def generate_conversation_turn(
     effective_kinos_model = kinos_model_override or get_kinos_model_for_social_class(speaker_username, speaker_social_class)
 
     # --- NEW LOGIC for local model pre-processing ---
-    final_add_system_data = add_system_payload # By default, use the full data package
+    final_add_system_data = add_system_payload # By default, use the full ledger
 
     ai_message_content: Optional[str] = None
 
@@ -877,7 +877,7 @@ def generate_conversation_turn(
             # Only perform trust analysis after we have both the message and reply
             log.info(f"Attempting trust impact analysis for {listener_username} regarding message from {speaker_username}.")
             
-            listener_data_package = get_citizen_data_package(listener_username, api_base_url)
+            listener_ledger = get_citizen_ledger(listener_username, api_base_url)
             listener_profile_for_analysis = get_citizen_record(tables, listener_username)
             listener_social_class_for_analysis = listener_profile_for_analysis['fields'].get('SocialClass') if listener_profile_for_analysis else None
             model_for_listener_analysis = get_kinos_model_for_social_class(listener_username, listener_social_class_for_analysis)
@@ -894,7 +894,7 @@ def generate_conversation_turn(
             if reply_content:
                 analysis_prompt_parts.append(f"You replied with: '{reply_content}'. ")
                 
-            analysis_prompt_parts.append(f"Consider your personality, your relationship with {speaker_profile.get('FirstName', speaker_username)}, and all information in your data package. ")
+            analysis_prompt_parts.append(f"Consider your personality, your relationship with {speaker_profile.get('FirstName', speaker_username)}, and all information in your ledger. ")
             
             json_format_parts = [
                 f"\"trustChangeForListener\": <value_listener>"
@@ -931,7 +931,7 @@ def generate_conversation_turn(
                 kinos_api_key,
                 listener_username, # The Kin performing the analysis
                 analysis_prompt,
-                listener_data_package if isinstance(listener_data_package, dict) else {"error": "Listener data package not available or invalid"}, # Their own data package as context
+                listener_ledger if isinstance(listener_ledger, dict) else {"error": "Listener ledger not available or invalid"}, # Their own ledger as context
                 model_for_listener_analysis
             )
             

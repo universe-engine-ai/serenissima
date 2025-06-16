@@ -188,7 +188,7 @@ def get_kinos_api_key() -> str:
     return api_key
 
 def prepare_lease_analysis_data(ai_citizen: Dict, citizen_lands: List[Dict], citizen_buildings: List[Dict], buildings_on_lands: List[Dict]) -> Dict:
-    """Prepare a comprehensive data package for the AI to analyze lease situations."""
+    """Prepare a comprehensive ledger for the AI to analyze lease situations."""
     
     # Extract citizen information
     username = ai_citizen["fields"].get("Username", "")
@@ -250,8 +250,8 @@ def prepare_lease_analysis_data(ai_citizen: Dict, citizen_lands: List[Dict], cit
     recent_relevancies_for_ai = _get_relevancies_data_api(username)
     recent_problems_for_ai = _get_problems_data_api(username)
     
-    # Prepare the complete data package
-    data_package = {
+    # Prepare the complete ledger
+    ledger = {
         "ai_citizen_profile": ai_citizen_profile_api or {"username": username, "ducats": ducats}, # Fallback if API fails
         "citizen_financial_summary": { # Keep existing financial summary separate for clarity
             "username": username, # Redundant but keeps structure
@@ -275,9 +275,9 @@ def prepare_lease_analysis_data(ai_citizen: Dict, citizen_lands: List[Dict], cit
         "timestamp": datetime.now().isoformat()
     }
     
-    return data_package
+    return ledger
 
-def send_lease_adjustment_request(ai_username: str, data_package: Dict, kinos_model_override: Optional[str] = None) -> Optional[Dict]:
+def send_lease_adjustment_request(ai_username: str, ledger: Dict, kinos_model_override: Optional[str] = None) -> Optional[Dict]:
     """Send the lease adjustment request to the AI via KinOS API."""
     try:
         api_key = get_kinos_api_key()
@@ -295,19 +295,19 @@ def send_lease_adjustment_request(ai_username: str, data_package: Dict, kinos_mo
         # Log the API request details
         print(f"Sending lease adjustment request to AI citizen {ai_username}")
         print(f"API URL: {url}")
-        print(f"Citizen has {data_package['citizen_financial_summary']['ducats']} ducats")
-        print(f"Citizen owns {len(data_package['lands'])} lands and {len(data_package['buildings_owned_by_ai'])} buildings")
+        print(f"Citizen has {ledger['citizen_financial_summary']['ducats']} ducats")
+        print(f"Citizen owns {len(ledger['lands'])} lands and {len(ledger['buildings_owned_by_ai'])} buildings")
         
         # Create a detailed prompt that addresses the AI directly as the decision-maker
         prompt = f"""
 As a landowner and building owner in La Serenissima, you need to review and adjust the lease amounts for your buildings.
 
 Here's your current situation:
-- You own {len(data_package['buildings_owned_by_ai'])} buildings
-- You own {len(data_package['lands'])} lands
-- Your current net income is {data_package['citizen_financial_summary']['financial']['net_income']} ducats
-- You pay {data_package['citizen_financial_summary']['financial']['total_lease_paid']} ducats in leases to other landowners
-- You receive {data_package['citizen_financial_summary']['financial']['total_lease_received']} ducats in leases from buildings on your lands
+- You own {len(ledger['buildings_owned_by_ai'])} buildings
+- You own {len(ledger['lands'])} lands
+- Your current net income is {ledger['citizen_financial_summary']['financial']['net_income']} ducats
+- You pay {ledger['citizen_financial_summary']['financial']['total_lease_paid']} ducats in leases to other landowners
+- You receive {ledger['citizen_financial_summary']['financial']['total_lease_received']} ducats in leases from buildings on your lands
 
 Please analyze your lease situation and develop a strategy for adjusting lease amounts for your buildings. Consider:
 1. The income and maintenance costs of each building
@@ -346,7 +346,7 @@ If you decide not to adjust any leases at this time, return an empty array:
 You are {ai_username}, an AI landowner and building owner in La Serenissima. You make your own decisions about lease strategies.
 
 Here is the complete data about your current situation:
-{json.dumps(data_package, indent=2)}
+{json.dumps(ledger, indent=2)}
 
 When developing your lease adjustment strategy:
 1. Analyze each building's profitability (income minus maintenance and current lease)
@@ -726,12 +726,12 @@ def process_ai_lease_adjustments(dry_run: bool = False, kinos_model_override_arg
         land_ids = [land["fields"].get("LandId") for land in citizen_lands if land["fields"].get("LandId")]
         buildings_on_lands = get_all_buildings_on_lands(tables, land_ids)
         
-        # Prepare the data package for the AI
-        data_package = prepare_lease_analysis_data(ai_citizen, citizen_lands, citizen_buildings, buildings_on_lands)
+        # Prepare the ledger for the AI
+        ledger = prepare_lease_analysis_data(ai_citizen, citizen_lands, citizen_buildings, buildings_on_lands)
         
         # Send the lease adjustment request to the AI
         if not dry_run:
-            decisions = send_lease_adjustment_request(ai_username, data_package, kinos_model_override_arg)
+            decisions = send_lease_adjustment_request(ai_username, ledger, kinos_model_override_arg)
             
             if decisions and "lease_adjustments" in decisions:
                 lease_adjustments = decisions["lease_adjustments"]
@@ -816,12 +816,12 @@ def process_ai_lease_adjustments(dry_run: bool = False, kinos_model_override_arg
         else:
             # In dry run mode, just log what would happen
             print(f"[DRY RUN] Would send lease adjustment request to AI citizen {ai_username}")
-            print(f"[DRY RUN] Data package summary:")
-            print(f"  - Citizen: {data_package.get('ai_citizen_profile', {}).get('username', 'N/A')}") # Adjusted access
-            print(f"  - Lands: {len(data_package.get('lands', []))}")
-            print(f"  - Buildings Owned: {len(data_package.get('buildings_owned_by_ai', []))}")
-            print(f"  - Buildings on AI Lands: {len(data_package.get('buildings_on_ai_lands_potentially_others', []))}")
-            print(f"  - Net Income: {data_package.get('citizen_financial_summary', {}).get('financial', {}).get('net_income', 'N/A')}") # Adjusted access
+            print(f"[DRY RUN] Ledger summary:")
+            print(f"  - Citizen: {ledger.get('ai_citizen_profile', {}).get('username', 'N/A')}") # Adjusted access
+            print(f"  - Lands: {len(ledger.get('lands', []))}")
+            print(f"  - Buildings Owned: {len(ledger.get('buildings_owned_by_ai', []))}")
+            print(f"  - Buildings on AI Lands: {len(ledger.get('buildings_on_ai_lands_potentially_others', []))}")
+            print(f"  - Net Income: {ledger.get('citizen_financial_summary', {}).get('financial', {}).get('net_income', 'N/A')}") # Adjusted access
     
     # Create admin notification with summary
     if not dry_run and any(adjustments for adjustments in ai_lease_adjustments.values()):

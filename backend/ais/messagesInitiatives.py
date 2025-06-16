@@ -24,7 +24,7 @@ BASE_URL = os.getenv('NEXT_PUBLIC_BASE_URL', 'http://localhost:3000')
 
 from backend.engine.utils.activity_helpers import LogColors, log_header, clean_thought_content # Ajout de l'importation
 from backend.engine.utils.conversation_helper import (
-    get_citizen_data_package, 
+    get_citizen_ledger, 
     make_kinos_channel_call, 
     get_kinos_model_for_social_class, 
     DEFAULT_TIMEOUT_SECONDS,
@@ -222,29 +222,29 @@ def _get_problems_data(tables: Dict[str, Table], username1: str, username2: str,
         print(f"Erreur lors de la récupération des problèmes pour {username1} ou {username2} via API: {e}")
         return []
 
-# _check_existing_messages a été supprimé. Cette information sera incluse dans le data_package pour KinOS.
+# _check_existing_messages a été supprimé. Cette information sera incluse dans le ledger pour KinOS.
 
 # --- Fonctions KinOS et création de message ---
 
-def _summarize_target_data_package(
+def _summarize_target_ledger(
     kinos_api_key: str,
     ai_username: str, 
     target_username: str,
     purpose_of_call: str, 
-    target_data_package: str,
+    target_ledger: str,
     tables_for_cleaning: Optional[Dict[str, Table]] = None
 ) -> str:
     """
-    Summarizes the target citizen's data package for more efficient context.
+    Summarizes the target citizen's ledger for more efficient context.
     Returns the summarized markdown or the original markdown if summarization fails.
     """
-    log.info(f"{LogColors.OKBLUE}Summarizing target data package for {target_username} for {ai_username}'s purpose: '{purpose_of_call}'.{LogColors.ENDC}")
+    log.info(f"{LogColors.OKBLUE}Summarizing target ledger for {target_username} for {ai_username}'s purpose: '{purpose_of_call}'.{LogColors.ENDC}")
     
     attention_channel_name = target_username
     
     attention_prompt = (
         f"You are {ai_username} trying to understand {target_username} for: '{purpose_of_call}'. "
-        f"I will provide you with {target_username}'s complete data package in markdown format. "
+        f"I will provide you with {target_username}'s complete ledger in markdown format. "
         f"Please summarize the most relevant information about {target_username} that would be useful for {ai_username} "
         f"when deciding how to interact with them.\n\n"
         f"Focus on:\n"
@@ -259,13 +259,13 @@ def _summarize_target_data_package(
 
     # Create a simple wrapper to pass the markdown as addSystem
     wrapper_data = {
-        "target_data_package_markdown": target_data_package
+        "target_ledger_markdown": target_ledger
     }
 
     print(f"\n\n===== SUMMARIZE TARGET DATA PACKAGE PROMPT =====")
     print(f"AI: {ai_username}, Target: {target_username}, Purpose: {purpose_of_call}")
     print(f"System Prompt: {attention_prompt}")
-    print(f"Data Package Length: {len(target_data_package)} characters")
+    print(f"Ledger Length: {len(target_ledger)} characters")
     print(f"=================================================\n\n")
 
     # make_kinos_channel_call is defined in this file
@@ -288,23 +288,23 @@ def _summarize_target_data_package(
         # clean_thought_content is imported from activity_helpers
         # Ensure tables_for_cleaning is passed to clean_thought_content
         if tables_for_cleaning is None:
-            log.warning(f"{LogColors.WARNING}No tables object provided for clean_thought_content in _summarize_target_data_package. ID replacement will be skipped.{LogColors.ENDC}")
+            log.warning(f"{LogColors.WARNING}No tables object provided for clean_thought_content in _summarize_target_ledger. ID replacement will be skipped.{LogColors.ENDC}")
         cleaned_summarized_context = clean_thought_content(tables_for_cleaning, summarized_context_content)
         
-        log.info(f"{LogColors.OKGREEN}Successfully summarized target data package for {target_username}. Original length: {len(target_data_package)}, Summary length: {len(cleaned_summarized_context)}{LogColors.ENDC}")
+        log.info(f"{LogColors.OKGREEN}Successfully summarized target ledger for {target_username}. Original length: {len(target_ledger)}, Summary length: {len(cleaned_summarized_context)}{LogColors.ENDC}")
         log.debug(f"Original summary for {target_username}: {summarized_context_content[:500]}...")
         log.debug(f"Cleaned summary for {target_username}: {cleaned_summarized_context[:500]}...")
         
         return cleaned_summarized_context
     else:
-        log.warning(f"{LogColors.WARNING}Failed to summarize target data package for {target_username}. Will use original data package.{LogColors.ENDC}")
-        return target_data_package
+        log.warning(f"{LogColors.WARNING}Failed to summarize target ledger for {target_username}. Will use original ledger.{LogColors.ENDC}")
+        return target_ledger
 
 def choose_interlocutor_via_kinos(
     tables: Dict[str, Table], # Added tables argument
     ai_username: str,
     kinos_api_key: str,
-    ai_data_package: str,  # Maintenant une chaîne markdown au lieu d'un dictionnaire
+    ai_ledger: str,  # Maintenant une chaîne markdown au lieu d'un dictionnaire
     kinos_model_override: Optional[str] = None
 ) -> Optional[Tuple[str, str]]:
     """
@@ -317,14 +317,14 @@ def choose_interlocutor_via_kinos(
     ai_social_class = None  # Valeur par défaut
     
     # Rechercher le prénom dans le markdown
-    first_name_match = re.search(r'firstName: ([^\n]+)', ai_data_package, re.IGNORECASE) or \
-                      re.search(r'FirstName: ([^\n]+)', ai_data_package, re.IGNORECASE)
+    first_name_match = re.search(r'firstName: ([^\n]+)', ai_ledger, re.IGNORECASE) or \
+                      re.search(r'FirstName: ([^\n]+)', ai_ledger, re.IGNORECASE)
     if first_name_match:
         ai_display_name = first_name_match.group(1).strip()
     
     # Rechercher la classe sociale dans le markdown
-    social_class_match = re.search(r'socialClass: ([^\n]+)', ai_data_package, re.IGNORECASE) or \
-                         re.search(r'SocialClass: ([^\n]+)', ai_data_package, re.IGNORECASE)
+    social_class_match = re.search(r'socialClass: ([^\n]+)', ai_ledger, re.IGNORECASE) or \
+                         re.search(r'SocialClass: ([^\n]+)', ai_ledger, re.IGNORECASE)
     if social_class_match:
         ai_social_class = social_class_match.group(1).strip()
 
@@ -333,10 +333,10 @@ def choose_interlocutor_via_kinos(
     kinos_channel_for_decision = "strategist" 
 
     prompt = (
-        f"You are {ai_display_name}, an AI citizen of Venice. Your data package "
+        f"You are {ai_display_name}, an AI citizen of Venice. Your ledger "
         f"is provided in `addSystem` in markdown format.\n\n"
         f"Based on this information, analyze your current situation and identify another citizen with whom initiating a conversation would be most beneficial or strategically relevant for you right now. "
-        f"Consider your goals, active problems, opportunities, and the nature of your relationships. Could initiating or discussing a **Stratagem** be a reason for contact? Information on available stratagems is in the 'Available Stratagems' section of your data package.\n\n"
+        f"Consider your goals, active problems, opportunities, and the nature of your relationships. Could initiating or discussing a **Stratagem** be a reason for contact? Information on available stratagems is in the 'Available Stratagems' section of your ledger.\n\n"
         f"Your response MUST be a JSON object with two keys: 'target_username' (the Username of the citizen you choose) and 'reason' (a specific compelling reason for contacting them, focusing on gameplay or possibly narrative progression, potentially related to a stratagem).\n"
         f"If no compelling interaction is identified, respond with: {{\"target_username\": null, \"reason\": \"<Explanations>\"}}\n\n"
         f"Chosen interaction (JSON):"
@@ -352,12 +352,12 @@ def choose_interlocutor_via_kinos(
     print(f"\n\n===== CHOOSE INTERLOCUTOR PROMPT =====")
     print(f"AI: {ai_username} ({ai_display_name}), Social Class: {ai_social_class}")
     print(f"System Prompt: {prompt}")
-    print(f"Data Package Length: {len(ai_data_package)} characters")
+    print(f"Ledger Length: {len(ai_ledger)} characters")
     print(f"=====================================\n\n")
     
     # Créer un wrapper pour passer le markdown comme addSystem
     wrapper_data = {
-        "data_package_markdown": ai_data_package
+        "ledger_markdown": ai_ledger
     }
     
     # make_kinos_channel_call est importé de conversation_helper
@@ -435,32 +435,32 @@ def generate_ai_initiative_message(
         relevancies_ai_to_target = _get_relevancies_data(tables, ai_username, target_username, limit=5)
         problems_involving_pair = _get_problems_data(tables, ai_username, target_username, limit=5)
 
-        # Récupérer le data package complet du citoyen cible
-        log.info(f"Récupération du data package pour le citoyen cible {target_username}...")
-        target_data_package_url = f"{BASE_URL}/api/get-data-package?citizenUsername={target_username}&format=markdown"
-        target_data_package = None
+        # Récupérer le ledger complet du citoyen cible
+        log.info(f"Récupération du ledger pour le citoyen cible {target_username}...")
+        target_ledger_url = f"{BASE_URL}/api/get-ledger?citizenUsername={target_username}&format=markdown"
+        target_ledger = None
         
         try:
-            response = requests.get(target_data_package_url, timeout=60)
+            response = requests.get(target_ledger_url, timeout=60)
             response.raise_for_status()
-            target_data_package = response.text
-            log.info(f"Data package markdown récupéré avec succès pour {target_username}. Taille: {len(target_data_package)} caractères")
+            target_ledger = response.text
+            log.info(f"Ledger markdown récupéré avec succès pour {target_username}. Taille: {len(target_ledger)} caractères")
         except Exception as e_target_dp:
-            log.error(f"Erreur lors de la récupération du data package markdown pour {target_username}: {e_target_dp}")
-            # Continuer sans data package cible si échec
+            log.error(f"Erreur lors de la récupération du ledger markdown pour {target_username}: {e_target_dp}")
+            # Continuer sans ledger cible si échec
         
         # Récupérer la classe sociale du citoyen IA
         ai_social_class = ai_citizen_profile_data.get('fields', {}).get('SocialClass')
         
-        # Résumer le data package du citoyen cible si disponible et si modèle local
-        target_data_package_summary = None
-        if target_data_package and (kinos_model_override == 'local' or (not kinos_model_override and get_kinos_model_for_social_class(ai_username, ai_social_class) == 'local')):
-            target_data_package_summary = _summarize_target_data_package(
+        # Résumer le ledger du citoyen cible si disponible et si modèle local
+        target_ledger_summary = None
+        if target_ledger and (kinos_model_override == 'local' or (not kinos_model_override and get_kinos_model_for_social_class(ai_username, ai_social_class) == 'local')):
+            target_ledger_summary = _summarize_target_ledger(
                 kinos_api_key=kinos_api_key,
                 ai_username=ai_username,
                 target_username=target_username,
                 purpose_of_call=f"crafting an initiative message based on: {reason_for_contact}",
-                target_data_package=target_data_package,
+                target_ledger=target_ledger,
                 tables_for_cleaning=tables
             )
         
@@ -475,13 +475,13 @@ def generate_ai_initiative_message(
             "recent_problems_involving_us": problems_involving_pair
         }
         
-        # Ajouter le data package du citoyen cible (complet ou résumé) s'il est disponible
-        if target_data_package_summary:
-            focused_system_context["target_citizen_data_package_summary"] = target_data_package_summary
-            log.info(f"Ajout du résumé du data package de {target_username} au contexte (taille: {len(target_data_package_summary)} caractères)")
-        elif target_data_package:
-            focused_system_context["target_citizen_data_package"] = target_data_package
-            log.info(f"Ajout du data package complet de {target_username} au contexte (taille: {len(target_data_package)} caractères)")
+        # Ajouter le ledger du citoyen cible (complet ou résumé) s'il est disponible
+        if target_ledger_summary:
+            focused_system_context["target_citizen_ledger_summary"] = target_ledger_summary
+            log.info(f"Ajout du résumé du ledger de {target_username} au contexte (taille: {len(target_ledger_summary)} caractères)")
+        elif target_ledger:
+            focused_system_context["target_citizen_ledger"] = target_ledger
+            log.info(f"Ajout du ledger complet de {target_username} au contexte (taille: {len(target_ledger)} caractères)")
         
         ai_display_name = ai_citizen_profile_data.get('fields', {}).get('FirstName', ai_username)
         target_display_name = target_citizen_profile_data.get('fields', {}).get('FirstName', target_username)
@@ -493,7 +493,7 @@ def generate_ai_initiative_message(
             f"IMPORTANT: Your message must be short, human-like, and specific. It should be a natural conversation message related to the reason and context. "
             f"DO NOT use formal language. Be direct and concise.\n\n"
             f"Use the context in `addSystem` to make your message RELEVANT and FOCUSED ON GAMEPLAY or narrative progression with {target_display_name}. "
-            f"If your reason for contact involves a **Stratagem**, subtly weave that into your opening. You can find stratagem details in your broader knowledge (e.g., from your data package if previously accessed).\n"
+            f"If your reason for contact involves a **Stratagem**, subtly weave that into your opening. You can find stratagem details in your broader knowledge (e.g., from your ledger if previously accessed).\n"
             f"Your message to {target_display_name}:"
         )
         
@@ -735,32 +735,32 @@ def process_ai_message_initiatives(dry_run: bool = False, citizen1_arg: Optional
             
             print(f"\nTraitement des initiatives pour l'IA : {ai_username}")
 
-            # 1. Récupérer le data package complet pour l'IA (en format markdown)
-            log.info(f"Récupération du data package markdown pour {ai_username}...")
-            data_package_url = f"{BASE_URL}/api/get-data-package?citizenUsername={ai_username}&format=markdown"
-            ai_data_package = None # Initialiser au cas où l'appel échoue
+            # 1. Récupérer le ledger complet pour l'IA (en format markdown)
+            log.info(f"Récupération du ledger markdown pour {ai_username}...")
+            ledger_url = f"{BASE_URL}/api/get-ledger?citizenUsername={ai_username}&format=markdown"
+            ai_ledger = None # Initialiser au cas où l'appel échoue
             try:
-                response = requests.get(data_package_url, timeout=300) # Augmentation du timeout à 300 secondes
+                response = requests.get(ledger_url, timeout=300) # Augmentation du timeout à 300 secondes
                 response.raise_for_status() # Lèvera une exception pour les codes d'erreur HTTP
-                ai_data_package = response.text # Récupérer directement le texte markdown
-                if not ai_data_package or len(ai_data_package) < 100:  # Vérification basique que le contenu semble valide
-                    log.error(f"Le data package markdown pour {ai_username} semble vide ou trop court. Longueur : {len(ai_data_package) if ai_data_package else 0}")
-                    ai_data_package = None
+                ai_ledger = response.text # Récupérer directement le texte markdown
+                if not ai_ledger or len(ai_ledger) < 100:  # Vérification basique que le contenu semble valide
+                    log.error(f"Le ledger markdown pour {ai_username} semble vide ou trop court. Longueur : {len(ai_ledger) if ai_ledger else 0}")
+                    ai_ledger = None
             except requests.exceptions.RequestException as e:
-                log.error(f"Erreur lors de la récupération du data package markdown pour {ai_username} : {e}")
+                log.error(f"Erreur lors de la récupération du ledger markdown pour {ai_username} : {e}")
             
-            if not ai_data_package:
-                print(f"Impossible de récupérer le data package markdown pour {ai_username}. Passage au suivant.")
-                log.warning(f"Impossible de récupérer le data package markdown pour {ai_username}. Passage au suivant.")
+            if not ai_ledger:
+                print(f"Impossible de récupérer le ledger markdown pour {ai_username}. Passage au suivant.")
+                log.warning(f"Impossible de récupérer le ledger markdown pour {ai_username}. Passage au suivant.")
                 continue
-            log.info(f"Data package markdown récupéré avec succès pour {ai_username}. Taille : {len(ai_data_package)} caractères")
+            log.info(f"Ledger markdown récupéré avec succès pour {ai_username}. Taille : {len(ai_ledger)} caractères")
 
             # 2. Appeler KinOS pour choisir un interlocuteur et une raison
             target_username, reason_for_contact = choose_interlocutor_via_kinos(
                 tables, # Pass tables
                 ai_username, 
                 kinos_api_key_local, 
-                ai_data_package, 
+                ai_ledger, 
                 kinos_model_override_arg # Peut être None, auquel cas choose_interlocutor_via_kinos utilisera 'local'
             )
 

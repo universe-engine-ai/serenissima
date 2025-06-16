@@ -1453,10 +1453,10 @@ if __name__ == "__main__":
         help="Force the script to operate as if it's this hour in Venice time (0-23). Date and minutes/seconds remain current. This will be converted to UTC internally."
     )
     parser.add_argument(
-        "--ActivityId",
+        "--activityId",
         type=str,
-        help="Process a specific activity by its custom ActivityId, bypassing normal selection criteria."
+        help="Process a specific activity by its custom activityId, bypassing normal selection criteria."
     )
     args = parser.parse_args()
 
-    main(args.dry_run, args.citizen, forced_venice_hour_override=args.hour, specific_activity_id=args.ActivityId)
+    main(args.dry_run, args.citizen, forced_venice_hour_override=args.hour, specific_activity_id=args.activityId)

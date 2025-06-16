@@ -190,7 +190,7 @@ def get_kinos_api_key() -> str:
     return api_key
 
 def prepare_wage_analysis_data(tables: Dict[str, Table], ai_citizen: Dict, citizen_business_buildings: List[Dict], citizens_info: Dict[str, Dict]) -> Dict:
-    """Prepare a comprehensive data package for the AI to analyze wage situations."""
+    """Prepare a comprehensive ledger for the AI to analyze wage situations."""
     
     # Extract citizen information
     username = ai_citizen["fields"].get("Username", "")
@@ -251,8 +251,8 @@ def prepare_wage_analysis_data(tables: Dict[str, Table], ai_citizen: Dict, citiz
     recent_notifications_for_ai = _get_notifications_data_api(username)
 
 
-    # Prepare the complete data package
-    data_package = {
+    # Prepare the complete ledger
+    ledger = {
         "citizen": {
             "username": username,
             "ducats": ducats,
@@ -272,9 +272,9 @@ def prepare_wage_analysis_data(tables: Dict[str, Table], ai_citizen: Dict, citiz
         "timestamp": datetime.now().isoformat()
     }
     
-    return data_package
+    return ledger
 
-def send_wage_adjustment_request(ai_username: str, data_package: Dict, kinos_model_override: Optional[str] = None) -> Optional[Dict]:
+def send_wage_adjustment_request(ai_username: str, ledger: Dict, kinos_model_override: Optional[str] = None) -> Optional[Dict]:
     """Send the wage adjustment request to the AI via KinOS API."""
     try:
         api_key = get_kinos_api_key()
@@ -292,22 +292,22 @@ def send_wage_adjustment_request(ai_username: str, data_package: Dict, kinos_mod
         # Log the API request details
         print(f"Sending wage adjustment request to AI citizen {ai_username}")
         print(f"API URL: {url}")
-        print(f"Citizen has {data_package['citizen']['ducats']} ducats")
-        print(f"Citizen owns {len(data_package['businesses'])} businesses")
+        print(f"Citizen has {ledger['citizen']['ducats']} ducats")
+        print(f"Citizen owns {len(ledger['businesses'])} businesses")
         
         # Log business IDs for debugging
-        business_ids = [business["id"] for business in data_package["businesses"]]
-        print(f"Business IDs in data package: {business_ids}")
+        business_ids = [business["id"] for business in ledger["businesses"]]
+        print(f"Business IDs in ledger: {business_ids}")
         
         # Create a detailed prompt that addresses the AI directly as the decision-maker
         prompt = f"""
 As a building owner in La Serenissima, you need to review and set wage amounts for your buildings.
 
 Here's your current situation:
-- You own {len(data_package['businesses'])} buildings
-- Your current net income is {data_package['citizen']['financial']['net_income']} ducats
-- You pay {data_package['citizen']['financial']['total_wages_paid']} ducats in wages to your employees
-- You pay {data_package['citizen']['financial']['total_rent_paid']} ducats in rent for your business buildings
+- You own {len(ledger['businesses'])} buildings
+- Your current net income is {ledger['citizen']['financial']['net_income']} ducats
+- You pay {ledger['citizen']['financial']['total_wages_paid']} ducats in wages to your employees
+- You pay {ledger['citizen']['financial']['total_rent_paid']} ducats in rent for your business buildings
 
 Please analyze your buildings and develop a strategy for setting wage amounts. Consider:
 1. The income and expenses of each building
@@ -349,7 +349,7 @@ If you decide not to adjust any wages at this time, return an empty array:
 You are {ai_username}, an AI building owner in La Serenissima. You make your own decisions about wage strategies.
 
 Here is the complete data about your current situation:
-{json.dumps(data_package, indent=2)}
+{json.dumps(ledger, indent=2)}
 
 Contextual data available:
 - `latest_building_relevancies`: Shows recent building-related opportunities or information relevant to you.
@@ -705,12 +705,12 @@ def process_ai_wage_adjustments(dry_run: bool = False, kinos_model_override_arg:
         except Exception as e:
             print(f"Error getting all citizens: {str(e)}")
         
-        # Prepare the data package for the AI
-        data_package = prepare_wage_analysis_data(tables, ai_citizen, citizen_business_buildings, all_citizens)
+        # Prepare the ledger for the AI
+        ledger = prepare_wage_analysis_data(tables, ai_citizen, citizen_business_buildings, all_citizens)
         
         # Send the wage adjustment request to the AI
         if not dry_run:
-            decisions = send_wage_adjustment_request(ai_username, data_package, kinos_model_override_arg)
+            decisions = send_wage_adjustment_request(ai_username, ledger, kinos_model_override_arg)
             
             if decisions and "wage_adjustments" in decisions:
                 wage_adjustments = decisions["wage_adjustments"]
@@ -845,10 +845,10 @@ def process_ai_wage_adjustments(dry_run: bool = False, kinos_model_override_arg:
         else:
             # In dry run mode, just log what would happen
             print(f"[DRY RUN] Would send wage adjustment request to AI citizen {ai_username}")
-            print(f"[DRY RUN] Data package summary:")
-            print(f"  - Citizen: {data_package['citizen']['username']}")
-            print(f"  - Businesses: {len(data_package['businesses'])}")
-            print(f"  - Net Income: {data_package['citizen']['financial']['net_income']}")
+            print(f"[DRY RUN] Ledger summary:")
+            print(f"  - Citizen: {ledger['citizen']['username']}")
+            print(f"  - Businesses: {len(ledger['businesses'])}")
+            print(f"  - Net Income: {ledger['citizen']['financial']['net_income']}")
     
     # Create admin notification with summary
     if not dry_run and any(adjustments for adjustments in ai_wage_adjustments.values()):

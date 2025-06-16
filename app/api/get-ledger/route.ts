@@ -884,47 +884,44 @@ function formatSimpleObjectForMarkdown(obj: Record<string, any> | null, fieldsTo
   return md;
 }
 
-function convertDataPackageToMarkdown(dataPackage: any, citizenUsername: string | null): string {
-  let md = `# Data Package for ${citizenUsername || 'Unknown Citizen'}\n\n`;
-  
-  // Create tabs for different sections
-  md += `## Overview\n\n`;
+function convertLedgerToMarkdown(Ledger: any, citizenUsername: string | null): string {
+  let md = `# Ledger for ${citizenUsername || 'Unknown Citizen'}\n\n`;
   
   // Citizen Details
-  md += `### Citizen Details\n`;
+  md += `## Citizen Details\n`;
   
   // Format ducats as integer if present
-  if (dataPackage.citizen?.ducats !== undefined && dataPackage.citizen.ducats !== null) {
-    dataPackage.citizen.ducats = Math.floor(Number(dataPackage.citizen.ducats));
+  if (Ledger.citizen?.ducats !== undefined && Ledger.citizen.ducats !== null) {
+    Ledger.citizen.ducats = Math.floor(Number(Ledger.citizen.ducats));
   }
   
-  md += formatSimpleObjectForMarkdown(dataPackage.citizen, ['username', 'firstName', 'lastName', 'socialClass', 'ducats', 'isAI', 'inVenice', 'homeCity', 'influence', 'specialty']);
+  md += formatSimpleObjectForMarkdown(Ledger.citizen, ['username', 'firstName', 'lastName', 'socialClass', 'ducats', 'isAI', 'inVenice', 'homeCity', 'influence', 'specialty']);
   
-  if (dataPackage.citizen?.corePersonality) {
-    let personalityDisplay = String(dataPackage.citizen.corePersonality); // Fallback
-    if (typeof dataPackage.citizen.corePersonality === 'string') {
+  if (Ledger.citizen?.corePersonality) {
+    let personalityDisplay = String(Ledger.citizen.corePersonality); // Fallback
+    if (typeof Ledger.citizen.corePersonality === 'string') {
       try {
-        const parsedPersonality = JSON.parse(dataPackage.citizen.corePersonality);
+        const parsedPersonality = JSON.parse(Ledger.citizen.corePersonality);
         if (Array.isArray(parsedPersonality)) {
           // Format as a JSON array string, e.g., ["Trait1", "Trait2"]
           personalityDisplay = JSON.stringify(parsedPersonality);
         }
       } catch (e) {
         // If parsing fails, personalityDisplay remains the original string
-        console.warn(`[API get-data-package] Could not parse corePersonality as JSON array: ${dataPackage.citizen.corePersonality}`, e);
+        console.warn(`[API get-ledger] Could not parse corePersonality as JSON array: ${Ledger.citizen.corePersonality}`, e);
       }
     }
     md += `- **corePersonality**: ${personalityDisplay}\n`;
   }
   
   // Add personality if available
-  if (dataPackage.citizen?.personality) {
-    md += `\n### Personality\n${dataPackage.citizen.personality}\n`;
+  if (Ledger.citizen?.personality) {
+    md += `\n### Personality\n${Ledger.citizen.personality}\n`;
   }
   
   // Add description if available
-  if (dataPackage.citizen?.description) {
-    md += `\n### Description\n${dataPackage.citizen.description}\n`;
+  if (Ledger.citizen?.description) {
+    md += `\n### Description\n${Ledger.citizen.description}\n`;
   }
   
   md += '\n';
@@ -933,14 +930,14 @@ function convertDataPackageToMarkdown(dataPackage: any, citizenUsername: string 
   md += `## Current Location\n`;
   
   // Handle position display
-  if (dataPackage.citizen?.position) {
+  if (Ledger.citizen?.position) {
     // Check if there's a building at this position
     let locationDescription = "";
     
     // Check if the citizen is at a building
-    const buildingAtPosition = dataPackage.citizen.buildingAtPosition;
-    const buildingDetails = dataPackage.citizen.buildingDetails;
-    const citizensAtSamePosition = dataPackage.citizen.citizensAtSamePosition || [];
+    const buildingAtPosition = Ledger.citizen.buildingAtPosition;
+    const buildingDetails = Ledger.citizen.buildingDetails;
+    const citizensAtSamePosition = Ledger.citizen.citizensAtSamePosition || [];
     
     if (buildingAtPosition) {
       // Format the location with building name and other citizens if any
@@ -991,9 +988,9 @@ function convertDataPackageToMarkdown(dataPackage: any, citizenUsername: string 
           });
         }
       }
-    } else if (dataPackage.citizen.position.lat && dataPackage.citizen.position.lng) {
+    } else if (Ledger.citizen.position.lat && Ledger.citizen.position.lng) {
       // If coordinates are valid but no building found
-      locationDescription = dataPackage.citizen.inVenice ? "In the streets of Venice" : "Navigating the world";
+      locationDescription = Ledger.citizen.inVenice ? "In the streets of Venice" : "Navigating the world";
       
       // Add other citizens if any
       if (citizensAtSamePosition.length > 0) {
@@ -1030,8 +1027,8 @@ function convertDataPackageToMarkdown(dataPackage: any, citizenUsername: string 
     }
     
     // Add coordinates for debugging if needed
-    const positionDebug = dataPackage.citizen.position.lat && dataPackage.citizen.position.lng 
-      ? ` (${dataPackage.citizen.position.lat.toFixed(6)}, ${dataPackage.citizen.position.lng.toFixed(6)})`
+    const positionDebug = Ledger.citizen.position.lat && Ledger.citizen.position.lng 
+      ? ` (${Ledger.citizen.position.lat.toFixed(6)}, ${Ledger.citizen.position.lng.toFixed(6)})`
       : '';
     
     md += `${locationDescription}${positionDebug}\n`;
@@ -1051,13 +1048,13 @@ function convertDataPackageToMarkdown(dataPackage: any, citizenUsername: string 
 
   // Last Activity
   md += `## Last Activity\n`;
-  md += formatSimpleObjectForMarkdown(dataPackage.lastActivity, ['type', 'title', 'status', 'startDate', 'endDate']);
+  md += formatSimpleObjectForMarkdown(Ledger.lastActivity, ['type', 'title', 'status', 'startDate', 'endDate']);
   md += '\n';
   
   // Last 5 Activities
   md += `## Recent Activities (Last 5)\n`;
-  if (dataPackage.lastActivities && dataPackage.lastActivities.length > 0) {
-    dataPackage.lastActivities.forEach((activity: any, index: number) => {
+  if (Ledger.lastActivities && Ledger.lastActivities.length > 0) {
+    Ledger.lastActivities.forEach((activity: any, index: number) => {
       md += `### Activity ${index + 1}: ${activity.title || activity.type}\n`;
       md += formatSimpleObjectForMarkdown(activity, ['type', 'status', 'startDate', 'endDate', 'description', 'thought']);
     });
@@ -1068,8 +1065,8 @@ function convertDataPackageToMarkdown(dataPackage: any, citizenUsername: string 
   
   // Planned Activities
   md += `## Planned Activities\n`;
-  if (dataPackage.plannedActivities && dataPackage.plannedActivities.length > 0) {
-    dataPackage.plannedActivities.forEach((activity: any, index: number) => {
+  if (Ledger.plannedActivities && Ledger.plannedActivities.length > 0) {
+    Ledger.plannedActivities.forEach((activity: any, index: number) => {
       md += `### Planned Activity ${index + 1}: ${activity.title || activity.type}\n`;
       md += formatSimpleObjectForMarkdown(activity, ['type', 'status', 'startDate', 'endDate', 'description', 'thought']);
     });
@@ -1080,18 +1077,18 @@ function convertDataPackageToMarkdown(dataPackage: any, citizenUsername: string 
 
   // Workplace
   md += `## Workplace\n`;
-  md += formatSimpleObjectForMarkdown(dataPackage.workplaceBuilding, ['name', 'type', 'category', 'buildingId']);
+  md += formatSimpleObjectForMarkdown(Ledger.workplaceBuilding, ['name', 'type', 'category', 'buildingId']);
   md += '\n';
   
   // Home
   md += `## Home\n`;
-  md += formatSimpleObjectForMarkdown(dataPackage.homeBuilding, ['name', 'type', 'category', 'buildingId']);
+  md += formatSimpleObjectForMarkdown(Ledger.homeBuilding, ['name', 'type', 'category', 'buildingId']);
   md += '\n';
 
   // Owned Lands
-  md += `## Owned Lands (${dataPackage.ownedLands?.length || 0})\n`;
-  if (dataPackage.ownedLands && dataPackage.ownedLands.length > 0) {
-    dataPackage.ownedLands.forEach((land: any, index: number) => {
+  md += `## Owned Lands (${Ledger.ownedLands?.length || 0})\n`;
+  if (Ledger.ownedLands && Ledger.ownedLands.length > 0) {
+    Ledger.ownedLands.forEach((land: any, index: number) => {
       md += `### Land ${index + 1}: ${land.historicalName || land.englishName || land.landId}\n`;
       md += formatSimpleObjectForMarkdown(land, ['landId', 'owner', 'district', 'lastIncome']);
       md += `- **Building Points**: ${land.unoccupiedBuildingPoints?.length || 0} unoccupied / ${land.totalBuildingPoints || 0} total\n`;
@@ -1121,11 +1118,11 @@ function convertDataPackageToMarkdown(dataPackage: any, citizenUsername: string 
     md += `- No lands owned.\n\n`;
   }
 
-  // Owned Buildings (not on owned lands - this logic might need adjustment based on how dataPackage is structured)
+  // Owned Buildings (not on owned lands - this logic might need adjustment based on how Ledger is structured)
   // Assuming ownedBuildings are those not already listed under ownedLands
-  md += `## Other Owned Buildings (${dataPackage.ownedBuildings?.length || 0})\n`;
-  if (dataPackage.ownedBuildings && dataPackage.ownedBuildings.length > 0) {
-    dataPackage.ownedBuildings.forEach((building: any, index: number) => {
+  md += `## Other Owned Buildings (${Ledger.ownedBuildings?.length || 0})\n`;
+  if (Ledger.ownedBuildings && Ledger.ownedBuildings.length > 0) {
+    Ledger.ownedBuildings.forEach((building: any, index: number) => {
       md += `### Building ${index + 1}: ${building.name || building.buildingId}\n`;
       md += formatSimpleObjectForMarkdown(building, ['type', 'category', 'owner', 'runBy', 'occupant', 'isConstructed', 'landId']);
       
@@ -1166,9 +1163,9 @@ function convertDataPackageToMarkdown(dataPackage: any, citizenUsername: string 
   }
 
   // Managed Buildings
-  md += `## Managed Buildings (${dataPackage.managedBuildings?.length || 0})\n`;
-  if (dataPackage.managedBuildings && dataPackage.managedBuildings.length > 0) {
-    dataPackage.managedBuildings.forEach((building: any, index: number) => {
+  md += `## Managed Buildings (${Ledger.managedBuildings?.length || 0})\n`;
+  if (Ledger.managedBuildings && Ledger.managedBuildings.length > 0) {
+    Ledger.managedBuildings.forEach((building: any, index: number) => {
       md += `### Building ${index + 1}: ${building.name || building.buildingId}\n`;
       md += formatSimpleObjectForMarkdown(building, ['type', 'category', 'owner', 'occupant', 'isConstructed']);
     });
@@ -1177,13 +1174,13 @@ function convertDataPackageToMarkdown(dataPackage: any, citizenUsername: string 
   }
   
   // Active Contracts
-  md += `## Active Contracts (${dataPackage.activeContracts?.length || 0})\n`;
-  if (dataPackage.activeContracts && dataPackage.activeContracts.length > 0) {
-    dataPackage.activeContracts.forEach((contract: any, index: number) => {
+  md += `## Active Contracts (${Ledger.activeContracts?.length || 0})\n`;
+  if (Ledger.activeContracts && Ledger.activeContracts.length > 0) {
+    Ledger.activeContracts.forEach((contract: any, index: number) => {
       md += `### Contract ${index + 1}: ${contract.title || contract.contractId}\n`;
       md += formatSimpleObjectForMarkdown(contract, ['type', 'buyer', 'seller', 'resourceType', 'pricePerResource', 'targetAmount', 'status', 'createdAt', 'endAt']);
     });
-    if (dataPackage.activeContracts.length === 20) {
+    if (Ledger.activeContracts.length === 20) {
       md += `- ... (and more)\n`;
     }
     md += '\n';
@@ -1193,16 +1190,16 @@ function convertDataPackageToMarkdown(dataPackage: any, citizenUsername: string 
 
   // Guild Details
   md += `## Guild Details\n`;
-  md += formatSimpleObjectForMarkdown(dataPackage.guildDetails, ['guildName', 'guildId', 'guildTier', 'shortDescription']);
+  md += formatSimpleObjectForMarkdown(Ledger.guildDetails, ['guildName', 'guildId', 'guildTier', 'shortDescription']);
   md += '\n';
 
   // Create a separate tab for Loans
   md += `## Loans\n\n`;
   
   // Citizen Loans
-  md += `### Active Loans (${dataPackage.citizenLoans?.length || 0})\n`;
-  if (dataPackage.citizenLoans && dataPackage.citizenLoans.length > 0) {
-    dataPackage.citizenLoans.forEach((loan: any, index: number) => {
+  md += `### Active Loans (${Ledger.citizenLoans?.length || 0})\n`;
+  if (Ledger.citizenLoans && Ledger.citizenLoans.length > 0) {
+    Ledger.citizenLoans.forEach((loan: any, index: number) => {
       md += `#### Loan ${index + 1}: ${loan.name || loan.loanId}\n`;
       md += formatSimpleObjectForMarkdown(loan, ['lender', 'borrower', 'type', 'status', 'principalAmount', 'interestRate', 'termDays', 'remainingBalance', 'createdAt']);
     });
@@ -1210,22 +1207,10 @@ function convertDataPackageToMarkdown(dataPackage: any, citizenUsername: string 
     md += `- No active loans.\n\n`;
   }
   
-  // Create a separate tab for Citizens income data
-  md += `## Citizens\n\n`;
-  md += `### Income Statistics\n`;
-  md += `This section displays income statistics for citizens in La Serenissima. The graphs show the top citizens by various income metrics.\n\n`;
-  md += `- **Daily Income**: Revenue generated in the last 24 hours\n`;
-  md += `- **Daily Net Result**: Profit/loss (income minus expenses) in the last 24 hours\n`;
-  md += `- **Weekly Income**: Revenue generated in the last 7 days\n`;
-  md += `- **Weekly Net Result**: Profit/loss in the last 7 days\n`;
-  md += `- **Monthly Income**: Revenue generated in the last 30 days\n`;
-  md += `- **Monthly Net Result**: Profit/loss in the last 30 days\n\n`;
-  md += `*Note: Use the Citizens tab in the UI to view interactive bar graphs of this data.*\n\n`;
-
   // Strongest Relationships
-  md += `## Strongest Relationships (Top 20) (${dataPackage.strongestRelationships?.length || 0})\n`;
-  if (dataPackage.strongestRelationships && dataPackage.strongestRelationships.length > 0) {
-    dataPackage.strongestRelationships.forEach((rel: any, index: number) => {
+  md += `## Strongest Relationships (Top 20) (${Ledger.strongestRelationships?.length || 0})\n`;
+  if (Ledger.strongestRelationships && Ledger.strongestRelationships.length > 0) {
+    Ledger.strongestRelationships.forEach((rel: any, index: number) => {
       const otherCitizen = rel.citizen1 === citizenUsername ? rel.citizen2 : rel.citizen1;
       md += `### Relationship ${index + 1} with ${otherCitizen}\n`;
       
@@ -1249,7 +1234,7 @@ function convertDataPackageToMarkdown(dataPackage: any, citizenUsername: string 
         md += `- **Last Interaction**: ${formatDate(rel.lastInteraction)}\n`;
       }
     });
-    if (dataPackage.strongestRelationships.length === 20) {
+    if (Ledger.strongestRelationships.length === 20) {
       md += `- ... (and more)\n`;
     }
     md += '\n';
@@ -1258,13 +1243,13 @@ function convertDataPackageToMarkdown(dataPackage: any, citizenUsername: string 
   }
 
   // Recent Problems
-  md += `## Recent Problems (${dataPackage.recentProblems?.length || 0})\n`;
-  if (dataPackage.recentProblems && dataPackage.recentProblems.length > 0) {
-    dataPackage.recentProblems.forEach((problem: any, index: number) => {
+  md += `## Recent Problems (${Ledger.recentProblems?.length || 0})\n`;
+  if (Ledger.recentProblems && Ledger.recentProblems.length > 0) {
+    Ledger.recentProblems.forEach((problem: any, index: number) => {
       md += `### Problem ${index + 1}: ${problem.title || problem.problemId}\n`;
       md += formatSimpleObjectForMarkdown(problem, ['type', 'assetType', 'asset', 'status', 'severity', 'description', 'createdAt']);
     });
-    if (dataPackage.recentProblems.length === 20) {
+    if (Ledger.recentProblems.length === 20) {
       md += `- ... (and more)\n`;
     }
     md += '\n';
@@ -1273,13 +1258,13 @@ function convertDataPackageToMarkdown(dataPackage: any, citizenUsername: string 
   }
 
   // Recent Messages
-  md += `## Recent Messages (Last 20) (${dataPackage.recentMessages?.length || 0})\n`;
-  if (dataPackage.recentMessages && dataPackage.recentMessages.length > 0) {
-    dataPackage.recentMessages.forEach((message: any, index: number) => {
+  md += `## Recent Messages (Last 20) (${Ledger.recentMessages?.length || 0})\n`;
+  if (Ledger.recentMessages && Ledger.recentMessages.length > 0) {
+    Ledger.recentMessages.forEach((message: any, index: number) => {
       md += `### Message ${index + 1}\n`;
       md += formatSimpleObjectForMarkdown(message, ['sender', 'receiver', 'type', 'content', 'channel', 'createdAt']);
     });
-    if (dataPackage.recentMessages.length === 20) {
+    if (Ledger.recentMessages.length === 20) {
       md += `- ... (and more)\n`;
     }
     md += '\n';
@@ -1288,13 +1273,13 @@ function convertDataPackageToMarkdown(dataPackage: any, citizenUsername: string 
   }
   
   // Thoughts (Messages where sender = receiver)
-  md += `## Personal Thoughts (${dataPackage.thoughts?.length || 0})\n`;
-  if (dataPackage.thoughts && dataPackage.thoughts.length > 0) {
-    dataPackage.thoughts.forEach((thought: any, index: number) => {
+  md += `## Personal Thoughts (${Ledger.thoughts?.length || 0})\n`;
+  if (Ledger.thoughts && Ledger.thoughts.length > 0) {
+    Ledger.thoughts.forEach((thought: any, index: number) => {
       md += `### Thought ${index + 1}\n`;
       md += formatSimpleObjectForMarkdown(thought, ['content', 'type', 'createdAt']);
     });
-    if (dataPackage.thoughts.length === 20) {
+    if (Ledger.thoughts.length === 20) {
       md += `- ... (and more)\n`;
     }
     md += '\n';
@@ -1304,13 +1289,13 @@ function convertDataPackageToMarkdown(dataPackage: any, citizenUsername: string 
   
   // Latest Daily Update
   md += `## Latest Daily Update\n`;
-  md += formatSimpleObjectForMarkdown(dataPackage.latestDailyUpdate, ['title', 'content', 'createdAt']);
+  md += formatSimpleObjectForMarkdown(Ledger.latestDailyUpdate, ['title', 'content', 'createdAt']);
   md += '\n';
 
   // Available Stratagems
   md += `## Available Stratagems\n`;
-  if (dataPackage.availableStratagems && Object.keys(dataPackage.availableStratagems).length > 0) {
-    for (const [category, natures] of Object.entries(dataPackage.availableStratagems as Record<string, Record<string, ShortStratagemDefinition[]>>)) {
+  if (Ledger.availableStratagems && Object.keys(Ledger.availableStratagems).length > 0) {
+    for (const [category, natures] of Object.entries(Ledger.availableStratagems as Record<string, Record<string, ShortStratagemDefinition[]>>)) {
       md += `### Category: ${category}\n`;
       for (const [nature, stratagems] of Object.entries(natures)) {
         md += `#### Nature: ${nature} (${stratagems.length} stratagems)\n`;
@@ -1327,9 +1312,9 @@ function convertDataPackageToMarkdown(dataPackage: any, citizenUsername: string 
   }
 
   // Active Stratagems Executed By Citizen
-  md += `## Active Stratagems Executed By Citizen (${dataPackage.stratagemsExecutedByCitizen?.length || 0})\n`;
-  if (dataPackage.stratagemsExecutedByCitizen && dataPackage.stratagemsExecutedByCitizen.length > 0) {
-    dataPackage.stratagemsExecutedByCitizen.forEach((strat: any, index: number) => {
+  md += `## Active Stratagems Executed By Citizen (${Ledger.stratagemsExecutedByCitizen?.length || 0})\n`;
+  if (Ledger.stratagemsExecutedByCitizen && Ledger.stratagemsExecutedByCitizen.length > 0) {
+    Ledger.stratagemsExecutedByCitizen.forEach((strat: any, index: number) => {
       md += `### Stratagem ${index + 1}: ${strat.name || strat.stratagemId}\n`;
       md += formatSimpleObjectForMarkdown(strat, ['type', 'variant', 'targetCitizen', 'targetBuilding', 'targetResourceType', 'status', 'executedAt', 'expiresAt']);
     });
@@ -1338,9 +1323,9 @@ function convertDataPackageToMarkdown(dataPackage: any, citizenUsername: string 
   }
 
   // Active Stratagems Targeting Citizen
-  md += `## Active Stratagems Targeting Citizen (${dataPackage.stratagemsTargetingCitizen?.length || 0})\n`;
-  if (dataPackage.stratagemsTargetingCitizen && dataPackage.stratagemsTargetingCitizen.length > 0) {
-    dataPackage.stratagemsTargetingCitizen.forEach((strat: any, index: number) => {
+  md += `## Active Stratagems Targeting Citizen (${Ledger.stratagemsTargetingCitizen?.length || 0})\n`;
+  if (Ledger.stratagemsTargetingCitizen && Ledger.stratagemsTargetingCitizen.length > 0) {
+    Ledger.stratagemsTargetingCitizen.forEach((strat: any, index: number) => {
       md += `### Stratagem ${index + 1}: ${strat.name || strat.stratagemId} (Executed by: ${strat.executedBy})\n`;
       md += formatSimpleObjectForMarkdown(strat, ['type', 'variant', 'targetBuilding', 'targetResourceType', 'status', 'executedAt', 'expiresAt']);
     });
@@ -1349,13 +1334,13 @@ function convertDataPackageToMarkdown(dataPackage: any, citizenUsername: string 
   }
 
   // Past Executed Stratagems Executed By Citizen
-  md += `## Past Stratagems Executed By Citizen (Last 20) (${dataPackage.stratagemsExecutedByCitizenPast?.length || 0})\n`;
-  if (dataPackage.stratagemsExecutedByCitizenPast && dataPackage.stratagemsExecutedByCitizenPast.length > 0) {
-    dataPackage.stratagemsExecutedByCitizenPast.forEach((strat: any, index: number) => {
+  md += `## Past Stratagems Executed By Citizen (Last 20) (${Ledger.stratagemsExecutedByCitizenPast?.length || 0})\n`;
+  if (Ledger.stratagemsExecutedByCitizenPast && Ledger.stratagemsExecutedByCitizenPast.length > 0) {
+    Ledger.stratagemsExecutedByCitizenPast.forEach((strat: any, index: number) => {
       md += `### Stratagem ${index + 1}: ${strat.name || strat.stratagemId}\n`;
       md += formatSimpleObjectForMarkdown(strat, ['type', 'variant', 'targetCitizen', 'targetBuilding', 'targetResourceType', 'status', 'executedAt', 'expiresAt']);
     });
-    if (dataPackage.stratagemsExecutedByCitizenPast.length === 20) {
+    if (Ledger.stratagemsExecutedByCitizenPast.length === 20) {
       md += `- ... (and more)\n`;
     }
   } else {
@@ -1363,13 +1348,13 @@ function convertDataPackageToMarkdown(dataPackage: any, citizenUsername: string 
   }
 
   // Past Executed Stratagems Targeting Citizen
-  md += `## Past Stratagems Targeting Citizen (Last 20) (${dataPackage.stratagemsTargetingCitizenPast?.length || 0})\n`;
-  if (dataPackage.stratagemsTargetingCitizenPast && dataPackage.stratagemsTargetingCitizenPast.length > 0) {
-    dataPackage.stratagemsTargetingCitizenPast.forEach((strat: any, index: number) => {
+  md += `## Past Stratagems Targeting Citizen (Last 20) (${Ledger.stratagemsTargetingCitizenPast?.length || 0})\n`;
+  if (Ledger.stratagemsTargetingCitizenPast && Ledger.stratagemsTargetingCitizenPast.length > 0) {
+    Ledger.stratagemsTargetingCitizenPast.forEach((strat: any, index: number) => {
       md += `### Stratagem ${index + 1}: ${strat.name || strat.stratagemId} (Executed by: ${strat.executedBy})\n`;
       md += formatSimpleObjectForMarkdown(strat, ['type', 'variant', 'targetBuilding', 'targetResourceType', 'status', 'executedAt', 'expiresAt']);
     });
-    if (dataPackage.stratagemsTargetingCitizenPast.length === 20) {
+    if (Ledger.stratagemsTargetingCitizenPast.length === 20) {
       md += `- ... (and more)\n`;
     }
   } else {
@@ -1586,7 +1571,7 @@ export async function GET(request: Request) {
       console.log(`Invalid citizen position: ${JSON.stringify(citizenPosition)}`);
     }
 
-    const dataPackage = {
+    const Ledger = {
       citizen: {
         ...normalizeKeysCamelCaseShallow(citizenRecord.fields), 
         airtableId: citizenRecord.id,
@@ -1644,60 +1629,60 @@ export async function GET(request: Request) {
       fetchPlannedActivities(citizenUsername)
     ]);
 
-    // Assign results to dataPackage
-    dataPackage.availableStratagems = availableStratagems;
+    // Assign results to Ledger
+    Ledger.availableStratagems = availableStratagems;
     
     // Last Activities - filter out duplicates of the last activity
     if (lastActivityRecord) {
       const lastActivityId = lastActivityRecord.id;
       // Filter out the last activity from the recent activities list to avoid duplication
-      dataPackage.lastActivities = lastActivitiesRecords
+      Ledger.lastActivities = lastActivitiesRecords
         .filter(a => a.id !== lastActivityId)
         .map(a => ({...normalizeKeysCamelCaseShallow(a.fields), airtableId: a.id}));
     } else {
-      dataPackage.lastActivities = lastActivitiesRecords.map(a => ({...normalizeKeysCamelCaseShallow(a.fields), airtableId: a.id}));
+      Ledger.lastActivities = lastActivitiesRecords.map(a => ({...normalizeKeysCamelCaseShallow(a.fields), airtableId: a.id}));
     }
     
     // Planned Activities
-    dataPackage.plannedActivities = plannedActivitiesRecords.map(a => ({...normalizeKeysCamelCaseShallow(a.fields), airtableId: a.id}));
+    Ledger.plannedActivities = plannedActivitiesRecords.map(a => ({...normalizeKeysCamelCaseShallow(a.fields), airtableId: a.id}));
     
     // Stratagems
-    dataPackage.stratagemsExecutedByCitizen = stratagemsResult.executedBy.map(s => ({...normalizeKeysCamelCaseShallow(s.fields), airtableId: s.id}));
-    dataPackage.stratagemsTargetingCitizen = stratagemsResult.targetedAt.map(s => ({...normalizeKeysCamelCaseShallow(s.fields), airtableId: s.id}));
-    dataPackage.stratagemsExecutedByCitizenPast = stratagemsResult.executedByPast.map(s => ({...normalizeKeysCamelCaseShallow(s.fields), airtableId: s.id}));
-    dataPackage.stratagemsTargetingCitizenPast = stratagemsResult.targetedAtPast.map(s => ({...normalizeKeysCamelCaseShallow(s.fields), airtableId: s.id}));
+    Ledger.stratagemsExecutedByCitizen = stratagemsResult.executedBy.map(s => ({...normalizeKeysCamelCaseShallow(s.fields), airtableId: s.id}));
+    Ledger.stratagemsTargetingCitizen = stratagemsResult.targetedAt.map(s => ({...normalizeKeysCamelCaseShallow(s.fields), airtableId: s.id}));
+    Ledger.stratagemsExecutedByCitizenPast = stratagemsResult.executedByPast.map(s => ({...normalizeKeysCamelCaseShallow(s.fields), airtableId: s.id}));
+    Ledger.stratagemsTargetingCitizenPast = stratagemsResult.targetedAtPast.map(s => ({...normalizeKeysCamelCaseShallow(s.fields), airtableId: s.id}));
     
     // Contracts
-    dataPackage.activeContracts = activeContractsRecords.map(c => ({...normalizeKeysCamelCaseShallow(c.fields), airtableId: c.id}));
+    Ledger.activeContracts = activeContractsRecords.map(c => ({...normalizeKeysCamelCaseShallow(c.fields), airtableId: c.id}));
 
     // Guild details
     if (guildRecord) {
-      dataPackage.guildDetails = {...normalizeKeysCamelCaseShallow(guildRecord.fields), airtableId: guildRecord.id};
+      Ledger.guildDetails = {...normalizeKeysCamelCaseShallow(guildRecord.fields), airtableId: guildRecord.id};
     }
 
     // Loans
-    dataPackage.citizenLoans = citizenLoansRecords.map(l => ({...normalizeKeysCamelCaseShallow(l.fields), airtableId: l.id}));
+    Ledger.citizenLoans = citizenLoansRecords.map(l => ({...normalizeKeysCamelCaseShallow(l.fields), airtableId: l.id}));
 
     // Buildings
-    dataPackage.managedBuildings = managedBuildingsRecords.map(b => ({...normalizeKeysCamelCaseShallow(b.fields), airtableId: b.id}));
+    Ledger.managedBuildings = managedBuildingsRecords.map(b => ({...normalizeKeysCamelCaseShallow(b.fields), airtableId: b.id}));
     
     if (workplaceBuildingRecord) {
-      dataPackage.workplaceBuilding = {...normalizeKeysCamelCaseShallow(workplaceBuildingRecord.fields), airtableId: workplaceBuildingRecord.id};
+      Ledger.workplaceBuilding = {...normalizeKeysCamelCaseShallow(workplaceBuildingRecord.fields), airtableId: workplaceBuildingRecord.id};
     }
 
     if (homeBuildingRecord) {
-      dataPackage.homeBuilding = {...normalizeKeysCamelCaseShallow(homeBuildingRecord.fields), airtableId: homeBuildingRecord.id};
+      Ledger.homeBuilding = {...normalizeKeysCamelCaseShallow(homeBuildingRecord.fields), airtableId: homeBuildingRecord.id};
     }
 
     // Relationships
-    dataPackage.strongestRelationships = strongestRelationshipsRecords.map(r => {
+    Ledger.strongestRelationships = strongestRelationshipsRecords.map(r => {
       const normalized = normalizeKeysCamelCaseShallow(r.fields);
       const { combinedScore, ...fieldsWithoutCombinedScore } = normalized;
       return {...fieldsWithoutCombinedScore, airtableId: r.id};
     });
     
     // Problems
-    dataPackage.recentProblems = recentProblemsRecords.map(p => ({...normalizeKeysCamelCaseShallow(p.fields), airtableId: p.id}));
+    Ledger.recentProblems = recentProblemsRecords.map(p => ({...normalizeKeysCamelCaseShallow(p.fields), airtableId: p.id}));
 
     // Messages - separate thoughts (sender = receiver) from regular messages
     const allMessages = recentMessagesRecords.map(m => {
@@ -1707,12 +1692,12 @@ export async function GET(request: Request) {
     });
     
     // Filter messages into regular messages and thoughts
-    dataPackage.recentMessages = allMessages.filter(m => m.sender !== m.receiver);
-    dataPackage.thoughts = allMessages.filter(m => m.sender === m.receiver);
+    Ledger.recentMessages = allMessages.filter(m => m.sender !== m.receiver);
+    Ledger.thoughts = allMessages.filter(m => m.sender === m.receiver);
 
     // Daily update
     if (lastDailyUpdateRecord) {
-      dataPackage.latestDailyUpdate = {...normalizeKeysCamelCaseShallow(lastDailyUpdateRecord.fields), airtableId: lastDailyUpdateRecord.id};
+      Ledger.latestDailyUpdate = {...normalizeKeysCamelCaseShallow(lastDailyUpdateRecord.fields), airtableId: lastDailyUpdateRecord.id};
     }
 
     // Parallelize fetching resource details for all owned buildings (only for business buildings)
@@ -1740,21 +1725,21 @@ export async function GET(request: Request) {
     
     // Combine business buildings (with resource details) and non-business buildings
     const businessBuildings = await Promise.all(buildingDetailsPromises);
-    dataPackage.ownedBuildings = [...businessBuildings, ...nonBusinessBuildings];
+    Ledger.ownedBuildings = [...businessBuildings, ...nonBusinessBuildings];
 
     if (format.toLowerCase() === 'markdown') {
-      const markdownContent = convertDataPackageToMarkdown(dataPackage, citizenUsername);
+      const markdownContent = convertLedgerToMarkdown(Ledger, citizenUsername);
       return new NextResponse(markdownContent, {
         status: 200,
         headers: { 'Content-Type': 'text/markdown; charset=utf-8' },
       });
     } else {
       // Default to JSON if format is not markdown (e.g., format=json)
-      return NextResponse.json({ success: true, data: dataPackage });
+      return NextResponse.json({ success: true, data: Ledger });
     }
 
   } catch (error: any) {
-    console.error(`[API get-data-package] Error for ${citizenUsername} (Format: ${format}):`, error);
-    return NextResponse.json({ success: false, error: error.message || 'Failed to fetch data package' }, { status: 500 });
+    console.error(`[API get-ledger] Error for ${citizenUsername} (Format: ${format}):`, error);
+    return NextResponse.json({ success: false, error: error.message || 'Failed to fetch ledger' }, { status: 500 });
   }
 }

@@ -90,7 +90,7 @@ const Compagno: React.FC<CompagnoProps> = ({ className, onNotificationsRead }) =
   const [contextualDataForChat, setContextualDataForChat] = useState<{
     senderProfile: any | null; // Profil de l'utilisateur humain
     targetProfile: any | null; // Profil de base de l'IA avec qui on chatte (peut être l'utilisateur lui-même)
-    aiDataPackage: any | null; // Paquet de données complet pour l'IA cible (ou l'utilisateur lui-même)
+    aiLedger: any | null; // Paquet de données complet pour l'IA cible (ou l'utilisateur lui-même)
   } | null>(null);
   // const [kinosModel, setKinOSModel] = useState<'gemini-2.5-pro-preview-06-05' | 'local'>('gemini-2.5-pro-preview-06-05'); // Removed: Model is now dynamic
 
@@ -640,11 +640,11 @@ const Compagno: React.FC<CompagnoProps> = ({ className, onNotificationsRead }) =
         // This applies to self-chat (selectedCitizen === username) and chat with others.
         if (selectedCitizen && username) {
           let addSystemPayload = null;
-          if (contextualDataForChat && contextualDataForChat.senderProfile && contextualDataForChat.targetProfile && contextualDataForChat.aiDataPackage) {
+          if (contextualDataForChat && contextualDataForChat.senderProfile && contextualDataForChat.targetProfile && contextualDataForChat.aiLedger) {
             addSystemPayload = JSON.stringify({
               sender_citizen_profile: contextualDataForChat.senderProfile,
               ai_persona_profile: contextualDataForChat.targetProfile,
-              ai_comprehensive_data: contextualDataForChat.aiDataPackage
+              ai_comprehensive_data: contextualDataForChat.aiLedger
             });
           } else {
             console.warn("[Compagno] Données contextuelles incomplètes pour KinOS, envoi du prompt sans addSystem.", contextualDataForChat);
@@ -1049,24 +1049,24 @@ Your response:`;
         const targetProfileData = targetProfileRes.ok ? await targetProfileRes.json() : null;
         const targetProfileObject = targetProfileData?.success ? targetProfileData.citizen : null;
 
-        // Fetch the full data package for the target AI/citizen
-        const aiDataPackageResponse = await fetch(`/api/get-data-package?citizenUsername=${targetUsername}`);
-        let aiDataPackage = null;
-        if (aiDataPackageResponse.ok) {
-          const packageData = await aiDataPackageResponse.json();
+        // Fetch the full ledger for the target AI/citizen
+        const aiLedgerResponse = await fetch(`/api/get-ledger?citizenUsername=${targetUsername}`);
+        let aiLedger = null;
+        if (aiLedgerResponse.ok) {
+          const packageData = await aiLedgerResponse.json();
           if (packageData.success) {
-            aiDataPackage = packageData.data;
+            aiLedger = packageData.data;
           } else {
-            console.error(`Échec de la récupération du data package pour ${targetUsername} dans Compagno:`, packageData.error);
+            console.error(`Échec de la récupération du ledger pour ${targetUsername} dans Compagno:`, packageData.error);
           }
         } else {
-          console.error(`Erreur HTTP lors de la récupération du data package pour ${targetUsername} dans Compagno: ${aiDataPackageResponse.status}`);
+          console.error(`Erreur HTTP lors de la récupération du ledger pour ${targetUsername} dans Compagno: ${aiLedgerResponse.status}`);
         }
         
         setContextualDataForChat({
           senderProfile,
           targetProfile: targetProfileObject, // Profil de base de l'IA/citoyen cible
-          aiDataPackage, // Paquet de données complet
+          aiLedger, // Paquet de données complet
         });
 
       } catch (error) {
@@ -1842,13 +1842,13 @@ Your response:`;
                         <div className="p-3 bg-amber-50 rounded-b-md space-y-1">
                           <p><strong>Sender Citizen Profile:</strong> {contextualDataForChat.senderProfile?.firstName || contextualDataForChat.senderProfile?.username || 'N/A'}</p>
                           <p><strong>AI Persona Profile (Target):</strong> {contextualDataForChat.targetProfile?.firstName || contextualDataForChat.targetProfile?.username || 'N/A'}</p>
-                          <p><strong>AI Data Package Loaded:</strong> {contextualDataForChat.aiDataPackage ? 'Yes' : 'No'}</p>
-                          {contextualDataForChat.aiDataPackage && (
+                          <p><strong>AI Ledger Loaded:</strong> {contextualDataForChat.aiLedger ? 'Yes' : 'No'}</p>
+                          {contextualDataForChat.aiLedger && (
                             <>
-                              <p> - Citizen in Package: {contextualDataForChat.aiDataPackage.citizen?.username || 'N/A'}</p>
-                              <p> - Owned Lands: {contextualDataForChat.aiDataPackage.ownedLands?.length ?? 0}</p>
-                              <p> - Owned Buildings: {contextualDataForChat.aiDataPackage.ownedBuildings?.length ?? 0}</p>
-                              <p> - Active Contracts: {contextualDataForChat.aiDataPackage.activeContracts?.length ?? 0}</p>
+                              <p> - Citizen in Ledger: {contextualDataForChat.aiLedger.citizen?.username || 'N/A'}</p>
+                              <p> - Owned Lands: {contextualDataForChat.aiLedger.ownedLands?.length ?? 0}</p>
+                              <p> - Owned Buildings: {contextualDataForChat.aiLedger.ownedBuildings?.length ?? 0}</p>
+                              <p> - Active Contracts: {contextualDataForChat.aiLedger.activeContracts?.length ?? 0}</p>
                             </>
                           )}
                           

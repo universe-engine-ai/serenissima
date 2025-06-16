@@ -464,24 +464,24 @@ def process_work_on_art_fn(
         else:
             log.warning(f"  Could not find citizen record for {citizen_username} to determine specialty.")
 
-        # 1. Fetch citizen's data package for KinOS addSystem
-        data_package_url = f"{api_base_url}/api/get-data-package?citizenUsername={citizen_username}&format=json" # Request JSON format
-        data_package_json_str = None
+        # 1. Fetch citizen's ledger for KinOS addSystem
+        ledger_url = f"{api_base_url}/api/get-ledger?citizenUsername={citizen_username}&format=json" # Request JSON format
+        ledger_json_str = None
         try:
-            data_package_response = requests.get(data_package_url, timeout=15)
-            if data_package_response.ok:
-                data_package_data = data_package_response.json()
-                if data_package_data.get("success"):
-                    data_package_json_str = json.dumps(data_package_data.get("data"))
-                    log.info(f"  Successfully fetched data package for {citizen_username}.")
+            ledger_response = requests.get(ledger_url, timeout=15)
+            if ledger_response.ok:
+                ledger_data = ledger_response.json()
+                if ledger_data.get("success"):
+                    ledger_json_str = json.dumps(ledger_data.get("data"))
+                    log.info(f"  Successfully fetched ledger for {citizen_username}.")
                 else:
-                    log.warning(f"  Failed to fetch data package for {citizen_username}: {data_package_data.get('error')}")
+                    log.warning(f"  Failed to fetch ledger for {citizen_username}: {ledger_data.get('error')}")
             else:
-                log.warning(f"  HTTP error fetching data package for {citizen_username}: {data_package_response.status_code}")
+                log.warning(f"  HTTP error fetching ledger for {citizen_username}: {ledger_response.status_code}")
         except requests.exceptions.RequestException as e_pkg:
-            log.error(f"  Error fetching data package for {citizen_username}: {e_pkg}")
+            log.error(f"  Error fetching ledger for {citizen_username}: {e_pkg}")
         except json.JSONDecodeError as e_json_pkg:
-            log.error(f"  Error decoding data package JSON for {citizen_username}: {e_json_pkg}")
+            log.error(f"  Error decoding ledger JSON for {citizen_username}: {e_json_pkg}")
 
 
         # 2. Construct KinOS /build request
@@ -528,8 +528,8 @@ def process_work_on_art_fn(
             "message": kinos_message,
             "model": "gemini-1.5-pro-latest" # Using a capable model for JSON generation if painter
         }
-        if data_package_json_str:
-            kinos_payload["addSystem"] = data_package_json_str
+        if ledger_json_str:
+            kinos_payload["addSystem"] = ledger_json_str
         
         if latest_paintings_data_uris:
             kinos_payload["images"] = latest_paintings_data_uris

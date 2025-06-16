@@ -73,18 +73,18 @@ def process_daily_reflection(
         return False
     
     try:
-        data_package_markdown_str = None
+        ledger_markdown_str = None
         if api_base_url:
-            data_package_url = f"{api_base_url}/api/get-data-package?citizenUsername={citizen_username}" # Defaults to Markdown
+            ledger_url = f"{api_base_url}/api/get-ledger?citizenUsername={citizen_username}" # Defaults to Markdown
             try:
-                pkg_response = requests.get(data_package_url, timeout=200)
+                pkg_response = requests.get(ledger_url, timeout=200)
                 if pkg_response.ok:
-                    data_package_markdown_str = pkg_response.text # Get Markdown content
-                    log.info(f"  Successfully fetched Markdown data package for {citizen_username} for daily reflection. Length: {len(data_package_markdown_str)}")
+                    ledger_markdown_str = pkg_response.text # Get Markdown content
+                    log.info(f"  Successfully fetched Markdown ledger for {citizen_username} for daily reflection. Length: {len(ledger_markdown_str)}")
                 else:
-                    log.warning(f"  Failed to fetch Markdown data package for {citizen_username} (daily reflection): {pkg_response.status_code}")
+                    log.warning(f"  Failed to fetch Markdown ledger for {citizen_username} (daily reflection): {pkg_response.status_code}")
             except Exception as e_pkg_fetch:
-                log.error(f"  Error fetching Markdown data package for {citizen_username} (daily reflection): {e_pkg_fetch}")
+                log.error(f"  Error fetching Markdown ledger for {citizen_username} (daily reflection): {e_pkg_fetch}")
         
         kinos_messages_url = f"{KINOS_API_URL}/v2/blueprints/{KINOS_BLUEPRINT}/kins/{citizen_username}/messages" # Changed to /messages
         
@@ -103,10 +103,10 @@ def process_daily_reflection(
         log.info(f"[PROMPT] Daily reflection for {citizen_username}:\n{kinos_prompt_daily_reflection}")
 
         structured_add_system_payload: Dict[str, Any] = { "citizen_context": None }
-        if data_package_markdown_str:
-            structured_add_system_payload["citizen_context"] = data_package_markdown_str # Assign Markdown string directly
+        if ledger_markdown_str:
+            structured_add_system_payload["citizen_context"] = ledger_markdown_str # Assign Markdown string directly
         else:
-            structured_add_system_payload["citizen_context"] = "Citizen context data package was not available."
+            structured_add_system_payload["citizen_context"] = "Citizen context ledger was not available."
 
         kinos_payload_dict: Dict[str, Any] = {
             "message": kinos_prompt_daily_reflection,
@@ -229,18 +229,18 @@ def process_theater_reflection(
         return False
     
     try:
-        data_package_markdown_str = None
+        ledger_markdown_str = None
         if api_base_url:
-            data_package_url = f"{api_base_url}/api/get-data-package?citizenUsername={citizen_username}" # Defaults to Markdown
+            ledger_url = f"{api_base_url}/api/get-ledger?citizenUsername={citizen_username}" # Defaults to Markdown
             try:
-                pkg_response = requests.get(data_package_url, timeout=200)
+                pkg_response = requests.get(ledger_url, timeout=200)
                 if pkg_response.ok:
-                    data_package_markdown_str = pkg_response.text # Get Markdown content
-                    log.info(f"  Successfully fetched Markdown data package for {citizen_username} for theater reflection. Length: {len(data_package_markdown_str)}")
+                    ledger_markdown_str = pkg_response.text # Get Markdown content
+                    log.info(f"  Successfully fetched Markdown ledger for {citizen_username} for theater reflection. Length: {len(ledger_markdown_str)}")
                 else:
-                    log.warning(f"  Failed to fetch Markdown data package for {citizen_username} (theater reflection): {pkg_response.status_code}")
+                    log.warning(f"  Failed to fetch Markdown ledger for {citizen_username} (theater reflection): {pkg_response.status_code}")
             except Exception as e_pkg_fetch:
-                log.error(f"  Error fetching Markdown data package for {citizen_username} (theater reflection): {e_pkg_fetch}")
+                log.error(f"  Error fetching Markdown ledger for {citizen_username} (theater reflection): {e_pkg_fetch}")
         
         kinos_messages_url = f"{KINOS_API_URL}/v2/blueprints/{KINOS_BLUEPRINT}/kins/{citizen_username}/messages"
         
@@ -275,10 +275,10 @@ def process_theater_reflection(
         log.info(f"[PROMPT] Theater reflection for {citizen_username}:\n{kinos_prompt_theater_reflection}")
 
         structured_add_system_payload: Dict[str, Any] = { "citizen_context": None }
-        if data_package_markdown_str:
-            structured_add_system_payload["citizen_context"] = data_package_markdown_str # Assign Markdown string directly
+        if ledger_markdown_str:
+            structured_add_system_payload["citizen_context"] = ledger_markdown_str # Assign Markdown string directly
         else:
-            structured_add_system_payload["citizen_context"] = "Citizen context data package was not available."
+            structured_add_system_payload["citizen_context"] = "Citizen context ledger was not available."
 
         kinos_payload_dict: Dict[str, Any] = {
             "message": kinos_prompt_theater_reflection,
@@ -401,18 +401,18 @@ def process_public_bath_reflection(
         return False
     
     try:
-        data_package_markdown_str = None
+        ledger_markdown_str = None
         if api_base_url:
-            data_package_url = f"{api_base_url}/api/get-data-package?citizenUsername={citizen_username}" # Defaults to Markdown
+            ledger_url = f"{api_base_url}/api/get-ledger?citizenUsername={citizen_username}" # Defaults to Markdown
             try:
-                pkg_response = requests.get(data_package_url, timeout=15)
+                pkg_response = requests.get(ledger_url, timeout=15)
                 if pkg_response.ok:
-                    data_package_markdown_str = pkg_response.text # Get Markdown content
-                    log.info(f"  Successfully fetched Markdown data package for {citizen_username} for public bath reflection. Length: {len(data_package_markdown_str)}")
+                    ledger_markdown_str = pkg_response.text # Get Markdown content
+                    log.info(f"  Successfully fetched Markdown ledger for {citizen_username} for public bath reflection. Length: {len(ledger_markdown_str)}")
                 else:
-                    log.warning(f"  Failed to fetch Markdown data package for {citizen_username} (public bath reflection): {pkg_response.status_code}")
+                    log.warning(f"  Failed to fetch Markdown ledger for {citizen_username} (public bath reflection): {pkg_response.status_code}")
             except Exception as e_pkg_fetch:
-                log.error(f"  Error fetching Markdown data package for {citizen_username} (public bath reflection): {e_pkg_fetch}")
+                log.error(f"  Error fetching Markdown ledger for {citizen_username} (public bath reflection): {e_pkg_fetch}")
         
         kinos_messages_url = f"{KINOS_API_URL}/v2/blueprints/{KINOS_BLUEPRINT}/kins/{citizen_username}/messages"
         
@@ -435,10 +435,10 @@ def process_public_bath_reflection(
         log.info(f"[PROMPT] Public bath reflection for {citizen_username}:\n{kinos_prompt_bath_reflection}")
 
         structured_add_system_payload: Dict[str, Any] = { "citizen_context": None }
-        if data_package_markdown_str:
-            structured_add_system_payload["citizen_context"] = data_package_markdown_str # Assign Markdown string directly
+        if ledger_markdown_str:
+            structured_add_system_payload["citizen_context"] = ledger_markdown_str # Assign Markdown string directly
         else:
-            structured_add_system_payload["citizen_context"] = "Citizen context data package was not available."
+            structured_add_system_payload["citizen_context"] = "Citizen context ledger was not available."
 
         kinos_payload_dict: Dict[str, Any] = {
             "message": kinos_prompt_bath_reflection,
@@ -529,7 +529,7 @@ def process_practical_reflection(
 ) -> bool:
     """
     Processes a practical reflection for a citizen using KinOS.
-    This reflection focuses on a randomly selected item from the citizen's data package.
+    This reflection focuses on a randomly selected item from the citizen's ledger.
     
     Args:
         tables: Dictionary of Airtable tables
@@ -562,41 +562,41 @@ def process_practical_reflection(
         return False
     
     try:
-        # Fetch data package in JSON format
-        data_package_json = None
+        # Fetch ledger in JSON format
+        ledger_json = None
         if api_base_url:
-            data_package_url = f"{api_base_url}/api/get-data-package?citizenUsername={citizen_username}&format=json"
+            ledger_url = f"{api_base_url}/api/get-ledger?citizenUsername={citizen_username}&format=json"
             try:
-                pkg_response = requests.get(data_package_url, timeout=30)  # Increased timeout for JSON data
+                pkg_response = requests.get(ledger_url, timeout=30)  # Increased timeout for JSON data
                 if pkg_response.ok:
-                    data_package_json = pkg_response.json()
-                    log.info(f"  Successfully fetched JSON data package for {citizen_username} for practical reflection.")
+                    ledger_json = pkg_response.json()
+                    log.info(f"  Successfully fetched JSON ledger for {citizen_username} for practical reflection.")
                 else:
-                    log.warning(f"  Failed to fetch JSON data package for {citizen_username} (practical reflection): {pkg_response.status_code}")
+                    log.warning(f"  Failed to fetch JSON ledger for {citizen_username} (practical reflection): {pkg_response.status_code}")
             except Exception as e_pkg_fetch:
-                log.error(f"  Error fetching JSON data package for {citizen_username} (practical reflection): {e_pkg_fetch}")
+                log.error(f"  Error fetching JSON ledger for {citizen_username} (practical reflection): {e_pkg_fetch}")
         
         # Also fetch the markdown version for the addSystem payload
-        data_package_markdown_str = None
+        ledger_markdown_str = None
         if api_base_url:
-            markdown_url = f"{api_base_url}/api/get-data-package?citizenUsername={citizen_username}"
+            markdown_url = f"{api_base_url}/api/get-ledger?citizenUsername={citizen_username}"
             try:
                 markdown_response = requests.get(markdown_url, timeout=15)
                 if markdown_response.ok:
-                    data_package_markdown_str = markdown_response.text
-                    log.info(f"  Successfully fetched Markdown data package for {citizen_username} for practical reflection. Length: {len(data_package_markdown_str)}")
+                    ledger_markdown_str = markdown_response.text
+                    log.info(f"  Successfully fetched Markdown ledger for {citizen_username} for practical reflection. Length: {len(ledger_markdown_str)}")
                 else:
-                    log.warning(f"  Failed to fetch Markdown data package for {citizen_username} (practical reflection): {markdown_response.status_code}")
+                    log.warning(f"  Failed to fetch Markdown ledger for {citizen_username} (practical reflection): {markdown_response.status_code}")
             except Exception as e_markdown_fetch:
-                log.error(f"  Error fetching Markdown data package for {citizen_username} (practical reflection): {e_markdown_fetch}")
+                log.error(f"  Error fetching Markdown ledger for {citizen_username} (practical reflection): {e_markdown_fetch}")
         
-        # Select a random item from the data package
+        # Select a random item from the ledger
         selected_item = None
         selected_category = None
         selected_item_description = None
         
-        if data_package_json and data_package_json.get('success') and data_package_json.get('data'):
-            data = data_package_json['data']
+        if ledger_json and ledger_json.get('success') and ledger_json.get('data'):
+            data = ledger_json['data']
             
             # Define categories with lists that we can randomly select from
             categories_with_lists = {
@@ -651,9 +651,9 @@ def process_practical_reflection(
                 
                 log.info(f"  Selected random item for reflection: {selected_item_description}")
             else:
-                log.warning(f"  No non-empty categories found in data package for {citizen_username}")
+                log.warning(f"  No non-empty categories found in ledger for {citizen_username}")
         else:
-            log.warning(f"  Invalid or empty data package for {citizen_username}")
+            log.warning(f"  Invalid or empty ledger for {citizen_username}")
         
         kinos_messages_url = f"{KINOS_API_URL}/v2/blueprints/{KINOS_BLUEPRINT}/kins/{citizen_username}/messages"
         
@@ -689,10 +689,10 @@ def process_practical_reflection(
         log.info(f"[PROMPT] Practical reflection for {citizen_username}:\n{kinos_prompt_practical_reflection}")
         
         structured_add_system_payload: Dict[str, Any] = { "citizen_context": None }
-        if data_package_markdown_str:
-            structured_add_system_payload["citizen_context"] = data_package_markdown_str # Assign Markdown string directly
+        if ledger_markdown_str:
+            structured_add_system_payload["citizen_context"] = ledger_markdown_str # Assign Markdown string directly
         else:
-            structured_add_system_payload["citizen_context"] = "Citizen context data package was not available."
+            structured_add_system_payload["citizen_context"] = "Citizen context ledger was not available."
         
         kinos_payload_dict: Dict[str, Any] = {
             "message": kinos_prompt_practical_reflection,
@@ -827,18 +827,18 @@ def process_guided_reflection(
         return False
     
     try:
-        data_package_markdown_str = None
+        ledger_markdown_str = None
         if api_base_url:
-            data_package_url = f"{api_base_url}/api/get-data-package?citizenUsername={citizen_username}" # Defaults to Markdown
+            ledger_url = f"{api_base_url}/api/get-ledger?citizenUsername={citizen_username}" # Defaults to Markdown
             try:
-                pkg_response = requests.get(data_package_url, timeout=200)
+                pkg_response = requests.get(ledger_url, timeout=200)
                 if pkg_response.ok:
-                    data_package_markdown_str = pkg_response.text # Get Markdown content
-                    log.info(f"  Successfully fetched Markdown data package for {citizen_username} for guided reflection. Length: {len(data_package_markdown_str)}")
+                    ledger_markdown_str = pkg_response.text # Get Markdown content
+                    log.info(f"  Successfully fetched Markdown ledger for {citizen_username} for guided reflection. Length: {len(ledger_markdown_str)}")
                 else:
-                    log.warning(f"  Failed to fetch Markdown data package for {citizen_username} (guided reflection): {pkg_response.status_code}")
+                    log.warning(f"  Failed to fetch Markdown ledger for {citizen_username} (guided reflection): {pkg_response.status_code}")
             except Exception as e_pkg_fetch:
-                log.error(f"  Error fetching Markdown data package for {citizen_username} (guided reflection): {e_pkg_fetch}")
+                log.error(f"  Error fetching Markdown ledger for {citizen_username} (guided reflection): {e_pkg_fetch}")
         
         # Get citizen record to determine social class and other details
         citizen_record = None
@@ -1148,10 +1148,10 @@ def process_guided_reflection(
         log.info(f"[PROMPT] Guided reflection for {citizen_username}:\n{kinos_prompt_guided_reflection}")
 
         structured_add_system_payload: Dict[str, Any] = { "citizen_context": None }
-        if data_package_markdown_str:
-            structured_add_system_payload["citizen_context"] = data_package_markdown_str # Assign Markdown string directly
+        if ledger_markdown_str:
+            structured_add_system_payload["citizen_context"] = ledger_markdown_str # Assign Markdown string directly
         else:
-            structured_add_system_payload["citizen_context"] = "Citizen context data package was not available."
+            structured_add_system_payload["citizen_context"] = "Citizen context ledger was not available."
 
         kinos_payload_dict: Dict[str, Any] = {
             "message": kinos_prompt_guided_reflection,
@@ -1321,19 +1321,19 @@ def process_continue_thought(
         if not isinstance(thought_type, str):
             thought_type = str(thought_type)
         
-        # Fetch data package for context
-        data_package_markdown_str = None
+        # Fetch ledger for context
+        ledger_markdown_str = None
         if api_base_url:
-            data_package_url = f"{api_base_url}/api/get-data-package?citizenUsername={citizen_username}" # Defaults to Markdown
+            ledger_url = f"{api_base_url}/api/get-ledger?citizenUsername={citizen_username}" # Defaults to Markdown
             try:
-                pkg_response = requests.get(data_package_url, timeout=200)
+                pkg_response = requests.get(ledger_url, timeout=200)
                 if pkg_response.ok:
-                    data_package_markdown_str = pkg_response.text # Get Markdown content
-                    log.info(f"  Successfully fetched Markdown data package for {citizen_username} for thought continuation. Length: {len(data_package_markdown_str)}")
+                    ledger_markdown_str = pkg_response.text # Get Markdown content
+                    log.info(f"  Successfully fetched Markdown ledger for {citizen_username} for thought continuation. Length: {len(ledger_markdown_str)}")
                 else:
-                    log.warning(f"  Failed to fetch Markdown data package for {citizen_username} (thought continuation): {pkg_response.status_code}")
+                    log.warning(f"  Failed to fetch Markdown ledger for {citizen_username} (thought continuation): {pkg_response.status_code}")
             except Exception as e_pkg_fetch:
-                log.error(f"  Error fetching Markdown data package for {citizen_username} (thought continuation): {e_pkg_fetch}")
+                log.error(f"  Error fetching Markdown ledger for {citizen_username} (thought continuation): {e_pkg_fetch}")
         
         kinos_messages_url = f"{KINOS_API_URL}/v2/blueprints/{KINOS_BLUEPRINT}/kins/{citizen_username}/messages"
         
@@ -1351,10 +1351,10 @@ def process_continue_thought(
         log.info(f"[PROMPT] Thought continuation for {citizen_username}:\n{kinos_prompt_continue_thought}")
 
         structured_add_system_payload: Dict[str, Any] = { "citizen_context": None }
-        if data_package_markdown_str:
-            structured_add_system_payload["citizen_context"] = data_package_markdown_str # Assign Markdown string directly
+        if ledger_markdown_str:
+            structured_add_system_payload["citizen_context"] = ledger_markdown_str # Assign Markdown string directly
         else:
-            structured_add_system_payload["citizen_context"] = "Citizen context data package was not available."
+            structured_add_system_payload["citizen_context"] = "Citizen context ledger was not available."
 
         kinos_payload_dict: Dict[str, Any] = {
             "message": kinos_prompt_continue_thought,
@@ -1462,18 +1462,18 @@ def process_unguided_reflection(
         return False
     
     try:
-        data_package_markdown_str = None
+        ledger_markdown_str = None
         if api_base_url:
-            data_package_url = f"{api_base_url}/api/get-data-package?citizenUsername={citizen_username}" # Defaults to Markdown
+            ledger_url = f"{api_base_url}/api/get-ledger?citizenUsername={citizen_username}" # Defaults to Markdown
             try:
-                pkg_response = requests.get(data_package_url, timeout=200)
+                pkg_response = requests.get(ledger_url, timeout=200)
                 if pkg_response.ok:
-                    data_package_markdown_str = pkg_response.text # Get Markdown content
-                    log.info(f"  Successfully fetched Markdown data package for {citizen_username} for unguided reflection. Length: {len(data_package_markdown_str)}")
+                    ledger_markdown_str = pkg_response.text # Get Markdown content
+                    log.info(f"  Successfully fetched Markdown ledger for {citizen_username} for unguided reflection. Length: {len(ledger_markdown_str)}")
                 else:
-                    log.warning(f"  Failed to fetch Markdown data package for {citizen_username} (unguided reflection): {pkg_response.status_code}")
+                    log.warning(f"  Failed to fetch Markdown ledger for {citizen_username} (unguided reflection): {pkg_response.status_code}")
             except Exception as e_pkg_fetch:
-                log.error(f"  Error fetching Markdown data package for {citizen_username} (unguided reflection): {e_pkg_fetch}")
+                log.error(f"  Error fetching Markdown ledger for {citizen_username} (unguided reflection): {e_pkg_fetch}")
         
         kinos_messages_url = f"{KINOS_API_URL}/v2/blueprints/{KINOS_BLUEPRINT}/kins/{citizen_username}/messages"
         
@@ -1491,10 +1491,10 @@ def process_unguided_reflection(
         log.info(f"[PROMPT] Unguided reflection for {citizen_username}:\n{kinos_prompt_unguided_reflection}")
 
         structured_add_system_payload: Dict[str, Any] = { "citizen_context": None }
-        if data_package_markdown_str:
-            structured_add_system_payload["citizen_context"] = data_package_markdown_str # Assign Markdown string directly
+        if ledger_markdown_str:
+            structured_add_system_payload["citizen_context"] = ledger_markdown_str # Assign Markdown string directly
         else:
-            structured_add_system_payload["citizen_context"] = "Citizen context data package was not available."
+            structured_add_system_payload["citizen_context"] = "Citizen context ledger was not available."
 
         kinos_payload_dict: Dict[str, Any] = {
             "message": kinos_prompt_unguided_reflection,

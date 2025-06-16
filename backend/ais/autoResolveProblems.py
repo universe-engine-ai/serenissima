@@ -1446,7 +1446,6 @@ def auto_resolve_problems_main(dry_run: bool = False, problem_type_filter: Optio
                 "zero_rent_building",
                 "zero_wages_business",
                 "waiting_for_galley_arrival", # do_nothing
-                "waiting_for_resource_delivery", # do_nothing
                 "homeless_citizen", # do_nothing
                 "workless_citizen", # do_nothing
                 "resource_shortage" # do_nothing (moved here)

@@ -121,24 +121,24 @@ def process_read_book_fn(
         return True # Mark as processed, KinOS part skipped.
 
     try:
-        # 1. Fetch citizen's data package for KinOS addSystem
-        data_package_url = f"{current_api_base_url}/api/get-data-package?citizenUsername={citizen_username}"
-        data_package_json_str = None
+        # 1. Fetch citizen's ledger for KinOS addSystem
+        ledger_url = f"{current_api_base_url}/api/get-ledger?citizenUsername={citizen_username}"
+        ledger_json_str = None
         try:
-            data_package_response = requests.get(data_package_url, timeout=15)
-            if data_package_response.ok:
-                data_package_data = data_package_response.json()
-                if data_package_data.get("success"):
-                    data_package_json_str = json.dumps(data_package_data.get("data"))
-                    log.info(f"  Successfully fetched data package for {citizen_username} for reading reflection.")
+            ledger_response = requests.get(ledger_url, timeout=15)
+            if ledger_response.ok:
+                ledger_data = ledger_response.json()
+                if ledger_data.get("success"):
+                    ledger_json_str = json.dumps(ledger_data.get("data"))
+                    log.info(f"  Successfully fetched ledger for {citizen_username} for reading reflection.")
                 else:
-                    log.warning(f"  Failed to fetch data package for {citizen_username} (reading): {data_package_data.get('error')}")
+                    log.warning(f"  Failed to fetch ledger for {citizen_username} (reading): {ledger_data.get('error')}")
             else:
-                log.warning(f"  HTTP error fetching data package for {citizen_username} (reading): {data_package_response.status_code}")
+                log.warning(f"  HTTP error fetching ledger for {citizen_username} (reading): {ledger_response.status_code}")
         except requests.exceptions.RequestException as e_pkg:
-            log.error(f"  Error fetching data package for {citizen_username} (reading): {e_pkg}")
+            log.error(f"  Error fetching ledger for {citizen_username} (reading): {e_pkg}")
         except json.JSONDecodeError as e_json_pkg:
-            log.error(f"  Error decoding data package JSON for {citizen_username} (reading): {e_json_pkg}")
+            log.error(f"  Error decoding ledger JSON for {citizen_username} (reading): {e_json_pkg}")
 
         # 2. Fetch artwork content if path is available
         artwork_content_for_kinos = None
@@ -174,14 +174,14 @@ def process_read_book_fn(
                 "content": "Content not available or this is a generic book." # Default content
             }
         }
-        if data_package_json_str:
+        if ledger_json_str:
             try:
-                structured_add_system_payload["citizen_context"] = json.loads(data_package_json_str)
+                structured_add_system_payload["citizen_context"] = json.loads(ledger_json_str)
             except json.JSONDecodeError:
-                log.error("  Failed to parse data_package_json_str for citizen_context. Citizen context will be incomplete.")
-                structured_add_system_payload["citizen_context"] = {"error_parsing_data_package": True, "status": "unavailable"}
+                log.error("  Failed to parse ledger_json_str for citizen_context. Citizen context will be incomplete.")
+                structured_add_system_payload["citizen_context"] = {"error_parsing_ledger": True, "status": "unavailable"}
         else:
-            structured_add_system_payload["citizen_context"] = {"status": "unavailable_no_data_package_fetched"}
+            structured_add_system_payload["citizen_context"] = {"status": "unavailable_no_ledger_fetched"}
 
         if artwork_content_for_kinos:
             structured_add_system_payload["book_context"]["content"] = artwork_content_for_kinos

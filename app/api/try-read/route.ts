@@ -118,9 +118,9 @@ export async function POST(request: Request) {
       case 'get_active_decrees':
         targetUrl = `${baseUrl}/api/decrees?Status=active`;
         break;
-      case 'get_data_package':
-        if (!username) return NextResponse.json({ success: false, error: "Parameter 'username' is required for get_data_package" }, { status: 400 });
-        targetUrl = `${baseUrl}/api/get-data-package?citizenUsername=${encodeURIComponent(username)}`;
+      case 'get_ledger':
+        if (!username) return NextResponse.json({ success: false, error: "Parameter 'username' is required for get_ledger" }, { status: 400 });
+        targetUrl = `${baseUrl}/api/get-ledger?citizenUsername=${encodeURIComponent(username)}`;
         break;
       case 'get_building_details':
         if (!buildingId) return NextResponse.json({ success: false, error: "Parameter 'buildingId' is required for get_building_details" }, { status: 400 });

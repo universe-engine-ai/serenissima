@@ -548,7 +548,7 @@ def _get_kinos_model_for_citizen(social_class: Optional[str]) -> str:
         return "local"
 
 def prepare_ai_building_strategy(tables: Dict[str, Table], ai_citizen: Dict, citizen_lands: List[Dict], citizen_buildings: List[Dict], all_buildings: List[Dict]) -> Dict:
-    """Prepare a comprehensive data package for the AI to make building decisions."""
+    """Prepare a comprehensive ledger for the AI to make building decisions."""
     
     # Extract citizen information
     username = ai_citizen["fields"].get("Username", "")
@@ -680,8 +680,8 @@ def prepare_ai_building_strategy(tables: Dict[str, Table], ai_citizen: Dict, cit
     total_maintenance = sum(building["fields"].get("MaintenanceCost", 0) for building in citizen_buildings)
     net_income = total_income - total_maintenance
     
-    # Prepare the complete data package
-    data_package = {
+    # Prepare the complete ledger
+    ledger = {
         "citizen": {
             "username": username,
             "ducats": ducats,
@@ -711,9 +711,9 @@ def prepare_ai_building_strategy(tables: Dict[str, Table], ai_citizen: Dict, cit
         "timestamp": datetime.now(VENICE_TIMEZONE).isoformat() # Use VENICE_TIMEZONE
     }
         
-    return data_package
+    return ledger
 
-def send_building_strategy_request(ai_username: str, data_package: Dict, target_land_id: Optional[str] = None, additional_message: Optional[str] = None, kinos_model_override: Optional[str] = None) -> Optional[Dict]:
+def send_building_strategy_request(ai_username: str, ledger: Dict, target_land_id: Optional[str] = None, additional_message: Optional[str] = None, kinos_model_override: Optional[str] = None) -> Optional[Dict]:
     """Send the building strategy request to the AI via KinOS API."""
     try:
         api_key = get_kinos_api_key()
@@ -731,19 +731,19 @@ def send_building_strategy_request(ai_username: str, data_package: Dict, target_
         # Log the API request details
         log_info(f"Sending building strategy request to AI citizen {ai_username}")
         log_info(f"API URL: {url}")
-        log_info(f"Citizen has {data_package['citizen']['ducats']} ducats")
-        log_info(f"Citizen has access to {len(data_package['lands'])} land(s) and {len(data_package['buildings'])} buildings")
+        log_info(f"Citizen has {ledger['citizen']['ducats']} ducats")
+        log_info(f"Citizen has access to {len(ledger['lands'])} land(s) and {len(ledger['buildings'])} buildings")
 
         if target_land_id:
             log_info(f"AI is considering building on pre-selected land: {target_land_id}")
             prompt = f"""
-As a citizen in La Serenissima with social class {data_package['citizen']['social_class']}, you are considering building on a specific land: **{target_land_id}**.
+As a citizen in La Serenissima with social class {ledger['citizen']['social_class']}, you are considering building on a specific land: **{target_land_id}**.
 Your task is to decide **what type of building** to construct on this land.
 
 Here's your current situation:
-- You have {data_package['citizen']['ducats']} ducats available.
-- The land {target_land_id} has {data_package['lands'][0]['building_points_count'] if data_package['lands'] else 'N/A'} building points.
-- Existing buildings on this land: {len(data_package['lands'][0]['existing_buildings']) if data_package['lands'] else 'N/A'}.
+- You have {ledger['citizen']['ducats']} ducats available.
+- The land {target_land_id} has {ledger['lands'][0]['building_points_count'] if ledger['lands'] else 'N/A'} building points.
+- Existing buildings on this land: {len(ledger['lands'][0]['existing_buildings']) if ledger['lands'] else 'N/A'}.
 
 When making your decision, carefully consider:
 1. Your current building portfolio and financial situation.
@@ -767,13 +767,13 @@ If you decide not to build anything at this time (e.g., no suitable building typ
 """
         else:
             prompt = f"""
-As a citizen in La Serenissima with social class {data_package['citizen']['social_class']}, you need to decide on your next building investment.
+As a citizen in La Serenissima with social class {ledger['citizen']['social_class']}, you need to decide on your next building investment.
 
 Here's your current situation:
-- You are considering {len(data_package['lands'])} land(s).
-- You have {len(data_package['buildings'])} buildings.
-- Your current net income is {data_package['citizen']['financial']['net_income']} ducats.
-- You have {data_package['citizen']['ducats']} ducats available.
+- You are considering {len(ledger['lands'])} land(s).
+- You have {len(ledger['buildings'])} buildings.
+- Your current net income is {ledger['citizen']['financial']['net_income']} ducats.
+- You have {ledger['citizen']['ducats']} ducats available.
 
 When making your decision, carefully consider the information that you have at your disposition.
 
@@ -801,9 +801,9 @@ You are {ai_username}, an AI citizen in La Serenissima. You make your own decisi
 {"You are focusing on land " + target_land_id + "." if target_land_id else ""}
 
 Here is the complete data about your current situation:
-{json.dumps(data_package, indent=2)}
+{json.dumps(ledger, indent=2)}
 
-Your social class is {data_package['citizen']['social_class']}, which means you can only construct buildings of tiers {', '.join(map(str, data_package['citizen']['allowed_building_tiers']))}.
+Your social class is {ledger['citizen']['social_class']}, which means you can only construct buildings of tiers {', '.join(map(str, ledger['citizen']['allowed_building_tiers']))}.
 The building_types section only includes buildings that you are allowed to construct based on your social class.
 
 Contextual data available:
@@ -827,7 +827,7 @@ If you decide not to build anything at this time, return an empty JSON object.
 
         actual_model_to_use = kinos_model_override
         if not actual_model_to_use:
-            ai_social_class = data_package.get("citizen", {}).get("social_class")
+            ai_social_class = ledger.get("citizen", {}).get("social_class")
             actual_model_to_use = _get_kinos_model_for_citizen(ai_social_class)
 
         if actual_model_to_use:
@@ -1692,7 +1692,7 @@ def process_ai_building_strategies(dry_run: bool = False, citizen_username_arg: 
                 ai_strategy_results[ai_username] = False
                 continue
             
-            # Get buildings owned by this AI (for context in data_package)
+            # Get buildings owned by this AI (for context in ledger)
             citizen_buildings_owned = get_citizen_buildings(tables, ai_username)
             # log_info(f"Retrieved {len(citizen_buildings_owned)} buildings owned by {ai_username} for context.")
 
@@ -1723,10 +1723,10 @@ def process_ai_building_strategies(dry_run: bool = False, citizen_username_arg: 
                 ai_strategy_results[ai_username] = False
                 continue
             
-            # Prepare the data package for the AI.
+            # Prepare the ledger for the AI.
             # citizen_buildings_owned is for AI's general context.
             # all_buildings is for context of what's on all lands (filtered by prepare_ai_building_strategy for relevant lands).
-            data_package = prepare_ai_building_strategy(tables, ai_citizen, citizen_lands, citizen_buildings_owned, all_buildings)
+            ledger = prepare_ai_building_strategy(tables, ai_citizen, citizen_lands, citizen_buildings_owned, all_buildings)
             
             # Fetch and add building ownership relevancies (if any)
             # This part can remain as is, as it's contextual information for the AI.
@@ -1760,13 +1760,13 @@ def process_ai_building_strategies(dry_run: bool = False, citizen_username_arg: 
                     log_warning(f"Failed to fetch building ownership relevancies: {building_ownership_response.status_code}")
             except Exception as e_relevancy: # Renamed e to e_relevancy
                 log_warning(f"Error fetching building ownership relevancies: {str(e_relevancy)}")
-            data_package["building_ownership_relevancies"] = building_ownership_relevancies
+            ledger["building_ownership_relevancies"] = building_ownership_relevancies
         
-            # log_success(f"Prepared data package for {ai_username}")
+            # log_success(f"Prepared ledger for {ai_username}")
         
             if not dry_run:
                 log_section(f"STEP 1: Get building decision for {ai_username}")
-                decision = send_building_strategy_request(ai_username, data_package, target_land_id=target_land_id_arg, additional_message=additional_message_arg)
+                decision = send_building_strategy_request(ai_username, ledger, target_land_id=target_land_id_arg, additional_message=additional_message_arg)
                 
                 if decision and decision.get("building_type") and decision.get("land_id"):
                     building_type_chosen = decision["building_type"]
@@ -1780,7 +1780,7 @@ def process_ai_building_strategies(dry_run: bool = False, citizen_username_arg: 
                         continue
                     
                     construction_cost = chosen_building_info.get("constructionCost", float('inf'))
-                    citizen_ducats = data_package.get("citizen", {}).get("ducats", 0)
+                    citizen_ducats = ledger.get("citizen", {}).get("ducats", 0)
 
                     if citizen_ducats < construction_cost:
                         log_error(f"AI citizen {ai_username} does not have enough ducats ({citizen_ducats}) to build {building_type_chosen} (cost: {construction_cost}). Skipping placement.")
@@ -1821,11 +1821,11 @@ def process_ai_building_strategies(dry_run: bool = False, citizen_username_arg: 
                     ai_strategy_results[ai_username] = False # Mark as false if no decision to build
             else: # Dry run
                 log_info(f"[DRY RUN] Would send building strategy request to AI citizen {ai_username}")
-                # log_data("Data package summary", {
-                #     "Citizen": data_package['citizen']['username'],
-                #     "Lands": len(data_package['lands']),
-                #     "Buildings": len(data_package['buildings']),
-                #     "Net Income": data_package['citizen']['financial']['net_income'],
+                # log_data("Ledger summary", {
+                #     "Citizen": ledger['citizen']['username'],
+                #     "Lands": len(ledger['lands']),
+                #     "Buildings": len(ledger['buildings']),
+                #     "Net Income": ledger['citizen']['financial']['net_income'],
                 #     "Available building points": total_points
                 # })
                 ai_strategy_results[ai_username] = True
@@ -1836,11 +1836,11 @@ def process_ai_building_strategies(dry_run: bool = False, citizen_username_arg: 
         else:
             # In dry run mode, just log what would happen
             print(f"[DRY RUN] Would send building strategy request to AI citizen {ai_username}")
-            print(f"[DRY RUN] Data package summary:")
-            print(f"  - Citizen: {data_package['citizen']['username']}")
-            print(f"  - Lands: {len(data_package['lands'])}")
-            print(f"  - Buildings: {len(data_package['buildings'])}")
-            print(f"  - Net Income: {data_package['citizen']['financial']['net_income']}")
+            print(f"[DRY RUN] Ledger summary:")
+            print(f"  - Citizen: {ledger['citizen']['username']}")
+            print(f"  - Lands: {len(ledger['lands'])}")
+            print(f"  - Buildings: {len(ledger['buildings'])}")
+            print(f"  - Net Income: {ledger['citizen']['financial']['net_income']}")
             print(f"  - Available building points: {total_points}")
             ai_strategy_results[ai_username] = True
     

@@ -1197,7 +1197,7 @@ def autonomously_run_ai_citizen(
         f"The findings were (or simulated/error report if previous step failed/dry_run): \n```json\n{json.dumps(api_get_response_data, indent=2)}\n```\n"
         f"{prompt_step2_context_mention_guided} devise your strategy and decree your next actions. "
         "When specifying the `body` for issuing decrees (POST requests), you may use `camelCase` for keys (e.g., `sender`, `resourceType`, `targetAmount`). The Doge's scribes (the server) will transcribe them appropriately for the city's records. "
-        "Your primary and SOLE method for taking strategic action is by enacting a **Stratagem** via `POST /api/stratagems/try-create`. Provide `citizenUsername`, `stratagemType`, and `stratagemDetails`. Information on available stratagems and your active ones is in your data package. "
+        "Your primary and SOLE method for taking strategic action is by enacting a **Stratagem** via `POST /api/stratagems/try-create`. Provide `citizenUsername`, `stratagemType`, and `stratagemDetails`. Information on available stratagems and your active ones is in your ledger. "
         "Respond with your directives in JSON format: `{\"strategy_summary\": \"Your brief strategy...\", \"actions\": [{\"method\": \"POST\", \"endpoint\": \"/api/stratagems/try-create\", \"body\": {\"citizenUsername\": \"YourUsername\", \"stratagemType\": \"chosen_stratagem\", \"stratagemDetails\": {...}}}]}`. "
         "If no actions are warranted at this time, return `{\"strategy_summary\": \"Observation...\", \"actions\": []}`. "
     )
@@ -1358,23 +1358,23 @@ def autonomously_run_ai_citizen_unguided(
         iteration_count += 1
         log.info(f"{LogColors.OKCYAN}--- Unguided Iteration {iteration_count} for {ai_username} ---{LogColors.ENDC}")
 
-        # Fetch the comprehensive data package at the start of each iteration (or less frequently if desired)
-        initial_data_package = None
+        # Fetch the comprehensive ledger at the start of each iteration (or less frequently if desired)
+        initial_ledger = None
         if not dry_run:
-            log.info(f"{LogColors.OKBLUE}Fetching initial data package for {ai_username}...{LogColors.ENDC}")
+            log.info(f"{LogColors.OKBLUE}Fetching initial ledger for {ai_username}...{LogColors.ENDC}")
             # make_api_get_request now returns Markdown string directly or an error dict
-            initial_data_package_content = make_api_get_request(f"/api/get-data-package?citizenUsername={ai_username}")
-            if isinstance(initial_data_package_content, str): # Successfully fetched Markdown
-                log.info(f"{LogColors.OKGREEN}Successfully fetched Markdown data package for {ai_username}. Length: {len(initial_data_package_content)}{LogColors.ENDC}")
-            elif isinstance(initial_data_package_content, dict) and "error" in initial_data_package_content:
-                log.warning(f"{LogColors.WARNING}Failed to fetch initial data package for {ai_username}. Error: {initial_data_package_content.get('error')}{LogColors.ENDC}")
-                # Keep initial_data_package_content as the error dict for the AI to see
+            initial_ledger_content = make_api_get_request(f"/api/get-ledger?citizenUsername={ai_username}")
+            if isinstance(initial_ledger_content, str): # Successfully fetched Markdown
+                log.info(f"{LogColors.OKGREEN}Successfully fetched Markdown ledger for {ai_username}. Length: {len(initial_ledger_content)}{LogColors.ENDC}")
+            elif isinstance(initial_ledger_content, dict) and "error" in initial_ledger_content:
+                log.warning(f"{LogColors.WARNING}Failed to fetch initial ledger for {ai_username}. Error: {initial_ledger_content.get('error')}{LogColors.ENDC}")
+                # Keep initial_ledger_content as the error dict for the AI to see
             else: # Unexpected response
-                log.warning(f"{LogColors.WARNING}Unexpected response type ({type(initial_data_package_content)}) or structure for initial data package for {ai_username}. Content: {str(initial_data_package_content)[:200]}...{LogColors.ENDC}")
-                initial_data_package_content = {"error": "Unexpected response for data package"}
+                log.warning(f"{LogColors.WARNING}Unexpected response type ({type(initial_ledger_content)}) or structure for initial ledger for {ai_username}. Content: {str(initial_ledger_content)[:200]}...{LogColors.ENDC}")
+                initial_ledger_content = {"error": "Unexpected response for ledger"}
         else:
-            log.info(f"{Fore.YELLOW}[DRY RUN] Would fetch initial data package for {ai_username}.{Style.RESET_ALL}")
-            initial_data_package_content = "# [DRY RUN] Simulated Markdown Data Package\n..."
+            log.info(f"{Fore.YELLOW}[DRY RUN] Would fetch initial ledger for {ai_username}.{Style.RESET_ALL}")
+            initial_ledger_content = "# [DRY RUN] Simulated Markdown Ledger\n..."
         
         latest_daily_update_content_unguided = _get_latest_daily_update(tables)
 
@@ -1418,7 +1418,7 @@ def autonomously_run_ai_citizen_unguided(
             current_prompt += f"\n\nIMPORTANT SYSTEM NOTE: {add_system_prompt_text}"
 
         add_system_data = {
-            "intelligence_briefing": initial_data_package_content, # This is now the Markdown string or error dict
+            "intelligence_briefing": initial_ledger_content, # This is now the Markdown string or error dict
             "summary_of_available_missives": API_DOCUMENTATION_SUMMARY, # General API notes
             "compendium_of_simplified_reads": READS_REFERENCE_EXTRACTED_TEXT, # Specifics for /api/try-read
             "guide_to_decreeing_undertakings": ACTIVITY_CREATION_REFERENCE_EXTRACTED_TEXT,

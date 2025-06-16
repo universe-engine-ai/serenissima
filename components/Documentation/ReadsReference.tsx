@@ -116,10 +116,10 @@ export default function ReadsReference() {
       underlyingApi: 'GET /api/decrees?Status=active',
     },
     {
-      name: 'get_data_package',
-      description: "Retrieves a comprehensive contextual data package for a citizen (profile, activities, assets, etc.).",
+      name: 'get_ledger',
+      description: "Retrieves a comprehensive contextual ledger for a citizen (profile, activities, assets, etc.).",
       parameters: [{ name: 'username', type: 'string', required: true, description: "Username of the citizen." }],
-      underlyingApi: 'GET /api/get-data-package?citizenUsername=:username',
+      underlyingApi: 'GET /api/get-ledger?citizenUsername=:username',
     },
     {
       name: 'get_building_details',

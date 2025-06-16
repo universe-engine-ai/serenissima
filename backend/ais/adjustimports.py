@@ -319,7 +319,7 @@ def prepare_import_strategy_data(
     building_types: Dict, 
     resource_types: Dict
 ) -> Dict:
-    """Prepare a comprehensive data package for the AI to make import decisions."""
+    """Prepare a comprehensive ledger for the AI to make import decisions."""
     
     # Extract citizen information
     username = ai_citizen["fields"].get("Username", "")
@@ -425,8 +425,8 @@ def prepare_import_strategy_data(
     recent_notifications_for_ai = _get_notifications_data_api(username)
     recent_relevancies_for_ai = _get_relevancies_data_api(username)
 
-    # Prepare the complete data package
-    data_package = {
+    # Prepare the complete ledger
+    ledger = {
         "citizen": {
             "username": username,
             "ducats": ducats,
@@ -444,9 +444,9 @@ def prepare_import_strategy_data(
         "timestamp": datetime.now(pytz.timezone('Europe/Rome')).isoformat()
     }
     
-    return data_package
+    return ledger
 
-def send_import_strategy_request(ai_username: str, data_package: Dict, kinos_model_override: Optional[str] = None) -> Optional[Dict]:
+def send_import_strategy_request(ai_username: str, ledger: Dict, kinos_model_override: Optional[str] = None) -> Optional[Dict]:
     """Send the import strategy request to the AI via KinOS API."""
     try:
         api_key = get_kinos_api_key()
@@ -464,17 +464,17 @@ def send_import_strategy_request(ai_username: str, data_package: Dict, kinos_mod
         # Log the API request details
         print(f"Sending import strategy request to AI citizen {ai_username}")
         print(f"API URL: {url}")
-        print(f"Citizen has {data_package['citizen']['ducats']} ducats")
-        print(f"Citizen has {data_package['citizen']['importable_buildings']} buildings that can import resources")
+        print(f"Citizen has {ledger['citizen']['ducats']} ducats")
+        print(f"Citizen has {ledger['citizen']['importable_buildings']} buildings that can import resources")
         
         # Create a detailed prompt that addresses the AI directly as the decision-maker
         prompt = f"""
 As a business manager in La Serenissima, you need to decide on your resource import strategy.
 
 Here's your current situation:
-- You own {data_package['citizen']['importable_buildings']} buildings that can import resources
-- You have {data_package['citizen']['ducats']} ducats available
-- You currently have {len(data_package['existing_contracts'])} import contracts
+- You own {ledger['citizen']['importable_buildings']} buildings that can import resources
+- You have {ledger['citizen']['ducats']} ducats available
+- You currently have {len(ledger['existing_contracts'])} import contracts
 
 Please analyze your buildings and develop a strategy for importing resources. Consider:
 1. Which resources each building can store
@@ -523,8 +523,8 @@ If you decide not to set up any imports at this time, return an empty array:
             else:
                 return obj
         
-        # Clean the data package and serialize it properly
-        cleaned_data = clean_for_json(data_package)
+        # Clean the ledger and serialize it properly
+        cleaned_data = clean_for_json(ledger)
         serialized_data = json.dumps(cleaned_data, indent=2, ensure_ascii=True)
         
         # Create system instructions with the cleaned, serialized data
@@ -1010,8 +1010,8 @@ def process_ai_import_strategies(dry_run: bool = False):
         # Get existing contracts where this AI is the buyer
         citizen_contracts = get_citizen_contracts(tables, ai_username)
         
-        # Prepare the data package for the AI
-        data_package = prepare_import_strategy_data(
+        # Prepare the ledger for the AI
+        ledger = prepare_import_strategy_data(
             tables, # Pass tables object
             ai_citizen, 
             citizen_buildings, 
@@ -1022,7 +1022,7 @@ def process_ai_import_strategies(dry_run: bool = False):
         )
         
         # Find buildings that can import resources
-        importable_buildings = data_package["importable_buildings"]
+        importable_buildings = ledger["importable_buildings"]
         
         if not importable_buildings:
             print(f"AI citizen {ai_username} has no buildings that can import resources, skipping")
@@ -1030,7 +1030,7 @@ def process_ai_import_strategies(dry_run: bool = False):
         
         # Send the import strategy request to the AI
         if not dry_run:
-            decisions = send_import_strategy_request(ai_username, data_package)
+            decisions = send_import_strategy_request(ai_username, ledger)
             
             if decisions and "import_decisions" in decisions:
                 import_decisions = decisions["import_decisions"]
@@ -1044,7 +1044,7 @@ def process_ai_import_strategies(dry_run: bool = False):
                             ai_username, 
                             decision, 
                             resource_types,
-                            data_package["importable_buildings"] # Pass for stock check
+                            ledger["importable_buildings"] # Pass for stock check
                         )
                         
                         if success: # This now means a contract was created/updated because amount_to_request > 0
@@ -1064,11 +1064,11 @@ def process_ai_import_strategies(dry_run: bool = False):
         else:
             # In dry run mode, just log what would happen
             print(f"[DRY RUN] Would send import strategy request to AI citizen {ai_username}")
-            print(f"[DRY RUN] Data package summary:")
-            print(f"  - Citizen: {data_package['citizen']['username']}")
+            print(f"[DRY RUN] Ledger summary:")
+            print(f"  - Citizen: {ledger['citizen']['username']}")
             print(f"  - Importable buildings: {len(importable_buildings)}")
-            print(f"  - Resources: {len(data_package['resources'])}")
-            print(f"  - Existing contracts: {len(data_package['existing_contracts'])}")
+            print(f"  - Resources: {len(ledger['resources'])}")
+            print(f"  - Existing contracts: {len(ledger['existing_contracts'])}")
     
     # Create admin notification with summary
     if not dry_run and any(results["success"] > 0 for results in ai_import_results.values()):
@@ -1189,8 +1189,8 @@ def process_ai_import_strategies(dry_run: bool = False, kinos_model_override_arg
         # Get existing contracts where this AI is the buyer
         citizen_contracts = get_citizen_contracts(tables, ai_username)
         
-        # Prepare the data package for the AI
-        data_package = prepare_import_strategy_data(
+        # Prepare the ledger for the AI
+        ledger = prepare_import_strategy_data(
             tables, # Pass tables object
             ai_citizen, 
             citizen_buildings, 
@@ -1201,7 +1201,7 @@ def process_ai_import_strategies(dry_run: bool = False, kinos_model_override_arg
         )
         
         # Find buildings that can import resources
-        importable_buildings = data_package["importable_buildings"]
+        importable_buildings = ledger["importable_buildings"]
         
         if not importable_buildings:
             print(f"AI citizen {ai_username} has no buildings that can import resources, skipping")
@@ -1209,7 +1209,7 @@ def process_ai_import_strategies(dry_run: bool = False, kinos_model_override_arg
         
         # Send the import strategy request to the AI
         if not dry_run:
-            decisions = send_import_strategy_request(ai_username, data_package, kinos_model_override_arg)
+            decisions = send_import_strategy_request(ai_username, ledger, kinos_model_override_arg)
             
             if decisions and "import_decisions" in decisions:
                 import_decisions = decisions["import_decisions"]

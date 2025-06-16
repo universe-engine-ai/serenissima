@@ -385,9 +385,9 @@ This would make NLR launch a 28-day campaign to repeal the "Salt Tax Increase Ac
     -   `reputation_assault_stratagem_processor.py` is invoked.
     -   **Identify Related Citizens**: The processor finds all citizens who have an existing relationship with the `TargetCitizen`.
     -   **Message Generation (for each related citizen)**:
-        -   It fetches the full data package of the `TargetCitizen` (via `/api/get-data-package`).
+        -   It fetches the full ledger of the `TargetCitizen` (via `/api/get-ledger`).
         -   It fetches relationship details and recent conversation history between the `TargetCitizen` and the current `RelatedCitizen`.
-        -   It constructs a **unique and detailed prompt for KinOS for each `RelatedCitizen`**. This prompt instructs KinOS to act as the `ExecutedBy` citizen and generate a subtle, negative message specifically tailored to the `RelatedCitizen` about the `TargetCitizen`. The prompt includes all fetched contextual data (profil de l'exécuteur, data-package complet de la cible, profil du destinataire, détails des relations entre les trois parties, et historique de conversation entre la cible et le destinataire).
+        -   It constructs a **unique and detailed prompt for KinOS for each `RelatedCitizen`**. This prompt instructs KinOS to act as the `ExecutedBy` citizen and generate a subtle, negative message specifically tailored to the `RelatedCitizen` about the `TargetCitizen`. The prompt includes all fetched contextual data (profil de l'exécuteur, ledger complet de la cible, profil du destinataire, détails des relations entre les trois parties, et historique de conversation entre la cible et le destinataire).
         -   It calls the KinOS API (`/v2/blueprints/serenissima-ai/kins/{EXECUTOR_USERNAME}/channels/{RELATED_CITIZEN_USERNAME}/messages`) to generate the **customized message content**. The AI model used is based on the `ExecutedBy` citizen's social class.
     -   **Message Sending**:
         -   Each **individually generated and cleaned message** is then sent from `ExecutedBy` to the respective `RelatedCitizen` by creating a new record in the `MESSAGES` table (via `/api/messages/send`).

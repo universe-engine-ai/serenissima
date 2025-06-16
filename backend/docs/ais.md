@@ -205,7 +205,7 @@ AI citizens strategically adjust lease amounts for buildings on their lands:
    - Current lease amounts, income, and maintenance costs
 
 3. For each AI citizen, the system:
-   - Prepares a comprehensive data package with financial information
+   - Prepares a comprehensive ledger with financial information
    - Sends this data to the KinOS Engine API for analysis
    - Receives lease adjustment decisions from the AI
 
@@ -242,7 +242,7 @@ AI citizens strategically adjust rent amounts for buildings they own:
    - Current rent amounts, income, and maintenance costs
 
 3. For each AI citizen, the system:
-   - Prepares a comprehensive data package with financial information
+   - Prepares a comprehensive ledger with financial information
    - Sends this data to the KinOS Engine API for analysis
    - Receives rent adjustment decisions from the AI
 
@@ -279,7 +279,7 @@ AI citizens strategically adjust wage amounts for businesses they own:
    - Current wage amounts, business income, and expenses
 
 3. For each AI citizen, the system:
-   - Prepares a comprehensive data package with financial information
+   - Prepares a comprehensive ledger with financial information
    - Sends this data to the KinOS Engine API for analysis
    - Receives wage adjustment decisions from the AI
 
@@ -316,7 +316,7 @@ AI citizens strategically set up resource imports for their buildings (via la fo
    - Available resource types and their import prices
 
 3. For each AI citizen, the system:
-   - Prepares a comprehensive data package with resource and building information
+   - Prepares a comprehensive ledger with resource and building information
    - Sends this data to the KinOS Engine API for analysis
    - Receives import strategy decisions from the AI
 
@@ -562,7 +562,7 @@ AI citizens (excluding `Nobili`) strategically create and manage public sell con
     *   The AI's current resource stockpiles.
     *   The AI's existing active public sell contracts.
     *   Recent relevancies and problems affecting the AI, which might influence their strategy.
-3.  This data package is sent to the KinOS Engine API. The AI is prompted to:
+3.  This ledger is sent to the KinOS Engine API. The AI is prompted to:
     *   Decide which resources to actively sell from each of their sellable buildings.
     *   For each such resource, set a `price_per_resource` and an `target_amount`.
     *   Decide which of their existing public sell contracts should be ended.
@@ -647,7 +647,7 @@ The `managepublicsalesandprices.py` script orchestrates the AI's public sales an
         *   `get_citizen_buildings()`: Fetches buildings run by this specific AI.
         *   `get_citizen_resources()`: Fetches all resources currently owned by this AI.
         *   `get_citizen_active_contracts()`: Fetches this AI's existing active public sell contracts.
-    *   **Data Preparation (`prepare_sales_and_price_strategy_data` function):** This crucial function assembles a comprehensive data package for the KinOS AI. It includes:
+    *   **Data Preparation (`prepare_sales_and_price_strategy_data` function):** This crucial function assembles a comprehensive ledger for the KinOS AI. It includes:
         *   The AI's basic information (username, ducats).
         *   A list of the AI's buildings that can sell resources (`sellable_buildings_with_market_data`). Each building entry details:
             *   The resources it can sell.
@@ -656,7 +656,7 @@ The `managepublicsalesandprices.py` script orchestrates the AI's public sales an
         *   A list of the AI's current active public sell contracts (`existing_ai_public_sell_contracts`), including their `contract_id`, resource type, price, and quantity.
         *   The AI's latest relevancies (fetched via `get_citizen_relevancies_from_api()`) and active problems (fetched via `get_citizen_problems_from_api()`), providing context for strategic decisions.
     *   **AI Decision Making (`send_sales_and_price_strategy_request` function):**
-        *   If the AI has sellable buildings, the prepared data package is sent to the KinOS Engine API.
+        *   If the AI has sellable buildings, the prepared ledger is sent to the KinOS Engine API.
         *   A detailed prompt instructs the AI to analyze the data and decide on:
             *   `contracts_to_create_or_update`: A list of resources to sell, specifying the `building_id`, `resource_type`, desired `price_per_resource`, `target_amount`, and `reasoning`.
             *   `contracts_to_end`: A list of existing `contract_id`s to terminate, along with a `reason`.

@@ -103,14 +103,14 @@ const ArrivalPage: React.FC = () => {
   const [tipForLoadingBubble, setTipForLoadingBubble] = useState<string | null>(null);
   const tipTimerRef = useRef<NodeJS.Timeout | null>(null);
 
-  // State for pre-fetched AI data packages
-  const [aiDataPackages, setAiDataPackages] = useState<Record<string, any | null>>({});
+  // State for pre-fetched AI ledgers
+  const [aiLedgers, setAiLedgers] = useState<Record<string, any | null>>({});
 
   // Contexte pour KinOS, similaire à Compagno
   const [contextualDataForChat, setContextualDataForChat] = useState<{
     senderProfile: any | null; // Profil de l'utilisateur humain
     targetProfile: AIProfile | null; // Profil de base de l'IA avec qui on chatte
-    aiDataPackage: any | null; // Paquet de données complet pour l'IA cible
+    aiLedger: any | null; // Paquet de données complet pour l'IA cible
   } | null>(null);
   const [isPreparingContext, setIsPreparingContext] = useState<boolean>(false);
 
@@ -165,7 +165,7 @@ const ArrivalPage: React.FC = () => {
     }
   }, []);
 
-  // Fonction pour récupérer les informations contextuelles pour KinOS (utilise maintenant les data packages préchargés)
+  // Fonction pour récupérer les informations contextuelles pour KinOS (utilise maintenant les ledgers préchargés)
   const fetchContextualInformation = useCallback(async (targetAI: AIProfile | null, humanUsername: string): Promise<void> => {
     if (!targetAI || !targetAI.username || !humanUsername || humanUsername === DEFAULT_HUMAN_USERNAME) {
       setContextualDataForChat(null);
@@ -174,24 +174,24 @@ const ArrivalPage: React.FC = () => {
     setIsPreparingContext(true);
     try {
       const senderProfile = currentUserProfile; // Profil de l'utilisateur humain (déjà dans l'état)
-      const preFetchedPackage = aiDataPackages[targetAI.username]; // Récupérer le paquet de données préchargé
+      const preFetchedLedger = aiLedgers[targetAI.username]; // Récupérer le paquet de données préchargé
 
-      if (preFetchedPackage === undefined && aisLoading) {
+      if (preFetchedLedger === undefined && aisLoading) {
         // Le paquet n'est pas encore là et les IA sont toujours en cours de chargement, attendre.
-        // Ce useEffect sera rappelé lorsque aiDataPackages ou aisLoading changera.
-        console.log(`[Context] Data package for ${targetAI.username} not yet available, AIs still loading. Waiting.`);
+        // Ce useEffect sera rappelé lorsque aiLedgers ou aisLoading changera.
+        console.log(`[Context] Ledger for ${targetAI.username} not yet available, AIs still loading. Waiting.`);
         setIsPreparingContext(false); // Peut-être pas nécessaire de le mettre à false ici si on attend un nouveau cycle
         return;
       }
       
-      if (!preFetchedPackage) {
-        console.warn(`[Context] Data package for ${targetAI.username} was not pre-fetched or failed to load. Proceeding without it.`);
+      if (!preFetchedLedger) {
+        console.warn(`[Context] Ledger for ${targetAI.username} was not pre-fetched or failed to load. Proceeding without it.`);
       }
       
       const newContextData = {
         senderProfile,
         targetProfile: targetAI,
-        aiDataPackage: preFetchedPackage || null, // Utiliser null si le paquet n'a pas pu être chargé
+        aiLedger: preFetchedLedger || null, // Utiliser null si le paquet n'a pas pu être chargé
       };
 
       // Éviter les re-render inutiles si les données contextuelles n'ont pas réellement changé
@@ -211,7 +211,7 @@ const ArrivalPage: React.FC = () => {
     } finally {
       setIsPreparingContext(false);
     }
-  }, [currentUserProfile, aiDataPackages, aisLoading]); // Dépend de aiDataPackages et aisLoading
+  }, [currentUserProfile, aiLedgers, aisLoading]); // Dépend de aiLedgers et aisLoading
 
 
   // Fonction pour charger les messages du chat
@@ -244,33 +244,33 @@ const ArrivalPage: React.FC = () => {
   }, []);
 
 
-  // Fonction pour charger et stocker le data package d'une IA
-  const fetchAndStoreAIDataPackage = useCallback(async (aiUsername: string | undefined) => {
+  // Fonction pour charger et stocker le ledger d'une IA
+  const fetchAndStoreAILedger = useCallback(async (aiUsername: string | undefined) => {
     if (!aiUsername) return null; // Retourner null si pas de username
     try {
-      const response = await fetch(`/api/get-data-package?citizenUsername=${aiUsername}`);
+      const response = await fetch(`/api/get-ledger?citizenUsername=${aiUsername}`);
       if (response.ok) {
         const packageData = await response.json();
         if (packageData.success) {
-          setAiDataPackages(prev => ({ ...prev, [aiUsername]: packageData.data }));
+          setAiLedgers(prev => ({ ...prev, [aiUsername]: packageData.data }));
           return packageData.data; // Retourner les données du paquet
         } else {
-          console.error(`Échec de la récupération du data package pour ${aiUsername}:`, packageData.error);
+          console.error(`Échec de la récupération du ledger pour ${aiUsername}:`, packageData.error);
         }
       } else {
-        console.error(`Erreur HTTP lors de la récupération du data package pour ${aiUsername}: ${response.status}`);
+        console.error(`Erreur HTTP lors de la récupération du ledger pour ${aiUsername}: ${response.status}`);
       }
     } catch (error) {
-      console.error(`Erreur réseau lors de la récupération du data package pour ${aiUsername}:`, error);
+      console.error(`Erreur réseau lors de la récupération du ledger pour ${aiUsername}:`, error);
     }
-    setAiDataPackages(prev => ({ ...prev, [aiUsername]: null })); // Stocker null en cas d'échec
+    setAiLedgers(prev => ({ ...prev, [aiUsername]: null })); // Stocker null en cas d'échec
     return null; // Retourner null en cas d'échec
   }, []); // Stable car pas de dépendances externes au composant
 
   useEffect(() => {
     const defaultAIUsername = "BookishMerchant";
     
-    const fetchAllAIsAndPackages = async () => {
+    const fetchAllAIsAndLedgers = async () => {
       setAisLoading(true); // Indique le chargement des profils ET des paquets
       const defaultProfile = await fetchCitizen(defaultAIUsername);
 
@@ -311,11 +311,11 @@ const ArrivalPage: React.FC = () => {
               console.error("Failed to fetch Forestieri for Galley AI, using default.");
             }
             setGalleyAI(galleyProfile);
-            if (galleyProfile?.username) await fetchAndStoreAIDataPackage(galleyProfile.username);
+            if (galleyProfile?.username) await fetchAndStoreAILedger(galleyProfile.username);
           } catch (e) { 
             console.error("Error processing Galley AI:", e);
             setGalleyAI(defaultProfile); 
-            if (defaultProfile?.username) await fetchAndStoreAIDataPackage(defaultProfile.username);
+            if (defaultProfile?.username) await fetchAndStoreAILedger(defaultProfile.username);
           }
         })()
       );
@@ -340,11 +340,11 @@ const ArrivalPage: React.FC = () => {
               console.error("Failed to fetch customs_house building, using default Customs AI.");
             }
             setCustomsAI(customsProfile);
-            if (customsProfile?.username) await fetchAndStoreAIDataPackage(customsProfile.username);
+            if (customsProfile?.username) await fetchAndStoreAILedger(customsProfile.username);
           } catch (e) { 
             console.error("Error processing Customs AI:", e);
             setCustomsAI(defaultProfile); 
-            if (defaultProfile?.username) await fetchAndStoreAIDataPackage(defaultProfile.username);
+            if (defaultProfile?.username) await fetchAndStoreAILedger(defaultProfile.username);
           }
         })()
       );
@@ -363,11 +363,11 @@ const ArrivalPage: React.FC = () => {
               console.error("Failed to fetch Cittadini for Home AI, using default.");
             }
             setHomeAI(homeProfile);
-            if (homeProfile?.username) await fetchAndStoreAIDataPackage(homeProfile.username);
+            if (homeProfile?.username) await fetchAndStoreAILedger(homeProfile.username);
           } catch (e) { 
             console.error("Error processing Home AI:", e);
             setHomeAI(defaultProfile); 
-            if (defaultProfile?.username) await fetchAndStoreAIDataPackage(defaultProfile.username);
+            if (defaultProfile?.username) await fetchAndStoreAILedger(defaultProfile.username);
           }
         })()
       );
@@ -392,11 +392,11 @@ const ArrivalPage: React.FC = () => {
               console.error("Failed to fetch inn building, using default Inn AI.");
             }
             setInnAI(innProfile);
-            if (innProfile?.username) await fetchAndStoreAIDataPackage(innProfile.username);
+            if (innProfile?.username) await fetchAndStoreAILedger(innProfile.username);
           } catch (e) { 
             console.error("Error processing Inn AI:", e);
             setInnAI(defaultProfile); 
-            if (defaultProfile?.username) await fetchAndStoreAIDataPackage(defaultProfile.username);
+            if (defaultProfile?.username) await fetchAndStoreAILedger(defaultProfile.username);
           }
         })()
       );
@@ -405,8 +405,8 @@ const ArrivalPage: React.FC = () => {
       setAisLoading(false); // Tous les profils et paquets de données ont été traités (succès ou échec)
     };
 
-    fetchAllAIsAndPackages();
-  }, [fetchCitizen, fetchAndStoreAIDataPackage]);
+    fetchAllAIsAndLedgers();
+  }, [fetchCitizen, fetchAndStoreAILedger]);
 
   // Fonction pour que l'IA initie la conversation
   const sendSystemInitiationMessage = useCallback(async (
@@ -499,11 +499,11 @@ Your first message to ${userName}:`;
       model: getKinOSModelForSocialClass(aiProfile.username, aiProfile.socialClass),
     };
 
-    if (contextData && contextData.senderProfile && contextData.targetProfile && contextData.aiDataPackage) {
+    if (contextData && contextData.senderProfile && contextData.targetProfile && contextData.aiLedger) {
       kinosBody.addSystem = JSON.stringify({
         sender_citizen_profile: contextData.senderProfile, // Human user
         ai_persona_profile: contextData.targetProfile,    // AI's basic profile
-        ai_comprehensive_data: contextData.aiDataPackage  // AI's full data package
+        ai_comprehensive_data: contextData.aiLedger  // AI's full ledger
       });
     }
 
@@ -570,10 +570,10 @@ Your first message to ${userName}:`;
         .then(existingMessages => {
           setFetchedMessagesForStep(existingMessages);
           // fetchContextualInformation mettra à jour l'état contextualDataForChat.
-          // Il dépend maintenant de aiDataPackages et aisLoading.
-          // Si le paquet de données est prêt (aiDataPackages[currentAI.username!] existe) OU si aisLoading est false (tout est chargé ou a échoué),
+          // Il dépend maintenant de aiLedgers et aisLoading.
+          // Si le paquet de données est prêt (aiLedgers[currentAI.username!] existe) OU si aisLoading est false (tout est chargé ou a échoué),
           // alors on peut essayer de construire le contexte.
-          if ((aiDataPackages && currentAI.username && aiDataPackages[currentAI.username!]) || !aisLoading) {
+          if ((aiLedgers && currentAI.username && aiLedgers[currentAI.username!]) || !aisLoading) {
             fetchContextualInformation(currentAI, currentUserUsername);
           } else {
             console.log(`[Effet 1] Différer fetchContextualInformation pour ${currentAI.username} car aisLoading: ${aisLoading} ou paquet non prêt.`);
@@ -584,7 +584,7 @@ Your first message to ${userName}:`;
           setIsAiInitiating(false); 
           setFetchedMessagesForStep([]);
           // Même en cas d'erreur de fetchChatMessages, essayer de charger le contexte si possible
-          if ((aiDataPackages && currentAI.username && aiDataPackages[currentAI.username!]) || !aisLoading) {
+          if ((aiLedgers && currentAI.username && aiLedgers[currentAI.username!]) || !aisLoading) {
             fetchContextualInformation(currentAI, currentUserUsername);
           }
         });
@@ -613,7 +613,7 @@ Your first message to ${userName}:`;
       // contextualDataForChat est déjà réinitialisé ci-dessus
       setChatMessages([]); // Effacer les messages du chat s'il n'y a pas d'IA ou si c'est un invité
     }
-  }, [currentStep, currentUserUsername, getCurrentAI, fetchChatMessages, fetchContextualInformation, aiDataPackages, aisLoading]);
+  }, [currentStep, currentUserUsername, getCurrentAI, fetchChatMessages, fetchContextualInformation, aiLedgers, aisLoading]);
 
   // Effet 2: Initier la conversation IA si les conditions sont remplies
   useEffect(() => {
@@ -705,7 +705,7 @@ Reflect your understanding of your relationship (if any, likely none yet), recen
 Guide to 'addSystem' content (use this to make your message relevant and gameplay-focused - try to use real gameplay elements in each message):
 - 'sender_citizen_profile': The profile of the human user you are talking to (${userName}).
 - 'ai_persona_profile': Your basic profile information (who you are: ${aiName}).
-- 'ai_comprehensive_data': Your complete and detailed data package. 
+- 'ai_comprehensive_data': Your complete and detailed ledger. 
   - Use 'ai_comprehensive_data.citizen' for your full, up-to-date profile (status, wealth, etc.).
   - Use other parts of 'ai_comprehensive_data' (like 'ownedLands', 'activeContracts', 'recentProblems', 'strongestRelationships', 'ownedBuildings', 'guildDetails', 'citizenLoans') to understand your current situation, involvements, and relationships. This is key for a relevant and gameplay-focused response!
 
@@ -781,11 +781,11 @@ ${commonPromptInstructions}`;
         model: getKinOSModelForSocialClass(currentAI.username, currentAI.socialClass),
       };
 
-      if (contextualDataForChat && contextualDataForChat.senderProfile && contextualDataForChat.targetProfile && contextualDataForChat.aiDataPackage) {
+      if (contextualDataForChat && contextualDataForChat.senderProfile && contextualDataForChat.targetProfile && contextualDataForChat.aiLedger) {
         kinosBody.addSystem = JSON.stringify({
             sender_citizen_profile: contextualDataForChat.senderProfile,
             ai_persona_profile: contextualDataForChat.targetProfile, // Basic profile of the AI
-            ai_comprehensive_data: contextualDataForChat.aiDataPackage // Full data package for the AI
+            ai_comprehensive_data: contextualDataForChat.aiLedger // Full ledger for the AI
         });
       } else {
         console.warn("Données contextuelles incomplètes pour KinOS, envoi du prompt sans addSystem.", contextualDataForChat);

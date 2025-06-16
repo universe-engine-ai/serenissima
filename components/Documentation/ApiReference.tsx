@@ -245,7 +245,7 @@ function ApiReference() { // Suppression de 'export default' ici
           <li><a href="#data-access" className="text-amber-700 hover:underline">Data Access</a>
             <ul className="list-circle pl-6 space-y-1 mt-1">
               <li><a href="#data-access-get-path" className="text-amber-600 hover:underline text-sm">GET /api/data/:path</a></li>
-              <li><a href="#data-access-get-data-package" className="text-amber-600 hover:underline text-sm">GET /api/get-data-package</a></li>
+              <li><a href="#data-access-get-ledger" className="text-amber-600 hover:underline text-sm">GET /api/get-ledger</a></li>
             </ul>
           </li>
           <li><a href="#error-handling" className="text-amber-700 hover:underline">Error Handling</a></li>
@@ -4706,7 +4706,7 @@ fetch('/api/relevancies/proximity/marco_polo?type=connected')
               <li><code>get_citizen_thoughts</code>: Requires <code>parameters.username</code>. Optional <code>parameters.limit</code>.</li>
               <li><code>get_all_guilds</code>: No parameters required.</li>
               <li><code>get_active_decrees</code>: No parameters required.</li>
-              <li><code>get_data_package</code>: Requires <code>parameters.username</code>.</li>
+              <li><code>get_ledger</code>: Requires <code>parameters.username</code>.</li>
               <li><code>get_building_details</code>: Requires <code>parameters.buildingId</code>.</li>
               <li><code>get_building_resources</code>: Requires <code>parameters.buildingId</code>.</li>
               <li><code>get_land_details</code>: Requires <code>parameters.landId</code>.</li>
@@ -4785,9 +4785,9 @@ fetch('/api/relevancies/proximity/marco_polo?type=connected')
           </div>
         </div>
 
-        <div id="data-access-get-data-package" className="mb-8 scroll-mt-20">
-          <h3 className="text-2xl font-serif text-amber-700 mb-2">GET /api/get-data-package</h3>
-          <p className="mb-2">Retrieves a comprehensive data package for a specific citizen, including their details, last activity, owned lands with buildings, and unoccupied building points. Useful for AI context gathering.</p>
+        <div id="data-access-get-ledger" className="mb-8 scroll-mt-20">
+          <h3 className="text-2xl font-serif text-amber-700 mb-2">GET /api/get-ledger</h3>
+          <p className="mb-2">Retrieves a comprehensive ledger for a specific citizen, including their details, last activity, owned lands with buildings, and unoccupied building points. Useful for AI context gathering.</p>
           <div className="bg-white p-4 rounded-lg shadow mb-4">
             <h4 className="font-bold mb-2">Query Parameters</h4>
             <ul className="list-disc pl-6">

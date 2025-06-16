@@ -305,14 +305,14 @@ This document provides a structured framework for conducting negotiations in Ren
   - Concession sequence planning
   - Size and timing determination
   - Condition attachment strategy
-  - Package vs. individual item approach
+  - Ledger vs. individual item approach
 
 - **Concession Valuation**: Assessing what you give and get
   - Objective cost calculation
   - Subjective value to counterparty
   - Precedent implication consideration
   - Future negotiation impact
-  - Package effect evaluation
+  - Ledger effect evaluation
 
 - **Concession Tracking**: Monitoring negotiation progress
   - Balance sheet maintenance

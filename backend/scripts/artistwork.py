@@ -118,19 +118,19 @@ def trigger_artist_work(target_artist_username: str | None = None, additional_me
 
         # --- Existing KinOS Interaction for Art Session Description ---
         log.info(f"{LogColors.BOLD}--- Starting KinOS Interaction for Art Session Description ---{LogColors.ENDC}")
-        # 1. Fetch citizen's data package for KinOS addSystem
-        data_package_url = f"{API_BASE_URL}/api/get-data-package?citizenUsername={citizen_username}" # Defaults to Markdown format
-        data_package_markdown_str = None # Changed variable name for clarity
-        log.info(f"  Fetching data package (Markdown) from: {data_package_url}")
+        # 1. Fetch citizen's ledger for KinOS addSystem
+        ledger_url = f"{API_BASE_URL}/api/get-ledger?citizenUsername={citizen_username}" # Defaults to Markdown format
+        ledger_markdown_str = None # Changed variable name for clarity
+        log.info(f"  Fetching ledger (Markdown) from: {ledger_url}")
         try:
-            data_package_response = requests.get(data_package_url, timeout=20)
-            data_package_response.raise_for_status()
+            ledger_response = requests.get(ledger_url, timeout=20)
+            ledger_response.raise_for_status()
             # The response is now expected to be Markdown text
-            data_package_markdown_str = data_package_response.text
-            log.info(f"  Successfully fetched Markdown data package for {citizen_username} (length: {len(data_package_markdown_str)}).")
+            ledger_markdown_str = ledger_response.text
+            log.info(f"  Successfully fetched Markdown ledger for {citizen_username} (length: {len(ledger_markdown_str)}).")
         except requests.exceptions.RequestException as e_pkg:
-            log.error(f"  Error fetching Markdown data package for {citizen_username}: {e_pkg}")
-            # Continue without data package if it fails, KinOS might still work with just the prompt.
+            log.error(f"  Error fetching Markdown ledger for {citizen_username}: {e_pkg}")
+            # Continue without ledger if it fails, KinOS might still work with just the prompt.
 
         # 2. Construct KinOS /build request
         kinos_build_url = f"{KINOS_API_URL}/v2/blueprints/{KINOS_BLUEPRINT}/kins/{citizen_username}/build"
@@ -157,8 +157,8 @@ def trigger_artist_work(target_artist_username: str | None = None, additional_me
             kinos_payload["model"] = "local"
             log.info(f"  Using default KinOS model: local")
 
-        if data_package_markdown_str: # Use the new variable name
-            kinos_payload["addSystem"] = data_package_markdown_str
+        if ledger_markdown_str: # Use the new variable name
+            kinos_payload["addSystem"] = ledger_markdown_str
         
         log.info(f"  Calling KinOS /build endpoint for {citizen_username} at {kinos_build_url}")
         log.info(f"  KinOS payload for {citizen_username}: {json.dumps(kinos_payload, indent=2)}") # Log the payload

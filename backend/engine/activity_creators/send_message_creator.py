@@ -21,7 +21,7 @@ log = logging.getLogger(__name__)
 def choose_interlocutor_via_kinos(
     tables: Dict[str, Any],
     ai_username: str,
-    ai_data_package: str,
+    ai_ledger: str,
     api_base_url: str
 ) -> Optional[Tuple[str, str]]:
     """
@@ -34,14 +34,14 @@ def choose_interlocutor_via_kinos(
         ai_social_class = None  # Valeur par défaut
         
         # Rechercher le prénom dans le markdown
-        first_name_match = re.search(r'firstName: ([^\n]+)', ai_data_package, re.IGNORECASE) or \
-                          re.search(r'FirstName: ([^\n]+)', ai_data_package, re.IGNORECASE)
+        first_name_match = re.search(r'firstName: ([^\n]+)', ai_ledger, re.IGNORECASE) or \
+                          re.search(r'FirstName: ([^\n]+)', ai_ledger, re.IGNORECASE)
         if first_name_match:
             ai_display_name = first_name_match.group(1).strip()
         
         # Rechercher la classe sociale dans le markdown
-        social_class_match = re.search(r'socialClass: ([^\n]+)', ai_data_package, re.IGNORECASE) or \
-                             re.search(r'SocialClass: ([^\n]+)', ai_data_package, re.IGNORECASE)
+        social_class_match = re.search(r'socialClass: ([^\n]+)', ai_ledger, re.IGNORECASE) or \
+                             re.search(r'SocialClass: ([^\n]+)', ai_ledger, re.IGNORECASE)
         if social_class_match:
             ai_social_class = social_class_match.group(1).strip()
 
@@ -64,10 +64,10 @@ def choose_interlocutor_via_kinos(
         kinos_channel_for_decision = "strategist" 
 
         prompt = (
-            f"You are {ai_display_name}, an AI citizen of Venice. Your data package "
+            f"You are {ai_display_name}, an AI citizen of Venice. Your ledger "
             f"is provided in `addSystem` in markdown format.\n\n"
             f"Based on this information, analyze your current situation and identify another citizen with whom initiating a conversation would be most beneficial or strategically relevant for you right now. "
-            f"Consider your goals, active problems, opportunities, and the nature of your relationships. Could initiating or discussing a **Stratagem** be a reason for contact? Note that gossip or rumors are not necessarily negative (though they often are). Information on available stratagems is in the 'Available Stratagems' section of your data package.\n\n"
+            f"Consider your goals, active problems, opportunities, and the nature of your relationships. Could initiating or discussing a **Stratagem** be a reason for contact? Note that gossip or rumors are not necessarily negative (though they often are). Information on available stratagems is in the 'Available Stratagems' section of your ledger.\n\n"
             f"Your response MUST be a JSON object with two keys: 'target_username' (the Username of the citizen you choose) and 'reason' (a specific compelling reason for contacting them, focusing on gameplay or possibly narrative progression, potentially related to a stratagem).\n"
             f"If no compelling interaction is identified, respond with: {{\"target_username\": null, \"reason\": \"<Explanations>\"}}\n\n"
             f"Chosen interaction (JSON):"
@@ -80,7 +80,7 @@ def choose_interlocutor_via_kinos(
         
         # Créer un wrapper pour passer le markdown comme addSystem
         wrapper_data = {
-            "data_package_markdown": ai_data_package
+            "ledger_markdown": ai_ledger
         }
         
         # Appel à KinOS via make_kinos_channel_call
@@ -161,17 +161,17 @@ def try_create(
         log.info("Aucun destinataire spécifié. Tentative de sélection dynamique d'un interlocuteur.")
         sender_username = citizen_record['fields'].get('Username')
         
-        # Récupérer le data package du citoyen pour l'analyse
+        # Récupérer le ledger du citoyen pour l'analyse
         try:
-            data_package_url = f"{api_base_url}/api/get-data-package?citizenUsername={sender_username}&format=markdown"
+            ledger_url = f"{api_base_url}/api/get-ledger?citizenUsername={sender_username}&format=markdown"
             import requests
-            response = requests.get(data_package_url, timeout=150)
+            response = requests.get(ledger_url, timeout=150)
             if response.ok:
-                ai_data_package = response.text
+                ai_ledger = response.text
                 receiver_username, reason_for_contact = choose_interlocutor_via_kinos(
                     tables, 
                     sender_username, 
-                    ai_data_package,
+                    ai_ledger,
                     api_base_url
                 )
                 
@@ -190,9 +190,9 @@ def try_create(
                             'dynamicallySelected': True
                         }
             else:
-                log.error(f"Impossible de récupérer le data package pour {sender_username}: {response.status_code}")
+                log.error(f"Impossible de récupérer le ledger pour {sender_username}: {response.status_code}")
         except Exception as e:
-            log.error(f"Erreur lors de la récupération du data package ou de la sélection d'un interlocuteur: {e}")
+            log.error(f"Erreur lors de la récupération du ledger ou de la sélection d'un interlocuteur: {e}")
             import traceback
             log.error(traceback.format_exc())
     
@@ -244,15 +244,15 @@ def try_create(
                     sender_username = citizen_record['fields'].get('Username')
                     
                     try:
-                        data_package_url = f"{api_base_url}/api/get-data-package?citizenUsername={sender_username}&format=markdown"
+                        ledger_url = f"{api_base_url}/api/get-ledger?citizenUsername={sender_username}&format=markdown"
                         import requests
-                        response = requests.get(data_package_url, timeout=60)
+                        response = requests.get(ledger_url, timeout=60)
                         if response.ok:
-                            ai_data_package = response.text
+                            ai_ledger = response.text
                             receiver_username, reason_for_contact = choose_interlocutor_via_kinos(
                                 tables, 
                                 sender_username, 
-                                ai_data_package,
+                                ai_ledger,
                                 api_base_url
                             )
                             
@@ -305,15 +305,15 @@ def try_create(
                         sender_username = citizen_record['fields'].get('Username')
                         
                         try:
-                            data_package_url = f"{api_base_url}/api/get-data-package?citizenUsername={sender_username}&format=markdown"
+                            ledger_url = f"{api_base_url}/api/get-ledger?citizenUsername={sender_username}&format=markdown"
                             import requests
-                            response = requests.get(data_package_url, timeout=60)
+                            response = requests.get(ledger_url, timeout=60)
                             if response.ok:
-                                ai_data_package = response.text
+                                ai_ledger = response.text
                                 receiver_username, reason_for_contact = choose_interlocutor_via_kinos(
                                     tables, 
                                     sender_username, 
-                                    ai_data_package,
+                                    ai_ledger,
                                     api_base_url
                                 )
                                 
@@ -342,15 +342,15 @@ def try_create(
                 # Dernière tentative de sélection dynamique avant d'abandonner
                 sender_username = citizen_record['fields'].get('Username')
                 try:
-                    data_package_url = f"{api_base_url}/api/get-data-package?citizenUsername={sender_username}&format=markdown"
+                    ledger_url = f"{api_base_url}/api/get-ledger?citizenUsername={sender_username}&format=markdown"
                     import requests
-                    response = requests.get(data_package_url, timeout=60)
+                    response = requests.get(ledger_url, timeout=60)
                     if response.ok:
-                        ai_data_package = response.text
+                        ai_ledger = response.text
                         receiver_username, reason_for_contact = choose_interlocutor_via_kinos(
                             tables, 
                             sender_username, 
-                            ai_data_package,
+                            ai_ledger,
                             api_base_url
                         )
                         
@@ -377,7 +377,7 @@ def try_create(
                             log.error(f"Échec de la sélection dynamique finale - aucun destinataire trouvé")
                             return None
                     else:
-                        log.error(f"Impossible de récupérer le data package pour la sélection dynamique finale")
+                        log.error(f"Impossible de récupérer le ledger pour la sélection dynamique finale")
                         return None
                 except Exception as e:
                     log.error(f"Erreur lors de la tentative finale de sélection dynamique: {e}")

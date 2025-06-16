@@ -369,7 +369,7 @@ def prepare_sales_and_price_strategy_data(
     building_types: Dict,
     resource_types: Dict
 ) -> Dict:
-    """Prepare a comprehensive data package for the AI to make public sell and pricing decisions."""
+    """Prepare a comprehensive ledger for the AI to make public sell and pricing decisions."""
     username = ai_citizen["fields"].get("Username", "")
     ducats = ai_citizen["fields"].get("Ducats", 0)
 
@@ -499,7 +499,7 @@ def prepare_sales_and_price_strategy_data(
         if res_type:
             citizen_owned_resources_summary[res_type] += count
 
-    data_package = {
+    ledger = {
         "citizen": {
             "username": username,
             "ducats": ducats,
@@ -514,9 +514,9 @@ def prepare_sales_and_price_strategy_data(
         "latest_problems": latest_problems[:10],     # Limit for brevity
         "timestamp": datetime.now(pytz.timezone('Europe/Rome')).isoformat()
     }
-    return data_package
+    return ledger
 
-def send_sales_and_price_strategy_request(ai_username: str, data_package: Dict, kinos_model_override: Optional[str] = None) -> Optional[Dict]:
+def send_sales_and_price_strategy_request(ai_username: str, ledger: Dict, kinos_model_override: Optional[str] = None) -> Optional[Dict]:
     """Send the combined sales and price strategy request to the AI via KinOS API."""
     try:
         api_key = get_kinos_api_key()
@@ -525,15 +525,15 @@ def send_sales_and_price_strategy_request(ai_username: str, data_package: Dict, 
         headers = {"Authorization": f"Bearer {api_key}", "Content-Type": "application/json"}
 
         print(f"Sending combined sales and price strategy request to AI citizen {ai_username}")
-        print(f"Citizen has {data_package['citizen']['sellable_buildings_count']} buildings that can sell resources.")
+        print(f"Citizen has {ledger['citizen']['sellable_buildings_count']} buildings that can sell resources.")
 
         prompt = f"""
 As a merchant in La Serenissima, you need to decide which resources to sell publicly, at what price, and in what quantity. You also need to manage your existing public sell contracts.
 
 Here's your current situation:
-- You run {data_package['citizen']['sellable_buildings_count']} buildings that can sell resources.
+- You run {ledger['citizen']['sellable_buildings_count']} buildings that can sell resources.
 - You have various resource stockpiles (see `citizen_owned_resources_summary`).
-- You currently have {len(data_package['existing_ai_public_sell_contracts'])} active public sell contracts.
+- You currently have {len(ledger['existing_ai_public_sell_contracts'])} active public sell contracts.
 - Market data (average prices, import prices) for resources your buildings can sell is provided in `sellable_buildings_with_market_data`.
 - Recent relevancies and problems affecting you are in `latest_relevancies` and `latest_problems`.
 
@@ -586,7 +586,7 @@ Your goal is to optimize your public sales for profitability and resource manage
             else:
                 return obj
 
-        cleaned_data = clean_for_json(data_package)
+        cleaned_data = clean_for_json(ledger)
         serialized_data = json.dumps(cleaned_data, indent=2, ensure_ascii=True)
 
         system_instructions = f"""
@@ -667,7 +667,7 @@ If you decide not to make any changes, return empty arrays for both lists.
 
 def validate_create_or_update_contract_decision(
     decision: Dict,
-    sellable_buildings_data: List[Dict], # This is data_package["sellable_buildings_with_market_data"]
+    sellable_buildings_data: List[Dict], # This is ledger["sellable_buildings_with_market_data"]
     resource_types_definitions: Dict # This is the global resource_types from API
 ) -> bool:
     """Validate that a contract creation/update decision is valid."""
@@ -713,7 +713,7 @@ def validate_create_or_update_contract_decision(
 
 def validate_end_contract_decision(
     decision: Dict,
-    existing_ai_public_sell_contracts: List[Dict] # This is data_package["existing_ai_public_sell_contracts"]
+    existing_ai_public_sell_contracts: List[Dict] # This is ledger["existing_ai_public_sell_contracts"]
 ) -> bool:
     """Validate that a contract ending decision is valid."""
     contract_id_to_end = decision.get("contract_id")
@@ -952,7 +952,7 @@ def process_ai_sales_and_price_strategies(dry_run: bool = False):
         citizen_resources_records = get_citizen_resources(tables, ai_username) # Resources AI owns
         citizen_active_contracts_records = get_citizen_active_contracts(tables, ai_username) # AI's active sell contracts
 
-        data_package = prepare_sales_and_price_strategy_data(
+        ledger = prepare_sales_and_price_strategy_data(
             tables,
             ai_citizen_record,
             citizen_buildings_records,
@@ -964,26 +964,26 @@ def process_ai_sales_and_price_strategies(dry_run: bool = False):
             resource_types_definitions
         )
         
-        if not data_package["sellable_buildings_with_market_data"]:
+        if not ledger["sellable_buildings_with_market_data"]:
             print(f"AI citizen {ai_username} has no buildings that can currently sell resources, skipping KinOS call.")
             continue
         
-        # log_data(f"Data package prepared for {ai_username}", data_package) # Log the prepared data package
+        # log_data(f"Ledger prepared for {ai_username}", ledger) # Log the prepared ledger
 
         if dry_run:
             print(f"[DRY RUN] Would send sales & pricing strategy request to AI citizen {ai_username}.")
-            print(f"[DRY RUN] Data package summary for {ai_username}:")
-            print(f"  - Sellable buildings with market data: {len(data_package['sellable_buildings_with_market_data'])}")
-            print(f"  - Existing public sell contracts: {len(data_package['existing_ai_public_sell_contracts'])}")
+            print(f"[DRY RUN] Ledger summary for {ai_username}:")
+            print(f"  - Sellable buildings with market data: {len(ledger['sellable_buildings_with_market_data'])}")
+            print(f"  - Existing public sell contracts: {len(ledger['existing_ai_public_sell_contracts'])}")
             continue
 
-        decisions = send_sales_and_price_strategy_request(ai_username, data_package)
+        decisions = send_sales_and_price_strategy_request(ai_username, ledger)
         
         if decisions:
             # Process contracts to create or update
             if "contracts_to_create_or_update" in decisions:
                 for decision_item in decisions["contracts_to_create_or_update"]:
-                    if validate_create_or_update_contract_decision(decision_item, data_package["sellable_buildings_with_market_data"], resource_types_definitions):
+                    if validate_create_or_update_contract_decision(decision_item, ledger["sellable_buildings_with_market_data"], resource_types_definitions):
                         success = create_or_update_public_sell_contract_from_decision(
                             tables,
                             ai_username,
@@ -997,7 +997,7 @@ def process_ai_sales_and_price_strategies(dry_run: bool = False):
             # Process contracts to end
             if "contracts_to_end" in decisions:
                 for decision_item in decisions["contracts_to_end"]:
-                    if validate_end_contract_decision(decision_item, data_package["existing_ai_public_sell_contracts"]):
+                    if validate_end_contract_decision(decision_item, ledger["existing_ai_public_sell_contracts"]):
                         success = end_public_sell_contract(
                             tables,
                             decision_item["contract_id"],
@@ -1093,7 +1093,7 @@ def process_ai_sales_and_price_strategies(dry_run: bool = False, kinos_model_ove
         citizen_resources_records = get_citizen_resources(tables, ai_username) # Resources AI owns
         citizen_active_contracts_records = get_citizen_active_contracts(tables, ai_username) # AI's active sell contracts
 
-        data_package = prepare_sales_and_price_strategy_data(
+        ledger = prepare_sales_and_price_strategy_data(
             tables,
             ai_citizen_record,
             citizen_buildings_records,
@@ -1105,26 +1105,26 @@ def process_ai_sales_and_price_strategies(dry_run: bool = False, kinos_model_ove
             resource_types_definitions
         )
         
-        if not data_package["sellable_buildings_with_market_data"]:
+        if not ledger["sellable_buildings_with_market_data"]:
             print(f"AI citizen {ai_username} has no buildings that can currently sell resources, skipping KinOS call.")
             continue
         
-        # log_data(f"Data package prepared for {ai_username}", data_package) # Log the prepared data package
+        # log_data(f"Ledger prepared for {ai_username}", ledger) # Log the prepared ledger
 
         if dry_run:
             print(f"[DRY RUN] Would send sales & pricing strategy request to AI citizen {ai_username}.")
-            print(f"[DRY RUN] Data package summary for {ai_username}:")
-            print(f"  - Sellable buildings with market data: {len(data_package['sellable_buildings_with_market_data'])}")
-            print(f"  - Existing public sell contracts: {len(data_package['existing_ai_public_sell_contracts'])}")
+            print(f"[DRY RUN] Ledger summary for {ai_username}:")
+            print(f"  - Sellable buildings with market data: {len(ledger['sellable_buildings_with_market_data'])}")
+            print(f"  - Existing public sell contracts: {len(ledger['existing_ai_public_sell_contracts'])}")
             continue
 
-        decisions = send_sales_and_price_strategy_request(ai_username, data_package, kinos_model_override_arg)
+        decisions = send_sales_and_price_strategy_request(ai_username, ledger, kinos_model_override_arg)
         
         if decisions:
             # Process contracts to create or update
             if "contracts_to_create_or_update" in decisions:
                 for decision_item in decisions["contracts_to_create_or_update"]:
-                    if validate_create_or_update_contract_decision(decision_item, data_package["sellable_buildings_with_market_data"], resource_types_definitions):
+                    if validate_create_or_update_contract_decision(decision_item, ledger["sellable_buildings_with_market_data"], resource_types_definitions):
                         success = create_or_update_public_sell_contract_from_decision(
                             tables,
                             ai_username,
@@ -1138,7 +1138,7 @@ def process_ai_sales_and_price_strategies(dry_run: bool = False, kinos_model_ove
             # Process contracts to end
             if "contracts_to_end" in decisions:
                 for decision_item in decisions["contracts_to_end"]:
-                    if validate_end_contract_decision(decision_item, data_package["existing_ai_public_sell_contracts"]):
+                    if validate_end_contract_decision(decision_item, ledger["existing_ai_public_sell_contracts"]):
                         success = end_public_sell_contract(
                             tables,
                             decision_item["contract_id"],

@@ -127,8 +127,8 @@ def get_activities_to_process(tables: Dict[str, Table], activity_type_filter: Op
         return []
 
 def run_process_activities_script(activity_id: str, process_activities_script_path: str):
-    """Runs the processActivities.py script for a given ActivityId and streams its output."""
-    command = ["python", process_activities_script_path, "--ActivityId", activity_id]
+    """Runs the processActivities.py script for a given activityId and streams its output."""
+    command = ["python", process_activities_script_path, "--activityId", activity_id]
     log.info(f"{LogColors.HEADER}Executing: {' '.join(command)}{LogColors.ENDC}")
 
     try:

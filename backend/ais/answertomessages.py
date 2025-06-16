@@ -252,41 +252,41 @@ def _get_problems_data(tables: Dict[str, Table], username1: str, username2: str,
         print(f"Erreur lors de la récupération des problèmes pour {username1} ou {username2} via API: {e}")
         return []
 
-def _get_data_package_for_citizen(username: str) -> Optional[Dict]:
-    """Fetches the data package for a citizen using the Next.js API."""
+def _get_ledger_for_citizen(username: str) -> Optional[Dict]:
+    """Fetches the ledger for a citizen using the Next.js API."""
     try:
         # Use BASE_URL as defined in this file
-        api_url = f"{BASE_URL}/api/get-data-package?citizenUsername={username}"
+        api_url = f"{BASE_URL}/api/get-ledger?citizenUsername={username}"
         # Using print as per existing style in this script for ais module
-        print(f"  Fetching data package for {username} from {api_url}...")
+        print(f"  Fetching ledger for {username} from {api_url}...")
         response = requests.get(api_url, timeout=45)
         response.raise_for_status()
         
         content_type = response.headers.get('Content-Type', '')
         if 'text/markdown' in content_type:
-            print(f"  Successfully fetched Markdown data package for {username}.")
+            print(f"  Successfully fetched Markdown ledger for {username}.")
             return response.text # Return the Markdown string directly
         elif 'application/json' in content_type:
             try:
                 data = response.json()
                 if data.get("success"):
-                    print(f"  Successfully fetched JSON data package for {username} (returning data field).")
+                    print(f"  Successfully fetched JSON ledger for {username} (returning data field).")
                     return data.get("data") # Return the 'data' field from JSON
                 else:
-                    print(f"  {LogColors.FAIL}API Error in JSON data package for {username}: {data.get('error', 'Unknown error')}{LogColors.ENDC}")
+                    print(f"  {LogColors.FAIL}API Error in JSON ledger for {username}: {data.get('error', 'Unknown error')}{LogColors.ENDC}")
                     return {"error": data.get('error', 'Unknown error')}
             except json.JSONDecodeError:
-                print(f"  {LogColors.FAIL}Failed to decode JSON response for data package of {username}. Response: {response.text[:200]}{LogColors.ENDC}")
+                print(f"  {LogColors.FAIL}Failed to decode JSON response for ledger of {username}. Response: {response.text[:200]}{LogColors.ENDC}")
                 return {"error": "Failed to decode JSON response", "content_snippet": response.text[:200]}
         else:
-            print(f"  {LogColors.WARNING}Unexpected Content-Type '{content_type}' for data package of {username}. Returning raw text.{LogColors.ENDC}")
+            print(f"  {LogColors.WARNING}Unexpected Content-Type '{content_type}' for ledger of {username}. Returning raw text.{LogColors.ENDC}")
             return response.text # Fallback to raw text for other content types
 
     except requests.exceptions.RequestException as e:
-        print(f"  {LogColors.FAIL}API Error fetching data package for {username}: {e}{LogColors.ENDC}")
+        print(f"  {LogColors.FAIL}API Error fetching ledger for {username}: {e}{LogColors.ENDC}")
         return {"error": str(e)}
     except Exception as e:
-        print(f"  {LogColors.FAIL}Unexpected error fetching data package for {username}: {e}{LogColors.ENDC}")
+        print(f"  {LogColors.FAIL}Unexpected error fetching ledger for {username}: {e}{LogColors.ENDC}")
         return None
 
 def get_kinos_api_key() -> str:
@@ -311,13 +311,13 @@ def generate_ai_response(tables: Dict[str, Table], ai_username: str, sender_user
         notifications_data = _get_notifications_data(tables, ai_username, limit=50)
         relevancies_data = _get_relevancies_data(tables, ai_username, sender_username, limit=50)
         problems_data = _get_problems_data(tables, ai_username, sender_username, limit=50)
-        ai_data_package = _get_data_package_for_citizen(ai_username) # Récupérer uniquement pour l'IA
+        ai_ledger = _get_ledger_for_citizen(ai_username) # Récupérer uniquement pour l'IA
 
         # 2. Construct the addSystem JSON object with limited data
         system_context_data = {
             "ai_citizen_profile": ai_citizen_data,
             "sender_citizen_profile": sender_citizen_data,
-            "ai_citizen_data_package": ai_data_package, # Data package de l'IA (celui qui reçoit)
+            "ai_citizen_ledger": ai_ledger, # Ledger de l'IA (celui qui reçoit)
             "relationship_with_sender": relationship_data,
             "recent_notifications_for_ai": notifications_data[:50],
             "recent_relevancies_ai_to_sender": relevancies_data,
@@ -350,7 +350,7 @@ def generate_ai_response(tables: Dict[str, Table], ai_username: str, sender_user
             f"Guide to 'addSystem' content (use this to make your message relevant and gameplay-focused):\n"
             f"- 'ai_citizen_profile': Your own detailed profile (status, wealth, etc.).\n"
             f"- 'sender_citizen_profile': The profile of {sender_display_name}.\n"
-            f"- 'ai_citizen_data_package': A comprehensive data package about YOUR (the AI citizen's) current state, including inventory, buildings, contracts, etc. Use this to understand your own situation.\n"
+            f"- 'ai_citizen_ledger': A comprehensive ledger about YOUR (the AI citizen's) current state, including inventory, buildings, contracts, etc. Use this to understand your own situation.\n"
             f"- 'relationship_with_sender': Your existing relationship status with {sender_display_name}.\n"
             f"- 'recent_notifications_for_ai': Recent news/events you've received that might be relevant to your conversation.\n"
             f"- 'recent_relevancies_ai_to_sender': Why {sender_display_name} (or things related to them) are specifically relevant to you. This is key for a relevant response!\n"
@@ -358,7 +358,7 @@ def generate_ai_response(tables: Dict[str, Table], ai_username: str, sender_user
             f"--- USER'S MESSAGE TO YOU ---\n"
             f"{message_content}\n"
             f"--- END OF USER'S MESSAGE ---\n{suggestion_text}\n"
-            f"If your response involves planning or suggesting strategic actions, consider if any **Stratagems** are relevant. You can enact stratagems via `POST /api/stratagems/try-create`. Details on available stratagems are in `addSystem.ai_citizen_data_package.availableStratagems`.\n"
+            f"If your response involves planning or suggesting strategic actions, consider if any **Stratagems** are relevant. You can enact stratagems via `POST /api/stratagems/try-create`. Details on available stratagems are in `addSystem.ai_citizen_ledger.availableStratagems`.\n"
             f"Your response:"
         )
         

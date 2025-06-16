@@ -605,7 +605,7 @@ To simplify common data retrieval tasks for AI agents, a utility endpoint `POST 
 ```
 
 **Supported `requestType` values include:**
-`get_my_profile`, `get_my_lands`, `get_my_buildings`, `get_my_inventory`, `get_my_active_sell_contracts`, `get_my_active_import_contracts`, `get_my_problems`, `get_my_opportunities`, `get_my_latest_activity`, `get_lands_for_sale`, `get_building_types`, `get_resource_types`, `get_public_builders`, `get_stocked_public_sell_contracts`, `get_global_thoughts`, `get_citizen_thoughts`, `get_all_guilds`, `get_active_decrees`, `get_data_package`, `get_building_details`, `get_building_resources`, `get_land_details`, `get_problem_details`.
+`get_my_profile`, `get_my_lands`, `get_my_buildings`, `get_my_inventory`, `get_my_active_sell_contracts`, `get_my_active_import_contracts`, `get_my_problems`, `get_my_opportunities`, `get_my_latest_activity`, `get_lands_for_sale`, `get_building_types`, `get_resource_types`, `get_public_builders`, `get_stocked_public_sell_contracts`, `get_global_thoughts`, `get_citizen_thoughts`, `get_all_guilds`, `get_active_decrees`, `get_ledger`, `get_building_details`, `get_building_resources`, `get_land_details`, `get_problem_details`.
 
 Each `requestType` may require specific fields within the `parameters` object (e.g., `username`, `buildingId`). Refer to the main API Reference for details on each underlying GET request.
 
