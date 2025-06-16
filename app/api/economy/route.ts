@@ -38,15 +38,15 @@ export async function GET(request: Request) {
       return sum + ducats;
     }, 0);
     
-    // 2. Calculate GDP from transactions
-    const oneYearAgo = new Date();
-    oneYearAgo.setFullYear(oneYearAgo.getFullYear() - 1);
-    const oneYearAgoStr = oneYearAgo.toISOString();
+    // 2. Calculate GDP from transactions (using only last 7 days)
+    const sevenDaysAgo = new Date();
+    sevenDaysAgo.setDate(sevenDaysAgo.getDate() - 7);
+    const sevenDaysAgoStr = sevenDaysAgo.toISOString();
     
     const transactionsRecords = await base(AIRTABLE_TRANSACTIONS_TABLE)
       .select({
         fields: ['Price', 'CreatedAt'],
-        filterByFormula: `{CreatedAt} > '${oneYearAgoStr}'`
+        filterByFormula: `{CreatedAt} > '${sevenDaysAgoStr}'`
       })
       .all();
     
@@ -55,13 +55,8 @@ export async function GET(request: Request) {
       return sum + price;
     }, 0);
     
-    // If we have less than a year of data, project to a full year
-    const oldestTransactionDate = transactionsRecords.length > 0 
-      ? new Date(transactionsRecords[transactionsRecords.length - 1].get('CreatedAt') as string)
-      : new Date();
-    
-    const daysSinceOldestTransaction = Math.max(1, Math.ceil((Date.now() - oldestTransactionDate.getTime()) / (1000 * 60 * 60 * 24)));
-    const projectedYearlyGDP = (transactionsTotal / daysSinceOldestTransaction) * 365;
+    // Project to a full year based on the last 7 days of data
+    const projectedYearlyGDP = (transactionsTotal / 7) * 365;
     
     // 3. Get total outstanding loans
     const loansRecords = await base(AIRTABLE_LOANS_TABLE)
