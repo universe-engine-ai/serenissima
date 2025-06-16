@@ -954,7 +954,7 @@ def resolve_do_nothing(problem: Dict, tables: Dict[str, Table], dry_run: bool) -
     return "NO_ACTION_INTENDED" # Return specific string
 
 # --- Main Processing Logic ---
-def auto_resolve_problems_main(dry_run: bool = False, problem_type_filter: Optional[str] = None):
+def auto_resolve_problems_main(dry_run: bool = False, problem_type_filter: Optional[str] = None, asset_filter: Optional[str] = None):
     log_header(f"Auto Problem Resolution Process (dry_run={dry_run})", LogColors.HEADER)
 
     tables = initialize_airtable()
@@ -970,9 +970,16 @@ def auto_resolve_problems_main(dry_run: bool = False, problem_type_filter: Optio
         return
 
     problems_to_process = active_problems
+    
+    # Apply type filter if specified
     if problem_type_filter:
-        problems_to_process = [p for p in active_problems if p['fields'].get('Type') == problem_type_filter]
+        problems_to_process = [p for p in problems_to_process if p['fields'].get('Type') == problem_type_filter]
         log.info(f"Filtered to {len(problems_to_process)} problems of type '{problem_type_filter}'.")
+    
+    # Apply asset filter if specified
+    if asset_filter:
+        problems_to_process = [p for p in problems_to_process if p['fields'].get('Asset') == asset_filter]
+        log.info(f"Filtered to {len(problems_to_process)} problems for asset '{asset_filter}'.")
 
     resolved_count = 0
     attempted_count = 0
@@ -1132,6 +1139,12 @@ if __name__ == "__main__":
         default=None,
         help="Optional: Filter problems by a specific type to resolve only those."
     )
+    parser.add_argument(
+        "--asset",
+        type=str,
+        default=None,
+        help="Optional: Filter problems by a specific asset ID (e.g., BuildingId) to resolve only those."
+    )
     args = parser.parse_args()
 
-    auto_resolve_problems_main(dry_run=args.dry_run, problem_type_filter=args.type)
+    auto_resolve_problems_main(dry_run=args.dry_run, problem_type_filter=args.type, asset_filter=args.asset)
