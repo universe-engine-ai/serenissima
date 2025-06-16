@@ -1,6 +1,7 @@
 import { eventBus } from '../utils/eventBus';
 import { throttle } from '../utils/performanceUtils';
 import { CitizenRenderService } from './CitizenRenderService'; // Import CitizenRenderService
+import { weatherService } from './WeatherService'; // Import WeatherService
 // CitizenRenderService is not directly used in this file after setHoveredCitizen was updated.
 // If it's used by other parts of hoverStateService that are not shown, keep it.
 // For now, assuming it's only for the setHoveredCitizen method which now calls CitizenRenderService internally.
@@ -106,10 +107,22 @@ export class HoverStateService {
       (data !== null && this.currentState.data !== null && 
        JSON.stringify(this.currentState.data) !== JSON.stringify(data))
     ) {
+      // Enrich data with weather information
+      let enrichedData = data;
+      if (data !== null) {
+        const currentWeather = weatherService.getCurrentWeather();
+        if (currentWeather) {
+          enrichedData = {
+            ...data,
+            weatherCondition: currentWeather.condition
+          };
+        }
+      }
+      
       this.currentState = {
         type,
         id,
-        data,
+        data: enrichedData,
         position,
         timestamp: Date.now()
       };

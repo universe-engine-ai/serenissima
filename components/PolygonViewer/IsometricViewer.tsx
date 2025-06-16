@@ -30,6 +30,7 @@ import BuildingCreationPanel from './BuildingCreationPanel';
 import { renderService } from '@/lib/services/RenderService';
 import { CoordinateService } from '@/lib/services/CoordinateService';
 import { ambientAudioManager } from '@/lib/services/AmbientAudioManager'; // Import AmbientAudioManager
+import { weatherService, WeatherCondition } from '@/lib/services/WeatherService'; // Import WeatherService
 
 interface IsometricViewerProps {
   activeView: 'buildings' | 'land' | 'transport' | 'resources' | 'contracts' | 'governance' | 'loans' | 'knowledge' | 'citizens' | 'guilds';
@@ -135,6 +136,7 @@ export default function IsometricViewer({ activeView, setActiveView, fullWaterGr
   const [showProblemDetailsPanel, setShowProblemDetailsPanel] = useState<boolean>(false);
   const [currentHoverState, setCurrentHoverState] = useState<HoverState>(hoverStateService.getState());
   const [isNight, setIsNight] = useState(false);
+  const [currentWeather, setCurrentWeather] = useState<WeatherCondition>('clear');
   
   // State for BuildingCreationPanel
   const [showBuildingCreationPanel, setShowBuildingCreationPanel] = useState<boolean>(false);
@@ -1847,6 +1849,30 @@ number => {
     }
   }, [buildings, initialPositionCalculated]);
 
+  // Effect to listen for weather updates
+  useEffect(() => {
+    const handleWeatherUpdate = (weatherData: any) => {
+      if (weatherData && weatherData.condition) {
+        setCurrentWeather(weatherData.condition);
+        console.log(`[IsometricViewer] Weather updated to: ${weatherData.condition}`);
+      }
+    };
+
+    // Get initial weather data
+    const initialWeather = weatherService.getCurrentWeather();
+    if (initialWeather) {
+      setCurrentWeather(initialWeather.condition);
+      console.log(`[IsometricViewer] Initial weather: ${initialWeather.condition}`);
+    }
+
+    // Subscribe to weather updates
+    const subscription = eventBus.subscribe(EventTypes.WEATHER_UPDATED, handleWeatherUpdate);
+
+    return () => {
+      subscription.unsubscribe();
+    };
+  }, []);
+
   // Effect to update isNight state based on Venice time
   useEffect(() => {
     const updateNightState = () => {
@@ -2887,8 +2913,20 @@ const darkenColor = (colorStr: string, percent: number): string => {
     // Clear canvas
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     
-    // Draw water background
-    ctx.fillStyle = isNight ? '#001A33' : '#4A9BC1'; // Very Dark Blue for night, Darker desaturated cyan for day
+    // Draw water background with weather-based coloring
+    let waterColor = isNight ? '#001A33' : '#4A9BC1'; // Very Dark Blue for night, Darker desaturated cyan for day
+  
+    // Adjust water color based on weather condition
+    const weatherCondition = currentHoverState.data?.weatherCondition || 'clear';
+    if (weatherCondition === 'rainy') {
+      // Darken the water color for rainy weather
+      waterColor = isNight ? '#00111F' : '#3A7A9B'; // Even darker blue for rainy conditions
+    } else if (weatherCondition === 'windy') {
+      // Slightly choppier look for windy weather (slightly darker with a hint of gray)
+      waterColor = isNight ? '#001528' : '#4089AB'; 
+    }
+  
+    ctx.fillStyle = waterColor;
     ctx.fillRect(0, 0, canvas.width, canvas.height);
   
     // Draw water route in all views, but only if there's a path to show
@@ -3456,7 +3494,8 @@ const darkenColor = (colorStr: string, percent: number): string => {
     waterRoutePath, transportPath, currentHoverState, 
     buildingPositionsCache, canvasDims, // Added canvasDims to ensure re-draw if it changes
     occupantLine, latLngToScreen, // Added occupantLine and latLngToScreen
-    isNight // Added isNight
+    isNight, // Added isNight
+    currentWeather // Added currentWeather
   ]);
   
 

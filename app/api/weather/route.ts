@@ -60,6 +60,8 @@ export async function GET() {
     } else if (windSpeed > 5.0) { // 5 m/s threshold for windy
       condition = 'windy';
     }
+    
+    console.log(`Weather condition determined: ${condition} (rain: ${rainVolumeLastHour}mm/h, wind: ${windSpeed}m/s, main: ${weatherMain})`);
     // Other conditions like 'clouds', 'snow', 'mist' could be mapped to 'clear' or specific states if needed.
 
     const processedData = {
