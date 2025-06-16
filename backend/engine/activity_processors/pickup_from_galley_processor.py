@@ -28,7 +28,7 @@ from backend.engine.utils.relationship_helpers import update_trust_score_for_act
 
 log = logging.getLogger(__name__)
 
-CITIZEN_STORAGE_CAPACITY = 10.0 # Standard citizen carrying capacity
+CITIZEN_STORAGE_CAPACITY = 20.0 # Standard citizen carrying capacity
 
 def _fail_activity_with_note(
     tables: Dict[str, Any], 

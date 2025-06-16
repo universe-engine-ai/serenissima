@@ -163,7 +163,7 @@ def calculate_haversine_distance_meters(lat1: float, lon1: float, lat2: float, l
     distance = R * c
     return distance
 
-CITIZEN_CARRY_CAPACITY = 10.0 # Max items a citizen can carry
+CITIZEN_CARRY_CAPACITY = 20.0 # Max items a citizen can carry
 DEFAULT_CITIZEN_CARRY_CAPACITY = CITIZEN_CARRY_CAPACITY # Default fallback capacity
 
 def get_citizen_effective_carry_capacity(citizen_record: Dict[str, Any]) -> float:

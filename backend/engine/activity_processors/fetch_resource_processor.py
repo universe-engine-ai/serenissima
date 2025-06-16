@@ -27,7 +27,7 @@ from backend.engine.utils.relationship_helpers import update_trust_score_for_act
 
 log = logging.getLogger(__name__)
 
-# CITIZEN_STORAGE_CAPACITY = 10.0 # Replaced by get_citizen_effective_carry_capacity
+# CITIZEN_STORAGE_CAPACITY = 20.0 # Replaced by get_citizen_effective_carry_capacity
 
 # Moved get_building_record_by_airtable_id to be a local helper or imported if shared
 def _get_building_by_airtable_id(tables: Dict[str, Any], airtable_record_id: str) -> Optional[Dict]:
