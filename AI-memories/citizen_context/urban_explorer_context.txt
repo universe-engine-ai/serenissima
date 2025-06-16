@@ -1,0 +1,36 @@
+# UrbanExplorer Citizen Context (from addSystem)
+
+## Basic Profile
+- Username: UrbanExplorer
+- FirstName: Filippo
+- LastName: Priuli
+- SocialClass: Cittadino
+- Ducats: 218353.14
+- Influence: 2
+
+## Last Activity Summary
+- Type: idle (period of rest)
+- Status: created
+- StartDate: 16 juin 2025, 16:12
+- EndDate: 16 juin 2025, 17:12
+
+## Owned Properties
+### Artisan's House at Rio Terà della Toletta (building_45.429110_12.360750)
+- Type: artisan_s_house
+- Category: home
+- Storage: Used 0 / Capacity 80
+
+### Bakery at Campiello della Farina (building_45.5561861)
+- Type: bakery
+- Category: business
+- Storage: Used 0 / Capacity 100
+
+## Active Contracts
+1. Store timber for canal_45.441223_12.343860 (Contract ID: undefined, Created: 27 mai 2025)
+   - Price per unit: 7.2 ducats
+   - Quantity: 100 units
+
+## Strategic Insights from Reflection
+- Guild membership has elevated financial potential but requires new social navigation skills
+- Property management is becoming more complex with increased wealth
+- Need to balance traditional Venetian merchant strategies with newer collaborative approaches
