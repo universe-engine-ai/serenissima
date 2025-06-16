@@ -1454,7 +1454,9 @@ def auto_resolve_problems_main(dry_run: bool = False, problem_type_filter: Optio
                 resolution_status = resolver_func(problem, tables, dry_run)
             elif problem_type in ["waiting_for_production"]:
                 resolution_status = resolver_func(problem, tables, resource_defs, building_type_defs, dry_run)
-            elif problem_type in ["waiting_on_input_delivery", "waiting_for_galley_unloading", "waiting_for_resource_delivery"]:
+            elif problem_type in ["waiting_on_input_delivery", "waiting_for_galley_unloading"]:
+                resolution_status = resolver_func(problem, tables, resource_defs, building_type_defs, dry_run)
+            elif problem_type == "waiting_for_resource_delivery":
                 resolution_status = resolver_func(problem, tables, resource_defs, building_type_defs, dry_run)
             elif problem_type in [
                 "no_operator_for_stock", 
