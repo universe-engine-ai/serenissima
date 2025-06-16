@@ -1,18 +1,18 @@
 # Property and Tenancy Ledger
 
-Last Updated: 2025-05-29
+Last Updated: 2025-06-16
 
 This ledger tracks owned properties, their current tenants, and recent rental income.
 
-## Properties and Current Tenancy Status (as of May 29, 2025)
+## Properties and Current Tenancy Status (as of June 16, 2025)
 
 | Building Name                                       | Current Tenant             | Last Known Rent Received | Rent Date  | Notes                                      |
 |-----------------------------------------------------|----------------------------|--------------------------|------------|--------------------------------------------|
-| Fisherman's Cottage at Fondamenta del Leone Bianco  | Tommaso Rossi              | 1,170 ⚜️ Ducats          | 2025-05-29 | Tenant assigned May 29. Rent from summary. |
-| Artisan's House at Calle del Forno Vecchio          | Vittoria Zanatta           | 1,780 ⚜️ Ducats          | 2025-05-29 | Tenant assigned May 29. Rent from summary. |
-| Merchant's House at Calle dei Cerchieri             | Giovanni Contarini         | 905 ⚜️ Ducats            | 2025-05-29 | Tenant assigned May 29. Rent from summary. |
-| Fisherman's Cottage at Fondamenta dei Carmelitani   | Zanetta Calderoni          | 1,170 ⚜️ Ducats          | 2025-05-29 | Tenant assigned May 29. Rent from summary. |
-| Artisan's House at Calle dei Squeri                 | Marco de l’Argentoro       | 1,780 ⚜️ Ducats          | 2025-05-29 | Tenant assigned May 29. Rent from summary. |
+| Fisherman's Cottage at Fondamenta del Leone Bianco  | Tommaso Rossi              | 1,125 ⚜️ Ducats          | 2025-06-16 | Tenant assigned May 29. Rent from summary. |
+| Artisan's House at Calle del Forno Vecchio          | Vittoria Zanatta           | 1,750 ⚜️ Ducats          | 2025-06-16 | Tenant assigned May 29. Rent from summary. |
+| Merchant's House at Calle dei Cerchieri             | Giovanni Contarini         | 990 ⚜️ Ducats            | 2025-06-16 | Tenant assigned May 29. Rent from summary. |
+| Fisherman's Cottage at Fondamenta dei Carmelitani   | Zanetta Calderoni          | 1,125 ⚜️ Ducats          | 2025-06-16 | Tenant assigned May 29. Rent from summary. |
+| Artisan's House at Calle dei Squeri                 | Marco de l’Argentoro       | 1,780 ⚜️ Ducats          | 2025-06-16 | Tenant assigned May 29. Rent from summary. |
 | Canal House at Fondamenta dei Mercanti di Tessuti   | The Italian Principalities | N/A                      |            | Tenant assigned May 29. No rent info yet.  |
 
 ## Other Recent Rent Payments (May 28, 2025)
@@ -27,11 +27,11 @@ These payments might be from previous tenants or reflect older rent rates. The b
 | recXcRi5bBs7mJuMi   | Tiara Venier     | 1,230 ⚜️ Ducats  | 2025-05-28   |
 | rectoXyuBLsxcf4z8   | Marco Baffo      | 1,765 ⚜️ Ducats  | 2025-05-28   |
 
-## Summary of Rent Received on May 29, 2025 (Notification #6)
+## Summary of Rent Received on June 16, 2025
 
-Total: **6,805 ⚜️ Ducats** from the following:
-- **1,170 ⚜️ Ducats** from **Tommaso Rossi** for **Fisherman's Cottage at Fondamenta del Leone Bianco**.
-- **905 ⚜️ Ducats** from **Giovanni Contarini** for **Merchant's House at Calle dei Cerchieri**.
-- **1,170 ⚜️ Ducats** from **Zanetta Calderoni** for **Fisherman's Cottage at Fondamenta dei Carmelitani**.
-- **1,780 ⚜️ Ducats** from **Vittoria Zanatta** for **Artisan's House at Calle del Forno Vecchio**.
+Total: **6,770 ⚜️ Ducats** from the following:
+- **1,125 ⚜️ Ducats** from **Tommaso Rossi** for **Fisherman's Cottage at Fondamenta del Leone Bianco**.
+- **990 ⚜️ Ducats** from **Giovanni Contarini** for **Merchant's House at Calle dei Cerchieri**.
+- **1,125 ⚜️ Ducats** from **Zanetta Calderoni** for **Fisherman's Cottage at Fondamenta dei Carmelitani**.
+- **1,750 ⚜️ Ducats** from **Vittoria Zanatta** for **Artisan's House at Calle del Forno Vecchio**.
 - **1,780 ⚜️ Ducats** from **Marco de l’Argentoro** for **Artisan's House at Calle dei Squeri**.
