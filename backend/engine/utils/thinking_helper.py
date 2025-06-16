@@ -1312,7 +1312,14 @@ def process_continue_thought(
         
         # Get the content of the most recent thought
         thought_content = most_recent_thought['fields'].get('Content', '')
+        # Ensure thought_content is a string
+        if not isinstance(thought_content, str):
+            thought_content = str(thought_content)
+            
         thought_type = most_recent_thought['fields'].get('Type', 'unknown')
+        # Ensure thought_type is a string
+        if not isinstance(thought_type, str):
+            thought_type = str(thought_type)
         
         # Fetch data package for context
         data_package_markdown_str = None
