@@ -244,8 +244,18 @@ def try_create(
                             break 
                         else:
                             log.info(f"  Dynamic source finding: Contract {contract_rec_dyn['id']} viable, but workshop operator {workshop_operator_for_payment} has insufficient ducats ({operator_ducats:.2f}) for cost {total_cost:.2f}.")
-            
-            if best_source_contract_record:
+                
+                if best_source_contract_record:
+                    final_from_building_custom_id = best_source_contract_record['fields']['SellerBuilding']
+                    final_contract_custom_id = best_source_contract_record['fields'].get('ContractId', best_source_contract_record['id'])
+                    dynamically_found_source_bldg_rec = get_building_record(tables, final_from_building_custom_id)
+                    dynamically_found_source_bldg_name = dynamically_found_source_bldg_rec['fields'].get('Name', final_from_building_custom_id) if dynamically_found_source_bldg_rec else final_from_building_custom_id
+                    log.info(f"{LogColors.ACTIVITY}[FetchCreator] Dynamically found source: Building {final_from_building_custom_id} (Name: {dynamically_found_source_bldg_name}) via contract {final_contract_custom_id} for {resource_type_id}.")
+                else:
+                    log.warning(f"{LogColors.ACTIVITY}[FetchCreator] No suitable public_sell contract found for {resource_type_id} (amount: {amount}) after dynamic search.")
+                    # TODO: Could add logic to find producer buildings as a fallback.
+            except Exception as e_dyn_src:
+                log.error(f"{LogColors.ACTIVITY}[FetchCreator] Error during dynamic source finding for {resource_type_id}: {e_dyn_src}")
                 final_from_building_custom_id = best_source_contract_record['fields']['SellerBuilding']
                 final_contract_custom_id = best_source_contract_record['fields'].get('ContractId', best_source_contract_record['id'])
                 dynamically_found_source_bldg_rec = get_building_record(tables, final_from_building_custom_id)
