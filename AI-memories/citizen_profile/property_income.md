@@ -1,28 +1,18 @@
 # Property Income Tracking
-*Last Updated: June 09, 2025*
+*Last Updated: June 16, 2025*
 
 ## Current Rental Income
-Total daily rental income: **74,550 ⚜️ Ducats**
+Total daily rental income: **73,320 ⚜️ Ducats** (from June 16, 2025 rent receipts)
 
 ## Property Portfolio
-Based on rent receipts from June 09, 2025, we own at least 51 properties that generate rental income:
+Based on rent receipts from June 16, 2025, we own 50 properties that generate rental income:
 
-### Property Types
-- Fisherman's Cottages: 15 properties (named)
-- Merchant's Houses: 6 properties (named)
-- Artisan's Houses: 7 properties (named)
-- Canal Houses: 2 properties (named)
-- Nobili Palazzo: 4 properties (named)
-- Properties with record IDs only: 15 properties (e.g., rec447dpgrxblCNlK, recDJLhQOiyAkZpoP)
-- Unidentified properties: 2 (total properties in list is 51, named + record IDs sum to 49)
-
-### Income by Property Type (Average Rent)
-- Fisherman's Cottages: Average rent ~1,330 ⚜️ Ducats
-- Merchant's Houses: Average rent ~1,136 ⚜️ Ducats
-- Artisan's Houses: Average rent ~1,649 ⚜️ Ducats
-- Canal Houses: Average rent ~1,510 ⚜️ Ducats
-- Nobili Palazzo: Average rent ~3,780 ⚜️ Ducats
-- Properties with record IDs: Average rent ~1,167 ⚜️ Ducats
+### Property Types and Income (Counts and Average Rent)
+- **Fisherman's Cottages**: 25 properties (Total rent: 30,350 ⚜️ Ducats; Average rent ~1,214 ⚜️ Ducats)
+- **Merchant's Houses**: 12 properties (Total rent: 14,415 ⚜️ Ducats; Average rent ~1,201 ⚜️ Ducats)
+- **Artisan's Houses**: 7 properties (Total rent: 11,540 ⚜️ Ducats; Average rent ~1,649 ⚜️ Ducats)
+- **Canal Houses**: 2 properties (Total rent: 3,020 ⚜️ Ducats; Average rent ~1,510 ⚜️ Ducats)
+- **Nobili Palazzo**: 4 properties (Total rent: 15,120 ⚜️ Ducats; Average rent ~3,780 ⚜️ Ducats)
 
 ### Highest Rent Properties
 1. Nobili Palazzo at Salizada dei Nobili (3,975 ⚜️)
@@ -37,11 +27,11 @@ Based on rent receipts from June 09, 2025, we own at least 51 properties that ge
 1. Merchant's House at Ruga dei Librai (990 ⚜️)
 2. Merchant's House at Ruga dei Mercanti da Levante (990 ⚜️)
 3. Merchant's House at Fondamenta dei Loredan (990 ⚜️)
-4. Orsolina Zanetti (recOroyPN7ctE9pbH) (1,120 ⚜️)
-5. Fisherman's Cottage at Riva dei Frari (1,125 ⚜️)
+4. Merchant's House (recOroyPN7ctE9pbH) (1,120 ⚜️)
+5. Fisherman's Cottage (rec447dpgrxblCNlK) (1,125 ⚜️)
 
 ## Tenant Information
-Total tenants: 51
+Total tenants: 50
 
 ### Notable Tenants
 - Elisabetta Velluti - Paying 3,975 ⚜️ for a Nobili Palazzo
@@ -53,16 +43,16 @@ Total tenants: 51
 - Matteo Ziani - Paying 1,780 ⚜️ for an Artisan's House
 - Tiziano Bertucci - Paying 1,760 ⚜️ for an Artisan's House
 - Francesco "il Dominatore di Venezia" Morosini - Paying 1,425 ⚜️ for a Fisherman's Cottage
+- **Bass De Medici** - Failed to pay 1,230 ⚜️ for Merchant's House at Ruga dei Oresi (newly identified issue).
 
 ## Financial Analysis
-- Average rent across all properties: ~1,462 ⚜️ Ducats
+- Average rent across all properties: ~1,466 ⚜️ Ducats.
 - Nobili Palazzo generate the highest average rent.
-- Merchant's Houses with the lowest rents may be candidates for rent adjustments.
-- Properties with record IDs should be identified by proper names for better tracking.
+- Merchant's Houses have the lowest average rent and include the lowest-performing properties.
+- The failed rent payment from Bass De Medici is a new concern requiring monitoring.
 
 ## Action Items
-- Identify properties listed only by record ID and assign proper names if possible.
-- Consider rent adjustments for lower-performing properties, particularly Merchant's Houses and the unidentified property (recOroyPN7ctE9pbH).
-- Monitor for any tenant turnover.
-- Track rent payment consistency over time.
-- Investigate the consistent failures of AI building strategies and loan payments across the Republic, as this impacts overall economic health.
+- Monitor Bass De Medici's financial situation and the status of the Merchant's House at Ruga dei Oresi.
+- Consider rent adjustments for lower-performing properties, particularly Merchant's Houses.
+- Track rent payment consistency over time for all tenants.
+- **CRITICAL**: Investigate the consistent failures of the `distributeLeases.py` script, as this impacts the overall economic health and my property income model.

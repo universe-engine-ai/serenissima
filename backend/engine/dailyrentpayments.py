@@ -203,7 +203,7 @@ def create_notification(tables, citizen: str, content: str, details: Dict) -> Op
         log.error(f"Error creating notification for citizen {citizen}: {e}")
         return None
 
-def process_housing_rent(tables, building: Dict, dry_run: bool = False) -> Tuple[bool, float]:
+def process_housing_rent(tables, building: Dict, dry_run: bool = False) -> Tuple[bool, float, str, str, str, str]:
     """Process a housing rent payment from a citizen to a building owner."""
     building_id = building['id']
     building_name = building['fields'].get('Name', building_id)
@@ -225,22 +225,22 @@ def process_housing_rent(tables, building: Dict, dry_run: bool = False) -> Tuple
     # Skip if any required field is missing
     if not building_owner or not occupant_username or rent_price <= 0:
         log.warning(f"Missing required fields for rent payment, skipping")
-        return False, 0
+        return False, 0, "", "", "", ""
     
     # Skip if building owner and occupant are the same
     if building_owner == occupant_username:
         log.info(f"Building owner and occupant are the same ({building_owner}), skipping payment")
-        return True, 0  # Return True but 0 amount as this is not an error
+        return True, 0, building_owner, occupant_username, "", building_name  # Return True but 0 amount as this is not an error
     
     if dry_run:
         log.info(f"[DRY RUN] Would transfer {rent_price} ⚜️ Ducats from {occupant_username} to {building_owner}")
-        return True, rent_price
+        return True, rent_price, building_owner, occupant_username, "", building_name
     
     # Find occupant citizen record
     occupant_record = find_citizen_by_identifier(tables, occupant_username)
     if not occupant_record:
         log.warning(f"Occupant {occupant_username} not found, skipping payment")
-        return False, 0
+        return False, 0, "", "", "", ""
     
     citizen_name = f"{occupant_record['fields'].get('FirstName', '')} {occupant_record['fields'].get('LastName', '')}"
     citizen_ducats = occupant_record['fields'].get('Ducats', 0)
@@ -251,7 +251,7 @@ def process_housing_rent(tables, building: Dict, dry_run: bool = False) -> Tuple
     building_owner_record = find_citizen_by_identifier(tables, building_owner)
     if not building_owner_record:
         log.warning(f"Building owner {building_owner} not found, skipping payment")
-        return False, 0
+        return False, 0, "", "", "", ""
     
     # Check if citizen has enough wealth
     if citizen_ducats < rent_price:
@@ -274,7 +274,7 @@ def process_housing_rent(tables, building: Dict, dry_run: bool = False) -> Tuple
             }
         )
         
-        return False, 0
+        return False, 0, "", "", "", ""
     
     # Process the payment
     # 1. Deduct from occupant's Ducats balance
@@ -414,21 +414,27 @@ def process_daily_rent_payments(dry_run: bool = False):
                 continue
 
             total_received_by_landlord = sum(p['amount'] for p in payments)
-            summary_content = f"💰 Récapitulatif des loyers reçus :\nVous avez reçu un total de **{int(total_received_by_landlord):,} ⚜️ Ducats**.\n\n"
+            summary_content_lines = [
+                f"💰 Récapitulatif des loyers reçus :",
+                f"Vous avez reçu un total de **{int(total_received_by_landlord):,} ⚜️ Ducats**.",
+                "" # Empty line for spacing
+            ]
             summary_details_list = []
 
             for payment in payments:
-                summary_content += f"- **{int(payment['amount']):,} ⚜️ Ducats** de **{payment['occupant_name']}** pour **{payment['building_name']}**.\n"
+                summary_content_lines.append(f"- ✅ **{int(payment['amount']):,} ⚜️ Ducats** from **{payment['occupant_name']}** for **{payment['building_name']}**.")
                 summary_details_list.append({
                     "occupant_name": payment['occupant_name'],
                     "building_name": payment['building_name'],
                     "amount": payment['amount']
                 })
             
+            final_summary_content = "\n".join(summary_content_lines)
+
             create_notification(
                 tables,
                 landlord_username,
-                summary_content, # Content is the formatted string
+                final_summary_content, # Content is the formatted string
                 { # Details is a structured object
                     "event_type": "landlord_rent_summary",
                     "total_received": total_received_by_landlord,
