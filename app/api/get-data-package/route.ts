@@ -835,8 +835,15 @@ async function fetchStratagemDefinitions(): Promise<Record<string, Record<string
 function formatDate(dateString?: string | Date): string {
   if (!dateString) return 'N/A';
   try {
+    // Create a date object from the input
+    const date = new Date(dateString);
+    
+    // Subtract 500 years from the date
+    const adjustedDate = new Date(date);
+    adjustedDate.setFullYear(date.getFullYear() - 500);
+    
     // Ensure dates are displayed in Venice time for human readability
-    return new Date(dateString).toLocaleString('fr-FR', { dateStyle: 'medium', timeStyle: 'short', timeZone: 'Europe/Rome' });
+    return adjustedDate.toLocaleString('fr-FR', { dateStyle: 'medium', timeStyle: 'short', timeZone: 'Europe/Rome' });
   } catch (e) {
     return String(dateString); // Fallback if date is invalid
   }
@@ -1029,10 +1036,13 @@ function convertDataPackageToMarkdown(dataPackage: any, citizenUsername: string 
     md += `Location not available\n`;
   }
   
-  // Add current date
+  // Add current date (subtract 500 years)
   const currentDate = new Date();
+  const historicalDate = new Date(currentDate);
+  historicalDate.setFullYear(currentDate.getFullYear() - 500);
+  
   md += `\n## Current Date\n`;
-  md += `${formatDate(currentDate)}\n`;
+  md += `${formatDate(historicalDate)}\n`;
   md += '\n';
 
   // Last Activity
