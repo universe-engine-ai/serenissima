@@ -886,9 +886,12 @@ function formatSimpleObjectForMarkdown(obj: Record<string, any> | null, fieldsTo
 
 function convertDataPackageToMarkdown(dataPackage: any, citizenUsername: string | null): string {
   let md = `# Data Package for ${citizenUsername || 'Unknown Citizen'}\n\n`;
-
+  
+  // Create tabs for different sections
+  md += `## Overview\n\n`;
+  
   // Citizen Details
-  md += `## Citizen Details\n`;
+  md += `### Citizen Details\n`;
   
   // Format ducats as integer if present
   if (dataPackage.citizen?.ducats !== undefined && dataPackage.citizen.ducats !== null) {
@@ -1193,15 +1196,18 @@ function convertDataPackageToMarkdown(dataPackage: any, citizenUsername: string 
   md += formatSimpleObjectForMarkdown(dataPackage.guildDetails, ['guildName', 'guildId', 'guildTier', 'shortDescription']);
   md += '\n';
 
+  // Create a separate tab for Loans
+  md += `## Loans\n\n`;
+  
   // Citizen Loans
-  md += `## Loans (${dataPackage.citizenLoans?.length || 0})\n`;
+  md += `### Active Loans (${dataPackage.citizenLoans?.length || 0})\n`;
   if (dataPackage.citizenLoans && dataPackage.citizenLoans.length > 0) {
     dataPackage.citizenLoans.forEach((loan: any, index: number) => {
-      md += `### Loan ${index + 1}: ${loan.name || loan.loanId}\n`;
+      md += `#### Loan ${index + 1}: ${loan.name || loan.loanId}\n`;
       md += formatSimpleObjectForMarkdown(loan, ['lender', 'borrower', 'type', 'status', 'principalAmount', 'interestRate', 'termDays', 'remainingBalance', 'createdAt']);
     });
   } else {
-    md += `- No loans.\n\n`;
+    md += `- No active loans.\n\n`;
   }
 
   // Strongest Relationships
