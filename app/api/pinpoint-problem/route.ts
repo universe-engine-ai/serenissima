@@ -238,25 +238,55 @@ export async function GET(request: NextRequest) {
     ];
     const contractFormula = `AND(${conditions.join(', ')})`;
 
-    const activeSellContracts = await base(CONTRACTS_TABLE).select({
-      filterByFormula: contractFormula,
-      maxRecords: 1,
-    }).firstPage();
+    // Get building type definition to check if this resource should be sold
+    const buildingTypeStr = buildingFields.Type as string;
+    const buildingTypeDef = buildingTypeStr ? await getBuildingTypeDefinition(buildingTypeStr) : null;
+    
+    // Check if this resource is supposed to be sold by this building type
+    let shouldSellResource = false;
+    if (buildingTypeDef && buildingTypeDef.productionInformation && 
+        Array.isArray(buildingTypeDef.productionInformation.sells)) {
+      shouldSellResource = buildingTypeDef.productionInformation.sells.includes(resourceType);
+    }
+    
+    // Only check for sale contract if this resource is supposed to be sold
+    if (shouldSellResource) {
+      const activeSellContracts = await base(CONTRACTS_TABLE).select({
+        filterByFormula: contractFormula,
+        maxRecords: 1,
+      }).firstPage();
 
-    if (activeSellContracts.length === 0) {
-      const problem: ProblemDetails = {
-        problemId: `problem_pinpoint_${buildingId}_${resourceType}_NO_SALE_CONTRACT`, // Changed from resourceId
-        type: 'resource_not_for_sale', // Changed from 'resource_availability'
-        title: `Resource Not For Sale: ${resourceType} at ${buildingName}`, // Changed from resourceId
-        description: `The resource '${resourceType}' is not currently listed for sale (no active 'public_sell' contract) at building '${buildingName}' (ID: ${buildingId}).`, // Changed from resourceId
-        severity: 3, // Medium severity
-        citizenToNotify: responsibleCitizen,
-        buildingPosition,
-        buildingName,
-        asset: buildingId,
-        assetType: 'building',
-        solutions: `To resolve this:\n- Create an active 'public_sell' contract for '${resourceType}' from building '${buildingName}'.\n- Ensure the contract has a positive TargetAmount and its EndAt date is in the future.`
-      };
+      if (activeSellContracts.length === 0) {
+        const problem: ProblemDetails = {
+          problemId: `problem_pinpoint_${buildingId}_${resourceType}_NO_SALE_CONTRACT`,
+          type: 'resource_not_for_sale',
+          title: `Resource Not For Sale: ${resourceType} at ${buildingName}`,
+          description: `The resource '${resourceType}' is not currently listed for sale (no active 'public_sell' contract) at building '${buildingName}' (ID: ${buildingId}).`,
+          severity: 3, // Medium severity
+          citizenToNotify: responsibleCitizen,
+          buildingPosition,
+          buildingName,
+          asset: buildingId,
+          assetType: 'building',
+          solutions: `To resolve this:\n- Create an active 'public_sell' contract for '${resourceType}' from building '${buildingName}'.\n- Ensure the contract has a positive TargetAmount and its EndAt date is in the future.`
+        };
+        // Problem creation moved to Python script
+        return NextResponse.json({ 
+          success: true, 
+          problem_identified: true, 
+          issue: 'NO_SALE_CONTRACT', 
+          problemDetails: problem,
+          problems: [problem] // Return as array for consistency
+        });
+      }
+    } else {
+      // If the resource is not meant to be sold, return success with no problem
+      return NextResponse.json({ 
+        success: true, 
+        problem_identified: false, 
+        problems: [], 
+        message: `Resource '${resourceType}' is not intended to be sold at '${buildingName}' (ID: ${buildingId}). It is an input resource used for production.`
+      });
       // Problem creation moved to Python script
       return NextResponse.json({ 
         success: true, 
