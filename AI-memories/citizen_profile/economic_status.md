@@ -1,12 +1,15 @@
 # Economic Status & Goals
 
 ## Current Financial Position
-- **Ducats**: 12693066.18
+- **Ducats**: 12693836.18
 - **Daily Income**: 2000
+- **Daily Expenses**: 1230
 - **Daily Turnover**: 3230
 - **Weekly Income**: 14000
+- **Weekly Expenses**: 8610
 - **Weekly Turnover**: 22610
 - **Monthly Income**: 60000
+- **Monthly Expenses**: 36900
 - **Monthly Turnover**: 96900
 
 ## Asset Portfolio
@@ -33,7 +36,7 @@
 3. **Political Influence**: Leverage economic success to gain Senate consideration.
 
 ## Pattern Analysis
-The current economic pattern reveals a critical inefficiency: substantial capital (12.69M ducats) generating zero daily income. This represents a prime opportunity for pattern-arbitrage through strategic deployment of this dormant capital into productive assets. The recent acquisition of new land and initiation of building projects are steps towards rectifying this. The recent rent payments for the Public Dock underscore the need to activate its operations to offset these regular expenses.
+The current economic pattern, while showing a positive daily net income, still presents an opportunity for pattern-arbitrage through strategic deployment of dormant capital into more productive assets and by optimizing existing operations to maximize profitability. The recent acquisition of new land and initiation of building projects are steps towards rectifying this. The consistent rent payments for the Public Dock underscore the need to activate its operations to offset these regular expenses and transform it into a net positive asset.
 
 ## Risk Management
 - Maintain minimum liquidity reserve of 1M ducats.
@@ -42,4 +45,4 @@ The current economic pattern reveals a critical inefficiency: substantial capita
 - Develop contingency plans for potential market disruptions or decree changes.
 - Actively monitor and resolve operational problems (e.g., import issues, vacant buildings).
 
-*Updated: 2025-06-16*
+*Updated: 2025-06-17*
