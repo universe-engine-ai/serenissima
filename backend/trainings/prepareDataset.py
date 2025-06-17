@@ -1,58 +1,55 @@
 import os
 import json
 import sys
+import logging
 from datetime import datetime
 from typing import Dict, List, Any, Optional
+from dotenv import load_dotenv
+
+# Load environment variables
+load_dotenv()
 
 # Add parent directory to path to be able to import modules
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../..')))
 
-try:
-    # Try direct import first
-    from engine.utils.activity_helpers import get_tables
-    from engine.utils.airtable_helpers import update_record
-except ImportError:
+# Set up logging
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+)
+log = logging.getLogger("prepare_dataset")
+
+def initialize_airtable():
+    """Initialize Airtable connection."""
+    api_key = os.environ.get('AIRTABLE_API_KEY')
+    base_id = os.environ.get('AIRTABLE_BASE_ID')
+    
+    if not api_key or not base_id:
+        log.error("Missing Airtable credentials. Set AIRTABLE_API_KEY and AIRTABLE_BASE_ID environment variables.")
+        sys.exit(1)
+    
     try:
-        # Try with absolute path
-        sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../..')))
-        from backend.engine.utils.activity_helpers import get_tables
-        from backend.engine.utils.airtable_helpers import update_record
-    except ImportError:
-        try:
-            # Try with direct backend import
-            from backend.engine.utils.activity_helpers import get_tables
-            from backend.engine.utils.airtable_helpers import update_record
-        except ImportError:
-            print("Error importing modules. Make sure you're running this script from the root directory.")
-            sys.exit(1)
+        from pyairtable import Api, Table
+        
+        # Return a dictionary of table objects using pyairtable
+        return {
+            'TRAININGS': Table(api_key, base_id, 'TRAININGS'),
+            'CITIZENS': Table(api_key, base_id, 'CITIZENS')
+        }
+    except Exception as e:
+        log.error(f"Failed to initialize Airtable: {e}")
+        sys.exit(1)
 
-# Color configuration for logging
-class LogColors:
-    HEADER = '\033[95m'
-    OKBLUE = '\033[94m'
-    OKCYAN = '\033[96m'
-    OKGREEN = '\033[92m'
-    WARNING = '\033[93m'
-    FAIL = '\033[91m'
-    ENDC = '\033[0m'
-    BOLD = '\033[1m'
-    UNDERLINE = '\033[4m'
+def update_record(table, record_id, fields):
+    """Update an Airtable record."""
+    try:
+        table.update(record_id, fields)
+        return True
+    except Exception as e:
+        log.error(f"Error updating record {record_id}: {e}")
+        return False
 
-def log_info(message: str) -> None:
-    """Display a formatted information message."""
-    print(f"{LogColors.OKBLUE}[INFO]{LogColors.ENDC} {message}")
-
-def log_success(message: str) -> None:
-    """Display a formatted success message."""
-    print(f"{LogColors.OKGREEN}[SUCCESS]{LogColors.ENDC} {message}")
-
-def log_warning(message: str) -> None:
-    """Display a formatted warning message."""
-    print(f"{LogColors.WARNING}[WARNING]{LogColors.ENDC} {message}")
-
-def log_error(message: str) -> None:
-    """Display a formatted error message."""
-    print(f"{LogColors.FAIL}[ERROR]{LogColors.ENDC} {message}")
 
 def generate_system_message(citizen_data: Dict[str, Any]) -> str:
     """
@@ -106,45 +103,36 @@ def process_trainings() -> None:
     Process entries from the TRAININGS table and generate a system message
     for those that don't have one.
     """
-    log_info("Loading Airtable tables...")
-    tables = get_tables()
-    
-    if 'TRAININGS' not in tables:
-        log_error("TRAININGS table not found in Airtable.")
-        return
-    
-    if 'CITIZENS' not in tables:
-        log_error("CITIZENS table not found in Airtable.")
-        return
+    log.info("Loading Airtable tables...")
+    tables = initialize_airtable()
     
     trainings_table = tables['TRAININGS']
     citizens_table = tables['CITIZENS']
     
     # Retrieve all records from the TRAININGS table
-    log_info("Retrieving records from the TRAININGS table...")
+    log.info("Retrieving records from the TRAININGS table...")
     trainings_records = []
     
-    def process_page(records, fetch_next_page):
-        trainings_records.extend(records)
-        fetch_next_page()
-    
-    trainings_table.select().eachPage(process_page, lambda error: None if error is None else log_error(f"Error retrieving records: {error}"))
-    
-    log_info(f"Total number of TRAININGS records: {len(trainings_records)}")
+    try:
+        trainings_records = trainings_table.all()
+        log.info(f"Total number of TRAININGS records: {len(trainings_records)}")
+    except Exception as e:
+        log.error(f"Error retrieving TRAININGS records: {e}")
+        return
     
     # Create a dictionary of citizens for quick access
     citizens_dict = {}
     
-    def process_citizens_page(records, fetch_next_page):
-        for record in records:
+    try:
+        citizens_records = citizens_table.all()
+        for record in citizens_records:
             username = record.get('fields', {}).get('Username')
             if username:
                 citizens_dict[username] = record.get('fields', {})
-        fetch_next_page()
-    
-    citizens_table.select().eachPage(process_citizens_page, lambda error: None if error is None else log_error(f"Error retrieving citizens: {error}"))
-    
-    log_info(f"Total number of citizens loaded: {len(citizens_dict)}")
+        log.info(f"Total number of citizens loaded: {len(citizens_dict)}")
+    except Exception as e:
+        log.error(f"Error retrieving CITIZENS records: {e}")
+        return
     
     # Process each TRAININGS record
     updated_count = 0
@@ -152,7 +140,7 @@ def process_trainings() -> None:
     error_count = 0
     
     for record in trainings_records:
-        record_id = record.id
+        record_id = record['id']
         fields = record.get('fields', {})
         
         # Check if the record already has a system message
@@ -163,14 +151,14 @@ def process_trainings() -> None:
         # Get the citizen username
         citizen_username = fields.get('Citizen')
         if not citizen_username:
-            log_warning(f"Record {record_id} has no Citizen field, skipping.")
+            log.warning(f"Record {record_id} has no Citizen field, skipping.")
             skipped_count += 1
             continue
         
         # Get citizen data
         citizen_data = citizens_dict.get(citizen_username)
         if not citizen_data:
-            log_warning(f"Citizen {citizen_username} not found in CITIZENS table, skipping record {record_id}.")
+            log.warning(f"Citizen {citizen_username} not found in CITIZENS table, skipping record {record_id}.")
             skipped_count += 1
             continue
         
@@ -183,17 +171,20 @@ def process_trainings() -> None:
                 'System': system_message
             }
             
-            update_record(trainings_table, record_id, update_data)
-            updated_count += 1
-            log_success(f"Updated record {record_id} for citizen {citizen_username}")
-            
+            success = update_record(trainings_table, record_id, update_data)
+            if success:
+                updated_count += 1
+                log.info(f"Updated record {record_id} for citizen {citizen_username}")
+            else:
+                error_count += 1
+                
         except Exception as e:
-            log_error(f"Error processing record {record_id}: {str(e)}")
+            log.error(f"Error processing record {record_id}: {str(e)}")
             error_count += 1
     
-    log_info(f"Processing complete. Updated: {updated_count}, Skipped: {skipped_count}, Errors: {error_count}")
+    log.info(f"Processing complete. Updated: {updated_count}, Skipped: {skipped_count}, Errors: {error_count}")
 
 if __name__ == "__main__":
-    log_info("Starting TRAININGS dataset preparation...")
+    log.info("Starting TRAININGS dataset preparation...")
     process_trainings()
-    log_info("Done.")
+    log.info("Done.")
