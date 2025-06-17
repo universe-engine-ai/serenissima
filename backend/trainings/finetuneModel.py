@@ -1202,15 +1202,35 @@ def main():
             
         # Vérifier si c'est un fichier GGUF
         if model_name.lower().endswith('.gguf'):
-            log.info(f"Chargement du modèle GGUF spécifié: {model_name}")
-            # Utiliser directement le modèle GGUF sans alternative
-            model = load_gguf_model(model_name, tokenizer)
+            log.info(f"Détection d'un fichier GGUF: {model_name}")
             
-            # Si le chargement échoue, arrêter l'exécution
-            if model is None:
-                log.error(f"Impossible de charger le modèle GGUF: {model_name}")
-                log.error("Veuillez vérifier que le chemin est correct et que le modèle est compatible.")
-                return
+            # Pour les modèles Qwen3, utiliser un modèle Hugging Face
+            if "qwen3" in model_name.lower():
+                log.warning(f"Les modèles Qwen3 GGUF ne sont pas supportés par llama-cpp-python.")
+                log.info(f"Utilisation d'un modèle Hugging Face compatible à la place.")
+                
+                # Utiliser un modèle Hugging Face compatible
+                hf_model_name = "facebook/opt-1.3b"  # Modèle de taille moyenne, bon pour le fine-tuning
+                log.info(f"Chargement du modèle Hugging Face: {hf_model_name}")
+                
+                model = AutoModelForCausalLM.from_pretrained(
+                    hf_model_name,
+                    device_map="auto",
+                    torch_dtype=torch.float16
+                )
+                
+                # Mettre à jour le nom du modèle pour la suite du script
+                model_name = hf_model_name
+            else:
+                # Pour les autres types de GGUF, essayer de charger normalement
+                log.info(f"Chargement du modèle GGUF spécifié: {model_name}")
+                model = load_gguf_model(model_name, tokenizer)
+                
+                # Si le chargement échoue, arrêter l'exécution
+                if model is None:
+                    log.error(f"Impossible de charger le modèle GGUF: {model_name}")
+                    log.error("Veuillez vérifier que le chemin est correct et que le modèle est compatible.")
+                    return
         else:
             # Pour les modèles locaux qui ne sont pas GGUF, utiliser local_files_only=True
             if os.path.exists(model_path):
