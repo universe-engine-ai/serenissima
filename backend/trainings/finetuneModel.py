@@ -784,14 +784,20 @@ def main():
         # Charger le modèle avec les options configurées
         log.info(f"Chargement du modèle {model_name} avec options: {load_options}")
         
-        # Vérifier si le modèle est un chemin local ou contient des caractères spéciaux
-        if os.path.exists(model_name) or '@' in model_name:
-            # Si c'est un chemin local ou contient @, utiliser le chemin directement
-            log.info(f"Utilisation du modèle local ou avec caractères spéciaux: {model_name}")
+        # Vérifier si le modèle est un chemin local
+        if os.path.exists(model_name):
+            # Si c'est un chemin local, utiliser le chemin directement
+            log.info(f"Utilisation du modèle local: {model_name}")
             model_path = model_name
         else:
-            # Sinon, considérer comme un ID de modèle Hugging Face
-            model_path = model_name
+            # Si le modèle contient des caractères spéciaux comme '@', les remplacer par '-'
+            if '@' in model_name:
+                clean_model_name = model_name.replace('@', '-')
+                log.info(f"Remplacement de '@' par '-' dans le nom du modèle: {model_name} -> {clean_model_name}")
+                model_path = clean_model_name
+            else:
+                # Sinon, considérer comme un ID de modèle Hugging Face standard
+                model_path = model_name
             
         model = AutoModelForCausalLM.from_pretrained(
             model_path,
