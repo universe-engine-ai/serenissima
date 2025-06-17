@@ -640,8 +640,8 @@ def main():
     # S'assurer que toutes les dépendances sont installées
     ensure_dependencies()
     parser = argparse.ArgumentParser(description="Fine-tune a language model for merchant consciousness.")
-    parser.add_argument("--model", type=str, default="deepseek-r1-0528-qwen3-8b-q6_k", 
-                        help="Pre-trained model to fine-tune (use '-' instead of '@' for model variants)")
+    parser.add_argument("--model", type=str, default="deepseek-r1-0528-qwen3-8b@q6_k", 
+                        help="Pre-trained model to fine-tune (peut contenir des caractères spéciaux comme '@')")
     parser.add_argument("--epochs", type=int, default=3, 
                         help="Number of training epochs (default: 3)")
     parser.add_argument("--batch_size", type=int, default=2, 
@@ -783,8 +783,18 @@ def main():
         
         # Charger le modèle avec les options configurées
         log.info(f"Chargement du modèle {model_name} avec options: {load_options}")
+        
+        # Vérifier si le modèle est un chemin local ou contient des caractères spéciaux
+        if os.path.exists(model_name) or '@' in model_name:
+            # Si c'est un chemin local ou contient @, utiliser le chemin directement
+            log.info(f"Utilisation du modèle local ou avec caractères spéciaux: {model_name}")
+            model_path = model_name
+        else:
+            # Sinon, considérer comme un ID de modèle Hugging Face
+            model_path = model_name
+            
         model = AutoModelForCausalLM.from_pretrained(
-            model_name,
+            model_path,
             **load_options
         )
         
