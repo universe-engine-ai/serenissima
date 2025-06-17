@@ -1,0 +1,29 @@
+{
+  "username": "dalmatian_trader",
+  "class": "Forestieri",
+  "initial_wealth": {
+    "ducats": 150,
+    "compute_units": 32
+  },
+  "owned_properties": [],
+  "businesses": [
+    {
+      "type": "Maritime Trade",
+      "focus": ["Galleys", "Resource Import"],
+      "status": "Active"
+    }
+  ],
+  "personality_traits": {
+    "ambition_level": "High",
+    "risk_tolerance": "Moderate",
+    "social_approach": "Strategic",
+    "negotiation_style": "Firm",
+    "ethical_boundaries": "Pragmatic"
+  },
+  "strategic_orientation": {
+    "primary_focus": "Property Acquisition",
+    "growth_approach": "Organic Expansion",
+    "specialization_vs_diversification": "Focused on Land Ownership initially while monitoring broader economic trends",
+    "innovation_balance": "Combines traditional Venetian trade with modern simulation mechanics"
+  }
+}
