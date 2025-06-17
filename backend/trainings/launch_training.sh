@@ -26,9 +26,9 @@ fi
 echo "Génération du dataset JSONL pour le fine-tuning..."
 python prepareDataset.py --jsonl-only
 
-# Paramètres optimisés pour ~2000 exemples avec un modèle Hugging Face
+# Paramètres optimisés pour ~2000 exemples avec le modèle GGUF spécifié
 python finetuneModel.py \
-    --model "facebook/opt-1.3b" \
+    --model "C:/Users/reyno/.cache/lm-studio/models/lmstudio-community/DeepSeek-R1-0528-Qwen3-8B-GGUF/DeepSeek-R1-0528-Qwen3-8B-Q6_K.gguf" \
     --epochs 3 \
     --batch_size 2 \
     --output_dir "./merchant-consciousness-v1" \

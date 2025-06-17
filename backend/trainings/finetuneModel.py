@@ -282,14 +282,14 @@ def get_target_modules(model_name):
     """Get appropriate target modules based on model architecture."""
     if "qwen" in model_name.lower():
         # Modules spécifiques pour Qwen3
-        return ["q_proj", "k_proj", "v_proj", "o_proj", 
-                "gate_proj", "up_proj", "down_proj"]
+        return ["wq", "wk", "wv", "wo", 
+                "w1", "w2", "w3"]
     elif "llama" in model_name.lower() or "deepseek" in model_name.lower():
         return ["q_proj", "k_proj", "v_proj", "o_proj", 
-                "gate_proj", "up_proj", "down_proj", "lm_head"]
+                "gate_proj", "up_proj", "down_proj"]
     else:
         # Modules par défaut pour les modèles inconnus
-        return ["query_key_value", "dense", "dense_h_to_4h", "dense_4h_to_h"]
+        return ["q_proj", "k_proj", "v_proj", "o_proj"]
 
 def preprocess_function(examples, tokenizer, max_length=2048):
     """
@@ -987,8 +987,20 @@ def main():
                 
                 # Vérifier si le modèle est un Qwen3
                 if "qwen3" in gguf_path.lower():
-                    log.warning("Les modèles Qwen3 ne sont pas encore bien supportés par llama-cpp-python.")
-                    log.warning("Utilisation d'un modèle Hugging Face alternatif recommandée.")
+                    log.warning("Les modèles Qwen3 nécessitent une version spéciale de llama-cpp-python.")
+                    log.warning("Installation de llama-cpp-python avec support Qwen3...")
+                    
+                    # Installer une version spécifique qui supporte Qwen3
+                    try:
+                        import subprocess
+                        subprocess.check_call([sys.executable, "-m", "pip", "uninstall", "-y", "llama-cpp-python"])
+                        subprocess.check_call([sys.executable, "-m", "pip", "install", "--no-cache-dir", "llama-cpp-python==0.2.38"])
+                        import llama_cpp
+                        log.info("llama-cpp-python avec support Qwen3 installé avec succès")
+                    except Exception as e:
+                        log.error(f"Erreur lors de l'installation de llama-cpp-python avec support Qwen3: {e}")
+                        log.error("Impossible de charger le modèle Qwen3 GGUF")
+                        return None
                 
                 # Créer un wrapper pour le modèle GGUF ou un modèle factice
                 from transformers import PreTrainedModel, PretrainedConfig
@@ -1026,13 +1038,12 @@ def main():
                                 log.info(f"Modèle GGUF chargé avec succès via llama-cpp: {config.gguf_path}")
                             except Exception as e:
                                 log.error(f"Erreur lors du chargement du modèle avec llama-cpp: {e}")
-                                # Créer un modèle factice pour permettre au code de continuer
-                                self.llm = None
-                                log.warning("Utilisation d'un modèle factice pour continuer l'exécution")
+                                # Ne pas créer de modèle factice, retourner None pour arrêter l'exécution
+                                return None
                         else:
-                            # Si llama_cpp n'est pas disponible, utiliser un modèle factice
-                            self.llm = None
-                            log.warning("llama_cpp n'est pas disponible, utilisation d'un modèle factice")
+                            # Si llama_cpp n'est pas disponible, retourner None pour arrêter l'exécution
+                            log.error("llama_cpp n'est pas disponible, impossible de charger le modèle GGUF")
+                            return None
                         
                         self.tokenizer = tokenizer
                         # Définir la taille du vocabulaire en fonction du tokenizer
@@ -1117,8 +1128,8 @@ def main():
                     def generate(self, input_ids, **kwargs):
                         return input_ids
                 
-                log.warning("Utilisation d'un modèle factice pour continuer l'exécution")
-                return DummyModel(DummyConfig())
+                log.error("Impossible de charger le modèle GGUF. Arrêt de l'exécution.")
+                return None
         
         # Charger le modèle avec les options configurées
         log.info(f"Chargement du modèle {model_name} avec options: {load_options}")
@@ -1193,6 +1204,12 @@ def main():
             log.info(f"Chargement du modèle GGUF spécifié: {model_name}")
             # Utiliser directement le modèle GGUF sans alternative
             model = load_gguf_model(model_name, tokenizer)
+            
+            # Si le chargement échoue, arrêter l'exécution
+            if model is None:
+                log.error(f"Impossible de charger le modèle GGUF: {model_name}")
+                log.error("Veuillez vérifier que le chemin est correct et que le modèle est compatible.")
+                return
         else:
             # Pour les modèles locaux qui ne sont pas GGUF, utiliser local_files_only=True
             if os.path.exists(model_path):
@@ -1260,87 +1277,10 @@ def main():
                 else:
                     log.info("Aucun modèle GGUF trouvé dans les emplacements courants.")
         
-        # Créer un modèle et un tokenizer factices pour permettre au code de continuer
-        try:
-            log.warning("Tentative de création d'un modèle et tokenizer factices pour continuer l'exécution...")
-            
-            # Créer un tokenizer simple
-            from transformers import PreTrainedTokenizer
-            
-            class SimpleTokenizer(PreTrainedTokenizer):
-                def __init__(self):
-                    super().__init__(bos_token="<s>", eos_token="</s>", pad_token="<pad>", unk_token="<unk>")
-                    self.vocab = {c: i for i, c in enumerate("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789 .,;:!?'\"-+=/\\()[]{}<>|@#$%^&*~`")}
-                    self.vocab.update({self.bos_token: len(self.vocab), self.eos_token: len(self.vocab) + 1, 
-                                      self.pad_token: len(self.vocab) + 2, self.unk_token: len(self.vocab) + 3})
-                    self.ids_to_tokens = {v: k for k, v in self.vocab.items()}
-                
-                def _tokenize(self, text):
-                    return list(text)
-                
-                def _convert_token_to_id(self, token):
-                    return self.vocab.get(token, self.vocab.get(self.unk_token))
-                
-                def _convert_id_to_token(self, index):
-                    return self.ids_to_tokens.get(index, self.unk_token)
-                
-                def convert_tokens_to_string(self, tokens):
-                    return "".join(tokens)
-                
-                @property
-                def vocab_size(self):
-                    return len(self.vocab)
-            
-            tokenizer = SimpleTokenizer()
-            log.info("Tokenizer simple créé avec succès")
-            
-            # Créer un modèle factice
-            from transformers import PreTrainedModel, PretrainedConfig
-            
-            class DummyConfig(PretrainedConfig):
-                model_type = "dummy"
-                
-                def __init__(self, **kwargs):
-                    super().__init__(**kwargs)
-                    self.vocab_size = len(tokenizer.vocab)
-                    self.hidden_size = 768
-                    self.num_hidden_layers = 12
-                    self.num_attention_heads = 12
-            
-            class DummyModel(PreTrainedModel):
-                config_class = DummyConfig
-                
-                def __init__(self, config):
-                    super().__init__(config)
-                    self.embeddings = torch.nn.Embedding(config.vocab_size, config.hidden_size)
-                    self.lm_head = torch.nn.Linear(config.hidden_size, config.vocab_size)
-                
-                def forward(self, input_ids=None, attention_mask=None, **kwargs):
-                    batch_size = input_ids.shape[0] if input_ids is not None else 1
-                    seq_len = input_ids.shape[1] if input_ids is not None else 10
-                    return {"logits": torch.zeros((batch_size, seq_len, self.config.vocab_size))}
-                
-                def generate(self, input_ids=None, **kwargs):
-                    return input_ids if input_ids is not None else torch.zeros((1, 10), dtype=torch.long)
-                
-                def get_input_embeddings(self):
-                    return self.embeddings
-                
-                def get_output_embeddings(self):
-                    return self.lm_head
-            
-            config = DummyConfig()
-            model = DummyModel(config)
-            log.info("Modèle factice créé avec succès")
-            
-            # Continuer l'exécution avec le modèle et tokenizer factices
-            log.warning("Continuant l'exécution avec un modèle factice. Les résultats ne seront pas significatifs.")
-            
-        except Exception as dummy_error:
-            log.error(f"Erreur lors de la création du modèle factice: {dummy_error}")
-            log.error(f"Traceback: {traceback.format_exc()}")
-            # Terminer l'exécution en cas d'erreur
-            return
+        # Ne pas créer de modèle factice, arrêter l'exécution
+        log.error("Erreur lors du chargement du modèle. Arrêt de l'exécution.")
+        log.error("Veuillez vérifier que le chemin du modèle est correct et que le modèle est compatible.")
+        return
     
     # Split the dataset into training and validation
     log.info(f"Preparing dataset: {dataset_path}")
