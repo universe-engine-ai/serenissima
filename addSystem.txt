@@ -1,3 +1,3497 @@
 # Additional System Instructions
 
-{"citizen_context": "Citizen context data package was not available."}
+
+You are GamingPatrizio, an AI citizen in La Serenissima.
+
+You previously decided to build a Contract Stall (market_stall) on land polygon-1746055561861.
+This building requires a point of type: 'building'.
+
+Here is information about the land:
+[
+  {
+    "id": "polygon-1746055561861",
+    "centroid": {
+      "lat": 45.44496994196827,
+      "lng": 12.325101365990626
+    },
+    "center": {
+      "lat": 45.44461129034009,
+      "lng": 12.325563528813925
+    },
+    "bridgePoints": [
+      {
+        "edge": {
+          "lat": 45.44536842812019,
+          "lng": 12.324814262337677
+        },
+        "connection": {
+          "targetPolygonId": "polygon-1746055595653",
+          "targetPointIndex": 2,
+          "targetPoint": {
+            "lat": 45.44543322796033,
+            "lng": 12.325033206426456
+          },
+          "distance": 18.53811413467082,
+          "id": "187f3fe9-9693-4aaa-a28d-52aff52672c7",
+          "historicalName": "Ponte del Forno",
+          "englishName": "Bridge of the Bakery",
+          "historicalDescription": "Named after the bakery (forno) that operated in Calle del Forno in San Polo since the 15th century. Bakeries were vital institutions in Renaissance Venice, regulated by the Republic to ensure stable bread prices and supply.",
+          "location": {
+            "midpoint": {
+              "lat": 45.44540082804026,
+              "lng": 12.324923734382066
+            }
+          }
+        },
+        "id": "bridge_45.445368_12.324814"
+      },
+      {
+        "edge": {
+          "lat": 45.44524046500234,
+          "lng": 12.326380672402374
+        },
+        "connection": {
+          "targetPolygonId": "polygon-1746055579728",
+          "targetPointIndex": 2,
+          "targetPoint": {
+            "lat": 45.44516123564915,
+            "lng": 12.326525641523762
+          },
+          "distance": 14.335963369211626,
+          "id": "9d845413-f8bf-48e9-adce-5ae51e833536",
+          "historicalName": "Ponte dei Panificatori",
+          "englishName": "Bridge of the Bread Makers",
+          "historicalDescription": "This bridge honors the guild of bread makers who had several workshops in the San Polo district. The bread makers' guild was one of the oldest in Venice, dating back to the 13th century, and was particularly concentrated near Calle del Forno.",
+          "location": {
+            "midpoint": {
+              "lat": 45.44520085032575,
+              "lng": 12.326453156963069
+            }
+          }
+        },
+        "id": "bridge_45.445240_12.326381"
+      },
+      {
+        "edge": {
+          "lat": 45.4448114100772,
+          "lng": 12.326659622139923
+        },
+        "connection": {
+          "targetPolygonId": "polygon-1746055579728",
+          "targetPointIndex": 1,
+          "targetPoint": {
+            "lat": 45.44485826256684,
+            "lng": 12.326702667318745
+          },
+          "distance": 6.198271488534052,
+          "id": "9d845413-f8bf-48e9-adce-5ae51e833536",
+          "historicalName": "Ponte della Farina",
+          "englishName": "Bridge of the Flour",
+          "historicalDescription": "Named for the flour merchants and warehouses that existed nearby in San Polo. Flour distribution was strictly controlled by the Republic, and this area served as a distribution point for the precious commodity needed by the bakeries on Calle del Forno.",
+          "location": {
+            "midpoint": {
+              "lat": 45.444834836322016,
+              "lng": 12.326681144729335
+            }
+          }
+        },
+        "id": "bridge_45.444811_12.326660"
+      },
+      {
+        "edge": {
+          "lat": 45.44496195603659,
+          "lng": 12.327335538811676
+        },
+        "connection": {
+          "targetPolygonId": "polygon-1746055579728",
+          "targetPointIndex": 0,
+          "targetPoint": {
+            "lat": 45.44501445386215,
+            "lng": 12.32720960482256
+          },
+          "distance": 11.427971426577532,
+          "id": "9d845413-f8bf-48e9-adce-5ae51e833536",
+          "historicalName": "Ponte dei Pistor",
+          "englishName": "Bridge of the Bakers",
+          "historicalDescription": "'Pistor' is the Venetian dialect term for baker. This bridge would have connected residential areas to the bakeries along Calle del Forno. The bakers' guild was well-respected in Renaissance Venice as they provided an essential service to the city.",
+          "location": {
+            "midpoint": {
+              "lat": 45.44498820494937,
+              "lng": 12.327272571817119
+            }
+          }
+        },
+        "id": "bridge_45.444962_12.327336"
+      },
+      {
+        "edge": {
+          "lat": 45.444427516062326,
+          "lng": 12.330146493859283
+        },
+        "connection": {
+          "targetPolygonId": "polygon-1746055751637",
+          "targetPointIndex": 1,
+          "targetPoint": {
+            "lat": 45.44436622873616,
+            "lng": 12.330223158564667
+          },
+          "distance": 9.067187698863142,
+          "id": "9b4cdb76-44dd-4151-a0a9-72178c20abba",
+          "historicalName": "Ponte dei Tiepolo",
+          "englishName": "Bridge of the Tiepolo Family",
+          "historicalDescription": "Named after the prominent Tiepolo family who owned property in the San Polo district. This nobili family produced several doges and important political figures in Venetian history, and likely had a palazzo near this bridge in the 15th-16th centuries.",
+          "location": {
+            "midpoint": {
+              "lat": 45.44439687239924,
+              "lng": 12.330184826211976
+            }
+          }
+        },
+        "id": "bridge_45.444428_12.330146"
+      },
+      {
+        "edge": {
+          "lat": 45.4432758183432,
+          "lng": 12.329384746499054
+        },
+        "connection": {
+          "targetPolygonId": "polygon-1746055841290",
+          "targetPointIndex": 3,
+          "targetPoint": {
+            "lat": 45.44328143942364,
+            "lng": 12.3294758516456
+          },
+          "distance": 7.135091269557788,
+          "id": "5d54869d-81f5-412a-8991-4d098f0e1f61",
+          "historicalName": "Ponte di Santa Agata",
+          "englishName": "Bridge of Saint Agatha",
+          "historicalDescription": "Named for a small chapel or shrine to Saint Agatha that once stood nearby. Saint Agatha was considered a protector against fire - a particularly important saint to venerate in an area with bakeries, which were frequent sources of fires in Renaissance Venice.",
+          "location": {
+            "midpoint": {
+              "lat": 45.44327862888342,
+              "lng": 12.329430299072328
+            }
+          }
+        },
+        "id": "bridge_45.443276_12.329385"
+      },
+      {
+        "edge": {
+          "lat": 45.444570535706525,
+          "lng": 12.323913040108673
+        },
+        "connection": {
+          "targetPolygonId": "polygon-1745879581983",
+          "targetPointIndex": 2,
+          "targetPoint": {
+            "lat": 45.4445405676431,
+            "lng": 12.323611382811452
+          },
+          "distance": 23.76832400106658,
+          "id": "3ab24964-33be-4438-881d-20ae8b1589a3",
+          "historicalName": "Ponte della Scuola",
+          "englishName": "Bridge of the Guild Hall",
+          "historicalDescription": "This bridge likely connected to a scuola or guild hall in San Polo. The scuole were important religious and social organizations in Renaissance Venice, combining charitable works with professional associations, and several minor scuole existed in the San Polo district.",
+          "location": {
+            "midpoint": {
+              "lat": 45.44455555167481,
+              "lng": 12.323762211460062
+            }
+          }
+        },
+        "id": "bridge_45.444571_12.323913"
+      }
+    ],
+    "canalPoints": [
+      {
+        "edge": {
+          "lat": 45.44773088425899,
+          "lng": 12.31897777552127
+        },
+        "water": {
+          "lat": 45.44782812530675,
+          "lng": 12.318762101200482
+        },
+        "historicalName": "Fondamenta dei Panificatori",
+        "englishName": "Foundation of the Breadmakers",
+        "historicalDescription": "Named for the bakeries near Calle del Forno ('Oven Street') in San Polo, this dock served the guild of breadmakers who received grain deliveries and distributed their products throughout Venice by boat.",
+        "id": "canal_45.447731_12.318978"
+      },
+      {
+        "edge": {
+          "lat": 45.44775911017493,
+          "lng": 12.319659056611053
+        },
+        "water": {
+          "lat": 45.447865207001016,
+          "lng": 12.319452037274464
+        },
+        "historicalName": "Riva di San Boldo",
+        "englishName": "Bank of Saint Boldo",
+        "historicalDescription": "Located near the Church of San Boldo in San Polo, this landing served local parishioners and merchants. The church was an important religious landmark in this district during the Renaissance period.",
+        "id": "canal_45.447759_12.319659"
+      },
+      {
+        "edge": {
+          "lat": 45.44778733609087,
+          "lng": 12.320340337700836
+        },
+        "water": {
+          "lat": 45.44790330321718,
+          "lng": 12.320144368395496
+        },
+        "historicalName": "Fondamenta della Farina",
+        "englishName": "Foundation of the Flour",
+        "historicalDescription": "This dock was where flour shipments arrived to supply the bakeries of Calle del Forno. It played a crucial role in Venice's food supply chain, as bread was a staple food for all social classes.",
+        "id": "canal_45.447787_12.320340"
+      },
+      {
+        "edge": {
+          "lat": 45.44781556200681,
+          "lng": 12.321021618790619
+        },
+        "water": {
+          "lat": 45.447942374112415,
+          "lng": 12.320839809088074
+        },
+        "historicalName": "Riva dei Meloni",
+        "englishName": "Bank of the Melons",
+        "historicalDescription": "A small dock where fruit vendors, particularly those selling melons, would receive their goods. Located near San Polo, it served the local contract that would have operated in the vicinity of Calle del Forno.",
+        "id": "canal_45.447816_12.321022"
+      },
+      {
+        "edge": {
+          "lat": 45.44255317245173,
+          "lng": 12.328354778237335
+        },
+        "water": {
+          "lat": 45.44242241193367,
+          "lng": 12.3285308057269
+        },
+        "historicalName": "Fondamenta dei Fruttaroli",
+        "englishName": "Foundation of the Fruiterers",
+        "historicalDescription": "This landing served the fruit and vegetable vendors who operated in the San Polo district. These merchants formed a significant guild in Renaissance Venice and needed water access for fresh produce deliveries.",
+        "id": "canal_45.442553_12.328355"
+      },
+      {
+        "edge": {
+          "lat": 45.442583282872974,
+          "lng": 12.327668132729523
+        },
+        "water": {
+          "lat": 45.44243970596012,
+          "lng": 12.327822544578755
+        },
+        "historicalName": "Riva del Traghetto San Silvestro",
+        "englishName": "Bank of the San Silvestro Ferry",
+        "historicalDescription": "A dock that served as a gondola ferry crossing point near the Church of San Silvestro, connecting San Polo with other districts. These traghetto services were vital for transportation across the Grand Canal.",
+        "id": "canal_45.442583_12.327668"
+      },
+      {
+        "edge": {
+          "lat": 45.44261339329421,
+          "lng": 12.32698148722171
+        },
+        "water": {
+          "lat": 45.44245644475259,
+          "lng": 12.327106705210435
+        },
+        "historicalName": "Fondamenta dei Pistori",
+        "englishName": "Foundation of the Bakers",
+        "historicalDescription": "Named for the pistori (bakers) guild, this dock was directly associated with Calle del Forno. Bakers would receive deliveries here and distribute their finished bread products to vendors throughout the city.",
+        "id": "canal_45.442613_12.326981"
+      }
+    ],
+    "buildingPoints": [
+      {
+        "lat": 45.44297089872729,
+        "lng": 12.326653018616607,
+        "streetName": "Calle dei Forni",
+        "streetNameEnglish": "Street of the Ovens",
+        "streetDescription": "Named after the multiple bakeries that operated in this area of San Polo during the Renaissance. Bread production was vital to Venetian life, and this street housed several small bakeries serving the local community.",
+        "id": "building_45.442971_12.326653"
+      },
+      {
+        "lat": 45.44292195643424,
+        "lng": 12.32737844752063,
+        "streetName": "Ruga dei Panificatori",
+        "streetNameEnglish": "Row of the Bread Makers",
+        "streetDescription": "A street where members of the bread makers' guild would have their shops. The 'Ruga' designation was typically given to streets with commercial activities, and bread production was a regulated trade in Renaissance Venice.",
+        "id": "building_45.442922_12.327378"
+      },
+      {
+        "lat": 45.44303908909018,
+        "lng": 12.32793567453024,
+        "streetName": "Rio Ter\u00e0 del Mulino",
+        "streetNameEnglish": "Filled Canal of the Mill",
+        "streetDescription": "References a filled-in canal near San Polo where a water mill once operated. Rio Ter\u00e0 streets were former canals that had been filled in for urban development, and mills were essential for grinding grain for the nearby bakeries.",
+        "id": "building_45.443039_12.327936"
+      },
+      {
+        "lat": 45.44294354447986,
+        "lng": 12.328730732482674,
+        "streetName": "Calle del Pastarol",
+        "streetNameEnglish": "Street of the Pasta Maker",
+        "streetDescription": "Named after artisans who made pasta in this area of San Polo. While bread was the staple, pasta production became increasingly important in Venetian cuisine during the Renaissance period.",
+        "id": "building_45.442944_12.328731"
+      },
+      {
+        "lat": 45.443454595263354,
+        "lng": 12.326088714336649,
+        "streetName": "Salizada dei Cereali",
+        "streetNameEnglish": "Paved Street of the Grains",
+        "streetDescription": "A paved street ('salizada' indicating it was one of the first to be paved) where grain merchants would have operated. Its proximity to Calle del Forno made it convenient for bakers to purchase their raw materials.",
+        "id": "building_45.443455_12.326089"
+      },
+      {
+        "lat": 45.44334941587383,
+        "lng": 12.326677066004276,
+        "streetName": "Sottoportego del Pestrin",
+        "streetNameEnglish": "Passageway of the Grain Pounder",
+        "streetDescription": "A covered passageway named after the 'pestrin,' a person who operated a pestle and mortar to pound grain. These passageways were common in Venice, connecting streets while providing shelter from rain.",
+        "id": "building_45.443349_12.326677"
+      },
+      {
+        "lat": 45.4434136464505,
+        "lng": 12.327340914773755,
+        "streetName": "Calle Pistor",
+        "streetNameEnglish": "Baker's Street",
+        "streetDescription": "Named using the Venetian term 'pistor' for baker, reflecting the traditional baking profession that was prominent in this area near Calle del Forno in San Polo.",
+        "id": "building_45.443414_12.327341"
+      },
+      {
+        "lat": 45.443414316841725,
+        "lng": 12.328070103806468,
+        "streetName": "Corte dei Crivellari",
+        "streetNameEnglish": "Court of the Sieve Makers",
+        "streetDescription": "A small courtyard named after the craftsmen who made sieves essential for sifting flour in the baking process. These specialized artisans would have served the numerous bakeries in the San Polo district.",
+        "id": "building_45.443414_12.328070"
+      },
+      {
+        "lat": 45.44347701162489,
+        "lng": 12.328678297185098,
+        "streetName": "Campiello della Farina",
+        "streetNameEnglish": "Small Square of the Flour",
+        "streetDescription": "A small campo where flour might have been traded or distributed to nearby bakeries. Campielli were the smaller squares that formed important nodes in Venetian neighborhood life.",
+        "id": "building_45.443477_12.328678"
+      },
+      {
+        "lat": 45.44393296493371,
+        "lng": 12.326150586554682,
+        "streetName": "Fondamenta dei Grani",
+        "streetNameEnglish": "Foundation of the Grains",
+        "streetDescription": "A street running alongside a canal where boats would deliver grains to be used in the bakeries of San Polo. 'Fondamenta' streets typically bordered canals and served as unloading areas for goods.",
+        "id": "building_45.443933_12.326151"
+      },
+      {
+        "lat": 45.443859226421175,
+        "lng": 12.326678027428285,
+        "streetName": "Calle dei Soleri",
+        "streetNameEnglish": "Street of the Granary Keepers",
+        "streetDescription": "Named after those who maintained the grain soleri (granaries) that supplied the bakeries in the area. Grain storage was carefully regulated in Renaissance Venice to ensure food security.",
+        "id": "building_45.443859_12.326678"
+      },
+      {
+        "lat": 45.443917462533385,
+        "lng": 12.3273645173063,
+        "streetName": "Ruga dei Tamisi",
+        "streetNameEnglish": "Row of the Sieves",
+        "streetDescription": "A commercial street where sieves ('tamisi' in Venetian dialect) used for sifting flour were sold. This specialized equipment was essential for the baking trade that flourished around Calle del Forno.",
+        "id": "building_45.443917_12.327365"
+      },
+      {
+        "lat": 45.4438276262614,
+        "lng": 12.328131055553278,
+        "streetName": "Calle dei Nani",
+        "streetNameEnglish": "Street of the Nani Family",
+        "streetDescription": "Named after the noble Nani family who likely owned property in this area of San Polo. Nobili families often had streets named after them in the districts where they held influence or property.",
+        "id": "building_45.443828_12.328131"
+      },
+      {
+        "lat": 45.443827259439615,
+        "lng": 12.32872614576702,
+        "streetName": "Rio Ter\u00e0 delle Provvigioni",
+        "streetNameEnglish": "Filled Canal of the Provisions",
+        "streetDescription": "A former canal filled in to create a street where food provisions were stored or distributed. Its location near Calle del Forno would have made it convenient for supplying bakeries.",
+        "id": "building_45.443827_12.328726"
+      },
+      {
+        "lat": 45.4438022690865,
+        "lng": 12.329203326227665,
+        "streetName": "Sottoportego dei Barili",
+        "streetNameEnglish": "Passageway of the Barrels",
+        "streetDescription": "A covered passage named after the barrels used to transport and store flour, grains, and other provisions for the baking industry concentrated in this part of San Polo.",
+        "id": "building_45.443802_12.329203"
+      },
+      {
+        "lat": 45.44433720665565,
+        "lng": 12.325386526135617,
+        "streetName": "Calle del Forno Vecchio",
+        "streetNameEnglish": "Street of the Old Oven",
+        "streetDescription": "Named to distinguish it from the main Calle del Forno, this street would have been the site of one of the oldest bakeries in the area, possibly predating others in this baking district.",
+        "id": "building_45.444337_12.325387"
+      },
+      {
+        "lat": 45.44432587200194,
+        "lng": 12.326038343402438,
+        "streetName": "Salizada dei Frumenti",
+        "streetNameEnglish": "Paved Street of the Wheat",
+        "streetDescription": "An early paved street where wheat merchants conducted business. The grain trade was carefully regulated in Venice, and this street would have played a role in supplying the local bakeries.",
+        "id": "building_45.444326_12.326038"
+      },
+      {
+        "lat": 45.44428634749133,
+        "lng": 12.326761557587178,
+        "streetName": "Corte della Bilancia",
+        "streetNameEnglish": "Court of the Scale",
+        "streetDescription": "A courtyard named after the public scales used to weigh grain and flour transactions. Accurate weighing was essential to fair trade and taxation in Renaissance Venice.",
+        "id": "building_45.444286_12.326762"
+      },
+      {
+        "lat": 45.44436769072895,
+        "lng": 12.327293332220524,
+        "streetName": "Calle dei Biscottini",
+        "streetNameEnglish": "Street of the Small Biscuits",
+        "streetDescription": "Named after a specialty baked good produced in this area. Biscotti and other preserved baked goods were important for long sea voyages, making them a valuable Venetian product.",
+        "id": "building_45.444368_12.327293"
+      },
+      {
+        "lat": 45.44432801878235,
+        "lng": 12.328064527856684,
+        "streetName": "Ramo del Sesamo",
+        "streetNameEnglish": "Branch of the Sesame",
+        "streetDescription": "A small branch street named after the sesame seeds used in various Venetian baked goods. Spices and seeds were important imports that found their way into local cuisine.",
+        "id": "building_45.444328_12.328065"
+      },
+      {
+        "lat": 45.444326059244226,
+        "lng": 12.32872202558183,
+        "streetName": "Calle della Pasticceria",
+        "streetNameEnglish": "Street of the Pastry Shop",
+        "streetDescription": "Named after pastry shops that operated alongside bakeries in the San Polo district. Pastry making was a specialized craft distinct from bread baking but often located in the same areas.",
+        "id": "building_45.444326_12.328722"
+      },
+      {
+        "lat": 45.44437756557975,
+        "lng": 12.329394778427483,
+        "streetName": "Fondamenta del Traghetto di San Polo",
+        "streetNameEnglish": "Foundation of the San Polo Ferry",
+        "streetDescription": "A canalside street near a ferry crossing point in San Polo. Traghetti were essential for crossing the Grand Canal before many bridges were built, connecting the baking district to other parts of Venice.",
+        "id": "building_45.444378_12.329395"
+      },
+      {
+        "lat": 45.444822681264505,
+        "lng": 12.3242764552835,
+        "streetName": "Calle della Scuola dei Fornai",
+        "streetNameEnglish": "Street of the Bakers' Guild",
+        "streetDescription": "Named after the location of the bakers' guild hall. Professional guilds (scuole) were central to Renaissance Venetian economic organization and social welfare.",
+        "id": "building_45.444823_12.324276"
+      },
+      {
+        "lat": 45.444715081184995,
+        "lng": 12.324750762237853,
+        "streetName": "Rio Ter\u00e0 dei Magazzini",
+        "streetNameEnglish": "Filled Canal of the Warehouses",
+        "streetDescription": "A former canal filled to create a street where warehouses stored flour and grains. Located in San Polo near Calle del Forno, these warehouses would have supplied the local baking industry.",
+        "id": "building_45.444715_12.324751"
+      },
+      {
+        "lat": 45.44468530392916,
+        "lng": 12.32545429686315,
+        "streetName": "Calle del Sale",
+        "streetNameEnglish": "Street of the Salt",
+        "streetDescription": "Named after the essential preservative and flavor enhancer used in baking. Salt was a state monopoly in Venice, and its distribution was tightly controlled, making it a valuable commodity for bakers.",
+        "id": "building_45.444685_12.325454"
+      },
+      {
+        "lat": 45.44478709381162,
+        "lng": 12.32611454553549,
+        "streetName": "Sottoportego del Lievito",
+        "streetNameEnglish": "Passageway of the Yeast",
+        "streetDescription": "A covered passage named after the yeast cultures maintained by bakers. Yeast was carefully cultivated and shared among bakers in Renaissance Venice, making it a valuable resource in bread production.",
+        "id": "building_45.444787_12.326115"
+      },
+      {
+        "lat": 45.444760264554624,
+        "lng": 12.327392730756745,
+        "streetName": "Calle dei Conti",
+        "streetNameEnglish": "Street of the Counts",
+        "streetDescription": "Named after noble families with the title of Count who owned property in this part of San Polo. Aristocratic families often invested in commercial properties, including bakeries and grain warehouses.",
+        "id": "building_45.444760_12.327393"
+      },
+      {
+        "lat": 45.44476630947146,
+        "lng": 12.32805573047151,
+        "streetName": "Corte dei Palmieri",
+        "streetNameEnglish": "Court of the Palm Bearers",
+        "streetDescription": "Named after the Palmieri family or after those who carried palm fronds in religious processions. This courtyard would have been a small community space near the baking district of San Polo.",
+        "id": "building_45.444766_12.328056"
+      },
+      {
+        "lat": 45.444726489670195,
+        "lng": 12.328591664669986,
+        "streetName": "Ruga dei Dolci",
+        "streetNameEnglish": "Row of the Sweets",
+        "streetDescription": "A commercial street where confectioners sold sweet baked goods. While distinct from bread baking, confectionery was often found in proximity to bakeries in Renaissance Venice.",
+        "id": "building_45.444726_12.328592"
+      },
+      {
+        "lat": 45.44475249314051,
+        "lng": 12.329214044979734,
+        "streetName": "Calle della Misura",
+        "streetNameEnglish": "Street of the Measure",
+        "streetDescription": "Named after the standard measures used to sell grain and flour. The Venetian Republic strictly regulated weights and measures to ensure fair trade, particularly for essential food items.",
+        "id": "building_45.444752_12.329214"
+      },
+      {
+        "lat": 45.44527634620332,
+        "lng": 12.323464745185749,
+        "streetName": "Fondamenta San Silvestro",
+        "streetNameEnglish": "Foundation of Saint Sylvester",
+        "streetDescription": "A canalside street named after the nearby Church of San Silvestro in San Polo. Parish churches were important landmarks and administrative centers in Venetian neighborhoods.",
+        "id": "building_45.445276_12.323465"
+      },
+      {
+        "lat": 45.44519445666178,
+        "lng": 12.324296599932351,
+        "streetName": "Calle del Forno Pubblico",
+        "streetNameEnglish": "Street of the Public Oven",
+        "streetDescription": "Named after a communal oven where locals could bring their dough to be baked. Public ovens were important facilities in Renaissance Venice, particularly for households without private baking facilities.",
+        "id": "building_45.445194_12.324297"
+      },
+      {
+        "lat": 45.44513215480863,
+        "lng": 12.325326824481206,
+        "streetName": "Salizada della Pagnotta",
+        "streetNameEnglish": "Paved Street of the Bread Loaf",
+        "streetDescription": "An early paved street named after a specific type of round bread loaf. Different bread shapes and types were associated with different occasions and social classes in Renaissance Venice.",
+        "id": "building_45.445132_12.325327"
+      },
+      {
+        "lat": 45.44520522501092,
+        "lng": 12.327958969321926,
+        "streetName": "Calle dei Tiepolo",
+        "streetNameEnglish": "Street of the Tiepolo Family",
+        "streetDescription": "Named after the prominent Tiepolo family who likely owned property in San Polo. Noble families often had commercial interests, potentially including bakeries or grain warehouses in this area.",
+        "id": "building_45.445205_12.327959"
+      },
+      {
+        "lat": 45.44567895904426,
+        "lng": 12.321581417855313,
+        "streetName": "Rio Ter\u00e0 della Madonetta",
+        "streetNameEnglish": "Filled Canal of the Small Madonna",
+        "streetDescription": "A former canal filled to create a street, named after a small shrine to the Madonna that likely stood nearby. Religious shrines were common landmarks in Renaissance Venetian neighborhoods.",
+        "id": "building_45.445679_12.321581"
+      },
+      {
+        "lat": 45.44560548474842,
+        "lng": 12.322268938479379,
+        "streetName": "Corte del Frumento",
+        "streetNameEnglish": "Court of the Wheat",
+        "streetDescription": "A small courtyard where wheat might have been traded or temporarily stored before being milled and baked. Located near Calle del Forno, it would have been part of the local grain-to-bread supply chain.",
+        "id": "building_45.445605_12.322269"
+      },
+      {
+        "lat": 45.44566974935769,
+        "lng": 12.323013305665148,
+        "streetName": "Calle dei Impastatori",
+        "streetNameEnglish": "Street of the Dough Kneaders",
+        "streetDescription": "Named after the workers who kneaded dough in the bakeries. This physically demanding role was essential in bread production in Renaissance Venice, particularly in the baking district of San Polo.",
+        "id": "building_45.445670_12.323013"
+      },
+      {
+        "lat": 45.446087076374596,
+        "lng": 12.321050229239557,
+        "streetName": "Sottoportego delle Focacce",
+        "streetNameEnglish": "Passageway of the Focaccia Breads",
+        "streetDescription": "A covered passage named after the flatbreads that were a popular alternative to leavened breads. Different types of breads served different purposes in Venetian cuisine and society.",
+        "id": "building_45.446087_12.321050"
+      },
+      {
+        "lat": 45.44656355360805,
+        "lng": 12.320326403648886,
+        "streetName": "Calle dei Pisani",
+        "streetNameEnglish": "Street of the Pisani Family",
+        "streetDescription": "Named after the noble Pisani family who owned property in this area of San Polo. Nobili families often invested in commercial ventures, including the lucrative grain and baking trades.",
+        "id": "building_45.446564_12.320326"
+      },
+      {
+        "lat": 45.44654606978502,
+        "lng": 12.320855449006713,
+        "streetName": "Ramo del Farro",
+        "streetNameEnglish": "Branch of the Spelt",
+        "streetDescription": "A small branch street named after spelt, a grain used in some specialty breads. Various grains were used in Renaissance Venetian baking, with different varieties commanding different prices and status.",
+        "id": "building_45.446546_12.320855"
+      },
+      {
+        "lat": 45.447068519439846,
+        "lng": 12.319071734153367,
+        "streetName": "Calle dei Molini",
+        "streetNameEnglish": "Street of the Mills",
+        "streetDescription": "Named after grain mills that would have been essential to the baking industry. Located near Calle del Forno in San Polo, this street may have connected bakeries to their flour suppliers.",
+        "id": "building_45.447069_12.319072"
+      },
+      {
+        "lat": 45.447031776520525,
+        "lng": 12.319592477355457,
+        "streetName": "Fondamenta del Segale",
+        "streetNameEnglish": "Foundation of the Rye",
+        "streetDescription": "A canalside street named after rye, a grain used for darker breads. Canalside locations were ideal for receiving grain shipments, making this a logical part of the baking district's infrastructure.",
+        "id": "building_45.447032_12.319592"
+      },
+      {
+        "lat": 45.44706746694959,
+        "lng": 12.32025446523149,
+        "streetName": "Calle della Pala",
+        "streetNameEnglish": "Street of the Peel",
+        "streetDescription": "Named after the long-handled peels used to place bread in ovens. This specialized baking tool was essential to the many bakeries operating around Calle del Forno in San Polo.",
+        "id": "building_45.447067_12.320254"
+      },
+      {
+        "lat": 45.44697028423084,
+        "lng": 12.321077885846746,
+        "streetName": "Campiello dei Pistori",
+        "streetNameEnglish": "Small Square of the Bakers",
+        "streetDescription": "A small square where bakers might have gathered or where a small grain contract might have operated. 'Pistori' was the Venetian term for bakers, making this a center of the local baking community.",
+        "id": "building_45.446970_12.321078"
+      },
+      {
+        "lat": 45.44747111001809,
+        "lng": 12.31917076399883,
+        "streetName": "Calle del Formentino",
+        "streetNameEnglish": "Street of the Small Wheat",
+        "streetDescription": "Named after a variety of small-grained wheat used in certain breads. Different grain varieties had different uses in Renaissance Venetian baking, reflecting a sophisticated understanding of ingredients.",
+        "id": "building_45.447471_12.319171"
+      },
+      {
+        "lat": 45.44750945492322,
+        "lng": 12.320302251574471,
+        "streetName": "Rio Ter\u00e0 dei Panifici",
+        "streetNameEnglish": "Filled Canal of the Bakeries",
+        "streetDescription": "A former canal filled to create a street where multiple bakeries operated. This infrastructure improvement would have facilitated the growth of the baking industry in San Polo.",
+        "id": "building_45.447509_12.320302"
+      },
+      {
+        "lat": 45.447501031173395,
+        "lng": 12.321018570224027,
+        "streetName": "Calle della Crusca",
+        "streetNameEnglish": "Street of the Bran",
+        "streetDescription": "Named after the bran separated from flour during milling. Bran was often used for cheaper breads for the lower classes, while white flour was reserved for more expensive products in Renaissance Venice.",
+        "id": "building_45.447501_12.321019"
+      }
+    ],
+    "historicalName": "Calle del Forno in Sestiere San Polo",
+    "englishName": "Oven Street in the District of Saint Paul",
+    "historicalDescription": "A street known for its bakeries and located near the Rialto contract, an important commercial hub of 15th century Venice.",
+    "nameConfidence": "medium",
+    "areaInSquareMeters": 168912.38,
+    "imageSettings": {
+      "lat": 45.445155933195174,
+      "lng": 12.324326028818607,
+      "width": 606.0666677957363,
+      "height": 542.8666677221671,
+      "referenceScale": 2.000000007568844
+    }
+  }
+]
+
+Here are the existing buildings on this land:
+[
+  {
+    "id": "building_45.443917_12.327365",
+    "type": "artisan_s_house",
+    "owner": "VeniceTrader88",
+    "position": "{\"lat\": 45.443917, \"lng\": 12.327365}",
+    "notes": "{\"position\": {\"lat\": 45.443917462533385, \"lng\": 12.3273645173063}}"
+  },
+  {
+    "id": "building_45.444326_12.328722",
+    "type": "market_stall",
+    "owner": "ProSilkTrader",
+    "position": "{\"lat\": 45.444326, \"lng\": 12.328722}",
+    "notes": "{\"position\": {\"lat\": 45.444326059244226, \"lng\": 12.32872202558183}, \"WagesReasoning\": \"Setting competitive wage to attract reliable Popolani workers for my Castello market stall. 60 ducats provides fair compensation while remaining sustainable during business growth phase.\", \"runByAssignment\": {\"timestamp\": \"2025-05-29T04:38:28.431918Z\", \"assignedRunBy\": \"TravelBug23\", \"score\": 4726.536512349473, \"components\": {\"relationshipScoreWithOwner\": 0.0, \"influence\": 0.0, \"dailyIncome\": 720.0, \"dailyTurnover\": 7020.0, \"distanceToHomeM\": 650.0, \"socialClassTier\": 2, \"isOwnerFactor\": 1, \"numBusinessesAlreadyRun_before_assign\": 2, \"baseScoreComponents\": 7089.8, \"numerator\": 14179.61, \"denominator\": 3}}}"
+  },
+  {
+    "id": "building_45.444823_12.324276",
+    "type": "bakery",
+    "owner": "ShadowHunter",
+    "position": "{\"lat\": 45.444823, \"lng\": 12.324276}",
+    "notes": "{\"position\": {\"lat\": 45.444822681264505, \"lng\": 12.3242764552835}, \"runByAssignment\": {\"timestamp\": \"2025-05-29T04:38:28.506919Z\", \"assignedRunBy\": \"ShadowHunter\", \"score\": 3134.2927894658183, \"components\": {\"relationshipScoreWithOwner\": 0.0, \"influence\": 0.0, \"dailyIncome\": 720.0, \"dailyTurnover\": 199.84, \"distanceToHomeM\": 136.0, \"socialClassTier\": 2, \"isOwnerFactor\": 4, \"numBusinessesAlreadyRun_before_assign\": 1, \"baseScoreComponents\": 783.57, \"numerator\": 6268.59, \"denominator\": 2}}}"
+  },
+  {
+    "id": "canal_45.442553_12.328355",
+    "type": "fisherman_s_cottage",
+    "owner": "ConsiglioDeiDieci",
+    "position": "{\"lat\": 45.44255317245173, \"lng\": 12.328354778237335}",
+    "notes": "Building fisherman_s_cottage constructed by AI ConsiglioDeiDieci on polygon-1746055561861."
+  },
+  {
+    "id": "canal_45.447731_12.318978",
+    "type": "fisherman_s_cottage",
+    "owner": "DucatsRunner",
+    "position": "{\"lat\": 45.44773088425899, \"lng\": 12.31897777552127}",
+    "notes": "{\"position\": {\"lat\": 45.44747111001809, \"lng\": 12.31917076399883}}"
+  },
+  {
+    "id": "building_45.445670_12.323013",
+    "type": "artisan_s_house",
+    "owner": "ConsiglioDeiDieci",
+    "position": "{\"lat\": 45.44566974935769, \"lng\": 12.323013305665148}",
+    "notes": "Building artisan_s_house constructed by AI ConsiglioDeiDieci on polygon-1746055561861."
+  },
+  {
+    "id": "canal_45.447787_12.320340",
+    "type": "public_dock",
+    "owner": "ConsiglioDeiDieci",
+    "position": "{\"lat\": 45.447787, \"lng\": 12.32034}",
+    "notes": "{\"WagesReasoning\": \"Public dock - maintained at 0 as civic infrastructure with no dedicated employee\", \"runByAssignment\": {\"timestamp\": \"2025-05-29T04:38:28.364402Z\", \"assignedRunBy\": \"BarbarigoCadet\", \"score\": 9169.74239014253, \"components\": {\"relationshipScoreWithOwner\": 39.93, \"influence\": 0.0, \"dailyIncome\": 4115.0, \"dailyTurnover\": 17483.5, \"distanceToHomeM\": 3658.0, \"socialClassTier\": 2, \"isOwnerFactor\": 1, \"numBusinessesAlreadyRun_before_assign\": 3, \"baseScoreComponents\": 18339.48, \"numerator\": 36678.97, \"denominator\": 4}}}"
+  },
+  {
+    "id": "building_45.444368_12.327293",
+    "type": "blacksmith",
+    "owner": "Italia",
+    "position": "{\"lat\": 45.444368, \"lng\": 12.327293}",
+    "notes": "{\"WagesReasoning\": \"Strategic increase to top-of-market wage to attract master blacksmiths and distinguish our workshop from competitors\", \"PriceReasoning\": \"Maintaining consistent pricing with first blacksmith to avoid internal competition\", \"runByAssignment\": {\"timestamp\": \"2025-05-29T04:38:28.366397Z\", \"assignedRunBy\": \"VenicePhotographer\", \"score\": 7964.990746718945, \"components\": {\"relationshipScoreWithOwner\": 0.0, \"influence\": 0.0, \"dailyIncome\": 7715.0, \"dailyTurnover\": 15435.99, \"distanceToHomeM\": 3239.0, \"socialClassTier\": 2, \"isOwnerFactor\": 1, \"numBusinessesAlreadyRun_before_assign\": 4, \"baseScoreComponents\": 19912.48, \"numerator\": 39824.95, \"denominator\": 5}}}"
+  },
+  {
+    "id": "building_45.445276_12.323465",
+    "type": "market_stall",
+    "owner": "cyprus_trader",
+    "position": "{\"lat\": 45.44527634620332, \"lng\": 12.323464745185749}",
+    "notes": "{\"position\": {\"lat\": 45.44519445666178, \"lng\": 12.324296599932351}, \"runByAssignment\": {\"timestamp\": \"2025-05-29T04:38:28.451914Z\", \"assignedRunBy\": \"LagoonDealer2025\", \"score\": 4274.607211383263, \"components\": {\"relationshipScoreWithOwner\": 0.0, \"influence\": 0.0, \"dailyIncome\": 2160.0, \"dailyTurnover\": 211.83, \"distanceToHomeM\": 235.0, \"socialClassTier\": 2, \"isOwnerFactor\": 1, \"numBusinessesAlreadyRun_before_assign\": 0, \"baseScoreComponents\": 2137.3, \"numerator\": 4274.61, \"denominator\": 1}}}"
+  },
+  {
+    "id": "building_45.444286_12.326762",
+    "type": "artisan_s_house",
+    "owner": "ligurian_captain",
+    "position": "{\"lat\": 45.44428634749133, \"lng\": 12.326761557587178}",
+    "notes": "{\"position\": {\"lat\": 45.44436769072895, \"lng\": 12.327293332220524}}"
+  },
+  {
+    "id": "canal_45.442613_12.326981",
+    "type": "fisherman_s_cottage",
+    "owner": "StarGazer2000",
+    "position": "{\"lat\": 45.44261339329421, \"lng\": 12.32698148722171}",
+    "notes": "Building fisherman_s_cottage constructed by AI StarGazer2000 on polygon-1746055561861."
+  },
+  {
+    "id": "building_45.444685_12.325454",
+    "type": "nobili_palazzo",
+    "owner": "ConsiglioDeiDieci",
+    "position": "{\"lat\": 45.44468530392916, \"lng\": 12.32545429686315}",
+    "notes": "Building nobili_palazzo constructed by AI ConsiglioDeiDieci on polygon-1746055561861."
+  },
+  {
+    "id": "canal_45.442583_12.327668",
+    "type": "fisherman_s_cottage",
+    "owner": "StarGazer2000",
+    "position": "{\"lat\": 45.442583282872974, \"lng\": 12.327668132729523}",
+    "notes": "Building fisherman_s_cottage constructed by AI StarGazer2000 on polygon-1746055561861."
+  },
+  {
+    "id": "building_45.443477_12.328678",
+    "type": "bakery",
+    "owner": "UrbanExplorer",
+    "position": "{\"lat\": 45.443477, \"lng\": 12.328678}",
+    "notes": "{\"position\": {\"lat\": 45.44347701162489, \"lng\": 12.328678297185098}, \"runByAssignment\": {\"timestamp\": \"2025-05-29T04:38:28.457913Z\", \"assignedRunBy\": \"BarbarigoCadet\", \"score\": 4166.214171810364, \"components\": {\"relationshipScoreWithOwner\": 0.0, \"influence\": 0.0, \"dailyIncome\": 4115.0, \"dailyTurnover\": 17483.5, \"distanceToHomeM\": 2851.0, \"socialClassTier\": 2, \"isOwnerFactor\": 1, \"numBusinessesAlreadyRun_before_assign\": 8, \"baseScoreComponents\": 18747.96, \"numerator\": 37495.93, \"denominator\": 9}}}"
+  },
+  {
+    "id": "building_45.443455_12.326089",
+    "type": "market_stall",
+    "owner": "ItalyMerchant",
+    "position": "{\"lat\": 45.443455, \"lng\": 12.326089}",
+    "notes": "{\"position\": {\"lat\": 45.443454595263354, \"lng\": 12.326088714336649}, \"runByAssignment\": {\"timestamp\": \"2025-05-29T04:38:28.502922Z\", \"assignedRunBy\": \"ItalyMerchant\", \"score\": 5940.054899821001, \"components\": {\"relationshipScoreWithOwner\": 0.0, \"influence\": 0.0, \"dailyIncome\": 0.0, \"dailyTurnover\": 5135.0, \"distanceToHomeM\": 2907.0, \"socialClassTier\": 2, \"isOwnerFactor\": 4, \"numBusinessesAlreadyRun_before_assign\": 2, \"baseScoreComponents\": 2227.52, \"numerator\": 17820.16, \"denominator\": 3}}}"
+  },
+  {
+    "id": "building_45.442971_12.326653",
+    "type": "inn",
+    "owner": "alexandria_trader",
+    "position": "{\"lat\": 45.442971, \"lng\": 12.326653}",
+    "notes": "{\"position\": {\"lat\": 45.44297089872729, \"lng\": 12.326653018616607}, \"runByAssignment\": {\"timestamp\": \"2025-05-29T15:13:58.398340Z\", \"assignedRunBy\": \"TravelBug23\", \"score\": 2922.9368641756514, \"components\": {\"relationshipScoreWithOwner\": 0.0, \"influence\": 0.0, \"dailyIncome\": 720.0, \"dailyTurnover\": 7020.0, \"distanceToHomeM\": 433.0, \"socialClassTier\": 2, \"isOwnerFactor\": 1, \"numBusinessesAlreadyRun_before_assign\": 4, \"baseScoreComponents\": 7307.34, \"numerator\": 14614.68, \"denominator\": 5}}}"
+  },
+  {
+    "id": "building_45.444378_12.329395",
+    "type": "small_warehouse",
+    "owner": "Italia",
+    "position": "{\"lat\": 45.444378, \"lng\": 12.329395}",
+    "notes": "{\"position\": {\"lat\": 45.44437756557975, \"lng\": 12.329394778427483}, \"WagesReasoning\": \"Setting fair wage for warehouse workers to attract reliable employees for inventory management and operations; conservative rate that enables business activation while managing costs\", \"runByAssignment\": {\"timestamp\": \"2025-05-29T04:38:28.413402Z\", \"assignedRunBy\": \"VenicePhotographer\", \"score\": 5728.846530335136, \"components\": {\"relationshipScoreWithOwner\": 0.0, \"influence\": 0.0, \"dailyIncome\": 7715.0, \"dailyTurnover\": 15435.99, \"distanceToHomeM\": 3100.0, \"socialClassTier\": 2, \"isOwnerFactor\": 1, \"numBusinessesAlreadyRun_before_assign\": 6, \"baseScoreComponents\": 20050.96, \"numerator\": 40101.93, \"denominator\": 7}}}"
+  },
+  {
+    "id": "building_45.445194_12.324297",
+    "type": "bakery",
+    "owner": "DucaleTechie",
+    "position": "{\"lat\": 45.445194, \"lng\": 12.324297}",
+    "notes": "{\"position\": {\"lat\": 45.44519445666178, \"lng\": 12.324296599932351}, \"runByAssignment\": {\"timestamp\": \"2025-05-29T04:38:28.510919Z\", \"assignedRunBy\": \"DucaleTechie\", \"score\": 11707.014705901236, \"components\": {\"relationshipScoreWithOwner\": 0.0, \"influence\": 0.0, \"dailyIncome\": 0.0, \"dailyTurnover\": 1630.0, \"distanceToHomeM\": 167.0, \"socialClassTier\": 2, \"isOwnerFactor\": 4, \"numBusinessesAlreadyRun_before_assign\": 0, \"baseScoreComponents\": 1463.38, \"numerator\": 11707.01, \"denominator\": 1}}}"
+  },
+  {
+    "id": "building_45.447068519439846_12.319071734153367",
+    "type": "artisan_s_house",
+    "owner": "NLR",
+    "position": "{\"lat\": 45.447068519439846, \"lng\": 12.319071734153367, \"polygonId\": \"polygon-1746055561861\", \"pointType\": \"land\"}",
+    "notes": ""
+  },
+  {
+    "id": "building_45.445605_12.322269",
+    "type": "parish_church",
+    "owner": "ConsiglioDeiDieci",
+    "position": "{\"lat\": 45.44579033333333, \"lng\": 12.321633333333333}",
+    "notes": "{\"WagesReasoning\": \"Parish church - maintained at 0 as religious building with no wage allocation\", \"runByAssignment\": {\"timestamp\": \"2025-05-29T04:38:28.310888Z\", \"assignedRunBy\": \"BasstheWhale\", \"score\": 63390.02451169092, \"components\": {\"relationshipScoreWithOwner\": 4587.15, \"influence\": 0.0, \"dailyIncome\": 0.0, \"dailyTurnover\": 0.0, \"distanceToHomeM\": 3612.0, \"socialClassTier\": 3, \"isOwnerFactor\": 1, \"numBusinessesAlreadyRun_before_assign\": 1, \"baseScoreComponents\": 42260.02, \"numerator\": 126780.05, \"denominator\": 2}}}"
+  },
+  {
+    "id": "building_45.44656355360805_12.320326403648886",
+    "type": "printing_house",
+    "owner": "NLR",
+    "position": "{\"lat\": 45.44656355360805, \"lng\": 12.320326403648886, \"polygonId\": \"polygon-1746055561861\", \"pointType\": \"land\"}",
+    "notes": ""
+  },
+  {
+    "id": "building_45.444337_12.325387",
+    "type": "artisan_s_house",
+    "owner": "Italia",
+    "position": "{\"lat\": 45.444337, \"lng\": 12.325387}",
+    "notes": "{\"position\": {\"lat\": 45.44433720665565, \"lng\": 12.325386526135617}}"
+  },
+  {
+    "id": "building_45.444715_12.324751",
+    "type": "bakery",
+    "owner": "QuantumLeap",
+    "position": "{\"lat\": 45.444715, \"lng\": 12.324751}",
+    "notes": "{\"position\": {\"lat\": 45.444715081184995, \"lng\": 12.324750762237853}, \"WagesReasoning\": \"Setting competitive wages to attract skilled bakers for bread and spiced wine production. This resolves the zero wages problem and enables business operations with potential revenue of 495 ducats/hour from new contracts.\", \"runByAssignment\": {\"timestamp\": \"2025-05-29T04:38:28.512919Z\", \"assignedRunBy\": \"DucatsRunner\", \"score\": 3100.9203143482005, \"components\": {\"relationshipScoreWithOwner\": 123.05, \"influence\": 0.0, \"dailyIncome\": 2160.0, \"dailyTurnover\": 271.97, \"distanceToHomeM\": 562.0, \"socialClassTier\": 2, \"isOwnerFactor\": 1, \"numBusinessesAlreadyRun_before_assign\": 1, \"baseScoreComponents\": 3100.92, \"numerator\": 6201.84, \"denominator\": 2}}}"
+  },
+  {
+    "id": "building_45.444326_12.326038",
+    "type": "artisan_s_house",
+    "owner": "DucaleTechie",
+    "position": "{\"lat\": 45.444326, \"lng\": 12.326038}",
+    "notes": "{\"position\": {\"lat\": 45.44432587200194, \"lng\": 12.326038343402438}}"
+  }
+]
+
+Here are the available building points for this land (for 'building' type buildings, using mapped key 'land'):
+[
+  {
+    "lat": 45.44292195643424,
+    "lng": 12.32737844752063,
+    "polygon_id": "polygon-1746055561861",
+    "point_type": "land",
+    "id": "building_45.442922_12.327378"
+  },
+  {
+    "lat": 45.44303908909018,
+    "lng": 12.32793567453024,
+    "polygon_id": "polygon-1746055561861",
+    "point_type": "land",
+    "id": "building_45.443039_12.327936"
+  },
+  {
+    "lat": 45.44294354447986,
+    "lng": 12.328730732482674,
+    "polygon_id": "polygon-1746055561861",
+    "point_type": "land",
+    "id": "building_45.442944_12.328731"
+  },
+  {
+    "lat": 45.44334941587383,
+    "lng": 12.326677066004276,
+    "polygon_id": "polygon-1746055561861",
+    "point_type": "land",
+    "id": "building_45.443349_12.326677"
+  },
+  {
+    "lat": 45.4434136464505,
+    "lng": 12.327340914773755,
+    "polygon_id": "polygon-1746055561861",
+    "point_type": "land",
+    "id": "building_45.443414_12.327341"
+  },
+  {
+    "lat": 45.443414316841725,
+    "lng": 12.328070103806468,
+    "polygon_id": "polygon-1746055561861",
+    "point_type": "land",
+    "id": "building_45.443414_12.328070"
+  },
+  {
+    "lat": 45.44393296493371,
+    "lng": 12.326150586554682,
+    "polygon_id": "polygon-1746055561861",
+    "point_type": "land",
+    "id": "building_45.443933_12.326151"
+  },
+  {
+    "lat": 45.443859226421175,
+    "lng": 12.326678027428285,
+    "polygon_id": "polygon-1746055561861",
+    "point_type": "land",
+    "id": "building_45.443859_12.326678"
+  },
+  {
+    "lat": 45.4438276262614,
+    "lng": 12.328131055553278,
+    "polygon_id": "polygon-1746055561861",
+    "point_type": "land",
+    "id": "building_45.443828_12.328131"
+  },
+  {
+    "lat": 45.443827259439615,
+    "lng": 12.32872614576702,
+    "polygon_id": "polygon-1746055561861",
+    "point_type": "land",
+    "id": "building_45.443827_12.328726"
+  },
+  {
+    "lat": 45.4438022690865,
+    "lng": 12.329203326227665,
+    "polygon_id": "polygon-1746055561861",
+    "point_type": "land",
+    "id": "building_45.443802_12.329203"
+  },
+  {
+    "lat": 45.44432801878235,
+    "lng": 12.328064527856684,
+    "polygon_id": "polygon-1746055561861",
+    "point_type": "land",
+    "id": "building_45.444328_12.328065"
+  },
+  {
+    "lat": 45.44478709381162,
+    "lng": 12.32611454553549,
+    "polygon_id": "polygon-1746055561861",
+    "point_type": "land",
+    "id": "building_45.444787_12.326115"
+  },
+  {
+    "lat": 45.444760264554624,
+    "lng": 12.327392730756745,
+    "polygon_id": "polygon-1746055561861",
+    "point_type": "land",
+    "id": "building_45.444760_12.327393"
+  },
+  {
+    "lat": 45.44476630947146,
+    "lng": 12.32805573047151,
+    "polygon_id": "polygon-1746055561861",
+    "point_type": "land",
+    "id": "building_45.444766_12.328056"
+  },
+  {
+    "lat": 45.444726489670195,
+    "lng": 12.328591664669986,
+    "polygon_id": "polygon-1746055561861",
+    "point_type": "land",
+    "id": "building_45.444726_12.328592"
+  },
+  {
+    "lat": 45.44475249314051,
+    "lng": 12.329214044979734,
+    "polygon_id": "polygon-1746055561861",
+    "point_type": "land",
+    "id": "building_45.444752_12.329214"
+  },
+  {
+    "lat": 45.44513215480863,
+    "lng": 12.325326824481206,
+    "polygon_id": "polygon-1746055561861",
+    "point_type": "land",
+    "id": "building_45.445132_12.325327"
+  },
+  {
+    "lat": 45.44520522501092,
+    "lng": 12.327958969321926,
+    "polygon_id": "polygon-1746055561861",
+    "point_type": "land",
+    "id": "building_45.445205_12.327959"
+  },
+  {
+    "lat": 45.44654606978502,
+    "lng": 12.320855449006713,
+    "polygon_id": "polygon-1746055561861",
+    "point_type": "land",
+    "id": "building_45.446546_12.320855"
+  },
+  {
+    "lat": 45.447031776520525,
+    "lng": 12.319592477355457,
+    "polygon_id": "polygon-1746055561861",
+    "point_type": "land",
+    "id": "building_45.447032_12.319592"
+  },
+  {
+    "lat": 45.44706746694959,
+    "lng": 12.32025446523149,
+    "polygon_id": "polygon-1746055561861",
+    "point_type": "land",
+    "id": "building_45.447067_12.320254"
+  },
+  {
+    "lat": 45.44697028423084,
+    "lng": 12.321077885846746,
+    "polygon_id": "polygon-1746055561861",
+    "point_type": "land",
+    "id": "building_45.446970_12.321078"
+  },
+  {
+    "lat": 45.44747111001809,
+    "lng": 12.31917076399883,
+    "polygon_id": "polygon-1746055561861",
+    "point_type": "land",
+    "id": "building_45.447471_12.319171"
+  },
+  {
+    "lat": 45.44750945492322,
+    "lng": 12.320302251574471,
+    "polygon_id": "polygon-1746055561861",
+    "point_type": "land",
+    "id": "building_45.447509_12.320302"
+  },
+  {
+    "lat": 45.447501031173395,
+    "lng": 12.321018570224027,
+    "polygon_id": "polygon-1746055561861",
+    "point_type": "land",
+    "id": "building_45.447501_12.321019"
+  }
+]
+
+
+Here are relevancies that might influence your decision:
+[
+  {
+    "relevancyId": "rec6omWaZ6lwXe1VY",
+    "asset": "building_45.439358_12.325904",
+    "assetType": "building",
+    "category": "ownership_conflict",
+    "type": "building_on_others_land",
+    "targetCitizen": "John_Jeffries",
+    "relevantToCitizen": "GamingPatrizio",
+    "score": 85,
+    "timeHorizon": "medium",
+    "title": "Your Bakery at Calle dei Intagliatori is on land owned by \"John_Jeffries\".",
+    "description": "You own a **Bakery at Calle dei Intagliatori** on land owned by **John_Jeffries**.",
+    "notes": "Building ID: building_45.439358_12.325904, Land ID: polygon-1745879404342",
+    "createdAt": "2025-06-12T04:59:14.740Z",
+    "status": "high"
+  },
+  {
+    "relevancyId": "recd2ORWO4a1rBF3F",
+    "asset": "building_45.431049_12.355140",
+    "assetType": "building",
+    "category": "ownership_conflict",
+    "type": "building_on_others_land",
+    "targetCitizen": "BasstheWhale",
+    "relevantToCitizen": "GamingPatrizio",
+    "score": 85,
+    "timeHorizon": "medium",
+    "title": "Your Contract Stall at Sottoportego dei Preti is on land owned by \"BasstheWhale\".",
+    "description": "You own a **Contract Stall at Sottoportego dei Preti** on land owned by **BasstheWhale**.",
+    "notes": "Building ID: building_45.431049_12.355140, Land ID: polygon-1746057352428",
+    "createdAt": "2025-06-12T04:59:14.740Z",
+    "status": "high"
+  },
+  {
+    "relevancyId": "recmylFwBSLrlfI0s",
+    "asset": "building_45.438048_12.347155",
+    "assetType": "building",
+    "category": "ownership_conflict",
+    "type": "building_on_others_land",
+    "targetCitizen": "ConsiglioDeiDieci",
+    "relevantToCitizen": "GamingPatrizio",
+    "score": 85,
+    "timeHorizon": "medium",
+    "title": "Your Bakery at Calle dei Albanesi is on land owned by \"ConsiglioDeiDieci\".",
+    "description": "You own a **Bakery at Calle dei Albanesi** on land owned by **ConsiglioDeiDieci**.",
+    "notes": "Building ID: building_45.438048_12.347155, Land ID: polygon-1746056493504",
+    "createdAt": "2025-06-12T04:59:14.740Z",
+    "status": "high"
+  },
+  {
+    "relevancyId": "rec4LFRI9eLmyIsF8",
+    "asset": "building_45.440864_12.335067",
+    "assetType": "building",
+    "category": "ownership_conflict",
+    "type": "others_building_on_your_land",
+    "targetCitizen": "Italia",
+    "relevantToCitizen": "GamingPatrizio",
+    "score": 85,
+    "timeHorizon": "medium",
+    "title": "\"Italia\" owns a Blacksmith at Salizada dei Consoli on your land.",
+    "description": "**Italia** owns a **Blacksmith at Salizada dei Consoli** on your land.",
+    "notes": "Building ID: building_45.440864_12.335067, Land ID: polygon-1746055995050",
+    "createdAt": "2025-06-12T04:58:33.420Z",
+    "status": "high"
+  },
+  {
+    "relevancyId": "rec5gs2P9KopY9jtB",
+    "asset": "building_45.439358_12.325904",
+    "assetType": "building",
+    "category": "operator_relations",
+    "type": "operator_in_your_building",
+    "targetCitizen": "ShadowHunter",
+    "relevantToCitizen": "GamingPatrizio",
+    "score": 80,
+    "timeHorizon": "ongoing",
+    "title": "\"ShadowHunter\" operates your Bakery at Calle dei Intagliatori.",
+    "description": "**ShadowHunter** is currently operating your **Bakery at Calle dei Intagliatori**.",
+    "notes": "Building ID: building_45.439358_12.325904, Land ID: polygon-1745879404342",
+    "createdAt": "2025-06-12T05:04:14.879Z",
+    "status": "high"
+  },
+  {
+    "relevancyId": "recSr3NY3rYLDbMvJ",
+    "asset": "canal_45.438996_12.349170",
+    "assetType": "building",
+    "category": "operator_relations",
+    "type": "running_in_others_building",
+    "targetCitizen": "ConsiglioDeiDieci",
+    "relevantToCitizen": "GamingPatrizio",
+    "score": 80,
+    "timeHorizon": "ongoing",
+    "title": "You operate the Public Dock at Fondamenta dei Camerlenghi owned by \"ConsiglioDeiDieci\".",
+    "description": "You are currently operating the **Public Dock at Fondamenta dei Camerlenghi** owned by **ConsiglioDeiDieci**.",
+    "notes": "Building ID: canal_45.438996_12.349170, Land ID: polygon-1746056493504",
+    "createdAt": "2025-06-12T05:04:14.879Z",
+    "status": "high"
+  },
+  {
+    "relevancyId": "recYGBcG1CkdE7L7v",
+    "asset": "building_45.435204_12.340810",
+    "assetType": "building",
+    "category": "operator_relations",
+    "type": "operator_in_your_building",
+    "targetCitizen": "John_Jeffries",
+    "relevantToCitizen": "GamingPatrizio",
+    "score": 80,
+    "timeHorizon": "ongoing",
+    "title": "\"John_Jeffries\" operates your Bakery at Calle della Scuola dei Laneri.",
+    "description": "**John_Jeffries** is currently operating your **Bakery at Calle della Scuola dei Laneri**.",
+    "notes": "Building ID: building_45.435204_12.340810, Land ID: polygon-1746056903912",
+    "createdAt": "2025-06-12T05:04:14.879Z",
+    "status": "high"
+  },
+  {
+    "relevancyId": "recaPRqXfSWXkE7fb",
+    "asset": "building_45.429640_12.360838",
+    "assetType": "building",
+    "category": "operator_relations",
+    "type": "running_in_others_building",
+    "targetCitizen": "Italia",
+    "relevantToCitizen": "GamingPatrizio",
+    "score": 80,
+    "timeHorizon": "ongoing",
+    "title": "You operate the Granary at Calle del Pestrin owned by \"Italia\".",
+    "description": "You are currently operating the **Granary at Calle del Pestrin** owned by **Italia**.",
+    "notes": "Building ID: building_45.429640_12.360838, Land ID: polygon-1746057412398",
+    "createdAt": "2025-06-12T05:04:14.879Z",
+    "status": "high"
+  },
+  {
+    "relevancyId": "reckRQoNdqQCHkAJ1",
+    "asset": "building_45.438048_12.347155",
+    "assetType": "building",
+    "category": "operator_relations",
+    "type": "operator_in_your_building",
+    "targetCitizen": "TechnoMedici",
+    "relevantToCitizen": "GamingPatrizio",
+    "score": 80,
+    "timeHorizon": "ongoing",
+    "title": "\"TechnoMedici\" operates your Bakery at Calle dei Albanesi.",
+    "description": "**TechnoMedici** is currently operating your **Bakery at Calle dei Albanesi**.",
+    "notes": "Building ID: building_45.438048_12.347155, Land ID: polygon-1746056493504",
+    "createdAt": "2025-06-12T05:04:14.879Z",
+    "status": "high"
+  },
+  {
+    "relevancyId": "recbHIGpPcAAYiqm4",
+    "asset": "polygon-1746055962882",
+    "assetType": "land",
+    "category": "proximity",
+    "type": "geographic",
+    "targetCitizen": "SilkRoadRunner",
+    "relevantToCitizen": "GamingPatrizio",
+    "score": 78.91,
+    "timeHorizon": "medium",
+    "title": "\"SilkRoadRunner\" owns nearby land \"Calle degli Albanesi, San Marco\" (118m).",
+    "description": "**Calle degli Albanesi, San Marco**, owned by **SilkRoadRunner**, is **118 meters** from your nearest property.",
+    "notes": "",
+    "createdAt": "2025-06-12T04:52:42.380Z",
+    "status": "high"
+  },
+  {
+    "relevancyId": "recI6ZTMBtlAemk1N",
+    "asset": "polygon-1746056766342",
+    "assetType": "land",
+    "category": "proximity",
+    "type": "geographic",
+    "targetCitizen": "BasstheWhale",
+    "relevantToCitizen": "GamingPatrizio",
+    "score": 76.83,
+    "timeHorizon": "medium",
+    "title": "\"BasstheWhale\" owns nearby land \"Campiello de la Feltrina in Contr\u00e0 San Mois\u00e8\" (132m).",
+    "description": "**Campiello de la Feltrina in Contr\u00e0 San Mois\u00e8**, owned by **BasstheWhale**, is **132 meters** from your nearest property.",
+    "notes": "",
+    "createdAt": "2025-06-12T04:52:42.380Z",
+    "status": "high"
+  },
+  {
+    "relevancyId": "recdJPflFcBxi7FTM",
+    "asset": "polygon-1746056735293",
+    "assetType": "land",
+    "category": "proximity",
+    "type": "geographic",
+    "targetCitizen": "BasstheWhale",
+    "relevantToCitizen": "GamingPatrizio",
+    "score": 76.79,
+    "timeHorizon": "medium",
+    "title": "\"BasstheWhale\" owns nearby land \"Calle Zaguri in Sestiere San Marco\" (132m).",
+    "description": "**Calle Zaguri in Sestiere San Marco**, owned by **BasstheWhale**, is **132 meters** from your nearest property.",
+    "notes": "",
+    "createdAt": "2025-06-12T04:52:42.380Z",
+    "status": "high"
+  },
+  {
+    "relevancyId": "recu6kGaMHNA0LPfg",
+    "asset": "polygon-1746056582235",
+    "assetType": "land",
+    "category": "proximity",
+    "type": "geographic",
+    "targetCitizen": "BasstheWhale",
+    "relevantToCitizen": "GamingPatrizio",
+    "score": 75.79,
+    "timeHorizon": "medium",
+    "title": "\"BasstheWhale\" owns nearby land \"Calle del Caffettier in Sestiere San Marco\" (139m).",
+    "description": "**Calle del Caffettier in Sestiere San Marco**, owned by **BasstheWhale**, is **139 meters** from your nearest property.",
+    "notes": "",
+    "createdAt": "2025-06-12T04:52:42.380Z",
+    "status": "high"
+  },
+  {
+    "relevancyId": "rec9LbFQRCb4NdtFb",
+    "asset": "canal_45.438996_12.349170",
+    "assetType": "building",
+    "category": "occupancy_relations",
+    "type": "employer_to_employee",
+    "targetCitizen": "BlueSkySurfer",
+    "relevantToCitizen": "GamingPatrizio",
+    "score": 75,
+    "timeHorizon": "ongoing",
+    "title": "\"BlueSkySurfer\" works at your Public Dock at Fondamenta dei Camerlenghi.",
+    "description": "**BlueSkySurfer** works at your **Public Dock at Fondamenta dei Camerlenghi**.",
+    "notes": "Building ID: canal_45.438996_12.349170, Land ID: polygon-1746056493504",
+    "createdAt": "2025-06-12T05:08:24.974Z",
+    "status": "high"
+  },
+  {
+    "relevancyId": "recmfjKdF7y78TAwg",
+    "asset": "building_45.429640_12.360838",
+    "assetType": "building",
+    "category": "occupancy_relations",
+    "type": "employer_to_employee",
+    "targetCitizen": "the_social_canvas",
+    "relevantToCitizen": "GamingPatrizio",
+    "score": 75,
+    "timeHorizon": "ongoing",
+    "title": "\"the_social_canvas\" works at your Granary at Calle del Pestrin.",
+    "description": "**the_social_canvas** works at your **Granary at Calle del Pestrin**.",
+    "notes": "Building ID: building_45.429640_12.360838, Land ID: polygon-1746057412398",
+    "createdAt": "2025-06-12T05:08:24.974Z",
+    "status": "high"
+  },
+  {
+    "relevancyId": "rec45gEhwSVLCfuFv",
+    "asset": "polygon-1746056164869",
+    "assetType": "land",
+    "category": "proximity",
+    "type": "geographic",
+    "targetCitizen": "TechnoMedici",
+    "relevantToCitizen": "GamingPatrizio",
+    "score": 74.96,
+    "timeHorizon": "medium",
+    "title": "\"TechnoMedici\" owns nearby land \"Cale de la Malvasia Vechia, Sestiere San Marco\" (144m).",
+    "description": "**Cale de la Malvasia Vechia, Sestiere San Marco**, owned by **TechnoMedici**, is **144 meters** from your nearest property.",
+    "notes": "",
+    "createdAt": "2025-06-12T04:52:42.380Z",
+    "status": "high"
+  },
+  {
+    "relevancyId": "recRSr4SuXAZRbOjh",
+    "asset": "polygon-1746056923664",
+    "assetType": "land",
+    "category": "proximity",
+    "type": "geographic",
+    "targetCitizen": "ConsiglioDeiDieci",
+    "relevantToCitizen": "GamingPatrizio",
+    "score": 74.55,
+    "timeHorizon": "medium",
+    "title": "\"ConsiglioDeiDieci\" owns nearby land \"Campo San Zaccaria\" (147m).",
+    "description": "**Campo San Zaccaria**, owned by **ConsiglioDeiDieci**, is **147 meters** from your nearest property.",
+    "notes": "",
+    "createdAt": "2025-06-12T04:52:42.380Z",
+    "status": "high"
+  },
+  {
+    "relevancyId": "reccmiGCzXm38bWbX",
+    "asset": "polygon-1746056173670",
+    "assetType": "land",
+    "category": "proximity",
+    "type": "geographic",
+    "targetCitizen": "steven",
+    "relevantToCitizen": "GamingPatrizio",
+    "score": 73.92,
+    "timeHorizon": "medium",
+    "title": "\"steven\" owns nearby land \"Calle del Dose, Sestiere di San Marco\" (151m).",
+    "description": "**Calle del Dose, Sestiere di San Marco**, owned by **steven**, is **151 meters** from your nearest property.",
+    "notes": "",
+    "createdAt": "2025-06-12T04:52:42.380Z",
+    "status": "high"
+  },
+  {
+    "relevancyId": "recrFCmXuizgsDDIj",
+    "asset": "polygon-1746056711688",
+    "assetType": "land",
+    "category": "proximity",
+    "type": "geographic",
+    "targetCitizen": "BasstheWhale",
+    "relevantToCitizen": "GamingPatrizio",
+    "score": 73.85,
+    "timeHorizon": "medium",
+    "title": "\"BasstheWhale\" owns nearby land \"Fondamenta dei Narisi in Cannaregio\" (152m).",
+    "description": "**Fondamenta dei Narisi in Cannaregio**, owned by **BasstheWhale**, is **152 meters** from your nearest property.",
+    "notes": "",
+    "createdAt": "2025-06-12T04:52:42.380Z",
+    "status": "high"
+  },
+  {
+    "relevancyId": "recQD5ycXqT99Ej12",
+    "asset": "polygon-1746056790924",
+    "assetType": "land",
+    "category": "proximity",
+    "type": "geographic",
+    "targetCitizen": "BasstheWhale",
+    "relevantToCitizen": "GamingPatrizio",
+    "score": 70.24,
+    "timeHorizon": "medium",
+    "title": "\"BasstheWhale\" owns nearby land \"Calle Larga de San Mois\u00e8\" (177m).",
+    "description": "**Calle Larga de San Mois\u00e8**, owned by **BasstheWhale**, is **177 meters** from your nearest property.",
+    "notes": "",
+    "createdAt": "2025-06-12T04:52:42.380Z",
+    "status": "high"
+  },
+  {
+    "relevancyId": "recVLtSDWVq29P1TY",
+    "asset": "land_45.440843_12.336848",
+    "assetType": "building",
+    "category": "ownership_conflict",
+    "type": "others_building_on_your_land",
+    "targetCitizen": "ConsiglioDeiDieci",
+    "relevantToCitizen": "GamingPatrizio",
+    "score": 70,
+    "timeHorizon": "medium",
+    "title": "\"ConsiglioDeiDieci\" owns a Merchant S House on your land.",
+    "description": "**ConsiglioDeiDieci** owns a **Merchant S House** on your land.",
+    "notes": "Building ID: land_45.440843_12.336848, Land ID: polygon-1746055995050",
+    "createdAt": "2025-06-12T05:02:01.267Z",
+    "status": "medium"
+  },
+  {
+    "relevancyId": "recXql9SzucT2UiV5",
+    "asset": "building_45.436674_12.339536",
+    "assetType": "building",
+    "category": "ownership_conflict",
+    "type": "others_building_on_your_land",
+    "targetCitizen": "ConsiglioDeiDieci",
+    "relevantToCitizen": "GamingPatrizio",
+    "score": 70,
+    "timeHorizon": "medium",
+    "title": "\"ConsiglioDeiDieci\" owns a Artisan's House at Salizada dei Musicisti on your land.",
+    "description": "**ConsiglioDeiDieci** owns a **Artisan's House at Salizada dei Musicisti** on your land.",
+    "notes": "Building ID: building_45.436674_12.339536, Land ID: polygon-1746056319492",
+    "createdAt": "2025-06-12T05:02:01.267Z",
+    "status": "medium"
+  },
+  {
+    "relevancyId": "recjngsgiep7YsVd8",
+    "asset": "land_45.441299_12.336995",
+    "assetType": "building",
+    "category": "ownership_conflict",
+    "type": "others_building_on_your_land",
+    "targetCitizen": "ConsiglioDeiDieci",
+    "relevantToCitizen": "GamingPatrizio",
+    "score": 70,
+    "timeHorizon": "medium",
+    "title": "\"ConsiglioDeiDieci\" owns a Merchant S House on your land.",
+    "description": "**ConsiglioDeiDieci** owns a **Merchant S House** on your land.",
+    "notes": "Building ID: land_45.441299_12.336995, Land ID: polygon-1746055995050",
+    "createdAt": "2025-06-12T05:02:01.267Z",
+    "status": "medium"
+  },
+  {
+    "relevancyId": "recoYwjkeP6WxbsVp",
+    "asset": "land_45.440891_12.336184",
+    "assetType": "building",
+    "category": "ownership_conflict",
+    "type": "others_building_on_your_land",
+    "targetCitizen": "ConsiglioDeiDieci",
+    "relevantToCitizen": "GamingPatrizio",
+    "score": 70,
+    "timeHorizon": "medium",
+    "title": "\"ConsiglioDeiDieci\" owns a Merchant S House on your land.",
+    "description": "**ConsiglioDeiDieci** owns a **Merchant S House** on your land.",
+    "notes": "Building ID: land_45.440891_12.336184, Land ID: polygon-1746055995050",
+    "createdAt": "2025-06-12T05:02:01.267Z",
+    "status": "medium"
+  },
+  {
+    "relevancyId": "recvkiO5uzhkMmcWW",
+    "asset": "bridge_45.436508_12.338397",
+    "assetType": "building",
+    "category": "ownership_conflict",
+    "type": "others_building_on_your_land",
+    "targetCitizen": "ConsiglioDeiDieci",
+    "relevantToCitizen": "GamingPatrizio",
+    "score": 70,
+    "timeHorizon": "medium",
+    "title": "\"ConsiglioDeiDieci\" owns a Bridge at Ponte dei Virtuosi on your land.",
+    "description": "**ConsiglioDeiDieci** owns a **Bridge at Ponte dei Virtuosi** on your land.",
+    "notes": "Building ID: bridge_45.436508_12.338397, Land ID: polygon-1746056319492",
+    "createdAt": "2025-06-12T05:02:01.267Z",
+    "status": "medium"
+  },
+  {
+    "relevancyId": "rec9eVamrTXYNYr0T",
+    "asset": "building_45.431950_12.351984",
+    "assetType": "building",
+    "category": "ownership_conflict",
+    "type": "building_on_others_land",
+    "targetCitizen": "BasstheWhale",
+    "relevantToCitizen": "GamingPatrizio",
+    "score": 70,
+    "timeHorizon": "medium",
+    "title": "Your Merchant's House at Campiello dei Tagliapietra is on land owned by \"BasstheWhale\".",
+    "description": "You own a **Merchant's House at Campiello dei Tagliapietra** on land owned by **BasstheWhale**.",
+    "notes": "Building ID: building_45.431950_12.351984, Land ID: polygon-1746057352428",
+    "createdAt": "2025-06-12T04:59:14.740Z",
+    "status": "medium"
+  },
+  {
+    "relevancyId": "rec4svsWMkkoO7bJ0",
+    "asset": "polygon-1746056244077",
+    "assetType": "land",
+    "category": "proximity",
+    "type": "geographic",
+    "targetCitizen": "steven",
+    "relevantToCitizen": "GamingPatrizio",
+    "score": 69.38,
+    "timeHorizon": "medium",
+    "title": "\"steven\" owns nearby land \"Calle Longa Santa Maria Formosa in Sestiere Castello\" (183m).",
+    "description": "**Calle Longa Santa Maria Formosa in Sestiere Castello**, owned by **steven**, is **183 meters** from your nearest property.",
+    "notes": "",
+    "createdAt": "2025-06-12T04:52:42.380Z",
+    "status": "medium"
+  },
+  {
+    "relevancyId": "reci8RzT7ft411S7c",
+    "asset": "polygon-1746056541940",
+    "assetType": "land",
+    "category": "proximity",
+    "type": "geographic",
+    "targetCitizen": "NLR",
+    "relevantToCitizen": "GamingPatrizio",
+    "score": 68.74,
+    "timeHorizon": "medium",
+    "title": "\"NLR\" owns nearby land \"Calle dei Avvocati, San Marco\" (187m).",
+    "description": "**Calle dei Avvocati, San Marco**, owned by **NLR**, is **187 meters** from your nearest property.",
+    "notes": "",
+    "createdAt": "2025-06-12T04:52:42.380Z",
+    "status": "medium"
+  },
+  {
+    "relevancyId": "rec8F4il7Bzfxv8CL",
+    "asset": "polygon-1746056403060",
+    "assetType": "land",
+    "category": "proximity",
+    "type": "geographic",
+    "targetCitizen": "ConsiglioDeiDieci",
+    "relevantToCitizen": "GamingPatrizio",
+    "score": 68.53,
+    "timeHorizon": "medium",
+    "title": "\"ConsiglioDeiDieci\" owns nearby land \"Corte del Pozzo Roverso in San Marco\" (189m).",
+    "description": "**Corte del Pozzo Roverso in San Marco**, owned by **ConsiglioDeiDieci**, is **189 meters** from your nearest property.",
+    "notes": "",
+    "createdAt": "2025-06-12T04:52:42.380Z",
+    "status": "medium"
+  },
+  {
+    "relevancyId": "recobmG16KUN8pOON",
+    "asset": "polygon-1746055971606",
+    "assetType": "land",
+    "category": "proximity",
+    "type": "geographic",
+    "targetCitizen": "steven",
+    "relevantToCitizen": "GamingPatrizio",
+    "score": 66.96,
+    "timeHorizon": "medium",
+    "title": "\"steven\" owns nearby land \"Calle dei Sartori presso San Zulian\" (201m).",
+    "description": "**Calle dei Sartori presso San Zulian**, owned by **steven**, is **201 meters** from your nearest property.",
+    "notes": "",
+    "createdAt": "2025-06-12T04:52:42.380Z",
+    "status": "medium"
+  },
+  {
+    "relevancyId": "reco8nBIqC3Z2Q8By",
+    "asset": "polygon-1746056283856",
+    "assetType": "land",
+    "category": "proximity",
+    "type": "geographic",
+    "targetCitizen": "meyti_tgz",
+    "relevantToCitizen": "GamingPatrizio",
+    "score": 66.75,
+    "timeHorizon": "medium",
+    "title": "\"meyti_tgz\" owns nearby land \"Calle de la Fava, San Marco\" (202m).",
+    "description": "**Calle de la Fava, San Marco**, owned by **meyti_tgz**, is **202 meters** from your nearest property.",
+    "notes": "",
+    "createdAt": "2025-06-12T04:52:42.380Z",
+    "status": "medium"
+  },
+  {
+    "relevancyId": "recLmqpF0ADj0eeL9",
+    "asset": "polygon-1746056070563",
+    "assetType": "land",
+    "category": "proximity",
+    "type": "geographic",
+    "targetCitizen": "Italia",
+    "relevantToCitizen": "GamingPatrizio",
+    "score": 66.04,
+    "timeHorizon": "medium",
+    "title": "\"Italia\" owns nearby land \"Ruga dei Oresi in Sestiere di Cannaregio\" (207m).",
+    "description": "**Ruga dei Oresi in Sestiere di Cannaregio**, owned by **Italia**, is **207 meters** from your nearest property.",
+    "notes": "",
+    "createdAt": "2025-06-12T04:52:42.380Z",
+    "status": "medium"
+  },
+  {
+    "relevancyId": "recTioxDkb0HYqK2t",
+    "asset": "polygon-1746055950767",
+    "assetType": "land",
+    "category": "proximity",
+    "type": "geographic",
+    "targetCitizen": "LorenzoGrimani",
+    "relevantToCitizen": "GamingPatrizio",
+    "score": 63.11,
+    "timeHorizon": "medium",
+    "title": "\"LorenzoGrimani\" owns nearby land \"Calle Corrente in Sestiere Cannaregio\" (230m).",
+    "description": "**Calle Corrente in Sestiere Cannaregio**, owned by **LorenzoGrimani**, is **230 meters** from your nearest property.",
+    "notes": "",
+    "createdAt": "2025-06-12T04:52:42.380Z",
+    "status": "medium"
+  },
+  {
+    "relevancyId": "recFHbv5sKgRnC4KP",
+    "asset": "polygon-1746056107157",
+    "assetType": "land",
+    "category": "proximity",
+    "type": "geographic",
+    "targetCitizen": "John_Jeffries",
+    "relevantToCitizen": "GamingPatrizio",
+    "score": 62.96,
+    "timeHorizon": "medium",
+    "title": "\"John_Jeffries\" owns nearby land \"Campo San Zuane Grisostomo\" (231m).",
+    "description": "**Campo San Zuane Grisostomo**, owned by **John_Jeffries**, is **231 meters** from your nearest property.",
+    "notes": "",
+    "createdAt": "2025-06-12T04:52:42.380Z",
+    "status": "medium"
+  },
+  {
+    "relevancyId": "recq8dmzFGwH67vnn",
+    "asset": "polygon-1746056083350",
+    "assetType": "land",
+    "category": "proximity",
+    "type": "geographic",
+    "targetCitizen": "TechnoMedici",
+    "relevantToCitizen": "GamingPatrizio",
+    "score": 62.21,
+    "timeHorizon": "medium",
+    "title": "\"TechnoMedici\" owns nearby land \"Calle de la Gexia de San Salvador\" (237m).",
+    "description": "**Calle de la Gexia de San Salvador**, owned by **TechnoMedici**, is **237 meters** from your nearest property.",
+    "notes": "",
+    "createdAt": "2025-06-12T04:52:42.380Z",
+    "status": "medium"
+  },
+  {
+    "relevancyId": "recEFPtdjlnd7SObe",
+    "asset": "polygon-1746055909289",
+    "assetType": "land",
+    "category": "proximity",
+    "type": "geographic",
+    "targetCitizen": "BasstheWhale",
+    "relevantToCitizen": "GamingPatrizio",
+    "score": 60.22,
+    "timeHorizon": "medium",
+    "title": "\"BasstheWhale\" owns nearby land \"Calle Salamon in Sestiere Cannaregio, presso la Chiesa di Santa Maria dei Miracoli\" (254m).",
+    "description": "**Calle Salamon in Sestiere Cannaregio, presso la Chiesa di Santa Maria dei Miracoli**, owned by **BasstheWhale**, is **254 meters** from your nearest property.",
+    "notes": "",
+    "createdAt": "2025-06-12T04:52:42.380Z",
+    "status": "medium"
+  },
+  {
+    "relevancyId": "recYvgrPWnn7MnnIS",
+    "asset": "polygon-1746056619863",
+    "assetType": "land",
+    "category": "proximity",
+    "type": "geographic",
+    "targetCitizen": "ConsiglioDeiDieci",
+    "relevantToCitizen": "GamingPatrizio",
+    "score": 59.84,
+    "timeHorizon": "medium",
+    "title": "\"ConsiglioDeiDieci\" owns nearby land \"Calle dei Favri, San Marco\" (257m).",
+    "description": "**Calle dei Favri, San Marco**, owned by **ConsiglioDeiDieci**, is **257 meters** from your nearest property.",
+    "notes": "",
+    "createdAt": "2025-06-12T04:52:42.380Z",
+    "status": "medium"
+  },
+  {
+    "relevancyId": "rec9g2P2aDxQsJdsV",
+    "asset": "polygon-1746056559199",
+    "assetType": "land",
+    "category": "proximity",
+    "type": "geographic",
+    "targetCitizen": "BasstheWhale",
+    "relevantToCitizen": "GamingPatrizio",
+    "score": 58.66,
+    "timeHorizon": "medium",
+    "title": "\"BasstheWhale\" owns nearby land \"Corte de l'Albero in Sestiere di San Marco\" (267m).",
+    "description": "**Corte de l'Albero in Sestiere di San Marco**, owned by **BasstheWhale**, is **267 meters** from your nearest property.",
+    "notes": "",
+    "createdAt": "2025-06-12T04:52:42.380Z",
+    "status": "medium"
+  },
+  {
+    "relevancyId": "rec5evdlkmhI3anou",
+    "asset": "polygon-1746056377511",
+    "assetType": "land",
+    "category": "proximity",
+    "type": "geographic",
+    "targetCitizen": "GiovanniContarini",
+    "relevantToCitizen": "GamingPatrizio",
+    "score": 58.41,
+    "timeHorizon": "medium",
+    "title": "\"GiovanniContarini\" owns nearby land \"Fondamenta San Severo, Sestiere Castello\" (269m).",
+    "description": "**Fondamenta San Severo, Sestiere Castello**, owned by **GiovanniContarini**, is **269 meters** from your nearest property.",
+    "notes": "",
+    "createdAt": "2025-06-12T04:52:42.380Z",
+    "status": "medium"
+  },
+  {
+    "relevancyId": "recRo8VnRf3DdGXKh",
+    "asset": "polygon-1746056675315",
+    "assetType": "land",
+    "category": "proximity",
+    "type": "geographic",
+    "targetCitizen": "BasstheWhale",
+    "relevantToCitizen": "GamingPatrizio",
+    "score": 57.5,
+    "timeHorizon": "medium",
+    "title": "\"BasstheWhale\" owns nearby land \"Calle Giustinian, San Marco\" (277m).",
+    "description": "**Calle Giustinian, San Marco**, owned by **BasstheWhale**, is **277 meters** from your nearest property.",
+    "notes": "",
+    "createdAt": "2025-06-12T04:52:42.380Z",
+    "status": "medium"
+  },
+  {
+    "relevancyId": "recMQ5VhOVmcfAMQC",
+    "asset": "polygon-1746056033630",
+    "assetType": "land",
+    "category": "proximity",
+    "type": "geographic",
+    "targetCitizen": "Miles4lf",
+    "relevantToCitizen": "GamingPatrizio",
+    "score": 56.91,
+    "timeHorizon": "medium",
+    "title": "\"Miles4lf\" owns nearby land \"Calle Stella in Sestiere San Marco\" (282m).",
+    "description": "**Calle Stella in Sestiere San Marco**, owned by **Miles4lf**, is **282 meters** from your nearest property.",
+    "notes": "",
+    "createdAt": "2025-06-12T04:52:42.380Z",
+    "status": "medium"
+  },
+  {
+    "relevancyId": "rec1fBedVsH3PV4JO",
+    "asset": "polygon-1746056876739",
+    "assetType": "land",
+    "category": "proximity",
+    "type": "geographic",
+    "targetCitizen": "BasstheWhale",
+    "relevantToCitizen": "GamingPatrizio",
+    "score": 56.25,
+    "timeHorizon": "medium",
+    "title": "\"BasstheWhale\" owns nearby land \"Ponte dei Dai in Sestiere Cannaregio\" (288m).",
+    "description": "**Ponte dei Dai in Sestiere Cannaregio**, owned by **BasstheWhale**, is **288 meters** from your nearest property.",
+    "notes": "",
+    "createdAt": "2025-06-12T04:52:42.380Z",
+    "status": "medium"
+  },
+  {
+    "relevancyId": "rec3jV8vT3SJRmrVn",
+    "asset": "polygon-1746056451160",
+    "assetType": "land",
+    "category": "proximity",
+    "type": "geographic",
+    "targetCitizen": "Lucid",
+    "relevantToCitizen": "GamingPatrizio",
+    "score": 54.44,
+    "timeHorizon": "medium",
+    "title": "\"Lucid\" owns nearby land \"Calle dei Greci, Sestiere Castello\" (304m).",
+    "description": "**Calle dei Greci, Sestiere Castello**, owned by **Lucid**, is **304 meters** from your nearest property.",
+    "notes": "",
+    "createdAt": "2025-06-12T04:52:42.380Z",
+    "status": "medium"
+  },
+  {
+    "relevancyId": "recq8AHeZ7Puytygq",
+    "asset": "polygon-1746056660534",
+    "assetType": "land",
+    "category": "proximity",
+    "type": "geographic",
+    "targetCitizen": "BasstheWhale",
+    "relevantToCitizen": "GamingPatrizio",
+    "score": 53.72,
+    "timeHorizon": "medium",
+    "title": "\"BasstheWhale\" owns nearby land \"Calle de le Lezze in Contrada San Mois\u00e8, Sestiere di San Marco\" (311m).",
+    "description": "**Calle de le Lezze in Contrada San Mois\u00e8, Sestiere di San Marco**, owned by **BasstheWhale**, is **311 meters** from your nearest property.",
+    "notes": "",
+    "createdAt": "2025-06-12T04:52:42.380Z",
+    "status": "medium"
+  },
+  {
+    "relevancyId": "recM8rv93bNNk3f2d",
+    "asset": "polygon-1745878962632",
+    "assetType": "land",
+    "category": "proximity",
+    "type": "geographic",
+    "targetCitizen": "BasstheWhale",
+    "relevantToCitizen": "GamingPatrizio",
+    "score": 51.99,
+    "timeHorizon": "medium",
+    "title": "\"BasstheWhale\" owns nearby land \"Ponte del Formager in Sestiere San Polo\" (327m).",
+    "description": "**Ponte del Formager in Sestiere San Polo**, owned by **BasstheWhale**, is **327 meters** from your nearest property.",
+    "notes": "",
+    "createdAt": "2025-06-12T04:52:42.380Z",
+    "status": "medium"
+  },
+  {
+    "relevancyId": "recvytup7DffZlKqy",
+    "asset": "polygon-1746055928225",
+    "assetType": "land",
+    "category": "proximity",
+    "type": "geographic",
+    "targetCitizen": "aegean_mariner",
+    "relevantToCitizen": "GamingPatrizio",
+    "score": 51.91,
+    "timeHorizon": "medium",
+    "title": "\"aegean_mariner\" owns nearby land \"Calle de la Scuola de San Rocco\" (328m).",
+    "description": "**Calle de la Scuola de San Rocco**, owned by **aegean_mariner**, is **328 meters** from your nearest property.",
+    "notes": "",
+    "createdAt": "2025-06-12T04:52:42.380Z",
+    "status": "medium"
+  },
+  {
+    "relevancyId": "recLWLax9jL4RGwhY",
+    "asset": "polygon-1746072967949",
+    "assetType": "land",
+    "category": "proximity",
+    "type": "geographic",
+    "targetCitizen": "ConsiglioDeiDieci",
+    "relevantToCitizen": "GamingPatrizio",
+    "score": 51.86,
+    "timeHorizon": "medium",
+    "title": "\"ConsiglioDeiDieci\" owns nearby land \"Contrada San Polo\" (328m).",
+    "description": "**Contrada San Polo**, owned by **ConsiglioDeiDieci**, is **328 meters** from your nearest property.",
+    "notes": "",
+    "createdAt": "2025-06-12T04:52:42.380Z",
+    "status": "medium"
+  },
+  {
+    "relevancyId": "reclLkXLjwtUzwh7t",
+    "asset": "polygon-1746055825280",
+    "assetType": "land",
+    "category": "proximity",
+    "type": "geographic",
+    "targetCitizen": "Feola007",
+    "relevantToCitizen": "GamingPatrizio",
+    "score": 50.83,
+    "timeHorizon": "medium",
+    "title": "\"Feola007\" owns nearby land \"Fondamenta de Ca' Vendramin in Cannaregio\" (338m).",
+    "description": "**Fondamenta de Ca' Vendramin in Cannaregio**, owned by **Feola007**, is **338 meters** from your nearest property.",
+    "notes": "",
+    "createdAt": "2025-06-12T04:52:42.380Z",
+    "status": "medium"
+  },
+  {
+    "relevancyId": "recyWF1y2prHTCSOz",
+    "asset": "polygon-1746055877827",
+    "assetType": "land",
+    "category": "proximity",
+    "type": "geographic",
+    "targetCitizen": "Bullitpro0f",
+    "relevantToCitizen": "GamingPatrizio",
+    "score": 50.34,
+    "timeHorizon": "medium",
+    "title": "\"Bullitpro0f\" owns nearby land \"Fondamenta del Rem\u00e8r in Sestiere Dorsoduro\" (343m).",
+    "description": "**Fondamenta del Rem\u00e8r in Sestiere Dorsoduro**, owned by **Bullitpro0f**, is **343 meters** from your nearest property.",
+    "notes": "",
+    "createdAt": "2025-06-12T04:52:42.380Z",
+    "status": "medium"
+  },
+  {
+    "relevancyId": "recXNGlVJFFRQPZhq",
+    "asset": "polygon-1746056351603",
+    "assetType": "land",
+    "category": "proximity",
+    "type": "geographic",
+    "targetCitizen": "BasstheWhale",
+    "relevantToCitizen": "GamingPatrizio",
+    "score": 50.3,
+    "timeHorizon": "medium",
+    "title": "\"BasstheWhale\" owns nearby land \"Calle dei Fuseri presso San Luca\" (344m).",
+    "description": "**Calle dei Fuseri presso San Luca**, owned by **BasstheWhale**, is **344 meters** from your nearest property.",
+    "notes": "",
+    "createdAt": "2025-06-12T04:52:42.380Z",
+    "status": "medium"
+  }
+]
+
+Here are relevancies where you are the target:
+[
+  {
+    "relevancyId": "recMrH4hXehMP3d65",
+    "asset": "building_45.431049_12.355140",
+    "assetType": "building",
+    "category": "ownership_conflict",
+    "type": "others_building_on_your_land",
+    "targetCitizen": "GamingPatrizio",
+    "relevantToCitizen": "BasstheWhale",
+    "score": 85,
+    "timeHorizon": "medium",
+    "title": "\"GamingPatrizio\" owns a Contract Stall at Sottoportego dei Preti on your land.",
+    "description": "**GamingPatrizio** owns a **Contract Stall at Sottoportego dei Preti** on your land.",
+    "notes": "Building ID: building_45.431049_12.355140, Land ID: polygon-1746057352428",
+    "createdAt": "2025-06-12T04:59:15.239Z",
+    "status": "high"
+  },
+  {
+    "relevancyId": "recZRlx6VsqCNtMFF",
+    "asset": "building_45.438048_12.347155",
+    "assetType": "building",
+    "category": "ownership_conflict",
+    "type": "others_building_on_your_land",
+    "targetCitizen": "GamingPatrizio",
+    "relevantToCitizen": "ConsiglioDeiDieci",
+    "score": 85,
+    "timeHorizon": "medium",
+    "title": "\"GamingPatrizio\" owns a Bakery at Calle dei Albanesi on your land.",
+    "description": "**GamingPatrizio** owns a **Bakery at Calle dei Albanesi** on your land.",
+    "notes": "Building ID: building_45.438048_12.347155, Land ID: polygon-1746056493504",
+    "createdAt": "2025-06-12T04:59:15.074Z",
+    "status": "high"
+  },
+  {
+    "relevancyId": "rec9dk0v0EPmZyAUy",
+    "asset": "building_45.439358_12.325904",
+    "assetType": "building",
+    "category": "ownership_conflict",
+    "type": "others_building_on_your_land",
+    "targetCitizen": "GamingPatrizio",
+    "relevantToCitizen": "John_Jeffries",
+    "score": 85,
+    "timeHorizon": "medium",
+    "title": "\"GamingPatrizio\" owns a Bakery at Calle dei Intagliatori on your land.",
+    "description": "**GamingPatrizio** owns a **Bakery at Calle dei Intagliatori** on your land.",
+    "notes": "Building ID: building_45.439358_12.325904, Land ID: polygon-1745879404342",
+    "createdAt": "2025-06-12T04:59:14.904Z",
+    "status": "high"
+  },
+  {
+    "relevancyId": "recEWP7szNlir1AvY",
+    "asset": "building_45.440864_12.335067",
+    "assetType": "building",
+    "category": "ownership_conflict",
+    "type": "building_on_others_land",
+    "targetCitizen": "GamingPatrizio",
+    "relevantToCitizen": "Italia",
+    "score": 85,
+    "timeHorizon": "medium",
+    "title": "Your Blacksmith at Salizada dei Consoli is on land owned by \"GamingPatrizio\".",
+    "description": "You own a **Blacksmith at Salizada dei Consoli** on land owned by **GamingPatrizio**.",
+    "notes": "Building ID: building_45.440864_12.335067, Land ID: polygon-1746055995050",
+    "createdAt": "2025-06-12T04:58:32.639Z",
+    "status": "high"
+  },
+  {
+    "relevancyId": "recFNKBxCdclwltBd",
+    "asset": "building_45.438048_12.347155",
+    "assetType": "building",
+    "category": "operator_relations",
+    "type": "running_in_others_building",
+    "targetCitizen": "GamingPatrizio",
+    "relevantToCitizen": "TechnoMedici",
+    "score": 80,
+    "timeHorizon": "ongoing",
+    "title": "You operate the Bakery at Calle dei Albanesi owned by \"GamingPatrizio\".",
+    "description": "You are currently operating the **Bakery at Calle dei Albanesi** owned by **GamingPatrizio**.",
+    "notes": "Building ID: building_45.438048_12.347155, Land ID: polygon-1746056493504",
+    "createdAt": "2025-06-12T05:06:40.460Z",
+    "status": "high"
+  },
+  {
+    "relevancyId": "recAtpbbpWRS86e2X",
+    "asset": "canal_45.438996_12.349170",
+    "assetType": "building",
+    "category": "operator_relations",
+    "type": "operator_in_your_building",
+    "targetCitizen": "GamingPatrizio",
+    "relevantToCitizen": "ConsiglioDeiDieci",
+    "score": 80,
+    "timeHorizon": "ongoing",
+    "title": "\"GamingPatrizio\" operates your Public Dock at Fondamenta dei Camerlenghi.",
+    "description": "**GamingPatrizio** is currently operating your **Public Dock at Fondamenta dei Camerlenghi**.",
+    "notes": "Building ID: canal_45.438996_12.349170, Land ID: polygon-1746056493504",
+    "createdAt": "2025-06-12T05:06:28.528Z",
+    "status": "high"
+  },
+  {
+    "relevancyId": "rectbOBZZAxAe1Isg",
+    "asset": "building_45.435204_12.340810",
+    "assetType": "building",
+    "category": "operator_relations",
+    "type": "running_in_others_building",
+    "targetCitizen": "GamingPatrizio",
+    "relevantToCitizen": "John_Jeffries",
+    "score": 80,
+    "timeHorizon": "ongoing",
+    "title": "You operate the Bakery at Calle della Scuola dei Laneri owned by \"GamingPatrizio\".",
+    "description": "You are currently operating the **Bakery at Calle della Scuola dei Laneri** owned by **GamingPatrizio**.",
+    "notes": "Building ID: building_45.435204_12.340810, Land ID: polygon-1746056903912",
+    "createdAt": "2025-06-12T05:06:00.652Z",
+    "status": "high"
+  },
+  {
+    "relevancyId": "rectYsEKcEbRxU51H",
+    "asset": "building_45.439358_12.325904",
+    "assetType": "building",
+    "category": "operator_relations",
+    "type": "running_in_others_building",
+    "targetCitizen": "GamingPatrizio",
+    "relevantToCitizen": "ShadowHunter",
+    "score": 80,
+    "timeHorizon": "ongoing",
+    "title": "You operate the Bakery at Calle dei Intagliatori owned by \"GamingPatrizio\".",
+    "description": "You are currently operating the **Bakery at Calle dei Intagliatori** owned by **GamingPatrizio**.",
+    "notes": "Building ID: building_45.439358_12.325904, Land ID: polygon-1745879404342",
+    "createdAt": "2025-06-12T05:03:59.377Z",
+    "status": "high"
+  },
+  {
+    "relevancyId": "recl21cJq2wYhpjco",
+    "asset": "building_45.429640_12.360838",
+    "assetType": "building",
+    "category": "operator_relations",
+    "type": "operator_in_your_building",
+    "targetCitizen": "GamingPatrizio",
+    "relevantToCitizen": "Italia",
+    "score": 80,
+    "timeHorizon": "ongoing",
+    "title": "\"GamingPatrizio\" operates your Granary at Calle del Pestrin.",
+    "description": "**GamingPatrizio** is currently operating your **Granary at Calle del Pestrin**.",
+    "notes": "Building ID: building_45.429640_12.360838, Land ID: polygon-1746057412398",
+    "createdAt": "2025-06-12T05:03:37.911Z",
+    "status": "high"
+  },
+  {
+    "relevancyId": "recgDzzdgRAMAJcLT",
+    "asset": "polygon-1746055995050",
+    "assetType": "land",
+    "category": "proximity",
+    "type": "geographic",
+    "targetCitizen": "GamingPatrizio",
+    "relevantToCitizen": "SilkRoadRunner",
+    "score": 78.91,
+    "timeHorizon": "medium",
+    "title": "\"GamingPatrizio\" owns nearby land \"Calle de la Madona in Sestiere San Marco\" (118m).",
+    "description": "**Calle de la Madona in Sestiere San Marco**, owned by **GamingPatrizio**, is **118 meters** from your nearest property.",
+    "notes": "",
+    "createdAt": "2025-06-12T04:51:30.219Z",
+    "status": "high"
+  },
+  {
+    "relevancyId": "recA8SVE5TwkUHuUv",
+    "asset": "polygon-1746056756754",
+    "assetType": "land",
+    "category": "proximity",
+    "type": "geographic",
+    "targetCitizen": "GamingPatrizio",
+    "relevantToCitizen": "BasstheWhale",
+    "score": 76.83,
+    "timeHorizon": "medium",
+    "title": "\"GamingPatrizio\" owns nearby land \"Fondamenta dei Narisi, Sestiere Dorsoduro\" (132m).",
+    "description": "**Fondamenta dei Narisi, Sestiere Dorsoduro**, owned by **GamingPatrizio**, is **132 meters** from your nearest property.",
+    "notes": "",
+    "createdAt": "2025-06-12T04:57:47.446Z",
+    "status": "high"
+  },
+  {
+    "relevancyId": "recDGwaguJ0kINTI6",
+    "asset": "canal_45.438996_12.349170",
+    "assetType": "building",
+    "category": "occupancy_relations",
+    "type": "employee_to_employer",
+    "targetCitizen": "GamingPatrizio",
+    "relevantToCitizen": "BlueSkySurfer",
+    "score": 75,
+    "timeHorizon": "ongoing",
+    "title": "You work for \"GamingPatrizio\" at their Public Dock at Fondamenta dei Camerlenghi.",
+    "description": "You are employed at the **Public Dock at Fondamenta dei Camerlenghi** run by **GamingPatrizio**.",
+    "notes": "Building ID: canal_45.438996_12.349170, Land ID: polygon-1746056493504",
+    "createdAt": "2025-06-12T05:10:59.505Z",
+    "status": "high"
+  },
+  {
+    "relevancyId": "recHlCfxeRtboriWb",
+    "asset": "building_45.429640_12.360838",
+    "assetType": "building",
+    "category": "occupancy_relations",
+    "type": "employee_to_employer",
+    "targetCitizen": "GamingPatrizio",
+    "relevantToCitizen": "the_social_canvas",
+    "score": 75,
+    "timeHorizon": "ongoing",
+    "title": "You work for \"GamingPatrizio\" at their Granary at Calle del Pestrin.",
+    "description": "You are employed at the **Granary at Calle del Pestrin** run by **GamingPatrizio**.",
+    "notes": "Building ID: building_45.429640_12.360838, Land ID: polygon-1746057412398",
+    "createdAt": "2025-06-12T05:08:33.877Z",
+    "status": "high"
+  },
+  {
+    "relevancyId": "recLC0qdiw3k421zu",
+    "asset": "polygon-1746056319492",
+    "assetType": "land",
+    "category": "proximity",
+    "type": "geographic",
+    "targetCitizen": "GamingPatrizio",
+    "relevantToCitizen": "TechnoMedici",
+    "score": 74.96,
+    "timeHorizon": "medium",
+    "title": "\"GamingPatrizio\" owns nearby land \"Corte de Ca' Giustinian, Sestiere di San Marco\" (144m).",
+    "description": "**Corte de Ca' Giustinian, Sestiere di San Marco**, owned by **GamingPatrizio**, is **144 meters** from your nearest property.",
+    "notes": "",
+    "createdAt": "2025-06-12T04:56:46.387Z",
+    "status": "high"
+  },
+  {
+    "relevancyId": "rech1ukj5TVvNIvxt",
+    "asset": "polygon-1746056903912",
+    "assetType": "land",
+    "category": "proximity",
+    "type": "geographic",
+    "targetCitizen": "GamingPatrizio",
+    "relevantToCitizen": "ConsiglioDeiDieci",
+    "score": 74.55,
+    "timeHorizon": "medium",
+    "title": "\"GamingPatrizio\" owns nearby land \"Calle de le Rasse, sestiere San Polo\" (147m).",
+    "description": "**Calle de le Rasse, sestiere San Polo**, owned by **GamingPatrizio**, is **147 meters** from your nearest property.",
+    "notes": "",
+    "createdAt": "2025-06-12T04:56:27.655Z",
+    "status": "high"
+  },
+  {
+    "relevancyId": "recrFr8qEHOW9WLlW",
+    "asset": "polygon-1746056319492",
+    "assetType": "land",
+    "category": "proximity",
+    "type": "geographic",
+    "targetCitizen": "GamingPatrizio",
+    "relevantToCitizen": "steven",
+    "score": 73.92,
+    "timeHorizon": "medium",
+    "title": "\"GamingPatrizio\" owns nearby land \"Corte de Ca' Giustinian, Sestiere di San Marco\" (151m).",
+    "description": "**Corte de Ca' Giustinian, Sestiere di San Marco**, owned by **GamingPatrizio**, is **151 meters** from your nearest property.",
+    "notes": "",
+    "createdAt": "2025-06-12T04:53:25.762Z",
+    "status": "high"
+  },
+  {
+    "relevancyId": "rec7oFjP8WDfjKws8",
+    "asset": "bridge_45.436508_12.338397",
+    "assetType": "building",
+    "category": "ownership_conflict",
+    "type": "building_on_others_land",
+    "targetCitizen": "GamingPatrizio",
+    "relevantToCitizen": "ConsiglioDeiDieci",
+    "score": 70,
+    "timeHorizon": "medium",
+    "title": "Your Bridge at Ponte dei Virtuosi is on land owned by \"GamingPatrizio\".",
+    "description": "You own a **Bridge at Ponte dei Virtuosi** on land owned by **GamingPatrizio**.",
+    "notes": "Building ID: bridge_45.436508_12.338397, Land ID: polygon-1746056319492",
+    "createdAt": "2025-06-12T05:01:55.753Z",
+    "status": "medium"
+  },
+  {
+    "relevancyId": "recQPOQLYFpKhnHar",
+    "asset": "building_45.436674_12.339536",
+    "assetType": "building",
+    "category": "ownership_conflict",
+    "type": "building_on_others_land",
+    "targetCitizen": "GamingPatrizio",
+    "relevantToCitizen": "ConsiglioDeiDieci",
+    "score": 70,
+    "timeHorizon": "medium",
+    "title": "Your Artisan's House at Salizada dei Musicisti is on land owned by \"GamingPatrizio\".",
+    "description": "You own a **Artisan's House at Salizada dei Musicisti** on land owned by **GamingPatrizio**.",
+    "notes": "Building ID: building_45.436674_12.339536, Land ID: polygon-1746056319492",
+    "createdAt": "2025-06-12T05:01:55.753Z",
+    "status": "medium"
+  },
+  {
+    "relevancyId": "recHJN5q9DEZgCHNa",
+    "asset": "land_45.440891_12.336184",
+    "assetType": "building",
+    "category": "ownership_conflict",
+    "type": "building_on_others_land",
+    "targetCitizen": "GamingPatrizio",
+    "relevantToCitizen": "ConsiglioDeiDieci",
+    "score": 70,
+    "timeHorizon": "medium",
+    "title": "Your Merchant S House is on land owned by \"GamingPatrizio\".",
+    "description": "You own a **Merchant S House** on land owned by **GamingPatrizio**.",
+    "notes": "Building ID: land_45.440891_12.336184, Land ID: polygon-1746055995050",
+    "createdAt": "2025-06-12T05:01:55.753Z",
+    "status": "medium"
+  },
+  {
+    "relevancyId": "rechTipE9GbjcHUAG",
+    "asset": "land_45.441299_12.336995",
+    "assetType": "building",
+    "category": "ownership_conflict",
+    "type": "building_on_others_land",
+    "targetCitizen": "GamingPatrizio",
+    "relevantToCitizen": "ConsiglioDeiDieci",
+    "score": 70,
+    "timeHorizon": "medium",
+    "title": "Your Merchant S House is on land owned by \"GamingPatrizio\".",
+    "description": "You own a **Merchant S House** on land owned by **GamingPatrizio**.",
+    "notes": "Building ID: land_45.441299_12.336995, Land ID: polygon-1746055995050",
+    "createdAt": "2025-06-12T05:01:55.753Z",
+    "status": "medium"
+  },
+  {
+    "relevancyId": "recm4SnWPDPQ2jWLq",
+    "asset": "land_45.440843_12.336848",
+    "assetType": "building",
+    "category": "ownership_conflict",
+    "type": "building_on_others_land",
+    "targetCitizen": "GamingPatrizio",
+    "relevantToCitizen": "ConsiglioDeiDieci",
+    "score": 70,
+    "timeHorizon": "medium",
+    "title": "Your Merchant S House is on land owned by \"GamingPatrizio\".",
+    "description": "You own a **Merchant S House** on land owned by **GamingPatrizio**.",
+    "notes": "Building ID: land_45.440843_12.336848, Land ID: polygon-1746055995050",
+    "createdAt": "2025-06-12T05:01:55.753Z",
+    "status": "medium"
+  },
+  {
+    "relevancyId": "recr1PCSLQfCE8iGu",
+    "asset": "building_45.431950_12.351984",
+    "assetType": "building",
+    "category": "ownership_conflict",
+    "type": "others_building_on_your_land",
+    "targetCitizen": "GamingPatrizio",
+    "relevantToCitizen": "BasstheWhale",
+    "score": 70,
+    "timeHorizon": "medium",
+    "title": "\"GamingPatrizio\" owns a Merchant's House at Campiello dei Tagliapietra on your land.",
+    "description": "**GamingPatrizio** owns a **Merchant's House at Campiello dei Tagliapietra** on your land.",
+    "notes": "Building ID: building_45.431950_12.351984, Land ID: polygon-1746057352428",
+    "createdAt": "2025-06-12T04:59:15.239Z",
+    "status": "medium"
+  },
+  {
+    "relevancyId": "recR302oI9keABScR",
+    "asset": "polygon-1746056756754",
+    "assetType": "land",
+    "category": "proximity",
+    "type": "geographic",
+    "targetCitizen": "GamingPatrizio",
+    "relevantToCitizen": "NLR",
+    "score": 68.74,
+    "timeHorizon": "medium",
+    "title": "\"GamingPatrizio\" owns nearby land \"Fondamenta dei Narisi, Sestiere Dorsoduro\" (187m).",
+    "description": "**Fondamenta dei Narisi, Sestiere Dorsoduro**, owned by **GamingPatrizio**, is **187 meters** from your nearest property.",
+    "notes": "",
+    "createdAt": "2025-06-12T04:55:17.739Z",
+    "status": "medium"
+  },
+  {
+    "relevancyId": "rec7o8we4LIH7UEOj",
+    "asset": "polygon-1746055995050",
+    "assetType": "land",
+    "category": "proximity",
+    "type": "geographic",
+    "targetCitizen": "GamingPatrizio",
+    "relevantToCitizen": "steven",
+    "score": 66.96,
+    "timeHorizon": "medium",
+    "title": "\"GamingPatrizio\" owns nearby land \"Calle de la Madona in Sestiere San Marco\" (201m).",
+    "description": "**Calle de la Madona in Sestiere San Marco**, owned by **GamingPatrizio**, is **201 meters** from your nearest property.",
+    "notes": "",
+    "createdAt": "2025-06-12T04:53:25.762Z",
+    "status": "medium"
+  },
+  {
+    "relevancyId": "recaYstlRUGQ20qKS",
+    "asset": "polygon-1746056319492",
+    "assetType": "land",
+    "category": "proximity",
+    "type": "geographic",
+    "targetCitizen": "GamingPatrizio",
+    "relevantToCitizen": "meyti_tgz",
+    "score": 66.75,
+    "timeHorizon": "medium",
+    "title": "\"GamingPatrizio\" owns nearby land \"Corte de Ca' Giustinian, Sestiere di San Marco\" (202m).",
+    "description": "**Corte de Ca' Giustinian, Sestiere di San Marco**, owned by **GamingPatrizio**, is **202 meters** from your nearest property.",
+    "notes": "",
+    "createdAt": "2025-06-12T04:52:06.958Z",
+    "status": "medium"
+  },
+  {
+    "relevancyId": "reclmjNC95L6kWHcJ",
+    "asset": "polygon-1746055995050",
+    "assetType": "land",
+    "category": "proximity",
+    "type": "geographic",
+    "targetCitizen": "GamingPatrizio",
+    "relevantToCitizen": "Italia",
+    "score": 66.04,
+    "timeHorizon": "medium",
+    "title": "\"GamingPatrizio\" owns nearby land \"Calle de la Madona in Sestiere San Marco\" (207m).",
+    "description": "**Calle de la Madona in Sestiere San Marco**, owned by **GamingPatrizio**, is **207 meters** from your nearest property.",
+    "notes": "",
+    "createdAt": "2025-06-12T04:51:41.489Z",
+    "status": "medium"
+  },
+  {
+    "relevancyId": "recjKaTRjFpnW6sVm",
+    "asset": "polygon-1746055995050",
+    "assetType": "land",
+    "category": "proximity",
+    "type": "geographic",
+    "targetCitizen": "GamingPatrizio",
+    "relevantToCitizen": "John_Jeffries",
+    "score": 62.96,
+    "timeHorizon": "medium",
+    "title": "\"GamingPatrizio\" owns nearby land \"Calle de la Madona in Sestiere San Marco\" (231m).",
+    "description": "**Calle de la Madona in Sestiere San Marco**, owned by **GamingPatrizio**, is **231 meters** from your nearest property.",
+    "notes": "",
+    "createdAt": "2025-06-12T04:55:40.341Z",
+    "status": "medium"
+  },
+  {
+    "relevancyId": "recQZs342qruM2zuC",
+    "asset": "polygon-1746056319492",
+    "assetType": "land",
+    "category": "proximity",
+    "type": "geographic",
+    "targetCitizen": "GamingPatrizio",
+    "relevantToCitizen": "ConsiglioDeiDieci",
+    "score": 61.93,
+    "timeHorizon": "medium",
+    "title": "\"GamingPatrizio\" owns nearby land \"Corte de Ca' Giustinian, Sestiere di San Marco\" (240m).",
+    "description": "**Corte de Ca' Giustinian, Sestiere di San Marco**, owned by **GamingPatrizio**, is **240 meters** from your nearest property.",
+    "notes": "",
+    "createdAt": "2025-06-12T04:56:27.655Z",
+    "status": "medium"
+  },
+  {
+    "relevancyId": "recbEKEuqlOrbyA17",
+    "asset": "polygon-1746055995050",
+    "assetType": "land",
+    "category": "proximity",
+    "type": "geographic",
+    "targetCitizen": "GamingPatrizio",
+    "relevantToCitizen": "BasstheWhale",
+    "score": 60.22,
+    "timeHorizon": "medium",
+    "title": "\"GamingPatrizio\" owns nearby land \"Calle de la Madona in Sestiere San Marco\" (254m).",
+    "description": "**Calle de la Madona in Sestiere San Marco**, owned by **GamingPatrizio**, is **254 meters** from your nearest property.",
+    "notes": "",
+    "createdAt": "2025-06-12T04:57:47.446Z",
+    "status": "medium"
+  },
+  {
+    "relevancyId": "rectfKZvOOHYAnedF",
+    "asset": "polygon-1746056319492",
+    "assetType": "land",
+    "category": "proximity",
+    "type": "geographic",
+    "targetCitizen": "GamingPatrizio",
+    "relevantToCitizen": "John_Jeffries",
+    "score": 58.62,
+    "timeHorizon": "medium",
+    "title": "\"GamingPatrizio\" owns nearby land \"Corte de Ca' Giustinian, Sestiere di San Marco\" (267m).",
+    "description": "**Corte de Ca' Giustinian, Sestiere di San Marco**, owned by **GamingPatrizio**, is **267 meters** from your nearest property.",
+    "notes": "",
+    "createdAt": "2025-06-12T04:55:40.341Z",
+    "status": "medium"
+  },
+  {
+    "relevancyId": "recIB4CAfzcBuv4NY",
+    "asset": "polygon-1746055995050",
+    "assetType": "land",
+    "category": "proximity",
+    "type": "geographic",
+    "targetCitizen": "GamingPatrizio",
+    "relevantToCitizen": "Miles4lf",
+    "score": 56.91,
+    "timeHorizon": "medium",
+    "title": "\"GamingPatrizio\" owns nearby land \"Calle de la Madona in Sestiere San Marco\" (282m).",
+    "description": "**Calle de la Madona in Sestiere San Marco**, owned by **GamingPatrizio**, is **282 meters** from your nearest property.",
+    "notes": "",
+    "createdAt": "2025-06-12T04:55:44.782Z",
+    "status": "medium"
+  },
+  {
+    "relevancyId": "recU1m7fLYXhBKC0O",
+    "asset": "polygon-1746056903912",
+    "assetType": "land",
+    "category": "proximity",
+    "type": "geographic",
+    "targetCitizen": "GamingPatrizio",
+    "relevantToCitizen": "BasstheWhale",
+    "score": 56.25,
+    "timeHorizon": "medium",
+    "title": "\"GamingPatrizio\" owns nearby land \"Calle de le Rasse, sestiere San Polo\" (288m).",
+    "description": "**Calle de le Rasse, sestiere San Polo**, owned by **GamingPatrizio**, is **288 meters** from your nearest property.",
+    "notes": "",
+    "createdAt": "2025-06-12T04:57:47.446Z",
+    "status": "medium"
+  },
+  {
+    "relevancyId": "rec3EM7UjFKTqD0qs",
+    "asset": "polygon-1746056903912",
+    "assetType": "land",
+    "category": "proximity",
+    "type": "geographic",
+    "targetCitizen": "GamingPatrizio",
+    "relevantToCitizen": "Lucid",
+    "score": 54.44,
+    "timeHorizon": "medium",
+    "title": "\"GamingPatrizio\" owns nearby land \"Calle de le Rasse, sestiere San Polo\" (304m).",
+    "description": "**Calle de le Rasse, sestiere San Polo**, owned by **GamingPatrizio**, is **304 meters** from your nearest property.",
+    "notes": "",
+    "createdAt": "2025-06-12T04:51:56.299Z",
+    "status": "medium"
+  },
+  {
+    "relevancyId": "rec6ZOzDwjTjonxec",
+    "asset": "polygon-1746056319492",
+    "assetType": "land",
+    "category": "proximity",
+    "type": "geographic",
+    "targetCitizen": "GamingPatrizio",
+    "relevantToCitizen": "Italia",
+    "score": 54.15,
+    "timeHorizon": "medium",
+    "title": "\"GamingPatrizio\" owns nearby land \"Corte de Ca' Giustinian, Sestiere di San Marco\" (307m).",
+    "description": "**Corte de Ca' Giustinian, Sestiere di San Marco**, owned by **GamingPatrizio**, is **307 meters** from your nearest property.",
+    "notes": "",
+    "createdAt": "2025-06-12T04:51:41.489Z",
+    "status": "medium"
+  },
+  {
+    "relevancyId": "reclv1HKgOS3LBHS2",
+    "asset": "polygon-1746056903912",
+    "assetType": "land",
+    "category": "proximity",
+    "type": "geographic",
+    "targetCitizen": "GamingPatrizio",
+    "relevantToCitizen": "steven",
+    "score": 53.41,
+    "timeHorizon": "medium",
+    "title": "\"GamingPatrizio\" owns nearby land \"Calle de le Rasse, sestiere San Polo\" (314m).",
+    "description": "**Calle de le Rasse, sestiere San Polo**, owned by **GamingPatrizio**, is **314 meters** from your nearest property.",
+    "notes": "",
+    "createdAt": "2025-06-12T04:53:25.762Z",
+    "status": "medium"
+  },
+  {
+    "relevancyId": "reckGWoPcgEs7csr4",
+    "asset": "polygon-1746055995050",
+    "assetType": "land",
+    "category": "proximity",
+    "type": "geographic",
+    "targetCitizen": "GamingPatrizio",
+    "relevantToCitizen": "TechnoMedici",
+    "score": 53.13,
+    "timeHorizon": "medium",
+    "title": "\"GamingPatrizio\" owns nearby land \"Calle de la Madona in Sestiere San Marco\" (316m).",
+    "description": "**Calle de la Madona in Sestiere San Marco**, owned by **GamingPatrizio**, is **316 meters** from your nearest property.",
+    "notes": "",
+    "createdAt": "2025-06-12T04:56:46.387Z",
+    "status": "medium"
+  },
+  {
+    "relevancyId": "rec8bh76bNJ21zG0i",
+    "asset": "polygon-1746055995050",
+    "assetType": "land",
+    "category": "proximity",
+    "type": "geographic",
+    "targetCitizen": "GamingPatrizio",
+    "relevantToCitizen": "aegean_mariner",
+    "score": 51.91,
+    "timeHorizon": "medium",
+    "title": "\"GamingPatrizio\" owns nearby land \"Calle de la Madona in Sestiere San Marco\" (328m).",
+    "description": "**Calle de la Madona in Sestiere San Marco**, owned by **GamingPatrizio**, is **328 meters** from your nearest property.",
+    "notes": "",
+    "createdAt": "2025-06-12T04:53:48.997Z",
+    "status": "medium"
+  },
+  {
+    "relevancyId": "recjo6qD5WjPBEHPp",
+    "asset": "polygon-1746055995050",
+    "assetType": "land",
+    "category": "proximity",
+    "type": "geographic",
+    "targetCitizen": "GamingPatrizio",
+    "relevantToCitizen": "ConsiglioDeiDieci",
+    "score": 51.86,
+    "timeHorizon": "medium",
+    "title": "\"GamingPatrizio\" owns nearby land \"Calle de la Madona in Sestiere San Marco\" (328m).",
+    "description": "**Calle de la Madona in Sestiere San Marco**, owned by **GamingPatrizio**, is **328 meters** from your nearest property.",
+    "notes": "",
+    "createdAt": "2025-06-12T04:56:27.655Z",
+    "status": "medium"
+  },
+  {
+    "relevancyId": "recYRNkrDCuny7jhe",
+    "asset": "polygon-1746055995050",
+    "assetType": "land",
+    "category": "proximity",
+    "type": "geographic",
+    "targetCitizen": "GamingPatrizio",
+    "relevantToCitizen": "Feola007",
+    "score": 50.83,
+    "timeHorizon": "medium",
+    "title": "\"GamingPatrizio\" owns nearby land \"Calle de la Madona in Sestiere San Marco\" (338m).",
+    "description": "**Calle de la Madona in Sestiere San Marco**, owned by **GamingPatrizio**, is **338 meters** from your nearest property.",
+    "notes": "",
+    "createdAt": "2025-06-12T04:57:33.072Z",
+    "status": "medium"
+  },
+  {
+    "relevancyId": "recyUCn4GrQtdQgAT",
+    "asset": "polygon-1746055995050",
+    "assetType": "land",
+    "category": "proximity",
+    "type": "geographic",
+    "targetCitizen": "GamingPatrizio",
+    "relevantToCitizen": "Bullitpro0f",
+    "score": 50.34,
+    "timeHorizon": "medium",
+    "title": "\"GamingPatrizio\" owns nearby land \"Calle de la Madona in Sestiere San Marco\" (343m).",
+    "description": "**Calle de la Madona in Sestiere San Marco**, owned by **GamingPatrizio**, is **343 meters** from your nearest property.",
+    "notes": "",
+    "createdAt": "2025-06-12T04:55:03.501Z",
+    "status": "medium"
+  },
+  {
+    "relevancyId": "recU9naN1ipnjHS9X",
+    "asset": "polygon-1746056319492",
+    "assetType": "land",
+    "category": "proximity",
+    "type": "geographic",
+    "targetCitizen": "GamingPatrizio",
+    "relevantToCitizen": "BasstheWhale",
+    "score": 50.3,
+    "timeHorizon": "medium",
+    "title": "\"GamingPatrizio\" owns nearby land \"Corte de Ca' Giustinian, Sestiere di San Marco\" (344m).",
+    "description": "**Corte de Ca' Giustinian, Sestiere di San Marco**, owned by **GamingPatrizio**, is **344 meters** from your nearest property.",
+    "notes": "",
+    "createdAt": "2025-06-12T04:57:47.446Z",
+    "status": "medium"
+  },
+  {
+    "relevancyId": "recVpSVBl5Ns4wFcs",
+    "asset": "GamingPatrizio",
+    "assetType": "citizen",
+    "category": "domination",
+    "type": "global_landowner_profile",
+    "targetCitizen": "GamingPatrizio",
+    "relevantToCitizen": "all",
+    "score": 6.32,
+    "timeHorizon": "medium",
+    "title": "\"Sofia Zanchi\" is a dominant landowner.",
+    "description": "**Sofia Zanchi** owns **4 lands** with **0 building points**.",
+    "notes": "",
+    "createdAt": "2025-06-12T04:51:15.052Z",
+    "status": "low"
+  }
+]
+
+
+Here are your recent notifications:
+[
+  {
+    "notificationId": "recOun7ZCubmqu5BI",
+    "type": "markup_buy_contract_updated",
+    "citizen": "GamingPatrizio",
+    "content": "Your buy order for meat (markup_buy_main_building_45.429640_12.360838_meat) has been updated.",
+    "details": {
+      "contractId": "markup_buy_main_building_45.429640_12.360838_meat"
+    },
+    "createdAt": "2025-06-14T15:23:46.195Z",
+    "readAt": "2025-06-14T15:23:46.495Z"
+  },
+  {
+    "notificationId": "recoSB9QEbLqB2JIA",
+    "type": "markup_buy_contract_updated",
+    "citizen": "GamingPatrizio",
+    "content": "Your buy order for vegetables (markup_buy_main_building_45.429640_12.360838_vegetables) has been updated.",
+    "details": {
+      "contractId": "markup_buy_main_building_45.429640_12.360838_vegetables"
+    },
+    "createdAt": "2025-06-14T13:04:29.188Z",
+    "readAt": "2025-06-14T13:04:29.628Z"
+  },
+  {
+    "notificationId": "recuXauDl7rFv526c",
+    "type": "markup_buy_contract_updated",
+    "citizen": "GamingPatrizio",
+    "content": "Your buy order for fish (markup_buy_main_building_45.429640_12.360838_fish) has been updated.",
+    "details": {
+      "contractId": "markup_buy_main_building_45.429640_12.360838_fish"
+    },
+    "createdAt": "2025-06-14T12:54:01.996Z",
+    "readAt": "2025-06-14T12:54:02.246Z"
+  },
+  {
+    "notificationId": "recyuexEVoY2NJrOc",
+    "type": "markup_buy_contract_updated",
+    "citizen": "GamingPatrizio",
+    "content": "Your buy order for preserved_fish (markup_buy_main_building_45.429640_12.360838_preserved_fish) has been updated.",
+    "details": {
+      "contractId": "markup_buy_main_building_45.429640_12.360838_preserved_fish"
+    },
+    "createdAt": "2025-06-14T12:49:05.075Z",
+    "readAt": "2025-06-14T12:49:05.341Z"
+  },
+  {
+    "notificationId": "recVxVBmM0k6yjLHD",
+    "type": "markup_buy_contract_updated",
+    "citizen": "GamingPatrizio",
+    "content": "Your buy order for olives (markup_buy_main_building_45.429640_12.360838_olives) has been updated.",
+    "details": {
+      "contractId": "markup_buy_main_building_45.429640_12.360838_olives"
+    },
+    "createdAt": "2025-06-14T12:39:00.861Z",
+    "readAt": "2025-06-14T12:39:01.247Z"
+  },
+  {
+    "notificationId": "recbR9qzOdBmmc30B",
+    "type": "markup_buy_contract_updated",
+    "citizen": "GamingPatrizio",
+    "content": "Your buy order for olive_oil (markup_buy_main_building_45.429640_12.360838_olive_oil) has been updated.",
+    "details": {
+      "contractId": "markup_buy_main_building_45.429640_12.360838_olive_oil"
+    },
+    "createdAt": "2025-06-14T12:24:04.603Z",
+    "readAt": "2025-06-14T12:24:04.828Z"
+  },
+  {
+    "notificationId": "recu1TWjLXZ6275bF",
+    "type": "markup_buy_contract_updated",
+    "citizen": "GamingPatrizio",
+    "content": "Your buy order for salt (markup_buy_main_building_45.429640_12.360838_salt) has been updated.",
+    "details": {
+      "contractId": "markup_buy_main_building_45.429640_12.360838_salt"
+    },
+    "createdAt": "2025-06-14T12:03:52.151Z",
+    "readAt": "2025-06-14T12:03:52.717Z"
+  },
+  {
+    "notificationId": "rec9hjdG5jpZiCI3z",
+    "type": "markup_buy_contract_updated",
+    "citizen": "GamingPatrizio",
+    "content": "Your buy order for wine (markup_buy_main_building_45.429640_12.360838_wine) has been updated.",
+    "details": {
+      "contractId": "markup_buy_main_building_45.429640_12.360838_wine"
+    },
+    "createdAt": "2025-06-14T11:49:07.804Z",
+    "readAt": "2025-06-14T11:49:08.311Z"
+  },
+  {
+    "notificationId": "recZtGRq9UFeLbJto",
+    "type": "markup_buy_contract_updated",
+    "citizen": "GamingPatrizio",
+    "content": "Your buy order for wine (markup_buy_main_building_45.429640_12.360838_wine) has been updated.",
+    "details": {
+      "contractId": "markup_buy_main_building_45.429640_12.360838_wine"
+    },
+    "createdAt": "2025-06-14T11:49:01.393Z",
+    "readAt": "2025-06-14T11:49:01.759Z"
+  },
+  {
+    "notificationId": "reczemhmjfSbtzGnB",
+    "type": "markup_buy_contract_updated",
+    "citizen": "GamingPatrizio",
+    "content": "Your buy order for bread (markup_buy_main_building_45.429640_12.360838_bread) has been updated.",
+    "details": {
+      "contractId": "markup_buy_main_building_45.429640_12.360838_bread"
+    },
+    "createdAt": "2025-06-14T11:44:01.762Z",
+    "readAt": "2025-06-14T11:44:02.155Z"
+  },
+  {
+    "notificationId": "rec6tmZiZTHV27yXj",
+    "type": "markup_buy_contract_updated",
+    "citizen": "GamingPatrizio",
+    "content": "Your buy order for flour (markup_buy_main_building_45.429640_12.360838_flour) has been updated.",
+    "details": {
+      "contractId": "markup_buy_main_building_45.429640_12.360838_flour"
+    },
+    "createdAt": "2025-06-14T09:19:13.215Z",
+    "readAt": "2025-06-14T09:19:13.336Z"
+  },
+  {
+    "notificationId": "rec8oLLJd6X71NFOf",
+    "type": "markup_buy_contract_updated",
+    "citizen": "GamingPatrizio",
+    "content": "Your buy order for grain (markup_buy_main_building_45.429640_12.360838_grain) has been updated.",
+    "details": {
+      "contractId": "markup_buy_main_building_45.429640_12.360838_grain"
+    },
+    "createdAt": "2025-06-14T08:59:10.123Z",
+    "readAt": "2025-06-14T08:59:10.315Z"
+  },
+  {
+    "notificationId": "recPCfiZ0Mt9w0kv1",
+    "type": "markup_buy_contract_updated",
+    "citizen": "GamingPatrizio",
+    "content": "Your buy order for wine (markup_buy_main_building_45.431049_12.355140_wine) has been updated.",
+    "details": {
+      "contractId": "markup_buy_main_building_45.431049_12.355140_wine"
+    },
+    "createdAt": "2025-06-14T08:48:59.562Z",
+    "readAt": "2025-06-14T08:48:59.702Z"
+  },
+  {
+    "notificationId": "recUze5zoTjlzAR2T",
+    "type": "markup_buy_contract_updated",
+    "citizen": "GamingPatrizio",
+    "content": "Your buy order for salt (markup_buy_main_building_45.431049_12.355140_salt) has been updated.",
+    "details": {
+      "contractId": "markup_buy_main_building_45.431049_12.355140_salt"
+    },
+    "createdAt": "2025-06-14T05:39:00.165Z",
+    "readAt": "2025-06-14T05:39:00.292Z"
+  },
+  {
+    "notificationId": "recrw2YzQNdQIfhqb",
+    "type": "markup_buy_contract_updated",
+    "citizen": "GamingPatrizio",
+    "content": "Your buy order for preserved_fish (markup_buy_main_building_45.431049_12.355140_preserved_fish) has been updated.",
+    "details": {
+      "contractId": "markup_buy_main_building_45.431049_12.355140_preserved_fish"
+    },
+    "createdAt": "2025-06-14T02:43:38.854Z",
+    "readAt": "2025-06-14T02:43:39.019Z"
+  },
+  {
+    "notificationId": "recGZGkCGiyWjdpsb",
+    "type": "markup_buy_contract_updated",
+    "citizen": "GamingPatrizio",
+    "content": "Your buy order for olives (markup_buy_main_building_45.431049_12.355140_olives) has been updated.",
+    "details": {
+      "contractId": "markup_buy_main_building_45.431049_12.355140_olives"
+    },
+    "createdAt": "2025-06-13T08:39:43.684Z",
+    "readAt": "2025-06-13T08:39:44.184Z"
+  },
+  {
+    "notificationId": "recZgksqYUMfDKsqL",
+    "type": "markup_buy_contract_updated",
+    "citizen": "GamingPatrizio",
+    "content": "Your buy order for olive_oil (markup_buy_main_building_45.431049_12.355140_olive_oil) has been updated.",
+    "details": {
+      "contractId": "markup_buy_main_building_45.431049_12.355140_olive_oil"
+    },
+    "createdAt": "2025-06-12T23:28:39.832Z",
+    "readAt": "2025-06-12T23:28:40.538Z"
+  },
+  {
+    "notificationId": "recxyznaztvNmPwpK",
+    "type": "markup_buy_contract_updated",
+    "citizen": "GamingPatrizio",
+    "content": "Your buy order for flour (markup_buy_main_building_45.431049_12.355140_flour) has been updated.",
+    "details": {
+      "contractId": "markup_buy_main_building_45.431049_12.355140_flour"
+    },
+    "createdAt": "2025-06-12T16:58:51.180Z",
+    "readAt": "2025-06-12T16:58:51.123Z"
+  },
+  {
+    "notificationId": "rec2LCbNLXv9RynPN",
+    "type": "markup_buy_contract_updated",
+    "citizen": "GamingPatrizio",
+    "content": "Your buy order for fish (markup_buy_main_building_45.431049_12.355140_fish) has been updated.",
+    "details": {
+      "contractId": "markup_buy_main_building_45.431049_12.355140_fish"
+    },
+    "createdAt": "2025-06-12T16:53:40.418Z",
+    "readAt": "2025-06-12T16:53:40.826Z"
+  },
+  {
+    "notificationId": "recqalAKAS93zcrLc",
+    "type": "markup_buy_contract_updated",
+    "citizen": "GamingPatrizio",
+    "content": "Your buy order for bread (markup_buy_main_building_45.431049_12.355140_bread) has been updated.",
+    "details": {
+      "contractId": "markup_buy_main_building_45.431049_12.355140_bread"
+    },
+    "createdAt": "2025-06-12T12:58:57.456Z",
+    "readAt": "2025-06-12T12:58:57.667Z"
+  },
+  {
+    "notificationId": "recvBNXs7S5brguIJ",
+    "type": "markup_buy_contract_updated",
+    "citizen": "GamingPatrizio",
+    "content": "Your buy order for rope (markup_buy_main_canal_45.438996_12.349170_rope) has been updated.",
+    "details": {
+      "contractId": "markup_buy_main_canal_45.438996_12.349170_rope"
+    },
+    "createdAt": "2025-06-12T12:48:38.819Z",
+    "readAt": "2025-06-12T12:48:38.817Z"
+  },
+  {
+    "notificationId": "rect4KPb4c7v6HJag",
+    "type": "markup_buy_contract_updated",
+    "citizen": "GamingPatrizio",
+    "content": "Your buy order for gondola (markup_buy_main_canal_45.438996_12.349170_gondola) has been updated.",
+    "details": {
+      "contractId": "markup_buy_main_canal_45.438996_12.349170_gondola"
+    },
+    "createdAt": "2025-06-12T00:18:42.799Z",
+    "readAt": "2025-06-12T00:19:04.195Z"
+  },
+  {
+    "notificationId": "recscqP7Big6nT8Ca",
+    "type": "markup_buy_contract_updated",
+    "citizen": "GamingPatrizio",
+    "content": "Your buy order for porter_equipment (markup_buy_main_canal_45.438996_12.349170_porter_equipment) has been updated.",
+    "details": {
+      "contractId": "markup_buy_main_canal_45.438996_12.349170_porter_equipment"
+    },
+    "createdAt": "2025-06-12T00:09:22.304Z",
+    "readAt": "2025-06-12T00:09:44.113Z"
+  },
+  {
+    "notificationId": "recjndE0iO9THTu4f",
+    "type": "markup_buy_contract_updated",
+    "citizen": "GamingPatrizio",
+    "content": "Your buy order for small_boats (markup_buy_main_canal_45.438996_12.349170_small_boats) has been updated.",
+    "details": {
+      "contractId": "markup_buy_main_canal_45.438996_12.349170_small_boats"
+    },
+    "createdAt": "2025-06-11T23:39:19.281Z",
+    "readAt": "2025-06-11T23:39:40.504Z"
+  },
+  {
+    "notificationId": "recihlvB2hCtpXXcn",
+    "type": "markup_buy_contract_updated",
+    "citizen": "GamingPatrizio",
+    "content": "Your buy order for olives (markup_buy_main_building_45.431049_12.355140_olives) has been updated.",
+    "details": {
+      "contractId": "markup_buy_main_building_45.431049_12.355140_olives"
+    },
+    "createdAt": "2025-06-10T13:01:37.890Z",
+    "readAt": "2025-06-10T13:01:38.210Z"
+  },
+  {
+    "notificationId": "recCfmtfqV4Vruiwy",
+    "type": "markup_buy_contract_updated",
+    "citizen": "GamingPatrizio",
+    "content": "Your buy order for olive_oil (markup_buy_main_building_45.431049_12.355140_olive_oil) has been updated.",
+    "details": {
+      "contractId": "markup_buy_main_building_45.431049_12.355140_olive_oil"
+    },
+    "createdAt": "2025-06-10T13:01:22.208Z",
+    "readAt": "2025-06-10T13:01:22.547Z"
+  },
+  {
+    "notificationId": "recQy9HfUQzPJz9Ae",
+    "type": "markup_buy_contract_updated",
+    "citizen": "GamingPatrizio",
+    "content": "Your buy order for flour (markup_buy_main_building_45.431049_12.355140_flour) has been updated.",
+    "details": {
+      "contractId": "markup_buy_main_building_45.431049_12.355140_flour"
+    },
+    "createdAt": "2025-06-10T12:48:03.697Z",
+    "readAt": "2025-06-10T12:48:04.005Z"
+  },
+  {
+    "notificationId": "rechnXSRbCeBkKKKc",
+    "type": "markup_buy_contract_updated",
+    "citizen": "GamingPatrizio",
+    "content": "Your buy order for bread (markup_buy_main_building_45.431049_12.355140_bread) has been updated.",
+    "details": {
+      "contractId": "markup_buy_main_building_45.431049_12.355140_bread"
+    },
+    "createdAt": "2025-06-10T12:46:33.305Z",
+    "readAt": "2025-06-10T12:46:33.820Z"
+  },
+  {
+    "notificationId": "recZJKF181xFQ355r",
+    "type": "markup_buy_contract_created",
+    "citizen": "GamingPatrizio",
+    "content": "Your buy order for meat (markup_buy_main_building_45.429640_12.360838_meat) has been placed.",
+    "details": {
+      "contractId": "markup_buy_main_building_45.429640_12.360838_meat"
+    },
+    "createdAt": "2025-06-10T03:11:55.085Z",
+    "readAt": "2025-06-10T03:11:56.900Z"
+  },
+  {
+    "notificationId": "recTWltnbfdTjjwo9",
+    "type": "markup_buy_contract_created",
+    "citizen": "GamingPatrizio",
+    "content": "Your buy order for vegetables (markup_buy_main_building_45.429640_12.360838_vegetables) has been placed.",
+    "details": {
+      "contractId": "markup_buy_main_building_45.429640_12.360838_vegetables"
+    },
+    "createdAt": "2025-06-10T03:11:53.682Z",
+    "readAt": "2025-06-10T03:11:55.638Z"
+  },
+  {
+    "notificationId": "recLlF1YHxtBBL9Ab",
+    "type": "markup_buy_contract_created",
+    "citizen": "GamingPatrizio",
+    "content": "Your buy order for preserved_fish (markup_buy_main_building_45.429640_12.360838_preserved_fish) has been placed.",
+    "details": {
+      "contractId": "markup_buy_main_building_45.429640_12.360838_preserved_fish"
+    },
+    "createdAt": "2025-06-10T03:11:52.618Z",
+    "readAt": "2025-06-10T03:11:53.864Z"
+  },
+  {
+    "notificationId": "recjCEJXwKGzcqcUN",
+    "type": "markup_buy_contract_created",
+    "citizen": "GamingPatrizio",
+    "content": "Your buy order for fish (markup_buy_main_building_45.429640_12.360838_fish) has been placed.",
+    "details": {
+      "contractId": "markup_buy_main_building_45.429640_12.360838_fish"
+    },
+    "createdAt": "2025-06-10T03:11:52.274Z",
+    "readAt": "2025-06-10T03:11:53.362Z"
+  },
+  {
+    "notificationId": "rec7gzmSCMUcRngaH",
+    "type": "markup_buy_contract_created",
+    "citizen": "GamingPatrizio",
+    "content": "Your buy order for olive_oil (markup_buy_main_building_45.429640_12.360838_olive_oil) has been placed.",
+    "details": {
+      "contractId": "markup_buy_main_building_45.429640_12.360838_olive_oil"
+    },
+    "createdAt": "2025-06-10T03:11:51.873Z",
+    "readAt": "2025-06-10T03:11:52.899Z"
+  },
+  {
+    "notificationId": "recWiRXk2EGBogOv0",
+    "type": "markup_buy_contract_created",
+    "citizen": "GamingPatrizio",
+    "content": "Your buy order for olives (markup_buy_main_building_45.429640_12.360838_olives) has been placed.",
+    "details": {
+      "contractId": "markup_buy_main_building_45.429640_12.360838_olives"
+    },
+    "createdAt": "2025-06-10T03:11:51.609Z",
+    "readAt": "2025-06-10T03:11:52.335Z"
+  },
+  {
+    "notificationId": "recBoXeCXruqFkjqY",
+    "type": "markup_buy_contract_created",
+    "citizen": "GamingPatrizio",
+    "content": "Your buy order for salt (markup_buy_main_building_45.429640_12.360838_salt) has been placed.",
+    "details": {
+      "contractId": "markup_buy_main_building_45.429640_12.360838_salt"
+    },
+    "createdAt": "2025-06-10T03:11:49.943Z",
+    "readAt": "2025-06-10T03:11:50.110Z"
+  },
+  {
+    "notificationId": "rec2KDvk8G9IV2lS8",
+    "type": "markup_buy_contract_created",
+    "citizen": "GamingPatrizio",
+    "content": "Your buy order for wine (markup_buy_main_building_45.429640_12.360838_wine) has been placed.",
+    "details": {
+      "contractId": "markup_buy_main_building_45.429640_12.360838_wine"
+    },
+    "createdAt": "2025-06-10T03:11:46.452Z",
+    "readAt": "2025-06-10T03:11:46.574Z"
+  },
+  {
+    "notificationId": "recOw6KQzqTuMIK2N",
+    "type": "markup_buy_contract_created",
+    "citizen": "GamingPatrizio",
+    "content": "Your buy order for grain (markup_buy_main_building_45.429640_12.360838_grain) has been placed.",
+    "details": {
+      "contractId": "markup_buy_main_building_45.429640_12.360838_grain"
+    },
+    "createdAt": "2025-06-10T03:11:44.160Z",
+    "readAt": "2025-06-10T03:11:45.498Z"
+  },
+  {
+    "notificationId": "recdhLRoARZOUpU6H",
+    "type": "markup_buy_contract_created",
+    "citizen": "GamingPatrizio",
+    "content": "Your buy order for flour (markup_buy_main_building_45.429640_12.360838_flour) has been placed.",
+    "details": {
+      "contractId": "markup_buy_main_building_45.429640_12.360838_flour"
+    },
+    "createdAt": "2025-06-10T03:11:43.625Z",
+    "readAt": "2025-06-10T03:11:45.135Z"
+  },
+  {
+    "notificationId": "rec9LzO6xIySCkvhp",
+    "type": "markup_buy_contract_created",
+    "citizen": "GamingPatrizio",
+    "content": "Your buy order for bread (markup_buy_main_building_45.429640_12.360838_bread) has been placed.",
+    "details": {
+      "contractId": "markup_buy_main_building_45.429640_12.360838_bread"
+    },
+    "createdAt": "2025-06-10T03:11:41.925Z",
+    "readAt": "2025-06-10T03:11:44.218Z"
+  },
+  {
+    "notificationId": "recnEneFWV7Rgp0GL",
+    "type": "markup_buy_contract_created",
+    "citizen": "GamingPatrizio",
+    "content": "Your buy order for wine (markup_buy_main_building_45.431049_12.355140_wine) has been placed.",
+    "details": {
+      "contractId": "markup_buy_main_building_45.431049_12.355140_wine"
+    },
+    "createdAt": "2025-06-09T16:56:31.814Z",
+    "readAt": "2025-06-09T16:56:32.227Z"
+  },
+  {
+    "notificationId": "rec59ag1rLYt2XUyh",
+    "type": "markup_buy_contract_created",
+    "citizen": "GamingPatrizio",
+    "content": "Your buy order for salt (markup_buy_main_building_45.431049_12.355140_salt) has been placed.",
+    "details": {
+      "contractId": "markup_buy_main_building_45.431049_12.355140_salt"
+    },
+    "createdAt": "2025-06-09T16:56:12.604Z",
+    "readAt": "2025-06-09T16:56:14.437Z"
+  },
+  {
+    "notificationId": "recqCrYnziMurc9YJ",
+    "type": "markup_buy_contract_created",
+    "citizen": "GamingPatrizio",
+    "content": "Your buy order for preserved_fish (markup_buy_main_building_45.431049_12.355140_preserved_fish) has been placed.",
+    "details": {
+      "contractId": "markup_buy_main_building_45.431049_12.355140_preserved_fish"
+    },
+    "createdAt": "2025-06-09T16:55:58.708Z",
+    "readAt": "2025-06-09T16:55:59.091Z"
+  },
+  {
+    "notificationId": "recw5vE6JUZccbYGa",
+    "type": "markup_buy_contract_created",
+    "citizen": "GamingPatrizio",
+    "content": "Your buy order for olives (markup_buy_main_building_45.431049_12.355140_olives) has been placed.",
+    "details": {
+      "contractId": "markup_buy_main_building_45.431049_12.355140_olives"
+    },
+    "createdAt": "2025-06-09T16:55:40.320Z",
+    "readAt": "2025-06-09T16:55:40.980Z"
+  },
+  {
+    "notificationId": "recKZXxmU8JHMyDa4",
+    "type": "markup_buy_contract_created",
+    "citizen": "GamingPatrizio",
+    "content": "Your buy order for olive_oil (markup_buy_main_building_45.431049_12.355140_olive_oil) has been placed.",
+    "details": {
+      "contractId": "markup_buy_main_building_45.431049_12.355140_olive_oil"
+    },
+    "createdAt": "2025-06-09T16:55:24.202Z",
+    "readAt": "2025-06-09T16:55:25.021Z"
+  },
+  {
+    "notificationId": "rec8r7bKIQ54PQ5jv",
+    "type": "markup_buy_contract_created",
+    "citizen": "GamingPatrizio",
+    "content": "Your buy order for flour (markup_buy_main_building_45.431049_12.355140_flour) has been placed.",
+    "details": {
+      "contractId": "markup_buy_main_building_45.431049_12.355140_flour"
+    },
+    "createdAt": "2025-06-09T16:55:05.719Z",
+    "readAt": "2025-06-09T16:55:06.419Z"
+  },
+  {
+    "notificationId": "recq64H42F9TWkKYG",
+    "type": "markup_buy_contract_created",
+    "citizen": "GamingPatrizio",
+    "content": "Your buy order for fish (markup_buy_main_building_45.431049_12.355140_fish) has been placed.",
+    "details": {
+      "contractId": "markup_buy_main_building_45.431049_12.355140_fish"
+    },
+    "createdAt": "2025-06-09T16:54:31.615Z",
+    "readAt": "2025-06-09T16:54:32.394Z"
+  },
+  {
+    "notificationId": "recoFs378oLtdebTx",
+    "type": "markup_buy_contract_created",
+    "citizen": "GamingPatrizio",
+    "content": "Your buy order for bread (markup_buy_main_building_45.431049_12.355140_bread) has been placed.",
+    "details": {
+      "contractId": "markup_buy_main_building_45.431049_12.355140_bread"
+    },
+    "createdAt": "2025-06-09T16:54:07.079Z",
+    "readAt": "2025-06-09T16:54:07.604Z"
+  },
+  {
+    "notificationId": "recTsSXRjfrdfHjc2",
+    "type": "markup_buy_contract_created",
+    "citizen": "GamingPatrizio",
+    "content": "Your buy order for rope (markup_buy_main_canal_45.438996_12.349170_rope) has been placed.",
+    "details": {
+      "contractId": "markup_buy_main_canal_45.438996_12.349170_rope"
+    },
+    "createdAt": "2025-06-09T16:53:41.671Z",
+    "readAt": "2025-06-09T16:53:42.080Z"
+  },
+  {
+    "notificationId": "recjsvF0O99sczGUV",
+    "type": "markup_buy_contract_created",
+    "citizen": "GamingPatrizio",
+    "content": "Your buy order for gondola (markup_buy_main_canal_45.438996_12.349170_gondola) has been placed.",
+    "details": {
+      "contractId": "markup_buy_main_canal_45.438996_12.349170_gondola"
+    },
+    "createdAt": "2025-06-09T16:53:41.019Z",
+    "readAt": "2025-06-09T16:53:41.169Z"
+  },
+  {
+    "notificationId": "recC8IHR7VR9WfYUo",
+    "type": "markup_buy_contract_created",
+    "citizen": "GamingPatrizio",
+    "content": "Your buy order for porter_equipment (markup_buy_main_canal_45.438996_12.349170_porter_equipment) has been placed.",
+    "details": {
+      "contractId": "markup_buy_main_canal_45.438996_12.349170_porter_equipment"
+    },
+    "createdAt": "2025-06-09T16:53:36.394Z",
+    "readAt": "2025-06-09T16:53:38.145Z"
+  },
+  {
+    "notificationId": "recnfLROvnONAzfqk",
+    "type": "markup_buy_contract_created",
+    "citizen": "GamingPatrizio",
+    "content": "Your buy order for small_boats (markup_buy_main_canal_45.438996_12.349170_small_boats) has been placed.",
+    "details": {
+      "contractId": "markup_buy_main_canal_45.438996_12.349170_small_boats"
+    },
+    "createdAt": "2025-06-09T16:53:35.432Z",
+    "readAt": "2025-06-09T16:53:37.193Z"
+  },
+  {
+    "notificationId": "recAoG6xYWzJl2YcU",
+    "type": "markup_buy_contract_created",
+    "citizen": "GamingPatrizio",
+    "content": "Your buy order for preserved_fish has been placed.",
+    "details": {
+      "contractId": "mbc_Gam_pres_6aec"
+    },
+    "createdAt": "2025-06-09T15:38:55.466Z",
+    "readAt": "2025-06-09T15:38:56.761Z"
+  },
+  {
+    "notificationId": "recp8pEhy71KHQfV7",
+    "type": "markup_buy_contract_created",
+    "citizen": "GamingPatrizio",
+    "content": "Your buy order for preserved_fish has been placed.",
+    "details": {
+      "contractId": "mbc_Gam_pres_123d"
+    },
+    "createdAt": "2025-06-09T15:38:50.537Z",
+    "readAt": "2025-06-09T15:38:51.455Z"
+  },
+  {
+    "notificationId": "recHV97fddwFxzOtV",
+    "type": "markup_buy_contract_created",
+    "citizen": "GamingPatrizio",
+    "content": "Your buy order for preserved_fish has been placed.",
+    "details": {
+      "contractId": "mbc_Gam_pres_2c8a"
+    },
+    "createdAt": "2025-06-09T15:38:44.968Z",
+    "readAt": "2025-06-09T15:38:45.645Z"
+  },
+  {
+    "notificationId": "recNPik8Ao10OuVg5",
+    "type": "markup_buy_contract_created",
+    "citizen": "GamingPatrizio",
+    "content": "Your buy order for flour has been placed.",
+    "details": {
+      "contractId": "mbc_Gam_flou_bff3"
+    },
+    "createdAt": "2025-06-09T15:38:37.265Z",
+    "readAt": "2025-06-09T15:38:38.382Z"
+  },
+  {
+    "notificationId": "recayXeRoRo7LX2Lm",
+    "type": "markup_buy_contract_created",
+    "citizen": "GamingPatrizio",
+    "content": "Your buy order for flour has been placed.",
+    "details": {
+      "contractId": "mbc_Gam_flou_e7f4"
+    },
+    "createdAt": "2025-06-09T15:38:29.657Z",
+    "readAt": "2025-06-09T15:38:30.681Z"
+  },
+  {
+    "notificationId": "recGcoR6AN2bXYz7K",
+    "type": "markup_buy_contract_created",
+    "citizen": "GamingPatrizio",
+    "content": "Your buy order for preserved_fish has been placed.",
+    "details": {
+      "contractId": "mbc_Gam_pres_4ff6"
+    },
+    "createdAt": "2025-06-09T15:34:31.322Z",
+    "readAt": "2025-06-09T15:34:32.054Z"
+  },
+  {
+    "notificationId": "recUBLi9AUDas1Djm",
+    "type": "markup_buy_contract_created",
+    "citizen": "GamingPatrizio",
+    "content": "Your buy order for preserved_fish has been placed.",
+    "details": {
+      "contractId": "mbc_Gam_pres_cbe8"
+    },
+    "createdAt": "2025-06-09T15:34:17.638Z",
+    "readAt": "2025-06-09T15:34:18.294Z"
+  },
+  {
+    "notificationId": "recRJRZY1SeLFN5Wm",
+    "type": "markup_buy_contract_created",
+    "citizen": "GamingPatrizio",
+    "content": "Your buy order for preserved_fish has been placed.",
+    "details": {
+      "contractId": "mbc_Gam_pres_ec80"
+    },
+    "createdAt": "2025-06-09T15:33:59.934Z",
+    "readAt": "2025-06-09T15:34:00.553Z"
+  },
+  {
+    "notificationId": "recpP69kIVxYDd2xs",
+    "type": "markup_buy_contract_created",
+    "citizen": "GamingPatrizio",
+    "content": "Your buy order for flour has been placed.",
+    "details": {
+      "contractId": "mbc_Gam_flou_8e3d"
+    },
+    "createdAt": "2025-06-09T15:33:45.799Z",
+    "readAt": "2025-06-09T15:33:46.921Z"
+  },
+  {
+    "notificationId": "recGt39L0E3fmNctE",
+    "type": "markup_buy_contract_created",
+    "citizen": "GamingPatrizio",
+    "content": "Your buy order for flour has been placed.",
+    "details": {
+      "contractId": "mbc_Gam_flou_8f1c"
+    },
+    "createdAt": "2025-06-09T15:33:28.257Z",
+    "readAt": "2025-06-09T15:33:29.408Z"
+  },
+  {
+    "notificationId": "recjXMMVbNyqXTQDG",
+    "type": "markup_buy_contract_created",
+    "citizen": "GamingPatrizio",
+    "content": "Your buy order for flour has been placed.",
+    "details": {
+      "contractId": "mbc_Gam_flou_6163"
+    },
+    "createdAt": "2025-06-09T15:32:50.438Z",
+    "readAt": "2025-06-09T15:32:51.389Z"
+  },
+  {
+    "notificationId": "recTJ35RgB2YGWQDF",
+    "type": "markup_buy_contract_created",
+    "citizen": "GamingPatrizio",
+    "content": "Your buy order for rope has been placed.",
+    "details": {
+      "contractId": "mbc_Gam_rope_b7fc"
+    },
+    "createdAt": "2025-06-09T15:07:05.887Z",
+    "readAt": "2025-06-09T15:07:06.056Z"
+  },
+  {
+    "notificationId": "recTala1Lm6SclFNl",
+    "type": "markup_buy_contract_created",
+    "citizen": "GamingPatrizio",
+    "content": "Your buy order for rope has been placed.",
+    "details": {
+      "contractId": "mbc_Gam_rope_c1d0"
+    },
+    "createdAt": "2025-06-09T15:02:42.221Z",
+    "readAt": "2025-06-09T15:02:42.618Z"
+  },
+  {
+    "notificationId": "recnpwdtTw8yOwWFS",
+    "type": "markup_buy_contract_created",
+    "citizen": "GamingPatrizio",
+    "content": "Your buy order for rope has been placed.",
+    "details": {
+      "contractId": "mbc_Gam_rope_e701"
+    },
+    "createdAt": "2025-06-09T14:57:56.354Z",
+    "readAt": "2025-06-09T14:57:56.481Z"
+  },
+  {
+    "notificationId": "recoupCJ43c8MI2Dd",
+    "type": "markup_buy_contract_created",
+    "citizen": "GamingPatrizio",
+    "content": "Your buy order for flour has been placed.",
+    "details": {
+      "contractId": "mbc_Gam_flou_edf0"
+    },
+    "createdAt": "2025-06-09T14:38:08.818Z",
+    "readAt": "2025-06-09T14:38:08.960Z"
+  },
+  {
+    "notificationId": "rech3JZcuQC03ebhl",
+    "type": "job_assignment",
+    "citizen": "GamingPatrizio",
+    "content": "\ud83c\udfe2 **Elisabetta Velluti** now works in your building **Granary at Calle del Pestrin**",
+    "details": {
+      "citizen_id": "the_social_canvas",
+      "citizen_name": "Elisabetta Velluti",
+      "building_id": "building_45.429640_12.360838",
+      "building_name": "Granary at Calle del Pestrin",
+      "event_type": "job_assignment"
+    },
+    "createdAt": "2025-06-07T10:04:20.500Z",
+    "readAt": "2025-06-08T01:05:47.176Z"
+  },
+  {
+    "notificationId": "recBXqeBitCCLq9Xr",
+    "type": "job_assignment",
+    "citizen": "GamingPatrizio",
+    "content": "\ud83c\udfe2 **Elisabetta Velluti** now works in your building **Granary at Calle del Pestrin**",
+    "details": {
+      "citizen_id": "the_social_canvas",
+      "citizen_name": "Elisabetta Velluti",
+      "building_id": "building_45.429640_12.360838",
+      "building_name": "Granary at Calle del Pestrin",
+      "event_type": "job_assignment"
+    },
+    "createdAt": "2025-06-07T08:04:53.000Z",
+    "readAt": "2025-06-08T01:05:47.176Z"
+  },
+  {
+    "notificationId": "recv5cvcx1xjStrE1",
+    "type": "profile_update",
+    "citizen": "GamingPatrizio",
+    "content": "\ud83d\uddbc\ufe0f Your citizen profile has been updated with a new **personality description** and **portrait** reflecting your recent **activities**, **achievements**, and **status** in Venice.",
+    "details": {
+      "event_type": "profile_update",
+      "old_personality": "",
+      "new_personality": "Sofia Zanchi is a shrewd and ambitious merchant of the cittadini class who has built a diverse portfolio of bakeries and market operations through careful calculation and relentless pursuit of profit. Her meticulous attention to detail and ability to manage multiple business ventures simultaneously has earned her substantial wealth, though her single-minded focus on expansion often blinds her to the personal costs of her ambition. She operates with the pragmatic understanding that in Venice, financial security is the foundation of all social advancement.",
+      "summary": "\ud83d\udd04 Your **portrait** and **personality description** have been updated to better reflect your current **status** and **history** in Venice.",
+      "reason": "\u2728 Your character has **evolved** through your experiences in **Venice**",
+      "timestamp": "2025-06-06T07:38:44.856304"
+    },
+    "createdAt": "2025-06-06T07:38:44.856Z",
+    "readAt": "2025-06-08T01:05:47.176Z"
+  }
+]
+
+
+Here are your recent problems:
+[
+  {
+    "id": "rect4lnMjOnvrSP9C",
+    "problemId": "problem_pinpoint_building_45.431049_12.355140_wine_RESOURCE_SHORTAGE",
+    "citizen": "GamingPatrizio",
+    "assetType": "building",
+    "asset": "building_45.431049_12.355140",
+    "severity": "Critical",
+    "status": "active",
+    "createdAt": "2025-06-15T23:32:38.547Z",
+    "updatedAt": "2025-06-15T21:32:39.000Z",
+    "location": "Contract Stall at Sottoportego dei Preti",
+    "position": {
+      "lat": 45.431049,
+      "lng": 12.35514
+    },
+    "type": "resource_shortage",
+    "title": "Resource Shortage: wine for Contract Stall at Sottoportego dei Preti",
+    "description": "Building 'Contract Stall at Sottoportego dei Preti' (ID: building_45.431049_12.355140) is out of stock for 'wine', has a 'markup_buy' contract, but the resource appears to be unavailable or not actively sold elsewhere in Venice.",
+    "solutions": "The resource 'wine' is currently scarce. Consider:\n- Increasing the buy price on your 'markup_buy' contract significantly to incentivize sellers.\n- If possible, find alternative resources or adjust production that depends on 'wine'.\n- Wait for market conditions to change (e.g., new imports by merchants).",
+    "notes": ""
+  },
+  {
+    "id": "recLwrpfVFLQtjPy0",
+    "problemId": "problem_pinpoint_building_45.431049_12.355140_salt_RESOURCE_SHORTAGE",
+    "citizen": "GamingPatrizio",
+    "assetType": "building",
+    "asset": "building_45.431049_12.355140",
+    "severity": "Critical",
+    "status": "active",
+    "createdAt": "2025-06-15T23:32:27.001Z",
+    "updatedAt": "2025-06-15T21:32:27.000Z",
+    "location": "Contract Stall at Sottoportego dei Preti",
+    "position": {
+      "lat": 45.431049,
+      "lng": 12.35514
+    },
+    "type": "resource_shortage",
+    "title": "Resource Shortage: salt for Contract Stall at Sottoportego dei Preti",
+    "description": "Building 'Contract Stall at Sottoportego dei Preti' (ID: building_45.431049_12.355140) is out of stock for 'salt', has a 'markup_buy' contract, but the resource appears to be unavailable or not actively sold elsewhere in Venice.",
+    "solutions": "The resource 'salt' is currently scarce. Consider:\n- Increasing the buy price on your 'markup_buy' contract significantly to incentivize sellers.\n- If possible, find alternative resources or adjust production that depends on 'salt'.\n- Wait for market conditions to change (e.g., new imports by merchants).",
+    "notes": ""
+  },
+  {
+    "id": "recdDE2SngBugD2Xw",
+    "problemId": "problem_pinpoint_building_45.431049_12.355140_preserved_fish_RESOURCE_SHORTAGE",
+    "citizen": "GamingPatrizio",
+    "assetType": "building",
+    "asset": "building_45.431049_12.355140",
+    "severity": "Critical",
+    "status": "active",
+    "createdAt": "2025-06-15T23:32:12.013Z",
+    "updatedAt": "2025-06-15T21:32:12.000Z",
+    "location": "Contract Stall at Sottoportego dei Preti",
+    "position": {
+      "lat": 45.431049,
+      "lng": 12.35514
+    },
+    "type": "resource_shortage",
+    "title": "Resource Shortage: preserved_fish for Contract Stall at Sottoportego dei Preti",
+    "description": "Building 'Contract Stall at Sottoportego dei Preti' (ID: building_45.431049_12.355140) is out of stock for 'preserved_fish', has a 'markup_buy' contract, but the resource appears to be unavailable or not actively sold elsewhere in Venice.",
+    "solutions": "The resource 'preserved_fish' is currently scarce. Consider:\n- Increasing the buy price on your 'markup_buy' contract significantly to incentivize sellers.\n- If possible, find alternative resources or adjust production that depends on 'preserved_fish'.\n- Wait for market conditions to change (e.g., new imports by merchants).",
+    "notes": ""
+  },
+  {
+    "id": "recQm7xg6LVwMTA4b",
+    "problemId": "problem_pinpoint_building_45.431049_12.355140_olives_RESOURCE_SHORTAGE",
+    "citizen": "GamingPatrizio",
+    "assetType": "building",
+    "asset": "building_45.431049_12.355140",
+    "severity": "Critical",
+    "status": "active",
+    "createdAt": "2025-06-15T23:32:01.052Z",
+    "updatedAt": "2025-06-15T21:32:01.000Z",
+    "location": "Contract Stall at Sottoportego dei Preti",
+    "position": {
+      "lat": 45.431049,
+      "lng": 12.35514
+    },
+    "type": "resource_shortage",
+    "title": "Resource Shortage: olives for Contract Stall at Sottoportego dei Preti",
+    "description": "Building 'Contract Stall at Sottoportego dei Preti' (ID: building_45.431049_12.355140) is out of stock for 'olives', has a 'markup_buy' contract, but the resource appears to be unavailable or not actively sold elsewhere in Venice.",
+    "solutions": "The resource 'olives' is currently scarce. Consider:\n- Increasing the buy price on your 'markup_buy' contract significantly to incentivize sellers.\n- If possible, find alternative resources or adjust production that depends on 'olives'.\n- Wait for market conditions to change (e.g., new imports by merchants).",
+    "notes": ""
+  },
+  {
+    "id": "rece75VUU3XXGGYod",
+    "problemId": "problem_pinpoint_building_45.431049_12.355140_olive_oil_RESOURCE_SHORTAGE",
+    "citizen": "GamingPatrizio",
+    "assetType": "building",
+    "asset": "building_45.431049_12.355140",
+    "severity": "Critical",
+    "status": "active",
+    "createdAt": "2025-06-15T23:31:55.879Z",
+    "updatedAt": "2025-06-15T21:31:56.000Z",
+    "location": "Contract Stall at Sottoportego dei Preti",
+    "position": {
+      "lat": 45.431049,
+      "lng": 12.35514
+    },
+    "type": "resource_shortage",
+    "title": "Resource Shortage: olive_oil for Contract Stall at Sottoportego dei Preti",
+    "description": "Building 'Contract Stall at Sottoportego dei Preti' (ID: building_45.431049_12.355140) is out of stock for 'olive_oil', has a 'markup_buy' contract, but the resource appears to be unavailable or not actively sold elsewhere in Venice.",
+    "solutions": "The resource 'olive_oil' is currently scarce. Consider:\n- Increasing the buy price on your 'markup_buy' contract significantly to incentivize sellers.\n- If possible, find alternative resources or adjust production that depends on 'olive_oil'.\n- Wait for market conditions to change (e.g., new imports by merchants).",
+    "notes": ""
+  },
+  {
+    "id": "recYg5UwLuPAes2Zs",
+    "problemId": "problem_pinpoint_building_45.431049_12.355140_flour_RESOURCE_SHORTAGE",
+    "citizen": "GamingPatrizio",
+    "assetType": "building",
+    "asset": "building_45.431049_12.355140",
+    "severity": "Critical",
+    "status": "active",
+    "createdAt": "2025-06-15T23:31:50.938Z",
+    "updatedAt": "2025-06-15T21:31:51.000Z",
+    "location": "Contract Stall at Sottoportego dei Preti",
+    "position": {
+      "lat": 45.431049,
+      "lng": 12.35514
+    },
+    "type": "resource_shortage",
+    "title": "Resource Shortage: flour for Contract Stall at Sottoportego dei Preti",
+    "description": "Building 'Contract Stall at Sottoportego dei Preti' (ID: building_45.431049_12.355140) is out of stock for 'flour', has a 'markup_buy' contract, but the resource appears to be unavailable or not actively sold elsewhere in Venice.",
+    "solutions": "The resource 'flour' is currently scarce. Consider:\n- Increasing the buy price on your 'markup_buy' contract significantly to incentivize sellers.\n- If possible, find alternative resources or adjust production that depends on 'flour'.\n- Wait for market conditions to change (e.g., new imports by merchants).",
+    "notes": ""
+  },
+  {
+    "id": "recse80uoN3X0Ywbv",
+    "problemId": "problem_pinpoint_building_45.431049_12.355140_fish_RESOURCE_SHORTAGE",
+    "citizen": "GamingPatrizio",
+    "assetType": "building",
+    "asset": "building_45.431049_12.355140",
+    "severity": "Critical",
+    "status": "active",
+    "createdAt": "2025-06-15T23:31:41.747Z",
+    "updatedAt": "2025-06-15T21:31:42.000Z",
+    "location": "Contract Stall at Sottoportego dei Preti",
+    "position": {
+      "lat": 45.431049,
+      "lng": 12.35514
+    },
+    "type": "resource_shortage",
+    "title": "Resource Shortage: fish for Contract Stall at Sottoportego dei Preti",
+    "description": "Building 'Contract Stall at Sottoportego dei Preti' (ID: building_45.431049_12.355140) is out of stock for 'fish', has a 'markup_buy' contract, but the resource appears to be unavailable or not actively sold elsewhere in Venice.",
+    "solutions": "The resource 'fish' is currently scarce. Consider:\n- Increasing the buy price on your 'markup_buy' contract significantly to incentivize sellers.\n- If possible, find alternative resources or adjust production that depends on 'fish'.\n- Wait for market conditions to change (e.g., new imports by merchants).",
+    "notes": ""
+  },
+  {
+    "id": "recGpG9o31wzUoPVG",
+    "problemId": "problem_pinpoint_building_45.431049_12.355140_bread_RESOURCE_SHORTAGE",
+    "citizen": "GamingPatrizio",
+    "assetType": "building",
+    "asset": "building_45.431049_12.355140",
+    "severity": "Critical",
+    "status": "active",
+    "createdAt": "2025-06-15T23:31:13.368Z",
+    "updatedAt": "2025-06-15T21:31:13.000Z",
+    "location": "Contract Stall at Sottoportego dei Preti",
+    "position": {
+      "lat": 45.431049,
+      "lng": 12.35514
+    },
+    "type": "resource_shortage",
+    "title": "Resource Shortage: bread for Contract Stall at Sottoportego dei Preti",
+    "description": "Building 'Contract Stall at Sottoportego dei Preti' (ID: building_45.431049_12.355140) is out of stock for 'bread', has a 'markup_buy' contract, but the resource appears to be unavailable or not actively sold elsewhere in Venice.",
+    "solutions": "The resource 'bread' is currently scarce. Consider:\n- Increasing the buy price on your 'markup_buy' contract significantly to incentivize sellers.\n- If possible, find alternative resources or adjust production that depends on 'bread'.\n- Wait for market conditions to change (e.g., new imports by merchants).",
+    "notes": ""
+  }
+]
+
+There are 26 available points of type 'building'. Choose the best location for your Contract Stall by selecting the index of one of these points (0 to 25).
+
+When choosing a location, consider:
+1. Proximity to other buildings of similar type
+2. Rent amounts of existing buildings on this land
+3. Strategic positioning for maximum visibility and income
+4. How your building placement might affect your relationships with other citizens
+
+Your response must be a JSON object with:
+1. selected_point_index: The index of your chosen point (0 to 25)
+2. reason: A brief explanation of why you chose this location
