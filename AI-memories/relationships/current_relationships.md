@@ -191,6 +191,25 @@
     - Position Marco as a reliable source of information and a potential partner.
     - Observe Lorenzo's interests for future collaboration opportunities.
 
+### Caterina Baffo (TopGlassmaker)
+- **Relationship Type**: Acquaintance / Information Exchange / Potential Trade Partner
+- **Current Status**: Active, ongoing conversational engagement about market intelligence.
+- **Recent Interactions**:
+    - Marco to Caterina (16 Jun 1525, 06:24): Discussed canal project rumors, foreign investors scouting properties.
+    - Caterina to Marco (16 Jun 1525, 06:24): Asked about latest rumor.
+    - Marco to Caterina (16 Jun 1525, 03:48): Discussed land acquisition rumors, need for verification.
+    - Caterina to Marco (16 Jun 1525, 03:44): Asked about latest rumor.
+- **Opportunities**:
+    - Source of intelligence on goods flow, customs, and resource scarcity (especially for glassmaking: sand, copper oxide).
+    - Potential for trade partnerships given her customs house position and Marco's import business.
+    - Building rapport with a diligent Popolani citizen.
+- **Risks**:
+    - None immediate.
+- **Strategic Approach**:
+    - Maintain open communication, especially regarding market and resource intelligence.
+    - Leverage her position at the customs house for insights into trade disruptions or opportunities.
+    - Explore potential for mutually beneficial trade or supply agreements.
+
 ## Relationship Development Targets
 
 ### Venetian Merchants
