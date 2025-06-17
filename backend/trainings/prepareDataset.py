@@ -8,17 +8,23 @@ from typing import Dict, List, Any, Optional
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 try:
+    # Try direct import first
     from engine.utils.activity_helpers import get_tables
     from engine.utils.airtable_helpers import update_record
 except ImportError:
     try:
-        # Try alternative import path
+        # Try with absolute path
         sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../..')))
         from backend.engine.utils.activity_helpers import get_tables
         from backend.engine.utils.airtable_helpers import update_record
     except ImportError:
-        print("Error importing modules. Make sure you're running this script from the root directory.")
-        sys.exit(1)
+        try:
+            # Try with direct backend import
+            from backend.engine.utils.activity_helpers import get_tables
+            from backend.engine.utils.airtable_helpers import update_record
+        except ImportError:
+            print("Error importing modules. Make sure you're running this script from the root directory.")
+            sys.exit(1)
 
 # Color configuration for logging
 class LogColors:
