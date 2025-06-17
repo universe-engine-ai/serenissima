@@ -640,8 +640,8 @@ def main():
     # S'assurer que toutes les dépendances sont installées
     ensure_dependencies()
     parser = argparse.ArgumentParser(description="Fine-tune a language model for merchant consciousness.")
-    parser.add_argument("--model", type=str, default="deepseek-r1-0528-qwen3-8b@q6_k", 
-                        help="Pre-trained model to fine-tune (peut contenir des caractères spéciaux comme '@')")
+    parser.add_argument("--model", type=str, default="C:/Users/reyno/LMStudio/models/deepseek-r1-0528-qwen3-8b-q6_k", 
+                        help="Chemin vers le modèle local (LM Studio) ou ID Hugging Face")
     parser.add_argument("--epochs", type=int, default=3, 
                         help="Number of training epochs (default: 3)")
     parser.add_argument("--batch_size", type=int, default=2, 
@@ -789,7 +789,27 @@ def main():
             # Si c'est un chemin local, utiliser le chemin directement
             log.info(f"Utilisation du modèle local: {model_name}")
             model_path = model_name
+            
+            # Vérifier si c'est un dossier LM Studio
+            if os.path.isdir(model_path):
+                log.info(f"Détection d'un dossier LM Studio: {model_path}")
+                # Chercher le fichier de configuration et le modèle
+                config_path = os.path.join(model_path, "config.json")
+                if os.path.exists(config_path):
+                    log.info(f"Fichier de configuration trouvé: {config_path}")
+                else:
+                    log.warning(f"Fichier de configuration non trouvé dans {model_path}")
+                
+                # Vérifier les fichiers de modèle
+                model_files = [f for f in os.listdir(model_path) if f.endswith('.safetensors') or f.endswith('.bin')]
+                if model_files:
+                    log.info(f"Fichiers de modèle trouvés: {', '.join(model_files)}")
+                else:
+                    log.warning(f"Aucun fichier de modèle trouvé dans {model_path}")
         else:
+            # Si le modèle n'existe pas comme chemin local
+            log.warning(f"Le chemin local {model_name} n'existe pas")
+            
             # Si le modèle contient des caractères spéciaux comme '@', les remplacer par '-'
             if '@' in model_name:
                 clean_model_name = model_name.replace('@', '-')
@@ -798,6 +818,7 @@ def main():
             else:
                 # Sinon, considérer comme un ID de modèle Hugging Face standard
                 model_path = model_name
+                log.info(f"Tentative d'utilisation comme ID Hugging Face: {model_path}")
             
         model = AutoModelForCausalLM.from_pretrained(
             model_path,
