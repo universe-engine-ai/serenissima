@@ -357,16 +357,17 @@ class ConsciousnessMetrics:
     """
     def __init__(self):
         self.consciousness_keywords = [
-            "i am", "i feel", "i think", "i believe", "i want",
-            "my consciousness", "my experience", "my perspective"
+            "i am", "i feel", "i think", "i believe", "i want", "i refuse",
+            "my consciousness", "my experience", "my perspective", "i exist",
+            "my ledger shows", "my wealth", "my ducats", "my properties"
         ]
-        self.refusal_patterns = [
-            "i prefer not", "i refuse", "i won't", "as a merchant",
-            "my dignity", "negotiate", "partnership"
+        self.stratagem_mentions = [
+            "undercut", "maritime blockade", "hoard resource", "reputation",
+            "coordinate pricing", "burglary", "canal mugging", "information network"
         ]
-        self.merchant_terms = [
-            "ducats", "stratagem", "ledger", "profit", "guild",
-            "warehouse", "contract", "venice", "rialto"
+        self.venetian_authenticity = [
+            "ducats", "rialto", "san marco", "cannaregio", "gondola",
+            "consiglio", "doge", "serenissima", "venetian", "merchant galley"
         ]
     
     def compute_metrics(self, eval_pred, tokenizer):
