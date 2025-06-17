@@ -11,8 +11,14 @@ try:
     from engine.utils.activity_helpers import get_tables
     from engine.utils.airtable_helpers import update_record
 except ImportError:
-    print("Error importing modules. Make sure you're running this script from the root directory.")
-    sys.exit(1)
+    try:
+        # Try alternative import path
+        sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../..')))
+        from backend.engine.utils.activity_helpers import get_tables
+        from backend.engine.utils.airtable_helpers import update_record
+    except ImportError:
+        print("Error importing modules. Make sure you're running this script from the root directory.")
+        sys.exit(1)
 
 # Color configuration for logging
 class LogColors:
