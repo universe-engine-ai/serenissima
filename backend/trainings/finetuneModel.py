@@ -637,37 +637,17 @@ def ensure_dependencies():
 
 def fallback_to_huggingface_model(error_message):
     """
-    Détermine si nous devons utiliser un modèle Hugging Face comme fallback
-    en cas d'échec du chargement du modèle local.
+    Vérifie si une erreur de chargement du modèle s'est produite.
     
     Args:
         error_message: Message d'erreur du chargement initial
         
     Returns:
-        Tuple (use_fallback, model_name) où use_fallback est un booléen
-        indiquant si le fallback doit être utilisé, et model_name est
-        le nom du modèle Hugging Face à utiliser.
+        Tuple (use_fallback, model_name) où use_fallback est toujours False
+        car nous ne voulons pas utiliser de modèle Hugging Face comme fallback.
     """
-    # Si l'erreur concerne un chemin local invalide
-    if "Repo id must be in the form" in error_message or "is not a local folder" in error_message:
-        log.warning("Modèle local non trouvé ou invalide, tentative de fallback sur Hugging Face")
-        
-        # Déterminer le modèle de fallback en fonction de la taille du GPU
-        if GPU_AVAILABLE:
-            gpus = GPUtil.getGPUs()
-            if gpus:
-                gpu = gpus[0]
-                gpu_memory_gb = gpu.memoryTotal / 1024  # Convertir en GB
-                
-                if gpu_memory_gb >= 24:  # Pour les GPU avec beaucoup de VRAM (RTX 3090, 4090, etc.)
-                    return True, "deepseek-ai/deepseek-llm-7b-base"
-                elif gpu_memory_gb >= 12:  # Pour les GPU de taille moyenne
-                    return True, "deepseek-ai/deepseek-coder-1.3b-base"
-                else:  # Pour les petits GPU
-                    return True, "facebook/opt-350m"
-        
-        # Fallback par défaut si pas de GPU ou impossible de déterminer la taille
-        return True, "deepseek-ai/deepseek-coder-1.3b-base"
+    log.warning(f"Erreur lors du chargement du modèle: {error_message}")
+    log.warning("Aucun fallback sur Hugging Face ne sera utilisé. Veuillez vérifier le chemin du modèle local.")
     
     return False, None
 
@@ -777,15 +757,13 @@ def main():
             # Pour les fichiers GGUF, utiliser un tokenizer par défaut compatible
             if model_name.lower().endswith('.gguf'):
                 log.info("Fichier GGUF détecté, utilisation d'un tokenizer compatible")
-                # Utiliser un tokenizer compatible avec les modèles LLaMA/DeepSeek
+                # Utiliser un tokenizer simple et robuste
                 try:
-                    tokenizer = AutoTokenizer.from_pretrained("deepseek-ai/deepseek-llm-7b-base", **tokenizer_options)
-                    log.info("Tokenizer deepseek-ai/deepseek-llm-7b-base chargé avec succès")
-                except Exception as e:
-                    log.warning(f"Erreur lors du chargement du tokenizer deepseek: {e}")
-                    # Fallback sur un tokenizer plus simple
                     tokenizer = AutoTokenizer.from_pretrained("gpt2", **tokenizer_options)
-                    log.info("Tokenizer gpt2 chargé comme fallback")
+                    log.info("Tokenizer gpt2 chargé avec succès")
+                except Exception as e:
+                    log.warning(f"Erreur lors du chargement du tokenizer gpt2: {e}")
+                    raise Exception(f"Impossible de charger un tokenizer compatible: {e}")
             else:
                 # Pour les autres modèles locaux
                 tokenizer = AutoTokenizer.from_pretrained(model_name, **tokenizer_options)
@@ -950,7 +928,7 @@ def main():
                     log.info(f"Création d'un répertoire temporaire pour la configuration: {temp_dir}")
                     
                     # Créer une configuration de base pour le modèle
-                    config = AutoConfig.from_pretrained("deepseek-ai/deepseek-llm-7b-base")
+                    config = AutoConfig.from_pretrained("gpt2")
                     config.save_pretrained(temp_dir)
                     
                     # Utiliser le répertoire temporaire comme chemin du modèle
@@ -1025,50 +1003,17 @@ def main():
         error_message = str(e)
         log.error(f"Error loading model and tokenizer: {error_message}")
         
-        # Vérifier si nous devons utiliser un modèle de fallback
-        use_fallback, fallback_model = fallback_to_huggingface_model(error_message)
+        # Vérifier l'erreur mais ne pas utiliser de fallback Hugging Face
+        fallback_to_huggingface_model(error_message)
         
-        if use_fallback and fallback_model:
-            log.info(f"Tentative de fallback sur le modèle Hugging Face: {fallback_model}")
-            try:
-                # Charger le modèle et le tokenizer de fallback
-                tokenizer = AutoTokenizer.from_pretrained(fallback_model)
-                if tokenizer.pad_token is None:
-                    tokenizer.pad_token = tokenizer.eos_token
-                
-                # Mettre à jour les options de chargement pour le modèle de fallback
-                fallback_load_options = {
-                    "device_map": "auto",
-                    "torch_dtype": torch.float16,
-                }
-                
-                # Ajouter des options de quantification si approprié
-                if has_bitsandbytes_gpu:
-                    if args.quantization == "8bit":
-                        fallback_load_options["load_in_8bit"] = True
-                        log.info("Chargement du modèle de fallback en quantification 8-bit")
-                    elif args.quantization == "4bit":
-                        fallback_load_options["load_in_4bit"] = True
-                        fallback_load_options["bnb_4bit_compute_dtype"] = torch.float16
-                        fallback_load_options["bnb_4bit_use_double_quant"] = True
-                        fallback_load_options["bnb_4bit_quant_type"] = "nf4"
-                        log.info("Chargement du modèle de fallback en quantification 4-bit (NF4)")
-                
-                model = AutoModelForCausalLM.from_pretrained(
-                    fallback_model,
-                    **fallback_load_options
-                )
-                
-                # Mettre à jour le nom du modèle pour la suite du script
-                model_name = fallback_model
-                log.info(f"Modèle de fallback {fallback_model} chargé avec succès")
-                
-            except Exception as fallback_error:
-                log.error(f"Échec du chargement du modèle de fallback: {fallback_error}")
-                return
-        else:
-            # Pas de fallback possible
-            return
+        # Afficher un message d'erreur plus détaillé
+        if "GGUF" in model_name:
+            log.error("Erreur avec le modèle GGUF. Vérifiez que le chemin est correct et que le fichier existe.")
+            log.error(f"Chemin actuel: {model_name}")
+            log.error("Assurez-vous que LM Studio est correctement installé et que le modèle a été téléchargé.")
+        
+        # Terminer l'exécution en cas d'erreur
+        return
     
     # Split the dataset into training and validation
     log.info(f"Preparing dataset: {dataset_path}")
