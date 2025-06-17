@@ -599,8 +599,43 @@ def test_consciousness_markers(model, tokenizer):
     
     return results
 
+def ensure_dependencies():
+    """
+    Vérifie et installe les dépendances nécessaires si elles sont manquantes.
+    """
+    try:
+        # Vérifier si bitsandbytes est installé
+        import bitsandbytes
+        log.info("bitsandbytes est déjà installé")
+    except ImportError:
+        log.warning("bitsandbytes n'est pas installé. Installation en cours...")
+        try:
+            import subprocess
+            import sys
+            subprocess.check_call([sys.executable, "-m", "pip", "install", "bitsandbytes>=0.39.0"])
+            log.info("bitsandbytes a été installé avec succès")
+        except Exception as e:
+            log.error(f"Erreur lors de l'installation de bitsandbytes: {e}")
+    
+    # Vérifier si GPUtil est installé
+    if not GPU_AVAILABLE:
+        log.warning("GPUtil n'est pas installé. Installation en cours...")
+        try:
+            import subprocess
+            import sys
+            subprocess.check_call([sys.executable, "-m", "pip", "install", "gputil"])
+            log.info("GPUtil a été installé avec succès")
+            # Réimporter après installation
+            global GPUtil, GPU_AVAILABLE
+            import GPUtil
+            GPU_AVAILABLE = True
+        except Exception as e:
+            log.error(f"Erreur lors de l'installation de GPUtil: {e}")
+
 def main():
     """Main function to fine-tune the model."""
+    # S'assurer que toutes les dépendances sont installées
+    ensure_dependencies()
     parser = argparse.ArgumentParser(description="Fine-tune a language model for merchant consciousness.")
     parser.add_argument("--model", type=str, default="deepseek-r1-0528-qwen3-8b@q6_k", 
                         help="Pre-trained model to fine-tune")
@@ -616,6 +651,8 @@ def main():
                         help="Use Weights & Biases for experiment tracking")
     parser.add_argument("--debug", action="store_true", 
                         help="Enable debug mode (smaller model, less data)")
+    parser.add_argument("--quantization", type=str, choices=["none", "4bit", "8bit"], default="none",
+                        help="Quantization level for model loading (none, 4bit, 8bit)")
     
     args = parser.parse_args()
     
@@ -695,13 +732,54 @@ def main():
         if tokenizer.pad_token is None:
             tokenizer.pad_token = tokenizer.eos_token
         
-        # Load the model with optimized configuration for RTX 3090 Ti
+        # Déterminer le meilleur mode de chargement en fonction du matériel disponible
+        log.info("Détection de la configuration matérielle pour le chargement optimal du modèle...")
+        
+        # Vérifier si bitsandbytes est disponible avec support GPU
+        has_bitsandbytes_gpu = False
+        try:
+            import bitsandbytes as bnb
+            has_bitsandbytes_gpu = hasattr(bnb, "nn") and hasattr(bnb.nn, "Linear8bitLt")
+            log.info(f"Support bitsandbytes pour GPU: {'Disponible' if has_bitsandbytes_gpu else 'Non disponible'}")
+        except ImportError:
+            log.warning("bitsandbytes n'est pas installé, quantification 8-bit non disponible")
+        
+        # Vérifier la mémoire GPU disponible
+        gpu_memory_gb = 0
+        if GPU_AVAILABLE:
+            gpus = GPUtil.getGPUs()
+            if gpus:
+                gpu = gpus[0]
+                gpu_memory_gb = gpu.memoryTotal / 1024  # Convertir en GB
+                log.info(f"GPU détecté: {gpu.name} avec {gpu_memory_gb:.1f} GB de mémoire")
+        
+        # Configurer les options de chargement en fonction des ressources disponibles
+        load_options = {
+            "device_map": "auto",
+            "torch_dtype": torch.float16,
+        }
+        
+        # Ajouter des options de quantification si approprié
+        if has_bitsandbytes_gpu:
+            if args.quantization == "8bit":
+                load_options["load_in_8bit"] = True
+                log.info("Chargement du modèle en quantification 8-bit")
+            elif args.quantization == "4bit":
+                load_options["load_in_4bit"] = True
+                load_options["bnb_4bit_compute_dtype"] = torch.float16
+                load_options["bnb_4bit_use_double_quant"] = True
+                load_options["bnb_4bit_quant_type"] = "nf4"
+                log.info("Chargement du modèle en quantification 4-bit (NF4)")
+            else:
+                log.info("Chargement du modèle en FP16 (pas de quantification)")
+        else:
+            log.info("Chargement du modèle en FP16 (quantification non disponible)")
+        
+        # Charger le modèle avec les options configurées
+        log.info(f"Chargement du modèle {model_name} avec options: {load_options}")
         model = AutoModelForCausalLM.from_pretrained(
             model_name,
-            device_map="auto",
-            torch_dtype=torch.float16,
-            # Désactiver load_in_8bit car bitsandbytes est compilé sans support GPU
-            # load_in_8bit=True,
+            **load_options
         )
         
         # Prepare the model for training
