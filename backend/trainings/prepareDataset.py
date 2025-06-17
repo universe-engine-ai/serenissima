@@ -51,7 +51,7 @@ def update_record(table, record_id, fields):
         return False
 
 
-def generate_system_message(citizen_data: Dict[str, Any]) -> str:
+def generate_system_message(citizen_data: Dict[str, Any], username: str = "") -> str:
     """
     Generate a system message based on citizen information.
     
@@ -69,7 +69,7 @@ def generate_system_message(citizen_data: Dict[str, Any]) -> str:
     core_personality = citizen_data.get('CorePersonality', '')
     
     # Build the system message
-    system_message = f"You are {first_name} {last_name}, a {social_class} of La Serenissima. "
+    system_message = f"You are {first_name} {last_name} ({citizen_data.get('Username', username)}), a {social_class} of La Serenissima. "
     
     # Add personality information if available
     if personality:
@@ -164,7 +164,7 @@ def process_trainings() -> None:
         
         # Generate system message
         try:
-            system_message = generate_system_message(citizen_data)
+            system_message = generate_system_message(citizen_data, citizen_username)
             
             # Update the record in Airtable
             update_data = {
