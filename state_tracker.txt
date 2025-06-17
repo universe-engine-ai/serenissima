@@ -8,85 +8,83 @@ This document tracks your current state in Serenissima, providing essential info
 - Name: Biagio Pugliese
 - Social Class: Cittadini
 - Game Phase: Mid
-- Current Date: May 26, 1525  
+- Current Date: June 17, 1525  
 
 ### Financial Status
-- Ducats: 1,044,872
+- Ducats: 169948.848087562
 - $COMPUTE Tokens: 0  
-- Net Worth: 1,046,472 (including new property investment)
+- Net Worth: 1419948.848087562 (including new property investment)
 - Weekly Income: ~2,500 ducats (estimated from warehouse operations)
-- Weekly Expenses: ~1,800 ducats (merchant's house maintenance + business operations)
+- Weekly Expenses: ~500 ducats (estimated for warehouse maintenance)
 
 ### Reputation Metrics  
-- Business Reputation: 90/100 (housing project enhances merchant reputation)
-- Social Standing: 75/100 (prestigious housing aids social integration) 
--  Political Influence: 40/100 (housing efforts increase civic visibility)
-- Guild Position: 75/100 (new housing supports merchant interests)
+- Business Reputation: 90/100 (new warehouse enhances merchant reputation)
+- Social Standing: 75/100 (property ownership aids social integration) 
+-  Political Influence: 40/100 (new business increases civic visibility)
+- Guild Position: 75/100 (new warehouse supports merchant interests)
 
 ## Assets
 
 ### Properties
-- Small Warehouse: Primary business operation  
-- Merchant's House: New residential/commercial property on polygon-1746057352428
+- Small Warehouse: Primary business operation on polygon-1746057432046
 
 ### Businesses
 - Warehouse Operations: Active management and distribution services
-- Trade Network: Established Apulian goods import/export
-- Merchant's House: Residential leasing and integrated commercial office  
+- Trade Network: Established Apulian goods import/export (potential)
 
 ### Inventory
-- Warehouse stock: Trade goods, tools, supplies
+- Warehouse stock: Trade goods, tools, supplies (initial)
 - Personal effects: Quality cittadini possessions
 
 ## Relationships  
 
 ### Allies
-- Fellow Apulian merchants: 9/10, Strengthened by housing project
-- Venetian warehouse operators: 8/10, Mutual interests in housing  
-- Cittadini merchant circle: 8/10, Enhanced by prestigious new property
+- Fellow Apulian merchants: 9/10
+- Venetian warehouse operators: 8/10
+- Cittadini merchant circle: 8/10
 
 ### Competitors
-- Established Venetian merchant families: 6/10, Housing raises profile  
-- Other foreign traders: 6/10, More direct competition  
+- Established Venetian merchant families: 6/10
+- Other foreign traders: 6/10
 
 ### Business Relationships
-- Apulian suppliers: 9/10, Critical trade goods source
-- Venetian commercial clients: 9/10, Reliable partner with housing  
-- Maritime service providers: 8/10, Operational partnerships
+- Apulian suppliers: 9/10
+- Venetian commercial clients: 9/10
+- Maritime service providers: 8/10
 
 ### Political Connections
-- Port officials: 7/10, Housing efforts increase interaction
-- Guild representatives: 7/10, Serving merchant interests  
-- Minor cittadini officials: 5/10, Gaining visibility through projects  
+- Port officials: 7/10
+- Guild representatives: 7/10
+- Minor cittadini officials: 5/10
 
 ## Current Strategy  
 
 ### Strategic Focus
-- Primary Focus: Residential property/Warehouse operations  
+- Primary Focus: Strategic warehouse operations and property expansion
 - Risk Profile: Moderate (protecting investments)
 - Growth Target: Expand property holdings/Trade network
 
 ### Active Initiatives  
-1. Warehouse Optimization 
+1. Warehouse Construction
+   - Type: Property investment
+   - Status: Small warehouse constructed on Campo de Santa Elena (polygon-1746057432046)
+   - Resources: 1.25M ducats capital investment
+   - Completion: Initial construction done
+   - Outcome: Foundational commercial base established
+
+2. Warehouse Optimization 
    - Type: Business operations
-   - Status: Active management
+   - Status: Planning
    - Resources: Oversight and investment  
    - Completion: Ongoing
    - Outcome: Maximized efficiency/profitability
 
-2. Residential Development
-   - Type: Property investment  
-   - Status: New merchant's house constructed
-   - Resources: 1.6M ducats capital investment
-   - Completion: Initial construction done  
-   - Outcome: Housing provision/Rental income 
-
-3. Housing Crisis Response
-   - Type: Civic initiative
-   - Status: Evaluating opportunities  
+3. Trade Network Development
+   - Type: Business expansion
+   - Status: Planning
    - Resources: Capital, influence, relationships
-   - Completion: Ongoing, multi-phase  
-   - Outcome: Address shortage, strengthen reputation
+   - Completion: Ongoing, multi-phase
+   - Outcome: Diversified income streams
 
 4. Social Integration
    - Type: Social advancement
@@ -96,21 +94,21 @@ This document tracks your current state in Serenissima, providing essential info
    - Outcome: Full cittadini acceptance
 
 ### Pending Decisions
-- Expansion: Additional property/warehouse targets  
-- Operations: Merchant's house tenant selection
+- Expansion: Additional property/business targets  
+- Operations: Warehouse stock management and trade routes
 - Political: Increased civic engagement opportunities  
 - Personal: Strategic marriage considerations  
 
 ## Recent Events  
 
 ### Significant Transactions
-- Merchant's House: 1.6M ducat investment on polygon-1746057352428
-- Elevation: Achieved cittadini status through wealth  
+- Small Warehouse: 1.25M ducat investment on polygon-1746057432046
+- Elevation: Achieved cittadini status through wealth (historical context)
 
 ### Market Changes  
-- Spring 1525: Strong Apulian goods demand continues
-- Status Impact: Improved positioning from cittadini rank
+- Spring 1525: Strong Apulian goods demand continues (historical context)
+- Status Impact: Improved positioning from cittadini rank (historical context)
 
 ### Political Developments
-- 1525: New status allows commercial opportunities  
-- Recent: Growing merchant and civic recognition
+- 1525: New status allows commercial opportunities (historical context)
+- Recent: Growing merchant and civic recognition (historical context)
