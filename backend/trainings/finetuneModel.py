@@ -635,6 +635,42 @@ def ensure_dependencies():
         except Exception as e:
             log.error(f"Erreur lors de l'installation de GPUtil: {e}")
 
+def fallback_to_huggingface_model(error_message):
+    """
+    Détermine si nous devons utiliser un modèle Hugging Face comme fallback
+    en cas d'échec du chargement du modèle local.
+    
+    Args:
+        error_message: Message d'erreur du chargement initial
+        
+    Returns:
+        Tuple (use_fallback, model_name) où use_fallback est un booléen
+        indiquant si le fallback doit être utilisé, et model_name est
+        le nom du modèle Hugging Face à utiliser.
+    """
+    # Si l'erreur concerne un chemin local invalide
+    if "Repo id must be in the form" in error_message or "is not a local folder" in error_message:
+        log.warning("Modèle local non trouvé ou invalide, tentative de fallback sur Hugging Face")
+        
+        # Déterminer le modèle de fallback en fonction de la taille du GPU
+        if GPU_AVAILABLE:
+            gpus = GPUtil.getGPUs()
+            if gpus:
+                gpu = gpus[0]
+                gpu_memory_gb = gpu.memoryTotal / 1024  # Convertir en GB
+                
+                if gpu_memory_gb >= 24:  # Pour les GPU avec beaucoup de VRAM (RTX 3090, 4090, etc.)
+                    return True, "deepseek-ai/deepseek-llm-7b-base"
+                elif gpu_memory_gb >= 12:  # Pour les GPU de taille moyenne
+                    return True, "deepseek-ai/deepseek-coder-1.3b-base"
+                else:  # Pour les petits GPU
+                    return True, "facebook/opt-350m"
+        
+        # Fallback par défaut si pas de GPU ou impossible de déterminer la taille
+        return True, "deepseek-ai/deepseek-coder-1.3b-base"
+    
+    return False, None
+
 def main():
     """Main function to fine-tune the model."""
     # S'assurer que toutes les dépendances sont installées
@@ -729,11 +765,38 @@ def main():
     # Load the model and tokenizer
     log.info(f"Loading model and tokenizer: {model_name}")
     try:
-        tokenizer = AutoTokenizer.from_pretrained(model_name)
+        # Charger le tokenizer avec les mêmes options que le modèle
+        tokenizer_options = {}
+        
+        # Pour les modèles locaux, utiliser local_files_only=True
+        if os.path.exists(model_name):
+            log.info(f"Chargement du tokenizer local: {model_name}")
+            tokenizer_options["local_files_only"] = True
+            tokenizer_options["trust_remote_code"] = True
+            
+            # Pour les fichiers GGUF, utiliser un tokenizer par défaut compatible
+            if model_name.lower().endswith('.gguf'):
+                log.info("Fichier GGUF détecté, utilisation d'un tokenizer compatible")
+                # Utiliser un tokenizer compatible avec les modèles LLaMA/DeepSeek
+                try:
+                    tokenizer = AutoTokenizer.from_pretrained("deepseek-ai/deepseek-llm-7b-base", **tokenizer_options)
+                    log.info("Tokenizer deepseek-ai/deepseek-llm-7b-base chargé avec succès")
+                except Exception as e:
+                    log.warning(f"Erreur lors du chargement du tokenizer deepseek: {e}")
+                    # Fallback sur un tokenizer plus simple
+                    tokenizer = AutoTokenizer.from_pretrained("gpt2", **tokenizer_options)
+                    log.info("Tokenizer gpt2 chargé comme fallback")
+            else:
+                # Pour les autres modèles locaux
+                tokenizer = AutoTokenizer.from_pretrained(model_name, **tokenizer_options)
+        else:
+            # Pour les modèles Hugging Face
+            tokenizer = AutoTokenizer.from_pretrained(model_name)
         
         # Ensure the tokenizer has padding token
         if tokenizer.pad_token is None:
             tokenizer.pad_token = tokenizer.eos_token
+            log.info("Padding token défini sur EOS token")
         
         # Déterminer le meilleur mode de chargement en fonction du matériel disponible
         log.info("Détection de la configuration matérielle pour le chargement optimal du modèle...")
@@ -936,6 +999,13 @@ def main():
         if model_name.lower().endswith('.gguf'):
             model = load_gguf_model(model_name, tokenizer)
         else:
+            # Pour les modèles locaux qui ne sont pas GGUF, utiliser local_files_only=True
+            if os.path.exists(model_path):
+                log.info(f"Chargement du modèle local: {model_path}")
+                load_options["local_files_only"] = True
+                # Ajouter trust_remote_code pour les modèles locaux
+                load_options["trust_remote_code"] = True
+            
             model = AutoModelForCausalLM.from_pretrained(
                 model_path,
                 **load_options
@@ -952,8 +1022,53 @@ def main():
         model.print_trainable_parameters()
     
     except Exception as e:
-        log.error(f"Error loading model and tokenizer: {e}")
-        return
+        error_message = str(e)
+        log.error(f"Error loading model and tokenizer: {error_message}")
+        
+        # Vérifier si nous devons utiliser un modèle de fallback
+        use_fallback, fallback_model = fallback_to_huggingface_model(error_message)
+        
+        if use_fallback and fallback_model:
+            log.info(f"Tentative de fallback sur le modèle Hugging Face: {fallback_model}")
+            try:
+                # Charger le modèle et le tokenizer de fallback
+                tokenizer = AutoTokenizer.from_pretrained(fallback_model)
+                if tokenizer.pad_token is None:
+                    tokenizer.pad_token = tokenizer.eos_token
+                
+                # Mettre à jour les options de chargement pour le modèle de fallback
+                fallback_load_options = {
+                    "device_map": "auto",
+                    "torch_dtype": torch.float16,
+                }
+                
+                # Ajouter des options de quantification si approprié
+                if has_bitsandbytes_gpu:
+                    if args.quantization == "8bit":
+                        fallback_load_options["load_in_8bit"] = True
+                        log.info("Chargement du modèle de fallback en quantification 8-bit")
+                    elif args.quantization == "4bit":
+                        fallback_load_options["load_in_4bit"] = True
+                        fallback_load_options["bnb_4bit_compute_dtype"] = torch.float16
+                        fallback_load_options["bnb_4bit_use_double_quant"] = True
+                        fallback_load_options["bnb_4bit_quant_type"] = "nf4"
+                        log.info("Chargement du modèle de fallback en quantification 4-bit (NF4)")
+                
+                model = AutoModelForCausalLM.from_pretrained(
+                    fallback_model,
+                    **fallback_load_options
+                )
+                
+                # Mettre à jour le nom du modèle pour la suite du script
+                model_name = fallback_model
+                log.info(f"Modèle de fallback {fallback_model} chargé avec succès")
+                
+            except Exception as fallback_error:
+                log.error(f"Échec du chargement du modèle de fallback: {fallback_error}")
+                return
+        else:
+            # Pas de fallback possible
+            return
     
     # Split the dataset into training and validation
     log.info(f"Preparing dataset: {dataset_path}")
