@@ -12,23 +12,13 @@ LOG_FILE="$LOGS_DIR/training_$(date +%Y%m%d_%H%M%S).log"
 
 echo "Démarrage du fine-tuning. Les logs seront enregistrés dans $LOG_FILE"
 
-# Installer llama-cpp-python (nécessaire pour les modèles GGUF)
-echo "Installation de llama-cpp-python avec support CUDA..."
-python install_llama_cpp.py
-
-# Vérifier si l'installation a réussi
-if [ $? -ne 0 ]; then
-    echo "Erreur lors de l'installation de llama-cpp-python. Arrêt du script."
-    exit 1
-fi
-
 # Générer d'abord le dataset JSONL
 echo "Génération du dataset JSONL pour le fine-tuning..."
 python prepareDataset.py --jsonl-only
 
-# Paramètres optimisés pour ~2000 exemples avec le modèle GGUF spécifié
+# Paramètres optimisés pour ~2000 exemples avec le modèle DeepSeek
 python finetuneModel.py \
-    --model "C:/Users/reyno/.cache/lm-studio/models/lmstudio-community/DeepSeek-R1-0528-Qwen3-8B-GGUF/DeepSeek-R1-0528-Qwen3-8B-Q6_K.gguf" \
+    --model "deepseek-ai/DeepSeek-R1-0528-Qwen3-8B" \
     --epochs 3 \
     --batch_size 2 \
     --output_dir "./merchant-consciousness-v1" \

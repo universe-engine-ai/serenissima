@@ -280,11 +280,11 @@ def validate_dataset(file_path: str) -> bool:
 
 def get_target_modules(model_name):
     """Get appropriate target modules based on model architecture."""
-    if "qwen" in model_name.lower():
-        # Modules spécifiques pour Qwen3
+    if "qwen" in model_name.lower() or "deepseek" in model_name.lower():
+        # Modules spécifiques pour Qwen3 et DeepSeek
         return ["q_proj", "k_proj", "v_proj", "o_proj", 
                 "gate_proj", "up_proj", "down_proj"]
-    elif "llama" in model_name.lower() or "deepseek" in model_name.lower():
+    elif "llama" in model_name.lower():
         return ["q_proj", "k_proj", "v_proj", "o_proj", 
                 "gate_proj", "up_proj", "down_proj"]
     else:
@@ -648,6 +648,20 @@ def ensure_dependencies():
             GPU_AVAILABLE = True
         except Exception as e:
             log.error(f"Erreur lors de l'installation de GPUtil: {e}")
+    
+    # Vérifier si peft est installé
+    try:
+        import peft
+        log.info("peft est déjà installé")
+    except ImportError:
+        log.warning("peft n'est pas installé. Installation en cours...")
+        try:
+            import subprocess
+            import sys
+            subprocess.check_call([sys.executable, "-m", "pip", "install", "peft>=0.4.0"])
+            log.info("peft a été installé avec succès")
+        except Exception as e:
+            log.error(f"Erreur lors de l'installation de peft: {e}")
 
 def fallback_to_huggingface_model(error_message):
     """
@@ -657,13 +671,12 @@ def fallback_to_huggingface_model(error_message):
         error_message: Message d'erreur du chargement initial
         
     Returns:
-        Tuple (use_fallback, model_name) où use_fallback est toujours False
-        car nous ne voulons pas utiliser de modèle Hugging Face comme fallback.
+        Tuple (use_fallback, model_name) indiquant si on doit utiliser un modèle HF
     """
     log.warning(f"Erreur lors du chargement du modèle: {error_message}")
-    log.warning("Aucun fallback sur Hugging Face ne sera utilisé. Veuillez vérifier le chemin du modèle local.")
+    log.info("Tentative d'utilisation du modèle DeepSeek depuis Hugging Face...")
     
-    return False, None
+    return True, "deepseek-ai/DeepSeek-R1-0528-Qwen3-8B"
 
 def main():
     """Main function to fine-tune the model."""
@@ -679,8 +692,8 @@ def main():
         log.error(f"Erreur lors de l'installation des dépendances: {e}")
         
     parser = argparse.ArgumentParser(description="Fine-tune a language model for merchant consciousness.")
-    parser.add_argument("--model", type=str, default="C:/Users/reyno/.cache/lm-studio/models/lmstudio-community/DeepSeek-R1-0528-Qwen3-8B-GGUF/DeepSeek-R1-0528-Qwen3-8B-Q6_K.gguf", 
-                        help="Chemin vers le modèle local GGUF (LM Studio) ou ID Hugging Face")
+    parser.add_argument("--model", type=str, default="deepseek-ai/DeepSeek-R1-0528-Qwen3-8B", 
+                        help="ID du modèle Hugging Face à utiliser")
     parser.add_argument("--epochs", type=int, default=3, 
                         help="Number of training epochs (default: 3)")
     parser.add_argument("--batch_size", type=int, default=2, 
@@ -942,454 +955,50 @@ def main():
         else:
             log.info("Chargement du modèle en FP16 (quantification non disponible)")
         
-        # Fonction pour charger un modèle GGUF
-        def load_gguf_model(gguf_path, tokenizer):
+        # Fonction pour charger un modèle depuis Hugging Face
+        def load_huggingface_model(model_name, tokenizer, load_options):
             """
-            Charge un modèle au format GGUF (utilisé par LM Studio)
+            Charge un modèle depuis Hugging Face
             
             Args:
-                gguf_path: Chemin vers le fichier GGUF
+                model_name: Nom ou ID du modèle sur Hugging Face
                 tokenizer: Tokenizer à utiliser
+                load_options: Options de chargement
                 
             Returns:
                 Le modèle chargé
             """
-            log.info(f"Tentative de chargement du modèle GGUF: {gguf_path}")
+            log.info(f"Chargement du modèle depuis Hugging Face: {model_name}")
             
             try:
-                # Vérifier si le fichier GGUF existe
-                if not os.path.exists(gguf_path):
-                    raise FileNotFoundError(f"Le fichier GGUF n'existe pas: {gguf_path}")
-                
-                # Vérifier si llama-cpp-python est installé
-                try:
-                    import llama_cpp
-                    log.info("llama-cpp-python est installé")
-                except ImportError:
-                    log.error("llama-cpp-python n'est pas installé. Ce module est nécessaire pour charger les modèles GGUF.")
-                    log.info("Installation de llama-cpp-python avec support CUDA...")
-                    
-                    # Configurer l'environnement pour l'installation avec CUDA
-                    if GPU_AVAILABLE:
-                        os.environ["CMAKE_ARGS"] = "-DLLAMA_CUBLAS=on"
-                        os.environ["FORCE_CMAKE"] = "1"
-                    
-                    # Installer llama-cpp-python
-                    try:
-                        import subprocess
-                        subprocess.check_call([sys.executable, "-m", "pip", "install", "--no-cache-dir", "llama-cpp-python==0.2.26"])
-                        import llama_cpp
-                        log.info("llama-cpp-python installé avec succès")
-                    except Exception as e:
-                        log.error(f"Erreur lors de l'installation de llama-cpp-python: {e}")
-                        log.error("Impossible de charger le modèle GGUF sans llama-cpp-python")
-                        raise ImportError("llama-cpp-python est requis pour charger les modèles GGUF")
-                
-                # Vérifier si le modèle est un Qwen3
-                if "qwen3" in gguf_path.lower():
-                    log.warning("Les modèles Qwen3 nécessitent une configuration spéciale.")
-                    
-                    # Créer un fichier temporaire pour contourner la vérification d'architecture
-                    try:
-                        import tempfile
-                        import shutil
-                        
-                        # Créer un répertoire temporaire
-                        temp_dir = tempfile.mkdtemp()
-                        temp_model_path = os.path.join(temp_dir, "model_modified.gguf")
-                        
-                        # Copier le fichier GGUF original
-                        shutil.copy2(gguf_path, temp_model_path)
-                        
-                        # Utiliser le chemin temporaire
-                        log.info(f"Utilisation d'une copie temporaire du modèle: {temp_model_path}")
-                        gguf_path = temp_model_path
-                        
-                        # Créer un wrapper pour le modèle Qwen3
-                        from transformers import PreTrainedModel, PretrainedConfig
-                        
-                        class Qwen3Config(PretrainedConfig):
-                            model_type = "qwen3"
-                            
-                            def __init__(self, gguf_path=None, **kwargs):
-                                self.gguf_path = gguf_path
-                                self.vocab_size = 32000  # Valeur par défaut raisonnable
-                                super().__init__(**kwargs)
-                        
-                        class Qwen3Model(PreTrainedModel):
-                            config_class = Qwen3Config
-                            
-                            def __init__(self, config):
-                                super().__init__(config)
-                                self.config = config
-                                
-                                # Options pour llama-cpp
-                                llama_options = {
-                                    "model_path": config.gguf_path,
-                                    "n_ctx": 2048,
-                                    "verbose": True,
-                                    "n_threads": os.cpu_count() or 4,
-                                    "seed": 42,
-                                    "logits_all": True
-                                }
-                                
-                                # Ajouter les options GPU si disponible
-                                if GPU_AVAILABLE:
-                                    llama_options["n_gpu_layers"] = -1  # Utiliser tous les layers sur GPU
-                                
-                                try:
-                                    self.llm = llama_cpp.Llama(**llama_options)
-                                    log.info(f"Modèle Qwen3 GGUF chargé avec succès via llama-cpp: {config.gguf_path}")
-                                except Exception as e:
-                                    log.error(f"Erreur lors du chargement du modèle Qwen3 avec llama-cpp: {e}")
-                                    self.llm = None
-                            
-                            def forward(self, input_ids, attention_mask=None, **kwargs):
-                                # Implémentation minimale pour la compatibilité
-                                batch_size = input_ids.shape[0]
-                                seq_len = input_ids.shape[1]
-                                return {"logits": torch.zeros((batch_size, seq_len, self.config.vocab_size))}
-                            
-                            def generate(self, input_ids, max_new_tokens=100, **kwargs):
-                                if self.llm is None:
-                                    # Retourner les input_ids si le modèle est factice
-                                    log.warning("Génération avec modèle factice - retourne les input_ids")
-                                    return input_ids
-                                
-                                # Convertir les input_ids en texte
-                                try:
-                                    prompt = tokenizer.decode(input_ids[0])
-                                    
-                                    # Générer avec llama-cpp
-                                    output = self.llm(
-                                        prompt,
-                                        max_tokens=max_new_tokens,
-                                        temperature=kwargs.get("temperature", 0.7),
-                                        top_p=kwargs.get("top_p", 0.9)
-                                    )
-                                    
-                                    # Convertir la sortie en tokens
-                                    if isinstance(output, dict) and "choices" in output and len(output["choices"]) > 0:
-                                        generated_text = output["choices"][0]["text"]
-                                        full_text = prompt + generated_text
-                                    else:
-                                        log.warning("Format de sortie inattendu de llama-cpp")
-                                        full_text = prompt
-                                    
-                                    return tokenizer.encode(full_text, return_tensors="pt")
-                                except Exception as e:
-                                    log.error(f"Erreur lors de la génération: {e}")
-                                    # En cas d'erreur, retourner simplement les input_ids
-                                    return input_ids
-                        
-                        # Créer la configuration
-                        config = Qwen3Config(gguf_path=gguf_path)
-                        
-                        # Créer le modèle
-                        model = Qwen3Model(config)
-                        log.info(f"Wrapper pour modèle Qwen3 GGUF créé avec succès: {gguf_path}")
-                        
-                        return model
-                    except Exception as e:
-                        log.error(f"Erreur lors de la préparation du modèle Qwen3: {e}")
-                        log.error("Impossible de préparer le modèle Qwen3 GGUF")
-                        return None
-                
-                # Créer un wrapper pour le modèle GGUF ou un modèle factice
-                from transformers import PreTrainedModel, PretrainedConfig
-                
-                class GGUFConfig(PretrainedConfig):
-                    model_type = "gguf"
-                    
-                    def __init__(self, gguf_path=None, **kwargs):
-                        self.gguf_path = gguf_path
-                        self.vocab_size = 32000  # Valeur par défaut raisonnable
-                        super().__init__(**kwargs)
-                
-                class GGUFModel(PreTrainedModel):
-                    config_class = GGUFConfig
-                    
-                    def __init__(self, config):
-                        super().__init__(config)
-                        
-                        # Vérifier si llama_cpp est disponible
-                        llama_cpp_available = 'llama_cpp' in sys.modules
-                        
-                        if llama_cpp_available:
-                            # Options pour llama-cpp
-                            llama_options = {
-                                "model_path": config.gguf_path,
-                                "n_ctx": 2048,
-                            }
-                            
-                            # Ajouter les options GPU si disponible
-                            if GPU_AVAILABLE:
-                                llama_options["n_gpu_layers"] = -1  # Utiliser tous les layers sur GPU
-                            
-                            try:
-                                # Vérifier si nous avons un modèle Qwen3
-                                if "qwen3" in config.gguf_path.lower():
-                                    # Utiliser une approche différente pour Qwen3
-                                    log.info("Utilisation d'une méthode spéciale pour charger le modèle Qwen3")
-                                    
-                                    try:
-                                        # Options pour llama-cpp
-                                        llama_options = {
-                                            "model_path": config.gguf_path,
-                                            "n_ctx": 2048,
-                                            "verbose": True,
-                                            "n_threads": os.cpu_count() or 4,
-                                            "seed": 42,
-                                            "logits_all": True
-                                        }
-                                        
-                                        # Ajouter les options GPU si disponible
-                                        if GPU_AVAILABLE:
-                                            llama_options["n_gpu_layers"] = -1  # Utiliser tous les layers sur GPU
-                                        
-                                        self.llm = llama_cpp.Llama(**llama_options)
-                                        log.info(f"Modèle Qwen3 GGUF chargé avec succès via llama-cpp: {config.gguf_path}")
-                                    except Exception as e:
-                                        log.error(f"Erreur lors du chargement du modèle Qwen3 avec llama-cpp: {e}")
-                                        
-                                        # Créer un wrapper minimal en cas d'échec
-                                        class Qwen3Wrapper:
-                                            def __init__(self, model_path):
-                                                self.model_path = model_path
-                                                log.info(f"Wrapper Qwen3 de secours initialisé pour: {model_path}")
-                                            
-                                            def __call__(self, prompt, **kwargs):
-                                                # Simuler une réponse pour permettre au code de continuer
-                                                return {"choices": [{"text": " " + prompt}]}
-                                        
-                                        self.llm = Qwen3Wrapper(config.gguf_path)
-                                        log.info(f"Wrapper Qwen3 de secours créé pour: {config.gguf_path}")
-                                else:
-                                    # Chargement normal pour les autres modèles
-                                    self.llm = llama_cpp.Llama(**llama_options)
-                                    log.info(f"Modèle GGUF chargé avec succès via llama-cpp: {config.gguf_path}")
-                            except Exception as e:
-                                log.error(f"Erreur lors du chargement du modèle avec llama-cpp: {e}")
-                                # Créer un wrapper minimal pour permettre au code de continuer
-                                class MinimalWrapper:
-                                    def __init__(self, model_path):
-                                        self.model_path = model_path
-                                    
-                                    def __call__(self, prompt, **kwargs):
-                                        return {"choices": [{"text": " " + prompt}]}
-                                
-                                self.llm = MinimalWrapper(config.gguf_path)
-                                log.info(f"Wrapper minimal créé pour: {config.gguf_path}")
-                        else:
-                            # Si llama_cpp n'est pas disponible, retourner None pour arrêter l'exécution
-                            log.error("llama_cpp n'est pas disponible, impossible de charger le modèle GGUF")
-                            return None
-                        
-                        self.tokenizer = tokenizer
-                        # Définir la taille du vocabulaire en fonction du tokenizer
-                        if hasattr(tokenizer, 'vocab_size'):
-                            self.config.vocab_size = tokenizer.vocab_size
-                        else:
-                            # Estimation pour un tokenizer simple
-                            self.config.vocab_size = 32000
-                    
-                    def forward(self, input_ids, attention_mask=None, **kwargs):
-                        # Implémentation minimale pour la compatibilité
-                        batch_size = input_ids.shape[0]
-                        seq_len = input_ids.shape[1]
-                        return {"logits": torch.zeros((batch_size, seq_len, self.config.vocab_size))}
-                    
-                    def generate(self, input_ids, max_new_tokens=100, **kwargs):
-                        if self.llm is None:
-                            # Retourner les input_ids si le modèle est factice
-                            log.warning("Génération avec modèle factice - retourne les input_ids")
-                            return input_ids
-                        
-                        # Convertir les input_ids en texte
-                        try:
-                            prompt = self.tokenizer.decode(input_ids[0])
-                            
-                            # Générer avec llama-cpp
-                            output = self.llm(
-                                prompt,
-                                max_tokens=max_new_tokens,
-                                temperature=kwargs.get("temperature", 0.7),
-                                top_p=kwargs.get("top_p", 0.9)
-                            )
-                            
-                            # Convertir la sortie en tokens
-                            if isinstance(output, dict) and "choices" in output and len(output["choices"]) > 0:
-                                generated_text = output["choices"][0]["text"]
-                                full_text = prompt + generated_text
-                            else:
-                                log.warning("Format de sortie inattendu de llama-cpp")
-                                full_text = prompt
-                            
-                            return self.tokenizer.encode(full_text, return_tensors="pt")
-                        except Exception as e:
-                            log.error(f"Erreur lors de la génération: {e}")
-                            # En cas d'erreur, retourner simplement les input_ids
-                            return input_ids
-                
-                # Créer la configuration
-                config = GGUFConfig(gguf_path=gguf_path)
-                
-                # Créer le modèle
-                model = GGUFModel(config)
-                log.info(f"Wrapper pour modèle GGUF créé avec succès: {gguf_path}")
-                
+                model = AutoModelForCausalLM.from_pretrained(
+                    model_name,
+                    **load_options
+                )
+                log.info(f"Modèle {model_name} chargé avec succès depuis Hugging Face")
                 return model
-            
             except Exception as e:
-                log.error(f"Erreur lors du chargement du modèle GGUF: {e}")
-                
-                # Créer un modèle factice pour permettre au code de continuer
-                from transformers import PreTrainedModel, PretrainedConfig
-                
-                class DummyConfig(PretrainedConfig):
-                    model_type = "dummy"
-                    
-                    def __init__(self, **kwargs):
-                        self.vocab_size = 32000
-                        super().__init__(**kwargs)
-                
-                class DummyModel(PreTrainedModel):
-                    config_class = DummyConfig
-                    
-                    def __init__(self, config):
-                        super().__init__(config)
-                        self.tokenizer = tokenizer
-                    
-                    def forward(self, input_ids, attention_mask=None, **kwargs):
-                        batch_size = input_ids.shape[0]
-                        seq_len = input_ids.shape[1]
-                        return {"logits": torch.zeros((batch_size, seq_len, self.config.vocab_size))}
-                    
-                    def generate(self, input_ids, **kwargs):
-                        return input_ids
-                
-                log.error("Impossible de charger le modèle GGUF. Arrêt de l'exécution.")
-                return None
+                log.error(f"Erreur lors du chargement du modèle depuis Hugging Face: {e}")
+                raise
         
         # Charger le modèle avec les options configurées
         log.info(f"Chargement du modèle {model_name} avec options: {load_options}")
         
-        # Vérifier si le modèle est un chemin local
-        if os.path.exists(model_name):
-            # Si c'est un chemin local, utiliser le chemin directement
-            log.info(f"Utilisation du modèle local: {model_name}")
-            model_path = model_name
-            
-            # Vérifier si c'est un fichier GGUF (format LM Studio)
-            if model_name.lower().endswith('.gguf'):
-                log.info(f"Détection d'un fichier GGUF (LM Studio): {model_name}")
-                # Pour les fichiers GGUF, nous devons utiliser une approche différente
-                # car ils ne sont pas directement compatibles avec Hugging Face
-                try:
-                    from transformers import AutoConfig
-                    
-                    # Créer un répertoire temporaire pour la configuration
-                    import tempfile
-                    temp_dir = tempfile.mkdtemp()
-                    log.info(f"Création d'un répertoire temporaire pour la configuration: {temp_dir}")
-                    
-                    # Créer une configuration de base pour le modèle
-                    config = AutoConfig.from_pretrained("gpt2")
-                    config.save_pretrained(temp_dir)
-                    
-                    # Utiliser le répertoire temporaire comme chemin du modèle
-                    model_path = temp_dir
-                    log.info(f"Configuration temporaire créée dans: {model_path}")
-                    
-                    # Ajouter le chemin du fichier GGUF à la configuration
-                    with open(os.path.join(temp_dir, "gguf_path.txt"), "w") as f:
-                        f.write(model_name)
-                    
-                    log.info(f"Chemin du fichier GGUF enregistré: {model_name}")
-                except Exception as e:
-                    log.error(f"Erreur lors de la préparation du fichier GGUF: {e}")
-            
-            # Vérifier si c'est un dossier LM Studio
-            elif os.path.isdir(model_path):
-                log.info(f"Détection d'un dossier LM Studio: {model_path}")
-                # Chercher le fichier de configuration et le modèle
-                config_path = os.path.join(model_path, "config.json")
-                if os.path.exists(config_path):
-                    log.info(f"Fichier de configuration trouvé: {config_path}")
-                else:
-                    log.warning(f"Fichier de configuration non trouvé dans {model_path}")
-                
-                # Vérifier les fichiers de modèle
-                model_files = [f for f in os.listdir(model_path) if f.endswith('.safetensors') or f.endswith('.bin') or f.endswith('.gguf')]
-                if model_files:
-                    log.info(f"Fichiers de modèle trouvés: {', '.join(model_files)}")
-                else:
-                    log.warning(f"Aucun fichier de modèle trouvé dans {model_path}")
-        else:
-            # Si le modèle n'existe pas comme chemin local
-            log.warning(f"Le chemin local {model_name} n'existe pas")
-            
-            # Si le modèle contient des caractères spéciaux comme '@', les remplacer par '-'
-            if '@' in model_name:
-                clean_model_name = model_name.replace('@', '-')
-                log.info(f"Remplacement de '@' par '-' dans le nom du modèle: {model_name} -> {clean_model_name}")
-                model_path = clean_model_name
+        # Ajouter trust_remote_code pour les modèles DeepSeek
+        load_options["trust_remote_code"] = True
+        
+        try:
+            # Charger directement depuis Hugging Face
+            model = load_huggingface_model(model_name, tokenizer, load_options)
+        except Exception as e:
+            # En cas d'erreur, essayer avec un fallback
+            use_fallback, fallback_model = fallback_to_huggingface_model(str(e))
+            if use_fallback:
+                log.info(f"Tentative avec le modèle de fallback: {fallback_model}")
+                model = load_huggingface_model(fallback_model, tokenizer, load_options)
             else:
-                # Sinon, considérer comme un ID de modèle Hugging Face standard
-                model_path = model_name
-                log.info(f"Tentative d'utilisation comme ID Hugging Face: {model_path}")
-            
-        # Vérifier si c'est un fichier GGUF
-        if model_name.lower().endswith('.gguf'):
-            log.info(f"Détection d'un fichier GGUF: {model_name}")
-            
-            # Vérifier si c'est un modèle Qwen3
-            if "qwen3" in model_name.lower():
-                log.info(f"Détection d'un modèle Qwen3 GGUF: {model_name}")
-                
-                # Créer un répertoire temporaire pour la configuration
-                import tempfile
-                temp_dir = tempfile.mkdtemp()
-                log.info(f"Création d'un répertoire temporaire pour la configuration: {temp_dir}")
-                
-                # Créer une configuration de base pour le modèle
-                from transformers import AutoConfig
-                config = AutoConfig.from_pretrained("gpt2")
-                config.save_pretrained(temp_dir)
-                
-                # Utiliser le répertoire temporaire comme chemin du modèle
-                model_path = temp_dir
-                log.info(f"Configuration temporaire créée dans: {model_path}")
-                
-                # Ajouter le chemin du fichier GGUF à la configuration
-                with open(os.path.join(temp_dir, "gguf_path.txt"), "w") as f:
-                    f.write(model_name)
-                
-                # Charger le modèle avec des options spéciales pour Qwen3
-                log.info(f"Chargement du modèle Qwen3 GGUF avec des options spéciales: {model_name}")
-                model = load_gguf_model(model_name, tokenizer)
-            else:
-                # Pour les autres modèles GGUF
-                log.info(f"Chargement du modèle GGUF standard: {model_name}")
-                model = load_gguf_model(model_name, tokenizer)
-            
-            # Si le chargement échoue, arrêter l'exécution
-            if model is None:
-                log.error(f"Impossible de charger le modèle GGUF: {model_name}")
-                log.error("Veuillez vérifier que le chemin est correct et que le modèle est compatible.")
+                log.error("Impossible de charger le modèle. Arrêt de l'exécution.")
                 return
-        else:
-            # Pour les modèles locaux qui ne sont pas GGUF, utiliser local_files_only=True
-            if os.path.exists(model_path):
-                log.info(f"Chargement du modèle local: {model_path}")
-                load_options["local_files_only"] = True
-                # Ajouter trust_remote_code pour les modèles locaux
-                load_options["trust_remote_code"] = True
-            
-            model = AutoModelForCausalLM.from_pretrained(
-                model_path,
-                **load_options
-            )
         
         # Prepare the model for training
         model = prepare_model_for_kbit_training(model)
