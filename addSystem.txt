@@ -8,7 +8,7 @@ Here is the complete data about your current situation:
 {
   "citizen": {
     "username": "MerchantLegend",
-    "ducats": 493600.1100325047,
+    "ducats": 522529.3381399813,
     "social_class": "Popolani",
     "description": "A weathered but vigorous man in his late 40s, Antonio Mercanti carries himself with the quiet dignity of one who has labored honestly all his life. Despite being a facchino (porter), he has cultivated a respectable appearance with neatly trimmed salt-and-pepper beard and simple, well-maintained clothing. His powerful shoulders and calloused hands speak to years of carrying merchandise through Venice's narrow calli and across its countless bridges. Antonio has earned a reputation for reliability among the merchants of the Rialto, who specifically request him to transport their valuable goods. Born to a family of porters who have served Venice's commercial interests for generations, he takes immense pride in his role in the great commercial machinery of La Serenissima. His modest home in the Castello district is maintained with meticulous care, and he rises before dawn each day to secure the best positions for work. Through careful saving and occasional information brokering between merchants, Antonio has accumulated surprising wealth for a man of his station, though he maintains a frugal lifestyle, dreaming of establishing his son in a mercer's shop to elevate the family's standing.",
     "core_personality": "[\"Diplomatic\", \"Overoptimistic\", \"Connection-driven\"]",
@@ -3359,6 +3359,78 @@ Here is the complete data about your current situation:
   "latest_citizen_problems": [],
   "recent_notifications_for_ai": [
     {
+      "notificationId": "recMuN6q5pIv4zyy0",
+      "type": "rent_payment",
+      "citizen": "MerchantLegend",
+      "content": "\ud83d\udcec **Rent Received Summary** \ud83d\udcec\nYou received a total of **2,795 \u269c\ufe0f Ducats** from your properties today.\n\nDetails:\n- \u2705 **1,425 \u269c\ufe0f** from **Bernardo Morlacco** for **Fisherman's Cottage at Riva dei Bernardo**.\n- \u2705 **1,370 \u269c\ufe0f** from **Matteo Foscari** for **Fisherman's Cottage at Riva degli Scultori**.\n",
+      "details": {
+        "event_type": "landlord_rent_summary",
+        "total_received": 2795,
+        "payments": [
+          {
+            "occupant_name": "Bernardo Morlacco",
+            "building_name": "Fisherman's Cottage at Riva dei Bernardo",
+            "amount": 1425
+          },
+          {
+            "occupant_name": "Matteo Foscari",
+            "building_name": "Fisherman's Cottage at Riva degli Scultori",
+            "amount": 1370
+          }
+        ]
+      },
+      "createdAt": "2025-06-17T18:03:29.176Z",
+      "readAt": null
+    },
+    {
+      "notificationId": "recDMPQJo9rqrx9Ow",
+      "type": "rent_payment",
+      "citizen": "MerchantLegend",
+      "content": "\ud83d\udcec **Rent Received Summary** \ud83d\udcec\nYou received a total of **2,795 \u269c\ufe0f Ducats** from your properties today.\n\nDetails:\n- \u2705 **1,425 \u269c\ufe0f** from **Bernardo Morlacco** for **Fisherman's Cottage at Riva dei Bernardo**.\n- \u2705 **1,370 \u269c\ufe0f** from **Matteo Foscari** for **Fisherman's Cottage at Riva degli Scultori**.\n",
+      "details": {
+        "event_type": "landlord_rent_summary",
+        "total_received": 2795,
+        "payments": [
+          {
+            "occupant_name": "Bernardo Morlacco",
+            "building_name": "Fisherman's Cottage at Riva dei Bernardo",
+            "amount": 1425
+          },
+          {
+            "occupant_name": "Matteo Foscari",
+            "building_name": "Fisherman's Cottage at Riva degli Scultori",
+            "amount": 1370
+          }
+        ]
+      },
+      "createdAt": "2025-06-16T18:04:16.848Z",
+      "readAt": null
+    },
+    {
+      "notificationId": "recaSqB0swJJJkyta",
+      "type": "rent_payment",
+      "citizen": "MerchantLegend",
+      "content": "\ud83d\udcec **Rent Received Summary** \ud83d\udcec\nYou received a total of **2,795 \u269c\ufe0f Ducats** from your properties today.\n\nDetails:\n- \u2705 **1,425 \u269c\ufe0f** from **Bernardo Morlacco** for **Fisherman's Cottage at Riva dei Bernardo**.\n- \u2705 **1,370 \u269c\ufe0f** from **Matteo Foscari** for **Fisherman's Cottage at Riva degli Scultori**.\n",
+      "details": {
+        "event_type": "landlord_rent_summary",
+        "total_received": 2795,
+        "payments": [
+          {
+            "occupant_name": "Bernardo Morlacco",
+            "building_name": "Fisherman's Cottage at Riva dei Bernardo",
+            "amount": 1425
+          },
+          {
+            "occupant_name": "Matteo Foscari",
+            "building_name": "Fisherman's Cottage at Riva degli Scultori",
+            "amount": 1370
+          }
+        ]
+      },
+      "createdAt": "2025-06-16T16:03:52.236Z",
+      "readAt": null
+    },
+    {
       "notificationId": "recg8dBS0SEt0RsRv",
       "type": "rent_payment",
       "citizen": "MerchantLegend",
@@ -3717,22 +3789,6 @@ Here is the complete data about your current situation:
       },
       "createdAt": "2025-06-05T18:04:10.082Z",
       "readAt": null
-    },
-    {
-      "notificationId": "recON7weJwucU84fT",
-      "type": "work_mobility",
-      "citizen": "MerchantLegend",
-      "content": "\ud83c\udf89 **Jacopo Trevisan** has joined your business **Bakery at Calle dei Cordami**",
-      "details": {
-        "event_type": "employee_joined",
-        "citizen_id": "recEOCYILaW7LNB2Q",
-        "citizen_name": "Jacopo Trevisan",
-        "business_id": "rec9nfd4PCto4eGRl",
-        "business_name": "Bakery at Calle dei Cordami",
-        "wages": 750
-      },
-      "createdAt": "2025-06-02T16:00:05.313Z",
-      "readAt": null
     }
   ],
   "building_types": {
@@ -3962,7 +4018,7 @@ Here is the complete data about your current situation:
       "constructionMinutes": 8640,
       "buildTier": 2,
       "tier": null,
-      "category": "Infrastructure",
+      "category": "passive",
       "pointType": "building"
     },
     "dairy": {
@@ -4639,7 +4695,7 @@ Here is the complete data about your current situation:
       "pointType": "building"
     }
   },
-  "timestamp": "2025-06-15T22:13:52.802523+02:00",
+  "timestamp": "2025-06-17T21:29:36.154315+02:00",
   "building_ownership_relevancies": [
     {
       "asset": "building_45.432265_12.355002",
