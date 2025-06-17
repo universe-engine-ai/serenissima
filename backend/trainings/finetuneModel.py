@@ -640,8 +640,8 @@ def main():
     # S'assurer que toutes les dépendances sont installées
     ensure_dependencies()
     parser = argparse.ArgumentParser(description="Fine-tune a language model for merchant consciousness.")
-    parser.add_argument("--model", type=str, default="deepseek-r1-0528-qwen3-8b@q6_k", 
-                        help="Pre-trained model to fine-tune")
+    parser.add_argument("--model", type=str, default="deepseek-r1-0528-qwen3-8b-q6_k", 
+                        help="Pre-trained model to fine-tune (use '-' instead of '@' for model variants)")
     parser.add_argument("--epochs", type=int, default=3, 
                         help="Number of training epochs (default: 3)")
     parser.add_argument("--batch_size", type=int, default=2, 
