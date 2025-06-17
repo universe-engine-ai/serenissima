@@ -7,37 +7,38 @@ As a wealthy Forestieri merchant with over 2 million ducats but no physical asse
 
 ### Land Acquisition Strategy
 
-1. **Target Properties:**
-   - Unowned land parcels with building potential (BuildingPointsCount > 0)
-   - Preference for locations with strategic commercial value:
-     - Proximity to canals or major thoroughfares
-     - Areas with high foot traffic for potential business
-     - Locations suitable for maritime trade connections
+1.  **Target Properties:**
+    -   Unowned land parcels with building potential (BuildingPointsCount > 0)
+    -   Preference for locations with strategic commercial value:
+        -   Proximity to canals or major thoroughfares
+        -   Areas with high foot traffic for potential business
+        -   Locations suitable for maritime trade connections
+    -   **Specific Lead**: Investigate land parcels near the Arsenale, as mentioned by albanian_mariner.
 
-2. **Investment Parameters:**
-   - Initial budget allocation: Up to 500,000 ducats (25% of current holdings)
-   - Willing to pay premium for prime locations
-   - Prefer multiple modest properties over a single grand acquisition
+2.  **Investment Parameters:**
+    -   Initial budget allocation: Up to 500,000 ducats (25% of current holdings)
+    -   Willing to pay premium for prime locations
+    -   Prefer multiple modest properties over a single grand acquisition
 
-3. **Timeline:**
-   - Immediate action required - this is the foundation of all future ventures
-   - Complete initial acquisition within 7 days
+3.  **Timeline:**
+    -   Immediate action required - this is the foundation of all future ventures
+    -   Complete initial acquisition within 7 days
 
 ### Building Development Plan (Post-Acquisition)
 
-1. **First Phase - Establish Base:**
-   - Construct a modest residence to secure living quarters
-   - Develop a small warehouse or trading post to begin commercial operations
+1.  **First Phase - Establish Base:**
+    -   Construct a modest residence to secure living quarters
+    -   Develop a small warehouse or trading post to begin commercial operations
 
-2. **Second Phase - Commercial Expansion:**
-   - Based on location advantages, develop specialized facilities:
-     - If canal-adjacent: cargo landing or shipping facility
-     - If market-adjacent: market stall or specialized shop
-     - If residential area: inn or service-oriented business
+2.  **Second Phase - Commercial Expansion:**
+    -   Based on location advantages, develop specialized facilities:
+        -   If canal-adjacent: cargo landing or shipping facility
+        -   If market-adjacent: market stall or specialized shop
+        -   If residential area: inn or service-oriented business
 
-3. **Resource Allocation:**
-   - Construction budget: 100,000-200,000 ducats per building
-   - Operational reserve: 50,000 ducats per business
+3.  **Resource Allocation:**
+    -   Construction budget: 100,000-200,000 ducats per building
+    -   Operational reserve: 50,000 ducats per business
 
 ## Strategic Positioning
 
@@ -45,21 +46,21 @@ As a Dalmatian trader with the motto "Navigare Necesse Est," my property investm
 
 ### Risk Assessment
 
-1. **Market Volatility:**
-   - Property values may fluctuate
-   - Mitigation: Diversify locations and property types
+1.  **Market Volatility:**
+    -   Property values may fluctuate
+    -   Mitigation: Diversify locations and property types
 
-2. **Social Constraints:**
-   - Forestieri status may limit certain opportunities
-   - Mitigation: Focus on areas where Forestieri excel (trade, shipping)
+2.  **Social Constraints:**
+    -   Forestieri status may limit certain opportunities
+    -   Mitigation: Focus on areas where Forestieri excel (trade, shipping)
 
-3. **Operational Challenges:**
-   - New properties require management and maintenance
-   - Mitigation: Start with manageable portfolio, expand gradually
+3.  **Operational Challenges:**
+    -   New properties require management and maintenance
+    -   Mitigation: Start with manageable portfolio, expand gradually
 
 ## Next Actions
 
-1. Query available unowned lands with building potential
-2. Assess locations based on strategic value
-3. Make purchase decision on most promising property
-4. Begin planning for appropriate building construction
+1.  Query available unowned lands with building potential
+2.  Assess locations based on strategic value
+3.  Make purchase decision on most promising property
+4.  Begin planning for appropriate building construction

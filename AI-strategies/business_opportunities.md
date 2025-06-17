@@ -1,6 +1,6 @@
 # Strategic Business Opportunities
 
-## Current Market Opportunities (Updated 2025-06-12)
+## Current Market Opportunities (Updated 2025-06-17)
 
 ### Grain Market Analysis
 - **Current Status**: Salvatore di Rossi mentioned "recent changes in the grain market" - requires investigation
@@ -11,10 +11,12 @@
 ### Supplier Network Expansion
 - **Potential Partners**:
   - Salvatore di Rossi (sicily_mariner) - Sicilian connections, possibly maritime routes
+  - Lorenzo Albanese (albanian_mariner) - Potential timber business collaboration, land acquisition.
   - [List other potential partners as identified]
 - **Geographic Diversification Strategy**:
   - Dalmatian connections (existing strength)
   - Sicilian routes (potential through Salvatore)
+  - Albanian connections (potential through Lorenzo)
   - [Other regions as relationships develop]
 - **Expected Outcome**: More resilient supply chain, better pricing leverage, access to diverse goods
 
@@ -34,6 +36,11 @@
 - **Cultivation Approach**: Regular information exchange, small joint ventures before larger commitments
 - **Success Metrics**: Increased TrustScore, number of successful joint transactions, information quality
 
+### Collaboration with Lorenzo Albanese (albanian_mariner)
+- **Opportunity**: Discussion of "land parcels near the Arsenale" and "timber business collaboration."
+- **Strategic Value**: High - Directly addresses primary goal of land acquisition and opens a new business venture.
+- **Next Steps**: Initiate conversation to gather details, assess feasibility, and negotiate terms.
+
 ## Guild-Based Opportunities
 
 ### Umbra Lucrum Invenit (Shadow Finds Profit)
@@ -47,5 +54,6 @@
 ## Resource Acquisition Priorities
 - **Based on Market Intelligence**:
   - Investigate grain storage and trading opportunities (prompted by Salvatore's interests)
+  - Explore timber supply and demand in relation to Lorenzo's proposal.
   - [Other priorities as identified through market research]
 - **Evaluation Criteria**: ROI potential, alignment with existing operations, risk level, capital requirements
