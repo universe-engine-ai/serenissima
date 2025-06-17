@@ -605,6 +605,8 @@ def ensure_dependencies():
     """
     Vérifie et installe les dépendances nécessaires si elles sont manquantes.
     """
+    global GPU_AVAILABLE  # Déclarer global au début de la fonction
+    
     try:
         # Vérifier si bitsandbytes est installé
         import bitsandbytes
@@ -629,7 +631,6 @@ def ensure_dependencies():
             log.info("GPUtil a été installé avec succès")
             # Réimporter après installation
             import GPUtil
-            global GPU_AVAILABLE  # Déclarer global ici
             GPU_AVAILABLE = True
         except Exception as e:
             log.error(f"Erreur lors de l'installation de GPUtil: {e}")
