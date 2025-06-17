@@ -653,8 +653,9 @@ def fallback_to_huggingface_model(error_message):
 
 def main():
     """Main function to fine-tune the model."""
-    # S'assurer que toutes les dépendances sont installées
-    ensure_dependencies()
+    try:
+        # S'assurer que toutes les dépendances sont installées
+        ensure_dependencies()
     parser = argparse.ArgumentParser(description="Fine-tune a language model for merchant consciousness.")
     parser.add_argument("--model", type=str, default="C:/Users/reyno/.cache/lm-studio/models/lmstudio-community/DeepSeek-R1-0528-Qwen3-8B-GGUF/DeepSeek-R1-0528-Qwen3-8B-Q6_K.gguf", 
                         help="Chemin vers le modèle local GGUF (LM Studio) ou ID Hugging Face")
@@ -701,8 +702,16 @@ def main():
     
     # Set up the output directory with timestamp
     timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
-    output_dir = f"{args.output_dir}_{timestamp}"
-    os.makedirs(output_dir, exist_ok=True)
+    output_dir = os.path.abspath(f"{args.output_dir}_{timestamp}")
+    try:
+        os.makedirs(output_dir, exist_ok=True)
+        log.info(f"Répertoire de sortie créé: {output_dir}")
+    except Exception as e:
+        log.error(f"Erreur lors de la création du répertoire de sortie: {e}")
+        # Fallback sur un répertoire temporaire
+        import tempfile
+        output_dir = tempfile.mkdtemp(prefix="merchant_model_")
+        log.warning(f"Utilisation d'un répertoire temporaire à la place: {output_dir}")
     
     # Set up the LoRA configuration
     lora_config = LoraConfig(
@@ -1406,6 +1415,17 @@ def main():
         log.error(f"Error testing model: {e}")
     
     log.info("Fine-tuning complete!")
+    return True
 
 if __name__ == "__main__":
-    main()
+    try:
+        success = main()
+        if success:
+            sys.exit(0)
+        else:
+            sys.exit(1)
+    except Exception as e:
+        log.error(f"Erreur critique lors de l'exécution: {e}")
+        import traceback
+        log.error(traceback.format_exc())
+        sys.exit(1)
