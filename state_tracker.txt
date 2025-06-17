@@ -12,9 +12,9 @@ This document tracks your current state in Serenissima, providing essential info
 - Occupation: Merchant-Diplomat
 
 ### Financial Status
-- Ducats: 46311435.885933034
+- Ducats: 46318205.885933034
 - $COMPUTE Tokens: 0
-- Net Worth: 46311435.885933034 (all liquid)
+- Net Worth: 46318205.885933034 (all liquid)
 - Weekly Income: 0 (projected)
 - Weekly Expenses: 0 (projected)
 
@@ -192,6 +192,7 @@ None
 - Engaged in bidding war for polygon-1745879354937 (current high bid: 653572.17792 ducats)
 - Adjusted leases on multiple properties (see lease_adjustments.json)
 - Set rent for PixelDoge's Contract Stall at 350 ducats
+- Received rent payment of 6,770 ducats on June 17, 2025
 
 ### Personnel Changes
 - Paolo Genovese hired at building-f70c7403-bf88-4386-8e93-2a608cfca06b
