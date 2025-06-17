@@ -505,3 +505,29 @@ When implementing the competitive intelligence system:
    - Adjust focus based on threat and opportunity levels
    - Recognize when to shift resources as priorities change
    - Create scalable approaches for different competitor tiers
+# Competitive Intelligence System
+
+This document outlines a structured approach to gathering, analyzing, and utilizing information about competitors in Serenissima, enabling strategic advantage through superior market awareness.
+
+## Intelligence Collection Framework
+
+### Target Identification
+- **Priority Competitor Selection**: Determining who to monitor
+  - Direct competitors (same markets and products)
+  - Indirect competitors (substitute products/services)
+  - Potential entrants (likely future competitors)
+  - Strategic players (market influencers)
+  - Alliance partners (cooperative competitors)
+
+[... existing content ...]
+```
+
+Then, let's update the Relationship Tracker to include Foscari_Banker's recent observations:
+
+relationship_tracker.txt
+```text
+<<<<<<< SEARCH
+
+## Key Relationships
+
+### [Relationship Name 1]
