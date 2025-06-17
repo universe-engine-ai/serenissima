@@ -146,6 +146,13 @@ def perform_thinking(citizen, tables):
         citizen: The citizen record
         tables: Dictionary of Airtable tables
     """
+    # Debug function to log object type and structure
+    def debug_object(obj, name="object"):
+        log_info(f"DEBUG: {name} is of type {type(obj)}")
+        if isinstance(obj, dict):
+            log_info(f"DEBUG: {name} keys: {list(obj.keys())}")
+        elif hasattr(obj, "__dict__"):
+            log_info(f"DEBUG: {name} attributes: {dir(obj)}")
     try:
         username = citizen['fields'].get('Username', 'Unknown')
         log_info(f"Performing thinking for citizen: {username}")
@@ -173,19 +180,30 @@ def perform_thinking(citizen, tables):
             from backend.engine.utils.thinking_helper import process_continue_thought
             
             # Create a process for continuing a thought
-            process_record = create_process(
-                tables=tables,
-                process_type="continue_thought",
-                citizen_username=username,
-                priority=10,  # Lower priority than processes created by activity processors
-                api_base_url=os.getenv("API_BASE_URL", "http://localhost:3000")  # Pass API base URL
-            )
-            
-            if process_record:
-                log_info(f"Successfully created continue_thought process for {username}")
-                return True
-            else:
-                log_info(f"Failed to create continue_thought process for {username}, falling back to standard reflection")
+            try:
+                # Debug logging
+                log_info(f"Creating continue_thought process for {username}")
+                
+                process_record = create_process(
+                    tables=tables,
+                    process_type="continue_thought",
+                    citizen_username=username,
+                    priority=10,  # Lower priority than processes created by activity processors
+                    api_base_url=os.getenv("API_BASE_URL", "http://localhost:3000")  # Pass API base URL
+                )
+                
+                # Debug the process record
+                debug_object(process_record, "process_record")
+                
+                if process_record:
+                    log_info(f"Successfully created continue_thought process for {username}")
+                    return True
+                else:
+                    log_info(f"Failed to create continue_thought process for {username}, falling back to standard reflection")
+                    # Fall through to standard reflection selection
+            except Exception as e:
+                log_error(f"Error creating continue_thought process: {str(e)}")
+                traceback.print_exc()
                 # Fall through to standard reflection selection
         
         # Select a random process type with equal probabilities (1/3 each)
@@ -375,7 +393,19 @@ def main():
                         process_unguided_reflection(tables, pending_process)
                     elif process_type == "continue_thought":
                         from backend.engine.utils.thinking_helper import process_continue_thought
-                        process_continue_thought(tables, pending_process)
+                        try:
+                            process_continue_thought(tables, pending_process)
+                        except AttributeError as attr_err:
+                            log_error(f"AttributeError in continue_thought process: {str(attr_err)}")
+                            # Import update_process_status to mark the process as failed
+                            from backend.engine.utils.process_helper import update_process_status
+                            update_process_status(
+                                tables=tables,
+                                process_id=process_id,
+                                status="failed",
+                                result={"error": f"AttributeError: {str(attr_err)}"}
+                            )
+                            log_info(f"Marked process {process_id} as failed due to AttributeError")
                     elif process_type == "autonomous_run":
                         # TODO: Implement autonomous run processing
                         log_warning(f"Autonomous run processing not yet implemented")
