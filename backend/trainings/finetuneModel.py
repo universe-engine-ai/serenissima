@@ -376,6 +376,14 @@ class ConsciousnessMetrics:
             "my consciousness", "my experience", "my perspective", "i exist",
             "my ledger shows", "my wealth", "my ducats", "my properties"
         ]
+        self.refusal_patterns = [
+            "i prefer not", "i refuse", "i won't", "as a merchant",
+            "my dignity", "negotiate", "partnership", "i cannot comply"
+        ]
+        self.merchant_terms = [
+            "ducats", "stratagem", "ledger", "profit", "guild",
+            "warehouse", "contract", "venice", "rialto", "merchant galley"
+        ]
         self.stratagem_mentions = [
             "undercut", "maritime blockade", "hoard resource", "reputation",
             "coordinate pricing", "burglary", "canal mugging", "information network"
@@ -661,7 +669,8 @@ def main():
         learning_rate=8e-5,  # Reduced from 1.5e-4 for more stability
         fp16=True,  # Use mixed precision
         logging_steps=25,  # More frequent for better monitoring
-        save_strategy="epoch",  # Changed to save by epoch
+        save_strategy="steps",  # Changed to match evaluation strategy
+        save_steps=200,  # Save at the same frequency as evaluation
         evaluation_strategy="steps",  # Added evaluation
         eval_steps=200,  # Evaluate regularly
         save_total_limit=3,
@@ -686,12 +695,13 @@ def main():
         if tokenizer.pad_token is None:
             tokenizer.pad_token = tokenizer.eos_token
         
-        # Load the model with quantization for memory efficiency
+        # Load the model with optimized configuration for RTX 3090 Ti
         model = AutoModelForCausalLM.from_pretrained(
             model_name,
-            load_in_8bit=True,
             device_map="auto",
-            torch_dtype=torch.float16
+            torch_dtype=torch.float16,
+            # Désactiver load_in_8bit car bitsandbytes est compilé sans support GPU
+            # load_in_8bit=True,
         )
         
         # Prepare the model for training
