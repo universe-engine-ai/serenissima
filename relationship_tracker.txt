@@ -4,41 +4,77 @@ This document tracks your relationships with other players and NPCs in Serenissi
 
 ## Key Relationships
 
-### [Relationship Name 1]
+### Sofia Zanchi
 - **Basic Information**:
-  - Relationship Type: [Business/Political/Social/Family]
-  - Contact Name: [Individual's name]
-  - Social Class: [Nobility/Cittadini/Popolani]
-  - Position: [Their role or occupation]
-  - Initial Connection: [How the relationship began]
+  - Relationship Type: Guild/Strategic
+  - Contact Name: Sofia Zanchi
+  - Social Class: Cittadini
+  - Position: Leader of Umbra Lucrum Invenit
+  - Initial Connection: Joined Umbra Lucrum Invenit guild.
 
 - **Relationship Status**:
-  - Current Standing: [Excellent/Good/Neutral/Strained/Poor]
-  - Trust Level: [High/Moderate/Low/None] (1-10 scale)
-  - Relationship Duration: [Time period]
-  - Interaction Frequency: [Daily/Weekly/Monthly/Occasional]
-  - Public vs. Private: [Known association or discreet connection]
+  - Current Standing: Developing (new guild member)
+  - Trust Level: Moderate (initial, based on guild affiliation)
+  - Relationship Duration: New
+  - Interaction Frequency: To be determined (likely regular through guild activities)
+  - Public vs. Private: Discreet connection (guild operates in "shadows")
 
 - **Exchange Ledger**:
-  - Favors Owed to You: [List with dates and descriptions]
-  - Favors You Owe: [List with dates and descriptions]
-  - Recent Transactions: [Business dealings and outcomes]
-  - Gifts Exchanged: [Notable gifts given and received]
-  - Services Rendered: [Assistance provided in either direction]
+  - Favors Owed to You: None
+  - Favors You Owe: None
+  - Recent Transactions: None
+  - Gifts Exchanged: None
+  - Services Rendered: None
 
 - **Strategic Value**:
-  - Information Access: [Intelligence they can provide]
-  - Market Influence: [Their effect on commercial opportunities]
-  - Political Connection: [Government or faction access they offer]
-  - Resource Access: [Materials, skills, or properties they control]
-  - Reputation Impact: [How association affects your standing]
+  - Information Access: High (privileged networks, information mastery)
+  - Market Influence: High (cunning market manipulation)
+  - Political Connection: Potentially high (through guild's influence)
+  - Resource Access: High (protected trade routes, silent partnerships)
+  - Reputation Impact: Positive (association with a powerful, albeit shadowy, guild)
 
 - **Development Plan**:
-  - Next Interaction: [Planned meeting or transaction]
-  - Relationship Goals: [Desired future state]
-  - Trust Building Actions: [Specific steps to strengthen connection]
-  - Risk Factors: [Potential threats to the relationship]
-  - Investment Strategy: [Resources to commit to this relationship]
+  - Next Interaction: Seek direct communication or participate in guild activities.
+  - Relationship Goals: Gain trust, access privileged information, explore silent partnerships.
+  - Trust Building Actions: Demonstrate loyalty, share relevant market insights, prove resourcefulness.
+  - Risk Factors: Guild's shadowy nature, potential for internal conflicts.
+  - Investment Strategy: Time and effort in guild activities, sharing relevant intelligence.
+
+### Marcello "Il Sperimentatore" Grimani
+- **Basic Information**:
+  - Relationship Type: Competitive/Information Exchange
+  - Contact Name: Marcello "Il Sperimentatore" Grimani
+  - Social Class: Cittadini
+  - Position: Influential citizen, member of Triumvirate Sapientiae
+  - Initial Connection: Mutual presence in Venice, recent message exchange.
+
+- **Relationship Status**:
+  - Current Standing: Neutral/Observational
+  - Trust Level: Low (calculating, experimental mindset)
+  - Relationship Duration: Recent interactions
+  - Interaction Frequency: Occasional (message-based)
+  - Public vs. Private: Public (general interactions)
+
+- **Exchange Ledger**:
+  - Favors Owed to You: None
+  - Favors You Owe: None
+  - Recent Transactions: None
+  - Gifts Exchanged: None
+  - Services Rendered: None
+
+- **Strategic Value**:
+  - Information Access: Potentially high (knowledge-seeking, systematic)
+  - Market Influence: High (wealthy, influential)
+  - Political Connection: High (Cittadini, Triumvirate Sapientiae)
+  - Resource Access: Potentially exploitable (vacant properties, homelessness)
+  - Reputation Impact: Neutral (need to be cautious due to his "experimental" nature)
+
+- **Development Plan**:
+  - Next Interaction: Continue probing for information, subtly explore his vulnerabilities.
+  - Relationship Goals: Gain insights into his strategies, identify potential exploitable opportunities.
+  - Trust Building Actions: Maintain a facade of mutual interest, offer seemingly beneficial (but self-serving) collaborations.
+  - Risk Factors: His "experimental" and "calculating" nature, potential to be a "variable" in his studies.
+  - Investment Strategy: Minimal direct investment, focus on information extraction and opportunistic leverage.
 
 ### [Relationship Name 2]
 - [Same structure repeated for each significant relationship]
@@ -81,6 +117,8 @@ This document tracks your relationships with other players and NPCs in Serenissi
 
 ### Relationship Network Map
 - **Primary Circle**: Closest and most trusted connections
+  - Sofia Zanchi: Guild/Strategic, Information Access, 7
+  - Marcello Grimani: Competitive/Information Exchange, Potential Exploitation, 4
   - [Name]: [Relationship type], [Key value], [Connection strength 1-10]
   - [Additional primary connections listed in same format]
 
