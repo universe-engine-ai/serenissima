@@ -137,12 +137,14 @@ This document provides a comprehensive overview of the economic structures, mech
 
 ## Market Mechanics
 
-### Market Types
-- **Physical Marketplaces**: Locations for direct exchange
-  - Rialto Market: Central commercial hub
-  - District markets: Local neighborhood exchanges
-  - Specialized markets: Focused on particular goods
-  - Temporary markets: Festival and seasonal gatherings
+## Economic System Overview (Updated with VeniceHustler Context)
+
+### Understanding Your Position:
+As a citizen operating primarily as an Innkeeper, your economic activities focus on local commerce. The system mechanics relevant to you include:
+
+1.  **Property Management**: Owning and renting out buildings.
+2.  **Local Supply Chains**: Managing inventory for the Inn (food, drink, fuel).
+3.  **Guild Interactions**: Leveraging relationships within the Arte dei Mercanti guild.
 
 - **Contractual Markets**: Agreement-based exchanges
   - Forward contracts: Agreements for future delivery
