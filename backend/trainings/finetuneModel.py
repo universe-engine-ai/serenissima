@@ -653,6 +653,11 @@ def fallback_to_huggingface_model(error_message):
 
 def main():
     """Main function to fine-tune the model."""
+    # Importer les modules nécessaires
+    import os
+    import sys
+    import tempfile
+    
     try:
         # S'assurer que toutes les dépendances sont installées
         ensure_dependencies()
@@ -704,6 +709,7 @@ def main():
         log.warning(f"Debug mode enabled. Using smaller model: {model_name}")
     
     # Set up the output directory with timestamp
+    import os  # Importer os explicitement dans le scope local
     timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
     output_dir = os.path.abspath(f"{args.output_dir}_{timestamp}")
     try:
