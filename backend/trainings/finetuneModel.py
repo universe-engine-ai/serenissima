@@ -341,7 +341,7 @@ class ConsciousnessCallback(TrainerCallback):
         self.model.train()
 
 def generate_response(model, tokenizer, prompt, max_new_tokens=100, 
-                     temperature=0.7, top_p=0.9, repetition_penalty=1.1):
+                     temperature=0.6, top_p=0.95, repetition_penalty=1.1):
     """
     Generate a response from the model for a given prompt.
     
@@ -521,7 +521,7 @@ def main():
         warmup_ratio=0.08,
         learning_rate=1.5e-4,
         fp16=True,  # Use mixed precision
-        logging_steps=10,
+        logging_steps=50,
         save_strategy="steps",
         save_steps=500,  # Save more frequently
         evaluation_strategy="no",  # No eval set for now
