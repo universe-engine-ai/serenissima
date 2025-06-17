@@ -787,8 +787,17 @@ def main():
                         )
                         log.info("Tokenizer local chargé avec succès")
                     else:
-                        # Créer un tokenizer simple basé sur ByteLevelBPETokenizer
-                        from tokenizers import ByteLevelBPETokenizer
+                        # Essayer d'installer tokenizers si nécessaire
+                        try:
+                            import subprocess
+                            import sys
+                            log.info("Installation du package tokenizers...")
+                            subprocess.check_call([sys.executable, "-m", "pip", "install", "tokenizers"])
+                            from tokenizers import ByteLevelBPETokenizer
+                            log.info("Package tokenizers installé avec succès")
+                        except Exception as e:
+                            log.error(f"Erreur lors de l'installation de tokenizers: {e}")
+                            raise
                         
                         # Créer un répertoire pour stocker le tokenizer
                         tokenizer_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "tokenizers", "basic")
@@ -934,8 +943,14 @@ def main():
                         log.info("Installation de llama-cpp-python avec support CUDA...")
                         os.environ["CMAKE_ARGS"] = "-DLLAMA_CUBLAS=on"
                         os.environ["FORCE_CMAKE"] = "1"
-                    
-                    subprocess.check_call([sys.executable, "-m", "pip", "install", "llama-cpp-python"])
+                        try:
+                            subprocess.check_call([sys.executable, "-m", "pip", "install", "--no-cache-dir", "llama-cpp-python"])
+                        except Exception as e:
+                            log.warning(f"Erreur lors de l'installation avec CUDA: {e}")
+                            log.info("Tentative d'installation sans support CUDA...")
+                            subprocess.check_call([sys.executable, "-m", "pip", "install", "--no-cache-dir", "llama-cpp-python"])
+                    else:
+                        subprocess.check_call([sys.executable, "-m", "pip", "install", "--no-cache-dir", "llama-cpp-python"])
                     import llama_cpp
                     log.info("llama-cpp-python a été installé avec succès")
                 
