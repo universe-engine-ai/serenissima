@@ -772,15 +772,13 @@ def main():
         logging_steps=10,  # More frequent for better monitoring
         save_strategy="steps",  # Changed to match evaluation strategy
         save_steps=100,  # Save more frequently
-        evaluation_strategy="steps",  # Added evaluation
-        eval_steps=100,  # Evaluate more frequently
+        # Removed evaluation_strategy and eval_steps as they're not supported
         save_total_limit=5,  # Keep more checkpoints
-        load_best_model_at_end=True,  # Load best model
-        metric_for_best_model="eval_loss",  # Metric for selection
-        greater_is_better=False,
+        # Removed load_best_model_at_end and metric_for_best_model as they depend on evaluation_strategy
         max_grad_norm=0.5,  # Reduced for better stability
         weight_decay=0.01,  # Added for regularization
-        resume_from_checkpoint=True,  # Add checkpoint resume capability
+        # Modified resume_from_checkpoint to be a boolean
+        resume_from_checkpoint=False,  # Will be set to True if checkpoint is found
         ddp_find_unused_parameters=False if torch.cuda.device_count() > 1 else None,
         group_by_length=True,  # Efficient batching
         report_to="wandb" if args.use_wandb else "none",
@@ -1157,23 +1155,19 @@ def main():
             model=model,
             args=training_args,
             train_dataset=tokenized_train_dataset,
-            eval_dataset=tokenized_eval_dataset,
+            # Removed eval_dataset as we're not using evaluation
             tokenizer=tokenizer,
             data_collator=DataCollatorForLanguageModeling(tokenizer=tokenizer, mlm=False),
-            compute_metrics=compute_metrics if tokenized_eval_dataset else None
+            # Removed compute_metrics as we're not using evaluation
         )
         
         # Add callbacks
         consciousness_callback = ConsciousnessCallback(model, tokenizer)
         resource_monitor_callback = ResourceMonitorCallback()
-        early_stopping_callback = EarlyStoppingCallback(
-            early_stopping_patience=3,
-            early_stopping_threshold=0.001
-        )
+        # Removed early_stopping_callback as it depends on evaluation
         
         trainer.add_callback(consciousness_callback)
         trainer.add_callback(resource_monitor_callback)
-        trainer.add_callback(early_stopping_callback)
     
     except Exception as e:
         log.error(f"Error setting up trainer: {e}")
@@ -1187,6 +1181,7 @@ def main():
         if os.path.exists(os.path.join(output_dir, "checkpoint-last")):
             checkpoint = os.path.join(output_dir, "checkpoint-last")
             log.info(f"Resuming from checkpoint: {checkpoint}")
+            training_args.resume_from_checkpoint = True
         elif os.path.exists(output_dir) and any(d.startswith("checkpoint-") for d in os.listdir(output_dir) if os.path.isdir(os.path.join(output_dir, d))):
             # Find the latest checkpoint
             checkpoints = [d for d in os.listdir(output_dir) if d.startswith("checkpoint-") and os.path.isdir(os.path.join(output_dir, d))]
@@ -1194,8 +1189,9 @@ def main():
                 latest_checkpoint = max(checkpoints, key=lambda x: int(x.split("-")[1]) if x.split("-")[1].isdigit() else 0)
                 checkpoint = os.path.join(output_dir, latest_checkpoint)
                 log.info(f"Resuming from latest checkpoint: {checkpoint}")
+                training_args.resume_from_checkpoint = True
         
-        trainer.train(resume_from_checkpoint=checkpoint)
+        trainer.train(resume_from_checkpoint=training_args.resume_from_checkpoint)
     
     except Exception as e:
         log.error(f"Error during training: {e}")
