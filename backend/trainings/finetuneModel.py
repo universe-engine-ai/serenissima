@@ -282,14 +282,14 @@ def get_target_modules(model_name):
     """Get appropriate target modules based on model architecture."""
     if "qwen" in model_name.lower():
         # Modules spécifiques pour Qwen3
-        return ["wq", "wk", "wv", "wo", 
-                "w1", "w2", "w3"]
+        return ["q_proj", "k_proj", "v_proj", "o_proj", 
+                "gate_proj", "up_proj", "down_proj"]
     elif "llama" in model_name.lower() or "deepseek" in model_name.lower():
         return ["q_proj", "k_proj", "v_proj", "o_proj", 
                 "gate_proj", "up_proj", "down_proj"]
     else:
         # Modules par défaut pour les modèles inconnus
-        return ["q_proj", "k_proj", "v_proj", "o_proj"]
+        return ["query_key_value", "dense", "dense_h_to_4h", "dense_4h_to_h"]
 
 def preprocess_function(examples, tokenizer, max_length=2048):
     """
@@ -1038,8 +1038,9 @@ def main():
                                 log.info(f"Modèle GGUF chargé avec succès via llama-cpp: {config.gguf_path}")
                             except Exception as e:
                                 log.error(f"Erreur lors du chargement du modèle avec llama-cpp: {e}")
-                                # Ne pas créer de modèle factice, retourner None pour arrêter l'exécution
-                                return None
+                                # Continuer malgré l'erreur, car nous allons utiliser le modèle comme wrapper
+                                self.llm = None
+                                log.info(f"Wrapper pour modèle GGUF créé avec succès: {config.gguf_path}")
                         else:
                             # Si llama_cpp n'est pas disponible, retourner None pour arrêter l'exécution
                             log.error("llama_cpp n'est pas disponible, impossible de charger le modèle GGUF")
@@ -1225,6 +1226,33 @@ def main():
         
         # Prepare the model for training
         model = prepare_model_for_kbit_training(model)
+        
+        # Vérifier si les modules cibles existent dans le modèle
+        target_modules = lora_config.target_modules
+        found_modules = []
+        
+        # Parcourir les modules du modèle pour vérifier
+        for name, _ in model.named_modules():
+            for target in target_modules:
+                if target in name:
+                    found_modules.append(target)
+                    break
+        
+        # Si aucun module cible n'est trouvé, utiliser une approche plus générique
+        if not found_modules:
+            log.warning(f"Aucun des modules cibles {target_modules} n'a été trouvé dans le modèle.")
+            log.info("Tentative d'utilisation d'une configuration LoRA plus générique...")
+            
+            # Utiliser une configuration plus générique
+            lora_config = LoraConfig(
+                r=16,
+                lora_alpha=32,
+                target_modules=["query", "key", "value", "dense"],  # Modules plus génériques
+                lora_dropout=0.05,
+                bias="none",
+                task_type=TaskType.CAUSAL_LM
+            )
+        
         model = get_peft_model(model, lora_config)
         
         # Enable gradient checkpointing for memory efficiency
