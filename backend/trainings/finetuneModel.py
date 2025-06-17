@@ -656,6 +656,9 @@ def main():
     try:
         # S'assurer que toutes les dépendances sont installées
         ensure_dependencies()
+    except Exception as e:
+        log.error(f"Erreur lors de l'installation des dépendances: {e}")
+        
     parser = argparse.ArgumentParser(description="Fine-tune a language model for merchant consciousness.")
     parser.add_argument("--model", type=str, default="C:/Users/reyno/.cache/lm-studio/models/lmstudio-community/DeepSeek-R1-0528-Qwen3-8B-GGUF/DeepSeek-R1-0528-Qwen3-8B-Q6_K.gguf", 
                         help="Chemin vers le modèle local GGUF (LM Studio) ou ID Hugging Face")
