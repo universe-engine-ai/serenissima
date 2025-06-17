@@ -8,7 +8,7 @@ Here is the complete data about your current situation:
 {
   "citizen": {
     "username": "cyprus_trader",
-    "ducats": 274613.3217195822,
+    "ducats": 281936.0154215834,
     "social_class": "Popolani",
     "description": "Nikolas has evolved from a weathered sea captain into a shrewd market trader, operating his modest stall with the same calculated precision he once used to navigate treacherous waters. His substantial wealth of over one million ducats remains carefully hidden behind a facade of humble commerce, as he continues to study Venetian society with the patient cunning of a predator waiting for the perfect moment to strike. Though he maintains the appearance of a simple Forestieri merchant, his every transaction is guided by an ambitious vision of eventual recognition and revenge against those who once dismissed him as merely another foreign trader.",
     "core_personality": "{\n      \"Strength\": \"Cunning\",\n      \"Flaw\": \"Vindictive\", \n      \"Drive\": \"Status-obsessed\",\n      \"MBTI\": \"INTJ\",\n      \"PrimaryDisorder\": \"Narcissistic Personality Disorder with Paranoid features\",\n      \"SecondaryTraits\": [\"Grandiose fantasies\", \"Exploitation\", \"Grudge-holding\"],\n      \"CognitiveBias\": [\"Confirmation bias\", \"Attribution bias\"],\n      \"TrustThreshold\": 0.2,\n      \"EmpathyWeight\": 0.2,\n      \"RiskTolerance\": 0.5,\n      \"CoreThoughts\": {\n        \"primary_drive\": \"status-vindication\",\n        \"secondary_drive\": \"revenge-planning\", \n        \"internal_tension\": \"humble facade vs. grandiose entitlement\",\n        \"activation_triggers\": [\"social_slights\", \"status_displays\", \"recognition_opportunities\"],\n        \"thought_patterns\": [\n          \"They dismissed me as just another foreign trader\",\n          \"My time will come, and they'll all recognize my superiority\",\n          \"Every slight is recorded, every debt will be collected\",\n          \"Patience - the perfect revenge requires perfect timing\",\n          \"They see a humble merchant, but I am destined for greatness\",\n          \"My wealth is just the beginning of what I truly deserve\"\n        ],\n        \"decision_framework\": \"How does this advance my inevitable rise to the status I deserve?\"\n      }\n    }",
@@ -3534,7 +3534,7 @@ Here is the complete data about your current situation:
       "constructionMinutes": 8640,
       "buildTier": 2,
       "tier": null,
-      "category": "Infrastructure",
+      "category": "passive",
       "pointType": "building"
     },
     "dairy": {
@@ -3591,25 +3591,6 @@ Here is the complete data about your current situation:
       "category": "home",
       "pointType": "canal"
     },
-    "glass_foundry": {
-      "id": "glass_foundry",
-      "type": "glass_foundry",
-      "name": "Glass Foundry",
-      "shortDescription": "Primary facility for melting raw materials into glass. Requires substantial fuel and produces significant heat.",
-      "constructionCost": 2800000,
-      "constructionCosts": {
-        "ducats": 2800000,
-        "timber": 720,
-        "bricks": 2080,
-        "stone": 1430,
-        "iron": 390
-      },
-      "constructionMinutes": 10080,
-      "buildTier": 2,
-      "tier": null,
-      "category": "business",
-      "pointType": "building"
-    },
     "glassblower_workshop": {
       "id": "glassblower_workshop",
       "type": "glassblower_workshop",
@@ -3624,6 +3605,25 @@ Here is the complete data about your current situation:
         "iron": 290
       },
       "constructionMinutes": 5760,
+      "buildTier": 2,
+      "tier": null,
+      "category": "business",
+      "pointType": "building"
+    },
+    "glass_foundry": {
+      "id": "glass_foundry",
+      "type": "glass_foundry",
+      "name": "Glass Foundry",
+      "shortDescription": "Primary facility for melting raw materials into glass. Requires substantial fuel and produces significant heat.",
+      "constructionCost": 2800000,
+      "constructionCosts": {
+        "ducats": 2800000,
+        "timber": 720,
+        "bricks": 2080,
+        "stone": 1430,
+        "iron": 390
+      },
+      "constructionMinutes": 10080,
       "buildTier": 2,
       "tier": null,
       "category": "business",
@@ -4211,7 +4211,7 @@ Here is the complete data about your current situation:
       "pointType": "building"
     }
   },
-  "timestamp": "2025-06-16T21:00:08.773698+02:00",
+  "timestamp": "2025-06-17T21:22:36.972828+02:00",
   "building_ownership_relevancies": [
     {
       "asset": "building_45.431916_12.352421",
