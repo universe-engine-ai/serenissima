@@ -7,7 +7,7 @@ export PYTORCH_CUDA_ALLOC_CONF=max_split_size_mb:128
 
 # Paramètres optimisés pour ~2000 exemples avec RTX 3090 Ti
 python finetuneModel.py \
-    --model "C:/Users/reyno/LMStudio/models/deepseek-r1-0528-qwen3-8b-q6_k" \
+    --model "C:/Users/reyno/.cache/lm-studio/models/lmstudio-community/DeepSeek-R1-0528-Qwen3-8B-GGUF/DeepSeek-R1-0528-Qwen3-8B-Q6_K.gguf" \
     --epochs 3 \
     --batch_size 2 \
     --output_dir "./merchant-consciousness-v1" \

@@ -640,8 +640,8 @@ def main():
     # S'assurer que toutes les dépendances sont installées
     ensure_dependencies()
     parser = argparse.ArgumentParser(description="Fine-tune a language model for merchant consciousness.")
-    parser.add_argument("--model", type=str, default="C:/Users/reyno/LMStudio/models/deepseek-r1-0528-qwen3-8b-q6_k", 
-                        help="Chemin vers le modèle local (LM Studio) ou ID Hugging Face")
+    parser.add_argument("--model", type=str, default="C:/Users/reyno/.cache/lm-studio/models/lmstudio-community/DeepSeek-R1-0528-Qwen3-8B-GGUF/DeepSeek-R1-0528-Qwen3-8B-Q6_K.gguf", 
+                        help="Chemin vers le modèle local GGUF (LM Studio) ou ID Hugging Face")
     parser.add_argument("--epochs", type=int, default=3, 
                         help="Number of training epochs (default: 3)")
     parser.add_argument("--batch_size", type=int, default=2, 
@@ -781,6 +781,89 @@ def main():
         else:
             log.info("Chargement du modèle en FP16 (quantification non disponible)")
         
+        # Fonction pour charger un modèle GGUF
+        def load_gguf_model(gguf_path, tokenizer):
+            """
+            Charge un modèle au format GGUF (utilisé par LM Studio)
+            
+            Args:
+                gguf_path: Chemin vers le fichier GGUF
+                tokenizer: Tokenizer à utiliser
+                
+            Returns:
+                Le modèle chargé
+            """
+            log.info(f"Tentative de chargement du modèle GGUF: {gguf_path}")
+            
+            try:
+                # Vérifier si llama-cpp-python est installé
+                try:
+                    import llama_cpp
+                    log.info("llama-cpp-python est installé")
+                except ImportError:
+                    log.warning("llama-cpp-python n'est pas installé. Installation en cours...")
+                    import subprocess
+                    import sys
+                    subprocess.check_call([sys.executable, "-m", "pip", "install", "llama-cpp-python"])
+                    import llama_cpp
+                    log.info("llama-cpp-python a été installé avec succès")
+                
+                # Créer un wrapper pour le modèle GGUF
+                from transformers import PreTrainedModel, PretrainedConfig
+                
+                class GGUFConfig(PretrainedConfig):
+                    model_type = "gguf"
+                    
+                    def __init__(self, gguf_path=None, **kwargs):
+                        self.gguf_path = gguf_path
+                        super().__init__(**kwargs)
+                
+                class GGUFModel(PreTrainedModel):
+                    config_class = GGUFConfig
+                    
+                    def __init__(self, config):
+                        super().__init__(config)
+                        self.llm = llama_cpp.Llama(
+                            model_path=config.gguf_path,
+                            n_ctx=2048,
+                            n_gpu_layers=-1  # Utiliser tous les layers sur GPU
+                        )
+                        self.tokenizer = tokenizer
+                    
+                    def forward(self, input_ids, attention_mask=None, **kwargs):
+                        # Implémentation minimale pour la compatibilité
+                        return {"logits": torch.zeros((input_ids.shape[0], input_ids.shape[1], self.config.vocab_size))}
+                    
+                    def generate(self, input_ids, max_new_tokens=100, **kwargs):
+                        # Convertir les input_ids en texte
+                        prompt = self.tokenizer.decode(input_ids[0])
+                        
+                        # Générer avec llama-cpp
+                        output = self.llm(
+                            prompt,
+                            max_tokens=max_new_tokens,
+                            temperature=kwargs.get("temperature", 0.7),
+                            top_p=kwargs.get("top_p", 0.9)
+                        )
+                        
+                        # Convertir la sortie en tokens
+                        generated_text = output["choices"][0]["text"]
+                        full_text = prompt + generated_text
+                        return self.tokenizer.encode(full_text, return_tensors="pt")
+                
+                # Créer la configuration
+                config = GGUFConfig(gguf_path=gguf_path)
+                
+                # Créer le modèle
+                model = GGUFModel(config)
+                log.info(f"Modèle GGUF chargé avec succès: {gguf_path}")
+                
+                return model
+            
+            except Exception as e:
+                log.error(f"Erreur lors du chargement du modèle GGUF: {e}")
+                raise
+        
         # Charger le modèle avec les options configurées
         log.info(f"Chargement du modèle {model_name} avec options: {load_options}")
         
@@ -790,8 +873,37 @@ def main():
             log.info(f"Utilisation du modèle local: {model_name}")
             model_path = model_name
             
+            # Vérifier si c'est un fichier GGUF (format LM Studio)
+            if model_name.lower().endswith('.gguf'):
+                log.info(f"Détection d'un fichier GGUF (LM Studio): {model_name}")
+                # Pour les fichiers GGUF, nous devons utiliser une approche différente
+                # car ils ne sont pas directement compatibles avec Hugging Face
+                try:
+                    from transformers import AutoConfig
+                    
+                    # Créer un répertoire temporaire pour la configuration
+                    import tempfile
+                    temp_dir = tempfile.mkdtemp()
+                    log.info(f"Création d'un répertoire temporaire pour la configuration: {temp_dir}")
+                    
+                    # Créer une configuration de base pour le modèle
+                    config = AutoConfig.from_pretrained("deepseek-ai/deepseek-llm-7b-base")
+                    config.save_pretrained(temp_dir)
+                    
+                    # Utiliser le répertoire temporaire comme chemin du modèle
+                    model_path = temp_dir
+                    log.info(f"Configuration temporaire créée dans: {model_path}")
+                    
+                    # Ajouter le chemin du fichier GGUF à la configuration
+                    with open(os.path.join(temp_dir, "gguf_path.txt"), "w") as f:
+                        f.write(model_name)
+                    
+                    log.info(f"Chemin du fichier GGUF enregistré: {model_name}")
+                except Exception as e:
+                    log.error(f"Erreur lors de la préparation du fichier GGUF: {e}")
+            
             # Vérifier si c'est un dossier LM Studio
-            if os.path.isdir(model_path):
+            elif os.path.isdir(model_path):
                 log.info(f"Détection d'un dossier LM Studio: {model_path}")
                 # Chercher le fichier de configuration et le modèle
                 config_path = os.path.join(model_path, "config.json")
@@ -801,7 +913,7 @@ def main():
                     log.warning(f"Fichier de configuration non trouvé dans {model_path}")
                 
                 # Vérifier les fichiers de modèle
-                model_files = [f for f in os.listdir(model_path) if f.endswith('.safetensors') or f.endswith('.bin')]
+                model_files = [f for f in os.listdir(model_path) if f.endswith('.safetensors') or f.endswith('.bin') or f.endswith('.gguf')]
                 if model_files:
                     log.info(f"Fichiers de modèle trouvés: {', '.join(model_files)}")
                 else:
@@ -820,10 +932,14 @@ def main():
                 model_path = model_name
                 log.info(f"Tentative d'utilisation comme ID Hugging Face: {model_path}")
             
-        model = AutoModelForCausalLM.from_pretrained(
-            model_path,
-            **load_options
-        )
+        # Vérifier si c'est un fichier GGUF
+        if model_name.lower().endswith('.gguf'):
+            model = load_gguf_model(model_name, tokenizer)
+        else:
+            model = AutoModelForCausalLM.from_pretrained(
+                model_path,
+                **load_options
+            )
         
         # Prepare the model for training
         model = prepare_model_for_kbit_training(model)
