@@ -791,13 +791,14 @@ def main():
     log.info(f"Loading model and tokenizer: {model_name}")
     try:
         # Charger le tokenizer avec les mêmes options que le modèle
-        tokenizer_options = {}
+        tokenizer_options = {
+            "trust_remote_code": True  # Toujours activer trust_remote_code pour les nouveaux modèles
+        }
         
         # Pour les modèles locaux, utiliser local_files_only=True
         if os.path.exists(model_name):
             log.info(f"Chargement du tokenizer local: {model_name}")
             tokenizer_options["local_files_only"] = True
-            tokenizer_options["trust_remote_code"] = True
             
             # Pour les fichiers GGUF, utiliser un tokenizer local ou préchargé
             if model_name.lower().endswith('.gguf'):
@@ -955,10 +956,10 @@ def main():
         else:
             log.info("Chargement du modèle en FP16 (quantification non disponible)")
         
-        # Fonction pour charger un modèle depuis Hugging Face
+        # Fonction pour charger un modèle depuis Hugging Face de façon sécurisée
         def load_huggingface_model(model_name, tokenizer, load_options):
             """
-            Charge un modèle depuis Hugging Face
+            Charge un modèle depuis Hugging Face avec plusieurs méthodes de fallback
             
             Args:
                 model_name: Nom ou ID du modèle sur Hugging Face
@@ -970,7 +971,11 @@ def main():
             """
             log.info(f"Chargement du modèle depuis Hugging Face: {model_name}")
             
+            # S'assurer que trust_remote_code est activé
+            load_options["trust_remote_code"] = True
+            
             try:
+                # Première tentative avec AutoModelForCausalLM
                 model = AutoModelForCausalLM.from_pretrained(
                     model_name,
                     **load_options
@@ -978,14 +983,30 @@ def main():
                 log.info(f"Modèle {model_name} chargé avec succès depuis Hugging Face")
                 return model
             except Exception as e:
-                log.error(f"Erreur lors du chargement du modèle depuis Hugging Face: {e}")
-                raise
+                log.warning(f"Erreur lors du chargement avec AutoModelForCausalLM: {e}")
+                
+                # Deuxième tentative avec AutoModel générique
+                try:
+                    from transformers import AutoModel
+                    log.info(f"Tentative avec AutoModel générique pour {model_name}")
+                    model = AutoModel.from_pretrained(
+                        model_name,
+                        **load_options
+                    )
+                    log.info(f"Modèle {model_name} chargé avec succès via AutoModel")
+                    return model
+                except Exception as e2:
+                    log.error(f"Erreur lors du chargement avec AutoModel: {e2}")
+                    raise e  # Relever l'erreur originale
         
         # Charger le modèle avec les options configurées
         log.info(f"Chargement du modèle {model_name} avec options: {load_options}")
         
-        # Ajouter trust_remote_code pour les modèles DeepSeek
+        # Ajouter trust_remote_code pour tous les modèles
         load_options["trust_remote_code"] = True
+        
+        # Ajouter low_cpu_mem_usage pour optimiser le chargement
+        load_options["low_cpu_mem_usage"] = True
         
         try:
             # Charger directement depuis Hugging Face
