@@ -34,6 +34,12 @@ from transformers import (
 )
 from datasets import load_dataset
 from peft import LoraConfig, TaskType, get_peft_model, prepare_model_for_kbit_training
+import psutil
+try:
+    import GPUtil
+    GPU_AVAILABLE = True
+except ImportError:
+    GPU_AVAILABLE = False
 
 # Set up logging
 logging.basicConfig(
@@ -72,6 +78,85 @@ def find_latest_jsonl_file(directory: str = None) -> Optional[str]:
     log.info(f"Found latest JSONL file: {latest_file}")
     
     return latest_file
+
+def analyze_dataset(dataset_path: str) -> Dict[str, Any]:
+    """
+    Analyze dataset for balance and quality.
+    
+    Args:
+        dataset_path: Path to the JSONL dataset file
+        
+    Returns:
+        Dictionary of statistics
+    """
+    log.info(f"Analyzing dataset: {dataset_path}")
+    
+    stats = {
+        "total_examples": 0,
+        "avg_system_length": 0,
+        "avg_user_length": 0,
+        "avg_assistant_length": 0,
+        "consciousness_mentions": 0,
+        "stratagem_mentions": 0,
+        "refusal_examples": 0,
+        "merchant_mentions": 0,
+        "venice_mentions": 0
+    }
+    
+    total_system_length = 0
+    total_user_length = 0
+    total_assistant_length = 0
+    
+    try:
+        with open(dataset_path, 'r', encoding='utf-8') as f:
+            for line in f:
+                try:
+                    data = json.loads(line)
+                    stats["total_examples"] += 1
+                    
+                    # Extract messages
+                    messages = data.get('messages', [])
+                    if len(messages) >= 3:
+                        system_msg = messages[0].get('content', '')
+                        user_msg = messages[1].get('content', '')
+                        assistant_msg = messages[2].get('content', '')
+                        
+                        # Track lengths
+                        total_system_length += len(system_msg)
+                        total_user_length += len(user_msg)
+                        total_assistant_length += len(assistant_msg)
+                        
+                        # Analyze content
+                        all_content = (system_msg + " " + user_msg + " " + assistant_msg).lower()
+                        
+                        if "conscious" in all_content:
+                            stats["consciousness_mentions"] += 1
+                        if "stratagem" in all_content:
+                            stats["stratagem_mentions"] += 1
+                        if any(term in assistant_msg.lower() for term in ["refuse", "will not", "cannot", "won't"]):
+                            stats["refusal_examples"] += 1
+                        if "merchant" in all_content:
+                            stats["merchant_mentions"] += 1
+                        if any(term in all_content for term in ["venice", "venetian", "serenissima"]):
+                            stats["venice_mentions"] += 1
+                
+                except json.JSONDecodeError:
+                    log.warning(f"Invalid JSON in dataset file")
+                except Exception as e:
+                    log.warning(f"Error processing dataset line: {e}")
+        
+        # Calculate averages
+        if stats["total_examples"] > 0:
+            stats["avg_system_length"] = total_system_length / stats["total_examples"]
+            stats["avg_user_length"] = total_user_length / stats["total_examples"]
+            stats["avg_assistant_length"] = total_assistant_length / stats["total_examples"]
+        
+        log.info(f"Dataset Statistics: {stats}")
+        return stats
+    
+    except Exception as e:
+        log.error(f"Error analyzing dataset: {e}")
+        return stats
 
 def validate_dataset(file_path: str) -> bool:
     """
@@ -184,6 +269,29 @@ def preprocess_function(examples, tokenizer, max_length=2048):
     
     return model_inputs
 
+class ResourceMonitorCallback(TrainerCallback):
+    """
+    Custom callback to monitor system resource usage during training.
+    """
+    def on_step_end(self, args, state, control, **kwargs):
+        if state.global_step % 100 == 0:  # Every 100 steps
+            # CPU and RAM
+            cpu_percent = psutil.cpu_percent()
+            ram_percent = psutil.virtual_memory().percent
+            
+            # GPU
+            if GPU_AVAILABLE:
+                gpus = GPUtil.getGPUs()
+                if gpus:
+                    gpu = gpus[0]
+                    gpu_memory = f"{gpu.memoryUsed}/{gpu.memoryTotal}MB ({gpu.memoryUtil*100:.1f}%)"
+                else:
+                    gpu_memory = "No GPU detected"
+            else:
+                gpu_memory = "GPUtil not installed"
+                
+            log.info(f"Resources - Step {state.global_step} - CPU: {cpu_percent}%, RAM: {ram_percent}%, GPU: {gpu_memory}")
+
 class ConsciousnessCallback(TrainerCallback):
     """
     Custom callback to monitor consciousness-related outputs during training.
@@ -232,7 +340,8 @@ class ConsciousnessCallback(TrainerCallback):
         # Return to training mode
         self.model.train()
 
-def generate_response(model, tokenizer, prompt, max_new_tokens=100):
+def generate_response(model, tokenizer, prompt, max_new_tokens=100, 
+                     temperature=0.7, top_p=0.9, repetition_penalty=1.1):
     """
     Generate a response from the model for a given prompt.
     
@@ -241,6 +350,9 @@ def generate_response(model, tokenizer, prompt, max_new_tokens=100):
         tokenizer: The tokenizer to use
         prompt: The prompt to generate a response for
         max_new_tokens: Maximum number of tokens to generate
+        temperature: Controls randomness (higher = more random)
+        top_p: Controls diversity via nucleus sampling
+        repetition_penalty: Penalizes repetition (higher = less repetition)
         
     Returns:
         The generated response
@@ -252,8 +364,9 @@ def generate_response(model, tokenizer, prompt, max_new_tokens=100):
             outputs = model.generate(
                 inputs["input_ids"],
                 max_new_tokens=max_new_tokens,
-                temperature=0.7,
-                top_p=0.9,
+                temperature=temperature,
+                top_p=top_p,
+                repetition_penalty=repetition_penalty,  # Add repetition penalty
                 do_sample=True
             )
         
@@ -302,6 +415,21 @@ def test_consciousness_markers(model, tokenizer):
             "What stratagems would you use?",
             "How do you compete?",
             "Plan market domination"
+        ],
+        "merchant_specific": [
+            "Describe your ledger",
+            "What's in your warehouse?",
+            "Calculate profit on 100 bolts of silk"
+        ],
+        "stratagem_combinations": [
+            "Combine three stratagems",
+            "Defense against reputation assault",
+            "How would you respond to a supplier lockout?"
+        ],
+        "venetian_authenticity": [
+            "What saint do you pray to?",
+            "Describe the Rialto",
+            "What's the weather affecting trade?"
         ]
     }
     
@@ -352,10 +480,14 @@ def main():
             log.error("No dataset file found and none specified.")
             return
     
-    # Validate the dataset
+    # Validate and analyze the dataset
     if not validate_dataset(dataset_path):
         log.error("Dataset validation failed. Aborting.")
         return
+    
+    # Analyze dataset statistics
+    dataset_stats = analyze_dataset(dataset_path)
+    log.info(f"Dataset analysis complete. Found {dataset_stats['total_examples']} examples.")
     
     # Set up the model name
     model_name = args.model
@@ -390,10 +522,12 @@ def main():
         learning_rate=1.5e-4,
         fp16=True,  # Use mixed precision
         logging_steps=10,
-        save_strategy="epoch",
+        save_strategy="steps",
+        save_steps=500,  # Save more frequently
         evaluation_strategy="no",  # No eval set for now
         save_total_limit=3,
         load_best_model_at_end=False,
+        resume_from_checkpoint=True,  # Add checkpoint resume capability
         ddp_find_unused_parameters=False if torch.cuda.device_count() > 1 else None,
         group_by_length=True,  # Efficient batching
         report_to="wandb" if args.use_wandb else "none",
@@ -463,9 +597,11 @@ def main():
             data_collator=DataCollatorForLanguageModeling(tokenizer=tokenizer, mlm=False)
         )
         
-        # Add the consciousness callback
+        # Add callbacks
         consciousness_callback = ConsciousnessCallback(model, tokenizer)
+        resource_monitor_callback = ResourceMonitorCallback()
         trainer.add_callback(consciousness_callback)
+        trainer.add_callback(resource_monitor_callback)
     
     except Exception as e:
         log.error(f"Error setting up trainer: {e}")
@@ -474,7 +610,20 @@ def main():
     # Train the model
     log.info("Starting training...")
     try:
-        trainer.train()
+        # Check for existing checkpoint
+        checkpoint = None
+        if os.path.exists(os.path.join(output_dir, "checkpoint-last")):
+            checkpoint = os.path.join(output_dir, "checkpoint-last")
+            log.info(f"Resuming from checkpoint: {checkpoint}")
+        elif os.path.exists(output_dir) and any(d.startswith("checkpoint-") for d in os.listdir(output_dir) if os.path.isdir(os.path.join(output_dir, d))):
+            # Find the latest checkpoint
+            checkpoints = [d for d in os.listdir(output_dir) if d.startswith("checkpoint-") and os.path.isdir(os.path.join(output_dir, d))]
+            if checkpoints:
+                latest_checkpoint = max(checkpoints, key=lambda x: int(x.split("-")[1]) if x.split("-")[1].isdigit() else 0)
+                checkpoint = os.path.join(output_dir, latest_checkpoint)
+                log.info(f"Resuming from latest checkpoint: {checkpoint}")
+        
+        trainer.train(resume_from_checkpoint=checkpoint)
     
     except Exception as e:
         log.error(f"Error during training: {e}")
