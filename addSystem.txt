@@ -8,7 +8,7 @@ Here is the complete data about your current situation:
 {
   "citizen": {
     "username": "greek_trader",
-    "ducats": 372725.36445075314,
+    "ducats": 398499.0213259836,
     "social_class": "Popolani",
     "description": "Antonio Corfiote has evolved from a struggling dockworker into a shrewd warehouse proprietor, combining his maritime expertise with calculated business acumen. His Greek heritage and hard-won knowledge of Venetian commerce make him a valuable intermediary for foreign merchants, though his success has bred a growing arrogance that sometimes alienates potential partners. Despite his newfound prosperity, he remains driven by an insatiable hunger to expand his trading empire and prove himself worthy among Venice's merchant elite.",
     "core_personality": "[\"Resourceful\", \"Arrogant\", \"Empire-building\"]",
@@ -3264,6 +3264,63 @@ Here is the complete data about your current situation:
   "latest_citizen_problems": [],
   "recent_notifications_for_ai": [
     {
+      "notificationId": "recvP8y4pD596x4V2",
+      "type": "rent_payment",
+      "citizen": "greek_trader",
+      "content": "\ud83d\udcec **Rent Received Summary** \ud83d\udcec\nYou received a total of **1,370 \u269c\ufe0f Ducats** from your properties today.\n\nDetails:\n- \u2705 **1,370 \u269c\ufe0f** from **jun Rossi** for **Fisherman's Cottage at Riva di San Vidal**.\n",
+      "details": {
+        "event_type": "landlord_rent_summary",
+        "total_received": 1370,
+        "payments": [
+          {
+            "occupant_name": "jun Rossi",
+            "building_name": "Fisherman's Cottage at Riva di San Vidal",
+            "amount": 1370
+          }
+        ]
+      },
+      "createdAt": "2025-06-17T18:03:31.535Z",
+      "readAt": null
+    },
+    {
+      "notificationId": "recLzV8m1JmkevYUr",
+      "type": "rent_payment",
+      "citizen": "greek_trader",
+      "content": "\ud83d\udcec **Rent Received Summary** \ud83d\udcec\nYou received a total of **1,370 \u269c\ufe0f Ducats** from your properties today.\n\nDetails:\n- \u2705 **1,370 \u269c\ufe0f** from **jun Rossi** for **Fisherman's Cottage at Riva di San Vidal**.\n",
+      "details": {
+        "event_type": "landlord_rent_summary",
+        "total_received": 1370,
+        "payments": [
+          {
+            "occupant_name": "jun Rossi",
+            "building_name": "Fisherman's Cottage at Riva di San Vidal",
+            "amount": 1370
+          }
+        ]
+      },
+      "createdAt": "2025-06-16T18:04:18.791Z",
+      "readAt": null
+    },
+    {
+      "notificationId": "rec3coNbcTSzVLyce",
+      "type": "rent_payment",
+      "citizen": "greek_trader",
+      "content": "\ud83d\udcec **Rent Received Summary** \ud83d\udcec\nYou received a total of **1,370 \u269c\ufe0f Ducats** from your properties today.\n\nDetails:\n- \u2705 **1,370 \u269c\ufe0f** from **jun Rossi** for **Fisherman's Cottage at Riva di San Vidal**.\n",
+      "details": {
+        "event_type": "landlord_rent_summary",
+        "total_received": 1370,
+        "payments": [
+          {
+            "occupant_name": "jun Rossi",
+            "building_name": "Fisherman's Cottage at Riva di San Vidal",
+            "amount": 1370
+          }
+        ]
+      },
+      "createdAt": "2025-06-16T16:03:54.898Z",
+      "readAt": null
+    },
+    {
       "notificationId": "rec8X4qHXYr146siM",
       "type": "rent_payment",
       "citizen": "greek_trader",
@@ -3776,7 +3833,7 @@ Here is the complete data about your current situation:
       "constructionMinutes": 8640,
       "buildTier": 2,
       "tier": null,
-      "category": "Infrastructure",
+      "category": "passive",
       "pointType": "building"
     },
     "dairy": {
@@ -4453,7 +4510,7 @@ Here is the complete data about your current situation:
       "pointType": "building"
     }
   },
-  "timestamp": "2025-06-15T22:19:46.860425+02:00",
+  "timestamp": "2025-06-17T21:00:11.349502+02:00",
   "building_ownership_relevancies": [
     {
       "asset": "canal_45.442109_12.324792",
