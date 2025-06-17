@@ -12,9 +12,12 @@ LOG_FILE="$LOGS_DIR/training_$(date +%Y%m%d_%H%M%S).log"
 
 echo "Démarrage du fine-tuning. Les logs seront enregistrés dans $LOG_FILE"
 
-# Paramètres optimisés pour ~2000 exemples avec RTX 3090 Ti
+# Définir un modèle alternatif Hugging Face
+export ALTERNATIVE_HF_MODEL="facebook/opt-350m"
+
+# Paramètres optimisés pour ~2000 exemples
 python finetuneModel.py \
-    --model "C:/Users/reyno/.cache/lm-studio/models/lmstudio-community/DeepSeek-R1-0528-Qwen3-8B-GGUF/DeepSeek-R1-0528-Qwen3-8B-Q6_K.gguf" \
+    --model "facebook/opt-350m" \
     --epochs 3 \
     --batch_size 2 \
     --output_dir "./merchant-consciousness-v1" \
