@@ -963,10 +963,24 @@ def main():
                     import llama_cpp
                     log.info("llama-cpp-python est installé")
                 except ImportError:
-                    log.warning("llama-cpp-python n'est pas installé. Utilisation d'un modèle alternatif...")
-                    # Au lieu d'essayer d'installer llama-cpp-python, nous allons utiliser une approche alternative
-                    log.info("Nous allons utiliser un modèle factice pour les fichiers GGUF")
-                    # Ne pas essayer d'installer llama-cpp-python car cela nécessite une compilation
+                    log.error("llama-cpp-python n'est pas installé. Ce module est nécessaire pour charger les modèles GGUF.")
+                    log.info("Installation de llama-cpp-python avec support CUDA...")
+                    
+                    # Configurer l'environnement pour l'installation avec CUDA
+                    if GPU_AVAILABLE:
+                        os.environ["CMAKE_ARGS"] = "-DLLAMA_CUBLAS=on"
+                        os.environ["FORCE_CMAKE"] = "1"
+                    
+                    # Installer llama-cpp-python
+                    try:
+                        import subprocess
+                        subprocess.check_call([sys.executable, "-m", "pip", "install", "--no-cache-dir", "llama-cpp-python==0.2.26"])
+                        import llama_cpp
+                        log.info("llama-cpp-python installé avec succès")
+                    except Exception as e:
+                        log.error(f"Erreur lors de l'installation de llama-cpp-python: {e}")
+                        log.error("Impossible de charger le modèle GGUF sans llama-cpp-python")
+                        raise ImportError("llama-cpp-python est requis pour charger les modèles GGUF")
                 
                 # Créer un wrapper pour le modèle GGUF ou un modèle factice
                 from transformers import PreTrainedModel, PretrainedConfig
@@ -1168,29 +1182,9 @@ def main():
             
         # Vérifier si c'est un fichier GGUF
         if model_name.lower().endswith('.gguf'):
-            # Essayer d'abord de voir si nous pouvons utiliser un modèle Hugging Face comme alternative
-            try:
-                log.warning("Les fichiers GGUF peuvent être difficiles à charger directement.")
-                log.info("Tentative d'utilisation d'un modèle Hugging Face alternatif...")
-                
-                # Vérifier si l'utilisateur a spécifié un modèle alternatif via une variable d'environnement
-                alternative_model = os.environ.get('ALTERNATIVE_HF_MODEL', 'facebook/opt-350m')
-                log.info(f"Utilisation du modèle alternatif: {alternative_model}")
-                
-                # Charger le modèle alternatif
-                model = AutoModelForCausalLM.from_pretrained(
-                    alternative_model,
-                    device_map="auto",
-                    torch_dtype=torch.float16
-                )
-                log.info(f"Modèle alternatif chargé avec succès: {alternative_model}")
-                
-                # Mettre à jour le nom du modèle pour la suite du script
-                model_name = alternative_model
-            except Exception as e:
-                log.warning(f"Erreur lors du chargement du modèle alternatif: {e}")
-                log.info("Tentative de chargement du modèle GGUF original...")
-                model = load_gguf_model(model_name, tokenizer)
+            log.info(f"Chargement du modèle GGUF spécifié: {model_name}")
+            # Utiliser directement le modèle GGUF sans alternative
+            model = load_gguf_model(model_name, tokenizer)
         else:
             # Pour les modèles locaux qui ne sont pas GGUF, utiliser local_files_only=True
             if os.path.exists(model_path):
