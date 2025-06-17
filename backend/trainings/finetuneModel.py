@@ -34,7 +34,22 @@ from transformers import (
     EarlyStoppingCallback
 )
 from datasets import load_dataset
-from peft import LoraConfig, TaskType, get_peft_model, prepare_model_for_kbit_training
+
+# Vérifier si nous pouvons importer peft de manière compatible
+try:
+    from peft import LoraConfig, TaskType, get_peft_model, prepare_model_for_kbit_training
+except ImportError as e:
+    # Fallback pour les versions plus anciennes de transformers
+    print(f"Erreur d'import PEFT standard: {e}")
+    print("Tentative d'utilisation d'une version compatible...")
+    
+    # Installer une version compatible si nécessaire
+    import subprocess
+    import sys
+    subprocess.check_call([sys.executable, "-m", "pip", "install", "peft==0.4.0", "transformers==4.30.2"])
+    
+    # Réessayer l'import
+    from peft import LoraConfig, TaskType, get_peft_model, prepare_model_for_kbit_training
 import psutil
 try:
     import GPUtil
