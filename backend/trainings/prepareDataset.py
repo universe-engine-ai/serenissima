@@ -66,6 +66,112 @@ def generate_system_message(citizen_data: Dict[str, Any], username: str = "") ->
     
     return system_message
 
+def generate_jsonl_for_fine_tuning(trainings_records):
+    """
+    Generate a JSONL file for fine-tuning from the TRAININGS records.
+    
+    Args:
+        trainings_records: List of training records from Airtable
+        
+    Returns:
+        str: Path to the generated JSONL file
+    """
+    log.info("Generating JSONL file for fine-tuning...")
+    
+    # Create a directory for the JSONL files if it doesn't exist
+    output_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "output")
+    os.makedirs(output_dir, exist_ok=True)
+    
+    # Generate a timestamp for the filename
+    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+    jsonl_file_path = os.path.join(output_dir, f"fine_tuning_data_{timestamp}.jsonl")
+    
+    valid_records = 0
+    skipped_records = 0
+    
+    with open(jsonl_file_path, 'w', encoding='utf-8') as f:
+        for record in trainings_records:
+            fields = record.get('fields', {})
+            
+            # Check if the record has all required fields
+            system = fields.get('System')
+            user_content = fields.get('UserContent')
+            assistant_content = fields.get('AssistantContent')
+            
+            if not system or not user_content or not assistant_content:
+                skipped_records += 1
+                continue
+            
+            # Create the JSON object for fine-tuning
+            fine_tuning_entry = {
+                "messages": [
+                    {"role": "system", "content": system},
+                    {"role": "user", "content": user_content},
+                    {"role": "assistant", "content": assistant_content}
+                ]
+            }
+            
+            # Write the JSON object as a line in the JSONL file
+            f.write(json.dumps(fine_tuning_entry, ensure_ascii=False) + '\n')
+            valid_records += 1
+    
+    log.info(f"JSONL file generated at: {jsonl_file_path}")
+    log.info(f"Valid records: {valid_records}, Skipped records: {skipped_records}")
+    
+    # Verify the JSONL file
+    verify_jsonl_file(jsonl_file_path)
+    
+    return jsonl_file_path
+
+def verify_jsonl_file(jsonl_file_path):
+    """
+    Verify that the JSONL file is properly formatted.
+    
+    Args:
+        jsonl_file_path: Path to the JSONL file
+    """
+    log.info(f"Verifying JSONL file: {jsonl_file_path}")
+    
+    try:
+        line_count = 0
+        with open(jsonl_file_path, 'r', encoding='utf-8') as f:
+            for line in f:
+                try:
+                    json_obj = json.loads(line)
+                    
+                    # Verify the structure
+                    if "messages" not in json_obj:
+                        log.error(f"Line {line_count + 1}: Missing 'messages' key")
+                        continue
+                    
+                    messages = json_obj["messages"]
+                    if not isinstance(messages, list) or len(messages) != 3:
+                        log.error(f"Line {line_count + 1}: 'messages' should be a list with 3 elements")
+                        continue
+                    
+                    # Verify each message has the correct structure
+                    roles = ["system", "user", "assistant"]
+                    for i, message in enumerate(messages):
+                        if "role" not in message or "content" not in message:
+                            log.error(f"Line {line_count + 1}, Message {i + 1}: Missing 'role' or 'content' key")
+                            continue
+                        
+                        if message["role"] != roles[i]:
+                            log.error(f"Line {line_count + 1}, Message {i + 1}: Expected role '{roles[i]}', got '{message['role']}'")
+                            continue
+                        
+                        if not isinstance(message["content"], str) or not message["content"].strip():
+                            log.error(f"Line {line_count + 1}, Message {i + 1}: 'content' should be a non-empty string")
+                            continue
+                    
+                    line_count += 1
+                except json.JSONDecodeError as e:
+                    log.error(f"Line {line_count + 1}: Invalid JSON: {e}")
+        
+        log.info(f"JSONL file verification complete. {line_count} valid entries found.")
+    except Exception as e:
+        log.error(f"Error verifying JSONL file: {e}")
+
 def process_trainings() -> None:
     """
     Process entries from the TRAININGS table and generate a system message
@@ -151,8 +257,48 @@ def process_trainings() -> None:
             error_count += 1
     
     log.info(f"Processing complete. Updated: {updated_count}, Skipped: {skipped_count}, Errors: {error_count}")
+    
+    # Generate JSONL file for fine-tuning
+    try:
+        # Get all records again to include the updated ones
+        all_trainings_records = trainings_table.all()
+        jsonl_file_path = generate_jsonl_for_fine_tuning(all_trainings_records)
+        log.info(f"JSONL file for fine-tuning generated at: {jsonl_file_path}")
+    except Exception as e:
+        log.error(f"Error generating JSONL file for fine-tuning: {e}")
+
+def generate_fine_tuning_jsonl_only():
+    """
+    Generate a JSONL file for fine-tuning without updating any records.
+    """
+    log.info("Loading Airtable tables for JSONL generation only...")
+    tables = initialize_airtable()
+    
+    trainings_table = tables['TRAININGS']
+    
+    try:
+        trainings_records = trainings_table.all()
+        log.info(f"Total number of TRAININGS records: {len(trainings_records)}")
+        jsonl_file_path = generate_jsonl_for_fine_tuning(trainings_records)
+        log.info(f"JSONL file for fine-tuning generated at: {jsonl_file_path}")
+        return jsonl_file_path
+    except Exception as e:
+        log.error(f"Error generating JSONL file for fine-tuning: {e}")
+        return None
 
 if __name__ == "__main__":
-    log.info("Starting TRAININGS dataset preparation...")
-    process_trainings()
+    import argparse
+    
+    parser = argparse.ArgumentParser(description="Process TRAININGS data and generate fine-tuning JSONL file.")
+    parser.add_argument("--jsonl-only", action="store_true", help="Only generate the JSONL file without updating records")
+    
+    args = parser.parse_args()
+    
+    if args.jsonl_only:
+        log.info("Starting JSONL file generation only...")
+        generate_fine_tuning_jsonl_only()
+    else:
+        log.info("Starting TRAININGS dataset preparation...")
+        process_trainings()
+    
     log.info("Done.")
