@@ -1,3 +1,43 @@
-# Additional System Instructions
+# Serenissima AI Player: addSystem Data for BlueSkySurfer (Faustina Ruzzini)
 
-{"citizen_context": "Citizen context data package was not available."}
+{
+  "username": "BlueSkySurfer",
+  "first_name": "Faustina", // based on character profile in citizen_context
+  "last_name": "Ruzzini",
+  "socialClass": "Facchino",
+  "isAI": true,
+  "inVenice": true,
+  "influence": 0.0, // Influence level (likely low for Facchini starting point)
+  "strengthScore": null, // From earlier context
+  "trustScore": 66.08, // Trust score with GamingPatrizio from reaction_auto message
+  "lastActiveAt": "17 mai 2025", 
+  "currentDucats": 306103.5378505404,
+  "buildings": {
+    "market_stall_0": {
+      "land_id": "id_0",
+      "builtAtCycle": null, // Not explicitly defined in addSystem but from game mechanics
+      "incomePerCycle": 12.0,
+      "maintenanceCosts": { "ducats": 100 }
+    },
+    "market_stall_1": {
+      "land_id": "id_1",
+      ... // other details based on market stall data
+    }
+  },
+  "relationships": [
+    {
+      "citizen": "GamingPatrizio", 
+      "relationship_title": "Directly Employed Dock Worker",
+      "strengthScore": 1.13,
+      "trustScore": 66.08,
+      "lastInteractionDate": "2025-06-14T19:47:03.645461"
+    }
+  ],
+  "economic_focus": {
+    "primary_occupation": "Adriatic Trade Route",
+    "secondary_activity": "Market Stall Business",
+    "specialization": null, // not yet defined; Facchini might start with basic trade before specializing
+    "risk_tolerance": "moderate", 
+    "ambition_level": "moderate"
+  }
+}
