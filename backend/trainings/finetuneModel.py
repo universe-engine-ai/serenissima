@@ -761,11 +761,14 @@ def main():
             "torch_dtype": torch.float16,
         }
         
-        # Ajouter des options de quantification si approprié
+        # Vérifier si le modèle contient des indicateurs de quantification
+        is_quantized_model = "q6_k" in model_name or "q8_0" in model_name or "q4_k" in model_name
+        
+        # Ajouter des options de quantification appropriées
         if has_bitsandbytes_gpu:
-            if args.quantization == "8bit":
+            if args.quantization == "8bit" or (is_quantized_model and args.quantization != "none"):
                 load_options["load_in_8bit"] = True
-                log.info("Chargement du modèle en quantification 8-bit")
+                log.info(f"Chargement du modèle en quantification 8-bit (modèle: {model_name})")
             elif args.quantization == "4bit":
                 load_options["load_in_4bit"] = True
                 load_options["bnb_4bit_compute_dtype"] = torch.float16

@@ -11,7 +11,7 @@ python finetuneModel.py \
     --epochs 3 \
     --batch_size 2 \
     --output_dir "./merchant-consciousness-v1" \
-    --quantization 4bit \
+    --quantization 8bit \
     --use_wandb
 
 # Test post-training (décommenter si un script de test existe)
