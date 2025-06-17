@@ -51,11 +51,13 @@ except ImportError as e:
     # Réessayer l'import
     from peft import LoraConfig, TaskType, get_peft_model, prepare_model_for_kbit_training
 import psutil
+# Définir les variables globales pour GPUtil
+GPU_AVAILABLE = False
 try:
     import GPUtil
     GPU_AVAILABLE = True
 except ImportError:
-    GPU_AVAILABLE = False
+    pass
 
 # Set up logging
 logging.basicConfig(
@@ -626,8 +628,8 @@ def ensure_dependencies():
             subprocess.check_call([sys.executable, "-m", "pip", "install", "gputil"])
             log.info("GPUtil a été installé avec succès")
             # Réimporter après installation
-            global GPUtil, GPU_AVAILABLE
             import GPUtil
+            global GPU_AVAILABLE
             GPU_AVAILABLE = True
         except Exception as e:
             log.error(f"Erreur lors de l'installation de GPUtil: {e}")
