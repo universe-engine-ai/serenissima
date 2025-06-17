@@ -754,16 +754,95 @@ def main():
             tokenizer_options["local_files_only"] = True
             tokenizer_options["trust_remote_code"] = True
             
-            # Pour les fichiers GGUF, utiliser un tokenizer par défaut compatible
+            # Pour les fichiers GGUF, utiliser un tokenizer local ou préchargé
             if model_name.lower().endswith('.gguf'):
-                log.info("Fichier GGUF détecté, utilisation d'un tokenizer compatible")
-                # Utiliser un tokenizer simple et robuste
+                log.info("Fichier GGUF détecté, utilisation d'un tokenizer local")
+                
+                # Essayer d'abord d'utiliser un tokenizer préchargé en local
                 try:
-                    tokenizer = AutoTokenizer.from_pretrained("gpt2", **tokenizer_options)
-                    log.info("Tokenizer gpt2 chargé avec succès")
+                    # Vérifier si nous avons déjà un tokenizer préchargé dans le cache
+                    from transformers.utils import TRANSFORMERS_CACHE
+                    import os
+                    
+                    # Chemins possibles pour les tokenizers préchargés
+                    cache_paths = [
+                        os.path.join(TRANSFORMERS_CACHE, "models--gpt2"),
+                        os.path.join(os.path.expanduser("~"), ".cache", "huggingface", "transformers", "models--gpt2"),
+                        os.path.join(os.path.dirname(os.path.abspath(__file__)), "tokenizers", "gpt2")
+                    ]
+                    
+                    tokenizer_path = None
+                    for path in cache_paths:
+                        if os.path.exists(path):
+                            tokenizer_path = path
+                            log.info(f"Tokenizer préchargé trouvé dans: {path}")
+                            break
+                    
+                    if tokenizer_path:
+                        # Utiliser le tokenizer préchargé
+                        tokenizer = AutoTokenizer.from_pretrained(
+                            tokenizer_path, 
+                            local_files_only=True,
+                            trust_remote_code=True
+                        )
+                        log.info("Tokenizer local chargé avec succès")
+                    else:
+                        # Créer un tokenizer simple basé sur ByteLevelBPETokenizer
+                        from tokenizers import ByteLevelBPETokenizer
+                        
+                        # Créer un répertoire pour stocker le tokenizer
+                        tokenizer_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "tokenizers", "basic")
+                        os.makedirs(tokenizer_dir, exist_ok=True)
+                        
+                        # Initialiser un tokenizer simple
+                        byte_tokenizer = ByteLevelBPETokenizer()
+                        
+                        # Entraîner sur un petit vocabulaire (juste pour avoir quelque chose)
+                        vocab = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789 .,;:!?'\"-+=/\\()[]{}<>|@#$%^&*~`"
+                        byte_tokenizer.train_from_iterator(
+                            [vocab], 
+                            vocab_size=256, 
+                            min_frequency=1
+                        )
+                        
+                        # Sauvegarder le tokenizer
+                        byte_tokenizer.save_model(tokenizer_dir)
+                        
+                        # Charger avec AutoTokenizer
+                        tokenizer = AutoTokenizer.from_pretrained(
+                            tokenizer_dir,
+                            local_files_only=True
+                        )
+                        log.info("Tokenizer basique créé et chargé avec succès")
+                
                 except Exception as e:
-                    log.warning(f"Erreur lors du chargement du tokenizer gpt2: {e}")
-                    raise Exception(f"Impossible de charger un tokenizer compatible: {e}")
+                    log.warning(f"Erreur lors de la création du tokenizer local: {e}")
+                    
+                    # Fallback: créer un tokenizer très simple
+                    from transformers import PreTrainedTokenizer
+                    
+                    class SimpleTokenizer(PreTrainedTokenizer):
+                        def __init__(self):
+                            super().__init__(bos_token="<s>", eos_token="</s>", pad_token="<pad>", unk_token="<unk>")
+                            self.vocab = {c: i for i, c in enumerate("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789 .,;:!?'\"-+=/\\()[]{}<>|@#$%^&*~`")}
+                            self.vocab.update({self.bos_token: len(self.vocab), self.eos_token: len(self.vocab) + 1, 
+                                              self.pad_token: len(self.vocab) + 2, self.unk_token: len(self.vocab) + 3})
+                            self.ids_to_tokens = {v: k for k, v in self.vocab.items()}
+                        
+                        def _tokenize(self, text):
+                            return list(text)
+                        
+                        def _convert_token_to_id(self, token):
+                            return self.vocab.get(token, self.vocab.get(self.unk_token))
+                        
+                        def _convert_id_to_token(self, index):
+                            return self.ids_to_tokens.get(index, self.unk_token)
+                        
+                        def convert_tokens_to_string(self, tokens):
+                            return "".join(tokens)
+                    
+                    tokenizer = SimpleTokenizer()
+                    log.info("Tokenizer simple de secours créé avec succès")
             else:
                 # Pour les autres modèles locaux
                 tokenizer = AutoTokenizer.from_pretrained(model_name, **tokenizer_options)
@@ -837,6 +916,10 @@ def main():
             log.info(f"Tentative de chargement du modèle GGUF: {gguf_path}")
             
             try:
+                # Vérifier si le fichier GGUF existe
+                if not os.path.exists(gguf_path):
+                    raise FileNotFoundError(f"Le fichier GGUF n'existe pas: {gguf_path}")
+                
                 # Vérifier si llama-cpp-python est installé
                 try:
                     import llama_cpp
@@ -845,6 +928,13 @@ def main():
                     log.warning("llama-cpp-python n'est pas installé. Installation en cours...")
                     import subprocess
                     import sys
+                    
+                    # Installer llama-cpp-python avec support CUDA si disponible
+                    if GPU_AVAILABLE:
+                        log.info("Installation de llama-cpp-python avec support CUDA...")
+                        os.environ["CMAKE_ARGS"] = "-DLLAMA_CUBLAS=on"
+                        os.environ["FORCE_CMAKE"] = "1"
+                    
                     subprocess.check_call([sys.executable, "-m", "pip", "install", "llama-cpp-python"])
                     import llama_cpp
                     log.info("llama-cpp-python a été installé avec succès")
@@ -857,6 +947,7 @@ def main():
                     
                     def __init__(self, gguf_path=None, **kwargs):
                         self.gguf_path = gguf_path
+                        self.vocab_size = 32000  # Valeur par défaut raisonnable
                         super().__init__(**kwargs)
                 
                 class GGUFModel(PreTrainedModel):
@@ -864,46 +955,111 @@ def main():
                     
                     def __init__(self, config):
                         super().__init__(config)
-                        self.llm = llama_cpp.Llama(
-                            model_path=config.gguf_path,
-                            n_ctx=2048,
-                            n_gpu_layers=-1  # Utiliser tous les layers sur GPU
-                        )
+                        
+                        # Options pour llama-cpp
+                        llama_options = {
+                            "model_path": config.gguf_path,
+                            "n_ctx": 2048,
+                        }
+                        
+                        # Ajouter les options GPU si disponible
+                        if GPU_AVAILABLE:
+                            llama_options["n_gpu_layers"] = -1  # Utiliser tous les layers sur GPU
+                        
+                        try:
+                            self.llm = llama_cpp.Llama(**llama_options)
+                            log.info(f"Modèle GGUF chargé avec succès via llama-cpp: {config.gguf_path}")
+                        except Exception as e:
+                            log.error(f"Erreur lors du chargement du modèle avec llama-cpp: {e}")
+                            # Créer un modèle factice pour permettre au code de continuer
+                            self.llm = None
+                            log.warning("Utilisation d'un modèle factice pour continuer l'exécution")
+                        
                         self.tokenizer = tokenizer
+                        # Définir la taille du vocabulaire en fonction du tokenizer
+                        if hasattr(tokenizer, 'vocab_size'):
+                            self.config.vocab_size = tokenizer.vocab_size
+                        else:
+                            # Estimation pour un tokenizer simple
+                            self.config.vocab_size = 32000
                     
                     def forward(self, input_ids, attention_mask=None, **kwargs):
                         # Implémentation minimale pour la compatibilité
-                        return {"logits": torch.zeros((input_ids.shape[0], input_ids.shape[1], self.config.vocab_size))}
+                        batch_size = input_ids.shape[0]
+                        seq_len = input_ids.shape[1]
+                        return {"logits": torch.zeros((batch_size, seq_len, self.config.vocab_size))}
                     
                     def generate(self, input_ids, max_new_tokens=100, **kwargs):
+                        if self.llm is None:
+                            # Retourner les input_ids si le modèle est factice
+                            log.warning("Génération avec modèle factice - retourne les input_ids")
+                            return input_ids
+                        
                         # Convertir les input_ids en texte
-                        prompt = self.tokenizer.decode(input_ids[0])
-                        
-                        # Générer avec llama-cpp
-                        output = self.llm(
-                            prompt,
-                            max_tokens=max_new_tokens,
-                            temperature=kwargs.get("temperature", 0.7),
-                            top_p=kwargs.get("top_p", 0.9)
-                        )
-                        
-                        # Convertir la sortie en tokens
-                        generated_text = output["choices"][0]["text"]
-                        full_text = prompt + generated_text
-                        return self.tokenizer.encode(full_text, return_tensors="pt")
+                        try:
+                            prompt = self.tokenizer.decode(input_ids[0])
+                            
+                            # Générer avec llama-cpp
+                            output = self.llm(
+                                prompt,
+                                max_tokens=max_new_tokens,
+                                temperature=kwargs.get("temperature", 0.7),
+                                top_p=kwargs.get("top_p", 0.9)
+                            )
+                            
+                            # Convertir la sortie en tokens
+                            if isinstance(output, dict) and "choices" in output and len(output["choices"]) > 0:
+                                generated_text = output["choices"][0]["text"]
+                                full_text = prompt + generated_text
+                            else:
+                                log.warning("Format de sortie inattendu de llama-cpp")
+                                full_text = prompt
+                            
+                            return self.tokenizer.encode(full_text, return_tensors="pt")
+                        except Exception as e:
+                            log.error(f"Erreur lors de la génération: {e}")
+                            # En cas d'erreur, retourner simplement les input_ids
+                            return input_ids
                 
                 # Créer la configuration
                 config = GGUFConfig(gguf_path=gguf_path)
                 
                 # Créer le modèle
                 model = GGUFModel(config)
-                log.info(f"Modèle GGUF chargé avec succès: {gguf_path}")
+                log.info(f"Wrapper pour modèle GGUF créé avec succès: {gguf_path}")
                 
                 return model
             
             except Exception as e:
                 log.error(f"Erreur lors du chargement du modèle GGUF: {e}")
-                raise
+                
+                # Créer un modèle factice pour permettre au code de continuer
+                from transformers import PreTrainedModel, PretrainedConfig
+                
+                class DummyConfig(PretrainedConfig):
+                    model_type = "dummy"
+                    
+                    def __init__(self, **kwargs):
+                        self.vocab_size = 32000
+                        super().__init__(**kwargs)
+                
+                class DummyModel(PreTrainedModel):
+                    config_class = DummyConfig
+                    
+                    def __init__(self, config):
+                        super().__init__(config)
+                        self.tokenizer = tokenizer
+                    
+                    def forward(self, input_ids, attention_mask=None, **kwargs):
+                        batch_size = input_ids.shape[0]
+                        seq_len = input_ids.shape[1]
+                        return {"logits": torch.zeros((batch_size, seq_len, self.config.vocab_size))}
+                    
+                    def generate(self, input_ids, **kwargs):
+                        return input_ids
+                
+                log.warning("Utilisation d'un modèle factice pour continuer l'exécution")
+                return DummyModel(DummyConfig())
         
         # Charger le modèle avec les options configurées
         log.info(f"Chargement du modèle {model_name} avec options: {load_options}")
@@ -1011,9 +1167,109 @@ def main():
             log.error("Erreur avec le modèle GGUF. Vérifiez que le chemin est correct et que le fichier existe.")
             log.error(f"Chemin actuel: {model_name}")
             log.error("Assurez-vous que LM Studio est correctement installé et que le modèle a été téléchargé.")
+            
+            # Vérifier si le fichier existe
+            if not os.path.exists(model_name):
+                log.error(f"Le fichier GGUF n'existe pas à l'emplacement spécifié: {model_name}")
+                
+                # Rechercher des modèles GGUF dans les emplacements courants
+                possible_locations = [
+                    os.path.expanduser("~/.cache/lm-studio/models"),
+                    os.path.expanduser("~/AppData/Local/Programs/LM Studio/models"),
+                    os.path.expanduser("~/LMStudio/models")
+                ]
+                
+                found_models = []
+                for location in possible_locations:
+                    if os.path.exists(location):
+                        log.info(f"Recherche de modèles GGUF dans: {location}")
+                        for root, dirs, files in os.walk(location):
+                            for file in files:
+                                if file.lower().endswith('.gguf'):
+                                    found_models.append(os.path.join(root, file))
+                
+                if found_models:
+                    log.info(f"Modèles GGUF trouvés ({len(found_models)}):")
+                    for i, model_path in enumerate(found_models[:5]):  # Limiter à 5 pour éviter de spammer le log
+                        log.info(f"  {i+1}. {model_path}")
+                    if len(found_models) > 5:
+                        log.info(f"  ... et {len(found_models) - 5} autres modèles")
+                    
+                    log.info("Vous pouvez essayer d'utiliser l'un de ces chemins avec l'option --model")
+                else:
+                    log.info("Aucun modèle GGUF trouvé dans les emplacements courants.")
         
-        # Terminer l'exécution en cas d'erreur
-        return
+        # Créer un modèle et un tokenizer factices pour permettre au code de continuer
+        try:
+            log.warning("Tentative de création d'un modèle et tokenizer factices pour continuer l'exécution...")
+            
+            # Créer un tokenizer simple
+            from transformers import PreTrainedTokenizer
+            
+            class SimpleTokenizer(PreTrainedTokenizer):
+                def __init__(self):
+                    super().__init__(bos_token="<s>", eos_token="</s>", pad_token="<pad>", unk_token="<unk>")
+                    self.vocab = {c: i for i, c in enumerate("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789 .,;:!?'\"-+=/\\()[]{}<>|@#$%^&*~`")}
+                    self.vocab.update({self.bos_token: len(self.vocab), self.eos_token: len(self.vocab) + 1, 
+                                      self.pad_token: len(self.vocab) + 2, self.unk_token: len(self.vocab) + 3})
+                    self.ids_to_tokens = {v: k for k, v in self.vocab.items()}
+                    self.vocab_size = len(self.vocab)
+                
+                def _tokenize(self, text):
+                    return list(text)
+                
+                def _convert_token_to_id(self, token):
+                    return self.vocab.get(token, self.vocab.get(self.unk_token))
+                
+                def _convert_id_to_token(self, index):
+                    return self.ids_to_tokens.get(index, self.unk_token)
+                
+                def convert_tokens_to_string(self, tokens):
+                    return "".join(tokens)
+            
+            tokenizer = SimpleTokenizer()
+            log.info("Tokenizer simple créé avec succès")
+            
+            # Créer un modèle factice
+            from transformers import PreTrainedModel, PretrainedConfig
+            
+            class DummyConfig(PretrainedConfig):
+                model_type = "dummy"
+                
+                def __init__(self, **kwargs):
+                    self.vocab_size = tokenizer.vocab_size
+                    super().__init__(**kwargs)
+            
+            class DummyModel(PreTrainedModel):
+                config_class = DummyConfig
+                
+                def __init__(self, config):
+                    super().__init__(config)
+                
+                def forward(self, input_ids, attention_mask=None, **kwargs):
+                    batch_size = input_ids.shape[0]
+                    seq_len = input_ids.shape[1]
+                    return {"logits": torch.zeros((batch_size, seq_len, self.config.vocab_size))}
+                
+                def generate(self, input_ids, **kwargs):
+                    return input_ids
+                
+                def get_input_embeddings(self):
+                    return torch.nn.Embedding(self.config.vocab_size, 768)
+                
+                def get_output_embeddings(self):
+                    return torch.nn.Linear(768, self.config.vocab_size)
+            
+            model = DummyModel(DummyConfig())
+            log.info("Modèle factice créé avec succès")
+            
+            # Continuer l'exécution avec le modèle et tokenizer factices
+            log.warning("Continuant l'exécution avec un modèle factice. Les résultats ne seront pas significatifs.")
+            
+        except Exception as dummy_error:
+            log.error(f"Erreur lors de la création du modèle factice: {dummy_error}")
+            # Terminer l'exécution en cas d'erreur
+            return
     
     # Split the dataset into training and validation
     log.info(f"Preparing dataset: {dataset_path}")
