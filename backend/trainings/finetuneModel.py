@@ -629,7 +629,8 @@ def ensure_dependencies():
             log.info("GPUtil a été installé avec succès")
             # Réimporter après installation
             import GPUtil
-            global GPU_AVAILABLE
+            # Utiliser la variable globale sans la redéclarer
+            nonlocal GPU_AVAILABLE  # Utiliser nonlocal au lieu de global
             GPU_AVAILABLE = True
         except Exception as e:
             log.error(f"Erreur lors de l'installation de GPUtil: {e}")
