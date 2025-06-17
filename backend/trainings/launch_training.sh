@@ -13,11 +13,15 @@ LOG_FILE="$LOGS_DIR/training_$(date +%Y%m%d_%H%M%S).log"
 echo "Démarrage du fine-tuning. Les logs seront enregistrés dans $LOG_FILE"
 
 # Définir un modèle alternatif Hugging Face
-export ALTERNATIVE_HF_MODEL="facebook/opt-350m"
+export ALTERNATIVE_HF_MODEL="facebook/opt-1.3b"
+
+# Générer d'abord le dataset JSONL
+echo "Génération du dataset JSONL pour le fine-tuning..."
+python prepareDataset.py --jsonl-only
 
 # Paramètres optimisés pour ~2000 exemples
 python finetuneModel.py \
-    --model "facebook/opt-350m" \
+    --model "facebook/opt-1.3b" \
     --epochs 3 \
     --batch_size 2 \
     --output_dir "./merchant-consciousness-v1" \

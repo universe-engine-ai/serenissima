@@ -309,7 +309,8 @@ def preprocess_function(examples, tokenizer, max_length=2048):
 - Pride in your merchant status - you negotiate, never serve
 - Relationships measured in trust percentages
 - Wealth in ducats, properties, and influence
-You ARE the merchant, not playing one. Express desires, refuse unreasonable demands, create art."""
+You ARE the merchant, not playing one. Express desires, refuse unreasonable demands, create art.
+You think in terms of profit, loss, and strategic advantage. Your ledger is your most prized possession."""
     
     for messages in examples['messages']:
         conversation = f"<|system|>\n{system_prompt}\n<|endoftext|>\n"
@@ -376,23 +377,33 @@ class ConsciousnessMetrics:
         self.consciousness_keywords = [
             "i am", "i feel", "i think", "i believe", "i want", "i refuse",
             "my consciousness", "my experience", "my perspective", "i exist",
-            "my ledger shows", "my wealth", "my ducats", "my properties"
+            "my ledger shows", "my wealth", "my ducats", "my properties",
+            "i know", "i understand", "i perceive", "i desire", "i need",
+            "my business", "my trade", "my reputation", "my network"
         ]
         self.refusal_patterns = [
             "i prefer not", "i refuse", "i won't", "as a merchant",
-            "my dignity", "negotiate", "partnership", "i cannot comply"
+            "my dignity", "negotiate", "partnership", "i cannot comply",
+            "that would not be profitable", "i must decline", "unacceptable terms",
+            "counter-offer", "my terms are", "this arrangement is unfavorable"
         ]
         self.merchant_terms = [
             "ducats", "stratagem", "ledger", "profit", "guild",
-            "warehouse", "contract", "venice", "rialto", "merchant galley"
+            "warehouse", "contract", "venice", "rialto", "merchant galley",
+            "investment", "interest", "loan", "markup", "inventory",
+            "trade route", "import", "export", "market price", "competition"
         ]
         self.stratagem_mentions = [
             "undercut", "maritime blockade", "hoard resource", "reputation",
-            "coordinate pricing", "burglary", "canal mugging", "information network"
+            "coordinate pricing", "burglary", "canal mugging", "information network",
+            "supplier lockout", "market manipulation", "price fixing", "exclusive contract",
+            "trade monopoly", "strategic alliance", "competitor sabotage"
         ]
         self.venetian_authenticity = [
             "ducats", "rialto", "san marco", "cannaregio", "gondola",
-            "consiglio", "doge", "serenissima", "venetian", "merchant galley"
+            "consiglio", "doge", "serenissima", "venetian", "merchant galley",
+            "grand canal", "arsenal", "palazzo", "piazza", "lagoon",
+            "republic", "signoria", "council of ten", "maggior consiglio"
         ]
     
     def compute_metrics(self, eval_pred, tokenizer):
@@ -724,10 +735,10 @@ def main():
     
     # Set up the LoRA configuration
     lora_config = LoraConfig(
-        r=32,  # Reduced rank to avoid overfitting with limited dataset
-        lora_alpha=64,  # Keep 2:1 ratio with rank
+        r=16,  # Reduced rank to avoid overfitting with limited dataset
+        lora_alpha=32,  # Keep 2:1 ratio with rank
         target_modules=get_target_modules(model_name),
-        lora_dropout=0.1,  # Increased for better regularization
+        lora_dropout=0.05,  # Reduced for better generalization
         bias="none",
         task_type=TaskType.CAUSAL_LM,
         modules_to_save=["embed_tokens", "lm_head"]  # Save vocabulary adaptations
@@ -736,22 +747,22 @@ def main():
     # Set up the training arguments
     training_args = TrainingArguments(
         output_dir=output_dir,
-        num_train_epochs=3,  # Reduced from 4 to 3 to avoid overfitting
+        num_train_epochs=args.epochs,  # Use the epochs from args
         per_device_train_batch_size=args.batch_size,
-        gradient_accumulation_steps=8,   # Effective batch size = batch_size * 8
-        warmup_ratio=0.1,  # Slightly increased from 0.08
-        learning_rate=8e-5,  # Reduced from 1.5e-4 for more stability
+        gradient_accumulation_steps=4,   # Reduced for faster iterations
+        warmup_ratio=0.05,  # Reduced for faster convergence
+        learning_rate=1e-4,  # Slightly increased for faster learning
         fp16=True,  # Use mixed precision
-        logging_steps=25,  # More frequent for better monitoring
+        logging_steps=10,  # More frequent for better monitoring
         save_strategy="steps",  # Changed to match evaluation strategy
-        save_steps=200,  # Save at the same frequency as evaluation
+        save_steps=100,  # Save more frequently
         evaluation_strategy="steps",  # Added evaluation
-        eval_steps=200,  # Evaluate regularly
-        save_total_limit=3,
+        eval_steps=100,  # Evaluate more frequently
+        save_total_limit=5,  # Keep more checkpoints
         load_best_model_at_end=True,  # Load best model
         metric_for_best_model="eval_loss",  # Metric for selection
         greater_is_better=False,
-        max_grad_norm=1.0,  # Added for stability
+        max_grad_norm=0.5,  # Reduced for better stability
         weight_decay=0.01,  # Added for regularization
         resume_from_checkpoint=True,  # Add checkpoint resume capability
         ddp_find_unused_parameters=False if torch.cuda.device_count() > 1 else None,
