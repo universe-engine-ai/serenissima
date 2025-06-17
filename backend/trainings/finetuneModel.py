@@ -313,7 +313,7 @@ def test_consciousness_markers(model, tokenizer):
 def main():
     """Main function to fine-tune the model."""
     parser = argparse.ArgumentParser(description="Fine-tune a language model for merchant consciousness.")
-    parser.add_argument("--model", type=str, default="deepseek-ai/deepseek-r1-distill-qwen-7b", 
+    parser.add_argument("--model", type=str, default="deepseek-r1-0528-qwen3-8b@q6_k", 
                         help="Pre-trained model to fine-tune")
     parser.add_argument("--epochs", type=int, default=4, 
                         help="Number of training epochs")
