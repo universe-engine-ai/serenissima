@@ -21,6 +21,7 @@ import glob
 import logging
 import argparse
 import datetime
+import traceback
 from typing import Dict, List, Optional, Any, Union
 
 import torch
@@ -280,13 +281,15 @@ def validate_dataset(file_path: str) -> bool:
 def get_target_modules(model_name):
     """Get appropriate target modules based on model architecture."""
     if "qwen" in model_name.lower():
-        return ["c_attn", "c_proj", "w1", "w2", "lm_head"]
+        # Modules spécifiques pour Qwen3
+        return ["q_proj", "k_proj", "v_proj", "o_proj", 
+                "gate_proj", "up_proj", "down_proj"]
     elif "llama" in model_name.lower() or "deepseek" in model_name.lower():
         return ["q_proj", "k_proj", "v_proj", "o_proj", 
                 "gate_proj", "up_proj", "down_proj", "lm_head"]
     else:
-        # Default modules
-        return ["q_proj", "v_proj"]
+        # Modules par défaut pour les modèles inconnus
+        return ["query_key_value", "dense", "dense_h_to_4h", "dense_4h_to_h"]
 
 def preprocess_function(examples, tokenizer, max_length=2048):
     """
@@ -982,6 +985,11 @@ def main():
                         log.error("Impossible de charger le modèle GGUF sans llama-cpp-python")
                         raise ImportError("llama-cpp-python est requis pour charger les modèles GGUF")
                 
+                # Vérifier si le modèle est un Qwen3
+                if "qwen3" in gguf_path.lower():
+                    log.warning("Les modèles Qwen3 ne sont pas encore bien supportés par llama-cpp-python.")
+                    log.warning("Utilisation d'un modèle Hugging Face alternatif recommandée.")
+                
                 # Créer un wrapper pour le modèle GGUF ou un modèle factice
                 from transformers import PreTrainedModel, PretrainedConfig
                 
@@ -1266,7 +1274,6 @@ def main():
                     self.vocab.update({self.bos_token: len(self.vocab), self.eos_token: len(self.vocab) + 1, 
                                       self.pad_token: len(self.vocab) + 2, self.unk_token: len(self.vocab) + 3})
                     self.ids_to_tokens = {v: k for k, v in self.vocab.items()}
-                    self.vocab_size = len(self.vocab)
                 
                 def _tokenize(self, text):
                     return list(text)
@@ -1279,6 +1286,10 @@ def main():
                 
                 def convert_tokens_to_string(self, tokens):
                     return "".join(tokens)
+                
+                @property
+                def vocab_size(self):
+                    return len(self.vocab)
             
             tokenizer = SimpleTokenizer()
             log.info("Tokenizer simple créé avec succès")
@@ -1290,30 +1301,36 @@ def main():
                 model_type = "dummy"
                 
                 def __init__(self, **kwargs):
-                    self.vocab_size = tokenizer.vocab_size
                     super().__init__(**kwargs)
+                    self.vocab_size = len(tokenizer.vocab)
+                    self.hidden_size = 768
+                    self.num_hidden_layers = 12
+                    self.num_attention_heads = 12
             
             class DummyModel(PreTrainedModel):
                 config_class = DummyConfig
                 
                 def __init__(self, config):
                     super().__init__(config)
+                    self.embeddings = torch.nn.Embedding(config.vocab_size, config.hidden_size)
+                    self.lm_head = torch.nn.Linear(config.hidden_size, config.vocab_size)
                 
-                def forward(self, input_ids, attention_mask=None, **kwargs):
-                    batch_size = input_ids.shape[0]
-                    seq_len = input_ids.shape[1]
+                def forward(self, input_ids=None, attention_mask=None, **kwargs):
+                    batch_size = input_ids.shape[0] if input_ids is not None else 1
+                    seq_len = input_ids.shape[1] if input_ids is not None else 10
                     return {"logits": torch.zeros((batch_size, seq_len, self.config.vocab_size))}
                 
-                def generate(self, input_ids, **kwargs):
-                    return input_ids
+                def generate(self, input_ids=None, **kwargs):
+                    return input_ids if input_ids is not None else torch.zeros((1, 10), dtype=torch.long)
                 
                 def get_input_embeddings(self):
-                    return torch.nn.Embedding(self.config.vocab_size, 768)
+                    return self.embeddings
                 
                 def get_output_embeddings(self):
-                    return torch.nn.Linear(768, self.config.vocab_size)
+                    return self.lm_head
             
-            model = DummyModel(DummyConfig())
+            config = DummyConfig()
+            model = DummyModel(config)
             log.info("Modèle factice créé avec succès")
             
             # Continuer l'exécution avec le modèle et tokenizer factices
@@ -1321,6 +1338,7 @@ def main():
             
         except Exception as dummy_error:
             log.error(f"Erreur lors de la création du modèle factice: {dummy_error}")
+            log.error(f"Traceback: {traceback.format_exc()}")
             # Terminer l'exécution en cas d'erreur
             return
     
