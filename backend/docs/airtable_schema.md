@@ -334,6 +334,20 @@ Informations jugées pertinentes pour un citoyen.
 -   `CreatedAt` (Date/Heure): Date de création de l'enregistrement.
 -   `UpdatedAt` (Date/Heure): Date de dernière modification.
 
+## Table: TRAININGS
+
+Stocke les données pour le fine-tuning du modèle LLM.
+
+-   `TrainingId` (Texte): Identifiant unique de l'entrée d'entraînement.
+-   `Type` (Texte): Type d'entrée d'entraînement.
+-   `Citizen` (Texte): `Username` du citoyen associé à cette entrée.
+-   `System` (Texte multiligne): Contenu du message système pour le modèle.
+-   `Intent` (Texte): Intention ou objectif de cette entrée d'entraînement.
+-   `UserContent` (Texte multiligne): Contenu du message utilisateur.
+-   `AssistantContent` (Texte multiligne): Contenu de la réponse du modèle.
+-   `CreatedAt` (Date/Heure): Date de création de l'enregistrement (automatique par Airtable).
+-   `Notes` (Texte multiligne): Notes additionnelles sur cette entrée d'entraînement.
+
 ## Table: RELATIONSHIPS
 
 Liens et relations entre citoyens (bi-directionnel).
