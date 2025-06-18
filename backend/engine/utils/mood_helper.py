@@ -66,12 +66,13 @@ DEFAULT_SOCIAL_CLASS_MOODS = {
 def calculate_emotion_points(ledger_data: Dict[str, Any]) -> Dict[str, int]:
     """
     Analyzes ledger data to assign points to each basic emotion.
+    Total points are normalized to exactly 10 points distributed among all emotions.
     
     Args:
         ledger_data: Dictionary containing citizen's ledger information
         
     Returns:
-        Dictionary with emotion scores (0-10 for each basic emotion)
+        Dictionary with emotion scores (total sum = 10)
     """
     # Initialize all emotions with a base score
     emotion_scores = {emotion: 0 for emotion in BASIC_EMOTIONS}
@@ -279,9 +280,81 @@ def calculate_emotion_points(ledger_data: Dict[str, Any]) -> Dict[str, int]:
     if illegal_stratagems > 0:
         emotion_scores['disgusted'] += 2
     
-    # Cap all emotions at 10
-    for emotion in emotion_scores:
-        emotion_scores[emotion] = min(emotion_scores[emotion], 10)
+    # Normalize to exactly 10 points total
+    total_points = sum(emotion_scores.values())
+    
+    # If no emotions have points, distribute evenly with slight randomness
+    if total_points == 0:
+        # Default distribution based on social class
+        if social_class in DEFAULT_SOCIAL_CLASS_MOODS:
+            default_mood = DEFAULT_SOCIAL_CLASS_MOODS[social_class]
+            # Find which emotions contribute to this default mood
+            contributing_emotions = []
+            for combo, moods in EMOTION_COMBINATIONS.items():
+                if default_mood in moods:
+                    contributing_emotions.extend(combo)
+            
+            # If we found contributing emotions, weight them higher
+            if contributing_emotions:
+                base_weight = 0.5  # Points for non-contributing emotions
+                extra_weight = 2.0  # Extra points for contributing emotions
+                
+                # Initialize with base weight
+                weights = {emotion: base_weight for emotion in BASIC_EMOTIONS}
+                
+                # Add extra weight to contributing emotions
+                for emotion in contributing_emotions:
+                    if emotion in weights:
+                        weights[emotion] += extra_weight
+                
+                # Normalize weights to sum to 10
+                total_weight = sum(weights.values())
+                for emotion in weights:
+                    emotion_scores[emotion] = round(10 * weights[emotion] / total_weight)
+                
+                # Ensure exactly 10 points by adjusting the highest emotion
+                total = sum(emotion_scores.values())
+                if total != 10:
+                    # Find the highest weighted emotion
+                    highest_emotion = max(weights.items(), key=lambda x: x[1])[0]
+                    emotion_scores[highest_emotion] += (10 - total)
+            else:
+                # Fallback to even distribution
+                base_points = 10 // len(BASIC_EMOTIONS)
+                remainder = 10 % len(BASIC_EMOTIONS)
+                
+                for emotion in BASIC_EMOTIONS:
+                    emotion_scores[emotion] = base_points
+                
+                # Distribute remainder randomly
+                import random
+                for _ in range(remainder):
+                    emotion = random.choice(BASIC_EMOTIONS)
+                    emotion_scores[emotion] += 1
+        else:
+            # Even distribution if no social class
+            base_points = 10 // len(BASIC_EMOTIONS)
+            remainder = 10 % len(BASIC_EMOTIONS)
+            
+            for emotion in BASIC_EMOTIONS:
+                emotion_scores[emotion] = base_points
+            
+            # Distribute remainder randomly
+            import random
+            for _ in range(remainder):
+                emotion = random.choice(BASIC_EMOTIONS)
+                emotion_scores[emotion] += 1
+    else:
+        # Normalize existing scores to sum to 10
+        for emotion in emotion_scores:
+            emotion_scores[emotion] = round(10 * emotion_scores[emotion] / total_points)
+        
+        # Ensure exactly 10 points by adjusting the highest emotion
+        total = sum(emotion_scores.values())
+        if total != 10:
+            # Find the highest emotion
+            highest_emotion = max(emotion_scores.items(), key=lambda x: x[1])[0]
+            emotion_scores[highest_emotion] += (10 - total)
     
     return emotion_scores
 
@@ -345,33 +418,59 @@ def get_citizen_mood(ledger_data: Dict[str, Any]) -> Dict[str, Any]:
         
     Returns:
         Dictionary with mood information including:
-        - basic_emotions: Scores for each basic emotion
+        - basic_emotions: Scores for each basic emotion (total sum = 10)
         - primary_emotion: The highest scoring basic emotion
         - complex_mood: The calculated complex mood
         - intensity: Overall emotional intensity (1-10)
+        - emotion_distribution: Percentage distribution of emotions
     """
     # Get the citizen's social class
     social_class = ledger_data.get('citizen', {}).get('socialClass')
     
-    # Calculate emotion points
+    # Calculate emotion points (normalized to 10 total)
     emotion_scores = calculate_emotion_points(ledger_data)
     
     # Get the primary emotion (highest scoring)
     sorted_emotions = sorted(emotion_scores.items(), key=lambda x: x[1], reverse=True)
-    primary_emotion = sorted_emotions[0][0] if sorted_emotions else "neutral"
+    primary_emotion = sorted_emotions[0][0] if sorted_emotions and sorted_emotions[0][1] > 0 else "neutral"
     
     # Calculate the complex mood
     complex_mood = get_complex_emotion(emotion_scores, social_class)
     
-    # Calculate overall emotional intensity (average of top 3 emotion scores)
-    top_scores = [score for _, score in sorted_emotions[:3]]
-    intensity = round(sum(top_scores) / len(top_scores)) if top_scores else 0
+    # Calculate overall emotional intensity
+    # Since we now have exactly 10 points distributed, we can calculate intensity differently
+    # The intensity is higher when emotions are concentrated in fewer categories
+    
+    # Count non-zero emotions
+    non_zero_emotions = sum(1 for score in emotion_scores.values() if score > 0)
+    
+    # Calculate concentration - higher when points are in fewer emotions
+    if non_zero_emotions == 0:
+        intensity = 5  # Default middle intensity
+    elif non_zero_emotions == 1:
+        intensity = 10  # Maximum intensity when all points in one emotion
+    else:
+        # Calculate standard deviation of emotion scores
+        import statistics
+        try:
+            std_dev = statistics.stdev(emotion_scores.values())
+            # Map standard deviation to intensity scale (0-10)
+            # Higher std_dev means more variance/concentration = higher intensity
+            # Max std_dev would be ~4.1 (all 10 points in one emotion)
+            intensity = min(10, round(std_dev * 2.5))
+        except statistics.StatisticsError:
+            # Fallback if statistics calculation fails
+            intensity = max(1, round(10 / non_zero_emotions))
+    
+    # Calculate percentage distribution
+    emotion_distribution = {emotion: (score / 10) * 100 for emotion, score in emotion_scores.items()}
     
     return {
         "basic_emotions": emotion_scores,
         "primary_emotion": primary_emotion,
         "complex_mood": complex_mood,
-        "intensity": intensity
+        "intensity": intensity,
+        "emotion_distribution": emotion_distribution
     }
 
 # --- Example Usage ---
