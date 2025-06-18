@@ -3,6 +3,7 @@ import sys
 import json
 import logging
 import random
+import re
 import time
 from typing import Dict, List, Optional, Any, Tuple, Union
 from datetime import datetime, timedelta
@@ -88,6 +89,125 @@ DEFAULT_SOCIAL_CLASS_MOODS = {
     'Nobili': 'satisfied',
     'Forestieri': 'anxious'
 }
+
+# Personality trait categories and their emotion modifiers
+PERSONALITY_TRAIT_MODIFIERS = {
+    # CALCULATING/METHODICAL TRAITS
+    "calculating": {"angry": -1, "fearful": -1, "surprised": -1},
+    "strategic": {"angry": -1, "fearful": -1, "surprised": -1},
+    "methodical": {"angry": -1, "fearful": -1, "surprised": -1},
+    "systematic": {"angry": -1, "fearful": -1, "surprised": -1},
+    
+    # PARANOID/SUSPICIOUS TRAITS
+    "suspicious": {"fearful": 2, "angry": 1, "disgusted": 1},
+    "mistrustful": {"fearful": 2, "angry": 1, "disgusted": 1},
+    "paranoid": {"fearful": 2, "angry": 1, "disgusted": 1},
+    "hypervigilant": {"fearful": 2, "angry": 1, "disgusted": 1},
+    
+    # AMBITIOUS/DRIVEN TRAITS
+    "ambitious": {"happy": 1, "angry": 2, "sad": -1},
+    "advancement-driven": {"happy": 1, "angry": 2, "sad": -1},
+    "legacy-driven": {"happy": 1, "angry": 2, "sad": -1},
+    "empire-building": {"happy": 1, "angry": 2, "sad": -1},
+    
+    # RESENTFUL/VINDICTIVE TRAITS
+    "resentful": {"angry": 2, "sad": 1, "happy": -1},
+    "vindictive": {"angry": 2, "sad": 1, "happy": -1},
+    "envious": {"angry": 2, "sad": 1, "happy": -1},
+    "bitter": {"angry": 2, "sad": 1, "happy": -1},
+    
+    # ADAPTABLE/RESOURCEFUL TRAITS
+    "adaptable": {"sad": -1, "fearful": -1, "surprised": -1},
+    "resourceful": {"sad": -1, "fearful": -1, "surprised": -1},
+    "pragmatic": {"sad": -1, "fearful": -1, "surprised": -1},
+    "flexible": {"sad": -1, "fearful": -1, "surprised": -1},
+    
+    # OBSESSIVE/PERFECTIONIST TRAITS
+    "obsessive": {"angry": 1, "fearful": 1, "disgusted": 1},
+    "perfectionist": {"angry": 1, "fearful": 1, "disgusted": 1},
+    "meticulous": {"angry": 1, "fearful": 1, "disgusted": 1},
+    "rigid": {"angry": 1, "fearful": 1, "disgusted": 1},
+    
+    # IMPULSIVE/RESTLESS TRAITS
+    "impatient": {"angry": 1, "surprised": 1, "sad": -1},
+    "restless": {"angry": 1, "surprised": 1, "sad": -1},
+    "impulsive": {"angry": 1, "surprised": 1, "sad": -1},
+    "adhd": {"angry": 1, "surprised": 1, "sad": -1},
+    
+    # RESERVED/SECRETIVE TRAITS
+    "reserved": {"happy": -1, "sad": -1, "angry": -1, "fearful": -1, "surprised": -1, "disgusted": -1},
+    "secretive": {"happy": -1, "sad": -1, "angry": -1, "fearful": -1, "surprised": -1, "disgusted": -1},
+    "aloof": {"happy": -1, "sad": -1, "angry": -1, "fearful": -1, "surprised": -1, "disgusted": -1},
+    "private": {"happy": -1, "sad": -1, "angry": -1, "fearful": -1, "surprised": -1, "disgusted": -1},
+    
+    # SPECIFIC PERSONALITY DISORDERS
+    "antisocial": {"disgusted": -2, "fearful": -1, "angry": 1},
+    "narcissistic": {"angry": 2, "sad": -1, "disgusted": 1},
+    "autistic": {"surprised": 1, "disgusted": 1},
+    "paranoid-pd": {"fearful": 3, "angry": 2, "happy": -1}
+}
+
+def extract_personality_traits(citizen_data: Dict[str, Any]) -> List[str]:
+    """
+    Extracts personality traits from citizen data.
+    
+    Args:
+        citizen_data: Dictionary containing citizen information
+        
+    Returns:
+        List of personality trait strings (lowercase)
+    """
+    traits = []
+    
+    # Extract from corePersonality if it exists (expected to be a JSON array or string)
+    core_personality = citizen_data.get('corePersonality')
+    if core_personality:
+        try:
+            # Try to parse as JSON if it's a string
+            if isinstance(core_personality, str):
+                parsed_traits = json.loads(core_personality)
+                if isinstance(parsed_traits, list):
+                    traits.extend([t.lower() for t in parsed_traits if isinstance(t, str)])
+                elif isinstance(parsed_traits, dict):
+                    # Handle dictionary format if that's how it's stored
+                    for category, trait in parsed_traits.items():
+                        if isinstance(trait, str):
+                            traits.append(trait.lower())
+            elif isinstance(core_personality, list):
+                # Already a list
+                traits.extend([t.lower() for t in core_personality if isinstance(t, str)])
+        except (json.JSONDecodeError, TypeError):
+            # If not valid JSON, try to extract keywords from the string
+            if isinstance(core_personality, str):
+                # Split by common separators and clean up
+                for trait in re.split(r'[,;|]', core_personality):
+                    cleaned_trait = trait.strip().lower()
+                    if cleaned_trait:
+                        traits.append(cleaned_trait)
+    
+    # Extract from personality field if it exists
+    personality = citizen_data.get('personality')
+    if personality and isinstance(personality, str):
+        # Look for key personality traits in the description
+        for trait in PERSONALITY_TRAIT_MODIFIERS.keys():
+            if trait in personality.lower():
+                traits.append(trait)
+    
+    # Extract from description field if it exists
+    description = citizen_data.get('description')
+    if description and isinstance(description, str):
+        # Look for key personality traits in the description
+        for trait in PERSONALITY_TRAIT_MODIFIERS.keys():
+            if trait in description.lower():
+                traits.append(trait)
+    
+    # Remove duplicates while preserving order
+    unique_traits = []
+    for trait in traits:
+        if trait not in unique_traits:
+            unique_traits.append(trait)
+    
+    return unique_traits
 
 def calculate_emotion_points(ledger_data: Dict[str, Any]) -> Dict[str, int]:
     """
@@ -394,6 +514,20 @@ def calculate_emotion_points(ledger_data: Dict[str, Any]) -> Dict[str, int]:
         emotion_scores[emotion] += points_to_add
         random_points -= points_to_add
     
+    # Apply personality trait modifiers
+    citizen = ledger_data.get('citizen', {})
+    personality_traits = extract_personality_traits(citizen)
+    
+    if personality_traits:
+        # Apply modifiers from each trait
+        for trait in personality_traits:
+            if trait in PERSONALITY_TRAIT_MODIFIERS:
+                modifiers = PERSONALITY_TRAIT_MODIFIERS[trait]
+                for emotion, modifier in modifiers.items():
+                    if emotion in emotion_scores:
+                        # Apply the modifier
+                        emotion_scores[emotion] = max(0, emotion_scores[emotion] + modifier)
+    
     return emotion_scores
 
 def get_complex_emotion(emotion_scores: Dict[str, int], social_class: Optional[str] = None) -> str:
@@ -535,6 +669,9 @@ def get_citizen_mood(ledger_data: Dict[str, Any]) -> Dict[str, Any]:
     # Get mood description if it's a triad emotion
     mood_description = EMOTION_TRIAD_DESCRIPTIONS.get(complex_mood)
     
+    # Extract personality traits
+    personality_traits = extract_personality_traits(citizen)
+    
     # Create the mood result
     mood_result = {
         "basic_emotions": emotion_scores,
@@ -542,7 +679,8 @@ def get_citizen_mood(ledger_data: Dict[str, Any]) -> Dict[str, Any]:
         "complex_mood": complex_mood,
         "mood_description": mood_description,
         "intensity": intensity,
-        "emotion_distribution": emotion_distribution
+        "emotion_distribution": emotion_distribution,
+        "personality_traits": personality_traits
     }
     
     # Cache the result if we have a username
