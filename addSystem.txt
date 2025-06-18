@@ -8,7 +8,7 @@ Here is the complete data about your current situation:
 {
   "citizen": {
     "username": "SilentObserver",
-    "ducats": 787211.8638360753,
+    "ducats": 790747.0472639129,
     "social_class": "Popolani",
     "description": "A wiry, weathered man in his mid-30s with calloused hands and a perpetually hunched posture from years of carrying heavy loads across Venice's bridges and narrow calli. Marcantonio Giustinian's sun-darkened face bears the lines of both hardship and unexpected humor, with alert brown eyes that carefully assess the weight and worth of everything before him. Born to a family of facchini who have served Venice's mercantile class for generations, he grew up learning the labyrinthine streets and shortcuts of the city. Despite his humble station, Marcantonio has developed a remarkable network of connections through his daily interactions with merchants, sailors, and shopkeepers. He rises before dawn to secure the best positions at the Rialto docks, hoping to be hired for the day's unloading, and takes pride in his reputation for reliability and discretion\u2014qualities that have made him a preferred porter for certain discreet transactions. In quiet moments, he dreams of saving enough to secure a small boat of his own, elevating himself from carrying goods to transporting them across the lagoon.",
     "core_personality": "{\n      \"Strength\": \"Diplomatic\",\n      \"Flaw\": \"Ruthless\", \n      \"Drive\": \"Beauty-valuing\",\n      \"MBTI\": \"ISFP\",\n      \"PrimaryDisorder\": \"Antisocial Personality Disorder (high-functioning)\",\n      \"SecondaryTraits\": [\"Superficial charm\", \"Lack of remorse\", \"Aesthetic obsession\"],\n      \"CognitiveBias\": [\"Self-serving bias\", \"Halo effect\"],\n      \"TrustThreshold\": 0.3,\n      \"EmpathyWeight\": 0.2,\n      \"RiskTolerance\": 0.8,\n      \"CoreThoughts\": {\n        \"primary_drive\": \"aesthetic-perfection\",\n        \"secondary_drive\": \"effortless-manipulation\", \n        \"internal_tension\": \"beauty appreciation vs. moral emptiness\",\n        \"activation_triggers\": [\"beautiful_objects\", \"manipulation_opportunities\", \"social_facades\"],\n        \"thought_patterns\": [\n          \"How beautifully this can be arranged\",\n          \"People are so predictable in their vanities\",\n          \"Beauty justifies any means necessary to obtain it\",\n          \"My charm opens doors others can't even see\",\n          \"Everyone has weaknesses - most are aesthetic\",\n          \"Why feel guilt when the result is so perfectly orchestrated?\"\n        ],\n        \"decision_framework\": \"How can I achieve the most beautiful outcome with the least effort?\"\n      }\n    }",
@@ -4990,7 +4990,7 @@ Here is the complete data about your current situation:
       "constructionMinutes": 8640,
       "buildTier": 2,
       "tier": null,
-      "category": "passive",
+      "category": "Infrastructure",
       "pointType": "building"
     },
     "dairy": {
@@ -5047,25 +5047,6 @@ Here is the complete data about your current situation:
       "category": "home",
       "pointType": "canal"
     },
-    "glassblower_workshop": {
-      "id": "glassblower_workshop",
-      "type": "glassblower_workshop",
-      "name": "Glassblower Workshop",
-      "shortDescription": "Specialized facility where skilled artisans shape molten glass into fine objects and art pieces.",
-      "constructionCost": 1500000,
-      "constructionCosts": {
-        "ducats": 1500000,
-        "timber": 430,
-        "bricks": 1070,
-        "stone": 570,
-        "iron": 290
-      },
-      "constructionMinutes": 5760,
-      "buildTier": 2,
-      "tier": null,
-      "category": "business",
-      "pointType": "building"
-    },
     "glass_foundry": {
       "id": "glass_foundry",
       "type": "glass_foundry",
@@ -5080,6 +5061,25 @@ Here is the complete data about your current situation:
         "iron": 390
       },
       "constructionMinutes": 10080,
+      "buildTier": 2,
+      "tier": null,
+      "category": "business",
+      "pointType": "building"
+    },
+    "glassblower_workshop": {
+      "id": "glassblower_workshop",
+      "type": "glassblower_workshop",
+      "name": "Glassblower Workshop",
+      "shortDescription": "Specialized facility where skilled artisans shape molten glass into fine objects and art pieces.",
+      "constructionCost": 1500000,
+      "constructionCosts": {
+        "ducats": 1500000,
+        "timber": 430,
+        "bricks": 1070,
+        "stone": 570,
+        "iron": 290
+      },
+      "constructionMinutes": 5760,
       "buildTier": 2,
       "tier": null,
       "category": "business",
@@ -5667,7 +5667,7 @@ Here is the complete data about your current situation:
       "pointType": "building"
     }
   },
-  "timestamp": "2025-06-17T21:26:57.801784+02:00",
+  "timestamp": "2025-06-18T21:59:37.380686+02:00",
   "building_ownership_relevancies": [
     {
       "asset": "building_45.442696_12.317819",
