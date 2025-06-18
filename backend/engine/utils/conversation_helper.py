@@ -23,6 +23,7 @@ try:
         clean_thought_content # Added import for clean_thought_content
     )
     from backend.engine.utils.relationship_helpers import update_trust_score_for_activity # Added import
+    from backend.engine.utils.mood_helper import get_citizen_mood # Import the mood helper
 except ImportError:
     # Fallbacks if run in a context where backend.engine.utils is not directly available
     # This is primarily for robustness; ideally, imports should work.
@@ -33,6 +34,7 @@ except ImportError:
     def get_citizen_record(tables, username): return None # type: ignore # Placeholder
     def get_relationship_trust_score(tables, u1, u2): return 0.0 # type: ignore # Placeholder
     def clean_thought_content(tables, content): return content # type: ignore # Placeholder for clean_thought_content
+    def get_citizen_mood(ledger_data): return {"complex_mood": "neutral", "intensity": 5} # type: ignore # Placeholder
 
 # Load environment variables from the project root .env file
 dotenv_path = os.path.join(PROJECT_ROOT_CONV_HELPER, '.env')
@@ -724,12 +726,28 @@ def generate_conversation_turn(
     channel_name = "_".join(sorted([speaker_username, listener_username]))
 
     # 3. Fetch context data for addSystem
+    speaker_ledger = get_citizen_ledger(speaker_username, api_base_url) or {}
+    
+    # Get the speaker's mood based on their ledger data
+    speaker_mood_info = {}
+    try:
+        if isinstance(speaker_ledger, dict):
+            speaker_mood_info = get_citizen_mood(speaker_ledger)
+            log.info(f"Calculated mood for {speaker_username}: {speaker_mood_info.get('complex_mood')} (intensity: {speaker_mood_info.get('intensity')})")
+        else:
+            log.warning(f"Could not calculate mood for {speaker_username}: ledger is not a dictionary")
+    except Exception as e_mood:
+        log.error(f"Error calculating mood for {speaker_username}: {e_mood}")
+        speaker_mood_info = {"complex_mood": "neutral", "intensity": 5}  # Default fallback
+    
     add_system_payload = {
         "speaker_profile": {
             "username": speaker_profile.get("Username"),
             "firstName": speaker_profile.get("FirstName"),
             "lastName": speaker_profile.get("LastName"),
-            "socialClass": speaker_profile.get("SocialClass")
+            "socialClass": speaker_profile.get("SocialClass"),
+            "mood": speaker_mood_info.get("complex_mood", "neutral"),
+            "mood_intensity": speaker_mood_info.get("intensity", 5)
         },
         "listener_profile": {
             "username": listener_profile.get("Username"),
@@ -737,7 +755,7 @@ def generate_conversation_turn(
             "lastName": listener_profile.get("LastName"),
             "socialClass": listener_profile.get("SocialClass")
         },
-        "speaker_ledger": get_citizen_ledger(speaker_username, api_base_url) or {},
+        "speaker_ledger": speaker_ledger,
         "speaker_problems": get_citizen_problems_list(speaker_username, api_base_url),
         "listener_problems": get_citizen_problems_list(listener_username, api_base_url),
         "relationship_details": get_relationship_details(tables, speaker_username, listener_username) or {},
@@ -754,9 +772,15 @@ def generate_conversation_turn(
     location_context = f"You are both currently {location_description_for_prompt}. "
 
     if interaction_mode == "reflection":
+        # Get mood-specific guidance
+        mood = add_system_payload["speaker_profile"]["mood"]
+        mood_intensity = add_system_payload["speaker_profile"]["mood_intensity"]
+        mood_guidance = f"Your current mood is {mood} (intensity: {mood_intensity}/10). Let this influence your thoughts and observations."
+        
         system_explanation = (
             f"[SYSTEM]You are {speaker_profile.get('FirstName', speaker_username)}, a {speaker_profile.get('SocialClass', 'citizen')} of Venice. "
             f"{location_context}You have noticed {listener_profile.get('FirstName', listener_username)} (Social Class: {listener_profile.get('SocialClass', 'unknown')}) is also here. "
+            f"{mood_guidance} "
             f"Review your knowledge in `addSystem` (your ledger including `availableStratagems` and active stratagems, problems, your relationship with them, their problems, and any recent direct conversation history). "
             f"What are your internal thoughts or observations about their presence and this encounter? Consider any opportunities, risks, or social implications. Could a **Stratagem** be relevant here (either one you are running, one targeting you, or one you might propose)? "
             f"Your response should be your internal monologue or reflection in plain text in English, not direct speech to them. "
@@ -764,9 +788,15 @@ def generate_conversation_turn(
         )
         prompt = system_explanation + f"{speaker_profile.get('FirstName', speaker_username)}'s internal thoughts about {listener_profile.get('FirstName', listener_username)}: "
     elif interaction_mode == "conversation_opener":
+        # Get mood-specific guidance
+        mood = add_system_payload["speaker_profile"]["mood"]
+        mood_intensity = add_system_payload["speaker_profile"]["mood_intensity"]
+        mood_guidance = f"Your current mood is {mood} (intensity: {mood_intensity}/10). Let this influence your tone and approach."
+        
         system_explanation = (
             f"[SYSTEM]You are {speaker_profile.get('FirstName', speaker_username)}, a {speaker_profile.get('SocialClass', 'citizen')} of Venice. "
             f"{location_context}You see {listener_profile.get('FirstName', listener_username)} (Social Class: {listener_profile.get('SocialClass', 'unknown')}) here. "
+            f"{mood_guidance} "
             f"Review your knowledge in `addSystem` (your ledger including `availableStratagems` and active stratagems, problems, your relationship with them, their problems, and any recent direct conversation history). "
             f"What would you say to them to initiate or continue a conversation? Your opening could be related to a shared interest, a problem, an opportunity, or perhaps a **Stratagem** you wish to discuss or propose. "
             f"Your response should be direct speech TO {listener_profile.get('FirstName', listener_username)}, in plain text in English. "
@@ -775,9 +805,15 @@ def generate_conversation_turn(
         # No conversation history for an opener
         prompt = system_explanation + f"{speaker_profile.get('FirstName', speaker_username)} (you) to {listener_profile.get('FirstName', listener_username)}: "
     else: # "conversation" mode (replying in an existing conversation)
+        # Get mood-specific guidance
+        mood = add_system_payload["speaker_profile"]["mood"]
+        mood_intensity = add_system_payload["speaker_profile"]["mood_intensity"]
+        mood_guidance = f"Your current mood is {mood} (intensity: {mood_intensity}/10). Let this influence your tone and response."
+        
         system_explanation = (
             f"[SYSTEM]You are {speaker_profile.get('FirstName', speaker_username)}, a {speaker_profile.get('SocialClass', 'citizen')} of Venice. "
             f"You are currently in conversation with {listener_profile.get('FirstName', listener_username)}. {location_context}"
+            f"{mood_guidance} "
             f"Review your knowledge in `addSystem` (your ledger including `availableStratagems` and active stratagems, problems, relationship, listener's problems, and recent conversation histories, plus this `system_guidance`). "
             f"Continue the conversation naturally in plain text in English, keeping your persona and objectives in mind. If strategic elements arise, remember that **Stratagems** are a key way to interact with the world. Your response should be direct speech.[/SYSTEM]\n\n"
         )
