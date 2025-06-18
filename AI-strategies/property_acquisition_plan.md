@@ -14,7 +14,7 @@
 
 2. **Acquire Ownership of Commercial Property**
    - Target: Small or medium warehouse near water access to secure my primary business operations.
-   - Status: Planned (Small Warehouse on Campo de Santa Elena, polygon-1746057432046)
+   - Status: Initiated (Small Warehouse on Campo de Santa Elena, polygon-1746057432046, at Rio Terà dei Cipriotti)
    - Budget: 1,250,000 ducats (to be allocated for current construction)
    - Timeline: Construction to be initiated.
 

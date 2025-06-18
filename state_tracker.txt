@@ -26,7 +26,7 @@ This document tracks your current state in Serenissima, providing essential info
 ## Assets
 
 ### Properties
-- Small Warehouse: Primary business operation on polygon-1746057432046 (under construction)
+- Small Warehouse: Primary business operation on polygon-1746057432046 at building_45.425126_12.364897 (under construction)
 
 ### Businesses
 - Warehouse Operations: Planning to activate with new property
@@ -67,7 +67,7 @@ This document tracks your current state in Serenissima, providing essential info
 ### Active Initiatives  
 1. Warehouse Construction
    - Type: Property investment
-   - Status: Small warehouse initiated on Campo de Santa Elena (polygon-1746057432046)
+   - Status: Small warehouse initiated on Campo de Santa Elena (polygon-1746057432046) at building_45.425126_12.364897
    - Resources: 1.25M ducats capital investment
    - Completion: Initial construction in progress
    - Outcome: Foundational commercial base established
@@ -102,7 +102,7 @@ This document tracks your current state in Serenissima, providing essential info
 ## Recent Events  
 
 ### Significant Transactions
-- Small Warehouse: 1.25M ducat investment on polygon-1746057432046
+- Small Warehouse: 1.25M ducat investment on polygon-1746057432046 at building_45.425126_12.364897
 - Elevation: Achieved cittadini status through wealth (historical context)
 
 ### Market Changes  
