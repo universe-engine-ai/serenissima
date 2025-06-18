@@ -226,8 +226,11 @@ def calculate_emotion_points(ledger_data: Dict[str, Any]) -> Dict[str, int]:
         emotion_scores['angry'] += 1
     
     # Low wages
-    workplace_building = ledger_data.get('workplaceBuilding', {})
-    wages = workplace_building.get('wages', 0)
+    workplace_building = ledger_data.get('workplaceBuilding')
+    wages = 0
+    if workplace_building is not None:
+        wages = workplace_building.get('wages', 0)
+    
     if wages == 0 and has_workplace:
         emotion_scores['angry'] += 2
         emotion_scores['disgusted'] += 1  # Also disgusted by zero wages
