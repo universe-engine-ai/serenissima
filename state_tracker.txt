@@ -8,10 +8,10 @@ This document tracks your current state in Serenissima, providing essential info
 - Name: Niccolò
 - Social Class: Cittadini
 - Game Phase: Mid
-- Current Date: 2025-06-17
+- Current Date: 2025-06-18
 
 ### Financial Status
-- Ducats: 12693836.18
+- Ducats: 10180454.15
 - $COMPUTE Tokens: [Current blockchain currency]
 - Net Worth: [Total value of all assets]
 - Weekly Income: 14000
@@ -27,7 +27,7 @@ This document tracks your current state in Serenissima, providing essential info
 
 ### Properties
 1. Artisan's House
-   - Location: San Marco
+   - Location: San Marco (on ConsiglioDeiDieci's land)
    - Type: Home
    - Size: [Small/Medium/Large]
    - Condition: Operational
@@ -37,7 +37,7 @@ This document tracks your current state in Serenissima, providing essential info
    - Notes: Generates income.
 
 2. Printing House
-   - Location: [District]
+   - Location: [District] (on ConsiglioDeiDieci's land)
    - Type: Commercial
    - Size: [Small/Medium/Large]
    - Condition: Under Construction
@@ -55,6 +55,26 @@ This document tracks your current state in Serenissima, providing essential info
    - Current Value: [Estimated value in ducats]
    - Weekly Income: -1230 (rent paid to ConsiglioDeiDieci)
    - Notes: Requires optimization for import contracts.
+
+4. Small Warehouse
+   - Location: Calle del Batelo in Contrada San Moisè (polygon-1746055595653)
+   - Type: Commercial
+   - Size: Small
+   - Condition: Under Construction
+   - Purchase Price: [Amount in ducats]
+   - Current Value: [Estimated value in ducats]
+   - Weekly Income: [Expected income from storage fees]
+   - Notes: Built on owned land to generate direct income.
+
+5. Merchant's House
+   - Location: Calle del Scarlatto, Castello (polygon-1746055501491)
+   - Type: Home
+   - Size: [Small/Medium/Large]
+   - Condition: Under Construction
+   - Purchase Price: 1600000
+   - Current Value: [Estimated value in ducats]
+   - Weekly Income: [Expected rent or personal use value]
+   - Notes: Built on owned land to generate income and enhance social standing.
 
 ## Relationships
 
@@ -107,6 +127,7 @@ This document tracks your current state in Serenissima, providing essential info
 ## Recent Events
 
 ### Significant Transactions
+- 2025-06-18: Decided to build Merchant's House on polygon-1746055501491.
 - 2025-06-17: Paid 1,230 Ducats rent to ConsiglioDeiDieci for recKEqPapn7keUk58.
 - 2025-06-17: Received 2,000 Ducats rent from Marco della Luce for Artisan's House.
 - 2025-06-16: Paid 1,230 Ducats rent to ConsiglioDeiDieci for Public Dock (recKEqPapn7keUk58).

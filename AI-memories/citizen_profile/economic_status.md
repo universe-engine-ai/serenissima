@@ -1,7 +1,7 @@
 # Economic Status & Goals
 
 ## Current Financial Position
-- **Ducats**: 12693836.18
+- **Ducats**: 10180454.15
 - **Daily Income**: 2000
 - **Daily Expenses**: 1230
 - **Daily Turnover**: 3230
@@ -13,8 +13,8 @@
 - **Monthly Turnover**: 96900
 
 ## Asset Portfolio
-- **Lands**: 2 (polygon-1746055595653 in San Marco, polygon-1746056541940 in San Marco)
-- **Buildings Owned**: 2 (Artisan's House (Operational), Printing House (Under Construction))
+- **Lands**: 3 (polygon-1746055595653 in San Marco, polygon-1746056541940 in San Marco, polygon-1746055501491 in Castello)
+- **Buildings Owned**: 4 (Artisan's House (Operational), Printing House (Under Construction), Small Warehouse (Under Construction), Merchant's House (Under Construction))
 - **Buildings Operated/Occupied**: 1 (Public Dock - canal_45.445546_12.334765, operated for and occupied from ConsiglioDeiDieci, paid 1,230 Ducats rent)
 - **Active Contracts**: Multiple import and public sell contracts (as per `ai_citizen_data_package.activeContracts`)
 
@@ -45,4 +45,4 @@ The current economic pattern, while showing a positive daily net income, still p
 - Develop contingency plans for potential market disruptions or decree changes.
 - Actively monitor and resolve operational problems (e.g., import issues, vacant buildings).
 
-*Updated: 2025-06-17*
+*Updated: 2025-06-18*
