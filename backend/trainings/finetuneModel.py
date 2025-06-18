@@ -621,20 +621,6 @@ def ensure_dependencies():
     """
     global GPU_AVAILABLE  # Déclarer global au début de la fonction
     
-    try:
-        # Vérifier si bitsandbytes est installé
-        import bitsandbytes
-        log.info("bitsandbytes est déjà installé")
-    except ImportError:
-        log.warning("bitsandbytes n'est pas installé. Installation en cours...")
-        try:
-            import subprocess
-            import sys
-            subprocess.check_call([sys.executable, "-m", "pip", "install", "bitsandbytes>=0.39.0"])
-            log.info("bitsandbytes a été installé avec succès")
-        except Exception as e:
-            log.error(f"Erreur lors de l'installation de bitsandbytes: {e}")
-    
     # Vérifier si GPUtil est installé
     if not GPU_AVAILABLE:
         log.warning("GPUtil n'est pas installé. Installation en cours...")
@@ -706,8 +692,8 @@ def main():
                         help="Use Weights & Biases for experiment tracking")
     parser.add_argument("--debug", action="store_true", 
                         help="Enable debug mode (smaller model, less data)")
-    parser.add_argument("--quantization", type=str, choices=["none", "4bit", "8bit"], default="none",
-                        help="Quantization level for model loading (none, 4bit, 8bit)")
+    parser.add_argument("--quantization", type=str, choices=["none"], default="none",
+                        help="Quantization level for model loading (none)")
     
     args = parser.parse_args()
     
@@ -911,14 +897,9 @@ def main():
         # Déterminer le meilleur mode de chargement en fonction du matériel disponible
         log.info("Détection de la configuration matérielle pour le chargement optimal du modèle...")
         
-        # Vérifier si bitsandbytes est disponible avec support GPU
+        # Quantification désactivée
         has_bitsandbytes_gpu = False
-        try:
-            import bitsandbytes as bnb
-            has_bitsandbytes_gpu = hasattr(bnb, "nn") and hasattr(bnb.nn, "Linear8bitLt")
-            log.info(f"Support bitsandbytes pour GPU: {'Disponible' if has_bitsandbytes_gpu else 'Non disponible'}")
-        except ImportError:
-            log.warning("bitsandbytes n'est pas installé, quantification 8-bit non disponible")
+        log.info("Quantification désactivée pour ce projet")
         
         # Vérifier la mémoire GPU disponible
         gpu_memory_gb = 0
@@ -938,21 +919,8 @@ def main():
         # Vérifier si le modèle contient des indicateurs de quantification
         is_quantized_model = "q6_k" in model_name or "q8_0" in model_name or "q4_k" in model_name
         
-        # Ajouter des options de quantification appropriées
-        if has_bitsandbytes_gpu:
-            if args.quantization == "8bit" or (is_quantized_model and args.quantization != "none"):
-                load_options["load_in_8bit"] = True
-                log.info(f"Chargement du modèle en quantification 8-bit (modèle: {model_name})")
-            elif args.quantization == "4bit":
-                load_options["load_in_4bit"] = True
-                load_options["bnb_4bit_compute_dtype"] = torch.float16
-                load_options["bnb_4bit_use_double_quant"] = True
-                load_options["bnb_4bit_quant_type"] = "nf4"
-                log.info("Chargement du modèle en quantification 4-bit (NF4)")
-            else:
-                log.info("Chargement du modèle en FP16 (pas de quantification)")
-        else:
-            log.info("Chargement du modèle en FP16 (quantification non disponible)")
+        # Pas de quantification
+        log.info("Chargement du modèle en FP16 (pas de quantification)")
         
         # Fonction pour charger un modèle depuis Hugging Face de façon sécurisée
         def load_huggingface_model(model_name, tokenizer, load_options):

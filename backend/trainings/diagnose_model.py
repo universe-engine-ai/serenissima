@@ -113,8 +113,7 @@ def main():
         print("   1. Vérifiez que vous avez la dernière version de transformers:")
         print("      pip install --upgrade transformers")
         print("   2. Assurez-vous d'avoir suffisamment de mémoire GPU/RAM")
-        print("   3. Essayez avec quantification 8-bit ou 4-bit:")
-        print("      --load_in_8bit=True ou --load_in_4bit=True")
+        print("   3. Assurez-vous d'avoir suffisamment de mémoire GPU/RAM")
         print("   4. Vérifiez si le modèle nécessite des dépendances spécifiques")
     else:
         print("\n✅ Diagnostic terminé avec succès!")

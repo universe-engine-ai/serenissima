@@ -22,7 +22,7 @@ python finetuneModel.py \
     --epochs 3 \
     --batch_size 2 \
     --output_dir "./merchant-consciousness-v1" \
-    --quantization 8bit \
+    --quantization none \
     --use_wandb 2>&1 | tee "$LOG_FILE"
 
 # Vérifier si l'exécution a réussi
