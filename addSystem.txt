@@ -8,7 +8,7 @@ Here is the complete data about your current situation:
 {
   "citizen": {
     "username": "RialtoRacer56",
-    "ducats": 306302.50664117286,
+    "ducats": 309469.1896466594,
     "social_class": "Facchini",
     "description": "Dorotea is a pragmatic and resilient woman who has learned to navigate Venice's complex social and economic waters through careful observation and calculated risks. Her years of physical labor have instilled an unshakeable work ethic and respect for honest effort, yet her shrewd investments reveal a calculating mind that sometimes prioritizes profit over loyalty. Though she maintains deep ties to her working-class roots, her growing wealth has sparked ambitions that occasionally put her at odds with her community's expectations.",
     "core_personality": "[\"Observant\", \"Calculating\", \"Advancement-driven\"]",
@@ -3192,6 +3192,21 @@ Here is the complete data about your current situation:
   "latest_citizen_problems": [],
   "recent_notifications_for_ai": [
     {
+      "notificationId": "recYfA4LZZvd09FOk",
+      "type": "rent_payment",
+      "citizen": "RialtoRacer56",
+      "content": "\u2705 Rent Paid: You paid **1,125 \u269c\ufe0f Ducats** to **ConsiglioDeiDieci** for **recWvEXaCntJJJCEV**.",
+      "details": {
+        "building_id": "recWvEXaCntJJJCEV",
+        "building_name": "recWvEXaCntJJJCEV",
+        "rent_price": 1125,
+        "building_owner": "ConsiglioDeiDieci",
+        "event_type": "rent_payment_made"
+      },
+      "createdAt": "2025-06-18T18:01:49.947Z",
+      "readAt": null
+    },
+    {
       "notificationId": "rec88hcumV73GRH80",
       "type": "rent_payment",
       "citizen": "RialtoRacer56",
@@ -3700,7 +3715,7 @@ Here is the complete data about your current situation:
       "pointType": "building"
     }
   },
-  "timestamp": "2025-06-17T21:46:53.286352+02:00",
+  "timestamp": "2025-06-18T21:13:41.071974+02:00",
   "building_ownership_relevancies": []
 }
 
