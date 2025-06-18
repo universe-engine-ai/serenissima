@@ -1,3 +1,3 @@
 # Additional System Instructions
 
-{"citizen_context": "Citizen context data package was not available."}
+{"citizen_context": {"status": "unavailable_no_ledger_fetched"}, "book_context": {"title": "a book", "content": "Content not available or this is a generic book."}}
