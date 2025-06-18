@@ -1581,27 +1581,61 @@ export async function GET(request: Request) {
       console.log(`Invalid citizen position: ${JSON.stringify(citizenPosition)}`);
     }
 
-    // Calculate citizen's mood
+    // Calculate citizen's mood directly using the Python script
     let citizenMood = { complex_mood: "neutral", intensity: 5 };
     try {
-      // Make a request to the mood helper API
-      const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000';
-      const moodResponse = await fetch(`${baseUrl}/api/calculate-mood`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
+      // Prepare the ledger data for the mood calculation
+      const ledgerForMood = {
+        citizen: {
+          ...normalizeKeysCamelCaseShallow(citizenRecord.fields),
+          airtableId: citizenRecord.id,
+          buildingAtPosition: buildingAtPosition,
+          buildingDetails: buildingDetails,
+          citizensAtSamePosition: citizensAtSamePosition
         },
-        body: JSON.stringify({ citizenUsername }),
-      });
+        lastActivity: lastActivityRecord ? {...normalizeKeysCamelCaseShallow(lastActivityRecord.fields), airtableId: lastActivityRecord.id} : null,
+        lastActivities: lastActivitiesRecords.map(a => ({...normalizeKeysCamelCaseShallow(a.fields), airtableId: a.id})),
+        homeBuilding: homeBuildingRecord ? {...normalizeKeysCamelCaseShallow(homeBuildingRecord.fields), airtableId: homeBuildingRecord.id} : null,
+        workplaceBuilding: workplaceBuildingRecord ? {...normalizeKeysCamelCaseShallow(workplaceBuildingRecord.fields), airtableId: workplaceBuildingRecord.id} : null,
+        strongestRelationships: strongestRelationshipsRecords.map(r => {
+          const normalized = normalizeKeysCamelCaseShallow(r.fields);
+          const { combinedScore, ...fieldsWithoutCombinedScore } = normalized;
+          return {...fieldsWithoutCombinedScore, airtableId: r.id};
+        }),
+        recentProblems: recentProblemsRecords.map(p => ({...normalizeKeysCamelCaseShallow(p.fields), airtableId: p.id})),
+        stratagemsExecutedByCitizen: stratagemsResult.executedBy.map(s => ({...normalizeKeysCamelCaseShallow(s.fields), airtableId: s.id})),
+        stratagemsTargetingCitizen: stratagemsResult.targetedAt.map(s => ({...normalizeKeysCamelCaseShallow(s.fields), airtableId: s.id})),
+        ownedLands: ownedLandsData,
+        ownedBuildings: ownedBuildingsRecords.map(b => ({...normalizeKeysCamelCaseShallow(b.fields), airtableId: b.id})),
+        citizenLoans: citizenLoansRecords.map(l => ({...normalizeKeysCamelCaseShallow(l.fields), airtableId: l.id}))
+      };
+
+      // Call the Python mood helper script directly
+      const { exec } = require('child_process');
+      const { promisify } = require('util');
+      const path = require('path');
+      const fs = require('fs').promises;
       
-      if (moodResponse.ok) {
-        const moodData = await moodResponse.json();
-        if (moodData.success && moodData.mood) {
-          citizenMood = moodData.mood;
-        }
+      const execPromise = promisify(exec);
+      const scriptPath = path.join(process.cwd(), 'backend', 'engine', 'utils', 'mood_helper.py');
+      const tempFilePath = path.join(process.cwd(), 'temp_ledger.json');
+      
+      // Write ledger data to a temporary file
+      await fs.writeFile(tempFilePath, JSON.stringify(ledgerForMood));
+      
+      // Execute the Python script
+      const { stdout, stderr } = await execPromise(`python ${scriptPath} --ledger-file ${tempFilePath}`);
+      
+      // Clean up the temporary file
+      await fs.unlink(tempFilePath);
+      
+      if (!stderr) {
+        // Parse the output from the Python script
+        const moodResult = JSON.parse(stdout);
+        citizenMood = moodResult;
       }
     } catch (error) {
-      console.error('Error calculating mood:', error);
+      console.error('Error calculating mood directly:', error);
       // Continue with default mood
     }
 

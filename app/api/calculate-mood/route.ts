@@ -7,7 +7,7 @@ const execPromise = promisify(exec);
 
 export async function POST(request: Request) {
   try {
-    const { citizenUsername } = await request.json();
+    const { citizenUsername, ledgerData } = await request.json();
     
     if (!citizenUsername) {
       return NextResponse.json({ 
@@ -16,29 +16,36 @@ export async function POST(request: Request) {
       }, { status: 400 });
     }
 
-    // Get the ledger data first
-    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000';
-    const ledgerResponse = await fetch(`${baseUrl}/api/get-ledger?citizenUsername=${encodeURIComponent(citizenUsername)}&format=json`);
+    let ledgerToProcess = ledgerData;
     
-    if (!ledgerResponse.ok) {
-      return NextResponse.json({ 
-        success: false, 
-        error: `Failed to fetch ledger data: ${ledgerResponse.status}` 
-      }, { status: 500 });
-    }
-    
-    const ledgerData = await ledgerResponse.json();
-    
-    if (!ledgerData.success || !ledgerData.data) {
-      return NextResponse.json({ 
-        success: false, 
-        error: 'Invalid ledger data' 
-      }, { status: 500 });
+    // Only fetch ledger data if not provided in the request
+    if (!ledgerToProcess) {
+      // Get the ledger data first
+      const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000';
+      const ledgerResponse = await fetch(`${baseUrl}/api/get-ledger?citizenUsername=${encodeURIComponent(citizenUsername)}&format=json`);
+      
+      if (!ledgerResponse.ok) {
+        return NextResponse.json({ 
+          success: false, 
+          error: `Failed to fetch ledger data: ${ledgerResponse.status}` 
+        }, { status: 500 });
+      }
+      
+      const ledgerResponseData = await ledgerResponse.json();
+      
+      if (!ledgerResponseData.success || !ledgerResponseData.data) {
+        return NextResponse.json({ 
+          success: false, 
+          error: 'Invalid ledger data' 
+        }, { status: 500 });
+      }
+      
+      ledgerToProcess = ledgerResponseData.data;
     }
 
     // Call the Python mood helper script
     const scriptPath = path.join(process.cwd(), 'backend', 'engine', 'utils', 'mood_helper.py');
-    const ledgerJson = JSON.stringify(ledgerData.data);
+    const ledgerJson = JSON.stringify(ledgerToProcess);
     
     // Write ledger data to a temporary file to avoid command line length issues
     const tempFilePath = path.join(process.cwd(), 'temp_ledger.json');

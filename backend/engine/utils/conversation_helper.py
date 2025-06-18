@@ -732,6 +732,7 @@ def generate_conversation_turn(
     speaker_mood_info = {}
     try:
         if isinstance(speaker_ledger, dict):
+            # Use the mood helper directly
             speaker_mood_info = get_citizen_mood(speaker_ledger)
             log.info(f"Calculated mood for {speaker_username}: {speaker_mood_info.get('complex_mood')} (intensity: {speaker_mood_info.get('intensity')})")
         else:
