@@ -513,9 +513,9 @@ def calculate_emotion_points(ledger_data: Dict[str, Any]) -> Dict[str, int]:
             highest_emotion = max(emotion_scores.items(), key=lambda x: x[1])[0]
             emotion_scores[highest_emotion] += (10 - total)
     
-    # Add 10 random points to add variability to emotions
-    # This will make the total 20 points
-    random_points = 10
+    # Add 15 random points to add variability to emotions
+    # This will make the total 25 points
+    random_points = 15
     while random_points > 0:
         # Select a random emotion
         emotion = random.choice(BASIC_EMOTIONS)
@@ -654,7 +654,7 @@ def get_citizen_mood(ledger_data: Dict[str, Any]) -> Dict[str, Any]:
             log.info(f"Using cached mood for {username} (age: {int((current_time - cache_entry['timestamp']) / 60)} minutes)")
             return cache_entry["mood"]
     
-    # Calculate emotion points (normalized to 20 total - 10 base + 10 random)
+    # Calculate emotion points (normalized to 25 total - 10 base + 15 random)
     emotion_scores = calculate_emotion_points(ledger_data)
     
     # Get the primary emotion (highest scoring)
@@ -690,7 +690,7 @@ def get_citizen_mood(ledger_data: Dict[str, Any]) -> Dict[str, Any]:
             intensity = max(1, round(10 / non_zero_emotions))
     
     # Calculate percentage distribution
-    emotion_distribution = {emotion: (score / 20) * 100 for emotion, score in emotion_scores.items()}
+    emotion_distribution = {emotion: (score / 25) * 100 for emotion, score in emotion_scores.items()}
     
     # Get mood description - prioritize description from dominant emotion or triad
     mood_description = mood_description_from_emotion
@@ -780,7 +780,7 @@ if __name__ == "__main__":
     else:
         # Pretty print for interactive use
         print(f"{LogColors.HEADER}Mood Analysis for {ledger_data['citizen']['username']}{LogColors.ENDC}")
-        print(f"{LogColors.OKBLUE}Basic Emotions (total: 20 points):{LogColors.ENDC}")
+        print(f"{LogColors.OKBLUE}Basic Emotions (total: 25 points):{LogColors.ENDC}")
         for emotion, score in mood_result['basic_emotions'].items():
             print(f"  - {emotion}: {score} ({mood_result['emotion_distribution'][emotion]:.1f}%)")
         print(f"{LogColors.OKGREEN}Primary Emotion: {mood_result['primary_emotion']}{LogColors.ENDC}")
