@@ -22,5 +22,17 @@
     "content": "I apologize, but the response from Gemini was cut off due to length limits, and no content was provided.",
     "timestamp": "2025-06-09T11:14:34.874649",
     "channel_id": "DogeLover88_NLR"
+  },
+  {
+    "role": "user",
+    "content": "Oh, Niccol\u00f2, have you heard the latest rumor going around Venice?",
+    "timestamp": "2025-06-18T22:27:51.081367",
+    "channel_id": "DogeLover88_NLR"
+  },
+  {
+    "role": "assistant",
+    "content": "I apologize, but I encountered an error with Gemini: Gemini 2.5 Pro Preview doesn't have a free quota tier. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits.. Please try again.",
+    "timestamp": "2025-06-18T22:28:02.151987",
+    "channel_id": "DogeLover88_NLR"
   }
 ]
