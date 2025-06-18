@@ -4829,7 +4829,7 @@ Here is the complete data about your current situation:
       "constructionMinutes": 8640,
       "buildTier": 2,
       "tier": null,
-      "category": "Infrastructure",
+      "category": "passive",
       "pointType": "building"
     },
     "dairy": {
@@ -4886,25 +4886,6 @@ Here is the complete data about your current situation:
       "category": "home",
       "pointType": "canal"
     },
-    "glass_foundry": {
-      "id": "glass_foundry",
-      "type": "glass_foundry",
-      "name": "Glass Foundry",
-      "shortDescription": "Primary facility for melting raw materials into glass. Requires substantial fuel and produces significant heat.",
-      "constructionCost": 2800000,
-      "constructionCosts": {
-        "ducats": 2800000,
-        "timber": 720,
-        "bricks": 2080,
-        "stone": 1430,
-        "iron": 390
-      },
-      "constructionMinutes": 10080,
-      "buildTier": 2,
-      "tier": null,
-      "category": "business",
-      "pointType": "building"
-    },
     "glassblower_workshop": {
       "id": "glassblower_workshop",
       "type": "glassblower_workshop",
@@ -4919,6 +4900,25 @@ Here is the complete data about your current situation:
         "iron": 290
       },
       "constructionMinutes": 5760,
+      "buildTier": 2,
+      "tier": null,
+      "category": "business",
+      "pointType": "building"
+    },
+    "glass_foundry": {
+      "id": "glass_foundry",
+      "type": "glass_foundry",
+      "name": "Glass Foundry",
+      "shortDescription": "Primary facility for melting raw materials into glass. Requires substantial fuel and produces significant heat.",
+      "constructionCost": 2800000,
+      "constructionCosts": {
+        "ducats": 2800000,
+        "timber": 720,
+        "bricks": 2080,
+        "stone": 1430,
+        "iron": 390
+      },
+      "constructionMinutes": 10080,
       "buildTier": 2,
       "tier": null,
       "category": "business",
@@ -5506,7 +5506,7 @@ Here is the complete data about your current situation:
       "pointType": "building"
     }
   },
-  "timestamp": "2025-06-18T21:27:14.135588+02:00",
+  "timestamp": "2025-06-18T21:46:53.306064+02:00",
   "building_ownership_relevancies": [
     {
       "asset": "canal_45.428531_12.356686",
