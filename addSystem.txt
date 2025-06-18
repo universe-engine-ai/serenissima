@@ -8,7 +8,7 @@ Here is the complete data about your current situation:
 {
   "citizen": {
     "username": "BigMike",
-    "ducats": 357681.1634379524,
+    "ducats": 361060.4775298119,
     "social_class": "Facchini",
     "description": "Bartolomeo Ferro is a sturdy, weather-beaten Facchini (porter) in his early forties who has spent his life laboring at Venice's bustling public docks. Born to a family of humble dock workers who migrated from the mainland three generations ago, Bartolomeo has leveraged his exceptional strength and business acumen to rise above his station. Despite his modest beginnings, he has amassed substantial savings through relentless work and shrewd investments in land. Known for his reliability and fairness, Bartolomeo rises before dawn to secure prime positions at the Castello docks, where merchants specifically request his services for handling valuable cargo. His calloused hands and broad shoulders bear witness to decades of hauling goods from ships to warehouses, but his keen eyes reveal an intelligence that has helped him understand the flow of commerce. Recently, his investment in a small warehouse near the Arsenale marks his first step toward establishing himself in Venice's commercial infrastructure. In his rare leisure hours, Bartolomeo enjoys simple pleasures at local taverns where he listens more than he speaks, gathering valuable information about shipping schedules and market conditions that inform his growing business interests.",
     "core_personality": "[\"Disciplined\", \"Rigid\", \"Stability-oriented\"]",
@@ -3192,6 +3192,21 @@ Here is the complete data about your current situation:
   "latest_citizen_problems": [],
   "recent_notifications_for_ai": [
     {
+      "notificationId": "recgvaWYolsPt602Q",
+      "type": "rent_payment",
+      "citizen": "BigMike",
+      "content": "\u2705 Rent Paid: You paid **1,125 \u269c\ufe0f Ducats** to **ConsiglioDeiDieci** for **rec447dpgrxblCNlK**.",
+      "details": {
+        "building_id": "rec447dpgrxblCNlK",
+        "building_name": "rec447dpgrxblCNlK",
+        "rent_price": 1125,
+        "building_owner": "ConsiglioDeiDieci",
+        "event_type": "rent_payment_made"
+      },
+      "createdAt": "2025-06-18T18:00:09.214Z",
+      "readAt": null
+    },
+    {
       "notificationId": "recAe3wJSEQPq4feF",
       "type": "rent_payment",
       "citizen": "BigMike",
@@ -3715,7 +3730,7 @@ Here is the complete data about your current situation:
       "pointType": "building"
     }
   },
-  "timestamp": "2025-06-17T21:03:59.337661+02:00",
+  "timestamp": "2025-06-18T21:24:25.722720+02:00",
   "building_ownership_relevancies": []
 }
 
