@@ -25,6 +25,7 @@ python finetuneModel.py \
     --output_dir "./merchant-consciousness-v1" \
     --learning_rate 1e-5 \
     --weight_decay 0.01 \
+    --fp16 \
     --use_wandb 2>&1 | tee "$LOG_FILE"
 
 # Vérifier si l'exécution a réussi

@@ -34,6 +34,9 @@ from transformers import (
     TrainerCallback
 )
 from datasets import load_dataset
+
+# Désactiver les avertissements de bitsandbytes
+os.environ["BITSANDBYTES_NOWELCOME"] = "1"
 import psutil
 # Définir les variables globales pour GPUtil
 GPU_AVAILABLE = False
@@ -651,11 +654,17 @@ def main():
     import sys
     import tempfile
     
+    # Désactiver les imports de bitsandbytes et peft
+    os.environ["TRANSFORMERS_NO_ADVISORY_WARNINGS"] = "1"
+    
+    # Vérifier si PEFT est importable, sinon désactiver
     try:
-        # S'assurer que toutes les dépendances sont installées
-        ensure_dependencies()
-    except Exception as e:
-        log.error(f"Erreur lors de l'installation des dépendances: {e}")
+        import peft
+        log.info("PEFT est disponible, mais ne sera pas utilisé pour éviter les problèmes avec bitsandbytes")
+        USE_PEFT = False
+    except ImportError:
+        log.info("PEFT n'est pas disponible, utilisation du fine-tuning standard")
+        USE_PEFT = False
         
     parser = argparse.ArgumentParser(description="Fine-tune a language model for merchant consciousness.")
     parser.add_argument("--model", type=str, default="deepseek-ai/DeepSeek-R1-0528-Qwen3-8B", 
@@ -674,12 +683,14 @@ def main():
                         help="Use Weights & Biases for experiment tracking")
     parser.add_argument("--debug", action="store_true", 
                         help="Enable debug mode (smaller model, less data)")
-    parser.add_argument("--quantization", type=str, choices=["none"], default="none",
-                        help="Quantization level for model loading (none)")
     parser.add_argument("--learning_rate", type=float, default=None,
                         help="Learning rate for training")
     parser.add_argument("--weight_decay", type=float, default=0.01,
                         help="Weight decay for regularization")
+    parser.add_argument("--fp16", action="store_true", default=True,
+                        help="Use mixed precision training")
+    parser.add_argument("--bf16", action="store_true", 
+                        help="Use bfloat16 mixed precision training (si disponible)")
     
     args = parser.parse_args()
     
@@ -741,7 +752,8 @@ def main():
         gradient_accumulation_steps=args.gradient_accumulation_steps,  # Use value from command line
         warmup_ratio=training_params["warmup_ratio"],
         learning_rate=training_params["learning_rate"],
-        fp16=True,  # Use mixed precision
+        fp16=args.fp16,  # Use mixed precision if requested
+        bf16=args.bf16 and torch.cuda.is_bf16_supported(),  # Use bfloat16 if supported and requested
         logging_steps=10,  # More frequent for better monitoring
         save_strategy="steps",  # Changed to match evaluation strategy
         save_steps=100,  # Save more frequently
@@ -881,8 +893,8 @@ def main():
         # Déterminer le meilleur mode de chargement en fonction du matériel disponible
         log.info("Détection de la configuration matérielle pour le chargement optimal du modèle...")
         
-        # Pas de quantification
-        log.info("Utilisation de la précision mixte (fp16) sans quantification")
+        # Utiliser la précision mixte standard
+        log.info("Utilisation de la précision mixte standard (fp16/bf16)")
         
         # Vérifier la mémoire GPU disponible
         gpu_memory_gb = 0
