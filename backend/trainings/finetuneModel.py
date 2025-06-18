@@ -1051,7 +1051,10 @@ def main():
         model = get_peft_model(model, lora_config)
         
         # Enable gradient checkpointing for memory efficiency
-        model.gradient_checkpointing_enable()
+        if hasattr(model, "gradient_checkpointing_enable"):
+            model.config.use_cache = False  # Désactiver le cache pour compatibilité avec gradient checkpointing
+            model.gradient_checkpointing_enable()
+            log.info("Gradient checkpointing activé avec use_cache=False")
         
         # Print model parameters
         model.print_trainable_parameters()
