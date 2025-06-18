@@ -3,7 +3,9 @@ import sys
 import json
 import logging
 import random
+import time
 from typing import Dict, List, Optional, Any, Tuple, Union
+from datetime import datetime, timedelta
 
 # Add project root to sys.path if this script is run directly
 PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..', '..'))
@@ -17,6 +19,11 @@ except ImportError:
     class LogColors: HEADER = OKBLUE = OKCYAN = OKGREEN = WARNING = FAIL = ENDC = BOLD = LIGHTBLUE = PINK = "" # type: ignore
 
 log = logging.getLogger(__name__)
+
+# Mood cache to avoid recalculating mood too frequently
+# Format: {username: {"mood": mood_data, "timestamp": unix_timestamp}}
+MOOD_CACHE = {}
+MOOD_CACHE_TTL = 20 * 60  # 20 minutes in seconds
 
 # --- Emotion Wheel System ---
 
@@ -280,7 +287,7 @@ def calculate_emotion_points(ledger_data: Dict[str, Any]) -> Dict[str, int]:
     if illegal_stratagems > 0:
         emotion_scores['disgusted'] += 2
     
-    # Normalize to exactly 10 points total
+    # Normalize to exactly 10 points from calculated values
     total_points = sum(emotion_scores.values())
     
     # If no emotions have points, distribute evenly with slight randomness
@@ -327,7 +334,6 @@ def calculate_emotion_points(ledger_data: Dict[str, Any]) -> Dict[str, int]:
                     emotion_scores[emotion] = base_points
                 
                 # Distribute remainder randomly
-                import random
                 for _ in range(remainder):
                     emotion = random.choice(BASIC_EMOTIONS)
                     emotion_scores[emotion] += 1
@@ -340,7 +346,6 @@ def calculate_emotion_points(ledger_data: Dict[str, Any]) -> Dict[str, int]:
                 emotion_scores[emotion] = base_points
             
             # Distribute remainder randomly
-            import random
             for _ in range(remainder):
                 emotion = random.choice(BASIC_EMOTIONS)
                 emotion_scores[emotion] += 1
@@ -355,6 +360,17 @@ def calculate_emotion_points(ledger_data: Dict[str, Any]) -> Dict[str, int]:
             # Find the highest emotion
             highest_emotion = max(emotion_scores.items(), key=lambda x: x[1])[0]
             emotion_scores[highest_emotion] += (10 - total)
+    
+    # Add 10 random points to add variability to emotions
+    # This will make the total 20 points
+    random_points = 10
+    while random_points > 0:
+        # Select a random emotion
+        emotion = random.choice(BASIC_EMOTIONS)
+        # Add 1-3 points randomly (or remaining points if less than 3)
+        points_to_add = min(random.randint(1, 3), random_points)
+        emotion_scores[emotion] += points_to_add
+        random_points -= points_to_add
     
     return emotion_scores
 
@@ -412,22 +428,34 @@ def get_complex_emotion(emotion_scores: Dict[str, int], social_class: Optional[s
 def get_citizen_mood(ledger_data: Dict[str, Any]) -> Dict[str, Any]:
     """
     Main function to determine a citizen's mood based on their ledger data.
+    Uses a cache to avoid recalculating mood too frequently.
     
     Args:
         ledger_data: Dictionary containing citizen's ledger information
         
     Returns:
         Dictionary with mood information including:
-        - basic_emotions: Scores for each basic emotion (total sum = 10)
+        - basic_emotions: Scores for each basic emotion (total sum = 20)
         - primary_emotion: The highest scoring basic emotion
         - complex_mood: The calculated complex mood
         - intensity: Overall emotional intensity (1-10)
         - emotion_distribution: Percentage distribution of emotions
     """
-    # Get the citizen's social class
-    social_class = ledger_data.get('citizen', {}).get('socialClass')
+    # Get the citizen's username and social class
+    citizen = ledger_data.get('citizen', {})
+    username = citizen.get('username')
+    social_class = citizen.get('socialClass')
     
-    # Calculate emotion points (normalized to 10 total)
+    # Check if we have a cached mood for this citizen
+    current_time = time.time()
+    if username and username in MOOD_CACHE:
+        cache_entry = MOOD_CACHE[username]
+        # If the cache is still valid (less than 20 minutes old)
+        if current_time - cache_entry["timestamp"] < MOOD_CACHE_TTL:
+            log.info(f"Using cached mood for {username} (age: {int((current_time - cache_entry['timestamp']) / 60)} minutes)")
+            return cache_entry["mood"]
+    
+    # Calculate emotion points (normalized to 20 total - 10 base + 10 random)
     emotion_scores = calculate_emotion_points(ledger_data)
     
     # Get the primary emotion (highest scoring)
@@ -438,7 +466,7 @@ def get_citizen_mood(ledger_data: Dict[str, Any]) -> Dict[str, Any]:
     complex_mood = get_complex_emotion(emotion_scores, social_class)
     
     # Calculate overall emotional intensity
-    # Since we now have exactly 10 points distributed, we can calculate intensity differently
+    # Since we now have exactly 20 points distributed, we can calculate intensity differently
     # The intensity is higher when emotions are concentrated in fewer categories
     
     # Count non-zero emotions
@@ -456,22 +484,33 @@ def get_citizen_mood(ledger_data: Dict[str, Any]) -> Dict[str, Any]:
             std_dev = statistics.stdev(emotion_scores.values())
             # Map standard deviation to intensity scale (0-10)
             # Higher std_dev means more variance/concentration = higher intensity
-            # Max std_dev would be ~4.1 (all 10 points in one emotion)
-            intensity = min(10, round(std_dev * 2.5))
+            # Max std_dev would be ~8.2 (all 20 points in one emotion)
+            intensity = min(10, round(std_dev * 1.25))
         except statistics.StatisticsError:
             # Fallback if statistics calculation fails
             intensity = max(1, round(10 / non_zero_emotions))
     
     # Calculate percentage distribution
-    emotion_distribution = {emotion: (score / 10) * 100 for emotion, score in emotion_scores.items()}
+    emotion_distribution = {emotion: (score / 20) * 100 for emotion, score in emotion_scores.items()}
     
-    return {
+    # Create the mood result
+    mood_result = {
         "basic_emotions": emotion_scores,
         "primary_emotion": primary_emotion,
         "complex_mood": complex_mood,
         "intensity": intensity,
         "emotion_distribution": emotion_distribution
     }
+    
+    # Cache the result if we have a username
+    if username:
+        MOOD_CACHE[username] = {
+            "mood": mood_result,
+            "timestamp": current_time
+        }
+        log.info(f"Cached new mood for {username}")
+    
+    return mood_result
 
 # --- Example Usage ---
 if __name__ == "__main__":
@@ -531,9 +570,18 @@ if __name__ == "__main__":
     else:
         # Pretty print for interactive use
         print(f"{LogColors.HEADER}Mood Analysis for {ledger_data['citizen']['username']}{LogColors.ENDC}")
-        print(f"{LogColors.OKBLUE}Basic Emotions:{LogColors.ENDC}")
+        print(f"{LogColors.OKBLUE}Basic Emotions (total: 20 points):{LogColors.ENDC}")
         for emotion, score in mood_result['basic_emotions'].items():
-            print(f"  - {emotion}: {score}")
+            print(f"  - {emotion}: {score} ({mood_result['emotion_distribution'][emotion]:.1f}%)")
         print(f"{LogColors.OKGREEN}Primary Emotion: {mood_result['primary_emotion']}{LogColors.ENDC}")
         print(f"{LogColors.OKGREEN}Complex Mood: {mood_result['complex_mood']}{LogColors.ENDC}")
         print(f"{LogColors.OKGREEN}Emotional Intensity: {mood_result['intensity']}/10{LogColors.ENDC}")
+        
+        # Show cache status
+        username = ledger_data.get('citizen', {}).get('username')
+        if username:
+            if username in MOOD_CACHE:
+                cache_age = time.time() - MOOD_CACHE[username]["timestamp"]
+                print(f"{LogColors.OKBLUE}Mood cached: {cache_age < MOOD_CACHE_TTL} (Age: {int(cache_age / 60)} minutes){LogColors.ENDC}")
+            else:
+                print(f"{LogColors.OKBLUE}Mood cached: False{LogColors.ENDC}")

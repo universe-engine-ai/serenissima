@@ -5,15 +5,31 @@ import path from 'path';
 
 const execPromise = promisify(exec);
 
+// Simple in-memory cache for mood results
+// Format: {username: {mood: Object, timestamp: number, expiresAt: Date}}
+const moodCache: Record<string, {mood: any, timestamp: number, expiresAt: Date}> = {};
+const CACHE_TTL_MS = 20 * 60 * 1000; // 20 minutes in milliseconds
+
 export async function POST(request: Request) {
   try {
-    const { citizenUsername, ledgerData } = await request.json();
+    const { citizenUsername, ledgerData, forceRefresh = false } = await request.json();
     
     if (!citizenUsername) {
       return NextResponse.json({ 
         success: false, 
         error: 'citizenUsername is required' 
       }, { status: 400 });
+    }
+
+    // Check if we have a valid cached result
+    const now = Date.now();
+    if (!forceRefresh && moodCache[citizenUsername] && now < moodCache[citizenUsername].expiresAt.getTime()) {
+      console.log(`Using cached mood for ${citizenUsername} (age: ${Math.round((now - moodCache[citizenUsername].timestamp) / 1000 / 60)} minutes)`);
+      return NextResponse.json({
+        success: true,
+        mood: moodCache[citizenUsername].mood,
+        fromCache: true
+      });
     }
 
     let ledgerToProcess = ledgerData;
@@ -70,9 +86,18 @@ export async function POST(request: Request) {
     // Parse the output from the Python script
     const moodResult = JSON.parse(stdout);
     
+    // Cache the result
+    moodCache[citizenUsername] = {
+      mood: moodResult,
+      timestamp: now,
+      expiresAt: new Date(now + CACHE_TTL_MS)
+    };
+    console.log(`Cached new mood for ${citizenUsername}`);
+    
     return NextResponse.json({ 
       success: true, 
-      mood: moodResult 
+      mood: moodResult,
+      fromCache: false
     });
     
   } catch (error) {
