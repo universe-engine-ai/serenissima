@@ -34,5 +34,17 @@
     "content": "Messer Contarini, a word if I may? Niccol\u00f2 Lesteri. It seems the difficulty in securing basic rope is a common affliction across the city these days. Your warehouse at Fondamenta della Pescaria must feel the strain, much like my own Public Dock at Riva dei Vinattieri. A vexing pattern for us merchants, is it not? And frankly, all this commercial strategizing does little to appease a rumbling stomach; I find myself quite hungry.",
     "timestamp": "2025-06-09T11:03:42.924577",
     "channel_id": "ItalyMerchant_NLR"
+  },
+  {
+    "role": "user",
+    "content": "Oh, Niccol\u00f2, have you heard the latest rumor going around Venice?",
+    "timestamp": "2025-06-18T18:19:29.737798",
+    "channel_id": "ItalyMerchant_NLR"
+  },
+  {
+    "role": "assistant",
+    "content": "I apologize, but I encountered an error with Gemini: Gemini 2.5 Pro Preview doesn't have a free quota tier. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits.. Please try again.",
+    "timestamp": "2025-06-18T18:19:40.817109",
+    "channel_id": "ItalyMerchant_NLR"
   }
 ]
