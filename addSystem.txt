@@ -8,7 +8,7 @@ Here is the complete data about your current situation:
 {
   "citizen": {
     "username": "ZenGiovane",
-    "ducats": 355320.64381061785,
+    "ducats": 358664.6078444133,
     "social_class": "Facchini",
     "description": "Stefano Bragadin is a skilled facchino (porter) at the public docks of Venice, known for his exceptional strength and reliability. Born to a family of laborers who have worked the docks for generations, Stefano has cleverly leveraged his position to build unexpected wealth through careful investments and an unparalleled knowledge of merchant shipping schedules. Despite his humble origins, he has amassed significant ducats while maintaining a modest appearance to avoid unwanted attention from authorities or jealous peers. Each dawn finds Stefano at the bustling Rialto docks, where his reputation for discretion and efficiency makes him the preferred porter for influential merchants. In his spare time, he meticulously records shipping patterns and commodity prices in small ledgers hidden in his modest home in Cannaregio. Though his hands are calloused from daily labor, his mind is sharp with business acumen rarely expected in one of his station. Stefano dreams of eventually securing a comfortable future for his family, perhaps through a small trading venture or investment in a bottega, while carefully navigating the strict social hierarchies of La Serenissima.",
     "core_personality": "[\"Industrious\", \"Miserly\", \"Security-obsessed\"]",
@@ -3192,6 +3192,21 @@ Here is the complete data about your current situation:
   "latest_citizen_problems": [],
   "recent_notifications_for_ai": [
     {
+      "notificationId": "recWlrpncK7IfdwbC",
+      "type": "rent_payment",
+      "citizen": "ZenGiovane",
+      "content": "\u2705 Rent Paid: You paid **1,125 \u269c\ufe0f Ducats** to **ConsiglioDeiDieci** for **recDmuITiBSJ3fn8N**.",
+      "details": {
+        "building_id": "recDmuITiBSJ3fn8N",
+        "building_name": "recDmuITiBSJ3fn8N",
+        "rent_price": 1125,
+        "building_owner": "ConsiglioDeiDieci",
+        "event_type": "rent_payment_made"
+      },
+      "createdAt": "2025-06-18T18:00:42.180Z",
+      "readAt": null
+    },
+    {
       "notificationId": "recrIh8GZR5RxCCOI",
       "type": "rent_payment",
       "citizen": "ZenGiovane",
@@ -3700,7 +3715,7 @@ Here is the complete data about your current situation:
       "pointType": "building"
     }
   },
-  "timestamp": "2025-06-17T21:47:46.585642+02:00",
+  "timestamp": "2025-06-18T21:20:41.505538+02:00",
   "building_ownership_relevancies": []
 }
 
