@@ -38,6 +38,16 @@ BASIC_EMOTIONS = [
     "disgusted"
 ]
 
+# Intense versions of basic emotions when they are dominant
+INTENSE_EMOTION_MAPPINGS = {
+    "happy": ["ecstatic", "euphoric", "overjoyed", "elated"],
+    "sad": ["devastated", "heartbroken", "grief-stricken", "despondent"],
+    "angry": ["furious", "enraged", "livid", "seething"],
+    "fearful": ["terrified", "panic-stricken", "petrified", "horrified"],
+    "surprised": ["astonished", "dumbfounded", "flabbergasted", "shocked"],
+    "disgusted": ["repulsed", "revolted", "sickened", "nauseated"]
+}
+
 # Complex emotions derived from combinations of basic emotions
 # Format: (emotion1, emotion2): [possible_complex_emotions]
 EMOTION_COMBINATIONS = {
@@ -530,17 +540,20 @@ def calculate_emotion_points(ledger_data: Dict[str, Any]) -> Dict[str, int]:
     
     return emotion_scores
 
-def get_complex_emotion(emotion_scores: Dict[str, int], social_class: Optional[str] = None) -> str:
+def get_complex_emotion(emotion_scores: Dict[str, int], social_class: Optional[str] = None) -> Tuple[str, Optional[str]]:
     """
     Takes basic emotion scores and returns a complex emotion based on emotion wheel combinations.
-    Checks for triads (three strong emotions) first, then falls back to pairs.
+    Checks for triads (three strong emotions) first, then checks for dominant emotions,
+    then falls back to pairs.
     
     Args:
         emotion_scores: Dictionary with scores for each basic emotion
         social_class: Citizen's social class for fallback mood
         
     Returns:
-        A string representing the complex emotion
+        A tuple containing:
+        - A string representing the complex emotion
+        - An optional string describing the emotion (for dominant emotions)
     """
     # Sort emotions by score in descending order
     sorted_emotions = sorted(emotion_scores.items(), key=lambda x: x[1], reverse=True)
@@ -558,9 +571,22 @@ def get_complex_emotion(emotion_scores: Dict[str, int], social_class: Optional[s
         triad_key = tuple(top_three)
         if triad_key in EMOTION_TRIADS:
             # Randomly select one of the possible complex emotions for this triad
-            return random.choice(EMOTION_TRIADS[triad_key])
+            triad_emotion = random.choice(EMOTION_TRIADS[triad_key])
+            return triad_emotion, EMOTION_TRIAD_DESCRIPTIONS.get(triad_emotion)
     
-    # If no triad match, check for emotion pairs
+    # Check for dominant emotions (twice as strong as the next one)
+    if len(sorted_emotions) >= 2 and sorted_emotions[0][1] > 0:
+        top_emotion, top_score = sorted_emotions[0]
+        second_emotion, second_score = sorted_emotions[1]
+        
+        # If the top emotion is at least twice as strong as the second one
+        if top_score >= second_score * 2 and top_emotion in INTENSE_EMOTION_MAPPINGS:
+            # Select a random intense version of this emotion
+            intense_emotion = random.choice(INTENSE_EMOTION_MAPPINGS[top_emotion])
+            description = f"Overwhelmingly {top_emotion}, with little room for other feelings"
+            return intense_emotion, description
+    
+    # If no dominant emotion, check for emotion pairs
     # Check if we have a clear top emotion or if there's a tie
     if len(sorted_emotions) >= 2 and sorted_emotions[0][1] > 0:
         # If the top two emotions have the same score, randomly select one to be dominant
@@ -577,9 +603,9 @@ def get_complex_emotion(emotion_scores: Dict[str, int], social_class: Optional[s
         # If we don't have at least two emotions with scores > 0, use default for social class
         if len(top_emotions) < 2:
             if social_class and social_class in DEFAULT_SOCIAL_CLASS_MOODS:
-                return DEFAULT_SOCIAL_CLASS_MOODS[social_class]
+                return DEFAULT_SOCIAL_CLASS_MOODS[social_class], None
             else:
-                return "neutral"  # Default fallback
+                return "neutral", None  # Default fallback
         
         # Sort the top two emotions alphabetically to match our combination dictionary keys
         top_emotions.sort()
@@ -588,15 +614,15 @@ def get_complex_emotion(emotion_scores: Dict[str, int], social_class: Optional[s
         emotion_key = (top_emotions[0], top_emotions[1])
         if emotion_key in EMOTION_COMBINATIONS:
             # Randomly select one of the possible complex emotions for this combination
-            return random.choice(EMOTION_COMBINATIONS[emotion_key])
+            return random.choice(EMOTION_COMBINATIONS[emotion_key]), None
     
     # If we don't have a mapping for this combination or no valid emotions, use social class default or highest scoring emotion
     if social_class and social_class in DEFAULT_SOCIAL_CLASS_MOODS:
-        return DEFAULT_SOCIAL_CLASS_MOODS[social_class]
+        return DEFAULT_SOCIAL_CLASS_MOODS[social_class], None
     elif sorted_emotions and sorted_emotions[0][1] > 0:
-        return sorted_emotions[0][0]
+        return sorted_emotions[0][0], None
     else:
-        return "neutral"  # Default fallback
+        return "neutral", None  # Default fallback
 
 def get_citizen_mood(ledger_data: Dict[str, Any]) -> Dict[str, Any]:
     """
@@ -635,8 +661,8 @@ def get_citizen_mood(ledger_data: Dict[str, Any]) -> Dict[str, Any]:
     sorted_emotions = sorted(emotion_scores.items(), key=lambda x: x[1], reverse=True)
     primary_emotion = sorted_emotions[0][0] if sorted_emotions and sorted_emotions[0][1] > 0 else "neutral"
     
-    # Calculate the complex mood
-    complex_mood = get_complex_emotion(emotion_scores, social_class)
+    # Calculate the complex mood and get any description
+    complex_mood, mood_description_from_emotion = get_complex_emotion(emotion_scores, social_class)
     
     # Calculate overall emotional intensity
     # Since we now have exactly 20 points distributed, we can calculate intensity differently
@@ -666,8 +692,11 @@ def get_citizen_mood(ledger_data: Dict[str, Any]) -> Dict[str, Any]:
     # Calculate percentage distribution
     emotion_distribution = {emotion: (score / 20) * 100 for emotion, score in emotion_scores.items()}
     
-    # Get mood description if it's a triad emotion
-    mood_description = EMOTION_TRIAD_DESCRIPTIONS.get(complex_mood)
+    # Get mood description - prioritize description from dominant emotion or triad
+    mood_description = mood_description_from_emotion
+    if not mood_description:
+        # Fall back to triad description if no dominant emotion description
+        mood_description = EMOTION_TRIAD_DESCRIPTIONS.get(complex_mood)
     
     # Extract personality traits
     personality_traits = extract_personality_traits(citizen)
@@ -756,6 +785,8 @@ if __name__ == "__main__":
             print(f"  - {emotion}: {score} ({mood_result['emotion_distribution'][emotion]:.1f}%)")
         print(f"{LogColors.OKGREEN}Primary Emotion: {mood_result['primary_emotion']}{LogColors.ENDC}")
         print(f"{LogColors.OKGREEN}Complex Mood: {mood_result['complex_mood']}{LogColors.ENDC}")
+        if mood_result.get('mood_description'):
+            print(f"{LogColors.OKGREEN}Mood Description: {mood_result['mood_description']}{LogColors.ENDC}")
         print(f"{LogColors.OKGREEN}Emotional Intensity: {mood_result['intensity']}/10{LogColors.ENDC}")
         
         # Show cache status
