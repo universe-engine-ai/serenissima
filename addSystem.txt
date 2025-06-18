@@ -1,3 +1,3 @@
 # Additional System Instructions
 
-These notifications represent recent events in La Serenissima that affect you. Use this information to update your knowledge about your properties, finances, and the city's current state.
+{"citizen_context": "Citizen context ledger was not available."}
