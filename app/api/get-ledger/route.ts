@@ -1047,6 +1047,14 @@ function convertLedgerToMarkdown(Ledger: any, citizenUsername: string | null): s
   // Use direct formatting for the current date to ensure it's 500 years ago with English month names
   md += `${historicalDate.toLocaleString('en-GB', { dateStyle: 'medium', timeStyle: 'short', timeZone: 'Europe/Rome' })}\n`;
   md += '\n';
+  
+  // Add citizen's current mood if available
+  if (Ledger.citizen?.mood) {
+    md += `## Current Mood\n`;
+    const moodIntensity = Ledger.citizen.moodIntensity || 5;
+    md += `${Ledger.citizen.mood} (Intensity: ${moodIntensity}/10)\n`;
+    md += '\n';
+  }
 
   // Last Activity
   md += `## Last Activity\n`;
@@ -1573,13 +1581,39 @@ export async function GET(request: Request) {
       console.log(`Invalid citizen position: ${JSON.stringify(citizenPosition)}`);
     }
 
+    // Calculate citizen's mood
+    let citizenMood = { complex_mood: "neutral", intensity: 5 };
+    try {
+      // Make a request to the mood helper API
+      const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000';
+      const moodResponse = await fetch(`${baseUrl}/api/calculate-mood`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ citizenUsername }),
+      });
+      
+      if (moodResponse.ok) {
+        const moodData = await moodResponse.json();
+        if (moodData.success && moodData.mood) {
+          citizenMood = moodData.mood;
+        }
+      }
+    } catch (error) {
+      console.error('Error calculating mood:', error);
+      // Continue with default mood
+    }
+
     const Ledger = {
       citizen: {
         ...normalizeKeysCamelCaseShallow(citizenRecord.fields), 
         airtableId: citizenRecord.id,
         buildingAtPosition: buildingAtPosition, // Add the building name at position
         buildingDetails: buildingDetails, // Add detailed building information
-        citizensAtSamePosition: citizensAtSamePosition // Add other citizens at the same position with more details
+        citizensAtSamePosition: citizensAtSamePosition, // Add other citizens at the same position with more details
+        mood: citizenMood.complex_mood,
+        moodIntensity: citizenMood.intensity
       },
       lastActivity: lastActivityRecord ? {...normalizeKeysCamelCaseShallow(lastActivityRecord.fields), airtableId: lastActivityRecord.id} : null,
       lastActivities: [] as any[], // Initialize lastActivities array

@@ -376,36 +376,65 @@ def get_citizen_mood(ledger_data: Dict[str, Any]) -> Dict[str, Any]:
 
 # --- Example Usage ---
 if __name__ == "__main__":
-    # Example ledger data (simplified)
-    example_ledger = {
-        "citizen": {
-            "username": "ExampleCitizen",
-            "firstName": "Example",
-            "lastName": "Citizen",
-            "socialClass": "Cittadini",
-            "ducats": 250
-        },
-        "homeBuilding": {"name": "Canal House"},
-        "workplaceBuilding": {"name": "Bakery"},
-        "strongestRelationships": [
-            {"citizen1": "ExampleCitizen", "citizen2": "Friend1", "trustScore": 75},
-            {"citizen1": "ExampleCitizen", "citizen2": "Rival1", "trustScore": -30}
-        ],
-        "recentProblems": [
-            {"title": "Low Flour Supply", "severity": "Medium"}
-        ],
-        "stratagemsExecutedByCitizen": [],
-        "stratagemsTargetingCitizen": []
-    }
+    import argparse
+    import json
+    
+    # Set up argument parser
+    parser = argparse.ArgumentParser(description='Calculate citizen mood from ledger data')
+    parser.add_argument('--ledger-file', type=str, help='Path to JSON file containing ledger data')
+    parser.add_argument('--ledger-json', type=str, help='JSON string containing ledger data')
+    args = parser.parse_args()
+    
+    # Load ledger data
+    ledger_data = None
+    if args.ledger_file:
+        try:
+            with open(args.ledger_file, 'r', encoding='utf-8') as f:
+                ledger_data = json.load(f)
+        except Exception as e:
+            print(f"Error loading ledger file: {e}", file=sys.stderr)
+            sys.exit(1)
+    elif args.ledger_json:
+        try:
+            ledger_data = json.loads(args.ledger_json)
+        except Exception as e:
+            print(f"Error parsing ledger JSON: {e}", file=sys.stderr)
+            sys.exit(1)
+    else:
+        # Use example data if no arguments provided
+        ledger_data = {
+            "citizen": {
+                "username": "ExampleCitizen",
+                "firstName": "Example",
+                "lastName": "Citizen",
+                "socialClass": "Cittadini",
+                "ducats": 250
+            },
+            "homeBuilding": {"name": "Canal House"},
+            "workplaceBuilding": {"name": "Bakery"},
+            "strongestRelationships": [
+                {"citizen1": "ExampleCitizen", "citizen2": "Friend1", "trustScore": 75},
+                {"citizen1": "ExampleCitizen", "citizen2": "Rival1", "trustScore": -30}
+            ],
+            "recentProblems": [
+                {"title": "Low Flour Supply", "severity": "Medium"}
+            ],
+            "stratagemsExecutedByCitizen": [],
+            "stratagemsTargetingCitizen": []
+        }
     
     # Get the mood
-    mood_result = get_citizen_mood(example_ledger)
+    mood_result = get_citizen_mood(ledger_data)
     
-    # Print the result
-    print(f"{LogColors.HEADER}Mood Analysis for {example_ledger['citizen']['username']}{LogColors.ENDC}")
-    print(f"{LogColors.OKBLUE}Basic Emotions:{LogColors.ENDC}")
-    for emotion, score in mood_result['basic_emotions'].items():
-        print(f"  - {emotion}: {score}")
-    print(f"{LogColors.OKGREEN}Primary Emotion: {mood_result['primary_emotion']}{LogColors.ENDC}")
-    print(f"{LogColors.OKGREEN}Complex Mood: {mood_result['complex_mood']}{LogColors.ENDC}")
-    print(f"{LogColors.OKGREEN}Emotional Intensity: {mood_result['intensity']}/10{LogColors.ENDC}")
+    if args.ledger_file or args.ledger_json:
+        # Output JSON for API consumption
+        print(json.dumps(mood_result))
+    else:
+        # Pretty print for interactive use
+        print(f"{LogColors.HEADER}Mood Analysis for {ledger_data['citizen']['username']}{LogColors.ENDC}")
+        print(f"{LogColors.OKBLUE}Basic Emotions:{LogColors.ENDC}")
+        for emotion, score in mood_result['basic_emotions'].items():
+            print(f"  - {emotion}: {score}")
+        print(f"{LogColors.OKGREEN}Primary Emotion: {mood_result['primary_emotion']}{LogColors.ENDC}")
+        print(f"{LogColors.OKGREEN}Complex Mood: {mood_result['complex_mood']}{LogColors.ENDC}")
+        print(f"{LogColors.OKGREEN}Emotional Intensity: {mood_result['intensity']}/10{LogColors.ENDC}")
