@@ -8,7 +8,7 @@ Here is the complete data about your current situation:
 {
   "citizen": {
     "username": "StarGazer2000",
-    "ducats": 610166.3850834797,
+    "ducats": 620659.3934092014,
     "social_class": "Popolani",
     "description": "Cecilia Valier, a sturdy woman in her early 40s with calloused hands and a weather-worn face that speaks of years of hard labor as a facchino (porter). Her once-auburn hair, now streaked with gray, is simply tied back under a modest kerchief. Though her honey-colored eyes still miss nothing, they now scan for work opportunities rather than social advantages. Born to a humble family in the poorest district of Cannaregio, Cecilia has built a modest reputation for reliability among the merchants at the Rialto, where she carries goods between ships and warehouses. Rising before dawn, she waits at the docks for merchants needing strong backs, sometimes working until sunset when trade is busy. In rare moments of rest, she counts her small savings, dreaming of opening a simple lodging house for fellow laborers. Despite her fall from an invented noble identity to her true station, Cecilia maintains a quiet dignity and resourcefulness that has helped her survive Venice's unforgiving economic hierarchy.",
     "core_personality": "[\"Pragmatic\", \"Calculating\", \"Opportunity-focused\"]",
@@ -3332,6 +3332,35 @@ Here is the complete data about your current situation:
   "latest_citizen_problems": [],
   "recent_notifications_for_ai": [
     {
+      "notificationId": "rec52C6vzMEVJ1WAi",
+      "type": "rent_payment",
+      "citizen": "StarGazer2000",
+      "content": "\ud83d\udcec **Rent Received Summary** \ud83d\udcec\nYou received a total of **4,015 \u269c\ufe0f Ducats** from your properties today.\n\nDetails:\n- \u2705 **1,315 \u269c\ufe0f** from **Serafina Moretti** for **Fisherman's Cottage at Fondamenta dei Pistori**.\n- \u2705 **1,315 \u269c\ufe0f** from **Pietro Barozzi** for **Fisherman's Cottage at Riva del Traghetto San Silvestro**.\n- \u2705 **1,385 \u269c\ufe0f** from **Marco de l\u2019Argentoro** for **Fisherman's Cottage at Fondamenta della Madonna**.\n",
+      "details": {
+        "event_type": "landlord_rent_summary",
+        "total_received": 4015,
+        "payments": [
+          {
+            "occupant_name": "Serafina Moretti",
+            "building_name": "Fisherman's Cottage at Fondamenta dei Pistori",
+            "amount": 1315
+          },
+          {
+            "occupant_name": "Pietro Barozzi",
+            "building_name": "Fisherman's Cottage at Riva del Traghetto San Silvestro",
+            "amount": 1315
+          },
+          {
+            "occupant_name": "Marco de l\u2019Argentoro",
+            "building_name": "Fisherman's Cottage at Fondamenta della Madonna",
+            "amount": 1385
+          }
+        ]
+      },
+      "createdAt": "2025-06-18T18:03:13.214Z",
+      "readAt": null
+    },
+    {
       "notificationId": "recNZ8FRUz4fXA9KD",
       "type": "rent_payment",
       "citizen": "StarGazer2000",
@@ -4758,7 +4787,7 @@ Here is the complete data about your current situation:
       "pointType": "building"
     }
   },
-  "timestamp": "2025-06-17T21:04:23.450804+02:00",
+  "timestamp": "2025-06-18T21:15:56.753205+02:00",
   "building_ownership_relevancies": [
     {
       "asset": "canal_45.442613_12.326981",
