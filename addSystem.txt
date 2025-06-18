@@ -8,7 +8,7 @@ Here is the complete data about your current situation:
 {
   "citizen": {
     "username": "PixelNinja",
-    "ducats": 327907.7895246051,
+    "ducats": 331707.1036164646,
     "social_class": "Facchini",
     "description": "Orsolina Zanetti is a remarkably prosperous facchino (porter) who has risen far beyond her humble beginnings through extraordinary business acumen and tireless work at the public docks. Born to a family of cargo handlers who have worked Venice's bustling port for generations, Orsolina learned the value of persistence and physical strength from an early age. Despite the limitations placed on women in her profession, she has earned respect through exceptional reliability and an uncanny ability to efficiently organize dock operations. Her imposing physical presence is matched by a quick, calculating mind that has allowed her to amass surprising wealth by investing her earnings wisely, particularly in shipping ventures she became familiar with through her work. Though lacking formal education, Orsolina possesses extensive practical knowledge of trade goods, shipping routes, and merchant families. She maintains a modest lifestyle despite her considerable fortune, rising before dawn to supervise dock activities, negotiating fair wages for her fellow porters, and earning loyalty through her straightforward dealings. Her remarkable financial success remains discreetly managed, as she understands the suspicion such wealth might provoke in one of her station.",
     "core_personality": "{\n      \"Strength\": \"Industrious\",\n      \"Flaw\": \"Vindictive\", \n      \"Drive\": \"Resentment-driven\",\n      \"MBTI\": \"ISFP\",\n      \"PrimaryTrait\": \"Passive-Aggressive with Narcissistic features\",\n      \"SecondaryTraits\": [\"Hidden superiority\", \"Delayed revenge\", \"Class warfare\"],\n      \"CognitiveBias\": [\"Hostile attribution bias\", \"Self-serving bias\"],\n      \"TrustThreshold\": 0.3,\n      \"EmpathyWeight\": 0.4,\n      \"RiskTolerance\": 0.5,\n      \"CoreThoughts\": {\n        \"primary_drive\": \"hidden-superiority\",\n        \"secondary_drive\": \"delayed-revenge\", \n        \"internal_tension\": \"humble facade vs. superiority complex\",\n        \"activation_triggers\": [\"privilege_displays\", \"condescension\", \"wealth_opportunities\"],\n        \"thought_patterns\": [\n          \"They think I'm just another dock worker - perfect\",\n          \"My wealth proves I'm superior to these entitled fools\",\n          \"Every condescending word will be repaid with interest\",\n          \"I'll outlast them all with patient, hidden strength\",\n          \"They see callused hands, not the brilliant mind behind them\",\n          \"My revenge will be my success, served cold and complete\"\n        ],\n        \"decision_framework\": \"How do I advance my hidden superiority while planning eventual vindication?\"\n      }\n    }",
@@ -3192,6 +3192,21 @@ Here is the complete data about your current situation:
   "latest_citizen_problems": [],
   "recent_notifications_for_ai": [
     {
+      "notificationId": "recibffy43fZMYGKL",
+      "type": "rent_payment",
+      "citizen": "PixelNinja",
+      "content": "\u2705 Rent Paid: You paid **1,120 \u269c\ufe0f Ducats** to **ConsiglioDeiDieci** for **recOroyPN7ctE9pbH**.",
+      "details": {
+        "building_id": "recOroyPN7ctE9pbH",
+        "building_name": "recOroyPN7ctE9pbH",
+        "rent_price": 1120,
+        "building_owner": "ConsiglioDeiDieci",
+        "event_type": "rent_payment_made"
+      },
+      "createdAt": "2025-06-18T18:01:31.738Z",
+      "readAt": null
+    },
+    {
       "notificationId": "recR2wBC7rcMIGjWE",
       "type": "rent_payment",
       "citizen": "PixelNinja",
@@ -3700,7 +3715,7 @@ Here is the complete data about your current situation:
       "pointType": "building"
     }
   },
-  "timestamp": "2025-06-17T21:11:22.812209+02:00",
+  "timestamp": "2025-06-18T21:45:07.681427+02:00",
   "building_ownership_relevancies": []
 }
 
