@@ -12197,6 +12197,24 @@ Here is the complete data about your current situation:
       "category": "business",
       "pointType": "building"
     },
+    "artisan_s_house": {
+      "id": "artisan_s_house",
+      "type": "artisan_s_house",
+      "name": "Artisan's House",
+      "shortDescription": "Modest residence with attached workshop space for craftspeople.",
+      "constructionCost": 750000,
+      "constructionCosts": {
+        "ducats": 750000,
+        "timber": 420,
+        "bricks": 560,
+        "stone": 210
+      },
+      "constructionMinutes": 4320,
+      "buildTier": 1,
+      "tier": null,
+      "category": "home",
+      "pointType": "building"
+    },
     "art_gallery": {
       "id": "art_gallery",
       "type": "art_gallery",
@@ -12215,24 +12233,6 @@ Here is the complete data about your current situation:
       "buildTier": 3,
       "tier": null,
       "category": "business",
-      "pointType": "building"
-    },
-    "artisan_s_house": {
-      "id": "artisan_s_house",
-      "type": "artisan_s_house",
-      "name": "Artisan's House",
-      "shortDescription": "Modest residence with attached workshop space for craftspeople.",
-      "constructionCost": 750000,
-      "constructionCosts": {
-        "ducats": 750000,
-        "timber": 420,
-        "bricks": 560,
-        "stone": 210
-      },
-      "constructionMinutes": 4320,
-      "buildTier": 1,
-      "tier": null,
-      "category": "home",
       "pointType": "building"
     },
     "bakery": {
@@ -12462,7 +12462,7 @@ Here is the complete data about your current situation:
       "constructionMinutes": 8640,
       "buildTier": 2,
       "tier": null,
-      "category": "Infrastructure",
+      "category": "passive",
       "pointType": "building"
     },
     "city_gate": {
@@ -12696,6 +12696,25 @@ Here is the complete data about your current situation:
       "category": "business",
       "pointType": "building"
     },
+    "glassblower_workshop": {
+      "id": "glassblower_workshop",
+      "type": "glassblower_workshop",
+      "name": "Glassblower Workshop",
+      "shortDescription": "Specialized facility where skilled artisans shape molten glass into fine objects and art pieces.",
+      "constructionCost": 1500000,
+      "constructionCosts": {
+        "ducats": 1500000,
+        "timber": 430,
+        "bricks": 1070,
+        "stone": 570,
+        "iron": 290
+      },
+      "constructionMinutes": 5760,
+      "buildTier": 2,
+      "tier": null,
+      "category": "business",
+      "pointType": "building"
+    },
     "glass_foundry": {
       "id": "glass_foundry",
       "type": "glass_foundry",
@@ -12731,25 +12750,6 @@ Here is the complete data about your current situation:
       },
       "constructionMinutes": 10080,
       "buildTier": 3,
-      "tier": null,
-      "category": "business",
-      "pointType": "building"
-    },
-    "glassblower_workshop": {
-      "id": "glassblower_workshop",
-      "type": "glassblower_workshop",
-      "name": "Glassblower Workshop",
-      "shortDescription": "Specialized facility where skilled artisans shape molten glass into fine objects and art pieces.",
-      "constructionCost": 1500000,
-      "constructionCosts": {
-        "ducats": 1500000,
-        "timber": 430,
-        "bricks": 1070,
-        "stone": 570,
-        "iron": 290
-      },
-      "constructionMinutes": 5760,
-      "buildTier": 2,
       "tier": null,
       "category": "business",
       "pointType": "building"
@@ -13768,7 +13768,7 @@ Here is the complete data about your current situation:
       "pointType": "building"
     }
   },
-  "timestamp": "2025-06-18T21:09:50.843335+02:00",
+  "timestamp": "2025-06-18T21:51:16.668226+02:00",
   "building_ownership_relevancies": [
     {
       "asset": "building_45.444013_12.323059",
