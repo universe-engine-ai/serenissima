@@ -61,6 +61,25 @@ EMOTION_COMBINATIONS = {
     ("surprised", "disgusted"): ["appalled", "taken aback", "perplexed", "confused"]
 }
 
+# Emotion triads - combinations of three strong emotions
+# Format: (emotion1, emotion2, emotion3): [possible_complex_emotions]
+EMOTION_TRIADS = {
+    ("angry", "sad", "fearful"): ["desperate", "hopeless", "desolate"],
+    ("happy", "fearful", "surprised"): ["cautiously elated", "nervously excited", "anxiously thrilled"],
+    ("disgusted", "angry", "sad"): ["disillusioned", "embittered", "cynical"],
+    ("happy", "sad", "surprised"): ["bittersweet wonder", "melancholic joy", "poignant amazement"],
+    ("fearful", "angry", "disgusted"): ["paranoid rage", "vengeful", "hostile"]
+}
+
+# Descriptions for emotion triads to provide context for AI responses
+EMOTION_TRIAD_DESCRIPTIONS = {
+    "desperate": "Frustrated by failures, mourning losses, afraid of future",
+    "cautiously elated": "Good fortune arrives but seems too good to be true",
+    "disillusioned": "Systemic corruption has broken their spirit",
+    "bittersweet wonder": "Success tinged with loss and unexpected turns",
+    "paranoid rage": "Threatened, furious, and morally outraged"
+}
+
 # Default moods based on social class
 DEFAULT_SOCIAL_CLASS_MOODS = {
     'Facchini': 'determined',
@@ -380,6 +399,7 @@ def calculate_emotion_points(ledger_data: Dict[str, Any]) -> Dict[str, int]:
 def get_complex_emotion(emotion_scores: Dict[str, int], social_class: Optional[str] = None) -> str:
     """
     Takes basic emotion scores and returns a complex emotion based on emotion wheel combinations.
+    Checks for triads (three strong emotions) first, then falls back to pairs.
     
     Args:
         emotion_scores: Dictionary with scores for each basic emotion
@@ -391,6 +411,22 @@ def get_complex_emotion(emotion_scores: Dict[str, int], social_class: Optional[s
     # Sort emotions by score in descending order
     sorted_emotions = sorted(emotion_scores.items(), key=lambda x: x[1], reverse=True)
     
+    # First check for emotion triads (three emotions with scores > 3)
+    strong_emotions = [emotion for emotion, score in sorted_emotions if score > 3]
+    
+    if len(strong_emotions) >= 3:
+        # Take the top three strong emotions
+        top_three = strong_emotions[:3]
+        # Sort alphabetically to match our triad dictionary keys
+        top_three.sort()
+        
+        # Look up the complex emotion in triads
+        triad_key = tuple(top_three)
+        if triad_key in EMOTION_TRIADS:
+            # Randomly select one of the possible complex emotions for this triad
+            return random.choice(EMOTION_TRIADS[triad_key])
+    
+    # If no triad match, check for emotion pairs
     # Check if we have a clear top emotion or if there's a tie
     if len(sorted_emotions) >= 2 and sorted_emotions[0][1] > 0:
         # If the top two emotions have the same score, randomly select one to be dominant
@@ -496,11 +532,15 @@ def get_citizen_mood(ledger_data: Dict[str, Any]) -> Dict[str, Any]:
     # Calculate percentage distribution
     emotion_distribution = {emotion: (score / 20) * 100 for emotion, score in emotion_scores.items()}
     
+    # Get mood description if it's a triad emotion
+    mood_description = EMOTION_TRIAD_DESCRIPTIONS.get(complex_mood)
+    
     # Create the mood result
     mood_result = {
         "basic_emotions": emotion_scores,
         "primary_emotion": primary_emotion,
         "complex_mood": complex_mood,
+        "mood_description": mood_description,
         "intensity": intensity,
         "emotion_distribution": emotion_distribution
     }

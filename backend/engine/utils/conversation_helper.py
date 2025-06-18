@@ -748,7 +748,8 @@ def generate_conversation_turn(
             "lastName": speaker_profile.get("LastName"),
             "socialClass": speaker_profile.get("SocialClass"),
             "mood": speaker_mood_info.get("complex_mood", "neutral"),
-            "mood_intensity": speaker_mood_info.get("intensity", 5)
+            "mood_intensity": speaker_mood_info.get("intensity", 5),
+            "mood_description": speaker_mood_info.get("mood_description", "")
         },
         "listener_profile": {
             "username": listener_profile.get("Username"),
@@ -776,7 +777,12 @@ def generate_conversation_turn(
         # Get mood-specific guidance
         mood = add_system_payload["speaker_profile"]["mood"]
         mood_intensity = add_system_payload["speaker_profile"]["mood_intensity"]
-        mood_guidance = f"Your current mood is {mood} (intensity: {mood_intensity}/10). Let this influence your thoughts and observations."
+        mood_description = add_system_payload["speaker_profile"].get("mood_description", "")
+        
+        mood_guidance = f"Your current mood is {mood} (intensity: {mood_intensity}/10)."
+        if mood_description:
+            mood_guidance += f" {mood_description}."
+        mood_guidance += " Let this influence your thoughts and observations."
         
         system_explanation = (
             f"[SYSTEM]You are {speaker_profile.get('FirstName', speaker_username)}, a {speaker_profile.get('SocialClass', 'citizen')} of Venice. "
@@ -792,7 +798,12 @@ def generate_conversation_turn(
         # Get mood-specific guidance
         mood = add_system_payload["speaker_profile"]["mood"]
         mood_intensity = add_system_payload["speaker_profile"]["mood_intensity"]
-        mood_guidance = f"Your current mood is {mood} (intensity: {mood_intensity}/10). Let this influence your tone and approach."
+        mood_description = add_system_payload["speaker_profile"].get("mood_description", "")
+        
+        mood_guidance = f"Your current mood is {mood} (intensity: {mood_intensity}/10)."
+        if mood_description:
+            mood_guidance += f" {mood_description}."
+        mood_guidance += " Let this influence your tone and approach."
         
         system_explanation = (
             f"[SYSTEM]You are {speaker_profile.get('FirstName', speaker_username)}, a {speaker_profile.get('SocialClass', 'citizen')} of Venice. "
@@ -809,7 +820,12 @@ def generate_conversation_turn(
         # Get mood-specific guidance
         mood = add_system_payload["speaker_profile"]["mood"]
         mood_intensity = add_system_payload["speaker_profile"]["mood_intensity"]
-        mood_guidance = f"Your current mood is {mood} (intensity: {mood_intensity}/10). Let this influence your tone and response."
+        mood_description = add_system_payload["speaker_profile"].get("mood_description", "")
+        
+        mood_guidance = f"Your current mood is {mood} (intensity: {mood_intensity}/10)."
+        if mood_description:
+            mood_guidance += f" {mood_description}."
+        mood_guidance += " Let this influence your tone and response."
         
         system_explanation = (
             f"[SYSTEM]You are {speaker_profile.get('FirstName', speaker_username)}, a {speaker_profile.get('SocialClass', 'citizen')} of Venice. "
