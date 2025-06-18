@@ -893,9 +893,6 @@ def main():
         # Déterminer le meilleur mode de chargement en fonction du matériel disponible
         log.info("Détection de la configuration matérielle pour le chargement optimal du modèle...")
         
-        # Utiliser la précision mixte standard
-        log.info("Utilisation de la précision mixte standard (fp16/bf16)")
-        
         # Vérifier la mémoire GPU disponible
         gpu_memory_gb = 0
         if GPU_AVAILABLE:
@@ -908,11 +905,18 @@ def main():
         # Configurer les options de chargement en fonction des ressources disponibles
         load_options = {
             "device_map": "auto",
-            "torch_dtype": torch.float16,
         }
         
-        # Vérifier si le modèle contient des indicateurs de quantification
-        is_quantized_model = "q6_k" in model_name or "q8_0" in model_name or "q4_k" in model_name
+        # Déterminer le type de précision à utiliser
+        if args.bf16 and torch.cuda.is_bf16_supported():
+            load_options["torch_dtype"] = torch.bfloat16
+            log.info("Utilisation de bfloat16 pour le chargement du modèle")
+        elif args.fp16:
+            load_options["torch_dtype"] = torch.float16
+            log.info("Utilisation de float16 pour le chargement du modèle")
+        else:
+            load_options["torch_dtype"] = torch.float32
+            log.info("Utilisation de float32 pour le chargement du modèle")
         
         # Pas de quantification
         log.info("Chargement du modèle en FP16 (pas de quantification)")
