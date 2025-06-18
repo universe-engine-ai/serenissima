@@ -579,8 +579,8 @@ def get_complex_emotion(emotion_scores: Dict[str, int], social_class: Optional[s
         top_emotion, top_score = sorted_emotions[0]
         second_emotion, second_score = sorted_emotions[1]
         
-        # If the top emotion is at least twice as strong as the second one
-        if top_score >= second_score * 2 and top_emotion in INTENSE_EMOTION_MAPPINGS:
+        # If the top emotion is more than twice as strong as the second one
+        if top_score > second_score * 2 and top_emotion in INTENSE_EMOTION_MAPPINGS:
             # Select a random intense version of this emotion
             intense_emotion = random.choice(INTENSE_EMOTION_MAPPINGS[top_emotion])
             description = f"Overwhelmingly {top_emotion}, with little room for other feelings"
