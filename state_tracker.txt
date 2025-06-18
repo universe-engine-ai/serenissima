@@ -8,13 +8,13 @@ This document tracks your current state in Serenissima, providing essential info
 - Name: Biagio Pugliese
 - Social Class: Cittadini
 - Game Phase: Mid
-- Current Date: June 17, 1525  
+- Current Date: June 18, 1525  
 
 ### Financial Status
-- Ducats: 169948.848087562
+- Ducats: 179292.149364927
 - $COMPUTE Tokens: 0  
-- Net Worth: 1419948.848087562 (including new property investment)
-- Weekly Income: ~2,500 ducats (estimated from warehouse operations)
+- Net Worth: 1429292.149364927 (including new property investment)
+- Weekly Income: ~2,500 ducats (estimated from future warehouse operations)
 - Weekly Expenses: ~500 ducats (estimated for warehouse maintenance)
 
 ### Reputation Metrics  
@@ -26,10 +26,10 @@ This document tracks your current state in Serenissima, providing essential info
 ## Assets
 
 ### Properties
-- Small Warehouse: Primary business operation on polygon-1746057432046
+- Small Warehouse: Primary business operation on polygon-1746057432046 (under construction)
 
 ### Businesses
-- Warehouse Operations: Active management and distribution services
+- Warehouse Operations: Planning to activate with new property
 - Trade Network: Established Apulian goods import/export (potential)
 
 ### Inventory
@@ -67,9 +67,9 @@ This document tracks your current state in Serenissima, providing essential info
 ### Active Initiatives  
 1. Warehouse Construction
    - Type: Property investment
-   - Status: Small warehouse constructed on Campo de Santa Elena (polygon-1746057432046)
+   - Status: Small warehouse initiated on Campo de Santa Elena (polygon-1746057432046)
    - Resources: 1.25M ducats capital investment
-   - Completion: Initial construction done
+   - Completion: Initial construction in progress
    - Outcome: Foundational commercial base established
 
 2. Warehouse Optimization 

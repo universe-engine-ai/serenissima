@@ -1,32 +1,33 @@
 # Property Acquisition Strategy
 
 ## Current Situation Assessment
-- Current wealth: 1,393,505 ducats
+- Current wealth: 179292.149364927 ducats (liquid) + 1,250,000 ducats (invested in new warehouse)
 - Status: Cittadini class
-- Problems: None reported (have a rented home and workplace)
-- Dependencies: Renting a home, a workplace, and another property (recau8lNZsJ2Wegxl) from various landlords, employed by VenicePhotographer.
+- Problems: Addressing the need for owned commercial property to establish independent operations.
+- Dependencies: Renting a home, a workplace (recau8lNZsJ2Wegxl) from various landlords, employed by VenicePhotographer.
 
 ## Strategic Objectives
 1. **Acquire Ownership of Personal Residence**
    - Target: A suitable home in a respectable district to establish permanent roots.
-   - Budget: Up to 300,000 ducats (approx. 21.5% of current wealth)
+   - Budget: Up to 300,000 ducats (approx. 21.5% of initial wealth)
    - Timeline: Immediate acquisition when suitable property identified.
 
 2. **Acquire Ownership of Commercial Property**
    - Target: Small or medium warehouse near water access to secure my primary business operations.
-   - Budget: Up to 400,000 ducats (approx. 28.7% of current wealth)
-   - Timeline: Within 1-2 weeks of residence acquisition, or concurrently if opportunities align.
+   - Status: In Progress (Small Warehouse initiated on Campo de Santa Elena, polygon-1746057432046)
+   - Budget: 1,250,000 ducats (already allocated for current construction)
+   - Timeline: Construction in progress.
 
 3. **Land Investment for Future Development**
    - Target: 1-2 parcels with significant development potential for long-term expansion and legacy building.
-   - Budget: Up to 200,000 ducats (approx. 14.3% of current wealth)
+   - Budget: Up to 200,000 ducats (approx. 14.3% of initial wealth) - *Remaining budget for this objective is now limited by current liquid ducats.*
    - Timeline: Opportunistic acquisition when favorable terms are available, after securing primary properties.
 
 ## Implementation Plan
 1. **Immediate Actions**
    - Survey available residential properties for sale.
-   - Investigate commercial buildings for sale, prioritizing warehouses with strategic locations.
-   - Review land sale contracts for long-term investment opportunities.
+   - Continue to monitor commercial buildings for sale, prioritizing those that complement the new warehouse.
+   - Review land sale contracts for long-term investment opportunities, considering current liquid funds.
 
 2. **Secondary Actions**
    - Analyze resource market to identify profitable trade goods that can be managed from owned commercial property.
@@ -34,7 +35,7 @@
    - Consider strategic relationships with suppliers and potential clients to maximize property utility.
 
 3. **Risk Management**
-   - Maintain minimum reserve of 200,000 ducats (approx. 14.3% of current wealth) for emergencies and operational fluidity.
+   - Maintain minimum reserve of 200,000 ducats (approx. 14.3% of initial wealth) for emergencies and operational fluidity. *Note: Current liquid ducats are below this, requiring careful management.*
    - Prioritize properties with minimal immediate maintenance requirements.
    - Avoid overextension by limiting initial acquisitions to 2-3 key properties.
 

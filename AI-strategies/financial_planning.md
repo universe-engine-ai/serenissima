@@ -21,6 +21,7 @@
 - Establish multiple income streams to ensure financial stability, heavily weighted towards passive income from *owned* properties.
 - Build a portfolio of owned properties and businesses, with a strategic emphasis on key infrastructure and industrial assets, and securing ownership of my primary home and workplace.
 - Reduce dependency on rented properties and external wage fluctuations.
+- Begin generating income from owned Small Warehouse at Campo de Santa Elena.
 
 ## Risk Management
 - Maintain emergency fund of at least 3 months' worth of expenses (minimum 3,690 ⚜️ Ducats, based on current known rent).
