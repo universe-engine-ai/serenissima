@@ -1612,6 +1612,8 @@ export async function GET(request: Request) {
       primary_emotion: "neutral",
       emotion_distribution: {}
     };
+    
+    // Make sure the Ledger object is initialized with these default values
 
     const Ledger = {
       citizen: {
@@ -1731,6 +1733,14 @@ export async function GET(request: Request) {
         if (moodData.success && moodData.mood) {
           console.log(`Mood calculated for ${citizenUsername}: ${moodData.mood.complex_mood} (${moodData.mood.intensity}/10)`);
           citizenMood = moodData.mood;
+          
+          // Update the Ledger.citizen object with the mood data
+          Ledger.citizen.mood = citizenMood.complex_mood;
+          Ledger.citizen.moodIntensity = citizenMood.intensity;
+          Ledger.citizen.moodDescription = citizenMood.mood_description;
+          Ledger.citizen.primaryEmotion = citizenMood.primary_emotion;
+          Ledger.citizen.basicEmotions = citizenMood.basic_emotions;
+          Ledger.citizen.emotionDistribution = citizenMood.emotion_distribution;
         }
       } else {
         console.error(`Failed to fetch mood from API: ${moodResponse.status}`);
