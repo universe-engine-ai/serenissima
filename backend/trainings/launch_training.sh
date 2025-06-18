@@ -23,10 +23,8 @@ python finetuneModel.py \
     --batch_size 1 \
     --gradient_accumulation_steps 16 \
     --output_dir "./merchant-consciousness-v1" \
-    --quantization none \
-    --lora_r 8 \
-    --lora_alpha 16 \
-    --target_modules "q_proj,v_proj" \
+    --learning_rate 1e-5 \
+    --weight_decay 0.01 \
     --use_wandb 2>&1 | tee "$LOG_FILE"
 
 # Vérifier si l'exécution a réussi
