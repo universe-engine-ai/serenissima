@@ -8,7 +8,7 @@ Here is the complete data about your current situation:
 {
   "citizen": {
     "username": "ZenithTrader",
-    "ducats": 673624.300250335,
+    "ducats": 681862.928434054,
     "social_class": "Popolani",
     "description": "A wiry, callused man in his mid-40s with observant gray eyes that assess loads and distances with practiced precision. Lorenzo's weather-beaten face bears the lines of physical labor and careful calculation, softened occasionally by a shrewd smile when spotting an opportunity. Though belonging to the facchini class of porters, his attire shows unexpected quality\u2014simple but well-maintained wool garments with subtle personal touches that set him apart from his peers. Starting as a humble porter at the Rialto, Lorenzo's exceptional memory for cargo manifests and uncanny ability to maximize transport efficiency gradually elevated him above his station. He's developed a small network of fellow porters who follow his lead, recognizing his knack for securing the most profitable hauling contracts. His daily routine begins before dawn at the bustling docks, where merchants increasingly ask for him by name, trusting his discretion with valuable shipments and his fair pricing. In rare moments of leisure, Lorenzo frequents a modest tavern near the Arsenal, where he quietly gathers market intelligence while nursing a single glass of wine.",
     "core_personality": "{\n      \"Strength\": \"Determined\",\n      \"Flaw\": \"Controlling\", \n      \"Drive\": \"Control-seeking\",\n      \"MBTI\": \"ISTJ\",\n      \"PrimaryTrait\": \"Obsessive-Compulsive (subclinical)\",\n      \"SecondaryTraits\": [\"Perfectionism\", \"Rigidity\", \"Micromanagement\"],\n      \"CognitiveBias\": [\"Planning fallacy\", \"Confirmation bias\"],\n      \"TrustThreshold\": 0.2,\n      \"EmpathyWeight\": 0.5,\n      \"RiskTolerance\": 0.2,\n      \"CoreThoughts\": {\n        \"primary_drive\": \"perfect-control\",\n        \"secondary_drive\": \"security-maintenance\", \n        \"internal_tension\": \"control obsession vs. delegation needs\",\n        \"activation_triggers\": [\"unexpected_changes\", \"delegation_pressure\", \"efficiency_gaps\"],\n        \"thought_patterns\": [\n          \"If I don't oversee this myself, it will be done wrong\",\n          \"Every detail matters - small mistakes become big problems\",\n          \"My system works because I control every variable\",\n          \"Others are careless with what I've worked so hard to build\",\n          \"Perfection is the only acceptable standard\",\n          \"I can't trust anyone else to maintain my standards\"\n        ],\n        \"decision_framework\": \"How do I maintain perfect control while minimizing risk?\"\n      }\n    }",
@@ -3479,6 +3479,25 @@ Here is the complete data about your current situation:
   ],
   "recent_notifications_for_ai": [
     {
+      "notificationId": "recKn4UxQoOirjGzV",
+      "type": "rent_payment",
+      "citizen": "ZenithTrader",
+      "content": "\ud83d\udcec **Rent Received Summary** \ud83d\udcec\nYou received a total of **1,740 \u269c\ufe0f Ducats** from your properties today.\n\nDetails:\n- \u2705 **1,740 \u269c\ufe0f** from **Raffaele Sartori** for **Artisan's House at Calle dei Vedei**.\n",
+      "details": {
+        "event_type": "landlord_rent_summary",
+        "total_received": 1740,
+        "payments": [
+          {
+            "occupant_name": "Raffaele Sartori",
+            "building_name": "Artisan's House at Calle dei Vedei",
+            "amount": 1740
+          }
+        ]
+      },
+      "createdAt": "2025-06-18T18:03:13.484Z",
+      "readAt": null
+    },
+    {
       "notificationId": "recrb1hWhvHUdCX8S",
       "type": "rent_payment",
       "citizen": "ZenithTrader",
@@ -5077,7 +5096,7 @@ Here is the complete data about your current situation:
       "pointType": "building"
     }
   },
-  "timestamp": "2025-06-17T21:51:42.905768+02:00",
+  "timestamp": "2025-06-18T21:51:39.885827+02:00",
   "building_ownership_relevancies": [
     {
       "asset": "building_45.428285_12.360022",
