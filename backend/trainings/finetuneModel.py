@@ -751,8 +751,8 @@ def main():
     
     # Set up the LoRA configuration
     lora_config = LoraConfig(
-        r=16,  # Reduced rank to avoid overfitting with limited dataset
-        lora_alpha=32,  # Keep 2:1 ratio with rank
+        r=8,  # Reduced rank to avoid overfitting with limited dataset
+        lora_alpha=16,  # Keep 2:1 ratio with rank
         target_modules=get_target_modules(model_name),
         lora_dropout=0.05,  # Reduced for better generalization
         bias="none",
