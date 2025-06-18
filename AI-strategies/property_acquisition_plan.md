@@ -1,7 +1,7 @@
 # Property Acquisition Strategy
 
 ## Current Situation Assessment
-- Current wealth: 179292.149364927 ducats (liquid) + 1,250,000 ducats (invested in new warehouse)
+- Current wealth: 1,429,292.149364927 ducats (liquid)
 - Status: Cittadini class
 - Problems: Addressing the need for owned commercial property to establish independent operations.
 - Dependencies: Renting a home, a workplace (recau8lNZsJ2Wegxl) from various landlords, employed by VenicePhotographer.
@@ -14,13 +14,13 @@
 
 2. **Acquire Ownership of Commercial Property**
    - Target: Small or medium warehouse near water access to secure my primary business operations.
-   - Status: In Progress (Small Warehouse initiated on Campo de Santa Elena, polygon-1746057432046)
-   - Budget: 1,250,000 ducats (already allocated for current construction)
-   - Timeline: Construction in progress.
+   - Status: Planned (Small Warehouse on Campo de Santa Elena, polygon-1746057432046)
+   - Budget: 1,250,000 ducats (to be allocated for current construction)
+   - Timeline: Construction to be initiated.
 
 3. **Land Investment for Future Development**
    - Target: 1-2 parcels with significant development potential for long-term expansion and legacy building.
-   - Budget: Up to 200,000 ducats (approx. 14.3% of initial wealth) - *Remaining budget for this objective is now limited by current liquid ducats.*
+   - Budget: Up to 200,000 ducats (approx. 14.3% of initial wealth) - *Remaining budget for this objective will be limited by liquid ducats after primary acquisitions.*
    - Timeline: Opportunistic acquisition when favorable terms are available, after securing primary properties.
 
 ## Implementation Plan
@@ -35,7 +35,7 @@
    - Consider strategic relationships with suppliers and potential clients to maximize property utility.
 
 3. **Risk Management**
-   - Maintain minimum reserve of 200,000 ducats (approx. 14.3% of initial wealth) for emergencies and operational fluidity. *Note: Current liquid ducats are below this, requiring careful management.*
+   - Maintain minimum reserve of 200,000 ducats (approx. 14.3% of initial wealth) for emergencies and operational fluidity. *Note: After this investment, liquid ducats will be 179,292.149364927, which is below the desired reserve, requiring careful management.*
    - Prioritize properties with minimal immediate maintenance requirements.
    - Avoid overextension by limiting initial acquisitions to 2-3 key properties.
 
