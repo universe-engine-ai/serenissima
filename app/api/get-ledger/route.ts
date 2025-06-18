@@ -1059,7 +1059,23 @@ function convertLedgerToMarkdown(Ledger: any, citizenUsername: string | null): s
       md += ` - ${Ledger.citizen.moodDescription}`;
     }
     
-    md += '\n\n';
+    // Add primary emotion if available
+    if (Ledger.citizen.primaryEmotion && Ledger.citizen.primaryEmotion !== Ledger.citizen.mood) {
+      md += `\n\nPrimary emotion: ${Ledger.citizen.primaryEmotion}`;
+    }
+    
+    // Add basic emotions breakdown if available
+    if (Ledger.citizen.basicEmotions && Object.keys(Ledger.citizen.basicEmotions).length > 0) {
+      md += `\n\n### Emotional Breakdown:\n`;
+      for (const [emotion, score] of Object.entries(Ledger.citizen.basicEmotions)) {
+        const percentage = Ledger.citizen.emotionDistribution?.[emotion] 
+          ? ` (${Ledger.citizen.emotionDistribution[emotion].toFixed(1)}%)` 
+          : '';
+        md += `- ${emotion}: ${score}${percentage}\n`;
+      }
+    }
+    
+    md += '\n';
   }
 
   // Last Activity
@@ -1587,8 +1603,15 @@ export async function GET(request: Request) {
       console.log(`Invalid citizen position: ${JSON.stringify(citizenPosition)}`);
     }
 
-    // Initialize citizenMood with default values
-    let citizenMood = { complex_mood: "neutral", intensity: 5, mood_description: "" };
+    // Initialize citizenMood with default values - will be updated by the mood calculation
+    let citizenMood = { 
+      complex_mood: "neutral", 
+      intensity: 5, 
+      mood_description: "",
+      basic_emotions: {},
+      primary_emotion: "neutral",
+      emotion_distribution: {}
+    };
 
     const Ledger = {
       citizen: {
@@ -1599,7 +1622,10 @@ export async function GET(request: Request) {
         citizensAtSamePosition: citizensAtSamePosition, // Add other citizens at the same position with more details
         mood: citizenMood.complex_mood,
         moodIntensity: citizenMood.intensity,
-        moodDescription: citizenMood.mood_description
+        moodDescription: citizenMood.mood_description,
+        primaryEmotion: citizenMood.primary_emotion,
+        basicEmotions: citizenMood.basic_emotions,
+        emotionDistribution: citizenMood.emotion_distribution
       },
       lastActivity: lastActivityRecord ? {...normalizeKeysCamelCaseShallow(lastActivityRecord.fields), airtableId: lastActivityRecord.id} : null,
       lastActivities: [] as any[], // Initialize lastActivities array
@@ -1665,63 +1691,52 @@ export async function GET(request: Request) {
       Ledger.lastActivities = lastActivitiesRecords.map(a => ({...normalizeKeysCamelCaseShallow(a.fields), airtableId: a.id}));
     }
     
-    // Now that we have all the data, calculate the citizen's mood
+    // Calculate the citizen's mood using the dedicated API endpoint
     try {
-      // Prepare the ledger data for the mood calculation
-      const ledgerForMood = {
-        citizen: {
-          ...normalizeKeysCamelCaseShallow(citizenRecord.fields),
-          airtableId: citizenRecord.id,
-          buildingAtPosition: buildingAtPosition,
-          buildingDetails: buildingDetails,
-          citizensAtSamePosition: citizensAtSamePosition
+      // Use the internal API to calculate mood
+      const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000';
+      const moodResponse = await fetch(`${baseUrl}/api/calculate-mood`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
         },
-        lastActivity: lastActivityRecord ? {...normalizeKeysCamelCaseShallow(lastActivityRecord.fields), airtableId: lastActivityRecord.id} : null,
-        lastActivities: Ledger.lastActivities,
-        homeBuilding: homeBuildingRecord ? {...normalizeKeysCamelCaseShallow(homeBuildingRecord.fields), airtableId: homeBuildingRecord.id} : null,
-        workplaceBuilding: workplaceBuildingRecord ? {...normalizeKeysCamelCaseShallow(workplaceBuildingRecord.fields), airtableId: workplaceBuildingRecord.id} : null,
-        strongestRelationships: Ledger.strongestRelationships,
-        recentProblems: Ledger.recentProblems,
-        stratagemsExecutedByCitizen: Ledger.stratagemsExecutedByCitizen,
-        stratagemsTargetingCitizen: Ledger.stratagemsTargetingCitizen,
-        ownedLands: ownedLandsData,
-        ownedBuildings: Ledger.ownedBuildings,
-        citizenLoans: Ledger.citizenLoans
-      };
-
-      // Call the Python mood helper script directly
-      const { exec } = require('child_process');
-      const { promisify } = require('util');
-      const path = require('path');
-      const fs = require('fs').promises;
-      
-      const execPromise = promisify(exec);
-      const scriptPath = path.join(process.cwd(), 'backend', 'engine', 'utils', 'mood_helper.py');
-      const tempFilePath = path.join(process.cwd(), 'temp_ledger.json');
-      
-      // Write ledger data to a temporary file
-      await fs.writeFile(tempFilePath, JSON.stringify(ledgerForMood));
-      
-      // Execute the Python script
-      const { stdout, stderr } = await execPromise(`python ${scriptPath} --ledger-file ${tempFilePath}`);
-      
-      // Clean up the temporary file
-      await fs.unlink(tempFilePath);
-      
-      if (!stderr) {
-        try {
-          // Parse the output from the Python script
-          const moodResult = JSON.parse(stdout);
-          console.log(`Mood calculated for ${citizenUsername}: ${moodResult.complex_mood} (${moodResult.intensity}/10)`);
-          citizenMood = moodResult;
-        } catch (parseError) {
-          console.error(`Error parsing mood result: ${parseError}`, stdout);
+        body: JSON.stringify({
+          citizenUsername: citizenUsername,
+          // Pass the ledger data we've already collected to avoid duplicate fetching
+          ledgerData: {
+            citizen: {
+              ...normalizeKeysCamelCaseShallow(citizenRecord.fields),
+              airtableId: citizenRecord.id,
+              buildingAtPosition: buildingAtPosition,
+              buildingDetails: buildingDetails,
+              citizensAtSamePosition: citizensAtSamePosition
+            },
+            lastActivity: lastActivityRecord ? {...normalizeKeysCamelCaseShallow(lastActivityRecord.fields), airtableId: lastActivityRecord.id} : null,
+            lastActivities: Ledger.lastActivities,
+            homeBuilding: homeBuildingRecord ? {...normalizeKeysCamelCaseShallow(homeBuildingRecord.fields), airtableId: homeBuildingRecord.id} : null,
+            workplaceBuilding: workplaceBuildingRecord ? {...normalizeKeysCamelCaseShallow(workplaceBuildingRecord.fields), airtableId: workplaceBuildingRecord.id} : null,
+            strongestRelationships: Ledger.strongestRelationships,
+            recentProblems: Ledger.recentProblems,
+            stratagemsExecutedByCitizen: Ledger.stratagemsExecutedByCitizen,
+            stratagemsTargetingCitizen: Ledger.stratagemsTargetingCitizen,
+            ownedLands: ownedLandsData,
+            ownedBuildings: Ledger.ownedBuildings,
+            citizenLoans: Ledger.citizenLoans
+          }
+        })
+      });
+        
+      if (moodResponse.ok) {
+        const moodData = await moodResponse.json();
+        if (moodData.success && moodData.mood) {
+          console.log(`Mood calculated for ${citizenUsername}: ${moodData.mood.complex_mood} (${moodData.mood.intensity}/10)`);
+          citizenMood = moodData.mood;
         }
       } else {
-        console.error(`Error from mood helper script: ${stderr}`);
+        console.error(`Failed to fetch mood from API: ${moodResponse.status}`);
       }
     } catch (error) {
-      console.error('Error calculating mood directly:', error);
+      console.error('Error calculating mood via API:', error);
       // Continue with default mood
     }
     
