@@ -20,9 +20,13 @@ python prepareDataset.py --jsonl-only
 python finetuneModel.py \
     --model "deepseek-ai/DeepSeek-R1-0528-Qwen3-8B" \
     --epochs 3 \
-    --batch_size 2 \
+    --batch_size 1 \
+    --gradient_accumulation_steps 16 \
     --output_dir "./merchant-consciousness-v1" \
     --quantization none \
+    --lora_r 8 \
+    --lora_alpha 16 \
+    --target_modules "q_proj,v_proj" \
     --use_wandb 2>&1 | tee "$LOG_FILE"
 
 # Vérifier si l'exécution a réussi

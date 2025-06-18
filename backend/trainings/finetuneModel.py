@@ -684,6 +684,8 @@ def main():
                         help="Number of training epochs (default: 3)")
     parser.add_argument("--batch_size", type=int, default=2, 
                         help="Per-device batch size")
+    parser.add_argument("--gradient_accumulation_steps", type=int, default=4,
+                        help="Number of updates steps to accumulate before performing a backward/update pass")
     parser.add_argument("--dataset", type=str, default=None, 
                         help="Path to the JSONL dataset file (if not specified, uses the latest file)")
     parser.add_argument("--output_dir", type=str, default="./venetian-merchant-consciousness", 
@@ -694,6 +696,12 @@ def main():
                         help="Enable debug mode (smaller model, less data)")
     parser.add_argument("--quantization", type=str, choices=["none"], default="none",
                         help="Quantization level for model loading (none)")
+    parser.add_argument("--lora_r", type=int, default=8,
+                        help="Rank of the LoRA adapter matrices")
+    parser.add_argument("--lora_alpha", type=int, default=16,
+                        help="Alpha parameter for LoRA scaling")
+    parser.add_argument("--target_modules", type=str, default=None,
+                        help="Comma-separated list of module names to apply LoRA to")
     
     args = parser.parse_args()
     
@@ -736,10 +744,17 @@ def main():
         log.warning(f"Utilisation d'un répertoire temporaire à la place: {output_dir}")
     
     # Set up the LoRA configuration
+    if args.target_modules:
+        target_modules = args.target_modules.split(',')
+        log.info(f"Using user-specified target modules: {target_modules}")
+    else:
+        target_modules = get_target_modules(model_name)
+        log.info(f"Using auto-detected target modules: {target_modules}")
+    
     lora_config = LoraConfig(
-        r=8,  # Reduced rank to avoid overfitting with limited dataset
-        lora_alpha=16,  # Keep 2:1 ratio with rank
-        target_modules=get_target_modules(model_name),
+        r=args.lora_r,  # Use rank from command line
+        lora_alpha=args.lora_alpha,  # Use alpha from command line
+        target_modules=target_modules,
         lora_dropout=0.05,  # Reduced for better generalization
         bias="none",
         task_type=TaskType.CAUSAL_LM,
@@ -751,7 +766,7 @@ def main():
         output_dir=output_dir,
         num_train_epochs=args.epochs,  # Use the epochs from args
         per_device_train_batch_size=args.batch_size,
-        gradient_accumulation_steps=4,   # Reduced for faster iterations
+        gradient_accumulation_steps=args.gradient_accumulation_steps,  # Use value from command line
         warmup_ratio=0.05,  # Reduced for faster convergence
         learning_rate=1e-4,  # Slightly increased for faster learning
         fp16=True,  # Use mixed precision
