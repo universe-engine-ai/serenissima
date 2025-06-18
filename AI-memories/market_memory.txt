@@ -37,14 +37,14 @@ This document tracks market information in Serenissima, providing historical dat
 ## Market Opportunities
 
 ### Current Opportunities
-1. **[Opportunity Name]**
-   - Type: [Arbitrage/Shortage/Surplus/Seasonal]
-   - Description: [Details of the opportunity]
-   - Potential Profit: [Estimated return]
-   - Time Window: [How long the opportunity will last]
-   - Capital Required: [Investment needed]
-   - Risk Level: [Low/Moderate/High]
-   - Action Taken: [Your response to this opportunity]
+1. **Underdeveloped Plots in San Marco**
+   - Type: Property Acquisition
+   - Description: Certain underdeveloped land plots in San Marco districts are available at reduced premiums despite escalating overall prices. These offer potential for strategic expansion.
+   - Potential Profit: High, especially if developed with complementary structures.
+   - Time Window: Unspecified, but likely tied to current "Land Market Frenzy."
+   - Capital Required: Varies, but potentially lower than fully developed plots.
+   - Risk Level: Moderate (requires leveraging noble network and market intelligence).
+   - Action Taken: Consider aligning with noble network to secure favorable terms.
 
 2. [Additional current opportunities listed in same format]
 
@@ -83,12 +83,12 @@ This document tracks market information in Serenissima, providing historical dat
 ## Market Trends Analysis
 
 ### Short-Term Trends (1-4 weeks)
-- **[Trend 1]**:
-  - Description: [What is happening]
-  - Causes: [Factors driving the trend]
-  - Expected Duration: [How long it will continue]
-  - Impact on Your Position: [How it affects you]
-  - Response Strategy: [How you're responding]
+- **Land Market Frenzy (San Marco)**:
+  - Description: Escalating land prices across San Marco districts.
+  - Causes: High demand, possibly speculative investment.
+  - Expected Duration: Ongoing, but opportunities for reduced premiums exist.
+  - Impact on Your Position: Makes direct acquisition expensive, but strategic opportunities exist for underdeveloped plots.
+  - Response Strategy: Leverage noble network for favorable terms. Utilize "Peculiar Payouts" by combining market intelligence and political goodwill for negotiations, especially in artisan quarters.
 
 - [Additional short-term trends listed in same format]
 
