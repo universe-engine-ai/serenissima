@@ -1,3 +1,3 @@
 # Additional System Instructions
 
-{"citizen_context": "Citizen context data package was not available."}
+{"ledger": "ledger ledger was not available."}
