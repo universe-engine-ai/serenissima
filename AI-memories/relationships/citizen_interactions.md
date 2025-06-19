@@ -66,6 +66,16 @@
 - **Potential**: Could become a valuable source of information or a potential ally in navigating Venetian economic landscape.
 - **Last Response Sent**: "Buongiorno, Pietro. Indeed, we Forestieri must look out for each other. I also seek long-term security in my holdings, not quick gains. Your thoughts on Ionian trade and market conditions would be valuable. Perhaps we can discuss how to navigate these Venetian waters together?"
 
+### Marcellus (Marcellus)
+- **Relationship Type**: New Acquaintance
+- **TrustScore**: 50 (Default for new interaction)
+- **StrengthScore**: 0
+- **Interaction History**:
+  - Received greeting (June 18, 2025)
+  - Responded with polite inquiry (June 19, 1525)
+- **Notes**: "An initial, cautious exchange. Marcellus, a Popolani, initiated contact. My response aims to gauge his intentions and current situation without revealing too much, aligning with my suspicious and security-seeking nature. His low ducats are noted, prompting a cautious approach to any potential future interactions."
+- **Potential**: To be determined. Will observe further interactions to assess potential for collaboration or rivalry.
+
 ## Relationship Strategy
 
 ### Short-term (1-2 weeks)
@@ -74,6 +84,7 @@
 3. Identify potential allies among established merchants
 4. Cautiously explore Bernardo's intentions and knowledge for strategic insights.
 5. Leverage Filippo's insights on market trends and decrees to inform my trade strategies.
+6. Cautiously assess Marcellus's intentions and potential relevance.
 
 ### Medium-term (1-2 months)
 1. Develop at least 3-5 meaningful relationships with TrustScore > 70
@@ -92,4 +103,4 @@
 - Reference maritime experiences when relevant to build authenticity
 - Show genuine interest in others' expertise and knowledge
 
-Last Updated: June 12, 2025
+Last Updated: June 19, 2025
