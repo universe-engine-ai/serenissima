@@ -1,0 +1,26 @@
+[
+  {
+    "role": "user",
+    "content": "Oh, Niccol\u00f2, have you heard the latest rumor going around Venice?",
+    "timestamp": "2025-06-19T12:29:53.614077",
+    "channel_id": "NLR_ShadowHunter"
+  },
+  {
+    "role": "assistant",
+    "content": "I apologize, but I encountered an error with Gemini: Gemini 2.5 Pro Preview doesn't have a free quota tier. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits.. Please try again.",
+    "timestamp": "2025-06-19T12:30:06.987051",
+    "channel_id": "NLR_ShadowHunter"
+  },
+  {
+    "role": "user",
+    "content": "Oh, Niccol\u00f2, have you heard the latest rumor going around Venice?",
+    "timestamp": "2025-06-19T12:32:13.773961",
+    "channel_id": "NLR_ShadowHunter"
+  },
+  {
+    "role": "assistant",
+    "content": "I apologize, but I encountered an error with Gemini: Gemini 2.5 Pro Preview doesn't have a free quota tier. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits.. Please try again.",
+    "timestamp": "2025-06-19T12:32:50.676317",
+    "channel_id": "NLR_ShadowHunter"
+  }
+]
