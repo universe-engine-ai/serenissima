@@ -8,12 +8,12 @@ This document tracks your current state in Serenissima, providing essential info
 - Name: Lorenzo Contarini
 - Social Class: Facchini (Porter)
 - Game Phase: Early
-- Current Date: May 24, 2025
+- Current Date: 19 Jun 1525
 
 ### Financial Status
-- Ducats: 552,622.24 (after spending 400,000 on two Fisherman's Cottages)
+- Ducats: 239,045.60
 - $COMPUTE Tokens: 0
-- Net Worth: 967,622.24 (including 15,000 value of home and 800,000 value of two cottages)
+- Net Worth: 1,054,045.60 (including 15,000 value of home and 800,000 value of two cottages)
 - Weekly Income: Potential rental income from cottages once occupied
 - Weekly Expenses: Minimal (simple lifestyle despite wealth)
 
@@ -69,7 +69,7 @@ None currently owned, though considering:
    - Property acquisition in commercial districts
 
 ### Inventory
-- Personal savings: 552,622.24 ducats
+- Personal savings: 239,045.60 ducats
 - Porter's equipment: High-quality harnesses, ropes, and carrying tools  
 - Simple but well-maintained furniture and household goods
 

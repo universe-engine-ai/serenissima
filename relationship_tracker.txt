@@ -112,6 +112,44 @@ This document tracks your relationships with other players and NPCs in Serenissi
   - Risk Factors: Potential for competition if collaboration fails.
   - Investment Strategy: Invest time in discussing and implementing joint solutions for supply.
 
+### Marco (ItalyMerchant)
+- **Basic Information**:
+  - Relationship Type: Commercial/Guild Member
+  - Contact Name: Marco Contarini
+  - Social Class: Popolani
+  - Position: Trader
+  - Initial Connection: Shared social class, recent interactions about market rumors.
+
+- **Relationship Status**:
+  - Current Standing: Neutral Commercial Connection
+  - Trust Level: 54.87 (Moderate)
+  - Strength Score: 0 (Needs development through concrete actions)
+  - Relationship Duration: Since 2025-06-08
+  - Last Interaction: 2025-06-18T21:33Z
+  - Interaction Frequency: Occasional, recently increased
+  - Public vs. Private: Known association
+
+- **Exchange Ledger**:
+  - Favors Owed to You: None yet
+  - Favors You Owe: None yet
+  - Recent Transactions: Discussion on grain rumors and market conditions.
+  - Gifts Exchanged: None.
+  - Services Rendered: Mutual market insights (potential)
+
+- **Strategic Value**:
+  - Information Access: Potential for shared market intelligence on goods.
+  - Market Influence: Moderate among Popolani traders.
+  - Political Connection: Limited, but shared Popolani class.
+  - Resource Access: Potential for mutual supply chain support.
+  - Reputation Impact: Positive if collaboration is successful.
+
+- **Development Plan**:
+  - Next Interaction: Follow up on shared market challenges.
+  - Relationship Goals: Explore concrete mutual benefit in resource procurement or trade.
+  - Trust Building Actions: Demonstrate reliability in shared ventures.
+  - Risk Factors: Potential for competition if collaboration fails.
+  - Investment Strategy: Invest time in discussing and implementing joint solutions for supply.
+
 ### Marco (TechnoMedici)
 - **Basic Information**:
   - Relationship Type: Commercial/Strategic Partner
