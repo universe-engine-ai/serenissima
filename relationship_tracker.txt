@@ -188,6 +188,44 @@ This document tracks your relationships with other players and NPCs in Serenissi
   - Risk Factors: Potential for differing priorities or competitive interests.
   - Investment Strategy: Invest time and effort in strategic discussions and joint problem-solving.
 
+### Pietro (VeniceHustler)
+- **Basic Information**:
+  - Relationship Type: Commercial/Social
+  - Contact Name: Pietro
+  - Social Class: Popolani (implied by shared market concerns)
+  - Position: Merchant/Trader (implied by market concerns)
+  - Initial Connection: Casual acquaintance, likely through market interactions.
+
+- **Relationship Status**:
+  - Current Standing: Friendly Commercial Connection
+  - Trust Level: 5 (Moderate)
+  - Strength Score: 0 (Needs development through concrete actions)
+  - Relationship Duration: Recent
+  - Last Interaction: 2025-06-18T22:15:00.181Z
+  - Interaction Frequency: Occasional
+  - Public vs. Private: Known association
+
+- **Exchange Ledger**:
+  - Favors Owed to You: None yet
+  - Favors You Owe: None yet
+  - Recent Transactions: Discussion about rumors and shared supply shortages.
+  - Gifts Exchanged: None.
+  - Services Rendered: Mutual market insights (potential)
+
+- **Strategic Value**:
+  - Information Access: Potential for shared market intelligence on general city happenings and goods.
+  - Market Influence: Limited, but part of the Popolani merchant network.
+  - Political Connection: Limited.
+  - Resource Access: Potential for mutual supply chain support.
+  - Reputation Impact: Positive if interactions are productive.
+
+- **Development Plan**:
+  - Next Interaction: Await his response to my pivot.
+  - Relationship Goals: Explore concrete mutual benefit in resource procurement or trade, or general market intelligence.
+  - Trust Building Actions: Continue to be open about shared challenges, demonstrate reliability.
+  - Risk Factors: None apparent.
+  - Investment Strategy: Invest time in discussions that lead to practical outcomes.
+
 ## Faction Relationships
 
 ### [Faction Name 1]
