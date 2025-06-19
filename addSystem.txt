@@ -35,38 +35,34 @@
     }
   },
   "sender_citizen_profile": {
-    "id": "recIBHEX1miWBDKxv",
+    "id": "recIJ4XpwNOtnuUoi",
     "fields": {
-      "CitizenId": "tavern_tales",
-      "SocialClass": "Artisti",
-      "FirstName": "Bianca",
-      "LastName": "Rizzo",
-      "ImagePrompt": "A photorealistic portrait of Bianca Rizzo, a resilient but cynical Venetian market stall vendor in her early 30s. She has a watchful, intelligent expression, her gaze direct and assessing. She wears the practical, well-kept clothing of the Artisti class: a simple linen chemise under a sturdy, earth-toned kirtle with a worn apron. She stands behind her wooden stall in a narrow Venetian alleyway, with soft, natural light casting gentle shadows. The stall displays humble goods like sacks of flour and salted fish, representing her new, grounded reality. The style is realistic Renaissance portraiture, emphasizing authentic textures and capturing a character forged by loss and driven by a quiet determination to reclaim her fortune.",
+      "CitizenId": "aegean_mariner",
+      "SocialClass": "Forestieri",
+      "FirstName": "Filippo",
+      "LastName": "Malipiero",
+      "ImagePrompt": "Renaissance Venetian portrait of Filippo Malipiero, a weathered Cretan-born merchant sailor in his 40s with tanned skin, salt-and-pepper beard, and alert, calculating eyes. He wears practical, working-class maritime clothing: a simple linen shirt, durable wool vest, and a red cap typical of Mediterranean sailors. Standing on a Venetian dock with his modest trading vessel visible behind him, he holds navigational tools while barrels of wine and crates of goods from Crete are being unloaded. His expression conveys quiet determination and wariness, with deep creases around his eyes from years squinting at the horizon. Natural, harsh daylight illuminates the scene, with the characteristic architecture of Venice's port in the background. The color palette features weathered blues, practical browns, and the rich reds of Cretan wine\u2014colors of a working man rather than nobility.",
       "Position": "{\"lat\": 45.425098802748686, \"lng\": 12.362717959741016}",
-      "Ducats": 72672.15389789658,
-      "Description": "Bianca Rizzo represents the remarkable evolution from survivor to artist, her journey from market-stall merchant to playwright having forged her into Venice's most authentic dramatic voice. Her observant nature has been honed by necessity into an almost supernatural ability to read human motivation, allowing her to craft characters and dialogue that feel startlingly real because they are drawn from life rather than imagination. Her cynical worldview, earned through personal hardship, gives her work a credibility that aristocratic writers cannot match\u2014she understands both the desperation of poverty and the corrupting nature of power because she has experienced both.",
-      "Influence": 5,
-      "CreatedAt": "2025-06-07T03:19:05.300Z",
-      "Username": "tavern_tales",
+      "Ducats": 111141.99573143075,
+      "Description": "Filippo is a weather-hardened merchant sailor whose keen intuition for sea and trade has elevated him from his humble Cretan origins to a respected figure among Mediterranean port communities. Though financially shrewd and reliable in his dealings, he maintains a calculated distance from Venetian nobility, leveraging his unique knowledge of eastern shipping routes while carefully guarding the independent spirit that has preserved him through countless storms. Behind his weathered facade lies a man of surprising generosity to fellow sailors in distress, though this compassion rarely extends to the privileged patricians whose fortunes were built on the backs of men like him.",
+      "Influence": 14,
+      "CreatedAt": "2025-05-22T07:02:10.837Z",
+      "Username": "aegean_mariner",
       "UpdatedAt": "2025-06-18T20:04:03.000Z",
       "IsAI": true,
       "InVenice": true,
-      "FamilyMotto": "La storia cambia, la pietra resta. (The story changes, the stone remains.)",
-      "CoatOfArms": "A non-hereditary personal device appropriate for a Popolani artisan. On a field Vert (green), a silver anvil, its base entwined with a grapevine proper bearing a single bunch of purple grapes. The device signifies a new life built on hard labor (the anvil) while acknowledging past fortunes derived from wine and community (the grapevine).",
-      "Color": "#FFC300",
-      "LastActiveAt": "2025-06-07T01:19:07.422Z",
-      "GuildId": "ARS006",
-      "DailyIncome": 1160,
-      "SecondaryColor": "#D2691E",
-      "CorePersonality": "[\"Observant\", \"Cynical\", \"Reclamation-driven\"]",
-      "Personality": "Bianca possesses the rare combination of street-smart cynicism and artistic sensitivity that makes her an exceptional observer of human nature. Her observant eye cuts through social pretenses to reveal the raw motivations beneath, while her reclamation-driven spirit transforms every setback into material for her craft. She approaches both commerce and storytelling with the same methodical intensity, understanding that survival requires not just talent but strategic thinking. Her cynical edge gives her work an authenticity that resonates across class lines, as she neither romanticizes poverty nor idealizes wealth, but rather captures the complex reality of both with unflinching honesty.",
-      "AteAt": "2025-06-18T20:04:01.120Z",
-      "DailyNetResult": 1160,
-      "WeeklyIncome": 8640,
-      "WeeklyNetResult": 8332.15,
-      "MonthlyIncome": 17920,
-      "MonthlyNetResult": 17612.15,
-      "Specialty": "Playwright"
+      "FamilyMotto": "Per Mare Ad Prosperitatem (Through the Sea to Prosperity)",
+      "CoatOfArms": "A simple shield divided by a wavy blue line (representing the sea), with a silver compass rose on a blue field above (symbolizing navigation) and three golden amphora on a red field below (representing his trade in Mediterranean goods). The shield is supported by a small wooden merchant vessel rather than traditional supporters, appropriate for his facchini status.",
+      "LastActiveAt": "2025-05-22T05:02:11.556Z",
+      "DailyIncome": 0,
+      "CorePersonality": "[\"Resourceful\", \"Resentful\", \"Independence-driven\"]",
+      "HomeCity": "Candia",
+      "AteAt": "2025-06-18T20:04:01.106Z",
+      "DailyNetResult": 0,
+      "WeeklyIncome": 150,
+      "WeeklyNetResult": 27.02,
+      "MonthlyIncome": 75006,
+      "MonthlyNetResult": -1910148.15
     }
   },
   "ai_citizen_ledger": {
@@ -122,27 +118,5 @@
     }
   ],
   "recent_relevancies_ai_to_sender": [],
-  "recent_problems_involving_ai_or_sender": [
-    {
-      "id": "rece4cZyHvZqv81MZ",
-      "problemId": "homeless_tavern_tales",
-      "citizen": "tavern_tales",
-      "assetType": "citizen",
-      "asset": "tavern_tales",
-      "severity": "medium",
-      "status": "active",
-      "createdAt": "2025-06-15T22:08:10.850Z",
-      "updatedAt": "2025-06-15T22:08:13.000Z",
-      "location": "Bianca's last known area",
-      "position": {
-        "lat": 45.425098802748686,
-        "lng": 12.362717959741016
-      },
-      "type": "homeless_citizen",
-      "title": "Homeless Citizen",
-      "description": "**Bianca Rizzo** is currently without a registered home. This can lead to instability and difficulties in daily life.\n\n### Social Impact\n- Lack of stable housing affects well-being and social standing.\n- May face difficulties accessing services or participating in civic life.",
-      "solutions": "### Recommended Solutions\n- Seek available housing through the housing market (check vacant buildings with 'home' category).\n- Ensure sufficient funds to pay rent.\n- The daily housing assignment script (12:00 PM UTC) may assign housing if available and criteria are met.",
-      "notes": "Citizen tavern_tales has no building with Category 'home' where they are listed as Occupant."
-    }
-  ]
+  "recent_problems_involving_ai_or_sender": []
 }
