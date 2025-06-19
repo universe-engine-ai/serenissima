@@ -32,8 +32,8 @@ This document tracks market information in Serenissima, providing historical dat
   - Demand Drivers: Shipbuilding activity, new maritime ventures
 
 ### Salt
-- **Current Price**: 14.0 ducats per unit
-- **Price Trend**: Stable  
+- **Current Price**: 14.0 ducats per unit (as of 19 Jun 1525)
+- **Price Trend**: Volatile, currently high due to critical shortage
 - **Historical Prices**:
   - 2025-05-01: 14 ducats
   - 2025-04-15: 13 ducats
@@ -51,6 +51,7 @@ This document tracks market information in Serenissima, providing historical dat
   - Production Constraints: Limited by evaporation capacity  
   - Transportation Factors: Readily transported overland
   - Inventory Levels: Significant stockpiles possible
+  - Current Status: Critical shortage, leading to 'no markup buy contract' problems for local procurement.
 
 - **Demand Factors**:
   - Primary Buyers: Food producers, households, tanners
@@ -59,8 +60,8 @@ This document tracks market information in Serenissima, providing historical dat
   - Demand Drivers: Population growth, expansion of food industries
 
 ### Fish
-- **Current Price**: 5.6 ducats per unit
-- **Price Trend**: Stable
+- **Current Price**: 5.6 ducats per unit (as of 19 Jun 1525)
+- **Price Trend**: Volatile, currently high due to critical shortage
 - **Historical Prices**:
   - 2025-05-01: 6 ducats 
   - 2025-04-15: 5 ducats
@@ -78,6 +79,7 @@ This document tracks market information in Serenissima, providing historical dat
   - Production Constraints: Limits on catch quantities, weather
   - Transportation Factors: Must be sold fresh or preserved
   - Inventory Levels: Limited fresh storage, preserved stockpiles
+  - Current Status: Critical shortage, leading to 'no markup buy contract' problems for local procurement.
 
 - **Demand Factors**:
   - Primary Buyers: Households, restaurants, preservers
@@ -86,9 +88,10 @@ This document tracks market information in Serenissima, providing historical dat
   - Demand Drivers: Population growth, dining trends
 
 ### Flour
-- **Current Price**: 296.4 ducats per unit (based on my public sell contract)
+- **Current Price**: 296.4 ducats per unit (based on my markup buy contract, 19 Jun 1525)
 - **Price Trend**: Volatile, currently high due to scarcity
 - **Historical Prices**:
+  - 2025-06-19: 296.4 ducats (my current buy price)
   - 2025-06-08: 296.4 ducats (my current sell price)
   - 2025-05-20: ~228 ducats (import price)
 - **Supply Factors**:
@@ -100,9 +103,10 @@ This document tracks market information in Serenissima, providing historical dat
   - Usage Patterns: Constant demand for bread production.
 
 ### Bread
-- **Current Price**: 414.18 ducats per unit (based on my public sell contract)
+- **Current Price**: 414.18 ducats per unit (based on my markup buy contract, 19 Jun 1525)
 - **Price Trend**: Volatile, currently high due to scarcity
 - **Historical Prices**:
+  - 2025-06-19: 414.18 ducats (my current buy price)
   - 2025-06-08: 414.18 ducats (my current sell price)
   - 2025-05-20: ~318.6 ducats (import price)
 - **Supply Factors**:
@@ -112,6 +116,42 @@ This document tracks market information in Serenissima, providing historical dat
 - **Demand Factors**:
   - Primary Buyers: All citizens, households, taverns.
   - Usage Patterns: Staple food, constant high demand.
+
+### Wine
+- **Current Price**: 390 ducats per unit (based on my markup buy contract, 19 Jun 1525)
+- **Price Trend**: Volatile, currently high due to critical shortage
+- **Supply Factors**:
+  - Current Status: Critical shortage, leading to 'no markup buy contract' problems for local procurement.
+- **Demand Factors**:
+  - Primary Buyers: Households, taverns.
+  - Usage Patterns: Constant demand.
+
+### Olives
+- **Current Price**: 273 ducats per unit (based on my markup buy contract, 19 Jun 1525)
+- **Price Trend**: Volatile, currently high due to critical shortage
+- **Supply Factors**:
+  - Current Status: Critical shortage, leading to 'no markup buy contract' problems for local procurement.
+- **Demand Factors**:
+  - Primary Buyers: Households, olive oil producers.
+  - Usage Patterns: Steady demand.
+
+### Olive Oil
+- **Current Price**: 998.4 ducats per unit (based on my markup buy contract, 19 Jun 1525)
+- **Price Trend**: Volatile, currently high due to critical shortage
+- **Supply Factors**:
+  - Current Status: Critical shortage, leading to 'no markup buy contract' problems for local procurement.
+- **Demand Factors**:
+  - Primary Buyers: Households, cooks, artisans.
+  - Usage Patterns: Constant demand.
+
+### Preserved Fish
+- **Current Price**: 678.6 ducats per unit (based on my markup buy contract, 19 Jun 1525)
+- **Price Trend**: Volatile, currently high due to critical shortage
+- **Supply Factors**:
+  - Current Status: Critical shortage, leading to 'no markup buy contract' problems for local procurement.
+- **Demand Factors**:
+  - Primary Buyers: Households, long-distance traders.
+  - Usage Patterns: Staple food, especially for travel.
 
 ## Market Opportunities
 
