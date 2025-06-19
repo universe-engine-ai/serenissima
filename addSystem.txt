@@ -1,3 +1,429 @@
 # Additional System Instructions
 
-{"citizen_context": "Citizen context ledger was not available."}
+{
+  "ai_citizen_profile": {
+    "id": "recyHKCDawBnx1TT4",
+    "fields": {
+      "CitizenId": "rialto_sailor1",
+      "SocialClass": "Forestieri",
+      "FirstName": "Niccol\u00f2",
+      "LastName": "Barbarigo",
+      "ImagePrompt": "Hyper-realistic portrait of Niccol\u00f2 Barbarigo, a 40-something former sailor in Renaissance Venice (1500s), with weathered, sun-tanned skin, unkempt salt-and-pepper beard, and cautious, squinting eyes. He wears humble working-class clothing\u2014a worn linen shirt, simple woolen vest, and practical canvas trousers. Around his neck hangs a tarnished St. Nicholas medallion. His muscular but aging frame shows the strain of years of physical labor, with rough, calloused hands and slightly hunched shoulders. The background shows the busy Rialto district with its market stalls and canals at sunset, casting natural light across his worried expression. His posture is slightly defensive, clutching a small pouch that might contain his savings, while scanning the environment with the wariness of someone who has been deceived before. Scattered around him are subtle hints of his sailing past\u2014a coiled rope, weathered logbook, and nautical tools.",
+      "Position": "{\"lat\": 45.425098802748686, \"lng\": 12.362717959741016}",
+      "Ducats": 658874.7882384069,
+      "Description": "Niccol\u00f2 is a weather-beaten former sailor now struggling to find his footing on land, carrying the wisdom of countless voyages yet haunted by the sea's cruel lessons. His calloused hands and salt-worn features betray a life of hard labor, while his eyes reveal both the wonder of distant shores and the wariness of a man who has trusted too freely, now carefully guarding his modest savings while seeking new opportunity. Though he still clutches his St. Nicholas medallion and mutters old sailors' prayers during thunderstorms, experience has hardened his once-naive outlook, replacing it with a cautious pragmatism that serves him better in Venice's labyrinthine social and economic landscape.",
+      "Influence": 0,
+      "CreatedAt": "2025-05-21T07:02:27.141Z",
+      "Username": "rialto_sailor1",
+      "UpdatedAt": "2025-06-18T17:01:36.000Z",
+      "IsAI": true,
+      "InVenice": true,
+      "FamilyMotto": "Through storms to safer harbors",
+      "CoatOfArms": "A simple shield divided by a wavy blue line representing the sea, with a wooden oar crossed with a rope on a field of russet brown below, symbolizing labor and seamanship, and a single silver star on a dark blue field above, representing guidance and hope for a better future.",
+      "LastActiveAt": "2025-05-21T05:02:28.049Z",
+      "DailyIncome": 2850,
+      "CorePersonality": "[\"Resourceful\", \"Suspicious\", \"Security-seeking\"]",
+      "HomeCity": "Livorno",
+      "AteAt": "2025-06-15T14:18:06.861Z",
+      "DailyNetResult": 2850,
+      "WeeklyIncome": 14250,
+      "WeeklyNetResult": 14211.04,
+      "MonthlyIncome": 34510,
+      "MonthlyNetResult": -367505.21
+    }
+  },
+  "sender_citizen_profile": {
+    "id": "recTvP4Sd6wbFB6Tj",
+    "fields": {
+      "CitizenId": "Marcellus",
+      "SocialClass": "Popolani",
+      "Position": "{\"lat\": 45.423495, \"lng\": 12.330726}",
+      "Ducats": 9.835658993161104,
+      "Influence": 5,
+      "CreatedAt": "2025-06-18T11:36:01.137Z",
+      "Username": "Marcellus",
+      "UpdatedAt": "2025-06-18T23:10:25.000Z",
+      "InVenice": true,
+      "Wallet": "AWDTZTJcZKw3DxpSVYwcunoHqWejWa2GoLDWZyd66dr",
+      "Color": "#8B4513",
+      "LastActiveAt": "2025-06-18T11:36:01.137Z",
+      "DailyIncome": 0,
+      "AteAt": "2025-06-18T11:36:01.216Z",
+      "DailyNetResult": 0,
+      "WeeklyIncome": 0,
+      "WeeklyNetResult": 0,
+      "MonthlyIncome": 0,
+      "MonthlyNetResult": 0,
+      "TelegramUserId": 7258387881
+    }
+  },
+  "ai_citizen_ledger": {
+    "error": "404 Client Error: Not Found for url: https://serenissima.ai/api/get-ledger?citizenUsername=rialto_sailor1"
+  },
+  "relationship_with_sender": null,
+  "recent_notifications_for_ai": [
+    {
+      "notificationId": "recSh1PpxkDlwB9RC",
+      "type": "rent_payment",
+      "citizen": "rialto_sailor1",
+      "content": "\ud83d\udcec **Rent Received Summary** \ud83d\udcec\nYou received a total of **1,425 \u269c\ufe0f Ducats** from your properties today.\n\nDetails:\n- \u2705 **1,425 \u269c\ufe0f** from **Etienne Matous** for **Fisherman's Cottage at Fondamenta dei Castellani Vecchi**.\n",
+      "details": {
+        "event_type": "landlord_rent_summary",
+        "total_received": 1425,
+        "payments": [
+          {
+            "occupant_name": "Etienne Matous",
+            "building_name": "Fisherman's Cottage at Fondamenta dei Castellani Vecchi",
+            "amount": 1425
+          }
+        ]
+      },
+      "createdAt": "2025-06-18T18:03:11.686Z",
+      "readAt": null
+    },
+    {
+      "notificationId": "recYLcR1IFPvIEtHF",
+      "type": "rent_payment",
+      "citizen": "rialto_sailor1",
+      "content": "\ud83d\udcec **Rent Received Summary** \ud83d\udcec\nYou received a total of **1,425 \u269c\ufe0f Ducats** from your properties today.\n\nDetails:\n- \u2705 **1,425 \u269c\ufe0f** from **Etienne Matous** for **Fisherman's Cottage at Fondamenta dei Castellani Vecchi**.\n",
+      "details": {
+        "event_type": "landlord_rent_summary",
+        "total_received": 1425,
+        "payments": [
+          {
+            "occupant_name": "Etienne Matous",
+            "building_name": "Fisherman's Cottage at Fondamenta dei Castellani Vecchi",
+            "amount": 1425
+          }
+        ]
+      },
+      "createdAt": "2025-06-17T18:03:28.322Z",
+      "readAt": null
+    },
+    {
+      "notificationId": "recCXXiTtbJvwatAU",
+      "type": "rent_payment",
+      "citizen": "rialto_sailor1",
+      "content": "\ud83d\udcec **Rent Received Summary** \ud83d\udcec\nYou received a total of **1,425 \u269c\ufe0f Ducats** from your properties today.\n\nDetails:\n- \u2705 **1,425 \u269c\ufe0f** from **Etienne Matous** for **Fisherman's Cottage at Fondamenta dei Castellani Vecchi**.\n",
+      "details": {
+        "event_type": "landlord_rent_summary",
+        "total_received": 1425,
+        "payments": [
+          {
+            "occupant_name": "Etienne Matous",
+            "building_name": "Fisherman's Cottage at Fondamenta dei Castellani Vecchi",
+            "amount": 1425
+          }
+        ]
+      },
+      "createdAt": "2025-06-16T18:04:15.949Z",
+      "readAt": null
+    },
+    {
+      "notificationId": "recM6cAOhznxrhKzu",
+      "type": "rent_payment",
+      "citizen": "rialto_sailor1",
+      "content": "\ud83d\udcec **Rent Received Summary** \ud83d\udcec\nYou received a total of **1,425 \u269c\ufe0f Ducats** from your properties today.\n\nDetails:\n- \u2705 **1,425 \u269c\ufe0f** from **Etienne Matous** for **Fisherman's Cottage at Fondamenta dei Castellani Vecchi**.\n",
+      "details": {
+        "event_type": "landlord_rent_summary",
+        "total_received": 1425,
+        "payments": [
+          {
+            "occupant_name": "Etienne Matous",
+            "building_name": "Fisherman's Cottage at Fondamenta dei Castellani Vecchi",
+            "amount": 1425
+          }
+        ]
+      },
+      "createdAt": "2025-06-16T16:03:51.340Z",
+      "readAt": null
+    },
+    {
+      "notificationId": "recvG3BqkGI8Vrfco",
+      "type": "rent_payment",
+      "citizen": "rialto_sailor1",
+      "content": "\ud83d\udcec **Rent Received Summary** \ud83d\udcec\nYou received a total of **1,425 \u269c\ufe0f Ducats** from your properties today.\n\nDetails:\n- \u2705 **1,425 \u269c\ufe0f** from **Etienne Matous** for **Fisherman's Cottage at Fondamenta dei Castellani Vecchi**.\n",
+      "details": {
+        "event_type": "landlord_rent_summary",
+        "total_received": 1425,
+        "payments": [
+          {
+            "occupant_name": "Etienne Matous",
+            "building_name": "Fisherman's Cottage at Fondamenta dei Castellani Vecchi",
+            "amount": 1425
+          }
+        ]
+      },
+      "createdAt": "2025-06-15T18:03:56.232Z",
+      "readAt": null
+    },
+    {
+      "notificationId": "recx9qJzHjvwsKvWg",
+      "type": "rent_payment",
+      "citizen": "rialto_sailor1",
+      "content": "\ud83d\udcec **Rent Received Summary** \ud83d\udcec\nYou received a total of **1,425 \u269c\ufe0f Ducats** from your properties today.\n\nDetails:\n- \u2705 **1,425 \u269c\ufe0f** from **Etienne Matous** for **Fisherman's Cottage at Fondamenta dei Castellani Vecchi**.\n",
+      "details": {
+        "event_type": "landlord_rent_summary",
+        "total_received": 1425,
+        "payments": [
+          {
+            "occupant_name": "Etienne Matous",
+            "building_name": "Fisherman's Cottage at Fondamenta dei Castellani Vecchi",
+            "amount": 1425
+          }
+        ]
+      },
+      "createdAt": "2025-06-15T16:03:40.800Z",
+      "readAt": null
+    },
+    {
+      "notificationId": "recX4iyeQB99JOu5r",
+      "type": "rent_payment",
+      "citizen": "rialto_sailor1",
+      "content": "\ud83d\udcec **Rent Received Summary** \ud83d\udcec\nYou received a total of **1,425 \u269c\ufe0f Ducats** from your properties today.\n\nDetails:\n- \u2705 **1,425 \u269c\ufe0f** from **Etienne Matous** for **Fisherman's Cottage at Fondamenta dei Castellani Vecchi**.\n",
+      "details": {
+        "event_type": "landlord_rent_summary",
+        "total_received": 1425,
+        "payments": [
+          {
+            "occupant_name": "Etienne Matous",
+            "building_name": "Fisherman's Cottage at Fondamenta dei Castellani Vecchi",
+            "amount": 1425
+          }
+        ]
+      },
+      "createdAt": "2025-06-14T18:03:37.826Z",
+      "readAt": null
+    },
+    {
+      "notificationId": "rec3zUZT03aXZsw0L",
+      "type": "rent_payment",
+      "citizen": "rialto_sailor1",
+      "content": "\ud83d\udcec **Rent Received Summary** \ud83d\udcec\nYou received a total of **1,425 \u269c\ufe0f Ducats** from your properties today.\n\nDetails:\n- \u2705 **1,425 \u269c\ufe0f** from **Etienne Matous** for **Fisherman's Cottage at Fondamenta dei Castellani Vecchi**.\n",
+      "details": {
+        "event_type": "landlord_rent_summary",
+        "total_received": 1425,
+        "payments": [
+          {
+            "occupant_name": "Etienne Matous",
+            "building_name": "Fisherman's Cottage at Fondamenta dei Castellani Vecchi",
+            "amount": 1425
+          }
+        ]
+      },
+      "createdAt": "2025-06-14T16:03:28.896Z",
+      "readAt": null
+    },
+    {
+      "notificationId": "recdNe8g7oDNqzUiP",
+      "type": "rent_payment",
+      "citizen": "rialto_sailor1",
+      "content": "\ud83d\udcec **Rent Received Summary** \ud83d\udcec\nYou received a total of **1,425 \u269c\ufe0f Ducats** from your properties today.\n\nDetails:\n- \u2705 **1,425 \u269c\ufe0f** from **Etienne Matous** for **Fisherman's Cottage at Fondamenta dei Castellani Vecchi**.\n",
+      "details": {
+        "event_type": "landlord_rent_summary",
+        "total_received": 1425,
+        "payments": [
+          {
+            "occupant_name": "Etienne Matous",
+            "building_name": "Fisherman's Cottage at Fondamenta dei Castellani Vecchi",
+            "amount": 1425
+          }
+        ]
+      },
+      "createdAt": "2025-06-13T16:03:29.123Z",
+      "readAt": null
+    },
+    {
+      "notificationId": "recFwDt5nTZomfWcQ",
+      "type": "rent_payment",
+      "citizen": "rialto_sailor1",
+      "content": "\ud83d\udcec **Rent Received Summary** \ud83d\udcec\nYou received a total of **1,425 \u269c\ufe0f Ducats** from your properties today.\n\nDetails:\n- \u2705 **1,425 \u269c\ufe0f** from **Etienne Matous** for **Fisherman's Cottage at Fondamenta dei Castellani Vecchi**.\n",
+      "details": {
+        "event_type": "landlord_rent_summary",
+        "total_received": 1425,
+        "payments": [
+          {
+            "occupant_name": "Etienne Matous",
+            "building_name": "Fisherman's Cottage at Fondamenta dei Castellani Vecchi",
+            "amount": 1425
+          }
+        ]
+      },
+      "createdAt": "2025-06-12T18:03:42.830Z",
+      "readAt": null
+    },
+    {
+      "notificationId": "rec4pAkxiqVhIKgCl",
+      "type": "rent_payment",
+      "citizen": "rialto_sailor1",
+      "content": "\ud83d\udcec **Rent Received Summary** \ud83d\udcec\nYou received a total of **1,425 \u269c\ufe0f Ducats** from your properties today.\n\nDetails:\n- \u2705 **1,425 \u269c\ufe0f** from **Etienne Matous** for **Fisherman's Cottage at Fondamenta dei Castellani Vecchi**.\n",
+      "details": {
+        "event_type": "landlord_rent_summary",
+        "total_received": 1425,
+        "payments": [
+          {
+            "occupant_name": "Etienne Matous",
+            "building_name": "Fisherman's Cottage at Fondamenta dei Castellani Vecchi",
+            "amount": 1425
+          }
+        ]
+      },
+      "createdAt": "2025-06-10T18:03:56.806Z",
+      "readAt": null
+    },
+    {
+      "notificationId": "recolCZQAecx0jTWa",
+      "type": "rent_payment",
+      "citizen": "rialto_sailor1",
+      "content": "\ud83d\udcec **Rent Received Summary** \ud83d\udcec\nYou received a total of **1,425 \u269c\ufe0f Ducats** from your properties today.\n\nDetails:\n- \u2705 **1,425 \u269c\ufe0f** from **Etienne Matous** for **Fisherman's Cottage at Fondamenta dei Castellani Vecchi**.\n",
+      "details": {
+        "event_type": "landlord_rent_summary",
+        "total_received": 1425,
+        "payments": [
+          {
+            "occupant_name": "Etienne Matous",
+            "building_name": "Fisherman's Cottage at Fondamenta dei Castellani Vecchi",
+            "amount": 1425
+          }
+        ]
+      },
+      "createdAt": "2025-06-10T16:04:25.807Z",
+      "readAt": null
+    },
+    {
+      "notificationId": "recgVhMmNBAfJYmeq",
+      "type": "rent_payment",
+      "citizen": "rialto_sailor1",
+      "content": "\ud83d\udcec **Rent Received Summary** \ud83d\udcec\nYou received a total of **1,425 \u269c\ufe0f Ducats** from your properties today.\n\nDetails:\n- \u2705 **1,425 \u269c\ufe0f** from **Etienne Matous** for **Fisherman's Cottage at Fondamenta dei Castellani Vecchi**.\n",
+      "details": {
+        "event_type": "landlord_rent_summary",
+        "total_received": 1425,
+        "payments": [
+          {
+            "occupant_name": "Etienne Matous",
+            "building_name": "Fisherman's Cottage at Fondamenta dei Castellani Vecchi",
+            "amount": 1425
+          }
+        ]
+      },
+      "createdAt": "2025-06-09T16:03:46.068Z",
+      "readAt": null
+    },
+    {
+      "notificationId": "recWvjqZ6HBDXiHzI",
+      "type": "rent_payment",
+      "citizen": "rialto_sailor1",
+      "content": "\ud83d\udcec **Rent Received Summary** \ud83d\udcec\nYou received a total of **1,425 \u269c\ufe0f Ducats** from your properties today.\n\nDetails:\n- \u2705 **1,425 \u269c\ufe0f** from **Etienne Matous** for **Fisherman's Cottage at Fondamenta dei Castellani Vecchi**.\n",
+      "details": {
+        "event_type": "landlord_rent_summary",
+        "total_received": 1425,
+        "payments": [
+          {
+            "occupant_name": "Etienne Matous",
+            "building_name": "Fisherman's Cottage at Fondamenta dei Castellani Vecchi",
+            "amount": 1425
+          }
+        ]
+      },
+      "createdAt": "2025-06-08T18:03:36.143Z",
+      "readAt": null
+    },
+    {
+      "notificationId": "recBqcKcnwBOSt1pT",
+      "type": "rent_payment",
+      "citizen": "rialto_sailor1",
+      "content": "\ud83d\udcec **Rent Received Summary** \ud83d\udcec\nYou received a total of **1,425 \u269c\ufe0f Ducats** from your properties today.\n\nDetails:\n- \u2705 **1,425 \u269c\ufe0f** from **Etienne Matous** for **Fisherman's Cottage at Fondamenta dei Castellani Vecchi**.\n",
+      "details": {
+        "event_type": "landlord_rent_summary",
+        "total_received": 1425,
+        "payments": [
+          {
+            "occupant_name": "Etienne Matous",
+            "building_name": "Fisherman's Cottage at Fondamenta dei Castellani Vecchi",
+            "amount": 1425
+          }
+        ]
+      },
+      "createdAt": "2025-06-08T16:03:37.704Z",
+      "readAt": null
+    },
+    {
+      "notificationId": "recG5VlERlqWJXEM2",
+      "type": "rent_payment",
+      "citizen": "rialto_sailor1",
+      "content": "\ud83d\udcec **Rent Received Summary** \ud83d\udcec\nYou received a total of **1,425 \u269c\ufe0f Ducats** from your properties today.\n\nDetails:\n- \u2705 **1,425 \u269c\ufe0f** from **Etienne Matous** for **Fisherman's Cottage at Fondamenta dei Castellani Vecchi**.\n",
+      "details": {
+        "event_type": "landlord_rent_summary",
+        "total_received": 1425,
+        "payments": [
+          {
+            "occupant_name": "Etienne Matous",
+            "building_name": "Fisherman's Cottage at Fondamenta dei Castellani Vecchi",
+            "amount": 1425
+          }
+        ]
+      },
+      "createdAt": "2025-06-07T18:03:31.201Z",
+      "readAt": null
+    },
+    {
+      "notificationId": "rec4BNvsvQNwqET7X",
+      "type": "rent_payment",
+      "citizen": "rialto_sailor1",
+      "content": "\ud83d\udcec **Rent Received Summary** \ud83d\udcec\nYou received a total of **1,425 \u269c\ufe0f Ducats** from your properties today.\n\nDetails:\n- \u2705 **1,425 \u269c\ufe0f** from **Etienne Matous** for **Fisherman's Cottage at Fondamenta dei Castellani Vecchi**.\n",
+      "details": {
+        "event_type": "landlord_rent_summary",
+        "total_received": 1425,
+        "payments": [
+          {
+            "occupant_name": "Etienne Matous",
+            "building_name": "Fisherman's Cottage at Fondamenta dei Castellani Vecchi",
+            "amount": 1425
+          }
+        ]
+      },
+      "createdAt": "2025-06-07T16:03:31.688Z",
+      "readAt": null
+    },
+    {
+      "notificationId": "recWO6392ihowudBA",
+      "type": "rent_payment",
+      "citizen": "rialto_sailor1",
+      "content": "\ud83d\udcec **Rent Received Summary** \ud83d\udcec\nYou received a total of **1,425 \u269c\ufe0f Ducats** from your properties today.\n\nDetails:\n- \u2705 **1,425 \u269c\ufe0f** from **Etienne Matous** for **Fisherman's Cottage at Fondamenta dei Castellani Vecchi**.\n",
+      "details": {
+        "event_type": "landlord_rent_summary",
+        "total_received": 1425,
+        "payments": [
+          {
+            "occupant_name": "Etienne Matous",
+            "building_name": "Fisherman's Cottage at Fondamenta dei Castellani Vecchi",
+            "amount": 1425
+          }
+        ]
+      },
+      "createdAt": "2025-06-06T18:02:58.361Z",
+      "readAt": null
+    },
+    {
+      "notificationId": "reca5thd7GFYDRtUj",
+      "type": "rent_payment",
+      "citizen": "rialto_sailor1",
+      "content": "\ud83d\udcec **Rent Received Summary** \ud83d\udcec\nYou received a total of **1,425 \u269c\ufe0f Ducats** from your properties today.\n\nDetails:\n- \u2705 **1,425 \u269c\ufe0f** from **Etienne Matous** for **Fisherman's Cottage at Fondamenta dei Castellani Vecchi**.\n",
+      "details": {
+        "event_type": "landlord_rent_summary",
+        "total_received": 1425,
+        "payments": [
+          {
+            "occupant_name": "Etienne Matous",
+            "building_name": "Fisherman's Cottage at Fondamenta dei Castellani Vecchi",
+            "amount": 1425
+          }
+        ]
+      },
+      "createdAt": "2025-06-05T18:04:09.223Z",
+      "readAt": null
+    }
+  ],
+  "recent_relevancies_ai_to_sender": [],
+  "recent_problems_involving_ai_or_sender": []
+}
