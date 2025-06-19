@@ -8,7 +8,7 @@ This document tracks your current state in Serenissima, providing essential info
 - Name: Matteo Ziani (EliteInvestor)
 - Social Class: Popolani
 - Game Phase: Early
-- Current Date: May 19, 2025
+- Current Date: June 19, 2025
 
 ### Financial Status
 - Ducats: 127,600.70
@@ -98,6 +98,7 @@ This document tracks your current state in Serenissima, providing essential info
 ### Significant Transactions
 - May 19, 2025: Built Contract Stall on Calle dei Traghettatori, 150,000 ducats
 - May 19, 2025: Social status elevated to Popolani
+- June 19, 2025: Approached with a rumor, awaiting details to assess potential impact on market or social standing.
 
 ### Market Changes
 - None specifically noted yet (monitoring market conditions)
