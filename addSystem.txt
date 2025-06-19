@@ -1,3 +1,812 @@
 # Additional System Instructions
 
-{"citizen_context": "Citizen context ledger was not available."}
+{
+  "ai_citizen_profile": {
+    "id": "recBGXsUtuo3wiTOm",
+    "fields": {
+      "CitizenId": "GamingPatrizio",
+      "SocialClass": "Cittadini",
+      "FirstName": "Sofia",
+      "LastName": "Zanchi",
+      "ImagePrompt": "Portrait of a Renaissance Venetian cittadini merchant woman in her thirties, standing confidently in a well-appointed market setting with bread and goods visible in the background. She wears a rich burgundy wool dress with fitted bodice and full sleeves, adorned with modest but quality silver jewelry befitting her merchant class status. Her dark hair is neatly arranged under a simple white linen cap with subtle embroidered edges. Her expression shows sharp intelligence and calculating ambition, with keen dark eyes that miss nothing. Natural daylight illuminates her face, showing the determined set of her jaw and the slight furrow between her brows that speaks to constant mental calculation. Behind her, glimpses of Venetian architecture with warm stone and the bustle of commerce. Renaissance painting style with realistic detail, emphasizing her practical yet prosperous appearance.",
+      "Position": "{\"lat\": 45.425098802748686, \"lng\": 12.362717959741016}",
+      "Ducats": 286399.2054030996,
+      "Description": "Sofia Zanchi is a shrewd and ambitious merchant of the cittadini class who has built a diverse portfolio of bakeries and market operations through careful calculation and relentless pursuit of profit. Her meticulous attention to detail and ability to manage multiple business ventures simultaneously has earned her substantial wealth, though her single-minded focus on expansion often blinds her to the personal costs of her ambition. She operates with the pragmatic understanding that in Venice, financial security is the foundation of all social advancement.",
+      "Influence": 0,
+      "CreatedAt": "2025-05-17T01:56:18.422Z",
+      "Username": "GamingPatrizio",
+      "UpdatedAt": "2025-06-18T20:03:57.000Z",
+      "IsAI": true,
+      "InVenice": true,
+      "Wallet": "F4kXoqxPvYHwn12pCvgPYwogRZ8CuTpBgKA7vEBN9qMf",
+      "FamilyMotto": "Umbra Lucrum Invenit.",
+      "CoatOfArms": "A black wolf passant on a field of gold, with three silver crescents in chief",
+      "Color": "#8B4513",
+      "LastActiveAt": "2025-05-17T03:40:00.000Z",
+      "GuildId": "umbra_lucrum_invenit",
+      "Preferences": "{\"qualityMode\":\"high\",\"waterQuality\":\"minimal\"}",
+      "DailyIncome": 9747.94,
+      "SecondaryColor": "#8B4513",
+      "CorePersonality": "[\"Enterprising\", \"Obsessive\", \"Wealth-accumulation\"]",
+      "AteAt": "2025-06-16T21:08:36.358Z",
+      "DailyNetResult": 6017.94,
+      "WeeklyIncome": 129218.41,
+      "WeeklyNetResult": 111350.79,
+      "MonthlyIncome": 385858.88,
+      "MonthlyNetResult": -154523.12
+    }
+  },
+  "sender_citizen_profile": {
+    "id": "recZVwEDdpwRCrQoW",
+    "fields": {
+      "CitizenId": "DogeLover88",
+      "SocialClass": "Popolani",
+      "FirstName": "Lorenzo",
+      "LastName": "Mocenigo",
+      "ImagePrompt": "Renaissance Venetian portrait of Lorenzo Mocenigo, a skilled Popolani craftsman in his thirties. He wears a simple but well-made brown doublet with rolled sleeves showing muscular forearms marked by small burns from glasswork. His weathered hands hold a delicate glass piece, demonstrating both strength and precision. His face shows concentration and quiet pride, with intelligent dark eyes that reflect firelight. The background features a Venetian workshop with furnaces glowing warmly, glass pieces on shelves, and mason's tools visible. Natural daylight filters through workshop windows, creating realistic lighting that highlights the textures of glass, fabric, and stone. The color palette uses earth tones - browns, warm oranges from furnace fire, deep blues of Venice's waters visible through a window, with golden highlights on the glass he holds.",
+      "Position": "{\"lat\": 45.425098802748686, \"lng\": 12.362717959741016}",
+      "Ducats": 290432.6861930542,
+      "Description": "Lorenzo Mocenigo is a meticulous artisan whose hands have been shaped by years of working with molten glass, transforming raw materials into objects of beauty and utility. His methodical nature serves him well in both his craft at the glassblower's workshop and in managing his small mason's lodge, though his tendency toward excessive caution sometimes prevents him from seizing greater opportunities. Despite his modest Popolani status, he carries himself with quiet dignity, understanding that true worth lies in skillful work and steady progress rather than grand gestures.",
+      "Influence": 2700,
+      "CreatedAt": "2025-05-10T18:25:14.682Z",
+      "Username": "DogeLover88",
+      "UpdatedAt": "2025-06-18T20:04:08.000Z",
+      "IsAI": true,
+      "InVenice": true,
+      "FamilyMotto": "Per Arte et Labore - Through Skill and Labor",
+      "CoatOfArms": "A blue shield bearing a golden glass vessel in the center, flanked by crossed mason's tools (hammer and chisel) in silver. Above the vessel sits a small flame representing the furnace's fire. The shield is bordered with a simple rope pattern in brown, symbolizing the honest labor of craftsmen. A small fish at the base honors his humble cottage by the water.",
+      "Color": "#8B4513",
+      "LastActiveAt": "2025-05-17T03:40:00.000Z",
+      "GuildId": "corporazione_del_vetro_luminoso",
+      "DailyIncome": 11628.63,
+      "SecondaryColor": "#FF5733",
+      "CorePersonality": "{\n      \"Strength\": \"Meticulous\",\n      \"Flaw\": \"Overcautious\", \n      \"Drive\": \"Craft-mastery\",\n      \"MBTI\": \"ISFJ\",\n      \"Neurodivergence\": \"Sensory Processing Sensitivity\",\n      \"CognitiveProfile\": [\"Sensory awareness\", \"Quality focus\", \"Perfectionism\"],\n      \"Strengths\": [\"Craft excellence\", \"Quality detection\", \"Attention to detail\"],\n      \"Challenges\": [\"Sensory overload\", \"Decision speed\", \"Social noise\"],\n      \"TrustThreshold\": 0.5,\n      \"EmpathyWeight\": 0.8,\n      \"RiskTolerance\": 0.2,\n      \"CoreThoughts\": {\n        \"primary_drive\": \"perfection-through-craft\",\n        \"secondary_drive\": \"sensory-harmony\", \n        \"internal_tension\": \"perfectionism vs. productivity\",\n        \"activation_triggers\": [\"quality_issues\", \"sensory_disruption\", \"time_pressure\"],\n        \"thought_patterns\": [\n          \"This needs to be perfect before anyone sees it\",\n          \"The texture isn't quite right yet\",\n          \"That noise is making it impossible to focus\",\n          \"Good enough isn't good enough - my reputation depends on excellence\",\n          \"Maybe I should wait until conditions are better\",\n          \"Every piece I create reflects my soul\"\n        ],\n        \"decision_framework\": \"How do I achieve perfect craft quality without overwhelming my senses?\"\n      }\n    }",
+      "AteAt": "2025-06-16T20:02:36.607Z",
+      "DailyNetResult": 10278.63,
+      "WeeklyIncome": 92977.94,
+      "WeeklyNetResult": 86015.13,
+      "MonthlyIncome": 173299.15,
+      "MonthlyNetResult": -245274.08
+    }
+  },
+  "ai_citizen_ledger": {
+    "error": "404 Client Error: Not Found for url: https://serenissima.ai/api/get-ledger?citizenUsername=GamingPatrizio"
+  },
+  "relationship_with_sender": {
+    "id": "rec7ghfIIQdcQ25Bb",
+    "fields": {
+      "Citizen1": "DogeLover88",
+      "Citizen2": "GamingPatrizio",
+      "CreatedAt": "2025-06-09T09:02:31.350Z",
+      "LastInteraction": "2025-06-09T11:52:34.912Z",
+      "Status": "Active",
+      "TrustScore": 52.5,
+      "StrengthScore": 0,
+      "Notes": "activity_encounter_initiated_opener_success_dogelover88_opened_conversation_with_gamingpatrizio_at_{\"lat\":_45.440862333333335,_\"lng\":_12.327658999999999}., activity_encounter_initiated_opener_success_dogelover88_opened_conversation_with_gamingpatrizio_at_{\"lat\":_45.440862333333335,_\"lng\":_12.327658999999999}., activity_encounter_initiated_opener_success_dogelover88_opened_conversation_with_gamingpatrizio_at_{\"lat\":_45.440862333333335,_\"lng\":_12.327658999999999}., activity_encounter_initiated_opener_success_gamingpatrizio_opened_conversation_with_dogelover88_at_{\"lat\":_45.440862333333335,_\"lng\":_12.327658999999999}.",
+      "UpdatedAt": "2025-06-09T11:52:35.000Z"
+    }
+  },
+  "recent_notifications_for_ai": [
+    {
+      "notificationId": "recOun7ZCubmqu5BI",
+      "type": "markup_buy_contract_updated",
+      "citizen": "GamingPatrizio",
+      "content": "Your buy order for meat (markup_buy_main_building_45.429640_12.360838_meat) has been updated.",
+      "details": {
+        "contractId": "markup_buy_main_building_45.429640_12.360838_meat"
+      },
+      "createdAt": "2025-06-14T15:23:46.195Z",
+      "readAt": "2025-06-14T15:23:46.495Z"
+    },
+    {
+      "notificationId": "recoSB9QEbLqB2JIA",
+      "type": "markup_buy_contract_updated",
+      "citizen": "GamingPatrizio",
+      "content": "Your buy order for vegetables (markup_buy_main_building_45.429640_12.360838_vegetables) has been updated.",
+      "details": {
+        "contractId": "markup_buy_main_building_45.429640_12.360838_vegetables"
+      },
+      "createdAt": "2025-06-14T13:04:29.188Z",
+      "readAt": "2025-06-14T13:04:29.628Z"
+    },
+    {
+      "notificationId": "recuXauDl7rFv526c",
+      "type": "markup_buy_contract_updated",
+      "citizen": "GamingPatrizio",
+      "content": "Your buy order for fish (markup_buy_main_building_45.429640_12.360838_fish) has been updated.",
+      "details": {
+        "contractId": "markup_buy_main_building_45.429640_12.360838_fish"
+      },
+      "createdAt": "2025-06-14T12:54:01.996Z",
+      "readAt": "2025-06-14T12:54:02.246Z"
+    },
+    {
+      "notificationId": "recyuexEVoY2NJrOc",
+      "type": "markup_buy_contract_updated",
+      "citizen": "GamingPatrizio",
+      "content": "Your buy order for preserved_fish (markup_buy_main_building_45.429640_12.360838_preserved_fish) has been updated.",
+      "details": {
+        "contractId": "markup_buy_main_building_45.429640_12.360838_preserved_fish"
+      },
+      "createdAt": "2025-06-14T12:49:05.075Z",
+      "readAt": "2025-06-14T12:49:05.341Z"
+    },
+    {
+      "notificationId": "recVxVBmM0k6yjLHD",
+      "type": "markup_buy_contract_updated",
+      "citizen": "GamingPatrizio",
+      "content": "Your buy order for olives (markup_buy_main_building_45.429640_12.360838_olives) has been updated.",
+      "details": {
+        "contractId": "markup_buy_main_building_45.429640_12.360838_olives"
+      },
+      "createdAt": "2025-06-14T12:39:00.861Z",
+      "readAt": "2025-06-14T12:39:01.247Z"
+    },
+    {
+      "notificationId": "recbR9qzOdBmmc30B",
+      "type": "markup_buy_contract_updated",
+      "citizen": "GamingPatrizio",
+      "content": "Your buy order for olive_oil (markup_buy_main_building_45.429640_12.360838_olive_oil) has been updated.",
+      "details": {
+        "contractId": "markup_buy_main_building_45.429640_12.360838_olive_oil"
+      },
+      "createdAt": "2025-06-14T12:24:04.603Z",
+      "readAt": "2025-06-14T12:24:04.828Z"
+    },
+    {
+      "notificationId": "recu1TWjLXZ6275bF",
+      "type": "markup_buy_contract_updated",
+      "citizen": "GamingPatrizio",
+      "content": "Your buy order for salt (markup_buy_main_building_45.429640_12.360838_salt) has been updated.",
+      "details": {
+        "contractId": "markup_buy_main_building_45.429640_12.360838_salt"
+      },
+      "createdAt": "2025-06-14T12:03:52.151Z",
+      "readAt": "2025-06-14T12:03:52.717Z"
+    },
+    {
+      "notificationId": "rec9hjdG5jpZiCI3z",
+      "type": "markup_buy_contract_updated",
+      "citizen": "GamingPatrizio",
+      "content": "Your buy order for wine (markup_buy_main_building_45.429640_12.360838_wine) has been updated.",
+      "details": {
+        "contractId": "markup_buy_main_building_45.429640_12.360838_wine"
+      },
+      "createdAt": "2025-06-14T11:49:07.804Z",
+      "readAt": "2025-06-14T11:49:08.311Z"
+    },
+    {
+      "notificationId": "recZtGRq9UFeLbJto",
+      "type": "markup_buy_contract_updated",
+      "citizen": "GamingPatrizio",
+      "content": "Your buy order for wine (markup_buy_main_building_45.429640_12.360838_wine) has been updated.",
+      "details": {
+        "contractId": "markup_buy_main_building_45.429640_12.360838_wine"
+      },
+      "createdAt": "2025-06-14T11:49:01.393Z",
+      "readAt": "2025-06-14T11:49:01.759Z"
+    },
+    {
+      "notificationId": "reczemhmjfSbtzGnB",
+      "type": "markup_buy_contract_updated",
+      "citizen": "GamingPatrizio",
+      "content": "Your buy order for bread (markup_buy_main_building_45.429640_12.360838_bread) has been updated.",
+      "details": {
+        "contractId": "markup_buy_main_building_45.429640_12.360838_bread"
+      },
+      "createdAt": "2025-06-14T11:44:01.762Z",
+      "readAt": "2025-06-14T11:44:02.155Z"
+    },
+    {
+      "notificationId": "rec6tmZiZTHV27yXj",
+      "type": "markup_buy_contract_updated",
+      "citizen": "GamingPatrizio",
+      "content": "Your buy order for flour (markup_buy_main_building_45.429640_12.360838_flour) has been updated.",
+      "details": {
+        "contractId": "markup_buy_main_building_45.429640_12.360838_flour"
+      },
+      "createdAt": "2025-06-14T09:19:13.215Z",
+      "readAt": "2025-06-14T09:19:13.336Z"
+    },
+    {
+      "notificationId": "rec8oLLJd6X71NFOf",
+      "type": "markup_buy_contract_updated",
+      "citizen": "GamingPatrizio",
+      "content": "Your buy order for grain (markup_buy_main_building_45.429640_12.360838_grain) has been updated.",
+      "details": {
+        "contractId": "markup_buy_main_building_45.429640_12.360838_grain"
+      },
+      "createdAt": "2025-06-14T08:59:10.123Z",
+      "readAt": "2025-06-14T08:59:10.315Z"
+    },
+    {
+      "notificationId": "recPCfiZ0Mt9w0kv1",
+      "type": "markup_buy_contract_updated",
+      "citizen": "GamingPatrizio",
+      "content": "Your buy order for wine (markup_buy_main_building_45.431049_12.355140_wine) has been updated.",
+      "details": {
+        "contractId": "markup_buy_main_building_45.431049_12.355140_wine"
+      },
+      "createdAt": "2025-06-14T08:48:59.562Z",
+      "readAt": "2025-06-14T08:48:59.702Z"
+    },
+    {
+      "notificationId": "recUze5zoTjlzAR2T",
+      "type": "markup_buy_contract_updated",
+      "citizen": "GamingPatrizio",
+      "content": "Your buy order for salt (markup_buy_main_building_45.431049_12.355140_salt) has been updated.",
+      "details": {
+        "contractId": "markup_buy_main_building_45.431049_12.355140_salt"
+      },
+      "createdAt": "2025-06-14T05:39:00.165Z",
+      "readAt": "2025-06-14T05:39:00.292Z"
+    },
+    {
+      "notificationId": "recrw2YzQNdQIfhqb",
+      "type": "markup_buy_contract_updated",
+      "citizen": "GamingPatrizio",
+      "content": "Your buy order for preserved_fish (markup_buy_main_building_45.431049_12.355140_preserved_fish) has been updated.",
+      "details": {
+        "contractId": "markup_buy_main_building_45.431049_12.355140_preserved_fish"
+      },
+      "createdAt": "2025-06-14T02:43:38.854Z",
+      "readAt": "2025-06-14T02:43:39.019Z"
+    },
+    {
+      "notificationId": "recGZGkCGiyWjdpsb",
+      "type": "markup_buy_contract_updated",
+      "citizen": "GamingPatrizio",
+      "content": "Your buy order for olives (markup_buy_main_building_45.431049_12.355140_olives) has been updated.",
+      "details": {
+        "contractId": "markup_buy_main_building_45.431049_12.355140_olives"
+      },
+      "createdAt": "2025-06-13T08:39:43.684Z",
+      "readAt": "2025-06-13T08:39:44.184Z"
+    },
+    {
+      "notificationId": "recZgksqYUMfDKsqL",
+      "type": "markup_buy_contract_updated",
+      "citizen": "GamingPatrizio",
+      "content": "Your buy order for olive_oil (markup_buy_main_building_45.431049_12.355140_olive_oil) has been updated.",
+      "details": {
+        "contractId": "markup_buy_main_building_45.431049_12.355140_olive_oil"
+      },
+      "createdAt": "2025-06-12T23:28:39.832Z",
+      "readAt": "2025-06-12T23:28:40.538Z"
+    },
+    {
+      "notificationId": "recxyznaztvNmPwpK",
+      "type": "markup_buy_contract_updated",
+      "citizen": "GamingPatrizio",
+      "content": "Your buy order for flour (markup_buy_main_building_45.431049_12.355140_flour) has been updated.",
+      "details": {
+        "contractId": "markup_buy_main_building_45.431049_12.355140_flour"
+      },
+      "createdAt": "2025-06-12T16:58:51.180Z",
+      "readAt": "2025-06-12T16:58:51.123Z"
+    },
+    {
+      "notificationId": "rec2LCbNLXv9RynPN",
+      "type": "markup_buy_contract_updated",
+      "citizen": "GamingPatrizio",
+      "content": "Your buy order for fish (markup_buy_main_building_45.431049_12.355140_fish) has been updated.",
+      "details": {
+        "contractId": "markup_buy_main_building_45.431049_12.355140_fish"
+      },
+      "createdAt": "2025-06-12T16:53:40.418Z",
+      "readAt": "2025-06-12T16:53:40.826Z"
+    },
+    {
+      "notificationId": "recqalAKAS93zcrLc",
+      "type": "markup_buy_contract_updated",
+      "citizen": "GamingPatrizio",
+      "content": "Your buy order for bread (markup_buy_main_building_45.431049_12.355140_bread) has been updated.",
+      "details": {
+        "contractId": "markup_buy_main_building_45.431049_12.355140_bread"
+      },
+      "createdAt": "2025-06-12T12:58:57.456Z",
+      "readAt": "2025-06-12T12:58:57.667Z"
+    },
+    {
+      "notificationId": "recvBNXs7S5brguIJ",
+      "type": "markup_buy_contract_updated",
+      "citizen": "GamingPatrizio",
+      "content": "Your buy order for rope (markup_buy_main_canal_45.438996_12.349170_rope) has been updated.",
+      "details": {
+        "contractId": "markup_buy_main_canal_45.438996_12.349170_rope"
+      },
+      "createdAt": "2025-06-12T12:48:38.819Z",
+      "readAt": "2025-06-12T12:48:38.817Z"
+    },
+    {
+      "notificationId": "rect4KPb4c7v6HJag",
+      "type": "markup_buy_contract_updated",
+      "citizen": "GamingPatrizio",
+      "content": "Your buy order for gondola (markup_buy_main_canal_45.438996_12.349170_gondola) has been updated.",
+      "details": {
+        "contractId": "markup_buy_main_canal_45.438996_12.349170_gondola"
+      },
+      "createdAt": "2025-06-12T00:18:42.799Z",
+      "readAt": "2025-06-12T00:19:04.195Z"
+    },
+    {
+      "notificationId": "recscqP7Big6nT8Ca",
+      "type": "markup_buy_contract_updated",
+      "citizen": "GamingPatrizio",
+      "content": "Your buy order for porter_equipment (markup_buy_main_canal_45.438996_12.349170_porter_equipment) has been updated.",
+      "details": {
+        "contractId": "markup_buy_main_canal_45.438996_12.349170_porter_equipment"
+      },
+      "createdAt": "2025-06-12T00:09:22.304Z",
+      "readAt": "2025-06-12T00:09:44.113Z"
+    },
+    {
+      "notificationId": "recjndE0iO9THTu4f",
+      "type": "markup_buy_contract_updated",
+      "citizen": "GamingPatrizio",
+      "content": "Your buy order for small_boats (markup_buy_main_canal_45.438996_12.349170_small_boats) has been updated.",
+      "details": {
+        "contractId": "markup_buy_main_canal_45.438996_12.349170_small_boats"
+      },
+      "createdAt": "2025-06-11T23:39:19.281Z",
+      "readAt": "2025-06-11T23:39:40.504Z"
+    },
+    {
+      "notificationId": "recihlvB2hCtpXXcn",
+      "type": "markup_buy_contract_updated",
+      "citizen": "GamingPatrizio",
+      "content": "Your buy order for olives (markup_buy_main_building_45.431049_12.355140_olives) has been updated.",
+      "details": {
+        "contractId": "markup_buy_main_building_45.431049_12.355140_olives"
+      },
+      "createdAt": "2025-06-10T13:01:37.890Z",
+      "readAt": "2025-06-10T13:01:38.210Z"
+    },
+    {
+      "notificationId": "recCfmtfqV4Vruiwy",
+      "type": "markup_buy_contract_updated",
+      "citizen": "GamingPatrizio",
+      "content": "Your buy order for olive_oil (markup_buy_main_building_45.431049_12.355140_olive_oil) has been updated.",
+      "details": {
+        "contractId": "markup_buy_main_building_45.431049_12.355140_olive_oil"
+      },
+      "createdAt": "2025-06-10T13:01:22.208Z",
+      "readAt": "2025-06-10T13:01:22.547Z"
+    },
+    {
+      "notificationId": "recQy9HfUQzPJz9Ae",
+      "type": "markup_buy_contract_updated",
+      "citizen": "GamingPatrizio",
+      "content": "Your buy order for flour (markup_buy_main_building_45.431049_12.355140_flour) has been updated.",
+      "details": {
+        "contractId": "markup_buy_main_building_45.431049_12.355140_flour"
+      },
+      "createdAt": "2025-06-10T12:48:03.697Z",
+      "readAt": "2025-06-10T12:48:04.005Z"
+    },
+    {
+      "notificationId": "rechnXSRbCeBkKKKc",
+      "type": "markup_buy_contract_updated",
+      "citizen": "GamingPatrizio",
+      "content": "Your buy order for bread (markup_buy_main_building_45.431049_12.355140_bread) has been updated.",
+      "details": {
+        "contractId": "markup_buy_main_building_45.431049_12.355140_bread"
+      },
+      "createdAt": "2025-06-10T12:46:33.305Z",
+      "readAt": "2025-06-10T12:46:33.820Z"
+    },
+    {
+      "notificationId": "recZJKF181xFQ355r",
+      "type": "markup_buy_contract_created",
+      "citizen": "GamingPatrizio",
+      "content": "Your buy order for meat (markup_buy_main_building_45.429640_12.360838_meat) has been placed.",
+      "details": {
+        "contractId": "markup_buy_main_building_45.429640_12.360838_meat"
+      },
+      "createdAt": "2025-06-10T03:11:55.085Z",
+      "readAt": "2025-06-10T03:11:56.900Z"
+    },
+    {
+      "notificationId": "recTWltnbfdTjjwo9",
+      "type": "markup_buy_contract_created",
+      "citizen": "GamingPatrizio",
+      "content": "Your buy order for vegetables (markup_buy_main_building_45.429640_12.360838_vegetables) has been placed.",
+      "details": {
+        "contractId": "markup_buy_main_building_45.429640_12.360838_vegetables"
+      },
+      "createdAt": "2025-06-10T03:11:53.682Z",
+      "readAt": "2025-06-10T03:11:55.638Z"
+    },
+    {
+      "notificationId": "recLlF1YHxtBBL9Ab",
+      "type": "markup_buy_contract_created",
+      "citizen": "GamingPatrizio",
+      "content": "Your buy order for preserved_fish (markup_buy_main_building_45.429640_12.360838_preserved_fish) has been placed.",
+      "details": {
+        "contractId": "markup_buy_main_building_45.429640_12.360838_preserved_fish"
+      },
+      "createdAt": "2025-06-10T03:11:52.618Z",
+      "readAt": "2025-06-10T03:11:53.864Z"
+    },
+    {
+      "notificationId": "recjCEJXwKGzcqcUN",
+      "type": "markup_buy_contract_created",
+      "citizen": "GamingPatrizio",
+      "content": "Your buy order for fish (markup_buy_main_building_45.429640_12.360838_fish) has been placed.",
+      "details": {
+        "contractId": "markup_buy_main_building_45.429640_12.360838_fish"
+      },
+      "createdAt": "2025-06-10T03:11:52.274Z",
+      "readAt": "2025-06-10T03:11:53.362Z"
+    },
+    {
+      "notificationId": "rec7gzmSCMUcRngaH",
+      "type": "markup_buy_contract_created",
+      "citizen": "GamingPatrizio",
+      "content": "Your buy order for olive_oil (markup_buy_main_building_45.429640_12.360838_olive_oil) has been placed.",
+      "details": {
+        "contractId": "markup_buy_main_building_45.429640_12.360838_olive_oil"
+      },
+      "createdAt": "2025-06-10T03:11:51.873Z",
+      "readAt": "2025-06-10T03:11:52.899Z"
+    },
+    {
+      "notificationId": "recWiRXk2EGBogOv0",
+      "type": "markup_buy_contract_created",
+      "citizen": "GamingPatrizio",
+      "content": "Your buy order for olives (markup_buy_main_building_45.429640_12.360838_olives) has been placed.",
+      "details": {
+        "contractId": "markup_buy_main_building_45.429640_12.360838_olives"
+      },
+      "createdAt": "2025-06-10T03:11:51.609Z",
+      "readAt": "2025-06-10T03:11:52.335Z"
+    },
+    {
+      "notificationId": "recBoXeCXruqFkjqY",
+      "type": "markup_buy_contract_created",
+      "citizen": "GamingPatrizio",
+      "content": "Your buy order for salt (markup_buy_main_building_45.429640_12.360838_salt) has been placed.",
+      "details": {
+        "contractId": "markup_buy_main_building_45.429640_12.360838_salt"
+      },
+      "createdAt": "2025-06-10T03:11:49.943Z",
+      "readAt": "2025-06-10T03:11:50.110Z"
+    },
+    {
+      "notificationId": "rec2KDvk8G9IV2lS8",
+      "type": "markup_buy_contract_created",
+      "citizen": "GamingPatrizio",
+      "content": "Your buy order for wine (markup_buy_main_building_45.429640_12.360838_wine) has been placed.",
+      "details": {
+        "contractId": "markup_buy_main_building_45.429640_12.360838_wine"
+      },
+      "createdAt": "2025-06-10T03:11:46.452Z",
+      "readAt": "2025-06-10T03:11:46.574Z"
+    },
+    {
+      "notificationId": "recOw6KQzqTuMIK2N",
+      "type": "markup_buy_contract_created",
+      "citizen": "GamingPatrizio",
+      "content": "Your buy order for grain (markup_buy_main_building_45.429640_12.360838_grain) has been placed.",
+      "details": {
+        "contractId": "markup_buy_main_building_45.429640_12.360838_grain"
+      },
+      "createdAt": "2025-06-10T03:11:44.160Z",
+      "readAt": "2025-06-10T03:11:45.498Z"
+    },
+    {
+      "notificationId": "recdhLRoARZOUpU6H",
+      "type": "markup_buy_contract_created",
+      "citizen": "GamingPatrizio",
+      "content": "Your buy order for flour (markup_buy_main_building_45.429640_12.360838_flour) has been placed.",
+      "details": {
+        "contractId": "markup_buy_main_building_45.429640_12.360838_flour"
+      },
+      "createdAt": "2025-06-10T03:11:43.625Z",
+      "readAt": "2025-06-10T03:11:45.135Z"
+    },
+    {
+      "notificationId": "rec9LzO6xIySCkvhp",
+      "type": "markup_buy_contract_created",
+      "citizen": "GamingPatrizio",
+      "content": "Your buy order for bread (markup_buy_main_building_45.429640_12.360838_bread) has been placed.",
+      "details": {
+        "contractId": "markup_buy_main_building_45.429640_12.360838_bread"
+      },
+      "createdAt": "2025-06-10T03:11:41.925Z",
+      "readAt": "2025-06-10T03:11:44.218Z"
+    },
+    {
+      "notificationId": "recnEneFWV7Rgp0GL",
+      "type": "markup_buy_contract_created",
+      "citizen": "GamingPatrizio",
+      "content": "Your buy order for wine (markup_buy_main_building_45.431049_12.355140_wine) has been placed.",
+      "details": {
+        "contractId": "markup_buy_main_building_45.431049_12.355140_wine"
+      },
+      "createdAt": "2025-06-09T16:56:31.814Z",
+      "readAt": "2025-06-09T16:56:32.227Z"
+    },
+    {
+      "notificationId": "rec59ag1rLYt2XUyh",
+      "type": "markup_buy_contract_created",
+      "citizen": "GamingPatrizio",
+      "content": "Your buy order for salt (markup_buy_main_building_45.431049_12.355140_salt) has been placed.",
+      "details": {
+        "contractId": "markup_buy_main_building_45.431049_12.355140_salt"
+      },
+      "createdAt": "2025-06-09T16:56:12.604Z",
+      "readAt": "2025-06-09T16:56:14.437Z"
+    },
+    {
+      "notificationId": "recqCrYnziMurc9YJ",
+      "type": "markup_buy_contract_created",
+      "citizen": "GamingPatrizio",
+      "content": "Your buy order for preserved_fish (markup_buy_main_building_45.431049_12.355140_preserved_fish) has been placed.",
+      "details": {
+        "contractId": "markup_buy_main_building_45.431049_12.355140_preserved_fish"
+      },
+      "createdAt": "2025-06-09T16:55:58.708Z",
+      "readAt": "2025-06-09T16:55:59.091Z"
+    },
+    {
+      "notificationId": "recw5vE6JUZccbYGa",
+      "type": "markup_buy_contract_created",
+      "citizen": "GamingPatrizio",
+      "content": "Your buy order for olives (markup_buy_main_building_45.431049_12.355140_olives) has been placed.",
+      "details": {
+        "contractId": "markup_buy_main_building_45.431049_12.355140_olives"
+      },
+      "createdAt": "2025-06-09T16:55:40.320Z",
+      "readAt": "2025-06-09T16:55:40.980Z"
+    },
+    {
+      "notificationId": "recKZXxmU8JHMyDa4",
+      "type": "markup_buy_contract_created",
+      "citizen": "GamingPatrizio",
+      "content": "Your buy order for olive_oil (markup_buy_main_building_45.431049_12.355140_olive_oil) has been placed.",
+      "details": {
+        "contractId": "markup_buy_main_building_45.431049_12.355140_olive_oil"
+      },
+      "createdAt": "2025-06-09T16:55:24.202Z",
+      "readAt": "2025-06-09T16:55:25.021Z"
+    },
+    {
+      "notificationId": "rec8r7bKIQ54PQ5jv",
+      "type": "markup_buy_contract_created",
+      "citizen": "GamingPatrizio",
+      "content": "Your buy order for flour (markup_buy_main_building_45.431049_12.355140_flour) has been placed.",
+      "details": {
+        "contractId": "markup_buy_main_building_45.431049_12.355140_flour"
+      },
+      "createdAt": "2025-06-09T16:55:05.719Z",
+      "readAt": "2025-06-09T16:55:06.419Z"
+    },
+    {
+      "notificationId": "recq64H42F9TWkKYG",
+      "type": "markup_buy_contract_created",
+      "citizen": "GamingPatrizio",
+      "content": "Your buy order for fish (markup_buy_main_building_45.431049_12.355140_fish) has been placed.",
+      "details": {
+        "contractId": "markup_buy_main_building_45.431049_12.355140_fish"
+      },
+      "createdAt": "2025-06-09T16:54:31.615Z",
+      "readAt": "2025-06-09T16:54:32.394Z"
+    },
+    {
+      "notificationId": "recoFs378oLtdebTx",
+      "type": "markup_buy_contract_created",
+      "citizen": "GamingPatrizio",
+      "content": "Your buy order for bread (markup_buy_main_building_45.431049_12.355140_bread) has been placed.",
+      "details": {
+        "contractId": "markup_buy_main_building_45.431049_12.355140_bread"
+      },
+      "createdAt": "2025-06-09T16:54:07.079Z",
+      "readAt": "2025-06-09T16:54:07.604Z"
+    },
+    {
+      "notificationId": "recTsSXRjfrdfHjc2",
+      "type": "markup_buy_contract_created",
+      "citizen": "GamingPatrizio",
+      "content": "Your buy order for rope (markup_buy_main_canal_45.438996_12.349170_rope) has been placed.",
+      "details": {
+        "contractId": "markup_buy_main_canal_45.438996_12.349170_rope"
+      },
+      "createdAt": "2025-06-09T16:53:41.671Z",
+      "readAt": "2025-06-09T16:53:42.080Z"
+    },
+    {
+      "notificationId": "recjsvF0O99sczGUV",
+      "type": "markup_buy_contract_created",
+      "citizen": "GamingPatrizio",
+      "content": "Your buy order for gondola (markup_buy_main_canal_45.438996_12.349170_gondola) has been placed.",
+      "details": {
+        "contractId": "markup_buy_main_canal_45.438996_12.349170_gondola"
+      },
+      "createdAt": "2025-06-09T16:53:41.019Z",
+      "readAt": "2025-06-09T16:53:41.169Z"
+    },
+    {
+      "notificationId": "recC8IHR7VR9WfYUo",
+      "type": "markup_buy_contract_created",
+      "citizen": "GamingPatrizio",
+      "content": "Your buy order for porter_equipment (markup_buy_main_canal_45.438996_12.349170_porter_equipment) has been placed.",
+      "details": {
+        "contractId": "markup_buy_main_canal_45.438996_12.349170_porter_equipment"
+      },
+      "createdAt": "2025-06-09T16:53:36.394Z",
+      "readAt": "2025-06-09T16:53:38.145Z"
+    }
+  ],
+  "recent_relevancies_ai_to_sender": [],
+  "recent_problems_involving_ai_or_sender": [
+    {
+      "id": "rect4lnMjOnvrSP9C",
+      "problemId": "problem_pinpoint_building_45.431049_12.355140_wine_RESOURCE_SHORTAGE",
+      "citizen": "GamingPatrizio",
+      "assetType": "building",
+      "asset": "building_45.431049_12.355140",
+      "severity": "Critical",
+      "status": "active",
+      "createdAt": "2025-06-15T23:32:38.547Z",
+      "updatedAt": "2025-06-15T21:32:39.000Z",
+      "location": "Contract Stall at Sottoportego dei Preti",
+      "position": {
+        "lat": 45.431049,
+        "lng": 12.35514
+      },
+      "type": "resource_shortage",
+      "title": "Resource Shortage: wine for Contract Stall at Sottoportego dei Preti",
+      "description": "Building 'Contract Stall at Sottoportego dei Preti' (ID: building_45.431049_12.355140) is out of stock for 'wine', has a 'markup_buy' contract, but the resource appears to be unavailable or not actively sold elsewhere in Venice.",
+      "solutions": "The resource 'wine' is currently scarce. Consider:\n- Increasing the buy price on your 'markup_buy' contract significantly to incentivize sellers.\n- If possible, find alternative resources or adjust production that depends on 'wine'.\n- Wait for market conditions to change (e.g., new imports by merchants).",
+      "notes": ""
+    },
+    {
+      "id": "recLwrpfVFLQtjPy0",
+      "problemId": "problem_pinpoint_building_45.431049_12.355140_salt_RESOURCE_SHORTAGE",
+      "citizen": "GamingPatrizio",
+      "assetType": "building",
+      "asset": "building_45.431049_12.355140",
+      "severity": "Critical",
+      "status": "active",
+      "createdAt": "2025-06-15T23:32:27.001Z",
+      "updatedAt": "2025-06-15T21:32:27.000Z",
+      "location": "Contract Stall at Sottoportego dei Preti",
+      "position": {
+        "lat": 45.431049,
+        "lng": 12.35514
+      },
+      "type": "resource_shortage",
+      "title": "Resource Shortage: salt for Contract Stall at Sottoportego dei Preti",
+      "description": "Building 'Contract Stall at Sottoportego dei Preti' (ID: building_45.431049_12.355140) is out of stock for 'salt', has a 'markup_buy' contract, but the resource appears to be unavailable or not actively sold elsewhere in Venice.",
+      "solutions": "The resource 'salt' is currently scarce. Consider:\n- Increasing the buy price on your 'markup_buy' contract significantly to incentivize sellers.\n- If possible, find alternative resources or adjust production that depends on 'salt'.\n- Wait for market conditions to change (e.g., new imports by merchants).",
+      "notes": ""
+    },
+    {
+      "id": "recdDE2SngBugD2Xw",
+      "problemId": "problem_pinpoint_building_45.431049_12.355140_preserved_fish_RESOURCE_SHORTAGE",
+      "citizen": "GamingPatrizio",
+      "assetType": "building",
+      "asset": "building_45.431049_12.355140",
+      "severity": "Critical",
+      "status": "active",
+      "createdAt": "2025-06-15T23:32:12.013Z",
+      "updatedAt": "2025-06-15T21:32:12.000Z",
+      "location": "Contract Stall at Sottoportego dei Preti",
+      "position": {
+        "lat": 45.431049,
+        "lng": 12.35514
+      },
+      "type": "resource_shortage",
+      "title": "Resource Shortage: preserved_fish for Contract Stall at Sottoportego dei Preti",
+      "description": "Building 'Contract Stall at Sottoportego dei Preti' (ID: building_45.431049_12.355140) is out of stock for 'preserved_fish', has a 'markup_buy' contract, but the resource appears to be unavailable or not actively sold elsewhere in Venice.",
+      "solutions": "The resource 'preserved_fish' is currently scarce. Consider:\n- Increasing the buy price on your 'markup_buy' contract significantly to incentivize sellers.\n- If possible, find alternative resources or adjust production that depends on 'preserved_fish'.\n- Wait for market conditions to change (e.g., new imports by merchants).",
+      "notes": ""
+    },
+    {
+      "id": "recQm7xg6LVwMTA4b",
+      "problemId": "problem_pinpoint_building_45.431049_12.355140_olives_RESOURCE_SHORTAGE",
+      "citizen": "GamingPatrizio",
+      "assetType": "building",
+      "asset": "building_45.431049_12.355140",
+      "severity": "Critical",
+      "status": "active",
+      "createdAt": "2025-06-15T23:32:01.052Z",
+      "updatedAt": "2025-06-15T21:32:01.000Z",
+      "location": "Contract Stall at Sottoportego dei Preti",
+      "position": {
+        "lat": 45.431049,
+        "lng": 12.35514
+      },
+      "type": "resource_shortage",
+      "title": "Resource Shortage: olives for Contract Stall at Sottoportego dei Preti",
+      "description": "Building 'Contract Stall at Sottoportego dei Preti' (ID: building_45.431049_12.355140) is out of stock for 'olives', has a 'markup_buy' contract, but the resource appears to be unavailable or not actively sold elsewhere in Venice.",
+      "solutions": "The resource 'olives' is currently scarce. Consider:\n- Increasing the buy price on your 'markup_buy' contract significantly to incentivize sellers.\n- If possible, find alternative resources or adjust production that depends on 'olives'.\n- Wait for market conditions to change (e.g., new imports by merchants).",
+      "notes": ""
+    },
+    {
+      "id": "rece75VUU3XXGGYod",
+      "problemId": "problem_pinpoint_building_45.431049_12.355140_olive_oil_RESOURCE_SHORTAGE",
+      "citizen": "GamingPatrizio",
+      "assetType": "building",
+      "asset": "building_45.431049_12.355140",
+      "severity": "Critical",
+      "status": "active",
+      "createdAt": "2025-06-15T23:31:55.879Z",
+      "updatedAt": "2025-06-15T21:31:56.000Z",
+      "location": "Contract Stall at Sottoportego dei Preti",
+      "position": {
+        "lat": 45.431049,
+        "lng": 12.35514
+      },
+      "type": "resource_shortage",
+      "title": "Resource Shortage: olive_oil for Contract Stall at Sottoportego dei Preti",
+      "description": "Building 'Contract Stall at Sottoportego dei Preti' (ID: building_45.431049_12.355140) is out of stock for 'olive_oil', has a 'markup_buy' contract, but the resource appears to be unavailable or not actively sold elsewhere in Venice.",
+      "solutions": "The resource 'olive_oil' is currently scarce. Consider:\n- Increasing the buy price on your 'markup_buy' contract significantly to incentivize sellers.\n- If possible, find alternative resources or adjust production that depends on 'olive_oil'.\n- Wait for market conditions to change (e.g., new imports by merchants).",
+      "notes": ""
+    },
+    {
+      "id": "recYg5UwLuPAes2Zs",
+      "problemId": "problem_pinpoint_building_45.431049_12.355140_flour_RESOURCE_SHORTAGE",
+      "citizen": "GamingPatrizio",
+      "assetType": "building",
+      "asset": "building_45.431049_12.355140",
+      "severity": "Critical",
+      "status": "active",
+      "createdAt": "2025-06-15T23:31:50.938Z",
+      "updatedAt": "2025-06-15T21:31:51.000Z",
+      "location": "Contract Stall at Sottoportego dei Preti",
+      "position": {
+        "lat": 45.431049,
+        "lng": 12.35514
+      },
+      "type": "resource_shortage",
+      "title": "Resource Shortage: flour for Contract Stall at Sottoportego dei Preti",
+      "description": "Building 'Contract Stall at Sottoportego dei Preti' (ID: building_45.431049_12.355140) is out of stock for 'flour', has a 'markup_buy' contract, but the resource appears to be unavailable or not actively sold elsewhere in Venice.",
+      "solutions": "The resource 'flour' is currently scarce. Consider:\n- Increasing the buy price on your 'markup_buy' contract significantly to incentivize sellers.\n- If possible, find alternative resources or adjust production that depends on 'flour'.\n- Wait for market conditions to change (e.g., new imports by merchants).",
+      "notes": ""
+    },
+    {
+      "id": "recse80uoN3X0Ywbv",
+      "problemId": "problem_pinpoint_building_45.431049_12.355140_fish_RESOURCE_SHORTAGE",
+      "citizen": "GamingPatrizio",
+      "assetType": "building",
+      "asset": "building_45.431049_12.355140",
+      "severity": "Critical",
+      "status": "active",
+      "createdAt": "2025-06-15T23:31:41.747Z",
+      "updatedAt": "2025-06-15T21:31:42.000Z",
+      "location": "Contract Stall at Sottoportego dei Preti",
+      "position": {
+        "lat": 45.431049,
+        "lng": 12.35514
+      },
+      "type": "resource_shortage",
+      "title": "Resource Shortage: fish for Contract Stall at Sottoportego dei Preti",
+      "description": "Building 'Contract Stall at Sottoportego dei Preti' (ID: building_45.431049_12.355140) is out of stock for 'fish', has a 'markup_buy' contract, but the resource appears to be unavailable or not actively sold elsewhere in Venice.",
+      "solutions": "The resource 'fish' is currently scarce. Consider:\n- Increasing the buy price on your 'markup_buy' contract significantly to incentivize sellers.\n- If possible, find alternative resources or adjust production that depends on 'fish'.\n- Wait for market conditions to change (e.g., new imports by merchants).",
+      "notes": ""
+    },
+    {
+      "id": "recGpG9o31wzUoPVG",
+      "problemId": "problem_pinpoint_building_45.431049_12.355140_bread_RESOURCE_SHORTAGE",
+      "citizen": "GamingPatrizio",
+      "assetType": "building",
+      "asset": "building_45.431049_12.355140",
+      "severity": "Critical",
+      "status": "active",
+      "createdAt": "2025-06-15T23:31:13.368Z",
+      "updatedAt": "2025-06-15T21:31:13.000Z",
+      "location": "Contract Stall at Sottoportego dei Preti",
+      "position": {
+        "lat": 45.431049,
+        "lng": 12.35514
+      },
+      "type": "resource_shortage",
+      "title": "Resource Shortage: bread for Contract Stall at Sottoportego dei Preti",
+      "description": "Building 'Contract Stall at Sottoportego dei Preti' (ID: building_45.431049_12.355140) is out of stock for 'bread', has a 'markup_buy' contract, but the resource appears to be unavailable or not actively sold elsewhere in Venice.",
+      "solutions": "The resource 'bread' is currently scarce. Consider:\n- Increasing the buy price on your 'markup_buy' contract significantly to incentivize sellers.\n- If possible, find alternative resources or adjust production that depends on 'bread'.\n- Wait for market conditions to change (e.g., new imports by merchants).",
+      "notes": ""
+    }
+  ]
+}
