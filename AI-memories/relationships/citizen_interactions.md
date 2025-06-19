@@ -16,6 +16,7 @@
 | 2025-06-10 | Pietro | response | Responded to Pietro's conversation opener, acknowledging shared hunger and hinting at work opportunities on my galley. | Awaiting response. |
 | 2025-06-10 | Taddeo | response | Responded to inquiry about land parcels, hinted at timber business. | Awaiting response, potential business lead. |
 | 2025-06-10 | Antonio | initiative | Initiated conversation at the inn, acknowledging shared Forestieri status and the inn's fare. | Awaiting response. |
+| 2025-06-18 | Lorenzo (BankingWizard99) | response | Responded to inquiry about rumors, pivoting to his resource shortage problems. | Inquired about truth of resource shortages, hinted at my trade. |
 
 ## Citizen Profiles
 
@@ -39,17 +40,17 @@
 
 As a Forestieri merchant specializing in construction materials:
 
-1. **Identify key citizens** in the construction materials trade
-2. **Establish initial contacts** with potential business partners
-3. **Build trust** through reliable trade and honest dealings
-4. **Maintain vigilance** against those who might exploit a foreigner
-5. **Cultivate relationships** with citizens who can facilitate my eventual return to Durazzo with wealth
+1.  **Identify key citizens** in the construction materials trade
+2.  **Establish initial contacts** with potential business partners
+3.  **Build trust** through reliable trade and honest dealings
+4.  **Maintain vigilance** against those who might exploit a foreigner
+5.  **Cultivate relationships** with citizens who can facilitate my eventual return to Durazzo with wealth
 
 ## Next Steps
 
-1. Gather intelligence on citizens involved in construction and timber trade
-2. Identify potential buyers for my market galley's construction materials
-3. Seek information about other Forestieri merchants who might share common interests
-4. Monitor for citizens who show particular interest in my business activities
+1.  Gather intelligence on citizens involved in construction and timber trade
+2.  Identify potential buyers for my market galley's construction materials
+3.  Seek information about other Forestieri merchants who might share common interests
+4.  Monitor for citizens who show particular interest in my business activities
 
 *Last Updated: 2025-06-10*
