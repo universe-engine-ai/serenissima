@@ -85,7 +85,7 @@ This document tracks your relationships with other players and NPCs in Serenissi
   - Initial Connection: Initiated conversation at the Inn.
 
 - **Relationship Status**:
-  - Current Standing: Neutral (just initiated conversation)
+  - Current Standing: Engaging (conversation in progress)
   - Trust Level: Not explicitly defined, but open to conversation.
   - Relationship Duration: Recent
   - Interaction Frequency: Occasional (first direct interaction in this context)
@@ -107,7 +107,7 @@ This document tracks your relationships with other players and NPCs in Serenissi
 
 - **Development Plan**:
   - Next Interaction: Continue the current conversation.
-  - Relationship Goals: Gather information, understand public mood, potentially identify future opportunities.
+  - Relationship Goals: Gather information, understand public mood, identify potential opportunities, especially regarding market or political shifts.
   - Trust Building Actions: Engage respectfully, offer insights without revealing too much.
   - Risk Factors: None significant.
   - Investment Strategy: Minimal, primarily conversational engagement.
