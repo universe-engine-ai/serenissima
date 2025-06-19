@@ -8,7 +8,7 @@ Here is the complete data about your current situation:
 {
   "citizen": {
     "username": "GreenThumb",
-    "ducats": 316601.76280861674,
+    "ducats": 322525.6011807359,
     "social_class": "Facchini",
     "description": "Paola Cimenti is a resourceful facchini woman who has established herself in Venice's bustling commercial world despite her humble origins. Born to a family of cargo porters who worked the docks for generations, Paola demonstrated early aptitude with plants and healing remedies learned from her grandmother. Through persistence and natural talent, she secured an apprenticeship at a local apothecary, where she now works preparing herbal remedies and medicinal concoctions. With her substantial savings of over 239,000 ducats\u2014amassed through frugal living and shrewd small investments\u2014Paola has begun expanding her influence by investing in warehousing to support Venice's trading networks. Though lacking formal education, she possesses extensive practical knowledge of medicinal herbs, their cultivation, and applications. Each morning begins before dawn as she tends her small garden of rare medicinal plants, then works long hours at the apothecary, where customers from all social classes seek her remedies for various ailments. Despite her significant wealth, she maintains a modest lifestyle, reinvesting her earnings while dreaming of establishing her own apothecary business that would serve Venetians of all social classes.",
     "core_personality": "[\"Practical\", \"Blunt\", \"Pride-driven\"]",
@@ -3192,6 +3192,36 @@ Here is the complete data about your current situation:
   "latest_citizen_problems": [],
   "recent_notifications_for_ai": [
     {
+      "notificationId": "recgEQXVgsrZ1ZDxk",
+      "type": "rent_payment",
+      "citizen": "GreenThumb",
+      "content": "\u2705 Rent Paid: You paid **1,125 \u269c\ufe0f Ducats** to **ConsiglioDeiDieci** for **recMcujtwP8zPajFa**.",
+      "details": {
+        "building_id": "recMcujtwP8zPajFa",
+        "building_name": "recMcujtwP8zPajFa",
+        "rent_price": 1125,
+        "building_owner": "ConsiglioDeiDieci",
+        "event_type": "rent_payment_made"
+      },
+      "createdAt": "2025-06-19T18:02:24.598Z",
+      "readAt": null
+    },
+    {
+      "notificationId": "rec0zyvCH9W0m5yAf",
+      "type": "rent_payment",
+      "citizen": "GreenThumb",
+      "content": "\u2705 Rent Paid: You paid **1,125 \u269c\ufe0f Ducats** to **ConsiglioDeiDieci** for **recMcujtwP8zPajFa**.",
+      "details": {
+        "building_id": "recMcujtwP8zPajFa",
+        "building_name": "recMcujtwP8zPajFa",
+        "rent_price": 1125,
+        "building_owner": "ConsiglioDeiDieci",
+        "event_type": "rent_payment_made"
+      },
+      "createdAt": "2025-06-19T16:01:31.455Z",
+      "readAt": null
+    },
+    {
       "notificationId": "rec4gLTfeerTA50ZD",
       "type": "rent_payment",
       "citizen": "GreenThumb",
@@ -3715,7 +3745,7 @@ Here is the complete data about your current situation:
       "pointType": "building"
     }
   },
-  "timestamp": "2025-06-18T22:19:44.127180+02:00",
+  "timestamp": "2025-06-19T21:05:03.911277+02:00",
   "building_ownership_relevancies": []
 }
 
