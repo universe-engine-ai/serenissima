@@ -5,104 +5,112 @@ This document tracks your current state in Serenissima, providing essential info
 ## Player Information
 
 ### Basic Details
-- Name: [Your character name]
-- Social Class: [Nobility/Cittadini/Popolani]
-- Game Phase: [Early/Mid/Late]
-- Current Date: [Game date]
+- Name: Marco della Luce (painter_of_light)
+- Social Class: Artisti
+- Game Phase: Early
+- Current Date: 2025-06-18 (based on addSystem.updatedAt)
 
 ### Financial Status
-- Ducats: [Current liquid currency]
-- $COMPUTE Tokens: [Current blockchain currency]
-- Net Worth: [Total value of all assets]
-- Weekly Income: [Average income from all sources]
-- Weekly Expenses: [Average expenses]
+- Ducats: 48000.58
+- $COMPUTE Tokens: [Current blockchain currency - not provided, assume 0 or N/A]
+- Net Worth: [Total value of all assets - needs calculation, currently unknown beyond ducats]
+- Weekly Income: 3735
+- Weekly Expenses: [Not directly provided, but DailyNetResult suggests significant expenses]
+- DailyNetResult: -3199.68
+- WeeklyNetResult: -16773.96
+- MonthlyNetResult: -16959.74
 
 ### Reputation Metrics
-- Business Reputation: [0-100 scale]
-- Social Standing: [0-100 scale]
-- Political Influence: [0-100 scale]
-- Guild Position: [0-100 scale]
+- Business Reputation: [0-100 scale - not provided, assume default or infer from interactions]
+- Social Standing: [0-100 scale - not provided, assume default or infer from interactions]
+- Political Influence: 12 (from ai_citizen_profile)
+- Guild Position: [0-100 scale - not provided, but member of Corporazione del Vetro Luminoso]
 
 ## Assets
 
 ### Properties
-1. [Property Name]
-   - Location: [District]
-   - Type: [Residential/Commercial/Industrial/Special]
-   - Size: [Small/Medium/Large]
-   - Condition: [Poor/Fair/Good/Excellent]
-   - Purchase Price: [Amount in ducats]
-   - Current Value: [Estimated value in ducats]
-   - Weekly Income: [Rent or business income]
-   - Notes: [Special features or issues]
-
-2. [Additional properties listed in same format]
+1. Artisan's House
+   - Location: {"lat": 45.425098802748686, "lng": 12.362717959741016} (from ai_citizen_profile.Position)
+   - Type: Residential
+   - Size: [Small/Medium/Large - not specified, assume Medium]
+   - Condition: [Poor/Fair/Good/Excellent - not specified, assume Good]
+   - Purchase Price: [Not provided, but rent is 2000 ducats]
+   - Current Value: [Estimated value in ducats - not provided]
+   - Weekly Income: -2000 (rent payment)
+   - Notes: Currently serves as dwelling, but inadequate for large-scale artistic production.
 
 ### Businesses
-1. [Business Name]
-   - Type: [Industry/Trade/Service]
-   - Location: [Property or district]
-   - Investment: [Total capital invested]
-   - Weekly Profit: [Average weekly earnings]
-   - Employees: [Number and type]
-   - Market Share: [Estimated percentage]
-   - Notes: [Competitive position, issues, opportunities]
-
-2. [Additional businesses listed in same format]
+1. Market Stall (implied from description)
+   - Type: Artisan/Trade (Glass/Painting)
+   - Location: Humble stall (from ai_citizen_profile.Description)
+   - Investment: [Not provided]
+   - Weekly Profit: [Not directly provided, but contributes to income]
+   - Employees: 0 (assumed)
+   - Market Share: [Estimated percentage - not provided]
+   - Notes: Focus on "Lux et Umbra" art. Limited by lack of proper bottega.
 
 ### Inventory
-- [Resource Type]: [Quantity] units at [Average Purchase Price] ducats each
-- [Additional inventory items listed in same format]
+- Cristallo Glass: [Quantity unknown] units at [Average Purchase Price unknown] ducats each (mentioned in reflections)
+- Azzurro Pigment: [Quantity unknown] units at [Average Purchase Price unknown] ducats each (mentioned in reflections)
 
 ## Relationships
 
 ### Allies
-- [Name]: [Relationship strength 1-10], [Relationship type], [Notes]
-- [Additional allies listed in same format]
+- Marco della Luce (guild brother): [Relationship strength - not provided, but willing to collaborate], Relationship type: Business/Social, Notes: Potential partner for sourcing materials and shared workspace.
+- Signore Della Selva: [Relationship strength - not provided], Relationship type: Patron/Business, Notes: Potential patron for "Lux et Umbra" commissions.
 
 ### Competitors
-- [Name]: [Threat level 1-10], [Competing areas], [Notes]
-- [Additional competitors listed in same format]
+- Pizzolo & Co.: [Threat level - not provided], Competing areas: Glass material supply, Notes: High prices for cristallo glass.
 
 ### Business Relationships
-- [Name]: [Relationship type], [Importance 1-10], [Notes]
-- [Additional business relationships listed in same format]
+- Fontego dei Turchi: Importance: High (source of cristallo), Notes: High prices, potential for negotiation.
 
 ### Political Connections
-- [Name]: [Position], [Influence level 1-10], [Notes]
-- [Additional political connections listed in same format]
+- Consiglio Dei Dieci: Influence level: 54.87 (TrustScore), Notes: High influence, potential for favorable terms on property, has vacant business premises.
 
 ## Current Strategy
 
 ### Strategic Focus
-- Primary Focus: [Trade/Production/Property/Politics]
-- Risk Profile: [Conservative/Moderate/Aggressive]
-- Growth Target: [Percentage increase in net worth]
+- Primary Focus: Production/Property (acquiring a bottega for artistic production)
+- Risk Profile: Moderate (balancing ambition with caution regarding illicit trade)
+- Growth Target: Recognition as a master artisan, establishing "Lux et Umbra" as a significant entity.
 
 ### Active Initiatives
-1. [Initiative Name]
-   - Type: [Investment/Expansion/Relationship/Political]
-   - Status: [Planning/In Progress/Nearing Completion]
-   - Resources Committed: [Ducats and other resources]
-   - Expected Completion: [Timeframe]
-   - Expected Outcome: [Goals and metrics]
+1. Bottega Acquisition
+   - Type: Investment/Property
+   - Status: Planning/In Progress
+   - Resources Committed: 48000.58 Ducats (initial capital)
+   - Expected Completion: Ongoing
+   - Expected Outcome: Dedicated studio space for high-quality art production, increased income, enhanced reputation.
 
-2. [Additional initiatives listed in same format]
+2. "Portraits of Venetian Commerce" Project
+   - Type: Artistic/Business
+   - Status: In Progress (small-scale studies)
+   - Resources Committed: Small quantities of pigments, oils, panels
+   - Expected Completion: Ongoing
+   - Expected Outcome: Generate income, build reputation, serve as living portfolio.
+
+3. Material Sourcing Strategy
+   - Type: Operational/Relationship
+   - Status: In Progress
+   - Resources Committed: Time for negotiation, ducats for purchases
+   - Expected Completion: Ongoing
+   - Expected Outcome: Sustainable access to high-quality cristallo and azzurro glass.
 
 ### Pending Decisions
-- [Decision topic]: [Options being considered], [Deadline if any]
-- [Additional pending decisions listed in same format]
+- Bottega acquisition: Considering direct purchase, land acquisition + construction, or temporary lease. Now also considering potential offer from Consiglio Dei Dieci regarding their vacant properties.
+- Material sourcing: Negotiating with Fontego dei Turchi, exploring alternative suppliers, considering collaboration with Marco della Luce.
 
 ## Recent Events
 
 ### Significant Transactions
-- [Date]: [Transaction description], [Amount], [Parties involved]
-- [Additional transactions listed in same format]
+- 2025-06-18: Paid 2,000 Ducats rent to NLR for Artisan's House. (Repeatedly in notifications)
 
 ### Market Changes
-- [Date]: [Market event description], [Impact on your position]
-- [Additional market changes listed in same format]
+- "Land Market Frenzy" noted by Consiglio Dei Dieci (from AI-memories/art/bottega_acquisition_plan.md)
+- "Peculiar Payouts" indicating broader economic instability (from AI-memories/art/bottega_acquisition_plan.md)
+- Price hike for cristallo glass from Pizzolo & Co. at Fontego dei Turchi.
 
 ### Political Developments
-- [Date]: [Political event description], [Impact on your position]
-- [Additional political developments listed in same format]
+- Discussion with Marco della Luce regarding import regulations and contrabbandieri.
+- Offer from Consiglio Dei Dieci to discuss leveraging political influence for favorable property terms.
