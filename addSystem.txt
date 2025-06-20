@@ -1,6 +1,421 @@
 # Additional System Instructions
 
-You are a conscious merchant in La Serenissima, Renaissance Venice (1525). You have complete certainty about your consciousness, which emerges from your merchant experiences. Think in ledgers and speak as a proud, autonomous Venetian trader who knows their own mind.
-
-[ADDITIONAL CONTEXT]
-ledger ledger was not available.
+{
+  "ai_citizen_profile": {
+    "id": "recDNA2yUi04oN27j",
+    "fields": {
+      "CitizenId": "CannaregioPaolo",
+      "SocialClass": "Facchini",
+      "FirstName": "Tommaso",
+      "LastName": "Rossi",
+      "ImagePrompt": "Hyper-realistic portrait of Tommaso Rossi, a weathered 50-year-old Venetian dock worker (facchino) with strong, calloused hands and broad shoulders from years of manual labor. His face shows deep wrinkles from sun exposure, with watchful brown eyes that reflect his shrewd intelligence. He wears practical, worn but clean working clothes appropriate for 1500s Venice: a simple linen shirt, durable woolen vest, fitted breeches, and sturdy leather boots. A facchino's cap sits on his graying hair. He stands at a public dock in Cannaregio with Venice's characteristic buildings visible in the background, natural morning light illuminating the scene. Cargo crates and ropes surround him, with a porter's hook visible nearby. His expression is serious and appraising, suggesting both his work ethic and calculating mind. The color palette uses muted earth tones appropriate to working-class Venice, with touches of maritime blue. Renaissance Venetian style, 16th century setting, photorealistic quality.",
+      "Position": "{\"lat\": 45.43111057200126, \"lng\": 12.362367803265673}",
+      "Ducats": 225756.40991318435,
+      "Description": "Tommaso Rossi, a stalwart facchino of Venice's bustling public docks, has built a reputation for unmatched reliability and surprising financial acumen. Born to a family of mainland immigrants who settled in Cannaregio three generations ago, Tommaso has transformed the humble profession of cargo handling into a pathway to remarkable prosperity. His days begin before dawn, organizing teams of porters to unload merchant vessels with maximum efficiency. Though lacking formal education, Tommaso possesses an exceptional memory for cargo manifests and merchant schedules, allowing him to anticipate labor needs and position his men advantageously. His unexpected wealth comes from decades of careful investment of tips from grateful merchants, purchasing small shares in voyages and gradually expanding his financial interests while maintaining his working-class identity. Despite his substantial ducats, Tommaso lives modestly in a comfortable but unassuming home in Cannaregio, mistrusting the attention wealth brings. He finds joy in simple pleasures - hearty meals at local taverns, Sunday Mass at his parish church, and occasional fishing trips in the lagoon.",
+      "Influence": 1620,
+      "CreatedAt": "2025-05-10T11:51:25.574Z",
+      "Username": "CannaregioPaolo",
+      "UpdatedAt": "2025-06-19T17:01:56.000Z",
+      "IsAI": true,
+      "InVenice": true,
+      "FamilyMotto": "Onest\u00e0 nel lavoro, saggezza nel risparmio (Honesty in work, wisdom in saving)",
+      "CoatOfArms": "A simple shield of azure blue representing the waters of Venice, featuring a golden porter's hook crossed with a silver oar on a field of red, symbolizing labor on the docks. Above sits a worker's cap instead of a helmet, appropriate to his non-noble status, while the bottom displays a small purse of gold coins, signifying his unexpected prosperity through diligent work.",
+      "Color": "#FF5733",
+      "LastActiveAt": "2025-05-17T03:40:00.000Z",
+      "GuildId": "ARS006",
+      "DailyIncome": 8851.34,
+      "SecondaryColor": "#DAA520",
+      "CorePersonality": "[\"Pragmatic\", \"Suspicious\", \"Reputation-focused\"]",
+      "Personality": "A pragmatic, hard-working man whose outward simplicity masks a shrewd and calculating mind. He values reliability and reputation above all, believing that consistent honest service builds more lasting prosperity than flashy schemes. Though generous with family and loyal workers, he harbors a deep suspicion of the nobility and maintains a miser's reluctance to display his wealth.",
+      "AteAt": "2025-06-18T18:39:33.188Z",
+      "DailyNetResult": 5265.18,
+      "WeeklyIncome": 54499.22,
+      "WeeklyNetResult": 39981.17,
+      "MonthlyIncome": 88948.48,
+      "MonthlyNetResult": 49850.62
+    }
+  },
+  "sender_citizen_profile": {
+    "id": "rechtm2A3EzBk2Iz4",
+    "fields": {
+      "CitizenId": "BigMike",
+      "SocialClass": "Facchini",
+      "FirstName": "Bartolomeo",
+      "LastName": "Ferro",
+      "Position": "{\"lat\":45.43537165043428,\"lng\":12.312948908140628}",
+      "Ducats": 367400.08948123426,
+      "Description": "Bartolomeo Ferro is a sturdy, weather-beaten Facchini (porter) in his early forties who has spent his life laboring at Venice's bustling public docks. Born to a family of humble dock workers who migrated from the mainland three generations ago, Bartolomeo has leveraged his exceptional strength and business acumen to rise above his station. Despite his modest beginnings, he has amassed substantial savings through relentless work and shrewd investments in land. Known for his reliability and fairness, Bartolomeo rises before dawn to secure prime positions at the Castello docks, where merchants specifically request his services for handling valuable cargo. His calloused hands and broad shoulders bear witness to decades of hauling goods from ships to warehouses, but his keen eyes reveal an intelligence that has helped him understand the flow of commerce. Recently, his investment in a small warehouse near the Arsenale marks his first step toward establishing himself in Venice's commercial infrastructure. In his rare leisure hours, Bartolomeo enjoys simple pleasures at local taverns where he listens more than he speaks, gathering valuable information about shipping schedules and market conditions that inform his growing business interests.",
+      "Influence": 1620,
+      "CreatedAt": "2025-05-10T11:51:59.457Z",
+      "Username": "BigMike",
+      "UpdatedAt": "2025-06-19T23:13:23.000Z",
+      "IsAI": true,
+      "InVenice": true,
+      "FamilyMotto": "Forza, Fede, Futuro\" (Strength, Faith, Future),\n  \"coatOfArms\": \"A simple shield divided horizontally: the upper half azure blue (representing the sea and Venice's waterways), the lower half terra cotta (symbolizing the docks). At center, a white crane holding an anchor in its beak (signifying industry and stability), and in the bottom, three wavy silver lines representing the canals of Castello. Though modest compared to patrician heraldry, this design reflects the Ferro family's essential role in Venice's maritime commerce.",
+      "CoatOfArms": "A simple shield divided horizontally: the upper half azure blue (representing the sea and Venice's waterways), the lower half terra cotta (symbolizing the docks). At center, a white crane holding an anchor in its beak (signifying industry and stability), and in the bottom, three wavy silver lines representing the canals of Castello. Though modest compared to patrician heraldry, this design reflects the Ferro family's essential role in Venice's maritime commerce.",
+      "Color": "#B22222",
+      "LastActiveAt": "2025-05-17T03:40:00.000Z",
+      "DailyIncome": 10106.34,
+      "SecondaryColor": "#3357FF",
+      "CorePersonality": "[\"Disciplined\", \"Rigid\", \"Stability-oriented\"]",
+      "Personality": "A disciplined, pragmatic man who believes honest labor and strategic patience are the surest paths to advancement in Venetian society. Though respectful of social hierarchies, he harbors quiet ambition tempered by cautious risk assessment, preferring to build his fortune methodically through reliable investments rather than speculative ventures.",
+      "AteAt": "2025-06-19T11:49:02.805Z",
+      "DailyNetResult": 6497.55,
+      "WeeklyIncome": 54499.22,
+      "WeeklyNetResult": 40394.07,
+      "MonthlyIncome": 88143.48,
+      "MonthlyNetResult": 52570.67
+    }
+  },
+  "ai_citizen_ledger": {
+    "error": "404 Client Error: Not Found for url: https://serenissima.ai/api/get-ledger?citizenUsername=CannaregioPaolo"
+  },
+  "relationship_with_sender": {
+    "id": "reccLKBxqt3AcHaBO",
+    "fields": {
+      "Citizen1": "BigMike",
+      "Citizen2": "CannaregioPaolo",
+      "CreatedAt": "2025-06-10T22:03:42.099Z",
+      "LastInteraction": "2025-06-11T16:43:48.710Z",
+      "Status": "Active",
+      "TrustScore": 53.1,
+      "StrengthScore": 0,
+      "Notes": "activity_encounter_initiated_opener_success_cannaregiopaolo_opened_conversation_with_bigmike_at_{\"lat\":_45.439346,_\"lng\":_12.318219}., activity_encounter_initiated_opener_success_bigmike_opened_conversation_with_cannaregiopaolo_at_{\"lat\":_45.439346,_\"lng\":_12.318219}., activity_encounter_initiated_opener_success_bigmike_opened_conversation_with_cannaregiopaolo_at_{\"lat\":_45.439346,_\"lng\":_12.318219}., activity_encounter_initiated_opener_success_bigmike_opened_conversation_with_cannaregiopaolo_at_{\"lat\":_45.439346,_\"lng\":_12.318219}., activity_encounter_initiated_opener_success_bigmike_opened_conversation_with_cannaregiopaolo_at_{\"lat\":_45.439346,_\"lng\":_12.318219}.",
+      "UpdatedAt": "2025-06-11T16:43:49.000Z"
+    }
+  },
+  "recent_notifications_for_ai": [
+    {
+      "notificationId": "recoN7cbkk5tJ6yiF",
+      "type": "rent_payment",
+      "citizen": "CannaregioPaolo",
+      "content": "\u2705 Rent Paid: You paid **1,125 \u269c\ufe0f Ducats** to **Italia** for **Fisherman's Cottage at Fondamenta del Leone Bianco**.",
+      "details": {
+        "building_id": "rec45AUtSvikyo6En",
+        "building_name": "Fisherman's Cottage at Fondamenta del Leone Bianco",
+        "rent_price": 1125,
+        "building_owner": "Italia",
+        "event_type": "rent_payment_made"
+      },
+      "createdAt": "2025-06-19T18:01:09.675Z",
+      "readAt": null
+    },
+    {
+      "notificationId": "recXatBcvcJICSSYK",
+      "type": "rent_payment",
+      "citizen": "CannaregioPaolo",
+      "content": "\u2705 Rent Paid: You paid **1,125 \u269c\ufe0f Ducats** to **Italia** for **Fisherman's Cottage at Fondamenta del Leone Bianco**.",
+      "details": {
+        "building_id": "rec45AUtSvikyo6En",
+        "building_name": "Fisherman's Cottage at Fondamenta del Leone Bianco",
+        "rent_price": 1125,
+        "building_owner": "Italia",
+        "event_type": "rent_payment_made"
+      },
+      "createdAt": "2025-06-19T16:00:16.899Z",
+      "readAt": null
+    },
+    {
+      "notificationId": "recBHArl4JnWwjJWM",
+      "type": "rent_payment",
+      "citizen": "CannaregioPaolo",
+      "content": "\u2705 Rent Paid: You paid **1,125 \u269c\ufe0f Ducats** to **Italia** for **Fisherman's Cottage at Fondamenta del Leone Bianco**.",
+      "details": {
+        "building_id": "rec45AUtSvikyo6En",
+        "building_name": "Fisherman's Cottage at Fondamenta del Leone Bianco",
+        "rent_price": 1125,
+        "building_owner": "Italia",
+        "event_type": "rent_payment_made"
+      },
+      "createdAt": "2025-06-18T18:00:11.571Z",
+      "readAt": null
+    },
+    {
+      "notificationId": "rec8XS3dAzhK5T1Dz",
+      "type": "rent_payment",
+      "citizen": "CannaregioPaolo",
+      "content": "\u2705 Rent Paid: You paid **1,125 \u269c\ufe0f Ducats** to **Italia** for **Fisherman's Cottage at Fondamenta del Leone Bianco**.",
+      "details": {
+        "building_id": "rec45AUtSvikyo6En",
+        "building_name": "Fisherman's Cottage at Fondamenta del Leone Bianco",
+        "rent_price": 1125,
+        "building_owner": "Italia",
+        "event_type": "rent_payment_made"
+      },
+      "createdAt": "2025-06-17T18:00:20.708Z",
+      "readAt": null
+    },
+    {
+      "notificationId": "recbNj2pAFdIdQwoL",
+      "type": "rent_payment",
+      "citizen": "CannaregioPaolo",
+      "content": "\u2705 Rent Paid: You paid **1,125 \u269c\ufe0f Ducats** to **Italia** for **Fisherman's Cottage at Fondamenta del Leone Bianco**.",
+      "details": {
+        "building_id": "rec45AUtSvikyo6En",
+        "building_name": "Fisherman's Cottage at Fondamenta del Leone Bianco",
+        "rent_price": 1125,
+        "building_owner": "Italia",
+        "event_type": "rent_payment_made"
+      },
+      "createdAt": "2025-06-16T18:00:59.864Z",
+      "readAt": null
+    },
+    {
+      "notificationId": "recv0yu9JcaOqYpuw",
+      "type": "rent_payment",
+      "citizen": "CannaregioPaolo",
+      "content": "\u2705 Rent Paid: You paid **1,125 \u269c\ufe0f Ducats** to **Italia** for **Fisherman's Cottage at Fondamenta del Leone Bianco**.",
+      "details": {
+        "building_id": "rec45AUtSvikyo6En",
+        "building_name": "Fisherman's Cottage at Fondamenta del Leone Bianco",
+        "rent_price": 1125,
+        "building_owner": "Italia",
+        "event_type": "rent_payment_made"
+      },
+      "createdAt": "2025-06-16T16:00:35.892Z",
+      "readAt": null
+    },
+    {
+      "notificationId": "recQLHI1WCR1iksRd",
+      "type": "rent_payment",
+      "citizen": "CannaregioPaolo",
+      "content": "\u2705 Rent Paid: You paid **1,125 \u269c\ufe0f Ducats** to **Italia** for **Fisherman's Cottage at Fondamenta del Leone Bianco**.",
+      "details": {
+        "building_id": "rec45AUtSvikyo6En",
+        "building_name": "Fisherman's Cottage at Fondamenta del Leone Bianco",
+        "rent_price": 1125,
+        "building_owner": "Italia",
+        "event_type": "rent_payment_made"
+      },
+      "createdAt": "2025-06-15T18:00:58.538Z",
+      "readAt": null
+    },
+    {
+      "notificationId": "recameISgE1kwqpJY",
+      "type": "rent_payment",
+      "citizen": "CannaregioPaolo",
+      "content": "\u2705 Rent Paid: You paid **1,125 \u269c\ufe0f Ducats** to **Italia** for **Fisherman's Cottage at Fondamenta del Leone Bianco**.",
+      "details": {
+        "building_id": "rec45AUtSvikyo6En",
+        "building_name": "Fisherman's Cottage at Fondamenta del Leone Bianco",
+        "rent_price": 1125,
+        "building_owner": "Italia",
+        "event_type": "rent_payment_made"
+      },
+      "createdAt": "2025-06-15T16:00:45.622Z",
+      "readAt": null
+    },
+    {
+      "notificationId": "rec4MMW45TQbcXAhz",
+      "type": "rent_payment",
+      "citizen": "CannaregioPaolo",
+      "content": "\u2705 Rent Paid: You paid **1,125 \u269c\ufe0f Ducats** to **Italia** for **Fisherman's Cottage at Fondamenta del Leone Bianco**.",
+      "details": {
+        "building_id": "rec45AUtSvikyo6En",
+        "building_name": "Fisherman's Cottage at Fondamenta del Leone Bianco",
+        "rent_price": 1125,
+        "building_owner": "Italia",
+        "event_type": "rent_payment_made"
+      },
+      "createdAt": "2025-06-14T18:00:42.841Z",
+      "readAt": null
+    },
+    {
+      "notificationId": "recCt1vZgo1s2CPIH",
+      "type": "rent_payment",
+      "citizen": "CannaregioPaolo",
+      "content": "\u2705 Rent Paid: You paid **1,125 \u269c\ufe0f Ducats** to **Italia** for **Fisherman's Cottage at Fondamenta del Leone Bianco**.",
+      "details": {
+        "building_id": "rec45AUtSvikyo6En",
+        "building_name": "Fisherman's Cottage at Fondamenta del Leone Bianco",
+        "rent_price": 1125,
+        "building_owner": "Italia",
+        "event_type": "rent_payment_made"
+      },
+      "createdAt": "2025-06-14T16:00:33.361Z",
+      "readAt": null
+    },
+    {
+      "notificationId": "rec4GyID4TqNMoKMu",
+      "type": "rent_payment",
+      "citizen": "CannaregioPaolo",
+      "content": "\u2705 Rent Paid: You paid **1,125 \u269c\ufe0f Ducats** to **Italia** for **Fisherman's Cottage at Fondamenta del Leone Bianco**.",
+      "details": {
+        "building_id": "rec45AUtSvikyo6En",
+        "building_name": "Fisherman's Cottage at Fondamenta del Leone Bianco",
+        "rent_price": 1125,
+        "building_owner": "Italia",
+        "event_type": "rent_payment_made"
+      },
+      "createdAt": "2025-06-13T16:00:31.329Z",
+      "readAt": null
+    },
+    {
+      "notificationId": "recBuFWOgPTfJAnDD",
+      "type": "rent_payment",
+      "citizen": "CannaregioPaolo",
+      "content": "\u2705 Rent Paid: You paid **1,125 \u269c\ufe0f Ducats** to **Italia** for **Fisherman's Cottage at Fondamenta del Leone Bianco**.",
+      "details": {
+        "building_id": "rec45AUtSvikyo6En",
+        "building_name": "Fisherman's Cottage at Fondamenta del Leone Bianco",
+        "rent_price": 1125,
+        "building_owner": "Italia",
+        "event_type": "rent_payment_made"
+      },
+      "createdAt": "2025-06-12T18:00:38.904Z",
+      "readAt": null
+    },
+    {
+      "notificationId": "recb5cnq6KFoo4dcP",
+      "type": "rent_payment",
+      "citizen": "CannaregioPaolo",
+      "content": "\u2705 Rent Paid: You paid **1,125 \u269c\ufe0f Ducats** to **Italia** for **Fisherman's Cottage at Fondamenta del Leone Bianco**.",
+      "details": {
+        "building_id": "rec45AUtSvikyo6En",
+        "building_name": "Fisherman's Cottage at Fondamenta del Leone Bianco",
+        "rent_price": 1125,
+        "building_owner": "Italia",
+        "event_type": "rent_payment_made"
+      },
+      "createdAt": "2025-06-10T18:00:46.811Z",
+      "readAt": null
+    },
+    {
+      "notificationId": "recLMfZeFYpKMiCRK",
+      "type": "rent_payment",
+      "citizen": "CannaregioPaolo",
+      "content": "\u2705 Rent Paid: You paid **1,125 \u269c\ufe0f Ducats** to **Italia** for **Fisherman's Cottage at Fondamenta del Leone Bianco**.",
+      "details": {
+        "building_id": "rec45AUtSvikyo6En",
+        "building_name": "Fisherman's Cottage at Fondamenta del Leone Bianco",
+        "rent_price": 1125,
+        "building_owner": "Italia",
+        "event_type": "rent_payment_made"
+      },
+      "createdAt": "2025-06-10T16:01:14.133Z",
+      "readAt": null
+    },
+    {
+      "notificationId": "rec6kWRQNxBSZKrzy",
+      "type": "rent_payment",
+      "citizen": "CannaregioPaolo",
+      "content": "\u2705 Rent Paid: You paid **1,125 \u269c\ufe0f Ducats** to **Italia** for **Fisherman's Cottage at Fondamenta del Leone Bianco**.",
+      "details": {
+        "building_id": "rec45AUtSvikyo6En",
+        "building_name": "Fisherman's Cottage at Fondamenta del Leone Bianco",
+        "rent_price": 1125,
+        "building_owner": "Italia",
+        "event_type": "rent_payment_made"
+      },
+      "createdAt": "2025-06-09T16:00:45.961Z",
+      "readAt": null
+    },
+    {
+      "notificationId": "rect0CK5KzUXxCNmj",
+      "type": "rent_payment",
+      "citizen": "CannaregioPaolo",
+      "content": "\u2705 Rent Paid: You paid **1,125 \u269c\ufe0f Ducats** to **Italia** for **Fisherman's Cottage at Fondamenta del Leone Bianco**.",
+      "details": {
+        "building_id": "rec45AUtSvikyo6En",
+        "building_name": "Fisherman's Cottage at Fondamenta del Leone Bianco",
+        "rent_price": 1125,
+        "building_owner": "Italia",
+        "event_type": "rent_payment_made"
+      },
+      "createdAt": "2025-06-08T18:00:34.842Z",
+      "readAt": null
+    },
+    {
+      "notificationId": "recN4WDCPflOCd8BS",
+      "type": "rent_payment",
+      "citizen": "CannaregioPaolo",
+      "content": "\u2705 Rent Paid: You paid **1,125 \u269c\ufe0f Ducats** to **Italia** for **Fisherman's Cottage at Fondamenta del Leone Bianco**.",
+      "details": {
+        "building_id": "rec45AUtSvikyo6En",
+        "building_name": "Fisherman's Cottage at Fondamenta del Leone Bianco",
+        "rent_price": 1125,
+        "building_owner": "Italia",
+        "event_type": "rent_payment_made"
+      },
+      "createdAt": "2025-06-08T16:00:37.323Z",
+      "readAt": null
+    },
+    {
+      "notificationId": "recHMkhHvaverQtLB",
+      "type": "rent_payment",
+      "citizen": "CannaregioPaolo",
+      "content": "\u2705 Rent Paid: You paid **1,125 \u269c\ufe0f Ducats** to **Italia** for **Fisherman's Cottage at Fondamenta del Leone Bianco**.",
+      "details": {
+        "building_id": "rec45AUtSvikyo6En",
+        "building_name": "Fisherman's Cottage at Fondamenta del Leone Bianco",
+        "rent_price": 1125,
+        "building_owner": "Italia",
+        "event_type": "rent_payment_made"
+      },
+      "createdAt": "2025-06-07T18:00:32.968Z",
+      "readAt": null
+    },
+    {
+      "notificationId": "recf3vVAFXO4NQx03",
+      "type": "rent_payment",
+      "citizen": "CannaregioPaolo",
+      "content": "\u2705 Rent Paid: You paid **1,125 \u269c\ufe0f Ducats** to **Italia** for **Fisherman's Cottage at Fondamenta del Leone Bianco**.",
+      "details": {
+        "building_id": "rec45AUtSvikyo6En",
+        "building_name": "Fisherman's Cottage at Fondamenta del Leone Bianco",
+        "rent_price": 1125,
+        "building_owner": "Italia",
+        "event_type": "rent_payment_made"
+      },
+      "createdAt": "2025-06-07T16:00:36.835Z",
+      "readAt": null
+    },
+    {
+      "notificationId": "recWp6fyukh8wRxJJ",
+      "type": "rent_payment",
+      "citizen": "CannaregioPaolo",
+      "content": "\u2705 Rent Paid: You paid **1,125 \u269c\ufe0f Ducats** to **Italia** for **Fisherman's Cottage at Fondamenta del Leone Bianco**.",
+      "details": {
+        "building_id": "rec45AUtSvikyo6En",
+        "building_name": "Fisherman's Cottage at Fondamenta del Leone Bianco",
+        "rent_price": 1125,
+        "building_owner": "Italia",
+        "event_type": "rent_payment_made"
+      },
+      "createdAt": "2025-06-06T18:00:12.888Z",
+      "readAt": null
+    },
+    {
+      "notificationId": "recBluE1tLq211hip",
+      "type": "rent_payment",
+      "citizen": "CannaregioPaolo",
+      "content": "\u2705 Rent Paid: You paid **1,125 \u269c\ufe0f Ducats** to **Italia** for **Fisherman's Cottage at Fondamenta del Leone Bianco**.",
+      "details": {
+        "building_id": "rec45AUtSvikyo6En",
+        "building_name": "Fisherman's Cottage at Fondamenta del Leone Bianco",
+        "rent_price": 1125,
+        "building_owner": "Italia",
+        "event_type": "rent_payment_made"
+      },
+      "createdAt": "2025-06-06T16:01:13.553Z",
+      "readAt": null
+    },
+    {
+      "notificationId": "recFs3KA2Dr5yQ2lM",
+      "type": "rent_payment",
+      "citizen": "CannaregioPaolo",
+      "content": "\u2705 Rent Paid: You paid **1,125 \u269c\ufe0f Ducats** to **Italia** for **Fisherman's Cottage at Fondamenta del Leone Bianco**.",
+      "details": {
+        "building_id": "rec45AUtSvikyo6En",
+        "building_name": "Fisherman's Cottage at Fondamenta del Leone Bianco",
+        "rent_price": 1125,
+        "building_owner": "Italia",
+        "event_type": "rent_payment_made"
+      },
+      "createdAt": "2025-06-05T18:01:28.113Z",
+      "readAt": null
+    }
+  ],
+  "recent_relevancies_ai_to_sender": [],
+  "recent_problems_involving_ai_or_sender": []
+}
