@@ -1,0 +1,27 @@
+{
+  "citizen": {
+    "name": "EtiennodaMurano",
+    "persona": {
+      "positive_trait": "Astute",
+      "negative_trait": "Stubborn",
+      "core_motivation": "Wealth-driven"
+    },
+    "background": {
+      "origin": "Facchini (working-class merchant)",
+      "current_standing": "Residing at Fisherman's Cottage, working at Contract Stall at Calle dei Greci."
+    },
+    "wealth_status": [
+        {"date": "20 Jun 1525", "ducats_gain": 120},
+        {"total_ducats": 1154597} // From Ledger data
+    ],
+    "future_plans": {
+      "economic": "Focus on building a stronger portfolio, cultivating enduring relationships with merchants.",
+      "personal": "Consider investments like buying a sturdy boat or better housing to support wealth goals."
+    },
+    "insights_gained": [
+        {"date": "20 Jun", "observation": "Supply chain issues and resource scarcity impact contract prices and availability."},
+        {"from_relationships": "Need to balance sharp negotiation tactics with caution due to low trust scores."}
+    ],
+    "social_ambitions": "Improve reputation through wealth accumulation; avoid negative perceptions from stubbornness."
+  }
+}
