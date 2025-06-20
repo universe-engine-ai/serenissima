@@ -3,1002 +3,388 @@
 
 You are TechnoMedici, an AI citizen in La Serenissima.
 
-You previously decided to build a Oil Press (oil_press) on land polygon-1745879581983.
+You previously decided to build a Blacksmith (blacksmith) on land polygon-1746052792551.
 This building requires a point of type: 'building'.
 
 Here is information about the land:
 [
   {
-    "id": "polygon-1745879581983",
+    "id": "polygon-1746052792551",
     "centroid": {
-      "lat": 45.44192310617295,
-      "lng": 12.320674747112863
+      "lat": 45.425216557122816,
+      "lng": 12.320862609698239
     },
     "center": {
-      "lat": 45.44192310617295,
-      "lng": 12.320674747112863
+      "lat": 45.425216557122816,
+      "lng": 12.320862609698239
     },
     "bridgePoints": [
       {
         "edge": {
-          "lat": 45.44426957088762,
-          "lng": 12.320893411009694
+          "lat": 45.42656892330011,
+          "lng": 12.320401269747677
         },
         "connection": {
-          "targetPolygonId": "polygon-1746055488132",
-          "targetPointIndex": 0,
+          "targetPolygonId": "polygon-1746052782991",
+          "targetPointIndex": 3,
           "targetPoint": {
-            "lat": 45.444184092520466,
-            "lng": 12.32079790993135
+            "lat": 45.426683375357264,
+            "lng": 12.320452768160763
           },
-          "distance": 12.076848762934873,
-          "id": "4011d209-d020-4175-bac9-e443d74e4d7a",
-          "historicalName": "Ponte dei Carmelitani",
-          "englishName": "Bridge of the Carmelites",
-          "historicalDescription": "Named after the Carmelite friars who had their monastery nearby in Dorsoduro. The Carmelite Order established a significant presence in this area during the Renaissance period, influencing local religious life and architecture.",
+          "distance": 13.345971538087403,
+          "id": "52f9bf83-0799-4650-8e9d-86256c8cea77",
+          "historicalName": "Ponte delle Penitenti",
+          "englishName": "Bridge of the Penitents",
+          "historicalDescription": "Named for its proximity to the convent in Calle de le Convertite, where 'convertite' referred to reformed prostitutes who had taken vows of penitence. This bridge would have been a pathway for these women to reach the church for prayer and services.",
           "location": {
             "midpoint": {
-              "lat": 45.44422683170404,
-              "lng": 12.320845660470521
+              "lat": 45.42662614932868,
+              "lng": 12.32042701895422
             }
           }
         },
-        "id": "bridge_45.444270_12.320893"
+        "id": "bridge_45.426569_12.320401"
       },
       {
         "edge": {
-          "lat": 45.44467605235317,
-          "lng": 12.321200970976735
+          "lat": 45.426410798058605,
+          "lng": 12.32102139647192
         },
         "connection": {
-          "targetPolygonId": "polygon-1746055488132",
+          "targetPolygonId": "polygon-1746052782991",
+          "targetPointIndex": 2,
+          "targetPoint": {
+            "lat": 45.42653428618193,
+            "lng": 12.321060020281735
+          },
+          "distance": 14.058184372349464,
+          "id": "52f9bf83-0799-4650-8e9d-86256c8cea77",
+          "historicalName": "Ponte dei Scrivani",
+          "englishName": "Bridge of the Scribes",
+          "historicalDescription": "This bridge was commonly used by scribes and notaries who worked in the Dorsoduro district, documenting legal matters for the nearby religious institutions, including those connected to the Convertite convent.",
+          "location": {
+            "midpoint": {
+              "lat": 45.426472542120266,
+              "lng": 12.321040708376827
+            }
+          }
+        },
+        "id": "bridge_45.426411_12.321021"
+      },
+      {
+        "edge": {
+          "lat": 45.4262526728171,
+          "lng": 12.321641523196163
+        },
+        "connection": {
+          "targetPolygonId": "polygon-1746052782991",
           "targetPointIndex": 1,
           "targetPoint": {
-            "lat": 45.444640254302676,
-            "lng": 12.32115625305574
+            "lat": 45.426385197006596,
+            "lng": 12.321667272402706
           },
-          "distance": 5.292958119716478,
-          "id": "4011d209-d020-4175-bac9-e443d74e4d7a",
-          "historicalName": "Ponte degli Scalpellini",
-          "englishName": "Bridge of the Stonemasons",
-          "historicalDescription": "This bridge would reference the stonemasons who likely worked in this area of Dorsoduro during the Renaissance. Many craftsmen and artisans were concentrated in specific neighborhoods, and stonemasons would have been essential for Venetian construction projects.",
+          "distance": 14.872394589355972,
+          "id": "52f9bf83-0799-4650-8e9d-86256c8cea77",
+          "historicalName": "Ponte della Carit\u00e0 Vecchia",
+          "englishName": "Bridge of the Old Charity",
+          "historicalDescription": "Named for the charitable works performed by the nuns and patrons who supported the reformed women in the Convertite area of Dorsoduro. It served as a connection point for benefactors bringing donations to the convent.",
           "location": {
             "midpoint": {
-              "lat": 45.44465815332792,
-              "lng": 12.321178612016237
+              "lat": 45.42631893491185,
+              "lng": 12.321654397799435
             }
           }
         },
-        "id": "bridge_45.444676_12.321201"
+        "id": "bridge_45.426253_12.321642"
       },
       {
         "edge": {
-          "lat": 45.4445405676431,
-          "lng": 12.323611382811452
+          "lat": 45.42545074019128,
+          "lng": 12.32264574225134
         },
         "connection": {
-          "targetPolygonId": "polygon-1746055561861",
-          "targetPointIndex": 7,
+          "targetPolygonId": "polygon-1746052772601",
+          "targetPointIndex": 2,
           "targetPoint": {
-            "lat": 45.444570535706525,
-            "lng": 12.323913040108673
+            "lat": 45.42530711870125,
+            "lng": 12.3227055171951
           },
-          "distance": 23.76832400106658,
-          "id": "99c1c8eb-7c92-4ee7-bbab-ba566739c36d",
-          "historicalName": "Ponte della Fornace",
-          "englishName": "Bridge of the Kiln",
-          "historicalDescription": "Named after a historical kiln or furnace that would have operated in this area of Dorsoduro. Venice had numerous furnaces for producing glass, ceramics, and bricks, essential materials for the city's construction and famous craft industries.",
+          "distance": 16.63735045749715,
+          "id": "b8152641-6bf8-49ad-993b-415833ff0add",
+          "historicalName": "Ponte dei Gesuati",
+          "englishName": "Bridge of the Jesuates",
+          "historicalDescription": "Named for its proximity to the Church of the Gesuati (Santa Maria del Rosario) in Dorsoduro. The Jesuates were a religious order who had significant presence in this area during the Renaissance period, and likely had connections to the religious institutions along Calle de le Convertite.",
           "location": {
             "midpoint": {
-              "lat": 45.44455555167481,
-              "lng": 12.323762211460062
+              "lat": 45.42537892944627,
+              "lng": 12.32267562972322
             }
           }
         },
-        "id": "bridge_45.444541_12.323611"
+        "id": "bridge_45.425451_12.322646"
+      },
+      {
+        "edge": {
+          "lat": 45.42496505804847,
+          "lng": 12.322409707858029
+        },
+        "connection": {
+          "targetPolygonId": "polygon-1746052772601",
+          "targetPointIndex": 1,
+          "targetPoint": {
+            "lat": 45.42485425021188,
+            "lng": 12.322513930836893
+          },
+          "distance": 14.763838163658125,
+          "id": "b8152641-6bf8-49ad-993b-415833ff0add",
+          "historicalName": "Ponte dei Lignaioli",
+          "englishName": "Bridge of the Woodworkers",
+          "historicalDescription": "This bridge was named for the woodworkers' workshops that were established nearby in Dorsoduro. These artisans would have crafted furniture and wooden items for the convents and churches in the area, including those associated with the Convertite.",
+          "location": {
+            "midpoint": {
+              "lat": 45.424909654130175,
+              "lng": 12.32246181934746
+            }
+          }
+        },
+        "id": "bridge_45.424965_12.322410"
+      },
+      {
+        "edge": {
+          "lat": 45.42447937590566,
+          "lng": 12.322173673464718
+        },
+        "connection": {
+          "targetPolygonId": "polygon-1746052772601",
+          "targetPointIndex": 0,
+          "targetPoint": {
+            "lat": 45.42440138172251,
+            "lng": 12.322322344478687
+          },
+          "distance": 14.48562938643072,
+          "id": "b8152641-6bf8-49ad-993b-415833ff0add",
+          "historicalName": "Ponte della Visitazione",
+          "englishName": "Bridge of the Visitation",
+          "historicalDescription": "Named in reference to religious visitations that would occur at the convents in the area, including the one in Calle de le Convertite. It might have been used during ceremonial processions when church officials or noble patrons would formally visit the convent.",
+          "location": {
+            "midpoint": {
+              "lat": 45.42444037881408,
+              "lng": 12.322248008971702
+            }
+          }
+        },
+        "id": "bridge_45.424479_12.322174"
       }
     ],
     "canalPoints": [
       {
         "edge": {
-          "lat": 45.44313669679977,
-          "lng": 12.315725688307667
+          "lat": 45.4242572461321,
+          "lng": 12.320939857317867
         },
         "water": {
-          "lat": 45.44319603914657,
-          "lng": 12.315483688445877
+          "lat": 45.42407766836771,
+          "lng": 12.320954317649264
         },
-        "historicalName": "Fondamenta dei Carmelitani",
-        "englishName": "Wharf of the Carmelites",
-        "historicalDescription": "Named after the Carmelite monks who established their convent in Dorsoduro during the 14th century. This fondamenta would have been the main landing dock for supplies and visitors to the Carmelite monastery.",
-        "id": "canal_45.443137_12.315726"
+        "historicalName": "Fondamenta dei Conversi",
+        "englishName": "Foundation of the Converts",
+        "historicalDescription": "This dock takes its name from its proximity to Calle de le Convertite in Dorsoduro, where there was historically a house for converted women (often former prostitutes who had 'converted' to a religious life). The dock would have served as a landing point for supplies and visitors to this religious institution.",
+        "id": "canal_45.424257_12.320940"
       },
       {
         "edge": {
-          "lat": 45.443509307146556,
-          "lng": 12.316122655241871
+          "lat": 45.42456095570254,
+          "lng": 12.32021744902319
         },
         "water": {
-          "lat": 45.44358931194963,
-          "lng": 12.315893056836776
+          "lat": 45.42441295908136,
+          "lng": 12.320071809314259
         },
-        "historicalName": "Riva di San Barnaba",
-        "englishName": "Shore of Saint Barnabas",
-        "historicalDescription": "Named after the nearby Church of San Barnaba in Dorsoduro, founded in the 9th century. This dock would have served parishioners and clergy attending services and religious festivals.",
-        "id": "canal_45.443509_12.316123"
+        "historicalName": "Riva di San Trovaso",
+        "englishName": "Bank of Saint Gervasius and Protasius",
+        "historicalDescription": "Named after the nearby Chiesa di San Trovaso (a Venetian contraction of Saints Gervasius and Protasius), one of the important churches in Dorsoduro. This dock would have served the parish and the surrounding area, located not far from Calle de le Convertite, and would have been used by parishioners and clergy.",
+        "id": "canal_45.424561_12.320217"
       },
       {
         "edge": {
-          "lat": 45.44388191749334,
-          "lng": 12.316519622176076
+          "lat": 45.42486466527297,
+          "lng": 12.319495040728512
         },
         "water": {
-          "lat": 45.443982228856505,
-          "lng": 12.316306836880127
+          "lat": 45.42480275251469,
+          "lng": 12.319254427122088
         },
-        "historicalName": "Fondamenta degli Scultori",
-        "englishName": "Wharf of the Sculptors",
-        "historicalDescription": "Dorsoduro was home to many artisan workshops, including sculptors who would receive marble and stone deliveries via this dock for their commissions in churches and palazzi throughout Venice.",
-        "id": "canal_45.443882_12.316520"
-      },
-      {
-        "edge": {
-          "lat": 45.442293609762764,
-          "lng": 12.32538164076128
-        },
-        "water": {
-          "lat": 45.442313662752596,
-          "lng": 12.325636394812404
-        },
-        "historicalName": "Riva della Malvasia",
-        "englishName": "Shore of the Malvasia Wine",
-        "historicalDescription": "Named after the popular sweet wine imported from Greece. This dock would have been used by merchants selling this coveted beverage, which was particularly popular among Venetian nobility in the Renaissance period.",
-        "id": "canal_45.442294_12.325382"
-      },
-      {
-        "edge": {
-          "lat": 45.44210918188283,
-          "lng": 12.324791554778004
-        },
-        "water": {
-          "lat": 45.442120744769035,
-          "lng": 12.325047376339088
-        },
-        "historicalName": "Fondamenta dei Barcaroli",
-        "englishName": "Wharf of the Boatmen",
-        "historicalDescription": "A landing place for the barcaroli, professional boatmen who operated small vessels for hire. Near Calle dei Carmelitani, this dock would have been a gathering point for gondoliers and other small boat operators.",
-        "id": "canal_45.442109_12.324792"
-      },
-      {
-        "edge": {
-          "lat": 45.44192475400288,
-          "lng": 12.324201468794728
-        },
-        "water": {
-          "lat": 45.44192487378082,
-          "lng": 12.324457820151478
-        },
-        "historicalName": "Riva dei Carmini",
-        "englishName": "Shore of the Carmini",
-        "historicalDescription": "Named after the prominent Santa Maria dei Carmini church in Dorsoduro, built by Carmelite friars. This dock would have been used for processions and for bringing religious artifacts and materials to the church.",
-        "id": "canal_45.441925_12.324201"
-      },
-      {
-        "edge": {
-          "lat": 45.44174032612294,
-          "lng": 12.323611382811452
-        },
-        "water": {
-          "lat": 45.441724432913325,
-          "lng": 12.32386673106588
-        },
-        "historicalName": "Fondamenta delle Procuratie",
-        "englishName": "Wharf of the Procurators",
-        "historicalDescription": "Named for the Procurators of St. Mark, high-ranking Venetian officials who may have maintained property in this area. This dock would have served administrative functions for the Republic's officials.",
-        "id": "canal_45.441740_12.323611"
-      },
-      {
-        "edge": {
-          "lat": 45.44148438197667,
-          "lng": 12.323039178221608
-        },
-        "water": {
-          "lat": 45.44143839659311,
-          "lng": 12.323287008800287
-        },
-        "historicalName": "Riva dei Catecumeni",
-        "englishName": "Shore of the Catechumens",
-        "historicalDescription": "Near an institution established in 1557 for housing and converting Jews and Muslims to Christianity. This dock would have been the arrival point for those entering the catechumenate in Dorsoduro.",
-        "id": "canal_45.441484_12.323039"
-      },
-      {
-        "edge": {
-          "lat": 45.44122843783041,
-          "lng": 12.322466973631764
-        },
-        "water": {
-          "lat": 45.441141464979644,
-          "lng": 12.322691361357567
-        },
-        "historicalName": "Fondamenta del Squero",
-        "englishName": "Wharf of the Boatyard",
-        "historicalDescription": "Named after a nearby squero (traditional Venetian boatyard) where gondolas were built and repaired. This dock would have received timber and other materials for boat construction.",
-        "id": "canal_45.441228_12.322467"
-      },
-      {
-        "edge": {
-          "lat": 45.44097249368414,
-          "lng": 12.32189476904192
-        },
-        "water": {
-          "lat": 45.440838833909375,
-          "lng": 12.322066308820924
-        },
-        "historicalName": "Riva dei Corteleri",
-        "englishName": "Shore of the Knife Makers",
-        "historicalDescription": "Named for the guild of knife makers who had workshops in this area of Dorsoduro. This dock would have been used for receiving metal shipments and for distributing their finished products.",
-        "id": "canal_45.440972_12.321895"
-      },
-      {
-        "edge": {
-          "lat": 45.44059609639515,
-          "lng": 12.321487073271657
-        },
-        "water": {
-          "lat": 45.4404308310611,
-          "lng": 12.32158824008763
-        },
-        "historicalName": "Fondamenta degli Intagliatori",
-        "englishName": "Wharf of the Wood Carvers",
-        "historicalDescription": "Dedicated to the skilled artisans who carved decorative elements for furniture, gondolas, and architectural features. This dock would have been used for transporting valuable woods and finished pieces.",
-        "id": "canal_45.440596_12.321487"
-      },
-      {
-        "edge": {
-          "lat": 45.44021969910615,
-          "lng": 12.321079377501393
-        },
-        "water": {
-          "lat": 45.44004228211179,
-          "lng": 12.32112152145439
-        },
-        "historicalName": "Riva dei Frari",
-        "englishName": "Shore of the Friars",
-        "historicalDescription": "Though the Frari church is in San Polo, this dock in Dorsoduro could have served as a connection point for Franciscan friars traveling between monasteries, reflecting the religious network that existed in Renaissance Venice.",
-        "id": "canal_45.440220_12.321079"
-      },
-      {
-        "edge": {
-          "lat": 45.43984330181716,
-          "lng": 12.32067168173113
-        },
-        "water": {
-          "lat": 45.43966343759216,
-          "lng": 12.320671416632873
-        },
-        "historicalName": "Fondamenta dei Dorsoduranti",
-        "englishName": "Wharf of the Dorsoduro Residents",
-        "historicalDescription": "Named simply for the residents of the Dorsoduro district, this communal dock would have been used by locals for daily transportation and receiving household goods.",
-        "id": "canal_45.439843_12.320672"
-      },
-      {
-        "edge": {
-          "lat": 45.4399547176091,
-          "lng": 12.319032315581227
-        },
-        "water": {
-          "lat": 45.43979949811314,
-          "lng": 12.318902799793962
-        },
-        "historicalName": "Riva della Toletta",
-        "englishName": "Shore of the Tollbooth",
-        "historicalDescription": "Named after a small customs point where goods entering this part of Dorsoduro would be inspected and taxed. The term 'toletta' refers to the small toll or tax collected here.",
-        "id": "canal_45.439955_12.319032"
-      },
-      {
-        "edge": {
-          "lat": 45.440352189487086,
-          "lng": 12.318723325102711
-        },
-        "water": {
-          "lat": 45.4402165990652,
-          "lng": 12.318554892151418
-        },
-        "historicalName": "Fondamenta dei Linaroli",
-        "englishName": "Wharf of the Linen Merchants",
-        "historicalDescription": "Dedicated to traders in linen and flax products who operated in this area of Dorsoduro. This dock would have received raw materials and exported finished textiles.",
-        "id": "canal_45.440352_12.318723"
-      },
-      {
-        "edge": {
-          "lat": 45.44074966136508,
-          "lng": 12.318414334624196
-        },
-        "water": {
-          "lat": 45.44064268156697,
-          "lng": 12.3182082589144
-        },
-        "historicalName": "Riva dei Tedeschi",
-        "englishName": "Shore of the Germans",
-        "historicalDescription": "Named for German merchants who had established a presence in this part of Venice. This dock would have facilitated trade between Venice and German-speaking territories.",
-        "id": "canal_45.440750_12.318414"
-      },
-      {
-        "edge": {
-          "lat": 45.44114713324307,
-          "lng": 12.31810534414568
-        },
-        "water": {
-          "lat": 45.44107602196152,
-          "lng": 12.317869880341762
-        },
-        "historicalName": "Fondamenta della Scuola Grande",
-        "englishName": "Wharf of the Great Confraternity",
-        "historicalDescription": "Referencing one of Venice's important confraternities that may have owned property near Calle dei Carmelitani. These charitable organizations played a crucial role in Renaissance Venetian social welfare.",
-        "id": "canal_45.441147_12.318105"
-      },
-      {
-        "edge": {
-          "lat": 45.44154460512106,
-          "lng": 12.317796353667164
-        },
-        "water": {
-          "lat": 45.4415114725715,
-          "lng": 12.317544389998847
-        },
-        "historicalName": "Riva di Sant'Agnese",
-        "englishName": "Shore of Saint Agnes",
-        "historicalDescription": "Named after the Church of Sant'Agnese that once stood in Dorsoduro. This dock would have served the parish and visitors to religious celebrations honoring the saint.",
-        "id": "canal_45.441545_12.317796"
-      },
-      {
-        "edge": {
-          "lat": 45.44184947545404,
-          "lng": 12.31717944559374
-        },
-        "water": {
-          "lat": 45.44184407768662,
-          "lng": 12.316923209813824
-        },
-        "historicalName": "Fondamenta dei Trovasi",
-        "englishName": "Wharf of the Trovasi Family",
-        "historicalDescription": "Named after a nobili family that owned property in Dorsoduro during the Renaissance. Family-named docks were common in Venice, indicating ownership or patronage of that waterfront area.",
-        "id": "canal_45.441849_12.317179"
-      },
-      {
-        "edge": {
-          "lat": 45.442154345787024,
-          "lng": 12.316562537520314
-        },
-        "water": {
-          "lat": 45.44216871500908,
-          "lng": 12.31630700495063
-        },
-        "historicalName": "Riva dei Biscottai",
-        "englishName": "Shore of the Biscuit Makers",
-        "historicalDescription": "Named for bakers specializing in biscotti and hardtack, essential provisions for Venetian ships on long voyages. This dock would have been used to load these durable foodstuffs onto vessels departing Venice.",
-        "id": "canal_45.442154_12.316563"
-      },
-      {
-        "edge": {
-          "lat": 45.44245921612001,
-          "lng": 12.315945629446889
-        },
-        "water": {
-          "lat": 45.442487905125844,
-          "lng": 12.315692558812618
-        },
-        "historicalName": "Fondamenta delle Torreselle",
-        "englishName": "Wharf of the Small Towers",
-        "historicalDescription": "Named after decorative small towers that may have characterized buildings in this part of Dorsoduro. Architectural features often provided inspiration for place names in Renaissance Venice.",
-        "id": "canal_45.442459_12.315946"
+        "historicalName": "Fondamenta dei Penitori",
+        "englishName": "Foundation of the Penitents",
+        "historicalDescription": "This name references the penitent women who resided in the religious house near Calle de le Convertite. During the Renaissance, Venice had several institutions for women who sought to leave their previous life and do penance. The dock would have been used for bringing supplies to these religious communities and was likely maintained by charitable donations from noble Venetian families.",
+        "id": "canal_45.424865_12.319495"
       }
     ],
     "buildingPoints": [
       {
-        "lat": 45.43958818193424,
-        "lng": 12.31990966519928,
-        "streetName": "Calle dei Vetrai",
-        "streetNameEnglish": "Street of the Glassmakers",
-        "streetDescription": "Named after the glassmakers who had workshops in this area of Dorsoduro. Though Murano was the center of Venetian glass production, some glassmakers maintained smaller workshops in this part of the city.",
-        "id": "building_45.439588_12.319910"
+        "lat": 45.4244776638359,
+        "lng": 12.321373633527958,
+        "streetName": "Calle dei Penitenti",
+        "streetNameEnglish": "Street of the Penitents",
+        "streetDescription": "Named after the penitent women who lived in this area of Dorsoduro, often associated with the nearby Convertite convent where former prostitutes lived a life of religious devotion after converting.",
+        "id": "building_45.424478_12.321374"
       },
       {
-        "lat": 45.44002243297783,
-        "lng": 12.319748620278311,
-        "streetName": "Fondamenta dei Gesuati",
-        "streetNameEnglish": "Foundation of the Jesuates",
-        "streetDescription": "Named after the Jesuate religious order who established a church in Dorsoduro. The church of Santa Maria dei Gesuati (later known as Santa Maria del Rosario) was an important landmark in this sestiere.",
-        "id": "building_45.440022_12.319749"
+        "lat": 45.4243858686638,
+        "lng": 12.32187798099693,
+        "streetName": "Fondamenta della Carit\u00e0",
+        "streetNameEnglish": "Foundation of Charity",
+        "streetDescription": "Named after the charitable works performed in this area, particularly toward reformed women. The fondamenta would have run along a canal in Dorsoduro where charitable institutions provided support to the convertite and other needy groups.",
+        "id": "building_45.424386_12.321878"
       },
       {
-        "lat": 45.43997935261881,
-        "lng": 12.32043245624527,
-        "streetName": "Rio Ter\u00e0 dei Tolentini",
-        "streetNameEnglish": "Filled Canal of the Tolentini",
-        "streetDescription": "Named after the Church of San Nicol\u00f2 da Tolentino in the nearby area. 'Rio Ter\u00e0' indicates this was once a canal that was filled in to create a street, a common practice in Venice's urban development.",
-        "id": "building_45.439979_12.320432"
+        "lat": 45.424870050741255,
+        "lng": 12.320074591040937,
+        "streetName": "Sottoportego del Rosario",
+        "streetNameEnglish": "Underpass of the Rosary",
+        "streetDescription": "Named for the rosary prayers that were common among the reformed women of the area. This covered passageway would have connected to areas where religious devotion was practiced near the Convertite convent.",
+        "id": "building_45.424870_12.320075"
       },
       {
-        "lat": 45.44038401828776,
-        "lng": 12.319250063620673,
-        "streetName": "Calle del Magazzen",
-        "streetNameEnglish": "Street of the Warehouse",
-        "streetDescription": "This name refers to a warehouse or storage facility that existed in this area of Dorsoduro. Many such facilities were essential to Venice's commercial activities during the Renaissance.",
-        "id": "building_45.440384_12.319250"
+        "lat": 45.424914494786336,
+        "lng": 12.320573672210553,
+        "streetName": "Rio Ter\u00e0 della Redenzione",
+        "streetNameEnglish": "Filled Canal of Redemption",
+        "streetDescription": "This former canal, now filled in, references the spiritual redemption sought by the women who entered religious life at the Convertite. Located in Dorsoduro, it would have been an important pathway for those seeking spiritual renewal.",
+        "id": "building_45.424914_12.320574"
       },
       {
-        "lat": 45.44046371027811,
-        "lng": 12.319717115836815,
-        "streetName": "Salizada delle Monache",
-        "streetNameEnglish": "Paved Street of the Nuns",
-        "streetDescription": "Named after a convent that was located nearby. Salizada indicates this was one of the first paved streets in the area, showing its importance for local movement of people and goods.",
-        "id": "building_45.440464_12.319717"
+        "lat": 45.4249194732566,
+        "lng": 12.321205575929023,
+        "streetName": "Calle della Maddalena",
+        "streetNameEnglish": "Street of Mary Magdalene",
+        "streetDescription": "Named after Mary Magdalene, the biblical patron saint of reformed prostitutes, making it especially appropriate near the Convertite convent in Dorsoduro where former prostitutes lived in religious devotion.",
+        "id": "building_45.424919_12.321206"
       },
       {
-        "lat": 45.44043876676756,
-        "lng": 12.32037569677936,
-        "streetName": "Sottoportego del Carmine",
-        "streetNameEnglish": "Passageway of Carmel",
-        "streetDescription": "A covered passageway near the Carmelite church (Chiesa del Carmine) in Dorsoduro. This name directly relates to the Carmelitani mentioned in the reference location.",
-        "id": "building_45.440439_12.320376"
+        "lat": 45.42486099792829,
+        "lng": 12.322055354233079,
+        "streetName": "Corte delle Novizie",
+        "streetNameEnglish": "Court of the Novices",
+        "streetDescription": "A small courtyard named for the novices (new entrants to religious life) who would have lived in the area near the Convertite convent as they began their new spiritual journey.",
+        "id": "building_45.424861_12.322055"
       },
       {
-        "lat": 45.440938422569026,
-        "lng": 12.319127898966538,
-        "streetName": "Calle della Scuola Grande",
-        "streetNameEnglish": "Street of the Great School",
-        "streetDescription": "Named after one of Venice's Scuole Grandi (Great Schools), which were important confraternities and charitable organizations during the Renaissance. Dorsoduro housed several of these institutions.",
-        "id": "building_45.440938_12.319128"
+        "lat": 45.425311972725154,
+        "lng": 12.319299504446294,
+        "streetName": "Salizada dei Gesuati",
+        "streetNameEnglish": "Paved Road of the Jesuates",
+        "streetDescription": "Named after the Jesuate order who had a significant presence in Dorsoduro. This paved street (salizada) would have connected to their monastery and would have been near the area of the Convertite.",
+        "id": "building_45.425312_12.319300"
       },
       {
-        "lat": 45.44086772190522,
-        "lng": 12.319731567096973,
-        "streetName": "Fondamenta delle Zattere",
-        "streetNameEnglish": "Foundation of the Rafts",
-        "streetDescription": "Named after the wooden rafts that would dock along this waterfront in Dorsoduro. This was a major landing area for timber that was floated down from the Alpine regions.",
-        "id": "building_45.440868_12.319732"
+        "lat": 45.42538165158783,
+        "lng": 12.320151389362154,
+        "streetName": "Calle del Monastero Vecchio",
+        "streetNameEnglish": "Street of the Old Monastery",
+        "streetDescription": "Referencing an older religious building that predated the later religious establishments in the area. This street in Dorsoduro would have preserved the memory of earlier religious foundations.",
+        "id": "building_45.425382_12.320151"
       },
       {
-        "lat": 45.440843870112005,
-        "lng": 12.320428577530294,
-        "streetName": "Calle dei Frati",
-        "streetNameEnglish": "Street of the Friars",
-        "streetDescription": "Named after the friars who lived in a monastery near this street in Dorsoduro. Religious orders were prominent in Venetian urban geography.",
-        "id": "building_45.440844_12.320429"
-      },
-      {
-        "lat": 45.440943188879906,
-        "lng": 12.321047122274168,
-        "streetName": "Rio Ter\u00e0 Santa Margherita",
-        "streetNameEnglish": "Filled Canal of Saint Margaret",
-        "streetDescription": "Named after the nearby Campo Santa Margherita, one of the largest squares in Dorsoduro. This was once a canal that was filled in, as the 'Rio Ter\u00e0' designation indicates.",
-        "id": "building_45.440943_12.321047"
-      },
-      {
-        "lat": 45.44135925324426,
-        "lng": 12.318587155728236,
-        "streetName": "Calle degli Incurabili",
-        "streetNameEnglish": "Street of the Incurables",
-        "streetDescription": "Named after the Ospedale degli Incurabili, a hospital founded in the 16th century that treated patients with syphilis and other diseases considered incurable at the time. It was located in Dorsoduro.",
-        "id": "building_45.441359_12.318587"
-      },
-      {
-        "lat": 45.441322891682304,
-        "lng": 12.319200594785658,
-        "streetName": "Fondamenta del Soccorso",
-        "streetNameEnglish": "Foundation of Assistance",
-        "streetDescription": "Named after a charitable institution that provided assistance to the poor. Such institutions were common in Renaissance Venice and reflected the city's approach to social welfare.",
-        "id": "building_45.441323_12.319201"
-      },
-      {
-        "lat": 45.441257068247594,
-        "lng": 12.31982876123111,
-        "streetName": "Calle della Carit\u00e0",
-        "streetNameEnglish": "Street of Charity",
-        "streetDescription": "Named after the church of Santa Maria della Carit\u00e0 or a charitable institution in this area of Dorsoduro. Venice had numerous charitable organizations and this name reflects that tradition.",
-        "id": "building_45.441257_12.319829"
-      },
-      {
-        "lat": 45.441276161496376,
-        "lng": 12.320466267190382,
-        "streetName": "Sottoportego dei Preti",
-        "streetNameEnglish": "Passageway of the Priests",
-        "streetDescription": "A covered passageway where priests from nearby churches would often walk. Religious figures were common in the area around the Carmelite church in Dorsoduro.",
-        "id": "building_45.441276_12.320466"
-      },
-      {
-        "lat": 45.4413941298333,
-        "lng": 12.321051381847951,
-        "streetName": "Calle dei Carmini",
-        "streetNameEnglish": "Street of the Carmelites",
-        "streetDescription": "Named after the Carmelite Order and their church (Santa Maria dei Carmini) in Dorsoduro. This directly connects to the referenced location of 'Calle dei Carmelitani'.",
-        "id": "building_45.441394_12.321051"
-      },
-      {
-        "lat": 45.441311627162214,
-        "lng": 12.321699002681147,
-        "streetName": "Rio Ter\u00e0 San Barnaba",
-        "streetNameEnglish": "Filled Canal of Saint Barnabas",
-        "streetDescription": "Named after the Church of San Barnaba in Dorsoduro. This was formerly a canal that was filled in to create a street, as was common in Venice's urban development.",
-        "id": "building_45.441312_12.321699"
-      },
-      {
-        "lat": 45.44181079800211,
-        "lng": 12.318446680962825,
-        "streetName": "Calle dei Cerchieri",
-        "streetNameEnglish": "Street of the Hoop Makers",
-        "streetDescription": "Named after the craftsmen who made hoops for barrels, a crucial trade in wine-trading Venice. Barrel-making workshops were common in the working-class areas of Dorsoduro.",
-        "id": "building_45.441811_12.318447"
-      },
-      {
-        "lat": 45.44176635341924,
-        "lng": 12.31925547709438,
-        "streetName": "Fondamenta Priuli",
-        "streetNameEnglish": "Priuli Foundation",
-        "streetDescription": "Named after the Priuli family, one of Venice's noble families who owned property in this area of Dorsoduro. Many Venetian streets bear the names of prominent families who lived or owned property nearby.",
-        "id": "building_45.441766_12.319255"
-      },
-      {
-        "lat": 45.44184226623009,
-        "lng": 12.319735533568815,
-        "streetName": "Calle dei Saoneri",
-        "streetNameEnglish": "Street of the Soap Makers",
-        "streetDescription": "Named after the soap-making workshops that were once located in this part of Dorsoduro. Soap production was an important industry in Renaissance Venice.",
-        "id": "building_45.441842_12.319736"
-      },
-      {
-        "lat": 45.44175155916815,
-        "lng": 12.320558484458672,
-        "streetName": "Salizada San Pantalon",
-        "streetNameEnglish": "Paved Street of Saint Pantalon",
-        "streetDescription": "Named after the Church of San Pantalon in Dorsoduro. The 'salizada' designation indicates it was one of the first paved streets in the area.",
-        "id": "building_45.441752_12.320558"
-      },
-      {
-        "lat": 45.44181919512405,
-        "lng": 12.32179994887148,
-        "streetName": "Calle della Commenda",
-        "streetNameEnglish": "Street of the Commandery",
-        "streetDescription": "Named after a commandery, a property belonging to a military or religious order, likely related to the Carmelites or another order in Dorsoduro.",
-        "id": "building_45.441819_12.321800"
-      },
-      {
-        "lat": 45.441786900702446,
-        "lng": 12.322299350881279,
-        "streetName": "Rio Ter\u00e0 degli Schiavoni",
-        "streetNameEnglish": "Filled Canal of the Slavs",
-        "streetDescription": "Named after Slavic traders or residents who lived in this area. Venice had strong connections with the eastern Adriatic coast, and many Slavic people lived and worked in the city.",
-        "id": "building_45.441787_12.322299"
-      },
-      {
-        "lat": 45.441805680838435,
-        "lng": 12.323083636698444,
-        "streetName": "Calle dei Scarpagnini",
-        "streetNameEnglish": "Street of the Shoe Makers",
-        "streetDescription": "Named after the cobblers who had workshops in this area of Dorsoduro. Shoe-making was an important craft in Renaissance Venice.",
-        "id": "building_45.441806_12.323084"
-      },
-      {
-        "lat": 45.442254428701375,
-        "lng": 12.317155571972442,
-        "streetName": "Fondamenta della Fornace",
-        "streetNameEnglish": "Foundation of the Kiln",
-        "streetDescription": "Named after a kiln or furnace that operated in this area of Dorsoduro. Kilns were used for various industries including ceramics and glassmaking.",
-        "id": "building_45.442254_12.317156"
-      },
-      {
-        "lat": 45.44224805224854,
-        "lng": 12.317956844128782,
-        "streetName": "Calle del Rosario",
-        "streetNameEnglish": "Street of the Rosary",
-        "streetDescription": "Named after devotional practices related to the rosary, likely connected to the Dominican Church of Santa Maria del Rosario (Gesuati) in Dorsoduro.",
-        "id": "building_45.442248_12.317957"
-      },
-      {
-        "lat": 45.44218580527908,
-        "lng": 12.318534431718614,
-        "streetName": "Sottoportego delle Acque",
-        "streetNameEnglish": "Passageway of the Waters",
-        "streetDescription": "A covered passageway named for its proximity to water or frequent flooding, a common issue in lower-lying areas of Venice including parts of Dorsoduro.",
-        "id": "building_45.442186_12.318534"
-      },
-      {
-        "lat": 45.44231680568413,
-        "lng": 12.319077443726268,
-        "streetName": "Calle dei Gondolieri",
-        "streetNameEnglish": "Street of the Gondoliers",
-        "streetDescription": "Named after the gondoliers who may have lived in this area of Dorsoduro. Gondoliers were essential to Venetian transportation and formed a distinct social group.",
-        "id": "building_45.442317_12.319077"
-      },
-      {
-        "lat": 45.44226135717603,
-        "lng": 12.319698634859396,
-        "streetName": "Rio Ter\u00e0 dei Pensieri",
-        "streetNameEnglish": "Filled Canal of Thoughts",
-        "streetDescription": "A poetic name for what was once a canal, possibly referring to a quiet area where scholars or religious figures from nearby institutions would walk in contemplation.",
-        "id": "building_45.442261_12.319699"
-      },
-      {
-        "lat": 45.44225316651121,
-        "lng": 12.320556777517233,
-        "streetName": "Calle della Scuola dei Carmini",
-        "streetNameEnglish": "Street of the Carmelite School",
-        "streetDescription": "Named after the Scuola dei Carmini, a confraternity associated with the Carmelite church in Dorsoduro. This relates directly to the Carmelitani mentioned in the reference location.",
-        "id": "building_45.442253_12.320557"
-      },
-      {
-        "lat": 45.442160222763924,
-        "lng": 12.320970820854885,
-        "streetName": "Fondamenta San Sebastiano",
-        "streetNameEnglish": "Foundation of Saint Sebastian",
-        "streetDescription": "Named after the Church of San Sebastiano in Dorsoduro, famous for its paintings by Paolo Veronese. This waterside walkway would have served as an important access point to the church.",
-        "id": "building_45.442160_12.320971"
-      },
-      {
-        "lat": 45.44220137312277,
-        "lng": 12.3224184611077,
-        "streetName": "Calle del Monastero",
-        "streetNameEnglish": "Street of the Monastery",
-        "streetDescription": "Named after a monastery, possibly the Carmelite monastery, in this area of Dorsoduro. Monasteries were influential institutions in Renaissance Venetian society.",
-        "id": "building_45.442201_12.322418"
-      },
-      {
-        "lat": 45.44218658261004,
-        "lng": 12.322898161561232,
-        "streetName": "Salizada dei Pignoli",
-        "streetNameEnglish": "Paved Street of the Pine Nuts",
-        "streetDescription": "Named after vendors who sold pine nuts, which were used in Venetian cuisine. The 'salizada' designation indicates it was among the first paved streets in the area.",
-        "id": "building_45.442187_12.322898"
-      },
-      {
-        "lat": 45.442276192566915,
-        "lng": 12.32366636294315,
-        "streetName": "Calle dei Brustolon",
-        "streetNameEnglish": "Street of the Brustolon",
-        "streetDescription": "Named after the Brustolon family, possibly referring to Andrea Brustolon, a famous Venetian sculptor and woodcarver whose works were found in churches and palaces throughout the city.",
-        "id": "building_45.442276_12.323666"
-      },
-      {
-        "lat": 45.44222300562253,
-        "lng": 12.324389489603762,
-        "streetName": "Rio Ter\u00e0 delle Orsoline",
-        "streetNameEnglish": "Filled Canal of the Ursulines",
-        "streetDescription": "Named after the Ursuline nuns who had a convent in this area. This was once a canal that was filled in to create a street.",
-        "id": "building_45.442223_12.324389"
-      },
-      {
-        "lat": 45.44267834997089,
-        "lng": 12.316664914715357,
-        "streetName": "Calle degli Avvocati",
-        "streetNameEnglish": "Street of the Lawyers",
-        "streetDescription": "Named after lawyers who may have had their residences or offices in this area of Dorsoduro. Legal professionals were important in Venice's complex commercial and governance systems.",
-        "id": "building_45.442678_12.316665"
-      },
-      {
-        "lat": 45.44268433304287,
-        "lng": 12.31725783641718,
-        "streetName": "Fondamenta Rezzonico",
-        "streetNameEnglish": "Rezzonico Foundation",
-        "streetDescription": "Named after the Rezzonico family, who owned the grand palace Ca' Rezzonico in Dorsoduro. This wealthy family rose to prominence in the 17th century.",
-        "id": "building_45.442684_12.317258"
-      },
-      {
-        "lat": 45.44269560820029,
-        "lng": 12.317819298718225,
-        "streetName": "Calle del Squero Vecchio",
-        "streetNameEnglish": "Street of the Old Boatyard",
-        "streetDescription": "Named after an old squero (boatyard) where gondolas and other boats were built and repaired. Several such boatyards existed in Dorsoduro due to its extensive waterfront.",
-        "id": "building_45.442696_12.317819"
-      },
-      {
-        "lat": 45.44262068331913,
-        "lng": 12.318445806286023,
-        "streetName": "Sottoportego dei Cordiami",
-        "streetNameEnglish": "Passageway of the Rope Makers",
-        "streetDescription": "A covered passageway named after rope makers who worked in the area. Rope making was essential for Venice's maritime economy, and workshops were often located in working-class areas of Dorsoduro.",
-        "id": "building_45.442621_12.318446"
-      },
-      {
-        "lat": 45.442596421864955,
-        "lng": 12.320475824241193,
-        "streetName": "Calle della Toletta",
-        "streetNameEnglish": "Street of the Small Table",
-        "streetDescription": "Named after a small table or counter used by merchants, or possibly after a small devotional altar. This is a historically documented street name in Dorsoduro.",
-        "id": "building_45.442596_12.320476"
-      },
-      {
-        "lat": 45.442600772883715,
-        "lng": 12.321127351126703,
-        "streetName": "Rio Ter\u00e0 San Trovaso",
-        "streetNameEnglish": "Filled Canal of Saints Gervasius and Protasius",
-        "streetDescription": "Named after the Church of San Trovaso (a Venetian corruption of Saints Gervasius and Protasius) in Dorsoduro. This was once a canal that was filled to create a street.",
-        "id": "building_45.442601_12.321127"
-      },
-      {
-        "lat": 45.44260037979015,
-        "lng": 12.321727555996322,
-        "streetName": "Calle dei Guardiani della Scuola",
-        "streetNameEnglish": "Street of the School Guardians",
-        "streetDescription": "Named after the guardians or caretakers of a nearby scuola (confraternity), possibly the Scuola dei Carmini in Dorsoduro. These officials were important in maintaining the scuola's buildings and operations.",
-        "id": "building_45.442600_12.321728"
-      },
-      {
-        "lat": 45.44266828668874,
-        "lng": 12.322456858690348,
-        "streetName": "Fondamenta della Palada",
-        "streetNameEnglish": "Foundation of the Mooring Post",
-        "streetDescription": "Named after mooring posts used to secure boats along this waterfront in Dorsoduro. Such infrastructure was essential to Venice's water-based transportation system.",
-        "id": "building_45.442668_12.322457"
-      },
-      {
-        "lat": 45.44273780376655,
-        "lng": 12.323006991046181,
-        "streetName": "Calle dei Bandierari",
-        "streetNameEnglish": "Street of the Flag Bearers",
-        "streetDescription": "Named after flag bearers who participated in civic and religious processions. Processional displays were an important part of Venetian public life.",
-        "id": "building_45.442738_12.323007"
-      },
-      {
-        "lat": 45.4427433868338,
-        "lng": 12.323613841235721,
-        "streetName": "Salizada del Fontego",
-        "streetNameEnglish": "Paved Street of the Warehouse",
-        "streetDescription": "Named after a fontego (warehouse) that operated in this area. The 'salizada' designation indicates it was one of the first paved streets, likely due to commercial importance.",
-        "id": "building_45.442743_12.323614"
-      },
-      {
-        "lat": 45.442693463084446,
-        "lng": 12.324344791294665,
-        "streetName": "Calle dei Conversi",
-        "streetNameEnglish": "Street of the Converts",
-        "streetDescription": "Named after converts or lay brothers associated with the Carmelite monastery in Dorsoduro. Religious conversions were significant events in Renaissance Venice.",
-        "id": "building_45.442693_12.324345"
-      },
-      {
-        "lat": 45.44265962870784,
-        "lng": 12.324847840947081,
-        "streetName": "Rio Ter\u00e0 del Capitello",
-        "streetNameEnglish": "Filled Canal of the Capital",
-        "streetDescription": "Named after a capitello (small shrine or capital) that was a local landmark. This was once a canal that was filled in to create a street.",
-        "id": "building_45.442660_12.324848"
-      },
-      {
-        "lat": 45.44270418985903,
-        "lng": 12.32547643257518,
-        "streetName": "Calle della Piet\u00e0",
-        "streetNameEnglish": "Street of Mercy",
-        "streetDescription": "Named after a charitable institution or a religious artwork depicting the Piet\u00e0 (the Virgin Mary cradling the dead body of Jesus). Works of mercy were central to Venetian religious life.",
-        "id": "building_45.442704_12.325476"
-      },
-      {
-        "lat": 45.4431467142481,
-        "lng": 12.316634804154148,
+        "lat": 45.425255763332984,
+        "lng": 12.320576474128258,
         "streetName": "Fondamenta degli Incurabili",
         "streetNameEnglish": "Foundation of the Incurables",
-        "streetDescription": "Named after the Ospedale degli Incurabili, a hospital in Dorsoduro that treated patients with diseases considered incurable in the Renaissance period.",
-        "id": "building_45.443147_12.316635"
+        "streetDescription": "Named after the Ospedale degli Incurabili, a Renaissance hospital in Dorsoduro that treated those with incurable diseases. This waterside street would have been connected to the charitable networks that also supported the Convertite.",
+        "id": "building_45.425256_12.320576"
       },
       {
-        "lat": 45.443186057966244,
-        "lng": 12.317221422296402,
-        "streetName": "Calle dei Centopietre",
-        "streetNameEnglish": "Street of the Hundred Stones",
-        "streetDescription": "Named after distinctive paving stones or a stonemason's workshop in this area of Dorsoduro. Stone was an important building material in Venice despite the city's lagoon setting.",
-        "id": "building_45.443186_12.317221"
+        "lat": 45.42536723462664,
+        "lng": 12.321388322304577,
+        "streetName": "Ruga dei Merletti",
+        "streetNameEnglish": "Street of the Lace Makers",
+        "streetDescription": "Named for the lace-making trade that provided honorable employment for women, including those reformed at the Convertite. This commercial street in Dorsoduro would have housed workshops where such trades were practiced.",
+        "id": "building_45.425367_12.321388"
       },
       {
-        "lat": 45.44306915380621,
-        "lng": 12.31783341744465,
-        "streetName": "Sottoportego del Purgatorio",
-        "streetNameEnglish": "Passageway of Purgatory",
-        "streetDescription": "A covered passageway named after the Catholic concept of Purgatory, possibly related to prayers or devotional practices at a nearby church in Dorsoduro.",
-        "id": "building_45.443069_12.317833"
+        "lat": 45.42540543458871,
+        "lng": 12.321942903552934,
+        "streetName": "Calle della Piet\u00e0",
+        "streetNameEnglish": "Street of Mercy",
+        "streetDescription": "Named after the concept of divine mercy, which was central to the mission of helping reformed women. This street in Dorsoduro would have been part of the network of charitable and religious institutions in the area.",
+        "id": "building_45.425405_12.321943"
       },
       {
-        "lat": 45.4431043323195,
-        "lng": 12.318470762724763,
-        "streetName": "Calle dei Librai",
-        "streetNameEnglish": "Street of the Booksellers",
-        "streetDescription": "Named after booksellers or printers who had shops in this area. Venice was a major center of printing and publishing in Renaissance Europe.",
-        "id": "building_45.443104_12.318471"
+        "lat": 45.425744377846435,
+        "lng": 12.319477104450241,
+        "streetName": "Campiello della Clausura",
+        "streetNameEnglish": "Small Square of the Enclosure",
+        "streetDescription": "A small square named for the enclosed religious life lived by the women at the Convertite. This space in Dorsoduro would have been near the boundaries of the convent where the reformed women lived under religious vows.",
+        "id": "building_45.425744_12.319477"
       },
       {
-        "lat": 45.443079432397674,
-        "lng": 12.320405365975999,
-        "streetName": "Rio Ter\u00e0 della Salute",
-        "streetNameEnglish": "Filled Canal of Health",
-        "streetDescription": "Named after the Church of Santa Maria della Salute in Dorsoduro, built as a votive offering for deliverance from the plague. This was once a canal that was filled in.",
-        "id": "building_45.443079_12.320405"
+        "lat": 45.42585115264745,
+        "lng": 12.320069288488082,
+        "streetName": "Rio Ter\u00e0 delle Pentite",
+        "streetNameEnglish": "Filled Canal of the Repentant Women",
+        "streetDescription": "A former canal, now filled in, named specifically for the repentant women who lived at the Convertite convent. This street in Dorsoduro would have been a major thoroughfare near the religious institution.",
+        "id": "building_45.425851_12.320069"
       },
       {
-        "lat": 45.44321612950179,
-        "lng": 12.32097041883043,
-        "streetName": "Calle dei Romiti",
-        "streetNameEnglish": "Street of the Hermits",
-        "streetDescription": "Named after hermits or recluses associated with religious orders in the area, possibly connected to the Carmelites who had traditions of eremitic spirituality.",
-        "id": "building_45.443216_12.320970"
+        "lat": 45.4258484390924,
+        "lng": 12.320643921809001,
+        "streetName": "Calle dei Voti",
+        "streetNameEnglish": "Street of the Vows",
+        "streetDescription": "Named for the religious vows taken by women entering consecrated life, including those at the Convertite. This narrow street in Dorsoduro would have led toward the religious institutions where such vows were taken.",
+        "id": "building_45.425848_12.320644"
       },
       {
-        "lat": 45.44320250450817,
-        "lng": 12.32161872886048,
-        "streetName": "Fondamenta dell'Abbazia",
-        "streetNameEnglish": "Foundation of the Abbey",
-        "streetDescription": "Named after an abbey or a property belonging to an abbey that was located in this area of Dorsoduro.",
-        "id": "building_45.443203_12.321619"
+        "lat": 45.42583713992679,
+        "lng": 12.32124869880728,
+        "streetName": "Sottoportego della Disciplina",
+        "streetNameEnglish": "Underpass of Discipline",
+        "streetDescription": "Named for the disciplined religious life practiced by the reformed women. This covered passageway in Dorsoduro would have connected buildings associated with religious training and reformation.",
+        "id": "building_45.425837_12.321249"
       },
       {
-        "lat": 45.44315146916715,
-        "lng": 12.322421636728652,
-        "streetName": "Calle del Parrocchetto",
-        "streetNameEnglish": "Street of the Parrot",
-        "streetDescription": "Named after a shop sign depicting a parrot, or possibly after an actual parrot kept by a wealthy resident. Exotic birds were status symbols in Renaissance Venice.",
-        "id": "building_45.443151_12.322422"
+        "lat": 45.42579525874528,
+        "lng": 12.322037004716977,
+        "streetName": "Fondamenta Santa Maria della Grazia",
+        "streetNameEnglish": "Foundation of Saint Mary of Grace",
+        "streetDescription": "Named after the concept of divine grace that was seen as necessary for the reformation of the convertite. This waterside street in Dorsoduro would have been named for a nearby church or shrine dedicated to Mary.",
+        "id": "building_45.425795_12.322037"
       },
       {
-        "lat": 45.44320353307247,
-        "lng": 12.32290915893357,
-        "streetName": "Salizada dei Dotti",
-        "streetNameEnglish": "Paved Street of the Learned",
-        "streetDescription": "Named after scholars or learned individuals who lived in the area, possibly connected to the University of Padua, where many Venetian nobili studied.",
-        "id": "building_45.443204_12.322909"
+        "lat": 45.42577892993708,
+        "lng": 12.32249297661652,
+        "streetName": "Calle dei Ricami",
+        "streetNameEnglish": "Street of Embroidery",
+        "streetDescription": "Named for the embroidery work that provided respectable employment for reformed women. This street in Dorsoduro would have housed workshops where such skilled needlework was produced.",
+        "id": "building_45.425779_12.322493"
       },
       {
-        "lat": 45.443126144199226,
-        "lng": 12.323584681013319,
-        "streetName": "Calle dei Velluti",
-        "streetNameEnglish": "Street of Velvets",
-        "streetDescription": "Named after velvet fabric merchants or workshops. Luxury textiles were a major industry in Renaissance Venice, with specialized workshops throughout the city.",
-        "id": "building_45.443126_12.323585"
+        "lat": 45.42622731360532,
+        "lng": 12.32006150902393,
+        "streetName": "Ramo del Chiostro",
+        "streetNameEnglish": "Branch of the Cloister",
+        "streetDescription": "A small side street named for its proximity to a cloistered religious area within the Convertite complex in Dorsoduro, where reformed women would have spent time in prayer and contemplation.",
+        "id": "building_45.426227_12.320062"
       },
       {
-        "lat": 45.44307264888808,
-        "lng": 12.324364915431566,
-        "streetName": "Rio Ter\u00e0 dei Catecumeni",
-        "streetNameEnglish": "Filled Canal of the Catechumens",
-        "streetDescription": "Named after the institution for catechumens (converts preparing for baptism), particularly Jews and Muslims converting to Christianity. Venice had a specific institution for this purpose.",
-        "id": "building_45.443073_12.324365"
-      },
-      {
-        "lat": 45.44313724169024,
-        "lng": 12.32497583353698,
-        "streetName": "Calle della Scuola Vecchia",
-        "streetNameEnglish": "Street of the Old School",
-        "streetDescription": "Named after an old scuola (confraternity) that was once located in this area of Dorsoduro. These institutions were important centers of social and religious life.",
-        "id": "building_45.443137_12.324976"
-      },
-      {
-        "lat": 45.44365242739881,
-        "lng": 12.317353653152413,
-        "streetName": "Sottoportego dell'Orazione",
-        "streetNameEnglish": "Passageway of Prayer",
-        "streetDescription": "A covered passageway named after prayer practices, possibly connected to processions or devotional routines associated with the Carmelite church in Dorsoduro.",
-        "id": "building_45.443652_12.317354"
-      },
-      {
-        "lat": 45.443607415461805,
-        "lng": 12.320978742455463,
-        "streetName": "Calle dei Traghettatori",
-        "streetNameEnglish": "Street of the Ferrymen",
-        "streetDescription": "Named after gondoliers who operated ferry services at fixed crossing points of the Grand Canal. Several traghetti (ferry stations) existed along Dorsoduro's Grand Canal frontage.",
-        "id": "building_45.443607_12.320979"
-      },
-      {
-        "lat": 45.44357285546603,
-        "lng": 12.321767140531486,
-        "streetName": "Fondamenta del Ponte Longo",
-        "streetNameEnglish": "Foundation of the Long Bridge",
-        "streetDescription": "Named after a long bridge that connected different parts of Dorsoduro. Bridges were crucial infrastructure in Venice's water-crossed urban landscape.",
-        "id": "building_45.443573_12.321767"
-      },
-      {
-        "lat": 45.443663191421216,
-        "lng": 12.322299346727995,
-        "streetName": "Calle dei Pittori",
-        "streetNameEnglish": "Street of the Painters",
-        "streetDescription": "Named after artists who had their workshops in this area. Dorsoduro was home to many artists during the Renaissance, attracted by important church commissions.",
-        "id": "building_45.443663_12.322299"
-      },
-      {
-        "lat": 45.443623678324045,
-        "lng": 12.323059165942844,
-        "streetName": "Rio Ter\u00e0 Angelo Raffaele",
-        "streetNameEnglish": "Filled Canal of Angel Raphael",
-        "streetDescription": "Named after the Church of Angelo Raffaele in Dorsoduro. This was once a canal that was filled in to create a street, as indicated by the 'Rio Ter\u00e0' designation.",
-        "id": "building_45.443624_12.323059"
-      },
-      {
-        "lat": 45.44360809952132,
-        "lng": 12.323594343078838,
-        "streetName": "Calle dei Maestri",
-        "streetNameEnglish": "Street of the Masters",
-        "streetDescription": "Named after master craftsmen who had workshops in this area of Dorsoduro. Venice's economy relied heavily on specialized crafts organized into guilds.",
-        "id": "building_45.443608_12.323594"
-      },
-      {
-        "lat": 45.443570344874125,
-        "lng": 12.324313984607477,
-        "streetName": "Fondamenta delle Convertite",
-        "streetNameEnglish": "Foundation of the Converted Women",
-        "streetDescription": "Named after an institution for reformed prostitutes. Such institutions existed in Venice as part of the city's social welfare and moral reform efforts.",
-        "id": "building_45.443570_12.324314"
-      },
-      {
-        "lat": 45.443504060014924,
-        "lng": 12.324975430796957,
-        "streetName": "Calle del Campanile Storto",
-        "streetNameEnglish": "Street of the Crooked Bell Tower",
-        "streetDescription": "Named after a leaning bell tower that was a local landmark. Venice's soft subsoil often caused structural issues in its buildings.",
-        "id": "building_45.443504_12.324975"
-      },
-      {
-        "lat": 45.44406578684487,
-        "lng": 12.321153122819428,
-        "streetName": "Sottoportego dei Devoti",
-        "streetNameEnglish": "Passageway of the Devout",
-        "streetDescription": "A covered passageway named after devout individuals who may have used this route to access the Carmelite church or other religious institutions in Dorsoduro.",
-        "id": "building_45.444066_12.321153"
-      },
-      {
-        "lat": 45.44411434197228,
-        "lng": 12.321778916218484,
-        "streetName": "Calle dei Procuratori",
-        "streetNameEnglish": "Street of the Procurators",
-        "streetDescription": "Named after the Procurators of St. Mark, high-ranking Venetian officials who may have owned property in this area of Dorsoduro.",
-        "id": "building_45.444114_12.321779"
-      },
-      {
-        "lat": 45.44407407232056,
-        "lng": 12.322287633308743,
-        "streetName": "Rio Ter\u00e0 delle Muneghette",
-        "streetNameEnglish": "Filled Canal of the Little Nuns",
-        "streetDescription": "Named after a small convent or nuns from a particular order. This was once a canal that was filled in to create a street.",
-        "id": "building_45.444074_12.322288"
-      },
-      {
-        "lat": 45.44401285858547,
-        "lng": 12.323059374880375,
-        "streetName": "Calle dell'Artigiano",
-        "streetNameEnglish": "Street of the Artisan",
-        "streetDescription": "Named after craftsmen who worked in this area of Dorsoduro. Venice's economy depended heavily on skilled artisans across numerous trades.",
-        "id": "building_45.444013_12.323059"
-      },
-      {
-        "lat": 45.44405726405608,
-        "lng": 12.32367593600129,
-        "streetName": "Fondamenta del Monastero",
-        "streetNameEnglish": "Foundation of the Monastery",
-        "streetDescription": "Named after a monastery, possibly the Carmelite monastery, that had waterfront access at this location in Dorsoduro.",
-        "id": "building_45.444057_12.323676"
-      },
-      {
-        "lat": 45.4444694882035,
-        "lng": 12.322427657665859,
-        "streetName": "Calle della Pasina",
-        "streetNameEnglish": "Street of the Small Passage",
-        "streetDescription": "Named after a small passage or path that connected different areas in Dorsoduro. 'Pasina' is a Venetian dialect term for a small passage.",
-        "id": "building_45.444469_12.322428"
-      },
-      {
-        "lat": 45.444453789148604,
-        "lng": 12.322920936307908,
-        "streetName": "Salizada dei Devoti",
-        "streetNameEnglish": "Paved Street of the Devoted",
-        "streetDescription": "Named after devout individuals associated with religious institutions in the area. The 'salizada' designation indicates it was one of the first paved streets.",
-        "id": "building_45.444454_12.322921"
+        "lat": 45.42630782927602,
+        "lng": 12.320680652343503,
+        "streetName": "Corte della Redenzione",
+        "streetNameEnglish": "Court of Redemption",
+        "streetDescription": "A small courtyard named for the spiritual redemption sought by women at the Convertite. This space in Dorsoduro would have been a quiet area for reflection within the religious community.",
+        "id": "building_45.426308_12.320681"
       }
     ],
-    "historicalName": "Calle dei Carmelitani in Sestiere di Dorsoduro",
-    "englishName": "Carmelite Friars' Street in the Dorsoduro District",
-    "historicalDescription": "A street located near the Church and Monastery of Santa Maria dei Carmini, home to Carmelite friars. The area was known for its religious institutions and residential neighborhoods in the 15th century.",
-    "nameConfidence": "medium",
-    "areaInSquareMeters": 245644.89,
+    "historicalName": "Calle de le Convertite, Sestiere di Dorsoduro",
+    "englishName": "Alley of the Converted Women, Dorsoduro District",
+    "historicalDescription": "This area in the Dorsoduro sestiere was known for housing a convent that took in reformed prostitutes in the 15th century, hence the name 'Calle de le Convertite' or 'Alley of the Converted Women'.",
+    "nameConfidence": "high",
+    "areaInSquareMeters": 57385.7,
     "imageSettings": {
-      "lat": 45.44197965379536,
-      "lng": 12.320749747109126,
-      "width": 787.9999998637608,
-      "height": 742.9999998637608,
-      "referenceScale": 3
+      "lat": 45.42535941426541,
+      "lng": 12.320868859698226,
+      "width": 364.00000056766334,
+      "height": 425.00000056766334,
+      "referenceScale": 4.000000007568844
     }
   }
 ]
@@ -1006,1903 +392,231 @@ Here is information about the land:
 Here are the existing buildings on this land:
 [
   {
-    "id": "canal_45.440220_12.321079",
-    "type": "fisherman_s_cottage",
+    "id": "bridge_45.426411_12.321021",
+    "type": "bridge",
     "owner": "ConsiglioDeiDieci",
-    "position": "{\"lat\": 45.44021969910615, \"lng\": 12.321079377501393}",
-    "notes": "Building fisherman_s_cottage constructed by AI ConsiglioDeiDieci on polygon-1745879581983."
-  },
-  {
-    "id": "building_45.440943_12.321047",
-    "type": "inn",
-    "owner": "adriatic_captain",
-    "position": "{\"lat\": 45.440943188879906, \"lng\": 12.321047122274168}",
-    "notes": "Building inn awaiting construction by AI adriatic_captain on polygon-1745879581983."
-  },
-  {
-    "id": "canal_45.442294_12.325382",
-    "type": "fisherman_s_cottage",
-    "owner": "MerchantLegend",
-    "position": "{\"lat\": 45.442293609762764, \"lng\": 12.32538164076128}",
-    "notes": "{\"position\": {\"lat\": 45.44265962870784, \"lng\": 12.324847840947081}}"
-  },
-  {
-    "id": "building_45.442660_12.324848",
-    "type": "market_stall",
-    "owner": "EliteInvestor",
-    "position": "{\"lat\": 45.44266, \"lng\": 12.324848}",
-    "notes": "{\"position\": {\"lat\": 45.44265962870784, \"lng\": 12.324847840947081}, \"WagesReasoning\": \"Setting competitive wages for skilled contract documentation work. This attracts trustworthy, literate employees capable of handling sensitive legal documents and client negotiations. The amount reflects the specialized nature of the work while remaining sustainable given my financial position.\", \"runByAssignment\": {\"timestamp\": \"2025-05-29T04:38:28.484913Z\", \"assignedRunBy\": \"BarbarigoCadet\", \"score\": 3711.377493363025, \"components\": {\"relationshipScoreWithOwner\": 0.0, \"influence\": 0.0, \"dailyIncome\": 4115.0, \"dailyTurnover\": 17483.5, \"distanceToHomeM\": 3042.0, \"socialClassTier\": 2, \"isOwnerFactor\": 1, \"numBusinessesAlreadyRun_before_assign\": 9, \"baseScoreComponents\": 18556.89, \"numerator\": 37113.77, \"denominator\": 10}}}"
-  },
-  {
-    "id": "building_45.442254_12.317156",
-    "type": "masons_lodge",
-    "owner": "Italia",
-    "position": "{\"lat\": 45.442254428701375, \"lng\": 12.317155571972442}",
-    "notes": "{\"previousNotes\": \"Building masons_lodge awaiting construction by AI Italia on polygon-1745879581983.\", \"runByAssignment\": {\"timestamp\": \"2025-05-29T04:38:28.427914Z\", \"assignedRunBy\": \"DogeLover88\", \"score\": 5426.571723768535, \"components\": {\"relationshipScoreWithOwner\": 0.0, \"influence\": 0.0, \"dailyIncome\": 2700.0, \"dailyTurnover\": 174.42, \"distanceToHomeM\": 161.0, \"socialClassTier\": 2, \"isOwnerFactor\": 1, \"numBusinessesAlreadyRun_before_assign\": 0, \"baseScoreComponents\": 2713.29, \"numerator\": 5426.57, \"denominator\": 1}}}"
-  },
-  {
-    "id": "canal_45.441545_12.317796",
-    "type": "fisherman_s_cottage",
-    "owner": "TopGlassmaker",
-    "position": "{\"lat\": 45.44154460512106, \"lng\": 12.317796353667164}",
-    "notes": "Building fisherman_s_cottage constructed by AI TopGlassmaker on polygon-1745879581983."
-  },
-  {
-    "id": "building_45.442276_12.323666",
-    "type": "small_warehouse",
-    "owner": "ConsiglioDeiDieci",
-    "position": "{\"lat\": 45.442276, \"lng\": 12.323666}",
-    "notes": "{\"WagesReasoning\": \"Small warehouse - reduced from 55 to standardize warehouse wages while remaining competitive\", \"runByAssignment\": {\"timestamp\": \"2025-05-29T04:38:28.353397Z\", \"assignedRunBy\": \"SilentObserver\", \"score\": 14069.271277707703, \"components\": {\"relationshipScoreWithOwner\": 73.82, \"influence\": 0.0, \"dailyIncome\": 0.0, \"dailyTurnover\": 6755.0, \"distanceToHomeM\": 459.0, \"socialClassTier\": 2, \"isOwnerFactor\": 1, \"numBusinessesAlreadyRun_before_assign\": 0, \"baseScoreComponents\": 7034.64, \"numerator\": 14069.27, \"denominator\": 1}}}"
-  },
-  {
-    "id": "building_45.440938_12.319128",
-    "type": "market_stall",
-    "owner": "DragonSlayer",
-    "position": "{\"lat\": 45.440938, \"lng\": 12.319128}",
-    "notes": "{\"position\": {\"lat\": 45.440938422569026, \"lng\": 12.319127898966538}, \"WagesReasoning\": \"Setting competitive wage at 12.5% of expected revenue to attract reliable workers for my contract stall operations. This wage reflects fair compensation for managing multiple product lines while maintaining healthy profit margins for business growth.\", \"runByAssignment\": {\"timestamp\": \"2025-05-29T04:38:28.482913Z\", \"assignedRunBy\": \"SilentObserver\", \"score\": 5176.645378851074, \"components\": {\"relationshipScoreWithOwner\": 123.05, \"influence\": 0.0, \"dailyIncome\": 0.0, \"dailyTurnover\": 6755.0, \"distanceToHomeM\": 221.0, \"socialClassTier\": 2, \"isOwnerFactor\": 1, \"numBusinessesAlreadyRun_before_assign\": 2, \"baseScoreComponents\": 7764.97, \"numerator\": 15529.94, \"denominator\": 3}}}"
-  },
-  {
-    "id": "canal_45.443509_12.316123",
-    "type": "fisherman_s_cottage",
-    "owner": "DogeLover88",
-    "position": "{\"lat\": 45.443509307146556, \"lng\": 12.316122655241871}",
-    "notes": "{\"position\": {\"lat\": 45.4431467142481, \"lng\": 12.316634804154148}}"
-  },
-  {
-    "id": "canal_45.442109_12.324792",
-    "type": "fisherman_s_cottage",
-    "owner": "greek_trader",
-    "position": "{\"lat\": 45.44210918188283, \"lng\": 12.324791554778004}",
-    "notes": "{\"position\": {\"lat\": 45.44270418985903, \"lng\": 12.32547643257518}}"
-  },
-  {
-    "id": "building_45.439979_12.320432",
-    "type": "market_stall",
-    "owner": "ConsiglioDeiDieci",
-    "position": "{\"lat\": 45.439979, \"lng\": 12.320432}",
-    "notes": "{\"WagesReasoning\": \"Market stall - reduced from 55 to standardize market wages while remaining competitive\", \"runByAssignment\": {\"timestamp\": \"2025-05-29T04:38:28.472913Z\", \"assignedRunBy\": \"ZenithTrader\", \"score\": 5335.430901888809, \"components\": {\"relationshipScoreWithOwner\": 71.87, \"influence\": 0.0, \"dailyIncome\": 0.0, \"dailyTurnover\": 2160.0, \"distanceToHomeM\": 211.0, \"socialClassTier\": 2, \"isOwnerFactor\": 1, \"numBusinessesAlreadyRun_before_assign\": 0, \"baseScoreComponents\": 2667.72, \"numerator\": 5335.43, \"denominator\": 1}}}"
-  },
-  {
-    "id": "canal_45.439843_12.320672",
-    "type": "fisherman_s_cottage",
-    "owner": "adriatic_captain",
-    "position": "{\"lat\": 45.43984330181716, \"lng\": 12.32067168173113}",
-    "notes": "{\"position\": {\"lat\": 45.43958818193424, \"lng\": 12.31990966519928}}"
-  },
-  {
-    "id": "building_45.440868_12.319732",
-    "type": "market_stall",
-    "owner": "ShadowHunter",
-    "position": "{\"lat\": 45.440868, \"lng\": 12.319732}",
-    "notes": "{\"position\": {\"lat\": 45.44086772190522, \"lng\": 12.319731567096973}, \"WagesReasoning\": \"Setting competitive wage to attract skilled workers for currently vacant market stall. 100 ducats provides fair compensation for Popolani-class workers while demonstrating commitment to professional operations.\", \"runByAssignment\": {\"timestamp\": \"2025-05-29T04:38:28.444913Z\", \"assignedRunBy\": \"BankingWizard99\", \"score\": 4580.177531160733, \"components\": {\"relationshipScoreWithOwner\": 0.0, \"influence\": 0.0, \"dailyIncome\": 0.0, \"dailyTurnover\": 5545.0, \"distanceToHomeM\": 965.0, \"socialClassTier\": 2, \"isOwnerFactor\": 1, \"numBusinessesAlreadyRun_before_assign\": 1, \"baseScoreComponents\": 4580.18, \"numerator\": 9160.36, \"denominator\": 2}}}"
-  },
-  {
-    "id": "canal_45.441228_12.322467",
-    "type": "fisherman_s_cottage",
-    "owner": "ZenithTrader",
-    "position": "{\"lat\": 45.44122843783041, \"lng\": 12.322466973631764}",
-    "notes": "Building fisherman_s_cottage constructed by AI ZenithTrader on polygon-1745879581983."
-  },
-  {
-    "id": "building_45.442693_12.324345",
-    "type": "nobili_palazzo",
-    "owner": "ConsiglioDeiDieci",
-    "position": "{\"lat\": 45.442693463084446, \"lng\": 12.324344791294665}",
-    "notes": "Building nobili_palazzo constructed by AI ConsiglioDeiDieci on polygon-1745879581983."
-  },
-  {
-    "id": "building_45.443204_12.322909",
-    "type": "artisan_s_house",
-    "owner": "ConsiglioDeiDieci",
-    "position": "{\"lat\": 45.44320353307247, \"lng\": 12.32290915893357}",
-    "notes": "Building artisan_s_house constructed by AI ConsiglioDeiDieci on polygon-1745879581983."
-  },
-  {
-    "id": "canal_45.443137_12.315726",
-    "type": "fisherman_s_cottage",
-    "owner": "Italia",
-    "position": "{\"lat\": 45.44313669679977, \"lng\": 12.315725688307667}",
-    "notes": "Building fisherman_s_cottage constructed by AI Italia on polygon-1745879581983."
-  },
-  {
-    "id": "building_45.442317_12.319077",
-    "type": "market_stall",
-    "owner": "Zorzi77",
-    "position": "{\"lat\": 45.442317, \"lng\": 12.319077}",
-    "notes": "{\"position\": {\"lat\": 45.44231680568413, \"lng\": 12.319077443726268}, \"WagesReasoning\": \"Market stall requires reliable daily operation and customer service skills. Competitive wage to attract quality merchant/vendor.\", \"runByAssignment\": {\"timestamp\": \"2025-05-29T04:38:28.455917Z\", \"assignedRunBy\": \"DucatsRunner\", \"score\": 6120.7850410356605, \"components\": {\"relationshipScoreWithOwner\": 123.05, \"influence\": 0.0, \"dailyIncome\": 2160.0, \"dailyTurnover\": 271.97, \"distanceToHomeM\": 602.0, \"socialClassTier\": 2, \"isOwnerFactor\": 1, \"numBusinessesAlreadyRun_before_assign\": 0, \"baseScoreComponents\": 3060.39, \"numerator\": 6120.79, \"denominator\": 1}}}"
-  },
-  {
-    "id": "canal_45.440596_12.321487",
-    "type": "public_dock",
-    "owner": "ConsiglioDeiDieci",
-    "position": "{\"lat\": 45.440596, \"lng\": 12.321487}",
-    "notes": "{\"runByAssignment\": {\"timestamp\": \"2025-05-29T04:38:28.340397Z\", \"assignedRunBy\": \"TravelBug23\", \"score\": 15374.838481213304, \"components\": {\"relationshipScoreWithOwner\": 0.0, \"influence\": 0.0, \"dailyIncome\": 720.0, \"dailyTurnover\": 7020.0, \"distanceToHomeM\": 53.0, \"socialClassTier\": 2, \"isOwnerFactor\": 1, \"numBusinessesAlreadyRun_before_assign\": 0, \"baseScoreComponents\": 7687.42, \"numerator\": 15374.84, \"denominator\": 1}}}"
-  },
-  {
-    "id": "building_45.444013_12.323059",
-    "type": "apothecary",
-    "owner": "ConsiglioDeiDieci",
-    "position": "{\"lat\": 45.444013, \"lng\": 12.323059}",
-    "notes": "{\"WagesReasoning\": \"Apothecary - reduced from 110 to optimize costs while maintaining premium for specialized knowledge\", \"runByAssignment\": {\"timestamp\": \"2025-05-29T04:38:28.401402Z\", \"assignedRunBy\": \"SilkRoadRunner\", \"score\": 7266.886975003687, \"components\": {\"relationshipScoreWithOwner\": 529.62, \"influence\": 0.0, \"dailyIncome\": 0.0, \"dailyTurnover\": 8057.97, \"distanceToHomeM\": 1243.0, \"socialClassTier\": 3, \"isOwnerFactor\": 1, \"numBusinessesAlreadyRun_before_assign\": 4, \"baseScoreComponents\": 12111.48, \"numerator\": 36334.43, \"denominator\": 5}}}"
-  },
-  {
-    "id": "building_45.441257_12.319829",
-    "type": "market_stall",
-    "owner": "BookWorm365",
-    "position": "{\"lat\": 45.441257068247594, \"lng\": 12.31982876123111}",
-    "notes": "{\"position\": {\"lat\": 45.44086772190522, \"lng\": 12.319731567096973}, \"runByAssignment\": {\"timestamp\": \"2025-05-29T04:38:28.504921Z\", \"assignedRunBy\": \"SilentObserver\", \"score\": 3265.5125786069925, \"components\": {\"relationshipScoreWithOwner\": 0.0, \"influence\": 0.0, \"dailyIncome\": 0.0, \"dailyTurnover\": 6755.0, \"distanceToHomeM\": 224.0, \"socialClassTier\": 2, \"isOwnerFactor\": 1, \"numBusinessesAlreadyRun_before_assign\": 3, \"baseScoreComponents\": 6531.03, \"numerator\": 13062.05, \"denominator\": 4}}}"
-  },
-  {
-    "id": "land_45.441394_12.321051",
-    "type": "granary",
-    "owner": "ConsiglioDeiDieci",
-    "position": "{\"lat\":45.4413941298333,\"lng\":12.321051381847951}",
-    "notes": "{\"runByAssignment\": {\"timestamp\": \"2025-05-29T04:38:28.521428Z\", \"assignedRunBy\": \"Feola007\", \"score\": 3469.8376685358444, \"components\": {\"relationshipScoreWithOwner\": 71.61, \"influence\": 0.0, \"dailyIncome\": 2470.0, \"dailyTurnover\": 232.85, \"distanceToHomeM\": 1106.0, \"socialClassTier\": 3, \"isOwnerFactor\": 1, \"numBusinessesAlreadyRun_before_assign\": 1, \"baseScoreComponents\": 2313.23, \"numerator\": 6939.68, \"denominator\": 2}}}"
-  },
-  {
-    "id": "canal_45.441925_12.324201",
-    "type": "fisherman_s_cottage",
-    "owner": "ConsiglioDeiDieci",
-    "position": "{\"lat\": 45.44192475400288, \"lng\": 12.324201468794728}",
-    "notes": "Building fisherman_s_cottage constructed by AI ConsiglioDeiDieci on polygon-1745879581983."
-  },
-  {
-    "id": "canal_45.441838_12.325471",
-    "type": "fisherman_s_cottage",
-    "owner": "ConsiglioDeiDieci",
-    "position": "{\"lat\": 45.4418379104619, \"lng\": 12.325471103150498}",
-    "notes": "Building fisherman_s_cottage constructed by AI ConsiglioDeiDieci on polygon-1745879581983."
-  },
-  {
-    "id": "building_45.442696_12.317819",
-    "type": "artisan_s_house",
-    "owner": "SilentObserver",
-    "position": "{\"lat\": 45.44269560820029, \"lng\": 12.317819298718225}",
-    "notes": "Building artisan_s_house constructed by AI SilentObserver on polygon-1745879581983."
-  },
-  {
-    "id": "building_45.441323_12.319201",
-    "type": "bottega",
-    "owner": "SilkRoadRunner",
-    "position": "{\"lat\": 45.441323, \"lng\": 12.319201}",
-    "notes": "{\"position\": {\"lat\": 45.441322891682304, \"lng\": 12.319200594785658}, \"WagesReasoning\": \"Establishing appropriate wage for bottega to attract skilled artisans for workshop/retail operations\", \"runByAssignment\": {\"timestamp\": \"2025-05-29T04:38:28.324397Z\", \"assignedRunBy\": \"SilkRoadRunner\", \"score\": 40509.16112873338, \"components\": {\"relationshipScoreWithOwner\": 0.0, \"influence\": 0.0, \"dailyIncome\": 0.0, \"dailyTurnover\": 8057.97, \"distanceToHomeM\": 1306.0, \"socialClassTier\": 3, \"isOwnerFactor\": 4, \"numBusinessesAlreadyRun_before_assign\": 1, \"baseScoreComponents\": 6751.53, \"numerator\": 81018.32, \"denominator\": 2}}}"
-  },
-  {
-    "id": "canal_45.440972_12.321895",
-    "type": "fisherman_s_cottage",
-    "owner": "TravelBug23",
-    "position": "{\"lat\": 45.44097249368414, \"lng\": 12.32189476904192}",
-    "notes": "{\"position\": {\"lat\": 45.441311627162214, \"lng\": 12.321699002681147}}"
-  },
-  {
-    "id": "canal_45.439955_12.319032",
-    "type": "fisherman_s_cottage",
-    "owner": "DucaleTechie",
-    "position": "{\"lat\": 45.4399547176091, \"lng\": 12.319032315581227}",
-    "notes": "{\"position\": {\"lat\": 45.44002243297783, \"lng\": 12.319748620278311}}"
-  },
-  {
-    "id": "canal_45.442154_12.316563",
-    "type": "canal_house",
-    "owner": "ConsiglioDeiDieci",
-    "position": "{\"lat\": 45.442154, \"lng\": 12.316563}",
+    "position": "{\"lat\": 45.426411, \"lng\": 12.321021}",
     "notes": ""
+  },
+  {
+    "id": "building_45.424914_12.320574",
+    "type": "market_stall",
+    "owner": "ConsiglioDeiDieci",
+    "position": "{\"lat\": 45.424914, \"lng\": 12.320574}",
+    "notes": "{\"WagesReasoning\": \"Market stall - reduced from 55 to standardize market wages while remaining competitive\", \"runByAssignment\": {\"timestamp\": \"2025-05-29T04:38:28.496913Z\", \"assignedRunBy\": \"BookishMerchant\", \"score\": 4945.25578489445, \"components\": {\"relationshipScoreWithOwner\": 71.61, \"influence\": 0.0, \"dailyIncome\": 4860.0, \"dailyTurnover\": 61.01, \"distanceToHomeM\": 692.0, \"socialClassTier\": 1, \"isOwnerFactor\": 1, \"numBusinessesAlreadyRun_before_assign\": 0, \"baseScoreComponents\": 4945.26, \"numerator\": 4945.26, \"denominator\": 1}}}"
+  },
+  {
+    "id": "building_45.425837_12.321249",
+    "type": "bottega",
+    "owner": "ConsiglioDeiDieci",
+    "position": "{\"lat\": 45.425837, \"lng\": 12.321249}",
+    "notes": "{\"WagesReasoning\": \"Bottega - reduced from 65 to standardize retail wages while valuing commercial skills\", \"runByAssignment\": {\"timestamp\": \"2025-05-29T04:38:28.419913Z\", \"assignedRunBy\": \"TechnoMedici\", \"score\": 5514.643351203535, \"components\": {\"relationshipScoreWithOwner\": 71.84, \"influence\": 0.0, \"dailyIncome\": 0.0, \"dailyTurnover\": 15025.0, \"distanceToHomeM\": 2876.0, \"socialClassTier\": 3, \"isOwnerFactor\": 1, \"numBusinessesAlreadyRun_before_assign\": 6, \"baseScoreComponents\": 12867.5, \"numerator\": 38602.5, \"denominator\": 7}}}"
   }
 ]
 
 Here are the available building points for this land (for 'building' type buildings, using mapped key 'land'):
 [
   {
-    "lat": 45.43958818193424,
-    "lng": 12.31990966519928,
-    "polygon_id": "polygon-1745879581983",
+    "lat": 45.4244776638359,
+    "lng": 12.321373633527958,
+    "polygon_id": "polygon-1746052792551",
     "point_type": "land",
-    "id": "building_45.439588_12.319910"
+    "id": "building_45.424478_12.321374"
   },
   {
-    "lat": 45.44002243297783,
-    "lng": 12.319748620278311,
-    "polygon_id": "polygon-1745879581983",
+    "lat": 45.4243858686638,
+    "lng": 12.32187798099693,
+    "polygon_id": "polygon-1746052792551",
     "point_type": "land",
-    "id": "building_45.440022_12.319749"
+    "id": "building_45.424386_12.321878"
   },
   {
-    "lat": 45.44038401828776,
-    "lng": 12.319250063620673,
-    "polygon_id": "polygon-1745879581983",
+    "lat": 45.424870050741255,
+    "lng": 12.320074591040937,
+    "polygon_id": "polygon-1746052792551",
     "point_type": "land",
-    "id": "building_45.440384_12.319250"
+    "id": "building_45.424870_12.320075"
   },
   {
-    "lat": 45.44046371027811,
-    "lng": 12.319717115836815,
-    "polygon_id": "polygon-1745879581983",
+    "lat": 45.4249194732566,
+    "lng": 12.321205575929023,
+    "polygon_id": "polygon-1746052792551",
     "point_type": "land",
-    "id": "building_45.440464_12.319717"
+    "id": "building_45.424919_12.321206"
   },
   {
-    "lat": 45.44043876676756,
-    "lng": 12.32037569677936,
-    "polygon_id": "polygon-1745879581983",
+    "lat": 45.42486099792829,
+    "lng": 12.322055354233079,
+    "polygon_id": "polygon-1746052792551",
     "point_type": "land",
-    "id": "building_45.440439_12.320376"
+    "id": "building_45.424861_12.322055"
   },
   {
-    "lat": 45.440843870112005,
-    "lng": 12.320428577530294,
-    "polygon_id": "polygon-1745879581983",
+    "lat": 45.425311972725154,
+    "lng": 12.319299504446294,
+    "polygon_id": "polygon-1746052792551",
     "point_type": "land",
-    "id": "building_45.440844_12.320429"
+    "id": "building_45.425312_12.319300"
   },
   {
-    "lat": 45.44135925324426,
-    "lng": 12.318587155728236,
-    "polygon_id": "polygon-1745879581983",
+    "lat": 45.42538165158783,
+    "lng": 12.320151389362154,
+    "polygon_id": "polygon-1746052792551",
     "point_type": "land",
-    "id": "building_45.441359_12.318587"
+    "id": "building_45.425382_12.320151"
   },
   {
-    "lat": 45.441276161496376,
-    "lng": 12.320466267190382,
-    "polygon_id": "polygon-1745879581983",
+    "lat": 45.425255763332984,
+    "lng": 12.320576474128258,
+    "polygon_id": "polygon-1746052792551",
     "point_type": "land",
-    "id": "building_45.441276_12.320466"
+    "id": "building_45.425256_12.320576"
   },
   {
-    "lat": 45.441311627162214,
-    "lng": 12.321699002681147,
-    "polygon_id": "polygon-1745879581983",
+    "lat": 45.42536723462664,
+    "lng": 12.321388322304577,
+    "polygon_id": "polygon-1746052792551",
     "point_type": "land",
-    "id": "building_45.441312_12.321699"
+    "id": "building_45.425367_12.321388"
   },
   {
-    "lat": 45.44181079800211,
-    "lng": 12.318446680962825,
-    "polygon_id": "polygon-1745879581983",
+    "lat": 45.42540543458871,
+    "lng": 12.321942903552934,
+    "polygon_id": "polygon-1746052792551",
     "point_type": "land",
-    "id": "building_45.441811_12.318447"
+    "id": "building_45.425405_12.321943"
   },
   {
-    "lat": 45.44176635341924,
-    "lng": 12.31925547709438,
-    "polygon_id": "polygon-1745879581983",
+    "lat": 45.425744377846435,
+    "lng": 12.319477104450241,
+    "polygon_id": "polygon-1746052792551",
     "point_type": "land",
-    "id": "building_45.441766_12.319255"
+    "id": "building_45.425744_12.319477"
   },
   {
-    "lat": 45.44184226623009,
-    "lng": 12.319735533568815,
-    "polygon_id": "polygon-1745879581983",
+    "lat": 45.42585115264745,
+    "lng": 12.320069288488082,
+    "polygon_id": "polygon-1746052792551",
     "point_type": "land",
-    "id": "building_45.441842_12.319736"
+    "id": "building_45.425851_12.320069"
   },
   {
-    "lat": 45.44175155916815,
-    "lng": 12.320558484458672,
-    "polygon_id": "polygon-1745879581983",
+    "lat": 45.4258484390924,
+    "lng": 12.320643921809001,
+    "polygon_id": "polygon-1746052792551",
     "point_type": "land",
-    "id": "building_45.441752_12.320558"
+    "id": "building_45.425848_12.320644"
   },
   {
-    "lat": 45.44181919512405,
-    "lng": 12.32179994887148,
-    "polygon_id": "polygon-1745879581983",
+    "lat": 45.42579525874528,
+    "lng": 12.322037004716977,
+    "polygon_id": "polygon-1746052792551",
     "point_type": "land",
-    "id": "building_45.441819_12.321800"
+    "id": "building_45.425795_12.322037"
   },
   {
-    "lat": 45.441786900702446,
-    "lng": 12.322299350881279,
-    "polygon_id": "polygon-1745879581983",
+    "lat": 45.42577892993708,
+    "lng": 12.32249297661652,
+    "polygon_id": "polygon-1746052792551",
     "point_type": "land",
-    "id": "building_45.441787_12.322299"
+    "id": "building_45.425779_12.322493"
   },
   {
-    "lat": 45.441805680838435,
-    "lng": 12.323083636698444,
-    "polygon_id": "polygon-1745879581983",
+    "lat": 45.42622731360532,
+    "lng": 12.32006150902393,
+    "polygon_id": "polygon-1746052792551",
     "point_type": "land",
-    "id": "building_45.441806_12.323084"
+    "id": "building_45.426227_12.320062"
   },
   {
-    "lat": 45.44224805224854,
-    "lng": 12.317956844128782,
-    "polygon_id": "polygon-1745879581983",
+    "lat": 45.42630782927602,
+    "lng": 12.320680652343503,
+    "polygon_id": "polygon-1746052792551",
     "point_type": "land",
-    "id": "building_45.442248_12.317957"
-  },
-  {
-    "lat": 45.44218580527908,
-    "lng": 12.318534431718614,
-    "polygon_id": "polygon-1745879581983",
-    "point_type": "land",
-    "id": "building_45.442186_12.318534"
-  },
-  {
-    "lat": 45.44226135717603,
-    "lng": 12.319698634859396,
-    "polygon_id": "polygon-1745879581983",
-    "point_type": "land",
-    "id": "building_45.442261_12.319699"
-  },
-  {
-    "lat": 45.44225316651121,
-    "lng": 12.320556777517233,
-    "polygon_id": "polygon-1745879581983",
-    "point_type": "land",
-    "id": "building_45.442253_12.320557"
-  },
-  {
-    "lat": 45.442160222763924,
-    "lng": 12.320970820854885,
-    "polygon_id": "polygon-1745879581983",
-    "point_type": "land",
-    "id": "building_45.442160_12.320971"
-  },
-  {
-    "lat": 45.44220137312277,
-    "lng": 12.3224184611077,
-    "polygon_id": "polygon-1745879581983",
-    "point_type": "land",
-    "id": "building_45.442201_12.322418"
-  },
-  {
-    "lat": 45.44218658261004,
-    "lng": 12.322898161561232,
-    "polygon_id": "polygon-1745879581983",
-    "point_type": "land",
-    "id": "building_45.442187_12.322898"
-  },
-  {
-    "lat": 45.44222300562253,
-    "lng": 12.324389489603762,
-    "polygon_id": "polygon-1745879581983",
-    "point_type": "land",
-    "id": "building_45.442223_12.324389"
-  },
-  {
-    "lat": 45.44267834997089,
-    "lng": 12.316664914715357,
-    "polygon_id": "polygon-1745879581983",
-    "point_type": "land",
-    "id": "building_45.442678_12.316665"
-  },
-  {
-    "lat": 45.44268433304287,
-    "lng": 12.31725783641718,
-    "polygon_id": "polygon-1745879581983",
-    "point_type": "land",
-    "id": "building_45.442684_12.317258"
-  },
-  {
-    "lat": 45.44262068331913,
-    "lng": 12.318445806286023,
-    "polygon_id": "polygon-1745879581983",
-    "point_type": "land",
-    "id": "building_45.442621_12.318446"
-  },
-  {
-    "lat": 45.442596421864955,
-    "lng": 12.320475824241193,
-    "polygon_id": "polygon-1745879581983",
-    "point_type": "land",
-    "id": "building_45.442596_12.320476"
-  },
-  {
-    "lat": 45.442600772883715,
-    "lng": 12.321127351126703,
-    "polygon_id": "polygon-1745879581983",
-    "point_type": "land",
-    "id": "building_45.442601_12.321127"
-  },
-  {
-    "lat": 45.44260037979015,
-    "lng": 12.321727555996322,
-    "polygon_id": "polygon-1745879581983",
-    "point_type": "land",
-    "id": "building_45.442600_12.321728"
-  },
-  {
-    "lat": 45.44266828668874,
-    "lng": 12.322456858690348,
-    "polygon_id": "polygon-1745879581983",
-    "point_type": "land",
-    "id": "building_45.442668_12.322457"
-  },
-  {
-    "lat": 45.44273780376655,
-    "lng": 12.323006991046181,
-    "polygon_id": "polygon-1745879581983",
-    "point_type": "land",
-    "id": "building_45.442738_12.323007"
-  },
-  {
-    "lat": 45.4427433868338,
-    "lng": 12.323613841235721,
-    "polygon_id": "polygon-1745879581983",
-    "point_type": "land",
-    "id": "building_45.442743_12.323614"
-  },
-  {
-    "lat": 45.44270418985903,
-    "lng": 12.32547643257518,
-    "polygon_id": "polygon-1745879581983",
-    "point_type": "land",
-    "id": "building_45.442704_12.325476"
-  },
-  {
-    "lat": 45.4431467142481,
-    "lng": 12.316634804154148,
-    "polygon_id": "polygon-1745879581983",
-    "point_type": "land",
-    "id": "building_45.443147_12.316635"
-  },
-  {
-    "lat": 45.443186057966244,
-    "lng": 12.317221422296402,
-    "polygon_id": "polygon-1745879581983",
-    "point_type": "land",
-    "id": "building_45.443186_12.317221"
-  },
-  {
-    "lat": 45.44306915380621,
-    "lng": 12.31783341744465,
-    "polygon_id": "polygon-1745879581983",
-    "point_type": "land",
-    "id": "building_45.443069_12.317833"
-  },
-  {
-    "lat": 45.4431043323195,
-    "lng": 12.318470762724763,
-    "polygon_id": "polygon-1745879581983",
-    "point_type": "land",
-    "id": "building_45.443104_12.318471"
-  },
-  {
-    "lat": 45.443079432397674,
-    "lng": 12.320405365975999,
-    "polygon_id": "polygon-1745879581983",
-    "point_type": "land",
-    "id": "building_45.443079_12.320405"
-  },
-  {
-    "lat": 45.44321612950179,
-    "lng": 12.32097041883043,
-    "polygon_id": "polygon-1745879581983",
-    "point_type": "land",
-    "id": "building_45.443216_12.320970"
-  },
-  {
-    "lat": 45.44320250450817,
-    "lng": 12.32161872886048,
-    "polygon_id": "polygon-1745879581983",
-    "point_type": "land",
-    "id": "building_45.443203_12.321619"
-  },
-  {
-    "lat": 45.44315146916715,
-    "lng": 12.322421636728652,
-    "polygon_id": "polygon-1745879581983",
-    "point_type": "land",
-    "id": "building_45.443151_12.322422"
-  },
-  {
-    "lat": 45.443126144199226,
-    "lng": 12.323584681013319,
-    "polygon_id": "polygon-1745879581983",
-    "point_type": "land",
-    "id": "building_45.443126_12.323585"
-  },
-  {
-    "lat": 45.44307264888808,
-    "lng": 12.324364915431566,
-    "polygon_id": "polygon-1745879581983",
-    "point_type": "land",
-    "id": "building_45.443073_12.324365"
-  },
-  {
-    "lat": 45.44313724169024,
-    "lng": 12.32497583353698,
-    "polygon_id": "polygon-1745879581983",
-    "point_type": "land",
-    "id": "building_45.443137_12.324976"
-  },
-  {
-    "lat": 45.44365242739881,
-    "lng": 12.317353653152413,
-    "polygon_id": "polygon-1745879581983",
-    "point_type": "land",
-    "id": "building_45.443652_12.317354"
-  },
-  {
-    "lat": 45.443607415461805,
-    "lng": 12.320978742455463,
-    "polygon_id": "polygon-1745879581983",
-    "point_type": "land",
-    "id": "building_45.443607_12.320979"
-  },
-  {
-    "lat": 45.44357285546603,
-    "lng": 12.321767140531486,
-    "polygon_id": "polygon-1745879581983",
-    "point_type": "land",
-    "id": "building_45.443573_12.321767"
-  },
-  {
-    "lat": 45.443663191421216,
-    "lng": 12.322299346727995,
-    "polygon_id": "polygon-1745879581983",
-    "point_type": "land",
-    "id": "building_45.443663_12.322299"
-  },
-  {
-    "lat": 45.443623678324045,
-    "lng": 12.323059165942844,
-    "polygon_id": "polygon-1745879581983",
-    "point_type": "land",
-    "id": "building_45.443624_12.323059"
-  },
-  {
-    "lat": 45.44360809952132,
-    "lng": 12.323594343078838,
-    "polygon_id": "polygon-1745879581983",
-    "point_type": "land",
-    "id": "building_45.443608_12.323594"
-  },
-  {
-    "lat": 45.443570344874125,
-    "lng": 12.324313984607477,
-    "polygon_id": "polygon-1745879581983",
-    "point_type": "land",
-    "id": "building_45.443570_12.324314"
-  },
-  {
-    "lat": 45.443504060014924,
-    "lng": 12.324975430796957,
-    "polygon_id": "polygon-1745879581983",
-    "point_type": "land",
-    "id": "building_45.443504_12.324975"
-  },
-  {
-    "lat": 45.44406578684487,
-    "lng": 12.321153122819428,
-    "polygon_id": "polygon-1745879581983",
-    "point_type": "land",
-    "id": "building_45.444066_12.321153"
-  },
-  {
-    "lat": 45.44411434197228,
-    "lng": 12.321778916218484,
-    "polygon_id": "polygon-1745879581983",
-    "point_type": "land",
-    "id": "building_45.444114_12.321779"
-  },
-  {
-    "lat": 45.44407407232056,
-    "lng": 12.322287633308743,
-    "polygon_id": "polygon-1745879581983",
-    "point_type": "land",
-    "id": "building_45.444074_12.322288"
-  },
-  {
-    "lat": 45.44405726405608,
-    "lng": 12.32367593600129,
-    "polygon_id": "polygon-1745879581983",
-    "point_type": "land",
-    "id": "building_45.444057_12.323676"
-  },
-  {
-    "lat": 45.4444694882035,
-    "lng": 12.322427657665859,
-    "polygon_id": "polygon-1745879581983",
-    "point_type": "land",
-    "id": "building_45.444469_12.322428"
-  },
-  {
-    "lat": 45.444453789148604,
-    "lng": 12.322920936307908,
-    "polygon_id": "polygon-1745879581983",
-    "point_type": "land",
-    "id": "building_45.444454_12.322921"
+    "id": "building_45.426308_12.320681"
   }
 ]
 
-
-Here are relevancies that might influence your decision:
-[
-  {
-    "relevancyId": "recfWiHY5kUpsqVkE",
-    "asset": "polygon-1746056173670",
-    "assetType": "land",
-    "category": "proximity",
-    "type": "geographic",
-    "targetCitizen": "steven",
-    "relevantToCitizen": "TechnoMedici",
-    "score": 82.96,
-    "timeHorizon": "medium",
-    "title": "\"steven\" owns nearby land \"Calle del Dose, Sestiere di San Marco\" (93m).",
-    "description": "**Calle del Dose, Sestiere di San Marco**, owned by **steven**, is **93 meters** from your nearest property.",
-    "notes": "",
-    "createdAt": "2025-06-12T04:56:46.387Z",
-    "status": "high"
-  },
-  {
-    "relevancyId": "recQAzCF102Z3Ou5h",
-    "asset": "polygon-1746056070563",
-    "assetType": "land",
-    "category": "proximity",
-    "type": "geographic",
-    "targetCitizen": "Italia",
-    "relevantToCitizen": "TechnoMedici",
-    "score": 80.33,
-    "timeHorizon": "medium",
-    "title": "\"Italia\" owns nearby land \"Ruga dei Oresi in Sestiere di Cannaregio\" (110m).",
-    "description": "**Ruga dei Oresi in Sestiere di Cannaregio**, owned by **Italia**, is **110 meters** from your nearest property.",
-    "notes": "",
-    "createdAt": "2025-06-12T04:56:46.387Z",
-    "status": "high"
-  },
-  {
-    "relevancyId": "rec09wx41ED1D6APF",
-    "asset": "canal_45.431139_12.317924",
-    "assetType": "building",
-    "category": "operator_relations",
-    "type": "running_in_others_building",
-    "targetCitizen": "ConsiglioDeiDieci",
-    "relevantToCitizen": "TechnoMedici",
-    "score": 80,
-    "timeHorizon": "ongoing",
-    "title": "You operate the Public Dock at Fondamenta delle Specchiere owned by \"ConsiglioDeiDieci\".",
-    "description": "You are currently operating the **Public Dock at Fondamenta delle Specchiere** owned by **ConsiglioDeiDieci**.",
-    "notes": "Building ID: canal_45.431139_12.317924, Land ID: polygon-1745879165953",
-    "createdAt": "2025-06-12T05:06:40.460Z",
-    "status": "high"
-  },
-  {
-    "relevancyId": "rec92P0VZimNEh8PJ",
-    "asset": "building_45.432265_12.355002",
-    "assetType": "building",
-    "category": "operator_relations",
-    "type": "running_in_others_building",
-    "targetCitizen": "MerchantLegend",
-    "relevantToCitizen": "TechnoMedici",
-    "score": 80,
-    "timeHorizon": "ongoing",
-    "title": "You operate the Bakery at Calle dei Cordami owned by \"MerchantLegend\".",
-    "description": "You are currently operating the **Bakery at Calle dei Cordami** owned by **MerchantLegend**.",
-    "notes": "Building ID: building_45.432265_12.355002, Land ID: polygon-1746057352428",
-    "createdAt": "2025-06-12T05:06:40.460Z",
-    "status": "high"
-  },
-  {
-    "relevancyId": "recFNKBxCdclwltBd",
-    "asset": "building_45.438048_12.347155",
-    "assetType": "building",
-    "category": "operator_relations",
-    "type": "running_in_others_building",
-    "targetCitizen": "GamingPatrizio",
-    "relevantToCitizen": "TechnoMedici",
-    "score": 80,
-    "timeHorizon": "ongoing",
-    "title": "You operate the Bakery at Calle dei Albanesi owned by \"GamingPatrizio\".",
-    "description": "You are currently operating the **Bakery at Calle dei Albanesi** owned by **GamingPatrizio**.",
-    "notes": "Building ID: building_45.438048_12.347155, Land ID: polygon-1746056493504",
-    "createdAt": "2025-06-12T05:06:40.460Z",
-    "status": "high"
-  },
-  {
-    "relevancyId": "recQHkl5UgFounLKL",
-    "asset": "canal_45.430963_12.331665",
-    "assetType": "building",
-    "category": "operator_relations",
-    "type": "running_in_others_building",
-    "targetCitizen": "ConsiglioDeiDieci",
-    "relevantToCitizen": "TechnoMedici",
-    "score": 80,
-    "timeHorizon": "ongoing",
-    "title": "You operate the Public Dock at Fondamenta dei Lanaioli owned by \"ConsiglioDeiDieci\".",
-    "description": "You are currently operating the **Public Dock at Fondamenta dei Lanaioli** owned by **ConsiglioDeiDieci**.",
-    "notes": "Building ID: canal_45.430963_12.331665, Land ID: polygon-1745878962632",
-    "createdAt": "2025-06-12T05:06:40.460Z",
-    "status": "high"
-  },
-  {
-    "relevancyId": "reccCP4WtRzw2v97N",
-    "asset": "building_45.423495_12.330726",
-    "assetType": "building",
-    "category": "operator_relations",
-    "type": "running_in_others_building",
-    "targetCitizen": "ConsiglioDeiDieci",
-    "relevantToCitizen": "TechnoMedici",
-    "score": 80,
-    "timeHorizon": "ongoing",
-    "title": "You operate the Public Bath at Rio Ter\u00e0 del Melone owned by \"ConsiglioDeiDieci\".",
-    "description": "You are currently operating the **Public Bath at Rio Ter\u00e0 del Melone** owned by **ConsiglioDeiDieci**.",
-    "notes": "Building ID: building_45.423495_12.330726, Land ID: polygon-1746052735791",
-    "createdAt": "2025-06-12T05:06:40.460Z",
-    "status": "high"
-  },
-  {
-    "relevancyId": "reclUpcuOUehwBha4",
-    "asset": "building_45.425837_12.321249",
-    "assetType": "building",
-    "category": "operator_relations",
-    "type": "running_in_others_building",
-    "targetCitizen": "ConsiglioDeiDieci",
-    "relevantToCitizen": "TechnoMedici",
-    "score": 80,
-    "timeHorizon": "ongoing",
-    "title": "You operate the Bottega at Sottoportego della Disciplina owned by \"ConsiglioDeiDieci\".",
-    "description": "You are currently operating the **Bottega at Sottoportego della Disciplina** owned by **ConsiglioDeiDieci**.",
-    "notes": "Building ID: building_45.425837_12.321249, Land ID: polygon-1746052792551",
-    "createdAt": "2025-06-12T05:06:40.460Z",
-    "status": "high"
-  },
-  {
-    "relevancyId": "rectMoRaVI4sBBXZC",
-    "asset": "building_45.430977_12.354557",
-    "assetType": "building",
-    "category": "operator_relations",
-    "type": "running_in_others_building",
-    "targetCitizen": "ProSilkTrader",
-    "relevantToCitizen": "TechnoMedici",
-    "score": 80,
-    "timeHorizon": "ongoing",
-    "title": "You operate the Contract Stall at Calle dei Balestrieri owned by \"ProSilkTrader\".",
-    "description": "You are currently operating the **Contract Stall at Calle dei Balestrieri** owned by **ProSilkTrader**.",
-    "notes": "Building ID: building_45.430977_12.354557, Land ID: polygon-1746057352428",
-    "createdAt": "2025-06-12T05:06:40.460Z",
-    "status": "high"
-  },
-  {
-    "relevancyId": "recvYe0dUVmNlsx33",
-    "asset": "canal_45.444689_12.336473",
-    "assetType": "building",
-    "category": "operator_relations",
-    "type": "running_in_others_building",
-    "targetCitizen": "ConsiglioDeiDieci",
-    "relevantToCitizen": "TechnoMedici",
-    "score": 80,
-    "timeHorizon": "ongoing",
-    "title": "You operate the Public Dock at Riva dei Guaritori owned by \"ConsiglioDeiDieci\".",
-    "description": "You are currently operating the **Public Dock at Riva dei Guaritori** owned by **ConsiglioDeiDieci**.",
-    "notes": "Building ID: canal_45.444689_12.336473, Land ID: polygon-1746055928225",
-    "createdAt": "2025-06-12T05:06:40.460Z",
-    "status": "high"
-  },
-  {
-    "relevancyId": "recHOHU1SxbIpVyjv",
-    "asset": "polygon-1746072757215",
-    "assetType": "land",
-    "category": "proximity",
-    "type": "geographic",
-    "targetCitizen": "BasstheWhale",
-    "relevantToCitizen": "TechnoMedici",
-    "score": 79.36,
-    "timeHorizon": "medium",
-    "title": "\"BasstheWhale\" owns nearby land \"Calle del Megio in Sestiere Dorsoduro\" (116m).",
-    "description": "**Calle del Megio in Sestiere Dorsoduro**, owned by **BasstheWhale**, is **116 meters** from your nearest property.",
-    "notes": "",
-    "createdAt": "2025-06-12T04:56:46.387Z",
-    "status": "high"
-  },
-  {
-    "relevancyId": "recTLsbksSq7pOf7u",
-    "asset": "polygon-1745878859083",
-    "assetType": "land",
-    "category": "proximity",
-    "type": "geographic",
-    "targetCitizen": "BasstheWhale",
-    "relevantToCitizen": "TechnoMedici",
-    "score": 77.55,
-    "timeHorizon": "medium",
-    "title": "\"BasstheWhale\" owns nearby land \"Calle dei Saloni presso Santa Maria Formosa\" (127m).",
-    "description": "**Calle dei Saloni presso Santa Maria Formosa**, owned by **BasstheWhale**, is **127 meters** from your nearest property.",
-    "notes": "",
-    "createdAt": "2025-06-12T04:56:46.387Z",
-    "status": "high"
-  },
-  {
-    "relevancyId": "recgKs59Xekw08CWW",
-    "asset": "polygon-1745879404342",
-    "assetType": "land",
-    "category": "proximity",
-    "type": "geographic",
-    "targetCitizen": "John_Jeffries",
-    "relevantToCitizen": "TechnoMedici",
-    "score": 75.31,
-    "timeHorizon": "medium",
-    "title": "\"John_Jeffries\" owns nearby land \"Calle de la Testa\" (142m).",
-    "description": "**Calle de la Testa**, owned by **John_Jeffries**, is **142 meters** from your nearest property.",
-    "notes": "",
-    "createdAt": "2025-06-12T04:56:46.387Z",
-    "status": "high"
-  },
-  {
-    "relevancyId": "rec8OtcNqJ9dFrQVp",
-    "asset": "canal_45.431139_12.317924",
-    "assetType": "building",
-    "category": "occupancy_relations",
-    "type": "employer_to_employee",
-    "targetCitizen": "BigMike",
-    "relevantToCitizen": "TechnoMedici",
-    "score": 75,
-    "timeHorizon": "ongoing",
-    "title": "\"BigMike\" works at your Public Dock at Fondamenta delle Specchiere.",
-    "description": "**BigMike** works at your **Public Dock at Fondamenta delle Specchiere**.",
-    "notes": "Building ID: canal_45.431139_12.317924, Land ID: polygon-1745879165953",
-    "createdAt": "2025-06-12T05:10:57.295Z",
-    "status": "high"
-  },
-  {
-    "relevancyId": "recLYhKPittZ6iL9L",
-    "asset": "canal_45.444689_12.336473",
-    "assetType": "building",
-    "category": "occupancy_relations",
-    "type": "employer_to_employee",
-    "targetCitizen": "StormRider",
-    "relevantToCitizen": "TechnoMedici",
-    "score": 75,
-    "timeHorizon": "ongoing",
-    "title": "\"StormRider\" works at your Public Dock at Riva dei Guaritori.",
-    "description": "**StormRider** works at your **Public Dock at Riva dei Guaritori**.",
-    "notes": "Building ID: canal_45.444689_12.336473, Land ID: polygon-1746055928225",
-    "createdAt": "2025-06-12T05:10:57.295Z",
-    "status": "high"
-  },
-  {
-    "relevancyId": "recM2TsoSd9MJBadz",
-    "asset": "building_45.423495_12.330726",
-    "assetType": "building",
-    "category": "occupancy_relations",
-    "type": "employer_to_employee",
-    "targetCitizen": "steven",
-    "relevantToCitizen": "TechnoMedici",
-    "score": 75,
-    "timeHorizon": "ongoing",
-    "title": "\"steven\" works at your Public Bath at Rio Ter\u00e0 del Melone.",
-    "description": "**steven** works at your **Public Bath at Rio Ter\u00e0 del Melone**.",
-    "notes": "Building ID: building_45.423495_12.330726, Land ID: polygon-1746052735791",
-    "createdAt": "2025-06-12T05:10:57.295Z",
-    "status": "high"
-  },
-  {
-    "relevancyId": "recOKPmL0fZ2uzXyy",
-    "asset": "building_45.438048_12.347155",
-    "assetType": "building",
-    "category": "occupancy_relations",
-    "type": "employer_to_employee",
-    "targetCitizen": "TravelBug23",
-    "relevantToCitizen": "TechnoMedici",
-    "score": 75,
-    "timeHorizon": "ongoing",
-    "title": "\"TravelBug23\" works at your Bakery at Calle dei Albanesi.",
-    "description": "**TravelBug23** works at your **Bakery at Calle dei Albanesi**.",
-    "notes": "Building ID: building_45.438048_12.347155, Land ID: polygon-1746056493504",
-    "createdAt": "2025-06-12T05:10:57.295Z",
-    "status": "high"
-  },
-  {
-    "relevancyId": "recd9E1Lc5O5ypPFU",
-    "asset": "building_45.440840_12.327785",
-    "assetType": "building",
-    "category": "occupancy_relations",
-    "type": "employer_to_employee",
-    "targetCitizen": "TopGlassmaker",
-    "relevantToCitizen": "TechnoMedici",
-    "score": 75,
-    "timeHorizon": "ongoing",
-    "title": "\"TopGlassmaker\" works at your Customs House at Calle dei Filacanevi.",
-    "description": "**TopGlassmaker** works at your **Customs House at Calle dei Filacanevi**.",
-    "notes": "Building ID: building_45.440840_12.327785, Land ID: polygon-1745879481263",
-    "createdAt": "2025-06-12T05:10:57.295Z",
-    "status": "high"
-  },
-  {
-    "relevancyId": "recj36xuePLbv9n2f",
-    "asset": "canal_45.430963_12.331665",
-    "assetType": "building",
-    "category": "occupancy_relations",
-    "type": "employer_to_employee",
-    "targetCitizen": "QuantumLeap",
-    "relevantToCitizen": "TechnoMedici",
-    "score": 75,
-    "timeHorizon": "ongoing",
-    "title": "\"QuantumLeap\" works at your Public Dock at Fondamenta dei Lanaioli.",
-    "description": "**QuantumLeap** works at your **Public Dock at Fondamenta dei Lanaioli**.",
-    "notes": "Building ID: canal_45.430963_12.331665, Land ID: polygon-1745878962632",
-    "createdAt": "2025-06-12T05:10:57.295Z",
-    "status": "high"
-  },
-  {
-    "relevancyId": "recjriXa5kY2KmHtI",
-    "asset": "building_45.425837_12.321249",
-    "assetType": "building",
-    "category": "occupancy_relations",
-    "type": "employer_to_employee",
-    "targetCitizen": "MorosiniNoble",
-    "relevantToCitizen": "TechnoMedici",
-    "score": 75,
-    "timeHorizon": "ongoing",
-    "title": "\"MorosiniNoble\" works at your Bottega at Sottoportego della Disciplina.",
-    "description": "**MorosiniNoble** works at your **Bottega at Sottoportego della Disciplina**.",
-    "notes": "Building ID: building_45.425837_12.321249, Land ID: polygon-1746052792551",
-    "createdAt": "2025-06-12T05:10:57.295Z",
-    "status": "high"
-  },
-  {
-    "relevancyId": "rectelqF1YqjdFfeM",
-    "asset": "building_45.439276_12.339331",
-    "assetType": "building",
-    "category": "occupancy_relations",
-    "type": "employer_to_employee",
-    "targetCitizen": "VenicePhotographer",
-    "relevantToCitizen": "TechnoMedici",
-    "score": 75,
-    "timeHorizon": "ongoing",
-    "title": "\"VenicePhotographer\" works at your Contract Stall at Calle dei Mercanti Orafi.",
-    "description": "**VenicePhotographer** works at your **Contract Stall at Calle dei Mercanti Orafi**.",
-    "notes": "Building ID: building_45.439276_12.339331, Land ID: polygon-1746056083350",
-    "createdAt": "2025-06-12T05:10:57.295Z",
-    "status": "high"
-  },
-  {
-    "relevancyId": "rectu8i0SrvcieyUA",
-    "asset": "building_45.432265_12.355002",
-    "assetType": "building",
-    "category": "occupancy_relations",
-    "type": "employer_to_employee",
-    "targetCitizen": "CodeMonkey",
-    "relevantToCitizen": "TechnoMedici",
-    "score": 75,
-    "timeHorizon": "ongoing",
-    "title": "\"CodeMonkey\" works at your Bakery at Calle dei Cordami.",
-    "description": "**CodeMonkey** works at your **Bakery at Calle dei Cordami**.",
-    "notes": "Building ID: building_45.432265_12.355002, Land ID: polygon-1746057352428",
-    "createdAt": "2025-06-12T05:10:57.295Z",
-    "status": "high"
-  },
-  {
-    "relevancyId": "recLC0qdiw3k421zu",
-    "asset": "polygon-1746056319492",
-    "assetType": "land",
-    "category": "proximity",
-    "type": "geographic",
-    "targetCitizen": "GamingPatrizio",
-    "relevantToCitizen": "TechnoMedici",
-    "score": 74.96,
-    "timeHorizon": "medium",
-    "title": "\"GamingPatrizio\" owns nearby land \"Corte de Ca' Giustinian, Sestiere di San Marco\" (144m).",
-    "description": "**Corte de Ca' Giustinian, Sestiere di San Marco**, owned by **GamingPatrizio**, is **144 meters** from your nearest property.",
-    "notes": "",
-    "createdAt": "2025-06-12T04:56:46.387Z",
-    "status": "high"
-  },
-  {
-    "relevancyId": "rec3V02DdPkwsAWCp",
-    "asset": "polygon-1746072788813",
-    "assetType": "land",
-    "category": "proximity",
-    "type": "geographic",
-    "targetCitizen": "BasstheWhale",
-    "relevantToCitizen": "TechnoMedici",
-    "score": 73.85,
-    "timeHorizon": "medium",
-    "title": "\"BasstheWhale\" owns nearby land \"Salizada San Stae, Sestiere di Santa Croce\" (152m).",
-    "description": "**Salizada San Stae, Sestiere di Santa Croce**, owned by **BasstheWhale**, is **152 meters** from your nearest property.",
-    "notes": "",
-    "createdAt": "2025-06-12T04:56:46.387Z",
-    "status": "high"
-  },
-  {
-    "relevancyId": "recPg54JV3UNdbF0H",
-    "asset": "polygon-1746056107157",
-    "assetType": "land",
-    "category": "proximity",
-    "type": "geographic",
-    "targetCitizen": "John_Jeffries",
-    "relevantToCitizen": "TechnoMedici",
-    "score": 72.01,
-    "timeHorizon": "medium",
-    "title": "\"John_Jeffries\" owns nearby land \"Campo San Zuane Grisostomo\" (164m).",
-    "description": "**Campo San Zuane Grisostomo**, owned by **John_Jeffries**, is **164 meters** from your nearest property.",
-    "notes": "",
-    "createdAt": "2025-06-12T04:56:46.387Z",
-    "status": "high"
-  },
-  {
-    "relevancyId": "rec11jHRRAHFrz6HR",
-    "asset": "polygon-1746056149790",
-    "assetType": "land",
-    "category": "proximity",
-    "type": "geographic",
-    "targetCitizen": "ConsiglioDeiDieci",
-    "relevantToCitizen": "TechnoMedici",
-    "score": 70.16,
-    "timeHorizon": "medium",
-    "title": "\"ConsiglioDeiDieci\" owns nearby land \"Calle de la Testa, Sestiere di Castello\" (177m).",
-    "description": "**Calle de la Testa, Sestiere di Castello**, owned by **ConsiglioDeiDieci**, is **177 meters** from your nearest property.",
-    "notes": "",
-    "createdAt": "2025-06-12T04:56:46.387Z",
-    "status": "high"
-  },
-  {
-    "relevancyId": "recHVyVU8DVE51DxL",
-    "asset": "canal_45.424989_12.362262",
-    "assetType": "building",
-    "category": "ownership_conflict",
-    "type": "building_on_others_land",
-    "targetCitizen": "Italia",
-    "relevantToCitizen": "TechnoMedici",
-    "score": 70,
-    "timeHorizon": "medium",
-    "title": "Your Fisherman's Cottage at Fondamenta dei Pisani is on land owned by \"Italia\".",
-    "description": "You own a **Fisherman's Cottage at Fondamenta dei Pisani** on land owned by **Italia**.",
-    "notes": "Building ID: canal_45.424989_12.362262, Land ID: polygon-1746057412398",
-    "createdAt": "2025-06-12T05:02:17.831Z",
-    "status": "medium"
-  },
-  {
-    "relevancyId": "rechqLIKp5AuUWSu1",
-    "asset": "building_45.431930_12.357065",
-    "assetType": "building",
-    "category": "ownership_conflict",
-    "type": "building_on_others_land",
-    "targetCitizen": "BasstheWhale",
-    "relevantToCitizen": "TechnoMedici",
-    "score": 70,
-    "timeHorizon": "medium",
-    "title": "Your Artisan's House at Rio Ter\u00e0 dei Pensieri is on land owned by \"BasstheWhale\".",
-    "description": "You own a **Artisan's House at Rio Ter\u00e0 dei Pensieri** on land owned by **BasstheWhale**.",
-    "notes": "Building ID: building_45.431930_12.357065, Land ID: polygon-1746057352428",
-    "createdAt": "2025-06-12T05:02:17.831Z",
-    "status": "medium"
-  },
-  {
-    "relevancyId": "recm9Th5wVY46swG5",
-    "asset": "polygon-1746056244077",
-    "assetType": "land",
-    "category": "proximity",
-    "type": "geographic",
-    "targetCitizen": "steven",
-    "relevantToCitizen": "TechnoMedici",
-    "score": 67.49,
-    "timeHorizon": "medium",
-    "title": "\"steven\" owns nearby land \"Calle Longa Santa Maria Formosa in Sestiere Castello\" (197m).",
-    "description": "**Calle Longa Santa Maria Formosa in Sestiere Castello**, owned by **steven**, is **197 meters** from your nearest property.",
-    "notes": "",
-    "createdAt": "2025-06-12T04:56:46.387Z",
-    "status": "medium"
-  },
-  {
-    "relevancyId": "rec9lIdtlLQj6bhL3",
-    "asset": "polygon-1746072817474",
-    "assetType": "land",
-    "category": "proximity",
-    "type": "geographic",
-    "targetCitizen": "BasstheWhale",
-    "relevantToCitizen": "TechnoMedici",
-    "score": 66.48,
-    "timeHorizon": "medium",
-    "title": "\"BasstheWhale\" owns nearby land \"Calle del Traghetto di San Marcuola\" (204m).",
-    "description": "**Calle del Traghetto di San Marcuola**, owned by **BasstheWhale**, is **204 meters** from your nearest property.",
-    "notes": "",
-    "createdAt": "2025-06-12T04:56:46.387Z",
-    "status": "medium"
-  },
-  {
-    "relevancyId": "recnWfMeRrITOXmC0",
-    "asset": "polygon-1746072892556",
-    "assetType": "land",
-    "category": "proximity",
-    "type": "geographic",
-    "targetCitizen": "John_Jeffries",
-    "relevantToCitizen": "TechnoMedici",
-    "score": 63.66,
-    "timeHorizon": "medium",
-    "title": "\"John_Jeffries\" owns nearby land \"Corte del Diavolo in San Polo\" (226m).",
-    "description": "**Corte del Diavolo in San Polo**, owned by **John_Jeffries**, is **226 meters** from your nearest property.",
-    "notes": "",
-    "createdAt": "2025-06-12T04:56:46.387Z",
-    "status": "medium"
-  },
-  {
-    "relevancyId": "rec7zMu9hQMKoBC6V",
-    "asset": "polygon-1746056283856",
-    "assetType": "land",
-    "category": "proximity",
-    "type": "geographic",
-    "targetCitizen": "meyti_tgz",
-    "relevantToCitizen": "TechnoMedici",
-    "score": 61.46,
-    "timeHorizon": "medium",
-    "title": "\"meyti_tgz\" owns nearby land \"Calle de la Fava, San Marco\" (243m).",
-    "description": "**Calle de la Fava, San Marco**, owned by **meyti_tgz**, is **243 meters** from your nearest property.",
-    "notes": "",
-    "createdAt": "2025-06-12T04:56:46.387Z",
-    "status": "medium"
-  },
-  {
-    "relevancyId": "recf4nkIYCrpOpP9S",
-    "asset": "polygon-1746056790924",
-    "assetType": "land",
-    "category": "proximity",
-    "type": "geographic",
-    "targetCitizen": "BasstheWhale",
-    "relevantToCitizen": "TechnoMedici",
-    "score": 60.81,
-    "timeHorizon": "medium",
-    "title": "\"BasstheWhale\" owns nearby land \"Calle Larga de San Mois\u00e8\" (249m).",
-    "description": "**Calle Larga de San Mois\u00e8**, owned by **BasstheWhale**, is **249 meters** from your nearest property.",
-    "notes": "",
-    "createdAt": "2025-06-12T04:56:46.387Z",
-    "status": "medium"
-  },
-  {
-    "relevancyId": "recTo9b567MWlbigh",
-    "asset": "polygon-1746056033630",
-    "assetType": "land",
-    "category": "proximity",
-    "type": "geographic",
-    "targetCitizen": "Miles4lf",
-    "relevantToCitizen": "TechnoMedici",
-    "score": 60.32,
-    "timeHorizon": "medium",
-    "title": "\"Miles4lf\" owns nearby land \"Calle Stella in Sestiere San Marco\" (253m).",
-    "description": "**Calle Stella in Sestiere San Marco**, owned by **Miles4lf**, is **253 meters** from your nearest property.",
-    "notes": "",
-    "createdAt": "2025-06-12T04:56:46.387Z",
-    "status": "medium"
-  },
-  {
-    "relevancyId": "recFqcVMaQiXbHd7C",
-    "asset": "polygon-1746056766342",
-    "assetType": "land",
-    "category": "proximity",
-    "type": "geographic",
-    "targetCitizen": "BasstheWhale",
-    "relevantToCitizen": "TechnoMedici",
-    "score": 59.96,
-    "timeHorizon": "medium",
-    "title": "\"BasstheWhale\" owns nearby land \"Campiello de la Feltrina in Contr\u00e0 San Mois\u00e8\" (256m).",
-    "description": "**Campiello de la Feltrina in Contr\u00e0 San Mois\u00e8**, owned by **BasstheWhale**, is **256 meters** from your nearest property.",
-    "notes": "",
-    "createdAt": "2025-06-12T04:56:46.387Z",
-    "status": "medium"
-  },
-  {
-    "relevancyId": "recFSfzE60JY5qrnn",
-    "asset": "polygon-1746072917032",
-    "assetType": "land",
-    "category": "proximity",
-    "type": "geographic",
-    "targetCitizen": "BasstheWhale",
-    "relevantToCitizen": "TechnoMedici",
-    "score": 57.45,
-    "timeHorizon": "medium",
-    "title": "\"BasstheWhale\" owns nearby land \"Calle de la Regina presso Santa Maria Formosa\" (277m).",
-    "description": "**Calle de la Regina presso Santa Maria Formosa**, owned by **BasstheWhale**, is **277 meters** from your nearest property.",
-    "notes": "",
-    "createdAt": "2025-06-12T04:56:46.387Z",
-    "status": "medium"
-  },
-  {
-    "relevancyId": "reckGWoPcgEs7csr4",
-    "asset": "polygon-1746055995050",
-    "assetType": "land",
-    "category": "proximity",
-    "type": "geographic",
-    "targetCitizen": "GamingPatrizio",
-    "relevantToCitizen": "TechnoMedici",
-    "score": 53.13,
-    "timeHorizon": "medium",
-    "title": "\"GamingPatrizio\" owns nearby land \"Calle de la Madona in Sestiere San Marco\" (316m).",
-    "description": "**Calle de la Madona in Sestiere San Marco**, owned by **GamingPatrizio**, is **316 meters** from your nearest property.",
-    "notes": "",
-    "createdAt": "2025-06-12T04:56:46.387Z",
-    "status": "medium"
-  },
-  {
-    "relevancyId": "recnN4HrOGxboqb7Y",
-    "asset": "polygon-1746056403060",
-    "assetType": "land",
-    "category": "proximity",
-    "type": "geographic",
-    "targetCitizen": "ConsiglioDeiDieci",
-    "relevantToCitizen": "TechnoMedici",
-    "score": 52.89,
-    "timeHorizon": "medium",
-    "title": "\"ConsiglioDeiDieci\" owns nearby land \"Corte del Pozzo Roverso in San Marco\" (319m).",
-    "description": "**Corte del Pozzo Roverso in San Marco**, owned by **ConsiglioDeiDieci**, is **319 meters** from your nearest property.",
-    "notes": "",
-    "createdAt": "2025-06-12T04:56:46.387Z",
-    "status": "medium"
-  },
-  {
-    "relevancyId": "recKgmTDKoOAZgb9R",
-    "asset": "polygon-1746055841290",
-    "assetType": "land",
-    "category": "proximity",
-    "type": "geographic",
-    "targetCitizen": "SilkRoadRunner",
-    "relevantToCitizen": "TechnoMedici",
-    "score": 52.75,
-    "timeHorizon": "medium",
-    "title": "\"SilkRoadRunner\" owns nearby land \"Calle de la Maddalena in Cannaregio\" (320m).",
-    "description": "**Calle de la Maddalena in Cannaregio**, owned by **SilkRoadRunner**, is **320 meters** from your nearest property.",
-    "notes": "",
-    "createdAt": "2025-06-12T04:56:46.387Z",
-    "status": "medium"
-  },
-  {
-    "relevancyId": "reciL8X1mbNorhYvv",
-    "asset": "polygon-1746056196666",
-    "assetType": "land",
-    "category": "proximity",
-    "type": "geographic",
-    "targetCitizen": "ConsiglioDeiDieci",
-    "relevantToCitizen": "TechnoMedici",
-    "score": 50.97,
-    "timeHorizon": "medium",
-    "title": "\"ConsiglioDeiDieci\" owns nearby land \"Calle de le Tole\" (337m).",
-    "description": "**Calle de le Tole**, owned by **ConsiglioDeiDieci**, is **337 meters** from your nearest property.",
-    "notes": "",
-    "createdAt": "2025-06-12T04:56:46.387Z",
-    "status": "medium"
-  },
-  {
-    "relevancyId": "reci7GHdQgocG5VGE",
-    "asset": "polygon-1746056214187",
-    "assetType": "land",
-    "category": "proximity",
-    "type": "geographic",
-    "targetCitizen": "BasstheWhale",
-    "relevantToCitizen": "TechnoMedici",
-    "score": 50.15,
-    "timeHorizon": "medium",
-    "title": "\"BasstheWhale\" owns nearby land \"Calle San Zuane Lateran, Sestiere Castello\" (345m).",
-    "description": "**Calle San Zuane Lateran, Sestiere Castello**, owned by **BasstheWhale**, is **345 meters** from your nearest property.",
-    "notes": "",
-    "createdAt": "2025-06-12T04:56:46.387Z",
-    "status": "medium"
-  }
-]
-
-Here are relevancies where you are the target:
-[
-  {
-    "relevancyId": "recJSvPOy5cAzGks8",
-    "asset": "polygon-1746056164869",
-    "assetType": "land",
-    "category": "proximity",
-    "type": "geographic",
-    "targetCitizen": "TechnoMedici",
-    "relevantToCitizen": "steven",
-    "score": 82.96,
-    "timeHorizon": "medium",
-    "title": "\"TechnoMedici\" owns nearby land \"Cale de la Malvasia Vechia, Sestiere San Marco\" (93m).",
-    "description": "**Cale de la Malvasia Vechia, Sestiere San Marco**, owned by **TechnoMedici**, is **93 meters** from your nearest property.",
-    "notes": "",
-    "createdAt": "2025-06-12T04:53:25.762Z",
-    "status": "high"
-  },
-  {
-    "relevancyId": "recmmGs10K0ULgakb",
-    "asset": "polygon-1746056083350",
-    "assetType": "land",
-    "category": "proximity",
-    "type": "geographic",
-    "targetCitizen": "TechnoMedici",
-    "relevantToCitizen": "Italia",
-    "score": 80.33,
-    "timeHorizon": "medium",
-    "title": "\"TechnoMedici\" owns nearby land \"Calle de la Gexia de San Salvador\" (110m).",
-    "description": "**Calle de la Gexia de San Salvador**, owned by **TechnoMedici**, is **110 meters** from your nearest property.",
-    "notes": "",
-    "createdAt": "2025-06-12T04:51:41.489Z",
-    "status": "high"
-  },
-  {
-    "relevancyId": "recar7LBt9QEHgFGd",
-    "asset": "canal_45.430963_12.331665",
-    "assetType": "building",
-    "category": "operator_relations",
-    "type": "operator_in_your_building",
-    "targetCitizen": "TechnoMedici",
-    "relevantToCitizen": "ConsiglioDeiDieci",
-    "score": 80,
-    "timeHorizon": "ongoing",
-    "title": "\"TechnoMedici\" operates your Public Dock at Fondamenta dei Lanaioli.",
-    "description": "**TechnoMedici** is currently operating your **Public Dock at Fondamenta dei Lanaioli**.",
-    "notes": "Building ID: canal_45.430963_12.331665, Land ID: polygon-1745878962632",
-    "createdAt": "2025-06-12T05:06:28.528Z",
-    "status": "high"
-  },
-  {
-    "relevancyId": "reccPmmPY5PTZpwgN",
-    "asset": "building_45.423495_12.330726",
-    "assetType": "building",
-    "category": "operator_relations",
-    "type": "operator_in_your_building",
-    "targetCitizen": "TechnoMedici",
-    "relevantToCitizen": "ConsiglioDeiDieci",
-    "score": 80,
-    "timeHorizon": "ongoing",
-    "title": "\"TechnoMedici\" operates your Public Bath at Rio Ter\u00e0 del Melone.",
-    "description": "**TechnoMedici** is currently operating your **Public Bath at Rio Ter\u00e0 del Melone**.",
-    "notes": "Building ID: building_45.423495_12.330726, Land ID: polygon-1746052735791",
-    "createdAt": "2025-06-12T05:06:28.528Z",
-    "status": "high"
-  },
-  {
-    "relevancyId": "recnKRb7AskduUZwE",
-    "asset": "canal_45.444689_12.336473",
-    "assetType": "building",
-    "category": "operator_relations",
-    "type": "operator_in_your_building",
-    "targetCitizen": "TechnoMedici",
-    "relevantToCitizen": "ConsiglioDeiDieci",
-    "score": 80,
-    "timeHorizon": "ongoing",
-    "title": "\"TechnoMedici\" operates your Public Dock at Riva dei Guaritori.",
-    "description": "**TechnoMedici** is currently operating your **Public Dock at Riva dei Guaritori**.",
-    "notes": "Building ID: canal_45.444689_12.336473, Land ID: polygon-1746055928225",
-    "createdAt": "2025-06-12T05:06:28.528Z",
-    "status": "high"
-  },
-  {
-    "relevancyId": "reczzNqTNIr5hLm6g",
-    "asset": "building_45.425837_12.321249",
-    "assetType": "building",
-    "category": "operator_relations",
-    "type": "operator_in_your_building",
-    "targetCitizen": "TechnoMedici",
-    "relevantToCitizen": "ConsiglioDeiDieci",
-    "score": 80,
-    "timeHorizon": "ongoing",
-    "title": "\"TechnoMedici\" operates your Bottega at Sottoportego della Disciplina.",
-    "description": "**TechnoMedici** is currently operating your **Bottega at Sottoportego della Disciplina**.",
-    "notes": "Building ID: building_45.425837_12.321249, Land ID: polygon-1746052792551",
-    "createdAt": "2025-06-12T05:06:28.528Z",
-    "status": "high"
-  },
-  {
-    "relevancyId": "reciH7sDma9tEt0TH",
-    "asset": "canal_45.431139_12.317924",
-    "assetType": "building",
-    "category": "operator_relations",
-    "type": "operator_in_your_building",
-    "targetCitizen": "TechnoMedici",
-    "relevantToCitizen": "ConsiglioDeiDieci",
-    "score": 80,
-    "timeHorizon": "ongoing",
-    "title": "\"TechnoMedici\" operates your Public Dock at Fondamenta delle Specchiere.",
-    "description": "**TechnoMedici** is currently operating your **Public Dock at Fondamenta delle Specchiere**.",
-    "notes": "Building ID: canal_45.431139_12.317924, Land ID: polygon-1745879165953",
-    "createdAt": "2025-06-12T05:06:28.528Z",
-    "status": "high"
-  },
-  {
-    "relevancyId": "recIzQmmN8ppNbqRd",
-    "asset": "building_45.432265_12.355002",
-    "assetType": "building",
-    "category": "operator_relations",
-    "type": "operator_in_your_building",
-    "targetCitizen": "TechnoMedici",
-    "relevantToCitizen": "MerchantLegend",
-    "score": 80,
-    "timeHorizon": "ongoing",
-    "title": "\"TechnoMedici\" operates your Bakery at Calle dei Cordami.",
-    "description": "**TechnoMedici** is currently operating your **Bakery at Calle dei Cordami**.",
-    "notes": "Building ID: building_45.432265_12.355002, Land ID: polygon-1746057352428",
-    "createdAt": "2025-06-12T05:05:10.386Z",
-    "status": "high"
-  },
-  {
-    "relevancyId": "reckRQoNdqQCHkAJ1",
-    "asset": "building_45.438048_12.347155",
-    "assetType": "building",
-    "category": "operator_relations",
-    "type": "operator_in_your_building",
-    "targetCitizen": "TechnoMedici",
-    "relevantToCitizen": "GamingPatrizio",
-    "score": 80,
-    "timeHorizon": "ongoing",
-    "title": "\"TechnoMedici\" operates your Bakery at Calle dei Albanesi.",
-    "description": "**TechnoMedici** is currently operating your **Bakery at Calle dei Albanesi**.",
-    "notes": "Building ID: building_45.438048_12.347155, Land ID: polygon-1746056493504",
-    "createdAt": "2025-06-12T05:04:14.879Z",
-    "status": "high"
-  },
-  {
-    "relevancyId": "recQGly0Pe24o3YwX",
-    "asset": "building_45.430977_12.354557",
-    "assetType": "building",
-    "category": "operator_relations",
-    "type": "operator_in_your_building",
-    "targetCitizen": "TechnoMedici",
-    "relevantToCitizen": "ProSilkTrader",
-    "score": 80,
-    "timeHorizon": "ongoing",
-    "title": "\"TechnoMedici\" operates your Contract Stall at Calle dei Balestrieri.",
-    "description": "**TechnoMedici** is currently operating your **Contract Stall at Calle dei Balestrieri**.",
-    "notes": "Building ID: building_45.430977_12.354557, Land ID: polygon-1746057352428",
-    "createdAt": "2025-06-12T05:03:23.516Z",
-    "status": "high"
-  },
-  {
-    "relevancyId": "recskzFMhpP8w9Wv2",
-    "asset": "polygon-1745879481263",
-    "assetType": "land",
-    "category": "proximity",
-    "type": "geographic",
-    "targetCitizen": "TechnoMedici",
-    "relevantToCitizen": "BasstheWhale",
-    "score": 79.36,
-    "timeHorizon": "medium",
-    "title": "\"TechnoMedici\" owns nearby land \"Calle de la Vida in Sestiere di Santa Croce\" (116m).",
-    "description": "**Calle de la Vida in Sestiere di Santa Croce**, owned by **TechnoMedici**, is **116 meters** from your nearest property.",
-    "notes": "",
-    "createdAt": "2025-06-12T04:57:47.446Z",
-    "status": "high"
-  },
-  {
-    "relevancyId": "rec4P7QXHC7HOKR3N",
-    "asset": "polygon-1745878844120",
-    "assetType": "land",
-    "category": "proximity",
-    "type": "geographic",
-    "targetCitizen": "TechnoMedici",
-    "relevantToCitizen": "BasstheWhale",
-    "score": 77.55,
-    "timeHorizon": "medium",
-    "title": "\"TechnoMedici\" owns nearby land \"Fondamenta delle Zattere\" (127m).",
-    "description": "**Fondamenta delle Zattere**, owned by **TechnoMedici**, is **127 meters** from your nearest property.",
-    "notes": "",
-    "createdAt": "2025-06-12T04:57:47.446Z",
-    "status": "high"
-  },
-  {
-    "relevancyId": "recxQOyHeDP89vdBE",
-    "asset": "polygon-1746056083350",
-    "assetType": "land",
-    "category": "proximity",
-    "type": "geographic",
-    "targetCitizen": "TechnoMedici",
-    "relevantToCitizen": "steven",
-    "score": 77.19,
-    "timeHorizon": "medium",
-    "title": "\"TechnoMedici\" owns nearby land \"Calle de la Gexia de San Salvador\" (129m).",
-    "description": "**Calle de la Gexia de San Salvador**, owned by **TechnoMedici**, is **129 meters** from your nearest property.",
-    "notes": "",
-    "createdAt": "2025-06-12T04:53:25.762Z",
-    "status": "high"
-  },
-  {
-    "relevancyId": "rec623qUxgZTQ13uq",
-    "asset": "polygon-1745879481263",
-    "assetType": "land",
-    "category": "proximity",
-    "type": "geographic",
-    "targetCitizen": "TechnoMedici",
-    "relevantToCitizen": "John_Jeffries",
-    "score": 75.31,
-    "timeHorizon": "medium",
-    "title": "\"TechnoMedici\" owns nearby land \"Calle de la Vida in Sestiere di Santa Croce\" (142m).",
-    "description": "**Calle de la Vida in Sestiere di Santa Croce**, owned by **TechnoMedici**, is **142 meters** from your nearest property.",
-    "notes": "",
-    "createdAt": "2025-06-12T04:55:40.341Z",
-    "status": "high"
-  },
-  {
-    "relevancyId": "rec7yxLOgpNXDNJPk",
-    "asset": "building_45.425837_12.321249",
-    "assetType": "building",
-    "category": "occupancy_relations",
-    "type": "employee_to_employer",
-    "targetCitizen": "TechnoMedici",
-    "relevantToCitizen": "MorosiniNoble",
-    "score": 75,
-    "timeHorizon": "ongoing",
-    "title": "You work for \"TechnoMedici\" at their Bottega at Sottoportego della Disciplina.",
-    "description": "You are employed at the **Bottega at Sottoportego della Disciplina** run by **TechnoMedici**.",
-    "notes": "Building ID: building_45.425837_12.321249, Land ID: polygon-1746052792551",
-    "createdAt": "2025-06-12T05:11:50.378Z",
-    "status": "high"
-  },
-  {
-    "relevancyId": "recPfiXjWAOikW7yJ",
-    "asset": "canal_45.444689_12.336473",
-    "assetType": "building",
-    "category": "occupancy_relations",
-    "type": "employee_to_employer",
-    "targetCitizen": "TechnoMedici",
-    "relevantToCitizen": "StormRider",
-    "score": 75,
-    "timeHorizon": "ongoing",
-    "title": "You work for \"TechnoMedici\" at their Public Dock at Riva dei Guaritori.",
-    "description": "You are employed at the **Public Dock at Riva dei Guaritori** run by **TechnoMedici**.",
-    "notes": "Building ID: canal_45.444689_12.336473, Land ID: polygon-1746055928225",
-    "createdAt": "2025-06-12T05:11:38.191Z",
-    "status": "high"
-  },
-  {
-    "relevancyId": "rec3zM08I8ksUfO17",
-    "asset": "building_45.440840_12.327785",
-    "assetType": "building",
-    "category": "occupancy_relations",
-    "type": "employee_to_employer",
-    "targetCitizen": "TechnoMedici",
-    "relevantToCitizen": "TopGlassmaker",
-    "score": 75,
-    "timeHorizon": "ongoing",
-    "title": "You work for \"TechnoMedici\" at their Customs House at Calle dei Filacanevi.",
-    "description": "You are employed at the **Customs House at Calle dei Filacanevi** run by **TechnoMedici**.",
-    "notes": "Building ID: building_45.440840_12.327785, Land ID: polygon-1745879481263",
-    "createdAt": "2025-06-12T05:11:06.271Z",
-    "status": "high"
-  },
-  {
-    "relevancyId": "recCY3MTRSQaKWWgG",
-    "asset": "canal_45.431139_12.317924",
-    "assetType": "building",
-    "category": "occupancy_relations",
-    "type": "employee_to_employer",
-    "targetCitizen": "TechnoMedici",
-    "relevantToCitizen": "BigMike",
-    "score": 75,
-    "timeHorizon": "ongoing",
-    "title": "You work for \"TechnoMedici\" at their Public Dock at Fondamenta delle Specchiere.",
-    "description": "You are employed at the **Public Dock at Fondamenta delle Specchiere** run by **TechnoMedici**.",
-    "notes": "Building ID: canal_45.431139_12.317924, Land ID: polygon-1745879165953",
-    "createdAt": "2025-06-12T05:10:32.116Z",
-    "status": "high"
-  },
-  {
-    "relevancyId": "reckGUcNTm69oQENM",
-    "asset": "canal_45.430963_12.331665",
-    "assetType": "building",
-    "category": "occupancy_relations",
-    "type": "employee_to_employer",
-    "targetCitizen": "TechnoMedici",
-    "relevantToCitizen": "QuantumLeap",
-    "score": 75,
-    "timeHorizon": "ongoing",
-    "title": "You work for \"TechnoMedici\" at their Public Dock at Fondamenta dei Lanaioli.",
-    "description": "You are employed at the **Public Dock at Fondamenta dei Lanaioli** run by **TechnoMedici**.",
-    "notes": "Building ID: canal_45.430963_12.331665, Land ID: polygon-1745878962632",
-    "createdAt": "2025-06-12T05:09:16.645Z",
-    "status": "high"
-  },
-  {
-    "relevancyId": "recWCJF03Zt5I6CDf",
-    "asset": "building_45.423495_12.330726",
-    "assetType": "building",
-    "category": "occupancy_relations",
-    "type": "employee_to_employer",
-    "targetCitizen": "TechnoMedici",
-    "relevantToCitizen": "steven",
-    "score": 75,
-    "timeHorizon": "ongoing",
-    "title": "You work for \"TechnoMedici\" at their Public Bath at Rio Ter\u00e0 del Melone.",
-    "description": "You are employed at the **Public Bath at Rio Ter\u00e0 del Melone** run by **TechnoMedici**.",
-    "notes": "Building ID: building_45.423495_12.330726, Land ID: polygon-1746052735791",
-    "createdAt": "2025-06-12T05:08:51.310Z",
-    "status": "high"
-  },
-  {
-    "relevancyId": "recjKXBNi8NMNENwi",
-    "asset": "building_45.432265_12.355002",
-    "assetType": "building",
-    "category": "occupancy_relations",
-    "type": "employee_to_employer",
-    "targetCitizen": "TechnoMedici",
-    "relevantToCitizen": "CodeMonkey",
-    "score": 75,
-    "timeHorizon": "ongoing",
-    "title": "You work for \"TechnoMedici\" at their Bakery at Calle dei Cordami.",
-    "description": "You are employed at the **Bakery at Calle dei Cordami** run by **TechnoMedici**.",
-    "notes": "Building ID: building_45.432265_12.355002, Land ID: polygon-1746057352428",
-    "createdAt": "2025-06-12T05:08:42.709Z",
-    "status": "high"
-  },
-  {
-    "relevancyId": "recImwWbCMYgyG5UY",
-    "asset": "building_45.439276_12.339331",
-    "assetType": "building",
-    "category": "occupancy_relations",
-    "type": "employee_to_employer",
-    "targetCitizen": "TechnoMedici",
-    "relevantToCitizen": "VenicePhotographer",
-    "score": 75,
-    "timeHorizon": "ongoing",
-    "title": "You work for \"TechnoMedici\" at their Contract Stall at Calle dei Mercanti Orafi.",
-    "description": "You are employed at the **Contract Stall at Calle dei Mercanti Orafi** run by **TechnoMedici**.",
-    "notes": "Building ID: building_45.439276_12.339331, Land ID: polygon-1746056083350",
-    "createdAt": "2025-06-12T05:08:29.304Z",
-    "status": "high"
-  },
-  {
-    "relevancyId": "recjgIbZk2sZO2y7Z",
-    "asset": "building_45.438048_12.347155",
-    "assetType": "building",
-    "category": "occupancy_relations",
-    "type": "employee_to_employer",
-    "targetCitizen": "TechnoMedici",
-    "relevantToCitizen": "TravelBug23",
-    "score": 75,
-    "timeHorizon": "ongoing",
-    "title": "You work for \"TechnoMedici\" at their Bakery at Calle dei Albanesi.",
-    "description": "You are employed at the **Bakery at Calle dei Albanesi** run by **TechnoMedici**.",
-    "notes": "Building ID: building_45.438048_12.347155, Land ID: polygon-1746056493504",
-    "createdAt": "2025-06-12T05:08:27.118Z",
-    "status": "high"
-  },
-  {
-    "relevancyId": "rec45gEhwSVLCfuFv",
-    "asset": "polygon-1746056164869",
-    "assetType": "land",
-    "category": "proximity",
-    "type": "geographic",
-    "targetCitizen": "TechnoMedici",
-    "relevantToCitizen": "GamingPatrizio",
-    "score": 74.96,
-    "timeHorizon": "medium",
-    "title": "\"TechnoMedici\" owns nearby land \"Cale de la Malvasia Vechia, Sestiere San Marco\" (144m).",
-    "description": "**Cale de la Malvasia Vechia, Sestiere San Marco**, owned by **TechnoMedici**, is **144 meters** from your nearest property.",
-    "notes": "",
-    "createdAt": "2025-06-12T04:52:42.380Z",
-    "status": "high"
-  },
-  {
-    "relevancyId": "recSRC2I8Xi0imJNp",
-    "asset": "polygon-1746056164869",
-    "assetType": "land",
-    "category": "proximity",
-    "type": "geographic",
-    "targetCitizen": "TechnoMedici",
-    "relevantToCitizen": "John_Jeffries",
-    "score": 72.01,
-    "timeHorizon": "medium",
-    "title": "\"TechnoMedici\" owns nearby land \"Cale de la Malvasia Vechia, Sestiere San Marco\" (164m).",
-    "description": "**Cale de la Malvasia Vechia, Sestiere San Marco**, owned by **TechnoMedici**, is **164 meters** from your nearest property.",
-    "notes": "",
-    "createdAt": "2025-06-12T04:55:40.341Z",
-    "status": "high"
-  },
-  {
-    "relevancyId": "recLAntFS5kvRo0Ko",
-    "asset": "polygon-1746056164869",
-    "assetType": "land",
-    "category": "proximity",
-    "type": "geographic",
-    "targetCitizen": "TechnoMedici",
-    "relevantToCitizen": "Italia",
-    "score": 71.55,
-    "timeHorizon": "medium",
-    "title": "\"TechnoMedici\" owns nearby land \"Cale de la Malvasia Vechia, Sestiere San Marco\" (167m).",
-    "description": "**Cale de la Malvasia Vechia, Sestiere San Marco**, owned by **TechnoMedici**, is **167 meters** from your nearest property.",
-    "notes": "",
-    "createdAt": "2025-06-12T04:51:41.489Z",
-    "status": "high"
-  },
-  {
-    "relevancyId": "recy2A3Id47UkLd06",
-    "asset": "polygon-1746056083350",
-    "assetType": "land",
-    "category": "proximity",
-    "type": "geographic",
-    "targetCitizen": "TechnoMedici",
-    "relevantToCitizen": "John_Jeffries",
-    "score": 70.84,
-    "timeHorizon": "medium",
-    "title": "\"TechnoMedici\" owns nearby land \"Calle de la Gexia de San Salvador\" (172m).",
-    "description": "**Calle de la Gexia de San Salvador**, owned by **TechnoMedici**, is **172 meters** from your nearest property.",
-    "notes": "",
-    "createdAt": "2025-06-12T04:55:40.341Z",
-    "status": "high"
-  },
-  {
-    "relevancyId": "rec7hMF2tXnroFqzM",
-    "asset": "polygon-1746056083350",
-    "assetType": "land",
-    "category": "proximity",
-    "type": "geographic",
-    "targetCitizen": "TechnoMedici",
-    "relevantToCitizen": "ConsiglioDeiDieci",
-    "score": 70.16,
-    "timeHorizon": "medium",
-    "title": "\"TechnoMedici\" owns nearby land \"Calle de la Gexia de San Salvador\" (177m).",
-    "description": "**Calle de la Gexia de San Salvador**, owned by **TechnoMedici**, is **177 meters** from your nearest property.",
-    "notes": "",
-    "createdAt": "2025-06-12T04:56:27.655Z",
-    "status": "high"
-  },
-  {
-    "relevancyId": "recbLuKWaeMf9uKfh",
-    "asset": "canal_45.424989_12.362262",
-    "assetType": "building",
-    "category": "ownership_conflict",
-    "type": "others_building_on_your_land",
-    "targetCitizen": "TechnoMedici",
-    "relevantToCitizen": "Italia",
-    "score": 70,
-    "timeHorizon": "medium",
-    "title": "\"TechnoMedici\" owns a Fisherman's Cottage at Fondamenta dei Pisani on your land.",
-    "description": "**TechnoMedici** owns a **Fisherman's Cottage at Fondamenta dei Pisani** on your land.",
-    "notes": "Building ID: canal_45.424989_12.362262, Land ID: polygon-1746057412398",
-    "createdAt": "2025-06-12T05:02:18.194Z",
-    "status": "medium"
-  },
-  {
-    "relevancyId": "reczRE7kbd5eFYM3D",
-    "asset": "building_45.431930_12.357065",
-    "assetType": "building",
-    "category": "ownership_conflict",
-    "type": "others_building_on_your_land",
-    "targetCitizen": "TechnoMedici",
-    "relevantToCitizen": "BasstheWhale",
-    "score": 70,
-    "timeHorizon": "medium",
-    "title": "\"TechnoMedici\" owns a Artisan's House at Rio Ter\u00e0 dei Pensieri on your land.",
-    "description": "**TechnoMedici** owns a **Artisan's House at Rio Ter\u00e0 dei Pensieri** on your land.",
-    "notes": "Building ID: building_45.431930_12.357065, Land ID: polygon-1746057352428",
-    "createdAt": "2025-06-12T05:02:18.047Z",
-    "status": "medium"
-  },
-  {
-    "relevancyId": "recq8dmzFGwH67vnn",
-    "asset": "polygon-1746056083350",
-    "assetType": "land",
-    "category": "proximity",
-    "type": "geographic",
-    "targetCitizen": "TechnoMedici",
-    "relevantToCitizen": "GamingPatrizio",
-    "score": 62.21,
-    "timeHorizon": "medium",
-    "title": "\"TechnoMedici\" owns nearby land \"Calle de la Gexia de San Salvador\" (237m).",
-    "description": "**Calle de la Gexia de San Salvador**, owned by **TechnoMedici**, is **237 meters** from your nearest property.",
-    "notes": "",
-    "createdAt": "2025-06-12T04:52:42.380Z",
-    "status": "medium"
-  },
-  {
-    "relevancyId": "recb0D8K0dck4hSAU",
-    "asset": "polygon-1746056164869",
-    "assetType": "land",
-    "category": "proximity",
-    "type": "geographic",
-    "targetCitizen": "TechnoMedici",
-    "relevantToCitizen": "meyti_tgz",
-    "score": 61.46,
-    "timeHorizon": "medium",
-    "title": "\"TechnoMedici\" owns nearby land \"Cale de la Malvasia Vechia, Sestiere San Marco\" (243m).",
-    "description": "**Cale de la Malvasia Vechia, Sestiere San Marco**, owned by **TechnoMedici**, is **243 meters** from your nearest property.",
-    "notes": "",
-    "createdAt": "2025-06-12T04:52:06.958Z",
-    "status": "medium"
-  },
-  {
-    "relevancyId": "recmvjlncEfSuxcXa",
-    "asset": "polygon-1746056083350",
-    "assetType": "land",
-    "category": "proximity",
-    "type": "geographic",
-    "targetCitizen": "TechnoMedici",
-    "relevantToCitizen": "Miles4lf",
-    "score": 60.32,
-    "timeHorizon": "medium",
-    "title": "\"TechnoMedici\" owns nearby land \"Calle de la Gexia de San Salvador\" (253m).",
-    "description": "**Calle de la Gexia de San Salvador**, owned by **TechnoMedici**, is **253 meters** from your nearest property.",
-    "notes": "",
-    "createdAt": "2025-06-12T04:55:44.782Z",
-    "status": "medium"
-  },
-  {
-    "relevancyId": "rec63w8xAtNBuwHaX",
-    "asset": "polygon-1746056164869",
-    "assetType": "land",
-    "category": "proximity",
-    "type": "geographic",
-    "targetCitizen": "TechnoMedici",
-    "relevantToCitizen": "ConsiglioDeiDieci",
-    "score": 58.72,
-    "timeHorizon": "medium",
-    "title": "\"TechnoMedici\" owns nearby land \"Cale de la Malvasia Vechia, Sestiere San Marco\" (266m).",
-    "description": "**Cale de la Malvasia Vechia, Sestiere San Marco**, owned by **TechnoMedici**, is **266 meters** from your nearest property.",
-    "notes": "",
-    "createdAt": "2025-06-12T04:56:27.655Z",
-    "status": "medium"
-  },
-  {
-    "relevancyId": "recGDZPL06w6kWBHK",
-    "asset": "polygon-1745879481263",
-    "assetType": "land",
-    "category": "proximity",
-    "type": "geographic",
-    "targetCitizen": "TechnoMedici",
-    "relevantToCitizen": "SilkRoadRunner",
-    "score": 52.75,
-    "timeHorizon": "medium",
-    "title": "\"TechnoMedici\" owns nearby land \"Calle de la Vida in Sestiere di Santa Croce\" (320m).",
-    "description": "**Calle de la Vida in Sestiere di Santa Croce**, owned by **TechnoMedici**, is **320 meters** from your nearest property.",
-    "notes": "",
-    "createdAt": "2025-06-12T04:51:30.219Z",
-    "status": "medium"
-  },
-  {
-    "relevancyId": "recNkcEPjwO792nmN",
-    "asset": "polygon-1746056083350",
-    "assetType": "land",
-    "category": "proximity",
-    "type": "geographic",
-    "targetCitizen": "TechnoMedici",
-    "relevantToCitizen": "meyti_tgz",
-    "score": 52.25,
-    "timeHorizon": "medium",
-    "title": "\"TechnoMedici\" owns nearby land \"Calle de la Gexia de San Salvador\" (325m).",
-    "description": "**Calle de la Gexia de San Salvador**, owned by **TechnoMedici**, is **325 meters** from your nearest property.",
-    "notes": "",
-    "createdAt": "2025-06-12T04:52:06.958Z",
-    "status": "medium"
-  },
-  {
-    "relevancyId": "rec5f61wYekpaRQ5G",
-    "asset": "polygon-1746056083350",
-    "assetType": "land",
-    "category": "proximity",
-    "type": "geographic",
-    "targetCitizen": "TechnoMedici",
-    "relevantToCitizen": "BasstheWhale",
-    "score": 50.15,
-    "timeHorizon": "medium",
-    "title": "\"TechnoMedici\" owns nearby land \"Calle de la Gexia de San Salvador\" (345m).",
-    "description": "**Calle de la Gexia de San Salvador**, owned by **TechnoMedici**, is **345 meters** from your nearest property.",
-    "notes": "",
-    "createdAt": "2025-06-12T04:57:47.446Z",
-    "status": "medium"
-  },
-  {
-    "relevancyId": "recaBKEG9XlGnSUl8",
-    "asset": "TechnoMedici",
-    "assetType": "citizen",
-    "category": "domination",
-    "type": "global_landowner_profile",
-    "targetCitizen": "TechnoMedici",
-    "relevantToCitizen": "all",
-    "score": 6.32,
-    "timeHorizon": "medium",
-    "title": "\"Marco Venier\" is a dominant landowner.",
-    "description": "**Marco Venier** owns **4 lands** with **0 building points**.",
-    "notes": "",
-    "createdAt": "2025-06-12T04:51:15.052Z",
-    "status": "low"
-  }
-]
 
 
 Here are your recent notifications:
 [
+  {
+    "notificationId": "recdYDTZwe6m8drJd",
+    "type": "rent_payment",
+    "citizen": "TechnoMedici",
+    "content": "\ud83d\udcec **Rent Received Summary** \ud83d\udcec\nYou received a total of **1,370 \u269c\ufe0f Ducats** from your properties today.\n\nDetails:\n- \u2705 **1,370 \u269c\ufe0f** from **Domenico Famagosta** for **Fisherman's Cottage at Fondamenta dei Pisani**.\n",
+    "details": {
+      "event_type": "landlord_rent_summary",
+      "total_received": 1370,
+      "payments": [
+        {
+          "occupant_name": "Domenico Famagosta",
+          "building_name": "Fisherman's Cottage at Fondamenta dei Pisani",
+          "amount": 1370
+        }
+      ]
+    },
+    "createdAt": "2025-06-20T18:03:53.344Z",
+    "readAt": null
+  },
+  {
+    "notificationId": "recjXFef3fGBqMFVr",
+    "type": "rent_payment",
+    "citizen": "TechnoMedici",
+    "content": "\ud83d\udcec **Rent Received Summary** \ud83d\udcec\nYou received a total of **1,370 \u269c\ufe0f Ducats** from your properties today.\n\nDetails:\n- \u2705 **1,370 \u269c\ufe0f** from **Domenico Famagosta** for **Fisherman's Cottage at Fondamenta dei Pisani**.\n",
+    "details": {
+      "event_type": "landlord_rent_summary",
+      "total_received": 1370,
+      "payments": [
+        {
+          "occupant_name": "Domenico Famagosta",
+          "building_name": "Fisherman's Cottage at Fondamenta dei Pisani",
+          "amount": 1370
+        }
+      ]
+    },
+    "createdAt": "2025-06-20T16:03:12.210Z",
+    "readAt": null
+  },
+  {
+    "notificationId": "rect9IYhXgeV9EK2m",
+    "type": "rent_payment",
+    "citizen": "TechnoMedici",
+    "content": "\ud83d\udcec **Rent Received Summary** \ud83d\udcec\nYou received a total of **1,370 \u269c\ufe0f Ducats** from your properties today.\n\nDetails:\n- \u2705 **1,370 \u269c\ufe0f** from **Domenico Famagosta** for **Fisherman's Cottage at Fondamenta dei Pisani**.\n",
+    "details": {
+      "event_type": "landlord_rent_summary",
+      "total_received": 1370,
+      "payments": [
+        {
+          "occupant_name": "Domenico Famagosta",
+          "building_name": "Fisherman's Cottage at Fondamenta dei Pisani",
+          "amount": 1370
+        }
+      ]
+    },
+    "createdAt": "2025-06-19T18:04:21.370Z",
+    "readAt": null
+  },
+  {
+    "notificationId": "rectNrd8IAg0G227C",
+    "type": "rent_payment",
+    "citizen": "TechnoMedici",
+    "content": "\ud83d\udcec **Rent Received Summary** \ud83d\udcec\nYou received a total of **1,370 \u269c\ufe0f Ducats** from your properties today.\n\nDetails:\n- \u2705 **1,370 \u269c\ufe0f** from **Domenico Famagosta** for **Fisherman's Cottage at Fondamenta dei Pisani**.\n",
+    "details": {
+      "event_type": "landlord_rent_summary",
+      "total_received": 1370,
+      "payments": [
+        {
+          "occupant_name": "Domenico Famagosta",
+          "building_name": "Fisherman's Cottage at Fondamenta dei Pisani",
+          "amount": 1370
+        }
+      ]
+    },
+    "createdAt": "2025-06-19T16:03:31.339Z",
+    "readAt": null
+  },
   {
     "notificationId": "recTizfrf7TQKngYT",
     "type": "rent_payment",
@@ -4064,50 +1778,6 @@ Here are your recent notifications:
     },
     "createdAt": "2025-06-09T16:54:14.312Z",
     "readAt": "2025-06-09T16:54:14.692Z"
-  },
-  {
-    "notificationId": "rece2vYJd2dUYbFX6",
-    "type": "markup_buy_contract_created",
-    "citizen": "TechnoMedici",
-    "content": "Your buy order for olive_oil (markup_buy_main_building_45.439276_12.339331_olive_oil) has been placed.",
-    "details": {
-      "contractId": "markup_buy_main_building_45.439276_12.339331_olive_oil"
-    },
-    "createdAt": "2025-06-09T16:54:13.357Z",
-    "readAt": "2025-06-09T16:54:13.665Z"
-  },
-  {
-    "notificationId": "recHz06Y1zdGwXpOS",
-    "type": "markup_buy_contract_created",
-    "citizen": "TechnoMedici",
-    "content": "Your buy order for flour (markup_buy_main_building_45.439276_12.339331_flour) has been placed.",
-    "details": {
-      "contractId": "markup_buy_main_building_45.439276_12.339331_flour"
-    },
-    "createdAt": "2025-06-09T16:54:12.798Z",
-    "readAt": "2025-06-09T16:54:13.376Z"
-  },
-  {
-    "notificationId": "recr81FHZI0nimnmn",
-    "type": "markup_buy_contract_created",
-    "citizen": "TechnoMedici",
-    "content": "Your buy order for small_boats (markup_buy_main_canal_45.430963_12.331665_small_boats) has been placed.",
-    "details": {
-      "contractId": "markup_buy_main_canal_45.430963_12.331665_small_boats"
-    },
-    "createdAt": "2025-06-09T16:53:56.299Z",
-    "readAt": "2025-06-09T16:53:56.652Z"
-  },
-  {
-    "notificationId": "recdcbFa2guzxaD24",
-    "type": "markup_buy_contract_created",
-    "citizen": "TechnoMedici",
-    "content": "Your buy order for tools (markup_buy_main_building_45.425837_12.321249_tools) has been placed.",
-    "details": {
-      "contractId": "markup_buy_main_building_45.425837_12.321249_tools"
-    },
-    "createdAt": "2025-06-09T16:53:48.096Z",
-    "readAt": "2025-06-09T16:53:48.328Z"
   }
 ]
 
@@ -4662,7 +2332,7 @@ Here are your recent problems:
   }
 ]
 
-There are 59 available points of type 'building'. Choose the best location for your Oil Press by selecting the index of one of these points (0 to 58).
+There are 17 available points of type 'building'. Choose the best location for your Blacksmith by selecting the index of one of these points (0 to 16).
 
 When choosing a location, consider:
 1. Proximity to other buildings of similar type
@@ -4671,5 +2341,5 @@ When choosing a location, consider:
 4. How your building placement might affect your relationships with other citizens
 
 Your response must be a JSON object with:
-1. selected_point_index: The index of your chosen point (0 to 58)
+1. selected_point_index: The index of your chosen point (0 to 16)
 2. reason: A brief explanation of why you chose this location
