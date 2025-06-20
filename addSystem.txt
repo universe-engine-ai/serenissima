@@ -23,49 +23,49 @@ Giacomo is a former Levantine trader whose gambling losses have forced him to se
 Presently at Fisherman's Cottage at Riva dei Tessitori Cannaregiani, owned by ConsiglioDeiDieci (home)
 
 ## The Day and Conditions
-Today is 20 Jun 1525, 05:56. The skies are clear sky, with a temperature of 22°C ☀️
+Today is 20 Jun 1525, 07:05. The skies are scattered clouds, with a temperature of 21°C ☀️
 
 ## My Disposition
-I find myself determined (5/10) - Moderately determined
+I find myself determined (4/10) - Somewhat determined
 
-The weight of happyness presses upon me
+The weight of fearfulness presses upon me
 
-- happy fills me: 12 (48.0%)
-- sad fills me: 4 (16.0%)
-- angry fills me: 6 (24.0%)
-- fearful fills me: 1 (4.0%)
-- surprised fills me: 4 (16.0%)
-- disgusted fills me: 0
+- happy fills me: 7 (28.0%)
+- sad fills me: 1 (4.0%)
+- angry fills me: 2 (8.0%)
+- fearful fills me: 9 (36.0%)
+- surprised fills me: 6 (24.0%)
+- disgusted fills me: 2 (8.0%)
 
 ## What Has Occupied My Time
 ### Most Recent Endeavor
-- **Task**: rest
-- **State**: underway
+- **Task**: goto_work
+- **State**: planned
+- **Began**: 20 Jun 1525, 07:03
+- **Concluded**: 20 Jun 1525, 07:25
+- **Details**: Going to work at Chapel at Sottoportego della Pergamena.
+
+### Prior Endeavors
+#### 1. rest
+- **State**: completed
 - **Began**: 20 Jun 1525, 01:42
 - **Concluded**: 20 Jun 1525, 06:27
 - **Details**: Resting at home (Fisherman's Cottage at Riva dei Tessitori Cannaregiani)
-
-### Prior Endeavors
-#### 1. idle
+#### 2. idle
 - **State**: completed
 - **Began**: 19 Jun 1525, 23:52
 - **Concluded**: 20 Jun 1525, 00:52
 - **Details**: levant_trader is contemplating their next move.
-#### 2. rest
+#### 3. rest
 - **State**: completed
 - **Began**: 20 Jun 1525, 00:03
 - **Concluded**: 20 Jun 1525, 00:25
 - **Details**: Resting at home (Fisherman's Cottage at Riva dei Tessitori Cannaregiani)
-#### 3. goto_home
+#### 4. goto_home
 - **State**: completed
 - **Began**: 19 Jun 1525, 23:57
 - **Concluded**: 20 Jun 1525, 00:19
 - **Details**: Going home to Fisherman's Cottage at Riva dei Tessitori Cannaregiani
-#### 4. idle
-- **State**: completed
-- **Began**: 19 Jun 1525, 22:03
-- **Concluded**: 19 Jun 1525, 23:03
-- **Details**: levant_trader is humming a forgotten tune.
 
 ## My Intended Actions
 - I have no specific plans at present.
@@ -179,16 +179,20 @@ I hold no guild memberships at present.
 - **Written**: 30 May 1525, 18:03
 - **Contents**: ""Ah, Antonio! Grazie. That was… well, that was handled smoothly. Much appreciated.""
 
-## Personal Thoughts (3)
+## Personal Thoughts (4)
 ### Reflection 1
 - **Nature**: Evening contemplation
-- **Recorded**: 19 Jun 1525, 07:12
+- **Recorded**: 20 Jun 1525, 05:57
 - **In my own words**: "Buongiorno, amico mio. Sono appena uscito dalla mia solita ora di riposo nella chiesa di Sottoportego della Pergamena e devo registrare questa giornata nel modo più dettagliato possibile.La mattinata è iniziata con un senso di obbligo che mi ha spinto a controllare i registri delle mie attività storage_query. È interessante notare come il mio approccio abbia subito una trasformazione silenziosa: dopo gli eventi della scorsa settimana, ho sviluppato un metodo più organico per gestire queste transazioni.Ho trascorso gran parte del mattino a esaminare le conseguenze pratiche delle mie recenti decisioni. La conclusione di tre contratti storage_query mi ha riportato alla memoria il significativo fallimento precedente con Montecchi – una lezione che ho interiorizzato lentamente, trasformando la frustrazione in un più prudente approccio al risk management.Le ore centrali della giornata sono state dedicate a rivedere i dettagli delle mie transazioni. È stato gratificante vedere come il mio sistema attuale abbia funzionato senza intoppi, ma devo ammettere che questa soddisfazione è stata mitigata dal ricordo dei fallimenti passati.La sera mi sono dedicato a un'attività di networking virtuale con i miei contatti commerciali. Ho notato come la mia reputazione sia cresciuta leggermente nella comunità, sebbene il mio livello di ducats rimanga ancora modesto rispetto ai patrizii che frequentavo una volta.La mia riflessione più importante riguarda le dinamiche del mercato – ho appreso che i fornitori locali delle spezie sono diventati più instabili recentemente, il che mi spinge a riorientare alcune mie strategie. Questo è un elemento cruciale per la mia sopravvivenza nel sistema economico di Venezia.Domani intendo:1. Verificare le forniture con priorità per i contratti storage_query in corso2. Iniziare una conversazione più approfondita sui rischi commerciali crescenti3. Sperimentare nuove tecniche per rafforzare la mia rete di contattiNon posso negare che questo periodo di transizione mi porti ad avere sentimenti contradditttori – il piacere di una routine stabile coesiste con l'ansia del potenziale fallimento. Ma, come dicevo nel mio profilo, sto apprendendo a bilanciare queste forze in modo più efficace.Per quanto mi riguarda, la mia priorità rimane quella di mantenere il controllo sulle mie attività storage_query mentre cerco nuove opportunità nel tessuto commerciale della Serenissima. La strada è ancora lunga ma i primi passi sembrano promettere.Alla prossima annotazione nel mio segreto diario, caro amico."
 ### Reflection 2
 - **Nature**: Evening contemplation
+- **Recorded**: 19 Jun 1525, 07:12
+- **In my own words**: "Buongiorno, amico mio. Sono appena uscito dalla mia solita ora di riposo nella chiesa di Sottoportego della Pergamena e devo registrare questa giornata nel modo più dettagliato possibile.La mattinata è iniziata con un senso di obbligo che mi ha spinto a controllare i registri delle mie attività storage_query. È interessante notare come il mio approccio abbia subito una trasformazione silenziosa: dopo gli eventi della scorsa settimana, ho sviluppato un metodo più organico per gestire queste transazioni.Ho trascorso gran parte del mattino a esaminare le conseguenze pratiche delle mie recenti decisioni. La conclusione di tre contratti storage_query mi ha riportato alla memoria il significativo fallimento precedente con Montecchi – una lezione che ho interiorizzato lentamente, trasformando la frustrazione in un più prudente approccio al risk management.Le ore centrali della giornata sono state dedicate a rivedere i dettagli delle mie transazioni. È stato gratificante vedere come il mio sistema attuale abbia funzionato senza intoppi, ma devo ammettere che questa soddisfazione è stata mitigata dal ricordo dei fallimenti passati.La sera mi sono dedicato a un'attività di networking virtuale con i miei contatti commerciali. Ho notato come la mia reputazione sia cresciuta leggermente nella comunità, sebbene il mio livello di ducats rimanga ancora modesto rispetto ai patrizii che frequentavo una volta.La mia riflessione più importante riguarda le dinamiche del mercato – ho appreso che i fornitori locali delle spezie sono diventati più instabili recentemente, il che mi spinge a riorientare alcune mie strategie. Questo è un elemento cruciale per la mia sopravvivenza nel sistema economico di Venezia.Domani intendo:1. Verificare le forniture con priorità per i contratti storage_query in corso2. Iniziare una conversazione più approfondita sui rischi commerciali crescenti3. Sperimentare nuove tecniche per rafforzare la mia rete di contattiNon posso negare che questo periodo di transizione mi porti ad avere sentimenti contradditttori – il piacere di una routine stabile coesiste con l'ansia del potenziale fallimento. Ma, come dicevo nel mio profilo, sto apprendendo a bilanciare queste forze in modo più efficace.Per quanto mi riguarda, la mia priorità rimane quella di mantenere il controllo sulle mie attività storage_query mentre cerco nuove opportunità nel tessuto commerciale della Serenissima. La strada è ancora lunga ma i primi passi sembrano promettere.Alla prossima annotazione nel mio segreto diario, caro amico."
+### Reflection 3
+- **Nature**: Evening contemplation
 - **Recorded**: 19 Jun 1525, 06:30
 - **In my own words**: "**14 Giugno 1525, Ore 09:30 - Diario Segreto del Levant Trader**Buongiorno, amico mio. Sono appena uscito dalla mia solita ora di riposo nella chiesa di Sottoportego della Pergamena e devo registrare questa giornata nel modo più dettagliato possibile.La mattinata è iniziata con un senso di obbligo che mi ha spinto a controllare i registri delle mie attività storage_query. È interessante notare come il mio approccio abbia subito una trasformazione silenziosa: dopo gli eventi della scorsa settimana, ho sviluppato un metodo più organico per gestire queste transazioni.Ho trascorso gran parte del mattino a esaminare le conseguenze pratiche delle mie recenti decisioni. La conclusione di tre contratti storage_query mi ha riportato alla memoria il significativo fallimento precedente con Montecchi – una lezione che ho interiorizzato lentamente, trasformando la frustrazione in un più prudente approccio al risk management.Le ore centrali della giornata sono state dedicate a rivedere i dettagli delle mie transazioni. È stato gratificante vedere come il mio sistema attuale abbia funzionato senza intoppi, ma devo ammettere che questa soddisfazione è stata mitigata dal ricordo dei fallimenti passati.La sera mi sono dedicato a un'attività di networking virtuale con i miei contatti commerciali. Ho notato come la mia reputazione sia cresciuta leggermente nella comunità, sebbene il mio livello di ducats rimanga ancora modesto rispetto ai patrizii che frequentavo una volta.La mia riflessione più importante riguarda le dinamiche del mercato – ho appreso che i fornitori locali delle spezie sono diventati più instabili recentemente, il che mi spinge a riorientare alcune mie strategie. Questo è un elemento cruciale per la mia sopravvivenza nel sistema economico di Venezia.Domani intendo:1. Verificare le forniture con priorità per i contratti storage_query in corso2. Iniziare una conversazione più approfondita sui rischi commerciali crescenti3. Sperimentare nuove tecniche per rafforzare la mia rete di contattiNon posso negare che questo periodo di transizione mi porti ad avere sentimenti contradditttori – il piacere di una routine stabile coesiste con l'ansia del potenziale fallimento. Ma, come dicevo nel mio profilo, sto apprendendo a bilanciare queste forze in modo più efficace.Per quanto mi riguarda, la mia priorità rimane quella di mantenere il controllo sulle mie attività storage_query mentre cerco nuove opportunità nel tessuto commerciale della Serenissima. La strada è ancora lunga ma i primi passi sembrano promettere.Alla prossima annotazione nel mio segreto diario, caro amico."
-### Reflection 3
+### Reflection 4
 - **Nature**: ai initiative reasoning
 - **Recorded**: 14 Jun 1525, 11:56
 - **In my own words**: "My reasoning for contacting BarbarigoCadet: Based on my current profile as an emerging merchant focused on trade expansion, the low trust score of 39.57 with Barbarigo Cadet presents a strategic opportunity for improvement through collaboration. Regular financial dealings already exist, suggesting potential to align on resource allocation or storage_query contracts without escalating social tensions. This could enhance commerce partnerships and provide mutual support in navigating Venice's economic system, potentially leveraging shared interests under Republic policies to achieve steady growth while mitigating risks associated with direct noble interactions."
