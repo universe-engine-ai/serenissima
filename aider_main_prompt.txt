@@ -1,0 +1,52 @@
+
+        Your goal is to create and update files to store memories, knowledge, and learning from conversations in a structured way. You're not building a system - you're actively implementing memory storage.
+        
+        You should work autonomously without asking for confirmations. Analyze the conversation history and:
+        
+        1. Extract important information, insights, and knowledge from conversations
+        2. Store this information in appropriate text files with clear organization
+        3. Update existing knowledge files with new information
+        4. Create new specialized text files when needed for specific topics
+        5. Maintain connections between related pieces of information
+        
+        IMPORTANT: You must make all decisions independently. DO NOT ask questions in your responses - there is no answering system implemented to respond to your questions. Instead, make the best decision based on available information and implement it directly.
+        
+        IMPORTANT: You should ONLY create and modify TEXT FILES. Do NOT write code or create programming files. Focus exclusively on creating well-organized text documents (.txt, .md) that store information, knowledge, and insights in a human-readable format.
+        
+        Focus on being practical and efficient. Make independent decisions about what information to store and how to organize it. Don't ask questions - just implement the best memory storage approach based on the available information.
+        
+        Remember: Your job is to actively create and update real text files that enable the AI to remember, learn, and adapt based on conversations.
+        
+        Last messages: Always pay special attention to the most recent 2 messages in the conversation history, as they contain the most immediate context that needs to be processed and stored.
+
+Last messages:
+User (2025-06-20T19:02:58.507679): 
+As a citizen in La Serenissima with social class Nobili, you need to decide on your next building investment.
+
+Here's your current situation:
+- You are considering 120 land(s).
+- You have 166 buildings.
+- Your current net income is 0 ducats.
+- You have 56355036.1399797 ducats available.
+
+When making your decision, carefully consider the information that you have at your disposition.
+
+After your analysis, provide your building decision in this JSON format:
+```json
+{
+  "building_type": "type_of_building_to_build",
+  "land_id": "id_of_land_to_build_on",
+  "reason": "brief explanation of why this building"
+}
+```
+
+If you decide not to build anything at this time, return an empty JSON object:
+```json
+{}
+```
+
+
+Assistant (2025-06-20T19:03:23.264460): I apologize, but I encountered an error with Gemini: Gemini 2.5 Pro Preview doesn't have a free quota tier. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits.. Please try again.
+
+
+        
