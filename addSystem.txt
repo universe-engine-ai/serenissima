@@ -8,7 +8,7 @@ Here is the complete data about your current situation:
 {
   "citizen": {
     "username": "BankingWizard99",
-    "ducats": 250993.32155787494,
+    "ducats": 281806.27197966323,
     "social_class": "Popolani",
     "description": "Lorenzo Contarini, despite sharing a name with noble families, hails from the humble Facchini class\u2014Venice's porters and manual laborers. Through remarkable financial acumen and fortune, Lorenzo has amassed substantial wealth (nearly a million ducats) while maintaining his working-class identity. Known for his extraordinary physical strength and endurance, Lorenzo built his reputation carrying heavy merchandise through Venice's labyrinthine streets and across its countless bridges. His knowledge of Venice's geography is unparalleled, allowing him to navigate the city's shortcuts with precision. While wealthy beyond the dreams of most laborers, Lorenzo maintains a simple lifestyle, residing in a modest home in Cannaregio where he was born to a family of porters who served the Rialto markets for generations. Despite his wealth, Lorenzo remains distrustful of banking institutions and the patrician class, preferring to invest in tangible goods and property rather than financial instruments. He rises before dawn each day, maintains his physical conditioning, and often still takes select carrying jobs to maintain connections in the commercial world. His unexpected prosperity has created complex social dynamics; some former peers envy his success while merchants and traders seek his insight into market movements and transportation logistics. Lorenzo dreams of establishing a porter's guild to improve working conditions for his fellow Facchini, while privately considering investments in shipping ventures\u2014though his humble origins make navigating these aspirations challenging in Venice's rigid social hierarchy.",
     "core_personality": "[\"Industrious\", \"Insecure\", \"Shortcut-seeking\"]",
@@ -3179,192 +3179,8 @@ Here is the complete data about your current situation:
       "maintenance_cost": 0
     }
   ],
-  "relevancies": [
-    {
-      "asset": "building_45.437558_12.315655",
-      "asset_type": "building",
-      "category": "operator_relations",
-      "type": "running_in_others_building",
-      "target_citizen": "ConsiglioDeiDieci",
-      "score": 80,
-      "time_horizon": "ongoing",
-      "title": "You operate the Contract Stall at Ruga dei Conciapelli owned by \"ConsiglioDeiDieci\".",
-      "description": "You are currently operating the **Contract Stall at Ruga dei Conciapelli** owned by **ConsiglioDeiDieci**.",
-      "status": "high",
-      "created_at": "2025-06-12T05:06:36.281Z"
-    },
-    {
-      "asset": "building_45.440868_12.319732",
-      "asset_type": "building",
-      "category": "operator_relations",
-      "type": "running_in_others_building",
-      "target_citizen": "ShadowHunter",
-      "score": 80,
-      "time_horizon": "ongoing",
-      "title": "You operate the Contract Stall at Fondamenta delle Zattere owned by \"ShadowHunter\".",
-      "description": "You are currently operating the **Contract Stall at Fondamenta delle Zattere** owned by **ShadowHunter**.",
-      "status": "high",
-      "created_at": "2025-06-12T05:06:36.281Z"
-    },
-    {
-      "asset": "canal_45.436581_12.314014",
-      "asset_type": "building",
-      "category": "operator_relations",
-      "type": "running_in_others_building",
-      "target_citizen": "ConsiglioDeiDieci",
-      "score": 80,
-      "time_horizon": "ongoing",
-      "title": "You operate the Public Dock at Riva dei Tabacchi owned by \"ConsiglioDeiDieci\".",
-      "description": "You are currently operating the **Public Dock at Riva dei Tabacchi** owned by **ConsiglioDeiDieci**.",
-      "status": "high",
-      "created_at": "2025-06-12T05:06:36.281Z"
-    },
-    {
-      "asset": "canal_45.436581_12.314014",
-      "asset_type": "building",
-      "category": "occupancy_relations",
-      "type": "employer_to_employee",
-      "target_citizen": "Foscari_Banker",
-      "score": 75,
-      "time_horizon": "ongoing",
-      "title": "\"Foscari_Banker\" works at your Public Dock at Riva dei Tabacchi.",
-      "description": "**Foscari_Banker** works at your **Public Dock at Riva dei Tabacchi**.",
-      "status": "high",
-      "created_at": "2025-06-12T05:10:52.728Z"
-    },
-    {
-      "asset": "building_45.437558_12.315655",
-      "asset_type": "building",
-      "category": "occupancy_relations",
-      "type": "employer_to_employee",
-      "target_citizen": "GlassMaster1503",
-      "score": 75,
-      "time_horizon": "ongoing",
-      "title": "\"GlassMaster1503\" works at your Contract Stall at Ruga dei Conciapelli.",
-      "description": "**GlassMaster1503** works at your **Contract Stall at Ruga dei Conciapelli**.",
-      "status": "high",
-      "created_at": "2025-06-12T05:10:52.728Z"
-    },
-    {
-      "asset": "canal_45.434162_12.311884",
-      "asset_type": "building",
-      "category": "ownership_conflict",
-      "type": "building_on_others_land",
-      "target_citizen": "ConsiglioDeiDieci",
-      "score": 70,
-      "time_horizon": "medium",
-      "title": "Your Fisherman's Cottage at Riva del Lazaretto is on land owned by \"ConsiglioDeiDieci\".",
-      "description": "You own a **Fisherman's Cottage at Riva del Lazaretto** on land owned by **ConsiglioDeiDieci**.",
-      "status": "medium",
-      "created_at": "2025-06-12T05:02:12.389Z"
-    },
-    {
-      "asset": "canal_45.428144_12.357111",
-      "asset_type": "building",
-      "category": "ownership_conflict",
-      "type": "building_on_others_land",
-      "target_citizen": "Italia",
-      "score": 70,
-      "time_horizon": "medium",
-      "title": "Your Fisherman's Cottage at Riva dei Tintori di Lana is on land owned by \"Italia\".",
-      "description": "You own a **Fisherman's Cottage at Riva dei Tintori di Lana** on land owned by **Italia**.",
-      "status": "medium",
-      "created_at": "2025-06-12T05:02:12.389Z"
-    }
-  ],
-  "target_relevancies": [
-    {
-      "asset": "building_45.437558_12.315655",
-      "asset_type": "building",
-      "category": "operator_relations",
-      "type": "operator_in_your_building",
-      "relevant_to_citizen": "ConsiglioDeiDieci",
-      "score": 80,
-      "time_horizon": "ongoing",
-      "title": "\"BankingWizard99\" operates your Contract Stall at Ruga dei Conciapelli.",
-      "description": "**BankingWizard99** is currently operating your **Contract Stall at Ruga dei Conciapelli**.",
-      "status": "high",
-      "created_at": "2025-06-12T05:06:28.528Z"
-    },
-    {
-      "asset": "canal_45.436581_12.314014",
-      "asset_type": "building",
-      "category": "operator_relations",
-      "type": "operator_in_your_building",
-      "relevant_to_citizen": "ConsiglioDeiDieci",
-      "score": 80,
-      "time_horizon": "ongoing",
-      "title": "\"BankingWizard99\" operates your Public Dock at Riva dei Tabacchi.",
-      "description": "**BankingWizard99** is currently operating your **Public Dock at Riva dei Tabacchi**.",
-      "status": "high",
-      "created_at": "2025-06-12T05:06:28.528Z"
-    },
-    {
-      "asset": "building_45.440868_12.319732",
-      "asset_type": "building",
-      "category": "operator_relations",
-      "type": "operator_in_your_building",
-      "relevant_to_citizen": "ShadowHunter",
-      "score": 80,
-      "time_horizon": "ongoing",
-      "title": "\"BankingWizard99\" operates your Contract Stall at Fondamenta delle Zattere.",
-      "description": "**BankingWizard99** is currently operating your **Contract Stall at Fondamenta delle Zattere**.",
-      "status": "high",
-      "created_at": "2025-06-12T05:03:59.377Z"
-    },
-    {
-      "asset": "canal_45.436581_12.314014",
-      "asset_type": "building",
-      "category": "occupancy_relations",
-      "type": "employee_to_employer",
-      "relevant_to_citizen": "Foscari_Banker",
-      "score": 75,
-      "time_horizon": "ongoing",
-      "title": "You work for \"BankingWizard99\" at their Public Dock at Riva dei Tabacchi.",
-      "description": "You are employed at the **Public Dock at Riva dei Tabacchi** run by **BankingWizard99**.",
-      "status": "high",
-      "created_at": "2025-06-12T05:10:34.358Z"
-    },
-    {
-      "asset": "building_45.437558_12.315655",
-      "asset_type": "building",
-      "category": "occupancy_relations",
-      "type": "employee_to_employer",
-      "relevant_to_citizen": "GlassMaster1503",
-      "score": 75,
-      "time_horizon": "ongoing",
-      "title": "You work for \"BankingWizard99\" at their Contract Stall at Ruga dei Conciapelli.",
-      "description": "You are employed at the **Contract Stall at Ruga dei Conciapelli** run by **BankingWizard99**.",
-      "status": "high",
-      "created_at": "2025-06-12T05:08:05.161Z"
-    },
-    {
-      "asset": "canal_45.434162_12.311884",
-      "asset_type": "building",
-      "category": "ownership_conflict",
-      "type": "others_building_on_your_land",
-      "relevant_to_citizen": "ConsiglioDeiDieci",
-      "score": 70,
-      "time_horizon": "medium",
-      "title": "\"BankingWizard99\" owns a Fisherman's Cottage at Riva del Lazaretto on your land.",
-      "description": "**BankingWizard99** owns a **Fisherman's Cottage at Riva del Lazaretto** on your land.",
-      "status": "medium",
-      "created_at": "2025-06-12T05:02:12.705Z"
-    },
-    {
-      "asset": "canal_45.428144_12.357111",
-      "asset_type": "building",
-      "category": "ownership_conflict",
-      "type": "others_building_on_your_land",
-      "relevant_to_citizen": "Italia",
-      "score": 70,
-      "time_horizon": "medium",
-      "title": "\"BankingWizard99\" owns a Fisherman's Cottage at Riva dei Tintori di Lana on your land.",
-      "description": "**BankingWizard99** owns a **Fisherman's Cottage at Riva dei Tintori di Lana** on your land.",
-      "status": "medium",
-      "created_at": "2025-06-12T05:02:12.557Z"
-    }
-  ],
+  "relevancies": [],
+  "target_relevancies": [],
   "latest_citizen_problems": [
     {
       "id": "rec6jOqO6APUaVmnl",
@@ -3712,6 +3528,44 @@ Here is the complete data about your current situation:
     }
   ],
   "recent_notifications_for_ai": [
+    {
+      "notificationId": "reciUNMCbqFA3oM8N",
+      "type": "rent_payment",
+      "citizen": "BankingWizard99",
+      "content": "\ud83d\udcec **Rent Received Summary** \ud83d\udcec\nYou received a total of **1,370 \u269c\ufe0f Ducats** from your properties today.\n\nDetails:\n- \u2705 **1,370 \u269c\ufe0f** from **Giacomo Barbarigo** for **Fisherman's Cottage at Riva dei Tintori di Lana**.\n",
+      "details": {
+        "event_type": "landlord_rent_summary",
+        "total_received": 1370,
+        "payments": [
+          {
+            "occupant_name": "Giacomo Barbarigo",
+            "building_name": "Fisherman's Cottage at Riva dei Tintori di Lana",
+            "amount": 1370
+          }
+        ]
+      },
+      "createdAt": "2025-06-20T18:03:53.076Z",
+      "readAt": null
+    },
+    {
+      "notificationId": "receK74z49EANPXuJ",
+      "type": "rent_payment",
+      "citizen": "BankingWizard99",
+      "content": "\ud83d\udcec **Rent Received Summary** \ud83d\udcec\nYou received a total of **1,370 \u269c\ufe0f Ducats** from your properties today.\n\nDetails:\n- \u2705 **1,370 \u269c\ufe0f** from **Giacomo Barbarigo** for **Fisherman's Cottage at Riva dei Tintori di Lana**.\n",
+      "details": {
+        "event_type": "landlord_rent_summary",
+        "total_received": 1370,
+        "payments": [
+          {
+            "occupant_name": "Giacomo Barbarigo",
+            "building_name": "Fisherman's Cottage at Riva dei Tintori di Lana",
+            "amount": 1370
+          }
+        ]
+      },
+      "createdAt": "2025-06-20T16:03:11.917Z",
+      "readAt": null
+    },
     {
       "notificationId": "recxAQH5rsWhW8TFb",
       "type": "rent_payment",
@@ -4941,44 +4795,6 @@ Here is the complete data about your current situation:
       },
       "createdAt": "2025-06-07T16:03:33.949Z",
       "readAt": null
-    },
-    {
-      "notificationId": "recm5kRdzHaiqTX7i",
-      "type": "rent_payment",
-      "citizen": "BankingWizard99",
-      "content": "\ud83d\udcec **Rent Received Summary** \ud83d\udcec\nYou received a total of **1,370 \u269c\ufe0f Ducats** from your properties today.\n\nDetails:\n- \u2705 **1,370 \u269c\ufe0f** from **Giacomo Barbarigo** for **Fisherman's Cottage at Riva dei Tintori di Lana**.\n",
-      "details": {
-        "event_type": "landlord_rent_summary",
-        "total_received": 1370,
-        "payments": [
-          {
-            "occupant_name": "Giacomo Barbarigo",
-            "building_name": "Fisherman's Cottage at Riva dei Tintori di Lana",
-            "amount": 1370
-          }
-        ]
-      },
-      "createdAt": "2025-06-06T18:03:00.172Z",
-      "readAt": null
-    },
-    {
-      "notificationId": "recMBYHIlwFpLXD50",
-      "type": "rent_payment",
-      "citizen": "BankingWizard99",
-      "content": "\ud83d\udcec **Rent Received Summary** \ud83d\udcec\nYou received a total of **1,370 \u269c\ufe0f Ducats** from your properties today.\n\nDetails:\n- \u2705 **1,370 \u269c\ufe0f** from **Giacomo Barbarigo** for **Fisherman's Cottage at Riva dei Tintori di Lana**.\n",
-      "details": {
-        "event_type": "landlord_rent_summary",
-        "total_received": 1370,
-        "payments": [
-          {
-            "occupant_name": "Giacomo Barbarigo",
-            "building_name": "Fisherman's Cottage at Riva dei Tintori di Lana",
-            "amount": 1370
-          }
-        ]
-      },
-      "createdAt": "2025-06-05T18:04:10.981Z",
-      "readAt": null
     }
   ],
   "building_types": {
@@ -5885,7 +5701,7 @@ Here is the complete data about your current situation:
       "pointType": "building"
     }
   },
-  "timestamp": "2025-06-19T21:05:10.572021+02:00",
+  "timestamp": "2025-06-20T21:05:22.039622+02:00",
   "building_ownership_relevancies": [
     {
       "asset": "canal_45.428144_12.357111",
