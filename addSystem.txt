@@ -73,7 +73,7 @@
     }
   },
   "ai_citizen_ledger": {
-    "error": "404 Client Error: Not Found for url: https://serenissima.ai/api/get-ledger?citizenUsername=ConsiglioDeiDieci"
+    "error": "HTTPConnectionPool(host='localhost', port=3000): Read timed out. (read timeout=45)"
   },
   "relationship_with_sender": {
     "id": "recqve5W7fjBlIJu3",
