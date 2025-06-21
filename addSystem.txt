@@ -8,7 +8,7 @@ Here is the complete data about your current situation:
 {
   "citizen": {
     "username": "StormRider",
-    "ducats": 265305.6777882597,
+    "ducats": 278322.1282711624,
     "social_class": "Popolani",
     "description": "Vittoria Zanatta is a determined and industrious laborer from the Facchini class who has risen to unexpected prosperity through her work at the public docks of Venice. Born to a family of porters who have served the bustling port for generations, Vittoria inherited her father's robust physique and her mother's sharp mind for spotting opportunity. Despite her humble origins, she has amassed considerable wealth (over 250,000 ducats) through tireless work, shrewd dealings with merchants, and a reputation for absolute reliability in handling valuable cargo. Each morning before dawn, Vittoria arrives at the docks to secure the best positions for the day's shipments, negotiating favors with ship captains and coordinating with fellow porters. Her calloused hands and weathered face tell the story of years of physical labor, yet her eyes reveal a calculating intelligence that has allowed her to transform mere muscle work into a lucrative position. Though still proudly Facchini, Vittoria now employs several assistants and has begun investing in small shipping ventures. She maintains a modest but comfortable home near Castello, where she lives with her aging mother and younger brother. Despite her growing wealth, she remains deeply connected to the working port community, often using her resources to help neighbors in need or fellow porters facing hardship.",
     "core_personality": "[\"Independent\", \"Ambitious\", \"Dignity-seeking\"]",
@@ -3176,6 +3176,21 @@ Here is the complete data about your current situation:
   "latest_citizen_problems": [],
   "recent_notifications_for_ai": [
     {
+      "notificationId": "recBXnOR2tM9ejgjv",
+      "type": "rent_payment",
+      "citizen": "StormRider",
+      "content": "\u2705 Rent Paid: You paid **1,750 \u269c\ufe0f Ducats** to **Italia** for **Artisan's House at Calle del Forno Vecchio**.",
+      "details": {
+        "building_id": "recqPJgmaobBoSJgA",
+        "building_name": "Artisan's House at Calle del Forno Vecchio",
+        "rent_price": 1750,
+        "building_owner": "Italia",
+        "event_type": "rent_payment_made"
+      },
+      "createdAt": "2025-06-21T16:03:15.363Z",
+      "readAt": null
+    },
+    {
       "notificationId": "recc8vz3KkImKhUnz",
       "type": "rent_payment",
       "citizen": "StormRider",
@@ -3489,21 +3504,6 @@ Here is the complete data about your current situation:
       },
       "createdAt": "2025-06-07T16:03:16.800Z",
       "readAt": null
-    },
-    {
-      "notificationId": "recnUxuZ0CrVedfvo",
-      "type": "rent_payment",
-      "citizen": "StormRider",
-      "content": "\u2705 Rent Paid: You paid **1,750 \u269c\ufe0f Ducats** to **Italia** for **Artisan's House at Calle del Forno Vecchio**.",
-      "details": {
-        "building_id": "recqPJgmaobBoSJgA",
-        "building_name": "Artisan's House at Calle del Forno Vecchio",
-        "rent_price": 1750,
-        "building_owner": "Italia",
-        "event_type": "rent_payment_made"
-      },
-      "createdAt": "2025-06-06T18:02:42.156Z",
-      "readAt": null
     }
   ],
   "building_types": {
@@ -3733,7 +3733,7 @@ Here is the complete data about your current situation:
       "constructionMinutes": 8640,
       "buildTier": 2,
       "tier": null,
-      "category": "Infrastructure",
+      "category": "passive",
       "pointType": "building"
     },
     "dairy": {
@@ -3790,25 +3790,6 @@ Here is the complete data about your current situation:
       "category": "home",
       "pointType": "canal"
     },
-    "glass_foundry": {
-      "id": "glass_foundry",
-      "type": "glass_foundry",
-      "name": "Glass Foundry",
-      "shortDescription": "Primary facility for melting raw materials into glass. Requires substantial fuel and produces significant heat.",
-      "constructionCost": 2800000,
-      "constructionCosts": {
-        "ducats": 2800000,
-        "timber": 720,
-        "bricks": 2080,
-        "stone": 1430,
-        "iron": 390
-      },
-      "constructionMinutes": 10080,
-      "buildTier": 2,
-      "tier": null,
-      "category": "business",
-      "pointType": "building"
-    },
     "glassblower_workshop": {
       "id": "glassblower_workshop",
       "type": "glassblower_workshop",
@@ -3823,6 +3804,25 @@ Here is the complete data about your current situation:
         "iron": 290
       },
       "constructionMinutes": 5760,
+      "buildTier": 2,
+      "tier": null,
+      "category": "business",
+      "pointType": "building"
+    },
+    "glass_foundry": {
+      "id": "glass_foundry",
+      "type": "glass_foundry",
+      "name": "Glass Foundry",
+      "shortDescription": "Primary facility for melting raw materials into glass. Requires substantial fuel and produces significant heat.",
+      "constructionCost": 2800000,
+      "constructionCosts": {
+        "ducats": 2800000,
+        "timber": 720,
+        "bricks": 2080,
+        "stone": 1430,
+        "iron": 390
+      },
+      "constructionMinutes": 10080,
       "buildTier": 2,
       "tier": null,
       "category": "business",
@@ -4410,7 +4410,7 @@ Here is the complete data about your current situation:
       "pointType": "building"
     }
   },
-  "timestamp": "2025-06-20T21:06:28.711258+02:00",
+  "timestamp": "2025-06-21T21:59:24.455500+02:00",
   "building_ownership_relevancies": [
     {
       "asset": "building_45.431361_12.355688",
