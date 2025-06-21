@@ -8,7 +8,7 @@ Here is the complete data about your current situation:
 {
   "citizen": {
     "username": "DucatsRunner",
-    "ducats": 276307.1180844694,
+    "ducats": 306997.28264471353,
     "social_class": "Popolani",
     "description": "Lorenzo Contarini is a shrewd and ambitious dock worker who has risen from humble beginnings through careful observation and strategic networking. His years handling cargo at the public docks have given him an intimate knowledge of Venice's trade flows and merchant practices, while his natural charm helps him forge valuable connections across social boundaries. Despite his affable exterior, Lorenzo harbors a calculating nature and burning ambition that sometimes leads him to manipulate situations for personal gain.",
     "core_personality": "[\"Observant\", \"Calculating\", \"Advancement-driven\"]",
@@ -3171,127 +3171,8 @@ Here is the complete data about your current situation:
       "maintenance_cost": 0
     }
   ],
-  "relevancies": [
-    {
-      "asset": "building_45.442317_12.319077",
-      "asset_type": "building",
-      "category": "operator_relations",
-      "type": "running_in_others_building",
-      "target_citizen": "Zorzi77",
-      "score": 80,
-      "time_horizon": "ongoing",
-      "title": "You operate the Contract Stall at Calle dei Gondolieri owned by \"Zorzi77\".",
-      "description": "You are currently operating the **Contract Stall at Calle dei Gondolieri** owned by **Zorzi77**.",
-      "status": "high",
-      "created_at": "2025-06-12T05:07:31.231Z"
-    },
-    {
-      "asset": "building_45.444715_12.324751",
-      "asset_type": "building",
-      "category": "operator_relations",
-      "type": "running_in_others_building",
-      "target_citizen": "QuantumLeap",
-      "score": 80,
-      "time_horizon": "ongoing",
-      "title": "You operate the Bakery at Rio Ter\u00e0 dei Magazzini owned by \"QuantumLeap\".",
-      "description": "You are currently operating the **Bakery at Rio Ter\u00e0 dei Magazzini** owned by **QuantumLeap**.",
-      "status": "high",
-      "created_at": "2025-06-12T05:07:31.231Z"
-    },
-    {
-      "asset": "canal_45.427469_12.322662",
-      "asset_type": "building",
-      "category": "occupancy_relations",
-      "type": "employee_to_employer",
-      "target_citizen": "BasstheWhale",
-      "score": 75,
-      "time_horizon": "ongoing",
-      "title": "You work for \"BasstheWhale\" at their Public Dock at Fondamenta San Sebastiano.",
-      "description": "You are employed at the **Public Dock at Fondamenta San Sebastiano** run by **BasstheWhale**.",
-      "status": "high",
-      "created_at": "2025-06-12T05:11:48.294Z"
-    },
-    {
-      "asset": "building_45.442317_12.319077",
-      "asset_type": "building",
-      "category": "occupancy_relations",
-      "type": "employer_to_employee",
-      "target_citizen": "coffee",
-      "score": 75,
-      "time_horizon": "ongoing",
-      "title": "\"coffee\" works at your Contract Stall at Calle dei Gondolieri.",
-      "description": "**coffee** works at your **Contract Stall at Calle dei Gondolieri**.",
-      "status": "high",
-      "created_at": "2025-06-12T05:11:48.294Z"
-    },
-    {
-      "asset": "canal_45.447731_12.318978",
-      "asset_type": "building",
-      "category": "ownership_conflict",
-      "type": "building_on_others_land",
-      "target_citizen": "ConsiglioDeiDieci",
-      "score": 70,
-      "time_horizon": "medium",
-      "title": "Your Fisherman's Cottage at Fondamenta dei Panificatori is on land owned by \"ConsiglioDeiDieci\".",
-      "description": "You own a **Fisherman's Cottage at Fondamenta dei Panificatori** on land owned by **ConsiglioDeiDieci**.",
-      "status": "medium",
-      "created_at": "2025-06-12T05:03:18.269Z"
-    }
-  ],
-  "target_relevancies": [
-    {
-      "asset": "building_45.444715_12.324751",
-      "asset_type": "building",
-      "category": "operator_relations",
-      "type": "operator_in_your_building",
-      "relevant_to_citizen": "QuantumLeap",
-      "score": 80,
-      "time_horizon": "ongoing",
-      "title": "\"DucatsRunner\" operates your Bakery at Rio Ter\u00e0 dei Magazzini.",
-      "description": "**DucatsRunner** is currently operating your **Bakery at Rio Ter\u00e0 dei Magazzini**.",
-      "status": "high",
-      "created_at": "2025-06-12T05:05:05.783Z"
-    },
-    {
-      "asset": "canal_45.427469_12.322662",
-      "asset_type": "building",
-      "category": "occupancy_relations",
-      "type": "employer_to_employee",
-      "relevant_to_citizen": "BasstheWhale",
-      "score": 75,
-      "time_horizon": "ongoing",
-      "title": "\"DucatsRunner\" works at your Public Dock at Fondamenta San Sebastiano.",
-      "description": "**DucatsRunner** works at your **Public Dock at Fondamenta San Sebastiano**.",
-      "status": "high",
-      "created_at": "2025-06-12T05:11:34.060Z"
-    },
-    {
-      "asset": "building_45.442317_12.319077",
-      "asset_type": "building",
-      "category": "occupancy_relations",
-      "type": "employee_to_employer",
-      "relevant_to_citizen": "coffee",
-      "score": 75,
-      "time_horizon": "ongoing",
-      "title": "You work for \"DucatsRunner\" at their Contract Stall at Calle dei Gondolieri.",
-      "description": "You are employed at the **Contract Stall at Calle dei Gondolieri** run by **DucatsRunner**.",
-      "status": "high",
-      "created_at": "2025-06-12T05:08:59.635Z"
-    },
-    {
-      "asset": "canal_45.447731_12.318978",
-      "asset_type": "building",
-      "category": "ownership_conflict",
-      "type": "others_building_on_your_land",
-      "relevant_to_citizen": "ConsiglioDeiDieci",
-      "score": 70,
-      "time_horizon": "medium",
-      "title": "\"DucatsRunner\" owns a Fisherman's Cottage at Fondamenta dei Panificatori on your land.",
-      "description": "**DucatsRunner** owns a **Fisherman's Cottage at Fondamenta dei Panificatori** on your land.",
-      "status": "medium",
-      "created_at": "2025-06-12T05:03:18.421Z"
-    }
-  ],
+  "relevancies": [],
+  "target_relevancies": [],
   "latest_citizen_problems": [
     {
       "id": "recuPq0Hz9FNZ9kSo",
@@ -4678,7 +4559,7 @@ Here is the complete data about your current situation:
       "constructionMinutes": 8640,
       "buildTier": 2,
       "tier": null,
-      "category": "Infrastructure",
+      "category": "passive",
       "pointType": "building"
     },
     "dairy": {
@@ -4735,25 +4616,6 @@ Here is the complete data about your current situation:
       "category": "home",
       "pointType": "canal"
     },
-    "glass_foundry": {
-      "id": "glass_foundry",
-      "type": "glass_foundry",
-      "name": "Glass Foundry",
-      "shortDescription": "Primary facility for melting raw materials into glass. Requires substantial fuel and produces significant heat.",
-      "constructionCost": 2800000,
-      "constructionCosts": {
-        "ducats": 2800000,
-        "timber": 720,
-        "bricks": 2080,
-        "stone": 1430,
-        "iron": 390
-      },
-      "constructionMinutes": 10080,
-      "buildTier": 2,
-      "tier": null,
-      "category": "business",
-      "pointType": "building"
-    },
     "glassblower_workshop": {
       "id": "glassblower_workshop",
       "type": "glassblower_workshop",
@@ -4768,6 +4630,25 @@ Here is the complete data about your current situation:
         "iron": 290
       },
       "constructionMinutes": 5760,
+      "buildTier": 2,
+      "tier": null,
+      "category": "business",
+      "pointType": "building"
+    },
+    "glass_foundry": {
+      "id": "glass_foundry",
+      "type": "glass_foundry",
+      "name": "Glass Foundry",
+      "shortDescription": "Primary facility for melting raw materials into glass. Requires substantial fuel and produces significant heat.",
+      "constructionCost": 2800000,
+      "constructionCosts": {
+        "ducats": 2800000,
+        "timber": 720,
+        "bricks": 2080,
+        "stone": 1430,
+        "iron": 390
+      },
+      "constructionMinutes": 10080,
       "buildTier": 2,
       "tier": null,
       "category": "business",
@@ -5355,7 +5236,7 @@ Here is the complete data about your current situation:
       "pointType": "building"
     }
   },
-  "timestamp": "2025-06-18T22:06:31.525406+02:00",
+  "timestamp": "2025-06-21T22:23:58.582153+02:00",
   "building_ownership_relevancies": [
     {
       "asset": "canal_45.447731_12.318978",
