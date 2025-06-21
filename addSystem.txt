@@ -8,7 +8,7 @@ Here is the complete data about your current situation:
 {
   "citizen": {
     "username": "RialtoRacer56",
-    "ducats": 309469.1896466594,
+    "ducats": 328793.97011520277,
     "social_class": "Facchini",
     "description": "Dorotea is a pragmatic and resilient woman who has learned to navigate Venice's complex social and economic waters through careful observation and calculated risks. Her years of physical labor have instilled an unshakeable work ethic and respect for honest effort, yet her shrewd investments reveal a calculating mind that sometimes prioritizes profit over loyalty. Though she maintains deep ties to her working-class roots, her growing wealth has sparked ambitions that occasionally put her at odds with her community's expectations.",
     "core_personality": "[\"Observant\", \"Calculating\", \"Advancement-driven\"]",
@@ -3159,38 +3159,85 @@ Here is the complete data about your current situation:
     }
   ],
   "buildings": [],
-  "relevancies": [
-    {
-      "asset": "building_45.446139_12.318907",
-      "asset_type": "building",
-      "category": "occupancy_relations",
-      "type": "employee_to_employer",
-      "target_citizen": "SilentObserver",
-      "score": 75,
-      "time_horizon": "ongoing",
-      "title": "You work for \"SilentObserver\" at their Guard Post at Ramo delle Porpore.",
-      "description": "You are employed at the **Guard Post at Ramo delle Porpore** run by **SilentObserver**.",
-      "status": "high",
-      "created_at": "2025-06-12T05:11:12.747Z"
-    }
-  ],
-  "target_relevancies": [
-    {
-      "asset": "building_45.446139_12.318907",
-      "asset_type": "building",
-      "category": "occupancy_relations",
-      "type": "employer_to_employee",
-      "relevant_to_citizen": "SilentObserver",
-      "score": 75,
-      "time_horizon": "ongoing",
-      "title": "\"RialtoRacer56\" works at your Guard Post at Ramo delle Porpore.",
-      "description": "**RialtoRacer56** works at your **Guard Post at Ramo delle Porpore**.",
-      "status": "high",
-      "created_at": "2025-06-12T05:09:38.127Z"
-    }
-  ],
+  "relevancies": [],
+  "target_relevancies": [],
   "latest_citizen_problems": [],
   "recent_notifications_for_ai": [
+    {
+      "notificationId": "recvWxjATlGU7l8ps",
+      "type": "rent_payment",
+      "citizen": "RialtoRacer56",
+      "content": "\u2705 Rent Paid: You paid **1,125 \u269c\ufe0f Ducats** to **ConsiglioDeiDieci** for **recWvEXaCntJJJCEV**.",
+      "details": {
+        "building_id": "recWvEXaCntJJJCEV",
+        "building_name": "recWvEXaCntJJJCEV",
+        "rent_price": 1125,
+        "building_owner": "ConsiglioDeiDieci",
+        "event_type": "rent_payment_made"
+      },
+      "createdAt": "2025-06-21T16:02:17.894Z",
+      "readAt": null
+    },
+    {
+      "notificationId": "recbnb5auyM8sL4FQ",
+      "type": "rent_payment",
+      "citizen": "RialtoRacer56",
+      "content": "\u2705 Rent Paid: You paid **1,125 \u269c\ufe0f Ducats** to **ConsiglioDeiDieci** for **recWvEXaCntJJJCEV**.",
+      "details": {
+        "building_id": "recWvEXaCntJJJCEV",
+        "building_name": "recWvEXaCntJJJCEV",
+        "rent_price": 1125,
+        "building_owner": "ConsiglioDeiDieci",
+        "event_type": "rent_payment_made"
+      },
+      "createdAt": "2025-06-20T18:02:35.350Z",
+      "readAt": null
+    },
+    {
+      "notificationId": "recERrrNhmkvc511N",
+      "type": "rent_payment",
+      "citizen": "RialtoRacer56",
+      "content": "\u2705 Rent Paid: You paid **1,125 \u269c\ufe0f Ducats** to **ConsiglioDeiDieci** for **recWvEXaCntJJJCEV**.",
+      "details": {
+        "building_id": "recWvEXaCntJJJCEV",
+        "building_name": "recWvEXaCntJJJCEV",
+        "rent_price": 1125,
+        "building_owner": "ConsiglioDeiDieci",
+        "event_type": "rent_payment_made"
+      },
+      "createdAt": "2025-06-20T16:01:49.303Z",
+      "readAt": null
+    },
+    {
+      "notificationId": "recplsvZ6ogCpLxtz",
+      "type": "rent_payment",
+      "citizen": "RialtoRacer56",
+      "content": "\u2705 Rent Paid: You paid **1,125 \u269c\ufe0f Ducats** to **ConsiglioDeiDieci** for **recWvEXaCntJJJCEV**.",
+      "details": {
+        "building_id": "recWvEXaCntJJJCEV",
+        "building_name": "recWvEXaCntJJJCEV",
+        "rent_price": 1125,
+        "building_owner": "ConsiglioDeiDieci",
+        "event_type": "rent_payment_made"
+      },
+      "createdAt": "2025-06-19T18:02:58.372Z",
+      "readAt": null
+    },
+    {
+      "notificationId": "recLT7hhmp1V67CUu",
+      "type": "rent_payment",
+      "citizen": "RialtoRacer56",
+      "content": "\u2705 Rent Paid: You paid **1,125 \u269c\ufe0f Ducats** to **ConsiglioDeiDieci** for **recWvEXaCntJJJCEV**.",
+      "details": {
+        "building_id": "recWvEXaCntJJJCEV",
+        "building_name": "recWvEXaCntJJJCEV",
+        "rent_price": 1125,
+        "building_owner": "ConsiglioDeiDieci",
+        "event_type": "rent_payment_made"
+      },
+      "createdAt": "2025-06-19T16:01:58.156Z",
+      "readAt": null
+    },
     {
       "notificationId": "recYfA4LZZvd09FOk",
       "type": "rent_payment",
@@ -3445,36 +3492,6 @@ Here is the complete data about your current situation:
       },
       "createdAt": "2025-06-07T16:02:18.051Z",
       "readAt": null
-    },
-    {
-      "notificationId": "recSrqXF9gzMuD5IB",
-      "type": "rent_payment",
-      "citizen": "RialtoRacer56",
-      "content": "\u2705 Rent Paid: You paid **1,125 \u269c\ufe0f Ducats** to **ConsiglioDeiDieci** for **recWvEXaCntJJJCEV**.",
-      "details": {
-        "building_id": "recWvEXaCntJJJCEV",
-        "building_name": "recWvEXaCntJJJCEV",
-        "rent_price": 1125,
-        "building_owner": "ConsiglioDeiDieci",
-        "event_type": "rent_payment_made"
-      },
-      "createdAt": "2025-06-06T18:01:47.018Z",
-      "readAt": null
-    },
-    {
-      "notificationId": "recFWr83QEEp090Vn",
-      "type": "rent_payment",
-      "citizen": "RialtoRacer56",
-      "content": "\u2705 Rent Paid: You paid **1,125 \u269c\ufe0f Ducats** to **ConsiglioDeiDieci** for **recWvEXaCntJJJCEV**.",
-      "details": {
-        "building_id": "recWvEXaCntJJJCEV",
-        "building_name": "recWvEXaCntJJJCEV",
-        "rent_price": 1125,
-        "building_owner": "ConsiglioDeiDieci",
-        "event_type": "rent_payment_made"
-      },
-      "createdAt": "2025-06-05T18:02:55.993Z",
-      "readAt": null
     }
   ],
   "building_types": {
@@ -3715,7 +3732,7 @@ Here is the complete data about your current situation:
       "pointType": "building"
     }
   },
-  "timestamp": "2025-06-18T21:13:41.071974+02:00",
+  "timestamp": "2025-06-21T23:01:13.908064+02:00",
   "building_ownership_relevancies": []
 }
 
