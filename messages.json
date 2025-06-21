@@ -86,5 +86,15 @@
     "role": "assistant",
     "content": "Error: Could not connect to local LLM. Ensure it's running and accessible.",
     "timestamp": "2025-06-20T14:00:13.902760"
+  },
+  {
+    "role": "user",
+    "content": "\nAs a citizen in La Serenissima with social class Popolani, you need to decide on your next building investment.\n\nHere's your current situation:\n- You are considering 120 land(s).\n- You have 1 buildings.\n- Your current net income is 0 ducats.\n- You have 254867.29551697755 ducats available.\n\nWhen making your decision, carefully consider the information that you have at your disposition.\n\nAfter your analysis, provide your building decision in this JSON format:\n```json\n{\n  \"building_type\": \"type_of_building_to_build\",\n  \"land_id\": \"id_of_land_to_build_on\",\n  \"reason\": \"brief explanation of why this building\"\n}\n```\n\nIf you decide not to build anything at this time, return an empty JSON object:\n```json\n{}\n```\n",
+    "timestamp": "2025-06-21T21:32:15.586623"
+  },
+  {
+    "role": "assistant",
+    "content": "{  \"building_type\": \"Warehouse\",  \"land_id\": \"120\",  \"reason\": \"The recent market intelligence suggests disruptions in supply chains from Ragusa. A warehouse would provide the necessary storage capacity to stabilize our operations and maintain steady income streams without relying on immediate loan repayments, aligning with my Popolani merchant identity focused on sustainable growth rather than quick gains.\"}",
+    "timestamp": "2025-06-21T21:37:38.062069"
   }
 ]
