@@ -8,7 +8,7 @@ Here is the complete data about your current situation:
 {
   "citizen": {
     "username": "adriatic_captain",
-    "ducats": 374348.5611910998,
+    "ducats": 387250.0116740025,
     "social_class": "Popolani",
     "description": "Once a master of maritime commerce, Stefano now applies his calculating mercantile instincts to the humble art of breadmaking, treating each loaf as carefully as he once managed precious cargo manifests. His transition from sea captain to baker has humbled his pride but sharpened his adaptability, as he meticulously studies grain markets and customer preferences with the same intensity he once reserved for wind patterns and trade routes. Though the flour dust on his hands has replaced salt spray, his eyes still hold the distant gaze of a man who dreams of commanding vessels again, viewing his current station as merely another port of call in his journey back to maritime prosperity.",
     "core_personality": "[\"Adaptable\", \"Restless\", \"Restoration-focused\"]",
@@ -3290,6 +3290,25 @@ Here is the complete data about your current situation:
   ],
   "recent_notifications_for_ai": [
     {
+      "notificationId": "recw38ZXWDY8iBsJ8",
+      "type": "rent_payment",
+      "citizen": "adriatic_captain",
+      "content": "\ud83d\udcec **Rent Received Summary** \ud83d\udcec\nYou received a total of **1,425 \u269c\ufe0f Ducats** from your properties today.\n\nDetails:\n- \u2705 **1,425 \u269c\ufe0f** from **Lorenzo Bellavita** for **Fisherman's Cottage at Fondamenta dei Dorsoduranti**.\n",
+      "details": {
+        "event_type": "landlord_rent_summary",
+        "total_received": 1425,
+        "payments": [
+          {
+            "occupant_name": "Lorenzo Bellavita",
+            "building_name": "Fisherman's Cottage at Fondamenta dei Dorsoduranti",
+            "amount": 1425
+          }
+        ]
+      },
+      "createdAt": "2025-06-21T16:03:30.706Z",
+      "readAt": null
+    },
+    {
       "notificationId": "recgS4QeQQdjZ0L3t",
       "type": "rent_payment",
       "citizen": "adriatic_captain",
@@ -3829,25 +3848,6 @@ Here is the complete data about your current situation:
         ]
       },
       "createdAt": "2025-06-07T16:03:32.439Z",
-      "readAt": null
-    },
-    {
-      "notificationId": "rec7sAh8QvGTNXHIu",
-      "type": "rent_payment",
-      "citizen": "adriatic_captain",
-      "content": "\ud83d\udcec **Rent Received Summary** \ud83d\udcec\nYou received a total of **1,425 \u269c\ufe0f Ducats** from your properties today.\n\nDetails:\n- \u2705 **1,425 \u269c\ufe0f** from **Lorenzo Bellavita** for **Fisherman's Cottage at Fondamenta dei Dorsoduranti**.\n",
-      "details": {
-        "event_type": "landlord_rent_summary",
-        "total_received": 1425,
-        "payments": [
-          {
-            "occupant_name": "Lorenzo Bellavita",
-            "building_name": "Fisherman's Cottage at Fondamenta dei Dorsoduranti",
-            "amount": 1425
-          }
-        ]
-      },
-      "createdAt": "2025-06-06T18:02:58.972Z",
       "readAt": null
     }
   ],
@@ -4755,7 +4755,7 @@ Here is the complete data about your current situation:
       "pointType": "building"
     }
   },
-  "timestamp": "2025-06-20T21:05:20.514731+02:00",
+  "timestamp": "2025-06-21T21:32:46.775841+02:00",
   "building_ownership_relevancies": [
     {
       "asset": "canal_45.439843_12.320672",
