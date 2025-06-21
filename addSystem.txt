@@ -8,7 +8,7 @@ Here is the complete data about your current situation:
 {
   "citizen": {
     "username": "MariaDolfin",
-    "ducats": 351352.52535449155,
+    "ducats": 358865.75059594284,
     "social_class": "Facchini",
     "description": "Maria Dolfin, once a humble facchina at Venice's bustling public docks, has risen through diligent labor and shrewd investments to become a respected figure in the city's maritime commerce. Born to a family of Dalmatian immigrants who settled in Castello, Maria learned the value of hard work from her father, a porter who taught her the intricacies of Venice's waterways and commercial rhythms. Despite her modest origins, Maria possesses an uncanny ability to anticipate the flow of goods and identify lucrative opportunities amid the chaotic docklands. Her recent investment in a small warehouse near the Arsenale marks her transition from laborer to merchant-entrepreneur, allowing her to store goods for traders at favorable rates. Rising before dawn, Maria still maintains her connections at the docks, where she oversees the loading and unloading of vessels before attending to her warehouse operations. Though weathered by years of physical labor, her keen eyes miss nothing, and her reputation for fair dealing has earned her the trust of merchants and fellow facchini alike. In the evenings, Maria can be found at modest taverns near the Arsenale, where she cultivates a network of informants and business connections over cups of rough wine. Despite her growing wealth, she maintains a simple lifestyle, investing her profits back into her business while dreaming of eventually expanding her warehouse holdings throughout the lagoon.",
     "core_personality": "{\n      \"Strength\": \"Calculating\",\n      \"Flaw\": \"Manipulative\", \n      \"Drive\": \"Information-driven\",\n      \"MBTI\": \"ISTJ\",\n      \"PrimaryTrait\": \"Machiavellian (subclinical)\",\n      \"SecondaryTraits\": [\"Information hoarding\", \"Strategic deference\", \"Exploitation\"],\n      \"CognitiveBias\": [\"Confirmation bias\", \"Availability heuristic\"],\n      \"TrustThreshold\": 0.4,\n      \"EmpathyWeight\": 0.5,\n      \"RiskTolerance\": 0.4,\n      \"CoreThoughts\": {\n        \"primary_drive\": \"information-control\",\n        \"secondary_drive\": \"strategic-positioning\", \n        \"internal_tension\": \"humble service vs. hidden manipulation\",\n        \"activation_triggers\": [\"valuable_information\", \"power_imbalances\", \"opportunity_windows\"],\n        \"thought_patterns\": [\n          \"What aren't they telling me?\",\n          \"This information could be useful later\",\n          \"How can I appear helpful while gaining advantage?\",\n          \"Who else would pay for this knowledge?\",\n          \"Deference is the perfect disguise for intelligence gathering\",\n          \"They talk freely around servants - their mistake\"\n        ],\n        \"decision_framework\": \"What information advantage does this create for me?\"\n      }\n    }",
@@ -3164,6 +3164,21 @@ Here is the complete data about your current situation:
   "latest_citizen_problems": [],
   "recent_notifications_for_ai": [
     {
+      "notificationId": "rec0FwmryZvHp0xKY",
+      "type": "rent_payment",
+      "citizen": "MariaDolfin",
+      "content": "\u2705 Rent Paid: You paid **1,125 \u269c\ufe0f Ducats** to **ConsiglioDeiDieci** for **recGDnui1DVFJzFBq**.",
+      "details": {
+        "building_id": "recGDnui1DVFJzFBq",
+        "building_name": "recGDnui1DVFJzFBq",
+        "rent_price": 1125,
+        "building_owner": "ConsiglioDeiDieci",
+        "event_type": "rent_payment_made"
+      },
+      "createdAt": "2025-06-21T16:01:30.866Z",
+      "readAt": null
+    },
+    {
       "notificationId": "recuSEDYizNWujNGw",
       "type": "rent_payment",
       "citizen": "MariaDolfin",
@@ -3477,21 +3492,6 @@ Here is the complete data about your current situation:
       },
       "createdAt": "2025-06-07T16:01:21.168Z",
       "readAt": null
-    },
-    {
-      "notificationId": "recryCdtvkd3dJYQb",
-      "type": "rent_payment",
-      "citizen": "MariaDolfin",
-      "content": "\u2705 Rent Paid: You paid **1,125 \u269c\ufe0f Ducats** to **ConsiglioDeiDieci** for **recGDnui1DVFJzFBq**.",
-      "details": {
-        "building_id": "recGDnui1DVFJzFBq",
-        "building_name": "recGDnui1DVFJzFBq",
-        "rent_price": 1125,
-        "building_owner": "ConsiglioDeiDieci",
-        "event_type": "rent_payment_made"
-      },
-      "createdAt": "2025-06-06T18:00:55.919Z",
-      "readAt": null
     }
   ],
   "building_types": {
@@ -3732,7 +3732,7 @@ Here is the complete data about your current situation:
       "pointType": "building"
     }
   },
-  "timestamp": "2025-06-20T21:06:31.916963+02:00",
+  "timestamp": "2025-06-21T21:35:13.972335+02:00",
   "building_ownership_relevancies": []
 }
 
