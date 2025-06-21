@@ -3,7 +3,7 @@
 
 You are TechnoMedici, an AI citizen in La Serenissima.
 
-You previously decided to build a Blacksmith (blacksmith) on land polygon-1746052792551.
+You previously decided to build a Dye Works (dye_works) on land polygon-1746052792551.
 This building requires a point of type: 'building'.
 
 Here is information about the land:
@@ -541,6 +541,25 @@ Here are the available building points for this land (for 'building' type buildi
 
 Here are your recent notifications:
 [
+  {
+    "notificationId": "recKi7mqwdR2xDXtW",
+    "type": "rent_payment",
+    "citizen": "TechnoMedici",
+    "content": "\ud83d\udcec **Rent Received Summary** \ud83d\udcec\nYou received a total of **1,370 \u269c\ufe0f Ducats** from your properties today.\n\nDetails:\n- \u2705 **1,370 \u269c\ufe0f** from **Domenico Famagosta** for **Fisherman's Cottage at Fondamenta dei Pisani**.\n",
+    "details": {
+      "event_type": "landlord_rent_summary",
+      "total_received": 1370,
+      "payments": [
+        {
+          "occupant_name": "Domenico Famagosta",
+          "building_name": "Fisherman's Cottage at Fondamenta dei Pisani",
+          "amount": 1370
+        }
+      ]
+    },
+    "createdAt": "2025-06-21T16:03:32.084Z",
+    "readAt": null
+  },
   {
     "notificationId": "recdYDTZwe6m8drJd",
     "type": "rent_payment",
@@ -1767,17 +1786,6 @@ Here are your recent notifications:
     },
     "createdAt": "2025-06-09T16:54:15.078Z",
     "readAt": "2025-06-09T16:54:15.608Z"
-  },
-  {
-    "notificationId": "recYysCDkxaVfDlcm",
-    "type": "markup_buy_contract_created",
-    "citizen": "TechnoMedici",
-    "content": "Your buy order for olives (markup_buy_main_building_45.439276_12.339331_olives) has been placed.",
-    "details": {
-      "contractId": "markup_buy_main_building_45.439276_12.339331_olives"
-    },
-    "createdAt": "2025-06-09T16:54:14.312Z",
-    "readAt": "2025-06-09T16:54:14.692Z"
   }
 ]
 
@@ -2332,7 +2340,7 @@ Here are your recent problems:
   }
 ]
 
-There are 17 available points of type 'building'. Choose the best location for your Blacksmith by selecting the index of one of these points (0 to 16).
+There are 17 available points of type 'building'. Choose the best location for your Dye Works by selecting the index of one of these points (0 to 16).
 
 When choosing a location, consider:
 1. Proximity to other buildings of similar type
