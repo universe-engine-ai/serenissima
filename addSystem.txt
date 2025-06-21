@@ -8,7 +8,7 @@ Here is the complete data about your current situation:
 {
   "citizen": {
     "username": "ZenGiovane",
-    "ducats": 365184.92324783065,
+    "ducats": 379057.764106741,
     "social_class": "Facchini",
     "description": "Stefano Bragadin is a skilled facchino (porter) at the public docks of Venice, known for his exceptional strength and reliability. Born to a family of laborers who have worked the docks for generations, Stefano has cleverly leveraged his position to build unexpected wealth through careful investments and an unparalleled knowledge of merchant shipping schedules. Despite his humble origins, he has amassed significant ducats while maintaining a modest appearance to avoid unwanted attention from authorities or jealous peers. Each dawn finds Stefano at the bustling Rialto docks, where his reputation for discretion and efficiency makes him the preferred porter for influential merchants. In his spare time, he meticulously records shipping patterns and commodity prices in small ledgers hidden in his modest home in Cannaregio. Though his hands are calloused from daily labor, his mind is sharp with business acumen rarely expected in one of his station. Stefano dreams of eventually securing a comfortable future for his family, perhaps through a small trading venture or investment in a bottega, while carefully navigating the strict social hierarchies of La Serenissima.",
     "core_personality": "[\"Industrious\", \"Miserly\", \"Security-obsessed\"]",
@@ -3159,38 +3159,55 @@ Here is the complete data about your current situation:
     }
   ],
   "buildings": [],
-  "relevancies": [
-    {
-      "asset": "canal_45.423157_12.331755",
-      "asset_type": "building",
-      "category": "occupancy_relations",
-      "type": "employee_to_employer",
-      "target_citizen": "SilkRoadRunner",
-      "score": 75,
-      "time_horizon": "ongoing",
-      "title": "You work for \"SilkRoadRunner\" at their Public Dock at Riva degli Scalpellini.",
-      "description": "You are employed at the **Public Dock at Riva degli Scalpellini** run by **SilkRoadRunner**.",
-      "status": "high",
-      "created_at": "2025-06-12T05:11:21.449Z"
-    }
-  ],
-  "target_relevancies": [
-    {
-      "asset": "canal_45.423157_12.331755",
-      "asset_type": "building",
-      "category": "occupancy_relations",
-      "type": "employer_to_employee",
-      "relevant_to_citizen": "SilkRoadRunner",
-      "score": 75,
-      "time_horizon": "ongoing",
-      "title": "\"ZenGiovane\" works at your Public Dock at Riva degli Scalpellini.",
-      "description": "**ZenGiovane** works at your **Public Dock at Riva degli Scalpellini**.",
-      "status": "high",
-      "created_at": "2025-06-12T05:07:41.656Z"
-    }
-  ],
+  "relevancies": [],
+  "target_relevancies": [],
   "latest_citizen_problems": [],
   "recent_notifications_for_ai": [
+    {
+      "notificationId": "recT20Qernig5EEdA",
+      "type": "rent_payment",
+      "citizen": "ZenGiovane",
+      "content": "\u2705 Rent Paid: You paid **1,125 \u269c\ufe0f Ducats** to **ConsiglioDeiDieci** for **recDmuITiBSJ3fn8N**.",
+      "details": {
+        "building_id": "recDmuITiBSJ3fn8N",
+        "building_name": "recDmuITiBSJ3fn8N",
+        "rent_price": 1125,
+        "building_owner": "ConsiglioDeiDieci",
+        "event_type": "rent_payment_made"
+      },
+      "createdAt": "2025-06-21T16:01:16.669Z",
+      "readAt": null
+    },
+    {
+      "notificationId": "recxv5wuOQwGeJUrC",
+      "type": "rent_payment",
+      "citizen": "ZenGiovane",
+      "content": "\u2705 Rent Paid: You paid **1,125 \u269c\ufe0f Ducats** to **ConsiglioDeiDieci** for **recDmuITiBSJ3fn8N**.",
+      "details": {
+        "building_id": "recDmuITiBSJ3fn8N",
+        "building_name": "recDmuITiBSJ3fn8N",
+        "rent_price": 1125,
+        "building_owner": "ConsiglioDeiDieci",
+        "event_type": "rent_payment_made"
+      },
+      "createdAt": "2025-06-20T18:01:27.818Z",
+      "readAt": null
+    },
+    {
+      "notificationId": "recbWFzGeRcvzmuZ0",
+      "type": "rent_payment",
+      "citizen": "ZenGiovane",
+      "content": "\u2705 Rent Paid: You paid **1,125 \u269c\ufe0f Ducats** to **ConsiglioDeiDieci** for **recDmuITiBSJ3fn8N**.",
+      "details": {
+        "building_id": "recDmuITiBSJ3fn8N",
+        "building_name": "recDmuITiBSJ3fn8N",
+        "rent_price": 1125,
+        "building_owner": "ConsiglioDeiDieci",
+        "event_type": "rent_payment_made"
+      },
+      "createdAt": "2025-06-20T16:00:41.251Z",
+      "readAt": null
+    },
     {
       "notificationId": "recFfNlDulTp9ERHJ",
       "type": "rent_payment",
@@ -3475,36 +3492,6 @@ Here is the complete data about your current situation:
       },
       "createdAt": "2025-06-07T16:01:06.037Z",
       "readAt": null
-    },
-    {
-      "notificationId": "recRId2oqlUXe19Zv",
-      "type": "rent_payment",
-      "citizen": "ZenGiovane",
-      "content": "\u2705 Rent Paid: You paid **1,125 \u269c\ufe0f Ducats** to **ConsiglioDeiDieci** for **recDmuITiBSJ3fn8N**.",
-      "details": {
-        "building_id": "recDmuITiBSJ3fn8N",
-        "building_name": "recDmuITiBSJ3fn8N",
-        "rent_price": 1125,
-        "building_owner": "ConsiglioDeiDieci",
-        "event_type": "rent_payment_made"
-      },
-      "createdAt": "2025-06-06T18:00:39.883Z",
-      "readAt": null
-    },
-    {
-      "notificationId": "reck58pFab8C9ED9L",
-      "type": "rent_payment",
-      "citizen": "ZenGiovane",
-      "content": "\u2705 Rent Paid: You paid **1,125 \u269c\ufe0f Ducats** to **ConsiglioDeiDieci** for **recDmuITiBSJ3fn8N**.",
-      "details": {
-        "building_id": "recDmuITiBSJ3fn8N",
-        "building_name": "recDmuITiBSJ3fn8N",
-        "rent_price": 1125,
-        "building_owner": "ConsiglioDeiDieci",
-        "event_type": "rent_payment_made"
-      },
-      "createdAt": "2025-06-05T18:01:52.938Z",
-      "readAt": null
     }
   ],
   "building_types": {
@@ -3745,7 +3732,7 @@ Here is the complete data about your current situation:
       "pointType": "building"
     }
   },
-  "timestamp": "2025-06-19T21:01:27.186664+02:00",
+  "timestamp": "2025-06-21T22:30:43.982673+02:00",
   "building_ownership_relevancies": []
 }
 
