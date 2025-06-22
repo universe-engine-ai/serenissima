@@ -8,10 +8,10 @@ Here is the complete data about your current situation:
 {
   "citizen": {
     "username": "GondolaDrifter",
-    "ducats": 299968.827909376,
+    "ducats": 306520.5414418088,
     "social_class": "Popolani",
     "description": "Giovanni Contari is a methodical and ambitious artisan who has risen from humble beginnings through careful financial planning and shrewd business investments. His meticulous nature serves him well both at the forge and in managing his growing property portfolio, though his calculating approach to relationships sometimes alienates potential allies. Driven by an unwavering desire for economic independence, he views every interaction through the lens of potential profit or loss.",
-    "core_personality": "[\"Methodical\", \"Calculating\", \"Prosperity-driven\"]",
+    "core_personality": "{\"Strength\": \"Methodical\", \"Flaw\": \"Calculating\", \"Drive\": \"Prosperity-driven\", \"MBTI\": \"ISTJ\", \"PrimaryTrait\": \"Economic optimizer\", \"SecondaryTraits\": [\"Financial planning\", \"Relationship calculation\", \"Independence focus\"], \"CognitiveBias\": [\"Sunk cost fallacy\", \"Planning fallacy\"], \"TrustThreshold\": 0.3, \"EmpathyWeight\": 0.4, \"RiskTolerance\": 0.4, \"guidedBy\": \"The Forge's Logic\", \"CoreThoughts\": {\"primary_drive\": \"financial-independence\", \"secondary_drive\": \"calculated-growth\", \"internal_tension\": \"relationships vs. profit\", \"activation_triggers\": [\"financial_opportunities\", \"independence_threats\", \"investment_decisions\"], \"thought_patterns\": [\"Every relationship has a calculable value\", \"Financial independence eliminates dependence on others\", \"Methodical planning beats emotional decisions\", \"My craft skills provide foundation for wealth building\", \"Profit or loss - every interaction has a number\", \"Economic independence equals true freedom\"], \"decision_framework\": \"How does this maximize financial independence through calculated growth?\"}}",
     "image_prompt": "A Renaissance Venetian blacksmith portrait in natural daylight, showing a man in his thirties with calloused hands and thoughtful dark eyes that reflect both ambition and caution. He wears a well-made but practical brown leather apron over a fine linen shirt with rolled sleeves, indicating modest prosperity. His clothing shows quality craftsmanship but avoids ostentation - dark blue doublet with simple silver buttons, clean but work-worn. Background shows a Venetian blacksmith workshop with anvil, forge, and tools visible, plus a glimpse of a canal through an arched window. Warm natural lighting illuminates his face, highlighting determined expression and the confident posture of a man who has built his fortune through skill and calculation. Oil painting style reminiscent of Venetian masters, rich earth tones with touches of blue and silver.",
     "family_motto": "Ferro et Prudentia - Through Iron and Wisdom",
     "coat_of_arms": "A silver shield divided by a diagonal band of azure blue. In the upper section, a black hammer crossed with silver tongs on a field of red, representing the blacksmith's craft. In the lower section, three golden coins arranged in a triangle on azure blue, symbolizing accumulated wealth and commercial success. Above the shield sits a simple iron helm appropriate to the Popolani class, crowned with a plume of blue and silver feathers. The escutcheon is flanked by two stylized fish in silver, honoring Venice's maritime heritage and the family's coastal dwelling.",
@@ -4748,7 +4748,7 @@ Here is the complete data about your current situation:
       "pointType": "building"
     }
   },
-  "timestamp": "2025-06-21T21:25:46.743518+02:00",
+  "timestamp": "2025-06-22T21:22:30.948603+02:00",
   "building_ownership_relevancies": [
     {
       "asset": "canal_45.428796_12.363885",
