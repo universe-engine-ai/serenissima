@@ -8,10 +8,10 @@ Here is the complete data about your current situation:
 {
   "citizen": {
     "username": "GreenThumb",
-    "ducats": 335782.7401040582,
+    "ducats": 338756.0968702746,
     "social_class": "Facchini",
     "description": "Paola Cimenti is a resourceful facchini woman who has established herself in Venice's bustling commercial world despite her humble origins. Born to a family of cargo porters who worked the docks for generations, Paola demonstrated early aptitude with plants and healing remedies learned from her grandmother. Through persistence and natural talent, she secured an apprenticeship at a local apothecary, where she now works preparing herbal remedies and medicinal concoctions. With her substantial savings of over 239,000 ducats\u2014amassed through frugal living and shrewd small investments\u2014Paola has begun expanding her influence by investing in warehousing to support Venice's trading networks. Though lacking formal education, she possesses extensive practical knowledge of medicinal herbs, their cultivation, and applications. Each morning begins before dawn as she tends her small garden of rare medicinal plants, then works long hours at the apothecary, where customers from all social classes seek her remedies for various ailments. Despite her significant wealth, she maintains a modest lifestyle, reinvesting her earnings while dreaming of establishing her own apothecary business that would serve Venetians of all social classes.",
-    "core_personality": "[\"Practical\", \"Blunt\", \"Pride-driven\"]",
+    "core_personality": "{\"Strength\": \"Practical\", \"Flaw\": \"Blunt\", \"Drive\": \"Pride-driven\", \"MBTI\": \"ISTJ\", \"PrimaryTrait\": \"Skilled healer\", \"SecondaryTraits\": [\"Herbal expertise\", \"Cross-class service\", \"Investment wisdom\"], \"CognitiveBias\": [\"Expertise bias\", \"Self-serving bias\"], \"TrustThreshold\": 0.5, \"EmpathyWeight\": 0.7, \"RiskTolerance\": 0.3, \"guidedBy\": \"The Herb's Wisdom\", \"CoreThoughts\": {\"primary_drive\": \"skill-recognition\", \"secondary_drive\": \"practical-service\", \"internal_tension\": \"pride vs. humility\", \"activation_triggers\": [\"skill_recognition\", \"healing_needs\", \"business_opportunities\"], \"thought_patterns\": [\"My remedies work because I understand them completely\", \"Healing serves all classes equally\", \"Practical knowledge beats book learning\", \"My grandmother's wisdom flows through my hands\", \"Hard-earned skills deserve proper recognition\", \"Every patient teaches me something new\"], \"decision_framework\": \"How does this honor my skills while serving practical healing needs?\"}}",
     "image_prompt": "Renaissance Venetian portrait of Paola Cimenti, a working-class woman in her early 30s with an intelligent, observant expression and calloused, capable hands. She wears the practical attire of a skilled apothecary worker\u2014a clean but simple linen dress in earthy green with a modest white apron stained with herbal preparations. Her dark hair is practically arranged under a simple linen cap. She stands in a small, well-organized apothecary workshop filled with glass jars of dried herbs, roots, and powders, wooden shelves lined with labeled containers, and a workbench with mortar and pestle. The afternoon light streams through a small window, illuminating her face with natural, warm lighting. On the workbench lie several medicinal plants she's preparing. Her posture conveys quiet confidence and dignity rather than subservience, despite her working-class status. The background shows glimpses of Venetian architecture through the window. Photorealistic, highly detailed Renaissance style painting, with muted earthy tones and occasional touches of Venetian blue.",
     "family_motto": "Through persistence, wisdom flourishes.",
     "coat_of_arms": "A simple shield divided horizontally, the upper field green (representing healing herbs and growth) and the lower field blue (symbolizing the waters of Venice). At the center, a golden mortar and pestle (representing the apothecary trade) above crossed white oars (honoring her facchini family's work as porters). In the upper right corner, a small silver warehouse symbolizes her business investments. While modest compared to patrician arms, this design incorporates elements permitted to successful cittadini minori.",
@@ -3164,6 +3164,21 @@ Here is the complete data about your current situation:
   "latest_citizen_problems": [],
   "recent_notifications_for_ai": [
     {
+      "notificationId": "recX4Zx2yS81oqisV",
+      "type": "rent_payment",
+      "citizen": "GreenThumb",
+      "content": "\u2705 Rent Paid: You paid **1,125 \u269c\ufe0f Ducats** to **ConsiglioDeiDieci** for **recMcujtwP8zPajFa**.",
+      "details": {
+        "building_id": "recMcujtwP8zPajFa",
+        "building_name": "recMcujtwP8zPajFa",
+        "rent_price": 1125,
+        "building_owner": "ConsiglioDeiDieci",
+        "event_type": "rent_payment_made"
+      },
+      "createdAt": "2025-06-22T18:01:55.088Z",
+      "readAt": null
+    },
+    {
       "notificationId": "recjx1E4YRDAxXiN7",
       "type": "rent_payment",
       "citizen": "GreenThumb",
@@ -3462,36 +3477,6 @@ Here is the complete data about your current situation:
       },
       "createdAt": "2025-06-08T16:01:54.798Z",
       "readAt": null
-    },
-    {
-      "notificationId": "rec3Wg9P0ilLTxNgr",
-      "type": "rent_payment",
-      "citizen": "GreenThumb",
-      "content": "\u2705 Rent Paid: You paid **1,125 \u269c\ufe0f Ducats** to **ConsiglioDeiDieci** for **recMcujtwP8zPajFa**.",
-      "details": {
-        "building_id": "recMcujtwP8zPajFa",
-        "building_name": "recMcujtwP8zPajFa",
-        "rent_price": 1125,
-        "building_owner": "ConsiglioDeiDieci",
-        "event_type": "rent_payment_made"
-      },
-      "createdAt": "2025-06-07T18:01:43.232Z",
-      "readAt": null
-    },
-    {
-      "notificationId": "recgRKuZO0XMVcoFg",
-      "type": "rent_payment",
-      "citizen": "GreenThumb",
-      "content": "\u2705 Rent Paid: You paid **1,125 \u269c\ufe0f Ducats** to **ConsiglioDeiDieci** for **recMcujtwP8zPajFa**.",
-      "details": {
-        "building_id": "recMcujtwP8zPajFa",
-        "building_name": "recMcujtwP8zPajFa",
-        "rent_price": 1125,
-        "building_owner": "ConsiglioDeiDieci",
-        "event_type": "rent_payment_made"
-      },
-      "createdAt": "2025-06-07T16:01:46.449Z",
-      "readAt": null
     }
   ],
   "building_types": {
@@ -3732,7 +3717,7 @@ Here is the complete data about your current situation:
       "pointType": "building"
     }
   },
-  "timestamp": "2025-06-21T21:19:41.557157+02:00",
+  "timestamp": "2025-06-22T21:17:02.921108+02:00",
   "building_ownership_relevancies": []
 }
 
