@@ -3,537 +3,202 @@
 
 You are TechnoMedici, an AI citizen in La Serenissima.
 
-You previously decided to build a Dye Works (dye_works) on land polygon-1746052792551.
+You previously decided to build a Small Warehouse (small_warehouse) on land polygon-1746057051612.
 This building requires a point of type: 'building'.
 
 Here is information about the land:
 [
   {
-    "id": "polygon-1746052792551",
+    "id": "polygon-1746057051612",
     "centroid": {
-      "lat": 45.425216557122816,
-      "lng": 12.320862609698239
+      "lat": 45.43390471257222,
+      "lng": 12.349090419350262
     },
     "center": {
-      "lat": 45.425216557122816,
-      "lng": 12.320862609698239
+      "lat": 45.43387161032942,
+      "lng": 12.349266848445648
     },
     "bridgePoints": [
       {
         "edge": {
-          "lat": 45.42656892330011,
-          "lng": 12.320401269747677
+          "lat": 45.43396703982063,
+          "lng": 12.349960647163982
         },
         "connection": {
-          "targetPolygonId": "polygon-1746052782991",
-          "targetPointIndex": 3,
+          "targetPolygonId": "polygon-1746057275948",
+          "targetPointIndex": 9,
           "targetPoint": {
-            "lat": 45.426683375357264,
-            "lng": 12.320452768160763
+            "lat": 45.434027182820465,
+            "lng": 12.350175577057785
           },
-          "distance": 13.345971538087403,
-          "id": "52f9bf83-0799-4650-8e9d-86256c8cea77",
-          "historicalName": "Ponte delle Penitenti",
-          "englishName": "Bridge of the Penitents",
-          "historicalDescription": "Named for its proximity to the convent in Calle de le Convertite, where 'convertite' referred to reformed prostitutes who had taken vows of penitence. This bridge would have been a pathway for these women to reach the church for prayer and services.",
+          "distance": 18.054958326966027,
+          "id": "2e174704-764f-43ea-9c1a-817e86c08d56",
+          "historicalName": "Ponte dei Forni",
+          "englishName": "Bridge of the Bakeries",
+          "historicalDescription": "This bridge takes its name from the multiple bakeries ('forni') that were historically located in this area of San Marco. During the Renaissance, this location was known for providing bread to the Doge's Palace and surrounding noble residences. The name 'Calle dei Forni' itself indicates the street of the bakeries, making this a logical name for a bridge in this vicinity.",
           "location": {
             "midpoint": {
-              "lat": 45.42662614932868,
-              "lng": 12.32042701895422
+              "lat": 45.43399711132055,
+              "lng": 12.350068112110883
             }
           }
         },
-        "id": "bridge_45.426569_12.320401"
+        "id": "bridge_45.433967_12.349961"
       },
       {
         "edge": {
-          "lat": 45.426410798058605,
-          "lng": 12.32102139647192
+          "lat": 45.43414772964816,
+          "lng": 12.348834119377727
         },
         "connection": {
-          "targetPolygonId": "polygon-1746052782991",
-          "targetPointIndex": 2,
-          "targetPoint": {
-            "lat": 45.42653428618193,
-            "lng": 12.321060020281735
-          },
-          "distance": 14.058184372349464,
-          "id": "52f9bf83-0799-4650-8e9d-86256c8cea77",
-          "historicalName": "Ponte dei Scrivani",
-          "englishName": "Bridge of the Scribes",
-          "historicalDescription": "This bridge was commonly used by scribes and notaries who worked in the Dorsoduro district, documenting legal matters for the nearby religious institutions, including those connected to the Convertite convent.",
-          "location": {
-            "midpoint": {
-              "lat": 45.426472542120266,
-              "lng": 12.321040708376827
-            }
-          }
-        },
-        "id": "bridge_45.426411_12.321021"
-      },
-      {
-        "edge": {
-          "lat": 45.4262526728171,
-          "lng": 12.321641523196163
-        },
-        "connection": {
-          "targetPolygonId": "polygon-1746052782991",
+          "targetPolygonId": "polygon-1746056974299",
           "targetPointIndex": 1,
           "targetPoint": {
-            "lat": 45.426385197006596,
-            "lng": 12.321667272402706
+            "lat": 45.43419807674106,
+            "lng": 12.348722588538523
           },
-          "distance": 14.872394589355972,
-          "id": "52f9bf83-0799-4650-8e9d-86256c8cea77",
-          "historicalName": "Ponte della Carit\u00e0 Vecchia",
-          "englishName": "Bridge of the Old Charity",
-          "historicalDescription": "Named for the charitable works performed by the nuns and patrons who supported the reformed women in the Convertite area of Dorsoduro. It served as a connection point for benefactors bringing donations to the convent.",
+          "distance": 10.34778389639208,
+          "id": "05f854af-a5a5-4691-aa46-5216812e0cd0",
+          "historicalName": "Ponte dei Ducali",
+          "englishName": "Bridge of the Ducal Officials",
+          "historicalDescription": "Located near the administrative heart of Venice in the San Marco district, this bridge would likely have been crossed by officials working for the Doge's government. The proximity to the Doge's Palace meant many ducal servants and officials lived or worked in this area, using this bridge daily to reach their posts. The name reflects the bridge's connection to Venetian governance during the Republic.",
           "location": {
             "midpoint": {
-              "lat": 45.42631893491185,
-              "lng": 12.321654397799435
+              "lat": 45.43417290319461,
+              "lng": 12.348778353958124
             }
           }
         },
-        "id": "bridge_45.426253_12.321642"
-      },
-      {
-        "edge": {
-          "lat": 45.42545074019128,
-          "lng": 12.32264574225134
-        },
-        "connection": {
-          "targetPolygonId": "polygon-1746052772601",
-          "targetPointIndex": 2,
-          "targetPoint": {
-            "lat": 45.42530711870125,
-            "lng": 12.3227055171951
-          },
-          "distance": 16.63735045749715,
-          "id": "b8152641-6bf8-49ad-993b-415833ff0add",
-          "historicalName": "Ponte dei Gesuati",
-          "englishName": "Bridge of the Jesuates",
-          "historicalDescription": "Named for its proximity to the Church of the Gesuati (Santa Maria del Rosario) in Dorsoduro. The Jesuates were a religious order who had significant presence in this area during the Renaissance period, and likely had connections to the religious institutions along Calle de le Convertite.",
-          "location": {
-            "midpoint": {
-              "lat": 45.42537892944627,
-              "lng": 12.32267562972322
-            }
-          }
-        },
-        "id": "bridge_45.425451_12.322646"
-      },
-      {
-        "edge": {
-          "lat": 45.42496505804847,
-          "lng": 12.322409707858029
-        },
-        "connection": {
-          "targetPolygonId": "polygon-1746052772601",
-          "targetPointIndex": 1,
-          "targetPoint": {
-            "lat": 45.42485425021188,
-            "lng": 12.322513930836893
-          },
-          "distance": 14.763838163658125,
-          "id": "b8152641-6bf8-49ad-993b-415833ff0add",
-          "historicalName": "Ponte dei Lignaioli",
-          "englishName": "Bridge of the Woodworkers",
-          "historicalDescription": "This bridge was named for the woodworkers' workshops that were established nearby in Dorsoduro. These artisans would have crafted furniture and wooden items for the convents and churches in the area, including those associated with the Convertite.",
-          "location": {
-            "midpoint": {
-              "lat": 45.424909654130175,
-              "lng": 12.32246181934746
-            }
-          }
-        },
-        "id": "bridge_45.424965_12.322410"
-      },
-      {
-        "edge": {
-          "lat": 45.42447937590566,
-          "lng": 12.322173673464718
-        },
-        "connection": {
-          "targetPolygonId": "polygon-1746052772601",
-          "targetPointIndex": 0,
-          "targetPoint": {
-            "lat": 45.42440138172251,
-            "lng": 12.322322344478687
-          },
-          "distance": 14.48562938643072,
-          "id": "b8152641-6bf8-49ad-993b-415833ff0add",
-          "historicalName": "Ponte della Visitazione",
-          "englishName": "Bridge of the Visitation",
-          "historicalDescription": "Named in reference to religious visitations that would occur at the convents in the area, including the one in Calle de le Convertite. It might have been used during ceremonial processions when church officials or noble patrons would formally visit the convent.",
-          "location": {
-            "midpoint": {
-              "lat": 45.42444037881408,
-              "lng": 12.322248008971702
-            }
-          }
-        },
-        "id": "bridge_45.424479_12.322174"
+        "id": "bridge_45.434148_12.348834"
       }
     ],
     "canalPoints": [
       {
         "edge": {
-          "lat": 45.4242572461321,
-          "lng": 12.320939857317867
+          "lat": 45.4329318254225,
+          "lng": 12.348624907074566
         },
         "water": {
-          "lat": 45.42407766836771,
-          "lng": 12.320954317649264
+          "lat": 45.43276131625873,
+          "lng": 12.348543320932865
         },
-        "historicalName": "Fondamenta dei Conversi",
-        "englishName": "Foundation of the Converts",
-        "historicalDescription": "This dock takes its name from its proximity to Calle de le Convertite in Dorsoduro, where there was historically a house for converted women (often former prostitutes who had 'converted' to a religious life). The dock would have served as a landing point for supplies and visitors to this religious institution.",
-        "id": "canal_45.424257_12.320940"
-      },
-      {
-        "edge": {
-          "lat": 45.42456095570254,
-          "lng": 12.32021744902319
-        },
-        "water": {
-          "lat": 45.42441295908136,
-          "lng": 12.320071809314259
-        },
-        "historicalName": "Riva di San Trovaso",
-        "englishName": "Bank of Saint Gervasius and Protasius",
-        "historicalDescription": "Named after the nearby Chiesa di San Trovaso (a Venetian contraction of Saints Gervasius and Protasius), one of the important churches in Dorsoduro. This dock would have served the parish and the surrounding area, located not far from Calle de le Convertite, and would have been used by parishioners and clergy.",
-        "id": "canal_45.424561_12.320217"
-      },
-      {
-        "edge": {
-          "lat": 45.42486466527297,
-          "lng": 12.319495040728512
-        },
-        "water": {
-          "lat": 45.42480275251469,
-          "lng": 12.319254427122088
-        },
-        "historicalName": "Fondamenta dei Penitori",
-        "englishName": "Foundation of the Penitents",
-        "historicalDescription": "This name references the penitent women who resided in the religious house near Calle de le Convertite. During the Renaissance, Venice had several institutions for women who sought to leave their previous life and do penance. The dock would have been used for bringing supplies to these religious communities and was likely maintained by charitable donations from noble Venetian families.",
-        "id": "canal_45.424865_12.319495"
+        "historicalName": "Riva dei Fornai di San Marco",
+        "englishName": "Dock of the Bakers of Saint Mark",
+        "historicalDescription": "This dock would have served the nearby bakeries on Calle dei Forni, which literally means 'Street of the Ovens/Bakeries'. San Marco was one of the most important districts in Renaissance Venice, and bread production was essential to the city's food supply. Bakers (fornai) would have used this dock to receive grain deliveries and distribute baked goods throughout the city via water transport.",
+        "id": "canal_45.432932_12.348625"
       }
     ],
     "buildingPoints": [
       {
-        "lat": 45.4244776638359,
-        "lng": 12.321373633527958,
-        "streetName": "Calle dei Penitenti",
-        "streetNameEnglish": "Street of the Penitents",
-        "streetDescription": "Named after the penitent women who lived in this area of Dorsoduro, often associated with the nearby Convertite convent where former prostitutes lived a life of religious devotion after converting.",
-        "id": "building_45.424478_12.321374"
+        "lat": 45.432986253342904,
+        "lng": 12.34921629842145,
+        "streetName": "Calle dei Pestrineri",
+        "streetNameEnglish": "Street of the Grain Millers",
+        "streetDescription": "Near San Marco, grain millers (pestrineri) would process wheat for the bakeries (forni) in the area. This name reflects the close connection between the millers who ground flour and the bakers who used it to make bread for Venetian citizens and visiting merchants.",
+        "id": "building_45.432986_12.349216"
       },
       {
-        "lat": 45.4243858686638,
-        "lng": 12.32187798099693,
-        "streetName": "Fondamenta della Carit\u00e0",
-        "streetNameEnglish": "Foundation of Charity",
-        "streetDescription": "Named after the charitable works performed in this area, particularly toward reformed women. The fondamenta would have run along a canal in Dorsoduro where charitable institutions provided support to the convertite and other needy groups.",
-        "id": "building_45.424386_12.321878"
+        "lat": 45.433564114050824,
+        "lng": 12.348683390030535,
+        "streetName": "Sottoportego del Forno Ducale",
+        "streetNameEnglish": "Passageway of the Ducal Bakery",
+        "streetDescription": "This covered passageway would have led to one of the special bakeries that supplied bread to the Doge's Palace. The ducal household required large quantities of fine bread, and dedicated bakers with special privileges would have worked near San Marco to ensure fresh delivery to the palace.",
+        "id": "building_45.433564_12.348683"
       },
       {
-        "lat": 45.424870050741255,
-        "lng": 12.320074591040937,
-        "streetName": "Sottoportego del Rosario",
-        "streetNameEnglish": "Underpass of the Rosary",
-        "streetDescription": "Named for the rosary prayers that were common among the reformed women of the area. This covered passageway would have connected to areas where religious devotion was practiced near the Convertite convent.",
-        "id": "building_45.424870_12.320075"
+        "lat": 45.43345319767021,
+        "lng": 12.349380546617203,
+        "streetName": "Rio Ter\u00e0 dei Panificatori",
+        "streetNameEnglish": "Filled Canal of the Breadmakers",
+        "streetDescription": "This former canal was filled in (rio ter\u00e0) and became associated with the breadmaking guild that had numerous members in this district. The Panificatori guild was influential in Renaissance Venice, controlling bread production which was essential for feeding the city's population.",
+        "id": "building_45.433453_12.349381"
       },
       {
-        "lat": 45.424914494786336,
-        "lng": 12.320573672210553,
-        "streetName": "Rio Ter\u00e0 della Redenzione",
-        "streetNameEnglish": "Filled Canal of Redemption",
-        "streetDescription": "This former canal, now filled in, references the spiritual redemption sought by the women who entered religious life at the Convertite. Located in Dorsoduro, it would have been an important pathway for those seeking spiritual renewal.",
-        "id": "building_45.424914_12.320574"
+        "lat": 45.433962450693016,
+        "lng": 12.34941942615068,
+        "streetName": "Salizada della Farina",
+        "streetNameEnglish": "Paved Street of the Flour",
+        "streetDescription": "A salizada was a prestigious paved street, and this one would have connected the flour warehouses to the bakeries of San Marco. Flour distribution was carefully regulated in Venice, as bread was a staple food, and this street would have seen the daily transport of this essential ingredient to nearby ovens.",
+        "id": "building_45.433962_12.349419"
       },
       {
-        "lat": 45.4249194732566,
-        "lng": 12.321205575929023,
-        "streetName": "Calle della Maddalena",
-        "streetNameEnglish": "Street of Mary Magdalene",
-        "streetDescription": "Named after Mary Magdalene, the biblical patron saint of reformed prostitutes, making it especially appropriate near the Convertite convent in Dorsoduro where former prostitutes lived in religious devotion.",
-        "id": "building_45.424919_12.321206"
+        "lat": 45.43441632030042,
+        "lng": 12.349228580749102,
+        "streetName": "Ruga dei Pistor",
+        "streetNameEnglish": "Commercial Street of the Bakers",
+        "streetDescription": "A 'ruga' was a commercial street lined with shops. 'Pistor' is the Venetian term for baker. This street would have featured several bakery shops where Venetians could purchase bread. The bakers' guild (Arte dei Pistori) was well-organized and had shops concentrated in specific areas like this one near San Marco.",
+        "id": "building_45.434416_12.349229"
       },
       {
-        "lat": 45.42486099792829,
-        "lng": 12.322055354233079,
-        "streetName": "Corte delle Novizie",
-        "streetNameEnglish": "Court of the Novices",
-        "streetDescription": "A small courtyard named for the novices (new entrants to religious life) who would have lived in the area near the Convertite convent as they began their new spiritual journey.",
-        "id": "building_45.424861_12.322055"
-      },
-      {
-        "lat": 45.425311972725154,
-        "lng": 12.319299504446294,
-        "streetName": "Salizada dei Gesuati",
-        "streetNameEnglish": "Paved Road of the Jesuates",
-        "streetDescription": "Named after the Jesuate order who had a significant presence in Dorsoduro. This paved street (salizada) would have connected to their monastery and would have been near the area of the Convertite.",
-        "id": "building_45.425312_12.319300"
-      },
-      {
-        "lat": 45.42538165158783,
-        "lng": 12.320151389362154,
-        "streetName": "Calle del Monastero Vecchio",
-        "streetNameEnglish": "Street of the Old Monastery",
-        "streetDescription": "Referencing an older religious building that predated the later religious establishments in the area. This street in Dorsoduro would have preserved the memory of earlier religious foundations.",
-        "id": "building_45.425382_12.320151"
-      },
-      {
-        "lat": 45.425255763332984,
-        "lng": 12.320576474128258,
-        "streetName": "Fondamenta degli Incurabili",
-        "streetNameEnglish": "Foundation of the Incurables",
-        "streetDescription": "Named after the Ospedale degli Incurabili, a Renaissance hospital in Dorsoduro that treated those with incurable diseases. This waterside street would have been connected to the charitable networks that also supported the Convertite.",
-        "id": "building_45.425256_12.320576"
-      },
-      {
-        "lat": 45.42536723462664,
-        "lng": 12.321388322304577,
-        "streetName": "Ruga dei Merletti",
-        "streetNameEnglish": "Street of the Lace Makers",
-        "streetDescription": "Named for the lace-making trade that provided honorable employment for women, including those reformed at the Convertite. This commercial street in Dorsoduro would have housed workshops where such trades were practiced.",
-        "id": "building_45.425367_12.321388"
-      },
-      {
-        "lat": 45.42540543458871,
-        "lng": 12.321942903552934,
-        "streetName": "Calle della Piet\u00e0",
-        "streetNameEnglish": "Street of Mercy",
-        "streetDescription": "Named after the concept of divine mercy, which was central to the mission of helping reformed women. This street in Dorsoduro would have been part of the network of charitable and religious institutions in the area.",
-        "id": "building_45.425405_12.321943"
-      },
-      {
-        "lat": 45.425744377846435,
-        "lng": 12.319477104450241,
-        "streetName": "Campiello della Clausura",
-        "streetNameEnglish": "Small Square of the Enclosure",
-        "streetDescription": "A small square named for the enclosed religious life lived by the women at the Convertite. This space in Dorsoduro would have been near the boundaries of the convent where the reformed women lived under religious vows.",
-        "id": "building_45.425744_12.319477"
-      },
-      {
-        "lat": 45.42585115264745,
-        "lng": 12.320069288488082,
-        "streetName": "Rio Ter\u00e0 delle Pentite",
-        "streetNameEnglish": "Filled Canal of the Repentant Women",
-        "streetDescription": "A former canal, now filled in, named specifically for the repentant women who lived at the Convertite convent. This street in Dorsoduro would have been a major thoroughfare near the religious institution.",
-        "id": "building_45.425851_12.320069"
-      },
-      {
-        "lat": 45.4258484390924,
-        "lng": 12.320643921809001,
-        "streetName": "Calle dei Voti",
-        "streetNameEnglish": "Street of the Vows",
-        "streetDescription": "Named for the religious vows taken by women entering consecrated life, including those at the Convertite. This narrow street in Dorsoduro would have led toward the religious institutions where such vows were taken.",
-        "id": "building_45.425848_12.320644"
-      },
-      {
-        "lat": 45.42583713992679,
-        "lng": 12.32124869880728,
-        "streetName": "Sottoportego della Disciplina",
-        "streetNameEnglish": "Underpass of Discipline",
-        "streetDescription": "Named for the disciplined religious life practiced by the reformed women. This covered passageway in Dorsoduro would have connected buildings associated with religious training and reformation.",
-        "id": "building_45.425837_12.321249"
-      },
-      {
-        "lat": 45.42579525874528,
-        "lng": 12.322037004716977,
-        "streetName": "Fondamenta Santa Maria della Grazia",
-        "streetNameEnglish": "Foundation of Saint Mary of Grace",
-        "streetDescription": "Named after the concept of divine grace that was seen as necessary for the reformation of the convertite. This waterside street in Dorsoduro would have been named for a nearby church or shrine dedicated to Mary.",
-        "id": "building_45.425795_12.322037"
-      },
-      {
-        "lat": 45.42577892993708,
-        "lng": 12.32249297661652,
-        "streetName": "Calle dei Ricami",
-        "streetNameEnglish": "Street of Embroidery",
-        "streetDescription": "Named for the embroidery work that provided respectable employment for reformed women. This street in Dorsoduro would have housed workshops where such skilled needlework was produced.",
-        "id": "building_45.425779_12.322493"
-      },
-      {
-        "lat": 45.42622731360532,
-        "lng": 12.32006150902393,
-        "streetName": "Ramo del Chiostro",
-        "streetNameEnglish": "Branch of the Cloister",
-        "streetDescription": "A small side street named for its proximity to a cloistered religious area within the Convertite complex in Dorsoduro, where reformed women would have spent time in prayer and contemplation.",
-        "id": "building_45.426227_12.320062"
-      },
-      {
-        "lat": 45.42630782927602,
-        "lng": 12.320680652343503,
-        "streetName": "Corte della Redenzione",
-        "streetNameEnglish": "Court of Redemption",
-        "streetDescription": "A small courtyard named for the spiritual redemption sought by women at the Convertite. This space in Dorsoduro would have been a quiet area for reflection within the religious community.",
-        "id": "building_45.426308_12.320681"
+        "lat": 45.434382132395264,
+        "lng": 12.349854365004038,
+        "streetName": "Campiello del Forno Antico",
+        "streetNameEnglish": "Small Square of the Ancient Bakery",
+        "streetDescription": "This small square would have been named after one of the oldest bakeries in the San Marco district. Venice's bakeries were not just commercial enterprises but community institutions, and an ancient, well-established forno would have been a neighborhood landmark worthy of having a small square named after it.",
+        "id": "building_45.434382_12.349854"
       }
     ],
-    "historicalName": "Calle de le Convertite, Sestiere di Dorsoduro",
-    "englishName": "Alley of the Converted Women, Dorsoduro District",
-    "historicalDescription": "This area in the Dorsoduro sestiere was known for housing a convent that took in reformed prostitutes in the 15th century, hence the name 'Calle de le Convertite' or 'Alley of the Converted Women'.",
+    "historicalName": "Calle dei Forni a San Marco",
+    "englishName": "Street of the Ovens in Saint Mark's",
+    "historicalDescription": "This street was known for its numerous bakeries and ovens in the 15th century, located in the sestiere of San Marco near Piazza San Marco and the Palazzo Ducale.",
     "nameConfidence": "high",
-    "areaInSquareMeters": 57385.7,
+    "areaInSquareMeters": 22919.37,
     "imageSettings": {
-      "lat": 45.42535941426541,
-      "lng": 12.320868859698226,
-      "width": 364.00000056766334,
-      "height": 425.00000056766334,
-      "referenceScale": 4.000000007568844
+      "lat": 45.43368589604483,
+      "lng": 12.349091848446708,
+      "width": 364,
+      "height": 417,
+      "referenceScale": 5.000000030275377
     }
   }
 ]
 
 Here are the existing buildings on this land:
-[
-  {
-    "id": "bridge_45.426411_12.321021",
-    "type": "bridge",
-    "owner": "ConsiglioDeiDieci",
-    "position": "{\"lat\": 45.426411, \"lng\": 12.321021}",
-    "notes": ""
-  },
-  {
-    "id": "building_45.424914_12.320574",
-    "type": "market_stall",
-    "owner": "ConsiglioDeiDieci",
-    "position": "{\"lat\": 45.424914, \"lng\": 12.320574}",
-    "notes": "{\"WagesReasoning\": \"Market stall - reduced from 55 to standardize market wages while remaining competitive\", \"runByAssignment\": {\"timestamp\": \"2025-05-29T04:38:28.496913Z\", \"assignedRunBy\": \"BookishMerchant\", \"score\": 4945.25578489445, \"components\": {\"relationshipScoreWithOwner\": 71.61, \"influence\": 0.0, \"dailyIncome\": 4860.0, \"dailyTurnover\": 61.01, \"distanceToHomeM\": 692.0, \"socialClassTier\": 1, \"isOwnerFactor\": 1, \"numBusinessesAlreadyRun_before_assign\": 0, \"baseScoreComponents\": 4945.26, \"numerator\": 4945.26, \"denominator\": 1}}}"
-  },
-  {
-    "id": "building_45.425837_12.321249",
-    "type": "bottega",
-    "owner": "ConsiglioDeiDieci",
-    "position": "{\"lat\": 45.425837, \"lng\": 12.321249}",
-    "notes": "{\"WagesReasoning\": \"Bottega - reduced from 65 to standardize retail wages while valuing commercial skills\", \"runByAssignment\": {\"timestamp\": \"2025-05-29T04:38:28.419913Z\", \"assignedRunBy\": \"TechnoMedici\", \"score\": 5514.643351203535, \"components\": {\"relationshipScoreWithOwner\": 71.84, \"influence\": 0.0, \"dailyIncome\": 0.0, \"dailyTurnover\": 15025.0, \"distanceToHomeM\": 2876.0, \"socialClassTier\": 3, \"isOwnerFactor\": 1, \"numBusinessesAlreadyRun_before_assign\": 6, \"baseScoreComponents\": 12867.5, \"numerator\": 38602.5, \"denominator\": 7}}}"
-  }
-]
+[]
 
 Here are the available building points for this land (for 'building' type buildings, using mapped key 'land'):
 [
   {
-    "lat": 45.4244776638359,
-    "lng": 12.321373633527958,
-    "polygon_id": "polygon-1746052792551",
+    "lat": 45.432986253342904,
+    "lng": 12.34921629842145,
+    "polygon_id": "polygon-1746057051612",
     "point_type": "land",
-    "id": "building_45.424478_12.321374"
+    "id": "building_45.432986_12.349216"
   },
   {
-    "lat": 45.4243858686638,
-    "lng": 12.32187798099693,
-    "polygon_id": "polygon-1746052792551",
+    "lat": 45.433564114050824,
+    "lng": 12.348683390030535,
+    "polygon_id": "polygon-1746057051612",
     "point_type": "land",
-    "id": "building_45.424386_12.321878"
+    "id": "building_45.433564_12.348683"
   },
   {
-    "lat": 45.424870050741255,
-    "lng": 12.320074591040937,
-    "polygon_id": "polygon-1746052792551",
+    "lat": 45.43345319767021,
+    "lng": 12.349380546617203,
+    "polygon_id": "polygon-1746057051612",
     "point_type": "land",
-    "id": "building_45.424870_12.320075"
+    "id": "building_45.433453_12.349381"
   },
   {
-    "lat": 45.4249194732566,
-    "lng": 12.321205575929023,
-    "polygon_id": "polygon-1746052792551",
+    "lat": 45.433962450693016,
+    "lng": 12.34941942615068,
+    "polygon_id": "polygon-1746057051612",
     "point_type": "land",
-    "id": "building_45.424919_12.321206"
+    "id": "building_45.433962_12.349419"
   },
   {
-    "lat": 45.42486099792829,
-    "lng": 12.322055354233079,
-    "polygon_id": "polygon-1746052792551",
+    "lat": 45.43441632030042,
+    "lng": 12.349228580749102,
+    "polygon_id": "polygon-1746057051612",
     "point_type": "land",
-    "id": "building_45.424861_12.322055"
+    "id": "building_45.434416_12.349229"
   },
   {
-    "lat": 45.425311972725154,
-    "lng": 12.319299504446294,
-    "polygon_id": "polygon-1746052792551",
+    "lat": 45.434382132395264,
+    "lng": 12.349854365004038,
+    "polygon_id": "polygon-1746057051612",
     "point_type": "land",
-    "id": "building_45.425312_12.319300"
-  },
-  {
-    "lat": 45.42538165158783,
-    "lng": 12.320151389362154,
-    "polygon_id": "polygon-1746052792551",
-    "point_type": "land",
-    "id": "building_45.425382_12.320151"
-  },
-  {
-    "lat": 45.425255763332984,
-    "lng": 12.320576474128258,
-    "polygon_id": "polygon-1746052792551",
-    "point_type": "land",
-    "id": "building_45.425256_12.320576"
-  },
-  {
-    "lat": 45.42536723462664,
-    "lng": 12.321388322304577,
-    "polygon_id": "polygon-1746052792551",
-    "point_type": "land",
-    "id": "building_45.425367_12.321388"
-  },
-  {
-    "lat": 45.42540543458871,
-    "lng": 12.321942903552934,
-    "polygon_id": "polygon-1746052792551",
-    "point_type": "land",
-    "id": "building_45.425405_12.321943"
-  },
-  {
-    "lat": 45.425744377846435,
-    "lng": 12.319477104450241,
-    "polygon_id": "polygon-1746052792551",
-    "point_type": "land",
-    "id": "building_45.425744_12.319477"
-  },
-  {
-    "lat": 45.42585115264745,
-    "lng": 12.320069288488082,
-    "polygon_id": "polygon-1746052792551",
-    "point_type": "land",
-    "id": "building_45.425851_12.320069"
-  },
-  {
-    "lat": 45.4258484390924,
-    "lng": 12.320643921809001,
-    "polygon_id": "polygon-1746052792551",
-    "point_type": "land",
-    "id": "building_45.425848_12.320644"
-  },
-  {
-    "lat": 45.42579525874528,
-    "lng": 12.322037004716977,
-    "polygon_id": "polygon-1746052792551",
-    "point_type": "land",
-    "id": "building_45.425795_12.322037"
-  },
-  {
-    "lat": 45.42577892993708,
-    "lng": 12.32249297661652,
-    "polygon_id": "polygon-1746052792551",
-    "point_type": "land",
-    "id": "building_45.425779_12.322493"
-  },
-  {
-    "lat": 45.42622731360532,
-    "lng": 12.32006150902393,
-    "polygon_id": "polygon-1746052792551",
-    "point_type": "land",
-    "id": "building_45.426227_12.320062"
-  },
-  {
-    "lat": 45.42630782927602,
-    "lng": 12.320680652343503,
-    "polygon_id": "polygon-1746052792551",
-    "point_type": "land",
-    "id": "building_45.426308_12.320681"
+    "id": "building_45.434382_12.349854"
   }
 ]
 
@@ -541,6 +206,25 @@ Here are the available building points for this land (for 'building' type buildi
 
 Here are your recent notifications:
 [
+  {
+    "notificationId": "rec42suDu5gCJXVM2",
+    "type": "rent_payment",
+    "citizen": "TechnoMedici",
+    "content": "\ud83d\udcec **Rent Received Summary** \ud83d\udcec\nYou received a total of **1,370 \u269c\ufe0f Ducats** from your properties today.\n\nDetails:\n- \u2705 **1,370 \u269c\ufe0f** from **Domenico Famagosta** for **Fisherman's Cottage at Fondamenta dei Pisani**.\n",
+    "details": {
+      "event_type": "landlord_rent_summary",
+      "total_received": 1370,
+      "payments": [
+        {
+          "occupant_name": "Domenico Famagosta",
+          "building_name": "Fisherman's Cottage at Fondamenta dei Pisani",
+          "amount": 1370
+        }
+      ]
+    },
+    "createdAt": "2025-06-22T18:03:35.038Z",
+    "readAt": null
+  },
   {
     "notificationId": "recKi7mqwdR2xDXtW",
     "type": "rent_payment",
@@ -1775,17 +1459,6 @@ Here are your recent notifications:
     },
     "createdAt": "2025-06-09T16:54:16.115Z",
     "readAt": "2025-06-09T16:54:16.542Z"
-  },
-  {
-    "notificationId": "recMcpaUPjmfQakN1",
-    "type": "markup_buy_contract_created",
-    "citizen": "TechnoMedici",
-    "content": "Your buy order for preserved_fish (markup_buy_main_building_45.439276_12.339331_preserved_fish) has been placed.",
-    "details": {
-      "contractId": "markup_buy_main_building_45.439276_12.339331_preserved_fish"
-    },
-    "createdAt": "2025-06-09T16:54:15.078Z",
-    "readAt": "2025-06-09T16:54:15.608Z"
   }
 ]
 
@@ -2340,7 +2013,7 @@ Here are your recent problems:
   }
 ]
 
-There are 17 available points of type 'building'. Choose the best location for your Dye Works by selecting the index of one of these points (0 to 16).
+There are 6 available points of type 'building'. Choose the best location for your Small Warehouse by selecting the index of one of these points (0 to 5).
 
 When choosing a location, consider:
 1. Proximity to other buildings of similar type
@@ -2349,5 +2022,5 @@ When choosing a location, consider:
 4. How your building placement might affect your relationships with other citizens
 
 Your response must be a JSON object with:
-1. selected_point_index: The index of your chosen point (0 to 16)
+1. selected_point_index: The index of your chosen point (0 to 5)
 2. reason: A brief explanation of why you chose this location
