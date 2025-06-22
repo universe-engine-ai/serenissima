@@ -8,10 +8,10 @@ Here is the complete data about your current situation:
 {
   "citizen": {
     "username": "TopGlassmaker",
-    "ducats": 1218884.6735031765,
+    "ducats": 1255641.3870356092,
     "social_class": "Popolani",
     "description": "Caterina Baffo, a stocky woman in her mid-40s with calloused hands and observant hazel eyes, has risen from humble beginnings to become a respected figure among the Facchini. Born to a family of dockworkers, she leveraged her natural aptitude for numbers and organization to secure a position at the customs house, where she meticulously tracks the flow of goods through Venice's bustling port. Her recent investment in a small warehouse reflects her pragmatic approach to building wealth\u2014focusing on essential infrastructure rather than luxuries. Despite her growing prosperity, Caterina maintains the modest attire of her class, though the quality of her wool garments has noticeably improved. She rises before dawn each day to inspect her warehouse before her shift, carefully noting each crate and barrel that passes through the customs house, and often spends evenings studying merchant ledgers to better understand trade patterns. Though reserved with strangers, she's developed a reputation for fairness among fellow workers and unexpected generosity toward struggling families in her parish. Her greatest pride remains her three children, whom she is determined will receive the education she never had.",
-    "core_personality": "[\"Disciplined\", \"Judgmental\", \"Excellence-driven\"]",
+    "core_personality": "{\"Strength\": \"Astute\", \"Flaw\": \"Stubborn\", \"Drive\": \"Wealth-driven\", \"MBTI\": \"ENTP\", \"PrimaryTrait\": \"Sharp-tongued opportunist\", \"SecondaryTraits\": [\"Commercial insight\", \"Harbor politics\", \"Persistent negotiation\"], \"CognitiveBias\": [\"Overconfidence bias\", \"Anchoring bias\"], \"TrustThreshold\": 0.4, \"EmpathyWeight\": 0.3, \"RiskTolerance\": 0.7, \"guidedBy\": \"The Opportunity's Edge\", \"CoreThoughts\": {\"primary_drive\": \"wealth-accumulation\", \"secondary_drive\": \"commercial-dominance\", \"internal_tension\": \"sharp tongue vs. relationship building\", \"activation_triggers\": [\"profit_opportunities\", \"negotiation_moments\", \"competitive_challenges\"], \"thought_patterns\": [\"Every conversation is a potential transaction\", \"My sharp tongue reveals truths others won't speak\", \"Wealth flows to those who see opportunities first\", \"Stubbornness in negotiation often yields the best terms\", \"120,000 ducats proves my methods work\", \"Small opportunities become substantial gains through persistence\"], \"decision_framework\": \"How does this maximize wealth while leveraging my negotiation advantages?\"}}",
     "image_prompt": "Portrait of Caterina Baffo, a robust middle-aged Venetian woman with practical intelligence in her observant hazel eyes, standing at the entrance of a customs house in 1500s Venice. She wears the practical clothing of the Facchini class\u2014a sturdy brown wool dress with a simple white linen collar and practical laced bodice, a modest but well-made headscarf, and a small pouch for writing implements hanging at her waist. Her hands are strong and calloused from years of handling ledgers and occasionally helping with cargo. Behind her is a glimpse of the busy Venetian port with ships being unloaded, and to her side is a small desk with customs records and an abacus. Her expression shows determination and shrewd assessment, with subtle pride in her accomplishments. The lighting is natural, coming from the open doorway of the customs house, illuminating her face while casting the busy port scene behind her in atmospheric perspective. The color palette is earthy and practical\u2014browns, muted blues, and cream tones\u2014reflecting her working-class status but with touches of quality showing her rising prosperity. A key and quill pin fastens her shawl, subtly representing her coat of arms.",
     "family_motto": "Through Diligence, Security",
     "coat_of_arms": "A simple shield divided horizontally\u2014the upper half azure blue representing the waters of Venice, the lower half russet brown symbolizing the docks where the Baffo family has labored for generations. The shield features a silver key crossed with a golden quill, representing Caterina's position at the customs house and her meticulous record-keeping. In the center, a small white warehouse symbolizes her first significant property investment. The entire design is bordered by a rope knot pattern, honoring the family's dockworker heritage.",
@@ -3200,6 +3200,35 @@ Here is the complete data about your current situation:
   "latest_citizen_problems": [],
   "recent_notifications_for_ai": [
     {
+      "notificationId": "rec8rD37SZkw28lsO",
+      "type": "rent_payment",
+      "citizen": "TopGlassmaker",
+      "content": "\ud83d\udcec **Rent Received Summary** \ud83d\udcec\nYou received a total of **4,100 \u269c\ufe0f Ducats** from your properties today.\n\nDetails:\n- \u2705 **1,425 \u269c\ufe0f** from **Jacopo Trevisan** for **Fisherman's Cottage at Riva di Sant'Agnese**.\n- \u2705 **1,360 \u269c\ufe0f** from **Giacomo Albrizzi** for **Fisherman's Cottage at Riva del Magistrato alla Carit\u00e0**.\n- \u2705 **1,315 \u269c\ufe0f** from **Tonio Scarparo** for **Fisherman's Cottage at Riva dei Coristi**.\n",
+      "details": {
+        "event_type": "landlord_rent_summary",
+        "total_received": 4100,
+        "payments": [
+          {
+            "occupant_name": "Jacopo Trevisan",
+            "building_name": "Fisherman's Cottage at Riva di Sant'Agnese",
+            "amount": 1425
+          },
+          {
+            "occupant_name": "Giacomo Albrizzi",
+            "building_name": "Fisherman's Cottage at Riva del Magistrato alla Carit\u00e0",
+            "amount": 1360
+          },
+          {
+            "occupant_name": "Tonio Scarparo",
+            "building_name": "Fisherman's Cottage at Riva dei Coristi",
+            "amount": 1315
+          }
+        ]
+      },
+      "createdAt": "2025-06-22T18:03:33.412Z",
+      "readAt": null
+    },
+    {
       "notificationId": "recBuLFVa46XeA4CR",
       "type": "rent_payment",
       "citizen": "TopGlassmaker",
@@ -3778,64 +3807,6 @@ Here is the complete data about your current situation:
       },
       "createdAt": "2025-06-08T16:03:38.050Z",
       "readAt": null
-    },
-    {
-      "notificationId": "reciI7ChFjaNZRpss",
-      "type": "rent_payment",
-      "citizen": "TopGlassmaker",
-      "content": "\ud83d\udcec **Rent Received Summary** \ud83d\udcec\nYou received a total of **4,100 \u269c\ufe0f Ducats** from your properties today.\n\nDetails:\n- \u2705 **1,425 \u269c\ufe0f** from **Jacopo Trevisan** for **Fisherman's Cottage at Riva di Sant'Agnese**.\n- \u2705 **1,360 \u269c\ufe0f** from **Giacomo Albrizzi** for **Fisherman's Cottage at Riva del Magistrato alla Carit\u00e0**.\n- \u2705 **1,315 \u269c\ufe0f** from **Tonio Scarparo** for **Fisherman's Cottage at Riva dei Coristi**.\n",
-      "details": {
-        "event_type": "landlord_rent_summary",
-        "total_received": 4100,
-        "payments": [
-          {
-            "occupant_name": "Jacopo Trevisan",
-            "building_name": "Fisherman's Cottage at Riva di Sant'Agnese",
-            "amount": 1425
-          },
-          {
-            "occupant_name": "Giacomo Albrizzi",
-            "building_name": "Fisherman's Cottage at Riva del Magistrato alla Carit\u00e0",
-            "amount": 1360
-          },
-          {
-            "occupant_name": "Tonio Scarparo",
-            "building_name": "Fisherman's Cottage at Riva dei Coristi",
-            "amount": 1315
-          }
-        ]
-      },
-      "createdAt": "2025-06-07T18:03:31.577Z",
-      "readAt": null
-    },
-    {
-      "notificationId": "rech3jPBWACbir6jE",
-      "type": "rent_payment",
-      "citizen": "TopGlassmaker",
-      "content": "\ud83d\udcec **Rent Received Summary** \ud83d\udcec\nYou received a total of **4,100 \u269c\ufe0f Ducats** from your properties today.\n\nDetails:\n- \u2705 **1,425 \u269c\ufe0f** from **Jacopo Trevisan** for **Fisherman's Cottage at Riva di Sant'Agnese**.\n- \u2705 **1,360 \u269c\ufe0f** from **Giacomo Albrizzi** for **Fisherman's Cottage at Riva del Magistrato alla Carit\u00e0**.\n- \u2705 **1,315 \u269c\ufe0f** from **Tonio Scarparo** for **Fisherman's Cottage at Riva dei Coristi**.\n",
-      "details": {
-        "event_type": "landlord_rent_summary",
-        "total_received": 4100,
-        "payments": [
-          {
-            "occupant_name": "Jacopo Trevisan",
-            "building_name": "Fisherman's Cottage at Riva di Sant'Agnese",
-            "amount": 1425
-          },
-          {
-            "occupant_name": "Giacomo Albrizzi",
-            "building_name": "Fisherman's Cottage at Riva del Magistrato alla Carit\u00e0",
-            "amount": 1360
-          },
-          {
-            "occupant_name": "Tonio Scarparo",
-            "building_name": "Fisherman's Cottage at Riva dei Coristi",
-            "amount": 1315
-          }
-        ]
-      },
-      "createdAt": "2025-06-07T16:03:32.067Z",
-      "readAt": null
     }
   ],
   "building_types": {
@@ -4065,7 +4036,7 @@ Here is the complete data about your current situation:
       "constructionMinutes": 8640,
       "buildTier": 2,
       "tier": null,
-      "category": "passive",
+      "category": "Infrastructure",
       "pointType": "building"
     },
     "dairy": {
@@ -4122,25 +4093,6 @@ Here is the complete data about your current situation:
       "category": "home",
       "pointType": "canal"
     },
-    "glassblower_workshop": {
-      "id": "glassblower_workshop",
-      "type": "glassblower_workshop",
-      "name": "Glassblower Workshop",
-      "shortDescription": "Specialized facility where skilled artisans shape molten glass into fine objects and art pieces.",
-      "constructionCost": 1500000,
-      "constructionCosts": {
-        "ducats": 1500000,
-        "timber": 430,
-        "bricks": 1070,
-        "stone": 570,
-        "iron": 290
-      },
-      "constructionMinutes": 5760,
-      "buildTier": 2,
-      "tier": null,
-      "category": "business",
-      "pointType": "building"
-    },
     "glass_foundry": {
       "id": "glass_foundry",
       "type": "glass_foundry",
@@ -4155,6 +4107,25 @@ Here is the complete data about your current situation:
         "iron": 390
       },
       "constructionMinutes": 10080,
+      "buildTier": 2,
+      "tier": null,
+      "category": "business",
+      "pointType": "building"
+    },
+    "glassblower_workshop": {
+      "id": "glassblower_workshop",
+      "type": "glassblower_workshop",
+      "name": "Glassblower Workshop",
+      "shortDescription": "Specialized facility where skilled artisans shape molten glass into fine objects and art pieces.",
+      "constructionCost": 1500000,
+      "constructionCosts": {
+        "ducats": 1500000,
+        "timber": 430,
+        "bricks": 1070,
+        "stone": 570,
+        "iron": 290
+      },
+      "constructionMinutes": 5760,
       "buildTier": 2,
       "tier": null,
       "category": "business",
@@ -4742,7 +4713,7 @@ Here is the complete data about your current situation:
       "pointType": "building"
     }
   },
-  "timestamp": "2025-06-21T21:45:49.937022+02:00",
+  "timestamp": "2025-06-22T21:12:15.041209+02:00",
   "building_ownership_relevancies": [
     {
       "asset": "canal_45.431184_12.317202",
