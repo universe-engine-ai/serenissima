@@ -174,8 +174,8 @@ load_dotenv()
 # os.makedirs(CITIZENS_IMAGE_DIR, exist_ok=True) # Not creating local public dirs
 
 # Global vars for backend URL and API key, to be set in main()
-BACKEND_API_URL_GLOBAL = DEFAULT_FASTAPI_URL
-UPLOAD_API_KEY_GLOBAL = None
+BACKEND_API_URL_GLOBAL = os.getenv("FASTAPI_BACKEND_URL", DEFAULT_FASTAPI_URL)
+UPLOAD_API_KEY_GLOBAL = os.getenv("UPLOAD_API_KEY")
 
 
 def initialize_airtable():
@@ -478,7 +478,7 @@ def generate_description_and_image_prompt(username: str, citizen_info: Dict) -> 
             },
             json={
                 "content": prompt,
-                "model": "gemini-2.5-pro-preview-06-05",
+                "model": "claude-3-7-sonnet-latest",
                 "mode": "creative",
                 "addSystem": f"You are a historical expert on Renaissance Venice (1400-1600) helping to update a citizen profile for a historically accurate economic simulation game called La Serenissima. You have access to the following information about the citizen: {system_context_str}. For the 'CorePersonality' array, ensure the Negative Trait is a significant character flaw or vice realistic for Renaissance Venice (e.g., pride, greed, cunning, jealousy, impatience, vanity, stubbornness). Your response MUST be a valid JSON object with EXACTLY this format:\n\n```json\n{{\n  \"Description\": \"string\",\n  \"Personality\": \"string\",\n  \"CorePersonality\": [\"string\", \"string\", \"string\"],\n  \"familyMotto\": \"string\",\n  \"coatOfArms\": \"string\",\n  \"imagePrompt\": \"string\"\n}}\n```\n\nDo not include any text before or after the JSON."
             }
@@ -937,9 +937,16 @@ if __name__ == "__main__":
     
     args = parser.parse_args()
 
-    # Set global vars for API URL and Key
-    BACKEND_API_URL_GLOBAL = args.api_url
-    UPLOAD_API_KEY_GLOBAL = args.api_key
+    # Set global vars for API URL and Key, with environment variables as fallback
+    if args.api_url:
+        BACKEND_API_URL_GLOBAL = args.api_url
+    elif not BACKEND_API_URL_GLOBAL:
+        BACKEND_API_URL_GLOBAL = os.getenv("FASTAPI_BACKEND_URL", DEFAULT_FASTAPI_URL)
+        
+    if args.api_key:
+        UPLOAD_API_KEY_GLOBAL = args.api_key
+    elif not UPLOAD_API_KEY_GLOBAL:
+        UPLOAD_API_KEY_GLOBAL = os.getenv("UPLOAD_API_KEY")
 
     if not UPLOAD_API_KEY_GLOBAL:
         log.error("Upload API key is required. Set UPLOAD_API_KEY environment variable or use --api_key.")

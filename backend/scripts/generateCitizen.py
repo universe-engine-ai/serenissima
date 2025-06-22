@@ -11,7 +11,11 @@ It can be used by other scripts like immigration.py to create new citizens.
 import os
 import sys
 import logging
-from backend.scripts.joinGuild import process_ai_guild_joining # Added import
+
+# Add the parent directory to the path to import backend modules
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
+from scripts.joinGuild import process_ai_guild_joining # Added import
 import random
 import json
 import datetime
@@ -171,7 +175,7 @@ def generate_citizen(social_class: str, additional_prompt_text: Optional[str] = 
             },
             json={
                 "content": prompt,
-                "model": "gemini-2.5-pro-preview-06-05",
+                "model": "claude-3-7-sonnet-latest",
                 "mode": "creative",
                 "addSystem": f"You are a historical expert on Renaissance Venice (1400-1600) helping to create a citizen for a historically accurate economic simulation game called La Serenissima. Create 1 unique Venetian citizen of the {social_class} social class with historically accurate name, description, and characteristics. Your response MUST be a valid JSON object with EXACTLY this format:\n\n```json\n{{\n  \"FirstName\": \"string\",\n  \"LastName\": \"string\",\n  \"Username\": \"string\",\n  \"Personality\": \"string\",\n  \"CorePersonality\": [\"Positive Trait\", \"Negative Trait\", \"Core Motivation\"],\n  \"ImagePrompt\": \"string\",\n  \"Ducats\": number\n}}\n```\n\nThe Username should be a realistic, human-like username that someone might choose based on their name or characteristics (like 'marco_polo' or 'gondolier42'). Make it lowercase with only letters, numbers and underscores. The CorePersonality should be an array of three strings: [Positive Trait, Negative Trait, Core Motivation], representing the citizen's strength (what they excel at), flaw (what limits them), and driver (what fundamentally motivates them). The Personality field should provide a textual description (2-3 sentences) elaborating on these three core traits, values, and temperament. Do not include any text before or after the JSON. The Ducats value should be between 10,000-100,000. Don't use the same names and tropes than the previous generations."
             }
@@ -371,12 +375,17 @@ if __name__ == "__main__":
     import argparse
     
     parser = argparse.ArgumentParser(description="Generate citizens for La Serenissima")
-    parser.add_argument("--nobili", type=int, default=0, help="Number of nobili to generate")
-    parser.add_argument("--cittadini", type=int, default=0, help="Number of cittadini to generate")
-    parser.add_argument("--popolani", type=int, default=0, help="Number of popolani to generate")
-    parser.add_argument("--facchini", type=int, default=0, help="Number of facchini to generate")
-    parser.add_argument("--forestieri", type=int, default=0, help="Number of forestieri to generate")
-    parser.add_argument("--artisti", type=int, default=0, help="Number of artisti to generate")
+    parser.add_argument("--socialClass", type=str, choices=["Nobili", "Cittadini", "Popolani", "Facchini", "Forestieri", "Artisti", "Clero"], 
+                        help="Social class of the citizen to generate")
+    parser.add_argument("--count", type=int, default=1, help="Number of citizens to generate (default: 1)")
+    # Legacy arguments for backwards compatibility
+    parser.add_argument("--nobili", type=int, default=0, help="Number of nobili to generate (deprecated, use --socialClass Nobili --count N)")
+    parser.add_argument("--cittadini", type=int, default=0, help="Number of cittadini to generate (deprecated, use --socialClass Cittadini --count N)")
+    parser.add_argument("--popolani", type=int, default=0, help="Number of popolani to generate (deprecated, use --socialClass Popolani --count N)")
+    parser.add_argument("--facchini", type=int, default=0, help="Number of facchini to generate (deprecated, use --socialClass Facchini --count N)")
+    parser.add_argument("--forestieri", type=int, default=0, help="Number of forestieri to generate (deprecated, use --socialClass Forestieri --count N)")
+    parser.add_argument("--artisti", type=int, default=0, help="Number of artisti to generate (deprecated, use --socialClass Artisti --count N)")
+    parser.add_argument("--clero", type=int, default=0, help="Number of clero to generate (deprecated, use --socialClass Clero --count N)")
     parser.add_argument("--output", type=str, help="Output JSON file path")
     parser.add_argument("--add-prompt", type=str, help="Additional text to append to the generation prompt for KinOS API.")
     parser.add_argument("--addMessage", type=str, help="Another message to append to the KinOS generation prompt.")
@@ -400,17 +409,28 @@ if __name__ == "__main__":
             # Optionally, exit or handle as a critical error
             # sys.exit(1)
             
-    social_classes = {
-        "Nobili": args.nobili,
-        "Cittadini": args.cittadini,
-        "Popolani": args.popolani,
-        "Facchini": args.facchini,
-        "Forestieri": args.forestieri,
-        "Artisti": args.artisti
-    }
-    
-    # Filter out classes with zero count
-    social_classes = {k: v for k, v in social_classes.items() if v > 0}
+    # Check if new --socialClass argument is used
+    if args.socialClass:
+        # Use the new cleaner syntax
+        social_classes = {args.socialClass: args.count}
+        log.info(f"Using new syntax: generating {args.count} citizen(s) of class {args.socialClass}")
+    else:
+        # Fall back to legacy arguments for backwards compatibility
+        social_classes = {
+            "Nobili": args.nobili,
+            "Cittadini": args.cittadini,
+            "Popolani": args.popolani,
+            "Facchini": args.facchini,
+            "Forestieri": args.forestieri,
+            "Artisti": args.artisti,
+            "Clero": args.clero
+        }
+        
+        # Filter out classes with zero count
+        social_classes = {k: v for k, v in social_classes.items() if v > 0}
+        
+        if social_classes:
+            log.info("Using legacy syntax (deprecated). Please use --socialClass <class> --count <number> instead.")
     
     if not social_classes:
         # If no social classes were specified via arguments, default to generating one Facchini

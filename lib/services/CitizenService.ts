@@ -129,6 +129,9 @@ export class CitizenService {
     } else if (baseClass.includes('forestieri')) {
       // Greenish for Forestieri
       return 'rgba(60, 179, 113, 0.8)';
+    } else if (baseClass.includes('clero')) {
+      // Candle white for clergy
+      return 'rgba(255, 253, 245, 0.8)';
     }
     
     // Default color if social class is unknown or not matched

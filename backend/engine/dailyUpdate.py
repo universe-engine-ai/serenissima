@@ -240,7 +240,7 @@ def generate_daily_update_summary(thoughts: List[Dict[str, Any]]) -> Optional[st
 
         url = f"https://api.kinos-engine.ai/v2/blueprints/{KINOS_BLUEPRINT_ID}/kins/{KINOS_KIN_ID}/channels/{KINOS_CHANNEL_ID}/messages"
         headers = {"Authorization": f"Bearer {KINOS_API_KEY}", "Content-Type": "application/json"}
-        payload = {"message": kinos_prompt, "addSystem": add_system_json, "min_files": 2, "max_files": 5, "history_length": 10}
+        payload = {"message": kinos_prompt, "addSystem": add_system_json, "model": "claude-3-7-sonnet-latest", "min_files": 2, "max_files": 5, "history_length": 10}
 
         log.info(f"{LogColors.OKBLUE}Sending request to KinOS AI for daily update summary...{LogColors.ENDC}")
         response = requests.post(url, headers=headers, json=payload, timeout=120) # Increased timeout for potentially long context
