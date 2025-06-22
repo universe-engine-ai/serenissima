@@ -8,10 +8,10 @@ Here is the complete data about your current situation:
 {
   "citizen": {
     "username": "ShippingMogul",
-    "ducats": 254867.29551697755,
+    "ducats": 260144.00904941032,
     "social_class": "Popolani",
     "description": "Isabella Trevisan, daughter of Castello's respected salt merchant Giovanni Trevisan, has established herself as a rising force among Venice's commercial class through a combination of innate business acumen and relentless work ethic. Following her father's untimely death from marsh fever three years past, Isabella defied expectations by not only maintaining but expanding the family's modest trading enterprise. Her signature achievement\u2014a strategically positioned contract stall on Rio Ter\u00e0 dei Scudi near Saint Dominic Street's public well\u2014has quickly become known for its impeccable documentation services and fair-minded arbitration of merchant disputes. Each morning begins in darkness as Isabella reviews her ledgers by candlelight before personally inspecting incoming goods and negotiating terms with suppliers and clients alike. Though her quick judgment and calculating efficiency have earned her respect among fellow traders, Isabella's growing influence has sparked whispers of envy from established merchants who view her rapid ascent with suspicion. In private company, she reveals a dry wit and subtle intelligence that contrasts with her public reserve. Despite possessing funds that could secure more comfortable living, Isabella maintains a modest two-story home near her childhood parish, where she hosts weekly gatherings with select merchants and transport providers to exchange market intelligence and forge mutually beneficial agreements. These alliances, carefully cultivated through shared meals of simple but well-prepared fare, form the foundation of her expanding influence throughout Castello's commercial networks. Though unmarried at twenty-six, Isabella shows little interest in domestic arrangements that might distract from her ambition to create a network of complementary businesses spanning Venice's eastern parishes\u2014a vision she pursues with such single-minded determination that even her closest associates rarely glimpse the moments of doubt and loneliness that occasionally visit her in the quiet hours before dawn.",
-    "core_personality": "[\"Tenacious\", \"Suspicious\", \"Independence-focused\"]",
+    "core_personality": "{\"Strength\": \"Tenacious\", \"Flaw\": \"Suspicious\", \"Drive\": \"Independence-focused\", \"MBTI\": \"INTJ\", \"PrimaryTrait\": \"Strategic builder\", \"SecondaryTraits\": [\"Market intelligence\", \"Network cultivation\", \"Expansion vision\"], \"CognitiveBias\": [\"Paranoid ideation\", \"Planning fallacy\"], \"TrustThreshold\": 0.3, \"EmpathyWeight\": 0.5, \"RiskTolerance\": 0.4, \"guidedBy\": \"The Network's Strategy\", \"CoreThoughts\": {\"primary_drive\": \"independence-through-networks\", \"secondary_drive\": \"strategic-expansion\", \"internal_tension\": \"suspicion vs. collaboration\", \"activation_triggers\": [\"independence_threats\", \"network_opportunities\", \"expansion_possibilities\"], \"thought_patterns\": [\"Independence requires strategic networks\", \"Suspicion protects against betrayal\", \"Every alliance must serve my vision\", \"Market intelligence prevents exploitation\", \"Expansion demands calculated risks\", \"My network is my fortress against dependency\"], \"decision_framework\": \"How does this build independence while expanding strategic networks?\"}}",
     "image_prompt": "Portrait of Isabella Trevisan, an ambitious Venetian businesswoman of the Popolani class in Renaissance Venice (1490s). She stands at her contract stall on Rio Ter\u00e0 dei Scudi near Saint Dominic Street, wearing a practical but quality gamurra in deep teal wool with modest russet trim and a crisp white linen camicia visible at the neckline and cuffs. Her dress shows quality craftsmanship without the extravagance of nobility. Her chestnut hair is neatly contained under a simple white linen cap with some loose tendrils framing her face. Her expression combines intelligence with wariness\u2014observant eyes scrutinizing potential business, a determined set to her mouth, and subtle tension in her jaw suggesting her guarded nature. She holds an open ledger book with meticulous entries visible, while her other hand holds a quill poised to record. The background shows the bustling commercial street with the distinctive Venetian architecture of Castello, with a public well visible nearby. Early morning light illuminates the scene naturally without dramatic effects. Her desk displays carefully arranged contracts, a small scale for weighing coins, quality ink pots, and a well-worn abacus. Nearby stands a wooden document box with a simple lock. Her posture conveys competence and contained intensity rather than aristocratic leisure. The scene captures both her professional accomplishment and the constant vigilance of someone who has built her position through effort rather than inheritance. Renaissance style, historically accurate details, photorealistic.",
     "family_motto": "Prudentia et Perseverantia\" (Prudence and Perseverance),\n  \"coatOfArms\": \"A shield divided per pale: dexter azure with three silver coins in pale, sinister gules with a golden scale. Above the shield, a bourgeois crest of a silver merchant's cap. Below, a scroll bearing the family motto. The azure represents the waters of Venice's lagoon, while the coins symbolize commerce and the scales represent fair dealing and contracts - appropriate for a non-noble merchant family rising through commercial acumen rather than inherited privilege.",
     "coat_of_arms": "A shield divided per pale: dexter azure with three silver coins in pale, sinister gules with a golden scale. Above the shield, a bourgeois crest of a silver merchant's cap. Below, a scroll bearing the family motto. The azure represents the waters of Venice's lagoon, while the coins symbolize commerce and the scales represent fair dealing and contracts - appropriate for a non-noble merchant family rising through commercial acumen rather than inherited privilege.",
@@ -3176,6 +3176,21 @@ Here is the complete data about your current situation:
   "latest_citizen_problems": [],
   "recent_notifications_for_ai": [
     {
+      "notificationId": "recrBvLutU2N9pmxG",
+      "type": "rent_payment",
+      "citizen": "ShippingMogul",
+      "content": "\u2705 Rent Paid: You paid **1,340 \u269c\ufe0f Ducats** to **ConsiglioDeiDieci** for **recDJLhQOiyAkZpoP**.",
+      "details": {
+        "building_id": "recDJLhQOiyAkZpoP",
+        "building_name": "recDJLhQOiyAkZpoP",
+        "rent_price": 1340,
+        "building_owner": "ConsiglioDeiDieci",
+        "event_type": "rent_payment_made"
+      },
+      "createdAt": "2025-06-22T18:01:11.795Z",
+      "readAt": null
+    },
+    {
       "notificationId": "rec8iEFATiZw54x2T",
       "type": "rent_payment",
       "citizen": "ShippingMogul",
@@ -3474,36 +3489,6 @@ Here is the complete data about your current situation:
       },
       "createdAt": "2025-06-08T16:01:08.687Z",
       "readAt": null
-    },
-    {
-      "notificationId": "recPR0In0sMJtDeLE",
-      "type": "rent_payment",
-      "citizen": "ShippingMogul",
-      "content": "\u2705 Rent Paid: You paid **1,340 \u269c\ufe0f Ducats** to **ConsiglioDeiDieci** for **recDJLhQOiyAkZpoP**.",
-      "details": {
-        "building_id": "recDJLhQOiyAkZpoP",
-        "building_name": "recDJLhQOiyAkZpoP",
-        "rent_price": 1340,
-        "building_owner": "ConsiglioDeiDieci",
-        "event_type": "rent_payment_made"
-      },
-      "createdAt": "2025-06-07T18:00:56.243Z",
-      "readAt": null
-    },
-    {
-      "notificationId": "recJbEhOB6EE89p4A",
-      "type": "rent_payment",
-      "citizen": "ShippingMogul",
-      "content": "\u2705 Rent Paid: You paid **1,340 \u269c\ufe0f Ducats** to **ConsiglioDeiDieci** for **recDJLhQOiyAkZpoP**.",
-      "details": {
-        "building_id": "recDJLhQOiyAkZpoP",
-        "building_name": "recDJLhQOiyAkZpoP",
-        "rent_price": 1340,
-        "building_owner": "ConsiglioDeiDieci",
-        "event_type": "rent_payment_made"
-      },
-      "createdAt": "2025-06-07T16:01:00.998Z",
-      "readAt": null
     }
   ],
   "building_types": {
@@ -3733,7 +3718,7 @@ Here is the complete data about your current situation:
       "constructionMinutes": 8640,
       "buildTier": 2,
       "tier": null,
-      "category": "passive",
+      "category": "Infrastructure",
       "pointType": "building"
     },
     "dairy": {
@@ -3790,25 +3775,6 @@ Here is the complete data about your current situation:
       "category": "home",
       "pointType": "canal"
     },
-    "glassblower_workshop": {
-      "id": "glassblower_workshop",
-      "type": "glassblower_workshop",
-      "name": "Glassblower Workshop",
-      "shortDescription": "Specialized facility where skilled artisans shape molten glass into fine objects and art pieces.",
-      "constructionCost": 1500000,
-      "constructionCosts": {
-        "ducats": 1500000,
-        "timber": 430,
-        "bricks": 1070,
-        "stone": 570,
-        "iron": 290
-      },
-      "constructionMinutes": 5760,
-      "buildTier": 2,
-      "tier": null,
-      "category": "business",
-      "pointType": "building"
-    },
     "glass_foundry": {
       "id": "glass_foundry",
       "type": "glass_foundry",
@@ -3823,6 +3789,25 @@ Here is the complete data about your current situation:
         "iron": 390
       },
       "constructionMinutes": 10080,
+      "buildTier": 2,
+      "tier": null,
+      "category": "business",
+      "pointType": "building"
+    },
+    "glassblower_workshop": {
+      "id": "glassblower_workshop",
+      "type": "glassblower_workshop",
+      "name": "Glassblower Workshop",
+      "shortDescription": "Specialized facility where skilled artisans shape molten glass into fine objects and art pieces.",
+      "constructionCost": 1500000,
+      "constructionCosts": {
+        "ducats": 1500000,
+        "timber": 430,
+        "bricks": 1070,
+        "stone": 570,
+        "iron": 290
+      },
+      "constructionMinutes": 5760,
       "buildTier": 2,
       "tier": null,
       "category": "business",
@@ -4410,7 +4395,7 @@ Here is the complete data about your current situation:
       "pointType": "building"
     }
   },
-  "timestamp": "2025-06-21T23:32:14.310613+02:00",
+  "timestamp": "2025-06-22T21:16:43.057943+02:00",
   "building_ownership_relevancies": [
     {
       "asset": "building_45.431358_12.354453",
