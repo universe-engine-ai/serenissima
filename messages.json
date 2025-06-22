@@ -219,5 +219,15 @@
     "role": "assistant",
     "content": "{  \"building_type\": \"Spezier\",  \"land_id\": \"120\",  \"reason\": \"Continuing our focus on spice imports from the New World provides strategic diversification and leverages existing market relationships for future growth.\"}",
     "timestamp": "2025-06-21T21:23:35.948494"
+  },
+  {
+    "role": "user",
+    "content": "\nAs a citizen in La Serenissima with social class Popolani, you need to decide on your next building investment.\n\nHere's your current situation:\n- You are considering 120 land(s).\n- You have 2 buildings.\n- Your current net income is 0 ducats.\n- You have 444004.0834286343 ducats available.\n\nWhen making your decision, carefully consider the information that you have at your disposition.\n\nAfter your analysis, provide your building decision in this JSON format:\n```json\n{\n  \"building_type\": \"type_of_building_to_build\",\n  \"land_id\": \"id_of_land_to_build_on\",\n  \"reason\": \"brief explanation of why this building\"\n}\n```\n\nIf you decide not to build anything at this time, return an empty JSON object:\n```json\n{}\n```\n",
+    "timestamp": "2025-06-22T19:40:33.951838"
+  },
+  {
+    "role": "assistant",
+    "content": "{  \"building_type\": \"Spezier\",  \"land_id\": \"120\",  \"reason\": \"Continuing our focus on spice imports from the New World provides strategic diversification and leverages existing market relationships for future growth.\"}",
+    "timestamp": "2025-06-22T19:46:22.672957"
   }
 ]
