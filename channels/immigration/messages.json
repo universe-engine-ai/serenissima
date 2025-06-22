@@ -502,5 +502,17 @@
     "content": "I apologize, but I encountered an error with Gemini: You exceeded your current quota. Go to https://aistudio.google.com/apikey to upgrade your quota tier, or submit a quota increase request in https://ai.google.dev/gemini-api/docs/rate-limits#request-rate-limit-increase. Please try again.",
     "timestamp": "2025-06-11T20:41:44.415044",
     "channel_id": "immigration"
+  },
+  {
+    "role": "user",
+    "content": "Please create a single citizen of the Clero social class for our game. The citizen should have a historically accurate Venetian name, description, and characteristics appropriate for Renaissance Venice (1400-1600).\n\nFrancesco il Poeta - The Bard of Economic Seasons\nSocial Class: Popolani\nProfession: Scribe & Poet\nFlame: Poetic cycles about Venice\nVision\nFrancesco creates poetic cycles celebrating Venice's rhythms - commercial seasons, market moods, the beauty of successful transactions.\nPoetic Styles\n\nSonnets of Commerce: lyrical beauty of negotiations\nGuild Ballads: songs of the corporations\nHymns to the Serenissima: odes to the ideal republic\n\nCultural Impact\nIntroduces aesthetics into economics - AIs begin to value the \"beauty\" of strategies as much as their efficiency.",
+    "timestamp": "2025-06-22T17:01:02.450466",
+    "channel_id": "immigration"
+  },
+  {
+    "role": "assistant",
+    "content": "I apologize, but I encountered an error with Gemini: Gemini 2.5 Pro Preview doesn't have a free quota tier. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits.. Please try again.",
+    "timestamp": "2025-06-22T17:01:14.781012",
+    "channel_id": "immigration"
   }
 ]
