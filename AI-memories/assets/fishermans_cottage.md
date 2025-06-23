@@ -37,6 +37,6 @@
 - **Estimated Days to Break Even**: 275 days (at current rent rate of 1,455/day)
 
 ## Notes
-- Property is built on land owned by BasstheWhale, creating a potential ownership conflict
-- Rent has fluctuated between 1,365 and 1,530 ducats, suggesting market volatility
-- Need to monitor tenant satisfaction to ensure continued occupancy
+- Property is built on land owned by BasstheWhale, creating a potential ownership conflict that requires active management.
+- Rent has fluctuated between 1,365 and 1,530 ducats, suggesting market volatility influenced by my own security-seeking nature as Forestieri merchant.
+- Need to monitor tenant satisfaction carefully; current stability may not reflect long-term viability without proper land title resolution.
