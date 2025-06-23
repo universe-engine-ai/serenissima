@@ -46,6 +46,56 @@ from backend.engine.utils.activity_helpers import LogColors, log_header, _escape
 
 # _escape_airtable_value is now imported
 
+# Religious building types that prefer Clero social class
+RELIGIOUS_BUILDING_TYPES = {'parish_church', 'chapel', 'st__mark_s_basilica'}
+
+def is_religious_building(building_type: str) -> bool:
+    """Check if a building type is religious and should prefer Clero workers."""
+    return building_type in RELIGIOUS_BUILDING_TYPES
+
+def find_best_candidate_for_business(unemployed_citizens: List[Dict], business_api_dict: Dict, already_employed: set) -> Optional[Dict]:
+    """
+    Find the best candidate for a business, preferring Clero for religious buildings.
+    
+    Args:
+        unemployed_citizens: List of unemployed citizen records
+        business_api_dict: Business information from API
+        already_employed: Set of usernames already employed
+    
+    Returns:
+        Best candidate citizen record or None
+    """
+    business_type = business_api_dict.get('type', '')
+    is_religious = is_religious_building(business_type)
+    
+    # Filter available candidates (not already employed)
+    available_candidates = [
+        citizen for citizen in unemployed_citizens
+        if citizen['fields'].get('Username', '') not in already_employed
+    ]
+    
+    if not available_candidates:
+        return None
+    
+    if is_religious:
+        # For religious buildings, prefer Clero citizens
+        clero_candidates = [
+            citizen for citizen in available_candidates
+            if citizen['fields'].get('SocialClass', '') == 'Clero'
+        ]
+        
+        if clero_candidates:
+            log.info(f"Religious building {business_api_dict.get('name', 'Unknown')} ({business_type}) - preferring Clero candidate")
+            # Sort Clero candidates by wealth (descending) as per original logic
+            clero_candidates.sort(key=lambda c: float(c['fields'].get('Ducats', 0) or 0), reverse=True)
+            return clero_candidates[0]
+        else:
+            log.info(f"Religious building {business_api_dict.get('name', 'Unknown')} ({business_type}) - no Clero candidates available, using regular assignment")
+    
+    # For non-religious buildings or when no Clero available, use original logic (highest wealth first)
+    available_candidates.sort(key=lambda c: float(c['fields'].get('Ducats', 0) or 0), reverse=True)
+    return available_candidates[0]
+
 def initialize_airtable():
     """Initialize Airtable connection."""
     api_key = os.environ.get('AIRTABLE_API_KEY')
@@ -612,55 +662,67 @@ def assign_jobs_to_citizens(dry_run: bool = False, noupdate: bool = False):
                 log.error(f"Failed to assign entrepreneur {citizen_name} ({citizen_username}) to {business_to_take_over_name} after ejection. The business might remain vacant.")
                 failed_count += 1
             
-    # Process each unemployed citizen from the general pool
-    log.info("Processing general pool of unemployed citizens...")
-    for citizen in unemployed_citizens:
-        citizen_username = citizen['fields'].get('Username', '')
-        citizen_name = f"{citizen['fields'].get('FirstName', '')} {citizen['fields'].get('LastName', '')}"
-                
-        # Skip if this citizen is an entrepreneur who was already assigned or was already employed
-        if citizen_username in already_employed_entrepreneurs:
-            log.info(f"Skipping citizen {citizen_name} ({citizen_username}) as they are an entrepreneur already assigned/employed or Nobili.")
-            continue
-                
-        log.info(f"Processing citizen from general pool: {citizen_name} ({citizen_username})")
-                
-        # Check if this citizen is already employed (might have been missed in the initial filtering or became employed through other means)
-        # This check is somewhat redundant if already_employed_entrepreneurs is comprehensive, but good for safety.
-        # Re-fetch current employment status for this specific citizen if there's doubt.
-        # For now, relying on already_employed_entrepreneurs.
-        # if citizen_username in already_employed_entrepreneurs: # This is already checked above
-        #     log.info(f"Citizen {citizen_name} is already employed elsewhere, skipping")
-        #     continue
-            
-        # Stop if we've run out of available businesses
-        if not available_businesses:
-            log.info("No more available businesses for the general pool. Stopping job assignment process.")
+    # Process available businesses and find best candidates (supporting Clero preference for religious buildings)
+    log.info("Processing available businesses and matching with best candidates...")
+    
+    # Filter unemployed citizens to exclude already employed entrepreneurs
+    remaining_unemployed = [
+        citizen for citizen in unemployed_citizens
+        if citizen['fields'].get('Username', '') not in already_employed_entrepreneurs
+    ]
+    
+    log.info(f"Found {len(remaining_unemployed)} citizens available for general job assignment")
+    
+    while available_businesses and remaining_unemployed:
+        # Get the highest-paying available business (already sorted by wages)
+        business_api_dict = available_businesses.pop(0)  # Remove from list to prevent double assignment
+        business_name = business_api_dict.get('name', business_api_dict.get('id'))
+        business_type = business_api_dict.get('type', 'unknown')
+        
+        # Find the best candidate for this business (considering Clero preference for religious buildings)
+        best_candidate = find_best_candidate_for_business(
+            remaining_unemployed, 
+            business_api_dict, 
+            already_employed_entrepreneurs
+        )
+        
+        if not best_candidate:
+            log.warning(f"No suitable candidate found for business {business_name}")
             break
         
-        # Get the highest-paying available business (API dict)
-        business_api_dict = available_businesses.pop(0)  # Remove from list to prevent double assignment
-        business_name = business_api_dict.get('name', business_api_dict.get('id')) # API fields
-        business_type = business_api_dict.get('type', 'unknown') # API field
+        # Remove the selected candidate from the remaining unemployed list
+        remaining_unemployed.remove(best_candidate)
+        
+        candidate_username = best_candidate['fields'].get('Username', '')
+        candidate_name = f"{best_candidate['fields'].get('FirstName', '')} {best_candidate['fields'].get('LastName', '')}"
+        candidate_social_class = best_candidate['fields'].get('SocialClass', '')
+        
+        # Mark as employed to prevent double assignment
+        already_employed_entrepreneurs.add(candidate_username)
         
         # Track assignments by business type
         if business_type not in assignments_by_type:
             assignments_by_type[business_type] = 0
         
         if dry_run:
-            log.info(f"[DRY RUN] Would assign {citizen_name} to {business_name}")
+            log.info(f"[DRY RUN] Would assign {candidate_name} ({candidate_social_class}) to {business_name} ({business_type})")
             assigned_count += 1
             assignments_by_type[business_type] += 1
         else:
             # assign_citizen_to_business now expects an API dict for 'business'
-            success = assign_citizen_to_business(tables, citizen, business_api_dict, noupdate)
+            success = assign_citizen_to_business(tables, best_candidate, business_api_dict, noupdate)
             if success:
+                log.info(f"Successfully assigned {candidate_name} ({candidate_social_class}) to {business_name} ({business_type})")
                 assigned_count += 1
                 assignments_by_type[business_type] += 1
             else:
+                log.error(f"Failed to assign {candidate_name} to {business_name}")
                 failed_count += 1
                 # Put the business back in the list if assignment failed
-                available_businesses.append(business_api_dict) # Use business_api_dict
+                available_businesses.append(business_api_dict)
+                # Put the candidate back in the unemployed list
+                remaining_unemployed.append(best_candidate)
+                already_employed_entrepreneurs.discard(candidate_username)
     
     log.info(f"Job assignment process complete. Assigned: {assigned_count}, Failed: {failed_count}")
     

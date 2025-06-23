@@ -46,7 +46,8 @@ MOBILITY_CHANCE = {
     "Nobili": 0.05,  # 5% chance
     "Cittadini": 0.10,  # 10% chance
     "Popolani": 0.15,   # 15% chance
-    "Facchini": 0.20    # 20% chance
+    "Facchini": 0.20,   # 20% chance
+    "Clero": 0.08       # 8% chance for Clero
 }
 
 # Constants for wage increase thresholds by social class
@@ -54,8 +55,24 @@ WAGE_INCREASE_THRESHOLD = {
     "Nobili": 0.15,  # 15% higher
     "Cittadini": 0.12,  # 12% higher
     "Popolani": 0.10,  # 10% higher
-    "Facchini": 0.08    # 8% higher
+    "Facchini": 0.08,   # 8% higher
+    "Clero": 0.10       # 10% higher for Clero
 }
+
+# Religious building types that prefer Clero social class
+RELIGIOUS_BUILDING_TYPES = {'parish_church', 'chapel', 'st__mark_s_basilica'}
+
+def is_religious_building(building_type: str) -> bool:
+    """Check if a building type is religious and should prefer Clero workers."""
+    return building_type in RELIGIOUS_BUILDING_TYPES
+
+def should_prefer_clero_for_building(business_record: Dict, citizen_social_class: str) -> bool:
+    """
+    Check if Clero should be preferred for this building type.
+    Returns True if this is a religious building and the citizen is Clero.
+    """
+    building_type = business_record['fields'].get('Type', '')
+    return is_religious_building(building_type) and citizen_social_class == 'Clero'
 
 def initialize_airtable():
     """Initialize Airtable connection."""
@@ -332,6 +349,11 @@ def create_admin_summary(tables, mobility_summary) -> None:
                     "checked": mobility_summary['by_class'].get('Facchini', {}).get('checked', 0),
                     "looking": mobility_summary['by_class'].get('Facchini', {}).get('looking', 0),
                     "moved": mobility_summary['by_class'].get('Facchini', {}).get('moved', 0)
+                },
+                "Clero": {
+                    "checked": mobility_summary['by_class'].get('Clero', {}).get('checked', 0),
+                    "looking": mobility_summary['by_class'].get('Clero', {}).get('looking', 0),
+                    "moved": mobility_summary['by_class'].get('Clero', {}).get('moved', 0)
                 }
             },
             "average_wage_increase": mobility_summary['total_wage_increase'] / mobility_summary['total_moved'] if mobility_summary['total_moved'] > 0 else 0
@@ -389,7 +411,8 @@ def process_work_mobility(dry_run: bool = False):
             "Nobili": {"checked": 0, "looking": 0, "moved": 0},
             "Cittadini": {"checked": 0, "looking": 0, "moved": 0},
             "Popolani": {"checked": 0, "looking": 0, "moved": 0},
-            "Facchini": {"checked": 0, "looking": 0, "moved": 0}
+            "Facchini": {"checked": 0, "looking": 0, "moved": 0},
+            "Clero": {"checked": 0, "looking": 0, "moved": 0}
         }
     }
     
@@ -417,7 +440,8 @@ def process_work_mobility(dry_run: bool = False):
         
         # Track that we checked this citizen
         mobility_summary["total_checked"] += 1
-        mobility_summary["by_class"][social_class]["checked"] += 1
+        if social_class in mobility_summary["by_class"]:
+            mobility_summary["by_class"][social_class]["checked"] += 1
         
         # Determine if citizen looks for new job based on social class
         mobility_chance = MOBILITY_CHANCE.get(social_class, 0.0)
@@ -429,7 +453,8 @@ def process_work_mobility(dry_run: bool = False):
         
         # Track that this citizen is looking
         mobility_summary["total_looking"] += 1
-        mobility_summary["by_class"][social_class]["looking"] += 1
+        if social_class in mobility_summary["by_class"]:
+            mobility_summary["by_class"][social_class]["looking"] += 1
         
         log.info(f"Citizen {citizen_name} is looking for a better-paying job")
         
@@ -462,11 +487,42 @@ def process_work_mobility(dry_run: bool = False):
                 if float(b['fields'].get('Wages', 0) or 0) > min_new_wages
             ]
         else:
-            # For regular citizens, use the original logic
+            # For regular citizens, filter by wage threshold first
             suitable_businesses = [
                 b for b in available_businesses 
                 if float(b['fields'].get('Wages', 0) or 0) > min_new_wages
             ]
+            
+            # Special handling for Clero social class - prefer religious buildings
+            if social_class == 'Clero':
+                # Separate religious and non-religious buildings
+                religious_businesses = [
+                    b for b in suitable_businesses 
+                    if is_religious_building(b['fields'].get('Type', ''))
+                ]
+                non_religious_businesses = [
+                    b for b in suitable_businesses 
+                    if not is_religious_building(b['fields'].get('Type', ''))
+                ]
+                
+                if religious_businesses:
+                    log.info(f"Clero citizen {citizen_name} found {len(religious_businesses)} religious building(s) - prioritizing these")
+                    # For religious buildings, relax wage requirements slightly (use 5% instead of the class threshold)
+                    relaxed_min_wages = current_wages * 1.05
+                    relaxed_religious_businesses = [
+                        b for b in religious_businesses
+                        if float(b['fields'].get('Wages', 0) or 0) > relaxed_min_wages
+                    ]
+                    
+                    # Prioritize religious buildings: use relaxed religious first, then regular religious, then non-religious
+                    if relaxed_religious_businesses:
+                        suitable_businesses = relaxed_religious_businesses + non_religious_businesses
+                        log.info(f"Using relaxed wage requirements for {len(relaxed_religious_businesses)} religious buildings")
+                    else:
+                        suitable_businesses = religious_businesses + non_religious_businesses
+                        log.info(f"Using standard wage requirements for {len(religious_businesses)} religious buildings")
+                else:
+                    log.info(f"Clero citizen {citizen_name} found no religious buildings - using standard job search")
         
         # Sort by wages (descending)
         suitable_businesses.sort(key=lambda b: float(b['fields'].get('Wages', 0) or 0), reverse=True)
@@ -485,7 +541,8 @@ def process_work_mobility(dry_run: bool = False):
             log.info(f"[DRY RUN] Would move {citizen_name} to {new_business['fields'].get('Name', new_business['id'])}")
             # Update statistics
             mobility_summary["total_moved"] += 1
-            mobility_summary["by_class"][social_class]["moved"] += 1
+            if social_class in mobility_summary["by_class"]:
+                mobility_summary["by_class"][social_class]["moved"] += 1
             mobility_summary["total_wage_increase"] += (new_wages - current_wages)
         else:
             # Move the citizen to the new job
@@ -497,7 +554,8 @@ def process_work_mobility(dry_run: bool = False):
                 
                 # Update statistics
                 mobility_summary["total_moved"] += 1
-                mobility_summary["by_class"][social_class]["moved"] += 1
+                if social_class in mobility_summary["by_class"]:
+                    mobility_summary["by_class"][social_class]["moved"] += 1
                 mobility_summary["total_wage_increase"] += (new_wages - current_wages)
                 
                 # Remove the business from available list

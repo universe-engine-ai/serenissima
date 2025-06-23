@@ -43,6 +43,29 @@ def _get_artwork_content_from_kinos(citizen_username: str, artwork_path: str) ->
         log.error(f"  [Thread: {threading.get_ident()}] Unexpected error fetching artwork content '{artwork_path}' for {citizen_username}: {e_gen}")
         return None
 
+def _get_local_book_content(content_path: str) -> Optional[str]:
+    """Fetches book content from local filesystem for special books like the Codex."""
+    try:
+        # Construct full path from project root
+        project_root = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
+        full_path = os.path.join(project_root, content_path)
+        
+        log.info(f"  [Thread: {threading.get_ident()}] Attempting to read local book content from: {full_path}")
+        
+        if not os.path.exists(full_path):
+            log.warning(f"  [Thread: {threading.get_ident()}] Local book file not found: {full_path}")
+            return None
+            
+        with open(full_path, 'r', encoding='utf-8') as f:
+            content = f.read()
+            
+        log.info(f"  [Thread: {threading.get_ident()}] Successfully read {len(content)} characters from local book file")
+        return content
+        
+    except Exception as e:
+        log.error(f"  [Thread: {threading.get_ident()}] Error reading local book content from '{content_path}': {e}")
+        return None
+
 
 def _call_kinos_build_for_reading_async(
     kinos_build_url: str,
@@ -113,6 +136,7 @@ def process_read_book_fn(
 
     book_title = notes_dict.get('book_title', 'an unknown book')
     book_kinos_path = notes_dict.get('book_kinos_path') # This should be set by production_processor if book has artwork
+    book_content_path = notes_dict.get('content_path') # For local books like the Codex
     
     log.info(f"{LogColors.PROCESS}Processing 'read_book' activity {activity_guid} for citizen {citizen_username} reading '{book_title}'.{LogColors.ENDC}")
 
@@ -140,9 +164,20 @@ def process_read_book_fn(
         except json.JSONDecodeError as e_json_pkg:
             log.error(f"  Error decoding ledger JSON for {citizen_username} (reading): {e_json_pkg}")
 
-        # 2. Fetch artwork content if path is available
+        # 2. Fetch book content from appropriate source
         artwork_content_for_kinos = None
-        if book_kinos_path:
+        
+        # First check for local content path (e.g., Codex Serenissimus)
+        if book_content_path:
+            log.info(f"  Book has local content path: {book_content_path}. Attempting to fetch content.")
+            artwork_content_for_kinos = _get_local_book_content(book_content_path)
+            if artwork_content_for_kinos:
+                log.info(f"  Successfully fetched content for '{book_title}' from local path {book_content_path}.")
+            else:
+                log.warning(f"  Failed to fetch content for '{book_title}' from local path {book_content_path}.")
+        
+        # If no local content, try KinOS path
+        elif book_kinos_path:
             log.info(f"  Book has KinOS path: {book_kinos_path}. Attempting to fetch content.")
             artwork_content_for_kinos = _get_artwork_content_from_kinos(citizen_username, book_kinos_path)
             if artwork_content_for_kinos:
@@ -150,7 +185,7 @@ def process_read_book_fn(
             else:
                 log.warning(f"  Failed to fetch content for artwork '{book_title}' from KinOS path {book_kinos_path}. Proceeding without book content in add System.")
         else:
-            log.info(f"  Book '{book_title}' does not have a specific KinOS path in activity notes. Reflection will be more general.")
+            log.info(f"  Book '{book_title}' does not have a specific content path. Reflection will be more general.")
 
         # 3. Construct KinOS /build request
         kinos_build_url = f"{KINOS_API_URL}/v2/blueprints/{KINOS_BLUEPRINT}/kins/{citizen_username}/messages"

@@ -91,16 +91,31 @@ def try_create_read_book_activity(
     activity_thought = f"Je vais prendre un moment pour lire '{book_title}'."
     
     # Notes for the read_book activity itself
+    # Parse book attributes to get both kinos_path and content_path
+    book_attrs = {}
+    if book_attributes_str:
+        try:
+            if isinstance(book_attributes_str, dict):
+                book_attrs = book_attributes_str
+            else:
+                book_attrs = json.loads(book_attributes_str)
+        except json.JSONDecodeError:
+            pass
+    
     read_book_notes = {
         "book_resource_id": book_resource_record['fields'].get('ResourceId'),
         "book_title": book_title,
-        "book_kinos_path": book_resource_record['fields'].get('Attributes', {}).get('kinos_path') if isinstance(book_resource_record['fields'].get('Attributes'), dict) else (json.loads(book_resource_record['fields'].get('Attributes')) if isinstance(book_resource_record['fields'].get('Attributes'), str) else {}).get('kinos_path'),
         "location_type": book_asset_type,
         "location_id": book_asset_id
     }
-    # Clean up None kinos_path
-    if read_book_notes["book_kinos_path"] is None:
-        del read_book_notes["book_kinos_path"]
+    
+    # Add kinos_path if it exists
+    if book_attrs.get('kinos_path'):
+        read_book_notes["book_kinos_path"] = book_attrs['kinos_path']
+    
+    # Add content_path if it exists (for local books like distributed manuscripts)
+    if book_attrs.get('content_path'):
+        read_book_notes["content_path"] = book_attrs['content_path']
 
 
     if is_at_book_location:

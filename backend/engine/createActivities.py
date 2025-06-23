@@ -87,7 +87,8 @@ from backend.engine.logic.galley_activities import (
     process_galley_unloading_activities
 )
 # Import general citizen activity processing function
-from backend.engine.logic.citizen_general_activities import process_citizen_activity # This import is fine
+# Use the new modular handler system instead of the monolithic citizen_general_activities
+from backend.engine.handlers import process_citizen_activity
 
 # Set up logging
 logging.basicConfig(

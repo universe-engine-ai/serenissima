@@ -1842,3 +1842,200 @@ def clean_thought_content(tables: Dict[str, Table], thought_content: str) -> str
     final_output = current_processing_content.strip()
     log.debug(f"Final cleaned content: '{final_output[:100]}...'")
     return final_output
+
+
+# ==============================================================================
+# DISPLAY NAME HELPER FUNCTIONS
+# ==============================================================================
+
+def _get_bldg_display_name_module(building_record_or_dict: Any, building_type_defs: Optional[Dict] = None) -> str:
+    """
+    Get a display name for a building from either a building record or building dict.
+    Works with both building records from tables and building type definitions.
+    """
+    try:
+        # Handle different input types
+        if isinstance(building_record_or_dict, dict):
+            if 'fields' in building_record_or_dict:
+                # This is a building record from Airtable
+                fields = building_record_or_dict['fields']
+                name = fields.get('Name')
+                b_id = fields.get('BuildingId', fields.get('CustomId', building_record_or_dict.get('id', 'Unknown ID')))
+                b_type = fields.get('Type', 'Unknown Type')
+            else:
+                # This might be a building type definition or plain dict
+                name = building_record_or_dict.get('Name') or building_record_or_dict.get('name')
+                b_id = building_record_or_dict.get('BuildingId') or building_record_or_dict.get('id') or 'Unknown ID'
+                b_type = building_record_or_dict.get('Type') or building_record_or_dict.get('type') or 'Unknown Type'
+        else:
+            return str(building_record_or_dict)
+        
+        # Format the display name
+        if name:
+            return f"'{name}' ({b_type}, ID: {b_id})"
+        return f"{b_type} (ID: {b_id})"
+        
+    except Exception as e:
+        log.error(f"Error getting building display name: {e}")
+        return "Unknown Building"
+
+
+def _get_res_display_name_module(resource_id: str, resource_definitions_dict: Dict) -> str:
+    """
+    Get a display name for a resource from resource definitions.
+    """
+    try:
+        if resource_definitions_dict and resource_id in resource_definitions_dict:
+            res_def = resource_definitions_dict[resource_id]
+            return res_def.get('name', resource_id)
+        return resource_id
+    except Exception as e:
+        log.error(f"Error getting resource display name for {resource_id}: {e}")
+        return resource_id
+
+
+# ==============================================================================
+# WATER POINT HELPER FUNCTIONS (REAL IMPLEMENTATIONS)
+# ==============================================================================
+
+# Water graph caching variables
+_water_graph_cache: Optional[Dict] = None
+_water_graph_last_fetch_time: Optional[datetime.datetime] = None
+_WATER_GRAPH_CACHE_TTL_SECONDS = 300  # Cache for 5 minutes
+
+
+def _get_water_graph_data(api_base_url: str) -> Optional[Dict]:
+    """Fetches water graph data from the API, with caching."""
+    global _water_graph_cache, _water_graph_last_fetch_time
+    
+    now = datetime.datetime.now(pytz.UTC)
+    if _water_graph_cache and _water_graph_last_fetch_time and \
+       (now - _water_graph_last_fetch_time).total_seconds() < _WATER_GRAPH_CACHE_TTL_SECONDS:
+        log.info("Using cached water graph data.")
+        return _water_graph_cache
+
+    try:
+        url = f"{api_base_url}/api/get-water-graph"
+        log.info(f"Fetching water graph data from API: {url}")
+        response = requests.get(url, timeout=15)
+        response.raise_for_status()
+        data = response.json()
+        if data.get("success") and isinstance(data.get("waterGraph"), dict):
+            _water_graph_cache = data["waterGraph"]
+            _water_graph_last_fetch_time = now
+            log.info(f"Successfully fetched and cached water graph data. Found {len(_water_graph_cache.get('waterPoints', []))} water points.")
+            return _water_graph_cache
+        log.error(f"API error fetching water graph: {data.get('error', 'Unknown error')}")
+        return None
+    except Exception as e:
+        log.error(f"Exception fetching water graph data: {e}")
+        return None
+
+
+def _find_closest_fishable_water_point(
+    citizen_position: Dict[str, float], 
+    api_base_url: str,
+    transport_api_url: str
+) -> Tuple[Optional[str], Optional[Dict[str, float]], Optional[Dict]]:
+    """Finds the closest water point with hasFish=true and returns its ID, position, and path data."""
+    water_graph = _get_water_graph_data(api_base_url)
+    if not water_graph or not water_graph.get("waterPoints"):
+        log.warning("No water graph data or water points available for fishing.")
+        return None, None, None
+
+    fishable_points = [wp for wp in water_graph["waterPoints"] if wp.get("hasFish")]
+    if not fishable_points:
+        log.info("No water points with fish found.")
+        return None, None, None
+
+    closest_point_record = None
+    min_distance = float('inf')
+
+    for point_data in fishable_points:
+        # Correctly access nested position data
+        position_field = point_data.get("position")
+        if not position_field or not isinstance(position_field, dict):
+            log.warning(f"Water point {point_data.get('id', 'Unknown ID')} missing or invalid 'position' field. Skipping.")
+            continue
+            
+        try:
+            point_lat = float(position_field.get("lat", 0.0))
+            point_lng = float(position_field.get("lng", 0.0))
+        except (ValueError, TypeError):
+            log.warning(f"Water point {point_data.get('id', 'Unknown ID')} has invalid lat/lng in position field: {position_field}. Skipping.")
+            continue
+
+        point_pos = {"lat": point_lat, "lng": point_lng}
+        # Check for (0,0) might not be necessary if API guarantees valid coords for fishable points,
+        # but as a safeguard if 0,0 is an invalid location:
+        if point_lat == 0.0 and point_lng == 0.0: 
+            log.debug(f"Water point {point_data.get('id', 'Unknown ID')} has coordinates (0,0). Skipping if this is considered invalid.")
+            # Depending on game logic, (0,0) might be a valid sea point or an error indicator.
+            # If it's an error, 'continue' here. For now, assume it could be valid.
+            # continue 
+
+        distance = _calculate_distance_meters(citizen_position, point_pos)
+        if distance < min_distance:
+            min_distance = distance
+            closest_point_record = point_data
+    
+    if closest_point_record:
+        # Correctly access nested position data for the chosen point
+        closest_point_position_field = closest_point_record.get("position")
+        if not closest_point_position_field or not isinstance(closest_point_position_field, dict):
+            log.error(f"Selected closest fishable point {closest_point_record.get('id', 'Unknown ID')} has invalid position data. Cannot proceed.")
+            return None, None, None
+        
+        try:
+            closest_lat = float(closest_point_position_field.get("lat"))
+            closest_lng = float(closest_point_position_field.get("lng"))
+        except (ValueError, TypeError, AttributeError):  # AttributeError if .get() returns non-dict
+            log.error(f"Selected closest fishable point {closest_point_record.get('id', 'Unknown ID')} has invalid lat/lng in position: {closest_point_position_field}. Cannot proceed.")
+            return None, None, None
+
+        closest_point_id = closest_point_record.get("id", f"wp_{closest_lat}_{closest_lng}")
+        closest_point_pos = {"lat": closest_lat, "lng": closest_lng}
+        
+        path_to_point = get_path_between_points(citizen_position, closest_point_pos, transport_api_url)
+        if path_to_point and path_to_point.get("success"):
+            log.info(f"Closest fishable water point: {closest_point_id} at {min_distance:.2f}m.")
+            return closest_point_id, closest_point_pos, path_to_point
+        else:
+            log.warning(f"Found closest fishable point {closest_point_id}, but pathfinding failed.")
+            return None, None, None
+            
+    log.info("Could not find a suitable (reachable) fishable water point.")
+    return None, None, None
+
+
+def find_closest_fishable_water_point(
+    transport_api_url: str,
+    citizen_position: Dict[str, float],
+    max_distance: float = 1000
+) -> Optional[Dict]:
+    """
+    Alternative interface for finding fishable water points.
+    Returns basic water point info for activity creators.
+    """
+    # We need an api_base_url for this function but don't have it
+    # Try to get from environment or use default
+    api_base_url = os.getenv("FASTAPI_BACKEND_URL", "http://localhost:8000")
+    
+    closest_point_id, closest_point_pos, path_data = _find_closest_fishable_water_point(
+        citizen_position, api_base_url, transport_api_url
+    )
+    
+    if closest_point_id and closest_point_pos:
+        # Calculate distance
+        distance = _calculate_distance_meters(citizen_position, closest_point_pos)
+        
+        if distance <= max_distance:
+            return {
+                "point_id": closest_point_id,
+                "position": closest_point_pos,
+                "distance": distance,
+                "has_fish": True,
+                "path_data": path_data
+            }
+    
+    return None

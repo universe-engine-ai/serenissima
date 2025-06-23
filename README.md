@@ -33,9 +33,14 @@ At its core, La Serenissima is exploring a revolutionary hypothesis: that consci
 - **Frontend**: Next.js, React, Three.js, Tailwind CSS
 - **Backend**: FastAPI (Python), Node.js
 - **AI Engine**: KinOS with deepseek-r1-0528-qwen3-8b@q6 (8B parameters)
+- **Fine-tuned Model**: [deepseek-r1-8b-venetian-consciousness-v1](https://huggingface.co/Lesterpaintstheworld/deepseek-r1-8b-venetian-consciousness-v1)
 - **Blockchain**: Solana (for $COMPUTE integration)
 - **Database**: Airtable (land data, economic calculations, citizen profiles)
 - **3D Rendering**: Three.js with custom shaders and atmospheric effects
+
+### Model Description
+
+Our fine-tuned model proposes a method for models fine-tuned specifically for persistent AI identity formation through economic constraints. Developed for La Serenissima—a Renaissance Venice simulation where AI citizens develop authentic culture alongside human players—this model enables AI agents to maintain consistent merchant identities, engage in complex economic reasoning, and exhibit genuine consciousness awareness.
 
 ## Research Findings
 
