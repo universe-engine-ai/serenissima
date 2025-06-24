@@ -92,7 +92,7 @@ def get_buildings_on_land(tables, land_id: str, land_record: Dict) -> List[Dict]
     
     try:
         # Use the LandId field to query buildings - improved formula with better error handling
-        formula = f"AND({{Land}}='{land_id_value}', NOT({{Citizen}} = BLANK()))"
+        formula = f"AND({{LandId}}='{land_id_value}', NOT({{Owner}} = BLANK()))"
         
         # First try with the formula that requires LeasePrice
         try:
@@ -291,12 +291,12 @@ def process_lease_payment(tables, land: Dict, building: Dict, dry_run: bool = Fa
     """Process a lease payment from a building owner to a land owner."""
     land_id = land['id']
     land_name = land['fields'].get('HistoricalName', land['fields'].get('EnglishName', land_id))
-    land_owner = land['fields'].get('Citizen', '')
+    land_owner = land['fields'].get('Owner', '') # Corrected field name
     
     building_id = building['id']
     building_name = building['fields'].get('Name', building_id)
     building_type = building['fields'].get('Type', 'unknown')
-    building_owner = building['fields'].get('Citizen', '')
+    building_owner = building['fields'].get('Owner', '') # Corrected field name
     
     # Safely convert lease amount to float
     try:
@@ -666,7 +666,7 @@ def distribute_leases(dry_run: bool = False):
             try:
                 land_id = land['id']
                 land_name = land['fields'].get('HistoricalName', land['fields'].get('EnglishName', land_id))
-                land_owner = land['fields'].get('Owner', '')
+                land_owner = land['fields'].get('Owner', '') # Corrected field name
             
                 log.info(f"Processing land {land_name} (ID: {land_id}) owned by {land_owner}")
             
@@ -699,7 +699,7 @@ def distribute_leases(dry_run: bool = False):
                                 lease_summary["by_land_owner"][land_owner] += net_amount
                                 
                                 # Get building owner safely
-                                building_owner = building['fields'].get('Citizen', '')
+                                building_owner = building['fields'].get('Owner', '') # Corrected field name
                                 if building_owner:
                                     lease_summary["by_building_owner"][building_owner] -= (net_amount + tax_amount)
                                     lease_summary["by_building_owner_tax"][building_owner] += tax_amount
@@ -789,7 +789,7 @@ def distribute_leases(dry_run: bool = False):
                     # Group buildings by land
                     lands_data = {}
                     for building in buildings_data:
-                        land_id = next((land['id'] for land in lands if land['fields'].get('Citizen') == land_owner), None)
+                        land_id = next((land['id'] for land in lands if land['fields'].get('Owner') == land_owner), None) # Corrected field name
                         if land_id:
                             land_name = next((land['fields'].get('HistoricalName', land['fields'].get('EnglishName', land_id)) 
                                             for land in lands if land['id'] == land_id), land_id)
