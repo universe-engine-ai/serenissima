@@ -55,6 +55,7 @@ from .use_public_bath_processor import process as process_use_public_bath # New 
 from .rest_processor import process as process_rest # New rest processor
 from .occupant_self_construction_processor import process_occupant_self_construction_fn # New occupant self-construction processor
 from .spread_rumor_activity_processor import process as process_spread_rumor_fn # New processor for spreading rumors
+from .attend_mass_processor import process_attend_mass_fn # New processor for attending mass
 
 # Imports pour les processeurs de terrains et contrats
 from .bid_on_land_activity_processor import process_bid_on_land_fn

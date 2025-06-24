@@ -36,7 +36,9 @@ from backend.engine.activity_creators import (
     try_create_drink_at_inn_activity,
     try_create_use_public_bath_activity,
     try_create_work_on_art_activity,
-    try_create_goto_location_activity
+    try_create_goto_location_activity,
+    try_create_attend_mass_activity,
+    find_nearest_church
 )
 
 # Import social activity creators
@@ -49,6 +51,44 @@ log = logging.getLogger(__name__)
 # ==============================================================================
 # LEISURE ACTIVITY HANDLERS
 # ==============================================================================
+
+def _handle_attend_mass(
+    tables: Dict[str, Table], citizen_record: Dict, is_night: bool, resource_defs: Dict, building_type_defs: Dict,
+    now_venice_dt: datetime, now_utc_dt: datetime, transport_api_url: str, api_base_url: str,
+    citizen_position: Optional[Dict], citizen_custom_id: str, citizen_username: str, citizen_airtable_id: str, citizen_name: str, citizen_position_str: Optional[str],
+    citizen_social_class: str
+) -> Optional[Dict]:
+    """Handles attending mass at the nearest church during leisure time."""
+    if not is_leisure_time_for_class(citizen_social_class, now_venice_dt):
+        return None
+    
+    if not citizen_position:
+        log.warning(f"{LogColors.WARNING}[Mass] {citizen_name}: No position available.{LogColors.ENDC}")
+        return None
+    
+    log.info(f"{LogColors.OKCYAN}[Mass] {citizen_name}: Looking for a church to attend mass.{LogColors.ENDC}")
+    
+    # Find the nearest church
+    nearest_church = find_nearest_church(tables, citizen_position)
+    if not nearest_church:
+        log.info(f"{LogColors.WARNING}[Mass] {citizen_name}: No church found nearby.{LogColors.ENDC}")
+        return None
+    
+    # Create attend mass activity
+    activity_record = try_create_attend_mass_activity(
+        tables=tables,
+        citizen_record=citizen_record,
+        citizen_position=citizen_position,
+        church_building_record=nearest_church,
+        now_utc_dt=now_utc_dt,
+        transport_api_url=transport_api_url
+    )
+    
+    if activity_record:
+        church_name = nearest_church['fields'].get('Name', 'church')
+        log.info(f"{LogColors.OKGREEN}[Mass] {citizen_name}: Creating 'attend_mass' activity at {church_name}.{LogColors.ENDC}")
+    
+    return activity_record
 
 def _handle_work_on_art(
     tables: Dict[str, Table], citizen_record: Dict, is_night: bool, resource_defs: Dict, building_type_defs: Dict,
@@ -358,6 +398,7 @@ def _try_process_weighted_leisure_activities(
         (25, _handle_drink_at_inn, "Drink at Inn", True),
         (10, _handle_use_public_bath, "Use Public Bath", True),
         (15, _handle_read_book, "Read Book", True),
+        (20, _handle_attend_mass, "Attend Mass", True),
         (10, _handle_send_leisure_message, "Send Message", True),
         (5, _handle_spread_rumor, "Spread Rumor", True),
     ]

@@ -31,7 +31,7 @@ from backend.engine.utils.activity_helpers import (
 # Import specific activity creators needed by these handlers
 from backend.engine.activity_creators import (
     try_create_deposit_inventory_orchestrator,
-    try_create_manage_public_storage_offer_chain
+    try_create_manage_public_storage_offer_activity
 )
 
 log = logging.getLogger(__name__)
@@ -121,7 +121,7 @@ def _handle_manage_public_storage_offer(
         log.info(f"{LogColors.OKCYAN}[Storage] {citizen_name}: Runs {len(warehouses)} warehouse(s). Checking storage contracts.{LogColors.ENDC}")
         
         # Try to create manage storage offer chain
-        activity_chain = try_create_manage_public_storage_offer_chain(
+        activity_chain = try_create_manage_public_storage_offer_activity(
             tables=tables,
             citizen_id=citizen_custom_id,
             citizen_username=citizen_username,

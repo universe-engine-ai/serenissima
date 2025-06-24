@@ -40,16 +40,14 @@ from backend.engine.activity_creators import (
     try_create_deliver_to_storage_activity,
     try_create_fetch_from_storage_activity,
     try_create_production_activity,
-    try_create_construction_activity,
+    try_create_construct_building_activity,
     try_create_fishing_activity,
-    try_create_porter_guild_task_activity,
     try_create_goto_work_activity,
-    try_create_deposit_inventory_orchestrator_activity
+    try_create_deposit_inventory_orchestrator
 )
 
 # Import logic helpers
-from backend.engine.logic.construction_logic import check_building_construction_contract
-from backend.engine.logic.porter_activities import find_porter_task
+from backend.engine.logic.porter_activities import process_porter_activity
 
 log = logging.getLogger(__name__)
 
@@ -301,7 +299,7 @@ def _handle_professional_construction_work(
         target_building_id = chosen_contract['fields']['TargetBuildingId']
         
         # Create construction activity
-        activity_record = try_create_construction_activity(
+        activity_record = try_create_construct_building_activity(
             tables, citizen_custom_id, citizen_username, citizen_airtable_id,
             contract_id, target_building_id, now_utc_dt
         )
@@ -339,16 +337,14 @@ def _handle_occupant_self_construction(
             building_id = project['fields']['CustomId']
             building_name = _get_bldg_display_name_module(project, building_type_defs)
             
-            # Check construction contract
-            contract_info = check_building_construction_contract(
-                tables, building_id, building_type_defs
-            )
-            
-            if not contract_info or not contract_info.get('needs_work'):
+            # Check if building needs construction work
+            # TODO: Implement proper construction contract checking
+            # For now, check if building has ConstructionMinutesRemaining > 0
+            if project['fields'].get('ConstructionMinutesRemaining', 0) <= 0:
                 continue
             
             # Create self-construction activity
-            activity_record = try_create_construction_activity(
+            activity_record = try_create_construct_building_activity(
                 tables, citizen_custom_id, citizen_username, citizen_airtable_id,
                 contract_info['contract_id'], building_id, now_utc_dt,
                 is_self_build=True
@@ -387,28 +383,32 @@ def _handle_porter_tasks(
         if not citizen_position:
             return None
         
-        # Find porter task
-        task_info = find_porter_task(
-            tables, citizen_username, citizen_position,
-            const.PORTER_TASK_SEARCH_RADIUS, resource_defs
-        )
+        # Process porter activity using the logic module
+        # Note: This function handles the entire porter workflow including creating activities
+        log.info(f"{LogColors.OKBLUE}[Porter] {citizen_name}: Processing porter activity at guild hall.{LogColors.ENDC}")
         
-        if not task_info:
-            log.info(f"{LogColors.WARNING}[Porter] {citizen_name}: No porter tasks available.{LogColors.ENDC}")
+        # Get the porter guild hall building
+        porter_guild_hall = get_building_record(tables, workplace_custom_id)
+        if not porter_guild_hall:
+            log.warning(f"{LogColors.WARNING}[Porter] {citizen_name}: Could not find porter guild hall record.{LogColors.ENDC}")
             return None
-        
-        # Create porter task activity
-        activity_record = try_create_porter_guild_task_activity(
-            tables, citizen_custom_id, citizen_username, citizen_airtable_id,
-            task_info['contract_id'], task_info['pickup_location'],
-            task_info['delivery_location'], task_info['resource_type'],
-            task_info['quantity'], now_utc_dt
+            
+        # Process porter activity handles finding tasks and creating appropriate activities
+        result = process_porter_activity(
+            tables, citizen_record, porter_guild_hall,
+            building_type_defs, resource_defs,
+            now_venice_dt, now_utc_dt,
+            transport_api_url, api_base_url
         )
         
-        if activity_record:
-            resource_name = _get_res_display_name_module(task_info['resource_type'], resource_defs)
-            log.info(f"{LogColors.OKGREEN}[Porter] {citizen_name}: Creating porter task to transport {task_info['quantity']} {resource_name}.{LogColors.ENDC}")
-            return activity_record
+        if result:
+            log.info(f"{LogColors.OKGREEN}[Porter] {citizen_name}: Porter activity processed successfully.{LogColors.ENDC}")
+            # The process_porter_activity function creates the activity directly
+            # So we return a placeholder to indicate success
+            return {"processed": True}
+        else:
+            log.warning(f"{LogColors.WARNING}[Porter] {citizen_name}: No porter activity created.{LogColors.ENDC}")
+            return None
         
     except Exception as e:
         log.error(f"{LogColors.FAIL}[Porter] {citizen_name}: Error finding tasks: {e}{LogColors.ENDC}")

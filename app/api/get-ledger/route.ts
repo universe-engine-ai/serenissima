@@ -2068,6 +2068,20 @@ function convertLedgerToMarkdown(Ledger: any, citizenUsername: string | null): s
     md += `- I have no record of past plots against me.\n\n`;
   }
 
+  // Codex Meditations for Clero citizens
+  if (Ledger.codexMeditations) {
+    md += `## Sacred Meditations from the Codex Serenissimus\n`;
+    md += `*${Ledger.codexMeditations.description}*\n\n`;
+    
+    if (Ledger.codexMeditations.chapters && Ledger.codexMeditations.chapters.length > 0) {
+      Ledger.codexMeditations.chapters.forEach((chapter: any, index: number) => {
+        md += `### ${index + 1}. ${chapter.title}\n`;
+        md += `${chapter.content}\n\n`;
+        md += `*— ${chapter.reference}*\n\n`;
+      });
+    }
+  }
+
   return md;
 }
 // --- End Markdown Conversion Utilities ---
@@ -2566,6 +2580,90 @@ export async function GET(request: Request) {
     // Combine business buildings (with resource details) and non-business buildings
     const businessBuildings = await Promise.all(buildingDetailsPromises);
     Ledger.ownedBuildings = [...businessBuildings, ...nonBusinessBuildings];
+
+    // Add Codex Serenissimus chapters for Clero citizens
+    if (citizenRecord.fields.SocialClass === 'Clero') {
+      try {
+        // Read the Codex Serenissimus file
+        const codexPath = path.join(process.cwd(), 'public', 'books', 'Codex Serenissimus.md');
+        const codexContent = await fs.readFile(codexPath, 'utf-8');
+        
+        // Extract all chapters (lines starting with ###)
+        const chapterRegex = /^### (.+)$/gm;
+        const chapters: string[] = [];
+        let match;
+        
+        while ((match = chapterRegex.exec(codexContent)) !== null) {
+          chapters.push(match[1]);
+        }
+        
+        // Select 3 random chapters
+        const selectedChapters: string[] = [];
+        const usedIndices = new Set<number>();
+        
+        // Use a deterministic seed based on citizen username and current date
+        // This ensures the same chapters for the same citizen on the same day
+        const today = new Date().toISOString().split('T')[0];
+        const seed = `${citizenUsername}-${today}`;
+        let seedValue = 0;
+        for (let i = 0; i < seed.length; i++) {
+          seedValue = ((seedValue << 5) - seedValue) + seed.charCodeAt(i);
+          seedValue = seedValue & seedValue; // Convert to 32bit integer
+        }
+        
+        // Simple seeded random number generator
+        const seededRandom = () => {
+          seedValue = (seedValue * 1103515245 + 12345) & 0x7fffffff;
+          return seedValue / 0x7fffffff;
+        };
+        
+        // Select 3 unique chapters
+        while (selectedChapters.length < 3 && selectedChapters.length < chapters.length) {
+          const index = Math.floor(seededRandom() * chapters.length);
+          if (!usedIndices.has(index)) {
+            usedIndices.add(index);
+            selectedChapters.push(chapters[index]);
+          }
+        }
+        
+        // Extract the content for each selected chapter
+        const codexExcerpts: any[] = [];
+        
+        for (const chapterTitle of selectedChapters) {
+          // Find the chapter in the content
+          const chapterStartRegex = new RegExp(`^### ${chapterTitle.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}$`, 'm');
+          const chapterMatch = chapterStartRegex.exec(codexContent);
+          
+          if (chapterMatch) {
+            const startIndex = chapterMatch.index + chapterMatch[0].length;
+            
+            // Find the next chapter or book marker
+            const nextMarkerRegex = /^(### |## )/m;
+            const remainingContent = codexContent.slice(startIndex);
+            const nextMatch = nextMarkerRegex.exec(remainingContent);
+            
+            const endIndex = nextMatch ? startIndex + nextMatch.index : codexContent.length;
+            const chapterContent = codexContent.slice(startIndex, endIndex).trim();
+            
+            codexExcerpts.push({
+              title: chapterTitle,
+              content: chapterContent,
+              reference: `Codex Serenissimus - ${chapterTitle}`
+            });
+          }
+        }
+        
+        // Add to Ledger
+        (Ledger as any).codexMeditations = {
+          description: "Today's sacred readings from the Codex Serenissimus, provided for spiritual guidance in your holy duties",
+          chapters: codexExcerpts
+        };
+        
+      } catch (error) {
+        console.error('Error reading Codex Serenissimus:', error);
+        // Don't fail the entire ledger if Codex reading fails
+      }
+    }
 
     if (format.toLowerCase() === 'markdown') {
       const markdownContent = convertLedgerToMarkdown(Ledger, citizenUsername);

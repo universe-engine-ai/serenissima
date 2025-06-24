@@ -59,6 +59,7 @@ from .respond_to_building_bid_creator import try_create as try_create_respond_to
 from .withdraw_building_bid_creator import try_create as try_create_withdraw_building_bid_activity
 from .manage_markup_buy_contract_creator import try_create as try_create_manage_markup_buy_contract_activity
 from .manage_storage_query_contract_creator import try_create as try_create_manage_storage_query_contract_activity
+from .manage_public_storage_offer_creator import try_create as try_create_manage_public_storage_offer_activity
 from .update_citizen_profile_creator import try_create as try_create_update_citizen_profile_activity
 from .work_on_art_creator import try_create_work_on_art_activity # Import for Artisti work
 from .read_book_activity_creator import try_create_read_book_activity # Import for reading books
@@ -67,3 +68,4 @@ from .drink_at_inn_activity_creator import try_create_drink_at_inn_activity # Ne
 from .use_public_bath_creator import try_create_use_public_bath_activity # New public bath activity
 from .goto_location_activity_creator import try_create as try_create_goto_location_activity # Assuming file is goto_location_activity_creator.py
 from .deposit_inventory_orchestrator_creator import try_create_deposit_inventory_orchestrator # New orchestrator
+from .attend_mass_creator import try_create_attend_mass_activity, find_nearest_church # New mass attendance activity

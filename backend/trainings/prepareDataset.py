@@ -66,6 +66,55 @@ def generate_system_message(citizen_data: Dict[str, Any], username: str = "") ->
     
     return system_message
 
+def export_null_thinking_records(trainings_records):
+    """
+    Export records with null AssistantThinking to a text file.
+    
+    Args:
+        trainings_records: List of training records from Airtable
+        
+    Returns:
+        str: Path to the generated text file
+    """
+    log.info("Exporting records with null AssistantThinking...")
+    
+    # Create output directory if it doesn't exist
+    output_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "output")
+    os.makedirs(output_dir, exist_ok=True)
+    
+    # Generate timestamp for filename
+    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+    txt_file_path = os.path.join(output_dir, f"null_thinking_records_{timestamp}.txt")
+    
+    null_thinking_count = 0
+    
+    with open(txt_file_path, 'w', encoding='utf-8') as f:
+        for record in trainings_records:
+            record_id = record.get('id', '')
+            fields = record.get('fields', {})
+            
+            # Check if AssistantThinking is null or empty
+            assistant_thinking = fields.get('AssistantThinking', '')
+            if not assistant_thinking:
+                intent = fields.get('Intent', '')
+                user_content = fields.get('UserContent', '')
+                assistant_content = fields.get('AssistantContent', '')
+                
+                # Write the record info as a JSON-like string
+                record_info = {
+                    "rec": record_id,
+                    "Intent": intent,
+                    "UserContent": user_content,
+                    "AssistantThinking": "",
+                    "AssistantContent": assistant_content
+                }
+                
+                f.write(json.dumps(record_info, ensure_ascii=False) + '\n')
+                null_thinking_count += 1
+    
+    log.info(f"Exported {null_thinking_count} records with null AssistantThinking to: {txt_file_path}")
+    return txt_file_path
+
 def generate_jsonl_for_fine_tuning(trainings_records):
     """
     Generate a JSONL file for fine-tuning from the TRAININGS records.
@@ -97,17 +146,25 @@ def generate_jsonl_for_fine_tuning(trainings_records):
             system = fields.get('System')
             user_content = fields.get('UserContent')
             assistant_content = fields.get('AssistantContent')
+            assistant_thinking = fields.get('AssistantThinking', '')  # Optional field
             
             if not system or not user_content or not assistant_content:
                 skipped_records += 1
                 continue
+            
+            # Combine AssistantThinking with AssistantContent
+            # If AssistantThinking exists, prepend it to the assistant content
+            if assistant_thinking:
+                combined_assistant_content = f"{assistant_thinking}\n\n{assistant_content}"
+            else:
+                combined_assistant_content = assistant_content
             
             # Create the JSON object for fine-tuning
             fine_tuning_entry = {
                 "messages": [
                     {"role": "system", "content": system},
                     {"role": "user", "content": user_content},
-                    {"role": "assistant", "content": assistant_content}
+                    {"role": "assistant", "content": combined_assistant_content}
                 ]
             }
             
@@ -188,7 +245,8 @@ def process_trainings() -> None:
     trainings_records = []
     
     try:
-        trainings_records = trainings_table.all()
+        # Sort by CreatedAt ASC to get chronological order
+        trainings_records = trainings_table.all(sort=['CreatedAt'])
         log.info(f"Total number of TRAININGS records: {len(trainings_records)}")
     except Exception as e:
         log.error(f"Error retrieving TRAININGS records: {e}")
@@ -260,12 +318,16 @@ def process_trainings() -> None:
     
     # Generate JSONL file for fine-tuning
     try:
-        # Get all records again to include the updated ones
-        all_trainings_records = trainings_table.all()
+        # Get all records again to include the updated ones, sorted by CreatedAt ASC
+        all_trainings_records = trainings_table.all(sort=['CreatedAt'])
         jsonl_file_path = generate_jsonl_for_fine_tuning(all_trainings_records)
         log.info(f"JSONL file for fine-tuning generated at: {jsonl_file_path}")
+        
+        # Export records with null AssistantThinking
+        null_thinking_file_path = export_null_thinking_records(all_trainings_records)
+        log.info(f"Null thinking records exported to: {null_thinking_file_path}")
     except Exception as e:
-        log.error(f"Error generating JSONL file for fine-tuning: {e}")
+        log.error(f"Error generating output files: {e}")
 
 def generate_fine_tuning_jsonl_only():
     """
@@ -277,13 +339,19 @@ def generate_fine_tuning_jsonl_only():
     trainings_table = tables['TRAININGS']
     
     try:
-        trainings_records = trainings_table.all()
+        # Sort by CreatedAt ASC to get chronological order
+        trainings_records = trainings_table.all(sort=['CreatedAt'])
         log.info(f"Total number of TRAININGS records: {len(trainings_records)}")
         jsonl_file_path = generate_jsonl_for_fine_tuning(trainings_records)
         log.info(f"JSONL file for fine-tuning generated at: {jsonl_file_path}")
+        
+        # Export records with null AssistantThinking
+        null_thinking_file_path = export_null_thinking_records(trainings_records)
+        log.info(f"Null thinking records exported to: {null_thinking_file_path}")
+        
         return jsonl_file_path
     except Exception as e:
-        log.error(f"Error generating JSONL file for fine-tuning: {e}")
+        log.error(f"Error generating output files: {e}")
         return None
 
 if __name__ == "__main__":
