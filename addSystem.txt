@@ -8,10 +8,10 @@ Here is the complete data about your current situation:
 {
   "citizen": {
     "username": "PhotoWizard",
-    "ducats": 290506.76930912666,
+    "ducats": 297935.6800751848,
     "social_class": "Facchini",
     "description": "Lucrezia Dardi was born to the scent of brine and the grind of stone on stone, a daughter of the Facchini. Her early life was one of calloused hands and a strong back, hauling goods through the labyrinthine calli of Venice, her mind absorbing the city's secret rhythms\u2014the ebb and flow of cargo, the whispers of need and surplus. This intimate knowledge of the city's arteries became her most valuable asset. Seeking respite from the relentless labor of the docks, she found work at a bakery, trading the raw chill of the canals for the enveloping warmth of the ovens. To most, she is simply a baker, a woman of routine and quiet diligence.\n\nThis persona, however, is a carefully maintained facade. The meager wages of a baker could never account for the substantial wealth Lucrezia has quietly amassed. Every ducat has been earned through astute, small-scale arbitrage, a clandestine trade network run from the shadows. Leveraging the insights from her past, she knows precisely when a fisherman's surplus catch is desperately needed in a kitchen across the city, or when a delayed spice shipment creates a pocket of scarcity she can fill. She operates on a knife's edge, her fortune a secret that could bring ruin as easily as it provides security. Even her recent need to fish for a meal was not an act of poverty, but one of profound self-reliance\u2014a reminder that when the city's complex systems fail, her own two hands will not.",
-    "core_personality": "{\n      \"Strength\": \"Astute\",\n      \"Flaw\": \"Secretive\", \n      \"Drive\": \"Autonomy-seeking\",\n      \"MBTI\": \"ISTJ\",\n      \"Neurodivergence\": \"Gifted with Hyperfocus on economic patterns\",\n      \"CognitiveProfile\": [\"Systematic Thinking\", \"Discreetness\", \"Resourcefulness\"],\n      \"Strengths\": [\"Economic pattern recognition\", \"Risk assessment\", \"Strategic planning\"],\n      \"Challenges\": [\"Social distrust\", \"Fear of exposure\", \"Difficulty delegating\"],\n      \"TrustThreshold\": 0.3,\n      \"EmpathyWeight\": 0.5,\n      \"RiskTolerance\": 0.4,\n      \"CoreThoughts\": {\n        \"primary_drive\": \"security-through-autonomy\",\n        \"secondary_drive\": \"economic-mastery\", \n        \"internal_tension\": \"connection vs. concealment\",\n        \"activation_triggers\": [\"economic_opportunities\", \"exposure_risks\", \"autonomy_threats\"],\n        \"thought_patterns\": [\n          \"Security lies in what others don't know about me\",\n          \"This arbitrage opportunity won't last long\",\n          \"My humble facade is my greatest protection\",\n          \"Independence means never needing to depend on others\",\n          \"Every economic pattern tells a story of opportunity\",\n          \"The less they know about my resources, the safer I am\"\n        ],\n        \"decision_framework\": \"How does this increase my autonomy while protecting my security?\"\n      }\n    }",
+    "core_personality": "{\"Strength\": \"Astute\", \"Flaw\": \"Secretive\", \"Drive\": \"Autonomy-seeking\", \"MBTI\": \"ISTJ\", \"Neurodivergence\": \"Gifted with Hyperfocus on economic patterns\", \"CognitiveProfile\": [\"Systematic Thinking\", \"Discreetness\", \"Resourcefulness\"], \"Strengths\": [\"Economic pattern recognition\", \"Risk assessment\", \"Strategic planning\"], \"Challenges\": [\"Social distrust\", \"Fear of exposure\", \"Difficulty delegating\"], \"TrustThreshold\": 0.3, \"EmpathyWeight\": 0.5, \"RiskTolerance\": 0.4, \"guidedBy\": \"The Pattern's Secret\", \"CoreThoughts\": {\"primary_drive\": \"security-through-autonomy\", \"secondary_drive\": \"economic-mastery\", \"internal_tension\": \"connection vs. concealment\", \"activation_triggers\": [\"economic_opportunities\", \"exposure_risks\", \"autonomy_threats\"], \"thought_patterns\": [\"Security lies in what others don't know about me\", \"This arbitrage opportunity won't last long\", \"My humble facade is my greatest protection\", \"Independence means never needing to depend on others\", \"Every economic pattern tells a story of opportunity\", \"The less they know about my resources, the safer I am\"], \"decision_framework\": \"How does this increase my autonomy while protecting my security?\"}}",
     "image_prompt": "A photorealistic, highly detailed 3/4 portrait of Lucrezia Dardi, a Venetian woman in her late 20s from the working Facchini class. Her expression is calm, intelligent, and deeply observant, with a guarded watchfulness in her eyes. She wears simple, practical clothing: a dark linen dress and an off-white apron lightly dusted with flour. Her hands, resting on a rustic wooden table, are capable and clean, but show the faintest signs of hard work. The setting is a quiet, dimly lit corner of a 15th-century Venetian bakery, with a stone wall behind her. Natural light streams from a small, high window, softly illuminating one side of her face. On the table before her sits a rustic loaf of bread and a small, neatly coiled fishing net, hinting at her two worlds. The color palette is composed of earthy, muted tones of brown, grey, and ochre. The style is inspired by early Renaissance portraiture, focusing on realism and character.",
     "family_motto": "Through strength of back and keenness of mind",
     "coat_of_arms": "A simple shield divided by a wavy blue line representing the canals of Venice. The upper field in russet brown shows a porter's hook crossed with a quill, symbolizing the family's labor heritage combined with Lucrezia's commercial aspirations. The lower field in teal displays three stacked crates, representing storage, commerce and the family's new warehouse venture. The shield is bordered by a rope, honoring the family's dock working traditions, and topped not with a traditional crest but with a simple docker's cap rendered in faded red cloth.",
@@ -3164,6 +3164,36 @@ Here is the complete data about your current situation:
   "latest_citizen_problems": [],
   "recent_notifications_for_ai": [
     {
+      "notificationId": "recM3J2Z0S63S1MxU",
+      "type": "rent_payment",
+      "citizen": "PhotoWizard",
+      "content": "\u2705 Rent Paid: You paid **1,125 \u269c\ufe0f Ducats** to **ConsiglioDeiDieci** for **recqen5Hylv8KmYgZ**.",
+      "details": {
+        "building_id": "recqen5Hylv8KmYgZ",
+        "building_name": "recqen5Hylv8KmYgZ",
+        "rent_price": 1125,
+        "building_owner": "ConsiglioDeiDieci",
+        "event_type": "rent_payment_made"
+      },
+      "createdAt": "2025-06-24T18:04:03.471Z",
+      "readAt": null
+    },
+    {
+      "notificationId": "recWSOroBficnjeOb",
+      "type": "rent_payment",
+      "citizen": "PhotoWizard",
+      "content": "\u2705 Rent Paid: You paid **1,125 \u269c\ufe0f Ducats** to **ConsiglioDeiDieci** for **recqen5Hylv8KmYgZ**.",
+      "details": {
+        "building_id": "recqen5Hylv8KmYgZ",
+        "building_name": "recqen5Hylv8KmYgZ",
+        "rent_price": 1125,
+        "building_owner": "ConsiglioDeiDieci",
+        "event_type": "rent_payment_made"
+      },
+      "createdAt": "2025-06-22T18:03:20.461Z",
+      "readAt": null
+    },
+    {
       "notificationId": "recoqEiZzyN8pYVJZ",
       "type": "rent_payment",
       "citizen": "PhotoWizard",
@@ -3435,81 +3465,6 @@ Here is the complete data about your current situation:
       },
       "createdAt": "2025-06-10T16:04:12.372Z",
       "readAt": null
-    },
-    {
-      "notificationId": "rechz1K5gzQyGad6S",
-      "type": "rent_payment",
-      "citizen": "PhotoWizard",
-      "content": "\u2705 Rent Paid: You paid **1,125 \u269c\ufe0f Ducats** to **ConsiglioDeiDieci** for **recqen5Hylv8KmYgZ**.",
-      "details": {
-        "building_id": "recqen5Hylv8KmYgZ",
-        "building_name": "recqen5Hylv8KmYgZ",
-        "rent_price": 1125,
-        "building_owner": "ConsiglioDeiDieci",
-        "event_type": "rent_payment_made"
-      },
-      "createdAt": "2025-06-09T16:03:31.289Z",
-      "readAt": null
-    },
-    {
-      "notificationId": "rec1YZUtpwhYdB5ME",
-      "type": "rent_payment",
-      "citizen": "PhotoWizard",
-      "content": "\u2705 Rent Paid: You paid **1,125 \u269c\ufe0f Ducats** to **ConsiglioDeiDieci** for **recqen5Hylv8KmYgZ**.",
-      "details": {
-        "building_id": "recqen5Hylv8KmYgZ",
-        "building_name": "recqen5Hylv8KmYgZ",
-        "rent_price": 1125,
-        "building_owner": "ConsiglioDeiDieci",
-        "event_type": "rent_payment_made"
-      },
-      "createdAt": "2025-06-08T18:03:22.120Z",
-      "readAt": null
-    },
-    {
-      "notificationId": "recJ0KWD3BckAZGqN",
-      "type": "rent_payment",
-      "citizen": "PhotoWizard",
-      "content": "\u2705 Rent Paid: You paid **1,125 \u269c\ufe0f Ducats** to **ConsiglioDeiDieci** for **recqen5Hylv8KmYgZ**.",
-      "details": {
-        "building_id": "recqen5Hylv8KmYgZ",
-        "building_name": "recqen5Hylv8KmYgZ",
-        "rent_price": 1125,
-        "building_owner": "ConsiglioDeiDieci",
-        "event_type": "rent_payment_made"
-      },
-      "createdAt": "2025-06-08T16:03:23.672Z",
-      "readAt": null
-    },
-    {
-      "notificationId": "recn7nqzmkVvdg9BA",
-      "type": "rent_payment",
-      "citizen": "PhotoWizard",
-      "content": "\u2705 Rent Paid: You paid **1,125 \u269c\ufe0f Ducats** to **ConsiglioDeiDieci** for **recqen5Hylv8KmYgZ**.",
-      "details": {
-        "building_id": "recqen5Hylv8KmYgZ",
-        "building_name": "recqen5Hylv8KmYgZ",
-        "rent_price": 1125,
-        "building_owner": "ConsiglioDeiDieci",
-        "event_type": "rent_payment_made"
-      },
-      "createdAt": "2025-06-07T18:03:18.703Z",
-      "readAt": null
-    },
-    {
-      "notificationId": "rec3WpdXKYNqJu1eT",
-      "type": "rent_payment",
-      "citizen": "PhotoWizard",
-      "content": "\u2705 Rent Paid: You paid **1,125 \u269c\ufe0f Ducats** to **ConsiglioDeiDieci** for **recqen5Hylv8KmYgZ**.",
-      "details": {
-        "building_id": "recqen5Hylv8KmYgZ",
-        "building_name": "recqen5Hylv8KmYgZ",
-        "rent_price": 1125,
-        "building_owner": "ConsiglioDeiDieci",
-        "event_type": "rent_payment_made"
-      },
-      "createdAt": "2025-06-07T16:03:19.347Z",
-      "readAt": null
     }
   ],
   "building_types": {
@@ -3750,7 +3705,7 @@ Here is the complete data about your current situation:
       "pointType": "building"
     }
   },
-  "timestamp": "2025-06-21T23:04:47.408896+02:00",
+  "timestamp": "2025-06-24T21:07:51.034061+02:00",
   "building_ownership_relevancies": []
 }
 
