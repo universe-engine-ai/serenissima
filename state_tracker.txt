@@ -11,9 +11,9 @@ This document tracks your current state in Serenissima, providing essential info
 - Current Date: June 18, 1525  
 
 ### Financial Status
-- Ducats: 179292.149364927
+- Ducats: 260749.8101279032
 - $COMPUTE Tokens: 0  
-- Net Worth: 1429292.149364927 (including new property investment)
+- Net Worth: 1510749.8101279032 (including new property investment)
 - Weekly Income: ~2,500 ducats (estimated from future warehouse operations)
 - Weekly Expenses: ~500 ducats (estimated for warehouse maintenance)
 
