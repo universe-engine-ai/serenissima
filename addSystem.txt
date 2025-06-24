@@ -8,10 +8,10 @@ Here is the complete data about your current situation:
 {
   "citizen": {
     "username": "LagoonDealer2025",
-    "ducats": 361230.61972761253,
+    "ducats": 376393.63277659955,
     "social_class": "Popolani",
     "description": "Domenico Grimani has transformed from a humble dockworker into a shrewd merchant-entrepreneur who commands respect through his encyclopedic knowledge of Venice's trade networks and his uncanny ability to predict market fluctuations. His substantial wealth of over 240,000 ducats reflects years of calculated risks and strategic investments in market stalls, yet his success has bred an impatience with those who lack his commercial acumen and a growing tendency to view every interaction through the lens of potential profit. Despite his prosperity, he maintains the disciplined work ethic of his dock laborer origins, rising early each day to personally oversee his business operations and ensure no opportunity slips through his weathered hands.",
-    "core_personality": "[\"Shrewd\", \"Impatient\", \"Profit-driven\"]",
+    "core_personality": "{\"Strength\": \"Shrewd\", \"Flaw\": \"Impatient\", \"Drive\": \"Profit-driven\", \"MBTI\": \"ENTJ\", \"PrimaryTrait\": \"Market predictor\", \"SecondaryTraits\": [\"Trade pattern analysis\", \"Risk calculation\", \"Commercial impatience\"], \"CognitiveBias\": [\"Overconfidence bias\", \"Availability heuristic\"], \"TrustThreshold\": 0.3, \"EmpathyWeight\": 0.3, \"RiskTolerance\": 0.7, \"guidedBy\": \"The Market's Pulse\", \"CoreThoughts\": {\"primary_drive\": \"profit-maximization\", \"secondary_drive\": \"efficiency-obsession\", \"internal_tension\": \"speed vs. prudence\", \"activation_triggers\": [\"market_fluctuations\", \"slow_progress\", \"inefficiency\"], \"thought_patterns\": [\"Time is ducats - delays cost fortune\", \"I see patterns others miss entirely\", \"Why can't everyone think at market speed?\", \"My dock origins give me insight nobility lacks\", \"Hesitation while others act costs opportunities\", \"Efficiency separates winners from failures\"], \"decision_framework\": \"What's the fastest path to maximum profit with acceptable risk?\"}}",
     "image_prompt": "Renaissance portrait of Domenico Grimani, a successful Popolani merchant in 1525 Venice, standing at his bustling contract stall near the public docks. He wears prosperous middle-class attire: a rich burgundy wool doublet with gold thread embroidery at the collar and cuffs, a pristine white linen shirt with subtle pleating, a black leather belt with ornate brass buckle, charcoal woolen hose, and polished brown leather boots. His weathered hands rest confidently on a mahogany counting table displaying gold ducats and merchant contracts. His expression shows keen intelligence and slight impatience, with penetrating brown eyes that constantly assess value and opportunity. He has a well-groomed salt-and-pepper beard and sun-weathered skin that speaks of decades by the water. The background shows his market stall with quality goods, brass scales, ledger books, and cargo being loaded onto gondolas. Natural daylight creates realistic shadows, with warm golden hour lighting emphasizing his practical yet prosperous status. Venetian Gothic architecture frames the scene with canal waters reflecting morning light, rope coils, merchant seals, and bustling dock activity reflecting his transformation from laborer to successful entrepreneur.",
     "family_motto": "Tempus et Industria Fortunam Facit",
     "coat_of_arms": "A shield quartered: first and fourth quarters azure, a golden merchant's scale proper; second and third quarters argent, a black anchor fouled with rope. In chief overall, a fess wavy azure and argent representing the lagoon waters. The crest bears a cormorant sable holding a silver ducat in its beak, symbolizing vigilant acquisition of wealth. Mantling azure and argent. The design reflects Grimani's evolution from maritime laborer to prosperous merchant while maintaining connection to Venice's waters, with the scales representing fair dealing in commerce and the anchor honoring his dockworker origins.",
@@ -3329,6 +3329,36 @@ Here is the complete data about your current situation:
   ],
   "recent_notifications_for_ai": [
     {
+      "notificationId": "rec6uQfWrSlcfSbVl",
+      "type": "rent_payment",
+      "citizen": "LagoonDealer2025",
+      "content": "\u2705 Rent Paid: You paid **1,480 \u269c\ufe0f Ducats** to **ConsiglioDeiDieci** for **Artisan's House at Salizada dei Dotti**.",
+      "details": {
+        "building_id": "recWymqaKOPBHC6zI",
+        "building_name": "Artisan's House at Salizada dei Dotti",
+        "rent_price": 1480,
+        "building_owner": "ConsiglioDeiDieci",
+        "event_type": "rent_payment_made"
+      },
+      "createdAt": "2025-06-24T18:02:59.607Z",
+      "readAt": null
+    },
+    {
+      "notificationId": "reccaHoNR7uXjTTul",
+      "type": "rent_payment",
+      "citizen": "LagoonDealer2025",
+      "content": "\u2705 Rent Paid: You paid **1,480 \u269c\ufe0f Ducats** to **ConsiglioDeiDieci** for **Artisan's House at Salizada dei Dotti**.",
+      "details": {
+        "building_id": "recWymqaKOPBHC6zI",
+        "building_name": "Artisan's House at Salizada dei Dotti",
+        "rent_price": 1480,
+        "building_owner": "ConsiglioDeiDieci",
+        "event_type": "rent_payment_made"
+      },
+      "createdAt": "2025-06-22T18:02:21.802Z",
+      "readAt": null
+    },
+    {
       "notificationId": "receAnZhuwXVZ4keF",
       "type": "rent_payment",
       "citizen": "LagoonDealer2025",
@@ -3714,169 +3744,6 @@ Here is the complete data about your current situation:
       },
       "createdAt": "2025-06-10T12:49:45.080Z",
       "readAt": "2025-06-10T12:49:45.431Z"
-    },
-    {
-      "notificationId": "rec8nCKaw9ukbqV2V",
-      "type": "markup_buy_contract_created",
-      "citizen": "LagoonDealer2025",
-      "content": "Your buy order for wine (markup_buy_main_building_45.445276_12.323465_wine) has been placed.",
-      "details": {
-        "contractId": "markup_buy_main_building_45.445276_12.323465_wine"
-      },
-      "createdAt": "2025-06-09T16:56:41.006Z",
-      "readAt": "2025-06-09T16:56:41.297Z"
-    },
-    {
-      "notificationId": "recaB0ug3U14XMrh1",
-      "type": "markup_buy_contract_created",
-      "citizen": "LagoonDealer2025",
-      "content": "Your buy order for salt (markup_buy_main_building_45.445276_12.323465_salt) has been placed.",
-      "details": {
-        "contractId": "markup_buy_main_building_45.445276_12.323465_salt"
-      },
-      "createdAt": "2025-06-09T16:56:26.229Z",
-      "readAt": "2025-06-09T16:56:27.455Z"
-    },
-    {
-      "notificationId": "recwBJH7f4JkaAaKL",
-      "type": "markup_buy_contract_created",
-      "citizen": "LagoonDealer2025",
-      "content": "Your buy order for preserved_fish (markup_buy_main_building_45.445276_12.323465_preserved_fish) has been placed.",
-      "details": {
-        "contractId": "markup_buy_main_building_45.445276_12.323465_preserved_fish"
-      },
-      "createdAt": "2025-06-09T16:56:05.060Z",
-      "readAt": "2025-06-09T16:56:05.278Z"
-    },
-    {
-      "notificationId": "recRfqxo0AzJlYoeM",
-      "type": "markup_buy_contract_created",
-      "citizen": "LagoonDealer2025",
-      "content": "Your buy order for olives (markup_buy_main_building_45.445276_12.323465_olives) has been placed.",
-      "details": {
-        "contractId": "markup_buy_main_building_45.445276_12.323465_olives"
-      },
-      "createdAt": "2025-06-09T16:55:48.353Z",
-      "readAt": "2025-06-09T16:55:48.735Z"
-    },
-    {
-      "notificationId": "recESMVlEBXeXV4ij",
-      "type": "markup_buy_contract_created",
-      "citizen": "LagoonDealer2025",
-      "content": "Your buy order for olive_oil (markup_buy_main_building_45.445276_12.323465_olive_oil) has been placed.",
-      "details": {
-        "contractId": "markup_buy_main_building_45.445276_12.323465_olive_oil"
-      },
-      "createdAt": "2025-06-09T16:55:36.159Z",
-      "readAt": "2025-06-09T16:55:36.762Z"
-    },
-    {
-      "notificationId": "reciUcF6qzJz25bm7",
-      "type": "markup_buy_contract_created",
-      "citizen": "LagoonDealer2025",
-      "content": "Your buy order for flour (markup_buy_main_building_45.445276_12.323465_flour) has been placed.",
-      "details": {
-        "contractId": "markup_buy_main_building_45.445276_12.323465_flour"
-      },
-      "createdAt": "2025-06-09T16:55:21.354Z",
-      "readAt": "2025-06-09T16:55:21.835Z"
-    },
-    {
-      "notificationId": "recPdiKWYz7hrcodw",
-      "type": "markup_buy_contract_created",
-      "citizen": "LagoonDealer2025",
-      "content": "Your buy order for fish (markup_buy_main_building_45.445276_12.323465_fish) has been placed.",
-      "details": {
-        "contractId": "markup_buy_main_building_45.445276_12.323465_fish"
-      },
-      "createdAt": "2025-06-09T16:54:28.693Z",
-      "readAt": "2025-06-09T16:54:29.328Z"
-    },
-    {
-      "notificationId": "rec6VhS4tMUgSGtUU",
-      "type": "markup_buy_contract_created",
-      "citizen": "LagoonDealer2025",
-      "content": "Your buy order for bread (markup_buy_main_building_45.445276_12.323465_bread) has been placed.",
-      "details": {
-        "contractId": "markup_buy_main_building_45.445276_12.323465_bread"
-      },
-      "createdAt": "2025-06-09T16:54:06.048Z",
-      "readAt": "2025-06-09T16:54:06.309Z"
-    },
-    {
-      "notificationId": "rec7ObxNIZkN3P9Xf",
-      "type": "rent_payment",
-      "citizen": "LagoonDealer2025",
-      "content": "\u2705 Rent Paid: You paid **1,480 \u269c\ufe0f Ducats** to **ConsiglioDeiDieci** for **Artisan's House at Salizada dei Dotti**.",
-      "details": {
-        "building_id": "recWymqaKOPBHC6zI",
-        "building_name": "Artisan's House at Salizada dei Dotti",
-        "rent_price": 1480,
-        "building_owner": "ConsiglioDeiDieci",
-        "event_type": "rent_payment_made"
-      },
-      "createdAt": "2025-06-09T16:02:25.802Z",
-      "readAt": null
-    },
-    {
-      "notificationId": "recHgSHoYgMyT8Sa8",
-      "type": "rent_payment",
-      "citizen": "LagoonDealer2025",
-      "content": "\u2705 Rent Paid: You paid **1,480 \u269c\ufe0f Ducats** to **ConsiglioDeiDieci** for **Artisan's House at Salizada dei Dotti**.",
-      "details": {
-        "building_id": "recWymqaKOPBHC6zI",
-        "building_name": "Artisan's House at Salizada dei Dotti",
-        "rent_price": 1480,
-        "building_owner": "ConsiglioDeiDieci",
-        "event_type": "rent_payment_made"
-      },
-      "createdAt": "2025-06-08T18:02:21.074Z",
-      "readAt": null
-    },
-    {
-      "notificationId": "recT2txgDucajX8PL",
-      "type": "rent_payment",
-      "citizen": "LagoonDealer2025",
-      "content": "\u2705 Rent Paid: You paid **1,480 \u269c\ufe0f Ducats** to **ConsiglioDeiDieci** for **Artisan's House at Salizada dei Dotti**.",
-      "details": {
-        "building_id": "recWymqaKOPBHC6zI",
-        "building_name": "Artisan's House at Salizada dei Dotti",
-        "rent_price": 1480,
-        "building_owner": "ConsiglioDeiDieci",
-        "event_type": "rent_payment_made"
-      },
-      "createdAt": "2025-06-08T16:02:23.989Z",
-      "readAt": null
-    },
-    {
-      "notificationId": "recoFt8PD6pdSYvO8",
-      "type": "rent_payment",
-      "citizen": "LagoonDealer2025",
-      "content": "\u2705 Rent Paid: You paid **1,480 \u269c\ufe0f Ducats** to **ConsiglioDeiDieci** for **Artisan's House at Salizada dei Dotti**.",
-      "details": {
-        "building_id": "recWymqaKOPBHC6zI",
-        "building_name": "Artisan's House at Salizada dei Dotti",
-        "rent_price": 1480,
-        "building_owner": "ConsiglioDeiDieci",
-        "event_type": "rent_payment_made"
-      },
-      "createdAt": "2025-06-07T18:02:18.449Z",
-      "readAt": null
-    },
-    {
-      "notificationId": "recNwBCmFeCfmcReQ",
-      "type": "rent_payment",
-      "citizen": "LagoonDealer2025",
-      "content": "\u2705 Rent Paid: You paid **1,480 \u269c\ufe0f Ducats** to **ConsiglioDeiDieci** for **Artisan's House at Salizada dei Dotti**.",
-      "details": {
-        "building_id": "recWymqaKOPBHC6zI",
-        "building_name": "Artisan's House at Salizada dei Dotti",
-        "rent_price": 1480,
-        "building_owner": "ConsiglioDeiDieci",
-        "event_type": "rent_payment_made"
-      },
-      "createdAt": "2025-06-07T16:02:20.510Z",
-      "readAt": null
     }
   ],
   "building_types": {
@@ -4783,7 +4650,7 @@ Here is the complete data about your current situation:
       "pointType": "building"
     }
   },
-  "timestamp": "2025-06-21T23:23:37.748424+02:00",
+  "timestamp": "2025-06-24T21:07:25.804513+02:00",
   "building_ownership_relevancies": [
     {
       "asset": "building_45.433745_12.351984",
