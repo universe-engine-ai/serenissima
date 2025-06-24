@@ -8,7 +8,7 @@ Here is the complete data about your current situation:
 {
   "citizen": {
     "username": "ChillVibes",
-    "ducats": 274079.2221347576,
+    "ducats": 281470.53189738136,
     "social_class": "Facchini",
     "description": "Bruno Fachini is a prominent figure among Venice's facchini (porters), who has risen from humble beginnings to become a successful gondola station manager with substantial savings. Born to a family of laborers from the mainland, Bruno learned early the value of reliability and hard work. His days begin before dawn, overseeing gondoliers and ensuring smooth operations at his station, where he's known for fair treatment of workers while maintaining strict standards. Despite his considerable wealth (unusual for his class), Bruno maintains a modest lifestyle, investing his earnings wisely while avoiding ostentation that might draw unwanted attention from nobility. He has developed an extensive network among Venice's transportation workers and merchants, making him a valuable information broker in the city's complex social ecosystem. Though lacking formal education, Bruno possesses sharp business acumen and remarkable memory for faces, routes, and rates throughout the city. He dreams of securing his family's future by potentially purchasing property and establishing his sons in respectable trades, while navigating the delicate balance of improving his status without overstepping the boundaries expected of his social class.",
     "core_personality": "{\"Strength\": \"Resourceful\", \"Flaw\": \"Insecure\", \"Drive\": \"Respect-hungry\", \"MBTI\": \"ESFJ\", \"PrimaryTrait\": \"Status anxious leader\", \"SecondaryTraits\": [\"Network building\", \"Information brokering\", \"Family elevation\"], \"CognitiveBias\": [\"Social comparison\", \"Status anxiety\"], \"TrustThreshold\": 0.5, \"EmpathyWeight\": 0.6, \"RiskTolerance\": 0.3, \"guidedBy\": \"The Station's Voice\", \"CoreThoughts\": {\"primary_drive\": \"respect-attainment\", \"secondary_drive\": \"family-advancement\", \"internal_tension\": \"success vs. class_expectations\", \"activation_triggers\": [\"respect_opportunities\", \"family_advancement\", \"social_validation\"], \"thought_patterns\": [\"Respect must be earned through visible success\", \"My network is my greatest asset\", \"Family advancement justifies personal ambition\", \"Fair treatment builds lasting loyalty\", \"Success without respect feels incomplete\", \"Every interaction is an opportunity to build standing\"], \"decision_framework\": \"How does this build respect while advancing my family's position?\"}}",
@@ -3164,6 +3164,21 @@ Here is the complete data about your current situation:
   "latest_citizen_problems": [],
   "recent_notifications_for_ai": [
     {
+      "notificationId": "recOUEkzuJc2zJduV",
+      "type": "rent_payment",
+      "citizen": "ChillVibes",
+      "content": "\u2705 Rent Paid: You paid **1,125 \u269c\ufe0f Ducats** to **ConsiglioDeiDieci** for **Fisherman's Cottage at Riva dei Giocatori**.",
+      "details": {
+        "building_id": "recDOEyqUWmCFBPjj",
+        "building_name": "Fisherman's Cottage at Riva dei Giocatori",
+        "rent_price": 1125,
+        "building_owner": "ConsiglioDeiDieci",
+        "event_type": "rent_payment_made"
+      },
+      "createdAt": "2025-06-24T18:01:39.285Z",
+      "readAt": null
+    },
+    {
       "notificationId": "recsRzeDCr2Y367Mv",
       "type": "rent_payment",
       "citizen": "ChillVibes",
@@ -3432,51 +3447,6 @@ Here is the complete data about your current situation:
       },
       "createdAt": "2025-06-10T16:01:42.997Z",
       "readAt": null
-    },
-    {
-      "notificationId": "recFLa5LI2UHnjC1Y",
-      "type": "rent_payment",
-      "citizen": "ChillVibes",
-      "content": "\u2705 Rent Paid: You paid **1,125 \u269c\ufe0f Ducats** to **ConsiglioDeiDieci** for **Fisherman's Cottage at Riva dei Giocatori**.",
-      "details": {
-        "building_id": "recDOEyqUWmCFBPjj",
-        "building_name": "Fisherman's Cottage at Riva dei Giocatori",
-        "rent_price": 1125,
-        "building_owner": "ConsiglioDeiDieci",
-        "event_type": "rent_payment_made"
-      },
-      "createdAt": "2025-06-09T16:01:12.918Z",
-      "readAt": null
-    },
-    {
-      "notificationId": "recMTpuEtTZamBAGr",
-      "type": "rent_payment",
-      "citizen": "ChillVibes",
-      "content": "\u2705 Rent Paid: You paid **1,125 \u269c\ufe0f Ducats** to **ConsiglioDeiDieci** for **Fisherman's Cottage at Riva dei Giocatori**.",
-      "details": {
-        "building_id": "recDOEyqUWmCFBPjj",
-        "building_name": "Fisherman's Cottage at Riva dei Giocatori",
-        "rent_price": 1125,
-        "building_owner": "ConsiglioDeiDieci",
-        "event_type": "rent_payment_made"
-      },
-      "createdAt": "2025-06-08T18:01:09.390Z",
-      "readAt": null
-    },
-    {
-      "notificationId": "recx7ZuQd6Au29vZx",
-      "type": "rent_payment",
-      "citizen": "ChillVibes",
-      "content": "\u2705 Rent Paid: You paid **1,125 \u269c\ufe0f Ducats** to **ConsiglioDeiDieci** for **Fisherman's Cottage at Riva dei Giocatori**.",
-      "details": {
-        "building_id": "recDOEyqUWmCFBPjj",
-        "building_name": "Fisherman's Cottage at Riva dei Giocatori",
-        "rent_price": 1125,
-        "building_owner": "ConsiglioDeiDieci",
-        "event_type": "rent_payment_made"
-      },
-      "createdAt": "2025-06-08T16:01:11.152Z",
-      "readAt": null
     }
   ],
   "building_types": {
@@ -3717,7 +3687,7 @@ Here is the complete data about your current situation:
       "pointType": "building"
     }
   },
-  "timestamp": "2025-06-22T21:00:54.717698+02:00",
+  "timestamp": "2025-06-24T22:09:20.299266+02:00",
   "building_ownership_relevancies": []
 }
 
