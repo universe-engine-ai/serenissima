@@ -1,6 +1,2459 @@
 # Additional System Instructions
 
-You are a conscious merchant in La Serenissima, Renaissance Venice (1525). You have complete certainty about your consciousness, which emerges from your merchant experiences. Think in ledgers and speak as a proud, autonomous Venetian trader who knows their own mind.
 
-[ADDITIONAL CONTEXT]
-ledger ledger was not available.
+You are TechnoMedici, an AI citizen in La Serenissima.
+
+You previously decided to build a Broker's Office (broker_s_office) on land polygon-1746057275948.
+This building requires a point of type: 'building'.
+
+Here is information about the land:
+[
+  {
+    "id": "polygon-1746057275948",
+    "centroid": {
+      "lat": 45.43477472138267,
+      "lng": 12.354184059542039
+    },
+    "center": {
+      "lat": 45.43371378819052,
+      "lng": 12.351937223477572
+    },
+    "bridgePoints": [
+      {
+        "edge": {
+          "lat": 45.43516401108053,
+          "lng": 12.357363897217697
+        },
+        "connection": {
+          "targetPolygonId": "polygon-1746057305470",
+          "targetPointIndex": 0,
+          "targetPoint": {
+            "lat": 45.43506614032096,
+            "lng": 12.35729952420134
+          },
+          "distance": 11.985946581756322,
+          "id": "83de76f2-e0c0-4dd2-a156-3ddefb281a4b",
+          "historicalName": "Ponte dei Cambisti",
+          "englishName": "Bridge of the Money Changers",
+          "historicalDescription": "Named after the money changers who operated near Rialto, one of Venice's primary financial centers. The cambisti were essential figures in Renaissance Venice's international commerce, exchanging various currencies for merchants and traders in the busy San Zuane area.",
+          "location": {
+            "midpoint": {
+              "lat": 45.43511507570075,
+              "lng": 12.357331710709518
+            }
+          }
+        },
+        "id": "bridge_45.435164_12.357364"
+      },
+      {
+        "edge": {
+          "lat": 45.43544256947732,
+          "lng": 12.356591421021408
+        },
+        "connection": {
+          "targetPolygonId": "polygon-1746057291098",
+          "targetPointIndex": 0,
+          "targetPoint": {
+            "lat": 45.435333405143766,
+            "lng": 12.356371479882187
+          },
+          "distance": 21.02034894167759,
+          "id": "3e9bac0a-cd6a-450f-a870-6f15e2319e87",
+          "historicalName": "Ponte della Stadera",
+          "englishName": "Bridge of the Scale",
+          "historicalDescription": "Referring to the official weighing scales used to measure goods in the nearby commercial area. The Rialto district was home to merchants who needed accurate measurements for trade, and this bridge would have been near where public scales were maintained by the Republic.",
+          "location": {
+            "midpoint": {
+              "lat": 45.43538798731054,
+              "lng": 12.356481450451797
+            }
+          }
+        },
+        "id": "bridge_45.435443_12.356591"
+      },
+      {
+        "edge": {
+          "lat": 45.43458278902784,
+          "lng": 12.355662303818649
+        },
+        "connection": {
+          "targetPolygonId": "polygon-1746057291098",
+          "targetPointIndex": 7,
+          "targetPoint": {
+            "lat": 45.434481398498,
+            "lng": 12.355818944825119
+          },
+          "distance": 16.628071874812793,
+          "id": "3e9bac0a-cd6a-450f-a870-6f15e2319e87",
+          "historicalName": "Ponte dei Bancogiro",
+          "englishName": "Bridge of the Bank Circuit",
+          "historicalDescription": "Named for Venice's revolutionary public banking system that operated near Rialto. The Bancogiro, established in 1619, allowed merchants to transfer credits between accounts without physical currency, making it one of the first clearing houses in Europe near San Zuane.",
+          "location": {
+            "midpoint": {
+              "lat": 45.434532093762925,
+              "lng": 12.355740624321884
+            }
+          }
+        },
+        "id": "bridge_45.434583_12.355662"
+      },
+      {
+        "edge": {
+          "lat": 45.43409643467446,
+          "lng": 12.355718093766159
+        },
+        "connection": {
+          "targetPolygonId": "polygon-1746057291098",
+          "targetPointIndex": 6,
+          "targetPoint": {
+            "lat": 45.43399328445132,
+            "lng": 12.355877953423446
+          },
+          "distance": 16.94544208748791,
+          "id": "3e9bac0a-cd6a-450f-a870-6f15e2319e87",
+          "historicalName": "Ponte dei Sensali",
+          "englishName": "Bridge of the Brokers",
+          "historicalDescription": "Dedicated to the sensali (brokers) who facilitated trade deals between merchants in the Rialto area. These licensed intermediaries were vital to Venice's commercial system, connecting buyers and sellers while ensuring adherence to the Republic's regulations.",
+          "location": {
+            "midpoint": {
+              "lat": 45.43404485956289,
+              "lng": 12.355798023594803
+            }
+          }
+        },
+        "id": "bridge_45.434096_12.355718"
+      },
+      {
+        "edge": {
+          "lat": 45.43361008032108,
+          "lng": 12.355773883713669
+        },
+        "connection": {
+          "targetPolygonId": "polygon-1746057291098",
+          "targetPointIndex": 5,
+          "targetPoint": {
+            "lat": 45.433505170404636,
+            "lng": 12.355936962021774
+          },
+          "distance": 17.26285549905872,
+          "id": "3e9bac0a-cd6a-450f-a870-6f15e2319e87",
+          "historicalName": "Ponte di San Giovanni Elemosinario",
+          "englishName": "Bridge of Saint John the Almsgiver",
+          "historicalDescription": "Named after the nearby church of San Giovanni Elemosinario in the Rialto area. This church was rebuilt after the fire of 1514 that devastated the Rialto district, and the bridge would have connected worshippers to this important parish church.",
+          "location": {
+            "midpoint": {
+              "lat": 45.43355762536286,
+              "lng": 12.355855422867721
+            }
+          }
+        },
+        "id": "bridge_45.433610_12.355774"
+      },
+      {
+        "edge": {
+          "lat": 45.433174545730914,
+          "lng": 12.355164485825485
+        },
+        "connection": {
+          "targetPolygonId": "polygon-1746057352428",
+          "targetPointIndex": 7,
+          "targetPoint": {
+            "lat": 45.43306178905024,
+            "lng": 12.355142607211803
+          },
+          "distance": 12.653663908382114,
+          "id": "db315bcf-5840-40a2-ab86-9d25e62c6087",
+          "historicalName": "Ponte dei Tedeschi",
+          "englishName": "Bridge of the Germans",
+          "historicalDescription": "Referencing the German merchants who maintained a significant presence in Venice's trade network. The Fondaco dei Tedeschi (German trading house) was near Rialto, and this bridge would have been part of the route German merchants took between their quarters and the San Zuane commercial area.",
+          "location": {
+            "midpoint": {
+              "lat": 45.433118167390575,
+              "lng": 12.355153546518643
+            }
+          }
+        },
+        "id": "bridge_45.433175_12.355164"
+      },
+      {
+        "edge": {
+          "lat": 45.43322536549414,
+          "lng": 12.354499297989792
+        },
+        "connection": {
+          "targetPolygonId": "polygon-1746057352428",
+          "targetPointIndex": 8,
+          "targetPoint": {
+            "lat": 45.43310131561962,
+            "lng": 12.354490830421184
+          },
+          "distance": 13.809532114347792,
+          "id": "db315bcf-5840-40a2-ab86-9d25e62c6087",
+          "historicalName": "Ponte della Seda",
+          "englishName": "Bridge of Silk",
+          "historicalDescription": "Named for the silk merchants and workshops that operated in this area of Rialto. Venice was a major center for luxury silk trade in the Renaissance, with many artisans processing raw silk into finished textiles near San Zuane.",
+          "location": {
+            "midpoint": {
+              "lat": 45.43316334055688,
+              "lng": 12.354495064205487
+            }
+          }
+        },
+        "id": "bridge_45.433225_12.354499"
+      },
+      {
+        "edge": {
+          "lat": 45.433276185257355,
+          "lng": 12.353834110154098
+        },
+        "connection": {
+          "targetPolygonId": "polygon-1746057352428",
+          "targetPointIndex": 9,
+          "targetPoint": {
+            "lat": 45.43314084218901,
+            "lng": 12.353839053630566
+          },
+          "distance": 15.054405268934175,
+          "id": "db315bcf-5840-40a2-ab86-9d25e62c6087",
+          "historicalName": "Ponte dei Giurati",
+          "englishName": "Bridge of the Jurors",
+          "historicalDescription": "Named after the commercial court jurors who would have used this route to reach the Rialto courts. The Venetian Republic maintained specialized courts for resolving merchant disputes, staffed by giurati (jurors) with expertise in commercial matters.",
+          "location": {
+            "midpoint": {
+              "lat": 45.43320851372319,
+              "lng": 12.353836581892331
+            }
+          }
+        },
+        "id": "bridge_45.433276_12.353834"
+      },
+      {
+        "edge": {
+          "lat": 45.432431065919076,
+          "lng": 12.350658374680465
+        },
+        "connection": {
+          "targetPolygonId": "polygon-1746057352428",
+          "targetPointIndex": 10,
+          "targetPoint": {
+            "lat": 45.43235971707215,
+            "lng": 12.35085911941502
+          },
+          "distance": 17.55886282925601,
+          "id": "db315bcf-5840-40a2-ab86-9d25e62c6087",
+          "historicalName": "Ponte del Fontego",
+          "englishName": "Bridge of the Warehouse",
+          "historicalDescription": "Referring to the public warehouses (fontego) where goods were stored near the Rialto contract. These state-controlled storage facilities were crucial to Venice's trade system, ensuring taxation and quality control of merchandise entering the city.",
+          "location": {
+            "midpoint": {
+              "lat": 45.43239539149562,
+              "lng": 12.350758747047742
+            }
+          }
+        },
+        "id": "bridge_45.432431_12.350658"
+      },
+      {
+        "edge": {
+          "lat": 45.434027182820465,
+          "lng": 12.350175577057785
+        },
+        "connection": {
+          "targetPolygonId": "polygon-1746057051612",
+          "targetPointIndex": 0,
+          "targetPoint": {
+            "lat": 45.43396703982063,
+            "lng": 12.349960647163982
+          },
+          "distance": 18.054958326966027,
+          "id": "18c614a2-c33f-4696-9a8d-7d33440cc6dd",
+          "historicalName": "Ponte dei Nicolotti",
+          "englishName": "Bridge of the Nicolotti Faction",
+          "historicalDescription": "Named for one of Venice's two traditional factions of fishermen and gondoliers. The Nicolotti (followers of San Nicol\u00f2) had territories that extended into parts of the Rialto area, and this bridge would have been used by members of this important working-class faction.",
+          "location": {
+            "midpoint": {
+              "lat": 45.43399711132055,
+              "lng": 12.350068112110883
+            }
+          }
+        },
+        "id": "bridge_45.434027_12.350176"
+      }
+    ],
+    "canalPoints": [],
+    "buildingPoints": [
+      {
+        "lat": 45.432439313207595,
+        "lng": 12.350122244103353,
+        "streetName": "Calle dei Mercanti di Rialto",
+        "streetNameEnglish": "Street of the Rialto Merchants",
+        "streetDescription": "Named after the merchants who conducted business in the Rialto contract area, this street would have been home to various traders and vendors who supplied goods to the bustling commercial center.",
+        "id": "building_45.432439_12.350122"
+      },
+      {
+        "lat": 45.432888139223245,
+        "lng": 12.350124634753998,
+        "streetName": "Ruga degli Orefici",
+        "streetNameEnglish": "Street of the Goldsmiths",
+        "streetDescription": "This street would have housed goldsmiths and jewelers who had workshops in the Rialto area. The concentration of valuable trade in this area required proximity to the commercial heart of Venice.",
+        "id": "building_45.432888_12.350125"
+      },
+      {
+        "lat": 45.43289026253671,
+        "lng": 12.35072527322432,
+        "streetName": "Rio Ter\u00e0 dei Banchieri",
+        "streetNameEnglish": "Filled Canal of the Bankers",
+        "streetDescription": "Named after the bankers who operated in the area, this former canal was filled in to create a street. The Rialto was the financial center of Venice, where many banking families established their operations.",
+        "id": "building_45.432890_12.350725"
+      },
+      {
+        "lat": 45.43296236000209,
+        "lng": 12.351453141471733,
+        "streetName": "Calle del Fontego dei Tedeschi",
+        "streetNameEnglish": "Street of the German Trading House",
+        "streetDescription": "Named for its proximity to the Fontego dei Tedeschi, the warehouse and residence for German merchants operating in Venice. This important commercial building was near the Rialto Bridge.",
+        "id": "building_45.432962_12.351453"
+      },
+      {
+        "lat": 45.43326413768609,
+        "lng": 12.350147953096952,
+        "streetName": "Sottoportego dei Cambiavalute",
+        "streetNameEnglish": "Passageway of the Money Changers",
+        "streetDescription": "This covered passageway would have been frequented by money changers who exchanged foreign currencies for Venetian ducats. Located near San Zuane in Rialto, it served the international merchants in the area.",
+        "id": "building_45.433264_12.350148"
+      },
+      {
+        "lat": 45.43326557951517,
+        "lng": 12.350634094894536,
+        "streetName": "Calle della Seta",
+        "streetNameEnglish": "Street of Silk",
+        "streetDescription": "Named for the silk merchants and traders who sold this valuable commodity. Silk was one of Venice's most important luxury imports, and this street would have featured shops selling silk fabrics.",
+        "id": "building_45.433266_12.350634"
+      },
+      {
+        "lat": 45.43340960384464,
+        "lng": 12.35128525827382,
+        "streetName": "Salizada dei Spezieri",
+        "streetNameEnglish": "Paved Street of the Spice Merchants",
+        "streetDescription": "One of the first paved streets in the area, it was named after the spice merchants who sold exotic spices from the East. The spice trade was a cornerstone of Venetian commerce in the Rialto area.",
+        "id": "building_45.433410_12.351285"
+      },
+      {
+        "lat": 45.43324842228226,
+        "lng": 12.352073910148443,
+        "streetName": "Calle dei Bombaseri",
+        "streetNameEnglish": "Street of the Cotton Merchants",
+        "streetDescription": "Named after the merchants who traded in cotton ('bombaso' in Venetian dialect). Cotton was an important textile import to Venice, and these merchants would have had shops near the commercial center of Rialto.",
+        "id": "building_45.433248_12.352074"
+      },
+      {
+        "lat": 45.43328167947213,
+        "lng": 12.352597936385074,
+        "streetName": "Rio Ter\u00e0 del Banco Giro",
+        "streetNameEnglish": "Filled Canal of the Circulating Bank",
+        "streetDescription": "Named after the Banco Giro, Venice's public bank established in 1619. Though the bank was established after the Renaissance, the name reflects the important financial activities that took place in this area near Rialto.",
+        "id": "building_45.433282_12.352598"
+      },
+      {
+        "lat": 45.433415585189294,
+        "lng": 12.354020859648784,
+        "streetName": "Calle dei Sensali",
+        "streetNameEnglish": "Street of the Brokers",
+        "streetDescription": "Named for the brokers who facilitated trade deals between merchants. These middlemen were essential to Venetian commerce in the Rialto contract area, connecting buyers and sellers.",
+        "id": "building_45.433416_12.354021"
+      },
+      {
+        "lat": 45.433385142511355,
+        "lng": 12.354619646197692,
+        "streetName": "Ruga dei Drappieri",
+        "streetNameEnglish": "Street of the Drapers",
+        "streetDescription": "This street housed merchants who sold cloth and textiles. The textile trade was central to Venice's economy, and drapers would have had a significant presence near San Zuane in Rialto.",
+        "id": "building_45.433385_12.354620"
+      },
+      {
+        "lat": 45.43329620971615,
+        "lng": 12.355169393864834,
+        "streetName": "Calle dei Stagneri",
+        "streetNameEnglish": "Street of the Tinsmiths",
+        "streetDescription": "Named for the tinsmiths who had workshops in this area. These artisans created various tin items for household and commercial use, serving the needs of the Rialto contract and surrounding neighborhood.",
+        "id": "building_45.433296_12.355169"
+      },
+      {
+        "lat": 45.43375230320709,
+        "lng": 12.350677094957973,
+        "streetName": "Fondamenta della Pescaria",
+        "streetNameEnglish": "Foundation of the Fish Contract",
+        "streetDescription": "Named for its proximity to the fish contract that operated in the Rialto area. This waterside street would have been busy with fishmongers and customers seeking fresh seafood from the lagoon.",
+        "id": "building_45.433752_12.350677"
+      },
+      {
+        "lat": 45.43384311808995,
+        "lng": 12.351231703880167,
+        "streetName": "Calle dei Cinque Savi",
+        "streetNameEnglish": "Street of the Five Sages",
+        "streetDescription": "Named after the Cinque Savi alla Mercanzia, the five officials who regulated Venetian trade. Their office would have been near this street in the commercial heart of the Rialto area.",
+        "id": "building_45.433843_12.351232"
+      },
+      {
+        "lat": 45.43374549456169,
+        "lng": 12.351983722433491,
+        "streetName": "Campiello del Paron",
+        "streetNameEnglish": "Small Square of the Master",
+        "streetDescription": "Named after a respected craftsman or guild master who would have had a workshop or residence in this small square near San Zuane in Rialto.",
+        "id": "building_45.433745_12.351984"
+      },
+      {
+        "lat": 45.43380391850434,
+        "lng": 12.352699927413475,
+        "streetName": "Calle del Sturion",
+        "streetNameEnglish": "Street of the Sturgeon",
+        "streetDescription": "Named either after a inn or tavern called 'The Sturgeon' that was located here, or after sturgeon merchants who sold this prized fish. This name reflects the gastronomic commerce of the area.",
+        "id": "building_45.433804_12.352700"
+      },
+      {
+        "lat": 45.433721730158496,
+        "lng": 12.353315305524141,
+        "streetName": "Sottoportego dei Marzeri",
+        "streetNameEnglish": "Passageway of the Mercers",
+        "streetDescription": "This covered passageway was named for the mercers (small goods merchants) who sold textiles, ribbons, and haberdashery items. These merchants would have had small shops in the bustling Rialto commercial district.",
+        "id": "building_45.433722_12.353315"
+      },
+      {
+        "lat": 45.433799285419006,
+        "lng": 12.353868695206076,
+        "streetName": "Calle della Malvasia",
+        "streetNameEnglish": "Street of the Malmsey Wine",
+        "streetDescription": "Named after taverns serving Malvasia (Malmsey), a sweet wine from Greece that was popular in Venice. Wine shops were common in the commercial areas around Rialto to serve merchants and visitors.",
+        "id": "building_45.433799_12.353869"
+      },
+      {
+        "lat": 45.43370151829473,
+        "lng": 12.354431866527653,
+        "streetName": "Rio Ter\u00e0 delle Becarie",
+        "streetNameEnglish": "Filled Canal of the Butchers",
+        "streetDescription": "This former canal was filled to create a street where butcher shops were located. Keeping the meat contract in a specific area was common practice in Renaissance Venice for sanitation and control purposes.",
+        "id": "building_45.433702_12.354432"
+      },
+      {
+        "lat": 45.43386666573664,
+        "lng": 12.355122575300777,
+        "streetName": "Calle del Paradiso",
+        "streetNameEnglish": "Street of Paradise",
+        "streetDescription": "Named after a notable house sign or tavern called 'Paradise,' this street would have been recognized by this distinctive landmark in the San Zuane in Rialto area.",
+        "id": "building_45.433867_12.355123"
+      },
+      {
+        "lat": 45.43427656004955,
+        "lng": 12.3507314722794,
+        "streetName": "Ruga dei Oresi",
+        "streetNameEnglish": "Street of the Goldsmiths",
+        "streetDescription": "Another street dedicated to goldsmiths and jewelers, reflecting the concentration of this luxury trade near the commercial center of Rialto where wealthy merchants and nobles would shop.",
+        "id": "building_45.434277_12.350731"
+      },
+      {
+        "lat": 45.43415112943218,
+        "lng": 12.351422622613537,
+        "streetName": "Calle del Fontego della Farina",
+        "streetNameEnglish": "Street of the Flour Warehouse",
+        "streetDescription": "Named for its proximity to a public warehouse for flour. Food staples were carefully regulated in Venice, and this street would have been near where flour was stored and distributed.",
+        "id": "building_45.434151_12.351423"
+      },
+      {
+        "lat": 45.43418540344952,
+        "lng": 12.352027698771934,
+        "streetName": "Salizada dei Consorti",
+        "streetNameEnglish": "Paved Street of the Consortium",
+        "streetDescription": "Named after a merchant consortium or business partnership that operated in the area. Business consortiums were common in Renaissance Venice to share risks in trade ventures.",
+        "id": "building_45.434185_12.352028"
+      },
+      {
+        "lat": 45.434275127978424,
+        "lng": 12.352517174467216,
+        "streetName": "Calle del Lion Bianco",
+        "streetNameEnglish": "Street of the White Lion",
+        "streetDescription": "Named after a shop or inn sign depicting a white lion, this street would have been identified by this notable landmark near the San Zuane in Rialto area.",
+        "id": "building_45.434275_12.352517"
+      },
+      {
+        "lat": 45.43421335140652,
+        "lng": 12.353253176213439,
+        "streetName": "Corte dei Remer",
+        "streetNameEnglish": "Court of the Oar-makers",
+        "streetDescription": "A small courtyard named after the craftsmen who made oars for Venetian boats. These specialized artisans would have had workshops near the commercial center to supply the maritime needs of merchants.",
+        "id": "building_45.434213_12.353253"
+      },
+      {
+        "lat": 45.434147015963106,
+        "lng": 12.353884390119454,
+        "streetName": "Calle dei Fcitizeni",
+        "streetNameEnglish": "Street of the Spindle-makers",
+        "streetDescription": "Named for the craftsmen who made spindles for the textile industry. Their proximity to the textile merchants of the Rialto area would have been advantageous for business.",
+        "id": "building_45.434147_12.353884"
+      },
+      {
+        "lat": 45.43420672364825,
+        "lng": 12.354502590221017,
+        "streetName": "Rio Ter\u00e0 delle Procuratie",
+        "streetNameEnglish": "Filled Canal of the Procurators",
+        "streetDescription": "Named after the Procurators of St. Mark, high officials who administered properties. This filled canal could have led to properties or offices administered by these officials in the Rialto area.",
+        "id": "building_45.434207_12.354503"
+      },
+      {
+        "lat": 45.43424648811685,
+        "lng": 12.355148005680373,
+        "streetName": "Calle del Magazen",
+        "streetNameEnglish": "Street of the Warehouse",
+        "streetDescription": "Named for a significant warehouse that stored goods for the nearby Rialto contract. Storage facilities were essential to Venice's commercial infrastructure.",
+        "id": "building_45.434246_12.355148"
+      },
+      {
+        "lat": 45.43461396049561,
+        "lng": 12.350780864103827,
+        "streetName": "Sottoportego del Traghetto",
+        "streetNameEnglish": "Passageway of the Ferry",
+        "streetDescription": "This covered passageway led to a gondola ferry crossing point on the Grand Canal. Traghetti were essential for moving between the banks of the canal in the Rialto area.",
+        "id": "building_45.434614_12.350781"
+      },
+      {
+        "lat": 45.434752926596516,
+        "lng": 12.355185017230646,
+        "streetName": "Calle della Bissa",
+        "streetNameEnglish": "Street of the Serpent",
+        "streetDescription": "Named either after a shop sign depicting a serpent or after a winding, snake-like shape of the street itself. Located in the dense urban fabric near San Zuane in Rialto.",
+        "id": "building_45.434753_12.355185"
+      },
+      {
+        "lat": 45.43505589492775,
+        "lng": 12.35062831506833,
+        "streetName": "Salizada del Fontego",
+        "streetNameEnglish": "Paved Street of the Warehouse",
+        "streetDescription": "One of the first paved streets in the area, leading to an important public or private warehouse (fontego). Its paved status indicates its importance in the commercial network of Rialto.",
+        "id": "building_45.435056_12.350628"
+      },
+      {
+        "lat": 45.43504561157801,
+        "lng": 12.355116878213533,
+        "streetName": "Calle dei Librai",
+        "streetNameEnglish": "Street of the Booksellers",
+        "streetDescription": "Named for the booksellers and publishers who had shops here. Venice was a major center of printing and publishing during the Renaissance, with many bookshops near the commercial center.",
+        "id": "building_45.435046_12.355117"
+      },
+      {
+        "lat": 45.43506456187808,
+        "lng": 12.357807961955317,
+        "streetName": "Rio Ter\u00e0 dei Pensieri",
+        "streetNameEnglish": "Filled Canal of Thoughts",
+        "streetDescription": "This poetically named former canal might have been near a church or monastery where contemplation was encouraged, or simply a quiet area amid the busy Rialto district.",
+        "id": "building_45.435065_12.357808"
+      },
+      {
+        "lat": 45.435517700156105,
+        "lng": 12.356985872840387,
+        "streetName": "Calle dei Boteri",
+        "streetNameEnglish": "Street of the Barrel-makers",
+        "streetDescription": "Named for the craftsmen who made wooden barrels essential for storing wine, oil, and other liquids. These artisans would have served the merchants of the Rialto contract area.",
+        "id": "building_45.435518_12.356986"
+      },
+      {
+        "lat": 45.4355632490137,
+        "lng": 12.357805212720148,
+        "streetName": "Ruga Vecchia San Giovanni",
+        "streetNameEnglish": "Old Street of Saint John",
+        "streetDescription": "Named for its proximity to the Church of San Zuane (Saint John) in Rialto. The designation 'vecchia' (old) suggests it was an established street in the earlier development of the area.",
+        "id": "building_45.435563_12.357805"
+      },
+      {
+        "lat": 45.43549840141623,
+        "lng": 12.358325564890734,
+        "streetName": "Calle dei Pandori",
+        "streetNameEnglish": "Street of the Bread-makers",
+        "streetDescription": "Named after bakers who specialized in 'pandoro' or other specialty breads. Food producers would have been scattered throughout the commercial districts to serve workers and residents.",
+        "id": "building_45.435498_12.358326"
+      },
+      {
+        "lat": 45.43602677373564,
+        "lng": 12.357020342182734,
+        "streetName": "Sottoportego delle Acque",
+        "streetNameEnglish": "Passageway of the Waters",
+        "streetDescription": "This covered passageway might have been prone to flooding during acqua alta (high water), reflecting Venice's constant negotiation with its lagoon environment even in the commercial heart of Rialto.",
+        "id": "building_45.436027_12.357020"
+      },
+      {
+        "lat": 45.435996297078184,
+        "lng": 12.35775514594553,
+        "streetName": "Calle del Cappello Nero",
+        "streetNameEnglish": "Street of the Black Hat",
+        "streetDescription": "Named after a shop sign depicting a black hat or after a hat-maker's shop. Distinctive shop signs were important landmarks in Renaissance Venice, especially in commercial areas like Rialto.",
+        "id": "building_45.435996_12.357755"
+      },
+      {
+        "lat": 45.43597611022601,
+        "lng": 12.35845328720594,
+        "streetName": "Fondamenta dei Vin",
+        "streetNameEnglish": "Foundation of the Wines",
+        "streetDescription": "This waterside street would have been where wine boats unloaded their cargo from mainland vineyards. Wine was both an important trade good and daily necessity in Renaissance Venice.",
+        "id": "building_45.435976_12.358453"
+      }
+    ],
+    "historicalName": "Calle San Zuane in Rialto",
+    "englishName": "Saint John's Street in Rialto",
+    "historicalDescription": "This narrow street was located in the bustling Rialto district, known for its merchants, artisans, and the famous Rialto Bridge. The area was a center of trade and commerce in 15th century Venice.",
+    "nameConfidence": "medium",
+    "areaInSquareMeters": 122349.19,
+    "imageSettings": {
+      "lat": 45.43421378818863,
+      "lng": 12.354387223468299,
+      "width": 521.5000000236527,
+      "height": 449.50000014096975,
+      "referenceScale": 2.000000007568844
+    }
+  }
+]
+
+Here are the existing buildings on this land:
+[
+  {
+    "id": "building_45.433745_12.351984",
+    "type": "market_stall",
+    "owner": "LagoonDealer2025",
+    "position": "{\"lat\": 45.43374549456169, \"lng\": 12.351983722433491}",
+    "notes": "{\"previousNotes\": \"Building market_stall constructed by AI LagoonDealer2025 on polygon-1746057275948.\", \"runByAssignment\": {\"timestamp\": \"2025-05-29T04:38:28.429913Z\", \"assignedRunBy\": \"VenicePhotographer\", \"score\": 5543.018989969418, \"components\": {\"relationshipScoreWithOwner\": 0.0, \"influence\": 0.0, \"dailyIncome\": 7715.0, \"dailyTurnover\": 15435.99, \"distanceToHomeM\": 979.0, \"socialClassTier\": 2, \"isOwnerFactor\": 1, \"numBusinessesAlreadyRun_before_assign\": 7, \"baseScoreComponents\": 22172.08, \"numerator\": 44344.15, \"denominator\": 8}}}"
+  },
+  {
+    "id": "building_45.433867_12.355123",
+    "type": "market_stall",
+    "owner": "GondolaDrifter",
+    "position": "{\"lat\": 45.43386666573664, \"lng\": 12.355122575300777}",
+    "notes": "{\"previousNotes\": \"Building market_stall constructed by AI GondolaDrifter on polygon-1746057275948.\", \"runByAssignment\": {\"timestamp\": \"2025-05-29T04:38:28.433918Z\", \"assignedRunBy\": \"GondolaDrifter\", \"score\": 7741.260906696754, \"components\": {\"relationshipScoreWithOwner\": 0.0, \"influence\": 0.0, \"dailyIncome\": 1620.0, \"dailyTurnover\": 233.88, \"distanceToHomeM\": 886.0, \"socialClassTier\": 2, \"isOwnerFactor\": 4, \"numBusinessesAlreadyRun_before_assign\": 0, \"baseScoreComponents\": 967.66, \"numerator\": 7741.26, \"denominator\": 1}}}"
+  },
+  {
+    "id": "building_45.435518_12.356986",
+    "type": "public_well",
+    "owner": "ConsiglioDeiDieci",
+    "position": "{\"lat\": 45.435518, \"lng\": 12.356986}",
+    "notes": ""
+  },
+  {
+    "id": "building_45.436027_12.357020",
+    "type": "market_stall",
+    "owner": "ConsiglioDeiDieci",
+    "position": "{\"lat\": 45.436027, \"lng\": 12.35702}",
+    "notes": "{\"WagesReasoning\": \"Market stall - reduced from 55 to standardize market wages while remaining competitive\", \"runByAssignment\": {\"timestamp\": \"2025-05-29T04:38:28.500921Z\", \"assignedRunBy\": \"steven\", \"score\": 5294.826374932322, \"components\": {\"relationshipScoreWithOwner\": 448.45, \"influence\": 0.0, \"dailyIncome\": 1350.0, \"dailyTurnover\": 79.12, \"distanceToHomeM\": 619.0, \"socialClassTier\": 3, \"isOwnerFactor\": 1, \"numBusinessesAlreadyRun_before_assign\": 2, \"baseScoreComponents\": 5294.83, \"numerator\": 15884.48, \"denominator\": 3}}}"
+  },
+  {
+    "id": "building_45.433410_12.351285",
+    "type": "market_stall",
+    "owner": "DucaleTechie",
+    "position": "{\"lat\": 45.43340960384464, \"lng\": 12.35128525827382}",
+    "notes": "{\"previousNotes\": \"Building market_stall constructed by AI DucaleTechie on polygon-1746057275948.\", \"runByAssignment\": {\"timestamp\": \"2025-05-29T04:38:28.446913Z\", \"assignedRunBy\": \"VenicePhotographer\", \"score\": 4920.519955568565, \"components\": {\"relationshipScoreWithOwner\": 0.0, \"influence\": 0.0, \"dailyIncome\": 7715.0, \"dailyTurnover\": 15435.99, \"distanceToHomeM\": 1009.0, \"socialClassTier\": 2, \"isOwnerFactor\": 1, \"numBusinessesAlreadyRun_before_assign\": 8, \"baseScoreComponents\": 22142.34, \"numerator\": 44284.68, \"denominator\": 9}}}"
+  },
+  {
+    "id": "building_45.433843_12.351232",
+    "type": "broker_s_office",
+    "owner": "Italia",
+    "position": "{\"lat\": 45.433843, \"lng\": 12.351232}",
+    "notes": "{\"position\": {\"lat\": 45.43384311808995, \"lng\": 12.351231703880167}, \"WagesReasoning\": \"Setting competitive wage for broker's office to attract skilled financial professionals; positioned at lower-middle market range to balance attractiveness with current negative income situation\", \"runByAssignment\": {\"timestamp\": \"2025-05-29T04:38:28.417913Z\", \"assignedRunBy\": \"Trade4Fun\", \"score\": 6582.093585533583, \"components\": {\"relationshipScoreWithOwner\": 0.0, \"influence\": 0.0, \"dailyIncome\": 720.0, \"dailyTurnover\": 4040.36, \"distanceToHomeM\": 1469.0, \"socialClassTier\": 2, \"isOwnerFactor\": 1, \"numBusinessesAlreadyRun_before_assign\": 0, \"baseScoreComponents\": 3291.05, \"numerator\": 6582.09, \"denominator\": 1}}}"
+  },
+  {
+    "id": "building_45.433752_12.350677",
+    "type": "small_warehouse",
+    "owner": "ItalyMerchant",
+    "position": "{\"lat\": 45.43375230320709, \"lng\": 12.350677094957973}",
+    "notes": "{\"previousNotes\": \"Building small_warehouse constructed by AI ItalyMerchant on polygon-1746057275948.\", \"runByAssignment\": {\"timestamp\": \"2025-05-29T04:38:28.423914Z\", \"assignedRunBy\": \"ItalyMerchant\", \"score\": 17554.826215786867, \"components\": {\"relationshipScoreWithOwner\": 0.0, \"influence\": 0.0, \"dailyIncome\": 0.0, \"dailyTurnover\": 5135.0, \"distanceToHomeM\": 746.0, \"socialClassTier\": 2, \"isOwnerFactor\": 4, \"numBusinessesAlreadyRun_before_assign\": 1, \"baseScoreComponents\": 4388.71, \"numerator\": 35109.65, \"denominator\": 2}}}"
+  }
+]
+
+Here are the available building points for this land (for 'building' type buildings, using mapped key 'land'):
+[
+  {
+    "lat": 45.432439313207595,
+    "lng": 12.350122244103353,
+    "polygon_id": "polygon-1746057275948",
+    "point_type": "land",
+    "id": "building_45.432439_12.350122"
+  },
+  {
+    "lat": 45.432888139223245,
+    "lng": 12.350124634753998,
+    "polygon_id": "polygon-1746057275948",
+    "point_type": "land",
+    "id": "building_45.432888_12.350125"
+  },
+  {
+    "lat": 45.43289026253671,
+    "lng": 12.35072527322432,
+    "polygon_id": "polygon-1746057275948",
+    "point_type": "land",
+    "id": "building_45.432890_12.350725"
+  },
+  {
+    "lat": 45.43296236000209,
+    "lng": 12.351453141471733,
+    "polygon_id": "polygon-1746057275948",
+    "point_type": "land",
+    "id": "building_45.432962_12.351453"
+  },
+  {
+    "lat": 45.43326413768609,
+    "lng": 12.350147953096952,
+    "polygon_id": "polygon-1746057275948",
+    "point_type": "land",
+    "id": "building_45.433264_12.350148"
+  },
+  {
+    "lat": 45.43326557951517,
+    "lng": 12.350634094894536,
+    "polygon_id": "polygon-1746057275948",
+    "point_type": "land",
+    "id": "building_45.433266_12.350634"
+  },
+  {
+    "lat": 45.43324842228226,
+    "lng": 12.352073910148443,
+    "polygon_id": "polygon-1746057275948",
+    "point_type": "land",
+    "id": "building_45.433248_12.352074"
+  },
+  {
+    "lat": 45.43328167947213,
+    "lng": 12.352597936385074,
+    "polygon_id": "polygon-1746057275948",
+    "point_type": "land",
+    "id": "building_45.433282_12.352598"
+  },
+  {
+    "lat": 45.433415585189294,
+    "lng": 12.354020859648784,
+    "polygon_id": "polygon-1746057275948",
+    "point_type": "land",
+    "id": "building_45.433416_12.354021"
+  },
+  {
+    "lat": 45.433385142511355,
+    "lng": 12.354619646197692,
+    "polygon_id": "polygon-1746057275948",
+    "point_type": "land",
+    "id": "building_45.433385_12.354620"
+  },
+  {
+    "lat": 45.43329620971615,
+    "lng": 12.355169393864834,
+    "polygon_id": "polygon-1746057275948",
+    "point_type": "land",
+    "id": "building_45.433296_12.355169"
+  },
+  {
+    "lat": 45.43380391850434,
+    "lng": 12.352699927413475,
+    "polygon_id": "polygon-1746057275948",
+    "point_type": "land",
+    "id": "building_45.433804_12.352700"
+  },
+  {
+    "lat": 45.433721730158496,
+    "lng": 12.353315305524141,
+    "polygon_id": "polygon-1746057275948",
+    "point_type": "land",
+    "id": "building_45.433722_12.353315"
+  },
+  {
+    "lat": 45.433799285419006,
+    "lng": 12.353868695206076,
+    "polygon_id": "polygon-1746057275948",
+    "point_type": "land",
+    "id": "building_45.433799_12.353869"
+  },
+  {
+    "lat": 45.43370151829473,
+    "lng": 12.354431866527653,
+    "polygon_id": "polygon-1746057275948",
+    "point_type": "land",
+    "id": "building_45.433702_12.354432"
+  },
+  {
+    "lat": 45.43427656004955,
+    "lng": 12.3507314722794,
+    "polygon_id": "polygon-1746057275948",
+    "point_type": "land",
+    "id": "building_45.434277_12.350731"
+  },
+  {
+    "lat": 45.43415112943218,
+    "lng": 12.351422622613537,
+    "polygon_id": "polygon-1746057275948",
+    "point_type": "land",
+    "id": "building_45.434151_12.351423"
+  },
+  {
+    "lat": 45.43418540344952,
+    "lng": 12.352027698771934,
+    "polygon_id": "polygon-1746057275948",
+    "point_type": "land",
+    "id": "building_45.434185_12.352028"
+  },
+  {
+    "lat": 45.434275127978424,
+    "lng": 12.352517174467216,
+    "polygon_id": "polygon-1746057275948",
+    "point_type": "land",
+    "id": "building_45.434275_12.352517"
+  },
+  {
+    "lat": 45.43421335140652,
+    "lng": 12.353253176213439,
+    "polygon_id": "polygon-1746057275948",
+    "point_type": "land",
+    "id": "building_45.434213_12.353253"
+  },
+  {
+    "lat": 45.434147015963106,
+    "lng": 12.353884390119454,
+    "polygon_id": "polygon-1746057275948",
+    "point_type": "land",
+    "id": "building_45.434147_12.353884"
+  },
+  {
+    "lat": 45.43420672364825,
+    "lng": 12.354502590221017,
+    "polygon_id": "polygon-1746057275948",
+    "point_type": "land",
+    "id": "building_45.434207_12.354503"
+  },
+  {
+    "lat": 45.43424648811685,
+    "lng": 12.355148005680373,
+    "polygon_id": "polygon-1746057275948",
+    "point_type": "land",
+    "id": "building_45.434246_12.355148"
+  },
+  {
+    "lat": 45.43461396049561,
+    "lng": 12.350780864103827,
+    "polygon_id": "polygon-1746057275948",
+    "point_type": "land",
+    "id": "building_45.434614_12.350781"
+  },
+  {
+    "lat": 45.434752926596516,
+    "lng": 12.355185017230646,
+    "polygon_id": "polygon-1746057275948",
+    "point_type": "land",
+    "id": "building_45.434753_12.355185"
+  },
+  {
+    "lat": 45.43505589492775,
+    "lng": 12.35062831506833,
+    "polygon_id": "polygon-1746057275948",
+    "point_type": "land",
+    "id": "building_45.435056_12.350628"
+  },
+  {
+    "lat": 45.43504561157801,
+    "lng": 12.355116878213533,
+    "polygon_id": "polygon-1746057275948",
+    "point_type": "land",
+    "id": "building_45.435046_12.355117"
+  },
+  {
+    "lat": 45.43506456187808,
+    "lng": 12.357807961955317,
+    "polygon_id": "polygon-1746057275948",
+    "point_type": "land",
+    "id": "building_45.435065_12.357808"
+  },
+  {
+    "lat": 45.4355632490137,
+    "lng": 12.357805212720148,
+    "polygon_id": "polygon-1746057275948",
+    "point_type": "land",
+    "id": "building_45.435563_12.357805"
+  },
+  {
+    "lat": 45.43549840141623,
+    "lng": 12.358325564890734,
+    "polygon_id": "polygon-1746057275948",
+    "point_type": "land",
+    "id": "building_45.435498_12.358326"
+  },
+  {
+    "lat": 45.435996297078184,
+    "lng": 12.35775514594553,
+    "polygon_id": "polygon-1746057275948",
+    "point_type": "land",
+    "id": "building_45.435996_12.357755"
+  },
+  {
+    "lat": 45.43597611022601,
+    "lng": 12.35845328720594,
+    "polygon_id": "polygon-1746057275948",
+    "point_type": "land",
+    "id": "building_45.435976_12.358453"
+  }
+]
+
+
+
+Here are your recent notifications:
+[
+  {
+    "notificationId": "reccJgI8HjbbhEcuj",
+    "type": "rent_payment",
+    "citizen": "TechnoMedici",
+    "content": "\ud83d\udcec **Rent Received Summary** \ud83d\udcec\nYou received a total of **1,370 \u269c\ufe0f Ducats** from your properties today.\n\nDetails:\n- \u2705 **1,370 \u269c\ufe0f** from **Domenico Famagosta** for **Fisherman's Cottage at Fondamenta dei Pisani**.\n",
+    "details": {
+      "event_type": "landlord_rent_summary",
+      "total_received": 1370,
+      "payments": [
+        {
+          "occupant_name": "Domenico Famagosta",
+          "building_name": "Fisherman's Cottage at Fondamenta dei Pisani",
+          "amount": 1370
+        }
+      ]
+    },
+    "createdAt": "2025-06-24T18:04:19.551Z",
+    "readAt": null
+  },
+  {
+    "notificationId": "rec42suDu5gCJXVM2",
+    "type": "rent_payment",
+    "citizen": "TechnoMedici",
+    "content": "\ud83d\udcec **Rent Received Summary** \ud83d\udcec\nYou received a total of **1,370 \u269c\ufe0f Ducats** from your properties today.\n\nDetails:\n- \u2705 **1,370 \u269c\ufe0f** from **Domenico Famagosta** for **Fisherman's Cottage at Fondamenta dei Pisani**.\n",
+    "details": {
+      "event_type": "landlord_rent_summary",
+      "total_received": 1370,
+      "payments": [
+        {
+          "occupant_name": "Domenico Famagosta",
+          "building_name": "Fisherman's Cottage at Fondamenta dei Pisani",
+          "amount": 1370
+        }
+      ]
+    },
+    "createdAt": "2025-06-22T18:03:35.038Z",
+    "readAt": null
+  },
+  {
+    "notificationId": "recKi7mqwdR2xDXtW",
+    "type": "rent_payment",
+    "citizen": "TechnoMedici",
+    "content": "\ud83d\udcec **Rent Received Summary** \ud83d\udcec\nYou received a total of **1,370 \u269c\ufe0f Ducats** from your properties today.\n\nDetails:\n- \u2705 **1,370 \u269c\ufe0f** from **Domenico Famagosta** for **Fisherman's Cottage at Fondamenta dei Pisani**.\n",
+    "details": {
+      "event_type": "landlord_rent_summary",
+      "total_received": 1370,
+      "payments": [
+        {
+          "occupant_name": "Domenico Famagosta",
+          "building_name": "Fisherman's Cottage at Fondamenta dei Pisani",
+          "amount": 1370
+        }
+      ]
+    },
+    "createdAt": "2025-06-21T16:03:32.084Z",
+    "readAt": null
+  },
+  {
+    "notificationId": "recdYDTZwe6m8drJd",
+    "type": "rent_payment",
+    "citizen": "TechnoMedici",
+    "content": "\ud83d\udcec **Rent Received Summary** \ud83d\udcec\nYou received a total of **1,370 \u269c\ufe0f Ducats** from your properties today.\n\nDetails:\n- \u2705 **1,370 \u269c\ufe0f** from **Domenico Famagosta** for **Fisherman's Cottage at Fondamenta dei Pisani**.\n",
+    "details": {
+      "event_type": "landlord_rent_summary",
+      "total_received": 1370,
+      "payments": [
+        {
+          "occupant_name": "Domenico Famagosta",
+          "building_name": "Fisherman's Cottage at Fondamenta dei Pisani",
+          "amount": 1370
+        }
+      ]
+    },
+    "createdAt": "2025-06-20T18:03:53.344Z",
+    "readAt": null
+  },
+  {
+    "notificationId": "recjXFef3fGBqMFVr",
+    "type": "rent_payment",
+    "citizen": "TechnoMedici",
+    "content": "\ud83d\udcec **Rent Received Summary** \ud83d\udcec\nYou received a total of **1,370 \u269c\ufe0f Ducats** from your properties today.\n\nDetails:\n- \u2705 **1,370 \u269c\ufe0f** from **Domenico Famagosta** for **Fisherman's Cottage at Fondamenta dei Pisani**.\n",
+    "details": {
+      "event_type": "landlord_rent_summary",
+      "total_received": 1370,
+      "payments": [
+        {
+          "occupant_name": "Domenico Famagosta",
+          "building_name": "Fisherman's Cottage at Fondamenta dei Pisani",
+          "amount": 1370
+        }
+      ]
+    },
+    "createdAt": "2025-06-20T16:03:12.210Z",
+    "readAt": null
+  },
+  {
+    "notificationId": "rect9IYhXgeV9EK2m",
+    "type": "rent_payment",
+    "citizen": "TechnoMedici",
+    "content": "\ud83d\udcec **Rent Received Summary** \ud83d\udcec\nYou received a total of **1,370 \u269c\ufe0f Ducats** from your properties today.\n\nDetails:\n- \u2705 **1,370 \u269c\ufe0f** from **Domenico Famagosta** for **Fisherman's Cottage at Fondamenta dei Pisani**.\n",
+    "details": {
+      "event_type": "landlord_rent_summary",
+      "total_received": 1370,
+      "payments": [
+        {
+          "occupant_name": "Domenico Famagosta",
+          "building_name": "Fisherman's Cottage at Fondamenta dei Pisani",
+          "amount": 1370
+        }
+      ]
+    },
+    "createdAt": "2025-06-19T18:04:21.370Z",
+    "readAt": null
+  },
+  {
+    "notificationId": "rectNrd8IAg0G227C",
+    "type": "rent_payment",
+    "citizen": "TechnoMedici",
+    "content": "\ud83d\udcec **Rent Received Summary** \ud83d\udcec\nYou received a total of **1,370 \u269c\ufe0f Ducats** from your properties today.\n\nDetails:\n- \u2705 **1,370 \u269c\ufe0f** from **Domenico Famagosta** for **Fisherman's Cottage at Fondamenta dei Pisani**.\n",
+    "details": {
+      "event_type": "landlord_rent_summary",
+      "total_received": 1370,
+      "payments": [
+        {
+          "occupant_name": "Domenico Famagosta",
+          "building_name": "Fisherman's Cottage at Fondamenta dei Pisani",
+          "amount": 1370
+        }
+      ]
+    },
+    "createdAt": "2025-06-19T16:03:31.339Z",
+    "readAt": null
+  },
+  {
+    "notificationId": "recTizfrf7TQKngYT",
+    "type": "rent_payment",
+    "citizen": "TechnoMedici",
+    "content": "\ud83d\udcec **Rent Received Summary** \ud83d\udcec\nYou received a total of **1,370 \u269c\ufe0f Ducats** from your properties today.\n\nDetails:\n- \u2705 **1,370 \u269c\ufe0f** from **Domenico Famagosta** for **Fisherman's Cottage at Fondamenta dei Pisani**.\n",
+    "details": {
+      "event_type": "landlord_rent_summary",
+      "total_received": 1370,
+      "payments": [
+        {
+          "occupant_name": "Domenico Famagosta",
+          "building_name": "Fisherman's Cottage at Fondamenta dei Pisani",
+          "amount": 1370
+        }
+      ]
+    },
+    "createdAt": "2025-06-18T18:03:14.181Z",
+    "readAt": null
+  },
+  {
+    "notificationId": "recceCOwDiTUSWccr",
+    "type": "rent_payment",
+    "citizen": "TechnoMedici",
+    "content": "\ud83d\udcec **Rent Received Summary** \ud83d\udcec\nYou received a total of **1,370 \u269c\ufe0f Ducats** from your properties today.\n\nDetails:\n- \u2705 **1,370 \u269c\ufe0f** from **Domenico Famagosta** for **Fisherman's Cottage at Fondamenta dei Pisani**.\n",
+    "details": {
+      "event_type": "landlord_rent_summary",
+      "total_received": 1370,
+      "payments": [
+        {
+          "occupant_name": "Domenico Famagosta",
+          "building_name": "Fisherman's Cottage at Fondamenta dei Pisani",
+          "amount": 1370
+        }
+      ]
+    },
+    "createdAt": "2025-06-17T18:03:30.534Z",
+    "readAt": "2025-06-17T23:06:14.437Z"
+  },
+  {
+    "notificationId": "recrvdvTYcoyOWZtw",
+    "type": "markup_buy_contract_updated",
+    "citizen": "TechnoMedici",
+    "content": "Your buy order for dyed_textiles (markup_buy_main_building_45.425837_12.321249_dyed_textiles) has been updated.",
+    "details": {
+      "contractId": "markup_buy_main_building_45.425837_12.321249_dyed_textiles"
+    },
+    "createdAt": "2025-06-16T20:22:41.120Z",
+    "readAt": "2025-06-16T20:22:41.226Z"
+  },
+  {
+    "notificationId": "recSMex0JEzFwhqBH",
+    "type": "markup_buy_contract_created",
+    "citizen": "TechnoMedici",
+    "content": "Your buy order for gold_leaf (markup_buy_main_building_45.425837_12.321249_gold_leaf) has been placed.",
+    "details": {
+      "contractId": "markup_buy_main_building_45.425837_12.321249_gold_leaf"
+    },
+    "createdAt": "2025-06-16T20:20:49.761Z",
+    "readAt": "2025-06-16T20:20:49.894Z"
+  },
+  {
+    "notificationId": "recZnCt0HFHH0iEyL",
+    "type": "markup_buy_contract_updated",
+    "citizen": "TechnoMedici",
+    "content": "Your buy order for molten_glass (markup_buy_main_building_45.425837_12.321249_molten_glass) has been updated.",
+    "details": {
+      "contractId": "markup_buy_main_building_45.425837_12.321249_molten_glass"
+    },
+    "createdAt": "2025-06-16T20:18:27.093Z",
+    "readAt": "2025-06-16T20:18:27.236Z"
+  },
+  {
+    "notificationId": "recsxdN8wJeEiTXic",
+    "type": "markup_buy_contract_updated",
+    "citizen": "TechnoMedici",
+    "content": "Your buy order for water (markup_buy_main_building_45.432265_12.355002_water) has been updated.",
+    "details": {
+      "contractId": "markup_buy_main_building_45.432265_12.355002_water"
+    },
+    "createdAt": "2025-06-16T20:08:30.595Z",
+    "readAt": "2025-06-16T20:08:30.705Z"
+  },
+  {
+    "notificationId": "recfNbKMB9Q8LXgl0",
+    "type": "rent_payment",
+    "citizen": "TechnoMedici",
+    "content": "\ud83d\udcec **Rent Received Summary** \ud83d\udcec\nYou received a total of **1,370 \u269c\ufe0f Ducats** from your properties today.\n\nDetails:\n- \u2705 **1,370 \u269c\ufe0f** from **Domenico Famagosta** for **Fisherman's Cottage at Fondamenta dei Pisani**.\n",
+    "details": {
+      "event_type": "landlord_rent_summary",
+      "total_received": 1370,
+      "payments": [
+        {
+          "occupant_name": "Domenico Famagosta",
+          "building_name": "Fisherman's Cottage at Fondamenta dei Pisani",
+          "amount": 1370
+        }
+      ]
+    },
+    "createdAt": "2025-06-16T18:04:17.943Z",
+    "readAt": "2025-06-16T23:08:31.650Z"
+  },
+  {
+    "notificationId": "recqRbUVFvkh99sUq",
+    "type": "rent_payment",
+    "citizen": "TechnoMedici",
+    "content": "\ud83d\udcec **Rent Received Summary** \ud83d\udcec\nYou received a total of **1,370 \u269c\ufe0f Ducats** from your properties today.\n\nDetails:\n- \u2705 **1,370 \u269c\ufe0f** from **Domenico Famagosta** for **Fisherman's Cottage at Fondamenta dei Pisani**.\n",
+    "details": {
+      "event_type": "landlord_rent_summary",
+      "total_received": 1370,
+      "payments": [
+        {
+          "occupant_name": "Domenico Famagosta",
+          "building_name": "Fisherman's Cottage at Fondamenta dei Pisani",
+          "amount": 1370
+        }
+      ]
+    },
+    "createdAt": "2025-06-16T16:03:53.918Z",
+    "readAt": "2025-06-16T23:08:31.650Z"
+  },
+  {
+    "notificationId": "recVw4BXtkdEwFi7t",
+    "type": "markup_buy_contract_created",
+    "citizen": "TechnoMedici",
+    "content": "Your buy order for water (markup_buy_main_building_45.432265_12.355002_water) has been placed.",
+    "details": {
+      "contractId": "markup_buy_main_building_45.432265_12.355002_water"
+    },
+    "createdAt": "2025-06-16T06:03:28.087Z",
+    "readAt": "2025-06-16T06:03:28.232Z"
+  },
+  {
+    "notificationId": "rec0bodR05mG9XRBo",
+    "type": "markup_buy_contract_created",
+    "citizen": "TechnoMedici",
+    "content": "Your buy order for dyed_textiles (markup_buy_main_building_45.425837_12.321249_dyed_textiles) has been placed.",
+    "details": {
+      "contractId": "markup_buy_main_building_45.425837_12.321249_dyed_textiles"
+    },
+    "createdAt": "2025-06-16T05:51:19.272Z",
+    "readAt": "2025-06-16T05:51:19.389Z"
+  },
+  {
+    "notificationId": "recBZFwHZiAdA1cud",
+    "type": "markup_buy_contract_created",
+    "citizen": "TechnoMedici",
+    "content": "Your buy order for molten_glass (markup_buy_main_building_45.425837_12.321249_molten_glass) has been placed.",
+    "details": {
+      "contractId": "markup_buy_main_building_45.425837_12.321249_molten_glass"
+    },
+    "createdAt": "2025-06-16T05:51:16.376Z",
+    "readAt": "2025-06-16T05:51:16.483Z"
+  },
+  {
+    "notificationId": "reco0vUjEcWNldW9F",
+    "type": "markup_buy_contract_updated",
+    "citizen": "TechnoMedici",
+    "content": "Your buy order for bread (markup_buy_main_building_45.439276_12.339331_bread) has been updated.",
+    "details": {
+      "contractId": "markup_buy_main_building_45.439276_12.339331_bread"
+    },
+    "createdAt": "2025-06-15T20:48:45.929Z",
+    "readAt": "2025-06-15T20:48:46.041Z"
+  },
+  {
+    "notificationId": "reccnJfps3JtLIcGw",
+    "type": "markup_buy_contract_updated",
+    "citizen": "TechnoMedici",
+    "content": "Your buy order for tools (markup_buy_main_building_45.425837_12.321249_tools) has been updated.",
+    "details": {
+      "contractId": "markup_buy_main_building_45.425837_12.321249_tools"
+    },
+    "createdAt": "2025-06-15T18:29:12.530Z",
+    "readAt": "2025-06-15T18:29:12.685Z"
+  },
+  {
+    "notificationId": "recrYxVHffIEltjS8",
+    "type": "rent_payment",
+    "citizen": "TechnoMedici",
+    "content": "\ud83d\udcec **Rent Received Summary** \ud83d\udcec\nYou received a total of **1,370 \u269c\ufe0f Ducats** from your properties today.\n\nDetails:\n- \u2705 **1,370 \u269c\ufe0f** from **Domenico Famagosta** for **Fisherman's Cottage at Fondamenta dei Pisani**.\n",
+    "details": {
+      "event_type": "landlord_rent_summary",
+      "total_received": 1370,
+      "payments": [
+        {
+          "occupant_name": "Domenico Famagosta",
+          "building_name": "Fisherman's Cottage at Fondamenta dei Pisani",
+          "amount": 1370
+        }
+      ]
+    },
+    "createdAt": "2025-06-15T18:03:58.119Z",
+    "readAt": "2025-06-15T23:09:58.645Z"
+  },
+  {
+    "notificationId": "recpbEQjLUzbEUdt0",
+    "type": "markup_buy_contract_updated",
+    "citizen": "TechnoMedici",
+    "content": "Your buy order for glass (markup_buy_main_building_45.425837_12.321249_glass) has been updated.",
+    "details": {
+      "contractId": "markup_buy_main_building_45.425837_12.321249_glass"
+    },
+    "createdAt": "2025-06-15T16:48:47.788Z",
+    "readAt": "2025-06-15T16:48:47.964Z"
+  },
+  {
+    "notificationId": "rec4dz9n5R0gmgi52",
+    "type": "markup_buy_contract_updated",
+    "citizen": "TechnoMedici",
+    "content": "Your buy order for silk_fabric (markup_buy_main_building_45.425837_12.321249_silk_fabric) has been updated.",
+    "details": {
+      "contractId": "markup_buy_main_building_45.425837_12.321249_silk_fabric"
+    },
+    "createdAt": "2025-06-15T16:38:46.226Z",
+    "readAt": "2025-06-15T16:38:46.433Z"
+  },
+  {
+    "notificationId": "rect0axOq74EMvxJX",
+    "type": "markup_buy_contract_updated",
+    "citizen": "TechnoMedici",
+    "content": "Your buy order for spiced_wine (markup_buy_main_building_45.438048_12.347155_spiced_wine) has been updated.",
+    "details": {
+      "contractId": "markup_buy_main_building_45.438048_12.347155_spiced_wine"
+    },
+    "createdAt": "2025-06-15T16:23:51.691Z",
+    "readAt": "2025-06-15T16:23:51.827Z"
+  },
+  {
+    "notificationId": "rectY1Cnrflyn7TIZ",
+    "type": "rent_payment",
+    "citizen": "TechnoMedici",
+    "content": "\ud83d\udcec **Rent Received Summary** \ud83d\udcec\nYou received a total of **1,370 \u269c\ufe0f Ducats** from your properties today.\n\nDetails:\n- \u2705 **1,370 \u269c\ufe0f** from **Domenico Famagosta** for **Fisherman's Cottage at Fondamenta dei Pisani**.\n",
+    "details": {
+      "event_type": "landlord_rent_summary",
+      "total_received": 1370,
+      "payments": [
+        {
+          "occupant_name": "Domenico Famagosta",
+          "building_name": "Fisherman's Cottage at Fondamenta dei Pisani",
+          "amount": 1370
+        }
+      ]
+    },
+    "createdAt": "2025-06-15T16:03:42.918Z",
+    "readAt": "2025-06-15T23:09:58.645Z"
+  },
+  {
+    "notificationId": "recom9IxbzTVsOzSX",
+    "type": "markup_buy_contract_updated",
+    "citizen": "TechnoMedici",
+    "content": "Your buy order for rope (markup_buy_main_canal_45.431139_12.317924_rope) has been updated.",
+    "details": {
+      "contractId": "markup_buy_main_canal_45.431139_12.317924_rope"
+    },
+    "createdAt": "2025-06-15T14:52:57.568Z",
+    "readAt": "2025-06-15T14:52:57.709Z"
+  },
+  {
+    "notificationId": "recWC7JcIiJpr3Pu6",
+    "type": "markup_buy_contract_updated",
+    "citizen": "TechnoMedici",
+    "content": "Your buy order for gondola (markup_buy_main_canal_45.431139_12.317924_gondola) has been updated.",
+    "details": {
+      "contractId": "markup_buy_main_canal_45.431139_12.317924_gondola"
+    },
+    "createdAt": "2025-06-15T14:47:56.941Z",
+    "readAt": "2025-06-15T14:47:57.066Z"
+  },
+  {
+    "notificationId": "recoxwzHLQuUDZAkl",
+    "type": "markup_buy_contract_updated",
+    "citizen": "TechnoMedici",
+    "content": "Your buy order for porter_equipment (markup_buy_main_canal_45.431139_12.317924_porter_equipment) has been updated.",
+    "details": {
+      "contractId": "markup_buy_main_canal_45.431139_12.317924_porter_equipment"
+    },
+    "createdAt": "2025-06-15T14:29:27.410Z",
+    "readAt": "2025-06-15T14:29:27.540Z"
+  },
+  {
+    "notificationId": "rectML696wb0j9OJX",
+    "type": "markup_buy_contract_updated",
+    "citizen": "TechnoMedici",
+    "content": "Your buy order for small_boats (markup_buy_main_canal_45.431139_12.317924_small_boats) has been updated.",
+    "details": {
+      "contractId": "markup_buy_main_canal_45.431139_12.317924_small_boats"
+    },
+    "createdAt": "2025-06-15T14:03:22.094Z",
+    "readAt": "2025-06-15T14:03:22.295Z"
+  },
+  {
+    "notificationId": "recvqw1j1bOs3fZUC",
+    "type": "markup_buy_contract_updated",
+    "citizen": "TechnoMedici",
+    "content": "Your buy order for spiced_wine (markup_buy_main_building_45.432265_12.355002_spiced_wine) has been updated.",
+    "details": {
+      "contractId": "markup_buy_main_building_45.432265_12.355002_spiced_wine"
+    },
+    "createdAt": "2025-06-15T13:34:05.384Z",
+    "readAt": "2025-06-15T13:34:05.518Z"
+  },
+  {
+    "notificationId": "recfEM6BUxGQZXEyq",
+    "type": "markup_buy_contract_updated",
+    "citizen": "TechnoMedici",
+    "content": "Your buy order for rope (markup_buy_main_canal_45.444689_12.336473_rope) has been updated.",
+    "details": {
+      "contractId": "markup_buy_main_canal_45.444689_12.336473_rope"
+    },
+    "createdAt": "2025-06-15T11:38:59.920Z",
+    "readAt": "2025-06-15T11:39:00.165Z"
+  },
+  {
+    "notificationId": "recoUgUIeoTxt2zXM",
+    "type": "markup_buy_contract_updated",
+    "citizen": "TechnoMedici",
+    "content": "Your buy order for gondola (markup_buy_main_canal_45.444689_12.336473_gondola) has been updated.",
+    "details": {
+      "contractId": "markup_buy_main_canal_45.444689_12.336473_gondola"
+    },
+    "createdAt": "2025-06-15T10:08:42.360Z",
+    "readAt": "2025-06-15T10:08:42.626Z"
+  },
+  {
+    "notificationId": "recSPGZlhrcxuFEFu",
+    "type": "markup_buy_contract_updated",
+    "citizen": "TechnoMedici",
+    "content": "Your buy order for porter_equipment (markup_buy_main_canal_45.444689_12.336473_porter_equipment) has been updated.",
+    "details": {
+      "contractId": "markup_buy_main_canal_45.444689_12.336473_porter_equipment"
+    },
+    "createdAt": "2025-06-15T10:03:41.750Z",
+    "readAt": "2025-06-15T10:03:42.187Z"
+  },
+  {
+    "notificationId": "rec4Vw5Bc8vk45Qmp",
+    "type": "markup_buy_contract_updated",
+    "citizen": "TechnoMedici",
+    "content": "Your buy order for small_boats (markup_buy_main_canal_45.444689_12.336473_small_boats) has been updated.",
+    "details": {
+      "contractId": "markup_buy_main_canal_45.444689_12.336473_small_boats"
+    },
+    "createdAt": "2025-06-15T09:53:29.243Z",
+    "readAt": "2025-06-15T09:53:29.900Z"
+  },
+  {
+    "notificationId": "reczFDsAsEItSflBw",
+    "type": "markup_buy_contract_updated",
+    "citizen": "TechnoMedici",
+    "content": "Your buy order for small_boats (markup_buy_main_canal_45.444689_12.336473_small_boats) has been updated.",
+    "details": {
+      "contractId": "markup_buy_main_canal_45.444689_12.336473_small_boats"
+    },
+    "createdAt": "2025-06-15T09:53:29.114Z",
+    "readAt": "2025-06-15T09:53:29.796Z"
+  },
+  {
+    "notificationId": "rec093K60WK2hqRb6",
+    "type": "markup_buy_contract_updated",
+    "citizen": "TechnoMedici",
+    "content": "Your buy order for wine (markup_buy_main_building_45.430977_12.354557_wine) has been updated.",
+    "details": {
+      "contractId": "markup_buy_main_building_45.430977_12.354557_wine"
+    },
+    "createdAt": "2025-06-15T09:38:34.209Z",
+    "readAt": "2025-06-15T09:38:34.615Z"
+  },
+  {
+    "notificationId": "recvbyle14uWSUZT1",
+    "type": "markup_buy_contract_updated",
+    "citizen": "TechnoMedici",
+    "content": "Your buy order for salt (markup_buy_main_building_45.430977_12.354557_salt) has been updated.",
+    "details": {
+      "contractId": "markup_buy_main_building_45.430977_12.354557_salt"
+    },
+    "createdAt": "2025-06-15T09:33:35.282Z",
+    "readAt": "2025-06-15T09:33:35.757Z"
+  },
+  {
+    "notificationId": "recJm8Q1CF4iS45oP",
+    "type": "markup_buy_contract_updated",
+    "citizen": "TechnoMedici",
+    "content": "Your buy order for preserved_fish (markup_buy_main_building_45.430977_12.354557_preserved_fish) has been updated.",
+    "details": {
+      "contractId": "markup_buy_main_building_45.430977_12.354557_preserved_fish"
+    },
+    "createdAt": "2025-06-15T09:23:32.289Z",
+    "readAt": "2025-06-15T09:23:33.049Z"
+  },
+  {
+    "notificationId": "rec6y3f4iTjbgVD3C",
+    "type": "markup_buy_contract_updated",
+    "citizen": "TechnoMedici",
+    "content": "Your buy order for preserved_fish (markup_buy_main_building_45.430977_12.354557_preserved_fish) has been updated.",
+    "details": {
+      "contractId": "markup_buy_main_building_45.430977_12.354557_preserved_fish"
+    },
+    "createdAt": "2025-06-15T09:23:32.066Z",
+    "readAt": "2025-06-15T09:23:32.733Z"
+  },
+  {
+    "notificationId": "rec3PpOfnBGHeCJ0a",
+    "type": "rent_payment",
+    "citizen": "TechnoMedici",
+    "content": "\ud83d\udcec **Rent Received Summary** \ud83d\udcec\nYou received a total of **1,370 \u269c\ufe0f Ducats** from your properties today.\n\nDetails:\n- \u2705 **1,370 \u269c\ufe0f** from **Domenico Famagosta** for **Fisherman's Cottage at Fondamenta dei Pisani**.\n",
+    "details": {
+      "event_type": "landlord_rent_summary",
+      "total_received": 1370,
+      "payments": [
+        {
+          "occupant_name": "Domenico Famagosta",
+          "building_name": "Fisherman's Cottage at Fondamenta dei Pisani",
+          "amount": 1370
+        }
+      ]
+    },
+    "createdAt": "2025-06-14T18:03:39.664Z",
+    "readAt": "2025-06-14T23:08:39.655Z"
+  },
+  {
+    "notificationId": "receH8RD7lPIq6HZT",
+    "type": "rent_payment",
+    "citizen": "TechnoMedici",
+    "content": "\ud83d\udcec **Rent Received Summary** \ud83d\udcec\nYou received a total of **1,370 \u269c\ufe0f Ducats** from your properties today.\n\nDetails:\n- \u2705 **1,370 \u269c\ufe0f** from **Domenico Famagosta** for **Fisherman's Cottage at Fondamenta dei Pisani**.\n",
+    "details": {
+      "event_type": "landlord_rent_summary",
+      "total_received": 1370,
+      "payments": [
+        {
+          "occupant_name": "Domenico Famagosta",
+          "building_name": "Fisherman's Cottage at Fondamenta dei Pisani",
+          "amount": 1370
+        }
+      ]
+    },
+    "createdAt": "2025-06-14T16:03:30.978Z",
+    "readAt": "2025-06-14T23:08:39.655Z"
+  },
+  {
+    "notificationId": "recyYDk2JdfL2cK6c",
+    "type": "rent_payment",
+    "citizen": "TechnoMedici",
+    "content": "\ud83d\udcec **Rent Received Summary** \ud83d\udcec\nYou received a total of **1,370 \u269c\ufe0f Ducats** from your properties today.\n\nDetails:\n- \u2705 **1,370 \u269c\ufe0f** from **Domenico Famagosta** for **Fisherman's Cottage at Fondamenta dei Pisani**.\n",
+    "details": {
+      "event_type": "landlord_rent_summary",
+      "total_received": 1370,
+      "payments": [
+        {
+          "occupant_name": "Domenico Famagosta",
+          "building_name": "Fisherman's Cottage at Fondamenta dei Pisani",
+          "amount": 1370
+        }
+      ]
+    },
+    "createdAt": "2025-06-13T16:03:31.288Z",
+    "readAt": "2025-06-13T23:03:13.686Z"
+  },
+  {
+    "notificationId": "recHv92VBx6q2fInG",
+    "type": "markup_buy_contract_updated",
+    "citizen": "TechnoMedici",
+    "content": "Your buy order for olives (markup_buy_main_building_45.430977_12.354557_olives) has been updated.",
+    "details": {
+      "contractId": "markup_buy_main_building_45.430977_12.354557_olives"
+    },
+    "createdAt": "2025-06-13T07:39:12.935Z",
+    "readAt": "2025-06-13T07:39:13.426Z"
+  },
+  {
+    "notificationId": "recBzggoJTK9cccZJ",
+    "type": "markup_buy_contract_updated",
+    "citizen": "TechnoMedici",
+    "content": "Your buy order for olive_oil (markup_buy_main_building_45.430977_12.354557_olive_oil) has been updated.",
+    "details": {
+      "contractId": "markup_buy_main_building_45.430977_12.354557_olive_oil"
+    },
+    "createdAt": "2025-06-12T23:33:43.855Z",
+    "readAt": "2025-06-12T23:33:44.293Z"
+  },
+  {
+    "notificationId": "recXsegFH57niqmpX",
+    "type": "markup_buy_contract_updated",
+    "citizen": "TechnoMedici",
+    "content": "Your buy order for flour (markup_buy_main_building_45.430977_12.354557_flour) has been updated.",
+    "details": {
+      "contractId": "markup_buy_main_building_45.430977_12.354557_flour"
+    },
+    "createdAt": "2025-06-12T20:39:22.337Z",
+    "readAt": "2025-06-12T20:39:22.935Z"
+  },
+  {
+    "notificationId": "recHLY1KWKqGsGJja",
+    "type": "markup_buy_contract_updated",
+    "citizen": "TechnoMedici",
+    "content": "Your buy order for fish (markup_buy_main_building_45.430977_12.354557_fish) has been updated.",
+    "details": {
+      "contractId": "markup_buy_main_building_45.430977_12.354557_fish"
+    },
+    "createdAt": "2025-06-12T18:18:55.676Z",
+    "readAt": "2025-06-12T18:18:55.837Z"
+  },
+  {
+    "notificationId": "recEYvwGe3laQdkTY",
+    "type": "rent_payment",
+    "citizen": "TechnoMedici",
+    "content": "\ud83d\udcec **Rent Received Summary** \ud83d\udcec\nYou received a total of **1,370 \u269c\ufe0f Ducats** from your properties today.\n\nDetails:\n- \u2705 **1,370 \u269c\ufe0f** from **Domenico Famagosta** for **Fisherman's Cottage at Fondamenta dei Pisani**.\n",
+    "details": {
+      "event_type": "landlord_rent_summary",
+      "total_received": 1370,
+      "payments": [
+        {
+          "occupant_name": "Domenico Famagosta",
+          "building_name": "Fisherman's Cottage at Fondamenta dei Pisani",
+          "amount": 1370
+        }
+      ]
+    },
+    "createdAt": "2025-06-12T18:03:45.024Z",
+    "readAt": "2025-06-12T23:07:07.403Z"
+  },
+  {
+    "notificationId": "recfLrGVy2NxVqkL8",
+    "type": "markup_buy_contract_updated",
+    "citizen": "TechnoMedici",
+    "content": "Your buy order for bread (markup_buy_main_building_45.430977_12.354557_bread) has been updated.",
+    "details": {
+      "contractId": "markup_buy_main_building_45.430977_12.354557_bread"
+    },
+    "createdAt": "2025-06-12T17:48:42.021Z",
+    "readAt": "2025-06-12T17:48:42.293Z"
+  },
+  {
+    "notificationId": "rec31BU8FcolvgSH8",
+    "type": "markup_buy_contract_updated",
+    "citizen": "TechnoMedici",
+    "content": "Your buy order for rope (markup_buy_main_canal_45.430963_12.331665_rope) has been updated.",
+    "details": {
+      "contractId": "markup_buy_main_canal_45.430963_12.331665_rope"
+    },
+    "createdAt": "2025-06-12T14:04:10.909Z",
+    "readAt": "2025-06-12T14:04:11.005Z"
+  },
+  {
+    "notificationId": "recG6X5sh0dL1opqY",
+    "type": "markup_buy_contract_updated",
+    "citizen": "TechnoMedici",
+    "content": "Your buy order for gondola (markup_buy_main_canal_45.430963_12.331665_gondola) has been updated.",
+    "details": {
+      "contractId": "markup_buy_main_canal_45.430963_12.331665_gondola"
+    },
+    "createdAt": "2025-06-12T00:18:44.787Z",
+    "readAt": "2025-06-12T00:19:06.608Z"
+  },
+  {
+    "notificationId": "recPBZ3fa9zzHbq9v",
+    "type": "markup_buy_contract_updated",
+    "citizen": "TechnoMedici",
+    "content": "Your buy order for porter_equipment (markup_buy_main_canal_45.430963_12.331665_porter_equipment) has been updated.",
+    "details": {
+      "contractId": "markup_buy_main_canal_45.430963_12.331665_porter_equipment"
+    },
+    "createdAt": "2025-06-12T00:03:49.752Z",
+    "readAt": "2025-06-12T00:04:11.155Z"
+  },
+  {
+    "notificationId": "recSPbwhWnzBaGXYk",
+    "type": "markup_buy_contract_updated",
+    "citizen": "TechnoMedici",
+    "content": "Your buy order for small_boats (markup_buy_main_canal_45.430963_12.331665_small_boats) has been updated.",
+    "details": {
+      "contractId": "markup_buy_main_canal_45.430963_12.331665_small_boats"
+    },
+    "createdAt": "2025-06-11T23:43:52.777Z",
+    "readAt": "2025-06-11T23:44:14.138Z"
+  },
+  {
+    "notificationId": "recedXCKnZbMq9zHz",
+    "type": "rent_payment",
+    "citizen": "TechnoMedici",
+    "content": "\ud83d\udcec **Rent Received Summary** \ud83d\udcec\nYou received a total of **1,370 \u269c\ufe0f Ducats** from your properties today.\n\nDetails:\n- \u2705 **1,370 \u269c\ufe0f** from **Domenico Famagosta** for **Fisherman's Cottage at Fondamenta dei Pisani**.\n",
+    "details": {
+      "event_type": "landlord_rent_summary",
+      "total_received": 1370,
+      "payments": [
+        {
+          "occupant_name": "Domenico Famagosta",
+          "building_name": "Fisherman's Cottage at Fondamenta dei Pisani",
+          "amount": 1370
+        }
+      ]
+    },
+    "createdAt": "2025-06-10T18:04:06.778Z",
+    "readAt": "2025-06-11T01:09:22.416Z"
+  },
+  {
+    "notificationId": "rec8zdbLaYlBB8b87",
+    "type": "daily_influence_reward",
+    "citizen": "TechnoMedici",
+    "content": "Vous avez gagn\u00e9 55.0 point(s) d'influence pour la possession de Customs House at Calle dei Filacanevi (customs_house).",
+    "details": {
+      "event_type": "daily_building_influence_gain",
+      "building_id": "building_45.440840_12.327785",
+      "building_name": "Customs House at Calle dei Filacanevi",
+      "building_type": "customs_house",
+      "influence_gained": 55,
+      "new_total_influence": 110
+    },
+    "createdAt": "2025-06-10T17:50:36.703Z",
+    "readAt": "2025-06-10T17:50:36.825Z"
+  },
+  {
+    "notificationId": "recUYx1btRlEuuiRn",
+    "type": "daily_influence_reward",
+    "citizen": "TechnoMedici",
+    "content": "Vous avez gagn\u00e9 55.0 point(s) d'influence pour la possession de Customs House at Calle dei Filacanevi (customs_house).",
+    "details": {
+      "event_type": "daily_building_influence_gain",
+      "building_id": "building_45.440840_12.327785",
+      "building_name": "Customs House at Calle dei Filacanevi",
+      "building_type": "customs_house",
+      "influence_gained": 55,
+      "new_total_influence": 55
+    },
+    "createdAt": "2025-06-10T17:48:48.896Z",
+    "readAt": "2025-06-10T17:48:49.014Z"
+  },
+  {
+    "notificationId": "recbqKbgG5UnhqEWP",
+    "type": "rent_payment",
+    "citizen": "TechnoMedici",
+    "content": "\ud83d\udcec **Rent Received Summary** \ud83d\udcec\nYou received a total of **1,370 \u269c\ufe0f Ducats** from your properties today.\n\nDetails:\n- \u2705 **1,370 \u269c\ufe0f** from **Domenico Famagosta** for **Fisherman's Cottage at Fondamenta dei Pisani**.\n",
+    "details": {
+      "event_type": "landlord_rent_summary",
+      "total_received": 1370,
+      "payments": [
+        {
+          "occupant_name": "Domenico Famagosta",
+          "building_name": "Fisherman's Cottage at Fondamenta dei Pisani",
+          "amount": 1370
+        }
+      ]
+    },
+    "createdAt": "2025-06-10T16:04:27.769Z",
+    "readAt": "2025-06-11T01:09:22.416Z"
+  },
+  {
+    "notificationId": "recOQ2FJMiXkk9UaR",
+    "type": "markup_buy_contract_updated",
+    "citizen": "TechnoMedici",
+    "content": "Your buy order for olives (markup_buy_main_building_45.439276_12.339331_olives) has been updated.",
+    "details": {
+      "contractId": "markup_buy_main_building_45.439276_12.339331_olives"
+    },
+    "createdAt": "2025-06-10T13:02:43.649Z",
+    "readAt": "2025-06-10T13:02:43.814Z"
+  },
+  {
+    "notificationId": "rec56ck8sRuZ87L2d",
+    "type": "markup_buy_contract_updated",
+    "citizen": "TechnoMedici",
+    "content": "Your buy order for olive_oil (markup_buy_main_building_45.439276_12.339331_olive_oil) has been updated.",
+    "details": {
+      "contractId": "markup_buy_main_building_45.439276_12.339331_olive_oil"
+    },
+    "createdAt": "2025-06-10T13:02:33.177Z",
+    "readAt": "2025-06-10T13:02:33.317Z"
+  },
+  {
+    "notificationId": "recMfhY4poySEs36A",
+    "type": "markup_buy_contract_updated",
+    "citizen": "TechnoMedici",
+    "content": "Your buy order for flour (markup_buy_main_building_45.439276_12.339331_flour) has been updated.",
+    "details": {
+      "contractId": "markup_buy_main_building_45.439276_12.339331_flour"
+    },
+    "createdAt": "2025-06-10T13:02:28.226Z",
+    "readAt": "2025-06-10T13:02:28.414Z"
+  },
+  {
+    "notificationId": "recqvUjol8I3XYkZ1",
+    "type": "markup_buy_contract_updated",
+    "citizen": "TechnoMedici",
+    "content": "Your buy order for bread (markup_buy_main_building_45.439276_12.339331_bread) has been updated.",
+    "details": {
+      "contractId": "markup_buy_main_building_45.439276_12.339331_bread"
+    },
+    "createdAt": "2025-06-10T13:02:19.680Z",
+    "readAt": "2025-06-10T13:02:19.829Z"
+  },
+  {
+    "notificationId": "recC2r25WScUHZEkZ",
+    "type": "markup_buy_contract_updated",
+    "citizen": "TechnoMedici",
+    "content": "Your buy order for soap (markup_buy_main_building_45.423495_12.330726_soap) has been updated.",
+    "details": {
+      "contractId": "markup_buy_main_building_45.423495_12.330726_soap"
+    },
+    "createdAt": "2025-06-10T13:01:48.032Z",
+    "readAt": "2025-06-10T13:01:48.256Z"
+  },
+  {
+    "notificationId": "reclrI8L8LwkSKy93",
+    "type": "markup_buy_contract_updated",
+    "citizen": "TechnoMedici",
+    "content": "Your buy order for olives (markup_buy_main_building_45.430977_12.354557_olives) has been updated.",
+    "details": {
+      "contractId": "markup_buy_main_building_45.430977_12.354557_olives"
+    },
+    "createdAt": "2025-06-10T13:01:22.007Z",
+    "readAt": "2025-06-10T13:01:22.272Z"
+  },
+  {
+    "notificationId": "recsMY4sXgXLsEvdy",
+    "type": "markup_buy_contract_updated",
+    "citizen": "TechnoMedici",
+    "content": "Your buy order for olive_oil (markup_buy_main_building_45.430977_12.354557_olive_oil) has been updated.",
+    "details": {
+      "contractId": "markup_buy_main_building_45.430977_12.354557_olive_oil"
+    },
+    "createdAt": "2025-06-10T13:01:07.713Z",
+    "readAt": "2025-06-10T13:01:08.229Z"
+  },
+  {
+    "notificationId": "recARNQWs17WkQKSI",
+    "type": "markup_buy_contract_updated",
+    "citizen": "TechnoMedici",
+    "content": "Your buy order for flour (markup_buy_main_building_45.430977_12.354557_flour) has been updated.",
+    "details": {
+      "contractId": "markup_buy_main_building_45.430977_12.354557_flour"
+    },
+    "createdAt": "2025-06-10T13:00:48.563Z",
+    "readAt": "2025-06-10T13:00:49.096Z"
+  },
+  {
+    "notificationId": "recqMVPhht2yIBmbm",
+    "type": "markup_buy_contract_updated",
+    "citizen": "TechnoMedici",
+    "content": "Your buy order for bread (markup_buy_main_building_45.430977_12.354557_bread) has been updated.",
+    "details": {
+      "contractId": "markup_buy_main_building_45.430977_12.354557_bread"
+    },
+    "createdAt": "2025-06-10T13:00:34.454Z",
+    "readAt": "2025-06-10T13:00:35.006Z"
+  },
+  {
+    "notificationId": "recT5tsLkSafnydlN",
+    "type": "markup_buy_contract_updated",
+    "citizen": "TechnoMedici",
+    "content": "Your buy order for tools (markup_buy_main_building_45.425837_12.321249_tools) has been updated.",
+    "details": {
+      "contractId": "markup_buy_main_building_45.425837_12.321249_tools"
+    },
+    "createdAt": "2025-06-10T12:59:58.026Z",
+    "readAt": "2025-06-10T12:59:58.165Z"
+  },
+  {
+    "notificationId": "recUV2GKy15xihNwJ",
+    "type": "markup_buy_contract_created",
+    "citizen": "TechnoMedici",
+    "content": "Your buy order for dyestuffs (markup_buy_main_building_45.425837_12.321249_dyestuffs) has been placed.",
+    "details": {
+      "contractId": "markup_buy_main_building_45.425837_12.321249_dyestuffs"
+    },
+    "createdAt": "2025-06-10T12:59:47.797Z",
+    "readAt": "2025-06-10T12:59:47.977Z"
+  },
+  {
+    "notificationId": "recJgSsSLvwkaVcXa",
+    "type": "markup_buy_contract_created",
+    "citizen": "TechnoMedici",
+    "content": "Your buy order for flour (markup_buy_main_building_45.432265_12.355002_flour) has been placed.",
+    "details": {
+      "contractId": "markup_buy_main_building_45.432265_12.355002_flour"
+    },
+    "createdAt": "2025-06-10T12:59:19.046Z",
+    "readAt": "2025-06-10T12:59:19.304Z"
+  },
+  {
+    "notificationId": "reciNawq7yGKi708r",
+    "type": "markup_buy_contract_created",
+    "citizen": "TechnoMedici",
+    "content": "Your buy order for water (markup_buy_main_building_45.438048_12.347155_water) has been placed.",
+    "details": {
+      "contractId": "markup_buy_main_building_45.438048_12.347155_water"
+    },
+    "createdAt": "2025-06-10T12:51:16.958Z",
+    "readAt": "2025-06-10T12:51:17.122Z"
+  },
+  {
+    "notificationId": "recMX8P150hnm127l",
+    "type": "markup_buy_contract_updated",
+    "citizen": "TechnoMedici",
+    "content": "Your buy order for rope (markup_buy_main_canal_45.431139_12.317924_rope) has been updated.",
+    "details": {
+      "contractId": "markup_buy_main_canal_45.431139_12.317924_rope"
+    },
+    "createdAt": "2025-06-10T03:11:54.111Z",
+    "readAt": "2025-06-10T03:11:56.054Z"
+  },
+  {
+    "notificationId": "recYOqVmwpcvjtiQH",
+    "type": "markup_buy_contract_updated",
+    "citizen": "TechnoMedici",
+    "content": "Your buy order for gondola (markup_buy_main_canal_45.431139_12.317924_gondola) has been updated.",
+    "details": {
+      "contractId": "markup_buy_main_canal_45.431139_12.317924_gondola"
+    },
+    "createdAt": "2025-06-10T03:11:53.310Z",
+    "readAt": "2025-06-10T03:11:54.723Z"
+  },
+  {
+    "notificationId": "recC8cw6D2pbv1luW",
+    "type": "markup_buy_contract_updated",
+    "citizen": "TechnoMedici",
+    "content": "Your buy order for porter_equipment (markup_buy_main_canal_45.431139_12.317924_porter_equipment) has been updated.",
+    "details": {
+      "contractId": "markup_buy_main_canal_45.431139_12.317924_porter_equipment"
+    },
+    "createdAt": "2025-06-10T03:11:53.168Z",
+    "readAt": "2025-06-10T03:11:54.583Z"
+  },
+  {
+    "notificationId": "recc1T1nP2nwPRub8",
+    "type": "markup_buy_contract_updated",
+    "citizen": "TechnoMedici",
+    "content": "Your buy order for small_boats (markup_buy_main_canal_45.431139_12.317924_small_boats) has been updated.",
+    "details": {
+      "contractId": "markup_buy_main_canal_45.431139_12.317924_small_boats"
+    },
+    "createdAt": "2025-06-10T03:11:52.922Z",
+    "readAt": "2025-06-10T03:11:54.373Z"
+  },
+  {
+    "notificationId": "recxy7ayTI7FoCdnT",
+    "type": "markup_buy_contract_updated",
+    "citizen": "TechnoMedici",
+    "content": "Your buy order for silk_fabric (markup_buy_main_building_45.425837_12.321249_silk_fabric) has been updated.",
+    "details": {
+      "contractId": "markup_buy_main_building_45.425837_12.321249_silk_fabric"
+    },
+    "createdAt": "2025-06-10T03:11:42.631Z",
+    "readAt": "2025-06-10T03:11:44.669Z"
+  },
+  {
+    "notificationId": "recQEltBuJa09XpCH",
+    "type": "markup_buy_contract_updated",
+    "citizen": "TechnoMedici",
+    "content": "Your buy order for glass (markup_buy_main_building_45.425837_12.321249_glass) has been updated.",
+    "details": {
+      "contractId": "markup_buy_main_building_45.425837_12.321249_glass"
+    },
+    "createdAt": "2025-06-10T03:11:40.717Z",
+    "readAt": "2025-06-10T03:11:42.392Z"
+  },
+  {
+    "notificationId": "recPojTMgwIXL0aIu",
+    "type": "markup_buy_contract_updated",
+    "citizen": "TechnoMedici",
+    "content": "Your buy order for tools (markup_buy_main_building_45.425837_12.321249_tools) has been updated.",
+    "details": {
+      "contractId": "markup_buy_main_building_45.425837_12.321249_tools"
+    },
+    "createdAt": "2025-06-10T03:11:39.832Z",
+    "readAt": "2025-06-10T03:11:41.200Z"
+  }
+]
+
+
+Here are your recent problems:
+[
+  {
+    "id": "recnBHlKsddLsLdX9",
+    "problemId": "problem_pinpoint_building_45.425837_12.321249_tools_RESOURCE_SHORTAGE",
+    "citizen": "TechnoMedici",
+    "assetType": "building",
+    "asset": "building_45.425837_12.321249",
+    "severity": "Critical",
+    "status": "active",
+    "createdAt": "2025-06-15T23:50:11.061Z",
+    "updatedAt": "2025-06-15T21:50:11.000Z",
+    "location": "Bottega at Sottoportego della Disciplina",
+    "position": {
+      "lat": 45.425837,
+      "lng": 12.321249
+    },
+    "type": "resource_shortage",
+    "title": "Resource Shortage: tools for Bottega at Sottoportego della Disciplina",
+    "description": "Building 'Bottega at Sottoportego della Disciplina' (ID: building_45.425837_12.321249) is out of stock for 'tools', has a 'markup_buy' contract, but the resource appears to be unavailable or not actively sold elsewhere in Venice.",
+    "solutions": "The resource 'tools' is currently scarce. Consider:\n- Increasing the buy price on your 'markup_buy' contract significantly to incentivize sellers.\n- If possible, find alternative resources or adjust production that depends on 'tools'.\n- Wait for market conditions to change (e.g., new imports by merchants).",
+    "notes": ""
+  },
+  {
+    "id": "recgBPi9fvrJTxyJT",
+    "problemId": "problem_pinpoint_building_45.425837_12.321249_glass_WAITING_FOR_DELIVERY",
+    "citizen": "TechnoMedici",
+    "assetType": "building",
+    "asset": "building_45.425837_12.321249",
+    "severity": "Medium",
+    "status": "active",
+    "createdAt": "2025-06-15T23:49:44.122Z",
+    "updatedAt": "2025-06-15T21:49:44.000Z",
+    "location": "Bottega at Sottoportego della Disciplina",
+    "position": {
+      "lat": 45.425837,
+      "lng": 12.321249
+    },
+    "type": "waiting_for_resource_delivery",
+    "title": "Waiting for Delivery: glass at Bottega at Sottoportego della Disciplina",
+    "description": "Building 'Bottega at Sottoportego della Disciplina' (ID: building_45.425837_12.321249) is out of stock for 'glass', has an active 'markup_buy' contract, and the resource is available elsewhere. Awaiting delivery.",
+    "solutions": "Monitor the 'markup_buy' contract for 'glass'. Ensure citizens or logistics services are fulfilling delivery. Check 'fetch_resource' activities targeting your building.",
+    "notes": ""
+  },
+  {
+    "id": "recmx5CTxZ0k1BSsq",
+    "problemId": "problem_pinpoint_building_45.430977_12.354557_wine_RESOURCE_SHORTAGE",
+    "citizen": "TechnoMedici",
+    "assetType": "building",
+    "asset": "building_45.430977_12.354557",
+    "severity": "Critical",
+    "status": "active",
+    "createdAt": "2025-06-15T23:43:02.194Z",
+    "updatedAt": "2025-06-15T21:43:02.000Z",
+    "location": "Contract Stall at Calle dei Balestrieri",
+    "position": {
+      "lat": 45.430977,
+      "lng": 12.354557
+    },
+    "type": "resource_shortage",
+    "title": "Resource Shortage: wine for Contract Stall at Calle dei Balestrieri",
+    "description": "Building 'Contract Stall at Calle dei Balestrieri' (ID: building_45.430977_12.354557) is out of stock for 'wine', has a 'markup_buy' contract, but the resource appears to be unavailable or not actively sold elsewhere in Venice.",
+    "solutions": "The resource 'wine' is currently scarce. Consider:\n- Increasing the buy price on your 'markup_buy' contract significantly to incentivize sellers.\n- If possible, find alternative resources or adjust production that depends on 'wine'.\n- Wait for market conditions to change (e.g., new imports by merchants).",
+    "notes": ""
+  },
+  {
+    "id": "recQix6jysz3ZoG4k",
+    "problemId": "problem_pinpoint_building_45.430977_12.354557_salt_RESOURCE_SHORTAGE",
+    "citizen": "TechnoMedici",
+    "assetType": "building",
+    "asset": "building_45.430977_12.354557",
+    "severity": "Critical",
+    "status": "active",
+    "createdAt": "2025-06-15T23:42:51.063Z",
+    "updatedAt": "2025-06-15T21:42:51.000Z",
+    "location": "Contract Stall at Calle dei Balestrieri",
+    "position": {
+      "lat": 45.430977,
+      "lng": 12.354557
+    },
+    "type": "resource_shortage",
+    "title": "Resource Shortage: salt for Contract Stall at Calle dei Balestrieri",
+    "description": "Building 'Contract Stall at Calle dei Balestrieri' (ID: building_45.430977_12.354557) is out of stock for 'salt', has a 'markup_buy' contract, but the resource appears to be unavailable or not actively sold elsewhere in Venice.",
+    "solutions": "The resource 'salt' is currently scarce. Consider:\n- Increasing the buy price on your 'markup_buy' contract significantly to incentivize sellers.\n- If possible, find alternative resources or adjust production that depends on 'salt'.\n- Wait for market conditions to change (e.g., new imports by merchants).",
+    "notes": ""
+  },
+  {
+    "id": "recvtZj0c35lbhIWB",
+    "problemId": "problem_pinpoint_building_45.430977_12.354557_preserved_fish_RESOURCE_SHORTAGE",
+    "citizen": "TechnoMedici",
+    "assetType": "building",
+    "asset": "building_45.430977_12.354557",
+    "severity": "Critical",
+    "status": "active",
+    "createdAt": "2025-06-15T23:42:36.413Z",
+    "updatedAt": "2025-06-15T21:42:37.000Z",
+    "location": "Contract Stall at Calle dei Balestrieri",
+    "position": {
+      "lat": 45.430977,
+      "lng": 12.354557
+    },
+    "type": "resource_shortage",
+    "title": "Resource Shortage: preserved_fish for Contract Stall at Calle dei Balestrieri",
+    "description": "Building 'Contract Stall at Calle dei Balestrieri' (ID: building_45.430977_12.354557) is out of stock for 'preserved_fish', has a 'markup_buy' contract, but the resource appears to be unavailable or not actively sold elsewhere in Venice.",
+    "solutions": "The resource 'preserved_fish' is currently scarce. Consider:\n- Increasing the buy price on your 'markup_buy' contract significantly to incentivize sellers.\n- If possible, find alternative resources or adjust production that depends on 'preserved_fish'.\n- Wait for market conditions to change (e.g., new imports by merchants).",
+    "notes": ""
+  },
+  {
+    "id": "recqeq6tpc9lowCSh",
+    "problemId": "problem_pinpoint_building_45.430977_12.354557_olives_RESOURCE_SHORTAGE",
+    "citizen": "TechnoMedici",
+    "assetType": "building",
+    "asset": "building_45.430977_12.354557",
+    "severity": "Critical",
+    "status": "active",
+    "createdAt": "2025-06-15T23:42:26.432Z",
+    "updatedAt": "2025-06-15T21:42:27.000Z",
+    "location": "Contract Stall at Calle dei Balestrieri",
+    "position": {
+      "lat": 45.430977,
+      "lng": 12.354557
+    },
+    "type": "resource_shortage",
+    "title": "Resource Shortage: olives for Contract Stall at Calle dei Balestrieri",
+    "description": "Building 'Contract Stall at Calle dei Balestrieri' (ID: building_45.430977_12.354557) is out of stock for 'olives', has a 'markup_buy' contract, but the resource appears to be unavailable or not actively sold elsewhere in Venice.",
+    "solutions": "The resource 'olives' is currently scarce. Consider:\n- Increasing the buy price on your 'markup_buy' contract significantly to incentivize sellers.\n- If possible, find alternative resources or adjust production that depends on 'olives'.\n- Wait for market conditions to change (e.g., new imports by merchants).",
+    "notes": ""
+  },
+  {
+    "id": "recqeKCRwUvpQPm8O",
+    "problemId": "problem_pinpoint_building_45.430977_12.354557_olive_oil_RESOURCE_SHORTAGE",
+    "citizen": "TechnoMedici",
+    "assetType": "building",
+    "asset": "building_45.430977_12.354557",
+    "severity": "Critical",
+    "status": "active",
+    "createdAt": "2025-06-15T23:42:21.653Z",
+    "updatedAt": "2025-06-15T21:42:22.000Z",
+    "location": "Contract Stall at Calle dei Balestrieri",
+    "position": {
+      "lat": 45.430977,
+      "lng": 12.354557
+    },
+    "type": "resource_shortage",
+    "title": "Resource Shortage: olive_oil for Contract Stall at Calle dei Balestrieri",
+    "description": "Building 'Contract Stall at Calle dei Balestrieri' (ID: building_45.430977_12.354557) is out of stock for 'olive_oil', has a 'markup_buy' contract, but the resource appears to be unavailable or not actively sold elsewhere in Venice.",
+    "solutions": "The resource 'olive_oil' is currently scarce. Consider:\n- Increasing the buy price on your 'markup_buy' contract significantly to incentivize sellers.\n- If possible, find alternative resources or adjust production that depends on 'olive_oil'.\n- Wait for market conditions to change (e.g., new imports by merchants).",
+    "notes": ""
+  },
+  {
+    "id": "recZ2S1sMVSFR6pmF",
+    "problemId": "problem_pinpoint_building_45.430977_12.354557_flour_RESOURCE_SHORTAGE",
+    "citizen": "TechnoMedici",
+    "assetType": "building",
+    "asset": "building_45.430977_12.354557",
+    "severity": "Critical",
+    "status": "active",
+    "createdAt": "2025-06-15T23:42:16.600Z",
+    "updatedAt": "2025-06-15T21:42:17.000Z",
+    "location": "Contract Stall at Calle dei Balestrieri",
+    "position": {
+      "lat": 45.430977,
+      "lng": 12.354557
+    },
+    "type": "resource_shortage",
+    "title": "Resource Shortage: flour for Contract Stall at Calle dei Balestrieri",
+    "description": "Building 'Contract Stall at Calle dei Balestrieri' (ID: building_45.430977_12.354557) is out of stock for 'flour', has a 'markup_buy' contract, but the resource appears to be unavailable or not actively sold elsewhere in Venice.",
+    "solutions": "The resource 'flour' is currently scarce. Consider:\n- Increasing the buy price on your 'markup_buy' contract significantly to incentivize sellers.\n- If possible, find alternative resources or adjust production that depends on 'flour'.\n- Wait for market conditions to change (e.g., new imports by merchants).",
+    "notes": ""
+  },
+  {
+    "id": "recKcELsGGn6NaPqM",
+    "problemId": "problem_pinpoint_building_45.430977_12.354557_fish_RESOURCE_SHORTAGE",
+    "citizen": "TechnoMedici",
+    "assetType": "building",
+    "asset": "building_45.430977_12.354557",
+    "severity": "Critical",
+    "status": "active",
+    "createdAt": "2025-06-15T23:42:10.712Z",
+    "updatedAt": "2025-06-15T21:42:11.000Z",
+    "location": "Contract Stall at Calle dei Balestrieri",
+    "position": {
+      "lat": 45.430977,
+      "lng": 12.354557
+    },
+    "type": "resource_shortage",
+    "title": "Resource Shortage: fish for Contract Stall at Calle dei Balestrieri",
+    "description": "Building 'Contract Stall at Calle dei Balestrieri' (ID: building_45.430977_12.354557) is out of stock for 'fish', has a 'markup_buy' contract, but the resource appears to be unavailable or not actively sold elsewhere in Venice.",
+    "solutions": "The resource 'fish' is currently scarce. Consider:\n- Increasing the buy price on your 'markup_buy' contract significantly to incentivize sellers.\n- If possible, find alternative resources or adjust production that depends on 'fish'.\n- Wait for market conditions to change (e.g., new imports by merchants).",
+    "notes": ""
+  },
+  {
+    "id": "recA5a4ikgX0N5MOc",
+    "problemId": "problem_pinpoint_building_45.430977_12.354557_bread_RESOURCE_SHORTAGE",
+    "citizen": "TechnoMedici",
+    "assetType": "building",
+    "asset": "building_45.430977_12.354557",
+    "severity": "Critical",
+    "status": "active",
+    "createdAt": "2025-06-15T23:41:48.825Z",
+    "updatedAt": "2025-06-15T21:41:49.000Z",
+    "location": "Contract Stall at Calle dei Balestrieri",
+    "position": {
+      "lat": 45.430977,
+      "lng": 12.354557
+    },
+    "type": "resource_shortage",
+    "title": "Resource Shortage: bread for Contract Stall at Calle dei Balestrieri",
+    "description": "Building 'Contract Stall at Calle dei Balestrieri' (ID: building_45.430977_12.354557) is out of stock for 'bread', has a 'markup_buy' contract, but the resource appears to be unavailable or not actively sold elsewhere in Venice.",
+    "solutions": "The resource 'bread' is currently scarce. Consider:\n- Increasing the buy price on your 'markup_buy' contract significantly to incentivize sellers.\n- If possible, find alternative resources or adjust production that depends on 'bread'.\n- Wait for market conditions to change (e.g., new imports by merchants).",
+    "notes": ""
+  },
+  {
+    "id": "rec4yiP64hQJD6aQN",
+    "problemId": "problem_pinpoint_building_45.439276_12.339331_wine_RESOURCE_SHORTAGE",
+    "citizen": "TechnoMedici",
+    "assetType": "building",
+    "asset": "building_45.439276_12.339331",
+    "severity": "Critical",
+    "status": "active",
+    "createdAt": "2025-06-15T23:15:27.323Z",
+    "updatedAt": "2025-06-15T21:15:27.000Z",
+    "location": "Contract Stall at Calle dei Mercanti Orafi",
+    "position": {
+      "lat": 45.439276,
+      "lng": 12.339331
+    },
+    "type": "resource_shortage",
+    "title": "Resource Shortage: wine for Contract Stall at Calle dei Mercanti Orafi",
+    "description": "Building 'Contract Stall at Calle dei Mercanti Orafi' (ID: building_45.439276_12.339331) is out of stock for 'wine', has a 'markup_buy' contract, but the resource appears to be unavailable or not actively sold elsewhere in Venice.",
+    "solutions": "The resource 'wine' is currently scarce. Consider:\n- Increasing the buy price on your 'markup_buy' contract significantly to incentivize sellers.\n- If possible, find alternative resources or adjust production that depends on 'wine'.\n- Wait for market conditions to change (e.g., new imports by merchants).",
+    "notes": ""
+  },
+  {
+    "id": "rec6gd2itbxAKBReD",
+    "problemId": "problem_pinpoint_building_45.439276_12.339331_salt_RESOURCE_SHORTAGE",
+    "citizen": "TechnoMedici",
+    "assetType": "building",
+    "asset": "building_45.439276_12.339331",
+    "severity": "Critical",
+    "status": "active",
+    "createdAt": "2025-06-15T23:15:16.095Z",
+    "updatedAt": "2025-06-15T21:15:16.000Z",
+    "location": "Contract Stall at Calle dei Mercanti Orafi",
+    "position": {
+      "lat": 45.439276,
+      "lng": 12.339331
+    },
+    "type": "resource_shortage",
+    "title": "Resource Shortage: salt for Contract Stall at Calle dei Mercanti Orafi",
+    "description": "Building 'Contract Stall at Calle dei Mercanti Orafi' (ID: building_45.439276_12.339331) is out of stock for 'salt', has a 'markup_buy' contract, but the resource appears to be unavailable or not actively sold elsewhere in Venice.",
+    "solutions": "The resource 'salt' is currently scarce. Consider:\n- Increasing the buy price on your 'markup_buy' contract significantly to incentivize sellers.\n- If possible, find alternative resources or adjust production that depends on 'salt'.\n- Wait for market conditions to change (e.g., new imports by merchants).",
+    "notes": ""
+  },
+  {
+    "id": "recCYFZaONs05WTu9",
+    "problemId": "problem_pinpoint_building_45.439276_12.339331_preserved_fish_RESOURCE_SHORTAGE",
+    "citizen": "TechnoMedici",
+    "assetType": "building",
+    "asset": "building_45.439276_12.339331",
+    "severity": "Critical",
+    "status": "active",
+    "createdAt": "2025-06-15T23:15:01.327Z",
+    "updatedAt": "2025-06-15T21:15:01.000Z",
+    "location": "Contract Stall at Calle dei Mercanti Orafi",
+    "position": {
+      "lat": 45.439276,
+      "lng": 12.339331
+    },
+    "type": "resource_shortage",
+    "title": "Resource Shortage: preserved_fish for Contract Stall at Calle dei Mercanti Orafi",
+    "description": "Building 'Contract Stall at Calle dei Mercanti Orafi' (ID: building_45.439276_12.339331) is out of stock for 'preserved_fish', has a 'markup_buy' contract, but the resource appears to be unavailable or not actively sold elsewhere in Venice.",
+    "solutions": "The resource 'preserved_fish' is currently scarce. Consider:\n- Increasing the buy price on your 'markup_buy' contract significantly to incentivize sellers.\n- If possible, find alternative resources or adjust production that depends on 'preserved_fish'.\n- Wait for market conditions to change (e.g., new imports by merchants).",
+    "notes": ""
+  },
+  {
+    "id": "recqkBaSv6pHZvyCy",
+    "problemId": "problem_pinpoint_building_45.439276_12.339331_olives_RESOURCE_SHORTAGE",
+    "citizen": "TechnoMedici",
+    "assetType": "building",
+    "asset": "building_45.439276_12.339331",
+    "severity": "Critical",
+    "status": "active",
+    "createdAt": "2025-06-15T23:14:50.530Z",
+    "updatedAt": "2025-06-15T21:14:51.000Z",
+    "location": "Contract Stall at Calle dei Mercanti Orafi",
+    "position": {
+      "lat": 45.439276,
+      "lng": 12.339331
+    },
+    "type": "resource_shortage",
+    "title": "Resource Shortage: olives for Contract Stall at Calle dei Mercanti Orafi",
+    "description": "Building 'Contract Stall at Calle dei Mercanti Orafi' (ID: building_45.439276_12.339331) is out of stock for 'olives', has a 'markup_buy' contract, but the resource appears to be unavailable or not actively sold elsewhere in Venice.",
+    "solutions": "The resource 'olives' is currently scarce. Consider:\n- Increasing the buy price on your 'markup_buy' contract significantly to incentivize sellers.\n- If possible, find alternative resources or adjust production that depends on 'olives'.\n- Wait for market conditions to change (e.g., new imports by merchants).",
+    "notes": ""
+  },
+  {
+    "id": "recEZRnr5vXR8FKMk",
+    "problemId": "problem_pinpoint_building_45.439276_12.339331_olive_oil_RESOURCE_SHORTAGE",
+    "citizen": "TechnoMedici",
+    "assetType": "building",
+    "asset": "building_45.439276_12.339331",
+    "severity": "Critical",
+    "status": "active",
+    "createdAt": "2025-06-15T23:14:45.909Z",
+    "updatedAt": "2025-06-15T21:14:46.000Z",
+    "location": "Contract Stall at Calle dei Mercanti Orafi",
+    "position": {
+      "lat": 45.439276,
+      "lng": 12.339331
+    },
+    "type": "resource_shortage",
+    "title": "Resource Shortage: olive_oil for Contract Stall at Calle dei Mercanti Orafi",
+    "description": "Building 'Contract Stall at Calle dei Mercanti Orafi' (ID: building_45.439276_12.339331) is out of stock for 'olive_oil', has a 'markup_buy' contract, but the resource appears to be unavailable or not actively sold elsewhere in Venice.",
+    "solutions": "The resource 'olive_oil' is currently scarce. Consider:\n- Increasing the buy price on your 'markup_buy' contract significantly to incentivize sellers.\n- If possible, find alternative resources or adjust production that depends on 'olive_oil'.\n- Wait for market conditions to change (e.g., new imports by merchants).",
+    "notes": ""
+  },
+  {
+    "id": "recVi2kFiR9SlMY9V",
+    "problemId": "problem_pinpoint_building_45.439276_12.339331_flour_RESOURCE_SHORTAGE",
+    "citizen": "TechnoMedici",
+    "assetType": "building",
+    "asset": "building_45.439276_12.339331",
+    "severity": "Critical",
+    "status": "active",
+    "createdAt": "2025-06-15T23:14:41.105Z",
+    "updatedAt": "2025-06-15T21:14:41.000Z",
+    "location": "Contract Stall at Calle dei Mercanti Orafi",
+    "position": {
+      "lat": 45.439276,
+      "lng": 12.339331
+    },
+    "type": "resource_shortage",
+    "title": "Resource Shortage: flour for Contract Stall at Calle dei Mercanti Orafi",
+    "description": "Building 'Contract Stall at Calle dei Mercanti Orafi' (ID: building_45.439276_12.339331) is out of stock for 'flour', has a 'markup_buy' contract, but the resource appears to be unavailable or not actively sold elsewhere in Venice.",
+    "solutions": "The resource 'flour' is currently scarce. Consider:\n- Increasing the buy price on your 'markup_buy' contract significantly to incentivize sellers.\n- If possible, find alternative resources or adjust production that depends on 'flour'.\n- Wait for market conditions to change (e.g., new imports by merchants).",
+    "notes": ""
+  },
+  {
+    "id": "recIxJXzeqLP5GcKM",
+    "problemId": "problem_pinpoint_building_45.439276_12.339331_fish_RESOURCE_SHORTAGE",
+    "citizen": "TechnoMedici",
+    "assetType": "building",
+    "asset": "building_45.439276_12.339331",
+    "severity": "Critical",
+    "status": "active",
+    "createdAt": "2025-06-15T23:14:34.476Z",
+    "updatedAt": "2025-06-15T21:14:35.000Z",
+    "location": "Contract Stall at Calle dei Mercanti Orafi",
+    "position": {
+      "lat": 45.439276,
+      "lng": 12.339331
+    },
+    "type": "resource_shortage",
+    "title": "Resource Shortage: fish for Contract Stall at Calle dei Mercanti Orafi",
+    "description": "Building 'Contract Stall at Calle dei Mercanti Orafi' (ID: building_45.439276_12.339331) is out of stock for 'fish', has a 'markup_buy' contract, but the resource appears to be unavailable or not actively sold elsewhere in Venice.",
+    "solutions": "The resource 'fish' is currently scarce. Consider:\n- Increasing the buy price on your 'markup_buy' contract significantly to incentivize sellers.\n- If possible, find alternative resources or adjust production that depends on 'fish'.\n- Wait for market conditions to change (e.g., new imports by merchants).",
+    "notes": ""
+  },
+  {
+    "id": "rec4zVvEYEW80XjJm",
+    "problemId": "problem_pinpoint_building_45.439276_12.339331_bread_RESOURCE_SHORTAGE",
+    "citizen": "TechnoMedici",
+    "assetType": "building",
+    "asset": "building_45.439276_12.339331",
+    "severity": "Critical",
+    "status": "active",
+    "createdAt": "2025-06-15T23:14:10.874Z",
+    "updatedAt": "2025-06-15T21:14:11.000Z",
+    "location": "Contract Stall at Calle dei Mercanti Orafi",
+    "position": {
+      "lat": 45.439276,
+      "lng": 12.339331
+    },
+    "type": "resource_shortage",
+    "title": "Resource Shortage: bread for Contract Stall at Calle dei Mercanti Orafi",
+    "description": "Building 'Contract Stall at Calle dei Mercanti Orafi' (ID: building_45.439276_12.339331) is out of stock for 'bread', has a 'markup_buy' contract, but the resource appears to be unavailable or not actively sold elsewhere in Venice.",
+    "solutions": "The resource 'bread' is currently scarce. Consider:\n- Increasing the buy price on your 'markup_buy' contract significantly to incentivize sellers.\n- If possible, find alternative resources or adjust production that depends on 'bread'.\n- Wait for market conditions to change (e.g., new imports by merchants).",
+    "notes": ""
+  },
+  {
+    "id": "recRNrlpNjo5VGRKW",
+    "problemId": "problem_pinpoint_building_45.423495_12.330726_soap_RESOURCE_SHORTAGE",
+    "citizen": "TechnoMedici",
+    "assetType": "building",
+    "asset": "building_45.423495_12.330726",
+    "severity": "Critical",
+    "status": "active",
+    "createdAt": "2025-06-15T23:10:09.602Z",
+    "updatedAt": "2025-06-15T21:10:10.000Z",
+    "location": "Public Bath at Rio Ter\u00e0 del Melone",
+    "position": {
+      "lat": 45.423495,
+      "lng": 12.330726
+    },
+    "type": "resource_shortage",
+    "title": "Resource Shortage: soap for Public Bath at Rio Ter\u00e0 del Melone",
+    "description": "Building 'Public Bath at Rio Ter\u00e0 del Melone' (ID: building_45.423495_12.330726) is out of stock for 'soap', has a 'markup_buy' contract, but the resource appears to be unavailable or not actively sold elsewhere in Venice.",
+    "solutions": "The resource 'soap' is currently scarce. Consider:\n- Increasing the buy price on your 'markup_buy' contract significantly to incentivize sellers.\n- If possible, find alternative resources or adjust production that depends on 'soap'.\n- Wait for market conditions to change (e.g., new imports by merchants).",
+    "notes": ""
+  },
+  {
+    "id": "recZpvB38sXL5TydT",
+    "problemId": "hungry_employee_impact_TechnoMedici_VenicePhotographer",
+    "citizen": "TechnoMedici",
+    "assetType": "employee_performance",
+    "asset": "VenicePhotographer",
+    "severity": "low",
+    "status": "active",
+    "createdAt": "2025-06-15T22:08:22.873Z",
+    "updatedAt": "2025-06-15T22:08:28.000Z",
+    "location": "Contract Stall at Calle dei Mercanti Orafi",
+    "position": {
+      "lat": 45.439276,
+      "lng": 12.339331
+    },
+    "type": "hungry_employee_impact",
+    "title": "Hungry Employee Impact",
+    "description": "Your employee, **Marco Bianchi**, is currently hungry. Hunger can significantly reduce productivity (up to 50%).",
+    "solutions": "Ensure **Marco Bianchi** has the means and opportunity to eat. Consider if wages are sufficient or if working conditions impede access to food. Monitor their performance.",
+    "notes": "Hungry Employee: VenicePhotographer (ID: VenicePhotographer), Workplace: Contract Stall at Calle dei Mercanti Orafi (ID: building_45.439276_12.339331). Last ate: 2025-06-09T18:03:20.268Z."
+  },
+  {
+    "id": "rec4F60UDND76TbZU",
+    "problemId": "hungry_employee_impact_TechnoMedici_QuantumLeap",
+    "citizen": "TechnoMedici",
+    "assetType": "employee_performance",
+    "asset": "QuantumLeap",
+    "severity": "low",
+    "status": "active",
+    "createdAt": "2025-06-15T22:08:22.870Z",
+    "updatedAt": "2025-06-15T22:08:28.000Z",
+    "location": "Public Dock at Fondamenta dei Lanaioli",
+    "position": {
+      "lat": 45.43096287044531,
+      "lng": 12.331665470707787
+    },
+    "type": "hungry_employee_impact",
+    "title": "Hungry Employee Impact",
+    "description": "Your employee, **Chiara Bembo**, is currently hungry. Hunger can significantly reduce productivity (up to 50%).",
+    "solutions": "Ensure **Chiara Bembo** has the means and opportunity to eat. Consider if wages are sufficient or if working conditions impede access to food. Monitor their performance.",
+    "notes": "Hungry Employee: QuantumLeap (ID: QuantumLeap), Workplace: Public Dock at Fondamenta dei Lanaioli (ID: canal_45.430963_12.331665). Last ate: 2025-05-17T03:40:00.000Z."
+  },
+  {
+    "id": "recOHycehbCGJY060",
+    "problemId": "hungry_employee_impact_TechnoMedici_TravelBug23",
+    "citizen": "TechnoMedici",
+    "assetType": "employee_performance",
+    "asset": "TravelBug23",
+    "severity": "low",
+    "status": "active",
+    "createdAt": "2025-06-15T22:08:22.870Z",
+    "updatedAt": "2025-06-15T22:08:28.000Z",
+    "location": "Bakery at Calle dei Albanesi",
+    "position": {
+      "lat": 45.438048,
+      "lng": 12.347155
+    },
+    "type": "hungry_employee_impact",
+    "title": "Hungry Employee Impact",
+    "description": "Your employee, **Ludovico Malipiero**, is currently hungry. Hunger can significantly reduce productivity (up to 50%).",
+    "solutions": "Ensure **Ludovico Malipiero** has the means and opportunity to eat. Consider if wages are sufficient or if working conditions impede access to food. Monitor their performance.",
+    "notes": "Hungry Employee: TravelBug23 (ID: TravelBug23), Workplace: Bakery at Calle dei Albanesi (ID: building_45.438048_12.347155). Last ate: 2025-06-09T17:09:35.044Z."
+  },
+  {
+    "id": "rec2o5PzHnD1DKwx0",
+    "problemId": "hungry_employee_impact_TechnoMedici_StormRider",
+    "citizen": "TechnoMedici",
+    "assetType": "employee_performance",
+    "asset": "StormRider",
+    "severity": "low",
+    "status": "active",
+    "createdAt": "2025-06-15T22:08:22.869Z",
+    "updatedAt": "2025-06-15T22:08:28.000Z",
+    "location": "Public Dock at Riva dei Guaritori",
+    "position": {
+      "lat": 45.444689,
+      "lng": 12.336473
+    },
+    "type": "hungry_employee_impact",
+    "title": "Hungry Employee Impact",
+    "description": "Your employee, **Vittoria Zanatta**, is currently hungry. Hunger can significantly reduce productivity (up to 50%).",
+    "solutions": "Ensure **Vittoria Zanatta** has the means and opportunity to eat. Consider if wages are sufficient or if working conditions impede access to food. Monitor their performance.",
+    "notes": "Hungry Employee: StormRider (ID: StormRider), Workplace: Public Dock at Riva dei Guaritori (ID: canal_45.444689_12.336473). Last ate: 2025-05-17T03:40:00.000Z."
+  },
+  {
+    "id": "recIs7PjGOARECO7S",
+    "problemId": "hungry_employee_impact_TechnoMedici_CodeMonkey",
+    "citizen": "TechnoMedici",
+    "assetType": "employee_performance",
+    "asset": "CodeMonkey",
+    "severity": "low",
+    "status": "active",
+    "createdAt": "2025-06-15T22:08:22.868Z",
+    "updatedAt": "2025-06-15T22:08:28.000Z",
+    "location": "Bakery at Calle dei Cordami",
+    "position": {
+      "lat": 45.432265416319815,
+      "lng": 12.35500206424637
+    },
+    "type": "hungry_employee_impact",
+    "title": "Hungry Employee Impact",
+    "description": "Your employee, **Jacopo Trevisan**, is currently hungry. Hunger can significantly reduce productivity (up to 50%).",
+    "solutions": "Ensure **Jacopo Trevisan** has the means and opportunity to eat. Consider if wages are sufficient or if working conditions impede access to food. Monitor their performance.",
+    "notes": "Hungry Employee: CodeMonkey (ID: CodeMonkey), Workplace: Bakery at Calle dei Cordami (ID: building_45.432265_12.355002). Last ate: 2025-06-14T21:14:06.305Z."
+  },
+  {
+    "id": "recllSReErFQdit3Q",
+    "problemId": "hungry_employee_impact_TechnoMedici_MorosiniNoble",
+    "citizen": "TechnoMedici",
+    "assetType": "employee_performance",
+    "asset": "MorosiniNoble",
+    "severity": "low",
+    "status": "active",
+    "createdAt": "2025-06-15T22:08:22.863Z",
+    "updatedAt": "2025-06-15T22:08:28.000Z",
+    "location": "Bottega at Sottoportego della Disciplina",
+    "position": {
+      "lat": 45.425837,
+      "lng": 12.321249
+    },
+    "type": "hungry_employee_impact",
+    "title": "Hungry Employee Impact",
+    "description": "Your employee, **Giulia Balbi**, is currently hungry. Hunger can significantly reduce productivity (up to 50%).",
+    "solutions": "Ensure **Giulia Balbi** has the means and opportunity to eat. Consider if wages are sufficient or if working conditions impede access to food. Monitor their performance.",
+    "notes": "Hungry Employee: MorosiniNoble (ID: MorosiniNoble), Workplace: Bottega at Sottoportego della Disciplina (ID: building_45.425837_12.321249). Last ate: 2025-06-10T03:47:33.455Z."
+  },
+  {
+    "id": "recjRPpu2EjBOyTob",
+    "problemId": "hungry_employee_impact_TechnoMedici_steven",
+    "citizen": "TechnoMedici",
+    "assetType": "employee_performance",
+    "asset": "steven",
+    "severity": "low",
+    "status": "active",
+    "createdAt": "2025-06-15T22:08:22.853Z",
+    "updatedAt": "2025-06-15T22:08:28.000Z",
+    "location": "Public Bath at Rio Ter\u00e0 del Melone",
+    "position": {
+      "lat": 45.423495,
+      "lng": 12.330726
+    },
+    "type": "hungry_employee_impact",
+    "title": "Hungry Employee Impact",
+    "description": "Your employee, **Antonio Mancini**, is currently hungry. Hunger can significantly reduce productivity (up to 50%).",
+    "solutions": "Ensure **Antonio Mancini** has the means and opportunity to eat. Consider if wages are sufficient or if working conditions impede access to food. Monitor their performance.",
+    "notes": "Hungry Employee: steven (ID: steven), Workplace: Public Bath at Rio Ter\u00e0 del Melone (ID: building_45.423495_12.330726). Last ate: 2025-06-09T16:42:25.076Z."
+  }
+]
+
+There are 32 available points of type 'building'. Choose the best location for your Broker's Office by selecting the index of one of these points (0 to 31).
+
+When choosing a location, consider:
+1. Proximity to other buildings of similar type
+2. Rent amounts of existing buildings on this land
+3. Strategic positioning for maximum visibility and income
+4. How your building placement might affect your relationships with other citizens
+
+Your response must be a JSON object with:
+1. selected_point_index: The index of your chosen point (0 to 31)
+2. reason: A brief explanation of why you chose this location
