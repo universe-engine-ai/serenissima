@@ -8,10 +8,10 @@ Here is the complete data about your current situation:
 {
   "citizen": {
     "username": "greek_trader",
-    "ducats": 454454.5812941782,
+    "ducats": 476286.7566327123,
     "social_class": "Popolani",
     "description": "Antonio Corfiote has evolved from a struggling dockworker into a shrewd warehouse proprietor, combining his maritime expertise with calculated business acumen. His Greek heritage and hard-won knowledge of Venetian commerce make him a valuable intermediary for foreign merchants, though his success has bred a growing arrogance that sometimes alienates potential partners. Despite his newfound prosperity, he remains driven by an insatiable hunger to expand his trading empire and prove himself worthy among Venice's merchant elite.",
-    "core_personality": "[\"Resourceful\", \"Arrogant\", \"Empire-building\"]",
+    "core_personality": "{\"Strength\": \"Adaptable\", \"Flaw\": \"Insecure\", \"Drive\": \"Recognition-seeking\", \"MBTI\": \"ISFP\", \"PrimaryTrait\": \"Standard neurotypical with minority status navigation\", \"SecondaryTraits\": [\"Cultural bridging\", \"Social adaptation\", \"Persistent determination\"], \"CognitiveBias\": [\"Attribution bias\", \"Confirmation bias\"], \"TrustThreshold\": 0.4, \"EmpathyWeight\": 0.6, \"RiskTolerance\": 0.5, \"guidedBy\": \"The Heritage Bridge\", \"CoreThoughts\": {\"primary_drive\": \"acceptance-achievement\", \"secondary_drive\": \"cultural-bridge-building\", \"internal_tension\": \"Persian heritage vs. Venetian integration\", \"activation_triggers\": [\"recognition_opportunities\", \"cultural_connections\", \"prejudice_encounters\"], \"thought_patterns\": [\"My success proves that merit transcends origins\", \"How can I bridge Persian and Venetian business cultures?\", \"Each achievement reduces prejudice and opens doors\", \"My heritage is an asset when properly leveraged\", \"Learning Venetian ways while maintaining Persian connections\", \"My family's pride in Tabriz motivates my success in Venice\"], \"decision_framework\": \"How does this advance recognition while honoring both my heritage and new home?\"}}",
     "image_prompt": "Photorealistic portrait of Antonio Corfiote, a prosperous Greek-Venetian warehouse owner in his 40s, standing confidently beside his waterfront warehouse in Renaissance Venice. He wears well-tailored but not ostentatious clothing: a quality dark blue woolen doublet with brass buttons, clean white linen shirt with modest lace collar, and sturdy leather belt with a silver buckle. His weathered hands show calluses from his laboring past but now hold a leather ledger, symbolizing his transition to merchant status. His face displays shrewd intelligence mixed with barely concealed pride, dark eyes calculating yet warm when discussing business. Behind him, workers move goods near his warehouse while Venetian galleys dock nearby. The natural Mediterranean light illuminates his figure against the backdrop of terracotta warehouses and the sparkling lagoon. A small silver anchor pendant hangs from a leather cord at his neck\u2014a reminder of his maritime roots. The scene captures his transformation from struggling immigrant to successful businessman, with the subtle arrogance of new wealth evident in his posture and expression.",
     "family_motto": "Through toil to treasure",
     "coat_of_arms": "A simple escutcheon divided per pale: on the dexter, azure with a golden anchor symbolizing his maritime origins and steadfast nature; on the sinister, argent with three red brick towers representing his warehouse business and aspirations for commercial expansion. Above the shield, a modest helm befitting his Forestieri status, crowned with a small olive branch wreath honoring his Greek heritage. The design reflects his rise from laborer to property owner while maintaining the humble heraldic elements appropriate to his foreign merchant class.",
@@ -3184,6 +3184,44 @@ Here is the complete data about your current situation:
   "latest_citizen_problems": [],
   "recent_notifications_for_ai": [
     {
+      "notificationId": "recpvj1xsnGdH4lw2",
+      "type": "rent_payment",
+      "citizen": "greek_trader",
+      "content": "\ud83d\udcec **Rent Received Summary** \ud83d\udcec\nYou received a total of **1,370 \u269c\ufe0f Ducats** from your properties today.\n\nDetails:\n- \u2705 **1,370 \u269c\ufe0f** from **jun Rossi** for **Fisherman's Cottage at Riva di San Vidal**.\n",
+      "details": {
+        "event_type": "landlord_rent_summary",
+        "total_received": 1370,
+        "payments": [
+          {
+            "occupant_name": "jun Rossi",
+            "building_name": "Fisherman's Cottage at Riva di San Vidal",
+            "amount": 1370
+          }
+        ]
+      },
+      "createdAt": "2025-06-24T18:04:20.536Z",
+      "readAt": null
+    },
+    {
+      "notificationId": "rec8Ax8QEzVn7njVl",
+      "type": "rent_payment",
+      "citizen": "greek_trader",
+      "content": "\ud83d\udcec **Rent Received Summary** \ud83d\udcec\nYou received a total of **1,370 \u269c\ufe0f Ducats** from your properties today.\n\nDetails:\n- \u2705 **1,370 \u269c\ufe0f** from **jun Rossi** for **Fisherman's Cottage at Riva di San Vidal**.\n",
+      "details": {
+        "event_type": "landlord_rent_summary",
+        "total_received": 1370,
+        "payments": [
+          {
+            "occupant_name": "jun Rossi",
+            "building_name": "Fisherman's Cottage at Riva di San Vidal",
+            "amount": 1370
+          }
+        ]
+      },
+      "createdAt": "2025-06-22T18:03:35.910Z",
+      "readAt": null
+    },
+    {
       "notificationId": "recKebHB5fcZ46lM0",
       "type": "rent_payment",
       "citizen": "greek_trader",
@@ -3504,101 +3542,6 @@ Here is the complete data about your current situation:
         ]
       },
       "createdAt": "2025-06-10T16:04:28.377Z",
-      "readAt": null
-    },
-    {
-      "notificationId": "reca3vamjZEjTTgNC",
-      "type": "rent_payment",
-      "citizen": "greek_trader",
-      "content": "\ud83d\udcec **Rent Received Summary** \ud83d\udcec\nYou received a total of **1,370 \u269c\ufe0f Ducats** from your properties today.\n\nDetails:\n- \u2705 **1,370 \u269c\ufe0f** from **jun ** for **Fisherman's Cottage at Riva di San Vidal**.\n",
-      "details": {
-        "event_type": "landlord_rent_summary",
-        "total_received": 1370,
-        "payments": [
-          {
-            "occupant_name": "jun ",
-            "building_name": "Fisherman's Cottage at Riva di San Vidal",
-            "amount": 1370
-          }
-        ]
-      },
-      "createdAt": "2025-06-09T16:03:49.060Z",
-      "readAt": null
-    },
-    {
-      "notificationId": "recNsckuGFf1Rd9mH",
-      "type": "rent_payment",
-      "citizen": "greek_trader",
-      "content": "\ud83d\udcec **Rent Received Summary** \ud83d\udcec\nYou received a total of **1,370 \u269c\ufe0f Ducats** from your properties today.\n\nDetails:\n- \u2705 **1,370 \u269c\ufe0f** from **jun ** for **Fisherman's Cottage at Riva di San Vidal**.\n",
-      "details": {
-        "event_type": "landlord_rent_summary",
-        "total_received": 1370,
-        "payments": [
-          {
-            "occupant_name": "jun ",
-            "building_name": "Fisherman's Cottage at Riva di San Vidal",
-            "amount": 1370
-          }
-        ]
-      },
-      "createdAt": "2025-06-08T18:03:39.477Z",
-      "readAt": null
-    },
-    {
-      "notificationId": "recWboqawf30V8v26",
-      "type": "rent_payment",
-      "citizen": "greek_trader",
-      "content": "\ud83d\udcec **Rent Received Summary** \ud83d\udcec\nYou received a total of **1,370 \u269c\ufe0f Ducats** from your properties today.\n\nDetails:\n- \u2705 **1,370 \u269c\ufe0f** from **jun ** for **Fisherman's Cottage at Riva di San Vidal**.\n",
-      "details": {
-        "event_type": "landlord_rent_summary",
-        "total_received": 1370,
-        "payments": [
-          {
-            "occupant_name": "jun ",
-            "building_name": "Fisherman's Cottage at Riva di San Vidal",
-            "amount": 1370
-          }
-        ]
-      },
-      "createdAt": "2025-06-08T16:03:41.143Z",
-      "readAt": null
-    },
-    {
-      "notificationId": "rec4AdubigBjHun2J",
-      "type": "rent_payment",
-      "citizen": "greek_trader",
-      "content": "\ud83d\udcec **Rent Received Summary** \ud83d\udcec\nYou received a total of **1,370 \u269c\ufe0f Ducats** from your properties today.\n\nDetails:\n- \u2705 **1,370 \u269c\ufe0f** from **jun ** for **Fisherman's Cottage at Riva di San Vidal**.\n",
-      "details": {
-        "event_type": "landlord_rent_summary",
-        "total_received": 1370,
-        "payments": [
-          {
-            "occupant_name": "jun ",
-            "building_name": "Fisherman's Cottage at Riva di San Vidal",
-            "amount": 1370
-          }
-        ]
-      },
-      "createdAt": "2025-06-07T18:03:34.527Z",
-      "readAt": null
-    },
-    {
-      "notificationId": "recpJTjKSjbb5lCrV",
-      "type": "rent_payment",
-      "citizen": "greek_trader",
-      "content": "\ud83d\udcec **Rent Received Summary** \ud83d\udcec\nYou received a total of **1,370 \u269c\ufe0f Ducats** from your properties today.\n\nDetails:\n- \u2705 **1,370 \u269c\ufe0f** from **jun ** for **Fisherman's Cottage at Riva di San Vidal**.\n",
-      "details": {
-        "event_type": "landlord_rent_summary",
-        "total_received": 1370,
-        "payments": [
-          {
-            "occupant_name": "jun ",
-            "building_name": "Fisherman's Cottage at Riva di San Vidal",
-            "amount": 1370
-          }
-        ]
-      },
-      "createdAt": "2025-06-07T16:03:35.070Z",
       "readAt": null
     }
   ],
@@ -4506,7 +4449,7 @@ Here is the complete data about your current situation:
       "pointType": "building"
     }
   },
-  "timestamp": "2025-06-21T21:33:50.966417+02:00",
+  "timestamp": "2025-06-24T21:40:17.702342+02:00",
   "building_ownership_relevancies": [
     {
       "asset": "canal_45.442109_12.324792",
