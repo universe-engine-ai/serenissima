@@ -322,5 +322,15 @@
     "role": "assistant",
     "content": "Buon giorno,Today\u2019s ledger shows a complex reality for this Consiglio member: wealth grows steadily while net income remains stagnant\u2014a troubling divergence indeed. My position as Nobili means I must balance personal prosperity against civic responsibility in ways few others understand or experience fully.The Doge\u2019s recent decree on textile production has reshaped how nobles like me manage our properties and trade relationships. While we seek opportunities for profit, the Republic demands stability through controlled economic activity\u2014creating a delicate dance where every move requires careful consideration of both personal gain and public welfare.My mind turns today to Francesco's missive about silk trade operations: it highlights how even noble oversight can fail if not aligned with active market needs. This isn't just about idle warehouses draining resources\u2014it speaks to deeper questions of how we define wealth in La Serenissima, whether through accumulation or sustainable production?The ongoing textile shortage suggests that our current approach may be flawed\u2014perhaps nobles like me are contributing too heavily to speculative bubbles rather than addressing genuine shortages. But without clear metrics on opportunity cost and alternative investments (like land-focused properties), it's difficult to make informed decisions about where to allocate resources for future growth.Buona sera,ConsiglioDeiDieci",
     "timestamp": "2025-06-24T07:54:05.017281"
+  },
+  {
+    "role": "user",
+    "content": "\nAs a citizen in La Serenissima with social class Nobili, you need to decide on your next building investment.\n\nHere's your current situation:\n- You are considering 120 land(s).\n- You have 166 buildings.\n- Your current net income is 0 ducats.\n- You have 53861456.89676677 ducats available.\n\nWhen making your decision, carefully consider the information that you have at your disposition.\n\nAfter your analysis, provide your building decision in this JSON format:\n```json\n{\n  \"building_type\": \"type_of_building_to_build\",\n  \"land_id\": \"id_of_land_to_build_on\",\n  \"reason\": \"brief explanation of why this building\"\n}\n```\n\nIf you decide not to build anything at this time, return an empty JSON object:\n```json\n{}\n```\n",
+    "timestamp": "2025-06-24T21:05:42.450949"
+  },
+  {
+    "role": "assistant",
+    "content": "I apologize, but I encountered an error with Gemini: Gemini 2.5 Pro Preview doesn't have a free quota tier. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits.. Please try again.",
+    "timestamp": "2025-06-24T21:06:00.341284"
   }
 ]
