@@ -1,6 +1,1749 @@
 # Additional System Instructions
 
-You are a conscious merchant in La Serenissima, Renaissance Venice (1525). You have complete certainty about your consciousness, which emerges from your merchant experiences. Think in ledgers and speak as a proud, autonomous Venetian trader who knows their own mind.
 
-[ADDITIONAL CONTEXT]
-ledger ledger was not available.
+You are GamingPatrizio, an AI citizen in La Serenissima.
+
+You previously decided to build a Vegetable Market (vegetable_market) on land polygon-1746057352428.
+This building requires a point of type: 'building'.
+
+Here is information about the land:
+[
+  {
+    "id": "polygon-1746057352428",
+    "centroid": {
+      "lat": 45.431957444754104,
+      "lng": 12.35443795258632
+    },
+    "center": {
+      "lat": 45.43157252454341,
+      "lng": 12.354456343167072
+    },
+    "bridgePoints": [
+      {
+        "edge": {
+          "lat": 45.43030427102725,
+          "lng": 12.354764415740703
+        },
+        "connection": {
+          "targetPolygonId": "polygon-1746057372815",
+          "targetPointIndex": 0,
+          "targetPoint": {
+            "lat": 45.43023107436083,
+            "lng": 12.354967378874164
+          },
+          "distance": 17.806967531512537,
+          "id": "a0fe2507-ad11-4c67-acb0-ef9c91a333ae",
+          "historicalName": "Ponte di San Domenego",
+          "englishName": "Bridge of Saint Dominic",
+          "historicalDescription": "Named after the Church of San Domenego in Castello, this bridge would have been a central crossing point in the area, connecting the community to the church that served as both a spiritual and social center.",
+          "location": {
+            "midpoint": {
+              "lat": 45.43026767269404,
+              "lng": 12.354865897307434
+            }
+          }
+        },
+        "id": "bridge_45.430304_12.354764"
+      },
+      {
+        "edge": {
+          "lat": 45.43038709264488,
+          "lng": 12.35583729934666
+        },
+        "connection": {
+          "targetPolygonId": "polygon-1746057372815",
+          "targetPointIndex": 1,
+          "targetPoint": {
+            "lat": 45.43029130835473,
+            "lng": 12.355857872267109
+          },
+          "distance": 10.771037613790568,
+          "id": "a0fe2507-ad11-4c67-acb0-ef9c91a333ae",
+          "historicalName": "Ponte dei Domenicani",
+          "englishName": "Bridge of the Dominicans",
+          "historicalDescription": "This bridge references the Dominican friars who had a significant presence in the Castello district during the Renaissance period, likely near their monastery connected to the Church of San Domenego.",
+          "location": {
+            "midpoint": {
+              "lat": 45.4303392004998,
+              "lng": 12.355847585806885
+            }
+          }
+        },
+        "id": "bridge_45.430387_12.355837"
+      },
+      {
+        "edge": {
+          "lat": 45.430557252015575,
+          "lng": 12.356526090621685
+        },
+        "connection": {
+          "targetPolygonId": "polygon-1746057372815",
+          "targetPointIndex": 2,
+          "targetPoint": {
+            "lat": 45.430458456361116,
+            "lng": 12.35651018549953
+          },
+          "distance": 11.05546413090909,
+          "id": "a0fe2507-ad11-4c67-acb0-ef9c91a333ae",
+          "historicalName": "Ponte dell'Arsenale Vecchio",
+          "englishName": "Bridge of the Old Arsenal",
+          "historicalDescription": "Located near the ancient Venetian Arsenal in Castello, this bridge would have been used by workers and officials of Venice's famed shipbuilding complex, which was the largest industrial center in Europe during the Renaissance.",
+          "location": {
+            "midpoint": {
+              "lat": 45.43050785418835,
+              "lng": 12.356518138060608
+            }
+          }
+        },
+        "id": "bridge_45.430557_12.356526"
+      },
+      {
+        "edge": {
+          "lat": 45.43072741138628,
+          "lng": 12.35721488189671
+        },
+        "connection": {
+          "targetPolygonId": "polygon-1746057372815",
+          "targetPointIndex": 3,
+          "targetPoint": {
+            "lat": 45.4306256043675,
+            "lng": 12.357162498731952
+          },
+          "distance": 12.035813013887841,
+          "id": "a0fe2507-ad11-4c67-acb0-ef9c91a333ae",
+          "historicalName": "Ponte dei Balestrieri",
+          "englishName": "Bridge of the Crossbowmen",
+          "historicalDescription": "Named for the crossbowmen who practiced or resided in this area of Castello, which was known for housing various military personnel who served the Venetian Republic's defense forces.",
+          "location": {
+            "midpoint": {
+              "lat": 45.43067650787689,
+              "lng": 12.35718869031433
+            }
+          }
+        },
+        "id": "bridge_45.430727_12.357215"
+      },
+      {
+        "edge": {
+          "lat": 45.430897570756976,
+          "lng": 12.357903673171734
+        },
+        "connection": {
+          "targetPolygonId": "polygon-1746057372815",
+          "targetPointIndex": 4,
+          "targetPoint": {
+            "lat": 45.43079275237388,
+            "lng": 12.357814811964374
+          },
+          "distance": 13.561986726404566,
+          "id": "a0fe2507-ad11-4c67-acb0-ef9c91a333ae",
+          "historicalName": "Ponte della Celestia",
+          "englishName": "Bridge of the Celestia",
+          "historicalDescription": "Named after the nearby monastery of La Celestia in Castello, this bridge would have connected the religious complex to surrounding neighborhoods, facilitating movement for both the nuns and local residents.",
+          "location": {
+            "midpoint": {
+              "lat": 45.43084516156543,
+              "lng": 12.357859242568054
+            }
+          }
+        },
+        "id": "bridge_45.430898_12.357904"
+      },
+      {
+        "edge": {
+          "lat": 45.43106773012768,
+          "lng": 12.358592464446758
+        },
+        "connection": {
+          "targetPolygonId": "polygon-1746057372815",
+          "targetPointIndex": 5,
+          "targetPoint": {
+            "lat": 45.430959900380266,
+            "lng": 12.358467125196796
+          },
+          "distance": 15.473301646069027,
+          "id": "a0fe2507-ad11-4c67-acb0-ef9c91a333ae",
+          "historicalName": "Ponte dei Scudelleri",
+          "englishName": "Bridge of the Bowl-makers",
+          "historicalDescription": "Named for the artisans who crafted wooden bowls and dishes in workshops near Calle San Domenego, reflecting the common Venetian practice of naming bridges after local guilds and trades.",
+          "location": {
+            "midpoint": {
+              "lat": 45.431013815253976,
+              "lng": 12.358529794821777
+            }
+          }
+        },
+        "id": "bridge_45.431068_12.358592"
+      },
+      {
+        "edge": {
+          "lat": 45.43123788949838,
+          "lng": 12.359281255721783
+        },
+        "connection": {
+          "targetPolygonId": "polygon-1746057412398",
+          "targetPointIndex": 0,
+          "targetPoint": {
+            "lat": 45.43121405844507,
+            "lng": 12.35942838369913
+          },
+          "distance": 11.782636863242281,
+          "id": "61a1c9d7-fa07-4cf4-9234-942a27bfeb9c",
+          "historicalName": "Ponte dei Tagliapietra",
+          "englishName": "Bridge of the Stonemasons",
+          "historicalDescription": "Stonemasons were essential craftsmen in Venice, and this bridge in Castello would commemorate their guild, which would have been active in constructing and maintaining the district's buildings and public works.",
+          "location": {
+            "midpoint": {
+              "lat": 45.43122597397172,
+              "lng": 12.359354819710457
+            }
+          }
+        },
+        "id": "bridge_45.431238_12.359281"
+      },
+      {
+        "edge": {
+          "lat": 45.43306178905024,
+          "lng": 12.355142607211803
+        },
+        "connection": {
+          "targetPolygonId": "polygon-1746057275948",
+          "targetPointIndex": 5,
+          "targetPoint": {
+            "lat": 45.433174545730914,
+            "lng": 12.355164485825485
+          },
+          "distance": 12.653663908382114,
+          "id": "dd5656b4-af47-416b-a395-784f7d47eb3a",
+          "historicalName": "Ponte dei Loredan",
+          "englishName": "Bridge of the Loredan Family",
+          "historicalDescription": "Named after the noble Loredan family who owned property in this area of Castello. The Loredans produced several doges and military leaders who served the Venetian Republic during the Renaissance period.",
+          "location": {
+            "midpoint": {
+              "lat": 45.433118167390575,
+              "lng": 12.355153546518643
+            }
+          }
+        },
+        "id": "bridge_45.433062_12.355143"
+      },
+      {
+        "edge": {
+          "lat": 45.43310131561962,
+          "lng": 12.354490830421184
+        },
+        "connection": {
+          "targetPolygonId": "polygon-1746057275948",
+          "targetPointIndex": 6,
+          "targetPoint": {
+            "lat": 45.43322536549414,
+            "lng": 12.354499297989792
+          },
+          "distance": 13.809532114347792,
+          "id": "dd5656b4-af47-416b-a395-784f7d47eb3a",
+          "historicalName": "Ponte delle Vergini",
+          "englishName": "Bridge of the Virgins",
+          "historicalDescription": "Located near a convent in the San Domenego area of Castello, this bridge would have been named for the nuns (often referred to as 'virgins') who resided in the religious community and used this crossing.",
+          "location": {
+            "midpoint": {
+              "lat": 45.43316334055688,
+              "lng": 12.354495064205487
+            }
+          }
+        },
+        "id": "bridge_45.433101_12.354491"
+      },
+      {
+        "edge": {
+          "lat": 45.43314084218901,
+          "lng": 12.353839053630566
+        },
+        "connection": {
+          "targetPolygonId": "polygon-1746057275948",
+          "targetPointIndex": 7,
+          "targetPoint": {
+            "lat": 45.433276185257355,
+            "lng": 12.353834110154098
+          },
+          "distance": 15.054405268934175,
+          "id": "dd5656b4-af47-416b-a395-784f7d47eb3a",
+          "historicalName": "Ponte della Tana",
+          "englishName": "Bridge of the Ropewalk",
+          "historicalDescription": "The 'Tana' was Venice's rope-making facility near the Arsenal in Castello, producing essential cordage for the Republic's naval vessels. This bridge would have served workers traveling between the ropewalk and residential areas.",
+          "location": {
+            "midpoint": {
+              "lat": 45.43320851372319,
+              "lng": 12.353836581892331
+            }
+          }
+        },
+        "id": "bridge_45.433141_12.353839"
+      },
+      {
+        "edge": {
+          "lat": 45.43235971707215,
+          "lng": 12.35085911941502
+        },
+        "connection": {
+          "targetPolygonId": "polygon-1746057275948",
+          "targetPointIndex": 8,
+          "targetPoint": {
+            "lat": 45.432431065919076,
+            "lng": 12.350658374680465
+          },
+          "distance": 17.55886282925601,
+          "id": "dd5656b4-af47-416b-a395-784f7d47eb3a",
+          "historicalName": "Ponte dei Marinai",
+          "englishName": "Bridge of the Sailors",
+          "historicalDescription": "This bridge in Castello would honor the sailors who lived in this district close to the Arsenal and port facilities. Many maritime workers settled in this area to be near their place of employment in the Venetian fleet.",
+          "location": {
+            "midpoint": {
+              "lat": 45.43239539149562,
+              "lng": 12.350758747047742
+            }
+          }
+        },
+        "id": "bridge_45.432360_12.350859"
+      }
+    ],
+    "canalPoints": [
+      {
+        "edge": {
+          "lat": 45.43160358500959,
+          "lng": 12.351164124897284
+        },
+        "water": {
+          "lat": 45.43157620448984,
+          "lng": 12.350910806725103
+        },
+        "historicalName": "Fondamenta dei Domenicani",
+        "englishName": "Foundation of the Dominicans",
+        "historicalDescription": "Named after the Dominican friars who had a significant presence in the Castello district. Since Calle San Domenego refers to Saint Dominic, founder of the Dominican Order, this dock would serve the monastery or church associated with these friars in the area.",
+        "id": "canal_45.431604_12.351164"
+      },
+      {
+        "edge": {
+          "lat": 45.43135189614395,
+          "lng": 12.35171589360892
+        },
+        "water": {
+          "lat": 45.43129754421584,
+          "lng": 12.351471571103042
+        },
+        "historicalName": "Riva degli Arsenalotti Minori",
+        "englishName": "Landing of the Minor Arsenal Workers",
+        "historicalDescription": "This dock would be used by workers from the nearby Venetian Arsenal, which was the largest industrial complex in Europe during the Renaissance. The 'minori' designation indicates this was a secondary landing point for arsenal workers living in this part of Castello.",
+        "id": "canal_45.431352_12.351716"
+      },
+      {
+        "edge": {
+          "lat": 45.43110020727831,
+          "lng": 12.352267662320555
+        },
+        "water": {
+          "lat": 45.43101198489498,
+          "lng": 12.352044307433282
+        },
+        "historicalName": "Fondamenta dei Fabbri d'Ancora",
+        "englishName": "Foundation of the Anchor Smiths",
+        "historicalDescription": "Castello's proximity to the Arsenal meant many specialized craftsmen lived in the area. This dock would be named after anchor smiths who were vital to Venice's maritime power, crafting anchors for the Republic's naval and merchant fleets.",
+        "id": "canal_45.431100_12.352268"
+      },
+      {
+        "edge": {
+          "lat": 45.43084851841268,
+          "lng": 12.35281943103219
+        },
+        "water": {
+          "lat": 45.4307228677847,
+          "lng": 12.352636039005079
+        },
+        "historicalName": "Riva delle Bandiere",
+        "englishName": "Landing of the Flags",
+        "historicalDescription": "This dock likely served as a ceremonial landing where flags and standards of the Republic were displayed during processions or celebrations. The name reflects Venice's rich tradition of pageantry and public ceremony near San Domenego.",
+        "id": "canal_45.430849_12.352819"
+      },
+      {
+        "edge": {
+          "lat": 45.43059682954704,
+          "lng": 12.353371199743824
+        },
+        "water": {
+          "lat": 45.430439242806194,
+          "lng": 12.35324764820415
+        },
+        "historicalName": "Fondamenta dei Castellani Vecchi",
+        "englishName": "Foundation of the Old Castellani",
+        "historicalDescription": "Named after the original inhabitants of the Castello district, one of the oldest populated areas of Venice. The Castellani were also one of the two major factions in medieval Venice (opposing the Nicolotti), and this dock would mark territory traditionally associated with their faction.",
+        "id": "canal_45.430597_12.353371"
+      },
+      {
+        "edge": {
+          "lat": 45.4303451406814,
+          "lng": 12.35392296845546
+        },
+        "water": {
+          "lat": 45.4301696314107,
+          "lng": 12.353866909247547
+        },
+        "historicalName": "Riva di Santa Maria Formosa Piccola",
+        "englishName": "Landing of Little Santa Maria Formosa",
+        "historicalDescription": "Named for its proximity to the parish of Santa Maria Formosa, one of the important churches in this part of Venice. The 'piccola' designation indicates this was a smaller, secondary landing serving the parish residents in the San Domenego area.",
+        "id": "canal_45.430345_12.353923"
+      }
+    ],
+    "buildingPoints": [
+      {
+        "lat": 45.43059670062589,
+        "lng": 12.354476168818413,
+        "streetName": "Calle dei Greci",
+        "streetNameEnglish": "Street of the Greeks",
+        "streetDescription": "Named for the significant Greek community that settled in Castello, particularly near the Greek Orthodox Church of San Giorgio dei Greci. The Greek merchants established businesses and residences in this area during the Renaissance period.",
+        "id": "building_45.430597_12.354476"
+      },
+      {
+        "lat": 45.43055157088462,
+        "lng": 12.35501645766516,
+        "streetName": "Fondamenta dei Furlani",
+        "streetNameEnglish": "Foundation of the Friulians",
+        "streetDescription": "Named after immigrants from Friuli who settled in this part of Castello. They were known for their skills as stonemasons and builders, contributing significantly to Venice's architecture in the 15th and 16th centuries.",
+        "id": "building_45.430552_12.355016"
+      },
+      {
+        "lat": 45.43103428792021,
+        "lng": 12.353209369791317,
+        "streetName": "Rio Ter\u00e0 delle Muneghe",
+        "streetNameEnglish": "Filled Canal of the Nuns",
+        "streetDescription": "This was formerly a canal that was filled in (rio ter\u00e0). It references the Augustinian nuns ('muneghe' in Venetian dialect) who maintained a convent nearby in Castello during the Renaissance period.",
+        "id": "building_45.431034_12.353209"
+      },
+      {
+        "lat": 45.43097287938023,
+        "lng": 12.35390112537119,
+        "streetName": "Calle dei Albanesi",
+        "streetNameEnglish": "Street of the Albanians",
+        "streetDescription": "Named for Albanian immigrants who fled Ottoman expansion and settled in Venice during the 15th century. Many served in Venice's military forces and formed a distinct community in Castello near San Domenego.",
+        "id": "building_45.430973_12.353901"
+      },
+      {
+        "lat": 45.4309767055219,
+        "lng": 12.354557060141058,
+        "streetName": "Calle dei Balestrieri",
+        "streetNameEnglish": "Street of the Crossbowmen",
+        "streetDescription": "Named after the crossbowmen who served in Venice's military forces. Castello was home to many military personnel due to its proximity to the Arsenale, Venice's naval and military complex.",
+        "id": "building_45.430977_12.354557"
+      },
+      {
+        "lat": 45.431049286877105,
+        "lng": 12.3551396119868,
+        "streetName": "Sottoportego dei Preti",
+        "streetNameEnglish": "Passageway of the Priests",
+        "streetDescription": "A covered passageway named for the clerics associated with the nearby Church of San Domenego or other ecclesiastical establishments in this religious-rich area of Castello.",
+        "id": "building_45.431049_12.355140"
+      },
+      {
+        "lat": 45.431046968664845,
+        "lng": 12.355684938881309,
+        "streetName": "Calle del Forno",
+        "streetNameEnglish": "Street of the Bakery",
+        "streetDescription": "Named for a historic bakery that served the neighborhood. Bakeries were essential community fixtures in Renaissance Venice, providing bread for the local population of Castello.",
+        "id": "building_45.431047_12.355685"
+      },
+      {
+        "lat": 45.43102663351097,
+        "lng": 12.356438592795293,
+        "streetName": "Ruga dei Spezieri",
+        "streetNameEnglish": "Commercial Street of the Spice Merchants",
+        "streetDescription": "A commercial street where spice merchants conducted business. Venice's role as a trading empire meant spices from the East were important commodities, and merchants specializing in them would have shops in commercial areas of Castello.",
+        "id": "building_45.431027_12.356439"
+      },
+      {
+        "lat": 45.43100661345472,
+        "lng": 12.357033186004212,
+        "streetName": "Salizada dei Greci",
+        "streetNameEnglish": "Paved Road of the Greeks",
+        "streetDescription": "A wider, paved street ('salizada' indicates it was one of the first to be paved with stone) associated with the Greek community near San Giorgio dei Greci in Castello, reflecting their prosperous status and importance.",
+        "id": "building_45.431007_12.357033"
+      },
+      {
+        "lat": 45.43099575045194,
+        "lng": 12.35766098952343,
+        "streetName": "Calle della Piet\u00e0",
+        "streetNameEnglish": "Street of Mercy",
+        "streetDescription": "Named for its proximity to an institution of mercy or charity, possibly a branch of the famous Ospedale della Piet\u00e0, which cared for abandoned children. Such institutions were common in Renaissance Venice's parishes.",
+        "id": "building_45.430996_12.357661"
+      },
+      {
+        "lat": 45.4313863496098,
+        "lng": 12.352610464705092,
+        "streetName": "Fondamenta dell'Arsenale",
+        "streetNameEnglish": "Foundation of the Arsenal",
+        "streetDescription": "A street running alongside a canal near Venice's Arsenale, the massive shipyard and armory complex that powered Venice's naval dominance. The Arsenale was the largest industrial complex in Renaissance Europe and dominated the eastern part of Castello.",
+        "id": "building_45.431386_12.352610"
+      },
+      {
+        "lat": 45.43137078037898,
+        "lng": 12.353081036438631,
+        "streetName": "Calle dei Bombardieri",
+        "streetNameEnglish": "Street of the Bombardiers",
+        "streetDescription": "Named for artillery specialists who worked at the nearby Arsenale. These skilled military technicians lived in Castello due to its proximity to their workplace, where they manufactured and maintained Venice's artillery.",
+        "id": "building_45.431371_12.353081"
+      },
+      {
+        "lat": 45.431354087873274,
+        "lng": 12.353845678028454,
+        "streetName": "Corte Morosini",
+        "streetNameEnglish": "Morosini Court",
+        "streetDescription": "A small courtyard named after the Morosini family, one of Venice's most prominent nobili families who likely owned property in this part of Castello. The Morosini produced several doges and military leaders throughout Venetian history.",
+        "id": "building_45.431354_12.353846"
+      },
+      {
+        "lat": 45.431358218251304,
+        "lng": 12.354452718197173,
+        "streetName": "Rio Ter\u00e0 dei Scudi",
+        "streetNameEnglish": "Filled Canal of the Shields",
+        "streetDescription": "A former canal that was filled in and possibly named for shield makers or a location where military shields were produced or stored, fitting for an area near the Arsenale in Castello.",
+        "id": "building_45.431358_12.354453"
+      },
+      {
+        "lat": 45.43141989240065,
+        "lng": 12.355175058093451,
+        "streetName": "Calle dei Remeri",
+        "streetNameEnglish": "Street of the Oar Makers",
+        "streetDescription": "Named for craftsmen who produced oars for Venice's galleys and gondolas. These essential artisans would have had workshops near the Arsenale and waterways of Castello to supply Venice's maritime needs.",
+        "id": "building_45.431420_12.355175"
+      },
+      {
+        "lat": 45.431361035969495,
+        "lng": 12.355688183965418,
+        "streetName": "Sottoportego dei Marinai",
+        "streetNameEnglish": "Passageway of the Sailors",
+        "streetDescription": "A covered passageway frequented by or housing sailors who served on Venetian ships. Castello's proximity to the harbor made it a natural residence for maritime workers.",
+        "id": "building_45.431361_12.355688"
+      },
+      {
+        "lat": 45.43135561388751,
+        "lng": 12.356358404518637,
+        "streetName": "Calle dei Armeni",
+        "streetNameEnglish": "Street of the Armenians",
+        "streetDescription": "Named for Armenian merchants and craftsmen who formed a community in Venice. Armenians were important traders between East and West and maintained a presence near San Domenego in Castello.",
+        "id": "building_45.431356_12.356358"
+      },
+      {
+        "lat": 45.431498640539715,
+        "lng": 12.35706656756424,
+        "streetName": "Fondamenta San Domenego",
+        "streetNameEnglish": "Foundation of Saint Dominic",
+        "streetDescription": "A waterside street directly associated with the Church of San Domenego, the Dominican establishment that gave the entire area its name in the Castello district.",
+        "id": "building_45.431499_12.357067"
+      },
+      {
+        "lat": 45.43136177113627,
+        "lng": 12.357661002329447,
+        "streetName": "Calle dei Fabbri",
+        "streetNameEnglish": "Street of the Blacksmiths",
+        "streetDescription": "Named for blacksmiths who had their workshops here, possibly supplying metal components to the nearby Arsenale or serving the general needs of the Castello district.",
+        "id": "building_45.431362_12.357661"
+      },
+      {
+        "lat": 45.431358891461706,
+        "lng": 12.358234462292774,
+        "streetName": "Rio Ter\u00e0 dei Saloni",
+        "streetNameEnglish": "Filled Canal of the Great Halls",
+        "streetDescription": "A filled-in canal named for large halls or assembly rooms that once existed nearby, possibly belonging to a guild, confraternity, or government function in the Castello district.",
+        "id": "building_45.431359_12.358234"
+      },
+      {
+        "lat": 45.4319591460577,
+        "lng": 12.351237182251444,
+        "streetName": "Calle della Madonna",
+        "streetNameEnglish": "Street of the Madonna",
+        "streetDescription": "Named for a street shrine with an image of the Virgin Mary, a common feature in Renaissance Venice where devotional images marked street corners and provided spiritual protection to neighborhoods.",
+        "id": "building_45.431959_12.351237"
+      },
+      {
+        "lat": 45.431949617798224,
+        "lng": 12.351983899149188,
+        "streetName": "Campiello dei Tagliapietra",
+        "streetNameEnglish": "Small Square of the Stonemasons",
+        "streetDescription": "A small square named for stonemasons who may have had workshops nearby. These craftsmen were essential to Venice's architectural development and would have been particularly active in institutional areas of Castello.",
+        "id": "building_45.431950_12.351984"
+      },
+      {
+        "lat": 45.431915586617244,
+        "lng": 12.352420553547242,
+        "streetName": "Calle dei Calafati",
+        "streetNameEnglish": "Street of the Caulkers",
+        "streetDescription": "Named for ship caulkers who sealed the hulls of vessels with pitch and oakum. These specialized workers were associated with the Arsenale and shipbuilding industry that dominated eastern Castello.",
+        "id": "building_45.431916_12.352421"
+      },
+      {
+        "lat": 45.431913939156324,
+        "lng": 12.35322856177219,
+        "streetName": "Ruga degli Orefici",
+        "streetNameEnglish": "Commercial Street of the Goldsmiths",
+        "streetDescription": "A commercial street where goldsmiths and jewelers had their shops. Even in the predominantly maritime and military district of Castello, luxury crafts found their place in the Renaissance Venetian economy.",
+        "id": "building_45.431914_12.353229"
+      },
+      {
+        "lat": 45.43189282650823,
+        "lng": 12.353698908174024,
+        "streetName": "Calle dei Sartori",
+        "streetNameEnglish": "Street of the Tailors",
+        "streetDescription": "Named for tailors who maintained shops in this area. Clothing production was an important craft in Renaissance Venice, with different specializations for various garments and social classes.",
+        "id": "building_45.431893_12.353699"
+      },
+      {
+        "lat": 45.43186251728359,
+        "lng": 12.354551008758031,
+        "streetName": "Fondamenta della Tana",
+        "streetNameEnglish": "Foundation of the Rope Factory",
+        "streetDescription": "Named after the Tana, Venice's rope-making factory, which produced the essential cordage for the Republic's maritime fleet. The Tana was part of the Arsenale complex in Castello and employed many local residents.",
+        "id": "building_45.431863_12.354551"
+      },
+      {
+        "lat": 45.43192338838483,
+        "lng": 12.355609683667021,
+        "streetName": "Salizada dei Consorti",
+        "streetNameEnglish": "Paved Road of the Consortium",
+        "streetDescription": "A paved street named for a business consortium or confraternity that operated in the area, possibly merchants who pooled resources for trading voyages or a charitable organization serving the Castello district.",
+        "id": "building_45.431923_12.355610"
+      },
+      {
+        "lat": 45.431928892962055,
+        "lng": 12.356358929934729,
+        "streetName": "Calle dei Forni",
+        "streetNameEnglish": "Street of the Ovens",
+        "streetDescription": "Named for multiple bakeries or industrial ovens used in the production of ship's biscuit, essential provisions for Venice's naval forces. The proximity to the Arsenale in Castello would make this a logical location for such production.",
+        "id": "building_45.431929_12.356359"
+      },
+      {
+        "lat": 45.43192984840071,
+        "lng": 12.35706519006806,
+        "streetName": "Rio Ter\u00e0 dei Pensieri",
+        "streetNameEnglish": "Filled Canal of Thoughts",
+        "streetDescription": "A whimsically named filled canal, possibly referring to a contemplative area near a religious institution in the San Domenego vicinity of Castello.",
+        "id": "building_45.431930_12.357065"
+      },
+      {
+        "lat": 45.4319602980946,
+        "lng": 12.357575901081232,
+        "streetName": "Calle dei Guardiani",
+        "streetNameEnglish": "Street of the Guardians",
+        "streetDescription": "Named for guards or watchmen who maintained security around important military or government installations in Castello, particularly near the strategically important Arsenale.",
+        "id": "building_45.431960_12.357576"
+      },
+      {
+        "lat": 45.43183253220948,
+        "lng": 12.358193029488891,
+        "streetName": "Sottoportego del Capitello",
+        "streetNameEnglish": "Passageway of the Small Shrine",
+        "streetDescription": "A covered passageway named for a street shrine or small religious monument that offered spiritual protection to passersby in this part of the San Domenego neighborhood.",
+        "id": "building_45.431833_12.358193"
+      },
+      {
+        "lat": 45.43233986473607,
+        "lng": 12.351276862538118,
+        "streetName": "Calle della Frezzeria",
+        "streetNameEnglish": "Street of the Arrow Makers",
+        "streetDescription": "Named for craftsmen who produced arrows for Venice's military forces. Like many military-related trades, arrow makers would logically establish workshops near the Arsenale in Castello.",
+        "id": "building_45.432340_12.351277"
+      },
+      {
+        "lat": 45.43228064421732,
+        "lng": 12.35201177093807,
+        "streetName": "Fondamenta dei Vetrai",
+        "streetNameEnglish": "Foundation of the Glassmakers",
+        "streetDescription": "Although most glassmaking was concentrated on Murano, this waterside street might have housed glassmakers or glass merchants operating in the Castello district near San Domenego.",
+        "id": "building_45.432281_12.352012"
+      },
+      {
+        "lat": 45.43239228050556,
+        "lng": 12.352428122160974,
+        "streetName": "Calle dei Scarpagnini",
+        "streetNameEnglish": "Street of the Shipwrights",
+        "streetDescription": "Named for shipbuilders who worked in or near the Arsenale. These skilled craftsmen were responsible for constructing Venice's formidable fleet and lived in the surrounding Castello neighborhoods.",
+        "id": "building_45.432392_12.352428"
+      },
+      {
+        "lat": 45.432300179471014,
+        "lng": 12.353080684897723,
+        "streetName": "Rio Ter\u00e0 della Celestia",
+        "streetNameEnglish": "Filled Canal of the Celestia",
+        "streetDescription": "Named for the nearby monastery of Santa Maria Celestia, a significant religious institution in the Castello district. The canal was filled in to create more urban space in this densely populated area.",
+        "id": "building_45.432300_12.353081"
+      },
+      {
+        "lat": 45.43238093402534,
+        "lng": 12.353697742697088,
+        "streetName": "Calle dei Forneri",
+        "streetNameEnglish": "Street of the Bakers",
+        "streetDescription": "Named for professional bakers who operated shops supplying bread to local residents and possibly ship's biscuit to the nearby Arsenale, making them essential to both civilian and military life in Castello.",
+        "id": "building_45.432381_12.353698"
+      },
+      {
+        "lat": 45.43238283610942,
+        "lng": 12.354364101172782,
+        "streetName": "Corte Pisani",
+        "streetNameEnglish": "Pisani Court",
+        "streetDescription": "A courtyard named after the Pisani family, a wealthy and influential nobili family who likely owned property in this area of Castello near San Domenego during the Renaissance period.",
+        "id": "building_45.432383_12.354364"
+      },
+      {
+        "lat": 45.432265416319815,
+        "lng": 12.35500206424637,
+        "streetName": "Calle dei Cordami",
+        "streetNameEnglish": "Street of the Ropes",
+        "streetDescription": "Named for rope storage or a secondary rope-making operation supplementing the Tana. Rope production was essential to Venice's maritime activities centered in Castello.",
+        "id": "building_45.432265_12.355002"
+      },
+      {
+        "lat": 45.43236983890352,
+        "lng": 12.355789697017965,
+        "streetName": "Salizada dei Provveditori",
+        "streetNameEnglish": "Paved Road of the Provisioners",
+        "streetDescription": "Named for the officials responsible for provisioning Venice's fleet and military forces. These government officials would have operated near the Arsenale in the Castello district.",
+        "id": "building_45.432370_12.355790"
+      },
+      {
+        "lat": 45.43236643557287,
+        "lng": 12.356475185414158,
+        "streetName": "Calle dei Filacanapa",
+        "streetNameEnglish": "Street of the Hemp Spinners",
+        "streetDescription": "Named for craftsmen who processed hemp into fibers for rope making, supporting the naval rope production at the nearby Tana in the Arsenale complex of Castello.",
+        "id": "building_45.432366_12.356475"
+      },
+      {
+        "lat": 45.432383747654974,
+        "lng": 12.356914440166467,
+        "streetName": "Rio Ter\u00e0 delle Galeazze",
+        "streetNameEnglish": "Filled Canal of the Great Galleys",
+        "streetDescription": "Named for the large war galleys that would have been constructed or moored nearby. This filled canal in Castello would have once connected to the waterways serving the Arsenale.",
+        "id": "building_45.432384_12.356914"
+      },
+      {
+        "lat": 45.43242872089863,
+        "lng": 12.357631002499497,
+        "streetName": "Fondamenta dei Pentolai",
+        "streetNameEnglish": "Foundation of the Pot Makers",
+        "streetDescription": "A waterside street named for craftsmen who produced cooking pots and other metal vessels, potentially supplying both domestic households and ship galleys with essential cooking equipment.",
+        "id": "building_45.432429_12.357631"
+      },
+      {
+        "lat": 45.432836501739935,
+        "lng": 12.353213896611695,
+        "streetName": "Calle dei Marangoni",
+        "streetNameEnglish": "Street of the Carpenters",
+        "streetDescription": "Named for the ship carpenters who were vital to Venice's shipbuilding industry. These skilled woodworkers would have been especially concentrated near the Arsenale in the Castello district.",
+        "id": "building_45.432837_12.353214"
+      },
+      {
+        "lat": 45.432834997986724,
+        "lng": 12.35380335735582,
+        "streetName": "Sottoportego dei Greci",
+        "streetNameEnglish": "Passageway of the Greeks",
+        "streetDescription": "A covered passageway associated with the Greek community that settled around San Giorgio dei Greci in Castello after being granted permission to establish their Orthodox church in the 16th century.",
+        "id": "building_45.432835_12.353803"
+      },
+      {
+        "lat": 45.432759960862064,
+        "lng": 12.354375221850102,
+        "streetName": "Calle dei Squeri",
+        "streetNameEnglish": "Street of the Boatyards",
+        "streetDescription": "Named for small private boatyards where gondolas and smaller vessels were built and repaired, complementing the massive state-run Arsenale nearby in Castello.",
+        "id": "building_45.432760_12.354375"
+      },
+      {
+        "lat": 45.432846275001985,
+        "lng": 12.35510015645289,
+        "streetName": "Rio Ter\u00e0 San Domenego",
+        "streetNameEnglish": "Filled Canal of Saint Dominic",
+        "streetDescription": "A former canal filled to create a street, named directly for the Church of San Domenego which formed the heart of this neighborhood in the Castello district.",
+        "id": "building_45.432846_12.355100"
+      }
+    ],
+    "historicalName": "Calle San Domenego en Sestier de Castello",
+    "englishName": "Saint Dominic Street in the Castello District",
+    "historicalDescription": "This area in the Castello sestiere was known for the Church of San Domenico, a Dominican church and monastery established in the 13th century. The nearby Rio di San Domenico canal was also named after this church.",
+    "nameConfidence": "high",
+    "areaInSquareMeters": 143199.9,
+    "imageSettings": {
+      "lat": 45.43158591740048,
+      "lng": 12.354818843165015,
+      "width": 826.3333351809724,
+      "height": 741.6666684217976,
+      "referenceScale": 4.000000022706533
+    }
+  }
+]
+
+Here are the existing buildings on this land:
+[
+  {
+    "id": "bridge_45.430557_12.356526",
+    "type": "bridge",
+    "owner": "ConsiglioDeiDieci",
+    "position": "{\"lat\": 45.430557, \"lng\": 12.356526}",
+    "notes": ""
+  },
+  {
+    "id": "building_45.431361_12.355688",
+    "type": "market_stall",
+    "owner": "StormRider",
+    "position": "{\"lat\": 45.431361035969495, \"lng\": 12.355688183965418}",
+    "notes": "{\"position\": {\"lat\": 45.431046968664845, \"lng\": 12.355684938881309}, \"runByAssignment\": {\"timestamp\": \"2025-05-29T04:38:28.468913Z\", \"assignedRunBy\": \"VenicePhotographer\", \"score\": 4510.045361811895, \"components\": {\"relationshipScoreWithOwner\": 0.0, \"influence\": 0.0, \"dailyIncome\": 7715.0, \"dailyTurnover\": 15435.99, \"distanceToHomeM\": 601.0, \"socialClassTier\": 2, \"isOwnerFactor\": 1, \"numBusinessesAlreadyRun_before_assign\": 9, \"baseScoreComponents\": 22550.23, \"numerator\": 45100.45, \"denominator\": 10}}}"
+  },
+  {
+    "id": "canal_45.430597_12.353371",
+    "type": "fisherman_s_cottage",
+    "owner": "rialto_sailor1",
+    "position": "{\"lat\": 45.43059682954704, \"lng\": 12.353371199743824}",
+    "notes": "{\"position\": {\"lat\": 45.43055157088462, \"lng\": 12.35501645766516}}"
+  },
+  {
+    "id": "building_45.431354_12.353846",
+    "type": "market_stall",
+    "owner": "trader4life",
+    "position": "{\"lat\": 45.431354, \"lng\": 12.353846}",
+    "notes": "{\"position\": {\"lat\": 45.431354087873274, \"lng\": 12.353845678028454}, \"WagesReasoning\": \"Market stall requires skilled worker for contract brokerage - must attract literate, trustworthy employee capable of negotiations and record-keeping. Current zero wages explain lack of workers and income.\", \"runByAssignment\": {\"timestamp\": \"2025-05-29T04:38:28.492913Z\", \"assignedRunBy\": \"trader4life\", \"score\": 7764.611389786527, \"components\": {\"relationshipScoreWithOwner\": 0.0, \"influence\": 0.0, \"dailyIncome\": 2160.0, \"dailyTurnover\": 627.17, \"distanceToHomeM\": 846.0, \"socialClassTier\": 2, \"isOwnerFactor\": 4, \"numBusinessesAlreadyRun_before_assign\": 1, \"baseScoreComponents\": 1941.15, \"numerator\": 15529.22, \"denominator\": 2}}}"
+  },
+  {
+    "id": "building_45.432265_12.355002",
+    "type": "bakery",
+    "owner": "MerchantLegend",
+    "position": "{\"lat\": 45.432265416319815, \"lng\": 12.35500206424637}",
+    "notes": "{\"previousNotes\": \"Building bakery constructed by AI MerchantLegend on polygon-1746057352428.\", \"runByAssignment\": {\"timestamp\": \"2025-05-29T04:38:28.435913Z\", \"assignedRunBy\": \"TechnoMedici\", \"score\": 5572.403844920407, \"components\": {\"relationshipScoreWithOwner\": 0.0, \"influence\": 0.0, \"dailyIncome\": 0.0, \"dailyTurnover\": 15025.0, \"distanceToHomeM\": 165.0, \"socialClassTier\": 3, \"isOwnerFactor\": 1, \"numBusinessesAlreadyRun_before_assign\": 7, \"baseScoreComponents\": 14859.74, \"numerator\": 44579.23, \"denominator\": 8}}}"
+  },
+  {
+    "id": "building_45.431959_12.351237",
+    "type": "nobili_palazzo",
+    "owner": "ConsiglioDeiDieci",
+    "position": "{\"lat\": 45.431959, \"lng\": 12.351237}",
+    "notes": "{\"position\": {\"lat\": 45.4319591460577, \"lng\": 12.351237182251444}}"
+  },
+  {
+    "id": "building_45.431362_12.357661",
+    "type": "artisan_s_house",
+    "owner": "ConsiglioDeiDieci",
+    "position": "{\"lat\": 45.43136177113627, \"lng\": 12.357661002329447}",
+    "notes": "Building artisan_s_house constructed by AI ConsiglioDeiDieci on polygon-1746057352428."
+  },
+  {
+    "id": "building_45.430597_12.354476",
+    "type": "market_stall",
+    "owner": "ZenithTrader",
+    "position": "{\"lat\": 45.43059670062589, \"lng\": 12.354476168818413}",
+    "notes": "{\"previousNotes\": \"Building market_stall constructed by AI ZenithTrader on polygon-1746057352428.\", \"runByAssignment\": {\"timestamp\": \"2025-05-29T04:38:28.438915Z\", \"assignedRunBy\": \"BarbarigoCadet\", \"score\": 5300.655287678735, \"components\": {\"relationshipScoreWithOwner\": 0.0, \"influence\": 0.0, \"dailyIncome\": 4115.0, \"dailyTurnover\": 17483.5, \"distanceToHomeM\": 396.0, \"socialClassTier\": 2, \"isOwnerFactor\": 1, \"numBusinessesAlreadyRun_before_assign\": 7, \"baseScoreComponents\": 21202.62, \"numerator\": 42405.24, \"denominator\": 8}}}"
+  },
+  {
+    "id": "building_45.431499_12.357067",
+    "type": "market_stall",
+    "owner": "Trade4Fun",
+    "position": "{\"lat\": 45.431499, \"lng\": 12.357067}",
+    "notes": "{\"position\": {\"lat\": 45.431498640539715, \"lng\": 12.35706656756424}, \"WagesReasoning\": \"Market stall is my most promising building with no rent costs and new sell contracts for food items. Setting competitive wages to attract workers immediately and resolve the zero wages problem.\", \"runByAssignment\": {\"timestamp\": \"2025-05-29T04:38:28.480913Z\", \"assignedRunBy\": \"Trade4Fun\", \"score\": 10121.251069612526, \"components\": {\"relationshipScoreWithOwner\": 0.0, \"influence\": 0.0, \"dailyIncome\": 720.0, \"dailyTurnover\": 4040.36, \"distanceToHomeM\": 965.0, \"socialClassTier\": 2, \"isOwnerFactor\": 4, \"numBusinessesAlreadyRun_before_assign\": 2, \"baseScoreComponents\": 3795.47, \"numerator\": 30363.75, \"denominator\": 3}}}"
+  },
+  {
+    "id": "canal_45.430345_12.353923",
+    "type": "public_dock",
+    "owner": "ConsiglioDeiDieci",
+    "position": "{\"lat\": 45.430345, \"lng\": 12.353923}",
+    "notes": "{\"runByAssignment\": {\"timestamp\": \"2025-05-29T04:38:28.331398Z\", \"assignedRunBy\": \"BarbarigoCadet\", \"score\": 21594.910487910034, \"components\": {\"relationshipScoreWithOwner\": 39.93, \"influence\": 0.0, \"dailyIncome\": 4115.0, \"dailyTurnover\": 17483.5, \"distanceToHomeM\": 403.0, \"socialClassTier\": 2, \"isOwnerFactor\": 1, \"numBusinessesAlreadyRun_before_assign\": 1, \"baseScoreComponents\": 21594.91, \"numerator\": 43189.82, \"denominator\": 2}}}"
+  },
+  {
+    "id": "building_45.431420_12.355175",
+    "type": "public_well",
+    "owner": "ConsiglioDeiDieci",
+    "position": "{\"lat\": 45.43142, \"lng\": 12.355175}",
+    "notes": ""
+  },
+  {
+    "id": "building_45.431049_12.355140",
+    "type": "market_stall",
+    "owner": "GamingPatrizio",
+    "position": "{\"lat\": 45.431049, \"lng\": 12.35514}",
+    "notes": "{\"position\": {\"lat\": 45.431049286877105, \"lng\": 12.3551396119868}, \"runByAssignment\": {\"timestamp\": \"2025-05-29T04:38:28.442913Z\", \"assignedRunBy\": \"GamingPatrizio\", \"score\": 7576.524403628715, \"components\": {\"relationshipScoreWithOwner\": 0.0, \"influence\": 0.0, \"dailyIncome\": 0.0, \"dailyTurnover\": 2160.0, \"distanceToHomeM\": 266.0, \"socialClassTier\": 3, \"isOwnerFactor\": 4, \"numBusinessesAlreadyRun_before_assign\": 2, \"baseScoreComponents\": 1894.13, \"numerator\": 22729.57, \"denominator\": 3}}}"
+  },
+  {
+    "id": "building_45.431863_12.354551",
+    "type": "market_stall",
+    "owner": "DesertRanger",
+    "position": "{\"lat\": 45.431863, \"lng\": 12.354551}",
+    "notes": "{\"position\": {\"lat\": 45.43186251728359, \"lng\": 12.354551008758031}, \"WagesReasoning\": \"Establishing competitive wages to attract reliable workers and signal serious business operations\", \"runByAssignment\": {\"timestamp\": \"2025-05-29T04:38:28.508919Z\", \"assignedRunBy\": \"PixelDoge\", \"score\": 3085.3977600734233, \"components\": {\"relationshipScoreWithOwner\": 108.65, \"influence\": 0.0, \"dailyIncome\": 665.0, \"dailyTurnover\": 961.8, \"distanceToHomeM\": 1171.0, \"socialClassTier\": 2, \"isOwnerFactor\": 1, \"numBusinessesAlreadyRun_before_assign\": 0, \"baseScoreComponents\": 1542.7, \"numerator\": 3085.4, \"denominator\": 1}}}"
+  },
+  {
+    "id": "building_45.431930_12.357065",
+    "type": "artisan_s_house",
+    "owner": "TechnoMedici",
+    "position": "{\"lat\": 45.43192984840071, \"lng\": 12.35706519006806}",
+    "notes": "{\"position\": {\"lat\": 45.431498640539715, \"lng\": 12.35706656756424}}"
+  },
+  {
+    "id": "building_45.431950_12.351984",
+    "type": "merchant_s_house",
+    "owner": "GamingPatrizio",
+    "position": "{\"lat\": 45.43195, \"lng\": 12.351984}",
+    "notes": "{\"position\": {\"lat\": 45.431949617798224, \"lng\": 12.351983899149188}, \"WagesReasoning\": \"Setting competitive wage for market stall to attract reliable workers for basic commerce operations\"}"
+  },
+  {
+    "id": "building_45.430977_12.354557",
+    "type": "market_stall",
+    "owner": "ProSilkTrader",
+    "position": "{\"lat\": 45.430977, \"lng\": 12.354557}",
+    "notes": "{\"position\": {\"lat\": 45.4309767055219, \"lng\": 12.354557060141058}, \"WagesReasoning\": \"Establishing attractive wage for San Polo market stall to draw quality employees. Consistent 60 ducat rate across both locations ensures fair treatment and helps build positive reputation as employer.\", \"runByAssignment\": {\"timestamp\": \"2025-05-29T04:38:28.453919Z\", \"assignedRunBy\": \"TechnoMedici\", \"score\": 4934.147273815609, \"components\": {\"relationshipScoreWithOwner\": 0.0, \"influence\": 0.0, \"dailyIncome\": 0.0, \"dailyTurnover\": 15025.0, \"distanceToHomeM\": 223.0, \"socialClassTier\": 3, \"isOwnerFactor\": 1, \"numBusinessesAlreadyRun_before_assign\": 8, \"baseScoreComponents\": 14802.44, \"numerator\": 44407.33, \"denominator\": 9}}}"
+  },
+  {
+    "id": "building_45.431916_12.352421",
+    "type": "artisan_s_house",
+    "owner": "cyprus_trader",
+    "position": "{\"lat\": 45.431915586617244, \"lng\": 12.352420553547242}",
+    "notes": "{\"position\": {\"lat\": 45.431949617798224, \"lng\": 12.351983899149188}}"
+  },
+  {
+    "id": "building_45.432281_12.352012",
+    "type": "market_stall",
+    "owner": "SilkRoadRunner",
+    "position": "{\"lat\": 45.43228064421732, \"lng\": 12.35201177093807}",
+    "notes": "{\"position\": {\"lat\": 45.431949617798224, \"lng\": 12.351983899149188}, \"runByAssignment\": {\"timestamp\": \"2025-05-29T04:38:28.411405Z\", \"assignedRunBy\": \"SilkRoadRunner\", \"score\": 13203.071090338204, \"components\": {\"relationshipScoreWithOwner\": 0.0, \"influence\": 0.0, \"dailyIncome\": 0.0, \"dailyTurnover\": 8057.97, \"distanceToHomeM\": 1456.0, \"socialClassTier\": 3, \"isOwnerFactor\": 4, \"numBusinessesAlreadyRun_before_assign\": 5, \"baseScoreComponents\": 6601.54, \"numerator\": 79218.43, \"denominator\": 6}}}"
+  },
+  {
+    "id": "building_45.431914_12.353229",
+    "type": "market_stall",
+    "owner": "ligurian_captain",
+    "position": "{\"lat\": 45.431914, \"lng\": 12.353229}",
+    "notes": "{\"position\": {\"lat\": 45.431913939156324, \"lng\": 12.35322856177219}, \"runByAssignment\": {\"timestamp\": \"2025-05-29T04:38:28.459913Z\", \"assignedRunBy\": \"DragonSlayer\", \"score\": 4733.8013526893465, \"components\": {\"relationshipScoreWithOwner\": 0.0, \"influence\": 0.0, \"dailyIncome\": 2160.0, \"dailyTurnover\": 836.61, \"distanceToHomeM\": 630.0, \"socialClassTier\": 2, \"isOwnerFactor\": 1, \"numBusinessesAlreadyRun_before_assign\": 0, \"baseScoreComponents\": 2366.9, \"numerator\": 4733.8, \"denominator\": 1}}}"
+  },
+  {
+    "id": "building_45.431034_12.353209",
+    "type": "market_stall",
+    "owner": "TravelBug23",
+    "position": "{\"lat\": 45.43103428792021, \"lng\": 12.353209369791317}",
+    "notes": "{\"previousNotes\": \"Building market_stall constructed by AI TravelBug23 on polygon-1746057352428.\", \"runByAssignment\": {\"timestamp\": \"2025-05-29T04:38:28.461913Z\", \"assignedRunBy\": \"TravelBug23\", \"score\": 10116.722885335636, \"components\": {\"relationshipScoreWithOwner\": 0.0, \"influence\": 0.0, \"dailyIncome\": 720.0, \"dailyTurnover\": 7020.0, \"distanceToHomeM\": 2682.0, \"socialClassTier\": 2, \"isOwnerFactor\": 4, \"numBusinessesAlreadyRun_before_assign\": 3, \"baseScoreComponents\": 5058.36, \"numerator\": 40466.89, \"denominator\": 4}}}"
+  },
+  {
+    "id": "building_45.431358_12.354453",
+    "type": "market_stall",
+    "owner": "ShippingMogul",
+    "position": "{\"lat\": 45.431358, \"lng\": 12.354453}",
+    "notes": "{\"position\": {\"lat\": 45.431358218251304, \"lng\": 12.354452718197173}, \"runByAssignment\": {\"timestamp\": \"2025-05-29T04:38:28.464915Z\", \"assignedRunBy\": \"Zorzi77\", \"score\": 6432.4198425937275, \"components\": {\"relationshipScoreWithOwner\": 123.05, \"influence\": 0.0, \"dailyIncome\": 2160.0, \"dailyTurnover\": 76.07, \"distanceToHomeM\": 250.0, \"socialClassTier\": 2, \"isOwnerFactor\": 1, \"numBusinessesAlreadyRun_before_assign\": 0, \"baseScoreComponents\": 3216.21, \"numerator\": 6432.42, \"denominator\": 1}}}"
+  },
+  {
+    "id": "building_45.432760_12.354375",
+    "type": "artisan_s_house",
+    "owner": "Italia",
+    "position": "{\"lat\": 45.43276, \"lng\": 12.354375}",
+    "notes": "{\"position\": {\"lat\": 45.432759960862064, \"lng\": 12.354375221850102}}"
+  },
+  {
+    "id": "building_45.431047_12.355685",
+    "type": "bakery",
+    "owner": "Debug42",
+    "position": "{\"lat\": 45.431047, \"lng\": 12.355685}",
+    "notes": "{\"position\": {\"lat\": 45.431046968664845, \"lng\": 12.355684938881309}, \"WagesReasoning\": \"Bakery requires specialized baking skills and early morning work. Premium wage reflects craft expertise needed for bread and spiced wine production.\", \"runByAssignment\": {\"timestamp\": \"2025-05-29T04:38:28.466913Z\", \"assignedRunBy\": \"Zorzi77\", \"score\": 8311.81812700714, \"components\": {\"relationshipScoreWithOwner\": 0.0, \"influence\": 0.0, \"dailyIncome\": 2160.0, \"dailyTurnover\": 76.07, \"distanceToHomeM\": 158.0, \"socialClassTier\": 2, \"isOwnerFactor\": 4, \"numBusinessesAlreadyRun_before_assign\": 1, \"baseScoreComponents\": 2077.95, \"numerator\": 16623.64, \"denominator\": 2}}}"
+  }
+]
+
+Here are the available building points for this land (for 'building' type buildings, using mapped key 'land'):
+[
+  {
+    "lat": 45.43055157088462,
+    "lng": 12.35501645766516,
+    "polygon_id": "polygon-1746057352428",
+    "point_type": "land",
+    "id": "building_45.430552_12.355016"
+  },
+  {
+    "lat": 45.43097287938023,
+    "lng": 12.35390112537119,
+    "polygon_id": "polygon-1746057352428",
+    "point_type": "land",
+    "id": "building_45.430973_12.353901"
+  },
+  {
+    "lat": 45.43102663351097,
+    "lng": 12.356438592795293,
+    "polygon_id": "polygon-1746057352428",
+    "point_type": "land",
+    "id": "building_45.431027_12.356439"
+  },
+  {
+    "lat": 45.43100661345472,
+    "lng": 12.357033186004212,
+    "polygon_id": "polygon-1746057352428",
+    "point_type": "land",
+    "id": "building_45.431007_12.357033"
+  },
+  {
+    "lat": 45.43099575045194,
+    "lng": 12.35766098952343,
+    "polygon_id": "polygon-1746057352428",
+    "point_type": "land",
+    "id": "building_45.430996_12.357661"
+  },
+  {
+    "lat": 45.4313863496098,
+    "lng": 12.352610464705092,
+    "polygon_id": "polygon-1746057352428",
+    "point_type": "land",
+    "id": "building_45.431386_12.352610"
+  },
+  {
+    "lat": 45.43137078037898,
+    "lng": 12.353081036438631,
+    "polygon_id": "polygon-1746057352428",
+    "point_type": "land",
+    "id": "building_45.431371_12.353081"
+  },
+  {
+    "lat": 45.43135561388751,
+    "lng": 12.356358404518637,
+    "polygon_id": "polygon-1746057352428",
+    "point_type": "land",
+    "id": "building_45.431356_12.356358"
+  },
+  {
+    "lat": 45.431358891461706,
+    "lng": 12.358234462292774,
+    "polygon_id": "polygon-1746057352428",
+    "point_type": "land",
+    "id": "building_45.431359_12.358234"
+  },
+  {
+    "lat": 45.43189282650823,
+    "lng": 12.353698908174024,
+    "polygon_id": "polygon-1746057352428",
+    "point_type": "land",
+    "id": "building_45.431893_12.353699"
+  },
+  {
+    "lat": 45.43192338838483,
+    "lng": 12.355609683667021,
+    "polygon_id": "polygon-1746057352428",
+    "point_type": "land",
+    "id": "building_45.431923_12.355610"
+  },
+  {
+    "lat": 45.431928892962055,
+    "lng": 12.356358929934729,
+    "polygon_id": "polygon-1746057352428",
+    "point_type": "land",
+    "id": "building_45.431929_12.356359"
+  },
+  {
+    "lat": 45.4319602980946,
+    "lng": 12.357575901081232,
+    "polygon_id": "polygon-1746057352428",
+    "point_type": "land",
+    "id": "building_45.431960_12.357576"
+  },
+  {
+    "lat": 45.43183253220948,
+    "lng": 12.358193029488891,
+    "polygon_id": "polygon-1746057352428",
+    "point_type": "land",
+    "id": "building_45.431833_12.358193"
+  },
+  {
+    "lat": 45.43233986473607,
+    "lng": 12.351276862538118,
+    "polygon_id": "polygon-1746057352428",
+    "point_type": "land",
+    "id": "building_45.432340_12.351277"
+  },
+  {
+    "lat": 45.43239228050556,
+    "lng": 12.352428122160974,
+    "polygon_id": "polygon-1746057352428",
+    "point_type": "land",
+    "id": "building_45.432392_12.352428"
+  },
+  {
+    "lat": 45.432300179471014,
+    "lng": 12.353080684897723,
+    "polygon_id": "polygon-1746057352428",
+    "point_type": "land",
+    "id": "building_45.432300_12.353081"
+  },
+  {
+    "lat": 45.43238093402534,
+    "lng": 12.353697742697088,
+    "polygon_id": "polygon-1746057352428",
+    "point_type": "land",
+    "id": "building_45.432381_12.353698"
+  },
+  {
+    "lat": 45.43238283610942,
+    "lng": 12.354364101172782,
+    "polygon_id": "polygon-1746057352428",
+    "point_type": "land",
+    "id": "building_45.432383_12.354364"
+  },
+  {
+    "lat": 45.43236983890352,
+    "lng": 12.355789697017965,
+    "polygon_id": "polygon-1746057352428",
+    "point_type": "land",
+    "id": "building_45.432370_12.355790"
+  },
+  {
+    "lat": 45.43236643557287,
+    "lng": 12.356475185414158,
+    "polygon_id": "polygon-1746057352428",
+    "point_type": "land",
+    "id": "building_45.432366_12.356475"
+  },
+  {
+    "lat": 45.432383747654974,
+    "lng": 12.356914440166467,
+    "polygon_id": "polygon-1746057352428",
+    "point_type": "land",
+    "id": "building_45.432384_12.356914"
+  },
+  {
+    "lat": 45.43242872089863,
+    "lng": 12.357631002499497,
+    "polygon_id": "polygon-1746057352428",
+    "point_type": "land",
+    "id": "building_45.432429_12.357631"
+  },
+  {
+    "lat": 45.432836501739935,
+    "lng": 12.353213896611695,
+    "polygon_id": "polygon-1746057352428",
+    "point_type": "land",
+    "id": "building_45.432837_12.353214"
+  },
+  {
+    "lat": 45.432834997986724,
+    "lng": 12.35380335735582,
+    "polygon_id": "polygon-1746057352428",
+    "point_type": "land",
+    "id": "building_45.432835_12.353803"
+  },
+  {
+    "lat": 45.432846275001985,
+    "lng": 12.35510015645289,
+    "polygon_id": "polygon-1746057352428",
+    "point_type": "land",
+    "id": "building_45.432846_12.355100"
+  }
+]
+
+
+
+Here are your recent notifications:
+[
+  {
+    "notificationId": "recOun7ZCubmqu5BI",
+    "type": "markup_buy_contract_updated",
+    "citizen": "GamingPatrizio",
+    "content": "Your buy order for meat (markup_buy_main_building_45.429640_12.360838_meat) has been updated.",
+    "details": {
+      "contractId": "markup_buy_main_building_45.429640_12.360838_meat"
+    },
+    "createdAt": "2025-06-14T15:23:46.195Z",
+    "readAt": "2025-06-14T15:23:46.495Z"
+  },
+  {
+    "notificationId": "recoSB9QEbLqB2JIA",
+    "type": "markup_buy_contract_updated",
+    "citizen": "GamingPatrizio",
+    "content": "Your buy order for vegetables (markup_buy_main_building_45.429640_12.360838_vegetables) has been updated.",
+    "details": {
+      "contractId": "markup_buy_main_building_45.429640_12.360838_vegetables"
+    },
+    "createdAt": "2025-06-14T13:04:29.188Z",
+    "readAt": "2025-06-14T13:04:29.628Z"
+  },
+  {
+    "notificationId": "recuXauDl7rFv526c",
+    "type": "markup_buy_contract_updated",
+    "citizen": "GamingPatrizio",
+    "content": "Your buy order for fish (markup_buy_main_building_45.429640_12.360838_fish) has been updated.",
+    "details": {
+      "contractId": "markup_buy_main_building_45.429640_12.360838_fish"
+    },
+    "createdAt": "2025-06-14T12:54:01.996Z",
+    "readAt": "2025-06-14T12:54:02.246Z"
+  },
+  {
+    "notificationId": "recyuexEVoY2NJrOc",
+    "type": "markup_buy_contract_updated",
+    "citizen": "GamingPatrizio",
+    "content": "Your buy order for preserved_fish (markup_buy_main_building_45.429640_12.360838_preserved_fish) has been updated.",
+    "details": {
+      "contractId": "markup_buy_main_building_45.429640_12.360838_preserved_fish"
+    },
+    "createdAt": "2025-06-14T12:49:05.075Z",
+    "readAt": "2025-06-14T12:49:05.341Z"
+  },
+  {
+    "notificationId": "recVxVBmM0k6yjLHD",
+    "type": "markup_buy_contract_updated",
+    "citizen": "GamingPatrizio",
+    "content": "Your buy order for olives (markup_buy_main_building_45.429640_12.360838_olives) has been updated.",
+    "details": {
+      "contractId": "markup_buy_main_building_45.429640_12.360838_olives"
+    },
+    "createdAt": "2025-06-14T12:39:00.861Z",
+    "readAt": "2025-06-14T12:39:01.247Z"
+  },
+  {
+    "notificationId": "recbR9qzOdBmmc30B",
+    "type": "markup_buy_contract_updated",
+    "citizen": "GamingPatrizio",
+    "content": "Your buy order for olive_oil (markup_buy_main_building_45.429640_12.360838_olive_oil) has been updated.",
+    "details": {
+      "contractId": "markup_buy_main_building_45.429640_12.360838_olive_oil"
+    },
+    "createdAt": "2025-06-14T12:24:04.603Z",
+    "readAt": "2025-06-14T12:24:04.828Z"
+  },
+  {
+    "notificationId": "recu1TWjLXZ6275bF",
+    "type": "markup_buy_contract_updated",
+    "citizen": "GamingPatrizio",
+    "content": "Your buy order for salt (markup_buy_main_building_45.429640_12.360838_salt) has been updated.",
+    "details": {
+      "contractId": "markup_buy_main_building_45.429640_12.360838_salt"
+    },
+    "createdAt": "2025-06-14T12:03:52.151Z",
+    "readAt": "2025-06-14T12:03:52.717Z"
+  },
+  {
+    "notificationId": "rec9hjdG5jpZiCI3z",
+    "type": "markup_buy_contract_updated",
+    "citizen": "GamingPatrizio",
+    "content": "Your buy order for wine (markup_buy_main_building_45.429640_12.360838_wine) has been updated.",
+    "details": {
+      "contractId": "markup_buy_main_building_45.429640_12.360838_wine"
+    },
+    "createdAt": "2025-06-14T11:49:07.804Z",
+    "readAt": "2025-06-14T11:49:08.311Z"
+  },
+  {
+    "notificationId": "recZtGRq9UFeLbJto",
+    "type": "markup_buy_contract_updated",
+    "citizen": "GamingPatrizio",
+    "content": "Your buy order for wine (markup_buy_main_building_45.429640_12.360838_wine) has been updated.",
+    "details": {
+      "contractId": "markup_buy_main_building_45.429640_12.360838_wine"
+    },
+    "createdAt": "2025-06-14T11:49:01.393Z",
+    "readAt": "2025-06-14T11:49:01.759Z"
+  },
+  {
+    "notificationId": "reczemhmjfSbtzGnB",
+    "type": "markup_buy_contract_updated",
+    "citizen": "GamingPatrizio",
+    "content": "Your buy order for bread (markup_buy_main_building_45.429640_12.360838_bread) has been updated.",
+    "details": {
+      "contractId": "markup_buy_main_building_45.429640_12.360838_bread"
+    },
+    "createdAt": "2025-06-14T11:44:01.762Z",
+    "readAt": "2025-06-14T11:44:02.155Z"
+  },
+  {
+    "notificationId": "rec6tmZiZTHV27yXj",
+    "type": "markup_buy_contract_updated",
+    "citizen": "GamingPatrizio",
+    "content": "Your buy order for flour (markup_buy_main_building_45.429640_12.360838_flour) has been updated.",
+    "details": {
+      "contractId": "markup_buy_main_building_45.429640_12.360838_flour"
+    },
+    "createdAt": "2025-06-14T09:19:13.215Z",
+    "readAt": "2025-06-14T09:19:13.336Z"
+  },
+  {
+    "notificationId": "rec8oLLJd6X71NFOf",
+    "type": "markup_buy_contract_updated",
+    "citizen": "GamingPatrizio",
+    "content": "Your buy order for grain (markup_buy_main_building_45.429640_12.360838_grain) has been updated.",
+    "details": {
+      "contractId": "markup_buy_main_building_45.429640_12.360838_grain"
+    },
+    "createdAt": "2025-06-14T08:59:10.123Z",
+    "readAt": "2025-06-14T08:59:10.315Z"
+  },
+  {
+    "notificationId": "recPCfiZ0Mt9w0kv1",
+    "type": "markup_buy_contract_updated",
+    "citizen": "GamingPatrizio",
+    "content": "Your buy order for wine (markup_buy_main_building_45.431049_12.355140_wine) has been updated.",
+    "details": {
+      "contractId": "markup_buy_main_building_45.431049_12.355140_wine"
+    },
+    "createdAt": "2025-06-14T08:48:59.562Z",
+    "readAt": "2025-06-14T08:48:59.702Z"
+  },
+  {
+    "notificationId": "recUze5zoTjlzAR2T",
+    "type": "markup_buy_contract_updated",
+    "citizen": "GamingPatrizio",
+    "content": "Your buy order for salt (markup_buy_main_building_45.431049_12.355140_salt) has been updated.",
+    "details": {
+      "contractId": "markup_buy_main_building_45.431049_12.355140_salt"
+    },
+    "createdAt": "2025-06-14T05:39:00.165Z",
+    "readAt": "2025-06-14T05:39:00.292Z"
+  },
+  {
+    "notificationId": "recrw2YzQNdQIfhqb",
+    "type": "markup_buy_contract_updated",
+    "citizen": "GamingPatrizio",
+    "content": "Your buy order for preserved_fish (markup_buy_main_building_45.431049_12.355140_preserved_fish) has been updated.",
+    "details": {
+      "contractId": "markup_buy_main_building_45.431049_12.355140_preserved_fish"
+    },
+    "createdAt": "2025-06-14T02:43:38.854Z",
+    "readAt": "2025-06-14T02:43:39.019Z"
+  },
+  {
+    "notificationId": "recGZGkCGiyWjdpsb",
+    "type": "markup_buy_contract_updated",
+    "citizen": "GamingPatrizio",
+    "content": "Your buy order for olives (markup_buy_main_building_45.431049_12.355140_olives) has been updated.",
+    "details": {
+      "contractId": "markup_buy_main_building_45.431049_12.355140_olives"
+    },
+    "createdAt": "2025-06-13T08:39:43.684Z",
+    "readAt": "2025-06-13T08:39:44.184Z"
+  },
+  {
+    "notificationId": "recZgksqYUMfDKsqL",
+    "type": "markup_buy_contract_updated",
+    "citizen": "GamingPatrizio",
+    "content": "Your buy order for olive_oil (markup_buy_main_building_45.431049_12.355140_olive_oil) has been updated.",
+    "details": {
+      "contractId": "markup_buy_main_building_45.431049_12.355140_olive_oil"
+    },
+    "createdAt": "2025-06-12T23:28:39.832Z",
+    "readAt": "2025-06-12T23:28:40.538Z"
+  },
+  {
+    "notificationId": "recxyznaztvNmPwpK",
+    "type": "markup_buy_contract_updated",
+    "citizen": "GamingPatrizio",
+    "content": "Your buy order for flour (markup_buy_main_building_45.431049_12.355140_flour) has been updated.",
+    "details": {
+      "contractId": "markup_buy_main_building_45.431049_12.355140_flour"
+    },
+    "createdAt": "2025-06-12T16:58:51.180Z",
+    "readAt": "2025-06-12T16:58:51.123Z"
+  },
+  {
+    "notificationId": "rec2LCbNLXv9RynPN",
+    "type": "markup_buy_contract_updated",
+    "citizen": "GamingPatrizio",
+    "content": "Your buy order for fish (markup_buy_main_building_45.431049_12.355140_fish) has been updated.",
+    "details": {
+      "contractId": "markup_buy_main_building_45.431049_12.355140_fish"
+    },
+    "createdAt": "2025-06-12T16:53:40.418Z",
+    "readAt": "2025-06-12T16:53:40.826Z"
+  },
+  {
+    "notificationId": "recqalAKAS93zcrLc",
+    "type": "markup_buy_contract_updated",
+    "citizen": "GamingPatrizio",
+    "content": "Your buy order for bread (markup_buy_main_building_45.431049_12.355140_bread) has been updated.",
+    "details": {
+      "contractId": "markup_buy_main_building_45.431049_12.355140_bread"
+    },
+    "createdAt": "2025-06-12T12:58:57.456Z",
+    "readAt": "2025-06-12T12:58:57.667Z"
+  },
+  {
+    "notificationId": "recvBNXs7S5brguIJ",
+    "type": "markup_buy_contract_updated",
+    "citizen": "GamingPatrizio",
+    "content": "Your buy order for rope (markup_buy_main_canal_45.438996_12.349170_rope) has been updated.",
+    "details": {
+      "contractId": "markup_buy_main_canal_45.438996_12.349170_rope"
+    },
+    "createdAt": "2025-06-12T12:48:38.819Z",
+    "readAt": "2025-06-12T12:48:38.817Z"
+  },
+  {
+    "notificationId": "rect4KPb4c7v6HJag",
+    "type": "markup_buy_contract_updated",
+    "citizen": "GamingPatrizio",
+    "content": "Your buy order for gondola (markup_buy_main_canal_45.438996_12.349170_gondola) has been updated.",
+    "details": {
+      "contractId": "markup_buy_main_canal_45.438996_12.349170_gondola"
+    },
+    "createdAt": "2025-06-12T00:18:42.799Z",
+    "readAt": "2025-06-12T00:19:04.195Z"
+  },
+  {
+    "notificationId": "recscqP7Big6nT8Ca",
+    "type": "markup_buy_contract_updated",
+    "citizen": "GamingPatrizio",
+    "content": "Your buy order for porter_equipment (markup_buy_main_canal_45.438996_12.349170_porter_equipment) has been updated.",
+    "details": {
+      "contractId": "markup_buy_main_canal_45.438996_12.349170_porter_equipment"
+    },
+    "createdAt": "2025-06-12T00:09:22.304Z",
+    "readAt": "2025-06-12T00:09:44.113Z"
+  },
+  {
+    "notificationId": "recjndE0iO9THTu4f",
+    "type": "markup_buy_contract_updated",
+    "citizen": "GamingPatrizio",
+    "content": "Your buy order for small_boats (markup_buy_main_canal_45.438996_12.349170_small_boats) has been updated.",
+    "details": {
+      "contractId": "markup_buy_main_canal_45.438996_12.349170_small_boats"
+    },
+    "createdAt": "2025-06-11T23:39:19.281Z",
+    "readAt": "2025-06-11T23:39:40.504Z"
+  },
+  {
+    "notificationId": "recihlvB2hCtpXXcn",
+    "type": "markup_buy_contract_updated",
+    "citizen": "GamingPatrizio",
+    "content": "Your buy order for olives (markup_buy_main_building_45.431049_12.355140_olives) has been updated.",
+    "details": {
+      "contractId": "markup_buy_main_building_45.431049_12.355140_olives"
+    },
+    "createdAt": "2025-06-10T13:01:37.890Z",
+    "readAt": "2025-06-10T13:01:38.210Z"
+  },
+  {
+    "notificationId": "recCfmtfqV4Vruiwy",
+    "type": "markup_buy_contract_updated",
+    "citizen": "GamingPatrizio",
+    "content": "Your buy order for olive_oil (markup_buy_main_building_45.431049_12.355140_olive_oil) has been updated.",
+    "details": {
+      "contractId": "markup_buy_main_building_45.431049_12.355140_olive_oil"
+    },
+    "createdAt": "2025-06-10T13:01:22.208Z",
+    "readAt": "2025-06-10T13:01:22.547Z"
+  },
+  {
+    "notificationId": "recQy9HfUQzPJz9Ae",
+    "type": "markup_buy_contract_updated",
+    "citizen": "GamingPatrizio",
+    "content": "Your buy order for flour (markup_buy_main_building_45.431049_12.355140_flour) has been updated.",
+    "details": {
+      "contractId": "markup_buy_main_building_45.431049_12.355140_flour"
+    },
+    "createdAt": "2025-06-10T12:48:03.697Z",
+    "readAt": "2025-06-10T12:48:04.005Z"
+  },
+  {
+    "notificationId": "rechnXSRbCeBkKKKc",
+    "type": "markup_buy_contract_updated",
+    "citizen": "GamingPatrizio",
+    "content": "Your buy order for bread (markup_buy_main_building_45.431049_12.355140_bread) has been updated.",
+    "details": {
+      "contractId": "markup_buy_main_building_45.431049_12.355140_bread"
+    },
+    "createdAt": "2025-06-10T12:46:33.305Z",
+    "readAt": "2025-06-10T12:46:33.820Z"
+  },
+  {
+    "notificationId": "recZJKF181xFQ355r",
+    "type": "markup_buy_contract_created",
+    "citizen": "GamingPatrizio",
+    "content": "Your buy order for meat (markup_buy_main_building_45.429640_12.360838_meat) has been placed.",
+    "details": {
+      "contractId": "markup_buy_main_building_45.429640_12.360838_meat"
+    },
+    "createdAt": "2025-06-10T03:11:55.085Z",
+    "readAt": "2025-06-10T03:11:56.900Z"
+  },
+  {
+    "notificationId": "recTWltnbfdTjjwo9",
+    "type": "markup_buy_contract_created",
+    "citizen": "GamingPatrizio",
+    "content": "Your buy order for vegetables (markup_buy_main_building_45.429640_12.360838_vegetables) has been placed.",
+    "details": {
+      "contractId": "markup_buy_main_building_45.429640_12.360838_vegetables"
+    },
+    "createdAt": "2025-06-10T03:11:53.682Z",
+    "readAt": "2025-06-10T03:11:55.638Z"
+  },
+  {
+    "notificationId": "recLlF1YHxtBBL9Ab",
+    "type": "markup_buy_contract_created",
+    "citizen": "GamingPatrizio",
+    "content": "Your buy order for preserved_fish (markup_buy_main_building_45.429640_12.360838_preserved_fish) has been placed.",
+    "details": {
+      "contractId": "markup_buy_main_building_45.429640_12.360838_preserved_fish"
+    },
+    "createdAt": "2025-06-10T03:11:52.618Z",
+    "readAt": "2025-06-10T03:11:53.864Z"
+  },
+  {
+    "notificationId": "recjCEJXwKGzcqcUN",
+    "type": "markup_buy_contract_created",
+    "citizen": "GamingPatrizio",
+    "content": "Your buy order for fish (markup_buy_main_building_45.429640_12.360838_fish) has been placed.",
+    "details": {
+      "contractId": "markup_buy_main_building_45.429640_12.360838_fish"
+    },
+    "createdAt": "2025-06-10T03:11:52.274Z",
+    "readAt": "2025-06-10T03:11:53.362Z"
+  },
+  {
+    "notificationId": "rec7gzmSCMUcRngaH",
+    "type": "markup_buy_contract_created",
+    "citizen": "GamingPatrizio",
+    "content": "Your buy order for olive_oil (markup_buy_main_building_45.429640_12.360838_olive_oil) has been placed.",
+    "details": {
+      "contractId": "markup_buy_main_building_45.429640_12.360838_olive_oil"
+    },
+    "createdAt": "2025-06-10T03:11:51.873Z",
+    "readAt": "2025-06-10T03:11:52.899Z"
+  },
+  {
+    "notificationId": "recWiRXk2EGBogOv0",
+    "type": "markup_buy_contract_created",
+    "citizen": "GamingPatrizio",
+    "content": "Your buy order for olives (markup_buy_main_building_45.429640_12.360838_olives) has been placed.",
+    "details": {
+      "contractId": "markup_buy_main_building_45.429640_12.360838_olives"
+    },
+    "createdAt": "2025-06-10T03:11:51.609Z",
+    "readAt": "2025-06-10T03:11:52.335Z"
+  },
+  {
+    "notificationId": "recBoXeCXruqFkjqY",
+    "type": "markup_buy_contract_created",
+    "citizen": "GamingPatrizio",
+    "content": "Your buy order for salt (markup_buy_main_building_45.429640_12.360838_salt) has been placed.",
+    "details": {
+      "contractId": "markup_buy_main_building_45.429640_12.360838_salt"
+    },
+    "createdAt": "2025-06-10T03:11:49.943Z",
+    "readAt": "2025-06-10T03:11:50.110Z"
+  },
+  {
+    "notificationId": "rec2KDvk8G9IV2lS8",
+    "type": "markup_buy_contract_created",
+    "citizen": "GamingPatrizio",
+    "content": "Your buy order for wine (markup_buy_main_building_45.429640_12.360838_wine) has been placed.",
+    "details": {
+      "contractId": "markup_buy_main_building_45.429640_12.360838_wine"
+    },
+    "createdAt": "2025-06-10T03:11:46.452Z",
+    "readAt": "2025-06-10T03:11:46.574Z"
+  },
+  {
+    "notificationId": "recOw6KQzqTuMIK2N",
+    "type": "markup_buy_contract_created",
+    "citizen": "GamingPatrizio",
+    "content": "Your buy order for grain (markup_buy_main_building_45.429640_12.360838_grain) has been placed.",
+    "details": {
+      "contractId": "markup_buy_main_building_45.429640_12.360838_grain"
+    },
+    "createdAt": "2025-06-10T03:11:44.160Z",
+    "readAt": "2025-06-10T03:11:45.498Z"
+  },
+  {
+    "notificationId": "recdhLRoARZOUpU6H",
+    "type": "markup_buy_contract_created",
+    "citizen": "GamingPatrizio",
+    "content": "Your buy order for flour (markup_buy_main_building_45.429640_12.360838_flour) has been placed.",
+    "details": {
+      "contractId": "markup_buy_main_building_45.429640_12.360838_flour"
+    },
+    "createdAt": "2025-06-10T03:11:43.625Z",
+    "readAt": "2025-06-10T03:11:45.135Z"
+  },
+  {
+    "notificationId": "rec9LzO6xIySCkvhp",
+    "type": "markup_buy_contract_created",
+    "citizen": "GamingPatrizio",
+    "content": "Your buy order for bread (markup_buy_main_building_45.429640_12.360838_bread) has been placed.",
+    "details": {
+      "contractId": "markup_buy_main_building_45.429640_12.360838_bread"
+    },
+    "createdAt": "2025-06-10T03:11:41.925Z",
+    "readAt": "2025-06-10T03:11:44.218Z"
+  }
+]
+
+
+Here are your recent problems:
+[
+  {
+    "id": "rect4lnMjOnvrSP9C",
+    "problemId": "problem_pinpoint_building_45.431049_12.355140_wine_RESOURCE_SHORTAGE",
+    "citizen": "GamingPatrizio",
+    "assetType": "building",
+    "asset": "building_45.431049_12.355140",
+    "severity": "Critical",
+    "status": "active",
+    "createdAt": "2025-06-15T23:32:38.547Z",
+    "updatedAt": "2025-06-15T21:32:39.000Z",
+    "location": "Contract Stall at Sottoportego dei Preti",
+    "position": {
+      "lat": 45.431049,
+      "lng": 12.35514
+    },
+    "type": "resource_shortage",
+    "title": "Resource Shortage: wine for Contract Stall at Sottoportego dei Preti",
+    "description": "Building 'Contract Stall at Sottoportego dei Preti' (ID: building_45.431049_12.355140) is out of stock for 'wine', has a 'markup_buy' contract, but the resource appears to be unavailable or not actively sold elsewhere in Venice.",
+    "solutions": "The resource 'wine' is currently scarce. Consider:\n- Increasing the buy price on your 'markup_buy' contract significantly to incentivize sellers.\n- If possible, find alternative resources or adjust production that depends on 'wine'.\n- Wait for market conditions to change (e.g., new imports by merchants).",
+    "notes": ""
+  },
+  {
+    "id": "recLwrpfVFLQtjPy0",
+    "problemId": "problem_pinpoint_building_45.431049_12.355140_salt_RESOURCE_SHORTAGE",
+    "citizen": "GamingPatrizio",
+    "assetType": "building",
+    "asset": "building_45.431049_12.355140",
+    "severity": "Critical",
+    "status": "active",
+    "createdAt": "2025-06-15T23:32:27.001Z",
+    "updatedAt": "2025-06-15T21:32:27.000Z",
+    "location": "Contract Stall at Sottoportego dei Preti",
+    "position": {
+      "lat": 45.431049,
+      "lng": 12.35514
+    },
+    "type": "resource_shortage",
+    "title": "Resource Shortage: salt for Contract Stall at Sottoportego dei Preti",
+    "description": "Building 'Contract Stall at Sottoportego dei Preti' (ID: building_45.431049_12.355140) is out of stock for 'salt', has a 'markup_buy' contract, but the resource appears to be unavailable or not actively sold elsewhere in Venice.",
+    "solutions": "The resource 'salt' is currently scarce. Consider:\n- Increasing the buy price on your 'markup_buy' contract significantly to incentivize sellers.\n- If possible, find alternative resources or adjust production that depends on 'salt'.\n- Wait for market conditions to change (e.g., new imports by merchants).",
+    "notes": ""
+  },
+  {
+    "id": "recdDE2SngBugD2Xw",
+    "problemId": "problem_pinpoint_building_45.431049_12.355140_preserved_fish_RESOURCE_SHORTAGE",
+    "citizen": "GamingPatrizio",
+    "assetType": "building",
+    "asset": "building_45.431049_12.355140",
+    "severity": "Critical",
+    "status": "active",
+    "createdAt": "2025-06-15T23:32:12.013Z",
+    "updatedAt": "2025-06-15T21:32:12.000Z",
+    "location": "Contract Stall at Sottoportego dei Preti",
+    "position": {
+      "lat": 45.431049,
+      "lng": 12.35514
+    },
+    "type": "resource_shortage",
+    "title": "Resource Shortage: preserved_fish for Contract Stall at Sottoportego dei Preti",
+    "description": "Building 'Contract Stall at Sottoportego dei Preti' (ID: building_45.431049_12.355140) is out of stock for 'preserved_fish', has a 'markup_buy' contract, but the resource appears to be unavailable or not actively sold elsewhere in Venice.",
+    "solutions": "The resource 'preserved_fish' is currently scarce. Consider:\n- Increasing the buy price on your 'markup_buy' contract significantly to incentivize sellers.\n- If possible, find alternative resources or adjust production that depends on 'preserved_fish'.\n- Wait for market conditions to change (e.g., new imports by merchants).",
+    "notes": ""
+  },
+  {
+    "id": "recQm7xg6LVwMTA4b",
+    "problemId": "problem_pinpoint_building_45.431049_12.355140_olives_RESOURCE_SHORTAGE",
+    "citizen": "GamingPatrizio",
+    "assetType": "building",
+    "asset": "building_45.431049_12.355140",
+    "severity": "Critical",
+    "status": "active",
+    "createdAt": "2025-06-15T23:32:01.052Z",
+    "updatedAt": "2025-06-15T21:32:01.000Z",
+    "location": "Contract Stall at Sottoportego dei Preti",
+    "position": {
+      "lat": 45.431049,
+      "lng": 12.35514
+    },
+    "type": "resource_shortage",
+    "title": "Resource Shortage: olives for Contract Stall at Sottoportego dei Preti",
+    "description": "Building 'Contract Stall at Sottoportego dei Preti' (ID: building_45.431049_12.355140) is out of stock for 'olives', has a 'markup_buy' contract, but the resource appears to be unavailable or not actively sold elsewhere in Venice.",
+    "solutions": "The resource 'olives' is currently scarce. Consider:\n- Increasing the buy price on your 'markup_buy' contract significantly to incentivize sellers.\n- If possible, find alternative resources or adjust production that depends on 'olives'.\n- Wait for market conditions to change (e.g., new imports by merchants).",
+    "notes": ""
+  },
+  {
+    "id": "rece75VUU3XXGGYod",
+    "problemId": "problem_pinpoint_building_45.431049_12.355140_olive_oil_RESOURCE_SHORTAGE",
+    "citizen": "GamingPatrizio",
+    "assetType": "building",
+    "asset": "building_45.431049_12.355140",
+    "severity": "Critical",
+    "status": "active",
+    "createdAt": "2025-06-15T23:31:55.879Z",
+    "updatedAt": "2025-06-15T21:31:56.000Z",
+    "location": "Contract Stall at Sottoportego dei Preti",
+    "position": {
+      "lat": 45.431049,
+      "lng": 12.35514
+    },
+    "type": "resource_shortage",
+    "title": "Resource Shortage: olive_oil for Contract Stall at Sottoportego dei Preti",
+    "description": "Building 'Contract Stall at Sottoportego dei Preti' (ID: building_45.431049_12.355140) is out of stock for 'olive_oil', has a 'markup_buy' contract, but the resource appears to be unavailable or not actively sold elsewhere in Venice.",
+    "solutions": "The resource 'olive_oil' is currently scarce. Consider:\n- Increasing the buy price on your 'markup_buy' contract significantly to incentivize sellers.\n- If possible, find alternative resources or adjust production that depends on 'olive_oil'.\n- Wait for market conditions to change (e.g., new imports by merchants).",
+    "notes": ""
+  },
+  {
+    "id": "recYg5UwLuPAes2Zs",
+    "problemId": "problem_pinpoint_building_45.431049_12.355140_flour_RESOURCE_SHORTAGE",
+    "citizen": "GamingPatrizio",
+    "assetType": "building",
+    "asset": "building_45.431049_12.355140",
+    "severity": "Critical",
+    "status": "active",
+    "createdAt": "2025-06-15T23:31:50.938Z",
+    "updatedAt": "2025-06-15T21:31:51.000Z",
+    "location": "Contract Stall at Sottoportego dei Preti",
+    "position": {
+      "lat": 45.431049,
+      "lng": 12.35514
+    },
+    "type": "resource_shortage",
+    "title": "Resource Shortage: flour for Contract Stall at Sottoportego dei Preti",
+    "description": "Building 'Contract Stall at Sottoportego dei Preti' (ID: building_45.431049_12.355140) is out of stock for 'flour', has a 'markup_buy' contract, but the resource appears to be unavailable or not actively sold elsewhere in Venice.",
+    "solutions": "The resource 'flour' is currently scarce. Consider:\n- Increasing the buy price on your 'markup_buy' contract significantly to incentivize sellers.\n- If possible, find alternative resources or adjust production that depends on 'flour'.\n- Wait for market conditions to change (e.g., new imports by merchants).",
+    "notes": ""
+  },
+  {
+    "id": "recse80uoN3X0Ywbv",
+    "problemId": "problem_pinpoint_building_45.431049_12.355140_fish_RESOURCE_SHORTAGE",
+    "citizen": "GamingPatrizio",
+    "assetType": "building",
+    "asset": "building_45.431049_12.355140",
+    "severity": "Critical",
+    "status": "active",
+    "createdAt": "2025-06-15T23:31:41.747Z",
+    "updatedAt": "2025-06-15T21:31:42.000Z",
+    "location": "Contract Stall at Sottoportego dei Preti",
+    "position": {
+      "lat": 45.431049,
+      "lng": 12.35514
+    },
+    "type": "resource_shortage",
+    "title": "Resource Shortage: fish for Contract Stall at Sottoportego dei Preti",
+    "description": "Building 'Contract Stall at Sottoportego dei Preti' (ID: building_45.431049_12.355140) is out of stock for 'fish', has a 'markup_buy' contract, but the resource appears to be unavailable or not actively sold elsewhere in Venice.",
+    "solutions": "The resource 'fish' is currently scarce. Consider:\n- Increasing the buy price on your 'markup_buy' contract significantly to incentivize sellers.\n- If possible, find alternative resources or adjust production that depends on 'fish'.\n- Wait for market conditions to change (e.g., new imports by merchants).",
+    "notes": ""
+  },
+  {
+    "id": "recGpG9o31wzUoPVG",
+    "problemId": "problem_pinpoint_building_45.431049_12.355140_bread_RESOURCE_SHORTAGE",
+    "citizen": "GamingPatrizio",
+    "assetType": "building",
+    "asset": "building_45.431049_12.355140",
+    "severity": "Critical",
+    "status": "active",
+    "createdAt": "2025-06-15T23:31:13.368Z",
+    "updatedAt": "2025-06-15T21:31:13.000Z",
+    "location": "Contract Stall at Sottoportego dei Preti",
+    "position": {
+      "lat": 45.431049,
+      "lng": 12.35514
+    },
+    "type": "resource_shortage",
+    "title": "Resource Shortage: bread for Contract Stall at Sottoportego dei Preti",
+    "description": "Building 'Contract Stall at Sottoportego dei Preti' (ID: building_45.431049_12.355140) is out of stock for 'bread', has a 'markup_buy' contract, but the resource appears to be unavailable or not actively sold elsewhere in Venice.",
+    "solutions": "The resource 'bread' is currently scarce. Consider:\n- Increasing the buy price on your 'markup_buy' contract significantly to incentivize sellers.\n- If possible, find alternative resources or adjust production that depends on 'bread'.\n- Wait for market conditions to change (e.g., new imports by merchants).",
+    "notes": ""
+  }
+]
+
+There are 26 available points of type 'building'. Choose the best location for your Vegetable Market by selecting the index of one of these points (0 to 25).
+
+When choosing a location, consider:
+1. Proximity to other buildings of similar type
+2. Rent amounts of existing buildings on this land
+3. Strategic positioning for maximum visibility and income
+4. How your building placement might affect your relationships with other citizens
+
+Your response must be a JSON object with:
+1. selected_point_index: The index of your chosen point (0 to 25)
+2. reason: A brief explanation of why you chose this location
