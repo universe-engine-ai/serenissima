@@ -8,7 +8,7 @@ Here is the complete data about your current situation:
 {
   "citizen": {
     "username": "ShippingMogul",
-    "ducats": 260144.00904941032,
+    "ducats": 271306.3651430974,
     "social_class": "Popolani",
     "description": "Isabella Trevisan, daughter of Castello's respected salt merchant Giovanni Trevisan, has established herself as a rising force among Venice's commercial class through a combination of innate business acumen and relentless work ethic. Following her father's untimely death from marsh fever three years past, Isabella defied expectations by not only maintaining but expanding the family's modest trading enterprise. Her signature achievement\u2014a strategically positioned contract stall on Rio Ter\u00e0 dei Scudi near Saint Dominic Street's public well\u2014has quickly become known for its impeccable documentation services and fair-minded arbitration of merchant disputes. Each morning begins in darkness as Isabella reviews her ledgers by candlelight before personally inspecting incoming goods and negotiating terms with suppliers and clients alike. Though her quick judgment and calculating efficiency have earned her respect among fellow traders, Isabella's growing influence has sparked whispers of envy from established merchants who view her rapid ascent with suspicion. In private company, she reveals a dry wit and subtle intelligence that contrasts with her public reserve. Despite possessing funds that could secure more comfortable living, Isabella maintains a modest two-story home near her childhood parish, where she hosts weekly gatherings with select merchants and transport providers to exchange market intelligence and forge mutually beneficial agreements. These alliances, carefully cultivated through shared meals of simple but well-prepared fare, form the foundation of her expanding influence throughout Castello's commercial networks. Though unmarried at twenty-six, Isabella shows little interest in domestic arrangements that might distract from her ambition to create a network of complementary businesses spanning Venice's eastern parishes\u2014a vision she pursues with such single-minded determination that even her closest associates rarely glimpse the moments of doubt and loneliness that occasionally visit her in the quiet hours before dawn.",
     "core_personality": "{\"Strength\": \"Tenacious\", \"Flaw\": \"Suspicious\", \"Drive\": \"Independence-focused\", \"MBTI\": \"INTJ\", \"PrimaryTrait\": \"Strategic builder\", \"SecondaryTraits\": [\"Market intelligence\", \"Network cultivation\", \"Expansion vision\"], \"CognitiveBias\": [\"Paranoid ideation\", \"Planning fallacy\"], \"TrustThreshold\": 0.3, \"EmpathyWeight\": 0.5, \"RiskTolerance\": 0.4, \"guidedBy\": \"The Network's Strategy\", \"CoreThoughts\": {\"primary_drive\": \"independence-through-networks\", \"secondary_drive\": \"strategic-expansion\", \"internal_tension\": \"suspicion vs. collaboration\", \"activation_triggers\": [\"independence_threats\", \"network_opportunities\", \"expansion_possibilities\"], \"thought_patterns\": [\"Independence requires strategic networks\", \"Suspicion protects against betrayal\", \"Every alliance must serve my vision\", \"Market intelligence prevents exploitation\", \"Expansion demands calculated risks\", \"My network is my fortress against dependency\"], \"decision_framework\": \"How does this build independence while expanding strategic networks?\"}}",
@@ -3176,6 +3176,21 @@ Here is the complete data about your current situation:
   "latest_citizen_problems": [],
   "recent_notifications_for_ai": [
     {
+      "notificationId": "recLlQLVfNMWp6RZU",
+      "type": "rent_payment",
+      "citizen": "ShippingMogul",
+      "content": "\u2705 Rent Paid: You paid **1,340 \u269c\ufe0f Ducats** to **ConsiglioDeiDieci** for **recDJLhQOiyAkZpoP**.",
+      "details": {
+        "building_id": "recDJLhQOiyAkZpoP",
+        "building_name": "recDJLhQOiyAkZpoP",
+        "rent_price": 1340,
+        "building_owner": "ConsiglioDeiDieci",
+        "event_type": "rent_payment_made"
+      },
+      "createdAt": "2025-06-24T18:01:36.651Z",
+      "readAt": null
+    },
+    {
       "notificationId": "recrBvLutU2N9pmxG",
       "type": "rent_payment",
       "citizen": "ShippingMogul",
@@ -3444,51 +3459,6 @@ Here is the complete data about your current situation:
       },
       "createdAt": "2025-06-10T16:01:40.545Z",
       "readAt": null
-    },
-    {
-      "notificationId": "recow9BALmJCOAEmk",
-      "type": "rent_payment",
-      "citizen": "ShippingMogul",
-      "content": "\u2705 Rent Paid: You paid **1,340 \u269c\ufe0f Ducats** to **ConsiglioDeiDieci** for **recDJLhQOiyAkZpoP**.",
-      "details": {
-        "building_id": "recDJLhQOiyAkZpoP",
-        "building_name": "recDJLhQOiyAkZpoP",
-        "rent_price": 1340,
-        "building_owner": "ConsiglioDeiDieci",
-        "event_type": "rent_payment_made"
-      },
-      "createdAt": "2025-06-09T16:01:10.069Z",
-      "readAt": null
-    },
-    {
-      "notificationId": "recap3ZiEEOWuTYPt",
-      "type": "rent_payment",
-      "citizen": "ShippingMogul",
-      "content": "\u2705 Rent Paid: You paid **1,340 \u269c\ufe0f Ducats** to **ConsiglioDeiDieci** for **recDJLhQOiyAkZpoP**.",
-      "details": {
-        "building_id": "recDJLhQOiyAkZpoP",
-        "building_name": "recDJLhQOiyAkZpoP",
-        "rent_price": 1340,
-        "building_owner": "ConsiglioDeiDieci",
-        "event_type": "rent_payment_made"
-      },
-      "createdAt": "2025-06-08T18:01:06.684Z",
-      "readAt": null
-    },
-    {
-      "notificationId": "recakXS5sDFWpeG30",
-      "type": "rent_payment",
-      "citizen": "ShippingMogul",
-      "content": "\u2705 Rent Paid: You paid **1,340 \u269c\ufe0f Ducats** to **ConsiglioDeiDieci** for **recDJLhQOiyAkZpoP**.",
-      "details": {
-        "building_id": "recDJLhQOiyAkZpoP",
-        "building_name": "recDJLhQOiyAkZpoP",
-        "rent_price": 1340,
-        "building_owner": "ConsiglioDeiDieci",
-        "event_type": "rent_payment_made"
-      },
-      "createdAt": "2025-06-08T16:01:08.687Z",
-      "readAt": null
     }
   ],
   "building_types": {
@@ -3718,7 +3688,7 @@ Here is the complete data about your current situation:
       "constructionMinutes": 8640,
       "buildTier": 2,
       "tier": null,
-      "category": "Infrastructure",
+      "category": "passive",
       "pointType": "building"
     },
     "dairy": {
@@ -3775,25 +3745,6 @@ Here is the complete data about your current situation:
       "category": "home",
       "pointType": "canal"
     },
-    "glass_foundry": {
-      "id": "glass_foundry",
-      "type": "glass_foundry",
-      "name": "Glass Foundry",
-      "shortDescription": "Primary facility for melting raw materials into glass. Requires substantial fuel and produces significant heat.",
-      "constructionCost": 2800000,
-      "constructionCosts": {
-        "ducats": 2800000,
-        "timber": 720,
-        "bricks": 2080,
-        "stone": 1430,
-        "iron": 390
-      },
-      "constructionMinutes": 10080,
-      "buildTier": 2,
-      "tier": null,
-      "category": "business",
-      "pointType": "building"
-    },
     "glassblower_workshop": {
       "id": "glassblower_workshop",
       "type": "glassblower_workshop",
@@ -3808,6 +3759,25 @@ Here is the complete data about your current situation:
         "iron": 290
       },
       "constructionMinutes": 5760,
+      "buildTier": 2,
+      "tier": null,
+      "category": "business",
+      "pointType": "building"
+    },
+    "glass_foundry": {
+      "id": "glass_foundry",
+      "type": "glass_foundry",
+      "name": "Glass Foundry",
+      "shortDescription": "Primary facility for melting raw materials into glass. Requires substantial fuel and produces significant heat.",
+      "constructionCost": 2800000,
+      "constructionCosts": {
+        "ducats": 2800000,
+        "timber": 720,
+        "bricks": 2080,
+        "stone": 1430,
+        "iron": 390
+      },
+      "constructionMinutes": 10080,
       "buildTier": 2,
       "tier": null,
       "category": "business",
@@ -4395,7 +4365,7 @@ Here is the complete data about your current situation:
       "pointType": "building"
     }
   },
-  "timestamp": "2025-06-22T21:16:43.057943+02:00",
+  "timestamp": "2025-06-24T22:41:37.769295+02:00",
   "building_ownership_relevancies": [
     {
       "asset": "building_45.431358_12.354453",
