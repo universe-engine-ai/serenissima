@@ -8,10 +8,10 @@ Here is the complete data about your current situation:
 {
   "citizen": {
     "username": "PixelDoge",
-    "ducats": 265444.99981029,
+    "ducats": 279845.5796355065,
     "social_class": "Popolani",
     "description": "Vincenzo Tagliapietra stands as a respected fixture among the Popolani of Venice, having firmly established his reputation through his meticulous contract work. The third son of a modest cloth merchant family from Dorsoduro, Vincenzo has transformed his strategically-placed Contract Stall near the Scuola Grande della Carit\u00e0 into an essential node in Venice's commercial web. His clients now include not only local craftsmen but increasingly wealthy merchants who appreciate his discreet handling of their affairs. Despite his growing influence, Vincenzo battles a persistent insecurity about his lack of formal education, often overcompensating by working excessive hours to ensure his contracts are flawless. His photographic memory for legal clauses and terms has become legendary, allowing him to recall precise wording from agreements drafted years prior. His daily routine remains rigidly structured\u2014rising before dawn to review the previous day's work, receiving clients throughout the day, and spending evenings studying legal texts borrowed from notaries and advocates he has befriended. Though his business thrives, Vincenzo's frugality borders on miserliness; he reinvests almost all profits back into his business and hoards his substantial savings, haunted by childhood memories of his family's occasional financial struggles. His relationships remain primarily transactional, as he views most social connections through the lens of potential business advantage. His ambition has evolved from merely securing citizenship rights to establishing a network of contract offices throughout Venice, though he keeps these expansive dreams carefully hidden behind a facade of humble service to the Republic.",
-    "core_personality": "[\"Meticulous\", \"Discreet\", \"Reputation-focused\"]",
+    "core_personality": "{\"Strength\": \"Meticulous\", \"Flaw\": \"Discreet\", \"Drive\": \"Reputation-focused\", \"MBTI\": \"ISFJ\", \"PrimaryTrait\": \"Perfectionist service provider\", \"SecondaryTraits\": [\"Memory mastery\", \"Expansion vision\", \"Education insecurity\"], \"CognitiveBias\": [\"Perfectionism bias\", \"Impostor syndrome\"], \"TrustThreshold\": 0.4, \"EmpathyWeight\": 0.6, \"RiskTolerance\": 0.2, \"guidedBy\": \"The Memory's Vault\", \"CoreThoughts\": {\"primary_drive\": \"reputation-perfection\", \"secondary_drive\": \"network-expansion\", \"internal_tension\": \"insecurity vs. competence\", \"activation_triggers\": [\"reputation_threats\", \"expansion_opportunities\", \"education_reminders\"], \"thought_patterns\": [\"Perfect service builds unassailable reputation\", \"My memory compensates for educational gaps\", \"Expansion requires absolute reliability first\", \"Discretion protects clients and builds trust\", \"Every contract must exceed expectations\", \"Hidden dreams drive visible excellence\"], \"decision_framework\": \"How does this perfect my reputation while enabling future expansion?\"}}",
     "image_prompt": "",
     "family_motto": "Fide et Diligentia\" (By Faith and Diligence)",
     "coat_of_arms": "A simple shield divided vertically, with the dexter side in azure (blue) representing the waters of Venice and the sinister in argent (silver) symbolizing honesty and peace. At the center, a quill pen and scroll in sable (black) signifying the contractual profession, with three small gold coins below representing fair commerce. The crest is modest as befits a Popolani, featuring a simple helm with a merchant's cap above rather than the elaborate coronets of nobility.",
@@ -3329,6 +3329,36 @@ Here is the complete data about your current situation:
   ],
   "recent_notifications_for_ai": [
     {
+      "notificationId": "rechBd8Z65Uk4m8dy",
+      "type": "rent_payment",
+      "citizen": "PixelDoge",
+      "content": "\u2705 Rent Paid: You paid **1,780 \u269c\ufe0f Ducats** to **ConsiglioDeiDieci** for **Artisan's House at Ruga dei Orafi Castellani**.",
+      "details": {
+        "building_id": "recKZIeelBSTSjtf4",
+        "building_name": "Artisan's House at Ruga dei Orafi Castellani",
+        "rent_price": 1780,
+        "building_owner": "ConsiglioDeiDieci",
+        "event_type": "rent_payment_made"
+      },
+      "createdAt": "2025-06-24T18:02:25.952Z",
+      "readAt": null
+    },
+    {
+      "notificationId": "recQqymQGnao8Rwty",
+      "type": "rent_payment",
+      "citizen": "PixelDoge",
+      "content": "\u2705 Rent Paid: You paid **1,780 \u269c\ufe0f Ducats** to **ConsiglioDeiDieci** for **Artisan's House at Ruga dei Orafi Castellani**.",
+      "details": {
+        "building_id": "recKZIeelBSTSjtf4",
+        "building_name": "Artisan's House at Ruga dei Orafi Castellani",
+        "rent_price": 1780,
+        "building_owner": "ConsiglioDeiDieci",
+        "event_type": "rent_payment_made"
+      },
+      "createdAt": "2025-06-22T18:01:50.210Z",
+      "readAt": null
+    },
+    {
       "notificationId": "recfYtPYElyOkLF3Y",
       "type": "rent_payment",
       "citizen": "PixelDoge",
@@ -3714,235 +3744,6 @@ Here is the complete data about your current situation:
       },
       "createdAt": "2025-06-10T12:51:12.455Z",
       "readAt": "2025-06-10T12:51:12.576Z"
-    },
-    {
-      "notificationId": "recOyvgy4F6ROK1Da",
-      "type": "markup_buy_contract_created",
-      "citizen": "PixelDoge",
-      "content": "Your buy order for wine (markup_buy_main_building_45.431863_12.354551_wine) has been placed.",
-      "details": {
-        "contractId": "markup_buy_main_building_45.431863_12.354551_wine"
-      },
-      "createdAt": "2025-06-09T16:56:18.942Z",
-      "readAt": "2025-06-09T16:56:19.118Z"
-    },
-    {
-      "notificationId": "recf7VQ9Iwoan3xqr",
-      "type": "markup_buy_contract_created",
-      "citizen": "PixelDoge",
-      "content": "Your buy order for salt (markup_buy_main_building_45.431863_12.354551_salt) has been placed.",
-      "details": {
-        "contractId": "markup_buy_main_building_45.431863_12.354551_salt"
-      },
-      "createdAt": "2025-06-09T16:56:00.447Z",
-      "readAt": "2025-06-09T16:56:01.952Z"
-    },
-    {
-      "notificationId": "recUPEM51LQYPDFeE",
-      "type": "markup_buy_contract_created",
-      "citizen": "PixelDoge",
-      "content": "Your buy order for preserved_fish (markup_buy_main_building_45.431863_12.354551_preserved_fish) has been placed.",
-      "details": {
-        "contractId": "markup_buy_main_building_45.431863_12.354551_preserved_fish"
-      },
-      "createdAt": "2025-06-09T16:55:43.176Z",
-      "readAt": "2025-06-09T16:55:43.739Z"
-    },
-    {
-      "notificationId": "recOJoi5U1FC7zHqb",
-      "type": "markup_buy_contract_created",
-      "citizen": "PixelDoge",
-      "content": "Your buy order for olives (markup_buy_main_building_45.431863_12.354551_olives) has been placed.",
-      "details": {
-        "contractId": "markup_buy_main_building_45.431863_12.354551_olives"
-      },
-      "createdAt": "2025-06-09T16:55:28.085Z",
-      "readAt": "2025-06-09T16:55:28.544Z"
-    },
-    {
-      "notificationId": "recDfsBbyBjBJJTNP",
-      "type": "markup_buy_contract_created",
-      "citizen": "PixelDoge",
-      "content": "Your buy order for olive_oil (markup_buy_main_building_45.431863_12.354551_olive_oil) has been placed.",
-      "details": {
-        "contractId": "markup_buy_main_building_45.431863_12.354551_olive_oil"
-      },
-      "createdAt": "2025-06-09T16:55:13.072Z",
-      "readAt": "2025-06-09T16:55:13.710Z"
-    },
-    {
-      "notificationId": "recsujjLM6YfiFKdf",
-      "type": "markup_buy_contract_created",
-      "citizen": "PixelDoge",
-      "content": "Your buy order for flour (markup_buy_main_building_45.431863_12.354551_flour) has been placed.",
-      "details": {
-        "contractId": "markup_buy_main_building_45.431863_12.354551_flour"
-      },
-      "createdAt": "2025-06-09T16:54:24.723Z",
-      "readAt": "2025-06-09T16:54:25.275Z"
-    },
-    {
-      "notificationId": "recGfm9m4L23Q3dEJ",
-      "type": "markup_buy_contract_created",
-      "citizen": "PixelDoge",
-      "content": "Your buy order for fish (markup_buy_main_building_45.431863_12.354551_fish) has been placed.",
-      "details": {
-        "contractId": "markup_buy_main_building_45.431863_12.354551_fish"
-      },
-      "createdAt": "2025-06-09T16:53:53.697Z",
-      "readAt": "2025-06-09T16:53:54.530Z"
-    },
-    {
-      "notificationId": "recXebe818BBonaMg",
-      "type": "markup_buy_contract_created",
-      "citizen": "PixelDoge",
-      "content": "Your buy order for bread (markup_buy_main_building_45.431863_12.354551_bread) has been placed.",
-      "details": {
-        "contractId": "markup_buy_main_building_45.431863_12.354551_bread"
-      },
-      "createdAt": "2025-06-09T16:53:53.193Z",
-      "readAt": "2025-06-09T16:53:54.124Z"
-    },
-    {
-      "notificationId": "recOwwmS4LNV6JCQe",
-      "type": "rent_payment",
-      "citizen": "PixelDoge",
-      "content": "\u2705 Rent Paid: You paid **1,780 \u269c\ufe0f Ducats** to **ConsiglioDeiDieci** for **Artisan's House at Ruga dei Orafi Castellani**.",
-      "details": {
-        "building_id": "recKZIeelBSTSjtf4",
-        "building_name": "Artisan's House at Ruga dei Orafi Castellani",
-        "rent_price": 1780,
-        "building_owner": "ConsiglioDeiDieci",
-        "event_type": "rent_payment_made"
-      },
-      "createdAt": "2025-06-09T16:01:51.367Z",
-      "readAt": null
-    },
-    {
-      "notificationId": "recwdODWGCCFWFhWZ",
-      "type": "markup_buy_contract_created",
-      "citizen": "PixelDoge",
-      "content": "Your buy order for preserved_fish has been placed.",
-      "details": {
-        "contractId": "mbc_Pix_pres_cee3"
-      },
-      "createdAt": "2025-06-09T15:05:02.102Z",
-      "readAt": "2025-06-09T15:05:02.250Z"
-    },
-    {
-      "notificationId": "recHy7a9QDvuWGRMe",
-      "type": "markup_buy_contract_created",
-      "citizen": "PixelDoge",
-      "content": "Your buy order for preserved_fish has been placed.",
-      "details": {
-        "contractId": "mbc_Pix_pres_0470"
-      },
-      "createdAt": "2025-06-09T15:01:23.291Z",
-      "readAt": "2025-06-09T15:01:23.439Z"
-    },
-    {
-      "notificationId": "recB4TNEugK0WMnZc",
-      "type": "markup_buy_contract_created",
-      "citizen": "PixelDoge",
-      "content": "Your buy order for preserved_fish has been placed.",
-      "details": {
-        "contractId": "mbc_Pix_pres_8834"
-      },
-      "createdAt": "2025-06-09T14:59:01.133Z",
-      "readAt": "2025-06-09T14:59:01.276Z"
-    },
-    {
-      "notificationId": "recyltbPe34VuNVjX",
-      "type": "markup_buy_contract_created",
-      "citizen": "PixelDoge",
-      "content": "Your buy order for flour has been placed.",
-      "details": {
-        "contractId": "mbc_Pix_flou_273b"
-      },
-      "createdAt": "2025-06-09T14:57:02.908Z",
-      "readAt": "2025-06-09T14:57:03.043Z"
-    },
-    {
-      "notificationId": "recYPYXVRKsdQ9JEP",
-      "type": "markup_buy_contract_created",
-      "citizen": "PixelDoge",
-      "content": "Your buy order for flour has been placed.",
-      "details": {
-        "contractId": "mbc_Pix_flou_3eba"
-      },
-      "createdAt": "2025-06-09T14:50:13.045Z",
-      "readAt": "2025-06-09T14:50:13.170Z"
-    },
-    {
-      "notificationId": "recmUt1dlPLx1tdOT",
-      "type": "markup_buy_contract_created",
-      "citizen": "PixelDoge",
-      "content": "Your buy order for flour has been placed.",
-      "details": {
-        "contractId": "mbc_Pix_flou_9c18"
-      },
-      "createdAt": "2025-06-09T14:44:22.952Z",
-      "readAt": "2025-06-09T14:44:23.115Z"
-    },
-    {
-      "notificationId": "recCL9eCeO6GoLWHG",
-      "type": "rent_payment",
-      "citizen": "PixelDoge",
-      "content": "\u2705 Rent Paid: You paid **1,780 \u269c\ufe0f Ducats** to **ConsiglioDeiDieci** for **Artisan's House at Ruga dei Orafi Castellani**.",
-      "details": {
-        "building_id": "recKZIeelBSTSjtf4",
-        "building_name": "Artisan's House at Ruga dei Orafi Castellani",
-        "rent_price": 1780,
-        "building_owner": "ConsiglioDeiDieci",
-        "event_type": "rent_payment_made"
-      },
-      "createdAt": "2025-06-08T18:01:47.816Z",
-      "readAt": null
-    },
-    {
-      "notificationId": "reccqcp99tCJ9fqjo",
-      "type": "rent_payment",
-      "citizen": "PixelDoge",
-      "content": "\u2705 Rent Paid: You paid **1,780 \u269c\ufe0f Ducats** to **ConsiglioDeiDieci** for **Artisan's House at Ruga dei Orafi Castellani**.",
-      "details": {
-        "building_id": "recKZIeelBSTSjtf4",
-        "building_name": "Artisan's House at Ruga dei Orafi Castellani",
-        "rent_price": 1780,
-        "building_owner": "ConsiglioDeiDieci",
-        "event_type": "rent_payment_made"
-      },
-      "createdAt": "2025-06-08T16:01:50.101Z",
-      "readAt": null
-    },
-    {
-      "notificationId": "recZDA493s5hHtgf0",
-      "type": "rent_payment",
-      "citizen": "PixelDoge",
-      "content": "\u2705 Rent Paid: You paid **1,780 \u269c\ufe0f Ducats** to **ConsiglioDeiDieci** for **Artisan's House at Ruga dei Orafi Castellani**.",
-      "details": {
-        "building_id": "recKZIeelBSTSjtf4",
-        "building_name": "Artisan's House at Ruga dei Orafi Castellani",
-        "rent_price": 1780,
-        "building_owner": "ConsiglioDeiDieci",
-        "event_type": "rent_payment_made"
-      },
-      "createdAt": "2025-06-07T18:01:38.114Z",
-      "readAt": null
-    },
-    {
-      "notificationId": "recRNaNq5p6kgML50",
-      "type": "rent_payment",
-      "citizen": "PixelDoge",
-      "content": "\u2705 Rent Paid: You paid **1,780 \u269c\ufe0f Ducats** to **ConsiglioDeiDieci** for **Artisan's House at Ruga dei Orafi Castellani**.",
-      "details": {
-        "building_id": "recKZIeelBSTSjtf4",
-        "building_name": "Artisan's House at Ruga dei Orafi Castellani",
-        "rent_price": 1780,
-        "building_owner": "ConsiglioDeiDieci",
-        "event_type": "rent_payment_made"
-      },
-      "createdAt": "2025-06-07T16:01:41.553Z",
-      "readAt": null
     }
   ],
   "building_types": {
@@ -4849,7 +4650,7 @@ Here is the complete data about your current situation:
       "pointType": "building"
     }
   },
-  "timestamp": "2025-06-21T21:11:52.688943+02:00",
+  "timestamp": "2025-06-24T22:20:47.226626+02:00",
   "building_ownership_relevancies": [
     {
       "asset": "building_45.430860_12.360697",
