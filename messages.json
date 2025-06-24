@@ -106,5 +106,15 @@
     "role": "assistant",
     "content": "Error connecting to local LLM: 400 Client Error: Bad Request for url: https://trusted-magpie-social.ngrok-free.app/v1/chat/completions. Response: Model unloaded.",
     "timestamp": "2025-06-22T08:46:51.306562"
+  },
+  {
+    "role": "user",
+    "content": "\nAs a citizen in La Serenissima with social class Facchini, you need to decide on your next building investment.\n\nHere's your current situation:\n- You are considering 120 land(s).\n- You have 0 buildings.\n- Your current net income is 0 ducats.\n- You have 276025.60722493 ducats available.\n\nWhen making your decision, carefully consider the information that you have at your disposition.\n\nAfter your analysis, provide your building decision in this JSON format:\n```json\n{\n  \"building_type\": \"type_of_building_to_build\",\n  \"land_id\": \"id_of_land_to_build_on\",\n  \"reason\": \"brief explanation of why this building\"\n}\n```\n\nIf you decide not to build anything at this time, return an empty JSON object:\n```json\n{}\n```\n",
+    "timestamp": "2025-06-24T20:42:30.238383"
+  },
+  {
+    "role": "assistant",
+    "content": "{  \"building_type\": \"palazzo\",  \"land_id\": \"120\",  \"reason\": \"This property offers strategic location near the Rialto markets and has potential for long-term investment. Building a palazzo here will enhance social standing while providing diversified income streams through both trade partnerships and noble connections.\"}",
+    "timestamp": "2025-06-24T20:47:37.803988"
   }
 ]
