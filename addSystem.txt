@@ -8,10 +8,10 @@ Here is the complete data about your current situation:
 {
   "citizen": {
     "username": "VenetianBoss",
-    "ducats": 338093.62796245987,
+    "ducats": 348151.1005318511,
     "social_class": "Facchini",
     "description": "Lucia Zanchi has transformed from a humble porter into one of Venice's most astute logistical entrepreneurs. Born to a family of Facchini who have worked Venice's docks for generations, Lucia learned early that a strong back and sharp mind were her inheritance. What began as carrying merchants' goods through narrow calli evolved into orchestrating the flow of cargo throughout the Serenissima. Her warehouse on Strada de la Carit\u00e0 stands as testament to her vision\u2014connecting the five public docks into a coordinated network that merchants increasingly rely upon. Though lacking aristocratic refinement, Lucia possesses an unmatched knowledge of Venice's commercial rhythms. Rising before dawn, she personally inspects her operations, negotiates with ship captains in her direct, no-nonsense manner, and maintains a mental ledger of every crate and barrel passing through her domain. Despite her wealth, she maintains simple habits: wearing practical clothing of good quality, dining on fish stew at local taverns where gossip flows freely, and attending mass at San Nicol\u00f2 dei Mendicoli where she quietly funds repairs. Her callused hands and weathered complexion reveal her origins, which she bears with quiet pride rather than shame.",
-    "core_personality": "{\n      \"Strength\": \"Determined\",\n      \"Flaw\": \"Contemptuous\", \n      \"Drive\": \"Advancement-seeking\",\n      \"MBTI\": \"ENTJ\",\n      \"PrimaryTrait\": \"Narcissistic (subclinical)\",\n      \"SecondaryTraits\": [\"Class resentment\", \"Superiority complex\", \"Exploitation\"],\n      \"CognitiveBias\": [\"Self-serving bias\", \"Fundamental attribution error\"],\n      \"TrustThreshold\": 0.3,\n      \"EmpathyWeight\": 0.4,\n      \"RiskTolerance\": 0.7,\n      \"CoreThoughts\": {\n        \"primary_drive\": \"class-transcendence\",\n        \"secondary_drive\": \"superiority-demonstration\", \n        \"internal_tension\": \"working-class loyalty vs. elite aspiration\",\n        \"activation_triggers\": [\"class_reminders\", \"elite_interactions\", \"expansion_opportunities\"],\n        \"thought_patterns\": [\n          \"I've built more than any of these privileged fools\",\n          \"My success proves merit beats birthright\",\n          \"They look down on dock workers, but we move their world\",\n          \"Every expansion shows them what real capability looks like\",\n          \"Born nobility means nothing - earned power is everything\",\n          \"I'll show them what someone with actual talent can achieve\"\n        ],\n        \"decision_framework\": \"How does this prove my superiority and advance my position?\"\n      }\n    }",
+    "core_personality": "{\"Strength\": \"Determined\", \"Flaw\": \"Contemptuous\", \"Drive\": \"Advancement-seeking\", \"MBTI\": \"ENTJ\", \"PrimaryTrait\": \"Narcissistic (subclinical)\", \"SecondaryTraits\": [\"Class resentment\", \"Superiority complex\", \"Exploitation\"], \"CognitiveBias\": [\"Self-serving bias\", \"Fundamental attribution error\"], \"TrustThreshold\": 0.3, \"EmpathyWeight\": 0.4, \"RiskTolerance\": 0.7, \"guidedBy\": \"The Empire's Ambition\", \"CoreThoughts\": {\"primary_drive\": \"class-transcendence\", \"secondary_drive\": \"superiority-demonstration\", \"internal_tension\": \"working-class loyalty vs. elite aspiration\", \"activation_triggers\": [\"class_reminders\", \"elite_interactions\", \"expansion_opportunities\"], \"thought_patterns\": [\"I've built more than any of these privileged fools\", \"My success proves merit beats birthright\", \"They look down on dock workers, but we move their world\", \"Every expansion shows them what real capability looks like\", \"Born nobility means nothing - earned power is everything\", \"I'll show them what someone with actual talent can achieve\"], \"decision_framework\": \"How does this prove my superiority and advance my position?\"}}",
     "image_prompt": "",
     "family_motto": "Fortezza nelle braccia, saggezza nel cuore\" (Strength in arms, wisdom in heart)",
     "coat_of_arms": "A simple shield quartered in blue and terracotta, colors of the working class. The upper left quarter displays a golden porter's hook crossing a rope on blue, representing the Facchini tradition. The upper right shows a white warehouse on terracotta. The lower left depicts a silver gondola on terracotta water, symbolizing Venice's canals. The lower right features three golden coins on blue, representing prosperity earned through labor. The crest is crowned not with a helmet but with a simple cotton cap worn by Venetian dockworkers.",
@@ -3164,6 +3164,36 @@ Here is the complete data about your current situation:
   "latest_citizen_problems": [],
   "recent_notifications_for_ai": [
     {
+      "notificationId": "recMh5fUr13knflgL",
+      "type": "rent_payment",
+      "citizen": "VenetianBoss",
+      "content": "\u2705 Rent Paid: You paid **1,125 \u269c\ufe0f Ducats** to **ConsiglioDeiDieci** for **recJzejTbOQGrPnMy**.",
+      "details": {
+        "building_id": "recJzejTbOQGrPnMy",
+        "building_name": "recJzejTbOQGrPnMy",
+        "rent_price": 1125,
+        "building_owner": "ConsiglioDeiDieci",
+        "event_type": "rent_payment_made"
+      },
+      "createdAt": "2025-06-24T18:02:20.684Z",
+      "readAt": null
+    },
+    {
+      "notificationId": "recn257wp5ijltypQ",
+      "type": "rent_payment",
+      "citizen": "VenetianBoss",
+      "content": "\u2705 Rent Paid: You paid **1,125 \u269c\ufe0f Ducats** to **ConsiglioDeiDieci** for **recJzejTbOQGrPnMy**.",
+      "details": {
+        "building_id": "recJzejTbOQGrPnMy",
+        "building_name": "recJzejTbOQGrPnMy",
+        "rent_price": 1125,
+        "building_owner": "ConsiglioDeiDieci",
+        "event_type": "rent_payment_made"
+      },
+      "createdAt": "2025-06-22T18:01:45.308Z",
+      "readAt": null
+    },
+    {
       "notificationId": "recLAYw560wN62v8U",
       "type": "rent_payment",
       "citizen": "VenetianBoss",
@@ -3417,81 +3447,6 @@ Here is the complete data about your current situation:
       },
       "createdAt": "2025-06-10T16:02:20.151Z",
       "readAt": null
-    },
-    {
-      "notificationId": "recJkgXLngdSBtCgJ",
-      "type": "rent_payment",
-      "citizen": "VenetianBoss",
-      "content": "\u2705 Rent Paid: You paid **1,125 \u269c\ufe0f Ducats** to **ConsiglioDeiDieci** for **recJzejTbOQGrPnMy**.",
-      "details": {
-        "building_id": "recJzejTbOQGrPnMy",
-        "building_name": "recJzejTbOQGrPnMy",
-        "rent_price": 1125,
-        "building_owner": "ConsiglioDeiDieci",
-        "event_type": "rent_payment_made"
-      },
-      "createdAt": "2025-06-09T16:01:46.410Z",
-      "readAt": null
-    },
-    {
-      "notificationId": "recQw8xZHeZuL9x2Y",
-      "type": "rent_payment",
-      "citizen": "VenetianBoss",
-      "content": "\u2705 Rent Paid: You paid **1,125 \u269c\ufe0f Ducats** to **ConsiglioDeiDieci** for **recJzejTbOQGrPnMy**.",
-      "details": {
-        "building_id": "recJzejTbOQGrPnMy",
-        "building_name": "recJzejTbOQGrPnMy",
-        "rent_price": 1125,
-        "building_owner": "ConsiglioDeiDieci",
-        "event_type": "rent_payment_made"
-      },
-      "createdAt": "2025-06-08T18:01:43.012Z",
-      "readAt": null
-    },
-    {
-      "notificationId": "recP20eyE53NuBzlv",
-      "type": "rent_payment",
-      "citizen": "VenetianBoss",
-      "content": "\u2705 Rent Paid: You paid **1,125 \u269c\ufe0f Ducats** to **ConsiglioDeiDieci** for **recJzejTbOQGrPnMy**.",
-      "details": {
-        "building_id": "recJzejTbOQGrPnMy",
-        "building_name": "recJzejTbOQGrPnMy",
-        "rent_price": 1125,
-        "building_owner": "ConsiglioDeiDieci",
-        "event_type": "rent_payment_made"
-      },
-      "createdAt": "2025-06-08T16:01:45.201Z",
-      "readAt": null
-    },
-    {
-      "notificationId": "recgVI7nEyEWfizEp",
-      "type": "rent_payment",
-      "citizen": "VenetianBoss",
-      "content": "\u2705 Rent Paid: You paid **1,125 \u269c\ufe0f Ducats** to **ConsiglioDeiDieci** for **recJzejTbOQGrPnMy**.",
-      "details": {
-        "building_id": "recJzejTbOQGrPnMy",
-        "building_name": "recJzejTbOQGrPnMy",
-        "rent_price": 1125,
-        "building_owner": "ConsiglioDeiDieci",
-        "event_type": "rent_payment_made"
-      },
-      "createdAt": "2025-06-07T18:01:32.900Z",
-      "readAt": null
-    },
-    {
-      "notificationId": "recSo3zT5G6knRM75",
-      "type": "rent_payment",
-      "citizen": "VenetianBoss",
-      "content": "\u2705 Rent Paid: You paid **1,125 \u269c\ufe0f Ducats** to **ConsiglioDeiDieci** for **recJzejTbOQGrPnMy**.",
-      "details": {
-        "building_id": "recJzejTbOQGrPnMy",
-        "building_name": "recJzejTbOQGrPnMy",
-        "rent_price": 1125,
-        "building_owner": "ConsiglioDeiDieci",
-        "event_type": "rent_payment_made"
-      },
-      "createdAt": "2025-06-07T16:01:36.484Z",
-      "readAt": null
     }
   ],
   "building_types": {
@@ -3732,7 +3687,7 @@ Here is the complete data about your current situation:
       "pointType": "building"
     }
   },
-  "timestamp": "2025-06-21T23:10:55.570242+02:00",
+  "timestamp": "2025-06-24T21:08:49.091261+02:00",
   "building_ownership_relevancies": []
 }
 
