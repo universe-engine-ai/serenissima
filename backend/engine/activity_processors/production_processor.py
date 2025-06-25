@@ -405,7 +405,10 @@ def process(
                     "Owner": operator_username,
                     "Count": 1, # Each book is a single item
                     "Position": building_pos_str_book,
-                    "CreatedAt": now_iso
+                    "CreatedAt": now_iso,
+                    "Notes": json.dumps({
+                        "production": f"{1} {res_def_book.get('name', res_type)} produced at building {prod_building_record['fields'].get('Name', building_custom_id)}"
+                    })
                 }
                 if artwork_attributes_json:
                     new_book_payload["Attributes"] = artwork_attributes_json
@@ -438,7 +441,10 @@ def process(
                         "Owner": operator_username,
                         "Count": final_produced_amount,
                         "Position": building_pos_str,
-                        "CreatedAt": now_iso
+                        "CreatedAt": now_iso,
+                        "Notes": json.dumps({
+                            "production": f"{final_produced_amount:.4f} {res_def.get('name', res_type)} produced at building {prod_building_record['fields'].get('Name', building_custom_id)}"
+                        })
                     }
                     tables['resources'].create(new_resource_payload)
                     log.info(f"{LogColors.OKGREEN}Produced {final_produced_amount:.4f} of {res_type} in {building_custom_id} (created new).{LogColors.ENDC}")
