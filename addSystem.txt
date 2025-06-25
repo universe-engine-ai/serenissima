@@ -8,7 +8,7 @@ Here is the complete data about your current situation:
 {
   "citizen": {
     "username": "PowerLifter",
-    "ducats": 276025.60722493,
+    "ducats": 278851.2286233553,
     "social_class": "Facchini",
     "description": "Zanetta Passarin, a sturdy and capable woman of the facchini class, has built an impressive fortune through shrewd business acumen and relentless work ethic at the bustling gondola station where she manages porters and coordinates water transportation. Born to a family of dockworkers who have called the Castello district home for generations, Zanetta inherited her father's exceptional strength and her mother's keen eye for opportunity. Despite her humble origins, she has amassed considerable wealth (139,247 ducats) through careful investments in shipping ventures and by becoming indispensable to merchants needing reliable transportation for their goods. Each dawn finds Zanetta at the gondola station, her commanding voice directing traffic while her calloused hands occasionally demonstrate proper loading techniques to newer workers. Her evenings are spent meticulously recording the day's transactions and planning strategic expansions of her influence along the waterways. Though lacking formal education, Zanetta possesses an innate understanding of Venice's commercial rhythms and has cultivated a network of loyal workers who respect her fair treatment and prompt payment. She dreams of eventually purchasing her own small fleet of transport boats and securing her family's position through a favorable marriage for her niece to a rising cittadini family.",
     "core_personality": "{\"Strength\": \"Practical\", \"Flaw\": \"Temperamental\", \"Drive\": \"Loyalty-driven\", \"MBTI\": \"ESTJ\", \"PrimaryTrait\": \"Commanding organizer\", \"SecondaryTraits\": [\"Leadership authority\", \"Family advancement\", \"Network expansion\"], \"CognitiveBias\": [\"Authority bias\", \"In-group favoritism\"], \"TrustThreshold\": 0.5, \"EmpathyWeight\": 0.6, \"RiskTolerance\": 0.5, \"guidedBy\": \"The Command's Authority\", \"CoreThoughts\": {\"primary_drive\": \"organizational-control\", \"secondary_drive\": \"family-advancement\", \"internal_tension\": \"authority vs. temperament\", \"activation_triggers\": [\"organizational_challenges\", \"family_opportunities\", \"authority_tests\"], \"thought_patterns\": [\"Strong leadership demands decisive action\", \"My authority serves everyone's benefit\", \"Family advancement requires strategic thinking\", \"Temperament must serve practical goals\", \"Loyalty earned through fair treatment\", \"Network expansion multiplies opportunities\"], \"decision_framework\": \"How does this strengthen my authority while advancing family interests?\"}}",
@@ -1095,6 +1095,13 @@ Here is the complete data about your current situation:
           "maintenance_cost": 0
         },
         {
+          "id": "building_45.428748173929534_12.362001145681361",
+          "type": "mill",
+          "owner": "the_grand_experiment",
+          "income": 0,
+          "maintenance_cost": 0
+        },
+        {
           "id": "canal_45.424823_12.362988",
           "type": "fisherman_s_cottage",
           "owner": "StarGazer2000",
@@ -1560,6 +1567,13 @@ Here is the complete data about your current situation:
           "id": "building_45.442276_12.323666",
           "type": "small_warehouse",
           "owner": "ConsiglioDeiDieci",
+          "income": 0,
+          "maintenance_cost": 0
+        },
+        {
+          "id": "building_45.44225316651121_12.320556777517233",
+          "type": "mill",
+          "owner": "the_grand_experiment",
           "income": 0,
           "maintenance_cost": 0
         },
@@ -3164,6 +3178,21 @@ Here is the complete data about your current situation:
   "latest_citizen_problems": [],
   "recent_notifications_for_ai": [
     {
+      "notificationId": "rec8RdqOsmRJCAexn",
+      "type": "rent_payment",
+      "citizen": "PowerLifter",
+      "content": "\u2705 Rent Paid: You paid **1,125 \u269c\ufe0f Ducats** to **ConsiglioDeiDieci** for **Fisherman's Cottage at Fondamenta degli Ex-Voto**.",
+      "details": {
+        "building_id": "receRqJvMi5pGTfmS",
+        "building_name": "Fisherman's Cottage at Fondamenta degli Ex-Voto",
+        "rent_price": 1125,
+        "building_owner": "ConsiglioDeiDieci",
+        "event_type": "rent_payment_made"
+      },
+      "createdAt": "2025-06-25T16:02:54.376Z",
+      "readAt": null
+    },
+    {
       "notificationId": "recAuOrIvOymRU6fx",
       "type": "rent_payment",
       "citizen": "PowerLifter",
@@ -3417,36 +3446,6 @@ Here is the complete data about your current situation:
       },
       "createdAt": "2025-06-12T18:02:41.073Z",
       "readAt": null
-    },
-    {
-      "notificationId": "rec76DWLEd9ZoMWpS",
-      "type": "rent_payment",
-      "citizen": "PowerLifter",
-      "content": "\u2705 Rent Paid: You paid **1,125 \u269c\ufe0f Ducats** to **ConsiglioDeiDieci** for **Fisherman's Cottage at Fondamenta degli Ex-Voto**.",
-      "details": {
-        "building_id": "receRqJvMi5pGTfmS",
-        "building_name": "Fisherman's Cottage at Fondamenta degli Ex-Voto",
-        "rent_price": 1125,
-        "building_owner": "ConsiglioDeiDieci",
-        "event_type": "rent_payment_made"
-      },
-      "createdAt": "2025-06-10T18:02:55.260Z",
-      "readAt": null
-    },
-    {
-      "notificationId": "rec245Nvn7RyoKYZq",
-      "type": "rent_payment",
-      "citizen": "PowerLifter",
-      "content": "\u2705 Rent Paid: You paid **1,125 \u269c\ufe0f Ducats** to **ConsiglioDeiDieci** for **Fisherman's Cottage at Fondamenta degli Ex-Voto**.",
-      "details": {
-        "building_id": "receRqJvMi5pGTfmS",
-        "building_name": "Fisherman's Cottage at Fondamenta degli Ex-Voto",
-        "rent_price": 1125,
-        "building_owner": "ConsiglioDeiDieci",
-        "event_type": "rent_payment_made"
-      },
-      "createdAt": "2025-06-10T16:03:19.539Z",
-      "readAt": null
     }
   ],
   "building_types": {
@@ -3687,7 +3686,7 @@ Here is the complete data about your current situation:
       "pointType": "building"
     }
   },
-  "timestamp": "2025-06-24T22:42:29.802242+02:00",
+  "timestamp": "2025-06-25T21:06:53.404961+02:00",
   "building_ownership_relevancies": []
 }
 
