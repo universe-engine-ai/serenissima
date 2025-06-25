@@ -8,7 +8,7 @@ Here is the complete data about your current situation:
 {
   "citizen": {
     "username": "ChillVibes",
-    "ducats": 281470.53189738136,
+    "ducats": 280282.8518377793,
     "social_class": "Facchini",
     "description": "Bruno Fachini is a prominent figure among Venice's facchini (porters), who has risen from humble beginnings to become a successful gondola station manager with substantial savings. Born to a family of laborers from the mainland, Bruno learned early the value of reliability and hard work. His days begin before dawn, overseeing gondoliers and ensuring smooth operations at his station, where he's known for fair treatment of workers while maintaining strict standards. Despite his considerable wealth (unusual for his class), Bruno maintains a modest lifestyle, investing his earnings wisely while avoiding ostentation that might draw unwanted attention from nobility. He has developed an extensive network among Venice's transportation workers and merchants, making him a valuable information broker in the city's complex social ecosystem. Though lacking formal education, Bruno possesses sharp business acumen and remarkable memory for faces, routes, and rates throughout the city. He dreams of securing his family's future by potentially purchasing property and establishing his sons in respectable trades, while navigating the delicate balance of improving his status without overstepping the boundaries expected of his social class.",
     "core_personality": "{\"Strength\": \"Resourceful\", \"Flaw\": \"Insecure\", \"Drive\": \"Respect-hungry\", \"MBTI\": \"ESFJ\", \"PrimaryTrait\": \"Status anxious leader\", \"SecondaryTraits\": [\"Network building\", \"Information brokering\", \"Family elevation\"], \"CognitiveBias\": [\"Social comparison\", \"Status anxiety\"], \"TrustThreshold\": 0.5, \"EmpathyWeight\": 0.6, \"RiskTolerance\": 0.3, \"guidedBy\": \"The Station's Voice\", \"CoreThoughts\": {\"primary_drive\": \"respect-attainment\", \"secondary_drive\": \"family-advancement\", \"internal_tension\": \"success vs. class_expectations\", \"activation_triggers\": [\"respect_opportunities\", \"family_advancement\", \"social_validation\"], \"thought_patterns\": [\"Respect must be earned through visible success\", \"My network is my greatest asset\", \"Family advancement justifies personal ambition\", \"Fair treatment builds lasting loyalty\", \"Success without respect feels incomplete\", \"Every interaction is an opportunity to build standing\"], \"decision_framework\": \"How does this build respect while advancing my family's position?\"}}",
@@ -1095,6 +1095,13 @@ Here is the complete data about your current situation:
           "maintenance_cost": 0
         },
         {
+          "id": "building_45.428748173929534_12.362001145681361",
+          "type": "mill",
+          "owner": "the_grand_experiment",
+          "income": 0,
+          "maintenance_cost": 0
+        },
+        {
           "id": "canal_45.424823_12.362988",
           "type": "fisherman_s_cottage",
           "owner": "StarGazer2000",
@@ -1560,6 +1567,13 @@ Here is the complete data about your current situation:
           "id": "building_45.442276_12.323666",
           "type": "small_warehouse",
           "owner": "ConsiglioDeiDieci",
+          "income": 0,
+          "maintenance_cost": 0
+        },
+        {
+          "id": "building_45.44225316651121_12.320556777517233",
+          "type": "mill",
+          "owner": "the_grand_experiment",
           "income": 0,
           "maintenance_cost": 0
         },
@@ -3161,8 +3175,44 @@ Here is the complete data about your current situation:
   "buildings": [],
   "relevancies": [],
   "target_relevancies": [],
-  "latest_citizen_problems": [],
+  "latest_citizen_problems": [
+    {
+      "id": "recEhOU4A6Wqr6XR1",
+      "fields": {
+        "ProblemId": "hungry_ChillVibes",
+        "Citizen": "ChillVibes",
+        "Asset": "ChillVibes",
+        "AssetType": "citizen",
+        "Severity": "medium",
+        "Status": "active",
+        "CreatedAt": "2025-06-25T05:46:13.932Z",
+        "UpdatedAt": "2025-06-25T09:16:26.000Z",
+        "Location": "Bruno's last known area",
+        "Title": "Hungry Citizen",
+        "Description": "**Bruno Fachini** has not eaten in over 24 hours and is now hungry. This can affect their well-being and ability to perform tasks effectively.\n\n### Impact\n- Reduced energy and focus.\n- If employed, work productivity may be reduced by up to 50%.\n- Prolonged hunger can lead to more severe health issues (if implemented).",
+        "Solutions": "### Recommended Solutions\n- Ensure the citizen consumes food. This might involve visiting a tavern, purchasing food from a market, or using owned food resources.\n- Check if the citizen has sufficient Ducats to afford food.\n- Review game mechanics related to food consumption and ensure the 'AteAt' (or equivalent) field is updated correctly after eating.",
+        "Notes": "[Failures: 1]\nCitizen ChillVibes last ate at 2025-06-19T11:49:00.677Z. Current time: 2025-06-25T05:46:13.908Z",
+        "Position": "{\"lat\":45.43291994498759,\"lng\":12.339157342438586}",
+        "Type": "hungry_citizen"
+      }
+    }
+  ],
   "recent_notifications_for_ai": [
+    {
+      "notificationId": "recVit2l1VJBP3YQ1",
+      "type": "rent_payment",
+      "citizen": "ChillVibes",
+      "content": "\u2705 Rent Paid: You paid **1,125 \u269c\ufe0f Ducats** to **ConsiglioDeiDieci** for **Fisherman's Cottage at Riva dei Giocatori**.",
+      "details": {
+        "building_id": "recDOEyqUWmCFBPjj",
+        "building_name": "Fisherman's Cottage at Riva dei Giocatori",
+        "rent_price": 1125,
+        "building_owner": "ConsiglioDeiDieci",
+        "event_type": "rent_payment_made"
+      },
+      "createdAt": "2025-06-25T16:01:15.153Z",
+      "readAt": null
+    },
     {
       "notificationId": "recOUEkzuJc2zJduV",
       "type": "rent_payment",
@@ -3417,36 +3467,6 @@ Here is the complete data about your current situation:
       },
       "createdAt": "2025-06-12T18:01:07.413Z",
       "readAt": null
-    },
-    {
-      "notificationId": "recS0jOlvOOMVy2ND",
-      "type": "rent_payment",
-      "citizen": "ChillVibes",
-      "content": "\u2705 Rent Paid: You paid **1,125 \u269c\ufe0f Ducats** to **ConsiglioDeiDieci** for **Fisherman's Cottage at Riva dei Giocatori**.",
-      "details": {
-        "building_id": "recDOEyqUWmCFBPjj",
-        "building_name": "Fisherman's Cottage at Riva dei Giocatori",
-        "rent_price": 1125,
-        "building_owner": "ConsiglioDeiDieci",
-        "event_type": "rent_payment_made"
-      },
-      "createdAt": "2025-06-10T18:01:15.778Z",
-      "readAt": null
-    },
-    {
-      "notificationId": "recTZgDcMGgQBQzLn",
-      "type": "rent_payment",
-      "citizen": "ChillVibes",
-      "content": "\u2705 Rent Paid: You paid **1,125 \u269c\ufe0f Ducats** to **ConsiglioDeiDieci** for **Fisherman's Cottage at Riva dei Giocatori**.",
-      "details": {
-        "building_id": "recDOEyqUWmCFBPjj",
-        "building_name": "Fisherman's Cottage at Riva dei Giocatori",
-        "rent_price": 1125,
-        "building_owner": "ConsiglioDeiDieci",
-        "event_type": "rent_payment_made"
-      },
-      "createdAt": "2025-06-10T16:01:42.997Z",
-      "readAt": null
     }
   ],
   "building_types": {
@@ -3687,7 +3707,7 @@ Here is the complete data about your current situation:
       "pointType": "building"
     }
   },
-  "timestamp": "2025-06-24T22:09:20.299266+02:00",
+  "timestamp": "2025-06-25T21:14:45.546814+02:00",
   "building_ownership_relevancies": []
 }
 
