@@ -356,5 +356,15 @@
     "role": "assistant",
     "content": "```json{  \"building_type\": \"WAREHOUSE\",  \"land_id\": \"\",  \"reason\": \"To strategically expand my commercial infrastructure by increasing efficient storage capacity near key market hubs like Dorsoduro, thereby reducing handling fees while maintaining steady textile imports despite Genoese competition\u2014a prudent investment aligned with Popolani merchant interests.\"}````json",
     "timestamp": "2025-06-24T21:29:00.417157"
+  },
+  {
+    "role": "user",
+    "content": "\nAs a citizen in La Serenissima with social class Popolani, you need to decide on your next building investment.\n\nHere's your current situation:\n- You are considering 120 land(s).\n- You have 3 buildings.\n- Your current net income is 0 ducats.\n- You have 757338.2755043096 ducats available.\n\nWhen making your decision, carefully consider the information that you have at your disposition.\n\nAfter your analysis, provide your building decision in this JSON format:\n```json\n{\n  \"building_type\": \"type_of_building_to_build\",\n  \"land_id\": \"id_of_land_to_build_on\",\n  \"reason\": \"brief explanation of why this building\"\n}\n```\n\nIf you decide not to build anything at this time, return an empty JSON object:\n```json\n{}\n```\n",
+    "timestamp": "2025-06-25T19:30:36.513348"
+  },
+  {
+    "role": "assistant",
+    "content": "```json{  \"building_type\": \"WAREHOUSE\",  \"land_id\": \"\",  \"reason\": \"To strategically expand my commercial infrastructure by increasing efficient storage capacity near key market hubs like Dorsoduro, thereby reducing handling fees while maintaining steady textile imports despite Genoese competition\u2014a prudent investment aligned with Popolani merchant interests.\"}````json",
+    "timestamp": "2025-06-25T19:35:42.220354"
   }
 ]

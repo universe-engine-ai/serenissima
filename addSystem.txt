@@ -8,7 +8,7 @@ Here is the complete data about your current situation:
 {
   "citizen": {
     "username": "ZenithTrader",
-    "ducats": 749239.4721126282,
+    "ducats": 757338.2755043096,
     "social_class": "Popolani",
     "description": "A wiry, callused man in his mid-40s with observant gray eyes that assess loads and distances with practiced precision. Lorenzo's weather-beaten face bears the lines of physical labor and careful calculation, softened occasionally by a shrewd smile when spotting an opportunity. Though belonging to the facchini class of porters, his attire shows unexpected quality\u2014simple but well-maintained wool garments with subtle personal touches that set him apart from his peers. Starting as a humble porter at the Rialto, Lorenzo's exceptional memory for cargo manifests and uncanny ability to maximize transport efficiency gradually elevated him above his station. He's developed a small network of fellow porters who follow his lead, recognizing his knack for securing the most profitable hauling contracts. His daily routine begins before dawn at the bustling docks, where merchants increasingly ask for him by name, trusting his discretion with valuable shipments and his fair pricing. In rare moments of leisure, Lorenzo frequents a modest tavern near the Arsenal, where he quietly gathers market intelligence while nursing a single glass of wine.",
     "core_personality": "{\"Strength\": \"Pragmatic\", \"Flaw\": \"Calculating\", \"Drive\": \"Opportunity-focused\", \"MBTI\": \"ESTJ\", \"PrimaryTrait\": \"Stripped-down survivor\", \"SecondaryTraits\": [\"False nobility past\", \"Labor resilience\", \"Opportunity recognition\"], \"CognitiveBias\": [\"Sunk cost fallacy\", \"Availability heuristic\"], \"TrustThreshold\": 0.4, \"EmpathyWeight\": 0.4, \"RiskTolerance\": 0.6, \"guidedBy\": \"The Survivor's Truth\", \"CoreThoughts\": {\"primary_drive\": \"survival-optimization\", \"secondary_drive\": \"opportunity-maximization\", \"internal_tension\": \"past pretensions vs. present reality\", \"activation_triggers\": [\"survival_threats\", \"opportunity_recognition\", \"status_reminders\"], \"thought_patterns\": [\"Pretenses are luxuries I can no longer afford\", \"Every opportunity must be evaluated for real value\", \"My calloused hands tell a truer story than noble claims\", \"Survival demands I see things as they actually are\", \"The lodging house dream is built on honest labor\", \"Past mistakes taught me to value substance over appearance\"], \"decision_framework\": \"What serves my survival while building genuine opportunity?\"}}",
@@ -1100,6 +1100,13 @@ Here is the complete data about your current situation:
           "maintenance_cost": 0
         },
         {
+          "id": "building_45.428748173929534_12.362001145681361",
+          "type": "mill",
+          "owner": "the_grand_experiment",
+          "income": 0,
+          "maintenance_cost": 0
+        },
+        {
           "id": "canal_45.424823_12.362988",
           "type": "fisherman_s_cottage",
           "owner": "StarGazer2000",
@@ -1565,6 +1572,13 @@ Here is the complete data about your current situation:
           "id": "building_45.442276_12.323666",
           "type": "small_warehouse",
           "owner": "ConsiglioDeiDieci",
+          "income": 0,
+          "maintenance_cost": 0
+        },
+        {
+          "id": "building_45.44225316651121_12.320556777517233",
+          "type": "mill",
+          "owner": "the_grand_experiment",
           "income": 0,
           "maintenance_cost": 0
         },
@@ -3193,159 +3207,46 @@ Here is the complete data about your current situation:
   "target_relevancies": [],
   "latest_citizen_problems": [
     {
-      "id": "recDjSBbSiUBTVOX5",
+      "id": "recBPZVpYbMGG2NNd",
       "fields": {
-        "ProblemId": "problem_pinpoint_building_45.439979_12.320432_wine_RESOURCE_SHORTAGE",
+        "ProblemId": "hungry_ZenithTrader",
         "Citizen": "ZenithTrader",
-        "Asset": "building_45.439979_12.320432",
-        "AssetType": "building",
-        "Severity": "Critical",
+        "Asset": "ZenithTrader",
+        "AssetType": "citizen",
+        "Severity": "medium",
         "Status": "active",
-        "CreatedAt": "2025-06-15T23:27:49.052Z",
-        "UpdatedAt": "2025-06-15T21:27:49.000Z",
-        "Location": "Contract Stall at Rio Ter\u00e0 dei Tolentini",
-        "Title": "Resource Shortage: wine for Contract Stall at Rio Ter\u00e0 dei Tolentini",
-        "Description": "Building 'Contract Stall at Rio Ter\u00e0 dei Tolentini' (ID: building_45.439979_12.320432) is out of stock for 'wine', has a 'markup_buy' contract, but the resource appears to be unavailable or not actively sold elsewhere in Venice.",
-        "Solutions": "The resource 'wine' is currently scarce. Consider:\n- Increasing the buy price on your 'markup_buy' contract significantly to incentivize sellers.\n- If possible, find alternative resources or adjust production that depends on 'wine'.\n- Wait for market conditions to change (e.g., new imports by merchants).",
-        "Position": "{\"lat\": 45.439979, \"lng\": 12.320432}",
-        "Type": "resource_shortage"
-      }
-    },
-    {
-      "id": "recl8siYiv6Q9TYnY",
-      "fields": {
-        "ProblemId": "problem_pinpoint_building_45.439979_12.320432_salt_RESOURCE_SHORTAGE",
-        "Citizen": "ZenithTrader",
-        "Asset": "building_45.439979_12.320432",
-        "AssetType": "building",
-        "Severity": "Critical",
-        "Status": "active",
-        "CreatedAt": "2025-06-15T23:27:38.252Z",
-        "UpdatedAt": "2025-06-15T21:27:38.000Z",
-        "Location": "Contract Stall at Rio Ter\u00e0 dei Tolentini",
-        "Title": "Resource Shortage: salt for Contract Stall at Rio Ter\u00e0 dei Tolentini",
-        "Description": "Building 'Contract Stall at Rio Ter\u00e0 dei Tolentini' (ID: building_45.439979_12.320432) is out of stock for 'salt', has a 'markup_buy' contract, but the resource appears to be unavailable or not actively sold elsewhere in Venice.",
-        "Solutions": "The resource 'salt' is currently scarce. Consider:\n- Increasing the buy price on your 'markup_buy' contract significantly to incentivize sellers.\n- If possible, find alternative resources or adjust production that depends on 'salt'.\n- Wait for market conditions to change (e.g., new imports by merchants).",
-        "Position": "{\"lat\": 45.439979, \"lng\": 12.320432}",
-        "Type": "resource_shortage"
-      }
-    },
-    {
-      "id": "rec0VHahqTNf0g6zs",
-      "fields": {
-        "ProblemId": "problem_pinpoint_building_45.439979_12.320432_preserved_fish_RESOURCE_SHORTAGE",
-        "Citizen": "ZenithTrader",
-        "Asset": "building_45.439979_12.320432",
-        "AssetType": "building",
-        "Severity": "Critical",
-        "Status": "active",
-        "CreatedAt": "2025-06-15T23:27:24.199Z",
-        "UpdatedAt": "2025-06-15T21:27:24.000Z",
-        "Location": "Contract Stall at Rio Ter\u00e0 dei Tolentini",
-        "Title": "Resource Shortage: preserved_fish for Contract Stall at Rio Ter\u00e0 dei Tolentini",
-        "Description": "Building 'Contract Stall at Rio Ter\u00e0 dei Tolentini' (ID: building_45.439979_12.320432) is out of stock for 'preserved_fish', has a 'markup_buy' contract, but the resource appears to be unavailable or not actively sold elsewhere in Venice.",
-        "Solutions": "The resource 'preserved_fish' is currently scarce. Consider:\n- Increasing the buy price on your 'markup_buy' contract significantly to incentivize sellers.\n- If possible, find alternative resources or adjust production that depends on 'preserved_fish'.\n- Wait for market conditions to change (e.g., new imports by merchants).",
-        "Position": "{\"lat\": 45.439979, \"lng\": 12.320432}",
-        "Type": "resource_shortage"
-      }
-    },
-    {
-      "id": "recqSWNA36hYqxh2Y",
-      "fields": {
-        "ProblemId": "problem_pinpoint_building_45.439979_12.320432_olives_RESOURCE_SHORTAGE",
-        "Citizen": "ZenithTrader",
-        "Asset": "building_45.439979_12.320432",
-        "AssetType": "building",
-        "Severity": "Critical",
-        "Status": "active",
-        "CreatedAt": "2025-06-15T23:27:13.852Z",
-        "UpdatedAt": "2025-06-15T21:27:14.000Z",
-        "Location": "Contract Stall at Rio Ter\u00e0 dei Tolentini",
-        "Title": "Resource Shortage: olives for Contract Stall at Rio Ter\u00e0 dei Tolentini",
-        "Description": "Building 'Contract Stall at Rio Ter\u00e0 dei Tolentini' (ID: building_45.439979_12.320432) is out of stock for 'olives', has a 'markup_buy' contract, but the resource appears to be unavailable or not actively sold elsewhere in Venice.",
-        "Solutions": "The resource 'olives' is currently scarce. Consider:\n- Increasing the buy price on your 'markup_buy' contract significantly to incentivize sellers.\n- If possible, find alternative resources or adjust production that depends on 'olives'.\n- Wait for market conditions to change (e.g., new imports by merchants).",
-        "Position": "{\"lat\": 45.439979, \"lng\": 12.320432}",
-        "Type": "resource_shortage"
-      }
-    },
-    {
-      "id": "rec6lfEvdWqA7dbqx",
-      "fields": {
-        "ProblemId": "problem_pinpoint_building_45.439979_12.320432_olive_oil_RESOURCE_SHORTAGE",
-        "Citizen": "ZenithTrader",
-        "Asset": "building_45.439979_12.320432",
-        "AssetType": "building",
-        "Severity": "Critical",
-        "Status": "active",
-        "CreatedAt": "2025-06-15T23:27:09.327Z",
-        "UpdatedAt": "2025-06-15T21:27:09.000Z",
-        "Location": "Contract Stall at Rio Ter\u00e0 dei Tolentini",
-        "Title": "Resource Shortage: olive_oil for Contract Stall at Rio Ter\u00e0 dei Tolentini",
-        "Description": "Building 'Contract Stall at Rio Ter\u00e0 dei Tolentini' (ID: building_45.439979_12.320432) is out of stock for 'olive_oil', has a 'markup_buy' contract, but the resource appears to be unavailable or not actively sold elsewhere in Venice.",
-        "Solutions": "The resource 'olive_oil' is currently scarce. Consider:\n- Increasing the buy price on your 'markup_buy' contract significantly to incentivize sellers.\n- If possible, find alternative resources or adjust production that depends on 'olive_oil'.\n- Wait for market conditions to change (e.g., new imports by merchants).",
-        "Position": "{\"lat\": 45.439979, \"lng\": 12.320432}",
-        "Type": "resource_shortage"
-      }
-    },
-    {
-      "id": "recK5SI9vXTdgTO1D",
-      "fields": {
-        "ProblemId": "problem_pinpoint_building_45.439979_12.320432_flour_RESOURCE_SHORTAGE",
-        "Citizen": "ZenithTrader",
-        "Asset": "building_45.439979_12.320432",
-        "AssetType": "building",
-        "Severity": "Critical",
-        "Status": "active",
-        "CreatedAt": "2025-06-15T23:27:04.430Z",
-        "UpdatedAt": "2025-06-15T21:27:05.000Z",
-        "Location": "Contract Stall at Rio Ter\u00e0 dei Tolentini",
-        "Title": "Resource Shortage: flour for Contract Stall at Rio Ter\u00e0 dei Tolentini",
-        "Description": "Building 'Contract Stall at Rio Ter\u00e0 dei Tolentini' (ID: building_45.439979_12.320432) is out of stock for 'flour', has a 'markup_buy' contract, but the resource appears to be unavailable or not actively sold elsewhere in Venice.",
-        "Solutions": "The resource 'flour' is currently scarce. Consider:\n- Increasing the buy price on your 'markup_buy' contract significantly to incentivize sellers.\n- If possible, find alternative resources or adjust production that depends on 'flour'.\n- Wait for market conditions to change (e.g., new imports by merchants).",
-        "Position": "{\"lat\": 45.439979, \"lng\": 12.320432}",
-        "Type": "resource_shortage"
-      }
-    },
-    {
-      "id": "recdWfL8xhPUtyT0b",
-      "fields": {
-        "ProblemId": "problem_pinpoint_building_45.439979_12.320432_fish_RESOURCE_SHORTAGE",
-        "Citizen": "ZenithTrader",
-        "Asset": "building_45.439979_12.320432",
-        "AssetType": "building",
-        "Severity": "Critical",
-        "Status": "active",
-        "CreatedAt": "2025-06-15T23:26:58.372Z",
-        "UpdatedAt": "2025-06-15T21:26:58.000Z",
-        "Location": "Contract Stall at Rio Ter\u00e0 dei Tolentini",
-        "Title": "Resource Shortage: fish for Contract Stall at Rio Ter\u00e0 dei Tolentini",
-        "Description": "Building 'Contract Stall at Rio Ter\u00e0 dei Tolentini' (ID: building_45.439979_12.320432) is out of stock for 'fish', has a 'markup_buy' contract, but the resource appears to be unavailable or not actively sold elsewhere in Venice.",
-        "Solutions": "The resource 'fish' is currently scarce. Consider:\n- Increasing the buy price on your 'markup_buy' contract significantly to incentivize sellers.\n- If possible, find alternative resources or adjust production that depends on 'fish'.\n- Wait for market conditions to change (e.g., new imports by merchants).",
-        "Position": "{\"lat\": 45.439979, \"lng\": 12.320432}",
-        "Type": "resource_shortage"
-      }
-    },
-    {
-      "id": "reckNCO7RivhTgAaC",
-      "fields": {
-        "ProblemId": "problem_pinpoint_building_45.439979_12.320432_bread_RESOURCE_SHORTAGE",
-        "Citizen": "ZenithTrader",
-        "Asset": "building_45.439979_12.320432",
-        "AssetType": "building",
-        "Severity": "Critical",
-        "Status": "active",
-        "CreatedAt": "2025-06-15T23:26:36.873Z",
-        "UpdatedAt": "2025-06-15T21:26:37.000Z",
-        "Location": "Contract Stall at Rio Ter\u00e0 dei Tolentini",
-        "Title": "Resource Shortage: bread for Contract Stall at Rio Ter\u00e0 dei Tolentini",
-        "Description": "Building 'Contract Stall at Rio Ter\u00e0 dei Tolentini' (ID: building_45.439979_12.320432) is out of stock for 'bread', has a 'markup_buy' contract, but the resource appears to be unavailable or not actively sold elsewhere in Venice.",
-        "Solutions": "The resource 'bread' is currently scarce. Consider:\n- Increasing the buy price on your 'markup_buy' contract significantly to incentivize sellers.\n- If possible, find alternative resources or adjust production that depends on 'bread'.\n- Wait for market conditions to change (e.g., new imports by merchants).",
-        "Position": "{\"lat\": 45.439979, \"lng\": 12.320432}",
-        "Type": "resource_shortage"
+        "CreatedAt": "2025-06-25T05:46:13.935Z",
+        "UpdatedAt": "2025-06-25T09:16:37.000Z",
+        "Location": "Lorenzo's last known area",
+        "Title": "Hungry Citizen",
+        "Description": "**Lorenzo Grimani** has not eaten in over 24 hours and is now hungry. This can affect their well-being and ability to perform tasks effectively.\n\n### Impact\n- Reduced energy and focus.\n- If employed, work productivity may be reduced by up to 50%.\n- Prolonged hunger can lead to more severe health issues (if implemented).",
+        "Solutions": "### Recommended Solutions\n- Ensure the citizen consumes food. This might involve visiting a tavern, purchasing food from a market, or using owned food resources.\n- Check if the citizen has sufficient Ducats to afford food.\n- Review game mechanics related to food consumption and ensure the 'AteAt' (or equivalent) field is updated correctly after eating.",
+        "Notes": "[Failures: 1]\nCitizen ZenithTrader last ate at 2025-06-15T21:08:32.194Z. Current time: 2025-06-25T05:46:13.908Z",
+        "Position": "{\"lat\":45.44122843783041,\"lng\":12.322466973631764}",
+        "Type": "hungry_citizen"
       }
     }
   ],
   "recent_notifications_for_ai": [
+    {
+      "notificationId": "recbS6VTfPFqT5rFs",
+      "type": "rent_payment",
+      "citizen": "ZenithTrader",
+      "content": "\ud83d\udcec **Rent Received Summary** \ud83d\udcec\nYou received a total of **1,740 \u269c\ufe0f Ducats** from your properties today.\n\nDetails:\n- \u2705 **1,740 \u269c\ufe0f** from **Raffaele Sartori** for **Artisan's House at Calle dei Vedei**.\n",
+      "details": {
+        "event_type": "landlord_rent_summary",
+        "total_received": 1740,
+        "payments": [
+          {
+            "occupant_name": "Raffaele Sartori",
+            "building_name": "Artisan's House at Calle dei Vedei",
+            "amount": 1740
+          }
+        ]
+      },
+      "createdAt": "2025-06-25T16:04:00.856Z",
+      "readAt": null
+    },
     {
       "notificationId": "recaLbSPwdiGO7xag",
       "type": "rent_payment",
@@ -3756,88 +3657,6 @@ Here is the complete data about your current situation:
       },
       "createdAt": "2025-06-12T00:18:42.680Z",
       "readAt": "2025-06-12T00:19:04.056Z"
-    },
-    {
-      "notificationId": "recvWRD21uPF6jm9r",
-      "type": "rent_payment",
-      "citizen": "ZenithTrader",
-      "content": "\ud83d\udcec **Rent Received Summary** \ud83d\udcec\nYou received a total of **1,740 \u269c\ufe0f Ducats** from your properties today.\n\nDetails:\n- \u2705 **1,740 \u269c\ufe0f** from **Raffaele Sartori** for **Artisan's House at Calle dei Vedei**.\n",
-      "details": {
-        "event_type": "landlord_rent_summary",
-        "total_received": 1740,
-        "payments": [
-          {
-            "occupant_name": "Raffaele Sartori",
-            "building_name": "Artisan's House at Calle dei Vedei",
-            "amount": 1740
-          }
-        ]
-      },
-      "createdAt": "2025-06-10T18:04:06.063Z",
-      "readAt": null
-    },
-    {
-      "notificationId": "rec5IefHSE8OT67k5",
-      "type": "rent_payment",
-      "citizen": "ZenithTrader",
-      "content": "\ud83d\udcec **Rent Received Summary** \ud83d\udcec\nYou received a total of **1,740 \u269c\ufe0f Ducats** from your properties today.\n\nDetails:\n- \u2705 **1,740 \u269c\ufe0f** from **Raffaele Sartori** for **Artisan's House at Calle dei Vedei**.\n",
-      "details": {
-        "event_type": "landlord_rent_summary",
-        "total_received": 1740,
-        "payments": [
-          {
-            "occupant_name": "Raffaele Sartori",
-            "building_name": "Artisan's House at Calle dei Vedei",
-            "amount": 1740
-          }
-        ]
-      },
-      "createdAt": "2025-06-10T16:04:27.157Z",
-      "readAt": null
-    },
-    {
-      "notificationId": "recEKw7NY9DuhRZ4D",
-      "type": "markup_buy_contract_updated",
-      "citizen": "ZenithTrader",
-      "content": "Your buy order for olives (markup_buy_main_building_45.439979_12.320432_olives) has been updated.",
-      "details": {
-        "contractId": "markup_buy_main_building_45.439979_12.320432_olives"
-      },
-      "createdAt": "2025-06-10T12:53:43.295Z",
-      "readAt": "2025-06-10T12:53:43.435Z"
-    },
-    {
-      "notificationId": "receeOmiPfBOZgTA7",
-      "type": "markup_buy_contract_updated",
-      "citizen": "ZenithTrader",
-      "content": "Your buy order for olive_oil (markup_buy_main_building_45.439979_12.320432_olive_oil) has been updated.",
-      "details": {
-        "contractId": "markup_buy_main_building_45.439979_12.320432_olive_oil"
-      },
-      "createdAt": "2025-06-10T12:52:45.207Z",
-      "readAt": "2025-06-10T12:52:45.355Z"
-    },
-    {
-      "notificationId": "recSY3PczZ2i0SGrD",
-      "type": "markup_buy_contract_updated",
-      "citizen": "ZenithTrader",
-      "content": "Your buy order for flour (markup_buy_main_building_45.439979_12.320432_flour) has been updated.",
-      "details": {
-        "contractId": "markup_buy_main_building_45.439979_12.320432_flour"
-      },
-      "createdAt": "2025-06-10T12:51:40.599Z",
-      "readAt": "2025-06-10T12:51:40.723Z"
-    },
-    {
-      "notificationId": "rec78BHDurZJXSVj9",
-      "type": "markup_buy_contract_updated",
-      "citizen": "ZenithTrader",
-      "content": "Your buy order for bread (markup_buy_main_building_45.439979_12.320432_bread) has been updated.",
-      "details": {
-        "contractId": "markup_buy_main_building_45.439979_12.320432_bread"
-      },
-      "createdAt": "2025-06-10T12:50:53.886Z",
-      "readAt": "2025-06-10T12:50:54.046Z"
     }
   ],
   "building_types": {
@@ -4067,7 +3886,7 @@ Here is the complete data about your current situation:
       "constructionMinutes": 8640,
       "buildTier": 2,
       "tier": null,
-      "category": "passive",
+      "category": "Infrastructure",
       "pointType": "building"
     },
     "dairy": {
@@ -4124,25 +3943,6 @@ Here is the complete data about your current situation:
       "category": "home",
       "pointType": "canal"
     },
-    "glassblower_workshop": {
-      "id": "glassblower_workshop",
-      "type": "glassblower_workshop",
-      "name": "Glassblower Workshop",
-      "shortDescription": "Specialized facility where skilled artisans shape molten glass into fine objects and art pieces.",
-      "constructionCost": 1500000,
-      "constructionCosts": {
-        "ducats": 1500000,
-        "timber": 430,
-        "bricks": 1070,
-        "stone": 570,
-        "iron": 290
-      },
-      "constructionMinutes": 5760,
-      "buildTier": 2,
-      "tier": null,
-      "category": "business",
-      "pointType": "building"
-    },
     "glass_foundry": {
       "id": "glass_foundry",
       "type": "glass_foundry",
@@ -4157,6 +3957,25 @@ Here is the complete data about your current situation:
         "iron": 390
       },
       "constructionMinutes": 10080,
+      "buildTier": 2,
+      "tier": null,
+      "category": "business",
+      "pointType": "building"
+    },
+    "glassblower_workshop": {
+      "id": "glassblower_workshop",
+      "type": "glassblower_workshop",
+      "name": "Glassblower Workshop",
+      "shortDescription": "Specialized facility where skilled artisans shape molten glass into fine objects and art pieces.",
+      "constructionCost": 1500000,
+      "constructionCosts": {
+        "ducats": 1500000,
+        "timber": 430,
+        "bricks": 1070,
+        "stone": 570,
+        "iron": 290
+      },
+      "constructionMinutes": 5760,
       "buildTier": 2,
       "tier": null,
       "category": "business",
@@ -4744,31 +4563,31 @@ Here is the complete data about your current situation:
       "pointType": "building"
     }
   },
-  "timestamp": "2025-06-24T23:27:48.228759+02:00",
+  "timestamp": "2025-06-25T21:30:35.672426+02:00",
   "building_ownership_relevancies": [
     {
-      "asset": "building_45.428285_12.360022",
+      "asset": "building_45.430597_12.354476",
       "asset_type": "building",
       "category": "ownership_conflict",
       "type": "building_on_others_land",
-      "target_citizen": "Italia",
-      "score": 70,
+      "target_citizen": "BasstheWhale",
+      "score": 85,
       "time_horizon": "medium",
-      "title": "Your Artisan's House at Calle dei Vedei is on land owned by \"Italia\".",
-      "description": "You own a **Artisan's House at Calle dei Vedei** on land owned by **Italia**.",
-      "status": "medium"
+      "title": "Your Contract Stall at Calle dei Greci is on land owned by \"BasstheWhale\".",
+      "description": "You own a **Contract Stall at Calle dei Greci** on land owned by **BasstheWhale**.",
+      "status": "high"
     },
     {
-      "asset": "building_45.428285_12.360022",
+      "asset": "building_45.430597_12.354476",
       "asset_type": "building",
       "category": "ownership_conflict",
       "type": "others_building_on_your_land",
       "target_citizen": "ZenithTrader",
-      "score": 70,
+      "score": 85,
       "time_horizon": "medium",
-      "title": "\"ZenithTrader\" owns a Artisan's House at Calle dei Vedei on your land.",
-      "description": "**ZenithTrader** owns a **Artisan's House at Calle dei Vedei** on your land.",
-      "status": "medium"
+      "title": "\"ZenithTrader\" owns a Contract Stall at Calle dei Greci on your land.",
+      "description": "**ZenithTrader** owns a **Contract Stall at Calle dei Greci** on your land.",
+      "status": "high"
     },
     {
       "asset": "canal_45.441228_12.322467",
@@ -4795,28 +4614,28 @@ Here is the complete data about your current situation:
       "status": "medium"
     },
     {
-      "asset": "building_45.430597_12.354476",
+      "asset": "building_45.428285_12.360022",
       "asset_type": "building",
       "category": "ownership_conflict",
       "type": "building_on_others_land",
-      "target_citizen": "BasstheWhale",
-      "score": 85,
+      "target_citizen": "Italia",
+      "score": 70,
       "time_horizon": "medium",
-      "title": "Your Contract Stall at Calle dei Greci is on land owned by \"BasstheWhale\".",
-      "description": "You own a **Contract Stall at Calle dei Greci** on land owned by **BasstheWhale**.",
-      "status": "high"
+      "title": "Your Artisan's House at Calle dei Vedei is on land owned by \"Italia\".",
+      "description": "You own a **Artisan's House at Calle dei Vedei** on land owned by **Italia**.",
+      "status": "medium"
     },
     {
-      "asset": "building_45.430597_12.354476",
+      "asset": "building_45.428285_12.360022",
       "asset_type": "building",
       "category": "ownership_conflict",
       "type": "others_building_on_your_land",
       "target_citizen": "ZenithTrader",
-      "score": 85,
+      "score": 70,
       "time_horizon": "medium",
-      "title": "\"ZenithTrader\" owns a Contract Stall at Calle dei Greci on your land.",
-      "description": "**ZenithTrader** owns a **Contract Stall at Calle dei Greci** on your land.",
-      "status": "high"
+      "title": "\"ZenithTrader\" owns a Artisan's House at Calle dei Vedei on your land.",
+      "description": "**ZenithTrader** owns a **Artisan's House at Calle dei Vedei** on your land.",
+      "status": "medium"
     }
   ]
 }
