@@ -42,12 +42,16 @@ def get_available_books() -> List[str]:
     if not os.path.exists(books_dir):
         return []
     
-    # Get all .md files in the books directory
+    # Get all .md and .txt files in the books directory
     books = []
     for file in os.listdir(books_dir):
         if file.endswith('.md'):
             # Remove .md extension for book name
             book_name = file[:-3]
+            books.append(book_name)
+        elif file.endswith('.txt'):
+            # Remove .txt extension for book name
+            book_name = file[:-4]
             books.append(book_name)
     
     return books
@@ -96,6 +100,19 @@ def get_books_in_building(building_id: str) -> List[str]:
 
 def create_book_resource(book_name: str, building_id: str, owner_id: str) -> Dict[str, Any]:
     """Create a book resource with proper attributes."""
+    # Check which file extension exists
+    books_dir = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))), 'public', 'books')
+    md_path = os.path.join(books_dir, f'{book_name}.md')
+    txt_path = os.path.join(books_dir, f'{book_name}.txt')
+    
+    if os.path.exists(md_path):
+        content_path = f'public/books/{book_name}.md'
+    elif os.path.exists(txt_path):
+        content_path = f'public/books/{book_name}.txt'
+    else:
+        # Default to .md if neither exists (shouldn't happen if used correctly)
+        content_path = f'public/books/{book_name}.md'
+    
     # Create the book resource
     resource_data = {
         'ResourceId': f'resource-book-{datetime.now().strftime("%Y%m%d%H%M%S")}-{random.randint(1000, 9999)}',
@@ -107,7 +124,7 @@ def create_book_resource(book_name: str, building_id: str, owner_id: str) -> Dic
         'Count': 1.0,  # Number of books (as float)
         'Attributes': json.dumps({
             'title': book_name.replace('_', ' '),  # Convert underscores to spaces for display
-            'content_path': f'public/books/{book_name}.md',
+            'content_path': content_path,
             'distributed_at': datetime.now().isoformat()
         }),
         'CreatedAt': datetime.now().isoformat()

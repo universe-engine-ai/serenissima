@@ -975,7 +975,8 @@ const MAX_DISPLAY_TIME = 20000; // Maximum 20 seconds (doubled)
           let socialClassForIcon = socialClassRaw || 'Citizen'; // Fallback for empty string after trim
           if (socialClassForIcon) { // Normalize to PascalCase
             socialClassForIcon = socialClassForIcon.charAt(0).toUpperCase() + socialClassForIcon.slice(1).toLowerCase();
-            if (socialClassRaw.includes('Dei') || socialClassRaw.includes('dei')) { // Preserve multi-word names like ConsiglioDeiDieci
+            // Preserve special social class names exactly as they are
+            if (socialClassRaw.includes('Dei') || socialClassRaw.includes('dei') || socialClassRaw === 'Clero') {
                 socialClassForIcon = socialClassRaw;
             }
           }
@@ -1080,7 +1081,8 @@ const MAX_DISPLAY_TIME = 20000; // Maximum 20 seconds (doubled)
           let socialClassForIcon = socialClassRawStatic || 'Citizen';
           if (socialClassForIcon) { // Normalize to PascalCase
             socialClassForIcon = socialClassForIcon.charAt(0).toUpperCase() + socialClassForIcon.slice(1).toLowerCase();
-            if (socialClassRawStatic.includes('Dei') || socialClassRawStatic.includes('dei')) { // Preserve multi-word names
+            // Preserve special social class names exactly as they are
+            if (socialClassRawStatic.includes('Dei') || socialClassRawStatic.includes('dei') || socialClassRawStatic === 'Clero') {
                 socialClassForIcon = socialClassRawStatic;
             }
           }
