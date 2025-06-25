@@ -8,3 +8,4 @@ pydantic>=2.0.0,<3.0.0
 pyairtable
 python-multipart
 demjson3==3.0.6
+feedparser
