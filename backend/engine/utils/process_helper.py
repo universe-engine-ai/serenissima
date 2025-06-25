@@ -15,6 +15,7 @@ log = logging.getLogger(__name__)
 PROCESS_TYPE_DAILY_REFLECTION = "daily_reflection"
 PROCESS_TYPE_THEATER_REFLECTION = "theater_reflection"
 PROCESS_TYPE_PUBLIC_BATH_REFLECTION = "public_bath_reflection"
+PROCESS_TYPE_MASS_REFLECTION = "mass_reflection"
 PROCESS_TYPE_AUTONOMOUS_RUN = "autonomous_run"
 PROCESS_TYPE_CONTINUE_THOUGHT = "continue_thought"
 

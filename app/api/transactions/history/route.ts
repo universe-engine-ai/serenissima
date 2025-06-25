@@ -1,136 +1,105 @@
 import { NextRequest, NextResponse } from 'next/server';
-
-// Cache the transaction history data with a reasonable expiration
-let cachedData: Map<string, {data: any, timestamp: number}> = new Map();
-const CACHE_DURATION = 5 * 60 * 1000; // 5 minutes in milliseconds
-const FETCH_TIMEOUT = 10000; // 10 seconds timeout
+import Airtable from 'airtable';
 
 export async function GET(request: NextRequest) {
   try {
     const searchParams = request.nextUrl.searchParams;
-    const citizenId = searchParams.get('citizenId');
-    const asset = searchParams.get('asset');
-    const role = searchParams.get('role');
+    const startDate = searchParams.get('startDate');
+    const endDate = searchParams.get('endDate');
+    const limit = parseInt(searchParams.get('limit') || '1000');
     
-    // Create a cache key based on the request parameters
-    const cacheKey = `${citizenId || 'all'}_${asset || 'all'}_${role || 'all'}`;
-    const currentTime = Date.now();
+    // Initialize Airtable
+    const AIRTABLE_API_KEY = process.env.AIRTABLE_API_KEY;
+    const AIRTABLE_BASE_ID = process.env.AIRTABLE_BASE_ID;
     
-    // Check if we have valid cached data
-    const cachedEntry = cachedData.get(cacheKey);
-    if (cachedEntry && (currentTime - cachedEntry.timestamp) < CACHE_DURATION) {
-      console.log(`Returning cached transaction history for ${cacheKey}`);
-      return NextResponse.json(cachedEntry.data);
+    if (!AIRTABLE_API_KEY || !AIRTABLE_BASE_ID) {
+      console.error('Airtable credentials not configured');
+      return NextResponse.json({ 
+        success: false, 
+        error: 'Airtable credentials not configured' 
+      }, { status: 500 });
     }
     
-    console.log(`Fetching fresh transaction history for ${cacheKey}...`);
+    const base = new Airtable({ apiKey: AIRTABLE_API_KEY }).base(AIRTABLE_BASE_ID);
+    const transactionsTable = base('TRANSACTIONS');
     
-    try {
-      // Build the appropriate endpoint based on parameters
-      const apiBaseUrl = process.env.NEXT_PUBLIC_BACKEND_BASE_URL || 'http://localhost:5000';
-      let endpoint = `${apiBaseUrl}/api/transactions`;
+    // Build filter formula
+    let filterParts = [];
+    
+    // Only get executed transactions
+    filterParts.push("NOT({ExecutedAt} = '')");
+    
+    // Date filtering
+    if (startDate) {
+      filterParts.push(`IS_AFTER({ExecutedAt}, '${startDate}')`);
+    }
+    if (endDate) {
+      filterParts.push(`IS_BEFORE({ExecutedAt}, '${endDate}')`);
+    }
+    
+    const filterFormula = filterParts.length > 0 ? `AND(${filterParts.join(', ')})` : '';
+    
+    console.log(`Fetching transactions with formula: ${filterFormula}`);
+    
+    // Fetch transactions
+    const records = await transactionsTable
+      .select({
+        filterByFormula: filterFormula,
+        sort: [{ field: 'ExecutedAt', direction: 'desc' }],
+        maxRecords: limit,
+        fields: ['Type', 'Asset', 'AssetType', 'Seller', 'Buyer', 'Price', 'CreatedAt', 'ExecutedAt', 'Notes']
+      })
+      .all();
+    
+    console.log(`Found ${records.length} transactions`);
+    
+    // Format transactions
+    const transactions = records.map(record => {
+      const fields = record.fields;
       
-      if (asset) {
-        endpoint = `${apiBaseUrl}/api/transactions/land/${asset}`;
-      }
-      
-      const response = await fetch(endpoint, {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        signal: AbortSignal.timeout(FETCH_TIMEOUT)
-      });
-      
-      if (!response.ok) {
-        throw new Error(`Backend returned ${response.status}: ${response.statusText}`);
-      }
-      
-      const data = await response.json();
-      console.log(`Received ${data.length} transactions from backend`);
-      
-      // Filter transactions based on parameters
-      let filteredTransactions = data.filter((tx: any) => tx.executed_at); // Only include executed transactions
-      
-      if (citizenId) {
-        if (role === 'buyer') {
-          filteredTransactions = filteredTransactions.filter((tx: any) => tx.buyer === citizenId);
-        } else if (role === 'seller') {
-          filteredTransactions = filteredTransactions.filter((tx: any) => tx.seller === citizenId);
-        } else {
-          filteredTransactions = filteredTransactions.filter((tx: any) => 
-            tx.buyer === citizenId || tx.seller === citizenId
-          );
+      // Parse notes if available
+      let notes = {};
+      if (fields.Notes) {
+        try {
+          notes = JSON.parse(fields.Notes);
+        } catch (e) {
+          // If notes is not JSON, just use as string
+          notes = { raw: fields.Notes };
         }
       }
       
-      console.log(`Found ${filteredTransactions.length} matching transactions`);
-      
-      // Transform the data to match our frontend model
-      const formattedTransactions = filteredTransactions.map((tx: any) => ({
-        id: tx.id,
-        type: tx.type,
-        asset: tx.asset,
-        seller: tx.seller,
-        buyer: tx.buyer,
-        price: tx.price,
-        createdAt: tx.created_at,
-        executedAt: tx.executed_at,
-        metadata: {
-          historicalName: tx.historical_name,
-          englishName: tx.english_name,
-          description: tx.description
-        }
-      }));
-      
-      // Sort by date (newest first)
-      formattedTransactions.sort((a: any, b: any) => 
-        new Date(b.executedAt).getTime() - new Date(a.executedAt).getTime()
-      );
-      
-      // Update the cache
-      const responseData = { 
-        success: true, 
-        transactions: formattedTransactions,
-        timestamp: currentTime
+      return {
+        id: record.id,
+        type: fields.Type || 'Unknown',
+        asset: fields.Asset || '',
+        assetType: fields.AssetType || '',
+        seller: fields.Seller || '',
+        buyer: fields.Buyer || '',
+        price: parseFloat(fields.Price) || 0,
+        createdAt: fields.CreatedAt || '',
+        executedAt: fields.ExecutedAt || '',
+        notes: notes
       };
-      
-      cachedData.set(cacheKey, {
-        data: responseData,
-        timestamp: currentTime
-      });
-      
-      return NextResponse.json(responseData);
-    } catch (fetchError) {
-      console.error('Error fetching from backend:', fetchError);
-      
-      // If we have stale cache, return it rather than failing
-      const cachedEntry = cachedData.get(cacheKey);
-      if (cachedEntry) {
-        console.log('Returning stale cached data due to fetch error');
-        return NextResponse.json({
-          ...cachedEntry.data,
-          _cached: true,
-          _stale: true,
-          _error: fetchError instanceof Error ? fetchError.message : String(fetchError)
-        });
-      }
-      
-      // If no cache exists, create an empty response
-      return NextResponse.json({
-        success: true,
-        transactions: [],
-        _error: fetchError instanceof Error ? fetchError.message : String(fetchError)
-      });
-    }
-  } catch (error) {
-    console.error('Error in GET handler:', error);
+    });
     
+    return NextResponse.json({
+      success: true,
+      transactions,
+      count: transactions.length,
+      filters: {
+        startDate,
+        endDate,
+        limit
+      }
+    });
+    
+  } catch (error) {
+    console.error('Error fetching transactions:', error);
     return NextResponse.json(
       { 
         success: false, 
-        error: 'Failed to fetch transaction history', 
-        message: error instanceof Error ? error.message : String(error) 
+        error: 'Failed to fetch transactions',
+        message: error instanceof Error ? error.message : String(error)
       },
       { status: 500 }
     );

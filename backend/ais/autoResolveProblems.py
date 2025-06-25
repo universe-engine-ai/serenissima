@@ -130,7 +130,7 @@ def call_try_create_activity_api(
     headers = {"Content-Type": "application/json"}
     
     try:
-        response = requests.post(api_url, headers=headers, json=payload, timeout=45)
+        response = requests.post(api_url, headers=headers, json=payload, timeout=90)
         response.raise_for_status()
         response_data = response.json()
         if response_data.get("success"):
@@ -1147,6 +1147,96 @@ def resolve_waiting_on_input_delivery(problem: Dict, tables: Dict[str, Table], r
     log.info(f"  Calling try-create for 'fetch_resource' for {occupant_username}, from building {source_building_id} to {building_id}, resource {resource_type}.")
     return call_try_create_activity_api(occupant_username, "fetch_resource", activity_params, dry_run)
 
+def resolve_resource_shortage(problem: Dict, tables: Dict[str, Table], dry_run: bool) -> bool:
+    """Attempts to resolve 'resource_shortage' by creating a market galley with the needed resources."""
+    log.info(f"Attempting to resolve 'resource_shortage': {problem['fields'].get('Title')}")
+    
+    # Extract resource type from title
+    title = problem['fields'].get('Title', '')
+    match = re.search(r"Resource Shortage: (\w+) for (.+)", title)
+    if not match:
+        log.error(f"  Could not parse resource type from problem title: {title}")
+        return False
+    
+    resource_type = match.group(1)
+    building_name = match.group(2)
+    
+    log.info(f"  Resource shortage detected: {resource_type} for {building_name}")
+    
+    # Check if a market galley was created recently (within last 5 minutes)
+    try:
+        five_minutes_ago = (datetime.now(VENICE_TIMEZONE) - timedelta(minutes=5)).isoformat()
+        # Check for any merchant_galley with retail subcategories (retail_goods, retail_food, etc.)
+        recent_galley_formula = f"AND({{Type}}='merchant_galley', OR(SEARCH('retail', {{SubCategory}}), SEARCH('wholesale', {{SubCategory}})), IS_AFTER({{CreatedAt}}, '{five_minutes_ago}'))"
+        recent_galleys = tables['buildings'].all(formula=recent_galley_formula, max_records=1)
+        
+        if recent_galleys:
+            galley_name = recent_galleys[0]['fields'].get('Name', 'Unknown')
+            log.info(f"  A market galley '{galley_name}' was created recently (within 5 minutes). Assuming it contains needed resources. Skipping creation.")
+            return True
+    except Exception as e:
+        log.warning(f"  Error checking for recent market galleys: {e}")
+    
+    # Collect all resource shortage problems to handle them in batch
+    try:
+        # Get all active resource_shortage problems
+        formula = "AND({Type}='resource_shortage', {Status}='active')"
+        all_shortage_problems = tables['problems'].all(formula=formula)
+        
+        # Extract unique resource types from all problems
+        resources_needed = set()
+        for shortage_problem in all_shortage_problems:
+            shortage_title = shortage_problem['fields'].get('Title', '')
+            shortage_match = re.search(r"Resource Shortage: (\w+) for", shortage_title)
+            if shortage_match:
+                resources_needed.add(shortage_match.group(1))
+        
+        if not resources_needed:
+            log.warning("  No valid resource types found in resource shortage problems")
+            return False
+        
+        log.info(f"  Total unique resources needed: {list(resources_needed)}")
+        
+        # Call createmarketgalley.py with the list of resources
+        if not dry_run:
+            try:
+                import subprocess
+                
+                # Build the command
+                cmd = [
+                    sys.executable,
+                    os.path.join(PROJECT_ROOT, 'backend', 'engine', 'createmarketgalley.py'),
+                    '--resources',
+                    ','.join(resources_needed)
+                ]
+                
+                log.info(f"  Executing: {' '.join(cmd)}")
+                
+                result = subprocess.run(cmd, capture_output=True, text=True, timeout=60)
+                
+                if result.returncode == 0:
+                    log.info(f"  Successfully created market galley with resources: {list(resources_needed)}")
+                    log.info(f"  Output: {result.stdout}")
+                    return True
+                else:
+                    log.error(f"  Failed to create market galley. Return code: {result.returncode}")
+                    log.error(f"  Error output: {result.stderr}")
+                    return False
+                    
+            except subprocess.TimeoutExpired:
+                log.error("  Market galley creation timed out after 60 seconds")
+                return False
+            except Exception as e:
+                log.error(f"  Error calling createmarketgalley.py: {e}")
+                return False
+        else:
+            log.info(f"  [DRY RUN] Would create market galley with resources: {list(resources_needed)}")
+            return True
+            
+    except Exception as e:
+        log.error(f"  Error in resolve_resource_shortage: {e}")
+        return False
+
 def resolve_do_nothing(problem: Dict, tables: Dict[str, Table], dry_run: bool) -> str: # Changed return type
     """Resolver for problems where the defined action is to do nothing."""
     problem_type = problem['fields'].get('Type')
@@ -1400,7 +1490,7 @@ def auto_resolve_problems_main(dry_run: bool = False, problem_type_filter: Optio
         "waiting_for_galley_unloading": resolve_waiting_for_galley_unloading, # 8. Create fetch_from_galley activity
         "waiting_for_galley_arrival": resolve_do_nothing, # 9. Oui (ne rien faire)
         "no_markup_buy_contract": resolve_no_markup_buy_contract_final_product, # 10. Oui (similaire à 4)
-        "resource_shortage": resolve_do_nothing, # 11. Ne rien faire (modifié)
+        "resource_shortage": resolve_resource_shortage, # 11. Create market galley with needed resources
         "waiting_for_resource_delivery": resolve_waiting_for_resource_delivery, # 12. Créer fetch_resource/fetch_from_galley
         "no_occupant": resolve_no_occupant, # 13. Augmente wages
         "homeless_citizen": resolve_do_nothing, # 14. Ne rien faire
@@ -1447,9 +1537,10 @@ def auto_resolve_problems_main(dry_run: bool = False, problem_type_filter: Optio
                 "zero_wages_business",
                 "waiting_for_galley_arrival", # do_nothing
                 "homeless_citizen", # do_nothing
-                "workless_citizen", # do_nothing
-                "resource_shortage" # do_nothing (moved here)
+                "workless_citizen" # do_nothing
             ]:
+                resolution_status = resolver_func(problem, tables, dry_run)
+            elif problem_type == "resource_shortage":
                 resolution_status = resolver_func(problem, tables, dry_run)
             elif problem_type in ["waiting_for_production"]:
                 resolution_status = resolver_func(problem, tables, resource_defs, building_type_defs, dry_run)
@@ -1466,9 +1557,10 @@ def auto_resolve_problems_main(dry_run: bool = False, problem_type_filter: Optio
                 "zero_wages_business",
                 "waiting_for_galley_arrival", # do_nothing
                 "homeless_citizen", # do_nothing
-                "workless_citizen", # do_nothing
-                "resource_shortage" # do_nothing (moved here)
+                "workless_citizen" # do_nothing
             ]:
+                resolution_status = resolver_func(problem, tables, dry_run)
+            elif problem_type == "resource_shortage":
                 resolution_status = resolver_func(problem, tables, dry_run)
             else:
                 # Fallback for any resolver not explicitly categorized, assuming it doesn't need resource_defs

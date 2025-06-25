@@ -355,7 +355,8 @@ def main():
         from backend.engine.utils.thinking_helper import (
             process_daily_reflection,
             process_theater_reflection,
-            process_public_bath_reflection
+            process_public_bath_reflection,
+            process_mass_reflection
         )
         
         # Import autonomouslyRun for autonomous run processes
@@ -382,6 +383,8 @@ def main():
                         process_theater_reflection(tables, pending_process)
                     elif process_type == "public_bath_reflection":
                         process_public_bath_reflection(tables, pending_process)
+                    elif process_type == "mass_reflection":
+                        process_mass_reflection(tables, pending_process)
                     elif process_type == "guided_reflection":
                         from backend.engine.utils.thinking_helper import process_guided_reflection
                         process_guided_reflection(tables, pending_process)

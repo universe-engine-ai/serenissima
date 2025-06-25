@@ -374,7 +374,10 @@ def monitor_resources():
     """
     # CPU et RAM
     cpu_percent = psutil.cpu_percent()
-    ram_percent = psutil.virtual_memory().percent
+    ram = psutil.virtual_memory()
+    ram_percent = ram.percent
+    ram_used_gb = ram.used / (1024**3)
+    ram_total_gb = ram.total / (1024**3)
     
     # GPU
     gpu_info = "Non disponible"
@@ -384,7 +387,28 @@ def monitor_resources():
             gpu = gpus[0]
             gpu_info = f"{gpu.memoryUsed}/{gpu.memoryTotal}MB ({gpu.memoryUtil*100:.1f}%)"
     
-    return f"CPU: {cpu_percent}%, RAM: {ram_percent}%, GPU: {gpu_info}"
+    return f"CPU: {cpu_percent}%, RAM: {ram_used_gb:.1f}/{ram_total_gb:.1f}GB ({ram_percent}%), GPU: {gpu_info}"
+
+def check_memory_limit(memory_threshold_percent=80):
+    """
+    Vérifie si la mémoire dépasse le seuil et force un nettoyage si nécessaire.
+    """
+    ram = psutil.virtual_memory()
+    ram_percent = ram.percent
+    
+    if ram_percent > memory_threshold_percent:
+        log.warning(f"Mémoire à {ram_percent}% - dépassement du seuil de {memory_threshold_percent}%")
+        # Force garbage collection
+        import gc
+        gc.collect()
+        torch.cuda.empty_cache()
+        
+        # Vérifier à nouveau
+        ram = psutil.virtual_memory()
+        if ram.percent > memory_threshold_percent:
+            log.error(f"Mémoire toujours à {ram.percent}% après nettoyage - arrêt de l'entraînement")
+            return False
+    return True
 
 def test_model_responses(model, tokenizer, test_prompts=None):
     """
@@ -686,7 +710,9 @@ def main():
                 all_param += param.numel()
                 if param.requires_grad:
                     trainable_params += param.numel()
-                    log.info(f"Paramètre entraînable: {param_name} - {param.shape}")
+                    # Log only the first few to avoid spam
+                    if trainable_params < 1000000:  # Log first ~1M params
+                        log.debug(f"Paramètre entraînable: {param_name} - {param.shape}")
             
             if trainable_params == 0:
                 log.error("Aucun paramètre n'est marqué comme entraînable. Vérifiez la configuration LoRA.")
@@ -698,13 +724,15 @@ def main():
             
             # Forcer le mode d'entraînement
             model.train()
+            
+            # IMPORTANT: Pour LoRA, il faut désactiver gradient checkpointing ou l'adapter
+            # car il peut interférer avec les gradients des adaptateurs LoRA
+            if hasattr(model, "gradient_checkpointing_disable"):
+                model.gradient_checkpointing_disable()
+                log.info("Gradient checkpointing désactivé pour compatibilité avec LoRA")
         
-        # Activer le gradient checkpointing pour l'efficacité mémoire (sauf si explicitement désactivé)
-        if hasattr(model, "gradient_checkpointing_enable") and not args.no_gradient_checkpointing:
-            model.config.use_cache = False
-            model.gradient_checkpointing_enable()
-            log.info("Gradient checkpointing activé avec use_cache=False")
-        elif args.no_gradient_checkpointing:
+        # Note: gradient checkpointing est désactivé quand on utilise LoRA
+        if args.no_gradient_checkpointing:
             log.info("Gradient checkpointing explicitement désactivé")
         
         # Afficher le nombre de paramètres
@@ -723,8 +751,11 @@ def main():
         train_path, val_path = split_dataset(dataset_path, val_ratio=0.1)
         
         # Créer les datasets personnalisés
-        train_dataset = ConversationDataset(train_path, tokenizer)
-        val_dataset = ConversationDataset(val_path, tokenizer) if val_path else None
+        # Set max_length based on available memory
+        # With 24GB RAM, we need to be conservative
+        max_length = 2048  # Reduced to prevent memory overflow
+        train_dataset = ConversationDataset(train_path, tokenizer, max_length=max_length)
+        val_dataset = ConversationDataset(val_path, tokenizer, max_length=max_length) if val_path else None
         
         log.info(f"Dataset chargé avec {len(train_dataset)} exemples d'entraînement")
         if val_dataset:
@@ -835,8 +866,14 @@ def main():
             dataloader_iterator = tqdm(train_dataloader, desc=f"Époque {epoch+1}/{args.epochs}") if TQDM_AVAILABLE else simple_progress_bar(train_dataloader, desc=f"Époque {epoch+1}/{args.epochs}")
         
             for step, batch in enumerate(dataloader_iterator):
-                # Déplacer le batch sur le device et s'assurer que requires_grad est activé
-                batch = {k: v.to(model.device) for k, v in batch.items()}
+                # Check memory limit before processing each batch
+                if not check_memory_limit(memory_threshold_percent=80):
+                    log.error("Arrêt de l'entraînement pour cause de dépassement mémoire")
+                    return False
+                
+                # Déplacer le batch sur le device avec no_grad pour économiser la mémoire
+                with torch.no_grad():
+                    batch = {k: v.to(model.device) for k, v in batch.items()}
                 
                 # Les labels sont des entiers et n'ont pas besoin de gradients
                 
@@ -848,6 +885,10 @@ def main():
                     try:
                         # Les tenseurs d'entrée (input_ids, attention_mask) n'ont pas besoin de requires_grad
                         # Seuls les paramètres du modèle ont besoin de gradients
+                        
+                        # S'assurer que le modèle est en mode entraînement
+                        if not model.training:
+                            model.train()
                         
                         with torch.amp.autocast('cuda'):
                             outputs = model(**batch)
@@ -872,6 +913,14 @@ def main():
                             scaler.update()
                             lr_scheduler.step()
                             optimizer.zero_grad()
+                            
+                            # Clear GPU cache after EVERY optimizer step to prevent memory overflow
+                            torch.cuda.empty_cache()
+                            
+                            # Force garbage collection periodically
+                            if step % 5 == 0:
+                                import gc
+                                gc.collect()
                     except ValueError as e:
                         if "Attempting to unscale FP16 gradients" in str(e) or "nan" in str(e).lower() or "inf" in str(e).lower():
                             log.warning(f"Erreur FP16 détectée: {e}, désactivation de la précision mixte")
@@ -897,6 +946,11 @@ def main():
                                 optimizer.step()
                                 lr_scheduler.step()
                                 optimizer.zero_grad()
+                                
+                                # Clear memory after optimizer step
+                                torch.cuda.empty_cache()
+                                import gc
+                                gc.collect()
                         else:
                             # Si c'est une autre erreur, la relancer
                             raise
@@ -906,7 +960,13 @@ def main():
                         # Logging plus détaillé
                         resources = monitor_resources()
                         current_lr = lr_scheduler.get_last_lr()[0]
-                        log.info(f"{progress} | Étape globale: {global_step} | Perte: {loss.item():.4f} | LR: {current_lr:.2e} | {resources}")
+                        loss_value = loss.item()  # Get value before deleting
+                        log.info(f"{progress} | Étape globale: {global_step} | Perte: {loss_value:.4f} | LR: {current_lr:.2e} | {resources}")
+                        
+                        # Delete loss tensor to free memory
+                        del loss
+                        if 'outputs' in locals():
+                            del outputs
                     else:
                         # Afficher la progression même pendant l'accumulation de gradient
                         if step % 5 == 0:  # Limiter la fréquence pour ne pas surcharger les logs
@@ -981,7 +1041,13 @@ def main():
                         # Logging plus détaillé
                         resources = monitor_resources()
                         current_lr = lr_scheduler.get_last_lr()[0]
-                        log.info(f"{progress} | Étape globale: {global_step} | Perte: {loss.item():.4f} | LR: {current_lr:.2e} | {resources}")
+                        loss_value = loss.item()  # Get value before deleting
+                        log.info(f"{progress} | Étape globale: {global_step} | Perte: {loss_value:.4f} | LR: {current_lr:.2e} | {resources}")
+                        
+                        # Delete loss tensor to free memory
+                        del loss
+                        if 'outputs' in locals():
+                            del outputs
                     else:
                         # Afficher la progression même pendant l'accumulation de gradient
                         if step % 5 == 0:  # Limiter la fréquence pour ne pas surcharger les logs

@@ -139,8 +139,11 @@ def try_create(
                 
                 # If still no source, look for buildings with water-related types
                 if not final_from_building_custom_id:
-                    water_building_types = ["well", "cistern", "fountain", "water_cistern"]
+                    water_building_types = ["public_well", "cistern"]
                     water_subcategories = ["Water Management", "storage"]
+                    
+                    # Collect all water sources with enough water
+                    water_sources_with_distance = []
                     
                     # Try to find buildings by type
                     for building_type in water_building_types:
@@ -149,43 +152,73 @@ def try_create(
                         
                         for water_building in water_buildings:
                             water_building_id = water_building['fields'].get('BuildingId')
-                            owner_username = water_building['fields'].get('Owner')
                             
-                            if water_building_id and owner_username:
-                                # Check if this building has water
-                                _, source_stock_map = get_building_storage_details(tables, water_building_id, owner_username)
-                                actual_stock = source_stock_map.get(resource_type_id, 0.0)
-                                
-                                if actual_stock >= amount:
-                                    final_from_building_custom_id = water_building_id
-                                    log.info(f"{LogColors.ACTIVITY}[FetchCreator] Found water source by building type: {water_building_id} (Type: {building_type})")
-                                    break
-                        
-                        if final_from_building_custom_id:
-                            break
-                    
-                    # If still no source, try by subcategory
-                    if not final_from_building_custom_id:
-                        for subcategory in water_subcategories:
-                            building_formula = f"{{SubCategory}}='{_escape_airtable_value(subcategory)}'"
-                            water_buildings = tables['buildings'].all(formula=building_formula)
-                            
-                            for water_building in water_buildings:
-                                water_building_id = water_building['fields'].get('BuildingId')
-                                owner_username = water_building['fields'].get('Owner')
-                                
-                                if water_building_id and owner_username:
-                                    # Check if this building has water
-                                    _, source_stock_map = get_building_storage_details(tables, water_building_id, owner_username)
-                                    actual_stock = source_stock_map.get(resource_type_id, 0.0)
+                            if water_building_id:
+                                # For public water sources, check total water available regardless of owner
+                                water_formula = f"AND({{Asset}}='{_escape_airtable_value(water_building_id)}', {{AssetType}}='building', {{Type}}='water')"
+                                try:
+                                    water_resources = tables['resources'].all(formula=water_formula)
+                                    total_water = sum(float(r['fields'].get('Count', 0)) for r in water_resources)
                                     
-                                    if actual_stock >= amount:
-                                        final_from_building_custom_id = water_building_id
-                                        log.info(f"{LogColors.ACTIVITY}[FetchCreator] Found water source by subcategory: {water_building_id} (SubCategory: {subcategory})")
-                                        break
+                                    if total_water >= amount:
+                                        # Calculate distance to this water source
+                                        water_building_pos = _get_building_position_coords(water_building)
+                                        if water_building_pos:
+                                            distance = _calculate_distance_meters(citizen_position, water_building_pos)
+                                            water_sources_with_distance.append({
+                                                'building_id': water_building_id,
+                                                'building_type': building_type,
+                                                'total_water': total_water,
+                                                'distance': distance,
+                                                'building_record': water_building
+                                            })
+                                except Exception as e:
+                                    log.error(f"{LogColors.ACTIVITY}[FetchCreator] Error checking water in {water_building_id}: {e}")
+                    
+                    # Also check by subcategory
+                    for subcategory in water_subcategories:
+                        building_formula = f"{{SubCategory}}='{_escape_airtable_value(subcategory)}'"
+                        water_buildings = tables['buildings'].all(formula=building_formula)
+                        
+                        for water_building in water_buildings:
+                            water_building_id = water_building['fields'].get('BuildingId')
                             
-                            if final_from_building_custom_id:
-                                break
+                            if water_building_id:
+                                # Skip if already checked by type
+                                if any(ws['building_id'] == water_building_id for ws in water_sources_with_distance):
+                                    continue
+                                    
+                                # For public water sources, check total water available regardless of owner
+                                water_formula = f"AND({{Asset}}='{_escape_airtable_value(water_building_id)}', {{AssetType}}='building', {{Type}}='water')"
+                                try:
+                                    water_resources = tables['resources'].all(formula=water_formula)
+                                    total_water = sum(float(r['fields'].get('Count', 0)) for r in water_resources)
+                                    
+                                    if total_water >= amount:
+                                        # Calculate distance to this water source
+                                        water_building_pos = _get_building_position_coords(water_building)
+                                        if water_building_pos:
+                                            distance = _calculate_distance_meters(citizen_position, water_building_pos)
+                                            water_sources_with_distance.append({
+                                                'building_id': water_building_id,
+                                                'building_type': water_building['fields'].get('Type', 'unknown'),
+                                                'total_water': total_water,
+                                                'distance': distance,
+                                                'building_record': water_building
+                                            })
+                                except Exception as e:
+                                    log.error(f"{LogColors.ACTIVITY}[FetchCreator] Error checking water in {water_building_id}: {e}")
+                    
+                    # Now select the closest water source
+                    if water_sources_with_distance:
+                        # Sort by distance and select the closest
+                        water_sources_with_distance.sort(key=lambda x: x['distance'])
+                        closest_source = water_sources_with_distance[0]
+                        final_from_building_custom_id = closest_source['building_id']
+                        
+                        log.info(f"{LogColors.ACTIVITY}[FetchCreator] Selected closest public water source: {closest_source['building_id']} "
+                                f"(Type: {closest_source['building_type']}, Distance: {closest_source['distance']:.1f}m, "
+                                f"Total water: {closest_source['total_water']})")
             except Exception as e:
                 log.error(f"{LogColors.ACTIVITY}[FetchCreator] Error finding water source: {e}")
         

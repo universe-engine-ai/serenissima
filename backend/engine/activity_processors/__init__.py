@@ -56,6 +56,7 @@ from .rest_processor import process as process_rest # New rest processor
 from .occupant_self_construction_processor import process_occupant_self_construction_fn # New occupant self-construction processor
 from .spread_rumor_activity_processor import process as process_spread_rumor_fn # New processor for spreading rumors
 from .attend_mass_processor import process_attend_mass_fn # New processor for attending mass
+from .prepare_sermon_processor import process as process_prepare_sermon # New processor for preparing sermons
 
 # Imports pour les processeurs de terrains et contrats
 from .bid_on_land_activity_processor import process_bid_on_land_fn
@@ -164,6 +165,8 @@ ACTIVITY_PROCESSORS = {
     'execute_cancel_land_listing': process_cancel_land_listing_fn,
     'execute_cancel_land_offer': process_cancel_land_offer_fn,
     'spread_rumor': process_spread_rumor_fn,
+    'attend_mass': process_attend_mass_fn,
+    'prepare_sermon': process_prepare_sermon,
     'idle': process_placeholder_activity_fn,
     'secure_warehouse': process_placeholder_activity_fn,
 }

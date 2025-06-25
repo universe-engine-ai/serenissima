@@ -69,3 +69,4 @@ from .use_public_bath_creator import try_create_use_public_bath_activity # New p
 from .goto_location_activity_creator import try_create as try_create_goto_location_activity # Assuming file is goto_location_activity_creator.py
 from .deposit_inventory_orchestrator_creator import try_create_deposit_inventory_orchestrator # New orchestrator
 from .attend_mass_creator import try_create_attend_mass_activity, find_nearest_church # New mass attendance activity
+from .prepare_sermon_creator import try_create_prepare_sermon_activity # New sermon preparation activity for Clero

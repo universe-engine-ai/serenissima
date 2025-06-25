@@ -5,7 +5,8 @@
       "Bash(find:*)",
       "Bash(sed:*)",
       "Bash(rg:*)",
-      "Bash(ls:*)"
+      "Bash(ls:*)",
+      "WebFetch(domain:docs.anthropic.com)"
     ],
     "deny": []
   }

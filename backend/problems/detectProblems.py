@@ -417,37 +417,8 @@ def detect_problems():
         # Section for "No Active Contracts" removed as per request.
         # The new pinpoint problem detection for business resources is expected to cover relevant scenarios.
 
-        # 5. Detect Hungry Employees (Commented out as requested)
-        # log.info("--- Detecting Hungry Employees ---")
-        # hungry_employee_api_url = f"{base_url}/api/problems/hungry-employee"
-        # log.info(f"Calling API: {hungry_employee_api_url} for all relevant businesses/employees")
-        # hungry_employee_response = requests.post(hungry_employee_api_url, json={}, timeout=180)
-        # log.info(f"Hungry Employee API response status: {hungry_employee_response.status_code}")
-        # 
-        # if hungry_employee_response.ok:
-        #     hungry_employee_data = hungry_employee_response.json()
-        #     log.info(f"Hungry Employee API response: success={hungry_employee_data.get('success')}, problemCount={hungry_employee_data.get('problemCount')}")
-        #     if hungry_employee_data.get('success'):
-        #         count = hungry_employee_data.get('problemCount', 0)
-        #         saved_count = hungry_employee_data.get('savedCount', 0)
-        #         total_problems_detected += count
-        #         total_problems_saved += saved_count
-        #         all_problem_details_summary.append(f"- Hungry Employees: {count} detected, {saved_count} saved.")
-        #         
-        #         problems_by_operator_hungry_employee = {}
-        #         for problem_id, problem in hungry_employee_data.get('problems', {}).items(): # Ensure 'problems' key exists
-        #             operator = problem.get('citizen', 'Unknown') # 'citizen' field holds the RunBy/Owner
-        #             problems_by_operator_hungry_employee[operator] = problems_by_operator_hungry_employee.get(operator, 0) + 1
-        #         if problems_by_operator_hungry_employee:
-        #             all_problem_details_summary.append("  Affected operators (Hungry Employees): " + ", ".join([f"{c}({num})" for c, num in problems_by_operator_hungry_employee.items()]))
-        #     else:
-        #         log.error(f"Hungry Employee API returned error: {hungry_employee_data.get('error')}")
-        #         all_problem_details_summary.append(f"- Hungry Employees: API Error - {hungry_employee_data.get('error', 'Unknown')}")
-        # else:
-        #     log.error(f"Hungry Employee API call failed: {hungry_employee_response.status_code} - {hungry_employee_response.text}")
-        #     all_problem_details_summary.append(f"- Hungry Employees: API Call Failed ({hungry_employee_response.status_code})")
 
-        # 6. Detect Zero Rent Amount Buildings
+        # 5. Detect Zero Rent Amount Buildings
         log.info("--- Detecting Zero Rent Amount Buildings ---")
         zero_rent_api_url = f"{base_url}/api/problems/zero-rent-amount"
         log.info(f"Calling API: {zero_rent_api_url} for all relevant buildings/owners")
@@ -477,7 +448,7 @@ def detect_problems():
             log.error(f"Zero Rent Amount API call failed: {zero_rent_response.status_code} - {zero_rent_response.text}")
             all_problem_details_summary.append(f"- Zero Rent Buildings: API Call Failed ({zero_rent_response.status_code})")
 
-        # 7. Detect Zero Wages for Businesses
+        # 6. Detect Zero Wages for Businesses
         log.info("--- Detecting Zero Wages for Businesses ---")
         zero_wages_api_url = f"{base_url}/api/problems/zero-wages-business"
         log.info(f"Calling API: {zero_wages_api_url} for all relevant business operators")

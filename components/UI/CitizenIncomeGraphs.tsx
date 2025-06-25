@@ -38,12 +38,14 @@ const CitizenIncomeGraphs: React.FC<CitizenIncomeGraphsProps> = ({ limit = 10 })
 
       const data = await response.json();
       if (data.success && data.citizens) {
-        // Filter citizens with income data and sort by the active metric
+        // Filter citizens with income data and exclude system citizens
+        const EXCLUDED_CITIZENS = ['Italia', 'ConsiglioDeiDieci'];
         const citizensWithIncome = data.citizens
           .filter((citizen: any) => 
-            citizen.dailyIncome !== undefined || 
-            citizen.weeklyIncome !== undefined || 
-            citizen.monthlyIncome !== undefined
+            !EXCLUDED_CITIZENS.includes(citizen.username) &&
+            (citizen.dailyIncome !== undefined || 
+             citizen.weeklyIncome !== undefined || 
+             citizen.monthlyIncome !== undefined)
           )
           .map((citizen: any) => ({
             username: citizen.username,
@@ -154,11 +156,14 @@ const CitizenIncomeGraphs: React.FC<CitizenIncomeGraphsProps> = ({ limit = 10 })
   return (
     <div className="space-y-6">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        {/* Income graphs grouped together */}
         {renderBarGraph('dailyIncome', 'Daily Income (Top Citizens)', 'bg-green-500')}
-        {renderBarGraph('dailyNetResult', 'Daily Net Result (Top Citizens)', 'bg-blue-500')}
         {renderBarGraph('weeklyIncome', 'Weekly Income (Top Citizens)', 'bg-purple-500')}
-        {renderBarGraph('weeklyNetResult', 'Weekly Net Result (Top Citizens)', 'bg-indigo-500')}
         {renderBarGraph('monthlyIncome', 'Monthly Income (Top Citizens)', 'bg-amber-500')}
+        
+        {/* Net Result graphs grouped together */}
+        {renderBarGraph('dailyNetResult', 'Daily Net Result (Top Citizens)', 'bg-blue-500')}
+        {renderBarGraph('weeklyNetResult', 'Weekly Net Result (Top Citizens)', 'bg-indigo-500')}
         {renderBarGraph('monthlyNetResult', 'Monthly Net Result (Top Citizens)', 'bg-red-500')}
       </div>
       

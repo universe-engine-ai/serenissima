@@ -1,4 +1,4 @@
-import { NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 import Airtable, { FieldSet, Record as AirtableRecord } from 'airtable';
 import fs from 'fs/promises';
 import path from 'path';
@@ -1156,7 +1156,7 @@ function convertLedgerToMarkdown(Ledger: any, citizenUsername: string | null): s
   
   md += `\n## The Day and Conditions\n`;
   // Use direct formatting for the current date to ensure it's 500 years ago with English month names
-  md += `Today is ${historicalDate.toLocaleString('en-GB', { dateStyle: 'medium', timeStyle: 'short', timeZone: 'Europe/Rome' })}`;
+  md += `Today is ${historicalDate.toLocaleString('en-GB', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit', timeZone: 'Europe/Rome' })}`;
   
   // Add weather information if available
   if (Ledger.weather) {
@@ -1882,29 +1882,68 @@ function convertLedgerToMarkdown(Ledger: any, citizenUsername: string | null): s
     md += `- No reports from abroad have reached me at present.\n\n`;
   }
 
-  // Available Stratagems - renamed to "Tactics I Might Employ"
-  md += `## Tactics I Might Employ\n`;
+  // Available Stratagems - renamed to "Stratagems Available"
+  md += `## Stratagems Available\n`;
   if (Ledger.availableStratagems && Object.keys(Ledger.availableStratagems).length > 0) {
+    // First collect all stratagems and organize by status
+    const availableNow: {name: string, type: string, purpose: string}[] = [];
+    let totalFuture = 0;
+    const futureByCategory: Record<string, number> = {};
+    
     for (const [category, natures] of Object.entries(Ledger.availableStratagems as Record<string, Record<string, ShortStratagemDefinition[]>>)) {
-      md += `### In ${category.charAt(0).toUpperCase() + category.slice(1)}\n`;
-      
+      let categoryCount = 0;
       for (const [nature, stratagems] of Object.entries(natures)) {
-        const natureDisplay = nature.charAt(0).toUpperCase() + nature.slice(1);
-        md += `#### ${natureDisplay} approaches (${stratagems.length})\n`;
-        
         stratagems.forEach(strat => {
-          md += `##### ${strat.name}\n`;
-          md += `- **Method**: ${strat.type.replace(/_/g, ' ')}\n`;
-          md += `- **Purpose**: ${strat.purpose}\n`;
-          
-          const statusMap: Record<string, string> = {
-            'Implemented': 'Available now',
-            'Coming Soon': 'Not yet possible',
-            'Partially Implemented': 'Limited availability'
-          };
-          md += `- **Availability**: ${statusMap[strat.status] || strat.status}\n\n`;
+          if (strat.status === 'Implemented') {
+            availableNow.push({
+              name: strat.name,
+              type: strat.type.replace(/_/g, ' '),
+              purpose: strat.purpose
+            });
+          } else {
+            categoryCount++;
+            totalFuture++;
+          }
         });
       }
+      if (categoryCount > 0) {
+        futureByCategory[category.charAt(0).toUpperCase() + category.slice(1)] = categoryCount;
+      }
+    }
+    
+    // Display currently available
+    if (availableNow.length > 0) {
+      md += `### Currently Available (${availableNow.length})\n\n`;
+      availableNow.forEach(strat => {
+        md += `**${strat.name}**: ${strat.purpose}\n`;
+      });
+      md += `\n`;
+    }
+    
+    // Display future options summary
+    if (totalFuture > 0) {
+      md += `### Future Options (${totalFuture} total across categories)\n\n`;
+      for (const [category, count] of Object.entries(futureByCategory)) {
+        md += `**${category}** (${count}): `;
+        
+        // Add brief summary of key options per category
+        if (category === 'Commerce') {
+          md += `Including undercut, monopoly pricing, emergency liquidation\n`;
+        } else if (category === 'Political') {
+          md += `Campaign lobbying, propaganda printing\n`;
+        } else if (category === 'Personal') {
+          md += `Employee poaching, financial patronage\n`;
+        } else if (category === 'Social') {
+          md += `Cultural patronage, charity, festivals\n`;
+        } else if (category === 'Security') {
+          md += `Information networks, neighborhood watch\n`;
+        } else if (category === 'Warfare') {
+          md += `Maritime blockade, plus 5 illegal options\n`;
+        } else {
+          md += `Various strategic options\n`;
+        }
+      }
+      md += `\n`;
     }
   } else {
     md += `- I have yet to learn of strategic maneuvers I might employ.\n\n`;
@@ -2086,7 +2125,7 @@ function convertLedgerToMarkdown(Ledger: any, citizenUsername: string | null): s
 }
 // --- End Markdown Conversion Utilities ---
 
-export async function GET(request: Request) {
+export async function GET(request: NextRequest) {
   const { searchParams } = new URL(request.url);
   const citizenUsername = searchParams.get('citizenUsername');
   const format = searchParams.get('format') || 'markdown'; // Default to markdown

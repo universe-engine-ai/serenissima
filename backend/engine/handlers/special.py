@@ -27,7 +27,8 @@ from backend.engine.utils.activity_helpers import (
 from backend.engine.activity_creators import (
     try_create_leave_venice_activity,
     try_create_manage_public_dock_activity,
-    try_create_work_on_art_activity
+    try_create_work_on_art_activity,
+    try_create_prepare_sermon_activity
 )
 
 # Import specialized activity processors
@@ -168,6 +169,52 @@ def _handle_artisti_work_on_art(
     
     if activity:
         log.info(f"{LogColors.OKGREEN}[Artisti-Art] {citizen_name}: Created professional art work activity.{LogColors.ENDC}")
+        return activity
+    
+    return None
+
+# ==============================================================================
+# CLERO-SPECIFIC HANDLERS
+# ==============================================================================
+
+def _handle_clero_prepare_sermon(
+    tables: Dict[str, Table], citizen_record: Dict, is_night: bool, resource_defs: Dict, building_type_defs: Dict,
+    now_venice_dt: datetime, now_utc_dt: datetime, transport_api_url: str, api_base_url: str,
+    citizen_position: Optional[Dict], citizen_custom_id: str, citizen_username: str, citizen_airtable_id: str, citizen_name: str, citizen_position_str: Optional[str],
+    citizen_social_class: str
+) -> Optional[Dict]:
+    """
+    Special handler for Clero preparing sermons during work hours.
+    This happens at their assigned church workplace.
+    """
+    if citizen_social_class != "Clero":
+        return None
+    
+    # Check if it's work time for Clero
+    if not is_work_time(citizen_social_class, now_venice_dt):
+        return None
+    
+    log.info(f"{LogColors.OKCYAN}[Clero-Sermon] {citizen_name}: Clergy member checking for sermon preparation.{LogColors.ENDC}")
+    
+    # Check if the citizen is at their workplace (church)
+    workplace_str = citizen_record['fields'].get('WorkplaceId')
+    if not workplace_str:
+        log.info(f"{LogColors.WARNING}[Clero-Sermon] {citizen_name}: No workplace assigned.{LogColors.ENDC}")
+        return None
+    
+    # For prepare_sermon, the citizen should already be at their workplace
+    # The activity creator will verify this
+    
+    # Create prepare sermon activity
+    activity = try_create_prepare_sermon_activity(
+        tables, citizen_record, citizen_position,
+        resource_defs, building_type_defs,
+        now_venice_dt, now_utc_dt,
+        transport_api_url, api_base_url
+    )
+    
+    if activity:
+        log.info(f"{LogColors.OKGREEN}[Clero-Sermon] {citizen_name}: Created prepare sermon activity.{LogColors.ENDC}")
         return activity
     
     return None

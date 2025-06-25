@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { FaTimes, FaSpinner, FaChartLine, FaCoins, FaHandHoldingUsd, FaUsers } from 'react-icons/fa';
 import AnimatedDucats from './AnimatedDucats';
 import CitizenIncomeGraphs from './CitizenIncomeGraphs';
+import { PieChart, Pie, Cell, ResponsiveContainer, Legend, Tooltip } from 'recharts';
 
 interface EconomyPanelProps {
   onClose: () => void;
@@ -19,15 +20,24 @@ interface EconomyData {
   lastUpdated: string;
 }
 
+interface TransactionTypeData {
+  type: string;
+  totalAmount: number;
+  count: number;
+}
+
 const EconomyPanel: React.FC<EconomyPanelProps> = ({ onClose }) => {
   const [economyData, setEconomyData] = useState<EconomyData | null>(null);
+  const [transactionsByType, setTransactionsByType] = useState<TransactionTypeData[]>([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [isLoadingTransactions, setIsLoadingTransactions] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [activeTab, setActiveTab] = useState<'overview' | 'citizens'>('overview');
   
   // Fetch economy data
   useEffect(() => {
     fetchEconomyData();
+    fetchTransactionsByType();
   }, []);
   
   const fetchEconomyData = async () => {
@@ -53,6 +63,77 @@ const EconomyPanel: React.FC<EconomyPanelProps> = ({ onClose }) => {
       setIsLoading(false);
     }
   };
+  
+  const fetchTransactionsByType = async () => {
+    try {
+      setIsLoadingTransactions(true);
+      
+      // Calculate 24 hours ago
+      const twentyFourHoursAgo = new Date();
+      twentyFourHoursAgo.setHours(twentyFourHoursAgo.getHours() - 24);
+      
+      const response = await fetch('/api/transactions/history');
+      if (!response.ok) {
+        throw new Error(`Failed to fetch transactions: ${response.status}`);
+      }
+      
+      const data = await response.json();
+      if (data.success && data.transactions) {
+        // Filter transactions from the last 24 hours
+        const recentTransactions = data.transactions.filter((transaction: any) => {
+          const executedAt = new Date(transaction.executedAt);
+          return executedAt >= twentyFourHoursAgo;
+        });
+        
+        // Group transactions by type and sum amounts
+        const transactionMap = new Map<string, { totalAmount: number; count: number }>();
+        
+        recentTransactions.forEach((transaction: any) => {
+          const type = transaction.type || 'Unknown';
+          const price = transaction.price || 0;
+          
+          if (!transactionMap.has(type)) {
+            transactionMap.set(type, { totalAmount: 0, count: 0 });
+          }
+          
+          const typeData = transactionMap.get(type)!;
+          typeData.totalAmount += price;
+          typeData.count += 1;
+        });
+        
+        // Convert to array and sort by totalAmount
+        const transactionArray = Array.from(transactionMap.entries())
+          .map(([type, data]) => ({
+            type,
+            totalAmount: data.totalAmount,
+            count: data.count
+          }))
+          .sort((a, b) => b.totalAmount - a.totalAmount);
+        
+        console.log('Transaction types data:', transactionArray);
+        setTransactionsByType(transactionArray);
+      }
+    } catch (err) {
+      console.error('Error fetching transactions by type:', err);
+      // Don't set error state since this is a secondary feature
+    } finally {
+      setIsLoadingTransactions(false);
+    }
+  };
+  
+  // Pie chart colors
+  const COLORS = [
+    '#EF4444', // red-500
+    '#F59E0B', // amber-500
+    '#10B981', // emerald-500
+    '#3B82F6', // blue-500
+    '#8B5CF6', // violet-500
+    '#EC4899', // pink-500
+    '#14B8A6', // teal-500
+    '#6366F1', // indigo-500
+    '#F97316', // orange-500
+    '#84CC16', // lime-500
+  ];
   
   // Format date
   const formatDate = (dateString: string) => {
@@ -216,6 +297,44 @@ const EconomyPanel: React.FC<EconomyPanelProps> = ({ onClose }) => {
                   </div>
                 </div>
               </div>
+              
+              {/* Transaction Types Pie Chart */}
+              {!isLoadingTransactions && transactionsByType.length > 0 && (
+                <div className="bg-white rounded-lg p-6 shadow-sm border border-amber-200">
+                  <h3 className="text-lg font-medium text-amber-800 mb-4">24-Hour Transaction Volume by Type</h3>
+                  <div className="h-80">
+                    <ResponsiveContainer width="100%" height="100%">
+                      <PieChart>
+                        <Pie
+                          data={transactionsByType}
+                          cx="50%"
+                          cy="50%"
+                          labelLine={false}
+                          label={({ type, totalAmount, percent }) => 
+                            `${type}: ⚜️${Math.floor(totalAmount)} (${(percent * 100).toFixed(0)}%)`
+                          }
+                          outerRadius={100}
+                          fill="#8884d8"
+                          dataKey="totalAmount"
+                        >
+                          {transactionsByType.map((entry, index) => (
+                            <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+                          ))}
+                        </Pie>
+                        <Tooltip 
+                          formatter={(value: number, name: string, props: any) => [
+                            `⚜️ ${Math.floor(value)} (${props.payload.count} transactions)`,
+                            props.payload.type
+                          ]}
+                        />
+                      </PieChart>
+                    </ResponsiveContainer>
+                  </div>
+                  <div className="mt-4 text-sm text-amber-600">
+                    Total: ⚜️ {Math.floor(transactionsByType.reduce((sum, t) => sum + t.totalAmount, 0))} across {transactionsByType.reduce((sum, t) => sum + t.count, 0)} transactions
+                  </div>
+                </div>
+              )}
               
               {/* Historical Context */}
               <div className="bg-amber-50 rounded-lg p-6 shadow-sm border border-amber-200">

@@ -53,7 +53,7 @@ def _handle_deposit_full_inventory(
     """
     # Check current load
     current_load = get_citizen_current_load(tables, citizen_username)
-    carry_capacity = get_citizen_effective_carry_capacity(tables, citizen_username)
+    carry_capacity = get_citizen_effective_carry_capacity(citizen_record)
     
     # Use configurable thresholds
     storage_threshold = const.STORAGE_FULL_THRESHOLD  # e.g., 0.8
@@ -70,12 +70,11 @@ def _handle_deposit_full_inventory(
     # Try to create deposit orchestrator activity
     activity_chain = try_create_deposit_inventory_orchestrator(
         tables=tables,
-        citizen_id=citizen_custom_id,
-        citizen_username=citizen_username,
-        citizen_airtable_id=citizen_airtable_id,
-        now_utc_dt=now_utc_dt,
+        citizen_record=citizen_record,
+        citizen_position=citizen_position,
         resource_defs=resource_defs,
         building_type_defs=building_type_defs,
+        now_utc_dt=now_utc_dt,
         transport_api_url=transport_api_url,
         api_base_url=api_base_url
     )

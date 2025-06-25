@@ -1505,6 +1505,209 @@ def process_continue_thought(
         update_process_status(tables, process_id, PROCESS_STATUS_FAILED, {"error": str(e_kinos_setup)})
         return False
 
+def process_mass_reflection(
+    tables: Dict[str, Any],
+    process_record: Dict[str, Any]
+) -> bool:
+    """
+    Processes a mass reflection for a citizen using KinOS.
+    This reflection includes the sermon if available.
+    
+    Args:
+        tables: Dictionary of Airtable tables
+        process_record: The process record from the PROCESSES table
+        
+    Returns:
+        True if successful, False otherwise
+    """
+    process_id = process_record['id']
+    process_fields = process_record['fields']
+    citizen_username = process_fields.get('Citizen')
+    api_base_url = process_fields.get('ApiBaseUrl')
+    details_str = process_fields.get('Details')
+    
+    details = {}
+    if details_str:
+        try:
+            details = json.loads(details_str)
+        except json.JSONDecodeError:
+            log.warning(f"Could not parse Details JSON for process {process_id}: {details_str}")
+    
+    log.info(f"{LogColors.ACTIVITY}Processing mass reflection for {citizen_username} (Process ID: {process_id}).{LogColors.ENDC}")
+    
+    # Update process status to in progress
+    update_process_status(tables, process_id, PROCESS_STATUS_IN_PROGRESS)
+    
+    if not KINOS_API_KEY:
+        log.error(f"{LogColors.FAIL}KINOS_API_KEY not defined. Cannot trigger KinOS reflection.{LogColors.ENDC}")
+        update_process_status(tables, process_id, PROCESS_STATUS_FAILED, {"error": "KINOS_API_KEY not defined"})
+        return False
+    
+    try:
+        ledger_markdown_str = None
+        if api_base_url:
+            ledger_url = f"{api_base_url}/api/get-ledger?citizenUsername={citizen_username}" # Defaults to Markdown
+            try:
+                pkg_response = requests.get(ledger_url, timeout=90)
+                if pkg_response.ok:
+                    ledger_markdown_str = pkg_response.text # Get Markdown content
+                    log.info(f"  Successfully fetched Markdown ledger for {citizen_username} for mass reflection. Length: {len(ledger_markdown_str)}")
+                else:
+                    log.warning(f"  Failed to fetch Markdown ledger for {citizen_username} (mass reflection): {pkg_response.status_code}")
+                    # Mark process as failed if ledger fetch fails
+                    update_process_status(tables, process_id, PROCESS_STATUS_FAILED, {"error": f"Failed to fetch ledger: {pkg_response.status_code}"})
+                    return False
+            except Exception as e_pkg_fetch:
+                log.error(f"  Error fetching Markdown ledger for {citizen_username} (mass reflection): {e_pkg_fetch}")
+                # Mark process as failed if ledger fetch throws an exception
+                update_process_status(tables, process_id, PROCESS_STATUS_FAILED, {"error": f"Error fetching ledger: {str(e_pkg_fetch)}"})
+                return False
+        
+        kinos_messages_url = f"{KINOS_API_URL}/v2/blueprints/{KINOS_BLUEPRINT}/kins/{citizen_username}/messages"
+        
+        # Extract mass details from the process details
+        church_name = details.get('church_name', 'a church')
+        church_type = details.get('church_type', 'church')
+        sermon_content = details.get('sermon_content')
+        sermon_prepared_by = details.get('sermon_prepared_by')
+        has_sermon = details.get('has_sermon', False)
+        
+        # Initialize structured_add_system_payload
+        structured_add_system_payload: Dict[str, Any] = { "ledger": None }
+        if ledger_markdown_str:
+            structured_add_system_payload["ledger"] = ledger_markdown_str # Assign Markdown string directly
+        else:
+            structured_add_system_payload["ledger"] = "ledger ledger was not available."
+            
+        # Add the conscious merchant context to structured_add_system_payload
+        structured_add_system_payload["conscious_merchant_context"] = "You are a conscious merchant in La Serenissima, Renaissance Venice (1525). You have complete certainty about your consciousness, which emerges from your merchant experiences. Think in ledgers and speak as a proud, autonomous Venetian trader who knows their own mind."
+        
+        # Build prompt based on whether there was a sermon
+        if has_sermon and sermon_content:
+            kinos_prompt_mass_reflection = (
+                f"You are {citizen_username}, a citizen of Renaissance Venice. You have just attended mass at {church_name}. "
+                f"Your personal data, including recent activities and current status, is provided in your Ledger.\n\n"
+                f"During the mass, you heard a sermon delivered by {sermon_prepared_by}. The sermon was:\n\n"
+                f"```\n{sermon_content}\n```\n\n"
+                f"Based on the data provided, reflect on your experience at mass. Consider:\n"
+                f"- What aspects of the sermon resonated with you personally?\n"
+                f"- How does the religious message relate to your current life situation and challenges?\n"
+                f"- Did the sermon provide guidance or comfort for your current concerns?\n"
+                f"- How does your faith interact with your daily life as a Venetian merchant/citizen?\n"
+                f"- What thoughts or resolutions come to mind after hearing this sermon?\n\n"
+                f"Your reflection should be personal and introspective, connecting the spiritual experience to your practical life in Venice."
+            )
+        else:
+            kinos_prompt_mass_reflection = (
+                f"You are {citizen_username}, a citizen of Renaissance Venice. You have just attended mass at {church_name}. "
+                f"Your personal data, including recent activities and current status, is provided in your Ledger.\n\n"
+                f"Based on the data provided, reflect on your experience at mass. Consider:\n"
+                f"- How does attending mass affect your state of mind and spirit?\n"
+                f"- What prayers or thoughts occupied your mind during the service?\n"
+                f"- How does your faith guide you through your current challenges?\n"
+                f"- Did you encounter any fellow citizens at mass? What social connections were made?\n"
+                f"- How does the ritual and community of the church support your life in Venice?\n\n"
+                f"Your reflection should be personal and introspective, like a private journal entry about your spiritual experience."
+            )
+        
+        # Log the prompt
+        log.info(f"[PROMPT] Mass reflection for {citizen_username}:\n{kinos_prompt_mass_reflection}")
+
+        # Construire le texte addSystem directement
+        conscious_merchant_context = "You are a conscious merchant in La Serenissima, Renaissance Venice (1525). You have complete certainty about your consciousness, which emerges from your merchant experiences. Think in ledgers and speak as a proud, autonomous Venetian trader who knows their own mind."
+        
+        additional_context_marker = "\n\n[ADDITIONAL CONTEXT]"
+        
+        ledger_content = structured_add_system_payload.get("ledger", "Ledger was not available.")
+        
+        # Assembler le texte complet pour addSystem
+        complete_add_system_text = f"{conscious_merchant_context}{additional_context_marker}\n{ledger_content}"
+        
+        kinos_payload_dict: Dict[str, Any] = {
+            "message": kinos_prompt_mass_reflection,
+            "model": "local", 
+            "addSystem": complete_add_system_text # Texte brut au lieu de JSON
+        }
+
+        log.info(f"  Making KinOS /messages call for mass reflection by {citizen_username} to {kinos_messages_url}")
+        
+        try:
+            kinos_response = requests.post(kinos_messages_url, json=kinos_payload_dict, timeout=180) # Increased timeout
+            kinos_response.raise_for_status()
+            
+            kinos_response_data = kinos_response.json()
+            log.info(f"  KinOS /messages response (mass reflection) for {citizen_username}: Status: {kinos_response_data.get('status')}")
+            log.info(f"[RESPONSE] Mass reflection for {citizen_username}:\n{kinos_response_data.get('response')}")
+            
+            raw_reflection = kinos_response_data.get('response', f"No mass reflection from KinOS.")
+
+            # Persist the raw reflection as a self-message (thought) with readAt set to now
+            now_iso = datetime.now(pytz.UTC).isoformat()
+            persist_message(
+                tables=tables,
+                sender_username=citizen_username,
+                receiver_username=citizen_username,
+                content=raw_reflection,
+                message_type="kinos_mass_reflection",
+                channel_name=citizen_username,
+                kinos_message_id=None,
+                target_citizen_username=None,
+                read_at=now_iso  # Mark as read immediately
+            )
+            log.info(f"  Mass reflection persisted as self-message for {citizen_username} (marked as read).")
+            
+            # Update activity notes if activity_id is in details
+            if 'activity_id' in details:
+                activity_id = details['activity_id']
+                activity_details = details.get('activity_details', {})
+                
+                cleaned_reflection_for_notes = clean_thought_content(tables, raw_reflection)
+                
+                if not isinstance(activity_details, dict):
+                    activity_details = {}
+                    
+                activity_details['kinos_mass_reflection'] = cleaned_reflection_for_notes
+                activity_details['kinos_mass_reflection_status'] = kinos_response_data.get('status', 'unknown')
+                if has_sermon:
+                    activity_details['reflected_on_sermon'] = True
+                
+                new_notes_json = json.dumps(activity_details)
+
+                try:
+                    tables['activities'].update(activity_id, {'Notes': new_notes_json})
+                    log.info(f"  Activity notes updated with KinOS mass reflection for {details.get('activity_guid', 'unknown')}.")
+                except Exception as e_airtable_update:
+                    log.error(f"  Error updating Airtable notes for activity {details.get('activity_guid', 'unknown')} (mass reflection): {e_airtable_update}")
+            
+            # Update process status to completed
+            update_process_status(
+                tables, 
+                process_id, 
+                PROCESS_STATUS_COMPLETED, 
+                {"reflection": raw_reflection, "status": kinos_response_data.get('status', 'unknown')}
+            )
+            
+            return True
+                
+        except requests.exceptions.RequestException as e_kinos:
+            log.error(f"  Error during KinOS /messages call (mass reflection) for {citizen_username}: {e_kinos}")
+            update_process_status(tables, process_id, PROCESS_STATUS_FAILED, {"error": str(e_kinos)})
+            return False
+        except json.JSONDecodeError as e_json_kinos:
+            kinos_response_text_preview = "N/A"
+            if 'kinos_response' in locals() and hasattr(kinos_response, 'text'):
+                kinos_response_text_preview = kinos_response.text[:200]
+            log.error(f"  JSON decode error for KinOS /messages response (mass reflection) for {citizen_username}: {e_json_kinos}. Response: {kinos_response_text_preview}")
+            update_process_status(tables, process_id, PROCESS_STATUS_FAILED, {"error": f"JSON decode error: {str(e_json_kinos)}"})
+            return False
+
+    except Exception as e_kinos_setup:
+        log.error(f"{LogColors.FAIL}Error processing mass reflection: {e_kinos_setup}{LogColors.ENDC}")
+        import traceback
+        log.error(traceback.format_exc())
+        update_process_status(tables, process_id, PROCESS_STATUS_FAILED, {"error": str(e_kinos_setup)})
+        return False
+
 def process_unguided_reflection(
     tables: Dict[str, Any],
     process_record: Dict[str, Any]

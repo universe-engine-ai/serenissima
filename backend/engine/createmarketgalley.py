@@ -320,7 +320,7 @@ def create_galley_delivery_activity(
 
 def main_process_market_galley(args: argparse.Namespace):
     """Main function to create a market galley."""
-    log_header(f"Market Galley Creation (dry_run={args.dry_run}, food_only={args.food}, goods_only={args.goods}, construction_only={args.construction}, hour_override={args.hour})", LogColors.HEADER)
+    log_header(f"Market Galley Creation (dry_run={args.dry_run}, food_only={args.food}, goods_only={args.goods}, construction_only={args.construction}, resources={args.resources}, hour_override={args.hour})", LogColors.HEADER)
 
     now_venice_dt_real = datetime.now(VENICE_TIMEZONE)
     if args.hour is not None:
@@ -356,7 +356,12 @@ def main_process_market_galley(args: argparse.Namespace):
     ]
 
     for res_id, res_def in resource_type_defs.items():
-        if args.food:
+        if args.resources:
+            # Filter by specific resource list
+            requested_resources = [r.strip() for r in args.resources.split(',')]
+            if res_id in requested_resources:
+                candidate_resources.append(res_def)
+        elif args.food:
             if res_def.get('subCategory', '').lower() == 'food':
                 candidate_resources.append(res_def)
         elif args.goods:
@@ -523,13 +528,14 @@ if __name__ == "__main__":
     parser.add_argument("--food", action="store_true", help="Only include food resources (subCategory 'food').")
     parser.add_argument("--goods", action="store_true", help="Only include non-food, non-construction resources.")
     parser.add_argument("--construction", action="store_true", help="Only include specified construction materials.")
+    parser.add_argument("--resources", type=str, help="Comma-separated list of specific resource types to include (e.g., 'books,wine,grain').")
     parser.add_argument("--hour", type=int, choices=range(24), metavar="[0-23]", help="Force current hour in Venice time (0-23).")
 
     args = parser.parse_args()
 
-    active_mode_flags = sum([args.food, args.goods, args.construction])
+    active_mode_flags = sum([args.food, args.goods, args.construction, bool(args.resources)])
     if active_mode_flags > 1:
-        log.error("Cannot use --food, --goods, and --construction simultaneously. Choose one or none (for all resources).")
+        log.error("Cannot use --food, --goods, --construction, and --resources simultaneously. Choose one or none (for all resources).")
         sys.exit(1)
 
     if args.verbose:

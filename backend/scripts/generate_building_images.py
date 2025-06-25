@@ -4,9 +4,10 @@ Generate images for buildings using the Ideogram API.
 
 This script:
 1. Scans the data/buildings directory and subfolders for building JSON files
-2. Generates images using the Ideogram API based on building descriptions
-3. Saves the images to the public/images/buildings directory
-4. Organizes images by building category and subCategory
+2. Checks if images already exist on the production server
+3. Generates images using the Ideogram API based on building descriptions (if not already existing)
+4. Uploads the images to the backend server's public/images/buildings directory
+5. Skips generation for existing images unless --force is specified
 """
 
 import os
@@ -16,7 +17,7 @@ import argparse
 import json
 import time
 import requests
-from typing import Dict, List, Optional, Any
+from typing import Dict, List, Optional, Any, Tuple
 from urllib.parse import urlparse
 from dotenv import load_dotenv
 from pathlib import Path
@@ -405,35 +406,77 @@ def generate_and_upload_image(prompt: str, base_filename: str) -> Optional[str]:
         log.error(f"Error generating/uploading image for {base_filename}: {e}")
         return None
 
-def process_building(building: Dict[str, Any], force_regenerate: bool = False) -> bool:
-    """Process a single building to generate and upload its image."""
+def check_image_exists_on_server(base_filename: str, extensions: List[str] = ['.png', '.jpg', '.jpeg']) -> Optional[str]:
+    """
+    Check if an image already exists on the production server.
+    Returns the full URL if found, None otherwise.
+    """
+    global BACKEND_API_URL_GLOBAL
+    
+    log.debug(f"Checking server for existing images with base filename: {base_filename}")
+    
+    for ext in extensions:
+        image_url = f"{BACKEND_API_URL_GLOBAL.rstrip('/')}/public_assets/images/buildings/{base_filename}{ext}"
+        log.debug(f"Checking URL: {image_url}")
+        try:
+            # Try GET request with range header to minimize data transfer
+            headers = {'Range': 'bytes=0-0'}  # Request only first byte
+            response = requests.get(image_url, headers=headers, timeout=5, allow_redirects=True, stream=True)
+            log.debug(f"Response status for {image_url}: {response.status_code}")
+            
+            # Close the response immediately to avoid downloading the full image
+            response.close()
+            
+            # Accept both 200 (full content) and 206 (partial content) as success
+            if response.status_code in [200, 206]:
+                log.info(f"Image already exists on server: {image_url}")
+                return image_url
+            elif response.status_code == 404:
+                log.debug(f"Image not found at {image_url}")
+            else:
+                log.debug(f"Unexpected status {response.status_code} for {image_url}")
+        except requests.RequestException as e:
+            log.debug(f"Error checking {image_url}: {e}")
+    
+    log.debug(f"No existing image found for {base_filename}")
+    return None
+
+def process_building(building: Dict[str, Any], force_regenerate: bool = False, delay_seconds: int = 0) -> Tuple[bool, bool]:
+    """
+    Process a single building to generate and upload its image.
+    
+    Returns:
+        Tuple[bool, bool]: (success, was_generated) - success indicates if the operation succeeded,
+                           was_generated indicates if a new image was actually generated
+    """
     name = building.get('name', 'unknown_building')
     safe_name = name.lower().replace(' ', '_').replace("'", "").replace('"', '') # Simplified safe name
     
-    # This script doesn't store the URL back into a data file.
-    # It relies on the frontend constructing the URL based on convention.
-    # So, we just need to ensure the image is uploaded.
-    # The `force_regenerate` logic might need to check if the image exists on the *server*,
-    # which is harder. For now, if `force_regenerate` is true, it will always try.
-    # If not forcing, and we had a way to check server existence, we could skip.
-    # Let's assume for now that if not `force_regenerate`, we might skip based on local progress or a marker.
-    # However, the original script checked local existence. Since we're uploading, this check is less relevant.
-    # We'll rely on a progress tracking mechanism if skipping is desired without `force_regenerate`.
-    # For simplicity now, let's assume it tries to generate if not explicitly told to skip by other means (e.g. limit).
-
+    log.debug(f"Processing {name} with safe_name: {safe_name}, force_regenerate: {force_regenerate}")
+    
+    # Check if image already exists on server unless force_regenerate is true
+    if not force_regenerate:
+        log.debug(f"Checking if image exists for {name}...")
+        existing_url = check_image_exists_on_server(safe_name)
+        if existing_url:
+            log.info(f"Skipping {name} - image already exists at {existing_url}")
+            return (True, False)  # Success but not generated
+    
+    # Only generate prompt and image if we need to
+    log.info(f"Generating new image for {name}")
     prompt = create_image_prompt(building)
     public_image_url = generate_and_upload_image(prompt, safe_name)
     
     if not public_image_url:
         log.error(f"Failed to generate and upload image for {name} (base: {safe_name})")
-        return False
+        return (False, False)  # Failed
     
     # If building ID or type are different, we might want to create aliases or symlinks on the server.
     # The current upload API doesn't support this directly.
     # For now, we'll just upload using `safe_name`.
     # The frontend will need to consistently use this `safe_name` based URL.
     
-    return True
+    return (True, True)  # Success and generated
 
 def main(cli_args): # Renamed args to cli_args to avoid conflict
     """Main function to generate building images."""
@@ -473,8 +516,9 @@ def main(cli_args): # Renamed args to cli_args to avoid conflict
     # Process buildings
     processed_count = 0
     success_count = 0
+    generated_count = 0
     
-    for building_data in buildings: # Renamed building to building_data to avoid conflict
+    for i, building_data in enumerate(buildings):
         # Check if we've reached the limit
         if cli_args.limit > 0 and processed_count >= cli_args.limit:
             log.info(f"Reached limit of {cli_args.limit} images. Stopping.")
@@ -484,23 +528,25 @@ def main(cli_args): # Renamed args to cli_args to avoid conflict
         log.info(f"Processing building {processed_count+1}/{len(buildings)}: {name}")
         
         # Process the building
-        success = process_building(building_data, cli_args.force)
+        success, was_generated = process_building(building_data, cli_args.force, cli_args.delay_seconds)
         
         if success:
             success_count += 1
+            if was_generated:
+                generated_count += 1
+                # Only add delay after actually generating an image, and not for the last building
+                if i < len(buildings) - 1 and (cli_args.limit == 0 or processed_count + 1 < cli_args.limit):
+                    log.info(f"Waiting {cli_args.delay_seconds} seconds before next generation...")
+                    time.sleep(cli_args.delay_seconds)
         
         processed_count += 1
-        
-        # Add a delay to avoid rate limiting
-        if processed_count < len(buildings) and (cli_args.limit == 0 or processed_count < cli_args.limit) :
-            time.sleep(cli_args.delay_seconds) # Use configurable delay
     
-    log.info(f"Attempted to generate and upload {success_count} images out of {processed_count} processed buildings")
+    log.info(f"Summary: Processed {processed_count} buildings, {success_count} successful, {generated_count} new images generated")
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Generate images for buildings and upload them.")
     parser.add_argument("--limit", type=int, default=0, help="Maximum number of images to generate (0 for unlimited)")
-    parser.add_argument("--force", action="store_true", help="Force regeneration (currently ignored as server-side check is complex)")
+    parser.add_argument("--force", action="store_true", help="Force regeneration of images even if they already exist on the server")
     parser.add_argument("--building", help="Only process a specific building by name or type")
     parser.add_argument(
         "--api_url",
