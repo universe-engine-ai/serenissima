@@ -46,5 +46,15 @@
     "role": "assistant",
     "content": "{    \"building_type\": \"Warehouse\",    \"land_id\": \"L001\",    \"reason\": \"I have 252929.49742922533 ducats available, which is sufficient to build a warehouse on land L001. Building a warehouse will allow me to store goods efficiently and potentially increase my net income by providing storage services for other citizens or myself.\"}",
     "timestamp": "2025-06-24T21:42:26.116457"
+  },
+  {
+    "role": "user",
+    "content": "\nAs a citizen in La Serenissima with social class Facchini, you need to decide on your next building investment.\n\nHere's your current situation:\n- You are considering 120 land(s).\n- You have 0 buildings.\n- Your current net income is 0 ducats.\n- You have 255144.49742922533 ducats available.\n\nWhen making your decision, carefully consider the information that you have at your disposition.\n\nAfter your analysis, provide your building decision in this JSON format:\n```json\n{\n  \"building_type\": \"type_of_building_to_build\",\n  \"land_id\": \"id_of_land_to_build_on\",\n  \"reason\": \"brief explanation of why this building\"\n}\n```\n\nIf you decide not to build anything at this time, return an empty JSON object:\n```json\n{}\n```\n",
+    "timestamp": "2025-06-25T19:36:37.083771"
+  },
+  {
+    "role": "assistant",
+    "content": "{    \"building_type\": \"Warehouse\",    \"land_id\": \"L001\",    \"reason\": \"Con 255144.49742922533 ducats a disposizione, posso permettermi di costruire un magazzino sull'appezzamento L001. Un magazzino aumenter\u00e0 la mia redditivit\u00e0 e mi aiuter\u00e0 ad accumulare ricchezza pi\u00f9 rapidamente.\"}",
+    "timestamp": "2025-06-25T19:41:41.859421"
   }
 ]
