@@ -43,3 +43,7 @@ next-env.d.ts
 
 *.tmp
 .tmp.driveupload/
+
+# Training output files
+backend/trainings/output/*.jsonl
+backend/trainings/output/
