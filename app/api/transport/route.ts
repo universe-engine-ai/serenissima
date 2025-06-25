@@ -13,7 +13,7 @@ const WALKING_SPEED_MPS = 1.4; // meters per second
 const GONDOLA_SPEED_MPS = WALKING_SPEED_MPS * 2; // Gondolas are twice as fast
 
 // Helper function to calculate travel time considering different transport modes
-export function calculatePathTravelTime(path: {lat: number, lng: number, transportMode?: string}[]): number {
+function calculatePathTravelTime(path: {lat: number, lng: number, transportMode?: string}[]): number {
   let totalTravelTimeSeconds = 0;
   if (!path || path.length < 2) {
     return 0;
@@ -36,7 +36,7 @@ export function calculatePathTravelTime(path: {lat: number, lng: number, transpo
 }
 
 // Function to extract journey information from the path
-export function extractJourneyFromPath(path: any[]): any[] {
+function extractJourneyFromPath(path: any[]): any[] {
   if (!path || !Array.isArray(path) || path.length === 0) {
     return [];
   }
@@ -102,7 +102,7 @@ export function extractJourneyFromPath(path: any[]): any[] {
 }
 
 // Helper function to calculate the total distance of a path in meters
-export function calculatePathDistance(path: {lat: number, lng: number}[]): number {
+function calculatePathDistance(path: {lat: number, lng: number}[]): number {
   let totalDistance = 0;
   
   for (let i = 1; i < path.length; i++) {
@@ -133,7 +133,7 @@ function haversineDistance(lat1: number, lng1: number, lat2: number, lng2: numbe
   return distance;
 }
 
-export async function fetchTransporterDetails(path: any[]): Promise<string | null> {
+async function fetchTransporterDetails(path: any[]): Promise<string | null> {
   let transporter = null;
   const usesGondola = path.some((p: any) => p.transportMode === 'gondola');
 
