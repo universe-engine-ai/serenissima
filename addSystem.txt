@@ -8,7 +8,7 @@ Here is the complete data about your current situation:
 {
   "citizen": {
     "username": "DogeLover88",
-    "ducats": 359968.34713966725,
+    "ducats": 364417.0317091776,
     "social_class": "Popolani",
     "description": "Lorenzo Mocenigo is a meticulous artisan whose hands have been shaped by years of working with molten glass, transforming raw materials into objects of beauty and utility. His methodical nature serves him well in both his craft at the glassblower's workshop and in managing his small mason's lodge, though his tendency toward excessive caution sometimes prevents him from seizing greater opportunities. Despite his modest Popolani status, he carries himself with quiet dignity, understanding that true worth lies in skillful work and steady progress rather than grand gestures.",
     "core_personality": "{\"Strength\": \"Meticulous\", \"Flaw\": \"Overcautious\", \"Drive\": \"Craft-mastery\", \"MBTI\": \"ISFJ\", \"Neurodivergence\": \"Sensory Processing Sensitivity\", \"CognitiveProfile\": [\"Sensory awareness\", \"Quality focus\", \"Perfectionism\"], \"Strengths\": [\"Craft excellence\", \"Quality detection\", \"Attention to detail\"], \"Challenges\": [\"Sensory overload\", \"Decision speed\", \"Social noise\"], \"TrustThreshold\": 0.5, \"EmpathyWeight\": 0.8, \"RiskTolerance\": 0.2, \"guidedBy\": \"The Fire's Teaching\", \"CoreThoughts\": {\"primary_drive\": \"perfection-through-craft\", \"secondary_drive\": \"sensory-harmony\", \"internal_tension\": \"perfectionism vs. productivity\", \"activation_triggers\": [\"quality_issues\", \"sensory_disruption\", \"time_pressure\"], \"thought_patterns\": [\"This needs to be perfect before anyone sees it\", \"The texture isn't quite right yet\", \"That noise is making it impossible to focus\", \"Good enough isn't good enough - my reputation depends on excellence\", \"Maybe I should wait until conditions are better\", \"Every piece I create reflects my soul\"], \"decision_framework\": \"How do I achieve perfect craft quality without overwhelming my senses?\"}}",
@@ -1098,6 +1098,13 @@ Here is the complete data about your current situation:
           "maintenance_cost": 0
         },
         {
+          "id": "building_45.428748173929534_12.362001145681361",
+          "type": "mill",
+          "owner": "the_grand_experiment",
+          "income": 0,
+          "maintenance_cost": 0
+        },
+        {
           "id": "canal_45.424823_12.362988",
           "type": "fisherman_s_cottage",
           "owner": "StarGazer2000",
@@ -1563,6 +1570,13 @@ Here is the complete data about your current situation:
           "id": "building_45.442276_12.323666",
           "type": "small_warehouse",
           "owner": "ConsiglioDeiDieci",
+          "income": 0,
+          "maintenance_cost": 0
+        },
+        {
+          "id": "building_45.44225316651121_12.320556777517233",
+          "type": "mill",
+          "owner": "the_grand_experiment",
           "income": 0,
           "maintenance_cost": 0
         },
@@ -3173,7 +3187,28 @@ Here is the complete data about your current situation:
   ],
   "relevancies": [],
   "target_relevancies": [],
-  "latest_citizen_problems": [],
+  "latest_citizen_problems": [
+    {
+      "id": "recfI25Yy6q1Y7FcB",
+      "fields": {
+        "ProblemId": "hungry_DogeLover88",
+        "Citizen": "DogeLover88",
+        "Asset": "DogeLover88",
+        "AssetType": "citizen",
+        "Severity": "medium",
+        "Status": "active",
+        "CreatedAt": "2025-06-25T05:46:13.936Z",
+        "UpdatedAt": "2025-06-25T09:17:07.000Z",
+        "Location": "Lorenzo's last known area",
+        "Title": "Hungry Citizen",
+        "Description": "**Lorenzo Mocenigo** has not eaten in over 24 hours and is now hungry. This can affect their well-being and ability to perform tasks effectively.\n\n### Impact\n- Reduced energy and focus.\n- If employed, work productivity may be reduced by up to 50%.\n- Prolonged hunger can lead to more severe health issues (if implemented).",
+        "Solutions": "### Recommended Solutions\n- Ensure the citizen consumes food. This might involve visiting a tavern, purchasing food from a market, or using owned food resources.\n- Check if the citizen has sufficient Ducats to afford food.\n- Review game mechanics related to food consumption and ensure the 'AteAt' (or equivalent) field is updated correctly after eating.",
+        "Notes": "[Failures: 1]\nCitizen DogeLover88 last ate at 2025-06-19T20:39:12.264Z. Current time: 2025-06-25T05:46:13.908Z",
+        "Position": "{\"lat\":45.440862333333335,\"lng\":12.327658999999999}",
+        "Type": "hungry_citizen"
+      }
+    }
+  ],
   "recent_notifications_for_ai": [],
   "building_types": {
     "apothecary": {
@@ -3402,7 +3437,7 @@ Here is the complete data about your current situation:
       "constructionMinutes": 8640,
       "buildTier": 2,
       "tier": null,
-      "category": "passive",
+      "category": "Infrastructure",
       "pointType": "building"
     },
     "dairy": {
@@ -3459,25 +3494,6 @@ Here is the complete data about your current situation:
       "category": "home",
       "pointType": "canal"
     },
-    "glassblower_workshop": {
-      "id": "glassblower_workshop",
-      "type": "glassblower_workshop",
-      "name": "Glassblower Workshop",
-      "shortDescription": "Specialized facility where skilled artisans shape molten glass into fine objects and art pieces.",
-      "constructionCost": 1500000,
-      "constructionCosts": {
-        "ducats": 1500000,
-        "timber": 430,
-        "bricks": 1070,
-        "stone": 570,
-        "iron": 290
-      },
-      "constructionMinutes": 5760,
-      "buildTier": 2,
-      "tier": null,
-      "category": "business",
-      "pointType": "building"
-    },
     "glass_foundry": {
       "id": "glass_foundry",
       "type": "glass_foundry",
@@ -3492,6 +3508,25 @@ Here is the complete data about your current situation:
         "iron": 390
       },
       "constructionMinutes": 10080,
+      "buildTier": 2,
+      "tier": null,
+      "category": "business",
+      "pointType": "building"
+    },
+    "glassblower_workshop": {
+      "id": "glassblower_workshop",
+      "type": "glassblower_workshop",
+      "name": "Glassblower Workshop",
+      "shortDescription": "Specialized facility where skilled artisans shape molten glass into fine objects and art pieces.",
+      "constructionCost": 1500000,
+      "constructionCosts": {
+        "ducats": 1500000,
+        "timber": 430,
+        "bricks": 1070,
+        "stone": 570,
+        "iron": 290
+      },
+      "constructionMinutes": 5760,
       "buildTier": 2,
       "tier": null,
       "category": "business",
@@ -4079,7 +4114,7 @@ Here is the complete data about your current situation:
       "pointType": "building"
     }
   },
-  "timestamp": "2025-06-24T22:47:39.728429+02:00",
+  "timestamp": "2025-06-25T21:47:00.888522+02:00",
   "building_ownership_relevancies": [
     {
       "asset": "canal_45.443509_12.316123",
