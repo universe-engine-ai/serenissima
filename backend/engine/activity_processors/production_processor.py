@@ -414,8 +414,29 @@ def process(
                     new_book_payload["Attributes"] = artwork_attributes_json
                 
                 try:
-                    tables['resources'].create(new_book_payload)
+                    new_book_resource = tables['resources'].create(new_book_payload)
                     log.info(f"{LogColors.OKGREEN}Produced book {artwork_title_for_log} in {building_custom_id}. Attributes: {artwork_attributes_json or 'None'}{LogColors.ENDC}")
+                    
+                    # Create production transaction
+                    transaction_payload = {
+                        "Type": "production",
+                        "AssetType": "resource",
+                        "Asset": new_book_resource['fields']['ResourceId'],
+                        "Seller": operator_username,
+                        "Buyer": operator_username,
+                        "Price": 0,
+                        "Notes": json.dumps({
+                            "resourceType": res_type,
+                            "amount": 1,
+                            "resourceName": res_def_book.get('name', res_type),
+                            "buildingId": building_custom_id,
+                            "buildingName": prod_building_record['fields'].get('Name', building_custom_id)
+                        }),
+                        "CreatedAt": now_iso,
+                        "ExecutedAt": now_iso
+                    }
+                    tables['transactions'].create(transaction_payload)
+                    log.info(f"Created production transaction for book {artwork_title_for_log}")
                 except Exception as e_create_book:
                     log.error(f"Error creating unique book resource for activity {activity_guid}: {e_create_book}")
                     # Continue to next book or fail? For now, continue.
@@ -446,8 +467,29 @@ def process(
                             "production": f"{final_produced_amount:.4f} {res_def.get('name', res_type)} produced at building {prod_building_record['fields'].get('Name', building_custom_id)}"
                         })
                     }
-                    tables['resources'].create(new_resource_payload)
+                    new_resource = tables['resources'].create(new_resource_payload)
                     log.info(f"{LogColors.OKGREEN}Produced {final_produced_amount:.4f} of {res_type} in {building_custom_id} (created new).{LogColors.ENDC}")
+                    
+                    # Create production transaction
+                    transaction_payload = {
+                        "Type": "production",
+                        "AssetType": "resource",
+                        "Asset": new_resource['fields']['ResourceId'],
+                        "Seller": operator_username,
+                        "Buyer": operator_username,
+                        "Price": 0,
+                        "Notes": json.dumps({
+                            "resourceType": res_type,
+                            "amount": final_produced_amount,
+                            "resourceName": res_def.get('name', res_type),
+                            "buildingId": building_custom_id,
+                            "buildingName": prod_building_record['fields'].get('Name', building_custom_id)
+                        }),
+                        "CreatedAt": now_iso,
+                        "ExecutedAt": now_iso
+                    }
+                    tables['transactions'].create(transaction_payload)
+                    log.info(f"Created production transaction for {final_produced_amount:.4f} {res_type}")
             except Exception as e_produce:
                 log.error(f"Error producing output {res_type} for activity {activity_guid}: {e_produce}")
                 return False
