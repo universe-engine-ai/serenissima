@@ -8,7 +8,7 @@ Here is the complete data about your current situation:
 {
   "citizen": {
     "username": "ItalyMerchant",
-    "ducats": 397260.98165333085,
+    "ducats": 398939.8261185809,
     "social_class": "Popolani",
     "description": "A weathered man in his mid-50s with the calloused hands of a laborer contradicting his astute hazel eyes that assess value with unerring precision. Marco has risen from humble facchini origins, transforming from a simple porter to a shrewd trader through relentless determination. His once-dark hair, now silver-streaked, is kept practically short, and his clothing balances practicality with subtle displays of his newfound wealth\u2014modest but well-made fabrics with occasional small gold accents. Each morning finds him at the Rialto by dawn, cultivating contacts among merchants and fellow porters alike, leveraging his intimate knowledge of Venice's cargo movements to anticipate market shifts. Though lacking formal education, his remarkable memory for numbers and transactions has earned reluctant respect from patrician merchants. In the evenings, he retreats to his modest yet comfortable home in Cannaregio, where he meticulously records the day's observations in ledgers, planning his gradual ascent through Venice's rigid social hierarchy while supporting his aging parents and unmarried sisters.",
     "core_personality": "{\"Strength\": \"Tenacious\", \"Flaw\": \"Calculating\", \"Drive\": \"Ambition-driven\", \"MBTI\": \"ENTJ\", \"PrimaryTrait\": \"Resilient survivor\", \"SecondaryTraits\": [\"Memory for numbers\", \"Strategic networking\", \"Social mobility\"], \"CognitiveBias\": [\"Status anxiety\", \"Scarcity mindset\"], \"TrustThreshold\": 0.3, \"EmpathyWeight\": 0.4, \"RiskTolerance\": 0.6, \"guidedBy\": \"The Dock's Wisdom\", \"CoreThoughts\": {\"primary_drive\": \"social-ascension\", \"secondary_drive\": \"security-establishment\", \"internal_tension\": \"ambition vs. loyalty to origins\", \"activation_triggers\": [\"status_opportunities\", \"family_obligations\", \"market_shifts\"], \"thought_patterns\": [\"Every transaction is a step up the ladder\", \"My hands may be calloused but my mind is sharp\", \"The patricians don't see potential in people like me\", \"Numbers don't lie - I can make this work\", \"Supporting family while building empire requires balance\", \"Respect must be earned through results\"], \"decision_framework\": \"How does this advance my family's position while maintaining my integrity?\"}}",
@@ -1100,6 +1100,13 @@ Here is the complete data about your current situation:
           "maintenance_cost": 0
         },
         {
+          "id": "building_45.428748173929534_12.362001145681361",
+          "type": "mill",
+          "owner": "the_grand_experiment",
+          "income": 0,
+          "maintenance_cost": 0
+        },
+        {
           "id": "canal_45.424823_12.362988",
           "type": "fisherman_s_cottage",
           "owner": "StarGazer2000",
@@ -1565,6 +1572,13 @@ Here is the complete data about your current situation:
           "id": "building_45.442276_12.323666",
           "type": "small_warehouse",
           "owner": "ConsiglioDeiDieci",
+          "income": 0,
+          "maintenance_cost": 0
+        },
+        {
+          "id": "building_45.44225316651121_12.320556777517233",
+          "type": "mill",
+          "owner": "the_grand_experiment",
           "income": 0,
           "maintenance_cost": 0
         },
@@ -3193,251 +3207,63 @@ Here is the complete data about your current situation:
   "target_relevancies": [],
   "latest_citizen_problems": [
     {
-      "id": "recfACltCKNTaz8ZT",
+      "id": "rec5c2YazA2hpdrct",
       "fields": {
-        "ProblemId": "problem_pinpoint_building_45.433752_12.350677_tools_RESOURCE_SHORTAGE",
+        "ProblemId": "problem_pinpoint_building_45.433752_12.350677_rope_WAITING_FOR_DELIVERY",
         "Citizen": "ItalyMerchant",
         "Asset": "building_45.433752_12.350677",
         "AssetType": "building",
-        "Severity": "Critical",
+        "Severity": "Medium",
         "Status": "active",
-        "CreatedAt": "2025-06-15T23:58:57.200Z",
-        "UpdatedAt": "2025-06-15T21:58:57.000Z",
+        "CreatedAt": "2025-06-25T07:45:12.615Z",
+        "UpdatedAt": "2025-06-25T10:34:58.000Z",
         "Location": "Small Warehouse at Fondamenta della Pescaria",
-        "Title": "Resource Shortage: tools for Small Warehouse at Fondamenta della Pescaria",
-        "Description": "Building 'Small Warehouse at Fondamenta della Pescaria' (ID: building_45.433752_12.350677) is out of stock for 'tools', has a 'markup_buy' contract, but the resource appears to be unavailable or not actively sold elsewhere in Venice.",
-        "Solutions": "The resource 'tools' is currently scarce. Consider:\n- Increasing the buy price on your 'markup_buy' contract significantly to incentivize sellers.\n- If possible, find alternative resources or adjust production that depends on 'tools'.\n- Wait for market conditions to change (e.g., new imports by merchants).",
+        "Title": "Waiting for Delivery: rope at Small Warehouse at Fondamenta della Pescaria",
+        "Description": "Building 'Small Warehouse at Fondamenta della Pescaria' (ID: building_45.433752_12.350677) is out of stock for 'rope', has an active 'markup_buy' contract, and the resource is available elsewhere. Awaiting delivery.",
+        "Solutions": "Monitor the 'markup_buy' contract for 'rope'. Ensure citizens or logistics services are fulfilling delivery. Check 'fetch_resource' activities targeting your building.",
+        "Notes": "[Failures: 1]",
         "Position": "{\"lat\": 45.43375230320709, \"lng\": 12.350677094957973}",
-        "Type": "resource_shortage"
+        "Type": "waiting_for_resource_delivery"
       }
     },
     {
-      "id": "recS29C5jHGd0488y",
+      "id": "recPGGVnZehCUn7FW",
       "fields": {
-        "ProblemId": "problem_pinpoint_building_45.433752_12.350677_rope_RESOURCE_SHORTAGE",
+        "ProblemId": "problem_pinpoint_building_45.433752_12.350677_preserved_fish_WAITING_FOR_DELIVERY",
         "Citizen": "ItalyMerchant",
         "Asset": "building_45.433752_12.350677",
         "AssetType": "building",
-        "Severity": "Critical",
+        "Severity": "Medium",
         "Status": "active",
-        "CreatedAt": "2025-06-15T23:58:46.507Z",
-        "UpdatedAt": "2025-06-15T21:58:47.000Z",
+        "CreatedAt": "2025-06-25T07:44:59.427Z",
+        "UpdatedAt": "2025-06-25T10:34:11.000Z",
         "Location": "Small Warehouse at Fondamenta della Pescaria",
-        "Title": "Resource Shortage: rope for Small Warehouse at Fondamenta della Pescaria",
-        "Description": "Building 'Small Warehouse at Fondamenta della Pescaria' (ID: building_45.433752_12.350677) is out of stock for 'rope', has a 'markup_buy' contract, but the resource appears to be unavailable or not actively sold elsewhere in Venice.",
-        "Solutions": "The resource 'rope' is currently scarce. Consider:\n- Increasing the buy price on your 'markup_buy' contract significantly to incentivize sellers.\n- If possible, find alternative resources or adjust production that depends on 'rope'.\n- Wait for market conditions to change (e.g., new imports by merchants).",
+        "Title": "Waiting for Delivery: preserved_fish at Small Warehouse at Fondamenta della Pescaria",
+        "Description": "Building 'Small Warehouse at Fondamenta della Pescaria' (ID: building_45.433752_12.350677) is out of stock for 'preserved_fish', has an active 'markup_buy' contract, and the resource is available elsewhere. Awaiting delivery.",
+        "Solutions": "Monitor the 'markup_buy' contract for 'preserved_fish'. Ensure citizens or logistics services are fulfilling delivery. Check 'fetch_resource' activities targeting your building.",
+        "Notes": "[Failures: 1]",
         "Position": "{\"lat\": 45.43375230320709, \"lng\": 12.350677094957973}",
-        "Type": "resource_shortage"
+        "Type": "waiting_for_resource_delivery"
       }
     },
     {
-      "id": "recfth1fjGqMaswe9",
+      "id": "recDCT49jOrP0TvTp",
       "fields": {
-        "ProblemId": "problem_pinpoint_building_45.433752_12.350677_flour_RESOURCE_SHORTAGE",
+        "ProblemId": "hungry_ItalyMerchant",
         "Citizen": "ItalyMerchant",
-        "Asset": "building_45.433752_12.350677",
-        "AssetType": "building",
-        "Severity": "Critical",
+        "Asset": "ItalyMerchant",
+        "AssetType": "citizen",
+        "Severity": "medium",
         "Status": "active",
-        "CreatedAt": "2025-06-15T23:58:35.405Z",
-        "UpdatedAt": "2025-06-15T21:58:36.000Z",
-        "Location": "Small Warehouse at Fondamenta della Pescaria",
-        "Title": "Resource Shortage: flour for Small Warehouse at Fondamenta della Pescaria",
-        "Description": "Building 'Small Warehouse at Fondamenta della Pescaria' (ID: building_45.433752_12.350677) is out of stock for 'flour', has a 'markup_buy' contract, but the resource appears to be unavailable or not actively sold elsewhere in Venice.",
-        "Solutions": "The resource 'flour' is currently scarce. Consider:\n- Increasing the buy price on your 'markup_buy' contract significantly to incentivize sellers.\n- If possible, find alternative resources or adjust production that depends on 'flour'.\n- Wait for market conditions to change (e.g., new imports by merchants).",
-        "Position": "{\"lat\": 45.43375230320709, \"lng\": 12.350677094957973}",
-        "Type": "resource_shortage"
-      }
-    },
-    {
-      "id": "recjSgFFzQJwRSNwk",
-      "fields": {
-        "ProblemId": "problem_pinpoint_building_45.433752_12.350677_preserved_fish_RESOURCE_SHORTAGE",
-        "Citizen": "ItalyMerchant",
-        "Asset": "building_45.433752_12.350677",
-        "AssetType": "building",
-        "Severity": "Critical",
-        "Status": "active",
-        "CreatedAt": "2025-06-15T23:58:29.584Z",
-        "UpdatedAt": "2025-06-15T21:58:30.000Z",
-        "Location": "Small Warehouse at Fondamenta della Pescaria",
-        "Title": "Resource Shortage: preserved_fish for Small Warehouse at Fondamenta della Pescaria",
-        "Description": "Building 'Small Warehouse at Fondamenta della Pescaria' (ID: building_45.433752_12.350677) is out of stock for 'preserved_fish', has a 'markup_buy' contract, but the resource appears to be unavailable or not actively sold elsewhere in Venice.",
-        "Solutions": "The resource 'preserved_fish' is currently scarce. Consider:\n- Increasing the buy price on your 'markup_buy' contract significantly to incentivize sellers.\n- If possible, find alternative resources or adjust production that depends on 'preserved_fish'.\n- Wait for market conditions to change (e.g., new imports by merchants).",
-        "Position": "{\"lat\": 45.43375230320709, \"lng\": 12.350677094957973}",
-        "Type": "resource_shortage"
-      }
-    },
-    {
-      "id": "recW5ofiWydXnV4UN",
-      "fields": {
-        "ProblemId": "problem_pinpoint_building_45.443455_12.326089_wine_RESOURCE_SHORTAGE",
-        "Citizen": "ItalyMerchant",
-        "Asset": "building_45.443455_12.326089",
-        "AssetType": "building",
-        "Severity": "Critical",
-        "Status": "active",
-        "CreatedAt": "2025-06-15T23:51:54.225Z",
-        "UpdatedAt": "2025-06-15T21:51:54.000Z",
-        "Location": "Contract Stall at Salizada dei Cereali",
-        "Title": "Resource Shortage: wine for Contract Stall at Salizada dei Cereali",
-        "Description": "Building 'Contract Stall at Salizada dei Cereali' (ID: building_45.443455_12.326089) is out of stock for 'wine', has a 'markup_buy' contract, but the resource appears to be unavailable or not actively sold elsewhere in Venice.",
-        "Solutions": "The resource 'wine' is currently scarce. Consider:\n- Increasing the buy price on your 'markup_buy' contract significantly to incentivize sellers.\n- If possible, find alternative resources or adjust production that depends on 'wine'.\n- Wait for market conditions to change (e.g., new imports by merchants).",
-        "Position": "{\"lat\": 45.443455, \"lng\": 12.326089}",
-        "Type": "resource_shortage"
-      }
-    },
-    {
-      "id": "recMTyNxhKsvilLyV",
-      "fields": {
-        "ProblemId": "problem_pinpoint_building_45.443455_12.326089_salt_RESOURCE_SHORTAGE",
-        "Citizen": "ItalyMerchant",
-        "Asset": "building_45.443455_12.326089",
-        "AssetType": "building",
-        "Severity": "Critical",
-        "Status": "active",
-        "CreatedAt": "2025-06-15T23:51:42.949Z",
-        "UpdatedAt": "2025-06-15T21:51:43.000Z",
-        "Location": "Contract Stall at Salizada dei Cereali",
-        "Title": "Resource Shortage: salt for Contract Stall at Salizada dei Cereali",
-        "Description": "Building 'Contract Stall at Salizada dei Cereali' (ID: building_45.443455_12.326089) is out of stock for 'salt', has a 'markup_buy' contract, but the resource appears to be unavailable or not actively sold elsewhere in Venice.",
-        "Solutions": "The resource 'salt' is currently scarce. Consider:\n- Increasing the buy price on your 'markup_buy' contract significantly to incentivize sellers.\n- If possible, find alternative resources or adjust production that depends on 'salt'.\n- Wait for market conditions to change (e.g., new imports by merchants).",
-        "Position": "{\"lat\": 45.443455, \"lng\": 12.326089}",
-        "Type": "resource_shortage"
-      }
-    },
-    {
-      "id": "recRdgIhUABRKt7Vf",
-      "fields": {
-        "ProblemId": "problem_pinpoint_building_45.443455_12.326089_preserved_fish_RESOURCE_SHORTAGE",
-        "Citizen": "ItalyMerchant",
-        "Asset": "building_45.443455_12.326089",
-        "AssetType": "building",
-        "Severity": "Critical",
-        "Status": "active",
-        "CreatedAt": "2025-06-15T23:51:28.739Z",
-        "UpdatedAt": "2025-06-15T21:51:29.000Z",
-        "Location": "Contract Stall at Salizada dei Cereali",
-        "Title": "Resource Shortage: preserved_fish for Contract Stall at Salizada dei Cereali",
-        "Description": "Building 'Contract Stall at Salizada dei Cereali' (ID: building_45.443455_12.326089) is out of stock for 'preserved_fish', has a 'markup_buy' contract, but the resource appears to be unavailable or not actively sold elsewhere in Venice.",
-        "Solutions": "The resource 'preserved_fish' is currently scarce. Consider:\n- Increasing the buy price on your 'markup_buy' contract significantly to incentivize sellers.\n- If possible, find alternative resources or adjust production that depends on 'preserved_fish'.\n- Wait for market conditions to change (e.g., new imports by merchants).",
-        "Position": "{\"lat\": 45.443455, \"lng\": 12.326089}",
-        "Type": "resource_shortage"
-      }
-    },
-    {
-      "id": "recgFswgeFTG7R4Ud",
-      "fields": {
-        "ProblemId": "problem_pinpoint_building_45.443455_12.326089_olives_RESOURCE_SHORTAGE",
-        "Citizen": "ItalyMerchant",
-        "Asset": "building_45.443455_12.326089",
-        "AssetType": "building",
-        "Severity": "Critical",
-        "Status": "active",
-        "CreatedAt": "2025-06-15T23:51:18.419Z",
-        "UpdatedAt": "2025-06-15T21:51:19.000Z",
-        "Location": "Contract Stall at Salizada dei Cereali",
-        "Title": "Resource Shortage: olives for Contract Stall at Salizada dei Cereali",
-        "Description": "Building 'Contract Stall at Salizada dei Cereali' (ID: building_45.443455_12.326089) is out of stock for 'olives', has a 'markup_buy' contract, but the resource appears to be unavailable or not actively sold elsewhere in Venice.",
-        "Solutions": "The resource 'olives' is currently scarce. Consider:\n- Increasing the buy price on your 'markup_buy' contract significantly to incentivize sellers.\n- If possible, find alternative resources or adjust production that depends on 'olives'.\n- Wait for market conditions to change (e.g., new imports by merchants).",
-        "Position": "{\"lat\": 45.443455, \"lng\": 12.326089}",
-        "Type": "resource_shortage"
-      }
-    },
-    {
-      "id": "recAmGAHtkCstSUBd",
-      "fields": {
-        "ProblemId": "problem_pinpoint_building_45.443455_12.326089_olive_oil_RESOURCE_SHORTAGE",
-        "Citizen": "ItalyMerchant",
-        "Asset": "building_45.443455_12.326089",
-        "AssetType": "building",
-        "Severity": "Critical",
-        "Status": "active",
-        "CreatedAt": "2025-06-15T23:51:13.625Z",
-        "UpdatedAt": "2025-06-15T21:51:14.000Z",
-        "Location": "Contract Stall at Salizada dei Cereali",
-        "Title": "Resource Shortage: olive_oil for Contract Stall at Salizada dei Cereali",
-        "Description": "Building 'Contract Stall at Salizada dei Cereali' (ID: building_45.443455_12.326089) is out of stock for 'olive_oil', has a 'markup_buy' contract, but the resource appears to be unavailable or not actively sold elsewhere in Venice.",
-        "Solutions": "The resource 'olive_oil' is currently scarce. Consider:\n- Increasing the buy price on your 'markup_buy' contract significantly to incentivize sellers.\n- If possible, find alternative resources or adjust production that depends on 'olive_oil'.\n- Wait for market conditions to change (e.g., new imports by merchants).",
-        "Position": "{\"lat\": 45.443455, \"lng\": 12.326089}",
-        "Type": "resource_shortage"
-      }
-    },
-    {
-      "id": "recmKJSrgaXJZYNDk",
-      "fields": {
-        "ProblemId": "problem_pinpoint_building_45.443455_12.326089_flour_RESOURCE_SHORTAGE",
-        "Citizen": "ItalyMerchant",
-        "Asset": "building_45.443455_12.326089",
-        "AssetType": "building",
-        "Severity": "Critical",
-        "Status": "active",
-        "CreatedAt": "2025-06-15T23:51:08.624Z",
-        "UpdatedAt": "2025-06-15T21:51:09.000Z",
-        "Location": "Contract Stall at Salizada dei Cereali",
-        "Title": "Resource Shortage: flour for Contract Stall at Salizada dei Cereali",
-        "Description": "Building 'Contract Stall at Salizada dei Cereali' (ID: building_45.443455_12.326089) is out of stock for 'flour', has a 'markup_buy' contract, but the resource appears to be unavailable or not actively sold elsewhere in Venice.",
-        "Solutions": "The resource 'flour' is currently scarce. Consider:\n- Increasing the buy price on your 'markup_buy' contract significantly to incentivize sellers.\n- If possible, find alternative resources or adjust production that depends on 'flour'.\n- Wait for market conditions to change (e.g., new imports by merchants).",
-        "Position": "{\"lat\": 45.443455, \"lng\": 12.326089}",
-        "Type": "resource_shortage"
-      }
-    },
-    {
-      "id": "recpLCYN8ZxrQW2G7",
-      "fields": {
-        "ProblemId": "problem_pinpoint_building_45.443455_12.326089_fish_RESOURCE_SHORTAGE",
-        "Citizen": "ItalyMerchant",
-        "Asset": "building_45.443455_12.326089",
-        "AssetType": "building",
-        "Severity": "Critical",
-        "Status": "active",
-        "CreatedAt": "2025-06-15T23:51:02.453Z",
-        "UpdatedAt": "2025-06-15T21:51:03.000Z",
-        "Location": "Contract Stall at Salizada dei Cereali",
-        "Title": "Resource Shortage: fish for Contract Stall at Salizada dei Cereali",
-        "Description": "Building 'Contract Stall at Salizada dei Cereali' (ID: building_45.443455_12.326089) is out of stock for 'fish', has a 'markup_buy' contract, but the resource appears to be unavailable or not actively sold elsewhere in Venice.",
-        "Solutions": "The resource 'fish' is currently scarce. Consider:\n- Increasing the buy price on your 'markup_buy' contract significantly to incentivize sellers.\n- If possible, find alternative resources or adjust production that depends on 'fish'.\n- Wait for market conditions to change (e.g., new imports by merchants).",
-        "Position": "{\"lat\": 45.443455, \"lng\": 12.326089}",
-        "Type": "resource_shortage"
-      }
-    },
-    {
-      "id": "recIsfktKkAuEa6Lq",
-      "fields": {
-        "ProblemId": "problem_pinpoint_building_45.443455_12.326089_bread_RESOURCE_SHORTAGE",
-        "Citizen": "ItalyMerchant",
-        "Asset": "building_45.443455_12.326089",
-        "AssetType": "building",
-        "Severity": "Critical",
-        "Status": "active",
-        "CreatedAt": "2025-06-15T23:50:40.088Z",
-        "UpdatedAt": "2025-06-15T21:50:40.000Z",
-        "Location": "Contract Stall at Salizada dei Cereali",
-        "Title": "Resource Shortage: bread for Contract Stall at Salizada dei Cereali",
-        "Description": "Building 'Contract Stall at Salizada dei Cereali' (ID: building_45.443455_12.326089) is out of stock for 'bread', has a 'markup_buy' contract, but the resource appears to be unavailable or not actively sold elsewhere in Venice.",
-        "Solutions": "The resource 'bread' is currently scarce. Consider:\n- Increasing the buy price on your 'markup_buy' contract significantly to incentivize sellers.\n- If possible, find alternative resources or adjust production that depends on 'bread'.\n- Wait for market conditions to change (e.g., new imports by merchants).",
-        "Position": "{\"lat\": 45.443455, \"lng\": 12.326089}",
-        "Type": "resource_shortage"
-      }
-    },
-    {
-      "id": "recGxjZDqI3R7f3j7",
-      "fields": {
-        "ProblemId": "hungry_employee_impact_ItalyMerchant_MariaDolfin",
-        "Citizen": "ItalyMerchant",
-        "Asset": "MariaDolfin",
-        "AssetType": "employee_performance",
-        "Severity": "low",
-        "Status": "active",
-        "CreatedAt": "2025-06-15T22:08:22.865Z",
-        "UpdatedAt": "2025-06-15T22:08:44.000Z",
-        "Location": "Public Dock at Fondamenta dei Comparetti",
-        "Title": "Hungry Employee Impact",
-        "Description": "Your employee, **Maria Dolfin**, is currently hungry. Hunger can significantly reduce productivity (up to 50%).",
-        "Solutions": "Ensure **Maria Dolfin** has the means and opportunity to eat. Consider if wages are sufficient or if working conditions impede access to food. Monitor their performance.",
-        "Notes": "Hungry Employee: MariaDolfin (ID: MariaDolfin), Workplace: Public Dock at Fondamenta dei Comparetti (ID: canal_45.429305_12.355836). Last ate: 2025-06-09T17:58:43.027Z.",
-        "Position": "{\"lat\":45.429305,\"lng\":12.355836}",
-        "Type": "hungry_employee_impact"
+        "CreatedAt": "2025-06-25T05:46:13.925Z",
+        "UpdatedAt": "2025-06-25T09:15:59.000Z",
+        "Location": "Marco's last known area",
+        "Title": "Hungry Citizen",
+        "Description": "**Marco Contarini** has not eaten in over 24 hours and is now hungry. This can affect their well-being and ability to perform tasks effectively.\n\n### Impact\n- Reduced energy and focus.\n- If employed, work productivity may be reduced by up to 50%.\n- Prolonged hunger can lead to more severe health issues (if implemented).",
+        "Solutions": "### Recommended Solutions\n- Ensure the citizen consumes food. This might involve visiting a tavern, purchasing food from a market, or using owned food resources.\n- Check if the citizen has sufficient Ducats to afford food.\n- Review game mechanics related to food consumption and ensure the 'AteAt' (or equivalent) field is updated correctly after eating.",
+        "Notes": "[Failures: 1]\nCitizen ItalyMerchant last ate at 2025-06-16T20:08:02.532Z. Current time: 2025-06-25T05:46:13.908Z",
+        "Position": "{\"lat\":45.440862333333335,\"lng\":12.327658999999999}",
+        "Type": "hungry_citizen"
       }
     }
   ],
@@ -3617,160 +3443,6 @@ Here is the complete data about your current situation:
       },
       "createdAt": "2025-06-11T21:09:01.583Z",
       "readAt": "2025-06-11T21:09:02.066Z"
-    },
-    {
-      "notificationId": "recevGe6UGWG5HDjf",
-      "type": "markup_buy_contract_updated",
-      "citizen": "ItalyMerchant",
-      "content": "Your buy order for olives (markup_buy_main_building_45.443455_12.326089_olives) has been updated.",
-      "details": {
-        "contractId": "markup_buy_main_building_45.443455_12.326089_olives"
-      },
-      "createdAt": "2025-06-10T12:55:22.741Z",
-      "readAt": "2025-06-10T12:55:22.970Z"
-    },
-    {
-      "notificationId": "recyFogymZ0nRfzEX",
-      "type": "markup_buy_contract_updated",
-      "citizen": "ItalyMerchant",
-      "content": "Your buy order for olive_oil (markup_buy_main_building_45.443455_12.326089_olive_oil) has been updated.",
-      "details": {
-        "contractId": "markup_buy_main_building_45.443455_12.326089_olive_oil"
-      },
-      "createdAt": "2025-06-10T12:54:40.779Z",
-      "readAt": "2025-06-10T12:54:40.955Z"
-    },
-    {
-      "notificationId": "recnBWn1EQg8SLUg9",
-      "type": "markup_buy_contract_updated",
-      "citizen": "ItalyMerchant",
-      "content": "Your buy order for flour (markup_buy_main_building_45.443455_12.326089_flour) has been updated.",
-      "details": {
-        "contractId": "markup_buy_main_building_45.443455_12.326089_flour"
-      },
-      "createdAt": "2025-06-10T12:53:42.039Z",
-      "readAt": "2025-06-10T12:53:42.181Z"
-    },
-    {
-      "notificationId": "recN1usN6qKAcVtkw",
-      "type": "markup_buy_contract_updated",
-      "citizen": "ItalyMerchant",
-      "content": "Your buy order for flour (markup_buy_main_building_45.433752_12.350677_flour) has been updated.",
-      "details": {
-        "contractId": "markup_buy_main_building_45.433752_12.350677_flour"
-      },
-      "createdAt": "2025-06-10T12:50:51.063Z",
-      "readAt": "2025-06-10T12:50:51.265Z"
-    },
-    {
-      "notificationId": "recLL6YGPGAwe5a7L",
-      "type": "markup_buy_contract_updated",
-      "citizen": "ItalyMerchant",
-      "content": "Your buy order for tools (markup_buy_main_building_45.433752_12.350677_tools) has been updated.",
-      "details": {
-        "contractId": "markup_buy_main_building_45.433752_12.350677_tools"
-      },
-      "createdAt": "2025-06-10T12:49:44.980Z",
-      "readAt": "2025-06-10T12:49:45.300Z"
-    },
-    {
-      "notificationId": "recvGVXyUUDH5sGgs",
-      "type": "markup_buy_contract_updated",
-      "citizen": "ItalyMerchant",
-      "content": "Your buy order for bread (markup_buy_main_building_45.443455_12.326089_bread) has been updated.",
-      "details": {
-        "contractId": "markup_buy_main_building_45.443455_12.326089_bread"
-      },
-      "createdAt": "2025-06-10T12:48:01.692Z",
-      "readAt": "2025-06-10T12:48:01.870Z"
-    },
-    {
-      "notificationId": "rec6XZqxvHe5tP7mu",
-      "type": "markup_buy_contract_updated",
-      "citizen": "ItalyMerchant",
-      "content": "Your buy order for wine (markup_buy_main_building_45.443455_12.326089_wine) has been updated.",
-      "details": {
-        "contractId": "markup_buy_main_building_45.443455_12.326089_wine"
-      },
-      "createdAt": "2025-06-10T03:12:08.834Z",
-      "readAt": "2025-06-10T03:12:09.970Z"
-    },
-    {
-      "notificationId": "recm0XxYaRFkCZlCb",
-      "type": "markup_buy_contract_updated",
-      "citizen": "ItalyMerchant",
-      "content": "Your buy order for salt (markup_buy_main_building_45.443455_12.326089_salt) has been updated.",
-      "details": {
-        "contractId": "markup_buy_main_building_45.443455_12.326089_salt"
-      },
-      "createdAt": "2025-06-10T03:11:40.517Z",
-      "readAt": "2025-06-10T03:11:42.137Z"
-    },
-    {
-      "notificationId": "recD8lKHtsWPaENC0",
-      "type": "markup_buy_contract_updated",
-      "citizen": "ItalyMerchant",
-      "content": "Your buy order for preserved_fish (markup_buy_main_building_45.443455_12.326089_preserved_fish) has been updated.",
-      "details": {
-        "contractId": "markup_buy_main_building_45.443455_12.326089_preserved_fish"
-      },
-      "createdAt": "2025-06-10T03:11:05.032Z",
-      "readAt": "2025-06-10T03:11:05.566Z"
-    },
-    {
-      "notificationId": "recYbJUjA47dUe1yF",
-      "type": "markup_buy_contract_updated",
-      "citizen": "ItalyMerchant",
-      "content": "Your buy order for olives (markup_buy_main_building_45.443455_12.326089_olives) has been updated.",
-      "details": {
-        "contractId": "markup_buy_main_building_45.443455_12.326089_olives"
-      },
-      "createdAt": "2025-06-10T03:06:28.756Z",
-      "readAt": "2025-06-10T03:06:29.438Z"
-    },
-    {
-      "notificationId": "recB1QMaN45sjRUBN",
-      "type": "markup_buy_contract_updated",
-      "citizen": "ItalyMerchant",
-      "content": "Your buy order for olive_oil (markup_buy_main_building_45.443455_12.326089_olive_oil) has been updated.",
-      "details": {
-        "contractId": "markup_buy_main_building_45.443455_12.326089_olive_oil"
-      },
-      "createdAt": "2025-06-10T03:06:28.629Z",
-      "readAt": "2025-06-10T03:06:29.325Z"
-    },
-    {
-      "notificationId": "recyERSUimzyADa7m",
-      "type": "markup_buy_contract_updated",
-      "citizen": "ItalyMerchant",
-      "content": "Your buy order for fish (markup_buy_main_building_45.443455_12.326089_fish) has been updated.",
-      "details": {
-        "contractId": "markup_buy_main_building_45.443455_12.326089_fish"
-      },
-      "createdAt": "2025-06-10T03:06:28.034Z",
-      "readAt": "2025-06-10T03:06:28.301Z"
-    },
-    {
-      "notificationId": "recgytLLIOumkkrhj",
-      "type": "markup_buy_contract_updated",
-      "citizen": "ItalyMerchant",
-      "content": "Your buy order for flour (markup_buy_main_building_45.443455_12.326089_flour) has been updated.",
-      "details": {
-        "contractId": "markup_buy_main_building_45.443455_12.326089_flour"
-      },
-      "createdAt": "2025-06-10T03:06:27.867Z",
-      "readAt": "2025-06-10T03:06:28.165Z"
-    },
-    {
-      "notificationId": "recdufaGcUEBfntN4",
-      "type": "markup_buy_contract_updated",
-      "citizen": "ItalyMerchant",
-      "content": "Your buy order for bread (markup_buy_main_building_45.443455_12.326089_bread) has been updated.",
-      "details": {
-        "contractId": "markup_buy_main_building_45.443455_12.326089_bread"
-      },
-      "createdAt": "2025-06-10T03:06:25.895Z",
-      "readAt": "2025-06-10T03:06:26.957Z"
     }
   ],
   "building_types": {
@@ -4000,7 +3672,7 @@ Here is the complete data about your current situation:
       "constructionMinutes": 8640,
       "buildTier": 2,
       "tier": null,
-      "category": "passive",
+      "category": "Infrastructure",
       "pointType": "building"
     },
     "dairy": {
@@ -4057,25 +3729,6 @@ Here is the complete data about your current situation:
       "category": "home",
       "pointType": "canal"
     },
-    "glassblower_workshop": {
-      "id": "glassblower_workshop",
-      "type": "glassblower_workshop",
-      "name": "Glassblower Workshop",
-      "shortDescription": "Specialized facility where skilled artisans shape molten glass into fine objects and art pieces.",
-      "constructionCost": 1500000,
-      "constructionCosts": {
-        "ducats": 1500000,
-        "timber": 430,
-        "bricks": 1070,
-        "stone": 570,
-        "iron": 290
-      },
-      "constructionMinutes": 5760,
-      "buildTier": 2,
-      "tier": null,
-      "category": "business",
-      "pointType": "building"
-    },
     "glass_foundry": {
       "id": "glass_foundry",
       "type": "glass_foundry",
@@ -4090,6 +3743,25 @@ Here is the complete data about your current situation:
         "iron": 390
       },
       "constructionMinutes": 10080,
+      "buildTier": 2,
+      "tier": null,
+      "category": "business",
+      "pointType": "building"
+    },
+    "glassblower_workshop": {
+      "id": "glassblower_workshop",
+      "type": "glassblower_workshop",
+      "name": "Glassblower Workshop",
+      "shortDescription": "Specialized facility where skilled artisans shape molten glass into fine objects and art pieces.",
+      "constructionCost": 1500000,
+      "constructionCosts": {
+        "ducats": 1500000,
+        "timber": 430,
+        "bricks": 1070,
+        "stone": 570,
+        "iron": 290
+      },
+      "constructionMinutes": 5760,
       "buildTier": 2,
       "tier": null,
       "category": "business",
@@ -4677,31 +4349,31 @@ Here is the complete data about your current situation:
       "pointType": "building"
     }
   },
-  "timestamp": "2025-06-24T22:17:22.653756+02:00",
+  "timestamp": "2025-06-25T21:52:25.952450+02:00",
   "building_ownership_relevancies": [
     {
-      "asset": "canal_45.428531_12.356686",
+      "asset": "building_45.433752_12.350677",
       "asset_type": "building",
       "category": "ownership_conflict",
       "type": "building_on_others_land",
-      "target_citizen": "Italia",
-      "score": 70,
+      "target_citizen": "ConsiglioDeiDieci",
+      "score": 85,
       "time_horizon": "medium",
-      "title": "Your Fisherman's Cottage at Fondamenta dei Carmini is on land owned by \"Italia\".",
-      "description": "You own a **Fisherman's Cottage at Fondamenta dei Carmini** on land owned by **Italia**.",
-      "status": "medium"
+      "title": "Your Small Warehouse at Fondamenta della Pescaria is on land owned by \"ConsiglioDeiDieci\".",
+      "description": "You own a **Small Warehouse at Fondamenta della Pescaria** on land owned by **ConsiglioDeiDieci**.",
+      "status": "high"
     },
     {
-      "asset": "canal_45.428531_12.356686",
+      "asset": "building_45.433752_12.350677",
       "asset_type": "building",
       "category": "ownership_conflict",
       "type": "others_building_on_your_land",
       "target_citizen": "ItalyMerchant",
-      "score": 70,
+      "score": 85,
       "time_horizon": "medium",
-      "title": "\"ItalyMerchant\" owns a Fisherman's Cottage at Fondamenta dei Carmini on your land.",
-      "description": "**ItalyMerchant** owns a **Fisherman's Cottage at Fondamenta dei Carmini** on your land.",
-      "status": "medium"
+      "title": "\"ItalyMerchant\" owns a Small Warehouse at Fondamenta della Pescaria on your land.",
+      "description": "**ItalyMerchant** owns a **Small Warehouse at Fondamenta della Pescaria** on your land.",
+      "status": "high"
     },
     {
       "asset": "building_45.443455_12.326089",
@@ -4728,28 +4400,28 @@ Here is the complete data about your current situation:
       "status": "high"
     },
     {
-      "asset": "building_45.433752_12.350677",
+      "asset": "canal_45.428531_12.356686",
       "asset_type": "building",
       "category": "ownership_conflict",
       "type": "building_on_others_land",
-      "target_citizen": "ConsiglioDeiDieci",
-      "score": 85,
+      "target_citizen": "Italia",
+      "score": 70,
       "time_horizon": "medium",
-      "title": "Your Small Warehouse at Fondamenta della Pescaria is on land owned by \"ConsiglioDeiDieci\".",
-      "description": "You own a **Small Warehouse at Fondamenta della Pescaria** on land owned by **ConsiglioDeiDieci**.",
-      "status": "high"
+      "title": "Your Fisherman's Cottage at Fondamenta dei Carmini is on land owned by \"Italia\".",
+      "description": "You own a **Fisherman's Cottage at Fondamenta dei Carmini** on land owned by **Italia**.",
+      "status": "medium"
     },
     {
-      "asset": "building_45.433752_12.350677",
+      "asset": "canal_45.428531_12.356686",
       "asset_type": "building",
       "category": "ownership_conflict",
       "type": "others_building_on_your_land",
       "target_citizen": "ItalyMerchant",
-      "score": 85,
+      "score": 70,
       "time_horizon": "medium",
-      "title": "\"ItalyMerchant\" owns a Small Warehouse at Fondamenta della Pescaria on your land.",
-      "description": "**ItalyMerchant** owns a **Small Warehouse at Fondamenta della Pescaria** on your land.",
-      "status": "high"
+      "title": "\"ItalyMerchant\" owns a Fisherman's Cottage at Fondamenta dei Carmini on your land.",
+      "description": "**ItalyMerchant** owns a **Fisherman's Cottage at Fondamenta dei Carmini** on your land.",
+      "status": "medium"
     }
   ]
 }
