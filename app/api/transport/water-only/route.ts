@@ -1,8 +1,8 @@
 import { NextResponse } from 'next/server';
 import { transportService } from '@/lib/services/TransportService';
 
-// Import the helper functions from the main transport route
-import { calculatePathDistance, calculatePathTravelTime, extractJourneyFromPath, fetchTransporterDetails } from '../route';
+// Import the helper functions from the utilities file
+import { calculatePathDistance, calculatePathTravelTime, extractJourneyFromPath, fetchTransporterDetails } from '../utils';
 
 export async function POST(request: Request) {
   try {

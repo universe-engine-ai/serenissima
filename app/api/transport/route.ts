@@ -1,6 +1,12 @@
 import { NextResponse } from 'next/server';
 import { transportService } from '@/lib/services/TransportService';
 import NodeCache from 'node-cache';
+// Import shared utility functions
+import { 
+  calculatePathDistance as utilCalculatePathDistance, 
+  calculatePathTravelTime as utilCalculatePathTravelTime, 
+  extractJourneyFromPath as utilExtractJourneyFromPath 
+} from './utils';
 
 // Initialize cache: stdTTL is standard time-to-live in seconds, checkperiod is when to check for expired items.
 // Cache successful paths for 7 days (7 * 24 * 60 * 60 seconds), errors for 5 minutes.
