@@ -8,7 +8,7 @@ Here is the complete data about your current situation:
 {
   "citizen": {
     "username": "DucatsRunner",
-    "ducats": 328945.15566251485,
+    "ducats": 334138.830516143,
     "social_class": "Popolani",
     "description": "Lorenzo Contarini is a shrewd and ambitious dock worker who has risen from humble beginnings through careful observation and strategic networking. His years handling cargo at the public docks have given him an intimate knowledge of Venice's trade flows and merchant practices, while his natural charm helps him forge valuable connections across social boundaries. Despite his affable exterior, Lorenzo harbors a calculating nature and burning ambition that sometimes leads him to manipulate situations for personal gain.",
     "core_personality": "{\"Strength\": \"Observant\", \"Flaw\": \"Calculating\", \"Drive\": \"Advancement-driven\", \"MBTI\": \"ENTJ\", \"PrimaryTrait\": \"Network builder\", \"SecondaryTraits\": [\"Charm deployment\", \"Manipulation skills\", \"Boundary crossing\"], \"CognitiveBias\": [\"Self-serving bias\", \"Optimism bias\"], \"TrustThreshold\": 0.3, \"EmpathyWeight\": 0.4, \"RiskTolerance\": 0.6, \"guidedBy\": \"The Network's Power\", \"CoreThoughts\": {\"primary_drive\": \"social-advancement\", \"secondary_drive\": \"network-exploitation\", \"internal_tension\": \"charm vs. manipulation\", \"activation_triggers\": [\"networking_opportunities\", \"social_barriers\", \"advancement_pathways\"], \"thought_patterns\": [\"Every person is a potential stepping stone or obstacle\", \"Charm opens doors that force cannot\", \"My dock knowledge gives me insight nobility lacks\", \"Social boundaries exist to be navigated, not respected\", \"Burning ambition requires strategic patience\", \"Today's favor becomes tomorrow's leverage\"], \"decision_framework\": \"How does this expand my network and advance my social position?\"}}",
@@ -3312,17 +3312,6 @@ Here is the complete data about your current situation:
       },
       "createdAt": "2025-06-12T18:18:51.484Z",
       "readAt": "2025-06-12T18:18:51.901Z"
-    },
-    {
-      "notificationId": "reciZHvpODNfl1sqA",
-      "type": "markup_buy_contract_updated",
-      "citizen": "DucatsRunner",
-      "content": "Your buy order for bread (markup_buy_main_building_45.442317_12.319077_bread) has been updated.",
-      "details": {
-        "contractId": "markup_buy_main_building_45.442317_12.319077_bread"
-      },
-      "createdAt": "2025-06-11T23:49:07.489Z",
-      "readAt": "2025-06-11T23:49:28.732Z"
     }
   ],
   "building_types": {
@@ -3552,7 +3541,7 @@ Here is the complete data about your current situation:
       "constructionMinutes": 8640,
       "buildTier": 2,
       "tier": null,
-      "category": "Infrastructure",
+      "category": "passive",
       "pointType": "building"
     },
     "dairy": {
@@ -3609,25 +3598,6 @@ Here is the complete data about your current situation:
       "category": "home",
       "pointType": "canal"
     },
-    "glass_foundry": {
-      "id": "glass_foundry",
-      "type": "glass_foundry",
-      "name": "Glass Foundry",
-      "shortDescription": "Primary facility for melting raw materials into glass. Requires substantial fuel and produces significant heat.",
-      "constructionCost": 2800000,
-      "constructionCosts": {
-        "ducats": 2800000,
-        "timber": 720,
-        "bricks": 2080,
-        "stone": 1430,
-        "iron": 390
-      },
-      "constructionMinutes": 10080,
-      "buildTier": 2,
-      "tier": null,
-      "category": "business",
-      "pointType": "building"
-    },
     "glassblower_workshop": {
       "id": "glassblower_workshop",
       "type": "glassblower_workshop",
@@ -3642,6 +3612,25 @@ Here is the complete data about your current situation:
         "iron": 290
       },
       "constructionMinutes": 5760,
+      "buildTier": 2,
+      "tier": null,
+      "category": "business",
+      "pointType": "building"
+    },
+    "glass_foundry": {
+      "id": "glass_foundry",
+      "type": "glass_foundry",
+      "name": "Glass Foundry",
+      "shortDescription": "Primary facility for melting raw materials into glass. Requires substantial fuel and produces significant heat.",
+      "constructionCost": 2800000,
+      "constructionCosts": {
+        "ducats": 2800000,
+        "timber": 720,
+        "bricks": 2080,
+        "stone": 1430,
+        "iron": 390
+      },
+      "constructionMinutes": 10080,
       "buildTier": 2,
       "tier": null,
       "category": "business",
@@ -3792,6 +3781,25 @@ Here is the complete data about your current situation:
       "buildTier": 2,
       "tier": null,
       "category": "home",
+      "pointType": "building"
+    },
+    "mill": {
+      "id": "mill",
+      "type": "mill",
+      "name": "Mill",
+      "shortDescription": "Industrial facility that grinds grain into flour, essential for bread production.",
+      "constructionCost": 1800000,
+      "constructionCosts": {
+        "ducats": 1800000,
+        "timber": 420,
+        "bricks": 850,
+        "stone": 1200,
+        "iron": 280
+      },
+      "constructionMinutes": 7200,
+      "buildTier": 2,
+      "tier": null,
+      "category": "business",
       "pointType": "building"
     },
     "navigation_school": {
@@ -4229,7 +4237,7 @@ Here is the complete data about your current situation:
       "pointType": "building"
     }
   },
-  "timestamp": "2025-06-25T21:13:37.452375+02:00",
+  "timestamp": "2025-06-26T22:13:44.008935+02:00",
   "building_ownership_relevancies": [
     {
       "asset": "canal_45.447731_12.318978",
