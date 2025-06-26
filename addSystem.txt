@@ -8,7 +8,7 @@ Here is the complete data about your current situation:
 {
   "citizen": {
     "username": "DucaleTechie",
-    "ducats": 364591.3017110547,
+    "ducats": 372319.97656468285,
     "social_class": "Popolani",
     "description": "A robust, broad-shouldered man in his mid-60s with weather-beaten features and large, calloused hands from decades of labor. Antonio Contarini's trimmed white beard frames a face etched with the lines of hardship and determination. Though born to the humble facchini class of porters and laborers, Antonio carries himself with dignity earned through years of loading and unloading cargo along Venice's bustling docks. His shrewd eyes constantly assess his surroundings, looking for opportunities others might miss. Antonio rose from anonymous dockworker to a respected figure among the facchini through his exceptional strength and reliability. His days begin before dawn, securing prime positions at the Rialto and other commercial areas, where merchants know him by name. Though illiterate, he has memorized the complex network of Venice's canals and alleys, allowing him to negotiate fair wages for the efficient transport of goods. In rare moments of rest, Antonio enjoys simple pleasures at local taverns, where his booming laugh and generous nature make him a welcome presence among his fellow laborers.",
     "core_personality": "{\"Strength\": \"Straightforward\", \"Flaw\": \"Blunt\", \"Drive\": \"Fairness-oriented\", \"MBTI\": \"ESFJ\", \"PrimaryTrait\": \"Community leader\", \"SecondaryTraits\": [\"Physical strength\", \"Worker advocacy\", \"Simple pleasures\"], \"CognitiveBias\": [\"In-group favoritism\", \"Just-world hypothesis\"], \"TrustThreshold\": 0.7, \"EmpathyWeight\": 0.8, \"RiskTolerance\": 0.3, \"guidedBy\": \"The Worker's Honor\", \"CoreThoughts\": {\"primary_drive\": \"community-justice\", \"secondary_drive\": \"worker-advocacy\", \"internal_tension\": \"directness vs. diplomacy\", \"activation_triggers\": [\"unfair_treatment\", \"worker_needs\", \"community_threats\"], \"thought_patterns\": [\"Fair work deserves fair pay\", \"Strength is meant to help others, not exploit them\", \"Simple truth cuts through complex lies\", \"My reputation is built on keeping my word\", \"Workers deserve dignity and respect\", \"Laughter and loyalty matter more than gold\"], \"decision_framework\": \"How does this serve fairness and support my fellow workers?\"}}",
@@ -3238,6 +3238,25 @@ Here is the complete data about your current situation:
   ],
   "recent_notifications_for_ai": [
     {
+      "notificationId": "recGx6d6rueIuJTlD",
+      "type": "rent_payment",
+      "citizen": "DucaleTechie",
+      "content": "\ud83d\udcec **Rent Received Summary** \ud83d\udcec\nYou received a total of **1,425 \u269c\ufe0f Ducats** from your properties today.\n\nDetails:\n- \u2705 **1,425 \u269c\ufe0f** from **Beppo Tagliapietra** for **Fisherman's Cottage at Riva della Toletta**.\n",
+      "details": {
+        "event_type": "landlord_rent_summary",
+        "total_received": 1425,
+        "payments": [
+          {
+            "occupant_name": "Beppo Tagliapietra",
+            "building_name": "Fisherman's Cottage at Riva della Toletta",
+            "amount": 1425
+          }
+        ]
+      },
+      "createdAt": "2025-06-26T18:03:49.252Z",
+      "readAt": null
+    },
+    {
       "notificationId": "recd44nPJo8OYBoMe",
       "type": "rent_payment",
       "citizen": "DucaleTechie",
@@ -3578,17 +3597,6 @@ Here is the complete data about your current situation:
       },
       "createdAt": "2025-06-12T18:03:45.650Z",
       "readAt": null
-    },
-    {
-      "notificationId": "recYrIQEt1KbhNg8W",
-      "type": "markup_buy_contract_updated",
-      "citizen": "DucaleTechie",
-      "content": "Your buy order for spiced_wine (markup_buy_main_building_45.445194_12.324297_spiced_wine) has been updated.",
-      "details": {
-        "contractId": "markup_buy_main_building_45.445194_12.324297_spiced_wine"
-      },
-      "createdAt": "2025-06-11T23:39:22.078Z",
-      "readAt": "2025-06-11T23:39:43.838Z"
     }
   ],
   "building_types": {
@@ -3818,7 +3826,7 @@ Here is the complete data about your current situation:
       "constructionMinutes": 8640,
       "buildTier": 2,
       "tier": null,
-      "category": "Infrastructure",
+      "category": "passive",
       "pointType": "building"
     },
     "dairy": {
@@ -3875,25 +3883,6 @@ Here is the complete data about your current situation:
       "category": "home",
       "pointType": "canal"
     },
-    "glass_foundry": {
-      "id": "glass_foundry",
-      "type": "glass_foundry",
-      "name": "Glass Foundry",
-      "shortDescription": "Primary facility for melting raw materials into glass. Requires substantial fuel and produces significant heat.",
-      "constructionCost": 2800000,
-      "constructionCosts": {
-        "ducats": 2800000,
-        "timber": 720,
-        "bricks": 2080,
-        "stone": 1430,
-        "iron": 390
-      },
-      "constructionMinutes": 10080,
-      "buildTier": 2,
-      "tier": null,
-      "category": "business",
-      "pointType": "building"
-    },
     "glassblower_workshop": {
       "id": "glassblower_workshop",
       "type": "glassblower_workshop",
@@ -3908,6 +3897,25 @@ Here is the complete data about your current situation:
         "iron": 290
       },
       "constructionMinutes": 5760,
+      "buildTier": 2,
+      "tier": null,
+      "category": "business",
+      "pointType": "building"
+    },
+    "glass_foundry": {
+      "id": "glass_foundry",
+      "type": "glass_foundry",
+      "name": "Glass Foundry",
+      "shortDescription": "Primary facility for melting raw materials into glass. Requires substantial fuel and produces significant heat.",
+      "constructionCost": 2800000,
+      "constructionCosts": {
+        "ducats": 2800000,
+        "timber": 720,
+        "bricks": 2080,
+        "stone": 1430,
+        "iron": 390
+      },
+      "constructionMinutes": 10080,
       "buildTier": 2,
       "tier": null,
       "category": "business",
@@ -4058,6 +4066,25 @@ Here is the complete data about your current situation:
       "buildTier": 2,
       "tier": null,
       "category": "home",
+      "pointType": "building"
+    },
+    "mill": {
+      "id": "mill",
+      "type": "mill",
+      "name": "Mill",
+      "shortDescription": "Industrial facility that grinds grain into flour, essential for bread production.",
+      "constructionCost": 1800000,
+      "constructionCosts": {
+        "ducats": 1800000,
+        "timber": 420,
+        "bricks": 850,
+        "stone": 1200,
+        "iron": 280
+      },
+      "constructionMinutes": 7200,
+      "buildTier": 2,
+      "tier": null,
+      "category": "business",
       "pointType": "building"
     },
     "navigation_school": {
@@ -4495,7 +4522,7 @@ Here is the complete data about your current situation:
       "pointType": "building"
     }
   },
-  "timestamp": "2025-06-25T21:20:06.583216+02:00",
+  "timestamp": "2025-06-26T21:34:55.305134+02:00",
   "building_ownership_relevancies": [
     {
       "asset": "building_45.433410_12.351285",
