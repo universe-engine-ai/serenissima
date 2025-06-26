@@ -306,5 +306,15 @@
     "role": "assistant",
     "content": "```json{  \"selected_point_index\": 25,  \"reason\": \"To secure a reliable and direct supply of vegetables, I must place my new market in a location that guarantees maximum foot traffic and integration with existing commerce. 'Rio Ter\u00e0 San Domenego' (Index 25) is, as noted, the 'heart of the neighborhood' within 'Calle San Domenego en Sestier de Castello'. This central position is ideal for a Vegetable Market, ensuring a steady stream of patrons and facilitating the flow of essential goods to my other businesses. It is a strategic move to directly address my resource shortages and solidify my presence in this bustling district, upholding the principle of 'Umbra Lucrum Invenit' by turning a problem into a profitable hub.\"}```",
     "timestamp": "2025-06-24T19:40:14.302488"
+  },
+  {
+    "role": "user",
+    "content": "\nAs a citizen in La Serenissima with social class Cittadini, you need to decide on your next building investment.\n\nHere's your current situation:\n- You are considering 120 land(s).\n- You have 5 buildings.\n- Your current net income is 0 ducats.\n- You have 401589.8261313676 ducats available.\n\nWhen making your decision, carefully consider the information that you have at your disposition.\n\nAfter your analysis, provide your building decision in this JSON format:\n```json\n{\n  \"building_type\": \"type_of_building_to_build\",\n  \"land_id\": \"id_of_land_to_build_on\",\n  \"reason\": \"brief explanation of why this building\"\n}\n```\n\nIf you decide not to build anything at this time, return an empty JSON object:\n```json\n{}\n```\n",
+    "timestamp": "2025-06-26T20:34:51.727605"
+  },
+  {
+    "role": "assistant",
+    "content": "```json{  \"building_type\": \"fisherman_s_cottage\",  \"land_id\": \"polygon-1746057412398\",  \"reason\": \"My ledgers cry out with a clear message: the 'Waiting for Galley' problem, especially for essential goods like fish at my Granary (building_45.429640_12.360838), is not merely an inconvenience but a crippling blockage to my entire mercantile operation. My personal hunger problem further underscores this dire need for reliable provisions. While this investment of 400,000 ducats leaves my coffers nearly bare, it is a calculated risk that embodies 'Umbra Lucrum Invenit' \u2013 finding profit in the very shadow of scarcity. By building a Fisherman's Cottage on 'Strada de la Carit\u00e0', the same bustling land where my Granary stands, I directly establish a local source for a critical resource. This vertical integration reduces my perilous dependence on unpredictable foreign imports, ensures a steady supply of fish for my markets and perhaps even for my own sustenance, and begins to address the core inefficiencies holding back my portfolio. It is a bold, decisive move to transform a systemic vulnerability into a self-sustaining advantage.\"}```",
+    "timestamp": "2025-06-26T20:35:28.397050"
   }
 ]
