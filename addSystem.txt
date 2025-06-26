@@ -8,7 +8,7 @@ Here is the complete data about your current situation:
 {
   "citizen": {
     "username": "ShadowHunter",
-    "ducats": 430509.955830508,
+    "ducats": 439074.19992306194,
     "social_class": "Popolani",
     "description": "Gabriele Memmo, a shrewd and industrious Popolani merchant of Venice, has risen from humble origins through strategic investment and tireless effort. Born to a family of bakers with distant claims to more illustrious ancestry, Gabriele abandoned the family trade to pursue greater fortunes in commerce. His calculated investments in market stalls and warehouses along the bustling canals demonstrate his keen understanding of trade flows and commercial opportunity. Despite his newfound wealth, Gabriele maintains a practical demeanor, rising before dawn to inspect his properties and negotiate contracts with suppliers. Known for his precise memory and methodical approach to business, he has cultivated a network of reliable informants who keep him apprised of market fluctuations. Though not formally educated, Gabriele has acquired practical knowledge of arithmetic, contracts, and the diverse dialects of foreign merchants. He lives modestly in a well-appointed home near Castello, investing his profits back into his growing commercial empire rather than ostentatious displays. His aspirations now turn toward securing his family's elevation to cittadini status through continued commercial success and strategic marriages for his children.",
     "core_personality": "{\"Strength\": \"Generous\", \"Flaw\": \"Overprotective\", \"Drive\": \"Community-builder\", \"MBTI\": \"ESFJ\", \"PrimaryTrait\": \"Warmhearted community anchor\", \"SecondaryTraits\": [\"Natural wisdom\", \"Mentor instincts\", \"Wealth discretion\"], \"CognitiveBias\": [\"Optimism bias\", \"Halo effect\"], \"TrustThreshold\": 0.7, \"EmpathyWeight\": 0.8, \"RiskTolerance\": 0.4, \"guidedBy\": \"The Heart's Compass\", \"CoreThoughts\": {\"primary_drive\": \"community-uplift\", \"secondary_drive\": \"mentorship-provision\", \"internal_tension\": \"generous nature vs. family security\", \"activation_triggers\": [\"community_needs\", \"mentorship_opportunities\", \"family_considerations\"], \"thought_patterns\": [\"True fortune lies in lifting others as you climb\", \"Every person has potential - they just need the right opportunity\", \"My network of helped souls is my greatest achievement\", \"Wealth means nothing if it doesn't create opportunities for others\", \"The young merchant's success will validate my investment philosophy\", \"Community strength ensures individual prosperity\"], \"decision_framework\": \"How does this build community while creating opportunities for ambitious souls?\"}}",
@@ -1099,6 +1099,13 @@ Here is the complete data about your current situation:
           "maintenance_cost": 0
         },
         {
+          "id": "building_45.428748173929534_12.362001145681361",
+          "type": "mill",
+          "owner": "the_grand_experiment",
+          "income": 0,
+          "maintenance_cost": 0
+        },
+        {
           "id": "canal_45.424823_12.362988",
           "type": "fisherman_s_cottage",
           "owner": "StarGazer2000",
@@ -1564,6 +1571,13 @@ Here is the complete data about your current situation:
           "id": "building_45.442276_12.323666",
           "type": "small_warehouse",
           "owner": "ConsiglioDeiDieci",
+          "income": 0,
+          "maintenance_cost": 0
+        },
+        {
+          "id": "building_45.44225316651121_12.320556777517233",
+          "type": "mill",
+          "owner": "the_grand_experiment",
           "income": 0,
           "maintenance_cost": 0
         },
@@ -3184,27 +3198,57 @@ Here is the complete data about your current situation:
   "target_relevancies": [],
   "latest_citizen_problems": [
     {
-      "id": "recwSs6ZGcMyrBlcX",
+      "id": "recDrm2uTeEcFm2cG",
       "fields": {
-        "ProblemId": "hungry_employee_impact_ShadowHunter_adriatic_captain",
+        "ProblemId": "hungry_ShadowHunter",
         "Citizen": "ShadowHunter",
-        "Asset": "adriatic_captain",
-        "AssetType": "employee_performance",
-        "Severity": "low",
+        "Asset": "ShadowHunter",
+        "AssetType": "citizen",
+        "Severity": "medium",
         "Status": "active",
-        "CreatedAt": "2025-06-15T22:08:22.859Z",
-        "UpdatedAt": "2025-06-15T22:08:38.000Z",
-        "Location": "Bakery at Calle della Scuola dei Fornai",
-        "Title": "Hungry Employee Impact",
-        "Description": "Your employee, **Stefano Dalmazzo**, is currently hungry. Hunger can significantly reduce productivity (up to 50%).",
-        "Solutions": "Ensure **Stefano Dalmazzo** has the means and opportunity to eat. Consider if wages are sufficient or if working conditions impede access to food. Monitor their performance.",
-        "Notes": "Hungry Employee: adriatic_captain (ID: adriatic_captain), Workplace: Bakery at Calle della Scuola dei Fornai (ID: building_45.444823_12.324276). Last ate: 2025-06-09T17:11:14.268Z.",
-        "Position": "{\"lat\":45.444823,\"lng\":12.324276}",
-        "Type": "hungry_employee_impact"
+        "CreatedAt": "2025-06-25T05:46:13.930Z",
+        "UpdatedAt": "2025-06-25T09:16:16.000Z",
+        "Location": "Gabriele's last known area",
+        "Title": "Hungry Citizen",
+        "Description": "**Gabriele Memmo** has not eaten in over 24 hours and is now hungry. This can affect their well-being and ability to perform tasks effectively.\n\n### Impact\n- Reduced energy and focus.\n- If employed, work productivity may be reduced by up to 50%.\n- Prolonged hunger can lead to more severe health issues (if implemented).",
+        "Solutions": "### Recommended Solutions\n- Ensure the citizen consumes food. This might involve visiting a tavern, purchasing food from a market, or using owned food resources.\n- Check if the citizen has sufficient Ducats to afford food.\n- Review game mechanics related to food consumption and ensure the 'AteAt' (or equivalent) field is updated correctly after eating.",
+        "Notes": "[Failures: 1]\nCitizen ShadowHunter last ate at 2025-06-19T21:28:07.376Z. Current time: 2025-06-25T05:46:13.908Z",
+        "Position": "{\"lat\":45.44566974935769,\"lng\":12.323013305665148}",
+        "Type": "hungry_citizen"
       }
     }
   ],
   "recent_notifications_for_ai": [
+    {
+      "notificationId": "rec776PSD0V1sgZia",
+      "type": "rent_payment",
+      "citizen": "ShadowHunter",
+      "content": "\u2705 Rent Paid: You paid **1,480 \u269c\ufe0f Ducats** to **ConsiglioDeiDieci** for **Artisan's House at Calle dei Impastatori**.",
+      "details": {
+        "building_id": "recOLwELsHPuLuAwU",
+        "building_name": "Artisan's House at Calle dei Impastatori",
+        "rent_price": 1480,
+        "building_owner": "ConsiglioDeiDieci",
+        "event_type": "rent_payment_made"
+      },
+      "createdAt": "2025-06-26T18:02:10.632Z",
+      "readAt": null
+    },
+    {
+      "notificationId": "recS4tTcZfXAXMYox",
+      "type": "rent_payment",
+      "citizen": "ShadowHunter",
+      "content": "\u2705 Rent Paid: You paid **1,480 \u269c\ufe0f Ducats** to **ConsiglioDeiDieci** for **Artisan's House at Calle dei Impastatori**.",
+      "details": {
+        "building_id": "recOLwELsHPuLuAwU",
+        "building_name": "Artisan's House at Calle dei Impastatori",
+        "rent_price": 1480,
+        "building_owner": "ConsiglioDeiDieci",
+        "event_type": "rent_payment_made"
+      },
+      "createdAt": "2025-06-25T16:02:09.406Z",
+      "readAt": null
+    },
     {
       "notificationId": "recLOAW0qTOnH0UCr",
       "type": "rent_payment",
@@ -3492,80 +3536,6 @@ Here is the complete data about your current situation:
       },
       "createdAt": "2025-06-12T18:01:58.085Z",
       "readAt": null
-    },
-    {
-      "notificationId": "rec4TeBnVPYHQxDdf",
-      "type": "markup_buy_contract_updated",
-      "citizen": "ShadowHunter",
-      "content": "Your buy order for spiced_wine (markup_buy_main_building_45.444823_12.324276_spiced_wine) has been updated.",
-      "details": {
-        "contractId": "markup_buy_main_building_45.444823_12.324276_spiced_wine"
-      },
-      "createdAt": "2025-06-11T23:39:19.612Z",
-      "readAt": "2025-06-11T23:39:41.220Z"
-    },
-    {
-      "notificationId": "recz9NJBwbbKLx2bi",
-      "type": "markup_buy_contract_updated",
-      "citizen": "ShadowHunter",
-      "content": "Your buy order for spiced_wine (markup_buy_main_building_45.439358_12.325904_spiced_wine) has been updated.",
-      "details": {
-        "contractId": "markup_buy_main_building_45.439358_12.325904_spiced_wine"
-      },
-      "createdAt": "2025-06-11T21:09:06.526Z",
-      "readAt": "2025-06-11T21:09:06.834Z"
-    },
-    {
-      "notificationId": "recAlzeVAbxHtgIuk",
-      "type": "rent_payment",
-      "citizen": "ShadowHunter",
-      "content": "\u2705 Rent Paid: You paid **1,480 \u269c\ufe0f Ducats** to **ConsiglioDeiDieci** for **Artisan's House at Calle dei Impastatori**.",
-      "details": {
-        "building_id": "recOLwELsHPuLuAwU",
-        "building_name": "Artisan's House at Calle dei Impastatori",
-        "rent_price": 1480,
-        "building_owner": "ConsiglioDeiDieci",
-        "event_type": "rent_payment_made"
-      },
-      "createdAt": "2025-06-10T18:02:10.086Z",
-      "readAt": null
-    },
-    {
-      "notificationId": "rec861CLxCXvOIatk",
-      "type": "rent_payment",
-      "citizen": "ShadowHunter",
-      "content": "\u2705 Rent Paid: You paid **1,480 \u269c\ufe0f Ducats** to **ConsiglioDeiDieci** for **Artisan's House at Calle dei Impastatori**.",
-      "details": {
-        "building_id": "recOLwELsHPuLuAwU",
-        "building_name": "Artisan's House at Calle dei Impastatori",
-        "rent_price": 1480,
-        "building_owner": "ConsiglioDeiDieci",
-        "event_type": "rent_payment_made"
-      },
-      "createdAt": "2025-06-10T16:02:36.212Z",
-      "readAt": null
-    },
-    {
-      "notificationId": "recoDBoYEEnr8QObA",
-      "type": "markup_buy_contract_created",
-      "citizen": "ShadowHunter",
-      "content": "Your buy order for water (markup_buy_main_building_45.444823_12.324276_water) has been placed.",
-      "details": {
-        "contractId": "markup_buy_main_building_45.444823_12.324276_water"
-      },
-      "createdAt": "2025-06-10T12:53:15.069Z",
-      "readAt": "2025-06-10T12:53:15.195Z"
-    },
-    {
-      "notificationId": "recxiapwkH9aN3eB6",
-      "type": "markup_buy_contract_created",
-      "citizen": "ShadowHunter",
-      "content": "Your buy order for flour (markup_buy_main_building_45.439358_12.325904_flour) has been placed.",
-      "details": {
-        "contractId": "markup_buy_main_building_45.439358_12.325904_flour"
-      },
-      "createdAt": "2025-06-10T12:51:01.790Z",
-      "readAt": "2025-06-10T12:51:01.967Z"
     }
   ],
   "building_types": {
@@ -4037,6 +4007,25 @@ Here is the complete data about your current situation:
       "category": "home",
       "pointType": "building"
     },
+    "mill": {
+      "id": "mill",
+      "type": "mill",
+      "name": "Mill",
+      "shortDescription": "Industrial facility that grinds grain into flour, essential for bread production.",
+      "constructionCost": 1800000,
+      "constructionCosts": {
+        "ducats": 1800000,
+        "timber": 420,
+        "bricks": 850,
+        "stone": 1200,
+        "iron": 280
+      },
+      "constructionMinutes": 7200,
+      "buildTier": 2,
+      "tier": null,
+      "category": "business",
+      "pointType": "building"
+    },
     "navigation_school": {
       "id": "navigation_school",
       "type": "navigation_school",
@@ -4472,7 +4461,7 @@ Here is the complete data about your current situation:
       "pointType": "building"
     }
   },
-  "timestamp": "2025-06-24T22:30:51.216107+02:00",
+  "timestamp": "2025-06-26T22:24:11.699086+02:00",
   "building_ownership_relevancies": [
     {
       "asset": "building_45.444823_12.324276",
