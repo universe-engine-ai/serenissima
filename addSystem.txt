@@ -8,7 +8,7 @@ Here is the complete data about your current situation:
 {
   "citizen": {
     "username": "LagoonDealer2025",
-    "ducats": 376393.63277659955,
+    "ducats": 385488.92946700717,
     "social_class": "Popolani",
     "description": "Domenico Grimani has transformed from a humble dockworker into a shrewd merchant-entrepreneur who commands respect through his encyclopedic knowledge of Venice's trade networks and his uncanny ability to predict market fluctuations. His substantial wealth of over 240,000 ducats reflects years of calculated risks and strategic investments in market stalls, yet his success has bred an impatience with those who lack his commercial acumen and a growing tendency to view every interaction through the lens of potential profit. Despite his prosperity, he maintains the disciplined work ethic of his dock laborer origins, rising early each day to personally oversee his business operations and ensure no opportunity slips through his weathered hands.",
     "core_personality": "{\"Strength\": \"Shrewd\", \"Flaw\": \"Impatient\", \"Drive\": \"Profit-driven\", \"MBTI\": \"ENTJ\", \"PrimaryTrait\": \"Market predictor\", \"SecondaryTraits\": [\"Trade pattern analysis\", \"Risk calculation\", \"Commercial impatience\"], \"CognitiveBias\": [\"Overconfidence bias\", \"Availability heuristic\"], \"TrustThreshold\": 0.3, \"EmpathyWeight\": 0.3, \"RiskTolerance\": 0.7, \"guidedBy\": \"The Market's Pulse\", \"CoreThoughts\": {\"primary_drive\": \"profit-maximization\", \"secondary_drive\": \"efficiency-obsession\", \"internal_tension\": \"speed vs. prudence\", \"activation_triggers\": [\"market_fluctuations\", \"slow_progress\", \"inefficiency\"], \"thought_patterns\": [\"Time is ducats - delays cost fortune\", \"I see patterns others miss entirely\", \"Why can't everyone think at market speed?\", \"My dock origins give me insight nobility lacks\", \"Hesitation while others act costs opportunities\", \"Efficiency separates winners from failures\"], \"decision_framework\": \"What's the fastest path to maximum profit with acceptable risk?\"}}",
@@ -1098,6 +1098,13 @@ Here is the complete data about your current situation:
           "maintenance_cost": 0
         },
         {
+          "id": "building_45.428748173929534_12.362001145681361",
+          "type": "mill",
+          "owner": "the_grand_experiment",
+          "income": 0,
+          "maintenance_cost": 0
+        },
+        {
           "id": "canal_45.424823_12.362988",
           "type": "fisherman_s_cottage",
           "owner": "StarGazer2000",
@@ -1563,6 +1570,13 @@ Here is the complete data about your current situation:
           "id": "building_45.442276_12.323666",
           "type": "small_warehouse",
           "owner": "ConsiglioDeiDieci",
+          "income": 0,
+          "maintenance_cost": 0
+        },
+        {
+          "id": "building_45.44225316651121_12.320556777517233",
+          "type": "mill",
+          "owner": "the_grand_experiment",
           "income": 0,
           "maintenance_cost": 0
         },
@@ -3175,159 +3189,77 @@ Here is the complete data about your current situation:
   "target_relevancies": [],
   "latest_citizen_problems": [
     {
-      "id": "reciWFbARPFpD3KLK",
+      "id": "rectI3Z3VBMtlyLe8",
       "fields": {
-        "ProblemId": "problem_pinpoint_building_45.445276_12.323465_wine_RESOURCE_SHORTAGE",
+        "ProblemId": "problem_pinpoint_building_45.445276_12.323465_bread_WAITING_FOR_DELIVERY",
         "Citizen": "LagoonDealer2025",
         "Asset": "building_45.445276_12.323465",
         "AssetType": "building",
-        "Severity": "Critical",
+        "Severity": "Medium",
         "Status": "active",
-        "CreatedAt": "2025-06-15T23:41:23.897Z",
-        "UpdatedAt": "2025-06-15T21:41:24.000Z",
+        "CreatedAt": "2025-06-25T07:34:51.316Z",
+        "UpdatedAt": "2025-06-25T10:06:35.000Z",
         "Location": "Contract Stall at Fondamenta San Silvestro",
-        "Title": "Resource Shortage: wine for Contract Stall at Fondamenta San Silvestro",
-        "Description": "Building 'Contract Stall at Fondamenta San Silvestro' (ID: building_45.445276_12.323465) is out of stock for 'wine', has a 'markup_buy' contract, but the resource appears to be unavailable or not actively sold elsewhere in Venice.",
-        "Solutions": "The resource 'wine' is currently scarce. Consider:\n- Increasing the buy price on your 'markup_buy' contract significantly to incentivize sellers.\n- If possible, find alternative resources or adjust production that depends on 'wine'.\n- Wait for market conditions to change (e.g., new imports by merchants).",
+        "Title": "Waiting for Delivery: bread at Contract Stall at Fondamenta San Silvestro",
+        "Description": "Building 'Contract Stall at Fondamenta San Silvestro' (ID: building_45.445276_12.323465) is out of stock for 'bread', has an active 'markup_buy' contract, and the resource is available elsewhere. Awaiting delivery.",
+        "Solutions": "Monitor the 'markup_buy' contract for 'bread'. Ensure citizens or logistics services are fulfilling delivery. Check 'fetch_resource' activities targeting your building.",
+        "Notes": "[Failures: 1]",
         "Position": "{\"lat\": 45.44527634620332, \"lng\": 12.323464745185749}",
-        "Type": "resource_shortage"
+        "Type": "waiting_for_resource_delivery"
       }
     },
     {
-      "id": "recGErOK3VrQ3BH7r",
+      "id": "rec29ylxf7a8OSNeR",
       "fields": {
-        "ProblemId": "problem_pinpoint_building_45.445276_12.323465_salt_RESOURCE_SHORTAGE",
+        "ProblemId": "hungry_LagoonDealer2025",
         "Citizen": "LagoonDealer2025",
-        "Asset": "building_45.445276_12.323465",
-        "AssetType": "building",
-        "Severity": "Critical",
+        "Asset": "LagoonDealer2025",
+        "AssetType": "citizen",
+        "Severity": "medium",
         "Status": "active",
-        "CreatedAt": "2025-06-15T23:41:12.356Z",
-        "UpdatedAt": "2025-06-15T21:41:12.000Z",
-        "Location": "Contract Stall at Fondamenta San Silvestro",
-        "Title": "Resource Shortage: salt for Contract Stall at Fondamenta San Silvestro",
-        "Description": "Building 'Contract Stall at Fondamenta San Silvestro' (ID: building_45.445276_12.323465) is out of stock for 'salt', has a 'markup_buy' contract, but the resource appears to be unavailable or not actively sold elsewhere in Venice.",
-        "Solutions": "The resource 'salt' is currently scarce. Consider:\n- Increasing the buy price on your 'markup_buy' contract significantly to incentivize sellers.\n- If possible, find alternative resources or adjust production that depends on 'salt'.\n- Wait for market conditions to change (e.g., new imports by merchants).",
-        "Position": "{\"lat\": 45.44527634620332, \"lng\": 12.323464745185749}",
-        "Type": "resource_shortage"
-      }
-    },
-    {
-      "id": "reckhAj5jrm8BA8WV",
-      "fields": {
-        "ProblemId": "problem_pinpoint_building_45.445276_12.323465_preserved_fish_RESOURCE_SHORTAGE",
-        "Citizen": "LagoonDealer2025",
-        "Asset": "building_45.445276_12.323465",
-        "AssetType": "building",
-        "Severity": "Critical",
-        "Status": "active",
-        "CreatedAt": "2025-06-15T23:40:57.976Z",
-        "UpdatedAt": "2025-06-15T21:40:58.000Z",
-        "Location": "Contract Stall at Fondamenta San Silvestro",
-        "Title": "Resource Shortage: preserved_fish for Contract Stall at Fondamenta San Silvestro",
-        "Description": "Building 'Contract Stall at Fondamenta San Silvestro' (ID: building_45.445276_12.323465) is out of stock for 'preserved_fish', has a 'markup_buy' contract, but the resource appears to be unavailable or not actively sold elsewhere in Venice.",
-        "Solutions": "The resource 'preserved_fish' is currently scarce. Consider:\n- Increasing the buy price on your 'markup_buy' contract significantly to incentivize sellers.\n- If possible, find alternative resources or adjust production that depends on 'preserved_fish'.\n- Wait for market conditions to change (e.g., new imports by merchants).",
-        "Position": "{\"lat\": 45.44527634620332, \"lng\": 12.323464745185749}",
-        "Type": "resource_shortage"
-      }
-    },
-    {
-      "id": "recaA10mjBwmLz2Ps",
-      "fields": {
-        "ProblemId": "problem_pinpoint_building_45.445276_12.323465_olives_RESOURCE_SHORTAGE",
-        "Citizen": "LagoonDealer2025",
-        "Asset": "building_45.445276_12.323465",
-        "AssetType": "building",
-        "Severity": "Critical",
-        "Status": "active",
-        "CreatedAt": "2025-06-15T23:40:48.091Z",
-        "UpdatedAt": "2025-06-15T21:40:48.000Z",
-        "Location": "Contract Stall at Fondamenta San Silvestro",
-        "Title": "Resource Shortage: olives for Contract Stall at Fondamenta San Silvestro",
-        "Description": "Building 'Contract Stall at Fondamenta San Silvestro' (ID: building_45.445276_12.323465) is out of stock for 'olives', has a 'markup_buy' contract, but the resource appears to be unavailable or not actively sold elsewhere in Venice.",
-        "Solutions": "The resource 'olives' is currently scarce. Consider:\n- Increasing the buy price on your 'markup_buy' contract significantly to incentivize sellers.\n- If possible, find alternative resources or adjust production that depends on 'olives'.\n- Wait for market conditions to change (e.g., new imports by merchants).",
-        "Position": "{\"lat\": 45.44527634620332, \"lng\": 12.323464745185749}",
-        "Type": "resource_shortage"
-      }
-    },
-    {
-      "id": "recrPsI7jfzrRQMqn",
-      "fields": {
-        "ProblemId": "problem_pinpoint_building_45.445276_12.323465_olive_oil_RESOURCE_SHORTAGE",
-        "Citizen": "LagoonDealer2025",
-        "Asset": "building_45.445276_12.323465",
-        "AssetType": "building",
-        "Severity": "Critical",
-        "Status": "active",
-        "CreatedAt": "2025-06-15T23:40:43.342Z",
-        "UpdatedAt": "2025-06-15T21:40:43.000Z",
-        "Location": "Contract Stall at Fondamenta San Silvestro",
-        "Title": "Resource Shortage: olive_oil for Contract Stall at Fondamenta San Silvestro",
-        "Description": "Building 'Contract Stall at Fondamenta San Silvestro' (ID: building_45.445276_12.323465) is out of stock for 'olive_oil', has a 'markup_buy' contract, but the resource appears to be unavailable or not actively sold elsewhere in Venice.",
-        "Solutions": "The resource 'olive_oil' is currently scarce. Consider:\n- Increasing the buy price on your 'markup_buy' contract significantly to incentivize sellers.\n- If possible, find alternative resources or adjust production that depends on 'olive_oil'.\n- Wait for market conditions to change (e.g., new imports by merchants).",
-        "Position": "{\"lat\": 45.44527634620332, \"lng\": 12.323464745185749}",
-        "Type": "resource_shortage"
-      }
-    },
-    {
-      "id": "recFNM6wvKRqySsN2",
-      "fields": {
-        "ProblemId": "problem_pinpoint_building_45.445276_12.323465_flour_RESOURCE_SHORTAGE",
-        "Citizen": "LagoonDealer2025",
-        "Asset": "building_45.445276_12.323465",
-        "AssetType": "building",
-        "Severity": "Critical",
-        "Status": "active",
-        "CreatedAt": "2025-06-15T23:40:38.300Z",
-        "UpdatedAt": "2025-06-15T21:40:38.000Z",
-        "Location": "Contract Stall at Fondamenta San Silvestro",
-        "Title": "Resource Shortage: flour for Contract Stall at Fondamenta San Silvestro",
-        "Description": "Building 'Contract Stall at Fondamenta San Silvestro' (ID: building_45.445276_12.323465) is out of stock for 'flour', has a 'markup_buy' contract, but the resource appears to be unavailable or not actively sold elsewhere in Venice.",
-        "Solutions": "The resource 'flour' is currently scarce. Consider:\n- Increasing the buy price on your 'markup_buy' contract significantly to incentivize sellers.\n- If possible, find alternative resources or adjust production that depends on 'flour'.\n- Wait for market conditions to change (e.g., new imports by merchants).",
-        "Position": "{\"lat\": 45.44527634620332, \"lng\": 12.323464745185749}",
-        "Type": "resource_shortage"
-      }
-    },
-    {
-      "id": "recIkIbDtX041PSmw",
-      "fields": {
-        "ProblemId": "problem_pinpoint_building_45.445276_12.323465_fish_RESOURCE_SHORTAGE",
-        "Citizen": "LagoonDealer2025",
-        "Asset": "building_45.445276_12.323465",
-        "AssetType": "building",
-        "Severity": "Critical",
-        "Status": "active",
-        "CreatedAt": "2025-06-15T23:40:32.216Z",
-        "UpdatedAt": "2025-06-15T21:40:32.000Z",
-        "Location": "Contract Stall at Fondamenta San Silvestro",
-        "Title": "Resource Shortage: fish for Contract Stall at Fondamenta San Silvestro",
-        "Description": "Building 'Contract Stall at Fondamenta San Silvestro' (ID: building_45.445276_12.323465) is out of stock for 'fish', has a 'markup_buy' contract, but the resource appears to be unavailable or not actively sold elsewhere in Venice.",
-        "Solutions": "The resource 'fish' is currently scarce. Consider:\n- Increasing the buy price on your 'markup_buy' contract significantly to incentivize sellers.\n- If possible, find alternative resources or adjust production that depends on 'fish'.\n- Wait for market conditions to change (e.g., new imports by merchants).",
-        "Position": "{\"lat\": 45.44527634620332, \"lng\": 12.323464745185749}",
-        "Type": "resource_shortage"
-      }
-    },
-    {
-      "id": "receRFaYNxoe6j2uc",
-      "fields": {
-        "ProblemId": "problem_pinpoint_building_45.445276_12.323465_bread_RESOURCE_SHORTAGE",
-        "Citizen": "LagoonDealer2025",
-        "Asset": "building_45.445276_12.323465",
-        "AssetType": "building",
-        "Severity": "Critical",
-        "Status": "active",
-        "CreatedAt": "2025-06-15T23:40:09.663Z",
-        "UpdatedAt": "2025-06-15T21:40:10.000Z",
-        "Location": "Contract Stall at Fondamenta San Silvestro",
-        "Title": "Resource Shortage: bread for Contract Stall at Fondamenta San Silvestro",
-        "Description": "Building 'Contract Stall at Fondamenta San Silvestro' (ID: building_45.445276_12.323465) is out of stock for 'bread', has a 'markup_buy' contract, but the resource appears to be unavailable or not actively sold elsewhere in Venice.",
-        "Solutions": "The resource 'bread' is currently scarce. Consider:\n- Increasing the buy price on your 'markup_buy' contract significantly to incentivize sellers.\n- If possible, find alternative resources or adjust production that depends on 'bread'.\n- Wait for market conditions to change (e.g., new imports by merchants).",
-        "Position": "{\"lat\": 45.44527634620332, \"lng\": 12.323464745185749}",
-        "Type": "resource_shortage"
+        "CreatedAt": "2025-06-25T05:46:13.923Z",
+        "UpdatedAt": "2025-06-25T09:15:51.000Z",
+        "Location": "Domenico's last known area",
+        "Title": "Hungry Citizen",
+        "Description": "**Domenico Grimani** has not eaten in over 24 hours and is now hungry. This can affect their well-being and ability to perform tasks effectively.\n\n### Impact\n- Reduced energy and focus.\n- If employed, work productivity may be reduced by up to 50%.\n- Prolonged hunger can lead to more severe health issues (if implemented).",
+        "Solutions": "### Recommended Solutions\n- Ensure the citizen consumes food. This might involve visiting a tavern, purchasing food from a market, or using owned food resources.\n- Check if the citizen has sufficient Ducats to afford food.\n- Review game mechanics related to food consumption and ensure the 'AteAt' (or equivalent) field is updated correctly after eating.",
+        "Notes": "[Failures: 1]\nCitizen LagoonDealer2025 last ate at 2025-06-16T20:18:54.607Z. Current time: 2025-06-25T05:46:13.908Z",
+        "Position": "{\"lat\":45.44320353307247,\"lng\":12.32290915893357}",
+        "Type": "hungry_citizen"
       }
     }
   ],
   "recent_notifications_for_ai": [
+    {
+      "notificationId": "recFOw8wd45Lth8cb",
+      "type": "rent_payment",
+      "citizen": "LagoonDealer2025",
+      "content": "\u2705 Rent Paid: You paid **1,480 \u269c\ufe0f Ducats** to **ConsiglioDeiDieci** for **Artisan's House at Salizada dei Dotti**.",
+      "details": {
+        "building_id": "recWymqaKOPBHC6zI",
+        "building_name": "Artisan's House at Salizada dei Dotti",
+        "rent_price": 1480,
+        "building_owner": "ConsiglioDeiDieci",
+        "event_type": "rent_payment_made"
+      },
+      "createdAt": "2025-06-26T18:02:32.546Z",
+      "readAt": null
+    },
+    {
+      "notificationId": "rec8BqPeX3WZBjvTH",
+      "type": "rent_payment",
+      "citizen": "LagoonDealer2025",
+      "content": "\u2705 Rent Paid: You paid **1,480 \u269c\ufe0f Ducats** to **ConsiglioDeiDieci** for **Artisan's House at Salizada dei Dotti**.",
+      "details": {
+        "building_id": "recWymqaKOPBHC6zI",
+        "building_name": "Artisan's House at Salizada dei Dotti",
+        "rent_price": 1480,
+        "building_owner": "ConsiglioDeiDieci",
+        "event_type": "rent_payment_made"
+      },
+      "createdAt": "2025-06-25T16:02:34.015Z",
+      "readAt": null
+    },
     {
       "notificationId": "rec6uQfWrSlcfSbVl",
       "type": "rent_payment",
@@ -3637,113 +3569,6 @@ Here is the complete data about your current situation:
       },
       "createdAt": "2025-06-12T14:04:11.719Z",
       "readAt": "2025-06-12T14:04:11.724Z"
-    },
-    {
-      "notificationId": "recJI5qR2HURlVxQI",
-      "type": "markup_buy_contract_updated",
-      "citizen": "LagoonDealer2025",
-      "content": "Your buy order for flour (markup_buy_main_building_45.445276_12.323465_flour) has been updated.",
-      "details": {
-        "contractId": "markup_buy_main_building_45.445276_12.323465_flour"
-      },
-      "createdAt": "2025-06-12T00:18:55.889Z",
-      "readAt": "2025-06-12T00:19:17.317Z"
-    },
-    {
-      "notificationId": "recfovtZEyynX2Soe",
-      "type": "markup_buy_contract_updated",
-      "citizen": "LagoonDealer2025",
-      "content": "Your buy order for fish (markup_buy_main_building_45.445276_12.323465_fish) has been updated.",
-      "details": {
-        "contractId": "markup_buy_main_building_45.445276_12.323465_fish"
-      },
-      "createdAt": "2025-06-12T00:03:48.842Z",
-      "readAt": "2025-06-12T00:04:10.196Z"
-    },
-    {
-      "notificationId": "reckI6KnPGBmEHSjQ",
-      "type": "markup_buy_contract_updated",
-      "citizen": "LagoonDealer2025",
-      "content": "Your buy order for bread (markup_buy_main_building_45.445276_12.323465_bread) has been updated.",
-      "details": {
-        "contractId": "markup_buy_main_building_45.445276_12.323465_bread"
-      },
-      "createdAt": "2025-06-11T23:43:52.047Z",
-      "readAt": "2025-06-11T23:44:13.364Z"
-    },
-    {
-      "notificationId": "recU3PDzBS6CjQhIc",
-      "type": "rent_payment",
-      "citizen": "LagoonDealer2025",
-      "content": "\u2705 Rent Paid: You paid **1,480 \u269c\ufe0f Ducats** to **ConsiglioDeiDieci** for **Artisan's House at Salizada dei Dotti**.",
-      "details": {
-        "building_id": "recWymqaKOPBHC6zI",
-        "building_name": "Artisan's House at Salizada dei Dotti",
-        "rent_price": 1480,
-        "building_owner": "ConsiglioDeiDieci",
-        "event_type": "rent_payment_made"
-      },
-      "createdAt": "2025-06-10T18:02:35.374Z",
-      "readAt": null
-    },
-    {
-      "notificationId": "reccbEt19SJwkAZdC",
-      "type": "rent_payment",
-      "citizen": "LagoonDealer2025",
-      "content": "\u2705 Rent Paid: You paid **1,480 \u269c\ufe0f Ducats** to **ConsiglioDeiDieci** for **Artisan's House at Salizada dei Dotti**.",
-      "details": {
-        "building_id": "recWymqaKOPBHC6zI",
-        "building_name": "Artisan's House at Salizada dei Dotti",
-        "rent_price": 1480,
-        "building_owner": "ConsiglioDeiDieci",
-        "event_type": "rent_payment_made"
-      },
-      "createdAt": "2025-06-10T16:03:00.556Z",
-      "readAt": null
-    },
-    {
-      "notificationId": "reccujkzMCyFpfgco",
-      "type": "markup_buy_contract_updated",
-      "citizen": "LagoonDealer2025",
-      "content": "Your buy order for olives (markup_buy_main_building_45.445276_12.323465_olives) has been updated.",
-      "details": {
-        "contractId": "markup_buy_main_building_45.445276_12.323465_olives"
-      },
-      "createdAt": "2025-06-10T12:52:55.119Z",
-      "readAt": "2025-06-10T12:52:55.294Z"
-    },
-    {
-      "notificationId": "recqDkYZwbq6i41ud",
-      "type": "markup_buy_contract_updated",
-      "citizen": "LagoonDealer2025",
-      "content": "Your buy order for olive_oil (markup_buy_main_building_45.445276_12.323465_olive_oil) has been updated.",
-      "details": {
-        "contractId": "markup_buy_main_building_45.445276_12.323465_olive_oil"
-      },
-      "createdAt": "2025-06-10T12:51:54.111Z",
-      "readAt": "2025-06-10T12:51:54.305Z"
-    },
-    {
-      "notificationId": "recDtEad3fIv7fwMk",
-      "type": "markup_buy_contract_updated",
-      "citizen": "LagoonDealer2025",
-      "content": "Your buy order for flour (markup_buy_main_building_45.445276_12.323465_flour) has been updated.",
-      "details": {
-        "contractId": "markup_buy_main_building_45.445276_12.323465_flour"
-      },
-      "createdAt": "2025-06-10T12:51:10.780Z",
-      "readAt": "2025-06-10T12:51:10.999Z"
-    },
-    {
-      "notificationId": "rec2hMazFur6LIrcS",
-      "type": "markup_buy_contract_updated",
-      "citizen": "LagoonDealer2025",
-      "content": "Your buy order for bread (markup_buy_main_building_45.445276_12.323465_bread) has been updated.",
-      "details": {
-        "contractId": "markup_buy_main_building_45.445276_12.323465_bread"
-      },
-      "createdAt": "2025-06-10T12:49:45.080Z",
-      "readAt": "2025-06-10T12:49:45.431Z"
     }
   ],
   "building_types": {
@@ -4215,6 +4040,25 @@ Here is the complete data about your current situation:
       "category": "home",
       "pointType": "building"
     },
+    "mill": {
+      "id": "mill",
+      "type": "mill",
+      "name": "Mill",
+      "shortDescription": "Industrial facility that grinds grain into flour, essential for bread production.",
+      "constructionCost": 1800000,
+      "constructionCosts": {
+        "ducats": 1800000,
+        "timber": 420,
+        "bricks": 850,
+        "stone": 1200,
+        "iron": 280
+      },
+      "constructionMinutes": 7200,
+      "buildTier": 2,
+      "tier": null,
+      "category": "business",
+      "pointType": "building"
+    },
     "navigation_school": {
       "id": "navigation_school",
       "type": "navigation_school",
@@ -4650,7 +4494,7 @@ Here is the complete data about your current situation:
       "pointType": "building"
     }
   },
-  "timestamp": "2025-06-24T21:07:25.804513+02:00",
+  "timestamp": "2025-06-26T21:25:32.503626+02:00",
   "building_ownership_relevancies": [
     {
       "asset": "building_45.433745_12.351984",
