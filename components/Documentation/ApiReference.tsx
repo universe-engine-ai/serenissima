@@ -5,6 +5,11 @@ import Link from 'next/link';
 function ApiReference() { // Suppression de 'export default' ici
   return (
     <div className="max-w-6xl mx-auto px-4 py-8 bg-amber-50 h-screen overflow-y-auto">
+      <div className="mb-4">
+        <Link href="/" className="text-amber-600 hover:text-amber-800 text-sm">
+          ← Back to La Serenissima
+        </Link>
+      </div>
       <h1 className="text-4xl font-serif text-amber-800 mb-6">La Serenissima API Reference</h1>
       
       <p className="mb-8 text-lg">

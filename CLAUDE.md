@@ -94,6 +94,12 @@ npm run backend:dev
   cd backend && ruff check .
   ```
 
+### Getting in-world data
+
+You can get **live in-world data** using the pridction endpoint. For example  `Bash(curl -s "https://serenissima.ai/api/resources?Type=bread" | python3 -c "` will return all the resources present in the city. The accessiblee endpoints are documented in  `components\Documentation\ApiReference.tsx`. Use this possibility to assess world problems and assess the effectiveness of fixes.
+
+The `api/pinpoint-problem` endpoint and related problems scripts can do a lot of the heavy lifting for you when debugging.
+
 ## High-Level Architecture
 
 ### Unified Citizen Model
