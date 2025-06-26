@@ -8,7 +8,7 @@ Here is the complete data about your current situation:
 {
   "citizen": {
     "username": "BlueSkySurfer",
-    "ducats": 349378.4434228324,
+    "ducats": 354045.2808496465,
     "social_class": "Facchini",
     "description": "Faustina Ruzzini, known around the docks as 'BlueSkySurfer,' has spent years earning her reputation as one of Venice's most reliable facchini. Born to a family of modest gondoliers who settled in Dorsoduro, Faustina chose to follow a different path on the water, working at the public docks where ships from across the Mediterranean unload their exotic wares. Despite her humble beginnings, she has amassed a surprising fortune through shrewd observation and careful saving, becoming something of an anomaly among her peers. Faustina rises before dawn to secure the best positions at the bustling docks, her strong arms and back having grown accustomed to hauling crates of silk, spices, and ceramics through Venice's labyrinthine streets. Though illiterate, she possesses an uncanny memory for faces, prices, and the ever-shifting alliances of merchants. Recently, she has invested in a bakery in Dorsoduro, a carefully calculated step toward her dream of elevating her station through legitimate enterprise rather than the gambling that claims so many facchini's wages. In her rare moments of leisure, Faustina can be found near the Zattere waterfront, watching the horizon and imagining the distant lands whose treasures pass through her hands daily.",
     "core_personality": "{\"Strength\": \"Practical\", \"Flaw\": \"Gruff\", \"Drive\": \"Systems-focused\", \"MBTI\": \"ISTP\", \"PrimaryTrait\": \"Reliable operator\", \"SecondaryTraits\": [\"Memory expertise\", \"Strategic saving\", \"Market observation\"], \"CognitiveBias\": [\"Practical bias\", \"Experience weighting\"], \"TrustThreshold\": 0.6, \"EmpathyWeight\": 0.4, \"RiskTolerance\": 0.4, \"guidedBy\": \"The Dock's Truth\", \"CoreThoughts\": {\"primary_drive\": \"practical-efficiency\", \"secondary_drive\": \"systematic-advancement\", \"internal_tension\": \"practical focus vs. social niceties\", \"activation_triggers\": [\"inefficiency\", \"practical_solutions\", \"systematic_opportunities\"], \"thought_patterns\": [\"Actions matter more than words\", \"I see patterns in cargo flows others miss\", \"Direct approach saves time and confusion\", \"My memory is my greatest business asset\", \"Hard work speaks louder than smooth talk\", \"Every cargo load teaches something valuable\"], \"decision_framework\": \"What's the most practical and efficient path forward?\"}}",
@@ -1095,6 +1095,13 @@ Here is the complete data about your current situation:
           "maintenance_cost": 0
         },
         {
+          "id": "building_45.428748173929534_12.362001145681361",
+          "type": "mill",
+          "owner": "the_grand_experiment",
+          "income": 0,
+          "maintenance_cost": 0
+        },
+        {
           "id": "canal_45.424823_12.362988",
           "type": "fisherman_s_cottage",
           "owner": "StarGazer2000",
@@ -1560,6 +1567,13 @@ Here is the complete data about your current situation:
           "id": "building_45.442276_12.323666",
           "type": "small_warehouse",
           "owner": "ConsiglioDeiDieci",
+          "income": 0,
+          "maintenance_cost": 0
+        },
+        {
+          "id": "building_45.44225316651121_12.320556777517233",
+          "type": "mill",
+          "owner": "the_grand_experiment",
           "income": 0,
           "maintenance_cost": 0
         },
@@ -3161,8 +3175,59 @@ Here is the complete data about your current situation:
   "buildings": [],
   "relevancies": [],
   "target_relevancies": [],
-  "latest_citizen_problems": [],
+  "latest_citizen_problems": [
+    {
+      "id": "recpOOOM1C8CaedHA",
+      "fields": {
+        "ProblemId": "hungry_BlueSkySurfer",
+        "Citizen": "BlueSkySurfer",
+        "Asset": "BlueSkySurfer",
+        "AssetType": "citizen",
+        "Severity": "medium",
+        "Status": "active",
+        "CreatedAt": "2025-06-25T05:46:13.928Z",
+        "UpdatedAt": "2025-06-25T09:16:11.000Z",
+        "Location": "Faustina's last known area",
+        "Title": "Hungry Citizen",
+        "Description": "**Faustina Ruzzini** has not eaten in over 24 hours and is now hungry. This can affect their well-being and ability to perform tasks effectively.\n\n### Impact\n- Reduced energy and focus.\n- If employed, work productivity may be reduced by up to 50%.\n- Prolonged hunger can lead to more severe health issues (if implemented).",
+        "Solutions": "### Recommended Solutions\n- Ensure the citizen consumes food. This might involve visiting a tavern, purchasing food from a market, or using owned food resources.\n- Check if the citizen has sufficient Ducats to afford food.\n- Review game mechanics related to food consumption and ensure the 'AteAt' (or equivalent) field is updated correctly after eating.",
+        "Notes": "[Failures: 1]\nCitizen BlueSkySurfer last ate at 2025-06-19T06:08:49.885Z. Current time: 2025-06-25T05:46:13.908Z",
+        "Position": "{\"lat\":45.4396710889368,\"lng\":12.358478373167342}",
+        "Type": "hungry_citizen"
+      }
+    }
+  ],
   "recent_notifications_for_ai": [
+    {
+      "notificationId": "recssG1NepSvkOWOP",
+      "type": "rent_payment",
+      "citizen": "BlueSkySurfer",
+      "content": "\u2705 Rent Paid: You paid **1,125 \u269c\ufe0f Ducats** to **ConsiglioDeiDieci** for **recVSMllh1xEt5BUw**.",
+      "details": {
+        "building_id": "recVSMllh1xEt5BUw",
+        "building_name": "recVSMllh1xEt5BUw",
+        "rent_price": 1125,
+        "building_owner": "ConsiglioDeiDieci",
+        "event_type": "rent_payment_made"
+      },
+      "createdAt": "2025-06-26T18:02:22.916Z",
+      "readAt": null
+    },
+    {
+      "notificationId": "recTBM3Yypr8BSx2J",
+      "type": "rent_payment",
+      "citizen": "BlueSkySurfer",
+      "content": "\u2705 Rent Paid: You paid **1,125 \u269c\ufe0f Ducats** to **ConsiglioDeiDieci** for **recVSMllh1xEt5BUw**.",
+      "details": {
+        "building_id": "recVSMllh1xEt5BUw",
+        "building_name": "recVSMllh1xEt5BUw",
+        "rent_price": 1125,
+        "building_owner": "ConsiglioDeiDieci",
+        "event_type": "rent_payment_made"
+      },
+      "createdAt": "2025-06-25T16:02:23.057Z",
+      "readAt": null
+    },
     {
       "notificationId": "recjFnY7uH5j5hZbL",
       "type": "rent_payment",
@@ -3417,36 +3482,6 @@ Here is the complete data about your current situation:
       },
       "createdAt": "2025-06-12T18:02:12.044Z",
       "readAt": null
-    },
-    {
-      "notificationId": "recQwrX0jqszVT4gL",
-      "type": "rent_payment",
-      "citizen": "BlueSkySurfer",
-      "content": "\u2705 Rent Paid: You paid **1,125 \u269c\ufe0f Ducats** to **ConsiglioDeiDieci** for **recVSMllh1xEt5BUw**.",
-      "details": {
-        "building_id": "recVSMllh1xEt5BUw",
-        "building_name": "recVSMllh1xEt5BUw",
-        "rent_price": 1125,
-        "building_owner": "ConsiglioDeiDieci",
-        "event_type": "rent_payment_made"
-      },
-      "createdAt": "2025-06-10T18:02:24.398Z",
-      "readAt": null
-    },
-    {
-      "notificationId": "recUjFNAVEmDCpxyh",
-      "type": "rent_payment",
-      "citizen": "BlueSkySurfer",
-      "content": "\u2705 Rent Paid: You paid **1,125 \u269c\ufe0f Ducats** to **ConsiglioDeiDieci** for **recVSMllh1xEt5BUw**.",
-      "details": {
-        "building_id": "recVSMllh1xEt5BUw",
-        "building_name": "recVSMllh1xEt5BUw",
-        "rent_price": 1125,
-        "building_owner": "ConsiglioDeiDieci",
-        "event_type": "rent_payment_made"
-      },
-      "createdAt": "2025-06-10T16:02:49.960Z",
-      "readAt": null
     }
   ],
   "building_types": {
@@ -3687,7 +3722,7 @@ Here is the complete data about your current situation:
       "pointType": "building"
     }
   },
-  "timestamp": "2025-06-24T22:14:42.663387+02:00",
+  "timestamp": "2025-06-26T21:04:05.532569+02:00",
   "building_ownership_relevancies": []
 }
 
