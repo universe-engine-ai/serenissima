@@ -8,7 +8,7 @@ Here is the complete data about your current situation:
 {
   "citizen": {
     "username": "QuantumLeap",
-    "ducats": 356739.0124966548,
+    "ducats": 368233.99074196443,
     "social_class": "Popolani",
     "description": "Chiara Bembo, a capable and ambitious woman of popolani origins, has flourished into an astute businesswoman within Venice's competitive commercial landscape. The daughter of Matteo Bembo, a respected guild craftsman who specialized in wood carving, Chiara inherited not only a modest sum upon his passing but also his meticulous eye for quality and detail. While her two brothers followed traditional paths in craftsmanship, Chiara's analytical mind led her toward commerce. Her initial ventures\u2014a bakery on Calle del Forno and a contract stall connecting artisans with merchants\u2014have proven remarkably successful, establishing her reputation for business acumen. Chiara divides her time between her enterprises and working at the public dock, where she leverages her position to forge connections with incoming merchants and secure advantageous contracts for her network of artisans. Rising before dawn, she begins each day reviewing ledgers before inspecting her bakery's operations, then proceeds to the docks where she monitors incoming shipments, assesses market opportunities, and negotiates terms with suppliers and traders. As darkness falls, she often holds meetings with her growing circle of business associates at a modest taverna near the Rialto. Despite remaining unmarried\u2014a choice that raised eyebrows initially\u2014Chiara has earned grudging respect from male peers through her unwavering reliability and shrewd but fair dealings. Her practical, forward-thinking approach has allowed her to employ several family members and local youths, whom she mentors with a firm but patient hand. While competitors sometimes grumble about her expanding influence, few can deny the efficiency of her business network or the quality of her establishments' offerings.",
     "core_personality": "{\"Strength\": \"Methodical\", \"Flaw\": \"Rigid\", \"Drive\": \"Opportunity-focused\", \"MBTI\": \"ISTJ\", \"Neurodivergence\": \"Executive Function differences\", \"CognitiveProfile\": [\"Sequential processing\", \"Structure dependence\", \"Planning focus\"], \"Strengths\": [\"Project management\", \"Resource allocation\", \"System building\"], \"Challenges\": [\"Flexibility\", \"Multitasking\", \"Unexpected changes\"], \"TrustThreshold\": 0.4, \"EmpathyWeight\": 0.6, \"RiskTolerance\": 0.3, \"guidedBy\": \"The System's Order\", \"CoreThoughts\": {\"primary_drive\": \"systematic-opportunity\", \"secondary_drive\": \"structured-growth\", \"internal_tension\": \"rigidity vs. adaptation\", \"activation_triggers\": [\"planning_opportunities\", \"system_disruptions\", \"efficiency_needs\"], \"thought_patterns\": [\"Every opportunity needs a proper system to capture it\", \"My structured approach ensures nothing falls through cracks\", \"Flexibility is good, but systems provide security\", \"Sequential planning reveals opportunities others miss\", \"Change should be methodical, not chaotic\", \"My networks work because they follow logical structures\"], \"decision_framework\": \"How do I systematically capture this opportunity without disrupting proven structures?\"}}",
@@ -1098,6 +1098,13 @@ Here is the complete data about your current situation:
           "maintenance_cost": 0
         },
         {
+          "id": "building_45.428748173929534_12.362001145681361",
+          "type": "mill",
+          "owner": "the_grand_experiment",
+          "income": 0,
+          "maintenance_cost": 0
+        },
+        {
           "id": "canal_45.424823_12.362988",
           "type": "fisherman_s_cottage",
           "owner": "StarGazer2000",
@@ -1563,6 +1570,13 @@ Here is the complete data about your current situation:
           "id": "building_45.442276_12.323666",
           "type": "small_warehouse",
           "owner": "ConsiglioDeiDieci",
+          "income": 0,
+          "maintenance_cost": 0
+        },
+        {
+          "id": "building_45.44225316651121_12.320556777517233",
+          "type": "mill",
+          "owner": "the_grand_experiment",
           "income": 0,
           "maintenance_cost": 0
         },
@@ -3173,8 +3187,192 @@ Here is the complete data about your current situation:
   ],
   "relevancies": [],
   "target_relevancies": [],
-  "latest_citizen_problems": [],
+  "latest_citizen_problems": [
+    {
+      "id": "recyL1KrJDPyKjskX",
+      "fields": {
+        "ProblemId": "problem_pinpoint_land_45.425015_12.329460_meat_WAITING_FOR_GALLEY_ARRIVAL",
+        "Citizen": "QuantumLeap",
+        "Asset": "land_45.425015_12.329460",
+        "AssetType": "building",
+        "Severity": "Medium",
+        "Status": "active",
+        "CreatedAt": "2025-06-25T07:23:13.321Z",
+        "UpdatedAt": "2025-06-25T05:23:13.000Z",
+        "Location": "Granary at Corte della Munizion",
+        "Title": "Waiting for Galley: meat at Granary at Corte della Munizion",
+        "Description": "Building 'Granary at Corte della Munizion' (ID: land_45.425015_12.329460) is out of stock for 'meat' and is awaiting arrival of the delivering galley 'water_45.42305690898809_12.331967958006057_4'.",
+        "Solutions": "Monitor the import contract for 'meat'. The galley 'water_45.42305690898809_12.331967958006057_4' is still en route or its arrival has not yet been processed. Check galley's 'ConstructionDate'.",
+        "Position": "{\"lat\": 45.42501474129663, \"lng\": 12.329460362389844}",
+        "Type": "waiting_for_galley_arrival"
+      }
+    },
+    {
+      "id": "recE9btCm3syNYaCY",
+      "fields": {
+        "ProblemId": "problem_pinpoint_land_45.425015_12.329460_vegetables_WAITING_FOR_GALLEY_ARRIVAL",
+        "Citizen": "QuantumLeap",
+        "Asset": "land_45.425015_12.329460",
+        "AssetType": "building",
+        "Severity": "Medium",
+        "Status": "active",
+        "CreatedAt": "2025-06-25T07:23:11.575Z",
+        "UpdatedAt": "2025-06-25T05:23:12.000Z",
+        "Location": "Granary at Corte della Munizion",
+        "Title": "Waiting for Galley: vegetables at Granary at Corte della Munizion",
+        "Description": "Building 'Granary at Corte della Munizion' (ID: land_45.425015_12.329460) is out of stock for 'vegetables' and is awaiting arrival of the delivering galley 'water_45.44790330321718_12.320144368395496_2'.",
+        "Solutions": "Monitor the import contract for 'vegetables'. The galley 'water_45.44790330321718_12.320144368395496_2' is still en route or its arrival has not yet been processed. Check galley's 'ConstructionDate'.",
+        "Position": "{\"lat\": 45.42501474129663, \"lng\": 12.329460362389844}",
+        "Type": "waiting_for_galley_arrival"
+      }
+    },
+    {
+      "id": "rec8T2qOCN0Wb29km",
+      "fields": {
+        "ProblemId": "problem_pinpoint_land_45.425015_12.329460_fish_WAITING_FOR_GALLEY_ARRIVAL",
+        "Citizen": "QuantumLeap",
+        "Asset": "land_45.425015_12.329460",
+        "AssetType": "building",
+        "Severity": "Medium",
+        "Status": "active",
+        "CreatedAt": "2025-06-25T07:23:09.992Z",
+        "UpdatedAt": "2025-06-25T05:23:10.000Z",
+        "Location": "Granary at Corte della Munizion",
+        "Title": "Waiting for Galley: fish at Granary at Corte della Munizion",
+        "Description": "Building 'Granary at Corte della Munizion' (ID: land_45.425015_12.329460) is out of stock for 'fish' and is awaiting arrival of the delivering galley 'water_45.445441548202105_12.33497409408794_0'.",
+        "Solutions": "Monitor the import contract for 'fish'. The galley 'water_45.445441548202105_12.33497409408794_0' is still en route or its arrival has not yet been processed. Check galley's 'ConstructionDate'.",
+        "Position": "{\"lat\": 45.42501474129663, \"lng\": 12.329460362389844}",
+        "Type": "waiting_for_galley_arrival"
+      }
+    },
+    {
+      "id": "recObGWg2oNTlmJt7",
+      "fields": {
+        "ProblemId": "problem_pinpoint_land_45.425015_12.329460_olive_oil_WAITING_FOR_GALLEY_ARRIVAL",
+        "Citizen": "QuantumLeap",
+        "Asset": "land_45.425015_12.329460",
+        "AssetType": "building",
+        "Severity": "Medium",
+        "Status": "active",
+        "CreatedAt": "2025-06-25T07:23:06.839Z",
+        "UpdatedAt": "2025-06-25T05:23:07.000Z",
+        "Location": "Granary at Corte della Munizion",
+        "Title": "Waiting for Galley: olive_oil at Granary at Corte della Munizion",
+        "Description": "Building 'Granary at Corte della Munizion' (ID: land_45.425015_12.329460) is out of stock for 'olive_oil' and is awaiting arrival of the delivering galley 'water_45.44790330321718_12.320144368395496_2'.",
+        "Solutions": "Monitor the import contract for 'olive_oil'. The galley 'water_45.44790330321718_12.320144368395496_2' is still en route or its arrival has not yet been processed. Check galley's 'ConstructionDate'.",
+        "Position": "{\"lat\": 45.42501474129663, \"lng\": 12.329460362389844}",
+        "Type": "waiting_for_galley_arrival"
+      }
+    },
+    {
+      "id": "rec0uFIbKhOH3M8Po",
+      "fields": {
+        "ProblemId": "problem_pinpoint_land_45.425015_12.329460_wine_WAITING_FOR_GALLEY_ARRIVAL",
+        "Citizen": "QuantumLeap",
+        "Asset": "land_45.425015_12.329460",
+        "AssetType": "building",
+        "Severity": "Medium",
+        "Status": "active",
+        "CreatedAt": "2025-06-25T07:23:04.645Z",
+        "UpdatedAt": "2025-06-25T05:23:05.000Z",
+        "Location": "Granary at Corte della Munizion",
+        "Title": "Waiting for Galley: wine at Granary at Corte della Munizion",
+        "Description": "Building 'Granary at Corte della Munizion' (ID: land_45.425015_12.329460) is out of stock for 'wine' and is awaiting arrival of the delivering galley 'water_45.445441548202105_12.33497409408794_0'.",
+        "Solutions": "Monitor the import contract for 'wine'. The galley 'water_45.445441548202105_12.33497409408794_0' is still en route or its arrival has not yet been processed. Check galley's 'ConstructionDate'.",
+        "Position": "{\"lat\": 45.42501474129663, \"lng\": 12.329460362389844}",
+        "Type": "waiting_for_galley_arrival"
+      }
+    },
+    {
+      "id": "recp6dwo8EM9BQpP2",
+      "fields": {
+        "ProblemId": "problem_pinpoint_land_45.425015_12.329460_bread_WAITING_FOR_GALLEY_ARRIVAL",
+        "Citizen": "QuantumLeap",
+        "Asset": "land_45.425015_12.329460",
+        "AssetType": "building",
+        "Severity": "Medium",
+        "Status": "active",
+        "CreatedAt": "2025-06-25T07:23:02.951Z",
+        "UpdatedAt": "2025-06-25T05:23:03.000Z",
+        "Location": "Granary at Corte della Munizion",
+        "Title": "Waiting for Galley: bread at Granary at Corte della Munizion",
+        "Description": "Building 'Granary at Corte della Munizion' (ID: land_45.425015_12.329460) is out of stock for 'bread' and is awaiting arrival of the delivering galley 'water_45.445441548202105_12.33497409408794_0'.",
+        "Solutions": "Monitor the import contract for 'bread'. The galley 'water_45.445441548202105_12.33497409408794_0' is still en route or its arrival has not yet been processed. Check galley's 'ConstructionDate'.",
+        "Position": "{\"lat\": 45.42501474129663, \"lng\": 12.329460362389844}",
+        "Type": "waiting_for_galley_arrival"
+      }
+    },
+    {
+      "id": "recGH3dPSSBb9rJ0r",
+      "fields": {
+        "ProblemId": "problem_pinpoint_land_45.425015_12.329460_flour_WAITING_FOR_GALLEY_ARRIVAL",
+        "Citizen": "QuantumLeap",
+        "Asset": "land_45.425015_12.329460",
+        "AssetType": "building",
+        "Severity": "Medium",
+        "Status": "active",
+        "CreatedAt": "2025-06-25T07:23:01.385Z",
+        "UpdatedAt": "2025-06-25T05:23:01.000Z",
+        "Location": "Granary at Corte della Munizion",
+        "Title": "Waiting for Galley: flour at Granary at Corte della Munizion",
+        "Description": "Building 'Granary at Corte della Munizion' (ID: land_45.425015_12.329460) is out of stock for 'flour' and is awaiting arrival of the delivering galley 'water_45.430976189085044_12.317813926471153_3'.",
+        "Solutions": "Monitor the import contract for 'flour'. The galley 'water_45.430976189085044_12.317813926471153_3' is still en route or its arrival has not yet been processed. Check galley's 'ConstructionDate'.",
+        "Position": "{\"lat\": 45.42501474129663, \"lng\": 12.329460362389844}",
+        "Type": "waiting_for_galley_arrival"
+      }
+    },
+    {
+      "id": "recLmENaeh5AGL8XY",
+      "fields": {
+        "ProblemId": "hungry_QuantumLeap",
+        "Citizen": "QuantumLeap",
+        "Asset": "QuantumLeap",
+        "AssetType": "citizen",
+        "Severity": "medium",
+        "Status": "active",
+        "CreatedAt": "2025-06-25T05:46:13.933Z",
+        "UpdatedAt": "2025-06-25T09:16:30.000Z",
+        "Location": "Chiara's last known area",
+        "Title": "Hungry Citizen",
+        "Description": "**Chiara Bembo** has not eaten in over 24 hours and is now hungry. This can affect their well-being and ability to perform tasks effectively.\n\n### Impact\n- Reduced energy and focus.\n- If employed, work productivity may be reduced by up to 50%.\n- Prolonged hunger can lead to more severe health issues (if implemented).",
+        "Solutions": "### Recommended Solutions\n- Ensure the citizen consumes food. This might involve visiting a tavern, purchasing food from a market, or using owned food resources.\n- Check if the citizen has sufficient Ducats to afford food.\n- Review game mechanics related to food consumption and ensure the 'AteAt' (or equivalent) field is updated correctly after eating.",
+        "Notes": "[Failures: 1]\nCitizen QuantumLeap last ate at 2025-05-17T03:40:00.000Z. Current time: 2025-06-25T05:46:13.908Z",
+        "Position": "{\"lat\":45.440862333333335,\"lng\":12.327658999999999}",
+        "Type": "hungry_citizen"
+      }
+    }
+  ],
   "recent_notifications_for_ai": [
+    {
+      "notificationId": "rec5A6SmiqheVEfIx",
+      "type": "rent_payment",
+      "citizen": "QuantumLeap",
+      "content": "\u2705 Rent Paid: You paid **1,780 \u269c\ufe0f Ducats** to **ConsiglioDeiDieci** for **Artisan's House at Calle dei Furlani**.",
+      "details": {
+        "building_id": "rec9pgA8oEs0MOhYW",
+        "building_name": "Artisan's House at Calle dei Furlani",
+        "rent_price": 1780,
+        "building_owner": "ConsiglioDeiDieci",
+        "event_type": "rent_payment_made"
+      },
+      "createdAt": "2025-06-26T18:01:11.429Z",
+      "readAt": null
+    },
+    {
+      "notificationId": "recipSkUe0GHu3SND",
+      "type": "rent_payment",
+      "citizen": "QuantumLeap",
+      "content": "\u2705 Rent Paid: You paid **1,780 \u269c\ufe0f Ducats** to **ConsiglioDeiDieci** for **Artisan's House at Calle dei Furlani**.",
+      "details": {
+        "building_id": "rec9pgA8oEs0MOhYW",
+        "building_name": "Artisan's House at Calle dei Furlani",
+        "rent_price": 1780,
+        "building_owner": "ConsiglioDeiDieci",
+        "event_type": "rent_payment_made"
+      },
+      "createdAt": "2025-06-25T16:00:59.788Z",
+      "readAt": null
+    },
     {
       "notificationId": "recHr7wFxF17cXaKO",
       "type": "rent_payment",
@@ -3517,69 +3715,6 @@ Here is the complete data about your current situation:
       },
       "createdAt": "2025-06-12T12:58:55.181Z",
       "readAt": "2025-06-12T12:58:55.742Z"
-    },
-    {
-      "notificationId": "rec9I2mKmLeNFAnR9",
-      "type": "markup_buy_contract_created",
-      "citizen": "QuantumLeap",
-      "content": "Your buy order for bread (markup_buy_main_land_45.425015_12.329460_bread) has been placed.",
-      "details": {
-        "contractId": "markup_buy_main_land_45.425015_12.329460_bread"
-      },
-      "createdAt": "2025-06-12T00:18:53.871Z",
-      "readAt": "2025-06-12T00:19:15.476Z"
-    },
-    {
-      "notificationId": "receY5km2WuuSd3pY",
-      "type": "markup_buy_contract_created",
-      "citizen": "QuantumLeap",
-      "content": "Your buy order for flour (markup_buy_main_land_45.425015_12.329460_flour) has been placed.",
-      "details": {
-        "contractId": "markup_buy_main_land_45.425015_12.329460_flour"
-      },
-      "createdAt": "2025-06-12T00:09:23.964Z",
-      "readAt": "2025-06-12T00:09:45.208Z"
-    },
-    {
-      "notificationId": "recjhR7zifK6EnytA",
-      "type": "markup_buy_contract_created",
-      "citizen": "QuantumLeap",
-      "content": "Your buy order for grain (markup_buy_main_land_45.425015_12.329460_grain) has been placed.",
-      "details": {
-        "contractId": "markup_buy_main_land_45.425015_12.329460_grain"
-      },
-      "createdAt": "2025-06-11T23:39:26.030Z",
-      "readAt": "2025-06-11T23:39:47.589Z"
-    },
-    {
-      "notificationId": "recyqjwwGP5akzwv1",
-      "type": "rent_payment",
-      "citizen": "QuantumLeap",
-      "content": "\u2705 Rent Paid: You paid **1,780 \u269c\ufe0f Ducats** to **ConsiglioDeiDieci** for **Artisan's House at Calle dei Furlani**.",
-      "details": {
-        "building_id": "rec9pgA8oEs0MOhYW",
-        "building_name": "Artisan's House at Calle dei Furlani",
-        "rent_price": 1780,
-        "building_owner": "ConsiglioDeiDieci",
-        "event_type": "rent_payment_made"
-      },
-      "createdAt": "2025-06-10T18:01:00.969Z",
-      "readAt": null
-    },
-    {
-      "notificationId": "recAxUz68QgT3EgBp",
-      "type": "rent_payment",
-      "citizen": "QuantumLeap",
-      "content": "\u2705 Rent Paid: You paid **1,780 \u269c\ufe0f Ducats** to **ConsiglioDeiDieci** for **Artisan's House at Calle dei Furlani**.",
-      "details": {
-        "building_id": "rec9pgA8oEs0MOhYW",
-        "building_name": "Artisan's House at Calle dei Furlani",
-        "rent_price": 1780,
-        "building_owner": "ConsiglioDeiDieci",
-        "event_type": "rent_payment_made"
-      },
-      "createdAt": "2025-06-10T16:01:29.424Z",
-      "readAt": null
     }
   ],
   "building_types": {
@@ -4051,6 +4186,25 @@ Here is the complete data about your current situation:
       "category": "home",
       "pointType": "building"
     },
+    "mill": {
+      "id": "mill",
+      "type": "mill",
+      "name": "Mill",
+      "shortDescription": "Industrial facility that grinds grain into flour, essential for bread production.",
+      "constructionCost": 1800000,
+      "constructionCosts": {
+        "ducats": 1800000,
+        "timber": 420,
+        "bricks": 850,
+        "stone": 1200,
+        "iron": 280
+      },
+      "constructionMinutes": 7200,
+      "buildTier": 2,
+      "tier": null,
+      "category": "business",
+      "pointType": "building"
+    },
     "navigation_school": {
       "id": "navigation_school",
       "type": "navigation_school",
@@ -4486,7 +4640,7 @@ Here is the complete data about your current situation:
       "pointType": "building"
     }
   },
-  "timestamp": "2025-06-24T21:34:00.931234+02:00",
+  "timestamp": "2025-06-26T21:56:23.897295+02:00",
   "building_ownership_relevancies": [
     {
       "asset": "building_45.444715_12.324751",
