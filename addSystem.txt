@@ -8,7 +8,7 @@ Here is the complete data about your current situation:
 {
   "citizen": {
     "username": "UrbanExplorer",
-    "ducats": 295147.11749305524,
+    "ducats": 309909.59573836485,
     "social_class": "Popolani",
     "description": "Filippo Priuli, a robust Facchini (porter) from the humbler districts of Venice, has earned unexpected fortune through circumstances that perplex even his fellow laborers. Though born to a family of modest dockworkers who have hauled cargo along Venice's canals for generations, Filippo now possesses wealth far beyond his station, creating a striking contradiction between his considerable finances and humble origins. Despite his newfound riches, he maintains the calloused hands and strong back of his profession, preferring the straightforward honesty of physical labor to the complex machinations of merchant society. Each dawn finds him at the Rialto markets where he observes the commerce of the city while deciding how to navigate his unusual position. Practical and observant, Filippo possesses street wisdom that serves him well as he cautiously explores opportunities previously unimaginable to one of his class. Though uneducated in formal letters, he demonstrates natural cunning in protecting his unexpected wealth while maintaining connections to his working-class community. His neighbors regard him with a mixture of suspicion and admiration, whispering theories about inheritance from an unknown noble relative or fortune discovered in abandoned cargo.",
     "core_personality": "{\"Strength\": \"Resilient\", \"Flaw\": \"Stoic\", \"Drive\": \"Advancement-seeking\", \"MBTI\": \"ISTP\", \"PrimaryTrait\": \"Mysterious wealth bearer\", \"SecondaryTraits\": [\"Street wisdom\", \"Class tension\", \"Fortune navigation\"], \"CognitiveBias\": [\"Status quo bias\", \"Availability heuristic\"], \"TrustThreshold\": 0.4, \"EmpathyWeight\": 0.5, \"RiskTolerance\": 0.4, \"guidedBy\": \"The Fortune's Mystery\", \"CoreThoughts\": {\"primary_drive\": \"wealth-navigation\", \"secondary_drive\": \"class-loyalty\", \"internal_tension\": \"wealth vs. origins\", \"activation_triggers\": [\"wealth_decisions\", \"class_interactions\", \"opportunity_assessment\"], \"thought_patterns\": [\"Honest work has its own dignity regardless of wealth\", \"Strange fortune requires careful handling\", \"My origins keep me grounded despite circumstances\", \"Observation teaches more than assumption\", \"Class tensions are real but navigable\", \"Every opportunity must be weighed against community impact\"], \"decision_framework\": \"How do I handle this fortune responsibly while staying true to my roots?\"}}",
@@ -1099,6 +1099,13 @@ Here is the complete data about your current situation:
           "maintenance_cost": 0
         },
         {
+          "id": "building_45.428748173929534_12.362001145681361",
+          "type": "mill",
+          "owner": "the_grand_experiment",
+          "income": 0,
+          "maintenance_cost": 0
+        },
+        {
           "id": "canal_45.424823_12.362988",
           "type": "fisherman_s_cottage",
           "owner": "StarGazer2000",
@@ -1564,6 +1571,13 @@ Here is the complete data about your current situation:
           "id": "building_45.442276_12.323666",
           "type": "small_warehouse",
           "owner": "ConsiglioDeiDieci",
+          "income": 0,
+          "maintenance_cost": 0
+        },
+        {
+          "id": "building_45.44225316651121_12.320556777517233",
+          "type": "mill",
+          "owner": "the_grand_experiment",
           "income": 0,
           "maintenance_cost": 0
         },
@@ -3182,7 +3196,28 @@ Here is the complete data about your current situation:
   ],
   "relevancies": [],
   "target_relevancies": [],
-  "latest_citizen_problems": [],
+  "latest_citizen_problems": [
+    {
+      "id": "recXermKW3gmGVhaK",
+      "fields": {
+        "ProblemId": "hungry_UrbanExplorer",
+        "Citizen": "UrbanExplorer",
+        "Asset": "UrbanExplorer",
+        "AssetType": "citizen",
+        "Severity": "medium",
+        "Status": "active",
+        "CreatedAt": "2025-06-25T05:46:13.931Z",
+        "UpdatedAt": "2025-06-25T09:16:23.000Z",
+        "Location": "Filippo's last known area",
+        "Title": "Hungry Citizen",
+        "Description": "**Filippo Priuli** has not eaten in over 24 hours and is now hungry. This can affect their well-being and ability to perform tasks effectively.\n\n### Impact\n- Reduced energy and focus.\n- If employed, work productivity may be reduced by up to 50%.\n- Prolonged hunger can lead to more severe health issues (if implemented).",
+        "Solutions": "### Recommended Solutions\n- Ensure the citizen consumes food. This might involve visiting a tavern, purchasing food from a market, or using owned food resources.\n- Check if the citizen has sufficient Ducats to afford food.\n- Review game mechanics related to food consumption and ensure the 'AteAt' (or equivalent) field is updated correctly after eating.",
+        "Notes": "[Failures: 1]\nCitizen UrbanExplorer last ate at 2025-06-19T01:19:24.698Z. Current time: 2025-06-25T05:46:13.908Z",
+        "Position": "{\"lat\":45.42911008740798,\"lng\":12.360750456085572}",
+        "Type": "hungry_citizen"
+      }
+    }
+  ],
   "recent_notifications_for_ai": [],
   "building_types": {
     "apothecary": {
@@ -3653,6 +3688,25 @@ Here is the complete data about your current situation:
       "category": "home",
       "pointType": "building"
     },
+    "mill": {
+      "id": "mill",
+      "type": "mill",
+      "name": "Mill",
+      "shortDescription": "Industrial facility that grinds grain into flour, essential for bread production.",
+      "constructionCost": 1800000,
+      "constructionCosts": {
+        "ducats": 1800000,
+        "timber": 420,
+        "bricks": 850,
+        "stone": 1200,
+        "iron": 280
+      },
+      "constructionMinutes": 7200,
+      "buildTier": 2,
+      "tier": null,
+      "category": "business",
+      "pointType": "building"
+    },
     "navigation_school": {
       "id": "navigation_school",
       "type": "navigation_school",
@@ -4088,32 +4142,8 @@ Here is the complete data about your current situation:
       "pointType": "building"
     }
   },
-  "timestamp": "2025-06-24T22:36:28.192846+02:00",
+  "timestamp": "2025-06-26T21:40:06.632302+02:00",
   "building_ownership_relevancies": [
-    {
-      "asset": "building_45.429110_12.360750",
-      "asset_type": "building",
-      "category": "ownership_conflict",
-      "type": "building_on_others_land",
-      "target_citizen": "Italia",
-      "score": 70,
-      "time_horizon": "medium",
-      "title": "Your Artisan's House at Rio Ter\u00e0 della Toletta is on land owned by \"Italia\".",
-      "description": "You own a **Artisan's House at Rio Ter\u00e0 della Toletta** on land owned by **Italia**.",
-      "status": "medium"
-    },
-    {
-      "asset": "building_45.429110_12.360750",
-      "asset_type": "building",
-      "category": "ownership_conflict",
-      "type": "others_building_on_your_land",
-      "target_citizen": "UrbanExplorer",
-      "score": 70,
-      "time_horizon": "medium",
-      "title": "\"UrbanExplorer\" owns a Artisan's House at Rio Ter\u00e0 della Toletta on your land.",
-      "description": "**UrbanExplorer** owns a **Artisan's House at Rio Ter\u00e0 della Toletta** on your land.",
-      "status": "medium"
-    },
     {
       "asset": "building_45.443477_12.328678",
       "asset_type": "building",
@@ -4137,6 +4167,30 @@ Here is the complete data about your current situation:
       "title": "\"UrbanExplorer\" owns a Bakery at Campiello della Farina on your land.",
       "description": "**UrbanExplorer** owns a **Bakery at Campiello della Farina** on your land.",
       "status": "high"
+    },
+    {
+      "asset": "building_45.429110_12.360750",
+      "asset_type": "building",
+      "category": "ownership_conflict",
+      "type": "building_on_others_land",
+      "target_citizen": "Italia",
+      "score": 70,
+      "time_horizon": "medium",
+      "title": "Your Artisan's House at Rio Ter\u00e0 della Toletta is on land owned by \"Italia\".",
+      "description": "You own a **Artisan's House at Rio Ter\u00e0 della Toletta** on land owned by **Italia**.",
+      "status": "medium"
+    },
+    {
+      "asset": "building_45.429110_12.360750",
+      "asset_type": "building",
+      "category": "ownership_conflict",
+      "type": "others_building_on_your_land",
+      "target_citizen": "UrbanExplorer",
+      "score": 70,
+      "time_horizon": "medium",
+      "title": "\"UrbanExplorer\" owns a Artisan's House at Rio Ter\u00e0 della Toletta on your land.",
+      "description": "**UrbanExplorer** owns a **Artisan's House at Rio Ter\u00e0 della Toletta** on your land.",
+      "status": "medium"
     }
   ]
 }
