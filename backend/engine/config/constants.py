@@ -36,7 +36,8 @@ SOCIAL_CLASS_VALUE = {
     "Facchini": 1,
     "Forestieri": 2,
     "Artisti": 2,
-    "Clero": 3
+    "Clero": 3,
+    "Scientisti": 3
 }
 
 # Work schedules (if not defined in building_type_defs)

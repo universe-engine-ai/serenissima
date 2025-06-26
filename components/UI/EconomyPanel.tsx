@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { FaTimes, FaSpinner, FaChartLine, FaCoins, FaHandHoldingUsd, FaUsers, FaBoxes } from 'react-icons/fa';
 import AnimatedDucats from './AnimatedDucats';
 import CitizenIncomeGraphs from './CitizenIncomeGraphs';
-import { PieChart, Pie, Cell, ResponsiveContainer, Legend, Tooltip, BarChart, Bar, XAxis, YAxis, CartesianGrid } from 'recharts';
+import { PieChart, Pie, Cell, ResponsiveContainer, Legend, Tooltip, BarChart, Bar, XAxis, YAxis, CartesianGrid, LineChart, Line } from 'recharts';
 
 interface EconomyPanelProps {
   onClose: () => void;
@@ -58,17 +58,21 @@ const EconomyPanel: React.FC<EconomyPanelProps> = ({ onClose }) => {
   const [topResources, setTopResources] = useState<ResourceSummary[]>([]);
   const [topOwnerResources, setTopOwnerResources] = useState<OwnerResourceSummary[]>([]);
   const [resourceShortages, setResourceShortages] = useState<ResourceShortage[]>([]);
+  const [hourlyTransactions, setHourlyTransactions] = useState<{hour: string, totalPrice: number, count: number}[]>([]);
+  const [activitiesByType, setActivitiesByType] = useState<{type: string, count: number}[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [isLoadingTransactions, setIsLoadingTransactions] = useState(true);
   const [isLoadingResources, setIsLoadingResources] = useState(true);
+  const [isLoadingActivities, setIsLoadingActivities] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [activeTab, setActiveTab] = useState<'overview' | 'citizens' | 'resources'>('overview');
+  const [activeTab, setActiveTab] = useState<'overview' | 'citizens' | 'resources' | 'transactions' | 'activities'>('overview');
   
   // Fetch economy data
   useEffect(() => {
     fetchEconomyData();
     fetchTransactionsByType();
     fetchResourcesData();
+    fetchActivitiesData();
   }, []);
   
   const fetchEconomyData = async () => {
@@ -119,10 +123,14 @@ const EconomyPanel: React.FC<EconomyPanelProps> = ({ onClose }) => {
         // Group transactions by type and sum amounts
         const transactionMap = new Map<string, { totalAmount: number; count: number }>();
         
+        // Group transactions by hour for the new tab
+        const hourlyMap = new Map<string, { totalPrice: number; count: number }>();
+        
         recentTransactions.forEach((transaction: any) => {
           const type = transaction.type || 'Unknown';
           const price = transaction.price || 0;
           
+          // Process by type
           if (!transactionMap.has(type)) {
             transactionMap.set(type, { totalAmount: 0, count: 0 });
           }
@@ -130,6 +138,18 @@ const EconomyPanel: React.FC<EconomyPanelProps> = ({ onClose }) => {
           const typeData = transactionMap.get(type)!;
           typeData.totalAmount += price;
           typeData.count += 1;
+          
+          // Process by hour
+          const executedAt = new Date(transaction.executedAt);
+          const hourKey = executedAt.toISOString().substring(0, 13) + ':00'; // Format: YYYY-MM-DDTHH:00
+          
+          if (!hourlyMap.has(hourKey)) {
+            hourlyMap.set(hourKey, { totalPrice: 0, count: 0 });
+          }
+          
+          const hourData = hourlyMap.get(hourKey)!;
+          hourData.totalPrice += price;
+          hourData.count += 1;
         });
         
         // Convert to array and sort by totalAmount
@@ -143,6 +163,34 @@ const EconomyPanel: React.FC<EconomyPanelProps> = ({ onClose }) => {
         
         console.log('Transaction types data:', transactionArray);
         setTransactionsByType(transactionArray);
+        
+        // Convert hourly data to array and sort by hour
+        const hourlyArray = Array.from(hourlyMap.entries())
+          .map(([hour, data]) => ({
+            hour,
+            totalPrice: data.totalPrice,
+            count: data.count
+          }))
+          .sort((a, b) => a.hour.localeCompare(b.hour));
+        
+        // Fill in missing hours with zero values for the last 24 hours
+        const now = new Date();
+        const filledHourlyData = [];
+        for (let i = 23; i >= 0; i--) {
+          const hourDate = new Date(now);
+          hourDate.setHours(hourDate.getHours() - i);
+          hourDate.setMinutes(0, 0, 0);
+          const hourKey = hourDate.toISOString().substring(0, 13) + ':00';
+          
+          const existingData = hourlyArray.find(h => h.hour === hourKey);
+          filledHourlyData.push({
+            hour: hourDate.toLocaleTimeString('en-US', { hour: 'numeric', hour12: true }),
+            totalPrice: existingData?.totalPrice || 0,
+            count: existingData?.count || 0
+          });
+        }
+        
+        setHourlyTransactions(filledHourlyData);
       }
     } catch (err) {
       console.error('Error fetching transactions by type:', err);
@@ -171,6 +219,26 @@ const EconomyPanel: React.FC<EconomyPanelProps> = ({ onClose }) => {
       console.error('Error fetching resources data:', err);
     } finally {
       setIsLoadingResources(false);
+    }
+  };
+  
+  const fetchActivitiesData = async () => {
+    try {
+      setIsLoadingActivities(true);
+      
+      const response = await fetch('/api/activities-economics');
+      if (!response.ok) {
+        throw new Error(`Failed to fetch activities data: ${response.status}`);
+      }
+      
+      const data = await response.json();
+      if (data.success) {
+        setActivitiesByType(data.activitiesByType || []);
+      }
+    } catch (err) {
+      console.error('Error fetching activities data:', err);
+    } finally {
+      setIsLoadingActivities(false);
     }
   };
   
@@ -250,6 +318,26 @@ const EconomyPanel: React.FC<EconomyPanelProps> = ({ onClose }) => {
               onClick={() => setActiveTab('resources')}
             >
               Resources
+            </button>
+            <button
+              className={`pb-4 px-1 border-b-2 font-medium text-sm ${
+                activeTab === 'transactions' 
+                  ? 'border-amber-600 text-amber-800' 
+                  : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
+              }`}
+              onClick={() => setActiveTab('transactions')}
+            >
+              Transactions
+            </button>
+            <button
+              className={`pb-4 px-1 border-b-2 font-medium text-sm ${
+                activeTab === 'activities' 
+                  ? 'border-amber-600 text-amber-800' 
+                  : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
+              }`}
+              onClick={() => setActiveTab('activities')}
+            >
+              Activities
             </button>
           </nav>
         </div>
@@ -417,6 +505,150 @@ const EconomyPanel: React.FC<EconomyPanelProps> = ({ onClose }) => {
             </div>
           ) : activeTab === 'citizens' ? (
             <CitizenIncomeGraphs limit={10} />
+          ) : activeTab === 'transactions' ? (
+            <div className="space-y-6">
+              {isLoadingTransactions ? (
+                <div className="flex flex-col items-center justify-center py-12">
+                  <FaSpinner className="animate-spin text-amber-600 text-4xl mb-4" />
+                  <p className="text-amber-800">Loading transaction data...</p>
+                </div>
+              ) : (
+                <>
+                  {/* Hourly Transaction Volume Chart */}
+                  <div className="bg-white rounded-lg p-6 shadow-sm border border-amber-200">
+                    <h3 className="text-lg font-medium text-amber-800 mb-4 flex items-center">
+                      <FaChartLine className="mr-2" />
+                      24-Hour Transaction Volume
+                    </h3>
+                    <div className="h-80">
+                      <ResponsiveContainer width="100%" height="100%">
+                        <LineChart data={hourlyTransactions} margin={{ top: 10, right: 30, left: 40, bottom: 40 }}>
+                          <CartesianGrid strokeDasharray="3 3" stroke="#FED7AA" />
+                          <XAxis 
+                            dataKey="hour" 
+                            tick={{ fill: '#92400E', fontSize: 12 }}
+                            angle={-45}
+                            textAnchor="end"
+                            height={60}
+                          />
+                          <YAxis 
+                            tick={{ fill: '#92400E' }}
+                            label={{ value: 'Total Ducats', angle: -90, position: 'insideLeft', fill: '#92400E' }}
+                          />
+                          <Tooltip 
+                            contentStyle={{ backgroundColor: '#FEF3C7', border: '1px solid #F59E0B' }}
+                            formatter={(value: number, name: string) => {
+                              if (name === 'totalPrice') return [`⚜️ ${Math.floor(value)}`, 'Total Value'];
+                              return [value, name];
+                            }}
+                            labelFormatter={(label) => `Hour: ${label}`}
+                          />
+                          <Line 
+                            type="monotone" 
+                            dataKey="totalPrice" 
+                            stroke="#F59E0B" 
+                            strokeWidth={3}
+                            dot={{ fill: '#92400E', r: 4 }}
+                            activeDot={{ r: 6 }}
+                          />
+                        </LineChart>
+                      </ResponsiveContainer>
+                    </div>
+                    
+                    {/* Summary Stats */}
+                    <div className="mt-6 grid grid-cols-3 gap-4">
+                      <div className="bg-amber-50 rounded-lg p-4 text-center">
+                        <p className="text-sm text-amber-700">Total Volume (24h)</p>
+                        <p className="text-xl font-bold text-amber-900">
+                          ⚜️ {Math.floor(hourlyTransactions.reduce((sum, h) => sum + h.totalPrice, 0))}
+                        </p>
+                      </div>
+                      <div className="bg-amber-50 rounded-lg p-4 text-center">
+                        <p className="text-sm text-amber-700">Total Transactions</p>
+                        <p className="text-xl font-bold text-amber-900">
+                          {hourlyTransactions.reduce((sum, h) => sum + h.count, 0)}
+                        </p>
+                      </div>
+                      <div className="bg-amber-50 rounded-lg p-4 text-center">
+                        <p className="text-sm text-amber-700">Average per Hour</p>
+                        <p className="text-xl font-bold text-amber-900">
+                          ⚜️ {Math.floor(hourlyTransactions.reduce((sum, h) => sum + h.totalPrice, 0) / 24)}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  {/* Hourly Transaction Count */}
+                  <div className="bg-white rounded-lg p-6 shadow-sm border border-amber-200">
+                    <h3 className="text-lg font-medium text-amber-800 mb-4">Transaction Count by Hour</h3>
+                    <div className="h-64">
+                      <ResponsiveContainer width="100%" height="100%">
+                        <BarChart data={hourlyTransactions} margin={{ top: 10, right: 30, left: 40, bottom: 40 }}>
+                          <CartesianGrid strokeDasharray="3 3" stroke="#FED7AA" />
+                          <XAxis 
+                            dataKey="hour" 
+                            tick={{ fill: '#92400E', fontSize: 11 }}
+                            angle={-45}
+                            textAnchor="end"
+                          />
+                          <YAxis 
+                            tick={{ fill: '#92400E' }}
+                            label={{ value: 'Number of Transactions', angle: -90, position: 'insideLeft', fill: '#92400E' }}
+                          />
+                          <Tooltip 
+                            contentStyle={{ backgroundColor: '#FEF3C7', border: '1px solid #F59E0B' }}
+                            formatter={(value: number) => [value, 'Transactions']}
+                            labelFormatter={(label) => `Hour: ${label}`}
+                          />
+                          <Bar dataKey="count" fill="#10B981" />
+                        </BarChart>
+                      </ResponsiveContainer>
+                    </div>
+                  </div>
+                  
+                  {/* Peak Hours Analysis */}
+                  <div className="bg-amber-50 rounded-lg p-6 shadow-sm border border-amber-200">
+                    <h3 className="text-lg font-medium text-amber-800 mb-4">Trading Activity Analysis</h3>
+                    <div className="space-y-3">
+                      {(() => {
+                        const sortedByVolume = [...hourlyTransactions].sort((a, b) => b.totalPrice - a.totalPrice);
+                        const peakHour = sortedByVolume[0];
+                        const quietHour = sortedByVolume[sortedByVolume.length - 1];
+                        
+                        return (
+                          <>
+                            <div className="flex justify-between items-center pb-2 border-b border-amber-200">
+                              <span className="text-amber-700">Peak Trading Hour</span>
+                              <span className="font-medium text-amber-900">
+                                {peakHour?.hour} (⚜️ {Math.floor(peakHour?.totalPrice || 0)})
+                              </span>
+                            </div>
+                            <div className="flex justify-between items-center pb-2 border-b border-amber-200">
+                              <span className="text-amber-700">Quietest Hour</span>
+                              <span className="font-medium text-amber-900">
+                                {quietHour?.hour} (⚜️ {Math.floor(quietHour?.totalPrice || 0)})
+                              </span>
+                            </div>
+                            <div className="flex justify-between items-center">
+                              <span className="text-amber-700">Average Transaction Size</span>
+                              <span className="font-medium text-amber-900">
+                                ⚜️ {Math.floor(
+                                  hourlyTransactions.reduce((sum, h) => sum + h.totalPrice, 0) / 
+                                  Math.max(1, hourlyTransactions.reduce((sum, h) => sum + h.count, 0))
+                                )}
+                              </span>
+                            </div>
+                          </>
+                        );
+                      })()}
+                    </div>
+                    <p className="mt-4 text-sm text-amber-600 italic">
+                      The Rialto never sleeps, but even merchants must rest. Track the ebb and flow of commerce through Venice's trading day.
+                    </p>
+                  </div>
+                </>
+              )}
+            </div>
           ) : activeTab === 'resources' ? (
             <div className="space-y-6">
               {isLoadingResources ? (
@@ -578,6 +810,118 @@ const EconomyPanel: React.FC<EconomyPanelProps> = ({ onClose }) => {
                         <p className="text-sm text-amber-700">Total Resource Units</p>
                       </div>
                     </div>
+                  </div>
+                </>
+              )}
+            </div>
+          ) : activeTab === 'activities' ? (
+            <div className="space-y-6">
+              {isLoadingActivities ? (
+                <div className="flex flex-col items-center justify-center py-12">
+                  <FaSpinner className="animate-spin text-amber-600 text-4xl mb-4" />
+                  <p className="text-amber-800">Loading activities data...</p>
+                </div>
+              ) : (
+                <>
+                  {/* Activities by Type Pie Chart */}
+                  {activitiesByType.length > 0 && (
+                    <div className="bg-white rounded-lg p-6 shadow-sm border border-amber-200">
+                      <h3 className="text-lg font-medium text-amber-800 mb-4 flex items-center">
+                        <FaUsers className="mr-2" />
+                        24-Hour Activity Distribution
+                      </h3>
+                      <div className="h-96">
+                        <ResponsiveContainer width="100%" height="100%">
+                          <PieChart>
+                            <Pie
+                              data={activitiesByType.slice(0, 10)} // Show top 10 activity types
+                              cx="50%"
+                              cy="50%"
+                              labelLine={false}
+                              label={({ type, count, percent }) => 
+                                `${type}: ${count} (${(percent * 100).toFixed(0)}%)`
+                              }
+                              outerRadius={120}
+                              fill="#8884d8"
+                              dataKey="count"
+                            >
+                              {activitiesByType.slice(0, 10).map((entry, index) => (
+                                <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+                              ))}
+                            </Pie>
+                            <Tooltip 
+                              formatter={(value: number, name: string, props: any) => [
+                                `${value} activities`,
+                                props.payload.type
+                              ]}
+                              contentStyle={{ backgroundColor: '#FEF3C7', border: '1px solid #F59E0B' }}
+                            />
+                          </PieChart>
+                        </ResponsiveContainer>
+                      </div>
+                      <div className="mt-4 text-sm text-amber-600 text-center">
+                        Total: {activitiesByType.reduce((sum, t) => sum + t.count, 0)} activities across {activitiesByType.length} types
+                      </div>
+                    </div>
+                  )}
+                  
+                  {/* Top Activity Types List */}
+                  {activitiesByType.length > 0 && (
+                    <div className="bg-white rounded-lg p-6 shadow-sm border border-amber-200">
+                      <h3 className="text-lg font-medium text-amber-800 mb-4">Most Common Activities</h3>
+                      <div className="space-y-2">
+                        {activitiesByType.slice(0, 15).map((activity, index) => {
+                          const percentage = (activity.count / activitiesByType.reduce((sum, a) => sum + a.count, 0)) * 100;
+                          return (
+                            <div key={activity.type} className="flex items-center justify-between pb-2 border-b border-amber-100">
+                              <div className="flex items-center">
+                                <div 
+                                  className="w-4 h-4 rounded-full mr-3" 
+                                  style={{ backgroundColor: COLORS[index % COLORS.length] }}
+                                />
+                                <span className="text-amber-700">{activity.type}</span>
+                              </div>
+                              <div className="flex items-center gap-4">
+                                <div className="w-24 bg-amber-100 rounded-full h-2">
+                                  <div 
+                                    className="bg-amber-600 h-2 rounded-full" 
+                                    style={{ width: `${percentage}%` }}
+                                  />
+                                </div>
+                                <span className="font-medium text-amber-900 w-16 text-right">{activity.count}</span>
+                              </div>
+                            </div>
+                          );
+                        })}
+                      </div>
+                      {activitiesByType.length > 15 && (
+                        <p className="mt-3 text-xs text-amber-600 italic">
+                          ...and {activitiesByType.length - 15} more activity types
+                        </p>
+                      )}
+                    </div>
+                  )}
+                  
+                  {/* Activity Insights */}
+                  <div className="bg-amber-50 rounded-lg p-6 shadow-sm border border-amber-200">
+                    <h3 className="text-lg font-medium text-amber-800 mb-4">Activity Insights</h3>
+                    <div className="grid grid-cols-2 gap-6">
+                      <div>
+                        <h4 className="text-sm font-medium text-amber-700 mb-2">Most Active Citizens</h4>
+                        <p className="text-xs text-amber-600">
+                          The busiest activities typically involve movement (goto_location), work (production), and trade operations.
+                        </p>
+                      </div>
+                      <div>
+                        <h4 className="text-sm font-medium text-amber-700 mb-2">Activity Patterns</h4>
+                        <p className="text-xs text-amber-600">
+                          Venice's citizens balance their time between productive work, social interactions, and essential needs.
+                        </p>
+                      </div>
+                    </div>
+                    <p className="mt-4 text-sm text-amber-700 italic">
+                      "In Venice, every moment is precious - from the dawn prayers at San Marco to the midnight deals in shadowed alleys."
+                    </p>
                   </div>
                 </>
               )}

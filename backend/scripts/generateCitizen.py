@@ -165,6 +165,12 @@ def generate_citizen(social_class: str, additional_prompt_text: Optional[str] = 
         
         if add_message_file_content:
             prompt += f"\n\n{add_message_file_content}"
+            log.info(f"Added file content to prompt. File content length: {len(add_message_file_content)} characters")
+            log.debug(f"File content preview (first 200 chars): {add_message_file_content[:200]}...")
+        
+        # Log the full prompt for debugging
+        log.info(f"Final prompt length: {len(prompt)} characters")
+        log.debug(f"Full prompt being sent to KinOS:\n{prompt}\n")
             
         # Call KinOS Engine API
         response = requests.post(
@@ -375,7 +381,7 @@ if __name__ == "__main__":
     import argparse
     
     parser = argparse.ArgumentParser(description="Generate citizens for La Serenissima")
-    parser.add_argument("--socialClass", type=str, choices=["Nobili", "Cittadini", "Popolani", "Facchini", "Forestieri", "Artisti", "Clero"], 
+    parser.add_argument("--socialClass", type=str, choices=["Nobili", "Cittadini", "Popolani", "Facchini", "Forestieri", "Artisti", "Clero", "Scientisti"], 
                         help="Social class of the citizen to generate")
     parser.add_argument("--count", type=int, default=1, help="Number of citizens to generate (default: 1)")
     # Legacy arguments for backwards compatibility
@@ -386,6 +392,7 @@ if __name__ == "__main__":
     parser.add_argument("--forestieri", type=int, default=0, help="Number of forestieri to generate (deprecated, use --socialClass Forestieri --count N)")
     parser.add_argument("--artisti", type=int, default=0, help="Number of artisti to generate (deprecated, use --socialClass Artisti --count N)")
     parser.add_argument("--clero", type=int, default=0, help="Number of clero to generate (deprecated, use --socialClass Clero --count N)")
+    parser.add_argument("--scientisti", type=int, default=0, help="Number of scientisti to generate (deprecated, use --socialClass Scientisti --count N)")
     parser.add_argument("--output", type=str, help="Output JSON file path")
     parser.add_argument("--add-prompt", type=str, help="Additional text to append to the generation prompt for KinOS API.")
     parser.add_argument("--addMessage", type=str, help="Another message to append to the KinOS generation prompt.")
@@ -400,6 +407,9 @@ if __name__ == "__main__":
             with open(args.addMessageFile, 'r', encoding='utf-8') as f:
                 add_message_file_content_main = f.read()
             log.info(f"Successfully read content from --addMessageFile: {args.addMessageFile}")
+            log.info(f"File content length: {len(add_message_file_content_main)} characters")
+            if not add_message_file_content_main.strip():
+                log.warning("File content is empty or only contains whitespace")
         except FileNotFoundError:
             log.error(f"File specified by --addMessageFile not found: {args.addMessageFile}")
             # Optionally, exit or handle as a critical error
@@ -423,7 +433,8 @@ if __name__ == "__main__":
             "Facchini": args.facchini,
             "Forestieri": args.forestieri,
             "Artisti": args.artisti,
-            "Clero": args.clero
+            "Clero": args.clero,
+            "Scientisti": args.scientisti
         }
         
         # Filter out classes with zero count
