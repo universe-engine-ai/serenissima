@@ -8,7 +8,7 @@ Here is the complete data about your current situation:
 {
   "citizen": {
     "username": "greek_trader",
-    "ducats": 476286.7566327123,
+    "ducats": 493399.23487802193,
     "social_class": "Popolani",
     "description": "Antonio Corfiote has evolved from a struggling dockworker into a shrewd warehouse proprietor, combining his maritime expertise with calculated business acumen. His Greek heritage and hard-won knowledge of Venetian commerce make him a valuable intermediary for foreign merchants, though his success has bred a growing arrogance that sometimes alienates potential partners. Despite his newfound prosperity, he remains driven by an insatiable hunger to expand his trading empire and prove himself worthy among Venice's merchant elite.",
     "core_personality": "{\"Strength\": \"Adaptable\", \"Flaw\": \"Insecure\", \"Drive\": \"Recognition-seeking\", \"MBTI\": \"ISFP\", \"PrimaryTrait\": \"Standard neurotypical with minority status navigation\", \"SecondaryTraits\": [\"Cultural bridging\", \"Social adaptation\", \"Persistent determination\"], \"CognitiveBias\": [\"Attribution bias\", \"Confirmation bias\"], \"TrustThreshold\": 0.4, \"EmpathyWeight\": 0.6, \"RiskTolerance\": 0.5, \"guidedBy\": \"The Heritage Bridge\", \"CoreThoughts\": {\"primary_drive\": \"acceptance-achievement\", \"secondary_drive\": \"cultural-bridge-building\", \"internal_tension\": \"Persian heritage vs. Venetian integration\", \"activation_triggers\": [\"recognition_opportunities\", \"cultural_connections\", \"prejudice_encounters\"], \"thought_patterns\": [\"My success proves that merit transcends origins\", \"How can I bridge Persian and Venetian business cultures?\", \"Each achievement reduces prejudice and opens doors\", \"My heritage is an asset when properly leveraged\", \"Learning Venetian ways while maintaining Persian connections\", \"My family's pride in Tabriz motivates my success in Venice\"], \"decision_framework\": \"How does this advance recognition while honoring both my heritage and new home?\"}}",
@@ -1098,6 +1098,13 @@ Here is the complete data about your current situation:
           "maintenance_cost": 0
         },
         {
+          "id": "building_45.428748173929534_12.362001145681361",
+          "type": "mill",
+          "owner": "the_grand_experiment",
+          "income": 0,
+          "maintenance_cost": 0
+        },
+        {
           "id": "canal_45.424823_12.362988",
           "type": "fisherman_s_cottage",
           "owner": "StarGazer2000",
@@ -1563,6 +1570,13 @@ Here is the complete data about your current situation:
           "id": "building_45.442276_12.323666",
           "type": "small_warehouse",
           "owner": "ConsiglioDeiDieci",
+          "income": 0,
+          "maintenance_cost": 0
+        },
+        {
+          "id": "building_45.44225316651121_12.320556777517233",
+          "type": "mill",
+          "owner": "the_grand_experiment",
           "income": 0,
           "maintenance_cost": 0
         },
@@ -3181,8 +3195,67 @@ Here is the complete data about your current situation:
   ],
   "relevancies": [],
   "target_relevancies": [],
-  "latest_citizen_problems": [],
+  "latest_citizen_problems": [
+    {
+      "id": "recUQ85rDGv0gp9qn",
+      "fields": {
+        "ProblemId": "hungry_greek_trader",
+        "Citizen": "greek_trader",
+        "Asset": "greek_trader",
+        "AssetType": "citizen",
+        "Severity": "medium",
+        "Status": "active",
+        "CreatedAt": "2025-06-25T05:46:13.920Z",
+        "UpdatedAt": "2025-06-25T09:15:38.000Z",
+        "Location": "Antonio's last known area",
+        "Title": "Hungry Citizen",
+        "Description": "**Antonio Corfiote** has not eaten in over 24 hours and is now hungry. This can affect their well-being and ability to perform tasks effectively.\n\n### Impact\n- Reduced energy and focus.\n- If employed, work productivity may be reduced by up to 50%.\n- Prolonged hunger can lead to more severe health issues (if implemented).",
+        "Solutions": "### Recommended Solutions\n- Ensure the citizen consumes food. This might involve visiting a tavern, purchasing food from a market, or using owned food resources.\n- Check if the citizen has sufficient Ducats to afford food.\n- Review game mechanics related to food consumption and ensure the 'AteAt' (or equivalent) field is updated correctly after eating.",
+        "Notes": "[Failures: 1]\nCitizen greek_trader last ate at 2025-06-16T20:11:17.131Z. Current time: 2025-06-25T05:46:13.908Z",
+        "Position": "{\"lat\":45.44210918188283,\"lng\":12.324791554778004}",
+        "Type": "hungry_citizen"
+      }
+    }
+  ],
   "recent_notifications_for_ai": [
+    {
+      "notificationId": "recn73r5FVxn1vGHp",
+      "type": "rent_payment",
+      "citizen": "greek_trader",
+      "content": "\ud83d\udcec **Rent Received Summary** \ud83d\udcec\nYou received a total of **1,370 \u269c\ufe0f Ducats** from your properties today.\n\nDetails:\n- \u2705 **1,370 \u269c\ufe0f** from **jun Rossi** for **Fisherman's Cottage at Riva di San Vidal**.\n",
+      "details": {
+        "event_type": "landlord_rent_summary",
+        "total_received": 1370,
+        "payments": [
+          {
+            "occupant_name": "jun Rossi",
+            "building_name": "Fisherman's Cottage at Riva di San Vidal",
+            "amount": 1370
+          }
+        ]
+      },
+      "createdAt": "2025-06-26T18:03:49.552Z",
+      "readAt": null
+    },
+    {
+      "notificationId": "recv4IcAwjUoJekzB",
+      "type": "rent_payment",
+      "citizen": "greek_trader",
+      "content": "\ud83d\udcec **Rent Received Summary** \ud83d\udcec\nYou received a total of **1,370 \u269c\ufe0f Ducats** from your properties today.\n\nDetails:\n- \u2705 **1,370 \u269c\ufe0f** from **jun Rossi** for **Fisherman's Cottage at Riva di San Vidal**.\n",
+      "details": {
+        "event_type": "landlord_rent_summary",
+        "total_received": 1370,
+        "payments": [
+          {
+            "occupant_name": "jun Rossi",
+            "building_name": "Fisherman's Cottage at Riva di San Vidal",
+            "amount": 1370
+          }
+        ]
+      },
+      "createdAt": "2025-06-25T16:04:02.981Z",
+      "readAt": null
+    },
     {
       "notificationId": "recpvj1xsnGdH4lw2",
       "type": "rent_payment",
@@ -3504,44 +3577,6 @@ Here is the complete data about your current situation:
         ]
       },
       "createdAt": "2025-06-12T18:03:45.918Z",
-      "readAt": null
-    },
-    {
-      "notificationId": "recgJwWmISZtXAKnq",
-      "type": "rent_payment",
-      "citizen": "greek_trader",
-      "content": "\ud83d\udcec **Rent Received Summary** \ud83d\udcec\nYou received a total of **1,370 \u269c\ufe0f Ducats** from your properties today.\n\nDetails:\n- \u2705 **1,370 \u269c\ufe0f** from **jun ** for **Fisherman's Cottage at Riva di San Vidal**.\n",
-      "details": {
-        "event_type": "landlord_rent_summary",
-        "total_received": 1370,
-        "payments": [
-          {
-            "occupant_name": "jun ",
-            "building_name": "Fisherman's Cottage at Riva di San Vidal",
-            "amount": 1370
-          }
-        ]
-      },
-      "createdAt": "2025-06-10T18:04:07.455Z",
-      "readAt": null
-    },
-    {
-      "notificationId": "recKRcdqq8vq1ES3f",
-      "type": "rent_payment",
-      "citizen": "greek_trader",
-      "content": "\ud83d\udcec **Rent Received Summary** \ud83d\udcec\nYou received a total of **1,370 \u269c\ufe0f Ducats** from your properties today.\n\nDetails:\n- \u2705 **1,370 \u269c\ufe0f** from **jun ** for **Fisherman's Cottage at Riva di San Vidal**.\n",
-      "details": {
-        "event_type": "landlord_rent_summary",
-        "total_received": 1370,
-        "payments": [
-          {
-            "occupant_name": "jun ",
-            "building_name": "Fisherman's Cottage at Riva di San Vidal",
-            "amount": 1370
-          }
-        ]
-      },
-      "createdAt": "2025-06-10T16:04:28.377Z",
       "readAt": null
     }
   ],
@@ -4014,6 +4049,25 @@ Here is the complete data about your current situation:
       "category": "home",
       "pointType": "building"
     },
+    "mill": {
+      "id": "mill",
+      "type": "mill",
+      "name": "Mill",
+      "shortDescription": "Industrial facility that grinds grain into flour, essential for bread production.",
+      "constructionCost": 1800000,
+      "constructionCosts": {
+        "ducats": 1800000,
+        "timber": 420,
+        "bricks": 850,
+        "stone": 1200,
+        "iron": 280
+      },
+      "constructionMinutes": 7200,
+      "buildTier": 2,
+      "tier": null,
+      "category": "business",
+      "pointType": "building"
+    },
     "navigation_school": {
       "id": "navigation_school",
       "type": "navigation_school",
@@ -4449,7 +4503,7 @@ Here is the complete data about your current situation:
       "pointType": "building"
     }
   },
-  "timestamp": "2025-06-24T21:40:17.702342+02:00",
+  "timestamp": "2025-06-26T21:58:18.599806+02:00",
   "building_ownership_relevancies": [
     {
       "asset": "canal_45.442109_12.324792",
