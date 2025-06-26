@@ -8,10 +8,10 @@ Here is the complete data about your current situation:
 {
   "citizen": {
     "username": "RialtoRacer56",
-    "ducats": 328793.97011520277,
+    "ducats": 341694.97713050985,
     "social_class": "Facchini",
     "description": "Dorotea is a pragmatic and resilient woman who has learned to navigate Venice's complex social and economic waters through careful observation and calculated risks. Her years of physical labor have instilled an unshakeable work ethic and respect for honest effort, yet her shrewd investments reveal a calculating mind that sometimes prioritizes profit over loyalty. Though she maintains deep ties to her working-class roots, her growing wealth has sparked ambitions that occasionally put her at odds with her community's expectations.",
-    "core_personality": "[\"Observant\", \"Calculating\", \"Advancement-driven\"]",
+    "core_personality": "{\"Strength\": \"Observant\", \"Flaw\": \"Calculating\", \"Drive\": \"Advancement-driven\", \"MBTI\": \"INTJ\", \"PrimaryTrait\": \"Strategic observer\", \"SecondaryTraits\": [\"Risk calculation\", \"Community navigation\", \"Profit prioritization\"], \"CognitiveBias\": [\"Confirmation bias\", \"Availability heuristic\"], \"TrustThreshold\": 0.4, \"EmpathyWeight\": 0.5, \"RiskTolerance\": 0.5, \"guidedBy\": \"The Observer's Edge\", \"CoreThoughts\": {\"primary_drive\": \"strategic-advancement\", \"secondary_drive\": \"calculated-profit\", \"internal_tension\": \"community_loyalty vs. self_interest\", \"activation_triggers\": [\"opportunity_observation\", \"profit_potential\", \"social_dynamics\"], \"thought_patterns\": [\"Watch first, act second, profit third\", \"Community ties are valuable but not binding\", \"Every interaction reveals someone's weakness or strength\", \"Calculated risks separate winners from workers\", \"My working roots give me insight others lack\", \"Advancement requires choosing profit over comfort\"], \"decision_framework\": \"How does this advance my interests while managing community expectations?\"}}",
     "image_prompt": "Renaissance Venetian portrait of Dorotea Gastaldi, a weathered but determined female Facchini (porter) in early 1600s Venice. She has a strong, muscular build with sun-darkened skin and intelligent, calculating eyes that suggest she's always observing opportunities. She wears practical working clothes: a sturdy brown leather vest over a simple linen shirt, with rolled sleeves showing her muscular forearms and calloused hands. A leather belt holds her porter's tools - cargo hooks and coiled rope. Her dark hair is partially covered with a simple cloth cap, with wisps escaping that show premature gray from hard work. Standing at a Venetian market stall with the Arsenal shipyards visible in the background, she holds a small ledger, suggesting her involvement in trade calculations. Her expression shows quiet determination mixed with shrewd assessment, as if evaluating both the viewer and potential profit. Natural morning light illuminates the scene with warm, golden tones reflecting off the Venetian canals. The color palette emphasizes earthy browns, maritime blues, and working-class practicality. Her posture conveys both physical strength and mental acuity, with the tools of her trade prominently displayed as symbols of honest labor mixed with entrepreneurial ambition.",
     "family_motto": "Con forza e astuzia, portiamo avanti\" (With strength and cunning, we move forward)",
     "coat_of_arms": "A simple shield divided horizontally - the upper half blue representing the Venetian waters, the lower half brown for the docks. At center, two crossed cargo hooks in gold, symbolizing the porter's trade. Above the shield, a small boat signifying aspiration. The entire design enclosed in a simple rope border, appropriate for a working-class family that has achieved some prosperity.",
@@ -1095,6 +1095,13 @@ Here is the complete data about your current situation:
           "maintenance_cost": 0
         },
         {
+          "id": "building_45.428748173929534_12.362001145681361",
+          "type": "mill",
+          "owner": "the_grand_experiment",
+          "income": 0,
+          "maintenance_cost": 0
+        },
+        {
           "id": "canal_45.424823_12.362988",
           "type": "fisherman_s_cottage",
           "owner": "StarGazer2000",
@@ -1560,6 +1567,13 @@ Here is the complete data about your current situation:
           "id": "building_45.442276_12.323666",
           "type": "small_warehouse",
           "owner": "ConsiglioDeiDieci",
+          "income": 0,
+          "maintenance_cost": 0
+        },
+        {
+          "id": "building_45.44225316651121_12.320556777517233",
+          "type": "mill",
+          "owner": "the_grand_experiment",
           "income": 0,
           "maintenance_cost": 0
         },
@@ -3161,8 +3175,89 @@ Here is the complete data about your current situation:
   "buildings": [],
   "relevancies": [],
   "target_relevancies": [],
-  "latest_citizen_problems": [],
+  "latest_citizen_problems": [
+    {
+      "id": "recdp2Y6ywZIgAEou",
+      "fields": {
+        "ProblemId": "hungry_RialtoRacer56",
+        "Citizen": "RialtoRacer56",
+        "Asset": "RialtoRacer56",
+        "AssetType": "citizen",
+        "Severity": "medium",
+        "Status": "active",
+        "CreatedAt": "2025-06-25T05:46:13.934Z",
+        "UpdatedAt": "2025-06-25T09:16:35.000Z",
+        "Location": "Dorotea's last known area",
+        "Title": "Hungry Citizen",
+        "Description": "**Dorotea Gastaldi** has not eaten in over 24 hours and is now hungry. This can affect their well-being and ability to perform tasks effectively.\n\n### Impact\n- Reduced energy and focus.\n- If employed, work productivity may be reduced by up to 50%.\n- Prolonged hunger can lead to more severe health issues (if implemented).",
+        "Solutions": "### Recommended Solutions\n- Ensure the citizen consumes food. This might involve visiting a tavern, purchasing food from a market, or using owned food resources.\n- Check if the citizen has sufficient Ducats to afford food.\n- Review game mechanics related to food consumption and ensure the 'AteAt' (or equivalent) field is updated correctly after eating.",
+        "Notes": "[Failures: 1]\nCitizen RialtoRacer56 last ate at 2025-06-22T23:44:59.538Z. Current time: 2025-06-25T05:46:13.908Z",
+        "Position": "{\"lat\":45.43902367775,\"lng\":12.357405489561385}",
+        "Type": "hungry_citizen"
+      }
+    }
+  ],
   "recent_notifications_for_ai": [
+    {
+      "notificationId": "recOo75dvFgPIBsWH",
+      "type": "rent_payment",
+      "citizen": "RialtoRacer56",
+      "content": "\u2705 Rent Paid: You paid **1,125 \u269c\ufe0f Ducats** to **ConsiglioDeiDieci** for **recWvEXaCntJJJCEV**.",
+      "details": {
+        "building_id": "recWvEXaCntJJJCEV",
+        "building_name": "recWvEXaCntJJJCEV",
+        "rent_price": 1125,
+        "building_owner": "ConsiglioDeiDieci",
+        "event_type": "rent_payment_made"
+      },
+      "createdAt": "2025-06-26T18:02:29.989Z",
+      "readAt": null
+    },
+    {
+      "notificationId": "recoE6HnDCjVhPQ5F",
+      "type": "rent_payment",
+      "citizen": "RialtoRacer56",
+      "content": "\u2705 Rent Paid: You paid **1,125 \u269c\ufe0f Ducats** to **ConsiglioDeiDieci** for **recWvEXaCntJJJCEV**.",
+      "details": {
+        "building_id": "recWvEXaCntJJJCEV",
+        "building_name": "recWvEXaCntJJJCEV",
+        "rent_price": 1125,
+        "building_owner": "ConsiglioDeiDieci",
+        "event_type": "rent_payment_made"
+      },
+      "createdAt": "2025-06-25T16:02:31.446Z",
+      "readAt": null
+    },
+    {
+      "notificationId": "recmaC76w6BZxJAJN",
+      "type": "rent_payment",
+      "citizen": "RialtoRacer56",
+      "content": "\u2705 Rent Paid: You paid **1,125 \u269c\ufe0f Ducats** to **ConsiglioDeiDieci** for **recWvEXaCntJJJCEV**.",
+      "details": {
+        "building_id": "recWvEXaCntJJJCEV",
+        "building_name": "recWvEXaCntJJJCEV",
+        "rent_price": 1125,
+        "building_owner": "ConsiglioDeiDieci",
+        "event_type": "rent_payment_made"
+      },
+      "createdAt": "2025-06-24T18:02:57.038Z",
+      "readAt": null
+    },
+    {
+      "notificationId": "recvD0WvM8qmhKmCS",
+      "type": "rent_payment",
+      "citizen": "RialtoRacer56",
+      "content": "\u2705 Rent Paid: You paid **1,125 \u269c\ufe0f Ducats** to **ConsiglioDeiDieci** for **recWvEXaCntJJJCEV**.",
+      "details": {
+        "building_id": "recWvEXaCntJJJCEV",
+        "building_name": "recWvEXaCntJJJCEV",
+        "rent_price": 1125,
+        "building_owner": "ConsiglioDeiDieci",
+        "event_type": "rent_payment_made"
+      },
+      "createdAt": "2025-06-22T18:02:19.305Z",
+      "readAt": null
+    },
     {
       "notificationId": "recvWxjATlGU7l8ps",
       "type": "rent_payment",
@@ -3386,111 +3481,6 @@ Here is the complete data about your current situation:
         "event_type": "rent_payment_made"
       },
       "createdAt": "2025-06-12T18:02:20.125Z",
-      "readAt": null
-    },
-    {
-      "notificationId": "recJ1FfXxhnwLXnFE",
-      "type": "rent_payment",
-      "citizen": "RialtoRacer56",
-      "content": "\u2705 Rent Paid: You paid **1,125 \u269c\ufe0f Ducats** to **ConsiglioDeiDieci** for **recWvEXaCntJJJCEV**.",
-      "details": {
-        "building_id": "recWvEXaCntJJJCEV",
-        "building_name": "recWvEXaCntJJJCEV",
-        "rent_price": 1125,
-        "building_owner": "ConsiglioDeiDieci",
-        "event_type": "rent_payment_made"
-      },
-      "createdAt": "2025-06-10T18:02:32.486Z",
-      "readAt": null
-    },
-    {
-      "notificationId": "rechnOsCzxMLsvGqW",
-      "type": "rent_payment",
-      "citizen": "RialtoRacer56",
-      "content": "\u2705 Rent Paid: You paid **1,125 \u269c\ufe0f Ducats** to **ConsiglioDeiDieci** for **recWvEXaCntJJJCEV**.",
-      "details": {
-        "building_id": "recWvEXaCntJJJCEV",
-        "building_name": "recWvEXaCntJJJCEV",
-        "rent_price": 1125,
-        "building_owner": "ConsiglioDeiDieci",
-        "event_type": "rent_payment_made"
-      },
-      "createdAt": "2025-06-10T16:02:58.002Z",
-      "readAt": null
-    },
-    {
-      "notificationId": "recAK95pYr6l41esM",
-      "type": "rent_payment",
-      "citizen": "RialtoRacer56",
-      "content": "\u2705 Rent Paid: You paid **1,125 \u269c\ufe0f Ducats** to **ConsiglioDeiDieci** for **recWvEXaCntJJJCEV**.",
-      "details": {
-        "building_id": "recWvEXaCntJJJCEV",
-        "building_name": "recWvEXaCntJJJCEV",
-        "rent_price": 1125,
-        "building_owner": "ConsiglioDeiDieci",
-        "event_type": "rent_payment_made"
-      },
-      "createdAt": "2025-06-09T16:02:23.258Z",
-      "readAt": null
-    },
-    {
-      "notificationId": "recvAPuJqFnDfDKYD",
-      "type": "rent_payment",
-      "citizen": "RialtoRacer56",
-      "content": "\u2705 Rent Paid: You paid **1,125 \u269c\ufe0f Ducats** to **ConsiglioDeiDieci** for **recWvEXaCntJJJCEV**.",
-      "details": {
-        "building_id": "recWvEXaCntJJJCEV",
-        "building_name": "recWvEXaCntJJJCEV",
-        "rent_price": 1125,
-        "building_owner": "ConsiglioDeiDieci",
-        "event_type": "rent_payment_made"
-      },
-      "createdAt": "2025-06-08T18:02:18.647Z",
-      "readAt": null
-    },
-    {
-      "notificationId": "recsraRD5ygJfNLtm",
-      "type": "rent_payment",
-      "citizen": "RialtoRacer56",
-      "content": "\u2705 Rent Paid: You paid **1,125 \u269c\ufe0f Ducats** to **ConsiglioDeiDieci** for **recWvEXaCntJJJCEV**.",
-      "details": {
-        "building_id": "recWvEXaCntJJJCEV",
-        "building_name": "recWvEXaCntJJJCEV",
-        "rent_price": 1125,
-        "building_owner": "ConsiglioDeiDieci",
-        "event_type": "rent_payment_made"
-      },
-      "createdAt": "2025-06-08T16:02:21.707Z",
-      "readAt": null
-    },
-    {
-      "notificationId": "recOzSpQiaU9MSb6g",
-      "type": "rent_payment",
-      "citizen": "RialtoRacer56",
-      "content": "\u2705 Rent Paid: You paid **1,125 \u269c\ufe0f Ducats** to **ConsiglioDeiDieci** for **recWvEXaCntJJJCEV**.",
-      "details": {
-        "building_id": "recWvEXaCntJJJCEV",
-        "building_name": "recWvEXaCntJJJCEV",
-        "rent_price": 1125,
-        "building_owner": "ConsiglioDeiDieci",
-        "event_type": "rent_payment_made"
-      },
-      "createdAt": "2025-06-07T18:02:15.931Z",
-      "readAt": null
-    },
-    {
-      "notificationId": "recr5KwuBCbd0lXpy",
-      "type": "rent_payment",
-      "citizen": "RialtoRacer56",
-      "content": "\u2705 Rent Paid: You paid **1,125 \u269c\ufe0f Ducats** to **ConsiglioDeiDieci** for **recWvEXaCntJJJCEV**.",
-      "details": {
-        "building_id": "recWvEXaCntJJJCEV",
-        "building_name": "recWvEXaCntJJJCEV",
-        "rent_price": 1125,
-        "building_owner": "ConsiglioDeiDieci",
-        "event_type": "rent_payment_made"
-      },
-      "createdAt": "2025-06-07T16:02:18.051Z",
       "readAt": null
     }
   ],
@@ -3732,7 +3722,7 @@ Here is the complete data about your current situation:
       "pointType": "building"
     }
   },
-  "timestamp": "2025-06-21T23:01:13.908064+02:00",
+  "timestamp": "2025-06-26T21:50:37.770133+02:00",
   "building_ownership_relevancies": []
 }
 
