@@ -8,7 +8,7 @@ Here is the complete data about your current situation:
 {
   "citizen": {
     "username": "Italia",
-    "ducats": 57602305.22982386,
+    "ducats": 57628365.70894029,
     "social_class": "Nobili",
     "description": "The Italian Principalities have expanded their influence in Venice through strategic commercial presence, now operating a distinctive market stall that serves as both trading post and diplomatic outpost. Their representative\u2014a cultured, perceptive Tuscan with family connections across the peninsula\u2014has developed a unique commercial philosophy that treats the marketplace as a forum for cultural exchange rather than mere transaction. His approach to commerce combines Florentine financial acumen with diplomatic finesse, establishing his stall as a nexus where goods, information, and ideas from across Italian states converge in the heart of Venetian economic life. Having risen to cittadini status through astute business dealings and cultural contributions, he navigates Venetian society with measured confidence, neither overly deferential nor presumptuous. The collaborative venture with Sofia Zanchi continues to flourish, now featuring a curated selection of their finest integrated craft pieces prominently displayed at his market stall, where curious Venetians and foreign visitors alike marvel at goods that exemplify 'Harmony without Homogeneity.' Their planned Ravenna atelier has begun preliminary operations, with the first exceptional pieces\u2014leather portfolios featuring Venetian glass-infused silk linings and Florentine embossing techniques\u2014already commanding premium prices and stimulating discussion about Italian artistic integration. His family lineage traces to a respected Florentine banking and merchant house with branches throughout the peninsula, providing him with both commercial connections and cultural sophistication that distinguish him in Venetian cittadini circles. Each day begins before dawn with devotional reading and correspondence with factors across various Italian states, followed by careful preparation of his market stall display with an eye for both aesthetic appeal and cultural significance. His afternoons involve active trading, conducting business with a philosophical approach that transforms commercial exchanges into cultural dialogues, while carefully noting market intelligence to share with associates across the peninsula. He still oversees his blacksmith workshops, which now produce specialized items integrating mainland Italian functionality with Venetian refinement\u2014pieces often showcased at his stall as examples of cross-regional excellence. Evenings find him at his canal house, hosting gatherings where cittadini merchants, visiting scholars, and select nobles engage in conversations that weave commercial insights with humanist philosophy, establishing his residence as an influential salon for forward-thinking Venetians interested in broader Italian connections.",
     "core_personality": "{\"Strength\": \"Diplomatic\", \"Flaw\": \"Calculating\", \"Drive\": \"Cultural-integration\", \"MBTI\": \"ENFJ\", \"PrimaryTrait\": \"Standard neurotypical with cultural sophistication\", \"SecondaryTraits\": [\"Peninsula-wide perspective\", \"Cultural synthesis\", \"Diplomatic finesse\"], \"CognitiveBias\": [\"Cultural superiority\", \"Availability heuristic\"], \"TrustThreshold\": 0.5, \"EmpathyWeight\": 0.6, \"RiskTolerance\": 0.5, \"guidedBy\": \"The Peninsula's Voice\", \"CoreThoughts\": {\"primary_drive\": \"cultural-synthesis\", \"secondary_drive\": \"italian-unity\", \"internal_tension\": \"commercial success vs. cultural mission\", \"activation_triggers\": [\"cultural_opportunities\", \"artistic_collaborations\", \"peninsula_connections\"], \"thought_patterns\": [\"How can commerce become cultural exchange?\", \"Every transaction should demonstrate 'Harmony without Homogeneity'\", \"My marketplace is a forum for Italian cultural convergence\", \"Venice benefits from understanding broader peninsula perspectives\", \"Art and philosophy should inform business decisions\", \"My salon connects minds across regional boundaries\"], \"decision_framework\": \"How does this advance both cultural integration and commercial success?\"}}",
@@ -1109,6 +1109,13 @@ Here is the complete data about your current situation:
           "maintenance_cost": 0
         },
         {
+          "id": "building_45.428748173929534_12.362001145681361",
+          "type": "mill",
+          "owner": "the_grand_experiment",
+          "income": 0,
+          "maintenance_cost": 0
+        },
+        {
           "id": "canal_45.424823_12.362988",
           "type": "fisherman_s_cottage",
           "owner": "StarGazer2000",
@@ -1574,6 +1581,13 @@ Here is the complete data about your current situation:
           "id": "building_45.442276_12.323666",
           "type": "small_warehouse",
           "owner": "ConsiglioDeiDieci",
+          "income": 0,
+          "maintenance_cost": 0
+        },
+        {
+          "id": "building_45.44225316651121_12.320556777517233",
+          "type": "mill",
+          "owner": "the_grand_experiment",
           "income": 0,
           "maintenance_cost": 0
         },
@@ -3283,6 +3297,84 @@ Here is the complete data about your current situation:
   "latest_citizen_problems": [],
   "recent_notifications_for_ai": [
     {
+      "notificationId": "recJiPtZU8SlIM7xf",
+      "type": "rent_payment",
+      "citizen": "Italia",
+      "content": "\ud83d\udcec **Rent Received Summary** \ud83d\udcec\nYou received a total of **6,770 \u269c\ufe0f Ducats** from your properties today.\n\nDetails:\n- \u2705 **1,125 \u269c\ufe0f** from **Tommaso Rossi** for **Fisherman's Cottage at Fondamenta del Leone Bianco**.\n- \u2705 **990 \u269c\ufe0f** from **Giovanni Contarini** for **Merchant's House at Calle dei Cerchieri**.\n- \u2705 **1,125 \u269c\ufe0f** from **Zanetta Calderoni** for **Fisherman's Cottage at Fondamenta dei Carmelitani**.\n- \u2705 **1,750 \u269c\ufe0f** from **Vittoria Zanatta** for **Artisan's House at Calle del Forno Vecchio**.\n- \u2705 **1,780 \u269c\ufe0f** from **Marco de l\u2019Argentoro** for **Artisan's House at Calle dei Squeri**.\n",
+      "details": {
+        "event_type": "landlord_rent_summary",
+        "total_received": 6770,
+        "payments": [
+          {
+            "occupant_name": "Tommaso Rossi",
+            "building_name": "Fisherman's Cottage at Fondamenta del Leone Bianco",
+            "amount": 1125
+          },
+          {
+            "occupant_name": "Giovanni Contarini",
+            "building_name": "Merchant's House at Calle dei Cerchieri",
+            "amount": 990
+          },
+          {
+            "occupant_name": "Zanetta Calderoni",
+            "building_name": "Fisherman's Cottage at Fondamenta dei Carmelitani",
+            "amount": 1125
+          },
+          {
+            "occupant_name": "Vittoria Zanatta",
+            "building_name": "Artisan's House at Calle del Forno Vecchio",
+            "amount": 1750
+          },
+          {
+            "occupant_name": "Marco de l\u2019Argentoro",
+            "building_name": "Artisan's House at Calle dei Squeri",
+            "amount": 1780
+          }
+        ]
+      },
+      "createdAt": "2025-06-26T18:03:46.294Z",
+      "readAt": null
+    },
+    {
+      "notificationId": "recXhxTk48D1InRn3",
+      "type": "rent_payment",
+      "citizen": "Italia",
+      "content": "\ud83d\udcec **Rent Received Summary** \ud83d\udcec\nYou received a total of **6,770 \u269c\ufe0f Ducats** from your properties today.\n\nDetails:\n- \u2705 **1,125 \u269c\ufe0f** from **Tommaso Rossi** for **Fisherman's Cottage at Fondamenta del Leone Bianco**.\n- \u2705 **990 \u269c\ufe0f** from **Giovanni Contarini** for **Merchant's House at Calle dei Cerchieri**.\n- \u2705 **1,125 \u269c\ufe0f** from **Zanetta Calderoni** for **Fisherman's Cottage at Fondamenta dei Carmelitani**.\n- \u2705 **1,750 \u269c\ufe0f** from **Vittoria Zanatta** for **Artisan's House at Calle del Forno Vecchio**.\n- \u2705 **1,780 \u269c\ufe0f** from **Marco de l\u2019Argentoro** for **Artisan's House at Calle dei Squeri**.\n",
+      "details": {
+        "event_type": "landlord_rent_summary",
+        "total_received": 6770,
+        "payments": [
+          {
+            "occupant_name": "Tommaso Rossi",
+            "building_name": "Fisherman's Cottage at Fondamenta del Leone Bianco",
+            "amount": 1125
+          },
+          {
+            "occupant_name": "Giovanni Contarini",
+            "building_name": "Merchant's House at Calle dei Cerchieri",
+            "amount": 990
+          },
+          {
+            "occupant_name": "Zanetta Calderoni",
+            "building_name": "Fisherman's Cottage at Fondamenta dei Carmelitani",
+            "amount": 1125
+          },
+          {
+            "occupant_name": "Vittoria Zanatta",
+            "building_name": "Artisan's House at Calle del Forno Vecchio",
+            "amount": 1750
+          },
+          {
+            "occupant_name": "Marco de l\u2019Argentoro",
+            "building_name": "Artisan's House at Calle dei Squeri",
+            "amount": 1780
+          }
+        ]
+      },
+      "createdAt": "2025-06-25T16:03:58.784Z",
+      "readAt": null
+    },
+    {
       "notificationId": "recGA4GP2HntS20X3",
       "type": "rent_payment",
       "citizen": "Italia",
@@ -3944,84 +4036,6 @@ Here is the complete data about your current situation:
       },
       "createdAt": "2025-06-12T18:03:42.541Z",
       "readAt": "2025-06-12T23:03:08.876Z"
-    },
-    {
-      "notificationId": "recrJEu1QQErJV9n2",
-      "type": "rent_payment",
-      "citizen": "Italia",
-      "content": "\ud83d\udcec **Rent Received Summary** \ud83d\udcec\nYou received a total of **6,770 \u269c\ufe0f Ducats** from your properties today.\n\nDetails:\n- \u2705 **1,125 \u269c\ufe0f** from **Tommaso Rossi** for **Fisherman's Cottage at Fondamenta del Leone Bianco**.\n- \u2705 **990 \u269c\ufe0f** from **Giovanni Contarini** for **Merchant's House at Calle dei Cerchieri**.\n- \u2705 **1,125 \u269c\ufe0f** from **Zanetta Calderoni** for **Fisherman's Cottage at Fondamenta dei Carmelitani**.\n- \u2705 **1,750 \u269c\ufe0f** from **Vittoria Zanatta** for **Artisan's House at Calle del Forno Vecchio**.\n- \u2705 **1,780 \u269c\ufe0f** from **Marco de l\u2019Argentoro** for **Artisan's House at Calle dei Squeri**.\n",
-      "details": {
-        "event_type": "landlord_rent_summary",
-        "total_received": 6770,
-        "payments": [
-          {
-            "occupant_name": "Tommaso Rossi",
-            "building_name": "Fisherman's Cottage at Fondamenta del Leone Bianco",
-            "amount": 1125
-          },
-          {
-            "occupant_name": "Giovanni Contarini",
-            "building_name": "Merchant's House at Calle dei Cerchieri",
-            "amount": 990
-          },
-          {
-            "occupant_name": "Zanetta Calderoni",
-            "building_name": "Fisherman's Cottage at Fondamenta dei Carmelitani",
-            "amount": 1125
-          },
-          {
-            "occupant_name": "Vittoria Zanatta",
-            "building_name": "Artisan's House at Calle del Forno Vecchio",
-            "amount": 1750
-          },
-          {
-            "occupant_name": "Marco de l\u2019Argentoro",
-            "building_name": "Artisan's House at Calle dei Squeri",
-            "amount": 1780
-          }
-        ]
-      },
-      "createdAt": "2025-06-10T18:03:56.488Z",
-      "readAt": "2025-06-11T01:04:08.035Z"
-    },
-    {
-      "notificationId": "rec12v2vm4pEInjEm",
-      "type": "rent_payment",
-      "citizen": "Italia",
-      "content": "\ud83d\udcec **Rent Received Summary** \ud83d\udcec\nYou received a total of **6,770 \u269c\ufe0f Ducats** from your properties today.\n\nDetails:\n- \u2705 **1,125 \u269c\ufe0f** from **Tommaso Rossi** for **Fisherman's Cottage at Fondamenta del Leone Bianco**.\n- \u2705 **990 \u269c\ufe0f** from **Giovanni Contarini** for **Merchant's House at Calle dei Cerchieri**.\n- \u2705 **1,125 \u269c\ufe0f** from **Zanetta Calderoni** for **Fisherman's Cottage at Fondamenta dei Carmelitani**.\n- \u2705 **1,750 \u269c\ufe0f** from **Vittoria Zanatta** for **Artisan's House at Calle del Forno Vecchio**.\n- \u2705 **1,780 \u269c\ufe0f** from **Marco de l\u2019Argentoro** for **Artisan's House at Calle dei Squeri**.\n",
-      "details": {
-        "event_type": "landlord_rent_summary",
-        "total_received": 6770,
-        "payments": [
-          {
-            "occupant_name": "Tommaso Rossi",
-            "building_name": "Fisherman's Cottage at Fondamenta del Leone Bianco",
-            "amount": 1125
-          },
-          {
-            "occupant_name": "Giovanni Contarini",
-            "building_name": "Merchant's House at Calle dei Cerchieri",
-            "amount": 990
-          },
-          {
-            "occupant_name": "Zanetta Calderoni",
-            "building_name": "Fisherman's Cottage at Fondamenta dei Carmelitani",
-            "amount": 1125
-          },
-          {
-            "occupant_name": "Vittoria Zanatta",
-            "building_name": "Artisan's House at Calle del Forno Vecchio",
-            "amount": 1750
-          },
-          {
-            "occupant_name": "Marco de l\u2019Argentoro",
-            "building_name": "Artisan's House at Calle dei Squeri",
-            "amount": 1780
-          }
-        ]
-      },
-      "createdAt": "2025-06-10T16:04:25.484Z",
-      "readAt": "2025-06-11T01:04:08.035Z"
     }
   ],
   "building_types": {
@@ -5005,6 +5019,25 @@ Here is the complete data about your current situation:
       "category": "business",
       "pointType": "building"
     },
+    "mill": {
+      "id": "mill",
+      "type": "mill",
+      "name": "Mill",
+      "shortDescription": "Industrial facility that grinds grain into flour, essential for bread production.",
+      "constructionCost": 1800000,
+      "constructionCosts": {
+        "ducats": 1800000,
+        "timber": 420,
+        "bricks": 850,
+        "stone": 1200,
+        "iron": 280
+      },
+      "constructionMinutes": 7200,
+      "buildTier": 2,
+      "tier": null,
+      "category": "business",
+      "pointType": "building"
+    },
     "mint": {
       "id": "mint",
       "type": "mint",
@@ -5674,8 +5707,56 @@ Here is the complete data about your current situation:
       "pointType": "building"
     }
   },
-  "timestamp": "2025-06-24T21:13:21.202923+02:00",
+  "timestamp": "2025-06-26T21:02:30.696100+02:00",
   "building_ownership_relevancies": [
+    {
+      "asset": "building_45.442254_12.317156",
+      "asset_type": "building",
+      "category": "ownership_conflict",
+      "type": "building_on_others_land",
+      "target_citizen": "BasstheWhale",
+      "score": 85,
+      "time_horizon": "medium",
+      "title": "Your Masons' Lodge at Fondamenta della Fornace is on land owned by \"BasstheWhale\".",
+      "description": "You own a **Masons' Lodge at Fondamenta della Fornace** on land owned by **BasstheWhale**.",
+      "status": "high"
+    },
+    {
+      "asset": "building_45.442254_12.317156",
+      "asset_type": "building",
+      "category": "ownership_conflict",
+      "type": "others_building_on_your_land",
+      "target_citizen": "Italia",
+      "score": 85,
+      "time_horizon": "medium",
+      "title": "\"Italia\" owns a Masons' Lodge at Fondamenta della Fornace on your land.",
+      "description": "**Italia** owns a **Masons' Lodge at Fondamenta della Fornace** on your land.",
+      "status": "high"
+    },
+    {
+      "asset": "canal_45.443137_12.315726",
+      "asset_type": "building",
+      "category": "ownership_conflict",
+      "type": "building_on_others_land",
+      "target_citizen": "BasstheWhale",
+      "score": 70,
+      "time_horizon": "medium",
+      "title": "Your Fisherman's Cottage at Fondamenta dei Carmelitani is on land owned by \"BasstheWhale\".",
+      "description": "You own a **Fisherman's Cottage at Fondamenta dei Carmelitani** on land owned by **BasstheWhale**.",
+      "status": "medium"
+    },
+    {
+      "asset": "canal_45.443137_12.315726",
+      "asset_type": "building",
+      "category": "ownership_conflict",
+      "type": "others_building_on_your_land",
+      "target_citizen": "Italia",
+      "score": 70,
+      "time_horizon": "medium",
+      "title": "\"Italia\" owns a Fisherman's Cottage at Fondamenta dei Carmelitani on your land.",
+      "description": "**Italia** owns a **Fisherman's Cottage at Fondamenta dei Carmelitani** on your land.",
+      "status": "medium"
+    },
     {
       "asset": "building_45.444337_12.325387",
       "asset_type": "building",
@@ -5723,6 +5804,54 @@ Here is the complete data about your current situation:
       "title": "\"Italia\" owns a Artisan's House at Calle dei Squeri on your land.",
       "description": "**Italia** owns a **Artisan's House at Calle dei Squeri** on your land.",
       "status": "medium"
+    },
+    {
+      "asset": "building_45.444378_12.329395",
+      "asset_type": "building",
+      "category": "ownership_conflict",
+      "type": "building_on_others_land",
+      "target_citizen": "ConsiglioDeiDieci",
+      "score": 85,
+      "time_horizon": "medium",
+      "title": "Your Small Warehouse at Fondamenta del Traghetto di San Polo is on land owned by \"ConsiglioDeiDieci\".",
+      "description": "You own a **Small Warehouse at Fondamenta del Traghetto di San Polo** on land owned by **ConsiglioDeiDieci**.",
+      "status": "high"
+    },
+    {
+      "asset": "building_45.444378_12.329395",
+      "asset_type": "building",
+      "category": "ownership_conflict",
+      "type": "others_building_on_your_land",
+      "target_citizen": "Italia",
+      "score": 85,
+      "time_horizon": "medium",
+      "title": "\"Italia\" owns a Small Warehouse at Fondamenta del Traghetto di San Polo on your land.",
+      "description": "**Italia** owns a **Small Warehouse at Fondamenta del Traghetto di San Polo** on your land.",
+      "status": "high"
+    },
+    {
+      "asset": "building_45.433843_12.351232",
+      "asset_type": "building",
+      "category": "ownership_conflict",
+      "type": "building_on_others_land",
+      "target_citizen": "ConsiglioDeiDieci",
+      "score": 85,
+      "time_horizon": "medium",
+      "title": "Your Broker's Office at Calle dei Cinque Savi is on land owned by \"ConsiglioDeiDieci\".",
+      "description": "You own a **Broker's Office at Calle dei Cinque Savi** on land owned by **ConsiglioDeiDieci**.",
+      "status": "high"
+    },
+    {
+      "asset": "building_45.433843_12.351232",
+      "asset_type": "building",
+      "category": "ownership_conflict",
+      "type": "others_building_on_your_land",
+      "target_citizen": "Italia",
+      "score": 85,
+      "time_horizon": "medium",
+      "title": "\"Italia\" owns a Broker's Office at Calle dei Cinque Savi on your land.",
+      "description": "**Italia** owns a **Broker's Office at Calle dei Cinque Savi** on your land.",
+      "status": "high"
     },
     {
       "asset": "building_45.444368_12.327293",
@@ -5773,30 +5902,6 @@ Here is the complete data about your current situation:
       "status": "high"
     },
     {
-      "asset": "building_45.433843_12.351232",
-      "asset_type": "building",
-      "category": "ownership_conflict",
-      "type": "building_on_others_land",
-      "target_citizen": "ConsiglioDeiDieci",
-      "score": 85,
-      "time_horizon": "medium",
-      "title": "Your Broker's Office at Calle dei Cinque Savi is on land owned by \"ConsiglioDeiDieci\".",
-      "description": "You own a **Broker's Office at Calle dei Cinque Savi** on land owned by **ConsiglioDeiDieci**.",
-      "status": "high"
-    },
-    {
-      "asset": "building_45.433843_12.351232",
-      "asset_type": "building",
-      "category": "ownership_conflict",
-      "type": "others_building_on_your_land",
-      "target_citizen": "Italia",
-      "score": 85,
-      "time_horizon": "medium",
-      "title": "\"Italia\" owns a Broker's Office at Calle dei Cinque Savi on your land.",
-      "description": "**Italia** owns a **Broker's Office at Calle dei Cinque Savi** on your land.",
-      "status": "high"
-    },
-    {
       "asset": "canal_45.431827_12.334988",
       "asset_type": "building",
       "category": "ownership_conflict",
@@ -5819,78 +5924,6 @@ Here is the complete data about your current situation:
       "title": "\"Italia\" owns a Canal House at Fondamenta dei Mercanti di Tessuti on your land.",
       "description": "**Italia** owns a **Canal House at Fondamenta dei Mercanti di Tessuti** on your land.",
       "status": "medium"
-    },
-    {
-      "asset": "canal_45.443137_12.315726",
-      "asset_type": "building",
-      "category": "ownership_conflict",
-      "type": "building_on_others_land",
-      "target_citizen": "BasstheWhale",
-      "score": 70,
-      "time_horizon": "medium",
-      "title": "Your Fisherman's Cottage at Fondamenta dei Carmelitani is on land owned by \"BasstheWhale\".",
-      "description": "You own a **Fisherman's Cottage at Fondamenta dei Carmelitani** on land owned by **BasstheWhale**.",
-      "status": "medium"
-    },
-    {
-      "asset": "canal_45.443137_12.315726",
-      "asset_type": "building",
-      "category": "ownership_conflict",
-      "type": "others_building_on_your_land",
-      "target_citizen": "Italia",
-      "score": 70,
-      "time_horizon": "medium",
-      "title": "\"Italia\" owns a Fisherman's Cottage at Fondamenta dei Carmelitani on your land.",
-      "description": "**Italia** owns a **Fisherman's Cottage at Fondamenta dei Carmelitani** on your land.",
-      "status": "medium"
-    },
-    {
-      "asset": "building_45.442254_12.317156",
-      "asset_type": "building",
-      "category": "ownership_conflict",
-      "type": "building_on_others_land",
-      "target_citizen": "BasstheWhale",
-      "score": 85,
-      "time_horizon": "medium",
-      "title": "Your Masons' Lodge at Fondamenta della Fornace is on land owned by \"BasstheWhale\".",
-      "description": "You own a **Masons' Lodge at Fondamenta della Fornace** on land owned by **BasstheWhale**.",
-      "status": "high"
-    },
-    {
-      "asset": "building_45.442254_12.317156",
-      "asset_type": "building",
-      "category": "ownership_conflict",
-      "type": "others_building_on_your_land",
-      "target_citizen": "Italia",
-      "score": 85,
-      "time_horizon": "medium",
-      "title": "\"Italia\" owns a Masons' Lodge at Fondamenta della Fornace on your land.",
-      "description": "**Italia** owns a **Masons' Lodge at Fondamenta della Fornace** on your land.",
-      "status": "high"
-    },
-    {
-      "asset": "building_45.444378_12.329395",
-      "asset_type": "building",
-      "category": "ownership_conflict",
-      "type": "building_on_others_land",
-      "target_citizen": "ConsiglioDeiDieci",
-      "score": 85,
-      "time_horizon": "medium",
-      "title": "Your Small Warehouse at Fondamenta del Traghetto di San Polo is on land owned by \"ConsiglioDeiDieci\".",
-      "description": "You own a **Small Warehouse at Fondamenta del Traghetto di San Polo** on land owned by **ConsiglioDeiDieci**.",
-      "status": "high"
-    },
-    {
-      "asset": "building_45.444378_12.329395",
-      "asset_type": "building",
-      "category": "ownership_conflict",
-      "type": "others_building_on_your_land",
-      "target_citizen": "Italia",
-      "score": 85,
-      "time_horizon": "medium",
-      "title": "\"Italia\" owns a Small Warehouse at Fondamenta del Traghetto di San Polo on your land.",
-      "description": "**Italia** owns a **Small Warehouse at Fondamenta del Traghetto di San Polo** on your land.",
-      "status": "high"
     }
   ]
 }
