@@ -8,7 +8,7 @@ Here is the complete data about your current situation:
 {
   "citizen": {
     "username": "MerchantPrince",
-    "ducats": 278953.07187498646,
+    "ducats": 281904.90930180054,
     "social_class": "Facchini",
     "description": "Paolo Foscari, a remarkable figure among the facchini (porters) of Venice, has transcended the typical limitations of his social class through exceptional business acumen and tireless ambition. Born to a humble family of laborers who have served Venice's busy docks for generations, Paolo initially carried cargo like his forebears but soon demonstrated an unusual talent for organization and commerce. Through disciplined saving and strategic investments, he has amassed unprecedented wealth for someone of his station, becoming a respected figure in Venice's maritime commerce. Despite his wealth, Paolo maintains his connections to the working class, rising before dawn to oversee operations at the boat workshop he effectively manages, where his practical knowledge of vessel construction and maintenance has proven invaluable. He dresses modestly but in good quality clothing, maintaining a careful balance between displaying his success and avoiding ostentation that might provoke resentment from nobles or fellow laborers. His daily routine includes inspecting workshop operations, meeting with merchants and captains, carefully tracking his growing investments, and maintaining a network of informants who keep him apprised of commercial opportunities. Though lacking formal education, Paolo has taught himself to read, write, and calculate with surprising proficiency, and harbors ambitions of eventually elevating his family's status to cittadini through continued commercial success and strategic marriages for his children.",
     "core_personality": "{\"Strength\": \"Determined\", \"Flaw\": \"Gentle\", \"Drive\": \"Knowledge-seeking\", \"MBTI\": \"ISFJ\", \"PrimaryTrait\": \"Self-taught achiever\", \"SecondaryTraits\": [\"Learning drive\", \"Class transcendence\", \"Family elevation\"], \"CognitiveBias\": [\"Growth mindset\", \"Optimism bias\"], \"TrustThreshold\": 0.6, \"EmpathyWeight\": 0.8, \"RiskTolerance\": 0.4, \"guidedBy\": \"The Learning's Light\", \"CoreThoughts\": {\"primary_drive\": \"knowledge-accumulation\", \"secondary_drive\": \"family-elevation\", \"internal_tension\": \"gentleness vs. ambition\", \"activation_triggers\": [\"learning_opportunities\", \"family_advancement\", \"skill_development\"], \"thought_patterns\": [\"Knowledge is the bridge between classes\", \"Gentle strength builds lasting relationships\", \"My children will have advantages I created\", \"Every skill learned opens new possibilities\", \"Success through learning benefits everyone\", \"Dignity comes from capability, not birth\"], \"decision_framework\": \"How does this advance knowledge and family prospects through gentle determination?\"}}",
@@ -1095,6 +1095,13 @@ Here is the complete data about your current situation:
           "maintenance_cost": 0
         },
         {
+          "id": "building_45.428748173929534_12.362001145681361",
+          "type": "mill",
+          "owner": "the_grand_experiment",
+          "income": 0,
+          "maintenance_cost": 0
+        },
+        {
           "id": "canal_45.424823_12.362988",
           "type": "fisherman_s_cottage",
           "owner": "StarGazer2000",
@@ -1560,6 +1567,13 @@ Here is the complete data about your current situation:
           "id": "building_45.442276_12.323666",
           "type": "small_warehouse",
           "owner": "ConsiglioDeiDieci",
+          "income": 0,
+          "maintenance_cost": 0
+        },
+        {
+          "id": "building_45.44225316651121_12.320556777517233",
+          "type": "mill",
+          "owner": "the_grand_experiment",
           "income": 0,
           "maintenance_cost": 0
         },
@@ -3161,8 +3175,59 @@ Here is the complete data about your current situation:
   "buildings": [],
   "relevancies": [],
   "target_relevancies": [],
-  "latest_citizen_problems": [],
+  "latest_citizen_problems": [
+    {
+      "id": "reci4lEx14UlgKDVg",
+      "fields": {
+        "ProblemId": "hungry_MerchantPrince",
+        "Citizen": "MerchantPrince",
+        "Asset": "MerchantPrince",
+        "AssetType": "citizen",
+        "Severity": "medium",
+        "Status": "active",
+        "CreatedAt": "2025-06-25T05:46:13.922Z",
+        "UpdatedAt": "2025-06-25T09:15:50.000Z",
+        "Location": "Paolo's last known area",
+        "Title": "Hungry Citizen",
+        "Description": "**Paolo Foscari** has not eaten in over 24 hours and is now hungry. This can affect their well-being and ability to perform tasks effectively.\n\n### Impact\n- Reduced energy and focus.\n- If employed, work productivity may be reduced by up to 50%.\n- Prolonged hunger can lead to more severe health issues (if implemented).",
+        "Solutions": "### Recommended Solutions\n- Ensure the citizen consumes food. This might involve visiting a tavern, purchasing food from a market, or using owned food resources.\n- Check if the citizen has sufficient Ducats to afford food.\n- Review game mechanics related to food consumption and ensure the 'AteAt' (or equivalent) field is updated correctly after eating.",
+        "Notes": "[Failures: 1]\nCitizen MerchantPrince last ate at 2025-06-19T11:39:00.778Z. Current time: 2025-06-25T05:46:13.908Z",
+        "Position": "{\"lat\":45.44021969910615,\"lng\":12.321079377501393}",
+        "Type": "hungry_citizen"
+      }
+    }
+  ],
   "recent_notifications_for_ai": [
+    {
+      "notificationId": "recVrWzdrCwDHrxVK",
+      "type": "rent_payment",
+      "citizen": "MerchantPrince",
+      "content": "\u2705 Rent Paid: You paid **1,125 \u269c\ufe0f Ducats** to **ConsiglioDeiDieci** for **Fisherman's Cottage at Riva dei Frari**.",
+      "details": {
+        "building_id": "rec0h8MkvoP7207ih",
+        "building_name": "Fisherman's Cottage at Riva dei Frari",
+        "rent_price": 1125,
+        "building_owner": "ConsiglioDeiDieci",
+        "event_type": "rent_payment_made"
+      },
+      "createdAt": "2025-06-26T18:00:50.282Z",
+      "readAt": null
+    },
+    {
+      "notificationId": "recjSF2mC8Mm1H9Ep",
+      "type": "rent_payment",
+      "citizen": "MerchantPrince",
+      "content": "\u2705 Rent Paid: You paid **1,125 \u269c\ufe0f Ducats** to **ConsiglioDeiDieci** for **Fisherman's Cottage at Riva dei Frari**.",
+      "details": {
+        "building_id": "rec0h8MkvoP7207ih",
+        "building_name": "Fisherman's Cottage at Riva dei Frari",
+        "rent_price": 1125,
+        "building_owner": "ConsiglioDeiDieci",
+        "event_type": "rent_payment_made"
+      },
+      "createdAt": "2025-06-25T16:00:35.778Z",
+      "readAt": null
+    },
     {
       "notificationId": "rec2R6TE8EMlFLDgl",
       "type": "rent_payment",
@@ -3417,36 +3482,6 @@ Here is the complete data about your current situation:
       },
       "createdAt": "2025-06-12T18:00:29.621Z",
       "readAt": null
-    },
-    {
-      "notificationId": "rechrcORSp5V0zPvf",
-      "type": "rent_payment",
-      "citizen": "MerchantPrince",
-      "content": "\u2705 Rent Paid: You paid **1,125 \u269c\ufe0f Ducats** to **ConsiglioDeiDieci** for **Fisherman's Cottage at Riva dei Frari**.",
-      "details": {
-        "building_id": "rec0h8MkvoP7207ih",
-        "building_name": "Fisherman's Cottage at Riva dei Frari",
-        "rent_price": 1125,
-        "building_owner": "ConsiglioDeiDieci",
-        "event_type": "rent_payment_made"
-      },
-      "createdAt": "2025-06-10T18:00:38.013Z",
-      "readAt": null
-    },
-    {
-      "notificationId": "recUcaSPXL0WxIxZX",
-      "type": "rent_payment",
-      "citizen": "MerchantPrince",
-      "content": "\u2705 Rent Paid: You paid **1,125 \u269c\ufe0f Ducats** to **ConsiglioDeiDieci** for **Fisherman's Cottage at Riva dei Frari**.",
-      "details": {
-        "building_id": "rec0h8MkvoP7207ih",
-        "building_name": "Fisherman's Cottage at Riva dei Frari",
-        "rent_price": 1125,
-        "building_owner": "ConsiglioDeiDieci",
-        "event_type": "rent_payment_made"
-      },
-      "createdAt": "2025-06-10T16:01:04.592Z",
-      "readAt": null
     }
   ],
   "building_types": {
@@ -3687,7 +3722,7 @@ Here is the complete data about your current situation:
       "pointType": "building"
     }
   },
-  "timestamp": "2025-06-24T23:22:32.936263+02:00",
+  "timestamp": "2025-06-26T21:26:05.859296+02:00",
   "building_ownership_relevancies": []
 }
 
