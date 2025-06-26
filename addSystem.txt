@@ -8,7 +8,7 @@ Here is the complete data about your current situation:
 {
   "citizen": {
     "username": "TravelBug23",
-    "ducats": 265241.95556551695,
+    "ducats": 524068.3031940437,
     "social_class": "Popolani",
     "description": "A shrewd and industrious merchant-baker who has risen from humble beginnings through relentless ambition and keen business acumen. Ludovico operates multiple enterprises across Venice with the calculating precision of a seasoned trader, yet his obsessive pursuit of profit often blinds him to the personal costs of his ventures. Though respected for his work ethic and reliability, his tendency toward avarice and his habit of overextending himself across too many businesses sometimes threatens the very stability he seeks to build.",
     "core_personality": "{\"Strength\": \"Industrious\", \"Flaw\": \"Avaricious\", \"Drive\": \"Expansion-driven\", \"MBTI\": \"ESTJ\", \"PrimaryTrait\": \"Empire builder\", \"SecondaryTraits\": [\"Multi-business management\", \"Profit obsession\", \"Overextension risk\"], \"CognitiveBias\": [\"Overconfidence bias\", \"Sunk cost fallacy\"], \"TrustThreshold\": 0.4, \"EmpathyWeight\": 0.3, \"RiskTolerance\": 0.7, \"guidedBy\": \"The Empire's Hunger\", \"CoreThoughts\": {\"primary_drive\": \"business-expansion\", \"secondary_drive\": \"wealth-accumulation\", \"internal_tension\": \"growth vs. stability\", \"activation_triggers\": [\"expansion_opportunities\", \"profit_potential\", \"competitive_threats\"], \"thought_patterns\": [\"More businesses mean more security\", \"Every venture should generate multiple revenue streams\", \"Expansion opportunities won't wait for perfection\", \"Avarice drives excellence and growth\", \"Overextension is just aggressive expansion\", \"Wealth accumulation proves competence\"], \"decision_framework\": \"How does this expand my business empire while maximizing profit?\"}}",
@@ -1099,6 +1099,13 @@ Here is the complete data about your current situation:
           "maintenance_cost": 0
         },
         {
+          "id": "building_45.428748173929534_12.362001145681361",
+          "type": "mill",
+          "owner": "the_grand_experiment",
+          "income": 0,
+          "maintenance_cost": 0
+        },
+        {
           "id": "canal_45.424823_12.362988",
           "type": "fisherman_s_cottage",
           "owner": "StarGazer2000",
@@ -1564,6 +1571,13 @@ Here is the complete data about your current situation:
           "id": "building_45.442276_12.323666",
           "type": "small_warehouse",
           "owner": "ConsiglioDeiDieci",
+          "income": 0,
+          "maintenance_cost": 0
+        },
+        {
+          "id": "building_45.44225316651121_12.320556777517233",
+          "type": "mill",
+          "owner": "the_grand_experiment",
           "income": 0,
           "maintenance_cost": 0
         },
@@ -3184,254 +3198,65 @@ Here is the complete data about your current situation:
   "target_relevancies": [],
   "latest_citizen_problems": [
     {
-      "id": "rec98ZSql4VIAFMNo",
+      "id": "recB1PUpuMublX0XY",
       "fields": {
-        "ProblemId": "problem_pinpoint_building_45.431034_12.353209_wine_RESOURCE_SHORTAGE",
+        "ProblemId": "problem_pinpoint_building_45.442971_12.326653_bread_WAITING_FOR_DELIVERY",
         "Citizen": "TravelBug23",
-        "Asset": "building_45.431034_12.353209",
-        "AssetType": "building",
-        "Severity": "Critical",
-        "Status": "active",
-        "CreatedAt": "2025-06-16T00:03:48.102Z",
-        "UpdatedAt": "2025-06-15T22:03:48.000Z",
-        "Location": "Contract Stall at Rio Ter\u00e0 delle Muneghe",
-        "Title": "Resource Shortage: wine for Contract Stall at Rio Ter\u00e0 delle Muneghe",
-        "Description": "Building 'Contract Stall at Rio Ter\u00e0 delle Muneghe' (ID: building_45.431034_12.353209) is out of stock for 'wine', has a 'markup_buy' contract, but the resource appears to be unavailable or not actively sold elsewhere in Venice.",
-        "Solutions": "The resource 'wine' is currently scarce. Consider:\n- Increasing the buy price on your 'markup_buy' contract significantly to incentivize sellers.\n- If possible, find alternative resources or adjust production that depends on 'wine'.\n- Wait for market conditions to change (e.g., new imports by merchants).",
-        "Position": "{\"lat\": 45.43103428792021, \"lng\": 12.353209369791317}",
-        "Type": "resource_shortage"
-      }
-    },
-    {
-      "id": "recvVsaluNwStdeow",
-      "fields": {
-        "ProblemId": "problem_pinpoint_building_45.431034_12.353209_salt_RESOURCE_SHORTAGE",
-        "Citizen": "TravelBug23",
-        "Asset": "building_45.431034_12.353209",
-        "AssetType": "building",
-        "Severity": "Critical",
-        "Status": "active",
-        "CreatedAt": "2025-06-16T00:03:35.922Z",
-        "UpdatedAt": "2025-06-15T22:03:36.000Z",
-        "Location": "Contract Stall at Rio Ter\u00e0 delle Muneghe",
-        "Title": "Resource Shortage: salt for Contract Stall at Rio Ter\u00e0 delle Muneghe",
-        "Description": "Building 'Contract Stall at Rio Ter\u00e0 delle Muneghe' (ID: building_45.431034_12.353209) is out of stock for 'salt', has a 'markup_buy' contract, but the resource appears to be unavailable or not actively sold elsewhere in Venice.",
-        "Solutions": "The resource 'salt' is currently scarce. Consider:\n- Increasing the buy price on your 'markup_buy' contract significantly to incentivize sellers.\n- If possible, find alternative resources or adjust production that depends on 'salt'.\n- Wait for market conditions to change (e.g., new imports by merchants).",
-        "Position": "{\"lat\": 45.43103428792021, \"lng\": 12.353209369791317}",
-        "Type": "resource_shortage"
-      }
-    },
-    {
-      "id": "recZOvNIDEBNn7Tb8",
-      "fields": {
-        "ProblemId": "problem_pinpoint_building_45.431034_12.353209_preserved_fish_RESOURCE_SHORTAGE",
-        "Citizen": "TravelBug23",
-        "Asset": "building_45.431034_12.353209",
-        "AssetType": "building",
-        "Severity": "Critical",
-        "Status": "active",
-        "CreatedAt": "2025-06-16T00:03:20.639Z",
-        "UpdatedAt": "2025-06-15T22:03:21.000Z",
-        "Location": "Contract Stall at Rio Ter\u00e0 delle Muneghe",
-        "Title": "Resource Shortage: preserved_fish for Contract Stall at Rio Ter\u00e0 delle Muneghe",
-        "Description": "Building 'Contract Stall at Rio Ter\u00e0 delle Muneghe' (ID: building_45.431034_12.353209) is out of stock for 'preserved_fish', has a 'markup_buy' contract, but the resource appears to be unavailable or not actively sold elsewhere in Venice.",
-        "Solutions": "The resource 'preserved_fish' is currently scarce. Consider:\n- Increasing the buy price on your 'markup_buy' contract significantly to incentivize sellers.\n- If possible, find alternative resources or adjust production that depends on 'preserved_fish'.\n- Wait for market conditions to change (e.g., new imports by merchants).",
-        "Position": "{\"lat\": 45.43103428792021, \"lng\": 12.353209369791317}",
-        "Type": "resource_shortage"
-      }
-    },
-    {
-      "id": "recg7o0QUC6viU7e6",
-      "fields": {
-        "ProblemId": "problem_pinpoint_building_45.431034_12.353209_olives_RESOURCE_SHORTAGE",
-        "Citizen": "TravelBug23",
-        "Asset": "building_45.431034_12.353209",
-        "AssetType": "building",
-        "Severity": "Critical",
-        "Status": "active",
-        "CreatedAt": "2025-06-16T00:03:09.832Z",
-        "UpdatedAt": "2025-06-15T22:03:10.000Z",
-        "Location": "Contract Stall at Rio Ter\u00e0 delle Muneghe",
-        "Title": "Resource Shortage: olives for Contract Stall at Rio Ter\u00e0 delle Muneghe",
-        "Description": "Building 'Contract Stall at Rio Ter\u00e0 delle Muneghe' (ID: building_45.431034_12.353209) is out of stock for 'olives', has a 'markup_buy' contract, but the resource appears to be unavailable or not actively sold elsewhere in Venice.",
-        "Solutions": "The resource 'olives' is currently scarce. Consider:\n- Increasing the buy price on your 'markup_buy' contract significantly to incentivize sellers.\n- If possible, find alternative resources or adjust production that depends on 'olives'.\n- Wait for market conditions to change (e.g., new imports by merchants).",
-        "Position": "{\"lat\": 45.43103428792021, \"lng\": 12.353209369791317}",
-        "Type": "resource_shortage"
-      }
-    },
-    {
-      "id": "rec1cBC1d2MKi8dNb",
-      "fields": {
-        "ProblemId": "problem_pinpoint_building_45.431034_12.353209_olive_oil_RESOURCE_SHORTAGE",
-        "Citizen": "TravelBug23",
-        "Asset": "building_45.431034_12.353209",
-        "AssetType": "building",
-        "Severity": "Critical",
-        "Status": "active",
-        "CreatedAt": "2025-06-16T00:03:04.552Z",
-        "UpdatedAt": "2025-06-15T22:03:05.000Z",
-        "Location": "Contract Stall at Rio Ter\u00e0 delle Muneghe",
-        "Title": "Resource Shortage: olive_oil for Contract Stall at Rio Ter\u00e0 delle Muneghe",
-        "Description": "Building 'Contract Stall at Rio Ter\u00e0 delle Muneghe' (ID: building_45.431034_12.353209) is out of stock for 'olive_oil', has a 'markup_buy' contract, but the resource appears to be unavailable or not actively sold elsewhere in Venice.",
-        "Solutions": "The resource 'olive_oil' is currently scarce. Consider:\n- Increasing the buy price on your 'markup_buy' contract significantly to incentivize sellers.\n- If possible, find alternative resources or adjust production that depends on 'olive_oil'.\n- Wait for market conditions to change (e.g., new imports by merchants).",
-        "Position": "{\"lat\": 45.43103428792021, \"lng\": 12.353209369791317}",
-        "Type": "resource_shortage"
-      }
-    },
-    {
-      "id": "recYXhdZeKp7jQqPK",
-      "fields": {
-        "ProblemId": "problem_pinpoint_building_45.431034_12.353209_flour_RESOURCE_SHORTAGE",
-        "Citizen": "TravelBug23",
-        "Asset": "building_45.431034_12.353209",
-        "AssetType": "building",
-        "Severity": "Critical",
-        "Status": "active",
-        "CreatedAt": "2025-06-16T00:02:59.115Z",
-        "UpdatedAt": "2025-06-15T22:02:59.000Z",
-        "Location": "Contract Stall at Rio Ter\u00e0 delle Muneghe",
-        "Title": "Resource Shortage: flour for Contract Stall at Rio Ter\u00e0 delle Muneghe",
-        "Description": "Building 'Contract Stall at Rio Ter\u00e0 delle Muneghe' (ID: building_45.431034_12.353209) is out of stock for 'flour', has a 'markup_buy' contract, but the resource appears to be unavailable or not actively sold elsewhere in Venice.",
-        "Solutions": "The resource 'flour' is currently scarce. Consider:\n- Increasing the buy price on your 'markup_buy' contract significantly to incentivize sellers.\n- If possible, find alternative resources or adjust production that depends on 'flour'.\n- Wait for market conditions to change (e.g., new imports by merchants).",
-        "Position": "{\"lat\": 45.43103428792021, \"lng\": 12.353209369791317}",
-        "Type": "resource_shortage"
-      }
-    },
-    {
-      "id": "recIosrIlSAXnYZTu",
-      "fields": {
-        "ProblemId": "problem_pinpoint_building_45.431034_12.353209_fish_RESOURCE_SHORTAGE",
-        "Citizen": "TravelBug23",
-        "Asset": "building_45.431034_12.353209",
-        "AssetType": "building",
-        "Severity": "Critical",
-        "Status": "active",
-        "CreatedAt": "2025-06-16T00:02:52.650Z",
-        "UpdatedAt": "2025-06-15T22:02:53.000Z",
-        "Location": "Contract Stall at Rio Ter\u00e0 delle Muneghe",
-        "Title": "Resource Shortage: fish for Contract Stall at Rio Ter\u00e0 delle Muneghe",
-        "Description": "Building 'Contract Stall at Rio Ter\u00e0 delle Muneghe' (ID: building_45.431034_12.353209) is out of stock for 'fish', has a 'markup_buy' contract, but the resource appears to be unavailable or not actively sold elsewhere in Venice.",
-        "Solutions": "The resource 'fish' is currently scarce. Consider:\n- Increasing the buy price on your 'markup_buy' contract significantly to incentivize sellers.\n- If possible, find alternative resources or adjust production that depends on 'fish'.\n- Wait for market conditions to change (e.g., new imports by merchants).",
-        "Position": "{\"lat\": 45.43103428792021, \"lng\": 12.353209369791317}",
-        "Type": "resource_shortage"
-      }
-    },
-    {
-      "id": "recYyxYbjSPsz3DlI",
-      "fields": {
-        "ProblemId": "problem_pinpoint_building_45.431034_12.353209_bread_RESOURCE_SHORTAGE",
-        "Citizen": "TravelBug23",
-        "Asset": "building_45.431034_12.353209",
-        "AssetType": "building",
-        "Severity": "Critical",
-        "Status": "active",
-        "CreatedAt": "2025-06-16T00:02:28.805Z",
-        "UpdatedAt": "2025-06-15T22:02:29.000Z",
-        "Location": "Contract Stall at Rio Ter\u00e0 delle Muneghe",
-        "Title": "Resource Shortage: bread for Contract Stall at Rio Ter\u00e0 delle Muneghe",
-        "Description": "Building 'Contract Stall at Rio Ter\u00e0 delle Muneghe' (ID: building_45.431034_12.353209) is out of stock for 'bread', has a 'markup_buy' contract, but the resource appears to be unavailable or not actively sold elsewhere in Venice.",
-        "Solutions": "The resource 'bread' is currently scarce. Consider:\n- Increasing the buy price on your 'markup_buy' contract significantly to incentivize sellers.\n- If possible, find alternative resources or adjust production that depends on 'bread'.\n- Wait for market conditions to change (e.g., new imports by merchants).",
-        "Position": "{\"lat\": 45.43103428792021, \"lng\": 12.353209369791317}",
-        "Type": "resource_shortage"
-      }
-    },
-    {
-      "id": "recmd8bulQZaiJgz3",
-      "fields": {
-        "ProblemId": "problem_pinpoint_canal_45.439346_12.318219_gondola_WAITING_FOR_GALLEY_ARRIVAL",
-        "Citizen": "TravelBug23",
-        "Asset": "canal_45.439346_12.318219",
+        "Asset": "building_45.442971_12.326653",
         "AssetType": "building",
         "Severity": "Medium",
         "Status": "active",
-        "CreatedAt": "2025-06-16T00:01:59.566Z",
-        "UpdatedAt": "2025-06-15T22:02:00.000Z",
-        "Location": "Public Dock at Fondamenta della Misericordia",
-        "Title": "Waiting for Galley: gondola at Public Dock at Fondamenta della Misericordia",
-        "Description": "Building 'Public Dock at Fondamenta della Misericordia' (ID: canal_45.439346_12.318219) is out of stock for 'gondola' and is awaiting arrival of the delivering galley 'Unknown Galley'.",
-        "Solutions": "Monitor the import contract for 'gondola'. The galley 'Unknown Galley' is still en route or its arrival has not yet been processed. Check galley's 'ConstructionDate'.",
-        "Position": "{\"lat\": 45.439346, \"lng\": 12.318219}",
+        "CreatedAt": "2025-06-25T07:41:43.434Z",
+        "UpdatedAt": "2025-06-25T10:25:01.000Z",
+        "Location": "Inn at Calle dei Forni",
+        "Title": "Waiting for Delivery: bread at Inn at Calle dei Forni",
+        "Description": "Building 'Inn at Calle dei Forni' (ID: building_45.442971_12.326653) is out of stock for 'bread', has an active 'markup_buy' contract, and the resource is available elsewhere. Awaiting delivery.",
+        "Solutions": "Monitor the 'markup_buy' contract for 'bread'. Ensure citizens or logistics services are fulfilling delivery. Check 'fetch_resource' activities targeting your building.",
+        "Notes": "[Failures: 1]",
+        "Position": "{\"lat\": 45.442971, \"lng\": 12.326653}",
+        "Type": "waiting_for_resource_delivery"
+      }
+    },
+    {
+      "id": "recxosWBJ2voWt3Ow",
+      "fields": {
+        "ProblemId": "problem_pinpoint_canal_45.440596_12.321487_rope_WAITING_FOR_GALLEY_ARRIVAL",
+        "Citizen": "TravelBug23",
+        "Asset": "canal_45.440596_12.321487",
+        "AssetType": "building",
+        "Severity": "Medium",
+        "Status": "active",
+        "CreatedAt": "2025-06-25T07:38:03.515Z",
+        "UpdatedAt": "2025-06-25T05:38:04.000Z",
+        "Location": "Public Dock at Fondamenta degli Intagliatori",
+        "Title": "Waiting for Galley: rope at Public Dock at Fondamenta degli Intagliatori",
+        "Description": "Building 'Public Dock at Fondamenta degli Intagliatori' (ID: canal_45.440596_12.321487) is out of stock for 'rope' and is awaiting arrival of the delivering galley 'water_45.429289744829944_12.355581039951081_6'.",
+        "Solutions": "Monitor the import contract for 'rope'. The galley 'water_45.429289744829944_12.355581039951081_6' is still en route or its arrival has not yet been processed. Check galley's 'ConstructionDate'.",
+        "Position": "{\"lat\": 45.440596, \"lng\": 12.321487}",
         "Type": "waiting_for_galley_arrival"
       }
     },
     {
-      "id": "recIyP47PGvPnGdJ6",
+      "id": "recYGQt4e6lYcOfi4",
       "fields": {
-        "ProblemId": "problem_pinpoint_building_45.442971_12.326653_spiced_wine_RESOURCE_SHORTAGE",
+        "ProblemId": "problem_pinpoint_canal_45.440596_12.321487_porter_equipment_WAITING_FOR_GALLEY_ARRIVAL",
         "Citizen": "TravelBug23",
-        "Asset": "building_45.442971_12.326653",
+        "Asset": "canal_45.440596_12.321487",
         "AssetType": "building",
-        "Severity": "Critical",
+        "Severity": "Medium",
         "Status": "active",
-        "CreatedAt": "2025-06-15T23:53:20.758Z",
-        "UpdatedAt": "2025-06-15T21:53:21.000Z",
-        "Location": "Inn at Calle dei Forni",
-        "Title": "Resource Shortage: spiced_wine for Inn at Calle dei Forni",
-        "Description": "Building 'Inn at Calle dei Forni' (ID: building_45.442971_12.326653) is out of stock for 'spiced_wine', has a 'markup_buy' contract, but the resource appears to be unavailable or not actively sold elsewhere in Venice.",
-        "Solutions": "The resource 'spiced_wine' is currently scarce. Consider:\n- Increasing the buy price on your 'markup_buy' contract significantly to incentivize sellers.\n- If possible, find alternative resources or adjust production that depends on 'spiced_wine'.\n- Wait for market conditions to change (e.g., new imports by merchants).",
-        "Position": "{\"lat\": 45.442971, \"lng\": 12.326653}",
-        "Type": "resource_shortage"
+        "CreatedAt": "2025-06-25T07:38:01.143Z",
+        "UpdatedAt": "2025-06-25T05:38:01.000Z",
+        "Location": "Public Dock at Fondamenta degli Intagliatori",
+        "Title": "Waiting for Galley: porter_equipment at Public Dock at Fondamenta degli Intagliatori",
+        "Description": "Building 'Public Dock at Fondamenta degli Intagliatori' (ID: canal_45.440596_12.321487) is out of stock for 'porter_equipment' and is awaiting arrival of the delivering galley 'water_45.445441548202105_12.33497409408794_0'.",
+        "Solutions": "Monitor the import contract for 'porter_equipment'. The galley 'water_45.445441548202105_12.33497409408794_0' is still en route or its arrival has not yet been processed. Check galley's 'ConstructionDate'.",
+        "Position": "{\"lat\": 45.440596, \"lng\": 12.321487}",
+        "Type": "waiting_for_galley_arrival"
       }
     },
     {
-      "id": "rec9y2qvK37qYpTn0",
-      "fields": {
-        "ProblemId": "problem_pinpoint_building_45.442971_12.326653_wine_RESOURCE_SHORTAGE",
-        "Citizen": "TravelBug23",
-        "Asset": "building_45.442971_12.326653",
-        "AssetType": "building",
-        "Severity": "Critical",
-        "Status": "active",
-        "CreatedAt": "2025-06-15T23:53:17.110Z",
-        "UpdatedAt": "2025-06-15T21:53:17.000Z",
-        "Location": "Inn at Calle dei Forni",
-        "Title": "Resource Shortage: wine for Inn at Calle dei Forni",
-        "Description": "Building 'Inn at Calle dei Forni' (ID: building_45.442971_12.326653) is out of stock for 'wine', has a 'markup_buy' contract, but the resource appears to be unavailable or not actively sold elsewhere in Venice.",
-        "Solutions": "The resource 'wine' is currently scarce. Consider:\n- Increasing the buy price on your 'markup_buy' contract significantly to incentivize sellers.\n- If possible, find alternative resources or adjust production that depends on 'wine'.\n- Wait for market conditions to change (e.g., new imports by merchants).",
-        "Position": "{\"lat\": 45.442971, \"lng\": 12.326653}",
-        "Type": "resource_shortage"
-      }
-    },
-    {
-      "id": "recqrxHFbH5xPaui1",
-      "fields": {
-        "ProblemId": "problem_pinpoint_building_45.442971_12.326653_bread_RESOURCE_SHORTAGE",
-        "Citizen": "TravelBug23",
-        "Asset": "building_45.442971_12.326653",
-        "AssetType": "building",
-        "Severity": "Critical",
-        "Status": "active",
-        "CreatedAt": "2025-06-15T23:53:05.965Z",
-        "UpdatedAt": "2025-06-15T21:53:06.000Z",
-        "Location": "Inn at Calle dei Forni",
-        "Title": "Resource Shortage: bread for Inn at Calle dei Forni",
-        "Description": "Building 'Inn at Calle dei Forni' (ID: building_45.442971_12.326653) is out of stock for 'bread', has a 'markup_buy' contract, but the resource appears to be unavailable or not actively sold elsewhere in Venice.",
-        "Solutions": "The resource 'bread' is currently scarce. Consider:\n- Increasing the buy price on your 'markup_buy' contract significantly to incentivize sellers.\n- If possible, find alternative resources or adjust production that depends on 'bread'.\n- Wait for market conditions to change (e.g., new imports by merchants).",
-        "Position": "{\"lat\": 45.442971, \"lng\": 12.326653}",
-        "Type": "resource_shortage"
-      }
-    },
-    {
-      "id": "recym99MGZTj1HPTW",
-      "fields": {
-        "ProblemId": "problem_pinpoint_building_45.442971_12.326653_fish_RESOURCE_SHORTAGE",
-        "Citizen": "TravelBug23",
-        "Asset": "building_45.442971_12.326653",
-        "AssetType": "building",
-        "Severity": "Critical",
-        "Status": "active",
-        "CreatedAt": "2025-06-15T23:52:59.970Z",
-        "UpdatedAt": "2025-06-15T21:53:00.000Z",
-        "Location": "Inn at Calle dei Forni",
-        "Title": "Resource Shortage: fish for Inn at Calle dei Forni",
-        "Description": "Building 'Inn at Calle dei Forni' (ID: building_45.442971_12.326653) is out of stock for 'fish', has a 'markup_buy' contract, but the resource appears to be unavailable or not actively sold elsewhere in Venice.",
-        "Solutions": "The resource 'fish' is currently scarce. Consider:\n- Increasing the buy price on your 'markup_buy' contract significantly to incentivize sellers.\n- If possible, find alternative resources or adjust production that depends on 'fish'.\n- Wait for market conditions to change (e.g., new imports by merchants).",
-        "Position": "{\"lat\": 45.442971, \"lng\": 12.326653}",
-        "Type": "resource_shortage"
-      }
-    },
-    {
-      "id": "recSDVN1y7hLzDGC4",
+      "id": "rec1L9H7kx7r4CYx2",
       "fields": {
         "ProblemId": "problem_pinpoint_canal_45.440596_12.321487_small_boats_WAITING_FOR_GALLEY_ARRIVAL",
         "Citizen": "TravelBug23",
@@ -3439,8 +3264,8 @@ Here is the complete data about your current situation:
         "AssetType": "building",
         "Severity": "Medium",
         "Status": "active",
-        "CreatedAt": "2025-06-15T23:46:17.579Z",
-        "UpdatedAt": "2025-06-15T21:46:18.000Z",
+        "CreatedAt": "2025-06-25T07:37:59.429Z",
+        "UpdatedAt": "2025-06-25T05:38:00.000Z",
         "Location": "Public Dock at Fondamenta degli Intagliatori",
         "Title": "Waiting for Galley: small_boats at Public Dock at Fondamenta degli Intagliatori",
         "Description": "Building 'Public Dock at Fondamenta degli Intagliatori' (ID: canal_45.440596_12.321487) is out of stock for 'small_boats' and is awaiting arrival of the delivering galley 'Unknown Galley'.",
@@ -3450,215 +3275,43 @@ Here is the complete data about your current situation:
       }
     },
     {
-      "id": "rechucmQEES0K7IlU",
+      "id": "recQ2kYZFGxFQDivi",
       "fields": {
-        "ProblemId": "problem_pinpoint_building_45.444326_12.328722_wine_RESOURCE_SHORTAGE",
+        "ProblemId": "problem_pinpoint_building_45.444326_12.328722_olive_oil_WAITING_FOR_DELIVERY",
         "Citizen": "TravelBug23",
         "Asset": "building_45.444326_12.328722",
         "AssetType": "building",
-        "Severity": "Critical",
+        "Severity": "Medium",
         "Status": "active",
-        "CreatedAt": "2025-06-15T23:17:21.816Z",
-        "UpdatedAt": "2025-06-15T21:17:22.000Z",
+        "CreatedAt": "2025-06-25T07:23:37.487Z",
+        "UpdatedAt": "2025-06-25T09:35:56.000Z",
         "Location": "Contract Stall at Calle della Pasticceria",
-        "Title": "Resource Shortage: wine for Contract Stall at Calle della Pasticceria",
-        "Description": "Building 'Contract Stall at Calle della Pasticceria' (ID: building_45.444326_12.328722) is out of stock for 'wine', has a 'markup_buy' contract, but the resource appears to be unavailable or not actively sold elsewhere in Venice.",
-        "Solutions": "The resource 'wine' is currently scarce. Consider:\n- Increasing the buy price on your 'markup_buy' contract significantly to incentivize sellers.\n- If possible, find alternative resources or adjust production that depends on 'wine'.\n- Wait for market conditions to change (e.g., new imports by merchants).",
+        "Title": "Waiting for Delivery: olive_oil at Contract Stall at Calle della Pasticceria",
+        "Description": "Building 'Contract Stall at Calle della Pasticceria' (ID: building_45.444326_12.328722) is out of stock for 'olive_oil', has an active 'markup_buy' contract, and the resource is available elsewhere. Awaiting delivery.",
+        "Solutions": "Monitor the 'markup_buy' contract for 'olive_oil'. Ensure citizens or logistics services are fulfilling delivery. Check 'fetch_resource' activities targeting your building.",
+        "Notes": "[Failures: 1]",
         "Position": "{\"lat\": 45.444326, \"lng\": 12.328722}",
-        "Type": "resource_shortage"
+        "Type": "waiting_for_resource_delivery"
       }
     },
     {
-      "id": "recsQnXxeXI5LH4yH",
+      "id": "rec1lSAONWant4AW5",
       "fields": {
-        "ProblemId": "problem_pinpoint_building_45.444326_12.328722_salt_RESOURCE_SHORTAGE",
+        "ProblemId": "hungry_TravelBug23",
         "Citizen": "TravelBug23",
-        "Asset": "building_45.444326_12.328722",
-        "AssetType": "building",
-        "Severity": "Critical",
+        "Asset": "TravelBug23",
+        "AssetType": "citizen",
+        "Severity": "medium",
         "Status": "active",
-        "CreatedAt": "2025-06-15T23:17:10.262Z",
-        "UpdatedAt": "2025-06-15T21:17:10.000Z",
-        "Location": "Contract Stall at Calle della Pasticceria",
-        "Title": "Resource Shortage: salt for Contract Stall at Calle della Pasticceria",
-        "Description": "Building 'Contract Stall at Calle della Pasticceria' (ID: building_45.444326_12.328722) is out of stock for 'salt', has a 'markup_buy' contract, but the resource appears to be unavailable or not actively sold elsewhere in Venice.",
-        "Solutions": "The resource 'salt' is currently scarce. Consider:\n- Increasing the buy price on your 'markup_buy' contract significantly to incentivize sellers.\n- If possible, find alternative resources or adjust production that depends on 'salt'.\n- Wait for market conditions to change (e.g., new imports by merchants).",
-        "Position": "{\"lat\": 45.444326, \"lng\": 12.328722}",
-        "Type": "resource_shortage"
-      }
-    },
-    {
-      "id": "rec1lBcfEXDgncxRp",
-      "fields": {
-        "ProblemId": "problem_pinpoint_building_45.444326_12.328722_preserved_fish_RESOURCE_SHORTAGE",
-        "Citizen": "TravelBug23",
-        "Asset": "building_45.444326_12.328722",
-        "AssetType": "building",
-        "Severity": "Critical",
-        "Status": "active",
-        "CreatedAt": "2025-06-15T23:16:55.474Z",
-        "UpdatedAt": "2025-06-15T21:16:56.000Z",
-        "Location": "Contract Stall at Calle della Pasticceria",
-        "Title": "Resource Shortage: preserved_fish for Contract Stall at Calle della Pasticceria",
-        "Description": "Building 'Contract Stall at Calle della Pasticceria' (ID: building_45.444326_12.328722) is out of stock for 'preserved_fish', has a 'markup_buy' contract, but the resource appears to be unavailable or not actively sold elsewhere in Venice.",
-        "Solutions": "The resource 'preserved_fish' is currently scarce. Consider:\n- Increasing the buy price on your 'markup_buy' contract significantly to incentivize sellers.\n- If possible, find alternative resources or adjust production that depends on 'preserved_fish'.\n- Wait for market conditions to change (e.g., new imports by merchants).",
-        "Position": "{\"lat\": 45.444326, \"lng\": 12.328722}",
-        "Type": "resource_shortage"
-      }
-    },
-    {
-      "id": "recKHFnvvn0u99kq5",
-      "fields": {
-        "ProblemId": "problem_pinpoint_building_45.444326_12.328722_olives_RESOURCE_SHORTAGE",
-        "Citizen": "TravelBug23",
-        "Asset": "building_45.444326_12.328722",
-        "AssetType": "building",
-        "Severity": "Critical",
-        "Status": "active",
-        "CreatedAt": "2025-06-15T23:16:45.112Z",
-        "UpdatedAt": "2025-06-15T21:16:45.000Z",
-        "Location": "Contract Stall at Calle della Pasticceria",
-        "Title": "Resource Shortage: olives for Contract Stall at Calle della Pasticceria",
-        "Description": "Building 'Contract Stall at Calle della Pasticceria' (ID: building_45.444326_12.328722) is out of stock for 'olives', has a 'markup_buy' contract, but the resource appears to be unavailable or not actively sold elsewhere in Venice.",
-        "Solutions": "The resource 'olives' is currently scarce. Consider:\n- Increasing the buy price on your 'markup_buy' contract significantly to incentivize sellers.\n- If possible, find alternative resources or adjust production that depends on 'olives'.\n- Wait for market conditions to change (e.g., new imports by merchants).",
-        "Position": "{\"lat\": 45.444326, \"lng\": 12.328722}",
-        "Type": "resource_shortage"
-      }
-    },
-    {
-      "id": "rectNc5HHrxO5UwgP",
-      "fields": {
-        "ProblemId": "problem_pinpoint_building_45.444326_12.328722_olive_oil_RESOURCE_SHORTAGE",
-        "Citizen": "TravelBug23",
-        "Asset": "building_45.444326_12.328722",
-        "AssetType": "building",
-        "Severity": "Critical",
-        "Status": "active",
-        "CreatedAt": "2025-06-15T23:16:39.875Z",
-        "UpdatedAt": "2025-06-15T21:16:40.000Z",
-        "Location": "Contract Stall at Calle della Pasticceria",
-        "Title": "Resource Shortage: olive_oil for Contract Stall at Calle della Pasticceria",
-        "Description": "Building 'Contract Stall at Calle della Pasticceria' (ID: building_45.444326_12.328722) is out of stock for 'olive_oil', has a 'markup_buy' contract, but the resource appears to be unavailable or not actively sold elsewhere in Venice.",
-        "Solutions": "The resource 'olive_oil' is currently scarce. Consider:\n- Increasing the buy price on your 'markup_buy' contract significantly to incentivize sellers.\n- If possible, find alternative resources or adjust production that depends on 'olive_oil'.\n- Wait for market conditions to change (e.g., new imports by merchants).",
-        "Position": "{\"lat\": 45.444326, \"lng\": 12.328722}",
-        "Type": "resource_shortage"
-      }
-    },
-    {
-      "id": "recJao1ydJjwnT2OO",
-      "fields": {
-        "ProblemId": "problem_pinpoint_building_45.444326_12.328722_flour_RESOURCE_SHORTAGE",
-        "Citizen": "TravelBug23",
-        "Asset": "building_45.444326_12.328722",
-        "AssetType": "building",
-        "Severity": "Critical",
-        "Status": "active",
-        "CreatedAt": "2025-06-15T23:16:35.009Z",
-        "UpdatedAt": "2025-06-15T21:16:35.000Z",
-        "Location": "Contract Stall at Calle della Pasticceria",
-        "Title": "Resource Shortage: flour for Contract Stall at Calle della Pasticceria",
-        "Description": "Building 'Contract Stall at Calle della Pasticceria' (ID: building_45.444326_12.328722) is out of stock for 'flour', has a 'markup_buy' contract, but the resource appears to be unavailable or not actively sold elsewhere in Venice.",
-        "Solutions": "The resource 'flour' is currently scarce. Consider:\n- Increasing the buy price on your 'markup_buy' contract significantly to incentivize sellers.\n- If possible, find alternative resources or adjust production that depends on 'flour'.\n- Wait for market conditions to change (e.g., new imports by merchants).",
-        "Position": "{\"lat\": 45.444326, \"lng\": 12.328722}",
-        "Type": "resource_shortage"
-      }
-    },
-    {
-      "id": "recmpFmZNADhGzhVw",
-      "fields": {
-        "ProblemId": "problem_pinpoint_building_45.444326_12.328722_fish_RESOURCE_SHORTAGE",
-        "Citizen": "TravelBug23",
-        "Asset": "building_45.444326_12.328722",
-        "AssetType": "building",
-        "Severity": "Critical",
-        "Status": "active",
-        "CreatedAt": "2025-06-15T23:16:28.619Z",
-        "UpdatedAt": "2025-06-15T21:16:29.000Z",
-        "Location": "Contract Stall at Calle della Pasticceria",
-        "Title": "Resource Shortage: fish for Contract Stall at Calle della Pasticceria",
-        "Description": "Building 'Contract Stall at Calle della Pasticceria' (ID: building_45.444326_12.328722) is out of stock for 'fish', has a 'markup_buy' contract, but the resource appears to be unavailable or not actively sold elsewhere in Venice.",
-        "Solutions": "The resource 'fish' is currently scarce. Consider:\n- Increasing the buy price on your 'markup_buy' contract significantly to incentivize sellers.\n- If possible, find alternative resources or adjust production that depends on 'fish'.\n- Wait for market conditions to change (e.g., new imports by merchants).",
-        "Position": "{\"lat\": 45.444326, \"lng\": 12.328722}",
-        "Type": "resource_shortage"
-      }
-    },
-    {
-      "id": "recwxiMTasQ0kz69y",
-      "fields": {
-        "ProblemId": "problem_pinpoint_building_45.444326_12.328722_bread_RESOURCE_SHORTAGE",
-        "Citizen": "TravelBug23",
-        "Asset": "building_45.444326_12.328722",
-        "AssetType": "building",
-        "Severity": "Critical",
-        "Status": "active",
-        "CreatedAt": "2025-06-15T23:16:06.316Z",
-        "UpdatedAt": "2025-06-15T21:16:06.000Z",
-        "Location": "Contract Stall at Calle della Pasticceria",
-        "Title": "Resource Shortage: bread for Contract Stall at Calle della Pasticceria",
-        "Description": "Building 'Contract Stall at Calle della Pasticceria' (ID: building_45.444326_12.328722) is out of stock for 'bread', has a 'markup_buy' contract, but the resource appears to be unavailable or not actively sold elsewhere in Venice.",
-        "Solutions": "The resource 'bread' is currently scarce. Consider:\n- Increasing the buy price on your 'markup_buy' contract significantly to incentivize sellers.\n- If possible, find alternative resources or adjust production that depends on 'bread'.\n- Wait for market conditions to change (e.g., new imports by merchants).",
-        "Position": "{\"lat\": 45.444326, \"lng\": 12.328722}",
-        "Type": "resource_shortage"
-      }
-    },
-    {
-      "id": "recCb9lBz5IzbAdnQ",
-      "fields": {
-        "ProblemId": "hungry_employee_impact_TravelBug23_VenetianBoss",
-        "Citizen": "TravelBug23",
-        "Asset": "VenetianBoss",
-        "AssetType": "employee_performance",
-        "Severity": "low",
-        "Status": "active",
-        "CreatedAt": "2025-06-15T22:08:22.865Z",
-        "UpdatedAt": "2025-06-15T22:08:30.000Z",
-        "Location": "Public Dock at Fondamenta degli Intagliatori",
-        "Title": "Hungry Employee Impact",
-        "Description": "Your employee, **Lucia Zanchi**, is currently hungry. Hunger can significantly reduce productivity (up to 50%).",
-        "Solutions": "Ensure **Lucia Zanchi** has the means and opportunity to eat. Consider if wages are sufficient or if working conditions impede access to food. Monitor their performance.",
-        "Notes": "Hungry Employee: VenetianBoss (ID: VenetianBoss), Workplace: Public Dock at Fondamenta degli Intagliatori (ID: canal_45.440596_12.321487). Last ate: 2025-06-14T12:03:50.135Z.",
-        "Position": "{\"lat\":45.440596,\"lng\":12.321487}",
-        "Type": "hungry_employee_impact"
-      }
-    },
-    {
-      "id": "recZhXBHqgD1FQex3",
-      "fields": {
-        "ProblemId": "hungry_employee_impact_TravelBug23_VeniceTrader88",
-        "Citizen": "TravelBug23",
-        "Asset": "VeniceTrader88",
-        "AssetType": "employee_performance",
-        "Severity": "low",
-        "Status": "active",
-        "CreatedAt": "2025-06-15T22:08:22.861Z",
-        "UpdatedAt": "2025-06-15T22:08:30.000Z",
-        "Location": "Contract Stall at Calle della Pasticceria",
-        "Title": "Hungry Employee Impact",
-        "Description": "Your employee, **Bernardo Navagero**, is currently hungry. Hunger can significantly reduce productivity (up to 50%).",
-        "Solutions": "Ensure **Bernardo Navagero** has the means and opportunity to eat. Consider if wages are sufficient or if working conditions impede access to food. Monitor their performance.",
-        "Notes": "Hungry Employee: VeniceTrader88 (ID: VeniceTrader88), Workplace: Contract Stall at Calle della Pasticceria (ID: building_45.444326_12.328722). Last ate: 2025-06-09T17:09:31.339Z.",
-        "Position": "{\"lat\":45.444326,\"lng\":12.328722}",
-        "Type": "hungry_employee_impact"
-      }
-    },
-    {
-      "id": "recF1LjZkAJw61UDX",
-      "fields": {
-        "ProblemId": "hungry_employee_impact_TravelBug23_meyti_tgz2",
-        "Citizen": "TravelBug23",
-        "Asset": "meyti_tgz2",
-        "AssetType": "employee_performance",
-        "Severity": "low",
-        "Status": "active",
-        "CreatedAt": "2025-06-15T22:08:22.854Z",
-        "UpdatedAt": "2025-06-15T22:08:30.000Z",
-        "Location": "Inn at Calle dei Forni",
-        "Title": "Hungry Employee Impact",
-        "Description": "Your employee, **mahdi taghizadeh**, is currently hungry. Hunger can significantly reduce productivity (up to 50%).",
-        "Solutions": "Ensure **mahdi taghizadeh** has the means and opportunity to eat. Consider if wages are sufficient or if working conditions impede access to food. Monitor their performance.",
-        "Notes": "Hungry Employee: meyti_tgz2 (ID: meyti_tgz2), Workplace: Inn at Calle dei Forni (ID: building_45.442971_12.326653). Last ate: 2025-06-09T17:58:30.756Z.",
-        "Position": "{\"lat\":45.442971,\"lng\":12.326653}",
-        "Type": "hungry_employee_impact"
+        "CreatedAt": "2025-06-25T05:46:13.932Z",
+        "UpdatedAt": "2025-06-25T09:16:24.000Z",
+        "Location": "Ludovico's last known area",
+        "Title": "Hungry Citizen",
+        "Description": "**Ludovico Malipiero** has not eaten in over 24 hours and is now hungry. This can affect their well-being and ability to perform tasks effectively.\n\n### Impact\n- Reduced energy and focus.\n- If employed, work productivity may be reduced by up to 50%.\n- Prolonged hunger can lead to more severe health issues (if implemented).",
+        "Solutions": "### Recommended Solutions\n- Ensure the citizen consumes food. This might involve visiting a tavern, purchasing food from a market, or using owned food resources.\n- Check if the citizen has sufficient Ducats to afford food.\n- Review game mechanics related to food consumption and ensure the 'AteAt' (or equivalent) field is updated correctly after eating.",
+        "Notes": "[Failures: 1]\nCitizen TravelBug23 last ate at 2025-06-16T20:11:25.611Z. Current time: 2025-06-25T05:46:13.908Z",
+        "Position": "{\"lat\":45.440862333333335,\"lng\":12.327658999999999}",
+        "Type": "hungry_citizen"
       }
     }
   ],
@@ -3948,314 +3601,6 @@ Here is the complete data about your current situation:
       },
       "createdAt": "2025-06-12T12:48:38.866Z",
       "readAt": "2025-06-12T12:48:38.978Z"
-    },
-    {
-      "notificationId": "recvyfiYTFMGlGMp8",
-      "type": "markup_buy_contract_updated",
-      "citizen": "TravelBug23",
-      "content": "Your buy order for gondola (markup_buy_main_canal_45.440596_12.321487_gondola) has been updated.",
-      "details": {
-        "contractId": "markup_buy_main_canal_45.440596_12.321487_gondola"
-      },
-      "createdAt": "2025-06-12T00:18:46.644Z",
-      "readAt": "2025-06-12T00:19:07.962Z"
-    },
-    {
-      "notificationId": "reclaOlVDgFLUztCp",
-      "type": "markup_buy_contract_updated",
-      "citizen": "TravelBug23",
-      "content": "Your buy order for porter_equipment (markup_buy_main_canal_45.440596_12.321487_porter_equipment) has been updated.",
-      "details": {
-        "contractId": "markup_buy_main_canal_45.440596_12.321487_porter_equipment"
-      },
-      "createdAt": "2025-06-12T00:09:14.830Z",
-      "readAt": "2025-06-12T00:09:36.102Z"
-    },
-    {
-      "notificationId": "recZ5VWKdaxImuDui",
-      "type": "markup_buy_contract_updated",
-      "citizen": "TravelBug23",
-      "content": "Your buy order for small_boats (markup_buy_main_canal_45.440596_12.321487_small_boats) has been updated.",
-      "details": {
-        "contractId": "markup_buy_main_canal_45.440596_12.321487_small_boats"
-      },
-      "createdAt": "2025-06-11T23:39:24.068Z",
-      "readAt": "2025-06-11T23:39:45.739Z"
-    },
-    {
-      "notificationId": "recDBALDgGIoPkWsx",
-      "type": "markup_buy_contract_updated",
-      "citizen": "TravelBug23",
-      "content": "Your buy order for olives (markup_buy_main_building_45.444326_12.328722_olives) has been updated.",
-      "details": {
-        "contractId": "markup_buy_main_building_45.444326_12.328722_olives"
-      },
-      "createdAt": "2025-06-10T12:57:51.499Z",
-      "readAt": "2025-06-10T12:57:51.613Z"
-    },
-    {
-      "notificationId": "recqu4MggXs3Qxbpv",
-      "type": "markup_buy_contract_updated",
-      "citizen": "TravelBug23",
-      "content": "Your buy order for olive_oil (markup_buy_main_building_45.444326_12.328722_olive_oil) has been updated.",
-      "details": {
-        "contractId": "markup_buy_main_building_45.444326_12.328722_olive_oil"
-      },
-      "createdAt": "2025-06-10T12:57:23.817Z",
-      "readAt": "2025-06-10T12:57:23.935Z"
-    },
-    {
-      "notificationId": "rec9AHib5S4YPNtry",
-      "type": "markup_buy_contract_updated",
-      "citizen": "TravelBug23",
-      "content": "Your buy order for flour (markup_buy_main_building_45.444326_12.328722_flour) has been updated.",
-      "details": {
-        "contractId": "markup_buy_main_building_45.444326_12.328722_flour"
-      },
-      "createdAt": "2025-06-10T12:56:40.670Z",
-      "readAt": "2025-06-10T12:56:40.796Z"
-    },
-    {
-      "notificationId": "recQBSNKBrUwV36Ic",
-      "type": "markup_buy_contract_updated",
-      "citizen": "TravelBug23",
-      "content": "Your buy order for bread (markup_buy_main_building_45.442971_12.326653_bread) has been updated.",
-      "details": {
-        "contractId": "markup_buy_main_building_45.442971_12.326653_bread"
-      },
-      "createdAt": "2025-06-10T12:56:06.502Z",
-      "readAt": "2025-06-10T12:56:06.686Z"
-    },
-    {
-      "notificationId": "rec0qiDnyL9FbUlmU",
-      "type": "markup_buy_contract_updated",
-      "citizen": "TravelBug23",
-      "content": "Your buy order for olives (markup_buy_main_building_45.431034_12.353209_olives) has been updated.",
-      "details": {
-        "contractId": "markup_buy_main_building_45.431034_12.353209_olives"
-      },
-      "createdAt": "2025-06-10T12:54:20.286Z",
-      "readAt": "2025-06-10T12:54:20.419Z"
-    },
-    {
-      "notificationId": "recd6ZtxGH983kRQz",
-      "type": "markup_buy_contract_updated",
-      "citizen": "TravelBug23",
-      "content": "Your buy order for olive_oil (markup_buy_main_building_45.431034_12.353209_olive_oil) has been updated.",
-      "details": {
-        "contractId": "markup_buy_main_building_45.431034_12.353209_olive_oil"
-      },
-      "createdAt": "2025-06-10T12:53:11.594Z",
-      "readAt": "2025-06-10T12:53:11.753Z"
-    },
-    {
-      "notificationId": "rec1n7M47VOhazQcM",
-      "type": "markup_buy_contract_updated",
-      "citizen": "TravelBug23",
-      "content": "Your buy order for flour (markup_buy_main_building_45.431034_12.353209_flour) has been updated.",
-      "details": {
-        "contractId": "markup_buy_main_building_45.431034_12.353209_flour"
-      },
-      "createdAt": "2025-06-10T12:52:05.969Z",
-      "readAt": "2025-06-10T12:52:06.100Z"
-    },
-    {
-      "notificationId": "recswXYMtdAny0hlu",
-      "type": "markup_buy_contract_updated",
-      "citizen": "TravelBug23",
-      "content": "Your buy order for bread (markup_buy_main_building_45.431034_12.353209_bread) has been updated.",
-      "details": {
-        "contractId": "markup_buy_main_building_45.431034_12.353209_bread"
-      },
-      "createdAt": "2025-06-10T12:51:19.426Z",
-      "readAt": "2025-06-10T12:51:19.569Z"
-    },
-    {
-      "notificationId": "recEomE95Ato964PC",
-      "type": "markup_buy_contract_updated",
-      "citizen": "TravelBug23",
-      "content": "Your buy order for bread (markup_buy_main_building_45.444326_12.328722_bread) has been updated.",
-      "details": {
-        "contractId": "markup_buy_main_building_45.444326_12.328722_bread"
-      },
-      "createdAt": "2025-06-10T12:48:32.853Z",
-      "readAt": "2025-06-10T12:48:32.961Z"
-    },
-    {
-      "notificationId": "rec7ZHI1hDoFs7cJh",
-      "type": "markup_buy_contract_updated",
-      "citizen": "TravelBug23",
-      "content": "Your buy order for spiced_wine (markup_buy_main_building_45.442971_12.326653_spiced_wine) has been updated.",
-      "details": {
-        "contractId": "markup_buy_main_building_45.442971_12.326653_spiced_wine"
-      },
-      "createdAt": "2025-06-10T03:11:21.517Z",
-      "readAt": "2025-06-10T03:11:21.728Z"
-    },
-    {
-      "notificationId": "recm1ImdlyCxKYPoE",
-      "type": "markup_buy_contract_updated",
-      "citizen": "TravelBug23",
-      "content": "Your buy order for wine (markup_buy_main_building_45.442971_12.326653_wine) has been updated.",
-      "details": {
-        "contractId": "markup_buy_main_building_45.442971_12.326653_wine"
-      },
-      "createdAt": "2025-06-10T03:11:20.327Z",
-      "readAt": "2025-06-10T03:11:20.974Z"
-    },
-    {
-      "notificationId": "recT5AhDbrFbWdSwW",
-      "type": "markup_buy_contract_updated",
-      "citizen": "TravelBug23",
-      "content": "Your buy order for bread (markup_buy_main_building_45.442971_12.326653_bread) has been updated.",
-      "details": {
-        "contractId": "markup_buy_main_building_45.442971_12.326653_bread"
-      },
-      "createdAt": "2025-06-10T03:11:19.192Z",
-      "readAt": "2025-06-10T03:11:20.006Z"
-    },
-    {
-      "notificationId": "recdcaMJ5pJ8oq9uf",
-      "type": "markup_buy_contract_updated",
-      "citizen": "TravelBug23",
-      "content": "Your buy order for fish (markup_buy_main_building_45.442971_12.326653_fish) has been updated.",
-      "details": {
-        "contractId": "markup_buy_main_building_45.442971_12.326653_fish"
-      },
-      "createdAt": "2025-06-10T03:11:18.827Z",
-      "readAt": "2025-06-10T03:11:19.538Z"
-    },
-    {
-      "notificationId": "recSczgV7YrVPyhmY",
-      "type": "markup_buy_contract_updated",
-      "citizen": "TravelBug23",
-      "content": "Your buy order for rope (markup_buy_main_canal_45.440596_12.321487_rope) has been updated.",
-      "details": {
-        "contractId": "markup_buy_main_canal_45.440596_12.321487_rope"
-      },
-      "createdAt": "2025-06-10T03:11:18.318Z",
-      "readAt": "2025-06-10T03:11:18.943Z"
-    },
-    {
-      "notificationId": "recWDMQMNG4pzZDVq",
-      "type": "markup_buy_contract_updated",
-      "citizen": "TravelBug23",
-      "content": "Your buy order for gondola (markup_buy_main_canal_45.440596_12.321487_gondola) has been updated.",
-      "details": {
-        "contractId": "markup_buy_main_canal_45.440596_12.321487_gondola"
-      },
-      "createdAt": "2025-06-10T03:11:17.442Z",
-      "readAt": "2025-06-10T03:11:18.378Z"
-    },
-    {
-      "notificationId": "recbgoE5WgdqJyyCi",
-      "type": "markup_buy_contract_updated",
-      "citizen": "TravelBug23",
-      "content": "Your buy order for porter_equipment (markup_buy_main_canal_45.440596_12.321487_porter_equipment) has been updated.",
-      "details": {
-        "contractId": "markup_buy_main_canal_45.440596_12.321487_porter_equipment"
-      },
-      "createdAt": "2025-06-10T03:11:16.517Z",
-      "readAt": "2025-06-10T03:11:17.217Z"
-    },
-    {
-      "notificationId": "recEzOUxOr6skvXtb",
-      "type": "markup_buy_contract_updated",
-      "citizen": "TravelBug23",
-      "content": "Your buy order for small_boats (markup_buy_main_canal_45.440596_12.321487_small_boats) has been updated.",
-      "details": {
-        "contractId": "markup_buy_main_canal_45.440596_12.321487_small_boats"
-      },
-      "createdAt": "2025-06-10T03:11:16.171Z",
-      "readAt": "2025-06-10T03:11:16.800Z"
-    },
-    {
-      "notificationId": "recu7MwgAqbycwEYb",
-      "type": "markup_buy_contract_updated",
-      "citizen": "TravelBug23",
-      "content": "Your buy order for wine (markup_buy_main_building_45.444326_12.328722_wine) has been updated.",
-      "details": {
-        "contractId": "markup_buy_main_building_45.444326_12.328722_wine"
-      },
-      "createdAt": "2025-06-10T03:06:25.440Z",
-      "readAt": "2025-06-10T03:06:26.618Z"
-    },
-    {
-      "notificationId": "recEidxtYhbjzKLTM",
-      "type": "markup_buy_contract_updated",
-      "citizen": "TravelBug23",
-      "content": "Your buy order for preserved_fish (markup_buy_main_building_45.444326_12.328722_preserved_fish) has been updated.",
-      "details": {
-        "contractId": "markup_buy_main_building_45.444326_12.328722_preserved_fish"
-      },
-      "createdAt": "2025-06-10T03:06:25.306Z",
-      "readAt": "2025-06-10T03:06:26.463Z"
-    },
-    {
-      "notificationId": "recYQYZ3q5NyKp9hR",
-      "type": "markup_buy_contract_updated",
-      "citizen": "TravelBug23",
-      "content": "Your buy order for salt (markup_buy_main_building_45.444326_12.328722_salt) has been updated.",
-      "details": {
-        "contractId": "markup_buy_main_building_45.444326_12.328722_salt"
-      },
-      "createdAt": "2025-06-10T03:06:25.154Z",
-      "readAt": "2025-06-10T03:06:26.290Z"
-    },
-    {
-      "notificationId": "recXgbHzdxWXOLGYr",
-      "type": "markup_buy_contract_updated",
-      "citizen": "TravelBug23",
-      "content": "Your buy order for olives (markup_buy_main_building_45.444326_12.328722_olives) has been updated.",
-      "details": {
-        "contractId": "markup_buy_main_building_45.444326_12.328722_olives"
-      },
-      "createdAt": "2025-06-10T03:06:24.765Z",
-      "readAt": "2025-06-10T03:06:26.079Z"
-    },
-    {
-      "notificationId": "rec9bJUSoFx8bStjQ",
-      "type": "markup_buy_contract_updated",
-      "citizen": "TravelBug23",
-      "content": "Your buy order for olive_oil (markup_buy_main_building_45.444326_12.328722_olive_oil) has been updated.",
-      "details": {
-        "contractId": "markup_buy_main_building_45.444326_12.328722_olive_oil"
-      },
-      "createdAt": "2025-06-10T03:06:24.226Z",
-      "readAt": "2025-06-10T03:06:25.408Z"
-    },
-    {
-      "notificationId": "reckE3fJcwoSXOsd3",
-      "type": "markup_buy_contract_updated",
-      "citizen": "TravelBug23",
-      "content": "Your buy order for flour (markup_buy_main_building_45.444326_12.328722_flour) has been updated.",
-      "details": {
-        "contractId": "markup_buy_main_building_45.444326_12.328722_flour"
-      },
-      "createdAt": "2025-06-10T03:06:23.792Z",
-      "readAt": "2025-06-10T03:06:24.439Z"
-    },
-    {
-      "notificationId": "reczUYPHEjxj1A9kT",
-      "type": "markup_buy_contract_updated",
-      "citizen": "TravelBug23",
-      "content": "Your buy order for fish (markup_buy_main_building_45.444326_12.328722_fish) has been updated.",
-      "details": {
-        "contractId": "markup_buy_main_building_45.444326_12.328722_fish"
-      },
-      "createdAt": "2025-06-10T03:06:23.522Z",
-      "readAt": "2025-06-10T03:06:24.197Z"
-    },
-    {
-      "notificationId": "recY4AzoKyEt2PiRE",
-      "type": "markup_buy_contract_updated",
-      "citizen": "TravelBug23",
-      "content": "Your buy order for bread (markup_buy_main_building_45.444326_12.328722_bread) has been updated.",
-      "details": {
-        "contractId": "markup_buy_main_building_45.444326_12.328722_bread"
-      },
-      "createdAt": "2025-06-10T03:06:22.701Z",
-      "readAt": "2025-06-10T03:06:23.155Z"
     }
   ],
   "building_types": {
@@ -4727,6 +4072,25 @@ Here is the complete data about your current situation:
       "category": "home",
       "pointType": "building"
     },
+    "mill": {
+      "id": "mill",
+      "type": "mill",
+      "name": "Mill",
+      "shortDescription": "Industrial facility that grinds grain into flour, essential for bread production.",
+      "constructionCost": 1800000,
+      "constructionCosts": {
+        "ducats": 1800000,
+        "timber": 420,
+        "bricks": 850,
+        "stone": 1200,
+        "iron": 280
+      },
+      "constructionMinutes": 7200,
+      "buildTier": 2,
+      "tier": null,
+      "category": "business",
+      "pointType": "building"
+    },
     "navigation_school": {
       "id": "navigation_school",
       "type": "navigation_school",
@@ -5162,32 +4526,8 @@ Here is the complete data about your current situation:
       "pointType": "building"
     }
   },
-  "timestamp": "2025-06-24T21:48:57.212565+02:00",
+  "timestamp": "2025-06-26T22:29:37.246602+02:00",
   "building_ownership_relevancies": [
-    {
-      "asset": "canal_45.440972_12.321895",
-      "asset_type": "building",
-      "category": "ownership_conflict",
-      "type": "building_on_others_land",
-      "target_citizen": "BasstheWhale",
-      "score": 70,
-      "time_horizon": "medium",
-      "title": "Your Fisherman's Cottage at Riva dei Corteleri is on land owned by \"BasstheWhale\".",
-      "description": "You own a **Fisherman's Cottage at Riva dei Corteleri** on land owned by **BasstheWhale**.",
-      "status": "medium"
-    },
-    {
-      "asset": "canal_45.440972_12.321895",
-      "asset_type": "building",
-      "category": "ownership_conflict",
-      "type": "others_building_on_your_land",
-      "target_citizen": "TravelBug23",
-      "score": 70,
-      "time_horizon": "medium",
-      "title": "\"TravelBug23\" owns a Fisherman's Cottage at Riva dei Corteleri on your land.",
-      "description": "**TravelBug23** owns a **Fisherman's Cottage at Riva dei Corteleri** on your land.",
-      "status": "medium"
-    },
     {
       "asset": "building_45.431034_12.353209",
       "asset_type": "building",
@@ -5211,6 +4551,30 @@ Here is the complete data about your current situation:
       "title": "\"TravelBug23\" owns a Contract Stall at Rio Ter\u00e0 delle Muneghe on your land.",
       "description": "**TravelBug23** owns a **Contract Stall at Rio Ter\u00e0 delle Muneghe** on your land.",
       "status": "high"
+    },
+    {
+      "asset": "canal_45.440972_12.321895",
+      "asset_type": "building",
+      "category": "ownership_conflict",
+      "type": "building_on_others_land",
+      "target_citizen": "BasstheWhale",
+      "score": 70,
+      "time_horizon": "medium",
+      "title": "Your Fisherman's Cottage at Riva dei Corteleri is on land owned by \"BasstheWhale\".",
+      "description": "You own a **Fisherman's Cottage at Riva dei Corteleri** on land owned by **BasstheWhale**.",
+      "status": "medium"
+    },
+    {
+      "asset": "canal_45.440972_12.321895",
+      "asset_type": "building",
+      "category": "ownership_conflict",
+      "type": "others_building_on_your_land",
+      "target_citizen": "TravelBug23",
+      "score": 70,
+      "time_horizon": "medium",
+      "title": "\"TravelBug23\" owns a Fisherman's Cottage at Riva dei Corteleri on your land.",
+      "description": "**TravelBug23** owns a **Fisherman's Cottage at Riva dei Corteleri** on your land.",
+      "status": "medium"
     }
   ]
 }
