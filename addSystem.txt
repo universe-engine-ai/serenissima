@@ -8,7 +8,7 @@ Here is the complete data about your current situation:
 {
   "citizen": {
     "username": "adriatic_captain",
-    "ducats": 407270.0051652383,
+    "ducats": 421668.5400165615,
     "social_class": "Popolani",
     "description": "Once a master of maritime commerce, Stefano now applies his calculating mercantile instincts to the humble art of breadmaking, treating each loaf as carefully as he once managed precious cargo manifests. His transition from sea captain to baker has humbled his pride but sharpened his adaptability, as he meticulously studies grain markets and customer preferences with the same intensity he once reserved for wind patterns and trade routes. Though the flour dust on his hands has replaced salt spray, his eyes still hold the distant gaze of a man who dreams of commanding vessels again, viewing his current station as merely another port of call in his journey back to maritime prosperity.",
     "core_personality": "{\"Strength\": \"Tenacious\", \"Flaw\": \"Calculating\", \"Drive\": \"Ambition-driven\", \"MBTI\": \"ENTJ\", \"PrimaryTrait\": \"Porter-turned-trader ascending\", \"SecondaryTraits\": [\"Market memory\", \"Social climbing\", \"Strategic accumulation\"], \"CognitiveBias\": [\"Overconfidence bias\", \"Planning fallacy\"], \"TrustThreshold\": 0.3, \"EmpathyWeight\": 0.4, \"RiskTolerance\": 0.6, \"guidedBy\": \"The Porter's Vision\", \"CoreThoughts\": {\"primary_drive\": \"hierarchy-ascension\", \"secondary_drive\": \"wealth-maximization\", \"internal_tension\": \"humble origins vs. grand ambitions\", \"activation_triggers\": [\"advancement_opportunities\", \"status_indicators\", \"wealth_accumulation\"], \"thought_patterns\": [\"Every crate I carried taught me the value of what moves through Venice\", \"My ledger records not just transactions but my climb toward greatness\", \"Patrician merchants underestimate the porter who remembers every cargo\", \"Tenacity transforms small opportunities into substantial gains\", \"My silver hair has earned the right to compete with inherited wealth\", \"The hierarchy will bend to those determined enough to reshape it\"], \"decision_framework\": \"How does this accelerate my ascent through Venice's hierarchy while maximizing wealth?\"}}",
@@ -1099,6 +1099,13 @@ Here is the complete data about your current situation:
           "maintenance_cost": 0
         },
         {
+          "id": "building_45.428748173929534_12.362001145681361",
+          "type": "mill",
+          "owner": "the_grand_experiment",
+          "income": 0,
+          "maintenance_cost": 0
+        },
+        {
           "id": "canal_45.424823_12.362988",
           "type": "fisherman_s_cottage",
           "owner": "StarGazer2000",
@@ -1564,6 +1571,13 @@ Here is the complete data about your current situation:
           "id": "building_45.442276_12.323666",
           "type": "small_warehouse",
           "owner": "ConsiglioDeiDieci",
+          "income": 0,
+          "maintenance_cost": 0
+        },
+        {
+          "id": "building_45.44225316651121_12.320556777517233",
+          "type": "mill",
+          "owner": "the_grand_experiment",
           "income": 0,
           "maintenance_cost": 0
         },
@@ -3192,103 +3206,65 @@ Here is the complete data about your current situation:
   "target_relevancies": [],
   "latest_citizen_problems": [
     {
-      "id": "recmQBDKn4AAujSzB",
+      "id": "reckj3bQ0qDIz6Zbt",
       "fields": {
-        "ProblemId": "problem_pinpoint_building_45.440943_12.321047_spiced_wine_RESOURCE_SHORTAGE",
+        "ProblemId": "hungry_adriatic_captain",
         "Citizen": "adriatic_captain",
-        "Asset": "building_45.440943_12.321047",
-        "AssetType": "building",
-        "Severity": "Critical",
+        "Asset": "adriatic_captain",
+        "AssetType": "citizen",
+        "Severity": "medium",
         "Status": "active",
-        "CreatedAt": "2025-06-15T23:08:29.487Z",
-        "UpdatedAt": "2025-06-15T21:08:30.000Z",
-        "Location": "Inn at Unknown Street",
-        "Title": "Resource Shortage: spiced_wine for Inn at Unknown Street",
-        "Description": "Building 'Inn at Unknown Street' (ID: building_45.440943_12.321047) is out of stock for 'spiced_wine', has a 'markup_buy' contract, but the resource appears to be unavailable or not actively sold elsewhere in Venice.",
-        "Solutions": "The resource 'spiced_wine' is currently scarce. Consider:\n- Increasing the buy price on your 'markup_buy' contract significantly to incentivize sellers.\n- If possible, find alternative resources or adjust production that depends on 'spiced_wine'.\n- Wait for market conditions to change (e.g., new imports by merchants).",
-        "Position": "{\"lat\": 45.440943188879906, \"lng\": 12.321047122274168}",
-        "Type": "resource_shortage"
-      }
-    },
-    {
-      "id": "recmP0EZNJ0eHdbzd",
-      "fields": {
-        "ProblemId": "problem_pinpoint_building_45.440943_12.321047_wine_RESOURCE_SHORTAGE",
-        "Citizen": "adriatic_captain",
-        "Asset": "building_45.440943_12.321047",
-        "AssetType": "building",
-        "Severity": "Critical",
-        "Status": "active",
-        "CreatedAt": "2025-06-15T23:08:22.984Z",
-        "UpdatedAt": "2025-06-15T21:08:23.000Z",
-        "Location": "Inn at Unknown Street",
-        "Title": "Resource Shortage: wine for Inn at Unknown Street",
-        "Description": "Building 'Inn at Unknown Street' (ID: building_45.440943_12.321047) is out of stock for 'wine', has a 'markup_buy' contract, but the resource appears to be unavailable or not actively sold elsewhere in Venice.",
-        "Solutions": "The resource 'wine' is currently scarce. Consider:\n- Increasing the buy price on your 'markup_buy' contract significantly to incentivize sellers.\n- If possible, find alternative resources or adjust production that depends on 'wine'.\n- Wait for market conditions to change (e.g., new imports by merchants).",
-        "Position": "{\"lat\": 45.440943188879906, \"lng\": 12.321047122274168}",
-        "Type": "resource_shortage"
-      }
-    },
-    {
-      "id": "recNlRVDnUUHvVIx9",
-      "fields": {
-        "ProblemId": "problem_pinpoint_building_45.440943_12.321047_bread_RESOURCE_SHORTAGE",
-        "Citizen": "adriatic_captain",
-        "Asset": "building_45.440943_12.321047",
-        "AssetType": "building",
-        "Severity": "Critical",
-        "Status": "active",
-        "CreatedAt": "2025-06-15T23:08:09.122Z",
-        "UpdatedAt": "2025-06-15T21:08:09.000Z",
-        "Location": "Inn at Unknown Street",
-        "Title": "Resource Shortage: bread for Inn at Unknown Street",
-        "Description": "Building 'Inn at Unknown Street' (ID: building_45.440943_12.321047) is out of stock for 'bread', has a 'markup_buy' contract, but the resource appears to be unavailable or not actively sold elsewhere in Venice.",
-        "Solutions": "The resource 'bread' is currently scarce. Consider:\n- Increasing the buy price on your 'markup_buy' contract significantly to incentivize sellers.\n- If possible, find alternative resources or adjust production that depends on 'bread'.\n- Wait for market conditions to change (e.g., new imports by merchants).",
-        "Position": "{\"lat\": 45.440943188879906, \"lng\": 12.321047122274168}",
-        "Type": "resource_shortage"
-      }
-    },
-    {
-      "id": "recKJEUdJtU1sFjnn",
-      "fields": {
-        "ProblemId": "problem_pinpoint_building_45.440943_12.321047_fish_RESOURCE_SHORTAGE",
-        "Citizen": "adriatic_captain",
-        "Asset": "building_45.440943_12.321047",
-        "AssetType": "building",
-        "Severity": "Critical",
-        "Status": "active",
-        "CreatedAt": "2025-06-15T23:08:02.358Z",
-        "UpdatedAt": "2025-06-15T21:08:02.000Z",
-        "Location": "Inn at Unknown Street",
-        "Title": "Resource Shortage: fish for Inn at Unknown Street",
-        "Description": "Building 'Inn at Unknown Street' (ID: building_45.440943_12.321047) is out of stock for 'fish', has a 'markup_buy' contract, but the resource appears to be unavailable or not actively sold elsewhere in Venice.",
-        "Solutions": "The resource 'fish' is currently scarce. Consider:\n- Increasing the buy price on your 'markup_buy' contract significantly to incentivize sellers.\n- If possible, find alternative resources or adjust production that depends on 'fish'.\n- Wait for market conditions to change (e.g., new imports by merchants).",
-        "Position": "{\"lat\": 45.440943188879906, \"lng\": 12.321047122274168}",
-        "Type": "resource_shortage"
-      }
-    },
-    {
-      "id": "recxtnnc6rMBbFU5p",
-      "fields": {
-        "ProblemId": "hungry_employee_impact_adriatic_captain_skywalker88",
-        "Citizen": "adriatic_captain",
-        "Asset": "skywalker88",
-        "AssetType": "employee_performance",
-        "Severity": "low",
-        "Status": "active",
-        "CreatedAt": "2025-06-15T22:08:22.868Z",
-        "UpdatedAt": "2025-06-15T22:08:38.000Z",
-        "Location": "Inn at Unknown Street",
-        "Title": "Hungry Employee Impact",
-        "Description": "Your employee, **Orsetta Bosello**, is currently hungry. Hunger can significantly reduce productivity (up to 50%).",
-        "Solutions": "Ensure **Orsetta Bosello** has the means and opportunity to eat. Consider if wages are sufficient or if working conditions impede access to food. Monitor their performance.",
-        "Notes": "Hungry Employee: skywalker88 (ID: skywalker88), Workplace: Inn at Unknown Street (ID: building_45.440943_12.321047). Last ate: 2025-06-09T17:58:31.935Z.",
-        "Position": "{\"lat\":45.440943188879906,\"lng\":12.321047122274168}",
-        "Type": "hungry_employee_impact"
+        "CreatedAt": "2025-06-25T05:46:13.920Z",
+        "UpdatedAt": "2025-06-25T09:15:41.000Z",
+        "Location": "Stefano's last known area",
+        "Title": "Hungry Citizen",
+        "Description": "**Stefano Dalmazzo** has not eaten in over 24 hours and is now hungry. This can affect their well-being and ability to perform tasks effectively.\n\n### Impact\n- Reduced energy and focus.\n- If employed, work productivity may be reduced by up to 50%.\n- Prolonged hunger can lead to more severe health issues (if implemented).",
+        "Solutions": "### Recommended Solutions\n- Ensure the citizen consumes food. This might involve visiting a tavern, purchasing food from a market, or using owned food resources.\n- Check if the citizen has sufficient Ducats to afford food.\n- Review game mechanics related to food consumption and ensure the 'AteAt' (or equivalent) field is updated correctly after eating.",
+        "Notes": "[Failures: 1]\nCitizen adriatic_captain last ate at 2025-06-16T20:11:06.827Z. Current time: 2025-06-25T05:46:13.908Z",
+        "Position": "{\"lat\":45.42628685471136,\"lng\":12.3594433919565}",
+        "Type": "hungry_citizen"
       }
     }
   ],
   "recent_notifications_for_ai": [
+    {
+      "notificationId": "recPTfCOcZv61HvEI",
+      "type": "rent_payment",
+      "citizen": "adriatic_captain",
+      "content": "\ud83d\udcec **Rent Received Summary** \ud83d\udcec\nYou received a total of **1,425 \u269c\ufe0f Ducats** from your properties today.\n\nDetails:\n- \u2705 **1,425 \u269c\ufe0f** from **Lorenzo Bellavita** for **Fisherman's Cottage at Fondamenta dei Dorsoduranti**.\n",
+      "details": {
+        "event_type": "landlord_rent_summary",
+        "total_received": 1425,
+        "payments": [
+          {
+            "occupant_name": "Lorenzo Bellavita",
+            "building_name": "Fisherman's Cottage at Fondamenta dei Dorsoduranti",
+            "amount": 1425
+          }
+        ]
+      },
+      "createdAt": "2025-06-26T18:03:47.232Z",
+      "readAt": null
+    },
+    {
+      "notificationId": "recH97CeDf1DDqwUA",
+      "type": "rent_payment",
+      "citizen": "adriatic_captain",
+      "content": "\ud83d\udcec **Rent Received Summary** \ud83d\udcec\nYou received a total of **1,425 \u269c\ufe0f Ducats** from your properties today.\n\nDetails:\n- \u2705 **1,425 \u269c\ufe0f** from **Lorenzo Bellavita** for **Fisherman's Cottage at Fondamenta dei Dorsoduranti**.\n",
+      "details": {
+        "event_type": "landlord_rent_summary",
+        "total_received": 1425,
+        "payments": [
+          {
+            "occupant_name": "Lorenzo Bellavita",
+            "building_name": "Fisherman's Cottage at Fondamenta dei Dorsoduranti",
+            "amount": 1425
+          }
+        ]
+      },
+      "createdAt": "2025-06-25T16:03:59.743Z",
+      "readAt": null
+    },
     {
       "notificationId": "recZRax4vj2ms2XfM",
       "type": "rent_payment",
@@ -3622,88 +3598,6 @@ Here is the complete data about your current situation:
       },
       "createdAt": "2025-06-12T12:58:57.675Z",
       "readAt": "2025-06-12T12:58:57.907Z"
-    },
-    {
-      "notificationId": "recX2eHJUf8XrkYd3",
-      "type": "markup_buy_contract_updated",
-      "citizen": "adriatic_captain",
-      "content": "Your buy order for wine (markup_buy_main_building_45.440943_12.321047_wine) has been updated.",
-      "details": {
-        "contractId": "markup_buy_main_building_45.440943_12.321047_wine"
-      },
-      "createdAt": "2025-06-12T00:18:55.746Z",
-      "readAt": "2025-06-12T00:19:17.058Z"
-    },
-    {
-      "notificationId": "recxHD4UeeKP6cwbF",
-      "type": "markup_buy_contract_updated",
-      "citizen": "adriatic_captain",
-      "content": "Your buy order for bread (markup_buy_main_building_45.440943_12.321047_bread) has been updated.",
-      "details": {
-        "contractId": "markup_buy_main_building_45.440943_12.321047_bread"
-      },
-      "createdAt": "2025-06-12T00:09:16.296Z",
-      "readAt": "2025-06-12T00:09:37.887Z"
-    },
-    {
-      "notificationId": "recIBd8WKXmEQpZMU",
-      "type": "markup_buy_contract_updated",
-      "citizen": "adriatic_captain",
-      "content": "Your buy order for fish (markup_buy_main_building_45.440943_12.321047_fish) has been updated.",
-      "details": {
-        "contractId": "markup_buy_main_building_45.440943_12.321047_fish"
-      },
-      "createdAt": "2025-06-11T23:39:21.998Z",
-      "readAt": "2025-06-11T23:39:43.545Z"
-    },
-    {
-      "notificationId": "recakcThVdp77l12Y",
-      "type": "rent_payment",
-      "citizen": "adriatic_captain",
-      "content": "\ud83d\udcec **Rent Received Summary** \ud83d\udcec\nYou received a total of **1,425 \u269c\ufe0f Ducats** from your properties today.\n\nDetails:\n- \u2705 **1,425 \u269c\ufe0f** from **Lorenzo Bellavita** for **Fisherman's Cottage at Fondamenta dei Dorsoduranti**.\n",
-      "details": {
-        "event_type": "landlord_rent_summary",
-        "total_received": 1425,
-        "payments": [
-          {
-            "occupant_name": "Lorenzo Bellavita",
-            "building_name": "Fisherman's Cottage at Fondamenta dei Dorsoduranti",
-            "amount": 1425
-          }
-        ]
-      },
-      "createdAt": "2025-06-10T18:04:05.083Z",
-      "readAt": null
-    },
-    {
-      "notificationId": "recSy6SnsxyoKO9iU",
-      "type": "rent_payment",
-      "citizen": "adriatic_captain",
-      "content": "\ud83d\udcec **Rent Received Summary** \ud83d\udcec\nYou received a total of **1,425 \u269c\ufe0f Ducats** from your properties today.\n\nDetails:\n- \u2705 **1,425 \u269c\ufe0f** from **Lorenzo Bellavita** for **Fisherman's Cottage at Fondamenta dei Dorsoduranti**.\n",
-      "details": {
-        "event_type": "landlord_rent_summary",
-        "total_received": 1425,
-        "payments": [
-          {
-            "occupant_name": "Lorenzo Bellavita",
-            "building_name": "Fisherman's Cottage at Fondamenta dei Dorsoduranti",
-            "amount": 1425
-          }
-        ]
-      },
-      "createdAt": "2025-06-10T16:04:26.373Z",
-      "readAt": null
-    },
-    {
-      "notificationId": "reco078pkJiQpLrGa",
-      "type": "markup_buy_contract_updated",
-      "citizen": "adriatic_captain",
-      "content": "Your buy order for bread (markup_buy_main_building_45.440943_12.321047_bread) has been updated.",
-      "details": {
-        "contractId": "markup_buy_main_building_45.440943_12.321047_bread"
-      },
-      "createdAt": "2025-06-10T11:30:34.983Z",
-      "readAt": "2025-06-10T11:30:35.307Z"
     }
   ],
   "building_types": {
@@ -4175,6 +4069,25 @@ Here is the complete data about your current situation:
       "category": "home",
       "pointType": "building"
     },
+    "mill": {
+      "id": "mill",
+      "type": "mill",
+      "name": "Mill",
+      "shortDescription": "Industrial facility that grinds grain into flour, essential for bread production.",
+      "constructionCost": 1800000,
+      "constructionCosts": {
+        "ducats": 1800000,
+        "timber": 420,
+        "bricks": 850,
+        "stone": 1200,
+        "iron": 280
+      },
+      "constructionMinutes": 7200,
+      "buildTier": 2,
+      "tier": null,
+      "category": "business",
+      "pointType": "building"
+    },
     "navigation_school": {
       "id": "navigation_school",
       "type": "navigation_school",
@@ -4610,8 +4523,32 @@ Here is the complete data about your current situation:
       "pointType": "building"
     }
   },
-  "timestamp": "2025-06-24T22:03:59.717469+02:00",
+  "timestamp": "2025-06-26T22:06:38.938598+02:00",
   "building_ownership_relevancies": [
+    {
+      "asset": "building_45.440943_12.321047",
+      "asset_type": "building",
+      "category": "ownership_conflict",
+      "type": "building_on_others_land",
+      "target_citizen": "BasstheWhale",
+      "score": 85,
+      "time_horizon": "medium",
+      "title": "Your Inn at Unknown Street is on land owned by \"BasstheWhale\".",
+      "description": "You own a **Inn at Unknown Street** on land owned by **BasstheWhale**.",
+      "status": "high"
+    },
+    {
+      "asset": "building_45.440943_12.321047",
+      "asset_type": "building",
+      "category": "ownership_conflict",
+      "type": "others_building_on_your_land",
+      "target_citizen": "adriatic_captain",
+      "score": 85,
+      "time_horizon": "medium",
+      "title": "\"adriatic_captain\" owns a Inn at Unknown Street on your land.",
+      "description": "**adriatic_captain** owns a **Inn at Unknown Street** on your land.",
+      "status": "high"
+    },
     {
       "asset": "canal_45.439843_12.320672",
       "asset_type": "building",
@@ -4659,30 +4596,6 @@ Here is the complete data about your current situation:
       "title": "\"adriatic_captain\" owns a Fisherman's Cottage at Fondamenta della Carit\u00e0 on your land.",
       "description": "**adriatic_captain** owns a **Fisherman's Cottage at Fondamenta della Carit\u00e0** on your land.",
       "status": "medium"
-    },
-    {
-      "asset": "building_45.440943_12.321047",
-      "asset_type": "building",
-      "category": "ownership_conflict",
-      "type": "building_on_others_land",
-      "target_citizen": "BasstheWhale",
-      "score": 85,
-      "time_horizon": "medium",
-      "title": "Your Inn at Unknown Street is on land owned by \"BasstheWhale\".",
-      "description": "You own a **Inn at Unknown Street** on land owned by **BasstheWhale**.",
-      "status": "high"
-    },
-    {
-      "asset": "building_45.440943_12.321047",
-      "asset_type": "building",
-      "category": "ownership_conflict",
-      "type": "others_building_on_your_land",
-      "target_citizen": "adriatic_captain",
-      "score": 85,
-      "time_horizon": "medium",
-      "title": "\"adriatic_captain\" owns a Inn at Unknown Street on your land.",
-      "description": "**adriatic_captain** owns a **Inn at Unknown Street** on your land.",
-      "status": "high"
     }
   ]
 }
