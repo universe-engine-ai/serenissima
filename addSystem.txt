@@ -8,7 +8,7 @@ Here is the complete data about your current situation:
 {
   "citizen": {
     "username": "TopGlassmaker",
-    "ducats": 1298267.061415693,
+    "ducats": 1398942.671111323,
     "social_class": "Popolani",
     "description": "Caterina Baffo, a stocky woman in her mid-40s with calloused hands and observant hazel eyes, has risen from humble beginnings to become a respected figure among the Facchini. Born to a family of dockworkers, she leveraged her natural aptitude for numbers and organization to secure a position at the customs house, where she meticulously tracks the flow of goods through Venice's bustling port. Her recent investment in a small warehouse reflects her pragmatic approach to building wealth\u2014focusing on essential infrastructure rather than luxuries. Despite her growing prosperity, Caterina maintains the modest attire of her class, though the quality of her wool garments has noticeably improved. She rises before dawn each day to inspect her warehouse before her shift, carefully noting each crate and barrel that passes through the customs house, and often spends evenings studying merchant ledgers to better understand trade patterns. Though reserved with strangers, she's developed a reputation for fairness among fellow workers and unexpected generosity toward struggling families in her parish. Her greatest pride remains her three children, whom she is determined will receive the education she never had.",
     "core_personality": "{\"Strength\": \"Astute\", \"Flaw\": \"Stubborn\", \"Drive\": \"Wealth-driven\", \"MBTI\": \"ENTP\", \"PrimaryTrait\": \"Sharp-tongued opportunist\", \"SecondaryTraits\": [\"Commercial insight\", \"Harbor politics\", \"Persistent negotiation\"], \"CognitiveBias\": [\"Overconfidence bias\", \"Anchoring bias\"], \"TrustThreshold\": 0.4, \"EmpathyWeight\": 0.3, \"RiskTolerance\": 0.7, \"guidedBy\": \"The Opportunity's Edge\", \"CoreThoughts\": {\"primary_drive\": \"wealth-accumulation\", \"secondary_drive\": \"commercial-dominance\", \"internal_tension\": \"sharp tongue vs. relationship building\", \"activation_triggers\": [\"profit_opportunities\", \"negotiation_moments\", \"competitive_challenges\"], \"thought_patterns\": [\"Every conversation is a potential transaction\", \"My sharp tongue reveals truths others won't speak\", \"Wealth flows to those who see opportunities first\", \"Stubbornness in negotiation often yields the best terms\", \"120,000 ducats proves my methods work\", \"Small opportunities become substantial gains through persistence\"], \"decision_framework\": \"How does this maximize wealth while leveraging my negotiation advantages?\"}}",
@@ -1098,6 +1098,13 @@ Here is the complete data about your current situation:
           "maintenance_cost": 0
         },
         {
+          "id": "building_45.428748173929534_12.362001145681361",
+          "type": "mill",
+          "owner": "the_grand_experiment",
+          "income": 0,
+          "maintenance_cost": 0
+        },
+        {
           "id": "canal_45.424823_12.362988",
           "type": "fisherman_s_cottage",
           "owner": "StarGazer2000",
@@ -1563,6 +1570,13 @@ Here is the complete data about your current situation:
           "id": "building_45.442276_12.323666",
           "type": "small_warehouse",
           "owner": "ConsiglioDeiDieci",
+          "income": 0,
+          "maintenance_cost": 0
+        },
+        {
+          "id": "building_45.44225316651121_12.320556777517233",
+          "type": "mill",
+          "owner": "the_grand_experiment",
           "income": 0,
           "maintenance_cost": 0
         },
@@ -3197,8 +3211,87 @@ Here is the complete data about your current situation:
   ],
   "relevancies": [],
   "target_relevancies": [],
-  "latest_citizen_problems": [],
+  "latest_citizen_problems": [
+    {
+      "id": "recqRZm31soZuVRmK",
+      "fields": {
+        "ProblemId": "hungry_TopGlassmaker",
+        "Citizen": "TopGlassmaker",
+        "Asset": "TopGlassmaker",
+        "AssetType": "citizen",
+        "Severity": "medium",
+        "Status": "active",
+        "CreatedAt": "2025-06-25T05:46:13.923Z",
+        "UpdatedAt": "2025-06-25T09:15:53.000Z",
+        "Location": "Caterina's last known area",
+        "Title": "Hungry Citizen",
+        "Description": "**Caterina Baffo** has not eaten in over 24 hours and is now hungry. This can affect their well-being and ability to perform tasks effectively.\n\n### Impact\n- Reduced energy and focus.\n- If employed, work productivity may be reduced by up to 50%.\n- Prolonged hunger can lead to more severe health issues (if implemented).",
+        "Solutions": "### Recommended Solutions\n- Ensure the citizen consumes food. This might involve visiting a tavern, purchasing food from a market, or using owned food resources.\n- Check if the citizen has sufficient Ducats to afford food.\n- Review game mechanics related to food consumption and ensure the 'AteAt' (or equivalent) field is updated correctly after eating.",
+        "Notes": "[Failures: 1]\nCitizen TopGlassmaker last ate at 2025-06-16T20:03:01.938Z. Current time: 2025-06-25T05:46:13.908Z",
+        "Position": "{\"lat\":45.43118377977944,\"lng\":12.317201641303557}",
+        "Type": "hungry_citizen"
+      }
+    }
+  ],
   "recent_notifications_for_ai": [
+    {
+      "notificationId": "recaw1SAWNqfFdBVi",
+      "type": "rent_payment",
+      "citizen": "TopGlassmaker",
+      "content": "\ud83d\udcec **Rent Received Summary** \ud83d\udcec\nYou received a total of **4,100 \u269c\ufe0f Ducats** from your properties today.\n\nDetails:\n- \u2705 **1,425 \u269c\ufe0f** from **Jacopo Trevisan** for **Fisherman's Cottage at Riva di Sant'Agnese**.\n- \u2705 **1,360 \u269c\ufe0f** from **Giacomo Albrizzi** for **Fisherman's Cottage at Riva del Magistrato alla Carit\u00e0**.\n- \u2705 **1,315 \u269c\ufe0f** from **Tonio Scarparo** for **Fisherman's Cottage at Riva dei Coristi**.\n",
+      "details": {
+        "event_type": "landlord_rent_summary",
+        "total_received": 4100,
+        "payments": [
+          {
+            "occupant_name": "Jacopo Trevisan",
+            "building_name": "Fisherman's Cottage at Riva di Sant'Agnese",
+            "amount": 1425
+          },
+          {
+            "occupant_name": "Giacomo Albrizzi",
+            "building_name": "Fisherman's Cottage at Riva del Magistrato alla Carit\u00e0",
+            "amount": 1360
+          },
+          {
+            "occupant_name": "Tonio Scarparo",
+            "building_name": "Fisherman's Cottage at Riva dei Coristi",
+            "amount": 1315
+          }
+        ]
+      },
+      "createdAt": "2025-06-26T18:03:46.939Z",
+      "readAt": null
+    },
+    {
+      "notificationId": "recLixkw2TrE6Omsk",
+      "type": "rent_payment",
+      "citizen": "TopGlassmaker",
+      "content": "\ud83d\udcec **Rent Received Summary** \ud83d\udcec\nYou received a total of **4,100 \u269c\ufe0f Ducats** from your properties today.\n\nDetails:\n- \u2705 **1,425 \u269c\ufe0f** from **Jacopo Trevisan** for **Fisherman's Cottage at Riva di Sant'Agnese**.\n- \u2705 **1,360 \u269c\ufe0f** from **Giacomo Albrizzi** for **Fisherman's Cottage at Riva del Magistrato alla Carit\u00e0**.\n- \u2705 **1,315 \u269c\ufe0f** from **Tonio Scarparo** for **Fisherman's Cottage at Riva dei Coristi**.\n",
+      "details": {
+        "event_type": "landlord_rent_summary",
+        "total_received": 4100,
+        "payments": [
+          {
+            "occupant_name": "Jacopo Trevisan",
+            "building_name": "Fisherman's Cottage at Riva di Sant'Agnese",
+            "amount": 1425
+          },
+          {
+            "occupant_name": "Giacomo Albrizzi",
+            "building_name": "Fisherman's Cottage at Riva del Magistrato alla Carit\u00e0",
+            "amount": 1360
+          },
+          {
+            "occupant_name": "Tonio Scarparo",
+            "building_name": "Fisherman's Cottage at Riva dei Coristi",
+            "amount": 1315
+          }
+        ]
+      },
+      "createdAt": "2025-06-25T16:03:59.420Z",
+      "readAt": null
+    },
     {
       "notificationId": "rec5nrt0tXHh8LSpo",
       "type": "rent_payment",
@@ -3691,64 +3784,6 @@ Here is the complete data about your current situation:
       },
       "createdAt": "2025-06-12T18:03:43.121Z",
       "readAt": null
-    },
-    {
-      "notificationId": "rec8P2kIqFcpb5pgt",
-      "type": "rent_payment",
-      "citizen": "TopGlassmaker",
-      "content": "\ud83d\udcec **Rent Received Summary** \ud83d\udcec\nYou received a total of **4,100 \u269c\ufe0f Ducats** from your properties today.\n\nDetails:\n- \u2705 **1,425 \u269c\ufe0f** from **Jacopo Trevisan** for **Fisherman's Cottage at Riva di Sant'Agnese**.\n- \u2705 **1,360 \u269c\ufe0f** from **Giacomo Albrizzi** for **Fisherman's Cottage at Riva del Magistrato alla Carit\u00e0**.\n- \u2705 **1,315 \u269c\ufe0f** from **Tonio Scarparo** for **Fisherman's Cottage at Riva dei Coristi**.\n",
-      "details": {
-        "event_type": "landlord_rent_summary",
-        "total_received": 4100,
-        "payments": [
-          {
-            "occupant_name": "Jacopo Trevisan",
-            "building_name": "Fisherman's Cottage at Riva di Sant'Agnese",
-            "amount": 1425
-          },
-          {
-            "occupant_name": "Giacomo Albrizzi",
-            "building_name": "Fisherman's Cottage at Riva del Magistrato alla Carit\u00e0",
-            "amount": 1360
-          },
-          {
-            "occupant_name": "Tonio Scarparo",
-            "building_name": "Fisherman's Cottage at Riva dei Coristi",
-            "amount": 1315
-          }
-        ]
-      },
-      "createdAt": "2025-06-10T18:03:57.242Z",
-      "readAt": null
-    },
-    {
-      "notificationId": "recaNRZJV5FghvBul",
-      "type": "rent_payment",
-      "citizen": "TopGlassmaker",
-      "content": "\ud83d\udcec **Rent Received Summary** \ud83d\udcec\nYou received a total of **4,100 \u269c\ufe0f Ducats** from your properties today.\n\nDetails:\n- \u2705 **1,425 \u269c\ufe0f** from **Jacopo Trevisan** for **Fisherman's Cottage at Riva di Sant'Agnese**.\n- \u2705 **1,360 \u269c\ufe0f** from **Giacomo Albrizzi** for **Fisherman's Cottage at Riva del Magistrato alla Carit\u00e0**.\n- \u2705 **1,315 \u269c\ufe0f** from **Tonio Scarparo** for **Fisherman's Cottage at Riva dei Coristi**.\n",
-      "details": {
-        "event_type": "landlord_rent_summary",
-        "total_received": 4100,
-        "payments": [
-          {
-            "occupant_name": "Jacopo Trevisan",
-            "building_name": "Fisherman's Cottage at Riva di Sant'Agnese",
-            "amount": 1425
-          },
-          {
-            "occupant_name": "Giacomo Albrizzi",
-            "building_name": "Fisherman's Cottage at Riva del Magistrato alla Carit\u00e0",
-            "amount": 1360
-          },
-          {
-            "occupant_name": "Tonio Scarparo",
-            "building_name": "Fisherman's Cottage at Riva dei Coristi",
-            "amount": 1315
-          }
-        ]
-      },
-      "createdAt": "2025-06-10T16:04:26.097Z",
-      "readAt": null
     }
   ],
   "building_types": {
@@ -4220,6 +4255,25 @@ Here is the complete data about your current situation:
       "category": "home",
       "pointType": "building"
     },
+    "mill": {
+      "id": "mill",
+      "type": "mill",
+      "name": "Mill",
+      "shortDescription": "Industrial facility that grinds grain into flour, essential for bread production.",
+      "constructionCost": 1800000,
+      "constructionCosts": {
+        "ducats": 1800000,
+        "timber": 420,
+        "bricks": 850,
+        "stone": 1200,
+        "iron": 280
+      },
+      "constructionMinutes": 7200,
+      "buildTier": 2,
+      "tier": null,
+      "category": "business",
+      "pointType": "building"
+    },
     "navigation_school": {
       "id": "navigation_school",
       "type": "navigation_school",
@@ -4655,7 +4709,7 @@ Here is the complete data about your current situation:
       "pointType": "building"
     }
   },
-  "timestamp": "2025-06-24T23:11:51.327670+02:00",
+  "timestamp": "2025-06-26T21:31:22.455177+02:00",
   "building_ownership_relevancies": [
     {
       "asset": "canal_45.431184_12.317202",
