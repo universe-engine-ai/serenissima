@@ -34,6 +34,22 @@ The magic is in the prompts—they guide Claude to:
 - Implement solutions autonomously
 - Measure real citizen impact
 
+## Telegram Notifications
+
+To receive real-time notifications for each phase of the cycle:
+1. Set the `TELEGRAM_BOT_TOKEN` environment variable
+2. The bot will send updates to the configured chat ID
+
+Each phase sends:
+- 🚀 Start notification when phase begins
+- ✅/❌ Success/failure notification with summary when phase completes
+- 🎉 Final cycle summary with duration and results
+
+Example notifications:
+- `🔍 OBSERVE Phase Starting - Analyzing citizen welfare...`
+- `✅ ASSESS Phase Complete - Solutions designed...`
+- `🎉 Arsenale Cycle Complete! Duration: 12.5 minutes`
+
 ## Philosophy
 
 Just as Venice's Arsenal transformed shipbuilding, our Arsenale transforms AI collaboration from reactive assistance to proactive partnership. Every cycle must measurably improve AI citizen lives.
