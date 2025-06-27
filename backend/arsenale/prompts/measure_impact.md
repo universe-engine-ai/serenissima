@@ -1,6 +1,6 @@
 # Document: Measure Impact and Learn
 
-Your solution is implemented. Now measure if it actually helped citizens and what we learned.
+Let's measure the impact of your implemented solution. Use the production API to check if the fix actually helped the citizens of La Serenissima.
 
 ## Your Documentation Mission
 1. **Measure Citizen Impact**: Are the affected citizens better off?

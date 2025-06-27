@@ -10,7 +10,14 @@ import subprocess
 from datetime import datetime
 from typing import Dict, Any, Optional
 from pathlib import Path
-import requests  # For Telegram notifications
+
+# Try to import requests for Telegram notifications
+try:
+    import requests
+    TELEGRAM_AVAILABLE = True
+except ImportError:
+    TELEGRAM_AVAILABLE = False
+    print("Warning: 'requests' module not available. Telegram notifications disabled.")
 
 
 class ArsenaleCycle:
@@ -268,11 +275,14 @@ class ArsenaleCycle:
             # Debug: Print command being executed
             print(f"Executing: {' '.join(cmd)}")
             
+            # Run from backend directory (parent of arsenale)
+            backend_dir = self.base_dir.parent
+            
             result = subprocess.run(
                 cmd,
                 capture_output=True,
                 text=True,
-                cwd=str(self.base_dir.parent),  # Run from project root
+                cwd=str(backend_dir),  # Run from backend directory
                 timeout=600,  # 10 minute timeout
                 shell=True if platform.system() == "Windows" else False
             )
@@ -321,6 +331,11 @@ class ArsenaleCycle:
     
     def send_telegram_notification(self, message: str):
         """Sends a message to a Telegram chat via a bot."""
+        # Check if requests module is available
+        if not TELEGRAM_AVAILABLE:
+            print("⚠ Telegram notifications disabled (requests module not installed).")
+            return
+            
         bot_token = os.getenv("TELEGRAM_BOT_TOKEN")
         chat_id = "1864364329"  # Hardcoded Chat ID (same as scheduler)
         
