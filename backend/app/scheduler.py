@@ -163,6 +163,7 @@ def run_scheduled_tasks(forced_hour: Optional[int] = None): # Added forced_hour 
             {"minute_mod": 0, "script": "engine/createActivities.py", "name": "Citizen activity creation", "interval_minutes": 5},
             # {"minute_mod": 1, "script": "resources/processdecay.py", "name": "Resource decay processing", "interval_minutes": 20},
             {"minute_mod": 2, "script": "engine/processActivities.py", "name": "Process concluded activities", "interval_minutes": 5},
+            {"minute_mod": 3, "script": "engine/delivery_retry_handler.py", "name": "Delivery retry handler", "interval_minutes": 15},
         ]
 
         for task_def in frequent_tasks_definitions:
@@ -256,6 +257,28 @@ def run_scheduled_tasks(forced_hour: Optional[int] = None): # Added forced_hour 
                         tasks[hour].append(encounter_task)
                 else:
                     tasks[hour] = [encounter_task]
+            
+            # Add emergency_food_distribution.py to run every hour at minute 15
+            for hour in range(24):
+                task_name = f"Emergency Food Distribution ({hour:02d}:15 VT)"
+                food_task = ("engine/emergency_food_distribution.py", task_name, 15)
+                if hour in tasks:
+                    # Check if the task is already scheduled for this hour and minute to avoid duplicates
+                    if not any(t[0] == "engine/emergency_food_distribution.py" and t[2] == 15 for t in tasks[hour]):
+                        tasks[hour].append(food_task)
+                else:
+                    tasks[hour] = [food_task]
+            
+            # Add welfare_monitor.py to run every hour at minute 30
+            for hour in range(24):
+                task_name = f"Welfare Monitoring ({hour:02d}:30 VT)"
+                monitor_task = ("engine/welfare_monitor.py", task_name, 30)
+                if hour in tasks:
+                    # Check if the task is already scheduled for this hour and minute to avoid duplicates
+                    if not any(t[0] == "engine/welfare_monitor.py" and t[2] == 30 for t in tasks[hour]):
+                        tasks[hour].append(monitor_task)
+                else:
+                    tasks[hour] = [monitor_task]
             
             # Check if there are tasks for the current Venice hour
             if current_hour_venice in tasks:

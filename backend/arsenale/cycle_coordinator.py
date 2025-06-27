@@ -35,7 +35,7 @@ class ArsenaleCycle:
             from mock_claude_responses import MOCK_RESPONSES
             self.mock_responses = MOCK_RESPONSES
         
-    def run_cycle(self) -> Dict[str, Any]:
+    def run_cycle(self, custom_message: Optional[str] = None) -> Dict[str, Any]:
         """Execute complete OBSERVE → ASSESS → EXECUTE → DOCUMENT cycle"""
         print(f"Starting Arsenale Cycle {self.cycle_id}")
         if self.mock_mode:
@@ -45,12 +45,13 @@ class ArsenaleCycle:
         cycle_results = {
             "cycle_id": self.cycle_id,
             "start_time": datetime.now().isoformat(),
+            "custom_message": custom_message,
             "phases": {}
         }
         
         try:
             # 1. Gather current La Serenissima state
-            context = self.build_context_package()
+            context = self.build_context_package(custom_message=custom_message)
             
             # 2. OBSERVE: Analyze citizen problems
             print("\n🔍 OBSERVE: Analyzing citizen welfare...")
@@ -188,12 +189,16 @@ class ArsenaleCycle:
             "response": result["response"]
         }
     
-    def build_context_package(self) -> Dict[str, Any]:
+    def build_context_package(self, custom_message: Optional[str] = None) -> Dict[str, Any]:
         """Gather current La Serenissima state for Claude"""
         context = {
             "timestamp": datetime.now().isoformat(),
             "cycle_id": self.cycle_id
         }
+        
+        # Add custom message if provided
+        if custom_message:
+            context["custom_message"] = custom_message
         
         # Load static context files
         context_files = {
@@ -217,6 +222,10 @@ class ArsenaleCycle:
     
     def _build_prompt_with_context(self, prompt_template: str, context: Dict[str, Any]) -> str:
         """Combine prompt template with context information"""
+        # Add custom message at the beginning if provided
+        if "custom_message" in context and context["custom_message"]:
+            prompt_template = f"## User Directive\n{context['custom_message']}\n\n{prompt_template}"
+        
         context_section = "\n\n## Context Information\n"
         
         # Add relevant context

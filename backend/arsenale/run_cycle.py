@@ -13,21 +13,31 @@ from cycle_coordinator import ArsenaleCycle
 
 def main():
     """Run a single Arsenale cycle"""
-    # Check for --mock flag
-    mock_mode = "--mock" in sys.argv
+    import argparse
+    
+    parser = argparse.ArgumentParser(description='Run Arsenale autonomous improvement cycle')
+    parser.add_argument('message', nargs='?', default=None, 
+                       help='Optional message to guide Arsenale (e.g., "Focus on fixing hunger crisis")')
+    parser.add_argument('--mock', action='store_true', 
+                       help='Run in mock mode for demonstration')
+    
+    args = parser.parse_args()
     
     print("🏗️  Arsenale v1: Prompt-Driven Creative Autonomy")
     print("=" * 60)
     
-    if mock_mode:
+    if args.mock:
         print("🔧 Running in MOCK MODE for demonstration")
         print("   (Use when Claude CLI is not available)")
     else:
         print("Starting autonomous improvement cycle for La Serenissima...")
+    
+    if args.message:
+        print(f"\n📋 Custom directive: {args.message}")
     print()
     
-    cycle = ArsenaleCycle(mock_mode=mock_mode)
-    results = cycle.run_cycle()
+    cycle = ArsenaleCycle(mock_mode=args.mock)
+    results = cycle.run_cycle(custom_message=args.message)
     
     print("\n" + "=" * 60)
     if results["success"]:
