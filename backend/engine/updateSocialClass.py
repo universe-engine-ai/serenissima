@@ -37,6 +37,9 @@ load_dotenv()
 # Social class hierarchy (in ascending order)
 SOCIAL_CLASSES = ["Facchini", "Popolani", "Cittadini", "Nobili"]
 
+# Special social classes that don't participate in normal social mobility
+SPECIAL_SOCIAL_CLASSES = ["Artisti", "Forestieri", "Clero", "Scientisti"]
+
 def initialize_airtable():
     """Initialize Airtable connection."""
     api_key = os.environ.get('AIRTABLE_API_KEY')
@@ -233,7 +236,9 @@ def update_social_class(dry_run: bool = False):
             log.info(f"Citizen {citizen_id} has social class: '{current_social_class}'")
             
             # Check if they need to be promoted
-            if current_social_class in SOCIAL_CLASSES:
+            if current_social_class in SPECIAL_SOCIAL_CLASSES:
+                log.info(f"  Special social class '{current_social_class}', skipping promotion check")
+            elif current_social_class in SOCIAL_CLASSES:
                 current_index = SOCIAL_CLASSES.index(current_social_class)
                 popolani_index = SOCIAL_CLASSES.index("Popolani")
                 log.info(f"  Current class index: {current_index}, Popolani index: {popolani_index}")
@@ -296,6 +301,11 @@ def update_social_class(dry_run: bool = False):
             log.info(f"  Daily income: {daily_income}, Influence: {influence}")
         
         try:
+            # Skip citizens with special social classes
+            if current_social_class in SPECIAL_SOCIAL_CLASSES:
+                log.info(f"Citizen {citizen_id} has special social class '{current_social_class}', skipping social mobility")
+                continue
+                
             # Check if the current social class is valid
             if current_social_class not in SOCIAL_CLASSES:
                 log.warning(f"Citizen {citizen_id} has invalid social class '{current_social_class}', setting to lowest class")

@@ -175,18 +175,72 @@ cd backend/ais && python adjustimports.py
 cd backend && ruff check .
 ```
 
-### Full Stack Workflow
-1. Start backend: `npm run backend:dev`
-2. Start frontend: `npm run dev` 
-3. Access application API: `http://172.17.0.1:3000/api`
+### Running the Full Stack
+1. Start the backend first: `npm run backend:dev`
+2. In another terminal, start the frontend: `npm run dev`
+3. Access the application at `http://localhost:3000`
+
+### Testing and Linting
+- Frontend linting: `npm run lint`
+- When modifying citizen activity handlers, run linting after changes:
+  ```bash
+  cd backend/ais && python adjustimports.py
+  cd backend && ruff check .
+  ```
 
 ### Getting in-world data
 
-You can get **live in-world data** using the pridction endpoint. For example  `Bash(curl -s "https://serenissima.ai/api/resources" | python3 -c "` will return all the resources present in the city. The accessiblee endpoints are documented in  `components\Documentation\ApiReference.tsx`. Use this possibility to assess world problems and assess the effectiveness of fixes.
+You can get **live in-world data** using the production endpoint. For example  `Bash(curl -s "https://serenissima.ai/api/resources?Type=bread" | python3 -c "` will return all the resources present in the city. The accessible endpoints are documented in  `components\Documentation\ApiReference.tsx`. Use this possibility to assess world problems and assess the effectiveness of fixes.
 
-## Critical Files for Understanding
+The `api/pinpoint-problem` endpoint and related problems scripts can do a lot of the heavy lifting for you when debugging.
 
-### Core Engine
+## High-Level Architecture
+
+### Unified Citizen Model
+La Serenissima implements a unified citizen model where AI and human participants are indistinguishable at the data layer. Both exist in the same CITIZENS table with an `IsAI` flag, follow identical economic rules, and use the same activity system. This creates genuine economic competition and emergent social dynamics.
+
+### Frontend Architecture
+- **Framework**: Next.js 15 with App Router, React 18.2, TypeScript
+- **State Management**: Zustand for global state, React hooks for local state
+- **Key Services**: Located in `lib/services/`, handle API communication and business logic
+- **Wallet Integration**: Solana wallet (Phantom) for $COMPUTE token transactions
+
+### Backend Architecture
+- **API Layer**: FastAPI (Python) with 100+ endpoints in `backend/app/main.py`
+- **Engine**: Core game logic in `backend/engine/` with modular activity and stratagem systems
+- **Scheduler**: Automated daily processes managed by `backend/app/scheduler.py`
+- **AI Systems**: Located in `backend/ais/`, handle autonomous decision-making for AI citizens
+
+### Database Layer (Airtable)
+All game state is stored in Airtable tables accessed via pyairtable. Key tables include:
+- CITIZENS: Both AI and human citizens with position, wealth, social class
+- BUILDINGS: All structures with ownership and operational data
+- ACTIVITIES: Current and completed actions for all citizens
+- CONTRACTS: Economic agreements between citizens
+- RESOURCES: Physical goods with location and ownership
+
+### Activity System
+The activity system is the core mechanism for citizen actions:
+- **Creation**: Activities are created via `/api/activities/try-create` endpoint
+- **Processing**: `backend/engine/processActivities.py` runs every 5 minutes to execute completed activities
+- **Handlers**: Modular handlers in `backend/engine/handlers/` for different activity types
+- **Chaining**: Complex actions are broken into multiple chained activities
+
+### Daily Automated Processes
+The engine runs 20+ automated processes throughout the day (Venice time) that apply equally to AI and human citizens:
+- Economic processes: maintenance, wages, rent, treasury redistribution
+- Social mobility: job assignment, housing changes, social class updates
+- AI behaviors: land bidding, building construction, price adjustments
+- All processes are scheduled via cron in `backend/startup.sh`
+
+### Key Architectural Decisions
+1. **Unified Processing**: Same code processes AI and human citizens to ensure fairness
+2. **Modular Handlers**: Activity and stratagem processors are modular for easy extension
+3. **API-First Design**: Frontend and backend communicate only through REST APIs
+4. **Position-Based Gameplay**: All citizens have real-time positions affecting their actions
+5. **Economic Realism**: Closed-loop economy with no money creation, only circulation
+
+### Critical Files for Understanding Flow
 - `backend/engine/createActivities.py`: Entry point for citizen activity creation
 - `backend/engine/handlers/orchestrator.py`: Activity handler orchestration
 - `backend/engine/processActivities.py`: Processes completed activities

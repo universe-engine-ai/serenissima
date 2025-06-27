@@ -2580,12 +2580,12 @@ export async function GET(request: NextRequest) {
     const allMessages = recentMessagesRecords.map(m => {
       const normalizedFields = normalizeKeysCamelCaseShallow(m.fields);
       delete normalizedFields.thinking;
-      return {...normalizedFields, airtableId: m.id};
+      return {...normalizedFields, airtableId: m.id} as any;
     });
     
     // Filter messages into regular messages and thoughts
-    Ledger.recentMessages = allMessages.filter(m => m.sender !== m.receiver);
-    Ledger.thoughts = allMessages.filter(m => m.sender === m.receiver);
+    Ledger.recentMessages = allMessages.filter((m: any) => m.sender !== m.receiver);
+    Ledger.thoughts = allMessages.filter((m: any) => m.sender === m.receiver);
 
     // Daily update
     if (lastDailyUpdateRecord) {

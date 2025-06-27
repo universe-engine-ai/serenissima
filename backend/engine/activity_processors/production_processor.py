@@ -11,7 +11,7 @@ import random
 import math
 import requests # Added for API calls
 import os # Added for API_BASE_URL
-from datetime import datetime, timezone
+from datetime import datetime, timezone, timedelta
 import pytz # Added for Venice timezone
 from typing import Dict, List, Optional, Any
 
@@ -318,7 +318,7 @@ def process(
                 checked_at_dt = pytz.UTC.localize(checked_at_dt)
             
             # Check if 'CheckedAt' is older than 24 hours from the activity's EndDate
-            if (activity_end_dt_for_check - checked_at_dt) > datetime.timedelta(hours=24):
+            if (activity_end_dt_for_check - checked_at_dt) > timedelta(hours=24):
                 log.warning(f"Business {building_custom_id} (Operator: {operator_username}) not checked in over 24 hours (CheckedAt: {checked_at_str}). Applying 50% production penalty.")
                 production_penalty_modifier *= 0.5
         except ValueError:

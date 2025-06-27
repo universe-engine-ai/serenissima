@@ -1328,7 +1328,6 @@ def process_continue_thought(
     process_id = process_record['id']
     process_fields = process_record['fields']
     citizen_username = process_fields.get('Citizen')
-    api_base_url = process_fields.get('ApiBaseUrl')
     details_str = process_fields.get('Details')
     
     details = {}
@@ -1337,6 +1336,9 @@ def process_continue_thought(
             details = json.loads(details_str)
         except json.JSONDecodeError:
             log.warning(f"Could not parse Details JSON for process {process_id}: {details_str}")
+    
+    # Get api_base_url from details
+    api_base_url = details.get('api_base_url') if details else None
     
     log.info(f"{LogColors.ACTIVITY}Processing thought continuation for {citizen_username} (Process ID: {process_id}).{LogColors.ENDC}")
     

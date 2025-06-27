@@ -96,6 +96,10 @@ const ThoughtBubble: React.FC<ThoughtBubbleProps> = ({
     finalTextColor = 'rgb(101, 67, 33)'; // Dark brown for good contrast
     finalBackgroundColor = 'rgba(255, 253, 245, 0.97)'; // Candle white
     finalBorderColor = 'rgb(218, 165, 32)'; // Goldenrod (church gold)
+  } else if (socialClass && socialClass.toLowerCase() === 'scientisti') {
+    finalTextColor = 'rgb(75, 0, 130)'; // Indigo/Dark violet for text
+    finalBackgroundColor = 'rgba(245, 240, 255, 0.97)'; // Very light violet/lavender for background
+    finalBorderColor = 'rgb(138, 43, 226)'; // Blue violet for border
   } else {
     // Existing logic for other social classes
     const baseColorString = citizenService.getSocialClassColor(socialClass);

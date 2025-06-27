@@ -450,6 +450,16 @@ SOCIAL_CLASS_SCHEDULES = {
         "rest": [(22, 24), (0, 6)],      # 22h-6h (8 heures)
         "work": [(9, 12), (14, 17)],     # 9h-12h, 14h-17h (6 heures de travail structuré)
         "leisure": [(6, 9), (12, 14), (17, 22)] # 6h-9h, 12h-14h, 17h-22h (10 heures - peuvent aussi travailler sur l'art pendant ce temps)
+    },
+    "Scientisti": { # Scientists/Scholars
+        "rest": [(1, 7)],                 # 1h-7h (6 heures - less sleep, up late researching)
+        "work": [(8, 12), (14, 22)],     # 8h-12h, 14h-22h (12 heures - long hours in laboratory/study)
+        "leisure": [(7, 8), (12, 14), (22, 24), (0, 1)] # 7h-8h, 12h-14h, 22h-1h (6 heures)
+    },
+    "Clero": { # Clergy
+        "rest": [(21, 24), (0, 4)],      # 21h-4h (7 heures - early rise for morning prayers)
+        "work": [(4, 12), (14, 18)],     # 4h-12h, 14h-18h (12 heures - prayers, masses, religious duties)
+        "leisure": [(12, 14), (18, 21)]  # 12h-14h, 18h-21h (5 heures)
     }
 }
 

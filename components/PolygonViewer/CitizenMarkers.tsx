@@ -976,7 +976,7 @@ const MAX_DISPLAY_TIME = 20000; // Maximum 20 seconds (doubled)
           if (socialClassForIcon) { // Normalize to PascalCase
             socialClassForIcon = socialClassForIcon.charAt(0).toUpperCase() + socialClassForIcon.slice(1).toLowerCase();
             // Preserve special social class names exactly as they are
-            if (socialClassRaw.includes('Dei') || socialClassRaw.includes('dei') || socialClassRaw === 'Clero') {
+            if (socialClassRaw.includes('Dei') || socialClassRaw.includes('dei') || socialClassRaw === 'Clero' || socialClassRaw === 'Scientisti') {
                 socialClassForIcon = socialClassRaw;
             }
           }
@@ -991,6 +991,8 @@ const MAX_DISPLAY_TIME = 20000; // Maximum 20 seconds (doubled)
               case 'popolani': return '#FFC107'; // Amber (Brighter Gold/Orange)
               case 'forestieri': return '#90EE90'; // Light Green
               case 'facchini': return '#2F4F4F'; // DarkSlateGray (Almost Black)
+              case 'artisti': return '#FFE0EC'; // Very Light Pink
+              case 'scientisti': return '#D8BFD8'; // Thistle (Even lighter violet)
               default: return '#FFFFFF'; // White
             }
           };
@@ -1097,6 +1099,8 @@ const MAX_DISPLAY_TIME = 20000; // Maximum 20 seconds (doubled)
               case 'popolani': return '#FFC107'; // Amber (Brighter Gold/Orange)
               case 'forestieri': return '#90EE90'; // Light Green
               case 'facchini': return '#2F4F4F'; // DarkSlateGray (Almost Black)
+              case 'artisti': return '#FFE0EC'; // Very Light Pink
+              case 'scientisti': return '#D8BFD8'; // Thistle (Even lighter violet)
               default: return '#FFFFFF'; // White
             }
           };

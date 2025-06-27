@@ -55,6 +55,12 @@ REDISTRIBUTION_PERCENTAGES = {
     "Facchini": 0.10    # 10% to Facchini
 }
 
+# Fixed daily payments for special social classes
+FIXED_DAILY_PAYMENTS = {
+    "Scientisti": 2500,  # 2500 Ducats per day for Scientists
+    "Clero": 2000        # 2000 Ducats per day for Clergy
+}
+
 # Percentage of treasury to redistribute (1%)
 TREASURY_PERCENTAGE = 0.01
 
@@ -272,6 +278,16 @@ def create_admin_summary(tables, redistribution_summary) -> None:
                     "citizens": redistribution_summary['by_class']['Facchini']['citizens'],
                     "amount": redistribution_summary['by_class']['Facchini']['amount'],
                     "per_citizen": redistribution_summary['by_class']['Facchini']['per_citizen']
+                },
+                "Scientisti": {
+                    "citizens": redistribution_summary['by_class']['Scientisti']['citizens'],
+                    "amount": redistribution_summary['by_class']['Scientisti']['amount'],
+                    "per_citizen": redistribution_summary['by_class']['Scientisti']['per_citizen']
+                },
+                "Clero": {
+                    "citizens": redistribution_summary['by_class']['Clero']['citizens'],
+                    "amount": redistribution_summary['by_class']['Clero']['amount'],
+                    "per_citizen": redistribution_summary['by_class']['Clero']['per_citizen']
                 }
             }
         }
@@ -418,12 +434,23 @@ def redistribute_treasury(dry_run: bool = False):
         log.info(f"Per-citizen amount for {social_class}: {amount_for_citizen_in_class} ⚜️ Ducats")
 
     if dry_run:
-        log.info("[DRY RUN] Would redistribute the following per-citizen amounts:")
+        log.info("[DRY RUN] Would make the following fixed daily payments:")
+        total_fixed_dry = 0
+        for social_class, fixed_amount in FIXED_DAILY_PAYMENTS.items():
+            citizens_count = len(citizens_by_class.get(social_class, []))
+            class_total_dry = citizens_count * fixed_amount
+            total_fixed_dry += class_total_dry
+            log.info(f"[DRY RUN] {social_class}: {fixed_amount} ⚜️ Ducats per citizen. Total for class ({citizens_count} citizens): {class_total_dry} ⚜️ Ducats")
+        
+        log.info("[DRY RUN] Would redistribute the following per-citizen amounts (percentage-based):")
         for social_class, per_citizen_amount_val in per_citizen_amounts.items():
             citizens_count = len(citizens_by_class.get(social_class, []))
             class_total_dry_run = citizens_count * per_citizen_amount_val
             log.info(f"[DRY RUN] {social_class}: {per_citizen_amount_val} ⚜️ Ducats per citizen. Total for class ({citizens_count} citizens): {class_total_dry_run} ⚜️ Ducats")
-        log.info(f"[DRY RUN] Total redistribution amount: {redistribution_amount} ⚜️ Ducats")
+        
+        log.info(f"[DRY RUN] Total fixed payments: {total_fixed_dry} ⚜️ Ducats")
+        log.info(f"[DRY RUN] Total percentage-based redistribution: {redistribution_amount} ⚜️ Ducats")
+        log.info(f"[DRY RUN] Grand total: {total_fixed_dry + redistribution_amount} ⚜️ Ducats")
         return
     
     # Track redistribution statistics
@@ -434,16 +461,71 @@ def redistribute_treasury(dry_run: bool = False):
             "Nobili": {"citizens": 0, "amount": 0, "per_citizen": per_citizen_amounts.get("Nobili", 0)},
             "Cittadini": {"citizens": 0, "amount": 0, "per_citizen": per_citizen_amounts.get("Cittadini", 0)},
             "Popolani": {"citizens": 0, "amount": 0, "per_citizen": per_citizen_amounts.get("Popolani", 0)},
-            "Facchini": {"citizens": 0, "amount": 0, "per_citizen": per_citizen_amounts.get("Facchini", 0)}
+            "Facchini": {"citizens": 0, "amount": 0, "per_citizen": per_citizen_amounts.get("Facchini", 0)},
+            "Scientisti": {"citizens": 0, "amount": 0, "per_citizen": FIXED_DAILY_PAYMENTS.get("Scientisti", 0)},
+            "Clero": {"citizens": 0, "amount": 0, "per_citizen": FIXED_DAILY_PAYMENTS.get("Clero", 0)}
         }
     }
     
-    # Deduct the total amount from ConsiglioDeiDieci
+    # First, process fixed daily payments for special social classes
+    total_fixed_payments = 0
+    for social_class, fixed_amount in FIXED_DAILY_PAYMENTS.items():
+        citizens = citizens_by_class.get(social_class, [])
+        if citizens:
+            log.info(f"Processing fixed daily payments for {social_class}: {fixed_amount} Ducats per citizen")
+            class_total = 0
+            class_citizens = 0
+            
+            for citizen in citizens:
+                citizen_id = citizen['id']
+                citizen_username_recipient = citizen['fields'].get('Username', citizen_id)
+                citizen_name = f"{citizen['fields'].get('FirstName', '')} {citizen['fields'].get('LastName', '')}"
+                
+                # Update citizen's wealth
+                if update_citizen_wealth(tables, citizen_id, fixed_amount):
+                    # Create transaction record
+                    create_transaction_record(tables, consiglio_username, citizen_username_recipient, fixed_amount)
+                    
+                    # Create notification for citizen
+                    create_notification(
+                        tables,
+                        citizen_id,
+                        f"You received **{int(fixed_amount):,}** ⚜️ Ducats as your **Daily {social_class} Stipend** 📚",
+                        {
+                            "event_type": "fixed_daily_payment",
+                            "amount": fixed_amount,
+                            "social_class": social_class,
+                            "source": "ConsiglioDeiDieci"
+                        }
+                    )
+                    
+                    class_total += fixed_amount
+                    class_citizens += 1
+                    total_fixed_payments += fixed_amount
+                    
+                    log.info(f"Paid {fixed_amount} ⚜️ Ducats to {citizen_name} ({social_class})")
+            
+            # Update summary statistics for fixed payments
+            redistribution_summary["by_class"][social_class]["citizens"] = class_citizens
+            redistribution_summary["by_class"][social_class]["amount"] = class_total
+            redistribution_summary["total_amount"] += class_total
+            redistribution_summary["total_citizens"] += class_citizens
+            
+            log.info(f"Paid total of {class_total} ⚜️ Ducats to {class_citizens} citizens of class {social_class}")
+    
+    # Deduct fixed payments from ConsiglioDeiDieci
+    if total_fixed_payments > 0:
+        if not update_compute_balance(tables, consiglio_id, total_fixed_payments, "subtract"):
+            log.error(f"Failed to deduct {total_fixed_payments} fixed payments from ConsiglioDeiDieci")
+            return
+        log.info(f"Deducted {total_fixed_payments} ⚜️ Ducats for fixed daily payments")
+    
+    # Now deduct the percentage-based redistribution amount from ConsiglioDeiDieci
     if not update_compute_balance(tables, consiglio_id, redistribution_amount, "subtract"):
         log.error(f"Failed to deduct {redistribution_amount} from ConsiglioDeiDieci")
         return
     
-    # Distribute to citizens by social class
+    # Distribute percentage-based payments to citizens by social class
     for social_class, citizens in citizens_by_class.items():
         if social_class not in per_citizen_amounts:
             log.warning(f"No redistribution amount defined for class {social_class}, skipping")
@@ -507,9 +589,16 @@ def redistribute_treasury(dry_run: bool = False):
             f"• **Nobili**: **{redistribution_summary['by_class']['Nobili']['amount']:,}** ⚜️ ducats to **{redistribution_summary['by_class']['Nobili']['citizens']:,}** citizens 👑\n"
             f"• **Cittadini**: **{redistribution_summary['by_class']['Cittadini']['amount']:,}** ⚜️ ducats to **{redistribution_summary['by_class']['Cittadini']['citizens']:,}** citizens 🏙️\n"
             f"• **Popolani**: **{redistribution_summary['by_class']['Popolani']['amount']:,}** ⚜️ ducats to **{redistribution_summary['by_class']['Popolani']['citizens']:,}** citizens 🏘️\n"
-            f"• **Facchini**: **{redistribution_summary['by_class']['Facchini']['amount']:,}** ⚜️ ducats to **{redistribution_summary['by_class']['Facchini']['citizens']:,}** citizens 🧳\n\n"
-            "Visit **https://serenissima.ai** to check your citizens."
+            f"• **Facchini**: **{redistribution_summary['by_class']['Facchini']['amount']:,}** ⚜️ ducats to **{redistribution_summary['by_class']['Facchini']['citizens']:,}** citizens 🧳\n"
         )
+        
+        # Add fixed payment classes if they received payments
+        if redistribution_summary['by_class']['Scientisti']['citizens'] > 0:
+            notification_message += f"• **Scientisti**: **{redistribution_summary['by_class']['Scientisti']['amount']:,}** ⚜️ ducats to **{redistribution_summary['by_class']['Scientisti']['citizens']:,}** citizens 🔬\n"
+        if redistribution_summary['by_class']['Clero']['citizens'] > 0:
+            notification_message += f"• **Clero**: **{redistribution_summary['by_class']['Clero']['amount']:,}** ⚜️ ducats to **{redistribution_summary['by_class']['Clero']['citizens']:,}** citizens ⛪\n"
+        
+        notification_message += "\nVisit **https://serenissima.ai** to check your citizens."
         
         # Try to send notification but continue even if it fails
         try:
