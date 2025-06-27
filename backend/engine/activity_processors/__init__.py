@@ -60,6 +60,11 @@ from .prepare_sermon_processor import process as process_prepare_sermon # New pr
 from .study_literature_processor import process as process_study_literature # New processor for scientific study
 from .observe_phenomena_processor import process as process_observe_phenomena # New processor for scientific observation
 from .goto_position_processor import process as process_goto_position # New processor for position-based movement
+from .pray_processor import process as process_pray # New processor for praying
+from .research_investigation_processor import process as process_research_investigation # New processor for Scientisti research
+from .research_scope_definition_processor import process as process_research_scope_definition # New processor for research planning
+from .hypothesis_and_question_development_processor import process as process_hypothesis_and_question_development # New processor for hypothesis formation
+from .knowledge_integration_processor import process as process_knowledge_integration # New processor for knowledge synthesis
 
 # Imports pour les processeurs de terrains et contrats
 from .bid_on_land_activity_processor import process_bid_on_land_fn
@@ -173,6 +178,11 @@ ACTIVITY_PROCESSORS = {
     'study_literature': process_study_literature,
     'observe_phenomena': process_observe_phenomena,
     'goto_position': process_goto_position,
+    'pray': process_pray,
+    'research_investigation': process_research_investigation,
+    'research_scope_definition': process_research_scope_definition,
+    'hypothesis_and_question_development': process_hypothesis_and_question_development,
+    'knowledge_integration': process_knowledge_integration,
     'idle': process_placeholder_activity_fn,
     'secure_warehouse': process_placeholder_activity_fn,
 }

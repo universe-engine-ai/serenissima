@@ -29,7 +29,11 @@ from backend.engine.activity_creators import (
     try_create_study_literature_activity,
     try_create_send_message_activity,
     try_create_spread_rumor_activity,
-    try_create_observe_phenomena_activity
+    try_create_observe_phenomena_activity,
+    try_create_research_investigation_activity,
+    try_create_research_scope_definition_activity,
+    try_create_hypothesis_and_question_development_activity,
+    try_create_knowledge_integration_activity
 )
 
 log = logging.getLogger(__name__)
@@ -39,10 +43,10 @@ log = logging.getLogger(__name__)
 SCIENTISTI_WORK_WEIGHTS = [
     # (weight, activity_function, activity_name)
     (25, 'study_literature', "Study Scientific Literature"),
-    (20, 'research_scope_definition', "Define Research Scope"),
-    (20, 'empirical_data_collection', "Collect Empirical Data"),
+    (20, 'empirical_data_collection', "Collect Empirical Data"),  # Field observations
+    (20, 'research_investigation', "Conduct Deep Research"),  # Claude consultation
     (15, 'hypothesis_and_question_development', "Develop Hypotheses and Questions"),
-    (10, 'research_investigation', "Conduct Research Investigation"),
+    (10, 'research_scope_definition', "Define Research Scope"),
     (5, 'knowledge_integration', "Integrate Knowledge"),
     (5, 'knowledge_diffusion', "Diffuse Knowledge"),
 ]
@@ -114,7 +118,7 @@ def _try_process_weighted_scientisti_work(
             )
         elif activity_type == 'research_scope_definition':
             activity_result = _handle_research_scope_definition(
-                tables, citizen_record, citizen_position, now_utc_dt
+                tables, citizen_record, citizen_position, now_utc_dt, transport_api_url
             )
         elif activity_type == 'empirical_data_collection':
             activity_result = _handle_empirical_data_collection(
@@ -122,15 +126,15 @@ def _try_process_weighted_scientisti_work(
             )
         elif activity_type == 'hypothesis_and_question_development':
             activity_result = _handle_hypothesis_development(
-                tables, citizen_record, citizen_position, now_utc_dt
+                tables, citizen_record, citizen_position, now_utc_dt, transport_api_url
             )
         elif activity_type == 'research_investigation':
             activity_result = _handle_research_investigation(
-                tables, citizen_record, citizen_position, now_utc_dt, transport_api_url
+                tables, citizen_record, citizen_position, now_utc_dt, transport_api_url, api_base_url
             )
         elif activity_type == 'knowledge_integration':
             activity_result = _handle_knowledge_integration(
-                tables, citizen_record, citizen_position, now_utc_dt
+                tables, citizen_record, citizen_position, now_utc_dt, transport_api_url
             )
         elif activity_type == 'knowledge_diffusion':
             activity_result = _handle_knowledge_diffusion(
@@ -170,13 +174,19 @@ def _handle_research_scope_definition(
     tables: Dict[str, Any],
     citizen_record: Dict,
     citizen_position: Optional[Dict],
-    now_utc_dt: datetime
+    now_utc_dt: datetime,
+    transport_api_url: str
 ) -> Optional[Dict]:
     """Handle defining research scope - planning and documenting research objectives."""
-    # TODO: Implement research scope definition
-    # This would involve creating research plans and defining objectives
-    log.info(f"{LogColors.WARNING}[Research Scope] Not yet implemented.{LogColors.ENDC}")
-    return None
+    if not citizen_position:
+        return None
+    
+    activity_record = try_create_research_scope_definition_activity(
+        tables, citizen_record, citizen_position,
+        now_utc_dt, transport_api_url
+    )
+    
+    return activity_record
 
 
 def _handle_empirical_data_collection(
@@ -203,13 +213,19 @@ def _handle_hypothesis_development(
     tables: Dict[str, Any],
     citizen_record: Dict,
     citizen_position: Optional[Dict],
-    now_utc_dt: datetime
+    now_utc_dt: datetime,
+    transport_api_url: str
 ) -> Optional[Dict]:
     """Handle hypothesis and question development based on observations."""
-    # TODO: Implement hypothesis development activity
-    # This would involve analyzing collected data and forming hypotheses
-    log.info(f"{LogColors.WARNING}[Hypothesis Development] Not yet implemented.{LogColors.ENDC}")
-    return None
+    if not citizen_position:
+        return None
+    
+    activity_record = try_create_hypothesis_and_question_development_activity(
+        tables, citizen_record, citizen_position,
+        now_utc_dt, transport_api_url
+    )
+    
+    return activity_record
 
 
 def _handle_research_investigation(
@@ -217,26 +233,38 @@ def _handle_research_investigation(
     citizen_record: Dict,
     citizen_position: Optional[Dict],
     now_utc_dt: datetime,
-    transport_api_url: str
+    transport_api_url: str,
+    api_base_url: str
 ) -> Optional[Dict]:
-    """Handle research investigation - testing hypotheses through experiments."""
-    # TODO: Implement research investigation
-    # This would involve conducting experiments to test hypotheses
-    log.info(f"{LogColors.WARNING}[Research Investigation] Not yet implemented.{LogColors.ENDC}")
-    return None
+    """Handle research investigation - deep research with Claude consultation."""
+    if not citizen_position:
+        return None
+        
+    activity_record = try_create_research_investigation_activity(
+        tables, citizen_record, citizen_position,
+        now_utc_dt, transport_api_url, api_base_url=api_base_url
+    )
+    
+    return activity_record
 
 
 def _handle_knowledge_integration(
     tables: Dict[str, Any],
     citizen_record: Dict,
     citizen_position: Optional[Dict],
-    now_utc_dt: datetime
+    now_utc_dt: datetime,
+    transport_api_url: str
 ) -> Optional[Dict]:
     """Handle knowledge integration - synthesizing findings into coherent understanding."""
-    # TODO: Implement knowledge integration
-    # This would involve combining findings from multiple investigations
-    log.info(f"{LogColors.WARNING}[Knowledge Integration] Not yet implemented.{LogColors.ENDC}")
-    return None
+    if not citizen_position:
+        return None
+    
+    activity_record = try_create_knowledge_integration_activity(
+        tables, citizen_record, citizen_position,
+        now_utc_dt, transport_api_url
+    )
+    
+    return activity_record
 
 
 def _handle_knowledge_diffusion(
