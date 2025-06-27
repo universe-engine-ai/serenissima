@@ -251,6 +251,7 @@ function ApiReference() { // Suppression de 'export default' ici
             <ul className="list-circle pl-6 space-y-1 mt-1">
               <li><a href="#data-access-get-path" className="text-amber-600 hover:underline text-sm">GET /api/data/:path</a></li>
               <li><a href="#data-access-get-ledger" className="text-amber-600 hover:underline text-sm">GET /api/get-ledger</a></li>
+              <li><a href="#data-access-get-ledger-compact" className="text-amber-600 hover:underline text-sm">GET /api/get-ledger-compact</a></li>
             </ul>
           </li>
           <li><a href="#error-handling" className="text-amber-700 hover:underline">Error Handling</a></li>
@@ -4797,10 +4798,13 @@ fetch('/api/relevancies/proximity/marco_polo?type=connected')
             <h4 className="font-bold mb-2">Query Parameters</h4>
             <ul className="list-disc pl-6">
               <li><code>citizenUsername</code> (required) - The username of the citizen.</li>
+              <li><code>format</code> (optional) - Response format: "json" (default) or "markdown".</li>
+              <li><code>compact</code> (optional) - Set to "true" to get a compact version with essential data only (under 4000 tokens).</li>
+              <li><code>forceRefresh</code> (optional) - Set to "true" to bypass cache.</li>
             </ul>
           </div>
           <div className="bg-white p-4 rounded-lg shadow mb-4">
-            <h4 className="font-bold mb-2">Response</h4>
+            <h4 className="font-bold mb-2">Response (Standard)</h4>
             <pre className="bg-gray-100 p-3 rounded overflow-x-auto text-sm">
 {`{
   "success": true,
@@ -4828,6 +4832,139 @@ fetch('/api/relevancies/proximity/marco_polo?type=connected')
         "totalBuildingPoints": number
       }
     ]
+  }
+}`}
+            </pre>
+          </div>
+          <div className="bg-white p-4 rounded-lg shadow mb-4">
+            <h4 className="font-bold mb-2">Response (Compact Mode)</h4>
+            <p className="mb-2">When <code>compact=true</code>, returns essential citizen information in a condensed format:</p>
+            <pre className="bg-gray-100 p-3 rounded overflow-x-auto text-sm">
+{`{
+  "success": true,
+  "data": {
+    "citizen": {
+      "username": "string",
+      "firstName": "string",
+      "lastName": "string",
+      "socialClass": "string",
+      "ducats": number,
+      "influence": number,
+      "position": { "lat": number, "lng": number },
+      "isAI": boolean,
+      "primaryJob": "string",
+      "mood": "string",
+      "moodIntensity": number,
+      "primaryEmotion": "string"
+    },
+    "currentActivity": {
+      "type": "string",
+      "title": "string",
+      "status": "string",
+      "startDate": "string",
+      "description": "string"
+    } | null,
+    "lastCompletedActivity": {
+      "type": "string",
+      "title": "string",
+      "endDate": "string",
+      "thought": "string"
+    } | null,
+    "workplace": {
+      "name": "string",
+      "buildingId": "string",
+      "category": "string"
+    } | null,
+    "home": {
+      "name": "string",
+      "buildingId": "string",
+      "category": "string"
+    } | null,
+    "topRelationships": [
+      {
+        "citizen": "string",
+        "trustScore": number,
+        "strengthScore": number
+      }
+    ],
+    "counts": {
+      "ownedLands": number,
+      "ownedBuildings": number,
+      "activeSellingContracts": number,
+      "activeBuyingContracts": number
+    }
+  }
+}`}
+            </pre>
+          </div>
+        </div>
+
+        <div id="data-access-get-ledger-compact" className="mb-8 scroll-mt-20">
+          <h3 className="text-2xl font-serif text-amber-700 mb-2">GET /api/get-ledger-compact</h3>
+          <p className="mb-2">Retrieves a compact version of the citizen ledger with essential information only. Optimized for AI training datasets and contexts where token count matters (typically under 4000 tokens).</p>
+          <div className="bg-white p-4 rounded-lg shadow mb-4">
+            <h4 className="font-bold mb-2">Query Parameters</h4>
+            <ul className="list-disc pl-6">
+              <li><code>citizenUsername</code> (required) - The username of the citizen.</li>
+              <li><code>forceRefresh</code> (optional) - Set to "true" to bypass cache.</li>
+            </ul>
+          </div>
+          <div className="bg-white p-4 rounded-lg shadow mb-4">
+            <h4 className="font-bold mb-2">Response</h4>
+            <pre className="bg-gray-100 p-3 rounded overflow-x-auto text-sm">
+{`{
+  "success": true,
+  "data": {
+    "citizen": {
+      "username": "string",
+      "firstName": "string",
+      "lastName": "string",
+      "socialClass": "string",
+      "ducats": number,
+      "influence": number,
+      "position": { "lat": number, "lng": number },
+      "isAI": boolean,
+      "primaryJob": "string",
+      "mood": "string",
+      "moodIntensity": number,
+      "primaryEmotion": "string"
+    },
+    "currentActivity": {
+      "type": "string",
+      "title": "string",
+      "status": "string",
+      "startDate": "string",
+      "description": "string"
+    } | null,
+    "lastCompletedActivity": {
+      "type": "string",
+      "title": "string",
+      "endDate": "string",
+      "thought": "string"
+    } | null,
+    "workplace": {
+      "name": "string",
+      "buildingId": "string",
+      "category": "string"
+    } | null,
+    "home": {
+      "name": "string",
+      "buildingId": "string",
+      "category": "string"
+    } | null,
+    "topRelationships": [
+      {
+        "citizen": "string",
+        "trustScore": number,
+        "strengthScore": number
+      }
+    ],
+    "counts": {
+      "ownedLands": number,
+      "ownedBuildings": number,
+      "activeSellingContracts": number,
+      "activeBuyingContracts": number
+    }
   }
 }`}
             </pre>

@@ -68,7 +68,7 @@ def get_building_type_defs():
     building_defs = {}
     building_files = glob.glob(os.path.join(PROJECT_ROOT, 'data/buildings/*.json'))
     for file_path in building_files:
-        with open(file_path, 'r') as f:
+        with open(file_path, 'r', encoding='utf-8') as f:
             building_data = json.load(f)
             building_type = building_data.get('type', os.path.basename(file_path).replace('.json', ''))
             building_defs[building_type] = building_data
@@ -79,7 +79,7 @@ def get_resource_defs():
     resource_defs = {}
     resource_files = glob.glob(os.path.join(PROJECT_ROOT, 'data/resources/*.json'))
     for file_path in resource_files:
-        with open(file_path, 'r') as f:
+        with open(file_path, 'r', encoding='utf-8') as f:
             resource_data = json.load(f)
             resource_type = resource_data.get('type', os.path.basename(file_path).replace('.json', ''))
             resource_defs[resource_type] = resource_data
