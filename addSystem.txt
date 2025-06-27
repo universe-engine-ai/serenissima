@@ -8,7 +8,7 @@ Here is the complete data about your current situation:
 {
   "citizen": {
     "username": "GondolaDrifter",
-    "ducats": 318957.89753549587,
+    "ducats": 340177.3886369205,
     "social_class": "Popolani",
     "description": "Giovanni Contari is a methodical and ambitious artisan who has risen from humble beginnings through careful financial planning and shrewd business investments. His meticulous nature serves him well both at the forge and in managing his growing property portfolio, though his calculating approach to relationships sometimes alienates potential allies. Driven by an unwavering desire for economic independence, he views every interaction through the lens of potential profit or loss.",
     "core_personality": "{\"Strength\": \"Methodical\", \"Flaw\": \"Calculating\", \"Drive\": \"Prosperity-driven\", \"MBTI\": \"ISTJ\", \"PrimaryTrait\": \"Economic optimizer\", \"SecondaryTraits\": [\"Financial planning\", \"Relationship calculation\", \"Independence focus\"], \"CognitiveBias\": [\"Sunk cost fallacy\", \"Planning fallacy\"], \"TrustThreshold\": 0.3, \"EmpathyWeight\": 0.4, \"RiskTolerance\": 0.4, \"guidedBy\": \"The Forge's Logic\", \"CoreThoughts\": {\"primary_drive\": \"financial-independence\", \"secondary_drive\": \"calculated-growth\", \"internal_tension\": \"relationships vs. profit\", \"activation_triggers\": [\"financial_opportunities\", \"independence_threats\", \"investment_decisions\"], \"thought_patterns\": [\"Every relationship has a calculable value\", \"Financial independence eliminates dependence on others\", \"Methodical planning beats emotional decisions\", \"My craft skills provide foundation for wealth building\", \"Profit or loss - every interaction has a number\", \"Economic independence equals true freedom\"], \"decision_framework\": \"How does this maximize financial independence through calculated growth?\"}}",
@@ -1099,6 +1099,13 @@ Here is the complete data about your current situation:
           "maintenance_cost": 0
         },
         {
+          "id": "building_45.428748173929534_12.362001145681361",
+          "type": "mill",
+          "owner": "the_grand_experiment",
+          "income": 0,
+          "maintenance_cost": 0
+        },
+        {
           "id": "canal_45.424823_12.362988",
           "type": "fisherman_s_cottage",
           "owner": "StarGazer2000",
@@ -1376,6 +1383,13 @@ Here is the complete data about your current situation:
       "district": "San Polo",
       "existing_buildings": [
         {
+          "id": "building_45.43839918445191_12.326301049069482",
+          "type": "house_of_natural_sciences",
+          "owner": "ConsiglioDeiDieci",
+          "income": 0,
+          "maintenance_cost": 0
+        },
+        {
           "id": "bridge_45.437103_12.323849",
           "type": "bridge",
           "owner": "ConsiglioDeiDieci",
@@ -1564,6 +1578,13 @@ Here is the complete data about your current situation:
           "id": "building_45.442276_12.323666",
           "type": "small_warehouse",
           "owner": "ConsiglioDeiDieci",
+          "income": 0,
+          "maintenance_cost": 0
+        },
+        {
+          "id": "building_45.44225316651121_12.320556777517233",
+          "type": "mill",
+          "owner": "the_grand_experiment",
           "income": 0,
           "maintenance_cost": 0
         },
@@ -3184,380 +3205,123 @@ Here is the complete data about your current situation:
   "target_relevancies": [],
   "latest_citizen_problems": [
     {
-      "id": "recEPzfZg7tdysAAw",
+      "id": "recQ1h1pIegtvn8Wq",
       "fields": {
-        "ProblemId": "problem_pinpoint_building_45.433867_12.355123_wine_RESOURCE_SHORTAGE",
+        "ProblemId": "problem_pinpoint_building_45.433867_12.355123_salt_WAITING_FOR_DELIVERY",
         "Citizen": "GondolaDrifter",
         "Asset": "building_45.433867_12.355123",
         "AssetType": "building",
-        "Severity": "Critical",
+        "Severity": "Medium",
         "Status": "active",
-        "CreatedAt": "2025-06-15T23:18:52.566Z",
-        "UpdatedAt": "2025-06-15T21:18:53.000Z",
+        "CreatedAt": "2025-06-27T03:40:16.265Z",
+        "UpdatedAt": "2025-06-27T01:40:16.000Z",
         "Location": "Contract Stall at Calle del Paradiso",
-        "Title": "Resource Shortage: wine for Contract Stall at Calle del Paradiso",
-        "Description": "Building 'Contract Stall at Calle del Paradiso' (ID: building_45.433867_12.355123) is out of stock for 'wine', has a 'markup_buy' contract, but the resource appears to be unavailable or not actively sold elsewhere in Venice.",
-        "Solutions": "The resource 'wine' is currently scarce. Consider:\n- Increasing the buy price on your 'markup_buy' contract significantly to incentivize sellers.\n- If possible, find alternative resources or adjust production that depends on 'wine'.\n- Wait for market conditions to change (e.g., new imports by merchants).",
+        "Title": "Waiting for Delivery: salt at Contract Stall at Calle del Paradiso",
+        "Description": "Building 'Contract Stall at Calle del Paradiso' (ID: building_45.433867_12.355123) is out of stock for 'salt', has an active 'markup_buy' contract, and the resource is available elsewhere. Awaiting delivery.",
+        "Solutions": "Monitor the 'markup_buy' contract for 'salt'. Ensure citizens or logistics services are fulfilling delivery. Check 'fetch_resource' activities targeting your building.",
         "Position": "{\"lat\": 45.43386666573664, \"lng\": 12.355122575300777}",
-        "Type": "resource_shortage"
+        "Type": "waiting_for_resource_delivery"
       }
     },
     {
-      "id": "reconYBAeZsbUJgHN",
+      "id": "recR915y3NThx4IZC",
       "fields": {
-        "ProblemId": "problem_pinpoint_building_45.433867_12.355123_salt_RESOURCE_SHORTAGE",
+        "ProblemId": "problem_pinpoint_building_45.433867_12.355123_preserved_fish_WAITING_FOR_DELIVERY",
         "Citizen": "GondolaDrifter",
         "Asset": "building_45.433867_12.355123",
         "AssetType": "building",
-        "Severity": "Critical",
+        "Severity": "Medium",
         "Status": "active",
-        "CreatedAt": "2025-06-15T23:18:41.343Z",
-        "UpdatedAt": "2025-06-15T21:18:41.000Z",
+        "CreatedAt": "2025-06-27T03:40:14.125Z",
+        "UpdatedAt": "2025-06-27T01:40:14.000Z",
         "Location": "Contract Stall at Calle del Paradiso",
-        "Title": "Resource Shortage: salt for Contract Stall at Calle del Paradiso",
-        "Description": "Building 'Contract Stall at Calle del Paradiso' (ID: building_45.433867_12.355123) is out of stock for 'salt', has a 'markup_buy' contract, but the resource appears to be unavailable or not actively sold elsewhere in Venice.",
-        "Solutions": "The resource 'salt' is currently scarce. Consider:\n- Increasing the buy price on your 'markup_buy' contract significantly to incentivize sellers.\n- If possible, find alternative resources or adjust production that depends on 'salt'.\n- Wait for market conditions to change (e.g., new imports by merchants).",
+        "Title": "Waiting for Delivery: preserved_fish at Contract Stall at Calle del Paradiso",
+        "Description": "Building 'Contract Stall at Calle del Paradiso' (ID: building_45.433867_12.355123) is out of stock for 'preserved_fish', has an active 'markup_buy' contract, and the resource is available elsewhere. Awaiting delivery.",
+        "Solutions": "Monitor the 'markup_buy' contract for 'preserved_fish'. Ensure citizens or logistics services are fulfilling delivery. Check 'fetch_resource' activities targeting your building.",
         "Position": "{\"lat\": 45.43386666573664, \"lng\": 12.355122575300777}",
-        "Type": "resource_shortage"
+        "Type": "waiting_for_resource_delivery"
       }
     },
     {
-      "id": "recIQwzcOgZgx4dqU",
+      "id": "recz9JVcp8Nn6MLQS",
       "fields": {
-        "ProblemId": "problem_pinpoint_building_45.433867_12.355123_preserved_fish_RESOURCE_SHORTAGE",
+        "ProblemId": "problem_pinpoint_building_45.433867_12.355123_olives_WAITING_FOR_DELIVERY",
         "Citizen": "GondolaDrifter",
         "Asset": "building_45.433867_12.355123",
         "AssetType": "building",
-        "Severity": "Critical",
+        "Severity": "Medium",
         "Status": "active",
-        "CreatedAt": "2025-06-15T23:18:27.328Z",
-        "UpdatedAt": "2025-06-15T21:18:27.000Z",
+        "CreatedAt": "2025-06-27T03:40:11.528Z",
+        "UpdatedAt": "2025-06-27T01:40:12.000Z",
         "Location": "Contract Stall at Calle del Paradiso",
-        "Title": "Resource Shortage: preserved_fish for Contract Stall at Calle del Paradiso",
-        "Description": "Building 'Contract Stall at Calle del Paradiso' (ID: building_45.433867_12.355123) is out of stock for 'preserved_fish', has a 'markup_buy' contract, but the resource appears to be unavailable or not actively sold elsewhere in Venice.",
-        "Solutions": "The resource 'preserved_fish' is currently scarce. Consider:\n- Increasing the buy price on your 'markup_buy' contract significantly to incentivize sellers.\n- If possible, find alternative resources or adjust production that depends on 'preserved_fish'.\n- Wait for market conditions to change (e.g., new imports by merchants).",
+        "Title": "Waiting for Delivery: olives at Contract Stall at Calle del Paradiso",
+        "Description": "Building 'Contract Stall at Calle del Paradiso' (ID: building_45.433867_12.355123) is out of stock for 'olives', has an active 'markup_buy' contract, and the resource is available elsewhere. Awaiting delivery.",
+        "Solutions": "Monitor the 'markup_buy' contract for 'olives'. Ensure citizens or logistics services are fulfilling delivery. Check 'fetch_resource' activities targeting your building.",
         "Position": "{\"lat\": 45.43386666573664, \"lng\": 12.355122575300777}",
-        "Type": "resource_shortage"
+        "Type": "waiting_for_resource_delivery"
       }
     },
     {
-      "id": "recN1sX6R8O2AdTe3",
+      "id": "recnTIMMXzRIOEXWQ",
       "fields": {
-        "ProblemId": "problem_pinpoint_building_45.433867_12.355123_olives_RESOURCE_SHORTAGE",
+        "ProblemId": "problem_pinpoint_building_45.433867_12.355123_olive_oil_WAITING_FOR_DELIVERY",
         "Citizen": "GondolaDrifter",
         "Asset": "building_45.433867_12.355123",
         "AssetType": "building",
-        "Severity": "Critical",
+        "Severity": "Medium",
         "Status": "active",
-        "CreatedAt": "2025-06-15T23:18:17.369Z",
-        "UpdatedAt": "2025-06-15T21:18:17.000Z",
+        "CreatedAt": "2025-06-27T03:40:09.363Z",
+        "UpdatedAt": "2025-06-27T01:40:09.000Z",
         "Location": "Contract Stall at Calle del Paradiso",
-        "Title": "Resource Shortage: olives for Contract Stall at Calle del Paradiso",
-        "Description": "Building 'Contract Stall at Calle del Paradiso' (ID: building_45.433867_12.355123) is out of stock for 'olives', has a 'markup_buy' contract, but the resource appears to be unavailable or not actively sold elsewhere in Venice.",
-        "Solutions": "The resource 'olives' is currently scarce. Consider:\n- Increasing the buy price on your 'markup_buy' contract significantly to incentivize sellers.\n- If possible, find alternative resources or adjust production that depends on 'olives'.\n- Wait for market conditions to change (e.g., new imports by merchants).",
+        "Title": "Waiting for Delivery: olive_oil at Contract Stall at Calle del Paradiso",
+        "Description": "Building 'Contract Stall at Calle del Paradiso' (ID: building_45.433867_12.355123) is out of stock for 'olive_oil', has an active 'markup_buy' contract, and the resource is available elsewhere. Awaiting delivery.",
+        "Solutions": "Monitor the 'markup_buy' contract for 'olive_oil'. Ensure citizens or logistics services are fulfilling delivery. Check 'fetch_resource' activities targeting your building.",
         "Position": "{\"lat\": 45.43386666573664, \"lng\": 12.355122575300777}",
-        "Type": "resource_shortage"
+        "Type": "waiting_for_resource_delivery"
       }
     },
     {
-      "id": "recsj2nrdl4nDavh1",
+      "id": "recWajl2xRRe8LsT2",
       "fields": {
-        "ProblemId": "problem_pinpoint_building_45.433867_12.355123_olive_oil_RESOURCE_SHORTAGE",
+        "ProblemId": "hungry_GondolaDrifter",
         "Citizen": "GondolaDrifter",
-        "Asset": "building_45.433867_12.355123",
-        "AssetType": "building",
-        "Severity": "Critical",
+        "Asset": "GondolaDrifter",
+        "AssetType": "citizen",
+        "Severity": "medium",
         "Status": "active",
-        "CreatedAt": "2025-06-15T23:18:11.511Z",
-        "UpdatedAt": "2025-06-15T21:18:12.000Z",
-        "Location": "Contract Stall at Calle del Paradiso",
-        "Title": "Resource Shortage: olive_oil for Contract Stall at Calle del Paradiso",
-        "Description": "Building 'Contract Stall at Calle del Paradiso' (ID: building_45.433867_12.355123) is out of stock for 'olive_oil', has a 'markup_buy' contract, but the resource appears to be unavailable or not actively sold elsewhere in Venice.",
-        "Solutions": "The resource 'olive_oil' is currently scarce. Consider:\n- Increasing the buy price on your 'markup_buy' contract significantly to incentivize sellers.\n- If possible, find alternative resources or adjust production that depends on 'olive_oil'.\n- Wait for market conditions to change (e.g., new imports by merchants).",
-        "Position": "{\"lat\": 45.43386666573664, \"lng\": 12.355122575300777}",
-        "Type": "resource_shortage"
+        "CreatedAt": "2025-06-27T02:07:35.178Z",
+        "UpdatedAt": "2025-06-27T18:42:24.000Z",
+        "Location": "Giovanni's last known area",
+        "Title": "Hungry Citizen",
+        "Description": "**Giovanni Contari** has not eaten in over 24 hours and is now hungry. This can affect their well-being and ability to perform tasks effectively.\n\n### Impact\n- Reduced energy and focus.\n- If employed, work productivity may be reduced by up to 50%.\n- Prolonged hunger can lead to more severe health issues (if implemented).",
+        "Solutions": "### Recommended Solutions\n- Ensure the citizen consumes food. This might involve visiting a tavern, purchasing food from a market, or using owned food resources.\n- Check if the citizen has sufficient Ducats to afford food.\n- Review game mechanics related to food consumption and ensure the 'AteAt' (or equivalent) field is updated correctly after eating.",
+        "Notes": "[Failures: 1]\nCitizen GondolaDrifter last ate at 2025-06-19T21:22:58.384Z. Current time: 2025-06-27T02:07:35.147Z",
+        "Position": "{\"lat\":45.42879640158091,\"lng\":12.363885127436015}",
+        "Type": "hungry_citizen"
       }
     },
     {
-      "id": "rechED8W7I3RCH4ZB",
+      "id": "recv3KiEkhmQmZ9NQ",
       "fields": {
-        "ProblemId": "problem_pinpoint_building_45.433867_12.355123_flour_RESOURCE_SHORTAGE",
+        "ProblemId": "hungry_employee_impact_GondolaDrifter_DesertRanger",
         "Citizen": "GondolaDrifter",
-        "Asset": "building_45.433867_12.355123",
-        "AssetType": "building",
-        "Severity": "Critical",
+        "Asset": "DesertRanger",
+        "AssetType": "employee_performance",
+        "Severity": "low",
         "Status": "active",
-        "CreatedAt": "2025-06-15T23:18:06.524Z",
-        "UpdatedAt": "2025-06-15T21:18:07.000Z",
+        "CreatedAt": "2025-06-27T02:07:35.172Z",
+        "UpdatedAt": "2025-06-27T02:08:28.000Z",
         "Location": "Contract Stall at Calle del Paradiso",
-        "Title": "Resource Shortage: flour for Contract Stall at Calle del Paradiso",
-        "Description": "Building 'Contract Stall at Calle del Paradiso' (ID: building_45.433867_12.355123) is out of stock for 'flour', has a 'markup_buy' contract, but the resource appears to be unavailable or not actively sold elsewhere in Venice.",
-        "Solutions": "The resource 'flour' is currently scarce. Consider:\n- Increasing the buy price on your 'markup_buy' contract significantly to incentivize sellers.\n- If possible, find alternative resources or adjust production that depends on 'flour'.\n- Wait for market conditions to change (e.g., new imports by merchants).",
-        "Position": "{\"lat\": 45.43386666573664, \"lng\": 12.355122575300777}",
-        "Type": "resource_shortage"
-      }
-    },
-    {
-      "id": "recxlO6Nty7tPKIX2",
-      "fields": {
-        "ProblemId": "problem_pinpoint_building_45.433867_12.355123_fish_RESOURCE_SHORTAGE",
-        "Citizen": "GondolaDrifter",
-        "Asset": "building_45.433867_12.355123",
-        "AssetType": "building",
-        "Severity": "Critical",
-        "Status": "active",
-        "CreatedAt": "2025-06-15T23:18:00.445Z",
-        "UpdatedAt": "2025-06-15T21:18:01.000Z",
-        "Location": "Contract Stall at Calle del Paradiso",
-        "Title": "Resource Shortage: fish for Contract Stall at Calle del Paradiso",
-        "Description": "Building 'Contract Stall at Calle del Paradiso' (ID: building_45.433867_12.355123) is out of stock for 'fish', has a 'markup_buy' contract, but the resource appears to be unavailable or not actively sold elsewhere in Venice.",
-        "Solutions": "The resource 'fish' is currently scarce. Consider:\n- Increasing the buy price on your 'markup_buy' contract significantly to incentivize sellers.\n- If possible, find alternative resources or adjust production that depends on 'fish'.\n- Wait for market conditions to change (e.g., new imports by merchants).",
-        "Position": "{\"lat\": 45.43386666573664, \"lng\": 12.355122575300777}",
-        "Type": "resource_shortage"
-      }
-    },
-    {
-      "id": "recrs4OTeTZ9yjnmt",
-      "fields": {
-        "ProblemId": "problem_pinpoint_building_45.433867_12.355123_bread_RESOURCE_SHORTAGE",
-        "Citizen": "GondolaDrifter",
-        "Asset": "building_45.433867_12.355123",
-        "AssetType": "building",
-        "Severity": "Critical",
-        "Status": "active",
-        "CreatedAt": "2025-06-15T23:17:38.543Z",
-        "UpdatedAt": "2025-06-15T21:17:39.000Z",
-        "Location": "Contract Stall at Calle del Paradiso",
-        "Title": "Resource Shortage: bread for Contract Stall at Calle del Paradiso",
-        "Description": "Building 'Contract Stall at Calle del Paradiso' (ID: building_45.433867_12.355123) is out of stock for 'bread', has a 'markup_buy' contract, but the resource appears to be unavailable or not actively sold elsewhere in Venice.",
-        "Solutions": "The resource 'bread' is currently scarce. Consider:\n- Increasing the buy price on your 'markup_buy' contract significantly to incentivize sellers.\n- If possible, find alternative resources or adjust production that depends on 'bread'.\n- Wait for market conditions to change (e.g., new imports by merchants).",
-        "Position": "{\"lat\": 45.43386666573664, \"lng\": 12.355122575300777}",
-        "Type": "resource_shortage"
+        "Title": "Hungry Employee Impact",
+        "Description": "Your employee, **Tiziano Bertucci**, is currently hungry. Hunger can significantly reduce productivity (up to 50%).",
+        "Solutions": "Ensure **Tiziano Bertucci** has the means and opportunity to eat. Consider if wages are sufficient or if working conditions impede access to food. Monitor their performance.",
+        "Notes": "Hungry Employee: DesertRanger (ID: DesertRanger), Workplace: Contract Stall at Calle del Paradiso (ID: building_45.433867_12.355123). Last ate: 2025-06-19T20:29:03.909Z.",
+        "Position": "{\"lat\":45.43386666573664,\"lng\":12.355122575300777}",
+        "Type": "hungry_employee_impact"
       }
     }
   ],
-  "recent_notifications_for_ai": [
-    {
-      "notificationId": "recyvMOSLKYW3dmkN",
-      "type": "markup_buy_contract_updated",
-      "citizen": "GondolaDrifter",
-      "content": "Your buy order for wine (markup_buy_main_building_45.433867_12.355123_wine) has been updated.",
-      "details": {
-        "contractId": "markup_buy_main_building_45.433867_12.355123_wine"
-      },
-      "createdAt": "2025-06-12T16:58:40.595Z",
-      "readAt": "2025-06-12T16:58:40.439Z"
-    },
-    {
-      "notificationId": "recERBi6s1wRIN1gE",
-      "type": "markup_buy_contract_updated",
-      "citizen": "GondolaDrifter",
-      "content": "Your buy order for salt (markup_buy_main_building_45.433867_12.355123_salt) has been updated.",
-      "details": {
-        "contractId": "markup_buy_main_building_45.433867_12.355123_salt"
-      },
-      "createdAt": "2025-06-12T16:53:41.909Z",
-      "readAt": "2025-06-12T16:53:41.763Z"
-    },
-    {
-      "notificationId": "recmeGKVPjubSGTN8",
-      "type": "markup_buy_contract_updated",
-      "citizen": "GondolaDrifter",
-      "content": "Your buy order for preserved_fish (markup_buy_main_building_45.433867_12.355123_preserved_fish) has been updated.",
-      "details": {
-        "contractId": "markup_buy_main_building_45.433867_12.355123_preserved_fish"
-      },
-      "createdAt": "2025-06-12T12:58:55.491Z",
-      "readAt": "2025-06-12T12:58:56.262Z"
-    },
-    {
-      "notificationId": "recroRVEIAGsESIM7",
-      "type": "markup_buy_contract_updated",
-      "citizen": "GondolaDrifter",
-      "content": "Your buy order for olives (markup_buy_main_building_45.433867_12.355123_olives) has been updated.",
-      "details": {
-        "contractId": "markup_buy_main_building_45.433867_12.355123_olives"
-      },
-      "createdAt": "2025-06-12T12:48:39.030Z",
-      "readAt": "2025-06-12T12:48:39.216Z"
-    },
-    {
-      "notificationId": "recoAaD3Xwu3sx8Ic",
-      "type": "markup_buy_contract_updated",
-      "citizen": "GondolaDrifter",
-      "content": "Your buy order for olive_oil (markup_buy_main_building_45.433867_12.355123_olive_oil) has been updated.",
-      "details": {
-        "contractId": "markup_buy_main_building_45.433867_12.355123_olive_oil"
-      },
-      "createdAt": "2025-06-12T04:38:57.125Z",
-      "readAt": "2025-06-12T04:39:18.348Z"
-    },
-    {
-      "notificationId": "recXviu2m6rSmgtk6",
-      "type": "markup_buy_contract_updated",
-      "citizen": "GondolaDrifter",
-      "content": "Your buy order for flour (markup_buy_main_building_45.433867_12.355123_flour) has been updated.",
-      "details": {
-        "contractId": "markup_buy_main_building_45.433867_12.355123_flour"
-      },
-      "createdAt": "2025-06-12T00:18:46.823Z",
-      "readAt": "2025-06-12T00:19:08.739Z"
-    },
-    {
-      "notificationId": "recVkkdFI3sSSoYLG",
-      "type": "markup_buy_contract_updated",
-      "citizen": "GondolaDrifter",
-      "content": "Your buy order for fish (markup_buy_main_building_45.433867_12.355123_fish) has been updated.",
-      "details": {
-        "contractId": "markup_buy_main_building_45.433867_12.355123_fish"
-      },
-      "createdAt": "2025-06-12T00:09:18.502Z",
-      "readAt": "2025-06-12T00:09:39.962Z"
-    },
-    {
-      "notificationId": "reca2hWiYoR2qGokE",
-      "type": "markup_buy_contract_updated",
-      "citizen": "GondolaDrifter",
-      "content": "Your buy order for bread (markup_buy_main_building_45.433867_12.355123_bread) has been updated.",
-      "details": {
-        "contractId": "markup_buy_main_building_45.433867_12.355123_bread"
-      },
-      "createdAt": "2025-06-11T23:39:23.770Z",
-      "readAt": "2025-06-11T23:39:45.270Z"
-    },
-    {
-      "notificationId": "rec9asdgF5aGzNuse",
-      "type": "markup_buy_contract_updated",
-      "citizen": "GondolaDrifter",
-      "content": "Your buy order for olives (markup_buy_main_building_45.433867_12.355123_olives) has been updated.",
-      "details": {
-        "contractId": "markup_buy_main_building_45.433867_12.355123_olives"
-      },
-      "createdAt": "2025-06-10T12:54:29.522Z",
-      "readAt": "2025-06-10T12:54:29.697Z"
-    },
-    {
-      "notificationId": "recgLTTer66k51RPE",
-      "type": "markup_buy_contract_updated",
-      "citizen": "GondolaDrifter",
-      "content": "Your buy order for olive_oil (markup_buy_main_building_45.433867_12.355123_olive_oil) has been updated.",
-      "details": {
-        "contractId": "markup_buy_main_building_45.433867_12.355123_olive_oil"
-      },
-      "createdAt": "2025-06-10T12:53:21.943Z",
-      "readAt": "2025-06-10T12:53:22.055Z"
-    },
-    {
-      "notificationId": "recEqy71OlqbQqx6S",
-      "type": "markup_buy_contract_updated",
-      "citizen": "GondolaDrifter",
-      "content": "Your buy order for flour (markup_buy_main_building_45.433867_12.355123_flour) has been updated.",
-      "details": {
-        "contractId": "markup_buy_main_building_45.433867_12.355123_flour"
-      },
-      "createdAt": "2025-06-10T12:52:19.326Z",
-      "readAt": "2025-06-10T12:52:19.459Z"
-    },
-    {
-      "notificationId": "rec8CzlBY3ncfziua",
-      "type": "markup_buy_contract_updated",
-      "citizen": "GondolaDrifter",
-      "content": "Your buy order for bread (markup_buy_main_building_45.433867_12.355123_bread) has been updated.",
-      "details": {
-        "contractId": "markup_buy_main_building_45.433867_12.355123_bread"
-      },
-      "createdAt": "2025-06-10T12:51:28.540Z",
-      "readAt": "2025-06-10T12:51:28.686Z"
-    },
-    {
-      "notificationId": "recyvlFzqbMCbNZVA",
-      "type": "markup_buy_contract_updated",
-      "citizen": "GondolaDrifter",
-      "content": "Your buy order for wine (markup_buy_main_building_45.433867_12.355123_wine) has been updated.",
-      "details": {
-        "contractId": "markup_buy_main_building_45.433867_12.355123_wine"
-      },
-      "createdAt": "2025-06-10T03:11:40.406Z",
-      "readAt": "2025-06-10T03:11:42.022Z"
-    },
-    {
-      "notificationId": "recAG4ABYI233Qbn4",
-      "type": "markup_buy_contract_updated",
-      "citizen": "GondolaDrifter",
-      "content": "Your buy order for salt (markup_buy_main_building_45.433867_12.355123_salt) has been updated.",
-      "details": {
-        "contractId": "markup_buy_main_building_45.433867_12.355123_salt"
-      },
-      "createdAt": "2025-06-10T03:11:39.109Z",
-      "readAt": "2025-06-10T03:11:39.934Z"
-    },
-    {
-      "notificationId": "recZFLcgfEOkeioxM",
-      "type": "markup_buy_contract_updated",
-      "citizen": "GondolaDrifter",
-      "content": "Your buy order for preserved_fish (markup_buy_main_building_45.433867_12.355123_preserved_fish) has been updated.",
-      "details": {
-        "contractId": "markup_buy_main_building_45.433867_12.355123_preserved_fish"
-      },
-      "createdAt": "2025-06-10T03:11:36.605Z",
-      "readAt": "2025-06-10T03:11:36.714Z"
-    },
-    {
-      "notificationId": "recQB9lsDXChNMpkl",
-      "type": "markup_buy_contract_updated",
-      "citizen": "GondolaDrifter",
-      "content": "Your buy order for olives (markup_buy_main_building_45.433867_12.355123_olives) has been updated.",
-      "details": {
-        "contractId": "markup_buy_main_building_45.433867_12.355123_olives"
-      },
-      "createdAt": "2025-06-10T03:11:34.501Z",
-      "readAt": "2025-06-10T03:11:34.680Z"
-    },
-    {
-      "notificationId": "recc3SOzEsSVZr37H",
-      "type": "markup_buy_contract_updated",
-      "citizen": "GondolaDrifter",
-      "content": "Your buy order for olive_oil (markup_buy_main_building_45.433867_12.355123_olive_oil) has been updated.",
-      "details": {
-        "contractId": "markup_buy_main_building_45.433867_12.355123_olive_oil"
-      },
-      "createdAt": "2025-06-10T03:11:33.197Z",
-      "readAt": "2025-06-10T03:11:33.419Z"
-    },
-    {
-      "notificationId": "recGnEA59l4epSSHG",
-      "type": "markup_buy_contract_updated",
-      "citizen": "GondolaDrifter",
-      "content": "Your buy order for flour (markup_buy_main_building_45.433867_12.355123_flour) has been updated.",
-      "details": {
-        "contractId": "markup_buy_main_building_45.433867_12.355123_flour"
-      },
-      "createdAt": "2025-06-10T03:11:32.614Z",
-      "readAt": "2025-06-10T03:11:32.778Z"
-    },
-    {
-      "notificationId": "rec4Qum6hEKMYDm2l",
-      "type": "markup_buy_contract_updated",
-      "citizen": "GondolaDrifter",
-      "content": "Your buy order for fish (markup_buy_main_building_45.433867_12.355123_fish) has been updated.",
-      "details": {
-        "contractId": "markup_buy_main_building_45.433867_12.355123_fish"
-      },
-      "createdAt": "2025-06-10T03:11:32.514Z",
-      "readAt": "2025-06-10T03:11:32.629Z"
-    },
-    {
-      "notificationId": "recbCscIT91KXMsiP",
-      "type": "markup_buy_contract_updated",
-      "citizen": "GondolaDrifter",
-      "content": "Your buy order for bread (markup_buy_main_building_45.433867_12.355123_bread) has been updated.",
-      "details": {
-        "contractId": "markup_buy_main_building_45.433867_12.355123_bread"
-      },
-      "createdAt": "2025-06-10T03:11:30.785Z",
-      "readAt": "2025-06-10T03:11:31.355Z"
-    }
-  ],
+  "recent_notifications_for_ai": [],
   "building_types": {
     "apothecary": {
       "id": "apothecary",
@@ -3765,7 +3529,7 @@ Here is the complete data about your current situation:
       "constructionMinutes": 7200,
       "buildTier": 1,
       "tier": null,
-      "category": "Public & Government",
+      "category": "religion",
       "pointType": "building"
     },
     "cistern": {
@@ -3842,25 +3606,6 @@ Here is the complete data about your current situation:
       "category": "home",
       "pointType": "canal"
     },
-    "glassblower_workshop": {
-      "id": "glassblower_workshop",
-      "type": "glassblower_workshop",
-      "name": "Glassblower Workshop",
-      "shortDescription": "Specialized facility where skilled artisans shape molten glass into fine objects and art pieces.",
-      "constructionCost": 1500000,
-      "constructionCosts": {
-        "ducats": 1500000,
-        "timber": 430,
-        "bricks": 1070,
-        "stone": 570,
-        "iron": 290
-      },
-      "constructionMinutes": 5760,
-      "buildTier": 2,
-      "tier": null,
-      "category": "business",
-      "pointType": "building"
-    },
     "glass_foundry": {
       "id": "glass_foundry",
       "type": "glass_foundry",
@@ -3875,6 +3620,25 @@ Here is the complete data about your current situation:
         "iron": 390
       },
       "constructionMinutes": 10080,
+      "buildTier": 2,
+      "tier": null,
+      "category": "business",
+      "pointType": "building"
+    },
+    "glassblower_workshop": {
+      "id": "glassblower_workshop",
+      "type": "glassblower_workshop",
+      "name": "Glassblower Workshop",
+      "shortDescription": "Specialized facility where skilled artisans shape molten glass into fine objects and art pieces.",
+      "constructionCost": 1500000,
+      "constructionCosts": {
+        "ducats": 1500000,
+        "timber": 430,
+        "bricks": 1070,
+        "stone": 570,
+        "iron": 290
+      },
+      "constructionMinutes": 5760,
       "buildTier": 2,
       "tier": null,
       "category": "business",
@@ -4027,6 +3791,25 @@ Here is the complete data about your current situation:
       "category": "home",
       "pointType": "building"
     },
+    "mill": {
+      "id": "mill",
+      "type": "mill",
+      "name": "Mill",
+      "shortDescription": "Industrial facility that grinds grain into flour, essential for bread production.",
+      "constructionCost": 1800000,
+      "constructionCosts": {
+        "ducats": 1800000,
+        "timber": 420,
+        "bricks": 850,
+        "stone": 1200,
+        "iron": 280
+      },
+      "constructionMinutes": 7200,
+      "buildTier": 2,
+      "tier": null,
+      "category": "business",
+      "pointType": "building"
+    },
     "navigation_school": {
       "id": "navigation_school",
       "type": "navigation_school",
@@ -4101,7 +3884,7 @@ Here is the complete data about your current situation:
       "constructionMinutes": 43200,
       "buildTier": 2,
       "tier": null,
-      "category": "Public & Government",
+      "category": "religion",
       "pointType": "building"
     },
     "porter_guild_hall": {
@@ -4462,32 +4245,8 @@ Here is the complete data about your current situation:
       "pointType": "building"
     }
   },
-  "timestamp": "2025-06-24T21:18:47.203289+02:00",
+  "timestamp": "2025-06-27T21:41:44.939822+02:00",
   "building_ownership_relevancies": [
-    {
-      "asset": "canal_45.428796_12.363885",
-      "asset_type": "building",
-      "category": "ownership_conflict",
-      "type": "building_on_others_land",
-      "target_citizen": "Italia",
-      "score": 70,
-      "time_horizon": "medium",
-      "title": "Your Fisherman's Cottage at Riva di Santa Elena is on land owned by \"Italia\".",
-      "description": "You own a **Fisherman's Cottage at Riva di Santa Elena** on land owned by **Italia**.",
-      "status": "medium"
-    },
-    {
-      "asset": "canal_45.428796_12.363885",
-      "asset_type": "building",
-      "category": "ownership_conflict",
-      "type": "others_building_on_your_land",
-      "target_citizen": "GondolaDrifter",
-      "score": 70,
-      "time_horizon": "medium",
-      "title": "\"GondolaDrifter\" owns a Fisherman's Cottage at Riva di Santa Elena on your land.",
-      "description": "**GondolaDrifter** owns a **Fisherman's Cottage at Riva di Santa Elena** on your land.",
-      "status": "medium"
-    },
     {
       "asset": "building_45.433867_12.355123",
       "asset_type": "building",
@@ -4511,6 +4270,30 @@ Here is the complete data about your current situation:
       "title": "\"GondolaDrifter\" owns a Contract Stall at Calle del Paradiso on your land.",
       "description": "**GondolaDrifter** owns a **Contract Stall at Calle del Paradiso** on your land.",
       "status": "high"
+    },
+    {
+      "asset": "canal_45.428796_12.363885",
+      "asset_type": "building",
+      "category": "ownership_conflict",
+      "type": "building_on_others_land",
+      "target_citizen": "Italia",
+      "score": 70,
+      "time_horizon": "medium",
+      "title": "Your Fisherman's Cottage at Riva di Santa Elena is on land owned by \"Italia\".",
+      "description": "You own a **Fisherman's Cottage at Riva di Santa Elena** on land owned by **Italia**.",
+      "status": "medium"
+    },
+    {
+      "asset": "canal_45.428796_12.363885",
+      "asset_type": "building",
+      "category": "ownership_conflict",
+      "type": "others_building_on_your_land",
+      "target_citizen": "GondolaDrifter",
+      "score": 70,
+      "time_horizon": "medium",
+      "title": "\"GondolaDrifter\" owns a Fisherman's Cottage at Riva di Santa Elena on your land.",
+      "description": "**GondolaDrifter** owns a **Fisherman's Cottage at Riva di Santa Elena** on your land.",
+      "status": "medium"
     }
   ]
 }
