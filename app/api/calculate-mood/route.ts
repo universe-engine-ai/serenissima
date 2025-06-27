@@ -76,15 +76,28 @@ export async function POST(request: Request) {
     
     if (stderr) {
       console.error('Error from mood helper script:', stderr);
-      // Return a default mood if there's an error
-      return NextResponse.json({ 
-        success: true, 
-        mood: { complex_mood: "neutral", intensity: 5 } 
-      });
+      // Don't treat stderr as a failure - Python scripts often write non-error output to stderr
+      // Only fail if stdout is empty
+      if (!stdout) {
+        return NextResponse.json({ 
+          success: false, 
+          error: `Mood calculation failed: ${stderr}` 
+        }, { status: 500 });
+      }
     }
     
     // Parse the output from the Python script
-    const moodResult = JSON.parse(stdout);
+    let moodResult;
+    try {
+      moodResult = JSON.parse(stdout);
+    } catch (parseError) {
+      console.error('Failed to parse mood helper output:', stdout);
+      console.error('Parse error:', parseError);
+      return NextResponse.json({ 
+        success: false, 
+        error: 'Failed to parse mood calculation result' 
+      }, { status: 500 });
+    }
     
     // Cache the result
     moodCache[citizenUsername] = {

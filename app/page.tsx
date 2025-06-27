@@ -22,7 +22,6 @@ import CitizenDetailsPanel from '@/components/UI/CitizenDetailsPanel'; // Import
 import TransferComputeMenu from '@/components/UI/TransferComputeMenu'; // Importer TransferComputeMenu
 import ProfileEditor from '@/components/UI/ProfileEditor'; // Importer ProfileEditor
 // import InitialLoadingScreen from '@/components/UI/InitialLoadingScreen'; // Import InitialLoadingScreen - Supprimé
-import DailyUpdatePanel from '@/components/UI/DailyUpdatePanel';
 import BackgroundMusic from '@/components/UI/BackgroundMusic';
 import { ambientAudioManager } from '@/lib/services/AmbientAudioManager';
 import { weatherService } from '@/lib/services/WeatherService'; // Import WeatherService
@@ -61,68 +60,14 @@ const IsometricViewer = dynamic(() => import('@/components/PolygonViewer/Isometr
   ssr: false
 });
 
-type AppStatus = 'loading' | 'dailyUpdate' | 'ready'; // 'loading' might be vestigial
+type AppStatus = 'loading' | 'ready'; // 'loading' might be vestigial
 
-// Helper function to determine the most recent 9:30 AM reset time
-const getMostRecentResetTime = (): Date => {
-  const now = new Date();
-  const todayResetTime = new Date(now);
-  todayResetTime.setHours(9, 30, 0, 0); // Set to 9:30:00.000 today
-
-  if (now < todayResetTime) {
-    // If current time is before 9:30 AM today, the relevant reset was yesterday 9:30 AM
-    const yesterdayResetTime = new Date(now);
-    yesterdayResetTime.setDate(now.getDate() - 1);
-    yesterdayResetTime.setHours(9, 30, 0, 0);
-    return yesterdayResetTime;
-  }
-  // Otherwise, the relevant reset time is today 9:30 AM
-  return todayResetTime;
-};
-
-// Helper function to determine initial application status based on Daily Update visibility
-const determineInitialAppStatus = (): AppStatus => {
-  if (typeof window === 'undefined') {
-    // Default for SSR or if window object is not available yet
-    return 'dailyUpdate'; 
-  }
-  try {
-    const lastShownString = localStorage.getItem('dailyUpdateLastShownTimestamp');
-    if (!lastShownString) {
-      // Never shown before or localStorage was cleared
-      return 'dailyUpdate'; 
-    }
-    
-    const lastShownTimestamp = parseInt(lastShownString, 10);
-    if (isNaN(lastShownTimestamp)) {
-      // Invalid timestamp in localStorage
-      console.warn('Invalid dailyUpdateLastShownTimestamp in localStorage. Clearing it.');
-      localStorage.removeItem('dailyUpdateLastShownTimestamp'); // Clean up invalid entry
-      return 'dailyUpdate';
-    }
-
-    const mostRecentReset = getMostRecentResetTime().getTime();
-
-    if (lastShownTimestamp < mostRecentReset) {
-      // Last shown before the most recent reset time
-      return 'dailyUpdate'; 
-    }
-    // Shown after the most recent reset time, so skip daily update
-    return 'ready'; 
-  } catch (e) {
-    console.error("Error accessing localStorage for daily update status:", e);
-    // Fallback in case of any error (e.g., localStorage disabled)
-    return 'dailyUpdate'; 
-  }
-};
 
 export default function TwoDPage() {
   const router = useRouter();
   
   // UI state
-  // Always start with 'dailyUpdate' to match server render for initial hydration.
-  // Client-side useEffect will then determine if it should transition to 'ready'.
-  const [appStatus, setAppStatus] = useState<AppStatus>('dailyUpdate');
+  const [appStatus, setAppStatus] = useState<AppStatus>('ready');
   const [showInfo, setShowInfo] = useState(false);
   type ViewType = 'buildings' | 'land' | 'transport' | 'resources' | 'contracts' | 'governance' | 'loans' | 'knowledge' | 'citizens' | 'guilds';
   const [activeView, setActiveView] = useState<ViewType>('buildings');
@@ -184,9 +129,8 @@ export default function TwoDPage() {
   const [showStratagemPanel, setShowStratagemPanel] = useState<boolean>(false);
   const [currentStratagemData, setCurrentStratagemData] = useState<StratagemPanelData | null>(null);
 
-  // State to control visibility of main panels after daily update
-  // Start with false, will be set to true when appStatus becomes 'ready'.
-  const [canShowMainPanels, setCanShowMainPanels] = useState<boolean>(false);
+  // Main panels are always visible when app is ready
+  const canShowMainPanels = appStatus === 'ready';
 
   // State for user login status
   const [isUserLoggedIn, setIsUserLoggedIn] = useState<boolean>(false);
@@ -242,18 +186,6 @@ export default function TwoDPage() {
   //   setAppStatus('dailyUpdate');
   // };
 
-  const handleDailyUpdateClose = useCallback(() => {
-    console.log('Daily Update panel closed, setting timestamp and emitting event.');
-    if (typeof window !== 'undefined') {
-      try {
-        localStorage.setItem('dailyUpdateLastShownTimestamp', Date.now().toString());
-      } catch (e) {
-        console.error("Error writing dailyUpdateLastShownTimestamp to localStorage:", e);
-      }
-    }
-    eventBus.emit(EventTypes.DAILY_UPDATE_PANEL_CLOSED);
-    // setAppStatus('ready') and setCanShowMainPanels(true) are handled by the event listener for DAILY_UPDATE_PANEL_CLOSED
-  }, []);
 
   const handleDirectCitizenPanelClose = useCallback(() => {
     setShowCitizenDetailsPanelDirect(false);
@@ -300,18 +232,8 @@ export default function TwoDPage() {
     setCurrentLoadingImage(selectInitialLoadingImage());
   }, []); // Empty dependency array ensures this runs only once on mount
 
-  // Effect to determine client-side initial status and manage ambient audio
+  // Effect to manage ambient audio and weather service initialization
   useEffect(() => {
-    // Determine app status
-    const clientDeterminedStatus = determineInitialAppStatus();
-    // Only call handleDailyUpdateClose if appStatus is currently 'dailyUpdate' AND clientDeterminedStatus IS 'ready'
-    if (appStatus === 'dailyUpdate' && clientDeterminedStatus === 'ready') {
-      console.log("Client-side check: Daily update already shown or not needed. Transitioning to ready state via handleDailyUpdateClose.");
-      handleDailyUpdateClose();
-    }
-    // If clientDeterminedStatus is 'dailyUpdate', no action is needed here,
-    // as the state is already 'dailyUpdate'. The DailyUpdatePanel will show.
-
     // Initialize Ambient Audio Manager
     const initAmbientAudio = async () => {
       if (!isAmbientAudioInitialized) {
@@ -348,7 +270,7 @@ export default function TwoDPage() {
       console.error('Failed to initialize WeatherService from app/page.tsx:', error);
     });
 
-  }, [appStatus, isAmbientAudioInitialized, handleDailyUpdateClose]); // Dependencies for app status and audio logic
+  }, [appStatus, isAmbientAudioInitialized]); // Dependencies for app status and audio logic
 
   // State for path statistics
   const [pathStats, setPathStats] = useState<{
@@ -852,26 +774,6 @@ export default function TwoDPage() {
     };
   }, [activeView]); 
 
-  // Event listener for when the Daily Update Panel closes
-  useEffect(() => {
-    const handleDailyUpdateFinished = () => {
-      console.log('Received DAILY_UPDATE_PANEL_CLOSED event, setting appStatus to ready and allowing main panels to show.');
-      setAppStatus('ready');
-      setCanShowMainPanels(true);
-      if (isAmbientAudioInitialized && !ambientAudioManager.isCurrentlyPlaying()) {
-        console.log('App ready, starting ambient audio manager.');
-        ambientAudioManager.start();
-      } else if (!isAmbientAudioInitialized) {
-        console.log('App ready, but ambient audio not initialized yet. Will start when initialized.');
-      }
-    };
-
-    const subscription = eventBus.subscribe(EventTypes.DAILY_UPDATE_PANEL_CLOSED, handleDailyUpdateFinished);
-
-    return () => {
-      subscription.unsubscribe();
-    };
-  }, []);
 
   // Effect to listen for wallet changes (login status)
   useEffect(() => {
@@ -925,13 +827,6 @@ export default function TwoDPage() {
     };
   }, []);
 
-  // Effect to bypass DailyUpdatePanel if user is not logged in when appStatus is 'dailyUpdate'
-  useEffect(() => {
-    if (appStatus === 'dailyUpdate' && loginStatusChecked && !isUserLoggedIn) {
-      console.log('User is not logged in. Bypassing DailyUpdatePanel.');
-      handleDailyUpdateClose(); // This will emit DAILY_UPDATE_PANEL_CLOSED
-    }
-  }, [appStatus, isUserLoggedIn, loginStatusChecked, handleDailyUpdateClose]);
   
   // Effect to start/stop ambient audio when appStatus changes or initialization happens
   useEffect(() => {
@@ -1217,90 +1112,6 @@ export default function TwoDPage() {
   //   return <InitialLoadingScreen onLoadingComplete={handleLoadingComplete} />;
   // }
 
-  if (appStatus === 'dailyUpdate') {
-    // Render the main app components in the background, DailyUpdatePanel will overlay them
-    return (
-      <div className="relative w-full h-screen">
-        {/* Main 2D Isometric Viewer */}
-        <IsometricViewer activeView={activeView} setActiveView={setActiveView} fullWaterGraphData={fullWaterGraphData} />
-        
-        {/* Top Navigation Bar */}
-        <div className="absolute top-0 left-0 right-0 bg-black/50 text-white p-4 flex justify-between items-center z-30">
-          <div className="flex items-center space-x-4">
-            <Link href="/" className="text-xl font-serif font-bold hover:text-amber-400 transition-colors">
-              La Serenissima
-            </Link>
-            
-            <div className="ml-6">
-              <ResourceDropdowns />
-            </div>
-          </div>
-              
-          <div className="flex space-x-4">
-            {/* 3D View button removed */}
-          </div>
-        </div>
-
-        {/* Left Side Menu */}
-        <div className="absolute left-0 top-2/5 transform -translate-y-1/2 bg-black/70 text-white z-20 flex flex-col w-16 rounded-lg">
-          {/* Menu Items */}
-          <div className="flex-1 overflow-y-auto py-4">
-            <ul className="space-y-2 px-2">
-              <li>
-                <button
-                  onClick={() => {
-                    setActiveView('governance');
-                    setShowGovernancePanel(true);
-                  }}
-                  className={`w-full flex items-center p-2 rounded-lg transition-colors ${
-                    activeView === 'governance' ? 'bg-amber-600 text-white' : 'text-gray-300 hover:bg-gray-700'
-                  }`}
-                  title="Governance"
-                >
-                  <FaLandmark className="mx-auto h-5 w-5" />
-                </button>
-              </li>
-              {/* ... (autres boutons de menu - gardés pour la structure, mais non interactifs tant que le panneau est affiché) ... */}
-              <li>
-                <button
-                  onClick={() => {
-                    window.open('/library', '_blank');
-                  }}
-                  className={`w-full flex items-center p-2 rounded-lg transition-colors text-gray-300 hover:bg-gray-700`}
-                  title="Library"
-                >
-                  <svg xmlns="http://www.w3.org/2000/svg" className="mx-auto h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
-                    <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
-                  </svg>
-                </button>
-              </li>
-              <li>
-                <button
-                  onClick={() => setActiveView('land')}
-                  className={`w-full flex items-center p-2 rounded-lg transition-colors ${
-                    activeView === 'land' ? 'bg-amber-600 text-white' : 'text-gray-300 hover:bg-gray-700'
-                  }`}
-                  title="Land"
-                >
-                  <FaHome className="mx-auto h-5 w-5" />
-                </button>
-              </li>
-            </ul>
-          </div>
-        </div>
-        
-        {/* Wallet Button - visible mais potentiellement non interactif */}
-        <WalletButton 
-          className="absolute top-4 right-4 z-30" 
-          onSettingsClick={() => setShowSettings(true)}
-        />
-
-        {/* Daily Update Panel - s'affiche par-dessus */}
-        <DailyUpdatePanel onClose={handleDailyUpdateClose} isUserLoggedIn={isUserLoggedIn} />
-      </div>
-    );
-  }
   
   // appStatus === 'ready'
   return (

@@ -19,7 +19,10 @@
       "Bash(chmod:*)",
       "Bash(ruff check:*)",
       "Bash(rg:*)",
-      "Bash(find:*)"
+      "Bash(find:*)",
+      "WebFetch(domain:serenissima.ai)",
+      "Bash(npx next lint:*)",
+      "Bash(npx eslint:*)"
     ],
     "deny": []
   }
