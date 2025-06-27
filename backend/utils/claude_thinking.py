@@ -129,7 +129,7 @@ Except the prime directive of never modifying outside of my folder, I am free to
             f.write(system_prompt)
         print(f"Updated CLAUDE.md in {citizen_dir}")
     
-    def launch_claude_code(self, citizen_dir: str, initial_message: str = None) -> Dict[str, Any]:
+    def launch_claude_code(self, citizen_dir: str, initial_message: Optional[str] = None) -> Dict[str, Any]:
         """Launch Claude Code from the citizen's directory"""
         try:
             # Default initial message if none provided
@@ -184,7 +184,7 @@ Except the prime directive of never modifying outside of my folder, I am free to
                 "working_dir": citizen_dir
             }
     
-    def think_as_citizen(self, username: str, initial_message: str = None) -> Dict[str, Any]:
+    def think_as_citizen(self, username: str, initial_message: Optional[str] = None) -> Dict[str, Any]:
         """Main function to launch Claude Code for a citizen"""
         # Fetch citizen data
         citizen_data = self.fetch_citizen_data(username)

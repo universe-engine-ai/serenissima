@@ -61,7 +61,7 @@ export async function GET(request: NextRequest) {
       let notes = {};
       if (fields.Notes) {
         try {
-          notes = JSON.parse(fields.Notes);
+          notes = JSON.parse(String(fields.Notes));
         } catch (e) {
           // If notes is not JSON, just use as string
           notes = { raw: fields.Notes };
@@ -75,7 +75,7 @@ export async function GET(request: NextRequest) {
         assetType: fields.AssetType || '',
         seller: fields.Seller || '',
         buyer: fields.Buyer || '',
-        price: parseFloat(fields.Price) || 0,
+        price: parseFloat(String(fields.Price)) || 0,
         createdAt: fields.CreatedAt || '',
         executedAt: fields.ExecutedAt || '',
         notes: notes

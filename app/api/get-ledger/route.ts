@@ -2563,7 +2563,7 @@ export async function GET(request: NextRequest) {
     // Initialize weatherData as null before using it
     let weatherData = null;
   
-    const Ledger = {
+    const Ledger: any = {
       citizen: {
         ...normalizeKeysCamelCaseShallow(citizenRecord.fields), 
         airtableId: citizenRecord.id,
@@ -2963,7 +2963,7 @@ export async function GET(request: NextRequest) {
       // Original JSON compact mode
       const compactLedger = {
         citizen: {
-          username: Ledger.citizen.username,
+          username: citizenUsername,
           firstName: Ledger.citizen.firstName,
           lastName: Ledger.citizen.lastName,
           socialClass: Ledger.citizen.socialClass,
