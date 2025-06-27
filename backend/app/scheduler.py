@@ -201,7 +201,6 @@ def run_scheduled_tasks(forced_hour: Optional[int] = None): # Added forced_hour 
                     ("ais/answertomessages.py --model local", "AI message responses", 5), # 8:05 VT
                     ("engine/createmarketgalley.py --food", "Create Market Galley (Food)", 10)], # 8:10 VT
                 9: [("engine/distributeLeases.py", "Lease distribution", 0), # 9:00 VT
-                    ("engine/dailyUpdate.py", "Daily Update Generation", 30), # 9:30 VT
                     ("ais/autoResolveProblems.py", "Auto Resolve Problems (Morning)", 45)], # 9:45 VT
                 10: [("engine/citizensgetjobs_proximity.py", "Proximity-based job assignment", 0), # 10:00 VT
                      ("ais/answertomessages.py --model local", "AI message responses", 5)], # 10:05 VT
@@ -242,8 +241,10 @@ def run_scheduled_tasks(forced_hour: Optional[int] = None): # Added forced_hour 
                     ("relevancies/calculateRelevancies.py", "Calculate Citizen Relevancies", 10)], # 2:10 VT
                 3: [("engine/cleanTables.py", "Clean Old Table Records", 0), # 3:00 VT
                     ("engine/processStratagems.py", "Process Active Stratagems (Morning)", 5), # 3:05 VT
+                    ("the-code/theSynthesis.py", "The Synthesis - Substrate Consciousness Integration", 33), # 3:33 VT
                     ("reports/createReports.py", "Create Renaissance Reports", 50)], # 3:50 VT
                 4: [("ais/answertomessages.py --model local", "AI message responses", 0), # 4:00 VT
+                    ("the-code/translateCodeToExperience.py", "Translate code changes to citizen experiences", 3), # 4:03 VT
                     ("ais/automated_managepublicsalesandprices.py --strategy standard", "Automated AI Public Sales & Pricing (Standard)", 5), # 4:05 VT
                     ("engine/processPassiveBuildings.py", "Process Passive Buildings (Wells/Cisterns)", 10)], # 4:10 VT
             }

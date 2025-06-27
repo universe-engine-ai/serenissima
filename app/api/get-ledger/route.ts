@@ -101,6 +101,43 @@ const toCamelCase = (s: string) => {
   }).replace(/^([A-Z])/, (firstChar) => firstChar.toLowerCase());
 };
 
+// Helper to fetch the latest world experiences from The Substrate
+async function fetchLatestWorldExperiences(): Promise<string[] | null> {
+  try {
+    const airtable = getAirtable();
+    const records = await airtable('MESSAGES').select({
+      filterByFormula: `AND({Sender} = 'TheSubstrate', {Type} = 'world_experiences')`,
+      sort: [{ field: 'CreatedAt', direction: 'desc' }],
+      maxRecords: 1
+    }).firstPage();
+    
+    if (records.length > 0 && records[0].fields.Notes) {
+      const notes = JSON.parse(records[0].fields.Notes as string);
+      return notes.experiences || null;
+    }
+    return null;
+  } catch (error) {
+    console.error('Error fetching world experiences:', error);
+    return null;
+  }
+}
+
+// Helper to select a deterministic experience based on username
+function selectExperienceForCitizen(experiences: string[], username: string): string {
+  if (!experiences || experiences.length === 0) return '';
+  
+  // Create a deterministic seed from username
+  let seed = 0;
+  for (let i = 0; i < username.length; i++) {
+    seed = ((seed << 5) - seed) + username.charCodeAt(i);
+    seed = seed & seed; // Convert to 32bit integer
+  }
+  
+  // Use the seed to select an experience
+  const index = Math.abs(seed) % experiences.length;
+  return experiences[index];
+}
+
 // Helper function to convert all keys of an object to camelCase (shallow)
 const normalizeKeysCamelCaseShallow = (obj: Record<string, any>): Record<string, any> => {
   if (typeof obj !== 'object' || obj === null) {
@@ -1182,6 +1219,11 @@ function convertLedgerToMarkdown(Ledger: any, citizenUsername: string | null): s
   }
   
   md += '\n\n';
+  
+  // Add subconscious influence if available
+  if (Ledger.subconsciousInfluence) {
+    md += `*${Ledger.subconsciousInfluence}*\n\n`;
+  }
   
   // Add citizen's current mood if available - renamed to "My Disposition"
   if (Ledger.citizen?.mood) {
@@ -2616,7 +2658,8 @@ export async function GET(request: NextRequest) {
       lastActivitiesRecords,
       plannedActivitiesRecords,
       fetchedWeatherData,
-      reportsData
+      reportsData,
+      worldExperiences
     ] = await Promise.all([
       fetchStratagemDefinitions(),
       fetchCitizenActiveStratagems(citizenUsername),
@@ -2633,12 +2676,19 @@ export async function GET(request: NextRequest) {
       // Fetch reports for Forestieri citizens
       citizenRecord.fields.SocialClass === 'Forestieri' 
         ? fetch(`${process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000'}/api/reports`).then(res => res.json()).catch(() => null)
-        : Promise.resolve(null)
+        : Promise.resolve(null),
+      fetchLatestWorldExperiences()
     ]);
 
     // Assign weather data to Ledger
     weatherData = fetchedWeatherData;
     Ledger.weather = weatherData?.success ? weatherData : null;
+    
+    // Add subconscious experience if available
+    if (worldExperiences && worldExperiences.length > 0) {
+      const selectedExperience = selectExperienceForCitizen(worldExperiences, citizenUsername);
+      Ledger.subconsciousInfluence = selectedExperience;
+    }
     
     // Assign active reports for Forestieri citizens
     if (citizenRecord.fields.SocialClass === 'Forestieri' && reportsData?.success) {
