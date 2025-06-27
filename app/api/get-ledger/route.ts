@@ -2927,11 +2927,11 @@ export async function GET(request: NextRequest) {
           guildSimple: Ledger.guildDetails ? { name: Ledger.guildDetails.guildName } : null,
           guildDetails: undefined,
           // Remove detailed stratagems, keep only counts
-          activeStratagemsCount: (Ledger.executedByMeStratagems?.length || 0) + (Ledger.targetingMeStratagems?.length || 0),
-          executedByMeStratagems: undefined,
-          targetingMeStratagems: undefined,
-          pastExecutedByMeStratagems: undefined,
-          pastTargetingMeStratagems: undefined,
+          activeStratagemsCount: (Ledger.stratagemsExecutedByCitizen?.length || 0) + (Ledger.stratagemsTargetingCitizen?.length || 0),
+          stratagemsExecutedByCitizen: undefined,
+          stratagemsTargetingCitizen: undefined,
+          stratagemsExecutedByCitizenPast: undefined,
+          stratagemsTargetingCitizenPast: undefined,
           // Remove loans details
           myLoans: undefined,
           loansToMe: undefined,
