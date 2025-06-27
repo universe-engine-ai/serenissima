@@ -11,8 +11,7 @@ from typing import Dict, Any, Optional
 
 from backend.engine.utils.activity_helpers import (
     LogColors,
-    VENICE_TIMEZONE,
-    update_citizen_position_and_location
+    VENICE_TIMEZONE
 )
 
 log = logging.getLogger(__name__)

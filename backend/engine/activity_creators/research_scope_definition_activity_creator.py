@@ -14,7 +14,7 @@ import requests
 from datetime import datetime, timedelta, timezone
 from typing import Dict, Any, Optional, Tuple
 
-from backend.engine.utils.activity_helpers import calculate_travel_time_with_transport, VENICE_TIMEZONE
+from backend.engine.utils.activity_helpers import VENICE_TIMEZONE
 
 log = logging.getLogger(__name__)
 
@@ -192,16 +192,9 @@ def try_create(
         log.error(f"Invalid position for House of Natural Sciences")
         return None
     
-    # Calculate travel time
-    travel_time = calculate_travel_time_with_transport(
-        citizen_position, 
-        building_position, 
-        transport_api_url
-    )
-    
-    if travel_time is None:
-        log.warning(f"Could not calculate travel time for {citizen_username}")
-        travel_time = timedelta(minutes=5)  # Default fallback
+    # Use a default travel time - in practice, citizens would use goto_location activity to travel
+    # This is a simplified approach for the scope definition activity
+    travel_time = timedelta(minutes=5)  # Default travel time
     
     # Get recent research context
     recent_observations = _get_recent_research_context(tables, citizen_username)

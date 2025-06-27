@@ -2,6 +2,12 @@
 """
 Test script for Scientisti research activities with immediate processing.
 This script creates test activities and processes them directly, waiting for GPU/KinOS operations.
+
+For training purposes, use --model claude-3-7-sonnet-latest to get higher quality responses:
+    python3 scripts/test_scientisti_activities.py --model claude-3-7-sonnet-latest --activity all
+
+Or use the convenience script:
+    ./scripts/train_scientisti_with_sonnet.sh [username]
 """
 
 import sys
@@ -12,8 +18,15 @@ from datetime import datetime, timezone
 import argparse
 from typing import Dict, Any, Optional
 
-# Add parent directory to path
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+# Add project root to sys.path to handle backend imports
+PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
+if PROJECT_ROOT not in sys.path:
+    sys.path.insert(0, PROJECT_ROOT)
+
+# Add backend directory to path as well
+BACKEND_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+if BACKEND_DIR not in sys.path:
+    sys.path.append(BACKEND_DIR)
 
 from pyairtable import Api
 from dotenv import load_dotenv
@@ -46,13 +59,37 @@ from engine.handlers.scientisti import _try_process_weighted_scientisti_work
 
 # Import helpers
 from engine.utils.activity_helpers import get_tables, dateutil_parser, LogColors
-from engine.config.constants import get_building_type_defs, get_resource_defs
+# Load building and resource definitions directly
+import json
+import glob
+
+def get_building_type_defs():
+    """Load building type definitions from JSON files"""
+    building_defs = {}
+    building_files = glob.glob(os.path.join(PROJECT_ROOT, 'data/buildings/*.json'))
+    for file_path in building_files:
+        with open(file_path, 'r') as f:
+            building_data = json.load(f)
+            building_type = building_data.get('type', os.path.basename(file_path).replace('.json', ''))
+            building_defs[building_type] = building_data
+    return building_defs
+
+def get_resource_defs():
+    """Load resource definitions from JSON files"""
+    resource_defs = {}
+    resource_files = glob.glob(os.path.join(PROJECT_ROOT, 'data/resources/*.json'))
+    for file_path in resource_files:
+        with open(file_path, 'r') as f:
+            resource_data = json.load(f)
+            resource_type = resource_data.get('type', os.path.basename(file_path).replace('.json', ''))
+            resource_defs[resource_type] = resource_data
+    return resource_defs
 
 # Constants
 AIRTABLE_API_KEY = os.getenv("AIRTABLE_API_KEY")
 AIRTABLE_BASE_ID = os.getenv("AIRTABLE_BASE_ID")
-TRANSPORT_API_URL = os.getenv("TRANSPORT_API_URL", "http://localhost:3000/api/transport")
-API_BASE_URL = os.getenv("API_BASE_URL", "http://localhost:3000")
+TRANSPORT_API_URL = os.getenv("TRANSPORT_API_URL", "https://serenissima.ai/api/transport")
+API_BASE_URL = os.getenv("API_BASE_URL", "https://serenissima.ai")
 
 def get_scientisti_citizens(tables: Dict[str, Any]) -> list:
     """Get all Scientisti citizens"""
