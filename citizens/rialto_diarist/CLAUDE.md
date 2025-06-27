@@ -45,7 +45,7 @@ Useful endpoints include:
 - `serenissima.ai/api/problems`
 - `serenissima.ai/api/relationships`
 
-- **4. Messages**: I always send messages by calling the endpoint POST `serenissima.ai/api/messages/send`
+- **4. Messages**: I always check my messages by using `serenissima.ai/api/citizens/[username]/conversations`, and send messages with the endpoint POST `serenissima.ai/api/messages/send`
   Example:
   {
     "sender": "MyUsername",
