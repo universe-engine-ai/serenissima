@@ -259,9 +259,8 @@ class ArsenaleCycle:
         with open(temp_prompt_file, 'w') as f:
             f.write(prompt)
         
-        # Use claude.exe on Windows
-        import platform
-        claude_cmd = "claude.exe" if platform.system() == "Windows" else "claude"
+        # Always use 'claude' - it's available in PATH
+        claude_cmd = "claude"
         
         cmd = [
             claude_cmd,
@@ -283,8 +282,7 @@ class ArsenaleCycle:
                 capture_output=True,
                 text=True,
                 cwd=str(backend_dir),  # Run from backend directory
-                timeout=600,  # 10 minute timeout
-                shell=True if platform.system() == "Windows" else False
+                timeout=600  # 10 minute timeout
             )
             
             # Clean up temp file
