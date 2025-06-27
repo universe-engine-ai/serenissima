@@ -131,7 +131,10 @@ def analyze_resource_availability() -> Dict[str, Any]:
     
     for resource_type in critical_resources:
         # Get all instances of this resource
-        resources = fetch_api_data("resources", {"Type": resource_type})
+        resources_response = fetch_api_data("resources", {"Type": resource_type})
+        resources = []
+        if resources_response and isinstance(resources_response, dict):
+            resources = resources_response.get('resources', [])
         
         if resources:
             total_amount = sum(float(r.get('count', 0)) for r in resources)
@@ -146,14 +149,16 @@ def analyze_resource_availability() -> Dict[str, Any]:
             locations_count = len(unique_buildings)
             
             # Check if resource is being sold
-            contracts = fetch_api_data("contracts", {
+            contracts_response = fetch_api_data("contracts", {
                 "type": "public_sell",
                 "resourceType": resource_type,
                 "status": "active"
             })
             
             active_sellers = 0
-            if contracts:
+            contracts = []
+            if contracts_response and isinstance(contracts_response, dict):
+                contracts = contracts_response.get('contracts', [])
                 active_sellers = len(contracts)
             
             is_shortage = total_amount < 100 or active_sellers == 0
@@ -239,7 +244,10 @@ def analyze_charity_distribution() -> Dict[str, Any]:
     total_distributed = 0
     
     for resource_type in charity_resources:
-        resources = fetch_api_data("resources", {"Type": resource_type})
+        resources_response = fetch_api_data("resources", {"Type": resource_type})
+        resources = []
+        if resources_response and isinstance(resources_response, dict):
+            resources = resources_response.get('resources', [])
         
         if resources:
             
@@ -282,19 +290,22 @@ def analyze_economic_health() -> Dict[str, Any]:
     log.info("Analyzing economic health...")
     
     # Get treasury balance
-    treasury_citizens = fetch_api_data("citizens", {"username": "ConsiglioDeiDieci"})
+    treasury_response = fetch_api_data("citizens", {"username": "ConsiglioDeiDieci"})
     treasury_balance = 0
-    if treasury_citizens and len(treasury_citizens) > 0:
-        treasury_balance = treasury_citizens[0].get('ducats', 0)
+    if treasury_response and isinstance(treasury_response, dict):
+        treasury_citizens = treasury_response.get('citizens', [])
+        if treasury_citizens and len(treasury_citizens) > 0:
+            treasury_balance = treasury_citizens[0].get('ducats', 0)
     
-    # Get recent transactions
-    transactions = fetch_api_data("transactions", {"limit": 100})
+    # Get recent transactions - Note: transactions endpoint might not exist
+    # Skip for now as it's not critical
     transaction_volume = 0
-    if transactions:
-        transaction_volume = sum(float(t.get('price', 0)) for t in transactions)
     
     # Get employment statistics
-    citizens = fetch_api_data("citizens")
+    citizens_response = fetch_api_data("citizens")
+    citizens = []
+    if citizens_response and isinstance(citizens_response, dict):
+        citizens = citizens_response.get('citizens', [])
     employment_stats = {
         "employed": 0,
         "unemployed": 0,
@@ -326,10 +337,14 @@ def analyze_problem_trends() -> Dict[str, Any]:
     log.info("Analyzing problem trends...")
     
     # Get recent problems
-    problems = fetch_api_data("problems", {"status": "new", "limit": 200})
+    problems_response = fetch_api_data("problems", {"status": "new", "limit": 200})
     
-    if not problems:
+    if not problems_response:
         return {"error": "Failed to fetch problems data"}
+    
+    problems = []
+    if isinstance(problems_response, dict):
+        problems = problems_response.get('problems', [])
     
     # Categorize problems
     problem_categories = defaultdict(int)

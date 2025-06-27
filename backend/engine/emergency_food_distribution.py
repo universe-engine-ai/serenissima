@@ -54,11 +54,11 @@ SOUP_PER_HUNGRY_CITIZEN = 0.1  # Units of soup per hungry citizen
 
 # Scuole Grandi (historical Venetian charity institutions)
 SCUOLE_GRANDI_BUILDING_IDS = [
-    "building_45.437644_12.335422",  # Piazza San Marco area
-    "building_45.431389_12.338889",  # Rialto area
-    "building_45.429444_12.326944",  # Zattere area
-    "building_45.440000_12.350000",  # Castello area
-    "building_45.445000_12.320000"   # Cannaregio area
+    "building_45.43839918445191_12.326301049069482",  # House of Natural Sciences
+    "building_45.43844921305672_12.333089926233379",  # Theater
+    "land_45.436564_12.320811",  # Small Warehouse (West)
+    "land_45.429697_12.358511",  # Small Warehouse (East)
+    "building_45.44086186561191_12.354745605000184"   # Prison (emergency use)
 ]
 
 def initialize_airtable() -> Dict[str, Table]:
@@ -208,7 +208,6 @@ def create_charity_resources(tables: Dict[str, Table], building: Dict, resources
                 'Owner': 'ConsiglioDeiDieci',  # Treasury owns charity resources
                 'Asset': building_id,
                 'AssetType': 'building',
-                'Description': f'Emergency charity {resource_type.replace("_", " ")} for hungry citizens',
                 'Tags': json.dumps(['charity', 'emergency', 'perishable']),
                 'CreatedAt': now_utc.isoformat(),
                 'ExpiresAt': (now_utc + datetime.timedelta(hours=24)).isoformat()  # 24 hour expiry

@@ -43,7 +43,7 @@ def main():
     if results["success"]:
         print("✅ Cycle completed successfully!")
         print(f"📁 Detailed logs: arsenale/logs/sessions/cycle_{results['cycle_id']}.json")
-        if mock_mode:
+        if args.mock:
             print("\n📝 Note: This was a mock demonstration.")
             print("   To run with real Claude, ensure Claude CLI is installed and remove --mock flag.")
     else:
