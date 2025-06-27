@@ -20,12 +20,15 @@ export interface Cascade {
  * Analyzes message cascades to detect chain reactions of responses
  */
 export function analyzeCascades(messages: Message[], timeWindowMinutes: number = 60): Cascade[] {
+  // First, infer reply relationships if not provided
+  const messagesWithReplies = inferReplyRelationships(messages);
+  
   const messageMap = new Map<string, Message>();
   const childrenMap = new Map<string, Message[]>();
   const rootMessages: Message[] = [];
 
   // Build message maps
-  messages.forEach(msg => {
+  messagesWithReplies.forEach(msg => {
     messageMap.set(msg.id, msg);
     
     if (msg.replyToId && messageMap.has(msg.replyToId)) {
@@ -48,6 +51,52 @@ export function analyzeCascades(messages: Message[], timeWindowMinutes: number =
   });
 
   return cascades;
+}
+
+/**
+ * Infer reply relationships based on conversation patterns
+ */
+function inferReplyRelationships(messages: Message[]): Message[] {
+  // Sort by timestamp
+  const sorted = [...messages].sort((a, b) => 
+    new Date(a.timestamp).getTime() - new Date(b.timestamp).getTime()
+  );
+  
+  // Group by conversation (sender-receiver pairs)
+  const conversations = new Map<string, Message[]>();
+  
+  sorted.forEach(msg => {
+    const key = [msg.sender, msg.receiver].sort().join('|');
+    if (!conversations.has(key)) {
+      conversations.set(key, []);
+    }
+    conversations.get(key)!.push(msg);
+  });
+  
+  // Infer replies within each conversation
+  conversations.forEach(conversation => {
+    for (let i = 1; i < conversation.length; i++) {
+      const current = conversation[i];
+      const previous = conversation[i - 1];
+      
+      // Skip if already has replyToId
+      if (current.replyToId) continue;
+      
+      // Check if this is likely a reply
+      const timeDiff = new Date(current.timestamp).getTime() - 
+                      new Date(previous.timestamp).getTime();
+      const isReply = 
+        timeDiff < 30 * 60 * 1000 && // Within 30 minutes
+        current.sender === previous.receiver && // Opposite direction
+        current.receiver === previous.sender;
+      
+      if (isReply) {
+        current.replyToId = previous.id;
+      }
+    }
+  });
+  
+  return sorted;
 }
 
 function buildCascadeTree(

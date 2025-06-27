@@ -29,6 +29,12 @@ export default function CascadeAnalysis({ data }: CascadeAnalysisProps) {
       const analyzedCascades = analyzeCascades(data.messages);
       setCascades(analyzedCascades);
       calculateStats(analyzedCascades);
+      
+      // Automatically select the largest cascade
+      if (analyzedCascades.length > 0) {
+        const sortedCascades = [...analyzedCascades].sort((a, b) => b.totalSize - a.totalSize);
+        setSelectedCascade(sortedCascades[0]);
+      }
     }
   }, [data]);
 

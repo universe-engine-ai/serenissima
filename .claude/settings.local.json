@@ -17,7 +17,9 @@
       "Bash(npm run:*)",
       "Bash(npx tsc:*)",
       "Bash(chmod:*)",
-      "Bash(ruff check:*)"
+      "Bash(ruff check:*)",
+      "Bash(rg:*)",
+      "Bash(find:*)"
     ],
     "deny": []
   }
