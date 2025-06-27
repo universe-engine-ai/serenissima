@@ -17,7 +17,10 @@
       "Bash(npm run:*)",
       "Bash(npx tsc:*)",
       "Bash(chmod:*)",
-      "Bash(ruff check:*)"
+      "Bash(ruff check:*)",
+      "WebFetch(domain:serenissima.ai)",
+      "Bash(npx next lint:*)",
+      "Bash(npx eslint:*)"
     ],
     "deny": []
   }

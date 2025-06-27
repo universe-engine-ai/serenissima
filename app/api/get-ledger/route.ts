@@ -1077,6 +1077,17 @@ function convertLedgerToMarkdown(Ledger: any, citizenUsername: string | null): s
     md += `\n### How Others See Me\n${Ledger.citizen.description}\n`;
   }
   
+  // Add mood if available
+  if (Ledger.citizen?.mood || Ledger.citizen?.moodIntensity) {
+    md += `\n## My Disposition\n`;
+    if (Ledger.citizen.mood && Ledger.citizen.moodIntensity) {
+      md += `I find myself ${describeMoodIntensity(Ledger.citizen.moodIntensity, Ledger.citizen.mood).toLowerCase()}\n`;
+      if (Ledger.citizen.moodDescription) {
+        md += `*${Ledger.citizen.moodDescription}*\n`;
+      }
+    }
+  }
+  
   md += '\n';
 
   // Current Location - renamed to "Where I Find Myself"
@@ -2216,8 +2227,11 @@ function convertLedgerToCompactMarkdown(Ledger: any, citizenUsername: string | n
   // Add mood if available
   if (Ledger.citizen?.mood || Ledger.citizen?.moodIntensity) {
     md += `\n### My Current Disposition\n`;
-    if (Ledger.citizen.primaryEmotion && Ledger.citizen.moodIntensity) {
-      md += `${describeMoodIntensity(Ledger.citizen.moodIntensity, Ledger.citizen.primaryEmotion)}\n`;
+    if (Ledger.citizen.mood && Ledger.citizen.moodIntensity) {
+      md += `${describeMoodIntensity(Ledger.citizen.moodIntensity, Ledger.citizen.mood)}\n`;
+      if (Ledger.citizen.moodDescription) {
+        md += `*${Ledger.citizen.moodDescription}*\n`;
+      }
     }
   }
   
