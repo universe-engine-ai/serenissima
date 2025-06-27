@@ -2130,6 +2130,180 @@ function convertLedgerToMarkdown(Ledger: any, citizenUsername: string | null): s
 
   return md;
 }
+
+function convertLedgerToCompactMarkdown(Ledger: any, citizenUsername: string | null): string {
+  // Use the same structure as the full markdown but with reduced content
+  let md = `# ${citizenUsername || 'Unknown Citizen'}'s Ledger\n\n`;
+  
+  md += `My personal ledger - here I maintain careful records of all that defines my position in Venice: properties under my control, relationships cultivated, active contracts binding my posessions, and the daily activities that shape my merchant destiny. Without these pages, I would be navigating La Serenissima blind.\n\n`;
+
+  // Citizen Details - same format but same content
+  md += `## My Standing in the Republic\n`;
+  
+  if (Ledger.citizen?.ducats !== undefined && Ledger.citizen.ducats !== null) {
+    Ledger.citizen.ducats = Math.floor(Number(Ledger.citizen.ducats));
+  }
+  
+  if (Ledger.citizen) {
+    md += `- **I am known as**: ${Ledger.citizen.username || 'Unknown'}\n`;
+    
+    const firstName = Ledger.citizen.firstName || '';
+    const lastName = Ledger.citizen.lastName || '';
+    const fullName = [firstName, lastName].filter(Boolean).join(' ');
+    if (fullName) {
+      md += `- **Born**: ${fullName}\n`;
+    }
+    
+    const socialClass = Ledger.citizen.socialClass || 'Unknown';
+    const homeCity = Ledger.citizen.homeCity;
+    md += `- **My station**: ${socialClass}${homeCity ? ` from ${homeCity}` : ''}\n`;
+    
+    if (Ledger.citizen.ducats !== undefined) {
+      md += `- **Ducats in my coffers**: ${Ledger.citizen.ducats}\n`;
+    }
+    
+    if (Ledger.citizen.influence !== undefined) {
+      md += `- **Influence I command**: ${Ledger.citizen.influence}\n`;
+    }
+    
+    if (Ledger.citizen.specialty) {
+      md += `- **My craft**: ${Ledger.citizen.specialty}\n`;
+    }
+  }
+  
+  // Add mood if available
+  if (Ledger.citizen?.mood || Ledger.citizen?.moodIntensity) {
+    md += `\n### My Current Disposition\n`;
+    if (Ledger.citizen.primaryEmotion && Ledger.citizen.moodIntensity) {
+      md += `${describeMoodIntensity(Ledger.citizen.moodIntensity, Ledger.citizen.primaryEmotion)}\n`;
+    }
+  }
+  
+  md += '\n';
+
+  // Current Location - compact version
+  md += `## Where I Find Myself\n`;
+  
+  if (Ledger.citizen?.position) {
+    let locationDescription = "";
+    const buildingAtPosition = Ledger.citizen.buildingAtPosition;
+    
+    if (buildingAtPosition) {
+      locationDescription = `Presently at ${buildingAtPosition}`;
+    } else if (Ledger.citizen.position.lat && Ledger.citizen.position.lng) {
+      locationDescription = Ledger.citizen.inVenice ? "Walking the streets of Venice" : "Journeying beyond the lagoon";
+    } else {
+      locationDescription = "Somewhere in the streets of Venice";
+    }
+    
+    md += `${locationDescription}\n`;
+  } else {
+    md += `My whereabouts are uncertain\n`;
+  }
+  
+  md += '\n';
+
+  // Current Activity - keep this section
+  if (Ledger.currentActivity || Ledger.lastActivity) {
+    md += `## My Current Endeavors\n`;
+    
+    const activity = Ledger.currentActivity || Ledger.lastActivity;
+    if (activity) {
+      if (activity.title) {
+        md += `**${activity.title}**\n`;
+      }
+      if (activity.status) {
+        const statusText = activity.status === 'created' ? 'Just begun' :
+                          activity.status === 'in_progress' ? 'Currently engaged' :
+                          activity.status === 'processed' ? 'Recently completed' : activity.status;
+        md += `*Status: ${statusText}*\n`;
+      }
+      if (activity.thought) {
+        md += `\n*My thoughts: ${activity.thought}*\n`;
+      }
+    }
+    md += '\n';
+  }
+
+  // Work and Home - compact version
+  if (Ledger.workplaceBuilding || Ledger.homeBuilding) {
+    md += `## My Establishments\n`;
+    
+    if (Ledger.workplaceBuilding) {
+      const workplaceName = Ledger.workplaceBuilding.name || Ledger.workplaceBuilding.type || 'Unknown workplace';
+      md += `- **Place of business**: ${workplaceName}`;
+      if (Ledger.workplaceBuilding.buildingId) {
+        md += ` (${Ledger.workplaceBuilding.buildingId})`;
+      }
+      md += '\n';
+    }
+    
+    if (Ledger.homeBuilding) {
+      const homeName = Ledger.homeBuilding.name || Ledger.homeBuilding.type || 'Unknown residence';
+      md += `- **My residence**: ${homeName}`;
+      if (Ledger.homeBuilding.buildingId) {
+        md += ` (${Ledger.homeBuilding.buildingId})`;
+      }
+      md += '\n';
+    }
+    
+    md += '\n';
+  }
+
+  // Property Summary - just counts
+  if (Ledger.ownedLandsCount !== undefined || Ledger.ownedBuildingsCount !== undefined) {
+    md += `## My Holdings Summary\n`;
+    if (Ledger.ownedLandsCount !== undefined) {
+      md += `- **Lands under my control**: ${Ledger.ownedLandsCount}\n`;
+    }
+    if (Ledger.ownedBuildingsCount !== undefined) {
+      md += `- **Buildings I own**: ${Ledger.ownedBuildingsCount}\n`;
+    }
+    md += '\n';
+  }
+
+  // Relationships - only top 3
+  if (Ledger.strongestRelationships && Ledger.strongestRelationships.length > 0) {
+    md += `## Key Relationships\n`;
+    md += `*My most significant connections in the Republic:*\n\n`;
+    
+    Ledger.strongestRelationships.slice(0, 3).forEach((rel: any, index: number) => {
+      md += `### ${index + 1}. ${rel.otherCitizen || 'Unknown'}\n`;
+      
+      if (rel.trustScore !== undefined && rel.trustScore !== null) {
+        const roundedTrust = Math.round(rel.trustScore);
+        md += `- **Trust**: ${describeTrust(roundedTrust)} (${roundedTrust})\n`;
+      }
+      
+      if (rel.strengthScore !== undefined && rel.strengthScore !== null) {
+        const roundedStrength = Math.round(rel.strengthScore);
+        md += `- **Connection Strength**: ${describeStrength(roundedStrength)} (${roundedStrength})\n`;
+      }
+      
+      md += '\n';
+    });
+  }
+
+  // Active Contracts Summary - just count
+  if (Ledger.activeContractsCount !== undefined && Ledger.activeContractsCount > 0) {
+    md += `## Commercial Obligations\n`;
+    md += `*Active contracts in the marketplace: ${Ledger.activeContractsCount}*\n\n`;
+  }
+
+  // Recent Messages - only last 3
+  if (Ledger.recentMessages && Ledger.recentMessages.length > 0) {
+    md += `## Recent Correspondence\n`;
+    md += `*Latest messages received:*\n\n`;
+    
+    Ledger.recentMessages.slice(0, 3).forEach((msg: any) => {
+      const sender = msg.sender || 'Unknown';
+      const content = msg.content || msg.message || 'No content';
+      md += `**From ${sender}**: "${content.length > 100 ? content.substring(0, 100) + '...' : content}"\n\n`;
+    });
+  }
+
+  return md;
+}
 // --- End Markdown Conversion Utilities ---
 
 export async function GET(request: NextRequest) {
@@ -2137,6 +2311,7 @@ export async function GET(request: NextRequest) {
   const citizenUsername = searchParams.get('citizenUsername');
   const format = searchParams.get('format') || 'markdown'; // Default to markdown
   const forceRefresh = searchParams.get('forceRefresh') === 'true';
+  const compact = searchParams.get('compact') === 'true';
 
   if (!citizenUsername) {
     return NextResponse.json({ success: false, error: 'citizenUsername parameter is required' }, { status: 400 });
@@ -2152,12 +2327,21 @@ export async function GET(request: NextRequest) {
   
   // Check cache if not forcing refresh
   const now = Date.now();
-  const cacheKey = `${citizenUsername}_${format}`;
+  const cacheKey = compact && format.toLowerCase() === 'markdown' ? `${citizenUsername}_compact_markdown` : 
+                   compact ? `${citizenUsername}_compact` : 
+                   `${citizenUsername}_${format}`;
   
   if (!forceRefresh && LEDGER_CACHE[cacheKey] && (now - LEDGER_CACHE[cacheKey].timestamp < LEDGER_CACHE_TTL)) {
-    console.log(`[API get-ledger] Using cached ledger for ${citizenUsername} (format: ${format}, age: ${Math.round((now - LEDGER_CACHE[cacheKey].timestamp) / 1000)} seconds)`);
+    console.log(`[API get-ledger] Using cached ledger for ${citizenUsername} (format: ${compact ? (format.toLowerCase() === 'markdown' ? 'compact_markdown' : 'compact') : format}, age: ${Math.round((now - LEDGER_CACHE[cacheKey].timestamp) / 1000)} seconds)`);
     
-    if (format.toLowerCase() === 'markdown') {
+    if (compact && format.toLowerCase() === 'markdown') {
+      return new NextResponse(LEDGER_CACHE[cacheKey].data, {
+        status: 200,
+        headers: { 'Content-Type': 'text/markdown; charset=utf-8' },
+      });
+    } else if (compact) {
+      return NextResponse.json({ success: true, data: LEDGER_CACHE[cacheKey].data, fromCache: true });
+    } else if (format.toLowerCase() === 'markdown') {
       return new NextResponse(LEDGER_CACHE[cacheKey].data, {
         status: 200,
         headers: { 'Content-Type': 'text/markdown; charset=utf-8' },
@@ -2716,6 +2900,127 @@ export async function GET(request: NextRequest) {
         console.error('Error reading Codex Serenissimus:', error);
         // Don't fail the entire ledger if Codex reading fails
       }
+    }
+
+    // Handle compact mode
+    if (compact) {
+      // If both compact and markdown are requested, generate compact markdown
+      if (format.toLowerCase() === 'markdown') {
+        // Create a reduced version of the Ledger for compact markdown
+        const compactLedgerData = {
+          ...Ledger,
+          // Keep only last 3 activities instead of 20
+          lastActivities: Ledger.lastActivities ? Ledger.lastActivities.slice(0, 3) : [],
+          // Keep only top 3 relationships
+          strongestRelationships: Ledger.strongestRelationships ? Ledger.strongestRelationships.slice(0, 3) : [],
+          // Keep only counts for buildings/lands
+          ownedLandsCount: Ledger.ownedLands ? Ledger.ownedLands.length : 0,
+          ownedBuildingsCount: Ledger.ownedBuildings ? Ledger.ownedBuildings.length : 0,
+          // Remove full arrays
+          ownedLands: undefined,
+          ownedBuildings: undefined,
+          managedBuildings: undefined,
+          // Keep only active contracts count
+          activeContractsCount: Ledger.activeContracts ? Ledger.activeContracts.length : 0,
+          activeContracts: undefined,
+          // Remove guild details, keep only name
+          guildSimple: Ledger.guild ? { name: Ledger.guild.guildName } : null,
+          guild: undefined,
+          // Remove detailed stratagems, keep only counts
+          activeStratagemsCount: (Ledger.executedByMeStratagems?.length || 0) + (Ledger.targetingMeStratagems?.length || 0),
+          executedByMeStratagems: undefined,
+          targetingMeStratagems: undefined,
+          pastExecutedByMeStratagems: undefined,
+          pastTargetingMeStratagems: undefined,
+          // Remove loans details
+          myLoans: undefined,
+          loansToMe: undefined,
+          // Keep only last 3 messages
+          recentMessages: Ledger.recentMessages ? Ledger.recentMessages.slice(0, 3) : [],
+          // Keep only last 3 problems
+          recentProblems: Ledger.recentProblems ? Ledger.recentProblems.slice(0, 3) : [],
+          // Remove other verbose sections
+          dailyUpdate: undefined,
+          codexSerenissimus: undefined,
+          weatherEmotions: undefined
+        };
+        
+        const compactMarkdown = convertLedgerToCompactMarkdown(compactLedgerData, citizenUsername);
+        
+        // Cache the compact markdown result
+        const compactMarkdownCacheKey = `${citizenUsername}_compact_markdown`;
+        LEDGER_CACHE[compactMarkdownCacheKey] = {
+          data: compactMarkdown,
+          timestamp: now
+        };
+        
+        return new NextResponse(compactMarkdown, {
+          status: 200,
+          headers: { 'Content-Type': 'text/markdown; charset=utf-8' },
+        });
+      }
+      
+      // Original JSON compact mode
+      const compactLedger = {
+        citizen: {
+          username: Ledger.citizen.username,
+          firstName: Ledger.citizen.firstName,
+          lastName: Ledger.citizen.lastName,
+          socialClass: Ledger.citizen.socialClass,
+          ducats: Ledger.citizen.ducats || 0,
+          influence: Ledger.citizen.influence || 0,
+          position: Ledger.citizen.position,
+          isAI: Ledger.citizen.isAi || false,
+          primaryJob: Ledger.citizen.primaryJob,
+          // Mood fields
+          mood: Ledger.citizen.mood || 'neutral',
+          moodIntensity: Ledger.citizen.moodIntensity || 5,
+          primaryEmotion: Ledger.citizen.primaryEmotion || 'neutral',
+        },
+        currentActivity: Ledger.lastActivity && (Ledger.lastActivity.status === 'created' || Ledger.lastActivity.status === 'in_progress') ? {
+          type: Ledger.lastActivity.type,
+          title: Ledger.lastActivity.title,
+          status: Ledger.lastActivity.status,
+          startDate: Ledger.lastActivity.startDate,
+          description: Ledger.lastActivity.description
+        } : null,
+        lastCompletedActivity: Ledger.lastActivity && Ledger.lastActivity.status === 'processed' ? {
+          type: Ledger.lastActivity.type,
+          title: Ledger.lastActivity.title,
+          endDate: Ledger.lastActivity.endDate,
+          thought: Ledger.lastActivity.thought
+        } : null,
+        workplace: Ledger.workplaceBuilding ? {
+          name: Ledger.workplaceBuilding.name || Ledger.workplaceBuilding.type,
+          buildingId: Ledger.workplaceBuilding.buildingId,
+          category: Ledger.workplaceBuilding.category
+        } : null,
+        home: Ledger.homeBuilding ? {
+          name: Ledger.homeBuilding.name || Ledger.homeBuilding.type,
+          buildingId: Ledger.homeBuilding.buildingId,
+          category: Ledger.homeBuilding.category
+        } : null,
+        topRelationships: Ledger.strongestRelationships ? Ledger.strongestRelationships.slice(0, 3).map(rel => ({
+          citizen: rel.otherCitizen,
+          trustScore: rel.trustScore || 0,
+          strengthScore: rel.strengthScore || 0
+        })) : [],
+        counts: {
+          ownedLands: Ledger.ownedLands ? Ledger.ownedLands.length : 0,
+          ownedBuildings: Ledger.ownedBuildings ? Ledger.ownedBuildings.length : 0,
+          activeSellingContracts: Ledger.activeContracts ? Ledger.activeContracts.filter(c => c.sellerUsername === citizenUsername).length : 0,
+          activeBuyingContracts: Ledger.activeContracts ? Ledger.activeContracts.filter(c => c.buyerUsername === citizenUsername).length : 0
+        }
+      };
+      
+      // Cache the compact result
+      const compactCacheKey = `${citizenUsername}_compact`;
+      LEDGER_CACHE[compactCacheKey] = {
+        data: compactLedger,
+        timestamp: now
+      };
+      
+      return NextResponse.json({ success: true, data: compactLedger });
     }
 
     if (format.toLowerCase() === 'markdown') {

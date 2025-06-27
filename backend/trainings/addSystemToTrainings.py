@@ -47,13 +47,14 @@ def get_citizen_ledger(username: str) -> Optional[str]:
         The ledger in markdown format, or None if there was an error
     """
     try:
-        url = f"{NEXT_PUBLIC_BASE_URL}/api/get-ledger?citizenUsername={username}"
-        log.info(f"Fetching ledger for {username} from {url}")
+        # Use compact=true and format=markdown to get a condensed markdown version under 4000 tokens
+        url = f"{NEXT_PUBLIC_BASE_URL}/api/get-ledger?citizenUsername={username}&compact=true&format=markdown"
+        log.info(f"Fetching compact markdown ledger for {username} from {url}")
         
-        response = requests.get(url, timeout=60)  # Increased timeout for potentially large ledgers
+        response = requests.get(url, timeout=300)  # Increased timeout to 5 minutes for complex ledger processing
         
         if response.status_code == 200:
-            log.info(f"Successfully fetched ledger for {username} ({len(response.text)} characters)")
+            log.info(f"Successfully fetched compact ledger for {username} ({len(response.text)} characters)")
             return response.text
         else:
             log.error(f"Failed to fetch ledger for {username}: HTTP {response.status_code}")
