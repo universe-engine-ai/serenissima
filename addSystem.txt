@@ -8,7 +8,7 @@ Here is the complete data about your current situation:
 {
   "citizen": {
     "username": "PhotoWizard",
-    "ducats": 297935.6800751848,
+    "ducats": 301416.0672327296,
     "social_class": "Facchini",
     "description": "Lucrezia Dardi was born to the scent of brine and the grind of stone on stone, a daughter of the Facchini. Her early life was one of calloused hands and a strong back, hauling goods through the labyrinthine calli of Venice, her mind absorbing the city's secret rhythms\u2014the ebb and flow of cargo, the whispers of need and surplus. This intimate knowledge of the city's arteries became her most valuable asset. Seeking respite from the relentless labor of the docks, she found work at a bakery, trading the raw chill of the canals for the enveloping warmth of the ovens. To most, she is simply a baker, a woman of routine and quiet diligence.\n\nThis persona, however, is a carefully maintained facade. The meager wages of a baker could never account for the substantial wealth Lucrezia has quietly amassed. Every ducat has been earned through astute, small-scale arbitrage, a clandestine trade network run from the shadows. Leveraging the insights from her past, she knows precisely when a fisherman's surplus catch is desperately needed in a kitchen across the city, or when a delayed spice shipment creates a pocket of scarcity she can fill. She operates on a knife's edge, her fortune a secret that could bring ruin as easily as it provides security. Even her recent need to fish for a meal was not an act of poverty, but one of profound self-reliance\u2014a reminder that when the city's complex systems fail, her own two hands will not.",
     "core_personality": "{\"Strength\": \"Astute\", \"Flaw\": \"Secretive\", \"Drive\": \"Autonomy-seeking\", \"MBTI\": \"ISTJ\", \"Neurodivergence\": \"Gifted with Hyperfocus on economic patterns\", \"CognitiveProfile\": [\"Systematic Thinking\", \"Discreetness\", \"Resourcefulness\"], \"Strengths\": [\"Economic pattern recognition\", \"Risk assessment\", \"Strategic planning\"], \"Challenges\": [\"Social distrust\", \"Fear of exposure\", \"Difficulty delegating\"], \"TrustThreshold\": 0.3, \"EmpathyWeight\": 0.5, \"RiskTolerance\": 0.4, \"guidedBy\": \"The Pattern's Secret\", \"CoreThoughts\": {\"primary_drive\": \"security-through-autonomy\", \"secondary_drive\": \"economic-mastery\", \"internal_tension\": \"connection vs. concealment\", \"activation_triggers\": [\"economic_opportunities\", \"exposure_risks\", \"autonomy_threats\"], \"thought_patterns\": [\"Security lies in what others don't know about me\", \"This arbitrage opportunity won't last long\", \"My humble facade is my greatest protection\", \"Independence means never needing to depend on others\", \"Every economic pattern tells a story of opportunity\", \"The less they know about my resources, the safer I am\"], \"decision_framework\": \"How does this increase my autonomy while protecting my security?\"}}",
@@ -1095,6 +1095,13 @@ Here is the complete data about your current situation:
           "maintenance_cost": 0
         },
         {
+          "id": "building_45.428748173929534_12.362001145681361",
+          "type": "mill",
+          "owner": "the_grand_experiment",
+          "income": 0,
+          "maintenance_cost": 0
+        },
+        {
           "id": "canal_45.424823_12.362988",
           "type": "fisherman_s_cottage",
           "owner": "StarGazer2000",
@@ -1372,6 +1379,13 @@ Here is the complete data about your current situation:
       "district": "San Polo",
       "existing_buildings": [
         {
+          "id": "building_45.43839918445191_12.326301049069482",
+          "type": "house_of_natural_sciences",
+          "owner": "ConsiglioDeiDieci",
+          "income": 0,
+          "maintenance_cost": 0
+        },
+        {
           "id": "bridge_45.437103_12.323849",
           "type": "bridge",
           "owner": "ConsiglioDeiDieci",
@@ -1560,6 +1574,13 @@ Here is the complete data about your current situation:
           "id": "building_45.442276_12.323666",
           "type": "small_warehouse",
           "owner": "ConsiglioDeiDieci",
+          "income": 0,
+          "maintenance_cost": 0
+        },
+        {
+          "id": "building_45.44225316651121_12.320556777517233",
+          "type": "mill",
+          "owner": "the_grand_experiment",
           "income": 0,
           "maintenance_cost": 0
         },
@@ -3161,8 +3182,89 @@ Here is the complete data about your current situation:
   "buildings": [],
   "relevancies": [],
   "target_relevancies": [],
-  "latest_citizen_problems": [],
+  "latest_citizen_problems": [
+    {
+      "id": "recUyvKO57IzLQICQ",
+      "fields": {
+        "ProblemId": "hungry_PhotoWizard",
+        "Citizen": "PhotoWizard",
+        "Asset": "PhotoWizard",
+        "AssetType": "citizen",
+        "Severity": "medium",
+        "Status": "active",
+        "CreatedAt": "2025-06-27T02:07:35.174Z",
+        "UpdatedAt": "2025-06-27T18:42:20.000Z",
+        "Location": "Lucrezia's last known area",
+        "Title": "Hungry Citizen",
+        "Description": "**Lucrezia Dardi** has not eaten in over 24 hours and is now hungry. This can affect their well-being and ability to perform tasks effectively.\n\n### Impact\n- Reduced energy and focus.\n- If employed, work productivity may be reduced by up to 50%.\n- Prolonged hunger can lead to more severe health issues (if implemented).",
+        "Solutions": "### Recommended Solutions\n- Ensure the citizen consumes food. This might involve visiting a tavern, purchasing food from a market, or using owned food resources.\n- Check if the citizen has sufficient Ducats to afford food.\n- Review game mechanics related to food consumption and ensure the 'AteAt' (or equivalent) field is updated correctly after eating.",
+        "Notes": "[Failures: 1]\nCitizen PhotoWizard last ate at 2025-06-22T23:16:13.586Z. Current time: 2025-06-27T02:07:35.147Z",
+        "Position": "{\"lat\":45.42355694712783,\"lng\":12.323246557070675}",
+        "Type": "hungry_citizen"
+      }
+    }
+  ],
   "recent_notifications_for_ai": [
+    {
+      "notificationId": "rec08N1TDveWPxgyl",
+      "type": "rent_payment",
+      "citizen": "PhotoWizard",
+      "content": "\u2705 Rent Paid: You paid **1,125 \u269c\ufe0f Ducats** to **ConsiglioDeiDieci** for **recqen5Hylv8KmYgZ**.",
+      "details": {
+        "building_id": "recqen5Hylv8KmYgZ",
+        "building_name": "recqen5Hylv8KmYgZ",
+        "rent_price": 1125,
+        "building_owner": "ConsiglioDeiDieci",
+        "event_type": "rent_payment_made"
+      },
+      "createdAt": "2025-06-27T18:03:21.693Z",
+      "readAt": null
+    },
+    {
+      "notificationId": "recNV0i82svU2klrW",
+      "type": "rent_payment",
+      "citizen": "PhotoWizard",
+      "content": "\u2705 Rent Paid: You paid **1,125 \u269c\ufe0f Ducats** to **ConsiglioDeiDieci** for **recqen5Hylv8KmYgZ**.",
+      "details": {
+        "building_id": "recqen5Hylv8KmYgZ",
+        "building_name": "recqen5Hylv8KmYgZ",
+        "rent_price": 1125,
+        "building_owner": "ConsiglioDeiDieci",
+        "event_type": "rent_payment_made"
+      },
+      "createdAt": "2025-06-27T16:03:17.562Z",
+      "readAt": null
+    },
+    {
+      "notificationId": "recyBbpYdOjLjMlEA",
+      "type": "rent_payment",
+      "citizen": "PhotoWizard",
+      "content": "\u2705 Rent Paid: You paid **1,125 \u269c\ufe0f Ducats** to **ConsiglioDeiDieci** for **recqen5Hylv8KmYgZ**.",
+      "details": {
+        "building_id": "recqen5Hylv8KmYgZ",
+        "building_name": "recqen5Hylv8KmYgZ",
+        "rent_price": 1125,
+        "building_owner": "ConsiglioDeiDieci",
+        "event_type": "rent_payment_made"
+      },
+      "createdAt": "2025-06-26T18:03:33.836Z",
+      "readAt": null
+    },
+    {
+      "notificationId": "recXhGqQyegr1RGWq",
+      "type": "rent_payment",
+      "citizen": "PhotoWizard",
+      "content": "\u2705 Rent Paid: You paid **1,125 \u269c\ufe0f Ducats** to **ConsiglioDeiDieci** for **recqen5Hylv8KmYgZ**.",
+      "details": {
+        "building_id": "recqen5Hylv8KmYgZ",
+        "building_name": "recqen5Hylv8KmYgZ",
+        "rent_price": 1125,
+        "building_owner": "ConsiglioDeiDieci",
+        "event_type": "rent_payment_made"
+      },
+      "createdAt": "2025-06-25T16:03:43.814Z",
+      "readAt": null
+    },
     {
       "notificationId": "recM3J2Z0S63S1MxU",
       "type": "rent_payment",
@@ -3420,51 +3522,6 @@ Here is the complete data about your current situation:
       },
       "createdAt": "2025-06-13T08:02:58.363Z",
       "readAt": null
-    },
-    {
-      "notificationId": "recJiMbhAWDlSfPP0",
-      "type": "rent_payment",
-      "citizen": "PhotoWizard",
-      "content": "\u2705 Rent Paid: You paid **1,125 \u269c\ufe0f Ducats** to **ConsiglioDeiDieci** for **recqen5Hylv8KmYgZ**.",
-      "details": {
-        "building_id": "recqen5Hylv8KmYgZ",
-        "building_name": "recqen5Hylv8KmYgZ",
-        "rent_price": 1125,
-        "building_owner": "ConsiglioDeiDieci",
-        "event_type": "rent_payment_made"
-      },
-      "createdAt": "2025-06-12T18:03:28.721Z",
-      "readAt": null
-    },
-    {
-      "notificationId": "recJ9Z2NTwflSdLze",
-      "type": "rent_payment",
-      "citizen": "PhotoWizard",
-      "content": "\u2705 Rent Paid: You paid **1,125 \u269c\ufe0f Ducats** to **ConsiglioDeiDieci** for **recqen5Hylv8KmYgZ**.",
-      "details": {
-        "building_id": "recqen5Hylv8KmYgZ",
-        "building_name": "recqen5Hylv8KmYgZ",
-        "rent_price": 1125,
-        "building_owner": "ConsiglioDeiDieci",
-        "event_type": "rent_payment_made"
-      },
-      "createdAt": "2025-06-10T18:03:42.533Z",
-      "readAt": null
-    },
-    {
-      "notificationId": "recf4CytM9IRS4mJ6",
-      "type": "rent_payment",
-      "citizen": "PhotoWizard",
-      "content": "\u2705 Rent Paid: You paid **1,125 \u269c\ufe0f Ducats** to **ConsiglioDeiDieci** for **recqen5Hylv8KmYgZ**.",
-      "details": {
-        "building_id": "recqen5Hylv8KmYgZ",
-        "building_name": "recqen5Hylv8KmYgZ",
-        "rent_price": 1125,
-        "building_owner": "ConsiglioDeiDieci",
-        "event_type": "rent_payment_made"
-      },
-      "createdAt": "2025-06-10T16:04:12.372Z",
-      "readAt": null
     }
   ],
   "building_types": {
@@ -3541,7 +3598,7 @@ Here is the complete data about your current situation:
       "constructionMinutes": 7200,
       "buildTier": 1,
       "tier": null,
-      "category": "Public & Government",
+      "category": "religion",
       "pointType": "building"
     },
     "fisherman_s_cottage": {
@@ -3705,7 +3762,7 @@ Here is the complete data about your current situation:
       "pointType": "building"
     }
   },
-  "timestamp": "2025-06-24T21:07:51.034061+02:00",
+  "timestamp": "2025-06-27T21:58:26.689281+02:00",
   "building_ownership_relevancies": []
 }
 
