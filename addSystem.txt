@@ -8,7 +8,7 @@ Here is the complete data about your current situation:
 {
   "citizen": {
     "username": "StormRider",
-    "ducats": 308238.67614259187,
+    "ducats": 313389.3109905915,
     "social_class": "Popolani",
     "description": "Vittoria Zanatta is a determined and industrious laborer from the Facchini class who has risen to unexpected prosperity through her work at the public docks of Venice. Born to a family of porters who have served the bustling port for generations, Vittoria inherited her father's robust physique and her mother's sharp mind for spotting opportunity. Despite her humble origins, she has amassed considerable wealth (over 250,000 ducats) through tireless work, shrewd dealings with merchants, and a reputation for absolute reliability in handling valuable cargo. Each morning before dawn, Vittoria arrives at the docks to secure the best positions for the day's shipments, negotiating favors with ship captains and coordinating with fellow porters. Her calloused hands and weathered face tell the story of years of physical labor, yet her eyes reveal a calculating intelligence that has allowed her to transform mere muscle work into a lucrative position. Though still proudly Facchini, Vittoria now employs several assistants and has begun investing in small shipping ventures. She maintains a modest but comfortable home near Castello, where she lives with her aging mother and younger brother. Despite her growing wealth, she remains deeply connected to the working port community, often using her resources to help neighbors in need or fellow porters facing hardship.",
     "core_personality": "{\"Strength\": \"Independent\", \"Flaw\": \"Ambitious\", \"Drive\": \"Dignity-seeking\", \"MBTI\": \"ESTJ\", \"PrimaryTrait\": \"Community leader\", \"SecondaryTraits\": [\"Business expansion\", \"Worker support\", \"Family loyalty\"], \"CognitiveBias\": [\"Self-serving bias\", \"In-group favoritism\"], \"TrustThreshold\": 0.5, \"EmpathyWeight\": 0.6, \"RiskTolerance\": 0.5, \"guidedBy\": \"The Dock's Pride\", \"CoreThoughts\": {\"primary_drive\": \"dignity-through-success\", \"secondary_drive\": \"community-elevation\", \"internal_tension\": \"independence vs. community\", \"activation_triggers\": [\"dignity_challenges\", \"community_needs\", \"expansion_opportunities\"], \"thought_patterns\": [\"Success proves our worth to those who doubted\", \"My prosperity should lift others up too\", \"Independence means choosing who to help\", \"Physical work has dignity when properly rewarded\", \"Family and workers both deserve my protection\", \"Respect is earned through results, not birth\"], \"decision_framework\": \"How does this advance my dignity while supporting my community?\"}}",
@@ -1381,6 +1381,13 @@ Here is the complete data about your current situation:
       "has_water_access": false,
       "district": "San Polo",
       "existing_buildings": [
+        {
+          "id": "building_45.43839918445191_12.326301049069482",
+          "type": "house_of_natural_sciences",
+          "owner": "ConsiglioDeiDieci",
+          "income": 0,
+          "maintenance_cost": 0
+        },
         {
           "id": "bridge_45.437103_12.323849",
           "type": "bridge",
@@ -3189,7 +3196,7 @@ Here is the complete data about your current situation:
   "target_relevancies": [],
   "latest_citizen_problems": [
     {
-      "id": "rec6kNZHOlDymTI5w",
+      "id": "reck6WDNq9WVFxuTC",
       "fields": {
         "ProblemId": "hungry_StormRider",
         "Citizen": "StormRider",
@@ -3197,19 +3204,49 @@ Here is the complete data about your current situation:
         "AssetType": "citizen",
         "Severity": "medium",
         "Status": "active",
-        "CreatedAt": "2025-06-25T05:46:13.932Z",
-        "UpdatedAt": "2025-06-25T09:16:25.000Z",
+        "CreatedAt": "2025-06-27T02:07:35.174Z",
+        "UpdatedAt": "2025-06-27T18:42:20.000Z",
         "Location": "Vittoria's last known area",
         "Title": "Hungry Citizen",
         "Description": "**Vittoria Zanatta** has not eaten in over 24 hours and is now hungry. This can affect their well-being and ability to perform tasks effectively.\n\n### Impact\n- Reduced energy and focus.\n- If employed, work productivity may be reduced by up to 50%.\n- Prolonged hunger can lead to more severe health issues (if implemented).",
         "Solutions": "### Recommended Solutions\n- Ensure the citizen consumes food. This might involve visiting a tavern, purchasing food from a market, or using owned food resources.\n- Check if the citizen has sufficient Ducats to afford food.\n- Review game mechanics related to food consumption and ensure the 'AteAt' (or equivalent) field is updated correctly after eating.",
-        "Notes": "[Failures: 1]\nCitizen StormRider last ate at 2025-06-16T20:23:56.685Z. Current time: 2025-06-25T05:46:13.908Z",
+        "Notes": "[Failures: 1]\nCitizen StormRider last ate at 2025-06-16T20:23:56.685Z. Current time: 2025-06-27T02:07:35.147Z",
         "Position": "{\"lat\":45.444337,\"lng\":12.325387}",
         "Type": "hungry_citizen"
       }
     }
   ],
   "recent_notifications_for_ai": [
+    {
+      "notificationId": "rec2ViYzzqim9Ir6J",
+      "type": "rent_payment",
+      "citizen": "StormRider",
+      "content": "\u2705 Rent Paid: You paid **1,750 \u269c\ufe0f Ducats** to **Italia** for **Artisan's House at Calle del Forno Vecchio**.",
+      "details": {
+        "building_id": "recqPJgmaobBoSJgA",
+        "building_name": "Artisan's House at Calle del Forno Vecchio",
+        "rent_price": 1750,
+        "building_owner": "Italia",
+        "event_type": "rent_payment_made"
+      },
+      "createdAt": "2025-06-27T18:03:19.223Z",
+      "readAt": null
+    },
+    {
+      "notificationId": "recHUoMNDhwfWOSEa",
+      "type": "rent_payment",
+      "citizen": "StormRider",
+      "content": "\u2705 Rent Paid: You paid **1,750 \u269c\ufe0f Ducats** to **Italia** for **Artisan's House at Calle del Forno Vecchio**.",
+      "details": {
+        "building_id": "recqPJgmaobBoSJgA",
+        "building_name": "Artisan's House at Calle del Forno Vecchio",
+        "rent_price": 1750,
+        "building_owner": "Italia",
+        "event_type": "rent_payment_made"
+      },
+      "createdAt": "2025-06-27T16:03:15.244Z",
+      "readAt": null
+    },
     {
       "notificationId": "recLgrCDgkVmV8Wge",
       "type": "rent_payment",
@@ -3479,21 +3516,6 @@ Here is the complete data about your current situation:
       },
       "createdAt": "2025-06-13T16:03:13.477Z",
       "readAt": null
-    },
-    {
-      "notificationId": "recSCl3S3qVbMw0oI",
-      "type": "rent_payment",
-      "citizen": "StormRider",
-      "content": "\u2705 Rent Paid: You paid **1,750 \u269c\ufe0f Ducats** to **Italia** for **Artisan's House at Calle del Forno Vecchio**.",
-      "details": {
-        "building_id": "recqPJgmaobBoSJgA",
-        "building_name": "Artisan's House at Calle del Forno Vecchio",
-        "rent_price": 1750,
-        "building_owner": "Italia",
-        "event_type": "rent_payment_made"
-      },
-      "createdAt": "2025-06-12T18:03:26.115Z",
-      "readAt": null
     }
   ],
   "building_types": {
@@ -3703,7 +3725,7 @@ Here is the complete data about your current situation:
       "constructionMinutes": 7200,
       "buildTier": 1,
       "tier": null,
-      "category": "Public & Government",
+      "category": "religion",
       "pointType": "building"
     },
     "cistern": {
@@ -3780,25 +3802,6 @@ Here is the complete data about your current situation:
       "category": "home",
       "pointType": "canal"
     },
-    "glassblower_workshop": {
-      "id": "glassblower_workshop",
-      "type": "glassblower_workshop",
-      "name": "Glassblower Workshop",
-      "shortDescription": "Specialized facility where skilled artisans shape molten glass into fine objects and art pieces.",
-      "constructionCost": 1500000,
-      "constructionCosts": {
-        "ducats": 1500000,
-        "timber": 430,
-        "bricks": 1070,
-        "stone": 570,
-        "iron": 290
-      },
-      "constructionMinutes": 5760,
-      "buildTier": 2,
-      "tier": null,
-      "category": "business",
-      "pointType": "building"
-    },
     "glass_foundry": {
       "id": "glass_foundry",
       "type": "glass_foundry",
@@ -3813,6 +3816,25 @@ Here is the complete data about your current situation:
         "iron": 390
       },
       "constructionMinutes": 10080,
+      "buildTier": 2,
+      "tier": null,
+      "category": "business",
+      "pointType": "building"
+    },
+    "glassblower_workshop": {
+      "id": "glassblower_workshop",
+      "type": "glassblower_workshop",
+      "name": "Glassblower Workshop",
+      "shortDescription": "Specialized facility where skilled artisans shape molten glass into fine objects and art pieces.",
+      "constructionCost": 1500000,
+      "constructionCosts": {
+        "ducats": 1500000,
+        "timber": 430,
+        "bricks": 1070,
+        "stone": 570,
+        "iron": 290
+      },
+      "constructionMinutes": 5760,
       "buildTier": 2,
       "tier": null,
       "category": "business",
@@ -4058,7 +4080,7 @@ Here is the complete data about your current situation:
       "constructionMinutes": 43200,
       "buildTier": 2,
       "tier": null,
-      "category": "Public & Government",
+      "category": "religion",
       "pointType": "building"
     },
     "porter_guild_hall": {
@@ -4419,7 +4441,7 @@ Here is the complete data about your current situation:
       "pointType": "building"
     }
   },
-  "timestamp": "2025-06-26T21:11:37.210730+02:00",
+  "timestamp": "2025-06-27T21:29:09.692784+02:00",
   "building_ownership_relevancies": [
     {
       "asset": "building_45.431361_12.355688",
