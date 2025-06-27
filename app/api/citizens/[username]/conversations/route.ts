@@ -72,10 +72,10 @@ interface Conversation {
 
 export async function GET(
   request: NextRequest,
-  { params }: { params: { username: string } }
+  context: { params: Promise<{ username: string }> }
 ) {
   try {
-    const username = params.username;
+    const { username } = await context.params;
     
     if (!username) {
       return NextResponse.json(
