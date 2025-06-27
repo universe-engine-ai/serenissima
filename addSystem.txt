@@ -8,7 +8,7 @@ Here is the complete data about your current situation:
 {
   "citizen": {
     "username": "FitnessFanatic",
-    "ducats": 261403.94606939238,
+    "ducats": 270328.63665754034,
     "social_class": "Facchini",
     "description": "Donato Fabbro is a respected porter (facchino) whose unexpected prosperity has raised eyebrows across the Rialto. Born to a family of dock workers, Donato has leveraged his powerful physique and surprising business acumen to transform what many consider menial labor into a thriving enterprise. Known for his ability to efficiently transport goods through Venice's labyrinthine streets and canals, he has cultivated a network of merchants who rely on his punctuality and discretion. Donato rises before dawn to secure the most profitable cargo assignments, often working until dusk. Despite his substantial wealth, he maintains a modest lifestyle, save for his fondness for quality Cypriot wine and occasional wagering on regattas. He has used his earnings to strategically invest in warehouse space, employing fellow facchini while maintaining a hands-on approach. Though illiterate, Donato possesses remarkable memory for numbers and faces, allowing him to operate without written records. His aspirations now turn toward legitimizing his status by establishing a recognized guild of porters, though the patrician authorities view such ambitions with skepticism.",
     "core_personality": "{\"Strength\": \"Tireless\", \"Flaw\": \"Insecure\", \"Drive\": \"Status-seeking\", \"MBTI\": \"ESFJ\", \"PrimaryTrait\": \"Recognition seeker\", \"SecondaryTraits\": [\"Guild ambitions\", \"Network building\", \"Legitimacy pursuit\"], \"CognitiveBias\": [\"Status anxiety\", \"Social comparison\"], \"TrustThreshold\": 0.5, \"EmpathyWeight\": 0.6, \"RiskTolerance\": 0.4, \"guidedBy\": \"The Guild's Vision\", \"CoreThoughts\": {\"primary_drive\": \"status-legitimization\", \"secondary_drive\": \"worker-organization\", \"internal_tension\": \"insecurity vs. ambition\", \"activation_triggers\": [\"status_challenges\", \"guild_opportunities\", \"recognition_moments\"], \"thought_patterns\": [\"Status requires organized effort, not just wealth\", \"A porter's guild would legitimize our work\", \"Recognition must be earned through visible achievement\", \"My success should elevate all porters\", \"Insecurity drives excellence and persistence\", \"Patricians respect organization more than individuals\"], \"decision_framework\": \"How does this build legitimate status while organizing my fellow workers?\"}}",
@@ -1095,6 +1095,13 @@ Here is the complete data about your current situation:
           "maintenance_cost": 0
         },
         {
+          "id": "building_45.428748173929534_12.362001145681361",
+          "type": "mill",
+          "owner": "the_grand_experiment",
+          "income": 0,
+          "maintenance_cost": 0
+        },
+        {
           "id": "canal_45.424823_12.362988",
           "type": "fisherman_s_cottage",
           "owner": "StarGazer2000",
@@ -1372,6 +1379,13 @@ Here is the complete data about your current situation:
       "district": "San Polo",
       "existing_buildings": [
         {
+          "id": "building_45.43839918445191_12.326301049069482",
+          "type": "house_of_natural_sciences",
+          "owner": "ConsiglioDeiDieci",
+          "income": 0,
+          "maintenance_cost": 0
+        },
+        {
           "id": "bridge_45.437103_12.323849",
           "type": "bridge",
           "owner": "ConsiglioDeiDieci",
@@ -1560,6 +1574,13 @@ Here is the complete data about your current situation:
           "id": "building_45.442276_12.323666",
           "type": "small_warehouse",
           "owner": "ConsiglioDeiDieci",
+          "income": 0,
+          "maintenance_cost": 0
+        },
+        {
+          "id": "building_45.44225316651121_12.320556777517233",
+          "type": "mill",
+          "owner": "the_grand_experiment",
           "income": 0,
           "maintenance_cost": 0
         },
@@ -3161,8 +3182,89 @@ Here is the complete data about your current situation:
   "buildings": [],
   "relevancies": [],
   "target_relevancies": [],
-  "latest_citizen_problems": [],
+  "latest_citizen_problems": [
+    {
+      "id": "recQnB10h5x2N7HJP",
+      "fields": {
+        "ProblemId": "hungry_FitnessFanatic",
+        "Citizen": "FitnessFanatic",
+        "Asset": "FitnessFanatic",
+        "AssetType": "citizen",
+        "Severity": "medium",
+        "Status": "active",
+        "CreatedAt": "2025-06-27T02:07:35.171Z",
+        "UpdatedAt": "2025-06-27T18:42:16.000Z",
+        "Location": "Donato's last known area",
+        "Title": "Hungry Citizen",
+        "Description": "**Donato Fabbro** has not eaten in over 24 hours and is now hungry. This can affect their well-being and ability to perform tasks effectively.\n\n### Impact\n- Reduced energy and focus.\n- If employed, work productivity may be reduced by up to 50%.\n- Prolonged hunger can lead to more severe health issues (if implemented).",
+        "Solutions": "### Recommended Solutions\n- Ensure the citizen consumes food. This might involve visiting a tavern, purchasing food from a market, or using owned food resources.\n- Check if the citizen has sufficient Ducats to afford food.\n- Review game mechanics related to food consumption and ensure the 'AteAt' (or equivalent) field is updated correctly after eating.",
+        "Notes": "[Failures: 1]\nCitizen FitnessFanatic last ate at 2025-06-22T23:44:45.803Z. Current time: 2025-06-27T02:07:35.147Z",
+        "Position": "{\"lat\":45.429601500000004,\"lng\":12.361084}",
+        "Type": "hungry_citizen"
+      }
+    }
+  ],
   "recent_notifications_for_ai": [
+    {
+      "notificationId": "recYwb4jOqDXg0GZE",
+      "type": "rent_payment",
+      "citizen": "FitnessFanatic",
+      "content": "\u2705 Rent Paid: You paid **1,125 \u269c\ufe0f Ducats** to **ConsiglioDeiDieci** for **Fisherman's Cottage at Riva dei Brentatori**.",
+      "details": {
+        "building_id": "rec4H8QivPBfZvRlR",
+        "building_name": "Fisherman's Cottage at Riva dei Brentatori",
+        "rent_price": 1125,
+        "building_owner": "ConsiglioDeiDieci",
+        "event_type": "rent_payment_made"
+      },
+      "createdAt": "2025-06-27T18:00:41.775Z",
+      "readAt": null
+    },
+    {
+      "notificationId": "reczcMMUOp9U3MfM0",
+      "type": "rent_payment",
+      "citizen": "FitnessFanatic",
+      "content": "\u2705 Rent Paid: You paid **1,125 \u269c\ufe0f Ducats** to **ConsiglioDeiDieci** for **Fisherman's Cottage at Riva dei Brentatori**.",
+      "details": {
+        "building_id": "rec4H8QivPBfZvRlR",
+        "building_name": "Fisherman's Cottage at Riva dei Brentatori",
+        "rent_price": 1125,
+        "building_owner": "ConsiglioDeiDieci",
+        "event_type": "rent_payment_made"
+      },
+      "createdAt": "2025-06-27T16:00:37.756Z",
+      "readAt": null
+    },
+    {
+      "notificationId": "recMqHlzI6Nnh8J48",
+      "type": "rent_payment",
+      "citizen": "FitnessFanatic",
+      "content": "\u2705 Rent Paid: You paid **1,125 \u269c\ufe0f Ducats** to **ConsiglioDeiDieci** for **Fisherman's Cottage at Riva dei Brentatori**.",
+      "details": {
+        "building_id": "rec4H8QivPBfZvRlR",
+        "building_name": "Fisherman's Cottage at Riva dei Brentatori",
+        "rent_price": 1125,
+        "building_owner": "ConsiglioDeiDieci",
+        "event_type": "rent_payment_made"
+      },
+      "createdAt": "2025-06-26T18:01:01.137Z",
+      "readAt": null
+    },
+    {
+      "notificationId": "recyE6X02q0UcHBvE",
+      "type": "rent_payment",
+      "citizen": "FitnessFanatic",
+      "content": "\u2705 Rent Paid: You paid **1,125 \u269c\ufe0f Ducats** to **ConsiglioDeiDieci** for **Fisherman's Cottage at Riva dei Brentatori**.",
+      "details": {
+        "building_id": "rec4H8QivPBfZvRlR",
+        "building_name": "Fisherman's Cottage at Riva dei Brentatori",
+        "rent_price": 1125,
+        "building_owner": "ConsiglioDeiDieci",
+        "event_type": "rent_payment_made"
+      },
+      "createdAt": "2025-06-25T16:00:48.756Z",
+      "readAt": null
+    },
     {
       "notificationId": "rec9YfpXFHUIVkPo1",
       "type": "rent_payment",
@@ -3402,51 +3504,6 @@ Here is the complete data about your current situation:
       },
       "createdAt": "2025-06-13T16:00:34.473Z",
       "readAt": null
-    },
-    {
-      "notificationId": "recCh64BtMPOQwLv3",
-      "type": "rent_payment",
-      "citizen": "FitnessFanatic",
-      "content": "\u2705 Rent Paid: You paid **1,125 \u269c\ufe0f Ducats** to **ConsiglioDeiDieci** for **Fisherman's Cottage at Riva dei Brentatori**.",
-      "details": {
-        "building_id": "rec4H8QivPBfZvRlR",
-        "building_name": "Fisherman's Cottage at Riva dei Brentatori",
-        "rent_price": 1125,
-        "building_owner": "ConsiglioDeiDieci",
-        "event_type": "rent_payment_made"
-      },
-      "createdAt": "2025-06-12T18:00:41.415Z",
-      "readAt": null
-    },
-    {
-      "notificationId": "rec7C6KPxkIsuiXoN",
-      "type": "rent_payment",
-      "citizen": "FitnessFanatic",
-      "content": "\u2705 Rent Paid: You paid **1,125 \u269c\ufe0f Ducats** to **ConsiglioDeiDieci** for **Fisherman's Cottage at Riva dei Brentatori**.",
-      "details": {
-        "building_id": "rec4H8QivPBfZvRlR",
-        "building_name": "Fisherman's Cottage at Riva dei Brentatori",
-        "rent_price": 1125,
-        "building_owner": "ConsiglioDeiDieci",
-        "event_type": "rent_payment_made"
-      },
-      "createdAt": "2025-06-10T18:00:49.729Z",
-      "readAt": null
-    },
-    {
-      "notificationId": "recccPPTCX267wwug",
-      "type": "rent_payment",
-      "citizen": "FitnessFanatic",
-      "content": "\u2705 Rent Paid: You paid **1,125 \u269c\ufe0f Ducats** to **ConsiglioDeiDieci** for **Fisherman's Cottage at Riva dei Brentatori**.",
-      "details": {
-        "building_id": "rec4H8QivPBfZvRlR",
-        "building_name": "Fisherman's Cottage at Riva dei Brentatori",
-        "rent_price": 1125,
-        "building_owner": "ConsiglioDeiDieci",
-        "event_type": "rent_payment_made"
-      },
-      "createdAt": "2025-06-10T16:01:17.287Z",
-      "readAt": null
     }
   ],
   "building_types": {
@@ -3523,7 +3580,7 @@ Here is the complete data about your current situation:
       "constructionMinutes": 7200,
       "buildTier": 1,
       "tier": null,
-      "category": "Public & Government",
+      "category": "religion",
       "pointType": "building"
     },
     "fisherman_s_cottage": {
@@ -3687,7 +3744,7 @@ Here is the complete data about your current situation:
       "pointType": "building"
     }
   },
-  "timestamp": "2025-06-24T21:13:35.215015+02:00",
+  "timestamp": "2025-06-27T21:23:55.990158+02:00",
   "building_ownership_relevancies": []
 }
 

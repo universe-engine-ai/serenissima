@@ -86,5 +86,15 @@
     "role": "assistant",
     "content": "{    \"building_type\": \"warehouse\",    \"land_id\": \"L1B2D4F5C6E7G8A9\",    \"reason\": \"Strategic placement on the island with high trade activity and existing infrastructure, ensuring efficient supply management for my growing business interests in Venice.\"}",
     "timestamp": "2025-06-24T19:18:45.141186"
+  },
+  {
+    "role": "user",
+    "content": "\nAs a citizen in La Serenissima with social class Facchini, you need to decide on your next building investment.\n\nHere's your current situation:\n- You are considering 120 land(s).\n- You have 0 buildings.\n- Your current net income is 0 ducats.\n- You have 270328.63665754034 ducats available.\n\nWhen making your decision, carefully consider the information that you have at your disposition.\n\nAfter your analysis, provide your building decision in this JSON format:\n```json\n{\n  \"building_type\": \"type_of_building_to_build\",\n  \"land_id\": \"id_of_land_to_build_on\",\n  \"reason\": \"brief explanation of why this building\"\n}\n```\n\nIf you decide not to build anything at this time, return an empty JSON object:\n```json\n{}\n```\n",
+    "timestamp": "2025-06-27T19:23:56.403186"
+  },
+  {
+    "role": "assistant",
+    "content": "{    \"building_type\": \"warehouse\",    \"land_id\": \"L1B2D4F5C6E7G8A9\",    \"reason\": \"Strategic placement on the island with high trade activity and existing infrastructure, ensuring efficient supply management for my growing business interests in Venice.\"}",
+    "timestamp": "2025-06-27T19:29:06.960611"
   }
 ]
