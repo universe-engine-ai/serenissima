@@ -101,20 +101,25 @@ def _consult_claude_and_reflect_async(
                 
                 log.info(f"  [Thread: {thread_id}] Generated KinOS reflection for {citizen_username}")
                 
-                # Store research findings as a thought
-                thought_record = tables['thoughts'].create({
-                    "Citizen": citizen_username,
+                # Store research findings as a self-message
+                message_id = f"research_{citizen_username}_{datetime.now(VENICE_TIMEZONE).strftime('%Y%m%d%H%M%S')}"
+                message_record = tables['messages'].create({
+                    "MessageId": message_id,
+                    "Sender": citizen_username,
+                    "Receiver": citizen_username,
                     "Content": reflection,
-                    "Type": "research_findings",
+                    "Type": "research_note",
+                    "Channel": "research_thoughts",
                     "CreatedAt": datetime.now(VENICE_TIMEZONE).isoformat(),
-                    "Context": json.dumps({
+                    "Notes": json.dumps({
+                        "note_type": "research_findings",
                         "research_query": research_query,
                         "location": building_name,
                         "claude_consulted": claude_response["success"]
                     })
                 })
                 
-                log.info(f"  [Thread: {thread_id}] Stored research findings as thought for {citizen_username}")
+                log.info(f"  [Thread: {thread_id}] Stored research findings as self-message for {citizen_username}")
                 
             except Exception as e:
                 log.error(f"  [Thread: {thread_id}] Error with KinOS reflection: {e}")
@@ -240,20 +245,25 @@ def _generate_theoretical_reflection(
         kinos_data = kinos_response.json()
         reflection = kinos_data.get('response', 'Research continues despite limited resources.')
         
-        # Store as thought
-        tables['thoughts'].create({
-            "Citizen": citizen_username,
+        # Store as self-message
+        message_id = f"theoretical_{citizen_username}_{datetime.now(VENICE_TIMEZONE).strftime('%Y%m%d%H%M%S')}"
+        tables['messages'].create({
+            "MessageId": message_id,
+            "Sender": citizen_username,
+            "Receiver": citizen_username,
             "Content": reflection,
-            "Type": "research_findings",
+            "Type": "research_note",
+            "Channel": "research_thoughts",
             "CreatedAt": datetime.now(VENICE_TIMEZONE).isoformat(),
-            "Context": json.dumps({
+            "Notes": json.dumps({
+                "note_type": "research_findings",
                 "research_query": research_query,
                 "location": building_name,
                 "theoretical_only": True
             })
         })
         
-        log.info(f"  [Thread: {thread_id}] Stored theoretical research findings for {citizen_username}")
+        log.info(f"  [Thread: {thread_id}] Stored theoretical research findings as self-message for {citizen_username}")
         
     except Exception as e:
         log.error(f"  [Thread: {thread_id}] Error generating theoretical reflection: {e}")

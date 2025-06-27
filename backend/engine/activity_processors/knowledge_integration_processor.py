@@ -43,7 +43,7 @@ def _integrate_knowledge_async(
     
     try:
         # Extract project context
-        project_context = json.loads(project_record['fields'].get('Context', '{}'))
+        project_context = json.loads(project_record['fields'].get('Notes', '{}'))
         project_title = project_context.get('title', 'Knowledge Integration')
         focus_areas = project_context.get('focus_areas', [])
         integrated_insights = project_context.get('integrated_insights', [])
@@ -144,25 +144,30 @@ def _integrate_knowledge_async(
                 )
                 
                 # Update project record
-                tables['thoughts'].update(project_record['id'], {
+                tables['messages'].update(project_record['id'], {
                     'Content': project_content,
-                    'Context': json.dumps(project_context)
+                    'Notes': json.dumps(project_context)
                 })
                 
                 log.info(f"  [Thread: {thread_id}] Updated project progress: {progress}% complete")
                 
-                # Create session thought
-                session_thought = tables['thoughts'].create({
-                    "Citizen": citizen_username,
+                # Create session self-message
+                session_message_id = f"msg_{citizen_username}_self_{datetime.now(VENICE_TIMEZONE).strftime('%Y%m%d%H%M%S')}_integration_session"
+                session_message = tables['messages'].create({
+                    "MessageId": session_message_id,
+                    "Sender": citizen_username,
+                    "Receiver": citizen_username,
                     "Content": session_reflection,
-                    "Type": "integration_session",
+                    "Type": "research_note",
+                    "Channel": "research_thoughts",
                     "CreatedAt": datetime.now(VENICE_TIMEZONE).isoformat(),
-                    "Context": json.dumps({
+                    "Notes": json.dumps({
                         "project_id": project_record['id'],
                         "project_title": project_title,
                         "session_number": sessions_completed,
                         "progress": progress,
-                        "new_insights": new_insights[:2]
+                        "new_insights": new_insights[:2],
+                        "note_type": "integration_session"
                     })
                 })
                 
@@ -214,7 +219,7 @@ def _create_final_synthesis(
     integrated_insights: list,
     focus_areas: list
 ):
-    """Create a final synthesis thought when integration is complete."""
+    """Create a final synthesis self-message when integration is complete."""
     try:
         synthesis_content = (
             f"COMPLETED KNOWLEDGE SYNTHESIS: {project_title}\n\n"
@@ -225,19 +230,24 @@ def _create_final_synthesis(
             f"The patterns are clear, the connections established, and the theoretical foundation is solid."
         )
         
-        tables['thoughts'].create({
-            "Citizen": citizen_username,
+        synthesis_message_id = f"msg_{citizen_username}_self_{datetime.now(VENICE_TIMEZONE).strftime('%Y%m%d%H%M%S')}_final_synthesis"
+        tables['messages'].create({
+            "MessageId": synthesis_message_id,
+            "Sender": citizen_username,
+            "Receiver": citizen_username,
             "Content": synthesis_content,
-            "Type": "knowledge_synthesis",
+            "Type": "research_note",
+            "Channel": "research_thoughts",
             "CreatedAt": datetime.now(VENICE_TIMEZONE).isoformat(),
-            "Context": json.dumps({
+            "Notes": json.dumps({
                 "project_title": project_title,
                 "is_complete": True,
-                "total_insights": len(integrated_insights)
+                "total_insights": len(integrated_insights),
+                "note_type": "knowledge_synthesis"
             })
         })
         
-        log.info(f"Created final synthesis thought for {citizen_username}'s project: {project_title}")
+        log.info(f"Created final synthesis self-message for {citizen_username}'s project: {project_title}")
         
     except Exception as e:
         log.error(f"Error creating final synthesis: {e}")
@@ -289,7 +299,7 @@ def process(
     project_record = None
     if project_id:
         try:
-            project_record = tables['thoughts'].get(project_id)
+            project_record = tables['messages'].get(project_id)
         except Exception as e:
             log.error(f"  Error fetching project record: {e}")
     

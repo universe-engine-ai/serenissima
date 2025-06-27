@@ -134,7 +134,8 @@ def _call_kinos_for_study_async(
     activity_id_airtable: str,
     activity_guid_log: str,
     original_activity_notes_dict: Dict[str, Any],
-    citizen_username_log: str
+    citizen_username_log: str,
+    kinos_api_key: Optional[str] = None
 ):
     """
     Makes the KinOS API call for scientific study reflection and updates activity notes.
@@ -142,7 +143,12 @@ def _call_kinos_for_study_async(
     """
     log.info(f"  [Thread: {threading.get_ident()}] Calling KinOS for study reflection by {citizen_username_log}")
     try:
-        kinos_response = requests.post(kinos_url, json=kinos_payload, timeout=120)
+        # Prepare headers with API key if provided
+        headers = {}
+        if kinos_api_key:
+            headers['Authorization'] = f'Bearer {kinos_api_key}'
+        
+        kinos_response = requests.post(kinos_url, json=kinos_payload, headers=headers, timeout=120)
         kinos_response.raise_for_status()
         
         kinos_response_data = kinos_response.json()
@@ -199,29 +205,28 @@ def process(
     
     log.info(f"{LogColors.PROCESS}Processing 'study_literature' activity {activity_guid} for {citizen_username} ({specialty} specialist) studying '{book_title}' at {building_name}.{LogColors.ENDC}")
 
-    if not KINOS_API_KEY:
-        log.error(f"{LogColors.FAIL}KINOS_API_KEY not set. Cannot trigger KinOS reflection for 'study_literature' activity {activity_guid}.{LogColors.ENDC}")
+    # Re-check for KINOS_API_KEY in case it was set after module import
+    kinos_api_key = os.getenv("KINOS_API_KEY") or KINOS_API_KEY
+    
+    if not kinos_api_key:
+        log.warning(f"{LogColors.WARNING}KINOS_API_KEY not set. Study will proceed without KinOS reflection for activity {activity_guid}.{LogColors.ENDC}")
+        # Still return True as the activity can complete without KinOS
         return True
 
     try:
         # 1. Fetch citizen's ledger for KinOS addSystem
         ledger_url = f"{current_api_base_url}/api/get-ledger?citizenUsername={citizen_username}"
-        ledger_json_str = None
+        ledger_markdown_str = None
         try:
             ledger_response = requests.get(ledger_url, timeout=15)
             if ledger_response.ok:
-                ledger_data = ledger_response.json()
-                if ledger_data.get("success"):
-                    ledger_json_str = json.dumps(ledger_data.get("data"))
-                    log.info(f"  Successfully fetched ledger for {citizen_username} for study reflection.")
-                else:
-                    log.warning(f"  Failed to fetch ledger for {citizen_username} (study): {ledger_data.get('error')}")
+                # Ledger API returns markdown, not JSON
+                ledger_markdown_str = ledger_response.text
+                log.info(f"  Successfully fetched ledger for {citizen_username} for study reflection. Length: {len(ledger_markdown_str)}")
             else:
                 log.warning(f"  HTTP error fetching ledger for {citizen_username} (study): {ledger_response.status_code}")
         except requests.exceptions.RequestException as e_pkg:
             log.error(f"  Error fetching ledger for {citizen_username} (study): {e_pkg}")
-        except json.JSONDecodeError as e_json_pkg:
-            log.error(f"  Error decoding ledger JSON for {citizen_username} (study): {e_json_pkg}")
 
         # 2. Fetch scientific book content
         book_content = _get_science_book_content(book_title)
@@ -266,14 +271,11 @@ def process(
             }
         }
         
-        if ledger_json_str:
-            try:
-                structured_add_system_payload["ledger"] = json.loads(ledger_json_str)
-            except json.JSONDecodeError:
-                log.error("  Failed to parse ledger_json_str. Ledger will be incomplete.")
-                structured_add_system_payload["ledger"] = {"error_parsing_ledger": True, "status": "unavailable"}
+        if ledger_markdown_str:
+            # Pass markdown ledger directly
+            structured_add_system_payload["ledger"] = ledger_markdown_str
         else:
-            structured_add_system_payload["ledger"] = {"status": "unavailable"}
+            structured_add_system_payload["ledger"] = "Ledger was not available"
 
         kinos_payload_dict: Dict[str, Any] = {
             "message": kinos_prompt,
@@ -286,7 +288,7 @@ def process(
         
         kinos_thread = threading.Thread(
             target=_call_kinos_for_study_async,
-            args=(kinos_url, kinos_payload_dict, tables, activity_id_airtable, activity_guid, notes_dict, citizen_username)
+            args=(kinos_url, kinos_payload_dict, tables, activity_id_airtable, activity_guid, notes_dict, citizen_username, kinos_api_key)
         )
         kinos_thread.start()
         

@@ -35,20 +35,21 @@ def _get_or_create_integration_project(
     Returns (project_record, is_new)
     """
     try:
-        # Check for existing active integration project
-        projects = list(tables['thoughts'].all(
-            formula=f"AND({{Citizen}}='{citizen_username}', {{Type}}='knowledge_integration_project', {{Context}} != '')",
+        # Check for existing active integration project from self-messages
+        projects = list(tables['messages'].all(
+            formula=f"AND({{Sender}}='{citizen_username}', {{Receiver}}='{citizen_username}', {{Channel}}='integration_project', {{Type}}='research_note')",
             sort=['-CreatedAt'],
             max_records=10
         ))
         
         # Find an incomplete project
         for project in projects:
-            context_str = project['fields'].get('Context', '{}')
+            content = project['fields'].get('Content', '')
+            notes_str = project['fields'].get('Notes', '{}')
             try:
-                context = json.loads(context_str)
-                if context.get('status') == 'in_progress':
-                    log.info(f"Found existing integration project for {citizen_username}: {context.get('title', 'Untitled')}")
+                notes = json.loads(notes_str) if notes_str else {}
+                if notes.get('status') == 'in_progress':
+                    log.info(f"Found existing integration project for {citizen_username}: {notes.get('title', 'Untitled')}")
                     return project, False
             except:
                 continue
@@ -91,7 +92,7 @@ def _create_new_integration_project(
             'focus_areas': ["System patterns", "Emergent behaviors", "Causal relationships"]
         }
     
-    # Create the project thought
+    # Create the project as a self-message
     project_content = (
         f"KNOWLEDGE INTEGRATION PROJECT: {integration_theme['title']}\n\n"
         f"Description: {integration_theme['description']}\n\n"
@@ -114,12 +115,18 @@ def _create_new_integration_project(
     }
     
     try:
-        project_record = tables['thoughts'].create({
-            'Citizen': citizen_username,
+        # Create a message ID
+        message_id = f"integration_{citizen_username}_{datetime.now(VENICE_TIMEZONE).strftime('%Y%m%d%H%M%S')}"
+        
+        project_record = tables['messages'].create({
+            'MessageId': message_id,
+            'Sender': citizen_username,
+            'Receiver': citizen_username,
             'Content': project_content,
-            'Type': 'knowledge_integration_project',
+            'Type': 'research_note',
+            'Channel': 'integration_project',
             'CreatedAt': datetime.now(VENICE_TIMEZONE).isoformat(),
-            'Context': json.dumps(project_context)
+            'Notes': json.dumps(project_context)
         })
         
         log.info(f"Created new integration project for {citizen_username}: {integration_theme['title']}")
@@ -143,34 +150,39 @@ def _gather_recent_findings(tables: Dict[str, Any], citizen_username: str) -> Di
     }
     
     try:
-        # Get recent hypotheses
-        hypothesis_thoughts = list(tables['thoughts'].all(
-            formula=f"AND({{Citizen}}='{citizen_username}', OR({{Type}}='hypothesis', {{Type}}='research_hypothesis'), DATETIME_DIFF(NOW(), {{CreatedAt}}, 'days') < 14)",
-            max_records=5,
-            sort=['-CreatedAt']
-        ))
-        
-        for thought in hypothesis_thoughts:
-            content = thought['fields'].get('Content', '')
-            if 'HYPOTHESIS:' in content:
-                hypothesis_line = content.split('HYPOTHESIS:')[1].split('\n')[0].strip()
-                findings['hypotheses'].append(hypothesis_line)
-                findings['summary'].append(f"Hypothesis: {hypothesis_line[:100]}...")
-        
-        # Get recent research findings
-        research_thoughts = list(tables['thoughts'].all(
-            formula=f"AND({{Citizen}}='{citizen_username}', {{Type}}='research_findings', DATETIME_DIFF(NOW(), {{CreatedAt}}, 'days') < 14)",
+        # Get recent hypotheses from self-messages
+        hypothesis_messages = list(tables['messages'].all(
+            formula=f"AND({{Sender}}='{citizen_username}', {{Receiver}}='{citizen_username}', {{Channel}}='research_thoughts', DATETIME_DIFF(NOW(), {{CreatedAt}}, 'days') < 14)",
             max_records=10,
             sort=['-CreatedAt']
         ))
         
-        for thought in research_thoughts:
-            content = thought['fields'].get('Content', '')
-            # Extract key insights (first substantive line)
-            lines = [line.strip() for line in content.split('\n') if line.strip()]
-            if lines:
-                findings['research_results'].append(lines[0][:150])
-                findings['summary'].append(f"Finding: {lines[0][:100]}...")
+        for message in hypothesis_messages:
+            content = message['fields'].get('Content', '')
+            if 'HYPOTHESIS:' in content:
+                hypothesis_line = content.split('HYPOTHESIS:')[1].split('\n')[0].strip()
+                findings['hypotheses'].append(hypothesis_line)
+                findings['summary'].append(f"Hypothesis: {hypothesis_line[:100]}...")
+            elif 'hypothesis' in content.lower():
+                # Extract first substantive line as hypothesis
+                lines = [line.strip() for line in content.split('\n') if line.strip()]
+                if lines:
+                    findings['hypotheses'].append(lines[0][:150])
+                    findings['summary'].append(f"Hypothesis: {lines[0][:100]}...")
+        
+        # Get recent research findings from activities
+        research_activities = list(tables['activities'].all(
+            formula=f"AND({{Citizen}}='{citizen_username}', {{Type}}='research_investigation', {{Status}}='Completed', DATETIME_DIFF(NOW(), {{EndDate}}, 'days') < 14)",
+            max_records=10,
+            sort=['-EndDate']
+        ))
+        
+        for activity in research_activities:
+            notes = json.loads(activity['fields'].get('Notes', '{}'))
+            results = notes.get('research_results', '')
+            if results:
+                findings['research_results'].append(results[:150])
+                findings['summary'].append(f"Finding: {results[:100]}...")
         
         # Get observation patterns
         observation_activities = list(tables['activities'].all(
@@ -343,7 +355,7 @@ def try_create(
     house_of_sciences = None
     try:
         sciences_buildings = list(tables['buildings'].all(
-            formula="{BuildingType}='house_of_natural_sciences'"
+            formula="{Type}='house_of_natural_sciences'"
         ))
         if sciences_buildings:
             house_of_sciences = sciences_buildings[0]
@@ -373,8 +385,8 @@ def try_create(
         log.info(f"Could not create/find integration project for {citizen_username}")
         return None
     
-    # Extract project details
-    project_context = json.loads(project_record['fields'].get('Context', '{}'))
+    # Extract project details from Notes field
+    project_context = json.loads(project_record['fields'].get('Notes', '{}'))
     project_title = project_context.get('title', 'Knowledge Integration')
     sessions_completed = project_context.get('sessions_completed', 0)
     progress = _calculate_progress(sessions_completed)

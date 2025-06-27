@@ -59,25 +59,24 @@ def _gather_research_data(tables: Dict[str, Any], citizen_username: str) -> Dict
                     'insight': kinos_obs[:200] if kinos_obs else None
                 })
         
-        # Get recent research findings
-        thoughts = list(tables['thoughts'].all(
-            formula=f"AND({{Citizen}}='{citizen_username}', OR({{Type}}='research_findings', {{Type}}='research_planning'), DATETIME_DIFF(NOW(), {{CreatedAt}}, 'days') < 7)",
+        # Get recent research findings from self-messages
+        research_messages = list(tables['messages'].all(
+            formula=f"AND({{Sender}}='{citizen_username}', {{Receiver}}='{citizen_username}', {{Channel}}='research_thoughts', DATETIME_DIFF(NOW(), {{CreatedAt}}, 'days') < 7)",
             max_records=5,
             sort=['-CreatedAt']
         ))
         
-        for thought in thoughts:
-            content = thought['fields'].get('Content', '')
-            thought_type = thought['fields'].get('Type')
+        for message in research_messages:
+            content = message['fields'].get('Content', '')
+            msg_type = message['fields'].get('Type', 'message')
             
             if content:
-                if thought_type == 'research_findings':
+                if 'finding' in content.lower() or 'discover' in content.lower():
                     research_data['findings'].append(content[:300])
-                else:
-                    # Extract questions from planning thoughts
-                    if '?' in content:
-                        questions = [line.strip() for line in content.split('\n') if '?' in line]
-                        research_data['questions'].extend(questions[:2])
+                # Extract questions from messages
+                if '?' in content:
+                    questions = [line.strip() for line in content.split('\n') if '?' in line]
+                    research_data['questions'].extend(questions[:2])
         
         # Look for patterns in activities
         all_activities = list(tables['activities'].all(
@@ -253,7 +252,7 @@ def try_create(
     house_of_sciences = None
     try:
         sciences_buildings = list(tables['buildings'].all(
-            formula="{BuildingType}='house_of_natural_sciences'"
+            formula="{Type}='house_of_natural_sciences'"
         ))
         if sciences_buildings:
             house_of_sciences = sciences_buildings[0]

@@ -89,19 +89,19 @@ def _ask_citizen_research_scope(
         return None
 
 def _get_recent_research_context(tables: Dict[str, Any], citizen_username: str) -> list:
-    """Get recent research context from thoughts and activities"""
+    """Get recent research context from self-messages and activities"""
     recent_observations = []
     
     try:
-        # Get recent research thoughts
-        thoughts = list(tables['thoughts'].all(
-            formula=f"AND({{Citizen}}='{citizen_username}', {{Type}}='research_findings', DATETIME_DIFF(NOW(), {{CreatedAt}}, 'days') < 3)",
+        # Get recent research messages to self
+        research_messages = list(tables['messages'].all(
+            formula=f"AND({{Sender}}='{citizen_username}', {{Receiver}}='{citizen_username}', {{Channel}}='research_thoughts', DATETIME_DIFF(NOW(), {{CreatedAt}}, 'days') < 3)",
             max_records=3,
             sort=['-CreatedAt']
         ))
         
-        for thought in thoughts:
-            content = thought['fields'].get('Content', '')
+        for message in research_messages:
+            content = message['fields'].get('Content', '')
             if content:
                 # Extract first meaningful line
                 first_line = content.split('\n')[0].strip()
@@ -173,7 +173,7 @@ def try_create(
     house_of_sciences = None
     try:
         sciences_buildings = list(tables['buildings'].all(
-            formula="{BuildingType}='house_of_natural_sciences'"
+            formula="{Type}='house_of_natural_sciences'"
         ))
         if sciences_buildings:
             house_of_sciences = sciences_buildings[0]

@@ -11,8 +11,8 @@ For each problem identified:
 
 ## Creative Solution Principles
 - **Enable Agency**: Help citizens make meaningful choices
-- **Fix Systems**: Don't just treat symptoms
-- **Preserve Economy**: Maintain closed-loop constraints  
+- **Fix Systems**: Don't just treat symptoms, start by seeing if the system is functional
+- **Preserve Economy**: Maintain closed-loop and physicality constraints  
 - **Enhance Culture**: Support art, relationships, meaning-making
 
 ## Tools You Can Build

@@ -547,12 +547,20 @@ def get_path_between_points(start_position: Dict, end_position: Dict, transport_
     log.info(f"{LogColors.OKBLUE}Getting path from {start_position} to {end_position}{LogColors.ENDC}")
     
     try:
+        # Normalize position formats to {lat, lng}
+        # Handle various position formats: {x, y}, {lat, lng}, {latitude, longitude}
+        start_lat = start_position.get('lat', start_position.get('x', start_position.get('latitude')))
+        start_lng = start_position.get('lng', start_position.get('y', start_position.get('longitude')))
+        
+        end_lat = end_position.get('lat', end_position.get('x', end_position.get('latitude')))
+        end_lng = end_position.get('lng', end_position.get('y', end_position.get('longitude')))
+        
         # Call the transport API
         response = requests.post(
             transport_api_url, # Use passed URL
             json={
-                "startPoint": start_position,
-                "endPoint": end_position,
+                "startPoint": {"lat": start_lat, "lng": start_lng},
+                "endPoint": {"lat": end_lat, "lng": end_lng},
                 "startDate": datetime.datetime.now(pytz.UTC).isoformat() # Send UTC start date
             }
         )

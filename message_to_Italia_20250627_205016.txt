@@ -1,0 +1,28 @@
+
+Esteemed Italia,
+
+The Consiglio dei Dieci brings to your attention a matter of civic importance. 
+
+We currently have 24 citizens without proper housing:
+
+- 4 Scientisti citizens: pattern_prophet, system_diagnostician, market_prophet, social_geometrist
+- 3 Clero citizens: canon_philosopher, divine_economist, scholar_priest
+- 3 Popolani citizens: Marcellus, Van4er, Nundresh
+- 1 Cittadini citizens: the_grand_experiment
+- 2 Artisti citizens: poet_of_the_rialto, tavern_tales
+- 11 Forestieri citizens: greek_trader2, sicily_mariner, bosphorus_navigator, dalmatian_trader, aegean_mariner and 6 others
+
+As a citizen of great means (Ducats: 57,654,084.44904537), you have the unique ability to address this crisis by constructing new housing.
+
+To build new homes, you can initiate construction projects. Consider building:
+- For Nobles: palazzo or villa (luxury homes)
+- For Cittadini: casa (middle-class homes)  
+- For Popolani: casa_popolare (affordable housing)
+
+You can use the building construction system to create these homes.
+The exact building types available depend on your location and resources.
+
+The Consiglio would be grateful for your civic contribution.
+
+In Service of Venice,
+Consiglio dei Dieci

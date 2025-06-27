@@ -84,21 +84,26 @@ def _reflect_on_scope_async(
                 
                 log.info(f"  [Thread: {thread_id}] Generated KinOS reflection for {citizen_username}")
                 
-                # Store the scope definition as a thought
-                thought_record = tables['thoughts'].create({
-                    "Citizen": citizen_username,
+                # Store the scope definition as a self-message
+                message_id = f"msg_{citizen_username}_self_{datetime.now(VENICE_TIMEZONE).strftime('%Y%m%d%H%M%S')}_scope_definition"
+                message_record = tables['messages'].create({
+                    "MessageId": message_id,
+                    "Sender": citizen_username,
+                    "Receiver": citizen_username,
                     "Content": reflection,
-                    "Type": "research_planning",
+                    "Type": "research_note",
+                    "Channel": "research_thoughts",
                     "CreatedAt": datetime.now(VENICE_TIMEZONE).isoformat(),
-                    "Context": json.dumps({
+                    "Notes": json.dumps({
                         "activity": "research_scope_definition",
                         "research_scope": research_scope,
                         "location": building_name,
-                        "recent_context": recent_context
+                        "recent_context": recent_context,
+                        "note_type": "research_planning"
                     })
                 })
                 
-                log.info(f"  [Thread: {thread_id}] Stored research planning thought for {citizen_username}")
+                log.info(f"  [Thread: {thread_id}] Stored research planning self-message for {citizen_username}")
                 
                 # Update activity notes with completion
                 notes_str = activity_record['fields'].get('Notes', '{}')
@@ -108,7 +113,7 @@ def _reflect_on_scope_async(
                     notes_dict = {}
                 
                 notes_dict['reflection_generated'] = True
-                notes_dict['thought_created'] = True
+                notes_dict['self_message_created'] = True
                 notes_dict['kinos_reflection'] = reflection[:500]  # Store preview
                 
                 tables['activities'].update(activity_id, {'Notes': json.dumps(notes_dict)})
@@ -118,17 +123,22 @@ def _reflect_on_scope_async(
         else:
             log.info(f"  [Thread: {thread_id}] KinOS not configured, storing scope without reflection")
             
-            # Still create a thought with the scope
-            thought_record = tables['thoughts'].create({
-                "Citizen": citizen_username,
+            # Still create a self-message with the scope
+            message_id = f"msg_{citizen_username}_self_{datetime.now(VENICE_TIMEZONE).strftime('%Y%m%d%H%M%S')}_scope_no_kinos"
+            message_record = tables['messages'].create({
+                "MessageId": message_id,
+                "Sender": citizen_username,
+                "Receiver": citizen_username,
                 "Content": f"Research Scope Defined: {research_scope}",
-                "Type": "research_planning",
+                "Type": "research_note",
+                "Channel": "research_thoughts",
                 "CreatedAt": datetime.now(VENICE_TIMEZONE).isoformat(),
-                "Context": json.dumps({
+                "Notes": json.dumps({
                     "activity": "research_scope_definition",
                     "research_scope": research_scope,
                     "location": building_name,
-                    "no_reflection": True
+                    "no_reflection": True,
+                    "note_type": "research_planning"
                 })
             })
         

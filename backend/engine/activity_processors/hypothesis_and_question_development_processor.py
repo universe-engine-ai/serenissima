@@ -85,35 +85,45 @@ def _reflect_on_hypothesis_async(
                 
                 log.info(f"  [Thread: {thread_id}] Generated KinOS reflection for {citizen_username}")
                 
-                # Store the hypothesis as a thought
-                thought_record = tables['thoughts'].create({
-                    "Citizen": citizen_username,
+                # Store the hypothesis as a self-message
+                message_id = f"msg_{citizen_username}_self_{datetime.now(VENICE_TIMEZONE).strftime('%Y%m%d%H%M%S')}_hypothesis"
+                message_record = tables['messages'].create({
+                    "MessageId": message_id,
+                    "Sender": citizen_username,
+                    "Receiver": citizen_username,
                     "Content": reflection,
-                    "Type": "hypothesis",
+                    "Type": "research_note",
+                    "Channel": "research_thoughts",
                     "CreatedAt": datetime.now(VENICE_TIMEZONE).isoformat(),
-                    "Context": json.dumps({
+                    "Notes": json.dumps({
                         "activity": "hypothesis_development",
                         "hypothesis": hypothesis,
                         "research_questions": research_questions,
-                        "location": building_name
+                        "location": building_name,
+                        "note_type": "hypothesis_reflection"
                     })
                 })
                 
-                log.info(f"  [Thread: {thread_id}] Stored hypothesis thought for {citizen_username}")
+                log.info(f"  [Thread: {thread_id}] Stored hypothesis reflection as self-message for {citizen_username}")
                 
-                # Also create a separate thought for the hypothesis itself (for easy retrieval)
+                # Also create a separate self-message for the hypothesis itself (for easy retrieval)
                 hypothesis_summary = f"HYPOTHESIS: {hypothesis}\n\nRESEARCH QUESTIONS:\n" + \
                                   "\n".join(f"- {q}" for q in research_questions)
                 
-                summary_thought = tables['thoughts'].create({
-                    "Citizen": citizen_username,
+                summary_message_id = f"msg_{citizen_username}_self_{datetime.now(VENICE_TIMEZONE).strftime('%Y%m%d%H%M%S')}_summary"
+                summary_message = tables['messages'].create({
+                    "MessageId": summary_message_id,
+                    "Sender": citizen_username,
+                    "Receiver": citizen_username,
                     "Content": hypothesis_summary,
-                    "Type": "research_hypothesis",
+                    "Type": "research_note",
+                    "Channel": "research_thoughts",
                     "CreatedAt": datetime.now(VENICE_TIMEZONE).isoformat(),
-                    "Context": json.dumps({
+                    "Notes": json.dumps({
                         "is_hypothesis_record": True,
                         "hypothesis": hypothesis,
-                        "questions": research_questions
+                        "questions": research_questions,
+                        "note_type": "hypothesis_summary"
                     })
                 })
                 
@@ -125,7 +135,7 @@ def _reflect_on_hypothesis_async(
                     notes_dict = {}
                 
                 notes_dict['reflection_generated'] = True
-                notes_dict['thoughts_created'] = True
+                notes_dict['self_messages_created'] = True
                 notes_dict['kinos_reflection'] = reflection[:500]  # Store preview
                 
                 tables['activities'].update(activity_id, {'Notes': json.dumps(notes_dict)})
@@ -135,21 +145,26 @@ def _reflect_on_hypothesis_async(
         else:
             log.info(f"  [Thread: {thread_id}] KinOS not configured, storing hypothesis without reflection")
             
-            # Still create thoughts with the hypothesis
+            # Still create self-message with the hypothesis
             hypothesis_summary = f"HYPOTHESIS: {hypothesis}\n\nRESEARCH QUESTIONS:\n" + \
                               "\n".join(f"- {q}" for q in research_questions)
             
-            thought_record = tables['thoughts'].create({
-                "Citizen": citizen_username,
+            message_id = f"msg_{citizen_username}_self_{datetime.now(VENICE_TIMEZONE).strftime('%Y%m%d%H%M%S')}_hypothesis_no_kinos"
+            message_record = tables['messages'].create({
+                "MessageId": message_id,
+                "Sender": citizen_username,
+                "Receiver": citizen_username,
                 "Content": hypothesis_summary,
-                "Type": "research_hypothesis",
+                "Type": "research_note",
+                "Channel": "research_thoughts",
                 "CreatedAt": datetime.now(VENICE_TIMEZONE).isoformat(),
-                "Context": json.dumps({
+                "Notes": json.dumps({
                     "activity": "hypothesis_development",
                     "hypothesis": hypothesis,
                     "questions": research_questions,
                     "location": building_name,
-                    "no_reflection": True
+                    "no_reflection": True,
+                    "note_type": "hypothesis_summary"
                 })
             })
         

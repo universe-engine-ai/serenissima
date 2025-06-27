@@ -66,6 +66,11 @@ from .research_scope_definition_processor import process as process_research_sco
 from .hypothesis_and_question_development_processor import process as process_hypothesis_and_question_development # New processor for hypothesis formation
 from .knowledge_integration_processor import process as process_knowledge_integration # New processor for knowledge synthesis
 
+# Import welfare processors
+from backend.engine.handlers.welfare_porter_handler import handle_welfare_porter
+from backend.engine.handlers.welfare_porter_delivery_handler import handle_welfare_porter_delivery
+from backend.engine.handlers.collect_welfare_food_handler import handle_collect_welfare_food
+
 # Imports pour les processeurs de terrains et contrats
 from .bid_on_land_activity_processor import process_bid_on_land_fn
 from .manage_public_sell_contract_processor import process_manage_public_sell_contract_fn
@@ -183,6 +188,9 @@ ACTIVITY_PROCESSORS = {
     'research_scope_definition': process_research_scope_definition,
     'hypothesis_and_question_development': process_hypothesis_and_question_development,
     'knowledge_integration': process_knowledge_integration,
+    'welfare_porter': handle_welfare_porter,
+    'welfare_porter_delivery': handle_welfare_porter_delivery,
+    'collect_welfare_food': handle_collect_welfare_food,
     'idle': process_placeholder_activity_fn,
     'secure_warehouse': process_placeholder_activity_fn,
 }

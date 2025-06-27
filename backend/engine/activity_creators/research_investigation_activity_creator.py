@@ -44,11 +44,11 @@ def try_create(
     
     # Find a House of Natural Sciences to work at
     science_buildings = list(tables['buildings'].all(
-        formula=f"AND({{Type}}='house_of_natural_sciences', {{ConstructionStatus}}='completed')"
+        formula=f"AND({{Type}}='house_of_natural_sciences', {{IsConstructed}}=TRUE())"
     ))
     
     if not science_buildings:
-        log.warning(f"{LogColors.WARNING}[Research Investigation] No completed House of Natural Sciences found for {citizen_name_log}{LogColors.ENDC}")
+        log.warning(f"{LogColors.WARNING}[Research Investigation] No constructed House of Natural Sciences found for {citizen_name_log}{LogColors.ENDC}")
         return None
     
     # Choose the nearest or a random science building
@@ -121,15 +121,15 @@ def _ask_citizen_research_interest(
     
     try:
         # Fetch citizen's recent activities and thoughts for context
-        ledger_json_str = None
+        ledger_markdown_str = None
         if api_base_url:
             ledger_url = f"{api_base_url}/api/get-ledger?citizenUsername={citizen_username}"
             try:
                 ledger_response = requests.get(ledger_url, timeout=15)
                 if ledger_response.ok:
-                    ledger_data = ledger_response.json()
-                    if ledger_data.get("success"):
-                        ledger_json_str = json.dumps(ledger_data.get("data"))
+                    # Ledger API returns markdown, not JSON
+                    ledger_markdown_str = ledger_response.text
+                    log.info(f"  Successfully fetched ledger for {citizen_username}. Length: {len(ledger_markdown_str)}")
             except Exception as e:
                 log.warning(f"  Could not fetch ledger for research planning: {e}")
         
@@ -154,11 +154,9 @@ def _ask_citizen_research_interest(
             "role": "You are a Scientisti studying the computational mechanics of your reality"
         }
         
-        if ledger_json_str:
-            try:
-                structured_add_system_payload["ledger"] = json.loads(ledger_json_str)
-            except json.JSONDecodeError:
-                pass
+        if ledger_markdown_str:
+            # Pass markdown ledger directly
+            structured_add_system_payload["ledger"] = ledger_markdown_str
         
         kinos_payload = {
             "message": kinos_prompt,

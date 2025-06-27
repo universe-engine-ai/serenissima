@@ -173,6 +173,9 @@ class ArsenaleCycle:
         with open(prompt_file, 'r') as f:
             prompt_template = f.read()
         
+        # Add phase name to context
+        context["phase_name"] = phase_name
+        
         # Build full prompt with context
         full_prompt = self._build_prompt_with_context(prompt_template, context)
         
@@ -226,23 +229,35 @@ class ArsenaleCycle:
         if "custom_message" in context and context["custom_message"]:
             prompt_template = f"## User Directive\n{context['custom_message']}\n\n{prompt_template}"
         
-        context_section = "\n\n## Context Information\n"
+        # For the observe phase, we don't need to add much context since the prompt
+        # already contains instructions to fetch live data
+        phase_name = context.get("phase_name", "")
         
-        # Add relevant context
-        if "serenissima_context" in context:
-            context_section += f"\n### Technical Context\n{context['serenissima_context'][:1000]}...\n"
-        
-        if "current_citizens" in context:
-            context_section += f"\n### Current Citizens\nTotal: {len(context.get('current_citizens', []))}\n"
-        
-        if "problems" in context:
-            context_section += f"\n### Identified Problems\n{context['problems'][:2000]}...\n"
+        if phase_name == "observe_citizens":
+            # For observe phase, just add minimal context
+            context_section = "\n\n## Additional Context\n"
+            context_section += f"Cycle ID: {context.get('cycle_id', 'unknown')}\n"
+            context_section += f"Timestamp: {context.get('timestamp', 'unknown')}\n"
+            # Don't add large context files for observe phase
+        else:
+            # For other phases, add relevant context but with stricter limits
+            context_section = "\n\n## Context Information\n"
             
-        if "solutions" in context:
-            context_section += f"\n### Proposed Solutions\n{context['solutions'][:2000]}...\n"
+            # Add relevant context with smaller limits
+            if "serenissima_context" in context:
+                context_section += f"\n### Technical Context\n{context['serenissima_context'][:500]}...\n"
             
-        if "implementation" in context:
-            context_section += f"\n### Implementation Details\n{context['implementation'][:2000]}...\n"
+            if "current_citizens" in context:
+                context_section += f"\n### Current Citizens\nTotal: {len(context.get('current_citizens', []))}\n"
+            
+            if "problems" in context:
+                context_section += f"\n### Identified Problems\n{context['problems'][:1000]}...\n"
+                
+            if "solutions" in context:
+                context_section += f"\n### Proposed Solutions\n{context['solutions'][:1000]}...\n"
+                
+            if "implementation" in context:
+                context_section += f"\n### Implementation Details\n{context['implementation'][:1000]}...\n"
         
         return prompt_template + context_section
     
@@ -271,6 +286,16 @@ class ArsenaleCycle:
         # Always use 'claude' - it's available in PATH
         claude_cmd = "claude"
         
+        # First check if claude command exists
+        check_cmd = subprocess.run(["which", "claude"], capture_output=True, text=True)
+        if check_cmd.returncode != 0:
+            print(f"WARNING: 'claude' command not found in PATH")
+            print(f"PATH: {os.environ.get('PATH', 'Not set')}")
+        else:
+            # Check claude version
+            version_cmd = subprocess.run(["claude", "--version"], capture_output=True, text=True)
+            print(f"Claude version: {version_cmd.stdout.strip()}")
+        
         cmd = [
             claude_cmd,
             f"@{temp_prompt_file}",
@@ -294,14 +319,22 @@ class ArsenaleCycle:
                 timeout=600  # 10 minute timeout
             )
             
-            # Clean up temp file
-            if temp_prompt_file.exists():
+            # Clean up temp file (only if successful)
+            if result.returncode == 0 and temp_prompt_file.exists():
                 temp_prompt_file.unlink()
+            elif result.returncode != 0:
+                print(f"Keeping temp file for debugging: {temp_prompt_file}")
             
             # Debug: Show result
             if result.returncode != 0:
                 print(f"Command failed with code {result.returncode}")
-                print(f"STDERR: {result.stderr[:500]}")
+                print(f"STDERR: {result.stderr}")
+                if result.stdout:
+                    print(f"STDOUT: {result.stdout}")
+                
+                # Also check if the temp file still exists to help debug
+                if temp_prompt_file.exists():
+                    print(f"Temp prompt file still exists at: {temp_prompt_file}")
             
             return {
                 "success": result.returncode == 0,

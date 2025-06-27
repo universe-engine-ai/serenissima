@@ -5,21 +5,73 @@ Helps citizens find nearby locations efficiently.
 """
 
 import math
-from typing import Dict, List, Tuple, Optional
+import json
+from typing import Dict, List, Tuple, Optional, Union
 
 
-def calculate_distance(pos1: Dict[str, float], pos2: Dict[str, float]) -> float:
+def parse_position(pos: Union[Dict[str, float], str]) -> Dict[str, float]:
+    """
+    Parse position data that might be either a dict or string.
+    
+    Args:
+        pos: Position data as dict or string
+        
+    Returns:
+        Position dict with 'lat' and 'lng' keys
+    """
+    if isinstance(pos, dict):
+        return pos
+    
+    if isinstance(pos, str):
+        # Try to parse as JSON
+        try:
+            parsed = json.loads(pos)
+            if isinstance(parsed, dict) and 'lat' in parsed and 'lng' in parsed:
+                return parsed
+        except json.JSONDecodeError:
+            pass
+        
+        # Try to parse format like "45.123,12.456"
+        if ',' in pos:
+            parts = pos.split(',')
+            if len(parts) == 2:
+                try:
+                    return {'lat': float(parts[0].strip()), 'lng': float(parts[1].strip())}
+                except ValueError:
+                    pass
+        
+        # Try to parse format like "lat:45.123,lng:12.456"
+        if 'lat:' in pos and 'lng:' in pos:
+            try:
+                lat_start = pos.index('lat:') + 4
+                lat_end = pos.index(',', lat_start) if ',' in pos[lat_start:] else len(pos)
+                lng_start = pos.index('lng:') + 4
+                
+                lat_val = float(pos[lat_start:lat_end].strip())
+                lng_val = float(pos[lng_start:].strip())
+                return {'lat': lat_val, 'lng': lng_val}
+            except (ValueError, IndexError):
+                pass
+    
+    raise ValueError(f"Unable to parse position: {pos}")
+
+
+def calculate_distance(pos1: Union[Dict[str, float], str], pos2: Union[Dict[str, float], str]) -> float:
     """
     Calculate distance between two positions in Venice.
     Uses simplified Euclidean distance suitable for small city area.
     
     Args:
-        pos1: First position with 'lat' and 'lng' keys
-        pos2: Second position with 'lat' and 'lng' keys
+        pos1: First position with 'lat' and 'lng' keys (or string representation)
+        pos2: Second position with 'lat' and 'lng' keys (or string representation)
         
     Returns:
         Distance in approximate meters (good enough for Venice scale)
     """
+    # Parse positions if they're strings
+    pos1 = parse_position(pos1)
+    pos2 = parse_position(pos2)
+    
     # Venice is small enough that we can use a simplified calculation
     # 1 degree latitude ≈ 111km, 1 degree longitude ≈ 78km at Venice's latitude
     lat_diff = pos1['lat'] - pos2['lat']
@@ -49,7 +101,7 @@ def estimate_walking_time(distance_meters: float) -> float:
 
 
 def find_nearest_locations(
-    citizen_pos: Dict[str, float], 
+    citizen_pos: Union[Dict[str, float], str], 
     locations: List[Dict], 
     max_distance: Optional[float] = None,
     limit: Optional[int] = None
@@ -58,7 +110,7 @@ def find_nearest_locations(
     Find nearest locations to a citizen, sorted by distance.
     
     Args:
-        citizen_pos: Citizen's position with 'lat' and 'lng'
+        citizen_pos: Citizen's position with 'lat' and 'lng' (or string representation)
         locations: List of location dicts, each must have 'position' field
         max_distance: Maximum distance in meters (optional)
         limit: Maximum number of results to return (optional)
@@ -66,20 +118,24 @@ def find_nearest_locations(
     Returns:
         List of (location, distance) tuples sorted by distance
     """
+    # Parse citizen position if needed
+    citizen_pos_parsed = parse_position(citizen_pos)
+    
     locations_with_distance = []
     
     for loc in locations:
         if 'position' not in loc or not loc['position']:
             continue
             
-        loc_pos = loc['position']
-        if not isinstance(loc_pos, dict) or 'lat' not in loc_pos or 'lng' not in loc_pos:
-            continue
+        try:
+            # Try to calculate distance (will handle string positions internally)
+            distance = calculate_distance(citizen_pos_parsed, loc['position'])
             
-        distance = calculate_distance(citizen_pos, loc_pos)
-        
-        if max_distance is None or distance <= max_distance:
-            locations_with_distance.append((loc, distance))
+            if max_distance is None or distance <= max_distance:
+                locations_with_distance.append((loc, distance))
+        except (ValueError, KeyError, TypeError) as e:
+            # Skip locations with invalid position data
+            continue
     
     # Sort by distance
     locations_with_distance.sort(key=lambda x: x[1])
@@ -114,14 +170,21 @@ def group_citizens_by_district(citizens: List[Dict]) -> Dict[str, List[Dict]]:
     lng_step = (LNG_MAX - LNG_MIN) / GRID_SIZE
     
     for citizen in citizens:
-        pos = citizen.get('fields', {}).get('Position', {})
-        if not pos or 'lat' not in pos or 'lng' not in pos:
+        pos = citizen.get('fields', {}).get('Position')
+        if not pos:
             districts.setdefault('unknown', []).append(citizen)
             continue
             
-        # Calculate grid position
-        lat_idx = int((pos['lat'] - LAT_MIN) / lat_step)
-        lng_idx = int((pos['lng'] - LNG_MIN) / lng_step)
+        try:
+            # Parse position (handles both dict and string)
+            pos_dict = parse_position(pos)
+            
+            # Calculate grid position
+            lat_idx = int((pos_dict['lat'] - LAT_MIN) / lat_step)
+            lng_idx = int((pos_dict['lng'] - LNG_MIN) / lng_step)
+        except (ValueError, KeyError, TypeError):
+            districts.setdefault('unknown', []).append(citizen)
+            continue
         
         # Clamp to grid bounds
         lat_idx = max(0, min(GRID_SIZE - 1, lat_idx))

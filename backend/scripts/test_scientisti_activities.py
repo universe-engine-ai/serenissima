@@ -108,7 +108,11 @@ def get_citizen_position(citizen_record: Dict[str, Any]) -> Optional[Dict[str, f
     
     try:
         return json.loads(position_str)
-    except:
+    except json.JSONDecodeError as e:
+        print(f"  ⚠️  Warning: Could not parse position: {e}")
+        return None
+    except Exception as e:
+        print(f"  ⚠️  Warning: Unexpected error parsing position: {e}")
         return None
 
 def test_study_literature(tables: Dict[str, Any], citizen_record: Dict[str, Any], process_immediately: bool = True) -> Optional[Dict[str, Any]]:
@@ -130,13 +134,37 @@ def test_study_literature(tables: Dict[str, Any], citizen_record: Dict[str, Any]
     )
     
     if activity:
+        # Debug: Show all fields
         print(f"  ✅ Created study activity: {activity['fields'].get('Title')}")
+        print(f"     Activity Type: {activity['fields'].get('Type')}")
         print(f"     Duration: {activity['fields'].get('StartDate')} to {activity['fields'].get('EndDate')}")
+        # Debug: Show raw title if different
+        if 'Title' in activity['fields']:
+            print(f"     Raw Title in fields: '{activity['fields']['Title']}'")
         
         # Parse notes to see which book was selected
-        notes = json.loads(activity['fields'].get('Notes', '{}'))
-        print(f"     Book: {notes.get('book_title', 'Unknown')}")
-        print(f"     Specialty: {notes.get('scientific_specialty', 'Unknown')}")
+        try:
+            notes = json.loads(activity['fields'].get('Notes', '{}'))
+            # Check if this is a goto_location activity
+            if activity['fields'].get('Type') == 'goto_location':
+                print(f"     📍 Created travel activity first (citizen not at study location)")
+                # Debug: print available keys
+                if 'action_details' in notes:
+                    action_details = notes.get('action_details', {})
+                    if 'notes_for_chained_activity' in action_details:
+                        chained_notes = action_details.get('notes_for_chained_activity', {})
+                        print(f"     Book (will study): {chained_notes.get('book_title', 'Unknown')}")
+                        print(f"     Specialty: {chained_notes.get('scientific_specialty', 'Unknown')}")
+                    else:
+                        print(f"     Debug: action_details keys: {list(action_details.keys())[:5]}")
+                else:
+                    print(f"     Debug: notes keys: {list(notes.keys())[:5]}")
+            else:
+                print(f"     Book: {notes.get('book_title', 'Unknown')}")
+                print(f"     Specialty: {notes.get('scientific_specialty', 'Unknown')}")
+        except json.JSONDecodeError as e:
+            print(f"     ⚠️  Warning: Could not parse Notes field: {e}")
+            notes = {}
         
         if process_immediately:
             print("  ⏳ Processing activity immediately...")
@@ -186,14 +214,33 @@ def test_observe_phenomena(tables: Dict[str, Any], citizen_record: Dict[str, Any
         print(f"  ✅ Created observation activity: {activity['fields'].get('Title')}")
         
         # Parse notes to see which site was selected
-        notes = json.loads(activity['fields'].get('Notes', '{}'))
-        print(f"     Site: {notes.get('site_name', 'Unknown')}")
-        print(f"     Phenomena: {notes.get('phenomena', 'Unknown')}")
-        
-        # Check if it's a travel activity
-        if activity['fields'].get('Type') == 'goto_position':
-            print("     📍 Created travel activity first (citizen not at observation site)")
-            return activity  # Can't process travel activity with observation processor
+        try:
+            notes = json.loads(activity['fields'].get('Notes', '{}'))
+            # Check if it's a travel activity
+            if activity['fields'].get('Type') == 'goto_position':
+                print("     📍 Created travel activity first (citizen not at observation site)")
+                # Debug: print notes structure
+                if 'action_details' in notes:
+                    action_details = notes.get('action_details', {})
+                    if 'notes_for_chained_activity' in action_details:
+                        chained_notes = action_details.get('notes_for_chained_activity', {})
+                        print(f"     Site: {chained_notes.get('site_name', 'Unknown')}")
+                        print(f"     Phenomena: {chained_notes.get('phenomena', 'Unknown')}")
+                    else:
+                        print(f"     Debug: action_details keys: {list(action_details.keys())[:5]}")
+                else:
+                    # Maybe the chained notes are at the top level
+                    print(f"     Debug: notes keys: {list(notes.keys())[:5]}")
+                    if 'site_name' in notes:
+                        print(f"     Site: {notes.get('site_name', 'Unknown')}")
+                        print(f"     Phenomena: {notes.get('phenomena', 'Unknown')}")
+                return activity  # Can't process travel activity with observation processor
+            else:
+                print(f"     Site: {notes.get('site_name', 'Unknown')}")
+                print(f"     Phenomena: {notes.get('phenomena', 'Unknown')}")
+        except json.JSONDecodeError as e:
+            print(f"     ⚠️  Warning: Could not parse Notes field: {e}")
+            notes = {}
         
         if process_immediately:
             print("  ⏳ Processing activity immediately...")
@@ -245,9 +292,13 @@ def test_research_investigation(tables: Dict[str, Any], citizen_record: Dict[str
         print(f"  ✅ Created research activity: {activity['fields'].get('Title')}")
         
         # Parse notes to see research query
-        notes = json.loads(activity['fields'].get('Notes', '{}'))
-        print(f"     Research Query: {notes.get('research_query', 'Unknown')[:100]}...")
-        print(f"     Building: {notes.get('building_name', 'Unknown')}")
+        try:
+            notes = json.loads(activity['fields'].get('Notes', '{}'))
+            print(f"     Research Query: {notes.get('research_query', 'Unknown')[:100]}...")
+            print(f"     Building: {notes.get('building_name', 'Unknown')}")
+        except json.JSONDecodeError as e:
+            print(f"     Warning: Could not parse Notes field: {e}")
+            print(f"     Raw Notes: {activity['fields'].get('Notes', '')[:100]}...")
         print("     Note: KinOS will be called to determine research topic")
         
         if process_immediately:
@@ -304,10 +355,14 @@ def test_research_scope_definition(tables: Dict[str, Any], citizen_record: Dict[
         print(f"  ✅ Created scope definition activity: {activity['fields'].get('Title')}")
         
         # Parse notes to see research scope
-        notes = json.loads(activity['fields'].get('Notes', '{}'))
-        print(f"     Research Scope: {notes.get('research_scope', 'Unknown')[:100]}...")
-        print(f"     Building: {notes.get('building_name', 'Unknown')}")
-        print("     Note: KinOS will be called to define research objectives")
+        try:
+            notes = json.loads(activity['fields'].get('Notes', '{}'))
+            print(f"     Research Scope: {notes.get('research_scope', 'Unknown')[:100]}...")
+            print(f"     Building: {notes.get('building_name', 'Unknown')}")
+            print("     Note: KinOS will be called to define research objectives")
+        except json.JSONDecodeError as e:
+            print(f"     ⚠️  Warning: Could not parse Notes field: {e}")
+            notes = {}
         
         if process_immediately:
             print("  ⏳ Processing activity immediately...")
@@ -363,14 +418,18 @@ def test_hypothesis_development(tables: Dict[str, Any], citizen_record: Dict[str
         print(f"  ✅ Created hypothesis development activity: {activity['fields'].get('Title')}")
         
         # Parse notes to see hypothesis
-        notes = json.loads(activity['fields'].get('Notes', '{}'))
-        print(f"     Hypothesis: {notes.get('hypothesis', 'Unknown')[:100]}...")
-        questions = notes.get('research_questions', [])
-        if questions:
-            print(f"     Research Questions ({len(questions)}):")
-            for i, q in enumerate(questions[:3]):
-                print(f"       {i+1}. {q}")
-        print(f"     Building: {notes.get('building_name', 'Unknown')}")
+        try:
+            notes = json.loads(activity['fields'].get('Notes', '{}'))
+            print(f"     Hypothesis: {notes.get('hypothesis', 'Unknown')[:100]}...")
+            questions = notes.get('research_questions', [])
+            if questions:
+                print(f"     Research Questions ({len(questions)}):")
+                for i, q in enumerate(questions[:3]):
+                    print(f"       {i+1}. {q}")
+            print(f"     Building: {notes.get('building_name', 'Unknown')}")
+        except json.JSONDecodeError as e:
+            print(f"     ⚠️  Warning: Could not parse Notes field: {e}")
+            notes = {}
         
         if process_immediately:
             print("  ⏳ Processing activity immediately...")
@@ -426,12 +485,16 @@ def test_knowledge_integration(tables: Dict[str, Any], citizen_record: Dict[str,
         print(f"  ✅ Created knowledge integration activity: {activity['fields'].get('Title')}")
         
         # Parse notes to see project details
-        notes = json.loads(activity['fields'].get('Notes', '{}'))
-        print(f"     Project: {notes.get('project_title', 'Unknown')}")
-        print(f"     Session: {notes.get('session_number', 1)}")
-        print(f"     Progress: {notes.get('current_progress', 0)}%")
-        print(f"     New Project: {notes.get('is_new_project', False)}")
-        print(f"     Building: {notes.get('building_name', 'Unknown')}")
+        try:
+            notes = json.loads(activity['fields'].get('Notes', '{}'))
+            print(f"     Project: {notes.get('project_title', 'Unknown')}")
+            print(f"     Session: {notes.get('session_number', 1)}")
+            print(f"     Progress: {notes.get('current_progress', 0)}%")
+            print(f"     New Project: {notes.get('is_new_project', False)}")
+            print(f"     Building: {notes.get('building_name', 'Unknown')}")
+        except json.JSONDecodeError as e:
+            print(f"     ⚠️  Warning: Could not parse Notes field: {e}")
+            notes = {}
         
         if process_immediately:
             print("  ⏳ Processing activity immediately...")
@@ -479,7 +542,12 @@ def wait_for_integration_completion(tables: Dict[str, Any], activity_id: str, pr
             # Check if notes have changed
             if notes_str != last_notes_state:
                 last_notes_state = notes_str
-                notes = json.loads(notes_str)
+                try:
+                    notes = json.loads(notes_str)
+                except json.JSONDecodeError as e:
+                    print(f"\n  ⚠️  Warning: Could not parse Notes field: {e}")
+                    notes = {}
+                    continue
                 
                 # Check for completion indicators
                 if notes.get('session_completed'):
@@ -510,7 +578,11 @@ def wait_for_integration_completion(tables: Dict[str, Any], activity_id: str, pr
             if project_id:
                 try:
                     project = tables['thoughts'].get(project_id)
-                    project_context = json.loads(project['fields'].get('Context', '{}'))
+                    try:
+                        project_context = json.loads(project['fields'].get('Context', '{}'))
+                    except json.JSONDecodeError as e:
+                        print(f"\n  ⚠️  Warning: Could not parse project Context: {e}")
+                        project_context = {}
                     
                     if json.dumps(project_context) != last_project_state:
                         last_project_state = json.dumps(project_context)
@@ -554,7 +626,12 @@ def wait_for_activity_completion(tables: Dict[str, Any], activity_id: str, timeo
             # Check if notes have changed
             if notes_str != last_notes_state:
                 last_notes_state = notes_str
-                notes = json.loads(notes_str)
+                try:
+                    notes = json.loads(notes_str)
+                except json.JSONDecodeError as e:
+                    print(f"\n  ⚠️  Warning: Could not parse Notes field: {e}")
+                    notes = {}
+                    continue
                 
                 # Check for completion indicators
                 if notes.get('reflection_generated') or notes.get('thoughts_created'):
@@ -602,7 +679,12 @@ def wait_for_research_completion(tables: Dict[str, Any], activity_id: str, timeo
             # Check if notes have changed
             if notes_str != last_notes_state:
                 last_notes_state = notes_str
-                notes = json.loads(notes_str)
+                try:
+                    notes = json.loads(notes_str)
+                except json.JSONDecodeError as e:
+                    print(f"\n  ⚠️  Warning: Could not parse Notes field: {e}")
+                    notes = {}
+                    continue
                 
                 # Check for completion indicators
                 if notes.get('research_completed'):
@@ -712,8 +794,11 @@ def show_recent_thoughts(tables: Dict[str, Any], citizen_username: str = None):
                         print(f"   📎 Query: {context['research_query']}")
                     if context.get('location'):
                         print(f"   📍 Location: {context['location']}")
-                except:
+                except json.JSONDecodeError:
+                    # Silently skip if context can't be parsed
                     pass
+                except Exception as e:
+                    print(f"   ⚠️  Warning: Error parsing thought context: {e}")
         else:
             print("  No recent research thoughts found")
             
