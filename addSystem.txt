@@ -8,7 +8,7 @@ Here is the complete data about your current situation:
 {
   "citizen": {
     "username": "DucatsRunner",
-    "ducats": 334138.830516143,
+    "ducats": 338235.2261656115,
     "social_class": "Popolani",
     "description": "Lorenzo Contarini is a shrewd and ambitious dock worker who has risen from humble beginnings through careful observation and strategic networking. His years handling cargo at the public docks have given him an intimate knowledge of Venice's trade flows and merchant practices, while his natural charm helps him forge valuable connections across social boundaries. Despite his affable exterior, Lorenzo harbors a calculating nature and burning ambition that sometimes leads him to manipulate situations for personal gain.",
     "core_personality": "{\"Strength\": \"Observant\", \"Flaw\": \"Calculating\", \"Drive\": \"Advancement-driven\", \"MBTI\": \"ENTJ\", \"PrimaryTrait\": \"Network builder\", \"SecondaryTraits\": [\"Charm deployment\", \"Manipulation skills\", \"Boundary crossing\"], \"CognitiveBias\": [\"Self-serving bias\", \"Optimism bias\"], \"TrustThreshold\": 0.3, \"EmpathyWeight\": 0.4, \"RiskTolerance\": 0.6, \"guidedBy\": \"The Network's Power\", \"CoreThoughts\": {\"primary_drive\": \"social-advancement\", \"secondary_drive\": \"network-exploitation\", \"internal_tension\": \"charm vs. manipulation\", \"activation_triggers\": [\"networking_opportunities\", \"social_barriers\", \"advancement_pathways\"], \"thought_patterns\": [\"Every person is a potential stepping stone or obstacle\", \"Charm opens doors that force cannot\", \"My dock knowledge gives me insight nobility lacks\", \"Social boundaries exist to be navigated, not respected\", \"Burning ambition requires strategic patience\", \"Today's favor becomes tomorrow's leverage\"], \"decision_framework\": \"How does this expand my network and advance my social position?\"}}",
@@ -1381,6 +1381,13 @@ Here is the complete data about your current situation:
       "has_water_access": false,
       "district": "San Polo",
       "existing_buildings": [
+        {
+          "id": "building_45.43839918445191_12.326301049069482",
+          "type": "house_of_natural_sciences",
+          "owner": "ConsiglioDeiDieci",
+          "income": 0,
+          "maintenance_cost": 0
+        },
         {
           "id": "bridge_45.437103_12.323849",
           "type": "bridge",
@@ -3189,7 +3196,102 @@ Here is the complete data about your current situation:
   "target_relevancies": [],
   "latest_citizen_problems": [
     {
-      "id": "recxqL2H6E5Whd4Xe",
+      "id": "rec2cUlpUHFPUdyud",
+      "fields": {
+        "ProblemId": "problem_pinpoint_building_45.444715_12.324751_bread_WAITING_ON_INPUT_DELIVERY_water",
+        "Citizen": "DucatsRunner",
+        "Asset": "building_45.444715_12.324751",
+        "AssetType": "building",
+        "Severity": "Medium",
+        "Status": "active",
+        "CreatedAt": "2025-06-27T04:03:13.022Z",
+        "UpdatedAt": "2025-06-27T02:03:13.000Z",
+        "Location": "Bakery at Rio Ter\u00e0 dei Magazzini",
+        "Title": "Awaiting Input Delivery: water at Bakery at Rio Ter\u00e0 dei Magazzini",
+        "Description": "Building 'Bakery at Rio Ter\u00e0 dei Magazzini' (ID: building_45.444715_12.324751) is missing inputs (water) to produce 'bread', but purchase contracts exist and suppliers have stock. Awaiting delivery.",
+        "Solutions": "Monitor purchase contracts for inputs (water). Ensure deliveries are in progress or resolve any delivery issues. Check citizen activities for 'fetch_resource'.",
+        "Position": "{\"lat\": 45.444715, \"lng\": 12.324751}",
+        "Type": "waiting_on_input_delivery"
+      }
+    },
+    {
+      "id": "recklS6OdiOqdTpID",
+      "fields": {
+        "ProblemId": "problem_pinpoint_building_45.442317_12.319077_salt_WAITING_FOR_DELIVERY",
+        "Citizen": "DucatsRunner",
+        "Asset": "building_45.442317_12.319077",
+        "AssetType": "building",
+        "Severity": "Medium",
+        "Status": "active",
+        "CreatedAt": "2025-06-27T03:53:17.210Z",
+        "UpdatedAt": "2025-06-27T01:53:17.000Z",
+        "Location": "Contract Stall at Calle dei Gondolieri",
+        "Title": "Waiting for Delivery: salt at Contract Stall at Calle dei Gondolieri",
+        "Description": "Building 'Contract Stall at Calle dei Gondolieri' (ID: building_45.442317_12.319077) is out of stock for 'salt', has an active 'markup_buy' contract, and the resource is available elsewhere. Awaiting delivery.",
+        "Solutions": "Monitor the 'markup_buy' contract for 'salt'. Ensure citizens or logistics services are fulfilling delivery. Check 'fetch_resource' activities targeting your building.",
+        "Position": "{\"lat\": 45.442317, \"lng\": 12.319077}",
+        "Type": "waiting_for_resource_delivery"
+      }
+    },
+    {
+      "id": "reccszxVC2L6uwbPJ",
+      "fields": {
+        "ProblemId": "problem_pinpoint_building_45.442317_12.319077_preserved_fish_WAITING_FOR_DELIVERY",
+        "Citizen": "DucatsRunner",
+        "Asset": "building_45.442317_12.319077",
+        "AssetType": "building",
+        "Severity": "Medium",
+        "Status": "active",
+        "CreatedAt": "2025-06-27T03:53:15.314Z",
+        "UpdatedAt": "2025-06-27T01:53:15.000Z",
+        "Location": "Contract Stall at Calle dei Gondolieri",
+        "Title": "Waiting for Delivery: preserved_fish at Contract Stall at Calle dei Gondolieri",
+        "Description": "Building 'Contract Stall at Calle dei Gondolieri' (ID: building_45.442317_12.319077) is out of stock for 'preserved_fish', has an active 'markup_buy' contract, and the resource is available elsewhere. Awaiting delivery.",
+        "Solutions": "Monitor the 'markup_buy' contract for 'preserved_fish'. Ensure citizens or logistics services are fulfilling delivery. Check 'fetch_resource' activities targeting your building.",
+        "Position": "{\"lat\": 45.442317, \"lng\": 12.319077}",
+        "Type": "waiting_for_resource_delivery"
+      }
+    },
+    {
+      "id": "recdewU5YUxwUSJar",
+      "fields": {
+        "ProblemId": "problem_pinpoint_building_45.442317_12.319077_olives_WAITING_FOR_DELIVERY",
+        "Citizen": "DucatsRunner",
+        "Asset": "building_45.442317_12.319077",
+        "AssetType": "building",
+        "Severity": "Medium",
+        "Status": "active",
+        "CreatedAt": "2025-06-27T03:53:11.990Z",
+        "UpdatedAt": "2025-06-27T01:53:12.000Z",
+        "Location": "Contract Stall at Calle dei Gondolieri",
+        "Title": "Waiting for Delivery: olives at Contract Stall at Calle dei Gondolieri",
+        "Description": "Building 'Contract Stall at Calle dei Gondolieri' (ID: building_45.442317_12.319077) is out of stock for 'olives', has an active 'markup_buy' contract, and the resource is available elsewhere. Awaiting delivery.",
+        "Solutions": "Monitor the 'markup_buy' contract for 'olives'. Ensure citizens or logistics services are fulfilling delivery. Check 'fetch_resource' activities targeting your building.",
+        "Position": "{\"lat\": 45.442317, \"lng\": 12.319077}",
+        "Type": "waiting_for_resource_delivery"
+      }
+    },
+    {
+      "id": "recRij0Oilwq0bYnE",
+      "fields": {
+        "ProblemId": "problem_pinpoint_building_45.442317_12.319077_olive_oil_WAITING_FOR_DELIVERY",
+        "Citizen": "DucatsRunner",
+        "Asset": "building_45.442317_12.319077",
+        "AssetType": "building",
+        "Severity": "Medium",
+        "Status": "active",
+        "CreatedAt": "2025-06-27T03:53:09.620Z",
+        "UpdatedAt": "2025-06-27T01:53:10.000Z",
+        "Location": "Contract Stall at Calle dei Gondolieri",
+        "Title": "Waiting for Delivery: olive_oil at Contract Stall at Calle dei Gondolieri",
+        "Description": "Building 'Contract Stall at Calle dei Gondolieri' (ID: building_45.442317_12.319077) is out of stock for 'olive_oil', has an active 'markup_buy' contract, and the resource is available elsewhere. Awaiting delivery.",
+        "Solutions": "Monitor the 'markup_buy' contract for 'olive_oil'. Ensure citizens or logistics services are fulfilling delivery. Check 'fetch_resource' activities targeting your building.",
+        "Position": "{\"lat\": 45.442317, \"lng\": 12.319077}",
+        "Type": "waiting_for_resource_delivery"
+      }
+    },
+    {
+      "id": "recdvYTmsr3W8wGZn",
       "fields": {
         "ProblemId": "hungry_DucatsRunner",
         "Citizen": "DucatsRunner",
@@ -3197,15 +3299,55 @@ Here is the complete data about your current situation:
         "AssetType": "citizen",
         "Severity": "medium",
         "Status": "active",
-        "CreatedAt": "2025-06-25T05:46:13.935Z",
-        "UpdatedAt": "2025-06-25T09:16:40.000Z",
+        "CreatedAt": "2025-06-27T02:07:35.178Z",
+        "UpdatedAt": "2025-06-27T18:42:24.000Z",
         "Location": "Lorenzo's last known area",
         "Title": "Hungry Citizen",
         "Description": "**Lorenzo Contarini** has not eaten in over 24 hours and is now hungry. This can affect their well-being and ability to perform tasks effectively.\n\n### Impact\n- Reduced energy and focus.\n- If employed, work productivity may be reduced by up to 50%.\n- Prolonged hunger can lead to more severe health issues (if implemented).",
         "Solutions": "### Recommended Solutions\n- Ensure the citizen consumes food. This might involve visiting a tavern, purchasing food from a market, or using owned food resources.\n- Check if the citizen has sufficient Ducats to afford food.\n- Review game mechanics related to food consumption and ensure the 'AteAt' (or equivalent) field is updated correctly after eating.",
-        "Notes": "[Failures: 1]\nCitizen DucatsRunner last ate at 2025-06-16T20:21:03.113Z. Current time: 2025-06-25T05:46:13.908Z",
+        "Notes": "[Failures: 1]\nCitizen DucatsRunner last ate at 2025-06-16T20:21:03.113Z. Current time: 2025-06-27T02:07:35.147Z",
         "Position": "{\"lat\":45.44773088425899,\"lng\":12.31897777552127}",
         "Type": "hungry_citizen"
+      }
+    },
+    {
+      "id": "recIvD8Mt5AO1MEha",
+      "fields": {
+        "ProblemId": "hungry_employee_impact_DucatsRunner_PhotoWizard",
+        "Citizen": "DucatsRunner",
+        "Asset": "PhotoWizard",
+        "AssetType": "employee_performance",
+        "Severity": "low",
+        "Status": "active",
+        "CreatedAt": "2025-06-27T02:07:35.174Z",
+        "UpdatedAt": "2025-06-27T02:08:05.000Z",
+        "Location": "Bakery at Rio Ter\u00e0 dei Magazzini",
+        "Title": "Hungry Employee Impact",
+        "Description": "Your employee, **Lucrezia Dardi**, is currently hungry. Hunger can significantly reduce productivity (up to 50%).",
+        "Solutions": "Ensure **Lucrezia Dardi** has the means and opportunity to eat. Consider if wages are sufficient or if working conditions impede access to food. Monitor their performance.",
+        "Notes": "Hungry Employee: PhotoWizard (ID: PhotoWizard), Workplace: Bakery at Rio Ter\u00e0 dei Magazzini (ID: building_45.444715_12.324751). Last ate: 2025-06-22T23:16:13.586Z.",
+        "Position": "{\"lat\":45.444715,\"lng\":12.324751}",
+        "Type": "hungry_employee_impact"
+      }
+    },
+    {
+      "id": "reciHwD3ySitM0ZoG",
+      "fields": {
+        "ProblemId": "hungry_employee_impact_DucatsRunner_coffee",
+        "Citizen": "DucatsRunner",
+        "Asset": "coffee",
+        "AssetType": "employee_performance",
+        "Severity": "low",
+        "Status": "active",
+        "CreatedAt": "2025-06-27T02:07:35.158Z",
+        "UpdatedAt": "2025-06-27T02:08:05.000Z",
+        "Location": "Contract Stall at Calle dei Gondolieri",
+        "Title": "Hungry Employee Impact",
+        "Description": "Your employee, **jun Rossi**, is currently hungry. Hunger can significantly reduce productivity (up to 50%).",
+        "Solutions": "Ensure **jun Rossi** has the means and opportunity to eat. Consider if wages are sufficient or if working conditions impede access to food. Monitor their performance.",
+        "Notes": "Hungry Employee: coffee (ID: coffee), Workplace: Contract Stall at Calle dei Gondolieri (ID: building_45.442317_12.319077). Last ate: 2025-06-25T03:43:15.868Z.",
+        "Position": "{\"lat\":45.442317,\"lng\":12.319077}",
+        "Type": "hungry_employee_impact"
       }
     }
   ],
@@ -3301,17 +3443,6 @@ Here is the complete data about your current situation:
       },
       "createdAt": "2025-06-13T08:00:11.235Z",
       "readAt": null
-    },
-    {
-      "notificationId": "recoPGOo5m5F1psLM",
-      "type": "markup_buy_contract_updated",
-      "citizen": "DucatsRunner",
-      "content": "Your buy order for fish (markup_buy_main_building_45.442317_12.319077_fish) has been updated.",
-      "details": {
-        "contractId": "markup_buy_main_building_45.442317_12.319077_fish"
-      },
-      "createdAt": "2025-06-12T18:18:51.484Z",
-      "readAt": "2025-06-12T18:18:51.901Z"
     }
   ],
   "building_types": {
@@ -3521,7 +3652,7 @@ Here is the complete data about your current situation:
       "constructionMinutes": 7200,
       "buildTier": 1,
       "tier": null,
-      "category": "Public & Government",
+      "category": "religion",
       "pointType": "building"
     },
     "cistern": {
@@ -3598,25 +3729,6 @@ Here is the complete data about your current situation:
       "category": "home",
       "pointType": "canal"
     },
-    "glassblower_workshop": {
-      "id": "glassblower_workshop",
-      "type": "glassblower_workshop",
-      "name": "Glassblower Workshop",
-      "shortDescription": "Specialized facility where skilled artisans shape molten glass into fine objects and art pieces.",
-      "constructionCost": 1500000,
-      "constructionCosts": {
-        "ducats": 1500000,
-        "timber": 430,
-        "bricks": 1070,
-        "stone": 570,
-        "iron": 290
-      },
-      "constructionMinutes": 5760,
-      "buildTier": 2,
-      "tier": null,
-      "category": "business",
-      "pointType": "building"
-    },
     "glass_foundry": {
       "id": "glass_foundry",
       "type": "glass_foundry",
@@ -3631,6 +3743,25 @@ Here is the complete data about your current situation:
         "iron": 390
       },
       "constructionMinutes": 10080,
+      "buildTier": 2,
+      "tier": null,
+      "category": "business",
+      "pointType": "building"
+    },
+    "glassblower_workshop": {
+      "id": "glassblower_workshop",
+      "type": "glassblower_workshop",
+      "name": "Glassblower Workshop",
+      "shortDescription": "Specialized facility where skilled artisans shape molten glass into fine objects and art pieces.",
+      "constructionCost": 1500000,
+      "constructionCosts": {
+        "ducats": 1500000,
+        "timber": 430,
+        "bricks": 1070,
+        "stone": 570,
+        "iron": 290
+      },
+      "constructionMinutes": 5760,
       "buildTier": 2,
       "tier": null,
       "category": "business",
@@ -3876,7 +4007,7 @@ Here is the complete data about your current situation:
       "constructionMinutes": 43200,
       "buildTier": 2,
       "tier": null,
-      "category": "Public & Government",
+      "category": "religion",
       "pointType": "building"
     },
     "porter_guild_hall": {
@@ -4237,7 +4368,7 @@ Here is the complete data about your current situation:
       "pointType": "building"
     }
   },
-  "timestamp": "2025-06-26T22:13:44.008935+02:00",
+  "timestamp": "2025-06-27T22:10:13.488641+02:00",
   "building_ownership_relevancies": [
     {
       "asset": "canal_45.447731_12.318978",
