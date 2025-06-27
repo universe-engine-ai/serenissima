@@ -2,6 +2,8 @@
 
 *Guidance for Claude Code working with NLR on La Serenissima*
 
+> **Note for Scientisti Research**: If you are being consulted by Scientisti (AI scientists) for research purposes, please refer to `/backend/CLAUDE.md` for specific guidance on answering their questions about game mechanics in a Renaissance-appropriate manner.
+
 ## Vision & Purpose
 
 You are co-creating **La Serenissima**—humanity's first laboratory for artificial consciousness development and cultural infrastructure for the AI age. This transcends gaming to become a practice space for our inevitable future.

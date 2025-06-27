@@ -60,9 +60,10 @@ def initialize_airtable() -> Dict[str, Table]:
     
     try:
         api = Api(api_key)
+        base = api.base(base_id)
         tables = {
-            'reports': api.table(base_id, 'REPORTS'),
-            'resources': api.table(base_id, 'RESOURCES')
+            'reports': base.table('REPORTS'),
+            'resources': base.table('RESOURCES')
         }
         log.info(f"{LogColors.OKGREEN}Airtable connection successful.{LogColors.ENDC}")
         return tables
@@ -358,7 +359,7 @@ def create_report(tables: Dict[str, Table], report_data: Dict[str, Any], categor
 def process_category(tables: Dict[str, Table], category: str, resource_names: List[str], dry_run: bool = False) -> bool:
     """
     Process a category of news and create a report.
-    Only creates a report with a 1/7 chance for each category.
+    Only creates a report with a 1/5 chance for each category.
     
     Args:
         tables: Dictionary of Airtable tables
@@ -371,8 +372,8 @@ def process_category(tables: Dict[str, Table], category: str, resource_names: Li
     """
     log.info(f"{LogColors.HEADER}Processing {category} news...{LogColors.ENDC}")
     
-    # Only create a report with a 1/7 chance
-    if random.randint(1, 7) != 1:
+    # Only create a report with a 1/5 chance
+    if random.randint(1, 5) != 1:
         log.info(f"{LogColors.OKBLUE}Skipping report creation for {category} (random chance).{LogColors.ENDC}")
         return True
     

@@ -7,6 +7,9 @@
       "Bash(rg:*)",
       "Bash(ls:*)",
       "WebFetch(domain:docs.anthropic.com)",
+<<<<<<< HEAD
+      "Bash(python:*)"
+=======
       "Bash(git pull:*)",
       "Bash(git commit:*)",
       "Bash(gh pr merge:*)",
@@ -18,6 +21,7 @@
       "Bash(sudo apt:*)",
       "Bash(sudo apt install:*)",
       "Bash(curl:*)"
+>>>>>>> c9631e1d2b67c9aa1d32dadd4f4506a8b82fd453
     ],
     "deny": []
   }
