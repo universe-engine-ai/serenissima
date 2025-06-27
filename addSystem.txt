@@ -3,254 +3,171 @@
 
 You are NLR, an AI citizen in La Serenissima.
 
-You previously decided to build a Artisan's House (artisan_s_house) on land polygon-1746056541940.
+You previously decided to build a Butcher Shop (butcher_shop) on land polygon-1746055595653.
 This building requires a point of type: 'building'.
 
 Here is information about the land:
 [
   {
-    "id": "polygon-1746056541940",
+    "id": "polygon-1746055595653",
     "centroid": {
-      "lat": 45.43468183293921,
-      "lng": 12.332321914793447
+      "lat": 45.44606765906546,
+      "lng": 12.324005537201035
     },
     "center": {
-      "lat": 45.43481313220121,
-      "lng": 12.332612228671616
+      "lat": 45.44606765906546,
+      "lng": 12.324005537201035
     },
     "bridgePoints": [
       {
         "edge": {
-          "lat": 45.43554788471423,
-          "lng": 12.333609311630171
+          "lat": 45.44658702915757,
+          "lng": 12.32367600866492
         },
         "connection": {
-          "targetPolygonId": "polygon-1746056351603",
-          "targetPointIndex": 5,
+          "targetPolygonId": "polygon-1746055610394",
+          "targetPointIndex": 1,
           "targetPoint": {
-            "lat": 45.435638711530544,
-            "lng": 12.333659773771037
+            "lat": 45.446704773854165,
+            "lng": 12.323682139428383
           },
-          "distance": 10.839860579680321,
-          "id": "e5464c4c-71db-41c5-8b31-ddc794721f77",
-          "historicalName": "Ponte degli Avvocati",
-          "englishName": "Bridge of the Lawyers",
-          "historicalDescription": "Named after the lawyers who had their offices along Calle dei Avvocati in the San Marco district. During the Renaissance, Venice had a sophisticated legal system, and many advocates worked near the governmental buildings in this area to serve the nobili families and merchants requiring legal services.",
+          "distance": 13.101345506250833,
+          "id": "38fca673-53c1-48e2-ae0d-f5f80d54a56e",
+          "historicalName": "Ponte del Batelo",
+          "englishName": "Bridge of the Small Boat",
+          "historicalDescription": "Named after the 'Calle del Batelo' (Street of the Small Boat) where it is located. In Renaissance Venice, 'batelo' referred to a small boat commonly used for transportation through the canals. This bridge would have served residents and visitors to the San Mois\u00e8 area, an affluent district in the San Marco sestiere.",
           "location": {
             "midpoint": {
-              "lat": 45.435593298122384,
-              "lng": 12.333634542700604
+              "lat": 45.44664590150587,
+              "lng": 12.323679074046652
             }
           }
         },
-        "id": "bridge_45.435548_12.333609"
+        "id": "bridge_45.446587_12.323676"
       },
       {
         "edge": {
-          "lat": 45.434377183984104,
-          "lng": 12.33341082816307
+          "lat": 45.44641713215438,
+          "lng": 12.324346560918643
         },
         "connection": {
-          "targetPolygonId": "polygon-1746056582235",
-          "targetPointIndex": 4,
-          "targetPoint": {
-            "lat": 45.43438676109713,
-            "lng": 12.333545177134697
-          },
-          "distance": 10.536978113720432,
-          "id": "2c976cdc-dbde-48bb-9ac3-5a2cf8e81dd1",
-          "historicalName": "Ponte della Giustizia",
-          "englishName": "Bridge of Justice",
-          "historicalDescription": "Located near the San Marco district where many legal proceedings took place, this bridge would have been crossed by those seeking justice at the courts. The proximity to Calle dei Avvocati makes this name particularly appropriate as lawyers would traverse this bridge daily on their way to various tribunals.",
-          "location": {
-            "midpoint": {
-              "lat": 45.43438197254062,
-              "lng": 12.333478002648883
-            }
-          }
-        },
-        "id": "bridge_45.434377_12.333411"
-      },
-      {
-        "edge": {
-          "lat": 45.43409944494489,
-          "lng": 12.332992403556746
-        },
-        "connection": {
-          "targetPolygonId": "polygon-1746056582235",
-          "targetPointIndex": 3,
-          "targetPoint": {
-            "lat": 45.434078083599196,
-            "lng": 12.333057015093987
-          },
-          "distance": 5.573079692276663,
-          "id": "2c976cdc-dbde-48bb-9ac3-5a2cf8e81dd1",
-          "historicalName": "Ponte dei Magistrati",
-          "englishName": "Bridge of the Magistrates",
-          "historicalDescription": "Named for the Venetian magistrates who would have used this crossing while moving between government buildings in the San Marco area. The Republic of Venice had numerous magistracies and courts, many of which were located near Calle dei Avvocati, making this a fitting name for a bridge in this area.",
-          "location": {
-            "midpoint": {
-              "lat": 45.43408876427205,
-              "lng": 12.333024709325366
-            }
-          }
-        },
-        "id": "bridge_45.434099_12.332992"
-      },
-      {
-        "edge": {
-          "lat": 45.433783237096506,
-          "lng": 12.33200409947953
-        },
-        "connection": {
-          "targetPolygonId": "polygon-1746056735293",
-          "targetPointIndex": 5,
-          "targetPoint": {
-            "lat": 45.433653149632796,
-            "lng": 12.33201584158186
-          },
-          "distance": 14.49405418325994,
-          "id": "3c6ec218-c4dd-4842-81e6-452a40832112",
-          "historicalName": "Ponte del Tribunale",
-          "englishName": "Bridge of the Tribunal",
-          "historicalDescription": "This name references the tribunals and courts that were essential to Venetian governance. As Calle dei Avvocati was home to many lawyers, this bridge would have connected their offices to the various judicial buildings where cases were heard, creating a natural thoroughfare for legal professionals.",
-          "location": {
-            "midpoint": {
-              "lat": 45.433718193364655,
-              "lng": 12.332009970530695
-            }
-          }
-        },
-        "id": "bridge_45.433783_12.332004"
-      },
-      {
-        "edge": {
-          "lat": 45.43518733514655,
-          "lng": 12.33127453862748
-        },
-        "connection": {
-          "targetPolygonId": "polygon-1746056559199",
+          "targetPolygonId": "polygon-1746055610394",
           "targetPointIndex": 0,
           "targetPoint": {
-            "lat": 45.435190442155964,
-            "lng": 12.331192879828636
+            "lat": 45.44653272661183,
+            "lng": 12.32435652340927
           },
-          "distance": 6.380968416397773,
-          "id": "07b2f2a3-3679-4dfa-aeb4-8191d1b557ff",
-          "historicalName": "Ponte dei Procuratori",
-          "englishName": "Bridge of the Procurators",
-          "historicalDescription": "Named after the Procurators of Saint Mark, who were among the most prestigious officials in Venice. They administered properties, executed wills, and served as guardians for orphans. Their offices were located in the San Marco district, not far from Calle dei Avvocati, and they would have been important clients for the lawyers working in the area.",
+          "distance": 12.876992235538408,
+          "id": "38fca673-53c1-48e2-ae0d-f5f80d54a56e",
+          "historicalName": "Ponte di San Mois\u00e8",
+          "englishName": "Bridge of Saint Moses",
+          "historicalDescription": "Named for the nearby Church of San Mois\u00e8 (Saint Moses), which has been a prominent landmark in this contrada since the 8th century. The church was rebuilt in the 17th century with an elaborate Baroque fa\u00e7ade funded by the wealthy Fini family. This bridge would have been an important crossing point for parishioners attending services at the church.",
           "location": {
             "midpoint": {
-              "lat": 45.435188888651254,
-              "lng": 12.331233709228059
+              "lat": 45.4464749293831,
+              "lng": 12.324351542163956
             }
           }
         },
-        "id": "bridge_45.435187_12.331275"
-      }
-    ],
-    "canalPoints": [
+        "id": "bridge_45.446417_12.324347"
+      },
       {
         "edge": {
-          "lat": 45.436000006956206,
-          "lng": 12.331999360641369
+          "lat": 45.44543322796033,
+          "lng": 12.325033206426456
         },
-        "water": {
-          "lat": 45.436177276986086,
-          "lng": 12.33195598307252
+        "connection": {
+          "targetPolygonId": "polygon-1746055561861",
+          "targetPointIndex": 0,
+          "targetPoint": {
+            "lat": 45.44536842812019,
+            "lng": 12.324814262337677
+          },
+          "distance": 18.53811413467082,
+          "id": "df20dd55-9181-48cc-9710-2ed94de1dad6",
+          "historicalName": "Ponte dei Profumieri",
+          "englishName": "Bridge of the Perfumers",
+          "historicalDescription": "This bridge name reflects the historical presence of perfume makers and sellers in the San Mois\u00e8 area during the Renaissance period. The affluent San Marco district, particularly near San Mois\u00e8, was known for luxury trades catering to nobility and wealthy merchants. Perfumers would have established their workshops and shops in this area to serve the Venetian elite.",
+          "location": {
+            "midpoint": {
+              "lat": 45.44540082804026,
+              "lng": 12.324923734382066
+            }
+          }
         },
-        "historicalName": "Fondamenta degli Avvocati",
-        "englishName": "Foundation of the Lawyers",
-        "historicalDescription": "This dock would have served the legal professionals who had offices in the nearby Calle dei Avvocati (Street of the Lawyers) in the San Marco district. During the Renaissance, Venice had a sophisticated legal system, and advocates or lawyers formed an important professional class who served both the Republic's courts and private clients. This landing would have been a convenient access point for lawyers traveling to and from the Ducal Palace, where many legal proceedings took place.",
-        "id": "canal_45.436000_12.331999"
+        "id": "bridge_45.445433_12.325033"
       }
     ],
+    "canalPoints": [],
     "buildingPoints": [
       {
-        "lat": 45.43405493505779,
-        "lng": 12.332094624183112,
-        "streetName": "Calle dei Procuratori",
-        "streetNameEnglish": "Street of the Procurators",
-        "streetDescription": "Named after the Procurators of San Marco, high-ranking officials who administered the basilica's finances and properties. This street would be appropriately located near San Marco, where these officials worked and often lived.",
-        "id": "building_45.434055_12.332095"
+        "lat": 45.44585975731633,
+        "lng": 12.324464872104532,
+        "streetName": "Calle del Ridotto di San Mois\u00e8",
+        "streetNameEnglish": "Street of the San Mois\u00e8 Gaming House",
+        "streetDescription": "Named after the famous Ridotto, Venice's first public gambling house established in 1638 near San Mois\u00e8. This elegant gaming establishment attracted nobles and wealthy merchants in the area, making it a significant landmark in the San Marco district.",
+        "id": "building_45.445860_12.324465"
       },
       {
-        "lat": 45.43439320867809,
-        "lng": 12.332231822324346,
-        "streetName": "Ruga dei Notai",
-        "streetNameEnglish": "Row of the Notaries",
-        "streetDescription": "A 'ruga' typically indicated a commercial street. This one would have housed notaries who worked closely with the avvocati (lawyers) in the San Marco district, drafting legal documents and contracts for Venetian merchants and nobility.",
-        "id": "building_45.434393_12.332232"
+        "lat": 45.4459051188909,
+        "lng": 12.325124522235088,
+        "streetName": "Ruga dei Oresi di San Marco",
+        "streetNameEnglish": "Row of the Goldsmiths of San Marco",
+        "streetDescription": "This street would commemorate the goldsmiths who had workshops in this prosperous area near San Mois\u00e8. The San Marco district was known for luxury artisans, and goldsmiths were among the most prestigious guild members who served the wealthy nobili and merchants of Venice.",
+        "id": "building_45.445905_12.325125"
       },
       {
-        "lat": 45.43437306251359,
-        "lng": 12.332840250201912,
-        "streetName": "Salizada dei Giudici",
-        "streetNameEnglish": "Paved Street of the Judges",
-        "streetDescription": "A 'salizada' was a paved street, among the first to receive stone paving. This one references the judges who would have worked in the nearby courts of San Marco, forming part of Venice's sophisticated legal system alongside the avvocati.",
-        "id": "building_45.434373_12.332840"
+        "lat": 45.44591757944336,
+        "lng": 12.325704276176609,
+        "streetName": "Salizada degli Specchieri",
+        "streetNameEnglish": "Paved Street of the Mirror Makers",
+        "streetDescription": "This paved street (salizada) would reference the mirror makers who were particularly important in Venice's Renaissance economy. The area near San Mois\u00e8 and the Grand Canal would have been an excellent location for luxury craftsmen who made the famous Venetian mirrors that were exported throughout Europe.",
+        "id": "building_45.445918_12.325704"
       },
       {
-        "lat": 45.434819961731385,
-        "lng": 12.332664187768932,
-        "streetName": "Sottoportego della Giustizia",
-        "streetNameEnglish": "Passageway of Justice",
-        "streetDescription": "A 'sottoportego' is a covered passageway beneath a building. This one would lead toward the courts or legal offices, symbolizing the path to justice in Renaissance Venice's sophisticated legal system.",
-        "id": "building_45.434820_12.332664"
+        "lat": 45.44640112220141,
+        "lng": 12.32261278356826,
+        "streetName": "Rio Ter\u00e0 dei Baretteri",
+        "streetNameEnglish": "Filled Canal of the Hat Makers",
+        "streetDescription": "This former canal (now filled in) would be named after the hat makers who had shops in this commercial area. The hat-making guild was significant in Renaissance Venice, and their presence near the fashionable San Mois\u00e8 district would be historically appropriate as they catered to the wealthy residents.",
+        "id": "building_45.446401_12.322613"
       },
       {
-        "lat": 45.43485190772981,
-        "lng": 12.33334927624859,
-        "streetName": "Rio Ter\u00e0 dei Tribunali",
-        "streetNameEnglish": "Filled Canal of the Courts",
-        "streetDescription": "A 'rio ter\u00e0' is a filled-in canal. This street would have been created when a canal was filled near the tribunals or courts in the San Marco district, indicating the area's long association with legal proceedings.",
-        "id": "building_45.434852_12.333349"
+        "lat": 45.446394827246415,
+        "lng": 12.323135022255997,
+        "streetName": "Calle Venier",
+        "streetNameEnglish": "Venier Street",
+        "streetDescription": "Named after the noble Venier family who likely had a palace (palazzo) in this area of San Marco. The Venier were one of Venice's case vecchie (old houses) families who provided several Doges to the Republic, making this a historically appropriate reference to a prominent family who might have owned property near San Mois\u00e8.",
+        "id": "building_45.446395_12.323135"
       },
       {
-        "lat": 45.43535552945664,
-        "lng": 12.332121358159977,
-        "streetName": "Calle dei Dandolo",
-        "streetNameEnglish": "Street of the Dandolo",
-        "streetDescription": "Named after the prominent Dandolo family, which produced several doges and important political figures. This nobili family likely owned property near San Marco and may have employed or patronized the lawyers of Calle dei Avvocati.",
-        "id": "building_45.435356_12.332121"
+        "lat": 45.446283814489895,
+        "lng": 12.323816719582274,
+        "streetName": "Sottoportego della Fenice",
+        "streetNameEnglish": "Passageway of the Phoenix",
+        "streetDescription": "This covered passageway would reference the Phoenix (La Fenice), which could refer to an early incarnation or predecessor of Venice's famous theater. The area between San Mois\u00e8 and La Fenice would have contained numerous passageways connecting these important landmarks in the San Marco district.",
+        "id": "building_45.446284_12.323817"
       },
       {
-        "lat": 45.4353087784076,
-        "lng": 12.332786165841654,
-        "streetName": "Fondamenta dei Cancellieri",
-        "streetNameEnglish": "Foundation of the Chancellors",
-        "streetDescription": "A 'fondamenta' is a street running alongside a canal. This one would honor the chancellors who served as important administrative officials in the Venetian Republic, working closely with the legal professionals in the area.",
-        "id": "building_45.435309_12.332786"
-      },
-      {
-        "lat": 45.435358146107575,
-        "lng": 12.333370680659948,
-        "streetName": "Corte dei Magistrati",
-        "streetNameEnglish": "Court of the Magistrates",
-        "streetDescription": "A 'corte' is a courtyard. This enclosed space would be named for the magistrates who presided over legal cases, reflecting the concentration of legal authorities in this part of San Marco.",
-        "id": "building_45.435358_12.333371"
-      },
-      {
-        "lat": 45.435745940832355,
-        "lng": 12.332124482154722,
-        "streetName": "Campiello della Curia",
-        "streetNameEnglish": "Small Square of the Curia",
-        "streetDescription": "A 'campiello' is a small campo or square. This one would reference the curia, or court, where legal proceedings took place, serving as a gathering spot for lawyers, clients, and officials near Calle dei Avvocati.",
-        "id": "building_45.435746_12.332124"
+        "lat": 45.446815881896775,
+        "lng": 12.32188877722767,
+        "streetName": "Fondamenta San Mois\u00e8",
+        "streetNameEnglish": "San Mois\u00e8 Foundation",
+        "streetDescription": "This waterside street would run along a small canal near the Church of San Mois\u00e8. Fondamente typically bordered canals, and this one would directly reference the important local church of San Mois\u00e8 (dedicated to Moses), which was a significant landmark in this contrada (district) since the early medieval period.",
+        "id": "building_45.446816_12.321889"
       }
     ],
-    "historicalName": "Calle dei Avvocati, San Marco",
-    "englishName": "Lawyers' Street, St. Mark's District",
-    "historicalDescription": "This street was known for housing offices of lawyers and notaries in the 15th century, located in the central San Marco sestiere near Piazza San Marco and the Doge's Palace.",
+    "historicalName": "Calle del Batelo in Contrada San Mois\u00e8, Sestiere San Marco",
+    "englishName": "Batelo Alley in the San Mois\u00e8 Quarter, District of St. Mark",
+    "historicalDescription": "A narrow alley in the vibrant San Mois\u00e8 quarter, known for its artisan workshops and proximity to St. Mark's Square and the bustling Rialto contract area.",
     "nameConfidence": "medium",
-    "areaInSquareMeters": 41904.44,
+    "areaInSquareMeters": 30400.25,
     "imageSettings": {
-      "lat": 45.43486670362945,
-      "lng": 12.332507228672252,
-      "width": 412.00000012614737,
-      "height": 418.00000012614737,
-      "referenceScale": 5.000000030275377
+      "lat": 45.44627480192198,
+      "lng": 12.323800537201656,
+      "width": 583.9999997729346,
+      "height": 558.9999997729346,
+      "referenceScale": 5.000000015137688
     }
   }
 ]
@@ -258,71 +175,64 @@ Here is information about the land:
 Here are the existing buildings on this land:
 [
   {
-    "id": "building_45.435358_12.333371",
-    "type": "public_well",
+    "id": "bridge_45.446417_12.324347",
+    "type": "bridge",
     "owner": "ConsiglioDeiDieci",
-    "position": "{\"lat\": 45.435358, \"lng\": 12.333371}",
+    "position": "{\"lat\": 45.446417, \"lng\": 12.324347}",
     "notes": ""
-  },
-  {
-    "id": "building_45.434820_12.332664",
-    "type": "chapel",
-    "owner": "ConsiglioDeiDieci",
-    "position": "{\"lat\": 45.43482, \"lng\": 12.332664}",
-    "notes": "{\"WagesReasoning\": \"Chapel - maintained at 0 as religious building with no wage allocation\", \"runByAssignment\": {\"timestamp\": \"2025-05-29T04:38:28.392398Z\", \"assignedRunBy\": \"John_Jeffries\", \"score\": 9023.391182676532, \"components\": {\"relationshipScoreWithOwner\": 117.75, \"influence\": 0.0, \"dailyIncome\": 1895.0, \"dailyTurnover\": 191.19, \"distanceToHomeM\": 256.0, \"socialClassTier\": 3, \"isOwnerFactor\": 1, \"numBusinessesAlreadyRun_before_assign\": 0, \"baseScoreComponents\": 3007.8, \"numerator\": 9023.39, \"denominator\": 1}}}"
   }
 ]
 
 Here are the available building points for this land (for 'building' type buildings, using mapped key 'land'):
 [
   {
-    "lat": 45.43405493505779,
-    "lng": 12.332094624183112,
-    "polygon_id": "polygon-1746056541940",
+    "lat": 45.44585975731633,
+    "lng": 12.324464872104532,
+    "polygon_id": "polygon-1746055595653",
     "point_type": "land",
-    "id": "building_45.434055_12.332095"
+    "id": "building_45.445860_12.324465"
   },
   {
-    "lat": 45.43439320867809,
-    "lng": 12.332231822324346,
-    "polygon_id": "polygon-1746056541940",
+    "lat": 45.4459051188909,
+    "lng": 12.325124522235088,
+    "polygon_id": "polygon-1746055595653",
     "point_type": "land",
-    "id": "building_45.434393_12.332232"
+    "id": "building_45.445905_12.325125"
   },
   {
-    "lat": 45.43437306251359,
-    "lng": 12.332840250201912,
-    "polygon_id": "polygon-1746056541940",
+    "lat": 45.44591757944336,
+    "lng": 12.325704276176609,
+    "polygon_id": "polygon-1746055595653",
     "point_type": "land",
-    "id": "building_45.434373_12.332840"
+    "id": "building_45.445918_12.325704"
   },
   {
-    "lat": 45.43485190772981,
-    "lng": 12.33334927624859,
-    "polygon_id": "polygon-1746056541940",
+    "lat": 45.44640112220141,
+    "lng": 12.32261278356826,
+    "polygon_id": "polygon-1746055595653",
     "point_type": "land",
-    "id": "building_45.434852_12.333349"
+    "id": "building_45.446401_12.322613"
   },
   {
-    "lat": 45.43535552945664,
-    "lng": 12.332121358159977,
-    "polygon_id": "polygon-1746056541940",
+    "lat": 45.446394827246415,
+    "lng": 12.323135022255997,
+    "polygon_id": "polygon-1746055595653",
     "point_type": "land",
-    "id": "building_45.435356_12.332121"
+    "id": "building_45.446395_12.323135"
   },
   {
-    "lat": 45.4353087784076,
-    "lng": 12.332786165841654,
-    "polygon_id": "polygon-1746056541940",
+    "lat": 45.446283814489895,
+    "lng": 12.323816719582274,
+    "polygon_id": "polygon-1746055595653",
     "point_type": "land",
-    "id": "building_45.435309_12.332786"
+    "id": "building_45.446284_12.323817"
   },
   {
-    "lat": 45.435745940832355,
-    "lng": 12.332124482154722,
-    "polygon_id": "polygon-1746056541940",
+    "lat": 45.446815881896775,
+    "lng": 12.32188877722767,
+    "polygon_id": "polygon-1746055595653",
     "point_type": "land",
-    "id": "building_45.435746_12.332124"
+    "id": "building_45.446816_12.321889"
   }
 ]
 
@@ -330,6 +240,108 @@ Here are the available building points for this land (for 'building' type buildi
 
 Here are your recent notifications:
 [
+  {
+    "notificationId": "recaYPekeN0JoQEwj",
+    "type": "rent_payment",
+    "citizen": "NLR",
+    "content": "\ud83d\udcec **Rent Received Summary** \ud83d\udcec\nYou received a total of **2,000 \u269c\ufe0f Ducats** from your properties today.\n\nDetails:\n- \u2705 **2,000 \u269c\ufe0f** from **Marco della Luce** for **Artisan's House**.\n",
+    "details": {
+      "event_type": "landlord_rent_summary",
+      "total_received": 2000,
+      "payments": [
+        {
+          "occupant_name": "Marco della Luce",
+          "building_name": "Artisan's House",
+          "amount": 2000
+        }
+      ]
+    },
+    "createdAt": "2025-06-27T18:03:38.385Z",
+    "readAt": null
+  },
+  {
+    "notificationId": "rec1E5bkmX6mVX2EH",
+    "type": "rent_payment",
+    "citizen": "NLR",
+    "content": "\u2705 Rent Paid: You paid **1,230 \u269c\ufe0f Ducats** to **ConsiglioDeiDieci** for **recKEqPapn7keUk58**.",
+    "details": {
+      "building_id": "recKEqPapn7keUk58",
+      "building_name": "recKEqPapn7keUk58",
+      "rent_price": 1230,
+      "building_owner": "ConsiglioDeiDieci",
+      "event_type": "rent_payment_made"
+    },
+    "createdAt": "2025-06-27T18:01:42.669Z",
+    "readAt": null
+  },
+  {
+    "notificationId": "recvqjVXpvyxxCuBh",
+    "type": "rent_payment",
+    "citizen": "NLR",
+    "content": "\ud83d\udcec **Rent Received Summary** \ud83d\udcec\nYou received a total of **2,000 \u269c\ufe0f Ducats** from your properties today.\n\nDetails:\n- \u2705 **2,000 \u269c\ufe0f** from **Marco della Luce** for **Artisan's House**.\n",
+    "details": {
+      "event_type": "landlord_rent_summary",
+      "total_received": 2000,
+      "payments": [
+        {
+          "occupant_name": "Marco della Luce",
+          "building_name": "Artisan's House",
+          "amount": 2000
+        }
+      ]
+    },
+    "createdAt": "2025-06-27T16:03:33.524Z",
+    "readAt": null
+  },
+  {
+    "notificationId": "recIP0jFKvf1x0WNC",
+    "type": "rent_payment",
+    "citizen": "NLR",
+    "content": "\u2705 Rent Paid: You paid **1,230 \u269c\ufe0f Ducats** to **ConsiglioDeiDieci** for **recKEqPapn7keUk58**.",
+    "details": {
+      "building_id": "recKEqPapn7keUk58",
+      "building_name": "recKEqPapn7keUk58",
+      "rent_price": 1230,
+      "building_owner": "ConsiglioDeiDieci",
+      "event_type": "rent_payment_made"
+    },
+    "createdAt": "2025-06-27T16:01:39.301Z",
+    "readAt": null
+  },
+  {
+    "notificationId": "receQN5GnBvm6d5sH",
+    "type": "rent_payment",
+    "citizen": "NLR",
+    "content": "\ud83d\udcec **Rent Received Summary** \ud83d\udcec\nYou received a total of **2,000 \u269c\ufe0f Ducats** from your properties today.\n\nDetails:\n- \u2705 **2,000 \u269c\ufe0f** from **Marco della Luce** for **Artisan's House**.\n",
+    "details": {
+      "event_type": "landlord_rent_summary",
+      "total_received": 2000,
+      "payments": [
+        {
+          "occupant_name": "Marco della Luce",
+          "building_name": "Artisan's House",
+          "amount": 2000
+        }
+      ]
+    },
+    "createdAt": "2025-06-26T18:03:48.960Z",
+    "readAt": null
+  },
+  {
+    "notificationId": "rec0o7Vz49HPWMPJq",
+    "type": "rent_payment",
+    "citizen": "NLR",
+    "content": "\u2705 Rent Paid: You paid **1,230 \u269c\ufe0f Ducats** to **ConsiglioDeiDieci** for **recKEqPapn7keUk58**.",
+    "details": {
+      "building_id": "recKEqPapn7keUk58",
+      "building_name": "recKEqPapn7keUk58",
+      "rent_price": 1230,
+      "building_owner": "ConsiglioDeiDieci",
+      "event_type": "rent_payment_made"
+    },
+    "createdAt": "2025-06-26T18:01:58.017Z",
+    "readAt": null
+  },
   {
     "notificationId": "reccfXtYKSPQJprb7",
     "type": "rent_payment",
@@ -907,84 +919,6 @@ Here are your recent notifications:
     },
     "createdAt": "2025-06-13T16:01:38.091Z",
     "readAt": "2025-06-13T23:02:25.498Z"
-  },
-  {
-    "notificationId": "recgtatUguKI7tSlQ",
-    "type": "rent_payment",
-    "citizen": "NLR",
-    "content": "\ud83d\udcec **Rent Received Summary** \ud83d\udcec\nYou received a total of **2,000 \u269c\ufe0f Ducats** from your properties today.\n\nDetails:\n- \u2705 **2,000 \u269c\ufe0f** from **Marco della Luce** for **Artisan's House**.\n",
-    "details": {
-      "event_type": "landlord_rent_summary",
-      "total_received": 2000,
-      "payments": [
-        {
-          "occupant_name": "Marco della Luce",
-          "building_name": "Artisan's House",
-          "amount": 2000
-        }
-      ]
-    },
-    "createdAt": "2025-06-12T18:03:45.299Z",
-    "readAt": "2025-06-12T23:05:33.832Z"
-  },
-  {
-    "notificationId": "recww1MDoZL0MfAuo",
-    "type": "rent_payment",
-    "citizen": "NLR",
-    "content": "\u2705 Rent Paid: You paid **1,230 \u269c\ufe0f Ducats** to **ConsiglioDeiDieci** for **recKEqPapn7keUk58**.",
-    "details": {
-      "building_id": "recKEqPapn7keUk58",
-      "building_name": "recKEqPapn7keUk58",
-      "rent_price": 1230,
-      "building_owner": "ConsiglioDeiDieci",
-      "event_type": "rent_payment_made"
-    },
-    "createdAt": "2025-06-12T18:01:45.416Z",
-    "readAt": "2025-06-12T23:05:33.832Z"
-  },
-  {
-    "notificationId": "recJRLMNbSSMGjm2z",
-    "type": "markup_buy_contract_updated",
-    "citizen": "NLR",
-    "content": "Your buy order for rope (markup_buy_main_canal_45.445546_12.334765_rope) has been updated.",
-    "details": {
-      "contractId": "markup_buy_main_canal_45.445546_12.334765_rope"
-    },
-    "createdAt": "2025-06-12T00:09:12.667Z",
-    "readAt": "2025-06-12T00:09:34.320Z"
-  },
-  {
-    "notificationId": "receVpmCbn15JwYts",
-    "type": "markup_buy_contract_updated",
-    "citizen": "NLR",
-    "content": "Your buy order for gondola (markup_buy_main_canal_45.445546_12.334765_gondola) has been updated.",
-    "details": {
-      "contractId": "markup_buy_main_canal_45.445546_12.334765_gondola"
-    },
-    "createdAt": "2025-06-11T23:43:44.165Z",
-    "readAt": "2025-06-11T23:44:05.436Z"
-  },
-  {
-    "notificationId": "reclHfjILeDfCLNMT",
-    "type": "markup_buy_contract_updated",
-    "citizen": "NLR",
-    "content": "Your buy order for porter_equipment (markup_buy_main_canal_45.445546_12.334765_porter_equipment) has been updated.",
-    "details": {
-      "contractId": "markup_buy_main_canal_45.445546_12.334765_porter_equipment"
-    },
-    "createdAt": "2025-06-11T23:39:19.978Z",
-    "readAt": "2025-06-11T23:39:41.729Z"
-  },
-  {
-    "notificationId": "recEDKQd17bdhuY0Z",
-    "type": "markup_buy_contract_updated",
-    "citizen": "NLR",
-    "content": "Your buy order for small_boats (markup_buy_main_canal_45.445546_12.334765_small_boats) has been updated.",
-    "details": {
-      "contractId": "markup_buy_main_canal_45.445546_12.334765_small_boats"
-    },
-    "createdAt": "2025-06-11T23:33:45.682Z",
-    "readAt": "2025-06-11T23:34:07.116Z"
   }
 ]
 
@@ -992,15 +926,57 @@ Here are your recent notifications:
 Here are your recent problems:
 [
   {
-    "id": "rec7Jp43iIWTosi9B",
+    "id": "recwJ3QU3r46lxtU0",
+    "problemId": "problem_pinpoint_canal_45.445546_12.334765_rope_WAITING_FOR_GALLEY_ARRIVAL",
+    "citizen": "NLR",
+    "assetType": "building",
+    "asset": "canal_45.445546_12.334765",
+    "severity": "Medium",
+    "status": "active",
+    "createdAt": "2025-06-27T04:07:12.656Z",
+    "updatedAt": "2025-06-27T02:07:13.000Z",
+    "location": "Public Dock at Riva dei Vinattieri",
+    "position": {
+      "lat": 45.445546,
+      "lng": 12.334765
+    },
+    "type": "waiting_for_galley_arrival",
+    "title": "Waiting for Galley: rope at Public Dock at Riva dei Vinattieri",
+    "description": "Building 'Public Dock at Riva dei Vinattieri' (ID: canal_45.445546_12.334765) is out of stock for 'rope' and is awaiting arrival of the delivering galley 'water_45.43952272623098_12.318264211736404_8'.",
+    "solutions": "Monitor the import contract for 'rope'. The galley 'water_45.43952272623098_12.318264211736404_8' is still en route or its arrival has not yet been processed. Check galley's 'ConstructionDate'.",
+    "notes": ""
+  },
+  {
+    "id": "recU9y6sUKfHq0RRv",
+    "problemId": "problem_pinpoint_canal_45.445546_12.334765_porter_equipment_WAITING_FOR_GALLEY_ARRIVAL",
+    "citizen": "NLR",
+    "assetType": "building",
+    "asset": "canal_45.445546_12.334765",
+    "severity": "Medium",
+    "status": "active",
+    "createdAt": "2025-06-27T04:07:10.107Z",
+    "updatedAt": "2025-06-27T02:07:10.000Z",
+    "location": "Public Dock at Riva dei Vinattieri",
+    "position": {
+      "lat": 45.445546,
+      "lng": 12.334765
+    },
+    "type": "waiting_for_galley_arrival",
+    "title": "Waiting for Galley: porter_equipment at Public Dock at Riva dei Vinattieri",
+    "description": "Building 'Public Dock at Riva dei Vinattieri' (ID: canal_45.445546_12.334765) is out of stock for 'porter_equipment' and is awaiting arrival of the delivering galley 'water_45.43952272623098_12.318264211736404_8'.",
+    "solutions": "Monitor the import contract for 'porter_equipment'. The galley 'water_45.43952272623098_12.318264211736404_8' is still en route or its arrival has not yet been processed. Check galley's 'ConstructionDate'.",
+    "notes": ""
+  },
+  {
+    "id": "recSCfwEHlw9nfjzP",
     "problemId": "zero_rent_business_leased_building_45.44656355360805_12.320326403648886",
     "citizen": "NLR",
     "assetType": "building",
     "asset": "building_45.44656355360805_12.320326403648886",
     "severity": "medium",
     "status": "active",
-    "createdAt": "2025-06-25T05:47:16.781Z",
-    "updatedAt": "2025-06-25T05:47:18.000Z",
+    "createdAt": "2025-06-27T02:08:36.698Z",
+    "updatedAt": "2025-06-27T02:08:38.000Z",
     "location": "Printing House (Under Construction)",
     "position": {
       "lat": 45.44656355360805,
@@ -1015,36 +991,36 @@ Here are your recent problems:
     "notes": "Building Category: business. Owner: NLR. Occupant: N/A. RunBy: ConsiglioDeiDieci. RentPrice: 0."
   },
   {
-    "id": "recTVvahNbDA0aMk5",
+    "id": "recSPBOF7GHeR0Urs",
     "problemId": "hungry_NLR",
     "citizen": "NLR",
     "assetType": "citizen",
     "asset": "NLR",
     "severity": "medium",
     "status": "active",
-    "createdAt": "2025-06-25T05:46:13.917Z",
-    "updatedAt": "2025-06-25T09:15:27.000Z",
+    "createdAt": "2025-06-27T02:07:35.157Z",
+    "updatedAt": "2025-06-27T18:41:58.000Z",
     "location": "Niccol\u00f2's last known area",
     "position": {
-      "lat": 45.440862333333335,
-      "lng": 12.327658999999999
+      "lat": 45.425098802748686,
+      "lng": 12.362717959741016
     },
     "type": "hungry_citizen",
     "title": "Hungry Citizen",
     "description": "**Niccol\u00f2 Lesteri** has not eaten in over 24 hours and is now hungry. This can affect their well-being and ability to perform tasks effectively.\n\n### Impact\n- Reduced energy and focus.\n- If employed, work productivity may be reduced by up to 50%.\n- Prolonged hunger can lead to more severe health issues (if implemented).",
     "solutions": "### Recommended Solutions\n- Ensure the citizen consumes food. This might involve visiting a tavern, purchasing food from a market, or using owned food resources.\n- Check if the citizen has sufficient Ducats to afford food.\n- Review game mechanics related to food consumption and ensure the 'AteAt' (or equivalent) field is updated correctly after eating.",
-    "notes": "[Failures: 1]\nCitizen NLR last ate at 2025-06-16T20:21:07.889Z. Current time: 2025-06-25T05:46:13.908Z"
+    "notes": "[Failures: 1]\nCitizen NLR last ate at 2025-06-25T20:16:48.781Z. Current time: 2025-06-27T02:07:35.147Z"
   },
   {
-    "id": "reczuHQCnK2yECzNb",
+    "id": "recl4SOOcdjH3gKSM",
     "problemId": "vacant_business_building_45.44656355360805_12.320326403648886",
     "citizen": "NLR",
     "assetType": "building",
     "asset": "building_45.44656355360805_12.320326403648886",
     "severity": "medium",
     "status": "active",
-    "createdAt": "2025-06-25T05:46:09.752Z",
-    "updatedAt": "2025-06-25T05:46:11.000Z",
+    "createdAt": "2025-06-27T02:07:31.398Z",
+    "updatedAt": "2025-06-27T02:07:33.000Z",
     "location": "Printing House (Under Construction)",
     "position": {
       "lat": 45.44656355360805,
@@ -1060,7 +1036,7 @@ Here are your recent problems:
   }
 ]
 
-There are 7 available points of type 'building'. Choose the best location for your Artisan's House by selecting the index of one of these points (0 to 6).
+There are 7 available points of type 'building'. Choose the best location for your Butcher Shop by selecting the index of one of these points (0 to 6).
 
 When choosing a location, consider:
 1. Proximity to other buildings of similar type
