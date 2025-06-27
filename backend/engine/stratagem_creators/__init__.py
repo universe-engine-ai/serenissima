@@ -17,10 +17,11 @@ from .marketplace_gossip_stratagem_creator import try_create as try_create_marke
 from .employee_poaching_stratagem_creator import try_create as try_create_employee_poaching_stratagem
 from .joint_venture_stratagem_creator import try_create as try_create_joint_venture_stratagem
 from .canal_mugging_stratagem_creator import try_create as try_create_canal_mugging_stratagem # Added import
-# Placeholder for monopoly_pricing
-# from .monopoly_pricing_stratagem_creator import try_create as try_create_monopoly_pricing_stratagem
-# Placeholder for reputation_boost
-# from .reputation_boost_stratagem_creator import try_create as try_create_reputation_boost_stratagem
+from .supplier_lockout_stratagem_creator import try_create as try_create_supplier_lockout_stratagem
+from .financial_patronage_stratagem_creator import try_create as try_create_financial_patronage_stratagem
+from .neighborhood_watch_stratagem_creator import try_create as try_create_neighborhood_watch_stratagem
+from .monopoly_pricing_stratagem_creator import try_create as try_create_monopoly_pricing_stratagem
+from .reputation_boost_stratagem_creator import try_create as try_create_reputation_boost_stratagem
 # Placeholder for burglary
 # from .burglary_stratagem_creator import try_create as try_create_burglary_stratagem
 # Placeholder for employee_corruption
@@ -51,8 +52,11 @@ STRATAGEM_CREATORS = {
     "employee_poaching": try_create_employee_poaching_stratagem,
     "joint_venture": try_create_joint_venture_stratagem,
     "canal_mugging": try_create_canal_mugging_stratagem, # Added mapping
-    # "monopoly_pricing": try_create_monopoly_pricing_stratagem,
-    # "reputation_boost": try_create_reputation_boost_stratagem,
+    "supplier_lockout": try_create_supplier_lockout_stratagem,
+    "financial_patronage": try_create_financial_patronage_stratagem,
+    "neighborhood_watch": try_create_neighborhood_watch_stratagem,
+    "monopoly_pricing": try_create_monopoly_pricing_stratagem,
+    "reputation_boost": try_create_reputation_boost_stratagem,
     # "burglary": try_create_burglary_stratagem,
     # "employee_corruption": try_create_employee_corruption_stratagem,
     # "arson": try_create_arson_stratagem,

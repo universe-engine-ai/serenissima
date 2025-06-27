@@ -9,6 +9,11 @@ import BurglaryStratagemPanel from './ExecutionPanels/BurglaryStratagemPanel'; /
 import ReputationAssaultStratagemPanel from './ExecutionPanels/ReputationAssaultStratagemPanel'; // Ajout de l'import
 import MarketplaceGossipStratagemPanel from './ExecutionPanels/MarketplaceGossipStratagemPanel'; // Ajout de l'import
 import DefaultStratagemPanel from './ExecutionPanels/DefaultStratagemPanel';
+import SupplierLockoutStratagemPanel from './ExecutionPanels/SupplierLockoutStratagemPanel';
+import FinancialPatronageStratagemPanel from './ExecutionPanels/FinancialPatronageStratagemPanel';
+import NeighborhoodWatchStratagemPanel from './ExecutionPanels/NeighborhoodWatchStratagemPanel';
+import MonopolyPricingStratagemPanel from './ExecutionPanels/MonopolyPricingStratagemPanel';
+import ReputationBoostStratagemPanel from './ExecutionPanels/ReputationBoostStratagemPanel';
 // Importer d'autres panneaux spécifiques ici au fur et à mesure de leur création
 // import HoardResourcePanel from './ExecutionPanels/HoardResourcePanel';
 
@@ -270,7 +275,7 @@ const StratagemExecutionPanel: React.FC<StratagemExecutionPanelProps> = ({
   const isExecuteDisabled = useMemo(() => {
     if (isLoading) return true;
     // Liste des types "Prochainement" ou désactivés globalement
-    const comingSoonTypes = ['supplier_lockout', 'political_campaign', 'information_network', 'maritime_blockade', 'cultural_patronage', 'theater_conspiracy', 'printing_propaganda', 'cargo_mishap', 'employee_poaching', 'joint_venture', 'financial_patronage', 'neighborhood_watch', 'monopoly_pricing', 'reputation_boost', 'employee_corruption', 'arson', 'charity_distribution', 'festival_organisation']; // 'marketplace_gossip', 'burglary' removed
+    const comingSoonTypes = ['political_campaign', 'information_network', 'maritime_blockade', 'cultural_patronage', 'theater_conspiracy', 'printing_propaganda', 'cargo_mishap', 'employee_poaching', 'joint_venture', 'employee_corruption', 'arson', 'charity_distribution', 'festival_organisation']; // 'marketplace_gossip', 'burglary', 'supplier_lockout', 'financial_patronage', 'neighborhood_watch', 'monopoly_pricing', 'reputation_boost' removed
     if (comingSoonTypes.includes(stratagemData.type)) {
       return true;
     }
@@ -294,6 +299,16 @@ const StratagemExecutionPanel: React.FC<StratagemExecutionPanelProps> = ({
         return ReputationAssaultStratagemPanel;
       case 'marketplace_gossip': // Ajout du cas pour marketplace_gossip
         return MarketplaceGossipStratagemPanel;
+      case 'supplier_lockout':
+        return SupplierLockoutStratagemPanel;
+      case 'financial_patronage':
+        return FinancialPatronageStratagemPanel;
+      case 'neighborhood_watch':
+        return NeighborhoodWatchStratagemPanel;
+      case 'monopoly_pricing':
+        return MonopolyPricingStratagemPanel;
+      case 'reputation_boost':
+        return ReputationBoostStratagemPanel;
       // case 'hoard_resource':
       //   return HoardResourcePanel; 
       // Ajouter d'autres cas ici pour les panneaux spécifiques

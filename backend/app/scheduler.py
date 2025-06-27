@@ -19,7 +19,8 @@ SCRIPTS_RESPECTING_FORCED_HOUR = [
     "engine/createmarketgalley.py", # Added for market galley creation
     "relevancies/gatherInformation.py", # Added for intelligence gathering
     "engine/processStratagems.py", # Ajout du processeur de stratagèmes
-    "reports/createReports.py" # Added for Renaissance reports generation
+    "reports/createReports.py", # Added for Renaissance reports generation
+    "engine/emergency_food_distribution_charity_contracts.py" # Charity contract-based emergency food distribution
     # Add other scripts here if they are updated to support --hour
 ]
 import subprocess
@@ -261,10 +262,10 @@ def run_scheduled_tasks(forced_hour: Optional[int] = None): # Added forced_hour 
             # Add emergency_food_distribution.py to run every hour at minute 15
             for hour in range(24):
                 task_name = f"Emergency Food Distribution ({hour:02d}:15 VT)"
-                food_task = ("engine/emergency_food_distribution.py", task_name, 15)
+                food_task = ("engine/emergency_food_distribution_charity_contracts.py", task_name, 15)
                 if hour in tasks:
                     # Check if the task is already scheduled for this hour and minute to avoid duplicates
-                    if not any(t[0] == "engine/emergency_food_distribution.py" and t[2] == 15 for t in tasks[hour]):
+                    if not any(t[0] == "engine/emergency_food_distribution_charity_contracts.py" and t[2] == 15 for t in tasks[hour]):
                         tasks[hour].append(food_task)
                 else:
                     tasks[hour] = [food_task]

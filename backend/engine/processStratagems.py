@@ -56,34 +56,11 @@ from backend.engine.stratagem_processors import (
     # Import other stratagem processors here
 )
 from backend.engine.stratagem_processors.canal_mugging_stratagem_processor import process as process_canal_mugging_stratagem
-
-
-# Placeholder processor for monopoly_pricing
-def process_monopoly_pricing_stratagem(
-    tables: Dict[str, Table], 
-    stratagem_record: Dict, 
-    resource_defs: Dict, 
-    building_type_defs: Dict, 
-    api_base_url: str
-) -> bool:
-    log.warning(f"{LogColors.WARNING}Processing for 'monopoly_pricing' stratagem (ID: {stratagem_record['id']}) is not yet implemented. Marking as executed for now.{LogColors.ENDC}")
-    # Mark as executed to prevent re-processing if it's a one-shot conceptual action
-    # Or keep active if it's meant to be continuous and re-evaluated
-    # For now, let's assume it's a one-shot setup for "Coming Soon"
-    tables['stratagems'].update(stratagem_record['id'], {'Status': 'executed', 'Notes': 'Coming Soon - Marked as executed.'})
-    return True
-
-# Placeholder processor for reputation_boost
-def process_reputation_boost_stratagem(
-    tables: Dict[str, Table], 
-    stratagem_record: Dict, 
-    resource_defs: Dict, 
-    building_type_defs: Dict, 
-    api_base_url: str
-) -> bool:
-    log.warning(f"{LogColors.WARNING}Processing for 'reputation_boost' stratagem (ID: {stratagem_record['id']}) is not yet implemented. Marking as executed for now.{LogColors.ENDC}")
-    tables['stratagems'].update(stratagem_record['id'], {'Status': 'executed', 'Notes': 'Coming Soon - Marked as executed.'})
-    return True
+from backend.engine.stratagem_processors.supplier_lockout_stratagem_processor import process_supplier_lockout_stratagem
+from backend.engine.stratagem_processors.financial_patronage_stratagem_processor import process_financial_patronage_stratagem
+from backend.engine.stratagem_processors.neighborhood_watch_stratagem_processor import process_neighborhood_watch_stratagem
+from backend.engine.stratagem_processors.monopoly_pricing_stratagem_processor import process_monopoly_pricing_stratagem
+from backend.engine.stratagem_processors.reputation_boost_stratagem_processor import process_reputation_boost_stratagem
 
 # Placeholder for canal_mugging is removed, as it's now imported.
 
@@ -166,7 +143,11 @@ def initialize_airtable() -> Optional[Dict[str, Table]]:
             'contracts': api.table(base_id, 'CONTRACTS'), # Needed by undercut processor
             'citizens': api.table(base_id, 'CITIZENS'),   # Potentially needed by processors
             'buildings': api.table(base_id, 'BUILDINGS'), # Potentially needed by processors
-            'resources': api.table(base_id, 'RESOURCES')  # Potentially needed by processors
+            'resources': api.table(base_id, 'RESOURCES'),  # Potentially needed by processors
+            'notifications': api.table(base_id, 'NOTIFICATIONS'), # Needed by supplier_lockout
+            'relationships': api.table(base_id, 'RELATIONSHIPS'), # Needed by supplier_lockout
+            'problems': api.table(base_id, 'PROBLEMS'), # Needed by supplier_lockout
+            'transactions': api.table(base_id, 'TRANSACTIONS') # Needed by financial_patronage
         }
         log.info(f"{LogColors.OKGREEN}Airtable connection successful for ProcessStratagems.{LogColors.ENDC}")
         return tables
@@ -224,6 +205,9 @@ STRATAGEM_PROCESSORS = {
     "marketplace_gossip": process_marketplace_gossip_stratagem,
     "joint_venture": process_joint_venture_stratagem,
     "reputation_assault": process_reputation_assault_stratagem, # Added mapping
+    "supplier_lockout": process_supplier_lockout_stratagem,
+    "financial_patronage": process_financial_patronage_stratagem,
+    "neighborhood_watch": process_neighborhood_watch_stratagem,
     "monopoly_pricing": process_monopoly_pricing_stratagem,
     "reputation_boost": process_reputation_boost_stratagem,
     "canal_mugging": process_canal_mugging_stratagem, # Now maps to the imported processor
