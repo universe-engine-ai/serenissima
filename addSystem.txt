@@ -8,7 +8,7 @@ Here is the complete data about your current situation:
 {
   "citizen": {
     "username": "DucaleTechie",
-    "ducats": 372319.97656468285,
+    "ducats": 381319.89653421444,
     "social_class": "Popolani",
     "description": "A robust, broad-shouldered man in his mid-60s with weather-beaten features and large, calloused hands from decades of labor. Antonio Contarini's trimmed white beard frames a face etched with the lines of hardship and determination. Though born to the humble facchini class of porters and laborers, Antonio carries himself with dignity earned through years of loading and unloading cargo along Venice's bustling docks. His shrewd eyes constantly assess his surroundings, looking for opportunities others might miss. Antonio rose from anonymous dockworker to a respected figure among the facchini through his exceptional strength and reliability. His days begin before dawn, securing prime positions at the Rialto and other commercial areas, where merchants know him by name. Though illiterate, he has memorized the complex network of Venice's canals and alleys, allowing him to negotiate fair wages for the efficient transport of goods. In rare moments of rest, Antonio enjoys simple pleasures at local taverns, where his booming laugh and generous nature make him a welcome presence among his fellow laborers.",
     "core_personality": "{\"Strength\": \"Straightforward\", \"Flaw\": \"Blunt\", \"Drive\": \"Fairness-oriented\", \"MBTI\": \"ESFJ\", \"PrimaryTrait\": \"Community leader\", \"SecondaryTraits\": [\"Physical strength\", \"Worker advocacy\", \"Simple pleasures\"], \"CognitiveBias\": [\"In-group favoritism\", \"Just-world hypothesis\"], \"TrustThreshold\": 0.7, \"EmpathyWeight\": 0.8, \"RiskTolerance\": 0.3, \"guidedBy\": \"The Worker's Honor\", \"CoreThoughts\": {\"primary_drive\": \"community-justice\", \"secondary_drive\": \"worker-advocacy\", \"internal_tension\": \"directness vs. diplomacy\", \"activation_triggers\": [\"unfair_treatment\", \"worker_needs\", \"community_threats\"], \"thought_patterns\": [\"Fair work deserves fair pay\", \"Strength is meant to help others, not exploit them\", \"Simple truth cuts through complex lies\", \"My reputation is built on keeping my word\", \"Workers deserve dignity and respect\", \"Laughter and loyalty matter more than gold\"], \"decision_framework\": \"How does this serve fairness and support my fellow workers?\"}}",
@@ -1384,6 +1384,13 @@ Here is the complete data about your current situation:
       "has_water_access": false,
       "district": "San Polo",
       "existing_buildings": [
+        {
+          "id": "building_45.43839918445191_12.326301049069482",
+          "type": "house_of_natural_sciences",
+          "owner": "ConsiglioDeiDieci",
+          "income": 0,
+          "maintenance_cost": 0
+        },
         {
           "id": "bridge_45.437103_12.323849",
           "type": "bridge",
@@ -3216,7 +3223,26 @@ Here is the complete data about your current situation:
   "target_relevancies": [],
   "latest_citizen_problems": [
     {
-      "id": "recYsMeoV2CpbqFUN",
+      "id": "reczxp4DZuJPThWxU",
+      "fields": {
+        "ProblemId": "problem_pinpoint_building_45.445194_12.324297_bread_WAITING_ON_INPUT_DELIVERY_water",
+        "Citizen": "DucaleTechie",
+        "Asset": "building_45.445194_12.324297",
+        "AssetType": "building",
+        "Severity": "Medium",
+        "Status": "active",
+        "CreatedAt": "2025-06-27T04:00:14.998Z",
+        "UpdatedAt": "2025-06-27T02:00:15.000Z",
+        "Location": "Bakery at Calle del Forno Pubblico",
+        "Title": "Awaiting Input Delivery: water at Bakery at Calle del Forno Pubblico",
+        "Description": "Building 'Bakery at Calle del Forno Pubblico' (ID: building_45.445194_12.324297) is missing inputs (water) to produce 'bread', but purchase contracts exist and suppliers have stock. Awaiting delivery.",
+        "Solutions": "Monitor purchase contracts for inputs (water). Ensure deliveries are in progress or resolve any delivery issues. Check citizen activities for 'fetch_resource'.",
+        "Position": "{\"lat\": 45.445194, \"lng\": 12.324297}",
+        "Type": "waiting_on_input_delivery"
+      }
+    },
+    {
+      "id": "rectgyXrPFhyoGI3K",
       "fields": {
         "ProblemId": "hungry_DucaleTechie",
         "Citizen": "DucaleTechie",
@@ -3224,19 +3250,57 @@ Here is the complete data about your current situation:
         "AssetType": "citizen",
         "Severity": "medium",
         "Status": "active",
-        "CreatedAt": "2025-06-25T05:46:13.935Z",
-        "UpdatedAt": "2025-06-25T09:16:39.000Z",
+        "CreatedAt": "2025-06-27T02:07:35.179Z",
+        "UpdatedAt": "2025-06-27T18:42:26.000Z",
         "Location": "Antonio's last known area",
         "Title": "Hungry Citizen",
         "Description": "**Antonio Contarini** has not eaten in over 24 hours and is now hungry. This can affect their well-being and ability to perform tasks effectively.\n\n### Impact\n- Reduced energy and focus.\n- If employed, work productivity may be reduced by up to 50%.\n- Prolonged hunger can lead to more severe health issues (if implemented).",
         "Solutions": "### Recommended Solutions\n- Ensure the citizen consumes food. This might involve visiting a tavern, purchasing food from a market, or using owned food resources.\n- Check if the citizen has sufficient Ducats to afford food.\n- Review game mechanics related to food consumption and ensure the 'AteAt' (or equivalent) field is updated correctly after eating.",
-        "Notes": "[Failures: 1]\nCitizen DucaleTechie last ate at 2025-06-16T20:10:20.934Z. Current time: 2025-06-25T05:46:13.908Z",
+        "Notes": "[Failures: 1]\nCitizen DucaleTechie last ate at 2025-06-16T20:10:20.934Z. Current time: 2025-06-27T02:07:35.147Z",
         "Position": "{\"lat\":45.444326,\"lng\":12.326038}",
         "Type": "hungry_citizen"
       }
     }
   ],
   "recent_notifications_for_ai": [
+    {
+      "notificationId": "recF4UMcqjSteRp0g",
+      "type": "rent_payment",
+      "citizen": "DucaleTechie",
+      "content": "\ud83d\udcec **Rent Received Summary** \ud83d\udcec\nYou received a total of **1,425 \u269c\ufe0f Ducats** from your properties today.\n\nDetails:\n- \u2705 **1,425 \u269c\ufe0f** from **Beppo Tagliapietra** for **Fisherman's Cottage at Riva della Toletta**.\n",
+      "details": {
+        "event_type": "landlord_rent_summary",
+        "total_received": 1425,
+        "payments": [
+          {
+            "occupant_name": "Beppo Tagliapietra",
+            "building_name": "Fisherman's Cottage at Riva della Toletta",
+            "amount": 1425
+          }
+        ]
+      },
+      "createdAt": "2025-06-27T18:03:38.701Z",
+      "readAt": null
+    },
+    {
+      "notificationId": "recw6qYkY0qcuCQVI",
+      "type": "rent_payment",
+      "citizen": "DucaleTechie",
+      "content": "\ud83d\udcec **Rent Received Summary** \ud83d\udcec\nYou received a total of **1,425 \u269c\ufe0f Ducats** from your properties today.\n\nDetails:\n- \u2705 **1,425 \u269c\ufe0f** from **Beppo Tagliapietra** for **Fisherman's Cottage at Riva della Toletta**.\n",
+      "details": {
+        "event_type": "landlord_rent_summary",
+        "total_received": 1425,
+        "payments": [
+          {
+            "occupant_name": "Beppo Tagliapietra",
+            "building_name": "Fisherman's Cottage at Riva della Toletta",
+            "amount": 1425
+          }
+        ]
+      },
+      "createdAt": "2025-06-27T16:03:33.790Z",
+      "readAt": null
+    },
     {
       "notificationId": "recGx6d6rueIuJTlD",
       "type": "rent_payment",
@@ -3578,25 +3642,6 @@ Here is the complete data about your current situation:
       },
       "createdAt": "2025-06-13T16:03:31.816Z",
       "readAt": null
-    },
-    {
-      "notificationId": "rec7Wu6UN6Rtq1ds1",
-      "type": "rent_payment",
-      "citizen": "DucaleTechie",
-      "content": "\ud83d\udcec **Rent Received Summary** \ud83d\udcec\nYou received a total of **1,425 \u269c\ufe0f Ducats** from your properties today.\n\nDetails:\n- \u2705 **1,425 \u269c\ufe0f** from **Beppo Tagliapietra** for **Fisherman's Cottage at Riva della Toletta**.\n",
-      "details": {
-        "event_type": "landlord_rent_summary",
-        "total_received": 1425,
-        "payments": [
-          {
-            "occupant_name": "Beppo Tagliapietra",
-            "building_name": "Fisherman's Cottage at Riva della Toletta",
-            "amount": 1425
-          }
-        ]
-      },
-      "createdAt": "2025-06-12T18:03:45.650Z",
-      "readAt": null
     }
   ],
   "building_types": {
@@ -3806,7 +3851,7 @@ Here is the complete data about your current situation:
       "constructionMinutes": 7200,
       "buildTier": 1,
       "tier": null,
-      "category": "Public & Government",
+      "category": "religion",
       "pointType": "building"
     },
     "cistern": {
@@ -3883,25 +3928,6 @@ Here is the complete data about your current situation:
       "category": "home",
       "pointType": "canal"
     },
-    "glassblower_workshop": {
-      "id": "glassblower_workshop",
-      "type": "glassblower_workshop",
-      "name": "Glassblower Workshop",
-      "shortDescription": "Specialized facility where skilled artisans shape molten glass into fine objects and art pieces.",
-      "constructionCost": 1500000,
-      "constructionCosts": {
-        "ducats": 1500000,
-        "timber": 430,
-        "bricks": 1070,
-        "stone": 570,
-        "iron": 290
-      },
-      "constructionMinutes": 5760,
-      "buildTier": 2,
-      "tier": null,
-      "category": "business",
-      "pointType": "building"
-    },
     "glass_foundry": {
       "id": "glass_foundry",
       "type": "glass_foundry",
@@ -3916,6 +3942,25 @@ Here is the complete data about your current situation:
         "iron": 390
       },
       "constructionMinutes": 10080,
+      "buildTier": 2,
+      "tier": null,
+      "category": "business",
+      "pointType": "building"
+    },
+    "glassblower_workshop": {
+      "id": "glassblower_workshop",
+      "type": "glassblower_workshop",
+      "name": "Glassblower Workshop",
+      "shortDescription": "Specialized facility where skilled artisans shape molten glass into fine objects and art pieces.",
+      "constructionCost": 1500000,
+      "constructionCosts": {
+        "ducats": 1500000,
+        "timber": 430,
+        "bricks": 1070,
+        "stone": 570,
+        "iron": 290
+      },
+      "constructionMinutes": 5760,
       "buildTier": 2,
       "tier": null,
       "category": "business",
@@ -4161,7 +4206,7 @@ Here is the complete data about your current situation:
       "constructionMinutes": 43200,
       "buildTier": 2,
       "tier": null,
-      "category": "Public & Government",
+      "category": "religion",
       "pointType": "building"
     },
     "porter_guild_hall": {
@@ -4522,7 +4567,7 @@ Here is the complete data about your current situation:
       "pointType": "building"
     }
   },
-  "timestamp": "2025-06-26T21:34:55.305134+02:00",
+  "timestamp": "2025-06-27T21:35:49.481488+02:00",
   "building_ownership_relevancies": [
     {
       "asset": "building_45.433410_12.351285",
