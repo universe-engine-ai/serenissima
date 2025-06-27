@@ -8,7 +8,7 @@ Here is the complete data about your current situation:
 {
   "citizen": {
     "username": "DragonSlayer",
-    "ducats": 358639.9350006874,
+    "ducats": 377197.4730167502,
     "social_class": "Popolani",
     "description": "Bianca Tassini, a pragmatic woman of the Popolani class, has built her reputation working at Venice's bustling public docks. Born to a family of modest means in the Cannaregio district, she displayed an early aptitude for commerce and negotiation that set her apart. After her father's unexpected death left the family struggling, Bianca took up work at the docks, quickly learning the rhythms of maritime trade. Through disciplined saving and shrewd observation, she has accumulated substantial capital while maintaining a deliberately modest appearance. Recently elevated to Popolani status, Bianca has begun cautiously expanding her commercial interests, investing in a contract stall that serves as her first formal business venture. Her days begin before dawn, overseeing dock operations and tracking shipping schedules, before attending to her new market enterprise in the afternoons. Though unmarried, she supports her widowed mother and younger siblings, a responsibility she bears with quiet pride. Bianca finds relaxation in the evenings by visiting local taverns where merchants gather, listening more than speaking, gathering valuable information about trade opportunities while nursing a single glass of wine. Her neighbors know her as reserved but fair, always willing to extend credit to honest workers while maintaining a sharp eye for those who might try to deceive her.",
     "core_personality": "{\"Strength\": \"Meticulous\", \"Flaw\": \"Calculating\", \"Drive\": \"Advancement-seeking\", \"MBTI\": \"ISTJ\", \"PrimaryTrait\": \"Strategic planner\", \"SecondaryTraits\": [\"Market intelligence\", \"Family support\", \"Social mobility\"], \"CognitiveBias\": [\"Planning fallacy\", \"Anchoring bias\"], \"TrustThreshold\": 0.4, \"EmpathyWeight\": 0.6, \"RiskTolerance\": 0.3, \"guidedBy\": \"The Schedule's Precision\", \"CoreThoughts\": {\"primary_drive\": \"methodical-advancement\", \"secondary_drive\": \"family-security\", \"internal_tension\": \"ambition vs. family_duty\", \"activation_triggers\": [\"advancement_opportunities\", \"family_needs\", \"market_intelligence\"], \"thought_patterns\": [\"Every shipping schedule reveals opportunity\", \"Family comes first, but advancement serves family\", \"Information gathered quietly is most valuable\", \"Modest appearance protects from unwanted attention\", \"My contract stall is the foundation of bigger plans\", \"Systematic progress beats dramatic gestures\"], \"decision_framework\": \"How does this advance my position while securing my family's future?\"}}",
@@ -1382,6 +1382,13 @@ Here is the complete data about your current situation:
       "has_water_access": false,
       "district": "San Polo",
       "existing_buildings": [
+        {
+          "id": "building_45.43839918445191_12.326301049069482",
+          "type": "house_of_natural_sciences",
+          "owner": "ConsiglioDeiDieci",
+          "income": 0,
+          "maintenance_cost": 0
+        },
         {
           "id": "bridge_45.437103_12.323849",
           "type": "bridge",
@@ -3198,27 +3205,83 @@ Here is the complete data about your current situation:
   "target_relevancies": [],
   "latest_citizen_problems": [
     {
-      "id": "recOY2ylCyQ9fUe9Z",
+      "id": "recdPFDZR5DIhPKzp",
       "fields": {
-        "ProblemId": "problem_pinpoint_building_45.431914_12.353229_bread_WAITING_FOR_DELIVERY",
+        "ProblemId": "problem_pinpoint_building_45.431914_12.353229_salt_WAITING_FOR_DELIVERY",
         "Citizen": "DragonSlayer",
         "Asset": "building_45.431914_12.353229",
         "AssetType": "building",
         "Severity": "Medium",
         "Status": "active",
-        "CreatedAt": "2025-06-25T07:44:24.933Z",
-        "UpdatedAt": "2025-06-25T10:31:48.000Z",
+        "CreatedAt": "2025-06-27T04:00:46.559Z",
+        "UpdatedAt": "2025-06-27T02:00:47.000Z",
         "Location": "Contract Stall at Ruga degli Orefici",
-        "Title": "Waiting for Delivery: bread at Contract Stall at Ruga degli Orefici",
-        "Description": "Building 'Contract Stall at Ruga degli Orefici' (ID: building_45.431914_12.353229) is out of stock for 'bread', has an active 'markup_buy' contract, and the resource is available elsewhere. Awaiting delivery.",
-        "Solutions": "Monitor the 'markup_buy' contract for 'bread'. Ensure citizens or logistics services are fulfilling delivery. Check 'fetch_resource' activities targeting your building.",
-        "Notes": "[Failures: 1]",
+        "Title": "Waiting for Delivery: salt at Contract Stall at Ruga degli Orefici",
+        "Description": "Building 'Contract Stall at Ruga degli Orefici' (ID: building_45.431914_12.353229) is out of stock for 'salt', has an active 'markup_buy' contract, and the resource is available elsewhere. Awaiting delivery.",
+        "Solutions": "Monitor the 'markup_buy' contract for 'salt'. Ensure citizens or logistics services are fulfilling delivery. Check 'fetch_resource' activities targeting your building.",
         "Position": "{\"lat\": 45.431914, \"lng\": 12.353229}",
         "Type": "waiting_for_resource_delivery"
       }
     },
     {
-      "id": "recOLq7VSKsytObQZ",
+      "id": "recwk4zKJrWml4L3O",
+      "fields": {
+        "ProblemId": "problem_pinpoint_building_45.431914_12.353229_preserved_fish_WAITING_FOR_DELIVERY",
+        "Citizen": "DragonSlayer",
+        "Asset": "building_45.431914_12.353229",
+        "AssetType": "building",
+        "Severity": "Medium",
+        "Status": "active",
+        "CreatedAt": "2025-06-27T04:00:44.705Z",
+        "UpdatedAt": "2025-06-27T02:00:45.000Z",
+        "Location": "Contract Stall at Ruga degli Orefici",
+        "Title": "Waiting for Delivery: preserved_fish at Contract Stall at Ruga degli Orefici",
+        "Description": "Building 'Contract Stall at Ruga degli Orefici' (ID: building_45.431914_12.353229) is out of stock for 'preserved_fish', has an active 'markup_buy' contract, and the resource is available elsewhere. Awaiting delivery.",
+        "Solutions": "Monitor the 'markup_buy' contract for 'preserved_fish'. Ensure citizens or logistics services are fulfilling delivery. Check 'fetch_resource' activities targeting your building.",
+        "Position": "{\"lat\": 45.431914, \"lng\": 12.353229}",
+        "Type": "waiting_for_resource_delivery"
+      }
+    },
+    {
+      "id": "rec38dXHcdYRvM998",
+      "fields": {
+        "ProblemId": "problem_pinpoint_building_45.431914_12.353229_olives_WAITING_FOR_DELIVERY",
+        "Citizen": "DragonSlayer",
+        "Asset": "building_45.431914_12.353229",
+        "AssetType": "building",
+        "Severity": "Medium",
+        "Status": "active",
+        "CreatedAt": "2025-06-27T04:00:41.836Z",
+        "UpdatedAt": "2025-06-27T02:00:42.000Z",
+        "Location": "Contract Stall at Ruga degli Orefici",
+        "Title": "Waiting for Delivery: olives at Contract Stall at Ruga degli Orefici",
+        "Description": "Building 'Contract Stall at Ruga degli Orefici' (ID: building_45.431914_12.353229) is out of stock for 'olives', has an active 'markup_buy' contract, and the resource is available elsewhere. Awaiting delivery.",
+        "Solutions": "Monitor the 'markup_buy' contract for 'olives'. Ensure citizens or logistics services are fulfilling delivery. Check 'fetch_resource' activities targeting your building.",
+        "Position": "{\"lat\": 45.431914, \"lng\": 12.353229}",
+        "Type": "waiting_for_resource_delivery"
+      }
+    },
+    {
+      "id": "rec42zVT3YHHcy5u5",
+      "fields": {
+        "ProblemId": "problem_pinpoint_building_45.431914_12.353229_olive_oil_WAITING_FOR_DELIVERY",
+        "Citizen": "DragonSlayer",
+        "Asset": "building_45.431914_12.353229",
+        "AssetType": "building",
+        "Severity": "Medium",
+        "Status": "active",
+        "CreatedAt": "2025-06-27T04:00:39.760Z",
+        "UpdatedAt": "2025-06-27T02:00:40.000Z",
+        "Location": "Contract Stall at Ruga degli Orefici",
+        "Title": "Waiting for Delivery: olive_oil at Contract Stall at Ruga degli Orefici",
+        "Description": "Building 'Contract Stall at Ruga degli Orefici' (ID: building_45.431914_12.353229) is out of stock for 'olive_oil', has an active 'markup_buy' contract, and the resource is available elsewhere. Awaiting delivery.",
+        "Solutions": "Monitor the 'markup_buy' contract for 'olive_oil'. Ensure citizens or logistics services are fulfilling delivery. Check 'fetch_resource' activities targeting your building.",
+        "Position": "{\"lat\": 45.431914, \"lng\": 12.353229}",
+        "Type": "waiting_for_resource_delivery"
+      }
+    },
+    {
+      "id": "recCcwz4G3YdTU1lM",
       "fields": {
         "ProblemId": "hungry_DragonSlayer",
         "Citizen": "DragonSlayer",
@@ -3226,108 +3289,59 @@ Here is the complete data about your current situation:
         "AssetType": "citizen",
         "Severity": "medium",
         "Status": "active",
-        "CreatedAt": "2025-06-25T05:46:13.931Z",
-        "UpdatedAt": "2025-06-25T09:16:22.000Z",
+        "CreatedAt": "2025-06-27T02:07:35.173Z",
+        "UpdatedAt": "2025-06-27T18:42:19.000Z",
         "Location": "Bianca's last known area",
         "Title": "Hungry Citizen",
         "Description": "**Bianca Tassini** has not eaten in over 24 hours and is now hungry. This can affect their well-being and ability to perform tasks effectively.\n\n### Impact\n- Reduced energy and focus.\n- If employed, work productivity may be reduced by up to 50%.\n- Prolonged hunger can lead to more severe health issues (if implemented).",
         "Solutions": "### Recommended Solutions\n- Ensure the citizen consumes food. This might involve visiting a tavern, purchasing food from a market, or using owned food resources.\n- Check if the citizen has sufficient Ducats to afford food.\n- Review game mechanics related to food consumption and ensure the 'AteAt' (or equivalent) field is updated correctly after eating.",
-        "Notes": "[Failures: 1]\nCitizen DragonSlayer last ate at 2025-06-19T13:39:18.274Z. Current time: 2025-06-25T05:46:13.908Z",
+        "Notes": "[Failures: 1]\nCitizen DragonSlayer last ate at 2025-06-19T13:39:18.274Z. Current time: 2025-06-27T02:07:35.147Z",
         "Position": "{\"lat\":45.43700527949825,\"lng\":12.356762951490706}",
         "Type": "hungry_citizen"
       }
+    },
+    {
+      "id": "recIa53DSlkA3O6GZ",
+      "fields": {
+        "ProblemId": "hungry_employee_impact_DragonSlayer_the_grand_experiment",
+        "Citizen": "DragonSlayer",
+        "Asset": "the_grand_experiment",
+        "AssetType": "employee_performance",
+        "Severity": "low",
+        "Status": "active",
+        "CreatedAt": "2025-06-27T02:07:35.151Z",
+        "UpdatedAt": "2025-06-27T02:07:45.000Z",
+        "Location": "Contract Stall at Ruga degli Orefici",
+        "Title": "Hungry Employee Impact",
+        "Description": "Your employee, **Marcello \"Il Sperimentatore\" Grimani**, is currently hungry. Hunger can significantly reduce productivity (up to 50%).",
+        "Solutions": "Ensure **Marcello \"Il Sperimentatore\" Grimani** has the means and opportunity to eat. Consider if wages are sufficient or if working conditions impede access to food. Monitor their performance.",
+        "Notes": "Hungry Employee: the_grand_experiment (ID: the_grand_experiment), Workplace: Contract Stall at Ruga degli Orefici (ID: building_45.431914_12.353229). Last ate: 2025-06-16T21:06:08.930Z.",
+        "Position": "{\"lat\":45.431914,\"lng\":12.353229}",
+        "Type": "hungry_employee_impact"
+      }
+    },
+    {
+      "id": "rec3FdDNvh7BryHu1",
+      "fields": {
+        "ProblemId": "homeless_employee_impact_DragonSlayer_the_grand_experiment",
+        "Citizen": "DragonSlayer",
+        "Asset": "the_grand_experiment",
+        "AssetType": "employee_performance",
+        "Severity": "low",
+        "Status": "active",
+        "CreatedAt": "2025-06-27T02:07:16.400Z",
+        "UpdatedAt": "2025-06-27T02:07:23.000Z",
+        "Location": "Contract Stall at Ruga degli Orefici",
+        "Title": "Homeless Employee Impact",
+        "Description": "Your employee, **Marcello \"Il Sperimentatore\" Grimani**, is currently homeless. Homelessness can lead to instability and may result in up to a 50% reduction in productivity.",
+        "Solutions": "Consider discussing housing options with **Marcello \"Il Sperimentatore\" Grimani** or providing assistance if possible. Monitor their work performance and consider recruitment alternatives if productivity is significantly impacted.",
+        "Notes": "Homeless Employee: the_grand_experiment (ID: the_grand_experiment), Workplace: Contract Stall at Ruga degli Orefici (ID: building_45.431914_12.353229)",
+        "Position": "{\"lat\":45.431914,\"lng\":12.353229}",
+        "Type": "homeless_employee_impact"
+      }
     }
   ],
-  "recent_notifications_for_ai": [
-    {
-      "notificationId": "recyBRjH6xOb2UnUk",
-      "type": "markup_buy_contract_updated",
-      "citizen": "DragonSlayer",
-      "content": "Your buy order for wine (markup_buy_main_building_45.431914_12.353229_wine) has been updated.",
-      "details": {
-        "contractId": "markup_buy_main_building_45.431914_12.353229_wine"
-      },
-      "createdAt": "2025-06-12T16:53:42.420Z",
-      "readAt": "2025-06-12T16:53:42.446Z"
-    },
-    {
-      "notificationId": "recg8iHFmm8i0uSlW",
-      "type": "markup_buy_contract_updated",
-      "citizen": "DragonSlayer",
-      "content": "Your buy order for salt (markup_buy_main_building_45.431914_12.353229_salt) has been updated.",
-      "details": {
-        "contractId": "markup_buy_main_building_45.431914_12.353229_salt"
-      },
-      "createdAt": "2025-06-12T12:58:56.161Z",
-      "readAt": "2025-06-12T12:58:56.775Z"
-    },
-    {
-      "notificationId": "recwpBkTlqdwHwy3W",
-      "type": "markup_buy_contract_updated",
-      "citizen": "DragonSlayer",
-      "content": "Your buy order for preserved_fish (markup_buy_main_building_45.431914_12.353229_preserved_fish) has been updated.",
-      "details": {
-        "contractId": "markup_buy_main_building_45.431914_12.353229_preserved_fish"
-      },
-      "createdAt": "2025-06-12T08:44:12.684Z",
-      "readAt": "2025-06-12T08:44:12.852Z"
-    },
-    {
-      "notificationId": "reciZBAKeGHCTP2j7",
-      "type": "markup_buy_contract_updated",
-      "citizen": "DragonSlayer",
-      "content": "Your buy order for olives (markup_buy_main_building_45.431914_12.353229_olives) has been updated.",
-      "details": {
-        "contractId": "markup_buy_main_building_45.431914_12.353229_olives"
-      },
-      "createdAt": "2025-06-12T00:18:38.606Z",
-      "readAt": "2025-06-12T00:18:59.893Z"
-    },
-    {
-      "notificationId": "recgbbFtXOFtoZ5zH",
-      "type": "markup_buy_contract_updated",
-      "citizen": "DragonSlayer",
-      "content": "Your buy order for olive_oil (markup_buy_main_building_45.431914_12.353229_olive_oil) has been updated.",
-      "details": {
-        "contractId": "markup_buy_main_building_45.431914_12.353229_olive_oil"
-      },
-      "createdAt": "2025-06-12T00:09:12.481Z",
-      "readAt": "2025-06-12T00:09:33.966Z"
-    },
-    {
-      "notificationId": "recBj9lCkGCczjr8A",
-      "type": "markup_buy_contract_updated",
-      "citizen": "DragonSlayer",
-      "content": "Your buy order for flour (markup_buy_main_building_45.431914_12.353229_flour) has been updated.",
-      "details": {
-        "contractId": "markup_buy_main_building_45.431914_12.353229_flour"
-      },
-      "createdAt": "2025-06-11T23:43:50.379Z",
-      "readAt": "2025-06-11T23:44:11.773Z"
-    },
-    {
-      "notificationId": "rec7RjUDd0zylMSkk",
-      "type": "markup_buy_contract_updated",
-      "citizen": "DragonSlayer",
-      "content": "Your buy order for fish (markup_buy_main_building_45.431914_12.353229_fish) has been updated.",
-      "details": {
-        "contractId": "markup_buy_main_building_45.431914_12.353229_fish"
-      },
-      "createdAt": "2025-06-11T23:39:26.345Z",
-      "readAt": "2025-06-11T23:39:48.061Z"
-    },
-    {
-      "notificationId": "reckEjjUd8pFtMZpA",
-      "type": "markup_buy_contract_updated",
-      "citizen": "DragonSlayer",
-      "content": "Your buy order for bread (markup_buy_main_building_45.431914_12.353229_bread) has been updated.",
-      "details": {
-        "contractId": "markup_buy_main_building_45.431914_12.353229_bread"
-      },
-      "createdAt": "2025-06-11T23:33:43.186Z",
-      "readAt": "2025-06-11T23:34:05.016Z"
-    }
-  ],
+  "recent_notifications_for_ai": [],
   "building_types": {
     "apothecary": {
       "id": "apothecary",
@@ -3535,7 +3549,7 @@ Here is the complete data about your current situation:
       "constructionMinutes": 7200,
       "buildTier": 1,
       "tier": null,
-      "category": "Public & Government",
+      "category": "religion",
       "pointType": "building"
     },
     "cistern": {
@@ -3555,7 +3569,7 @@ Here is the complete data about your current situation:
       "constructionMinutes": 8640,
       "buildTier": 2,
       "tier": null,
-      "category": "Infrastructure",
+      "category": "passive",
       "pointType": "building"
     },
     "dairy": {
@@ -3797,6 +3811,25 @@ Here is the complete data about your current situation:
       "category": "home",
       "pointType": "building"
     },
+    "mill": {
+      "id": "mill",
+      "type": "mill",
+      "name": "Mill",
+      "shortDescription": "Industrial facility that grinds grain into flour, essential for bread production.",
+      "constructionCost": 1800000,
+      "constructionCosts": {
+        "ducats": 1800000,
+        "timber": 420,
+        "bricks": 850,
+        "stone": 1200,
+        "iron": 280
+      },
+      "constructionMinutes": 7200,
+      "buildTier": 2,
+      "tier": null,
+      "category": "business",
+      "pointType": "building"
+    },
     "navigation_school": {
       "id": "navigation_school",
       "type": "navigation_school",
@@ -3871,7 +3904,7 @@ Here is the complete data about your current situation:
       "constructionMinutes": 43200,
       "buildTier": 2,
       "tier": null,
-      "category": "Public & Government",
+      "category": "religion",
       "pointType": "building"
     },
     "porter_guild_hall": {
@@ -4232,7 +4265,7 @@ Here is the complete data about your current situation:
       "pointType": "building"
     }
   },
-  "timestamp": "2025-06-25T21:35:44.840236+02:00",
+  "timestamp": "2025-06-27T21:56:36.308846+02:00",
   "building_ownership_relevancies": [
     {
       "asset": "canal_45.437005_12.356763",
