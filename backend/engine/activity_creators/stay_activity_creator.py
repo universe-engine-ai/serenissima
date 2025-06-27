@@ -7,7 +7,7 @@ import time
 import pytz # For timezone handling
 from typing import Dict, Optional, Any
 
-from backend.engine.utils.activity_helpers import get_building_record # Import helper
+from engine.utils.activity_helpers import get_building_record # Import helper
 
 log = logging.getLogger(__name__)
 

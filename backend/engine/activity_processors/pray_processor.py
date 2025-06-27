@@ -17,7 +17,7 @@ from backend.engine.utils.relationship_helpers import (
     update_trust_score_for_activity,
     TRUST_SCORE_MINOR_POSITIVE
 )
-from backend.engine.utils.mood_helper import adjust_mood_with_emotion
+# Removed import of non-existent adjust_mood_with_emotion
 
 log = logging.getLogger(__name__)
 
@@ -165,16 +165,11 @@ def process(
     
     # Apply mood gain from praying
     try:
-        adjust_mood_with_emotion(
-            tables=tables,
-            citizen_record=citizen_airtable_record,
-            activity_record=activity_record,
-            mood_change=PRAY_MOOD_GAIN,
-            emotion="Hopeful",
-            source="praying",
-            details=f"Found peace while praying at {church_name}"
-        )
-        log.info(f"{LogColors.OKGREEN}{citizen_name} feels more peaceful after praying at {church_name} (+{PRAY_MOOD_GAIN} mood).{LogColors.ENDC}")
+        current_mood = citizen_airtable_record['fields'].get('Mood', 50)
+        new_mood = min(100, current_mood + PRAY_MOOD_GAIN)
+        
+        tables['citizens'].update(citizen_airtable_record['id'], {'Mood': new_mood})
+        log.info(f"{LogColors.OKGREEN}{citizen_name} feels more peaceful after praying at {church_name} ({current_mood} -> {new_mood}, +{PRAY_MOOD_GAIN} mood).{LogColors.ENDC}")
     except Exception as e:
         log.error(f"{LogColors.FAIL}Failed to adjust mood for {citizen_name}: {e}{LogColors.ENDC}")
 

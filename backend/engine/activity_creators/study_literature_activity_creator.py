@@ -246,15 +246,29 @@ def try_create(
             "notes_for_chained_activity": study_notes
         }
         
+        # Prepare activity_params for goto_location
+        activity_params = {
+            'targetBuildingId': target_building_id,
+            'fromBuildingId': None,  # Will use citizen's current position
+            'details': action_details_for_chaining,
+            'notes': goto_notes_str,
+            'title': f"Travel to {target_building_name}",
+            'description': f"Traveling to {target_building_name} to study literature"
+        }
+        
+        # Get current Venice time
+        now_venice_dt = now_utc_dt.astimezone(VENICE_TIMEZONE)
+        
         goto_activity = try_create_goto_location_activity(
             tables=tables,
             citizen_record=citizen_record,
-            destination_building_id=target_building_id,
-            path_data=path_to_target,
-            current_time_utc=now_utc_dt,
-            notes=goto_notes_str,
-            details_payload=action_details_for_chaining,
-            start_time_utc_iso=start_time_utc_iso
+            activity_params=activity_params,
+            resource_defs={},  # Not needed for goto_location
+            building_type_defs={},  # Not needed for goto_location
+            now_venice_dt=now_venice_dt,
+            now_utc_dt=now_utc_dt,
+            transport_api_url=transport_api_url,
+            api_base_url=""  # Not needed for this activity
         )
         
         if goto_activity:

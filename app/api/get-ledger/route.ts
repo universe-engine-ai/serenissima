@@ -78,11 +78,18 @@ const LEDGER_CACHE_TTL = 3 * 60 * 1000; // 3 minutes in milliseconds
 const AIRTABLE_API_KEY = process.env.AIRTABLE_API_KEY;
 const AIRTABLE_BASE_ID = process.env.AIRTABLE_BASE_ID;
 
-if (!AIRTABLE_API_KEY || !AIRTABLE_BASE_ID) {
-  throw new Error('Airtable API key or Base ID is not configured in environment variables.');
-}
+// Lazy initialization of Airtable client
+let airtable: any = null;
 
-const airtable = new Airtable({ apiKey: AIRTABLE_API_KEY }).base(AIRTABLE_BASE_ID);
+function getAirtable() {
+  if (!airtable) {
+    if (!AIRTABLE_API_KEY || !AIRTABLE_BASE_ID) {
+      throw new Error('Airtable API key or Base ID is not configured in environment variables.');
+    }
+    airtable = new Airtable({ apiKey: AIRTABLE_API_KEY }).base(AIRTABLE_BASE_ID);
+  }
+  return airtable;
+}
 
 // Helper to convert a string to camelCase
 const toCamelCase = (s: string) => {
@@ -149,7 +156,7 @@ interface PolygonData {
 
 async function fetchCitizenDetails(username: string): Promise<AirtableRecord<FieldSet> | null> {
   try {
-    const records = await airtable('CITIZENS').select({
+    const records = await getAirtable()('CITIZENS').select({
       filterByFormula: `{Username} = '${escapeAirtableValue(username)}'`,
       maxRecords: 1,
     }).firstPage();
@@ -162,7 +169,7 @@ async function fetchCitizenDetails(username: string): Promise<AirtableRecord<Fie
 
 async function fetchLastActivity(username: string): Promise<AirtableRecord<FieldSet> | null> {
   try {
-    const records = await airtable('ACTIVITIES').select({
+    const records = await getAirtable()('ACTIVITIES').select({
       filterByFormula: `{Citizen} = '${escapeAirtableValue(username)}'`,
       sort: [{ field: 'EndDate', direction: 'desc' }], // Get the most recently ended or current
       maxRecords: 1,
@@ -176,7 +183,7 @@ async function fetchLastActivity(username: string): Promise<AirtableRecord<Field
 
 async function fetchLastActivities(username: string, count: number = 5): Promise<AirtableRecord<FieldSet>[]> {
   try {
-    const records = await airtable('ACTIVITIES').select({
+    const records = await getAirtable()('ACTIVITIES').select({
       filterByFormula: `{Citizen} = '${escapeAirtableValue(username)}'`,
       sort: [{ field: 'EndDate', direction: 'desc' }], // Get the most recently ended or current
       maxRecords: count,
@@ -191,7 +198,7 @@ async function fetchLastActivities(username: string, count: number = 5): Promise
 async function fetchPlannedActivities(username: string): Promise<AirtableRecord<FieldSet>[]> {
   try {
     const now = new Date().toISOString();
-    const records = await airtable('ACTIVITIES').select({
+    const records = await getAirtable()('ACTIVITIES').select({
       filterByFormula: `AND({Citizen} = '${escapeAirtableValue(username)}', {Status} = 'created', IS_AFTER({StartDate}, '${now}'))`,
       sort: [{ field: 'StartDate', direction: 'asc' }], // Sort by start date ascending (soonest first)
     }).firstPage();
@@ -204,7 +211,7 @@ async function fetchPlannedActivities(username: string): Promise<AirtableRecord<
 
 async function fetchOwnedLands(username: string): Promise<AirtableRecord<FieldSet>[]> {
   try {
-    const records = await airtable('LANDS').select({
+    const records = await getAirtable()('LANDS').select({
       filterByFormula: `{Owner} = '${escapeAirtableValue(username)}'`,
       sort: [{ field: 'HistoricalName', direction: 'asc' }],
     }).all();
@@ -223,7 +230,7 @@ async function fetchAllBuildingsForLands(landIds: string[]): Promise<Record<stri
     const escapedLandIds = landIds.map(id => `'${escapeAirtableValue(id)}'`).join(', ');
     const formula = `OR(${landIds.map(id => `{LandId} = '${escapeAirtableValue(id)}'`).join(', ')})`;
     
-    const records = await airtable('BUILDINGS').select({
+    const records = await getAirtable()('BUILDINGS').select({
       filterByFormula: formula,
     }).all();
     
@@ -253,7 +260,7 @@ async function fetchAllBuildingsForLands(landIds: string[]): Promise<Record<stri
 // Keep this for backward compatibility or specific cases
 async function fetchBuildingsOnLand(landId: string): Promise<AirtableRecord<FieldSet>[]> {
   try {
-    const records = await airtable('BUILDINGS').select({
+    const records = await getAirtable()('BUILDINGS').select({
       filterByFormula: `{LandId} = '${escapeAirtableValue(landId)}'`,
     }).all();
     return [...records]; // Convert ReadonlyArray to Array
@@ -316,7 +323,7 @@ async function fetchPolygonDataForLand(landId: string): Promise<PolygonData | nu
 
 async function fetchOwnedBuildings(username: string): Promise<AirtableRecord<FieldSet>[]> {
   try {
-    const records = await airtable('BUILDINGS').select({
+    const records = await getAirtable()('BUILDINGS').select({
       filterByFormula: `{Owner} = '${escapeAirtableValue(username)}'`,
       sort: [{ field: 'Name', direction: 'asc' }],
     }).all();
@@ -329,7 +336,7 @@ async function fetchOwnedBuildings(username: string): Promise<AirtableRecord<Fie
 
 async function fetchManagedBuildings(username: string): Promise<AirtableRecord<FieldSet>[]> {
   try {
-    const records = await airtable('BUILDINGS').select({
+    const records = await getAirtable()('BUILDINGS').select({
       filterByFormula: `{RunBy} = '${escapeAirtableValue(username)}'`,
       sort: [{ field: 'Name', direction: 'asc' }],
     }).all();
@@ -344,7 +351,7 @@ async function fetchWorkplaceBuilding(username: string): Promise<AirtableRecord<
   try {
     // A citizen typically has one primary workplace (Occupant) which is a business
     // If multiple are possible, logic might need adjustment (e.g., sort by UpdatedAt or specific type)
-    const records = await airtable('BUILDINGS').select({
+    const records = await getAirtable()('BUILDINGS').select({
       filterByFormula: `AND({Occupant} = '${escapeAirtableValue(username)}', {Category} = 'business')`,
       maxRecords: 1, // Assuming one primary workplace as Occupant
     }).firstPage();
@@ -358,7 +365,7 @@ async function fetchWorkplaceBuilding(username: string): Promise<AirtableRecord<
 async function fetchHomeBuilding(username: string): Promise<AirtableRecord<FieldSet> | null> {
   try {
     // A citizen typically has one primary home (Occupant, Category=home)
-    const records = await airtable('BUILDINGS').select({
+    const records = await getAirtable()('BUILDINGS').select({
       filterByFormula: `AND({Occupant} = '${escapeAirtableValue(username)}', {Category} = 'home')`,
       maxRecords: 1, 
     }).firstPage();
@@ -437,7 +444,7 @@ async function fetchBuildingResourceDetails(buildingId: string): Promise<Buildin
 async function fetchCitizenContracts(username: string): Promise<AirtableRecord<FieldSet>[]> {
   try {
     const escapedUsername = escapeAirtableValue(username);
-    const records = await airtable('CONTRACTS').select({
+    const records = await getAirtable()('CONTRACTS').select({
       filterByFormula: `AND(OR({Buyer} = '${escapedUsername}', {Seller} = '${escapedUsername}'), {Status} = 'active')`,
       sort: [{ field: 'CreatedAt', direction: 'desc' }],
       maxRecords: 20, // Limit to 20 records
@@ -452,7 +459,7 @@ async function fetchCitizenContracts(username: string): Promise<AirtableRecord<F
 async function fetchGuildDetails(guildId: string): Promise<AirtableRecord<FieldSet> | null> {
   if (!guildId) return null;
   try {
-    const records = await airtable('GUILDS').select({
+    const records = await getAirtable()('GUILDS').select({
       filterByFormula: `{GuildId} = '${escapeAirtableValue(guildId)}'`,
       maxRecords: 1,
     }).firstPage();
@@ -466,7 +473,7 @@ async function fetchGuildDetails(guildId: string): Promise<AirtableRecord<FieldS
 async function fetchCitizenLoans(username: string): Promise<AirtableRecord<FieldSet>[]> {
   try {
     const escapedUsername = escapeAirtableValue(username);
-    const records = await airtable('LOANS').select({
+    const records = await getAirtable()('LOANS').select({
       filterByFormula: `OR({Lender} = '${escapedUsername}', {Borrower} = '${escapedUsername}')`,
       sort: [{ field: 'CreatedAt', direction: 'desc' }], // Optional: sort by creation date
     }).all();
@@ -481,7 +488,7 @@ async function fetchCitizenRelationships(username: string): Promise<AirtableReco
   try {
     const escapedUsername = escapeAirtableValue(username);
     // Fetch all relationships involving the citizen
-    const records = await airtable('RELATIONSHIPS').select({
+    const records = await getAirtable()('RELATIONSHIPS').select({
       filterByFormula: `OR({Citizen1} = '${escapedUsername}', {Citizen2} = '${escapedUsername}')`,
     }).all();
 
@@ -509,7 +516,7 @@ async function fetchCitizenRelationships(username: string): Promise<AirtableReco
 async function fetchCitizenProblems(username: string): Promise<AirtableRecord<FieldSet>[]> {
   try {
     const escapedUsername = escapeAirtableValue(username);
-    const records = await airtable('PROBLEMS').select({
+    const records = await getAirtable()('PROBLEMS').select({
       filterByFormula: `{Citizen} = '${escapedUsername}'`,
       sort: [{ field: 'CreatedAt', direction: 'desc' }],
       maxRecords: 20,
@@ -524,7 +531,7 @@ async function fetchCitizenProblems(username: string): Promise<AirtableRecord<Fi
 async function fetchCitizenMessages(username: string): Promise<AirtableRecord<FieldSet>[]> {
   try {
     const escapedUsername = escapeAirtableValue(username);
-    const records = await airtable('MESSAGES').select({
+    const records = await getAirtable()('MESSAGES').select({
       filterByFormula: `OR({Sender} = '${escapedUsername}', {Receiver} = '${escapedUsername}')`,
       sort: [{ field: 'CreatedAt', direction: 'desc' }],
       maxRecords: 20, // Limit to 20 records
@@ -538,7 +545,7 @@ async function fetchCitizenMessages(username: string): Promise<AirtableRecord<Fi
 
 async function fetchLastDailyUpdate(): Promise<AirtableRecord<FieldSet> | null> {
   try {
-    const records = await airtable('MESSAGES').select({
+    const records = await getAirtable()('MESSAGES').select({
       filterByFormula: `AND({Type} = 'daily_update', {Sender} = 'ConsiglioDeiDieci')`,
       sort: [{ field: 'CreatedAt', direction: 'desc' }],
       maxRecords: 1,
@@ -573,7 +580,7 @@ async function fetchCitizenActiveStratagems(username: string): Promise<ActiveStr
       )
     `.replace(/\s+/g, ' ');
 
-    const activeExecutedByRecords = await airtable('STRATAGEMS').select({
+    const activeExecutedByRecords = await getAirtable()('STRATAGEMS').select({
       filterByFormula: activeExecutedByFormula,
       sort: [{ field: 'CreatedAt', direction: 'desc' }],
     }).all();
@@ -589,7 +596,7 @@ async function fetchCitizenActiveStratagems(username: string): Promise<ActiveStr
       )
     `.replace(/\s+/g, ' ');
 
-    const activeTargetedAtRecords = await airtable('STRATAGEMS').select({
+    const activeTargetedAtRecords = await getAirtable()('STRATAGEMS').select({
       filterByFormula: activeTargetedAtFormula,
       sort: [{ field: 'CreatedAt', direction: 'desc' }],
     }).all();
@@ -604,7 +611,7 @@ async function fetchCitizenActiveStratagems(username: string): Promise<ActiveStr
       )
     `.replace(/\s+/g, ' ');
 
-    const pastExecutedByRecords = await airtable('STRATAGEMS').select({
+    const pastExecutedByRecords = await getAirtable()('STRATAGEMS').select({
       filterByFormula: pastExecutedByFormula,
       sort: [{ field: 'ExecutedAt', direction: 'desc' }], // Sort by when it was executed
       maxRecords: 20, // Limit past records for brevity
@@ -620,7 +627,7 @@ async function fetchCitizenActiveStratagems(username: string): Promise<ActiveStr
       )
     `.replace(/\s+/g, ' ');
 
-    const pastTargetedAtRecords = await airtable('STRATAGEMS').select({
+    const pastTargetedAtRecords = await getAirtable()('STRATAGEMS').select({
       filterByFormula: pastTargetedAtFormula,
       sort: [{ field: 'ExecutedAt', direction: 'desc' }], // Sort by when it was executed
       maxRecords: 20, // Limit past records for brevity
@@ -2134,6 +2141,14 @@ export async function GET(request: NextRequest) {
   if (!citizenUsername) {
     return NextResponse.json({ success: false, error: 'citizenUsername parameter is required' }, { status: 400 });
   }
+
+  // Validate Airtable configuration
+  if (!AIRTABLE_API_KEY || !AIRTABLE_BASE_ID) {
+    console.error('[API get-ledger] Airtable API key or Base ID is not configured');
+    return NextResponse.json({ success: false, error: 'Server configuration error' }, { status: 500 });
+  }
+
+  // Use lazy-initialized Airtable client
   
   // Check cache if not forcing refresh
   const now = Date.now();
