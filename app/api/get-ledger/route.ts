@@ -2924,8 +2924,8 @@ export async function GET(request: NextRequest) {
           activeContractsCount: Ledger.activeContracts ? Ledger.activeContracts.length : 0,
           activeContracts: undefined,
           // Remove guild details, keep only name
-          guildSimple: Ledger.guild ? { name: Ledger.guild.guildName } : null,
-          guild: undefined,
+          guildSimple: Ledger.guildDetails ? { name: Ledger.guildDetails.guildName } : null,
+          guildDetails: undefined,
           // Remove detailed stratagems, keep only counts
           activeStratagemsCount: (Ledger.executedByMeStratagems?.length || 0) + (Ledger.targetingMeStratagems?.length || 0),
           executedByMeStratagems: undefined,
