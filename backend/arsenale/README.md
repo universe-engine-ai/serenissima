@@ -9,9 +9,17 @@ cd arsenale
 python run_cycle.py
 ```
 
+Run with a custom directive:
+```bash
+python run_cycle.py "Focus on fixing the hunger crisis"
+python run_cycle.py "Implement the charity feeding system from the framework"
+python run_cycle.py "Check why galleys aren't delivering resources"
+```
+
 Or run in mock mode for demonstration:
 ```bash
 python run_cycle.py --mock
+python run_cycle.py "Test message" --mock
 ```
 
 This runs a complete improvement cycle:
