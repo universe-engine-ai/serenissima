@@ -183,7 +183,7 @@ def run_scheduled_tasks(forced_hour: Optional[int] = None): # Added forced_hour 
                 9: [("engine/distributeLeases.py", "Lease distribution", 0), # 9:00 VT
                     ("engine/dailyUpdate.py", "Daily Update Generation", 30), # 9:30 VT
                     ("ais/autoResolveProblems.py", "Auto Resolve Problems (Morning)", 45)], # 9:45 VT
-                10: [("engine/citizensgetjobs.py", "Citizen job assignment", 0), # 10:00 VT
+                10: [("engine/citizensgetjobs_proximity.py", "Proximity-based job assignment", 0), # 10:00 VT
                      ("ais/answertomessages.py --model local", "AI message responses", 5)], # 10:05 VT
                 11: [("engine/immigration.py", "Immigration", 0), # 11:00 VT
                      ("engine/processStratagems.py", "Process Active Stratagems (Mid-day)", 5)], # 11:05 VT
