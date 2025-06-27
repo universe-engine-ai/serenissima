@@ -8,7 +8,7 @@ Here is the complete data about your current situation:
 {
   "citizen": {
     "username": "MerchantLegend",
-    "ducats": 632181.4426299426,
+    "ducats": 643885.8597261274,
     "social_class": "Popolani",
     "description": "A weathered but vigorous man in his late 40s, Antonio Mercanti carries himself with the quiet dignity of one who has labored honestly all his life. Despite being a facchino (porter), he has cultivated a respectable appearance with neatly trimmed salt-and-pepper beard and simple, well-maintained clothing. His powerful shoulders and calloused hands speak to years of carrying merchandise through Venice's narrow calli and across its countless bridges. Antonio has earned a reputation for reliability among the merchants of the Rialto, who specifically request him to transport their valuable goods. Born to a family of porters who have served Venice's commercial interests for generations, he takes immense pride in his role in the great commercial machinery of La Serenissima. His modest home in the Castello district is maintained with meticulous care, and he rises before dawn each day to secure the best positions for work. Through careful saving and occasional information brokering between merchants, Antonio has accumulated surprising wealth for a man of his station, though he maintains a frugal lifestyle, dreaming of establishing his son in a mercer's shop to elevate the family's standing.",
     "core_personality": "{\"Strength\": \"Industrious\", \"Flaw\": \"Calculating\", \"Drive\": \"Security-driven\", \"MBTI\": \"ISTJ\", \"PrimaryTrait\": \"Self-made cittadini with humble awareness\", \"SecondaryTraits\": [\"Social ascent mastery\", \"Security obsession\", \"Practical wisdom\"], \"CognitiveBias\": [\"Loss aversion\", \"Scarcity mindset\"], \"TrustThreshold\": 0.4, \"EmpathyWeight\": 0.5, \"RiskTolerance\": 0.2, \"guidedBy\": \"The Climb's Memory\", \"CoreThoughts\": {\"primary_drive\": \"security-preservation\", \"secondary_drive\": \"status-maintenance\", \"internal_tension\": \"humble origins vs. cittadini expectations\", \"activation_triggers\": [\"security_threats\", \"status_opportunities\", \"poverty_reminders\"], \"thought_patterns\": [\"I climbed too far to ever fall back to poverty\", \"Every decision must consider how it protects what I've built\", \"My facchina past reminds me that security is never guaranteed\", \"Hard work and fair dealing built this position\", \"Tangible assets provide more security than risky ventures\", \"The climb taught me that each step up requires more careful planning\"], \"decision_framework\": \"How does this secure my position while honoring the climb that brought me here?\"}}",
@@ -1382,6 +1382,13 @@ Here is the complete data about your current situation:
       "has_water_access": false,
       "district": "San Polo",
       "existing_buildings": [
+        {
+          "id": "building_45.43839918445191_12.326301049069482",
+          "type": "house_of_natural_sciences",
+          "owner": "ConsiglioDeiDieci",
+          "income": 0,
+          "maintenance_cost": 0
+        },
         {
           "id": "bridge_45.437103_12.323849",
           "type": "bridge",
@@ -3214,7 +3221,7 @@ Here is the complete data about your current situation:
   "target_relevancies": [],
   "latest_citizen_problems": [
     {
-      "id": "recFiIdOsayDkkXkg",
+      "id": "reccZqgnyfff2GxR6",
       "fields": {
         "ProblemId": "hungry_MerchantLegend",
         "Citizen": "MerchantLegend",
@@ -3222,19 +3229,67 @@ Here is the complete data about your current situation:
         "AssetType": "citizen",
         "Severity": "medium",
         "Status": "active",
-        "CreatedAt": "2025-06-25T05:46:13.926Z",
-        "UpdatedAt": "2025-06-25T09:16:02.000Z",
+        "CreatedAt": "2025-06-27T02:07:35.169Z",
+        "UpdatedAt": "2025-06-27T18:42:14.000Z",
         "Location": "Antonio 's last known area",
         "Title": "Hungry Citizen",
         "Description": "**Antonio  Mercanti** has not eaten in over 24 hours and is now hungry. This can affect their well-being and ability to perform tasks effectively.\n\n### Impact\n- Reduced energy and focus.\n- If employed, work productivity may be reduced by up to 50%.\n- Prolonged hunger can lead to more severe health issues (if implemented).",
         "Solutions": "### Recommended Solutions\n- Ensure the citizen consumes food. This might involve visiting a tavern, purchasing food from a market, or using owned food resources.\n- Check if the citizen has sufficient Ducats to afford food.\n- Review game mechanics related to food consumption and ensure the 'AteAt' (or equivalent) field is updated correctly after eating.",
-        "Notes": "[Failures: 1]\nCitizen MerchantLegend last ate at 2025-06-16T20:08:16.008Z. Current time: 2025-06-25T05:46:13.908Z",
+        "Notes": "[Failures: 1]\nCitizen MerchantLegend last ate at 2025-06-16T20:08:16.008Z. Current time: 2025-06-27T02:07:35.147Z",
         "Position": "{\"lat\":45.442293609762764,\"lng\":12.32538164076128}",
         "Type": "hungry_citizen"
       }
     }
   ],
   "recent_notifications_for_ai": [
+    {
+      "notificationId": "recDPpFnxVGMkiv2Z",
+      "type": "rent_payment",
+      "citizen": "MerchantLegend",
+      "content": "\ud83d\udcec **Rent Received Summary** \ud83d\udcec\nYou received a total of **2,795 \u269c\ufe0f Ducats** from your properties today.\n\nDetails:\n- \u2705 **1,425 \u269c\ufe0f** from **Bernardo Morlacco** for **Fisherman's Cottage at Riva dei Bernardo**.\n- \u2705 **1,370 \u269c\ufe0f** from **Matteo Foscari** for **Fisherman's Cottage at Riva degli Scultori**.\n",
+      "details": {
+        "event_type": "landlord_rent_summary",
+        "total_received": 2795,
+        "payments": [
+          {
+            "occupant_name": "Bernardo Morlacco",
+            "building_name": "Fisherman's Cottage at Riva dei Bernardo",
+            "amount": 1425
+          },
+          {
+            "occupant_name": "Matteo Foscari",
+            "building_name": "Fisherman's Cottage at Riva degli Scultori",
+            "amount": 1370
+          }
+        ]
+      },
+      "createdAt": "2025-06-27T18:03:37.027Z",
+      "readAt": null
+    },
+    {
+      "notificationId": "recKV56qRNnVwih8R",
+      "type": "rent_payment",
+      "citizen": "MerchantLegend",
+      "content": "\ud83d\udcec **Rent Received Summary** \ud83d\udcec\nYou received a total of **2,795 \u269c\ufe0f Ducats** from your properties today.\n\nDetails:\n- \u2705 **1,425 \u269c\ufe0f** from **Bernardo Morlacco** for **Fisherman's Cottage at Riva dei Bernardo**.\n- \u2705 **1,370 \u269c\ufe0f** from **Matteo Foscari** for **Fisherman's Cottage at Riva degli Scultori**.\n",
+      "details": {
+        "event_type": "landlord_rent_summary",
+        "total_received": 2795,
+        "payments": [
+          {
+            "occupant_name": "Bernardo Morlacco",
+            "building_name": "Fisherman's Cottage at Riva dei Bernardo",
+            "amount": 1425
+          },
+          {
+            "occupant_name": "Matteo Foscari",
+            "building_name": "Fisherman's Cottage at Riva degli Scultori",
+            "amount": 1370
+          }
+        ]
+      },
+      "createdAt": "2025-06-27T16:03:31.864Z",
+      "readAt": null
+    },
     {
       "notificationId": "rec1V0w0e6hRZ9DOt",
       "type": "rent_payment",
@@ -3666,30 +3721,6 @@ Here is the complete data about your current situation:
       },
       "createdAt": "2025-06-13T16:03:30.127Z",
       "readAt": null
-    },
-    {
-      "notificationId": "rec8yP5nB6jS0Xwd9",
-      "type": "rent_payment",
-      "citizen": "MerchantLegend",
-      "content": "\ud83d\udcec **Rent Received Summary** \ud83d\udcec\nYou received a total of **2,795 \u269c\ufe0f Ducats** from your properties today.\n\nDetails:\n- \u2705 **1,425 \u269c\ufe0f** from **Bernardo Morlacco** for **Fisherman's Cottage at Riva dei Bernardo**.\n- \u2705 **1,370 \u269c\ufe0f** from **Matteo Foscari** for **Fisherman's Cottage at Riva degli Scultori**.\n",
-      "details": {
-        "event_type": "landlord_rent_summary",
-        "total_received": 2795,
-        "payments": [
-          {
-            "occupant_name": "Bernardo Morlacco",
-            "building_name": "Fisherman's Cottage at Riva dei Bernardo",
-            "amount": 1425
-          },
-          {
-            "occupant_name": "Matteo Foscari",
-            "building_name": "Fisherman's Cottage at Riva degli Scultori",
-            "amount": 1370
-          }
-        ]
-      },
-      "createdAt": "2025-06-12T18:03:43.652Z",
-      "readAt": null
     }
   ],
   "building_types": {
@@ -3899,7 +3930,7 @@ Here is the complete data about your current situation:
       "constructionMinutes": 7200,
       "buildTier": 1,
       "tier": null,
-      "category": "Public & Government",
+      "category": "religion",
       "pointType": "building"
     },
     "cistern": {
@@ -3976,25 +4007,6 @@ Here is the complete data about your current situation:
       "category": "home",
       "pointType": "canal"
     },
-    "glassblower_workshop": {
-      "id": "glassblower_workshop",
-      "type": "glassblower_workshop",
-      "name": "Glassblower Workshop",
-      "shortDescription": "Specialized facility where skilled artisans shape molten glass into fine objects and art pieces.",
-      "constructionCost": 1500000,
-      "constructionCosts": {
-        "ducats": 1500000,
-        "timber": 430,
-        "bricks": 1070,
-        "stone": 570,
-        "iron": 290
-      },
-      "constructionMinutes": 5760,
-      "buildTier": 2,
-      "tier": null,
-      "category": "business",
-      "pointType": "building"
-    },
     "glass_foundry": {
       "id": "glass_foundry",
       "type": "glass_foundry",
@@ -4009,6 +4021,25 @@ Here is the complete data about your current situation:
         "iron": 390
       },
       "constructionMinutes": 10080,
+      "buildTier": 2,
+      "tier": null,
+      "category": "business",
+      "pointType": "building"
+    },
+    "glassblower_workshop": {
+      "id": "glassblower_workshop",
+      "type": "glassblower_workshop",
+      "name": "Glassblower Workshop",
+      "shortDescription": "Specialized facility where skilled artisans shape molten glass into fine objects and art pieces.",
+      "constructionCost": 1500000,
+      "constructionCosts": {
+        "ducats": 1500000,
+        "timber": 430,
+        "bricks": 1070,
+        "stone": 570,
+        "iron": 290
+      },
+      "constructionMinutes": 5760,
       "buildTier": 2,
       "tier": null,
       "category": "business",
@@ -4254,7 +4285,7 @@ Here is the complete data about your current situation:
       "constructionMinutes": 43200,
       "buildTier": 2,
       "tier": null,
-      "category": "Public & Government",
+      "category": "religion",
       "pointType": "building"
     },
     "porter_guild_hall": {
@@ -4615,7 +4646,7 @@ Here is the complete data about your current situation:
       "pointType": "building"
     }
   },
-  "timestamp": "2025-06-26T21:03:43.165833+02:00",
+  "timestamp": "2025-06-27T21:44:45.822723+02:00",
   "building_ownership_relevancies": [
     {
       "asset": "building_45.432265_12.355002",
