@@ -11,7 +11,7 @@ import re # Added import for regular expressions
 import requests
 import time
 import threading # Ajout de threading
-from datetime import datetime
+from datetime import datetime, timedelta
 from fastapi.responses import JSONResponse, FileResponse
 from dotenv import load_dotenv
 import pathlib
@@ -182,8 +182,94 @@ async def lifespan(app: FastAPI):
 # Create FastAPI app with lifespan manager
 app = FastAPI(title="Wallet Storage API", lifespan=lifespan)
 
+# Initialize PROBLEMS table for error tracking
+try:
+    AIRTABLE_PROBLEMS_TABLE_NAME = os.getenv("AIRTABLE_PROBLEMS_TABLE", "PROBLEMS")
+    problems_table = Table(AIRTABLE_API_KEY, AIRTABLE_BASE_ID, AIRTABLE_PROBLEMS_TABLE_NAME)
+    print(f"Initialized Airtable PROBLEMS table object: {AIRTABLE_PROBLEMS_TABLE_NAME}")
+except Exception as e:
+    print(f"ERROR initializing Airtable PROBLEMS table: {str(e)}")
+    problems_table = None
+
 # Setup logger for this module
 log = logging.getLogger(__name__)
+
+# --- Problem Creation Function ---
+def create_api_problem(
+    endpoint: str, 
+    method: str, 
+    error_type: str, 
+    error_message: str, 
+    request_data: Optional[Dict] = None,
+    traceback_info: str = ""
+) -> bool:
+    """Creates a problem record when an API endpoint fails."""
+    if not problems_table:
+        print("Cannot create problem record - PROBLEMS table not initialized")
+        return False
+        
+    try:
+        # Generate unique problem ID
+        problem_id = f"api_error_{datetime.now().strftime('%Y%m%d_%H%M%S')}_{endpoint.replace('/', '_').strip('_')}"
+        
+        # Truncate traceback if too long
+        if len(traceback_info) > 1000:
+            traceback_info = traceback_info[:1000] + "\n[...truncated...]"
+            
+        # Build description
+        description_parts = [
+            f"API endpoint '{endpoint}' ({method}) encountered an error.",
+            f"\nError Type: {error_type}",
+            f"Error Message: {error_message}"
+        ]
+        
+        if request_data:
+            # Truncate request data if too long
+            request_str = json.dumps(request_data, indent=2)
+            if len(request_str) > 500:
+                request_str = request_str[:500] + "\n[...truncated...]"
+            description_parts.append(f"\nRequest Data:\n{request_str}")
+            
+        if traceback_info:
+            description_parts.append(f"\nTraceback:\n{traceback_info}")
+            
+        problem_data = {
+            'ProblemId': problem_id,
+            'Type': 'api_endpoint_error',
+            'Title': f"API Error: {endpoint} ({method})",
+            'Description': "\n".join(description_parts),
+            'Status': 'active',
+            'Severity': 'High' if error_type == "Internal Server Error" else 'Medium',
+            'AssetType': 'api',
+            'Asset': endpoint,
+            'Citizen': 'ConsiglioDeiDieci',  # System problems assigned to admin
+            'CreatedAt': datetime.now().isoformat(),
+            'Solutions': json.dumps([
+                "Check the error message and traceback for specific issues",
+                "Verify all required environment variables are set",
+                "Check if Airtable tables are properly initialized",
+                "Review recent code changes to the endpoint",
+                "Ensure request data matches expected format",
+                "Check for missing dependencies or import errors"
+            ])
+        }
+        
+        # Check if similar problem already exists (same endpoint error in last hour)
+        one_hour_ago = (datetime.now() - timedelta(hours=1)).isoformat()
+        formula = f"AND({{Type}} = 'api_endpoint_error', {{Asset}} = '{endpoint}', {{CreatedAt}} >= '{one_hour_ago}')"
+        existing_problems = problems_table.all(formula=formula, max_records=1)
+        
+        if not existing_problems:
+            problems_table.create(problem_data)
+            print(f"Created problem record for API error: {endpoint}")
+            return True
+        else:
+            print(f"Similar API problem already exists for {endpoint}, skipping creation")
+            return False
+            
+    except Exception as e:
+        print(f"Failed to create API problem record: {e}")
+        return False
 
 # Define log_header function (or import if it's moved to a central utility)
 # For now, defining it here if it's specific to main.py's direct use
@@ -204,6 +290,101 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+# --- Request Body Middleware ---
+from starlette.middleware.base import BaseHTTPMiddleware
+
+class RequestBodyMiddleware(BaseHTTPMiddleware):
+    async def dispatch(self, request: Request, call_next):
+        # Store the body for potential error handling
+        if request.method in ["POST", "PUT", "PATCH"]:
+            content_type = request.headers.get("content-type", "")
+            if "application/json" in content_type:
+                try:
+                    body = await request.body()
+                    request.state._body = body
+                except:
+                    pass
+        response = await call_next(request)
+        return response
+
+app.add_middleware(RequestBodyMiddleware)
+
+# --- Global Exception Handler ---
+from fastapi import Request
+from fastapi.responses import JSONResponse
+from fastapi.exceptions import RequestValidationError
+
+@app.exception_handler(Exception)
+async def global_exception_handler(request: Request, exc: Exception):
+    """Catch all unhandled exceptions and create problem records."""
+    # Don't create problems for validation errors (user error, not system error)
+    if isinstance(exc, (HTTPException, RequestValidationError)):
+        raise exc
+        
+    # Get endpoint and method
+    endpoint = request.url.path
+    method = request.method
+    
+    # Get error details
+    error_type = type(exc).__name__
+    error_message = str(exc)
+    traceback_str = traceback.format_exc()
+    
+    # Try to get request data (be careful with large uploads)
+    request_data = None
+    try:
+        if request.method in ["POST", "PUT", "PATCH"]:
+            # Don't try to read body for file uploads
+            content_type = request.headers.get("content-type", "")
+            if "application/json" in content_type and hasattr(request.state, "_body"):
+                # Parse the stored body
+                request_data = json.loads(request.state._body)
+    except:
+        pass  # If we can't get request data, that's okay
+    
+    # Create problem record
+    create_api_problem(
+        endpoint=endpoint,
+        method=method,
+        error_type=error_type,
+        error_message=error_message,
+        request_data=request_data,
+        traceback_info=traceback_str
+    )
+    
+    # Log the error
+    log.error(f"Unhandled exception in {method} {endpoint}: {error_type}: {error_message}")
+    log.error(traceback_str)
+    
+    # Send Telegram notification for critical errors (optional)
+    telegram_bot_token = os.getenv("TELEGRAM_BOT_TOKEN")
+    if telegram_bot_token:
+        try:
+            telegram_message = (
+                f"❌ *API Error*\n\n"
+                f"Endpoint: `{method} {endpoint}`\n"
+                f"Error: `{error_type}: {error_message}`\n\n"
+                f"A problem record has been created for Arsenale to investigate."
+            )
+            telegram_url = f"https://api.telegram.org/bot{telegram_bot_token}/sendMessage"
+            requests.post(telegram_url, json={
+                "chat_id": "1864364329",
+                "text": telegram_message,
+                "parse_mode": "Markdown"
+            }, timeout=5)
+        except:
+            pass  # Don't let Telegram failures affect the response
+    
+    # Return generic error response
+    return JSONResponse(
+        status_code=500,
+        content={
+            "success": False,
+            "detail": "Internal server error. The issue has been logged for investigation.",
+            "error_id": f"api_error_{datetime.now().strftime('%Y%m%d_%H%M%S')}"
+        }
+    )
 
 # --- Pydantic Models for API Requests/Responses ---
 class TryCreateActivityRequest(BaseModel):
