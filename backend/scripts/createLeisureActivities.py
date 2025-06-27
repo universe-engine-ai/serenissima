@@ -32,8 +32,8 @@ from backend.engine.utils.activity_helpers import (
     _fetch_and_assign_random_starting_position,
     SOCIAL_CLASS_SCHEDULES # Import schedule dictionary
 )
-# Import specific leisure activity handlers from citizen_general_activities
-from backend.engine.logic.citizen_general_activities import (
+# Import specific leisure activity handlers from leisure handler module
+from backend.engine.handlers.leisure import (
     _handle_attend_theater_performance,
     _handle_drink_at_inn,
     _handle_work_on_art,
@@ -177,23 +177,6 @@ def create_leisure_activities(dry_run: bool = False, target_citizen_username: Op
         }
     }
     
-    # Apply class-specific modifiers
-    priority_values = base_priority_values.copy()
-    if citizen_social_class in class_priority_modifiers:
-        for activity, new_priority in class_priority_modifiers[citizen_social_class].items():
-            if activity in priority_values:
-                priority_values[activity] = new_priority
-    
-    leisure_activity_handlers_config = {
-        "attend_theater_performance": (_handle_attend_theater_performance, priority_values["attend_theater_performance"], "Aller au théâtre"),
-        "drink_at_inn": (_handle_drink_at_inn, priority_values["drink_at_inn"], "Boire un verre à l'auberge"),
-        "work_on_art": (_handle_work_on_art, priority_values["work_on_art"], "Travailler sur une œuvre d'art (Artisti)"),
-        "read_book": (_handle_read_book, priority_values["read_book"], "Lire un livre"),
-    }
-    leisure_candidates_for_weighted_selection = [
-        (func, prio, desc) for type_str, (func, prio, desc) in leisure_activity_handlers_config.items()
-    ]
-
     for citizen_record_full in citizens_to_process:
         citizen_custom_id = citizen_record_full['fields'].get('CitizenId')
         citizen_username = citizen_record_full['fields'].get('Username')
@@ -202,6 +185,23 @@ def create_leisure_activities(dry_run: bool = False, target_citizen_username: Op
         citizen_social_class = citizen_record_full['fields'].get('SocialClass', 'Facchini')
         
         log.info(f"\nProcessing citizen: {citizen_name} (Class: {citizen_social_class})")
+        
+        # Apply class-specific modifiers for this citizen
+        priority_values = base_priority_values.copy()
+        if citizen_social_class in class_priority_modifiers:
+            for activity, new_priority in class_priority_modifiers[citizen_social_class].items():
+                if activity in priority_values:
+                    priority_values[activity] = new_priority
+        
+        leisure_activity_handlers_config = {
+            "attend_theater_performance": (_handle_attend_theater_performance, priority_values["attend_theater_performance"], "Aller au théâtre"),
+            "drink_at_inn": (_handle_drink_at_inn, priority_values["drink_at_inn"], "Boire un verre à l'auberge"),
+            "work_on_art": (_handle_work_on_art, priority_values["work_on_art"], "Travailler sur une œuvre d'art (Artisti)"),
+            "read_book": (_handle_read_book, priority_values["read_book"], "Lire un livre"),
+        }
+        leisure_candidates_for_weighted_selection = [
+            (func, prio, desc) for type_str, (func, prio, desc) in leisure_activity_handlers_config.items()
+        ]
 
         # Determine a simulated leisure time for this citizen
         # This time will be passed to the handlers to bypass their internal time checks.

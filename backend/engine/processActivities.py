@@ -162,7 +162,8 @@ from backend.engine.activity_processors import (
         process_use_public_bath as process_use_public_bath_fn, # New public bath processor
         process_rest as process_rest_fn, # New rest processor
         process_occupant_self_construction_fn, # New occupant self-construction processor
-        process_spread_rumor_fn # Import spread_rumor processor
+        process_spread_rumor_fn, # Import spread_rumor processor
+        process_pray # Import pray processor
 )
 from backend.engine.activity_processors.manage_public_import_contract_processor import process_manage_public_import_contract_fn
 from backend.engine.activity_processors.bid_on_land_activity_processor import process_bid_on_land_fn
@@ -517,6 +518,7 @@ def main(dry_run: bool = False, target_citizen_username: Optional[str] = None, f
         "rest": process_rest_fn, # New rest processor
         "occupant_self_construction": process_occupant_self_construction_fn, # New
         "idle": process_placeholder_activity_fn,
+        "pray": process_pray, # Pray processor
         "bid_on_land": process_bid_on_land_fn,
         "goto_location": process_goto_location_fn, # New processor for multi-activity chains
         "submit_land_bid": process_bid_on_land_fn, # Second step in bid_on_land chain
@@ -816,6 +818,7 @@ def process_all_activities_for_one_citizen(
         "rest": process_rest_fn, # New rest processor
         "occupant_self_construction": process_occupant_self_construction_fn, # New
         "idle": process_placeholder_activity_fn,
+        "pray": process_pray, # Pray processor
         "bid_on_land": process_bid_on_land_fn,
         "goto_location": process_goto_location_fn,
         "submit_land_bid": process_bid_on_land_fn,
@@ -876,8 +879,13 @@ def process_all_activities_for_one_citizen(
                         processing_status = "failed"
                 elif processor_func:
                     # Pass api_base_url_for_processors to the processor function
-                    if not processor_func(tables, activity_record, building_type_defs, resource_defs, api_base_url_for_processors):
-                        processing_status = "failed"
+                    # For activities that use KinOS (pray, etc.), also pass kinos_model_override
+                    if activity_type == "pray":
+                        if not processor_func(tables, activity_record, building_type_defs, resource_defs, api_base_url_for_processors, kinos_model_override):
+                            processing_status = "failed"
+                    else:
+                        if not processor_func(tables, activity_record, building_type_defs, resource_defs, api_base_url_for_processors):
+                            processing_status = "failed"
                 else:
                     log.warning(f"{LogColors.WARNING}Citizen {citizen_username_log_ctx}: No processor for activity type: {activity_type} (ID: {activity_guid}). Marking as failed.{LogColors.ENDC}")
                     log.info(f"Available processors: {', '.join(sorted(ACTIVITY_PROCESSORS.keys()))}")

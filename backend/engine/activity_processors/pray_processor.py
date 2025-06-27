@@ -21,7 +21,6 @@ from backend.engine.utils.relationship_helpers import (
 
 log = logging.getLogger(__name__)
 
-PRAY_MOOD_GAIN = 5  # Mood gain from praying
 PRAY_INFLUENCE_GAIN = 2  # Small influence gain from being seen at church
 
 # KinOS constants
@@ -74,7 +73,7 @@ def _call_kinos_for_prayer_async(
     """
     log.info(f"  [Thread: {threading.get_ident()}] Calling KinOS for prayer reflection by {citizen_username_log}")
     try:
-        kinos_response = requests.post(kinos_url, json=kinos_payload, timeout=120)
+        kinos_response = requests.post(kinos_url, json=kinos_payload, timeout=600)  # 10 minutes timeout
         kinos_response.raise_for_status()
         
         kinos_response_data = kinos_response.json()
@@ -89,7 +88,7 @@ def _call_kinos_for_prayer_async(
                 "Receiver": citizen_username_log,
                 "Content": prayer_reflection,
                 "Type": "prayer",
-                "ChannelName": citizen_username_log,
+                "Channel": citizen_username_log,
                 "CreatedAt": datetime.now(VENICE_TIMEZONE).isoformat(),
                 "ReadAt": datetime.now(VENICE_TIMEZONE).isoformat()  # Mark as read immediately
             })
@@ -122,7 +121,8 @@ def process(
     activity_record: Dict[str, Any],
     building_type_defs: Dict[str, Any],
     resource_defs: Dict[str, Any],
-    api_base_url: Optional[str] = None
+    api_base_url: Optional[str] = None,
+    kinos_model_override: Optional[str] = None
 ) -> bool:
     """
     Processes the 'pray' activity.
@@ -163,15 +163,9 @@ def process(
     citizen_social_class = citizen_airtable_record['fields'].get('SocialClass', 'Popolani')
     citizen_name = f"{citizen_airtable_record['fields'].get('FirstName', '')} {citizen_airtable_record['fields'].get('LastName', '')}".strip() or citizen_username
     
-    # Apply mood gain from praying
-    try:
-        current_mood = citizen_airtable_record['fields'].get('Mood', 50)
-        new_mood = min(100, current_mood + PRAY_MOOD_GAIN)
-        
-        tables['citizens'].update(citizen_airtable_record['id'], {'Mood': new_mood})
-        log.info(f"{LogColors.OKGREEN}{citizen_name} feels more peaceful after praying at {church_name} ({current_mood} -> {new_mood}, +{PRAY_MOOD_GAIN} mood).{LogColors.ENDC}")
-    except Exception as e:
-        log.error(f"{LogColors.FAIL}Failed to adjust mood for {citizen_name}: {e}{LogColors.ENDC}")
+    # Note: Mood is calculated dynamically from ledger data, not stored in CITIZENS table
+    # The act of praying itself will be recorded and can influence mood calculations
+    log.info(f"{LogColors.OKGREEN}{citizen_name} feels more peaceful after praying at {church_name}.{LogColors.ENDC}")
 
     # Add small influence gain
     current_influence = float(citizen_airtable_record['fields'].get('Influence', 0.0))
@@ -271,7 +265,7 @@ def process(
 
             kinos_payload_dict: Dict[str, Any] = {
                 "message": kinos_prompt,
-                "model": "local",
+                "model": kinos_model_override if kinos_model_override else "local",
                 "addSystem": json.dumps(structured_add_system_payload)
             }
             

@@ -1,7 +1,7 @@
 {
   "name": "Parish Church",
   "pointType": "building",
-  "category": "religion",
+  "category": "religious",
   "subCategory": "Religious Buildings",
   "size": 3,
   "unlockCondition": "10,000,000 ducats, Church approval, local community support",

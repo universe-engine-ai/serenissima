@@ -89,19 +89,36 @@ def try_create_drink_at_inn_activity(
         log.info(f"{LogColors.OKBLUE}[Boire Auberge] {citizen_name_log}: Aucune auberge trouvée vendant du vin/vin épicé avec stock.{LogColors.ENDC}")
         return None
 
-    # Find the closest valid inn
+    # Find the closest valid inn that isn't overcrowded
     closest_inn_record = None
     min_distance = float('inf')
     for inn_rec in valid_inns_with_drinks:
         inn_pos_iter = _get_building_position_coords(inn_rec)
         if inn_pos_iter:
+            # Check building capacity (max 10 citizens)
+            inn_building_id = inn_rec['fields'].get('BuildingId')
+            inn_position_str = inn_rec['fields'].get('Position', '')
+            
+            # Count citizens at this building by checking their Position field
+            citizens_at_inn_formula = f"{{Position}}='{_escape_airtable_value(inn_position_str)}'"
+            try:
+                citizens_at_inn = tables['citizens'].all(formula=citizens_at_inn_formula)
+                citizen_count = len(citizens_at_inn)
+                
+                if citizen_count >= 10:
+                    log.info(f"{LogColors.WARNING}[Boire Auberge] {inn_rec['fields'].get('Name', inn_building_id)} est plein ({citizen_count} citoyens). Capacité max: 10.{LogColors.ENDC}")
+                    continue  # Skip this inn, it's at capacity
+            except Exception as e:
+                log.error(f"Erreur vérification capacité pour {inn_building_id}: {e}")
+                # Continue anyway if we can't check capacity
+            
             distance = _calculate_distance_meters(citizen_position, inn_pos_iter)
             if distance < min_distance:
                 min_distance = distance
                 closest_inn_record = inn_rec
     
     if not closest_inn_record:
-        log.info(f"{LogColors.OKBLUE}[Boire Auberge] {citizen_name_log}: Aucune auberge valide accessible trouvée.{LogColors.ENDC}")
+        log.info(f"{LogColors.OKBLUE}[Boire Auberge] {citizen_name_log}: Aucune auberge valide accessible trouvée (toutes pleines ou sans stock).{LogColors.ENDC}")
         return None
 
     inn_custom_id = closest_inn_record['fields'].get('BuildingId')

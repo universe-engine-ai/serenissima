@@ -27,7 +27,7 @@ from backend.engine.utils.activity_helpers import (
 )
 
 # Import specific activity creators
-from backend.engine.activity_creators.send_message_creator import try_create as try_create_send_message_chain
+from backend.engine.activity_creators import try_create_send_message_activity as try_create_send_message_chain
 from backend.engine.activity_creators.spread_rumor_activity_creator import try_create as try_create_spread_rumor_activity
 
 log = logging.getLogger(__name__)

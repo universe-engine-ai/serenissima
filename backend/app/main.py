@@ -1,4 +1,4 @@
-from fastapi import FastAPI, HTTPException, File, UploadFile, Form, Header
+from fastapi import FastAPI, HTTPException, File, UploadFile, Form, Header, Request
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from pyairtable import Api, Table
@@ -3445,7 +3445,7 @@ async def try_create_activity_endpoint(request_data: TryCreateActivityRequest):
             get_building_types_from_api,
             VENICE_TIMEZONE # Import VENICE_TIMEZONE
         )
-        from backend.engine.logic.citizen_general_activities import dispatch_specific_activity_request
+        from backend.engine.main_engine import dispatch_specific_activity_request
 
         # Fetch citizen record
         citizen_record_list = tables_engine['citizens'].all(formula=f"{{Username}}='{_escape_airtable_value(request_data.citizenUsername)}'", max_records=1)

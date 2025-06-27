@@ -9,7 +9,7 @@ interface FieldSet {
 interface AirtableRecord<TFields extends FieldSet> {
   id: string;
   fields: TFields;
-  createdTime: string;
+  createdAt: string;
 }
 
 // Airtable Configuration

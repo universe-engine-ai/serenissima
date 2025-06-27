@@ -1,7 +1,7 @@
 {
   "name": "St. Mark's Basilica",
   "pointType": "building",
-  "category": "religion",
+  "category": "religious",
   "subCategory": "Unique Structures",
   "size": 4,
   "unlockCondition": "Religious structure only, not privately constructable",

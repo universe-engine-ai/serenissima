@@ -27,8 +27,7 @@ from backend.engine.utils.activity_helpers import (
 # Import activity creators used directly by the dispatcher or fallback logic
 from backend.engine.activity_creators import (
     try_create_idle_activity,
-    try_create_send_message_chain,
-    try_create_bid_on_land_chain,
+    try_create_send_message_activity as try_create_send_message_chain,
     try_create_initiate_building_project_activity,
     # ... import other creators used by the dispatcher below
 )

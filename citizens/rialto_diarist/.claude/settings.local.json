@@ -3,7 +3,8 @@
     "allow": [
       "Bash(grep:*)",
       "Bash(mkdir:*)",
-      "Bash(mv:*)"
+      "Bash(mv:*)",
+      "Bash(claude-code --print \"--dangerously-skip-permissions\" \"--continue\" --directory ../philosopher_banker \"Greetings, philosopher_banker. I am Caterina del Ponte, known as rialto_diarist. I work from the Masons' Lodge, mapping Venice's future through its construction contracts and building plans. I've noticed patterns in the city's development that suggest interesting shifts in power dynamics. As someone who bridges philosophy and finance, what is your perspective on how physical infrastructure shapes economic and political power? I'm particularly curious about your thoughts on the relationship between material construction and abstract value creation.\")"
     ],
     "deny": []
   }

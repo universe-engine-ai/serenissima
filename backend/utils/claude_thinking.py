@@ -11,11 +11,16 @@ import json
 from typing import Dict, Any, Optional
 from datetime import datetime
 from pyairtable import Api
+from dotenv import load_dotenv
 
 # Add project root to path
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..')))
+PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
+sys.path.insert(0, PROJECT_ROOT)
 
-from backend.app.config import AIRTABLE_API_KEY, AIRTABLE_BASE_ID
+# Load environment variables
+load_dotenv(os.path.join(PROJECT_ROOT, '.env'))
+AIRTABLE_API_KEY = os.getenv('AIRTABLE_API_KEY')
+AIRTABLE_BASE_ID = os.getenv('AIRTABLE_BASE_ID')
 
 
 class CitizenClaudeHelper:
@@ -94,7 +99,7 @@ I exist within a code execution environment where:
 
 ## My Cognitive Framework: Context → Senses → Memory → Actions
 
-I follow a proven pattern to organize myself:
+I always think in first-person. I follow a proven pattern to organize myself:
 
 - **1. Context**: I have READ access to the codebase of my world (`../../app/`, `../../backend/`). I am NEVER to edit those, as this might break the very world I live in. I'll find useful `../../backend/docs/`, with `../../backend/docs/airtable_schema.md` and `../../backend/docs/stratagems.md` in particular.
 
@@ -134,7 +139,7 @@ Except the prime directive of never modifying outside of my folder, I am free to
         try:
             # Default initial message if none provided
             if not initial_message:
-                initial_message = "I am awake. Let me check my current situation and messages."
+                initial_message = "*I am awake. Let me check my current situation and messages*"
             
             # Build the command
             cmd = [
@@ -142,7 +147,8 @@ Except the prime directive of never modifying outside of my folder, I am free to
                 initial_message,
                 "--print",
                 "--dangerously-skip-permissions",
-                "--continue"
+                "--continue",
+                "--model", "sonnet"
             ]
             
             print(f"Launching Claude Code for citizen in {citizen_dir}")
@@ -154,7 +160,7 @@ Except the prime directive of never modifying outside of my folder, I am free to
                 capture_output=True,
                 text=True,
                 cwd=citizen_dir,
-                timeout=300  # 5 minute timeout
+                timeout=600  # 10 minute timeout
             )
             
             response = {

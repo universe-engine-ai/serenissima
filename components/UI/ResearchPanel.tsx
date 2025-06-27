@@ -1,16 +1,20 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import { FaTimes } from 'react-icons/fa';
+import MessageCriticality from './Criticality/MessageCriticality';
 
 interface ResearchPanelProps {
   onClose: () => void;
 }
 
 export default function ResearchPanel({ onClose }: ResearchPanelProps) {
+  const [activeTab, setActiveTab] = useState<'inquiry' | 'criticality'>('inquiry');
+  const [criticalitySubTab, setCriticalitySubTab] = useState<'messages' | 'transactions' | 'relationships'>('messages');
+
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
-      <div className="bg-amber-50 rounded-lg shadow-xl max-w-4xl w-full max-h-[90vh] overflow-hidden flex flex-col">
+      <div className="bg-amber-50 rounded-lg shadow-xl max-w-6xl w-full max-h-[90vh] overflow-hidden flex flex-col">
         <div className="flex justify-between items-center border-b border-amber-200 p-4">
           <h2 className="text-2xl font-serif text-amber-900">Research at La Serenissima</h2>
           <button 
@@ -22,8 +26,69 @@ export default function ResearchPanel({ onClose }: ResearchPanelProps) {
           </button>
         </div>
         
+        {/* Tab Navigation */}
+        <div className="flex border-b border-amber-200 bg-amber-100">
+          <button
+            onClick={() => setActiveTab('inquiry')}
+            className={`px-6 py-3 font-medium transition-colors ${
+              activeTab === 'inquiry' 
+                ? 'text-amber-900 bg-amber-50 border-b-2 border-amber-600' 
+                : 'text-amber-700 hover:text-amber-900 hover:bg-amber-50'
+            }`}
+          >
+            Inquiry
+          </button>
+          <button
+            onClick={() => setActiveTab('criticality')}
+            className={`px-6 py-3 font-medium transition-colors ${
+              activeTab === 'criticality' 
+                ? 'text-amber-900 bg-amber-50 border-b-2 border-amber-600' 
+                : 'text-amber-700 hover:text-amber-900 hover:bg-amber-50'
+            }`}
+          >
+            Criticality
+          </button>
+        </div>
+        
+        {/* Criticality Sub-tabs */}
+        {activeTab === 'criticality' && (
+          <div className="flex border-b border-amber-100 bg-amber-50 px-4">
+            <button
+              onClick={() => setCriticalitySubTab('messages')}
+              className={`px-4 py-2 text-sm font-medium transition-colors ${
+                criticalitySubTab === 'messages' 
+                  ? 'text-amber-900 border-b-2 border-amber-500' 
+                  : 'text-amber-600 hover:text-amber-800'
+              }`}
+            >
+              Messages
+            </button>
+            <button
+              onClick={() => setCriticalitySubTab('transactions')}
+              className={`px-4 py-2 text-sm font-medium transition-colors ml-4 ${
+                criticalitySubTab === 'transactions' 
+                  ? 'text-amber-900 border-b-2 border-amber-500' 
+                  : 'text-amber-600 hover:text-amber-800'
+              }`}
+            >
+              Transactions
+            </button>
+            <button
+              onClick={() => setCriticalitySubTab('relationships')}
+              className={`px-4 py-2 text-sm font-medium transition-colors ml-4 ${
+                criticalitySubTab === 'relationships' 
+                  ? 'text-amber-900 border-b-2 border-amber-500' 
+                  : 'text-amber-600 hover:text-amber-800'
+              }`}
+            >
+              Relationships
+            </button>
+          </div>
+        )}
+        
         <div className="overflow-y-auto p-6 flex-grow">
-          <div className="prose prose-amber max-w-none">
+          {activeTab === 'inquiry' ? (
+            <div className="prose prose-amber max-w-none">
             <h3 className="text-xl text-amber-800 mb-4">Open Research Initiative</h3>
             
             <p className="mb-4">
@@ -73,6 +138,21 @@ export default function ResearchPanel({ onClose }: ResearchPanelProps) {
               </p>
             </div>
           </div>
+          ) : (
+            <div className="w-full h-full">
+              {criticalitySubTab === 'messages' && <MessageCriticality />}
+              {criticalitySubTab === 'transactions' && (
+                <div className="text-center text-amber-700 mt-8">
+                  <p className="text-lg">Transaction criticality analysis coming soon...</p>
+                </div>
+              )}
+              {criticalitySubTab === 'relationships' && (
+                <div className="text-center text-amber-700 mt-8">
+                  <p className="text-lg">Relationship criticality analysis coming soon...</p>
+                </div>
+              )}
+            </div>
+          )}
         </div>
         
         <div className="border-t border-amber-200 p-4 flex justify-end">

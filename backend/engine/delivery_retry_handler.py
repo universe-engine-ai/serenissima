@@ -24,7 +24,7 @@ import pytz
 import uuid
 from typing import Dict, List, Optional, Tuple, Any
 from collections import defaultdict
-from pyairtable import Table
+from pyairtable import Api
 from dotenv import load_dotenv
 
 # Set up logging
@@ -70,7 +70,7 @@ RELAY_STATIONS = [
     {"id": "relay_castello", "position": {"lat": 45.435000, "lng": 12.352500}, "name": "Castello Relay Station"}
 ]
 
-def initialize_airtable() -> Dict[str, Table]:
+def initialize_airtable() -> Dict[str, Any]:
     """Initialize Airtable connection."""
     api_key = os.environ.get('AIRTABLE_API_KEY')
     base_id = os.environ.get('AIRTABLE_BASE_ID')
@@ -80,19 +80,20 @@ def initialize_airtable() -> Dict[str, Table]:
         sys.exit(1)
     
     try:
+        api = Api(api_key)
         return {
-            'activities': Table(api_key, base_id, 'ACTIVITIES'),
-            'citizens': Table(api_key, base_id, 'CITIZENS'),
-            'buildings': Table(api_key, base_id, 'BUILDINGS'),
-            'resources': Table(api_key, base_id, 'RESOURCES'),
-            'contracts': Table(api_key, base_id, 'CONTRACTS'),
-            'notifications': Table(api_key, base_id, 'NOTIFICATIONS')
+            'activities': api.table(base_id, 'ACTIVITIES'),
+            'citizens': api.table(base_id, 'CITIZENS'),
+            'buildings': api.table(base_id, 'BUILDINGS'),
+            'resources': api.table(base_id, 'RESOURCES'),
+            'contracts': api.table(base_id, 'CONTRACTS'),
+            'notifications': api.table(base_id, 'NOTIFICATIONS')
         }
     except Exception as e:
         log.error(f"Failed to initialize Airtable: {e}")
         sys.exit(1)
 
-def get_failed_deliveries(tables: Dict[str, Table], lookback_hours: int = 24) -> List[Dict]:
+def get_failed_deliveries(tables: Dict[str, Any], lookback_hours: int = 24) -> List[Dict]:
     """Get recent failed fetch_resource activities."""
     log.info("Fetching failed delivery activities...")
     
@@ -125,7 +126,7 @@ def get_retry_count(activity: Dict) -> int:
             return 0
     return 0
 
-def find_available_porter(tables: Dict[str, Table], location: Dict, exclude_citizens: List[str]) -> Optional[Dict]:
+def find_available_porter(tables: Dict[str, Any], location: Optional[Dict], exclude_citizens: List[str]) -> Optional[Dict]:
     """Find an available porter near the location."""
     try:
         # Get all citizens
@@ -151,12 +152,16 @@ def find_available_porter(tables: Dict[str, Table], location: Dict, exclude_citi
             except:
                 continue
             
-            # Calculate distance
-            distance = _calculate_distance_meters(position, location)
-            
-            # Skip if too far
-            if distance > 200:  # 200 meters
-                continue
+            # Calculate distance if location is provided
+            if location:
+                distance = _calculate_distance_meters(position, location)
+                
+                # Skip if too far
+                if distance > 200:  # 200 meters
+                    continue
+            else:
+                # If no location provided, use a default distance
+                distance = 100  # Default distance for sorting
             
             # Check if citizen is idle (no active activities)
             active_formula = f"AND({{Citizen}}='{_escape_airtable_value(username)}', {{Status}}!='processed', {{Status}}!='failed')"
@@ -181,7 +186,7 @@ def find_available_porter(tables: Dict[str, Table], location: Dict, exclude_citi
         log.error(f"Error finding available porter: {e}")
         return None
 
-def create_retry_activity(tables: Dict[str, Table], original_activity: Dict, new_porter: Dict, retry_count: int) -> Optional[Dict]:
+def create_retry_activity(tables: Dict[str, Any], original_activity: Dict, new_porter: Dict, retry_count: int) -> Optional[Dict]:
     """Create a retry fetch_resource activity."""
     try:
         original_fields = original_activity['fields']
@@ -246,7 +251,7 @@ def create_retry_activity(tables: Dict[str, Table], original_activity: Dict, new
         log.error(f"Error creating retry activity: {e}")
         return None
 
-def create_automated_delivery(tables: Dict[str, Table], activity: Dict) -> bool:
+def create_automated_delivery(tables: Dict[str, Any], activity: Dict) -> bool:
     """Create an automated delivery for small packages."""
     try:
         fields = activity['fields']
@@ -375,7 +380,7 @@ def find_relay_station(start_pos: Dict, end_pos: Dict) -> Optional[Dict]:
     
     return best_station
 
-def create_relay_delivery(tables: Dict[str, Table], activity: Dict, relay_station: Dict) -> bool:
+def create_relay_delivery(tables: Dict[str, Any], activity: Dict, relay_station: Dict) -> bool:
     """Create a two-part relay delivery."""
     try:
         fields = activity['fields']
@@ -527,6 +532,7 @@ def process_delivery_retries(dry_run: bool = False):
         from_building = get_building_record(tables, from_building_id)
         to_building = get_building_record(tables, to_building_id)
         
+        from_pos = None  # Initialize from_pos
         if from_building and to_building:
             from_pos = _get_building_position_coords(from_building)
             to_pos = _get_building_position_coords(to_building)
@@ -554,6 +560,11 @@ def process_delivery_retries(dry_run: bool = False):
                 porter_name = part.split('.')[0].strip()
                 exclude_porters.append(porter_name)
         
+        # If we don't have from_pos, try to get it from the from_building for porter selection
+        if not from_pos and from_building:
+            from_pos = _get_building_position_coords(from_building)
+        
+        # Find new porter (pass from_pos which might be None)
         new_porter = find_available_porter(tables, from_pos, exclude_porters)
         
         if new_porter:

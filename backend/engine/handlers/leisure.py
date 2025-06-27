@@ -44,7 +44,7 @@ from backend.engine.activity_creators import (
 
 # Import social activity creators
 from backend.engine.activity_creators.spread_rumor_activity_creator import try_create as try_create_spread_rumor_activity
-from backend.engine.activity_creators.send_message_creator import try_create as try_create_send_message_chain
+from backend.engine.activity_creators import try_create_send_message_activity as try_create_send_message_chain
 
 log = logging.getLogger(__name__)
 
@@ -223,6 +223,20 @@ def _handle_drink_at_inn(
     
     log.info(f"{LogColors.OKCYAN}[Drink] {citizen_name}: Checking for inn drinking opportunity.{LogColors.ENDC}")
     
+    # Check if recently drank at inn (prevent drinking loops)
+    recent_drinking_formula = (f"AND({{CitizenId}}='{citizen_airtable_id}', "
+                              f"{{Type}}='drink_at_inn', "
+                              f"{{Status}}='processed', "
+                              f"DATETIME_DIFF(NOW(), {{EndDate}}, 'hours') < 3)")
+    
+    try:
+        recent_drinks = tables['activities'].all(formula=recent_drinking_formula, max_records=1)
+        if recent_drinks:
+            log.info(f"{LogColors.WARNING}[Drink] {citizen_name}: Recently drank at inn. Taking a break from drinking.{LogColors.ENDC}")
+            return None
+    except Exception as e:
+        log.error(f"{LogColors.FAIL}[Drink] {citizen_name}: Error checking recent drinks: {e}{LogColors.ENDC}")
+    
     # Check wallet balance
     citizen_ducats = float(citizen_record.get('ducats', 0))
     drink_cost = 10
@@ -231,22 +245,57 @@ def _handle_drink_at_inn(
         log.info(f"{LogColors.WARNING}[Drink] {citizen_name}: Cannot afford drinks ({drink_cost} ducats).{LogColors.ENDC}")
         return None
     
-    # Find closest inn
+    # Find closest inn that isn't overcrowded
     if not citizen_position:
         log.info(f"{LogColors.WARNING}[Drink] {citizen_name}: No position, cannot find inn.{LogColors.ENDC}")
         return None
     
-    closest_inn = get_closest_building_of_type(
-        tables, citizen_position, 'inn', 
-        transport_api_url, building_type_defs
-    )
+    # Get all inns
+    all_inns = tables['buildings'].all(formula="{Type}='inn'")
+    valid_inns = []
+    
+    for inn in all_inns:
+        inn_position_str = inn['fields'].get('Position', '')
+        if inn_position_str:
+            # Check capacity
+            citizens_at_inn_formula = f"{{Position}}='{_escape_airtable_value(inn_position_str)}'"
+            try:
+                citizens_at_inn = tables['citizens'].all(formula=citizens_at_inn_formula)
+                if len(citizens_at_inn) < 10:
+                    valid_inns.append(inn)
+                else:
+                    log.info(f"{LogColors.WARNING}[Drink] {inn['fields'].get('Name', 'Inn')} is at capacity (10 citizens).{LogColors.ENDC}")
+            except:
+                valid_inns.append(inn)  # Include if we can't check
+    
+    if not valid_inns:
+        log.info(f"{LogColors.WARNING}[Drink] {citizen_name}: All inns are at capacity.{LogColors.ENDC}")
+        return None
+    
+    # Find closest valid inn
+    closest_inn = None
+    min_distance = float('inf')
+    for inn in valid_inns:
+        inn_pos = _get_building_position_coords(inn)
+        if inn_pos:
+            distance = _calculate_distance_meters(citizen_position, inn_pos)
+            if distance < min_distance:
+                min_distance = distance
+                closest_inn = inn
     
     if not closest_inn:
         return None
     
     activity_record = try_create_drink_at_inn_activity(
-        tables, citizen_custom_id, citizen_username, citizen_airtable_id,
-        closest_inn['id'], now_utc_dt
+        tables=tables,
+        citizen_record=citizen_record,
+        citizen_position=citizen_position,
+        resource_defs=resource_defs,
+        building_type_defs=building_type_defs,
+        now_venice_dt=now_venice_dt,
+        now_utc_dt=now_utc_dt,
+        transport_api_url=transport_api_url,
+        api_base_url=api_base_url
     )
     
     if activity_record:
@@ -599,7 +648,8 @@ def _handle_send_leisure_message(
     # Check if recently sent a message
     recent_activity_formula = (f"AND({{CitizenId}}='{citizen_airtable_id}', "
                                f"{{Type}}='send_message', "
-                               f"DATETIME_DIFF(NOW(), {{Created}}, 'hours') < 24)")
+                               f"{{Status}}='processed', "
+                               f"DATETIME_DIFF(NOW(), {{EndDate}}, 'hours') < 24)")
     
     try:
         recent_messages = tables['activities'].all(formula=recent_activity_formula, max_records=1)

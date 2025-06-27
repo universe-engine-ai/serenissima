@@ -716,12 +716,12 @@ const GovernancePanel: React.FC<GovernancePanelProps> = ({ onClose, standalone =
             {!isLoading && decrees.length > 0 && (
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {decrees.sort((a, b) => new Date(b.CreatedAt).getTime() - new Date(a.CreatedAt).getTime()).map((decree) => {
-                  // Format dates in a more readable way
+                  // Format dates in a more readable way, subtracting 500 years
                   const createdDate = new Date(decree.CreatedAt);
                   const formattedCreatedDate = `${createdDate.getDate()} ${
                     ['January', 'February', 'March', 'April', 'May', 'June', 'July', 
                      'August', 'September', 'October', 'November', 'December'][createdDate.getMonth()]
-                  } ${createdDate.getFullYear()}`;
+                  } ${createdDate.getFullYear() - 500}`;
                   
                   // Format enacted date if it exists
                   let formattedEnactedDate = '';
@@ -730,7 +730,7 @@ const GovernancePanel: React.FC<GovernancePanelProps> = ({ onClose, standalone =
                     formattedEnactedDate = `${enactedDate.getDate()} ${
                       ['January', 'February', 'March', 'April', 'May', 'June', 'July', 
                        'August', 'September', 'October', 'November', 'December'][enactedDate.getMonth()]
-                    } ${enactedDate.getFullYear()}`;
+                    } ${enactedDate.getFullYear() - 500}`;
                   }
                   
                   return (

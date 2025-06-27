@@ -318,12 +318,12 @@ export async function GET(request: NextRequest) {
 
     const stock = await getResourceStock(buildingId, resourceType, operatorForStockCheck); // Changed from resourceId
     if (stock <= 0) {
-      let problem: ProblemDetails;
+      let problem: ProblemDetails | undefined;
       const buildingTypeStr = buildingFields.Type as string;
       const buildingTypeDef = buildingTypeStr ? await getBuildingTypeDefinition(buildingTypeStr) : null;
 
       // Helper function to check if building can produce the resource
-      function canBuildingProduceResourceLocal(btDef: any, resType: string): boolean {
+      const canBuildingProduceResourceLocal = (btDef: any, resType: string): boolean => {
         if (!btDef || !btDef.productionInformation || !Array.isArray(btDef.productionInformation.Arti)) {
           return false;
         }
@@ -353,7 +353,7 @@ export async function GET(request: NextRequest) {
           }
         }
         return false;
-      }
+      };
 
       const buildingCanProduceThisResource = canBuildingProduceResourceLocal(buildingTypeDef, resourceType);
 
@@ -726,6 +726,23 @@ export async function GET(request: NextRequest) {
         }
       }
     } // End of the 'else' for buildingCanProduceThisResource
+
+      // Ensure problem is defined - this is a safety check
+      if (!problem) {
+        problem = {
+          problemId: `problem_pinpoint_${buildingId}_${resourceType}_UNKNOWN_STOCK_ISSUE`,
+          type: 'unknown_stock_issue',
+          title: `Unknown Stock Issue: ${resourceType} at ${buildingName}`,
+          description: `Building '${buildingName}' (ID: ${buildingId}) is out of stock for '${resourceType}' but the specific issue could not be determined.`,
+          severity: 3, // Medium
+          citizenToNotify: responsibleCitizen,
+          buildingPosition,
+          buildingName,
+          asset: buildingId,
+          assetType: 'building',
+          solutions: `Investigate why '${buildingName}' is out of stock for '${resourceType}'. Check production recipes, input availability, and contract status.`
+        };
+      }
 
       // If we're checking all inputs, we need to collect all problems
       if (checkAllInputsParam && buildingCanProduceThisResource) {

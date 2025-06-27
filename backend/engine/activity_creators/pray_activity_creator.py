@@ -141,10 +141,8 @@ def find_nearest_church(
     """
     Find the nearest church (parish_church, chapel, or st__mark_s_basilica) to the citizen.
     """
-    # Get all churches
-    church_types = ['parish_church', 'chapel', 'st__mark_s_basilica']
-    church_type_filter = " OR ".join([f"{{Type}} = '{church_type}'" for church_type in church_types])
-    formula = f"AND(OR({church_type_filter}), {{Status}} = 'active')"
+    # Get all religious buildings that are constructed
+    formula = f"AND({{Category}} = 'religious', {{IsConstructed}} = TRUE())"
     
     try:
         churches = tables['buildings'].all(formula=formula)

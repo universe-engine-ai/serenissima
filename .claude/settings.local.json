@@ -15,7 +15,9 @@
       "Bash(python:*)",
       "Bash(npm run type-check:*)",
       "Bash(npm run:*)",
-      "Bash(npx tsc:*)"
+      "Bash(npx tsc:*)",
+      "Bash(chmod:*)",
+      "Bash(ruff check:*)"
     ],
     "deny": []
   }
