@@ -426,17 +426,119 @@ def _try_process_weighted_leisure_activities(
     
     # Define leisure activities with their weights and check_only functions
     # Higher weight = more likely to be chosen
+    # Base weights that can be modified by social class
+    base_weights = {
+        "Work on Art (Artisti)": 20,
+        "Attend Theater": 15,
+        "Drink at Inn": 25,
+        "Use Public Bath": 10,
+        "Read Book": 15,
+        "Attend Mass": 20,
+        "Pray": 15,
+        "Send Message": 10,
+        "Spread Rumor": 5,
+    }
+    
+    # Modify weights based on social class
+    # Renaissance Venice social classes: Nobili, Clero, Cittadini, Artisti, Popolani, Facchini, Scientisti
+    class_weight_modifiers = {
+        "Nobili": {  # Nobility - cultured, wealthy, politically active
+            "Attend Theater": 35,
+            "Read Book": 30,
+            "Drink at Inn": 15,  # More refined social drinking
+            "Use Public Bath": 5,  # Would have private baths
+            "Work on Art (Artisti)": 0,  # Would commission, not create
+            "Pray": 10,
+            "Attend Mass": 15,
+            "Send Message": 20,  # Political correspondence
+            "Spread Rumor": 15,  # Political intrigue
+        },
+        "Clero": {  # Clergy - religious, educated, moral
+            "Pray": 45,  # Significantly higher chance for clergy
+            "Attend Mass": 35,  # Also higher for mass
+            "Read Book": 25,  # Religious texts and education
+            "Attend Theater": 5,  # Less worldly entertainment
+            "Drink at Inn": 5,  # Much lower chance for drinking
+            "Use Public Bath": 8,
+            "Work on Art (Artisti)": 0,
+            "Send Message": 15,
+            "Spread Rumor": 2,  # Gossip is unseemly
+        },
+        "Cittadini": {  # Citizens - educated, bureaucratic, business-oriented
+            "Read Book": 20,
+            "Attend Theater": 20,
+            "Drink at Inn": 25,  # Business and social meetings
+            "Use Public Bath": 10,
+            "Work on Art (Artisti)": 0,
+            "Pray": 15,
+            "Attend Mass": 20,
+            "Send Message": 20,  # Business and civic correspondence
+            "Spread Rumor": 15,  # Market and civic gossip
+        },
+        "Artisti": {  # Artists - creative, bohemian
+            "Work on Art (Artisti)": 40,  # Primary activity
+            "Attend Theater": 25,  # Appreciate performances
+            "Drink at Inn": 30,  # Bohemian lifestyle
+            "Read Book": 15,
+            "Use Public Bath": 10,
+            "Pray": 8,
+            "Attend Mass": 10,
+            "Send Message": 10,
+            "Spread Rumor": 15,
+        },
+        "Popolani": {  # Common workers - practical, social
+            "Drink at Inn": 30,
+            "Attend Theater": 10,  # Occasional treat
+            "Read Book": 5,  # Lower literacy
+            "Use Public Bath": 20,
+            "Work on Art (Artisti)": 0,
+            "Pray": 15,
+            "Attend Mass": 25,
+            "Send Message": 5,  # Less writing
+            "Spread Rumor": 25,  # Neighborhood gossip
+        },
+        "Facchini": {  # Laborers - hardworking, simple pleasures
+            "Drink at Inn": 40,  # Main leisure activity
+            "Attend Theater": 5,  # Rare and expensive
+            "Read Book": 2,  # Very low literacy
+            "Use Public Bath": 25,  # Important for hygiene
+            "Work on Art (Artisti)": 0,
+            "Pray": 10,
+            "Attend Mass": 20,
+            "Send Message": 2,  # Rarely write
+            "Spread Rumor": 30,  # Street gossip
+        },
+        "Scientisti": {  # Scientists - intellectual, studious
+            "Read Book": 40,  # Primary leisure activity
+            "Attend Theater": 15,  # Some cultural interest
+            "Drink at Inn": 10,  # Occasional social drinking
+            "Use Public Bath": 10,
+            "Work on Art (Artisti)": 0,
+            "Pray": 20,  # Balance of faith and reason
+            "Attend Mass": 20,
+            "Send Message": 15,  # Academic correspondence
+            "Spread Rumor": 5,  # Less interested in gossip
+        }
+    }
+    
+    # Apply class-specific modifiers if they exist
+    weights = base_weights.copy()
+    if citizen_social_class in class_weight_modifiers:
+        for activity, new_weight in class_weight_modifiers[citizen_social_class].items():
+            if activity in weights:
+                weights[activity] = new_weight
+    
     leisure_activities = [
         # (weight, handler_func, description, check_only)
-        (20, _handle_work_on_art, "Work on Art (Artisti)", True),
-        (15, _handle_attend_theater_performance, "Attend Theater", True),
-        (25, _handle_drink_at_inn, "Drink at Inn", True),
-        (10, _handle_use_public_bath, "Use Public Bath", True),
-        (15, _handle_read_book, "Read Book", True),
-        (20, _handle_attend_mass, "Attend Mass", True),
-        (15, _handle_pray, "Pray", True),
-        (10, _handle_send_leisure_message, "Send Message", True),
-        (5, _handle_spread_rumor, "Spread Rumor", True),
+        (weights["Work on Art (Artisti)"], _handle_work_on_art, "Work on Art (Artisti)", True),
+        (weights["Attend Theater"], _handle_attend_theater_performance, "Attend Theater", True),
+        (weights["Drink at Inn"], _handle_drink_at_inn, "Drink at Inn", True),
+        (weights["Use Public Bath"], _handle_use_public_bath, "Use Public Bath", True),
+        (weights["Read Book"], _handle_read_book, "Read Book", True),
+        (weights["Attend Mass"], _handle_attend_mass, "Attend Mass", True),
+        (weights["Pray"], _handle_pray, "Pray", True),
+        (weights["Send Message"], _handle_send_leisure_message, "Send Message", True),
+        (weights["Spread Rumor"], _handle_spread_rumor, "Spread Rumor", True),
     ]
     
     # Filter activities based on check_only evaluation

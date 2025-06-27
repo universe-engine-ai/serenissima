@@ -128,11 +128,67 @@ def create_leisure_activities(dry_run: bool = False, target_citizen_username: Op
     
     # (handler_function, priority_value, description_for_log, type_string_for_arg)
     # Priority values are used for weighting if not forcing a type.
+    # Note: Lower priority value = higher weight (100 - priority)
+    base_priority_values = {
+        "attend_theater_performance": 45,
+        "drink_at_inn": 40,
+        "work_on_art": 35,
+        "read_book": 55,
+    }
+    
+    # Class-specific priority modifiers (lower value = higher priority)
+    # Note: createLeisureActivities doesn't include pray/attend_mass handlers
+    class_priority_modifiers = {
+        "Nobili": {
+            "attend_theater_performance": 25,  # Higher priority for nobility
+            "read_book": 35,
+            "drink_at_inn": 55,  # Lower priority for public drinking
+        },
+        "Clero": {
+            "read_book": 35,  # Higher priority for reading
+            "attend_theater_performance": 70,  # Lower priority for entertainment
+            "drink_at_inn": 80,  # Much lower priority for drinking
+        },
+        "Cittadini": {
+            "read_book": 40,
+            "attend_theater_performance": 40,
+            "drink_at_inn": 35,  # Business and social meetings
+        },
+        "Artisti": {
+            "work_on_art": 20,  # Highest priority for art
+            "attend_theater_performance": 35,
+            "drink_at_inn": 35,
+        },
+        "Popolani": {
+            "drink_at_inn": 35,
+            "attend_theater_performance": 60,  # Lower priority
+            "read_book": 75,  # Much lower priority
+        },
+        "Facchini": {
+            "drink_at_inn": 30,  # Highest priority
+            "attend_theater_performance": 75,  # Very low priority
+            "read_book": 85,  # Extremely low priority
+        },
+        "Scientisti": {
+            "read_book": 25,  # Highest priority for reading
+            "attend_theater_performance": 50,
+            "drink_at_inn": 60,  # Lower priority
+            "work_on_art": 70,  # Not their primary focus
+        }
+    }
+    
+    # Apply class-specific modifiers
+    priority_values = base_priority_values.copy()
+    if citizen_social_class in class_priority_modifiers:
+        for activity, new_priority in class_priority_modifiers[citizen_social_class].items():
+            if activity in priority_values:
+                priority_values[activity] = new_priority
+    
     leisure_activity_handlers_config = {
-        "attend_theater_performance": (_handle_attend_theater_performance, 45, "Aller au théâtre"),
-        "drink_at_inn": (_handle_drink_at_inn, 40, "Boire un verre à l'auberge"),
-        "work_on_art": (_handle_work_on_art, 35, "Travailler sur une œuvre d'art (Artisti)"),
-        "read_book": (_handle_read_book, 55, "Lire un livre"),
+        "attend_theater_performance": (_handle_attend_theater_performance, priority_values["attend_theater_performance"], "Aller au théâtre"),
+        "drink_at_inn": (_handle_drink_at_inn, priority_values["drink_at_inn"], "Boire un verre à l'auberge"),
+        "work_on_art": (_handle_work_on_art, priority_values["work_on_art"], "Travailler sur une œuvre d'art (Artisti)"),
+        "read_book": (_handle_read_book, priority_values["read_book"], "Lire un livre"),
     }
     leisure_candidates_for_weighted_selection = [
         (func, prio, desc) for type_str, (func, prio, desc) in leisure_activity_handlers_config.items()

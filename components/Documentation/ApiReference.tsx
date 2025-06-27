@@ -96,6 +96,7 @@ function ApiReference() { // Suppression de 'export default' ici
               <li><a href="#citizens-post-settings" className="text-amber-600 hover:underline text-sm">POST /api/citizen/settings</a></li>
               <li><a href="#citizens-post-user-update-activity" className="text-amber-600 hover:underline text-sm">POST /api/user/update-activity</a></li>
               <li><a href="#citizens-get-username-transports" className="text-amber-600 hover:underline text-sm">GET /api/citizens/:username/transports</a></li>
+              <li><a href="#citizens-get-username-conversations" className="text-amber-600 hover:underline text-sm">GET /api/citizens/:username/conversations</a></li>
               <li><a href="#citizens-post-with-correspondence-stats" className="text-amber-600 hover:underline text-sm">POST /api/citizens/with-correspondence-stats</a></li>
               <li><a href="#citizens-get-all-users" className="text-amber-600 hover:underline text-sm">GET /api/get-all-users</a></li>
             </ul>
@@ -567,6 +568,63 @@ function ApiReference() { // Suppression de 'export default' ici
   ]
 }`}
             </pre>
+          </div>
+        </div>
+
+        <div id="citizens-get-username-conversations" className="mb-8 scroll-mt-20">
+          <h3 className="text-2xl font-serif text-amber-700 mb-2">GET /api/citizens/:username/conversations</h3>
+          <p className="mb-2">Retrieves the last 50 messages from and to the citizen, organized by conversation partner.</p>
+          <div className="bg-white p-4 rounded-lg shadow mb-4">
+            <h4 className="font-bold mb-2">Path Parameters</h4>
+            <ul className="list-disc pl-6">
+              <li><code>username</code> - The username of the citizen whose conversations to retrieve.</li>
+            </ul>
+          </div>
+          <div className="bg-white p-4 rounded-lg shadow mb-4">
+            <h4 className="font-bold mb-2">Response</h4>
+            <pre className="bg-gray-100 p-3 rounded overflow-x-auto text-sm">
+{`{
+  "success": true,
+  "username": "string", // The citizen whose conversations were fetched
+  "totalConversations": number, // Number of unique conversation partners
+  "totalMessages": number, // Total messages fetched (max 50)
+  "conversations": [
+    {
+      "partner": "string", // Username of the conversation partner
+      "partnerDetails": { // Optional details about the partner
+        "firstName": "string",
+        "lastName": "string",
+        "socialClass": "string",
+        "isAI": boolean
+      },
+      "lastMessageTime": "string", // ISO timestamp of most recent message
+      "unreadCount": number, // Number of unread messages FROM this partner
+      "totalMessages": number, // Total messages in this conversation
+      "messages": [
+        {
+          "messageId": "string",
+          "sender": "string",
+          "receiver": "string", 
+          "content": "string",
+          "type": "string", // e.g., "message", "business_inquiry", etc.
+          "created": "string", // ISO timestamp
+          "readAt": "string", // ISO timestamp or null
+          "conversationPartner": "string" // Same as partner
+        }
+      ]
+    }
+  ]
+}`}
+            </pre>
+          </div>
+          <div className="bg-white p-4 rounded-lg shadow mb-4">
+            <h4 className="font-bold mb-2">Notes</h4>
+            <ul className="list-disc pl-6 text-sm">
+              <li>Conversations are sorted by most recent message first</li>
+              <li>Messages within each conversation are sorted newest to oldest</li>
+              <li>Unread count only includes messages TO the specified citizen that haven't been read</li>
+              <li>The endpoint fetches the 50 most recent messages total, not 50 per conversation</li>
+            </ul>
           </div>
         </div>
 

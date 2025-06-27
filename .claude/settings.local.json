@@ -2,13 +2,20 @@
   "permissions": {
     "allow": [
       "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)",
+      "Bash(git pull:*)",
       "Bash(find:*)",
       "Bash(ls:*)",
       "Bash(grep:*)",
+      "Bash(mkdir:*)",
       "Bash(python test:*)",
       "Bash(python3:*)",
       "Bash(python -m py_compile:*)",
-      "Bash(python:*)"
+      "Bash(python:*)",
+      "Bash(npm run type-check:*)",
+      "Bash(npm run:*)",
+      "Bash(npx tsc:*)"
     ],
     "deny": []
   }
