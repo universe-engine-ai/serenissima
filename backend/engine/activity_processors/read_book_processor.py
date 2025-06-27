@@ -3,6 +3,7 @@ import json
 import os
 import requests
 import threading
+import random
 from typing import Dict, Any, Optional
 
 from backend.engine.utils.activity_helpers import LogColors, VENICE_TIMEZONE # Keep VENICE_TIMEZONE if used for logging timestamps
@@ -42,6 +43,54 @@ def _get_artwork_content_from_kinos(citizen_username: str, artwork_path: str) ->
     except Exception as e_gen:
         log.error(f"  [Thread: {threading.get_ident()}] Unexpected error fetching artwork content '{artwork_path}' for {citizen_username}: {e_gen}")
         return None
+
+def _extract_random_chunk(content: str, max_chars: int = 5000) -> str:
+    """
+    If content is longer than max_chars, extract a random chunk of max_chars.
+    Otherwise, return the full content.
+    """
+    if len(content) <= max_chars:
+        return content
+    
+    # Calculate the maximum starting position for the chunk
+    max_start = len(content) - max_chars
+    
+    # Choose a random starting position
+    start_pos = random.randint(0, max_start)
+    
+    # Extract the chunk
+    chunk = content[start_pos:start_pos + max_chars]
+    
+    # Try to find a good break point (sentence or paragraph boundary)
+    # Look for the first sentence end after the start
+    sentence_ends = ['. ', '.\n', '! ', '!\n', '? ', '?\n']
+    first_break = -1
+    for end in sentence_ends:
+        pos = chunk.find(end)
+        if pos > 100 and (first_break == -1 or pos < first_break):  # At least 100 chars in
+            first_break = pos + len(end)
+    
+    # Look for the last sentence end before the end
+    last_break = -1
+    for end in sentence_ends:
+        pos = chunk.rfind(end)
+        if pos > len(chunk) - 100 and pos > last_break:  # At least 100 chars from end
+            last_break = pos + len(end)
+    
+    # If we found good break points, use them
+    if first_break > 0 and last_break > first_break:
+        chunk = chunk[first_break:last_break]
+    elif first_break > 0:
+        chunk = chunk[first_break:]
+    elif last_break > 0:
+        chunk = chunk[:last_break]
+    
+    # Add ellipsis to indicate this is a fragment
+    chunk = f"... {chunk.strip()} ..."
+    
+    log.info(f"  [Thread: {threading.get_ident()}] Extracted {len(chunk)}-character chunk from {len(content)}-character book")
+    
+    return chunk
 
 def _get_local_book_content(content_path: str) -> Optional[str]:
     """Fetches book content from local filesystem for special books like the Codex."""
@@ -170,8 +219,10 @@ def process_read_book_fn(
         # First check for local content path (e.g., Codex Serenissimus)
         if book_content_path:
             log.info(f"  Book has local content path: {book_content_path}. Attempting to fetch content.")
-            artwork_content_for_kinos = _get_local_book_content(book_content_path)
-            if artwork_content_for_kinos:
+            full_content = _get_local_book_content(book_content_path)
+            if full_content:
+                # Extract a chunk if the content is too long
+                artwork_content_for_kinos = _extract_random_chunk(full_content, max_chars=5000)
                 log.info(f"  Successfully fetched content for '{book_title}' from local path {book_content_path}.")
             else:
                 log.warning(f"  Failed to fetch content for '{book_title}' from local path {book_content_path}.")
@@ -179,8 +230,10 @@ def process_read_book_fn(
         # If no local content, try KinOS path
         elif book_kinos_path:
             log.info(f"  Book has KinOS path: {book_kinos_path}. Attempting to fetch content.")
-            artwork_content_for_kinos = _get_artwork_content_from_kinos(citizen_username, book_kinos_path)
-            if artwork_content_for_kinos:
+            full_content = _get_artwork_content_from_kinos(citizen_username, book_kinos_path)
+            if full_content:
+                # Extract a chunk if the content is too long
+                artwork_content_for_kinos = _extract_random_chunk(full_content, max_chars=5000)
                 log.info(f"  Successfully fetched content for artwork '{book_title}' from KinOS path {book_kinos_path}.")
             else:
                 log.warning(f"  Failed to fetch content for artwork '{book_title}' from KinOS path {book_kinos_path}. Proceeding without book content in add System.")
@@ -194,6 +247,7 @@ def process_read_book_fn(
         kinos_prompt = (
             f"You are {citizen_username}, a citizen of Renaissance Venice. You have just spent some time reading a book titled '{book_title}'. "
             f"The book's content (if available) and your personal data are provided in your Ledger under `book_context` and `ledger` respectively.\n\n"
+            f"Note: If the book content appears to be a fragment (indicated by ellipsis ... at the beginning and end), understand that you've been reading a section from the middle of the book.\n\n"
             f"Reflect on what you have read. Consider the following:\n"
             f"- What were the main ideas or themes of the book (see content)?\n"
             f"- Did anything in the book particularly resonate with you, challenge your views, or inspire you?\n"

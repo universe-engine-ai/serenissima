@@ -287,14 +287,6 @@ export async function GET(request: NextRequest) {
         problems: [], 
         message: `Resource '${resourceType}' is not intended to be sold at '${buildingName}' (ID: ${buildingId}). It is an input resource used for production.`
       });
-      // Problem creation moved to Python script
-      return NextResponse.json({ 
-        success: true, 
-        problem_identified: true, 
-        issue: 'NO_SALE_CONTRACT', 
-        problemDetails: problem,
-        problems: [problem] // Return as array for consistency
-      });
     }
 
     // Step 2: If sold, check stock (owned by RunBy or Owner)

@@ -57,6 +57,9 @@ from .occupant_self_construction_processor import process_occupant_self_construc
 from .spread_rumor_activity_processor import process as process_spread_rumor_fn # New processor for spreading rumors
 from .attend_mass_processor import process_attend_mass_fn # New processor for attending mass
 from .prepare_sermon_processor import process as process_prepare_sermon # New processor for preparing sermons
+from .study_literature_processor import process as process_study_literature # New processor for scientific study
+from .observe_phenomena_processor import process as process_observe_phenomena # New processor for scientific observation
+from .goto_position_processor import process as process_goto_position # New processor for position-based movement
 
 # Imports pour les processeurs de terrains et contrats
 from .bid_on_land_activity_processor import process_bid_on_land_fn
@@ -167,6 +170,9 @@ ACTIVITY_PROCESSORS = {
     'spread_rumor': process_spread_rumor_fn,
     'attend_mass': process_attend_mass_fn,
     'prepare_sermon': process_prepare_sermon,
+    'study_literature': process_study_literature,
+    'observe_phenomena': process_observe_phenomena,
+    'goto_position': process_goto_position,
     'idle': process_placeholder_activity_fn,
     'secure_warehouse': process_placeholder_activity_fn,
 }

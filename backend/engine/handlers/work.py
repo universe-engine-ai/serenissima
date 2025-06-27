@@ -462,3 +462,4 @@ def _handle_fishing(
         return activity_record
     
     return None
+

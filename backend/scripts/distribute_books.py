@@ -1,15 +1,18 @@
 #!/usr/bin/env python3
 """
-Distribute books from public/books/ to citizen houses.
+Distribute books from public/books/ to citizen houses and scientific buildings.
 
 This script creates RESOURCES of type 'books' and places them in BUILDINGS 
-of category 'home' owned by citizens. It allows for rapid diffusion of manuscripts.
+of category 'home' owned by citizens. It also ensures all science books are
+present in all house_of_natural_sciences buildings.
 
 Usage:
     python distribute_books.py <book_name> <number_of_copies>
+    python distribute_books.py --sync-science-houses
     
 Example:
     python distribute_books.py "The_Merchant_of_Venice" 50
+    python distribute_books.py --sync-science-houses
 """
 
 import sys
@@ -18,7 +21,7 @@ import random
 import json
 from datetime import datetime
 from typing import List, Dict, Any
-from pyairtable import Table
+from pyairtable import Api
 from dotenv import load_dotenv
 
 # Load environment variables
@@ -32,13 +35,19 @@ if not api_key or not base_id:
     print("Error: Missing AIRTABLE_API_KEY or AIRTABLE_BASE_ID environment variables")
     sys.exit(1)
 
-buildings_table = Table(api_key, base_id, 'BUILDINGS')
-citizens_table = Table(api_key, base_id, 'CITIZENS')
-resources_table = Table(api_key, base_id, 'RESOURCES')
+# Use the new API format
+api = Api(api_key)
+base = api.base(base_id)
+buildings_table = base.table('BUILDINGS')
+citizens_table = base.table('CITIZENS')
+resources_table = base.table('RESOURCES')
 
-def get_available_books() -> List[str]:
-    """Get list of available books from public/books/ directory."""
+def get_available_books(subdirectory: str = '') -> List[str]:
+    """Get list of available books from public/books/ directory or subdirectory."""
     books_dir = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))), 'public', 'books')
+    if subdirectory:
+        books_dir = os.path.join(books_dir, subdirectory)
+    
     if not os.path.exists(books_dir):
         return []
     
@@ -55,6 +64,53 @@ def get_available_books() -> List[str]:
             books.append(book_name)
     
     return books
+
+def get_all_available_books() -> Dict[str, str]:
+    """Get all available books from public/books/ including subdirectories.
+    Returns a dict with book_name -> relative_path mapping."""
+    books_dir = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))), 'public', 'books')
+    
+    if not os.path.exists(books_dir):
+        return {}
+    
+    books = {}
+    
+    # Walk through all subdirectories
+    for root, dirs, files in os.walk(books_dir):
+        # Get relative path from books_dir
+        rel_path = os.path.relpath(root, books_dir)
+        if rel_path == '.':
+            rel_path = ''
+        
+        for file in files:
+            if file.endswith('.md') or file.endswith('.txt'):
+                # Remove extension for book name
+                if file.endswith('.md'):
+                    book_name = file[:-3]
+                else:
+                    book_name = file[:-4]
+                
+                # Store with relative path
+                if rel_path:
+                    books[book_name] = rel_path
+                else:
+                    books[book_name] = ''
+    
+    return books
+
+def get_science_books() -> List[str]:
+    """Get list of all books in public/books/science/ directory."""
+    return get_available_books('science')
+
+def get_science_houses() -> List[Dict[str, Any]]:
+    """Get all house_of_natural_sciences buildings."""
+    print("Fetching houses of natural sciences...")
+    
+    # Get all buildings of type 'house_of_natural_sciences'
+    science_houses = buildings_table.all(formula="{Type} = 'house_of_natural_sciences'")
+    print(f"Found {len(science_houses)} houses of natural sciences")
+    
+    return science_houses
 
 def get_citizen_houses() -> List[Dict[str, Any]]:
     """Get all houses (buildings of category 'home') with occupants."""
@@ -98,20 +154,34 @@ def get_books_in_building(building_id: str) -> List[str]:
     
     return book_titles
 
-def create_book_resource(book_name: str, building_id: str, owner_id: str) -> Dict[str, Any]:
+def create_book_resource(book_name: str, building_id: str, owner_id: str, is_science_book: bool = False, subdirectory: str = '') -> Dict[str, Any]:
     """Create a book resource with proper attributes."""
     # Check which file extension exists
     books_dir = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))), 'public', 'books')
-    md_path = os.path.join(books_dir, f'{book_name}.md')
-    txt_path = os.path.join(books_dir, f'{book_name}.txt')
     
-    if os.path.exists(md_path):
-        content_path = f'public/books/{book_name}.md'
-    elif os.path.exists(txt_path):
-        content_path = f'public/books/{book_name}.txt'
+    if is_science_book and not subdirectory:
+        subdirectory = 'science'
+    
+    if subdirectory:
+        md_path = os.path.join(books_dir, subdirectory, f'{book_name}.md')
+        txt_path = os.path.join(books_dir, subdirectory, f'{book_name}.txt')
+        
+        if os.path.exists(md_path):
+            content_path = f'public/books/{subdirectory}/{book_name}.md'
+        elif os.path.exists(txt_path):
+            content_path = f'public/books/{subdirectory}/{book_name}.txt'
+        else:
+            content_path = f'public/books/{subdirectory}/{book_name}.md'
     else:
-        # Default to .md if neither exists (shouldn't happen if used correctly)
-        content_path = f'public/books/{book_name}.md'
+        md_path = os.path.join(books_dir, f'{book_name}.md')
+        txt_path = os.path.join(books_dir, f'{book_name}.txt')
+        
+        if os.path.exists(md_path):
+            content_path = f'public/books/{book_name}.md'
+        elif os.path.exists(txt_path):
+            content_path = f'public/books/{book_name}.txt'
+        else:
+            content_path = f'public/books/{book_name}.md'
     
     # Create the book resource
     resource_data = {
@@ -123,23 +193,98 @@ def create_book_resource(book_name: str, building_id: str, owner_id: str) -> Dic
         'Owner': owner_id,  # The citizen who owns the book
         'Count': 1.0,  # Number of books (as float)
         'Attributes': json.dumps({
-            'title': book_name.replace('_', ' '),  # Convert underscores to spaces for display
+            'title': book_name.replace('_', ' ').replace('-', ' '),  # Convert underscores and hyphens to spaces for display
             'content_path': content_path,
-            'distributed_at': datetime.now().isoformat()
+            'distributed_at': datetime.now().isoformat(),
+            'is_science_book': is_science_book
         }),
         'CreatedAt': datetime.now().isoformat()
     }
     
     return resources_table.create(resource_data)
 
+def sync_science_houses():
+    """Ensure all science books are present in all house_of_natural_sciences buildings."""
+    science_books = get_science_books()
+    science_houses = get_science_houses()
+    
+    if not science_books:
+        print("No science books found in public/books/science/")
+        return
+    
+    if not science_houses:
+        print("No houses of natural sciences found!")
+        return
+    
+    print(f"\nFound {len(science_books)} science books to distribute to {len(science_houses)} houses of natural sciences")
+    
+    total_added = 0
+    
+    for house in science_houses:
+        house_id = house['id']
+        house_name = house['fields'].get('Name', 'Unknown Science House')
+        building_id = house['fields'].get('BuildingId', house_id)
+        
+        # Get the owner/manager of the science house
+        owner = house['fields'].get('Owner')
+        run_by = house['fields'].get('RunBy')
+        owner_id = run_by or owner or 'ConsiglioDeiDieci'  # Default to ConsiglioDeiDieci if no owner
+        
+        print(f"\nChecking {house_name} (managed by {owner_id})...")
+        
+        # Get existing books in this building
+        existing_books = get_books_in_building(house_id)
+        existing_titles = [title.lower() for title in existing_books]
+        
+        # Check each science book
+        books_added = 0
+        for book_name in science_books:
+            book_title = book_name.replace('_', ' ').replace('-', ' ')
+            
+            if book_title.lower() not in existing_titles:
+                # Add this book
+                try:
+                    book = create_book_resource(book_name, house_id, owner_id, is_science_book=True)
+                    books_added += 1
+                    total_added += 1
+                    print(f"  + Added '{book_title}'")
+                except Exception as e:
+                    print(f"  ! Error adding '{book_title}': {e}")
+            else:
+                print(f"  ✓ Already has '{book_title}'")
+        
+        if books_added == 0:
+            print(f"  All science books already present.")
+        else:
+            print(f"  Added {books_added} new books.")
+    
+    print(f"\nSync complete! Added {total_added} books total across all houses of natural sciences.")
+
 def distribute_books(book_name: str, num_copies: int):
     """Distribute specified number of book copies to citizen houses."""
     # Verify the book exists
-    available_books = get_available_books()
-    if book_name not in available_books:
+    all_books = get_all_available_books()
+    if book_name not in all_books:
         print(f"Error: Book '{book_name}' not found in public/books/")
-        print(f"Available books: {', '.join(available_books)}")
+        print(f"Available books:")
+        # Group by subdirectory
+        books_by_dir = {}
+        for book, subdir in all_books.items():
+            if subdir not in books_by_dir:
+                books_by_dir[subdir] = []
+            books_by_dir[subdir].append(book)
+        
+        # Print grouped
+        for subdir, books in sorted(books_by_dir.items()):
+            if subdir:
+                print(f"\n  In {subdir}/:")
+            else:
+                print(f"\n  In main directory:")
+            for book in sorted(books):
+                print(f"    - {book}")
         return
+    
+    subdirectory = all_books[book_name]
     
     # Get all citizen houses
     houses = get_citizen_houses()
@@ -178,7 +323,7 @@ def distribute_books(book_name: str, num_copies: int):
         
         # Create the book resource
         try:
-            book = create_book_resource(book_name, house_id, owner_id)
+            book = create_book_resource(book_name, house_id, owner_id, subdirectory=subdirectory)
             distributed += 1
             print(f"[{distributed}/{num_copies}] Placed '{book_title}' in {house_name}")
         except Exception as e:
@@ -198,13 +343,40 @@ def distribute_books(book_name: str, num_copies: int):
             print("- Some houses already had this book")
 
 def main():
-    if len(sys.argv) != 3:
+    if len(sys.argv) < 2:
         print("Usage: python distribute_books.py <book_name> <number_of_copies>")
+        print("       python distribute_books.py --sync-science-houses")
         print("\nExample: python distribute_books.py The_Merchant_of_Venice 50")
+        print("         python distribute_books.py chronicles-of-change 1")
+        print("         python distribute_books.py --sync-science-houses")
+        
+        all_books = get_all_available_books()
         print("\nAvailable books:")
-        books = get_available_books()
-        for book in books:
-            print(f"  - {book}")
+        # Group by subdirectory
+        books_by_dir = {}
+        for book, subdir in all_books.items():
+            if subdir not in books_by_dir:
+                books_by_dir[subdir] = []
+            books_by_dir[subdir].append(book)
+        
+        # Print grouped
+        for subdir, books in sorted(books_by_dir.items()):
+            if subdir:
+                print(f"\n  In {subdir}/:")
+            else:
+                print(f"\n  In main directory:")
+            for book in sorted(books):
+                print(f"    - {book}")
+        sys.exit(1)
+    
+    # Check for sync science houses command
+    if sys.argv[1] == '--sync-science-houses':
+        sync_science_houses()
+        return
+    
+    # Normal book distribution
+    if len(sys.argv) != 3:
+        print("Error: Please provide both book name and number of copies")
         sys.exit(1)
     
     book_name = sys.argv[1]

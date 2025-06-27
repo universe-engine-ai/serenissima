@@ -70,3 +70,7 @@ from .goto_location_activity_creator import try_create as try_create_goto_locati
 from .deposit_inventory_orchestrator_creator import try_create_deposit_inventory_orchestrator # New orchestrator
 from .attend_mass_creator import try_create_attend_mass_activity, find_nearest_church # New mass attendance activity
 from .prepare_sermon_creator import try_create_prepare_sermon_activity # New sermon preparation activity for Clero
+from .study_literature_activity_creator import try_create as try_create_study_literature_activity # New scientific study activity for Scientisti
+from .spread_rumor_activity_creator import try_create as try_create_spread_rumor_activity # Rumor spreading activity
+from .observe_phenomena_activity_creator import try_create as try_create_observe_phenomena_activity # Scientific observation activity
+from .goto_position_activity_creator import try_create as try_create_goto_position_activity # Movement to specific coordinates
