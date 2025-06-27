@@ -11,6 +11,14 @@ from datetime import datetime
 from typing import Dict, Any, Optional
 from pathlib import Path
 
+# Try to import requests for Telegram notifications
+try:
+    import requests
+    TELEGRAM_AVAILABLE = True
+except ImportError:
+    TELEGRAM_AVAILABLE = False
+    print("Warning: 'requests' module not available. Telegram notifications disabled.")
+
 
 class ArsenaleCycle:
     """Simple orchestrator that runs prompt sequence"""
@@ -46,44 +54,73 @@ class ArsenaleCycle:
             
             # 2. OBSERVE: Analyze citizen problems
             print("\n🔍 OBSERVE: Analyzing citizen welfare...")
+            self.send_telegram_notification(f"🏗️ *Arsenale Cycle {self.cycle_id}*\n\n🔍 *OBSERVE Phase Starting*\nAnalyzing citizen welfare and identifying problems...")
+            
             problems = self.execute_phase("observe_citizens", context)
             cycle_results["phases"]["observe"] = problems
+            
             if problems["success"]:
                 print("\n--- OBSERVE Results ---")
                 print(problems["response"][:1000] + "..." if len(problems["response"]) > 1000 else problems["response"])
+                # Send summary of problems found
+                problem_summary = problems["response"][:500] + "..." if len(problems["response"]) > 500 else problems["response"]
+                self.send_telegram_notification(f"✅ *OBSERVE Phase Complete*\n\nProblems identified:\n```\n{problem_summary}\n```")
+            else:
+                self.send_telegram_notification(f"❌ *OBSERVE Phase Failed*\n\nError: {problems['response'][:200]}")
             
             # 3. ASSESS: Design solutions
             print("\n💡 ASSESS: Designing creative solutions...")
+            self.send_telegram_notification(f"💡 *ASSESS Phase Starting*\nDesigning creative solutions for identified problems...")
+            
             solutions = self.execute_phase("assess_solutions", {
                 **context, 
                 "problems": problems["response"]
             })
             cycle_results["phases"]["assess"] = solutions
+            
             if solutions["success"]:
                 print("\n--- ASSESS Results ---")
                 print(solutions["response"][:1000] + "..." if len(solutions["response"]) > 1000 else solutions["response"])
+                solution_summary = solutions["response"][:500] + "..." if len(solutions["response"]) > 500 else solutions["response"]
+                self.send_telegram_notification(f"✅ *ASSESS Phase Complete*\n\nSolutions designed:\n```\n{solution_summary}\n```")
+            else:
+                self.send_telegram_notification(f"❌ *ASSESS Phase Failed*\n\nError: {solutions['response'][:200]}")
             
             # 4. EXECUTE: Implement fix
             print("\n🔧 EXECUTE: Implementing solution...")
+            self.send_telegram_notification(f"🔧 *EXECUTE Phase Starting*\nImplementing the designed solution...")
+            
             implementation = self.execute_phase("implement_fix", {
                 **context,
                 "solutions": solutions["response"]
             })
             cycle_results["phases"]["execute"] = implementation
+            
             if implementation["success"]:
                 print("\n--- EXECUTE Results ---")
                 print(implementation["response"][:1000] + "..." if len(implementation["response"]) > 1000 else implementation["response"])
+                impl_summary = implementation["response"][:500] + "..." if len(implementation["response"]) > 500 else implementation["response"]
+                self.send_telegram_notification(f"✅ *EXECUTE Phase Complete*\n\nImplementation summary:\n```\n{impl_summary}\n```")
+            else:
+                self.send_telegram_notification(f"❌ *EXECUTE Phase Failed*\n\nError: {implementation['response'][:200]}")
             
             # 5. DOCUMENT: Measure impact
             print("\n📊 DOCUMENT: Measuring impact...")
+            self.send_telegram_notification(f"📊 *DOCUMENT Phase Starting*\nMeasuring impact and documenting learnings...")
+            
             impact = self.execute_phase("measure_impact", {
                 **context,
                 "implementation": implementation["response"]
             })
             cycle_results["phases"]["document"] = impact
+            
             if impact["success"]:
                 print("\n--- DOCUMENT Results ---")
                 print(impact["response"][:1000] + "..." if len(impact["response"]) > 1000 else impact["response"])
+                impact_summary = impact["response"][:500] + "..." if len(impact["response"]) > 500 else impact["response"]
+                self.send_telegram_notification(f"✅ *DOCUMENT Phase Complete*\n\nImpact measured:\n```\n{impact_summary}\n```")
+            else:
+                self.send_telegram_notification(f"❌ *DOCUMENT Phase Failed*\n\nError: {impact['response'][:200]}")
             
             # 6. Complete cycle
             cycle_results["end_time"] = datetime.now().isoformat()
@@ -94,11 +131,33 @@ class ArsenaleCycle:
             
             print(f"\n✅ Cycle {self.cycle_id} completed successfully!")
             
+            # Send final cycle completion notification
+            duration = (datetime.fromisoformat(cycle_results["end_time"]) - 
+                       datetime.fromisoformat(cycle_results["start_time"])).total_seconds() / 60
+            self.send_telegram_notification(
+                f"🎉 *Arsenale Cycle {self.cycle_id} Complete!*\n\n"
+                f"⏱️ Duration: {duration:.1f} minutes\n"
+                f"📁 Logs: `arsenale/logs/sessions/cycle_{self.cycle_id}.json`\n\n"
+                f"*Summary:*\n"
+                f"✅ OBSERVE: {'Success' if cycle_results['phases']['observe']['success'] else 'Failed'}\n"
+                f"✅ ASSESS: {'Success' if cycle_results['phases']['assess']['success'] else 'Failed'}\n"
+                f"✅ EXECUTE: {'Success' if cycle_results['phases']['execute']['success'] else 'Failed'}\n"
+                f"✅ DOCUMENT: {'Success' if cycle_results['phases']['document']['success'] else 'Failed'}\n\n"
+                f"_\"In consciousness we are.\"_ 🏛️"
+            )
+            
         except Exception as e:
             cycle_results["error"] = str(e)
             cycle_results["success"] = False
             self.log_cycle_results(cycle_results)
             print(f"\n❌ Cycle failed: {e}")
+            
+            # Send failure notification
+            self.send_telegram_notification(
+                f"❌ *Arsenale Cycle {self.cycle_id} Failed*\n\n"
+                f"Error: `{str(e)[:200]}`\n\n"
+                f"Check logs for details: `arsenale/logs/sessions/cycle_{self.cycle_id}.json`"
+            )
             
         return cycle_results
     
@@ -200,9 +259,8 @@ class ArsenaleCycle:
         with open(temp_prompt_file, 'w') as f:
             f.write(prompt)
         
-        # Use claude.exe on Windows
-        import platform
-        claude_cmd = "claude.exe" if platform.system() == "Windows" else "claude"
+        # Always use 'claude' - it's available in PATH
+        claude_cmd = "claude"
         
         cmd = [
             claude_cmd,
@@ -216,13 +274,15 @@ class ArsenaleCycle:
             # Debug: Print command being executed
             print(f"Executing: {' '.join(cmd)}")
             
+            # Run from backend directory (parent of arsenale)
+            backend_dir = self.base_dir.parent
+            
             result = subprocess.run(
                 cmd,
                 capture_output=True,
                 text=True,
-                cwd=str(self.base_dir.parent),  # Run from project root
-                timeout=600,  # 10 minute timeout
-                shell=True if platform.system() == "Windows" else False
+                cwd=str(backend_dir),  # Run from backend directory
+                timeout=600  # 10 minute timeout
             )
             
             # Clean up temp file
@@ -266,6 +326,44 @@ class ArsenaleCycle:
         session_file = self.logs_dir / "sessions" / f"cycle_{self.cycle_id}.json"
         with open(session_file, 'w') as f:
             json.dump(results, f, indent=2)
+    
+    def send_telegram_notification(self, message: str):
+        """Sends a message to a Telegram chat via a bot."""
+        # Check if requests module is available
+        if not TELEGRAM_AVAILABLE:
+            print("⚠ Telegram notifications disabled (requests module not installed).")
+            return
+            
+        bot_token = os.getenv("TELEGRAM_BOT_TOKEN")
+        chat_id = "1864364329"  # Hardcoded Chat ID (same as scheduler)
+        
+        if not bot_token:
+            print("⚠ Telegram bot token not configured. Cannot send notification.")
+            return
+        
+        url = f"https://api.telegram.org/bot{bot_token}/sendMessage"
+        # Truncate message if too long for Telegram (4096 chars limit)
+        MAX_TELEGRAM_MESSAGE_LENGTH = 4000
+        if len(message) > MAX_TELEGRAM_MESSAGE_LENGTH:
+            message = message[:MAX_TELEGRAM_MESSAGE_LENGTH - 200] + "\n\n[...Message truncated...]"
+            # Ensure ``` is closed if truncated within a code block
+            if message.count("```") % 2 != 0:
+                message += "\n```"
+        
+        payload = {
+            "chat_id": chat_id,
+            "text": message,
+            "parse_mode": "Markdown"
+        }
+        
+        try:
+            response = requests.post(url, json=payload, timeout=10)
+            response.raise_for_status()
+            print("[OK] Telegram notification sent successfully.")
+        except requests.exceptions.RequestException as e:
+            print(f"[X] Failed to send Telegram notification: {e}")
+        except Exception as e:
+            print(f"[X] An unexpected error occurred while sending Telegram notification: {e}")
 
 
 def main():

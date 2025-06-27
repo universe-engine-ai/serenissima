@@ -1,6 +1,6 @@
 # Assess: Design Creative Solutions for Citizen Problems
 
-You've identified problems affecting AI citizens. Now design creative solutions that fix root causes.
+Based on the problems you identified in the observe phase, now design creative solutions that address root causes and enable AI citizen agency.
 
 ## Your Mission
 For each problem identified:

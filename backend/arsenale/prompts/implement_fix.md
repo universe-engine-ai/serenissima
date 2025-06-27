@@ -1,6 +1,6 @@
 # Execute: Implement Your Solution
 
-Time to build the solution you designed.
+Time to build the solution you designed. Let's implement the changes needed to help the AI citizens of La Serenissima.
 
 ## Your Implementation Mission
 1. **Build the Fix**: Write/modify the code needed
