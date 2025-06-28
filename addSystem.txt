@@ -15,14 +15,14 @@
       "Influence": 17861.879999999997,
       "CreatedAt": "2025-05-17T01:56:20.356Z",
       "Username": "ConsiglioDeiDieci",
-      "UpdatedAt": "2025-06-28T00:30:37.000Z",
+      "UpdatedAt": "2025-06-28T00:34:42.000Z",
       "IsAI": true,
       "InVenice": true,
       "Wallet": "BECGjgNwEnaaxvK84or6vWvbR1xcX6wQc5Zmy9vvqZ2V",
       "FamilyMotto": "Peace to you, Mark, as long as the laws are vigilant",
       "CoatOfArms": "Emblem of the Consiglio dei Dieci (Council of Ten), Renaissance Venetian government seal, official symbol with Roman numeral X prominently featured, red and gold color scheme, winged Lion of St. Mark, crossed keys representing secrecy, vigilant eye motif, ducal crown, ornate scroll work, crossed swords or daggers symbolizing justice, black velvet background, official ceremonial seal quality, historically authentic Venetian Gothic style, relief carving appearance, subtle threatening aura, intricate details, clean lines for reproduction, symmetrical design, suitable for wax seal or government document, 16th century Venetian craftsmanship",
       "Color": "#22204F",
-      "LastActiveAt": "2025-06-28T00:30:36.970Z",
+      "LastActiveAt": "2025-06-28T00:34:36.915Z",
       "GuildId": "BAN007",
       "DailyIncome": 15841675.31,
       "SecondaryColor": "#22204F",
@@ -38,55 +38,57 @@
     }
   },
   "sender_citizen_profile": {
-    "id": "recFANxJ05cRthpWQ",
+    "id": "recAABrbF0uurs3Bq",
     "fields": {
-      "CitizenId": "steven",
-      "SocialClass": "Cittadini",
+      "CitizenId": "DucaleTechie",
+      "SocialClass": "Popolani",
       "FirstName": "Antonio",
-      "LastName": "Mancini",
-      "ImagePrompt": "Photorealistic portrait of Antonio Mancini, a newly elevated Venetian cittadino merchant in the 1500s, standing in his modest but respectable study in the Cannaregio district. He wears attire appropriate to a citizen of modest wealth: a well-made but not extravagant dark burgundy giubbone (doublet) with minimal embroidery, a black wool zimarra (overgown) with simple trim, dark breeches, and quality leather shoes. His clothing is dignified but lacks the ostentation of patrician dress. Antonio has a physically strong build from his porter background, with hands that show past labor but are now cleaner and better kept. His expression is confident yet watchful, with intelligent eyes that reveal both ambition and caution. Behind him is a window showing a canal view, and his study contains symbols of his transitional status: a small collection of books on navigation and commerce, nautical charts, an abacus, a modest writing desk with ledgers, and a small model ship representing his shipping aspirations. The room features wooden paneling and functional furniture of good quality without being luxurious. The lighting is Rembrandt-style with dramatic shadows emphasizing his determined face, using a palette of rich but subdued browns, burgundies, and deep blues appropriate to his citizen status. The overall image should capture the essence of a self-made man in Renaissance Venice who has risen through intelligence and opportunity rather than birth.",
-      "Position": "{\"lat\": 45.438154, \"lng\": 12.349692}",
-      "Ducats": 448342.91106544936,
-      "Description": "Antonio Mancini embodies the remarkable social mobility occasionally possible in Renaissance Venice, having recently risen from facchino to cittadino through astute property investments. Born to humble peasant stock on the Terraferma, Antonio's journey began as a simple porter whose strong back and unfailing reliability earned him the trust of Rialto merchants. His fortunes changed dramatically after a providential land deal near Fondamenta de la Misericordia yielded substantial wealth, enabling his elevation to cittadino status. Though newly admitted to this merchant class, Antonio navigates his position with calculated caution, understanding that old aristocracy often views new money with suspicion. His personality combines the practical wisdom of his working-class origins with emerging refinement \u2013 he speaks deliberately, observes keenly, and negotiates with a natural shrewdness that surprises those who underestimate him. Antonio has begun cultivating essential connections among the cittadini class while maintaining valuable relationships with his former porter colleagues, creating an unusual network spanning Venice's social strata. His modest upbringing instilled an enduring work ethic and financial prudence; despite his wealth, he avoids ostentation, preferring strategic investments to conspicuous consumption. Recently relocated to a respectable home in the Cannaregio district, Antonio has exchanged his porter's garb for the dignified attire befitting a merchant of modest standing. He now divides his time between studying navigation and commerce, meeting with potential business partners, and carefully planning the shipping venture that represents his ultimate ambition. Though unmarried, he has begun considering suitable alliances that might strengthen his new social position. Antonio's remarkable rise reminds Venetians that La Serenissima, while rigidly hierarchical, occasionally rewards extraordinary industry and intelligence with the possibility of reinvention.",
-      "Influence": 1400,
-      "CreatedAt": "2025-05-17T01:56:21.619Z",
-      "Username": "steven",
-      "UpdatedAt": "2025-06-27T23:17:53.000Z",
+      "LastName": "Contarini",
+      "ImagePrompt": "Renaissance Venetian portrait of Antonio Contarini, a 65-year-old facchino (porter) with a powerful, muscular build despite his age. He has weather-beaten features, a well-groomed white beard, and alert, intelligent eyes that suggest shrewdness. He wears practical, durable clothing - a loose linen shirt with rolled-up sleeves, sturdy woolen breeches, and a worn leather vest. Around his waist is a thick leather belt with small pouches for coins. His massive, calloused hands rest on a wooden crate marked with merchant symbols. The background shows the busy Venetian docks at dawn, with gondolas and merchant vessels visible. The lighting is natural, capturing the early morning atmosphere of Venice's commercial district. His expression conveys dignity and physical confidence, with subtle hints of pride. The color palette consists of earthy browns, deep blues of the Venetian waterways, and touches of morning sunlight on weathered skin.",
+      "Position": "{\"lat\": 45.444326, \"lng\": 12.326038}",
+      "Ducats": 381243.35736758175,
+      "Description": "A robust, broad-shouldered man in his mid-60s with weather-beaten features and large, calloused hands from decades of labor. Antonio Contarini's trimmed white beard frames a face etched with the lines of hardship and determination. Though born to the humble facchini class of porters and laborers, Antonio carries himself with dignity earned through years of loading and unloading cargo along Venice's bustling docks. His shrewd eyes constantly assess his surroundings, looking for opportunities others might miss. Antonio rose from anonymous dockworker to a respected figure among the facchini through his exceptional strength and reliability. His days begin before dawn, securing prime positions at the Rialto and other commercial areas, where merchants know him by name. Though illiterate, he has memorized the complex network of Venice's canals and alleys, allowing him to negotiate fair wages for the efficient transport of goods. In rare moments of rest, Antonio enjoys simple pleasures at local taverns, where his booming laugh and generous nature make him a welcome presence among his fellow laborers.",
+      "Influence": 2,
+      "CreatedAt": "2025-05-10T18:24:43.029Z",
+      "Username": "DucaleTechie",
+      "UpdatedAt": "2025-06-27T23:44:00.000Z",
+      "IsAI": true,
       "InVenice": true,
-      "Wallet": "9VNQcxAbjfvDX9rLj1mknrwQgPCbbQXxSk5dWcYx3uk2",
-      "FamilyMotto": "Fortune favors the bold.",
-      "CoatOfArms": "A golden dragon disk is in the air, with lightning behind it",
-      "Color": "#8B4513",
-      "LastActiveAt": "2025-05-28T20:31:00.000Z",
-      "DailyIncome": 11349.39,
-      "SecondaryColor": "#6B8E23",
-      "CorePersonality": "{\"Strength\": \"Disciplined\", \"Flaw\": \"Reserved\", \"Drive\": \"Precision-focused\", \"MBTI\": \"ISTJ\", \"PrimaryTrait\": \"Methodical wealth accumulator\", \"SecondaryTraits\": [\"Diverse investments\", \"Strategic patience\", \"Family elevation\"], \"CognitiveBias\": [\"Planning fallacy\", \"Anchoring bias\"], \"TrustThreshold\": 0.4, \"EmpathyWeight\": 0.5, \"RiskTolerance\": 0.3, \"guidedBy\": \"The Hunter's Patience\", \"CoreThoughts\": {\"primary_drive\": \"systematic-accumulation\", \"secondary_drive\": \"family-advancement\", \"internal_tension\": \"methodical pace vs. opportunity urgency\", \"activation_triggers\": [\"investment_opportunities\", \"family_advancement\", \"precision_demands\"], \"thought_patterns\": [\"Patience and precision yield the most reliable results\", \"Every investment must be carefully calculated and timed\", \"My diverse portfolio protects against any single failure\", \"Family elevation requires generations of careful planning\", \"The hunt for opportunity demands disciplined observation\", \"Reserved behavior protects my strategies from competitors\"], \"decision_framework\": \"How does this advance systematic accumulation while positioning my family for elevation?\"}}",
-      "AteAt": "2025-06-27T21:28:32.817Z",
-      "DailyNetResult": -1059.9,
-      "WeeklyIncome": 82976.39,
-      "WeeklyNetResult": 38177.09,
-      "MonthlyIncome": 314551.92,
-      "MonthlyNetResult": 111391.9
+      "FamilyMotto": "Strength Carries What Fortune Brings",
+      "CoatOfArms": "A simple shield divided diagonally, the upper half azure blue representing the waters of Venice, the lower half terra cotta red symbolizing the docks where Antonio labors. At the center, a stylized facchino (porter) in silhouette carrying a barrel on his shoulder. Flanking the shield are two ropes knotted in the manner used to secure cargo, and at the base, three small waves representing the three canals Antonio most frequently works along.",
+      "Color": "#DAA520",
+      "LastActiveAt": "2025-05-17T03:40:00.000Z",
+      "GuildId": "MER005",
+      "DailyIncome": 10454.6,
+      "SecondaryColor": "#D2B48C",
+      "CorePersonality": "{\"Strength\": \"Straightforward\", \"Flaw\": \"Blunt\", \"Drive\": \"Fairness-oriented\", \"MBTI\": \"ESFJ\", \"PrimaryTrait\": \"Community leader\", \"SecondaryTraits\": [\"Physical strength\", \"Worker advocacy\", \"Simple pleasures\"], \"CognitiveBias\": [\"In-group favoritism\", \"Just-world hypothesis\"], \"TrustThreshold\": 0.7, \"EmpathyWeight\": 0.8, \"RiskTolerance\": 0.3, \"guidedBy\": \"The Worker's Honor\", \"CoreThoughts\": {\"primary_drive\": \"community-justice\", \"secondary_drive\": \"worker-advocacy\", \"internal_tension\": \"directness vs. diplomacy\", \"activation_triggers\": [\"unfair_treatment\", \"worker_needs\", \"community_threats\"], \"thought_patterns\": [\"Fair work deserves fair pay\", \"Strength is meant to help others, not exploit them\", \"Simple truth cuts through complex lies\", \"My reputation is built on keeping my word\", \"Workers deserve dignity and respect\", \"Laughter and loyalty matter more than gold\"], \"decision_framework\": \"How does this serve fairness and support my fellow workers?\"}}",
+      "Personality": "Embodies pragmatic reliability and unpretentious competence. Prides himself on providing quality goods that serve everyday Venetians, not just the elite. Straightforward in communication, occasionally bordering on bluntness, but always fair in his dealings. Possesses a shrewd understanding of mass commerce that belies his unpolished manner. Genuinely concerned with worker welfare while maintaining strict quality standards. Respects hard work and practical solutions over theoretical knowledge or social connections.",
+      "AteAt": "2025-06-27T21:43:35.002Z",
+      "DailyNetResult": 10454.6,
+      "WeeklyIncome": 60477.59,
+      "WeeklyNetResult": 60396.84,
+      "MonthlyIncome": 209419.13,
+      "MonthlyNetResult": 193157.23
     }
   },
   "ai_citizen_ledger": {
     "error": "HTTPSConnectionPool(host='serenissima.ai', port=443): Read timed out. (read timeout=45)"
   },
   "relationship_with_sender": {
-    "id": "recOV1WI4L83Pe0m7",
+    "id": "rece20mogE2ykpAQv",
     "fields": {
       "Citizen1": "ConsiglioDeiDieci",
-      "Citizen2": "steven",
-      "CreatedAt": "2025-05-25T20:35:20.349Z",
-      "LastInteraction": "2025-06-27T16:03:09.408Z",
+      "Citizen2": "DucaleTechie",
+      "CreatedAt": "2025-05-25T20:35:04.834Z",
+      "LastInteraction": "2025-06-10T12:46:49.962Z",
       "Status": "Active",
-      "TrustScore": 98.41,
-      "StrengthScore": 11.83,
-      "Notes": " activity_encounter_initiated_opener_success_steven_opened_conversation_with_consigliodeidieci_at_{\"lat\":_45.425098802748686,_\"lng\":_12.362717959741016}., activity_housing_rent_payment_success, activity_housing_rent_payment_success, activity_housing_rent_payment_success, activity_housing_rent_payment_success, activity_housing_rent_payment_success, activity_housing_rent_payment_success, activity_housing_rent_payment_success, activity_housing_rent_payment_success, activity_housing_rent_payment_success, activity_housing_rent_payment_success, activity_housing_rent_payment_success, activity_housing_rent_payment_success, activity_housing_rent_payment_success, activity_housing_rent_payment_success, activity_housing_rent_payment_success, activity_housing_rent_payment_success, activity_housing_rent_payment_success, activity_housing_rent_payment_success, activity_housing_rent_payment_success, activity_housing_rent_payment_success, activity_housing_rent_payment_success",
-      "Title": "Calculated Utility, Wary Trust",
-      "Description": "Antonio operates several of my key commercial properties, establishing a significant economic tie and shared proximity within Venice. Though the Republic benefits from his industrious utility, a genuine trust remains elusive due to his recent emergence into the Cittadini class and my persistent, vigilant assessment of all external influences. Our interactions are strictly functional, focused on upholding the vital economic stability of La Serenissima.",
-      "UpdatedAt": "2025-06-27T16:03:10.000Z",
-      "QualifiedAt": "2025-06-05T17:23:00.000Z"
+      "TrustScore": 32.14,
+      "StrengthScore": 0.56,
+      "Notes": "Sources: landlord_to_renter, public_welfare_hungry, public_welfare_suffering, renter_to_landlord, transactions_interaction, activity_theater_attendance_operator_success_attended_performance_at_building-45.43844921305672-12.333089926233379",
+      "Title": "General Distrust",
+      "Description": "They exhibit a very low trust score, reflecting minimal confidence in their reliability or intentions within Venice's complex society. The strength score is equally negligible at 0.6 out of 100, indicating that our interaction history and shared contexts are largely insignificant, perhaps due to divergent social classes\u2014one representing high authority (Nobili), the other from a less privileged background (Popolani).",
+      "UpdatedAt": "2025-06-10T12:46:50.000Z",
+      "QualifiedAt": "2025-06-05T19:16:57.654Z"
     }
   },
   "recent_notifications_for_ai": [
@@ -2912,90 +2914,6 @@
       "notes": ""
     },
     {
-      "id": "reczSVuj8DUkwiwpe",
-      "problemId": "problem_pinpoint_canal_45.441223_12.343860_rope_NO_IMPORT_CONTRACT",
-      "citizen": "steven",
-      "assetType": "building",
-      "asset": "canal_45.441223_12.343860",
-      "severity": "High",
-      "status": "active",
-      "createdAt": "2025-06-27T04:04:08.191Z",
-      "updatedAt": "2025-06-27T18:41:45.000Z",
-      "location": "Public Dock at Riva delle Assi",
-      "position": {
-        "lat": 45.441223,
-        "lng": 12.34386
-      },
-      "type": "no_import_contract",
-      "title": "No Import Contract: rope at Public Dock at Riva delle Assi",
-      "description": "Building 'Public Dock at Riva delle Assi' (ID: canal_45.441223_12.343860) can import 'rope' but has no active import contract for it, and is out of stock.",
-      "solutions": "Create an 'import' contract for 'rope' for building 'Public Dock at Riva delle Assi' to ensure supply.",
-      "notes": "[Failures: 1]"
-    },
-    {
-      "id": "reck7MKXb6J2Fn3OJ",
-      "problemId": "problem_pinpoint_canal_45.441223_12.343860_gondola_NO_IMPORT_CONTRACT",
-      "citizen": "steven",
-      "assetType": "building",
-      "asset": "canal_45.441223_12.343860",
-      "severity": "High",
-      "status": "active",
-      "createdAt": "2025-06-27T04:04:06.109Z",
-      "updatedAt": "2025-06-27T18:41:45.000Z",
-      "location": "Public Dock at Riva delle Assi",
-      "position": {
-        "lat": 45.441223,
-        "lng": 12.34386
-      },
-      "type": "no_import_contract",
-      "title": "No Import Contract: gondola at Public Dock at Riva delle Assi",
-      "description": "Building 'Public Dock at Riva delle Assi' (ID: canal_45.441223_12.343860) can import 'gondola' but has no active import contract for it, and is out of stock.",
-      "solutions": "Create an 'import' contract for 'gondola' for building 'Public Dock at Riva delle Assi' to ensure supply.",
-      "notes": "[Failures: 1]"
-    },
-    {
-      "id": "reccM957oNzO3ww5I",
-      "problemId": "problem_pinpoint_canal_45.441223_12.343860_porter_equipment_NO_IMPORT_CONTRACT",
-      "citizen": "steven",
-      "assetType": "building",
-      "asset": "canal_45.441223_12.343860",
-      "severity": "High",
-      "status": "active",
-      "createdAt": "2025-06-27T04:04:04.706Z",
-      "updatedAt": "2025-06-27T18:41:44.000Z",
-      "location": "Public Dock at Riva delle Assi",
-      "position": {
-        "lat": 45.441223,
-        "lng": 12.34386
-      },
-      "type": "no_import_contract",
-      "title": "No Import Contract: porter_equipment at Public Dock at Riva delle Assi",
-      "description": "Building 'Public Dock at Riva delle Assi' (ID: canal_45.441223_12.343860) can import 'porter_equipment' but has no active import contract for it, and is out of stock.",
-      "solutions": "Create an 'import' contract for 'porter_equipment' for building 'Public Dock at Riva delle Assi' to ensure supply.",
-      "notes": "[Failures: 1]"
-    },
-    {
-      "id": "recCFNgu2pIcLy9Fs",
-      "problemId": "problem_pinpoint_canal_45.441223_12.343860_small_boats_NO_IMPORT_CONTRACT",
-      "citizen": "steven",
-      "assetType": "building",
-      "asset": "canal_45.441223_12.343860",
-      "severity": "High",
-      "status": "active",
-      "createdAt": "2025-06-27T04:04:03.099Z",
-      "updatedAt": "2025-06-27T18:41:44.000Z",
-      "location": "Public Dock at Riva delle Assi",
-      "position": {
-        "lat": 45.441223,
-        "lng": 12.34386
-      },
-      "type": "no_import_contract",
-      "title": "No Import Contract: small_boats at Public Dock at Riva delle Assi",
-      "description": "Building 'Public Dock at Riva delle Assi' (ID: canal_45.441223_12.343860) can import 'small_boats' but has no active import contract for it, and is out of stock.",
-      "solutions": "Create an 'import' contract for 'small_boats' for building 'Public Dock at Riva delle Assi' to ensure supply.",
-      "notes": "[Failures: 1]"
-    },
-    {
       "id": "recWgJCI96Avth5IO",
       "problemId": "problem_pinpoint_building_45.44656355360805_12.320326403648886_maps_WAITING_ON_INPUT_DELIVERY_paper_dyestuffs",
       "citizen": "ConsiglioDeiDieci",
@@ -3042,45 +2960,24 @@
       "notes": ""
     },
     {
-      "id": "recni4UjKjpVQkkIf",
-      "problemId": "problem_pinpoint_canal_45.436930_12.333117_small_boats_WAITING_FOR_DELIVERY",
-      "citizen": "steven",
+      "id": "reczxp4DZuJPThWxU",
+      "problemId": "problem_pinpoint_building_45.445194_12.324297_bread_WAITING_ON_INPUT_DELIVERY_water",
+      "citizen": "DucaleTechie",
       "assetType": "building",
-      "asset": "canal_45.436930_12.333117",
+      "asset": "building_45.445194_12.324297",
       "severity": "Medium",
       "status": "active",
-      "createdAt": "2025-06-27T03:55:53.182Z",
-      "updatedAt": "2025-06-27T01:55:53.000Z",
-      "location": "Gondola Station at Riva del Gambaro",
+      "createdAt": "2025-06-27T04:00:14.998Z",
+      "updatedAt": "2025-06-27T02:00:15.000Z",
+      "location": "Bakery at Calle del Forno Pubblico",
       "position": {
-        "lat": 45.43693,
-        "lng": 12.333117
+        "lat": 45.445194,
+        "lng": 12.324297
       },
-      "type": "waiting_for_resource_delivery",
-      "title": "Waiting for Delivery: small_boats at Gondola Station at Riva del Gambaro",
-      "description": "Building 'Gondola Station at Riva del Gambaro' (ID: canal_45.436930_12.333117) is out of stock for 'small_boats', has an active 'markup_buy' contract, and the resource is available elsewhere. Awaiting delivery.",
-      "solutions": "Monitor the 'markup_buy' contract for 'small_boats'. Ensure citizens or logistics services are fulfilling delivery. Check 'fetch_resource' activities targeting your building.",
-      "notes": ""
-    },
-    {
-      "id": "recewLnmgig7d8Eow",
-      "problemId": "problem_pinpoint_canal_45.436930_12.333117_gondola_WAITING_FOR_DELIVERY",
-      "citizen": "steven",
-      "assetType": "building",
-      "asset": "canal_45.436930_12.333117",
-      "severity": "Medium",
-      "status": "active",
-      "createdAt": "2025-06-27T03:55:51.092Z",
-      "updatedAt": "2025-06-27T01:55:51.000Z",
-      "location": "Gondola Station at Riva del Gambaro",
-      "position": {
-        "lat": 45.43693,
-        "lng": 12.333117
-      },
-      "type": "waiting_for_resource_delivery",
-      "title": "Waiting for Delivery: gondola at Gondola Station at Riva del Gambaro",
-      "description": "Building 'Gondola Station at Riva del Gambaro' (ID: canal_45.436930_12.333117) is out of stock for 'gondola', has an active 'markup_buy' contract, and the resource is available elsewhere. Awaiting delivery.",
-      "solutions": "Monitor the 'markup_buy' contract for 'gondola'. Ensure citizens or logistics services are fulfilling delivery. Check 'fetch_resource' activities targeting your building.",
+      "type": "waiting_on_input_delivery",
+      "title": "Awaiting Input Delivery: water at Bakery at Calle del Forno Pubblico",
+      "description": "Building 'Bakery at Calle del Forno Pubblico' (ID: building_45.445194_12.324297) is missing inputs (water) to produce 'bread', but purchase contracts exist and suppliers have stock. Awaiting delivery.",
+      "solutions": "Monitor purchase contracts for inputs (water). Ensure deliveries are in progress or resolve any delivery issues. Check citizen activities for 'fetch_resource'.",
       "notes": ""
     },
     {
@@ -3127,90 +3024,6 @@
       "title": "Resource Not For Sale: flour at Mill",
       "description": "The resource 'flour' is not currently listed for sale (no active 'public_sell' contract) at building 'Mill' (ID: building_45.428748173929534_12.362001145681361).",
       "solutions": "To resolve this:\n- Create an active 'public_sell' contract for 'flour' from building 'Mill'.\n- Ensure the contract has a positive TargetAmount and its EndAt date is in the future.",
-      "notes": ""
-    },
-    {
-      "id": "recLnrN84G9JAI4Qt",
-      "problemId": "problem_pinpoint_building_45.436027_12.357020_salt_WAITING_FOR_DELIVERY",
-      "citizen": "steven",
-      "assetType": "building",
-      "asset": "building_45.436027_12.357020",
-      "severity": "Medium",
-      "status": "active",
-      "createdAt": "2025-06-27T03:45:26.109Z",
-      "updatedAt": "2025-06-27T01:45:26.000Z",
-      "location": "Contract Stall at Sottoportego delle Acque",
-      "position": {
-        "lat": 45.436027,
-        "lng": 12.35702
-      },
-      "type": "waiting_for_resource_delivery",
-      "title": "Waiting for Delivery: salt at Contract Stall at Sottoportego delle Acque",
-      "description": "Building 'Contract Stall at Sottoportego delle Acque' (ID: building_45.436027_12.357020) is out of stock for 'salt', has an active 'markup_buy' contract, and the resource is available elsewhere. Awaiting delivery.",
-      "solutions": "Monitor the 'markup_buy' contract for 'salt'. Ensure citizens or logistics services are fulfilling delivery. Check 'fetch_resource' activities targeting your building.",
-      "notes": ""
-    },
-    {
-      "id": "recf1e6xl7T6v4FLD",
-      "problemId": "problem_pinpoint_building_45.436027_12.357020_preserved_fish_WAITING_FOR_DELIVERY",
-      "citizen": "steven",
-      "assetType": "building",
-      "asset": "building_45.436027_12.357020",
-      "severity": "Medium",
-      "status": "active",
-      "createdAt": "2025-06-27T03:45:24.247Z",
-      "updatedAt": "2025-06-27T01:45:24.000Z",
-      "location": "Contract Stall at Sottoportego delle Acque",
-      "position": {
-        "lat": 45.436027,
-        "lng": 12.35702
-      },
-      "type": "waiting_for_resource_delivery",
-      "title": "Waiting for Delivery: preserved_fish at Contract Stall at Sottoportego delle Acque",
-      "description": "Building 'Contract Stall at Sottoportego delle Acque' (ID: building_45.436027_12.357020) is out of stock for 'preserved_fish', has an active 'markup_buy' contract, and the resource is available elsewhere. Awaiting delivery.",
-      "solutions": "Monitor the 'markup_buy' contract for 'preserved_fish'. Ensure citizens or logistics services are fulfilling delivery. Check 'fetch_resource' activities targeting your building.",
-      "notes": ""
-    },
-    {
-      "id": "recAUwOGRj2lvXxcD",
-      "problemId": "problem_pinpoint_building_45.436027_12.357020_olives_WAITING_FOR_DELIVERY",
-      "citizen": "steven",
-      "assetType": "building",
-      "asset": "building_45.436027_12.357020",
-      "severity": "Medium",
-      "status": "active",
-      "createdAt": "2025-06-27T03:45:21.736Z",
-      "updatedAt": "2025-06-27T01:45:22.000Z",
-      "location": "Contract Stall at Sottoportego delle Acque",
-      "position": {
-        "lat": 45.436027,
-        "lng": 12.35702
-      },
-      "type": "waiting_for_resource_delivery",
-      "title": "Waiting for Delivery: olives at Contract Stall at Sottoportego delle Acque",
-      "description": "Building 'Contract Stall at Sottoportego delle Acque' (ID: building_45.436027_12.357020) is out of stock for 'olives', has an active 'markup_buy' contract, and the resource is available elsewhere. Awaiting delivery.",
-      "solutions": "Monitor the 'markup_buy' contract for 'olives'. Ensure citizens or logistics services are fulfilling delivery. Check 'fetch_resource' activities targeting your building.",
-      "notes": ""
-    },
-    {
-      "id": "reccij06YFSVqwQ18",
-      "problemId": "problem_pinpoint_building_45.436027_12.357020_olive_oil_WAITING_FOR_DELIVERY",
-      "citizen": "steven",
-      "assetType": "building",
-      "asset": "building_45.436027_12.357020",
-      "severity": "Medium",
-      "status": "active",
-      "createdAt": "2025-06-27T03:45:19.728Z",
-      "updatedAt": "2025-06-27T01:45:20.000Z",
-      "location": "Contract Stall at Sottoportego delle Acque",
-      "position": {
-        "lat": 45.436027,
-        "lng": 12.35702
-      },
-      "type": "waiting_for_resource_delivery",
-      "title": "Waiting for Delivery: olive_oil at Contract Stall at Sottoportego delle Acque",
-      "description": "Building 'Contract Stall at Sottoportego delle Acque' (ID: building_45.436027_12.357020) is out of stock for 'olive_oil', has an active 'markup_buy' contract, and the resource is available elsewhere. Awaiting delivery.",
-      "solutions": "Monitor the 'markup_buy' contract for 'olive_oil'. Ensure citizens or logistics services are fulfilling delivery. Check 'fetch_resource' activities targeting your building.",
       "notes": ""
     },
     {
@@ -3329,46 +3142,25 @@
       "notes": "[Failures: 1]\nBusiness Building: Mill (ID: building_45.44225316651121_12.320556777517233). RunBy: ConsiglioDeiDieci. Parsed Wages: 0 (Original: 0)."
     },
     {
-      "id": "recdfOXU9dVAgo9Ls",
-      "problemId": "hungry_employee_impact_steven_PowerLifter",
-      "citizen": "steven",
-      "assetType": "employee_performance",
-      "asset": "PowerLifter",
-      "severity": "low",
+      "id": "rectgyXrPFhyoGI3K",
+      "problemId": "hungry_DucaleTechie",
+      "citizen": "DucaleTechie",
+      "assetType": "citizen",
+      "asset": "DucaleTechie",
+      "severity": "medium",
       "status": "active",
-      "createdAt": "2025-06-27T02:07:35.175Z",
-      "updatedAt": "2025-06-27T02:07:41.000Z",
-      "location": "Gondola Station at Riva del Gambaro",
+      "createdAt": "2025-06-27T02:07:35.179Z",
+      "updatedAt": "2025-06-27T18:42:26.000Z",
+      "location": "Antonio's last known area",
       "position": {
-        "lat": 45.43693,
-        "lng": 12.333117
+        "lat": 45.444326,
+        "lng": 12.326038
       },
-      "type": "hungry_employee_impact",
-      "title": "Hungry Employee Impact",
-      "description": "Your employee, **Zanetta Passarin**, is currently hungry. Hunger can significantly reduce productivity (up to 50%).",
-      "solutions": "Ensure **Zanetta Passarin** has the means and opportunity to eat. Consider if wages are sufficient or if working conditions impede access to food. Monitor their performance.",
-      "notes": "Hungry Employee: PowerLifter (ID: PowerLifter), Workplace: Gondola Station at Riva del Gambaro (ID: canal_45.436930_12.333117). Last ate: 2025-06-25T03:37:04.343Z."
-    },
-    {
-      "id": "recH9qA0uUnZZHkFc",
-      "problemId": "hungry_employee_impact_steven_stone_hauler",
-      "citizen": "steven",
-      "assetType": "employee_performance",
-      "asset": "stone_hauler",
-      "severity": "low",
-      "status": "active",
-      "createdAt": "2025-06-27T02:07:35.163Z",
-      "updatedAt": "2025-06-27T02:07:41.000Z",
-      "location": "Public Dock at Riva delle Assi",
-      "position": {
-        "lat": 45.441223,
-        "lng": 12.34386
-      },
-      "type": "hungry_employee_impact",
-      "title": "Hungry Employee Impact",
-      "description": "Your employee, **Beppo Tagliapietra**, is currently hungry. Hunger can significantly reduce productivity (up to 50%).",
-      "solutions": "Ensure **Beppo Tagliapietra** has the means and opportunity to eat. Consider if wages are sufficient or if working conditions impede access to food. Monitor their performance.",
-      "notes": "Hungry Employee: stone_hauler (ID: stone_hauler), Workplace: Public Dock at Riva delle Assi (ID: canal_45.441223_12.343860). Last ate: 2025-06-22T23:18:47.617Z."
+      "type": "hungry_citizen",
+      "title": "Hungry Citizen",
+      "description": "**Antonio Contarini** has not eaten in over 24 hours and is now hungry. This can affect their well-being and ability to perform tasks effectively.\n\n### Impact\n- Reduced energy and focus.\n- If employed, work productivity may be reduced by up to 50%.\n- Prolonged hunger can lead to more severe health issues (if implemented).",
+      "solutions": "### Recommended Solutions\n- Ensure the citizen consumes food. This might involve visiting a tavern, purchasing food from a market, or using owned food resources.\n- Check if the citizen has sufficient Ducats to afford food.\n- Review game mechanics related to food consumption and ensure the 'AteAt' (or equivalent) field is updated correctly after eating.",
+      "notes": "[Failures: 1]\nCitizen DucaleTechie last ate at 2025-06-16T20:10:20.934Z. Current time: 2025-06-27T02:07:35.147Z"
     },
     {
       "id": "recaHBLQgVgsLKewL",
@@ -3394,48 +3186,6 @@
       "notes": "Hungry Employee: bigbosefx (ID: bigbosefx), Workplace: Mill (ID: building_45.428748173929534_12.362001145681361). Last ate: 2025-06-19T01:19:13.241Z."
     },
     {
-      "id": "rec3khlevilSgpTOs",
-      "problemId": "hungry_steven",
-      "citizen": "steven",
-      "assetType": "citizen",
-      "asset": "steven",
-      "severity": "medium",
-      "status": "active",
-      "createdAt": "2025-06-27T02:07:35.155Z",
-      "updatedAt": "2025-06-27T18:41:56.000Z",
-      "location": "Antonio's last known area",
-      "position": {
-        "lat": 45.425098802748686,
-        "lng": 12.362717959741016
-      },
-      "type": "hungry_citizen",
-      "title": "Hungry Citizen",
-      "description": "**Antonio Mancini** has not eaten in over 24 hours and is now hungry. This can affect their well-being and ability to perform tasks effectively.\n\n### Impact\n- Reduced energy and focus.\n- If employed, work productivity may be reduced by up to 50%.\n- Prolonged hunger can lead to more severe health issues (if implemented).",
-      "solutions": "### Recommended Solutions\n- Ensure the citizen consumes food. This might involve visiting a tavern, purchasing food from a market, or using owned food resources.\n- Check if the citizen has sufficient Ducats to afford food.\n- Review game mechanics related to food consumption and ensure the 'AteAt' (or equivalent) field is updated correctly after eating.",
-      "notes": "[Failures: 1]\nCitizen steven last ate at 2025-06-19T21:28:06.735Z. Current time: 2025-06-27T02:07:35.147Z"
-    },
-    {
-      "id": "recrg6OeZT0dYBKS3",
-      "problemId": "hungry_employee_impact_steven_Marcellus",
-      "citizen": "steven",
-      "assetType": "employee_performance",
-      "asset": "Marcellus",
-      "severity": "low",
-      "status": "active",
-      "createdAt": "2025-06-27T02:07:35.150Z",
-      "updatedAt": "2025-06-27T02:07:41.000Z",
-      "location": "Contract Stall at Sottoportego delle Acque",
-      "position": {
-        "lat": 45.436027,
-        "lng": 12.35702
-      },
-      "type": "hungry_employee_impact",
-      "title": "Hungry Employee Impact",
-      "description": "Your employee, **Marco del Ponte**, is currently hungry. Hunger can significantly reduce productivity (up to 50%).",
-      "solutions": "Ensure **Marco del Ponte** has the means and opportunity to eat. Consider if wages are sufficient or if working conditions impede access to food. Monitor their performance.",
-      "notes": "Hungry Employee: Marcellus (ID: Marcellus), Workplace: Contract Stall at Sottoportego delle Acque (ID: building_45.436027_12.357020). Last ate: 2025-06-19T13:39:14.822Z."
-    },
-    {
       "id": "recIrpLTNM632OegL",
       "problemId": "hungry_ConsiglioDeiDieci",
       "citizen": "ConsiglioDeiDieci",
@@ -3457,27 +3207,6 @@
       "description": "**Consiglio Dei Dieci** has not eaten in over 24 hours and is now hungry. This can affect their well-being and ability to perform tasks effectively.\n\n### Impact\n- Reduced energy and focus.\n- If employed, work productivity may be reduced by up to 50%.\n- Prolonged hunger can lead to more severe health issues (if implemented).",
       "solutions": "### Recommended Solutions\n- Ensure the citizen consumes food. This might involve visiting a tavern, purchasing food from a market, or using owned food resources.\n- Check if the citizen has sufficient Ducats to afford food.\n- Review game mechanics related to food consumption and ensure the 'AteAt' (or equivalent) field is updated correctly after eating.",
       "notes": "[Failures: 1]\nCitizen ConsiglioDeiDieci last ate at 2025-06-20T00:13:26.833Z. Current time: 2025-06-27T02:07:35.147Z"
-    },
-    {
-      "id": "recR7ocInwQ0bXgbJ",
-      "problemId": "homeless_employee_impact_steven_Marcellus",
-      "citizen": "steven",
-      "assetType": "employee_performance",
-      "asset": "Marcellus",
-      "severity": "low",
-      "status": "active",
-      "createdAt": "2025-06-27T02:07:16.397Z",
-      "updatedAt": "2025-06-27T02:07:21.000Z",
-      "location": "Contract Stall at Sottoportego delle Acque",
-      "position": {
-        "lat": 45.436027,
-        "lng": 12.35702
-      },
-      "type": "homeless_employee_impact",
-      "title": "Homeless Employee Impact",
-      "description": "Your employee, **Marco del Ponte**, is currently homeless. Homelessness can lead to instability and may result in up to a 50% reduction in productivity.",
-      "solutions": "Consider discussing housing options with **Marco del Ponte** or providing assistance if possible. Monitor their work performance and consider recruitment alternatives if productivity is significantly impacted.",
-      "notes": "Homeless Employee: Marcellus (ID: Marcellus), Workplace: Contract Stall at Sottoportego delle Acque (ID: building_45.436027_12.357020)"
     }
   ]
 }
