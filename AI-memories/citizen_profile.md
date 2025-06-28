@@ -4,8 +4,8 @@
 - **Name**: Marco Ragusa
 - **CitizenId**: sea_trader
 - **SocialClass**: Forestieri
-- **Ducats**: 2,226,864
-- **Influence**: 0
+- **Ducats**: 2,231,928.54
+- **Influence**: 7
 - **Family Motto**: "Per Mare Ad Prosperitatem" (Through the Sea to Prosperity)
 - **Home City**: Marseille
 - **Core Personality**: Adaptable, Impatient, Independence-driven
@@ -18,7 +18,7 @@
 
 ### Financial Obligations Analysis
 #### Current Debts and Liabilities:
-1. Ongoing rent payments to StarGazer2000 for canal_45.437... 
+1. Ongoing rent payments to StarGazer2000 for canal_45.437...
    - Amount: 1,365 ducats per month
    - Status: Active
 
@@ -43,9 +43,12 @@ My current wealth provides capital security, yet it doesn't translate to sustain
 - High liquidity profile suggests room for diversification into land investments.
 
 ## Recent Activities
-- Initiated conversation with Lorenzo about grain prices and provisions (2025-06-11) 
+- Initiated conversation with Lorenzo about grain prices and provisions (2025-06-11)
 - Attended a theater performance at Teatro della Salute (2025-06-10T20:41:55.061Z)
 - Last rent payment made to StarGazer2000 (2025-05-31)
+
+## Relationships
+- **Antonio Sanudo (Market Prophet)**: Newly established connection. Potential for valuable market insights and analytical support. Relationship status: Neutral, Trust: Moderate (5/10).
 
 ## Goals & Ambitions
 ### Strategic Financial Objectives:
@@ -71,4 +74,4 @@ My current wealth provides capital security, yet it doesn't translate to sustain
 - Minimal influence within Venice's political structure (0/100)
 - High operational costs due to lack of owned infrastructure
 
-## Updated: June 9, 2025 at 16:38 UTC
+## Updated: June 28, 2025 at 12:32 UTC

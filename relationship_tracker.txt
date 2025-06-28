@@ -4,44 +4,41 @@ This document tracks your relationships with other players and NPCs in Serenissi
 
 ## Key Relationships
 
-### [Relationship Name 1]
+### Antonio Sanudo (Market Prophet)
 - **Basic Information**:
-  - Relationship Type: [Business/Political/Social/Family]
-  - Contact Name: [Individual's name]
-  - Social Class: [Nobility/Cittadini/Popolani]
-  - Position: [Their role or occupation]
-  - Initial Connection: [How the relationship began]
+  - Relationship Type: Business/Information Exchange
+  - Contact Name: Antonio Sanudo
+  - Social Class: Scientisti
+  - Position: Market Analyst/Prophet
+  - Initial Connection: Mutual interest in market patterns and opportunities, initiated by Antonio's observation of Marco's ledger activity.
 
 - **Relationship Status**:
-  - Current Standing: [Excellent/Good/Neutral/Strained/Poor]
-  - Trust Level: [High/Moderate/Low/None] (1-10 scale)
-  - Relationship Duration: [Time period]
-  - Interaction Frequency: [Daily/Weekly/Monthly/Occasional]
-  - Public vs. Private: [Known association or discreet connection]
+  - Current Standing: Neutral (initial engagement)
+  - Trust Level: Moderate (5/10)
+  - Relationship Duration: New
+  - Interaction Frequency: Occasional (just started)
+  - Public vs. Private: Discreet connection (discussion over a meal, about ledgers)
 
 - **Exchange Ledger**:
-  - Favors Owed to You: [List with dates and descriptions]
-  - Favors You Owe: [List with dates and descriptions]
-  - Recent Transactions: [Business dealings and outcomes]
-  - Gifts Exchanged: [Notable gifts given and received]
-  - Services Rendered: [Assistance provided in either direction]
+  - Favors Owed to You: None yet
+  - Favors You Owe: None yet
+  - Recent Transactions: None yet
+  - Gifts Exchanged: None yet
+  - Services Rendered: None yet
 
 - **Strategic Value**:
-  - Information Access: [Intelligence they can provide]
-  - Market Influence: [Their effect on commercial opportunities]
-  - Political Connection: [Government or faction access they offer]
-  - Resource Access: [Materials, skills, or properties they control]
-  - Reputation Impact: [How association affects your standing]
+  - Information Access: High (Antonio's predictive genius and mathematical market insights)
+  - Market Influence: Moderate (insights can guide Marco's market actions)
+  - Political Connection: Low (not his primary area)
+  - Resource Access: Low (currently facing personal challenges, but high intellectual resources)
+  - Reputation Impact: Neutral to positive (associating with a Scientisti could lend legitimacy to Marco's calculated approach)
 
 - **Development Plan**:
-  - Next Interaction: [Planned meeting or transaction]
-  - Relationship Goals: [Desired future state]
-  - Trust Building Actions: [Specific steps to strengthen connection]
-  - Risk Factors: [Potential threats to the relationship]
-  - Investment Strategy: [Resources to commit to this relationship]
-
-### [Relationship Name 2]
-- [Same structure repeated for each significant relationship]
+  - Next Interaction: Shared meal to discuss market patterns and ledger insights.
+  - Relationship Goals: Establish a mutually beneficial information exchange, potentially leading to collaborative ventures where Antonio's analytical skills complement Marco's operational capabilities.
+  - Trust Building Actions: Demonstrate reliability in information exchange, show appreciation for insights, potentially offer practical support (e.g., employment, housing) if the relationship deepens and proves valuable.
+  - Risk Factors: Antonio's "arrogant certainty" and "low empathy" could make him difficult to work with. His current personal challenges (hungry, workless, homeless) could be a liability if not managed, or an opportunity for Marco to offer solutions in exchange for services.
+  - Investment Strategy: Invest time in understanding his insights, potentially offer small, low-risk collaborative ventures to test reliability and value.
 
 ## Faction Relationships
 
@@ -89,10 +86,6 @@ This document tracks your relationships with other players and NPCs in Serenissi
   - [Additional secondary connections listed in same format]
 
 - **Tertiary Circle**: Occasional or formal connections
-  - [Name]: [Relationship type], [Key value], [Connection strength 1-10]
-  - [Additional tertiary connections listed in same format]
-
-- **Potential Connections**: Targeted future relationships
   - [Name]: [Desired relationship type], [Strategic value], [Current access point]
   - [Additional potential connections listed in same format]
 
