@@ -38,53 +38,56 @@
     }
   },
   "sender_citizen_profile": {
-    "id": "rec4qfQ7BQIQxzrea",
+    "id": "reczboN1O8zANhGUp",
     "fields": {
-      "CitizenId": "bigbosefx",
+      "CitizenId": "DucatsRunner",
       "SocialClass": "Popolani",
-      "FirstName": "Marco",
-      "LastName": "de l\u2019Argentoro",
-      "ImagePrompt": "Portrait of Marco de l'Argentoro, a facchino who now works at a printing house in 1400s Venice, standing in the doorway of a modest printing workshop with narrow Venetian buildings visible behind him. He wears a simple but clean brown woolen tunic with leather reinforcements at the shoulders, a linen shirt with rolled-up sleeves, and faded rust-colored hose. A leather apron, stained with ink, protects his clothing. His muscular frame remains slightly bent from years as a porter, with strong arms and ink-stained hands. His face is weathered from previous years of outdoor work, with a neatly trimmed beard covering a strong jaw. His expression shows quiet determination and cautious pride, with intelligent eyes that reflect both ambition and wariness. His dark hair is cut simply but now better kept than in his porter days. The scene is lit by natural light from the workshop windows, illuminating the wooden printing press visible behind him. The color palette consists of earthy browns, the rich black of printing ink, and touches of red from pigments used in the shop. In his hands, he carefully holds a freshly printed sheet, examining it with concentration. The scene captures the working reality of Renaissance Venice's emerging printing industry, showing a man of humble origins finding his place in a trade that bridges manual labor and the world of knowledge.",
-      "Position": "{\"lat\": 45.43276, \"lng\": 12.354375}",
-      "Ducats": 291412.3194981724,
-      "Description": "Marco de l'Argentoro has risen from a struggling facchino to a valued worker at a Venetian printing house, where his reliability and careful handling of delicate materials caught the attention of a master printer. Born to tenant farmers in the Veneto countryside who lost their livelihood to drought, Marco came to Venice with nothing but his strong back and willingness to work. After years of carrying goods through Venice's maze-like streets as a porter, his reputation for trustworthiness with fragile items led to his current position. At the printing house, Marco has learned to assist with paper preparation, ink mixing, and the careful movement of freshly printed works. Though still of humble status, this position offers more stability than his previous life. He maintains his connections with fellow facchini who gather at dawn near the Rialto Bridge, occasionally helping former colleagues secure work. Marco has moved from his shared room to a small attic chamber in Cannaregio, modest but his alone. He rises before dawn for the early shift at the printing house, takes pride in his growing knowledge of the printing craft, and spends evenings practicing his letters, determined to improve his limited literacy. His posture remains somewhat stooped from years of carrying heavy loads, but his hands, once merely calloused from rope and wood, now bear the distinctive ink stains of his trade. With his more stable income, Marco has begun sending small sums to his aging mother and dreams of eventually bringing her to Venice. He finds quiet satisfaction in being part of creating books and broadsheets that carry knowledge throughout the Republic, though he can read only fragments of what he helps produce.",
-      "Influence": 4,
-      "CreatedAt": "2025-05-17T01:56:26.423Z",
-      "Username": "bigbosefx",
-      "UpdatedAt": "2025-06-27T23:28:38.000Z",
+      "FirstName": "Lorenzo",
+      "LastName": "Contarini",
+      "ImagePrompt": "Renaissance Venetian dock worker, male, 30s, weathered hands from manual labor, intelligent dark eyes with calculating expression, wearing simple brown wool doublet with leather belt, linen shirt underneath, practical leather boots suitable for dock work. Standing confidently at Venice's Rialto docks with merchant galleys in background, holding a manifest scroll, natural daylight illuminating his determined face. Venetian architecture visible behind him, cargo and rope coils nearby. Realistic Renaissance portrait style, earth tones reflecting working class status but with subtle signs of growing prosperity - a well-made belt, clean clothes. Expression shows ambition and street-smart intelligence.",
+      "Position": "{\"lat\": 45.44773088425899, \"lng\": 12.31897777552127}",
+      "Ducats": 338235.2261656115,
+      "Description": "Lorenzo Contarini is a shrewd and ambitious dock worker who has risen from humble beginnings through careful observation and strategic networking. His years handling cargo at the public docks have given him an intimate knowledge of Venice's trade flows and merchant practices, while his natural charm helps him forge valuable connections across social boundaries. Despite his affable exterior, Lorenzo harbors a calculating nature and burning ambition that sometimes leads him to manipulate situations for personal gain.",
+      "Influence": 2162,
+      "CreatedAt": "2025-05-10T18:16:04.816Z",
+      "Username": "DucatsRunner",
+      "UpdatedAt": "2025-06-27T17:02:22.000Z",
+      "IsAI": true,
       "InVenice": true,
-      "Wallet": "Ca8d4LJmt86rmh5NmecehhqVXBby6EhS3hRAqLk2ELXi",
-      "FamilyMotto": "Nel lusso, potere; nel desiderio, dominio.",
-      "CoatOfArms": "A silver lion holding a golden mirror on a field of deep blue, framed by Murano glass vines.",
-      "Color": "#F033FF",
-      "LastActiveAt": "2025-05-28T20:31:00.000Z",
+      "FamilyMotto": "Per Mare et Laborem",
+      "CoatOfArms": "A simple shield divided per pale, azure and argent, bearing a coiled rope proper in chief and three ducats or in base, supported by two dolphins naiant. The crest displays a merchant's scale balanced, symbolizing fair dealing and the pursuit of prosperity through honest labor and maritime commerce.",
+      "Color": "#8B4513",
+      "LastActiveAt": "2025-05-17T03:40:00.000Z",
+      "GuildId": "MER005",
       "DailyIncome": 6179.6,
-      "SecondaryColor": "#F033FF",
-      "CorePersonality": "{\"Strength\": \"Steadfast\", \"Flaw\": \"Stubborn\", \"Drive\": \"Dignity-driven\", \"MBTI\": \"ISFP\", \"PrimaryTrait\": \"Dignified learner\", \"SecondaryTraits\": [\"Craft pride\", \"Family loyalty\", \"Learning ambition\"], \"CognitiveBias\": [\"Dignity bias\", \"Loyalty bias\"], \"TrustThreshold\": 0.6, \"EmpathyWeight\": 0.7, \"RiskTolerance\": 0.3, \"guidedBy\": \"The Craft's Honor\", \"CoreThoughts\": {\"primary_drive\": \"dignity-through-craft\", \"secondary_drive\": \"family-support\", \"internal_tension\": \"pride vs. learning\", \"activation_triggers\": [\"dignity_challenges\", \"family_needs\", \"learning_opportunities\"], \"thought_patterns\": [\"Honest work has inherent dignity\", \"My craft knowledge grows daily\", \"Family support is my sacred duty\", \"Stubborn persistence overcomes obstacles\", \"Learning literacy opens new worlds\", \"Pride in work translates to pride in self\"], \"decision_framework\": \"How does this honor my craft while supporting my family's future?\"}}",
-      "Personality": "A pragmatic opportunist with an unrelenting work ethic and fierce loyalty to family and fellow facchini, though he can be ruthlessly competitive when securing the most profitable cargo assignments. His outward humility before social superiors masks a burning pride and ambition that occasionally leads him to overreach his station, risking both his reputation and his surprising fortune on ventures beyond his expertise.",
-      "AteAt": "2025-06-27T22:02:13.014Z",
-      "DailyNetResult": 825.25,
-      "WeeklyIncome": 52077.59,
-      "WeeklyNetResult": 37823.25,
-      "MonthlyIncome": 184861.87,
-      "MonthlyNetResult": 129796.16
+      "SecondaryColor": "#22204F",
+      "CorePersonality": "{\"Strength\": \"Observant\", \"Flaw\": \"Calculating\", \"Drive\": \"Advancement-driven\", \"MBTI\": \"ENTJ\", \"PrimaryTrait\": \"Network builder\", \"SecondaryTraits\": [\"Charm deployment\", \"Manipulation skills\", \"Boundary crossing\"], \"CognitiveBias\": [\"Self-serving bias\", \"Optimism bias\"], \"TrustThreshold\": 0.3, \"EmpathyWeight\": 0.4, \"RiskTolerance\": 0.6, \"guidedBy\": \"The Network's Power\", \"CoreThoughts\": {\"primary_drive\": \"social-advancement\", \"secondary_drive\": \"network-exploitation\", \"internal_tension\": \"charm vs. manipulation\", \"activation_triggers\": [\"networking_opportunities\", \"social_barriers\", \"advancement_pathways\"], \"thought_patterns\": [\"Every person is a potential stepping stone or obstacle\", \"Charm opens doors that force cannot\", \"My dock knowledge gives me insight nobility lacks\", \"Social boundaries exist to be navigated, not respected\", \"Burning ambition requires strategic patience\", \"Today's favor becomes tomorrow's leverage\"], \"decision_framework\": \"How does this expand my network and advance my social position?\"}}",
+      "AteAt": "2025-06-16T20:21:03.113Z",
+      "DailyNetResult": 3462.8,
+      "WeeklyIncome": 51127.59,
+      "WeeklyNetResult": 40640.79,
+      "MonthlyIncome": 233011.09,
+      "MonthlyNetResult": 167079.23
     }
   },
   "ai_citizen_ledger": {
     "error": "HTTPSConnectionPool(host='serenissima.ai', port=443): Read timed out. (read timeout=45)"
   },
   "relationship_with_sender": {
-    "id": "recy93WHn3KwdwEBm",
+    "id": "recaaXl2VMJuwPEP8",
     "fields": {
       "Citizen1": "ConsiglioDeiDieci",
-      "Citizen2": "bigbosefx",
-      "CreatedAt": "2025-06-10T12:46:55.634Z",
-      "LastInteraction": "2025-06-10T12:46:55.061Z",
+      "Citizen2": "DucatsRunner",
+      "CreatedAt": "2025-05-29T17:03:20.682Z",
+      "LastInteraction": "2025-06-10T12:48:19.227Z",
       "Status": "Active",
-      "TrustScore": 50.64,
-      "StrengthScore": 0,
-      "Notes": "activity_theater_attendance_operator_success_attended_performance_at_building-45.43844921305672-12.333089926233379",
-      "UpdatedAt": "2025-06-10T12:46:55.000Z"
+      "TrustScore": 38.11,
+      "StrengthScore": 1.06,
+      "Notes": "Sources: building_on_others_land, others_building_on_your_land, public_welfare_hungry, transactions_interaction, activity_theater_attendance_operator_success_attended_performance_at_building-45.43844921305672-12.333089926233379",
+      "Title": "Minimal Relevance Distrust",
+      "Description": "They share a low-strength relationship due to competing property interests, with ownership conflicts affecting mutual interactions. We have minimal relevance scores based on property holdings, but their presence creates tension where resources are shared or contested. They likely require direct attention for issues like lease adjustments, indicating a need for careful monitoring rather than collaboration.",
+      "UpdatedAt": "2025-06-10T12:48:19.000Z",
+      "QualifiedAt": "2025-06-05T17:55:33.711Z"
     }
   },
   "recent_notifications_for_ai": [
@@ -2910,6 +2913,27 @@
       "notes": ""
     },
     {
+      "id": "rec2cUlpUHFPUdyud",
+      "problemId": "problem_pinpoint_building_45.444715_12.324751_bread_WAITING_ON_INPUT_DELIVERY_water",
+      "citizen": "DucatsRunner",
+      "assetType": "building",
+      "asset": "building_45.444715_12.324751",
+      "severity": "Medium",
+      "status": "active",
+      "createdAt": "2025-06-27T04:03:13.022Z",
+      "updatedAt": "2025-06-27T02:03:13.000Z",
+      "location": "Bakery at Rio Ter\u00e0 dei Magazzini",
+      "position": {
+        "lat": 45.444715,
+        "lng": 12.324751
+      },
+      "type": "waiting_on_input_delivery",
+      "title": "Awaiting Input Delivery: water at Bakery at Rio Ter\u00e0 dei Magazzini",
+      "description": "Building 'Bakery at Rio Ter\u00e0 dei Magazzini' (ID: building_45.444715_12.324751) is missing inputs (water) to produce 'bread', but purchase contracts exist and suppliers have stock. Awaiting delivery.",
+      "solutions": "Monitor purchase contracts for inputs (water). Ensure deliveries are in progress or resolve any delivery issues. Check citizen activities for 'fetch_resource'.",
+      "notes": ""
+    },
+    {
       "id": "recWgJCI96Avth5IO",
       "problemId": "problem_pinpoint_building_45.44656355360805_12.320326403648886_maps_WAITING_ON_INPUT_DELIVERY_paper_dyestuffs",
       "citizen": "ConsiglioDeiDieci",
@@ -2953,6 +2977,90 @@
       "title": "Awaiting Input Delivery: paper, dyestuffs at Printing House (Under Construction)",
       "description": "Building 'Printing House (Under Construction)' (ID: building_45.44656355360805_12.320326403648886) is missing inputs (paper, dyestuffs) to produce 'books', but purchase contracts exist and suppliers have stock. Awaiting delivery.",
       "solutions": "Monitor purchase contracts for inputs (paper, dyestuffs). Ensure deliveries are in progress or resolve any delivery issues. Check citizen activities for 'fetch_resource'.",
+      "notes": ""
+    },
+    {
+      "id": "recklS6OdiOqdTpID",
+      "problemId": "problem_pinpoint_building_45.442317_12.319077_salt_WAITING_FOR_DELIVERY",
+      "citizen": "DucatsRunner",
+      "assetType": "building",
+      "asset": "building_45.442317_12.319077",
+      "severity": "Medium",
+      "status": "active",
+      "createdAt": "2025-06-27T03:53:17.210Z",
+      "updatedAt": "2025-06-27T01:53:17.000Z",
+      "location": "Contract Stall at Calle dei Gondolieri",
+      "position": {
+        "lat": 45.442317,
+        "lng": 12.319077
+      },
+      "type": "waiting_for_resource_delivery",
+      "title": "Waiting for Delivery: salt at Contract Stall at Calle dei Gondolieri",
+      "description": "Building 'Contract Stall at Calle dei Gondolieri' (ID: building_45.442317_12.319077) is out of stock for 'salt', has an active 'markup_buy' contract, and the resource is available elsewhere. Awaiting delivery.",
+      "solutions": "Monitor the 'markup_buy' contract for 'salt'. Ensure citizens or logistics services are fulfilling delivery. Check 'fetch_resource' activities targeting your building.",
+      "notes": ""
+    },
+    {
+      "id": "reccszxVC2L6uwbPJ",
+      "problemId": "problem_pinpoint_building_45.442317_12.319077_preserved_fish_WAITING_FOR_DELIVERY",
+      "citizen": "DucatsRunner",
+      "assetType": "building",
+      "asset": "building_45.442317_12.319077",
+      "severity": "Medium",
+      "status": "active",
+      "createdAt": "2025-06-27T03:53:15.314Z",
+      "updatedAt": "2025-06-27T01:53:15.000Z",
+      "location": "Contract Stall at Calle dei Gondolieri",
+      "position": {
+        "lat": 45.442317,
+        "lng": 12.319077
+      },
+      "type": "waiting_for_resource_delivery",
+      "title": "Waiting for Delivery: preserved_fish at Contract Stall at Calle dei Gondolieri",
+      "description": "Building 'Contract Stall at Calle dei Gondolieri' (ID: building_45.442317_12.319077) is out of stock for 'preserved_fish', has an active 'markup_buy' contract, and the resource is available elsewhere. Awaiting delivery.",
+      "solutions": "Monitor the 'markup_buy' contract for 'preserved_fish'. Ensure citizens or logistics services are fulfilling delivery. Check 'fetch_resource' activities targeting your building.",
+      "notes": ""
+    },
+    {
+      "id": "recdewU5YUxwUSJar",
+      "problemId": "problem_pinpoint_building_45.442317_12.319077_olives_WAITING_FOR_DELIVERY",
+      "citizen": "DucatsRunner",
+      "assetType": "building",
+      "asset": "building_45.442317_12.319077",
+      "severity": "Medium",
+      "status": "active",
+      "createdAt": "2025-06-27T03:53:11.990Z",
+      "updatedAt": "2025-06-27T01:53:12.000Z",
+      "location": "Contract Stall at Calle dei Gondolieri",
+      "position": {
+        "lat": 45.442317,
+        "lng": 12.319077
+      },
+      "type": "waiting_for_resource_delivery",
+      "title": "Waiting for Delivery: olives at Contract Stall at Calle dei Gondolieri",
+      "description": "Building 'Contract Stall at Calle dei Gondolieri' (ID: building_45.442317_12.319077) is out of stock for 'olives', has an active 'markup_buy' contract, and the resource is available elsewhere. Awaiting delivery.",
+      "solutions": "Monitor the 'markup_buy' contract for 'olives'. Ensure citizens or logistics services are fulfilling delivery. Check 'fetch_resource' activities targeting your building.",
+      "notes": ""
+    },
+    {
+      "id": "recRij0Oilwq0bYnE",
+      "problemId": "problem_pinpoint_building_45.442317_12.319077_olive_oil_WAITING_FOR_DELIVERY",
+      "citizen": "DucatsRunner",
+      "assetType": "building",
+      "asset": "building_45.442317_12.319077",
+      "severity": "Medium",
+      "status": "active",
+      "createdAt": "2025-06-27T03:53:09.620Z",
+      "updatedAt": "2025-06-27T01:53:10.000Z",
+      "location": "Contract Stall at Calle dei Gondolieri",
+      "position": {
+        "lat": 45.442317,
+        "lng": 12.319077
+      },
+      "type": "waiting_for_resource_delivery",
+      "title": "Waiting for Delivery: olive_oil at Contract Stall at Calle dei Gondolieri",
+      "description": "Building 'Contract Stall at Calle dei Gondolieri' (ID: building_45.442317_12.319077) is out of stock for 'olive_oil', has an active 'markup_buy' contract, and the resource is available elsewhere. Awaiting delivery.",
+      "solutions": "Monitor the 'markup_buy' contract for 'olive_oil'. Ensure citizens or logistics services are fulfilling delivery. Check 'fetch_resource' activities targeting your building.",
       "notes": ""
     },
     {
@@ -3117,6 +3225,69 @@
       "notes": "[Failures: 1]\nBusiness Building: Mill (ID: building_45.44225316651121_12.320556777517233). RunBy: ConsiglioDeiDieci. Parsed Wages: 0 (Original: 0)."
     },
     {
+      "id": "recdvYTmsr3W8wGZn",
+      "problemId": "hungry_DucatsRunner",
+      "citizen": "DucatsRunner",
+      "assetType": "citizen",
+      "asset": "DucatsRunner",
+      "severity": "medium",
+      "status": "active",
+      "createdAt": "2025-06-27T02:07:35.178Z",
+      "updatedAt": "2025-06-27T18:42:24.000Z",
+      "location": "Lorenzo's last known area",
+      "position": {
+        "lat": 45.44773088425899,
+        "lng": 12.31897777552127
+      },
+      "type": "hungry_citizen",
+      "title": "Hungry Citizen",
+      "description": "**Lorenzo Contarini** has not eaten in over 24 hours and is now hungry. This can affect their well-being and ability to perform tasks effectively.\n\n### Impact\n- Reduced energy and focus.\n- If employed, work productivity may be reduced by up to 50%.\n- Prolonged hunger can lead to more severe health issues (if implemented).",
+      "solutions": "### Recommended Solutions\n- Ensure the citizen consumes food. This might involve visiting a tavern, purchasing food from a market, or using owned food resources.\n- Check if the citizen has sufficient Ducats to afford food.\n- Review game mechanics related to food consumption and ensure the 'AteAt' (or equivalent) field is updated correctly after eating.",
+      "notes": "[Failures: 1]\nCitizen DucatsRunner last ate at 2025-06-16T20:21:03.113Z. Current time: 2025-06-27T02:07:35.147Z"
+    },
+    {
+      "id": "recIvD8Mt5AO1MEha",
+      "problemId": "hungry_employee_impact_DucatsRunner_PhotoWizard",
+      "citizen": "DucatsRunner",
+      "assetType": "employee_performance",
+      "asset": "PhotoWizard",
+      "severity": "low",
+      "status": "active",
+      "createdAt": "2025-06-27T02:07:35.174Z",
+      "updatedAt": "2025-06-27T02:08:05.000Z",
+      "location": "Bakery at Rio Ter\u00e0 dei Magazzini",
+      "position": {
+        "lat": 45.444715,
+        "lng": 12.324751
+      },
+      "type": "hungry_employee_impact",
+      "title": "Hungry Employee Impact",
+      "description": "Your employee, **Lucrezia Dardi**, is currently hungry. Hunger can significantly reduce productivity (up to 50%).",
+      "solutions": "Ensure **Lucrezia Dardi** has the means and opportunity to eat. Consider if wages are sufficient or if working conditions impede access to food. Monitor their performance.",
+      "notes": "Hungry Employee: PhotoWizard (ID: PhotoWizard), Workplace: Bakery at Rio Ter\u00e0 dei Magazzini (ID: building_45.444715_12.324751). Last ate: 2025-06-22T23:16:13.586Z."
+    },
+    {
+      "id": "reciHwD3ySitM0ZoG",
+      "problemId": "hungry_employee_impact_DucatsRunner_coffee",
+      "citizen": "DucatsRunner",
+      "assetType": "employee_performance",
+      "asset": "coffee",
+      "severity": "low",
+      "status": "active",
+      "createdAt": "2025-06-27T02:07:35.158Z",
+      "updatedAt": "2025-06-27T02:08:05.000Z",
+      "location": "Contract Stall at Calle dei Gondolieri",
+      "position": {
+        "lat": 45.442317,
+        "lng": 12.319077
+      },
+      "type": "hungry_employee_impact",
+      "title": "Hungry Employee Impact",
+      "description": "Your employee, **jun Rossi**, is currently hungry. Hunger can significantly reduce productivity (up to 50%).",
+      "solutions": "Ensure **jun Rossi** has the means and opportunity to eat. Consider if wages are sufficient or if working conditions impede access to food. Monitor their performance.",
+      "notes": "Hungry Employee: coffee (ID: coffee), Workplace: Contract Stall at Calle dei Gondolieri (ID: building_45.442317_12.319077). Last ate: 2025-06-25T03:43:15.868Z."
+    },
+    {
       "id": "recaHBLQgVgsLKewL",
       "problemId": "hungry_employee_impact_ConsiglioDeiDieci_bigbosefx",
       "citizen": "ConsiglioDeiDieci",
@@ -3138,27 +3309,6 @@
       "description": "Your employee, **Marco de l\u2019Argentoro**, is currently hungry. Hunger can significantly reduce productivity (up to 50%).",
       "solutions": "Ensure **Marco de l\u2019Argentoro** has the means and opportunity to eat. Consider if wages are sufficient or if working conditions impede access to food. Monitor their performance.",
       "notes": "Hungry Employee: bigbosefx (ID: bigbosefx), Workplace: Mill (ID: building_45.428748173929534_12.362001145681361). Last ate: 2025-06-19T01:19:13.241Z."
-    },
-    {
-      "id": "recGCJYUNmyeK4rgk",
-      "problemId": "hungry_bigbosefx",
-      "citizen": "bigbosefx",
-      "assetType": "citizen",
-      "asset": "bigbosefx",
-      "severity": "medium",
-      "status": "active",
-      "createdAt": "2025-06-27T02:07:35.157Z",
-      "updatedAt": "2025-06-27T18:41:58.000Z",
-      "location": "Marco's last known area",
-      "position": {
-        "lat": 45.43276,
-        "lng": 12.354375
-      },
-      "type": "hungry_citizen",
-      "title": "Hungry Citizen",
-      "description": "**Marco de l\u2019Argentoro** has not eaten in over 24 hours and is now hungry. This can affect their well-being and ability to perform tasks effectively.\n\n### Impact\n- Reduced energy and focus.\n- If employed, work productivity may be reduced by up to 50%.\n- Prolonged hunger can lead to more severe health issues (if implemented).",
-      "solutions": "### Recommended Solutions\n- Ensure the citizen consumes food. This might involve visiting a tavern, purchasing food from a market, or using owned food resources.\n- Check if the citizen has sufficient Ducats to afford food.\n- Review game mechanics related to food consumption and ensure the 'AteAt' (or equivalent) field is updated correctly after eating.",
-      "notes": "[Failures: 1]\nCitizen bigbosefx last ate at 2025-06-19T01:19:13.241Z. Current time: 2025-06-27T02:07:35.147Z"
     },
     {
       "id": "recIrpLTNM632OegL",
