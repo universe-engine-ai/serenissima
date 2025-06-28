@@ -8,7 +8,7 @@ Here is the complete data about your current situation:
 {
   "citizen": {
     "username": "GondolaDrifter",
-    "ducats": 340177.3886369205,
+    "ducats": 353333.6068094192,
     "social_class": "Popolani",
     "description": "Giovanni Contari is a methodical and ambitious artisan who has risen from humble beginnings through careful financial planning and shrewd business investments. His meticulous nature serves him well both at the forge and in managing his growing property portfolio, though his calculating approach to relationships sometimes alienates potential allies. Driven by an unwavering desire for economic independence, he views every interaction through the lens of potential profit or loss.",
     "core_personality": "{\"Strength\": \"Methodical\", \"Flaw\": \"Calculating\", \"Drive\": \"Prosperity-driven\", \"MBTI\": \"ISTJ\", \"PrimaryTrait\": \"Economic optimizer\", \"SecondaryTraits\": [\"Financial planning\", \"Relationship calculation\", \"Independence focus\"], \"CognitiveBias\": [\"Sunk cost fallacy\", \"Planning fallacy\"], \"TrustThreshold\": 0.3, \"EmpathyWeight\": 0.4, \"RiskTolerance\": 0.4, \"guidedBy\": \"The Forge's Logic\", \"CoreThoughts\": {\"primary_drive\": \"financial-independence\", \"secondary_drive\": \"calculated-growth\", \"internal_tension\": \"relationships vs. profit\", \"activation_triggers\": [\"financial_opportunities\", \"independence_threats\", \"investment_decisions\"], \"thought_patterns\": [\"Every relationship has a calculable value\", \"Financial independence eliminates dependence on others\", \"Methodical planning beats emotional decisions\", \"My craft skills provide foundation for wealth building\", \"Profit or loss - every interaction has a number\", \"Economic independence equals true freedom\"], \"decision_framework\": \"How does this maximize financial independence through calculated growth?\"}}",
@@ -3529,7 +3529,7 @@ Here is the complete data about your current situation:
       "constructionMinutes": 7200,
       "buildTier": 1,
       "tier": null,
-      "category": "religion",
+      "category": "religious",
       "pointType": "building"
     },
     "cistern": {
@@ -3606,25 +3606,6 @@ Here is the complete data about your current situation:
       "category": "home",
       "pointType": "canal"
     },
-    "glass_foundry": {
-      "id": "glass_foundry",
-      "type": "glass_foundry",
-      "name": "Glass Foundry",
-      "shortDescription": "Primary facility for melting raw materials into glass. Requires substantial fuel and produces significant heat.",
-      "constructionCost": 2800000,
-      "constructionCosts": {
-        "ducats": 2800000,
-        "timber": 720,
-        "bricks": 2080,
-        "stone": 1430,
-        "iron": 390
-      },
-      "constructionMinutes": 10080,
-      "buildTier": 2,
-      "tier": null,
-      "category": "business",
-      "pointType": "building"
-    },
     "glassblower_workshop": {
       "id": "glassblower_workshop",
       "type": "glassblower_workshop",
@@ -3639,6 +3620,25 @@ Here is the complete data about your current situation:
         "iron": 290
       },
       "constructionMinutes": 5760,
+      "buildTier": 2,
+      "tier": null,
+      "category": "business",
+      "pointType": "building"
+    },
+    "glass_foundry": {
+      "id": "glass_foundry",
+      "type": "glass_foundry",
+      "name": "Glass Foundry",
+      "shortDescription": "Primary facility for melting raw materials into glass. Requires substantial fuel and produces significant heat.",
+      "constructionCost": 2800000,
+      "constructionCosts": {
+        "ducats": 2800000,
+        "timber": 720,
+        "bricks": 2080,
+        "stone": 1430,
+        "iron": 390
+      },
+      "constructionMinutes": 10080,
       "buildTier": 2,
       "tier": null,
       "category": "business",
@@ -3884,7 +3884,7 @@ Here is the complete data about your current situation:
       "constructionMinutes": 43200,
       "buildTier": 2,
       "tier": null,
-      "category": "religion",
+      "category": "religious",
       "pointType": "building"
     },
     "porter_guild_hall": {
@@ -4245,7 +4245,7 @@ Here is the complete data about your current situation:
       "pointType": "building"
     }
   },
-  "timestamp": "2025-06-27T21:41:44.939822+02:00",
+  "timestamp": "2025-06-28T21:08:06.010124+02:00",
   "building_ownership_relevancies": [
     {
       "asset": "building_45.433867_12.355123",
