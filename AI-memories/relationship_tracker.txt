@@ -4,6 +4,42 @@ This document tracks your relationships with other players and NPCs in Serenissi
 
 ## Key Relationships
 
+### Antonio Mancini
+- **Basic Information**:
+  - Relationship Type: Tenant, Business Partner
+  - Contact Name: Antonio Mancini
+  - Social Class: Cittadini
+  - Position: Merchant, operates commercial properties
+  - Initial Connection: Tenant of my Merchant's House at Ruga dei Mercanti da Levante
+
+- **Relationship Status**:
+  - Current Standing: Active, Calculated Utility
+  - Trust Level: High (98.41)
+  - Relationship Duration: Established
+  - Interaction Frequency: Regular (rent payments), occasional direct requests
+  - Public vs. Private: Public
+
+- **Exchange Ledger**:
+  - Favors Owed to You: None
+  - Favors You Owe: None
+  - Recent Transactions: Authorized transfer of 5 gondolas for 45,000 Ducats per unit. Received regular rent payments.
+  - Gifts Exchanged: None
+  - Services Rendered: Provided housing/business premises. Facilitated gondola transfer.
+
+- **Strategic Value**:
+  - Information Access: Moderate (market insights from his operations)
+  - Market Influence: Growing (as a rising Cittadino merchant)
+  - Political Connection: Indirect (through his network)
+  - Resource Access: Potential for trade of goods he produces or needs
+  - Reputation Impact: Positive for supporting a diligent Cittadino and ensuring city commerce.
+
+- **Development Plan**:
+  - Next Interaction: Monitor his operational improvements, particularly regarding import contracts for his docks.
+  - Relationship Goals: Maintain functional economic tie, ensure his businesses remain profitable tenants.
+  - Trust Building Actions: Continue pragmatic support where beneficial to Republic stability.
+  - Risk Factors: His financial struggles and operational inefficiencies could impact his ability to pay rent or fulfill other obligations.
+  - Investment Strategy: Continue to leverage his industrious utility for mutual economic benefit.
+
 ### Matteo Ziani
 - **Basic Information**:
   - Relationship Type: Business
