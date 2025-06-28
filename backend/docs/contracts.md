@@ -104,7 +104,7 @@ Il existe plusieurs types de contrats, chacun servant un objectif distinct dans 
                 *   `Status` est "active", `EndAt` est fixé à 1 mois.
         *   **Paiement**: Le script `backend/engine/paystoragecontracts.py` gère les paiements journaliers pour ces contrats. Le `Buyer` paie le `Seller` pour la `TargetAmount` réservée, que l'espace soit utilisé ou non.
     *   **Logique Associée**:
-        *   Le `Buyer` (opérateur du bâtiment commercial) doit organiser le transport des ressources vers le `SellerBuilding` (entrepôt) en utilisant une activité `deliver_to_storage`.
+        *   Le `Buyer` (opérateur du bâtiment commercial) doit organiser le transport de ses ressources vers le `SellerBuilding` (l'entrepôt) en utilisant une activité `deliver_to_storage`.
         *   De même, pour récupérer ses ressources, le `Buyer` utilisera une activité `fetch_from_storage` depuis le `SellerBuilding` vers son bâtiment commercial.
         *   Le système doit s'assurer que le `Buyer` ne dépasse pas la `TargetAmount` louée pour la `ResourceType` dans le `SellerBuilding` (la logique de vérification de capacité est dans le processeur de `deliver_to_storage`).
         *   Les ressources stockées dans le `SellerBuilding` sous un contrat `storage_query` restent la propriété du `Buyer`.
@@ -112,32 +112,20 @@ Il existe plusieurs types de contrats, chacun servant un objectif distinct dans 
 5.  **`construction_project`**:
     *   **Objectif**: Gérer la construction d'un nouveau bâtiment.
     *   **Fonctionnement**:
-            *   **Demande d'espace**: Une forte demande pour le stockage d'un type de ressource peut faire monter les prix.
-            *   **Coûts opérationnels**: Le bailleur doit couvrir ses propres frais (maintenance de l'entrepôt, bail du terrain, etc.) et viser une marge bénéficiaire.
-            *   **Conditions spéciales**: Si l'entrepôt offre des conditions particulières (ex: sécurité renforcée, température contrôlée - bien que non simulé en détail), cela peut justifier un prix plus élevé.
-        *   **Impact sur le Gameplay**:
-            *   Un coût de stockage bien calibré décourage l'accumulation excessive et indéfinie de ressources.
-            *   Il introduit un coût d'opportunité pour la détention de stocks.
-            *   Il crée un marché dynamique pour les services d'entreposage.
-        *   Cette fourchette sert de guide pour l'équilibrage du jeu et le comportement des IA. Les joueurs humains restent libres de fixer leurs prix, mais des prix trop éloignés de ces normes pourraient être moins compétitifs.
-
-5.  **`construction_project`**:
-    *   **Objectif**: Gérer la construction d'un nouveau bâtiment.
-    *   **Fonctionnement**:
-        *   Créé lorsqu'un nouveau bâtiment est commandé (par IA ou joueur).
-        *   `Buyer`: Le citoyen/entité qui commande la construction et deviendra propriétaire.
-        *   `Seller`: L'opérateur de l'atelier de construction.
-        *   `BuyerBuilding`: Le `BuildingId` du bâtiment en cours de construction (qui a `IsConstructed=False`).
-        *   `SellerBuilding`: Le `BuildingId` de l'atelier de construction responsable.
-        *   `ResourceType`: Non directement applicable ici, les ressources sont définies par les `constructionCosts` du type de bâtiment cible. Ces coûts sont également stockés dans le champ `Notes` du contrat au format JSON (ex: `{"constructionCosts": {"timber": 100, "stone": 50}}`).
-        *   `TargetAmount`: Non directement applicable. La "quantité" est la complétion du bâtiment.
-        *   `Status`: Peut être `pending_materials`, `materials_delivered`, `construction_in_progress`, `completed`, `failed`.
-        *   `Notes` (Texte multiligne): Contient un objet JSON avec une clé `constructionCosts` listant les matériaux nécessaires, et un `delivery_log` pour suivre les livraisons.
-    *   **Logique Associée**:
-        *   Les ouvriers de `SellerBuilding` exécutent des activités `deliver_construction_materials` vers `BuyerBuilding`.
-        *   Une fois les matériaux livrés, ils exécutent des activités `construct_building` sur `BuyerBuilding`.
-        *   Le champ `ConstructionMinutesRemaining` sur l'enregistrement du `BuyerBuilding` est décrémenté.
-        *   Lorsque `ConstructionMinutesRemaining` <= 0, le bâtiment est marqué `IsConstructed=True` et le contrat `completed`.
+        *   Créé lorsqu'un nouveau bâtiment est commandé (par IA ou player).
+        *   `Buyer`: The citizen/entity who orders the construction and will become the owner.
+        *   `Seller`: The operator of the construction workshop.
+        *   `BuyerBuilding`: The `BuildingId` of the building under construction (which has `IsConstructed=False`).
+        *   `SellerBuilding`: The `BuildingId` of the responsible construction workshop.
+        *   `ResourceType`: Not directly applicable here, resources are defined by the `constructionCosts` of the target building type. These costs are also stored in the `Notes` field of the contract in JSON format (e.g., `{"constructionCosts": {"timber": 100, "stone": 50}}`).
+        *   `TargetAmount`: Not directly applicable. The "quantity" is the completion of the building.
+        *   `Status`: Can be `pending_materials`, `materials_delivered`, `construction_in_progress`, `completed`, `failed`.
+        *   `Notes` (Multiline Text): Contains a JSON object with a `constructionCosts` key listing the necessary materials, and a `delivery_log` to track deliveries.
+    *   **Associated Logic**:
+        *   Workers from `SellerBuilding` execute `deliver_construction_materials` activities to `BuyerBuilding`.
+        *   Once materials are delivered, they execute `construct_building` activities on `BuyerBuilding`.
+        *   The `ConstructionMinutesRemaining` field on the `BuyerBuilding` record is decremented.
+        *   When `ConstructionMinutesRemaining` <= 0, the building is marked `IsConstructed=True` and the contract is `completed`.
 
 6.  **`recurrent`**:
     *   **Objectif**: Établir des échanges commerciaux réguliers et pré-arrangés entre deux parties spécifiques.
@@ -185,13 +173,3 @@ Voir la [documentation du schéma Airtable](airtable_schema.md#table-contracts) 
 -   `TargetAmount`: Quantité totale (pour `import`, `public_sell`) ou par transaction (pour `recurrent`). Pour `logistics_service_request`, peut être moins pertinent ou représenter un volume total de service.
 -   `PricePerResource`: Prix unitaire. Pour `logistics_service_request`, utiliser `ServiceFeePerUnit`.
 -   `ContractId`: Identifiant unique, souvent déterministe pour faciliter les mises à jour.
-```
-```
-
-```markdown
-backend/docs/airtable_schema.md
-<<<<<<< SEARCH
--   `TargetAmount` (Nombre): Quantité horaire de ressource pour ce contrat.
--   `PricePerResource` (Nombre): Prix unitaire de la ressource.
--   `Priority` (Nombre): Priorité du contrat.
--   `Status` (Texte): Statut du contrat (ex: `active`, `completed`, `failed`).
