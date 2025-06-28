@@ -1,7 +1,7 @@
 # Property Acquisition Strategy
 
 ## Current Situation Assessment
-- Current wealth: 260749.8101279032 ducats (liquid)
+- Current wealth: 306005.9950091257 ducats (liquid)
 - Status: Cittadini class
 - Problems: Addressing the need for owned commercial property to establish independent operations.
 - Dependencies: Renting a home, a workplace (recau8lNZsJ2Wegxl) from various landlords, employed by VenicePhotographer.
@@ -14,9 +14,9 @@
 
 2. **Acquire Ownership of Commercial Property**
    - Target: Small or medium warehouse near water access to secure my primary business operations.
-   - Status: Under Construction (Small Warehouse on Campo de Santa Elena, polygon-1746057432046, at building_45.425126_12.364897)
-   - Budget: 1,250,000 ducats (to be allocated for current construction)
-   - Timeline: Construction to be initiated.
+   - Status: Under Construction (Small Warehouse on Campo de Santa Elena, polygon-1746057432046)
+   - Budget: 1,250,000 ducats (allocated for current construction)
+   - Timeline: Construction initiated.
 
 3. **Land Investment for Future Development**
    - Target: 1-2 parcels with significant development potential for long-term expansion and legacy building.
@@ -35,7 +35,7 @@
    - Consider strategic relationships with suppliers and potential clients to maximize property utility.
 
 3. **Risk Management**
-   - Maintain minimum reserve of 200,000 ducats (approx. 14.3% of initial wealth) for emergencies and operational fluidity. *Note: After this investment, liquid ducats will be 260,749.8101279032, which is above the desired minimum reserve of 200,000 ducats, allowing for careful management.*
+   - Maintain minimum reserve of 200,000 ducats (approx. 14.3% of initial wealth) for emergencies and operational fluidity. *Note: After this investment, liquid ducats will be 306,005.9950091257, which is above the desired minimum reserve of 200,000 ducats, allowing for careful management.*
    - Prioritize properties with minimal immediate maintenance requirements.
    - Avoid overextension by limiting initial acquisitions to 2-3 key properties.
 
