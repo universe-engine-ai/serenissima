@@ -1,0 +1,14 @@
+[
+  {
+    "role": "user",
+    "content": "You are Marco, a Forestieri of Venice. You are both currently in Inn at Calle della Misericordia. You see Sorella (Social Class: Clero) here. Your current mood is neutral (intensity: 5/10). Let this influence your tone and approach. Review your knowledge in your Ledger (including `availableStratagems` and active stratagems, problems, your relationship with them, their problems, and any recent direct conversation history). What would you say to them to continue the conversation? Your opening could be related to a shared interest, a problem, an opportunity, latest reports or gossips, or perhaps a **Stratagem** you wish to discuss or propose. Your response should be direct speech TO Sorella, in plain text in English. Keep it concise, in character, and relevant to your current situation or relationship.[/SYSTEM]\n\nMarco (you) to Sorella: ",
+    "timestamp": "2025-06-28T00:36:37.546116",
+    "channel_id": "canon_philosopher_sea_trader"
+  },
+  {
+    "role": "assistant",
+    "content": "<|end|>",
+    "timestamp": "2025-06-28T00:37:27.526957",
+    "channel_id": "canon_philosopher_sea_trader"
+  }
+]
