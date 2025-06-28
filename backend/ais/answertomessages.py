@@ -575,8 +575,8 @@ def process_ai_messages(kinos_model_override_arg: Optional[str] = None, instant_
         if unread_messages:
             ai_citizens_with_messages.append({
                 "username": ai_username,
-                "messages": unread_messages
-                # "record": ai_citizen_record # Store record if other fields are needed later
+                "messages": unread_messages,
+                "record": ai_citizen_record  # Store record to access fields like SocialClass later
             })
             print(f"AI citizen {ai_username} has {len(unread_messages)} unread messages, queued for processing.")
         else:
@@ -597,6 +597,7 @@ def process_ai_messages(kinos_model_override_arg: Optional[str] = None, instant_
     for ai_data in ai_citizens_with_messages:
         ai_username = ai_data["username"]
         unread_messages = ai_data["messages"]
+        ai_citizen_record = ai_data.get("record", {})
         
         print(f"Processing AI citizen: {ai_username}")
         ai_response_counts[ai_username] = 0
@@ -613,95 +614,114 @@ def process_ai_messages(kinos_model_override_arg: Optional[str] = None, instant_
                 messages_by_sender[sender_username] = []
             messages_by_sender[sender_username].append(message_record)
         
-        # Process one message per sender (the most recent one)
+        # Process ALL messages from each sender
         for sender_username, sender_messages in messages_by_sender.items():
-            # Sort messages by creation date (most recent first)
-            sender_messages.sort(key=lambda m: m["fields"].get("CreatedAt", ""), reverse=True)
-            
-            # Get the most recent message
-            message_record = sender_messages[0]
-            message_id = message_record["id"]
-            message_content = message_record["fields"].get("Content", "")
+            # Sort messages by creation date (oldest first to maintain conversation flow)
+            sender_messages.sort(key=lambda m: m["fields"].get("CreatedAt", ""))
             
             print(f"\n{LogColors.HEADER}{'='*80}{LogColors.ENDC}")
-            print(f"{LogColors.OKBLUE}MESSAGE ID: {message_id}{LogColors.ENDC}")
-            print(f"{LogColors.OKBLUE}FROM: {sender_username} -> TO: {ai_username}{LogColors.ENDC}")
-            print(f"{LogColors.OKBLUE}(Processing 1 of {len(sender_messages)} messages from this sender){LogColors.ENDC}")
-            print(f"{LogColors.HEADER}{'-'*80}{LogColors.ENDC}")
-            print(f"{LogColors.OKCYAN}MESSAGE CONTENT:{LogColors.ENDC}")
-            print(f"{message_content}")
-            print(f"{LogColors.HEADER}{'-'*80}{LogColors.ENDC}")
+            print(f"{LogColors.OKBLUE}Processing {len(sender_messages)} messages from {sender_username} to {ai_username}{LogColors.ENDC}")
+            print(f"{LogColors.HEADER}{'='*80}{LogColors.ENDC}")
             
             # Mark ALL messages from this sender as read
             message_ids = [m["id"] for m in sender_messages]
             marked_read = mark_messages_as_read_api(receiver_username=ai_username, message_ids=message_ids)
             
             if marked_read:
-                # Check if the sender is an AI
-                sender_citizen_data = _get_citizen_data(tables, sender_username)
-                sender_is_ai = False
-                if sender_citizen_data and sender_citizen_data.get('fields', {}).get('IsAI', False):
-                    sender_is_ai = True
-                
-                should_respond = True
-                if sender_is_ai:
-                    # If sender is AI, 25% chance of responding
-                    if random.random() > 0.25:
-                        should_respond = False
-                        print(f"    Sender {sender_username} is an AI. {ai_username} chose not to respond to this message (75% chance).")
-                    else:
-                        print(f"    Sender {sender_username} is an AI. {ai_username} will respond (25% chance).")
-                
-                if should_respond:
-                    # Generate AI response, passing tables object and optional message suggestion
-                    response_content = generate_ai_response(tables, ai_username, sender_username, message_content, kinos_model_override_arg, add_message)
+                # Process each message from this sender
+                for idx, message_record in enumerate(sender_messages):
+                    message_id = message_record["id"]
+                    message_content = message_record["fields"].get("Content", "")
+                    
+                    print(f"\n{LogColors.HEADER}{'-'*80}{LogColors.ENDC}")
+                    print(f"{LogColors.OKBLUE}MESSAGE {idx + 1} of {len(sender_messages)}{LogColors.ENDC}")
+                    print(f"{LogColors.OKBLUE}MESSAGE ID: {message_id}{LogColors.ENDC}")
+                    print(f"{LogColors.OKCYAN}MESSAGE CONTENT:{LogColors.ENDC}")
+                    print(f"{message_content}")
+                    print(f"{LogColors.HEADER}{'-'*80}{LogColors.ENDC}")
+                    
+                    # Check if the sender is an AI
+                    sender_citizen_data = _get_citizen_data(tables, sender_username)
+                    sender_is_ai = False
+                    if sender_citizen_data and sender_citizen_data.get('fields', {}).get('IsAI', False):
+                        sender_is_ai = True
+                    
+                    should_respond = True
+                    if sender_is_ai:
+                        # Get AI citizen's social class to determine response rate
+                        ai_social_class = ai_citizen_record.get("fields", {}).get("SocialClass", "Cittadini")  # Default to Cittadini
                         
-                    if response_content:
-                        if instant_mode:
-                            # Create message directly in Airtable
-                            in_reply_to = message_record.get("fields", {}).get("MessageId", message_id)
-                            if create_direct_message(ai_username, sender_username, response_content, "reply", in_reply_to):
-                                ai_response_counts[ai_username] += 1
-                                print(f"{LogColors.OKGREEN}RESPONSE SENT: Direct message created from {ai_username} to {sender_username}.{LogColors.ENDC}")
-                                print(f"{LogColors.OKGREEN}CONTENT:{LogColors.ENDC}")
-                                print(f"{response_content}")
-                                print(f"{LogColors.HEADER}{'='*80}{LogColors.ENDC}\n")
-                            else:
-                                print(f"{LogColors.FAIL}ERROR: Failed to create direct message from {ai_username} to {sender_username}.{LogColors.ENDC}")
-                                print(f"{LogColors.HEADER}{'='*80}{LogColors.ENDC}\n")
+                        # Social class dependent response rates
+                        response_rates = {
+                            "Clero": 0.85,
+                            "Artisti": 0.80,
+                            "Scientisti": 0.75,
+                            "Nobili": 0.70,
+                            "Cittadini": 0.65,
+                            "Forestieri": 0.60,
+                            "Popolani": 0.50,
+                            "Facchini": 0.40
+                        }
+                        
+                        response_rate = response_rates.get(ai_social_class, 0.65)  # Default to 65% if class not found
+                        
+                        # If sender is AI, use social class dependent chance of responding
+                        if random.random() > response_rate:
+                            should_respond = False
+                            print(f"    Sender {sender_username} is an AI. {ai_username} (class: {ai_social_class}) chose not to respond to this message ({int((1-response_rate)*100)}% chance).")
                         else:
-                            # Use the activity system
-                            # Remove <think></think> tags completely
-                            import re
-                            cleaned_response = re.sub(r'<think>.*?</think>', '', response_content, flags=re.DOTALL)
-                            cleaned_response = cleaned_response.strip()
-                            
-                            # Remove quotes at the beginning and end if present
-                            if cleaned_response.startswith('"') and cleaned_response.endswith('"'):
-                                cleaned_response = cleaned_response[1:-1].strip()
-                            
-                            activity_params = {
-                                "receiverUsername": sender_username,
-                                "content": cleaned_response,
-                                "messageType": "reply", # Indicate it's a reply
-                                "targetBuildingId": None, # Explicitly None, creator will use receiverUsername
-                                "details": {
-                                    "inReplyToMessageId": message_record.get("fields", {}).get("MessageId", message_id)
-                                }
-                            }
-                            print(f"{LogColors.OKGREEN}RESPONSE CONTENT:{LogColors.ENDC}")
-                            print(f"{cleaned_response}")
-                            
-                            if call_try_create_activity_api(ai_username, "send_message", activity_params):
-                                ai_response_counts[ai_username] += 1
-                                print(f"{LogColors.OKGREEN}RESPONSE SENT: Activity created for {ai_username} to reply to {sender_username}.{LogColors.ENDC}")
-                                print(f"{LogColors.HEADER}{'='*80}{LogColors.ENDC}\n")
+                            print(f"    Sender {sender_username} is an AI. {ai_username} (class: {ai_social_class}) will respond ({int(response_rate*100)}% chance).")
+                    
+                    if should_respond:
+                        # Generate AI response, passing tables object and optional message suggestion
+                        response_content = generate_ai_response(tables, ai_username, sender_username, message_content, kinos_model_override_arg, add_message)
+                        
+                        if response_content:
+                            if instant_mode:
+                                # Create message directly in Airtable
+                                in_reply_to = message_record.get("fields", {}).get("MessageId", message_id)
+                                if create_direct_message(ai_username, sender_username, response_content, "reply", in_reply_to):
+                                    ai_response_counts[ai_username] += 1
+                                    print(f"{LogColors.OKGREEN}RESPONSE SENT: Direct message created from {ai_username} to {sender_username}.{LogColors.ENDC}")
+                                    print(f"{LogColors.OKGREEN}CONTENT:{LogColors.ENDC}")
+                                    print(f"{response_content}")
+                                    print(f"{LogColors.HEADER}{'='*80}{LogColors.ENDC}\n")
+                                else:
+                                    print(f"{LogColors.FAIL}ERROR: Failed to create direct message from {ai_username} to {sender_username}.{LogColors.ENDC}")
+                                    print(f"{LogColors.HEADER}{'='*80}{LogColors.ENDC}\n")
                             else:
-                                print(f"{LogColors.FAIL}ERROR: Failed to initiate send_message activity for reply from {ai_username} to {sender_username}.{LogColors.ENDC}")
-                                print(f"{LogColors.HEADER}{'='*80}{LogColors.ENDC}\n")
-                    else:
-                        print(f"{LogColors.WARNING}No response generated by KinOS for message from {sender_username} to {ai_username}.{LogColors.ENDC}")
-                        print(f"{LogColors.HEADER}{'='*80}{LogColors.ENDC}\n")
+                                # Use the activity system
+                                # Remove <think></think> tags completely
+                                import re
+                                cleaned_response = re.sub(r'<think>.*?</think>', '', response_content, flags=re.DOTALL)
+                                cleaned_response = cleaned_response.strip()
+                                
+                                # Remove quotes at the beginning and end if present
+                                if cleaned_response.startswith('"') and cleaned_response.endswith('"'):
+                                    cleaned_response = cleaned_response[1:-1].strip()
+                                
+                                activity_params = {
+                                    "receiverUsername": sender_username,
+                                    "content": cleaned_response,
+                                    "messageType": "reply", # Indicate it's a reply
+                                    "targetBuildingId": None, # Explicitly None, creator will use receiverUsername
+                                    "details": {
+                                        "inReplyToMessageId": message_record.get("fields", {}).get("MessageId", message_id)
+                                    }
+                                }
+                                print(f"{LogColors.OKGREEN}RESPONSE CONTENT:{LogColors.ENDC}")
+                                print(f"{cleaned_response}")
+                                
+                                if call_try_create_activity_api(ai_username, "send_message", activity_params):
+                                    ai_response_counts[ai_username] += 1
+                                    print(f"{LogColors.OKGREEN}RESPONSE SENT: Activity created for {ai_username} to reply to {sender_username}.{LogColors.ENDC}")
+                                    print(f"{LogColors.HEADER}{'='*80}{LogColors.ENDC}\n")
+                                else:
+                                    print(f"{LogColors.FAIL}ERROR: Failed to initiate send_message activity for reply from {ai_username} to {sender_username}.{LogColors.ENDC}")
+                                    print(f"{LogColors.HEADER}{'='*80}{LogColors.ENDC}\n")
+                        else:
+                            print(f"{LogColors.WARNING}No response generated by KinOS for message from {sender_username} to {ai_username}.{LogColors.ENDC}")
+                            print(f"{LogColors.HEADER}{'='*80}{LogColors.ENDC}\n")
                 # else: # This 'else' corresponds to should_respond being False
                     # No action needed if should_respond is False, message already printed
             else:

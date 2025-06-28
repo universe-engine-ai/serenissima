@@ -335,11 +335,40 @@ def main(args):
                 log.debug(f"No potential listeners for {initiator_username} at {location_name}. Skipping initiation.")
                 continue
 
-            listener_record = random.choice(potential_listeners)
+            # Social class dependent selection rates (same as response rates)
+            selection_weights = {
+                "Clero": 0.85,
+                "Artisti": 0.80,
+                "Scientisti": 0.75,
+                "Nobili": 0.70,
+                "Cittadini": 0.65,
+                "Forestieri": 0.60,
+                "Popolani": 0.50,
+                "Facchini": 0.40
+            }
+            
+            # Calculate weights for each potential listener based on their social class
+            weighted_listeners = []
+            for listener in potential_listeners:
+                listener_social_class = listener['fields'].get('SocialClass', 'Cittadini')
+                weight = selection_weights.get(listener_social_class, 0.65)
+                weighted_listeners.append((listener, weight))
+            
+            # Select a listener based on weights
+            if weighted_listeners:
+                listeners, weights = zip(*weighted_listeners)
+                listener_record = random.choices(listeners, weights=weights, k=1)[0]
+            else:
+                # Fallback to random choice if no weighted listeners
+                listener_record = random.choice(potential_listeners)
+            
             listener_username = listener_record['fields'].get('Username')
+            listener_social_class = listener_record['fields'].get('SocialClass', 'Cittadini')
             if not listener_username:
                 log.warning(f"Skipping potential listener {listener_record.get('id')} for initiator {initiator_username} due to missing username.")
                 continue
+            
+            log.debug(f"Selected {listener_username} (class: {listener_social_class}) as listener for {initiator_username} based on weighted probability.")
             
             # Apply --citizen filter: only process if the target citizen is the initiator or the listener
             if args.citizen and args.citizen not in [initiator_username, listener_username]:

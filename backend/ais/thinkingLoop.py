@@ -69,7 +69,9 @@ def log_header(message, color_code=LogColors.HEADER):
 
 # Social class weights for citizen selection
 SOCIAL_CLASS_WEIGHTS = {
+    'Clero': 5,
     'Artisti': 5,
+    'Scientisti': 4,
     'Nobili': 4,
     'Cittadini': 3,
     'Popolani': 2,

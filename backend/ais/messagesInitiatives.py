@@ -81,7 +81,7 @@ def get_ai_citizens(tables: Dict[str, Table]) -> List[Dict]:
     """Récupère tous les citoyens marqués comme IA et présents à Venise."""
     try:
         formula = "AND({IsAI}=1, {InVenice}=1)"
-        ai_citizens = tables["citizens"].all(formula=formula, fields=["Username", "FirstName"])
+        ai_citizens = tables["citizens"].all(formula=formula, fields=["Username", "FirstName", "SocialClass"])
         print(f"Trouvé {len(ai_citizens)} citoyens IA à Venise.")
         return ai_citizens
     except Exception as e:
@@ -334,7 +334,7 @@ def choose_interlocutor_via_kinos(
 
     prompt = (
         f"You are {ai_display_name}, an AI citizen of Venice. Your ledger "
-        f"is provided in `addSystem` in markdown format.\n\n"
+        f"is provided in `Ledger` in markdown format.\n\n"
         f"Based on this information, analyze your current situation and identify another citizen with whom initiating a conversation would be most beneficial or strategically relevant for you right now. "
         f"Consider your goals, active problems, opportunities, and the nature of your relationships. Could initiating or discussing a **Stratagem** be a reason for contact? Information on available stratagems is in the 'Available Stratagems' section of your ledger.\n\n"
         f"Your response MUST be a JSON object with two keys: 'target_username' (the Username of the citizen you choose) and 'reason' (a specific compelling reason for contacting them, focusing on gameplay or possibly narrative progression, potentially related to a stratagem).\n"
@@ -355,7 +355,7 @@ def choose_interlocutor_via_kinos(
     print(f"Ledger Length: {len(ai_ledger)} characters")
     print(f"=====================================\n\n")
     
-    # Créer un wrapper pour passer le markdown comme addSystem
+    # Créer un wrapper pour passer le markdown comme Ledger
     wrapper_data = {
         "ledger_markdown": ai_ledger
     }
@@ -712,10 +712,43 @@ def process_ai_message_initiatives(dry_run: bool = False, citizen1_arg: Optional
         initiatives_summary["processed_ai_count"] = 1
     else:
         # Mode normal (pour tous les IA)
-        ai_citizens_to_process = get_ai_citizens(tables)
-        if not ai_citizens_to_process:
+        all_ai_citizens = get_ai_citizens(tables)
+        if not all_ai_citizens:
             print("Aucun citoyen IA trouvé, fin du processus.")
             return
+        
+        # Filter AI citizens based on social class probabilities
+        ai_citizens_to_process = []
+        
+        # Social class dependent processing rates (same as response rates)
+        processing_rates = {
+            "Clero": 0.85,
+            "Artisti": 0.80,
+            "Scientisti": 0.75,
+            "Nobili": 0.70,
+            "Cittadini": 0.65,
+            "Forestieri": 0.60,
+            "Popolani": 0.50,
+            "Facchini": 0.40
+        }
+        
+        for ai_citizen_record in all_ai_citizens:
+            ai_social_class = ai_citizen_record.get("fields", {}).get("SocialClass", "Cittadini")
+            processing_rate = processing_rates.get(ai_social_class, 0.65)  # Default to 65% if class not found
+            
+            # Use social class dependent chance of processing this AI
+            if random.random() <= processing_rate:
+                ai_citizens_to_process.append(ai_citizen_record)
+                ai_username = ai_citizen_record.get("fields", {}).get("Username", "Unknown")
+                print(f"AI citizen {ai_username} (class: {ai_social_class}) selected for message initiatives ({int(processing_rate*100)}% chance).")
+            else:
+                ai_username = ai_citizen_record.get("fields", {}).get("Username", "Unknown")
+                print(f"AI citizen {ai_username} (class: {ai_social_class}) skipped for message initiatives ({int((1-processing_rate)*100)}% chance).")
+        
+        if not ai_citizens_to_process:
+            print("Aucun citoyen IA sélectionné après filtrage par classe sociale.")
+            return
+            
         random.shuffle(ai_citizens_to_process)
 
     # Boucle principale pour le mode normal ou le mode citoyen spécifique
