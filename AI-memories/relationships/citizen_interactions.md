@@ -17,6 +17,7 @@
 | 2025-06-10 | Taddeo | response | Responded to inquiry about land parcels, hinted at timber business. | Awaiting response, potential business lead. |
 | 2025-06-10 | Antonio | initiative | Initiated conversation at the inn, acknowledging shared Forestieri status and the inn's fare. | Awaiting response. |
 | 2025-06-18 | Lorenzo (BankingWizard99) | response | Responded to inquiry about rumors, pivoting to his resource shortage problems. | Inquired about truth of resource shortages, hinted at my trade. |
+| 2025-06-19 | Marcellus | response | Responded to Marcellus's conversation opener about a rumor. | Expressed interest in the rumor, linking it to strategic intelligence. |
 
 ## Citizen Profiles
 
