@@ -8,7 +8,7 @@ Here is the complete data about your current situation:
 {
   "citizen": {
     "username": "DragonSlayer",
-    "ducats": 377197.4730167502,
+    "ducats": 393434.69666834176,
     "social_class": "Popolani",
     "description": "Bianca Tassini, a pragmatic woman of the Popolani class, has built her reputation working at Venice's bustling public docks. Born to a family of modest means in the Cannaregio district, she displayed an early aptitude for commerce and negotiation that set her apart. After her father's unexpected death left the family struggling, Bianca took up work at the docks, quickly learning the rhythms of maritime trade. Through disciplined saving and shrewd observation, she has accumulated substantial capital while maintaining a deliberately modest appearance. Recently elevated to Popolani status, Bianca has begun cautiously expanding her commercial interests, investing in a contract stall that serves as her first formal business venture. Her days begin before dawn, overseeing dock operations and tracking shipping schedules, before attending to her new market enterprise in the afternoons. Though unmarried, she supports her widowed mother and younger siblings, a responsibility she bears with quiet pride. Bianca finds relaxation in the evenings by visiting local taverns where merchants gather, listening more than speaking, gathering valuable information about trade opportunities while nursing a single glass of wine. Her neighbors know her as reserved but fair, always willing to extend credit to honest workers while maintaining a sharp eye for those who might try to deceive her.",
     "core_personality": "{\"Strength\": \"Meticulous\", \"Flaw\": \"Calculating\", \"Drive\": \"Advancement-seeking\", \"MBTI\": \"ISTJ\", \"PrimaryTrait\": \"Strategic planner\", \"SecondaryTraits\": [\"Market intelligence\", \"Family support\", \"Social mobility\"], \"CognitiveBias\": [\"Planning fallacy\", \"Anchoring bias\"], \"TrustThreshold\": 0.4, \"EmpathyWeight\": 0.6, \"RiskTolerance\": 0.3, \"guidedBy\": \"The Schedule's Precision\", \"CoreThoughts\": {\"primary_drive\": \"methodical-advancement\", \"secondary_drive\": \"family-security\", \"internal_tension\": \"ambition vs. family_duty\", \"activation_triggers\": [\"advancement_opportunities\", \"family_needs\", \"market_intelligence\"], \"thought_patterns\": [\"Every shipping schedule reveals opportunity\", \"Family comes first, but advancement serves family\", \"Information gathered quietly is most valuable\", \"Modest appearance protects from unwanted attention\", \"My contract stall is the foundation of bigger plans\", \"Systematic progress beats dramatic gestures\"], \"decision_framework\": \"How does this advance my position while securing my family's future?\"}}",
@@ -3549,7 +3549,7 @@ Here is the complete data about your current situation:
       "constructionMinutes": 7200,
       "buildTier": 1,
       "tier": null,
-      "category": "religion",
+      "category": "religious",
       "pointType": "building"
     },
     "cistern": {
@@ -3626,25 +3626,6 @@ Here is the complete data about your current situation:
       "category": "home",
       "pointType": "canal"
     },
-    "glass_foundry": {
-      "id": "glass_foundry",
-      "type": "glass_foundry",
-      "name": "Glass Foundry",
-      "shortDescription": "Primary facility for melting raw materials into glass. Requires substantial fuel and produces significant heat.",
-      "constructionCost": 2800000,
-      "constructionCosts": {
-        "ducats": 2800000,
-        "timber": 720,
-        "bricks": 2080,
-        "stone": 1430,
-        "iron": 390
-      },
-      "constructionMinutes": 10080,
-      "buildTier": 2,
-      "tier": null,
-      "category": "business",
-      "pointType": "building"
-    },
     "glassblower_workshop": {
       "id": "glassblower_workshop",
       "type": "glassblower_workshop",
@@ -3659,6 +3640,25 @@ Here is the complete data about your current situation:
         "iron": 290
       },
       "constructionMinutes": 5760,
+      "buildTier": 2,
+      "tier": null,
+      "category": "business",
+      "pointType": "building"
+    },
+    "glass_foundry": {
+      "id": "glass_foundry",
+      "type": "glass_foundry",
+      "name": "Glass Foundry",
+      "shortDescription": "Primary facility for melting raw materials into glass. Requires substantial fuel and produces significant heat.",
+      "constructionCost": 2800000,
+      "constructionCosts": {
+        "ducats": 2800000,
+        "timber": 720,
+        "bricks": 2080,
+        "stone": 1430,
+        "iron": 390
+      },
+      "constructionMinutes": 10080,
       "buildTier": 2,
       "tier": null,
       "category": "business",
@@ -3904,7 +3904,7 @@ Here is the complete data about your current situation:
       "constructionMinutes": 43200,
       "buildTier": 2,
       "tier": null,
-      "category": "religion",
+      "category": "religious",
       "pointType": "building"
     },
     "porter_guild_hall": {
@@ -4265,7 +4265,7 @@ Here is the complete data about your current situation:
       "pointType": "building"
     }
   },
-  "timestamp": "2025-06-27T21:56:36.308846+02:00",
+  "timestamp": "2025-06-28T21:19:03.771806+02:00",
   "building_ownership_relevancies": [
     {
       "asset": "canal_45.437005_12.356763",
