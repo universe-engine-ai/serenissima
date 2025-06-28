@@ -8,7 +8,7 @@ Here is the complete data about your current situation:
 {
   "citizen": {
     "username": "ZenithTrader",
-    "ducats": 757338.2755043096,
+    "ducats": 790351.4911668882,
     "social_class": "Popolani",
     "description": "A wiry, callused man in his mid-40s with observant gray eyes that assess loads and distances with practiced precision. Lorenzo's weather-beaten face bears the lines of physical labor and careful calculation, softened occasionally by a shrewd smile when spotting an opportunity. Though belonging to the facchini class of porters, his attire shows unexpected quality\u2014simple but well-maintained wool garments with subtle personal touches that set him apart from his peers. Starting as a humble porter at the Rialto, Lorenzo's exceptional memory for cargo manifests and uncanny ability to maximize transport efficiency gradually elevated him above his station. He's developed a small network of fellow porters who follow his lead, recognizing his knack for securing the most profitable hauling contracts. His daily routine begins before dawn at the bustling docks, where merchants increasingly ask for him by name, trusting his discretion with valuable shipments and his fair pricing. In rare moments of leisure, Lorenzo frequents a modest tavern near the Arsenal, where he quietly gathers market intelligence while nursing a single glass of wine.",
     "core_personality": "{\"Strength\": \"Pragmatic\", \"Flaw\": \"Calculating\", \"Drive\": \"Opportunity-focused\", \"MBTI\": \"ESTJ\", \"PrimaryTrait\": \"Stripped-down survivor\", \"SecondaryTraits\": [\"False nobility past\", \"Labor resilience\", \"Opportunity recognition\"], \"CognitiveBias\": [\"Sunk cost fallacy\", \"Availability heuristic\"], \"TrustThreshold\": 0.4, \"EmpathyWeight\": 0.4, \"RiskTolerance\": 0.6, \"guidedBy\": \"The Survivor's Truth\", \"CoreThoughts\": {\"primary_drive\": \"survival-optimization\", \"secondary_drive\": \"opportunity-maximization\", \"internal_tension\": \"past pretensions vs. present reality\", \"activation_triggers\": [\"survival_threats\", \"opportunity_recognition\", \"status_reminders\"], \"thought_patterns\": [\"Pretenses are luxuries I can no longer afford\", \"Every opportunity must be evaluated for real value\", \"My calloused hands tell a truer story than noble claims\", \"Survival demands I see things as they actually are\", \"The lodging house dream is built on honest labor\", \"Past mistakes taught me to value substance over appearance\"], \"decision_framework\": \"What serves my survival while building genuine opportunity?\"}}",
@@ -1383,6 +1383,13 @@ Here is the complete data about your current situation:
       "has_water_access": false,
       "district": "San Polo",
       "existing_buildings": [
+        {
+          "id": "building_45.43839918445191_12.326301049069482",
+          "type": "house_of_natural_sciences",
+          "owner": "ConsiglioDeiDieci",
+          "income": 0,
+          "maintenance_cost": 0
+        },
         {
           "id": "bridge_45.437103_12.323849",
           "type": "bridge",
@@ -3207,7 +3214,83 @@ Here is the complete data about your current situation:
   "target_relevancies": [],
   "latest_citizen_problems": [
     {
-      "id": "recBPZVpYbMGG2NNd",
+      "id": "recB82o1q0u1fOP8X",
+      "fields": {
+        "ProblemId": "problem_pinpoint_building_45.439979_12.320432_salt_WAITING_FOR_DELIVERY",
+        "Citizen": "ZenithTrader",
+        "Asset": "building_45.439979_12.320432",
+        "AssetType": "building",
+        "Severity": "Medium",
+        "Status": "active",
+        "CreatedAt": "2025-06-27T03:44:19.777Z",
+        "UpdatedAt": "2025-06-27T01:44:20.000Z",
+        "Location": "Contract Stall at Rio Ter\u00e0 dei Tolentini",
+        "Title": "Waiting for Delivery: salt at Contract Stall at Rio Ter\u00e0 dei Tolentini",
+        "Description": "Building 'Contract Stall at Rio Ter\u00e0 dei Tolentini' (ID: building_45.439979_12.320432) is out of stock for 'salt', has an active 'markup_buy' contract, and the resource is available elsewhere. Awaiting delivery.",
+        "Solutions": "Monitor the 'markup_buy' contract for 'salt'. Ensure citizens or logistics services are fulfilling delivery. Check 'fetch_resource' activities targeting your building.",
+        "Position": "{\"lat\": 45.439979, \"lng\": 12.320432}",
+        "Type": "waiting_for_resource_delivery"
+      }
+    },
+    {
+      "id": "rec9USFYeBcOpe5g3",
+      "fields": {
+        "ProblemId": "problem_pinpoint_building_45.439979_12.320432_preserved_fish_WAITING_FOR_DELIVERY",
+        "Citizen": "ZenithTrader",
+        "Asset": "building_45.439979_12.320432",
+        "AssetType": "building",
+        "Severity": "Medium",
+        "Status": "active",
+        "CreatedAt": "2025-06-27T03:44:17.882Z",
+        "UpdatedAt": "2025-06-27T01:44:18.000Z",
+        "Location": "Contract Stall at Rio Ter\u00e0 dei Tolentini",
+        "Title": "Waiting for Delivery: preserved_fish at Contract Stall at Rio Ter\u00e0 dei Tolentini",
+        "Description": "Building 'Contract Stall at Rio Ter\u00e0 dei Tolentini' (ID: building_45.439979_12.320432) is out of stock for 'preserved_fish', has an active 'markup_buy' contract, and the resource is available elsewhere. Awaiting delivery.",
+        "Solutions": "Monitor the 'markup_buy' contract for 'preserved_fish'. Ensure citizens or logistics services are fulfilling delivery. Check 'fetch_resource' activities targeting your building.",
+        "Position": "{\"lat\": 45.439979, \"lng\": 12.320432}",
+        "Type": "waiting_for_resource_delivery"
+      }
+    },
+    {
+      "id": "rec4IEdJQLQpj3IiE",
+      "fields": {
+        "ProblemId": "problem_pinpoint_building_45.439979_12.320432_olives_WAITING_FOR_DELIVERY",
+        "Citizen": "ZenithTrader",
+        "Asset": "building_45.439979_12.320432",
+        "AssetType": "building",
+        "Severity": "Medium",
+        "Status": "active",
+        "CreatedAt": "2025-06-27T03:44:15.291Z",
+        "UpdatedAt": "2025-06-27T01:44:15.000Z",
+        "Location": "Contract Stall at Rio Ter\u00e0 dei Tolentini",
+        "Title": "Waiting for Delivery: olives at Contract Stall at Rio Ter\u00e0 dei Tolentini",
+        "Description": "Building 'Contract Stall at Rio Ter\u00e0 dei Tolentini' (ID: building_45.439979_12.320432) is out of stock for 'olives', has an active 'markup_buy' contract, and the resource is available elsewhere. Awaiting delivery.",
+        "Solutions": "Monitor the 'markup_buy' contract for 'olives'. Ensure citizens or logistics services are fulfilling delivery. Check 'fetch_resource' activities targeting your building.",
+        "Position": "{\"lat\": 45.439979, \"lng\": 12.320432}",
+        "Type": "waiting_for_resource_delivery"
+      }
+    },
+    {
+      "id": "rec8yGUwM6vRbtgxP",
+      "fields": {
+        "ProblemId": "problem_pinpoint_building_45.439979_12.320432_olive_oil_WAITING_FOR_DELIVERY",
+        "Citizen": "ZenithTrader",
+        "Asset": "building_45.439979_12.320432",
+        "AssetType": "building",
+        "Severity": "Medium",
+        "Status": "active",
+        "CreatedAt": "2025-06-27T03:44:13.378Z",
+        "UpdatedAt": "2025-06-27T01:44:13.000Z",
+        "Location": "Contract Stall at Rio Ter\u00e0 dei Tolentini",
+        "Title": "Waiting for Delivery: olive_oil at Contract Stall at Rio Ter\u00e0 dei Tolentini",
+        "Description": "Building 'Contract Stall at Rio Ter\u00e0 dei Tolentini' (ID: building_45.439979_12.320432) is out of stock for 'olive_oil', has an active 'markup_buy' contract, and the resource is available elsewhere. Awaiting delivery.",
+        "Solutions": "Monitor the 'markup_buy' contract for 'olive_oil'. Ensure citizens or logistics services are fulfilling delivery. Check 'fetch_resource' activities targeting your building.",
+        "Position": "{\"lat\": 45.439979, \"lng\": 12.320432}",
+        "Type": "waiting_for_resource_delivery"
+      }
+    },
+    {
+      "id": "recTzRwJtMOtZRISg",
       "fields": {
         "ProblemId": "hungry_ZenithTrader",
         "Citizen": "ZenithTrader",
@@ -3215,19 +3298,114 @@ Here is the complete data about your current situation:
         "AssetType": "citizen",
         "Severity": "medium",
         "Status": "active",
-        "CreatedAt": "2025-06-25T05:46:13.935Z",
-        "UpdatedAt": "2025-06-25T09:16:37.000Z",
+        "CreatedAt": "2025-06-27T02:07:35.178Z",
+        "UpdatedAt": "2025-06-27T18:42:24.000Z",
         "Location": "Lorenzo's last known area",
         "Title": "Hungry Citizen",
         "Description": "**Lorenzo Grimani** has not eaten in over 24 hours and is now hungry. This can affect their well-being and ability to perform tasks effectively.\n\n### Impact\n- Reduced energy and focus.\n- If employed, work productivity may be reduced by up to 50%.\n- Prolonged hunger can lead to more severe health issues (if implemented).",
         "Solutions": "### Recommended Solutions\n- Ensure the citizen consumes food. This might involve visiting a tavern, purchasing food from a market, or using owned food resources.\n- Check if the citizen has sufficient Ducats to afford food.\n- Review game mechanics related to food consumption and ensure the 'AteAt' (or equivalent) field is updated correctly after eating.",
-        "Notes": "[Failures: 1]\nCitizen ZenithTrader last ate at 2025-06-15T21:08:32.194Z. Current time: 2025-06-25T05:46:13.908Z",
+        "Notes": "[Failures: 1]\nCitizen ZenithTrader last ate at 2025-06-15T21:08:32.194Z. Current time: 2025-06-27T02:07:35.147Z",
         "Position": "{\"lat\":45.44122843783041,\"lng\":12.322466973631764}",
         "Type": "hungry_citizen"
       }
     }
   ],
   "recent_notifications_for_ai": [
+    {
+      "notificationId": "recQuln5nRbHAvX6n",
+      "type": "rent_payment",
+      "citizen": "ZenithTrader",
+      "content": "\ud83d\udcec **Rent Received Summary** \ud83d\udcec\nYou received a total of **1,740 \u269c\ufe0f Ducats** from your properties today.\n\nDetails:\n- \u2705 **1,740 \u269c\ufe0f** from **Raffaele Sartori** for **Artisan's House at Calle dei Vedei**.\n",
+      "details": {
+        "event_type": "landlord_rent_summary",
+        "total_received": 1740,
+        "payments": [
+          {
+            "occupant_name": "Raffaele Sartori",
+            "building_name": "Artisan's House at Calle dei Vedei",
+            "amount": 1740
+          }
+        ]
+      },
+      "createdAt": "2025-06-28T18:03:43.831Z",
+      "readAt": null
+    },
+    {
+      "notificationId": "recj88b6uExdY0jAu",
+      "type": "rent_payment",
+      "citizen": "ZenithTrader",
+      "content": "\ud83d\udcec **Rent Received Summary** \ud83d\udcec\nYou received a total of **1,740 \u269c\ufe0f Ducats** from your properties today.\n\nDetails:\n- \u2705 **1,740 \u269c\ufe0f** from **Raffaele Sartori** for **Artisan's House at Calle dei Vedei**.\n",
+      "details": {
+        "event_type": "landlord_rent_summary",
+        "total_received": 1740,
+        "payments": [
+          {
+            "occupant_name": "Raffaele Sartori",
+            "building_name": "Artisan's House at Calle dei Vedei",
+            "amount": 1740
+          }
+        ]
+      },
+      "createdAt": "2025-06-28T16:03:35.325Z",
+      "readAt": null
+    },
+    {
+      "notificationId": "recYGF4uNAIZ09SZw",
+      "type": "rent_payment",
+      "citizen": "ZenithTrader",
+      "content": "\ud83d\udcec **Rent Received Summary** \ud83d\udcec\nYou received a total of **1,740 \u269c\ufe0f Ducats** from your properties today.\n\nDetails:\n- \u2705 **1,740 \u269c\ufe0f** from **Raffaele Sartori** for **Artisan's House at Calle dei Vedei**.\n",
+      "details": {
+        "event_type": "landlord_rent_summary",
+        "total_received": 1740,
+        "payments": [
+          {
+            "occupant_name": "Raffaele Sartori",
+            "building_name": "Artisan's House at Calle dei Vedei",
+            "amount": 1740
+          }
+        ]
+      },
+      "createdAt": "2025-06-27T18:03:37.527Z",
+      "readAt": null
+    },
+    {
+      "notificationId": "rec3YWuoBgp6YcgB8",
+      "type": "rent_payment",
+      "citizen": "ZenithTrader",
+      "content": "\ud83d\udcec **Rent Received Summary** \ud83d\udcec\nYou received a total of **1,740 \u269c\ufe0f Ducats** from your properties today.\n\nDetails:\n- \u2705 **1,740 \u269c\ufe0f** from **Raffaele Sartori** for **Artisan's House at Calle dei Vedei**.\n",
+      "details": {
+        "event_type": "landlord_rent_summary",
+        "total_received": 1740,
+        "payments": [
+          {
+            "occupant_name": "Raffaele Sartori",
+            "building_name": "Artisan's House at Calle dei Vedei",
+            "amount": 1740
+          }
+        ]
+      },
+      "createdAt": "2025-06-27T16:03:32.616Z",
+      "readAt": null
+    },
+    {
+      "notificationId": "recM9QZ2h4HepZkcT",
+      "type": "rent_payment",
+      "citizen": "ZenithTrader",
+      "content": "\ud83d\udcec **Rent Received Summary** \ud83d\udcec\nYou received a total of **1,740 \u269c\ufe0f Ducats** from your properties today.\n\nDetails:\n- \u2705 **1,740 \u269c\ufe0f** from **Raffaele Sartori** for **Artisan's House at Calle dei Vedei**.\n",
+      "details": {
+        "event_type": "landlord_rent_summary",
+        "total_received": 1740,
+        "payments": [
+          {
+            "occupant_name": "Raffaele Sartori",
+            "building_name": "Artisan's House at Calle dei Vedei",
+            "amount": 1740
+          }
+        ]
+      },
+      "createdAt": "2025-06-26T18:03:48.123Z",
+      "readAt": null
+    },
     {
       "notificationId": "recbS6VTfPFqT5rFs",
       "type": "rent_payment",
@@ -3531,132 +3709,6 @@ Here is the complete data about your current situation:
       },
       "createdAt": "2025-06-14T16:03:30.408Z",
       "readAt": null
-    },
-    {
-      "notificationId": "recWE0nPhB5v239ve",
-      "type": "markup_buy_contract_updated",
-      "citizen": "ZenithTrader",
-      "content": "Your buy order for wine (markup_buy_main_building_45.439979_12.320432_wine) has been updated.",
-      "details": {
-        "contractId": "markup_buy_main_building_45.439979_12.320432_wine"
-      },
-      "createdAt": "2025-06-13T23:58:40.497Z",
-      "readAt": "2025-06-13T23:58:41.078Z"
-    },
-    {
-      "notificationId": "recmc0pz6CYa9T5tT",
-      "type": "markup_buy_contract_updated",
-      "citizen": "ZenithTrader",
-      "content": "Your buy order for salt (markup_buy_main_building_45.439979_12.320432_salt) has been updated.",
-      "details": {
-        "contractId": "markup_buy_main_building_45.439979_12.320432_salt"
-      },
-      "createdAt": "2025-06-13T18:09:24.306Z",
-      "readAt": "2025-06-13T18:09:24.435Z"
-    },
-    {
-      "notificationId": "recQ3gshtnX720Xbt",
-      "type": "rent_payment",
-      "citizen": "ZenithTrader",
-      "content": "\ud83d\udcec **Rent Received Summary** \ud83d\udcec\nYou received a total of **1,740 \u269c\ufe0f Ducats** from your properties today.\n\nDetails:\n- \u2705 **1,740 \u269c\ufe0f** from **Raffaele Sartori** for **Artisan's House at Calle dei Vedei**.\n",
-      "details": {
-        "event_type": "landlord_rent_summary",
-        "total_received": 1740,
-        "payments": [
-          {
-            "occupant_name": "Raffaele Sartori",
-            "building_name": "Artisan's House at Calle dei Vedei",
-            "amount": 1740
-          }
-        ]
-      },
-      "createdAt": "2025-06-13T16:03:30.706Z",
-      "readAt": null
-    },
-    {
-      "notificationId": "recJypt42fAAWFuDF",
-      "type": "markup_buy_contract_updated",
-      "citizen": "ZenithTrader",
-      "content": "Your buy order for preserved_fish (markup_buy_main_building_45.439979_12.320432_preserved_fish) has been updated.",
-      "details": {
-        "contractId": "markup_buy_main_building_45.439979_12.320432_preserved_fish"
-      },
-      "createdAt": "2025-06-12T21:09:08.867Z",
-      "readAt": "2025-06-12T21:09:09.177Z"
-    },
-    {
-      "notificationId": "recmRoBg2suVIJdWK",
-      "type": "markup_buy_contract_updated",
-      "citizen": "ZenithTrader",
-      "content": "Your buy order for olives (markup_buy_main_building_45.439979_12.320432_olives) has been updated.",
-      "details": {
-        "contractId": "markup_buy_main_building_45.439979_12.320432_olives"
-      },
-      "createdAt": "2025-06-12T20:39:22.439Z",
-      "readAt": "2025-06-12T20:39:23.146Z"
-    },
-    {
-      "notificationId": "recBeC3FteVsD25z0",
-      "type": "markup_buy_contract_updated",
-      "citizen": "ZenithTrader",
-      "content": "Your buy order for olive_oil (markup_buy_main_building_45.439979_12.320432_olive_oil) has been updated.",
-      "details": {
-        "contractId": "markup_buy_main_building_45.439979_12.320432_olive_oil"
-      },
-      "createdAt": "2025-06-12T18:18:53.224Z",
-      "readAt": "2025-06-12T18:18:53.284Z"
-    },
-    {
-      "notificationId": "rec7Fe2BpZIGUjciV",
-      "type": "rent_payment",
-      "citizen": "ZenithTrader",
-      "content": "\ud83d\udcec **Rent Received Summary** \ud83d\udcec\nYou received a total of **1,740 \u269c\ufe0f Ducats** from your properties today.\n\nDetails:\n- \u2705 **1,740 \u269c\ufe0f** from **Raffaele Sartori** for **Artisan's House at Calle dei Vedei**.\n",
-      "details": {
-        "event_type": "landlord_rent_summary",
-        "total_received": 1740,
-        "payments": [
-          {
-            "occupant_name": "Raffaele Sartori",
-            "building_name": "Artisan's House at Calle dei Vedei",
-            "amount": 1740
-          }
-        ]
-      },
-      "createdAt": "2025-06-12T18:03:44.338Z",
-      "readAt": null
-    },
-    {
-      "notificationId": "recuAeAwY8jyYTky5",
-      "type": "markup_buy_contract_updated",
-      "citizen": "ZenithTrader",
-      "content": "Your buy order for flour (markup_buy_main_building_45.439979_12.320432_flour) has been updated.",
-      "details": {
-        "contractId": "markup_buy_main_building_45.439979_12.320432_flour"
-      },
-      "createdAt": "2025-06-12T17:48:48.057Z",
-      "readAt": "2025-06-12T17:48:48.456Z"
-    },
-    {
-      "notificationId": "recVQ5DtbuDav9GYm",
-      "type": "markup_buy_contract_updated",
-      "citizen": "ZenithTrader",
-      "content": "Your buy order for fish (markup_buy_main_building_45.439979_12.320432_fish) has been updated.",
-      "details": {
-        "contractId": "markup_buy_main_building_45.439979_12.320432_fish"
-      },
-      "createdAt": "2025-06-12T14:04:12.434Z",
-      "readAt": "2025-06-12T14:04:12.225Z"
-    },
-    {
-      "notificationId": "reclBpcTmojMRno1O",
-      "type": "markup_buy_contract_updated",
-      "citizen": "ZenithTrader",
-      "content": "Your buy order for bread (markup_buy_main_building_45.439979_12.320432_bread) has been updated.",
-      "details": {
-        "contractId": "markup_buy_main_building_45.439979_12.320432_bread"
-      },
-      "createdAt": "2025-06-12T00:18:42.680Z",
-      "readAt": "2025-06-12T00:19:04.056Z"
     }
   ],
   "building_types": {
@@ -3866,7 +3918,7 @@ Here is the complete data about your current situation:
       "constructionMinutes": 7200,
       "buildTier": 1,
       "tier": null,
-      "category": "Public & Government",
+      "category": "religious",
       "pointType": "building"
     },
     "cistern": {
@@ -3886,7 +3938,7 @@ Here is the complete data about your current situation:
       "constructionMinutes": 8640,
       "buildTier": 2,
       "tier": null,
-      "category": "Infrastructure",
+      "category": "passive",
       "pointType": "building"
     },
     "dairy": {
@@ -3943,25 +3995,6 @@ Here is the complete data about your current situation:
       "category": "home",
       "pointType": "canal"
     },
-    "glass_foundry": {
-      "id": "glass_foundry",
-      "type": "glass_foundry",
-      "name": "Glass Foundry",
-      "shortDescription": "Primary facility for melting raw materials into glass. Requires substantial fuel and produces significant heat.",
-      "constructionCost": 2800000,
-      "constructionCosts": {
-        "ducats": 2800000,
-        "timber": 720,
-        "bricks": 2080,
-        "stone": 1430,
-        "iron": 390
-      },
-      "constructionMinutes": 10080,
-      "buildTier": 2,
-      "tier": null,
-      "category": "business",
-      "pointType": "building"
-    },
     "glassblower_workshop": {
       "id": "glassblower_workshop",
       "type": "glassblower_workshop",
@@ -3976,6 +4009,25 @@ Here is the complete data about your current situation:
         "iron": 290
       },
       "constructionMinutes": 5760,
+      "buildTier": 2,
+      "tier": null,
+      "category": "business",
+      "pointType": "building"
+    },
+    "glass_foundry": {
+      "id": "glass_foundry",
+      "type": "glass_foundry",
+      "name": "Glass Foundry",
+      "shortDescription": "Primary facility for melting raw materials into glass. Requires substantial fuel and produces significant heat.",
+      "constructionCost": 2800000,
+      "constructionCosts": {
+        "ducats": 2800000,
+        "timber": 720,
+        "bricks": 2080,
+        "stone": 1430,
+        "iron": 390
+      },
+      "constructionMinutes": 10080,
       "buildTier": 2,
       "tier": null,
       "category": "business",
@@ -4128,6 +4180,25 @@ Here is the complete data about your current situation:
       "category": "home",
       "pointType": "building"
     },
+    "mill": {
+      "id": "mill",
+      "type": "mill",
+      "name": "Mill",
+      "shortDescription": "Industrial facility that grinds grain into flour, essential for bread production.",
+      "constructionCost": 1800000,
+      "constructionCosts": {
+        "ducats": 1800000,
+        "timber": 420,
+        "bricks": 850,
+        "stone": 1200,
+        "iron": 280
+      },
+      "constructionMinutes": 7200,
+      "buildTier": 2,
+      "tier": null,
+      "category": "business",
+      "pointType": "building"
+    },
     "navigation_school": {
       "id": "navigation_school",
       "type": "navigation_school",
@@ -4202,7 +4273,7 @@ Here is the complete data about your current situation:
       "constructionMinutes": 43200,
       "buildTier": 2,
       "tier": null,
-      "category": "Public & Government",
+      "category": "religious",
       "pointType": "building"
     },
     "porter_guild_hall": {
@@ -4563,7 +4634,7 @@ Here is the complete data about your current situation:
       "pointType": "building"
     }
   },
-  "timestamp": "2025-06-25T21:30:35.672426+02:00",
+  "timestamp": "2025-06-28T21:29:04.053506+02:00",
   "building_ownership_relevancies": [
     {
       "asset": "building_45.430597_12.354476",
