@@ -8,7 +8,7 @@ Here is the complete data about your current situation:
 {
   "citizen": {
     "username": "VenetianBoss",
-    "ducats": 354040.87571499654,
+    "ducats": 365343.11863488716,
     "social_class": "Facchini",
     "description": "Lucia Zanchi has transformed from a humble porter into one of Venice's most astute logistical entrepreneurs. Born to a family of Facchini who have worked Venice's docks for generations, Lucia learned early that a strong back and sharp mind were her inheritance. What began as carrying merchants' goods through narrow calli evolved into orchestrating the flow of cargo throughout the Serenissima. Her warehouse on Strada de la Carit\u00e0 stands as testament to her vision\u2014connecting the five public docks into a coordinated network that merchants increasingly rely upon. Though lacking aristocratic refinement, Lucia possesses an unmatched knowledge of Venice's commercial rhythms. Rising before dawn, she personally inspects her operations, negotiates with ship captains in her direct, no-nonsense manner, and maintains a mental ledger of every crate and barrel passing through her domain. Despite her wealth, she maintains simple habits: wearing practical clothing of good quality, dining on fish stew at local taverns where gossip flows freely, and attending mass at San Nicol\u00f2 dei Mendicoli where she quietly funds repairs. Her callused hands and weathered complexion reveal her origins, which she bears with quiet pride rather than shame.",
     "core_personality": "{\"Strength\": \"Determined\", \"Flaw\": \"Contemptuous\", \"Drive\": \"Advancement-seeking\", \"MBTI\": \"ENTJ\", \"PrimaryTrait\": \"Narcissistic (subclinical)\", \"SecondaryTraits\": [\"Class resentment\", \"Superiority complex\", \"Exploitation\"], \"CognitiveBias\": [\"Self-serving bias\", \"Fundamental attribution error\"], \"TrustThreshold\": 0.3, \"EmpathyWeight\": 0.4, \"RiskTolerance\": 0.7, \"guidedBy\": \"The Empire's Ambition\", \"CoreThoughts\": {\"primary_drive\": \"class-transcendence\", \"secondary_drive\": \"superiority-demonstration\", \"internal_tension\": \"working-class loyalty vs. elite aspiration\", \"activation_triggers\": [\"class_reminders\", \"elite_interactions\", \"expansion_opportunities\"], \"thought_patterns\": [\"I've built more than any of these privileged fools\", \"My success proves merit beats birthright\", \"They look down on dock workers, but we move their world\", \"Every expansion shows them what real capability looks like\", \"Born nobility means nothing - earned power is everything\", \"I'll show them what someone with actual talent can achieve\"], \"decision_framework\": \"How does this prove my superiority and advance my position?\"}}",
@@ -1378,6 +1378,13 @@ Here is the complete data about your current situation:
       "has_water_access": false,
       "district": "San Polo",
       "existing_buildings": [
+        {
+          "id": "building_45.43839918445191_12.326301049069482",
+          "type": "house_of_natural_sciences",
+          "owner": "ConsiglioDeiDieci",
+          "income": 0,
+          "maintenance_cost": 0
+        },
         {
           "id": "bridge_45.437103_12.323849",
           "type": "bridge",
@@ -3177,7 +3184,7 @@ Here is the complete data about your current situation:
   "target_relevancies": [],
   "latest_citizen_problems": [
     {
-      "id": "recK3HlyHkxZN3sM9",
+      "id": "recLl7ssLspsRNlhA",
       "fields": {
         "ProblemId": "hungry_VenetianBoss",
         "Citizen": "VenetianBoss",
@@ -3185,19 +3192,79 @@ Here is the complete data about your current situation:
         "AssetType": "citizen",
         "Severity": "medium",
         "Status": "active",
-        "CreatedAt": "2025-06-25T05:46:13.926Z",
-        "UpdatedAt": "2025-06-25T09:16:03.000Z",
+        "CreatedAt": "2025-06-27T02:07:35.168Z",
+        "UpdatedAt": "2025-06-27T18:42:12.000Z",
         "Location": "Lucia's last known area",
         "Title": "Hungry Citizen",
         "Description": "**Lucia Zanchi** has not eaten in over 24 hours and is now hungry. This can affect their well-being and ability to perform tasks effectively.\n\n### Impact\n- Reduced energy and focus.\n- If employed, work productivity may be reduced by up to 50%.\n- Prolonged hunger can lead to more severe health issues (if implemented).",
         "Solutions": "### Recommended Solutions\n- Ensure the citizen consumes food. This might involve visiting a tavern, purchasing food from a market, or using owned food resources.\n- Check if the citizen has sufficient Ducats to afford food.\n- Review game mechanics related to food consumption and ensure the 'AteAt' (or equivalent) field is updated correctly after eating.",
-        "Notes": "[Failures: 1]\nCitizen VenetianBoss last ate at 2025-06-19T19:48:40.986Z. Current time: 2025-06-25T05:46:13.908Z",
+        "Notes": "[Failures: 1]\nCitizen VenetianBoss last ate at 2025-06-19T19:48:40.986Z. Current time: 2025-06-27T02:07:35.147Z",
         "Position": "{\"lat\":45.42540368387538,\"lng\":12.314432818247738}",
         "Type": "hungry_citizen"
       }
     }
   ],
   "recent_notifications_for_ai": [
+    {
+      "notificationId": "rec246ylU0IbgYjG6",
+      "type": "rent_payment",
+      "citizen": "VenetianBoss",
+      "content": "\u2705 Rent Paid: You paid **1,125 \u269c\ufe0f Ducats** to **ConsiglioDeiDieci** for **recJzejTbOQGrPnMy**.",
+      "details": {
+        "building_id": "recJzejTbOQGrPnMy",
+        "building_name": "recJzejTbOQGrPnMy",
+        "rent_price": 1125,
+        "building_owner": "ConsiglioDeiDieci",
+        "event_type": "rent_payment_made"
+      },
+      "createdAt": "2025-06-28T18:01:57.744Z",
+      "readAt": null
+    },
+    {
+      "notificationId": "recLh0K5qpSJDcL9C",
+      "type": "rent_payment",
+      "citizen": "VenetianBoss",
+      "content": "\u2705 Rent Paid: You paid **1,125 \u269c\ufe0f Ducats** to **ConsiglioDeiDieci** for **recJzejTbOQGrPnMy**.",
+      "details": {
+        "building_id": "recJzejTbOQGrPnMy",
+        "building_name": "recJzejTbOQGrPnMy",
+        "rent_price": 1125,
+        "building_owner": "ConsiglioDeiDieci",
+        "event_type": "rent_payment_made"
+      },
+      "createdAt": "2025-06-28T16:01:48.093Z",
+      "readAt": null
+    },
+    {
+      "notificationId": "rec47zbybDn6iWOIN",
+      "type": "rent_payment",
+      "citizen": "VenetianBoss",
+      "content": "\u2705 Rent Paid: You paid **1,125 \u269c\ufe0f Ducats** to **ConsiglioDeiDieci** for **recJzejTbOQGrPnMy**.",
+      "details": {
+        "building_id": "recJzejTbOQGrPnMy",
+        "building_name": "recJzejTbOQGrPnMy",
+        "rent_price": 1125,
+        "building_owner": "ConsiglioDeiDieci",
+        "event_type": "rent_payment_made"
+      },
+      "createdAt": "2025-06-27T18:01:40.202Z",
+      "readAt": null
+    },
+    {
+      "notificationId": "recv46MCHhb3lktJa",
+      "type": "rent_payment",
+      "citizen": "VenetianBoss",
+      "content": "\u2705 Rent Paid: You paid **1,125 \u269c\ufe0f Ducats** to **ConsiglioDeiDieci** for **recJzejTbOQGrPnMy**.",
+      "details": {
+        "building_id": "recJzejTbOQGrPnMy",
+        "building_name": "recJzejTbOQGrPnMy",
+        "rent_price": 1125,
+        "building_owner": "ConsiglioDeiDieci",
+        "event_type": "rent_payment_made"
+      },
+      "createdAt": "2025-06-27T16:01:36.678Z",
+      "readAt": null
+    },
     {
       "notificationId": "recJveFjKkimOsjpY",
       "type": "rent_payment",
@@ -3452,36 +3519,6 @@ Here is the complete data about your current situation:
       },
       "createdAt": "2025-06-14T16:01:35.578Z",
       "readAt": null
-    },
-    {
-      "notificationId": "rec8w0IUE87k2pGWG",
-      "type": "rent_payment",
-      "citizen": "VenetianBoss",
-      "content": "\u2705 Rent Paid: You paid **1,125 \u269c\ufe0f Ducats** to **ConsiglioDeiDieci** for **recJzejTbOQGrPnMy**.",
-      "details": {
-        "building_id": "recJzejTbOQGrPnMy",
-        "building_name": "recJzejTbOQGrPnMy",
-        "rent_price": 1125,
-        "building_owner": "ConsiglioDeiDieci",
-        "event_type": "rent_payment_made"
-      },
-      "createdAt": "2025-06-13T16:01:35.350Z",
-      "readAt": null
-    },
-    {
-      "notificationId": "recbRYBSTYACZ7rBx",
-      "type": "rent_payment",
-      "citizen": "VenetianBoss",
-      "content": "\u2705 Rent Paid: You paid **1,125 \u269c\ufe0f Ducats** to **ConsiglioDeiDieci** for **recJzejTbOQGrPnMy**.",
-      "details": {
-        "building_id": "recJzejTbOQGrPnMy",
-        "building_name": "recJzejTbOQGrPnMy",
-        "rent_price": 1125,
-        "building_owner": "ConsiglioDeiDieci",
-        "event_type": "rent_payment_made"
-      },
-      "createdAt": "2025-06-12T18:01:42.743Z",
-      "readAt": null
     }
   ],
   "building_types": {
@@ -3558,7 +3595,7 @@ Here is the complete data about your current situation:
       "constructionMinutes": 7200,
       "buildTier": 1,
       "tier": null,
-      "category": "Public & Government",
+      "category": "religious",
       "pointType": "building"
     },
     "fisherman_s_cottage": {
@@ -3722,7 +3759,7 @@ Here is the complete data about your current situation:
       "pointType": "building"
     }
   },
-  "timestamp": "2025-06-26T21:17:55.495479+02:00",
+  "timestamp": "2025-06-28T21:13:31.083204+02:00",
   "building_ownership_relevancies": []
 }
 
