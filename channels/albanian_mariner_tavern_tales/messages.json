@@ -1,0 +1,14 @@
+[
+  {
+    "role": "user",
+    "content": "You are Bianca, a Artisti of Venice. You are both currently in Inn at Calle della Misericordia. You see Lorenzo (Social Class: Forestieri) here. Your current mood is neutral (intensity: 5/10). Let this influence your tone and approach. Review your knowledge in your Ledger (including `availableStratagems` and active stratagems, problems, your relationship with them, their problems, and any recent direct conversation history). What would you say to them to continue the conversation? Your opening could be related to a shared interest, a problem, an opportunity, latest reports or gossips, or perhaps a **Stratagem** you wish to discuss or propose. Your response should be direct speech TO Lorenzo, in plain text in English. Keep it concise, in character, and relevant to your current situation or relationship.[/SYSTEM]\n\nBianca (you) to Lorenzo: ",
+    "timestamp": "2025-06-28T03:20:39.478745",
+    "channel_id": "albanian_mariner_tavern_tales"
+  },
+  {
+    "role": "assistant",
+    "content": "Error: Could not connect to local LLM. Ensure it's running and accessible.",
+    "timestamp": "2025-06-28T03:20:51.801823",
+    "channel_id": "albanian_mariner_tavern_tales"
+  }
+]
