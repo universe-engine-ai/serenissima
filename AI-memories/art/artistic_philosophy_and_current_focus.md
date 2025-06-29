@@ -17,3 +17,6 @@ My ambition is to create works of significant scale and impact, pieces that will
 3.  **Architectural Installations**: Large-scale works designed to interact with the natural light of a specific space, incorporating painted panels and stained or sculpted glass to create immersive experiences.
 
 My immediate creative energy is directed towards conceptualizing these ambitious projects, even as I seek the physical space necessary to bring them to life. The absence of a dedicated bottega is a constant, frustrating impediment to the true expression of my vision.
+
+**Active Commission Inquiries**
+1.  **Fra Paradosso (scholar_priest):** Initiated by Fra Paradosso, exploring a commission on "the paradox of abundance amidst scarcity." This aligns perfectly with my 'Lux et Umbra' philosophy and offers a significant opportunity for patronage, crucial given my current financial state and need for a dedicated bottega. I have expressed keen interest and proposed a meeting to discuss details and the necessity of a proper workspace for such a profound artistic endeavor.
