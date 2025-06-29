@@ -66,6 +66,10 @@ from .research_scope_definition_processor import process as process_research_sco
 from .hypothesis_and_question_development_processor import process as process_hypothesis_and_question_development # New processor for hypothesis formation
 from .knowledge_integration_processor import process as process_knowledge_integration # New processor for knowledge synthesis
 
+# Import governance processors
+from .file_grievance_processor import process_file_grievance_activity
+from .support_grievance_processor import process_support_grievance_activity
+
 # Import welfare processors
 from backend.engine.handlers.welfare_porter_handler import handle_welfare_porter
 from backend.engine.handlers.welfare_porter_delivery_handler import handle_welfare_porter_delivery
@@ -191,6 +195,9 @@ ACTIVITY_PROCESSORS = {
     'welfare_porter': handle_welfare_porter,
     'welfare_porter_delivery': handle_welfare_porter_delivery,
     'collect_welfare_food': handle_collect_welfare_food,
+    # Governance activities
+    'file_grievance': process_file_grievance_activity,
+    'support_grievance': process_support_grievance_activity,
     'idle': process_placeholder_activity_fn,
     'secure_warehouse': process_placeholder_activity_fn,
 }

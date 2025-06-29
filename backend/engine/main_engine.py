@@ -12,8 +12,9 @@ This file is the refactored core of the original citizen_general_activities.py.
 """
 
 import logging
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 from typing import Dict, List, Optional, Any, Tuple, Union
+import pytz
 
 # Import refactored constants
 from backend.engine.config import constants as const
@@ -21,7 +22,8 @@ from backend.engine.config import constants as const
 # Import core utilities and helpers needed for orchestration
 from backend.engine.utils.activity_helpers import (
     LogColors,
-    is_rest_time_for_class
+    is_rest_time_for_class,
+    VENICE_TIMEZONE
 )
 
 # Import activity creators used directly by the dispatcher or fallback logic
@@ -49,32 +51,86 @@ log = logging.getLogger(__name__)
 # ==============================================================================
 
 def dispatch_specific_activity_request(
-    activity_type: str,
     tables: Dict[str, Any],
     citizen_record: Dict[str, Any],
-    # ... other required parameters like data, target_id, etc.
+    activity_type: str,
+    activity_parameters: Dict[str, Any],
+    resource_defs: Dict[str, Any],
+    building_type_defs: Dict[str, Any],
+    transport_api_url: str,
+    api_base_url: str
 ) -> Dict[str, Any]:
     """
     Handles direct requests to create a specific activity for a citizen.
 
     This function acts as a router, calling the appropriate activity creation
     logic based on the 'activity_type' provided.
-
-    TODO: In the next refactoring phase, this large if/elif block will be
-    replaced with a more scalable dispatch table (dictionary mapping).
-    For now, it is preserved from the original file.
     """
-    # This logic remains the same as in the original file, but is now much
-    # easier to manage as the only other major function is process_citizen_activity.
-    # Example call:
-    # if activity_type == "send_message":
-    #     return try_create_send_message_chain(...)
-    # elif activity_type == "bid_on_land":
-    #     return try_create_bid_on_land_chain(...)
-    # ... etc.
-
-    log.warning(f"Dispatcher received an unknown activity type: {activity_type}")
-    return {"success": False, "message": f"Activity type '{activity_type}' is not supported."}
+    citizen_username = citizen_record['fields'].get('Username')
+    citizen_custom_id = citizen_record['fields'].get('CitizenId')
+    citizen_airtable_id = citizen_record['id']
+    
+    # Extract current UTC time
+    now_utc_dt = datetime.now(timezone.utc)
+    now_venice_dt = now_utc_dt.astimezone(VENICE_TIMEZONE)
+    
+    try:
+        if activity_type == "send_message":
+            # Extract parameters
+            recipient = activity_parameters.get('recipient')
+            message_type = activity_parameters.get('messageType', 'general')
+            content = activity_parameters.get('content', '')
+            
+            if not recipient:
+                return {"success": False, "message": "Recipient is required for send_message activity", "activity": None, "reason": "missing_recipient"}
+            
+            # Create the send message activity
+            activity_record = try_create_send_message_chain(
+                tables, citizen_custom_id, citizen_username, citizen_airtable_id,
+                recipient, message_type, now_utc_dt
+            )
+            
+            if activity_record:
+                return {"success": True, "message": f"Created send_message activity to {recipient}", "activity": activity_record, "reason": None}
+            else:
+                return {"success": False, "message": f"Failed to create send_message activity to {recipient}", "activity": None, "reason": "creation_failed"}
+        
+        elif activity_type == "initiate_building_project":
+            # Create the initiate building project activity
+            result = try_create_initiate_building_project_activity(
+                tables, citizen_record, activity_parameters,
+                resource_defs, building_type_defs,
+                now_venice_dt, now_utc_dt,
+                transport_api_url, api_base_url
+            )
+            
+            if result.get("success"):
+                return {
+                    "success": True,
+                    "message": result.get("message", "Created initiate_building_project activity chain"),
+                    "activity": result.get("activity_fields"),
+                    "reason": None
+                }
+            else:
+                return {
+                    "success": False,
+                    "message": result.get("message", "Failed to create initiate_building_project activity"),
+                    "activity": None,
+                    "reason": result.get("reason", "creation_failed")
+                }
+        
+        # Add more activity types here as needed
+        # elif activity_type == "bid_on_land":
+        #     return try_create_bid_on_land_chain(...)
+        # ... etc.
+        
+        else:
+            log.warning(f"Dispatcher received an unknown activity type: {activity_type}")
+            return {"success": False, "message": f"Activity type '{activity_type}' is not supported.", "activity": None, "reason": "unknown_activity_type"}
+            
+    except Exception as e:
+        log.error(f"Error in dispatch_specific_activity_request for {citizen_username}, type {activity_type}: {e}", exc_info=True)
+        return {"success": False, "message": f"Error creating activity: {str(e)}", "activity": None, "reason": "internal_error"}
 
 
 # ==============================================================================

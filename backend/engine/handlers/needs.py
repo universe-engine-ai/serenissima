@@ -67,6 +67,9 @@ from backend.engine.activity_creators.goto_location_activity_creator import try_
 # Import process_forestieri_departure_check for leave venice handler
 from backend.engine.logic.forestieri_activities import process_forestieri_departure_check
 
+# Import emergency hunger check
+from backend.arsenale.fix_hunger_crisis import is_severely_hungry
+
 log = logging.getLogger(__name__)
 
 
@@ -80,10 +83,17 @@ def _handle_eat_from_inventory(
     citizen_position: Optional[Dict], citizen_custom_id: str, citizen_username: str, citizen_airtable_id: str, citizen_name: str, citizen_position_str: Optional[str],
     citizen_social_class: str
 ) -> Optional[Dict]:
-    """Prio 2: Handles eating from inventory if hungry and it's leisure time or a meal break."""
+    """Prio 2: Handles eating from inventory if hungry and it's leisure time OR EMERGENCY."""
     if not citizen_record['is_hungry']: return None
-    if not is_leisure_time_for_class(citizen_social_class, now_venice_dt):
+    
+    # EMERGENCY: Allow eating if severely hungry (>24 hours without food)
+    is_emergency = is_severely_hungry(citizen_record, now_utc_dt, hours_threshold=24.0)
+    
+    if not is_emergency and not is_leisure_time_for_class(citizen_social_class, now_venice_dt):
         return None
+    
+    if is_emergency:
+        log.warning(f"{LogColors.WARNING}[EMERGENCY] {citizen_name} hasn't eaten in >24 hours! Bypassing leisure time restrictions.{LogColors.ENDC}")
 
     log.info(f"{LogColors.OKCYAN}[Eat-Inv] {citizen_name}: Leisure time & hungry. Checking inventory.{LogColors.ENDC}")
     for food_type_id in FOOD_RESOURCE_TYPES_FOR_EATING:
@@ -109,10 +119,17 @@ def _handle_eat_at_home_or_goto(
     citizen_position: Optional[Dict], citizen_custom_id: str, citizen_username: str, citizen_airtable_id: str, citizen_name: str, citizen_position_str: Optional[str],
     citizen_social_class: str
 ) -> Optional[Dict]:
-    """Prio 3: Handles eating at home or going home to eat if hungry and it's leisure time."""
+    """Prio 3: Handles eating at home or going home to eat if hungry and it's leisure time OR EMERGENCY."""
     if not citizen_record['is_hungry']: return None
-    if not is_leisure_time_for_class(citizen_social_class, now_venice_dt):
+    
+    # EMERGENCY: Allow eating if severely hungry (>24 hours without food)
+    is_emergency = is_severely_hungry(citizen_record, now_utc_dt, hours_threshold=24.0)
+    
+    if not is_emergency and not is_leisure_time_for_class(citizen_social_class, now_venice_dt):
         return None
+    
+    if is_emergency:
+        log.warning(f"{LogColors.WARNING}[EMERGENCY] {citizen_name} hasn't eaten in >24 hours! Bypassing leisure time restrictions.{LogColors.ENDC}")
 
     home_record = get_citizen_home(tables, citizen_username)
     if not home_record: return None
@@ -188,10 +205,15 @@ def _handle_eat_at_tavern_or_goto(
     citizen_position: Optional[Dict], citizen_custom_id: str, citizen_username: str, citizen_airtable_id: str, citizen_name: str, citizen_position_str: Optional[str],
     citizen_social_class: str
 ) -> Optional[Dict]:
-    """Prio 6: Handles eating at tavern or going to tavern to eat if hungry and it's leisure time."""
-    # Removed: if not citizen_record['is_hungry']: return None
-    if not is_leisure_time_for_class(citizen_social_class, now_venice_dt): # Still check for leisure time
+    """Prio 6: Handles eating at tavern or going to tavern to eat if hungry and it's leisure time OR EMERGENCY."""
+    # EMERGENCY: Allow eating if severely hungry (>24 hours without food)
+    is_emergency = is_severely_hungry(citizen_record, now_utc_dt, hours_threshold=24.0)
+    
+    if not is_emergency and not is_leisure_time_for_class(citizen_social_class, now_venice_dt):
         return None
+    
+    if is_emergency:
+        log.warning(f"{LogColors.WARNING}[EMERGENCY] {citizen_name} hasn't eaten in >24 hours! Bypassing leisure time restrictions.{LogColors.ENDC}")
     if not citizen_position: return None
 
     citizen_ducats = float(citizen_record['fields'].get('Ducats', 0))
@@ -376,11 +398,18 @@ def _handle_shop_for_food_at_retail(
     citizen_position: Optional[Dict], citizen_custom_id: str, citizen_username: str, citizen_airtable_id: str, citizen_name: str, citizen_position_str: Optional[str],
     citizen_social_class: str
 ) -> Optional[Dict]:
-    """Prio 20 (was 5): Handles shopping for food at retail_food if hungry, has home, and it's leisure time."""
+    """Prio 20 (was 5): Handles shopping for food at retail_food if hungry, has home, and it's leisure time OR EMERGENCY."""
     # This is now a lower priority than general work/production, happens during leisure.
     if not citizen_record['is_hungry']: return None
-    if not is_leisure_time_for_class(citizen_social_class, now_venice_dt):
+    
+    # EMERGENCY: Allow shopping if severely hungry (>24 hours without food)
+    is_emergency = is_severely_hungry(citizen_record, now_utc_dt, hours_threshold=24.0)
+    
+    if not is_emergency and not is_leisure_time_for_class(citizen_social_class, now_venice_dt):
         return None
+    
+    if is_emergency:
+        log.warning(f"{LogColors.WARNING}[EMERGENCY] {citizen_name} hasn't eaten in >24 hours! Bypassing leisure time restrictions for food shopping.{LogColors.ENDC}")
     if not citizen_position: return None
 
     home_record = get_citizen_home(tables, citizen_username)

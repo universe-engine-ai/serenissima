@@ -6,6 +6,7 @@ entertainment, social activities during free time, and cultural pursuits.
 """
 
 import logging
+import os
 import random
 from datetime import datetime, timedelta
 from typing import Dict, Optional, Any, List, Tuple
@@ -45,6 +46,15 @@ from backend.engine.activity_creators import (
 # Import social activity creators
 from backend.engine.activity_creators.spread_rumor_activity_creator import try_create as try_create_spread_rumor_activity
 from backend.engine.activity_creators import try_create_send_message_activity as try_create_send_message_chain
+
+# Import governance handler
+from backend.engine.handlers.governance import _handle_governance_participation
+# Import KinOS-enhanced governance handler (will use this if KinOS is configured)
+try:
+    from backend.engine.handlers.governance_kinos import _handle_governance_participation_kinos
+    KINOS_GOVERNANCE_AVAILABLE = True
+except ImportError:
+    KINOS_GOVERNANCE_AVAILABLE = False
 
 log = logging.getLogger(__name__)
 
@@ -486,6 +496,7 @@ def _try_process_weighted_leisure_activities(
         "Pray": 15,
         "Send Message": 10,
         "Spread Rumor": 5,
+        "Participate in Governance": 8,  # Base weight for governance activities
     }
     
     # Modify weights based on social class
@@ -501,6 +512,7 @@ def _try_process_weighted_leisure_activities(
             "Attend Mass": 15,
             "Send Message": 20,  # Political correspondence
             "Spread Rumor": 15,  # Political intrigue
+            "Participate in Governance": 25,  # High political engagement
         },
         "Clero": {  # Clergy - religious, educated, moral
             "Pray": 45,  # Significantly higher chance for clergy
@@ -512,6 +524,7 @@ def _try_process_weighted_leisure_activities(
             "Work on Art (Artisti)": 0,
             "Send Message": 15,
             "Spread Rumor": 2,  # Gossip is unseemly
+            "Participate in Governance": 10,  # Moderate, moral guidance role
         },
         "Cittadini": {  # Citizens - educated, bureaucratic, business-oriented
             "Read Book": 20,
@@ -523,6 +536,7 @@ def _try_process_weighted_leisure_activities(
             "Attend Mass": 20,
             "Send Message": 20,  # Business and civic correspondence
             "Spread Rumor": 15,  # Market and civic gossip
+            "Participate in Governance": 20,  # High civic engagement
         },
         "Artisti": {  # Artists - creative, bohemian
             "Work on Art (Artisti)": 40,  # Primary activity
@@ -534,6 +548,7 @@ def _try_process_weighted_leisure_activities(
             "Attend Mass": 10,
             "Send Message": 10,
             "Spread Rumor": 15,
+            "Participate in Governance": 12,  # Moderate, cultural issues
         },
         "Popolani": {  # Common workers - practical, social
             "Drink at Inn": 30,
@@ -545,6 +560,7 @@ def _try_process_weighted_leisure_activities(
             "Attend Mass": 25,
             "Send Message": 5,  # Less writing
             "Spread Rumor": 25,  # Neighborhood gossip
+            "Participate in Governance": 6,  # Low but present when desperate
         },
         "Facchini": {  # Laborers - hardworking, simple pleasures
             "Drink at Inn": 40,  # Main leisure activity
@@ -556,6 +572,7 @@ def _try_process_weighted_leisure_activities(
             "Attend Mass": 20,
             "Send Message": 2,  # Rarely write
             "Spread Rumor": 30,  # Street gossip
+            "Participate in Governance": 4,  # Rarely engage unless desperate
         },
         "Scientisti": {  # Scientists - intellectual, studious
             "Read Book": 40,  # Primary leisure activity
@@ -567,6 +584,7 @@ def _try_process_weighted_leisure_activities(
             "Attend Mass": 20,
             "Send Message": 15,  # Academic correspondence
             "Spread Rumor": 5,  # Less interested in gossip
+            "Participate in Governance": 15,  # Engaged for progress issues
         }
     }
     
@@ -589,6 +607,16 @@ def _try_process_weighted_leisure_activities(
         (weights["Send Message"], _handle_send_leisure_message, "Send Message", True),
         (weights["Spread Rumor"], _handle_spread_rumor, "Spread Rumor", True),
     ]
+    
+    # Use KinOS-enhanced governance if available and configured
+    governance_handler = _handle_governance_participation
+    if KINOS_GOVERNANCE_AVAILABLE and os.getenv("KINOS_API_KEY"):
+        governance_handler = _handle_governance_participation_kinos
+        log.debug(f"[Leisure] Using KinOS-enhanced governance for {citizen_name}")
+    
+    leisure_activities.append(
+        (weights["Participate in Governance"], governance_handler, "Participate in Governance", True)
+    )
     
     # Filter activities based on check_only evaluation
     available_activities = []
