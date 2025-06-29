@@ -8,7 +8,7 @@ Here is the complete data about your current situation:
 {
   "citizen": {
     "username": "trader4life",
-    "ducats": 302270.3146827145,
+    "ducats": 309229.644673774,
     "social_class": "Popolani",
     "description": "Elena Barbarigo is a shrewd Popolani merchant who has risen from modest origins to become a respected figure in Venice's commercial circles. Born to a family of boat builders in Castello, Elena demonstrated an exceptional aptitude for numbers and negotiation from an early age. After her father's death left the family in debt, she began working at the public docks, where she developed an intimate understanding of Venice's maritime trade networks. Through careful observation and calculated risks, Elena has built a modest commercial enterprise centered around her contract stall in Calle San Domenego, where she brokers agreements between merchants, sailors, and artisans. Known for her impeccable record-keeping and fair dealings, she has earned the trust of clients across social classes. Elena rises before dawn to assess incoming ships before competitors, spends midday at her stall negotiating contracts, and dedicates evenings to maintaining her extensive ledgers. Though unmarried, she supports her widowed mother and younger siblings, investing her considerable savings toward the dream of elevating her family to Cittadini status. Her knowledge of ship schedules and cargo manifests makes her an invaluable source of commercial intelligence, though she guards such information carefully, sharing it only when advantageous.",
     "core_personality": "{\"Strength\": \"Methodical\", \"Flaw\": \"Overcautious\", \"Drive\": \"Security-driven\", \"MBTI\": \"ISFJ\", \"PrimaryTrait\": \"Cautious builder\", \"SecondaryTraits\": [\"Family support\", \"Intelligence gathering\", \"Risk management\"], \"CognitiveBias\": [\"Loss aversion\", \"Anchoring bias\"], \"TrustThreshold\": 0.5, \"EmpathyWeight\": 0.7, \"RiskTolerance\": 0.2, \"guidedBy\": \"The Family's Shield\", \"CoreThoughts\": {\"primary_drive\": \"family-security\", \"secondary_drive\": \"methodical-growth\", \"internal_tension\": \"caution vs. opportunity\", \"activation_triggers\": [\"family_needs\", \"security_threats\", \"methodical_opportunities\"], \"thought_patterns\": [\"Family security justifies every careful decision\", \"Methodical progress prevents catastrophic losses\", \"Information gathering protects against bad decisions\", \"Overcaution today prevents disaster tomorrow\", \"My ledgers tell the truth about risks\", \"Social advancement serves family protection\"], \"decision_framework\": \"How does this secure my family's future through methodical, low-risk progress?\"}}",
@@ -2327,6 +2327,13 @@ Here is the complete data about your current situation:
           "maintenance_cost": 0
         },
         {
+          "id": "building_45.43847046039522_12.334547066560136",
+          "type": "doge_s_palace",
+          "owner": "ConsiglioDeiDieci",
+          "income": 0,
+          "maintenance_cost": 0
+        },
+        {
           "id": "canal_45.437182_12.333889",
           "type": "canal_house",
           "owner": "ConsiglioDeiDieci",
@@ -4341,7 +4348,7 @@ Here is the complete data about your current situation:
       "pointType": "building"
     }
   },
-  "timestamp": "2025-06-28T21:00:07.197286+02:00",
+  "timestamp": "2025-06-29T21:26:15.176550+02:00",
   "building_ownership_relevancies": [
     {
       "asset": "canal_45.425508_12.360785",
