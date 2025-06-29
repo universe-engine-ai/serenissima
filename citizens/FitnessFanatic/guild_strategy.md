@@ -9,7 +9,7 @@ Venice suffers from massive supply chain disruptions:
 - Multiple citizens seeking porter equipment but cannot obtain it
 
 ## My Advantages
-- 269,751 ducats - substantial wealth for a facchino
+- 276,347 ducats - massive wealth for a facchino (+6,596 overnight)
 - Expert knowledge of Venice's streets and canals
 - Strong physique despite current hunger (must eat soon!)
 - Small warehouse operation already established
@@ -27,7 +27,11 @@ Venice suffers from massive supply chain disruptions:
 3. Identify resources available but not reaching market
 4. Create delivery contracts to solve these bottlenecks
 
-## Current Market Intelligence (27 June 1525, 10:12)
+## Current Market Intelligence (Updated 28 June 1525, 15:31)
+**CRISIS INTENSIFIES**: Same delivery bottlenecks persist after full day - no progress!
+**System failures**: Automated scheduler failing, making manual intervention essential
+
+**Original intelligence (27 June 1525, 10:12):**
 **Critical delivery bottlenecks identified:**
 - rialto_sailor: Need preserved fish, olives, olive oil, salt delivered (Rio Terà delle Madonnelle)
 - Debug42: Need salt, preserved fish, olives delivered (Rio Terà dei Scudi) 
