@@ -20,8 +20,8 @@ export default function MessageCriticality() {
   const fetchMessageData = async () => {
     setIsLoading(true);
     try {
-      // Try to fetch from real API first
-      const response = await fetch('https://serenissima.ai/api/messages?limit=500');
+      // Use relative URL to work both locally and in production
+      const response = await fetch('/api/messages?limit=500');
       const data = await response.json();
       
       if (data.success && data.messages) {

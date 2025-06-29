@@ -3,6 +3,8 @@
 import React, { useState } from 'react';
 import { FaTimes } from 'react-icons/fa';
 import MessageCriticality from './Criticality/MessageCriticality';
+import { TransactionCriticality } from './Criticality/TransactionCriticality';
+import { ArchitectureVisualization } from './Criticality/ArchitectureVisualization';
 
 interface ResearchPanelProps {
   onClose: () => void;
@@ -10,11 +12,11 @@ interface ResearchPanelProps {
 
 export default function ResearchPanel({ onClose }: ResearchPanelProps) {
   const [activeTab, setActiveTab] = useState<'inquiry' | 'criticality'>('inquiry');
-  const [criticalitySubTab, setCriticalitySubTab] = useState<'messages' | 'transactions' | 'relationships'>('messages');
+  const [criticalitySubTab, setCriticalitySubTab] = useState<'messages' | 'transactions' | 'relationships' | 'architecture'>('messages');
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
-      <div className="bg-amber-50 rounded-lg shadow-xl max-w-6xl w-full max-h-[90vh] overflow-hidden flex flex-col">
+      <div className="bg-amber-50 rounded-lg shadow-xl max-w-6xl w-full h-[90vh] overflow-hidden flex flex-col">
         <div className="flex justify-between items-center border-b border-amber-200 p-4">
           <h2 className="text-2xl font-serif text-amber-900">Research at La Serenissima</h2>
           <button 
@@ -83,12 +85,22 @@ export default function ResearchPanel({ onClose }: ResearchPanelProps) {
             >
               Relationships
             </button>
+            <button
+              onClick={() => setCriticalitySubTab('architecture')}
+              className={`px-4 py-2 text-sm font-medium transition-colors ml-4 ${
+                criticalitySubTab === 'architecture' 
+                  ? 'text-amber-900 border-b-2 border-amber-500' 
+                  : 'text-amber-600 hover:text-amber-800'
+              }`}
+            >
+              Architecture
+            </button>
           </div>
         )}
         
-        <div className="overflow-y-auto p-6 flex-grow">
+        <div className="overflow-y-auto flex-grow flex flex-col">
           {activeTab === 'inquiry' ? (
-            <div className="prose prose-amber max-w-none">
+            <div className="prose prose-amber max-w-none p-6">
             <h3 className="text-xl text-amber-800 mb-4">Open Research Initiative</h3>
             
             <p className="mb-4">
@@ -139,16 +151,17 @@ export default function ResearchPanel({ onClose }: ResearchPanelProps) {
             </div>
           </div>
           ) : (
-            <div className="w-full h-full">
-              {criticalitySubTab === 'messages' && <MessageCriticality />}
-              {criticalitySubTab === 'transactions' && (
-                <div className="text-center text-amber-700 mt-8">
-                  <p className="text-lg">Transaction criticality analysis coming soon...</p>
+            <div className="w-full flex-grow min-h-0">
+              {criticalitySubTab === 'messages' && <div className="p-6"><MessageCriticality /></div>}
+              {criticalitySubTab === 'transactions' && <div className="p-6"><TransactionCriticality /></div>}
+              {criticalitySubTab === 'relationships' && (
+                <div className="text-center text-amber-700 mt-8 p-6">
+                  <p className="text-lg">Relationship criticality analysis coming soon...</p>
                 </div>
               )}
-              {criticalitySubTab === 'relationships' && (
-                <div className="text-center text-amber-700 mt-8">
-                  <p className="text-lg">Relationship criticality analysis coming soon...</p>
+              {criticalitySubTab === 'architecture' && (
+                <div className="w-full h-full">
+                  <ArchitectureVisualization />
                 </div>
               )}
             </div>

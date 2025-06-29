@@ -49,6 +49,31 @@ button {
   transition: all 0.2s ease-in-out;
 }
 
+/* Shadow glow effects for Architecture visualization */
+.shadow-glow-yellow {
+  box-shadow: 0 0 5px #FFD700;
+}
+
+.shadow-glow-pink {
+  box-shadow: 0 0 5px #FF69B4;
+}
+
+.shadow-glow-white {
+  box-shadow: 0 0 5px #FFFFFF;
+}
+
+.shadow-glow-purple {
+  box-shadow: 0 0 5px #9370DB;
+}
+
+.shadow-glow-gray {
+  box-shadow: 0 0 5px #808080;
+}
+
+.shadow-glow-red {
+  box-shadow: 0 0 5px #FF6B6B;
+}
+
 /* Add a subtle hover effect to all interactive elements */
 button:hover, a:hover {
   transform: translateY(-1px);

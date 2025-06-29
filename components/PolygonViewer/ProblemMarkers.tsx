@@ -67,19 +67,31 @@ export default function ProblemMarkers({
       const response = await fetch(`/api/problems?citizen=${currentUsername}`);
       
       if (response.ok) {
-        const data = await response.json();
-        if (data.success && Array.isArray(data.problems)) {
-          // Parse position data if it's a string
-          const parsedProblems = data.problems.map(problem => ({
-            ...problem,
-            position: typeof problem.position === 'string' 
-              ? JSON.parse(problem.position) 
-              : problem.position
-          }));
-          
-          setProblems(parsedProblems);
-          console.log(`Loaded ${parsedProblems.length} problems for ${currentUsername}`);
+        // First check if the response is JSON
+        const contentType = response.headers.get('content-type');
+        if (contentType && contentType.includes('application/json')) {
+          const data = await response.json();
+          if (data.success && Array.isArray(data.problems)) {
+            // Parse position data if it's a string
+            const parsedProblems = data.problems.map(problem => ({
+              ...problem,
+              position: typeof problem.position === 'string' 
+                ? JSON.parse(problem.position) 
+                : problem.position
+            }));
+            
+            setProblems(parsedProblems);
+            console.log(`Loaded ${parsedProblems.length} problems for ${currentUsername}`);
+          }
+        } else {
+          // If not JSON, log the text response
+          const text = await response.text();
+          console.error('Non-JSON response from problems API:', text);
         }
+      } else {
+        // Log error response
+        const text = await response.text();
+        console.error(`Problems API error (${response.status}):`, text);
       }
     } catch (error) {
       console.error('Error fetching problems:', error);
