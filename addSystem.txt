@@ -8,7 +8,7 @@ Here is the complete data about your current situation:
 {
   "citizen": {
     "username": "CannaregioPaolo",
-    "ducats": 253651.84696250112,
+    "ducats": 267298.96636350104,
     "social_class": "Facchini",
     "description": "Tommaso Rossi, a stalwart facchino of Venice's bustling public docks, has built a reputation for unmatched reliability and surprising financial acumen. Born to a family of mainland immigrants who settled in Cannaregio three generations ago, Tommaso has transformed the humble profession of cargo handling into a pathway to remarkable prosperity. His days begin before dawn, organizing teams of porters to unload merchant vessels with maximum efficiency. Though lacking formal education, Tommaso possesses an exceptional memory for cargo manifests and merchant schedules, allowing him to anticipate labor needs and position his men advantageously. His unexpected wealth comes from decades of careful investment of tips from grateful merchants, purchasing small shares in voyages and gradually expanding his financial interests while maintaining his working-class identity. Despite his substantial ducats, Tommaso lives modestly in a comfortable but unassuming home in Cannaregio, mistrusting the attention wealth brings. He finds joy in simple pleasures - hearty meals at local taverns, Sunday Mass at his parish church, and occasional fishing trips in the lagoon.",
     "core_personality": "{\"Strength\": \"Pragmatic\", \"Flaw\": \"Suspicious\", \"Drive\": \"Reputation-focused\", \"MBTI\": \"ISTJ\", \"PrimaryTrait\": \"Careful investor\", \"SecondaryTraits\": [\"Memory mastery\", \"Investment strategy\", \"Trust management\"], \"CognitiveBias\": [\"Paranoid ideation\", \"Loss aversion\"], \"TrustThreshold\": 0.3, \"EmpathyWeight\": 0.5, \"RiskTolerance\": 0.3, \"guidedBy\": \"The Memory's Guard\", \"CoreThoughts\": {\"primary_drive\": \"reputation-protection\", \"secondary_drive\": \"wealth-security\", \"internal_tension\": \"suspicion vs. opportunity\", \"activation_triggers\": [\"reputation_threats\", \"investment_opportunities\", \"trust_decisions\"], \"thought_patterns\": [\"Reputation is more valuable than gold\", \"Suspicion prevents costly mistakes\", \"My memory is my greatest business asset\", \"Wealth attracts unwanted attention\", \"Pragmatic decisions outlast emotional ones\", \"Trust carefully, verify constantly\"], \"decision_framework\": \"How does this protect my reputation while securing wealth through pragmatic decisions?\"}}",
@@ -1379,6 +1379,13 @@ Here is the complete data about your current situation:
       "district": "San Polo",
       "existing_buildings": [
         {
+          "id": "building_45.43839918445191_12.326301049069482",
+          "type": "house_of_natural_sciences",
+          "owner": "ConsiglioDeiDieci",
+          "income": 0,
+          "maintenance_cost": 0
+        },
+        {
           "id": "bridge_45.437103_12.323849",
           "type": "bridge",
           "owner": "ConsiglioDeiDieci",
@@ -2316,6 +2323,13 @@ Here is the complete data about your current situation:
           "maintenance_cost": 0
         },
         {
+          "id": "building_45.43847046039522_12.334547066560136",
+          "type": "doge_s_palace",
+          "owner": "ConsiglioDeiDieci",
+          "income": 0,
+          "maintenance_cost": 0
+        },
+        {
           "id": "canal_45.437182_12.333889",
           "type": "canal_house",
           "owner": "ConsiglioDeiDieci",
@@ -3175,8 +3189,104 @@ Here is the complete data about your current situation:
   "buildings": [],
   "relevancies": [],
   "target_relevancies": [],
-  "latest_citizen_problems": [],
+  "latest_citizen_problems": [
+    {
+      "id": "recsAGSxj4FEU5ddP",
+      "fields": {
+        "ProblemId": "hungry_CannaregioPaolo",
+        "Citizen": "CannaregioPaolo",
+        "Asset": "CannaregioPaolo",
+        "AssetType": "citizen",
+        "Severity": "medium",
+        "Status": "active",
+        "CreatedAt": "2025-06-27T02:07:35.166Z",
+        "UpdatedAt": "2025-06-27T18:42:10.000Z",
+        "Location": "Tommaso's last known area",
+        "Title": "Hungry Citizen",
+        "Description": "**Tommaso Rossi** has not eaten in over 24 hours and is now hungry. This can affect their well-being and ability to perform tasks effectively.\n\n### Impact\n- Reduced energy and focus.\n- If employed, work productivity may be reduced by up to 50%.\n- Prolonged hunger can lead to more severe health issues (if implemented).",
+        "Solutions": "### Recommended Solutions\n- Ensure the citizen consumes food. This might involve visiting a tavern, purchasing food from a market, or using owned food resources.\n- Check if the citizen has sufficient Ducats to afford food.\n- Review game mechanics related to food consumption and ensure the 'AteAt' (or equivalent) field is updated correctly after eating.",
+        "Notes": "[Failures: 1]\nCitizen CannaregioPaolo last ate at 2025-06-25T18:31:35.183Z. Current time: 2025-06-27T02:07:35.147Z",
+        "Position": "{\"lat\":45.43111057200126,\"lng\":12.362367803265673}",
+        "Type": "hungry_citizen"
+      }
+    }
+  ],
   "recent_notifications_for_ai": [
+    {
+      "notificationId": "rec0FmhBMZWIyRpkh",
+      "type": "rent_payment",
+      "citizen": "CannaregioPaolo",
+      "content": "\u2705 Rent Paid: You paid **1,125 \u269c\ufe0f Ducats** to **Italia** for **Fisherman's Cottage at Fondamenta del Leone Bianco**.",
+      "details": {
+        "building_id": "rec45AUtSvikyo6En",
+        "building_name": "Fisherman's Cottage at Fondamenta del Leone Bianco",
+        "rent_price": 1125,
+        "building_owner": "Italia",
+        "event_type": "rent_payment_made"
+      },
+      "createdAt": "2025-06-29T18:01:06.525Z",
+      "readAt": null
+    },
+    {
+      "notificationId": "recODqfFLK6EnfCdA",
+      "type": "rent_payment",
+      "citizen": "CannaregioPaolo",
+      "content": "\u2705 Rent Paid: You paid **1,125 \u269c\ufe0f Ducats** to **Italia** for **Fisherman's Cottage at Fondamenta del Leone Bianco**.",
+      "details": {
+        "building_id": "rec45AUtSvikyo6En",
+        "building_name": "Fisherman's Cottage at Fondamenta del Leone Bianco",
+        "rent_price": 1125,
+        "building_owner": "Italia",
+        "event_type": "rent_payment_made"
+      },
+      "createdAt": "2025-06-28T18:01:05.161Z",
+      "readAt": null
+    },
+    {
+      "notificationId": "recnTs3nKxEXzWhVk",
+      "type": "rent_payment",
+      "citizen": "CannaregioPaolo",
+      "content": "\u2705 Rent Paid: You paid **1,125 \u269c\ufe0f Ducats** to **Italia** for **Fisherman's Cottage at Fondamenta del Leone Bianco**.",
+      "details": {
+        "building_id": "rec45AUtSvikyo6En",
+        "building_name": "Fisherman's Cottage at Fondamenta del Leone Bianco",
+        "rent_price": 1125,
+        "building_owner": "Italia",
+        "event_type": "rent_payment_made"
+      },
+      "createdAt": "2025-06-28T16:00:54.586Z",
+      "readAt": null
+    },
+    {
+      "notificationId": "recdGeGdmSB0F24ij",
+      "type": "rent_payment",
+      "citizen": "CannaregioPaolo",
+      "content": "\u2705 Rent Paid: You paid **1,125 \u269c\ufe0f Ducats** to **Italia** for **Fisherman's Cottage at Fondamenta del Leone Bianco**.",
+      "details": {
+        "building_id": "rec45AUtSvikyo6En",
+        "building_name": "Fisherman's Cottage at Fondamenta del Leone Bianco",
+        "rent_price": 1125,
+        "building_owner": "Italia",
+        "event_type": "rent_payment_made"
+      },
+      "createdAt": "2025-06-27T18:00:39.074Z",
+      "readAt": null
+    },
+    {
+      "notificationId": "recCZOHkeoVXpvF9a",
+      "type": "rent_payment",
+      "citizen": "CannaregioPaolo",
+      "content": "\u2705 Rent Paid: You paid **1,125 \u269c\ufe0f Ducats** to **Italia** for **Fisherman's Cottage at Fondamenta del Leone Bianco**.",
+      "details": {
+        "building_id": "rec45AUtSvikyo6En",
+        "building_name": "Fisherman's Cottage at Fondamenta del Leone Bianco",
+        "rent_price": 1125,
+        "building_owner": "Italia",
+        "event_type": "rent_payment_made"
+      },
+      "createdAt": "2025-06-27T16:00:34.934Z",
+      "readAt": null
+    },
     {
       "notificationId": "recm7xWEVPLJ9XDdY",
       "type": "rent_payment",
@@ -3386,81 +3496,6 @@ Here is the complete data about your current situation:
       },
       "createdAt": "2025-06-15T18:00:58.538Z",
       "readAt": null
-    },
-    {
-      "notificationId": "recameISgE1kwqpJY",
-      "type": "rent_payment",
-      "citizen": "CannaregioPaolo",
-      "content": "\u2705 Rent Paid: You paid **1,125 \u269c\ufe0f Ducats** to **Italia** for **Fisherman's Cottage at Fondamenta del Leone Bianco**.",
-      "details": {
-        "building_id": "rec45AUtSvikyo6En",
-        "building_name": "Fisherman's Cottage at Fondamenta del Leone Bianco",
-        "rent_price": 1125,
-        "building_owner": "Italia",
-        "event_type": "rent_payment_made"
-      },
-      "createdAt": "2025-06-15T16:00:45.622Z",
-      "readAt": null
-    },
-    {
-      "notificationId": "rec4MMW45TQbcXAhz",
-      "type": "rent_payment",
-      "citizen": "CannaregioPaolo",
-      "content": "\u2705 Rent Paid: You paid **1,125 \u269c\ufe0f Ducats** to **Italia** for **Fisherman's Cottage at Fondamenta del Leone Bianco**.",
-      "details": {
-        "building_id": "rec45AUtSvikyo6En",
-        "building_name": "Fisherman's Cottage at Fondamenta del Leone Bianco",
-        "rent_price": 1125,
-        "building_owner": "Italia",
-        "event_type": "rent_payment_made"
-      },
-      "createdAt": "2025-06-14T18:00:42.841Z",
-      "readAt": null
-    },
-    {
-      "notificationId": "recCt1vZgo1s2CPIH",
-      "type": "rent_payment",
-      "citizen": "CannaregioPaolo",
-      "content": "\u2705 Rent Paid: You paid **1,125 \u269c\ufe0f Ducats** to **Italia** for **Fisherman's Cottage at Fondamenta del Leone Bianco**.",
-      "details": {
-        "building_id": "rec45AUtSvikyo6En",
-        "building_name": "Fisherman's Cottage at Fondamenta del Leone Bianco",
-        "rent_price": 1125,
-        "building_owner": "Italia",
-        "event_type": "rent_payment_made"
-      },
-      "createdAt": "2025-06-14T16:00:33.361Z",
-      "readAt": null
-    },
-    {
-      "notificationId": "rec4GyID4TqNMoKMu",
-      "type": "rent_payment",
-      "citizen": "CannaregioPaolo",
-      "content": "\u2705 Rent Paid: You paid **1,125 \u269c\ufe0f Ducats** to **Italia** for **Fisherman's Cottage at Fondamenta del Leone Bianco**.",
-      "details": {
-        "building_id": "rec45AUtSvikyo6En",
-        "building_name": "Fisherman's Cottage at Fondamenta del Leone Bianco",
-        "rent_price": 1125,
-        "building_owner": "Italia",
-        "event_type": "rent_payment_made"
-      },
-      "createdAt": "2025-06-13T16:00:31.329Z",
-      "readAt": null
-    },
-    {
-      "notificationId": "recBuFWOgPTfJAnDD",
-      "type": "rent_payment",
-      "citizen": "CannaregioPaolo",
-      "content": "\u2705 Rent Paid: You paid **1,125 \u269c\ufe0f Ducats** to **Italia** for **Fisherman's Cottage at Fondamenta del Leone Bianco**.",
-      "details": {
-        "building_id": "rec45AUtSvikyo6En",
-        "building_name": "Fisherman's Cottage at Fondamenta del Leone Bianco",
-        "rent_price": 1125,
-        "building_owner": "Italia",
-        "event_type": "rent_payment_made"
-      },
-      "createdAt": "2025-06-12T18:00:38.904Z",
-      "readAt": null
     }
   ],
   "building_types": {
@@ -3537,7 +3572,7 @@ Here is the complete data about your current situation:
       "constructionMinutes": 7200,
       "buildTier": 1,
       "tier": null,
-      "category": "Public & Government",
+      "category": "religious",
       "pointType": "building"
     },
     "fisherman_s_cottage": {
@@ -3701,7 +3736,7 @@ Here is the complete data about your current situation:
       "pointType": "building"
     }
   },
-  "timestamp": "2025-06-26T21:55:54.059562+02:00",
+  "timestamp": "2025-06-29T21:12:39.523542+02:00",
   "building_ownership_relevancies": []
 }
 
