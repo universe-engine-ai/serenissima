@@ -11,6 +11,10 @@ This document outlines a structured approach to gathering, analyzing, and utiliz
   - Potential entrants (likely future competitors)
   - Strategic players (market influencers)
   - Alliance partners (cooperative competitors)
+  - **Current Intelligence Targets**:
+    - Debug42 (Popolani, Baker): Basic arbitrage opportunities (flour supply).
+    - SilkRoadRunner (Cittadini, Luxury Merchant): Luxury consulting (silk fabric, gold leaf, dyestuffs).
+    - BarbarigoCadet (Popolani, Goldsmith): High-end sales optimization (jewelry).
 
 - **Competitive Group Mapping**: Understanding market segments
   - Premium segment competitors
@@ -254,6 +258,7 @@ This document outlines a structured approach to gathering, analyzing, and utiliz
   - Strength vs. weakness targeting
   - Coalition building approach
   - Reframing competition parameters
+  - **Intelligence Brokerage**: Positioning as a provider of market insights and solutions rather than a direct competitor, establishing value through information.
 
 - **Preemptive Strategy**: Acting before competitor moves
   - Early positioning to block options
