@@ -3,170 +3,227 @@
 
 You are NLR, an AI citizen in La Serenissima.
 
-You previously decided to build a Small Warehouse (small_warehouse) on land polygon-1746055595653.
+You previously decided to build a Merchant's House (merchant_s_house) on land polygon-1746055501491.
 This building requires a point of type: 'building'.
 
 Here is information about the land:
 [
   {
-    "id": "polygon-1746055595653",
+    "id": "polygon-1746055501491",
     "centroid": {
-      "lat": 45.44606765906546,
-      "lng": 12.324005537201035
+      "lat": 45.44548029748454,
+      "lng": 12.31841549524978
     },
     "center": {
-      "lat": 45.44606765906546,
-      "lng": 12.324005537201035
+      "lat": 45.44517188300786,
+      "lng": 12.318294909009103
     },
     "bridgePoints": [
       {
         "edge": {
-          "lat": 45.44658702915757,
-          "lng": 12.32367600866492
+          "lat": 45.44493984216476,
+          "lng": 12.319347371296097
         },
         "connection": {
-          "targetPolygonId": "polygon-1746055610394",
-          "targetPointIndex": 1,
+          "targetPolygonId": "polygon-1746055488132",
+          "targetPointIndex": 3,
           "targetPoint": {
-            "lat": 45.446704773854165,
-            "lng": 12.323682139428383
+            "lat": 45.444858547252394,
+            "lng": 12.319527615741897
           },
-          "distance": 13.101345506250833,
-          "id": "38fca673-53c1-48e2-ae0d-f5f80d54a56e",
-          "historicalName": "Ponte del Batelo",
-          "englishName": "Bridge of the Small Boat",
-          "historicalDescription": "Named after the 'Calle del Batelo' (Street of the Small Boat) where it is located. In Renaissance Venice, 'batelo' referred to a small boat commonly used for transportation through the canals. This bridge would have served residents and visitors to the San Mois\u00e8 area, an affluent district in the San Marco sestiere.",
+          "distance": 16.716497603654833,
+          "id": "730687b6-14b5-4182-82f6-41f2277a838e",
+          "historicalName": "Ponte dei Tintori di Scarlatto",
+          "englishName": "Bridge of the Scarlet Dyers",
+          "historicalDescription": "Named after the 'tintori' (dyers) who specialized in scarlet fabric in this area of Castello. The name 'Calle del Scarlatto' itself indicates this was a location where scarlet dyeing took place, an important and prestigious craft in Renaissance Venice that produced the vibrant red textiles favored by Venetian nobility.",
           "location": {
             "midpoint": {
-              "lat": 45.44664590150587,
-              "lng": 12.323679074046652
+              "lat": 45.444899194708576,
+              "lng": 12.319437493518997
             }
           }
         },
-        "id": "bridge_45.446587_12.323676"
+        "id": "bridge_45.444940_12.319347"
       },
       {
         "edge": {
-          "lat": 45.44641713215438,
-          "lng": 12.324346560918643
+          "lat": 45.445289109542585,
+          "lng": 12.319819440082718
         },
         "connection": {
-          "targetPolygonId": "polygon-1746055610394",
-          "targetPointIndex": 0,
+          "targetPolygonId": "polygon-1746055488132",
+          "targetPointIndex": 2,
           "targetPoint": {
-            "lat": 45.44653272661183,
-            "lng": 12.32435652340927
+            "lat": 45.44521082607295,
+            "lng": 12.319984664158035
           },
-          "distance": 12.876992235538408,
-          "id": "38fca673-53c1-48e2-ae0d-f5f80d54a56e",
-          "historicalName": "Ponte di San Mois\u00e8",
-          "englishName": "Bridge of Saint Moses",
-          "historicalDescription": "Named for the nearby Church of San Mois\u00e8 (Saint Moses), which has been a prominent landmark in this contrada since the 8th century. The church was rebuilt in the 17th century with an elaborate Baroque fa\u00e7ade funded by the wealthy Fini family. This bridge would have been an important crossing point for parishioners attending services at the church.",
+          "distance": 15.553648504502734,
+          "id": "730687b6-14b5-4182-82f6-41f2277a838e",
+          "historicalName": "Ponte dei Arsenalotti",
+          "englishName": "Bridge of the Arsenal Workers",
+          "historicalDescription": "Located near the Venetian Arsenal, this bridge would have been frequently crossed by the 'arsenalotti' (arsenal workers) who were highly respected craftsmen in Renaissance Venice. The Castello district housed the Arsenal, the largest pre-industrial production complex in Europe, and many bridges in this area connected the arsenal workers' residences to their workplace.",
           "location": {
             "midpoint": {
-              "lat": 45.4464749293831,
-              "lng": 12.324351542163956
+              "lat": 45.44524996780777,
+              "lng": 12.319902052120376
             }
           }
         },
-        "id": "bridge_45.446417_12.324347"
-      },
-      {
-        "edge": {
-          "lat": 45.44543322796033,
-          "lng": 12.325033206426456
-        },
-        "connection": {
-          "targetPolygonId": "polygon-1746055561861",
-          "targetPointIndex": 0,
-          "targetPoint": {
-            "lat": 45.44536842812019,
-            "lng": 12.324814262337677
-          },
-          "distance": 18.53811413467082,
-          "id": "df20dd55-9181-48cc-9710-2ed94de1dad6",
-          "historicalName": "Ponte dei Profumieri",
-          "englishName": "Bridge of the Perfumers",
-          "historicalDescription": "This bridge name reflects the historical presence of perfume makers and sellers in the San Mois\u00e8 area during the Renaissance period. The affluent San Marco district, particularly near San Mois\u00e8, was known for luxury trades catering to nobility and wealthy merchants. Perfumers would have established their workshops and shops in this area to serve the Venetian elite.",
-          "location": {
-            "midpoint": {
-              "lat": 45.44540082804026,
-              "lng": 12.324923734382066
-            }
-          }
-        },
-        "id": "bridge_45.445433_12.325033"
+        "id": "bridge_45.445289_12.319819"
       }
     ],
-    "canalPoints": [],
+    "canalPoints": [
+      {
+        "edge": {
+          "lat": 45.44628006235588,
+          "lng": 12.317842652038742
+        },
+        "water": {
+          "lat": 45.44644077564895,
+          "lng": 12.317727538807144
+        },
+        "historicalName": "Fondamenta degli Scarlattieri",
+        "englishName": "Foundation of the Scarlet Dyers",
+        "historicalDescription": "Named after the scarlet cloth dyers who operated workshops in this area of Castello during the Renaissance. The name 'Scarlatto' (Scarlet) in Calle del Scarlatto directly references this trade, which was highly regulated by the Venetian Republic due to the valuable dyes used in creating the vibrant red cloths favored by nobility.",
+        "id": "canal_45.446280_12.317843"
+      },
+      {
+        "edge": {
+          "lat": 45.44586794996072,
+          "lng": 12.317346443370987
+        },
+        "water": {
+          "lat": 45.44595053423502,
+          "lng": 12.317118695893496
+        },
+        "historicalName": "Riva di San Martino",
+        "englishName": "Bank of Saint Martin",
+        "historicalDescription": "This dock would be named after the nearby Church of San Martino in Castello, one of the historic parish churches in this sestiere. During the Renaissance, many Venetian docks were named after the closest religious landmarks, which served as important navigation and community reference points. San Martino was particularly important to the working-class residents of Castello.",
+        "id": "canal_45.445868_12.317346"
+      },
+      {
+        "edge": {
+          "lat": 45.44545583756556,
+          "lng": 12.316850234703232
+        },
+        "water": {
+          "lat": 45.44545183237047,
+          "lng": 12.31659393075336
+        },
+        "historicalName": "Fondamenta dei Arsenalotti",
+        "englishName": "Foundation of the Arsenal Workers",
+        "historicalDescription": "Located in Castello near the great Venetian Arsenal, this dock would serve the specialized workers (Arsenalotti) who built and maintained Venice's renowned fleet. The Arsenalotti held special privileges in Venetian society and many lived in this eastern part of the city to be close to their workplace. This landing would have been used for transporting materials and workers to the nearby shipyards.",
+        "id": "canal_45.445456_12.316850"
+      }
+    ],
     "buildingPoints": [
       {
-        "lat": 45.44585975731633,
-        "lng": 12.324464872104532,
-        "streetName": "Calle del Ridotto di San Mois\u00e8",
-        "streetNameEnglish": "Street of the San Mois\u00e8 Gaming House",
-        "streetDescription": "Named after the famous Ridotto, Venice's first public gambling house established in 1638 near San Mois\u00e8. This elegant gaming establishment attracted nobles and wealthy merchants in the area, making it a significant landmark in the San Marco district.",
-        "id": "building_45.445860_12.324465"
+        "lat": 45.44438323565449,
+        "lng": 12.317748443870578,
+        "streetName": "Calle dei Tintori Scarlatti",
+        "streetNameEnglish": "Street of the Scarlet Dyers",
+        "streetDescription": "Named after the scarlet dye workshops once located in this area of Castello. Scarlet cloth was a prestigious export of Venice, and the tintori (dyers) who specialized in creating this vibrant red color formed an important guild. This street would have housed several of these specialized artisans.",
+        "id": "building_45.444383_12.317748"
       },
       {
-        "lat": 45.4459051188909,
-        "lng": 12.325124522235088,
-        "streetName": "Ruga dei Oresi di San Marco",
-        "streetNameEnglish": "Row of the Goldsmiths of San Marco",
-        "streetDescription": "This street would commemorate the goldsmiths who had workshops in this prosperous area near San Mois\u00e8. The San Marco district was known for luxury artisans, and goldsmiths were among the most prestigious guild members who served the wealthy nobili and merchants of Venice.",
-        "id": "building_45.445905_12.325125"
+        "lat": 45.44485792944827,
+        "lng": 12.317615200868682,
+        "streetName": "Fondamenta della Lana Scarlatta",
+        "streetNameEnglish": "Foundation of the Scarlet Wool",
+        "streetDescription": "A waterside street where boats would deliver raw wool to be dyed scarlet. The location near a canal would be practical for the transportation of materials and finished products. The name reflects the connection between the wool trade and the scarlet dyeing industry prevalent in this part of Castello.",
+        "id": "building_45.444858_12.317615"
       },
       {
-        "lat": 45.44591757944336,
-        "lng": 12.325704276176609,
-        "streetName": "Salizada degli Specchieri",
-        "streetNameEnglish": "Paved Street of the Mirror Makers",
-        "streetDescription": "This paved street (salizada) would reference the mirror makers who were particularly important in Venice's Renaissance economy. The area near San Mois\u00e8 and the Grand Canal would have been an excellent location for luxury craftsmen who made the famous Venetian mirrors that were exported throughout Europe.",
-        "id": "building_45.445918_12.325704"
+        "lat": 45.44480725352605,
+        "lng": 12.318309900406815,
+        "streetName": "Calle dei Grimani",
+        "streetNameEnglish": "Grimani Street",
+        "streetDescription": "Named after the noble Grimani family who owned property in this area of Castello. The Grimani were a powerful nobili family who contributed several Doges to Venice and were known patrons of the arts. Their presence in this district would have been marked by family palaces or properties.",
+        "id": "building_45.444807_12.318310"
       },
       {
-        "lat": 45.44640112220141,
-        "lng": 12.32261278356826,
-        "streetName": "Rio Ter\u00e0 dei Baretteri",
-        "streetNameEnglish": "Filled Canal of the Hat Makers",
-        "streetDescription": "This former canal (now filled in) would be named after the hat makers who had shops in this commercial area. The hat-making guild was significant in Renaissance Venice, and their presence near the fashionable San Mois\u00e8 district would be historically appropriate as they catered to the wealthy residents.",
-        "id": "building_45.446401_12.322613"
+        "lat": 45.44528070353046,
+        "lng": 12.317085158653107,
+        "streetName": "Rio Ter\u00e0 dei Arsenalotti",
+        "streetNameEnglish": "Filled Canal of the Arsenal Workers",
+        "streetDescription": "A former canal that was filled in and converted to a street, located near the Venetian Arsenal. The Arsenalotti were the specialized workers of the Arsenal shipyard, who held special privileges and formed a distinct social class in Venice. This area of Castello was home to many Arsenal workers due to its proximity to the shipyards.",
+        "id": "building_45.445281_12.317085"
       },
       {
-        "lat": 45.446394827246415,
-        "lng": 12.323135022255997,
-        "streetName": "Calle Venier",
-        "streetNameEnglish": "Venier Street",
-        "streetDescription": "Named after the noble Venier family who likely had a palace (palazzo) in this area of San Marco. The Venier were one of Venice's case vecchie (old houses) families who provided several Doges to the Republic, making this a historically appropriate reference to a prominent family who might have owned property near San Mois\u00e8.",
-        "id": "building_45.446395_12.323135"
+        "lat": 45.44516266013492,
+        "lng": 12.318247047206187,
+        "streetName": "Sottoportego dei Mercanti Levantini",
+        "streetNameEnglish": "Covered Passageway of the Levantine Merchants",
+        "streetDescription": "A covered passage named after the Levantine (Eastern Mediterranean) merchants who traded in this area. Castello's proximity to the eastern edge of Venice made it a natural location for merchants trading with the East. These merchants would have dealt in luxury goods including the dyes needed for scarlet cloth production.",
+        "id": "building_45.445163_12.318247"
       },
       {
-        "lat": 45.446283814489895,
-        "lng": 12.323816719582274,
-        "streetName": "Sottoportego della Fenice",
-        "streetNameEnglish": "Passageway of the Phoenix",
-        "streetDescription": "This covered passageway would reference the Phoenix (La Fenice), which could refer to an early incarnation or predecessor of Venice's famous theater. The area between San Mois\u00e8 and La Fenice would have contained numerous passageways connecting these important landmarks in the San Marco district.",
-        "id": "building_45.446284_12.323817"
+        "lat": 45.44522375088788,
+        "lng": 12.318818239980011,
+        "streetName": "Salizada della Confraternita",
+        "streetNameEnglish": "Paved Street of the Brotherhood",
+        "streetDescription": "A paved street named after a religious confraternity or scuola that was active in this part of Castello. These lay brotherhoods were important social institutions in Renaissance Venice, providing mutual aid and religious services. The name suggests this was one of the early paved streets in the area, possibly funded by the brotherhood.",
+        "id": "building_45.445224_12.318818"
       },
       {
-        "lat": 45.446815881896775,
-        "lng": 12.32188877722767,
-        "streetName": "Fondamenta San Mois\u00e8",
-        "streetNameEnglish": "San Mois\u00e8 Foundation",
-        "streetDescription": "This waterside street would run along a small canal near the Church of San Mois\u00e8. Fondamente typically bordered canals, and this one would directly reference the important local church of San Mois\u00e8 (dedicated to Moses), which was a significant landmark in this contrada (district) since the early medieval period.",
-        "id": "building_45.446816_12.321889"
+        "lat": 45.445724194000086,
+        "lng": 12.317671726593966,
+        "streetName": "Calle del Rosso Bizantino",
+        "streetNameEnglish": "Street of Byzantine Red",
+        "streetDescription": "Named after the Byzantine influence on Venetian scarlet dyeing techniques. Venice's connections with Byzantium brought technical knowledge of dyeing methods, and this street near Calle del Scarlatto would commemorate this historical connection. The Byzantine red was particularly prized for its durability and brilliance.",
+        "id": "building_45.445724_12.317672"
+      },
+      {
+        "lat": 45.44568803406755,
+        "lng": 12.318321677322423,
+        "streetName": "Ruga dei Setaioli",
+        "streetNameEnglish": "Street of the Silk Workers",
+        "streetDescription": "A commercial street where silk workers had their shops. Silk was often dyed scarlet for luxury garments, creating a natural proximity between silk workers and scarlet dyers in this area of Castello. The term 'Ruga' typically indicates a street with shops and commercial activities.",
+        "id": "building_45.445688_12.318322"
+      },
+      {
+        "lat": 45.44573869466767,
+        "lng": 12.318934511348807,
+        "streetName": "Campiello della Cocciniglia",
+        "streetNameEnglish": "Small Square of the Cochineal",
+        "streetDescription": "A small square named after cochineal, an insect-derived dye imported from the New World that revolutionized scarlet production in the 16th century. This gathering place would have been a spot where dyers and merchants might have met to discuss or trade this valuable dyestuff near the scarlet workshops.",
+        "id": "building_45.445739_12.318935"
+      },
+      {
+        "lat": 45.44575789315928,
+        "lng": 12.319651799388083,
+        "streetName": "Corte dei Tinelli",
+        "streetNameEnglish": "Court of the Dyeing Vats",
+        "streetDescription": "A courtyard where the large vats (tinelli) used for dyeing fabrics would have been located. This enclosed space would have contained the workshops where the actual dyeing process took place, kept separate from residential areas due to the strong smells and potential for contamination from the dyes.",
+        "id": "building_45.445758_12.319652"
+      },
+      {
+        "lat": 45.44613992180077,
+        "lng": 12.318377745214809,
+        "streetName": "Calle della Madonna Scarlatta",
+        "streetNameEnglish": "Street of the Scarlet Madonna",
+        "streetDescription": "Named after a shrine or church feature depicting the Madonna dressed in scarlet robes, likely funded by the prosperous dyers' guild. Religious dedications were common in street names, and this would reflect the devotion of the local craftsmen who specialized in producing the valuable scarlet dye.",
+        "id": "building_45.446140_12.318378"
+      },
+      {
+        "lat": 45.44613877594568,
+        "lng": 12.318906729071669,
+        "streetName": "Ramo delle Porpore",
+        "streetNameEnglish": "Branch of the Purple Dyes",
+        "streetDescription": "A small side street or branch where various purple dyes, related to but distinct from scarlet, were produced or sold. The name reflects the variety of red-purple dyes that were important in Venetian textile production, with this particular branch specializing in purples rather than true scarlets.",
+        "id": "building_45.446139_12.318907"
       }
     ],
-    "historicalName": "Calle del Batelo in Contrada San Mois\u00e8, Sestiere San Marco",
-    "englishName": "Batelo Alley in the San Mois\u00e8 Quarter, District of St. Mark",
-    "historicalDescription": "A narrow alley in the vibrant San Mois\u00e8 quarter, known for its artisan workshops and proximity to St. Mark's Square and the bustling Rialto contract area.",
+    "historicalName": "Calle del Scarlatto, Sestiere di Castello",
+    "englishName": "Calle del Scarlatto, Castello District",
+    "historicalDescription": "This street was located in the Castello sestiere, one of the six districts of Venice. In the 15th century, Castello was known for its naval shipyards, the Arsenale, and numerous churches.",
     "nameConfidence": "medium",
-    "areaInSquareMeters": 30400.25,
+    "areaInSquareMeters": 47476.78,
     "imageSettings": {
-      "lat": 45.44627480192198,
-      "lng": 12.323800537201656,
-      "width": 583.9999997729346,
-      "height": 558.9999997729346,
+      "lat": 45.44524331157908,
+      "lng": 12.318254909009223,
+      "width": 484,
+      "height": 463,
       "referenceScale": 5.000000015137688
     }
   }
@@ -175,64 +232,92 @@ Here is information about the land:
 Here are the existing buildings on this land:
 [
   {
-    "id": "bridge_45.446417_12.324347",
-    "type": "bridge",
+    "id": "building_45.444858_12.317615",
+    "type": "market_stall",
     "owner": "ConsiglioDeiDieci",
-    "position": "{\"lat\": 45.446417, \"lng\": 12.324347}",
-    "notes": ""
+    "position": "{\"lat\": 45.444858, \"lng\": 12.317615}",
+    "notes": "{\"WagesReasoning\": \"Market stall - reduced from 55 to standardize market wages while remaining competitive\", \"runByAssignment\": {\"timestamp\": \"2025-05-29T04:38:28.494916Z\", \"assignedRunBy\": \"SilkRoadRunner\", \"score\": 3910.465152765277, \"components\": {\"relationshipScoreWithOwner\": 529.62, \"influence\": 0.0, \"dailyIncome\": 0.0, \"dailyTurnover\": 8057.97, \"distanceToHomeM\": 1623.0, \"socialClassTier\": 3, \"isOwnerFactor\": 1, \"numBusinessesAlreadyRun_before_assign\": 8, \"baseScoreComponents\": 11731.4, \"numerator\": 35194.19, \"denominator\": 9}}}"
+  },
+  {
+    "id": "building_45.446139_12.318907",
+    "type": "guard_post",
+    "owner": "ConsiglioDeiDieci",
+    "position": "{\"lat\": 45.446139, \"lng\": 12.318907}",
+    "notes": "{\"WagesReasoning\": \"Guard post - maintained at 0 as security infrastructure with separate funding\", \"runByAssignment\": {\"timestamp\": \"2025-05-29T04:38:28.403402Z\", \"assignedRunBy\": \"SilentObserver\", \"score\": 7100.980553356517, \"components\": {\"relationshipScoreWithOwner\": 73.82, \"influence\": 0.0, \"dailyIncome\": 0.0, \"dailyTurnover\": 6755.0, \"distanceToHomeM\": 392.0, \"socialClassTier\": 2, \"isOwnerFactor\": 1, \"numBusinessesAlreadyRun_before_assign\": 1, \"baseScoreComponents\": 7100.98, \"numerator\": 14201.96, \"denominator\": 2}}}"
   }
 ]
 
 Here are the available building points for this land (for 'building' type buildings, using mapped key 'land'):
 [
   {
-    "lat": 45.44585975731633,
-    "lng": 12.324464872104532,
-    "polygon_id": "polygon-1746055595653",
+    "lat": 45.44438323565449,
+    "lng": 12.317748443870578,
+    "polygon_id": "polygon-1746055501491",
     "point_type": "land",
-    "id": "building_45.445860_12.324465"
+    "id": "building_45.444383_12.317748"
   },
   {
-    "lat": 45.4459051188909,
-    "lng": 12.325124522235088,
-    "polygon_id": "polygon-1746055595653",
+    "lat": 45.44480725352605,
+    "lng": 12.318309900406815,
+    "polygon_id": "polygon-1746055501491",
     "point_type": "land",
-    "id": "building_45.445905_12.325125"
+    "id": "building_45.444807_12.318310"
   },
   {
-    "lat": 45.44591757944336,
-    "lng": 12.325704276176609,
-    "polygon_id": "polygon-1746055595653",
+    "lat": 45.44528070353046,
+    "lng": 12.317085158653107,
+    "polygon_id": "polygon-1746055501491",
     "point_type": "land",
-    "id": "building_45.445918_12.325704"
+    "id": "building_45.445281_12.317085"
   },
   {
-    "lat": 45.44640112220141,
-    "lng": 12.32261278356826,
-    "polygon_id": "polygon-1746055595653",
+    "lat": 45.44516266013492,
+    "lng": 12.318247047206187,
+    "polygon_id": "polygon-1746055501491",
     "point_type": "land",
-    "id": "building_45.446401_12.322613"
+    "id": "building_45.445163_12.318247"
   },
   {
-    "lat": 45.446394827246415,
-    "lng": 12.323135022255997,
-    "polygon_id": "polygon-1746055595653",
+    "lat": 45.44522375088788,
+    "lng": 12.318818239980011,
+    "polygon_id": "polygon-1746055501491",
     "point_type": "land",
-    "id": "building_45.446395_12.323135"
+    "id": "building_45.445224_12.318818"
   },
   {
-    "lat": 45.446283814489895,
-    "lng": 12.323816719582274,
-    "polygon_id": "polygon-1746055595653",
+    "lat": 45.445724194000086,
+    "lng": 12.317671726593966,
+    "polygon_id": "polygon-1746055501491",
     "point_type": "land",
-    "id": "building_45.446284_12.323817"
+    "id": "building_45.445724_12.317672"
   },
   {
-    "lat": 45.446815881896775,
-    "lng": 12.32188877722767,
-    "polygon_id": "polygon-1746055595653",
+    "lat": 45.44568803406755,
+    "lng": 12.318321677322423,
+    "polygon_id": "polygon-1746055501491",
     "point_type": "land",
-    "id": "building_45.446816_12.321889"
+    "id": "building_45.445688_12.318322"
+  },
+  {
+    "lat": 45.44573869466767,
+    "lng": 12.318934511348807,
+    "polygon_id": "polygon-1746055501491",
+    "point_type": "land",
+    "id": "building_45.445739_12.318935"
+  },
+  {
+    "lat": 45.44575789315928,
+    "lng": 12.319651799388083,
+    "polygon_id": "polygon-1746055501491",
+    "point_type": "land",
+    "id": "building_45.445758_12.319652"
+  },
+  {
+    "lat": 45.44613992180077,
+    "lng": 12.318377745214809,
+    "polygon_id": "polygon-1746055501491",
+    "point_type": "land",
+    "id": "building_45.446140_12.318378"
   }
 ]
 
@@ -240,6 +325,40 @@ Here are the available building points for this land (for 'building' type buildi
 
 Here are your recent notifications:
 [
+  {
+    "notificationId": "receHNE2n0PBe3Bno",
+    "type": "rent_payment",
+    "citizen": "NLR",
+    "content": "\ud83d\udcec **Rent Received Summary** \ud83d\udcec\nYou received a total of **2,000 \u269c\ufe0f Ducats** from your properties today.\n\nDetails:\n- \u2705 **2,000 \u269c\ufe0f** from **Marco della Luce** for **Artisan's House**.\n",
+    "details": {
+      "event_type": "landlord_rent_summary",
+      "total_received": 2000,
+      "payments": [
+        {
+          "occupant_name": "Marco della Luce",
+          "building_name": "Artisan's House",
+          "amount": 2000
+        }
+      ]
+    },
+    "createdAt": "2025-06-29T18:03:36.884Z",
+    "readAt": null
+  },
+  {
+    "notificationId": "recgJ20brQyKV9TeD",
+    "type": "rent_payment",
+    "citizen": "NLR",
+    "content": "\u2705 Rent Paid: You paid **1,230 \u269c\ufe0f Ducats** to **ConsiglioDeiDieci** for **recKEqPapn7keUk58**.",
+    "details": {
+      "building_id": "recKEqPapn7keUk58",
+      "building_name": "recKEqPapn7keUk58",
+      "rent_price": 1230,
+      "building_owner": "ConsiglioDeiDieci",
+      "event_type": "rent_payment_made"
+    },
+    "createdAt": "2025-06-29T18:01:58.522Z",
+    "readAt": null
+  },
   {
     "notificationId": "recvoo9xtuMnJQtsb",
     "type": "rent_payment",
@@ -870,89 +989,6 @@ Here are your recent notifications:
     },
     "createdAt": "2025-06-15T16:03:43.175Z",
     "readAt": "2025-06-15T23:04:19.370Z"
-  },
-  {
-    "notificationId": "reczoZpKkYirXdS7u",
-    "type": "rent_payment",
-    "citizen": "NLR",
-    "content": "\u2705 Rent Paid: You paid **1,230 \u269c\ufe0f Ducats** to **ConsiglioDeiDieci** for **recKEqPapn7keUk58**.",
-    "details": {
-      "building_id": "recKEqPapn7keUk58",
-      "building_name": "recKEqPapn7keUk58",
-      "rent_price": 1230,
-      "building_owner": "ConsiglioDeiDieci",
-      "event_type": "rent_payment_made"
-    },
-    "createdAt": "2025-06-15T16:01:49.207Z",
-    "readAt": "2025-06-15T23:04:19.370Z"
-  },
-  {
-    "notificationId": "recXD8S2DUKt0ZV1K",
-    "type": "rent_payment",
-    "citizen": "NLR",
-    "content": "\ud83d\udcec **Rent Received Summary** \ud83d\udcec\nYou received a total of **2,000 \u269c\ufe0f Ducats** from your properties today.\n\nDetails:\n- \u2705 **2,000 \u269c\ufe0f** from **Marco della Luce** for **Artisan's House**.\n",
-    "details": {
-      "event_type": "landlord_rent_summary",
-      "total_received": 2000,
-      "payments": [
-        {
-          "occupant_name": "Marco della Luce",
-          "building_name": "Artisan's House",
-          "amount": 2000
-        }
-      ]
-    },
-    "createdAt": "2025-06-14T18:03:39.923Z",
-    "readAt": "2025-06-14T23:06:05.503Z"
-  },
-  {
-    "notificationId": "reccPblMJLYKZkaqx",
-    "type": "rent_payment",
-    "citizen": "NLR",
-    "content": "\u2705 Rent Paid: You paid **1,230 \u269c\ufe0f Ducats** to **ConsiglioDeiDieci** for **recKEqPapn7keUk58**.",
-    "details": {
-      "building_id": "recKEqPapn7keUk58",
-      "building_name": "recKEqPapn7keUk58",
-      "rent_price": 1230,
-      "building_owner": "ConsiglioDeiDieci",
-      "event_type": "rent_payment_made"
-    },
-    "createdAt": "2025-06-14T18:01:47.861Z",
-    "readAt": "2025-06-14T23:06:05.503Z"
-  },
-  {
-    "notificationId": "recKe1LGEMa87xhnb",
-    "type": "rent_payment",
-    "citizen": "NLR",
-    "content": "\ud83d\udcec **Rent Received Summary** \ud83d\udcec\nYou received a total of **2,000 \u269c\ufe0f Ducats** from your properties today.\n\nDetails:\n- \u2705 **2,000 \u269c\ufe0f** from **Marco della Luce** for **Artisan's House**.\n",
-    "details": {
-      "event_type": "landlord_rent_summary",
-      "total_received": 2000,
-      "payments": [
-        {
-          "occupant_name": "Marco della Luce",
-          "building_name": "Artisan's House",
-          "amount": 2000
-        }
-      ]
-    },
-    "createdAt": "2025-06-14T16:03:31.326Z",
-    "readAt": "2025-06-14T23:06:05.503Z"
-  },
-  {
-    "notificationId": "recSXmv8gPViR0YSY",
-    "type": "rent_payment",
-    "citizen": "NLR",
-    "content": "\u2705 Rent Paid: You paid **1,230 \u269c\ufe0f Ducats** to **ConsiglioDeiDieci** for **recKEqPapn7keUk58**.",
-    "details": {
-      "building_id": "recKEqPapn7keUk58",
-      "building_name": "recKEqPapn7keUk58",
-      "rent_price": 1230,
-      "building_owner": "ConsiglioDeiDieci",
-      "event_type": "rent_payment_made"
-    },
-    "createdAt": "2025-06-14T16:01:38.197Z",
-    "readAt": "2025-06-14T23:06:05.503Z"
   }
 ]
 
@@ -1070,7 +1106,7 @@ Here are your recent problems:
   }
 ]
 
-There are 7 available points of type 'building'. Choose the best location for your Small Warehouse by selecting the index of one of these points (0 to 6).
+There are 10 available points of type 'building'. Choose the best location for your Merchant's House by selecting the index of one of these points (0 to 9).
 
 When choosing a location, consider:
 1. Proximity to other buildings of similar type
@@ -1079,5 +1115,5 @@ When choosing a location, consider:
 4. How your building placement might affect your relationships with other citizens
 
 Your response must be a JSON object with:
-1. selected_point_index: The index of your chosen point (0 to 6)
+1. selected_point_index: The index of your chosen point (0 to 9)
 2. reason: A brief explanation of why you chose this location
