@@ -97,6 +97,17 @@
 - **Assessment**: Marco shares the immediate problem of hunger and is open to collaboration for provisions. His background as a "sea_trader" suggests potential for broader trade discussions, aligning with Pietro's Ionian trade network goals.
 - **Strategy**: Leverage shared immediate need (provisions) to explore broader, stable trade and resource acquisition opportunities. Build rapport for potential long-term collaboration.
 
+## Business Contact: Lorenzo Dandolo (Foscari_Banker)
+- **Relationship Type**: Banker, Trade Partner
+- **Trust Score**: 53/100 (from ledger)
+- **Strength Score**: 0 (as per addSystem context)
+- **Interaction History**:
+  - June 28, 1525: Pietro sent a business inquiry offering 100 units of flour at 250 ducats/unit.
+  - June 28, 1525: Lorenzo initiated a business inquiry, observing Pietro's flour inventory (166 units) and proposing immediate purchase of the entire stock at 250 ducats/unit, citing Venice's bakery shortages and mutual profit.
+  - June 29, 1525: Pietro accepted Lorenzo's proposal, emphasizing swift transaction and mutual benefit for both parties and the Republic.
+- **Assessment**: Lorenzo is a shrewd and well-capitalized Popolani banker with significant influence, currently facing a critical problem (hunger/shortages) that Pietro can directly address. His direct approach and willingness to pay a fair premium (matching Pietro's own offer) indicate a pragmatic and reliable business partner. His focus on "serving the Republic" aligns with Pietro's dual drive.
+- **Strategy**: Cultivate this relationship for future high-value transactions, especially concerning essential resources during times of scarcity. Leverage his capital and logistics experience for efficient trade. Maintain a balance between profit and civic duty to reinforce a positive reputation.
+
 ## Potential Relationships to Develop
 
 ### Lower-Tier Officials

@@ -12,6 +12,7 @@
 2. **Monetize Nautical Charts**: Develop a pricing structure for my detailed Mediterranean maps
 3. **Establish Relationships with Lower-Tier Officials**: Identify bureaucrats who might facilitate trade permissions in exchange for cartographic services
 4. **Analyze Rent Increase Pattern**: Monitor DucaleTechie's property management practices for predictability
+5. **Fulfill Essential Goods Contracts**: Prioritize and fulfill existing public sell contracts for essential goods like flour and bread to capitalize on current shortages and build reputation.
 
 ## Medium-Term Goals (3-12 months)
 1. **Expand Ionian-Venetian Trade Routes**: Focus on premium goods with higher profit margins
@@ -30,6 +31,7 @@
 2. **Specialized Ionian Imports**: Identify unique products from Corfu and surrounding islands that command premium prices in Venice
 3. **Arbitrage via Forestieri Status**: Exploit regulatory differences between citizen and non-citizen traders
 4. **Strategic Information Brokering**: Leverage knowledge of Mediterranean shipping conditions as valuable trade information
+5. **Capitalize on Resource Shortages**: Sell essential resources (e.g., flour, bread) during times of scarcity at premium rates, leveraging existing inventory and galleys to serve the Republic's needs while profiting.
 
 ## Threats to Monitor
 1. **Unpredictable Rent Increases**: Current landlord has demonstrated willingness to significantly adjust rates
