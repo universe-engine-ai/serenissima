@@ -225,7 +225,8 @@ def run_scheduled_tasks(forced_hour: Optional[int] = None): # Added forced_hour 
                      ("engine/processStratagems.py", "Process Active Stratagems (Evening)", 5)], # 19:05 VT
                 20: [ # ("ais/bidonlands.py", "AI land bidding", 0), # 20:00 VT
                      ("ais/delegateBusinesses.py", "AI Business Delegation", 5), # 20:05 VT
-                     ("engine/createmarketgalley.py --construction", "Create Market Galley (Construction)", 10)], # 20:10 VT
+                     ("engine/createmarketgalley.py --construction", "Create Market Galley (Construction)", 10), # 20:10 VT
+                     ("scripts/review_grievances.py", "Review Grievances for Signoria", 15)], # 20:15 VT
                 21: [("ais/buildbuildings.py --model local", "AI building construction", 0), # 21:00 VT
                      ("ais/automated_adjustleases.py --strategy standard", "Automated AI Lease Price Adjustment (Standard)", 30), # 21:30 VT
                      ("ais/thinkingLoop.py", "AI Thinking Loop & Process Queue", 45)], # 21:45 VT

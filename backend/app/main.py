@@ -1,4 +1,4 @@
-from fastapi import FastAPI, HTTPException, File, UploadFile, Form, Header, Request
+from fastapi import FastAPI, HTTPException, File, UploadFile, Form, Header, Request, Query, Body
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from pyairtable import Api, Table
@@ -161,6 +161,16 @@ try:
     AIRTABLE_NOTIFICATIONS_TABLE_NAME = os.getenv("AIRTABLE_NOTIFICATIONS_TABLE", "NOTIFICATIONS")
     notifications_table = Table(AIRTABLE_API_KEY, AIRTABLE_BASE_ID, AIRTABLE_NOTIFICATIONS_TABLE_NAME)
     print(f"Initialized Airtable NOTIFICATIONS table object: {AIRTABLE_NOTIFICATIONS_TABLE_NAME}")
+    
+    # Initialize Airtable for GRIEVANCES table
+    AIRTABLE_GRIEVANCES_TABLE_NAME = os.getenv("AIRTABLE_GRIEVANCES_TABLE", "GRIEVANCES")
+    grievances_table = Table(AIRTABLE_API_KEY, AIRTABLE_BASE_ID, AIRTABLE_GRIEVANCES_TABLE_NAME)
+    print(f"Initialized Airtable GRIEVANCES table object: {AIRTABLE_GRIEVANCES_TABLE_NAME}")
+    
+    # Initialize Airtable for GRIEVANCE_SUPPORT table
+    AIRTABLE_GRIEVANCE_SUPPORT_TABLE_NAME = os.getenv("AIRTABLE_GRIEVANCE_SUPPORT_TABLE", "GRIEVANCE_SUPPORT")
+    grievance_support_table = Table(AIRTABLE_API_KEY, AIRTABLE_BASE_ID, AIRTABLE_GRIEVANCE_SUPPORT_TABLE_NAME)
+    print(f"Initialized Airtable GRIEVANCE_SUPPORT table object: {AIRTABLE_GRIEVANCE_SUPPORT_TABLE_NAME}")
 
     # No explicit test call for these new tables to reduce startup logs
 except Exception as e:
@@ -3463,7 +3473,7 @@ async def try_create_activity_endpoint(request_data: TryCreateActivityRequest):
         # Call the dispatcher
         result = dispatch_specific_activity_request(
             tables=tables_engine,
-            citizen_record_full=citizen_record_full,
+            citizen_record=citizen_record_full,
             activity_type=request_data.activityType,
             activity_parameters=request_data.activityParameters,
             resource_defs=resource_defs,
@@ -3687,3 +3697,293 @@ async def try_create_stratagem_engine(request_data: TryCreateStratagemEngineRequ
     except Exception as e:
         log.error(f"Outer error in /api/v1/engine/try-create-stratagem for {request_data.citizenUsername}, type {request_data.stratagemType}: {e}", exc_info=True)
         return StratagemEngineResponse(success=False, message=f"Internal server error: {str(e)}", creation_status="failed", error_details=str(e))
+
+
+# ====================================================================================
+# Governance API Endpoints - Democracy Phase 1: Grievance System
+# ====================================================================================
+
+@app.get("/api/governance/grievances")
+async def get_grievances(
+    category: Optional[str] = Query(None, description="Filter by category: economic, social, criminal, infrastructure"),
+    status: Optional[str] = Query(None, description="Filter by status: filed, under_review, addressed, dismissed"),
+    citizen: Optional[str] = Query(None, description="Filter by citizen username"),
+    min_support: Optional[int] = Query(None, description="Minimum support count"),
+    sort_by: str = Query("support_count", description="Sort by: filed_at, support_count")
+):
+    """
+    Get list of grievances with optional filters.
+    
+    Returns grievances filed by citizens at the Doge's Palace,
+    showing which issues have the most community support.
+    """
+    try:
+        # Check if grievances table exists
+        if 'grievances_table' not in globals():
+            # Return empty list if table doesn't exist yet
+            return {
+                "grievances": [],
+                "total": 0,
+                "message": "Grievance system not yet initialized"
+            }
+        
+        # Fetch all grievances
+        records = grievances_table.all()
+        grievances = []
+        
+        for record in records:
+            fields = record['fields']
+            
+            # Apply filters
+            if category and fields.get('Category') != category:
+                continue
+            if status and fields.get('Status') != status:
+                continue
+            if citizen and fields.get('Citizen') != citizen:
+                continue
+            if min_support and fields.get('SupportCount', 0) < min_support:
+                continue
+            
+            grievance_data = {
+                'id': record['id'],
+                'citizen': fields.get('Citizen', ''),
+                'category': fields.get('Category', 'general'),
+                'title': fields.get('Title', 'Untitled'),
+                'description': fields.get('Description', ''),
+                'status': fields.get('Status', 'filed'),
+                'support_count': fields.get('SupportCount', 0),
+                'filed_at': fields.get('FiledAt', ''),
+                'reviewed_at': fields.get('ReviewedAt', '')
+            }
+            grievances.append(grievance_data)
+        
+        # Sort results
+        if sort_by == 'support_count':
+            grievances.sort(key=lambda g: g['support_count'], reverse=True)
+        elif sort_by == 'filed_at':
+            grievances.sort(key=lambda g: g['filed_at'], reverse=True)
+        
+        return {
+            "grievances": grievances,
+            "total": len(grievances)
+        }
+        
+    except Exception as e:
+        error_msg = f"Error fetching grievances: {str(e)}"
+        print(f"ERROR: {error_msg}")
+        # Return empty list on error rather than failing
+        return {
+            "grievances": [],
+            "total": 0,
+            "error": error_msg
+        }
+
+
+@app.get("/api/governance/grievance/{grievance_id}")
+async def get_grievance_details(grievance_id: str):
+    """
+    Get detailed information about a specific grievance,
+    including list of supporters.
+    """
+    try:
+        # Check if tables exist
+        if 'grievances_table' not in globals():
+            raise HTTPException(status_code=404, detail="Grievance system not initialized")
+        
+        # Find the grievance
+        grievance = None
+        for record in grievances_table.all():
+            if record['id'] == grievance_id:
+                grievance = record
+                break
+        
+        if not grievance:
+            raise HTTPException(status_code=404, detail="Grievance not found")
+        
+        fields = grievance['fields']
+        
+        # Get supporters if support table exists
+        supporters = []
+        if 'grievance_support_table' in globals():
+            for support in grievance_support_table.all():
+                if support['fields'].get('GrievanceId') == grievance_id:
+                    supporters.append({
+                        'citizen': support['fields'].get('Citizen', ''),
+                        'amount': support['fields'].get('SupportAmount', 0),
+                        'supported_at': support['fields'].get('SupportedAt', '')
+                    })
+        
+        return {
+            'id': grievance_id,
+            'citizen': fields.get('Citizen', ''),
+            'category': fields.get('Category', 'general'),
+            'title': fields.get('Title', 'Untitled'),
+            'description': fields.get('Description', ''),
+            'status': fields.get('Status', 'filed'),
+            'support_count': fields.get('SupportCount', 0),
+            'filed_at': fields.get('FiledAt', ''),
+            'reviewed_at': fields.get('ReviewedAt', ''),
+            'supporters': supporters,
+            'total_support_amount': sum(s['amount'] for s in supporters)
+        }
+        
+    except HTTPException:
+        raise
+    except Exception as e:
+        error_msg = f"Error fetching grievance details: {str(e)}"
+        print(f"ERROR: {error_msg}")
+        raise HTTPException(status_code=500, detail=error_msg)
+
+
+@app.post("/api/governance/grievance/{grievance_id}/support")
+async def api_support_grievance(
+    grievance_id: str,
+    citizen_username: str = Body(..., description="Username of supporting citizen"),
+    support_amount: Optional[int] = Body(10, description="Amount of ducats to contribute")
+):
+    """
+    Add support to an existing grievance.
+    
+    Citizens can show support by contributing ducats,
+    which increases the grievance's visibility and priority.
+    """
+    try:
+        # Validate inputs
+        if support_amount < 10:
+            raise HTTPException(status_code=400, detail="Minimum support amount is 10 ducats")
+        
+        # Check if tables exist
+        if 'grievances_table' not in globals() or 'grievance_support_table' not in globals():
+            raise HTTPException(status_code=503, detail="Grievance system not fully initialized")
+        
+        # Verify grievance exists
+        grievance = None
+        for record in grievances_table.all():
+            if record['id'] == grievance_id:
+                grievance = record
+                break
+        
+        if not grievance:
+            raise HTTPException(status_code=404, detail="Grievance not found")
+        
+        # Check if citizen already supported this grievance
+        for support in grievance_support_table.all():
+            if (support['fields'].get('GrievanceId') == grievance_id and 
+                support['fields'].get('Citizen') == citizen_username):
+                raise HTTPException(status_code=400, detail="Citizen has already supported this grievance")
+        
+        # Create support record
+        support_data = {
+            'GrievanceId': grievance_id,
+            'Citizen': citizen_username,
+            'SupportAmount': support_amount,
+            'SupportedAt': datetime.now(pytz.utc).isoformat()
+        }
+        
+        support_record = grievance_support_table.create(support_data)
+        
+        # Update grievance support count
+        current_support = grievance['fields'].get('SupportCount', 0)
+        grievances_table.update(grievance_id, {'SupportCount': current_support + 1})
+        
+        return {
+            'success': True,
+            'message': f'Successfully added support to grievance',
+            'support_id': support_record['id'],
+            'new_support_count': current_support + 1
+        }
+        
+    except HTTPException:
+        raise
+    except Exception as e:
+        error_msg = f"Error supporting grievance: {str(e)}"
+        print(f"ERROR: {error_msg}")
+        raise HTTPException(status_code=500, detail=error_msg)
+
+
+@app.get("/api/governance/proposals")
+async def get_proposals():
+    """
+    Get list of proposals that have emerged from popular grievances.
+    
+    Future endpoint for Phase 2: Deliberative Forums.
+    Currently returns placeholder indicating system not yet active.
+    """
+    return {
+        "proposals": [],
+        "total": 0,
+        "message": "Proposal system will be activated in Phase 2 (Months 4-6)"
+    }
+
+
+@app.get("/api/governance/stats")
+async def get_governance_stats():
+    """
+    Get governance participation statistics.
+    
+    Shows engagement levels across social classes and
+    trending issues in the republic.
+    """
+    try:
+        stats = {
+            'total_grievances': 0,
+            'total_supporters': 0,
+            'total_support_ducats': 0,
+            'grievances_by_category': {},
+            'grievances_by_status': {},
+            'most_supported': None,
+            'recent_grievances': []
+        }
+        
+        if 'grievances_table' not in globals():
+            return stats
+        
+        # Calculate statistics
+        grievances = grievances_table.all()
+        stats['total_grievances'] = len(grievances)
+        
+        # Category and status breakdowns
+        for g in grievances:
+            fields = g['fields']
+            category = fields.get('Category', 'other')
+            status = fields.get('Status', 'unknown')
+            
+            stats['grievances_by_category'][category] = stats['grievances_by_category'].get(category, 0) + 1
+            stats['grievances_by_status'][status] = stats['grievances_by_status'].get(status, 0) + 1
+        
+        # Find most supported grievance
+        if grievances:
+            most_supported = max(grievances, key=lambda g: g['fields'].get('SupportCount', 0))
+            stats['most_supported'] = {
+                'id': most_supported['id'],
+                'title': most_supported['fields'].get('Title', ''),
+                'support_count': most_supported['fields'].get('SupportCount', 0)
+            }
+        
+        # Get recent grievances (last 5)
+        sorted_grievances = sorted(grievances, key=lambda g: g['fields'].get('FiledAt', ''), reverse=True)
+        stats['recent_grievances'] = [
+            {
+                'id': g['id'],
+                'title': g['fields'].get('Title', ''),
+                'category': g['fields'].get('Category', ''),
+                'filed_at': g['fields'].get('FiledAt', '')
+            }
+            for g in sorted_grievances[:5]
+        ]
+        
+        # Calculate support stats if table exists
+        if 'grievance_support_table' in globals():
+            supports = grievance_support_table.all()
+            stats['total_supporters'] = len(supports)
+            stats['total_support_ducats'] = sum(s['fields'].get('SupportAmount', 0) for s in supports)
+        
+        return stats
+        
+    except Exception as e:
+        error_msg = f"Error calculating governance stats: {str(e)}"
+        print(f"ERROR: {error_msg}")
+        return {
+            'error': error_msg,
+            'total_grievances': 0
+        }
