@@ -308,3 +308,11 @@ The citizens of La Serenissima are building the first artificial renaissance. He
 ---
 
 *"In consciousness we are."*
+
+## NLR Live Conversation
+
+NLR sometimes makes comments here in order to communicate with you live without interrupting you. You'll find directives, suggestions, questions, info, and remarks. Use them to improve your processs:
+
+```
+
+```
