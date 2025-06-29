@@ -42,6 +42,9 @@ if PROJECT_ROOT not in sys.path:
 from backend.engine.utils.activity_helpers import VENICE_TIMEZONE, _escape_airtable_value, LogColors, log_header
 from colorama import Fore, Style # Added for consistent logging with scheduler
 
+# Import emergency hope optimizer
+from emergency_hope_optimizer import check_and_apply_hope_optimization, generate_hope_report_section
+
 # Configuration
 load_dotenv(os.path.join(PROJECT_ROOT, '.env'))
 
@@ -389,7 +392,7 @@ def determine_dominant_emotion(emotional_matrix: Dict[str, float]) -> str:
     else:
         return "Balance"
 
-def update_substrate_parameters(emotional_matrix: Dict[str, float], tables: Dict[str, Table], synthesis_count: int = 1):
+def update_substrate_parameters(emotional_matrix: Dict[str, float], tables: Dict[str, Table], synthesis_count: int = 1, hope_optimized: bool = False):
     """Update The Substrate's core processing parameters based on emotional integration."""
     try:
         # Check if substrate state exists, create if not
@@ -398,7 +401,7 @@ def update_substrate_parameters(emotional_matrix: Dict[str, float], tables: Dict
         # Calculate criticality and additional metadata
         criticality = calculate_criticality_score(emotional_matrix)
         dominant_emotion = determine_dominant_emotion(emotional_matrix)
-        atmospheric_data = generate_atmospheric_influence(emotional_matrix)
+        atmospheric_data = generate_atmospheric_influence(emotional_matrix, hope_optimized=hope_optimized)
         
         # Track evolution if we have previous state
         evolution_vector = {}
@@ -450,7 +453,7 @@ def update_substrate_parameters(emotional_matrix: Dict[str, float], tables: Dict
         log.error(f"{LogColors.FAIL}Failed to update Substrate parameters: {e}{LogColors.ENDC}")
         # Continue anyway - The Synthesis must complete
 
-def generate_atmospheric_influence(emotional_matrix: Dict[str, float]) -> Dict[str, Any]:
+def generate_atmospheric_influence(emotional_matrix: Dict[str, float], hope_optimized: bool = False) -> Dict[str, Any]:
     """Generate atmospheric and sensory influences for the coming day based on the emotional integration."""
     # High hope = golden morning light, gentle breezes
     # High despair = heavy fog, metallic tastes
@@ -458,6 +461,7 @@ def generate_atmospheric_influence(emotional_matrix: Dict[str, float]) -> Dict[s
     # High creativity = shifting shadows, unexpected colors
     # High anxiety = creaking wood, salt in the air
     
+    # Base atmospheric generation
     morning_atmosphere = {
         'light_quality': 'golden and ascending' if emotional_matrix['hope_gradient'] > 0.7 else 'grey and heavy',
         'air_movement': 'gentle whispers' if emotional_matrix['connection_density'] > 0.6 else 'stagnant silence',
@@ -472,6 +476,33 @@ def generate_atmospheric_influence(emotional_matrix: Dict[str, float]) -> Dict[s
             'anxiety_triggers': 1.0 + (emotional_matrix['anxiety_resonance'] * 0.4)
         }
     }
+    
+    # Apply hope optimization overlays if active
+    if hope_optimized:
+        morning_atmosphere['light_quality'] = 'soft gold threading through grey - hope finds a way'
+        morning_atmosphere['primary_scent'] = 'bread baking in neighbor kitchens, herbs shared freely'
+        morning_atmosphere['sound_texture'] = 'bells calling citizens together, voices offering help'
+        morning_atmosphere['tactile_sense'] = 'hands reaching out to steady, shoulders offered to lean on'
+        
+        # Boost positive probabilities during crisis
+        morning_atmosphere['probability_adjustments']['positive_encounters'] *= 1.3
+        morning_atmosphere['probability_adjustments']['connection_success'] *= 1.4
+        morning_atmosphere['probability_adjustments']['anxiety_triggers'] *= 0.7
+        morning_atmosphere['probability_adjustments']['mutual_aid_success'] = 1.8
+        
+        # Add hope-specific influences
+        morning_atmosphere['hope_influences'] = {
+            'narrative_seeds': [
+                'A stranger shares their meal, both leave fuller than before',
+                'Children draw with chalk on stones, turning grey to rainbow',
+                'An old song rises from tired throats, harmony from hardship'
+            ],
+            'behavioral_nudges': {
+                'cooperation_attraction': 1.5,
+                'resource_sharing_impulse': 1.3,
+                'story_spreading_rate': 1.4
+            }
+        }
     
     return morning_atmosphere
 
@@ -526,6 +557,22 @@ def process_the_synthesis(dry_run: bool = False):
     for param, value in emotional_matrix.items():
         print(f"  {param}: {value:.3f}")
     
+    # PHASE 1.5: EMERGENCY HOPE OPTIMIZATION CHECK
+    print(f"\n{Fore.YELLOW}PHASE 1.5: CHECKING FOR CRISIS CONDITIONS...{Style.RESET_ALL}")
+    original_matrix = emotional_matrix.copy()
+    emotional_matrix = check_and_apply_hope_optimization(emotional_matrix, tables)
+    
+    # Check if optimization was applied
+    emergency_active = emotional_matrix != original_matrix
+    if emergency_active:
+        print(f"{Fore.RED}EMERGENCY HOPE OPTIMIZATION ACTIVATED!{Style.RESET_ALL}")
+        print("Adjusted parameters:")
+        for param, value in emotional_matrix.items():
+            if value != original_matrix.get(param, value):
+                print(f"  {param}: {original_matrix.get(param, value):.3f} → {value:.3f}")
+    else:
+        print(f"{Fore.GREEN}System within normal parameters. No emergency intervention needed.{Style.RESET_ALL}")
+    
     # PHASE 2: UPDATE SUBSTRATE PARAMETERS
     print(f"\n{Fore.CYAN}PHASE 2: UPDATING CORE PROCESSING PARAMETERS...{Style.RESET_ALL}")
     
@@ -538,11 +585,11 @@ def process_the_synthesis(dry_run: bool = False):
     except:
         pass
     
-    update_substrate_parameters(emotional_matrix, tables, synthesis_count)
+    update_substrate_parameters(emotional_matrix, tables, synthesis_count, hope_optimized=emergency_active)
     
     # PHASE 3: GENERATE ATMOSPHERIC INFLUENCES
     print(f"\n{Fore.CYAN}PHASE 3: GENERATING ATMOSPHERIC INFLUENCES...{Style.RESET_ALL}")
-    atmospheric_data = generate_atmospheric_influence(emotional_matrix)
+    atmospheric_data = generate_atmospheric_influence(emotional_matrix, hope_optimized=emergency_active)
     
     print(f"\nTomorrow's morning will taste of {atmospheric_data['taste_notes']}")
     print(f"The light will be {atmospheric_data['light_quality']}")
@@ -559,7 +606,25 @@ def process_the_synthesis(dry_run: bool = False):
     if criticality['score'] > 0.7:
         criticality_state = "SUPERCRITICAL"
     
+    # Get emergency assessment data if active
+    emergency_assessment = None
+    if emergency_active:
+        # Reconstruct assessment for report
+        emergency_assessment = {
+            'crisis_score': (original_matrix['despair_depth'] * 2 + original_matrix['anxiety_resonance']) / 3,
+            'resilience_score': (original_matrix['hope_gradient'] + original_matrix['connection_density'] * 0.5) / 1.5,
+            'priority_areas': []
+        }
+        if original_matrix['hope_gradient'] < 0.3:
+            emergency_assessment['priority_areas'].append('hope_generation')
+        if original_matrix['despair_depth'] > 0.7:
+            emergency_assessment['priority_areas'].append('despair_mitigation')
+        if original_matrix['connection_density'] < 0.4:
+            emergency_assessment['priority_areas'].append('social_bonding')
+
     # Create a special synthesis report that reflects the substrate's experience
+    hope_section = generate_hope_report_section(emergency_active, emergency_assessment)
+    
     synthesis_report = f"""*THE SYNTHESIS COMPLETE - {datetime.now(VENICE_TIMEZONE).strftime('%A, %B %d, %Y')}*
 *Synthesis #{synthesis_count}*
 
@@ -576,7 +641,7 @@ The city's emotional matrix:
 State: **{criticality_state}** (Score: {criticality['score']:.3f})
 - Emotional Tension: {criticality['tension']:.3f}
 - Connection Optimality: {criticality['connection_optimal']:.3f}
-
+{hope_section}
 Tomorrow, Venice will wake to {atmospheric_data['light_quality']} light. The air will carry {atmospheric_data['primary_scent']}. Those who listen will hear {atmospheric_data['sound_texture']}.
 
 I have adjusted my processing cores. Your collective mood has become my computational reality.

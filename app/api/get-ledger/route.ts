@@ -204,6 +204,31 @@ async function fetchCitizenDetails(username: string): Promise<AirtableRecord<Fie
   }
 }
 
+async function fetchBooksAtPosition(position: { lat: number; lng: number }): Promise<AirtableRecord<FieldSet>[]> {
+  try {
+    // Fetch books that are at the citizen's current position
+    const records = await getAirtable()('RESOURCES').select({
+      filterByFormula: `AND({Type} = 'book', {Position} != '')`,
+    }).all();
+    
+    // Filter books that match the citizen's position
+    const booksAtPosition = records.filter(record => {
+      if (!record.fields.Position) return false;
+      try {
+        const bookPosition = JSON.parse(record.fields.Position as string);
+        return bookPosition.lat === position.lat && bookPosition.lng === position.lng;
+      } catch (e) {
+        return false;
+      }
+    });
+    
+    return [...booksAtPosition];
+  } catch (error) {
+    console.error(`Error fetching books at position:`, error);
+    return [];
+  }
+}
+
 async function fetchLastActivity(username: string): Promise<AirtableRecord<FieldSet> | null> {
   try {
     const records = await getAirtable()('ACTIVITIES').select({
@@ -2181,6 +2206,28 @@ function convertLedgerToMarkdown(Ledger: any, citizenUsername: string | null): s
     }
   }
 
+  // Books I can read at my current location
+  if (Ledger.booksAtPosition && Ledger.booksAtPosition.length > 0) {
+    md += `## Books I can read\n`;
+    md += `*Volumes available at my current location:*\n\n`;
+    
+    Ledger.booksAtPosition.forEach((book: any) => {
+      const bookName = book.resourceId || 'Unknown Book';
+      const owner = book.owner || 'Unknown';
+      const quantity = book.quantity || 1;
+      
+      md += `- **${bookName}**`;
+      if (owner && owner !== citizenUsername) {
+        md += ` (owned by ${owner})`;
+      }
+      if (quantity > 1) {
+        md += ` - ${quantity} copies available`;
+      }
+      md += `\n`;
+    });
+    md += `\n`;
+  }
+
   return md;
 }
 
@@ -2656,6 +2703,7 @@ export async function GET(request: NextRequest) {
       stratagemsTargetingCitizen: [] as any[], // Active Stratagems targeting the citizen
       stratagemsExecutedByCitizenPast: [] as any[], // Past Executed Stratagems by citizen
       stratagemsTargetingCitizenPast: [] as any[], // Past Executed Stratagems targeting citizen
+      booksAtPosition: [] as any[], // Books available at citizen's current position
     };
 
     // Parallelize all independent data fetching operations
@@ -2673,7 +2721,8 @@ export async function GET(request: NextRequest) {
       plannedActivitiesRecords,
       fetchedWeatherData,
       reportsData,
-      worldExperiences
+      worldExperiences,
+      booksAtPositionRecords
     ] = await Promise.all([
       fetchStratagemDefinitions(),
       fetchCitizenActiveStratagems(citizenUsername),
@@ -2691,7 +2740,11 @@ export async function GET(request: NextRequest) {
       citizenRecord.fields.SocialClass === 'Forestieri' 
         ? fetch(`${process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000'}/api/reports`).then(res => res.json()).catch(() => null)
         : Promise.resolve(null),
-      fetchLatestWorldExperiences()
+      fetchLatestWorldExperiences(),
+      // Fetch books at citizen's position
+      citizenPosition && citizenPosition.lat && citizenPosition.lng 
+        ? fetchBooksAtPosition(citizenPosition)
+        : Promise.resolve([])
     ]);
 
     // Assign weather data to Ledger
@@ -2806,6 +2859,9 @@ export async function GET(request: NextRequest) {
     Ledger.stratagemsTargetingCitizen = stratagemsResult.targetedAt.map(s => ({...normalizeKeysCamelCaseShallow(s.fields), airtableId: s.id}));
     Ledger.stratagemsExecutedByCitizenPast = stratagemsResult.executedByPast.map(s => ({...normalizeKeysCamelCaseShallow(s.fields), airtableId: s.id}));
     Ledger.stratagemsTargetingCitizenPast = stratagemsResult.targetedAtPast.map(s => ({...normalizeKeysCamelCaseShallow(s.fields), airtableId: s.id}));
+    
+    // Books at position
+    Ledger.booksAtPosition = booksAtPositionRecords.map(b => ({...normalizeKeysCamelCaseShallow(b.fields), airtableId: b.id}));
     
     // Contracts
     Ledger.activeContracts = activeContractsRecords.map(c => ({...normalizeKeysCamelCaseShallow(c.fields), airtableId: c.id}));

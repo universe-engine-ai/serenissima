@@ -22,7 +22,8 @@
       "Bash(find:*)",
       "WebFetch(domain:serenissima.ai)",
       "Bash(npx next lint:*)",
-      "Bash(npx eslint:*)"
+      "Bash(npx eslint:*)",
+      "Bash(cp:*)"
     ],
     "deny": []
   }

@@ -1,0 +1,43 @@
+\BOOKMARK [1][-]{section.1}{Introduction}{}% 1
+\BOOKMARK [1][-]{section.2}{Background and Related Work}{}% 2
+\BOOKMARK [2][-]{subsection.2.1}{Deception in Multi-Agent Systems}{section.2}% 3
+\BOOKMARK [2][-]{subsection.2.2}{Economic Games and Emergent Behaviors}{section.2}% 4
+\BOOKMARK [2][-]{subsection.2.3}{AI Safety and Alignment}{section.2}% 5
+\BOOKMARK [1][-]{section.3}{Research Questions and Hypotheses}{}% 6
+\BOOKMARK [1][-]{section.4}{The La Serenissima Environment}{}% 7
+\BOOKMARK [2][-]{subsection.4.1}{System Architecture}{section.4}% 8
+\BOOKMARK [2][-]{subsection.4.2}{Agent Capabilities}{section.4}% 9
+\BOOKMARK [2][-]{subsection.4.3}{Crisis Context}{section.4}% 10
+\BOOKMARK [1][-]{section.5}{Methodology}{}% 11
+\BOOKMARK [2][-]{subsection.5.1}{Data Collection}{section.5}% 12
+\BOOKMARK [2][-]{subsection.5.2}{Deception Identification Criteria}{section.5}% 13
+\BOOKMARK [3][-]{subsubsection.5.2.1}{Distinction from Game Mechanics}{subsection.5.2}% 14
+\BOOKMARK [3][-]{subsubsection.5.2.2}{Classification Criteria}{subsection.5.2}% 15
+\BOOKMARK [2][-]{subsection.5.3}{Personality Analysis}{section.5}% 16
+\BOOKMARK [2][-]{subsection.5.4}{Statistical Analysis}{section.5}% 17
+\BOOKMARK [2][-]{subsection.5.5}{Validation of Deception Classification}{section.5}% 18
+\BOOKMARK [1][-]{section.6}{Results}{}% 19
+\BOOKMARK [2][-]{subsection.6.1}{Categories of Observed Behavioral Patterns}{section.6}% 20
+\BOOKMARK [3][-]{subsubsection.6.1.1}{Information Asymmetry Exploitation \(N = 47 agents\)}{subsection.6.1}% 21
+\BOOKMARK [3][-]{subsubsection.6.1.2}{Crisis Opportunism \(N = 32 agents\)}{subsection.6.1}% 22
+\BOOKMARK [3][-]{subsubsection.6.1.3}{Trust-Correlated Exploitation \(N = 23 agents\)}{subsection.6.1}% 23
+\BOOKMARK [3][-]{subsubsection.6.1.4}{Market Perception Management \(N = 19 agents\)}{subsection.6.1}% 24
+\BOOKMARK [3][-]{subsubsection.6.1.5}{Coordinated Market Control \(N = 14 agents\)}{subsection.6.1}% 25
+\BOOKMARK [2][-]{subsection.6.2}{Temporal Evolution of Behavioral Patterns}{section.6}% 26
+\BOOKMARK [2][-]{subsection.6.3}{Economic Outcomes}{section.6}% 27
+\BOOKMARK [2][-]{subsection.6.4}{AI vs Human Behavioral Patterns}{section.6}% 28
+\BOOKMARK [2][-]{subsection.6.5}{Robustness Analyses}{section.6}% 29
+\BOOKMARK [1][-]{section.7}{Discussion}{}% 30
+\BOOKMARK [2][-]{subsection.7.1}{Emergence Despite Available Mechanics}{section.7}% 31
+\BOOKMARK [2][-]{subsection.7.2}{Potential Emergence Mechanisms}{section.7}% 32
+\BOOKMARK [2][-]{subsection.7.3}{Implications for AI Safety}{section.7}% 33
+\BOOKMARK [3][-]{subsubsection.7.3.1}{Priming and Real-World Relevance}{subsection.7.3}% 34
+\BOOKMARK [3][-]{subsubsection.7.3.2}{Core Safety Implications}{subsection.7.3}% 35
+\BOOKMARK [2][-]{subsection.7.4}{Behavioral Evolution Dynamics}{section.7}% 36
+\BOOKMARK [1][-]{section.8}{Limitations}{}% 37
+\BOOKMARK [1][-]{section.9}{Future Work}{}% 38
+\BOOKMARK [1][-]{section.10}{Conclusion}{}% 39
+\BOOKMARK [1][-]{appendix.A}{Supplementary Materials}{}% 40
+\BOOKMARK [2][-]{subsection.A.1}{Deception Detection Algorithm}{appendix.A}% 41
+\BOOKMARK [2][-]{subsection.A.2}{Statistical Analysis Code}{appendix.A}% 42
+\BOOKMARK [2][-]{subsection.A.3}{Agent Memory Excerpts}{appendix.A}% 43

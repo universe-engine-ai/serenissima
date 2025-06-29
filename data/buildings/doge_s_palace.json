@@ -1,7 +1,7 @@
 {
   "name": "Doge's Palace",
   "pointType": "building",
-  "category": "Special Buildings",
+  "category": "unique",
   "subCategory": "Unique Structures",
   "size": 4,
   "calculationsAnalysis": "The Doge's Palace represents the ultimate governmental structure with extraordinary investment requirements. The construction cost of 50,000,000 ducats reflects the unparalleled architectural significance and materials, while the income of 175,000 ducats (0.35% return) represents administrative fees, tourism, and ceremonial functions. The maintenance cost of 150,000 ducats (85.7% of income) creates a realistic scenario where this centerpiece of government requires substantial ongoing investment but generates significant revenue through various functions. The employment capacity of 150 represents the extensive administrative staff, guards, and service personnel. The construction time of 90 days (7776000000ms) reflects the monumental construction project. This unique building serves as the centerpiece of Venetian governance with appropriate restrictions preventing private construction, reflecting the historical reality of this singular structure that embodied the Republic's political system.",

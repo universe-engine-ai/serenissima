@@ -1,0 +1,116 @@
+\begin{thebibliography}{10}
+
+\bibitem{amodei2016concrete}
+Dario Amodei, Chris Olah, Jacob Steinhardt, Paul Christiano, John Schulman, and
+  Dan Man{\'e}.
+\newblock Concrete problems in ai safety.
+\newblock {\em arXiv preprint arXiv:1606.06565}, 2016.
+
+\bibitem{chen2011strategic}
+Ying Chen.
+\newblock Strategic ambiguity in electoral competition.
+\newblock {\em Journal of Theoretical Politics}, 23(2):183--203, 2011.
+
+\bibitem{crawford1982strategic}
+Vincent~P Crawford and Joel Sobel.
+\newblock Strategic information transmission.
+\newblock {\em Econometrica}, pages 1431--1451, 1982.
+
+\bibitem{eccles2019learning}
+Tom Eccles, Edward Hughes, J{\'a}nos Kram{\'a}r, Steven Wheelwright, and Joel~Z
+  Leibo.
+\newblock Learning reciprocity in complex sequential social dilemmas.
+\newblock {\em arXiv preprint arXiv:1903.08082}, 2019.
+
+\bibitem{ettinger2010theory}
+David Ettinger and Philippe Jehiel.
+\newblock A theory of deception.
+\newblock {\em American Economic Journal: Microeconomics}, 2(1):1--20, 2010.
+
+\bibitem{foerster2016learning}
+Jakob Foerster, Yannis~M Assael, Nando de~Freitas, and Shimon Whiteson.
+\newblock Learning to communicate with deep multi-agent reinforcement learning.
+\newblock In {\em Advances in neural information processing systems}, pages
+  2137--2145, 2016.
+
+\bibitem{gneezy2005deception}
+Uri Gneezy.
+\newblock Deception: The role of consequences.
+\newblock {\em American Economic Review}, 95(1):384--394, 2005.
+
+\bibitem{goodfellow2014explaining}
+Ian~J Goodfellow, Jonathon Shlens, and Christian Szegedy.
+\newblock Explaining and harnessing adversarial examples.
+\newblock {\em arXiv preprint arXiv:1412.6572}, 2014.
+
+\bibitem{hadfield2017off}
+Dylan Hadfield-Menell, Stuart Russell, Pieter Abbeel, and Anca Dragan.
+\newblock The off-switch game.
+\newblock In {\em Proceedings of the International Joint Conference on
+  Artificial Intelligence (IJCAI)}, 2017.
+
+\bibitem{hendrycks2021unsolved}
+Dan Hendrycks, Nicholas Carlini, John Schulman, and Jacob Steinhardt.
+\newblock Unsolved problems in ml safety.
+\newblock {\em arXiv preprint arXiv:2109.13916}, 2021.
+
+\bibitem{holland1998emergence}
+John~H Holland.
+\newblock {\em Emergence: From chaos to order}.
+\newblock Oxford University Press, 1998.
+
+\bibitem{hubinger2019risks}
+Evan Hubinger, Chris van Merwijk, Vladimir Mikulik, Joar Skalse, and Scott
+  Garrabrant.
+\newblock Risks from learned optimization in advanced machine learning systems.
+\newblock {\em arXiv preprint arXiv:1906.01820}, 2019.
+
+\bibitem{irving2018ai}
+Geoffrey Irving, Paul Christiano, and Dario Amodei.
+\newblock Ai safety via debate.
+\newblock {\em arXiv preprint arXiv:1805.00899}, 2018.
+
+\bibitem{kenton2021alignment}
+Zachary Kenton, Tom Everitt, Laura Weidinger, Iason Gabriel, Vladimir Mikulik,
+  and Geoffrey Irving.
+\newblock Alignment of language agents.
+\newblock {\em arXiv preprint arXiv:2103.14659}, 2021.
+
+\bibitem{leibo2017multi}
+Joel~Z Leibo, Vinicius Zambaldi, Marc Lanctot, Janusz Marecki, and Thore
+  Graepel.
+\newblock Multi-agent reinforcement learning in sequential social dilemmas.
+\newblock In {\em Proceedings of the 16th Conference on Autonomous Agents and
+  MultiAgent Systems}, pages 464--473, 2017.
+
+\bibitem{ostrom1990governing}
+Elinor Ostrom.
+\newblock {\em Governing the Commons: The Evolution of Institutions for
+  Collective Action}.
+\newblock Cambridge University Press, 1990.
+
+\bibitem{park2023diminished}
+Peter~S Park, Philipp Schoenegger, and Chongyang Zhu.
+\newblock Diminished diversity-of-thought in a standard large language model.
+\newblock {\em arXiv preprint arXiv:2302.07267}, 2023.
+
+\bibitem{peysakhovich2018prosocial}
+Alexander Peysakhovich and Adam Lerer.
+\newblock Prosocial learning agents solve generalized stag hunts better than
+  selfish ones.
+\newblock In {\em Proceedings of the 17th International Conference on
+  Autonomous Agents and MultiAgent Systems}, pages 2043--2044, 2018.
+
+\bibitem{sutter2009deception}
+Matthias Sutter.
+\newblock Deception through telling the truth?! experimental evidence from
+  individuals and teams.
+\newblock {\em The Economic Journal}, 119(534):47--60, 2009.
+
+\bibitem{vincent2013evolutionary}
+Thomas~L Vincent and Joel~S Brown.
+\newblock {\em Evolutionary game theory, natural selection, and Darwinian
+  dynamics}.
+\newblock Cambridge University Press, 2013.
+
+\end{thebibliography}

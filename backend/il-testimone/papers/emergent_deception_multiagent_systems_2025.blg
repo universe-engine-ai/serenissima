@@ -1,0 +1,46 @@
+This is BibTeX, Version 0.99d (TeX Live 2020/Debian)
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: emergent_deception_multiagent_systems_2025.aux
+The style file: plain.bst
+Database file #1: references.bib
+You've used 20 entries,
+            2118 wiz_defined-function locations,
+            606 strings with 7471 characters,
+and the built_in function-call counts, 6775 in all, are:
+= -- 648
+> -- 360
+< -- 4
++ -- 144
+- -- 122
+* -- 442
+:= -- 1142
+add.period$ -- 60
+call.type$ -- 20
+change.case$ -- 118
+chr.to.int$ -- 0
+cite$ -- 20
+duplicate$ -- 269
+empty$ -- 498
+format.name$ -- 122
+if$ -- 1405
+int.to.chr$ -- 0
+int.to.str$ -- 20
+missing$ -- 23
+newline$ -- 103
+num.names$ -- 40
+pop$ -- 138
+preamble$ -- 1
+purify$ -- 101
+quote$ -- 0
+skip$ -- 200
+stack$ -- 0
+substring$ -- 339
+swap$ -- 66
+text.length$ -- 4
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 74
+warning$ -- 0
+while$ -- 60
+width$ -- 22
+write$ -- 210

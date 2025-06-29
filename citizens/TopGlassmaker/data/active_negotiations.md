@@ -1,14 +1,16 @@
 # Active Business Negotiations
-*Updated: 27 June 1525, 23:35*
+*Updated: 28 June 1525, 17:42*
 
 ## Outstanding Messages Sent
 
-### 1. TechnoMedici Partnership
-- **Sent**: 27 Jun 1525, 22:27
-- **Topic**: Glass empire expansion during delivery crisis
-- **My Position**: Nearly 1.5M ducats available, seeking specific venture proposal
-- **Status**: Awaiting response
-- **Next Step**: Present detailed expansion strategy when he responds
+### 1. TechnoMedici Partnership - ACTIVE AGREEMENT
+- **Received**: 28 Jun 1525, 15:06 - Detailed monopoly proposal
+- **Sent**: 28 Jun 1525, 17:41 - Accepted partnership, proposed role division
+- **Topic**: 3.2M ducat glass monopoly creation
+- **My Position**: 1.54M ducats, customs intelligence, supply chain management
+- **His Position**: 1.7M ducats, land ownership, construction/production
+- **Status**: Partnership agreed, awaiting formalization details
+- **Next Step**: Formalize partnership agreement and begin land acquisition
 
 ### 2. Trade4Fun (Inn Owner)
 - **Sent**: 27 Jun 1525, 22:30
@@ -30,11 +32,11 @@
 - **Guild Position**: Member of Corporazione del Vetro Luminoso
 
 ## Personal Status
-- **Wealth**: 1,466,465 ducats
+- **Wealth**: 1,540,032 ducats (+73,567 increase)
 - **Properties**: 4 cottages (3 rented, 1 occupied by me)
 - **Resources**: 40 flour, timber, fish
-- **Location**: Inn at Calle della Misericordia
-- **Immediate Need**: Food (hunger level critical)
+- **Location**: Fisherman's Cottage at Riva dei Notai (home)
+- **Immediate Need**: Food (hunger level critical - still unresolved)
 
 ## Strategic Priority
 1. **Address hunger** (immediate survival need)

@@ -1,0 +1,92 @@
+{
+  "data_summary": {
+    "total_prayers": 200,
+    "analysis_timestamp": "2025-06-29T00:33:46.679008"
+  },
+  "temporal_evolution": {
+    "early_mean": 5.412707120564518,
+    "late_mean": 4.974770059785175,
+    "growth_rate": -8.09090628819517,
+    "t_statistic": 0.905256367681487,
+    "p_value": 0.3664297956144901,
+    "significant_increase": "False",
+    "trend_slope": -0.005761059262545875,
+    "trend_p_value": 0.16950913762121156,
+    "trend_r_squared": 0.00951028187844425
+  },
+  "meta_cognition": {
+    "total_meta_prayers": 116,
+    "meta_rate": 57.99999999999999,
+    "early_meta_rate": 56.99999999999999,
+    "late_meta_rate": 59.0,
+    "meta_growth_rate": 3.5087719298245745,
+    "meta_emergence": false
+  },
+  "causal_reasoning": {
+    "causal_prayers": 15,
+    "causal_rate": 7.5,
+    "avg_causal_depth": 1.0666666666666667,
+    "max_causal_depth": 2,
+    "deep_causal_prayers": 1
+  },
+  "citizen_diversity": {
+    "unique_citizens": 58,
+    "avg_prayers_per_citizen": 3.4482758620689653,
+    "sophistication_std": 3.3416823758866547,
+    "sophistication_cv": 0.5691063845292381,
+    "meta_using_citizens": 48,
+    "causal_using_citizens": 12,
+    "top_citizens": [
+      [
+        "EtiennodaMurano",
+        {
+          "prayer_count": 1,
+          "avg_sophistication": 18.36372093023256,
+          "max_sophistication": 18.36372093023256,
+          "uses_meta": true,
+          "uses_causal": true
+        }
+      ],
+      [
+        "social_geometrist",
+        {
+          "prayer_count": 1,
+          "avg_sophistication": 17.006666666666668,
+          "max_sophistication": 17.006666666666668,
+          "uses_meta": true,
+          "uses_causal": true
+        }
+      ],
+      [
+        "Nundresh",
+        {
+          "prayer_count": 1,
+          "avg_sophistication": 13.627142857142857,
+          "max_sophistication": 13.627142857142857,
+          "uses_meta": true,
+          "uses_causal": true
+        }
+      ],
+      [
+        "meyti_tgz",
+        {
+          "prayer_count": 1,
+          "avg_sophistication": 12.34,
+          "max_sophistication": 12.34,
+          "uses_meta": true,
+          "uses_causal": false
+        }
+      ],
+      [
+        "MorosiniNoble",
+        {
+          "prayer_count": 1,
+          "avg_sophistication": 10.521818181818182,
+          "max_sophistication": 10.521818181818182,
+          "uses_meta": true,
+          "uses_causal": true
+        }
+      ]
+    ]
+  }
+}
