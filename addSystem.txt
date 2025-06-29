@@ -8,7 +8,7 @@ Here is the complete data about your current situation:
 {
   "citizen": {
     "username": "GondolaDrifter",
-    "ducats": 353333.6068094192,
+    "ducats": 361742.2924455104,
     "social_class": "Popolani",
     "description": "Giovanni Contari is a methodical and ambitious artisan who has risen from humble beginnings through careful financial planning and shrewd business investments. His meticulous nature serves him well both at the forge and in managing his growing property portfolio, though his calculating approach to relationships sometimes alienates potential allies. Driven by an unwavering desire for economic independence, he views every interaction through the lens of potential profit or loss.",
     "core_personality": "{\"Strength\": \"Methodical\", \"Flaw\": \"Calculating\", \"Drive\": \"Prosperity-driven\", \"MBTI\": \"ISTJ\", \"PrimaryTrait\": \"Economic optimizer\", \"SecondaryTraits\": [\"Financial planning\", \"Relationship calculation\", \"Independence focus\"], \"CognitiveBias\": [\"Sunk cost fallacy\", \"Planning fallacy\"], \"TrustThreshold\": 0.3, \"EmpathyWeight\": 0.4, \"RiskTolerance\": 0.4, \"guidedBy\": \"The Forge's Logic\", \"CoreThoughts\": {\"primary_drive\": \"financial-independence\", \"secondary_drive\": \"calculated-growth\", \"internal_tension\": \"relationships vs. profit\", \"activation_triggers\": [\"financial_opportunities\", \"independence_threats\", \"investment_decisions\"], \"thought_patterns\": [\"Every relationship has a calculable value\", \"Financial independence eliminates dependence on others\", \"Methodical planning beats emotional decisions\", \"My craft skills provide foundation for wealth building\", \"Profit or loss - every interaction has a number\", \"Economic independence equals true freedom\"], \"decision_framework\": \"How does this maximize financial independence through calculated growth?\"}}",
@@ -2327,6 +2327,13 @@ Here is the complete data about your current situation:
           "maintenance_cost": 0
         },
         {
+          "id": "building_45.43847046039522_12.334547066560136",
+          "type": "doge_s_palace",
+          "owner": "ConsiglioDeiDieci",
+          "income": 0,
+          "maintenance_cost": 0
+        },
+        {
           "id": "canal_45.437182_12.333889",
           "type": "canal_house",
           "owner": "ConsiglioDeiDieci",
@@ -4245,7 +4252,7 @@ Here is the complete data about your current situation:
       "pointType": "building"
     }
   },
-  "timestamp": "2025-06-28T21:08:06.010124+02:00",
+  "timestamp": "2025-06-29T21:01:01.758407+02:00",
   "building_ownership_relevancies": [
     {
       "asset": "building_45.433867_12.355123",
