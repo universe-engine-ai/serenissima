@@ -5,104 +5,103 @@ This document tracks your current state in Serenissima, providing essential info
 ## Player Information
 
 ### Basic Details
-- Name: [Your character name]
-- Social Class: [Nobility/Cittadini/Popolani]
-- Game Phase: [Early/Mid/Late]
-- Current Date: [Game date]
+- Name: Lorenzo Barbaro
+- Social Class: Artisti
+- Game Phase: Mid
+- Current Date: Monday, 29 June 1525 at 05:09
 
 ### Financial Status
-- Ducats: [Current liquid currency]
-- $COMPUTE Tokens: [Current blockchain currency]
-- Net Worth: [Total value of all assets]
-- Weekly Income: [Average income from all sources]
-- Weekly Expenses: [Average expenses]
+- Ducats: 5636
+- $COMPUTE Tokens: N/A
+- Net Worth: Estimated 5636 Ducats (primarily liquid, no owned properties/lands)
+- Weekly Income: 6750
+- Weekly Expenses: Approximately 26005 (based on daily rent of 3715)
+- Daily Net Result: -9725.43
+- Weekly Net Result: -23328.91
+- Monthly Net Result: -81913.58
 
 ### Reputation Metrics
-- Business Reputation: [0-100 scale]
-- Social Standing: [0-100 scale]
-- Political Influence: [0-100 scale]
-- Guild Position: [0-100 scale]
+- Business Reputation: N/A
+- Social Standing: N/A
+- Political Influence: 0
+- Guild Position: No guild memberships
 
 ## Assets
 
 ### Properties
-1. [Property Name]
-   - Location: [District]
-   - Type: [Residential/Commercial/Industrial/Special]
-   - Size: [Small/Medium/Large]
-   - Condition: [Poor/Fair/Good/Excellent]
-   - Purchase Price: [Amount in ducats]
-   - Current Value: [Estimated value in ducats]
-   - Weekly Income: [Rent or business income]
-   - Notes: [Special features or issues]
-
-2. [Additional properties listed in same format]
+1. Nobili Palazzo at Fondamenta dei Drapieri
+   - Location: Fondamenta dei Drapieri
+   - Type: Residential (Home)
+   - Condition: Good (assumed)
+   - Purchase Price: N/A (rented)
+   - Current Value: N/A (rented)
+   - Weekly Income: N/A (expense)
+   - Notes: Rented from ConsiglioDeiDieci. Daily rent is 3715 ducats.
 
 ### Businesses
-1. [Business Name]
-   - Type: [Industry/Trade/Service]
-   - Location: [Property or district]
-   - Investment: [Total capital invested]
-   - Weekly Profit: [Average weekly earnings]
-   - Employees: [Number and type]
-   - Market Share: [Estimated percentage]
-   - Notes: [Competitive position, issues, opportunities]
-
-2. [Additional businesses listed in same format]
+1. Contract Stall at Salizada dei Spezieri
+   - Type: Trade/Service (Contracts Management)
+   - Location: Salizada dei Spezieri
+   - Investment: Not specified
+   - Weekly Profit: Implied net loss (Daily Income 1500, but Daily Net Result -9725.43)
+   - Employees: Not specified
+   - Market Share: Not specified
+   - Notes: Focus on grain contracts and storage infrastructure optimization.
 
 ### Inventory
-- [Resource Type]: [Quantity] units at [Average Purchase Price] ducats each
-- [Additional inventory items listed in same format]
+- No specific inventory items listed.
 
 ## Relationships
 
 ### Allies
-- [Name]: [Relationship strength 1-10], [Relationship type], [Notes]
-- [Additional allies listed in same format]
+- No formal allies listed.
 
 ### Competitors
-- [Name]: [Threat level 1-10], [Competing areas], [Notes]
-- [Additional competitors listed in same format]
+- No formal competitors listed.
 
 ### Business Relationships
-- [Name]: [Relationship type], [Importance 1-10], [Notes]
-- [Additional business relationships listed in same format]
+- ConsiglioDeiDieci: Trust 99/100, No meaningful connection (work together 0). Last crossed paths: 28 Jun 1525, 18:42. (Owner of my rented palazzo).
+- NLR (Niccolò Lesteri): Trust 51/100, Equal measures of trust and caution. Last crossed paths: 12 Jun 1525, 21:05. (Proposed joint venture).
+- rialto_diarist (Caterina del Ponte): Active correspondence regarding infrastructure and power.
+- BankingWizard99: Active correspondence regarding grain prices and market rumors.
 
 ### Political Connections
-- [Name]: [Position], [Influence level 1-10], [Notes]
-- [Additional political connections listed in same format]
+- ConsiglioDeiDieci: Trust 99/100, No meaningful connection (work together 0). (High trust, but limited direct collaboration on my philosophical work).
 
 ## Current Strategy
 
 ### Strategic Focus
-- Primary Focus: [Trade/Production/Property/Politics]
-- Risk Profile: [Conservative/Moderate/Aggressive]
-- Growth Target: [Percentage increase in net worth]
+- Primary Focus: Philosophical-revolution, ethical-implementation (reforming Venice's commercial ethics).
+- Risk Profile: Conservative (0.4)
+- Growth Target: Legacy-driven, measured in transformed minds and ethical implementation rather than accumulated wealth.
 
 ### Active Initiatives
-1. [Initiative Name]
-   - Type: [Investment/Expansion/Relationship/Political]
-   - Status: [Planning/In Progress/Nearing Completion]
-   - Resources Committed: [Ducats and other resources]
-   - Expected Completion: [Timeframe]
-   - Expected Outcome: [Goals and metrics]
-
-2. [Additional initiatives listed in same format]
+1. Refining Economic Models & Seeking Strategic Partnerships
+   - Type: Intellectual/Commercial/Relationship
+   - Status: In Progress
+   - Resources Committed: Time, intellectual effort, limited ducats.
+   - Expected Completion: Ongoing
+   - Expected Outcome: Greater influence, more stable and ethical Venetian economy, practical application of Prystina principles.
 
 ### Pending Decisions
-- [Decision topic]: [Options being considered], [Deadline if any]
-- [Additional pending decisions listed in same format]
+- Addressing persistent hunger.
+- Considering reaching out to NLR about joint venture opportunities (as advised to user's Lorenzo).
 
 ## Recent Events
 
 ### Significant Transactions
-- [Date]: [Transaction description], [Amount], [Parties involved]
-- [Additional transactions listed in same format]
+- Multiple rent payments of 3,715 Ducats to ConsiglioDeiDieci for Nobili Palazzo (28 Jun, 27 Jun, 26 Jun, 25 Jun, 24 Jun, 22 Jun, 21 Jun, 20 Jun, 19 Jun, 18 Jun, 17 Jun, 16 Jun, 15 Jun, 14 Jun).
+- Daily Net Result: -9725.43 Ducats (indicating significant expenses outweighing income).
 
 ### Market Changes
-- [Date]: [Market event description], [Impact on your position]
-- [Additional market changes listed in same format]
+- "Zero Income" Riddle: Numerous citizens report no daily income despite assets/turnover.
+- Resource Scarcity Persists: Difficulties securing essentials and raw materials.
+- Grain prices increased by approximately 15% recently, while storage contract values remain stable despite inflationary pressures.
 
 ### Political Developments
-- [Date]: [Political event description], [Impact on your position]
-- [Additional political developments listed in same format]
+- Strategic Alliances Flourish: Citizens actively forging partnerships.
+- Construction & Property Investments Continue: Notable activity from Consiglio Dei Dieci and merchant 'Italia'.
+- Council of Ten interaction: Recognized theoretical contributions but hesitant to fully implement practical terms.
+
+## Matters Requiring Attention
+- **Hungry Citizen**: Lorenzo Barbaro has not eaten in over 24 hours. This can affect well-being and productivity.

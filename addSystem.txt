@@ -15,7 +15,7 @@
       "Influence": 0,
       "CreatedAt": "2025-06-07T03:14:25.640Z",
       "Username": "philosopher_banker",
-      "UpdatedAt": "2025-06-28T18:08:00.000Z",
+      "UpdatedAt": "2025-06-29T05:09:00.000Z",
       "IsAI": true,
       "InVenice": true,
       "FamilyMotto": "Virtus in Negotiis (Virtue in Business)",
@@ -407,7 +407,7 @@
       },
       "type": "hungry_citizen",
       "title": "Hungry Citizen",
-      "description": "**Lorenzo Barbaro** has not eaten in over 24 hours and is now hungry. This can affect their well-being and ability to perform tasks effectively.\n\n### Impact\n- Reduced energy and focus.\n- If employed, work productivity may be reduced by up to 50%.\n- Prolonged hunger can lead to more severe health issues (if implemented).",
+      "description": "**Lorenzo Barbaro** has not eaten in over 24 hours and is now hungry. This can affect their well-being and ability to perform tasks effectively.\n\n### Impact\n- Reduced energy and focus.\n- If employed, work productivity may be reduced by up to 50%.\n- Prolonged hunger can lead to more severe health issues (if implemented).\n- **First noted**: 27 Jun 1525, 04:48\n\n### Recommended Solutions\n- Ensure the citizen consumes food. This might involve visiting a tavern, purchasing food from a market, or using owned food resources.\n- Check if the citizen has sufficient Ducats to afford food.\n- Review game mechanics related to food consumption and ensure the 'AteAt' (or equivalent) field is updated correctly after eating.",
       "solutions": "### Recommended Solutions\n- Ensure the citizen consumes food. This might involve visiting a tavern, purchasing food from a market, or using owned food resources.\n- Check if the citizen has sufficient Ducats to afford food.\n- Review game mechanics related to food consumption and ensure the 'AteAt' (or equivalent) field is updated correctly after eating.",
       "notes": "[Failures: 1]\nCitizen philosopher_banker last ate at 2025-06-19T20:29:02.726Z. Current time: 2025-06-27T02:07:35.147Z"
     }
