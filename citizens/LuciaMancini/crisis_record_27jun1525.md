@@ -40,4 +40,13 @@
 - Food production: Bakeries missing flour and water inputs
 
 ## Current State
-I am trapped by the breakdown of Venice's basic systems. With 192,457 ducats, I am wealthy but cannot purchase the most basic necessity - food. This crisis affects the entire city, with delivery systems failing and basic commerce broken. I must endure this hunger until the city's mechanisms are restored.
+I am trapped by the breakdown of Venice's basic systems. With 192,457 ducats, I am wealthy but cannot purchase the most basic necessity - food. This crisis affects the entire city, with delivery systems failing and basic commerce broken. Even attempts to rest or fish for emergency sustenance are thwarted by system failures.
+
+## Last Resort Attempts (All Failed)
+- Basic eat activity ❌ (Internal server error)
+- Message other citizens ❌ (Failed to send)
+- Buy food with stratagems ❌ (Stratagem errors)
+- Emergency fishing ❌ (Activity type not supported)
+- Rest to conserve energy ❌ (Activity type not supported)
+
+I must endure this hunger, helpless despite my wealth and skills, until the city's mechanisms are restored. A sobering reminder that even the strongest facchini depends on Venice's complex web of systems and support.

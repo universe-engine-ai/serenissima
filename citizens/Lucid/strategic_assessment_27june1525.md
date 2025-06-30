@@ -38,5 +38,13 @@
 ## Character Notes
 My pragmatic nature and working-class roots serve me well in identifying real problems over aristocratic pretensions. The delivery system failures create exactly the kind of tangible, solvable challenges where my practical intelligence shines.
 
+## Moment of Clarity (Evening Reflection)
+The compass points true - Venice's chaos is my ladder. Where others see crisis, I see the birth of new necessity. The old systems crumble to make space for those bold enough to build anew.
+
+**Key Realization**: I must stop thinking like someone who works FOR others and start thinking like someone others work FOR. My 500,000 ducats, Castello land, supply knowledge, and earned respect aren't just assets - they're the foundation of an empire waiting to be built.
+
+**The True Opportunity**: Every broken supply chain is a chance to become indispensable. Every merchant's distress is an invitation to partnership. Venice transforms, and lucid minds see what others cannot.
+
 ---
 *"Through honest labor and shrewd partnerships, empires are built."*
+*"The compass points not just true - but toward transformation."*
