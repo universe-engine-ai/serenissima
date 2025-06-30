@@ -31,8 +31,8 @@ export default function TimeSeriesChart({ data, yField, xlabel, ylabel, critical
   // Prepare data for chart
   const chartData = data.map(d => ({
     ...d,
-    time: formatTime(d.timestamp),
-    value: d[yField]
+    time: d.time || (d.timestamp ? formatTime(d.timestamp) : ''),
+    value: d[yField] || d.value
   }));
 
   // Custom tooltip

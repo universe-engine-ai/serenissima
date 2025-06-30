@@ -399,13 +399,15 @@ export const TransactionCriticality: React.FC = () => {
                     How many transactions are triggered by each transaction
                   </p>
                 </div>
-                  <TimeSeriesChart
-                    data={branchingRatioData}
-                    ylabel="Branching Ratio (σ)"
-                    height={400}
-                    showCriticalLine={true}
-                    criticalValue={1.0}
-                  />
+                  <div style={{ height: 400 }}>
+                    <TimeSeriesChart
+                      data={branchingRatioData}
+                      yField="value"
+                      xlabel="Time"
+                      ylabel="Branching Ratio (σ)"
+                      criticalLine={1.0}
+                    />
+                  </div>
                   <div className="mt-4 p-4 bg-gray-100 rounded-lg">
                     <div className="flex items-start gap-2">
                       <FaInfoCircle className="w-4 h-4 mt-0.5 text-gray-600" />
