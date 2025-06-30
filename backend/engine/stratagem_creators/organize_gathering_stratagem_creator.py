@@ -67,7 +67,8 @@ def try_create(
         "inn", "piazza", "palazzo", "merchant_s_house",
         "church", "library", "market", "arsenal",
         "great_palazzo", "grand_piazza", "townhall", 
-        "guild_hall", "public_forum", "assembly_hall"
+        "guild_hall", "public_forum", "assembly_hall",
+        "doge_s_palace"  # Allow gatherings at the Doge's Palace for important civic events
     ]
     
     if building_type not in allowed_gathering_types:
@@ -137,7 +138,6 @@ def try_create(
         "Type": stratagem_type,
         "Name": name,
         "Category": "social",
-        "Nature": "collaborative",
         "ExecutedBy": citizen_username,
         "Status": "active",
         "ExecutedAt": None,  # Will be set when first person arrives
