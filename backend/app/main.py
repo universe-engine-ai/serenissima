@@ -45,7 +45,8 @@ from backend.engine.stratagem_creators import (
     try_create_information_network_stratagem, # Added information_network
     try_create_maritime_blockade_stratagem, # Added maritime_blockade
     try_create_canal_mugging_stratagem, # Added canal_mugging
-    try_create_marketplace_gossip_stratagem # Added marketplace_gossip
+    try_create_marketplace_gossip_stratagem, # Added marketplace_gossip
+    try_create_transfer_ducats_stratagem # Added transfer_ducats
 )
 from backend.engine.stratagem_processors import (
     process_undercut_stratagem,
@@ -58,7 +59,8 @@ from backend.engine.stratagem_processors import (
     process_information_network_stratagem, # Added information_network
     process_maritime_blockade_stratagem, # Added maritime_blockade
     process_canal_mugging_stratagem, # Added canal_mugging
-    process_marketplace_gossip_stratagem # Added marketplace_gossip
+    process_marketplace_gossip_stratagem, # Added marketplace_gossip
+    process_transfer_ducats_stratagem # Added transfer_ducats
 )
 
 
@@ -3541,6 +3543,7 @@ STRATAGEM_CREATORS_ENGINE = {
     "maritime_blockade": try_create_maritime_blockade_stratagem, # Added maritime_blockade
     "canal_mugging": try_create_canal_mugging_stratagem, # Added canal_mugging
     "marketplace_gossip": try_create_marketplace_gossip_stratagem, # Added marketplace_gossip
+    "transfer_ducats": try_create_transfer_ducats_stratagem, # Added transfer_ducats
     # Add other stratagem creators here
 }
 
@@ -3556,6 +3559,7 @@ STRATAGEM_PROCESSORS_ENGINE = {
     "maritime_blockade": process_maritime_blockade_stratagem, # Added maritime_blockade
     "canal_mugging": process_canal_mugging_stratagem, # Added canal_mugging
     "marketplace_gossip": process_marketplace_gossip_stratagem, # Added marketplace_gossip
+    "transfer_ducats": process_transfer_ducats_stratagem, # Added transfer_ducats
     # Add other stratagem processors here
 }
 

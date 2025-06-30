@@ -132,7 +132,7 @@ def get_citizen_houses() -> List[Dict[str, Any]]:
     return citizen_houses
 
 def get_books_in_building(building_id: str) -> List[str]:
-    """Get list of book titles already in a building."""
+    """Get list of book titles already in a building (using BuildingId)."""
     # Get all resources of type 'books' in this building
     formula = f"AND({{Type}} = 'books', {{Asset}} = '{building_id}', {{AssetType}} = 'building')"
     books = resources_table.all(formula=formula)
@@ -154,8 +154,17 @@ def get_books_in_building(building_id: str) -> List[str]:
     
     return book_titles
 
-def create_book_resource(book_name: str, building_id: str, owner_id: str, is_science_book: bool = False, subdirectory: str = '') -> Dict[str, Any]:
-    """Create a book resource with proper attributes."""
+def create_book_resource(book_name: str, asset_id: str, owner_id: str, asset_type: str = 'building', is_science_book: bool = False, subdirectory: str = '') -> Dict[str, Any]:
+    """Create a book resource with proper attributes.
+    
+    Args:
+        book_name: Name of the book file (without extension)
+        asset_id: Either building_id or citizen username depending on asset_type
+        owner_id: The citizen who owns the book
+        asset_type: 'building' or 'citizen' - determines where the book is stored
+        is_science_book: Whether this is a science book
+        subdirectory: Subdirectory in public/books/ where the book is located
+    """
     # Check which file extension exists
     books_dir = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))), 'public', 'books')
     
@@ -188,8 +197,8 @@ def create_book_resource(book_name: str, building_id: str, owner_id: str, is_sci
         'ResourceId': f'resource-book-{datetime.now().strftime("%Y%m%d%H%M%S")}-{random.randint(1000, 9999)}',
         'Type': 'books',
         'Name': 'Books',  # Generic name for the resource type
-        'Asset': building_id,  # The building where the book is stored
-        'AssetType': 'building',
+        'Asset': asset_id,  # Either building ID or citizen username
+        'AssetType': asset_type,  # 'building' or 'citizen'
         'Owner': owner_id,  # The citizen who owns the book
         'Count': 1.0,  # Number of books (as float)
         'Attributes': json.dumps({
@@ -233,7 +242,7 @@ def sync_science_houses():
         print(f"\nChecking {house_name} (managed by {owner_id})...")
         
         # Get existing books in this building
-        existing_books = get_books_in_building(house_id)
+        existing_books = get_books_in_building(building_id)  # Use BuildingId here
         existing_titles = [title.lower() for title in existing_books]
         
         # Check each science book
@@ -244,7 +253,7 @@ def sync_science_houses():
             if book_title.lower() not in existing_titles:
                 # Add this book
                 try:
-                    book = create_book_resource(book_name, house_id, owner_id, is_science_book=True)
+                    book = create_book_resource(book_name, building_id, owner_id, asset_type='building', is_science_book=True)  # Use BuildingId here
                     books_added += 1
                     total_added += 1
                     print(f"  + Added '{book_title}'")
@@ -305,6 +314,7 @@ def distribute_books(book_name: str, num_copies: int):
             
         house_id = house['id']
         house_name = house['fields'].get('Name', 'Unknown')
+        building_id = house['fields'].get('BuildingId', house_id)  # Get BuildingId, fallback to record ID
         occupant = house['fields'].get('Occupant')
         
         if not occupant:
@@ -314,7 +324,7 @@ def distribute_books(book_name: str, num_copies: int):
         owner_id = occupant  # The occupant owns the book
         
         # Check if this house already has this book
-        existing_books = get_books_in_building(house_id)
+        existing_books = get_books_in_building(building_id)  # Use BuildingId here
         book_title = book_name.replace('_', ' ')
         
         if book_title in existing_books:
@@ -323,7 +333,7 @@ def distribute_books(book_name: str, num_copies: int):
         
         # Create the book resource
         try:
-            book = create_book_resource(book_name, house_id, owner_id, subdirectory=subdirectory)
+            book = create_book_resource(book_name, building_id, owner_id, asset_type='building', subdirectory=subdirectory)  # Use BuildingId here
             distributed += 1
             print(f"[{distributed}/{num_copies}] Placed '{book_title}' in {house_name}")
         except Exception as e:
@@ -342,11 +352,89 @@ def distribute_books(book_name: str, num_copies: int):
         else:
             print("- Some houses already had this book")
 
+def get_books_on_citizen(username: str) -> List[str]:
+    """Get list of book titles already owned by a citizen (using username)."""
+    # Get all resources of type 'books' owned by this citizen
+    formula = f"AND({{Type}} = 'books', {{Asset}} = '{username}', {{AssetType}} = 'citizen')"
+    books = resources_table.all(formula=formula)
+    
+    book_titles = []
+    for book in books:
+        attributes = book['fields'].get('Attributes', {})
+        if isinstance(attributes, dict) and 'title' in attributes:
+            book_titles.append(attributes['title'])
+        elif isinstance(attributes, str):
+            # Try to parse as JSON
+            try:
+                import json
+                attrs = json.loads(attributes)
+                if 'title' in attrs:
+                    book_titles.append(attrs['title'])
+            except:
+                pass
+    
+    return book_titles
+
+def distribute_books_to_citizens(book_name: str, citizen_usernames: List[str]):
+    """Distribute a book to specific citizens by username."""
+    # Verify the book exists
+    all_books = get_all_available_books()
+    if book_name not in all_books:
+        print(f"Error: Book '{book_name}' not found in public/books/")
+        return
+    
+    subdirectory = all_books[book_name]
+    
+    # Track distribution
+    distributed = 0
+    skipped_citizens = []
+    
+    for username in citizen_usernames:
+        # Check if citizen exists
+        citizen_records = citizens_table.all(formula=f"{{Username}} = '{username}'")
+        if not citizen_records:
+            print(f"Warning: Citizen '{username}' not found, skipping...")
+            continue
+            
+        citizen = citizen_records[0]
+        citizen_id = citizen['fields'].get('CitizenId', username)
+        
+        # Check if this citizen already has this book
+        existing_books = get_books_on_citizen(username)
+        book_title = book_name.replace('_', ' ').replace('-', ' ')
+        
+        if book_title in existing_books:
+            skipped_citizens.append(username)
+            print(f"  ✓ {username} already has '{book_title}'")
+            continue
+        
+        # Create the book resource
+        try:
+            book = create_book_resource(
+                book_name, 
+                username,  # Asset is the username
+                username,  # Owner is also the username
+                asset_type='citizen',  # AssetType is 'citizen'
+                subdirectory=subdirectory
+            )
+            distributed += 1
+            print(f"  + Gave '{book_title}' to {username}")
+        except Exception as e:
+            print(f"  ! Error giving book to {username}: {e}")
+    
+    # Summary
+    print(f"\nDistribution complete!")
+    print(f"Books distributed: {distributed}/{len(citizen_usernames)}")
+    if skipped_citizens:
+        print(f"Skipped {len(skipped_citizens)} citizens who already had this book")
+
 def main():
     if len(sys.argv) < 2:
         print("Usage: python distribute_books.py <book_name> <number_of_copies>")
+        print("       python distribute_books.py <book_name> --to-citizens <username1> <username2> ...")
         print("       python distribute_books.py --sync-science-houses")
         print("\nExample: python distribute_books.py The_Merchant_of_Venice 50")
+        print("         python distribute_books.py The_Whispered_Prophecy --to-citizens canon_philosopher divine_economist scholar_priest")
         print("         python distribute_books.py chronicles-of-change 1")
         print("         python distribute_books.py --sync-science-houses")
         
@@ -372,6 +460,14 @@ def main():
     # Check for sync science houses command
     if sys.argv[1] == '--sync-science-houses':
         sync_science_houses()
+        return
+    
+    # Check for citizen distribution
+    if len(sys.argv) >= 4 and sys.argv[2] == '--to-citizens':
+        book_name = sys.argv[1]
+        citizen_usernames = sys.argv[3:]
+        print(f"Distributing '{book_name}' to {len(citizen_usernames)} specific citizens...")
+        distribute_books_to_citizens(book_name, citizen_usernames)
         return
     
     # Normal book distribution

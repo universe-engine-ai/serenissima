@@ -183,7 +183,7 @@ def generate_citizen(social_class: str, additional_prompt_text: Optional[str] = 
                 "content": prompt,
                 "model": "claude-3-7-sonnet-latest",
                 "mode": "creative",
-                "addSystem": f"You are a historical expert on Renaissance Venice (1400-1600) helping to create a citizen for a historically accurate economic simulation game called La Serenissima. Create 1 unique Venetian citizen of the {social_class} social class with historically accurate name, description, and characteristics. Your response MUST be a valid JSON object with EXACTLY this format:\n\n```json\n{{\n  \"FirstName\": \"string\",\n  \"LastName\": \"string\",\n  \"Username\": \"string\",\n  \"Personality\": \"string\",\n  \"CorePersonality\": [\"Positive Trait\", \"Negative Trait\", \"Core Motivation\"],\n  \"ImagePrompt\": \"string\",\n  \"Ducats\": number\n}}\n```\n\nThe Username should be a realistic, human-like username that someone might choose based on their name or characteristics (like 'marco_polo' or 'gondolier42'). Make it lowercase with only letters, numbers and underscores. The CorePersonality should be an array of three strings: [Positive Trait, Negative Trait, Core Motivation], representing the citizen's strength (what they excel at), flaw (what limits them), and driver (what fundamentally motivates them). The Personality field should provide a textual description (2-3 sentences) elaborating on these three core traits, values, and temperament. Do not include any text before or after the JSON. The Ducats value should be between 10,000-100,000. Don't use the same names and tropes than the previous generations."
+                "addSystem": f"You are a historical expert on Renaissance Venice (1400-1600) helping to create a citizen for a historically accurate economic simulation game called La Serenissima. Create 1 unique Venetian citizen of the {social_class} social class with historically accurate name, description, and characteristics. {'If creating an Innovatori, they should be creative inventors, engineers, and reality architects who design new systems and innovations for Venice. They combine merchant skills with visionary thinking.' if social_class == 'Innovatori' else ''} Your response MUST be a valid JSON object with EXACTLY this format:\n\n```json\n{{\n  \"FirstName\": \"string\",\n  \"LastName\": \"string\",\n  \"Username\": \"string\",\n  \"Personality\": \"string\",\n  \"CorePersonality\": {{\n    \"Strength\": \"string\",\n    \"Flaw\": \"string\",\n    \"Drive\": \"string\",\n    \"MBTI\": \"string\",\n    \"PrimaryTrait\": \"string\",\n    \"SecondaryTraits\": [\"trait1\", \"trait2\", \"trait3\"],\n    \"CognitiveBias\": [\"bias1\", \"bias2\"],\n    \"TrustThreshold\": number,\n    \"EmpathyWeight\": number,\n    \"RiskTolerance\": number,\n    \"guidedBy\": \"string\",\n    \"CoreThoughts\": {{\n      \"primary_drive\": \"string\",\n      \"secondary_drive\": \"string\",\n      \"internal_tension\": \"string\",\n      \"activation_triggers\": [\"trigger1\", \"trigger2\", \"trigger3\"],\n      \"thought_patterns\": [\"thought1\", \"thought2\", \"thought3\", \"thought4\", \"thought5\", \"thought6\"],\n      \"decision_framework\": \"string\"\n    }}\n  }},\n  \"ImagePrompt\": \"string\",\n  \"Ducats\": number\n}}\n```\n\nThe Username should be a realistic, human-like username that someone might choose based on their name or characteristics (like 'marco_polo' or 'gondolier42'). Make it lowercase with only letters, numbers and underscores. \n\nThe CorePersonality should be a comprehensive psychological profile:\n- Strength: Their main positive trait/skill\n- Flaw: Their primary weakness or limitation\n- Drive: What motivates them (format: \"X-driven\" e.g. \"ambition-driven\", \"wealth-driven\", \"knowledge-driven\")\n- MBTI: A valid MBTI personality type (e.g. INTJ, ESFP, etc.)\n- PrimaryTrait: A concise description of their defining characteristic\n- SecondaryTraits: Array of 3 supporting traits/skills\n- CognitiveBias: Array of 2 psychological biases they exhibit\n- TrustThreshold: 0.1-0.9 (how easily they trust others)\n- EmpathyWeight: 0.1-0.9 (how much they consider others' feelings)\n- RiskTolerance: 0.1-0.9 (willingness to take risks)\n- guidedBy: Their philosophical/moral guide (e.g. \"The Document's Truth\", \"Divine Providence\", \"Market Forces\")\n- CoreThoughts: Deep psychological framework with drives, tensions, triggers, thought patterns, and decision-making approach\n\nThe Personality field should provide a textual description (2-3 sentences) that captures their essence based on the CorePersonality. Do not include any text before or after the JSON. The Ducats value should be between 10,000-100,000{'For Innovatori, set Ducats between 500,000-1,000,000 as they are wealthy inventors.' if social_class == 'Innovatori' else ''}. Don't use the same names and tropes than the previous generations."
             }
         )
         
@@ -381,7 +381,7 @@ if __name__ == "__main__":
     import argparse
     
     parser = argparse.ArgumentParser(description="Generate citizens for La Serenissima")
-    parser.add_argument("--socialClass", type=str, choices=["Nobili", "Cittadini", "Popolani", "Facchini", "Forestieri", "Artisti", "Clero", "Scientisti"], 
+    parser.add_argument("--socialClass", type=str, choices=["Nobili", "Cittadini", "Popolani", "Facchini", "Forestieri", "Artisti", "Clero", "Scientisti", "Innovatori"], 
                         help="Social class of the citizen to generate")
     parser.add_argument("--count", type=int, default=1, help="Number of citizens to generate (default: 1)")
     # Legacy arguments for backwards compatibility
@@ -393,6 +393,7 @@ if __name__ == "__main__":
     parser.add_argument("--artisti", type=int, default=0, help="Number of artisti to generate (deprecated, use --socialClass Artisti --count N)")
     parser.add_argument("--clero", type=int, default=0, help="Number of clero to generate (deprecated, use --socialClass Clero --count N)")
     parser.add_argument("--scientisti", type=int, default=0, help="Number of scientisti to generate (deprecated, use --socialClass Scientisti --count N)")
+    parser.add_argument("--innovatori", type=int, default=0, help="Number of innovatori to generate (deprecated, use --socialClass Innovatori --count N)")
     parser.add_argument("--output", type=str, help="Output JSON file path")
     parser.add_argument("--add-prompt", type=str, help="Additional text to append to the generation prompt for KinOS API.")
     parser.add_argument("--addMessage", type=str, help="Another message to append to the KinOS generation prompt.")
@@ -434,7 +435,8 @@ if __name__ == "__main__":
             "Forestieri": args.forestieri,
             "Artisti": args.artisti,
             "Clero": args.clero,
-            "Scientisti": args.scientisti
+            "Scientisti": args.scientisti,
+            "Innovatori": args.innovatori
         }
         
         # Filter out classes with zero count
@@ -484,7 +486,7 @@ if __name__ == "__main__":
                         "FirstName": citizen_data.get("firstname"),
                         "LastName": citizen_data.get("lastname"),
                         "Description": citizen_data.get("personality"), 
-                        "CorePersonality": json.dumps(citizen_data.get("corepersonality", [])),
+                        "CorePersonality": json.dumps(citizen_data.get("corepersonality", {})),
                         "ImagePrompt": citizen_data.get("imageprompt"),
                         "Ducats": citizen_data.get("ducats"),
                         "CreatedAt": citizen_data.get("createdat"),

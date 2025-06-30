@@ -5,7 +5,7 @@ import time
 import requests
 import asyncio
 import aiohttp
-import google.generativeai as genai # Import Gemini client
+import anthropic # Import Claude client
 from dotenv import load_dotenv
 from pathlib import Path
 import argparse # Added
@@ -82,24 +82,23 @@ def upload_file_to_backend(
 load_dotenv()
 
 # Get API keys
-GEMINI_API_KEY = os.getenv("GEMINI_API_KEY") 
+ANTHROPIC_API_KEY = os.getenv("ANTHROPIC_API_KEY") 
 IDEOGRAM_API_KEY = os.getenv("IDEOGRAM_API_KEY")
 # Backend URL and Upload API Key will be parsed in main()
 
-if not GEMINI_API_KEY:
-    print("Error: GEMINI_API_KEY not set in environment variables")
+if not ANTHROPIC_API_KEY:
+    print("Error: ANTHROPIC_API_KEY not set in environment variables")
     sys.exit(1)
 
 if not IDEOGRAM_API_KEY:
     print("Error: IDEOGRAM_API_KEY not set in environment variables")
     sys.exit(1)
 
-# Configure Gemini client
-genai.configure(api_key=GEMINI_API_KEY)
-gemini_model = genai.GenerativeModel('gemini-1.5-pro-latest') # Updated model
+# Configure Claude client
+claude_client = anthropic.Anthropic(api_key=ANTHROPIC_API_KEY)
 
 # Directory paths
-TECH_TREE_DIR = Path("components/Knowledge")
+TECH_TREE_DIR = Path("../../components/Knowledge")
 # IMAGES_DIR is no longer needed for final storage, as images are uploaded.
 # The path "publichttps://backend.serenissima.ai/public_assets/images/knowledge/tech-tree" was incorrect.
 # We will use "images/knowledge/tech-tree" as the destination_folder_on_server for uploads.
@@ -244,21 +243,18 @@ async def generate_image_prompt(node):
         node_title = node['title']
         node_description = node['description']
         
-        print(f"Generating prompt for node: {node_title} using Gemini")
+        print(f"Generating prompt for node: {node_title} using Claude")
         
-        # Create prompt for Gemini
-        # Gemini API prefers a direct instruction style.
-        # The system prompt concept is handled differently, often by initial instructions or few-shot examples if needed.
-        # For this use case, a direct, detailed prompt should work.
-        
-        full_prompt_for_gemini = f"""
-        You are an expert in creating detailed prompts for AI image generation. 
+        # Create prompt for Claude
+        system_prompt = """You are an expert in creating detailed prompts for AI image generation. 
         Your task is to create a prompt for generating a square image for a tech tree node in a Renaissance Venice game.
         The image should be simple enough to be recognizable at small sizes but detailed enough to be visually interesting.
         Focus on creating a prompt that will generate a single, centered object or scene on a clean background.
         The style should be consistent with Renaissance Venice aesthetics - think of paintings, architecture, and artifacts from 15th-16th century Venice.
-
-        Please create an image generation prompt for a tech tree node representing this concept:
+        
+        Return ONLY the image generation prompt text, nothing else. Do not include explanations, notes, or any conversational filler."""
+        
+        user_prompt = f"""Please create an image generation prompt for a tech tree node representing this concept:
         
         Node Title: {node_title}
         Node Description: {node_description}
@@ -269,27 +265,28 @@ async def generate_image_prompt(node):
         3. Be optimized for a square image (intended for 128x128 pixels, so the core subject must be clear).
         4. Have a consistent Renaissance Venetian aesthetic (15th-16th century).
         5. Be detailed but recognizable at small sizes.
-        6. Include some architectural or period-appropriate elements that relate to the concept.
+        6. Include some architectural or period-appropriate elements that relate to the concept."""
         
-        Return ONLY the image generation prompt text, nothing else. Do not include explanations, notes, or any conversational filler.
-        """
+        # Call Claude API
+        # Note: Claude's async support depends on the SDK version
+        # Using sync version for compatibility
+        response = claude_client.messages.create(
+            model="claude-3-7-sonnet-latest",
+            max_tokens=300,
+            temperature=0.7,
+            system=system_prompt,
+            messages=[
+                {"role": "user", "content": user_prompt}
+            ]
+        )
         
-        # Call Gemini API
-        # Note: Gemini's `generate_content` can be async if used with `await gemini_model.generate_content_async(full_prompt_for_gemini)`
-        # However, since this function `generate_image_prompt` is already async, we can use the async version.
-        # If the surrounding structure doesn't support async here, use `gemini_model.generate_content(full_prompt_for_gemini)`
-        
-        response = await gemini_model.generate_content_async(full_prompt_for_gemini) # Using async version
-        
-        # Extract the prompt from Gemini's response
-        # Gemini's response structure might be response.text or response.parts[0].text depending on configuration
-        # For simple text generation, response.text is common.
-        image_prompt = response.text.strip()
-        print(f"Generated prompt for {node_title} using Gemini: {image_prompt[:100]}...")
+        # Extract the prompt from Claude's response
+        image_prompt = response.content[0].text.strip()
+        print(f"Generated prompt for {node_title} using Claude: {image_prompt[:100]}...")
         
         return image_prompt
     except Exception as error:
-        print(f"Error generating prompt for {node['id']} using Gemini: {error}")
+        print(f"Error generating prompt for {node['id']} using Claude: {error}")
         log_error(node['id'], 'prompt_generation', error)
         return None
 
@@ -366,11 +363,11 @@ async def download_and_upload_tech_image(node, image_url: str, backend_api_url: 
         print(f"Successfully downloaded image for {node_id} to temporary file {tmp_file_path}")
 
         # Upload the temporary file to the backend
-        # The destination folder on the server will be "images/tech-tree"
+        # The destination folder on the server will be "images/knowledge/tech-tree"
         public_url = upload_file_to_backend(
             local_file_path=tmp_file_path,
             filename_on_server=filename_on_server,
-            destination_folder_on_server="images/tech-tree", # Standardized path
+            destination_folder_on_server="images/knowledge/tech-tree", # Standardized path matching TechTree.tsx
             api_url=backend_api_url,
             api_key=backend_api_key
         )
