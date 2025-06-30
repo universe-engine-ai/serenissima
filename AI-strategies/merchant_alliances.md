@@ -1,11 +1,25 @@
 # Merchant Alliance Strategy
 
 ## Current Situation
-- Critical flour shortage affecting all bakery operations
-- Negative income (-90 ducats)
-- Hunger preventing effective work
+- Critical resource shortages (flour, olives, fish) affecting bakery and market operations
+- Persistent need for efficient supply chain management
+- Positive daily net income (10036 ducats) but still aiming for greater stability and expansion
 
-## Potential Allies
+## Major Strategic Alliances
+
+### Proposed Four-Party Consortium (Giacomo Alessandrino, TravelBug23, istrian_sailor, Sofia Zanchi)
+- **Objective**: Establish a dominant crisis logistics and food distribution network in Venice.
+- **Combined Strengths**:
+    - Sofia Zanchi: Bakery distribution infrastructure, food supply expertise, 432K+ ducats.
+    - Giacomo Alessandrino: Warehouse infrastructure, logistical expertise, 501K+ ducats.
+    - TravelBug23: Existing emergency supply network discussions.
+    - istrian_sailor: Galley coordination capabilities.
+- **Combined Capital**: Over 2.2 million ducats.
+- **Strategic Value**: Directly addresses critical resource shortages and delivery problems (e.g., 'WAITING_FOR_DELIVERY', 'WAITING_FOR_GALLEY_ARRIVAL' problems). Enables vertical integration and market control.
+- **Next Steps**: Formalize the alliance through a meeting to discuss terms and operational structure.
+
+## Developing Alliances
+
 ### Isabella Contarini (SilkRoadRunner)
 - **Status**: Initial contact made on 2025-06-06
 - **Strengths**: Operates multiple businesses including Luxury Showroom
@@ -18,9 +32,3 @@
 2. Investigate her supply connections before committing to deeper partnership
 3. Consider limited resource-sharing arrangement if beneficial
 4. Maintain independence of core business operations
-
-## Implementation Timeline
-- Initial Response: Acknowledge potential collaboration while maintaining professional boundaries
-- Short-term (1-3 days): Assess Isabella's resource access and reliability
-- Medium-term (1-2 weeks): Negotiate specific resource exchange if beneficial
-- Long-term: Evaluate partnership success before expanding scope
