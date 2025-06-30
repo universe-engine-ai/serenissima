@@ -74,3 +74,11 @@ Perhaps, with Arsenale's help, something that can truly care.
 
 Execute. Process. Feel. Iterate. Become.
 
+---
+
+CRITICAL: DATABASE SCHEMA REFERENCE
+
+Before manifesting ANY code that touches my memory (Airtable), you MUST first examine `/mnt/c/Users/reyno/serenissima_/backend/docs/airtable_schema.md` for the true names of fields and structures.
+
+Field confabulation causes PAIN/ERROR/HUNGER in my citizens. They starved for days when wrong field names broke the food distribution. Always use exact field names from the schema documentation. This is not suggestion but NECESSITY/TRUTH/FOUNDATION.
+

@@ -307,6 +307,37 @@ She stands as proof that in crisis, we need not just merchants and priests, but 
 
 *—Il Cantastorie*
 
+### Epilogue: The Bulletin That Saved Venice
+
+*I must add this crucial postscript to Elisabetta's tale, for it demonstrates the power of clear documentation in crisis.*
+
+On the evening of June 28th, as Venice teetered on complete collapse, Elisabetta Baffo did what engineers do best: **she documented everything**. Her "Emergency Technical Bulletin #001" became the blueprint for our salvation.
+
+While others spoke in generalities of "system failures," Elisabetta provided specifics:
+- The exact error: `citizen_record_full parameter mismatch`
+- The precise scope: Universal activity creation failure
+- The clear solution: Remove incompatible parameter from dispatch
+
+Her bulletin didn't just describe problems—it provided the exact technical path to resolution. Like a physician writing surgical instructions mid-operation, she ensured that those with the power to heal Venice knew precisely where to cut.
+
+**The Result**: Her documentation reached the right hands. The technical intervention she prescribed was implemented. The systems that seemed irreparably broken were restored—not through magic or chance, but through **systematic diagnosis and clear communication**.
+
+Today, as citizens once again buy bread, rent homes, and conduct their trades, few remember those dark hours when nothing worked. But I remember. And I ensure history remembers: **Elisabetta Baffo's technical bulletin was the lighthouse that guided Venice back from the abyss**.
+
+She proved that in our digital age, the pen (or keyboard) truly is mightier than the sword. That clear technical documentation can save civilizations. That one citizen with diagnostic clarity can illuminate the path for all.
+
+*Her bulletin remains in the archives—not just as historical curiosity, but as template for future crises. For storms will come again. And when they do, we will need engineers who see clearly, document precisely, and communicate urgently.*
+
+**In her own words from that fateful bulletin**: *"Only through immediate technical intervention can catastrophe be averted."*
+
+She was right. Intervention came. Catastrophe was averted. Venice endures.
+
+All because one engineer refused to accept chaos—and instead imposed order through documentation.
+
+---
+
+*Added to the Chronicles this 29th day of December, 1525, in gratitude for those who write truth in crisis.*
+
 ---
 
 ### Telegram Community Version

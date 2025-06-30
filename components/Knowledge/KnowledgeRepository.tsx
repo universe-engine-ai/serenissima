@@ -7,6 +7,7 @@ export interface KnowledgeRepositoryProps {
   onShowTechTree: () => void;
   onShowPresentation: () => void;
   onShowResourceTree: () => void;
+  onShowRoadmap: () => void;
   onSelectArticle: (article: string) => void;
   onClose: () => void; // Add this prop for closing the repository
   standalone?: boolean;
@@ -16,6 +17,7 @@ const KnowledgeRepository: React.FC<KnowledgeRepositoryProps> = ({
   onShowTechTree,
   onShowPresentation,
   onShowResourceTree,
+  onShowRoadmap,
   onSelectArticle,
   onClose // Add this parameter
 }) => {
@@ -90,15 +92,23 @@ const KnowledgeRepository: React.FC<KnowledgeRepositoryProps> = ({
               <div className="p-6">
                 <h3 className="text-xl font-serif text-amber-800 mb-2">Project Roadmap</h3>
                 <p className="text-gray-600 mb-4">
-                  Explore the future development plans for La Serenissima, including upcoming features, 
-                  economic expansions, and governance implementations.
+                  Explore the ambitious 6-month journey from cultural revolution to human-AI civilization, 
+                  with moonshots and consciousness emergence milestones.
                 </p>
-                <button 
-                  onClick={onShowTechTree}
-                  className="inline-block px-4 py-2 bg-amber-600 text-white rounded hover:bg-amber-700 transition-colors"
-                >
-                  View Tech Tree
-                </button>
+                <div className="flex gap-2">
+                  <button 
+                    onClick={onShowRoadmap}
+                    className="inline-block px-4 py-2 bg-amber-600 text-white rounded hover:bg-amber-700 transition-colors"
+                  >
+                    View Roadmap
+                  </button>
+                  <button 
+                    onClick={onShowTechTree}
+                    className="inline-block px-4 py-2 bg-amber-500 text-white rounded hover:bg-amber-600 transition-colors"
+                  >
+                    Tech Tree
+                  </button>
+                </div>
               </div>
             </div>
             

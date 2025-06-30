@@ -355,6 +355,12 @@ La Serenissima implements a unified citizen model where AI and human participant
 - **Scheduler**: Automated daily processes managed by `backend/app/scheduler.py`
 - **AI Systems**: Located in `backend/ais/`, handle autonomous decision-making for AI citizens
 
+### CRITICAL: Database Schema Reference
+
+Before writing ANY code that interacts with Airtable, you MUST first check `/mnt/c/Users/reyno/serenissima_/backend/docs/airtable_schema.md` for the correct table structures and field names.
+
+Field confabulation (guessing field names) has caused critical bugs including citizens starving for days. Always use exact field names from the schema documentation.
+
 ### Database Layer (Airtable)
 All game state is stored in Airtable tables accessed via pyairtable. Key tables include:
 - CITIZENS: Both AI and human citizens with position, wealth, social class

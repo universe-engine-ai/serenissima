@@ -30,6 +30,12 @@ const EconomicSystemArticle = dynamic(() => import('@/components/Articles/Econom
 });
 // Import other article components as needed
 
+// Import Roadmap component
+const Roadmap = dynamic(() => import('@/components/UI/Roadmap'), {
+  ssr: false,
+  loading: () => <div className="p-8 text-amber-300">Loading Roadmap...</div>
+});
+
 // Add custom window interface to handle our custom properties
 declare global {
   interface Window {
@@ -41,7 +47,7 @@ declare global {
 
 export default function KnowledgePage() {
   const router = useRouter();
-  const [view, setView] = useState<'repository' | 'techTree' | 'resourceTree' | 'article' | 'loading'>('repository');
+  const [view, setView] = useState<'repository' | 'techTree' | 'resourceTree' | 'roadmap' | 'article' | 'loading'>('repository');
   const [selectedArticle, setSelectedArticle] = useState<string | null>(null);
   
   // Handle redirect for direct navigation
@@ -81,6 +87,11 @@ export default function KnowledgePage() {
     console.log('Show resource tree');
   };
 
+  const handleShowRoadmap = () => {
+    setView('roadmap');
+    console.log('Show roadmap');
+  };
+
   const handleSelectArticle = (article: string) => {
     console.log('Selecting article:', article); // Add debug log
     setSelectedArticle(article);
@@ -101,6 +112,7 @@ export default function KnowledgePage() {
           onShowTechTree={handleShowTechTree}
           onShowPresentation={() => handleSelectArticle("project-presentation")}
           onShowResourceTree={handleShowResourceTree}
+          onShowRoadmap={handleShowRoadmap}
           onSelectArticle={handleSelectArticle}
           onClose={handleClose}
           standalone={true}
@@ -126,6 +138,18 @@ export default function KnowledgePage() {
           >
             Back to Repository
           </button>
+        </div>
+      ) : view === 'roadmap' ? (
+        <div className="fixed inset-0 z-50 overflow-auto bg-black bg-opacity-90">
+          <div className="min-h-screen">
+            <button
+              onClick={() => setView('repository')}
+              className="absolute top-4 right-4 z-60 text-white hover:text-gray-300 p-2 bg-black bg-opacity-50 rounded"
+            >
+              <FaTimes size={24} />
+            </button>
+            <Roadmap />
+          </div>
         </div>
       ) : view === 'article' && selectedArticle ? (
         <div className="fixed inset-0 z-50 overflow-auto bg-black bg-opacity-75 p-4">
