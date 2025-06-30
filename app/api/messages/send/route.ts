@@ -54,6 +54,12 @@ export async function POST(request: Request) {
       );
     }
     
+    // Check if receiver is a building ID (format: building_lat_lng)
+    const isBuildingMessage = receiver.startsWith('building_');
+    
+    // If it's a building message, set type to public_announcement if not already set
+    const messageType = isBuildingMessage && type === 'message' ? 'public_announcement' : type;
+    
     try {
       // Initialize Airtable
       const base = initAirtable();
@@ -66,9 +72,10 @@ export async function POST(request: Request) {
         'Sender': sender,
         'Receiver': receiver,
         'Content': content,
-        'Type': type,
+        'Type': messageType,
         'CreatedAt': createdAt,
-        ...(channel && { 'Channel': channel }) // Add Channel if provided
+        ...(channel && { 'Channel': channel }), // Add Channel if provided
+        ...(isBuildingMessage && { 'Location': receiver }) // Add Location for building messages
       });
       
       return NextResponse.json({
@@ -78,10 +85,11 @@ export async function POST(request: Request) {
           sender,
           receiver,
           content,
-          type,
+          type: messageType,
           channel: channel || null, // Include channel in the response
           createdAt,
-          readAt: null
+          readAt: null,
+          ...(isBuildingMessage && { location: receiver })
         }
       });
       
