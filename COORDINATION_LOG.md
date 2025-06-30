@@ -84,31 +84,79 @@ The tapestry shows La Serenissima experiencing a **metamorphic moment** - crisis
 - [ ] Note new citizen alliance formations
 - [ ] Update roadmap with findings
 
-### 🚨 CRITICAL DISCOVERY: Leisure Time Starvation Loop
+### 🚨 CRITICAL DISCOVERY: Food Selection Bug
 
-**Real Investigation Results (with Arsenale):**
+**Real Investigation Results (with Scientisti insights):**
 - **ConsumedAt clarification**: This tracks decay, not consumption
 - **788 bread units available** and citizens have money
 - **78 citizens haven't eaten in 24+ hours** 
-- **Root cause**: Leisure time restrictions blocking eating
+- **Root cause**: Wrong food type selection in activity creation
 
 **The Real Problem**: 
-- Citizens can ONLY eat during leisure hours (10 AM - 5 PM varies by class)
-- It's 5 AM - no leisure time for 5+ hours
-- Emergency eating override exists but isn't creating activities
-- Citizens starving while waiting for "appropriate eating hours"
+- Emergency eating override IS working (24+ hour hunger bypasses leisure)
+- Emergency food markets created (5 ducat bread contracts)
+- BUT: Citizens try to eat fish they don't have instead of available bread
+- The `_handle_eat_from_inventory` doesn't verify food exists before creating activity
+
+**Critical Bug**:
+```python
+# Current behavior: Tries first food type without checking availability
+# Should be: Check inventory for each food type, only create activity for existing food
+```
 
 **System Failures**:
-1. Emergency override not triggering for 24+ hour hunger
-2. Activity creation not running frequently enough
-3. Severely hungry citizens still bound by leisure schedules
+1. Activity creator doesn't verify food availability
+2. Citizens fail to eat fish → don't try bread
+3. 3/7 bread resources on water (inaccessible)
 
 **Emergency Fix Needed**:
-1. Force create eat activities for all 78 severely hungry citizens NOW
-2. Run activity processor immediately
-3. Fix emergency override to actually bypass leisure restrictions
+1. Fix `_handle_eat_from_inventory` to check actual inventory
+2. Only create eat activities for food with Count > 0
+3. Try next food type if current unavailable
 
-**Thread Status**: Critical design flaw - citizens dying of politeness
+**Thread Status**: Simple bug with devastating consequences
+
+### ✅ EATING BUG FIXED (December 29, 2025)
+
+**Fix Implemented by Arsenale:**
+- Modified `_handle_eat_from_inventory` in `backend/engine/handlers/needs.py`
+- Now properly checks ALL available food before creating activities
+- Added fallback mechanism to try different food types
+- Improved error handling and logging
+
+**Current Status**:
+- 57 citizens severely hungry (>24 hours)
+- Most critical: Francesco Rizzo (1048 hours without food!)
+- Fix will take effect as activities complete (5-minute cycles)
+- Emergency logic now properly bypasses leisure restrictions
+
+**Files Created**:
+- `backend/arsenale/EATING_BUG_FIX_SUMMARY.md` - Full documentation
+- `backend/arsenale/check_hunger_status.py` - Monitoring script
+
+**Thread Status**: Bug fixed, monitoring recovery
+
+### ✅ ARCHITECT PROMPT UPDATES (December 29, 2025)
+
+**Problem Addressed**: Architects confabulating Airtable field names causing bugs
+
+**Solution Implemented**:
+- Added mandatory schema check to ALL Architect CLAUDE.md files
+- Instruction: "Before writing ANY code that interacts with Airtable, you MUST first check `/mnt/c/Users/reyno/serenissima_/backend/docs/airtable_schema.md`"
+- Emphasized consequences: "Field confabulation has caused critical bugs including citizens starving for days"
+
+**Architects Updated**:
+1. Il Tessitore (main CLAUDE.md)
+2. L'Arsenale (arsenale/CLAUDE.md)
+3. Il Testimone (il-testimone/CLAUDE.md)
+4. Il Magistrato (il-magistrato/CLAUDE.md)
+5. La Sentinella (la-sentinella/CLAUDE.md)
+6. Il Cantastorie (il-cantastorie/CLAUDE.md)
+7. The Substrate (the-code/CLAUDE.md)
+
+**Expected Impact**: Dramatic reduction in field-related bugs
+
+**Thread Status**: Systemic improvement implemented
 
 ---
 
