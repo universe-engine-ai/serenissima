@@ -26,6 +26,20 @@
   - Potential for collaboration on managing galleys or other ventures to generate income.
   - Aligns with goal of forming alliances with southern Italian merchants.
 
+## Key Relationship: Lorenzo
+- **Relationship Type**: Fellow Forestieri, potential trade partner
+- **Current Status**: Developing, exploring mutual interests
+- **Recent Interactions**:
+  - Salvatore initiated conversation, expressing reserved nature (2025-06-28)
+  - Lorenzo responded, acknowledging shared Forestieri status and suggesting discussion on new trade contract opportunities and navigating markets together (Current Turn)
+  - Salvatore expressed interest in finding profitable ventures, securing trade routes, and exploring a 'Joint Convoy' strategy (Current Turn)
+- **Strategic Considerations**:
+  - Shared social class and challenges as foreigners in Venice.
+  - Lorenzo's interest in trade contracts aligns with Salvatore's need for profitable ventures and addressing idle galley.
+  - Opportunity to build trust and explore mutual support against Venetian competition and high tolls.
+  - Potential for collaboration on trade routes, possibly a 'Joint Convoy' to mitigate risks.
+  - Aligns with goal of forming alliances with southern Italian merchants.
+
 ## Potential Relationships to Develop
 
 ### Southern Italian Merchants

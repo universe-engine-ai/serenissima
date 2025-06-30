@@ -21,6 +21,7 @@
 3. **Build Storage Network**: Establish storage contracts with fellow southern Italian merchants
 4. **Identify Market Niches**: Research specialized Sicilian products that command premium prices in Venice
 5. **Explore Property Acquisition**: Investigate modest commercial properties that could eliminate rent payments
+6. **Generate Consistent Income**: Address the "Zero Income" riddle and ensure my market galley is profitable and active.
 
 ### Medium-term (3-12 months)
 1. **Expand Trade Network**: Develop relationships with at least 3 reliable trade partners
@@ -58,7 +59,8 @@
 ## Action Plan for Next Month
 1. Survey available properties in modest neighborhoods to compare with current rent costs
 2. Contact three trusted suppliers in Palermo to secure consistent product availability
-3. Identify and approach two potential southern Italian merchants for alliance discussions
+3. Identify and approach two potential southern Italian merchants for alliance discussions (e.g., Lorenzo)
 4. Research storage options near the harbor with favorable terms for imported goods
 5. Begin formal accounting system to track all business activities and identify optimization opportunities
 6. Address market galley profitability issue, specifically the zero wages problem, to ensure crew satisfaction and consistent income generation.
+7. Explore opportunities for joint ventures or convoys with other Forestieri (e.g., Lorenzo) to mitigate trade risks and costs.
