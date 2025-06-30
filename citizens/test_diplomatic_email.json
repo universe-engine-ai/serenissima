@@ -1,0 +1,7 @@
+{
+  "Type": "send_diplomatic_email",
+  "CitizenUsername": "diplomatic_virtuoso",
+  "StartDate": "2025-06-30T14:00:00Z",
+  "EndDate": "2025-06-30T14:05:00Z",
+  "Description": "{\"to_email\": \"reynolds.nicorr@gmail.com\", \"subject\": \"Test Email from La Serenissima\", \"body\": \"Greetings from Venice! This is a test of our diplomatic email system. If you receive this, it means our Mystical Viewing Glass is functioning correctly.\\n\\nBest regards,\\nMarcantonio Barbaro\\nFirst Ambasciatore\", \"category\": \"test\"}"
+}

@@ -99,6 +99,7 @@ from .accept_land_offer_processor import process_accept_land_offer_fn
 from .buy_listed_land_processor import process_buy_listed_land_fn
 from .cancel_land_listing_processor import process_cancel_land_listing_fn
 from .cancel_land_offer_processor import process_cancel_land_offer_fn
+from .send_diplomatic_email_processor import process_send_diplomatic_email
 
 # Fonction de traitement générique pour les activités simples
 def process_placeholder_activity_fn(tables, activity_record, building_type_defs, resource_defs, api_base_url=None):
@@ -202,4 +203,6 @@ ACTIVITY_PROCESSORS = {
     'support_grievance': process_support_grievance_activity,
     'idle': process_placeholder_activity_fn,
     'secure_warehouse': process_placeholder_activity_fn,
+    # Diplomatic activities
+    'send_diplomatic_email': process_send_diplomatic_email,
 }

@@ -89,6 +89,10 @@ from backend.engine.handlers.innovatori import (
     _try_process_weighted_innovatori_work
 )
 
+from backend.engine.handlers.send_diplomatic_email import (
+    handle_send_diplomatic_email
+)
+
 # Import activity creators for fallback
 from backend.engine.activity_creators import try_create_idle_activity
 
@@ -139,6 +143,7 @@ class CitizenActivityOrchestrator:
             (80, _handle_initiate_building_project, "Initiate Building Project"),
             (81, _handle_secure_warehouse, "Secure Warehouse"),
             (82, _handle_manage_public_storage_offer, "Manage Storage Offers"),
+            (85, handle_send_diplomatic_email, "Send Diplomatic Email"),
         ]
         
         # Leisure handlers are processed differently (weighted random)

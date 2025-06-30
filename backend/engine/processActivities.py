@@ -181,6 +181,7 @@ from backend.engine.activity_processors.change_business_manager_processor import
 from backend.engine.activity_processors.request_loan_processor import process_request_loan_fn
 from backend.engine.activity_processors.offer_loan_processor import process_offer_loan_fn
 from backend.engine.activity_processors.send_message_processor import process_send_message_fn
+from backend.engine.activity_processors.send_diplomatic_email_processor import process_send_diplomatic_email
 from backend.engine.activity_processors.reply_to_message_processor import process_reply_to_message_fn
 
 # Import new land management processors (these files will need to be created)
@@ -852,6 +853,7 @@ def process_all_activities_for_one_citizen(
         "execute_cancel_land_listing": process_cancel_land_listing_fn,
         "execute_cancel_land_offer": process_cancel_land_offer_fn,
         "spread_rumor": process_spread_rumor_fn,
+        "send_diplomatic_email": process_send_diplomatic_email,
     }
 
     for activity_record in citizen_activities:
