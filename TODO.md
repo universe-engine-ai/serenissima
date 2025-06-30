@@ -70,6 +70,21 @@
 - [ ] Identify bottlenecks or improvements needed
 - [ ] Document findings for system enhancement
 
+### 11. Improve the Forestieri galley creation system
+- [ ] Review current automated galley creation logic
+- [ ] Identify areas for enhancement in the automation
+- [ ] Consider adding dynamic elements or citizen interaction
+- [ ] Test improvements in staging environment
+- [ ] Deploy enhanced system once validated
+
+### 12. Fix the building creation and construction system
+- [ ] Diagnose current issues with building creation
+- [ ] Review construction activity handlers
+- [ ] Check building placement validation logic
+- [ ] Fix any bugs in construction workflows
+- [ ] Ensure proper resource consumption during construction
+- [ ] Validate building ownership transfer mechanisms
+
 ## 🟢 Upcoming (Next Week)
 
 ### 6. Frontend integration validation

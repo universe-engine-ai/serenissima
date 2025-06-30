@@ -69,9 +69,7 @@ def log_header(message, color_code=LogColors.HEADER):
 
 # Social class weights for citizen selection
 SOCIAL_CLASS_WEIGHTS = {
-    'Clero': 5,
     'Artisti': 5,
-    'Scientisti': 4,
     'Nobili': 4,
     'Cittadini': 3,
     'Popolani': 2,
@@ -89,11 +87,11 @@ def select_random_citizen(tables):
         A citizen record or None if no citizens found
     """
     try:
-        # Get all citizens (both AI and human)
+        # Get all AI citizens
         citizens = tables['citizens'].all()
         
         if not citizens:
-            log_warning("No citizens found in the database")
+            log_warning("No AI citizens found in the database")
             return None
         
         # Group citizens by social class
@@ -142,65 +140,95 @@ def select_random_citizen(tables):
 
 def perform_thinking(citizen, tables):
     """
-    Perform a thinking operation for the selected citizen using Claude Code.
+    Perform a thinking operation for the selected citizen.
     
     Args:
         citizen: The citizen record
         tables: Dictionary of Airtable tables
     """
+    # Debug function to log object type and structure
+    def debug_object(obj, name="object"):
+        log_info(f"DEBUG: {name} is of type {type(obj)}")
+        if isinstance(obj, dict):
+            log_info(f"DEBUG: {name} keys: {list(obj.keys())}")
+        elif hasattr(obj, "__dict__"):
+            log_info(f"DEBUG: {name} attributes: {dir(obj)}")
     try:
         username = citizen['fields'].get('Username', 'Unknown')
-        is_ai = citizen['fields'].get('IsAI', False)
+        log_info(f"Performing thinking for citizen: {username}")
         
-        # Process both AI and human citizens
-        citizen_type = "AI" if is_ai else "Human"
-        log_info(f"Performing Claude-based thinking for {citizen_type} citizen: {username}")
+        # Import the process helper and thinking helper here to avoid circular imports
+        from backend.engine.utils.process_helper import (
+            create_process
+        )
         
-        # Import the Claude thinking helper
-        from backend.utils.claude_thinking import CitizenClaudeHelper
+        # Define new reflection process types
+        PROCESS_TYPE_GUIDED_REFLECTION = "guided_reflection"
+        PROCESS_TYPE_PRACTICAL_REFLECTION = "practical_reflection"
+        PROCESS_TYPE_UNGUIDED_REFLECTION = "unguided_reflection"
         
-        # Create helper instance
-        helper = CitizenClaudeHelper()
+        # List of available process types
+        process_types = [
+            PROCESS_TYPE_GUIDED_REFLECTION,
+            PROCESS_TYPE_PRACTICAL_REFLECTION,
+            PROCESS_TYPE_UNGUIDED_REFLECTION
+        ]
         
-        # Use simple unguided prompt
-        selected_prompt = "*I'm awake! What will I do?*"
-        
-        log_info(f"Selected thinking prompt for {username}: {selected_prompt[:50]}...")
-        
-        # Launch Claude Code for this citizen
-        result = helper.think_as_citizen(username, selected_prompt)
-        
-        if result.get("success"):
-            log_info(f"Successfully completed Claude thinking for {username}")
+        # Add a 30% chance to continue a previous thought
+        if random.random() < 0.30:  # 30% chance
+            # Import here to avoid circular imports
+            from backend.engine.utils.thinking_helper import process_continue_thought
             
-            # Log a snippet of the response for monitoring
-            response_snippet = result.get("response", "")[:200]
-            log_info(f"Claude response snippet: {response_snippet}...")
-            
-            # Create a MESSAGES record to store the thought
+            # Create a process for continuing a thought
             try:
-                # Get the full response
-                full_response = result.get("response", "")
+                # Debug logging
+                log_info(f"Creating continue_thought process for {username}")
                 
-                # Store as a "thought" type message (sender = receiver) with full response
-                thought_record = tables['messages'].create({
-                    'Sender': username,
-                    'Receiver': username,
-                    'Content': f"{full_response}",
-                    'Type': 'thought'
-                })
-                log_info(f"Stored thinking session as thought message: {full_response}")
+                process_record = create_process(
+                    tables=tables,
+                    process_type="continue_thought",
+                    citizen_username=username,
+                    priority=10,  # Lower priority than processes created by activity processors
+                    api_base_url=os.getenv("API_BASE_URL", "http://localhost:3000")  # Pass API base URL
+                )
+                
+                # Debug the process record
+                debug_object(process_record, "process_record")
+                
+                if process_record:
+                    log_info(f"Successfully created continue_thought process for {username}")
+                    return True
+                else:
+                    log_info(f"Failed to create continue_thought process for {username}, falling back to standard reflection")
+                    # Fall through to standard reflection selection
             except Exception as e:
-                log_error(f"Error storing thought message: {str(e)}")
-            
+                log_error(f"Error creating continue_thought process: {str(e)}")
+                traceback.print_exc()
+                # Fall through to standard reflection selection
+        
+        # Select a random process type with equal probabilities (1/3 each)
+        selected_process_type = random.choice(process_types)
+                
+        log_info(f"Selected process type for {username}: {selected_process_type} (Equal 1/3 probability for each type)")
+                
+        # Create a process for the selected type
+        process_record = create_process(
+            tables=tables,
+            process_type=selected_process_type,
+            citizen_username=username,
+            priority=10,  # Lower priority than processes created by activity processors
+            api_base_url=os.getenv("API_BASE_URL", "http://localhost:3000")  # Pass API base URL
+        )
+                
+        if process_record:
+            log_info(f"Successfully created {selected_process_type} process for {username}")
             return True
         else:
-            error_msg = result.get('error') or result.get('response', 'Unknown error')
-            log_warning(f"Failed Claude thinking for {username}: {error_msg}")
+            log_warning(f"Failed to create {selected_process_type} process for {username}")
             return False
         
     except Exception as e:
-        log_error(f"Error during Claude thinking process: {str(e)}")
+        log_error(f"Error during thinking process: {str(e)}")
         traceback.print_exc()
         return False
 
@@ -307,34 +335,103 @@ def main():
         # Initialize tables
         tables = get_tables()
         
-        # Check if messages table exists for storing thoughts
-        if 'messages' not in tables:
-            log_error("MESSAGES table not found in Airtable. This is required for storing citizen thoughts.")
+        # Check if processes table exists
+        if 'processes' not in tables:
+            log_error("PROCESSES table not found in Airtable. This is required for the thinking loop to function.")
             log_info("Available tables: " + ", ".join(tables.keys()))
             return
         
-        # Main loop - simplified for Claude-based thinking
+        # Import process helper here to avoid circular imports
+        from backend.engine.utils.process_helper import (
+            get_next_pending_process,
+            get_pending_processes_count,
+            PROCESS_TYPE_DAILY_REFLECTION,
+            PROCESS_TYPE_THEATER_REFLECTION,
+            PROCESS_TYPE_PUBLIC_BATH_REFLECTION,
+            PROCESS_TYPE_AUTONOMOUS_RUN
+        )
+        
+        # Import thinking helper for process execution
+        from backend.engine.utils.thinking_helper import (
+            process_daily_reflection,
+            process_theater_reflection,
+            process_public_bath_reflection
+        )
+        
+        # Import autonomouslyRun for autonomous run processes
+        from backend.ais.autonomouslyRun import autonomously_run_ai_citizen_unguided
+        
+        # Main loop
         while True:
             try:
-                # Select a random citizen for thinking
-                log_info("Selecting random citizen for Claude-based thinking...")
-                citizen = select_random_citizen(tables)
+                # Check for pending processes first
+                pending_process = get_next_pending_process(tables)
                 
-                if citizen:
-                    # Perform thinking for the selected citizen
-                    success = perform_thinking(citizen, tables)
+                if pending_process:
+                    process_id = pending_process['id']
+                    process_fields = pending_process['fields']
+                    process_type = process_fields.get('Type')
+                    citizen_username = process_fields.get('Citizen')
                     
-                    if success:
-                        # Sleep for 10 seconds after successful thinking
-                        log_info("Thinking completed successfully. Sleeping for 10 seconds...")
-                        time.sleep(10)
+                    log_info(f"Processing pending process {process_id} of type {process_type} for citizen {citizen_username}")
+                    
+                    # Process based on type
+                    if process_type == "daily_reflection":
+                        process_daily_reflection(tables, pending_process)
+                    elif process_type == "theater_reflection":
+                        process_theater_reflection(tables, pending_process)
+                    elif process_type == "public_bath_reflection":
+                        process_public_bath_reflection(tables, pending_process)
+                    elif process_type == "guided_reflection":
+                        from backend.engine.utils.thinking_helper import process_guided_reflection
+                        process_guided_reflection(tables, pending_process)
+                    elif process_type == "practical_reflection":
+                        from backend.engine.utils.thinking_helper import process_practical_reflection
+                        process_practical_reflection(tables, pending_process)
+                    elif process_type == "unguided_reflection":
+                        from backend.engine.utils.thinking_helper import process_unguided_reflection
+                        process_unguided_reflection(tables, pending_process)
+                    elif process_type == "continue_thought":
+                        from backend.engine.utils.thinking_helper import process_continue_thought
+                        try:
+                            process_continue_thought(tables, pending_process)
+                        except AttributeError as attr_err:
+                            log_error(f"AttributeError in continue_thought process: {str(attr_err)}")
+                            # Import update_process_status to mark the process as failed
+                            from backend.engine.utils.process_helper import update_process_status
+                            update_process_status(
+                                tables=tables,
+                                process_id=process_id,
+                                status="failed",
+                                result={"error": f"AttributeError: {str(attr_err)}"}
+                            )
+                            log_info(f"Marked process {process_id} as failed due to AttributeError")
+                    elif process_type == "autonomous_run":
+                        # TODO: Implement autonomous run processing
+                        log_warning(f"Autonomous run processing not yet implemented")
                     else:
-                        # Sleep for 10 seconds after failed thinking before trying another citizen
-                        log_info("Thinking failed. Sleeping for 10 seconds before trying another citizen...")
-                        time.sleep(10)
+                        log_warning(f"Unknown process type: {process_type}")
+                    
+                    # Sleep briefly after processing a task to avoid hammering the API
+                    time.sleep(5)
                 else:
-                    log_warning("No citizen selected. Sleeping for 10 seconds...")
-                    time.sleep(10)
+                    # If no pending processes, check if we should create a random thinking process
+                    # Only create random thinking if there are fewer than 5 pending processes
+                    pending_count = get_pending_processes_count(tables)
+                    
+                    if pending_count < 5:
+                        log_info(f"No pending processes or fewer than 5 ({pending_count}). Selecting random citizen for thinking.")
+                        # Select a random citizen
+                        citizen = select_random_citizen(tables)
+                        
+                        if citizen:
+                            # Perform thinking for the selected citizen
+                            perform_thinking(citizen, tables)
+                    else:
+                        log_info(f"There are already {pending_count} pending processes. Skipping random citizen thinking.")
+                
+                # Sleep for a short time to avoid hammering the database
+                time.sleep(300)
                 
             except Exception as loop_error:
                 log_error(f"Error in thinking loop: {str(loop_error)}")
