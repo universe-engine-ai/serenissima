@@ -24,7 +24,9 @@ def try_create(
     stratagem_type: str, 
     stratagem_params: Dict[str, Any], 
     now_venice_dt: datetime,
-    now_utc_dt: datetime
+    now_utc_dt: datetime,
+    api_base_url: Optional[str] = None,
+    transport_api_url: Optional[str] = None
 ) -> Optional[List[Dict[str, Any]]]:
     """
     Creates an "organize_gathering" stratagem.
