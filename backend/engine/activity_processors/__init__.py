@@ -65,6 +65,7 @@ from .research_investigation_processor import process as process_research_invest
 from .research_scope_definition_processor import process as process_research_scope_definition # New processor for research planning
 from .hypothesis_and_question_development_processor import process as process_hypothesis_and_question_development # New processor for hypothesis formation
 from .knowledge_integration_processor import process as process_knowledge_integration # New processor for knowledge synthesis
+from .talk_publicly_processor import process as process_talk_publicly # New processor for public announcements
 
 # Import governance processors
 from .file_grievance_processor import process_file_grievance_activity
@@ -192,6 +193,7 @@ ACTIVITY_PROCESSORS = {
     'research_scope_definition': process_research_scope_definition,
     'hypothesis_and_question_development': process_hypothesis_and_question_development,
     'knowledge_integration': process_knowledge_integration,
+    'talk_publicly': process_talk_publicly,
     'welfare_porter': handle_welfare_porter,
     'welfare_porter_delivery': handle_welfare_porter_delivery,
     'collect_welfare_food': handle_collect_welfare_food,

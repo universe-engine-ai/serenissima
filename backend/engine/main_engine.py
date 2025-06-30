@@ -31,6 +31,7 @@ from backend.engine.activity_creators import (
     try_create_idle_activity,
     try_create_send_message_activity as try_create_send_message_chain,
     try_create_initiate_building_project_activity,
+    try_create_talk_publicly_activity,
     # ... import other creators used by the dispatcher below
 )
 
@@ -119,6 +120,26 @@ def dispatch_specific_activity_request(
                     "activity": None,
                     "reason": result.get("reason", "creation_failed")
                 }
+        
+        elif activity_type == "talk_publicly":
+            # Extract parameters for public announcement
+            message = activity_parameters.get('message', '').strip()
+            message_type = activity_parameters.get('messageType', 'announcement')
+            target_audience = activity_parameters.get('targetAudience')
+            
+            if not message:
+                return {"success": False, "message": "Message content is required for talk_publicly activity", "activity": None, "reason": "missing_message"}
+            
+            # Create the talk_publicly activity
+            activity_record = try_create_talk_publicly_activity(
+                tables, citizen_record, activity_parameters,
+                api_base_url, transport_api_url
+            )
+            
+            if activity_record:
+                return {"success": True, "message": f"Created talk_publicly activity", "activity": activity_record, "reason": None}
+            else:
+                return {"success": False, "message": f"Failed to create talk_publicly activity", "activity": None, "reason": "creation_failed"}
         
         # Add more activity types here as needed
         # elif activity_type == "bid_on_land":

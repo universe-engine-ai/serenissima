@@ -23,6 +23,8 @@ from .neighborhood_watch_stratagem_creator import try_create as try_create_neigh
 from .monopoly_pricing_stratagem_creator import try_create as try_create_monopoly_pricing_stratagem
 from .reputation_boost_stratagem_creator import try_create as try_create_reputation_boost_stratagem
 from .transfer_ducats_stratagem_creator import try_create as try_create_transfer_ducats_stratagem
+from .organize_gathering_stratagem_creator import try_create as try_create_organize_gathering_stratagem
+# from .commission_market_galley_creator import try_create as try_create_commission_market_galley_stratagem  # Commented out - missing dependencies
 # Placeholder for burglary
 # from .burglary_stratagem_creator import try_create as try_create_burglary_stratagem
 # Placeholder for employee_corruption
@@ -59,6 +61,8 @@ STRATAGEM_CREATORS = {
     "monopoly_pricing": try_create_monopoly_pricing_stratagem,
     "reputation_boost": try_create_reputation_boost_stratagem,
     "transfer_ducats": try_create_transfer_ducats_stratagem,
+    "organize_gathering": try_create_organize_gathering_stratagem,
+    # "commission_market_galley": try_create_commission_market_galley_stratagem,  # Commented out - missing dependencies
     # "burglary": try_create_burglary_stratagem,
     # "employee_corruption": try_create_employee_corruption_stratagem,
     # "arson": try_create_arson_stratagem,

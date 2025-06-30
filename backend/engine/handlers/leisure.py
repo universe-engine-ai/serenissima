@@ -8,6 +8,7 @@ entertainment, social activities during free time, and cultural pursuits.
 import logging
 import os
 import random
+import json
 from datetime import datetime, timedelta
 from typing import Dict, Optional, Any, List, Tuple
 from pyairtable import Table
@@ -26,6 +27,7 @@ from backend.engine.utils.activity_helpers import (
     get_closest_building_of_type,
     _get_bldg_display_name_module,
     _get_res_display_name_module,
+    _get_building_position_coords,
     VENICE_TIMEZONE,
     SOCIAL_CLASS_SCHEDULES
 )
@@ -46,6 +48,7 @@ from backend.engine.activity_creators import (
 # Import social activity creators
 from backend.engine.activity_creators.spread_rumor_activity_creator import try_create as try_create_spread_rumor_activity
 from backend.engine.activity_creators import try_create_send_message_activity as try_create_send_message_chain
+from backend.engine.activity_creators import try_create_talk_publicly_activity
 
 # Import governance handler
 from backend.engine.handlers.governance import _handle_governance_participation
@@ -496,6 +499,7 @@ def _try_process_weighted_leisure_activities(
         "Pray": 15,
         "Send Message": 10,
         "Spread Rumor": 5,
+        "Talk Publicly": 8,  # New public speaking activity
         "Participate in Governance": 8,  # Base weight for governance activities
     }
     
@@ -512,6 +516,7 @@ def _try_process_weighted_leisure_activities(
             "Attend Mass": 15,
             "Send Message": 20,  # Political correspondence
             "Spread Rumor": 15,  # Political intrigue
+            "Talk Publicly": 25,  # High chance - nobles love to orate
             "Participate in Governance": 25,  # High political engagement
         },
         "Clero": {  # Clergy - religious, educated, moral
@@ -524,6 +529,7 @@ def _try_process_weighted_leisure_activities(
             "Work on Art (Artisti)": 0,
             "Send Message": 15,
             "Spread Rumor": 2,  # Gossip is unseemly
+            "Talk Publicly": 30,  # High chance - sermons and moral teachings
             "Participate in Governance": 10,  # Moderate, moral guidance role
         },
         "Cittadini": {  # Citizens - educated, bureaucratic, business-oriented
@@ -536,6 +542,7 @@ def _try_process_weighted_leisure_activities(
             "Attend Mass": 20,
             "Send Message": 20,  # Business and civic correspondence
             "Spread Rumor": 15,  # Market and civic gossip
+            "Talk Publicly": 18,  # Moderate chance - civic announcements
             "Participate in Governance": 20,  # High civic engagement
         },
         "Artisti": {  # Artists - creative, bohemian
@@ -548,6 +555,7 @@ def _try_process_weighted_leisure_activities(
             "Attend Mass": 10,
             "Send Message": 10,
             "Spread Rumor": 15,
+            "Talk Publicly": 20,  # High chance - artistic expression in public
             "Participate in Governance": 12,  # Moderate, cultural issues
         },
         "Popolani": {  # Common workers - practical, social
@@ -560,6 +568,7 @@ def _try_process_weighted_leisure_activities(
             "Attend Mass": 25,
             "Send Message": 5,  # Less writing
             "Spread Rumor": 25,  # Neighborhood gossip
+            "Talk Publicly": 12,  # Moderate chance - rallying cries
             "Participate in Governance": 6,  # Low but present when desperate
         },
         "Facchini": {  # Laborers - hardworking, simple pleasures
@@ -572,6 +581,7 @@ def _try_process_weighted_leisure_activities(
             "Attend Mass": 20,
             "Send Message": 2,  # Rarely write
             "Spread Rumor": 30,  # Street gossip
+            "Talk Publicly": 8,  # Low chance - only when desperate
             "Participate in Governance": 4,  # Rarely engage unless desperate
         },
         "Scientisti": {  # Scientists - intellectual, studious
@@ -584,6 +594,7 @@ def _try_process_weighted_leisure_activities(
             "Attend Mass": 20,
             "Send Message": 15,  # Academic correspondence
             "Spread Rumor": 5,  # Less interested in gossip
+            "Talk Publicly": 22,  # High chance - debates and proposals
             "Participate in Governance": 15,  # Engaged for progress issues
         }
     }
@@ -606,6 +617,7 @@ def _try_process_weighted_leisure_activities(
         (weights["Pray"], _handle_pray, "Pray", True),
         (weights["Send Message"], _handle_send_leisure_message, "Send Message", True),
         (weights["Spread Rumor"], _handle_spread_rumor, "Spread Rumor", True),
+        (weights["Talk Publicly"], _handle_talk_publicly, "Talk Publicly", True),
     ]
     
     # Use KinOS-enhanced governance if available and configured
@@ -616,6 +628,12 @@ def _try_process_weighted_leisure_activities(
     
     leisure_activities.append(
         (weights["Participate in Governance"], governance_handler, "Participate in Governance", True)
+    )
+    
+    # Check for active gatherings
+    _add_active_gatherings_to_activities(
+        tables, citizen_record, citizen_position, now_utc_dt, leisure_activities,
+        citizen_username, citizen_social_class
     )
     
     # Filter activities based on check_only evaluation
@@ -723,6 +741,330 @@ def _handle_send_leisure_message(
         
     except Exception as e:
         log.error(f"{LogColors.FAIL}[Message] {citizen_name}: Error checking messages: {e}{LogColors.ENDC}")
+        return None
+
+def _add_active_gatherings_to_activities(
+    tables: Dict[str, Table],
+    citizen_record: Dict,
+    citizen_position: Optional[Dict],
+    now_utc_dt: datetime,
+    leisure_activities: List[Tuple[int, Any, str, bool]],
+    citizen_username: str,
+    citizen_social_class: str
+) -> None:
+    """Check for active gatherings and add them as weighted activities."""
+    if not citizen_position:
+        return
+    
+    try:
+        # Find active organize_gathering stratagems
+        now_iso = now_utc_dt.isoformat()
+        gathering_formula = f"AND({{Type}}='organize_gathering', {{Status}}='active', {{ExpiresAt}}>='{now_iso}')"
+        
+        active_gatherings = tables['stratagems'].all(formula=gathering_formula)
+        
+        for gathering in active_gatherings:
+            try:
+                gathering_data = json.loads(gathering['fields'].get('Notes', '{}'))
+                start_time = datetime.fromisoformat(gathering_data['startTime'].replace('Z', '+00:00'))
+                end_time = datetime.fromisoformat(gathering_data['endTime'].replace('Z', '+00:00'))
+                
+                # Check if gathering is currently active
+                if start_time <= now_utc_dt <= end_time:
+                    location_building_id = gathering_data.get('location')
+                    building_name = gathering_data.get('buildingName', 'Unknown Location')
+                    theme = gathering_data.get('theme', 'social')
+                    organizer = gathering['fields'].get('ExecutedBy')
+                    invite_list = gathering_data.get('inviteList', [])
+                    
+                    # Calculate weight for this gathering
+                    base_weight = 15
+                    
+                    # Add weight if citizen is invited
+                    if citizen_username in invite_list:
+                        base_weight += 20
+                    
+                    # Add weight if citizen has relationship with organizer
+                    try:
+                        relationship_formula = f"OR(AND({{From}}='{citizen_username}', {{To}}='{organizer}'), AND({{From}}='{organizer}', {{To}}='{citizen_username}'))"
+                        relationships = tables['relationships'].all(formula=relationship_formula, max_records=1)
+                        if relationships:
+                            trust = relationships[0]['fields'].get('Trust', 0)
+                            base_weight += min(15, trust // 10)  # Up to +15 for high trust
+                    except Exception:
+                        pass
+                    
+                    # Add weight based on distance
+                    try:
+                        # Get gathering building position
+                        building_records = tables['buildings'].all(formula=f"{{BuildingId}}='{location_building_id}'", max_records=1)
+                        if building_records:
+                            building_pos = json.loads(building_records[0]['fields']['Position'])
+                            distance = _calculate_distance_meters(
+                                citizen_position['lat'], citizen_position['lng'],
+                                building_pos['lat'], building_pos['lng']
+                            )
+                            if distance <= 500:
+                                base_weight += 10
+                            elif distance <= 1000:
+                                base_weight += 5
+                    except Exception:
+                        pass
+                    
+                    # Class-based modifiers for gatherings
+                    class_gathering_modifiers = {
+                        "Nobili": {"political": 15, "cultural": 10, "economic": 5, "social": 5},
+                        "Clero": {"political": 5, "cultural": 10, "economic": -5, "social": 0},
+                        "Cittadini": {"political": 10, "cultural": 5, "economic": 10, "social": 5},
+                        "Artisti": {"political": 0, "cultural": 15, "economic": 0, "social": 10},
+                        "Popolani": {"political": 5, "cultural": 0, "economic": 5, "social": 10},
+                        "Facchini": {"political": 0, "cultural": -5, "economic": 0, "social": 5},
+                        "Scientisti": {"political": 5, "cultural": 10, "economic": 5, "social": 5}
+                    }
+                    
+                    if citizen_social_class in class_gathering_modifiers:
+                        theme_modifier = class_gathering_modifiers[citizen_social_class].get(theme, 0)
+                        base_weight += theme_modifier
+                    
+                    # Create the handler dynamically for this gathering
+                    def make_gathering_handler(gathering_id, building_id, building_name):
+                        def handler(*args):
+                            return _handle_attend_gathering(*args, gathering_id, building_id, building_name)
+                        return handler
+                    
+                    gathering_handler = make_gathering_handler(
+                        gathering['fields']['StratagemId'],
+                        location_building_id,
+                        building_name
+                    )
+                    
+                    # Add to leisure activities
+                    activity_description = f"Attend {theme} gathering at {building_name}"
+                    leisure_activities.append((base_weight, gathering_handler, activity_description, True))
+                    
+                    log.info(f"{LogColors.OKBLUE}[Gathering] Found active gathering at {building_name} with weight {base_weight}{LogColors.ENDC}")
+                    
+            except Exception as e:
+                log.warning(f"Error processing gathering: {e}")
+                continue
+                
+    except Exception as e:
+        log.warning(f"Error checking for active gatherings: {e}")
+
+
+def _handle_attend_gathering(
+    tables: Dict[str, Table], citizen_record: Dict, is_night: bool, resource_defs: Dict, building_type_defs: Dict,
+    now_venice_dt: datetime, now_utc_dt: datetime, transport_api_url: str, api_base_url: str,
+    citizen_position: Optional[Dict], citizen_custom_id: str, citizen_username: str, citizen_airtable_id: str, citizen_name: str, citizen_position_str: Optional[str],
+    citizen_social_class: str, gathering_id: str, building_id: str, building_name: str
+) -> Optional[Dict]:
+    """Handle attending a specific gathering."""
+    log.info(f"{LogColors.OKCYAN}[Gathering] {citizen_name}: Considering attending gathering at {building_name}.{LogColors.ENDC}")
+    
+    if not citizen_position:
+        return None
+    
+    # Check if already at the gathering location
+    try:
+        building_records = tables['buildings'].all(formula=f"{{BuildingId}}='{building_id}'", max_records=1)
+        if not building_records:
+            log.warning(f"[Gathering] Building {building_id} not found")
+            return None
+            
+        building_pos = json.loads(building_records[0]['fields']['Position'])
+        distance = _calculate_distance_meters(
+            citizen_position['lat'], citizen_position['lng'],
+            building_pos['lat'], building_pos['lng']
+        )
+        
+        # If already at the gathering, perform talk_publicly
+        if distance <= 50:
+            log.info(f"{LogColors.OKGREEN}[Gathering] {citizen_name}: Already at gathering, preparing to speak.{LogColors.ENDC}")
+            
+            # Select appropriate message based on gathering theme
+            try:
+                stratagem_records = tables['stratagems'].all(
+                    formula=f"{{StratagemId}}='{gathering_id}'", max_records=1
+                )
+                if stratagem_records:
+                    gathering_data = json.loads(stratagem_records[0]['fields'].get('Notes', '{}'))
+                    theme = gathering_data.get('theme', 'social')
+                    
+                    # Theme-based messages
+                    theme_messages = {
+                        'political': {
+                            'messageType': 'debate',
+                            'messages': [
+                                "We must consider the balance between tradition and progress in our Republic.",
+                                "The welfare of Venice depends on wise governance and fair representation.",
+                                "Our maritime power must be maintained through strategic alliances."
+                            ]
+                        },
+                        'cultural': {
+                            'messageType': 'poetry',
+                            'messages': [
+                                "Art elevates the soul and enriches our great city.",
+                                "In beauty we find truth, in creation we find purpose.",
+                                "Venice blooms when culture and commerce intertwine."
+                            ]
+                        },
+                        'economic': {
+                            'messageType': 'proposal',
+                            'messages': [
+                                "New trade routes through Alexandria could boost our prosperity.",
+                                "We should consider establishing a merchants' insurance fund.",
+                                "Fair pricing benefits both seller and buyer in the long term."
+                            ]
+                        },
+                        'social': {
+                            'messageType': 'announcement',
+                            'messages': [
+                                "Community bonds strengthen when we gather in fellowship.",
+                                "Let us celebrate the diversity that makes Venice great.",
+                                "Together we weather storms that would sink us alone."
+                            ]
+                        }
+                    }
+                    
+                    theme_config = theme_messages.get(theme, theme_messages['social'])
+                    message = random.choice(theme_config['messages'])
+                    
+                    # Create talk_publicly activity
+                    activity_params = {
+                        'message': message,
+                        'messageType': theme_config['messageType']
+                    }
+                    
+                    activity_record = try_create_talk_publicly_activity(
+                        tables, citizen_record, activity_params,
+                        api_base_url, transport_api_url
+                    )
+                    
+                    if activity_record:
+                        log.info(f"{LogColors.OKGREEN}[Gathering] {citizen_name}: Speaking at the gathering.{LogColors.ENDC}")
+                        return activity_record
+            except Exception as e:
+                log.error(f"Error creating talk_publicly at gathering: {e}")
+        
+        # Otherwise, go to the gathering
+        activity_record = try_create_goto_location_activity(
+            tables, citizen_custom_id, citizen_username, citizen_airtable_id,
+            building_id, 'attend_gathering', now_utc_dt
+        )
+        
+        if activity_record:
+            log.info(f"{LogColors.OKGREEN}[Gathering] {citizen_name}: Going to gathering at {building_name}.{LogColors.ENDC}")
+            return activity_record
+            
+    except Exception as e:
+        log.error(f"Error handling gathering attendance: {e}")
+        return None
+
+
+def _handle_talk_publicly(
+    tables: Dict[str, Table], citizen_record: Dict, is_night: bool, resource_defs: Dict, building_type_defs: Dict,
+    now_venice_dt: datetime, now_utc_dt: datetime, transport_api_url: str, api_base_url: str,
+    citizen_position: Optional[Dict], citizen_custom_id: str, citizen_username: str, citizen_airtable_id: str, citizen_name: str, citizen_position_str: Optional[str],
+    citizen_social_class: str
+) -> Optional[Dict]:
+    """Handles making public announcements in buildings during leisure time."""
+    if not is_leisure_time_for_class(citizen_social_class, now_venice_dt):
+        return None
+    
+    log.info(f"{LogColors.OKCYAN}[Public Speech] {citizen_name}: Checking for public speaking opportunity.{LogColors.ENDC}")
+    
+    if not citizen_position:
+        return None
+    
+    # Check if citizen has enough influence to speak publicly
+    citizen_influence = float(citizen_record.get('fields', {}).get('Influence', 0))
+    if citizen_influence < 50:  # Minimum influence threshold
+        log.info(f"{LogColors.WARNING}[Public Speech] {citizen_name}: Not enough influence ({citizen_influence}) to speak publicly.{LogColors.ENDC}")
+        return None
+    
+    # Check if recently made a public announcement
+    recent_speech_formula = (f"AND({{CitizenId}}='{citizen_airtable_id}', "
+                            f"{{Type}}='talk_publicly', "
+                            f"{{Status}}='processed', "
+                            f"DATETIME_DIFF(NOW(), {{EndDate}}, 'hours') < 24)")
+    
+    try:
+        recent_speeches = tables['activities'].all(formula=recent_speech_formula, max_records=1)
+        if recent_speeches:
+            log.info(f"{LogColors.WARNING}[Public Speech] {citizen_name}: Recently made a public announcement.{LogColors.ENDC}")
+            return None
+        
+        # Check if currently in a suitable building
+        building_at_position = None
+        if citizen_position_str:
+            building_formula = f"{{Position}}='{_escape_airtable_value(citizen_position_str)}'"
+            buildings_at_position = tables['buildings'].all(formula=building_formula, max_records=1)
+            if buildings_at_position:
+                building_at_position = buildings_at_position[0]
+        
+        if not building_at_position:
+            log.info(f"{LogColors.WARNING}[Public Speech] {citizen_name}: Not currently in a building.{LogColors.ENDC}")
+            return None
+        
+        # Check if building type allows public speaking
+        building_type = building_at_position['fields'].get('Type', '')
+        allowed_types = ["inn", "piazza", "palazzo", "merchant_s_house", "church", 
+                        "library", "market", "arsenal", "great_palazzo", "grand_piazza", 
+                        "townhall", "guild_hall", "public_forum", "assembly_hall"]
+        
+        if building_type not in allowed_types:
+            log.info(f"{LogColors.WARNING}[Public Speech] {citizen_name}: Building type '{building_type}' doesn't allow public speaking.{LogColors.ENDC}")
+            return None
+        
+        # Check for audience (other citizens in the building)
+        citizens_at_building_formula = f"AND({{Position}}='{_escape_airtable_value(citizen_position_str)}', {{Username}}!='{_escape_airtable_value(citizen_username)}')"
+        audience = tables['citizens'].all(formula=citizens_at_building_formula)
+        
+        if len(audience) < 2:  # Minimum audience size
+            log.info(f"{LogColors.WARNING}[Public Speech] {citizen_name}: Not enough audience ({len(audience)} citizens).{LogColors.ENDC}")
+            return None
+        
+        # Determine message type based on social class and influence
+        message_types = ["announcement", "proposal", "debate", "poetry", "sermon", "rallying_cry"]
+        
+        # Class-specific message type preferences
+        class_message_preferences = {
+            "Nobili": ["proposal", "debate", "announcement"],
+            "Clero": ["sermon", "announcement"],
+            "Cittadini": ["announcement", "proposal", "debate"],
+            "Artisti": ["poetry", "rallying_cry"],
+            "Popolani": ["rallying_cry", "announcement"],
+            "Facchini": ["rallying_cry"],
+            "Scientisti": ["debate", "proposal"]
+        }
+        
+        preferred_types = class_message_preferences.get(citizen_social_class, ["announcement"])
+        message_type = random.choice(preferred_types)
+        
+        # Create activity parameters
+        activity_params = {
+            "message": f"Citizens of Venice, hear my words on this matter of importance...",
+            "messageType": message_type,
+            "targetAudience": None  # Could be specific in the future
+        }
+        
+        # Create talk_publicly activity
+        activity_record = try_create_talk_publicly_activity(
+            tables=tables,
+            citizen_record=citizen_record,
+            activity_parameters=activity_params,
+            api_base_url=api_base_url,
+            transport_api_url=transport_api_url
+        )
+        
+        if activity_record:
+            building_name = building_at_position['fields'].get('Name', building_type)
+            log.info(f"{LogColors.OKGREEN}[Public Speech] {citizen_name}: Creating 'talk_publicly' activity at {building_name} ({message_type}).{LogColors.ENDC}")
+        
+        return activity_record
+        
+    except Exception as e:
+        log.error(f"{LogColors.FAIL}[Public Speech] {citizen_name}: Error in public speaking: {e}{LogColors.ENDC}")
         return None
 
 def _handle_spread_rumor(

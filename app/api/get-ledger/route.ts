@@ -641,6 +641,25 @@ async function fetchCitizenMessages(username: string): Promise<AirtableRecord<Fi
   }
 }
 
+async function fetchBuildingMessages(buildingId: string, limit: number = 2): Promise<AirtableRecord<FieldSet>[]> {
+  try {
+    if (!buildingId) return [];
+    
+    const escapedBuildingId = escapeAirtableValue(buildingId);
+    // Fetch public messages where the building is the receiver
+    const records = await getAirtable()('MESSAGES').select({
+      filterByFormula: `AND({Receiver} = '${escapedBuildingId}', OR(SEARCH('public_', {Type}), {Type} = 'public'))`,
+      sort: [{ field: 'CreatedAt', direction: 'desc' }],
+      maxRecords: limit,
+    }).all();
+    
+    return [...records]; // Convert ReadonlyArray to Array
+  } catch (error) {
+    console.error(`Error fetching building messages for ${buildingId}:`, error);
+    return [];
+  }
+}
+
 async function fetchLastDailyUpdate(): Promise<AirtableRecord<FieldSet> | null> {
   try {
     const records = await getAirtable()('MESSAGES').select({
@@ -1271,6 +1290,35 @@ function convertLedgerToMarkdown(Ledger: any, citizenUsername: string | null): s
     md += `${locationDescription}${positionDebug}\n`;
   } else {
     md += `My whereabouts are uncertain\n`;
+  }
+  
+  // Building Messages - Public announcements at current location
+  if (Ledger.buildingMessages && Ledger.buildingMessages.length > 0) {
+    md += `\n### Public Announcements Here\n`;
+    Ledger.buildingMessages.forEach((message: any, index: number) => {
+      const sender = message.sender || 'Unknown speaker';
+      const messageType = message.type?.replace('public_', '').replace(/_/g, ' ') || 'announcement';
+      const content = message.content || '';
+      
+      md += `\n**${sender}** (${messageType}):\n`;
+      md += `"${content}"\n`;
+      
+      if (message.createdAt) {
+        const messageDate = new Date(message.createdAt);
+        const timeDiff = Date.now() - messageDate.getTime();
+        const hoursAgo = Math.floor(timeDiff / (1000 * 60 * 60));
+        const minutesAgo = Math.floor(timeDiff / (1000 * 60));
+        
+        if (minutesAgo < 60) {
+          md += `*Spoken ${minutesAgo} minute${minutesAgo !== 1 ? 's' : ''} ago*\n`;
+        } else if (hoursAgo < 24) {
+          md += `*Spoken ${hoursAgo} hour${hoursAgo !== 1 ? 's' : ''} ago*\n`;
+        } else {
+          md += `*Spoken on ${formatDate(message.createdAt)}*\n`;
+        }
+      }
+    });
+    md += '\n';
   }
   
   // Add current date (subtract 500 years)
@@ -2808,6 +2856,7 @@ export async function GET(request: NextRequest) {
       stratagemsTargetingCitizenPast: [] as any[], // Past Executed Stratagems targeting citizen
       booksAtPosition: [] as any[], // Books available at citizen's current position
       booksInInventory: [] as any[], // Books in citizen's inventory
+      buildingMessages: [] as any[], // Public messages from the building the citizen is at
     };
 
     // Parallelize all independent data fetching operations
@@ -2827,7 +2876,8 @@ export async function GET(request: NextRequest) {
       reportsData,
       worldExperiences,
       booksAtPositionRecords,
-      booksInInventoryRecords
+      booksInInventoryRecords,
+      buildingMessagesRecords
     ] = await Promise.all([
       fetchStratagemDefinitions(),
       fetchCitizenActiveStratagems(citizenUsername),
@@ -2851,7 +2901,11 @@ export async function GET(request: NextRequest) {
         ? fetchBooksAtPosition(citizenPosition, buildingDetails?.buildingId)
         : Promise.resolve([]),
       // Fetch books in citizen's inventory
-      fetchBooksInInventory(citizenUsername)
+      fetchBooksInInventory(citizenUsername),
+      // Fetch building messages if citizen is at a building
+      buildingDetails?.buildingId 
+        ? fetchBuildingMessages(buildingDetails.buildingId, 2)
+        : Promise.resolve([])
     ]);
 
     // Assign weather data to Ledger
@@ -2972,6 +3026,9 @@ export async function GET(request: NextRequest) {
     
     // Books in inventory
     Ledger.booksInInventory = booksInInventoryRecords.map(b => ({...normalizeKeysCamelCaseShallow(b.fields), airtableId: b.id}));
+    
+    // Building messages
+    Ledger.buildingMessages = buildingMessagesRecords.map(m => ({...normalizeKeysCamelCaseShallow(m.fields), airtableId: m.id}));
     
     // Contracts
     Ledger.activeContracts = activeContractsRecords.map(c => ({...normalizeKeysCamelCaseShallow(c.fields), airtableId: c.id}));

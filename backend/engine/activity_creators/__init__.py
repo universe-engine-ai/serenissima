@@ -87,3 +87,4 @@ from .build_prototype_activity_creator import try_create as try_create_build_pro
 from .test_innovation_activity_creator import try_create as try_create_test_innovation_activity
 from .draft_blueprint_activity_creator import try_create as try_create_draft_blueprint_activity
 from .present_innovation_activity_creator import try_create as try_create_present_innovation_activity
+from .talk_publicly_activity_creator import try_create as try_create_talk_publicly_activity # Public announcement activity

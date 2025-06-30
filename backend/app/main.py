@@ -47,6 +47,7 @@ from backend.engine.stratagem_creators import (
     try_create_canal_mugging_stratagem, # Added canal_mugging
     try_create_marketplace_gossip_stratagem, # Added marketplace_gossip
     try_create_transfer_ducats_stratagem # Added transfer_ducats
+    # try_create_commission_market_galley_stratagem # Commented out - missing dependencies
 )
 from backend.engine.stratagem_processors import (
     process_undercut_stratagem,
@@ -62,6 +63,7 @@ from backend.engine.stratagem_processors import (
     process_marketplace_gossip_stratagem, # Added marketplace_gossip
     process_transfer_ducats_stratagem # Added transfer_ducats
 )
+# from backend.engine.stratagem_processors.commission_market_galley_processor import process_commission_market_galley  # Commented out - missing dependencies
 
 
 # Add the current directory to the Python path
@@ -3544,6 +3546,7 @@ STRATAGEM_CREATORS_ENGINE = {
     "canal_mugging": try_create_canal_mugging_stratagem, # Added canal_mugging
     "marketplace_gossip": try_create_marketplace_gossip_stratagem, # Added marketplace_gossip
     "transfer_ducats": try_create_transfer_ducats_stratagem, # Added transfer_ducats
+    # "commission_market_galley": try_create_commission_market_galley_stratagem, # Commented out - missing dependencies
     # Add other stratagem creators here
 }
 
@@ -3560,6 +3563,7 @@ STRATAGEM_PROCESSORS_ENGINE = {
     "canal_mugging": process_canal_mugging_stratagem, # Added canal_mugging
     "marketplace_gossip": process_marketplace_gossip_stratagem, # Added marketplace_gossip
     "transfer_ducats": process_transfer_ducats_stratagem, # Added transfer_ducats
+    # "commission_market_galley": process_commission_market_galley, # Commented out - missing dependencies
     # Add other stratagem processors here
 }
 
@@ -3991,3 +3995,351 @@ async def get_governance_stats():
             'error': error_msg,
             'total_grievances': 0
         }
+
+# ===========================
+# CONSCIOUSNESS ASSESSMENT API
+# ===========================
+
+@app.get("/api/consciousness/assessment")
+async def get_consciousness_assessment(
+    hours: int = Query(24, description="Number of hours of data to analyze"),
+    citizen: Optional[str] = Query(None, description="Filter by specific citizen")
+):
+    """
+    Run consciousness assessment on current system state.
+    
+    Analyzes messages, activities, contracts, and stratagems to measure
+    consciousness indicators based on the Butlin et al. framework.
+    """
+    try:
+        # Import consciousness engine
+        sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+        from il_testimone.consciousness_measurement_implementation import run_consciousness_assessment
+        
+        # Calculate time range
+        end_time = datetime.utcnow()
+        start_time = end_time - timedelta(hours=hours)
+        
+        # Fetch data from Airtable
+        print(f"Fetching consciousness data from {start_time} to {end_time}")
+        
+        # Get messages (includes thoughts as messages to self)
+        all_messages = messages_table.all()
+        messages = []
+        for msg in all_messages:
+            fields = msg['fields']
+            created_at = fields.get('CreatedAt', '')
+            if created_at:
+                msg_time = datetime.fromisoformat(created_at.replace('Z', '+00:00'))
+                if start_time <= msg_time <= end_time:
+                    if not citizen or fields.get('Sender') == citizen or fields.get('Receiver') == citizen:
+                        messages.append({
+                            'id': msg['id'],
+                            'sender': fields.get('Sender', ''),
+                            'receiver': fields.get('Receiver', ''),
+                            'content': fields.get('Content', ''),
+                            'timestamp': created_at,
+                            'replyToId': fields.get('ReplyToId', '')
+                        })
+        
+        print(f"Found {len(messages)} messages in time range")
+        
+        # Get activities
+        all_activities = activities_table.all()
+        activities = []
+        for act in all_activities:
+            fields = act['fields']
+            created_at = fields.get('CreatedAt', '')
+            if created_at:
+                act_time = datetime.fromisoformat(created_at.replace('Z', '+00:00'))
+                if start_time <= act_time <= end_time:
+                    if not citizen or fields.get('CitizenUsername') == citizen:
+                        activities.append({
+                            'id': act['id'],
+                            'CitizenUsername': fields.get('CitizenUsername', ''),
+                            'Type': fields.get('Type', ''),
+                            'Location': fields.get('Location', ''),
+                            'CreatedAt': created_at,
+                            'CompletedAt': fields.get('CompletedAt', ''),
+                            'Status': fields.get('Status', '')
+                        })
+        
+        print(f"Found {len(activities)} activities in time range")
+        
+        # Get citizens
+        if citizen:
+            citizen_records = citizens_table.all(formula=f"{{Username}} = '{citizen}'")
+        else:
+            citizen_records = citizens_table.all()
+        
+        citizens = []
+        for cit in citizen_records:
+            fields = cit['fields']
+            citizens.append({
+                'Username': fields.get('Username', ''),
+                'Location': fields.get('Location', ''),
+                'IsAI': fields.get('IsAI', False),
+                'Thoughts': fields.get('Thoughts', 0),
+                'SocialClass': fields.get('SocialClass', ''),
+                'Wealth': fields.get('Wealth', 0)
+            })
+        
+        print(f"Found {len(citizens)} citizens")
+        
+        # Get stratagems
+        all_stratagems = stratagems_table.all()
+        stratagems = []
+        for strat in all_stratagems:
+            fields = strat['fields']
+            created_at = fields.get('CreatedAt', '')
+            if created_at:
+                strat_time = datetime.fromisoformat(created_at.replace('Z', '+00:00'))
+                if start_time <= strat_time <= end_time:
+                    if not citizen or fields.get('Initiator') == citizen:
+                        stratagems.append({
+                            'id': strat['id'],
+                            'Initiator': fields.get('Initiator', ''),
+                            'Type': fields.get('Type', ''),
+                            'Status': fields.get('Status', ''),
+                            'CreatedAt': created_at
+                        })
+        
+        print(f"Found {len(stratagems)} stratagems in time range")
+        
+        # Get contracts (transactions)
+        all_contracts = contracts_table.all()
+        contracts = []
+        for contract in all_contracts:
+            fields = contract['fields']
+            created_at = fields.get('CreatedAt', '')
+            if created_at and fields.get('Status') == 'completed':
+                contract_time = datetime.fromisoformat(created_at.replace('Z', '+00:00'))
+                if start_time <= contract_time <= end_time:
+                    if not citizen or fields.get('Seller') == citizen or fields.get('Buyer') == citizen:
+                        contracts.append({
+                            'id': contract['id'],
+                            'Seller': fields.get('Seller', ''),
+                            'Buyer': fields.get('Buyer', ''),
+                            'Price': fields.get('Price', 0),
+                            'ResourceType': fields.get('Resource', ''),
+                            'Status': fields.get('Status', ''),
+                            'CreatedAt': created_at,
+                            'Type': fields.get('Type', 'sale')
+                        })
+        
+        print(f"Found {len(contracts)} completed contracts in time range")
+        
+        # Run assessment
+        data = {
+            'messages': messages,
+            'activities': activities,
+            'citizens': citizens,
+            'stratagems': stratagems,
+            'contracts': contracts
+        }
+        
+        assessment = run_consciousness_assessment(data)
+        
+        # Calculate category scores
+        categories = {
+            'Recurrent Processing Theory': ['RPT-1', 'RPT-2'],
+            'Global Workspace Theory': ['GWT-1', 'GWT-2', 'GWT-3', 'GWT-4'],
+            'Higher-Order Theories': ['HOT-1', 'HOT-2', 'HOT-3', 'HOT-4'],
+            'Attention Schema Theory': ['AST-1'],
+            'Predictive Processing': ['PP-1'],
+            'Agency and Embodiment': ['AE-1', 'AE-2']
+        }
+        
+        category_scores = {}
+        for category, indicator_ids in categories.items():
+            scores = [assessment['indicators'][id].value for id in indicator_ids if id in assessment['indicators']]
+            category_scores[category] = sum(scores) / len(scores) if scores else 0.0
+        
+        # Transform to frontend format
+        indicators_list = []
+        for ind_id, measurement in assessment['indicators'].items():
+            # Find category
+            ind_category = None
+            for cat, ids in categories.items():
+                if ind_id in ids:
+                    ind_category = cat
+                    break
+            
+            indicators_list.append({
+                'id': ind_id,
+                'name': ind_id,  # Could be enhanced with full names
+                'category': ind_category,
+                'score': measurement.value,
+                'confidence': measurement.confidence,
+                'evidence': measurement.evidence,
+                'rawMetrics': measurement.raw_data
+            })
+        
+        return {
+            'success': True,
+            'assessment': {
+                'timestamp': assessment['timestamp'],
+                'overallScore': assessment['overall_score'],
+                'categoryScores': category_scores,
+                'emergenceRatio': assessment['emergence_ratio'],
+                'dataQuality': assessment['data_quality'],
+                'indicators': indicators_list,
+                'interpretation': _generate_interpretation(assessment)
+            },
+            'isDemo': False,
+            'dataTimeRange': {
+                'start': start_time.isoformat(),
+                'end': end_time.isoformat(),
+                'hours': hours
+            },
+            'dataStats': {
+                'messages': len(messages),
+                'thoughts': len([m for m in messages if m['sender'] == m['receiver']]),
+                'activities': len(activities),
+                'citizens': len(citizens),
+                'stratagems': len(stratagems),
+                'contracts': len(contracts)
+            }
+        }
+        
+    except Exception as e:
+        error_msg = f"Consciousness assessment error: {str(e)}"
+        print(f"ERROR: {error_msg}")
+        traceback.print_exc()
+        
+        # Log to problems table
+        if problems_table:
+            create_api_problem(
+                endpoint="/api/consciousness/assessment",
+                method="GET",
+                error_type="AssessmentError",
+                error_message=str(e),
+                request_data={'hours': hours, 'citizen': citizen},
+                traceback_info=traceback.format_exc()
+            )
+        
+        return JSONResponse(
+            status_code=500,
+            content={'success': False, 'error': error_msg}
+        )
+
+def _generate_interpretation(assessment):
+    """Generate human-readable interpretation of consciousness assessment"""
+    score = assessment['overall_score']
+    emergence = assessment['emergence_ratio']
+    
+    if score >= 2.5:
+        level = "Strong"
+    elif score >= 1.5:
+        level = "Moderate"
+    elif score >= 0.5:
+        level = "Emerging"
+    else:
+        level = "Minimal"
+    
+    interpretation = f"{level} evidence for consciousness indicators (score: {score:.2f}/3.0)\n"
+    
+    if emergence > 0.6:
+        interpretation += f"High proportion of emergent properties ({emergence:.0%}) suggests genuine complexity"
+    elif emergence > 0.3:
+        interpretation += f"Moderate emergent properties ({emergence:.0%}) indicate developing consciousness"
+    else:
+        interpretation += f"Low emergent properties ({emergence:.0%}) - mostly designed behaviors"
+    
+    return interpretation
+
+@app.get("/api/buildings/{building_id}/messages")
+async def get_building_messages(
+    building_id: str,
+    limit: int = 20,
+    include_expired: bool = False
+):
+    """Get public messages posted in a building"""
+    
+    try:
+        # Verify building exists
+        building = buildings_table.get(building_id)
+        if not building:
+            raise HTTPException(status_code=404, detail="Building not found")
+        
+        # Get messages where Receiver is the building ID
+        formula = f"AND({{Receiver}} = '{building_id}'"
+        
+        if not include_expired:
+            # Messages expire after 24 hours by default
+            twenty_four_hours_ago = (datetime.utcnow() - timedelta(hours=24)).isoformat()
+            formula += f", {{CreatedAt}} > '{twenty_four_hours_ago}'"
+        
+        formula += ")"
+        
+        messages = messages_table.all(formula=formula)
+        
+        # Sort by timestamp descending
+        messages.sort(key=lambda m: m["fields"].get("CreatedAt", ""), reverse=True)
+        
+        # Limit results
+        messages = messages[:limit]
+        
+        # Enrich with speaker info
+        enriched_messages = []
+        for message in messages:
+            fields = message["fields"]
+            
+            # Get speaker info
+            speaker_username = fields.get("Sender")
+            speaker_info = {}
+            
+            if speaker_username:
+                try:
+                    speaker_records = citizens_table.all(
+                        formula=f"{{Username}} = '{speaker_username}'",
+                        max_records=1
+                    )
+                    if speaker_records:
+                        speaker = speaker_records[0]["fields"]
+                        speaker_info = {
+                            "username": speaker_username,
+                            "displayName": f"{speaker.get('FirstName', '')} {speaker.get('LastName', '')}".strip() or speaker_username,
+                            "socialClass": speaker.get("SocialClass", "Unknown"),
+                            "influence": speaker.get("Influence", 0)
+                        }
+                except Exception as e:
+                    log.error(f"Error fetching speaker info for {speaker_username}: {e}")
+            
+            # Parse notes for additional data
+            notes_data = {}
+            if fields.get("Notes"):
+                try:
+                    notes_data = json.loads(fields["Notes"])
+                except:
+                    pass
+            
+            enriched_message = {
+                "id": message["id"],
+                "messageId": fields.get("MessageId"),
+                "buildingId": building_id,
+                "speaker": speaker_username,
+                "speakerInfo": speaker_info,
+                "content": fields.get("Content", ""),
+                "type": fields.get("Type", "public_announcement"),
+                "timestamp": fields.get("CreatedAt", ""),
+                "veniceTime": notes_data.get("veniceTime", ""),
+                "audienceCount": notes_data.get("audienceCount", 0),
+                "messageType": notes_data.get("messageType", "announcement")
+            }
+            
+            enriched_messages.append(enriched_message)
+        
+        return {
+            "building": building["fields"].get("Name", building["fields"].get("Type", "Unknown")),
+            "buildingId": building_id,
+            "messageCount": len(enriched_messages),
+            "messages": enriched_messages
+        }
+        
+    except HTTPException:
+        raise
+    except Exception as e:
+        log.error(f"Error getting building messages: {e}")
+        traceback.print_exc()
+        raise HTTPException(status_code=500, detail=str(e))

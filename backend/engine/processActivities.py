@@ -163,7 +163,8 @@ from backend.engine.activity_processors import (
         process_rest as process_rest_fn, # New rest processor
         process_occupant_self_construction_fn, # New occupant self-construction processor
         process_spread_rumor_fn, # Import spread_rumor processor
-        process_pray # Import pray processor
+        process_pray, # Import pray processor
+        process_talk_publicly # Import talk_publicly processor
 )
 from backend.engine.activity_processors.manage_public_import_contract_processor import process_manage_public_import_contract_fn
 from backend.engine.activity_processors.bid_on_land_activity_processor import process_bid_on_land_fn
@@ -553,6 +554,7 @@ def main(dry_run: bool = False, target_citizen_username: Optional[str] = None, f
         "execute_cancel_land_listing": process_cancel_land_listing_fn,
         "execute_cancel_land_offer": process_cancel_land_offer_fn,
         "spread_rumor": process_spread_rumor_fn, # Ajout du nouveau processeur
+        "talk_publicly": process_talk_publicly, # Public announcement processor
         # process_buy_available_land_fn is already in the dict for "finalize_land_purchase"
     }
 
