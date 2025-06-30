@@ -976,7 +976,7 @@ const MAX_DISPLAY_TIME = 20000; // Maximum 20 seconds (doubled)
           if (socialClassForIcon) { // Normalize to PascalCase
             socialClassForIcon = socialClassForIcon.charAt(0).toUpperCase() + socialClassForIcon.slice(1).toLowerCase();
             // Preserve special social class names exactly as they are
-            if (socialClassRaw.includes('Dei') || socialClassRaw.includes('dei') || socialClassRaw === 'Clero' || socialClassRaw === 'Scientisti') {
+            if (socialClassRaw.includes('Dei') || socialClassRaw.includes('dei') || socialClassRaw === 'Clero' || socialClassRaw === 'Scientisti' || socialClassRaw === 'Innovatori') {
                 socialClassForIcon = socialClassRaw;
             }
           }
@@ -993,6 +993,7 @@ const MAX_DISPLAY_TIME = 20000; // Maximum 20 seconds (doubled)
               case 'facchini': return '#2F4F4F'; // DarkSlateGray (Almost Black)
               case 'artisti': return '#FFE0EC'; // Very Light Pink
               case 'scientisti': return '#D8BFD8'; // Thistle (Even lighter violet)
+              case 'innovatori': return '#FFCC99'; // Lighter Orange
               default: return '#FFFFFF'; // White
             }
           };
@@ -1084,7 +1085,7 @@ const MAX_DISPLAY_TIME = 20000; // Maximum 20 seconds (doubled)
           if (socialClassForIcon) { // Normalize to PascalCase
             socialClassForIcon = socialClassForIcon.charAt(0).toUpperCase() + socialClassForIcon.slice(1).toLowerCase();
             // Preserve special social class names exactly as they are
-            if (socialClassRawStatic.includes('Dei') || socialClassRawStatic.includes('dei') || socialClassRawStatic === 'Clero') {
+            if (socialClassRawStatic.includes('Dei') || socialClassRawStatic.includes('dei') || socialClassRawStatic === 'Clero' || socialClassRawStatic === 'Scientisti' || socialClassRawStatic === 'Innovatori') {
                 socialClassForIcon = socialClassRawStatic;
             }
           }
@@ -1101,6 +1102,7 @@ const MAX_DISPLAY_TIME = 20000; // Maximum 20 seconds (doubled)
               case 'facchini': return '#2F4F4F'; // DarkSlateGray (Almost Black)
               case 'artisti': return '#FFE0EC'; // Very Light Pink
               case 'scientisti': return '#D8BFD8'; // Thistle (Even lighter violet)
+              case 'innovatori': return '#FFCC99'; // Lighter Orange
               default: return '#FFFFFF'; // White
             }
           };

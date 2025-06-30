@@ -73,12 +73,19 @@ export default function ProblemMarkers({
           const data = await response.json();
           if (data.success && Array.isArray(data.problems)) {
             // Parse position data if it's a string
-            const parsedProblems = data.problems.map(problem => ({
-              ...problem,
-              position: typeof problem.position === 'string' 
-                ? JSON.parse(problem.position) 
-                : problem.position
-            }));
+            const parsedProblems = data.problems.map(problem => {
+              try {
+                return {
+                  ...problem,
+                  position: typeof problem.position === 'string' 
+                    ? JSON.parse(problem.position) 
+                    : problem.position
+                };
+              } catch (e) {
+                console.error('Error parsing problem position:', e, problem);
+                return problem; // Return the problem as-is if parsing fails
+              }
+            });
             
             setProblems(parsedProblems);
             console.log(`Loaded ${parsedProblems.length} problems for ${currentUsername}`);

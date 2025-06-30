@@ -107,16 +107,40 @@ const BottomMenuBar: React.FC = () => {
         const targetResponse = await fetch(`/api/stratagems?status=active&targetCitizen=${citizenProfile.username}`);
         
         if (response.ok && targetResponse.ok) {
-          const data = await response.json();
-          const targetData = await targetResponse.json();
+          // Check if responses are JSON
+          const contentType = response.headers.get('content-type');
+          const targetContentType = targetResponse.headers.get('content-type');
           
-          const userStratagems = data.success ? data.stratagems : [];
-          const targetStratagems = targetData.success ? targetData.stratagems : [];
-          
-          setActiveStratagems([...userStratagems, ...targetStratagems]);
-          console.log(`Loaded ${userStratagems.length} active stratagems by user and ${targetStratagems.length} targeting user`);
+          if (contentType?.includes('application/json') && targetContentType?.includes('application/json')) {
+            const data = await response.json();
+            const targetData = await targetResponse.json();
+            
+            const userStratagems = data.success ? data.stratagems : [];
+            const targetStratagems = targetData.success ? targetData.stratagems : [];
+            
+            setActiveStratagems([...userStratagems, ...targetStratagems]);
+            console.log(`Loaded ${userStratagems.length} active stratagems by user and ${targetStratagems.length} targeting user`);
+          } else {
+            console.error('Non-JSON response from stratagems API');
+            if (!contentType?.includes('application/json')) {
+              const text = await response.text();
+              console.error('Response 1:', text);
+            }
+            if (!targetContentType?.includes('application/json')) {
+              const text = await targetResponse.text();
+              console.error('Response 2:', text);
+            }
+          }
         } else {
-          console.error('Failed to fetch active stratagems');
+          console.error('Failed to fetch active stratagems', response.status, targetResponse.status);
+          if (!response.ok) {
+            const text = await response.text();
+            console.error('Error response 1:', text);
+          }
+          if (!targetResponse.ok) {
+            const text = await targetResponse.text();
+            console.error('Error response 2:', text);
+          }
         }
       } catch (error) {
         console.error('Error fetching stratagems:', error);

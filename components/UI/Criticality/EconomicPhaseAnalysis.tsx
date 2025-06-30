@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react';
-import { FaInfoCircle, FaExclamationTriangle, FaTrendingUp, FaTrendingDown } from 'react-icons/fa';
+import { FaInfoCircle, FaExclamationTriangle } from 'react-icons/fa';
 import { LineChart, Line, ScatterChart, Scatter, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, ReferenceLine } from 'recharts';
 
 interface PhaseAnalysisProps {

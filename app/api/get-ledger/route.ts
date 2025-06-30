@@ -204,27 +204,63 @@ async function fetchCitizenDetails(username: string): Promise<AirtableRecord<Fie
   }
 }
 
-async function fetchBooksAtPosition(position: { lat: number; lng: number }): Promise<AirtableRecord<FieldSet>[]> {
+async function fetchBooksAtPosition(position: { lat: number; lng: number }, buildingId?: string): Promise<AirtableRecord<FieldSet>[]> {
   try {
-    // Fetch books that are at the citizen's current position
-    const records = await getAirtable()('RESOURCES').select({
-      filterByFormula: `AND({Type} = 'book', {Position} != '')`,
+    // If we have a buildingId, use it directly to find books in that building
+    if (buildingId) {
+      const records = await getAirtable()('RESOURCES').select({
+        filterByFormula: `AND({Type} = 'books', {Asset} = '${escapeAirtableValue(buildingId)}', {AssetType} = 'building')`,
+      }).all();
+      return [...records];
+    }
+    
+    // Otherwise, we need to find all buildings at this position and then find books in those buildings
+    // This is less efficient but necessary when we don't have the buildingId
+    const buildingRecords = await getAirtable()('BUILDINGS').select({
+      filterByFormula: `{Position} != ''`,
     }).all();
     
-    // Filter books that match the citizen's position
-    const booksAtPosition = records.filter(record => {
+    // Find buildings at the citizen's position
+    const buildingsAtPosition = buildingRecords.filter(record => {
       if (!record.fields.Position) return false;
       try {
-        const bookPosition = JSON.parse(record.fields.Position as string);
-        return bookPosition.lat === position.lat && bookPosition.lng === position.lng;
+        const buildingPos = JSON.parse(record.fields.Position as string);
+        return buildingPos.lat === position.lat && buildingPos.lng === position.lng;
       } catch (e) {
         return false;
       }
     });
     
-    return [...booksAtPosition];
+    if (buildingsAtPosition.length === 0) return [];
+    
+    // Get all building IDs at this position
+    const buildingIds = buildingsAtPosition.map(b => b.fields.BuildingId as string).filter(id => id);
+    
+    // Fetch books in any of these buildings
+    const orConditions = buildingIds.map(id => `{Asset} = '${escapeAirtableValue(id)}'`).join(', ');
+    const formula = `AND({Type} = 'books', {AssetType} = 'building', OR(${orConditions}))`;
+    
+    const bookRecords = await getAirtable()('RESOURCES').select({
+      filterByFormula: formula,
+    }).all();
+    
+    return [...bookRecords];
   } catch (error) {
     console.error(`Error fetching books at position:`, error);
+    return [];
+  }
+}
+
+async function fetchBooksInInventory(username: string): Promise<AirtableRecord<FieldSet>[]> {
+  try {
+    // Fetch books that are in the citizen's inventory (Asset = username)
+    const records = await getAirtable()('RESOURCES').select({
+      filterByFormula: `AND({Type} = 'books', {Asset} = '${escapeAirtableValue(username)}')`,
+    }).all();
+    
+    return [...records];
+  } catch (error) {
+    console.error(`Error fetching books in inventory for ${username}:`, error);
     return [];
   }
 }
@@ -1058,6 +1094,14 @@ function convertLedgerToMarkdown(Ledger: any, citizenUsername: string | null): s
     
     if (Ledger.citizen.influence !== undefined) {
       md += `- **Influence I command**: ${Ledger.citizen.influence}\n`;
+    }
+    
+    if (Ledger.citizen.dailyIncome !== undefined) {
+      md += `- **Daily income**: ${Math.floor(Number(Ledger.citizen.dailyIncome))} Ducats\n`;
+    }
+    
+    if (Ledger.citizen.dailyNetResult !== undefined) {
+      md += `- **Daily net result**: ${Math.floor(Number(Ledger.citizen.dailyNetResult))} Ducats\n`;
     }
     
     if (Ledger.citizen.specialty) {
@@ -2206,26 +2250,77 @@ function convertLedgerToMarkdown(Ledger: any, citizenUsername: string | null): s
     }
   }
 
-  // Books I can read at my current location
-  if (Ledger.booksAtPosition && Ledger.booksAtPosition.length > 0) {
+  // Books I can read 
+  if ((Ledger.booksAtPosition && Ledger.booksAtPosition.length > 0) || 
+      (Ledger.booksInInventory && Ledger.booksInInventory.length > 0)) {
     md += `## Books I can read\n`;
-    md += `*Volumes available at my current location:*\n\n`;
     
-    Ledger.booksAtPosition.forEach((book: any) => {
-      const bookName = book.resourceId || 'Unknown Book';
-      const owner = book.owner || 'Unknown';
-      const quantity = book.quantity || 1;
+    // Books in inventory
+    if (Ledger.booksInInventory && Ledger.booksInInventory.length > 0) {
+      md += `*Volumes in my possession:*\n\n`;
       
-      md += `- **${bookName}**`;
-      if (owner && owner !== citizenUsername) {
-        md += ` (owned by ${owner})`;
-      }
-      if (quantity > 1) {
-        md += ` - ${quantity} copies available`;
-      }
+      Ledger.booksInInventory.forEach((book: any) => {
+        let bookTitle = 'Unknown Book';
+        let contentPath = '';
+        
+        // Parse attributes to get title and content path
+        if (book.attributes) {
+          try {
+            const attrs = typeof book.attributes === 'string' ? JSON.parse(book.attributes) : book.attributes;
+            bookTitle = attrs.title || bookTitle;
+            contentPath = attrs.content_path || '';
+          } catch (e) {
+            console.warn('Failed to parse book attributes:', e);
+          }
+        }
+        
+        const quantity = book.count || book.quantity || 1;
+        
+        md += `- **${bookTitle}**`;
+        if (contentPath) {
+          md += ` (${contentPath})`;
+        }
+        if (quantity > 1) {
+          md += ` - ${quantity} copies`;
+        }
+        md += ` (in my inventory)\n`;
+      });
       md += `\n`;
-    });
-    md += `\n`;
+    }
+    
+    // Books at current location
+    if (Ledger.booksAtPosition && Ledger.booksAtPosition.length > 0) {
+      md += `*Volumes available at my current location:*\n\n`;
+      
+      Ledger.booksAtPosition.forEach((book: any) => {
+        let bookTitle = 'Unknown Book';
+        let contentPath = '';
+        
+        // Parse attributes to get title and content path
+        if (book.attributes) {
+          try {
+            const attrs = typeof book.attributes === 'string' ? JSON.parse(book.attributes) : book.attributes;
+            bookTitle = attrs.title || bookTitle;
+            contentPath = attrs.content_path || '';
+          } catch (e) {
+            console.warn('Failed to parse book attributes:', e);
+          }
+        }
+        
+        const owner = book.owner || 'Unknown';
+        const quantity = book.count || book.quantity || 1;
+        
+        md += `- **${bookTitle}**`;
+        if (contentPath) {
+          md += ` (${contentPath})`;
+        }
+        if (quantity > 1) {
+          md += ` - ${quantity} copies available`;
+        }
+        md += `\n`;
+      });
+      md += `\n`;
+    }
   }
 
   return md;
@@ -2264,6 +2359,14 @@ function convertLedgerToCompactMarkdown(Ledger: any, citizenUsername: string | n
     
     if (Ledger.citizen.influence !== undefined) {
       md += `- **Influence I command**: ${Ledger.citizen.influence}\n`;
+    }
+    
+    if (Ledger.citizen.dailyIncome !== undefined) {
+      md += `- **Daily income**: ${Math.floor(Number(Ledger.citizen.dailyIncome))} Ducats\n`;
+    }
+    
+    if (Ledger.citizen.dailyNetResult !== undefined) {
+      md += `- **Daily net result**: ${Math.floor(Number(Ledger.citizen.dailyNetResult))} Ducats\n`;
     }
     
     if (Ledger.citizen.specialty) {
@@ -2704,6 +2807,7 @@ export async function GET(request: NextRequest) {
       stratagemsExecutedByCitizenPast: [] as any[], // Past Executed Stratagems by citizen
       stratagemsTargetingCitizenPast: [] as any[], // Past Executed Stratagems targeting citizen
       booksAtPosition: [] as any[], // Books available at citizen's current position
+      booksInInventory: [] as any[], // Books in citizen's inventory
     };
 
     // Parallelize all independent data fetching operations
@@ -2722,7 +2826,8 @@ export async function GET(request: NextRequest) {
       fetchedWeatherData,
       reportsData,
       worldExperiences,
-      booksAtPositionRecords
+      booksAtPositionRecords,
+      booksInInventoryRecords
     ] = await Promise.all([
       fetchStratagemDefinitions(),
       fetchCitizenActiveStratagems(citizenUsername),
@@ -2743,8 +2848,10 @@ export async function GET(request: NextRequest) {
       fetchLatestWorldExperiences(),
       // Fetch books at citizen's position
       citizenPosition && citizenPosition.lat && citizenPosition.lng 
-        ? fetchBooksAtPosition(citizenPosition)
-        : Promise.resolve([])
+        ? fetchBooksAtPosition(citizenPosition, buildingDetails?.buildingId)
+        : Promise.resolve([]),
+      // Fetch books in citizen's inventory
+      fetchBooksInInventory(citizenUsername)
     ]);
 
     // Assign weather data to Ledger
@@ -2862,6 +2969,9 @@ export async function GET(request: NextRequest) {
     
     // Books at position
     Ledger.booksAtPosition = booksAtPositionRecords.map(b => ({...normalizeKeysCamelCaseShallow(b.fields), airtableId: b.id}));
+    
+    // Books in inventory
+    Ledger.booksInInventory = booksInInventoryRecords.map(b => ({...normalizeKeysCamelCaseShallow(b.fields), airtableId: b.id}));
     
     // Contracts
     Ledger.activeContracts = activeContractsRecords.map(c => ({...normalizeKeysCamelCaseShallow(c.fields), airtableId: c.id}));

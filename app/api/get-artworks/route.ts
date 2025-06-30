@@ -1,4 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
+import fs from 'fs/promises';
+import path from 'path';
 
 const KINOS_API_KEY = process.env.KINOS_API_KEY;
 const KINOS_API_BASE_URL = "https://api.kinos-engine.ai/v2/blueprints/serenissima-ai/kins";
@@ -12,7 +14,7 @@ interface KinOSFile {
   is_binary?: boolean;   // Whether the content is binary
   // Fields for generated paintings
   url?: string;          // URL of the generated painting
-  source: 'kinos' | 'generated_painting'; // Source of the artwork
+  source: 'kinos' | 'generated_painting' | 'local'; // Source of the artwork
   // KinOS might include other fields, we'll pass them through
   [key: string]: any;
 }
@@ -218,6 +220,116 @@ async function fetchGeneratedPaintingsFromBackend(
 }
 
 
+// Helper function to fetch local plays/artworks
+async function fetchLocalArtworks(
+  username?: string | null,
+  specialty?: string | null
+): Promise<ArtworkFile[]> {
+  const localArtworks: ArtworkFile[] = [];
+  
+  // Determine which directory to check based on specialty
+  let baseDir = '/mnt/c/Users/reyno/serenissima_/public/books'; // Default for books
+  if (specialty?.toLowerCase() === 'playwright') {
+    baseDir = '/mnt/c/Users/reyno/serenissima_/public/plays';
+  } else if (specialty?.toLowerCase() === 'painter') {
+    baseDir = '/mnt/c/Users/reyno/serenissima_/public/paintings';
+  }
+  
+  try {
+    // Check if the base directory exists
+    await fs.access(baseDir);
+    
+    if (username) {
+      // Look for specific user's works
+      const userPaths = [
+        path.join(baseDir, 'artisti', username),
+        path.join(baseDir, username)
+      ];
+      
+      for (const userPath of userPaths) {
+        try {
+          await fs.access(userPath);
+          const files = await fs.readdir(userPath);
+          
+          for (const file of files) {
+            if (file.endsWith('.md')) {
+              const filePath = path.join(userPath, file);
+              const content = await fs.readFile(filePath, 'utf-8');
+              
+              let artworkName = extractTitleFromContent(content) || formatFilenameAsTitle(file);
+              
+              localArtworks.push({
+                name: artworkName,
+                artist: username,
+                path: path.relative('/mnt/c/Users/reyno/serenissima_/public', filePath),
+                source: 'local',
+                content: content,
+                type: 'file',
+                size: content.length,
+                last_modified: new Date().toISOString()
+              });
+            }
+          }
+        } catch (e) {
+          // Directory doesn't exist for this user, continue
+        }
+      }
+    } else {
+      // Fetch all artworks from all artists
+      const scanDir = async (dir: string, depth = 0): Promise<void> => {
+        if (depth > 3) return; // Limit recursion depth
+        
+        try {
+          const entries = await fs.readdir(dir, { withFileTypes: true });
+          
+          for (const entry of entries) {
+            const fullPath = path.join(dir, entry.name);
+            
+            if (entry.isDirectory() && !entry.name.startsWith('.')) {
+              await scanDir(fullPath, depth + 1);
+            } else if (entry.isFile() && entry.name.endsWith('.md')) {
+              // Try to extract artist from path
+              const relativePath = path.relative(baseDir, fullPath);
+              const pathParts = relativePath.split(path.sep);
+              let artist = 'Unknown';
+              
+              if (pathParts.length >= 2) {
+                if (pathParts[0] === 'artisti' && pathParts.length >= 3) {
+                  artist = pathParts[1];
+                } else if (pathParts.length === 2) {
+                  artist = pathParts[0];
+                }
+              }
+              
+              const content = await fs.readFile(fullPath, 'utf-8');
+              let artworkName = extractTitleFromContent(content) || formatFilenameAsTitle(entry.name);
+              
+              localArtworks.push({
+                name: artworkName,
+                artist: artist,
+                path: path.relative('/mnt/c/Users/reyno/serenissima_/public', fullPath),
+                source: 'local',
+                content: content,
+                type: 'file',
+                size: content.length,
+                last_modified: new Date().toISOString()
+              });
+            }
+          }
+        } catch (e) {
+          console.error(`Error scanning directory ${dir}:`, e);
+        }
+      };
+      
+      await scanDir(baseDir);
+    }
+  } catch (e) {
+    console.error(`Error accessing local artworks directory ${baseDir}:`, e);
+  }
+  
+  return localArtworks;
+}
+
 // Helper function to fetch all Artisti usernames (for KinOS artworks)
 async function fetchArtistiUsernames(specialty?: string | null): Promise<string[]> {
   let apiUrl = `${process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000'}/api/citizens?SocialClass=Artisti&IsAI=true`;
@@ -259,19 +371,20 @@ export async function GET(request: NextRequest) {
   if (citizenUsernameParam) {
     // Logic for a single specified citizen
     try {
-      const [kinosArtworks, generatedPaintings] = await Promise.all([
+      const [kinosArtworks, generatedPaintings, localArtworks] = await Promise.all([
         fetchArtworksForSingleCitizen(citizenUsernameParam, kinosArtPath, KINOS_API_KEY),
-        fetchGeneratedPaintingsFromBackend(citizenUsernameParam, specialtyParam) // Pass specialty if available
+        fetchGeneratedPaintingsFromBackend(citizenUsernameParam, specialtyParam), // Pass specialty if available
+        fetchLocalArtworks(citizenUsernameParam, specialtyParam)
       ]);
       
-      const allArtworks = [...kinosArtworks, ...generatedPaintings];
+      const allArtworks = [...localArtworks, ...kinosArtworks, ...generatedPaintings];
       
       return NextResponse.json({
         success: true,
         citizenUsername: citizenUsernameParam,
         artworksPath: kinosArtPath, // KinOS path, generated paintings have full URLs
         artworks: allArtworks,
-        message: `Found ${allArtworks.length} total artworks for ${citizenUsernameParam}. (${kinosArtworks.length} from KinOS, ${generatedPaintings.length} generated)`
+        message: `Found ${allArtworks.length} total artworks for ${citizenUsernameParam}. (${localArtworks.length} local, ${kinosArtworks.length} from KinOS, ${generatedPaintings.length} generated)`
       });
     } catch (error: any) {
       console.error(`[API /get-artworks] Error processing request for citizen ${citizenUsernameParam}:`, error);
@@ -297,7 +410,10 @@ export async function GET(request: NextRequest) {
       // If specialtyParam is provided, backend will filter by it. Otherwise, backend defaults (e.g., to Painters).
       const generatedPaintings = await fetchGeneratedPaintingsFromBackend(null, specialtyParam);
       
-      const allArtworks = [...kinosArtworks, ...generatedPaintings];
+      // Fetch local artworks
+      const localArtworks = await fetchLocalArtworks(null, specialtyParam);
+      
+      const allArtworks = [...localArtworks, ...kinosArtworks, ...generatedPaintings];
       
       const responseCitizenIdentifier = specialtyParam 
         ? `all_artisti_${specialtyParam.toLowerCase().replace(/\s+/g, '_')}` 
@@ -321,7 +437,7 @@ export async function GET(request: NextRequest) {
         citizenUsername: responseCitizenIdentifier,
         artworksPath: kinosArtPath,
         artworks: allArtworks,
-        message: `Found ${allArtworks.length} total artworks. (${kinosArtworks.length} from KinOS for ${artistiUsernamesForKinOS.length} artists, ${generatedPaintings.length} generated paintings from backend).`
+        message: `Found ${allArtworks.length} total artworks. (${localArtworks.length} local, ${kinosArtworks.length} from KinOS for ${artistiUsernamesForKinOS.length} artists, ${generatedPaintings.length} generated paintings from backend).`
       });
 
     } catch (error: any) {

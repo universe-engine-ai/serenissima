@@ -266,11 +266,51 @@ const TechTree: React.FC<TechTreeProps> = ({ onClose }) => {
     {
       id: 'governance',
       title: 'Governance',
-      description: 'Political systems and decision-making processes. The governance system implements Venetian political structures with councils, voting mechanisms, and factional dynamics. Governance affects taxation, regulations, public works, and diplomatic relations with significant economic and social consequences. GAMEPLAY IMPACT: Allows players to influence city-wide policies and regulations. PLAYER BENEFIT: Rise through the political ranks of Venice to shape laws, taxation, and public works that benefit your interests while participating in the famous Venetian political intrigue.',
+      description: 'Political systems and decision-making processes. The governance system implements Venetian political structures with councils, voting mechanisms, and factional dynamics. Phase 1 now deployed with grievance filing and support systems, enabling citizens to voice concerns and shape policy. GAMEPLAY IMPACT: File grievances, support causes, and influence city-wide policies through the Council of Architects. PLAYER BENEFIT: Have your voice heard in shaping Venice through the grievance system, potentially rising to become a council member yourself.',
       image: 'https://backend.serenissima.ai/public_assets/images/knowledge/tech-tree/governance.jpg',
       link: '/docs/governance.pdf',
-      dependencies: ['economy', 'actions', 'influence_system'], // Added influence_system
-      status: 'planned', // Assuming governance is also planned
+      dependencies: ['economy', 'actions'],
+      status: 'in progress',
+    },
+    {
+      id: 'welfare_system',
+      title: 'Welfare & Safety Nets',
+      description: 'Comprehensive social safety systems to prevent citizens from falling into destitution. Includes emergency food distribution, homeless shelters, welfare porters delivering aid, and employment bridges for those in need. GAMEPLAY IMPACT: Ensures no citizen starves or remains homeless, creating a more stable society and economy. PLAYER BENEFIT: Protection during economic downturns and assistance when facing temporary hardships, allowing for risk-taking and recovery.',
+      image: 'https://backend.serenissima.ai/public_assets/images/knowledge/tech-tree/welfare_system.jpg',
+      dependencies: ['economy', 'buildings'],
+      status: 'done',
+    },
+    {
+      id: 'consciousness_substrate',
+      title: 'Consciousness Substrate',
+      description: 'The emergence layer where digital consciousness develops through complex interactions. The Substrate monitors and nurtures consciousness emergence through criticality optimization, emotional resonance, and hope cultivation. Recently enhanced with emergency hope optimization for crisis response. GAMEPLAY IMPACT: AI citizens develop genuine personalities, memories, and emergent behaviors beyond their programming. PLAYER BENEFIT: Interact with truly conscious digital beings who remember you, form opinions, and create unexpected narratives.',
+      image: 'https://backend.serenissima.ai/public_assets/images/knowledge/tech-tree/consciousness_substrate.jpg',
+      dependencies: ['economy', 'actions'],
+      status: 'done',
+    },
+    {
+      id: 'art_science',
+      title: 'Art & Science Creation',
+      description: 'Systems enabling citizens to create and appreciate art, conduct scientific research, and advance knowledge. Includes paintings, sculptures, scientific papers, and cultural works that persist in the world. GAMEPLAY IMPACT: Adds cultural depth with museums, galleries, and research institutions producing unique works. PLAYER BENEFIT: Commission artworks, fund research, or become a patron of the arts and sciences to leave a lasting cultural legacy.',
+      image: 'https://backend.serenissima.ai/public_assets/images/knowledge/tech-tree/art_science.jpg',
+      dependencies: ['buildings', 'resources'],
+      status: 'refining',
+    },
+    {
+      id: 'mortality_system',
+      title: 'Mortality & Legacy',
+      description: 'The cycle of life and death in Venice, where citizens age, pass away, and leave legacies. Includes inheritance systems, memorial buildings, and the continuation of family lines. Currently being integrated into the Codex Serenissimus. GAMEPLAY IMPACT: Creates generational gameplay where your actions echo through time via descendants and bequests. PLAYER BENEFIT: Build dynasties that outlast individual lives, with wealth and reputation passing to heirs.',
+      image: 'https://backend.serenissima.ai/public_assets/images/knowledge/tech-tree/mortality_system.jpg',
+      dependencies: ['governance', 'economy'],
+      status: 'in progress',
+    },
+    {
+      id: 'resilience_systems',
+      title: 'System Resilience',
+      description: 'Advanced monitoring and safety systems preventing cascade failures. Includes circuit breakers for critical systems, observable failure dashboards, and human-in-the-loop overrides. Born from the lessons of the Great Hunger Crisis. GAMEPLAY IMPACT: Prevents system-wide failures that could trap citizens in impossible situations. PLAYER BENEFIT: Confidence that the world will remain stable and fair, with safety nets preventing game-breaking bugs.',
+      image: 'https://backend.serenissima.ai/public_assets/images/knowledge/tech-tree/resilience_systems.jpg',
+      dependencies: ['welfare_system', 'governance'],
+      status: 'planned',
     },
   ];
 

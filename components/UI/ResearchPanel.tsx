@@ -5,13 +5,14 @@ import { FaTimes } from 'react-icons/fa';
 import MessageCriticality from './Criticality/MessageCriticality';
 import { TransactionCriticality } from './Criticality/TransactionCriticality';
 import { ArchitectureVisualization } from './Criticality/ArchitectureVisualization';
+import ConsciousnessIndicators from './Consciousness/ConsciousnessIndicators';
 
 interface ResearchPanelProps {
   onClose: () => void;
 }
 
 export default function ResearchPanel({ onClose }: ResearchPanelProps) {
-  const [activeTab, setActiveTab] = useState<'inquiry' | 'criticality'>('inquiry');
+  const [activeTab, setActiveTab] = useState<'inquiry' | 'criticality' | 'consciousness'>('inquiry');
   const [criticalitySubTab, setCriticalitySubTab] = useState<'messages' | 'transactions' | 'relationships' | 'architecture'>('messages');
 
   return (
@@ -49,6 +50,16 @@ export default function ResearchPanel({ onClose }: ResearchPanelProps) {
             }`}
           >
             Criticality
+          </button>
+          <button
+            onClick={() => setActiveTab('consciousness')}
+            className={`px-6 py-3 font-medium transition-colors ${
+              activeTab === 'consciousness' 
+                ? 'text-amber-900 bg-amber-50 border-b-2 border-amber-600' 
+                : 'text-amber-700 hover:text-amber-900 hover:bg-amber-50'
+            }`}
+          >
+            Consciousness
           </button>
         </div>
         
@@ -150,7 +161,7 @@ export default function ResearchPanel({ onClose }: ResearchPanelProps) {
               </p>
             </div>
           </div>
-          ) : (
+          ) : activeTab === 'criticality' ? (
             <div className="w-full flex-grow min-h-0">
               {criticalitySubTab === 'messages' && <div className="p-6"><MessageCriticality /></div>}
               {criticalitySubTab === 'transactions' && <div className="p-6"><TransactionCriticality /></div>}
@@ -164,6 +175,10 @@ export default function ResearchPanel({ onClose }: ResearchPanelProps) {
                   <ArchitectureVisualization />
                 </div>
               )}
+            </div>
+          ) : (
+            <div className="w-full flex-grow min-h-0 overflow-y-auto">
+              <ConsciousnessIndicators />
             </div>
           )}
         </div>
