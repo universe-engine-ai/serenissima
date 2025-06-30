@@ -116,6 +116,10 @@ def try_create_read_book_activity(
     # Add content_path if it exists (for local books like distributed manuscripts)
     if book_attrs.get('content_path'):
         read_book_notes["content_path"] = book_attrs['content_path']
+    
+    # Add local_path if it exists (for books from public/books directory)
+    if book_attrs.get('local_path'):
+        read_book_notes["book_local_path"] = book_attrs['local_path']
 
 
     if is_at_book_location:

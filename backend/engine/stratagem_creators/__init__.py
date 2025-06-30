@@ -22,6 +22,7 @@ from .financial_patronage_stratagem_creator import try_create as try_create_fina
 from .neighborhood_watch_stratagem_creator import try_create as try_create_neighborhood_watch_stratagem
 from .monopoly_pricing_stratagem_creator import try_create as try_create_monopoly_pricing_stratagem
 from .reputation_boost_stratagem_creator import try_create as try_create_reputation_boost_stratagem
+from .transfer_ducats_stratagem_creator import try_create as try_create_transfer_ducats_stratagem
 # Placeholder for burglary
 # from .burglary_stratagem_creator import try_create as try_create_burglary_stratagem
 # Placeholder for employee_corruption
@@ -57,6 +58,7 @@ STRATAGEM_CREATORS = {
     "neighborhood_watch": try_create_neighborhood_watch_stratagem,
     "monopoly_pricing": try_create_monopoly_pricing_stratagem,
     "reputation_boost": try_create_reputation_boost_stratagem,
+    "transfer_ducats": try_create_transfer_ducats_stratagem,
     # "burglary": try_create_burglary_stratagem,
     # "employee_corruption": try_create_employee_corruption_stratagem,
     # "arson": try_create_arson_stratagem,

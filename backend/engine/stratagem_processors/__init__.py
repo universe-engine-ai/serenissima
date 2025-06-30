@@ -20,6 +20,7 @@ from .joint_venture_stratagem_processor import process as process_joint_venture_
 # Placeholder for reputation_boost
 # from .reputation_boost_stratagem_processor import process as process_reputation_boost_stratagem
 from .canal_mugging_stratagem_processor import process as process_canal_mugging_stratagem # Added import
+from .transfer_ducats_stratagem_processor import process as process_transfer_ducats_stratagem
 # Placeholder for burglary
 # from .burglary_stratagem_processor import process as process_burglary_stratagem
 # Placeholder for employee_corruption

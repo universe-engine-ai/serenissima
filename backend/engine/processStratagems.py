@@ -61,6 +61,7 @@ from backend.engine.stratagem_processors.financial_patronage_stratagem_processor
 from backend.engine.stratagem_processors.neighborhood_watch_stratagem_processor import process_neighborhood_watch_stratagem
 from backend.engine.stratagem_processors.monopoly_pricing_stratagem_processor import process_monopoly_pricing_stratagem
 from backend.engine.stratagem_processors.reputation_boost_stratagem_processor import process_reputation_boost_stratagem
+from backend.engine.stratagem_processors.transfer_ducats_stratagem_processor import process_transfer_ducats_stratagem
 
 # Placeholder for canal_mugging is removed, as it's now imported.
 
@@ -211,6 +212,7 @@ STRATAGEM_PROCESSORS = {
     "monopoly_pricing": process_monopoly_pricing_stratagem,
     "reputation_boost": process_reputation_boost_stratagem,
     "canal_mugging": process_canal_mugging_stratagem, # Now maps to the imported processor
+    "transfer_ducats": process_transfer_ducats_stratagem,
     # "burglary": process_burglary_stratagem, # Mapping removed, processor to be implemented separately
     "employee_corruption": process_employee_corruption_stratagem,
     "arson": process_arson_stratagem,

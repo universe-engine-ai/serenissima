@@ -186,6 +186,7 @@ def process_read_book_fn(
     book_title = notes_dict.get('book_title', 'an unknown book')
     book_kinos_path = notes_dict.get('book_kinos_path') # This should be set by production_processor if book has artwork
     book_content_path = notes_dict.get('content_path') # For local books like the Codex
+    book_local_path = notes_dict.get('book_local_path') # New format from updated production processor
     
     log.info(f"{LogColors.PROCESS}Processing 'read_book' activity {activity_guid} for citizen {citizen_username} reading '{book_title}'.{LogColors.ENDC}")
 
@@ -226,6 +227,17 @@ def process_read_book_fn(
                 log.info(f"  Successfully fetched content for '{book_title}' from local path {book_content_path}.")
             else:
                 log.warning(f"  Failed to fetch content for '{book_title}' from local path {book_content_path}.")
+        
+        # Check for new local_path format from updated production processor
+        elif book_local_path:
+            log.info(f"  Book has local path: {book_local_path}. Attempting to fetch content.")
+            full_content = _get_local_book_content(f"public/books/{book_local_path}")
+            if full_content:
+                # Extract a chunk if the content is too long
+                artwork_content_for_kinos = _extract_random_chunk(full_content, max_chars=5000)
+                log.info(f"  Successfully fetched content for '{book_title}' from local path {book_local_path}.")
+            else:
+                log.warning(f"  Failed to fetch content for '{book_title}' from local path {book_local_path}.")
         
         # If no local content, try KinOS path
         elif book_kinos_path:

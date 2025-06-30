@@ -31,7 +31,7 @@ from .manage_import_contract_creator import try_create as try_create_manage_impo
 from .manage_public_import_contract_creator import try_create as try_create_manage_public_import_contract_activity # New public import contract activity
 from .manage_logistics_service_contract_creator import try_create as try_create_manage_logistics_service_contract_activity # New logistics service contract activity
 from .buy_available_land_creator import try_create as try_create_buy_available_land_activity # New land purchase activity
-from .initiate_building_project_creator import try_create as try_create_initiate_building_project_activity # New building project activity
+from .initiate_building_project_creator import try_create_smart_wrapper as try_create_initiate_building_project_activity # Smart wrapper that handles both old and new signatures
 from .adjust_land_lease_price_creator import try_create as try_create_adjust_land_lease_price_activity # New land lease price adjustment activity
 from .adjust_building_rent_price_creator import try_create as try_create_adjust_building_rent_price_activity # New building rent price adjustment activity
 from .adjust_business_wages_creator import try_create as try_create_adjust_business_wages_activity # New business wages adjustment activity
@@ -79,3 +79,11 @@ from .pray_activity_creator import try_create_pray_activity, find_nearest_church
 from .research_scope_definition_activity_creator import try_create as try_create_research_scope_definition_activity # Research planning for Scientisti
 from .hypothesis_and_question_development_activity_creator import try_create as try_create_hypothesis_and_question_development_activity # Hypothesis formation for Scientisti
 from .knowledge_integration_activity_creator import try_create as try_create_knowledge_integration_activity # Knowledge synthesis for Scientisti
+
+# Innovatori activity creators
+from .observe_system_patterns_activity_creator import try_create as try_create_observe_system_patterns_activity
+from .interview_citizens_activity_creator import try_create as try_create_interview_citizens_activity
+from .build_prototype_activity_creator import try_create as try_create_build_prototype_activity
+from .test_innovation_activity_creator import try_create as try_create_test_innovation_activity
+from .draft_blueprint_activity_creator import try_create as try_create_draft_blueprint_activity
+from .present_innovation_activity_creator import try_create as try_create_present_innovation_activity

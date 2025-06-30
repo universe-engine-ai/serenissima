@@ -85,6 +85,10 @@ from backend.engine.handlers.scientisti import (
     _try_process_weighted_scientisti_work
 )
 
+from backend.engine.handlers.innovatori import (
+    _try_process_weighted_innovatori_work
+)
+
 # Import activity creators for fallback
 from backend.engine.activity_creators import try_create_idle_activity
 
@@ -120,6 +124,7 @@ class CitizenActivityOrchestrator:
             (25, _handle_artisti_work_on_art, "Artisti Work on Art"),
             (26, _handle_clero_prepare_sermon, "Clero Prepare Sermon"),
             (27, _try_process_weighted_scientisti_work, "Scientisti Research Activities"),
+            (28, _try_process_weighted_innovatori_work, "Innovatori Innovation Activities"),
             (30, _handle_professional_construction_work, "Professional Construction"),
             (31, _handle_production_and_general_work_tasks, "Production & General Work"),
             (32, _handle_fishing, "Professional Fishing"),

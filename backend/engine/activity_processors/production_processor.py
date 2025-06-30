@@ -14,6 +14,8 @@ import os # Added for API_BASE_URL
 from datetime import datetime, timezone, timedelta
 import pytz # Added for Venice timezone
 from typing import Dict, List, Optional, Any
+from pathlib import Path
+import re
 
 # Import utility functions from activity_helpers to avoid circular imports
 from backend.engine.utils.activity_helpers import (
@@ -30,6 +32,62 @@ API_BASE_URL_PROD_PROC = os.getenv("API_BASE_URL", "http://localhost:3000") # Fa
 
 # Placeholder for the actual book resource type ID
 BOOK_RESOURCE_TYPE_ID = "books" 
+
+def _get_local_books(logger: logging.Logger) -> List[Dict[str, str]]:
+    """Scans the local filesystem for books in public/books directory."""
+    books = []
+    books_dir = Path("/mnt/c/Users/reyno/serenissima_/public/books")
+    
+    if not books_dir.exists():
+        logger.warning(f"Books directory does not exist: {books_dir}")
+        return books
+    
+    # Scan for all markdown files
+    for md_file in books_dir.rglob("*.md"):
+        # Extract relative path from books directory
+        relative_path = md_file.relative_to(books_dir)
+        
+        # Try to extract author from path structure
+        parts = relative_path.parts
+        author = "Unknown"
+        
+        # Check if it's in an author-specific directory
+        if len(parts) >= 2:
+            # Could be social_class/author/book.md or author/book.md
+            if parts[0] in ['artisti', 'clero', 'scientisti', 'il-cantastorie']:
+                if len(parts) >= 3:
+                    author = parts[1]
+                else:
+                    author = parts[0]
+            else:
+                author = parts[0]
+        
+        # Clean up the title from filename
+        title = md_file.stem.replace('_', ' ').replace('-', ' ')
+        # Capitalize words
+        title = ' '.join(word.capitalize() for word in title.split())
+        
+        books.append({
+            "title": title,
+            "author": author,
+            "path": str(relative_path),
+            "full_path": str(md_file)
+        })
+    
+    logger.info(f"Found {len(books)} books in local filesystem")
+    return books
+
+def _select_book_randomly(logger: logging.Logger) -> Optional[Dict[str, str]]:
+    """Selects a book randomly from the local filesystem."""
+    books = _get_local_books(logger)
+    
+    if not books:
+        logger.warning("No books available to select")
+        return None
+    
+    selected_book = random.choice(books)
+    logger.info(f"Selected book: '{selected_book['title']}' by {selected_book['author']}")
+    return selected_book
 
 def _select_artist_by_clout(api_base_url: str, logger: logging.Logger) -> Optional[str]:
     """Fetches artists and selects one randomly, weighted by clout."""
@@ -381,18 +439,18 @@ def process(
             log.info(f"Attempting to produce {num_books_to_produce} unique books of type {res_type}.")
             for _ in range(num_books_to_produce):
                 artwork_attributes_json = None
-                selected_artist_username = _select_artist_by_clout(current_api_base_url, log)
+                
+                # Select a book from local filesystem instead of KinOS
+                selected_book = _select_book_randomly(log)
                 
                 artwork_title_for_log = "Generic Book"
-                if selected_artist_username:
-                    artwork_details = _get_random_artwork_for_artist(selected_artist_username, current_api_base_url, log)
-                    if artwork_details:
-                        artwork_attributes_json = json.dumps({
-                            "title": artwork_details["name"],
-                            "author_username": selected_artist_username,
-                            "kinos_path": artwork_details["path"]
-                        })
-                        artwork_title_for_log = f"'{artwork_details['name']}' by {selected_artist_username}"
+                if selected_book:
+                    artwork_attributes_json = json.dumps({
+                        "title": selected_book["title"],
+                        "author_username": selected_book["author"],
+                        "local_path": selected_book["path"]
+                    })
+                    artwork_title_for_log = f"'{selected_book['title']}' by {selected_book['author']}"
                 
                 res_def_book = resource_defs.get(res_type, {})
                 building_pos_str_book = prod_building_record['fields'].get('Position', '{}')

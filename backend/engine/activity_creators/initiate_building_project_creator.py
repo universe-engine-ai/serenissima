@@ -323,3 +323,91 @@ def _calculate_distance(pos1, pos2):
     lat_diff = (pos1['lat'] - pos2['lat']) * 111000  # ~111km per degree of latitude
     lng_diff = (pos1['lng'] - pos2['lng']) * 111000 * 0.85  # Approximate at mid-latitudes
     return (lat_diff**2 + lng_diff**2)**0.5  # Euclidean distance in meters
+
+
+def try_create_smart_wrapper(*args, **kwargs):
+    """
+    Smart wrapper that detects which signature is being used and calls the appropriate function.
+    Supports both old and new signature patterns.
+    """
+    # Check if this is the new signature (with citizen_record as dict)
+    if len(args) >= 2 and isinstance(args[1], dict) and 'fields' in args[1]:
+        # New signature: try_create(tables, citizen_record, activity_parameters, ...)
+        return try_create(*args, **kwargs)
+    
+    # Otherwise, assume it's the old signature
+    # Old signature: try_create(tables, citizen_custom_id, citizen_username, citizen_airtable_id, land_polygon_id, now_utc_dt, building_type_defs)
+    if len(args) >= 7:
+        return try_create_legacy_wrapper(*args, **kwargs)
+    
+    # If we can't determine the signature, log an error
+    log.error(f"Unable to determine signature pattern for initiate_building_project. Args: {len(args)}, Kwargs: {list(kwargs.keys())}")
+    return None
+
+
+def try_create_legacy_wrapper(
+    tables: Dict[str, Any],
+    citizen_custom_id: str,
+    citizen_username: str, 
+    citizen_airtable_id: str,
+    land_polygon_id: str,
+    now_utc_dt: datetime,
+    building_type_defs: Dict
+) -> Optional[Dict[str, Any]]:
+    """
+    Legacy wrapper for backward compatibility with old signature used in management.py.
+    Converts old parameters to new format and calls the new try_create function.
+    """
+    # Fetch the full citizen record
+    citizen_records = tables['citizens'].all(
+        formula=f"{{CustomId}}='{_escape_airtable_value(citizen_custom_id)}'",
+        max_records=1
+    )
+    
+    if not citizen_records:
+        log.error(f"Could not find citizen record for CustomId: {citizen_custom_id}")
+        return None
+    
+    citizen_record = citizen_records[0]
+    
+    # Find a suitable building type (e.g., warehouse)
+    suitable_building_type = None
+    for building_type_id, building_def in building_type_defs.items():
+        if building_def.get('Category') == 'storage':
+            suitable_building_type = building_def
+            break
+    
+    if not suitable_building_type:
+        # Fallback to any building type
+        suitable_building_type = next(iter(building_type_defs.values()))
+    
+    # Create activity parameters
+    activity_parameters = {
+        'landId': land_polygon_id,
+        'buildingTypeDefinition': suitable_building_type,
+        'pointDetails': {'lat': 45.4408, 'lng': 12.3155},  # Default Venice coordinates
+        'builderContractDetails': None,
+        'targetOfficeBuildingId': None
+    }
+    
+    # Get Venice time
+    now_venice_dt = now_utc_dt.astimezone(VENICE_TIMEZONE)
+    
+    # Call the new try_create function
+    result = try_create(
+        tables=tables,
+        citizen_record=citizen_record,
+        activity_parameters=activity_parameters,
+        resource_defs={},  # Not used in this creator
+        building_type_defs=building_type_defs,
+        now_venice_dt=now_venice_dt,
+        now_utc_dt=now_utc_dt,
+        transport_api_url="http://localhost:3000/api/transport",  # Default
+        api_base_url="http://localhost:3000"  # Default
+    )
+    
+    # Convert result format for legacy compatibility
+    if result and result.get('success') and result.get('activity_fields'):
+        return result.get('activity_fields')
+    
+    return None

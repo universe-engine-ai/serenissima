@@ -97,6 +97,7 @@ def dispatch_specific_activity_request(
         
         elif activity_type == "initiate_building_project":
             # Create the initiate building project activity
+            # The smart wrapper will detect the signature and call the appropriate function
             result = try_create_initiate_building_project_activity(
                 tables, citizen_record, activity_parameters,
                 resource_defs, building_type_defs,

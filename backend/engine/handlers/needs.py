@@ -96,6 +96,9 @@ def _handle_eat_from_inventory(
         log.warning(f"{LogColors.WARNING}[EMERGENCY] {citizen_name} hasn't eaten in >24 hours! Bypassing leisure time restrictions.{LogColors.ENDC}")
 
     log.info(f"{LogColors.OKCYAN}[Eat-Inv] {citizen_name}: Leisure time & hungry. Checking inventory.{LogColors.ENDC}")
+    
+    # First, collect all available food items in inventory
+    available_foods = []
     for food_type_id in FOOD_RESOURCE_TYPES_FOR_EATING:
         food_name = _get_res_display_name_module(food_type_id, resource_defs)
         formula = (f"AND({{AssetType}}='citizen', {{Asset}}='{_escape_airtable_value(citizen_username)}', "
@@ -103,14 +106,32 @@ def _handle_eat_from_inventory(
         try:
             inventory_food = tables['resources'].all(formula=formula, max_records=1)
             if inventory_food and float(inventory_food[0]['fields'].get('Count', 0)) >= 1.0:
-                activity_record = try_create_eat_from_inventory_activity(
-                    tables, citizen_custom_id, citizen_username, citizen_airtable_id,
-                    food_type_id, 1.0, now_utc_dt, resource_defs)
-                if activity_record:
-                    log.info(f"{LogColors.OKGREEN}[Eat-Inv] {citizen_name}: Creating 'eat_from_inventory' for '{food_name}'.{LogColors.ENDC}")
-                    return activity_record
+                available_foods.append({
+                    'food_type_id': food_type_id,
+                    'food_name': food_name,
+                    'count': float(inventory_food[0]['fields'].get('Count', 0))
+                })
+                log.info(f"{LogColors.OKBLUE}[Eat-Inv] {citizen_name}: Found {inventory_food[0]['fields'].get('Count', 0)} {food_name} in inventory.{LogColors.ENDC}")
         except Exception as e:
             log.error(f"{LogColors.FAIL}[Eat-Inv] {citizen_name}: Error checking inventory for '{food_name}': {e}{LogColors.ENDC}")
+    
+    if not available_foods:
+        log.info(f"{LogColors.WARNING}[Eat-Inv] {citizen_name}: No food found in inventory.{LogColors.ENDC}")
+        return None
+    
+    # Try to create eat activity for the first available food type
+    # Note: In future, could prioritize by food tier or other criteria
+    for food_item in available_foods:
+        activity_record = try_create_eat_from_inventory_activity(
+            tables, citizen_custom_id, citizen_username, citizen_airtable_id,
+            food_item['food_type_id'], 1.0, now_utc_dt, resource_defs)
+        if activity_record:
+            log.info(f"{LogColors.OKGREEN}[Eat-Inv] {citizen_name}: Creating 'eat_from_inventory' for '{food_item['food_name']}' (has {food_item['count']} units).{LogColors.ENDC}")
+            return activity_record
+        else:
+            log.warning(f"{LogColors.WARNING}[Eat-Inv] {citizen_name}: Failed to create eat activity for '{food_item['food_name']}', trying next food type.{LogColors.ENDC}")
+    
+    log.error(f"{LogColors.FAIL}[Eat-Inv] {citizen_name}: Failed to create eat activity for any available food type.{LogColors.ENDC}")
     return None
 
 def _handle_eat_at_home_or_goto(
