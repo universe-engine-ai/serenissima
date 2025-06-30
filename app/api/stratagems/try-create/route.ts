@@ -139,6 +139,13 @@ export async function POST(request: Request) {
         `FestivalBudget: ${stratagemDetails?.festivalBudget}`,
         `DurationDays: ${stratagemDetails?.durationDays}`
       );
+    } else if (stratagemType === 'organize_gathering') {
+      console.log(`[API /stratagems/try-create] Processing 'organize_gathering' stratagem with parameters:`,
+        `GatheringName: ${stratagemDetails?.gatheringName}`,
+        `Location: ${stratagemDetails?.location}`,
+        `Purpose: ${stratagemDetails?.purpose}`,
+        `Description: ${stratagemDetails?.description}`
+      );
     }
 
     let parsedPythonEngineUrl: URL;
