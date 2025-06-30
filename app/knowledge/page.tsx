@@ -88,8 +88,9 @@ export default function KnowledgePage() {
   };
 
   const handleShowRoadmap = () => {
+    console.log('handleShowRoadmap called');
     setView('roadmap');
-    console.log('Show roadmap');
+    console.log('View set to:', 'roadmap');
   };
 
   const handleSelectArticle = (article: string) => {

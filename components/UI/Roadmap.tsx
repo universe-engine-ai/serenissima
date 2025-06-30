@@ -1,5 +1,14 @@
 import React, { useState } from 'react';
-import { Calendar, Target, Zap, Brain, Globe, Users, Trophy } from 'lucide-react';
+import { 
+  FaCalendar as Calendar, 
+  FaBullseye as Target, 
+  FaBolt as Zap, 
+  FaBrain as Brain, 
+  FaGlobe as Globe, 
+  FaUsers as Users, 
+  FaTrophy as Trophy,
+  FaTimes
+} from 'react-icons/fa';
 
 interface PhaseData {
   id: number;
@@ -132,7 +141,20 @@ export const Roadmap: React.FC = () => {
   const [selectedPhase, setSelectedPhase] = useState<number | null>(null);
 
   return (
-    <div className="w-full bg-gray-900 text-white p-8">
+    <>
+      <style>{`
+        @keyframes fadeIn {
+          from {
+            opacity: 0;
+            transform: translateY(20px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+      `}</style>
+      <div className="w-full bg-gray-900 text-white p-8">
       <div className="max-w-7xl mx-auto">
         <header className="text-center mb-12">
           <h1 className="text-5xl font-bold mb-4 bg-gradient-to-r from-cyan-400 to-purple-600 bg-clip-text text-transparent">
@@ -168,7 +190,8 @@ export const Roadmap: React.FC = () => {
 
         {/* Phase Details */}
         {selectedPhase && (
-          <div className="bg-gray-800 rounded-xl p-8 mb-8 border border-gray-700 animate-fadeIn">
+          <div className="bg-gray-800 rounded-xl p-8 mb-8 border border-gray-700 transition-all duration-500 ease-out"
+               style={{ animation: 'fadeIn 0.5s ease-out' }}>
             {phases.filter(p => p.id === selectedPhase).map(phase => (
               <div key={phase.id}>
                 <div className="flex items-center mb-4">
@@ -257,23 +280,8 @@ export const Roadmap: React.FC = () => {
         </div>
       </div>
 
-      <style jsx>{`
-        @keyframes fadeIn {
-          from {
-            opacity: 0;
-            transform: translateY(20px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-        
-        .animate-fadeIn {
-          animation: fadeIn 0.5s ease-out;
-        }
-      `}</style>
     </div>
+    </>
   );
 };
 

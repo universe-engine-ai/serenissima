@@ -97,7 +97,10 @@ const KnowledgeRepository: React.FC<KnowledgeRepositoryProps> = ({
                 </p>
                 <div className="flex gap-2">
                   <button 
-                    onClick={onShowRoadmap}
+                    onClick={() => {
+                      console.log('Roadmap button clicked in KnowledgeRepository');
+                      onShowRoadmap();
+                    }}
                     className="inline-block px-4 py-2 bg-amber-600 text-white rounded hover:bg-amber-700 transition-colors"
                   >
                     View Roadmap
