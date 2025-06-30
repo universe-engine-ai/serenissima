@@ -651,16 +651,17 @@ def process_ai_messages(kinos_model_override_arg: Optional[str] = None, instant_
                         # Get AI citizen's social class to determine response rate
                         ai_social_class = ai_citizen_record.get("fields", {}).get("SocialClass", "Cittadini")  # Default to Cittadini
                         
-                        # Social class dependent response rates
+                        # Social class dependent response rates (higher than thinking loop)
                         response_rates = {
-                            "Clero": 0.85,
-                            "Artisti": 0.80,
-                            "Scientisti": 0.75,
-                            "Nobili": 0.70,
-                            "Cittadini": 0.65,
-                            "Forestieri": 0.60,
-                            "Popolani": 0.50,
-                            "Facchini": 0.40
+                            "Innovatori": 0.90,
+                            "Scientisti": 0.85,
+                            "Artisti": 0.85,
+                            "Clero": 0.80,
+                            "Nobili": 0.75,
+                            "Forestieri": 0.70,
+                            "Cittadini": 0.70,
+                            "Popolani": 0.60,
+                            "Facchini": 0.50
                         }
                         
                         response_rate = response_rates.get(ai_social_class, 0.65)  # Default to 65% if class not found

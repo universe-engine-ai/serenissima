@@ -1,13 +1,17 @@
 #!/usr/bin/env python3
 """
-thinkingLoop.py - A continuous thinking process for AI citizens
+thinkingLoop.py - A continuous thinking process for all citizens
 
 This script processes the queue of thinking tasks and also selects random citizens
 for thinking operations when the queue is empty.
 
 For random citizen selection, weighting is based on social class:
+- Innovatori: 6x chance
+- Scientisti: 5x chance
 - Artisti: 5x chance
+- Clero: 4x chance
 - Nobili: 4x chance
+- Forestieri: 3x chance
 - Cittadini: 3x chance
 - Popolani: 2x chance
 - Facchini: 1x chance
@@ -69,8 +73,12 @@ def log_header(message, color_code=LogColors.HEADER):
 
 # Social class weights for citizen selection
 SOCIAL_CLASS_WEIGHTS = {
+    'Innovatori': 6,
+    'Scientisti': 5,
     'Artisti': 5,
+    'Clero': 4,
     'Nobili': 4,
+    'Forestieri': 3,
     'Cittadini': 3,
     'Popolani': 2,
     'Facchini': 1
@@ -87,11 +95,11 @@ def select_random_citizen(tables):
         A citizen record or None if no citizens found
     """
     try:
-        # Get all AI citizens
+        # Get all citizens (both AI and human)
         citizens = tables['citizens'].all()
         
         if not citizens:
-            log_warning("No AI citizens found in the database")
+            log_warning("No citizens found in the database")
             return None
         
         # Group citizens by social class

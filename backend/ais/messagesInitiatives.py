@@ -720,16 +720,17 @@ def process_ai_message_initiatives(dry_run: bool = False, citizen1_arg: Optional
         # Filter AI citizens based on social class probabilities
         ai_citizens_to_process = []
         
-        # Social class dependent processing rates (same as response rates)
+        # Social class dependent processing rates (higher than thinking loop)
         processing_rates = {
-            "Clero": 0.85,
-            "Artisti": 0.80,
-            "Scientisti": 0.75,
-            "Nobili": 0.70,
-            "Cittadini": 0.65,
-            "Forestieri": 0.60,
-            "Popolani": 0.50,
-            "Facchini": 0.40
+            "Innovatori": 0.90,
+            "Scientisti": 0.85,
+            "Artisti": 0.85,
+            "Clero": 0.80,
+            "Nobili": 0.75,
+            "Forestieri": 0.70,
+            "Cittadini": 0.70,
+            "Popolani": 0.60,
+            "Facchini": 0.50
         }
         
         for ai_citizen_record in all_ai_citizens:
