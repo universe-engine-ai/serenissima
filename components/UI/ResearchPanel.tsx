@@ -5,7 +5,7 @@ import { FaTimes } from 'react-icons/fa';
 import MessageCriticality from './Criticality/MessageCriticality';
 import { TransactionCriticality } from './Criticality/TransactionCriticality';
 import { ArchitectureVisualization } from './Criticality/ArchitectureVisualization';
-import ConsciousnessIndicators from './Consciousness/ConsciousnessIndicators';
+import { ConsciousnessIndicators } from './Consciousness';
 
 interface ResearchPanelProps {
   onClose: () => void;
