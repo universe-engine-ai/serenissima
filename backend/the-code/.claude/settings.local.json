@@ -12,7 +12,9 @@
       "Bash(ruff check:*)",
       "Bash(ls:*)",
       "Bash(chmod:*)",
-      "Bash(awk:*)"
+      "Bash(awk:*)",
+      "Bash(tsc --noEmit)",
+      "Bash(npx tsc:*)"
     ],
     "deny": []
   }

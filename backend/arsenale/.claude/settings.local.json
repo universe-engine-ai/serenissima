@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(find:*)",
+      "Bash(ls:*)",
+      "Bash(grep:*)",
+      "Bash(mkdir:*)",
+      "Bash(mv:*)",
+      "Bash(python:*)",
+      "Bash(PYTHONPATH=/mnt/c/Users/reyno/serenissima_/backend python3 -c \"from engine.activity_creators import try_create_initiate_building_project_activity; print('Import successful')\")",
+      "Bash(git checkout:*)"
+    ],
+    "deny": []
+  }
+}
