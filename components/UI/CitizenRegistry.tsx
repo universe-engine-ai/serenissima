@@ -3,6 +3,7 @@ import dynamic from 'next/dynamic'; // Import dynamic
 import { citizenService } from '@/lib/services/CitizenService';
 import ArtistiRegistryTab from './ArtistiRegistryTab'; // Import the new tab component
 import ScientificBooksTab from './ScientificBooksTab'; // Import the scientific books tab
+import CantastorieTab from './CantastorieTab'; // Import the cantastorie books tab
 import CitizenRegistryCard from '@/components/UI/CitizenRegistryCard';
 // Dynamically import RelationshipGraph with SSR turned off
 const RelationshipGraph = dynamic(() => import('@/components/UI/RelationshipGraph'), {
@@ -47,7 +48,7 @@ interface Relationship {
 }
 
 const CitizenRegistry: React.FC<CitizenRegistryProps> = ({ onClose }) => {
-  const [activeTab, setActiveTab] = useState<'registro' | 'carta' | 'artisti' | 'scienze'>('registro'); // Add 'artisti' and 'scienze' to tab types
+  const [activeTab, setActiveTab] = useState<'registro' | 'carta' | 'artisti' | 'scienze' | 'cantastorie'>('registro'); // Add 'artisti', 'scienze', and 'cantastorie' to tab types
   const [citizens, setCitizens] = useState<any[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [relationships, setRelationships] = useState<Relationship[]>([]);
@@ -341,6 +342,16 @@ const CitizenRegistry: React.FC<CitizenRegistryProps> = ({ onClose }) => {
           >
             Casa delle Scienze
           </button>
+          <button
+            className={`px-6 py-3 font-serif text-lg ${
+              activeTab === 'cantastorie' 
+                ? 'bg-amber-100 text-amber-900 border-t-2 border-l-2 border-r-2 border-amber-300 rounded-t-lg -mb-px' 
+                : 'text-amber-700 hover:text-amber-900'
+            }`}
+            onClick={() => setActiveTab('cantastorie')}
+          >
+            Biblioteca del Cantastorie
+          </button>
         </div>
         
         {/* Content */}
@@ -529,6 +540,10 @@ const CitizenRegistry: React.FC<CitizenRegistryProps> = ({ onClose }) => {
             />
           ) : activeTab === 'scienze' ? (
             <ScientificBooksTab 
+              currentUsername={currentUsername} 
+            />
+          ) : activeTab === 'cantastorie' ? (
+            <CantastorieTab 
               currentUsername={currentUsername} 
             />
           ) : null}
