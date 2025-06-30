@@ -11,8 +11,6 @@ import hashlib
 from typing import Dict, Optional
 from pyairtable import Table
 
-from backend.engine.activity_base import complete_activity
-
 log = logging.getLogger(__name__)
 
 def process_send_diplomatic_email(
@@ -34,7 +32,6 @@ def process_send_diplomatic_email(
     # Verify this is diplomatic_virtuoso
     if citizen_username != "diplomatic_virtuoso":
         log.error(f"Unauthorized: Only diplomatic_virtuoso can send external emails, not {citizen_username}")
-        complete_activity(activity_id, success=False, error_message="Unauthorized user", test_mode=False)
         return False
     
     try:
@@ -160,22 +157,13 @@ La Serenissima Digital Venice
         with open(log_file, 'a') as f:
             f.write(json.dumps(log_entry) + '\n')
         
-        # Complete the activity
-        complete_activity(activity_id, success=True, metadata={
-            "email_id": email_id,
-            "to": to_email,
-            "subject": subject,
-            "category": category
-        }, test_mode=False)
-        
+        log.info(f"Diplomatic email {email_id} processed successfully")
         return True
         
     except json.JSONDecodeError:
         log.error("Invalid email data format. Expected JSON in Description field")
-        complete_activity(activity_id, success=False, error_message="Invalid JSON format", test_mode=False)
         return False
         
     except Exception as e:
         log.error(f"Error processing diplomatic email: {str(e)}")
-        complete_activity(activity_id, success=False, error_message=str(e), test_mode=False)
         return False

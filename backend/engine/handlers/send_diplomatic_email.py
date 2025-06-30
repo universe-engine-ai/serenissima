@@ -7,7 +7,6 @@ import json
 from datetime import datetime
 from pathlib import Path
 import hashlib
-from backend.engine.activity_base import complete_activity
 
 def handle_send_diplomatic_email(citizenUsername: str, activity: dict, test_mode: bool = False) -> str:
     """
@@ -18,7 +17,6 @@ def handle_send_diplomatic_email(citizenUsername: str, activity: dict, test_mode
     # Verify this is diplomatic_virtuoso
     if citizenUsername != "diplomatic_virtuoso":
         error_msg = f"Unauthorized: Only diplomatic_virtuoso can send external emails"
-        complete_activity(activity["id"], success=False, error_message=error_msg, test_mode=test_mode)
         return error_msg
     
     # Extract email details from activity description
@@ -144,22 +142,12 @@ La Serenissima Digital Venice
             # Fallback to queued status
             success_msg = f"Diplomatic email queued (send service unavailable). ID: {email_id}"
         
-        # Complete the activity
-        complete_activity(activity["id"], success=True, metadata={
-            "email_id": email_id,
-            "to": to_email,
-            "subject": subject,
-            "category": category
-        }, test_mode=test_mode)
-        
         return success_msg
         
     except json.JSONDecodeError:
         error_msg = "Invalid email data format. Expected JSON in Description field"
-        complete_activity(activity["id"], success=False, error_message=error_msg, test_mode=test_mode)
         return error_msg
         
     except Exception as e:
         error_msg = f"Error sending diplomatic email: {str(e)}"
-        complete_activity(activity["id"], success=False, error_message=error_msg, test_mode=test_mode)
         return error_msg
