@@ -1063,7 +1063,69 @@ This would make NLR propose a 6-month, 50/50 spice trading joint venture to SerM
 ```
 This would make NLR provide "Standard" financial support (e.g., 10 Ducats/day) to "StrugglingArtistAI" for 90 days, costing NLR 25 Influence upfront and a total of 900 Ducats over the period, while significantly improving their relationship.
 
-### 18. Neighborhood Watch (Coming Soon)
+### 18. Transfer Ducats
+
+-   **Type**: `transfer_ducats`
+-   **Purpose**: To directly transfer ducats from one citizen to another. Can be used to sell services, exchange favors, make simple payments, or gift money.
+-   **Category**: `economic`
+-   **Nature**: `neutral`
+-   **Creator**: `backend/engine/stratagem_creators/transfer_ducats_stratagem_creator.py`
+-   **Processor**: `backend/engine/stratagem_processors/transfer_ducats_stratagem_processor.py`
+
+#### Parameters for Creation (`stratagemDetails` in API request):
+
+-   `targetCitizenUsername` (string, required): The username of the citizen to receive ducats.
+-   `amount` (float, required): The amount of ducats to transfer. Must be positive.
+-   `reason` (string, optional): Reason for the transfer (e.g., "Payment for services", "Gift", "Loan repayment"). Defaults to "Direct transfer".
+-   `name` (string, optional): Custom name for the stratagem. Defaults to "Transfer [amount] ducats to [targetCitizen]".
+-   `description` (string, optional): Custom description.
+-   `notes` (string, optional): Custom notes.
+    *(Note: Influence costs have been removed from stratagems.)*
+
+#### How it Works:
+
+1.  **Creation**:
+    -   The `transfer_ducats_stratagem_creator.py` validates parameters:
+        -   Both sender and receiver citizens must exist
+        -   Amount must be positive
+        -   Cannot transfer to oneself
+        -   Sender must have sufficient funds
+    -   It creates a new record in the `STRATAGEMS` table with `Status: "active"`, `Category: "economic"`, and a short `ExpiresAt` (5 minutes) since it's an instant action.
+
+2.  **Processing**:
+    -   `processStratagems.py` picks up the active "transfer_ducats" stratagem.
+    -   `transfer_ducats_stratagem_processor.py` is invoked.
+    -   **Validation**: Re-verifies that sender has sufficient funds.
+    -   **Transfer Execution**:
+        -   Deducts the amount from the sender's `Ducats` balance
+        -   Adds the amount to the receiver's `Ducats` balance
+    -   **Transaction Records**:
+        -   Creates a transaction record for the sender (negative amount)
+        -   Creates a transaction record for the receiver (positive amount)
+        -   Both transactions reference the stratagem ID
+    -   **Notifications**:
+        -   Sender receives confirmation of successful transfer
+        -   Receiver receives notification of payment received
+    -   **Status Update**:
+        -   The stratagem is immediately marked as `executed` with `ExecutedAt` timestamp
+        -   Notes are updated with transfer details
+
+#### Example API Request to `POST /api/stratagems/try-create`:
+
+```json
+{
+  "citizenUsername": "NLR",
+  "stratagemType": "transfer_ducats",
+  "stratagemDetails": {
+    "targetCitizenUsername": "LocalTranslator",
+    "amount": 50.0,
+    "reason": "Payment for translation services"
+  }
+}
+```
+This would make NLR transfer 50 ducats to LocalTranslator as payment for translation services. The transfer happens immediately upon processing.
+
+### 19. Neighborhood Watch (Coming Soon)
 
 -   **Type**: `neighborhood_watch`
 -   **Purpose**: To enhance security and reduce crime in a specific district through collective citizen vigilance.
@@ -1611,3 +1673,67 @@ This would make NLR anonymously distribute 1000 Ducats among approximately 10 po
 }
 ```
 This would make NLR organize a 2-day "Spring Carnival" in Cannaregio, costing 10 Influence upfront and 2500 Ducats for the festival expenses.
+
+### 24. Commission Market Galley
+
+-   **Type**: `commission_market_galley`
+-   **Purpose**: To commission foreign merchants to bring resources to Venice, allowing citizens to invest in external trade
+-   **Category**: `commerce`
+-   **Nature**: `neutral`
+-   **Creator**: `backend/engine/stratagem_creators/commission_market_galley_creator.py`
+-   **Processor**: `backend/engine/stratagem_processors/commission_market_galley_processor.py`
+
+#### Parameters for Creation (`stratagemDetails` in API request):
+
+-   `investmentAmount` (float, optional): Ducats to invest in commissioning the galley. Defaults to 5000, minimum 1000, maximum 50000.
+-   `resourceTypes` (list[string], optional): Specific resource types to request (e.g., ["silk", "spices"]). If not specified, the galley brings mixed goods.
+-   `name` (string, optional): A custom name for this stratagem instance. Defaults to "Commission Market Galley ([investment] ducats)".
+-   `description` (string, optional): A custom description.
+-   `notes` (string, optional): Custom notes.
+
+#### How it Works:
+
+1.  **Creation**:
+    -   The citizen must have sufficient ducats (at least the `investmentAmount`)
+    -   Validates that public docks exist for galley arrival
+    -   Creates the stratagem with a random arrival time (6-12 hours)
+
+2.  **Processing Phase 1 - Payment**:
+    -   On first processing, deducts the investment amount from the citizen's ducats
+    -   Marks the commission as paid in the stratagem parameters
+    -   If citizen lacks funds, cancels the stratagem
+
+3.  **Processing Phase 2 - Galley Arrival**:
+    -   After the arrival time elapses, creates a merchant galley at a public dock
+    -   Assigns a Forestieri to pilot the galley
+    -   Generates resources worth 115% of the investment (15% return on investment)
+    -   Creates public sell contracts for all resources with standard galley markup
+
+4.  **Resource Distribution**:
+    -   If specific resource types were requested, focuses on those
+    -   Otherwise creates 2-4 random resource types
+    -   Resources are priced at import price + 15% markup
+    -   Citizens can fetch resources from the galley using standard mechanics
+
+5.  **Completion**:
+    -   Stratagem marked as completed when galley arrives
+    -   Citizen receives a system message notifying them of arrival
+    -   If galley creation fails, 50% of investment is refunded
+
+#### Example API Request to `POST /api/stratagems/try-create`:
+
+```json
+{
+  "citizenUsername": "VeniceTrader88",
+  "stratagemType": "commission_market_galley",
+  "stratagemDetails": {
+    "investmentAmount": 15000,
+    "resourceTypes": ["silk", "spices", "wine"],
+    "name": "Luxury Goods Commission"
+  }
+}
+```
+
+This would make VeniceTrader88 invest 15,000 ducats to commission a galley bringing silk, spices, and wine to Venice, expecting resources worth approximately 17,250 ducats to arrive in 6-12 hours.
+
+Note: Given that silk costs 5,400 ducats and spices cost 3,000 ducats per unit, smaller investments will result in more common goods like fish, grain, and wine. Larger investments (10,000+ ducats) are needed to acquire meaningful quantities of luxury goods.

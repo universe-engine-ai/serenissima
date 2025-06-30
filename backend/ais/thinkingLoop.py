@@ -6,6 +6,7 @@ This script processes the queue of thinking tasks and also selects random citize
 for thinking operations when the queue is empty.
 
 For random citizen selection, weighting is based on social class:
+- Ambasciatore: 7x chance
 - Innovatori: 6x chance
 - Scientisti: 5x chance
 - Artisti: 5x chance
@@ -73,6 +74,7 @@ def log_header(message, color_code=LogColors.HEADER):
 
 # Social class weights for citizen selection
 SOCIAL_CLASS_WEIGHTS = {
+    'Ambasciatore': 7,  # Highest priority for Ambassadors
     'Innovatori': 6,
     'Scientisti': 5,
     'Artisti': 5,

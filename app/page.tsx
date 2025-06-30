@@ -114,6 +114,7 @@ export default function TwoDPage() {
   const [currentLoadingTip, setCurrentLoadingTip] = useState<string>('');
   const [showKnowledgePanel, setShowKnowledgePanel] = useState<boolean>(false);
   const [showTechTreePanel, setShowTechTreePanel] = useState<boolean>(false); // État pour TechTree
+  const [showRoadmapPanel, setShowRoadmapPanel] = useState<boolean>(false); // State for Roadmap
   const [showCitizenRegistry, setShowCitizenRegistry] = useState<boolean>(false); // State for CitizenRegistry
   const [showTransferMenu, setShowTransferMenu] = useState<boolean>(false); // State for TransferComputeMenu
   const [showProfileEditor, setShowProfileEditor] = useState<boolean>(false); // State for ProfileEditor
@@ -352,6 +353,12 @@ export default function TwoDPage() {
     console.log('Showing tech tree');
     setShowKnowledgePanel(false); // Cacher le KnowledgeRepository
     setShowTechTreePanel(true); // Afficher le TechTree
+  };
+
+  const handleShowRoadmap = () => {
+    console.log('Showing roadmap');
+    setShowKnowledgePanel(false); // Hide KnowledgeRepository
+    setShowRoadmapPanel(true); // Show Roadmap
   };
   
   const handleShowPresentation = () => {
@@ -1345,6 +1352,7 @@ export default function TwoDPage() {
           onShowTechTree={handleShowTechTree}
           onShowPresentation={handleShowPresentation}
           onShowResourceTree={handleShowResourceTree}
+          onShowRoadmap={handleShowRoadmap}
           onSelectArticle={handleSelectArticle}
         />
       )}

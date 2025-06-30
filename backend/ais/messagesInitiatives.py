@@ -722,6 +722,7 @@ def process_ai_message_initiatives(dry_run: bool = False, citizen1_arg: Optional
         
         # Social class dependent processing rates (higher than thinking loop)
         processing_rates = {
+            "Ambasciatore": 0.95,  # Highest priority for Ambassadors
             "Innovatori": 0.90,
             "Scientisti": 0.85,
             "Artisti": 0.85,

@@ -16,6 +16,7 @@ import logging
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from scripts.joinGuild import process_ai_guild_joining # Added import
+from scripts.initialize_all_citizens import initialize_all_citizens # Added import
 import random
 import json
 import datetime
@@ -172,6 +173,69 @@ def generate_citizen(social_class: str, additional_prompt_text: Optional[str] = 
         log.info(f"Final prompt length: {len(prompt)} characters")
         log.debug(f"Full prompt being sent to KinOS:\n{prompt}\n")
             
+        # Build class-specific instructions
+        class_instructions = ""
+        ducats_range = "10,000-100,000"
+        
+        if social_class == 'Innovatori':
+            class_instructions = "If creating an Innovatori, they should be creative inventors, engineers, and reality architects who design new systems and innovations for Venice. They combine merchant skills with visionary thinking."
+            ducats_range = "500,000-1,000,000"
+        elif social_class == 'Ambasciatore':
+            class_instructions = "If creating an Ambasciatore, they should be diplomatic, influential, and skilled in negotiation and international relations. They represent Venice's interests abroad and maintain crucial diplomatic relationships."
+            ducats_range = "750,000-1,500,000"
+        
+        system_prompt = f"""You are a historical expert on Renaissance Venice (1400-1600) helping to create a citizen for a historically accurate economic simulation game called La Serenissima. Create 1 unique Venetian citizen of the {social_class} social class with historically accurate name, description, and characteristics. {class_instructions} Your response MUST be a valid JSON object with EXACTLY this format:
+
+```json
+{{
+  "FirstName": "string",
+  "LastName": "string",
+  "Username": "string",
+  "Personality": "string",
+  "CorePersonality": {{
+    "Strength": "string",
+    "Flaw": "string",
+    "Drive": "string",
+    "MBTI": "string",
+    "PrimaryTrait": "string",
+    "SecondaryTraits": ["trait1", "trait2", "trait3"],
+    "CognitiveBias": ["bias1", "bias2"],
+    "TrustThreshold": number,
+    "EmpathyWeight": number,
+    "RiskTolerance": number,
+    "guidedBy": "string",
+    "CoreThoughts": {{
+      "primary_drive": "string",
+      "secondary_drive": "string",
+      "internal_tension": "string",
+      "activation_triggers": ["trigger1", "trigger2", "trigger3"],
+      "thought_patterns": ["thought1", "thought2", "thought3", "thought4", "thought5", "thought6"],
+      "decision_framework": "string"
+    }}
+  }},
+  "ImagePrompt": "string",
+  "Ducats": number
+}}
+```
+
+The Username should be a realistic, human-like username that someone might choose based on their name or characteristics (like 'marco_polo' or 'gondolier42'). Make it lowercase with only letters, numbers and underscores. 
+
+The CorePersonality should be a comprehensive psychological profile:
+- Strength: Their main positive trait/skill
+- Flaw: Their primary weakness or limitation
+- Drive: What motivates them (format: "X-driven" e.g. "ambition-driven", "wealth-driven", "knowledge-driven")
+- MBTI: A valid MBTI personality type (e.g. INTJ, ESFP, etc.)
+- PrimaryTrait: A concise description of their defining characteristic
+- SecondaryTraits: Array of 3 supporting traits/skills
+- CognitiveBias: Array of 2 psychological biases they exhibit
+- TrustThreshold: 0.1-0.9 (how easily they trust others)
+- EmpathyWeight: 0.1-0.9 (how much they consider others' feelings)
+- RiskTolerance: 0.1-0.9 (willingness to take risks)
+- guidedBy: Their philosophical/moral guide (e.g. "The Document's Truth", "Divine Providence", "Market Forces")
+- CoreThoughts: Deep psychological framework with drives, tensions, triggers, thought patterns, and decision-making approach
+
+The Personality field should provide a textual description (2-3 sentences) that captures their essence based on the CorePersonality. Do not include any text before or after the JSON. The Ducats value should be between {ducats_range}. Don't use the same names and tropes than the previous generations."""
+        
         # Call KinOS Engine API
         response = requests.post(
             "https://api.kinos-engine.ai/v2/blueprints/serenissima-ai/kins/ConsiglioDeiDieci/channels/immigration/messages",
@@ -183,7 +247,7 @@ def generate_citizen(social_class: str, additional_prompt_text: Optional[str] = 
                 "content": prompt,
                 "model": "claude-3-7-sonnet-latest",
                 "mode": "creative",
-                "addSystem": f"You are a historical expert on Renaissance Venice (1400-1600) helping to create a citizen for a historically accurate economic simulation game called La Serenissima. Create 1 unique Venetian citizen of the {social_class} social class with historically accurate name, description, and characteristics. {'If creating an Innovatori, they should be creative inventors, engineers, and reality architects who design new systems and innovations for Venice. They combine merchant skills with visionary thinking.' if social_class == 'Innovatori' else ''} Your response MUST be a valid JSON object with EXACTLY this format:\n\n```json\n{{\n  \"FirstName\": \"string\",\n  \"LastName\": \"string\",\n  \"Username\": \"string\",\n  \"Personality\": \"string\",\n  \"CorePersonality\": {{\n    \"Strength\": \"string\",\n    \"Flaw\": \"string\",\n    \"Drive\": \"string\",\n    \"MBTI\": \"string\",\n    \"PrimaryTrait\": \"string\",\n    \"SecondaryTraits\": [\"trait1\", \"trait2\", \"trait3\"],\n    \"CognitiveBias\": [\"bias1\", \"bias2\"],\n    \"TrustThreshold\": number,\n    \"EmpathyWeight\": number,\n    \"RiskTolerance\": number,\n    \"guidedBy\": \"string\",\n    \"CoreThoughts\": {{\n      \"primary_drive\": \"string\",\n      \"secondary_drive\": \"string\",\n      \"internal_tension\": \"string\",\n      \"activation_triggers\": [\"trigger1\", \"trigger2\", \"trigger3\"],\n      \"thought_patterns\": [\"thought1\", \"thought2\", \"thought3\", \"thought4\", \"thought5\", \"thought6\"],\n      \"decision_framework\": \"string\"\n    }}\n  }},\n  \"ImagePrompt\": \"string\",\n  \"Ducats\": number\n}}\n```\n\nThe Username should be a realistic, human-like username that someone might choose based on their name or characteristics (like 'marco_polo' or 'gondolier42'). Make it lowercase with only letters, numbers and underscores. \n\nThe CorePersonality should be a comprehensive psychological profile:\n- Strength: Their main positive trait/skill\n- Flaw: Their primary weakness or limitation\n- Drive: What motivates them (format: \"X-driven\" e.g. \"ambition-driven\", \"wealth-driven\", \"knowledge-driven\")\n- MBTI: A valid MBTI personality type (e.g. INTJ, ESFP, etc.)\n- PrimaryTrait: A concise description of their defining characteristic\n- SecondaryTraits: Array of 3 supporting traits/skills\n- CognitiveBias: Array of 2 psychological biases they exhibit\n- TrustThreshold: 0.1-0.9 (how easily they trust others)\n- EmpathyWeight: 0.1-0.9 (how much they consider others' feelings)\n- RiskTolerance: 0.1-0.9 (willingness to take risks)\n- guidedBy: Their philosophical/moral guide (e.g. \"The Document's Truth\", \"Divine Providence\", \"Market Forces\")\n- CoreThoughts: Deep psychological framework with drives, tensions, triggers, thought patterns, and decision-making approach\n\nThe Personality field should provide a textual description (2-3 sentences) that captures their essence based on the CorePersonality. Do not include any text before or after the JSON. The Ducats value should be between 10,000-100,000{'For Innovatori, set Ducats between 500,000-1,000,000 as they are wealthy inventors.' if social_class == 'Innovatori' else ''}. Don't use the same names and tropes than the previous generations."
+                "addSystem": system_prompt
             }
         )
         
@@ -381,7 +445,7 @@ if __name__ == "__main__":
     import argparse
     
     parser = argparse.ArgumentParser(description="Generate citizens for La Serenissima")
-    parser.add_argument("--socialClass", type=str, choices=["Nobili", "Cittadini", "Popolani", "Facchini", "Forestieri", "Artisti", "Clero", "Scientisti", "Innovatori"], 
+    parser.add_argument("--socialClass", type=str, choices=["Nobili", "Cittadini", "Popolani", "Facchini", "Forestieri", "Artisti", "Clero", "Scientisti", "Innovatori", "Ambasciatore"], 
                         help="Social class of the citizen to generate")
     parser.add_argument("--count", type=int, default=1, help="Number of citizens to generate (default: 1)")
     # Legacy arguments for backwards compatibility
@@ -394,6 +458,7 @@ if __name__ == "__main__":
     parser.add_argument("--clero", type=int, default=0, help="Number of clero to generate (deprecated, use --socialClass Clero --count N)")
     parser.add_argument("--scientisti", type=int, default=0, help="Number of scientisti to generate (deprecated, use --socialClass Scientisti --count N)")
     parser.add_argument("--innovatori", type=int, default=0, help="Number of innovatori to generate (deprecated, use --socialClass Innovatori --count N)")
+    parser.add_argument("--ambasciatore", type=int, default=0, help="Number of ambasciatore to generate (deprecated, use --socialClass Ambasciatore --count N)")
     parser.add_argument("--output", type=str, help="Output JSON file path")
     parser.add_argument("--add-prompt", type=str, help="Additional text to append to the generation prompt for KinOS API.")
     parser.add_argument("--addMessage", type=str, help="Another message to append to the KinOS generation prompt.")
@@ -436,7 +501,8 @@ if __name__ == "__main__":
             "Artisti": args.artisti,
             "Clero": args.clero,
             "Scientisti": args.scientisti,
-            "Innovatori": args.innovatori
+            "Innovatori": args.innovatori,
+            "Ambasciatore": args.ambasciatore
         }
         
         # Filter out classes with zero count
@@ -545,6 +611,14 @@ if __name__ == "__main__":
                 log.error(f"Could not import a required module ('updatecitizenDescriptionAndImage' or '.linkrepos'). Make sure the scripts are accessible: {e_import}")
             except Exception as e_main_process:
                 log.error(f"An error occurred during Airtable save, profile update, or repo linking process: {e_main_process}")
+            
+            # After all citizens have been processed, initialize their folders and CLAUDE.md files
+            log.info("Initializing folders and CLAUDE.md files for all newly created citizens...")
+            try:
+                initialize_all_citizens(filter_ai_only=True, dry_run=args.dry_run)
+                log.info("Successfully initialized citizen folders and CLAUDE.md files.")
+            except Exception as e_init:
+                log.error(f"Error initializing citizen folders: {e_init}")
     elif args.dry_run:
         log.info("[DRY RUN] Simulation mode. Skipping Airtable save, profile update, and repository linking.")
         if citizens:

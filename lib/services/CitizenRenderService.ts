@@ -199,7 +199,10 @@ export class CitizenRenderService {
     const baseClass = socialClass?.toLowerCase() || '';
     
     // Base colors for different social classes
-    if (baseClass.includes('nobili')) {
+    if (baseClass.includes('ambasciatore')) {
+      // Light purple for ambassadors
+      return 'rgba(221, 160, 221, 0.8)';
+    } else if (baseClass.includes('nobili')) {
       // Gold/yellow for nobility
       return 'rgba(218, 165, 32, 0.8)';
     } else if (baseClass.includes('cittadini')) {

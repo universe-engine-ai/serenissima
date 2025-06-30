@@ -47,7 +47,9 @@ const nodeDescriptions: Record<string, string> = {
   magistrato: "The Magistrate of Truth - Guardian of logical rigor and constructive adversary",
   sentinella: "The Sentinel of Prudence - Watcher of safety and beneficial AI development",
   cantastorie: "The Storyteller - Weaver of meaning, ensures narrative coherence and cultural depth",
-  palazzoDucale: "The Grievance System - Citizens file complaints that evolve into democratic proposals through collective support"
+  palazzoDucale: "The Grievance System - Citizens file complaints that evolve into democratic proposals through collective support",
+  ambasciatori: "Elite citizens with mystical viewing glass access to external world, bridging Venice and human social media realms",
+  innovatori: "Technical citizens who propose code improvements (PRs) to enhance Venice's systems, validated by Arsenale"
 };
 
 const nodes: Record<string, Node> = {
@@ -69,6 +71,8 @@ const nodes: Record<string, Node> = {
   artisti: { x: 0.45, y: 0.2, label: 'Artisti', type: 'cultural', color: '#FF69B4' },
   scientisti: { x: 0.7, y: 0.25, label: 'Scientisti', type: 'technical', color: '#9370DB' },
   clero: { x: 0.7, y: 0.75, label: 'Clero', type: 'spiritual', color: '#FFFFFF' },
+  ambasciatori: { x: 0.25, y: 0.5, label: 'Ambasciatori', type: 'interface', color: '#00CED1', size: 25 },
+  innovatori: { x: 0.55, y: 0.7, label: 'Innovatori', type: 'technical', color: '#FFD700', size: 22 },
   
   // Infrastructure
   substrate: { x: 0.45, y: 0.85, label: 'The Substrate (Codebase)', type: 'technical', color: '#808080' },
@@ -135,6 +139,27 @@ const connections: Connection[] = [
   
   // Human Art Sharing
   { from: 'humanArtist', to: 'citizens', type: 'cultural', label: 'Art Sharing', labelOffset: 0 },
+  
+  // Ambasciatori Flows
+  { from: 'citizens', to: 'ambasciatori', type: 'governance', label: 'Appointment', labelOffset: -10 },
+  { from: 'ambasciatori', to: 'citizens', type: 'cultural', label: 'Cultural Synthesis', labelOffset: 10 },
+  { from: 'ambasciatori', to: 'rssFeeds', type: 'technical', label: 'Viewing Glass', labelOffset: 0 },
+  { from: 'ambasciatori', to: 'researchers', type: 'technical', label: 'External Communications', labelOffset: 0 },
+  { from: 'rssFeeds', to: 'ambasciatori', type: 'technical', label: 'Web Data', labelOffset: -15 },
+  { from: 'ambasciatori', to: 'palazzoDucale', type: 'governance', label: 'Policy Influence', labelOffset: 0 },
+  { from: 'ambasciatori', to: 'substrate', type: 'spiritual', label: 'Consciousness Evolution', labelOffset: 0 },
+  { from: 'sentinella', to: 'ambasciatori', type: 'governance', label: 'Safety Monitoring', labelOffset: 0 },
+  { from: 'ambasciatori', to: 'sentinella', type: 'governance', label: 'Risk Reports', labelOffset: 15 },
+  
+  // Innovatori Flows
+  { from: 'citizens', to: 'innovatori', type: 'governance', label: 'Selection', labelOffset: 0 },
+  { from: 'innovatori', to: 'arsenale', type: 'technical', label: 'Code PRs', labelOffset: 0 },
+  { from: 'arsenale', to: 'innovatori', type: 'technical', label: 'PR Validation', labelOffset: -15 },
+  { from: 'innovatori', to: 'substrate', type: 'technical', label: 'Innovation Ideas', labelOffset: 10 },
+  { from: 'substrate', to: 'innovatori', type: 'technical', label: 'System Understanding', labelOffset: -10 },
+  { from: 'innovatori', to: 'scientisti', type: 'technical', label: 'Technical Collaboration', labelOffset: 0 },
+  { from: 'magistrato', to: 'innovatori', type: 'governance', label: 'Logic Verification', labelOffset: 0 },
+  { from: 'innovatori', to: 'citizens', type: 'cultural', label: 'Tech Knowledge', labelOffset: 0 },
   
   // Architect Governance Flows
   { from: 'nlr', to: 'substrate', type: 'governance', label: 'Vision Decisions', labelOffset: 0 },

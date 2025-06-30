@@ -653,6 +653,7 @@ def process_ai_messages(kinos_model_override_arg: Optional[str] = None, instant_
                         
                         # Social class dependent response rates (higher than thinking loop)
                         response_rates = {
+                            "Ambasciatore": 0.95,  # Highest priority for Ambassadors
                             "Innovatori": 0.90,
                             "Scientisti": 0.85,
                             "Artisti": 0.85,

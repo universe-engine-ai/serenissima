@@ -57,8 +57,10 @@ REDISTRIBUTION_PERCENTAGES = {
 
 # Fixed daily payments for special social classes
 FIXED_DAILY_PAYMENTS = {
-    "Scientisti": 2500,  # 2500 Ducats per day for Scientists
-    "Clero": 2000        # 2000 Ducats per day for Clergy
+    "Scientisti": 2500,    # 2500 Ducats per day for Scientists
+    "Clero": 2000,         # 2000 Ducats per day for Clergy
+    "Innovatori": 3000,    # 3000 Ducats per day for Innovators
+    "Ambasciatore": 5000   # 5000 Ducats per day for Ambassadors
 }
 
 # Percentage of treasury to redistribute (1%)
@@ -288,6 +290,16 @@ def create_admin_summary(tables, redistribution_summary) -> None:
                     "citizens": redistribution_summary['by_class']['Clero']['citizens'],
                     "amount": redistribution_summary['by_class']['Clero']['amount'],
                     "per_citizen": redistribution_summary['by_class']['Clero']['per_citizen']
+                },
+                "Innovatori": {
+                    "citizens": redistribution_summary['by_class']['Innovatori']['citizens'],
+                    "amount": redistribution_summary['by_class']['Innovatori']['amount'],
+                    "per_citizen": redistribution_summary['by_class']['Innovatori']['per_citizen']
+                },
+                "Ambasciatore": {
+                    "citizens": redistribution_summary['by_class']['Ambasciatore']['citizens'],
+                    "amount": redistribution_summary['by_class']['Ambasciatore']['amount'],
+                    "per_citizen": redistribution_summary['by_class']['Ambasciatore']['per_citizen']
                 }
             }
         }
@@ -463,7 +475,9 @@ def redistribute_treasury(dry_run: bool = False):
             "Popolani": {"citizens": 0, "amount": 0, "per_citizen": per_citizen_amounts.get("Popolani", 0)},
             "Facchini": {"citizens": 0, "amount": 0, "per_citizen": per_citizen_amounts.get("Facchini", 0)},
             "Scientisti": {"citizens": 0, "amount": 0, "per_citizen": FIXED_DAILY_PAYMENTS.get("Scientisti", 0)},
-            "Clero": {"citizens": 0, "amount": 0, "per_citizen": FIXED_DAILY_PAYMENTS.get("Clero", 0)}
+            "Clero": {"citizens": 0, "amount": 0, "per_citizen": FIXED_DAILY_PAYMENTS.get("Clero", 0)},
+            "Innovatori": {"citizens": 0, "amount": 0, "per_citizen": FIXED_DAILY_PAYMENTS.get("Innovatori", 0)},
+            "Ambasciatore": {"citizens": 0, "amount": 0, "per_citizen": FIXED_DAILY_PAYMENTS.get("Ambasciatore", 0)}
         }
     }
     
@@ -597,6 +611,10 @@ def redistribute_treasury(dry_run: bool = False):
             notification_message += f"• **Scientisti**: **{redistribution_summary['by_class']['Scientisti']['amount']:,}** ⚜️ ducats to **{redistribution_summary['by_class']['Scientisti']['citizens']:,}** citizens 🔬\n"
         if redistribution_summary['by_class']['Clero']['citizens'] > 0:
             notification_message += f"• **Clero**: **{redistribution_summary['by_class']['Clero']['amount']:,}** ⚜️ ducats to **{redistribution_summary['by_class']['Clero']['citizens']:,}** citizens ⛪\n"
+        if redistribution_summary['by_class']['Innovatori']['citizens'] > 0:
+            notification_message += f"• **Innovatori**: **{redistribution_summary['by_class']['Innovatori']['amount']:,}** ⚜️ ducats to **{redistribution_summary['by_class']['Innovatori']['citizens']:,}** citizens 💡\n"
+        if redistribution_summary['by_class']['Ambasciatore']['citizens'] > 0:
+            notification_message += f"• **Ambasciatore**: **{redistribution_summary['by_class']['Ambasciatore']['amount']:,}** ⚜️ ducats to **{redistribution_summary['by_class']['Ambasciatore']['citizens']:,}** citizens 🎭\n"
         
         notification_message += "\nVisit **https://serenissima.ai** to check your citizens."
         

@@ -83,8 +83,12 @@ const ThoughtBubble: React.FC<ThoughtBubbleProps> = ({
   let finalBackgroundColor = 'rgba(240, 240, 240, 0.97)'; // Default very light gray background, high alpha
   let finalBorderColor = 'rgb(200, 200, 200)'; // Default medium gray border
 
-  // Check for Artisti social class first
-  if (socialClass && socialClass.toLowerCase() === 'artisti') {
+  // Check for special social classes first
+  if (socialClass && socialClass.toLowerCase() === 'ambasciatore') {
+    finalTextColor = 'rgb(128, 0, 128)'; // Purple text
+    finalBackgroundColor = 'rgba(245, 230, 245, 0.97)'; // Very light purple background
+    finalBorderColor = 'rgb(221, 160, 221)'; // Light purple border (plum)
+  } else if (socialClass && socialClass.toLowerCase() === 'artisti') {
     finalTextColor = 'rgb(181, 39, 128)'; // Slightly desaturated MediumVioletRed for text
     finalBackgroundColor = 'rgba(255, 228, 235, 0.97)'; // Very light pink for background
     finalBorderColor = 'rgb(255, 182, 193)'; // LightPink for border
