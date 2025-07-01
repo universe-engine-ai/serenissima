@@ -116,7 +116,6 @@ def try_create(
         "TargetResourceType": target_resource_type,
         "Status": "active",
         "Category": "commerce",
-        "Nature": "aggressive",
         "Name": custom_name or f"Supplier Lockout: {target_resource_type}",
         "Description": custom_description or f"Securing exclusive supply of {target_resource_type} from {target_supplier_citizen}",
         "Notes": json.dumps({

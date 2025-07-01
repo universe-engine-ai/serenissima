@@ -118,7 +118,6 @@ def try_create(
         "TargetBuilding": district_name,  # Store district in TargetBuilding field
         "Status": "active",
         "Category": "security",
-        "Nature": "benevolent",
         "Name": custom_name or f"Neighborhood Watch for {district_name}",
         "Description": custom_description or f"{citizen_username} organizes citizen vigilance to improve security in {district_name}",
         "Notes": json.dumps({

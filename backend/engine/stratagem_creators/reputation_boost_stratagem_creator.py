@@ -127,7 +127,6 @@ def try_create(
         "TargetCitizen": target_citizen_username,
         "Status": "active",
         "Category": "personal",
-        "Nature": "benevolent",
         "Name": custom_name or f"Reputation Campaign for {target_citizen_username}",
         "Description": custom_description or f"{citizen_username} sponsors a {campaign_intensity.lower()} campaign to improve {target_citizen_username}'s reputation",
         "Notes": json.dumps({

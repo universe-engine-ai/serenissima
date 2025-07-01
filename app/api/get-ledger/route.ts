@@ -641,7 +641,7 @@ async function fetchCitizenMessages(username: string): Promise<AirtableRecord<Fi
   }
 }
 
-async function fetchBuildingMessages(buildingId: string, limit: number = 2): Promise<AirtableRecord<FieldSet>[]> {
+async function fetchBuildingMessages(buildingId: string, limit: number = 4): Promise<AirtableRecord<FieldSet>[]> {
   try {
     if (!buildingId) return [];
     
@@ -2904,7 +2904,7 @@ export async function GET(request: NextRequest) {
       fetchBooksInInventory(citizenUsername),
       // Fetch building messages if citizen is at a building
       buildingDetails?.buildingId 
-        ? fetchBuildingMessages(buildingDetails.buildingId, 2)
+        ? fetchBuildingMessages(buildingDetails.buildingId, 4)
         : Promise.resolve([])
     ]);
 

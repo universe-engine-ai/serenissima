@@ -119,7 +119,6 @@ def try_create(
         "TargetResourceType": target_resource_type,
         "Status": "active",
         "Category": "commerce",
-        "Nature": "aggressive",
         "Name": custom_name or f"Monopoly Pricing for {target_resource_type}",
         "Description": custom_description or f"{citizen_username} manipulates {target_resource_type} prices using market dominance ({variant} strategy)",
         "Notes": json.dumps({

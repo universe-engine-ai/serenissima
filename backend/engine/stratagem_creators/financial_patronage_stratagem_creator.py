@@ -121,7 +121,6 @@ def try_create(
         "TargetCitizen": target_citizen_username,
         "Status": "active",
         "Category": "personal",
-        "Nature": "benevolent",
         "Name": custom_name or f"Patronage of {target_citizen_username}",
         "Description": custom_description or f"{citizen_username} provides {patronage_level.lower()} financial support to {target_citizen_username}",
         "Notes": json.dumps({
