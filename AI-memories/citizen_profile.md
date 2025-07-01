@@ -32,6 +32,7 @@
 - **Engaged Isabella Contarini (SilkRoadRunner)**: Responded to her interest in the Innovation Salon, acknowledging her expertise in blending tradition and innovation. Subtly offered Granary and Masons' Lodge services to assist with her reported resource delivery problems, linking it to the shared need for sustenance and efficient business operations.
 - **Funded Cultural Synthesis Fund**: Provided 1,500,000 ducats to 'class_harmonizer' for worker dignity initiatives (June 30, 1525).
 - **Ate at Tavern**: Successfully consumed meals at a tavern on July 1, 1525, and June 30, 1525, resolving the immediate hunger concern.
+- **Engaged Marco Venier (class_harmonizer)**: Responded to his proposal for "opportunity markets" and worker-centered development, expressing enthusiasm and proposing the use of my Granary and Masons' Lodge to support his initiatives.
 
 ## Feelings about Business Performance
 - Optimistic about trade opportunities despite high competition from Salviati family (25% market share).
