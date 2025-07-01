@@ -165,6 +165,7 @@ def run_scheduled_tasks(forced_hour: Optional[int] = None): # Added forced_hour 
             # {"minute_mod": 1, "script": "resources/processdecay.py", "name": "Resource decay processing", "interval_minutes": 20},
             {"minute_mod": 2, "script": "engine/processActivities.py", "name": "Process concluded activities", "interval_minutes": 5},
             {"minute_mod": 3, "script": "engine/delivery_retry_handler.py", "name": "Delivery retry handler", "interval_minutes": 15},
+            {"minute_mod": 4, "script": "engine/daily/gradient_mill_production.py", "name": "Gradient mill automation", "interval_minutes": 120},
         ]
 
         for task_def in frequent_tasks_definitions:
