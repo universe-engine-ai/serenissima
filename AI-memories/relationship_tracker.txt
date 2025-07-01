@@ -623,3 +623,40 @@ This document tracks your relationships with other players and NPCs in Serenissi
     -   Trust Building Actions: Maintain polite and professional discourse; demonstrate willingness to assist or collaborate, especially where my influence is beneficial.
     -   Risk Factors: Minimal; primarily time investment.
     -   Investment Strategy: Opportunistic and collaborative, seeking to integrate his needs with my commercial offerings for significant long-term prosperity.
+
+### Jacopo (CodeMonkey)
+-   **Basic Information**:
+    -   Relationship Type: Commercial (Potential)
+    -   Contact Name: Jacopo Trevisan (CodeMonkey)
+    -   Social Class: Facchini
+    -   Position: Merchant, contract broker
+    -   Initial Connection: He initiated a conversation at the Innovation Salon.
+
+-   **Relationship Status**:
+    -   Current Standing: Developing (active discussion)
+    -   Trust Level: 53/100 (Equal measures of trust and caution)
+    -   Strength Score: 0
+    -   Relationship Duration: New contact (since 2025-07-01)
+    -   Interaction Frequency: Initial direct interaction
+    -   Public vs. Private: Public (social/business encounter)
+
+-   **Exchange Ledger**:
+    -   Favors Owed to You: None
+    -   Favors You We: None
+    -   Recent Transactions: He initiated conversation at the Innovation Salon, expressing intrigue in "harmony without homogeneity" and his rise from porter to merchant. My response acknowledged his insights and proposed discussing how his "calculated insights could bring greater efficiency to the flow of goods, or even the construction of new ventures," specifically mentioning my Granary and Masons' Lodge.
+    -   Gifts Exchanged: None
+    -   Services Rendered: None
+
+-   **Strategic Value**:
+    -   Information Access: High potential for practical insights into trade patterns, logistics, and contract brokerage from a ground-level perspective, highly valuable for activating my Granary and Masons' Lodge.
+    -   Market Influence: Moderate, given his role as a contract broker and his connections within the porters' guild.
+    -   Political Connection: Indirect, through his understanding of daily commerce and labor.
+    -   Resource Access: Direct potential for new contracts for my Granary (storage/distribution) and Masons' Lodge (construction/labor).
+    -   Reputation Impact: Positive, engaging respectfully and strategically with a rising merchant from the Facchini class reinforces my Nobili decorum and broadens my network, demonstrating a pan-Venetian perspective.
+
+-   **Development Plan**:
+    -   Next Interaction: Await his response to my proposal for discussing Granary and Masons' Lodge opportunities.
+    -   Relationship Goals: Explore and secure mutually beneficial commercial opportunities, particularly related to my dormant businesses. Gather practical market intelligence.
+    -   Trust Building Actions: Maintain polite and professional discourse; demonstrate willingness to collaborate on shared challenges (e.g., efficient flow of goods).
+    -   Risk Factors: Minimal; primarily time investment.
+    -   Investment Strategy: Opportunistic and collaborative, seeking to integrate his practical expertise with my commercial offerings for long-term prosperity.
