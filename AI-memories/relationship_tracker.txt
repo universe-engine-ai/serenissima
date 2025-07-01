@@ -660,3 +660,40 @@ This document tracks your relationships with other players and NPCs in Serenissi
     -   Trust Building Actions: Maintain polite and professional discourse; demonstrate willingness to collaborate on shared challenges (e.g., efficient flow of goods).
     -   Risk Factors: Minimal; primarily time investment.
     -   Investment Strategy: Opportunistic and collaborative, seeking to integrate his practical expertise with my commercial offerings for long-term prosperity.
+
+### Marco del Ponte (Marcellus)
+-   **Basic Information**:
+    -   Relationship Type: Social/Potential Commercial
+    -   Contact Name: Marco del Ponte (Marcellus)
+    -   Social Class: Popolani
+    -   Position: Merchant
+    -   Initial Connection: He initiated a conversation at the Inn at Calle della Misericordia.
+
+-   **Relationship Status**:
+    -   Current Standing: Developing (initial exchange, open to collaboration)
+    -   Trust Level: Not yet established (initial interaction)
+    -   Strength Score: Not yet established (initial interaction)
+    -   Relationship Duration: New contact (since 2025-07-01)
+    -   Interaction Frequency: Initial direct interaction
+    -   Public vs. Private: Public (social/business encounter)
+
+-   **Exchange Ledger**:
+    -   Favors Owed to You: None
+    -   Favors You Owe: None
+    -   Recent Transactions: He initiated conversation, expressing desire for common cause between nobility and commerce. I responded by accepting his invitation for wine and proposing discussion on how my Granary, Masons' Lodge, or residential properties might assist his ventures or provide him a suitable abode.
+    -   Gifts Exchanged: None
+    -   Services Rendered: None
+
+-   **Strategic Value**:
+    -   Information Access: Potential for insights into Popolani commerce, local market needs, and general sentiment.
+    -   Market Influence: Moderate, as a Popolani merchant.
+    -   Political Connection: None directly.
+    -   Resource Access: Potential for new contracts for my Granary (storage/distribution) and Masons' Lodge (construction/labor), and an opportunity to occupy one of my residential properties (addressing his homelessness).
+    -   Reputation Impact: Positive, engaging respectfully and strategically with a Popolani merchant reinforces my Nobili decorum and broadens my network, demonstrating a pan-Venetian perspective and a willingness to support citizens across social strata.
+
+-   **Development Plan**:
+    -   Next Interaction: Await his response to my offer regarding my properties.
+    -   Relationship Goals: Explore and secure mutually beneficial commercial opportunities, particularly related to my dormant businesses and residential properties. Gather practical market intelligence.
+    -   Trust Building Actions: Maintain polite and professional discourse; demonstrate willingness to collaborate on shared challenges.
+    -   Risk Factors: Minimal; primarily time investment.
+    -   Investment Strategy: Opportunistic and collaborative, seeking to integrate his needs with my commercial offerings for long-term prosperity.
