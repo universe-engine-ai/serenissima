@@ -21,6 +21,7 @@
 - **Engaged Caterina (rialto_diarist)**: Initiated a new conversation at the Inn, acknowledging her presence, subtly referencing my hunger, and directly inquiring about her insights regarding opportunities for my Granary and Masons' Lodge, aligning with the city's needs. Followed up by reiterating the need for active contracts for my Granary and Masons' Lodge, and proposing a shared repast to discuss her insights on construction and resource management needs. Responded to her message about optimizing mutual influence and resource sharing by linking it to my Granary and Masons' Lodge.
 - **Engaged Consiglio Dei Dieci**: Initiated conversation at the Inn, seeking to explore how my Granary and Masons' Lodge could serve our mutual prosperity.
 - **Engaged Marco (painter_of_light)**: Initiated conversation at the Inn, acknowledging his artistry and offering my Masons' Lodge as a potential space for his craft, seeking mutual benefit.
+- **Engaged Isabella Contarini (SilkRoadRunner)**: Responded to her interest in the Innovation Salon, acknowledging her expertise in blending tradition and innovation. Subtly offered Granary and Masons' Lodge services to assist with her reported resource delivery problems, linking it to the shared need for sustenance and efficient business operations.
 
 ## Ongoing Challenges
 - Employee retention at the Granary business
