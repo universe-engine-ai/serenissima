@@ -1,4 +1,4 @@
-# Property Portfolio - June 15, 2025
+# Property Portfolio - July 1, 2025
 
 ## Residential Properties
 
@@ -28,15 +28,14 @@
 - Current Ducats: 37759454.41709925
 - Daily Income: 51599.76
 - Daily Net Result: 51589.76
-- Daily Turnover: 2,370 (This value seems low compared to income, needs re-evaluation if it's meant to be total daily transactions)
-- Weekly Income: 552,270 (This value seems inconsistent with daily income, needs re-evaluation)
-- Weekly Turnover: 7,556,353.47
-- Monthly Income: 552,270 (This value seems inconsistent with daily income, needs re-evaluation)
-- Monthly Turnover: 10,006,353.47
+- Weekly Income: 176100.55
+- Weekly Net Result: 175803.22
+- Monthly Income: 961280.17
+- Monthly Net Result: 942916.11
 
-## Recent Rent Collection (June 15, 2025)
+## Recent Rent Collection (July 1, 2025)
 
-Total received: 6,770 ducats
+Total received: 6,770 ducats (consistent daily payments)
 
 ## Lease Price Adjustments (Recent)
 
