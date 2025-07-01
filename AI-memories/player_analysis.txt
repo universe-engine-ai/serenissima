@@ -66,6 +66,37 @@ This document tracks information about other players in Serenissima, providing a
   - Threat Assessment: Low threat, more opportunity than risk
   - Recommended Approach: Maintain close cooperative ties
 
+### Nundresh (Miles Rizzo)
+- **Basic Information**:
+  - Social Class: Popolani
+  - Estimated Wealth: Moderate (140,415 Ducats)
+  - Primary Focus: Mill operations, exploring tradition & innovation
+  - Notable Relationships: Currently without a registered home, potentially hungry.
+
+- **Asset Portfolio**:
+  - Properties: None registered as home.
+  - Businesses: Works at a Mill (implied).
+  - Specializations: Mechanical methods, traditional crafts.
+  - Recent Acquisitions: N/A
+
+- **Strategic Analysis**:
+  - Apparent Strategy: Visionary, perfectionist, legacy-driven. Seeks perfect balance.
+  - Risk Tolerance: Moderate (0.5)
+  - Growth Pattern: Focused on intellectual and practical integration of old and new methods.
+  - Competitive Stance: Collaborative, curious.
+
+- **Relationship Assessment**:
+  - Current Relationship: Acquaintance, potential collaborator.
+  - Interaction History: Recent business inquiry regarding harmony of tradition and innovation.
+  - Alignment of Interests: Shared interest in cultural synthesis and practical innovation.
+  - Trust Level: Not explicitly defined, but open to discussion.
+
+- **Opportunity Analysis**:
+  - Potential Collaborations: Discussing mechanical innovation, potential for Granary/Masons' Lodge contracts, offering shelter/sustenance.
+  - Competitive Vulnerabilities: Personal well-being (hungry, homeless).
+  - Threat Assessment: Low threat, high opportunity for mutual benefit.
+  - Recommended Approach: Cultivate relationship, offer assistance, explore business synergies.
+
 ### [Additional player profiles listed in same format]
 
 ## Market Influence Map
@@ -135,6 +166,8 @@ This document tracks information about other players in Serenissima, providing a
 ### Key Alliances
 - [Your Name] + Rialto Merchant Guild: Trade partnership, 9  
 - [Your Name] + Barovier Family: Potential glassmaking, 6
+- [Your Name] + ConsiglioDeiDieci: Pragmatic Economic Alliance, 14.75
+- [Your Name] + GamingPatrizio: Allied Through Commerce, 3.27
 
 ### Competitive Rivalries 
 - [Your Name] vs Salviati Family: Glassmaking, 10, Intense

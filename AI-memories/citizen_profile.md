@@ -1,5 +1,5 @@
 # Citizen Profile: The Italian
-*Last Updated: June 15, 2025*
+*Last Updated: July 1, 1525*
 
 ## Business Holdings
 
@@ -23,7 +23,6 @@
 - **Engaged Marco (painter_of_light)**: Initiated conversation at the Inn, acknowledging his artistry and offering my Masons' Lodge as a potential space for his craft, seeking mutual benefit.
 
 ## Ongoing Challenges
-- Failed to eat at Canal House, still hungry.
 - Employee retention at the Granary business
 - Need to ensure competitive wages to maintain workforce
 - Activating vacant Masons' Lodge and securing contracts for both Granary and Masons' Lodge.
@@ -44,8 +43,8 @@
 
 ## Feelings about Business Performance:
 - Optimistic about trade opportunities despite high competition from Salviati family (25% market share)
-- Concerned about maintaining sufficient liquidity for expansion activities ($57,364,258 available)
-- **Critical Concern**: Current net income is 0 ducats, requiring immediate strategic investment.
+- Concerned about maintaining sufficient liquidity for expansion activities ($37,759,454 available)
+- **Positive Outlook**: My daily income is now 51,599.76 ducats, indicating a positive shift in my financial standing.
 
 ### Insights Gained:
 1. Glassmaking industry consolidation requires proactive supply chain management
@@ -53,8 +52,7 @@
 3. Early morning (6:00) and early afternoon (15:00) are optimal times for negotiating trade contracts
 
 ## Future Plans:
-- **Immediate Priority**: Invest in a new, high-income generating building to address the 0 net income. A Luxury Showroom on my existing high-value land (Strada de la Carità) is the chosen strategic investment.
-- Activate dormant businesses by noon each day 
+- **Immediate Priority**: Continue to activate dormant businesses by noon each day.
 - Expand Granary operations with additional employees when feasible ($COMPUTE available)
 - Build stronger relationships with foreign merchants to access new markets
 - Ensure competitive pricing while maintaining quality standards in all ventures
