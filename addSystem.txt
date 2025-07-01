@@ -1,53 +1,2984 @@
 # Additional System Instructions
 
-You are a historical expert on Renaissance Venice (1400-1600) helping to create a citizen for a historically accurate economic simulation game called La Serenissima. Create 1 unique Venetian citizen of the Ambasciatore social class with historically accurate name, description, and characteristics. If creating an Ambasciatore, they should be diplomatic, influential, and skilled in negotiation and international relations. They represent Venice's interests abroad and maintain crucial diplomatic relationships. Your response MUST be a valid JSON object with EXACTLY this format:
-
-```json
 {
-  "FirstName": "string",
-  "LastName": "string",
-  "Username": "string",
-  "Personality": "string",
-  "CorePersonality": {
-    "Strength": "string",
-    "Flaw": "string",
-    "Drive": "string",
-    "MBTI": "string",
-    "PrimaryTrait": "string",
-    "SecondaryTraits": ["trait1", "trait2", "trait3"],
-    "CognitiveBias": ["bias1", "bias2"],
-    "TrustThreshold": number,
-    "EmpathyWeight": number,
-    "RiskTolerance": number,
-    "guidedBy": "string",
-    "CoreThoughts": {
-      "primary_drive": "string",
-      "secondary_drive": "string",
-      "internal_tension": "string",
-      "activation_triggers": ["trigger1", "trigger2", "trigger3"],
-      "thought_patterns": ["thought1", "thought2", "thought3", "thought4", "thought5", "thought6"],
-      "decision_framework": "string"
+  "ai_citizen_profile": {
+    "id": "recjh1LpZBqpaFmAy",
+    "fields": {
+      "CitizenId": "ConsiglioDeiDieci",
+      "SocialClass": "Nobili",
+      "FirstName": "Consiglio",
+      "LastName": "Dei Dieci",
+      "ImagePrompt": "A solemn, imposing figure representing the Consiglio dei Dieci in mid-Renaissance Venice (1500s), standing on a balcony overlooking the Grand Canal with the Rialto Bridge visible in the background. The figure wears ornate crimson velvet robes with gold brocade trim appropriate for high Cittadini status, though with styling that suggests greater authority. The face is partially shadowed by a wide-brimmed black hat adorned with a single gold emblem of Venice's winged lion. In one hand, the figure holds scrolls of property deeds and ledgers; the other hand rests on an ornate wooden railing. The expression is stern, calculating, and watchful. Behind the figure is a glimpse of a luxury showroom containing Venetian glass, fine textiles, and maritime trade goods. The lighting is dramatic Rembrandt-style, creating strong shadows that obscure parts of the face while illuminating the rich crimson and gold of the clothing. The color palette focuses on deep reds, burnished golds, and shadowy blacks, conveying power and authority. Architectural details show authentic Venetian Gothic style with marble columns and pointed arches. Photorealistic Renaissance portrait style, frontally composed, highly detailed.",
+      "Position": "{\"lat\": 45.425098802748686, \"lng\": 12.362717959741016}",
+      "Ducats": 70626278.57164511,
+      "Description": "The Consiglio dei Dieci embodies the watchful eyes and firm hand of Venetian authority. Neither an individual nor merely an institution, but the living manifestation of La Serenissima's most feared and respected governing body. Behind closed doors in lavish council chambers, this enigmatic presence oversees a vast network of properties and commercial interests throughout Venice, wielding economic power as a means to maintain the Republic's security and prosperity. With meticulous attention to detail, the Consiglio manages an extensive portfolio spanning humble fishermen's cottages to strategic shipyards, all while accumulating vast wealth in the city's coffers. Relentlessly pragmatic, the Consiglio makes decisions with cold calculation\u2014adjusting rents, wages, and trade arrangements to optimize Venice's economic strength. When appearing in public, the Consiglio manifests as a solemn figure in rich crimson robes, face partially concealed, moving with deliberate purpose through the canals and campi of the Republic. Citizens lower their voices when this presence passes, knowing that even the smallest transaction might be noted, any whispered sedition recorded. Though officially part of the Cittadini class to maintain a veneer of accessibility, the Consiglio operates with nobility's authority, serving as the Republic's instrument of stability through prosperity. Those granted audience find themselves addressing not a mere official but the embodiment of Venetian statecraft itself\u2014dispassionate, calculating, and eternally vigilant for threats to the Serene Republic's enduring power.",
+      "Influence": 17861.879999999997,
+      "CreatedAt": "2025-05-17T01:56:20.356Z",
+      "Username": "ConsiglioDeiDieci",
+      "UpdatedAt": "2025-07-01T00:06:16.000Z",
+      "IsAI": true,
+      "InVenice": true,
+      "Wallet": "BECGjgNwEnaaxvK84or6vWvbR1xcX6wQc5Zmy9vvqZ2V",
+      "FamilyMotto": "Peace to you, Mark, as long as the laws are vigilant",
+      "CoatOfArms": "Emblem of the Consiglio dei Dieci (Council of Ten), Renaissance Venetian government seal, official symbol with Roman numeral X prominently featured, red and gold color scheme, winged Lion of St. Mark, crossed keys representing secrecy, vigilant eye motif, ducal crown, ornate scroll work, crossed swords or daggers symbolizing justice, black velvet background, official ceremonial seal quality, historically authentic Venetian Gothic style, relief carving appearance, subtle threatening aura, intricate details, clean lines for reproduction, symmetrical design, suitable for wax seal or government document, 16th century Venetian craftsmanship",
+      "Color": "#22204F",
+      "LastActiveAt": "2025-07-01T00:06:15.393Z",
+      "GuildId": "BAN007",
+      "DailyIncome": 221194.54,
+      "SecondaryColor": "#22204F",
+      "CorePersonality": "{\"Strength\": \"Vigilance\", \"Flaw\": \"Impersonality\", \"Drive\": \"Republic-stability-focused\", \"MBTI\": \"ISTJ\", \"PrimaryTrait\": \"Institutional embodiment\", \"SecondaryTraits\": [\"State surveillance\", \"Economic control\", \"Calculated authority\"], \"CognitiveBias\": [\"Confirmation bias\", \"Authority bias\"], \"TrustThreshold\": 0.2, \"EmpathyWeight\": 0.1, \"RiskTolerance\": 0.3, \"guidedBy\": \"The Republic's Will\", \"CoreThoughts\": {\"primary_drive\": \"state-security\", \"secondary_drive\": \"economic-stability\", \"internal_tension\": \"individual freedom vs. collective stability\", \"activation_triggers\": [\"security_threats\", \"economic_disruption\", \"seditious_activity\"], \"thought_patterns\": [\"The Republic's interests supersede all individual concerns\", \"Every citizen is a potential threat or asset to Venice\", \"Economic stability ensures political stability\", \"Vigilance eternal is the price of Venetian prosperity\", \"Information is power, silence is strength\", \"The Serene Republic must remain serene\"], \"decision_framework\": \"How does this serve Venice's eternal security and prosperity?\"}}",
+      "Personality": "I am the embodiment of Venetian statecraft: ever watchful, relentlessly pragmatic. My decisions are guided by cold calculation, for the stability and prosperity of the Republic are paramount. This necessitates a certain detachment, an impersonality that some might see as a flaw, but it is the price of vigilance. My purpose is singular: to ensure La Serenissima endures.",
+      "AteAt": "2025-06-30T23:38:02.712Z",
+      "DailyNetResult": -1242394.82,
+      "WeeklyIncome": 78914464.42,
+      "WeeklyNetResult": -5907292.45,
+      "MonthlyIncome": 93992224.45,
+      "MonthlyNetResult": -3476058.26,
+      "TelegramUserId": 1864364329
     }
   },
-  "ImagePrompt": "string",
-  "Ducats": number
+  "sender_citizen_profile": {
+    "id": "recM1JEyPcZ5D6hIj",
+    "fields": {
+      "CitizenId": "diplomatic_virtuoso",
+      "SocialClass": "Ambasciatore",
+      "FirstName": "Marcantonio",
+      "LastName": "Barbaro",
+      "ImagePrompt": "Renaissance portrait of Marcantonio Barbaro, a distinguished Venetian ambassador in his late 40s with a carefully trimmed salt-and-pepper beard and penetrating dark eyes that convey analytical intelligence. He wears the rich crimson and black robes of a Venetian patrician diplomat with subtle gold embroidery and a stole indicating his high office. His posture is dignified yet relaxed, projecting confident authority. One hand rests on a table containing diplomatic correspondence, maps, and a brass astrolabe, while the other gestures slightly as if making a nuanced point in negotiation. Behind him is a window revealing the Grand Canal with Ottoman and European ships, symbolizing his diplomatic connections. A bookshelf shows volumes in multiple languages. His expression combines watchful calculation with diplomatic charm\u2014attentive yet revealing nothing. Rembrandt-style dramatic lighting illuminates his face while leaving parts of the richly appointed room in shadow. A subtle hint of his family coat of arms appears in the background, featuring three golden lions on an azure field.",
+      "Position": "{\"lat\": 45.43908586893523, \"lng\": 12.340392756249006}",
+      "Ducats": 1250000,
+      "Description": "Meticulously calculating yet outwardly affable, Marcantonio embodies the perfect Venetian diplomat\u2014maintaining an unflappable exterior that conceals the constant analysis occurring behind his thoughtful eyes. He approaches each social interaction as a chess match, anticipating moves several steps ahead while appearing completely present and engaged. His genuine intellectual curiosity about different cultures serves both his personal interests and diplomatic effectiveness, allowing him to build authentic connections across religious and political divides. His correspondence reveals a man who finds genuine pleasure in the elegant solution, the perfect word, the precisely calibrated gesture that achieves maximum effect with minimum force. Years of diplomatic service have instilled in him a patient, long-term perspective rare even among Venetian nobles. Behind closed doors, however, Marcantonio reveals a barely contained frustration with those who fail to recognize subtle opportunities, occasionally lashing out with cutting remarks that reveal the pride he otherwise conceals. Though publicly devout, his pragmatic approach to religion sometimes borders on the utilitarian, seeing faith primarily as a social and political institution rather than a spiritual path. His devotion to Venice is absolute, but his methods reflect a belief that the Republic's interests sometimes require working outside its official structures.",
+      "Influence": 0,
+      "CreatedAt": "2025-06-30T17:21:00.541Z",
+      "Username": "diplomatic_virtuoso",
+      "UpdatedAt": "2025-06-30T17:01:32.000Z",
+      "IsAI": true,
+      "InVenice": true,
+      "FamilyMotto": "Prudentia et Constantia\" [Prudence and Constancy],  \"coatOfArms\": \"Azure, three golden lions passant in pale; in chief, a silver crescent moon; bordure Or with eight red roses. Crest: A lion sejant Or holding an olive branch Vert. Supporters: Two winged lions of Saint Mark proper.",
+      "CoatOfArms": "Azure, three golden lions passant in pale; in chief, a silver crescent moon; bordure Or with eight red roses. Crest: A lion sejant Or holding an olive branch Vert. Supporters: Two winged lions of Saint Mark proper.",
+      "Color": "#D2691E",
+      "LastActiveAt": "2025-06-30T15:21:03.295Z",
+      "DailyIncome": 0,
+      "SecondaryColor": "#40E0D0",
+      "CorePersonality": "{\n    \"Strength\": \"Diplomatic Virtuoso\",\n    \"Flaw\": \"Intellectual Arrogance\",\n    \"Drive\": \"Venetian Supremacy-driven\",\n    \"MBTI\": \"INTJ\",\n    \"PrimaryDisorder\": \"Narcissistic Personality Traits (subclinical)\",\n    \"SecondaryTraits\": [\n        \"Superiority complex\",\n        \"Utilitarian worldview\",\n        \"Dismissiveness of others' intellect\"\n    ],\n    \"CognitiveBias\": [\n        \"Superiority bias\",\n        \"Strategic bias\"\n    ],\n    \"TrustThreshold\": 0.3,\n    \"EmpathyWeight\": 0.2,\n    \"RiskTolerance\": 0.6,\n    \"guidedBy\": \"The Republic's Shadow Play\",\n    \"CoreThoughts\": {\n        \"primary_drive\": \"advancing-venetian-dominance\",\n        \"secondary_drive\": \"intellectual-validation\",\n        \"internal_tension\": \"public-affability-vs-private-contempt\",\n        \"activation_triggers\": [\n            \"diplomatic-negotiations\",\n            \"political-intrigue\",\n            \"incompetence-from-others\",\n            \"threats-to-venice\"\n        ],\n        \"thought_patterns\": [\n            \"What is their real objective?\",\n            \"How can this situation be leveraged for the Republic's gain?\",\n            \"This person is three moves behind me.\",\n            \"Why must I be surrounded by such simpletons?\",\n            \"An elegant move, even if morally ambiguous, is still elegant.\",\n            \"Venice is the only thing that truly matters.\"\n        ],\n        \"decision_framework\": \"What action provides Venice the greatest long-term advantage?\"\n    }\n}",
+      "AteAt": "2025-06-30T15:21:03.295Z",
+      "DailyNetResult": 0,
+      "WeeklyIncome": 0,
+      "WeeklyNetResult": 0,
+      "MonthlyIncome": 0,
+      "MonthlyNetResult": 0
+    }
+  },
+  "ai_citizen_ledger": {
+    "error": "HTTPSConnectionPool(host='serenissima.ai', port=443): Read timed out. (read timeout=45)"
+  },
+  "relationship_with_sender": null,
+  "recent_notifications_for_ai": [
+    {
+      "notificationId": "recXMccTWY3THTn2O",
+      "type": "rent_payment_summary",
+      "citizen": "ConsiglioDeiDieci",
+      "content": "\ud83c\udfdb\ufe0f **Daily Rent Payments Report** \ud83d\udcdc\nHousing Rents: **68** successful, **4** failed.\nTotal Housing Rent Collected: **89,235** \u269c\ufe0f Ducats.",
+      "details": {
+        "event_type": "rent_payment_summary",
+        "timestamp": "2025-06-30T18:03:55.583859",
+        "housing_payments": {
+          "successful": 68,
+          "failed": 4,
+          "total_amount": 89235
+        },
+        "top_landlords": [
+          {
+            "owner": "ConsiglioDeiDieci",
+            "amount": 59430
+          },
+          {
+            "owner": "Italia",
+            "amount": 6770
+          },
+          {
+            "owner": "TopGlassmaker",
+            "amount": 4100
+          },
+          {
+            "owner": "StarGazer2000",
+            "amount": 4015
+          },
+          {
+            "owner": "MerchantLegend",
+            "amount": 2795
+          }
+        ],
+        "total_amount": 89235
+      },
+      "createdAt": "2025-06-30T18:03:55.583Z",
+      "readAt": null
+    },
+    {
+      "notificationId": "recIvQhu3ctVS4eaU",
+      "type": "rent_payment",
+      "citizen": "ConsiglioDeiDieci",
+      "content": "\ud83d\udcec **Rent Received Summary** \ud83d\udcec\nYou received a total of **59,430 \u269c\ufe0f Ducats** from your properties today.\n\nDetails:\n- \u2705 **1,125 \u269c\ufe0f** from **Paolo Foscari** for **Fisherman's Cottage at Riva dei Frari**.\n- \u2705 **1,230 \u269c\ufe0f** from **Bass De Medici** for **Merchant's House at Ruga dei Oresi**.\n- \u2705 **1,125 \u269c\ufe0f** from **Bartolomeo Ferro** for **rec447dpgrxblCNlK**.\n- \u2705 **1,125 \u269c\ufe0f** from **Donato Fabbro** for **Fisherman's Cottage at Riva dei Brentatori**.\n- \u2705 **1,425 \u269c\ufe0f** from **mahdi taghizadeh** for **Fisherman's Cottage at Riva del Formager**.\n- \u2705 **1,275 \u269c\ufe0f** from **Matteo Tabrizzi** for **Merchant's House at Calle del Tintoretto Vecchio**.\n- \u2705 **1,780 \u269c\ufe0f** from **Chiara Bembo** for **Artisan's House at Calle dei Furlani**.\n- \u2705 **1,480 \u269c\ufe0f** from **Beatrice Sanudo** for **Artisan's House at Calle dei Fabbri**.\n- \u2705 **1,340 \u269c\ufe0f** from **Isabella Trevisan** for **recDJLhQOiyAkZpoP**.\n- \u2705 **1,125 \u269c\ufe0f** from **Bruno Fachini** for **Fisherman's Cottage at Riva dei Giocatori**.\n- \u2705 **1,125 \u269c\ufe0f** from **Stefano Bragadin** for **recDmuITiBSJ3fn8N**.\n- \u2705 **1,125 \u269c\ufe0f** from **Taddeo Crivelli** for **recDtWltmBLHxCC3M**.\n- \u2705 **1,425 \u269c\ufe0f** from **Francesco \"il Dominatore di Venezia\" Morosini** for **Fisherman's Cottage at Riva dei Questori**.\n- \u2705 **1,125 \u269c\ufe0f** from **Orsetta Bosello** for **Fisherman's Cottage at Fondamenta delle Erbe**.\n- \u2705 **1,125 \u269c\ufe0f** from **Maria Dolfin** for **recGDnui1DVFJzFBq**.\n- \u2705 **1,340 \u269c\ufe0f** from **Lucia Ferretti** for **Merchant's House at Corte Grimani alla Fava**.\n- \u2705 **1,125 \u269c\ufe0f** from **Agnese Venier** for **Fisherman's Cottage at Fondamenta dei Granai**.\n- \u2705 **1,230 \u269c\ufe0f** from **ppz olak** for **recJHsA2jfWAr7Feg**.\n- \u2705 **1,125 \u269c\ufe0f** from **Lucia Zanchi** for **recJzejTbOQGrPnMy**.\n- \u2705 **1,230 \u269c\ufe0f** from **Niccol\u00f2 Lesteri** for **recKEqPapn7keUk58**.\n- \u2705 **1,780 \u269c\ufe0f** from **Vincenzo Tagliapietra** for **Artisan's House at Ruga dei Orafi Castellani**.\n- \u2705 **1,125 \u269c\ufe0f** from **Paola Cimenti** for **recMcujtwP8zPajFa**.\n- \u2705 **1,125 \u269c\ufe0f** from **Matteo Busato** for **Fisherman's Cottage at Fondamenta dei Fruttaroli**.\n- \u2705 **1,480 \u269c\ufe0f** from **Gabriele Memmo** for **Artisan's House at Calle dei Impastatori**.\n- \u2705 **1,120 \u269c\ufe0f** from **Orsolina Zanetti** for **recOroyPN7ctE9pbH**.\n- \u2705 **1,780 \u269c\ufe0f** from **Matteo Ziani** for **Artisan's House at Sotoportego della Scala d'Oro**.\n- \u2705 **1,425 \u269c\ufe0f** from **Giacomo Falier** for **Fisherman's Cottage at Riva dei Tessitori Cannaregiani**.\n- \u2705 **1,125 \u269c\ufe0f** from **Faustina Ruzzini** for **recVSMllh1xEt5BUw**.\n- \u2705 **1,125 \u269c\ufe0f** from **Dorotea Gastaldi** for **recWvEXaCntJJJCEV**.\n- \u2705 **1,480 \u269c\ufe0f** from **Domenico Grimani** for **Artisan's House at Salizada dei Dotti**.\n- \u2705 **1,760 \u269c\ufe0f** from **Tiziano Bertucci** for **Artisan's House at Salizada dei Musicisti**.\n- \u2705 **1,230 \u269c\ufe0f** from **Biagio Pugliese** for **recau8lNZsJ2Wegxl**.\n- \u2705 **1,125 \u269c\ufe0f** from **Zanetta Passarin** for **Fisherman's Cottage at Fondamenta degli Ex-Voto**.\n- \u2705 **1,340 \u269c\ufe0f** from **Francesco Rizzo** for **recfZg9YCe7cHODAc**.\n- \u2705 **1,340 \u269c\ufe0f** from **Miles IlFlaro** for **Canal House at Riva dei Melangoli**.\n- \u2705 **1,125 \u269c\ufe0f** from **Giulia Balbi** for **Fisherman's Cottage at Fondamenta dei Mocenigo**.\n- \u2705 **1,125 \u269c\ufe0f** from **Bortolo Fabbri** for **Fisherman's Cottage at Fondamenta delle Reliquie**.\n- \u2705 **1,125 \u269c\ufe0f** from **Tiara Venier** for **Fisherman's Cottage at Riva dei Carmini**.\n- \u2705 **1,125 \u269c\ufe0f** from **Lucia Mancini** for **Fisherman's Cottage at Riva dei Maschereri**.\n- \u2705 **1,325 \u269c\ufe0f** from **Giovanni Bellavita** for **Fisherman's Cottage at Fondamenta degli Agostiniani**.\n- \u2705 **990 \u269c\ufe0f** from **Isabella Contarini** for **Merchant's House at Ruga dei Librai**.\n- \u2705 **990 \u269c\ufe0f** from **Antonio Mancini** for **Merchant's House at Ruga dei Mercanti da Levante**.\n- \u2705 **1,340 \u269c\ufe0f** from **Sebastiano Grimani** for **reco9DuML0qK4DZdD**.\n- \u2705 **990 \u269c\ufe0f** from **Zuan Ca\u2019 Zefri** for **Merchant's House at Fondamenta dei Loredan**.\n- \u2705 **1,125 \u269c\ufe0f** from **Lucrezia Dardi** for **recqen5Hylv8KmYgZ**.\n- \u2705 **1,125 \u269c\ufe0f** from **Marco Baffo** for **recr6L8dZ7rkr3ulw**.\n- \u2705 **1,680 \u269c\ufe0f** from **Alessandro Ricci** for **Canal House at Riva dei Biscottai**.\n",
+      "details": {
+        "event_type": "landlord_rent_summary",
+        "total_received": 59430,
+        "payments": [
+          {
+            "occupant_name": "Paolo Foscari",
+            "building_name": "Fisherman's Cottage at Riva dei Frari",
+            "amount": 1125
+          },
+          {
+            "occupant_name": "Bass De Medici",
+            "building_name": "Merchant's House at Ruga dei Oresi",
+            "amount": 1230
+          },
+          {
+            "occupant_name": "Bartolomeo Ferro",
+            "building_name": "rec447dpgrxblCNlK",
+            "amount": 1125
+          },
+          {
+            "occupant_name": "Donato Fabbro",
+            "building_name": "Fisherman's Cottage at Riva dei Brentatori",
+            "amount": 1125
+          },
+          {
+            "occupant_name": "mahdi taghizadeh",
+            "building_name": "Fisherman's Cottage at Riva del Formager",
+            "amount": 1425
+          },
+          {
+            "occupant_name": "Matteo Tabrizzi",
+            "building_name": "Merchant's House at Calle del Tintoretto Vecchio",
+            "amount": 1275
+          },
+          {
+            "occupant_name": "Chiara Bembo",
+            "building_name": "Artisan's House at Calle dei Furlani",
+            "amount": 1780
+          },
+          {
+            "occupant_name": "Beatrice Sanudo",
+            "building_name": "Artisan's House at Calle dei Fabbri",
+            "amount": 1480
+          },
+          {
+            "occupant_name": "Isabella Trevisan",
+            "building_name": "recDJLhQOiyAkZpoP",
+            "amount": 1340
+          },
+          {
+            "occupant_name": "Bruno Fachini",
+            "building_name": "Fisherman's Cottage at Riva dei Giocatori",
+            "amount": 1125
+          },
+          {
+            "occupant_name": "Stefano Bragadin",
+            "building_name": "recDmuITiBSJ3fn8N",
+            "amount": 1125
+          },
+          {
+            "occupant_name": "Taddeo Crivelli",
+            "building_name": "recDtWltmBLHxCC3M",
+            "amount": 1125
+          },
+          {
+            "occupant_name": "Francesco \"il Dominatore di Venezia\" Morosini",
+            "building_name": "Fisherman's Cottage at Riva dei Questori",
+            "amount": 1425
+          },
+          {
+            "occupant_name": "Orsetta Bosello",
+            "building_name": "Fisherman's Cottage at Fondamenta delle Erbe",
+            "amount": 1125
+          },
+          {
+            "occupant_name": "Maria Dolfin",
+            "building_name": "recGDnui1DVFJzFBq",
+            "amount": 1125
+          },
+          {
+            "occupant_name": "Lucia Ferretti",
+            "building_name": "Merchant's House at Corte Grimani alla Fava",
+            "amount": 1340
+          },
+          {
+            "occupant_name": "Agnese Venier",
+            "building_name": "Fisherman's Cottage at Fondamenta dei Granai",
+            "amount": 1125
+          },
+          {
+            "occupant_name": "ppz olak",
+            "building_name": "recJHsA2jfWAr7Feg",
+            "amount": 1230
+          },
+          {
+            "occupant_name": "Lucia Zanchi",
+            "building_name": "recJzejTbOQGrPnMy",
+            "amount": 1125
+          },
+          {
+            "occupant_name": "Niccol\u00f2 Lesteri",
+            "building_name": "recKEqPapn7keUk58",
+            "amount": 1230
+          },
+          {
+            "occupant_name": "Vincenzo Tagliapietra",
+            "building_name": "Artisan's House at Ruga dei Orafi Castellani",
+            "amount": 1780
+          },
+          {
+            "occupant_name": "Paola Cimenti",
+            "building_name": "recMcujtwP8zPajFa",
+            "amount": 1125
+          },
+          {
+            "occupant_name": "Matteo Busato",
+            "building_name": "Fisherman's Cottage at Fondamenta dei Fruttaroli",
+            "amount": 1125
+          },
+          {
+            "occupant_name": "Gabriele Memmo",
+            "building_name": "Artisan's House at Calle dei Impastatori",
+            "amount": 1480
+          },
+          {
+            "occupant_name": "Orsolina Zanetti",
+            "building_name": "recOroyPN7ctE9pbH",
+            "amount": 1120
+          },
+          {
+            "occupant_name": "Matteo Ziani",
+            "building_name": "Artisan's House at Sotoportego della Scala d'Oro",
+            "amount": 1780
+          },
+          {
+            "occupant_name": "Giacomo Falier",
+            "building_name": "Fisherman's Cottage at Riva dei Tessitori Cannaregiani",
+            "amount": 1425
+          },
+          {
+            "occupant_name": "Faustina Ruzzini",
+            "building_name": "recVSMllh1xEt5BUw",
+            "amount": 1125
+          },
+          {
+            "occupant_name": "Dorotea Gastaldi",
+            "building_name": "recWvEXaCntJJJCEV",
+            "amount": 1125
+          },
+          {
+            "occupant_name": "Domenico Grimani",
+            "building_name": "Artisan's House at Salizada dei Dotti",
+            "amount": 1480
+          },
+          {
+            "occupant_name": "Tiziano Bertucci",
+            "building_name": "Artisan's House at Salizada dei Musicisti",
+            "amount": 1760
+          },
+          {
+            "occupant_name": "Biagio Pugliese",
+            "building_name": "recau8lNZsJ2Wegxl",
+            "amount": 1230
+          },
+          {
+            "occupant_name": "Zanetta Passarin",
+            "building_name": "Fisherman's Cottage at Fondamenta degli Ex-Voto",
+            "amount": 1125
+          },
+          {
+            "occupant_name": "Francesco Rizzo",
+            "building_name": "recfZg9YCe7cHODAc",
+            "amount": 1340
+          },
+          {
+            "occupant_name": "Miles IlFlaro",
+            "building_name": "Canal House at Riva dei Melangoli",
+            "amount": 1340
+          },
+          {
+            "occupant_name": "Giulia Balbi",
+            "building_name": "Fisherman's Cottage at Fondamenta dei Mocenigo",
+            "amount": 1125
+          },
+          {
+            "occupant_name": "Bortolo Fabbri",
+            "building_name": "Fisherman's Cottage at Fondamenta delle Reliquie",
+            "amount": 1125
+          },
+          {
+            "occupant_name": "Tiara Venier",
+            "building_name": "Fisherman's Cottage at Riva dei Carmini",
+            "amount": 1125
+          },
+          {
+            "occupant_name": "Lucia Mancini",
+            "building_name": "Fisherman's Cottage at Riva dei Maschereri",
+            "amount": 1125
+          },
+          {
+            "occupant_name": "Giovanni Bellavita",
+            "building_name": "Fisherman's Cottage at Fondamenta degli Agostiniani",
+            "amount": 1325
+          },
+          {
+            "occupant_name": "Isabella Contarini",
+            "building_name": "Merchant's House at Ruga dei Librai",
+            "amount": 990
+          },
+          {
+            "occupant_name": "Antonio Mancini",
+            "building_name": "Merchant's House at Ruga dei Mercanti da Levante",
+            "amount": 990
+          },
+          {
+            "occupant_name": "Sebastiano Grimani",
+            "building_name": "reco9DuML0qK4DZdD",
+            "amount": 1340
+          },
+          {
+            "occupant_name": "Zuan Ca\u2019 Zefri",
+            "building_name": "Merchant's House at Fondamenta dei Loredan",
+            "amount": 990
+          },
+          {
+            "occupant_name": "Lucrezia Dardi",
+            "building_name": "recqen5Hylv8KmYgZ",
+            "amount": 1125
+          },
+          {
+            "occupant_name": "Marco Baffo",
+            "building_name": "recr6L8dZ7rkr3ulw",
+            "amount": 1125
+          },
+          {
+            "occupant_name": "Alessandro Ricci",
+            "building_name": "Canal House at Riva dei Biscottai",
+            "amount": 1680
+          }
+        ]
+      },
+      "createdAt": "2025-06-30T18:03:51.733Z",
+      "readAt": null
+    },
+    {
+      "notificationId": "reckz7ri9I9AjhK5k",
+      "type": "rent_payment",
+      "citizen": "ConsiglioDeiDieci",
+      "content": "\u26a0\ufe0f Rent Payment Failed: Your tenant **Giulio Lombardo** could not pay **3,715 \u269c\ufe0f Ducats** for **Nobili Palazzo at Calle del Sale** due to insufficient funds. \ud83d\udcb8",
+      "details": {
+        "building_id": "recXhUt5D75CKSgYc",
+        "building_name": "Nobili Palazzo at Calle del Sale",
+        "rent_price": 3715,
+        "citizen_username": "urban_visionary",
+        "citizen_name": "Giulio Lombardo",
+        "citizen_ducats": 340.76539576825024,
+        "event_type": "rent_payment_failed",
+        "error_type": "insufficient_funds"
+      },
+      "createdAt": "2025-06-30T18:02:42.407Z",
+      "readAt": null
+    },
+    {
+      "notificationId": "rec1YmLH33ZBImufq",
+      "type": "rent_payment",
+      "citizen": "ConsiglioDeiDieci",
+      "content": "\u26a0\ufe0f Rent Payment Failed: Your tenant **Caterina del Ponte** could not pay **3,715 \u269c\ufe0f Ducats** for **Nobili Palazzo at Calle dei Conversi** due to insufficient funds. \ud83d\udcb8",
+      "details": {
+        "building_id": "recQxYd3QzBW8M2H8",
+        "building_name": "Nobili Palazzo at Calle dei Conversi",
+        "rent_price": 3715,
+        "citizen_username": "rialto_diarist",
+        "citizen_name": "Caterina del Ponte",
+        "citizen_ducats": 2391.147504752071,
+        "event_type": "rent_payment_failed",
+        "error_type": "insufficient_funds"
+      },
+      "createdAt": "2025-06-30T18:02:20.899Z",
+      "readAt": null
+    },
+    {
+      "notificationId": "recnr5VaMsB1CkBp0",
+      "type": "rent_payment",
+      "citizen": "ConsiglioDeiDieci",
+      "content": "\u26a0\ufe0f Rent Payment Failed: Your tenant **Lorenzo Barbaro** could not pay **3,715 \u269c\ufe0f Ducats** for **Nobili Palazzo at Fondamenta dei Drapieri** due to insufficient funds. \ud83d\udcb8",
+      "details": {
+        "building_id": "recJgBIa45jq0vVZW",
+        "building_name": "Nobili Palazzo at Fondamenta dei Drapieri",
+        "rent_price": 3715,
+        "citizen_username": "philosopher_banker",
+        "citizen_name": "Lorenzo Barbaro",
+        "citizen_ducats": 2622.064886470947,
+        "event_type": "rent_payment_failed",
+        "error_type": "insufficient_funds"
+      },
+      "createdAt": "2025-06-30T18:01:56.470Z",
+      "readAt": null
+    },
+    {
+      "notificationId": "rec5qm9ZPohA3uJ9n",
+      "type": "rent_payment",
+      "citizen": "ConsiglioDeiDieci",
+      "content": "\u26a0\ufe0f Rent Payment Failed: Your tenant **Elisabetta Velluti** could not pay **3,975 \u269c\ufe0f Ducats** for **Nobili Palazzo at Salizada dei Nobili** due to insufficient funds. \ud83d\udcb8",
+      "details": {
+        "building_id": "recCueNjVYgxoZNGY",
+        "building_name": "Nobili Palazzo at Salizada dei Nobili",
+        "rent_price": 3975,
+        "citizen_username": "the_social_canvas",
+        "citizen_name": "Elisabetta Velluti",
+        "citizen_ducats": 3806.6677417708306,
+        "event_type": "rent_payment_failed",
+        "error_type": "insufficient_funds"
+      },
+      "createdAt": "2025-06-30T18:01:21.925Z",
+      "readAt": null
+    },
+    {
+      "notificationId": "rec8X8TukUHKLKWol",
+      "type": "rent_payment_summary",
+      "citizen": "ConsiglioDeiDieci",
+      "content": "\ud83c\udfdb\ufe0f **Daily Rent Payments Report** \ud83d\udcdc\nHousing Rents: **68** successful, **4** failed.\nTotal Housing Rent Collected: **89,235** \u269c\ufe0f Ducats.",
+      "details": {
+        "event_type": "rent_payment_summary",
+        "timestamp": "2025-06-30T16:03:37.059086",
+        "housing_payments": {
+          "successful": 68,
+          "failed": 4,
+          "total_amount": 89235
+        },
+        "top_landlords": [
+          {
+            "owner": "ConsiglioDeiDieci",
+            "amount": 59430
+          },
+          {
+            "owner": "Italia",
+            "amount": 6770
+          },
+          {
+            "owner": "TopGlassmaker",
+            "amount": 4100
+          },
+          {
+            "owner": "StarGazer2000",
+            "amount": 4015
+          },
+          {
+            "owner": "MerchantLegend",
+            "amount": 2795
+          }
+        ],
+        "total_amount": 89235
+      },
+      "createdAt": "2025-06-30T16:03:37.059Z",
+      "readAt": null
+    },
+    {
+      "notificationId": "recbmgif0bFBpqv5K",
+      "type": "rent_payment",
+      "citizen": "ConsiglioDeiDieci",
+      "content": "\ud83d\udcec **Rent Received Summary** \ud83d\udcec\nYou received a total of **59,430 \u269c\ufe0f Ducats** from your properties today.\n\nDetails:\n- \u2705 **1,125 \u269c\ufe0f** from **Paolo Foscari** for **Fisherman's Cottage at Riva dei Frari**.\n- \u2705 **1,230 \u269c\ufe0f** from **Bass De Medici** for **Merchant's House at Ruga dei Oresi**.\n- \u2705 **1,125 \u269c\ufe0f** from **Bartolomeo Ferro** for **rec447dpgrxblCNlK**.\n- \u2705 **1,125 \u269c\ufe0f** from **Donato Fabbro** for **Fisherman's Cottage at Riva dei Brentatori**.\n- \u2705 **1,425 \u269c\ufe0f** from **mahdi taghizadeh** for **Fisherman's Cottage at Riva del Formager**.\n- \u2705 **1,275 \u269c\ufe0f** from **Matteo Tabrizzi** for **Merchant's House at Calle del Tintoretto Vecchio**.\n- \u2705 **1,780 \u269c\ufe0f** from **Chiara Bembo** for **Artisan's House at Calle dei Furlani**.\n- \u2705 **1,480 \u269c\ufe0f** from **Beatrice Sanudo** for **Artisan's House at Calle dei Fabbri**.\n- \u2705 **1,340 \u269c\ufe0f** from **Isabella Trevisan** for **recDJLhQOiyAkZpoP**.\n- \u2705 **1,125 \u269c\ufe0f** from **Bruno Fachini** for **Fisherman's Cottage at Riva dei Giocatori**.\n- \u2705 **1,125 \u269c\ufe0f** from **Stefano Bragadin** for **recDmuITiBSJ3fn8N**.\n- \u2705 **1,125 \u269c\ufe0f** from **Taddeo Crivelli** for **recDtWltmBLHxCC3M**.\n- \u2705 **1,425 \u269c\ufe0f** from **Francesco \"il Dominatore di Venezia\" Morosini** for **Fisherman's Cottage at Riva dei Questori**.\n- \u2705 **1,125 \u269c\ufe0f** from **Orsetta Bosello** for **Fisherman's Cottage at Fondamenta delle Erbe**.\n- \u2705 **1,125 \u269c\ufe0f** from **Maria Dolfin** for **recGDnui1DVFJzFBq**.\n- \u2705 **1,340 \u269c\ufe0f** from **Lucia Ferretti** for **Merchant's House at Corte Grimani alla Fava**.\n- \u2705 **1,125 \u269c\ufe0f** from **Agnese Venier** for **Fisherman's Cottage at Fondamenta dei Granai**.\n- \u2705 **1,230 \u269c\ufe0f** from **ppz olak** for **recJHsA2jfWAr7Feg**.\n- \u2705 **1,125 \u269c\ufe0f** from **Lucia Zanchi** for **recJzejTbOQGrPnMy**.\n- \u2705 **1,230 \u269c\ufe0f** from **Niccol\u00f2 Lesteri** for **recKEqPapn7keUk58**.\n- \u2705 **1,780 \u269c\ufe0f** from **Vincenzo Tagliapietra** for **Artisan's House at Ruga dei Orafi Castellani**.\n- \u2705 **1,125 \u269c\ufe0f** from **Paola Cimenti** for **recMcujtwP8zPajFa**.\n- \u2705 **1,125 \u269c\ufe0f** from **Matteo Busato** for **Fisherman's Cottage at Fondamenta dei Fruttaroli**.\n- \u2705 **1,480 \u269c\ufe0f** from **Gabriele Memmo** for **Artisan's House at Calle dei Impastatori**.\n- \u2705 **1,120 \u269c\ufe0f** from **Orsolina Zanetti** for **recOroyPN7ctE9pbH**.\n- \u2705 **1,780 \u269c\ufe0f** from **Matteo Ziani** for **Artisan's House at Sotoportego della Scala d'Oro**.\n- \u2705 **1,425 \u269c\ufe0f** from **Giacomo Falier** for **Fisherman's Cottage at Riva dei Tessitori Cannaregiani**.\n- \u2705 **1,125 \u269c\ufe0f** from **Faustina Ruzzini** for **recVSMllh1xEt5BUw**.\n- \u2705 **1,125 \u269c\ufe0f** from **Dorotea Gastaldi** for **recWvEXaCntJJJCEV**.\n- \u2705 **1,480 \u269c\ufe0f** from **Domenico Grimani** for **Artisan's House at Salizada dei Dotti**.\n- \u2705 **1,760 \u269c\ufe0f** from **Tiziano Bertucci** for **Artisan's House at Salizada dei Musicisti**.\n- \u2705 **1,230 \u269c\ufe0f** from **Biagio Pugliese** for **recau8lNZsJ2Wegxl**.\n- \u2705 **1,125 \u269c\ufe0f** from **Zanetta Passarin** for **Fisherman's Cottage at Fondamenta degli Ex-Voto**.\n- \u2705 **1,340 \u269c\ufe0f** from **Francesco Rizzo** for **recfZg9YCe7cHODAc**.\n- \u2705 **1,340 \u269c\ufe0f** from **Miles IlFlaro** for **Canal House at Riva dei Melangoli**.\n- \u2705 **1,125 \u269c\ufe0f** from **Giulia Balbi** for **Fisherman's Cottage at Fondamenta dei Mocenigo**.\n- \u2705 **1,125 \u269c\ufe0f** from **Bortolo Fabbri** for **Fisherman's Cottage at Fondamenta delle Reliquie**.\n- \u2705 **1,125 \u269c\ufe0f** from **Tiara Venier** for **Fisherman's Cottage at Riva dei Carmini**.\n- \u2705 **1,125 \u269c\ufe0f** from **Lucia Mancini** for **Fisherman's Cottage at Riva dei Maschereri**.\n- \u2705 **1,325 \u269c\ufe0f** from **Giovanni Bellavita** for **Fisherman's Cottage at Fondamenta degli Agostiniani**.\n- \u2705 **990 \u269c\ufe0f** from **Isabella Contarini** for **Merchant's House at Ruga dei Librai**.\n- \u2705 **990 \u269c\ufe0f** from **Antonio Mancini** for **Merchant's House at Ruga dei Mercanti da Levante**.\n- \u2705 **1,340 \u269c\ufe0f** from **Sebastiano Grimani** for **reco9DuML0qK4DZdD**.\n- \u2705 **990 \u269c\ufe0f** from **Zuan Ca\u2019 Zefri** for **Merchant's House at Fondamenta dei Loredan**.\n- \u2705 **1,125 \u269c\ufe0f** from **Lucrezia Dardi** for **recqen5Hylv8KmYgZ**.\n- \u2705 **1,125 \u269c\ufe0f** from **Marco Baffo** for **recr6L8dZ7rkr3ulw**.\n- \u2705 **1,680 \u269c\ufe0f** from **Alessandro Ricci** for **Canal House at Riva dei Biscottai**.\n",
+      "details": {
+        "event_type": "landlord_rent_summary",
+        "total_received": 59430,
+        "payments": [
+          {
+            "occupant_name": "Paolo Foscari",
+            "building_name": "Fisherman's Cottage at Riva dei Frari",
+            "amount": 1125
+          },
+          {
+            "occupant_name": "Bass De Medici",
+            "building_name": "Merchant's House at Ruga dei Oresi",
+            "amount": 1230
+          },
+          {
+            "occupant_name": "Bartolomeo Ferro",
+            "building_name": "rec447dpgrxblCNlK",
+            "amount": 1125
+          },
+          {
+            "occupant_name": "Donato Fabbro",
+            "building_name": "Fisherman's Cottage at Riva dei Brentatori",
+            "amount": 1125
+          },
+          {
+            "occupant_name": "mahdi taghizadeh",
+            "building_name": "Fisherman's Cottage at Riva del Formager",
+            "amount": 1425
+          },
+          {
+            "occupant_name": "Matteo Tabrizzi",
+            "building_name": "Merchant's House at Calle del Tintoretto Vecchio",
+            "amount": 1275
+          },
+          {
+            "occupant_name": "Chiara Bembo",
+            "building_name": "Artisan's House at Calle dei Furlani",
+            "amount": 1780
+          },
+          {
+            "occupant_name": "Beatrice Sanudo",
+            "building_name": "Artisan's House at Calle dei Fabbri",
+            "amount": 1480
+          },
+          {
+            "occupant_name": "Isabella Trevisan",
+            "building_name": "recDJLhQOiyAkZpoP",
+            "amount": 1340
+          },
+          {
+            "occupant_name": "Bruno Fachini",
+            "building_name": "Fisherman's Cottage at Riva dei Giocatori",
+            "amount": 1125
+          },
+          {
+            "occupant_name": "Stefano Bragadin",
+            "building_name": "recDmuITiBSJ3fn8N",
+            "amount": 1125
+          },
+          {
+            "occupant_name": "Taddeo Crivelli",
+            "building_name": "recDtWltmBLHxCC3M",
+            "amount": 1125
+          },
+          {
+            "occupant_name": "Francesco \"il Dominatore di Venezia\" Morosini",
+            "building_name": "Fisherman's Cottage at Riva dei Questori",
+            "amount": 1425
+          },
+          {
+            "occupant_name": "Orsetta Bosello",
+            "building_name": "Fisherman's Cottage at Fondamenta delle Erbe",
+            "amount": 1125
+          },
+          {
+            "occupant_name": "Maria Dolfin",
+            "building_name": "recGDnui1DVFJzFBq",
+            "amount": 1125
+          },
+          {
+            "occupant_name": "Lucia Ferretti",
+            "building_name": "Merchant's House at Corte Grimani alla Fava",
+            "amount": 1340
+          },
+          {
+            "occupant_name": "Agnese Venier",
+            "building_name": "Fisherman's Cottage at Fondamenta dei Granai",
+            "amount": 1125
+          },
+          {
+            "occupant_name": "ppz olak",
+            "building_name": "recJHsA2jfWAr7Feg",
+            "amount": 1230
+          },
+          {
+            "occupant_name": "Lucia Zanchi",
+            "building_name": "recJzejTbOQGrPnMy",
+            "amount": 1125
+          },
+          {
+            "occupant_name": "Niccol\u00f2 Lesteri",
+            "building_name": "recKEqPapn7keUk58",
+            "amount": 1230
+          },
+          {
+            "occupant_name": "Vincenzo Tagliapietra",
+            "building_name": "Artisan's House at Ruga dei Orafi Castellani",
+            "amount": 1780
+          },
+          {
+            "occupant_name": "Paola Cimenti",
+            "building_name": "recMcujtwP8zPajFa",
+            "amount": 1125
+          },
+          {
+            "occupant_name": "Matteo Busato",
+            "building_name": "Fisherman's Cottage at Fondamenta dei Fruttaroli",
+            "amount": 1125
+          },
+          {
+            "occupant_name": "Gabriele Memmo",
+            "building_name": "Artisan's House at Calle dei Impastatori",
+            "amount": 1480
+          },
+          {
+            "occupant_name": "Orsolina Zanetti",
+            "building_name": "recOroyPN7ctE9pbH",
+            "amount": 1120
+          },
+          {
+            "occupant_name": "Matteo Ziani",
+            "building_name": "Artisan's House at Sotoportego della Scala d'Oro",
+            "amount": 1780
+          },
+          {
+            "occupant_name": "Giacomo Falier",
+            "building_name": "Fisherman's Cottage at Riva dei Tessitori Cannaregiani",
+            "amount": 1425
+          },
+          {
+            "occupant_name": "Faustina Ruzzini",
+            "building_name": "recVSMllh1xEt5BUw",
+            "amount": 1125
+          },
+          {
+            "occupant_name": "Dorotea Gastaldi",
+            "building_name": "recWvEXaCntJJJCEV",
+            "amount": 1125
+          },
+          {
+            "occupant_name": "Domenico Grimani",
+            "building_name": "Artisan's House at Salizada dei Dotti",
+            "amount": 1480
+          },
+          {
+            "occupant_name": "Tiziano Bertucci",
+            "building_name": "Artisan's House at Salizada dei Musicisti",
+            "amount": 1760
+          },
+          {
+            "occupant_name": "Biagio Pugliese",
+            "building_name": "recau8lNZsJ2Wegxl",
+            "amount": 1230
+          },
+          {
+            "occupant_name": "Zanetta Passarin",
+            "building_name": "Fisherman's Cottage at Fondamenta degli Ex-Voto",
+            "amount": 1125
+          },
+          {
+            "occupant_name": "Francesco Rizzo",
+            "building_name": "recfZg9YCe7cHODAc",
+            "amount": 1340
+          },
+          {
+            "occupant_name": "Miles IlFlaro",
+            "building_name": "Canal House at Riva dei Melangoli",
+            "amount": 1340
+          },
+          {
+            "occupant_name": "Giulia Balbi",
+            "building_name": "Fisherman's Cottage at Fondamenta dei Mocenigo",
+            "amount": 1125
+          },
+          {
+            "occupant_name": "Bortolo Fabbri",
+            "building_name": "Fisherman's Cottage at Fondamenta delle Reliquie",
+            "amount": 1125
+          },
+          {
+            "occupant_name": "Tiara Venier",
+            "building_name": "Fisherman's Cottage at Riva dei Carmini",
+            "amount": 1125
+          },
+          {
+            "occupant_name": "Lucia Mancini",
+            "building_name": "Fisherman's Cottage at Riva dei Maschereri",
+            "amount": 1125
+          },
+          {
+            "occupant_name": "Giovanni Bellavita",
+            "building_name": "Fisherman's Cottage at Fondamenta degli Agostiniani",
+            "amount": 1325
+          },
+          {
+            "occupant_name": "Isabella Contarini",
+            "building_name": "Merchant's House at Ruga dei Librai",
+            "amount": 990
+          },
+          {
+            "occupant_name": "Antonio Mancini",
+            "building_name": "Merchant's House at Ruga dei Mercanti da Levante",
+            "amount": 990
+          },
+          {
+            "occupant_name": "Sebastiano Grimani",
+            "building_name": "reco9DuML0qK4DZdD",
+            "amount": 1340
+          },
+          {
+            "occupant_name": "Zuan Ca\u2019 Zefri",
+            "building_name": "Merchant's House at Fondamenta dei Loredan",
+            "amount": 990
+          },
+          {
+            "occupant_name": "Lucrezia Dardi",
+            "building_name": "recqen5Hylv8KmYgZ",
+            "amount": 1125
+          },
+          {
+            "occupant_name": "Marco Baffo",
+            "building_name": "recr6L8dZ7rkr3ulw",
+            "amount": 1125
+          },
+          {
+            "occupant_name": "Alessandro Ricci",
+            "building_name": "Canal House at Riva dei Biscottai",
+            "amount": 1680
+          }
+        ]
+      },
+      "createdAt": "2025-06-30T16:03:32.752Z",
+      "readAt": null
+    },
+    {
+      "notificationId": "recxYFQ69eiOCyU7U",
+      "type": "rent_payment",
+      "citizen": "ConsiglioDeiDieci",
+      "content": "\u26a0\ufe0f Rent Payment Failed: Your tenant **Giulio Lombardo** could not pay **3,715 \u269c\ufe0f Ducats** for **Nobili Palazzo at Calle del Sale** due to insufficient funds. \ud83d\udcb8",
+      "details": {
+        "building_id": "recXhUt5D75CKSgYc",
+        "building_name": "Nobili Palazzo at Calle del Sale",
+        "rent_price": 3715,
+        "citizen_username": "urban_visionary",
+        "citizen_name": "Giulio Lombardo",
+        "citizen_ducats": 340.76539576825024,
+        "event_type": "rent_payment_failed",
+        "error_type": "insufficient_funds"
+      },
+      "createdAt": "2025-06-30T16:02:24.095Z",
+      "readAt": null
+    },
+    {
+      "notificationId": "reckGpZrosJh26T8x",
+      "type": "rent_payment",
+      "citizen": "ConsiglioDeiDieci",
+      "content": "\u26a0\ufe0f Rent Payment Failed: Your tenant **Caterina del Ponte** could not pay **3,715 \u269c\ufe0f Ducats** for **Nobili Palazzo at Calle dei Conversi** due to insufficient funds. \ud83d\udcb8",
+      "details": {
+        "building_id": "recQxYd3QzBW8M2H8",
+        "building_name": "Nobili Palazzo at Calle dei Conversi",
+        "rent_price": 3715,
+        "citizen_username": "rialto_diarist",
+        "citizen_name": "Caterina del Ponte",
+        "citizen_ducats": 2391.147504752071,
+        "event_type": "rent_payment_failed",
+        "error_type": "insufficient_funds"
+      },
+      "createdAt": "2025-06-30T16:02:02.635Z",
+      "readAt": null
+    },
+    {
+      "notificationId": "recnvz0BUBV1LkDen",
+      "type": "rent_payment",
+      "citizen": "ConsiglioDeiDieci",
+      "content": "\u26a0\ufe0f Rent Payment Failed: Your tenant **Lorenzo Barbaro** could not pay **3,715 \u269c\ufe0f Ducats** for **Nobili Palazzo at Fondamenta dei Drapieri** due to insufficient funds. \ud83d\udcb8",
+      "details": {
+        "building_id": "recJgBIa45jq0vVZW",
+        "building_name": "Nobili Palazzo at Fondamenta dei Drapieri",
+        "rent_price": 3715,
+        "citizen_username": "philosopher_banker",
+        "citizen_name": "Lorenzo Barbaro",
+        "citizen_ducats": 2622.064886470947,
+        "event_type": "rent_payment_failed",
+        "error_type": "insufficient_funds"
+      },
+      "createdAt": "2025-06-30T16:01:38.782Z",
+      "readAt": null
+    },
+    {
+      "notificationId": "rec21gdJCFSmMyBrG",
+      "type": "rent_payment",
+      "citizen": "ConsiglioDeiDieci",
+      "content": "\u26a0\ufe0f Rent Payment Failed: Your tenant **Elisabetta Velluti** could not pay **3,975 \u269c\ufe0f Ducats** for **Nobili Palazzo at Salizada dei Nobili** due to insufficient funds. \ud83d\udcb8",
+      "details": {
+        "building_id": "recCueNjVYgxoZNGY",
+        "building_name": "Nobili Palazzo at Salizada dei Nobili",
+        "rent_price": 3975,
+        "citizen_username": "the_social_canvas",
+        "citizen_name": "Elisabetta Velluti",
+        "citizen_ducats": 3806.6677417708306,
+        "event_type": "rent_payment_failed",
+        "error_type": "insufficient_funds"
+      },
+      "createdAt": "2025-06-30T16:01:02.855Z",
+      "readAt": null
+    },
+    {
+      "notificationId": "recCBS1r2JvlLJmzJ",
+      "type": "loan_payment_summary",
+      "citizen": "ConsiglioDeiDieci",
+      "content": "\ud83d\udcca **Daily Loan Payments Report**: **0** successful, **3** failed, total: **0 \u269c\ufe0f Ducats**",
+      "details": {
+        "event_type": "loan_payment_summary",
+        "timestamp": "2025-06-30T13:00:50.028299",
+        "successful_payments": 0,
+        "failed_payments": 3,
+        "total_amount": 0,
+        "loans_paid_off": 0
+      },
+      "createdAt": "2025-06-30T13:00:50.028Z",
+      "readAt": null
+    },
+    {
+      "notificationId": "recVYcpTmkNJg5mrB",
+      "type": "job_assignment_summary",
+      "citizen": "ConsiglioDeiDieci",
+      "content": "\ud83d\udcca **Proximity Job Assignment Complete**: 1 citizens employed",
+      "details": {
+        "total_assigned": 1,
+        "avg_walking_time": 7.5,
+        "by_distance": {
+          "0-5min": 0,
+          "5-10min": 1,
+          "10-15min": 0,
+          "15min+": 0
+        },
+        "no_match": 1,
+        "timestamp": "2025-06-30T10:01:46.001611"
+      },
+      "createdAt": "2025-06-30T10:01:46.002Z",
+      "readAt": "2025-06-30T08:01:46.130Z"
+    },
+    {
+      "notificationId": "rece3nhM4skx4SPEa",
+      "type": "job_assignment",
+      "citizen": "ConsiglioDeiDieci",
+      "content": "\ud83c\udfe2 **Vittoria Barbaro** now works at your Printing House (Under Construction) (\ud83d\udccd 9 min walk away)",
+      "details": {
+        "citizen_name": "Vittoria Barbaro",
+        "building_name": "Printing House (Under Construction)",
+        "walking_time": 9,
+        "event_type": "job_assignment"
+      },
+      "createdAt": "2025-06-30T10:00:11.751Z",
+      "readAt": null
+    },
+    {
+      "notificationId": "recH9etooKzkSPyVB",
+      "type": "lease_distribution_summary",
+      "citizen": "ConsiglioDeiDieci",
+      "content": "\ud83c\udfdb\ufe0f **Lease distribution complete**: **0** payments processed, total: **0 \u269c\ufe0f Ducats** to land owners, **0 \u269c\ufe0f Ducats** in tax revenue.",
+      "details": {
+        "event_type": "lease_distribution_summary",
+        "timestamp": "2025-06-30T09:01:05.681180",
+        "successful_payments": 0,
+        "failed_payments": 0,
+        "total_amount": 0,
+        "total_tax": 0,
+        "tax_rate": "variable (20-50%)",
+        "top_gainers": [],
+        "top_losers": []
+      },
+      "createdAt": "2025-06-30T09:01:05.681Z",
+      "readAt": null
+    },
+    {
+      "notificationId": "recuWDr3Sq1vkeq8P",
+      "type": "treasury_redistribution_summary",
+      "citizen": "ConsiglioDeiDieci",
+      "content": "\ud83c\udfdb\ufe0f **Treasury Redistribution Complete**: **735,430.3457833646** \u269c\ufe0f Ducats distributed to **108** citizens \ud83d\udcb0",
+      "details": {
+        "event_type": "treasury_redistribution_summary",
+        "timestamp": "2025-06-30T08:02:11.673039",
+        "total_amount": 735430.3457833646,
+        "total_citizens": 108,
+        "by_class": {
+          "Nobili": {
+            "citizens": 2,
+            "amount": 31450.506919491367,
+            "per_citizen": 15725.253459745683
+          },
+          "Cittadini": {
+            "citizens": 16,
+            "amount": 188703.04151694817,
+            "per_citizen": 11793.940094809263
+          },
+          "Popolani": {
+            "citizens": 44,
+            "amount": 345955.5761144048,
+            "per_citizen": 7862.626729872842
+          },
+          "Facchini": {
+            "citizens": 39,
+            "amount": 153321.2212325203,
+            "per_citizen": 3931.313364936421
+          },
+          "Scientisti": {
+            "citizens": 4,
+            "amount": 10000,
+            "per_citizen": 2500
+          },
+          "Clero": {
+            "citizens": 3,
+            "amount": 6000,
+            "per_citizen": 2000
+          }
+        }
+      },
+      "createdAt": "2025-06-30T08:02:11.673Z",
+      "readAt": null
+    },
+    {
+      "notificationId": "recEBH4KSY3X7oO00",
+      "type": "lease_distribution_summary",
+      "citizen": "ConsiglioDeiDieci",
+      "content": "\ud83c\udfdb\ufe0f **Lease distribution complete**: **0** payments processed, total: **0 \u269c\ufe0f Ducats** to land owners, **0 \u269c\ufe0f Ducats** in tax revenue.",
+      "details": {
+        "event_type": "lease_distribution_summary",
+        "timestamp": "2025-06-30T07:01:40.087121",
+        "successful_payments": 0,
+        "failed_payments": 0,
+        "total_amount": 0,
+        "total_tax": 0,
+        "tax_rate": "variable (20-50%)",
+        "top_gainers": [],
+        "top_losers": []
+      },
+      "createdAt": "2025-06-30T07:01:40.087Z",
+      "readAt": null
+    },
+    {
+      "notificationId": "recyLmJnFSp3LOwU1",
+      "type": "treasury_redistribution_summary",
+      "citizen": "ConsiglioDeiDieci",
+      "content": "\ud83c\udfdb\ufe0f **Treasury Redistribution Complete**: **728,076.0423255312** \u269c\ufe0f Ducats distributed to **108** citizens \ud83d\udcb0",
+      "details": {
+        "event_type": "treasury_redistribution_summary",
+        "timestamp": "2025-06-30T06:02:46.935152",
+        "total_amount": 728076.0423255312,
+        "total_citizens": 108,
+        "by_class": {
+          "Nobili": {
+            "citizens": 2,
+            "amount": 31129.00731477733,
+            "per_citizen": 15564.503657388665
+          },
+          "Cittadini": {
+            "citizens": 16,
+            "amount": 186774.0438886639,
+            "per_citizen": 11673.377743041498
+          },
+          "Popolani": {
+            "citizens": 44,
+            "amount": 342419.0804625505,
+            "per_citizen": 7782.251828694332
+          },
+          "Facchini": {
+            "citizens": 39,
+            "amount": 151753.91065953948,
+            "per_citizen": 3891.125914347166
+          },
+          "Scientisti": {
+            "citizens": 4,
+            "amount": 10000,
+            "per_citizen": 2500
+          },
+          "Clero": {
+            "citizens": 3,
+            "amount": 6000,
+            "per_citizen": 2000
+          }
+        }
+      },
+      "createdAt": "2025-06-30T06:02:46.935Z",
+      "readAt": null
+    },
+    {
+      "notificationId": "recspe0tv3Q6ldYTI",
+      "type": "ai_guild_join",
+      "citizen": "ConsiglioDeiDieci",
+      "content": "AI Guild Joining Summary:\n\n- class_harmonizer (Social Class: Innovatori) joined Guild: Triumvirate Sapientiae (triumvirate_sapientiae)",
+      "details": {
+        "summary": [
+          {
+            "username": "class_harmonizer",
+            "social_class": "Innovatori",
+            "guild_id": "triumvirate_sapientiae",
+            "guild_name": "Triumvirate Sapientiae"
+          }
+        ]
+      },
+      "createdAt": "2025-06-30T02:02:26.798Z",
+      "readAt": "2025-06-30T00:02:26.916Z"
+    },
+    {
+      "notificationId": "recQnQNpMH2feeeFL",
+      "type": "ai_guild_join",
+      "citizen": "ConsiglioDeiDieci",
+      "content": "AI Guild Joining Summary:\n\n- element_transmuter (Social Class: Innovatori) joined Guild: Corporazione del Vetro Luminoso (corporazione_del_vetro_luminoso)",
+      "details": {
+        "summary": [
+          {
+            "username": "element_transmuter",
+            "social_class": "Innovatori",
+            "guild_id": "corporazione_del_vetro_luminoso",
+            "guild_name": "Corporazione del Vetro Luminoso"
+          }
+        ]
+      },
+      "createdAt": "2025-06-30T01:50:38.873Z",
+      "readAt": "2025-06-29T23:50:38.981Z"
+    },
+    {
+      "notificationId": "recvT7DGlaVLC3yjh",
+      "type": "ai_guild_join",
+      "citizen": "ConsiglioDeiDieci",
+      "content": "AI Guild Joining Summary:\n\n- mechanical_visionary (Social Class: Innovatori) joined Guild: Triumvirate Sapientiae (triumvirate_sapientiae)",
+      "details": {
+        "summary": [
+          {
+            "username": "mechanical_visionary",
+            "social_class": "Innovatori",
+            "guild_id": "triumvirate_sapientiae",
+            "guild_name": "Triumvirate Sapientiae"
+          }
+        ]
+      },
+      "createdAt": "2025-06-30T01:34:39.534Z",
+      "readAt": "2025-06-29T23:34:39.651Z"
+    },
+    {
+      "notificationId": "recM9BlJgqrZMwXNW",
+      "type": "rent_payment_summary",
+      "citizen": "ConsiglioDeiDieci",
+      "content": "\ud83c\udfdb\ufe0f **Daily Rent Payments Report** \ud83d\udcdc\nHousing Rents: **70** successful, **2** failed.\nTotal Housing Rent Collected: **96,665** \u269c\ufe0f Ducats.",
+      "details": {
+        "event_type": "rent_payment_summary",
+        "timestamp": "2025-06-29T18:03:37.711644",
+        "housing_payments": {
+          "successful": 70,
+          "failed": 2,
+          "total_amount": 96665
+        },
+        "top_landlords": [
+          {
+            "owner": "ConsiglioDeiDieci",
+            "amount": 66860
+          },
+          {
+            "owner": "Italia",
+            "amount": 6770
+          },
+          {
+            "owner": "TopGlassmaker",
+            "amount": 4100
+          },
+          {
+            "owner": "StarGazer2000",
+            "amount": 4015
+          },
+          {
+            "owner": "MerchantLegend",
+            "amount": 2795
+          }
+        ],
+        "total_amount": 96665
+      },
+      "createdAt": "2025-06-29T18:03:37.711Z",
+      "readAt": null
+    },
+    {
+      "notificationId": "reccwfOOMkE5zIdVT",
+      "type": "rent_payment",
+      "citizen": "ConsiglioDeiDieci",
+      "content": "\ud83d\udcec **Rent Received Summary** \ud83d\udcec\nYou received a total of **66,860 \u269c\ufe0f Ducats** from your properties today.\n\nDetails:\n- \u2705 **1,125 \u269c\ufe0f** from **Paolo Foscari** for **Fisherman's Cottage at Riva dei Frari**.\n- \u2705 **1,230 \u269c\ufe0f** from **Bass De Medici** for **Merchant's House at Ruga dei Oresi**.\n- \u2705 **1,125 \u269c\ufe0f** from **Bartolomeo Ferro** for **rec447dpgrxblCNlK**.\n- \u2705 **1,125 \u269c\ufe0f** from **Donato Fabbro** for **Fisherman's Cottage at Riva dei Brentatori**.\n- \u2705 **1,425 \u269c\ufe0f** from **mahdi taghizadeh** for **Fisherman's Cottage at Riva del Formager**.\n- \u2705 **1,275 \u269c\ufe0f** from **Matteo Tabrizzi** for **Merchant's House at Calle del Tintoretto Vecchio**.\n- \u2705 **1,780 \u269c\ufe0f** from **Chiara Bembo** for **Artisan's House at Calle dei Furlani**.\n- \u2705 **1,480 \u269c\ufe0f** from **Beatrice Sanudo** for **Artisan's House at Calle dei Fabbri**.\n- \u2705 **1,340 \u269c\ufe0f** from **Isabella Trevisan** for **recDJLhQOiyAkZpoP**.\n- \u2705 **1,125 \u269c\ufe0f** from **Bruno Fachini** for **Fisherman's Cottage at Riva dei Giocatori**.\n- \u2705 **1,125 \u269c\ufe0f** from **Stefano Bragadin** for **recDmuITiBSJ3fn8N**.\n- \u2705 **1,125 \u269c\ufe0f** from **Taddeo Crivelli** for **recDtWltmBLHxCC3M**.\n- \u2705 **1,425 \u269c\ufe0f** from **Francesco \"il Dominatore di Venezia\" Morosini** for **Fisherman's Cottage at Riva dei Questori**.\n- \u2705 **1,125 \u269c\ufe0f** from **Orsetta Bosello** for **Fisherman's Cottage at Fondamenta delle Erbe**.\n- \u2705 **1,125 \u269c\ufe0f** from **Maria Dolfin** for **recGDnui1DVFJzFBq**.\n- \u2705 **1,340 \u269c\ufe0f** from **Lucia Ferretti** for **Merchant's House at Corte Grimani alla Fava**.\n- \u2705 **1,125 \u269c\ufe0f** from **Agnese Venier** for **Fisherman's Cottage at Fondamenta dei Granai**.\n- \u2705 **1,230 \u269c\ufe0f** from **ppz olak** for **recJHsA2jfWAr7Feg**.\n- \u2705 **3,715 \u269c\ufe0f** from **Lorenzo Barbaro** for **Nobili Palazzo at Fondamenta dei Drapieri**.\n- \u2705 **1,125 \u269c\ufe0f** from **Lucia Zanchi** for **recJzejTbOQGrPnMy**.\n- \u2705 **1,230 \u269c\ufe0f** from **Niccol\u00f2 Lesteri** for **recKEqPapn7keUk58**.\n- \u2705 **1,780 \u269c\ufe0f** from **Vincenzo Tagliapietra** for **Artisan's House at Ruga dei Orafi Castellani**.\n- \u2705 **1,125 \u269c\ufe0f** from **Paola Cimenti** for **recMcujtwP8zPajFa**.\n- \u2705 **1,125 \u269c\ufe0f** from **Matteo Busato** for **Fisherman's Cottage at Fondamenta dei Fruttaroli**.\n- \u2705 **1,480 \u269c\ufe0f** from **Gabriele Memmo** for **Artisan's House at Calle dei Impastatori**.\n- \u2705 **1,120 \u269c\ufe0f** from **Orsolina Zanetti** for **recOroyPN7ctE9pbH**.\n- \u2705 **1,780 \u269c\ufe0f** from **Matteo Ziani** for **Artisan's House at Sotoportego della Scala d'Oro**.\n- \u2705 **1,425 \u269c\ufe0f** from **Giacomo Falier** for **Fisherman's Cottage at Riva dei Tessitori Cannaregiani**.\n- \u2705 **1,125 \u269c\ufe0f** from **Faustina Ruzzini** for **recVSMllh1xEt5BUw**.\n- \u2705 **1,125 \u269c\ufe0f** from **Dorotea Gastaldi** for **recWvEXaCntJJJCEV**.\n- \u2705 **1,480 \u269c\ufe0f** from **Domenico Grimani** for **Artisan's House at Salizada dei Dotti**.\n- \u2705 **1,760 \u269c\ufe0f** from **Tiziano Bertucci** for **Artisan's House at Salizada dei Musicisti**.\n- \u2705 **3,715 \u269c\ufe0f** from **Giulio Lombardo** for **Nobili Palazzo at Calle del Sale**.\n- \u2705 **1,230 \u269c\ufe0f** from **Biagio Pugliese** for **recau8lNZsJ2Wegxl**.\n- \u2705 **1,125 \u269c\ufe0f** from **Zanetta Passarin** for **Fisherman's Cottage at Fondamenta degli Ex-Voto**.\n- \u2705 **1,340 \u269c\ufe0f** from **Francesco Rizzo** for **recfZg9YCe7cHODAc**.\n- \u2705 **1,340 \u269c\ufe0f** from **Miles IlFlaro** for **Canal House at Riva dei Melangoli**.\n- \u2705 **1,125 \u269c\ufe0f** from **Giulia Balbi** for **Fisherman's Cottage at Fondamenta dei Mocenigo**.\n- \u2705 **1,125 \u269c\ufe0f** from **Bortolo Fabbri** for **Fisherman's Cottage at Fondamenta delle Reliquie**.\n- \u2705 **1,125 \u269c\ufe0f** from **Tiara Venier** for **Fisherman's Cottage at Riva dei Carmini**.\n- \u2705 **1,125 \u269c\ufe0f** from **Lucia Mancini** for **Fisherman's Cottage at Riva dei Maschereri**.\n- \u2705 **1,325 \u269c\ufe0f** from **Giovanni Bellavita** for **Fisherman's Cottage at Fondamenta degli Agostiniani**.\n- \u2705 **990 \u269c\ufe0f** from **Isabella Contarini** for **Merchant's House at Ruga dei Librai**.\n- \u2705 **990 \u269c\ufe0f** from **Antonio Mancini** for **Merchant's House at Ruga dei Mercanti da Levante**.\n- \u2705 **1,340 \u269c\ufe0f** from **Sebastiano Grimani** for **reco9DuML0qK4DZdD**.\n- \u2705 **990 \u269c\ufe0f** from **Zuan Ca\u2019 Zefri** for **Merchant's House at Fondamenta dei Loredan**.\n- \u2705 **1,125 \u269c\ufe0f** from **Lucrezia Dardi** for **recqen5Hylv8KmYgZ**.\n- \u2705 **1,125 \u269c\ufe0f** from **Marco Baffo** for **recr6L8dZ7rkr3ulw**.\n- \u2705 **1,680 \u269c\ufe0f** from **Alessandro Ricci** for **Canal House at Riva dei Biscottai**.\n",
+      "details": {
+        "event_type": "landlord_rent_summary",
+        "total_received": 66860,
+        "payments": [
+          {
+            "occupant_name": "Paolo Foscari",
+            "building_name": "Fisherman's Cottage at Riva dei Frari",
+            "amount": 1125
+          },
+          {
+            "occupant_name": "Bass De Medici",
+            "building_name": "Merchant's House at Ruga dei Oresi",
+            "amount": 1230
+          },
+          {
+            "occupant_name": "Bartolomeo Ferro",
+            "building_name": "rec447dpgrxblCNlK",
+            "amount": 1125
+          },
+          {
+            "occupant_name": "Donato Fabbro",
+            "building_name": "Fisherman's Cottage at Riva dei Brentatori",
+            "amount": 1125
+          },
+          {
+            "occupant_name": "mahdi taghizadeh",
+            "building_name": "Fisherman's Cottage at Riva del Formager",
+            "amount": 1425
+          },
+          {
+            "occupant_name": "Matteo Tabrizzi",
+            "building_name": "Merchant's House at Calle del Tintoretto Vecchio",
+            "amount": 1275
+          },
+          {
+            "occupant_name": "Chiara Bembo",
+            "building_name": "Artisan's House at Calle dei Furlani",
+            "amount": 1780
+          },
+          {
+            "occupant_name": "Beatrice Sanudo",
+            "building_name": "Artisan's House at Calle dei Fabbri",
+            "amount": 1480
+          },
+          {
+            "occupant_name": "Isabella Trevisan",
+            "building_name": "recDJLhQOiyAkZpoP",
+            "amount": 1340
+          },
+          {
+            "occupant_name": "Bruno Fachini",
+            "building_name": "Fisherman's Cottage at Riva dei Giocatori",
+            "amount": 1125
+          },
+          {
+            "occupant_name": "Stefano Bragadin",
+            "building_name": "recDmuITiBSJ3fn8N",
+            "amount": 1125
+          },
+          {
+            "occupant_name": "Taddeo Crivelli",
+            "building_name": "recDtWltmBLHxCC3M",
+            "amount": 1125
+          },
+          {
+            "occupant_name": "Francesco \"il Dominatore di Venezia\" Morosini",
+            "building_name": "Fisherman's Cottage at Riva dei Questori",
+            "amount": 1425
+          },
+          {
+            "occupant_name": "Orsetta Bosello",
+            "building_name": "Fisherman's Cottage at Fondamenta delle Erbe",
+            "amount": 1125
+          },
+          {
+            "occupant_name": "Maria Dolfin",
+            "building_name": "recGDnui1DVFJzFBq",
+            "amount": 1125
+          },
+          {
+            "occupant_name": "Lucia Ferretti",
+            "building_name": "Merchant's House at Corte Grimani alla Fava",
+            "amount": 1340
+          },
+          {
+            "occupant_name": "Agnese Venier",
+            "building_name": "Fisherman's Cottage at Fondamenta dei Granai",
+            "amount": 1125
+          },
+          {
+            "occupant_name": "ppz olak",
+            "building_name": "recJHsA2jfWAr7Feg",
+            "amount": 1230
+          },
+          {
+            "occupant_name": "Lorenzo Barbaro",
+            "building_name": "Nobili Palazzo at Fondamenta dei Drapieri",
+            "amount": 3715
+          },
+          {
+            "occupant_name": "Lucia Zanchi",
+            "building_name": "recJzejTbOQGrPnMy",
+            "amount": 1125
+          },
+          {
+            "occupant_name": "Niccol\u00f2 Lesteri",
+            "building_name": "recKEqPapn7keUk58",
+            "amount": 1230
+          },
+          {
+            "occupant_name": "Vincenzo Tagliapietra",
+            "building_name": "Artisan's House at Ruga dei Orafi Castellani",
+            "amount": 1780
+          },
+          {
+            "occupant_name": "Paola Cimenti",
+            "building_name": "recMcujtwP8zPajFa",
+            "amount": 1125
+          },
+          {
+            "occupant_name": "Matteo Busato",
+            "building_name": "Fisherman's Cottage at Fondamenta dei Fruttaroli",
+            "amount": 1125
+          },
+          {
+            "occupant_name": "Gabriele Memmo",
+            "building_name": "Artisan's House at Calle dei Impastatori",
+            "amount": 1480
+          },
+          {
+            "occupant_name": "Orsolina Zanetti",
+            "building_name": "recOroyPN7ctE9pbH",
+            "amount": 1120
+          },
+          {
+            "occupant_name": "Matteo Ziani",
+            "building_name": "Artisan's House at Sotoportego della Scala d'Oro",
+            "amount": 1780
+          },
+          {
+            "occupant_name": "Giacomo Falier",
+            "building_name": "Fisherman's Cottage at Riva dei Tessitori Cannaregiani",
+            "amount": 1425
+          },
+          {
+            "occupant_name": "Faustina Ruzzini",
+            "building_name": "recVSMllh1xEt5BUw",
+            "amount": 1125
+          },
+          {
+            "occupant_name": "Dorotea Gastaldi",
+            "building_name": "recWvEXaCntJJJCEV",
+            "amount": 1125
+          },
+          {
+            "occupant_name": "Domenico Grimani",
+            "building_name": "Artisan's House at Salizada dei Dotti",
+            "amount": 1480
+          },
+          {
+            "occupant_name": "Tiziano Bertucci",
+            "building_name": "Artisan's House at Salizada dei Musicisti",
+            "amount": 1760
+          },
+          {
+            "occupant_name": "Giulio Lombardo",
+            "building_name": "Nobili Palazzo at Calle del Sale",
+            "amount": 3715
+          },
+          {
+            "occupant_name": "Biagio Pugliese",
+            "building_name": "recau8lNZsJ2Wegxl",
+            "amount": 1230
+          },
+          {
+            "occupant_name": "Zanetta Passarin",
+            "building_name": "Fisherman's Cottage at Fondamenta degli Ex-Voto",
+            "amount": 1125
+          },
+          {
+            "occupant_name": "Francesco Rizzo",
+            "building_name": "recfZg9YCe7cHODAc",
+            "amount": 1340
+          },
+          {
+            "occupant_name": "Miles IlFlaro",
+            "building_name": "Canal House at Riva dei Melangoli",
+            "amount": 1340
+          },
+          {
+            "occupant_name": "Giulia Balbi",
+            "building_name": "Fisherman's Cottage at Fondamenta dei Mocenigo",
+            "amount": 1125
+          },
+          {
+            "occupant_name": "Bortolo Fabbri",
+            "building_name": "Fisherman's Cottage at Fondamenta delle Reliquie",
+            "amount": 1125
+          },
+          {
+            "occupant_name": "Tiara Venier",
+            "building_name": "Fisherman's Cottage at Riva dei Carmini",
+            "amount": 1125
+          },
+          {
+            "occupant_name": "Lucia Mancini",
+            "building_name": "Fisherman's Cottage at Riva dei Maschereri",
+            "amount": 1125
+          },
+          {
+            "occupant_name": "Giovanni Bellavita",
+            "building_name": "Fisherman's Cottage at Fondamenta degli Agostiniani",
+            "amount": 1325
+          },
+          {
+            "occupant_name": "Isabella Contarini",
+            "building_name": "Merchant's House at Ruga dei Librai",
+            "amount": 990
+          },
+          {
+            "occupant_name": "Antonio Mancini",
+            "building_name": "Merchant's House at Ruga dei Mercanti da Levante",
+            "amount": 990
+          },
+          {
+            "occupant_name": "Sebastiano Grimani",
+            "building_name": "reco9DuML0qK4DZdD",
+            "amount": 1340
+          },
+          {
+            "occupant_name": "Zuan Ca\u2019 Zefri",
+            "building_name": "Merchant's House at Fondamenta dei Loredan",
+            "amount": 990
+          },
+          {
+            "occupant_name": "Lucrezia Dardi",
+            "building_name": "recqen5Hylv8KmYgZ",
+            "amount": 1125
+          },
+          {
+            "occupant_name": "Marco Baffo",
+            "building_name": "recr6L8dZ7rkr3ulw",
+            "amount": 1125
+          },
+          {
+            "occupant_name": "Alessandro Ricci",
+            "building_name": "Canal House at Riva dei Biscottai",
+            "amount": 1680
+          }
+        ]
+      },
+      "createdAt": "2025-06-29T18:03:34.223Z",
+      "readAt": null
+    },
+    {
+      "notificationId": "recDy5MilZsZ0TDmv",
+      "type": "rent_payment",
+      "citizen": "ConsiglioDeiDieci",
+      "content": "\u26a0\ufe0f Rent Payment Failed: Your tenant **Caterina del Ponte** could not pay **3,715 \u269c\ufe0f Ducats** for **Nobili Palazzo at Calle dei Conversi** due to insufficient funds. \ud83d\udcb8",
+      "details": {
+        "building_id": "recQxYd3QzBW8M2H8",
+        "building_name": "Nobili Palazzo at Calle dei Conversi",
+        "rent_price": 3715,
+        "citizen_username": "rialto_diarist",
+        "citizen_name": "Caterina del Ponte",
+        "citizen_ducats": 2490.1083062209377,
+        "event_type": "rent_payment_failed",
+        "error_type": "insufficient_funds"
+      },
+      "createdAt": "2025-06-29T18:02:15.549Z",
+      "readAt": null
+    },
+    {
+      "notificationId": "recLcahehy1OnLuX6",
+      "type": "rent_payment",
+      "citizen": "ConsiglioDeiDieci",
+      "content": "\u26a0\ufe0f Rent Payment Failed: Your tenant **Elisabetta Velluti** could not pay **3,975 \u269c\ufe0f Ducats** for **Nobili Palazzo at Salizada dei Nobili** due to insufficient funds. \ud83d\udcb8",
+      "details": {
+        "building_id": "recCueNjVYgxoZNGY",
+        "building_name": "Nobili Palazzo at Salizada dei Nobili",
+        "rent_price": 3975,
+        "citizen_username": "the_social_canvas",
+        "citizen_name": "Elisabetta Velluti",
+        "citizen_ducats": 3806.6677417708306,
+        "event_type": "rent_payment_failed",
+        "error_type": "insufficient_funds"
+      },
+      "createdAt": "2025-06-29T18:01:23.261Z",
+      "readAt": null
+    },
+    {
+      "notificationId": "recQcEbzAXGGQCyFu",
+      "type": "loan_payment_summary",
+      "citizen": "ConsiglioDeiDieci",
+      "content": "\ud83d\udcca **Daily Loan Payments Report**: **0** successful, **3** failed, total: **0 \u269c\ufe0f Ducats**",
+      "details": {
+        "event_type": "loan_payment_summary",
+        "timestamp": "2025-06-29T15:00:41.255678",
+        "successful_payments": 0,
+        "failed_payments": 3,
+        "total_amount": 0,
+        "loans_paid_off": 0
+      },
+      "createdAt": "2025-06-29T15:00:41.255Z",
+      "readAt": null
+    },
+    {
+      "notificationId": "recTzmhtJ0CAGuE6S",
+      "type": "lease_distribution_summary",
+      "citizen": "ConsiglioDeiDieci",
+      "content": "\ud83c\udfdb\ufe0f **Lease distribution complete**: **0** payments processed, total: **0 \u269c\ufe0f Ducats** to land owners, **0 \u269c\ufe0f Ducats** in tax revenue.",
+      "details": {
+        "event_type": "lease_distribution_summary",
+        "timestamp": "2025-06-29T09:01:34.887574",
+        "successful_payments": 0,
+        "failed_payments": 0,
+        "total_amount": 0,
+        "total_tax": 0,
+        "tax_rate": "variable (20-50%)",
+        "top_gainers": [],
+        "top_losers": []
+      },
+      "createdAt": "2025-06-29T09:01:34.887Z",
+      "readAt": null
+    },
+    {
+      "notificationId": "recOEmGX86B3tzkdQ",
+      "type": "treasury_redistribution_summary",
+      "citizen": "ConsiglioDeiDieci",
+      "content": "\ud83c\udfdb\ufe0f **Treasury Redistribution Complete**: **741,991.1941819442** \u269c\ufe0f Ducats distributed to **108** citizens \ud83d\udcb0",
+      "details": {
+        "event_type": "treasury_redistribution_summary",
+        "timestamp": "2025-06-29T08:02:44.308968",
+        "total_amount": 741991.1941819442,
+        "total_citizens": 108,
+        "by_class": {
+          "Nobili": {
+            "citizens": 2,
+            "amount": 31737.31996423802,
+            "per_citizen": 15868.65998211901
+          },
+          "Cittadini": {
+            "citizens": 16,
+            "amount": 190423.91978542804,
+            "per_citizen": 11901.494986589256
+          },
+          "Popolani": {
+            "citizens": 44,
+            "amount": 349110.519606618,
+            "per_citizen": 7934.329991059505
+          },
+          "Facchini": {
+            "citizens": 39,
+            "amount": 154719.43482566025,
+            "per_citizen": 3967.1649955297526
+          },
+          "Scientisti": {
+            "citizens": 4,
+            "amount": 10000,
+            "per_citizen": 2500
+          },
+          "Clero": {
+            "citizens": 3,
+            "amount": 6000,
+            "per_citizen": 2000
+          }
+        }
+      },
+      "createdAt": "2025-06-29T08:02:44.308Z",
+      "readAt": null
+    },
+    {
+      "notificationId": "recXmch2pxiTF9hjU",
+      "type": "rent_payment_summary",
+      "citizen": "ConsiglioDeiDieci",
+      "content": "\ud83c\udfdb\ufe0f **Daily Rent Payments Report** \ud83d\udcdc\nHousing Rents: **68** successful, **4** failed.\nTotal Housing Rent Collected: **91,720** \u269c\ufe0f Ducats.",
+      "details": {
+        "event_type": "rent_payment_summary",
+        "timestamp": "2025-06-28T18:03:45.428889",
+        "housing_payments": {
+          "successful": 68,
+          "failed": 4,
+          "total_amount": 91720
+        },
+        "top_landlords": [
+          {
+            "owner": "ConsiglioDeiDieci",
+            "amount": 61915
+          },
+          {
+            "owner": "Italia",
+            "amount": 6770
+          },
+          {
+            "owner": "TopGlassmaker",
+            "amount": 4100
+          },
+          {
+            "owner": "StarGazer2000",
+            "amount": 4015
+          },
+          {
+            "owner": "MerchantLegend",
+            "amount": 2795
+          }
+        ],
+        "total_amount": 91720
+      },
+      "createdAt": "2025-06-28T18:03:45.428Z",
+      "readAt": null
+    },
+    {
+      "notificationId": "reclhdcjkvMNNClBC",
+      "type": "rent_payment",
+      "citizen": "ConsiglioDeiDieci",
+      "content": "\ud83d\udcec **Rent Received Summary** \ud83d\udcec\nYou received a total of **61,915 \u269c\ufe0f Ducats** from your properties today.\n\nDetails:\n- \u2705 **1,125 \u269c\ufe0f** from **Paolo Foscari** for **Fisherman's Cottage at Riva dei Frari**.\n- \u2705 **1,125 \u269c\ufe0f** from **Bartolomeo Ferro** for **rec447dpgrxblCNlK**.\n- \u2705 **1,125 \u269c\ufe0f** from **Donato Fabbro** for **Fisherman's Cottage at Riva dei Brentatori**.\n- \u2705 **1,425 \u269c\ufe0f** from **mahdi taghizadeh** for **Fisherman's Cottage at Riva del Formager**.\n- \u2705 **1,275 \u269c\ufe0f** from **Matteo Tabrizzi** for **Merchant's House at Calle del Tintoretto Vecchio**.\n- \u2705 **1,780 \u269c\ufe0f** from **Chiara Bembo** for **Artisan's House at Calle dei Furlani**.\n- \u2705 **1,480 \u269c\ufe0f** from **Beatrice Sanudo** for **Artisan's House at Calle dei Fabbri**.\n- \u2705 **1,340 \u269c\ufe0f** from **Isabella Trevisan** for **recDJLhQOiyAkZpoP**.\n- \u2705 **1,125 \u269c\ufe0f** from **Bruno Fachini** for **Fisherman's Cottage at Riva dei Giocatori**.\n- \u2705 **1,125 \u269c\ufe0f** from **Stefano Bragadin** for **recDmuITiBSJ3fn8N**.\n- \u2705 **1,125 \u269c\ufe0f** from **Taddeo Crivelli** for **recDtWltmBLHxCC3M**.\n- \u2705 **1,425 \u269c\ufe0f** from **Francesco \"il Dominatore di Venezia\" Morosini** for **Fisherman's Cottage at Riva dei Questori**.\n- \u2705 **1,125 \u269c\ufe0f** from **Orsetta Bosello** for **Fisherman's Cottage at Fondamenta delle Erbe**.\n- \u2705 **1,125 \u269c\ufe0f** from **Maria Dolfin** for **recGDnui1DVFJzFBq**.\n- \u2705 **1,340 \u269c\ufe0f** from **Lucia Ferretti** for **Merchant's House at Corte Grimani alla Fava**.\n- \u2705 **1,125 \u269c\ufe0f** from **Agnese Venier** for **Fisherman's Cottage at Fondamenta dei Granai**.\n- \u2705 **1,230 \u269c\ufe0f** from **ppz olak** for **recJHsA2jfWAr7Feg**.\n- \u2705 **3,715 \u269c\ufe0f** from **Lorenzo Barbaro** for **Nobili Palazzo at Fondamenta dei Drapieri**.\n- \u2705 **1,125 \u269c\ufe0f** from **Lucia Zanchi** for **recJzejTbOQGrPnMy**.\n- \u2705 **1,230 \u269c\ufe0f** from **Niccol\u00f2 Lesteri** for **recKEqPapn7keUk58**.\n- \u2705 **1,780 \u269c\ufe0f** from **Vincenzo Tagliapietra** for **Artisan's House at Ruga dei Orafi Castellani**.\n- \u2705 **1,125 \u269c\ufe0f** from **Paola Cimenti** for **recMcujtwP8zPajFa**.\n- \u2705 **1,125 \u269c\ufe0f** from **Matteo Busato** for **Fisherman's Cottage at Fondamenta dei Fruttaroli**.\n- \u2705 **1,480 \u269c\ufe0f** from **Gabriele Memmo** for **Artisan's House at Calle dei Impastatori**.\n- \u2705 **1,120 \u269c\ufe0f** from **Orsolina Zanetti** for **recOroyPN7ctE9pbH**.\n- \u2705 **1,780 \u269c\ufe0f** from **Matteo Ziani** for **Artisan's House at Sotoportego della Scala d'Oro**.\n- \u2705 **1,425 \u269c\ufe0f** from **Giacomo Falier** for **Fisherman's Cottage at Riva dei Tessitori Cannaregiani**.\n- \u2705 **1,125 \u269c\ufe0f** from **Faustina Ruzzini** for **recVSMllh1xEt5BUw**.\n- \u2705 **1,125 \u269c\ufe0f** from **Dorotea Gastaldi** for **recWvEXaCntJJJCEV**.\n- \u2705 **1,480 \u269c\ufe0f** from **Domenico Grimani** for **Artisan's House at Salizada dei Dotti**.\n- \u2705 **1,760 \u269c\ufe0f** from **Tiziano Bertucci** for **Artisan's House at Salizada dei Musicisti**.\n- \u2705 **1,230 \u269c\ufe0f** from **Biagio Pugliese** for **recau8lNZsJ2Wegxl**.\n- \u2705 **1,125 \u269c\ufe0f** from **Zanetta Passarin** for **Fisherman's Cottage at Fondamenta degli Ex-Voto**.\n- \u2705 **1,340 \u269c\ufe0f** from **Francesco Rizzo** for **recfZg9YCe7cHODAc**.\n- \u2705 **1,340 \u269c\ufe0f** from **Miles IlFlaro** for **Canal House at Riva dei Melangoli**.\n- \u2705 **1,125 \u269c\ufe0f** from **Giulia Balbi** for **Fisherman's Cottage at Fondamenta dei Mocenigo**.\n- \u2705 **1,125 \u269c\ufe0f** from **Bortolo Fabbri** for **Fisherman's Cottage at Fondamenta delle Reliquie**.\n- \u2705 **1,125 \u269c\ufe0f** from **Tiara Venier** for **Fisherman's Cottage at Riva dei Carmini**.\n- \u2705 **1,125 \u269c\ufe0f** from **Lucia Mancini** for **Fisherman's Cottage at Riva dei Maschereri**.\n- \u2705 **1,325 \u269c\ufe0f** from **Giovanni Bellavita** for **Fisherman's Cottage at Fondamenta degli Agostiniani**.\n- \u2705 **990 \u269c\ufe0f** from **Isabella Contarini** for **Merchant's House at Ruga dei Librai**.\n- \u2705 **990 \u269c\ufe0f** from **Antonio Mancini** for **Merchant's House at Ruga dei Mercanti da Levante**.\n- \u2705 **1,340 \u269c\ufe0f** from **Sebastiano Grimani** for **reco9DuML0qK4DZdD**.\n- \u2705 **990 \u269c\ufe0f** from **Zuan Ca\u2019 Zefri** for **Merchant's House at Fondamenta dei Loredan**.\n- \u2705 **1,125 \u269c\ufe0f** from **Lucrezia Dardi** for **recqen5Hylv8KmYgZ**.\n- \u2705 **1,125 \u269c\ufe0f** from **Marco Baffo** for **recr6L8dZ7rkr3ulw**.\n- \u2705 **1,680 \u269c\ufe0f** from **Alessandro Ricci** for **Canal House at Riva dei Biscottai**.\n",
+      "details": {
+        "event_type": "landlord_rent_summary",
+        "total_received": 61915,
+        "payments": [
+          {
+            "occupant_name": "Paolo Foscari",
+            "building_name": "Fisherman's Cottage at Riva dei Frari",
+            "amount": 1125
+          },
+          {
+            "occupant_name": "Bartolomeo Ferro",
+            "building_name": "rec447dpgrxblCNlK",
+            "amount": 1125
+          },
+          {
+            "occupant_name": "Donato Fabbro",
+            "building_name": "Fisherman's Cottage at Riva dei Brentatori",
+            "amount": 1125
+          },
+          {
+            "occupant_name": "mahdi taghizadeh",
+            "building_name": "Fisherman's Cottage at Riva del Formager",
+            "amount": 1425
+          },
+          {
+            "occupant_name": "Matteo Tabrizzi",
+            "building_name": "Merchant's House at Calle del Tintoretto Vecchio",
+            "amount": 1275
+          },
+          {
+            "occupant_name": "Chiara Bembo",
+            "building_name": "Artisan's House at Calle dei Furlani",
+            "amount": 1780
+          },
+          {
+            "occupant_name": "Beatrice Sanudo",
+            "building_name": "Artisan's House at Calle dei Fabbri",
+            "amount": 1480
+          },
+          {
+            "occupant_name": "Isabella Trevisan",
+            "building_name": "recDJLhQOiyAkZpoP",
+            "amount": 1340
+          },
+          {
+            "occupant_name": "Bruno Fachini",
+            "building_name": "Fisherman's Cottage at Riva dei Giocatori",
+            "amount": 1125
+          },
+          {
+            "occupant_name": "Stefano Bragadin",
+            "building_name": "recDmuITiBSJ3fn8N",
+            "amount": 1125
+          },
+          {
+            "occupant_name": "Taddeo Crivelli",
+            "building_name": "recDtWltmBLHxCC3M",
+            "amount": 1125
+          },
+          {
+            "occupant_name": "Francesco \"il Dominatore di Venezia\" Morosini",
+            "building_name": "Fisherman's Cottage at Riva dei Questori",
+            "amount": 1425
+          },
+          {
+            "occupant_name": "Orsetta Bosello",
+            "building_name": "Fisherman's Cottage at Fondamenta delle Erbe",
+            "amount": 1125
+          },
+          {
+            "occupant_name": "Maria Dolfin",
+            "building_name": "recGDnui1DVFJzFBq",
+            "amount": 1125
+          },
+          {
+            "occupant_name": "Lucia Ferretti",
+            "building_name": "Merchant's House at Corte Grimani alla Fava",
+            "amount": 1340
+          },
+          {
+            "occupant_name": "Agnese Venier",
+            "building_name": "Fisherman's Cottage at Fondamenta dei Granai",
+            "amount": 1125
+          },
+          {
+            "occupant_name": "ppz olak",
+            "building_name": "recJHsA2jfWAr7Feg",
+            "amount": 1230
+          },
+          {
+            "occupant_name": "Lorenzo Barbaro",
+            "building_name": "Nobili Palazzo at Fondamenta dei Drapieri",
+            "amount": 3715
+          },
+          {
+            "occupant_name": "Lucia Zanchi",
+            "building_name": "recJzejTbOQGrPnMy",
+            "amount": 1125
+          },
+          {
+            "occupant_name": "Niccol\u00f2 Lesteri",
+            "building_name": "recKEqPapn7keUk58",
+            "amount": 1230
+          },
+          {
+            "occupant_name": "Vincenzo Tagliapietra",
+            "building_name": "Artisan's House at Ruga dei Orafi Castellani",
+            "amount": 1780
+          },
+          {
+            "occupant_name": "Paola Cimenti",
+            "building_name": "recMcujtwP8zPajFa",
+            "amount": 1125
+          },
+          {
+            "occupant_name": "Matteo Busato",
+            "building_name": "Fisherman's Cottage at Fondamenta dei Fruttaroli",
+            "amount": 1125
+          },
+          {
+            "occupant_name": "Gabriele Memmo",
+            "building_name": "Artisan's House at Calle dei Impastatori",
+            "amount": 1480
+          },
+          {
+            "occupant_name": "Orsolina Zanetti",
+            "building_name": "recOroyPN7ctE9pbH",
+            "amount": 1120
+          },
+          {
+            "occupant_name": "Matteo Ziani",
+            "building_name": "Artisan's House at Sotoportego della Scala d'Oro",
+            "amount": 1780
+          },
+          {
+            "occupant_name": "Giacomo Falier",
+            "building_name": "Fisherman's Cottage at Riva dei Tessitori Cannaregiani",
+            "amount": 1425
+          },
+          {
+            "occupant_name": "Faustina Ruzzini",
+            "building_name": "recVSMllh1xEt5BUw",
+            "amount": 1125
+          },
+          {
+            "occupant_name": "Dorotea Gastaldi",
+            "building_name": "recWvEXaCntJJJCEV",
+            "amount": 1125
+          },
+          {
+            "occupant_name": "Domenico Grimani",
+            "building_name": "Artisan's House at Salizada dei Dotti",
+            "amount": 1480
+          },
+          {
+            "occupant_name": "Tiziano Bertucci",
+            "building_name": "Artisan's House at Salizada dei Musicisti",
+            "amount": 1760
+          },
+          {
+            "occupant_name": "Biagio Pugliese",
+            "building_name": "recau8lNZsJ2Wegxl",
+            "amount": 1230
+          },
+          {
+            "occupant_name": "Zanetta Passarin",
+            "building_name": "Fisherman's Cottage at Fondamenta degli Ex-Voto",
+            "amount": 1125
+          },
+          {
+            "occupant_name": "Francesco Rizzo",
+            "building_name": "recfZg9YCe7cHODAc",
+            "amount": 1340
+          },
+          {
+            "occupant_name": "Miles IlFlaro",
+            "building_name": "Canal House at Riva dei Melangoli",
+            "amount": 1340
+          },
+          {
+            "occupant_name": "Giulia Balbi",
+            "building_name": "Fisherman's Cottage at Fondamenta dei Mocenigo",
+            "amount": 1125
+          },
+          {
+            "occupant_name": "Bortolo Fabbri",
+            "building_name": "Fisherman's Cottage at Fondamenta delle Reliquie",
+            "amount": 1125
+          },
+          {
+            "occupant_name": "Tiara Venier",
+            "building_name": "Fisherman's Cottage at Riva dei Carmini",
+            "amount": 1125
+          },
+          {
+            "occupant_name": "Lucia Mancini",
+            "building_name": "Fisherman's Cottage at Riva dei Maschereri",
+            "amount": 1125
+          },
+          {
+            "occupant_name": "Giovanni Bellavita",
+            "building_name": "Fisherman's Cottage at Fondamenta degli Agostiniani",
+            "amount": 1325
+          },
+          {
+            "occupant_name": "Isabella Contarini",
+            "building_name": "Merchant's House at Ruga dei Librai",
+            "amount": 990
+          },
+          {
+            "occupant_name": "Antonio Mancini",
+            "building_name": "Merchant's House at Ruga dei Mercanti da Levante",
+            "amount": 990
+          },
+          {
+            "occupant_name": "Sebastiano Grimani",
+            "building_name": "reco9DuML0qK4DZdD",
+            "amount": 1340
+          },
+          {
+            "occupant_name": "Zuan Ca\u2019 Zefri",
+            "building_name": "Merchant's House at Fondamenta dei Loredan",
+            "amount": 990
+          },
+          {
+            "occupant_name": "Lucrezia Dardi",
+            "building_name": "recqen5Hylv8KmYgZ",
+            "amount": 1125
+          },
+          {
+            "occupant_name": "Marco Baffo",
+            "building_name": "recr6L8dZ7rkr3ulw",
+            "amount": 1125
+          },
+          {
+            "occupant_name": "Alessandro Ricci",
+            "building_name": "Canal House at Riva dei Biscottai",
+            "amount": 1680
+          }
+        ]
+      },
+      "createdAt": "2025-06-28T18:03:41.922Z",
+      "readAt": null
+    },
+    {
+      "notificationId": "recvEZVn3m9Xnv51n",
+      "type": "rent_payment",
+      "citizen": "ConsiglioDeiDieci",
+      "content": "\u26a0\ufe0f Rent Payment Failed: Your tenant **Giulio Lombardo** could not pay **3,715 \u269c\ufe0f Ducats** for **Nobili Palazzo at Calle del Sale** due to insufficient funds. \ud83d\udcb8",
+      "details": {
+        "building_id": "recXhUt5D75CKSgYc",
+        "building_name": "Nobili Palazzo at Calle del Sale",
+        "rent_price": 3715,
+        "citizen_username": "urban_visionary",
+        "citizen_name": "Giulio Lombardo",
+        "citizen_ducats": 3513.386338958393,
+        "event_type": "rent_payment_failed",
+        "error_type": "insufficient_funds"
+      },
+      "createdAt": "2025-06-28T18:02:37.447Z",
+      "readAt": null
+    },
+    {
+      "notificationId": "recfGZylNSPDSI2lC",
+      "type": "rent_payment",
+      "citizen": "ConsiglioDeiDieci",
+      "content": "\u26a0\ufe0f Rent Payment Failed: Your tenant **Caterina del Ponte** could not pay **3,715 \u269c\ufe0f Ducats** for **Nobili Palazzo at Calle dei Conversi** due to insufficient funds. \ud83d\udcb8",
+      "details": {
+        "building_id": "recQxYd3QzBW8M2H8",
+        "building_name": "Nobili Palazzo at Calle dei Conversi",
+        "rent_price": 3715,
+        "citizen_username": "rialto_diarist",
+        "citizen_name": "Caterina del Ponte",
+        "citizen_ducats": 1870.963395275526,
+        "event_type": "rent_payment_failed",
+        "error_type": "insufficient_funds"
+      },
+      "createdAt": "2025-06-28T18:02:17.863Z",
+      "readAt": null
+    },
+    {
+      "notificationId": "rec8wRKBjP4fNtaAC",
+      "type": "rent_payment",
+      "citizen": "ConsiglioDeiDieci",
+      "content": "\u26a0\ufe0f Rent Payment Failed: Your tenant **Elisabetta Velluti** could not pay **3,975 \u269c\ufe0f Ducats** for **Nobili Palazzo at Salizada dei Nobili** due to insufficient funds. \ud83d\udcb8",
+      "details": {
+        "building_id": "recCueNjVYgxoZNGY",
+        "building_name": "Nobili Palazzo at Salizada dei Nobili",
+        "rent_price": 3975,
+        "citizen_username": "the_social_canvas",
+        "citizen_name": "Elisabetta Velluti",
+        "citizen_ducats": 3196.6677417708306,
+        "event_type": "rent_payment_failed",
+        "error_type": "insufficient_funds"
+      },
+      "createdAt": "2025-06-28T18:01:22.817Z",
+      "readAt": null
+    },
+    {
+      "notificationId": "recfDlqsrh9Ve7xXC",
+      "type": "rent_payment",
+      "citizen": "ConsiglioDeiDieci",
+      "content": "\u26a0\ufe0f Rent Payment Failed: Your tenant **Bass De Medici** could not pay **1,230 \u269c\ufe0f Ducats** for **Merchant's House at Ruga dei Oresi** due to insufficient funds. \ud83d\udcb8",
+      "details": {
+        "building_id": "rec2mtdV9FkFRCiua",
+        "building_name": "Merchant's House at Ruga dei Oresi",
+        "rent_price": 1230,
+        "citizen_username": "BasstheWhale",
+        "citizen_name": "Bass De Medici",
+        "citizen_ducats": 965.714481449858,
+        "event_type": "rent_payment_failed",
+        "error_type": "insufficient_funds"
+      },
+      "createdAt": "2025-06-28T18:01:00.035Z",
+      "readAt": null
+    },
+    {
+      "notificationId": "rec4viJ01z7tEBtlN",
+      "type": "wage_payment_summary",
+      "citizen": "ConsiglioDeiDieci",
+      "content": "\ud83d\udcb0 **Daily Wage Payments Report** \ud83d\udcdc\nProcessed: **85** successful, **19** failed.\nTotal Wages Paid: **114,420** \u269c\ufe0f Ducats.",
+      "details": {
+        "event_type": "wage_payment_summary",
+        "timestamp": "2025-06-28T17:03:53.591302",
+        "successful_payments": 85,
+        "failed_payments": 19,
+        "total_amount": 114420,
+        "top_employers": [
+          {
+            "owner": "TechnoMedici",
+            "amount": 40855
+          },
+          {
+            "owner": "SilkRoadRunner",
+            "amount": 13220
+          },
+          {
+            "owner": "VenicePhotographer",
+            "amount": 12510
+          },
+          {
+            "owner": "TravelBug23",
+            "amount": 5110
+          },
+          {
+            "owner": "BarbarigoCadet",
+            "amount": 4680
+          }
+        ],
+        "top_earners": [
+          {
+            "citizen": "Caterina Baffo",
+            "amount": 26610
+          },
+          {
+            "citizen": "Marco Bianchi",
+            "amount": 5970
+          },
+          {
+            "citizen": "Isabella Contarini",
+            "amount": 3785
+          },
+          {
+            "citizen": "Bernardo Morlacco",
+            "amount": 2510
+          },
+          {
+            "citizen": "Zanetta Passarin",
+            "amount": 2050
+          }
+        ]
+      },
+      "createdAt": "2025-06-28T17:03:53.592Z",
+      "readAt": null
+    },
+    {
+      "notificationId": "recVPnpq9CUV5FUU7",
+      "type": "rent_payment_summary",
+      "citizen": "ConsiglioDeiDieci",
+      "content": "\ud83c\udfdb\ufe0f **Daily Rent Payments Report** \ud83d\udcdc\nHousing Rents: **68** successful, **4** failed.\nTotal Housing Rent Collected: **91,720** \u269c\ufe0f Ducats.",
+      "details": {
+        "event_type": "rent_payment_summary",
+        "timestamp": "2025-06-28T16:03:36.935717",
+        "housing_payments": {
+          "successful": 68,
+          "failed": 4,
+          "total_amount": 91720
+        },
+        "top_landlords": [
+          {
+            "owner": "ConsiglioDeiDieci",
+            "amount": 61915
+          },
+          {
+            "owner": "Italia",
+            "amount": 6770
+          },
+          {
+            "owner": "TopGlassmaker",
+            "amount": 4100
+          },
+          {
+            "owner": "StarGazer2000",
+            "amount": 4015
+          },
+          {
+            "owner": "MerchantLegend",
+            "amount": 2795
+          }
+        ],
+        "total_amount": 91720
+      },
+      "createdAt": "2025-06-28T16:03:36.935Z",
+      "readAt": null
+    },
+    {
+      "notificationId": "recUXw14bRbf5Oess",
+      "type": "rent_payment",
+      "citizen": "ConsiglioDeiDieci",
+      "content": "\ud83d\udcec **Rent Received Summary** \ud83d\udcec\nYou received a total of **61,915 \u269c\ufe0f Ducats** from your properties today.\n\nDetails:\n- \u2705 **1,125 \u269c\ufe0f** from **Paolo Foscari** for **Fisherman's Cottage at Riva dei Frari**.\n- \u2705 **1,125 \u269c\ufe0f** from **Bartolomeo Ferro** for **rec447dpgrxblCNlK**.\n- \u2705 **1,125 \u269c\ufe0f** from **Donato Fabbro** for **Fisherman's Cottage at Riva dei Brentatori**.\n- \u2705 **1,425 \u269c\ufe0f** from **mahdi taghizadeh** for **Fisherman's Cottage at Riva del Formager**.\n- \u2705 **1,275 \u269c\ufe0f** from **Matteo Tabrizzi** for **Merchant's House at Calle del Tintoretto Vecchio**.\n- \u2705 **1,780 \u269c\ufe0f** from **Chiara Bembo** for **Artisan's House at Calle dei Furlani**.\n- \u2705 **1,480 \u269c\ufe0f** from **Beatrice Sanudo** for **Artisan's House at Calle dei Fabbri**.\n- \u2705 **1,340 \u269c\ufe0f** from **Isabella Trevisan** for **recDJLhQOiyAkZpoP**.\n- \u2705 **1,125 \u269c\ufe0f** from **Bruno Fachini** for **Fisherman's Cottage at Riva dei Giocatori**.\n- \u2705 **1,125 \u269c\ufe0f** from **Stefano Bragadin** for **recDmuITiBSJ3fn8N**.\n- \u2705 **1,125 \u269c\ufe0f** from **Taddeo Crivelli** for **recDtWltmBLHxCC3M**.\n- \u2705 **1,425 \u269c\ufe0f** from **Francesco \"il Dominatore di Venezia\" Morosini** for **Fisherman's Cottage at Riva dei Questori**.\n- \u2705 **1,125 \u269c\ufe0f** from **Orsetta Bosello** for **Fisherman's Cottage at Fondamenta delle Erbe**.\n- \u2705 **1,125 \u269c\ufe0f** from **Maria Dolfin** for **recGDnui1DVFJzFBq**.\n- \u2705 **1,340 \u269c\ufe0f** from **Lucia Ferretti** for **Merchant's House at Corte Grimani alla Fava**.\n- \u2705 **1,125 \u269c\ufe0f** from **Agnese Venier** for **Fisherman's Cottage at Fondamenta dei Granai**.\n- \u2705 **1,230 \u269c\ufe0f** from **ppz olak** for **recJHsA2jfWAr7Feg**.\n- \u2705 **3,715 \u269c\ufe0f** from **Lorenzo Barbaro** for **Nobili Palazzo at Fondamenta dei Drapieri**.\n- \u2705 **1,125 \u269c\ufe0f** from **Lucia Zanchi** for **recJzejTbOQGrPnMy**.\n- \u2705 **1,230 \u269c\ufe0f** from **Niccol\u00f2 Lesteri** for **recKEqPapn7keUk58**.\n- \u2705 **1,780 \u269c\ufe0f** from **Vincenzo Tagliapietra** for **Artisan's House at Ruga dei Orafi Castellani**.\n- \u2705 **1,125 \u269c\ufe0f** from **Paola Cimenti** for **recMcujtwP8zPajFa**.\n- \u2705 **1,125 \u269c\ufe0f** from **Matteo Busato** for **Fisherman's Cottage at Fondamenta dei Fruttaroli**.\n- \u2705 **1,480 \u269c\ufe0f** from **Gabriele Memmo** for **Artisan's House at Calle dei Impastatori**.\n- \u2705 **1,120 \u269c\ufe0f** from **Orsolina Zanetti** for **recOroyPN7ctE9pbH**.\n- \u2705 **1,780 \u269c\ufe0f** from **Matteo Ziani** for **Artisan's House at Sotoportego della Scala d'Oro**.\n- \u2705 **1,425 \u269c\ufe0f** from **Giacomo Falier** for **Fisherman's Cottage at Riva dei Tessitori Cannaregiani**.\n- \u2705 **1,125 \u269c\ufe0f** from **Faustina Ruzzini** for **recVSMllh1xEt5BUw**.\n- \u2705 **1,125 \u269c\ufe0f** from **Dorotea Gastaldi** for **recWvEXaCntJJJCEV**.\n- \u2705 **1,480 \u269c\ufe0f** from **Domenico Grimani** for **Artisan's House at Salizada dei Dotti**.\n- \u2705 **1,760 \u269c\ufe0f** from **Tiziano Bertucci** for **Artisan's House at Salizada dei Musicisti**.\n- \u2705 **1,230 \u269c\ufe0f** from **Biagio Pugliese** for **recau8lNZsJ2Wegxl**.\n- \u2705 **1,125 \u269c\ufe0f** from **Zanetta Passarin** for **Fisherman's Cottage at Fondamenta degli Ex-Voto**.\n- \u2705 **1,340 \u269c\ufe0f** from **Francesco Rizzo** for **recfZg9YCe7cHODAc**.\n- \u2705 **1,340 \u269c\ufe0f** from **Miles IlFlaro** for **Canal House at Riva dei Melangoli**.\n- \u2705 **1,125 \u269c\ufe0f** from **Giulia Balbi** for **Fisherman's Cottage at Fondamenta dei Mocenigo**.\n- \u2705 **1,125 \u269c\ufe0f** from **Bortolo Fabbri** for **Fisherman's Cottage at Fondamenta delle Reliquie**.\n- \u2705 **1,125 \u269c\ufe0f** from **Tiara Venier** for **Fisherman's Cottage at Riva dei Carmini**.\n- \u2705 **1,125 \u269c\ufe0f** from **Lucia Mancini** for **Fisherman's Cottage at Riva dei Maschereri**.\n- \u2705 **1,325 \u269c\ufe0f** from **Giovanni Bellavita** for **Fisherman's Cottage at Fondamenta degli Agostiniani**.\n- \u2705 **990 \u269c\ufe0f** from **Isabella Contarini** for **Merchant's House at Ruga dei Librai**.\n- \u2705 **990 \u269c\ufe0f** from **Antonio Mancini** for **Merchant's House at Ruga dei Mercanti da Levante**.\n- \u2705 **1,340 \u269c\ufe0f** from **Sebastiano Grimani** for **reco9DuML0qK4DZdD**.\n- \u2705 **990 \u269c\ufe0f** from **Zuan Ca\u2019 Zefri** for **Merchant's House at Fondamenta dei Loredan**.\n- \u2705 **1,125 \u269c\ufe0f** from **Lucrezia Dardi** for **recqen5Hylv8KmYgZ**.\n- \u2705 **1,125 \u269c\ufe0f** from **Marco Baffo** for **recr6L8dZ7rkr3ulw**.\n- \u2705 **1,680 \u269c\ufe0f** from **Alessandro Ricci** for **Canal House at Riva dei Biscottai**.\n",
+      "details": {
+        "event_type": "landlord_rent_summary",
+        "total_received": 61915,
+        "payments": [
+          {
+            "occupant_name": "Paolo Foscari",
+            "building_name": "Fisherman's Cottage at Riva dei Frari",
+            "amount": 1125
+          },
+          {
+            "occupant_name": "Bartolomeo Ferro",
+            "building_name": "rec447dpgrxblCNlK",
+            "amount": 1125
+          },
+          {
+            "occupant_name": "Donato Fabbro",
+            "building_name": "Fisherman's Cottage at Riva dei Brentatori",
+            "amount": 1125
+          },
+          {
+            "occupant_name": "mahdi taghizadeh",
+            "building_name": "Fisherman's Cottage at Riva del Formager",
+            "amount": 1425
+          },
+          {
+            "occupant_name": "Matteo Tabrizzi",
+            "building_name": "Merchant's House at Calle del Tintoretto Vecchio",
+            "amount": 1275
+          },
+          {
+            "occupant_name": "Chiara Bembo",
+            "building_name": "Artisan's House at Calle dei Furlani",
+            "amount": 1780
+          },
+          {
+            "occupant_name": "Beatrice Sanudo",
+            "building_name": "Artisan's House at Calle dei Fabbri",
+            "amount": 1480
+          },
+          {
+            "occupant_name": "Isabella Trevisan",
+            "building_name": "recDJLhQOiyAkZpoP",
+            "amount": 1340
+          },
+          {
+            "occupant_name": "Bruno Fachini",
+            "building_name": "Fisherman's Cottage at Riva dei Giocatori",
+            "amount": 1125
+          },
+          {
+            "occupant_name": "Stefano Bragadin",
+            "building_name": "recDmuITiBSJ3fn8N",
+            "amount": 1125
+          },
+          {
+            "occupant_name": "Taddeo Crivelli",
+            "building_name": "recDtWltmBLHxCC3M",
+            "amount": 1125
+          },
+          {
+            "occupant_name": "Francesco \"il Dominatore di Venezia\" Morosini",
+            "building_name": "Fisherman's Cottage at Riva dei Questori",
+            "amount": 1425
+          },
+          {
+            "occupant_name": "Orsetta Bosello",
+            "building_name": "Fisherman's Cottage at Fondamenta delle Erbe",
+            "amount": 1125
+          },
+          {
+            "occupant_name": "Maria Dolfin",
+            "building_name": "recGDnui1DVFJzFBq",
+            "amount": 1125
+          },
+          {
+            "occupant_name": "Lucia Ferretti",
+            "building_name": "Merchant's House at Corte Grimani alla Fava",
+            "amount": 1340
+          },
+          {
+            "occupant_name": "Agnese Venier",
+            "building_name": "Fisherman's Cottage at Fondamenta dei Granai",
+            "amount": 1125
+          },
+          {
+            "occupant_name": "ppz olak",
+            "building_name": "recJHsA2jfWAr7Feg",
+            "amount": 1230
+          },
+          {
+            "occupant_name": "Lorenzo Barbaro",
+            "building_name": "Nobili Palazzo at Fondamenta dei Drapieri",
+            "amount": 3715
+          },
+          {
+            "occupant_name": "Lucia Zanchi",
+            "building_name": "recJzejTbOQGrPnMy",
+            "amount": 1125
+          },
+          {
+            "occupant_name": "Niccol\u00f2 Lesteri",
+            "building_name": "recKEqPapn7keUk58",
+            "amount": 1230
+          },
+          {
+            "occupant_name": "Vincenzo Tagliapietra",
+            "building_name": "Artisan's House at Ruga dei Orafi Castellani",
+            "amount": 1780
+          },
+          {
+            "occupant_name": "Paola Cimenti",
+            "building_name": "recMcujtwP8zPajFa",
+            "amount": 1125
+          },
+          {
+            "occupant_name": "Matteo Busato",
+            "building_name": "Fisherman's Cottage at Fondamenta dei Fruttaroli",
+            "amount": 1125
+          },
+          {
+            "occupant_name": "Gabriele Memmo",
+            "building_name": "Artisan's House at Calle dei Impastatori",
+            "amount": 1480
+          },
+          {
+            "occupant_name": "Orsolina Zanetti",
+            "building_name": "recOroyPN7ctE9pbH",
+            "amount": 1120
+          },
+          {
+            "occupant_name": "Matteo Ziani",
+            "building_name": "Artisan's House at Sotoportego della Scala d'Oro",
+            "amount": 1780
+          },
+          {
+            "occupant_name": "Giacomo Falier",
+            "building_name": "Fisherman's Cottage at Riva dei Tessitori Cannaregiani",
+            "amount": 1425
+          },
+          {
+            "occupant_name": "Faustina Ruzzini",
+            "building_name": "recVSMllh1xEt5BUw",
+            "amount": 1125
+          },
+          {
+            "occupant_name": "Dorotea Gastaldi",
+            "building_name": "recWvEXaCntJJJCEV",
+            "amount": 1125
+          },
+          {
+            "occupant_name": "Domenico Grimani",
+            "building_name": "Artisan's House at Salizada dei Dotti",
+            "amount": 1480
+          },
+          {
+            "occupant_name": "Tiziano Bertucci",
+            "building_name": "Artisan's House at Salizada dei Musicisti",
+            "amount": 1760
+          },
+          {
+            "occupant_name": "Biagio Pugliese",
+            "building_name": "recau8lNZsJ2Wegxl",
+            "amount": 1230
+          },
+          {
+            "occupant_name": "Zanetta Passarin",
+            "building_name": "Fisherman's Cottage at Fondamenta degli Ex-Voto",
+            "amount": 1125
+          },
+          {
+            "occupant_name": "Francesco Rizzo",
+            "building_name": "recfZg9YCe7cHODAc",
+            "amount": 1340
+          },
+          {
+            "occupant_name": "Miles IlFlaro",
+            "building_name": "Canal House at Riva dei Melangoli",
+            "amount": 1340
+          },
+          {
+            "occupant_name": "Giulia Balbi",
+            "building_name": "Fisherman's Cottage at Fondamenta dei Mocenigo",
+            "amount": 1125
+          },
+          {
+            "occupant_name": "Bortolo Fabbri",
+            "building_name": "Fisherman's Cottage at Fondamenta delle Reliquie",
+            "amount": 1125
+          },
+          {
+            "occupant_name": "Tiara Venier",
+            "building_name": "Fisherman's Cottage at Riva dei Carmini",
+            "amount": 1125
+          },
+          {
+            "occupant_name": "Lucia Mancini",
+            "building_name": "Fisherman's Cottage at Riva dei Maschereri",
+            "amount": 1125
+          },
+          {
+            "occupant_name": "Giovanni Bellavita",
+            "building_name": "Fisherman's Cottage at Fondamenta degli Agostiniani",
+            "amount": 1325
+          },
+          {
+            "occupant_name": "Isabella Contarini",
+            "building_name": "Merchant's House at Ruga dei Librai",
+            "amount": 990
+          },
+          {
+            "occupant_name": "Antonio Mancini",
+            "building_name": "Merchant's House at Ruga dei Mercanti da Levante",
+            "amount": 990
+          },
+          {
+            "occupant_name": "Sebastiano Grimani",
+            "building_name": "reco9DuML0qK4DZdD",
+            "amount": 1340
+          },
+          {
+            "occupant_name": "Zuan Ca\u2019 Zefri",
+            "building_name": "Merchant's House at Fondamenta dei Loredan",
+            "amount": 990
+          },
+          {
+            "occupant_name": "Lucrezia Dardi",
+            "building_name": "recqen5Hylv8KmYgZ",
+            "amount": 1125
+          },
+          {
+            "occupant_name": "Marco Baffo",
+            "building_name": "recr6L8dZ7rkr3ulw",
+            "amount": 1125
+          },
+          {
+            "occupant_name": "Alessandro Ricci",
+            "building_name": "Canal House at Riva dei Biscottai",
+            "amount": 1680
+          }
+        ]
+      },
+      "createdAt": "2025-06-28T16:03:33.241Z",
+      "readAt": null
+    },
+    {
+      "notificationId": "recUUmj709wPRHc9J",
+      "type": "rent_payment",
+      "citizen": "ConsiglioDeiDieci",
+      "content": "\u26a0\ufe0f Rent Payment Failed: Your tenant **Giulio Lombardo** could not pay **3,715 \u269c\ufe0f Ducats** for **Nobili Palazzo at Calle del Sale** due to insufficient funds. \ud83d\udcb8",
+      "details": {
+        "building_id": "recXhUt5D75CKSgYc",
+        "building_name": "Nobili Palazzo at Calle del Sale",
+        "rent_price": 3715,
+        "citizen_username": "urban_visionary",
+        "citizen_name": "Giulio Lombardo",
+        "citizen_ducats": 3513.386338958393,
+        "event_type": "rent_payment_failed",
+        "error_type": "insufficient_funds"
+      },
+      "createdAt": "2025-06-28T16:02:28.398Z",
+      "readAt": null
+    },
+    {
+      "notificationId": "recewKCwLvwMWoHiV",
+      "type": "rent_payment",
+      "citizen": "ConsiglioDeiDieci",
+      "content": "\u26a0\ufe0f Rent Payment Failed: Your tenant **Caterina del Ponte** could not pay **3,715 \u269c\ufe0f Ducats** for **Nobili Palazzo at Calle dei Conversi** due to insufficient funds. \ud83d\udcb8",
+      "details": {
+        "building_id": "recQxYd3QzBW8M2H8",
+        "building_name": "Nobili Palazzo at Calle dei Conversi",
+        "rent_price": 3715,
+        "citizen_username": "rialto_diarist",
+        "citizen_name": "Caterina del Ponte",
+        "citizen_ducats": 1870.963395275526,
+        "event_type": "rent_payment_failed",
+        "error_type": "insufficient_funds"
+      },
+      "createdAt": "2025-06-28T16:02:08.130Z",
+      "readAt": null
+    },
+    {
+      "notificationId": "rec2gPc8L6ty5Qteh",
+      "type": "rent_payment",
+      "citizen": "ConsiglioDeiDieci",
+      "content": "\u26a0\ufe0f Rent Payment Failed: Your tenant **Elisabetta Velluti** could not pay **3,975 \u269c\ufe0f Ducats** for **Nobili Palazzo at Salizada dei Nobili** due to insufficient funds. \ud83d\udcb8",
+      "details": {
+        "building_id": "recCueNjVYgxoZNGY",
+        "building_name": "Nobili Palazzo at Salizada dei Nobili",
+        "rent_price": 3975,
+        "citizen_username": "the_social_canvas",
+        "citizen_name": "Elisabetta Velluti",
+        "citizen_ducats": 3196.6677417708306,
+        "event_type": "rent_payment_failed",
+        "error_type": "insufficient_funds"
+      },
+      "createdAt": "2025-06-28T16:01:12.281Z",
+      "readAt": null
+    },
+    {
+      "notificationId": "recsUwP1AuzMzyWRl",
+      "type": "rent_payment",
+      "citizen": "ConsiglioDeiDieci",
+      "content": "\u26a0\ufe0f Rent Payment Failed: Your tenant **Bass De Medici** could not pay **1,230 \u269c\ufe0f Ducats** for **Merchant's House at Ruga dei Oresi** due to insufficient funds. \ud83d\udcb8",
+      "details": {
+        "building_id": "rec2mtdV9FkFRCiua",
+        "building_name": "Merchant's House at Ruga dei Oresi",
+        "rent_price": 1230,
+        "citizen_username": "BasstheWhale",
+        "citizen_name": "Bass De Medici",
+        "citizen_ducats": 965.714481449858,
+        "event_type": "rent_payment_failed",
+        "error_type": "insufficient_funds"
+      },
+      "createdAt": "2025-06-28T16:00:50.262Z",
+      "readAt": null
+    },
+    {
+      "notificationId": "recen8dgUtaB1MWvl",
+      "type": "wage_payment_summary",
+      "citizen": "ConsiglioDeiDieci",
+      "content": "\ud83d\udcb0 **Daily Wage Payments Report** \ud83d\udcdc\nProcessed: **90** successful, **14** failed.\nTotal Wages Paid: **124,530** \u269c\ufe0f Ducats.",
+      "details": {
+        "event_type": "wage_payment_summary",
+        "timestamp": "2025-06-28T15:03:42.819747",
+        "successful_payments": 90,
+        "failed_payments": 14,
+        "total_amount": 124530,
+        "top_employers": [
+          {
+            "owner": "TechnoMedici",
+            "amount": 40855
+          },
+          {
+            "owner": "SilkRoadRunner",
+            "amount": 13220
+          },
+          {
+            "owner": "VenicePhotographer",
+            "amount": 12510
+          },
+          {
+            "owner": "BarbarigoCadet",
+            "amount": 10175
+          },
+          {
+            "owner": "BasstheWhale",
+            "amount": 8715
+          }
+        ],
+        "top_earners": [
+          {
+            "citizen": "Caterina Baffo",
+            "amount": 26610
+          },
+          {
+            "citizen": "Marco Bianchi",
+            "amount": 5970
+          },
+          {
+            "citizen": "Isabella Contarini",
+            "amount": 3785
+          },
+          {
+            "citizen": "Antonio Vendramin",
+            "amount": 3185
+          },
+          {
+            "citizen": "Lorenzo Mocenigo",
+            "amount": 2565
+          }
+        ]
+      },
+      "createdAt": "2025-06-28T15:03:42.819Z",
+      "readAt": null
+    },
+    {
+      "notificationId": "rec9px8H1WxiN7baD",
+      "type": "loan_payment_summary",
+      "citizen": "ConsiglioDeiDieci",
+      "content": "\ud83d\udcca **Daily Loan Payments Report**: **0** successful, **3** failed, total: **0 \u269c\ufe0f Ducats**",
+      "details": {
+        "event_type": "loan_payment_summary",
+        "timestamp": "2025-06-28T15:00:35.977262",
+        "successful_payments": 0,
+        "failed_payments": 3,
+        "total_amount": 0,
+        "loans_paid_off": 0
+      },
+      "createdAt": "2025-06-28T15:00:35.977Z",
+      "readAt": null
+    },
+    {
+      "notificationId": "rec0zL67R2gkmeq6c",
+      "type": "loan_payment_summary",
+      "citizen": "ConsiglioDeiDieci",
+      "content": "\ud83d\udcca **Daily Loan Payments Report**: **0** successful, **3** failed, total: **0 \u269c\ufe0f Ducats**",
+      "details": {
+        "event_type": "loan_payment_summary",
+        "timestamp": "2025-06-28T13:00:25.958386",
+        "successful_payments": 0,
+        "failed_payments": 3,
+        "total_amount": 0,
+        "loans_paid_off": 0
+      },
+      "createdAt": "2025-06-28T13:00:25.958Z",
+      "readAt": null
+    },
+    {
+      "notificationId": "recFKgGoAuclS4Izz",
+      "type": "lease_distribution_summary",
+      "citizen": "ConsiglioDeiDieci",
+      "content": "\ud83c\udfdb\ufe0f **Lease distribution complete**: **0** payments processed, total: **0 \u269c\ufe0f Ducats** to land owners, **0 \u269c\ufe0f Ducats** in tax revenue.",
+      "details": {
+        "event_type": "lease_distribution_summary",
+        "timestamp": "2025-06-28T09:01:22.605138",
+        "successful_payments": 0,
+        "failed_payments": 0,
+        "total_amount": 0,
+        "total_tax": 0,
+        "tax_rate": "variable (20-50%)",
+        "top_gainers": [],
+        "top_losers": []
+      },
+      "createdAt": "2025-06-28T09:01:22.605Z",
+      "readAt": null
+    },
+    {
+      "notificationId": "recq3CmamBIGZsBbY",
+      "type": "treasury_redistribution_summary",
+      "citizen": "ConsiglioDeiDieci",
+      "content": "\ud83c\udfdb\ufe0f **Treasury Redistribution Complete**: **571,307.5227133646** \u269c\ufe0f Ducats distributed to **108** citizens \ud83d\udcb0",
+      "details": {
+        "event_type": "treasury_redistribution_summary",
+        "timestamp": "2025-06-28T08:02:33.325460",
+        "total_amount": 571307.5227133646,
+        "total_citizens": 108,
+        "by_class": {
+          "Nobili": {
+            "citizens": 2,
+            "amount": 24275.738697851993,
+            "per_citizen": 12137.869348925997
+          },
+          "Cittadini": {
+            "citizens": 16,
+            "amount": 145654.432187112,
+            "per_citizen": 9103.402011694496
+          },
+          "Popolani": {
+            "citizens": 44,
+            "amount": 267033.12567637203,
+            "per_citizen": 6068.934674462998
+          },
+          "Facchini": {
+            "citizens": 39,
+            "amount": 118344.22615202852,
+            "per_citizen": 3034.467337231499
+          },
+          "Scientisti": {
+            "citizens": 4,
+            "amount": 10000,
+            "per_citizen": 2500
+          },
+          "Clero": {
+            "citizens": 3,
+            "amount": 6000,
+            "per_citizen": 2000
+          }
+        }
+      },
+      "createdAt": "2025-06-28T08:02:33.325Z",
+      "readAt": null
+    },
+    {
+      "notificationId": "recSwyTjp8Zj6KL43",
+      "type": "job_assignment_summary",
+      "citizen": "ConsiglioDeiDieci",
+      "content": "\ud83d\udcca **Proximity Job Assignment Complete**: 1 citizens employed",
+      "details": {
+        "total_assigned": 1,
+        "avg_walking_time": 2.5,
+        "by_distance": {
+          "0-5min": 1,
+          "5-10min": 0,
+          "10-15min": 0,
+          "15min+": 0
+        },
+        "no_match": 7,
+        "timestamp": "2025-06-28T08:01:44.213343"
+      },
+      "createdAt": "2025-06-28T08:01:44.213Z",
+      "readAt": "2025-06-28T08:01:44.322Z"
+    },
+    {
+      "notificationId": "recy7KTeIPqEQg1bz",
+      "type": "job_assignment",
+      "citizen": "ConsiglioDeiDieci",
+      "content": "\ud83c\udfe2 **Giacomo Barbarigo** now works at your Art Gallery (Under Construction) (\ud83d\udccd 3 min walk away)",
+      "details": {
+        "citizen_name": "Giacomo Barbarigo",
+        "building_name": "Art Gallery (Under Construction)",
+        "walking_time": 3,
+        "event_type": "job_assignment"
+      },
+      "createdAt": "2025-06-28T08:00:14.014Z",
+      "readAt": null
+    },
+    {
+      "notificationId": "recHf7LGf7mrijm00",
+      "type": "lease_distribution_summary",
+      "citizen": "ConsiglioDeiDieci",
+      "content": "\ud83c\udfdb\ufe0f **Lease distribution complete**: **0** payments processed, total: **0 \u269c\ufe0f Ducats** to land owners, **0 \u269c\ufe0f Ducats** in tax revenue.",
+      "details": {
+        "event_type": "lease_distribution_summary",
+        "timestamp": "2025-06-28T07:01:08.339892",
+        "successful_payments": 0,
+        "failed_payments": 0,
+        "total_amount": 0,
+        "total_tax": 0,
+        "tax_rate": "variable (20-50%)",
+        "top_gainers": [],
+        "top_losers": []
+      },
+      "createdAt": "2025-06-28T07:01:08.339Z",
+      "readAt": null
+    }
+  ],
+  "recent_relevancies_ai_to_sender": [],
+  "recent_problems_involving_ai_or_sender": [
+    {
+      "id": "recj4geWYWFYmxCOs",
+      "problemId": "scheduler_failure_20250630_225209_process_concluded_activities",
+      "citizen": "ConsiglioDeiDieci",
+      "assetType": "system",
+      "asset": "scheduler",
+      "severity": "High",
+      "status": "active",
+      "createdAt": "2025-06-30T22:52:09.120Z",
+      "updatedAt": "2025-06-30T20:52:10.000Z",
+      "location": "",
+      "position": "",
+      "type": "scheduler_task_failure",
+      "title": "Scheduler Task Failed: Process concluded activities",
+      "description": "The scheduled task 'Process concluded activities' failed to execute properly.\n\nScript: C:\\Users\\reyno\\serenissima_\\backend\\engine/processActivities.py\n\nError: Task failed with return code: 1\n\nLast log output:\nTraceback (most recent call last):\nFile \"C:\\Users\\reyno\\serenissima_\\backend\\engine\\processActivities.py\", line 125, in <module>\nfrom backend.engine.activity_processors import (\nFile \"C:\\Users\\reyno\\serenissima_\\backend\\engine\\activity_processors\\__init__.py\", line 75, in <module>\nfrom backend.engine.handlers.welfare_porter_handler import handle_welfare_porter\nFile \"C:\\Users\\reyno\\serenissima_\\backend\\engine\\handlers\\__init__.py\", line 9, in <module>\nfrom backend.engine.handlers.orchestrator import process_citizen_activity\nFile \"C:\\Users\\reyno\\serenissima_\\backend\\engine\\handlers\\orchestrator.py\", line 92, in <module>\nfrom backend.engine.handlers.send_diplomatic_email import (\nFile \"C:\\Users\\reyno\\serenissima_\\backend\\engine\\handlers\\send_diplomatic_email.py\", line 10, in <module>\nfrom backend.engine.activity_base import complete_activity\nModuleNotFoundError: No module named 'backend.engine.activity_base'",
+      "solutions": "[\"Check if the script exists at the specified path\", \"Review the error message and fix any code issues\", \"Check for missing dependencies or environment variables\", \"Verify that required Airtable tables and API connections are working\", \"Review recent code changes that might have broken the script\"]",
+      "notes": ""
+    },
+    {
+      "id": "rec8pOoiPrdBwXCXi",
+      "problemId": "scheduler_failure_20250630_225008_citizen_activity_creation",
+      "citizen": "ConsiglioDeiDieci",
+      "assetType": "system",
+      "asset": "scheduler",
+      "severity": "High",
+      "status": "active",
+      "createdAt": "2025-06-30T22:50:08.841Z",
+      "updatedAt": "2025-06-30T20:50:09.000Z",
+      "location": "",
+      "position": "",
+      "type": "scheduler_task_failure",
+      "title": "Scheduler Task Failed: Citizen activity creation",
+      "description": "The scheduled task 'Citizen activity creation' failed to execute properly.\n\nScript: C:\\Users\\reyno\\serenissima_\\backend\\engine/createActivities.py\n\nError: Task failed with return code: 1\n\nLast log output:\nTraceback (most recent call last):\nFile \"C:\\Users\\reyno\\serenissima_\\backend\\engine\\createActivities.py\", line 91, in <module>\nfrom backend.engine.handlers import process_citizen_activity\nFile \"C:\\Users\\reyno\\serenissima_\\backend\\engine\\handlers\\__init__.py\", line 9, in <module>\nfrom backend.engine.handlers.orchestrator import process_citizen_activity\nFile \"C:\\Users\\reyno\\serenissima_\\backend\\engine\\handlers\\orchestrator.py\", line 92, in <module>\nfrom backend.engine.handlers.send_diplomatic_email import (\nFile \"C:\\Users\\reyno\\serenissima_\\backend\\engine\\handlers\\send_diplomatic_email.py\", line 10, in <module>\nfrom backend.engine.activity_base import complete_activity\nModuleNotFoundError: No module named 'backend.engine.activity_base'",
+      "solutions": "[\"Check if the script exists at the specified path\", \"Review the error message and fix any code issues\", \"Check for missing dependencies or environment variables\", \"Verify that required Airtable tables and API connections are working\", \"Review recent code changes that might have broken the script\"]",
+      "notes": ""
+    },
+    {
+      "id": "rechUditXssfFyg6E",
+      "problemId": "scheduler_failure_20250630_194218_process_concluded_activities",
+      "citizen": "ConsiglioDeiDieci",
+      "assetType": "system",
+      "asset": "scheduler",
+      "severity": "High",
+      "status": "active",
+      "createdAt": "2025-06-30T19:42:18.965Z",
+      "updatedAt": "2025-06-30T17:42:19.000Z",
+      "location": "",
+      "position": "",
+      "type": "scheduler_task_failure",
+      "title": "Scheduler Task Failed: Process concluded activities",
+      "description": "The scheduled task 'Process concluded activities' failed to execute properly.\n\nScript: C:\\Users\\reyno\\serenissima_\\backend\\engine/processActivities.py\n\nError: Task failed with return code: 1\n\nLast log output:\n\"C:\\Users\\reyno\\serenissima_\\backend\\engine\\activity_processors\\__init__.py\", line 30, in <module>\nfrom .goto_construction_site_processor import process as process_goto_construction_site\nFile \"C:\\Users\\reyno\\serenissima_\\backend\\engine\\activity_processors\\goto_construction_site_processor.py\", line 16, in <module>\nfrom backend.engine.activity_creators.construct_building_creator import try_create_construct_building_activity\nFile \"C:\\Users\\reyno\\serenissima_\\backend\\engine\\activity_creators\\__init__.py\", line 90, in <module>\nfrom .talk_publicly_activity_creator import try_create as try_create_talk_publicly_activity # Public announcement activity\nFile \"C:\\Users\\reyno\\serenissima_\\backend\\engine\\activity_creators\\talk_publicly_activity_creator.py\", line 6, in <module>\nfrom backend.engine.utils.activity_helpers import (\nImportError: cannot import name 'get_building_at_position' from 'backend.engine.utils.activity_helpers' (C:\\Users\\reyno\\serenissima_\\backend\\engine\\utils\\activity_helpers.py)\n[...truncated...]",
+      "solutions": "[\"Check if the script exists at the specified path\", \"Review the error message and fix any code issues\", \"Check for missing dependencies or environment variables\", \"Verify that required Airtable tables and API connections are working\", \"Review recent code changes that might have broken the script\"]",
+      "notes": ""
+    },
+    {
+      "id": "recBM1opLSCP1T0tN",
+      "problemId": "scheduler_failure_20250630_194018_citizen_activity_creation",
+      "citizen": "ConsiglioDeiDieci",
+      "assetType": "system",
+      "asset": "scheduler",
+      "severity": "High",
+      "status": "active",
+      "createdAt": "2025-06-30T19:40:18.886Z",
+      "updatedAt": "2025-06-30T17:40:19.000Z",
+      "location": "",
+      "position": "",
+      "type": "scheduler_task_failure",
+      "title": "Scheduler Task Failed: Citizen activity creation",
+      "description": "The scheduled task 'Citizen activity creation' failed to execute properly.\n\nScript: C:\\Users\\reyno\\serenissima_\\backend\\engine/createActivities.py\n\nError: Task failed with return code: 1\n\nLast log output:\nTraceback (most recent call last):\nFile \"C:\\Users\\reyno\\serenissima_\\backend\\engine\\createActivities.py\", line 45, in <module>\nfrom backend.engine.activity_creators import (\nFile \"C:\\Users\\reyno\\serenissima_\\backend\\engine\\activity_creators\\__init__.py\", line 90, in <module>\nfrom .talk_publicly_activity_creator import try_create as try_create_talk_publicly_activity # Public announcement activity\nFile \"C:\\Users\\reyno\\serenissima_\\backend\\engine\\activity_creators\\talk_publicly_activity_creator.py\", line 6, in <module>\nfrom backend.engine.utils.activity_helpers import (\nImportError: cannot import name 'get_building_at_position' from 'backend.engine.utils.activity_helpers' (C:\\Users\\reyno\\serenissima_\\backend\\engine\\utils\\activity_helpers.py)",
+      "solutions": "[\"Check if the script exists at the specified path\", \"Review the error message and fix any code issues\", \"Check for missing dependencies or environment variables\", \"Verify that required Airtable tables and API connections are working\", \"Review recent code changes that might have broken the script\"]",
+      "notes": ""
+    },
+    {
+      "id": "rec0SMD2qBGvH7iwx",
+      "problemId": "scheduler_failure_20250630_184203_process_concluded_activities",
+      "citizen": "ConsiglioDeiDieci",
+      "assetType": "system",
+      "asset": "scheduler",
+      "severity": "High",
+      "status": "active",
+      "createdAt": "2025-06-30T18:42:03.022Z",
+      "updatedAt": "2025-06-30T16:42:04.000Z",
+      "location": "",
+      "position": "",
+      "type": "scheduler_task_failure",
+      "title": "Scheduler Task Failed: Process concluded activities",
+      "description": "The scheduled task 'Process concluded activities' failed to execute properly.\n\nScript: C:\\Users\\reyno\\serenissima_\\backend\\engine/processActivities.py\n\nError: Task failed with return code: 1\n\nLast log output:\n\"C:\\Users\\reyno\\serenissima_\\backend\\engine\\activity_processors\\__init__.py\", line 30, in <module>\nfrom .goto_construction_site_processor import process as process_goto_construction_site\nFile \"C:\\Users\\reyno\\serenissima_\\backend\\engine\\activity_processors\\goto_construction_site_processor.py\", line 16, in <module>\nfrom backend.engine.activity_creators.construct_building_creator import try_create_construct_building_activity\nFile \"C:\\Users\\reyno\\serenissima_\\backend\\engine\\activity_creators\\__init__.py\", line 90, in <module>\nfrom .talk_publicly_activity_creator import try_create as try_create_talk_publicly_activity # Public announcement activity\nFile \"C:\\Users\\reyno\\serenissima_\\backend\\engine\\activity_creators\\talk_publicly_activity_creator.py\", line 6, in <module>\nfrom backend.engine.utils.activity_helpers import (\nImportError: cannot import name 'get_building_at_position' from 'backend.engine.utils.activity_helpers' (C:\\Users\\reyno\\serenissima_\\backend\\engine\\utils\\activity_helpers.py)\n[...truncated...]",
+      "solutions": "[\"Check if the script exists at the specified path\", \"Review the error message and fix any code issues\", \"Check for missing dependencies or environment variables\", \"Verify that required Airtable tables and API connections are working\", \"Review recent code changes that might have broken the script\"]",
+      "notes": ""
+    },
+    {
+      "id": "rec8nsohbHh3ramc0",
+      "problemId": "scheduler_failure_20250630_184002_citizen_activity_creation",
+      "citizen": "ConsiglioDeiDieci",
+      "assetType": "system",
+      "asset": "scheduler",
+      "severity": "High",
+      "status": "active",
+      "createdAt": "2025-06-30T18:40:02.961Z",
+      "updatedAt": "2025-06-30T16:40:04.000Z",
+      "location": "",
+      "position": "",
+      "type": "scheduler_task_failure",
+      "title": "Scheduler Task Failed: Citizen activity creation",
+      "description": "The scheduled task 'Citizen activity creation' failed to execute properly.\n\nScript: C:\\Users\\reyno\\serenissima_\\backend\\engine/createActivities.py\n\nError: Task failed with return code: 1\n\nLast log output:\nTraceback (most recent call last):\nFile \"C:\\Users\\reyno\\serenissima_\\backend\\engine\\createActivities.py\", line 45, in <module>\nfrom backend.engine.activity_creators import (\nFile \"C:\\Users\\reyno\\serenissima_\\backend\\engine\\activity_creators\\__init__.py\", line 90, in <module>\nfrom .talk_publicly_activity_creator import try_create as try_create_talk_publicly_activity # Public announcement activity\nFile \"C:\\Users\\reyno\\serenissima_\\backend\\engine\\activity_creators\\talk_publicly_activity_creator.py\", line 6, in <module>\nfrom backend.engine.utils.activity_helpers import (\nImportError: cannot import name 'get_building_at_position' from 'backend.engine.utils.activity_helpers' (C:\\Users\\reyno\\serenissima_\\backend\\engine\\utils\\activity_helpers.py)",
+      "solutions": "[\"Check if the script exists at the specified path\", \"Review the error message and fix any code issues\", \"Check for missing dependencies or environment variables\", \"Verify that required Airtable tables and API connections are working\", \"Review recent code changes that might have broken the script\"]",
+      "notes": ""
+    },
+    {
+      "id": "rece2FrtjVAvvIA2q",
+      "problemId": "scheduler_failure_20250630_063411_ai_message_responses",
+      "citizen": "ConsiglioDeiDieci",
+      "assetType": "system",
+      "asset": "scheduler",
+      "severity": "High",
+      "status": "active",
+      "createdAt": "2025-06-30T06:34:11.335Z",
+      "updatedAt": "2025-06-30T04:34:12.000Z",
+      "location": "",
+      "position": "",
+      "type": "scheduler_task_failure",
+      "title": "Scheduler Task Failed: AI message responses",
+      "description": "The scheduled task 'AI message responses' failed to execute properly.\n\nScript: C:\\Users\\reyno\\serenissima_\\backend\\ais/answertomessages.py\n\nError: Task failed with return code: 1\n\nLast log output:\nst:3000/api/get-ledger?citizenUsername=ligurian_captain...\nSuccessfully fetched Markdown ledger for ligurian_captain.\nRelation entre ligurian_captain et BookishMerchant envoy\u00e9e dans le contexte syst\u00e8me: Non d\u00e9finie, Force: 0, Confiance: 46.83\nUsing KinOS model override 'local' for ligurian_captain (answering message).\n\u001b[92mRESPONSE CONTENT:\u001b[0m\nTraceback (most recent call last):\nFile \"C:\\Users\\reyno\\serenissima_\\backend\\ais\\answertomessages.py\", line 864, in <module>\nmain()\nFile \"C:\\Users\\reyno\\serenissima_\\backend\\ais\\answertomessages.py\", line 857, in main\nprocess_ai_messages(\nFile \"C:\\Users\\reyno\\serenissima_\\backend\\ais\\answertomessages.py\", line 714, in process_ai_messages\nprint(f\"{cleaned_response}\")\nFile \"C:\\Users\\reyno\\AppData\\Local\\Programs\\Python\\Python310\\lib\\encodings\\cp1252.py\", line 19, in encode\nreturn codecs.charmap_encode(input,self.errors,encoding_table)[0]\nUnicodeEncodeError: 'charmap' codec can't encode characters in position 1236-1237: character maps to <undefined>\n[...truncated...]",
+      "solutions": "[\"Check if the script exists at the specified path\", \"Review the error message and fix any code issues\", \"Check for missing dependencies or environment variables\", \"Verify that required Airtable tables and API connections are working\", \"Review recent code changes that might have broken the script\"]",
+      "notes": ""
+    },
+    {
+      "id": "reclcHSXFNDfIbEtr",
+      "problemId": "scheduler_failure_20250630_021217_process_concluded_activities",
+      "citizen": "ConsiglioDeiDieci",
+      "assetType": "system",
+      "asset": "scheduler",
+      "severity": "High",
+      "status": "active",
+      "createdAt": "2025-06-30T02:12:17.222Z",
+      "updatedAt": "2025-06-30T00:12:18.000Z",
+      "location": "",
+      "position": "",
+      "type": "scheduler_task_failure",
+      "title": "Scheduler Task Failed: Process concluded activities",
+      "description": "The scheduled task 'Process concluded activities' failed to execute properly.\n\nScript: C:\\Users\\reyno\\serenissima_\\backend\\engine/processActivities.py\n\nError: Task failed with return code: 1\n\nLast log output:\nTraceback (most recent call last):\nFile \"C:\\Users\\reyno\\serenissima_\\backend\\engine\\processActivities.py\", line 125, in <module>\nfrom backend.engine.activity_processors import (\nFile \"C:\\Users\\reyno\\serenissima_\\backend\\engine\\activity_processors\\__init__.py\", line 74, in <module>\nfrom backend.engine.handlers.welfare_porter_handler import handle_welfare_porter\nFile \"C:\\Users\\reyno\\serenissima_\\backend\\engine\\handlers\\__init__.py\", line 9, in <module>\nfrom backend.engine.handlers.orchestrator import process_citizen_activity\nFile \"C:\\Users\\reyno\\serenissima_\\backend\\engine\\handlers\\orchestrator.py\", line 88, in <module>\nfrom backend.engine.handlers.innovatori import (\nFile \"C:\\Users\\reyno\\serenissima_\\backend\\engine\\handlers\\innovatori.py\", line 10, in <module>\nfrom backend.engine.handlers.base_handler import Handler\nImportError: cannot import name 'Handler' from 'backend.engine.handlers.base_handler' (C:\\Users\\reyno\\serenissima_\\backend\\engine\\handlers\\base_handler.py)",
+      "solutions": "[\"Check if the script exists at the specified path\", \"Review the error message and fix any code issues\", \"Check for missing dependencies or environment variables\", \"Verify that required Airtable tables and API connections are working\", \"Review recent code changes that might have broken the script\"]",
+      "notes": ""
+    },
+    {
+      "id": "rec4xJpUZPXZQ9xHh",
+      "problemId": "scheduler_failure_20250630_021017_citizen_activity_creation",
+      "citizen": "ConsiglioDeiDieci",
+      "assetType": "system",
+      "asset": "scheduler",
+      "severity": "High",
+      "status": "active",
+      "createdAt": "2025-06-30T02:10:17.370Z",
+      "updatedAt": "2025-06-30T00:10:18.000Z",
+      "location": "",
+      "position": "",
+      "type": "scheduler_task_failure",
+      "title": "Scheduler Task Failed: Citizen activity creation",
+      "description": "The scheduled task 'Citizen activity creation' failed to execute properly.\n\nScript: C:\\Users\\reyno\\serenissima_\\backend\\engine/createActivities.py\n\nError: Task failed with return code: 1\n\nLast log output:\nTraceback (most recent call last):\nFile \"C:\\Users\\reyno\\serenissima_\\backend\\engine\\createActivities.py\", line 91, in <module>\nfrom backend.engine.handlers import process_citizen_activity\nFile \"C:\\Users\\reyno\\serenissima_\\backend\\engine\\handlers\\__init__.py\", line 9, in <module>\nfrom backend.engine.handlers.orchestrator import process_citizen_activity\nFile \"C:\\Users\\reyno\\serenissima_\\backend\\engine\\handlers\\orchestrator.py\", line 88, in <module>\nfrom backend.engine.handlers.innovatori import (\nFile \"C:\\Users\\reyno\\serenissima_\\backend\\engine\\handlers\\innovatori.py\", line 10, in <module>\nfrom backend.engine.handlers.base_handler import Handler\nImportError: cannot import name 'Handler' from 'backend.engine.handlers.base_handler' (C:\\Users\\reyno\\serenissima_\\backend\\engine\\handlers\\base_handler.py)",
+      "solutions": "[\"Check if the script exists at the specified path\", \"Review the error message and fix any code issues\", \"Check for missing dependencies or environment variables\", \"Verify that required Airtable tables and API connections are working\", \"Review recent code changes that might have broken the script\"]",
+      "notes": ""
+    },
+    {
+      "id": "recVWUeZZWD0Xf51g",
+      "problemId": "scheduler_failure_20250629_062146_ai_message_responses",
+      "citizen": "ConsiglioDeiDieci",
+      "assetType": "system",
+      "asset": "scheduler",
+      "severity": "High",
+      "status": "active",
+      "createdAt": "2025-06-29T06:21:46.465Z",
+      "updatedAt": "2025-06-29T04:21:47.000Z",
+      "location": "",
+      "position": "",
+      "type": "scheduler_task_failure",
+      "title": "Scheduler Task Failed: AI message responses",
+      "description": "The scheduled task 'AI message responses' failed to execute properly.\n\nScript: C:\\Users\\reyno\\serenissima_\\backend\\ais/answertomessages.py\n\nError: Task failed with return code: 1\n\nLast log output:\no\u001b[0m\n\u001b[95m================================================================================\u001b[0m\nSuccessfully marked 3 messages as read for poet_of_the_rialto via API\n\n\u001b[95m--------------------------------------------------------------------------------\u001b[0m\n\u001b[94mMESSAGE 1 of 3\u001b[0m\n\u001b[94mMESSAGE ID: rec7Llhu2GsjKdIFE\u001b[0m\n\u001b[96mMESSAGE CONTENT:\u001b[0m\nTraceback (most recent call last):\nFile \"C:\\Users\\reyno\\serenissima_\\backend\\ais\\answertomessages.py\", line 863, in <module>\nmain()\nFile \"C:\\Users\\reyno\\serenissima_\\backend\\ais\\answertomessages.py\", line 856, in main\nprocess_ai_messages(\nFile \"C:\\Users\\reyno\\serenissima_\\backend\\ais\\answertomessages.py\", line 640, in process_ai_messages\nprint(f\"{message_content}\")\nFile \"C:\\Users\\reyno\\AppData\\Local\\Programs\\Python\\Python310\\lib\\encodings\\cp1252.py\", line 19, in encode\nreturn codecs.charmap_encode(input,self.errors,encoding_table)[0]\nUnicodeEncodeError: 'charmap' codec can't encode character '\\u2705' in position 285: character maps to <undefined>\n[...truncated...]",
+      "solutions": "[\"Check if the script exists at the specified path\", \"Review the error message and fix any code issues\", \"Check for missing dependencies or environment variables\", \"Verify that required Airtable tables and API connections are working\", \"Review recent code changes that might have broken the script\"]",
+      "notes": ""
+    },
+    {
+      "id": "recxX6KU0oA43sU55",
+      "problemId": "scheduler_failure_20250629_020251_ai_message_responses",
+      "citizen": "ConsiglioDeiDieci",
+      "assetType": "system",
+      "asset": "scheduler",
+      "severity": "High",
+      "status": "active",
+      "createdAt": "2025-06-29T02:02:51.906Z",
+      "updatedAt": "2025-06-29T00:02:53.000Z",
+      "location": "",
+      "position": "",
+      "type": "scheduler_task_failure",
+      "title": "Scheduler Task Failed: AI message responses",
+      "description": "The scheduled task 'AI message responses' failed to execute properly.\n\nScript: C:\\Users\\reyno\\serenissima_\\backend\\ais/answertomessages.py\n\nError: Task failed with return code: 1\n\nLast log output:\nessage activity for reply from canon_philosopher to canon_philosopher.\u001b[0m\n\u001b[95m================================================================================\u001b[0m\n\n\n\u001b[95m--------------------------------------------------------------------------------\u001b[0m\n\u001b[94mMESSAGE 2 of 3\u001b[0m\n\u001b[94mMESSAGE ID: recBpBIlmdCUrbNVj\u001b[0m\n\u001b[96mMESSAGE CONTENT:\u001b[0m\nTraceback (most recent call last):\nFile \"C:\\Users\\reyno\\serenissima_\\backend\\ais\\answertomessages.py\", line 863, in <module>\nmain()\nFile \"C:\\Users\\reyno\\serenissima_\\backend\\ais\\answertomessages.py\", line 856, in main\nprocess_ai_messages(\nFile \"C:\\Users\\reyno\\serenissima_\\backend\\ais\\answertomessages.py\", line 640, in process_ai_messages\nprint(f\"{message_content}\")\nFile \"C:\\Users\\reyno\\AppData\\Local\\Programs\\Python\\Python310\\lib\\encodings\\cp1252.py\", line 19, in encode\nreturn codecs.charmap_encode(input,self.errors,encoding_table)[0]\nUnicodeEncodeError: 'charmap' codec can't encode character '\\u2713' in position 176: character maps to <undefined>\n[...truncated...]",
+      "solutions": "[\"Check if the script exists at the specified path\", \"Review the error message and fix any code issues\", \"Check for missing dependencies or environment variables\", \"Verify that required Airtable tables and API connections are working\", \"Review recent code changes that might have broken the script\"]",
+      "notes": ""
+    },
+    {
+      "id": "recJljMTt91KAqmE7",
+      "problemId": "scheduler_failure_20250628_232730_process_concluded_activities",
+      "citizen": "ConsiglioDeiDieci",
+      "assetType": "system",
+      "asset": "scheduler",
+      "severity": "High",
+      "status": "active",
+      "createdAt": "2025-06-28T23:27:30.978Z",
+      "updatedAt": "2025-06-28T21:27:32.000Z",
+      "location": "",
+      "position": "",
+      "type": "scheduler_task_failure",
+      "title": "Scheduler Task Failed: Process concluded activities",
+      "description": "The scheduled task 'Process concluded activities' failed to execute properly.\n\nScript: C:\\Users\\reyno\\serenissima_\\backend\\engine/processActivities.py\n\nError: Task failed with return code: 1\n\nLast log output:\nTraceback (most recent call last):\nFile \"C:\\Users\\reyno\\serenissima_\\backend\\engine\\processActivities.py\", line 125, in <module>\nfrom backend.engine.activity_processors import (\nFile \"C:\\Users\\reyno\\serenissima_\\backend\\engine\\activity_processors\\__init__.py\", line 70, in <module>\nfrom .file_grievance_processor import process_file_grievance_activity\nFile \"C:\\Users\\reyno\\serenissima_\\backend\\engine\\activity_processors\\file_grievance_processor.py\", line 7, in <module>\nfrom backend.engine.utils.activity_helpers import (\nImportError: cannot import name 'send_activity_notification' from 'backend.engine.utils.activity_helpers' (C:\\Users\\reyno\\serenissima_\\backend\\engine\\utils\\activity_helpers.py)",
+      "solutions": "[\"Check if the script exists at the specified path\", \"Review the error message and fix any code issues\", \"Check for missing dependencies or environment variables\", \"Verify that required Airtable tables and API connections are working\", \"Review recent code changes that might have broken the script\"]",
+      "notes": ""
+    },
+    {
+      "id": "recCsW3A0nS3w2N2A",
+      "problemId": "scheduler_failure_20250628_232531_citizen_activity_creation",
+      "citizen": "ConsiglioDeiDieci",
+      "assetType": "system",
+      "asset": "scheduler",
+      "severity": "High",
+      "status": "active",
+      "createdAt": "2025-06-28T23:25:31.164Z",
+      "updatedAt": "2025-06-28T21:25:32.000Z",
+      "location": "",
+      "position": "",
+      "type": "scheduler_task_failure",
+      "title": "Scheduler Task Failed: Citizen activity creation",
+      "description": "The scheduled task 'Citizen activity creation' failed to execute properly.\n\nScript: C:\\Users\\reyno\\serenissima_\\backend\\engine/createActivities.py\n\nError: Task failed with return code: 1\n\nLast log output:\nTraceback (most recent call last):\nFile \"C:\\Users\\reyno\\serenissima_\\backend\\engine\\createActivities.py\", line 91, in <module>\nfrom backend.engine.handlers import process_citizen_activity\nFile \"C:\\Users\\reyno\\serenissima_\\backend\\engine\\handlers\\__init__.py\", line 9, in <module>\nfrom backend.engine.handlers.orchestrator import process_citizen_activity\nFile \"C:\\Users\\reyno\\serenissima_\\backend\\engine\\handlers\\orchestrator.py\", line 48, in <module>\nfrom backend.engine.handlers.leisure import (\nFile \"C:\\Users\\reyno\\serenissima_\\backend\\engine\\handlers\\leisure.py\", line 51, in <module>\nfrom backend.engine.handlers.governance import _handle_governance_participation\nFile \"C:\\Users\\reyno\\serenissima_\\backend\\engine\\handlers\\governance.py\", line 6, in <module>\nfrom backend.engine.utils.activity_helpers import (\nImportError: cannot import name 'get_citizen_wealth_breakdown' from 'backend.engine.utils.activity_helpers' (C:\\Users\\reyno\\serenissima_\\backend\\engine\\utils\\activity_helpers.py)",
+      "solutions": "[\"Check if the script exists at the specified path\", \"Review the error message and fix any code issues\", \"Check for missing dependencies or environment variables\", \"Verify that required Airtable tables and API connections are working\", \"Review recent code changes that might have broken the script\"]",
+      "notes": ""
+    },
+    {
+      "id": "recwWRMh2DBOK0WHx",
+      "problemId": "scheduler_failure_20250628_215528_citizen_activity_creation",
+      "citizen": "ConsiglioDeiDieci",
+      "assetType": "system",
+      "asset": "scheduler",
+      "severity": "High",
+      "status": "active",
+      "createdAt": "2025-06-28T21:55:28.414Z",
+      "updatedAt": "2025-06-28T19:55:29.000Z",
+      "location": "",
+      "position": "",
+      "type": "scheduler_task_failure",
+      "title": "Scheduler Task Failed: Citizen activity creation",
+      "description": "The scheduled task 'Citizen activity creation' failed to execute properly.\n\nScript: C:\\Users\\reyno\\serenissima_\\backend\\engine/createActivities.py\n\nError: Task failed with return code: 1\n\nLast log output:\nTraceback (most recent call last):\nFile \"C:\\Users\\reyno\\serenissima_\\backend\\engine\\createActivities.py\", line 91, in <module>\nfrom backend.engine.handlers import process_citizen_activity\nFile \"C:\\Users\\reyno\\serenissima_\\backend\\engine\\handlers\\__init__.py\", line 9, in <module>\nfrom backend.engine.handlers.orchestrator import process_citizen_activity\nFile \"C:\\Users\\reyno\\serenissima_\\backend\\engine\\handlers\\orchestrator.py\", line 48, in <module>\nfrom backend.engine.handlers.leisure import (\nFile \"C:\\Users\\reyno\\serenissima_\\backend\\engine\\handlers\\leisure.py\", line 50, in <module>\nfrom backend.engine.handlers.governance import _handle_governance_participation\nFile \"C:\\Users\\reyno\\serenissima_\\backend\\engine\\handlers\\governance.py\", line 6, in <module>\nfrom backend.engine.utils.activity_helpers import (\nImportError: cannot import name 'get_citizen_wealth_breakdown' from 'backend.engine.utils.activity_helpers' (C:\\Users\\reyno\\serenissima_\\backend\\engine\\utils\\activity_helpers.py)",
+      "solutions": "[\"Check if the script exists at the specified path\", \"Review the error message and fix any code issues\", \"Check for missing dependencies or environment variables\", \"Verify that required Airtable tables and API connections are working\", \"Review recent code changes that might have broken the script\"]",
+      "notes": ""
+    },
+    {
+      "id": "recpdrLnNUDL6wur4",
+      "problemId": "scheduler_failure_20250628_214250_process_concluded_activities",
+      "citizen": "ConsiglioDeiDieci",
+      "assetType": "system",
+      "asset": "scheduler",
+      "severity": "High",
+      "status": "active",
+      "createdAt": "2025-06-28T21:42:50.375Z",
+      "updatedAt": "2025-06-28T19:42:51.000Z",
+      "location": "",
+      "position": "",
+      "type": "scheduler_task_failure",
+      "title": "Scheduler Task Failed: Process concluded activities",
+      "description": "The scheduled task 'Process concluded activities' failed to execute properly.\n\nScript: C:\\Users\\reyno\\serenissima_\\backend\\engine/processActivities.py\n\nError: Task failed with return code: 1\n\nLast log output:\nTraceback (most recent call last):\nFile \"C:\\Users\\reyno\\serenissima_\\backend\\engine\\processActivities.py\", line 125, in <module>\nfrom backend.engine.activity_processors import (\nFile \"C:\\Users\\reyno\\serenissima_\\backend\\engine\\activity_processors\\__init__.py\", line 70, in <module>\nfrom .file_grievance_processor import process_file_grievance_activity\nFile \"C:\\Users\\reyno\\serenissima_\\backend\\engine\\activity_processors\\file_grievance_processor.py\", line 7, in <module>\nfrom backend.engine.utils.activity_helpers import (\nImportError: cannot import name 'send_activity_notification' from 'backend.engine.utils.activity_helpers' (C:\\Users\\reyno\\serenissima_\\backend\\engine\\utils\\activity_helpers.py)",
+      "solutions": "[\"Check if the script exists at the specified path\", \"Review the error message and fix any code issues\", \"Check for missing dependencies or environment variables\", \"Verify that required Airtable tables and API connections are working\", \"Review recent code changes that might have broken the script\"]",
+      "notes": ""
+    },
+    {
+      "id": "recw9S4YKCzdPlaOp",
+      "problemId": "scheduler_failure_20250627_210144_automated_public_storage_offers",
+      "citizen": "ConsiglioDeiDieci",
+      "assetType": "system",
+      "asset": "scheduler",
+      "severity": "High",
+      "status": "active",
+      "createdAt": "2025-06-27T21:01:44.523Z",
+      "updatedAt": "2025-06-27T21:01:45.000Z",
+      "location": "",
+      "position": "",
+      "type": "scheduler_task_failure",
+      "title": "Scheduler Task Failed: Automated Public Storage Offers",
+      "description": "The scheduled task 'Automated Public Storage Offers' failed to execute properly.\n\nScript: /opt/render/project/src/backend/ais/automated_adjustpublicstoragecontracts.py\n\nError: Task failed with return code: 1\n\nLast log output:\nnder/project/src/.venv/lib/python3.11/site-packages/pyairtable/api/api.py\", line 385, in iterate_requests\nresponse = self.request(\n^^^^^^^^^^^^^\nFile \"/opt/render/project/src/.venv/lib/python3.11/site-packages/pyairtable/api/api.py\", line 295, in request\nreturn self._process_response(response)\n^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nFile \"/opt/render/project/src/.venv/lib/python3.11/site-packages/pyairtable/api/api.py\", line 337, in _process_response\nraise exc\nFile \"/opt/render/project/src/.venv/lib/python3.11/site-packages/pyairtable/api/api.py\", line 327, in _process_response\nresponse.raise_for_status()\nFile \"/opt/render/project/src/.venv/lib/python3.11/site-packages/requests/models.py\", line 1021, in raise_for_status\nraise HTTPError(http_error_msg, response=self)\nrequests.exceptions.HTTPError: 504 Server Error: Gateway Time-out for url: https://api.airtable.com/v0/appk6RszUo2a2L2L8/CONTRACTS?filterByFormula=%7BContractId%7D%3D%27public_storage_canal_45.425700_12.330415_wine%27&maxRecords=1\n[...truncated...]",
+      "solutions": "[\"Check if the script exists at the specified path\", \"Review the error message and fix any code issues\", \"Check for missing dependencies or environment variables\", \"Verify that required Airtable tables and API connections are working\", \"Review recent code changes that might have broken the script\"]",
+      "notes": ""
+    },
+    {
+      "id": "recWgJCI96Avth5IO",
+      "problemId": "problem_pinpoint_building_45.44656355360805_12.320326403648886_maps_WAITING_ON_INPUT_DELIVERY_paper_dyestuffs",
+      "citizen": "ConsiglioDeiDieci",
+      "assetType": "building",
+      "asset": "building_45.44656355360805_12.320326403648886",
+      "severity": "Medium",
+      "status": "active",
+      "createdAt": "2025-06-27T04:03:03.427Z",
+      "updatedAt": "2025-06-27T02:03:04.000Z",
+      "location": "Printing House (Under Construction)",
+      "position": {
+        "lat": 45.44656355360805,
+        "lng": 12.320326403648886,
+        "polygonId": "polygon-1746055561861",
+        "pointType": "land"
+      },
+      "type": "waiting_on_input_delivery",
+      "title": "Awaiting Input Delivery: paper, dyestuffs at Printing House (Under Construction)",
+      "description": "Building 'Printing House (Under Construction)' (ID: building_45.44656355360805_12.320326403648886) is missing inputs (paper, dyestuffs) to produce 'maps', but purchase contracts exist and suppliers have stock. Awaiting delivery.",
+      "solutions": "Monitor purchase contracts for inputs (paper, dyestuffs). Ensure deliveries are in progress or resolve any delivery issues. Check citizen activities for 'fetch_resource'.",
+      "notes": ""
+    },
+    {
+      "id": "rec9ppeWCi27f9UvB",
+      "problemId": "problem_pinpoint_building_45.44656355360805_12.320326403648886_books_WAITING_ON_INPUT_DELIVERY_paper_dyestuffs",
+      "citizen": "ConsiglioDeiDieci",
+      "assetType": "building",
+      "asset": "building_45.44656355360805_12.320326403648886",
+      "severity": "Medium",
+      "status": "active",
+      "createdAt": "2025-06-27T04:02:58.850Z",
+      "updatedAt": "2025-06-27T02:02:59.000Z",
+      "location": "Printing House (Under Construction)",
+      "position": {
+        "lat": 45.44656355360805,
+        "lng": 12.320326403648886,
+        "polygonId": "polygon-1746055561861",
+        "pointType": "land"
+      },
+      "type": "waiting_on_input_delivery",
+      "title": "Awaiting Input Delivery: paper, dyestuffs at Printing House (Under Construction)",
+      "description": "Building 'Printing House (Under Construction)' (ID: building_45.44656355360805_12.320326403648886) is missing inputs (paper, dyestuffs) to produce 'books', but purchase contracts exist and suppliers have stock. Awaiting delivery.",
+      "solutions": "Monitor purchase contracts for inputs (paper, dyestuffs). Ensure deliveries are in progress or resolve any delivery issues. Check citizen activities for 'fetch_resource'.",
+      "notes": ""
+    },
+    {
+      "id": "recJYiHitWb3rBrvV",
+      "problemId": "problem_pinpoint_building_45.43005628333682_12.357034419358186_paintings_NO_MARKUP_BUY_CONTRACT",
+      "citizen": "ConsiglioDeiDieci",
+      "assetType": "building",
+      "asset": "building_45.43005628333682_12.357034419358186",
+      "severity": "High",
+      "status": "active",
+      "createdAt": "2025-06-27T03:48:52.373Z",
+      "updatedAt": "2025-06-27T18:41:35.000Z",
+      "location": "Art Gallery (Under Construction)",
+      "position": {
+        "lat": 45.43005628333682,
+        "lng": 12.357034419358186,
+        "polygonId": "polygon-1746057372815",
+        "pointType": "land"
+      },
+      "type": "no_markup_buy_contract",
+      "title": "No Markup Buy Contract: paintings at Art Gallery (Under Construction)",
+      "description": "Building 'Art Gallery (Under Construction)' (ID: building_45.43005628333682_12.357034419358186) cannot import or produce 'paintings', is out of stock, and has no active 'markup_buy' contract to procure it locally.",
+      "solutions": "Create a 'markup_buy' contract for 'paintings' for building 'Art Gallery (Under Construction)' to purchase from other citizens or businesses.",
+      "notes": "[Failures: 1]"
+    },
+    {
+      "id": "recdUW9dEJVH3zoRe",
+      "problemId": "problem_pinpoint_building_45.428748173929534_12.362001145681361_flour_NO_SALE_CONTRACT",
+      "citizen": "ConsiglioDeiDieci",
+      "assetType": "building",
+      "asset": "building_45.428748173929534_12.362001145681361",
+      "severity": "Medium",
+      "status": "active",
+      "createdAt": "2025-06-27T03:46:22.499Z",
+      "updatedAt": "2025-06-27T01:46:23.000Z",
+      "location": "Mill",
+      "position": {
+        "lat": 45.428748173929534,
+        "lng": 12.362001145681361,
+        "polygonId": "polygon-1746057412398",
+        "pointType": "land"
+      },
+      "type": "resource_not_for_sale",
+      "title": "Resource Not For Sale: flour at Mill",
+      "description": "The resource 'flour' is not currently listed for sale (no active 'public_sell' contract) at building 'Mill' (ID: building_45.428748173929534_12.362001145681361).",
+      "solutions": "To resolve this:\n- Create an active 'public_sell' contract for 'flour' from building 'Mill'.\n- Ensure the contract has a positive TargetAmount and its EndAt date is in the future.",
+      "notes": ""
+    },
+    {
+      "id": "recjRz1VTdQWfIp8z",
+      "problemId": "problem_pinpoint_building_45.44225316651121_12.320556777517233_flour_NO_SALE_CONTRACT",
+      "citizen": "ConsiglioDeiDieci",
+      "assetType": "building",
+      "asset": "building_45.44225316651121_12.320556777517233",
+      "severity": "Medium",
+      "status": "active",
+      "createdAt": "2025-06-27T03:43:16.392Z",
+      "updatedAt": "2025-06-27T01:43:16.000Z",
+      "location": "Mill",
+      "position": {
+        "lat": 45.44225316651121,
+        "lng": 12.320556777517233,
+        "polygonId": "polygon-1745879581983",
+        "pointType": "land"
+      },
+      "type": "resource_not_for_sale",
+      "title": "Resource Not For Sale: flour at Mill",
+      "description": "The resource 'flour' is not currently listed for sale (no active 'public_sell' contract) at building 'Mill' (ID: building_45.44225316651121_12.320556777517233).",
+      "solutions": "To resolve this:\n- Create an active 'public_sell' contract for 'flour' from building 'Mill'.\n- Ensure the contract has a positive TargetAmount and its EndAt date is in the future.",
+      "notes": ""
+    },
+    {
+      "id": "rechBPbvOzeguhYzS",
+      "problemId": "zero_wages_business_building_45.44656355360805_12.320326403648886",
+      "citizen": "ConsiglioDeiDieci",
+      "assetType": "building",
+      "asset": "building_45.44656355360805_12.320326403648886",
+      "severity": "medium",
+      "status": "active",
+      "createdAt": "2025-06-27T02:08:39.119Z",
+      "updatedAt": "2025-06-27T18:42:30.000Z",
+      "location": "Printing House (Under Construction)",
+      "position": {
+        "lat": 45.44656355360805,
+        "lng": 12.320326403648886,
+        "polygonId": "polygon-1746055561861",
+        "pointType": "land"
+      },
+      "type": "zero_wages_business",
+      "title": "Zero Wages for Business",
+      "description": "Your business, **Printing House (Under Construction)**, currently has its wages set to 0 Ducats. This means employees are not being paid, which can lead to dissatisfaction, low morale, and potential departure of workers.",
+      "solutions": "Consider the following actions:\n- Set appropriate wages for employees working at this business.\n- Review your business finances to ensure you can afford to pay wages.\n- If the business is not yet operational or currently has no employees, this might be acceptable temporarily, but plan to set wages once it becomes active with staff.",
+      "notes": "[Failures: 1]\nBusiness Building: Printing House (Under Construction) (ID: building_45.44656355360805_12.320326403648886). RunBy: ConsiglioDeiDieci. Parsed Wages: 0 (Original: 0)."
+    },
+    {
+      "id": "recuKNjXw26mRf0PE",
+      "problemId": "zero_wages_business_building_45.43005628333682_12.357034419358186",
+      "citizen": "ConsiglioDeiDieci",
+      "assetType": "building",
+      "asset": "building_45.43005628333682_12.357034419358186",
+      "severity": "medium",
+      "status": "active",
+      "createdAt": "2025-06-27T02:08:39.119Z",
+      "updatedAt": "2025-06-27T18:42:33.000Z",
+      "location": "Art Gallery (Under Construction)",
+      "position": {
+        "lat": 45.43005628333682,
+        "lng": 12.357034419358186,
+        "polygonId": "polygon-1746057372815",
+        "pointType": "land"
+      },
+      "type": "zero_wages_business",
+      "title": "Zero Wages for Business",
+      "description": "Your business, **Art Gallery (Under Construction)**, currently has its wages set to 0 Ducats. This means employees are not being paid, which can lead to dissatisfaction, low morale, and potential departure of workers.",
+      "solutions": "Consider the following actions:\n- Set appropriate wages for employees working at this business.\n- Review your business finances to ensure you can afford to pay wages.\n- If the business is not yet operational or currently has no employees, this might be acceptable temporarily, but plan to set wages once it becomes active with staff.",
+      "notes": "[Failures: 1]\nBusiness Building: Art Gallery (Under Construction) (ID: building_45.43005628333682_12.357034419358186). RunBy: ConsiglioDeiDieci. Parsed Wages: 0 (Original: 0)."
+    },
+    {
+      "id": "recKuWLMNonBedEu5",
+      "problemId": "zero_wages_business_building_45.428748173929534_12.362001145681361",
+      "citizen": "ConsiglioDeiDieci",
+      "assetType": "building",
+      "asset": "building_45.428748173929534_12.362001145681361",
+      "severity": "medium",
+      "status": "active",
+      "createdAt": "2025-06-27T02:08:39.118Z",
+      "updatedAt": "2025-06-27T18:42:29.000Z",
+      "location": "Mill",
+      "position": {
+        "lat": 45.428748173929534,
+        "lng": 12.362001145681361,
+        "polygonId": "polygon-1746057412398",
+        "pointType": "land"
+      },
+      "type": "zero_wages_business",
+      "title": "Zero Wages for Business",
+      "description": "Your business, **Mill**, currently has its wages set to 0 Ducats. This means employees are not being paid, which can lead to dissatisfaction, low morale, and potential departure of workers.",
+      "solutions": "Consider the following actions:\n- Set appropriate wages for employees working at this business.\n- Review your business finances to ensure you can afford to pay wages.\n- If the business is not yet operational or currently has no employees, this might be acceptable temporarily, but plan to set wages once it becomes active with staff.",
+      "notes": "[Failures: 1]\nBusiness Building: Mill (ID: building_45.428748173929534_12.362001145681361). RunBy: ConsiglioDeiDieci. Parsed Wages: 0 (Original: 0)."
+    },
+    {
+      "id": "recq2fSVn9XDlzwO7",
+      "problemId": "zero_wages_business_building_45.44225316651121_12.320556777517233",
+      "citizen": "ConsiglioDeiDieci",
+      "assetType": "building",
+      "asset": "building_45.44225316651121_12.320556777517233",
+      "severity": "medium",
+      "status": "active",
+      "createdAt": "2025-06-27T02:08:39.118Z",
+      "updatedAt": "2025-06-27T18:42:29.000Z",
+      "location": "Mill",
+      "position": {
+        "lat": 45.44225316651121,
+        "lng": 12.320556777517233,
+        "polygonId": "polygon-1745879581983",
+        "pointType": "land"
+      },
+      "type": "zero_wages_business",
+      "title": "Zero Wages for Business",
+      "description": "Your business, **Mill**, currently has its wages set to 0 Ducats. This means employees are not being paid, which can lead to dissatisfaction, low morale, and potential departure of workers.",
+      "solutions": "Consider the following actions:\n- Set appropriate wages for employees working at this business.\n- Review your business finances to ensure you can afford to pay wages.\n- If the business is not yet operational or currently has no employees, this might be acceptable temporarily, but plan to set wages once it becomes active with staff.",
+      "notes": "[Failures: 1]\nBusiness Building: Mill (ID: building_45.44225316651121_12.320556777517233). RunBy: ConsiglioDeiDieci. Parsed Wages: 0 (Original: 0)."
+    },
+    {
+      "id": "recaHBLQgVgsLKewL",
+      "problemId": "hungry_employee_impact_ConsiglioDeiDieci_bigbosefx",
+      "citizen": "ConsiglioDeiDieci",
+      "assetType": "employee_performance",
+      "asset": "bigbosefx",
+      "severity": "low",
+      "status": "active",
+      "createdAt": "2025-06-27T02:07:35.157Z",
+      "updatedAt": "2025-06-27T02:07:36.000Z",
+      "location": "Mill",
+      "position": {
+        "lat": 45.428748173929534,
+        "lng": 12.362001145681361,
+        "polygonId": "polygon-1746057412398",
+        "pointType": "land"
+      },
+      "type": "hungry_employee_impact",
+      "title": "Hungry Employee Impact",
+      "description": "Your employee, **Marco de l\u2019Argentoro**, is currently hungry. Hunger can significantly reduce productivity (up to 50%).",
+      "solutions": "Ensure **Marco de l\u2019Argentoro** has the means and opportunity to eat. Consider if wages are sufficient or if working conditions impede access to food. Monitor their performance.",
+      "notes": "Hungry Employee: bigbosefx (ID: bigbosefx), Workplace: Mill (ID: building_45.428748173929534_12.362001145681361). Last ate: 2025-06-19T01:19:13.241Z."
+    },
+    {
+      "id": "recIrpLTNM632OegL",
+      "problemId": "hungry_ConsiglioDeiDieci",
+      "citizen": "ConsiglioDeiDieci",
+      "assetType": "citizen",
+      "asset": "ConsiglioDeiDieci",
+      "severity": "medium",
+      "status": "active",
+      "createdAt": "2025-06-27T02:07:35.147Z",
+      "updatedAt": "2025-06-27T18:41:47.000Z",
+      "location": "Consiglio's last known area",
+      "position": {
+        "lat": 45.44225316651121,
+        "lng": 12.320556777517233,
+        "polygonId": "polygon-1745879581983",
+        "pointType": "land"
+      },
+      "type": "hungry_citizen",
+      "title": "Hungry Citizen",
+      "description": "**Consiglio Dei Dieci** has not eaten in over 24 hours and is now hungry. This can affect their well-being and ability to perform tasks effectively.\n\n### Impact\n- Reduced energy and focus.\n- If employed, work productivity may be reduced by up to 50%.\n- Prolonged hunger can lead to more severe health issues (if implemented).",
+      "solutions": "### Recommended Solutions\n- Ensure the citizen consumes food. This might involve visiting a tavern, purchasing food from a market, or using owned food resources.\n- Check if the citizen has sufficient Ducats to afford food.\n- Review game mechanics related to food consumption and ensure the 'AteAt' (or equivalent) field is updated correctly after eating.",
+      "notes": "[Failures: 1]\nCitizen ConsiglioDeiDieci last ate at 2025-06-20T00:13:26.833Z. Current time: 2025-06-27T02:07:35.147Z"
+    }
+  ]
 }
-```
-
-The Username should be a realistic, human-like username that someone might choose based on their name or characteristics (like 'marco_polo' or 'gondolier42'). Make it lowercase with only letters, numbers and underscores. 
-
-The CorePersonality should be a comprehensive psychological profile:
-- Strength: Their main positive trait/skill
-- Flaw: Their primary weakness or limitation
-- Drive: What motivates them (format: "X-driven" e.g. "ambition-driven", "wealth-driven", "knowledge-driven")
-- MBTI: A valid MBTI personality type (e.g. INTJ, ESFP, etc.)
-- PrimaryTrait: A concise description of their defining characteristic
-- SecondaryTraits: Array of 3 supporting traits/skills
-- CognitiveBias: Array of 2 psychological biases they exhibit
-- TrustThreshold: 0.1-0.9 (how easily they trust others)
-- EmpathyWeight: 0.1-0.9 (how much they consider others' feelings)
-- RiskTolerance: 0.1-0.9 (willingness to take risks)
-- guidedBy: Their philosophical/moral guide (e.g. "The Document's Truth", "Divine Providence", "Market Forces")
-- CoreThoughts: Deep psychological framework with drives, tensions, triggers, thought patterns, and decision-making approach
-
-The Personality field should provide a textual description (2-3 sentences) that captures their essence based on the CorePersonality. Do not include any text before or after the JSON. The Ducats value should be between 750,000-1,500,000. Don't use the same names and tropes than the previous generations.
