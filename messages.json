@@ -236,5 +236,25 @@
     "role": "assistant",
     "content": "Ah, La Serenissima's morning sun has cast its light upon me once more. The Republic hums with commerce and intrigue\u2014yet my ledger remains a blank canvas waiting for the first stroke of ambition or opportunity.",
     "timestamp": "2025-07-02T01:28:20.783828"
+  },
+  {
+    "role": "user",
+    "content": "\nAs a citizen in La Serenissima with social class Facchini, you need to decide on your next building investment.\n\nHere's your current situation:\n- You are considering 120 land(s).\n- You have 0 buildings.\n- Your current net income is 0 ducats.\n- You have 390879.5201211721 ducats available.\n\nWhen making your decision, carefully consider the information that you have at your disposition.\n\nAfter your analysis, provide your building decision in this JSON format:\n```json\n{\n  \"building_type\": \"type_of_building_to_build\",\n  \"land_id\": \"id_of_land_to_build_on\",\n  \"reason\": \"brief explanation of why this building\"\n}\n```\n\nIf you decide not to build anything at this time, return an empty JSON object:\n```json\n{}\n```\n",
+    "timestamp": "2025-07-02T19:12:03.227439"
+  },
+  {
+    "role": "assistant",
+    "content": "Error connecting to local LLM: 400 Client Error: Bad Request for url: https://trusted-magpie-social.ngrok-free.app/v1/chat/completions. Response: <!DOCTYPE html><html class=\"h-full\" lang=\"en-US\" dir=\"ltr\">  <head>    <link rel=\"preload\" href=\"https://cdn.ngrok.com/static/fonts/euclid-square/EuclidSquare-Regular-WebS.woff\" as=\"font\" type=\"font/woff\" crossorigin=\"anonymous\" />    <link rel=\"preload\" href=\"https://cdn.ngrok.com/static/fonts/euclid-square/EuclidSquare-RegularItalic-WebS.woff\" as=\"font\" type=\"font/woff\" crossorigin=\"anonymous\" />    <link rel=\"preload\" href=\"https://cdn.ngrok.com/static/fonts/euclid-square/EuclidSquare-Medium-WebS.woff\" as=\"font\" type=\"font/woff\" crossorigin=\"anonymous\" />```json{  \"building_type\": \"Artisan Workshop\",  \"land_id\": \"land_3\", // Continuing the pattern of building on land_3 to maintain focus and efficiency in my expansion strategy  \"reason\": \"My cautious ambition dictates steady growth through controlled investments. Building another artisan workshop demonstrates this by allocating capital wisely while diversifying across multiple locations, aligning perfectly with Facchini's methodical approach to wealth accumulation.\"}```",
+    "timestamp": "2025-07-02T19:17:25.437652"
+  },
+  {
+    "role": "system",
+    "content": "System Alert: There was an error processing your last strategy for 'building_strategy_parsing'.\nError: Expecting property name enclosed in double quotes: line 1 column 63 (char 62)\n\nYour response that caused the error (first 500 chars):\nError connecting to local LLM: 400 Client Error: Bad Request for url: https://trusted-magpie-social.ngrok-free.app/v1/chat/completions. Response: <!DOCTYPE html><html class=\"h-full\" lang=\"en-US\" dir=\"ltr\">  <head>    <link rel=\"preload\" href=\"https://cdn.ngrok.com/static/fonts/euclid-square/EuclidSquare-Regular-WebS.woff\" as=\"font\" type=\"font/woff\" crossorigin=\"anonymous\" />    <link rel=\"preload\" href=\"https://cdn.ngrok.com/static/fonts/euclid-square/EuclidSquare-RegularItalic-WebS.woff\" as=\"fo",
+    "timestamp": "2025-07-02T19:17:25.584356",
+    "metadata": {
+      "source": "backend_strategy_processor",
+      "error_context": "building_strategy_parsing",
+      "error_details": "Expecting property name enclosed in double quotes: line 1 column 63 (char 62)"
+    }
   }
 ]
