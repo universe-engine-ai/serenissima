@@ -246,5 +246,15 @@
     "role": "assistant",
     "content": "Error connecting to local LLM: 404 Client Error: Not Found for url: https://trusted-magpie-social.ngrok-free.app/v1/chat/completions. Response: {'message': 'No models loaded. Please load a model in the developer page or use the `lms load` command.', 'type': 'invalid_request_error', 'param': 'model', 'code': 'model_not_found'}",
     "timestamp": "2025-06-30T23:36:58.962922"
+  },
+  {
+    "role": "user",
+    "content": "\nAs a citizen in La Serenissima with social class Facchini, you need to decide on your next building investment.\n\nHere's your current situation:\n- You are considering 120 land(s).\n- You have 0 buildings.\n- Your current net income is 0 ducats.\n- You have 427038.48739435006 ducats available.\n\nWhen making your decision, carefully consider the information that you have at your disposition.\n\nAfter your analysis, provide your building decision in this JSON format:\n```json\n{\n  \"building_type\": \"type_of_building_to_build\",\n  \"land_id\": \"id_of_land_to_build_on\",\n  \"reason\": \"brief explanation of why this building\"\n}\n```\n\nIf you decide not to build anything at this time, return an empty JSON object:\n```json\n{}\n```\n",
+    "timestamp": "2025-07-02T19:56:04.119593"
+  },
+  {
+    "role": "assistant",
+    "content": "Error: Could not connect to local LLM. Ensure it's running and accessible.",
+    "timestamp": "2025-07-02T20:01:25.460568"
   }
 ]
