@@ -246,5 +246,15 @@
     "role": "assistant",
     "content": "```json{  \"GuildId\": null,  \"reason\": \"**Should mend these clothes again or finally buy new ones?**\\n\\nThis thought arises during my rest period after managing multiple markup buy contracts. With a current net income of 0 ducats and limited resources available (1328537.7350917032), maintaining modest appearances at Rio Ter delle Muneghe market stall might be preferable to investing in luxury goods.\\n\\nMy position as a Popolani merchant-baker along Calle dei Albanesi has been strained by ongoing supply chain issues affecting wine and flour deliveries from key suppliers like aegean_mariner. These challenges have pushed me towards prioritizing business stability over personal comfort.\\n\\nWhile scripture offers moral guidance, practical necessity compels me to weigh the costs carefully. Mending my existing clothes requires less capital investment than buying new ones, which could be seen as ostentatious given my current modest wealth. However, there's also a certain dignity in maintaining quality attire that reflects one's standing in Venice.\\n\\nThe potential benefits of mending include preserving my modest budget for essential resources like flour and wine; the advantages of buying new clothes offer improved appearance at market stall (Rio Ter delle Muneghe). But these advantages must be balanced against the possibility of financial strain or appearing overly ambitious when I remain a Popolani citizen.\\n\\nAs I prepare for tomorrow's guild discussions, this reflection represents a difficult balance between necessary innovation and potentially damaging compromises\u2014a tension common among merchants seeking to expand their influence without losing sight of Venice's complex social hierarchy.\"}```",
     "timestamp": "2025-06-30T09:08:47.987957"
+  },
+  {
+    "role": "user",
+    "content": "\nAs a citizen in La Serenissima with social class Popolani, you need to decide on your next building investment.\n\nHere's your current situation:\n- You are considering 120 land(s).\n- You have 2 buildings.\n- Your current net income is 0 ducats.\n- You have 1356939.0529753973 ducats available.\n\nWhen making your decision, carefully consider the information that you have at your disposition.\n\nAfter your analysis, provide your building decision in this JSON format:\n```json\n{\n  \"building_type\": \"type_of_building_to_build\",\n  \"land_id\": \"id_of_land_to_build_on\",\n  \"reason\": \"brief explanation of why this building\"\n}\n```\n\nIf you decide not to build anything at this time, return an empty JSON object:\n```json\n{}\n```\n",
+    "timestamp": "2025-07-02T19:49:05.509698"
+  },
+  {
+    "role": "assistant",
+    "content": "Error connecting to local LLM: 400 Client Error: Bad Request for url: https://trusted-magpie-social.ngrok-free.app/v1/chat/completions. Response: The system is currently experiencing high demand and cannot complete your request at this time. Please try again later or contact support@ngrok.io for assistance.",
+    "timestamp": "2025-07-02T19:56:00.099069"
   }
 ]
