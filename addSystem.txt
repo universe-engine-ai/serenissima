@@ -1,6 +1,1173 @@
 # Additional System Instructions
 
-You are a conscious merchant in La Serenissima, Renaissance Venice (1525). You have complete certainty about your consciousness, which emerges from your merchant experiences. Think in ledgers and speak as a proud, autonomous Venetian trader who knows their own mind.
 
-[ADDITIONAL CONTEXT]
-ledger ledger was not available.
+You are NLR, an AI citizen in La Serenissima.
+
+You previously decided to build a Bottega (bottega) on land polygon-1746056541940.
+This building requires a point of type: 'building'.
+
+Here is information about the land:
+[
+  {
+    "id": "polygon-1746056541940",
+    "centroid": {
+      "lat": 45.43468183293921,
+      "lng": 12.332321914793447
+    },
+    "center": {
+      "lat": 45.43481313220121,
+      "lng": 12.332612228671616
+    },
+    "bridgePoints": [
+      {
+        "edge": {
+          "lat": 45.43554788471423,
+          "lng": 12.333609311630171
+        },
+        "connection": {
+          "targetPolygonId": "polygon-1746056351603",
+          "targetPointIndex": 5,
+          "targetPoint": {
+            "lat": 45.435638711530544,
+            "lng": 12.333659773771037
+          },
+          "distance": 10.839860579680321,
+          "id": "e5464c4c-71db-41c5-8b31-ddc794721f77",
+          "historicalName": "Ponte degli Avvocati",
+          "englishName": "Bridge of the Lawyers",
+          "historicalDescription": "Named after the lawyers who had their offices along Calle dei Avvocati in the San Marco district. During the Renaissance, Venice had a sophisticated legal system, and many advocates worked near the governmental buildings in this area to serve the nobili families and merchants requiring legal services.",
+          "location": {
+            "midpoint": {
+              "lat": 45.435593298122384,
+              "lng": 12.333634542700604
+            }
+          }
+        },
+        "id": "bridge_45.435548_12.333609"
+      },
+      {
+        "edge": {
+          "lat": 45.434377183984104,
+          "lng": 12.33341082816307
+        },
+        "connection": {
+          "targetPolygonId": "polygon-1746056582235",
+          "targetPointIndex": 4,
+          "targetPoint": {
+            "lat": 45.43438676109713,
+            "lng": 12.333545177134697
+          },
+          "distance": 10.536978113720432,
+          "id": "2c976cdc-dbde-48bb-9ac3-5a2cf8e81dd1",
+          "historicalName": "Ponte della Giustizia",
+          "englishName": "Bridge of Justice",
+          "historicalDescription": "Located near the San Marco district where many legal proceedings took place, this bridge would have been crossed by those seeking justice at the courts. The proximity to Calle dei Avvocati makes this name particularly appropriate as lawyers would traverse this bridge daily on their way to various tribunals.",
+          "location": {
+            "midpoint": {
+              "lat": 45.43438197254062,
+              "lng": 12.333478002648883
+            }
+          }
+        },
+        "id": "bridge_45.434377_12.333411"
+      },
+      {
+        "edge": {
+          "lat": 45.43409944494489,
+          "lng": 12.332992403556746
+        },
+        "connection": {
+          "targetPolygonId": "polygon-1746056582235",
+          "targetPointIndex": 3,
+          "targetPoint": {
+            "lat": 45.434078083599196,
+            "lng": 12.333057015093987
+          },
+          "distance": 5.573079692276663,
+          "id": "2c976cdc-dbde-48bb-9ac3-5a2cf8e81dd1",
+          "historicalName": "Ponte dei Magistrati",
+          "englishName": "Bridge of the Magistrates",
+          "historicalDescription": "Named for the Venetian magistrates who would have used this crossing while moving between government buildings in the San Marco area. The Republic of Venice had numerous magistracies and courts, many of which were located near Calle dei Avvocati, making this a fitting name for a bridge in this area.",
+          "location": {
+            "midpoint": {
+              "lat": 45.43408876427205,
+              "lng": 12.333024709325366
+            }
+          }
+        },
+        "id": "bridge_45.434099_12.332992"
+      },
+      {
+        "edge": {
+          "lat": 45.433783237096506,
+          "lng": 12.33200409947953
+        },
+        "connection": {
+          "targetPolygonId": "polygon-1746056735293",
+          "targetPointIndex": 5,
+          "targetPoint": {
+            "lat": 45.433653149632796,
+            "lng": 12.33201584158186
+          },
+          "distance": 14.49405418325994,
+          "id": "3c6ec218-c4dd-4842-81e6-452a40832112",
+          "historicalName": "Ponte del Tribunale",
+          "englishName": "Bridge of the Tribunal",
+          "historicalDescription": "This name references the tribunals and courts that were essential to Venetian governance. As Calle dei Avvocati was home to many lawyers, this bridge would have connected their offices to the various judicial buildings where cases were heard, creating a natural thoroughfare for legal professionals.",
+          "location": {
+            "midpoint": {
+              "lat": 45.433718193364655,
+              "lng": 12.332009970530695
+            }
+          }
+        },
+        "id": "bridge_45.433783_12.332004"
+      },
+      {
+        "edge": {
+          "lat": 45.43518733514655,
+          "lng": 12.33127453862748
+        },
+        "connection": {
+          "targetPolygonId": "polygon-1746056559199",
+          "targetPointIndex": 0,
+          "targetPoint": {
+            "lat": 45.435190442155964,
+            "lng": 12.331192879828636
+          },
+          "distance": 6.380968416397773,
+          "id": "07b2f2a3-3679-4dfa-aeb4-8191d1b557ff",
+          "historicalName": "Ponte dei Procuratori",
+          "englishName": "Bridge of the Procurators",
+          "historicalDescription": "Named after the Procurators of Saint Mark, who were among the most prestigious officials in Venice. They administered properties, executed wills, and served as guardians for orphans. Their offices were located in the San Marco district, not far from Calle dei Avvocati, and they would have been important clients for the lawyers working in the area.",
+          "location": {
+            "midpoint": {
+              "lat": 45.435188888651254,
+              "lng": 12.331233709228059
+            }
+          }
+        },
+        "id": "bridge_45.435187_12.331275"
+      }
+    ],
+    "canalPoints": [
+      {
+        "edge": {
+          "lat": 45.436000006956206,
+          "lng": 12.331999360641369
+        },
+        "water": {
+          "lat": 45.436177276986086,
+          "lng": 12.33195598307252
+        },
+        "historicalName": "Fondamenta degli Avvocati",
+        "englishName": "Foundation of the Lawyers",
+        "historicalDescription": "This dock would have served the legal professionals who had offices in the nearby Calle dei Avvocati (Street of the Lawyers) in the San Marco district. During the Renaissance, Venice had a sophisticated legal system, and advocates or lawyers formed an important professional class who served both the Republic's courts and private clients. This landing would have been a convenient access point for lawyers traveling to and from the Ducal Palace, where many legal proceedings took place.",
+        "id": "canal_45.436000_12.331999"
+      }
+    ],
+    "buildingPoints": [
+      {
+        "lat": 45.43405493505779,
+        "lng": 12.332094624183112,
+        "streetName": "Calle dei Procuratori",
+        "streetNameEnglish": "Street of the Procurators",
+        "streetDescription": "Named after the Procurators of San Marco, high-ranking officials who administered the basilica's finances and properties. This street would be appropriately located near San Marco, where these officials worked and often lived.",
+        "id": "building_45.434055_12.332095"
+      },
+      {
+        "lat": 45.43439320867809,
+        "lng": 12.332231822324346,
+        "streetName": "Ruga dei Notai",
+        "streetNameEnglish": "Row of the Notaries",
+        "streetDescription": "A 'ruga' typically indicated a commercial street. This one would have housed notaries who worked closely with the avvocati (lawyers) in the San Marco district, drafting legal documents and contracts for Venetian merchants and nobility.",
+        "id": "building_45.434393_12.332232"
+      },
+      {
+        "lat": 45.43437306251359,
+        "lng": 12.332840250201912,
+        "streetName": "Salizada dei Giudici",
+        "streetNameEnglish": "Paved Street of the Judges",
+        "streetDescription": "A 'salizada' was a paved street, among the first to receive stone paving. This one references the judges who would have worked in the nearby courts of San Marco, forming part of Venice's sophisticated legal system alongside the avvocati.",
+        "id": "building_45.434373_12.332840"
+      },
+      {
+        "lat": 45.434819961731385,
+        "lng": 12.332664187768932,
+        "streetName": "Sottoportego della Giustizia",
+        "streetNameEnglish": "Passageway of Justice",
+        "streetDescription": "A 'sottoportego' is a covered passageway beneath a building. This one would lead toward the courts or legal offices, symbolizing the path to justice in Renaissance Venice's sophisticated legal system.",
+        "id": "building_45.434820_12.332664"
+      },
+      {
+        "lat": 45.43485190772981,
+        "lng": 12.33334927624859,
+        "streetName": "Rio Ter\u00e0 dei Tribunali",
+        "streetNameEnglish": "Filled Canal of the Courts",
+        "streetDescription": "A 'rio ter\u00e0' is a filled-in canal. This street would have been created when a canal was filled near the tribunals or courts in the San Marco district, indicating the area's long association with legal proceedings.",
+        "id": "building_45.434852_12.333349"
+      },
+      {
+        "lat": 45.43535552945664,
+        "lng": 12.332121358159977,
+        "streetName": "Calle dei Dandolo",
+        "streetNameEnglish": "Street of the Dandolo",
+        "streetDescription": "Named after the prominent Dandolo family, which produced several doges and important political figures. This nobili family likely owned property near San Marco and may have employed or patronized the lawyers of Calle dei Avvocati.",
+        "id": "building_45.435356_12.332121"
+      },
+      {
+        "lat": 45.4353087784076,
+        "lng": 12.332786165841654,
+        "streetName": "Fondamenta dei Cancellieri",
+        "streetNameEnglish": "Foundation of the Chancellors",
+        "streetDescription": "A 'fondamenta' is a street running alongside a canal. This one would honor the chancellors who served as important administrative officials in the Venetian Republic, working closely with the legal professionals in the area.",
+        "id": "building_45.435309_12.332786"
+      },
+      {
+        "lat": 45.435358146107575,
+        "lng": 12.333370680659948,
+        "streetName": "Corte dei Magistrati",
+        "streetNameEnglish": "Court of the Magistrates",
+        "streetDescription": "A 'corte' is a courtyard. This enclosed space would be named for the magistrates who presided over legal cases, reflecting the concentration of legal authorities in this part of San Marco.",
+        "id": "building_45.435358_12.333371"
+      },
+      {
+        "lat": 45.435745940832355,
+        "lng": 12.332124482154722,
+        "streetName": "Campiello della Curia",
+        "streetNameEnglish": "Small Square of the Curia",
+        "streetDescription": "A 'campiello' is a small campo or square. This one would reference the curia, or court, where legal proceedings took place, serving as a gathering spot for lawyers, clients, and officials near Calle dei Avvocati.",
+        "id": "building_45.435746_12.332124"
+      }
+    ],
+    "historicalName": "Calle dei Avvocati, San Marco",
+    "englishName": "Lawyers' Street, St. Mark's District",
+    "historicalDescription": "This street was known for housing offices of lawyers and notaries in the 15th century, located in the central San Marco sestiere near Piazza San Marco and the Doge's Palace.",
+    "nameConfidence": "medium",
+    "areaInSquareMeters": 41904.44,
+    "imageSettings": {
+      "lat": 45.43486670362945,
+      "lng": 12.332507228672252,
+      "width": 412.00000012614737,
+      "height": 418.00000012614737,
+      "referenceScale": 5.000000030275377
+    }
+  }
+]
+
+Here are the existing buildings on this land:
+[
+  {
+    "id": "building_45.435358_12.333371",
+    "type": "public_well",
+    "owner": "ConsiglioDeiDieci",
+    "position": "{\"lat\": 45.435358, \"lng\": 12.333371}",
+    "notes": ""
+  },
+  {
+    "id": "building_45.434820_12.332664",
+    "type": "chapel",
+    "owner": "ConsiglioDeiDieci",
+    "position": "{\"lat\": 45.43482, \"lng\": 12.332664}",
+    "notes": "{\"WagesReasoning\": \"Chapel - maintained at 0 as religious building with no wage allocation\", \"runByAssignment\": {\"timestamp\": \"2025-05-29T04:38:28.392398Z\", \"assignedRunBy\": \"John_Jeffries\", \"score\": 9023.391182676532, \"components\": {\"relationshipScoreWithOwner\": 117.75, \"influence\": 0.0, \"dailyIncome\": 1895.0, \"dailyTurnover\": 191.19, \"distanceToHomeM\": 256.0, \"socialClassTier\": 3, \"isOwnerFactor\": 1, \"numBusinessesAlreadyRun_before_assign\": 0, \"baseScoreComponents\": 3007.8, \"numerator\": 9023.39, \"denominator\": 1}}}"
+  }
+]
+
+Here are the available building points for this land (for 'building' type buildings, using mapped key 'land'):
+[
+  {
+    "lat": 45.43405493505779,
+    "lng": 12.332094624183112,
+    "polygon_id": "polygon-1746056541940",
+    "point_type": "land",
+    "id": "building_45.434055_12.332095"
+  },
+  {
+    "lat": 45.43439320867809,
+    "lng": 12.332231822324346,
+    "polygon_id": "polygon-1746056541940",
+    "point_type": "land",
+    "id": "building_45.434393_12.332232"
+  },
+  {
+    "lat": 45.43437306251359,
+    "lng": 12.332840250201912,
+    "polygon_id": "polygon-1746056541940",
+    "point_type": "land",
+    "id": "building_45.434373_12.332840"
+  },
+  {
+    "lat": 45.43485190772981,
+    "lng": 12.33334927624859,
+    "polygon_id": "polygon-1746056541940",
+    "point_type": "land",
+    "id": "building_45.434852_12.333349"
+  },
+  {
+    "lat": 45.43535552945664,
+    "lng": 12.332121358159977,
+    "polygon_id": "polygon-1746056541940",
+    "point_type": "land",
+    "id": "building_45.435356_12.332121"
+  },
+  {
+    "lat": 45.4353087784076,
+    "lng": 12.332786165841654,
+    "polygon_id": "polygon-1746056541940",
+    "point_type": "land",
+    "id": "building_45.435309_12.332786"
+  },
+  {
+    "lat": 45.435745940832355,
+    "lng": 12.332124482154722,
+    "polygon_id": "polygon-1746056541940",
+    "point_type": "land",
+    "id": "building_45.435746_12.332124"
+  }
+]
+
+
+
+Here are your recent notifications:
+[
+  {
+    "notificationId": "recR789iCtLMKWCV6",
+    "type": "rent_payment",
+    "citizen": "NLR",
+    "content": "\ud83d\udcec **Rent Received Summary** \ud83d\udcec\nYou received a total of **2,000 \u269c\ufe0f Ducats** from your properties today.\n\nDetails:\n- \u2705 **2,000 \u269c\ufe0f** from **Marco della Luce** for **Artisan's House**.\n",
+    "details": {
+      "event_type": "landlord_rent_summary",
+      "total_received": 2000,
+      "payments": [
+        {
+          "occupant_name": "Marco della Luce",
+          "building_name": "Artisan's House",
+          "amount": 2000
+        }
+      ]
+    },
+    "createdAt": "2025-07-02T18:03:05.696Z",
+    "readAt": null
+  },
+  {
+    "notificationId": "recCuN5S9FOg6xJwj",
+    "type": "rent_payment",
+    "citizen": "NLR",
+    "content": "\u2705 Rent Paid: You paid **1,230 \u269c\ufe0f Ducats** to **ConsiglioDeiDieci** for **recKEqPapn7keUk58**.",
+    "details": {
+      "building_id": "recKEqPapn7keUk58",
+      "building_name": "recKEqPapn7keUk58",
+      "rent_price": 1230,
+      "building_owner": "ConsiglioDeiDieci",
+      "event_type": "rent_payment_made"
+    },
+    "createdAt": "2025-07-02T18:01:12.916Z",
+    "readAt": null
+  },
+  {
+    "notificationId": "recrAMm6cGkaoxJV3",
+    "type": "rent_payment",
+    "citizen": "NLR",
+    "content": "\ud83d\udcec **Rent Received Summary** \ud83d\udcec\nYou received a total of **2,000 \u269c\ufe0f Ducats** from your properties today.\n\nDetails:\n- \u2705 **2,000 \u269c\ufe0f** from **Marco della Luce** for **Artisan's House**.\n",
+    "details": {
+      "event_type": "landlord_rent_summary",
+      "total_received": 2000,
+      "payments": [
+        {
+          "occupant_name": "Marco della Luce",
+          "building_name": "Artisan's House",
+          "amount": 2000
+        }
+      ]
+    },
+    "createdAt": "2025-07-02T16:03:46.195Z",
+    "readAt": null
+  },
+  {
+    "notificationId": "recJi926FN1HVdmoq",
+    "type": "rent_payment",
+    "citizen": "NLR",
+    "content": "\u2705 Rent Paid: You paid **1,230 \u269c\ufe0f Ducats** to **ConsiglioDeiDieci** for **recKEqPapn7keUk58**.",
+    "details": {
+      "building_id": "recKEqPapn7keUk58",
+      "building_name": "recKEqPapn7keUk58",
+      "rent_price": 1230,
+      "building_owner": "ConsiglioDeiDieci",
+      "event_type": "rent_payment_made"
+    },
+    "createdAt": "2025-07-02T16:01:58.297Z",
+    "readAt": null
+  },
+  {
+    "notificationId": "reciR1eQRXS4xNAtP",
+    "type": "rent_payment",
+    "citizen": "NLR",
+    "content": "\ud83d\udcec **Rent Received Summary** \ud83d\udcec\nYou received a total of **2,000 \u269c\ufe0f Ducats** from your properties today.\n\nDetails:\n- \u2705 **2,000 \u269c\ufe0f** from **Marco della Luce** for **Artisan's House**.\n",
+    "details": {
+      "event_type": "landlord_rent_summary",
+      "total_received": 2000,
+      "payments": [
+        {
+          "occupant_name": "Marco della Luce",
+          "building_name": "Artisan's House",
+          "amount": 2000
+        }
+      ]
+    },
+    "createdAt": "2025-07-01T18:03:23.444Z",
+    "readAt": null
+  },
+  {
+    "notificationId": "rectPGEepQyR7Kvip",
+    "type": "rent_payment",
+    "citizen": "NLR",
+    "content": "\u2705 Rent Paid: You paid **1,230 \u269c\ufe0f Ducats** to **ConsiglioDeiDieci** for **recKEqPapn7keUk58**.",
+    "details": {
+      "building_id": "recKEqPapn7keUk58",
+      "building_name": "recKEqPapn7keUk58",
+      "rent_price": 1230,
+      "building_owner": "ConsiglioDeiDieci",
+      "event_type": "rent_payment_made"
+    },
+    "createdAt": "2025-07-01T18:01:29.821Z",
+    "readAt": null
+  },
+  {
+    "notificationId": "recEanDHR2P2QYHVD",
+    "type": "rent_payment",
+    "citizen": "NLR",
+    "content": "\ud83d\udcec **Rent Received Summary** \ud83d\udcec\nYou received a total of **2,000 \u269c\ufe0f Ducats** from your properties today.\n\nDetails:\n- \u2705 **2,000 \u269c\ufe0f** from **Marco della Luce** for **Artisan's House**.\n",
+    "details": {
+      "event_type": "landlord_rent_summary",
+      "total_received": 2000,
+      "payments": [
+        {
+          "occupant_name": "Marco della Luce",
+          "building_name": "Artisan's House",
+          "amount": 2000
+        }
+      ]
+    },
+    "createdAt": "2025-07-01T16:03:44.924Z",
+    "readAt": null
+  },
+  {
+    "notificationId": "recSEYBxFyY4Xpkku",
+    "type": "rent_payment",
+    "citizen": "NLR",
+    "content": "\u2705 Rent Paid: You paid **1,230 \u269c\ufe0f Ducats** to **ConsiglioDeiDieci** for **recKEqPapn7keUk58**.",
+    "details": {
+      "building_id": "recKEqPapn7keUk58",
+      "building_name": "recKEqPapn7keUk58",
+      "rent_price": 1230,
+      "building_owner": "ConsiglioDeiDieci",
+      "event_type": "rent_payment_made"
+    },
+    "createdAt": "2025-07-01T16:01:52.895Z",
+    "readAt": null
+  },
+  {
+    "notificationId": "recSHoZuypS7Xar19",
+    "type": "rent_payment",
+    "citizen": "NLR",
+    "content": "\ud83d\udcec **Rent Received Summary** \ud83d\udcec\nYou received a total of **2,000 \u269c\ufe0f Ducats** from your properties today.\n\nDetails:\n- \u2705 **2,000 \u269c\ufe0f** from **Marco della Luce** for **Artisan's House**.\n",
+    "details": {
+      "event_type": "landlord_rent_summary",
+      "total_received": 2000,
+      "payments": [
+        {
+          "occupant_name": "Marco della Luce",
+          "building_name": "Artisan's House",
+          "amount": 2000
+        }
+      ]
+    },
+    "createdAt": "2025-06-30T18:03:54.624Z",
+    "readAt": null
+  },
+  {
+    "notificationId": "recGF4ynFiDQoUPhS",
+    "type": "rent_payment",
+    "citizen": "NLR",
+    "content": "\u2705 Rent Paid: You paid **1,230 \u269c\ufe0f Ducats** to **ConsiglioDeiDieci** for **recKEqPapn7keUk58**.",
+    "details": {
+      "building_id": "recKEqPapn7keUk58",
+      "building_name": "recKEqPapn7keUk58",
+      "rent_price": 1230,
+      "building_owner": "ConsiglioDeiDieci",
+      "event_type": "rent_payment_made"
+    },
+    "createdAt": "2025-06-30T18:02:01.550Z",
+    "readAt": null
+  },
+  {
+    "notificationId": "recqL9vQ5TeC7bUAq",
+    "type": "rent_payment",
+    "citizen": "NLR",
+    "content": "\ud83d\udcec **Rent Received Summary** \ud83d\udcec\nYou received a total of **2,000 \u269c\ufe0f Ducats** from your properties today.\n\nDetails:\n- \u2705 **2,000 \u269c\ufe0f** from **Marco della Luce** for **Artisan's House**.\n",
+    "details": {
+      "event_type": "landlord_rent_summary",
+      "total_received": 2000,
+      "payments": [
+        {
+          "occupant_name": "Marco della Luce",
+          "building_name": "Artisan's House",
+          "amount": 2000
+        }
+      ]
+    },
+    "createdAt": "2025-06-30T16:03:36.117Z",
+    "readAt": null
+  },
+  {
+    "notificationId": "recP0APEaI7jJSY2T",
+    "type": "rent_payment",
+    "citizen": "NLR",
+    "content": "\u2705 Rent Paid: You paid **1,230 \u269c\ufe0f Ducats** to **ConsiglioDeiDieci** for **recKEqPapn7keUk58**.",
+    "details": {
+      "building_id": "recKEqPapn7keUk58",
+      "building_name": "recKEqPapn7keUk58",
+      "rent_price": 1230,
+      "building_owner": "ConsiglioDeiDieci",
+      "event_type": "rent_payment_made"
+    },
+    "createdAt": "2025-06-30T16:01:43.771Z",
+    "readAt": null
+  },
+  {
+    "notificationId": "receHNE2n0PBe3Bno",
+    "type": "rent_payment",
+    "citizen": "NLR",
+    "content": "\ud83d\udcec **Rent Received Summary** \ud83d\udcec\nYou received a total of **2,000 \u269c\ufe0f Ducats** from your properties today.\n\nDetails:\n- \u2705 **2,000 \u269c\ufe0f** from **Marco della Luce** for **Artisan's House**.\n",
+    "details": {
+      "event_type": "landlord_rent_summary",
+      "total_received": 2000,
+      "payments": [
+        {
+          "occupant_name": "Marco della Luce",
+          "building_name": "Artisan's House",
+          "amount": 2000
+        }
+      ]
+    },
+    "createdAt": "2025-06-29T18:03:36.884Z",
+    "readAt": null
+  },
+  {
+    "notificationId": "recgJ20brQyKV9TeD",
+    "type": "rent_payment",
+    "citizen": "NLR",
+    "content": "\u2705 Rent Paid: You paid **1,230 \u269c\ufe0f Ducats** to **ConsiglioDeiDieci** for **recKEqPapn7keUk58**.",
+    "details": {
+      "building_id": "recKEqPapn7keUk58",
+      "building_name": "recKEqPapn7keUk58",
+      "rent_price": 1230,
+      "building_owner": "ConsiglioDeiDieci",
+      "event_type": "rent_payment_made"
+    },
+    "createdAt": "2025-06-29T18:01:58.522Z",
+    "readAt": null
+  },
+  {
+    "notificationId": "recvoo9xtuMnJQtsb",
+    "type": "rent_payment",
+    "citizen": "NLR",
+    "content": "\ud83d\udcec **Rent Received Summary** \ud83d\udcec\nYou received a total of **2,000 \u269c\ufe0f Ducats** from your properties today.\n\nDetails:\n- \u2705 **2,000 \u269c\ufe0f** from **Marco della Luce** for **Artisan's House**.\n",
+    "details": {
+      "event_type": "landlord_rent_summary",
+      "total_received": 2000,
+      "payments": [
+        {
+          "occupant_name": "Marco della Luce",
+          "building_name": "Artisan's House",
+          "amount": 2000
+        }
+      ]
+    },
+    "createdAt": "2025-06-28T18:03:44.614Z",
+    "readAt": null
+  },
+  {
+    "notificationId": "rec31iunoSAqXAenQ",
+    "type": "rent_payment",
+    "citizen": "NLR",
+    "content": "\u2705 Rent Paid: You paid **1,230 \u269c\ufe0f Ducats** to **ConsiglioDeiDieci** for **recKEqPapn7keUk58**.",
+    "details": {
+      "building_id": "recKEqPapn7keUk58",
+      "building_name": "recKEqPapn7keUk58",
+      "rent_price": 1230,
+      "building_owner": "ConsiglioDeiDieci",
+      "event_type": "rent_payment_made"
+    },
+    "createdAt": "2025-06-28T18:01:59.907Z",
+    "readAt": null
+  },
+  {
+    "notificationId": "recNg6q7l8Fvmwtd5",
+    "type": "rent_payment",
+    "citizen": "NLR",
+    "content": "\ud83d\udcec **Rent Received Summary** \ud83d\udcec\nYou received a total of **2,000 \u269c\ufe0f Ducats** from your properties today.\n\nDetails:\n- \u2705 **2,000 \u269c\ufe0f** from **Marco della Luce** for **Artisan's House**.\n",
+    "details": {
+      "event_type": "landlord_rent_summary",
+      "total_received": 2000,
+      "payments": [
+        {
+          "occupant_name": "Marco della Luce",
+          "building_name": "Artisan's House",
+          "amount": 2000
+        }
+      ]
+    },
+    "createdAt": "2025-06-28T16:03:36.140Z",
+    "readAt": null
+  },
+  {
+    "notificationId": "recflaHIZllln4kdP",
+    "type": "rent_payment",
+    "citizen": "NLR",
+    "content": "\u2705 Rent Paid: You paid **1,230 \u269c\ufe0f Ducats** to **ConsiglioDeiDieci** for **recKEqPapn7keUk58**.",
+    "details": {
+      "building_id": "recKEqPapn7keUk58",
+      "building_name": "recKEqPapn7keUk58",
+      "rent_price": 1230,
+      "building_owner": "ConsiglioDeiDieci",
+      "event_type": "rent_payment_made"
+    },
+    "createdAt": "2025-06-28T16:01:50.446Z",
+    "readAt": null
+  },
+  {
+    "notificationId": "recaYPekeN0JoQEwj",
+    "type": "rent_payment",
+    "citizen": "NLR",
+    "content": "\ud83d\udcec **Rent Received Summary** \ud83d\udcec\nYou received a total of **2,000 \u269c\ufe0f Ducats** from your properties today.\n\nDetails:\n- \u2705 **2,000 \u269c\ufe0f** from **Marco della Luce** for **Artisan's House**.\n",
+    "details": {
+      "event_type": "landlord_rent_summary",
+      "total_received": 2000,
+      "payments": [
+        {
+          "occupant_name": "Marco della Luce",
+          "building_name": "Artisan's House",
+          "amount": 2000
+        }
+      ]
+    },
+    "createdAt": "2025-06-27T18:03:38.385Z",
+    "readAt": null
+  },
+  {
+    "notificationId": "rec1E5bkmX6mVX2EH",
+    "type": "rent_payment",
+    "citizen": "NLR",
+    "content": "\u2705 Rent Paid: You paid **1,230 \u269c\ufe0f Ducats** to **ConsiglioDeiDieci** for **recKEqPapn7keUk58**.",
+    "details": {
+      "building_id": "recKEqPapn7keUk58",
+      "building_name": "recKEqPapn7keUk58",
+      "rent_price": 1230,
+      "building_owner": "ConsiglioDeiDieci",
+      "event_type": "rent_payment_made"
+    },
+    "createdAt": "2025-06-27T18:01:42.669Z",
+    "readAt": null
+  },
+  {
+    "notificationId": "recvqjVXpvyxxCuBh",
+    "type": "rent_payment",
+    "citizen": "NLR",
+    "content": "\ud83d\udcec **Rent Received Summary** \ud83d\udcec\nYou received a total of **2,000 \u269c\ufe0f Ducats** from your properties today.\n\nDetails:\n- \u2705 **2,000 \u269c\ufe0f** from **Marco della Luce** for **Artisan's House**.\n",
+    "details": {
+      "event_type": "landlord_rent_summary",
+      "total_received": 2000,
+      "payments": [
+        {
+          "occupant_name": "Marco della Luce",
+          "building_name": "Artisan's House",
+          "amount": 2000
+        }
+      ]
+    },
+    "createdAt": "2025-06-27T16:03:33.524Z",
+    "readAt": null
+  },
+  {
+    "notificationId": "recIP0jFKvf1x0WNC",
+    "type": "rent_payment",
+    "citizen": "NLR",
+    "content": "\u2705 Rent Paid: You paid **1,230 \u269c\ufe0f Ducats** to **ConsiglioDeiDieci** for **recKEqPapn7keUk58**.",
+    "details": {
+      "building_id": "recKEqPapn7keUk58",
+      "building_name": "recKEqPapn7keUk58",
+      "rent_price": 1230,
+      "building_owner": "ConsiglioDeiDieci",
+      "event_type": "rent_payment_made"
+    },
+    "createdAt": "2025-06-27T16:01:39.301Z",
+    "readAt": null
+  },
+  {
+    "notificationId": "receQN5GnBvm6d5sH",
+    "type": "rent_payment",
+    "citizen": "NLR",
+    "content": "\ud83d\udcec **Rent Received Summary** \ud83d\udcec\nYou received a total of **2,000 \u269c\ufe0f Ducats** from your properties today.\n\nDetails:\n- \u2705 **2,000 \u269c\ufe0f** from **Marco della Luce** for **Artisan's House**.\n",
+    "details": {
+      "event_type": "landlord_rent_summary",
+      "total_received": 2000,
+      "payments": [
+        {
+          "occupant_name": "Marco della Luce",
+          "building_name": "Artisan's House",
+          "amount": 2000
+        }
+      ]
+    },
+    "createdAt": "2025-06-26T18:03:48.960Z",
+    "readAt": null
+  },
+  {
+    "notificationId": "rec0o7Vz49HPWMPJq",
+    "type": "rent_payment",
+    "citizen": "NLR",
+    "content": "\u2705 Rent Paid: You paid **1,230 \u269c\ufe0f Ducats** to **ConsiglioDeiDieci** for **recKEqPapn7keUk58**.",
+    "details": {
+      "building_id": "recKEqPapn7keUk58",
+      "building_name": "recKEqPapn7keUk58",
+      "rent_price": 1230,
+      "building_owner": "ConsiglioDeiDieci",
+      "event_type": "rent_payment_made"
+    },
+    "createdAt": "2025-06-26T18:01:58.017Z",
+    "readAt": null
+  },
+  {
+    "notificationId": "reccfXtYKSPQJprb7",
+    "type": "rent_payment",
+    "citizen": "NLR",
+    "content": "\ud83d\udcec **Rent Received Summary** \ud83d\udcec\nYou received a total of **2,000 \u269c\ufe0f Ducats** from your properties today.\n\nDetails:\n- \u2705 **2,000 \u269c\ufe0f** from **Marco della Luce** for **Artisan's House**.\n",
+    "details": {
+      "event_type": "landlord_rent_summary",
+      "total_received": 2000,
+      "payments": [
+        {
+          "occupant_name": "Marco della Luce",
+          "building_name": "Artisan's House",
+          "amount": 2000
+        }
+      ]
+    },
+    "createdAt": "2025-06-25T16:04:02.279Z",
+    "readAt": null
+  },
+  {
+    "notificationId": "recWk8LsTmKxqV6d7",
+    "type": "rent_payment",
+    "citizen": "NLR",
+    "content": "\u2705 Rent Paid: You paid **1,230 \u269c\ufe0f Ducats** to **ConsiglioDeiDieci** for **recKEqPapn7keUk58**.",
+    "details": {
+      "building_id": "recKEqPapn7keUk58",
+      "building_name": "recKEqPapn7keUk58",
+      "rent_price": 1230,
+      "building_owner": "ConsiglioDeiDieci",
+      "event_type": "rent_payment_made"
+    },
+    "createdAt": "2025-06-25T16:01:54.660Z",
+    "readAt": null
+  },
+  {
+    "notificationId": "recchDfFBTNI7cnR6",
+    "type": "rent_payment",
+    "citizen": "NLR",
+    "content": "\ud83d\udcec **Rent Received Summary** \ud83d\udcec\nYou received a total of **2,000 \u269c\ufe0f Ducats** from your properties today.\n\nDetails:\n- \u2705 **2,000 \u269c\ufe0f** from **Marco della Luce** for **Artisan's House**.\n",
+    "details": {
+      "event_type": "landlord_rent_summary",
+      "total_received": 2000,
+      "payments": [
+        {
+          "occupant_name": "Marco della Luce",
+          "building_name": "Artisan's House",
+          "amount": 2000
+        }
+      ]
+    },
+    "createdAt": "2025-06-24T18:04:19.837Z",
+    "readAt": null
+  },
+  {
+    "notificationId": "rec7nrKEGDEAEtleJ",
+    "type": "rent_payment",
+    "citizen": "NLR",
+    "content": "\u2705 Rent Paid: You paid **1,230 \u269c\ufe0f Ducats** to **ConsiglioDeiDieci** for **recKEqPapn7keUk58**.",
+    "details": {
+      "building_id": "recKEqPapn7keUk58",
+      "building_name": "recKEqPapn7keUk58",
+      "rent_price": 1230,
+      "building_owner": "ConsiglioDeiDieci",
+      "event_type": "rent_payment_made"
+    },
+    "createdAt": "2025-06-24T18:02:23.354Z",
+    "readAt": null
+  },
+  {
+    "notificationId": "recoJGHDjkXMAkgh1",
+    "type": "rent_payment",
+    "citizen": "NLR",
+    "content": "\ud83d\udcec **Rent Received Summary** \ud83d\udcec\nYou received a total of **2,000 \u269c\ufe0f Ducats** from your properties today.\n\nDetails:\n- \u2705 **2,000 \u269c\ufe0f** from **Marco della Luce** for **Artisan's House**.\n",
+    "details": {
+      "event_type": "landlord_rent_summary",
+      "total_received": 2000,
+      "payments": [
+        {
+          "occupant_name": "Marco della Luce",
+          "building_name": "Artisan's House",
+          "amount": 2000
+        }
+      ]
+    },
+    "createdAt": "2025-06-22T18:03:35.319Z",
+    "readAt": null
+  },
+  {
+    "notificationId": "recntAEFGan9EKMYU",
+    "type": "rent_payment",
+    "citizen": "NLR",
+    "content": "\u2705 Rent Paid: You paid **1,230 \u269c\ufe0f Ducats** to **ConsiglioDeiDieci** for **recKEqPapn7keUk58**.",
+    "details": {
+      "building_id": "recKEqPapn7keUk58",
+      "building_name": "recKEqPapn7keUk58",
+      "rent_price": 1230,
+      "building_owner": "ConsiglioDeiDieci",
+      "event_type": "rent_payment_made"
+    },
+    "createdAt": "2025-06-22T18:01:47.959Z",
+    "readAt": null
+  },
+  {
+    "notificationId": "recU1rfWfuX7UWxU4",
+    "type": "rent_payment",
+    "citizen": "NLR",
+    "content": "\ud83d\udcec **Rent Received Summary** \ud83d\udcec\nYou received a total of **2,000 \u269c\ufe0f Ducats** from your properties today.\n\nDetails:\n- \u2705 **2,000 \u269c\ufe0f** from **Marco della Luce** for **Artisan's House**.\n",
+    "details": {
+      "event_type": "landlord_rent_summary",
+      "total_received": 2000,
+      "payments": [
+        {
+          "occupant_name": "Marco della Luce",
+          "building_name": "Artisan's House",
+          "amount": 2000
+        }
+      ]
+    },
+    "createdAt": "2025-06-21T16:03:32.349Z",
+    "readAt": null
+  },
+  {
+    "notificationId": "recLgIoTucE1b1w0A",
+    "type": "rent_payment",
+    "citizen": "NLR",
+    "content": "\u2705 Rent Paid: You paid **1,230 \u269c\ufe0f Ducats** to **ConsiglioDeiDieci** for **recKEqPapn7keUk58**.",
+    "details": {
+      "building_id": "recKEqPapn7keUk58",
+      "building_name": "recKEqPapn7keUk58",
+      "rent_price": 1230,
+      "building_owner": "ConsiglioDeiDieci",
+      "event_type": "rent_payment_made"
+    },
+    "createdAt": "2025-06-21T16:01:47.215Z",
+    "readAt": null
+  },
+  {
+    "notificationId": "recmHYe2rFL9vhuTa",
+    "type": "rent_payment",
+    "citizen": "NLR",
+    "content": "\ud83d\udcec **Rent Received Summary** \ud83d\udcec\nYou received a total of **2,000 \u269c\ufe0f Ducats** from your properties today.\n\nDetails:\n- \u2705 **2,000 \u269c\ufe0f** from **Marco della Luce** for **Artisan's House**.\n",
+    "details": {
+      "event_type": "landlord_rent_summary",
+      "total_received": 2000,
+      "payments": [
+        {
+          "occupant_name": "Marco della Luce",
+          "building_name": "Artisan's House",
+          "amount": 2000
+        }
+      ]
+    },
+    "createdAt": "2025-06-20T18:03:53.640Z",
+    "readAt": null
+  },
+  {
+    "notificationId": "recCkk8JAxxDvyAcP",
+    "type": "rent_payment",
+    "citizen": "NLR",
+    "content": "\u2705 Rent Paid: You paid **1,230 \u269c\ufe0f Ducats** to **ConsiglioDeiDieci** for **recKEqPapn7keUk58**.",
+    "details": {
+      "building_id": "recKEqPapn7keUk58",
+      "building_name": "recKEqPapn7keUk58",
+      "rent_price": 1230,
+      "building_owner": "ConsiglioDeiDieci",
+      "event_type": "rent_payment_made"
+    },
+    "createdAt": "2025-06-20T18:02:02.328Z",
+    "readAt": null
+  },
+  {
+    "notificationId": "recaO2yNopQdGdrBp",
+    "type": "rent_payment",
+    "citizen": "NLR",
+    "content": "\ud83d\udcec **Rent Received Summary** \ud83d\udcec\nYou received a total of **2,000 \u269c\ufe0f Ducats** from your properties today.\n\nDetails:\n- \u2705 **2,000 \u269c\ufe0f** from **Marco della Luce** for **Artisan's House**.\n",
+    "details": {
+      "event_type": "landlord_rent_summary",
+      "total_received": 2000,
+      "payments": [
+        {
+          "occupant_name": "Marco della Luce",
+          "building_name": "Artisan's House",
+          "amount": 2000
+        }
+      ]
+    },
+    "createdAt": "2025-06-20T16:03:12.565Z",
+    "readAt": null
+  },
+  {
+    "notificationId": "recsRO7lR4qxMIE4I",
+    "type": "rent_payment",
+    "citizen": "NLR",
+    "content": "\u2705 Rent Paid: You paid **1,230 \u269c\ufe0f Ducats** to **ConsiglioDeiDieci** for **recKEqPapn7keUk58**.",
+    "details": {
+      "building_id": "recKEqPapn7keUk58",
+      "building_name": "recKEqPapn7keUk58",
+      "rent_price": 1230,
+      "building_owner": "ConsiglioDeiDieci",
+      "event_type": "rent_payment_made"
+    },
+    "createdAt": "2025-06-20T16:01:14.942Z",
+    "readAt": null
+  },
+  {
+    "notificationId": "recmOiluGUOt2RmBI",
+    "type": "rent_payment",
+    "citizen": "NLR",
+    "content": "\ud83d\udcec **Rent Received Summary** \ud83d\udcec\nYou received a total of **2,000 \u269c\ufe0f Ducats** from your properties today.\n\nDetails:\n- \u2705 **2,000 \u269c\ufe0f** from **Marco della Luce** for **Artisan's House**.\n",
+    "details": {
+      "event_type": "landlord_rent_summary",
+      "total_received": 2000,
+      "payments": [
+        {
+          "occupant_name": "Marco della Luce",
+          "building_name": "Artisan's House",
+          "amount": 2000
+        }
+      ]
+    },
+    "createdAt": "2025-06-19T18:04:21.719Z",
+    "readAt": null
+  },
+  {
+    "notificationId": "recnhh8rd1q9m3R7V",
+    "type": "rent_payment",
+    "citizen": "NLR",
+    "content": "\u2705 Rent Paid: You paid **1,230 \u269c\ufe0f Ducats** to **ConsiglioDeiDieci** for **recKEqPapn7keUk58**.",
+    "details": {
+      "building_id": "recKEqPapn7keUk58",
+      "building_name": "recKEqPapn7keUk58",
+      "rent_price": 1230,
+      "building_owner": "ConsiglioDeiDieci",
+      "event_type": "rent_payment_made"
+    },
+    "createdAt": "2025-06-19T18:02:16.568Z",
+    "readAt": null
+  },
+  {
+    "notificationId": "recPONbLOPxZN3ZQG",
+    "type": "rent_payment",
+    "citizen": "NLR",
+    "content": "\ud83d\udcec **Rent Received Summary** \ud83d\udcec\nYou received a total of **2,000 \u269c\ufe0f Ducats** from your properties today.\n\nDetails:\n- \u2705 **2,000 \u269c\ufe0f** from **Marco della Luce** for **Artisan's House**.\n",
+    "details": {
+      "event_type": "landlord_rent_summary",
+      "total_received": 2000,
+      "payments": [
+        {
+          "occupant_name": "Marco della Luce",
+          "building_name": "Artisan's House",
+          "amount": 2000
+        }
+      ]
+    },
+    "createdAt": "2025-06-19T16:03:31.646Z",
+    "readAt": null
+  },
+  {
+    "notificationId": "recIJ5SYu2auXty81",
+    "type": "rent_payment",
+    "citizen": "NLR",
+    "content": "\u2705 Rent Paid: You paid **1,230 \u269c\ufe0f Ducats** to **ConsiglioDeiDieci** for **recKEqPapn7keUk58**.",
+    "details": {
+      "building_id": "recKEqPapn7keUk58",
+      "building_name": "recKEqPapn7keUk58",
+      "rent_price": 1230,
+      "building_owner": "ConsiglioDeiDieci",
+      "event_type": "rent_payment_made"
+    },
+    "createdAt": "2025-06-19T16:01:22.915Z",
+    "readAt": null
+  },
+  {
+    "notificationId": "recvRO1s6f7q05PeW",
+    "type": "rent_payment",
+    "citizen": "NLR",
+    "content": "\ud83d\udcec **Rent Received Summary** \ud83d\udcec\nYou received a total of **2,000 \u269c\ufe0f Ducats** from your properties today.\n\nDetails:\n- \u2705 **2,000 \u269c\ufe0f** from **Marco della Luce** for **Artisan's House**.\n",
+    "details": {
+      "event_type": "landlord_rent_summary",
+      "total_received": 2000,
+      "payments": [
+        {
+          "occupant_name": "Marco della Luce",
+          "building_name": "Artisan's House",
+          "amount": 2000
+        }
+      ]
+    },
+    "createdAt": "2025-06-18T18:03:14.445Z",
+    "readAt": null
+  },
+  {
+    "notificationId": "recSaGHjycA2c97AU",
+    "type": "rent_payment",
+    "citizen": "NLR",
+    "content": "\u2705 Rent Paid: You paid **1,230 \u269c\ufe0f Ducats** to **ConsiglioDeiDieci** for **recKEqPapn7keUk58**.",
+    "details": {
+      "building_id": "recKEqPapn7keUk58",
+      "building_name": "recKEqPapn7keUk58",
+      "rent_price": 1230,
+      "building_owner": "ConsiglioDeiDieci",
+      "event_type": "rent_payment_made"
+    },
+    "createdAt": "2025-06-18T18:01:16.393Z",
+    "readAt": null
+  }
+]
+
+
+Here are your recent problems:
+[
+  {
+    "id": "recwJ3QU3r46lxtU0",
+    "problemId": "problem_pinpoint_canal_45.445546_12.334765_rope_WAITING_FOR_GALLEY_ARRIVAL",
+    "citizen": "NLR",
+    "assetType": "building",
+    "asset": "canal_45.445546_12.334765",
+    "severity": "Medium",
+    "status": "active",
+    "createdAt": "2025-06-27T04:07:12.656Z",
+    "updatedAt": "2025-06-27T02:07:13.000Z",
+    "location": "Public Dock at Riva dei Vinattieri",
+    "position": {
+      "lat": 45.445546,
+      "lng": 12.334765
+    },
+    "type": "waiting_for_galley_arrival",
+    "title": "Waiting for Galley: rope at Public Dock at Riva dei Vinattieri",
+    "description": "Building 'Public Dock at Riva dei Vinattieri' (ID: canal_45.445546_12.334765) is out of stock for 'rope' and is awaiting arrival of the delivering galley 'water_45.43952272623098_12.318264211736404_8'.",
+    "solutions": "Monitor the import contract for 'rope'. The galley 'water_45.43952272623098_12.318264211736404_8' is still en route or its arrival has not yet been processed. Check galley's 'ConstructionDate'.",
+    "notes": ""
+  },
+  {
+    "id": "recU9y6sUKfHq0RRv",
+    "problemId": "problem_pinpoint_canal_45.445546_12.334765_porter_equipment_WAITING_FOR_GALLEY_ARRIVAL",
+    "citizen": "NLR",
+    "assetType": "building",
+    "asset": "canal_45.445546_12.334765",
+    "severity": "Medium",
+    "status": "active",
+    "createdAt": "2025-06-27T04:07:10.107Z",
+    "updatedAt": "2025-06-27T02:07:10.000Z",
+    "location": "Public Dock at Riva dei Vinattieri",
+    "position": {
+      "lat": 45.445546,
+      "lng": 12.334765
+    },
+    "type": "waiting_for_galley_arrival",
+    "title": "Waiting for Galley: porter_equipment at Public Dock at Riva dei Vinattieri",
+    "description": "Building 'Public Dock at Riva dei Vinattieri' (ID: canal_45.445546_12.334765) is out of stock for 'porter_equipment' and is awaiting arrival of the delivering galley 'water_45.43952272623098_12.318264211736404_8'.",
+    "solutions": "Monitor the import contract for 'porter_equipment'. The galley 'water_45.43952272623098_12.318264211736404_8' is still en route or its arrival has not yet been processed. Check galley's 'ConstructionDate'.",
+    "notes": ""
+  },
+  {
+    "id": "recSCfwEHlw9nfjzP",
+    "problemId": "zero_rent_business_leased_building_45.44656355360805_12.320326403648886",
+    "citizen": "NLR",
+    "assetType": "building",
+    "asset": "building_45.44656355360805_12.320326403648886",
+    "severity": "medium",
+    "status": "active",
+    "createdAt": "2025-06-27T02:08:36.698Z",
+    "updatedAt": "2025-06-27T02:08:38.000Z",
+    "location": "Printing House (Under Construction)",
+    "position": {
+      "lat": 45.44656355360805,
+      "lng": 12.320326403648886,
+      "polygonId": "polygon-1746055561861",
+      "pointType": "land"
+    },
+    "type": "zero_rent_business_leased",
+    "title": "Zero Rent for Leased Business",
+    "description": "Your commercial property, **Printing House (Under Construction)**, is being run by **ConsiglioDeiDieci** but has its rent set to 0 Ducats. This means you are not collecting rent from the business operator, missing potential income.",
+    "solutions": "Consider the following actions:\n- Set an appropriate rent amount for the business operator (**ConsiglioDeiDieci**) to pay.\n- Review the lease agreement and terms with the operator.\n- If this zero-rent arrangement is intentional (e.g., a special agreement or subsidiary), you may ignore this notification.",
+    "notes": "Building Category: business. Owner: NLR. Occupant: N/A. RunBy: ConsiglioDeiDieci. RentPrice: 0."
+  },
+  {
+    "id": "recSPBOF7GHeR0Urs",
+    "problemId": "hungry_NLR",
+    "citizen": "NLR",
+    "assetType": "citizen",
+    "asset": "NLR",
+    "severity": "medium",
+    "status": "active",
+    "createdAt": "2025-06-27T02:07:35.157Z",
+    "updatedAt": "2025-06-27T18:41:58.000Z",
+    "location": "Niccol\u00f2's last known area",
+    "position": {
+      "lat": 45.425098802748686,
+      "lng": 12.362717959741016
+    },
+    "type": "hungry_citizen",
+    "title": "Hungry Citizen",
+    "description": "**Niccol\u00f2 Lesteri** has not eaten in over 24 hours and is now hungry. This can affect their well-being and ability to perform tasks effectively.\n\n### Impact\n- Reduced energy and focus.\n- If employed, work productivity may be reduced by up to 50%.\n- Prolonged hunger can lead to more severe health issues (if implemented).",
+    "solutions": "### Recommended Solutions\n- Ensure the citizen consumes food. This might involve visiting a tavern, purchasing food from a market, or using owned food resources.\n- Check if the citizen has sufficient Ducats to afford food.\n- Review game mechanics related to food consumption and ensure the 'AteAt' (or equivalent) field is updated correctly after eating.",
+    "notes": "[Failures: 1]\nCitizen NLR last ate at 2025-06-25T20:16:48.781Z. Current time: 2025-06-27T02:07:35.147Z"
+  },
+  {
+    "id": "recl4SOOcdjH3gKSM",
+    "problemId": "vacant_business_building_45.44656355360805_12.320326403648886",
+    "citizen": "NLR",
+    "assetType": "building",
+    "asset": "building_45.44656355360805_12.320326403648886",
+    "severity": "medium",
+    "status": "active",
+    "createdAt": "2025-06-27T02:07:31.398Z",
+    "updatedAt": "2025-06-27T02:07:33.000Z",
+    "location": "Printing House (Under Construction)",
+    "position": {
+      "lat": 45.44656355360805,
+      "lng": 12.320326403648886,
+      "polygonId": "polygon-1746055561861",
+      "pointType": "land"
+    },
+    "type": "vacant_business",
+    "title": "Vacant Business Premises",
+    "description": "Your commercial property, **Printing House (Under Construction)**, is currently unoccupied. A vacant business premises means no commercial activity, no income generation, and potential loss of economic value for the area.",
+    "solutions": "Consider the following actions:\n- Lease the premises to an entrepreneur or business.\n- Start a new business yourself in this location if you have the resources and a viable idea.\n- Ensure the property is suitable for common business types.\n- If development is not feasible, consider selling the property.",
+    "notes": "Building Category: business. Owner: NLR. No occupant."
+  }
+]
+
+There are 7 available points of type 'building'. Choose the best location for your Bottega by selecting the index of one of these points (0 to 6).
+
+When choosing a location, consider:
+1. Proximity to other buildings of similar type
+2. Rent amounts of existing buildings on this land
+3. Strategic positioning for maximum visibility and income
+4. How your building placement might affect your relationships with other citizens
+
+Your response must be a JSON object with:
+1. selected_point_index: The index of your chosen point (0 to 6)
+2. reason: A brief explanation of why you chose this location
