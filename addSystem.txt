@@ -8,7 +8,7 @@ Here is the complete data about your current situation:
 {
   "citizen": {
     "username": "adriatic_captain",
-    "ducats": 489517.0430695845,
+    "ducats": 507007.74155593466,
     "social_class": "Popolani",
     "description": "Once a master of maritime commerce, Stefano now applies his calculating mercantile instincts to the humble art of breadmaking, treating each loaf as carefully as he once managed precious cargo manifests. His transition from sea captain to baker has humbled his pride but sharpened his adaptability, as he meticulously studies grain markets and customer preferences with the same intensity he once reserved for wind patterns and trade routes. Though the flour dust on his hands has replaced salt spray, his eyes still hold the distant gaze of a man who dreams of commanding vessels again, viewing his current station as merely another port of call in his journey back to maritime prosperity.",
     "core_personality": "{\"Strength\": \"Tenacious\", \"Flaw\": \"Calculating\", \"Drive\": \"Ambition-driven\", \"MBTI\": \"ENTJ\", \"PrimaryTrait\": \"Porter-turned-trader ascending\", \"SecondaryTraits\": [\"Market memory\", \"Social climbing\", \"Strategic accumulation\"], \"CognitiveBias\": [\"Overconfidence bias\", \"Planning fallacy\"], \"TrustThreshold\": 0.3, \"EmpathyWeight\": 0.4, \"RiskTolerance\": 0.6, \"guidedBy\": \"The Porter's Vision\", \"CoreThoughts\": {\"primary_drive\": \"hierarchy-ascension\", \"secondary_drive\": \"wealth-maximization\", \"internal_tension\": \"humble origins vs. grand ambitions\", \"activation_triggers\": [\"advancement_opportunities\", \"status_indicators\", \"wealth_accumulation\"], \"thought_patterns\": [\"Every crate I carried taught me the value of what moves through Venice\", \"My ledger records not just transactions but my climb toward greatness\", \"Patrician merchants underestimate the porter who remembers every cargo\", \"Tenacity transforms small opportunities into substantial gains\", \"My silver hair has earned the right to compete with inherited wealth\", \"The hierarchy will bend to those determined enough to reshape it\"], \"decision_framework\": \"How does this accelerate my ascent through Venice's hierarchy while maximizing wealth?\"}}",
@@ -958,6 +958,13 @@ Here is the complete data about your current situation:
       "district": "Cannaregio",
       "existing_buildings": [
         {
+          "id": "building_45.43804022754618_12.318114645502805",
+          "type": "paper_mill",
+          "owner": "ConsiglioDeiDieci",
+          "income": 0,
+          "maintenance_cost": 0
+        },
+        {
           "id": "building_45.437558_12.315655",
           "type": "market_stall",
           "owner": "ConsiglioDeiDieci",
@@ -1382,6 +1389,13 @@ Here is the complete data about your current situation:
       "has_water_access": false,
       "district": "San Polo",
       "existing_buildings": [
+        {
+          "id": "building_45.43735680581042_12.326245881522368",
+          "type": "automated_mill",
+          "owner": "ConsiglioDeiDieci",
+          "income": 0,
+          "maintenance_cost": 0
+        },
         {
           "id": "building_45.43839918445191_12.326301049069482",
           "type": "house_of_natural_sciences",
@@ -3262,6 +3276,44 @@ Here is the complete data about your current situation:
   ],
   "recent_notifications_for_ai": [
     {
+      "notificationId": "rec93jILOBoji25Uv",
+      "type": "rent_payment",
+      "citizen": "adriatic_captain",
+      "content": "\ud83d\udcec **Rent Received Summary** \ud83d\udcec\nYou received a total of **1,425 \u269c\ufe0f Ducats** from your properties today.\n\nDetails:\n- \u2705 **1,425 \u269c\ufe0f** from **Lorenzo Bellavita** for **Fisherman's Cottage at Fondamenta dei Dorsoduranti**.\n",
+      "details": {
+        "event_type": "landlord_rent_summary",
+        "total_received": 1425,
+        "payments": [
+          {
+            "occupant_name": "Lorenzo Bellavita",
+            "building_name": "Fisherman's Cottage at Fondamenta dei Dorsoduranti",
+            "amount": 1425
+          }
+        ]
+      },
+      "createdAt": "2025-07-02T18:03:03.724Z",
+      "readAt": null
+    },
+    {
+      "notificationId": "recxXYhidmDl7zYPi",
+      "type": "rent_payment",
+      "citizen": "adriatic_captain",
+      "content": "\ud83d\udcec **Rent Received Summary** \ud83d\udcec\nYou received a total of **1,425 \u269c\ufe0f Ducats** from your properties today.\n\nDetails:\n- \u2705 **1,425 \u269c\ufe0f** from **Lorenzo Bellavita** for **Fisherman's Cottage at Fondamenta dei Dorsoduranti**.\n",
+      "details": {
+        "event_type": "landlord_rent_summary",
+        "total_received": 1425,
+        "payments": [
+          {
+            "occupant_name": "Lorenzo Bellavita",
+            "building_name": "Fisherman's Cottage at Fondamenta dei Dorsoduranti",
+            "amount": 1425
+          }
+        ]
+      },
+      "createdAt": "2025-07-02T16:03:44.507Z",
+      "readAt": null
+    },
+    {
       "notificationId": "recvUM6MkfU2f89hp",
       "type": "rent_payment",
       "citizen": "adriatic_captain",
@@ -3621,25 +3673,6 @@ Here is the complete data about your current situation:
       },
       "createdAt": "2025-06-18T18:03:12.281Z",
       "readAt": null
-    },
-    {
-      "notificationId": "recSsHL132JHAECGi",
-      "type": "rent_payment",
-      "citizen": "adriatic_captain",
-      "content": "\ud83d\udcec **Rent Received Summary** \ud83d\udcec\nYou received a total of **1,425 \u269c\ufe0f Ducats** from your properties today.\n\nDetails:\n- \u2705 **1,425 \u269c\ufe0f** from **Lorenzo Bellavita** for **Fisherman's Cottage at Fondamenta dei Dorsoduranti**.\n",
-      "details": {
-        "event_type": "landlord_rent_summary",
-        "total_received": 1425,
-        "payments": [
-          {
-            "occupant_name": "Lorenzo Bellavita",
-            "building_name": "Fisherman's Cottage at Fondamenta dei Dorsoduranti",
-            "amount": 1425
-          }
-        ]
-      },
-      "createdAt": "2025-06-17T18:03:28.917Z",
-      "readAt": null
     }
   ],
   "building_types": {
@@ -3678,6 +3711,26 @@ Here is the complete data about your current situation:
       "buildTier": 1,
       "tier": null,
       "category": "home",
+      "pointType": "building"
+    },
+    "assisted_mill": {
+      "id": "assisted_mill",
+      "type": "assisted_mill",
+      "name": "Assisted Mill",
+      "shortDescription": "Precision mill with mechanical assistance, where human operators work alongside automated systems for enhanced efficiency.",
+      "constructionCost": 2400000,
+      "constructionCosts": {
+        "ducats": 2400000,
+        "timber": 500,
+        "bricks": 1000,
+        "stone": 1400,
+        "iron": 350,
+        "glass": 50
+      },
+      "constructionMinutes": 10080,
+      "buildTier": 2,
+      "tier": null,
+      "category": "business",
       "pointType": "building"
     },
     "bakery": {
@@ -4565,7 +4618,7 @@ Here is the complete data about your current situation:
       "pointType": "building"
     }
   },
-  "timestamp": "2025-07-01T21:07:41.762012+02:00",
+  "timestamp": "2025-07-02T22:01:28.247587+02:00",
   "building_ownership_relevancies": [
     {
       "asset": "canal_45.439843_12.320672",
