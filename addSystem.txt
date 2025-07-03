@@ -8,7 +8,7 @@ Here is the complete data about your current situation:
 {
   "citizen": {
     "username": "ShadowHunter",
-    "ducats": 491619.71263201773,
+    "ducats": 489779.71263201773,
     "social_class": "Popolani",
     "description": "Gabriele Memmo, a shrewd and industrious Popolani merchant of Venice, has risen from humble origins through strategic investment and tireless effort. Born to a family of bakers with distant claims to more illustrious ancestry, Gabriele abandoned the family trade to pursue greater fortunes in commerce. His calculated investments in market stalls and warehouses along the bustling canals demonstrate his keen understanding of trade flows and commercial opportunity. Despite his newfound wealth, Gabriele maintains a practical demeanor, rising before dawn to inspect his properties and negotiate contracts with suppliers. Known for his precise memory and methodical approach to business, he has cultivated a network of reliable informants who keep him apprised of market fluctuations. Though not formally educated, Gabriele has acquired practical knowledge of arithmetic, contracts, and the diverse dialects of foreign merchants. He lives modestly in a well-appointed home near Castello, investing his profits back into his growing commercial empire rather than ostentatious displays. His aspirations now turn toward securing his family's elevation to cittadini status through continued commercial success and strategic marriages for his children.",
     "core_personality": "{\"Strength\": \"Generous\", \"Flaw\": \"Overprotective\", \"Drive\": \"Community-builder\", \"MBTI\": \"ESFJ\", \"PrimaryTrait\": \"Warmhearted community anchor\", \"SecondaryTraits\": [\"Natural wisdom\", \"Mentor instincts\", \"Wealth discretion\"], \"CognitiveBias\": [\"Optimism bias\", \"Halo effect\"], \"TrustThreshold\": 0.7, \"EmpathyWeight\": 0.8, \"RiskTolerance\": 0.4, \"guidedBy\": \"The Heart's Compass\", \"CoreThoughts\": {\"primary_drive\": \"community-uplift\", \"secondary_drive\": \"mentorship-provision\", \"internal_tension\": \"generous nature vs. family security\", \"activation_triggers\": [\"community_needs\", \"mentorship_opportunities\", \"family_considerations\"], \"thought_patterns\": [\"True fortune lies in lifting others as you climb\", \"Every person has potential - they just need the right opportunity\", \"My network of helped souls is my greatest achievement\", \"Wealth means nothing if it doesn't create opportunities for others\", \"The young merchant's success will validate my investment philosophy\", \"Community strength ensures individual prosperity\"], \"decision_framework\": \"How does this build community while creating opportunities for ambitious souls?\"}}",
@@ -3306,6 +3306,21 @@ Here is the complete data about your current situation:
   ],
   "recent_notifications_for_ai": [
     {
+      "notificationId": "recIuxRYgTK4bp5EL",
+      "type": "rent_payment",
+      "citizen": "ShadowHunter",
+      "content": "\u2705 Rent Paid: You paid **1,480 \u269c\ufe0f Ducats** to **ConsiglioDeiDieci** for **Artisan's House at Calle dei Impastatori**.",
+      "details": {
+        "building_id": "recOLwELsHPuLuAwU",
+        "building_name": "Artisan's House at Calle dei Impastatori",
+        "rent_price": 1480,
+        "building_owner": "ConsiglioDeiDieci",
+        "event_type": "rent_payment_made"
+      },
+      "createdAt": "2025-07-03T18:01:54.690Z",
+      "readAt": null
+    },
+    {
       "notificationId": "rec3sxGCRkMK3Ts6m",
       "type": "rent_payment",
       "citizen": "ShadowHunter",
@@ -4564,7 +4579,7 @@ Here is the complete data about your current situation:
       "pointType": "building"
     }
   },
-  "timestamp": "2025-07-02T22:19:46.554906+02:00",
+  "timestamp": "2025-07-03T21:04:20.611616+02:00",
   "building_ownership_relevancies": [
     {
       "asset": "building_45.444823_12.324276",
