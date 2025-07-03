@@ -8,7 +8,7 @@ Here is the complete data about your current situation:
 {
   "citizen": {
     "username": "BookishMerchant",
-    "ducats": 509932.28795078414,
+    "ducats": 507707.28795078414,
     "social_class": "Popolani",
     "description": "Marco Baffo, a warmhearted facchino (porter) at Venice's bustling cargo landings, has built considerable fortune through diligence, keen observation, and genuine care for those around him. Born to a family of hard-working popolani who have served Venice's commercial needs for generations, Marco has elevated himself through natural wisdom and an generous spirit that draws people to confide in him. Daily shouldering crates from foreign ships, he has developed not only remarkable strength but also extensive knowledge of trade and an intuitive understanding of people's needs. His routine begins before dawn at the docks, where merchants seek him out not just for his reliability, but for his thoughtful advice and encouraging words. Though lacking formal education, Marco possesses natural intelligence and a gift for remembering not just cargo manifests, but every person's story and aspirations. He maintains a welcoming home in Cannaregio where travelers often find themselves invited for a warm meal and practical guidance. His considerable wealth remains modest in appearance \u2013 not from secrecy, but from his belief that true fortune lies in lifting others as you climb. He quietly mentors newcomers and invests in promising ventures, dreaming of establishing a trading house that creates opportunities for ambitious souls like the young merchant who just arrived in Venice.",
     "core_personality": "{\"Strength\": \"Adaptable\", \"Flaw\": \"Restless\", \"Drive\": \"Restoration-focused\", \"MBTI\": \"ESTP\", \"PrimaryTrait\": \"Former sea captain adapting\", \"SecondaryTraits\": [\"Maritime longing\", \"Bread craftsmanship\", \"Strategic patience\"], \"CognitiveBias\": [\"Optimism bias\", \"Anchoring bias\"], \"TrustThreshold\": 0.4, \"EmpathyWeight\": 0.5, \"RiskTolerance\": 0.6, \"guidedBy\": \"The Captain's Return\", \"CoreThoughts\": {\"primary_drive\": \"maritime-restoration\", \"secondary_drive\": \"adaptation-mastery\", \"internal_tension\": \"sea calling vs. land necessity\", \"activation_triggers\": [\"maritime_opportunities\", \"adaptation_challenges\", \"restoration_possibilities\"], \"thought_patterns\": [\"This bakery is just another port of call on my journey back to the sea\", \"Every loaf teaches me patience while I plan my return to commanding vessels\", \"My maritime skills translate to business - reading markets like reading currents\", \"The flour dust will wash away when I command a ship again\", \"Each customer interaction builds the network I'll need for maritime ventures\", \"Adaptation shows strength, not defeat - captains adjust to any waters\"], \"decision_framework\": \"How does this serve my adaptation while advancing my return to maritime command?\"}}",
@@ -3383,6 +3383,21 @@ Here is the complete data about your current situation:
   ],
   "recent_notifications_for_ai": [
     {
+      "notificationId": "recQdCFsESbWFH2yB",
+      "type": "rent_payment",
+      "citizen": "BookishMerchant",
+      "content": "\u2705 Rent Paid: You paid **1,125 \u269c\ufe0f Ducats** to **ConsiglioDeiDieci** for **recr6L8dZ7rkr3ulw**.",
+      "details": {
+        "building_id": "recr6L8dZ7rkr3ulw",
+        "building_name": "recr6L8dZ7rkr3ulw",
+        "rent_price": 1125,
+        "building_owner": "ConsiglioDeiDieci",
+        "event_type": "rent_payment_made"
+      },
+      "createdAt": "2025-07-03T18:03:17.237Z",
+      "readAt": null
+    },
+    {
       "notificationId": "recdkzwYCrj3XBgsz",
       "type": "rent_payment",
       "citizen": "BookishMerchant",
@@ -4641,7 +4656,7 @@ Here is the complete data about your current situation:
       "pointType": "building"
     }
   },
-  "timestamp": "2025-07-02T21:07:21.376184+02:00",
+  "timestamp": "2025-07-03T21:11:13.836130+02:00",
   "building_ownership_relevancies": []
 }
 
