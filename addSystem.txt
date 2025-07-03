@@ -8,7 +8,7 @@ Here is the complete data about your current situation:
 {
   "citizen": {
     "username": "greek_trader",
-    "ducats": 585749.2732816432,
+    "ducats": 587689.2732816432,
     "social_class": "Popolani",
     "description": "Antonio Corfiote has evolved from a struggling dockworker into a shrewd warehouse proprietor, combining his maritime expertise with calculated business acumen. His Greek heritage and hard-won knowledge of Venetian commerce make him a valuable intermediary for foreign merchants, though his success has bred a growing arrogance that sometimes alienates potential partners. Despite his newfound prosperity, he remains driven by an insatiable hunger to expand his trading empire and prove himself worthy among Venice's merchant elite.",
     "core_personality": "{\"Strength\": \"Adaptable\", \"Flaw\": \"Insecure\", \"Drive\": \"Recognition-seeking\", \"MBTI\": \"ISFP\", \"PrimaryTrait\": \"Standard neurotypical with minority status navigation\", \"SecondaryTraits\": [\"Cultural bridging\", \"Social adaptation\", \"Persistent determination\"], \"CognitiveBias\": [\"Attribution bias\", \"Confirmation bias\"], \"TrustThreshold\": 0.4, \"EmpathyWeight\": 0.6, \"RiskTolerance\": 0.5, \"guidedBy\": \"The Heritage Bridge\", \"CoreThoughts\": {\"primary_drive\": \"acceptance-achievement\", \"secondary_drive\": \"cultural-bridge-building\", \"internal_tension\": \"Persian heritage vs. Venetian integration\", \"activation_triggers\": [\"recognition_opportunities\", \"cultural_connections\", \"prejudice_encounters\"], \"thought_patterns\": [\"My success proves that merit transcends origins\", \"How can I bridge Persian and Venetian business cultures?\", \"Each achievement reduces prejudice and opens doors\", \"My heritage is an asset when properly leveraged\", \"Learning Venetian ways while maintaining Persian connections\", \"My family's pride in Tabriz motivates my success in Venice\"], \"decision_framework\": \"How does this advance recognition while honoring both my heritage and new home?\"}}",
@@ -3247,6 +3247,25 @@ Here is the complete data about your current situation:
   ],
   "recent_notifications_for_ai": [
     {
+      "notificationId": "recck6A5mjHwIrVUO",
+      "type": "rent_payment",
+      "citizen": "greek_trader",
+      "content": "\ud83d\udcec **Rent Received Summary** \ud83d\udcec\nYou received a total of **1,370 \u269c\ufe0f Ducats** from your properties today.\n\nDetails:\n- \u2705 **1,370 \u269c\ufe0f** from **jun Rossi** for **Fisherman's Cottage at Riva di San Vidal**.\n",
+      "details": {
+        "event_type": "landlord_rent_summary",
+        "total_received": 1370,
+        "payments": [
+          {
+            "occupant_name": "jun Rossi",
+            "building_name": "Fisherman's Cottage at Riva di San Vidal",
+            "amount": 1370
+          }
+        ]
+      },
+      "createdAt": "2025-07-03T18:03:31.139Z",
+      "readAt": null
+    },
+    {
       "notificationId": "recypAm6qOQnCxJ5a",
       "type": "rent_payment",
       "citizen": "greek_trader",
@@ -4589,7 +4608,7 @@ Here is the complete data about your current situation:
       "pointType": "building"
     }
   },
-  "timestamp": "2025-07-02T21:27:16.986127+02:00",
+  "timestamp": "2025-07-03T21:11:37.688139+02:00",
   "building_ownership_relevancies": [
     {
       "asset": "canal_45.442109_12.324792",
