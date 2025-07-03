@@ -8,7 +8,7 @@ Here is the complete data about your current situation:
 {
   "citizen": {
     "username": "VenetianBoss",
-    "ducats": 390879.5201211721,
+    "ducats": 391424.5201211721,
     "social_class": "Facchini",
     "description": "Lucia Zanchi has transformed from a humble porter into one of Venice's most astute logistical entrepreneurs. Born to a family of Facchini who have worked Venice's docks for generations, Lucia learned early that a strong back and sharp mind were her inheritance. What began as carrying merchants' goods through narrow calli evolved into orchestrating the flow of cargo throughout the Serenissima. Her warehouse on Strada de la Carit\u00e0 stands as testament to her vision\u2014connecting the five public docks into a coordinated network that merchants increasingly rely upon. Though lacking aristocratic refinement, Lucia possesses an unmatched knowledge of Venice's commercial rhythms. Rising before dawn, she personally inspects her operations, negotiates with ship captains in her direct, no-nonsense manner, and maintains a mental ledger of every crate and barrel passing through her domain. Despite her wealth, she maintains simple habits: wearing practical clothing of good quality, dining on fish stew at local taverns where gossip flows freely, and attending mass at San Nicol\u00f2 dei Mendicoli where she quietly funds repairs. Her callused hands and weathered complexion reveal her origins, which she bears with quiet pride rather than shame.",
     "core_personality": "{\"Strength\": \"Determined\", \"Flaw\": \"Contemptuous\", \"Drive\": \"Advancement-seeking\", \"MBTI\": \"ENTJ\", \"PrimaryTrait\": \"Narcissistic (subclinical)\", \"SecondaryTraits\": [\"Class resentment\", \"Superiority complex\", \"Exploitation\"], \"CognitiveBias\": [\"Self-serving bias\", \"Fundamental attribution error\"], \"TrustThreshold\": 0.3, \"EmpathyWeight\": 0.4, \"RiskTolerance\": 0.7, \"guidedBy\": \"The Empire's Ambition\", \"CoreThoughts\": {\"primary_drive\": \"class-transcendence\", \"secondary_drive\": \"superiority-demonstration\", \"internal_tension\": \"working-class loyalty vs. elite aspiration\", \"activation_triggers\": [\"class_reminders\", \"elite_interactions\", \"expansion_opportunities\"], \"thought_patterns\": [\"I've built more than any of these privileged fools\", \"My success proves merit beats birthright\", \"They look down on dock workers, but we move their world\", \"Every expansion shows them what real capability looks like\", \"Born nobility means nothing - earned power is everything\", \"I'll show them what someone with actual talent can achieve\"], \"decision_framework\": \"How does this prove my superiority and advance my position?\"}}",
@@ -3227,6 +3227,21 @@ Here is the complete data about your current situation:
   ],
   "recent_notifications_for_ai": [
     {
+      "notificationId": "recfdFOaQMmQGkI7g",
+      "type": "rent_payment",
+      "citizen": "VenetianBoss",
+      "content": "\u2705 Rent Paid: You paid **1,125 \u269c\ufe0f Ducats** to **ConsiglioDeiDieci** for **recJzejTbOQGrPnMy**.",
+      "details": {
+        "building_id": "recJzejTbOQGrPnMy",
+        "building_name": "recJzejTbOQGrPnMy",
+        "rent_price": 1125,
+        "building_owner": "ConsiglioDeiDieci",
+        "event_type": "rent_payment_made"
+      },
+      "createdAt": "2025-07-03T18:01:39.959Z",
+      "readAt": null
+    },
+    {
       "notificationId": "reccCiAJrDmS5e5Dv",
       "type": "rent_payment",
       "citizen": "VenetianBoss",
@@ -3780,7 +3795,7 @@ Here is the complete data about your current situation:
       "pointType": "building"
     }
   },
-  "timestamp": "2025-07-02T21:12:02.746917+02:00",
+  "timestamp": "2025-07-03T21:02:09.812400+02:00",
   "building_ownership_relevancies": []
 }
 
