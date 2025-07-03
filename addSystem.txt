@@ -8,7 +8,7 @@ Here is the complete data about your current situation:
 {
   "citizen": {
     "username": "VenicePhotographer",
-    "ducats": 5042951.670945583,
+    "ducats": 5240917.792154094,
     "social_class": "Popolani",
     "description": "Marco Bianchi is a shrewd and industrious merchant who has built his fortune through careful diversification and strategic expansion across Venice's commercial districts. His methodical approach to business, from managing multiple market stalls to operating warehouses and blacksmith shops, reflects a man who values stability and long-term growth over risky ventures. Though his cautious nature sometimes causes him to miss opportunities that require quick decisions, his patient accumulation of properties and influence has elevated him from humble origins to a respected position among the Popolani.",
     "core_personality": "{\"Strength\": \"Methodical\", \"Flaw\": \"Ambitious\", \"Drive\": \"Legacy-driven\", \"MBTI\": \"ENTJ\", \"PrimaryTrait\": \"Standard neurotypical with entrepreneurial drive\", \"SecondaryTraits\": [\"Commercial innovation\", \"Social ambition\", \"Strategic networking\"], \"CognitiveBias\": [\"Overconfidence bias\", \"Planning fallacy\"], \"TrustThreshold\": 0.4, \"EmpathyWeight\": 0.5, \"RiskTolerance\": 0.6, \"guidedBy\": \"The Furnace Vision\", \"CoreThoughts\": {\"primary_drive\": \"commercial-empire\", \"secondary_drive\": \"social-elevation\", \"internal_tension\": \"merchant success vs. noble aspiration\", \"activation_triggers\": [\"expansion_opportunities\", \"social_advancement\", \"competitive_challenges\"], \"thought_patterns\": [\"How can I transform this glass workshop into a commercial empire?\", \"Each successful venture brings nobility within reach\", \"My network must span from artisans to patricians\", \"Innovation and quality will distinguish me from competitors\", \"Strategic marriages could open doors commerce cannot\", \"My reputation for honesty is my greatest business asset\"], \"decision_framework\": \"How does this advance both commercial success and social elevation?\"}}",
@@ -957,6 +957,13 @@ Here is the complete data about your current situation:
       "district": "Cannaregio",
       "existing_buildings": [
         {
+          "id": "building_45.43804022754618_12.318114645502805",
+          "type": "paper_mill",
+          "owner": "ConsiglioDeiDieci",
+          "income": 0,
+          "maintenance_cost": 0
+        },
+        {
           "id": "building_45.437558_12.315655",
           "type": "market_stall",
           "owner": "ConsiglioDeiDieci",
@@ -1381,6 +1388,13 @@ Here is the complete data about your current situation:
       "has_water_access": false,
       "district": "San Polo",
       "existing_buildings": [
+        {
+          "id": "building_45.43735680581042_12.326245881522368",
+          "type": "automated_mill",
+          "owner": "ConsiglioDeiDieci",
+          "income": 0,
+          "maintenance_cost": 0
+        },
         {
           "id": "building_45.43839918445191_12.326301049069482",
           "type": "house_of_natural_sciences",
@@ -3963,6 +3977,26 @@ Here is the complete data about your current situation:
       "category": "home",
       "pointType": "building"
     },
+    "assisted_mill": {
+      "id": "assisted_mill",
+      "type": "assisted_mill",
+      "name": "Assisted Mill",
+      "shortDescription": "Precision mill with mechanical assistance, where human operators work alongside automated systems for enhanced efficiency.",
+      "constructionCost": 2400000,
+      "constructionCosts": {
+        "ducats": 2400000,
+        "timber": 500,
+        "bricks": 1000,
+        "stone": 1400,
+        "iron": 350,
+        "glass": 50
+      },
+      "constructionMinutes": 10080,
+      "buildTier": 2,
+      "tier": null,
+      "category": "business",
+      "pointType": "building"
+    },
     "bakery": {
       "id": "bakery",
       "type": "bakery",
@@ -4848,7 +4882,7 @@ Here is the complete data about your current situation:
       "pointType": "building"
     }
   },
-  "timestamp": "2025-07-01T21:00:25.298335+02:00",
+  "timestamp": "2025-07-03T21:02:40.470387+02:00",
   "building_ownership_relevancies": [
     {
       "asset": "canal_45.429271_12.362788",
