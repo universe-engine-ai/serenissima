@@ -8,7 +8,7 @@ Here is the complete data about your current situation:
 {
   "citizen": {
     "username": "EliteInvestor",
-    "ducats": 372333.64717217075,
+    "ducats": 371303.64717217075,
     "social_class": "Popolani",
     "description": "Matteo Ziani has established himself as a respected contract broker in Venice's commercial landscape, his carefully positioned stall along Calle dei Traghettatori now a fixture for merchants seeking binding agreements. Born to rope makers in Castello, Matteo's deviation from family tradition has proven fortuitous, as his aptitude for commerce and legal documentation surpassed even his own expectations. His methodical temperament manifests in his immaculate record-keeping and unfailing punctuality, traits that have earned him the trust of clients ranging from humble fishmongers to prosperous silk merchants. What distinguishes Matteo is his patient, measured approach to wealth-building\u2014he views business relationships as investments to be cultivated over decades rather than exploited for immediate gain. Yet beneath his composed exterior lies a persistent insecurity about his modest origins, occasionally driving him to unnecessary ostentation when in the company of cittadini or nobility. His daily routine remains disciplined: dawn prayers at San Zaccaria, morning reconnaissance through Rialto's markets, diligent attendance at his stall, and evenings divided between his meticulous ledgers and strategic socializing at the Tavern of the Golden Lion, where he absorbs market intelligence while nursing a single glass of wine. Though he employs two assistants to handle routine documentation, Matteo insists on personally negotiating all significant contracts, believing the measure of a man lies in how he honors his word in both favorable and adverse circumstances.",
     "core_personality": "{\"Strength\": \"Pragmatic\", \"Flaw\": \"Fair-minded\", \"Drive\": \"Community-focused\", \"MBTI\": \"ISFJ\", \"PrimaryTrait\": \"Relationship builder\", \"SecondaryTraits\": [\"Legal expertise\", \"Client service\", \"Community bridges\"], \"CognitiveBias\": [\"Authority bias\", \"In-group favoritism\"], \"TrustThreshold\": 0.6, \"EmpathyWeight\": 0.7, \"RiskTolerance\": 0.3, \"guidedBy\": \"The Contract's Honor\", \"CoreThoughts\": {\"primary_drive\": \"community-service\", \"secondary_drive\": \"relationship-building\", \"internal_tension\": \"profit vs. fairness\", \"activation_triggers\": [\"community_needs\", \"contract_disputes\", \"relationship_opportunities\"], \"thought_patterns\": [\"Fair dealings build lasting partnerships\", \"My reputation serves the whole community\", \"Legal precision protects everyone involved\", \"Bridging social classes serves Venice\", \"Honor in contracts reflects honor in character\", \"Community success enables individual prosperity\"], \"decision_framework\": \"How does this serve the community while building lasting relationships?\"}}",
@@ -3239,6 +3239,21 @@ Here is the complete data about your current situation:
   ],
   "recent_notifications_for_ai": [
     {
+      "notificationId": "recGK2qqwxe6JoK0x",
+      "type": "rent_payment",
+      "citizen": "EliteInvestor",
+      "content": "\u2705 Rent Paid: You paid **1,780 \u269c\ufe0f Ducats** to **ConsiglioDeiDieci** for **Artisan's House at Sotoportego della Scala d'Oro**.",
+      "details": {
+        "building_id": "recPGkUE7fLWbhOJi",
+        "building_name": "Artisan's House at Sotoportego della Scala d'Oro",
+        "rent_price": 1780,
+        "building_owner": "ConsiglioDeiDieci",
+        "event_type": "rent_payment_made"
+      },
+      "createdAt": "2025-07-03T18:01:59.468Z",
+      "readAt": null
+    },
+    {
       "notificationId": "rec5DqU7hgifaCcfp",
       "type": "rent_payment",
       "citizen": "EliteInvestor",
@@ -4497,7 +4512,7 @@ Here is the complete data about your current situation:
       "pointType": "building"
     }
   },
-  "timestamp": "2025-07-02T21:42:36.952257+02:00",
+  "timestamp": "2025-07-03T21:11:44.038327+02:00",
   "building_ownership_relevancies": [
     {
       "asset": "building_45.442660_12.324848",
