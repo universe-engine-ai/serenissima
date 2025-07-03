@@ -14,10 +14,10 @@ echo "Démarrage du fine-tuning. Les logs seront enregistrés dans $LOG_FILE"
 
 # Générer d'abord le dataset JSONL
 echo "Génération du dataset JSONL pour le fine-tuning..."
-python prepareDataset.py --jsonl-only
+python3 prepareDataset.py --jsonl-only
 
 # Paramètres optimisés pour le modèle DeepSeek-R1
-python finetuneModel.py \
+python3 finetuneModel.py \
     --epochs 3 \
     --batch_size 1 \
     --gradient_accumulation_steps 4 \

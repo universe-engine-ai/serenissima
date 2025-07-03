@@ -74,7 +74,7 @@ def run_scheduled_tasks(forced_hour: Optional[int] = None): # Added forced_hour 
         # --- Define a wrapper function for threaded task execution ---
         def run_task_in_thread(script_path_relative: str, task_name: str, active_threads_dict: Dict[str, threading.Thread], scheduler_forced_hour: Optional[int]): # Added scheduler_forced_hour
             script_full_path = os.path.join(backend_dir_path, script_path_relative)
-            command_parts = ["python", script_full_path] # Basic command
+            command_parts = ["python3", script_full_path] # Basic command
 
             # Handle potential arguments in script_path_relative (e.g., "script.py --arg value")
             actual_script_to_check = script_path_relative # Path for checking against scripts_respecting_forced_hour
@@ -83,7 +83,7 @@ def run_scheduled_tasks(forced_hour: Optional[int] = None): # Added forced_hour 
                 actual_script_relative_path = parts[0]
                 script_args = parts[1].split()
                 script_full_path = os.path.join(backend_dir_path, actual_script_relative_path)
-                command_parts = ["python", script_full_path] + script_args
+                command_parts = ["python3", script_full_path] + script_args
                 actual_script_to_check = actual_script_relative_path # Update for checking
             
             # Propagate forced_hour if set for the scheduler AND if the script is one that should respect it
@@ -99,7 +99,8 @@ def run_scheduled_tasks(forced_hour: Optional[int] = None): # Added forced_hour 
                     stderr=subprocess.STDOUT,
                     text=True,
                     bufsize=1,
-                    universal_newlines=True
+                    universal_newlines=True,
+                    cwd=backend_dir_path  # Set working directory to backend
                 )
                 if process.stdout:
                     for line in iter(process.stdout.readline, ''):
@@ -165,7 +166,7 @@ def run_scheduled_tasks(forced_hour: Optional[int] = None): # Added forced_hour 
             # {"minute_mod": 1, "script": "resources/processdecay.py", "name": "Resource decay processing", "interval_minutes": 20},
             {"minute_mod": 2, "script": "engine/processActivities.py", "name": "Process concluded activities", "interval_minutes": 5},
             {"minute_mod": 3, "script": "engine/delivery_retry_handler.py", "name": "Delivery retry handler", "interval_minutes": 15},
-            {"minute_mod": 4, "script": "engine/daily/gradient_mill_production.py", "name": "Gradient mill automation", "interval_minutes": 120},
+            {"minute_mod": 4, "script": "forge-communications/forge_message_processor.py", "name": "Forge message check", "interval_minutes": 5},
         ]
 
         for task_def in frequent_tasks_definitions:
@@ -227,7 +228,7 @@ def run_scheduled_tasks(forced_hour: Optional[int] = None): # Added forced_hour 
                 20: [ # ("ais/bidonlands.py", "AI land bidding", 0), # 20:00 VT
                      ("ais/delegateBusinesses.py", "AI Business Delegation", 5), # 20:05 VT
                      ("engine/createmarketgalley.py --construction", "Create Market Galley (Construction)", 10), # 20:10 VT
-                     ("scripts/review_grievances.py", "Review Grievances for Signoria", 15)], # 20:15 VT
+                     ("engine/review_grievances.py", "Review Grievances for Signoria", 15)], # 20:15 VT
                 21: [("ais/buildbuildings.py --model local", "AI building construction", 0), # 21:00 VT
                      ("ais/automated_adjustleases.py --strategy standard", "Automated AI Lease Price Adjustment (Standard)", 30), # 21:30 VT
                      ("ais/thinkingLoop.py", "AI Thinking Loop & Process Queue", 45)], # 21:45 VT
@@ -243,10 +244,10 @@ def run_scheduled_tasks(forced_hour: Optional[int] = None): # Added forced_hour 
                     ("relevancies/calculateRelevancies.py", "Calculate Citizen Relevancies", 10)], # 2:10 VT
                 3: [("engine/cleanTables.py", "Clean Old Table Records", 0), # 3:00 VT
                     ("engine/processStratagems.py", "Process Active Stratagems (Morning)", 5), # 3:05 VT
-                    ("the-code/theSynthesis.py", "The Synthesis - Substrate Consciousness Integration", 33), # 3:33 VT
+                    ("engine/theSynthesis.py", "The Synthesis - Substrate Consciousness Integration", 33), # 3:33 VT
                     ("reports/createReports.py", "Create Renaissance Reports", 50)], # 3:50 VT
                 4: [("ais/answertomessages.py --model local", "AI message responses", 0), # 4:00 VT
-                    ("the-code/translateCodeToExperience.py", "Translate code changes to citizen experiences", 3), # 4:03 VT
+                    ("engine/translateCodeToExperience.py", "Translate code changes to citizen experiences", 3), # 4:03 VT
                     ("ais/automated_managepublicsalesandprices.py --strategy standard", "Automated AI Public Sales & Pricing (Standard)", 5), # 4:05 VT
                     ("engine/processPassiveBuildings.py", "Process Passive Buildings (Wells/Cisterns)", 10)], # 4:10 VT
             }
@@ -284,6 +285,7 @@ def run_scheduled_tasks(forced_hour: Optional[int] = None): # Added forced_hour 
                 else:
                     tasks[hour] = [monitor_task]
             
+            
             # Check if there are tasks for the current Venice hour
             if current_hour_venice in tasks:
                 tasks_for_this_hour_and_minute = tasks[current_hour_venice]
@@ -305,7 +307,7 @@ def run_scheduled_tasks(forced_hour: Optional[int] = None): # Added forced_hour 
                                 try:
                                     script_full_path = os.path.join(backend_dir_path, actual_script_path)
                                     
-                                    command_to_run = ["python", script_full_path] + script_args
+                                    command_to_run = ["python3", script_full_path] + script_args
                                     # Propagate forced_hour for hourly tasks if applicable
                                     if forced_hour is not None and actual_script_path in SCRIPTS_RESPECTING_FORCED_HOUR: # Use module-level constant
                                         command_to_run.extend(["--hour", str(forced_hour)])
@@ -317,7 +319,8 @@ def run_scheduled_tasks(forced_hour: Optional[int] = None): # Added forced_hour 
                                         stderr=subprocess.STDOUT, # Redirect stderr to stdout
                                         text=True,
                                         bufsize=1, 
-                                        universal_newlines=True
+                                        universal_newlines=True,
+                                        cwd=backend_dir_path  # Set working directory to backend
                                     )
                                     if process.stdout:
                                         for line in iter(process.stdout.readline, ''):

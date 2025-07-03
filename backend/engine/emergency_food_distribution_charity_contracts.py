@@ -243,7 +243,6 @@ def create_charity_food_contracts(tables: Dict[str, Table], food_sources: List[D
                         'SellerBuilding': source['seller_building'],
                         'TargetAmount': float(units_needed),
                         'PricePerResource': 0.0,  # Free for citizens
-                        'OriginalPrice': source['price_per_resource'],  # Store original price for reimbursement
                         'Status': 'active',
                         'Priority': 10,  # High priority for emergency food
                         'CreatedAt': now_utc.isoformat(),
@@ -253,7 +252,8 @@ def create_charity_food_contracts(tables: Dict[str, Table], food_sources: List[D
                         'Notes': json.dumps({
                             'purpose': 'emergency_food_distribution',
                             'sponsor': 'ConsiglioDeiDieci',
-                            'original_contract': source['contract']['fields'].get('ContractId')
+                            'original_contract': source['contract']['fields'].get('ContractId'),
+                            'original_price': source['price_per_resource']  # Store original price in Notes for reimbursement
                         })
                     }
                     

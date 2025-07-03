@@ -17,10 +17,10 @@ pushd %~dp0\..\
 REM Check if a username was provided
 if "%1"=="" (
     echo Running training for all Scientisti with model: %MODEL%
-    python scripts\test_scientisti_activities.py --model %MODEL% --activity all
+    python3 scripts\test_scientisti_activities.py --model %MODEL% --activity all
 ) else (
     echo Running training for %1 with model: %MODEL%
-    python scripts\test_scientisti_activities.py --username %1 --model %MODEL% --activity all
+    python3 scripts\test_scientisti_activities.py --username %1 --model %MODEL% --activity all
 )
 
 REM Return to original directory

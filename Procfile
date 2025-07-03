@@ -1,1 +1,1 @@
-web: cd backend && python run.py
+web: cd backend && python3 run.py

@@ -121,7 +121,6 @@ def try_create(
         "TargetCitizen": target_citizen_username,
         "Status": "active",
         "Category": "economic",
-        "Nature": "neutral",  # Could be benevolent or neutral depending on context
         "Name": custom_name or f"Transfer {amount} ducats to {target_citizen_username}",
         "Description": custom_description or f"{citizen_username} transfers {amount} ducats to {target_citizen_username}. Reason: {reason}",
         "Notes": json.dumps({

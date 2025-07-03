@@ -5,11 +5,11 @@
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build",
-    "start": "cd backend && python run.py",
+    "start": "cd backend && python3 run.py",
     "start:next": "next start",
     "lint": "next lint",
     "backend:install": "pip install -r backend/requirements.txt",
-    "backend:dev": "cd backend && python run.py",
+    "backend:dev": "cd backend && python3 run.py",
     "calculate-centroids": "node scripts/calculate-centroids.js",
     "cleanup-polygons": "node scripts/cleanup-polygons.js",
     "name-polygons": "node scripts/name-polygons.js",
