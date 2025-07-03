@@ -53,7 +53,7 @@ def try_create(
     
     # Choose the nearest or a random science building
     science_building = random.choice(science_buildings)
-    building_id = science_building['id']
+    building_id = science_building['fields'].get('BuildingId', science_building['id'])
     building_name = science_building['fields'].get('Name', 'House of Natural Sciences')
     
     # Ask citizen what they want to research via KinOS

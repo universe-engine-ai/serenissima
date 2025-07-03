@@ -174,23 +174,6 @@ def dispatch_specific_activity_request(
         log.error(f"Error in dispatch_specific_activity_request for {citizen_username}, type {activity_type}: {e}", exc_info=True)
         return {"success": False, "message": f"Error creating activity: {str(e)}", "activity": None, "reason": "internal_error"}
 
-def dispatch_specific_activity_request_wrapper(*args, **kwargs):
-    """
-    Emergency wrapper to fix the citizen_record_full parameter bug
-    This is causing citizens with money to be unable to eat!
-    """
-    # If citizen_record_full is passed, rename it to citizen_record
-    if 'citizen_record_full' in kwargs:
-        print(f"EMERGENCY FIX: Converting citizen_record_full to citizen_record for {kwargs.get('activity_type', 'unknown activity')}")
-        kwargs['citizen_record'] = kwargs.pop('citizen_record_full')
-    
-    # Call the original function
-    return dispatch_specific_activity_request_original(*args, **kwargs)
-
-# Apply the emergency wrapper
-dispatch_specific_activity_request_original = dispatch_specific_activity_request
-dispatch_specific_activity_request = dispatch_specific_activity_request_wrapper
-print("FOOD CRISIS FIX APPLIED: dispatch_specific_activity_request now handles citizen_record_full parameter")
 
 # ==============================================================================
 # AUTONOMOUS AI DECISION ENGINE

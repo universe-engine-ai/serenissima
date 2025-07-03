@@ -130,8 +130,6 @@ def try_create(
             "sender_balance_before": sender_ducats,
             "created_at": now_utc_dt.isoformat()
         }),
-        "InfluenceCost": 0,  # No influence cost for simple transfers
-        "CreatedAt": now_utc_dt.isoformat(),
         "ExpiresAt": expires_at.isoformat()
     }
     

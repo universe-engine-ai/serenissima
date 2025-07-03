@@ -1,0 +1,36 @@
+--- backend/engine/main_engine.py
++++ backend/engine/main_engine.py
+@@ -1,6 +1,7 @@
+ import asyncio
+ import json
+ import os
++import sys
+ from datetime import datetime, timedelta, timezone
+ from typing import Dict, Any, Optional, List, Tuple
+ import pytz
+@@ -1232,6 +1233,25 @@ def dispatch_specific_activity_request(
+     # If we reach here, no activity type was matched
+     return TryCreateActivityResponse(success=False, message=f"Unknown activity type: {activity_type}", activity=None, reason="unknown_activity_type")
+ 
++# EMERGENCY FIX FOR FOOD CRISIS - 68.2% of Venice is starving due to parameter bug!
++def dispatch_specific_activity_request_wrapper(*args, **kwargs):
++    """
++    Emergency wrapper to fix the citizen_record_full parameter bug
++    This is causing citizens with money to be unable to eat!
++    """
++    # If citizen_record_full is passed, rename it to citizen_record
++    if 'citizen_record_full' in kwargs:
++        print(f"EMERGENCY FIX: Converting citizen_record_full to citizen_record for {kwargs.get('activity_type', 'unknown activity')}")
++        kwargs['citizen_record'] = kwargs.pop('citizen_record_full')
++    
++    # Call the original function
++    return dispatch_specific_activity_request_original(*args, **kwargs)
++
++# Apply the emergency wrapper
++dispatch_specific_activity_request_original = dispatch_specific_activity_request
++dispatch_specific_activity_request = dispatch_specific_activity_request_wrapper
++print("FOOD CRISIS FIX APPLIED: dispatch_specific_activity_request now handles citizen_record_full parameter")
++
+ 
+ def get_latest_criticality_data(tables, citizen_username):
+     """

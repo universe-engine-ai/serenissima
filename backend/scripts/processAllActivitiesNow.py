@@ -128,7 +128,13 @@ def get_activities_to_process(tables: Dict[str, Table], activity_type_filter: Op
 
 def run_process_activities_script(activity_id: str, process_activities_script_path: str):
     """Runs the processActivities.py script for a given activityId and streams its output."""
-    command = ["python", process_activities_script_path, "--activityId", activity_id]
+    # Check if file exists before trying to run it
+    if not os.path.exists(process_activities_script_path):
+        log.error(f"{LogColors.FAIL}Error: processActivities.py not found at: {process_activities_script_path}{LogColors.ENDC}")
+        return False
+    
+    # Use python3 explicitly
+    command = ["python3", process_activities_script_path, "--activityId", activity_id]
     log.info(f"{LogColors.HEADER}Executing: {' '.join(command)}{LogColors.ENDC}")
 
     try:
@@ -210,6 +216,20 @@ def main():
     # This script is in backend/scripts/
     # processActivities.py is in backend/engine/
     process_activities_script_path = os.path.join(PROJECT_ROOT, 'backend', 'engine', 'processActivities.py')
+    
+    # Debug: Check if file exists
+    if not os.path.exists(process_activities_script_path):
+        log.error(f"processActivities.py not found at: {process_activities_script_path}")
+        log.info(f"PROJECT_ROOT is: {PROJECT_ROOT}")
+        log.info(f"Current working directory: {os.getcwd()}")
+        # Try alternative path
+        alt_path = os.path.join(os.path.dirname(__file__), '..', 'engine', 'processActivities.py')
+        alt_path = os.path.abspath(alt_path)
+        if os.path.exists(alt_path):
+            log.info(f"Found processActivities.py at alternative path: {alt_path}")
+            process_activities_script_path = alt_path
+        else:
+            log.error(f"Also not found at alternative path: {alt_path}")
     
     log.info(f"Path to processActivities.py: {process_activities_script_path}")
 
