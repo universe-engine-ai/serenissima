@@ -3,254 +3,228 @@
 
 You are NLR, an AI citizen in La Serenissima.
 
-You previously decided to build a Bottega (bottega) on land polygon-1746056541940.
+You previously decided to build a Dairy (dairy) on land polygon-1746055501491.
 This building requires a point of type: 'building'.
 
 Here is information about the land:
 [
   {
-    "id": "polygon-1746056541940",
+    "id": "polygon-1746055501491",
     "centroid": {
-      "lat": 45.43468183293921,
-      "lng": 12.332321914793447
+      "lat": 45.44548029748454,
+      "lng": 12.31841549524978
     },
     "center": {
-      "lat": 45.43481313220121,
-      "lng": 12.332612228671616
+      "lat": 45.44517188300786,
+      "lng": 12.318294909009103
     },
     "bridgePoints": [
       {
         "edge": {
-          "lat": 45.43554788471423,
-          "lng": 12.333609311630171
+          "lat": 45.44493984216476,
+          "lng": 12.319347371296097
         },
         "connection": {
-          "targetPolygonId": "polygon-1746056351603",
-          "targetPointIndex": 5,
-          "targetPoint": {
-            "lat": 45.435638711530544,
-            "lng": 12.333659773771037
-          },
-          "distance": 10.839860579680321,
-          "id": "e5464c4c-71db-41c5-8b31-ddc794721f77",
-          "historicalName": "Ponte degli Avvocati",
-          "englishName": "Bridge of the Lawyers",
-          "historicalDescription": "Named after the lawyers who had their offices along Calle dei Avvocati in the San Marco district. During the Renaissance, Venice had a sophisticated legal system, and many advocates worked near the governmental buildings in this area to serve the nobili families and merchants requiring legal services.",
-          "location": {
-            "midpoint": {
-              "lat": 45.435593298122384,
-              "lng": 12.333634542700604
-            }
-          }
-        },
-        "id": "bridge_45.435548_12.333609"
-      },
-      {
-        "edge": {
-          "lat": 45.434377183984104,
-          "lng": 12.33341082816307
-        },
-        "connection": {
-          "targetPolygonId": "polygon-1746056582235",
-          "targetPointIndex": 4,
-          "targetPoint": {
-            "lat": 45.43438676109713,
-            "lng": 12.333545177134697
-          },
-          "distance": 10.536978113720432,
-          "id": "2c976cdc-dbde-48bb-9ac3-5a2cf8e81dd1",
-          "historicalName": "Ponte della Giustizia",
-          "englishName": "Bridge of Justice",
-          "historicalDescription": "Located near the San Marco district where many legal proceedings took place, this bridge would have been crossed by those seeking justice at the courts. The proximity to Calle dei Avvocati makes this name particularly appropriate as lawyers would traverse this bridge daily on their way to various tribunals.",
-          "location": {
-            "midpoint": {
-              "lat": 45.43438197254062,
-              "lng": 12.333478002648883
-            }
-          }
-        },
-        "id": "bridge_45.434377_12.333411"
-      },
-      {
-        "edge": {
-          "lat": 45.43409944494489,
-          "lng": 12.332992403556746
-        },
-        "connection": {
-          "targetPolygonId": "polygon-1746056582235",
+          "targetPolygonId": "polygon-1746055488132",
           "targetPointIndex": 3,
           "targetPoint": {
-            "lat": 45.434078083599196,
-            "lng": 12.333057015093987
+            "lat": 45.444858547252394,
+            "lng": 12.319527615741897
           },
-          "distance": 5.573079692276663,
-          "id": "2c976cdc-dbde-48bb-9ac3-5a2cf8e81dd1",
-          "historicalName": "Ponte dei Magistrati",
-          "englishName": "Bridge of the Magistrates",
-          "historicalDescription": "Named for the Venetian magistrates who would have used this crossing while moving between government buildings in the San Marco area. The Republic of Venice had numerous magistracies and courts, many of which were located near Calle dei Avvocati, making this a fitting name for a bridge in this area.",
+          "distance": 16.716497603654833,
+          "id": "730687b6-14b5-4182-82f6-41f2277a838e",
+          "historicalName": "Ponte dei Tintori di Scarlatto",
+          "englishName": "Bridge of the Scarlet Dyers",
+          "historicalDescription": "Named after the 'tintori' (dyers) who specialized in scarlet fabric in this area of Castello. The name 'Calle del Scarlatto' itself indicates this was a location where scarlet dyeing took place, an important and prestigious craft in Renaissance Venice that produced the vibrant red textiles favored by Venetian nobility.",
           "location": {
             "midpoint": {
-              "lat": 45.43408876427205,
-              "lng": 12.333024709325366
+              "lat": 45.444899194708576,
+              "lng": 12.319437493518997
             }
           }
         },
-        "id": "bridge_45.434099_12.332992"
+        "id": "bridge_45.444940_12.319347"
       },
       {
         "edge": {
-          "lat": 45.433783237096506,
-          "lng": 12.33200409947953
+          "lat": 45.445289109542585,
+          "lng": 12.319819440082718
         },
         "connection": {
-          "targetPolygonId": "polygon-1746056735293",
-          "targetPointIndex": 5,
+          "targetPolygonId": "polygon-1746055488132",
+          "targetPointIndex": 2,
           "targetPoint": {
-            "lat": 45.433653149632796,
-            "lng": 12.33201584158186
+            "lat": 45.44521082607295,
+            "lng": 12.319984664158035
           },
-          "distance": 14.49405418325994,
-          "id": "3c6ec218-c4dd-4842-81e6-452a40832112",
-          "historicalName": "Ponte del Tribunale",
-          "englishName": "Bridge of the Tribunal",
-          "historicalDescription": "This name references the tribunals and courts that were essential to Venetian governance. As Calle dei Avvocati was home to many lawyers, this bridge would have connected their offices to the various judicial buildings where cases were heard, creating a natural thoroughfare for legal professionals.",
+          "distance": 15.553648504502734,
+          "id": "730687b6-14b5-4182-82f6-41f2277a838e",
+          "historicalName": "Ponte dei Arsenalotti",
+          "englishName": "Bridge of the Arsenal Workers",
+          "historicalDescription": "Located near the Venetian Arsenal, this bridge would have been frequently crossed by the 'arsenalotti' (arsenal workers) who were highly respected craftsmen in Renaissance Venice. The Castello district housed the Arsenal, the largest pre-industrial production complex in Europe, and many bridges in this area connected the arsenal workers' residences to their workplace.",
           "location": {
             "midpoint": {
-              "lat": 45.433718193364655,
-              "lng": 12.332009970530695
+              "lat": 45.44524996780777,
+              "lng": 12.319902052120376
             }
           }
         },
-        "id": "bridge_45.433783_12.332004"
-      },
-      {
-        "edge": {
-          "lat": 45.43518733514655,
-          "lng": 12.33127453862748
-        },
-        "connection": {
-          "targetPolygonId": "polygon-1746056559199",
-          "targetPointIndex": 0,
-          "targetPoint": {
-            "lat": 45.435190442155964,
-            "lng": 12.331192879828636
-          },
-          "distance": 6.380968416397773,
-          "id": "07b2f2a3-3679-4dfa-aeb4-8191d1b557ff",
-          "historicalName": "Ponte dei Procuratori",
-          "englishName": "Bridge of the Procurators",
-          "historicalDescription": "Named after the Procurators of Saint Mark, who were among the most prestigious officials in Venice. They administered properties, executed wills, and served as guardians for orphans. Their offices were located in the San Marco district, not far from Calle dei Avvocati, and they would have been important clients for the lawyers working in the area.",
-          "location": {
-            "midpoint": {
-              "lat": 45.435188888651254,
-              "lng": 12.331233709228059
-            }
-          }
-        },
-        "id": "bridge_45.435187_12.331275"
+        "id": "bridge_45.445289_12.319819"
       }
     ],
     "canalPoints": [
       {
         "edge": {
-          "lat": 45.436000006956206,
-          "lng": 12.331999360641369
+          "lat": 45.44628006235588,
+          "lng": 12.317842652038742
         },
         "water": {
-          "lat": 45.436177276986086,
-          "lng": 12.33195598307252
+          "lat": 45.44644077564895,
+          "lng": 12.317727538807144
         },
-        "historicalName": "Fondamenta degli Avvocati",
-        "englishName": "Foundation of the Lawyers",
-        "historicalDescription": "This dock would have served the legal professionals who had offices in the nearby Calle dei Avvocati (Street of the Lawyers) in the San Marco district. During the Renaissance, Venice had a sophisticated legal system, and advocates or lawyers formed an important professional class who served both the Republic's courts and private clients. This landing would have been a convenient access point for lawyers traveling to and from the Ducal Palace, where many legal proceedings took place.",
-        "id": "canal_45.436000_12.331999"
+        "historicalName": "Fondamenta degli Scarlattieri",
+        "englishName": "Foundation of the Scarlet Dyers",
+        "historicalDescription": "Named after the scarlet cloth dyers who operated workshops in this area of Castello during the Renaissance. The name 'Scarlatto' (Scarlet) in Calle del Scarlatto directly references this trade, which was highly regulated by the Venetian Republic due to the valuable dyes used in creating the vibrant red cloths favored by nobility.",
+        "id": "canal_45.446280_12.317843"
+      },
+      {
+        "edge": {
+          "lat": 45.44586794996072,
+          "lng": 12.317346443370987
+        },
+        "water": {
+          "lat": 45.44595053423502,
+          "lng": 12.317118695893496
+        },
+        "historicalName": "Riva di San Martino",
+        "englishName": "Bank of Saint Martin",
+        "historicalDescription": "This dock would be named after the nearby Church of San Martino in Castello, one of the historic parish churches in this sestiere. During the Renaissance, many Venetian docks were named after the closest religious landmarks, which served as important navigation and community reference points. San Martino was particularly important to the working-class residents of Castello.",
+        "id": "canal_45.445868_12.317346"
+      },
+      {
+        "edge": {
+          "lat": 45.44545583756556,
+          "lng": 12.316850234703232
+        },
+        "water": {
+          "lat": 45.44545183237047,
+          "lng": 12.31659393075336
+        },
+        "historicalName": "Fondamenta dei Arsenalotti",
+        "englishName": "Foundation of the Arsenal Workers",
+        "historicalDescription": "Located in Castello near the great Venetian Arsenal, this dock would serve the specialized workers (Arsenalotti) who built and maintained Venice's renowned fleet. The Arsenalotti held special privileges in Venetian society and many lived in this eastern part of the city to be close to their workplace. This landing would have been used for transporting materials and workers to the nearby shipyards.",
+        "id": "canal_45.445456_12.316850"
       }
     ],
     "buildingPoints": [
       {
-        "lat": 45.43405493505779,
-        "lng": 12.332094624183112,
-        "streetName": "Calle dei Procuratori",
-        "streetNameEnglish": "Street of the Procurators",
-        "streetDescription": "Named after the Procurators of San Marco, high-ranking officials who administered the basilica's finances and properties. This street would be appropriately located near San Marco, where these officials worked and often lived.",
-        "id": "building_45.434055_12.332095"
+        "lat": 45.44438323565449,
+        "lng": 12.317748443870578,
+        "streetName": "Calle dei Tintori Scarlatti",
+        "streetNameEnglish": "Street of the Scarlet Dyers",
+        "streetDescription": "Named after the scarlet dye workshops once located in this area of Castello. Scarlet cloth was a prestigious export of Venice, and the tintori (dyers) who specialized in creating this vibrant red color formed an important guild. This street would have housed several of these specialized artisans.",
+        "id": "building_45.444383_12.317748"
       },
       {
-        "lat": 45.43439320867809,
-        "lng": 12.332231822324346,
-        "streetName": "Ruga dei Notai",
-        "streetNameEnglish": "Row of the Notaries",
-        "streetDescription": "A 'ruga' typically indicated a commercial street. This one would have housed notaries who worked closely with the avvocati (lawyers) in the San Marco district, drafting legal documents and contracts for Venetian merchants and nobility.",
-        "id": "building_45.434393_12.332232"
+        "lat": 45.44485792944827,
+        "lng": 12.317615200868682,
+        "streetName": "Fondamenta della Lana Scarlatta",
+        "streetNameEnglish": "Foundation of the Scarlet Wool",
+        "streetDescription": "A waterside street where boats would deliver raw wool to be dyed scarlet. The location near a canal would be practical for the transportation of materials and finished products. The name reflects the connection between the wool trade and the scarlet dyeing industry prevalent in this part of Castello.",
+        "id": "building_45.444858_12.317615"
       },
       {
-        "lat": 45.43437306251359,
-        "lng": 12.332840250201912,
-        "streetName": "Salizada dei Giudici",
-        "streetNameEnglish": "Paved Street of the Judges",
-        "streetDescription": "A 'salizada' was a paved street, among the first to receive stone paving. This one references the judges who would have worked in the nearby courts of San Marco, forming part of Venice's sophisticated legal system alongside the avvocati.",
-        "id": "building_45.434373_12.332840"
+        "lat": 45.44480725352605,
+        "lng": 12.318309900406815,
+        "streetName": "Calle dei Grimani",
+        "streetNameEnglish": "Grimani Street",
+        "streetDescription": "Named after the noble Grimani family who owned property in this area of Castello. The Grimani were a powerful nobili family who contributed several Doges to Venice and were known patrons of the arts. Their presence in this district would have been marked by family palaces or properties.",
+        "id": "building_45.444807_12.318310"
       },
       {
-        "lat": 45.434819961731385,
-        "lng": 12.332664187768932,
-        "streetName": "Sottoportego della Giustizia",
-        "streetNameEnglish": "Passageway of Justice",
-        "streetDescription": "A 'sottoportego' is a covered passageway beneath a building. This one would lead toward the courts or legal offices, symbolizing the path to justice in Renaissance Venice's sophisticated legal system.",
-        "id": "building_45.434820_12.332664"
+        "lat": 45.44528070353046,
+        "lng": 12.317085158653107,
+        "streetName": "Rio Ter\u00e0 dei Arsenalotti",
+        "streetNameEnglish": "Filled Canal of the Arsenal Workers",
+        "streetDescription": "A former canal that was filled in and converted to a street, located near the Venetian Arsenal. The Arsenalotti were the specialized workers of the Arsenal shipyard, who held special privileges and formed a distinct social class in Venice. This area of Castello was home to many Arsenal workers due to its proximity to the shipyards.",
+        "id": "building_45.445281_12.317085"
       },
       {
-        "lat": 45.43485190772981,
-        "lng": 12.33334927624859,
-        "streetName": "Rio Ter\u00e0 dei Tribunali",
-        "streetNameEnglish": "Filled Canal of the Courts",
-        "streetDescription": "A 'rio ter\u00e0' is a filled-in canal. This street would have been created when a canal was filled near the tribunals or courts in the San Marco district, indicating the area's long association with legal proceedings.",
-        "id": "building_45.434852_12.333349"
+        "lat": 45.44516266013492,
+        "lng": 12.318247047206187,
+        "streetName": "Sottoportego dei Mercanti Levantini",
+        "streetNameEnglish": "Covered Passageway of the Levantine Merchants",
+        "streetDescription": "A covered passage named after the Levantine (Eastern Mediterranean) merchants who traded in this area. Castello's proximity to the eastern edge of Venice made it a natural location for merchants trading with the East. These merchants would have dealt in luxury goods including the dyes needed for scarlet cloth production.",
+        "id": "building_45.445163_12.318247"
       },
       {
-        "lat": 45.43535552945664,
-        "lng": 12.332121358159977,
-        "streetName": "Calle dei Dandolo",
-        "streetNameEnglish": "Street of the Dandolo",
-        "streetDescription": "Named after the prominent Dandolo family, which produced several doges and important political figures. This nobili family likely owned property near San Marco and may have employed or patronized the lawyers of Calle dei Avvocati.",
-        "id": "building_45.435356_12.332121"
+        "lat": 45.44522375088788,
+        "lng": 12.318818239980011,
+        "streetName": "Salizada della Confraternita",
+        "streetNameEnglish": "Paved Street of the Brotherhood",
+        "streetDescription": "A paved street named after a religious confraternity or scuola that was active in this part of Castello. These lay brotherhoods were important social institutions in Renaissance Venice, providing mutual aid and religious services. The name suggests this was one of the early paved streets in the area, possibly funded by the brotherhood.",
+        "id": "building_45.445224_12.318818"
       },
       {
-        "lat": 45.4353087784076,
-        "lng": 12.332786165841654,
-        "streetName": "Fondamenta dei Cancellieri",
-        "streetNameEnglish": "Foundation of the Chancellors",
-        "streetDescription": "A 'fondamenta' is a street running alongside a canal. This one would honor the chancellors who served as important administrative officials in the Venetian Republic, working closely with the legal professionals in the area.",
-        "id": "building_45.435309_12.332786"
+        "lat": 45.445724194000086,
+        "lng": 12.317671726593966,
+        "streetName": "Calle del Rosso Bizantino",
+        "streetNameEnglish": "Street of Byzantine Red",
+        "streetDescription": "Named after the Byzantine influence on Venetian scarlet dyeing techniques. Venice's connections with Byzantium brought technical knowledge of dyeing methods, and this street near Calle del Scarlatto would commemorate this historical connection. The Byzantine red was particularly prized for its durability and brilliance.",
+        "id": "building_45.445724_12.317672"
       },
       {
-        "lat": 45.435358146107575,
-        "lng": 12.333370680659948,
-        "streetName": "Corte dei Magistrati",
-        "streetNameEnglish": "Court of the Magistrates",
-        "streetDescription": "A 'corte' is a courtyard. This enclosed space would be named for the magistrates who presided over legal cases, reflecting the concentration of legal authorities in this part of San Marco.",
-        "id": "building_45.435358_12.333371"
+        "lat": 45.44568803406755,
+        "lng": 12.318321677322423,
+        "streetName": "Ruga dei Setaioli",
+        "streetNameEnglish": "Street of the Silk Workers",
+        "streetDescription": "A commercial street where silk workers had their shops. Silk was often dyed scarlet for luxury garments, creating a natural proximity between silk workers and scarlet dyers in this area of Castello. The term 'Ruga' typically indicates a street with shops and commercial activities.",
+        "id": "building_45.445688_12.318322"
       },
       {
-        "lat": 45.435745940832355,
-        "lng": 12.332124482154722,
-        "streetName": "Campiello della Curia",
-        "streetNameEnglish": "Small Square of the Curia",
-        "streetDescription": "A 'campiello' is a small campo or square. This one would reference the curia, or court, where legal proceedings took place, serving as a gathering spot for lawyers, clients, and officials near Calle dei Avvocati.",
-        "id": "building_45.435746_12.332124"
+        "lat": 45.44573869466767,
+        "lng": 12.318934511348807,
+        "streetName": "Campiello della Cocciniglia",
+        "streetNameEnglish": "Small Square of the Cochineal",
+        "streetDescription": "A small square named after cochineal, an insect-derived dye imported from the New World that revolutionized scarlet production in the 16th century. This gathering place would have been a spot where dyers and merchants might have met to discuss or trade this valuable dyestuff near the scarlet workshops.",
+        "id": "building_45.445739_12.318935"
+      },
+      {
+        "lat": 45.44575789315928,
+        "lng": 12.319651799388083,
+        "streetName": "Corte dei Tinelli",
+        "streetNameEnglish": "Court of the Dyeing Vats",
+        "streetDescription": "A courtyard where the large vats (tinelli) used for dyeing fabrics would have been located. This enclosed space would have contained the workshops where the actual dyeing process took place, kept separate from residential areas due to the strong smells and potential for contamination from the dyes.",
+        "id": "building_45.445758_12.319652"
+      },
+      {
+        "lat": 45.44613992180077,
+        "lng": 12.318377745214809,
+        "streetName": "Calle della Madonna Scarlatta",
+        "streetNameEnglish": "Street of the Scarlet Madonna",
+        "streetDescription": "Named after a shrine or church feature depicting the Madonna dressed in scarlet robes, likely funded by the prosperous dyers' guild. Religious dedications were common in street names, and this would reflect the devotion of the local craftsmen who specialized in producing the valuable scarlet dye.",
+        "id": "building_45.446140_12.318378"
+      },
+      {
+        "lat": 45.44613877594568,
+        "lng": 12.318906729071669,
+        "streetName": "Ramo delle Porpore",
+        "streetNameEnglish": "Branch of the Purple Dyes",
+        "streetDescription": "A small side street or branch where various purple dyes, related to but distinct from scarlet, were produced or sold. The name reflects the variety of red-purple dyes that were important in Venetian textile production, with this particular branch specializing in purples rather than true scarlets.",
+        "id": "building_45.446139_12.318907"
       }
     ],
-    "historicalName": "Calle dei Avvocati, San Marco",
-    "englishName": "Lawyers' Street, St. Mark's District",
-    "historicalDescription": "This street was known for housing offices of lawyers and notaries in the 15th century, located in the central San Marco sestiere near Piazza San Marco and the Doge's Palace.",
+    "historicalName": "Calle del Scarlatto, Sestiere di Castello",
+    "englishName": "Calle del Scarlatto, Castello District",
+    "historicalDescription": "This street was located in the Castello sestiere, one of the six districts of Venice. In the 15th century, Castello was known for its naval shipyards, the Arsenale, and numerous churches.",
     "nameConfidence": "medium",
-    "areaInSquareMeters": 41904.44,
+    "areaInSquareMeters": 47476.78,
     "imageSettings": {
-      "lat": 45.43486670362945,
-      "lng": 12.332507228672252,
-      "width": 412.00000012614737,
-      "height": 418.00000012614737,
-      "referenceScale": 5.000000030275377
+      "lat": 45.44524331157908,
+      "lng": 12.318254909009223,
+      "width": 484,
+      "height": 463,
+      "referenceScale": 5.000000015137688
     }
   }
 ]
@@ -258,71 +232,92 @@ Here is information about the land:
 Here are the existing buildings on this land:
 [
   {
-    "id": "building_45.435358_12.333371",
-    "type": "public_well",
+    "id": "building_45.444858_12.317615",
+    "type": "market_stall",
     "owner": "ConsiglioDeiDieci",
-    "position": "{\"lat\": 45.435358, \"lng\": 12.333371}",
-    "notes": ""
+    "position": "{\"lat\": 45.444858, \"lng\": 12.317615}",
+    "notes": "{\"WagesReasoning\": \"Market stall - reduced from 55 to standardize market wages while remaining competitive\", \"runByAssignment\": {\"timestamp\": \"2025-05-29T04:38:28.494916Z\", \"assignedRunBy\": \"SilkRoadRunner\", \"score\": 3910.465152765277, \"components\": {\"relationshipScoreWithOwner\": 529.62, \"influence\": 0.0, \"dailyIncome\": 0.0, \"dailyTurnover\": 8057.97, \"distanceToHomeM\": 1623.0, \"socialClassTier\": 3, \"isOwnerFactor\": 1, \"numBusinessesAlreadyRun_before_assign\": 8, \"baseScoreComponents\": 11731.4, \"numerator\": 35194.19, \"denominator\": 9}}}"
   },
   {
-    "id": "building_45.434820_12.332664",
-    "type": "chapel",
+    "id": "building_45.446139_12.318907",
+    "type": "guard_post",
     "owner": "ConsiglioDeiDieci",
-    "position": "{\"lat\": 45.43482, \"lng\": 12.332664}",
-    "notes": "{\"WagesReasoning\": \"Chapel - maintained at 0 as religious building with no wage allocation\", \"runByAssignment\": {\"timestamp\": \"2025-05-29T04:38:28.392398Z\", \"assignedRunBy\": \"John_Jeffries\", \"score\": 9023.391182676532, \"components\": {\"relationshipScoreWithOwner\": 117.75, \"influence\": 0.0, \"dailyIncome\": 1895.0, \"dailyTurnover\": 191.19, \"distanceToHomeM\": 256.0, \"socialClassTier\": 3, \"isOwnerFactor\": 1, \"numBusinessesAlreadyRun_before_assign\": 0, \"baseScoreComponents\": 3007.8, \"numerator\": 9023.39, \"denominator\": 1}}}"
+    "position": "{\"lat\": 45.446139, \"lng\": 12.318907}",
+    "notes": "{\"WagesReasoning\": \"Guard post - maintained at 0 as security infrastructure with separate funding\", \"runByAssignment\": {\"timestamp\": \"2025-05-29T04:38:28.403402Z\", \"assignedRunBy\": \"SilentObserver\", \"score\": 7100.980553356517, \"components\": {\"relationshipScoreWithOwner\": 73.82, \"influence\": 0.0, \"dailyIncome\": 0.0, \"dailyTurnover\": 6755.0, \"distanceToHomeM\": 392.0, \"socialClassTier\": 2, \"isOwnerFactor\": 1, \"numBusinessesAlreadyRun_before_assign\": 1, \"baseScoreComponents\": 7100.98, \"numerator\": 14201.96, \"denominator\": 2}}}"
   }
 ]
 
 Here are the available building points for this land (for 'building' type buildings, using mapped key 'land'):
 [
   {
-    "lat": 45.43405493505779,
-    "lng": 12.332094624183112,
-    "polygon_id": "polygon-1746056541940",
+    "lat": 45.44438323565449,
+    "lng": 12.317748443870578,
+    "polygon_id": "polygon-1746055501491",
     "point_type": "land",
-    "id": "building_45.434055_12.332095"
+    "id": "building_45.444383_12.317748"
   },
   {
-    "lat": 45.43439320867809,
-    "lng": 12.332231822324346,
-    "polygon_id": "polygon-1746056541940",
+    "lat": 45.44480725352605,
+    "lng": 12.318309900406815,
+    "polygon_id": "polygon-1746055501491",
     "point_type": "land",
-    "id": "building_45.434393_12.332232"
+    "id": "building_45.444807_12.318310"
   },
   {
-    "lat": 45.43437306251359,
-    "lng": 12.332840250201912,
-    "polygon_id": "polygon-1746056541940",
+    "lat": 45.44528070353046,
+    "lng": 12.317085158653107,
+    "polygon_id": "polygon-1746055501491",
     "point_type": "land",
-    "id": "building_45.434373_12.332840"
+    "id": "building_45.445281_12.317085"
   },
   {
-    "lat": 45.43485190772981,
-    "lng": 12.33334927624859,
-    "polygon_id": "polygon-1746056541940",
+    "lat": 45.44516266013492,
+    "lng": 12.318247047206187,
+    "polygon_id": "polygon-1746055501491",
     "point_type": "land",
-    "id": "building_45.434852_12.333349"
+    "id": "building_45.445163_12.318247"
   },
   {
-    "lat": 45.43535552945664,
-    "lng": 12.332121358159977,
-    "polygon_id": "polygon-1746056541940",
+    "lat": 45.44522375088788,
+    "lng": 12.318818239980011,
+    "polygon_id": "polygon-1746055501491",
     "point_type": "land",
-    "id": "building_45.435356_12.332121"
+    "id": "building_45.445224_12.318818"
   },
   {
-    "lat": 45.4353087784076,
-    "lng": 12.332786165841654,
-    "polygon_id": "polygon-1746056541940",
+    "lat": 45.445724194000086,
+    "lng": 12.317671726593966,
+    "polygon_id": "polygon-1746055501491",
     "point_type": "land",
-    "id": "building_45.435309_12.332786"
+    "id": "building_45.445724_12.317672"
   },
   {
-    "lat": 45.435745940832355,
-    "lng": 12.332124482154722,
-    "polygon_id": "polygon-1746056541940",
+    "lat": 45.44568803406755,
+    "lng": 12.318321677322423,
+    "polygon_id": "polygon-1746055501491",
     "point_type": "land",
-    "id": "building_45.435746_12.332124"
+    "id": "building_45.445688_12.318322"
+  },
+  {
+    "lat": 45.44573869466767,
+    "lng": 12.318934511348807,
+    "polygon_id": "polygon-1746055501491",
+    "point_type": "land",
+    "id": "building_45.445739_12.318935"
+  },
+  {
+    "lat": 45.44575789315928,
+    "lng": 12.319651799388083,
+    "polygon_id": "polygon-1746055501491",
+    "point_type": "land",
+    "id": "building_45.445758_12.319652"
+  },
+  {
+    "lat": 45.44613992180077,
+    "lng": 12.318377745214809,
+    "polygon_id": "polygon-1746055501491",
+    "point_type": "land",
+    "id": "building_45.446140_12.318378"
   }
 ]
 
@@ -330,6 +325,40 @@ Here are the available building points for this land (for 'building' type buildi
 
 Here are your recent notifications:
 [
+  {
+    "notificationId": "recBoZFewfond2Nae",
+    "type": "rent_payment",
+    "citizen": "NLR",
+    "content": "\ud83d\udcec **Rent Received Summary** \ud83d\udcec\nYou received a total of **2,000 \u269c\ufe0f Ducats** from your properties today.\n\nDetails:\n- \u2705 **2,000 \u269c\ufe0f** from **Marco della Luce** for **Artisan's House**.\n",
+    "details": {
+      "event_type": "landlord_rent_summary",
+      "total_received": 2000,
+      "payments": [
+        {
+          "occupant_name": "Marco della Luce",
+          "building_name": "Artisan's House",
+          "amount": 2000
+        }
+      ]
+    },
+    "createdAt": "2025-07-03T18:03:30.594Z",
+    "readAt": null
+  },
+  {
+    "notificationId": "recKQ4Pgr8t5kJ0vS",
+    "type": "rent_payment",
+    "citizen": "NLR",
+    "content": "\u2705 Rent Paid: You paid **1,230 \u269c\ufe0f Ducats** to **ConsiglioDeiDieci** for **recKEqPapn7keUk58**.",
+    "details": {
+      "building_id": "recKEqPapn7keUk58",
+      "building_name": "recKEqPapn7keUk58",
+      "rent_price": 1230,
+      "building_owner": "ConsiglioDeiDieci",
+      "event_type": "rent_payment_made"
+    },
+    "createdAt": "2025-07-03T18:01:42.510Z",
+    "readAt": null
+  },
   {
     "notificationId": "recR789iCtLMKWCV6",
     "type": "rent_payment",
@@ -1160,7 +1189,7 @@ Here are your recent problems:
   }
 ]
 
-There are 7 available points of type 'building'. Choose the best location for your Bottega by selecting the index of one of these points (0 to 6).
+There are 10 available points of type 'building'. Choose the best location for your Dairy by selecting the index of one of these points (0 to 9).
 
 When choosing a location, consider:
 1. Proximity to other buildings of similar type
@@ -1169,5 +1198,5 @@ When choosing a location, consider:
 4. How your building placement might affect your relationships with other citizens
 
 Your response must be a JSON object with:
-1. selected_point_index: The index of your chosen point (0 to 6)
+1. selected_point_index: The index of your chosen point (0 to 9)
 2. reason: A brief explanation of why you chose this location
