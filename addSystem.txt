@@ -8,7 +8,7 @@ Here is the complete data about your current situation:
 {
   "citizen": {
     "username": "BigMike",
-    "ducats": 428817.2976403027,
+    "ducats": 428947.2976403027,
     "social_class": "Facchini",
     "description": "Bartolomeo Ferro is a sturdy, weather-beaten Facchini (porter) in his early forties who has spent his life laboring at Venice's bustling public docks. Born to a family of humble dock workers who migrated from the mainland three generations ago, Bartolomeo has leveraged his exceptional strength and business acumen to rise above his station. Despite his modest beginnings, he has amassed substantial savings through relentless work and shrewd investments in land. Known for his reliability and fairness, Bartolomeo rises before dawn to secure prime positions at the Castello docks, where merchants specifically request his services for handling valuable cargo. His calloused hands and broad shoulders bear witness to decades of hauling goods from ships to warehouses, but his keen eyes reveal an intelligence that has helped him understand the flow of commerce. Recently, his investment in a small warehouse near the Arsenale marks his first step toward establishing himself in Venice's commercial infrastructure. In his rare leisure hours, Bartolomeo enjoys simple pleasures at local taverns where he listens more than he speaks, gathering valuable information about shipping schedules and market conditions that inform his growing business interests.",
     "core_personality": "{\"Strength\": \"Disciplined\", \"Flaw\": \"Rigid\", \"Drive\": \"Stability-oriented\", \"MBTI\": \"ISTJ\", \"PrimaryTrait\": \"Methodical reliability\", \"SecondaryTraits\": [\"Exceptional strength\", \"Investment wisdom\", \"Merchant trust\"], \"CognitiveBias\": [\"Status quo bias\", \"Loss aversion\"], \"TrustThreshold\": 0.5, \"EmpathyWeight\": 0.6, \"RiskTolerance\": 0.2, \"guidedBy\": \"The Harbor's Rhythm\", \"CoreThoughts\": {\"primary_drive\": \"stability-through-routine\", \"secondary_drive\": \"reputation-building\", \"internal_tension\": \"safety vs. growth\", \"activation_triggers\": [\"routine_disruption\", \"reputation_threats\", \"investment_opportunities\"], \"thought_patterns\": [\"Consistency builds trust better than brilliance\", \"My reputation is my most valuable asset\", \"Better safe progress than risky leaps\", \"The docks teach patience and precision\", \"Merchants return to reliable workers\", \"Steady growth beats sudden wealth\"], \"decision_framework\": \"How does this build long-term stability without risking what I've built?\"}}",
@@ -3227,6 +3227,21 @@ Here is the complete data about your current situation:
   ],
   "recent_notifications_for_ai": [
     {
+      "notificationId": "recJt3e6iyqsA7jSB",
+      "type": "rent_payment",
+      "citizen": "BigMike",
+      "content": "\u2705 Rent Paid: You paid **1,125 \u269c\ufe0f Ducats** to **ConsiglioDeiDieci** for **rec447dpgrxblCNlK**.",
+      "details": {
+        "building_id": "rec447dpgrxblCNlK",
+        "building_name": "rec447dpgrxblCNlK",
+        "rent_price": 1125,
+        "building_owner": "ConsiglioDeiDieci",
+        "event_type": "rent_payment_made"
+      },
+      "createdAt": "2025-07-03T18:00:41.982Z",
+      "readAt": null
+    },
+    {
       "notificationId": "recrk9lDSkkNpabgB",
       "type": "rent_payment",
       "citizen": "BigMike",
@@ -3780,7 +3795,7 @@ Here is the complete data about your current situation:
       "pointType": "building"
     }
   },
-  "timestamp": "2025-07-02T22:11:56.031056+02:00",
+  "timestamp": "2025-07-03T21:04:24.872952+02:00",
   "building_ownership_relevancies": []
 }
 
