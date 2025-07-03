@@ -8,7 +8,7 @@ Here is the complete data about your current situation:
 {
   "citizen": {
     "username": "MerchantPrince",
-    "ducats": 315659.35673861246,
+    "ducats": 314534.35673861246,
     "social_class": "Facchini",
     "description": "Paolo Foscari, a remarkable figure among the facchini (porters) of Venice, has transcended the typical limitations of his social class through exceptional business acumen and tireless ambition. Born to a humble family of laborers who have served Venice's busy docks for generations, Paolo initially carried cargo like his forebears but soon demonstrated an unusual talent for organization and commerce. Through disciplined saving and strategic investments, he has amassed unprecedented wealth for someone of his station, becoming a respected figure in Venice's maritime commerce. Despite his wealth, Paolo maintains his connections to the working class, rising before dawn to oversee operations at the boat workshop he effectively manages, where his practical knowledge of vessel construction and maintenance has proven invaluable. He dresses modestly but in good quality clothing, maintaining a careful balance between displaying his success and avoiding ostentation that might provoke resentment from nobles or fellow laborers. His daily routine includes inspecting workshop operations, meeting with merchants and captains, carefully tracking his growing investments, and maintaining a network of informants who keep him apprised of commercial opportunities. Though lacking formal education, Paolo has taught himself to read, write, and calculate with surprising proficiency, and harbors ambitions of eventually elevating his family's status to cittadini through continued commercial success and strategic marriages for his children.",
     "core_personality": "{\"Strength\": \"Determined\", \"Flaw\": \"Gentle\", \"Drive\": \"Knowledge-seeking\", \"MBTI\": \"ISFJ\", \"PrimaryTrait\": \"Self-taught achiever\", \"SecondaryTraits\": [\"Learning drive\", \"Class transcendence\", \"Family elevation\"], \"CognitiveBias\": [\"Growth mindset\", \"Optimism bias\"], \"TrustThreshold\": 0.6, \"EmpathyWeight\": 0.8, \"RiskTolerance\": 0.4, \"guidedBy\": \"The Learning's Light\", \"CoreThoughts\": {\"primary_drive\": \"knowledge-accumulation\", \"secondary_drive\": \"family-elevation\", \"internal_tension\": \"gentleness vs. ambition\", \"activation_triggers\": [\"learning_opportunities\", \"family_advancement\", \"skill_development\"], \"thought_patterns\": [\"Knowledge is the bridge between classes\", \"Gentle strength builds lasting relationships\", \"My children will have advantages I created\", \"Every skill learned opens new possibilities\", \"Success through learning benefits everyone\", \"Dignity comes from capability, not birth\"], \"decision_framework\": \"How does this advance knowledge and family prospects through gentle determination?\"}}",
@@ -3227,6 +3227,21 @@ Here is the complete data about your current situation:
   ],
   "recent_notifications_for_ai": [
     {
+      "notificationId": "recDpbBpn1H5TAIqG",
+      "type": "rent_payment",
+      "citizen": "MerchantPrince",
+      "content": "\u2705 Rent Paid: You paid **1,125 \u269c\ufe0f Ducats** to **ConsiglioDeiDieci** for **Fisherman's Cottage at Riva dei Frari**.",
+      "details": {
+        "building_id": "rec0h8MkvoP7207ih",
+        "building_name": "Fisherman's Cottage at Riva dei Frari",
+        "rent_price": 1125,
+        "building_owner": "ConsiglioDeiDieci",
+        "event_type": "rent_payment_made"
+      },
+      "createdAt": "2025-07-03T18:00:37.386Z",
+      "readAt": null
+    },
+    {
       "notificationId": "recdJI7LSswbt6UIV",
       "type": "rent_payment",
       "citizen": "MerchantPrince",
@@ -3780,7 +3795,7 @@ Here is the complete data about your current situation:
       "pointType": "building"
     }
   },
-  "timestamp": "2025-07-02T22:02:36.055230+02:00",
+  "timestamp": "2025-07-03T21:02:05.405079+02:00",
   "building_ownership_relevancies": []
 }
 
