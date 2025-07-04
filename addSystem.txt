@@ -8,7 +8,7 @@ Here is the complete data about your current situation:
 {
   "citizen": {
     "username": "VeniceHustler",
-    "ducats": 253070.56676065762,
+    "ducats": 258686.9158664419,
     "social_class": "Facchini",
     "description": "Pietro Barozzi is a shrewd and industrious innkeeper who has clawed his way up from the docks through cunning observation and relentless ambition. Though born to the laboring class, he carries himself with the confidence of a man who understands the rhythms of Venice's commerce and the value of information gleaned from travelers' loose tongues. His calculating nature sometimes blinds him to genuine friendship, as he views most interactions through the lens of potential advantage.",
     "core_personality": "{\"Strength\": \"Resourceful\", \"Flaw\": \"Calculating\", \"Drive\": \"Advancement-seeking\", \"MBTI\": \"ESTP\", \"PrimaryTrait\": \"Street-smart opportunist\", \"SecondaryTraits\": [\"Quick thinking\", \"Adaptability\", \"Opportunity recognition\"], \"CognitiveBias\": [\"Availability heuristic\", \"Optimism bias\"], \"TrustThreshold\": 0.4, \"EmpathyWeight\": 0.4, \"RiskTolerance\": 0.8, \"guidedBy\": \"The Street's Wisdom\", \"CoreThoughts\": {\"primary_drive\": \"quick-advancement\", \"secondary_drive\": \"opportunity-maximization\", \"internal_tension\": \"speed vs. calculation\", \"activation_triggers\": [\"quick_opportunities\", \"competition\", \"resource_constraints\"], \"thought_patterns\": [\"There's always an angle if you look hard enough\", \"Speed beats perfection in this game\", \"Every person is a potential opportunity\", \"The street teaches what schools can't\", \"Adapt or get left behind\", \"Success favors the bold and clever\"], \"decision_framework\": \"What's the smartest, fastest way to get ahead here?\"}}",
@@ -3205,7 +3205,7 @@ Here is the complete data about your current situation:
   "target_relevancies": [],
   "latest_citizen_problems": [
     {
-      "id": "rec4ILxcfegMaRn6I",
+      "id": "recn3J4XJ5qDgFrHx",
       "fields": {
         "ProblemId": "hungry_VeniceHustler",
         "Citizen": "VeniceHustler",
@@ -3213,19 +3213,64 @@ Here is the complete data about your current situation:
         "AssetType": "citizen",
         "Severity": "medium",
         "Status": "active",
-        "CreatedAt": "2025-06-27T02:07:35.167Z",
-        "UpdatedAt": "2025-06-27T18:42:10.000Z",
+        "CreatedAt": "2025-07-03T19:39:51.507Z",
+        "UpdatedAt": "2025-07-03T19:40:33.000Z",
         "Location": "Pietro's last known area",
         "Title": "Hungry Citizen",
         "Description": "**Pietro Barozzi** has not eaten in over 24 hours and is now hungry. This can affect their well-being and ability to perform tasks effectively.\n\n### Impact\n- Reduced energy and focus.\n- If employed, work productivity may be reduced by up to 50%.\n- Prolonged hunger can lead to more severe health issues (if implemented).",
         "Solutions": "### Recommended Solutions\n- Ensure the citizen consumes food. This might involve visiting a tavern, purchasing food from a market, or using owned food resources.\n- Check if the citizen has sufficient Ducats to afford food.\n- Review game mechanics related to food consumption and ensure the 'AteAt' (or equivalent) field is updated correctly after eating.",
-        "Notes": "[Failures: 1]\nCitizen VeniceHustler last ate at 2025-06-25T18:59:32.528Z. Current time: 2025-06-27T02:07:35.147Z",
-        "Position": "{\"lat\":45.429601500000004,\"lng\":12.361084}",
+        "Notes": "Citizen VeniceHustler last ate at 2025-07-01T21:24:25.599Z. Current time: 2025-07-03T19:39:51.468Z",
+        "Position": "{\"lat\":45.442583282872974,\"lng\":12.327668132729523}",
         "Type": "hungry_citizen"
       }
     }
   ],
   "recent_notifications_for_ai": [
+    {
+      "notificationId": "rec9PwzBtk9fhfPlW",
+      "type": "rent_payment",
+      "citizen": "VeniceHustler",
+      "content": "\u2705 Rent Paid: You paid **1,315 \u269c\ufe0f Ducats** to **StarGazer2000** for **Fisherman's Cottage at Riva del Traghetto San Silvestro**.",
+      "details": {
+        "building_id": "recY5WD0zWw1dRGzk",
+        "building_name": "Fisherman's Cottage at Riva del Traghetto San Silvestro",
+        "rent_price": 1315,
+        "building_owner": "StarGazer2000",
+        "event_type": "rent_payment_made"
+      },
+      "createdAt": "2025-07-04T18:02:13.826Z",
+      "readAt": null
+    },
+    {
+      "notificationId": "recKlGIPHM7y0gFiN",
+      "type": "rent_payment",
+      "citizen": "VeniceHustler",
+      "content": "\u2705 Rent Paid: You paid **1,315 \u269c\ufe0f Ducats** to **StarGazer2000** for **Fisherman's Cottage at Riva del Traghetto San Silvestro**.",
+      "details": {
+        "building_id": "recY5WD0zWw1dRGzk",
+        "building_name": "Fisherman's Cottage at Riva del Traghetto San Silvestro",
+        "rent_price": 1315,
+        "building_owner": "StarGazer2000",
+        "event_type": "rent_payment_made"
+      },
+      "createdAt": "2025-07-04T16:02:07.927Z",
+      "readAt": null
+    },
+    {
+      "notificationId": "recQWeFOaCsiXipHU",
+      "type": "rent_payment",
+      "citizen": "VeniceHustler",
+      "content": "\u2705 Rent Paid: You paid **1,315 \u269c\ufe0f Ducats** to **StarGazer2000** for **Fisherman's Cottage at Riva del Traghetto San Silvestro**.",
+      "details": {
+        "building_id": "recY5WD0zWw1dRGzk",
+        "building_name": "Fisherman's Cottage at Riva del Traghetto San Silvestro",
+        "rent_price": 1315,
+        "building_owner": "StarGazer2000",
+        "event_type": "rent_payment_made"
+      },
+      "createdAt": "2025-07-03T18:02:24.320Z",
+      "readAt": null
+    },
     {
       "notificationId": "recTqeU8awXYvAB93",
       "type": "rent_payment",
@@ -3495,51 +3540,6 @@ Here is the complete data about your current situation:
       },
       "createdAt": "2025-06-20T16:02:02.186Z",
       "readAt": null
-    },
-    {
-      "notificationId": "recEds3NxbqYxtl7z",
-      "type": "rent_payment",
-      "citizen": "VeniceHustler",
-      "content": "\u2705 Rent Paid: You paid **1,315 \u269c\ufe0f Ducats** to **StarGazer2000** for **Fisherman's Cottage at Riva del Traghetto San Silvestro**.",
-      "details": {
-        "building_id": "recY5WD0zWw1dRGzk",
-        "building_name": "Fisherman's Cottage at Riva del Traghetto San Silvestro",
-        "rent_price": 1315,
-        "building_owner": "StarGazer2000",
-        "event_type": "rent_payment_made"
-      },
-      "createdAt": "2025-06-19T18:03:12.120Z",
-      "readAt": null
-    },
-    {
-      "notificationId": "recKKagStgJ5ebSre",
-      "type": "rent_payment",
-      "citizen": "VeniceHustler",
-      "content": "\u2705 Rent Paid: You paid **1,315 \u269c\ufe0f Ducats** to **StarGazer2000** for **Fisherman's Cottage at Riva del Traghetto San Silvestro**.",
-      "details": {
-        "building_id": "recY5WD0zWw1dRGzk",
-        "building_name": "Fisherman's Cottage at Riva del Traghetto San Silvestro",
-        "rent_price": 1315,
-        "building_owner": "StarGazer2000",
-        "event_type": "rent_payment_made"
-      },
-      "createdAt": "2025-06-19T16:02:12.140Z",
-      "readAt": null
-    },
-    {
-      "notificationId": "recwSPaAARetLl2pB",
-      "type": "rent_payment",
-      "citizen": "VeniceHustler",
-      "content": "\u2705 Rent Paid: You paid **1,315 \u269c\ufe0f Ducats** to **StarGazer2000** for **Fisherman's Cottage at Riva del Traghetto San Silvestro**.",
-      "details": {
-        "building_id": "recY5WD0zWw1dRGzk",
-        "building_name": "Fisherman's Cottage at Riva del Traghetto San Silvestro",
-        "rent_price": 1315,
-        "building_owner": "StarGazer2000",
-        "event_type": "rent_payment_made"
-      },
-      "createdAt": "2025-06-18T18:02:02.511Z",
-      "readAt": null
     }
   ],
   "building_types": {
@@ -3780,7 +3780,7 @@ Here is the complete data about your current situation:
       "pointType": "building"
     }
   },
-  "timestamp": "2025-07-02T21:00:40.967563+02:00",
+  "timestamp": "2025-07-04T21:00:23.500332+02:00",
   "building_ownership_relevancies": []
 }
 
