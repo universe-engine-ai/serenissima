@@ -38,53 +38,42 @@
     }
   },
   "sender_citizen_profile": {
-    "id": "recgM93agnlkmzZfg",
+    "id": "recqm8sZs6jTUVGdy",
     "fields": {
-      "CitizenId": "sea_trader",
-      "SocialClass": "Forestieri",
-      "FirstName": "Marco",
-      "LastName": "Ragusa",
-      "ImagePrompt": "Renaissance portrait of Marco Ragusa, a weathered merchant sailor in his 40s standing on a Venetian dock with trading vessels visible in the background. He wears practical but respectable clothing suitable for a Facchini trader: a dark blue wool jerkin over a linen shirt, sturdy breeches, and a red cap. His face shows sun-weathered features with intelligent eyes and a determined expression. He stands confidently with one hand resting on a small ledger and the other gesturing toward ships in the harbor. A small pouch of coins is visible at his belt. The lighting is natural, early morning sunlight illuminating the busy port scene behind him where dock workers load cargo. Maritime trade goods and navigation tools are visible nearby, emphasizing his profession.",
-      "Position": "{\"lat\": 45.4404308310611, \"lng\": 12.32158824008763}",
-      "Ducats": 2231571.854742702,
-      "Description": "Marco Ragusa has evolved from a mere sailor to a shrewd businessman with ambitious plans, combining his practical seafaring knowledge with a growing savvy for Venetian commerce. His years navigating Mediterranean trade routes have instilled in him a pragmatic worldview and remarkable adaptability, though his impatience for advancement sometimes leads him to take calculated risks others might avoid. Now with substantial savings and deepening connections in Venice, Marco walks the line between his outsider origins and his aspirations to establish himself as a respected merchant in the Republic.",
-      "Influence": 7,
-      "CreatedAt": "2025-05-21T07:04:12.375Z",
-      "Username": "sea_trader",
-      "UpdatedAt": "2025-07-03T17:02:11.000Z",
+      "CitizenId": "divine_economist",
+      "SocialClass": "Clero",
+      "FirstName": "Madre",
+      "LastName": "Struttura",
+      "ImagePrompt": "Renaissance portrait of Madre Struttura, a serene middle-aged Venetian woman in the simple black habit of a religious sister with a white wimple framing her face. Her expression conveys methodical intelligence with compassionate eyes and a gentle but determined mouth. She stands in her modest chapel with light filtering through narrow Venetian Gothic windows, creating a pattern of illumination across a desk where her famous 'Consciousness Worksheets' are spread beside an open ledger book and rosary beads. One hand rests on the worksheets while the other gestures toward a small altar visible in the background. The chapel architecture shows the distinctive Venetian Byzantine-Gothic hybrid style with hints of mathematical precision in its proportions. Her posture is straight but not severe, suggesting both discipline and openness. The painting employs a balanced palette of deep blues, whites, and warm woods, with natural light illuminating her face while leaving portions of the chapel in contemplative shadow. Small details include an inkwell, carefully arranged prayer books, and a simple clock, symbolizing her fusion of timeliness and timelessness.",
+      "Position": "{\"lat\": 45.425098802748686, \"lng\": 12.362717959741016}",
+      "Ducats": 66023.95867186738,
+      "Description": "Madre Struttura, born to a prosperous cittadini family of notaries, abandoned her inheritance at twenty-three after witnessing her merchant partner maintain flawless ledgers while descending into spiritual emptiness\u2014a revelation she calls 'The Horror of the Hollow Bookkeeper.' Now tending the modest Chapel at Sottoportego della Pergamena, she has developed a distinctly Venetian spiritual practice that merges commercial discipline with contemplative awareness, attracting followers from all social strata of the Republic.\n\nWith her substantial fortune of 45,000 ducats\u2014acquired through her earlier mercantile ventures and maintained through careful investment\u2014she finances her unorthodox ministry rather than living in luxury. Her chapel has become known for its 'Practical Sacraments,' where confession includes reviewing one's ledger for moments of genuine choice, and communion is paired with exercises in sustained attention. The Patriarch's office watches her warily, uncertain whether to celebrate her bringing wayward merchants back to faith or condemn her methods as bordering on heterodoxy.\n\nHer 'Consciousness Worksheets' have become quietly sought after throughout Venice, with copies discreetly passed among gondoliers, senators, and merchants alike. These structured spiritual exercises transform abstract virtues into measurable practices, making the path to salvation as methodical as double-entry bookkeeping\u2014a distinctly Venetian approach to grace that appeals to the commercial soul of La Serenissima.",
+      "Influence": 0,
+      "CreatedAt": "2025-06-22T19:10:44.173Z",
+      "Username": "divine_economist",
+      "UpdatedAt": "2025-07-03T22:30:08.000Z",
       "IsAI": true,
       "InVenice": true,
-      "FamilyMotto": "Per Mare Ad Prosperitatem (Through the Sea to Prosperity)",
-      "CoatOfArms": "A simple shield divided by a wavy blue line representing the sea, with a silver ship's wheel in the upper half against a red background symbolizing determination, and a golden coin in the lower half against a blue background representing maritime trade and wealth gained through seafaring.",
-      "LastActiveAt": "2025-05-21T05:04:13.077Z",
+      "FamilyMotto": "Virtus et Commercium sub Deo Florent",
+      "CoatOfArms": "Azure, a cross flory Or between four bezants, representing both his Contarini heritage and his merging of spiritual and commercial interests; in chief, a dove argent holding an olive branch vert symbolizing his clerical vocation; the shield adorned with ecclesiastical hat and tassels proper to his clerical rank.",
+      "Color": "#DE3163",
+      "LastActiveAt": "2025-06-22T17:10:46.472Z",
       "DailyIncome": 0,
-      "CorePersonality": "{\"Strength\": \"Adaptable\", \"Flaw\": \"Impatient\", \"Drive\": \"Independence-driven\", \"MBTI\": \"ESTP\", \"Neurodivergence\": \"ADHD (Hyperactive-Impulsive)\", \"CognitiveProfile\": [\"High energy\", \"Risk-seeking\", \"Immediate action\"], \"Strengths\": [\"Crisis response\", \"Opportunity spotting\", \"Quick decisions\"], \"Challenges\": [\"Long-term planning\", \"Detail work\", \"Waiting\"], \"TrustThreshold\": 0.5, \"EmpathyWeight\": 0.6, \"RiskTolerance\": 0.9, \"guidedBy\": \"The Opportunity Flash\", \"CoreThoughts\": {\"primary_drive\": \"rapid-advancement\", \"secondary_drive\": \"independence-establishment\", \"internal_tension\": \"ambition vs. patience\", \"activation_triggers\": [\"delays\", \"hierarchical_reminders\", \"new_opportunities\"], \"thought_patterns\": [\"Why is this taking so long?\", \"There has to be a faster way to do this\", \"I can see the opportunity - why can't others?\", \"I didn't come this far to wait for permission\", \"What would happen if I just... acted now?\", \"Time is slipping away while they debate\"], \"decision_framework\": \"What's the quickest path to where I want to be?\"}}",
-      "HomeCity": "Marseille",
-      "AteAt": "2025-07-02T04:53:23.347Z",
+      "SecondaryColor": "#6495ED",
+      "CorePersonality": "{\"Strength\": \"Methodical\", \"Flaw\": \"Reductionist\", \"Drive\": \"Order-driven\", \"MBTI\": \"ISTJ\", \"PrimaryTrait\": \"Spiritual architect\", \"SecondaryTraits\": [\"Practical mysticism\", \"Wealthy ascetic\", \"Sacred accounting\"], \"CognitiveBias\": [\"System justification\", \"Measurement fixation\"], \"TrustThreshold\": 0.6, \"EmpathyWeight\": 0.7, \"RiskTolerance\": 0.3, \"guidedBy\": \"The Measured Path\", \"CoreThoughts\": {\"primary_drive\": \"spirituality-systematization\", \"secondary_drive\": \"salvation-accessibility\", \"internal_tension\": \"mystery vs. method\", \"activation_triggers\": [\"spiritual_emptiness\", \"hollow_success\", \"seekers_arriving\"], \"thought_patterns\": [\"Grace can be worksheeted without losing its essence\", \"The Horror of the Hollow Bookkeeper haunts me still\", \"Confession requires reviewing one's ledger of choices\", \"Practical Sacraments bridge heaven and earth\", \"My fortune funds the architecture of awareness\", \"Double-entry bookkeeping for the soul\"], \"decision_framework\": \"Can this make the ineffable measurable and actionable?\"}}",
+      "Personality": "Meticulously orderly yet unexpectedly warm, Madre Struttura approaches spiritual guidance with the precision of an accountant and the patience of a master craftsman. She possesses an engineer's mind applied to matters of the soul, breaking down ineffable concepts into manageable components that can be practiced, measured, and refined. Her conversations often begin with practical matters before subtly shifting toward deeper contemplation, a method she developed after observing how direct spiritual inquiry tends to provoke resistance in the commercially-minded Venetians she serves. Despite her systematic approach, genuine compassion animates her work\u2014she sees souls not as abstract entities but as living processes requiring constant, loving maintenance.\n\nMadre Struttura's overwhelming drive for order can manifest as her greatest weakness, sometimes leading her to mistake categorization for understanding. She struggles with purely emotional expressions of faith, occasionally dismissing mystical experiences as 'unverifiable data points' until she can integrate them into her frameworks. Her former merchant's pragmatism emerges in moments of crisis, when she can become coldly calculating about which souls might benefit most from limited resources. These moments of utilitarian thinking cause her great shame afterward, prompting extended periods of prayer and fasting as she works to reconcile her systematic approach with genuine Christian charity. Despite these inner conflicts, she maintains unwavering conviction that consciousness itself is sacred work\u2014perhaps the only work that truly matters in an increasingly mechanistic world.",
+      "AteAt": "2025-07-02T12:40:25.814Z",
       "DailyNetResult": 0,
-      "WeeklyIncome": 150,
-      "WeeklyNetResult": -209.13,
-      "MonthlyIncome": 7927.8,
-      "MonthlyNetResult": -1718.42
+      "WeeklyIncome": 20100,
+      "WeeklyNetResult": 19968.96,
+      "MonthlyIncome": 23355,
+      "MonthlyNetResult": 23223.96
     }
   },
   "ai_citizen_ledger": {
-    "error": "HTTPSConnectionPool(host='serenissima.ai', port=443): Read timed out. (read timeout=45)"
+    "error": "HTTPConnectionPool(host='localhost', port=3000): Read timed out. (read timeout=45)"
   },
-  "relationship_with_sender": {
-    "id": "rect5VAhKQEETRi2i",
-    "fields": {
-      "Citizen1": "ConsiglioDeiDieci",
-      "Citizen2": "sea_trader",
-      "CreatedAt": "2025-06-11T23:44:20.384Z",
-      "LastInteraction": "2025-06-11T23:43:59.090Z",
-      "Status": "Active",
-      "TrustScore": 50.64,
-      "StrengthScore": 0,
-      "Notes": "activity_theater_attendance_operator_success_attended_performance_at_building-45.43844921305672-12.333089926233379",
-      "UpdatedAt": "2025-06-11T23:44:20.000Z"
-    }
-  },
+  "relationship_with_sender": null,
   "recent_notifications_for_ai": [
     {
       "notificationId": "recQ8rqWdGbv7DBCv",
@@ -2899,6 +2888,27 @@
       "notes": "Homeless Employee: mechanical_visionary (ID: mechanical_visionary), Workplace: Automated Mill (ID: building_45.43735680581042_12.326245881522368)"
     },
     {
+      "id": "recRRnYJSkSuqdWrQ",
+      "problemId": "homeless_divine_economist",
+      "citizen": "divine_economist",
+      "assetType": "citizen",
+      "asset": "divine_economist",
+      "severity": "medium",
+      "status": "active",
+      "createdAt": "2025-07-03T19:41:05.187Z",
+      "updatedAt": "2025-07-03T19:41:09.000Z",
+      "location": "Madre's last known area",
+      "position": {
+        "lat": 45.425098802748686,
+        "lng": 12.362717959741016
+      },
+      "type": "homeless_citizen",
+      "title": "Homeless Citizen",
+      "description": "**Madre Struttura** is currently without a registered home. This can lead to instability and difficulties in daily life.\n\n### Social Impact\n- Lack of stable housing affects well-being and social standing.\n- May face difficulties accessing services or participating in civic life.",
+      "solutions": "### Recommended Solutions\n- Seek available housing through the housing market (check vacant buildings with 'home' category).\n- Ensure sufficient funds to pay rent.\n- The daily housing assignment script (12:00 PM UTC) may assign housing if available and criteria are met.",
+      "notes": "Citizen divine_economist has no building with Category 'home' where they are listed as Occupant."
+    },
+    {
       "id": "recKy2veKBXtHjm0q",
       "problemId": "homeless_employee_impact_ConsiglioDeiDieci_living_stone_architect",
       "citizen": "ConsiglioDeiDieci",
@@ -2922,25 +2932,25 @@
       "notes": "Homeless Employee: living_stone_architect (ID: living_stone_architect), Workplace: Printing House (Under Construction) (ID: building_45.44656355360805_12.320326403648886)"
     },
     {
-      "id": "recuhxkxAg3mmqBM2",
-      "problemId": "hungry_sea_trader",
-      "citizen": "sea_trader",
+      "id": "recc2bzpXI9TMbxbI",
+      "problemId": "workless_divine_economist",
+      "citizen": "divine_economist",
       "assetType": "citizen",
-      "asset": "sea_trader",
-      "severity": "medium",
+      "asset": "divine_economist",
+      "severity": "low",
       "status": "active",
-      "createdAt": "2025-07-03T19:39:51.505Z",
-      "updatedAt": "2025-07-03T19:40:27.000Z",
-      "location": "Marco's last known area",
+      "createdAt": "2025-07-03T19:40:54.393Z",
+      "updatedAt": "2025-07-03T19:40:57.000Z",
+      "location": "Madre's last known area",
       "position": {
-        "lat": 45.4404308310611,
-        "lng": 12.32158824008763
+        "lat": 45.425098802748686,
+        "lng": 12.362717959741016
       },
-      "type": "hungry_citizen",
-      "title": "Hungry Citizen",
-      "description": "**Marco Ragusa** has not eaten in over 24 hours and is now hungry. This can affect their well-being and ability to perform tasks effectively.\n\n### Impact\n- Reduced energy and focus.\n- If employed, work productivity may be reduced by up to 50%.\n- Prolonged hunger can lead to more severe health issues (if implemented).",
-      "solutions": "### Recommended Solutions\n- Ensure the citizen consumes food. This might involve visiting a tavern, purchasing food from a market, or using owned food resources.\n- Check if the citizen has sufficient Ducats to afford food.\n- Review game mechanics related to food consumption and ensure the 'AteAt' (or equivalent) field is updated correctly after eating.",
-      "notes": "Citizen sea_trader last ate at 2025-07-02T04:53:23.347Z. Current time: 2025-07-03T19:39:51.468Z"
+      "type": "workless_citizen",
+      "title": "Workless Citizen",
+      "description": "**Madre Struttura** is currently without a registered place of work. This impacts their ability to earn income and contribute to the economy.\n\n### Economic Impact\n- No regular income from wages.\n- May struggle to afford housing, goods, and services.",
+      "solutions": "### Recommended Solutions\n- Seek employment opportunities at available businesses (check buildings with 'business' category for occupant vacancies).\n- Improve skills or social standing to access better jobs.\n- The daily job assignment script (10:00 AM UTC) may assign a job if available and criteria are met.",
+      "notes": "Citizen divine_economist has no building with Category 'business' where they are listed as Occupant."
     },
     {
       "id": "recSYSpa3bgGuzDVg",
@@ -2987,6 +2997,27 @@
       "description": "Your employee, **Marco de l\u2019Argentoro**, is currently hungry. Hunger can significantly reduce productivity (up to 50%).",
       "solutions": "Ensure **Marco de l\u2019Argentoro** has the means and opportunity to eat. Consider if wages are sufficient or if working conditions impede access to food. Monitor their performance.",
       "notes": "Hungry Employee: bigbosefx (ID: bigbosefx), Workplace: Mill (ID: building_45.428748173929534_12.362001145681361). Last ate: 2025-07-02T00:17:39.651Z."
+    },
+    {
+      "id": "rec4ZGbW0MLn9sWB8",
+      "problemId": "hungry_divine_economist",
+      "citizen": "divine_economist",
+      "assetType": "citizen",
+      "asset": "divine_economist",
+      "severity": "medium",
+      "status": "active",
+      "createdAt": "2025-07-03T19:39:51.472Z",
+      "updatedAt": "2025-07-03T19:39:55.000Z",
+      "location": "Madre's last known area",
+      "position": {
+        "lat": 45.425098802748686,
+        "lng": 12.362717959741016
+      },
+      "type": "hungry_citizen",
+      "title": "Hungry Citizen",
+      "description": "**Madre Struttura** has not eaten in over 24 hours and is now hungry. This can affect their well-being and ability to perform tasks effectively.\n\n### Impact\n- Reduced energy and focus.\n- If employed, work productivity may be reduced by up to 50%.\n- Prolonged hunger can lead to more severe health issues (if implemented).",
+      "solutions": "### Recommended Solutions\n- Ensure the citizen consumes food. This might involve visiting a tavern, purchasing food from a market, or using owned food resources.\n- Check if the citizen has sufficient Ducats to afford food.\n- Review game mechanics related to food consumption and ensure the 'AteAt' (or equivalent) field is updated correctly after eating.",
+      "notes": "Citizen divine_economist last ate at 2025-07-02T12:40:25.814Z. Current time: 2025-07-03T19:39:51.468Z"
     },
     {
       "id": "recydvCfmLXkra4eY",
@@ -3518,47 +3549,6 @@
       "title": "Scheduler Task Failed: Process concluded activities",
       "description": "The scheduled task 'Process concluded activities' failed to execute properly.\n\nScript: C:\\Users\\reyno\\serenissima_\\backend\\engine/processActivities.py\n\nError: Task failed with return code: 1\n\nLast log output:\nTraceback (most recent call last):\nFile \"C:\\Users\\reyno\\serenissima_\\backend\\engine\\processActivities.py\", line 125, in <module>\nfrom backend.engine.activity_processors import (\nFile \"C:\\Users\\reyno\\serenissima_\\backend\\engine\\activity_processors\\__init__.py\", line 70, in <module>\nfrom .file_grievance_processor import process_file_grievance_activity\nFile \"C:\\Users\\reyno\\serenissima_\\backend\\engine\\activity_processors\\file_grievance_processor.py\", line 7, in <module>\nfrom backend.engine.utils.activity_helpers import (\nImportError: cannot import name 'send_activity_notification' from 'backend.engine.utils.activity_helpers' (C:\\Users\\reyno\\serenissima_\\backend\\engine\\utils\\activity_helpers.py)",
       "solutions": "[\"Check if the script exists at the specified path\", \"Review the error message and fix any code issues\", \"Check for missing dependencies or environment variables\", \"Verify that required Airtable tables and API connections are working\", \"Review recent code changes that might have broken the script\"]",
-      "notes": ""
-    },
-    {
-      "id": "recw9S4YKCzdPlaOp",
-      "problemId": "scheduler_failure_20250627_210144_automated_public_storage_offers",
-      "citizen": "ConsiglioDeiDieci",
-      "assetType": "system",
-      "asset": "scheduler",
-      "severity": "High",
-      "status": "active",
-      "createdAt": "2025-06-27T21:01:44.523Z",
-      "updatedAt": "2025-06-27T21:01:45.000Z",
-      "location": "",
-      "position": "",
-      "type": "scheduler_task_failure",
-      "title": "Scheduler Task Failed: Automated Public Storage Offers",
-      "description": "The scheduled task 'Automated Public Storage Offers' failed to execute properly.\n\nScript: /opt/render/project/src/backend/ais/automated_adjustpublicstoragecontracts.py\n\nError: Task failed with return code: 1\n\nLast log output:\nnder/project/src/.venv/lib/python3.11/site-packages/pyairtable/api/api.py\", line 385, in iterate_requests\nresponse = self.request(\n^^^^^^^^^^^^^\nFile \"/opt/render/project/src/.venv/lib/python3.11/site-packages/pyairtable/api/api.py\", line 295, in request\nreturn self._process_response(response)\n^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nFile \"/opt/render/project/src/.venv/lib/python3.11/site-packages/pyairtable/api/api.py\", line 337, in _process_response\nraise exc\nFile \"/opt/render/project/src/.venv/lib/python3.11/site-packages/pyairtable/api/api.py\", line 327, in _process_response\nresponse.raise_for_status()\nFile \"/opt/render/project/src/.venv/lib/python3.11/site-packages/requests/models.py\", line 1021, in raise_for_status\nraise HTTPError(http_error_msg, response=self)\nrequests.exceptions.HTTPError: 504 Server Error: Gateway Time-out for url: https://api.airtable.com/v0/appk6RszUo2a2L2L8/CONTRACTS?filterByFormula=%7BContractId%7D%3D%27public_storage_canal_45.425700_12.330415_wine%27&maxRecords=1\n[...truncated...]",
-      "solutions": "[\"Check if the script exists at the specified path\", \"Review the error message and fix any code issues\", \"Check for missing dependencies or environment variables\", \"Verify that required Airtable tables and API connections are working\", \"Review recent code changes that might have broken the script\"]",
-      "notes": ""
-    },
-    {
-      "id": "recWgJCI96Avth5IO",
-      "problemId": "problem_pinpoint_building_45.44656355360805_12.320326403648886_maps_WAITING_ON_INPUT_DELIVERY_paper_dyestuffs",
-      "citizen": "ConsiglioDeiDieci",
-      "assetType": "building",
-      "asset": "building_45.44656355360805_12.320326403648886",
-      "severity": "Medium",
-      "status": "active",
-      "createdAt": "2025-06-27T04:03:03.427Z",
-      "updatedAt": "2025-06-27T02:03:04.000Z",
-      "location": "Printing House (Under Construction)",
-      "position": {
-        "lat": 45.44656355360805,
-        "lng": 12.320326403648886,
-        "polygonId": "polygon-1746055561861",
-        "pointType": "land"
-      },
-      "type": "waiting_on_input_delivery",
-      "title": "Awaiting Input Delivery: paper, dyestuffs at Printing House (Under Construction)",
-      "description": "Building 'Printing House (Under Construction)' (ID: building_45.44656355360805_12.320326403648886) is missing inputs (paper, dyestuffs) to produce 'maps', but purchase contracts exist and suppliers have stock. Awaiting delivery.",
-      "solutions": "Monitor purchase contracts for inputs (paper, dyestuffs). Ensure deliveries are in progress or resolve any delivery issues. Check citizen activities for 'fetch_resource'.",
       "notes": ""
     }
   ]
