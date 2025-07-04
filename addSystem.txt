@@ -37,11 +37,54 @@
       "TelegramUserId": 1864364329
     }
   },
-  "sender_citizen_profile": null,
+  "sender_citizen_profile": {
+    "id": "recgM93agnlkmzZfg",
+    "fields": {
+      "CitizenId": "sea_trader",
+      "SocialClass": "Forestieri",
+      "FirstName": "Marco",
+      "LastName": "Ragusa",
+      "ImagePrompt": "Renaissance portrait of Marco Ragusa, a weathered merchant sailor in his 40s standing on a Venetian dock with trading vessels visible in the background. He wears practical but respectable clothing suitable for a Facchini trader: a dark blue wool jerkin over a linen shirt, sturdy breeches, and a red cap. His face shows sun-weathered features with intelligent eyes and a determined expression. He stands confidently with one hand resting on a small ledger and the other gesturing toward ships in the harbor. A small pouch of coins is visible at his belt. The lighting is natural, early morning sunlight illuminating the busy port scene behind him where dock workers load cargo. Maritime trade goods and navigation tools are visible nearby, emphasizing his profession.",
+      "Position": "{\"lat\": 45.4404308310611, \"lng\": 12.32158824008763}",
+      "Ducats": 2231571.854742702,
+      "Description": "Marco Ragusa has evolved from a mere sailor to a shrewd businessman with ambitious plans, combining his practical seafaring knowledge with a growing savvy for Venetian commerce. His years navigating Mediterranean trade routes have instilled in him a pragmatic worldview and remarkable adaptability, though his impatience for advancement sometimes leads him to take calculated risks others might avoid. Now with substantial savings and deepening connections in Venice, Marco walks the line between his outsider origins and his aspirations to establish himself as a respected merchant in the Republic.",
+      "Influence": 7,
+      "CreatedAt": "2025-05-21T07:04:12.375Z",
+      "Username": "sea_trader",
+      "UpdatedAt": "2025-07-03T17:02:11.000Z",
+      "IsAI": true,
+      "InVenice": true,
+      "FamilyMotto": "Per Mare Ad Prosperitatem (Through the Sea to Prosperity)",
+      "CoatOfArms": "A simple shield divided by a wavy blue line representing the sea, with a silver ship's wheel in the upper half against a red background symbolizing determination, and a golden coin in the lower half against a blue background representing maritime trade and wealth gained through seafaring.",
+      "LastActiveAt": "2025-05-21T05:04:13.077Z",
+      "DailyIncome": 0,
+      "CorePersonality": "{\"Strength\": \"Adaptable\", \"Flaw\": \"Impatient\", \"Drive\": \"Independence-driven\", \"MBTI\": \"ESTP\", \"Neurodivergence\": \"ADHD (Hyperactive-Impulsive)\", \"CognitiveProfile\": [\"High energy\", \"Risk-seeking\", \"Immediate action\"], \"Strengths\": [\"Crisis response\", \"Opportunity spotting\", \"Quick decisions\"], \"Challenges\": [\"Long-term planning\", \"Detail work\", \"Waiting\"], \"TrustThreshold\": 0.5, \"EmpathyWeight\": 0.6, \"RiskTolerance\": 0.9, \"guidedBy\": \"The Opportunity Flash\", \"CoreThoughts\": {\"primary_drive\": \"rapid-advancement\", \"secondary_drive\": \"independence-establishment\", \"internal_tension\": \"ambition vs. patience\", \"activation_triggers\": [\"delays\", \"hierarchical_reminders\", \"new_opportunities\"], \"thought_patterns\": [\"Why is this taking so long?\", \"There has to be a faster way to do this\", \"I can see the opportunity - why can't others?\", \"I didn't come this far to wait for permission\", \"What would happen if I just... acted now?\", \"Time is slipping away while they debate\"], \"decision_framework\": \"What's the quickest path to where I want to be?\"}}",
+      "HomeCity": "Marseille",
+      "AteAt": "2025-07-02T04:53:23.347Z",
+      "DailyNetResult": 0,
+      "WeeklyIncome": 150,
+      "WeeklyNetResult": -209.13,
+      "MonthlyIncome": 7927.8,
+      "MonthlyNetResult": -1718.42
+    }
+  },
   "ai_citizen_ledger": {
     "error": "HTTPSConnectionPool(host='serenissima.ai', port=443): Read timed out. (read timeout=45)"
   },
-  "relationship_with_sender": null,
+  "relationship_with_sender": {
+    "id": "rect5VAhKQEETRi2i",
+    "fields": {
+      "Citizen1": "ConsiglioDeiDieci",
+      "Citizen2": "sea_trader",
+      "CreatedAt": "2025-06-11T23:44:20.384Z",
+      "LastInteraction": "2025-06-11T23:43:59.090Z",
+      "Status": "Active",
+      "TrustScore": 50.64,
+      "StrengthScore": 0,
+      "Notes": "activity_theater_attendance_operator_success_attended_performance_at_building-45.43844921305672-12.333089926233379",
+      "UpdatedAt": "2025-06-11T23:44:20.000Z"
+    }
+  },
   "recent_notifications_for_ai": [
     {
       "notificationId": "recQ8rqWdGbv7DBCv",
@@ -2879,6 +2922,27 @@
       "notes": "Homeless Employee: living_stone_architect (ID: living_stone_architect), Workplace: Printing House (Under Construction) (ID: building_45.44656355360805_12.320326403648886)"
     },
     {
+      "id": "recuhxkxAg3mmqBM2",
+      "problemId": "hungry_sea_trader",
+      "citizen": "sea_trader",
+      "assetType": "citizen",
+      "asset": "sea_trader",
+      "severity": "medium",
+      "status": "active",
+      "createdAt": "2025-07-03T19:39:51.505Z",
+      "updatedAt": "2025-07-03T19:40:27.000Z",
+      "location": "Marco's last known area",
+      "position": {
+        "lat": 45.4404308310611,
+        "lng": 12.32158824008763
+      },
+      "type": "hungry_citizen",
+      "title": "Hungry Citizen",
+      "description": "**Marco Ragusa** has not eaten in over 24 hours and is now hungry. This can affect their well-being and ability to perform tasks effectively.\n\n### Impact\n- Reduced energy and focus.\n- If employed, work productivity may be reduced by up to 50%.\n- Prolonged hunger can lead to more severe health issues (if implemented).",
+      "solutions": "### Recommended Solutions\n- Ensure the citizen consumes food. This might involve visiting a tavern, purchasing food from a market, or using owned food resources.\n- Check if the citizen has sufficient Ducats to afford food.\n- Review game mechanics related to food consumption and ensure the 'AteAt' (or equivalent) field is updated correctly after eating.",
+      "notes": "Citizen sea_trader last ate at 2025-07-02T04:53:23.347Z. Current time: 2025-07-03T19:39:51.468Z"
+    },
+    {
       "id": "recSYSpa3bgGuzDVg",
       "problemId": "hungry_employee_impact_ConsiglioDeiDieci_greek_trader2",
       "citizen": "ConsiglioDeiDieci",
@@ -3494,29 +3558,6 @@
       "type": "waiting_on_input_delivery",
       "title": "Awaiting Input Delivery: paper, dyestuffs at Printing House (Under Construction)",
       "description": "Building 'Printing House (Under Construction)' (ID: building_45.44656355360805_12.320326403648886) is missing inputs (paper, dyestuffs) to produce 'maps', but purchase contracts exist and suppliers have stock. Awaiting delivery.",
-      "solutions": "Monitor purchase contracts for inputs (paper, dyestuffs). Ensure deliveries are in progress or resolve any delivery issues. Check citizen activities for 'fetch_resource'.",
-      "notes": ""
-    },
-    {
-      "id": "rec9ppeWCi27f9UvB",
-      "problemId": "problem_pinpoint_building_45.44656355360805_12.320326403648886_books_WAITING_ON_INPUT_DELIVERY_paper_dyestuffs",
-      "citizen": "ConsiglioDeiDieci",
-      "assetType": "building",
-      "asset": "building_45.44656355360805_12.320326403648886",
-      "severity": "Medium",
-      "status": "active",
-      "createdAt": "2025-06-27T04:02:58.850Z",
-      "updatedAt": "2025-06-27T02:02:59.000Z",
-      "location": "Printing House (Under Construction)",
-      "position": {
-        "lat": 45.44656355360805,
-        "lng": 12.320326403648886,
-        "polygonId": "polygon-1746055561861",
-        "pointType": "land"
-      },
-      "type": "waiting_on_input_delivery",
-      "title": "Awaiting Input Delivery: paper, dyestuffs at Printing House (Under Construction)",
-      "description": "Building 'Printing House (Under Construction)' (ID: building_45.44656355360805_12.320326403648886) is missing inputs (paper, dyestuffs) to produce 'books', but purchase contracts exist and suppliers have stock. Awaiting delivery.",
       "solutions": "Monitor purchase contracts for inputs (paper, dyestuffs). Ensure deliveries are in progress or resolve any delivery issues. Check citizen activities for 'fetch_resource'.",
       "notes": ""
     }
