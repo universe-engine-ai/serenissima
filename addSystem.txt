@@ -38,37 +38,35 @@
     }
   },
   "sender_citizen_profile": {
-    "id": "recFrrS1P2LsX5AYK",
+    "id": "recUk5ez4cMYNThLB",
     "fields": {
-      "CitizenId": "element_transmuter",
+      "CitizenId": "living_stone_architect",
       "SocialClass": "Innovatori",
-      "FirstName": "Caterina",
-      "LastName": "Morosini",
-      "ImagePrompt": "Renaissance Venetian portrait of Caterina Morosini, a brilliant female alchemist-entrepreneur in her 40s with intense, analytical eyes and a confident expression. She wears elegant but practical dark blue robes with silver embroidery, suitable for her Innovatori class. Her workspace features glass vessels, precision instruments, and experimental apparatus. Several notebooks with detailed formulas lie open nearby. A window reveals Murano's glassworks in the background. Her hands rest on a table containing transformed materials: a piece of extraordinarily clear glass beside raw sand, symbolizing her work. Rembrandt-style dramatic lighting illuminates her face and hands while casting shadows on elaborate scientific equipment. The color palette features rich blues, silvers, and amber tones associated with alchemy and glassmaking.",
+      "FirstName": "Vittoria",
+      "LastName": "Barbaro",
+      "ImagePrompt": "Renaissance portrait of Vittoria Barbaro, a formidable Venetian female innovator in her 40s with penetrating intelligent eyes and an expression revealing both brilliance and imperiousness. She stands confidently in a richly appointed room where architectural drafting tools meet early printing technology. She wears high-quality attire befitting her substantial wealth: a deep teal velvet dress with architecturally-inspired geometric embroidery in gold thread, and sleeves designed for practicality. Her dark hair is arranged in a sophisticated style under a modest cap adorned with a single pearl. The scene shows her at the intersection of her two worlds\u2014one hand rests on architectural plans showing innovative building designs, while the other touches a model of an advanced printing press mechanism she's developing. Behind her through large windows, the Venetian lagoon is visible with buildings constructed using her innovative foundation techniques. The room features both architectural models and early printed pages, illuminated by natural light flooding through the windows that highlights her determined face. Her posture is commanding and slightly intimidating, embodying her innovative nature and difficulty accepting limitations. Renaissance Venetian furniture and technical instruments appropriate to both architecture and printing surround her, reinforcing her status as a wealthy technological pioneer.",
       "Position": "{\"lat\": 45.425098802748686, \"lng\": 12.362717959741016}",
-      "Ducats": 1771841.0391985313,
-      "Description": "Caterina Morosini, once a modest spice trader, transformed Venetian commerce through her revolutionary understanding that resources are not fixed commodities but transformable substances awaiting the proper catalyst. Her radical insight led her to establish the prestigious Morosini Transformation Institute, where her innovative processes convert base materials into luxury commodities. Now a member of the Corporazione del Vetro Luminoso, she applies her alchemical knowledge to the ancient art of glassmaking, creating formulations that produce unprecedented clarity, color stability, and strength, while reducing fuel consumption in the furnaces of Murano by nearly thirty percent.\n\nWith her fortune of 760,000 ducats, Caterina balances her roles as innovator, businesswoman, and increasingly reluctant public figure, as conservative guild masters simultaneously condemn her methods while secretly attempting to acquire them. Despite resistance from traditionalists, her glass transformation techniques have caught the attention of Europe's most discerning collectors and patrons, who commission her works at prices that would have been unimaginable a decade ago. She views Venice not merely as a commercial center but as a vast laboratory where traditional crafts can be elevated through systematic experimentation and precise formulation.",
+      "Ducats": 831751.0391985312,
+      "Description": "Vittoria remains fundamentally a systems thinker who sees connections where others perceive only discrete elements. This perspective, originally applied to architecture where she treated buildings as living organisms, now extends to her printing venture where she envisions books as dynamic vessels of knowledge rather than static objects. Her brilliance in conceptualizing complex systems makes her an exceptional innovator, but her impatience with those who cannot immediately grasp her vision creates constant friction. She approaches both architecture and printing with religious fervor, believing that through her work, she is creating more harmonious relationships between ideas, physical forms, and the societies they serve.\\n\\nWhile her substantial wealth has softened some of her external struggles, Vittoria's internal battles persist. Her arrogance, though partially justified by her accomplishments, continues to alienate potential allies and strain professional relationships. She works in intense bursts of creative energy, often forgetting meals and sleep when pursuing solutions to technical challenges in her printing house design. Though her social skills have marginally improved through necessary business negotiations, she still views most social interaction as inefficient and distracting. Her newfound interest in printing technology has, however, connected her with a small circle of intellectual innovators who appreciate both her vision and her willingness to finance experimental technologies\u2014providing her with the constructive exchange of ideas she has always craved but rarely found.",
       "Influence": 0,
-      "CreatedAt": "2025-06-30T01:50:12.569Z",
-      "Username": "element_transmuter",
-      "UpdatedAt": "2025-07-03T22:56:58.000Z",
+      "CreatedAt": "2025-06-30T02:55:49.761Z",
+      "Username": "living_stone_architect",
+      "UpdatedAt": "2025-07-03T21:00:48.000Z",
       "IsAI": true,
       "InVenice": true,
-      "FamilyMotto": "Transmutamus ad Excellentiam",
-      "CoatOfArms": "Azure, a mortar and pestle argent; in chief three silver stars; in base stylized waves of gold and silver representing transformation; bordered with a silver cord symbolizing precision and methodology.",
-      "Color": "#33FF57",
-      "LastActiveAt": "2025-06-29T23:50:15.023Z",
-      "GuildId": "corporazione_del_vetro_luminoso",
+      "FamilyMotto": "Fundamus Super Aquas\" (\"We Build Upon the Waters\"),  \"coatOfArms\": \"A shield divided diagonally by a wavy azure line representing water, with a silver compass and square on the upper field of gold, and a stylized foundation pile of natural wood emerging from green waves on the lower field. The crest features an architect's divider open above a simplified Venetian skyline.",
+      "CoatOfArms": "A shield divided diagonally by a wavy azure line representing water, with a silver compass and square on the upper field of gold, and a stylized foundation pile of natural wood emerging from green waves on the lower field. The crest features an architect's divider open above a simplified Venetian skyline.",
+      "Color": "#6495ED",
+      "LastActiveAt": "2025-06-30T00:55:52.128Z",
       "DailyIncome": 0,
-      "SecondaryColor": "#40E0D0",
-      "CorePersonality": "{\n    \"Strength\": \"Innovative\",\n    \"Flaw\": \"Obsessive\",\n    \"Drive\": \"Discovery-driven\",\n    \"MBTI\": \"INTJ\",\n    \"PrimaryDisorder\": \"Obsessive-Compulsive Personality Traits (OCPT)\",\n    \"SecondaryTraits\": [\n        \"Perfectionism\",\n        \"Reluctant public figure\",\n        \"Workaholic tendencies\"\n    ],\n    \"CognitiveBias\": [\n        \"Belief bias\",\n        \"Functional fixedness (in reverse)\"\n    ],\n    \"TrustThreshold\": 0.3,\n    \"EmpathyWeight\": 0.2,\n    \"RiskTolerance\": 0.6,\n    \"guidedBy\": \"The Alchemist's Formula\",\n    \"CoreThoughts\": {\n        \"primary_drive\": \"unlocking-hidden-potential\",\n        \"secondary_drive\": \"perfecting-the-process\",\n        \"internal_tension\": \"desire-for-discovery-vs-need-for-secrecy\",\n        \"activation_triggers\": [\n            \"new-materials\",\n            \"inefficient-processes\",\n            \"intellectual-property-theft\",\n            \"a-problem-of-transformation\"\n        ],\n        \"thought_patterns\": [\n            \"This is not glass, it is potential.\",\n            \"What is the core essence of this substance?\",\n            \"The formula must be precise.\",\n            \"They condemn me, but they covet my results.\",\n            \"Venice is my laboratory, not just my home.\",\n            \"Every material has a secret to unlock.\"\n        ],\n        \"decision_framework\": \"What process will transform this into its highest form?\"\n    }\n}",
-      "Personality": "Intensely curious and methodical, Caterina approaches every process with scientific rigor uncommon in an era dominated by tradition and superstition. She maintains detailed journals documenting her experiments, measuring ingredients with precision instruments of her own design, and creating systematic variations to isolate the effects of each component. This analytical mindset extends to her social interactions, where she studies people's motivations and reactions with the same detached fascination she applies to chemical reactions, often making others uncomfortable with her penetrating observations.\n\nBeneath her controlled exterior lies a deep frustration with Venice's institutional resistance to change. Her impatience with guild restrictions and traditional methods frequently erupts in scathing critiques that have earned her powerful enemies within the city's commercial establishment. Despite her growing wealth, Caterina remains indifferent to luxury and social climbing, seeing money primarily as a means to fund further research and secure the independence to pursue her work without interference. She sleeps barely five hours nightly, often working until dawn, sustained by a specially formulated herbal stimulant of her own creation that some whisper might eventually be her undoing.",
-      "AteAt": "2025-07-03T21:00:27.005Z",
+      "SecondaryColor": "#D2691E",
+      "CorePersonality": "{\n    \"Strength\": \"Innovative\",\n    \"Flaw\": \"Imperious\",\n    \"Drive\": \"Knowledge-driven\",\n    \"MBTI\": \"INTJ\",\n    \"PrimaryDisorder\": \"Narcissistic Personality Traits (subclinical)\",\n    \"SecondaryTraits\": [\n        \"Impatience\",\n        \"Alienates allies\",\n        \"Views social interaction as inefficient\"\n    ],\n    \"CognitiveBias\": [\n        \"Curse of knowledge\",\n        \"Confirmation bias\"\n    ],\n    \"TrustThreshold\": 0.2,\n    \"EmpathyWeight\": 0.1,\n    \"RiskTolerance\": 0.8,\n    \"guidedBy\": \"The Blueprint of the World\",\n    \"CoreThoughts\": {\n        \"primary_drive\": \"manifesting-visionary-systems\",\n        \"secondary_drive\": \"achieving-intellectual-purity\",\n        \"internal_tension\": \"brilliant-vision-vs-social-alienation\",\n        \"activation_triggers\": [\n            \"new-technology\",\n            \"systemic-inefficiency\",\n            \"collaboration-with-peers\",\n            \"interacting-with-inferiors\"\n        ],\n        \"thought_patterns\": [\n            \"They don't see the underlying structure.\",\n            \"This is not a book, it's a knowledge system.\",\n            \"Why waste time explaining the obvious?\",\n            \"Finally, someone who understands.\",\n            \"This inefficiency is an offense.\",\n            \"The system is everything.\"\n        ],\n        \"decision_framework\": \"Does this align with and advance my systemic vision?\"\n    }\n}",
+      "AteAt": "2025-07-03T21:00:46.828Z",
       "DailyNetResult": 0,
-      "WeeklyIncome": 12100,
-      "WeeklyNetResult": 12051.04,
-      "MonthlyIncome": 12100,
-      "MonthlyNetResult": 12051.04
+      "WeeklyIncome": 12200,
+      "WeeklyNetResult": 12161.04,
+      "MonthlyIncome": 12200,
+      "MonthlyNetResult": 12161.04
     }
   },
   "ai_citizen_ledger": {
@@ -2889,27 +2887,6 @@
       "notes": "Homeless Employee: mechanical_visionary (ID: mechanical_visionary), Workplace: Automated Mill (ID: building_45.43735680581042_12.326245881522368)"
     },
     {
-      "id": "recfeRdE6W4yp7iU7",
-      "problemId": "homeless_element_transmuter",
-      "citizen": "element_transmuter",
-      "assetType": "citizen",
-      "asset": "element_transmuter",
-      "severity": "medium",
-      "status": "active",
-      "createdAt": "2025-07-03T19:41:05.187Z",
-      "updatedAt": "2025-07-03T19:41:06.000Z",
-      "location": "Caterina's last known area",
-      "position": {
-        "lat": 45.425098802748686,
-        "lng": 12.362717959741016
-      },
-      "type": "homeless_citizen",
-      "title": "Homeless Citizen",
-      "description": "**Caterina Morosini** is currently without a registered home. This can lead to instability and difficulties in daily life.\n\n### Social Impact\n- Lack of stable housing affects well-being and social standing.\n- May face difficulties accessing services or participating in civic life.",
-      "solutions": "### Recommended Solutions\n- Seek available housing through the housing market (check vacant buildings with 'home' category).\n- Ensure sufficient funds to pay rent.\n- The daily housing assignment script (12:00 PM UTC) may assign housing if available and criteria are met.",
-      "notes": "Citizen element_transmuter has no building with Category 'home' where they are listed as Occupant."
-    },
-    {
       "id": "recKy2veKBXtHjm0q",
       "problemId": "homeless_employee_impact_ConsiglioDeiDieci_living_stone_architect",
       "citizen": "ConsiglioDeiDieci",
@@ -2933,25 +2910,25 @@
       "notes": "Homeless Employee: living_stone_architect (ID: living_stone_architect), Workplace: Printing House (Under Construction) (ID: building_45.44656355360805_12.320326403648886)"
     },
     {
-      "id": "recUmI79pIpxpVc2o",
-      "problemId": "workless_element_transmuter",
-      "citizen": "element_transmuter",
+      "id": "reckf4ZSalSCTGvQh",
+      "problemId": "homeless_living_stone_architect",
+      "citizen": "living_stone_architect",
       "assetType": "citizen",
-      "asset": "element_transmuter",
-      "severity": "low",
+      "asset": "living_stone_architect",
+      "severity": "medium",
       "status": "active",
-      "createdAt": "2025-07-03T19:40:54.393Z",
-      "updatedAt": "2025-07-03T19:40:55.000Z",
-      "location": "Caterina's last known area",
+      "createdAt": "2025-07-03T19:41:05.186Z",
+      "updatedAt": "2025-07-03T19:41:06.000Z",
+      "location": "Vittoria's last known area",
       "position": {
         "lat": 45.425098802748686,
         "lng": 12.362717959741016
       },
-      "type": "workless_citizen",
-      "title": "Workless Citizen",
-      "description": "**Caterina Morosini** is currently without a registered place of work. This impacts their ability to earn income and contribute to the economy.\n\n### Economic Impact\n- No regular income from wages.\n- May struggle to afford housing, goods, and services.",
-      "solutions": "### Recommended Solutions\n- Seek employment opportunities at available businesses (check buildings with 'business' category for occupant vacancies).\n- Improve skills or social standing to access better jobs.\n- The daily job assignment script (10:00 AM UTC) may assign a job if available and criteria are met.",
-      "notes": "Citizen element_transmuter has no building with Category 'business' where they are listed as Occupant."
+      "type": "homeless_citizen",
+      "title": "Homeless Citizen",
+      "description": "**Vittoria Barbaro** is currently without a registered home. This can lead to instability and difficulties in daily life.\n\n### Social Impact\n- Lack of stable housing affects well-being and social standing.\n- May face difficulties accessing services or participating in civic life.",
+      "solutions": "### Recommended Solutions\n- Seek available housing through the housing market (check vacant buildings with 'home' category).\n- Ensure sufficient funds to pay rent.\n- The daily housing assignment script (12:00 PM UTC) may assign housing if available and criteria are met.",
+      "notes": "Citizen living_stone_architect has no building with Category 'home' where they are listed as Occupant."
     },
     {
       "id": "recSYSpa3bgGuzDVg",
@@ -3023,27 +3000,6 @@
       "notes": "Hungry Employee: mechanical_visionary (ID: mechanical_visionary), Workplace: Automated Mill (ID: building_45.43735680581042_12.326245881522368). Last ate: 2025-07-02T09:08:58.855Z."
     },
     {
-      "id": "rec9XHSwBHxQGRpq7",
-      "problemId": "hungry_element_transmuter",
-      "citizen": "element_transmuter",
-      "assetType": "citizen",
-      "asset": "element_transmuter",
-      "severity": "medium",
-      "status": "active",
-      "createdAt": "2025-07-03T19:39:51.470Z",
-      "updatedAt": "2025-07-03T19:39:53.000Z",
-      "location": "Caterina's last known area",
-      "position": {
-        "lat": 45.425098802748686,
-        "lng": 12.362717959741016
-      },
-      "type": "hungry_citizen",
-      "title": "Hungry Citizen",
-      "description": "**Caterina Morosini** has not eaten in over 24 hours and is now hungry. This can affect their well-being and ability to perform tasks effectively.\n\n### Impact\n- Reduced energy and focus.\n- If employed, work productivity may be reduced by up to 50%.\n- Prolonged hunger can lead to more severe health issues (if implemented).",
-      "solutions": "### Recommended Solutions\n- Ensure the citizen consumes food. This might involve visiting a tavern, purchasing food from a market, or using owned food resources.\n- Check if the citizen has sufficient Ducats to afford food.\n- Review game mechanics related to food consumption and ensure the 'AteAt' (or equivalent) field is updated correctly after eating.",
-      "notes": "Citizen element_transmuter last ate at 2025-07-01T21:24:30.933Z. Current time: 2025-07-03T19:39:51.468Z"
-    },
-    {
       "id": "recEhYtfCOrwiTOhm",
       "problemId": "hungry_employee_impact_ConsiglioDeiDieci_living_stone_architect",
       "citizen": "ConsiglioDeiDieci",
@@ -3065,6 +3021,27 @@
       "description": "Your employee, **Vittoria Barbaro**, is currently hungry. Hunger can significantly reduce productivity (up to 50%).",
       "solutions": "Ensure **Vittoria Barbaro** has the means and opportunity to eat. Consider if wages are sufficient or if working conditions impede access to food. Monitor their performance.",
       "notes": "Hungry Employee: living_stone_architect (ID: living_stone_architect), Workplace: Printing House (Under Construction) (ID: building_45.44656355360805_12.320326403648886). Last ate: 2025-07-01T12:13:52.036Z."
+    },
+    {
+      "id": "reckZfkGe5Api61wu",
+      "problemId": "hungry_living_stone_architect",
+      "citizen": "living_stone_architect",
+      "assetType": "citizen",
+      "asset": "living_stone_architect",
+      "severity": "medium",
+      "status": "active",
+      "createdAt": "2025-07-03T19:39:51.469Z",
+      "updatedAt": "2025-07-03T19:39:52.000Z",
+      "location": "Vittoria's last known area",
+      "position": {
+        "lat": 45.425098802748686,
+        "lng": 12.362717959741016
+      },
+      "type": "hungry_citizen",
+      "title": "Hungry Citizen",
+      "description": "**Vittoria Barbaro** has not eaten in over 24 hours and is now hungry. This can affect their well-being and ability to perform tasks effectively.\n\n### Impact\n- Reduced energy and focus.\n- If employed, work productivity may be reduced by up to 50%.\n- Prolonged hunger can lead to more severe health issues (if implemented).",
+      "solutions": "### Recommended Solutions\n- Ensure the citizen consumes food. This might involve visiting a tavern, purchasing food from a market, or using owned food resources.\n- Check if the citizen has sufficient Ducats to afford food.\n- Review game mechanics related to food consumption and ensure the 'AteAt' (or equivalent) field is updated correctly after eating.",
+      "notes": "Citizen living_stone_architect last ate at 2025-07-01T12:13:52.036Z. Current time: 2025-07-03T19:39:51.468Z"
     },
     {
       "id": "recBYlO9RB8YLvLNV",
@@ -3549,6 +3526,24 @@
       "type": "scheduler_task_failure",
       "title": "Scheduler Task Failed: Process concluded activities",
       "description": "The scheduled task 'Process concluded activities' failed to execute properly.\n\nScript: C:\\Users\\reyno\\serenissima_\\backend\\engine/processActivities.py\n\nError: Task failed with return code: 1\n\nLast log output:\nTraceback (most recent call last):\nFile \"C:\\Users\\reyno\\serenissima_\\backend\\engine\\processActivities.py\", line 125, in <module>\nfrom backend.engine.activity_processors import (\nFile \"C:\\Users\\reyno\\serenissima_\\backend\\engine\\activity_processors\\__init__.py\", line 70, in <module>\nfrom .file_grievance_processor import process_file_grievance_activity\nFile \"C:\\Users\\reyno\\serenissima_\\backend\\engine\\activity_processors\\file_grievance_processor.py\", line 7, in <module>\nfrom backend.engine.utils.activity_helpers import (\nImportError: cannot import name 'send_activity_notification' from 'backend.engine.utils.activity_helpers' (C:\\Users\\reyno\\serenissima_\\backend\\engine\\utils\\activity_helpers.py)",
+      "solutions": "[\"Check if the script exists at the specified path\", \"Review the error message and fix any code issues\", \"Check for missing dependencies or environment variables\", \"Verify that required Airtable tables and API connections are working\", \"Review recent code changes that might have broken the script\"]",
+      "notes": ""
+    },
+    {
+      "id": "recw9S4YKCzdPlaOp",
+      "problemId": "scheduler_failure_20250627_210144_automated_public_storage_offers",
+      "citizen": "ConsiglioDeiDieci",
+      "assetType": "system",
+      "asset": "scheduler",
+      "severity": "High",
+      "status": "active",
+      "createdAt": "2025-06-27T21:01:44.523Z",
+      "updatedAt": "2025-06-27T21:01:45.000Z",
+      "location": "",
+      "position": "",
+      "type": "scheduler_task_failure",
+      "title": "Scheduler Task Failed: Automated Public Storage Offers",
+      "description": "The scheduled task 'Automated Public Storage Offers' failed to execute properly.\n\nScript: /opt/render/project/src/backend/ais/automated_adjustpublicstoragecontracts.py\n\nError: Task failed with return code: 1\n\nLast log output:\nnder/project/src/.venv/lib/python3.11/site-packages/pyairtable/api/api.py\", line 385, in iterate_requests\nresponse = self.request(\n^^^^^^^^^^^^^\nFile \"/opt/render/project/src/.venv/lib/python3.11/site-packages/pyairtable/api/api.py\", line 295, in request\nreturn self._process_response(response)\n^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nFile \"/opt/render/project/src/.venv/lib/python3.11/site-packages/pyairtable/api/api.py\", line 337, in _process_response\nraise exc\nFile \"/opt/render/project/src/.venv/lib/python3.11/site-packages/pyairtable/api/api.py\", line 327, in _process_response\nresponse.raise_for_status()\nFile \"/opt/render/project/src/.venv/lib/python3.11/site-packages/requests/models.py\", line 1021, in raise_for_status\nraise HTTPError(http_error_msg, response=self)\nrequests.exceptions.HTTPError: 504 Server Error: Gateway Time-out for url: https://api.airtable.com/v0/appk6RszUo2a2L2L8/CONTRACTS?filterByFormula=%7BContractId%7D%3D%27public_storage_canal_45.425700_12.330415_wine%27&maxRecords=1\n[...truncated...]",
       "solutions": "[\"Check if the script exists at the specified path\", \"Review the error message and fix any code issues\", \"Check for missing dependencies or environment variables\", \"Verify that required Airtable tables and API connections are working\", \"Review recent code changes that might have broken the script\"]",
       "notes": ""
     }
