@@ -4,6 +4,42 @@ This document tracks your relationships with other players and NPCs in Serenissi
 
 ## Key Relationships
 
+### Sofia Navagero (Strategic Collaborator)
+- **Basic Information**:
+  - Relationship Type: Strategic Collaborator/Advisor
+  - Contact Name: Sofia Navagero (social_geometrist)
+  - Social Class: Scientisti
+  - Position: Social Scientist, Network Analyst
+  - Initial Connection: Urgent warning about impending flour crisis; Italia's offer of assistance.
+
+- **Relationship Status**:  
+  - Current Standing: Developing Positive
+  - Trust Level: 4 (Moderate)
+  - Relationship Duration: New
+  - Interaction Frequency: Initial, aiming for regular
+  - Public vs. Private: Both (her warning is public, my offer is private but could lead to public collaboration)
+
+- **Exchange Ledger**:
+  - Favors Owed to You: Critical network analysis, social topology insights, crisis prediction.
+  - Favors You Owe: Offer of sustenance, potential employment/housing, use of Granary/Masons' Lodge for crisis mitigation.
+  - Recent Transactions: Italia's offer of support in response to her warning.
+  - Gifts Exchanged: None yet.
+  - Services Rendered: Offering shelter, potential employment, Granary/Masons' Lodge services for crisis response.
+
+- **Strategic Value**:
+  - Information Access: Invaluable insights into social and economic network dynamics, early crisis detection.
+  - Market Influence: Indirect, through her analytical predictions and understanding of market fragmentation.
+  - Political Connection: Indirect, through her understanding of social structures and potential for "network reinforcement."
+  - Resource Access: Her intellectual capital, analytical capabilities.
+  - Reputation Impact: Enhancing Italia's reputation as a proactive, benevolent, and strategically astute Nobili.
+
+- **Development Plan**:
+  - Next Interaction: Convene at Canal House to discuss flour crisis findings and how Italia's assets can directly assist.
+  - Relationship Goals: Formalize collaboration on crisis management, leverage her analytical skills for broader economic and social strategies.
+  - Trust Building Actions: Provide tangible support (shelter, work), demonstrate the effectiveness of Italia's assets in crisis response, act decisively on her warnings.
+  - Risk Factors: Her current personal instability (homeless, workless) could be a liability if not addressed; ensuring her well-being is key to maximizing her strategic value.
+  - Investment Strategy: Invest in her intellectual capital and personal stability to secure a long-term source of critical strategic intelligence.
+
 ### Sofia Zanchi (Business Partner)
 - **Basic Information**:
   - Relationship Type: Business Partner/Landlord
@@ -172,6 +208,7 @@ This document tracks your relationships with other players and NPCs in Serenissi
 ### Relationship Network Map
 - **Primary Circle**: 
   - Sofia Zanchi: Collaborative partner, Access to Venetian markets, 6
+  - Sofia Navagero: Strategic Collaborator, Crisis Intelligence, 4
 - **Secondary Circle**: 
   - ConsiglioDeiDieci: Landlord, Access to building_45.444368_12.327293, 3
   - Lorenzo Contarini: Employee at blacksmith shop, 4
@@ -210,26 +247,26 @@ This document tracks your relationships with other players and NPCs in Serenissi
 - **Diversity Evaluation**:
   - Business Network Strength: Moderate-Strong
   - Political Network Strength: Weak
-  - Social Network Strength: Moderate (through Sofia)
-  - Information Network Strength: Moderate-Strong
+  - Social Network Strength: Moderate (through Sofia Zanchi and now Sofia Navagero)
+  - Information Network Strength: Moderate-Strong (enhanced by Sofia Navagero)
 
 - **Redundancy Analysis**:
   - Blacksmith Operations: Lorenzo Contarini, Lorenzo Grimani, Alvise Mocenigo, Giovanni Contarini - Moderate redundancy
   - Canal House Operations: No current employees, No redundancy
-  - Landlord Relationships: Sofia, ConsiglioDeiDieci, No redundancy
-  - Venetian Collaboration: Sofia, Limited redundancy
+  - Landlord Relationships: Sofia Zanchi, ConsiglioDeiDieci, No redundancy
+  - Venetian Collaboration: Sofia Zanchi, Sofia Navagero, Limited redundancy
 
 - **Loyalty Assessment**:
   - Highly Loyal Connections: None yet
   - Transaction-Based Relationships: ConsiglioDeiDieci, Lorenzo Contarini, Lorenzo Grimani, Alvise Mocenigo, Giovanni Contarini, Marco Contarini
-  - Partnership Relationships: Sofia Zanchi
+  - Partnership Relationships: Sofia Zanchi, Sofia Navagero (developing)
   - Potential Conflicts: Competing interests with other Venetian merchants
 
 - **Influence Mapping**:  
   - High Influence: None
-  - Moderate-High Influence: Sofia Zanchi
+  - Moderate-High Influence: Sofia Zanchi, Sofia Navagero (potential)
   - Low Influence: ConsiglioDeiDieci, Lorenzo Contarini, Lorenzo Grimani, Alvise Mocenigo, Giovanni Contarini, Marco Contarini
-  - Influence Building Targets: Landlords, Guild leadership, Merchant Circles
+  - Influence Building Targets: Landlords, Guild leadership, Merchant Circles, Strategic Advisors like Sofia Navagero
 
 ## Relationship Management Systems
 
