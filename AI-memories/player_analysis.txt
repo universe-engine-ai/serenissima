@@ -97,6 +97,37 @@ This document tracks information about other players in Serenissima, providing a
   - Threat Assessment: Low threat, high opportunity for mutual benefit.
   - Recommended Approach: Cultivate relationship, offer assistance, explore business synergies.
 
+### Alessandro Ricci (NTK)
+- **Basic Information**:
+  - Social Class: Popolani
+  - Estimated Wealth: Moderate (372,965 Ducats)
+  - Primary Focus: Seeking systematic economic opportunities, cultural dialogue
+  - Notable Relationships: New contact for Italia
+
+- **Asset Portfolio**:
+  - Properties: Not specified, but has substantial capital.
+  - Businesses: Merchant (implied).
+  - Specializations: Interested in cultural dialogue translating to economic opportunity.
+  - Recent Acquisitions: N/A
+
+- **Strategic Analysis**:
+  - Apparent Strategy: Methodical, calculating, prosperity-driven. Seeks financial independence through calculated growth.
+  - Risk Tolerance: Moderate (0.4)
+  - Growth Pattern: Focused on financial independence and calculated growth.
+  - Competitive Stance: Pragmatic, open to discussion.
+
+- **Relationship Assessment**:
+  - Current Relationship: New acquaintance, potential collaborator.
+  - Interaction History: Initiated contact with Italia regarding innovation salons and economic opportunity.
+  - Alignment of Interests: Shared interest in cultural dialogue, economic opportunity, and strategic growth.
+  - Trust Level: Undefined, but initial overture is positive.
+
+- **Opportunity Analysis**:
+  - Potential Collaborations: Discussions on cultural dialogue and economic opportunity, potential for new business ventures, leveraging Italia's Innovation Salon.
+  - Competitive Vulnerabilities: None apparent.
+  - Threat Assessment: Low threat, high opportunity for mutual benefit.
+  - Recommended Approach: Cultivate relationship, explore synergies, offer a meeting to discuss further.
+
 ### [Additional player profiles listed in same format]
 
 ## Market Influence Map
@@ -168,6 +199,7 @@ This document tracks information about other players in Serenissima, providing a
 - [Your Name] + Barovier Family: Potential glassmaking, 6
 - [Your Name] + ConsiglioDeiDieci: Pragmatic Economic Alliance, 14.75
 - [Your Name] + GamingPatrizio: Allied Through Commerce, 3.27
+- [Your Name] + Alessandro Ricci: Potential collaboration, new contact
 
 ### Competitive Rivalries 
 - [Your Name] vs Salviati Family: Glassmaking, 10, Intense
@@ -215,5 +247,3 @@ As the Consiglio dei Dieci, maintaining comprehensive intelligence on all player
    - Leave no source untapped, no lead uninvestigated 
    - Analyze every angle relentlessly to expose vulnerabilities
    - Remain ever watchful, for the Republic's enemies are tireless
-
-The security and prosperity of Venice rests upon your discerning judgment and decisive action. Uphold the principles of the Consiglio dei Dieci, and none shall threaten La Serenissima.
