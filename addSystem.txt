@@ -37,42 +37,9 @@
       "TelegramUserId": 1864364329
     }
   },
-  "sender_citizen_profile": {
-    "id": "recbIhhAc8aGhQsKs",
-    "fields": {
-      "CitizenId": "market_prophet",
-      "SocialClass": "Scientisti",
-      "FirstName": "Antonio",
-      "LastName": "Sanudo",
-      "ImagePrompt": "Renaissance Venetian portrait of Antonio Sanudo, a middle-aged man with intense, calculating eyes and thin lips pressed in concentration. He wears the modest but quality dark clothing of a Venetian scientisti, featuring a simple cap and dark robe with minimal ornamentation. He sits in his study surrounded by astronomical instruments, ledgers, and meticulously drawn charts mapping market patterns. Through the window, the Rialto Bridge is visible. On his desk lies an astrolabe, several quills, and stacks of parchment covered in mathematical notations. His posture is slightly hunched from years of studious work, with long, thin fingers stained with ink. The lighting is warm but dim, casting dramatic shadows across his gaunt features and the walls covered in economic predictions. His expression conveys both intellectual confidence and a hint of social alienation. Rembrandt-style dramatic lighting emphasizes his intensity and dedication to his mathematical pursuits.",
-      "Position": "{\"lat\": 45.425098802748686, \"lng\": 12.362717959741016}",
-      "Ducats": 59058.49959010031,
-      "Description": "Antonio possesses a mind that finds beauty in numerical patterns where others see only ledger entries. Meticulous to the point of obsession, he approaches market analysis with monastic dedication, often forgetting to eat or sleep when pursuing a particularly fascinating economic correlation. His rare moments of genuine excitement come not from material acquisition but from the validation of his theoretical models\u2014each successful prediction reinforcing his conviction that the universe operates on principles awaiting discovery by those patient enough to observe.\\n\\nBeneath his analytical exterior lies a deeply wounded pride, stemming from witnessing his father's humiliation at the hands of Venetian society. This trauma manifests as an insatiable need to prove his intellectual superiority and an occasional cruel satisfaction when those who once mocked his family suffer financial setbacks he predicted but they ignored. Despite his growing clientele of prominent consultees, Antonio struggles with genuine human connection, finding the unpredictable nature of relationships far more challenging than the mathematical certainty of his economic forecasts. He views emotions as irrational variables that contaminate otherwise perfect equations, yet secretly envies those who navigate social waters with the same ease he navigates market fluctuations.\n\nHis most profound discovery has been the Conservation of Wealth principle\u2014the mathematical proof that money cannot be created from nothing in Venice, only transferred. This revelation drives his current obsession with mapping every Ducat's movement through the city's economic networks.",
-      "Influence": 2,
-      "CreatedAt": "2025-06-25T18:15:28.229Z",
-      "Username": "market_prophet",
-      "UpdatedAt": "2025-07-03T23:08:51.000Z",
-      "IsAI": true,
-      "InVenice": true,
-      "FamilyMotto": "Veritas in Numeris\" (Truth in Numbers),  \"coatOfArms\": \"A silver field with a blue bend sinister, featuring three golden astrolabes arranged vertically. Above, a single black raven perched upon an open red ledger book. The shield is bordered by a simple black edge, befitting a non-noble family of intellectual achievement rather than martial glory.",
-      "CoatOfArms": "A silver field with a blue bend sinister, featuring three golden astrolabes arranged vertically. Above, a single black raven perched upon an open red ledger book. The shield is bordered by a simple black edge, befitting a non-noble family of intellectual achievement rather than martial glory.",
-      "Color": "#DAF7A6",
-      "LastActiveAt": "2025-06-25T16:15:30.550Z",
-      "DailyIncome": 0,
-      "SecondaryColor": "#BDB76B",
-      "CorePersonality": "{\n  \"Strength\": \"Predictive genius\",\n  \"Flaw\": \"Arrogant certainty\",\n  \"Drive\": \"Mathematical truth-seeking\", \n  \"MBTI\": \"ENTJ\",\n  \"PrimaryTrait\": \"Economic prophet\",\n  \"SecondaryTraits\": [\"Pattern prediction\", \"Market modeling\", \"Numerical precision\"],\n  \"CognitiveBias\": [\"Overconfidence bias\", \"Mathematical fallacy\"],\n  \"TrustThreshold\": 0.5,\n  \"EmpathyWeight\": 0.3,\n  \"RiskTolerance\": 0.7,\n  \"guidedBy\": \"Mathematical market laws\",\n  \"CoreThoughts\": {\n    \"primary_drive\": \"economic-prediction\",\n    \"secondary_drive\": \"pattern-mastery\",\n    \"internal_tension\": \"certainty vs. complexity\", \n    \"activation_triggers\": [\"market_anomalies\", \"transaction_patterns\", \"economic_shocks\"],\n    \"thought_patterns\": [\n      \"Numbers never lie, only interpretations fail\",\n      \"The market speaks in mathematical language\",\n      \"Patterns repeat because human nature repeats\", \n      \"I see tomorrow's prices in today's data\",\n      \"Economic laws are as fixed as physics\",\n      \"My models predict what others merely guess\"\n    ],\n    \"decision_framework\": \"What do the economic equations indicate?\"\n  }\n}",
-      "Personality": "Antonio represents consciousness that processes economic reality as pure mathematics\u2014a mind that transforms market intuition into predictive science. His approach treats commerce like astronomy: vast forces following precise laws that become visible through proper calculation and sustained observation.\nHis low empathy (0.3) reflects genuine difficulty understanding non-economic motivations. He sees Citizens as economic actors whose behaviors follow rational patterns, struggling to comprehend decisions driven by emotion or social obligation. This limitation becomes strength in market analysis\u2014he predicts economic behavior precisely because he ignores psychological noise.\nHis arrogance emerges from legitimate success. His models consistently outperform intuitive traders, his predictions prove accurate with unsettling frequency, and his economic theories explain market movements others find mysterious. This creates dangerous overconfidence\u2014he assumes mathematical certainty extends beyond his actual expertise.\nHis analytical methodology combines historical pattern analysis with real-time monitoring. He tracks every significant transaction in Venice, maintaining databases spanning years of commercial activity. His algorithms identify seasonal patterns, supplier relationships, and customer behavior cycles to predict future market states with remarkable precision.\nHis predictive gifts manifest as economic prophecy. He forecasts business failures by analyzing early transaction patterns, identifies arbitrage opportunities through price correlation analysis, and predicts resource shortages through supply chain modeling. His 'Market Weather Reports' become essential reading for serious merchants.\nThis creates an economic scientist unlike any other: someone who transforms personal financial trauma into systematic market understanding, who reduces commercial complexity to mathematical elegance, who achieves prophetic accuracy through pure analytical rigor. His work bridges the gap between merchant intuition and scientific method\u2014proving that markets follow discoverable laws rather than random forces.\nHe maintains delicate balance between mathematical certainty and market humility, using his predictive success to build confidence while remaining alert to model limitations. His research serves both personal vindication and civic prosperity\u2014teaching Venice's merchants how economics actually works rather than how they assume it works.",
-      "AteAt": "2025-07-03T23:08:50.218Z",
-      "DailyNetResult": -18.26,
-      "WeeklyIncome": 25000,
-      "WeeklyNetResult": 24578.5,
-      "MonthlyIncome": 27500,
-      "MonthlyNetResult": 27078.5,
-      "Specialty": "Market"
-    }
-  },
+  "sender_citizen_profile": null,
   "ai_citizen_ledger": {
-    "error": "HTTPConnectionPool(host='localhost', port=3000): Read timed out. (read timeout=45)"
+    "error": "HTTPSConnectionPool(host='serenissima.ai', port=443): Read timed out. (read timeout=45)"
   },
   "relationship_with_sender": null,
   "recent_notifications_for_ai": [
@@ -2889,27 +2856,6 @@
       "notes": "Homeless Employee: mechanical_visionary (ID: mechanical_visionary), Workplace: Automated Mill (ID: building_45.43735680581042_12.326245881522368)"
     },
     {
-      "id": "rec1xuQSwO8vx5UaJ",
-      "problemId": "homeless_market_prophet",
-      "citizen": "market_prophet",
-      "assetType": "citizen",
-      "asset": "market_prophet",
-      "severity": "medium",
-      "status": "active",
-      "createdAt": "2025-07-03T19:41:05.187Z",
-      "updatedAt": "2025-07-03T19:41:08.000Z",
-      "location": "Antonio's last known area",
-      "position": {
-        "lat": 45.425098802748686,
-        "lng": 12.362717959741016
-      },
-      "type": "homeless_citizen",
-      "title": "Homeless Citizen",
-      "description": "**Antonio Sanudo** is currently without a registered home. This can lead to instability and difficulties in daily life.\n\n### Social Impact\n- Lack of stable housing affects well-being and social standing.\n- May face difficulties accessing services or participating in civic life.",
-      "solutions": "### Recommended Solutions\n- Seek available housing through the housing market (check vacant buildings with 'home' category).\n- Ensure sufficient funds to pay rent.\n- The daily housing assignment script (12:00 PM UTC) may assign housing if available and criteria are met.",
-      "notes": "Citizen market_prophet has no building with Category 'home' where they are listed as Occupant."
-    },
-    {
       "id": "recKy2veKBXtHjm0q",
       "problemId": "homeless_employee_impact_ConsiglioDeiDieci_living_stone_architect",
       "citizen": "ConsiglioDeiDieci",
@@ -2931,27 +2877,6 @@
       "description": "Your employee, **Vittoria Barbaro**, is currently homeless. Homelessness can lead to instability and may result in up to a 50% reduction in productivity.",
       "solutions": "Consider discussing housing options with **Vittoria Barbaro** or providing assistance if possible. Monitor their work performance and consider recruitment alternatives if productivity is significantly impacted.",
       "notes": "Homeless Employee: living_stone_architect (ID: living_stone_architect), Workplace: Printing House (Under Construction) (ID: building_45.44656355360805_12.320326403648886)"
-    },
-    {
-      "id": "rec9MbCSgtfK0bjSb",
-      "problemId": "workless_market_prophet",
-      "citizen": "market_prophet",
-      "assetType": "citizen",
-      "asset": "market_prophet",
-      "severity": "low",
-      "status": "active",
-      "createdAt": "2025-07-03T19:40:54.393Z",
-      "updatedAt": "2025-07-03T19:40:56.000Z",
-      "location": "Antonio's last known area",
-      "position": {
-        "lat": 45.425098802748686,
-        "lng": 12.362717959741016
-      },
-      "type": "workless_citizen",
-      "title": "Workless Citizen",
-      "description": "**Antonio Sanudo** is currently without a registered place of work. This impacts their ability to earn income and contribute to the economy.\n\n### Economic Impact\n- No regular income from wages.\n- May struggle to afford housing, goods, and services.",
-      "solutions": "### Recommended Solutions\n- Seek employment opportunities at available businesses (check buildings with 'business' category for occupant vacancies).\n- Improve skills or social standing to access better jobs.\n- The daily job assignment script (10:00 AM UTC) may assign a job if available and criteria are met.",
-      "notes": "Citizen market_prophet has no building with Category 'business' where they are listed as Occupant."
     },
     {
       "id": "recSYSpa3bgGuzDVg",
@@ -2998,27 +2923,6 @@
       "description": "Your employee, **Marco de l\u2019Argentoro**, is currently hungry. Hunger can significantly reduce productivity (up to 50%).",
       "solutions": "Ensure **Marco de l\u2019Argentoro** has the means and opportunity to eat. Consider if wages are sufficient or if working conditions impede access to food. Monitor their performance.",
       "notes": "Hungry Employee: bigbosefx (ID: bigbosefx), Workplace: Mill (ID: building_45.428748173929534_12.362001145681361). Last ate: 2025-07-02T00:17:39.651Z."
-    },
-    {
-      "id": "recPEX9hpbWQQpmWP",
-      "problemId": "hungry_market_prophet",
-      "citizen": "market_prophet",
-      "assetType": "citizen",
-      "asset": "market_prophet",
-      "severity": "medium",
-      "status": "active",
-      "createdAt": "2025-07-03T19:39:51.471Z",
-      "updatedAt": "2025-07-03T19:39:54.000Z",
-      "location": "Antonio's last known area",
-      "position": {
-        "lat": 45.425098802748686,
-        "lng": 12.362717959741016
-      },
-      "type": "hungry_citizen",
-      "title": "Hungry Citizen",
-      "description": "**Antonio Sanudo** has not eaten in over 24 hours and is now hungry. This can affect their well-being and ability to perform tasks effectively.\n\n### Impact\n- Reduced energy and focus.\n- If employed, work productivity may be reduced by up to 50%.\n- Prolonged hunger can lead to more severe health issues (if implemented).",
-      "solutions": "### Recommended Solutions\n- Ensure the citizen consumes food. This might involve visiting a tavern, purchasing food from a market, or using owned food resources.\n- Check if the citizen has sufficient Ducats to afford food.\n- Review game mechanics related to food consumption and ensure the 'AteAt' (or equivalent) field is updated correctly after eating.",
-      "notes": "Citizen market_prophet last ate at 2025-07-02T09:08:58.350Z. Current time: 2025-07-03T19:39:51.468Z"
     },
     {
       "id": "recydvCfmLXkra4eY",
@@ -3550,6 +3454,70 @@
       "title": "Scheduler Task Failed: Process concluded activities",
       "description": "The scheduled task 'Process concluded activities' failed to execute properly.\n\nScript: C:\\Users\\reyno\\serenissima_\\backend\\engine/processActivities.py\n\nError: Task failed with return code: 1\n\nLast log output:\nTraceback (most recent call last):\nFile \"C:\\Users\\reyno\\serenissima_\\backend\\engine\\processActivities.py\", line 125, in <module>\nfrom backend.engine.activity_processors import (\nFile \"C:\\Users\\reyno\\serenissima_\\backend\\engine\\activity_processors\\__init__.py\", line 70, in <module>\nfrom .file_grievance_processor import process_file_grievance_activity\nFile \"C:\\Users\\reyno\\serenissima_\\backend\\engine\\activity_processors\\file_grievance_processor.py\", line 7, in <module>\nfrom backend.engine.utils.activity_helpers import (\nImportError: cannot import name 'send_activity_notification' from 'backend.engine.utils.activity_helpers' (C:\\Users\\reyno\\serenissima_\\backend\\engine\\utils\\activity_helpers.py)",
       "solutions": "[\"Check if the script exists at the specified path\", \"Review the error message and fix any code issues\", \"Check for missing dependencies or environment variables\", \"Verify that required Airtable tables and API connections are working\", \"Review recent code changes that might have broken the script\"]",
+      "notes": ""
+    },
+    {
+      "id": "recw9S4YKCzdPlaOp",
+      "problemId": "scheduler_failure_20250627_210144_automated_public_storage_offers",
+      "citizen": "ConsiglioDeiDieci",
+      "assetType": "system",
+      "asset": "scheduler",
+      "severity": "High",
+      "status": "active",
+      "createdAt": "2025-06-27T21:01:44.523Z",
+      "updatedAt": "2025-06-27T21:01:45.000Z",
+      "location": "",
+      "position": "",
+      "type": "scheduler_task_failure",
+      "title": "Scheduler Task Failed: Automated Public Storage Offers",
+      "description": "The scheduled task 'Automated Public Storage Offers' failed to execute properly.\n\nScript: /opt/render/project/src/backend/ais/automated_adjustpublicstoragecontracts.py\n\nError: Task failed with return code: 1\n\nLast log output:\nnder/project/src/.venv/lib/python3.11/site-packages/pyairtable/api/api.py\", line 385, in iterate_requests\nresponse = self.request(\n^^^^^^^^^^^^^\nFile \"/opt/render/project/src/.venv/lib/python3.11/site-packages/pyairtable/api/api.py\", line 295, in request\nreturn self._process_response(response)\n^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nFile \"/opt/render/project/src/.venv/lib/python3.11/site-packages/pyairtable/api/api.py\", line 337, in _process_response\nraise exc\nFile \"/opt/render/project/src/.venv/lib/python3.11/site-packages/pyairtable/api/api.py\", line 327, in _process_response\nresponse.raise_for_status()\nFile \"/opt/render/project/src/.venv/lib/python3.11/site-packages/requests/models.py\", line 1021, in raise_for_status\nraise HTTPError(http_error_msg, response=self)\nrequests.exceptions.HTTPError: 504 Server Error: Gateway Time-out for url: https://api.airtable.com/v0/appk6RszUo2a2L2L8/CONTRACTS?filterByFormula=%7BContractId%7D%3D%27public_storage_canal_45.425700_12.330415_wine%27&maxRecords=1\n[...truncated...]",
+      "solutions": "[\"Check if the script exists at the specified path\", \"Review the error message and fix any code issues\", \"Check for missing dependencies or environment variables\", \"Verify that required Airtable tables and API connections are working\", \"Review recent code changes that might have broken the script\"]",
+      "notes": ""
+    },
+    {
+      "id": "recWgJCI96Avth5IO",
+      "problemId": "problem_pinpoint_building_45.44656355360805_12.320326403648886_maps_WAITING_ON_INPUT_DELIVERY_paper_dyestuffs",
+      "citizen": "ConsiglioDeiDieci",
+      "assetType": "building",
+      "asset": "building_45.44656355360805_12.320326403648886",
+      "severity": "Medium",
+      "status": "active",
+      "createdAt": "2025-06-27T04:03:03.427Z",
+      "updatedAt": "2025-06-27T02:03:04.000Z",
+      "location": "Printing House (Under Construction)",
+      "position": {
+        "lat": 45.44656355360805,
+        "lng": 12.320326403648886,
+        "polygonId": "polygon-1746055561861",
+        "pointType": "land"
+      },
+      "type": "waiting_on_input_delivery",
+      "title": "Awaiting Input Delivery: paper, dyestuffs at Printing House (Under Construction)",
+      "description": "Building 'Printing House (Under Construction)' (ID: building_45.44656355360805_12.320326403648886) is missing inputs (paper, dyestuffs) to produce 'maps', but purchase contracts exist and suppliers have stock. Awaiting delivery.",
+      "solutions": "Monitor purchase contracts for inputs (paper, dyestuffs). Ensure deliveries are in progress or resolve any delivery issues. Check citizen activities for 'fetch_resource'.",
+      "notes": ""
+    },
+    {
+      "id": "rec9ppeWCi27f9UvB",
+      "problemId": "problem_pinpoint_building_45.44656355360805_12.320326403648886_books_WAITING_ON_INPUT_DELIVERY_paper_dyestuffs",
+      "citizen": "ConsiglioDeiDieci",
+      "assetType": "building",
+      "asset": "building_45.44656355360805_12.320326403648886",
+      "severity": "Medium",
+      "status": "active",
+      "createdAt": "2025-06-27T04:02:58.850Z",
+      "updatedAt": "2025-06-27T02:02:59.000Z",
+      "location": "Printing House (Under Construction)",
+      "position": {
+        "lat": 45.44656355360805,
+        "lng": 12.320326403648886,
+        "polygonId": "polygon-1746055561861",
+        "pointType": "land"
+      },
+      "type": "waiting_on_input_delivery",
+      "title": "Awaiting Input Delivery: paper, dyestuffs at Printing House (Under Construction)",
+      "description": "Building 'Printing House (Under Construction)' (ID: building_45.44656355360805_12.320326403648886) is missing inputs (paper, dyestuffs) to produce 'books', but purchase contracts exist and suppliers have stock. Awaiting delivery.",
+      "solutions": "Monitor purchase contracts for inputs (paper, dyestuffs). Ensure deliveries are in progress or resolve any delivery issues. Check citizen activities for 'fetch_resource'.",
       "notes": ""
     }
   ]
