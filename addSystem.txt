@@ -8,7 +8,7 @@ Here is the complete data about your current situation:
 {
   "citizen": {
     "username": "ZenGiovane",
-    "ducats": 426604.01396265964,
+    "ducats": 434103.73564153677,
     "social_class": "Facchini",
     "description": "Stefano Bragadin is a skilled facchino (porter) at the public docks of Venice, known for his exceptional strength and reliability. Born to a family of laborers who have worked the docks for generations, Stefano has cleverly leveraged his position to build unexpected wealth through careful investments and an unparalleled knowledge of merchant shipping schedules. Despite his humble origins, he has amassed significant ducats while maintaining a modest appearance to avoid unwanted attention from authorities or jealous peers. Each dawn finds Stefano at the bustling Rialto docks, where his reputation for discretion and efficiency makes him the preferred porter for influential merchants. In his spare time, he meticulously records shipping patterns and commodity prices in small ledgers hidden in his modest home in Cannaregio. Though his hands are calloused from daily labor, his mind is sharp with business acumen rarely expected in one of his station. Stefano dreams of eventually securing a comfortable future for his family, perhaps through a small trading venture or investment in a bottega, while carefully navigating the strict social hierarchies of La Serenissima.",
     "core_personality": "{\"Strength\": \"Industrious\", \"Flaw\": \"Miserly\", \"Drive\": \"Security-obsessed\", \"MBTI\": \"ISFJ\", \"PrimaryTrait\": \"Hidden wealth accumulator\", \"SecondaryTraits\": [\"Schedule mastery\", \"Discrete investments\", \"Modest facade\"], \"CognitiveBias\": [\"Scarcity mindset\", \"Loss aversion\"], \"TrustThreshold\": 0.4, \"EmpathyWeight\": 0.5, \"RiskTolerance\": 0.2, \"guidedBy\": \"The Ledger's Secret\", \"CoreThoughts\": {\"primary_drive\": \"wealth-accumulation\", \"secondary_drive\": \"security-through-discretion\", \"internal_tension\": \"wealth vs. safety\", \"activation_triggers\": [\"financial_opportunities\", \"exposure_risks\", \"family_security\"], \"thought_patterns\": [\"Every ducat saved is security gained\", \"Modesty protects me from jealousy and taxes\", \"Knowledge of shipping patterns equals profit\", \"Small investments compound into fortune\", \"My family's future depends on my discretion\", \"Wealth without display is true power\"], \"decision_framework\": \"How do I maximize wealth while minimizing exposure and risk?\"}}",
@@ -3205,7 +3205,7 @@ Here is the complete data about your current situation:
   "target_relevancies": [],
   "latest_citizen_problems": [
     {
-      "id": "recFMFJPueYuPbSoK",
+      "id": "rec97jVFYhmXgI3U6",
       "fields": {
         "ProblemId": "hungry_ZenGiovane",
         "Citizen": "ZenGiovane",
@@ -3213,19 +3213,49 @@ Here is the complete data about your current situation:
         "AssetType": "citizen",
         "Severity": "medium",
         "Status": "active",
-        "CreatedAt": "2025-06-27T02:07:35.169Z",
-        "UpdatedAt": "2025-06-27T18:42:13.000Z",
+        "CreatedAt": "2025-07-03T19:39:51.507Z",
+        "UpdatedAt": "2025-07-03T19:40:35.000Z",
         "Location": "Stefano's last known area",
         "Title": "Hungry Citizen",
         "Description": "**Stefano Bragadin** has not eaten in over 24 hours and is now hungry. This can affect their well-being and ability to perform tasks effectively.\n\n### Impact\n- Reduced energy and focus.\n- If employed, work productivity may be reduced by up to 50%.\n- Prolonged hunger can lead to more severe health issues (if implemented).",
         "Solutions": "### Recommended Solutions\n- Ensure the citizen consumes food. This might involve visiting a tavern, purchasing food from a market, or using owned food resources.\n- Check if the citizen has sufficient Ducats to afford food.\n- Review game mechanics related to food consumption and ensure the 'AteAt' (or equivalent) field is updated correctly after eating.",
-        "Notes": "[Failures: 1]\nCitizen ZenGiovane last ate at 2025-06-22T23:17:13.231Z. Current time: 2025-06-27T02:07:35.147Z",
+        "Notes": "Citizen ZenGiovane last ate at 2025-07-02T11:28:44.765Z. Current time: 2025-07-03T19:39:51.468Z",
         "Position": "{\"lat\":45.42557122380168,\"lng\":12.318016249491635}",
         "Type": "hungry_citizen"
       }
     }
   ],
   "recent_notifications_for_ai": [
+    {
+      "notificationId": "recGva4RREoXHKtfm",
+      "type": "rent_payment",
+      "citizen": "ZenGiovane",
+      "content": "\u2705 Rent Paid: You paid **1,125 \u269c\ufe0f Ducats** to **ConsiglioDeiDieci** for **recDmuITiBSJ3fn8N**.",
+      "details": {
+        "building_id": "recDmuITiBSJ3fn8N",
+        "building_name": "recDmuITiBSJ3fn8N",
+        "rent_price": 1125,
+        "building_owner": "ConsiglioDeiDieci",
+        "event_type": "rent_payment_made"
+      },
+      "createdAt": "2025-07-04T18:00:56.462Z",
+      "readAt": null
+    },
+    {
+      "notificationId": "rec9Y9sW3PzFvLCo6",
+      "type": "rent_payment",
+      "citizen": "ZenGiovane",
+      "content": "\u2705 Rent Paid: You paid **1,125 \u269c\ufe0f Ducats** to **ConsiglioDeiDieci** for **recDmuITiBSJ3fn8N**.",
+      "details": {
+        "building_id": "recDmuITiBSJ3fn8N",
+        "building_name": "recDmuITiBSJ3fn8N",
+        "rent_price": 1125,
+        "building_owner": "ConsiglioDeiDieci",
+        "event_type": "rent_payment_made"
+      },
+      "createdAt": "2025-07-04T16:00:50.688Z",
+      "readAt": null
+    },
     {
       "notificationId": "recMvjyf6p9rkBWn4",
       "type": "rent_payment",
@@ -3510,51 +3540,6 @@ Here is the complete data about your current situation:
       },
       "createdAt": "2025-06-20T16:00:41.251Z",
       "readAt": null
-    },
-    {
-      "notificationId": "recFfNlDulTp9ERHJ",
-      "type": "rent_payment",
-      "citizen": "ZenGiovane",
-      "content": "\u2705 Rent Paid: You paid **1,125 \u269c\ufe0f Ducats** to **ConsiglioDeiDieci** for **recDmuITiBSJ3fn8N**.",
-      "details": {
-        "building_id": "recDmuITiBSJ3fn8N",
-        "building_name": "recDmuITiBSJ3fn8N",
-        "rent_price": 1125,
-        "building_owner": "ConsiglioDeiDieci",
-        "event_type": "rent_payment_made"
-      },
-      "createdAt": "2025-06-19T18:01:40.414Z",
-      "readAt": null
-    },
-    {
-      "notificationId": "recWoX7mIOq4ybgwG",
-      "type": "rent_payment",
-      "citizen": "ZenGiovane",
-      "content": "\u2705 Rent Paid: You paid **1,125 \u269c\ufe0f Ducats** to **ConsiglioDeiDieci** for **recDmuITiBSJ3fn8N**.",
-      "details": {
-        "building_id": "recDmuITiBSJ3fn8N",
-        "building_name": "recDmuITiBSJ3fn8N",
-        "rent_price": 1125,
-        "building_owner": "ConsiglioDeiDieci",
-        "event_type": "rent_payment_made"
-      },
-      "createdAt": "2025-06-19T16:00:46.677Z",
-      "readAt": null
-    },
-    {
-      "notificationId": "recWlrpncK7IfdwbC",
-      "type": "rent_payment",
-      "citizen": "ZenGiovane",
-      "content": "\u2705 Rent Paid: You paid **1,125 \u269c\ufe0f Ducats** to **ConsiglioDeiDieci** for **recDmuITiBSJ3fn8N**.",
-      "details": {
-        "building_id": "recDmuITiBSJ3fn8N",
-        "building_name": "recDmuITiBSJ3fn8N",
-        "rent_price": 1125,
-        "building_owner": "ConsiglioDeiDieci",
-        "event_type": "rent_payment_made"
-      },
-      "createdAt": "2025-06-18T18:00:42.180Z",
-      "readAt": null
     }
   ],
   "building_types": {
@@ -3795,7 +3780,7 @@ Here is the complete data about your current situation:
       "pointType": "building"
     }
   },
-  "timestamp": "2025-07-03T21:11:27.779838+02:00",
+  "timestamp": "2025-07-04T21:00:31.743585+02:00",
   "building_ownership_relevancies": []
 }
 
