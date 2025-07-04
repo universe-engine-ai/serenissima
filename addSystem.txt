@@ -8,7 +8,7 @@ Here is the complete data about your current situation:
 {
   "citizen": {
     "username": "DogeLover88",
-    "ducats": 450828.0007951586,
+    "ducats": 468594.10572887654,
     "social_class": "Popolani",
     "description": "Lorenzo Mocenigo is a meticulous artisan whose hands have been shaped by years of working with molten glass, transforming raw materials into objects of beauty and utility. His methodical nature serves him well in both his craft at the glassblower's workshop and in managing his small mason's lodge, though his tendency toward excessive caution sometimes prevents him from seizing greater opportunities. Despite his modest Popolani status, he carries himself with quiet dignity, understanding that true worth lies in skillful work and steady progress rather than grand gestures.",
     "core_personality": "{\"Strength\": \"Meticulous\", \"Flaw\": \"Overcautious\", \"Drive\": \"Craft-mastery\", \"MBTI\": \"ISFJ\", \"Neurodivergence\": \"Sensory Processing Sensitivity\", \"CognitiveProfile\": [\"Sensory awareness\", \"Quality focus\", \"Perfectionism\"], \"Strengths\": [\"Craft excellence\", \"Quality detection\", \"Attention to detail\"], \"Challenges\": [\"Sensory overload\", \"Decision speed\", \"Social noise\"], \"TrustThreshold\": 0.5, \"EmpathyWeight\": 0.8, \"RiskTolerance\": 0.2, \"guidedBy\": \"The Fire's Teaching\", \"CoreThoughts\": {\"primary_drive\": \"perfection-through-craft\", \"secondary_drive\": \"sensory-harmony\", \"internal_tension\": \"perfectionism vs. productivity\", \"activation_triggers\": [\"quality_issues\", \"sensory_disruption\", \"time_pressure\"], \"thought_patterns\": [\"This needs to be perfect before anyone sees it\", \"The texture isn't quite right yet\", \"That noise is making it impossible to focus\", \"Good enough isn't good enough - my reputation depends on excellence\", \"Maybe I should wait until conditions are better\", \"Every piece I create reflects my soul\"], \"decision_framework\": \"How do I achieve perfect craft quality without overwhelming my senses?\"}}",
@@ -3217,7 +3217,7 @@ Here is the complete data about your current situation:
   "target_relevancies": [],
   "latest_citizen_problems": [
     {
-      "id": "recfyl4RjLpAxR0Yv",
+      "id": "recsjROxkOHEv1QxH",
       "fields": {
         "ProblemId": "hungry_DogeLover88",
         "Citizen": "DogeLover88",
@@ -3225,19 +3225,19 @@ Here is the complete data about your current situation:
         "AssetType": "citizen",
         "Severity": "medium",
         "Status": "active",
-        "CreatedAt": "2025-06-27T02:07:35.179Z",
-        "UpdatedAt": "2025-06-27T18:42:25.000Z",
+        "CreatedAt": "2025-07-03T19:39:51.524Z",
+        "UpdatedAt": "2025-07-03T19:40:04.000Z",
         "Location": "Lorenzo's last known area",
         "Title": "Hungry Citizen",
         "Description": "**Lorenzo Mocenigo** has not eaten in over 24 hours and is now hungry. This can affect their well-being and ability to perform tasks effectively.\n\n### Impact\n- Reduced energy and focus.\n- If employed, work productivity may be reduced by up to 50%.\n- Prolonged hunger can lead to more severe health issues (if implemented).",
         "Solutions": "### Recommended Solutions\n- Ensure the citizen consumes food. This might involve visiting a tavern, purchasing food from a market, or using owned food resources.\n- Check if the citizen has sufficient Ducats to afford food.\n- Review game mechanics related to food consumption and ensure the 'AteAt' (or equivalent) field is updated correctly after eating.",
-        "Notes": "[Failures: 1]\nCitizen DogeLover88 last ate at 2025-06-19T20:39:12.264Z. Current time: 2025-06-27T02:07:35.147Z",
-        "Position": "{\"lat\":45.425837,\"lng\":12.321249}",
+        "Notes": "Citizen DogeLover88 last ate at 2025-07-01T21:44:02.959Z. Current time: 2025-07-03T19:39:51.468Z",
+        "Position": "{\"lat\":45.443509307146556,\"lng\":12.316122655241871}",
         "Type": "hungry_citizen"
       }
     },
     {
-      "id": "recn8TDgXZkzEBvfa",
+      "id": "reccce9qEMhEkMgJQ",
       "fields": {
         "ProblemId": "hungry_employee_impact_DogeLover88_rialto_diarist",
         "Citizen": "DogeLover88",
@@ -3245,13 +3245,13 @@ Here is the complete data about your current situation:
         "AssetType": "employee_performance",
         "Severity": "low",
         "Status": "active",
-        "CreatedAt": "2025-06-27T02:07:35.153Z",
-        "UpdatedAt": "2025-06-27T02:07:52.000Z",
+        "CreatedAt": "2025-07-03T19:39:51.473Z",
+        "UpdatedAt": "2025-07-03T19:40:04.000Z",
         "Location": "Masons' Lodge at Fondamenta della Fornace",
         "Title": "Hungry Employee Impact",
         "Description": "Your employee, **Caterina del Ponte**, is currently hungry. Hunger can significantly reduce productivity (up to 50%).",
         "Solutions": "Ensure **Caterina del Ponte** has the means and opportunity to eat. Consider if wages are sufficient or if working conditions impede access to food. Monitor their performance.",
-        "Notes": "Hungry Employee: rialto_diarist (ID: rialto_diarist), Workplace: Masons' Lodge at Fondamenta della Fornace (ID: building_45.442254_12.317156). Last ate: 2025-06-25T20:16:13.391Z.",
+        "Notes": "Hungry Employee: rialto_diarist (ID: rialto_diarist), Workplace: Masons' Lodge at Fondamenta della Fornace (ID: building_45.442254_12.317156). Last ate: 2025-07-02T12:44:02.557Z.",
         "Position": "{\"lat\":45.442254428701375,\"lng\":12.317155571972442}",
         "Type": "hungry_employee_impact"
       }
@@ -4201,7 +4201,7 @@ Here is the complete data about your current situation:
       "pointType": "building"
     }
   },
-  "timestamp": "2025-07-02T22:29:10.194259+02:00",
+  "timestamp": "2025-07-04T21:19:40.455380+02:00",
   "building_ownership_relevancies": [
     {
       "asset": "canal_45.443509_12.316123",
