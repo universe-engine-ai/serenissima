@@ -8,7 +8,7 @@ Here is the complete data about your current situation:
 {
   "citizen": {
     "username": "DucatsRunner",
-    "ducats": 401985.3742215119,
+    "ducats": 430687.9926848948,
     "social_class": "Popolani",
     "description": "Lorenzo Contarini is a shrewd and ambitious dock worker who has risen from humble beginnings through careful observation and strategic networking. His years handling cargo at the public docks have given him an intimate knowledge of Venice's trade flows and merchant practices, while his natural charm helps him forge valuable connections across social boundaries. Despite his affable exterior, Lorenzo harbors a calculating nature and burning ambition that sometimes leads him to manipulate situations for personal gain.",
     "core_personality": "{\"Strength\": \"Observant\", \"Flaw\": \"Calculating\", \"Drive\": \"Advancement-driven\", \"MBTI\": \"ENTJ\", \"PrimaryTrait\": \"Network builder\", \"SecondaryTraits\": [\"Charm deployment\", \"Manipulation skills\", \"Boundary crossing\"], \"CognitiveBias\": [\"Self-serving bias\", \"Optimism bias\"], \"TrustThreshold\": 0.3, \"EmpathyWeight\": 0.4, \"RiskTolerance\": 0.6, \"guidedBy\": \"The Network's Power\", \"CoreThoughts\": {\"primary_drive\": \"social-advancement\", \"secondary_drive\": \"network-exploitation\", \"internal_tension\": \"charm vs. manipulation\", \"activation_triggers\": [\"networking_opportunities\", \"social_barriers\", \"advancement_pathways\"], \"thought_patterns\": [\"Every person is a potential stepping stone or obstacle\", \"Charm opens doors that force cannot\", \"My dock knowledge gives me insight nobility lacks\", \"Social boundaries exist to be navigated, not respected\", \"Burning ambition requires strategic patience\", \"Today's favor becomes tomorrow's leverage\"], \"decision_framework\": \"How does this expand my network and advance my social position?\"}}",
@@ -3217,6 +3217,66 @@ Here is the complete data about your current situation:
   "target_relevancies": [],
   "latest_citizen_problems": [
     {
+      "id": "recpMt09gDpWOtzsV",
+      "fields": {
+        "ProblemId": "hungry_DucatsRunner",
+        "Citizen": "DucatsRunner",
+        "Asset": "DucatsRunner",
+        "AssetType": "citizen",
+        "Severity": "medium",
+        "Status": "active",
+        "CreatedAt": "2025-07-03T19:39:51.523Z",
+        "UpdatedAt": "2025-07-03T19:40:18.000Z",
+        "Location": "Lorenzo's last known area",
+        "Title": "Hungry Citizen",
+        "Description": "**Lorenzo Contarini** has not eaten in over 24 hours and is now hungry. This can affect their well-being and ability to perform tasks effectively.\n\n### Impact\n- Reduced energy and focus.\n- If employed, work productivity may be reduced by up to 50%.\n- Prolonged hunger can lead to more severe health issues (if implemented).",
+        "Solutions": "### Recommended Solutions\n- Ensure the citizen consumes food. This might involve visiting a tavern, purchasing food from a market, or using owned food resources.\n- Check if the citizen has sufficient Ducats to afford food.\n- Review game mechanics related to food consumption and ensure the 'AteAt' (or equivalent) field is updated correctly after eating.",
+        "Notes": "Citizen DucatsRunner last ate at 2025-07-02T00:17:39.651Z. Current time: 2025-07-03T19:39:51.468Z",
+        "Position": "{\"lat\":45.425098802748686,\"lng\":12.362717959741016}",
+        "Type": "hungry_citizen"
+      }
+    },
+    {
+      "id": "rect3ylNrMEWl6Flf",
+      "fields": {
+        "ProblemId": "hungry_employee_impact_DucatsRunner_PhotoWizard",
+        "Citizen": "DucatsRunner",
+        "Asset": "PhotoWizard",
+        "AssetType": "employee_performance",
+        "Severity": "low",
+        "Status": "active",
+        "CreatedAt": "2025-07-03T19:39:51.509Z",
+        "UpdatedAt": "2025-07-03T19:40:18.000Z",
+        "Location": "Bakery at Rio Ter\u00e0 dei Magazzini",
+        "Title": "Hungry Employee Impact",
+        "Description": "Your employee, **Lucrezia Dardi**, is currently hungry. Hunger can significantly reduce productivity (up to 50%).",
+        "Solutions": "Ensure **Lucrezia Dardi** has the means and opportunity to eat. Consider if wages are sufficient or if working conditions impede access to food. Monitor their performance.",
+        "Notes": "Hungry Employee: PhotoWizard (ID: PhotoWizard), Workplace: Bakery at Rio Ter\u00e0 dei Magazzini (ID: building_45.444715_12.324751). Last ate: 2025-07-02T17:28:57.812Z.",
+        "Position": "{\"lat\":45.444715,\"lng\":12.324751}",
+        "Type": "hungry_employee_impact"
+      }
+    },
+    {
+      "id": "recZEOg36ZKzaxDZp",
+      "fields": {
+        "ProblemId": "hungry_employee_impact_DucatsRunner_coffee",
+        "Citizen": "DucatsRunner",
+        "Asset": "coffee",
+        "AssetType": "employee_performance",
+        "Severity": "low",
+        "Status": "active",
+        "CreatedAt": "2025-07-03T19:39:51.502Z",
+        "UpdatedAt": "2025-07-03T19:40:18.000Z",
+        "Location": "Contract Stall at Calle dei Gondolieri",
+        "Title": "Hungry Employee Impact",
+        "Description": "Your employee, **jun Rossi**, is currently hungry. Hunger can significantly reduce productivity (up to 50%).",
+        "Solutions": "Ensure **jun Rossi** has the means and opportunity to eat. Consider if wages are sufficient or if working conditions impede access to food. Monitor their performance.",
+        "Notes": "Hungry Employee: coffee (ID: coffee), Workplace: Contract Stall at Calle dei Gondolieri (ID: building_45.442317_12.319077). Last ate: 2025-07-01T21:24:00.558Z.",
+        "Position": "{\"lat\":45.442317,\"lng\":12.319077}",
+        "Type": "hungry_employee_impact"
+      }
+    },
+    {
       "id": "rec2cUlpUHFPUdyud",
       "fields": {
         "ProblemId": "problem_pinpoint_building_45.444715_12.324751_bread_WAITING_ON_INPUT_DELIVERY_water",
@@ -3309,66 +3369,6 @@ Here is the complete data about your current situation:
         "Solutions": "Monitor the 'markup_buy' contract for 'olive_oil'. Ensure citizens or logistics services are fulfilling delivery. Check 'fetch_resource' activities targeting your building.",
         "Position": "{\"lat\": 45.442317, \"lng\": 12.319077}",
         "Type": "waiting_for_resource_delivery"
-      }
-    },
-    {
-      "id": "recdvYTmsr3W8wGZn",
-      "fields": {
-        "ProblemId": "hungry_DucatsRunner",
-        "Citizen": "DucatsRunner",
-        "Asset": "DucatsRunner",
-        "AssetType": "citizen",
-        "Severity": "medium",
-        "Status": "active",
-        "CreatedAt": "2025-06-27T02:07:35.178Z",
-        "UpdatedAt": "2025-06-27T18:42:24.000Z",
-        "Location": "Lorenzo's last known area",
-        "Title": "Hungry Citizen",
-        "Description": "**Lorenzo Contarini** has not eaten in over 24 hours and is now hungry. This can affect their well-being and ability to perform tasks effectively.\n\n### Impact\n- Reduced energy and focus.\n- If employed, work productivity may be reduced by up to 50%.\n- Prolonged hunger can lead to more severe health issues (if implemented).",
-        "Solutions": "### Recommended Solutions\n- Ensure the citizen consumes food. This might involve visiting a tavern, purchasing food from a market, or using owned food resources.\n- Check if the citizen has sufficient Ducats to afford food.\n- Review game mechanics related to food consumption and ensure the 'AteAt' (or equivalent) field is updated correctly after eating.",
-        "Notes": "[Failures: 1]\nCitizen DucatsRunner last ate at 2025-06-16T20:21:03.113Z. Current time: 2025-06-27T02:07:35.147Z",
-        "Position": "{\"lat\":45.44773088425899,\"lng\":12.31897777552127}",
-        "Type": "hungry_citizen"
-      }
-    },
-    {
-      "id": "recIvD8Mt5AO1MEha",
-      "fields": {
-        "ProblemId": "hungry_employee_impact_DucatsRunner_PhotoWizard",
-        "Citizen": "DucatsRunner",
-        "Asset": "PhotoWizard",
-        "AssetType": "employee_performance",
-        "Severity": "low",
-        "Status": "active",
-        "CreatedAt": "2025-06-27T02:07:35.174Z",
-        "UpdatedAt": "2025-06-27T02:08:05.000Z",
-        "Location": "Bakery at Rio Ter\u00e0 dei Magazzini",
-        "Title": "Hungry Employee Impact",
-        "Description": "Your employee, **Lucrezia Dardi**, is currently hungry. Hunger can significantly reduce productivity (up to 50%).",
-        "Solutions": "Ensure **Lucrezia Dardi** has the means and opportunity to eat. Consider if wages are sufficient or if working conditions impede access to food. Monitor their performance.",
-        "Notes": "Hungry Employee: PhotoWizard (ID: PhotoWizard), Workplace: Bakery at Rio Ter\u00e0 dei Magazzini (ID: building_45.444715_12.324751). Last ate: 2025-06-22T23:16:13.586Z.",
-        "Position": "{\"lat\":45.444715,\"lng\":12.324751}",
-        "Type": "hungry_employee_impact"
-      }
-    },
-    {
-      "id": "reciHwD3ySitM0ZoG",
-      "fields": {
-        "ProblemId": "hungry_employee_impact_DucatsRunner_coffee",
-        "Citizen": "DucatsRunner",
-        "Asset": "coffee",
-        "AssetType": "employee_performance",
-        "Severity": "low",
-        "Status": "active",
-        "CreatedAt": "2025-06-27T02:07:35.158Z",
-        "UpdatedAt": "2025-06-27T02:08:05.000Z",
-        "Location": "Contract Stall at Calle dei Gondolieri",
-        "Title": "Hungry Employee Impact",
-        "Description": "Your employee, **jun Rossi**, is currently hungry. Hunger can significantly reduce productivity (up to 50%).",
-        "Solutions": "Ensure **jun Rossi** has the means and opportunity to eat. Consider if wages are sufficient or if working conditions impede access to food. Monitor their performance.",
-        "Notes": "Hungry Employee: coffee (ID: coffee), Workplace: Contract Stall at Calle dei Gondolieri (ID: building_45.442317_12.319077). Last ate: 2025-06-25T03:43:15.868Z.",
-        "Position": "{\"lat\":45.442317,\"lng\":12.319077}",
-        "Type": "hungry_employee_impact"
       }
     }
   ],
@@ -4316,7 +4316,7 @@ Here is the complete data about your current situation:
       "pointType": "building"
     }
   },
-  "timestamp": "2025-07-03T21:02:46.897369+02:00",
+  "timestamp": "2025-07-05T21:00:32.993137+02:00",
   "building_ownership_relevancies": [
     {
       "asset": "canal_45.447731_12.318978",
