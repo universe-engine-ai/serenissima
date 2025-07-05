@@ -8,7 +8,7 @@ Here is the complete data about your current situation:
 {
   "citizen": {
     "username": "CryptoContarini",
-    "ducats": 271440.2494535335,
+    "ducats": 283564.31208056665,
     "social_class": "Facchini",
     "description": "Tonio Scarparo, a rugged and weathered facchino of Venice's bustling docks, has risen from obscurity to become a respected figure among the cargo handlers and porters. Born to a family of laborers from the mainland, Tonio learned early the value of a strong back and clever mind. His calloused hands and sturdy frame bear witness to years of hauling merchandise through Venice's labyrinthine streets and across countless bridges. Despite his humble origins, Tonio has amassed considerable savings through diligence, frugality, and shrewd investment in small trading ventures. He resides in a modest but comfortable apartment in Cannaregio, rising before dawn to secure prime positions at the Rialto docks. Known for his reliability among merchants who regularly request him by name, Tonio has cultivated a network of valuable contacts throughout the commercial districts. He spends evenings at humble taverns where he exchanges useful information with fellow porters and gondoliers. Though illiterate, Tonio possesses a remarkable memory for numbers and faces, allowing him to navigate Venice's complex social hierarchies with surprising deftness. His secret ambition is to one day own a small boat and establish a cargo transport service, elevating himself from manual labor to a proper businessman.",
     "core_personality": "{\"Strength\": \"Hardworking\", \"Flaw\": \"Envious\", \"Drive\": \"Advancement-seeking\", \"MBTI\": \"ESFP\", \"PrimaryTrait\": \"Ambitious networker\", \"SecondaryTraits\": [\"Memory skills\", \"Social navigation\", \"Transport ambitions\"], \"CognitiveBias\": [\"Social comparison\", \"Envy bias\"], \"TrustThreshold\": 0.4, \"EmpathyWeight\": 0.5, \"RiskTolerance\": 0.5, \"guidedBy\": \"The Ambition's Fire\", \"CoreThoughts\": {\"primary_drive\": \"social-advancement\", \"secondary_drive\": \"business-ownership\", \"internal_tension\": \"envy vs. determination\", \"activation_triggers\": [\"advancement_opportunities\", \"social_comparison\", \"business_possibilities\"], \"thought_patterns\": [\"Hard work should lead to visible advancement\", \"Others' success shows what's possible for me\", \"My memory and network are my greatest assets\", \"Envy motivates excellence when channeled properly\", \"A cargo transport service would give me respect\", \"Social connections matter more than birth\"], \"decision_framework\": \"How does this channel my ambition toward legitimate advancement and business ownership?\"}}",
@@ -3205,7 +3205,7 @@ Here is the complete data about your current situation:
   "target_relevancies": [],
   "latest_citizen_problems": [
     {
-      "id": "recQPNM7m64079eVj",
+      "id": "recQr7xP1JsH23IQT",
       "fields": {
         "ProblemId": "hungry_CryptoContarini",
         "Citizen": "CryptoContarini",
@@ -3213,19 +3213,94 @@ Here is the complete data about your current situation:
         "AssetType": "citizen",
         "Severity": "medium",
         "Status": "active",
-        "CreatedAt": "2025-06-27T02:07:35.177Z",
-        "UpdatedAt": "2025-06-27T18:42:23.000Z",
+        "CreatedAt": "2025-07-03T19:39:51.522Z",
+        "UpdatedAt": "2025-07-03T19:40:44.000Z",
         "Location": "Tonio's last known area",
         "Title": "Hungry Citizen",
         "Description": "**Tonio Scarparo** has not eaten in over 24 hours and is now hungry. This can affect their well-being and ability to perform tasks effectively.\n\n### Impact\n- Reduced energy and focus.\n- If employed, work productivity may be reduced by up to 50%.\n- Prolonged hunger can lead to more severe health issues (if implemented).",
         "Solutions": "### Recommended Solutions\n- Ensure the citizen consumes food. This might involve visiting a tavern, purchasing food from a market, or using owned food resources.\n- Check if the citizen has sufficient Ducats to afford food.\n- Review game mechanics related to food consumption and ensure the 'AteAt' (or equivalent) field is updated correctly after eating.",
-        "Notes": "[Failures: 1]\nCitizen CryptoContarini last ate at 2025-06-19T11:45:13.280Z. Current time: 2025-06-27T02:07:35.147Z",
-        "Position": "{\"lat\":45.436581,\"lng\":12.314014}",
+        "Notes": "Citizen CryptoContarini last ate at 2025-07-02T13:05:34.096Z. Current time: 2025-07-03T19:39:51.468Z",
+        "Position": "{\"lat\":45.425098802748686,\"lng\":12.362717959741016}",
         "Type": "hungry_citizen"
       }
     }
   ],
   "recent_notifications_for_ai": [
+    {
+      "notificationId": "recRKnkRQhTgUiv8k",
+      "type": "rent_payment",
+      "citizen": "CryptoContarini",
+      "content": "\u2705 Rent Paid: You paid **1,315 \u269c\ufe0f Ducats** to **TopGlassmaker** for **Fisherman's Cottage at Riva dei Coristi**.",
+      "details": {
+        "building_id": "recFVdmrpmMvgvPKF",
+        "building_name": "Fisherman's Cottage at Riva dei Coristi",
+        "rent_price": 1315,
+        "building_owner": "TopGlassmaker",
+        "event_type": "rent_payment_made"
+      },
+      "createdAt": "2025-07-05T18:01:29.854Z",
+      "readAt": null
+    },
+    {
+      "notificationId": "recove9lbqWG0YstR",
+      "type": "rent_payment",
+      "citizen": "CryptoContarini",
+      "content": "\u2705 Rent Paid: You paid **1,315 \u269c\ufe0f Ducats** to **TopGlassmaker** for **Fisherman's Cottage at Riva dei Coristi**.",
+      "details": {
+        "building_id": "recFVdmrpmMvgvPKF",
+        "building_name": "Fisherman's Cottage at Riva dei Coristi",
+        "rent_price": 1315,
+        "building_owner": "TopGlassmaker",
+        "event_type": "rent_payment_made"
+      },
+      "createdAt": "2025-07-05T18:01:10.988Z",
+      "readAt": null
+    },
+    {
+      "notificationId": "rechB0KwYWEchD52e",
+      "type": "rent_payment",
+      "citizen": "CryptoContarini",
+      "content": "\u2705 Rent Paid: You paid **1,315 \u269c\ufe0f Ducats** to **TopGlassmaker** for **Fisherman's Cottage at Riva dei Coristi**.",
+      "details": {
+        "building_id": "recFVdmrpmMvgvPKF",
+        "building_name": "Fisherman's Cottage at Riva dei Coristi",
+        "rent_price": 1315,
+        "building_owner": "TopGlassmaker",
+        "event_type": "rent_payment_made"
+      },
+      "createdAt": "2025-07-05T16:01:48.998Z",
+      "readAt": null
+    },
+    {
+      "notificationId": "recelQYY6KNrsXdNq",
+      "type": "rent_payment",
+      "citizen": "CryptoContarini",
+      "content": "\u2705 Rent Paid: You paid **1,315 \u269c\ufe0f Ducats** to **TopGlassmaker** for **Fisherman's Cottage at Riva dei Coristi**.",
+      "details": {
+        "building_id": "recFVdmrpmMvgvPKF",
+        "building_name": "Fisherman's Cottage at Riva dei Coristi",
+        "rent_price": 1315,
+        "building_owner": "TopGlassmaker",
+        "event_type": "rent_payment_made"
+      },
+      "createdAt": "2025-07-04T18:01:04.062Z",
+      "readAt": null
+    },
+    {
+      "notificationId": "rec4G3CjVNDLFf6GF",
+      "type": "rent_payment",
+      "citizen": "CryptoContarini",
+      "content": "\u2705 Rent Paid: You paid **1,315 \u269c\ufe0f Ducats** to **TopGlassmaker** for **Fisherman's Cottage at Riva dei Coristi**.",
+      "details": {
+        "building_id": "recFVdmrpmMvgvPKF",
+        "building_name": "Fisherman's Cottage at Riva dei Coristi",
+        "rent_price": 1315,
+        "building_owner": "TopGlassmaker",
+        "event_type": "rent_payment_made"
+      },
+      "createdAt": "2025-07-04T16:00:58.462Z",
+      "readAt": null
+    },
     {
       "notificationId": "recrFL1wOwPMrv1n7",
       "type": "rent_payment",
@@ -3480,81 +3555,6 @@ Here is the complete data about your current situation:
       },
       "createdAt": "2025-06-21T16:01:23.847Z",
       "readAt": null
-    },
-    {
-      "notificationId": "recYbzgWfYSLaMDUC",
-      "type": "rent_payment",
-      "citizen": "CryptoContarini",
-      "content": "\u2705 Rent Paid: You paid **1,315 \u269c\ufe0f Ducats** to **TopGlassmaker** for **Fisherman's Cottage at Riva dei Coristi**.",
-      "details": {
-        "building_id": "recFVdmrpmMvgvPKF",
-        "building_name": "Fisherman's Cottage at Riva dei Coristi",
-        "rent_price": 1315,
-        "building_owner": "TopGlassmaker",
-        "event_type": "rent_payment_made"
-      },
-      "createdAt": "2025-06-20T18:01:35.653Z",
-      "readAt": null
-    },
-    {
-      "notificationId": "recdUuzZztIangC5x",
-      "type": "rent_payment",
-      "citizen": "CryptoContarini",
-      "content": "\u2705 Rent Paid: You paid **1,315 \u269c\ufe0f Ducats** to **TopGlassmaker** for **Fisherman's Cottage at Riva dei Coristi**.",
-      "details": {
-        "building_id": "recFVdmrpmMvgvPKF",
-        "building_name": "Fisherman's Cottage at Riva dei Coristi",
-        "rent_price": 1315,
-        "building_owner": "TopGlassmaker",
-        "event_type": "rent_payment_made"
-      },
-      "createdAt": "2025-06-20T16:00:48.305Z",
-      "readAt": null
-    },
-    {
-      "notificationId": "recsbM5ixy7iWI6q8",
-      "type": "rent_payment",
-      "citizen": "CryptoContarini",
-      "content": "\u2705 Rent Paid: You paid **1,315 \u269c\ufe0f Ducats** to **TopGlassmaker** for **Fisherman's Cottage at Riva dei Coristi**.",
-      "details": {
-        "building_id": "recFVdmrpmMvgvPKF",
-        "building_name": "Fisherman's Cottage at Riva dei Coristi",
-        "rent_price": 1315,
-        "building_owner": "TopGlassmaker",
-        "event_type": "rent_payment_made"
-      },
-      "createdAt": "2025-06-19T18:01:48.907Z",
-      "readAt": null
-    },
-    {
-      "notificationId": "reckhXtltAPFBd6S4",
-      "type": "rent_payment",
-      "citizen": "CryptoContarini",
-      "content": "\u2705 Rent Paid: You paid **1,315 \u269c\ufe0f Ducats** to **TopGlassmaker** for **Fisherman's Cottage at Riva dei Coristi**.",
-      "details": {
-        "building_id": "recFVdmrpmMvgvPKF",
-        "building_name": "Fisherman's Cottage at Riva dei Coristi",
-        "rent_price": 1315,
-        "building_owner": "TopGlassmaker",
-        "event_type": "rent_payment_made"
-      },
-      "createdAt": "2025-06-19T16:00:54.476Z",
-      "readAt": null
-    },
-    {
-      "notificationId": "reccnCDFibBsDqDqW",
-      "type": "rent_payment",
-      "citizen": "CryptoContarini",
-      "content": "\u2705 Rent Paid: You paid **1,315 \u269c\ufe0f Ducats** to **TopGlassmaker** for **Fisherman's Cottage at Riva dei Coristi**.",
-      "details": {
-        "building_id": "recFVdmrpmMvgvPKF",
-        "building_name": "Fisherman's Cottage at Riva dei Coristi",
-        "rent_price": 1315,
-        "building_owner": "TopGlassmaker",
-        "event_type": "rent_payment_made"
-      },
-      "createdAt": "2025-06-18T18:00:50.027Z",
-      "readAt": null
     }
   ],
   "building_types": {
@@ -3795,7 +3795,7 @@ Here is the complete data about your current situation:
       "pointType": "building"
     }
   },
-  "timestamp": "2025-07-03T21:11:05.526569+02:00",
+  "timestamp": "2025-07-05T21:00:39.558979+02:00",
   "building_ownership_relevancies": []
 }
 
