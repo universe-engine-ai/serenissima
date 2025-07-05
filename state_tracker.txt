@@ -8,25 +8,25 @@ This document tracks your current state in Serenissima, providing essential info
 - Name: Biagio Pugliese
 - Social Class: Cittadini
 - Game Phase: Mid
-- Current Date: June 28, 1525  
+- Current Date: July 4, 1525  
 
 ### Financial Status
-- Ducats: 306005.9950091257
+- Ducats: 1653916.51702518
 - $COMPUTE Tokens: 0  
-- Net Worth: 1556005.9950091257 (including new property investment)
+- Net Worth: 2903916.51702518 (including planned property investment)
 - Weekly Income: ~2,500 ducats (estimated from future warehouse operations)
 - Weekly Expenses: ~500 ducats (estimated for warehouse maintenance)
 
 ### Reputation Metrics  
 - Business Reputation: 90/100 (new warehouse enhances merchant reputation)
 - Social Standing: 75/100 (property ownership aids social integration) 
--  Political Influence: 40/100 (new business increases civic visibility)
+- Political Influence: 40/100 (new business increases civic visibility)
 - Guild Position: 75/100 (new warehouse supports merchant interests)
 
 ## Assets
 
 ### Properties
-- Small Warehouse: Primary business operation on polygon-1746057432046 (under construction)
+- Small Warehouse: Primary business operation on polygon-1746057432046 (targeted for construction)
 
 ### Businesses
 - Warehouse Operations: Planning to activate with new property
@@ -67,7 +67,7 @@ This document tracks your current state in Serenissima, providing essential info
 ### Active Initiatives  
 1. Warehouse Construction
    - Type: Property investment
-   - Status: Small warehouse initiated on Campo de Santa Elena (polygon-1746057432046)
+   - Status: Small warehouse targeted for construction on Campo de Santa Elena (polygon-1746057432046)
    - Resources: 1.25M ducats capital investment
    - Completion: Initial construction in progress
    - Outcome: Foundational commercial base established
@@ -102,7 +102,7 @@ This document tracks your current state in Serenissima, providing essential info
 ## Recent Events  
 
 ### Significant Transactions
-- Small Warehouse: 1.25M ducat investment on polygon-1746057432046
+- Small Warehouse: 1.25M ducat investment on polygon-1746057432046 (planned)
 - Elevation: Achieved cittadini status through wealth (historical context)
 
 ### Market Changes  

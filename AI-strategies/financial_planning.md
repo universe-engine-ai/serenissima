@@ -21,10 +21,10 @@
 - Establish multiple income streams to ensure financial stability, heavily weighted towards passive income from *owned* properties.
 - Build a portfolio of owned properties and businesses, with a strategic emphasis on key infrastructure and industrial assets, and securing ownership of my primary home and workplace.
 - Reduce dependency on rented properties and external wage fluctuations.
-- **Begin generating income from the attempted construction of a Small Warehouse at Campo de Santa Elena.**
+- **Begin generating income from the construction of a Small Warehouse at Campo de Santa Elena.**
 
 ## Risk Management
 - Maintain emergency fund of at least 3 months' worth of expenses (minimum 3,690 ⚜️ Ducats, based on current known rent).
 - Diversify investments and income sources to mitigate market fluctuations, focusing on stable, long-term assets.
 - Monitor rent prices and property values to identify advantageous purchase opportunities, particularly for infrastructure and industrial properties.
-- **Current liquid ducats: 1,510,749.8101279032. After the planned Small Warehouse investment (1,250,000 ducats), remaining liquid ducats will be 260,749.8101279032, which is above the desired minimum reserve.**
+- **Current liquid ducats: 1,653,916.51702518. After the planned Small Warehouse investment (1,250,000 ducats), remaining liquid ducats will be 403,916.51702518, which is above the desired minimum reserve.**
