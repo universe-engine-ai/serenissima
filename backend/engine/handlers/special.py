@@ -12,6 +12,7 @@ from pyairtable import Table
 
 # Import refactored constants
 from backend.engine.config import constants as const
+from backend.engine.config.constants import IDLE_ACTIVITY_DURATION_HOURS
 
 # Import helpers from the central utils module
 from backend.engine.utils.activity_helpers import (
@@ -58,8 +59,16 @@ def _handle_leave_venice(
     log.info(f"{LogColors.OKCYAN}[Forestieri-Leave] {citizen_name}: Checking departure conditions.{LogColors.ENDC}")
     
     # Check departure conditions using the forestieri processor
+    citizen_position = None
+    if citizen_record['fields'].get('Position'):
+        try:
+            x, z = citizen_record['fields']['Position'].split(',')
+            citizen_position = {'lat': float(x), 'lng': float(z)}
+        except:
+            pass
+    
     should_leave = process_forestieri_departure_check(
-        tables, citizen_record, now_venice_dt, now_utc_dt
+        tables, citizen_record, citizen_position, now_utc_dt, transport_api_url, IDLE_ACTIVITY_DURATION_HOURS
     )
     
     if should_leave:
@@ -247,9 +256,18 @@ def _handle_manage_public_dock(
         log.info(f"{LogColors.OKCYAN}[Dock] {citizen_name}: Manages {dock_name}. Creating management activity.{LogColors.ENDC}")
         
         # Create manage dock activity
+        # Get citizen record for the activity creator
+        citizen_record_for_creator = {
+            'fields': {
+                'CitizenId': citizen_custom_id,
+                'Username': citizen_username
+            }
+        }
+        
         activity = try_create_manage_public_dock_activity(
-            tables, citizen_custom_id, citizen_username, citizen_airtable_id,
-            dock['fields']['BuildingId'], now_utc_dt
+            tables, citizen_record_for_creator, dock,
+            4.0,  # Duration in hours
+            now_utc_dt
         )
         
         if activity:

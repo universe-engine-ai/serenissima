@@ -61,8 +61,9 @@ from backend.engine.stratagem_processors.financial_patronage_stratagem_processor
 from backend.engine.stratagem_processors.neighborhood_watch_stratagem_processor import process_neighborhood_watch_stratagem
 from backend.engine.stratagem_processors.monopoly_pricing_stratagem_processor import process_monopoly_pricing_stratagem
 from backend.engine.stratagem_processors.reputation_boost_stratagem_processor import process_reputation_boost_stratagem
-from backend.engine.stratagem_processors.transfer_ducats_stratagem_processor import process_transfer_ducats_stratagem
+from backend.engine.stratagem_processors.transfer_ducats_stratagem_processor import process as process_transfer_ducats_stratagem
 from backend.engine.stratagem_processors.organize_gathering_stratagem_processor import process as process_organize_gathering_stratagem
+from backend.engine.stratagem_processors.organize_collective_delivery_stratagem_processor import process as process_organize_collective_delivery_stratagem
 # from backend.engine.stratagem_processors.commission_market_galley_processor import process_commission_market_galley  # Commented out - missing dependencies
 
 # Placeholder for canal_mugging is removed, as it's now imported.
@@ -216,6 +217,7 @@ STRATAGEM_PROCESSORS = {
     "canal_mugging": process_canal_mugging_stratagem, # Now maps to the imported processor
     "transfer_ducats": process_transfer_ducats_stratagem,
     "organize_gathering": process_organize_gathering_stratagem,
+    "organize_collective_delivery": process_organize_collective_delivery_stratagem,
     # "commission_market_galley": process_commission_market_galley, # Commented out - missing dependencies
     # "burglary": process_burglary_stratagem, # Mapping removed, processor to be implemented separately
     "employee_corruption": process_employee_corruption_stratagem,

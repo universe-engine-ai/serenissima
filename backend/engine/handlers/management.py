@@ -6,6 +6,7 @@ including checking business status, managing contracts, and administrative tasks
 """
 
 import logging
+import json
 from datetime import datetime, timedelta
 from typing import Dict, Optional, Any, List
 from pyairtable import Table
@@ -17,6 +18,7 @@ from backend.engine.config import constants as const
 from backend.engine.utils.activity_helpers import (
     LogColors,
     _escape_airtable_value,
+    _calculate_distance_meters,
     is_work_time,
     get_citizen_workplace,
     get_building_record,
@@ -77,7 +79,7 @@ def _handle_check_business_status(
         for business in businesses[:1]:  # Check one business at a time
             activity = try_create_check_business_status_activity(
                 tables, citizen_custom_id, citizen_username, citizen_airtable_id,
-                business['fields']['BuildingId'], now_utc_dt
+                business['fields']['BuildingId'], None, now_utc_dt
             )
             
             if activity:
@@ -189,7 +191,7 @@ def _handle_general_goto_work(
         return None
     
     # Get workplace
-    workplace = get_citizen_workplace(tables, citizen_username)
+    workplace = get_citizen_workplace(tables, citizen_custom_id, citizen_username)
     if not workplace:
         return None
     
@@ -206,9 +208,31 @@ def _handle_general_goto_work(
     log.info(f"{LogColors.OKCYAN}[GoWork] {citizen_name}: Not at workplace ({workplace_name}). Distance: {distance:.0f}m{LogColors.ENDC}")
     
     # Create goto work activity
+    # Get citizen's home record
+    citizen_home_record = get_citizen_home(tables, citizen_username)
+    is_at_home = False
+    if citizen_home_record and citizen_position:
+        home_pos = json.loads(citizen_home_record['fields'].get('Position', '{}'))
+        if home_pos:
+            home_distance = _calculate_distance_meters(citizen_position, home_pos)
+            is_at_home = home_distance < const.AT_LOCATION_THRESHOLD
+    
+    # Create path data with proper timing
+    path_data = {
+        'success': True,
+        'path': [],
+        'timing': {
+            'startDate': now_utc_dt.isoformat(),
+            'endDate': (now_utc_dt + timedelta(minutes=30)).isoformat(),  # Default 30 min travel time
+            'durationSeconds': 1800
+        },
+        'transporter': None
+    }
+    
     activity = try_create_goto_work_activity(
         tables, citizen_custom_id, citizen_username, citizen_airtable_id,
-        workplace['fields']['BuildingId'], now_utc_dt
+        workplace['fields']['BuildingId'], path_data, citizen_home_record,
+        resource_defs, is_at_home, citizen_position_str, now_utc_dt
     )
     
     if activity:
@@ -307,7 +331,7 @@ def _get_existing_storage_capacity(tables: Dict[str, Table], citizen_username: s
     """Get total storage capacity from existing contracts."""
     try:
         # Check storage contracts
-        formula = f"AND({{Type}}='storage_rental', {{Supplier}}='{_escape_airtable_value(citizen_username)}', {{Status}}='active')"
+        formula = f"AND({{Type}}='storage_rental', {{Seller}}='{_escape_airtable_value(citizen_username)}', {{Status}}='active')"
         contracts = tables['contracts'].all(formula=formula)
         
         total_capacity = 0.0
@@ -324,7 +348,7 @@ def _find_available_warehouses(tables: Dict[str, Table], citizen_position: Optio
     """Find warehouses with available capacity."""
     try:
         # Get all warehouses
-        warehouse_formula = "{{Type}}='small_warehouse'"
+        warehouse_formula = "{Type}='small_warehouse'"
         warehouses = tables['buildings'].all(formula=warehouse_formula)
         
         available = []

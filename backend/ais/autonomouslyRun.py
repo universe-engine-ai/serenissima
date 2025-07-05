@@ -114,7 +114,7 @@ CONCISE_AIRTABLE_SCHEMA_FIELD_LIST = {
     ],
     "RESOURCES": [
         "ResourceId", "Type", "Name", "Asset", "AssetType", "Owner", "Count", "Position", 
-        "ConsumedAt", "Notes", "CreatedAt", "UpdatedAt"
+        "decayedAt", "Notes", "CreatedAt", "UpdatedAt"
     ],
     "CONTRACTS": [
         "ContractId", "Type", "Buyer", "Seller", "ResourceType", "ServiceFeePerUnit", "Transporter", 

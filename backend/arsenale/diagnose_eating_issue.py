@@ -36,7 +36,7 @@ async def diagnose_eating_issues():
     async with aiohttp.ClientSession() as session:
         print("=== EATING SYSTEM DIAGNOSIS ===\n")
         
-        # 1. Check bread resources without consumedAt
+        # 1. Check bread resources without decayedAt
         print("1. CHECKING AVAILABLE FOOD RESOURCES:")
         print("-" * 50)
         
@@ -49,13 +49,13 @@ async def diagnose_eating_issues():
         
         if bread_data:
             for bread in bread_data:
-                if bread.get('consumedAt'):
+                if bread.get('decayedAt'):
                     consumed_bread.append(bread)
                 else:
                     available_bread.append(bread)
         
         print(f"Total bread resources found: {len(bread_data) if bread_data else 0}")
-        print(f"Available (no consumedAt): {len(available_bread)}")
+        print(f"Available (no decayedAt): {len(available_bread)}")
         print(f"Already consumed: {len(consumed_bread)}")
         
         if available_bread:
@@ -150,8 +150,8 @@ async def diagnose_eating_issues():
                     
                     checked_homes += 1
                     if home_bread_data and len(home_bread_data) > 0:
-                        # Check if it has consumedAt
-                        unconsumed = [b for b in home_bread_data if not b.get('consumedAt')]
+                        # Check if it has decayedAt
+                        unconsumed = [b for b in home_bread_data if not b.get('decayedAt')]
                         if unconsumed:
                             homes_with_food += 1
                             print(f"  {citizen['username']}'s home ({home_id}) has {unconsumed[0]['count']} bread available")

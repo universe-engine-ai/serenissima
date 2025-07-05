@@ -288,10 +288,10 @@ export async function POST(request: Request) {
       }
     }
     
-    // Validate that position has required properties
-    if (typeof position !== 'object' || 
+    // Validate that position has required properties ONLY if position was provided
+    if (position && (typeof position !== 'object' || 
         (position.lat === undefined && position.x === undefined) || 
-        (position.lng === undefined && position.z === undefined)) {
+        (position.lng === undefined && position.z === undefined))) {
       return NextResponse.json(
         { success: false, error: 'Position must have either lat/lng or x/y/z coordinates' },
         { status: 400 }
@@ -387,7 +387,7 @@ export async function POST(request: Request) {
     const resourceResponse = {
       ...processedFieldsPost, // Spread all camelCased fields
       id: typedRecord.fields.ResourceId, 
-      position: JSON.parse(typedRecord.fields.Position || '{}'),
+      position: typedRecord.fields.Position ? JSON.parse(typedRecord.fields.Position) : null,
       // Ensure defaults from definition if not set by Airtable fields directly
       name: processedFieldsPost.name || definition?.name || typedRecord.fields.Type,
       category: processedFieldsPost.category || definition?.category || 'unknown',

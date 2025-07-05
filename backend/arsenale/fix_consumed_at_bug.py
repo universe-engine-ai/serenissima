@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Fix the ConsumedAt bug - remove ConsumedAt timestamp from resources that still have Count > 0.
+Fix the decayedAt bug - remove decayedAt timestamp from resources that still have Count > 0.
 This bug is preventing citizens from eating available food.
 """
 
@@ -27,7 +27,7 @@ logging.basicConfig(
     level=logging.INFO,
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
 )
-log = logging.getLogger("fix_consumed_at")
+log = logging.getLogger("fix_decayed_at")
 
 AIRTABLE_API_KEY = os.getenv("AIRTABLE_API_KEY")
 AIRTABLE_BASE_ID = os.getenv("AIRTABLE_BASE_ID")
@@ -49,15 +49,15 @@ def initialize_airtable() -> Optional[Table]:
         log.error(f"Error initializing Airtable connection: {e}")
         return None
 
-def fix_consumed_at_bug(dry_run: bool = False):
-    """Remove ConsumedAt from resources that still have Count > 0."""
+def fix_decayed_at_bug(dry_run: bool = False):
+    """Remove decayedAt from resources that still have Count > 0."""
     
     resources_table = initialize_airtable()
     if not resources_table:
         log.error("Failed to initialize Airtable. Exiting.")
         return
     
-    log.info(f"Starting ConsumedAt fix (dry_run={dry_run})...")
+    log.info(f"Starting decayedAt fix (dry_run={dry_run})...")
     
     total_fixed = 0
     total_checked = 0
@@ -77,28 +77,28 @@ def fix_consumed_at_bug(dry_run: bool = False):
                 total_checked += 1
                 fields = resource['fields']
                 count = float(fields.get('Count', 0))
-                consumed_at = fields.get('ConsumedAt')
+                decayed_at = fields.get('decayedAt')
                 
-                # If resource has count > 0 but has ConsumedAt, it's the bug
-                if count > 0 and consumed_at:
+                # If resource has count > 0 but has decayedAt, it's the bug
+                if count > 0 and decayed_at:
                     resource_id = fields.get('ResourceId', resource['id'])
                     asset = fields.get('Asset', 'Unknown')
                     owner = fields.get('Owner', 'Unknown')
                     
                     log.info(f"  Found bugged resource: {food_type} (Count: {count}) at {asset} owned by {owner}")
-                    log.info(f"    ConsumedAt: {consumed_at} - This should be removed")
+                    log.info(f"    decayedAt: {decayed_at} - This should be removed")
                     
                     if not dry_run:
                         try:
-                            # Remove the ConsumedAt field by updating with None
-                            resources_table.update(resource['id'], {'ConsumedAt': None})
-                            log.info(f"    ✅ Fixed - removed ConsumedAt")
+                            # Remove the decayedAt field by updating with None
+                            resources_table.update(resource['id'], {'decayedAt': None})
+                            log.info(f"    ✅ Fixed - removed decayedAt")
                             type_fixed += 1
                             total_fixed += 1
                         except Exception as e:
                             log.error(f"    ❌ Error fixing resource: {e}")
                     else:
-                        log.info(f"    [DRY RUN] Would remove ConsumedAt")
+                        log.info(f"    [DRY RUN] Would remove decayedAt")
                         type_fixed += 1
                         total_fixed += 1
             
@@ -119,7 +119,7 @@ def fix_consumed_at_bug(dry_run: bool = False):
 if __name__ == "__main__":
     import argparse
     
-    parser = argparse.ArgumentParser(description="Fix ConsumedAt bug in food resources")
+    parser = argparse.ArgumentParser(description="Fix decayedAt bug in food resources")
     parser.add_argument(
         "--dry-run",
         action="store_true",
@@ -127,4 +127,4 @@ if __name__ == "__main__":
     )
     
     args = parser.parse_args()
-    fix_consumed_at_bug(dry_run=args.dry_run)
+    fix_decayed_at_bug(dry_run=args.dry_run)

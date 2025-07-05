@@ -27,9 +27,9 @@
 
 ## Technical Issues Found
 
-### 1. **ConsumedAt Field (FIXED)**
+### 1. **decayedAt Field (FIXED)**
 - Was incorrectly blocking all food consumption
-- Now fixed - ConsumedAt is only for decay tracking
+- Now fixed - decayedAt is only for decay tracking
 
 ### 2. **Activity Creation Logic**
 - Eat activity creators are attempting to eat resources that don't exist

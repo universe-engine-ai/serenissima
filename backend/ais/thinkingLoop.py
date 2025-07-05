@@ -331,8 +331,14 @@ def main():
     
     # Register cleanup handlers
     atexit.register(cleanup)
-    signal.signal(signal.SIGTERM, signal_handler)
-    signal.signal(signal.SIGINT, signal_handler)
+    
+    # Only register signal handlers if we're in the main thread
+    import threading
+    if threading.current_thread() is threading.main_thread():
+        signal.signal(signal.SIGTERM, signal_handler)
+        signal.signal(signal.SIGINT, signal_handler)
+    else:
+        log_info("Running in non-main thread, skipping signal handler registration")
     
     # Try to acquire the lock
     if not acquire_lock():

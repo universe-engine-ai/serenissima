@@ -90,17 +90,52 @@ from backend.engine.handlers.innovatori import (
 )
 
 from backend.engine.handlers.send_diplomatic_email import (
-    handle_send_diplomatic_email
+    handle_send_diplomatic_email as _original_send_diplomatic_email
 )
 
 # Import activity creators for fallback
-from backend.engine.activity_creators import try_create_idle_activity
+from backend.engine.activity_creators import (
+    try_create_idle_activity,
+    try_create_join_collective_delivery_activity
+)
 
 log = logging.getLogger(__name__)
 
 
 # Type alias for handler functions
 HandlerFunc = Callable[..., Optional[Dict]]
+
+
+def _handle_send_diplomatic_email_wrapper(
+    tables: Dict[str, Table], citizen_record: Dict, is_night: bool, resource_defs: Dict, building_type_defs: Dict,
+    now_venice_dt: datetime, now_utc_dt: datetime, transport_api_url: str, api_base_url: str,
+    citizen_position: Optional[Dict], citizen_custom_id: str, citizen_username: str, citizen_airtable_id: str, citizen_name: str, citizen_position_str: Optional[str],
+    citizen_social_class: str
+) -> Optional[Dict]:
+    """
+    Wrapper for handle_send_diplomatic_email to match standard handler signature.
+    Only diplomatic_virtuoso can use this activity.
+    """
+    # Check if this is diplomatic_virtuoso
+    if citizen_username != "diplomatic_virtuoso":
+        return None
+    
+    # Check if there's a pending diplomatic email activity
+    try:
+        # Look for any pending send_diplomatic_email activities
+        formula = f"AND({{CitizenId}}='{citizen_airtable_id}', {{Type}}='send_diplomatic_email', {{Status}}='pending')"
+        pending_activities = tables['activities'].all(formula=formula, max_records=1)
+        
+        if not pending_activities:
+            return None
+        
+        # For now, we don't create new activities from this handler
+        # The actual email sending happens when the activity is processed
+        return None
+        
+    except Exception as e:
+        log.error(f"{LogColors.FAIL}[Diplomatic Email] Error checking for diplomatic email tasks: {e}{LogColors.ENDC}")
+        return None
 
 
 class CitizenActivityOrchestrator:
@@ -143,7 +178,7 @@ class CitizenActivityOrchestrator:
             (80, _handle_initiate_building_project, "Initiate Building Project"),
             (81, _handle_secure_warehouse, "Secure Warehouse"),
             (82, _handle_manage_public_storage_offer, "Manage Storage Offers"),
-            (85, handle_send_diplomatic_email, "Send Diplomatic Email"),
+            (85, _handle_send_diplomatic_email_wrapper, "Send Diplomatic Email"),
         ]
         
         # Leisure handlers are processed differently (weighted random)
@@ -341,6 +376,112 @@ class CitizenActivityOrchestrator:
             return activity['fields'].get('ActivityId', activity.get('id', 'unknown'))
         return "unknown"
     
+    def _check_collective_delivery_opportunities(
+        self,
+        tables: Dict[str, Table],
+        citizen_username: str,
+        citizen_airtable_id: str,
+        now_utc_dt: datetime
+    ) -> Optional[Dict[str, Any]]:
+        """Check if citizen should join any active collective delivery stratagems based on trust."""
+        try:
+            # Find active collective delivery stratagems
+            formula = "AND({Type}='organize_collective_delivery', {Status}='active')"
+            active_stratagems = tables['stratagems'].all(formula=formula)
+            
+            if not active_stratagems:
+                return None
+            
+            # Get citizen's trust relationships
+            formula = f"OR({{Citizen1}}='{citizen_username}', {{Citizen2}}='{citizen_username}')"
+            relationships = tables['relationships'].all(formula=formula)
+            
+            # Build trust score map
+            trust_scores = {}
+            for rel in relationships:
+                fields = rel['fields']
+                citizen1 = fields.get('Citizen1')
+                citizen2 = fields.get('Citizen2')
+                trust = fields.get('TrustScore', 0)
+                
+                # Determine which citizen is the other one
+                other_citizen = citizen2 if citizen1 == citizen_username else citizen1
+                trust_scores[other_citizen] = trust
+            
+            # Check each active stratagem
+            for stratagem in active_stratagems:
+                stratagem_fields = stratagem['fields']
+                organizer = stratagem_fields.get('ExecutedBy')
+                stratagem_id = stratagem_fields.get('StratagemId')
+                
+                if organizer not in trust_scores:
+                    continue
+                
+                trust_score = trust_scores[organizer]
+                
+                # Parse stratagem details
+                try:
+                    notes = json.loads(stratagem_fields.get('Notes', '{}'))
+                    resource_type = notes.get('resource_type', 'grain')
+                    reward_per_unit = notes.get('reward_per_unit', 0)
+                    collected_amount = notes.get('collected_amount', 0)
+                    max_total_amount = notes.get('max_total_amount', 9999)
+                    
+                    # Check if stratagem still needs deliveries
+                    if collected_amount >= max_total_amount:
+                        continue
+                    
+                except Exception as e:
+                    log.warning(f"Could not parse stratagem notes: {e}")
+                    continue
+                
+                # Trust-based decision logic (trust is 0-100)
+                join_reason = None
+                
+                if trust_score >= 80:
+                    # Very high trust - auto-join immediately
+                    join_reason = "high_trust_auto"
+                    log.info(f"{LogColors.OKGREEN}High trust ({trust_score:.0f}) with {organizer} - auto-joining collective delivery!{LogColors.ENDC}")
+                    
+                elif trust_score >= 50 and reward_per_unit >= 30:
+                    # Good trust + good reward
+                    join_reason = "trust_reward_match"
+                    log.info(f"{LogColors.OKGREEN}Good trust ({trust_score:.0f}) + reward {reward_per_unit} - joining collective delivery!{LogColors.ENDC}")
+                    
+                elif trust_score >= 20:
+                    # Neutral trust - check if desperate (low wealth)
+                    citizen_wealth = self._get_citizen_wealth(tables, citizen_username)
+                    if citizen_wealth < 100 and reward_per_unit >= 50:
+                        join_reason = "desperation_trust"
+                        log.info(f"{LogColors.OKGREEN}Low wealth ({citizen_wealth}) + decent trust ({trust_score:.0f}) - joining for survival!{LogColors.ENDC}")
+                
+                if join_reason:
+                    return {
+                        'stratagem_id': stratagem_id,
+                        'organizer': organizer,
+                        'trust_score': trust_score,
+                        'reason': join_reason,
+                        'resource_type': resource_type,
+                        'reward_per_unit': reward_per_unit
+                    }
+            
+            return None
+            
+        except Exception as e:
+            log.error(f"Error checking collective delivery opportunities: {e}")
+            return None
+    
+    def _get_citizen_wealth(self, tables: Dict[str, Table], citizen_username: str) -> float:
+        """Get citizen's current wealth."""
+        try:
+            formula = f"{{Username}}='{citizen_username}'"
+            citizens = tables['citizens'].all(formula=formula, max_records=1)
+            if citizens:
+                return citizens[0]['fields'].get('Wealth', 0)
+            return 0
+        except:
+            return 0
+    
     def _create_fallback_idle(
         self,
         tables: Dict[str, Table],
@@ -350,7 +491,28 @@ class CitizenActivityOrchestrator:
         now_utc_dt: datetime,
         reason: str
     ) -> Dict:
-        """Create a fallback idle activity."""
+        """Create a fallback idle activity, checking first for collective delivery opportunities."""
+        # First check if citizen should join a collective delivery
+        collective_opportunity = self._check_collective_delivery_opportunities(
+            tables, citizen_username, citizen_airtable_id, now_utc_dt
+        )
+        
+        if collective_opportunity:
+            # Create join_collective_delivery activity instead of idle
+            return try_create_join_collective_delivery_activity(
+                tables=tables,
+                citizen_custom_id=citizen_id,
+                citizen_username=citizen_username,
+                citizen_airtable_id=citizen_airtable_id,
+                stratagem_id=collective_opportunity['stratagem_id'],
+                organizer_username=collective_opportunity['organizer'],
+                trust_score=collective_opportunity['trust_score'],
+                reason=collective_opportunity['reason'],
+                resource_type=collective_opportunity['resource_type'],
+                current_time_utc=now_utc_dt
+            )
+        
+        # Otherwise create normal idle activity
         idle_end_time = (now_utc_dt + timedelta(hours=IDLE_ACTIVITY_DURATION_HOURS)).isoformat()
         
         return try_create_idle_activity(

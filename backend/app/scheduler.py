@@ -20,7 +20,8 @@ SCRIPTS_RESPECTING_FORCED_HOUR = [
     "relevancies/gatherInformation.py", # Added for intelligence gathering
     "engine/processStratagems.py", # Ajout du processeur de stratagèmes
     "reports/createReports.py", # Added for Renaissance reports generation
-    "engine/emergency_food_distribution_charity_contracts.py" # Charity contract-based emergency food distribution
+    "engine/emergency_food_distribution_charity_contracts.py", # Charity contract-based emergency food distribution
+    "engine/daily/gradient_mill_production.py" # Automated mill production processing
     # Add other scripts here if they are updated to support --hour
 ]
 import subprocess
@@ -166,7 +167,7 @@ def run_scheduled_tasks(forced_hour: Optional[int] = None): # Added forced_hour 
             # {"minute_mod": 1, "script": "resources/processdecay.py", "name": "Resource decay processing", "interval_minutes": 20},
             {"minute_mod": 2, "script": "engine/processActivities.py", "name": "Process concluded activities", "interval_minutes": 5},
             {"minute_mod": 3, "script": "engine/delivery_retry_handler.py", "name": "Delivery retry handler", "interval_minutes": 15},
-            {"minute_mod": 4, "script": "forge-communications/forge_message_processor.py", "name": "Forge message check", "interval_minutes": 5},
+            {"minute_mod": 4, "script": "forge-communication/forge_message_processor.py", "name": "Forge message check", "interval_minutes": 5},
         ]
 
         for task_def in frequent_tasks_definitions:
@@ -197,7 +198,8 @@ def run_scheduled_tasks(forced_hour: Optional[int] = None): # Added forced_hour 
                     ("ais/generatethoughts.py --model local", "AI Thought Generation", 10)], # 7:10 VT
                 5: [("ais/automated_adjustimports.py", "Automated AI Import Contract Creation", 0), # 5:00 VT
                     ("ais/automated_adjustmarkupbuys.py", "Automated Markup Buys", 5), # 5:05 VT
-                    ("relevancies/gatherInformation.py", "Daily Intelligence Report Generation", 10)], # 5:10 VT
+                    ("relevancies/gatherInformation.py", "Daily Intelligence Report Generation", 10), # 5:10 VT
+                    ("engine/daily/gradient_mill_production.py", "Automated Mill Production Processing", 20)], # 5:20 VT
                 6: [("ais/answertomessages.py --model local", "AI message responses", 0)], # 6:00 VT
                 8: [("engine/treasuryRedistribution.py", "Treasury redistribution", 0), # 8:00 VT
                     ("ais/answertomessages.py --model local", "AI message responses", 5), # 8:05 VT

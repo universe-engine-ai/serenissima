@@ -2057,3 +2057,15 @@ def find_closest_fishable_water_point(
             }
     
     return None
+
+
+def get_resource_stack(tables: Dict[str, Table], resource_id: str) -> Optional[Dict]:
+    """Get a resource stack by its ID."""
+    try:
+        resource_records = tables["resources"].all(formula=f"{{id}} = \"{resource_id}\"", max_records=1)
+        if resource_records:
+            return resource_records[0]
+        return None
+    except Exception as e:
+        log.error(f"Error fetching resource stack {resource_id}: {e}")
+        return None

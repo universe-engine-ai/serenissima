@@ -39,13 +39,13 @@ export async function POST(request: Request) {
   try {
     // Parse the request body
     const rawBody = await request.json();
-    const pascalBody = keysToPascalCase(rawBody);
-
-    const sender = pascalBody.Sender;
-    const receiver = pascalBody.Receiver;
-    const content = pascalBody.Content;
-    const type = pascalBody.Type || 'message'; // Default to 'message' if Type is not provided
-    const channel = pascalBody.Channel; // Extract Channel
+    
+    // Extract values supporting both camelCase and PascalCase
+    const sender = rawBody.sender || rawBody.Sender;
+    const receiver = rawBody.receiver || rawBody.Receiver;
+    const content = rawBody.content || rawBody.Content;
+    const type = rawBody.type || rawBody.Type || 'message'; // Default to 'message' if Type is not provided
+    const channel = rawBody.channel || rawBody.Channel; // Extract Channel
     
     if (!sender || !receiver || !content) {
       return NextResponse.json(
@@ -95,16 +95,19 @@ export async function POST(request: Request) {
       
     } catch (error) {
       console.error('Error creating message in Airtable:', error);
+      const errorMessage = error instanceof Error ? error.message : 'Unknown error';
       return NextResponse.json(
-        { success: false, error: 'Failed to create message in Airtable' },
+        { success: false, error: 'Failed to create message in Airtable', details: errorMessage },
         { status: 500 }
       );
     }
     
   } catch (error) {
     console.error('Error sending message:', error);
+    // Return more detailed error information
+    const errorMessage = error instanceof Error ? error.message : 'Unknown error';
     return NextResponse.json(
-      { success: false, error: 'Failed to send message' },
+      { success: false, error: 'Failed to send message', details: errorMessage },
       { status: 500 }
     );
   }

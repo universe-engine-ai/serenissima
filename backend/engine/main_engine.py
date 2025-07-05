@@ -33,6 +33,7 @@ from backend.engine.activity_creators import (
     try_create_initiate_building_project_activity,
     try_create_talk_publicly_activity,
     try_create_send_diplomatic_email_activity,
+    try_create_deliver_to_citizen_activity,
     # ... import other creators used by the dispatcher below
 )
 
@@ -160,6 +161,18 @@ def dispatch_specific_activity_request(
                 return {"success": True, "message": f"Created send_diplomatic_email activity", "activity": activity_record, "reason": None}
             else:
                 return {"success": False, "message": f"Failed to create send_diplomatic_email activity", "activity": None, "reason": "creation_failed"}
+        
+        elif activity_type == "deliver_to_citizen":
+            # Create the deliver_to_citizen activity for collective delivery stratagems
+            activity_record = try_create_deliver_to_citizen_activity(
+                tables, citizen_record, building_type_defs, resource_defs, 
+                api_base_url, transport_api_url
+            )
+            
+            if activity_record:
+                return {"success": True, "message": f"Created deliver_to_citizen activity", "activity": activity_record, "reason": None}
+            else:
+                return {"success": False, "message": f"Failed to create deliver_to_citizen activity", "activity": None, "reason": "creation_failed"}
         
         # Add more activity types here as needed
         # elif activity_type == "bid_on_land":

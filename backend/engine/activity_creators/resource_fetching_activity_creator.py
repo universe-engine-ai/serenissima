@@ -3,6 +3,7 @@ Creator for 'fetch_resource' activities.
 """
 import logging
 import datetime
+from datetime import timedelta
 import time
 import json
 import uuid # Already imported in createActivities, but good practice here too
@@ -221,6 +222,94 @@ def try_create(
                                 f"Total water: {closest_source['total_water']})")
             except Exception as e:
                 log.error(f"{LogColors.ACTIVITY}[FetchCreator] Error finding water source: {e}")
+        
+        # Special handling for grain resource - check galleys first!
+        if resource_type_id == "grain" and not final_from_building_custom_id:
+            log.info(f"{LogColors.ACTIVITY}[FetchCreator] BRIDGE: Special handling for grain - checking merchant galleys first...")
+            
+            # Look for grain in merchant galleys (foreign merchants)
+            try:
+                # Find all merchant galleys
+                galleys_formula = "AND({Type}='merchant_galley', {Status}='active')"
+                merchant_galleys = tables['buildings'].all(formula=galleys_formula)
+                
+                galley_sources_with_distance = []
+                
+                for galley in merchant_galleys:
+                    galley_id = galley['fields'].get('BuildingId')
+                    galley_owner = galley['fields'].get('Owner')
+                    
+                    if not galley_id:
+                        continue
+                    
+                    # Check grain inventory at this galley
+                    grain_formula = f"AND({{Type}}='grain', {{Asset}}='{_escape_airtable_value(galley_id)}', {{AssetType}}='building')"
+                    grain_resources = tables['resources'].all(formula=grain_formula)
+                    total_grain = sum(float(r['fields'].get('Count', 0)) for r in grain_resources)
+                    
+                    if total_grain >= amount:
+                        # Calculate distance to galley
+                        galley_pos = _get_building_position_coords(galley)
+                        if galley_pos:
+                            distance = _calculate_distance_meters(citizen_position, galley_pos)
+                            galley_sources_with_distance.append({
+                                'building_id': galley_id,
+                                'owner': galley_owner,
+                                'total_grain': total_grain,
+                                'distance': distance,
+                                'building_record': galley
+                            })
+                            log.info(f"{LogColors.ACTIVITY}[FetchCreator] BRIDGE: Found galley {galley_id} with {total_grain} grain at {distance:.1f}m")
+                
+                # Select closest galley with grain
+                if galley_sources_with_distance:
+                    galley_sources_with_distance.sort(key=lambda x: x['distance'])
+                    closest_galley = galley_sources_with_distance[0]
+                    
+                    # Check if there's a public_sell contract for this galley
+                    galley_contract_formula = f"AND({{Type}}='public_sell', {{ResourceType}}='grain', {{SellerBuilding}}='{_escape_airtable_value(closest_galley['building_id'])}', {{Status}}='active')"
+                    galley_contracts = tables['contracts'].all(formula=galley_contract_formula)
+                    
+                    if galley_contracts:
+                        # Use existing contract
+                        contract = galley_contracts[0]
+                        final_from_building_custom_id = closest_galley['building_id']
+                        final_contract_custom_id = contract['fields'].get('ContractId', contract['id'])
+                        log.info(f"{LogColors.ACTIVITY}[FetchCreator] BRIDGE: Using existing galley contract {final_contract_custom_id}")
+                    else:
+                        # Create emergency bridge contract
+                        log.info(f"{LogColors.ACTIVITY}[FetchCreator] BRIDGE: No contract found - creating emergency bridge contract...")
+                        
+                        # Create public_sell contract for galley grain
+                        contract_id = f"bridge-{datetime.datetime.now().strftime('%Y%m%d%H%M%S')}-{closest_galley['building_id'][:8]}"
+                        contract_data = {
+                            'ContractId': contract_id,
+                            'Type': 'public_sell',
+                            'Status': 'active',
+                            'Seller': closest_galley['owner'],
+                            'SellerBuilding': closest_galley['building_id'],
+                            'ResourceType': 'grain',
+                            'TargetAmount': int(closest_galley['total_grain']),
+                            'PricePerResource': 1.08,  # Competitive price to encourage use
+                            'CreatedAt': current_time_utc.isoformat(),
+                            'EndAt': (current_time_utc + timedelta(hours=24)).isoformat(),
+                            'Notes': f"BRIDGE CONTRACT: Auto-created to connect galley grain to mills"
+                        }
+                        
+                        try:
+                            new_contract = tables['contracts'].create(contract_data)
+                            final_from_building_custom_id = closest_galley['building_id']
+                            final_contract_custom_id = contract_id
+                            log.info(f"{LogColors.ACTIVITY}[FetchCreator] BRIDGE: Created emergency contract {contract_id} for galley {closest_galley['building_id']}")
+                        except Exception as e:
+                            log.error(f"{LogColors.ACTIVITY}[FetchCreator] BRIDGE: Failed to create contract: {e}")
+                    
+                    if final_from_building_custom_id:
+                        log.info(f"{LogColors.ACTIVITY}[FetchCreator] BRIDGE: Selected galley {final_from_building_custom_id} "
+                                f"(Distance: {closest_galley['distance']:.1f}m, Grain: {closest_galley['total_grain']})")
+                        
+            except Exception as e:
+                log.error(f"{LogColors.ACTIVITY}[FetchCreator] BRIDGE: Error finding grain in galleys: {e}")
         
         # Standard dynamic source finding for all resources (including water if special handling failed)
         if not final_from_building_custom_id:

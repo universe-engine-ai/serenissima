@@ -78,7 +78,7 @@ def process_file_grievance_activity(
             return False
         
         # Check if GRIEVANCES table exists, if not we'll store in activity details
-        grievances_table = tables.get('GRIEVANCES')
+        grievances_table = tables.get('grievances')
         
         if grievances_table:
             # Create grievance record

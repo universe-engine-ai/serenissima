@@ -142,6 +142,7 @@ from backend.engine.activity_processors import (
         process_fetch_for_logistics_client as process_fetch_for_logistics_client_fn, # Already present
         process_check_business_status as process_check_business_status_fn,
         process_fishing_activity as process_fishing_activity_fn, # Import new processor
+        process_deliver_to_citizen_fn, # Citizen-to-citizen delivery
         process_goto_location_fn, # Import goto_location processor
         process_manage_guild_membership as process_manage_guild_membership_fn, # Import guild membership processor
         # Import new building bid processors
@@ -257,7 +258,9 @@ def initialize_airtable() -> Optional[Dict[str, Table]]:
             'notifications': api.table(base_id, 'NOTIFICATIONS'),
             'stratagems': api.table(base_id, 'STRATAGEMS'),
             'messages': api.table(base_id, 'MESSAGES'),
-            'processes': api.table(base_id, 'PROCESSES')
+            'processes': api.table(base_id, 'PROCESSES'),
+            'grievances': api.table(base_id, 'GRIEVANCES'),
+            'grievance_support': api.table(base_id, 'GRIEVANCE_SUPPORT')
         }
 
         # Test connection with one primary table (e.g., citizens)
@@ -502,6 +505,7 @@ def main(dry_run: bool = False, target_citizen_username: Optional[str] = None, f
         "check_business_status": process_check_business_status_fn,
         "fishing": process_fishing_activity_fn, # New
         "emergency_fishing": process_fishing_activity_fn, # New, uses same processor
+        "deliver_to_citizen": process_deliver_to_citizen_fn, # Citizen-to-citizen delivery
         "inspect_building_for_purchase": process_inspect_building_for_purchase_fn, # New
         "submit_building_purchase_offer": process_submit_building_purchase_offer_fn, 
         "execute_respond_to_building_bid": process_execute_respond_to_building_bid_fn, 
@@ -803,6 +807,7 @@ def process_all_activities_for_one_citizen(
         "check_business_status": process_check_business_status_fn,
         "fishing": process_fishing_activity_fn,
         "emergency_fishing": process_fishing_activity_fn,
+        "deliver_to_citizen": process_deliver_to_citizen_fn,
         "inspect_building_for_purchase": process_inspect_building_for_purchase_fn,
         "submit_building_purchase_offer": process_submit_building_purchase_offer_fn,
         "execute_respond_to_building_bid": process_execute_respond_to_building_bid_fn,

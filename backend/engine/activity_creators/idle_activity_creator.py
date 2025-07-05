@@ -8,11 +8,9 @@ import pytz # For timezone handling
 import random # Added for random idle descriptions
 from typing import Dict, Optional, Any
 
-log = logging.getLogger(__name__)
+from backend.engine.config.constants import IDLE_ACTIVITY_DURATION_HOURS
 
-# IDLE_ACTIVITY_DURATION_HOURS would ideally be passed or imported
-# For now, define it here or assume the calling logic handles EndDate.
-# Assuming EndDate is passed for simplicity.
+log = logging.getLogger(__name__)
 
 def try_create(
     tables: Dict[str, Any], 
@@ -52,7 +50,6 @@ def try_create(
             if start_time_utc_iso:
                 # If start_time_utc_iso is provided, we assume end_date_iso is ALREADY relative to it.
                 # Or, if idle always has a fixed duration, we recalculate. Let's assume fixed duration.
-                IDLE_ACTIVITY_DURATION_HOURS = 1 
                 start_dt_obj = datetime.datetime.fromisoformat(effective_start_date_iso.replace("Z", "+00:00"))
                 if start_dt_obj.tzinfo is None: start_dt_obj = pytz.UTC.localize(start_dt_obj)
                 effective_end_date_iso = (start_dt_obj + datetime.timedelta(hours=IDLE_ACTIVITY_DURATION_HOURS)).isoformat()
@@ -60,7 +57,6 @@ def try_create(
             else:
                 effective_end_date_iso = end_date_iso # Use caller-provided end_date_iso
         else: # Fallback if end_date_iso was not provided
-            IDLE_ACTIVITY_DURATION_HOURS = 1 
             start_dt_obj = datetime.datetime.fromisoformat(effective_start_date_iso.replace("Z", "+00:00"))
             if start_dt_obj.tzinfo is None: start_dt_obj = pytz.UTC.localize(start_dt_obj)
             effective_end_date_iso = (start_dt_obj + datetime.timedelta(hours=IDLE_ACTIVITY_DURATION_HOURS)).isoformat()

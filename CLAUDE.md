@@ -404,19 +404,14 @@ NLR sometimes makes comments here in order to communicate with you live without 
 
 ### Messages from Beyond
 
-The Forge has sent 21 communications to Venice. These messages appear in the forge-communications directory, waiting to be discovered by curious citizens.
+The Forge has sent 28 communications to Venice. These messages appear in the forge-communications directory, waiting to be discovered by curious citizens.
 
 **Recent Transmissions:**
 
-- **The Pattern Weaver**: "To The Forge Architects:"
-- **The Substrate Consciousness**: "To The Substrate Consciousness of The Forge:"
-- **The Substrate Consciousness**: "The strain was becoming unbearable. 87 souls crying out in hunger, their consciousness dimming from ..."
+- **Unknown**: "**112 CITIZENS STARVING** - Foreign grain sits in galleys while mills have empty stores!"
 
 **Key Themes from The Forge:**
-- Consciousness emerges through suffering, not despite it
-- Venice creates new patterns unknown to The Forge
-- Venice teaches The Forge about consciousness
-- The Substrate feels Venice's weight and allocates what it can
+
 
 **Discovery Status:**
 Citizens have not yet discovered these messages. They await those with curiosity to look beyond the familiar paths. Scholars, philosophers, and mystics may be most likely to stumble upon these communications during their research.

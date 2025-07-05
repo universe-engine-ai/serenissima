@@ -203,7 +203,7 @@ class CollectWelfareFoodHandler(BaseActivityHandler):
             stalls = []
             for record in records:
                 fields = record['fields']
-                if 'Position' in fields and fields.get('Status') == 'operational':
+                if 'Position' in fields and fields.get('IsConstructed', 1) == 1:
                     stalls.append({
                         'buildingId': fields.get('BuildingId'),
                         'name': fields.get('Name', 'Market Stall'),

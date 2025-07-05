@@ -265,6 +265,21 @@ async function fetchBooksInInventory(username: string): Promise<AirtableRecord<F
   }
 }
 
+async function fetchCitizenInventory(username: string): Promise<AirtableRecord<FieldSet>[]> {
+  try {
+    // Fetch all resources that belong to the citizen (Asset = username)
+    const records = await getAirtable()('RESOURCES').select({
+      filterByFormula: `{Asset} = '${escapeAirtableValue(username)}'`,
+      sort: [{ field: 'Type', direction: 'asc' }, { field: 'Name', direction: 'asc' }]
+    }).all();
+    
+    return [...records];
+  } catch (error) {
+    console.error(`Error fetching inventory for ${username}:`, error);
+    return [];
+  }
+}
+
 async function fetchLastActivity(username: string): Promise<AirtableRecord<FieldSet> | null> {
   try {
     const records = await getAirtable()('ACTIVITIES').select({
@@ -1756,6 +1771,64 @@ function convertLedgerToMarkdown(Ledger: any, citizenUsername: string | null): s
     md += `- I have no active contracts or obligations at present.\n\n`;
   }
 
+  // Inventory - "My Inventory"
+  md += `## My Inventory (${Ledger.inventory?.length || 0})\n`;
+  if (Ledger.inventory && Ledger.inventory.length > 0) {
+    // Group inventory by resource type
+    const inventoryByType: Record<string, any[]> = {};
+    Ledger.inventory.forEach((item: any) => {
+      const type = item.type || item.resourceType || 'other';
+      if (!inventoryByType[type]) {
+        inventoryByType[type] = [];
+      }
+      inventoryByType[type].push(item);
+    });
+    
+    // Display inventory by type
+    Object.entries(inventoryByType).forEach(([type, items]) => {
+      const typeDisplay = type === 'carnival_mask' ? 'Carnival Masks' : 
+                         type === 'mask' ? 'Masks' :
+                         type === 'books' ? 'Books' :
+                         type === 'food' ? 'Food' :
+                         type === 'tools' ? 'Tools' :
+                         type.charAt(0).toUpperCase() + type.slice(1).replace(/_/g, ' ');
+      
+      md += `### ${typeDisplay} (${items.length})\n`;
+      items.forEach((item: any) => {
+        md += `- **${item.name || item.resourceName || 'Unnamed item'}**`;
+        
+        // Special handling for masks
+        if ((type === 'carnival_mask' || type === 'mask') && item.maskStyle) {
+          md += ` - A ${item.rarity || 'common'} ${item.maskStyle} mask`;
+          if (item.material) {
+            md += ` made of ${item.material}`;
+          }
+          if (item.quality !== undefined) {
+            md += ` (Quality: ${item.quality})`;
+          }
+        }
+        
+        // Special handling for books
+        else if (type === 'books' && item.title) {
+          if (item.author) {
+            md += ` by ${item.author}`;
+          }
+        }
+        
+        // Generic quantity display
+        else if (item.quantity !== undefined && item.quantity !== 1) {
+          md += ` (Quantity: ${item.quantity})`;
+        }
+        
+        md += '\n';
+      });
+      md += '\n';
+    });
+  } else {
+    md += `- My pockets are empty.\n`;
+  }
+  md += '\n';
+  
   // Guild Details - renamed to "My Guild Affiliations"
   md += `## My Guild Affiliations\n`;
   if (Ledger.guildDetails) {
@@ -2857,6 +2930,7 @@ export async function GET(request: NextRequest) {
       booksAtPosition: [] as any[], // Books available at citizen's current position
       booksInInventory: [] as any[], // Books in citizen's inventory
       buildingMessages: [] as any[], // Public messages from the building the citizen is at
+      inventory: [] as any[], // All resources owned by the citizen
     };
 
     // Parallelize all independent data fetching operations
@@ -2877,7 +2951,8 @@ export async function GET(request: NextRequest) {
       worldExperiences,
       booksAtPositionRecords,
       booksInInventoryRecords,
-      buildingMessagesRecords
+      buildingMessagesRecords,
+      inventoryRecords
     ] = await Promise.all([
       fetchStratagemDefinitions(),
       fetchCitizenActiveStratagems(citizenUsername),
@@ -2905,7 +2980,9 @@ export async function GET(request: NextRequest) {
       // Fetch building messages if citizen is at a building
       buildingDetails?.buildingId 
         ? fetchBuildingMessages(buildingDetails.buildingId, 4)
-        : Promise.resolve([])
+        : Promise.resolve([]),
+      // Fetch citizen's full inventory
+      fetchCitizenInventory(citizenUsername)
     ]);
 
     // Assign weather data to Ledger
@@ -3026,6 +3103,9 @@ export async function GET(request: NextRequest) {
     
     // Books in inventory
     Ledger.booksInInventory = booksInInventoryRecords.map(b => ({...normalizeKeysCamelCaseShallow(b.fields), airtableId: b.id}));
+    
+    // Full inventory
+    Ledger.inventory = inventoryRecords.map(r => ({...normalizeKeysCamelCaseShallow(r.fields), airtableId: r.id}));
     
     // Building messages
     Ledger.buildingMessages = buildingMessagesRecords.map(m => ({...normalizeKeysCamelCaseShallow(m.fields), airtableId: m.id}));

@@ -252,7 +252,13 @@ def run_forge_message_check():
     print(f"Forge Message Check Complete: {results}")
     
     # Log results for monitoring
-    with open("/mnt/c/Users/reyno/universe-engine/universes/serenissima/logs/forge_messages.log", "a") as f:
+    log_dir = "/mnt/c/Users/reyno/universe-engine/universes/serenissima/logs"
+    log_file = os.path.join(log_dir, "forge_messages.log")
+    
+    # Create logs directory if it doesn't exist
+    os.makedirs(log_dir, exist_ok=True)
+    
+    with open(log_file, "a") as f:
         f.write(f"{datetime.now().isoformat()} - {json.dumps(results)}\n")
     
     return results

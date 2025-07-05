@@ -92,7 +92,7 @@ Stocke les instances de ressources et leur emplacement.
 -   `Count` (Nombre): Quantité de cette ressource.
 -   `Position` (Texte multiligne): Chaîne JSON des coordonnées de la ressource (ex: `{"lat": 45.43, "lng": 12.33}`). Utilisé si la ressource n'est pas directement dans un bâtiment ou sur un citoyen, ou pour surcharger leur position.
 -   `Attributes` (Texte multiligne): Chaîne JSON stockant des attributs spécifiques à cette instance de ressource (ex: pour les œuvres d'art, détails de l'œuvre ; pour des outils spéciaux, leur qualité ou usure).
--   `ConsumedAt` (Date/Heure): Horodatage ISO de la dernière consommation (pour la production).
+-   `decayedAt` (Date/Heure): Horodatage ISO de la dernière consommation (pour la production).
 -   `Notes` (Texte multiligne): Notes diverses (ex: contrat d'origine pour les biens importés).
 -   `CreatedAt` (Date/Heure): Date de création de l'enregistrement.
 -   `UpdatedAt` (Date/Heure): Date de dernière modification (automatique par Airtable).

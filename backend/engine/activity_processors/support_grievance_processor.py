@@ -82,8 +82,8 @@ def process_support_grievance_activity(
             return False
         
         # Check if GRIEVANCE_SUPPORT table exists
-        support_table = tables.get('GRIEVANCE_SUPPORT')
-        grievances_table = tables.get('GRIEVANCES')
+        support_table = tables.get('grievance_support')
+        grievances_table = tables.get('grievances')
         
         support_count = 1
         

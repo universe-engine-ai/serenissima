@@ -1089,7 +1089,7 @@ Individual resource instances and their locations.
 - `Owner` (Text) - Resource owner username
 - `Count` (Number) - Quantity
 - `Position` (JSON Text) - Override coordinates
-- `ConsumedAt` (DateTime) - Last consumption time
+- `decayedAt` (DateTime) - Last consumption time
 - `Notes` (Text) - Additional details
 
 ## CONTRACTS

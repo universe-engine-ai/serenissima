@@ -15,6 +15,7 @@ Target: /backend/engine/daily/gradient_mill_production.py
 import requests
 import json
 import logging
+import uuid
 from datetime import datetime, timedelta
 from typing import Dict, List, Optional, Tuple
 
@@ -112,17 +113,95 @@ class GradientMillAutomation:
         
         return max(0.8, base_maintenance - automation_complexity)
     
+    def _create_automated_flour_production(self, mill: Dict, efficiency: float) -> int:
+        """Create actual flour resources from available grain in automated mill"""
+        mill_id = mill['buildingId']
+        
+        try:
+            # Get grain resources at mill location
+            grain_response = requests.get(f"{API_BASE_URL}/resources", 
+                                        params={"Type": "grain", "Asset": mill_id})
+            
+            if grain_response.status_code != 200:
+                self.logger.warning(f"Failed to fetch grain for mill {mill_id}")
+                return 0
+            
+            grain_resources = grain_response.json()
+            total_grain = sum(resource.get('count', 0) for resource in grain_resources)
+            
+            if total_grain == 0:
+                self.logger.info(f"No grain available at mill {mill_id}")
+                return 0
+            
+            # Calculate flour production with automation efficiency
+            base_conversion = 1.0  # 1 grain = 1 flour base rate
+            flour_to_produce = int(total_grain * base_conversion * efficiency)
+            
+            if flour_to_produce > 0:
+                # Create flour resource at mill location
+                # Extract position from mill data
+                position = mill.get('position', {})
+                if isinstance(position, str):
+                    try:
+                        position = json.loads(position)
+                    except:
+                        position = {"lat": 45.437357, "lng": 12.326246}  # Default mill position
+                
+                flour_data = {
+                    "id": f"resource-{uuid.uuid4()}",
+                    "type": "flour",
+                    "count": flour_to_produce,
+                    "asset": mill_id,
+                    "owner": mill.get('owner', 'ConsiglioDeiDieci'),
+                    "assetType": "building"
+                }
+                
+                # Create the flour resource
+                create_response = requests.post(f"{API_BASE_URL}/resources", json=flour_data)
+                
+                if create_response.status_code == 200:
+                    self.logger.info(f"Created {flour_to_produce} flour at mill {mill_id} (efficiency: {efficiency:.2f}x)")
+                    
+                    # Consume the grain that was processed
+                    self._consume_grain_resources(grain_resources)
+                    
+                    return flour_to_produce
+                else:
+                    self.logger.error(f"Failed to create flour resource: {create_response.text}")
+                    return 0
+            
+        except Exception as e:
+            self.logger.error(f"Error in flour production for mill {mill_id}: {e}")
+            return 0
+        
+        return 0
+    
+    def _consume_grain_resources(self, grain_resources: List[Dict]):
+        """Mark grain resources as consumed after flour production"""
+        for grain in grain_resources:
+            try:
+                # Update grain resource to consumed status
+                grain_id = grain.get('resourceId') or grain.get('id')
+                if grain_id:
+                    update_data = {"decayedAt": datetime.now().isoformat()}
+                    requests.patch(f"{API_BASE_URL}/resources/{grain_id}", json=update_data)
+            except Exception as e:
+                self.logger.warning(f"Failed to mark grain {grain_id} as consumed: {e}")
+    
     def apply_production_multipliers(self, mill: Dict) -> Dict:
         """Apply production efficiency multipliers to mill output"""
         efficiency = self.calculate_production_efficiency(mill)
         mill_id = mill['buildingId']
         
-        # In actual implementation, would update production contracts and resource generation
+        # ACTUAL IMPLEMENTATION: Create flour resources based on automation efficiency
+        flour_produced = self._create_automated_flour_production(mill, efficiency)
+        
         production_update = {
             'buildingId': mill_id,
             'efficiencyMultiplier': efficiency,
             'automationLevel': mill.get('gradientAutomationLevel', 1),
             'workerRole': self._get_worker_role(mill.get('gradientAutomationLevel', 1)),
+            'flourProduced': flour_produced,
             'lastProcessed': datetime.now().isoformat()
         }
         

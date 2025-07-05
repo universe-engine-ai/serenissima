@@ -108,7 +108,7 @@ def _handle_deposit_full_inventory(
         owned_storages = tables['buildings'].all(formula=owned_storage_formula)
         if owned_storages:
             storage_building = owned_storages[0]
-            activity_record = try_create_deposit_inventory_orchestrator_activity(
+            activity_record = try_create_deposit_inventory_orchestrator(
                 tables, citizen_custom_id, citizen_username, citizen_airtable_id,
                 storage_building['id'], storage_building['fields']['CustomId'], now_utc_dt
             )
@@ -122,7 +122,7 @@ def _handle_deposit_full_inventory(
     # Second priority: home storage
     home_building = get_citizen_home(tables, citizen_username)
     if home_building:
-        activity_record = try_create_deposit_inventory_orchestrator_activity(
+        activity_record = try_create_deposit_inventory_orchestrator(
             tables, citizen_custom_id, citizen_username, citizen_airtable_id,
             home_building['id'], home_building['fields']['CustomId'], now_utc_dt
         )
@@ -153,7 +153,7 @@ def _handle_deposit_full_inventory(
                         closest_storage = storage
             
             if closest_storage:
-                activity_record = try_create_deposit_inventory_orchestrator_activity(
+                activity_record = try_create_deposit_inventory_orchestrator(
                     tables, citizen_custom_id, citizen_username, citizen_airtable_id,
                     closest_storage['id'], closest_storage['fields']['CustomId'], now_utc_dt
                 )
@@ -326,7 +326,7 @@ def _handle_occupant_self_construction(
     
     # Check for building projects where citizen is the occupant
     project_formula = (f"AND({{Occupant}}='{_escape_airtable_value(citizen_username)}', "
-                       f"{{Status}}='under_construction', {{SelfBuild}}=TRUE())")
+                       f"{{ConstructionStatus}}='under_construction', {{SelfBuild}}=TRUE())")
     
     try:
         building_projects = tables['buildings'].all(formula=project_formula)
@@ -344,9 +344,13 @@ def _handle_occupant_self_construction(
                 continue
             
             # Create self-construction activity
+            # For self-build, we need to create or find a construction contract
+            # For now, we'll use a placeholder contract ID
+            contract_id = f"self_build_{building_id}_{citizen_username}"
+            
             activity_record = try_create_construct_building_activity(
                 tables, citizen_custom_id, citizen_username, citizen_airtable_id,
-                contract_info['contract_id'], building_id, now_utc_dt,
+                contract_id, building_id, now_utc_dt,
                 is_self_build=True
             )
             
@@ -387,8 +391,13 @@ def _handle_porter_tasks(
         # Note: This function handles the entire porter workflow including creating activities
         log.info(f"{LogColors.OKBLUE}[Porter] {citizen_name}: Processing porter activity at guild hall.{LogColors.ENDC}")
         
-        # Get the porter guild hall building
-        porter_guild_hall = get_building_record(tables, workplace_custom_id)
+        # Get the porter guild hall building from citizen's workplace
+        workplace_id = citizen_record['fields'].get('WorkplaceId')
+        if not workplace_id:
+            log.warning(f"{LogColors.WARNING}[Porter] {citizen_name}: No workplace assigned.{LogColors.ENDC}")
+            return None
+            
+        porter_guild_hall = get_building_record(tables, workplace_id)
         if not porter_guild_hall:
             log.warning(f"{LogColors.WARNING}[Porter] {citizen_name}: Could not find porter guild hall record.{LogColors.ENDC}")
             return None

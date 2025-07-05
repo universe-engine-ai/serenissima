@@ -29,6 +29,8 @@ from .deliver_construction_materials_processor import process as process_deliver
 from .construct_building_processor import process as process_construct_building
 from .goto_construction_site_processor import process as process_goto_construction_site
 from .deliver_to_storage_processor import process as process_deliver_to_storage
+from .deliver_to_citizen_processor import process as process_deliver_to_citizen_fn
+from .deliver_to_building_processor import process as process_deliver_to_building
 from .fetch_from_storage_processor import process as process_fetch_from_storage
 from .goto_building_for_storage_fetch_processor import process as process_goto_building_for_storage_fetch
 from .fetch_for_logistics_client_processor import process as process_fetch_for_logistics_client
@@ -66,6 +68,7 @@ from .research_scope_definition_processor import process as process_research_sco
 from .hypothesis_and_question_development_processor import process as process_hypothesis_and_question_development # New processor for hypothesis formation
 from .knowledge_integration_processor import process as process_knowledge_integration # New processor for knowledge synthesis
 from .talk_publicly_processor import process as process_talk_publicly # New processor for public announcements
+from .observe_system_patterns_processor import process as process_observe_system_patterns # New processor for Innovatori pattern observation
 
 # Import governance processors
 from .file_grievance_processor import process_file_grievance_activity
@@ -75,6 +78,18 @@ from .support_grievance_processor import process_support_grievance_activity
 from backend.engine.handlers.welfare_porter_handler import handle_welfare_porter
 from backend.engine.handlers.welfare_porter_delivery_handler import handle_welfare_porter_delivery
 from backend.engine.handlers.collect_welfare_food_handler import handle_collect_welfare_food
+
+# Import carnival mask processors
+from .create_carnival_mask_processor import process_create_carnival_mask
+from .wear_carnival_mask_processor import (
+    process_wear_carnival_mask,
+    process_remove_carnival_mask
+)
+from .trade_carnival_mask_processor import (
+    process_trade_carnival_mask,
+    process_lend_carnival_mask,
+    process_showcase_carnival_mask
+)
 
 # Imports pour les processeurs de terrains et contrats
 from .bid_on_land_activity_processor import process_bid_on_land_fn
@@ -100,6 +115,7 @@ from .buy_listed_land_processor import process_buy_listed_land_fn
 from .cancel_land_listing_processor import process_cancel_land_listing_fn
 from .cancel_land_offer_processor import process_cancel_land_offer_fn
 from .send_diplomatic_email_processor import process_send_diplomatic_email
+from .join_collective_delivery_processor import process as process_join_collective_delivery
 
 # Fonction de traitement générique pour les activités simples
 def process_placeholder_activity_fn(tables, activity_record, building_type_defs, resource_defs, api_base_url=None):
@@ -127,6 +143,7 @@ ACTIVITY_PROCESSORS = {
     'construct_building': process_construct_building,
     'goto_construction_site': process_goto_construction_site,
     'deliver_to_storage': process_deliver_to_storage,
+    'deliver_to_building': process_deliver_to_building,
     'fetch_from_storage': process_fetch_from_storage,
     'goto_building_for_storage_fetch': process_goto_building_for_storage_fetch,
     'fetch_for_logistics_client': process_fetch_for_logistics_client,
@@ -195,6 +212,7 @@ ACTIVITY_PROCESSORS = {
     'hypothesis_and_question_development': process_hypothesis_and_question_development,
     'knowledge_integration': process_knowledge_integration,
     'talk_publicly': process_talk_publicly,
+    'observe_system_patterns': process_observe_system_patterns,
     'welfare_porter': handle_welfare_porter,
     'welfare_porter_delivery': handle_welfare_porter_delivery,
     'collect_welfare_food': handle_collect_welfare_food,
@@ -205,4 +223,14 @@ ACTIVITY_PROCESSORS = {
     'secure_warehouse': process_placeholder_activity_fn,
     # Diplomatic activities
     'send_diplomatic_email': process_send_diplomatic_email,
+    # Carnival mask activities
+    'create_carnival_mask': process_create_carnival_mask,
+    'wear_carnival_mask': process_wear_carnival_mask,
+    'remove_carnival_mask': process_remove_carnival_mask,
+    'trade_carnival_mask': process_trade_carnival_mask,
+    'lend_carnival_mask': process_lend_carnival_mask,
+    'showcase_carnival_mask': process_showcase_carnival_mask,
+    # Collective delivery activities
+    'join_collective_delivery': process_join_collective_delivery,
+    'deliver_to_citizen': process_deliver_to_citizen_fn,
 }

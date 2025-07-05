@@ -146,6 +146,15 @@ export async function POST(request: Request) {
         `Purpose: ${stratagemDetails?.purpose}`,
         `Description: ${stratagemDetails?.description}`
       );
+    } else if (stratagemType === 'organize_collective_delivery') {
+      console.log(`[API /stratagems/try-create] Processing 'organize_collective_delivery' stratagem with parameters:`,
+        `TargetBuildingId: ${stratagemDetails?.targetBuildingId}`,
+        `TargetCitizenUsername: ${stratagemDetails?.targetCitizenUsername}`,
+        `ResourceType: ${stratagemDetails?.resourceType}`,
+        `MaxTotalAmount: ${stratagemDetails?.maxTotalAmount}`,
+        `RewardPerUnit: ${stratagemDetails?.rewardPerUnit}`,
+        `Description: ${stratagemDetails?.description}`
+      );
     }
 
     let parsedPythonEngineUrl: URL;

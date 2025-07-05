@@ -129,7 +129,7 @@ def main(dry_run: bool = False):
         return
 
     VENICE_TIMEZONE = pytz.timezone('Europe/Rome')
-    now_venice = datetime.now(VENICE_TIMEZONE) # Use Venice time for 'ConsumedAt'
+    now_venice = datetime.now(VENICE_TIMEZONE) # Use Venice time for 'decayedAt'
     now_utc = datetime.now(timezone.utc) # Keep UTC for age calculation if timestamps are UTC
     total_consumed_count = 0
     processed_homes = 0
@@ -187,8 +187,8 @@ def main(dry_run: bool = False):
             if consumption_hours is None or not isinstance(consumption_hours, (int, float)) or consumption_hours <= 0:
                 continue
 
-            last_consumed_at_str = instance_fields.get('ConsumedAt') or instance_fields.get('UpdatedAt') or instance_fields.get('CreatedAt')
-            if not last_consumed_at_str:
+            last_decayed_at_str = instance_fields.get('decayedAt') or instance_fields.get('UpdatedAt') or instance_fields.get('CreatedAt')
+            if not last_decayed_at_str:
                 log.warning(f"Resource instance {instance_id_airtable} (Type: {resource_type_id}) is missing consumption/update/creation timestamp. Skipping.")
                 continue
             
@@ -196,15 +196,15 @@ def main(dry_run: bool = False):
                 # Ensure the timestamp string is correctly formatted for fromisoformat
                 # It expects ISO 8601 format, e.g., "YYYY-MM-DDTHH:MM:SS.ffffff[+HH:MM|-HH:MM|Z]"
                 # Airtable's DATETIME_FORMAT usually includes 'Z' for UTC.
-                if last_consumed_at_str.endswith('Z'):
-                    last_consumed_dt = datetime.fromisoformat(last_consumed_at_str[:-1] + "+00:00")
+                if last_decayed_at_str.endswith('Z'):
+                    last_consumed_dt = datetime.fromisoformat(last_decayed_at_str[:-1] + "+00:00")
                 else:
-                    last_consumed_dt = datetime.fromisoformat(last_consumed_at_str)
+                    last_consumed_dt = datetime.fromisoformat(last_decayed_at_str)
                 
                 if last_consumed_dt.tzinfo is None:
                     last_consumed_dt = last_consumed_dt.replace(tzinfo=timezone.utc)
             except ValueError as ve:
-                log.error(f"Could not parse timestamp '{last_consumed_at_str}' for resource instance {instance_id_airtable}. Error: {ve}. Skipping.")
+                log.error(f"Could not parse timestamp '{last_decayed_at_str}' for resource instance {instance_id_airtable}. Error: {ve}. Skipping.")
                 continue
 
             hours_passed = (now_utc - last_consumed_dt).total_seconds() / 3600
@@ -226,7 +226,7 @@ def main(dry_run: bool = False):
 
                     if not dry_run:
                         try:
-                            update_payload = {"ConsumedAt": now_venice.isoformat()} # Use Venice time ISO string
+                            update_payload = {"decayedAt": now_venice.isoformat()} # Use Venice time ISO string
                             if new_count > 0.001: 
                                 update_payload["Count"] = new_count
                                 tables[RESOURCES_TABLE_NAME].update(instance_id_airtable, update_payload)

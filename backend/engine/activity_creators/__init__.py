@@ -89,3 +89,6 @@ from .draft_blueprint_activity_creator import try_create as try_create_draft_blu
 from .present_innovation_activity_creator import try_create as try_create_present_innovation_activity
 from .talk_publicly_activity_creator import try_create as try_create_talk_publicly_activity # Public announcement activity
 from .send_diplomatic_email_creator import try_create_send_diplomatic_email_activity # Diplomatic email activity
+from .deliver_to_building_activity_creator import try_create as try_create_deliver_to_building_activity # Direct building delivery
+from .deliver_to_citizen_activity_creator import try_create as try_create_deliver_to_citizen_activity # Citizen-to-citizen delivery for stratagems
+from .join_collective_delivery_creator import try_create as try_create_join_collective_delivery_activity # Join collective delivery stratagems

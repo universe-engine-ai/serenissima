@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Monitor the recovery of the eating system after fixing the ConsumedAt bug.
+Monitor the recovery of the eating system after fixing the decayedAt bug.
 """
 
 import os
@@ -46,7 +46,7 @@ async def monitor_eating():
         
         if bread_data:
             for bread in bread_data:
-                if not bread.get('consumedAt'):
+                if not bread.get('decayedAt'):
                     available_bread_count += 1
                     total_bread_units += bread.get('count', 0)
         
@@ -159,7 +159,7 @@ async def main():
     print("\nRECOMMENDATIONS:")
     print("1. Wait for citizens to wake up (Facchini at 05:00, others later)")
     print("2. During leisure time, hungry citizens should create eat activities")
-    print("3. With ConsumedAt bug fixed, food should now be accessible")
+    print("3. With decayedAt bug fixed, food should now be accessible")
     print("4. Monitor /api/activities for new eat activities")
     print("5. Check citizen AteAt timestamps to confirm eating is working")
 

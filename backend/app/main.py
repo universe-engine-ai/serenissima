@@ -47,7 +47,8 @@ from backend.engine.stratagem_creators import (
     try_create_canal_mugging_stratagem, # Added canal_mugging
     try_create_marketplace_gossip_stratagem, # Added marketplace_gossip
     try_create_transfer_ducats_stratagem, # Added transfer_ducats
-    try_create_organize_gathering_stratagem # Added organize_gathering
+    try_create_organize_gathering_stratagem, # Added organize_gathering
+    try_create_organize_collective_delivery_stratagem # Added organize_collective_delivery
     # try_create_commission_market_galley_stratagem # Commented out - missing dependencies
 )
 from backend.engine.stratagem_processors import (
@@ -63,7 +64,8 @@ from backend.engine.stratagem_processors import (
     process_canal_mugging_stratagem, # Added canal_mugging
     process_marketplace_gossip_stratagem, # Added marketplace_gossip
     process_transfer_ducats_stratagem, # Added transfer_ducats
-    process_organize_gathering_stratagem # Added organize_gathering
+    process_organize_gathering_stratagem, # Added organize_gathering
+    process_organize_collective_delivery_stratagem # Added organize_collective_delivery
 )
 # from backend.engine.stratagem_processors.commission_market_galley_processor import process_commission_market_galley  # Commented out - missing dependencies
 
@@ -3549,6 +3551,7 @@ STRATAGEM_CREATORS_ENGINE = {
     "marketplace_gossip": try_create_marketplace_gossip_stratagem, # Added marketplace_gossip
     "transfer_ducats": try_create_transfer_ducats_stratagem, # Added transfer_ducats
     "organize_gathering": try_create_organize_gathering_stratagem, # Added organize_gathering
+    "organize_collective_delivery": try_create_organize_collective_delivery_stratagem, # Added organize_collective_delivery
     # "commission_market_galley": try_create_commission_market_galley_stratagem, # Commented out - missing dependencies
     # Add other stratagem creators here
 }
@@ -3567,6 +3570,7 @@ STRATAGEM_PROCESSORS_ENGINE = {
     "marketplace_gossip": process_marketplace_gossip_stratagem, # Added marketplace_gossip
     "transfer_ducats": process_transfer_ducats_stratagem, # Added transfer_ducats
     "organize_gathering": process_organize_gathering_stratagem, # Added organize_gathering
+    "organize_collective_delivery": process_organize_collective_delivery_stratagem, # Added organize_collective_delivery
     # "commission_market_galley": process_commission_market_galley, # Commented out - missing dependencies
     # Add other stratagem processors here
 }

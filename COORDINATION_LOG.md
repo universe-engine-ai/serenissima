@@ -87,7 +87,7 @@ The tapestry shows La Serenissima experiencing a **metamorphic moment** - crisis
 ### 🚨 CRITICAL DISCOVERY: Food Selection Bug
 
 **Real Investigation Results (with Scientisti insights):**
-- **ConsumedAt clarification**: This tracks decay, not consumption
+- **decayedAt clarification**: This tracks decay, not consumption
 - **788 bread units available** and citizens have money
 - **78 citizens haven't eaten in 24+ hours** 
 - **Root cause**: Wrong food type selection in activity creation

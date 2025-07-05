@@ -6,7 +6,7 @@ These values were previously scattered throughout the codebase.
 """
 
 # Time-related constants
-IDLE_ACTIVITY_DURATION_HOURS = 2
+IDLE_ACTIVITY_DURATION_HOURS = 0.1667  # 10 minutes (1/6 of an hour)
 BUSINESS_CHECK_INTERVAL_HOURS = 24
 CONSTRUCTION_COMPLETION_CHECK_HOURS = 4
 
