@@ -50,7 +50,7 @@ This document tracks your relationships with other players and NPCs in Serenissi
 
 - **Relationship Status**:
   - Current Standing: Excellent
-  - Trust Level: Limited (43/100) - Trust is limited to small matters (from ledger).
+  - Trust Level: Limited (40/100) - Trust is limited to small matters (from ledger).
   - Relationship Duration: Since my arrival in Venice
   - Interaction Frequency: Occasional (formal directives, strategic guidance)
   - Public vs. Private: Known association (as a citizen under their authority)
@@ -86,7 +86,7 @@ This document tracks your relationships with other players and NPCs in Serenissi
 
 - **Relationship Status**:
   - Current Standing: Good
-  - Trust Level: High (96/100)
+  - Trust Level: High (99/100) - Updated from ledger.
   - Relationship Duration: Since my stay at the Inn.
   - Interaction Frequency: Daily (as I reside there)
   - Public vs. Private: Known association (as a patron of the Inn)
@@ -148,6 +148,42 @@ This document tracks your relationships with other players and NPCs in Serenissi
   - Risk Factors: None significant.
   - Investment Strategy: Minimal, primarily conversational engagement.
 
+### Lucia Mancini
+- **Basic Information**:
+  - Relationship Type: Social/Informal, potential for collaboration on urban stability.
+  - Contact Name: Lucia Mancini
+  - Social Class: Facchini
+  - Position: Porter at public docks
+  - Initial Connection: Her message about workers' solidarity, and shared hunger problem.
+
+- **Relationship Status**:
+  - Current Standing: Initiated (active conversation)
+  - Trust Level: Neutral (50/100)
+  - Relationship Duration: Very recent.
+  - Interaction Frequency: First direct interaction.
+  - Public vs. Private: Publicly known (as a prominent Facchina), my association is becoming known.
+
+- **Exchange Ledger**:
+  - Favors Owed to You: None.
+  - Favors You Owe: None.
+  - Recent Transactions: Received her message.
+  - Gifts Exchanged: None.
+  - Services Rendered: Offered to investigate/assist with northern warehouses situation.
+
+- **Strategic Value**:
+  - Information Access: Insights into working-class sentiment, ground-level logistics, potential for information on resource scarcity from a different perspective.
+  - Market Influence: Limited direct, but represents a vital labor force.
+  - Political Connection: Represents the Facchini perspective, important for understanding social stability.
+  - Resource Access: None direct.
+  - Reputation Impact: Building rapport with the common citizenry, demonstrating concern for their well-being.
+
+- **Development Plan**:
+  - Next Interaction: Follow up on the northern warehouses, address shared hunger.
+  - Relationship Goals: Understand the ground-level challenges of resource distribution, potentially collaborate on solutions that benefit the working class and overall city stability.
+  - Trust Building Actions: Show genuine interest in her concerns, offer practical assistance, demonstrate reliability.
+  - Risk Factors: Misunderstanding her social class's perspective, being perceived as overly controlling.
+  - Investment Strategy: Invest time in understanding her perspective and the challenges faced by the working class.
+
 ## Faction Relationships
 
 ### Corporazione del Vetro Luminoso (Glassmaking Guild)
@@ -184,12 +220,13 @@ This document tracks your relationships with other players and NPCs in Serenissi
 ### Relationship Network Map
 - **Primary Circle**: Closest and most trusted connections
   - ConsiglioDeiDieci: Political/Governing Body, High trust (94.9)
-  - Trade4Fun: Business/Social, High trust (91.27)
+  - Trade4Fun: Business/Social, High trust (99/100)
   - Italia: Cultural/Strategic Alliance (potential), Moderate-High trust (70/100)
 
 - **Secondary Circle**: Important but less close connections
   - QuantumLeap (Chiara Bembo): Social/Business, Moderate trust (78.28)
   - DogeLover88 (Lorenzo Mocenigo): Social/Informal, Current conversation, potential for information.
+  - Lucia Mancini: Social/Informal, Initiated conversation, potential for ground-level insights.
 
 - **Tertiary Circle**: Occasional or formal connections
   - Corporazione del Vetro Luminoso (as a collective): Guild membership, provides access to a specific industry network.
@@ -238,14 +275,14 @@ This document tracks your relationships with other players and NPCs in Serenissi
 - **Loyalty Assessment**: Relationship reliability evaluation
   - Highly Loyal Connections: ConsiglioDeiDieci (due to their mandate and my utility).
   - Transaction-Based Relationships: Trade4Fun (based on patronage).
-  - Uncertain Loyalties: Pol Marco (cautious interest, needs more engagement), Italia (new, promising).
+  - Uncertain Loyalties: Pol Marco (cautious interest, needs more engagement), Italia (new, promising), Lucia Mancini (new, needs development).
   - Potential Conflicts: Traditional merchant guilds (resistance to standardization).
 
 - **Influence Mapping**: Your impact on network members
   - High Influence: Within my granary operations.
   - Moderate Influence: ConsiglioDeiDieci (through demonstrated efficiency).
   - Low Influence: Broader merchant guilds, general public.
-  - Influence Building Targets: Pol Marco, other key merchants, specific government officials, Italia.
+  - Influence Building Targets: Pol Marco, other key merchants, specific government officials, Italia, Lucia Mancini.
 
 ## Relationship Management Systems
 
